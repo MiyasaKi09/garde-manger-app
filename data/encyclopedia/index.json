@@ -122,14 +122,14 @@
       "inventory_entries": 164,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 55,
+      "inventory_percent": 11,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 300,
+      "target": 1440,
       "target_metric": {
         "key": "sauces",
-        "target": 300,
+        "target": 1440,
         "unit": "sauces",
         "mode": "recipe_role"
       }
@@ -143,14 +143,14 @@
       "inventory_entries": 122,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 41,
+      "inventory_percent": 8,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 300,
+      "target": 1440,
       "target_metric": {
         "key": "accompaniments",
-        "target": 300,
+        "target": 1440,
         "unit": "accompagnements",
         "mode": "recipe_role"
       }
@@ -164,14 +164,14 @@
       "inventory_entries": 25,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 7,
+      "inventory_percent": 1,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 350,
+      "target": 1680,
       "target_metric": {
         "key": "desserts",
-        "target": 350,
+        "target": 1680,
         "unit": "desserts",
         "mode": "recipe_role"
       }
@@ -185,14 +185,14 @@
       "inventory_entries": 2,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 2,
+      "inventory_percent": 0,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 120,
+      "target": 575,
       "target_metric": {
         "key": "breakfasts",
-        "target": 120,
+        "target": 575,
         "unit": "petits-déjeuners",
         "mode": "meal_role"
       }
@@ -210,10 +210,10 @@
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "structure",
-      "target": 120,
+      "target": 575,
       "target_metric": {
         "key": "snacks",
-        "target": 120,
+        "target": 575,
         "unit": "collations",
         "mode": "meal_role"
       }
@@ -227,14 +227,14 @@
       "inventory_entries": 8,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 5,
+      "inventory_percent": 1,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 150,
+      "target": 720,
       "target_metric": {
         "key": "beverages",
-        "target": 150,
+        "target": 720,
         "unit": "boissons",
         "mode": "recipe_role"
       }
@@ -248,14 +248,14 @@
       "inventory_entries": 309,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 49,
+      "inventory_percent": 10,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 625,
+      "target": 3000,
       "target_metric": {
         "key": "recipe_families",
-        "target": 625,
+        "target": 3000,
         "unit": "familles de recettes",
         "mode": "canonical"
       }
@@ -269,14 +269,14 @@
       "inventory_entries": 11,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 12,
+      "inventory_percent": 3,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 90,
+      "target": 430,
       "target_metric": {
         "key": "recipe_memberships.11",
-        "target": 90,
+        "target": 430,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -290,14 +290,14 @@
       "inventory_entries": 73,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 81,
+      "inventory_percent": 17,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 90,
+      "target": 430,
       "target_metric": {
         "key": "recipe_memberships.12",
-        "target": 90,
+        "target": 430,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -311,14 +311,14 @@
       "inventory_entries": 68,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 80,
+      "inventory_percent": 17,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 85,
+      "target": 410,
       "target_metric": {
         "key": "recipe_memberships.13",
-        "target": 85,
+        "target": 410,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -332,14 +332,14 @@
       "inventory_entries": 74,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 99,
+      "inventory_percent": 21,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 75,
+      "target": 360,
       "target_metric": {
         "key": "recipe_memberships.14",
-        "target": 75,
+        "target": 360,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -353,14 +353,14 @@
       "inventory_entries": 62,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 65,
+      "inventory_percent": 14,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 95,
+      "target": 455,
       "target_metric": {
         "key": "recipe_memberships.15",
-        "target": 95,
+        "target": 455,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -374,14 +374,14 @@
       "inventory_entries": 47,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 52,
+      "inventory_percent": 11,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 90,
+      "target": 430,
       "target_metric": {
         "key": "recipe_memberships.16",
-        "target": 90,
+        "target": 430,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -395,14 +395,14 @@
       "inventory_entries": 22,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 31,
+      "inventory_percent": 7,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 70,
+      "target": 335,
       "target_metric": {
         "key": "recipe_memberships.17",
-        "target": 70,
+        "target": 335,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -416,14 +416,14 @@
       "inventory_entries": 15,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 15,
+      "inventory_percent": 3,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 100,
+      "target": 480,
       "target_metric": {
         "key": "recipe_memberships.18",
-        "target": 100,
+        "target": 480,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -437,14 +437,14 @@
       "inventory_entries": 17,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 23,
+      "inventory_percent": 5,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 75,
+      "target": 360,
       "target_metric": {
         "key": "recipe_memberships.19",
-        "target": 75,
+        "target": 360,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -458,14 +458,14 @@
       "inventory_entries": 18,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 21,
+      "inventory_percent": 4,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 85,
+      "target": 410,
       "target_metric": {
         "key": "recipe_memberships.20",
-        "target": 85,
+        "target": 410,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -479,14 +479,14 @@
       "inventory_entries": 7,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 9,
+      "inventory_percent": 2,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 80,
+      "target": 385,
       "target_metric": {
         "key": "recipe_memberships.21",
-        "target": 80,
+        "target": 385,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -500,14 +500,14 @@
       "inventory_entries": 23,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 22,
+      "inventory_percent": 5,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 105,
+      "target": 505,
       "target_metric": {
         "key": "recipe_memberships.22",
-        "target": 105,
+        "target": 505,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -521,14 +521,14 @@
       "inventory_entries": 67,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 45,
+      "inventory_percent": 9,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 150,
+      "target": 720,
       "target_metric": {
         "key": "recipe_memberships.23",
-        "target": 150,
+        "target": 720,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -542,14 +542,14 @@
       "inventory_entries": 24,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 24,
+      "inventory_percent": 5,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 100,
+      "target": 480,
       "target_metric": {
         "key": "recipe_memberships.24",
-        "target": 100,
+        "target": 480,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -563,14 +563,14 @@
       "inventory_entries": 103,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 69,
+      "inventory_percent": 14,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 150,
+      "target": 720,
       "target_metric": {
         "key": "recipe_memberships.25",
-        "target": 150,
+        "target": 720,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -584,14 +584,14 @@
       "inventory_entries": 5,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 6,
+      "inventory_percent": 1,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 80,
+      "target": 385,
       "target_metric": {
         "key": "recipe_memberships.26",
-        "target": 80,
+        "target": 385,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -605,14 +605,14 @@
       "inventory_entries": 6,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 7,
+      "inventory_percent": 1,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 90,
+      "target": 430,
       "target_metric": {
         "key": "recipe_memberships.27",
-        "target": 90,
+        "target": 430,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -626,14 +626,14 @@
       "inventory_entries": 77,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 64,
+      "inventory_percent": 13,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 120,
+      "target": 575,
       "target_metric": {
         "key": "recipe_memberships.28",
-        "target": 120,
+        "target": 575,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -647,14 +647,14 @@
       "inventory_entries": 79,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 72,
+      "inventory_percent": 15,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 110,
+      "target": 530,
       "target_metric": {
         "key": "recipe_memberships.29",
-        "target": 110,
+        "target": 530,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -668,14 +668,14 @@
       "inventory_entries": 18,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 15,
+      "inventory_percent": 3,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 120,
+      "target": 575,
       "target_metric": {
         "key": "recipe_memberships.30",
-        "target": 120,
+        "target": 575,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -689,14 +689,14 @@
       "inventory_entries": 7,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 5,
+      "inventory_percent": 1,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 130,
+      "target": 625,
       "target_metric": {
         "key": "recipe_memberships.31",
-        "target": 130,
+        "target": 625,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -710,14 +710,14 @@
       "inventory_entries": 89,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 100,
+      "inventory_percent": 23,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 80,
+      "target": 385,
       "target_metric": {
         "key": "recipe_memberships.32",
-        "target": 80,
+        "target": 385,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -731,14 +731,14 @@
       "inventory_entries": 58,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 45,
+      "inventory_percent": 9,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 130,
+      "target": 625,
       "target_metric": {
         "key": "recipe_memberships.33",
-        "target": 130,
+        "target": 625,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -752,14 +752,14 @@
       "inventory_entries": 76,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 69,
+      "inventory_percent": 14,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 110,
+      "target": 530,
       "target_metric": {
         "key": "recipe_memberships.34",
-        "target": 110,
+        "target": 530,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -773,14 +773,14 @@
       "inventory_entries": 156,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 87,
+      "inventory_percent": 18,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 180,
+      "target": 865,
       "target_metric": {
         "key": "recipe_memberships.35",
-        "target": 180,
+        "target": 865,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -794,14 +794,14 @@
       "inventory_entries": 43,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 43,
+      "inventory_percent": 9,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 100,
+      "target": 480,
       "target_metric": {
         "key": "recipe_memberships.36",
-        "target": 100,
+        "target": 480,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -815,14 +815,14 @@
       "inventory_entries": 48,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 80,
+      "inventory_percent": 17,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 60,
+      "target": 290,
       "target_metric": {
         "key": "recipe_memberships.37",
-        "target": 60,
+        "target": 290,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -836,14 +836,14 @@
       "inventory_entries": 4,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 3,
+      "inventory_percent": 1,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 120,
+      "target": 575,
       "target_metric": {
         "key": "recipe_memberships.38",
-        "target": 120,
+        "target": 575,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -857,14 +857,14 @@
       "inventory_entries": 126,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 100,
+      "inventory_percent": 26,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 100,
+      "target": 480,
       "target_metric": {
         "key": "recipe_memberships.39",
-        "target": 100,
+        "target": 480,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }
@@ -878,14 +878,14 @@
       "inventory_entries": 120,
       "drafted_entries": 0,
       "validated_entries": 0,
-      "inventory_percent": 80,
+      "inventory_percent": 17,
       "draft_percent": 0,
       "completion_percent": 0,
       "completion_status": "inventory",
-      "target": 150,
+      "target": 720,
       "target_metric": {
         "key": "recipe_memberships.40",
-        "target": 150,
+        "target": 720,
         "unit": "recettes référencées",
         "mode": "editorial_lens"
       }

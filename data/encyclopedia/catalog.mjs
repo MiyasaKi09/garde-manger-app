@@ -40,16 +40,26 @@ export const edition = {
     food_concepts_ambition: 4500,
     techniques: 250,
     preparations: 250,
-    sauces: 300,
-    accompaniments: 300,
+    sauces: 1440,
+    accompaniments: 1440,
     // Recettes DISTINCTES. Les 30 lentilles éditoriales V11–V40 comptent des
-    // appartenances (≈ 5 volumes par recette), pas des recettes : leurs 3 120
+    // appartenances (≈ 5 volumes par recette), pas des recettes : leurs 14 980
     // emplacements correspondent à ce nombre-ci de recettes réelles.
-    recipes: 625,
-    desserts: 350,
-    breakfasts: 120,
-    snacks: 120,
-    beverages: 150,
+    //
+    // Les cibles ci-dessous qui comptent elles aussi des recettes — sauces,
+    // accompagnements, desserts, petits-déjeuners, collations, boissons — ont
+    // été portées au même facteur. Les laisser en l'état aurait décrit un
+    // corpus de 3 000 recettes ne comptant que 120 petits-déjeuners, ce qui ne
+    // suffirait pas à faire tourner la rotation du planificateur.
+    //
+    // Ne suivent PAS ce facteur : techniques, préparations, menus et règles.
+    // Une technique ne se multiplie pas parce qu'on écrit plus de recettes —
+    // c'est l'inverse, un même braisage sert des centaines de plats.
+    recipes: 3000,
+    desserts: 1680,
+    breakfasts: 575,
+    snacks: 575,
+    beverages: 720,
   },
 }
 
@@ -233,7 +243,7 @@ export const volumes = [
     slug: 'sauces',
     dependencies: ['V01', 'V02', 'V03'],
     source_contracts: ['culinary.recipe_families', 'culinary.recipe_versions'],
-    target_metric: { key: 'sauces', target: 300, unit: 'sauces', mode: 'recipe_role' },
+    target_metric: { key: 'sauces', target: 1440, unit: 'sauces', mode: 'recipe_role' },
   }, [
     book('A', 'Sauces françaises', 'Documenter sauces mères, dérivées et sauces de la cuisine française.', { kind: 'recipe' }),
     book('B', 'Sauces italiennes', 'Documenter sauces tomate, pesto, fonds et émulsions italiennes.', { kind: 'recipe' }),
@@ -251,7 +261,7 @@ export const volumes = [
     slug: 'accompagnements',
     dependencies: ['V01', 'V02', 'V03', 'V04'],
     source_contracts: ['culinary.recipe_families', 'culinary.recipe_versions'],
-    target_metric: { key: 'accompaniments', target: 300, unit: 'accompagnements', mode: 'recipe_role' },
+    target_metric: { key: 'accompaniments', target: 1440, unit: 'accompagnements', mode: 'recipe_role' },
   }, [
     book('A', 'Pommes de terre', 'Couvrir vapeur, purées, rôties, sautées, frites et gratins.', { kind: 'recipe' }),
     book('B', 'Riz', 'Couvrir cuissons absorbées, pilafs, vapeur et riz assaisonnés.', { kind: 'recipe' }),
@@ -269,7 +279,7 @@ export const volumes = [
     slug: 'desserts',
     dependencies: ['V01', 'V02', 'V03'],
     source_contracts: ['culinary.recipe_families', 'culinary.recipe_versions'],
-    target_metric: { key: 'desserts', target: 350, unit: 'desserts', mode: 'recipe_role' },
+    target_metric: { key: 'desserts', target: 1680, unit: 'desserts', mode: 'recipe_role' },
   }, [
     book('A', 'Tartes', 'Couvrir fonds, garnitures, cuisson et conservation.', { kind: 'recipe' }),
     book('B', 'Gâteaux', 'Couvrir appareils, levée, cuisson et portionnage.', { kind: 'recipe' }),
@@ -285,7 +295,7 @@ export const volumes = [
     slug: 'petits-dejeuners',
     dependencies: ['V01', 'V03', 'V06'],
     source_contracts: ['culinary.recipe_families', 'planning support slots'],
-    target_metric: { key: 'breakfasts', target: 120, unit: 'petits-déjeuners', mode: 'meal_role' },
+    target_metric: { key: 'breakfasts', target: 575, unit: 'petits-déjeuners', mode: 'meal_role' },
   }, [
     book('A', 'Porridges', 'Couvrir céréales, liquides, textures et toppings.', { kind: 'recipe' }),
     book('B', 'Préparations de la veille', 'Couvrir overnight oats, chia et préparations réfrigérées.', { kind: 'recipe' }),
@@ -300,7 +310,7 @@ export const volumes = [
     slug: 'collations',
     dependencies: ['V01', 'V03', 'V06'],
     source_contracts: ['culinary.recipe_families', 'planning support slots'],
-    target_metric: { key: 'snacks', target: 120, unit: 'collations', mode: 'meal_role' },
+    target_metric: { key: 'snacks', target: 575, unit: 'collations', mode: 'meal_role' },
   }, [
     book('A', 'Fruits', 'Décrire portions usuelles, saison, maturité et associations.', { kind: 'reference' }),
     book('B', 'Yaourts et laitages', 'Décrire formats, garnitures et alternatives validées.', { kind: 'reference' }),
@@ -314,7 +324,7 @@ export const volumes = [
     slug: 'boissons',
     dependencies: ['V01', 'V02', 'V03'],
     source_contracts: ['culinary.recipe_families', 'catalog.food_forms'],
-    target_metric: { key: 'beverages', target: 150, unit: 'boissons', mode: 'recipe_role' },
+    target_metric: { key: 'beverages', target: 720, unit: 'boissons', mode: 'recipe_role' },
   }, [
     book('A', 'Boissons chaudes', 'Couvrir cafés, thés, chocolats et préparations lactées.', { kind: 'recipe' }),
     book('B', 'Boissons froides', 'Couvrir eaux aromatisées, thés glacés et boissons maison.', { kind: 'recipe' }),
@@ -332,45 +342,45 @@ export const volumes = [
     // APPARTENANCES éditoriales (3 120 réparties sur V11–V40), et le ratio
     // observé est de 4,99 volumes par recette. Le validateur refuse désormais
     // toute divergence de plus de 25 % entre ces deux comptes.
-    target_metric: { key: 'recipe_families', target: 625, unit: 'familles de recettes', mode: 'canonical' },
+    target_metric: { key: 'recipe_families', target: 3000, unit: 'familles de recettes', mode: 'canonical' },
   }, [
     book('A', 'Taxonomie des familles', 'Définir familles, sous-familles, rôles de repas et structures de plats.', { kind: 'catalog' }),
-    book('B', 'Catalogue des identités', 'Lister nom, origine, rôle et critères d’identité sans dupliquer la rédaction.', { kind: 'catalog', target_entries: 625 }),
+    book('B', 'Catalogue des identités', 'Lister nom, origine, rôle et critères d’identité sans dupliquer la rédaction.', { kind: 'catalog', target_entries: 3000 }),
     book('C', 'Matrice de complétude', 'Mesurer ingrédients exacts, étapes, nutrition, sensoriel, conservation et planning.', { kind: 'quality' }),
     book('D', 'Déduplication et arbitrage', 'Fusionner les doublons et consigner les décisions canoniques.', { kind: 'quality' }),
     book('E', 'Ordre de rédaction', 'Prioriser les lots selon couverture, utilité et dépendances.', { kind: 'operations' }),
   ]),
 
-  recipeLensVolume(11, 'Salades et crudités', 'Rédiger salades, crudités et assiettes froides avec tenue et assaisonnement maîtrisés.', 90, 'des salades'),
-  recipeLensVolume(12, 'Soupes, veloutés et bouillons-repas', 'Rédiger les préparations liquides de l’entrée au plat complet.', 90, 'des soupes'),
-  recipeLensVolume(13, 'Bœuf, veau et agneau', 'Rédiger les viandes rouges selon morceau, cuisson et rendement.', 85, 'des viandes rouges'),
-  recipeLensVolume(14, 'Porc et charcuteries cuisinées', 'Rédiger les recettes de porc avec sécurité, gras et salinité maîtrisés.', 75, 'du porc'),
-  recipeLensVolume(15, 'Volaille et lapin', 'Rédiger volailles et lapin selon morceau, peau, os et température à cœur.', 95, 'des volailles'),
-  recipeLensVolume(16, 'Poissons', 'Rédiger poissons entiers, filets et préparations en respectant cuisson et fragilité.', 90, 'des poissons'),
-  recipeLensVolume(17, 'Fruits de mer et coquillages', 'Rédiger crustacés, coquillages et céphalopodes avec sécurité et saisonnalité.', 70, 'des fruits de mer'),
-  recipeLensVolume(18, 'Cuisine italienne', 'Rédiger un corpus italien fidèle aux identités régionales et aux techniques.', 100, 'de la cuisine italienne'),
-  recipeLensVolume(19, 'Cuisines ibériques', 'Rédiger cuisines espagnole, portugaise et basque sans les homogénéiser.', 75, 'des cuisines ibériques'),
-  recipeLensVolume(20, 'Cuisines grecque et levantine', 'Rédiger les cuisines grecque, chypriote, turque et levantine avec leurs marqueurs.', 85, 'des cuisines grecque et levantine'),
-  recipeLensVolume(21, 'Cuisines du Maghreb', 'Rédiger les cuisines marocaine, algérienne et tunisienne avec variantes régionales.', 80, 'des cuisines du Maghreb'),
-  recipeLensVolume(22, 'Cuisines indienne et sud-asiatiques', 'Rédiger épices, currys, pains et riz selon les traditions régionales.', 105, 'des cuisines sud-asiatiques'),
-  recipeLensVolume(23, 'Cuisines d’Asie de l’Est et du Sud-Est', 'Rédiger Chine, Japon, Corée et Asie du Sud-Est sans substitutions culturelles abusives.', 150, 'des cuisines d’Asie'),
-  recipeLensVolume(24, 'Cuisines mexicaine et latino-américaines', 'Rédiger maïs, piments, haricots, marinades et cuisines régionales américaines.', 100, 'des cuisines latino-américaines'),
-  recipeLensVolume(25, 'Cuisine végétarienne et légumineuses', 'Rédiger des plats végétariens complets fondés sur la cuisine plutôt que sur des remplacements artificiels.', 150, 'de la cuisine végétarienne'),
-  recipeLensVolume(26, 'Sandwichs, tartines et wraps', 'Rédiger les assemblages portables avec structure, humidité et conservation maîtrisées.', 80, 'des sandwichs'),
-  recipeLensVolume(27, 'Pizzas, quiches et tartes salées', 'Rédiger pâtes, garnitures, cuisson et réchauffage des tartes salées.', 90, 'des tartes salées'),
-  recipeLensVolume(28, 'Pâtes, nouilles et raviolis', 'Rédiger formats, sauces, cuisson et assemblages autour des pâtes.', 120, 'des pâtes et nouilles'),
-  recipeLensVolume(29, 'Riz, céréales et semoules', 'Rédiger absorption, pilaf, risotto, paella, couscous et bols céréaliers.', 110, 'du riz et des céréales'),
-  recipeLensVolume(30, 'Desserts français', 'Rédiger le patrimoine pâtissier français avec techniques et températures précises.', 120, 'des desserts français'),
-  recipeLensVolume(31, 'Desserts du monde', 'Rédiger les desserts internationaux en préservant ingrédients et gestes identitaires.', 130, 'des desserts du monde'),
-  recipeLensVolume(32, 'Œufs et brunch salé', 'Rédiger œufs, omelettes, galettes et plats salés de petit-déjeuner.', 80, 'des œufs et brunchs'),
-  recipeLensVolume(33, 'Mijotés, braisés et plats en sauce', 'Rédiger les cuissons longues, rendements, refroidissement et réchauffage.', 130, 'des plats mijotés'),
-  recipeLensVolume(34, 'Grillades, rôtis et cuissons au four', 'Rédiger les cuissons sèches autour de la coloration et de la température à cœur.', 110, 'des grillades et rôtis'),
-  recipeLensVolume(35, 'Plats complets du quotidien', 'Rédiger les repas réalistes, équilibrés et faisables en semaine.', 180, 'des plats du quotidien'),
-  recipeLensVolume(36, 'Cuisine végétalienne', 'Rédiger des plats végétaliens autonomes, complets et culturellement cohérents.', 100, 'de la cuisine végétalienne'),
-  recipeLensVolume(37, 'Fermentations et conserves maison', 'Rédiger les transformations microbiennes et conserves avec sécurité renforcée.', 60, 'des fermentations'),
-  recipeLensVolume(38, 'Cuisine économique et anti-gaspillage', 'Rédiger les usages fiables des restes, surplus, parures et produits urgents.', 120, 'de la cuisine anti-gaspillage'),
-  recipeLensVolume(39, 'Cuisine festive et invités', 'Rédiger des menus à forte qualité de service, anticipables et scalables.', 100, 'de la cuisine festive'),
-  recipeLensVolume(40, 'Assemblages et assiettes canoniques', 'Relier plat, sauce, accompagnements, garnitures et portions en assiettes complètes.', 150, 'des assiettes'),
+  recipeLensVolume(11, 'Salades et crudités', 'Rédiger salades, crudités et assiettes froides avec tenue et assaisonnement maîtrisés.', 430, 'des salades'),
+  recipeLensVolume(12, 'Soupes, veloutés et bouillons-repas', 'Rédiger les préparations liquides de l’entrée au plat complet.', 430, 'des soupes'),
+  recipeLensVolume(13, 'Bœuf, veau et agneau', 'Rédiger les viandes rouges selon morceau, cuisson et rendement.', 410, 'des viandes rouges'),
+  recipeLensVolume(14, 'Porc et charcuteries cuisinées', 'Rédiger les recettes de porc avec sécurité, gras et salinité maîtrisés.', 360, 'du porc'),
+  recipeLensVolume(15, 'Volaille et lapin', 'Rédiger volailles et lapin selon morceau, peau, os et température à cœur.', 455, 'des volailles'),
+  recipeLensVolume(16, 'Poissons', 'Rédiger poissons entiers, filets et préparations en respectant cuisson et fragilité.', 430, 'des poissons'),
+  recipeLensVolume(17, 'Fruits de mer et coquillages', 'Rédiger crustacés, coquillages et céphalopodes avec sécurité et saisonnalité.', 335, 'des fruits de mer'),
+  recipeLensVolume(18, 'Cuisine italienne', 'Rédiger un corpus italien fidèle aux identités régionales et aux techniques.', 480, 'de la cuisine italienne'),
+  recipeLensVolume(19, 'Cuisines ibériques', 'Rédiger cuisines espagnole, portugaise et basque sans les homogénéiser.', 360, 'des cuisines ibériques'),
+  recipeLensVolume(20, 'Cuisines grecque et levantine', 'Rédiger les cuisines grecque, chypriote, turque et levantine avec leurs marqueurs.', 410, 'des cuisines grecque et levantine'),
+  recipeLensVolume(21, 'Cuisines du Maghreb', 'Rédiger les cuisines marocaine, algérienne et tunisienne avec variantes régionales.', 385, 'des cuisines du Maghreb'),
+  recipeLensVolume(22, 'Cuisines indienne et sud-asiatiques', 'Rédiger épices, currys, pains et riz selon les traditions régionales.', 505, 'des cuisines sud-asiatiques'),
+  recipeLensVolume(23, 'Cuisines d’Asie de l’Est et du Sud-Est', 'Rédiger Chine, Japon, Corée et Asie du Sud-Est sans substitutions culturelles abusives.', 720, 'des cuisines d’Asie'),
+  recipeLensVolume(24, 'Cuisines mexicaine et latino-américaines', 'Rédiger maïs, piments, haricots, marinades et cuisines régionales américaines.', 480, 'des cuisines latino-américaines'),
+  recipeLensVolume(25, 'Cuisine végétarienne et légumineuses', 'Rédiger des plats végétariens complets fondés sur la cuisine plutôt que sur des remplacements artificiels.', 720, 'de la cuisine végétarienne'),
+  recipeLensVolume(26, 'Sandwichs, tartines et wraps', 'Rédiger les assemblages portables avec structure, humidité et conservation maîtrisées.', 385, 'des sandwichs'),
+  recipeLensVolume(27, 'Pizzas, quiches et tartes salées', 'Rédiger pâtes, garnitures, cuisson et réchauffage des tartes salées.', 430, 'des tartes salées'),
+  recipeLensVolume(28, 'Pâtes, nouilles et raviolis', 'Rédiger formats, sauces, cuisson et assemblages autour des pâtes.', 575, 'des pâtes et nouilles'),
+  recipeLensVolume(29, 'Riz, céréales et semoules', 'Rédiger absorption, pilaf, risotto, paella, couscous et bols céréaliers.', 530, 'du riz et des céréales'),
+  recipeLensVolume(30, 'Desserts français', 'Rédiger le patrimoine pâtissier français avec techniques et températures précises.', 575, 'des desserts français'),
+  recipeLensVolume(31, 'Desserts du monde', 'Rédiger les desserts internationaux en préservant ingrédients et gestes identitaires.', 625, 'des desserts du monde'),
+  recipeLensVolume(32, 'Œufs et brunch salé', 'Rédiger œufs, omelettes, galettes et plats salés de petit-déjeuner.', 385, 'des œufs et brunchs'),
+  recipeLensVolume(33, 'Mijotés, braisés et plats en sauce', 'Rédiger les cuissons longues, rendements, refroidissement et réchauffage.', 625, 'des plats mijotés'),
+  recipeLensVolume(34, 'Grillades, rôtis et cuissons au four', 'Rédiger les cuissons sèches autour de la coloration et de la température à cœur.', 530, 'des grillades et rôtis'),
+  recipeLensVolume(35, 'Plats complets du quotidien', 'Rédiger les repas réalistes, équilibrés et faisables en semaine.', 865, 'des plats du quotidien'),
+  recipeLensVolume(36, 'Cuisine végétalienne', 'Rédiger des plats végétaliens autonomes, complets et culturellement cohérents.', 480, 'de la cuisine végétalienne'),
+  recipeLensVolume(37, 'Fermentations et conserves maison', 'Rédiger les transformations microbiennes et conserves avec sécurité renforcée.', 290, 'des fermentations'),
+  recipeLensVolume(38, 'Cuisine économique et anti-gaspillage', 'Rédiger les usages fiables des restes, surplus, parures et produits urgents.', 575, 'de la cuisine anti-gaspillage'),
+  recipeLensVolume(39, 'Cuisine festive et invités', 'Rédiger des menus à forte qualité de service, anticipables et scalables.', 480, 'de la cuisine festive'),
+  recipeLensVolume(40, 'Assemblages et assiettes canoniques', 'Relier plat, sauce, accompagnements, garnitures et portions en assiettes complètes.', 720, 'des assiettes'),
 
   volume(41, 'Menus', 'Assembler les objets culinaires en menus cohérents selon saison, occasion et contraintes.', {
     slug: 'menus',
