@@ -214,9 +214,9 @@ export default function EncyclopediaExplorer({ initialView }) {
           <span className="v21-stat-s"><Layers3 size={13} /> sur {summary.volumes}</span>
         </div>
         <div className="v21-stat">
-          <span className="v21-stat-l">Livres validés</span>
-          <span className="v21-stat-v">{summary.validated_books}</span>
-          <span className="v21-stat-s"><BookOpen size={13} /> sur {summary.books} structurés</span>
+          <span className="v21-stat-l">Livres rédigés</span>
+          <span className="v21-stat-v">{summary.drafted_books}</span>
+          <span className="v21-stat-s"><BookOpen size={13} /> {summary.validated_books} validés sur {summary.books}</span>
         </div>
         <div className="v21-stat">
           <span className="v21-stat-l">Recettes inventoriées</span>

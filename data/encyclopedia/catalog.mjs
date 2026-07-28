@@ -94,6 +94,7 @@ const book = (suffix, title, mission, options = {}) => ({
   source_contracts: options.source_contracts || [],
   target_entries: options.target_entries ?? null,
   content_status: options.content_status || 'structure',
+  ...(options.content_path ? { content_path: options.content_path } : {}),
   required_fields: options.required_fields || requiredFieldsByKind[options.kind || 'reference'],
   quality_gates: options.quality_gates || qualityGatesByKind[options.kind || 'reference'],
   outputs: options.outputs || [],
@@ -153,7 +154,12 @@ export const volumes = [
     source_contracts: ['Myko-Corpus-Bible-v1', 'MYKO-Encyclopedie-Culinaire-Plan-Directeur'],
     target_metric: { key: 'documents', target: 6, unit: 'livres fondateurs', mode: 'document' },
   }, [
-    book('A', 'Philosophie', 'Définir pourquoi Myko raisonne sur des objets culinaires validés plutôt que sur du texte généré.', { kind: 'doctrine' }),
+    book('A', 'Philosophie', 'Définir pourquoi Myko raisonne sur des objets culinaires validés plutôt que sur du texte généré.', {
+      kind: 'doctrine',
+      content_status: 'draft',
+      content_path: 'data/encyclopedia/books/V00-A.json',
+      outputs: ['docs/encyclopedia/books/V00-A.md'],
+    }),
     book('B', 'Architecture globale', 'Décrire les dépendances des produits commerciaux jusqu’au planning.', { kind: 'doctrine' }),
     book('C', 'Principes de qualité', 'Établir les niveaux de preuve, de confiance et les conditions de publication.', { kind: 'quality' }),
     book('D', 'Règles de normalisation', 'Fixer identifiants, noms, unités, états, synonymes et déduplication.', { kind: 'doctrine' }),
