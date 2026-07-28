@@ -260,11 +260,22 @@ const candidats = (designation) => {
     if (!trouves.length) continue
     // « Épaule de veau crue » reste proposable pour une ligne qui dit seulement
     // « veau », mais passe derrière les formes dont la tête, elle, correspond.
-    notes.push({ forme, trouves: trouves.length, tete: contient(texte, forme.cles[0]) ? 1 : 0 })
+    notes.push({
+      forme,
+      trouves: trouves.length,
+      tete: contient(texte, forme.cles[0]) ? 1 : 0,
+      // Tous les mots de la forme sont dans la ligne : elle nomme cette forme
+      // et pas une autre.
+      complet: trouves.length === forme.cles.length ? 1 : 0,
+    })
   }
   return notes
     .sort((a, b) => b.tete - a.tete
       || b.trouves - a.trouves
+      // « pommes » désigne la pomme, pas la pomme de terre, qui laisserait le
+      // mot « terre » sans emploi. Mais « pommes de terre » gagne d'abord sur
+      // le nombre de mots trouvés, avant que ce critère-ci n'intervienne.
+      || b.complet - a.complet
       // À recouvrement égal, c'est l'usage du corpus qui tranche. Compter les
       // mots ne suffit pas : « Poivre du Sichuan » est plus court que « Poivre
       // noir moulu » et serait choisi pour une ligne qui dit juste « poivre »,

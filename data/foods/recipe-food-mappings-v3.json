@@ -580,6 +580,10 @@
     "ciboulette fraiche": {
       "ciqual_alim_code": "11003"
     },
+    "cidre brut": {
+      "ciqual_alim_code": "5006",
+      "note": "Le brut plutôt que le doux : c'est celui que nomment les sources, et l'écart n'est pas anecdotique — 10,5 kcal contre 37,5, soit plus du triple, parce que le doux garde son sucre résiduel. Le cidre étant alcoolisé, l'énergie publiée ne se referme pas sur les seuls macronutriments ; c'est la valeur du classeur qui fait foi, pas un calcul d'Atwater."
+    },
     "cinq epices chinoises": {
       "ciqual_alim_code": "11081",
       "confidence": "C",
