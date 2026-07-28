@@ -14,7 +14,8 @@ export const edition = {
   subtitle: 'Bibliothèque documentaire du réseau cuisine, stock, nutrition et planning',
   locale: 'fr-FR',
   released_on: '2026-07-28',
-  status: 'active',
+  status: 'authoring',
+  integration_policy: 'blocked_until_all_volumes_validated',
   doctrine: [
     'Un concept culinaire possède une seule identité canonique.',
     'Un volume organise la connaissance sans dupliquer les objets canoniques.',
@@ -22,6 +23,8 @@ export const edition = {
     'Une recette publiée est immuable ; une correction crée une nouvelle version.',
     'L’IA assemble et explique uniquement à partir du corpus validé.',
     'Chaque ajout doit améliorer au moins la planification, la nutrition, le stock, les courses, les substitutions ou le batch cooking.',
+    'Une entrée inventoriée ou rédigée ne compte jamais comme validée.',
+    'Les ingrédients, recettes et interactions ne sont intégrés au produit qu’après validation de tous les volumes dont ils dépendent.',
   ],
   architecture: [
     'Produits commerciaux',
@@ -90,6 +93,7 @@ const book = (suffix, title, mission, options = {}) => ({
   kind: options.kind || 'reference',
   source_contracts: options.source_contracts || [],
   target_entries: options.target_entries ?? null,
+  content_status: options.content_status || 'structure',
   required_fields: options.required_fields || requiredFieldsByKind[options.kind || 'reference'],
   quality_gates: options.quality_gates || qualityGatesByKind[options.kind || 'reference'],
   outputs: options.outputs || [],
@@ -450,4 +454,3 @@ export const volumes = [
     book('E', 'Santé du corpus', 'Suivre couverture, confiance, anomalies, dérive et dette documentaire.', { kind: 'quality' }),
   ]),
 ]
-

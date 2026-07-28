@@ -57,8 +57,8 @@ function VolumeCard({ volume, query }) {
           <small>{volume.books.length} livre{volume.books.length > 1 ? 's' : ''} · {PHASE_LABELS[volume.phase]}</small>
         </span>
         <span className="enc-volume-metric">
-          <strong>{formatNumber(volume.current_entries)}</strong>
-          <small>{volume.target == null ? 'mesure documentaire' : `sur ${formatNumber(volume.target)}`}</small>
+          <strong>{formatNumber(volume.validated_entries)}</strong>
+          <small>{volume.target == null ? 'entrées validées' : `validées sur ${formatNumber(volume.target)}`}</small>
         </span>
       </summary>
 
@@ -76,14 +76,29 @@ function VolumeCard({ volume, query }) {
           </span>
           <span>
             <b>Mesure</b>
-            {volume.metric_source === 'supabase' ? 'Corpus canonique live' : 'Snapshot versionné'}
+            {volume.metric_source === 'supabase' ? 'Inventaire Supabase live' : 'Inventaire versionné'}
+          </span>
+        </div>
+
+        <div className="enc-stage-grid" aria-label={`État de production de ${volume.title}`}>
+          <span>
+            <b>{formatNumber(volume.inventory_entries)}</b>
+            <small>inventoriées</small>
+          </span>
+          <span>
+            <b>{formatNumber(volume.drafted_entries)}</b>
+            <small>rédigées</small>
+          </span>
+          <span>
+            <b>{formatNumber(volume.validated_entries)}</b>
+            <small>validées</small>
           </span>
         </div>
 
         {hasProgress && (
           <div className="enc-progress-wrap">
             <div className="enc-progress-label">
-              <span>Couverture éditoriale</span>
+              <span>Complétude validée</span>
               <strong>{volume.progress_percent} %</strong>
             </div>
             <div
@@ -108,6 +123,7 @@ function VolumeCard({ volume, query }) {
                 <p>{book.mission}</p>
                 <div className="enc-book-meta">
                   <span>{book.kind}</span>
+                  <span>contenu : {book.content_status}</span>
                   <span>{book.required_fields.length} champs obligatoires</span>
                   <span>{book.quality_gates.length} contrôles</span>
                 </div>
@@ -152,7 +168,7 @@ export default function EncyclopediaExplorer({ initialView }) {
         const data = await response.json()
         if (active && response.ok && data?.volumes) setView(data)
       } catch {
-        // Le snapshot versionné reste une réponse complète en mode dégradé.
+        // Le registre structurel versionné reste disponible en mode dégradé.
       }
     })
     return () => { active = false }
@@ -171,7 +187,7 @@ export default function EncyclopediaExplorer({ initialView }) {
   const summary = view.generated_summary
   const canonicalRecipes = view.live_summary?.recipe_families ?? summary.recipes
   const canonicalFoods = view.live_summary?.food_concepts ?? summary.food_concepts
-  const dataLabel = view.data_status === 'live' ? 'Données Supabase live' : 'Snapshot versionné'
+  const dataLabel = view.data_status === 'live' ? 'Inventaire Supabase live' : 'Inventaire versionné'
 
   return (
     <div className="v21-page wide enc-page">
@@ -181,8 +197,8 @@ export default function EncyclopediaExplorer({ initialView }) {
           <h1 className="v21-title">Encyclopédie<br />culinaire</h1>
           <div className="v21-rule" />
           <p className="v21-lede">
-            La bibliothèque qui relie ingrédients, techniques, recettes,
-            assiettes et planning sans dupliquer la vérité culinaire.
+            Le chantier éditorial qui doit être intégralement rédigé et validé
+            avant l’intégration des ingrédients, recettes et interactions.
           </p>
         </div>
         <div className="enc-live-badge" title={dataLabel}>
@@ -193,31 +209,39 @@ export default function EncyclopediaExplorer({ initialView }) {
 
       <section className="v21-stats cols-4 enc-stats" aria-label="Résumé du corpus">
         <div className="v21-stat">
-          <span className="v21-stat-l">Volumes</span>
-          <span className="v21-stat-v">{summary.volumes}</span>
-          <span className="v21-stat-s"><Layers3 size={13} /> V00 à V47</span>
+          <span className="v21-stat-l">Volumes validés</span>
+          <span className="v21-stat-v">{summary.validated_volumes}</span>
+          <span className="v21-stat-s"><Layers3 size={13} /> sur {summary.volumes}</span>
         </div>
         <div className="v21-stat">
-          <span className="v21-stat-l">Livres</span>
-          <span className="v21-stat-v">{summary.books}</span>
-          <span className="v21-stat-s"><BookOpen size={13} /> contrats éditoriaux</span>
+          <span className="v21-stat-l">Livres validés</span>
+          <span className="v21-stat-v">{summary.validated_books}</span>
+          <span className="v21-stat-s"><BookOpen size={13} /> sur {summary.books} structurés</span>
         </div>
         <div className="v21-stat">
-          <span className="v21-stat-l">Recettes indexées</span>
+          <span className="v21-stat-l">Recettes inventoriées</span>
           <span className="v21-stat-v">{formatNumber(canonicalRecipes)}</span>
-          <span className="v21-stat-s">{formatNumber(summary.recipe_memberships)} rattachements</span>
+          <span className="v21-stat-s">{formatNumber(summary.validated_recipes)} validées</span>
         </div>
         <div className="v21-stat">
-          <span className="v21-stat-l">Ingrédients canoniques</span>
+          <span className="v21-stat-l">Ingrédients inventoriés</span>
           <span className="v21-stat-v">{formatNumber(canonicalFoods)}</span>
-          <span className="v21-stat-s"><CheckCircle2 size={13} /> une identité par objet</span>
+          <span className="v21-stat-s"><CheckCircle2 size={13} /> {formatNumber(summary.validated_food_concepts)} validés</span>
         </div>
+      </section>
+
+      <section className="enc-gate" role="status">
+        <strong>Intégration bloquée</strong>
+        <p>
+          Une cible atteinte par des noms ou des lignes de base ne suffit pas.
+          Chaque fiche doit être rédigée, sourcée, reliée et validée avant de compter.
+        </p>
       </section>
 
       <section className="enc-doctrine" aria-label="Doctrine de l'encyclopédie">
         <p>{view.edition.doctrine[0]}</p>
-        <p>{view.edition.doctrine[3]}</p>
-        <p>{view.edition.doctrine[5]}</p>
+        <p>{view.edition.doctrine[6]}</p>
+        <p>{view.edition.doctrine[7]}</p>
       </section>
 
       <div className="v21-tabs enc-tabs" role="group" aria-label="Filtrer par phase">

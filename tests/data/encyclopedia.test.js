@@ -20,7 +20,7 @@ describe('Encyclopédie Myko', () => {
     )
   })
 
-  it('donne un contrat complet à chaque livre', () => {
+  it('donne un contrat de production à chaque livre sans prétendre que son contenu existe', () => {
     const books = manifest.volumes.flatMap((volume) => volume.books)
     expect(new Set(books.map((book) => book.code)).size).toBe(books.length)
     for (const book of books) {
@@ -28,6 +28,7 @@ describe('Encyclopédie Myko', () => {
       expect(book.required_fields.length, book.code).toBeGreaterThan(0)
       expect(book.quality_gates.length, book.code).toBeGreaterThan(0)
       expect(Array.isArray(book.source_contracts), book.code).toBe(true)
+      expect(book.content_status, book.code).toBe('structure')
     }
   })
 
@@ -45,7 +46,7 @@ describe('Encyclopédie Myko', () => {
     expect(new Set(index.techniques.map((technique) => technique.code)).size).toBe(index.techniques.length)
   })
 
-  it('fusionne les agrégats live sans perdre le snapshot versionné', () => {
+  it('fusionne les agrégats live dans l’inventaire sans gonfler la validation', () => {
     const view = buildEncyclopediaView(manifest, index, {
       food_concepts: 441,
       techniques: 351,
@@ -57,9 +58,23 @@ describe('Encyclopédie Myko', () => {
 
     expect(view.data_status).toBe('live')
     expect(ingredients.current_entries).toBe(441)
+    expect(ingredients.inventory_entries).toBe(441)
     expect(ingredients.snapshot_entries).toBe(27)
     expect(ingredients.metric_source).toBe('supabase')
+    expect(ingredients.validated_entries).toBe(0)
+    expect(ingredients.progress_percent).toBe(0)
     expect(recipes.current_entries).toBe(302)
+    expect(recipes.validated_entries).toBe(0)
+    expect(recipes.progress_percent).toBe(0)
     expect(view.live_summary.planning_ready).toBe(124)
+    expect(view.integration_status).toBe('blocked')
+  })
+
+  it('bloque l’intégration tant que les contenus des 48 volumes ne sont pas validés', () => {
+    expect(index.summary.validated_volumes).toBe(0)
+    expect(index.summary.validated_books).toBe(0)
+    expect(index.summary.ready_for_integration).toBe(false)
+    expect(index.coverage.every((volume) => volume.completion_status === 'not_started')).toBe(true)
+    expect(index.coverage.every((volume) => volume.validated_entries === 0)).toBe(true)
   })
 })
