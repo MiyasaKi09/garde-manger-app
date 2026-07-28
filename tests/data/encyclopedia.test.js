@@ -72,8 +72,8 @@ describe('Encyclopédie Myko', () => {
   })
 
   it('indexe chaque recette une fois et autorise plusieurs vues éditoriales', () => {
-    expect(index.recipe_memberships).toHaveLength(309)
-    expect(new Set(index.recipe_memberships.map((item) => item.recipe_code)).size).toBe(309)
+    expect(index.recipe_memberships).toHaveLength(356)
+    expect(new Set(index.recipe_memberships.map((item) => item.recipe_code)).size).toBe(356)
     expect(index.recipe_memberships.every((item) => /^V(?:1[1-9]|[23][0-9]|40)$/.test(item.primary_volume))).toBe(true)
     expect(index.recipe_memberships.some((item) => item.volumes.length > 1)).toBe(true)
     expect(index.summary.recipe_memberships).toBeGreaterThan(index.summary.recipes)

@@ -14,11 +14,14 @@ import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { normalizeName } from '../lib/normalize.mjs'
+import { parseCiqualWorkbook } from '../parse/ciqual.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
 const CORPUS = join(ROOT, 'data', 'recipes', 'corpus-v3.json')
 const VOCABULAIRE = join(ROOT, 'data', 'recipes', 'authoring-vocabulary.json')
+const REGISTRE = join(ROOT, 'data', 'foods', 'recipe-food-mappings-v3.json')
+const CIQUAL = join(ROOT, 'data', 'sources', 'raw', 'ciqual_2020_FR_2020-07-07.xls.gz')
 
 const [source, ...flags] = process.argv.slice(2)
 if (!source) {
@@ -33,10 +36,49 @@ const recettes = Array.isArray(lot) ? lot : (lot.recipes || lot.recettes || [])
 
 const formesEmployables = new Map(vocabulaire.formes_employables.map((forme) => [forme.normalise, forme]))
 const formesBloquees = new Map(vocabulaire.formes_bloquees.map((forme) => [forme.normalise, forme]))
+
+// Une forme fraîchement arbitrée n'est pas encore au catalogue : celui-ci ne
+// connaît que ce que le corpus emploie déjà. Elle deviendra employable à la
+// prochaine reconstruction, une fois la recette versée. La refuser ici
+// bloquerait à jamais tout ingrédient nouveau — c'est l'ordre normal des
+// choses : la recette réclame, l'arbitrage tranche, la recette s'écrit.
+const registre = JSON.parse(readFileSync(REGISTRE, 'utf8')).mappings || {}
+const arbitreesRecemment = new Set(Object.entries(registre)
+  .filter(([cle, mapping]) => !formesEmployables.has(cle) && !formesBloquees.has(cle)
+    && (mapping?.confidence || 'B') !== 'C')
+  .map(([cle]) => cle))
+
+// Lexique des mots d'aliments français, tiré du classeur ANSES. Il sert à
+// distinguer « Moules marinières » — où « moules » est bien un aliment absent
+// de la liste — de « Pollo al ajillo » ou « Île flottante », dont le premier mot
+// ne désigne aucun aliment français et n'a donc rien à annoncer.
+const lexiqueAliments = new Set()
+for (const record of parseCiqualWorkbook(CIQUAL).records) {
+  for (const mot of normalizeName(record.alim_nom_fr).split(' ')) {
+    if (mot.length >= 4) lexiqueAliments.add(mot.replace(/s$/, ''))
+  }
+}
 const codesExistants = new Set(corpus.recipes.map((recette) => recette.code))
 const famillesExistantes = new Map(corpus.recipes.map((recette) => [normalizeName(recette.family), recette.code]))
 
 const SCORES = ['sweet', 'salty', 'acidic', 'bitter', 'umami', 'heat', 'pungency', 'richness', 'freshness', 'intensity']
+
+/** Mots qui nomment une PRÉPARATION et non un ingrédient : ils ouvrent
+ * légitimement un nom de plat sans rien annoncer qui doive figurer en liste. */
+const TYPES_DE_PLAT = new Set([
+  'soupe', 'veloute', 'potage', 'bouillon', 'consomme', 'gaspacho', 'minestrone',
+  'gratin', 'tarte', 'tourte', 'quiche', 'pizza', 'galette', 'crepe', 'omelette',
+  'frittata', 'salade', 'terrine', 'pate', 'rillettes', 'mousse', 'creme', 'flan',
+  'gateau', 'cake', 'biscuit', 'sable', 'clafoutis', 'crumble', 'compote', 'confit',
+  'daube', 'ragout', 'blanquette', 'navarin', 'pot', 'chou', 'risotto', 'paella',
+  'curry', 'tajine', 'couscous', 'chili', 'dal', 'ratatouille', 'caponata',
+  'poelee', 'brochette', 'boulette', 'polpette', 'kofta', 'croquette', 'beignet',
+  'roti', 'braise', 'grille', 'sauce', 'puree', 'quatre', 'pain', 'brioche',
+  'sandwich', 'wrap', 'bowl', 'assiette', 'escalope', 'filet', 'pave', 'steak',
+  'panade', 'panzanella', 'horiatiki', 'gemista', 'fasolakia', 'mutabbal',
+  'zaalouk', 'chorba', 'kefta', 'taktouka', 'loubia', 'tzatziki', 'involtini',
+  'albondigas', 'escalivada', 'pisto', 'patatas', 'polpettone', 'frittatine',
+])
 const UNITES = new Set(['g', 'ml', 'u', 'tranche', 'feuille'])
 const IDENTITES = new Set(['named_traditional_dish', 'domestic_standard'])
 const DIFFICULTES = new Set(['facile', 'moyenne', 'difficile'])
@@ -117,6 +159,10 @@ for (const [rang, recette] of recettes.entries()) {
 
     const cle = normalizeName(libelle)
     const forme = formesEmployables.get(cle)
+    if (!forme && arbitreesRecemment.has(cle)) {
+      reserves.push(`« ${libelle} » vient d'être arbitrée : elle ne sera employable qu'après reconstruction du catalogue`)
+      continue
+    }
     if (!forme) {
       const bloquee = formesBloquees.get(cle)
       const motif = bloquee ? `bloquée : ${bloquee.motifs.join(' ; ')}` : 'absente du vocabulaire'
@@ -150,6 +196,28 @@ for (const [rang, recette] of recettes.entries()) {
     const reconstruit = 4 * proteines + 4 * glucides + 9 * lipides
     if (kcal > 0 && Math.abs(reconstruit - kcal) / kcal > 0.35) {
       reserves.push(`écart de ${Math.round(Math.abs(reconstruit - kcal) / kcal * 100)} % entre l'énergie et les macros`)
+    }
+  }
+
+  // ── le nom annonce-t-il un ingrédient qui n'y est pas ? ─────────────────
+  //
+  // Contrôle né d'une vraie faute : une recette « Moules marinières » est
+  // passée avec échalote, vin blanc, beurre et persil — et aucune moule. Les
+  // étapes en parlaient, la liste d'ingrédients n'en portait pas, et le calcul
+  // nutritionnel tombait dans les bornes parce que le pain et le beurre
+  // suffisaient à faire le poids. Le premier mot significatif d'un nom de plat
+  // en désigne presque toujours soit l'ingrédient principal, soit le type de
+  // préparation. S'il n'est ni l'un ni l'autre, quelque chose manque.
+  const motsDuNom = normalizeName(famille).split(' ').filter((mot) => mot.length >= 4)
+  const premier = motsDuNom[0]
+  const racineDuPremier = premier ? premier.replace(/s$/, '') : ''
+  if (premier && !TYPES_DE_PLAT.has(premier) && lexiqueAliments.has(racineDuPremier)) {
+    const contexte = normalizeName([
+      ...ingredients.map((ingredient) => ingredient.form),
+      recette.category, recette.cuisine_origin,
+    ].filter(Boolean).join(' '))
+    if (!contexte.includes(racineDuPremier)) {
+      dire(`le nom annonce « ${premier} », introuvable dans les ingrédients — ingrédient principal manquant ?`)
     }
   }
 

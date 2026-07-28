@@ -786,6 +786,10 @@
       "ciqual_alim_code": "9510",
       "category": "cereales_feculents"
     },
+    "fenouil frais": {
+      "ciqual_alim_code": "20028",
+      "note": "Correspondance directe : « Fenouil, cru », 21,8 kcal, 1 g de protéines, 2,63 g de glucides. Ses lipides sont au statut « inférieur à 0,5 g », valeur majorée retenue. À ne pas confondre avec 11066 « Fenouil, graine » (326 kcal), qui est l'épice et non le bulbe."
+    },
     "fenugrec en graines": {
       "ciqual_alim_code": "11077"
     },
@@ -1168,6 +1172,10 @@
       "note": "Ciqual 2020 ne mesure pas toutes les macros de cet aliment (glucides le plus souvent). Valeur USDA SR Legacy 175159 « Fish, cod, Atlantic, dried and salted », réellement mesurée — jamais un zéro posé par défaut.",
       "ciqual_alim_code": "26098",
       "usda_name": "Fish, cod, Atlantic, dried and salted"
+    },
+    "moule commune crue": {
+      "ciqual_alim_code": "10014",
+      "note": "Correspondance directe : 71,8 kcal, 11,2 g de protéines, 2,69 g de glucides, 1,82 g de lipides. Retenu le cru, puisque les recettes les cuisent elles-mêmes — 10082 « Moules marinières » est le plat fini et ferait doublon avec la recette qui l'emploie. ATTENTION à l'unité : le classeur mesure la CHAIR, pas la coquille. Une recette doit donc peser la chair (environ un tiers du poids acheté) et rappeler l'équivalent en moules entières dans ses étapes, faute de quoi l'apport serait triplé."
     },
     "moutarde de dijon": {
       "ciqual_alim_code": "11013"

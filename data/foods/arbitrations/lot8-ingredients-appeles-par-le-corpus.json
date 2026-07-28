@@ -1,0 +1,18 @@
+{
+  "lot": "ingrédients réclamés par de nouvelles recettes — moule et fenouil",
+  "contexte": "Deux classiques ne pouvaient pas être écrits faute d'ingrédient au vocabulaire : les moules marinières et la soupe de poisson au fenouil. L'un et l'autre existent au classeur ANSES ; ils n'étaient simplement jamais employés par le corpus. C'est le fonctionnement attendu du vocabulaire fermé : la recette réclame, l'arbitrage tranche, puis la recette s'écrit.",
+  "decisions": [
+    {
+      "forme": "Moule commune crue",
+      "alim_code": "10014",
+      "confidence": "A",
+      "note": "Correspondance directe : 71,8 kcal, 11,2 g de protéines, 2,69 g de glucides, 1,82 g de lipides. Retenu le cru, puisque la recette les cuit elle-même — 10082 « Moules marinières » est le plat fini et ferait doublon avec la recette qui l'emploie. À peser en grammes de moules entières telles qu'achetées ; la coquille représente environ les deux tiers du poids, ce que la quantité de la recette prend en compte."
+    },
+    {
+      "forme": "Fenouil frais",
+      "alim_code": "20028",
+      "confidence": "A",
+      "note": "Correspondance directe : « Fenouil, cru », 21,8 kcal, 1 g de protéines, 2,63 g de glucides. Ses lipides sont au statut « inférieur à 0,5 g », valeur majorée retenue. À ne pas confondre avec 11066 « Fenouil, graine » (326 kcal), qui est l'épice et non le bulbe."
+    }
+  ]
+}
