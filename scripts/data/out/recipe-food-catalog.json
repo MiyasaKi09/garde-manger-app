@@ -2025,6 +2025,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
@@ -2290,6 +2291,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
@@ -2435,6 +2437,36 @@
         "fiberG": 4.3
       },
       "note": "Proxy persil frais pour un bouquet aromatique non consommé intégralement."
+    },
+    {
+      "canonical_name": "Brocoli cru",
+      "canonical_name_normalized": "brocoli cru",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20057",
+      "source_name": "Brocoli, cru",
+      "state": {
+        "concept": "Brocoli cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 26.9,
+        "proteinG": 3.95,
+        "carbsG": 1.7,
+        "fatG": 0.48,
+        "fiberG": 2.9
+      },
+      "note": "Le gratin de brocolis ne peut pas exister sans son ingrédient principal. Entrée crue directe, macros complètes."
     },
     {
       "canonical_name": "Bucatini secs",
@@ -4763,6 +4795,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
@@ -5437,6 +5470,42 @@
       "note": "Entrée dédiée du classeur, macros complètes (198 kcal, P 18 / G 0,1 / L 14). L'écart avec l'épaule n'est pas cosmétique : 198 kcal contre 178, et 14 g de lipides contre 11,2 — c'est ce gras persillé qui tient la cuisson longue d'un sauté."
     },
     {
+      "canonical_name": "Emmental râpé",
+      "canonical_name_normalized": "emmental rape",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "derived": {
+        "field": "carbohydrate_g",
+        "value": 0.65,
+        "method": "atwater_closure",
+        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g − 2·fiber_g) / 4"
+      },
+      "source_record_key": "12118",
+      "source_name": "Emmental ou emmenthal râpé",
+      "state": {
+        "concept": "Emmental râpé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 370,
+        "proteinG": 27.5,
+        "carbsG": 0.65,
+        "fatG": 28.6,
+        "fiberG": 0
+      },
+      "note": "En cuisine domestique française, le sachet vendu comme « gruyère râpé » contient le plus souvent de l'emmental. Les deux formes coexistent donc : les recettes suivent ce que la source écrit plutôt que de trancher un débat d'étiquetage. Entrée râpée dédiée au classeur, macros complètes hors glucides (fermés à zéro par Atwater)."
+    },
+    {
       "canonical_name": "Endive fraîche",
       "canonical_name_normalized": "endive fraiche",
       "category": "legumes",
@@ -5653,6 +5722,36 @@
         "fiberG": 2.37
       },
       "note": null
+    },
+    {
+      "canonical_name": "Escalope de dinde crue",
+      "canonical_name_normalized": "escalope de dinde crue",
+      "category": "volailles",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "36304",
+      "source_name": "Dinde, escalope, crue",
+      "state": {
+        "concept": "Escalope de dinde crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": "boneless",
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 109,
+        "proteinG": 24.1,
+        "carbsG": 0.51,
+        "fatG": 1.22,
+        "fiberG": 0
+      },
+      "note": "Les neuf sources de la blanquette de dinde partent toutes d'escalopes ou de sauté détaillés en cubes, jamais d'une dinde entière. Entrée crue dédiée, macros complètes."
     },
     {
       "canonical_name": "Escalope de veau crue fine",
@@ -6136,6 +6235,7 @@
         "skin_state": null
       },
       "units_used": [
+        "feuille",
         "u"
       ],
       "conversion": {
@@ -6822,6 +6922,42 @@
       "note": "Proxy assumé : Ciqual 2020 ne contient aucune graine de moutarde (seulement 11013 « Moutarde » et 11021 « Moutarde à l'ancienne », condiments humides à 152 et 142 kcal, ~68 % d'eau — facteur 3 sur une graine sèche, erreur d'état rédhibitoire). Le lin, petite graine oléagineuse (436,6 kcal ; 23,9 g prot ; 36,6 g lip), approxime de près la graine de moutarde réelle (~500 kcal ; 26 g prot ; 36 g lip) : les lipides coïncident, l'énergie est sous-estimée d'environ 14 %."
     },
     {
+      "canonical_name": "Gruyère râpé",
+      "canonical_name_normalized": "gruyere rape",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "derived": {
+        "field": "carbohydrate_g",
+        "value": 0.75,
+        "method": "atwater_closure",
+        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g − 2·fiber_g) / 4"
+      },
+      "source_record_key": "12114",
+      "source_name": "Gruyère",
+      "state": {
+        "concept": "Gruyère râpé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 426,
+        "proteinG": 27.9,
+        "carbsG": 0.75,
+        "fatG": 34.6,
+        "fiberG": 0
+      },
+      "note": "Huit plats du batch appellent du « gruyère râpé » : gratins, croque-madame, bouchées. Le Ciqual publie l'entrée râpée pour l'emmental (12118) mais pas pour le gruyère ; râper ne change ni la composition ni la densité énergétique, seulement la surface. On retient donc le gruyère en bloc. Les glucides ne sont pas renseignés : la fermeture d'Atwater les ramène à zéro (4×27,9 + 9×34,6 = 423 kcal, exactement l'énergie publiée), ce qui est le comportement attendu d'une pâte pressée cuite."
+    },
+    {
       "canonical_name": "Guanciale cru",
       "canonical_name_normalized": "guanciale cru",
       "category": "viandes",
@@ -7387,6 +7523,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
@@ -7984,6 +8121,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "u"
       ],
       "conversion": {
@@ -8080,6 +8218,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
@@ -8270,6 +8409,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
@@ -8348,6 +8488,36 @@
         "fiberG": 1.2
       },
       "note": null
+    },
+    {
+      "canonical_name": "Langue de bœuf crue",
+      "canonical_name_normalized": "langue de boeuf crue",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "40202",
+      "source_name": "Langue, boeuf, crue",
+      "state": {
+        "concept": "Langue de bœuf crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 193,
+        "proteinG": 16.8,
+        "carbsG": 0.4,
+        "fatG": 13.8,
+        "fiberG": 0
+      },
+      "note": "Ingrédient principal du plat, sans substitut possible. Entrée crue dédiée, macros complètes."
     },
     {
       "canonical_name": "Lapin cru, découpé",
@@ -9377,6 +9547,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "u"
       ],
       "conversion": {
@@ -15035,6 +15206,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
@@ -15428,6 +15600,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {

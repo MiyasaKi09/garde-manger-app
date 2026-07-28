@@ -25,6 +25,9 @@ const cas = [
   ['gratin-de-brocolis',        'Brocoli cru',           'le plat porte son ingrédient'],
   ['blanquette-de-dinde',       'Escalope de dinde crue', 'la blanquette de dinde contient de la dinde'],
   ['poireaux-gratines-a-la-bechamel', 'Poireau cru',     'le pluriel en -x se reconnaît'],
+  ['anchoiade',                 "Anchois à l'huile, égoutté", 'une virgule dans le nom ne le rend pas inconnu'],
+  ['pan-bagnat',                'Thon au naturel en conserve, égoutté', 'une boîte de thon à l’huile pèse du thon'],
+  ['saute-de-veau-aux-olives',  'Épaule de veau crue', 'un sauté de veau est de l’épaule'],
 ]
 let echecs = 0
 for (const [slug, attendu, pourquoi] of cas) {

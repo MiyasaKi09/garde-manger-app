@@ -67,6 +67,9 @@ const PIECES = {
   filet: 5,
 }
 
+/** Ce qui se mesure à la cuillère sans rien peser : feuilles et poudres sèches. */
+const SEC_ET_LEGER = /s[ée]ch|moulu|en poudre|herbes de provence|origan|thym|laurier|paprika|curry|cumin|cannelle|muscade|curcuma|piment/i
+
 /** Formulations longues, ramenées à leur abréviation avant analyse. */
 const TOURNURES = [
   [/cuill(?:ere|eres|er)?\s*(?:a|à)\s*soupe/g, 'cas'],
@@ -158,6 +161,16 @@ const traduire = (texte) => SYNONYMES.reduce((acc, [motif, cible]) => acc.replac
 const catalogue = JSON.parse(readFileSync(CATALOGUE, 'utf8')).forms
 
 /**
+ * `normaliser` garde la virgule, parce qu'il faut lire « 1,2 kg » avant de la
+ * convertir. Pour comparer des NOMS, elle n'a rien à faire là : « Anchois à
+ * l'huile, égoutté » ne se reconnaissait pas dans sa propre clé de registre
+ * « anchois a l huile egoutte », et la forme entrait deux fois — une fois sous
+ * son vrai nom, une fois sous la clé brute, qui passait pour inconnue au
+ * vocabulaire. L'anchoïade s'est retrouvée sans anchois pour cette seule raison.
+ */
+const normaliserNom = (texte) => normaliser(texte).replace(/[,.]/g, ' ').replace(/\s+/g, ' ').trim()
+
+/**
  * Le pluriel français ne se réduit pas au « s » : poireau fait poireaux, chou
  * fait choux. Comparer les deux côtés désaccordés fait manquer des formes
  * pourtant présentes au catalogue — « 3 poireaux » ne trouvait pas « Poireau
@@ -181,7 +194,7 @@ const MOTS_VIDES = new Set([
 
 // Les clés passent au singulier avant d'être filtrées : « secs » doit être
 // reconnu comme « sec », sinon le filtre le laisse passer.
-const clesDe = (nom) => normaliser(nom).split(' ')
+const clesDe = (nom) => normaliserNom(nom).split(' ')
   .map((mot) => singulier(mot))
   .filter((m) => m.length > 2 && !MOTS_VIDES.has(m))
 
@@ -223,7 +236,7 @@ const INDEX = catalogue.map((forme) => ({
   usage: usage.get(forme.canonical_name) || 0,
 }))
 
-const dejaIndexees = new Set(INDEX.map((f) => normaliser(f.nom)))
+const dejaIndexees = new Set(INDEX.map((f) => normaliserNom(f.nom)))
 const registre = JSON.parse(readFileSync(REGISTRE, 'utf8')).mappings || {}
 for (const [cle, entree] of Object.entries(registre)) {
   if (dejaIndexees.has(cle)) continue
@@ -267,11 +280,20 @@ const candidats = (designation) => {
       // Tous les mots de la forme sont dans la ligne : elle nomme cette forme
       // et pas une autre.
       complet: trouves.length === forme.cles.length ? 1 : 0,
+      position: Math.min(...trouves.map((cle) => {
+        const rang = texte.split(' ').findIndex((mot) => singulier(mot) === singulier(cle))
+        return rang < 0 ? 99 : rang
+      })),
     })
   }
   return notes
     .sort((a, b) => b.tete - a.tete
       || b.trouves - a.trouves
+      // Le français annonce sa tête en premier. « 1 boîte de thon à l'huile »
+      // parle de thon, pas d'huile — et attribuait pourtant les 200 g à l'huile
+      // d'olive. Le mot rencontré le plus tôt désigne l'aliment ; ce qui suit le
+      // qualifie.
+      || a.position - b.position
       // « pommes » désigne la pomme, pas la pomme de terre, qui laisserait le
       // mot « terre » sans emploi. Mais « pommes de terre » gagne d'abord sur
       // le nombre de mots trouvés, avant que ce critère-ci n'intervienne.
@@ -291,6 +313,28 @@ const portionsDe = (valeur) => {
   const texte = normaliser(Array.isArray(valeur) ? valeur[0] : valeur)
   const trouve = texte.match(/(\d+)/)
   return trouve ? Number(trouve[1]) : null
+}
+
+/**
+ * Une médiane sur trois sources n'est pas robuste : une seule valeur aberrante
+ * la déplace. L'anchoïade en donne le cas — un site fait dessaler les anchois
+ * dans 200 g de sel, quantité qui n'assaisonne rien et qui pousse la médiane à
+ * 50 g de sel par personne, dix fois l'apport quotidien recommandé.
+ *
+ * On ne corrige pas le chiffre en silence : on le signale. Ces plafonds sont
+ * des ordres de grandeur au-delà desquels une quantité par personne cesse d'être
+ * un assaisonnement, pas des recommandations nutritionnelles.
+ */
+const PLAFONDS = [
+  [/^sel /i, 10],
+  [/^poivre/i, 5],
+  [/s[ée]ch|moulu|en poudre|[ée]pice/i, 8],
+  [/^(?:ail|clou de girofle|muscade|safran)/i, 15],
+]
+
+const plafondDe = (nom) => {
+  const trouve = PLAFONDS.find(([motif]) => motif.test(nom))
+  return trouve ? trouve[1] : null
 }
 
 const mediane = (valeurs) => {
@@ -317,7 +361,19 @@ for (const fichier of fichiers.sort()) {
   for (const source of dossier.sources) {
     const portions = portionsDe(source.portions)
     if (portions) portionsRetenues.push(portions)
+    /**
+     * Certains sites regroupent plusieurs ingrédients sur une ligne : « 40 g de
+     * beurre, poivre », « Huile d'olive-Sel-Poivre ». La quantité n'appartient
+     * qu'au premier ; l'attribuer au dernier reconnu donnait 10 g de poivre par
+     * personne. On découpe donc, en ne gardant le nombre que sur la tête.
+     */
+    const lignes = []
     for (const ligne of source.ingredients || []) {
+      const morceaux = String(ligne).split(/\s*[,;]\s*|\s+-\s+/).filter((m) => m.trim())
+      lignes.push(morceaux[0] ?? ligne)
+      for (const suite of morceaux.slice(1)) lignes.push(suite.replace(/^\d+[\d.,]*\s*/, ''))
+    }
+    for (const ligne of lignes) {
       const { quantite, unite, piece, designation, brut } = analyserLigne(ligne)
       const propositions = candidats(designation)
       if (!propositions.length) { orphelines.push({ site: source.site, ligne: brut }); continue }
@@ -328,7 +384,13 @@ for (const fichier of fichiers.sort()) {
       if (quantite !== null) {
         if (unite && UNITES[unite].grammes) grammes = quantite * UNITES[unite].grammes
         else if (unite && UNITES[unite].millilitres) {
-          const densite = forme.conversion.density_g_per_ml ?? 1
+          // Une cuillère d'origan sec ne pèse pas une cuillère d'eau. Prendre la
+          // densité de l'eau par défaut donnait 7,5 g d'herbes de Provence par
+          // personne, soit une demi-tasse : les feuilles séchées occupent le
+          // volume sans peser. 0,25 g/ml est l'ordre de grandeur des herbes et
+          // épices en feuilles ; c'est un défaut déclaré, pas une mesure.
+          const densite = forme.conversion.density_g_per_ml
+            ?? (SEC_ET_LEGER.test(forme.nom) ? 0.25 : 1)
           grammes = quantite * UNITES[unite].millilitres * densite
         } else if (forme.conversion.grams_per_unit) {
           grammes = quantite * forme.conversion.grams_per_unit
@@ -364,6 +426,7 @@ for (const fichier of fichiers.sort()) {
       ...e,
       presence: `${e.citations}/${total}`,
       g_par_portion: e.grammes.length ? Math.round(mediane(e.grammes) * 10) / 10 : null,
+      plafond: plafondDe(e.forme),
       etendue: e.grammes.length > 1
         ? [Math.round(Math.min(...e.grammes)), Math.round(Math.max(...e.grammes))]
         : null,
@@ -392,8 +455,10 @@ for (const plat of rapport) {
     const quantite = forme.g_par_portion === null ? 'au jugé' : `${forme.g_par_portion} g/pers`
     const etendue = forme.etendue ? ` [${forme.etendue[0]}–${forme.etendue[1]}]` : ''
     const doute = forme.confiance === 'C' ? ' ⚠ proxy C' : ''
+    const aberrante = forme.plafond && forme.g_par_portion > forme.plafond
+      ? ` ⚠ médiane suspecte (au-delà de ${forme.plafond} g/pers pour cet ingrédient)` : ''
     const hypothese = forme.supposes ? ` ~${forme.supposes} poids de pièce supposé` : ''
-    console.log(`   ${forme.presence.padStart(5)}  ${forme.forme.padEnd(34)} ${quantite}${etendue}${doute}${hypothese}`)
+    console.log(`   ${forme.presence.padStart(5)}  ${forme.forme.padEnd(34)} ${quantite}${etendue}${doute}${hypothese}${aberrante}`)
   }
   const marge = plat.formes.length - socle.length
   if (marge) console.log(`   … ${marge} forme(s) minoritaire(s)`)

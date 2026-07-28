@@ -17,10 +17,12 @@
  * de ces formules — huit mots consécutifs identiques ne s'expliquent plus par le
  * vocabulaire commun.
  *
- *   node scripts/data/recipes/check-no-copied-prose.mjs <dossier-des-sources-integrales>
+ *   node scripts/data/recipes/check-no-copied-prose.mjs <dossier-des-sources-integrales> [lot.json]
  *
  * Le dossier attendu est celui produit par --travail : il porte le texte des
- * étapes, qui n'est jamais versionné.
+ * étapes, qui n'est jamais versionné. Sans second argument, ce sont les recettes
+ * du corpus qui sont contrôlées ; avec, celles d'un lot pas encore versé — c'est
+ * là qu'il faut regarder, avant la fusion et non après.
  */
 import { readFileSync, readdirSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
@@ -30,7 +32,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
 const CORPUS = join(ROOT, 'data', 'recipes', 'corpus-v3.json')
 
-const [dossierSources] = process.argv.slice(2)
+const [dossierSources, lot] = process.argv.slice(2)
 if (!dossierSources || !existsSync(dossierSources)) {
   console.error('Usage : check-no-copied-prose.mjs <dossier des sources intégrales>')
   console.error('Ce dossier contient le texte des étapes, qui reste hors dépôt.')
@@ -57,7 +59,7 @@ const sequences = (liste, taille) => {
   return vues
 }
 
-const corpus = JSON.parse(readFileSync(CORPUS, 'utf8')).recipes
+const corpus = JSON.parse(readFileSync(lot || CORPUS, 'utf8')).recipes
 const parSlug = new Map()
 for (const recette of corpus) {
   for (const source of recette.sources || []) {

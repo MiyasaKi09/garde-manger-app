@@ -52,11 +52,17 @@ const arbitreesRecemment = new Set(Object.entries(registre)
 // distinguer « Moules marinières » — où « moules » est bien un aliment absent
 // de la liste — de « Pollo al ajillo » ou « Île flottante », dont le premier mot
 // ne désigne aucun aliment français et n'a donc rien à annoncer.
+//
+// Seul le PREMIER mot de chaque libellé entre au lexique — sa tête. Le classeur
+// contient aussi des plats composés, et prendre tous leurs mots y faisait entrer
+// des qualificatifs qui ne désignent aucun aliment : « Pan bagnat » donnait
+// « bagnat », « Riz cantonais » donnait « cantonais », « Porc, sauté » donnait
+// « sauté ». Le contrôle accusait alors le pan bagnat de ne pas contenir de
+// bagnat. Un mot de tête, lui, nomme toujours quelque chose qui se mange.
 const lexiqueAliments = new Set()
 for (const record of parseCiqualWorkbook(CIQUAL).records) {
-  for (const mot of normalizeName(record.alim_nom_fr).split(' ')) {
-    if (mot.length >= 4) lexiqueAliments.add(mot.replace(/s$/, ''))
-  }
+  const tete = normalizeName(record.alim_nom_fr).split(' ')[0]
+  if (tete && tete.length >= 4) lexiqueAliments.add(tete.replace(/s$/, ''))
 }
 const codesExistants = new Set(corpus.recipes.map((recette) => recette.code))
 const famillesExistantes = new Map(corpus.recipes.map((recette) => [normalizeName(recette.family), recette.code]))
@@ -82,6 +88,10 @@ const TYPES_DE_PLAT = new Set([
   // un aliment. Le nom n'annonce donc aucun ingrédient à retrouver dans la liste.
   'paupiette', 'roulade', 'ballotine', 'bouchee', 'socca', 'anchoiade',
   'pissaladiere', 'tapenade', 'croque', 'pistou',
+  // Le classeur porte « Sauté de veau » comme plat composé, ce qui fait entrer
+  // « sauté » au lexique des aliments. C'est une découpe et une cuisson, pas un
+  // ingrédient : un sauté de porc n'a pas à contenir du sauté.
+  'saute', 'sautee', 'mijote', 'fricassee', 'potage', 'veloute',
 ])
 const UNITES = new Set(['g', 'ml', 'u', 'tranche', 'feuille'])
 const IDENTITES = new Set(['named_traditional_dish', 'domestic_standard'])
@@ -200,9 +210,15 @@ for (const [rang, recette] of recettes.entries()) {
   } else if (portions > 0 && masseTotale > 0) {
     const parPart = kcal / portions
     const grammesParPart = masseTotale / portions
-    if (parPart < 80) dire(`${Math.round(parPart)} kcal par part — trop peu pour un plat, vérifiez les quantités`)
+    // Une tapenade se sert à la cuillère, une anchoïade à la tartine : leur
+    // portion n'a pas à peser ce que pèse un plat. Le plancher suit donc le rôle
+    // d'assiette déclaré, au lieu de traiter un condiment comme un repas raté.
+    const role = recette.plate?.role
+    const planchezGrammes = role === 'component' ? 20 : (role === 'side' ? 60 : 80)
+    const plancherKcal = role === 'component' ? 30 : (role === 'side' ? 60 : 80)
+    if (parPart < plancherKcal) dire(`${Math.round(parPart)} kcal par part — trop peu, vérifiez les quantités`)
     if (parPart > 1600) dire(`${Math.round(parPart)} kcal par part — invraisemblable`)
-    if (grammesParPart < 80) dire(`${Math.round(grammesParPart)} g par part — portion irréaliste`)
+    if (grammesParPart < planchezGrammes) dire(`${Math.round(grammesParPart)} g par part — portion irréaliste pour un rôle « ${role} »`)
     if (grammesParPart > 1200) reserves.push(`${Math.round(grammesParPart)} g par part — portion très généreuse`)
     // L'identité énergétique doit tenir : si elle dérape, une composition est fausse.
     const reconstruit = 4 * proteines + 4 * glucides + 9 * lipides
