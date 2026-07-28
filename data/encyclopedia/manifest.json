@@ -46,6 +46,7 @@
     "volumes": 48,
     "books": 282,
     "validated_volumes": 0,
+    "drafted_books": 1,
     "validated_books": 0,
     "ready_for_integration": false,
     "recipes": 309,
@@ -88,7 +89,8 @@
             "MYKO-Encyclopedie-Culinaire-Plan-Directeur"
           ],
           "target_entries": null,
-          "content_status": "structure",
+          "content_status": "draft",
+          "content_path": "data/encyclopedia/books/V00-A.json",
           "required_fields": [
             "objectif",
             "règle",
@@ -103,7 +105,9 @@
             "exemples et contre-exemples",
             "validation humaine"
           ],
-          "outputs": [],
+          "outputs": [
+            "docs/encyclopedia/books/V00-A.md"
+          ],
           "code": "V00-A",
           "slug": "philosophie",
           "position": 1

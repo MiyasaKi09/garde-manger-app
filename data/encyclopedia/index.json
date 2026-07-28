@@ -8,6 +8,7 @@
     "volumes": 48,
     "books": 282,
     "validated_volumes": 0,
+    "drafted_books": 1,
     "validated_books": 0,
     "ready_for_integration": false,
     "recipes": 309,
@@ -26,14 +27,14 @@
       "title": "Vision du projet",
       "phase": "fondations",
       "books": 6,
-      "current_entries": 0,
-      "inventory_entries": 0,
-      "drafted_entries": 0,
+      "current_entries": 1,
+      "inventory_entries": 1,
+      "drafted_entries": 1,
       "validated_entries": 0,
-      "inventory_percent": 0,
-      "draft_percent": 0,
+      "inventory_percent": 17,
+      "draft_percent": 17,
       "completion_percent": 0,
-      "completion_status": "structure",
+      "completion_status": "draft",
       "target": 6,
       "target_metric": {
         "key": "documents",
@@ -1029,6 +1030,24 @@
         "unit": "contrôles automatiques",
         "mode": "quality"
       }
+    }
+  ],
+  "book_contents": [
+    {
+      "book_code": "V00-A",
+      "version": "0.1.0",
+      "status": "draft",
+      "authoring_complete": true,
+      "machine_review_status": "approved",
+      "human_review_status": "pending",
+      "definition_count": 15,
+      "rule_count": 16,
+      "test_count": 22,
+      "source_count": 2,
+      "publication_blockers": [
+        "validation humaine non réalisée",
+        "cohérence avec V00-B à V00-F non encore vérifiable"
+      ]
     }
   ],
   "techniques": [

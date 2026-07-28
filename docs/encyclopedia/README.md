@@ -12,6 +12,7 @@ Cette bibliothèque transforme la Bible et le Plan directeur Myko en **48 volume
 - Volumes structurés : 48
 - Volumes validés : 0
 - Livres structurés : 282
+- Livres réellement rédigés : 1
 - Livres validés : 0
 - Prêt pour intégration : non
 - Recettes inventoriées : 309
@@ -26,7 +27,7 @@ Les mesures live de Supabase enrichissent uniquement l’inventaire. Elles ne pe
 
 | Code | Volume | Phase | Livres | Inventorié | Rédigé | Validé | Cible | État |
 |---|---|---:|---:|---:|---:|---:|---:|---|
-| [V00](volumes/V00.md) | Vision du projet | fondations | 6 | 0 | 0 | 0 | 6 | structure |
+| [V00](volumes/V00.md) | Vision du projet | fondations | 6 | 1 | 1 | 0 | 6 | draft |
 | [V01](volumes/V01.md) | Bible des ingrédients | fondations | 17 | 27 | 0 | 0 | 4500 | inventory |
 | [V02](volumes/V02.md) | Bible des techniques | fondations | 10 | 363 | 0 | 0 | 250 | inventory |
 | [V03](volumes/V03.md) | Préparations intermédiaires | fondations | 8 | 116 | 0 | 0 | 250 | inventory |

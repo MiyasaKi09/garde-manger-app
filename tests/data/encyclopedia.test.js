@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import manifest from '@/data/encyclopedia/manifest.json'
 import index from '@/data/encyclopedia/index.json'
+import philosophy from '@/data/encyclopedia/books/V00-A.json'
 import { buildEncyclopediaView } from '@/lib/domain/encyclopedia/catalog'
 
 describe('Encyclopédie Myko', () => {
@@ -20,7 +21,7 @@ describe('Encyclopédie Myko', () => {
     )
   })
 
-  it('donne un contrat de production à chaque livre sans prétendre que son contenu existe', () => {
+  it('distingue les contrats vides du premier livre réellement rédigé', () => {
     const books = manifest.volumes.flatMap((volume) => volume.books)
     expect(new Set(books.map((book) => book.code)).size).toBe(books.length)
     for (const book of books) {
@@ -28,8 +29,46 @@ describe('Encyclopédie Myko', () => {
       expect(book.required_fields.length, book.code).toBeGreaterThan(0)
       expect(book.quality_gates.length, book.code).toBeGreaterThan(0)
       expect(Array.isArray(book.source_contracts), book.code).toBe(true)
-      expect(book.content_status, book.code).toBe('structure')
     }
+
+    const authoredBooks = books.filter((book) => book.content_path)
+    expect(authoredBooks).toHaveLength(1)
+    expect(authoredBooks[0]).toMatchObject({
+      code: 'V00-A',
+      content_status: 'draft',
+      content_path: 'data/encyclopedia/books/V00-A.json',
+    })
+    expect(books.filter((book) => book.code !== 'V00-A').every(
+      (book) => book.content_status === 'structure',
+    )).toBe(true)
+  })
+
+  it('rédige V00-A avec de vraies règles, sources, exemples, exceptions et tests', () => {
+    expect(philosophy.book_code).toBe('V00-A')
+    expect(philosophy.validation.authoring_complete).toBe(true)
+    expect(philosophy.validation.human_review_status).toBe('pending')
+    expect(philosophy.definitions.length).toBeGreaterThanOrEqual(12)
+    expect(philosophy.sources.length).toBeGreaterThanOrEqual(2)
+    expect(philosophy.rules.length).toBeGreaterThanOrEqual(15)
+
+    for (const rule of philosophy.rules) {
+      expect(rule.rule, rule.code).toBeTruthy()
+      expect(rule.justification, rule.code).toBeTruthy()
+      expect(rule.examples.length, rule.code).toBeGreaterThan(0)
+      expect(rule.counterexamples.length, rule.code).toBeGreaterThan(0)
+      expect(rule.exceptions.length, rule.code).toBeGreaterThan(0)
+      expect(rule.tests.length, rule.code).toBeGreaterThan(0)
+    }
+
+    const stockRule = philosophy.rules.find((rule) => rule.code === 'PHI-009')
+    expect(JSON.stringify(stockRule)).toContain('Pintade')
+    expect(JSON.stringify(stockRule)).toContain('90 jours')
+    expect(index.book_contents).toContainEqual(expect.objectContaining({
+      book_code: 'V00-A',
+      status: 'draft',
+      authoring_complete: true,
+      rule_count: philosophy.rules.length,
+    }))
   })
 
   it('indexe chaque recette une fois et autorise plusieurs vues éditoriales', () => {
@@ -72,14 +111,22 @@ describe('Encyclopédie Myko', () => {
 
   it('bloque l’intégration tant que les contenus des 48 volumes ne sont pas validés', () => {
     expect(index.summary.validated_volumes).toBe(0)
+    expect(index.summary.drafted_books).toBe(1)
     expect(index.summary.validated_books).toBe(0)
     expect(index.summary.drafted_food_concepts).toBe(0)
     expect(index.summary.drafted_recipes).toBe(0)
     expect(index.summary.ready_for_integration).toBe(false)
-    expect(index.coverage.find((volume) => volume.code === 'V00').completion_status).toBe('structure')
+    expect(index.coverage.find((volume) => volume.code === 'V00')).toMatchObject({
+      inventory_entries: 1,
+      drafted_entries: 1,
+      validated_entries: 0,
+      completion_status: 'draft',
+    })
     expect(index.coverage.find((volume) => volume.code === 'V01').completion_status).toBe('inventory')
     expect(index.coverage.every((volume) => volume.completion_status !== 'validated')).toBe(true)
-    expect(index.coverage.every((volume) => volume.drafted_entries === 0)).toBe(true)
+    expect(index.coverage.filter((volume) => volume.code !== 'V00').every(
+      (volume) => volume.drafted_entries === 0,
+    )).toBe(true)
     expect(index.coverage.every((volume) => volume.validated_entries === 0)).toBe(true)
   })
 })

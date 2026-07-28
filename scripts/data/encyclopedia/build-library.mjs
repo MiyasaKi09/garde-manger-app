@@ -22,8 +22,10 @@ import { edition, volumes } from '../../../data/encyclopedia/catalog.mjs'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
 const DATA_DIR = join(ROOT, 'data', 'encyclopedia')
+const BOOK_DATA_DIR = join(DATA_DIR, 'books')
 const DOCS_DIR = join(ROOT, 'docs', 'encyclopedia')
 const VOLUMES_DIR = join(DOCS_DIR, 'volumes')
+const BOOK_DOCS_DIR = join(DOCS_DIR, 'books')
 const CHECK_MODE = process.argv.includes('--check')
 
 const recipeCorpus = JSON.parse(
@@ -31,6 +33,20 @@ const recipeCorpus = JSON.parse(
 )
 const foodCorpus = JSON.parse(
   readFileSync(join(ROOT, 'data', 'foods', 'f0-corpus.json'), 'utf8'),
+)
+
+const catalogBooks = volumes.flatMap((entry) => entry.books)
+const catalogBookByCode = new Map(catalogBooks.map((entry) => [entry.code, entry]))
+const bookContents = new Map(
+  catalogBooks
+    .filter((entry) => entry.content_path)
+    .map((entry) => {
+      const sourcePath = join(ROOT, entry.content_path)
+      if (!existsSync(sourcePath)) {
+        throw new Error(`${entry.code} annonce un contenu absent : ${entry.content_path}`)
+      }
+      return [entry.code, JSON.parse(readFileSync(sourcePath, 'utf8'))]
+    }),
 )
 
 const normalize = (value = '') => String(value)
@@ -256,6 +272,19 @@ const isValidatedRecipe = (recipe) => (
   && isDraftRecipe(recipe)
 )
 
+const isDraftBookContent = (content) => Boolean(
+  content?.validation?.authoring_complete
+  && ['draft', 'reviewed', 'validated'].includes(normalize(content?.status)),
+)
+
+const isValidatedBookContent = (content) => Boolean(
+  normalize(content?.status) === 'validated'
+  && content?.validation?.machine_review_status === 'approved'
+  && content?.validation?.human_review_status === 'approved'
+  && Array.isArray(content?.validation?.publication_blockers)
+  && content.validation.publication_blockers.length === 0
+)
+
 const completionStatus = ({ inventory, drafted, validated, target }) => {
   if (target && validated >= target) return 'validated'
   if (validated > 0) return 'validation'
@@ -264,7 +293,132 @@ const completionStatus = ({ inventory, drafted, validated, target }) => {
   return 'structure'
 }
 
-const validateCatalog = (memberships, techniques) => {
+const validateDoctrineBook = (entryBook, content, errors) => {
+  if (content?.book_code !== entryBook.code) {
+    errors.push(`${entryBook.code} référence un contenu portant le code ${content?.book_code || 'absent'}.`)
+  }
+  if (content?.title !== entryBook.title) {
+    errors.push(`${entryBook.code} possède un titre de contenu incohérent.`)
+  }
+  if (normalize(content?.status) !== normalize(entryBook.content_status)) {
+    errors.push(`${entryBook.code} possède des statuts différents dans le catalogue et le contenu.`)
+  }
+  if (!/^\d+\.\d+\.\d+$/.test(content?.version || '')) {
+    errors.push(`${entryBook.code} doit posséder une version sémantique explicite.`)
+  }
+  if (!content?.objective || !content?.promise) {
+    errors.push(`${entryBook.code} doit définir son objectif et sa promesse.`)
+  }
+  if (!Array.isArray(content?.scope?.includes) || !content.scope.includes.length
+    || !Array.isArray(content?.scope?.excludes) || !content.scope.excludes.length) {
+    errors.push(`${entryBook.code} doit délimiter ce qu’il couvre et ce qu’il exclut.`)
+  }
+  if (!Array.isArray(content?.definitions) || !content.definitions.length) {
+    errors.push(`${entryBook.code} doit définir son vocabulaire normatif.`)
+  }
+  if (!Array.isArray(content?.sources) || !content.sources.length) {
+    errors.push(`${entryBook.code} doit citer au moins une source.`)
+  }
+  if (!Array.isArray(content?.rules) || !content.rules.length) {
+    errors.push(`${entryBook.code} doit contenir au moins une règle rédigée.`)
+  }
+
+  const definitionCodes = new Set()
+  for (const definition of content?.definitions || []) {
+    if (!definition?.code || !definition?.term || !definition?.definition) {
+      errors.push(`${entryBook.code} contient une définition incomplète.`)
+    }
+    if (definitionCodes.has(definition?.code)) {
+      errors.push(`${entryBook.code} duplique la définition ${definition.code}.`)
+    }
+    definitionCodes.add(definition?.code)
+  }
+
+  const sourceCodes = new Set()
+  for (const source of content?.sources || []) {
+    if (!source?.code || !source?.title || !source?.version || !source?.path
+      || !Array.isArray(source?.locators) || !source.locators.length) {
+      errors.push(`${entryBook.code} contient une source incomplète.`)
+    }
+    if (sourceCodes.has(source?.code)) {
+      errors.push(`${entryBook.code} duplique la source ${source.code}.`)
+    }
+    sourceCodes.add(source?.code)
+    if (source?.path && !existsSync(join(ROOT, source.path))) {
+      errors.push(`${entryBook.code} cite une source absente : ${source.path}.`)
+    }
+  }
+
+  const ruleCodes = new Set()
+  const testCodes = new Set()
+  for (const rule of content?.rules || []) {
+    if (!rule?.code || !rule?.title || !rule?.rule || !rule?.justification) {
+      errors.push(`${entryBook.code} contient une règle incomplète.`)
+    }
+    if (ruleCodes.has(rule?.code)) {
+      errors.push(`${entryBook.code} duplique la règle ${rule.code}.`)
+    }
+    ruleCodes.add(rule?.code)
+
+    for (const field of ['consequences', 'improves', 'examples', 'counterexamples', 'exceptions', 'tests']) {
+      if (!Array.isArray(rule?.[field]) || !rule[field].length) {
+        errors.push(`${rule?.code || entryBook.code} doit renseigner ${field}.`)
+      }
+    }
+    for (const example of rule?.examples || []) {
+      if (!example?.case || !example?.situation || !example?.decision || !example?.result) {
+        errors.push(`${rule.code} contient un exemple incomplet.`)
+      }
+    }
+    for (const counterexample of rule?.counterexamples || []) {
+      if (!counterexample?.case || !counterexample?.rejected || !counterexample?.reason) {
+        errors.push(`${rule.code} contient un contre-exemple incomplet.`)
+      }
+    }
+    for (const exception of rule?.exceptions || []) {
+      if (!exception?.case || !exception?.handling || !exception?.limits) {
+        errors.push(`${rule.code} contient une exception incomplète.`)
+      }
+    }
+    for (const test of rule?.tests || []) {
+      if (!test?.code || !test?.given || !test?.when || !test?.then || !test?.severity
+        || typeof test?.automatable !== 'boolean') {
+        errors.push(`${rule.code} contient un test d’acceptation incomplet.`)
+      }
+      if (testCodes.has(test?.code)) {
+        errors.push(`${entryBook.code} duplique le test ${test.code}.`)
+      }
+      testCodes.add(test?.code)
+    }
+  }
+
+  if (!Array.isArray(content?.global_exceptions) || !content.global_exceptions.length) {
+    errors.push(`${entryBook.code} doit documenter ses exceptions globales.`)
+  }
+  if (!Array.isArray(content?.global_tests) || !content.global_tests.length) {
+    errors.push(`${entryBook.code} doit documenter ses tests globaux.`)
+  }
+  for (const test of content?.global_tests || []) {
+    if (!test?.code || !test?.assertion || !test?.severity
+      || typeof test?.automatable !== 'boolean') {
+      errors.push(`${entryBook.code} contient un test global incomplet.`)
+    }
+    if (testCodes.has(test?.code)) {
+      errors.push(`${entryBook.code} duplique le test ${test.code}.`)
+    }
+    testCodes.add(test?.code)
+  }
+  if (!content?.validation || typeof content.validation.authoring_complete !== 'boolean'
+    || !content.validation.machine_review_status || !content.validation.human_review_status
+    || !Array.isArray(content.validation.publication_blockers)) {
+    errors.push(`${entryBook.code} doit exposer son état de validation complet.`)
+  }
+  if (normalize(content?.status) === 'validated' && !isValidatedBookContent(content)) {
+    errors.push(`${entryBook.code} ne peut être validé sans revues approuvées et sans blocage.`)
+  }
+}
+
+const validateCatalog = (memberships, techniques, contents) => {
   const errors = []
   const expectedNumbers = Array.from({ length: 48 }, (_, index) => index)
   const actualNumbers = volumes.map((entry) => entry.number)
@@ -295,6 +449,38 @@ const validateCatalog = (memberships, techniques) => {
       }
       if (!['structure', 'inventory', 'draft', 'reviewed', 'validated'].includes(entryBook.content_status)) {
         errors.push(`${entryBook.code} possède un état de contenu inconnu : ${entryBook.content_status}.`)
+      }
+      const content = contents.get(entryBook.code)
+      if (entryBook.content_path && !content) {
+        errors.push(`${entryBook.code} annonce un contenu qui n’a pas été chargé.`)
+      }
+      if (!entryBook.content_path && content) {
+        errors.push(`${entryBook.code} possède un contenu non déclaré dans le catalogue.`)
+      }
+      if (!entryBook.content_path && !['structure', 'inventory'].includes(entryBook.content_status)) {
+        errors.push(`${entryBook.code} ne peut être ${entryBook.content_status} sans source de contenu.`)
+      }
+      if (content) {
+        if (!entryBook.outputs.some((output) => output.endsWith(`${entryBook.code}.md`))) {
+          errors.push(`${entryBook.code} doit déclarer sa sortie documentaire propre.`)
+        }
+        if (entryBook.kind === 'doctrine') {
+          validateDoctrineBook(entryBook, content, errors)
+        }
+      }
+    }
+  }
+
+  const expectedContentPaths = new Set(
+    catalogBooks
+      .filter((entry) => entry.content_path)
+      .map((entry) => join(ROOT, entry.content_path)),
+  )
+  if (existsSync(BOOK_DATA_DIR)) {
+    for (const filename of readdirSync(BOOK_DATA_DIR)) {
+      const path = join(BOOK_DATA_DIR, filename)
+      if (filename.endsWith('.json') && !expectedContentPaths.has(path)) {
+        errors.push(`Le contenu ${filename} n’est rattaché à aucun livre du catalogue.`)
       }
     }
   }
@@ -327,6 +513,162 @@ const validateCatalog = (memberships, techniques) => {
 }
 
 const markdownList = (values) => values.map((value) => `- ${value}`).join('\n')
+const entryLabel = (value, singularSuffix, pluralSuffix) => (
+  `${value} entrée${value === 1 ? '' : 's'} ${value === 1 ? singularSuffix : pluralSuffix}`
+)
+const escapeTableCell = (value) => String(value ?? '—')
+  .replace(/\|/g, '\\|')
+  .replace(/\r?\n/g, ' ')
+
+const buildBookMarkdown = (entryBook, content) => {
+  const sourceRows = content.sources.map((source) => {
+    const relativePath = source.path.startsWith('docs/encyclopedia/')
+      ? `../${source.path.slice('docs/encyclopedia/'.length)}`
+      : source.path
+    return `| \`${source.code}\` | [${escapeTableCell(source.title)}](${relativePath}) | ${escapeTableCell(source.locators.join(' · '))} | ${escapeTableCell(source.role)} |`
+  }).join('\n')
+
+  const definitionRows = content.definitions
+    .map((definition) => `| \`${definition.code}\` | **${escapeTableCell(definition.term)}** | ${escapeTableCell(definition.definition)} |`)
+    .join('\n')
+
+  const rules = content.rules.map((rule) => {
+    const examples = rule.examples.map((example) => `#### ${example.case}
+
+- **Situation :** ${example.situation}
+- **Décision attendue :** ${example.decision}
+- **Résultat :** ${example.result}`).join('\n\n')
+    const counterexamples = rule.counterexamples.map((example) => `#### ${example.case}
+
+- **Comportement refusé :** ${example.rejected}
+- **Pourquoi :** ${example.reason}`).join('\n\n')
+    const exceptions = rule.exceptions.map((exception) => `#### ${exception.case}
+
+- **Traitement :** ${exception.handling}
+- **Limites :** ${exception.limits}`).join('\n\n')
+    const tests = rule.tests.map((test) => (
+      `| \`${test.code}\` | ${escapeTableCell(test.given)} | ${escapeTableCell(test.when)} | ${escapeTableCell(test.then)} | \`${test.severity}\` | ${test.automatable ? 'oui' : 'non'} |`
+    )).join('\n')
+
+    return `## ${rule.code} — ${rule.title}
+
+> **Règle normative —** ${rule.rule}
+
+### Justification
+
+${rule.justification}
+
+### Conséquences
+
+${markdownList(rule.consequences)}
+
+### Usages améliorés
+
+${rule.improves.map((value) => `\`${value}\``).join(' · ')}
+
+### Exemples conformes
+
+${examples}
+
+### Contre-exemples
+
+${counterexamples}
+
+### Exceptions
+
+${exceptions}
+
+### Tests d’acceptation
+
+| Code | Étant donné | Quand | Alors | Sévérité | Automatisable |
+|---|---|---|---|---|---:|
+${tests}`
+  }).join('\n\n')
+
+  const globalExceptions = content.global_exceptions.map((exception) => `### ${exception.code} — ${exception.case}
+
+${exception.rule}
+
+**Garde-fous**
+
+${markdownList(exception.guardrails)}`).join('\n\n')
+
+  const globalTests = content.global_tests.map((test) => (
+    `| \`${test.code}\` | ${escapeTableCell(test.assertion)} | \`${test.severity}\` | ${test.automatable ? 'oui' : 'non'} |`
+  )).join('\n')
+
+  const blockers = content.validation.publication_blockers.length
+    ? markdownList(content.validation.publication_blockers)
+    : 'Aucun.'
+
+  return `# ${entryBook.code} — ${content.title}
+
+> ${content.promise}
+
+| Propriété | Valeur |
+|---|---|
+| Édition | \`${edition.code}\` |
+| Version du livre | \`${content.version}\` |
+| État | \`${content.status}\` |
+| Langue | \`${content.locale}\` |
+| Rédigé le | ${content.authored_on} |
+| Revue machine | \`${content.validation.machine_review_status}\` |
+| Revue humaine | \`${content.validation.human_review_status}\` |
+
+## Objectif
+
+${content.objective}
+
+## Périmètre
+
+### Inclus
+
+${markdownList(content.scope.includes)}
+
+### Exclu
+
+${markdownList(content.scope.excludes)}
+
+## Vocabulaire normatif
+
+| Code | Terme | Définition |
+|---|---|---|
+${definitionRows}
+
+## Sources fondatrices
+
+| Code | Source | Sections utilisées | Rôle |
+|---|---|---|---|
+${sourceRows}
+
+## Principes normatifs
+
+${rules}
+
+## Exceptions globales
+
+${globalExceptions}
+
+## Tests globaux
+
+| Code | Assertion | Sévérité | Automatisable |
+|---|---|---|---:|
+${globalTests}
+
+## État de validation
+
+| Contrôle | État |
+|---|---|
+| Rédaction matériellement complète | ${content.validation.authoring_complete ? 'oui' : 'non'} |
+| Revue machine | \`${content.validation.machine_review_status}\` |
+| Revue humaine | \`${content.validation.human_review_status}\` |
+| Rôles humains requis | ${content.validation.required_human_roles.map((role) => `\`${role}\``).join(', ')} |
+
+### Blocages avant publication
+
+${blockers}
+`
+}
 
 const buildVolumeMarkdown = (entry, coverage) => {
   const target = entry.target_metric
@@ -337,11 +679,28 @@ const buildVolumeMarkdown = (entry, coverage) => {
     : 'aucune cible quantitative'
   const inventory = coverage.inventory_entries == null
     ? 'non mesuré'
-    : `${coverage.inventory_entries} entrées repérées`
-  const drafted = `${coverage.drafted_entries || 0} entrées réellement rédigées`
-  const validated = `${coverage.validated_entries || 0} entrées validées`
+    : entryLabel(coverage.inventory_entries, 'repérée', 'repérées')
+  const drafted = entryLabel(coverage.drafted_entries || 0, 'réellement rédigée', 'réellement rédigées')
+  const validated = entryLabel(coverage.validated_entries || 0, 'validée', 'validées')
 
-  const books = entry.books.map((entryBook) => `## ${entryBook.code} — ${entryBook.title}
+  const books = entry.books.map((entryBook) => {
+    const content = bookContents.get(entryBook.code)
+    const contentOutput = entryBook.outputs.find((output) => output.endsWith(`${entryBook.code}.md`))
+    const contentLink = contentOutput?.startsWith('docs/encyclopedia/')
+      ? `../${contentOutput.slice('docs/encyclopedia/'.length)}`
+      : contentOutput
+    const authoredBlock = content
+      ? `### Contenu réellement rédigé
+
+- [Lire le livre intégral](${contentLink})
+- Version : \`${content.version}\`
+- Principes normatifs : ${content.rules.length}
+- Définitions : ${content.definitions.length}
+- Tests : ${content.rules.reduce((count, rule) => count + rule.tests.length, 0) + content.global_tests.length}
+- Revue humaine : \`${content.validation.human_review_status}\``
+      : null
+
+    return `## ${entryBook.code} — ${entryBook.title}
 
 ${entryBook.mission}
 
@@ -351,7 +710,7 @@ ${entryBook.mission}
 | État du contenu | \`${entryBook.content_status}\` |
 | Cible propre | ${entryBook.target_entries ?? 'hérite du volume'} |
 | Sources | ${entryBook.source_contracts.map((source) => `\`${source}\``).join(', ') || 'doctrine Myko'} |
-| Sorties | ${entryBook.outputs.join(', ') || 'fiche versionnée et indexable'} |
+| Sorties | ${entryBook.outputs.join(', ') || 'fiche versionnée et indexable'} |${authoredBlock ? `\n\n${authoredBlock}` : ''}
 
 ### Champs obligatoires
 
@@ -360,7 +719,8 @@ ${markdownList(entryBook.required_fields.map((field) => `\`${field}\``))}
 ### Portes de qualité
 
 ${markdownList(entryBook.quality_gates)}
-`).join('\n')
+`
+  }).join('\n')
 
   return `# ${entry.code} — ${entry.title}
 
@@ -400,6 +760,7 @@ Cette bibliothèque transforme la Bible et le Plan directeur Myko en **48 volume
 - Volumes structurés : ${summary.volumes}
 - Volumes validés : ${summary.validated_volumes}
 - Livres structurés : ${summary.books}
+- Livres réellement rédigés : ${summary.drafted_books}
 - Livres validés : ${summary.validated_books}
 - Prêt pour intégration : ${summary.ready_for_integration ? 'oui' : 'non'}
 - Recettes inventoriées : ${summary.recipes}
@@ -436,12 +797,17 @@ Le second appel échoue si le manifeste, l’index ou les livres générés ne c
 
 const recipeMemberships = buildRecipeMemberships()
 const techniques = buildTechniques()
-validateCatalog(recipeMemberships, techniques)
+validateCatalog(recipeMemberships, techniques, bookContents)
 
 const draftFoodConcepts = foodCorpus.concepts.filter(isDraftFoodConcept)
 const validatedFoodConcepts = foodCorpus.concepts.filter(isValidatedFoodConcept)
 const draftRecipes = recipeCorpus.recipes.filter(isDraftRecipe)
 const validatedRecipes = recipeCorpus.recipes.filter(isValidatedRecipe)
+const draftedBookContents = [...bookContents.values()].filter(isDraftBookContent)
+const validatedBookContents = [...bookContents.values()].filter(isValidatedBookContent)
+const v00BookContents = [...bookContents.entries()]
+  .filter(([bookCode]) => bookCode.startsWith('V00-'))
+  .map(([, content]) => content)
 
 const membershipCountsFor = (recipes) => {
   const recipeCodes = new Set(recipes.map((recipe) => recipe.code))
@@ -463,7 +829,7 @@ const draftMembershipCounts = membershipCountsFor(draftRecipes)
 const validatedMembershipCounts = membershipCountsFor(validatedRecipes)
 
 const inventoryCounts = {
-  V00: 0,
+  V00: v00BookContents.length,
   V01: foodCorpus.concepts.length,
   V02: techniques.length,
   V03: countRecipeRole(recipeCorpus.recipes, [/\bfond\b/, /\bfumet\b/, /\bbouillon\b/, /\bmarinade\b/, /\bsaumure\b/, /\bpate de base\b/]),
@@ -478,7 +844,7 @@ const inventoryCounts = {
 }
 
 const draftCounts = {
-  V00: 0,
+  V00: v00BookContents.filter(isDraftBookContent).length,
   V01: draftFoodConcepts.length,
   V02: 0,
   V03: 0,
@@ -493,7 +859,7 @@ const draftCounts = {
 }
 
 const validatedCounts = {
-  V00: 0,
+  V00: v00BookContents.filter(isValidatedBookContent).length,
   V01: validatedFoodConcepts.length,
   V02: 0,
   V03: 0,
@@ -539,9 +905,8 @@ const summary = {
   volumes: volumes.length,
   books: volumes.reduce((count, entry) => count + entry.books.length, 0),
   validated_volumes: coverage.filter((entry) => entry.completion_status === 'validated').length,
-  validated_books: volumes
-    .flatMap((entry) => entry.books)
-    .filter((entry) => entry.content_status === 'validated').length,
+  drafted_books: draftedBookContents.length,
+  validated_books: validatedBookContents.length,
   ready_for_integration: coverage.every((entry) => entry.completion_status === 'validated'),
   recipes: recipeCorpus.recipes.length,
   drafted_recipes: draftRecipes.length,
@@ -568,6 +933,22 @@ const index = {
   },
   summary,
   coverage,
+  book_contents: [...bookContents.entries()]
+    .map(([bookCode, content]) => ({
+      book_code: bookCode,
+      version: content.version,
+      status: content.status,
+      authoring_complete: content.validation.authoring_complete,
+      machine_review_status: content.validation.machine_review_status,
+      human_review_status: content.validation.human_review_status,
+      definition_count: content.definitions.length,
+      rule_count: content.rules.length,
+      test_count: content.rules.reduce((count, rule) => count + rule.tests.length, 0)
+        + content.global_tests.length,
+      source_count: content.sources.length,
+      publication_blockers: content.validation.publication_blockers,
+    }))
+    .sort((left, right) => left.book_code.localeCompare(right.book_code, 'fr')),
   techniques,
   recipe_memberships: recipeMemberships,
 }
@@ -580,6 +961,11 @@ const outputs = new Map([
     join(VOLUMES_DIR, `${entry.code}.md`),
     buildVolumeMarkdown(entry, coverage.find((item) => item.code === entry.code)),
   ]),
+  ...[...bookContents.entries()].map(([bookCode, content]) => {
+    const entryBook = catalogBookByCode.get(bookCode)
+    const outputPath = entryBook.outputs.find((output) => output.endsWith(`${bookCode}.md`))
+    return [join(ROOT, outputPath), buildBookMarkdown(entryBook, content)]
+  }),
 ])
 
 if (CHECK_MODE) {
@@ -598,6 +984,17 @@ if (CHECK_MODE) {
     }
   }
 
+  const expectedBookFiles = new Set(
+    [...bookContents.keys()].map((bookCode) => `${bookCode}.md`),
+  )
+  if (existsSync(BOOK_DOCS_DIR)) {
+    for (const filename of readdirSync(BOOK_DOCS_DIR)) {
+      if (filename.endsWith('.md') && !expectedBookFiles.has(filename)) {
+        stale.push(join('docs', 'encyclopedia', 'books', filename))
+      }
+    }
+  }
+
   if (stale.length) {
     console.error(`Encyclopédie non régénérée :\n- ${stale.join('\n- ')}`)
     process.exit(1)
@@ -606,6 +1003,7 @@ if (CHECK_MODE) {
 } else {
   mkdirSync(DATA_DIR, { recursive: true })
   mkdirSync(VOLUMES_DIR, { recursive: true })
+  mkdirSync(BOOK_DOCS_DIR, { recursive: true })
   for (const [path, content] of outputs) {
     writeFileSync(path, content)
   }
