@@ -1,0 +1,226 @@
+{
+  "dish": "Pissaladière",
+  "slug": "pissaladiere",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pissaladiere_20407.aspx",
+      "site": "marmiton.org",
+      "nom": "Pissaladière : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "400 g de pâtes à pain du boulanger",
+        "1 kg d'oignon",
+        "300 g d'anchois à l'huile",
+        "15 olives noires",
+        "2 grosses cuillères à soupe de sucre en poudre",
+        "herbes de Provence",
+        "poivre",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1360,
+        "sha256": "ba470944d2b5c727"
+      },
+      "sha256_page": "7d1fc6bb6ff09171"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pissaladiere-a-la-tomate-pichade-mentonnaise_29960.aspx",
+      "site": "marmiton.org",
+      "nom": "Pissaladière à la tomate (pichade Mentonnaise) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT2H",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "200 g de farine",
+        "10 g de levure de boulangerie",
+        "8 cl d'eau tiède",
+        "huile d'olive",
+        "sel ou 1 pâte à pain de 300 g dans une boulangerie",
+        "6 tomates mûres en saison ou 2 conserves de 400 g de tomates concassées",
+        "2 oignons",
+        "2 gousses d'ail",
+        "3 feuilles de laurier",
+        "2 branches de thym",
+        "10 anchois (ou moins, selon votre goût)",
+        "poivre",
+        "sel",
+        "huile d'olive",
+        "12 olives noires"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 1554,
+        "sha256": "a2fe04eca1c34110"
+      },
+      "sha256_page": "e2debff867c8448e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pissaladiere-provencale-d-une-marseillaise_67677.aspx",
+      "site": "marmiton.org",
+      "nom": "Pissaladière provençale d'une Marseillaise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 rouleau de pâte brisée",
+        "4 cuillères à soupe d'huile d'olive",
+        "5 oignons",
+        "1 cuillère à café de moutarde",
+        "1 cuillère à soupe de vinaigre de vin",
+        "12 filets d'anchois",
+        "12 olives dénoyautées",
+        "1 cuillère à café de thym émietté"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 501,
+        "sha256": "524c7dbbf5f919af"
+      },
+      "sha256_page": "171001334cec8284"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/pissaladiere-b976933b-1d99-43b0-8624-e28f2e8c8dd6",
+      "site": "chefsimon.com",
+      "nom": "Pissaladière",
+      "portions": "4 personnes",
+      "duree_preparation": "PT01H00M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "300 g de farine",
+        "180 g d'eau",
+        "1 pincée de sel",
+        "2 cuillers à soupe d'huile d'olive",
+        "10 g de levure de boulanger lyophilisée",
+        "filets d’anchois à l'huile",
+        "olives noires",
+        "1 kg d'oignons",
+        "6 gousses d’ail",
+        "huile d'olive",
+        "thym",
+        "origan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 968,
+        "sha256": "156a7526e999588c"
+      },
+      "sha256_page": "490f9c080967d713"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/pissaladiere-au-fenouil-a9b911fd-a31f-4347-b891-bd16eab966d0",
+      "site": "chefsimon.com",
+      "nom": "Pissaladière au fenouil",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "350 g farine",
+        "2 c à c sel",
+        "15 g levure boulangère",
+        "fraîche",
+        "3 c à s huile d’olive",
+        "25 cl d’eau tiède",
+        "2 bulbes de fenouil",
+        "des graines de fenouils",
+        "Sel, poivre",
+        "4 c à s d’huile d’olive",
+        "8 filet d’anchois",
+        "8 olives noires"
+      ],
+      "etapes_empreinte": {
+        "nombre": 26,
+        "signes": 1298,
+        "sha256": "239d6dd00fbb2183"
+      },
+      "sha256_page": "96ac548472f01fbe"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/papilles-a-l-affut/recettes/pissaladiere-aubergine-oignons",
+      "site": "chefsimon.com",
+      "nom": "Pissaladière aubergine oignons",
+      "portions": "",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "350 grammes de farine",
+        "1 sachet de levure de boulangerie",
+        "170 millilitres d’eau à température ambiante",
+        "1 cuillère à café de sucre en poudre",
+        "1 petit pot de filets d’anchois",
+        "1 ou 2 aubergines selon leur taille (600 grammes environ)",
+        "5 oignons jaunes émincés (600 grammes environ)",
+        "1 belle poignée d’olives",
+        "thym",
+        "huile d’olive",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1139,
+        "sha256": "0a4c301b79b8b80a"
+      },
+      "sha256_page": "11e0f4cfcc54c0c8"
+    },
+    {
+      "url": "https://www.750g.com/pissaladiere-nicoise-provencale-r96487.htm",
+      "site": "750g.com",
+      "nom": "Pissaladière niçoise provençale",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "3 c à s d'huile d'olives",
+        "herbes de Provence déshydratées",
+        "Sel",
+        "Poivre",
+        "1 c à c de sucre (pour lever l'acidité de l'oignon)",
+        "1 kg d'oignons émincés surgelés",
+        "15 olives noires dénoyautées",
+        "6 anchois à l'huile ou crème d'anchois",
+        "2 gousses d'ail dégermées",
+        "1 pâte à pain du boulanger de 300g"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 969,
+        "sha256": "df30b66214f89fb5"
+      },
+      "sha256_page": "2dde903e7fbea987"
+    },
+    {
+      "url": "https://www.750g.com/pissaladiere-r100952.htm",
+      "site": "750g.com",
+      "nom": "Pissaladière traditionnelle",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT1H15M",
+      "ingredients": [
+        "500 g de farine",
+        "20 cl d'eau  tiède",
+        "15 g de levure de boulanger fraîche",
+        "10 c. à s. d'huile d'olive",
+        "2 c. à c. de sel ou sel fin",
+        "1 c. à c. de sucre",
+        "Herbes aromatiques  (séchées (thym ou romarin))",
+        "8 oignons  (gros)",
+        "1 boite d'anchois",
+        "3 gousses d'ail",
+        "10 g de sucre",
+        "Huile d'olive",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1004,
+        "sha256": "4a06e66e2380b723"
+      },
+      "sha256_page": "5a52d0f3ac1eb0d8"
+    }
+  ]
+}

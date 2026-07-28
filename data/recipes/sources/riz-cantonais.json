@@ -1,0 +1,187 @@
+{
+  "dish": "Riz cantonais",
+  "slug": "riz-cantonais",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_riz-cantonais-rapide-et-facile_64576.aspx",
+      "site": "marmiton.org",
+      "nom": "Riz cantonais rapide et facile : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "200 g de riz",
+        "100 g de lardons (ou équivalent en jambon en tranches)",
+        "100 g de petits pois en boîte",
+        "2 oeufs",
+        "1 oignon",
+        "3 cuillères à soupe d'huile de tournesol"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 726,
+        "sha256": "e08d013fcb05009b"
+      },
+      "sha256_page": "7838980fc2402c68"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_riz-cantonais-facile_27686.aspx",
+      "site": "marmiton.org",
+      "nom": "Riz cantonais facile : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "200 g de riz",
+        "2 oignons",
+        "2 oeufs",
+        "2 cuillères à soupe d'huile",
+        "50 g de crevettes décortiquées",
+        "75 g de jambon",
+        "3 cuillères à soupe de petits pois"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 495,
+        "sha256": "bdf6163c54d0ad4d"
+      },
+      "sha256_page": "2a1dd1fb1b58541c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_riz-cantonais-express_38826.aspx",
+      "site": "marmiton.org",
+      "nom": "Riz cantonais express : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT6M",
+      "duree_cuisson": "PT19M",
+      "ingredients": [
+        "1 riz",
+        "100 g de petits pois extra fins en boîte",
+        "100 g de dés de jambon blanc",
+        "2 oeufs",
+        "1 cuillère à soupe d'arôme saveur de maggi",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 495,
+        "sha256": "9175a71d879aef28"
+      },
+      "sha256_page": "bdaba46b3d1a80b2"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/eldorami/recettes/riz-cantonais-aux-legumes",
+      "site": "chefsimon.com",
+      "nom": "Riz cantonais aux légumes",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "650 grammes Riz",
+        "4  Œufs",
+        "2  Carottes",
+        "1 tasse Petits pois",
+        "0.25  Chou chinois",
+        "1  Poivron rouge",
+        "1  Oignon",
+        "1  Oignon",
+        "1  Échalotte",
+        "3 gousses Ail",
+        "2.5 cuillères à soupe Beurre",
+        "3 cuillères à soupe Sauce soja",
+        "2.5 cuillères à soupe Sauce huitre",
+        "1.5 cuillères à café Huile de sésame",
+        "Sel",
+        "Poivre",
+        "1  Piment",
+        "Sauce Sriracha"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 217,
+        "sha256": "22b8625d69bdb1a6"
+      },
+      "sha256_page": "a853aead2963fc75"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/nota-banane/recettes/riz-cantonais-8e731aa3-2277-4bb5-bec9-34e3f88c2464",
+      "site": "chefsimon.com",
+      "nom": "Riz cantonais",
+      "portions": "",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "175 gr de riz entier (sec)",
+        "1 carotte",
+        "1 oignon",
+        "250 gr de maïs congelés",
+        "250 gr de petit pois congelés",
+        "2 oeufs brouillés",
+        "1 gousse d'ail",
+        "4 cuillères à soupe de sauce teriyaki",
+        "2 cuillères à soupe de sauce tamari"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 156,
+        "sha256": "bccd1ff98239e160"
+      },
+      "sha256_page": "d86fa6bfb4897df7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/marc-winer/recettes/riz-cantonais-express-57da57ec-7bcd-4029-af19-7b8be4b6a770",
+      "site": "chefsimon.com",
+      "nom": "Riz cantonais express",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "3 œufs battus",
+        "200 g de viande de porc en petits dés",
+        "1 oignon en dés",
+        "2 cuillères à soupe de petits pois",
+        "1 carotte en dés",
+        "3 gousses d’ail émincées",
+        "250 g de riz de la veille",
+        "1 cuillère à soupe d'huile de sésame",
+        "3 cuillères à soupe de sauce soja light"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "adca25177cf5b39d"
+    },
+    {
+      "url": "https://www.750g.com/riz-cantonais-a-ma-facon-r43535.htm",
+      "site": "750g.com",
+      "nom": "Riz cantonais à ma façon",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "100 g de petits pois",
+        "1 c. à s. d'huile",
+        "20 g de beurre",
+        "4 tranches de jambon",
+        "4 oeufs",
+        "1 morceau de gingembre  frais",
+        "1 oignon",
+        "1 poireau",
+        "250 g de riz",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1292,
+        "sha256": "2fba93e77cfb3e1e"
+      },
+      "sha256_page": "90052ddff2a76d0a"
+    }
+  ]
+}

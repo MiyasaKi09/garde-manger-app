@@ -1,0 +1,241 @@
+{
+  "dish": "Courgettes farcies",
+  "slug": "courgettes-farcies",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_courgettes-farcies_11192.aspx",
+      "site": "marmiton.org",
+      "nom": "Courgettes farcies : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "2 courgettes",
+        "600 g de porc ou/et boeuf ou au choix)",
+        "poivre",
+        "sel",
+        "1 oignon",
+        "20 cl de coulis de tomate ou des tomates pelées",
+        "50 g de fromage râpé",
+        "50 g d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 956,
+        "sha256": "c56e48b487cf0b45"
+      },
+      "sha256_page": "b10c17000bdc686d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_courgettes-farcies-a-la-ricotta-et-aux-lardons_28314.aspx",
+      "site": "marmiton.org",
+      "nom": "Courgettes farcies à la ricotta et aux lardons : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "4 courgettes",
+        "2 pots de ricotta (2 x 200 g)",
+        "lardons (150/200 g)",
+        "oignon",
+        "basilic",
+        "huile d'olive",
+        "parmesan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 350,
+        "sha256": "4f692bf1c4ec2455"
+      },
+      "sha256_page": "22715d126fc8ab4e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_courgettes-rondes-farcies_223873.aspx",
+      "site": "marmiton.org",
+      "nom": "Courgettes rondes farcies : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT1H10M",
+      "ingredients": [
+        "4 courgettes rondes",
+        "500 g de chair à saucisse",
+        "2 cuillères à soupe d'huile d'olive",
+        "1 oignon doux",
+        "1 échalote longue",
+        "1 tomates pelées",
+        "10 cl de crème liquide",
+        "gruyère râpé",
+        "herbes de Provence",
+        "cumin",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 998,
+        "sha256": "c4665c3fe2e19a2a"
+      },
+      "sha256_page": "c433ff8212666df6"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/courgettes-farcies--11",
+      "site": "chefsimon.com",
+      "nom": "Courgettes farcies",
+      "portions": "4 personnes",
+      "duree_preparation": "PT01H00M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "300 grammes de farce porc et veau",
+        "3 gousses d'ail écrasées",
+        "3 échalotes ciselées",
+        "1 demi bouquet de persil",
+        "10 olives noires au naturel ou à la grecque",
+        "1 quart de chorizo  (fort ou doux)",
+        "sel et poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 699,
+        "sha256": "e954778a443254c4"
+      },
+      "sha256_page": "26ad82cb81e62d98"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/courgettes-farcies-au-quinoa-et-duxelles-de-champignons",
+      "site": "chefsimon.com",
+      "nom": "Courgettes farcies au quinoa et duxelles de champignons",
+      "portions": "6 personnes",
+      "duree_preparation": "PT01H00M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "6 courgettes rondes de Nice",
+        "300 g de quinoa",
+        "3 échalotes",
+        "1 gousse d'ail",
+        "300 g de champignons de Paris",
+        "1 dl d'huile d'olive",
+        "cumin",
+        "6 tomates",
+        "100 g de tomates séchées (facultatif)",
+        "3 gousses d’ail",
+        "3 échalotes",
+        "piment d'Espelette",
+        "basilic",
+        "un demi bouquet de persil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 23,
+        "signes": 1404,
+        "sha256": "3e79f20ffd46436a"
+      },
+      "sha256_page": "f5635b3b15982935"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/courgettes-farcies-au-poulet-eac8e4db-9cd9-4d3d-b744-09d5c3aa1292",
+      "site": "chefsimon.com",
+      "nom": "Courgettes farcies au poulet",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "4 courgettes",
+        "2 blancs de poulet (ou du poulet fermier de la veille)",
+        "100 g mozzarella râpée (ou emmental)",
+        "3CS sauce pesto",
+        "Tomates cerises (optionnel)",
+        "Coriandre fraîche ou persil (optionnel)",
+        "Sel et poivre",
+        "Huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1029,
+        "sha256": "d9aedb356e3ba880"
+      },
+      "sha256_page": "0ae1d32f1acb5e50"
+    },
+    {
+      "url": "https://www.750g.com/courgettes-farcies-a-ma-facon-aux-herbes-et-aux-epices-r35955.htm",
+      "site": "750g.com",
+      "nom": "Courgettes farcies à ma façon aux herbes et aux épices",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "2 c. à c. de ras el-hanout",
+        "Ciboulette",
+        "Persil",
+        "Coriandre",
+        "1 c. à c. de cumin",
+        "Sel ou sel fin",
+        "Poivre",
+        "500 g de chair à saucisse",
+        "25 cl de bouillon",
+        "Ail",
+        "8 courgettes rondes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 309,
+        "sha256": "008096acfe07f3aa"
+      },
+      "sha256_page": "1094894e4670ee06"
+    },
+    {
+      "url": "https://www.750g.com/courgettes-et-pommes-de-terre-farcies-r88983.htm",
+      "site": "750g.com",
+      "nom": "Courgettes et pommes de terre farcies",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "1 œuf",
+        "2 citrons",
+        "Basilic",
+        "Sel",
+        "Poivre",
+        "200gr de viande hachée",
+        "200gr de riz cuit à l'eau",
+        "4 pommes de terre moyennes",
+        "1 boîte de pois chiches",
+        "2 oignons assez gros",
+        "4 courgettes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 844,
+        "sha256": "2e0f10ad76d874f5"
+      },
+      "sha256_page": "649001b1668cf6c9"
+    },
+    {
+      "url": "https://www.750g.com/courgettes-farcies-a-lorientale-r98072.htm",
+      "site": "750g.com",
+      "nom": "Courgettes farcies à l'orientale",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT2H30M",
+      "ingredients": [
+        "12 courgettes rondes",
+        "1,5 boite de tomate pelée concassée",
+        "250 g de viande hachée",
+        "250 g de riz rond",
+        "1 citron",
+        "2 gousses d'ail",
+        "3 c. à s. d'huile d'arachide",
+        "1 c. à c. de menthe séchée",
+        "1 quatre épices",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 2740,
+        "sha256": "30d7330c424c4f8a"
+      },
+      "sha256_page": "27e085e4836731cd"
+    }
+  ]
+}

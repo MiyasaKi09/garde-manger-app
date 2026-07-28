@@ -1,0 +1,187 @@
+{
+  "dish": "Bouchées à la reine",
+  "slug": "bouchees-a-la-reine",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bouchees-a-la-reine_19196.aspx",
+      "site": "marmiton.org",
+      "nom": "Bouchées à la reine : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "300 g de rumsteaks de veau",
+        "2 escalopes de poulet",
+        "200 g de champignons (boîte)",
+        "quenelle de veau",
+        "45 g de beurre",
+        "3 cuillères à soupe de farine",
+        "75 cl de bouillon de volaille",
+        "3 jaunes d'oeuf",
+        "10 cl de crème fraîche épaisse",
+        "1 verre de vin blanc",
+        "poivre",
+        "muscade",
+        "6 pâtes feuilletées"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 990,
+        "sha256": "c234093bb2298271"
+      },
+      "sha256_page": "d62f5458c8f79b0f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bouchees-a-la-reine-comme-en-alsace_222142.aspx",
+      "site": "marmiton.org",
+      "nom": "Bouchées à la reine comme en Alsace : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "1 kg d'épaule de veau",
+        "0.5 poule",
+        "1 carotte",
+        "1 oignon",
+        "1 bouquet garni",
+        "200 g de quenelles de veau",
+        "200 g de champignons de Paris",
+        "60 g de beurre",
+        "60 g de farine",
+        "25 cl de vin blanc",
+        "25 cl de lait",
+        "1 l de bouillon",
+        "poivre",
+        "sel",
+        "muscade",
+        "10 cl de crème",
+        "2 jaunes d'oeuf pour la liaison",
+        "8 bouchées à la reine feuilletées (boulangerie ou supermarché)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 909,
+        "sha256": "a79d3888fcc2276f"
+      },
+      "sha256_page": "ba1b0135946a6210"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bouchees-a-la-reine-facile_319687.aspx",
+      "site": "marmiton.org",
+      "nom": "Bouchées à la reine facile : la meilleure recette",
+      "portions": "8 Personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "8 vol-au-vent",
+        "500 g de champignons de Paris",
+        "2 filets de poulet",
+        "2 noix de beurre",
+        "40 g de beurre",
+        "4 cuillères à soupe de farine (un peu plus que rases mais pas bombées)",
+        "1 cube de bouillon de volaille",
+        "50 cl de lait",
+        "gruyère râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 695,
+        "sha256": "8bc05ce84c25c906"
+      },
+      "sha256_page": "d28f15768494ba5d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/laurence-peguet/recettes/bouchees-a-la-reine-aux-fruits-de-mer",
+      "site": "chefsimon.com",
+      "nom": "Bouchées à la reine aux fruits de mer",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "6 bouchées à la reine",
+        "30 g de beurre",
+        "20 g de farine",
+        "300 ml de lait",
+        "Les zestes d'un citron non traité",
+        "1 cuillère à café d'estragon (frais ou surgelé)",
+        "15 g de beurre",
+        "1 échalote",
+        "50 g de champignons frais",
+        "1 pavé de saumon (environ 100g)",
+        "200 g d'un mélange surgelé de crevettes, moules et pétoncles",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 17,
+        "signes": 1218,
+        "sha256": "1f31426984f8a4b3"
+      },
+      "sha256_page": "7b3463d802faee03"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/c-est-maman-qui-la-fait/recettes/bouchee-a-la-reine-traditionnelle-alsacienne",
+      "site": "chefsimon.com",
+      "nom": "Bouchée à la reine traditionnelle alsacienne",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H40M",
+      "duree_cuisson": "PT01H30M",
+      "ingredients": [
+        "100 gr de quenelles de veau",
+        "400 gr de viande de veau",
+        "200 gr de blanc de poulet",
+        "15 champignons de Paris",
+        "1 carotte",
+        "1 oignon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1074,
+        "sha256": "d5f120fd6b5b1cbb"
+      },
+      "sha256_page": "2e6ad46b8df7db85"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/tastygourmandise/recettes/bouchee-a-la-reine-5ca60ef1-ac58-415e-a4a0-eb9443fb5dae",
+      "site": "chefsimon.com",
+      "nom": "Bouchée à la reine",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 disques de pâte feuilletée",
+        "1 jaune d'oeuf",
+        "1 càs d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 171,
+        "sha256": "faa965ea3be137a8"
+      },
+      "sha256_page": "e4e67c82e8fae77b"
+    },
+    {
+      "url": "https://www.750g.com/mini-bouchee-a-la-reine-garnie-de-creme-aux-champignons-de-paris-r64538.htm",
+      "site": "750g.com",
+      "nom": "Mini bouchée à la reine garnie de crème aux champignons de Paris",
+      "portions": "4 personnes",
+      "duree_preparation": "PT2M",
+      "duree_cuisson": "PT8M",
+      "ingredients": [
+        "Du fromage râpé",
+        "Des aromates",
+        "Du saumon coupé en dès",
+        "2 gros champignons de paris",
+        "1 mini brique de crème liquide",
+        "12 mini bouchées en feuilleté à garnir"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 796,
+        "sha256": "88fe799fe20a71d9"
+      },
+      "sha256_page": "15dde93e31654928"
+    }
+  ]
+}

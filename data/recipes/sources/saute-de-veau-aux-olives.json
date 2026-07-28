@@ -1,0 +1,210 @@
+{
+  "dish": "Sauté de veau aux olives",
+  "slug": "saute-de-veau-aux-olives",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_saute-de-veau-aux-olives-corse_41250.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauté de  veau aux olives (Corse) : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "600 g d'épaule de veau en morceaux",
+        "100 g de lardons",
+        "100 g d'olives vertes (ou 50 g de noires et 50 g de vertes)",
+        "1 gousse d'ail",
+        "1 oignon",
+        "1 cuillère à soupe de farine",
+        "15 cl de vin blanc",
+        "1 cuillère à café de graine de fenouil (ou 1 cuillère à café de pastis)",
+        "1 bouquet garni",
+        "poivre",
+        "sel",
+        "1 cuillère à soupe de concentré de tomates"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 738,
+        "sha256": "1bbabe44c15b208a"
+      },
+      "sha256_page": "7e034043ba388563"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_saute-de-veau-aux-olives-et-citron_85308.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauté de veau aux olives et citron : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "600 g de veau",
+        "1 poignée d'olives vertes et noires",
+        "1 citron",
+        "1 gousse d'ail",
+        "1 oignon",
+        "1 cuillère à soupe de pastis",
+        "thym",
+        "1 cuillère à soupe de farine",
+        "poivre",
+        "sel",
+        "2 cuillères à soupe d'huile d'olive",
+        "2 cuillères à soupe de persil ciselé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 334,
+        "sha256": "90f80fac16756dfc"
+      },
+      "sha256_page": "ee9e48c98f1b4f0a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_saute-de-veau-aux-olives_22420.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauté de veau aux olives : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "800 g de veau",
+        "100 g d'olives vertes dénoyautées",
+        "100 g d'olives noires dénoyautées",
+        "50 g de beurre",
+        "50 g de farine",
+        "40 cl d'eau",
+        "50 g d'oignons",
+        "1 bouquet garni",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 369,
+        "sha256": "403460f3ecf90f90"
+      },
+      "sha256_page": "3e75e5de1e8abddc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-en-folie/recettes/saute-de-veau-aux-olives-a-l-estragon-au-thym-et-au-romarin",
+      "site": "chefsimon.com",
+      "nom": "Sauté de veau aux olives, à l'estragon, au thym et au romarin",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT01H40M",
+      "ingredients": [
+        "850 g de sauté de veau",
+        "120 g d'olives vertes et noires mélangées",
+        "1 gros oignon jaune",
+        "2 ou 3 gousses d'ail",
+        "3 petits poivrons rouges (ou 1 normal)",
+        "20 cl de vin blanc",
+        "1 cuillère à soupe de farine",
+        "1 cuillère à soupe de concentré de tomate",
+        "1 cuillère à soupe d'origan",
+        "2 branches de thym",
+        "2 branches de romarin",
+        "1 branche de céleri",
+        "2 carottes",
+        "3 ou 4 branches d'estragon",
+        "20 cl de bouillon de légumes",
+        "sel et poivre du moulin",
+        "huile d'olive",
+        "Tagliatelles (en accompagnement)",
+        "copeaux de parmesan ou de Grana Padano (pour le dressage)",
+        "quelques feuilles de basilic (pour le dressage)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "87032cc3c7b1679b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/zika/recettes/foie-de-veau-saute-et-son-omelette-roulee-aux-olives-vertes-et-petits-suisses",
+      "site": "chefsimon.com",
+      "nom": "Foie de veau sauté et son omelette roulée aux olives vertes et petits suisses",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "200 g de foie de veau en tranche assez épaisse",
+        "sel",
+        "poivre",
+        "1 cs d'huile",
+        "1 œuf gros calibre",
+        "quelques anneaux d'olives vertes",
+        "2 petits suisses",
+        "sel/poivre",
+        "1 noisette de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "59789f38ec599785"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-en-folie/recettes/saute-de-veau-aux-olives-de-kalamata-et-basilic",
+      "site": "chefsimon.com",
+      "nom": "sauté de veau aux olives de kalamata et basilic",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "700 g de sauté de veau, coupé en morceaux réguliers",
+        "2 tranches de ventrèche (ou lard fumé, ou pancetta)",
+        "1 gros oignon",
+        "3 gousses d'ail",
+        "1 ou 2 carottes selon leur taille",
+        "1 cuillère à soupe bombée de concentré de tomate",
+        "15 cl de vin blanc",
+        "1 verre à liqueur de Pastis",
+        "de l'eau",
+        "sel et poivre du moulin",
+        "1 cuillère à soupe de marjolaine",
+        "quelques olives de Kalamata",
+        "1 bouquet garni (thym et laurier)",
+        "2 cuillères à soupe de maïzena",
+        "huile d'olive",
+        "un petit bouquet de basilic"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "86313c9293c0b9d6"
+    },
+    {
+      "url": "https://www.750g.com/saute-de-veau-aux-olives-r71404.htm",
+      "site": "750g.com",
+      "nom": "Sauté de veau aux olives facile",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "1 c. à c. de thym",
+        "8 pommes de terre",
+        "100 g d'olives vertes dénoyautées",
+        "Sel ou sel fin",
+        "Poivre",
+        "3 branches de romarin",
+        "1 cube de bouillon",
+        "2 c. à s. d'huile d'olive",
+        "2 oignons",
+        "2 gousses d'ail",
+        "800 g de sauté de veau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 471,
+        "sha256": "e0916796726a8ed1"
+      },
+      "sha256_page": "3eec960ef0974500"
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "dish": "Poivrons farcis au riz",
+  "slug": "poivrons-farcis-au-riz",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poivrons-farcis-aux-riz-et-lardons_71203.aspx",
+      "site": "marmiton.org",
+      "nom": "Poivrons farcis aux riz et  lardons : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "5 poivrons moyens (peu importe leur couleur)",
+        "150 g de riz",
+        "200 g de lardons fumés",
+        "150 g de gruyère râpé",
+        "poivre",
+        "sel",
+        "persil",
+        "0.5 verre de bouillon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 770,
+        "sha256": "fd1843fccc0106d0"
+      },
+      "sha256_page": "3b5e4f398cf394f7"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poivrons-farcis-au-riz-et-aux-olives_25362.aspx",
+      "site": "marmiton.org",
+      "nom": "Poivrons farcis au riz et aux olives : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "4 poivrons rouges",
+        "125 g de riz",
+        "100 g d'olives vertes dénoyautées",
+        "1 tomate",
+        "1 gousse d'ail",
+        "1 cuillère à café d'estragon haché",
+        "huile",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 420,
+        "sha256": "f5d0cd55dc322129"
+      },
+      "sha256_page": "0830d34eb6bfa07c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poivrons-farcis-riz-et-epices-vegetarien_39545.aspx",
+      "site": "marmiton.org",
+      "nom": "Poivrons farcis riz et épices (végétarien) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 poivrons",
+        "1 aubergine (facultatif)",
+        "1 oignon",
+        "50 g de pignons de pin",
+        "2 poignées de raisins secs",
+        "150 g de riz",
+        "cannelle",
+        "curry",
+        "mélange 4 épices",
+        "piment de Cayenne ou tabasco",
+        "ketchup"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 508,
+        "sha256": "5511f04eedb9ceae"
+      },
+      "sha256_page": "9b70060d44e74992"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/poivrons-farcis-eu-riz-et-porc-hache",
+      "site": "chefsimon.com",
+      "nom": "Poivrons farcis eu riz et porc haché",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H55M",
+      "ingredients": [
+        "2  poivrons rouges",
+        "2  poivrons verts",
+        "2  poivrons jaunes",
+        "500 g de hachis de porc",
+        "1  œuf",
+        "2  gousses d’ail",
+        "persil",
+        "1  cube de bouillon de volaille",
+        "sel et poivre",
+        "riz"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 165,
+        "sha256": "a87a8d49c3894496"
+      },
+      "sha256_page": "b1c177d78857a664"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-cuisine-d-adeline/recettes/poivrons-farcis-au-riz-et-aux-legumes",
+      "site": "chefsimon.com",
+      "nom": "Poivrons farcis au riz et aux légumes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "8 à 10 poivrons",
+        "300 g de riz cuit",
+        "4 tomates",
+        "1 gousse d'ail",
+        "1 oignon",
+        "Persil, basilic, herbes de Provence",
+        "Sel, poivre",
+        "Huile d'olive",
+        "Parmesan &lt;em&gt;(facultatif)&lt;/em&gt;"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 72,
+        "sha256": "55a5dc3b13f856e4"
+      },
+      "sha256_page": "14fe7d0296ccf036"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/poivrons-farcis-au-riz-indien-petits-pois-et-amandes",
+      "site": "chefsimon.com",
+      "nom": "Poivrons farcis au riz indien, petits pois et amandes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT01H15M",
+      "ingredients": [
+        "4  poivrons",
+        "1 gousse d’ail",
+        "1  oignon",
+        "1 cm de gingembre",
+        "1 cuil. à café de curcuma",
+        "1 cuil. à café de graines de cumin",
+        "1 cuil. à soupe de curry en poudre",
+        "2 cuil. à soupe d’amandes effilées",
+        "120 g de riz",
+        "100 g de petits pois frais ou surgelés",
+        "1/2 bouquet de coriandre",
+        "3 cuil. à soupe de jus de citron",
+        "4 cuil. à soupe d’huile de sésame grillée",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 153,
+        "sha256": "cd7bc1db6e0f8e2b"
+      },
+      "sha256_page": "c6d7f91e4604fc07"
+    },
+    {
+      "url": "https://www.750g.com/poivrons-farcis-au-riz-et-a-la-viande-hachee-sauce-tomate-aux-epices-r205493.htm",
+      "site": "750g.com",
+      "nom": "Poivrons farcis au riz et à la viande hachée, sauce tomate aux épices",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "4 poivrons  ronds",
+        "100 g de riz blanc",
+        "250 g de viande hachée  boeuf",
+        "1 oeuf",
+        "1 c. à s. de coriandre  hachée",
+        "1 c. à c. de cumin",
+        "1 c. à c. de paprika",
+        "1 pincée de sel ou sel fin",
+        "1 pincée de poivre",
+        "4 tomates  pelées et coupées en dés",
+        "1 oignon",
+        "1 c. à s. de coriandre  hachée",
+        "1 gousse d'ail  hachée",
+        "1 c. à c. de cumin",
+        "1 c. à c. de paprika",
+        "6 c. à s. d'huile d'olive",
+        "1 pincée de sel ou sel fin",
+        "1 pincée de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1319,
+        "sha256": "38a83d2fbfe39e66"
+      },
+      "sha256_page": "9cf834be749b1fbf"
+    },
+    {
+      "url": "https://www.750g.com/mini-poivrons-farcis-et-riz-pilaf-r87466.htm",
+      "site": "750g.com",
+      "nom": "Mini poivrons farcis et riz pilaf",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 verre de bouillon de légumes",
+        "2 oignons blancs",
+        "1 verre de riz",
+        "125 gr de lardons",
+        "1 barquette de farce à légumes",
+        "1 Vingtaine de mini poivrons"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 319,
+        "sha256": "62c959389ffb6ae9"
+      },
+      "sha256_page": "ef0d8f313ba86ac9"
+    }
+  ]
+}

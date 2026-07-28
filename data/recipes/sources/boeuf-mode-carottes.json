@@ -1,0 +1,93 @@
+{
+  "dish": "Bœuf mode aux carottes",
+  "slug": "boeuf-mode-carottes",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.750g.com/boeuf-mode-r49562.htm",
+      "site": "750g.com",
+      "nom": "Bœuf mode",
+      "portions": null,
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "10 cl de vin blanc",
+        "50 g de beurre",
+        "Sel ou sel fin",
+        "Poivre",
+        "1 bouquet garni",
+        "2 oignons",
+        "1 pied de veau",
+        "1 couenne de porc",
+        "1,5 kg de carotte",
+        "1 kg de boeuf"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 538,
+        "sha256": "60a3825530f1c1cb"
+      },
+      "sha256_page": "e5dd1a46ae3b8ccf"
+    },
+    {
+      "url": "https://www.julieandrieu.com/recettes/boeuf-carottes",
+      "site": "julieandrieu.com",
+      "nom": "Bœuf-carottes",
+      "portions": "8",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 kg de paleron en 12 morceaux",
+        "800 g de carottes",
+        "1 branche de céleri",
+        "30 g de beurre",
+        "1 CS d’huile d’olive",
+        "1 CS rase de concentré de tomates",
+        "1 bouteille de vin rouge corsé",
+        "1 bouquet garni (thym, laurier, persil)",
+        "1 gros oignon",
+        "3 gousses d’ail",
+        "2 CS de farine",
+        "4 CS de fond de veau déshydraté (ou 1 litre de fond de veau maison)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "98d6359898be51f7"
+    },
+    {
+      "url": "https://www.entrezdansmacuisine.com/boeuf-mode-ou-boeuf-carotte/",
+      "site": "entrezdansmacuisine.com",
+      "nom": "Boeuf Mode",
+      "portions": [
+        "6",
+        "6 personnes"
+      ],
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT150M",
+      "ingredients": [
+        "1,5 kg de boeuf à braiser ((gîte, macreuse, paleron))",
+        "4  carottes",
+        "10  oignons grelots",
+        "2  gousses d'ail",
+        "2  branches de céleri",
+        "2  tomates ((pelées))",
+        "200 ml de vin blanc",
+        "500 ml de bouillon de boeuf",
+        "2 c. à soupe de farine",
+        "50 g de beurre",
+        "1  bouquet garni ((thym, laurier, persil))",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1014,
+        "sha256": "c0345c68fccae395"
+      },
+      "sha256_page": "ce12609a7e89e174"
+    }
+  ]
+}

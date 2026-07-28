@@ -1,0 +1,235 @@
+{
+  "dish": "Soupe au pistou",
+  "slug": "soupe-au-pistou",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-minestrone-au-pistou_29861.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe Minestrone au pistou  : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "500 g de haricots blancs",
+        "100 g de haricots verts",
+        "150 g de macaroni",
+        "4 tomates",
+        "3 courgettes",
+        "2 pommes de terre",
+        "2 oignons",
+        "2 feuilles de sauge (facultatif)",
+        "2 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "sel",
+        "1 bouquet de basilic",
+        "4 gousses d'ail",
+        "6 cuillères à soupe de parmesan râpé",
+        "4 cuillères à soupe d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 921,
+        "sha256": "e3a2a617863c9711"
+      },
+      "sha256_page": "e4a48f85b98d94cd"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-au-pistou-de-ma-grand-mere_92782.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe au pistou de ma grand-mère : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT2H15M",
+      "ingredients": [
+        "150 g de haricots rouges",
+        "150 g de haricots blancs",
+        "200 g de haricots verts",
+        "6 carottes",
+        "2 pommes de terre moyennes",
+        "2 courgettes",
+        "1 oignon blanc",
+        "1 poireau",
+        "100 g de coquillettes",
+        "gruyère ou parmesan",
+        "200 g de poitrine de porc salée non fumée",
+        "3 l d'eau",
+        "poivre",
+        "sel",
+        "500 g de tomates mûres",
+        "6 gousses d'ail",
+        "1 grosse poignée de basilic",
+        "1 verre d'huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 981,
+        "sha256": "aa95f7f0c2ffa099"
+      },
+      "sha256_page": "50b31e74a6e4aa00"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-au-pistou-complete_52699.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe au pistou complète : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "125 g de haricots rouges",
+        "125 g de haricots blancs",
+        "125 g de haricots verts",
+        "125 g de haricots verts plats",
+        "2 oignons",
+        "4 courgettes moyennes",
+        "4 carottes",
+        "6 pommes de terre",
+        "6 tomates rouges à cuire",
+        "1 basilic",
+        "1 ail",
+        "100 g de parmesan",
+        "250 g de gruyère râpé",
+        "huile d'olive",
+        "1 morceau de petit salé fumé",
+        "1 jambon",
+        "1 paquet de spaghetti"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1048,
+        "sha256": "515728300fb365a0"
+      },
+      "sha256_page": "0131e4a144dc3270"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisiner-en-paix/recettes/soupe-au-pistou-4f3523c1-5f7b-4b1f-ac44-573e74bcf583",
+      "site": "chefsimon.com",
+      "nom": "Soupe au pistou",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "1 /2 oignon",
+        "250 g de courgette jaune",
+        "2 blettes",
+        "200 g de carotte",
+        "1 gousse d’ail écrasé",
+        "300 g de pomme de terre",
+        "100 g de haricots verts",
+        "200 g de haricots coco de Paimpol frais",
+        "1 tomate émondée et coupée grossièrement",
+        "4 gousses d’ail",
+        "10 feuilles de basilic",
+        "1 càc de purée de noix de cajou",
+        "65 ml d’huile d’olive",
+        "du sel et du poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "f26f4f6b8dd4656e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clarisse-en-cuisine/recettes/soupe-au-pistou-6fdc21e1-ebfb-4c70-a08c-d8dfb9e843bb",
+      "site": "chefsimon.com",
+      "nom": "Soupe au pistou",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT02H00M",
+      "ingredients": [
+        "4 l d'eau chaude",
+        "150 gr de haricots blancs secs",
+        "150 gr de haricots rouges secs (ou 300-400 gr nets de haricots rouges en boîte)",
+        "5 pommes de terre moyennes à chair ferme (type Charlotte)",
+        "4 belles carottes (env. 300 gr nets)",
+        "1 branche de livèche",
+        "2 tablettes de bouillon (de légumes ou de volaille)",
+        "sel",
+        "3 courgettes jaunes et vertes avec leur peau (1 kg en tout)",
+        "350 gr de gros haricots verts frais (variété sans fils)",
+        "2 belles tomates mûres",
+        "4 grosses poignées de petites coquillettes",
+        "6-8 belles gousses d'ail",
+        "1 grosse poignée de feuilles de basilic frais",
+        "20 cl d'huile d'olive",
+        "75 gr de gruyère râpé",
+        "75 gr de parmesan râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "a59aafab312b4378"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/variations-gourmandes/recettes/la-soupe-au-pistou-aux-legumes-de-nice",
+      "site": "chefsimon.com",
+      "nom": "La soupe au pistou aux légumes de Nice",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "3 petits poireaux",
+        "2 petites branches de céleri (avec leurs feuilles)",
+        "3 oignons blancs",
+        "3 gousses d'ail",
+        "5 petits navets fanes",
+        "6 carottes fanes",
+        "6 courgettes \"trompettes\" de Nice",
+        "10 feuilles de petites blettes",
+        "3 tomates coeurs de boeuf",
+        "4 petites pommes de terre",
+        "300 g d'haricots cocos frais écossés",
+        "250 g d'haricots verts",
+        "10 tiges de persil",
+        "3 litres d'eau",
+        "sel, poivre",
+        "une vingtaine de feuilles de basilic (balico)",
+        "3 gousses d'ail",
+        "6 cuill. à soupe de parmesan frais râpé",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "d611e9b787de612f"
+    },
+    {
+      "url": "https://www.750g.com/soupe-au-pistou-r12634.htm",
+      "site": "750g.com",
+      "nom": "La traditionnelle soupe provençale au pistou",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT2H30M",
+      "ingredients": [
+        "350 g d'haricots verts",
+        "250 g d'haricots blancs",
+        "5 pommes de terre",
+        "5 courgettes",
+        "2 tomates",
+        "2 oignons",
+        "1 branche de céleri",
+        "1 tête d'ail",
+        "150 g de fromage râpé",
+        "1 verre d'huile d'olive",
+        "1 bouquet de basilic",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 906,
+        "sha256": "c976651c9fc365c8"
+      },
+      "sha256_page": "f694117a7feb9cc6"
+    }
+  ]
+}

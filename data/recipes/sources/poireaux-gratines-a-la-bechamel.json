@@ -1,0 +1,82 @@
+{
+  "dish": "Poireaux gratinés à la béchamel",
+  "slug": "poireaux-gratines-a-la-bechamel",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.750g.com/poireaux-gratines-en-creme-de-bechamel-r41691.htm",
+      "site": "750g.com",
+      "nom": "Poireaux gratinés en crème de béchamel",
+      "portions": "8 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "Huile d'olive",
+        "Chapelure",
+        "Noix de muscade",
+        "Sel ou sel fin",
+        "Poivre",
+        "50 g de fromage râpé",
+        "2 c. à s. de beurre",
+        "250 ml de crème fraîche",
+        "250 ml de lait",
+        "2 c. à s. de farine",
+        "3 poireaux"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 664,
+        "sha256": "9a34365881f47773"
+      },
+      "sha256_page": "8333a17bc4a12265"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-poireaux_80283.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin de poireaux : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 botte de poireau",
+        "600 g de tomates ou tomates pelées hors saison",
+        "150 g de gruyère râpé",
+        "10 cl de crème fraîche",
+        "1 oignon",
+        "1 gousse d'ail",
+        "1 noix de beurre",
+        "2 cuillères à soupe d'huile",
+        "thym",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 756,
+        "sha256": "e1478a71a84f6f40"
+      },
+      "sha256_page": "82444bfc264bcc51"
+    },
+    {
+      "url": "https://www.750g.com/gratin-de-poireaux-r40600.htm",
+      "site": "750g.com",
+      "nom": "Gratin de poireaux maison",
+      "portions": "40 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "du gruyère râpé",
+        "50cl de sauce béchamel",
+        "4 gros poireaux",
+        "Ingrédients:"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 789,
+        "sha256": "4911430ea55ae528"
+      },
+      "sha256_page": "1f59a65221f9d7b1"
+    }
+  ]
+}

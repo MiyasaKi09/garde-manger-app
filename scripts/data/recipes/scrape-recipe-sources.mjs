@@ -9,9 +9,14 @@
  * CE QUI EST REPRIS ET CE QUI NE L'EST PAS
  * Les listes d'ingrédients et leurs quantités sont des faits : une daube porte
  * du bœuf, du vin et des olives, et aucun site ne possède ce constat. On les
- * relève donc, on les compare et on en tire une médiane. Le TEXTE des étapes,
- * lui, est une œuvre — il n'est jamais recopié dans le corpus. Le dossier le
- * conserve à titre de preuve de lecture ; la recette publiée le reformule.
+ * relève donc, on les compare et on en tire une médiane.
+ *
+ * Le TEXTE des étapes, lui, est une œuvre. Ce dépôt étant public, l'y écrire
+ * reviendrait à republier la prose d'autrui — le script n'en garde donc que
+ * l'empreinte : nombre d'étapes, longueur, condensat. Cela suffit à prouver
+ * qu'une page a bien été lue, et à détecter qu'elle a changé depuis. Le texte
+ * lui-même reste dans le fichier de travail local, le temps d'en comprendre la
+ * méthode, et la recette publiée la reformule.
  *
  * L'attrition est normale : selon les sites, entre un tiers et la moitié des
  * pages refusent la lecture automatique ou ne portent aucun balisage Recipe.
@@ -32,11 +37,20 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
 const OUT_DIR = join(ROOT, 'data', 'recipes', 'sources')
 
-const [plan] = process.argv.slice(2)
+const [plan, ...reste] = process.argv.slice(2)
 if (!plan) {
-  console.error('Usage : scrape-recipe-sources.mjs <plan.json>')
+  console.error('Usage : scrape-recipe-sources.mjs <plan.json> [--travail fichier.json]')
   process.exit(2)
 }
+
+/**
+ * `--travail` écrit à part le texte intégral des étapes, pour le lire pendant la
+ * rédaction. Ce fichier ne doit jamais entrer dans le dépôt : il est destiné au
+ * répertoire de travail local.
+ */
+const indexTravail = reste.indexOf('--travail')
+const cheminTravail = indexTravail >= 0 ? reste[indexTravail + 1] : null
+const travail = cheminTravail ? [] : null
 
 const AGENT = 'Mozilla/5.0 (compatible; MykoRecipeResearch/1.0)'
 
@@ -80,7 +94,6 @@ const extraireRecette = (html) => {
         ingredients: [objet.recipeIngredient || objet.ingredients || []].flat()
           .map((ligne) => String(ligne).replace(/&#(\d+);/g, (_, n) => String.fromCharCode(n)).trim())
           .filter(Boolean),
-        // Conservées comme preuve de lecture, PAS pour être recopiées.
         etapes_source: etapes.map((texte) => String(texte).trim()).filter(Boolean),
       }
     }
@@ -105,12 +118,21 @@ for (const item of plans) {
       echecs.push({ dish: item.dish, url, motif: 'aucun balisage Recipe exploitable' })
       continue
     }
+    // La prose des étapes ne sort pas d'ici : seule son empreinte est publiée.
+    const { etapes_source: etapes, ...faits } = recette
+    const empreinte = {
+      nombre: etapes.length,
+      signes: etapes.join(' ').length,
+      sha256: createHash('sha256').update(etapes.join('\n')).digest('hex').slice(0, 16),
+    }
     sources.push({
       url,
       site: new URL(url).hostname.replace(/^www\./, ''),
-      ...recette,
+      ...faits,
+      etapes_empreinte: empreinte,
       sha256_page: createHash('sha256').update(html).digest('hex').slice(0, 16),
     })
+    if (travail) travail.push({ url, dish: item.dish, etapes })
   }
   if (!sources.length) {
     console.log(`✗ ${item.dish} — aucune source exploitable`)
@@ -121,12 +143,17 @@ for (const item of plans) {
     dish: item.dish,
     slug: item.slug,
     sources_count: sources.length,
-    avertissement: "Les étapes source sont conservées comme preuve de lecture. La recette du corpus les REFORMULE ; elle ne les recopie pas.",
+    avertissement: "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
     sources,
   }, null, 2)}\n`)
   totalSources += sources.length
   totalPlats += 1
   console.log(`✓ ${item.dish} — ${sources.length} source(s) : ${sources.map((s) => s.site).join(', ')}`)
+}
+
+if (cheminTravail) {
+  writeFileSync(cheminTravail, `${JSON.stringify(travail, null, 1)}\n`)
+  console.log(`\nTexte des étapes gardé hors dépôt : ${cheminTravail}`)
 }
 
 console.log(`\n${totalPlats} plat(s) documenté(s), ${totalSources} source(s) relevée(s).`)

@@ -1,0 +1,212 @@
+{
+  "dish": "Langue de boeuf sauce piquante",
+  "slug": "langue-de-boeuf-sauce-piquante",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_langue-de-boeuf-sauce-piquante-cornichons_170277.aspx",
+      "site": "marmiton.org",
+      "nom": "Langue de boeuf sauce piquante aux cornichons : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H45M",
+      "ingredients": [
+        "1 langue de 1,5 kg",
+        "20 cl de vinaigre d'alcool",
+        "1 oignon piqué de 3 clous de girofle",
+        "2 bouillons",
+        "1 branche de thym",
+        "5 feuilles de laurier",
+        "sel",
+        "poivre",
+        "50 g de beurre",
+        "1 oignon émincé",
+        "3 cuillères à soupe de farine",
+        "100 g de cornichons",
+        "1 cuillère à café de patrelle"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 970,
+        "sha256": "cc504531fe1503d5"
+      },
+      "sha256_page": "dd006ff47861c29b"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_langue-de-boeuf-sauce-piquante_20689.aspx",
+      "site": "marmiton.org",
+      "nom": "Langue de boeuf sauce piquante : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "1 langue de boeuf (environ 1,5 kg)",
+        "2 cubes de bouillon de boeuf",
+        "3 échalotes",
+        "20 cl de vin blanc",
+        "20 cl de vinaigre de vin blanc",
+        "30 g de beurre",
+        "3 cornichons au vinaigre",
+        "1 grosse cuillère à soupe de farine",
+        "1 cuillère à café de moutarde",
+        "1 persil haché",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1233,
+        "sha256": "55286bc18f30fbd3"
+      },
+      "sha256_page": "5bc7a96e4b5362a1"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/une-aiguille-dans-l-potage/recettes/langue-de-boeuf-sauce-piquante-fb60d2b2-f581-446b-961c-c23e7c9665fd",
+      "site": "chefsimon.com",
+      "nom": "Langue de boeuf sauce piquante",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 langue de boeuf",
+        "1 bouquet garni (thym, queues de persil, laurier)",
+        "6 grains de poivre",
+        "Gros sel",
+        "2 carottes",
+        "2 oignons",
+        "Vinaigre",
+        "50 g d'échalotes",
+        "12 cl de vin blanc",
+        "5 cl de vinaigre",
+        "Bouillon de cuisson de la langue",
+        "50 g de beurre",
+        "50 g de farine",
+        "Une douzaine de cornichons",
+        "Sel, poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "c43c32beee4f44dc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/veb-9b0f8344-9a4e-4ce4-9336-4b466721cff2/recettes/langue-de-boeuf-sauce-tomate-piquante",
+      "site": "chefsimon.com",
+      "nom": "Langue de bœuf sauce tomate piquante",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H20M",
+      "ingredients": [
+        "1 langue de bœuf (1,750 kg)",
+        "1 oignon piqué de 2 clous de girofle",
+        "1 cube de bouillon de légumes",
+        "1,5 l d'eau",
+        "4 grains de poivre",
+        "1 petite poignée de gros sel",
+        "1 oignon",
+        "5 gousses d'ail",
+        "2 cuillères à soupe d'huile d'olive",
+        "400 g de tomates concassées",
+        "30 g de farine",
+        "piment d'Espelette",
+        "60 cl du jus de cuisson de la langue",
+        "120 g de cornichons"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "d1e59828e6ca9424"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cooking-cakes/recettes/langue-de-boeuf-et-sa-sauce-piquante-tomatee",
+      "site": "chefsimon.com",
+      "nom": "Langue de boeuf et sa sauce piquante tomatée",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT04H00M",
+      "ingredients": [
+        "1 langue de boeuf de 1.5 kg au moins",
+        "1 gros oignon",
+        "2 clous de girofle",
+        "1 bouquet garni (laurier, thym, persil)",
+        "1 carotte",
+        "2 cubes de bouillon de volaille ou de légumes",
+        "50 gr de beurre",
+        "50 gr de farine",
+        "6 à 7 louches du bouillon de cuisson",
+        "3 cuillères à soupe de vinaigre blanc",
+        "1 petite boîte de concentré de tomates",
+        "quelques cornichons"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "33996d94c5180db4"
+    },
+    {
+      "url": "https://www.750g.com/langue-de-boeuf-sauce-piquante-r204071.htm",
+      "site": "750g.com",
+      "nom": "Langue de bœuf, sauce piquante",
+      "portions": "6 personnes",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT3H20M",
+      "ingredients": [
+        "1 langue de boeuf",
+        "1 poireau",
+        "1 carotte",
+        "1 oignon",
+        "10 cl de vinaigre blanc ou vinaigre d'alcool",
+        "4 clous de girofle",
+        "Thym",
+        "Laurier",
+        "4 échalotes  (grosses)",
+        "10 cornichons",
+        "50 cl de sauce tomate",
+        "20 g de beurre",
+        "5 cl de vinaigre de vin blanc",
+        "2 c. à s. de câpres",
+        "Persil",
+        "Piment",
+        "Sel ou sel fin",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1422,
+        "sha256": "0164eae09c89c821"
+      },
+      "sha256_page": "a9d3c21b09ca0af2"
+    },
+    {
+      "url": "https://www.750g.com/langue-de-boeuf-sauce-piquante-r27257.htm",
+      "site": "750g.com",
+      "nom": "Langue de bœuf sauce piquante",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT2H30M",
+      "ingredients": [
+        "1 langue de boeuf",
+        "10 cornichons",
+        "70 g de concentré de tomates",
+        "2 cubes de bouillon de boeuf",
+        "1 c. à s. de farine",
+        "1 c. à s. de beurre",
+        "1 verre de vinaigre blanc ou vinaigre d'alcool",
+        "4 c. à s. de vinaigre blanc ou vinaigre d'alcool"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1580,
+        "sha256": "8f6df7dd759919db"
+      },
+      "sha256_page": "d85383e455263ea7"
+    }
+  ]
+}

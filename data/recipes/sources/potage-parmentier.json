@@ -1,0 +1,109 @@
+{
+  "dish": "Potage Parmentier",
+  "slug": "potage-parmentier",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_potage-parmentier_537332.aspx",
+      "site": "marmiton.org",
+      "nom": "Potage parmentier : la meilleure recette",
+      "portions": "4 0",
+      "duree_preparation": "PT8M",
+      "duree_cuisson": "PT36M",
+      "ingredients": [
+        "500 g de pommes de terre",
+        "2 poireaux",
+        "75 cl de bouillon de volaille",
+        "20 cl de crème fleurette",
+        "30 g de beurre",
+        "sel",
+        "poivre",
+        "20 cl de lait"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 812,
+        "sha256": "0f924f6efd20c55a"
+      },
+      "sha256_page": "b1a0399631a2bfd5"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_petit-parmentier-du-potager-rapide_38776.aspx",
+      "site": "marmiton.org",
+      "nom": "Petit parmentier du Potager (rapide) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 sachets de purée de pommes de terre nature + du lait",
+        "300 g de boeuf",
+        "1 oignon",
+        "1 boîte de champignons de Paris (environ 300 g)",
+        "1 boîte de petits pois (environ 300 g)",
+        "1 cube de bouillon de légumes",
+        "1 cuillère à soupe d'huile",
+        "gruyère râpé (environ 70 g)",
+        "chapelure",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 857,
+        "sha256": "f9948cf08a4f431f"
+      },
+      "sha256_page": "047fb6029f34e105"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/potage-parmentier--4",
+      "site": "chefsimon.com",
+      "nom": "Potage Parmentier",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "300 g de blancs de poireaux",
+        "600 g de pommes de terre à purée",
+        "1.5 litre d'eau",
+        "30 g de beurre",
+        "pain de mie",
+        "crème",
+        "cerfeuil (décor)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 618,
+        "sha256": "3b602ed6ad7182a9"
+      },
+      "sha256_page": "e080e6127bcc9fea"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/darya-de-tortore/recettes/potage-parmentier-au-chorizo-poele",
+      "site": "chefsimon.com",
+      "nom": "Potage parmentier au chorizo poêlé",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 petits poireaux entiers, bien lavés et finement émincés",
+        "3-4 pommes de terre farineuses de taille moyenne (type Bintje), épluchées et coupées en dés",
+        "30 g de beurre doux",
+        "750 ml de bouillon de volaille ou de légumes",
+        "2-3 c. à soupe de crème entière",
+        "Sel, poivre fraîchement moulu",
+        "6 à 8 tranches de chorizo d'environ 5 mm d'épaisseur, détaillées en lardons",
+        "1 c. à café d'huile d'olive",
+        "1/2 c. à café de thym",
+        "1/4 c. à café de paprika fumé",
+        "1/8 c. à café d'ail semoule"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "b105fcf1b7b4d9be"
+    }
+  ]
+}

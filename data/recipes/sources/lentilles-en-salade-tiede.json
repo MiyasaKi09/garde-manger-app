@@ -1,0 +1,183 @@
+{
+  "dish": "Lentilles en salade tiède",
+  "slug": "lentilles-en-salade-tiede",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_coquilles-saint-jacques-et-lentilles-en-salade-tiede_14531.aspx",
+      "site": "marmiton.org",
+      "nom": "Coquilles Saint-Jacques et lentilles en salade tiède : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "8 noix de saint-jacques",
+        "6 brins de cerfeuil",
+        "200 g de lentilles vertes du Puy",
+        "4 filets d'anchois à l'huile",
+        "125 g de lard tranché",
+        "1 cuillère à soupe de moutarde",
+        "1 gousse d'ail",
+        "3 cuillères à soupe de vinaigre de xérès",
+        "0.5 bouquet de ciboulette",
+        "7 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "sel",
+        "10 queues de persil",
+        "1 morceau de couenne de lard",
+        "1 carotte",
+        "poireau",
+        "oignon",
+        "1 feuille de laurier",
+        "1 brin de thym"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 1326,
+        "sha256": "4e2c95b26fa4b18d"
+      },
+      "sha256_page": "f58f3ac5e9a1ba2e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_jambonneau-en-salade-de-lentilles-tiedes_26722.aspx",
+      "site": "marmiton.org",
+      "nom": "Jambonneau en salade de lentilles tièdes : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "2 jambonneaux demi-sel",
+        "500 g de lentilles vertes",
+        "5 oignons",
+        "4 carottes",
+        "2 cuillères à soupe de vinaigre",
+        "56 cuillères à soupe d'huile",
+        "4 cuillères à soupe d'huile de noisette (ou de noix)",
+        "5 clous de girofle",
+        "3 feuilles de sauge",
+        "2 queues de persil",
+        "1 feuille de laurier",
+        "1 branche de thym"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 706,
+        "sha256": "fddf76c47470cd54"
+      },
+      "sha256_page": "6e0be34fe0709ef7"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-tiede-aux-lentilles-lardons-et-oeufs_305152.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade tiède aux lentilles, lardons et oeufs : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT2M",
+      "ingredients": [
+        "400 g de lentilles",
+        "200 g de lardons",
+        "4 oeufs",
+        "30 g de croûtons",
+        "1 cuillère à café d'huile d'olive",
+        "1 cuillère à soupe de vinaigre balsamique",
+        "1 pincée de sel",
+        "1 pincée de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 554,
+        "sha256": "bb055305b39c460b"
+      },
+      "sha256_page": "03c01904fe9cb5f6"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/midiabetecooking/recettes/salade-tiede-de-lentilles-ig-bas-aux-poireaux-et-chevre",
+      "site": "chefsimon.com",
+      "nom": "Salade tiède de lentilles IG bas aux poireaux et chèvre",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "120 gr de lentilles vertes",
+        "1 poireau",
+        "150 gr champignons",
+        "40 gr de fromage de chèvre",
+        "1 poignée de mâche",
+        "quelques noix",
+        "2 oeufs",
+        "3 c. à soupe d'huile d'olive",
+        "1 c. à soupe de vinaigre de cidre",
+        "1 c. à café de moutarde",
+        "Sel, poivre, thym, persil..."
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 1323,
+        "sha256": "d20692c65184d9de"
+      },
+      "sha256_page": "4474b05ffaba1ec7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-fromages-de-chevre/recettes/salade-tiede-de-lentilles-et-selles-sur-cher",
+      "site": "chefsimon.com",
+      "nom": "Salade tiède de lentilles et Selles-sur-Cher",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "1 Selles-sur-Cher AOP",
+        "250 g de lentilles vertes",
+        "1 betterave cuite",
+        "1 petite patate douce",
+        "10 noisettes concassées",
+        "1 bol de farine",
+        "1 bol de chapelure",
+        "1 œuf",
+        "1 petit bouquet de persil",
+        "2 cuillères à soupe de vinaigre de cidre",
+        "4 cuillères à soupe d’huile d’olive",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1008,
+        "sha256": "9849b9374bffb10b"
+      },
+      "sha256_page": "fca8b0af5b94ac5a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/darya-de-tortore/recettes/salade-de-lentilles-tiedes-et-maquereau-fume",
+      "site": "chefsimon.com",
+      "nom": "Salade de lentilles tièdes et maquereau fumé",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "150 g de lentilles du Puy",
+        "1 c. à soupe d’huile d’olive",
+        "1 échalote épluchée et émincée",
+        "1 petite carotte épluchée et émincée",
+        "1 tige de céleri émincée",
+        "1/4 c. à café de carvi en grains (ou de cumin)",
+        "2 branches de thym frais",
+        "2 feuilles de laurier",
+        "1 litre d’eau froide",
+        "Une grosse pincée de sel",
+        "1 gousse d’ail épluchée et très finement émincée (ou pressée)",
+        "Une pincée de sel, une pincée de poivre",
+        "2 c. à soupe de jus de citron (ou de vinaigre de vin rouge)",
+        "3 c. à soupe d’huile d’olive",
+        "Un filet de maquereau fumé au poivre",
+        "Une grosse poignée de persil ciselé",
+        "Une grosse poignée de ciboulette ciselée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "730d8c2f49756fdb"
+    }
+  ]
+}

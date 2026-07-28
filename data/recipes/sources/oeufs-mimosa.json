@@ -1,0 +1,198 @@
+{
+  "dish": "Oeufs mimosa",
+  "slug": "oeufs-mimosa",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_oeufs-mimosa_28602.aspx",
+      "site": "marmiton.org",
+      "nom": "Oeufs mimosa : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 oeufs (suivant l'appétit)",
+        "1 petit bol de mayonnaise",
+        "20 g de laitues",
+        "1 cuillère à soupe de persil haché",
+        "8 olives noires pour décorer les oeufs (facultatif)",
+        "1 jaune d'oeuf",
+        "1 cuillère à café de moutarde",
+        "25 cl d'huile",
+        "2 cl de jus de citron (facultatif)",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 831,
+        "sha256": "a0003607f51d17d9"
+      },
+      "sha256_page": "27ff6f49a0e58270"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_oeufs-mimosas-au-thon_47878.aspx",
+      "site": "marmiton.org",
+      "nom": "Oeufs mimosas au thon : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "10 oeufs",
+        "mayonnaise",
+        "150 g de thon en miettes",
+        "de salade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 744,
+        "sha256": "583ebf25f8ee1eb7"
+      },
+      "sha256_page": "33892e72546a3e3e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_verrine-oeufs-mimosa-au-thon_68682.aspx",
+      "site": "marmiton.org",
+      "nom": "Verrine oeufs mimosa au thon : la meilleure recette",
+      "portions": "8 verrines grand modèle",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "11 oeufs",
+        "1 cuillère à café de moutarde",
+        "poivre",
+        "sel",
+        "huile de tournesol",
+        "1 boîte de thon moyen modèle"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 724,
+        "sha256": "8938c312d0a1e926"
+      },
+      "sha256_page": "f012344ff5c79e54"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/oeufs-mimosa--7",
+      "site": "chefsimon.com",
+      "nom": "Oeufs mimosa",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "6 gros oeufs extra-frais",
+        "2 cuillers de mayonnaise",
+        "sel",
+        "poivre",
+        "persil haché."
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 586,
+        "sha256": "e727c7bbac66c8e1"
+      },
+      "sha256_page": "af562223bbcf0af6"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/l-organisation-mondiale-de-l-avocat/recettes/oeufs-mimosa-diaboliques-a-l-avocat",
+      "site": "chefsimon.com",
+      "nom": "Oeufs mimosa diaboliques à l'avocat",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H12M",
+      "ingredients": [
+        "6 oeufs",
+        "1 avocat",
+        "1 c. à soupe de jus de citron",
+        "1 poivron rouge",
+        "Sel et Poivre noir"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 530,
+        "sha256": "beaaaef946930b1d"
+      },
+      "sha256_page": "ff8f139e8bb4662a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/charles-coulombeau/recettes/oeufs-mimosa-anchois-miso-foie-gras",
+      "site": "chefsimon.com",
+      "nom": "Oeufs mimosa anchois, miso, foie gras",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H09M",
+      "ingredients": [
+        "2 litres d'eau",
+        "1 litre de jus de betterave",
+        "15 grammes de sel fin",
+        "15 grammes de sucre",
+        "6 œufs",
+        "1 tranche de foie gras",
+        "50 grammes de fromage frais",
+        "Quelques anchois",
+        "Graines de sésame torréfié (pour la décoration)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 992,
+        "sha256": "dcb2101d4316e254"
+      },
+      "sha256_page": "3e3c015735f83aec"
+    },
+    {
+      "url": "https://www.750g.com/oeufs-mimosa-frits-r201037.htm",
+      "site": "750g.com",
+      "nom": "Œufs mimosa frits",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT2M",
+      "ingredients": [
+        "4 oeufs  durs",
+        "2 oeufs",
+        "50 g de mayonnaise",
+        "30 g de moutarde",
+        "20 g de ketchup",
+        "Farine",
+        "Huile de friture",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 681,
+        "sha256": "1791fa07a99c41cb"
+      },
+      "sha256_page": "074aba2c18ff977a"
+    },
+    {
+      "url": "https://www.750g.com/oeufs-mimosa-creme-au-thon-r57671.htm",
+      "site": "750g.com",
+      "nom": "Œufs mimosa, crème au thon",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "Persil",
+        "Ciboulette",
+        "8 tomate cerises",
+        "8 olives noires dénoyautées",
+        "2 c à s d'huile de tournesol",
+        "8 œufs",
+        "Sel",
+        "Poivre",
+        "1 c à s de capres",
+        "2 c à s de mayonnaise 'AMORA'",
+        "1/2 c à c de moutarde",
+        "100g de thon à l'huile d'olive",
+        "1 jaune d'œuf"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 785,
+        "sha256": "b764592a8e56c702"
+      },
+      "sha256_page": "3fbddbc6d69aa9c1"
+    }
+  ]
+}
