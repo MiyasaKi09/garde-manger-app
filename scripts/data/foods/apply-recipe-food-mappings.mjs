@@ -72,6 +72,16 @@ for (const decision of lot) {
   if (!cle) { rejeter('clé vide'); continue }
   if (decision.verdict === 'ecarter') { rejeter(`écartée à l'arbitrage : ${decision.motif || 'sans motif'}`); continue }
 
+  // Le registre est interrogé par le nom normalisé de la forme employée dans une
+  // recette. Une clé qui ne s'en déduit pas produit une entrée que personne
+  // n'ira jamais chercher : l'arbitrage semble appliqué, et l'ingrédient reste
+  // introuvable. « Poule crue » déclarée sous « poule viande crue » a coûté
+  // exactement ça — un mapping bien écrit, invisible à la validation.
+  if (decision.forme && normalizeName(decision.forme) !== cle) {
+    rejeter(`clé « ${cle} » ne correspond pas à « ${decision.forme} » (attendu « ${normalizeName(decision.forme)} »)`)
+    continue
+  }
+
   const code = String(decision.alim_code || '').trim()
   const fdcId = String(decision.usda_fdc_id || '').trim()
   if (!code && !fdcId) { rejeter('ni code Ciqual ni identifiant USDA'); continue }

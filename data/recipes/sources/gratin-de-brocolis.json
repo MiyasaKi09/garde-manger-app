@@ -1,0 +1,190 @@
+{
+  "dish": "Gratin de brocolis",
+  "slug": "gratin-de-brocolis",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-brocolis-facile_18753.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin de brocolis facile : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "2 oeufs",
+        "2 tranches de jambon dégraissé",
+        "15 cl de crème fraîche",
+        "100 g de fromage râpé",
+        "poivre",
+        "sel",
+        "muscade",
+        "1 oignon",
+        "2 gousses d'ail",
+        "1 huile",
+        "300 g de brocolis",
+        "chapelure"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1111,
+        "sha256": "6b0b1338e5ad380b"
+      },
+      "sha256_page": "5132061e90d902e7"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-brocolis_22413.aspx",
+      "site": "marmiton.org",
+      "nom": "gratin de brocolis : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "1 kg de brocoli (frais ou surgelés)",
+        "40 g de beurre + 15 g pour le plat",
+        "40 g de farine",
+        "50 cl de lait",
+        "1 cuillère à soupe de coulis de tomate",
+        "3 oeufs",
+        "1 gousse d'ail (pelée, écrasée)",
+        "10 cl de crème fraîche",
+        "30 g de chapelure",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 813,
+        "sha256": "843a079698bc4e24"
+      },
+      "sha256_page": "791de0d7e2580f38"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-brocoli-a-la-dijonnaise_32335.aspx",
+      "site": "marmiton.org",
+      "nom": "gratin de brocoli à la dijonnaise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "2 brocolis",
+        "20 g de beurre",
+        "2 cuillères à soupe de farine",
+        "1 verre de lait",
+        "gruyère",
+        "mozzarella",
+        "1 cuillère à soupe de moutarde",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 621,
+        "sha256": "4558b5cac5505688"
+      },
+      "sha256_page": "66cade2d49efda02"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/gratin-de-pates-brocoli-poulet-a-la-bechamel",
+      "site": "chefsimon.com",
+      "nom": "Gratin de pâtes brocoli poulet à la béchamel",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "2 blanc de poulet",
+        "140 g de pâtes",
+        "160 g de brocoli",
+        "70 g d'emmental râpé",
+        "400 ml de lait",
+        "30 g de beurre",
+        "30 g de fécule de pomme de terre",
+        "10 g de chapelure",
+        "noix de muscade",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1187,
+        "sha256": "e2e86d7abe9279e3"
+      },
+      "sha256_page": "3a36e5234fca3150"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/aline-bianca-cuisine/recettes/gratin-de-brocolis-au-jambon",
+      "site": "chefsimon.com",
+      "nom": "Gratin de brocolis au jambon",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "Béchamel :",
+        "50g de beurre (ou de margarine végétale)",
+        "30g de farine",
+        "20g de fécule de maïs",
+        "50cl de lait",
+        "sel et poivre",
+        "Garniture :",
+        "750g de brocolis",
+        "150g de dés de jambon",
+        "1 cube de bouillon de légumes",
+        "40g de fromage râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 975,
+        "sha256": "86a3dc02906ea233"
+      },
+      "sha256_page": "cbf0e029cd3918f0"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-blog/recettes/gratin-de-brocolis-aux-lardons",
+      "site": "chefsimon.com",
+      "nom": "Gratin de brocolis aux lardons",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2  brocolis",
+        "250 grammes de lardons fumés",
+        "20 cL de crème fraîche",
+        "2  oignons",
+        "2  échalotes",
+        "Gruyère râpé",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 190,
+        "sha256": "25d8a6a8e3ddcc89"
+      },
+      "sha256_page": "18d47458b4910338"
+    },
+    {
+      "url": "https://www.750g.com/gratin-de-brocolis-r100841.htm",
+      "site": "750g.com",
+      "nom": "Gratin de brocolis",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "300 g de brocolis",
+        "100 g de fromage râpé",
+        "2 oeufs",
+        "2 tranches de jambon",
+        "1 oignon",
+        "15 cl de crème fraîche",
+        "2 gousses d'ail",
+        "1 huile",
+        "Noix de muscade",
+        "Chapelure"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 622,
+        "sha256": "e80d88d8c5b1463a"
+      },
+      "sha256_page": "2eb16f1e8ffe55af"
+    }
+  ]
+}

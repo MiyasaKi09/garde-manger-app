@@ -1,0 +1,242 @@
+{
+  "dish": "Blanquette de dinde",
+  "slug": "blanquette-de-dinde",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_blanquette-de-dinde-aux-poireaux_24308.aspx",
+      "site": "marmiton.org",
+      "nom": "Blanquette de dinde aux poireaux : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "6 escalopes de dinde",
+        "3 poireaux",
+        "3 carottes",
+        "2 oignons",
+        "0.5 l de bouillon de volaille",
+        "3 cuillères à soupe de crème fraîche",
+        "2 cuillères à soupe de maïzena"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 479,
+        "sha256": "b32dc16474958366"
+      },
+      "sha256_page": "cb30d53e994e397e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_blanquette-de-dinde-aux-champignons_64478.aspx",
+      "site": "marmiton.org",
+      "nom": "Blanquette de dinde aux champignons pas chère et facile : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "800 g de blanquette de dinde",
+        "8 champignons frais",
+        "2 oignons",
+        "1 cuillère à soupe de farine",
+        "1 petit verre de vin blanc",
+        "1 tablette de bouillon de volaille",
+        "1 cuillère à soupe de persil",
+        "1 branche de thym"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 519,
+        "sha256": "0f749cf6256b52e4"
+      },
+      "sha256_page": "3301bc877571b5a9"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_blanquette-de-dinde_14216.aspx",
+      "site": "marmiton.org",
+      "nom": "Blanquette de dinde facile : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1.2 kg de dinde",
+        "1 boîte de tomates pelées",
+        "1 boîte de concentré de tomates",
+        "2 gousses d'ail",
+        "2 oignons",
+        "1 petit verre de cognac",
+        "1 verre de vin blanc sec",
+        "25 cl de crème fraîche",
+        "beurre ou margarine",
+        "maïzena",
+        "1 cube de bouillon de volaille",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 518,
+        "sha256": "cf83c7cf8c3428a8"
+      },
+      "sha256_page": "fa882f9adc345d86"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/keskonmangemaman/recettes/blanquette-de-dinde-express-0b083569-05b5-4d3f-9a56-bd31c1b32db2",
+      "site": "chefsimon.com",
+      "nom": "Blanquette de dinde express",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H23M",
+      "ingredients": [
+        "1 kilo de blanc de dinde",
+        "1 cuillère à soupe d'huile neutre",
+        "1 bocal de champignons des bois",
+        "2 c à soupe de fond de veau",
+        "1 c à soupe de fécule de maïs",
+        "100 grammes de mascarpone",
+        "12 petites pommes de terre à l'anglaise.",
+        "sel et poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "890c38d5ba22c21d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/recettes-de-clairette/recettes/blanquette-de-dinde-73005594-9877-45a4-9c77-990b79cd0216",
+      "site": "chefsimon.com",
+      "nom": "Blanquette de dinde",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "600 g de sauté de dinde coupé en gros cubes",
+        "500 g de carottes",
+        "250 g de champignons de Paris frais",
+        "un oignon",
+        "une échalote",
+        "un bouquet garni",
+        "600 g de bouillon de volaille",
+        "100 g de crème fraîche épaisse",
+        "une cuillère à soupe de jus de citron",
+        "15 g de beurre",
+        "2 brins de persil plat",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "d5cfd07ce508304b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/virginie-et-fabien/recettes/blanquette-de-dinde-aux-champignons-de-paris-et-girolles",
+      "site": "chefsimon.com",
+      "nom": "Blanquette de dinde aux champignons de Paris et girolles",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 escalopes de dinde extra-fines (poids total 480 g)",
+        "15 g de girolles séchées",
+        "500 g de champignons de Paris frais",
+        "1 oignon",
+        "1 cube de bouillon de volaille",
+        "2 verres d’eau",
+        "1 verre de vin blanc",
+        "20 cl de crème fraîche liquide",
+        "1 cuillère à soupe de farine",
+        "1 cuillère à soupe de persil",
+        "1 cuillère à café de thym",
+        "huile d’olive",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "aa61cf9ee5b8a141"
+    },
+    {
+      "url": "https://www.750g.com/blanquette-de-dinde-r81905.htm",
+      "site": "750g.com",
+      "nom": "Blanquette de dinde classique",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "Persil",
+        "Thym",
+        "400 ml de crème liquide",
+        "Ail",
+        "1 oignon  (gros)",
+        "4 carottes",
+        "600 g de dindes",
+        "3 poireaux"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 433,
+        "sha256": "b5bdfa611d0cfa51"
+      },
+      "sha256_page": "78c532fb5a04e738"
+    },
+    {
+      "url": "https://www.750g.com/blanquette-de-dinde-aux-legumes-r60796.htm",
+      "site": "750g.com",
+      "nom": "Blanquette de dinde aux légumes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT3H",
+      "ingredients": [
+        "Sel",
+        "Poivre",
+        "1 c à s d'épices cajun",
+        "Huile d'olive",
+        "20 cl d'eau",
+        "1 bouillon ' marmite de volaille '",
+        "1 gousse d'ail",
+        "2 belles carottes coupées en rondelles",
+        "1 poireaux coupé en rondelles",
+        "1 petite courgette",
+        "1 oignon",
+        "3 pilons de dinde (blanquette)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 691,
+        "sha256": "4d49dffc1831c758"
+      },
+      "sha256_page": "e15f71345d9c6548"
+    },
+    {
+      "url": "https://www.750g.com/saute-de-dinde-facon-blanquette-r6330.htm",
+      "site": "750g.com",
+      "nom": "Sauté de dinde façon blanquette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H15M",
+      "ingredients": [
+        "1 kg de dinde  ou dindonneau",
+        "3 carottes",
+        "1 oignon",
+        "50 g de beurre",
+        "1 bouquet garni",
+        "1 c. à s. de farine",
+        "1 bouillon",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 327,
+        "sha256": "eb7cea79ca9018fc"
+      },
+      "sha256_page": "72e2bb79721f123a"
+    }
+  ]
+}

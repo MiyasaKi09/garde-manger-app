@@ -1,0 +1,100 @@
+{
+  "dish": "Socca niçoise",
+  "slug": "socca-nicoise",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_socca-nicoise-au-four_16096.aspx",
+      "site": "marmiton.org",
+      "nom": "Socca niçoise au four : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT9M",
+      "ingredients": [
+        "250 g de farine de pois chiches",
+        "50 cl d'eau",
+        "6 cuillères à soupe d'huile d'olive",
+        "1 cuillère à café de sel fin",
+        "poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1082,
+        "sha256": "3db3dfc7ea88bc4f"
+      },
+      "sha256_page": "c2e843073783b258"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_socca-nicoise_16079.aspx",
+      "site": "marmiton.org",
+      "nom": "Socca niçoise : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "250 g de farine de pois chiches",
+        "50 cl d'eau",
+        "2 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 379,
+        "sha256": "37eb1f31b647cc90"
+      },
+      "sha256_page": "4e8ef3914d0ddb15"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clementine-8b16a900-a596-45c5-9c12-3cd5ff02a6bc/recettes/galette-socca-nicoise",
+      "site": "chefsimon.com",
+      "nom": "Galette socca niçoise",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "8 tomates cerises multicolores",
+        "½ oignon rouge",
+        "1 bouquet de basilic",
+        "2 radis",
+        "1 poignée de mesclun",
+        "2 gousses d'ail",
+        "4 brins de persil",
+        "50 g de pecorino",
+        "4 càs d'huile d'olive",
+        "250 g de farine de pois chiches",
+        "½ botte de ciboulette",
+        "6 càs d'huile d'olive",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "2feb1df19b308cbc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-en-folie/recettes/socca-nicoise-fc8ac3d1-33c8-4335-82c6-037b9f4758ba",
+      "site": "chefsimon.com",
+      "nom": "Socca niçoise",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "300 g de farine de pois chiche",
+        "1/2 litre d'eau",
+        "2 cuillères à café de sel fin",
+        "8 cuillères à soupe d'huile d'olive",
+        "huile d'olive pour la plaque de cuisson"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "dcf7d0ad25e8a1c3"
+    }
+  ]
+}

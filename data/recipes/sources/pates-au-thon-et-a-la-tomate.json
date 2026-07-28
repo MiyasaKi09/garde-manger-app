@@ -1,0 +1,105 @@
+{
+  "dish": "Pâtes au thon et à la tomate",
+  "slug": "pates-au-thon-et-a-la-tomate",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pates-au-thon-et-a-la-tomate_15874.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâtes au thon et à la tomate : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "400 g de coudes ou penne",
+        "1 boîte de tomates concassées",
+        "1 boîte de thon au naturel",
+        "1 oignon émincé",
+        "thym et laurier"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 403,
+        "sha256": "64a892f063d52ac4"
+      },
+      "sha256_page": "61c06a6c65014552"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_spaghetti-tomate-thon-capres_28320.aspx",
+      "site": "marmiton.org",
+      "nom": "Spaghetti tomate, thon, câpres : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "600 g de spaghetti",
+        "750 g de tomates pelées concassées",
+        "225 g de thon à l'huile",
+        "3 gousses d'ail",
+        "3 cuillères à soupe de câpres",
+        "huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 302,
+        "sha256": "ee8dee800cc49221"
+      },
+      "sha256_page": "a4214c275481c1d7"
+    },
+    {
+      "url": "https://www.750g.com/pates-a-la-provencale-au-thon-r1723.htm",
+      "site": "750g.com",
+      "nom": "Pâtes à la provencale au thon",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 boite de thon",
+        "300 g de pâtes",
+        "Sel ou sel fin",
+        "Poivre",
+        "20 cl de coulis de tomate",
+        "3 gousses d'ail",
+        "Basilic  frais",
+        "Herbes de Provence",
+        "Huile d'olive",
+        "1 boite de pulpe de tomate"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 476,
+        "sha256": "d1fcfb4d86ddc477"
+      },
+      "sha256_page": "89bc609bace35c91"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_spaghetti-au-thon-a-la-provencale_68672.aspx",
+      "site": "marmiton.org",
+      "nom": "Spaghetti au thon à la provençale : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "200 g de spaghetti",
+        "linguine",
+        "120 g de thon albacore (prendre le thon en conserve, classique)",
+        "200 g de tomates concassées (de même, prendre en conserve)",
+        "3 cuillères à soupe d'huile d'olive",
+        "1 cuillère à soupe de herbes de Provence",
+        "1 oignon",
+        "poivre",
+        "sel",
+        "30 g d'olives noires"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 902,
+        "sha256": "154d3247189602c9"
+      },
+      "sha256_page": "4e3f4da5c2e81a22"
+    }
+  ]
+}

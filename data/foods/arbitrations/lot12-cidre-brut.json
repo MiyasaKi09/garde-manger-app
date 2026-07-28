@@ -1,0 +1,15 @@
+{
+  "lot": "lot12 — le cidre brut, boisson et non condiment",
+  "contexte": "Le catalogue ne connaissait du cidre que son vinaigre. Une recette normande qui mouille au cidre — poulet vallée d'Auge, mais aussi les cuissons de porc et de moules — se rattachait donc au vinaigre de cidre. L'erreur n'est pas nutritionnelle, elle est culinaire : les sources versent 30 à 50 cl de cidre par plat, quantité qui rendrait le plat immangeable s'il s'agissait de vinaigre.",
+  "decisions": [
+    {
+      "cle": "cidre brut",
+      "forme": "Cidre brut",
+      "verdict": "mapper",
+      "alim_code": "5006",
+      "nom_ciqual": "Cidre brut",
+      "confidence": "A",
+      "note": "Le brut plutôt que le doux : c'est celui que nomment les sources, et l'écart n'est pas anecdotique — 10,5 kcal contre 37,5, soit plus du triple, parce que le doux garde son sucre résiduel. Le cidre étant alcoolisé, l'énergie publiée ne se referme pas sur les seuls macronutriments ; c'est la valeur du classeur qui fait foi, pas un calcul d'Atwater."
+    }
+  ]
+}

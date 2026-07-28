@@ -1,0 +1,205 @@
+{
+  "dish": "Veau Marengo",
+  "slug": "veau-marengo",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veau-marengo-maison_22472.aspx",
+      "site": "marmiton.org",
+      "nom": "Veau Marengo maison : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1.2 kg de veau",
+        "75 g de beurre",
+        "4 échalotes",
+        "2 carottes",
+        "1 cuillère à soupe de farine",
+        "50 g de concentré de tomates",
+        "30 cl de vin blanc sec",
+        "30 cl d'eau",
+        "2 gousses d'ail",
+        "125 g de champignons",
+        "1 bouquet garni",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 565,
+        "sha256": "f15429e02306b988"
+      },
+      "sha256_page": "ae7cd0b051d5c5ba"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_saute-de-veau-marengo_16970.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauté de veau Marengo : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1.4 kg d'épaule de veau",
+        "1 boîte de tomates pelées (500 g)",
+        "2 oignons",
+        "1 gousse d'ail",
+        "1 verre de vin blanc",
+        "1 cuillère à soupe de farine",
+        "1 bouquet garni",
+        "40 g de beurre",
+        "2 cuillères à soupe d'huile",
+        "250 g d'oignons grelots"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 519,
+        "sha256": "51f683ff29d2cbb1"
+      },
+      "sha256_page": "d34c275817d21cf7"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veau-marengo-facile_170965.aspx",
+      "site": "marmiton.org",
+      "nom": "Veau Marengo facile : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "6 veau",
+        "600 g de tomates fraîches",
+        "30 cl de vin blanc",
+        "30 g de farine",
+        "1 oignon",
+        "10 g de beurre",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 484,
+        "sha256": "21eac03a93bc0fc0"
+      },
+      "sha256_page": "ee3006e70c6d0110"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/veau-marengo--6",
+      "site": "chefsimon.com",
+      "nom": "Veau Marengo",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1,5 kg d'épaule de veau (ou de collier)",
+        "2 gros oignons",
+        "3 gousses d'ail",
+        "1 litre de fond brun de veau bien corsé",
+        "1 dl de vin blanc",
+        "concassé de tomates (départ 1 kilo de tomates)",
+        "un bouquet de thym",
+        "300 g de champignons",
+        "2 carottes tournées et glacées",
+        "8 petits navets nouveaux glacés",
+        "150 g de petits oignons grelots glacés à brun",
+        "persil haché",
+        "5 cl d'huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1113,
+        "sha256": "4a2331b03ec2ab4a"
+      },
+      "sha256_page": "7321d608975e9c65"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/veau-marengo-21d08d60-f975-4228-a600-50dee62c615b",
+      "site": "chefsimon.com",
+      "nom": "Veau marengo",
+      "portions": "5 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT01H15M",
+      "ingredients": [
+        "1 kg d’épaule de veau",
+        "1  oignon",
+        "10 cL de vin blanc",
+        "60 g de farine",
+        "20 g de concentré de tomate",
+        "1  bouquet garni",
+        "250 g de champignons de Paris",
+        "250 g d’oignons grelots",
+        "huile d’olive",
+        "2 gousses d’ail",
+        "20 g de beurre",
+        "10 g de sucre en poudre",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 109,
+        "sha256": "4ac3e8fad17b825f"
+      },
+      "sha256_page": "e25727a0e578d8da"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/epicetout/recettes/saute-de-veau-marengo-21e7ff77-1566-4fff-8bea-04d7e87ea4b0",
+      "site": "chefsimon.com",
+      "nom": "Sauté de veau Marengo",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT02H00M",
+      "ingredients": [
+        "900 g environ d’épaule de veau",
+        "1 gros oignons",
+        "1 échalote",
+        "2 gousses d’ail",
+        "4 carottes",
+        "2 grosses tomates",
+        "Une douzaine de tomates cerises",
+        "1 cuillère à soupe de concentré de tomate",
+        "30 cl de vin blanc",
+        "20 cl de fond de veau",
+        "1 cuillère à soupe de farine",
+        "Thym, laurier",
+        "Huile d’olive",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "98a6206e551f137b"
+    },
+    {
+      "url": "https://www.750g.com/veau-marengo-r201405.htm",
+      "site": "750g.com",
+      "nom": "Mijoté de veau marengo",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "800 g de veau  pour blanquette",
+        "25 cl de vin blanc sec",
+        "25 cl d'eau",
+        "200 g de champignons de Paris",
+        "2 échalotes",
+        "2 gousses d'ail",
+        "2 c. à s. de concentré de tomates",
+        "2 c. à s. de farine",
+        "Huile",
+        "Beurre",
+        "1 carré de bouillon de boeuf",
+        "1 pincée d'herbes de Provence",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 794,
+        "sha256": "a3094f0c9bff24a4"
+      },
+      "sha256_page": "fb026ad30749590b"
+    }
+  ]
+}

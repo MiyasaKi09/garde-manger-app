@@ -1,0 +1,244 @@
+{
+  "dish": "Salade piémontaise",
+  "slug": "salade-piemontaise",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_la-salade-piemontaise-de-jean-pierre_25605.aspx",
+      "site": "marmiton.org",
+      "nom": "La salade piémontaise de Jean-Pierre : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 tomates",
+        "2 oeufs",
+        "4 pommes de terre",
+        "1 jambon",
+        "8 cornichons",
+        "1 pot de mayonnaise",
+        "huile",
+        "vinaigre",
+        "poivre",
+        "sel",
+        "moutarde"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 612,
+        "sha256": "dc22201f7348765c"
+      },
+      "sha256_page": "1d45c0178fb4c1c8"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-piemontaise-de-nath_33648.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade piémontaise de nath : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "5 pommes de terre charlotte",
+        "2 oeufs",
+        "1 petite boîte de maïs",
+        "1 tomate",
+        "200 g de blancs de poulet cuit",
+        "10 cornichons",
+        "1 cuillère à soupe de persil haché",
+        "poivre",
+        "sel",
+        "2 cuillères à soupe de mayonnaise",
+        "2 cuillères à soupe de crème liquide",
+        "1 cuillère à café de vinaigre de vin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 802,
+        "sha256": "129ac6db15e96046"
+      },
+      "sha256_page": "f479d4597b1d1a9f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-piemontaise_50862.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade piémontaise : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "2 tomates moyennes",
+        "2 tranches de jambon assez épaisses ou 2 tranches de rôti de porc froid",
+        "6 cornichons selon grosseur",
+        "4 pommes de terre selon la grosseur",
+        "1 oeuf",
+        "huile d'olive",
+        "1 cuillère à soupe de moutarde",
+        "3 cuillères à soupe de crème semi-épaisse",
+        "0.5 cuillère à café de vinaigre",
+        "1 échalote",
+        "poivre avec baies",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 823,
+        "sha256": "c8047511b747e316"
+      },
+      "sha256_page": "87810237a13cff47"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/salade-piemontaise-au-poulet-fume",
+      "site": "chefsimon.com",
+      "nom": "Salade piémontaise au poulet fumé",
+      "portions": "",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "600 g de pommes de terre",
+        "6 tomates cocktail",
+        "200 g de poulet fumé",
+        "2 œufs",
+        "140 g de maïs",
+        "mayonnaise eu goût",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 915,
+        "sha256": "3882378043c1ca2b"
+      },
+      "sha256_page": "94421b4996f537b6"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/salade-piemontaise-legere-0dbc4f32-0866-414c-9896-aaa3bda7eaa9",
+      "site": "chefsimon.com",
+      "nom": "Salade piémontaise légère",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "6 pommes de terre (à chair ferme, type Charlotte)",
+        "4 tranches de jambon blanc",
+        "100g de fromage à pâte cuite (emmental, comté...)",
+        "2 gros cornichons aigre-doux coupés en petits dés",
+        "3 tomates",
+        "1 dizaine de radis roses coupés en fines rondelles",
+        "2CS de graines de tournesol",
+        "Quelques brins de ciboulette fraîche",
+        "4CS de skyr nature",
+        "2CS de moutarde à l’ancienne",
+        "1CS de vinaigre de cidre",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 757,
+        "sha256": "71e9d1a6476fc07a"
+      },
+      "sha256_page": "b8d2a27280e2c965"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/deliacious/recettes/salade-piemontaise-71ccf180-dc28-4329-9bcd-897769bcd8af",
+      "site": "chefsimon.com",
+      "nom": "Salade piémontaise",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "500 g pomme de terre à chair ferme",
+        "1  tomate",
+        "8-10   cornichons",
+        "4 c. à soupe  crème de soja",
+        "2 c. à café moutarde (fine ou forte selon vos goûts)",
+        "8 c. à soupe huile de tournesol",
+        "1/4 c. à café sel kala namak"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 214,
+        "sha256": "d75d0f8cbb9cc0e4"
+      },
+      "sha256_page": "fe0215ceb5c4eadf"
+    },
+    {
+      "url": "https://www.750g.com/salade-piemontaise-r87823.htm",
+      "site": "750g.com",
+      "nom": "Salade piémontaise rafraîchissante",
+      "portions": "4 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "600 g de pommes de terre",
+        "300 g de tomates  fermes",
+        "200 g de talon de jambon blanc",
+        "100 g de mayonnaise",
+        "2 oeufs  durs",
+        "8 cornichons",
+        "1 oignon rouge  petit",
+        "5 cl d'eau",
+        "4 cl de vinaigre",
+        "½ tasse de persil",
+        "Sel ou sel fin",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 506,
+        "sha256": "03def93aae882553"
+      },
+      "sha256_page": "e8c54843972b85dc"
+    },
+    {
+      "url": "https://www.750g.com/salade-piemontaise-r41265.htm",
+      "site": "750g.com",
+      "nom": "Salade piémontaise maison",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "600 g de pommes de terre  à chair ferme",
+        "400 g de tomates  fermes",
+        "200 g de dés de jambon",
+        "3 oeufs  durs",
+        "150 g de mayonnaise",
+        "10 cornichons",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 645,
+        "sha256": "7f1865b3a0ef7df9"
+      },
+      "sha256_page": "c94974b9d27a89ac"
+    },
+    {
+      "url": "https://www.750g.com/salade-piemontaise-r43542.htm",
+      "site": "750g.com",
+      "nom": "Salade piémontaise crémeuse",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "600 g de pommes de terre à chair ferme",
+        "400 g de tomate Roma",
+        "200 g de jambon blanc  coupé en dés",
+        "150 g de mayonnaise",
+        "8 cornichons",
+        "3 oeufs  durs",
+        "2 c. à s. de crème épaisse légère ( 15% de MG )",
+        "1 c. à s. de vinaigre de vin blanc",
+        "1 c. à s. de persil  haché",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 421,
+        "sha256": "0d8f45d4ffaccbf4"
+      },
+      "sha256_page": "07c717e95423b969"
+    }
+  ]
+}

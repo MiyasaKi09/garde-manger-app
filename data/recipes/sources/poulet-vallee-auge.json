@@ -1,0 +1,121 @@
+{
+  "dish": "Poulet vallée d'Auge",
+  "slug": "poulet-vallee-auge",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.julieandrieu.com/recettes/poulet-vallee-dauge-de-mariejosee",
+      "site": "julieandrieu.com",
+      "nom": "Poulet vallée d'Auge de Marie-Josée",
+      "portions": "6",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 poulet fermier de 1,8 kg coupé en morceaux",
+        "7 pommes reines des reinettes",
+        "20 cl de crème liquide",
+        "1 verre de cidre brut",
+        "1 verre à liqueur de calvados",
+        "1 pincée de muscade",
+        "80 g de beurre",
+        "3 CS d’huile",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "680fbeb1effc3659"
+    },
+    {
+      "url": "https://www.saveurs-magazine.fr/recettes/poulet-vallee-d-auge/",
+      "site": "saveurs-magazine.fr",
+      "nom": "Poulet vallée d'Auge",
+      "portions": "Pour 4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "1 poulet découpé en morceaux",
+        "320 g de champignons de Paris",
+        "4 grosses carottes",
+        "2 pommes (type golden)",
+        "2 échalotes",
+        "50 g de crème fraîche épaisse",
+        "4 brins de thym",
+        "2 feuilles de laurier",
+        "75 cl de cidre brut",
+        "10 cl de calvados",
+        "25 g de beurre",
+        "2 c. à soupe d’huile d’olive",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1079,
+        "sha256": "8644116d64ecf629"
+      },
+      "sha256_page": "2eca0e84e9d664ed"
+    },
+    {
+      "url": "https://www.stellacuisine.com/poulet-vallee-dauge-cidre-calvados/",
+      "site": "stellacuisine.com",
+      "nom": "Poulet vallée d'Auge, au Cidre et au Calvados",
+      "portions": [
+        "6"
+      ],
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "1  poulet fermier ((environ 1,5 kgs))",
+        "5 gros champignons de Paris ((selon vos goûts))",
+        "2  échalotes",
+        "1  carotte",
+        "1  blanc de poireau",
+        "3  pommes  (type Ariane)",
+        "1  bouquet garni",
+        "2  jaunes d'oeufs",
+        "20 cl de crème fraîche liquide",
+        "5 cl de Calvados",
+        "30 cl de cidre brut",
+        "60 grammes de beurre",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1557,
+        "sha256": "48b65da33258b148"
+      },
+      "sha256_page": "daccf71657592aa8"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/poulet-vallee-d-auge-aux-pommes",
+      "site": "chefsimon.com",
+      "nom": "Poulet vallée d'Auge aux pommes",
+      "portions": "5 personnes",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT01H15M",
+      "ingredients": [
+        "1 poulet fermier de 1,7 kilo",
+        "100 g de beurre",
+        "2 échalotes",
+        "1 carotte",
+        "5 cl de calvados",
+        "25 cl de cidre brut artisanal",
+        "300 g de champignons de Paris",
+        "20 cl de crème épaisse",
+        "2 feuilles de laurier",
+        "1 cc de thym",
+        "4 pommes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1195,
+        "sha256": "dd3bb19d09cd58a1"
+      },
+      "sha256_page": "dde48a29b376354e"
+    }
+  ]
+}

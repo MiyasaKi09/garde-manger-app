@@ -1,0 +1,57 @@
+{
+  "dish": "Omelette paysanne",
+  "slug": "omelette-paysanne",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-paysanne_68864.aspx",
+      "site": "marmiton.org",
+      "nom": "omelette paysanne : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 cuillère à soupe d'huile",
+        "100 g de lardons fumés",
+        "2 tranches de pains rassis",
+        "1 gousse d'ail",
+        "6 oeufs",
+        "1 cuillère à soupe de crème fraîche",
+        "1 cuillère à soupe de ciboulette ciselée",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 504,
+        "sha256": "a098cee05637f848"
+      },
+      "sha256_page": "f3d01b94e7610984"
+    },
+    {
+      "url": "https://www.750g.com/omelette-paysanne-r8075.htm",
+      "site": "750g.com",
+      "nom": "Omelette à la paysanne avec lardons et pommes de terre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT17M",
+      "ingredients": [
+        "30 g de beurre",
+        "Sel",
+        "Poivre",
+        "150 g de lard maigre fumé en fines tranches",
+        "1 bouquet de ciboulette",
+        "6 œufs",
+        "1 oignon frais",
+        "400 g de pommes de terre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 679,
+        "sha256": "cad167fcf362ddd8"
+      },
+      "sha256_page": "27c2c3cfb00d3d3a"
+    }
+  ]
+}

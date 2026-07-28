@@ -1,0 +1,204 @@
+{
+  "lot": "lot9 — ingrédients appelés par les 30 recettes sourcées du batch 1",
+  "contexte": "Les 171 sources relevées pour le batch 1 citent 85 lignes d'ingrédients sans forme au catalogue. Une partie relève d'un simple écart de vocabulaire (« maïzena » pour la fécule de maïs déjà présente, « nuoc mam » pour la sauce poisson, « ventrèche » pour le lardon) : ces cas-là se règlent par des synonymes de lecture, pas par de nouvelles formes — dupliquer un concept casserait les graphes de diversité du planificateur. Restent les ingrédients réellement absents, arbitrés ici. Les macros sont lues dans le classeur ANSES Ciqual 2020 ; les rares glucides manquants se referment par Atwater à la construction du corpus.",
+  "decisions": [
+    {
+      "cle": "gruyere rape",
+      "forme": "Gruyère râpé",
+      "verdict": "mapper",
+      "alim_code": "12114",
+      "nom_ciqual": "Gruyère",
+      "confidence": "B",
+      "note": "Huit plats du batch appellent du « gruyère râpé » : gratins, croque-madame, bouchées. Le Ciqual publie l'entrée râpée pour l'emmental (12118) mais pas pour le gruyère ; râper ne change ni la composition ni la densité énergétique, seulement la surface. On retient donc le gruyère en bloc. Les glucides ne sont pas renseignés : la fermeture d'Atwater les ramène à zéro (4×27,9 + 9×34,6 = 423 kcal, exactement l'énergie publiée), ce qui est le comportement attendu d'une pâte pressée cuite."
+    },
+    {
+      "cle": "emmental rape",
+      "forme": "Emmental râpé",
+      "verdict": "mapper",
+      "alim_code": "12118",
+      "nom_ciqual": "Emmental ou emmenthal râpé",
+      "confidence": "B",
+      "note": "En cuisine domestique française, le sachet vendu comme « gruyère râpé » contient le plus souvent de l'emmental. Les deux formes coexistent donc : les recettes suivent ce que la source écrit plutôt que de trancher un débat d'étiquetage. Entrée râpée dédiée au classeur, macros complètes hors glucides (fermés à zéro par Atwater)."
+    },
+    {
+      "cle": "brocoli cru",
+      "forme": "Brocoli cru",
+      "verdict": "mapper",
+      "alim_code": "20057",
+      "nom_ciqual": "Brocoli, cru",
+      "confidence": "A",
+      "note": "Le gratin de brocolis ne peut pas exister sans son ingrédient principal. Entrée crue directe, macros complètes."
+    },
+    {
+      "cle": "escalope de dinde crue",
+      "forme": "Escalope de dinde crue",
+      "verdict": "mapper",
+      "alim_code": "36304",
+      "nom_ciqual": "Dinde, escalope, crue",
+      "confidence": "A",
+      "note": "Les neuf sources de la blanquette de dinde partent toutes d'escalopes ou de sauté détaillés en cubes, jamais d'une dinde entière. Entrée crue dédiée, macros complètes."
+    },
+    {
+      "cle": "haricot flageolet en conserve egoutte",
+      "forme": "Haricot flageolet en conserve, égoutté",
+      "verdict": "mapper",
+      "alim_code": "20508",
+      "nom_ciqual": "Haricot flageolet, appertisé, égouttés",
+      "confidence": "A",
+      "note": "Forme courante du gigot d'agneau aux flageolets en cuisine domestique. L'entrée appertisée égouttée est la bonne : c'est le poids net après égouttage que porte une recette, pas le poids du bocal."
+    },
+    {
+      "cle": "haricot flageolet sec",
+      "forme": "Haricot flageolet sec",
+      "verdict": "mapper",
+      "alim_code": "20539",
+      "nom_ciqual": "Haricot flageolet, vert, sec",
+      "confidence": "A",
+      "note": "Deux des sources partent du sec, avec trempage. Les deux formes ne sont pas interchangeables au poids : 100 g de sec donnent environ 230 g d'égoutté, et les confondre triplerait l'apport annoncé."
+    },
+    {
+      "cle": "mache crue",
+      "forme": "Mâche crue",
+      "verdict": "mapper",
+      "alim_code": "20099",
+      "nom_ciqual": "Mâche, crue",
+      "confidence": "B",
+      "note": "Sept plats du batch sont accompagnés d'une salade verte ; il fallait des feuilles nommées plutôt qu'une « salade » indéterminée. Les lipides sont publiés sous forme de borne (< 0,5 g) : c'est une majoration, pas une absence, et le corpus la lit comme telle."
+    },
+    {
+      "cle": "roquette crue",
+      "forme": "Roquette crue",
+      "verdict": "mapper",
+      "alim_code": "20217",
+      "nom_ciqual": "Roquette, crue",
+      "confidence": "A",
+      "note": "Même besoin que la mâche, avec un profil amer distinct qui compte pour l'empreinte sensorielle. Macros complètes."
+    },
+    {
+      "cle": "mesclun",
+      "forme": "Mesclun",
+      "verdict": "mapper",
+      "alim_code": "20272",
+      "nom_ciqual": "Mesclun ou salade, mélange de jeunes pousses",
+      "confidence": "B",
+      "note": "Mélange, donc moyenne : à retenir quand la source dit « mesclun » ou « jeunes pousses » sans préciser, et seulement là. Une source qui nomme une feuille précise garde sa feuille."
+    },
+    {
+      "cle": "calvados",
+      "forme": "Calvados",
+      "verdict": "mapper",
+      "alim_code": "1023",
+      "nom_ciqual": "Eau de vie de vin, type armagnac, cognac",
+      "confidence": "B",
+      "note": "Le Ciqual porte bien une entrée « Eau de vie, type calvados » (1024), mais sans valeur énergétique — ses macros sont toutes à zéro et l'énergie manquante. La reprendre telle quelle ferait passer un alcool à 40 % vol pour un produit à 0 kcal, ce qui est faux : l'apport d'une eau-de-vie vient presque entièrement de l'éthanol. L'entrée armagnac/cognac est le même produit du point de vue nutritionnel — un distillat à 40 % vol — et elle est chiffrée (228 kcal). C'est un proxy assumé, choisi parce qu'une absence ne doit jamais devenir un zéro."
+    },
+    {
+      "cle": "langue de boeuf crue",
+      "forme": "Langue de bœuf crue",
+      "verdict": "mapper",
+      "alim_code": "40202",
+      "nom_ciqual": "Langue, boeuf, crue",
+      "confidence": "A",
+      "note": "Ingrédient principal du plat, sans substitut possible. Entrée crue dédiée, macros complètes."
+    },
+    {
+      "cle": "poule crue",
+      "forme": "Poule crue",
+      "verdict": "mapper",
+      "alim_code": "36001",
+      "nom_ciqual": "Poule, viande ,crue",
+      "confidence": "A",
+      "note": "La poule au pot se fait avec une poule, pas un poulet : bête plus âgée, plus grasse, qui demande un bouillon long. Le catalogue ne portait que du poulet, ce qui aurait effacé la distinction que le plat porte dans son nom."
+    },
+    {
+      "cle": "ricotta",
+      "forme": "Ricotta",
+      "verdict": "mapper",
+      "alim_code": "19585",
+      "nom_ciqual": "Ricotta",
+      "confidence": "A",
+      "note": "Farce des courgettes dans plusieurs sources. Entrée directe."
+    },
+    {
+      "cle": "cerfeuil frais",
+      "forme": "Cerfeuil frais",
+      "verdict": "mapper",
+      "alim_code": "11002",
+      "nom_ciqual": "Cerfeuil, frais",
+      "confidence": "A",
+      "note": "Herbe de finition citée par plusieurs sources. Employée en brins, donc en quantités où l'apport est négligeable — mais la nommer évite de la faire disparaître de la liste."
+    },
+    {
+      "cle": "marjolaine sechee",
+      "forme": "Marjolaine séchée",
+      "verdict": "mapper",
+      "alim_code": "11034",
+      "nom_ciqual": "Marjolaine, séchée",
+      "confidence": "A",
+      "note": "Seule entrée marjolaine du classeur, et c'est bien la forme séchée qu'emploient les sources."
+    },
+    {
+      "cle": "ketchup",
+      "forme": "Ketchup",
+      "verdict": "mapper",
+      "alim_code": "11008",
+      "nom_ciqual": "Ketchup, préemballé",
+      "confidence": "A",
+      "note": "Cité en condiment par deux sources. Produit industriel par nature : l'entrée préemballée est la bonne."
+    },
+    {
+      "cle": "blette crue",
+      "forme": "Blette crue",
+      "verdict": "mapper",
+      "alim_code": "20004",
+      "nom_ciqual": "Bette ou blette, crue",
+      "confidence": "B",
+      "note": "Légume de la soupe au pistou dans les versions provençales. Lipides publiés sous forme de borne (< 0,5 g), lus comme majoration."
+    },
+    {
+      "cle": "panais cru",
+      "forme": "Panais cru",
+      "verdict": "mapper",
+      "alim_code": "20181",
+      "nom_ciqual": "Panais, cru",
+      "confidence": "A",
+      "note": "Racine du pot-au-feu et des gratins d'hiver. Macros complètes."
+    },
+    {
+      "cle": "boeuf hache cru 15 mg",
+      "forme": "Bœuf haché cru 15 % MG",
+      "verdict": "mapper",
+      "alim_code": "6254",
+      "nom_ciqual": "Boeuf, steak haché 15% MG, cru",
+      "confidence": "A",
+      "note": "Le taux de matière grasse change tout : de 5 % à 20 %, l'apport passe de 130 à 249 kcal pour 100 g. Une « viande hachée » sans taux serait une valeur inventée. 15 % est le taux courant des farces domestiques, et c'est celui que le corpus retient par défaut quand la source ne le précise pas — le nom de la forme l'affiche, il n'est pas caché dans une note."
+    },
+    {
+      "cle": "croutons nature",
+      "forme": "Croûtons nature",
+      "verdict": "mapper",
+      "alim_code": "7432",
+      "nom_ciqual": "Croûtons nature, préemballés",
+      "confidence": "B",
+      "note": "Garniture du potage Parmentier et des salades. L'entrée préemballée est plus grasse qu'un croûton poêlé maison ; le retenir majore l'apport plutôt que de l'omettre."
+    },
+    {
+      "cle": "margarine 80 mg",
+      "forme": "Margarine 80 % MG",
+      "verdict": "mapper",
+      "alim_code": "16615",
+      "nom_ciqual": "Matière grasse végétale ou margarine, 80% MG, doux",
+      "confidence": "A",
+      "note": "Citée en alternative au beurre par une source. Le taux figure dans le nom pour la même raison que pour le bœuf haché : sans lui, la valeur ne veut rien dire."
+    },
+    {
+      "cle": "fromage de chevre buche",
+      "forme": "Fromage de chèvre bûche",
+      "verdict": "mapper",
+      "alim_code": "12812",
+      "nom_ciqual": "Fromage de chèvre bûche",
+      "confidence": "B",
+      "note": "Forme la plus courante du chèvre en cuisine domestique, et celle que nomment les sources. Glucides non renseignés, fermés par Atwater."
+    }
+  ]
+}

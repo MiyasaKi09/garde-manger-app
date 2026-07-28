@@ -1,0 +1,154 @@
+{
+  "dish": "Tapenade noire",
+  "slug": "tapenade-noire",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tapenade-noire_21786.aspx",
+      "site": "marmiton.org",
+      "nom": "Tapenade noire : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "250 g d'olives noires dénoyautées",
+        "6 filets d'anchois à l'huile",
+        "3 cuillères à café de câpres au vinaigre",
+        "1 gousse d'ail",
+        "10 cl d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 316,
+        "sha256": "678b360ebe11b109"
+      },
+      "sha256_page": "e49bb0825500a39f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tarte-tatin-aux-tomates-et-a-la-tapenade-noire_39816.aspx",
+      "site": "marmiton.org",
+      "nom": "Tarte tatin aux tomates et à la tapenade noire : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 pâte feuilletée",
+        "1 kg de tomate bien mûres",
+        "1 pot de tapenade noire (ou bien des olives noires dénoyautées)",
+        "1 gousse d'ail",
+        "1 échalote (selon l'envie)",
+        "30 g de beurre",
+        "2 cuillères à soupe de sucre roux ou de cassonade",
+        "1 cuillère à soupe de vinaigre basalmique",
+        "herbes de Provence",
+        "poivre",
+        "sel",
+        "fromage de chèvre frais"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 884,
+        "sha256": "0d55bf160c01d8a1"
+      },
+      "sha256_page": "64bf812455f2e595"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_dorade-a-la-tapenade-d-olives-noires_211774.aspx",
+      "site": "marmiton.org",
+      "nom": "Dorade à la tapenade d'olives noires : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 dorades écaillées et vidées par votre gentil poissonnier",
+        "80 g de tapenade d'olives noires",
+        "1 citron jaune",
+        "2 branches de romarin",
+        "poivre",
+        "sel",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 505,
+        "sha256": "08628f8dfc2363bf"
+      },
+      "sha256_page": "515830fec5d72914"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/piratage-culinaire/recettes/pizza-a-la-tapenade-noire-au-chevre-et-a-la-roquette",
+      "site": "chefsimon.com",
+      "nom": "Pizza à la tapenade noire, au chèvre et à la roquette",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 cube de levure fraîche",
+        "500 gr de farine",
+        "333 gr d'eau tiède",
+        "10 gr de sel",
+        "1 pot de tapenade noire",
+        "1 bûche de chèvre",
+        "1 poignée de roquette",
+        "des baies rouges"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "2c14222cc0b54a46"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/une-aiguille-dans-l-potage/recettes/tapenade-noire-bf7dc90c-4015-4e88-b44a-bea7651da189",
+      "site": "chefsimon.com",
+      "nom": "Tapenade noire",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "200 g d’olives noires dénoyautées",
+        "5 filets d’anchois à l’huile",
+        "1 gousse d’ail dégermée, pelée et râpée",
+        "2 c à c de câpres",
+        "3 c à s d’huile d’olive (45 ml)",
+        "Poivre",
+        "Un filet de jus de citron (facultatif)",
+        "Facultatif: 5 feuilles de basilic"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "563ae0769d178b6d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/laets-bake-it/recettes/puree-de-panais-et-sa-tapenade-d-olives-noires",
+      "site": "chefsimon.com",
+      "nom": "Purée de panais et sa tapenade d'olives noires",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "500g de panais",
+        "140g de pomme de terre",
+        "2 grosses cuillères à soupe de crème fraîche",
+        "Sel et poivre du moulin",
+        "1 pincée de muscade",
+        "100g d’olives noires dénoyautées",
+        "2 cuillères à soupe d’huile de sésame grillé",
+        "1 cuillère à soupe de sauce soja",
+        "1 pincée de poivre",
+        "1 pincée d’ail en poudre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "17e8704621156440"
+    }
+  ]
+}

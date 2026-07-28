@@ -1,0 +1,63 @@
+{
+  "dish": "Salade de riz niçoise",
+  "slug": "salade-de-riz-nicoise",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-de-riz-nicoise_71418.aspx",
+      "site": "marmiton.org",
+      "nom": "salade de riz niçoise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "250 g de riz",
+        "150 g de thon nature",
+        "150 g de maïs",
+        "4 tomates",
+        "0.5 poivron vert",
+        "0.5 poivron rouge",
+        "5 cuillères à soupe d'huile",
+        "3 cuillères à soupe de vinaigre",
+        "2 cuillères à soupe de nuoc mam",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 399,
+        "sha256": "4506d732080e772f"
+      },
+      "sha256_page": "4151744de5a8ec42"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/sandrine-jl/recettes/salade-de-riz-a-la-nicoise",
+      "site": "chefsimon.com",
+      "nom": "Salade de riz à la niçoise",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "2 sachets de riz de 90 g",
+        "1 boîte de thon au naturel de 190 g",
+        "6 petites tomates",
+        "6 œufs",
+        "1 poivron vert",
+        "1 oignon rouge",
+        "olives noires",
+        "persil",
+        "sel",
+        "poivre",
+        "huile",
+        "vinaigre de cidre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "7f38dcfa371d7284"
+    }
+  ]
+}

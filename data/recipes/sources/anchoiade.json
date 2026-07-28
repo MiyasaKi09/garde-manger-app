@@ -1,0 +1,197 @@
+{
+  "dish": "Anchoïade",
+  "slug": "anchoiade",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_anchoiade_27694.aspx",
+      "site": "marmiton.org",
+      "nom": "Anchoïade : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "250 g d'anchois en boîte",
+        "4 gousses d'ail",
+        "2 dl d'huile d'olive",
+        "2 cuillères à soupe de vinaigre",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 200,
+        "sha256": "7a33718ed2df36bc"
+      },
+      "sha256_page": "5e75512d9cb03b4d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_anchoiade-camarguaise_15150.aspx",
+      "site": "marmiton.org",
+      "nom": "Anchoïade camarguaise : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "200 g d'anchois en saumure ou à défaut à l'huile d'olive (on peut aussi utiliser des anchois entiers, mais c'est long à préparer et il est difficile d'enlever les arêtes)",
+        "1 cuillère à soupe de vinaigre de vin",
+        "0.25 l d'huile d'olive",
+        "1 gousse d'ail ou 2",
+        "de pain , mouillée et bien essorée",
+        "poivre",
+        "herbes de Provence"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 832,
+        "sha256": "129dc8871ceb0492"
+      },
+      "sha256_page": "55c45c18cebd70fd"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_rougets-farcis-a-l-anchoiade-et-puree-de-courgette_20516.aspx",
+      "site": "marmiton.org",
+      "nom": "Rougets farcis à l'anchoïade et purée de courgette : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 rougets",
+        "4 courgettes",
+        "0.5 citron",
+        "3 gousses d'ail",
+        "10 feuilles de basilic",
+        "100 g d'olives noires",
+        "6 filets d'anchois à l'huile d'olive",
+        "1 cuillère à café de graines de coriandre",
+        "4 cuillères à soupe d'huile d'olive",
+        "2 tomates",
+        "de salade",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 908,
+        "sha256": "8fc5a500df51c7a5"
+      },
+      "sha256_page": "7e8ec2a1f07f541c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/nicolas-bottero/recettes/pissaladiere-oignons-doux-anchoiade-et-olives-taggiasche",
+      "site": "chefsimon.com",
+      "nom": "Pissaladière, oignons doux, anchoïade et olives Taggiasche",
+      "portions": "4 personnes",
+      "duree_preparation": "PT01H30M",
+      "duree_cuisson": "PT02H30M",
+      "ingredients": [
+        "100g de farine",
+        "2g de sel",
+        "6g de levure de boulanger",
+        "20g d’huile d’olive",
+        "60g d’eau",
+        "Pain de mie sans croûte",
+        "Pm Huile d’olive",
+        "200g d’anchois à l’huile",
+        "6g d’ail",
+        "160g d’huile de tournesol",
+        "2g de vinaigre de vin rouge",
+        "50g d’eau",
+        "400 g de petit maquereau",
+        "200 g Sel fin",
+        "20 g Sucre",
+        "5 g Baies roses écrasées",
+        "5 g de graines d’anis vert (ou fenouil)",
+        "750 g d’oignons doux des Cévennes",
+        "200g de gros sel",
+        "Oignons grelots :",
+        "4 pc oignons grelots",
+        "Pm huile neutre",
+        "200 g d’oignons rouges grelots",
+        "50g de sucre",
+        "200g de vinaigre blanc",
+        "300g d’eau",
+        "Olives :",
+        "200g d’olives noires dénoyautées",
+        "Thym frais",
+        "1 bt de cébettes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 20,
+        "signes": 1240,
+        "sha256": "32b6ba8d496dc14a"
+      },
+      "sha256_page": "58420aa81153b4b2"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/veb-9b0f8344-9a4e-4ce4-9336-4b466721cff2/recettes/anchoiade-maison",
+      "site": "chefsimon.com",
+      "nom": "Anchoïade maison",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "300 g de filets d'anchois",
+        "3 gousses d'ail",
+        "2 branches de thym citronné",
+        "15 cl d'huile de tournesol",
+        "10 cl d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "dfe5db90c97b74f4"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-en-folie/recettes/crudites-a-l-anchoiade",
+      "site": "chefsimon.com",
+      "nom": "Crudités à l'anchoïade",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "125g d'anchois à l'huile",
+        "5 ou 6 gousses d'ail",
+        "25cl d'huile d'olive",
+        "1/2 cuillère à soupe de vinaigre de vin",
+        "poivre",
+        "1 tranche de pain de mie (facultatif, pour épaissir)",
+        "radis",
+        "tomates cerises",
+        "endives",
+        "concombre",
+        "branches de céleri",
+        "carottes crues",
+        "chou-fleur cru"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "3556d4f80f375592"
+    },
+    {
+      "url": "https://www.750g.com/sauce-anchoiade-r4154.htm",
+      "site": "750g.com",
+      "nom": "Sauce anchoïade",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "100 g d'anchois au sel",
+        "5 cl d'huile d'olive",
+        "3 gousses d'ail",
+        "1 trait de jus de citron"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 346,
+        "sha256": "0e97fcef9f6f2b5d"
+      },
+      "sha256_page": "bf8ae51f501b6dab"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "dish": "Sauté de porc aux pruneaux",
+  "slug": "saute-de-porc-aux-pruneaux",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_saute-de-porc-sucre-sale-pruneaux-et-lardons_59183.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauté de porc sucré salé (pruneaux et lardons) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "800 g de sauté de porc",
+        "4 oignons",
+        "2 échalotes",
+        "1 carotte",
+        "125 g de lardons fumés",
+        "15 pruneaux dénoyautés",
+        "de pignons de pin",
+        "margarine",
+        "huile d'olive",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 841,
+        "sha256": "56df80baf3f579dc"
+      },
+      "sha256_page": "fe80bf75f442eaaf"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_saute-de-porc-aux-legumes-et-pruneaux_44282.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauté de porc aux légumes et pruneaux : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "0.25 tasse d'eau froide",
+        "2 cuillères à soupe de sauce soja",
+        "2 cuillères à café de fécule de maïs",
+        "1 cuillère à soupe de gingembre en poudre",
+        "1 gousse d'ail hachée",
+        "120 g de porc coupé en lanières minces",
+        "2 oignons émincés",
+        "1 carotte coupée en fines rondelles",
+        "2 poivrons (rouges ou/et verts) coupés en lanières",
+        "2 branches de céleri émincées",
+        "170 g de pruneaux dénoyautés coupés en deux",
+        "2 tasses de riz cuit"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 728,
+        "sha256": "56b48eaf6418638b"
+      },
+      "sha256_page": "611c24c76615a31c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_saute-de-porc-au-chou-rouge-et-pruneaux_85471.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauté de porc au chou rouge et pruneaux : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "3 oignons",
+        "800 g de porc coupés en dés",
+        "1 chou rouge cru émincé",
+        "50 cl d'eau (maximum)",
+        "250 g de lardons fumés et blanchis",
+        "poivre",
+        "sel",
+        "1 cuillère à soupe d'huile (facultative)",
+        "20 pruneaux trempés dans un bol d'eau",
+        "1 petite boîte de champignons de Paris (250 g environ)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 452,
+        "sha256": "2a9e43cbe2dc005a"
+      },
+      "sha256_page": "a0a96e7c6630344a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/recettes-de-clairette/recettes/saute-de-porc-aux-pruneaux",
+      "site": "chefsimon.com",
+      "nom": "Sauté de porc aux pruneaux",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H40M",
+      "ingredients": [
+        "600 g d'échine de porc",
+        "un oignon",
+        "3 -4 brins de persil plat",
+        "125 g d'amandes",
+        "20 pruneaux dénoyautés",
+        "50 g d'huile d'olive",
+        "50 g de cognac",
+        "100 g de vin blanc sec",
+        "un cube de bouillon de volaille",
+        "une cuillère à soupe bombée de farine",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "e290bc4fb60e7341"
+    }
+  ]
+}

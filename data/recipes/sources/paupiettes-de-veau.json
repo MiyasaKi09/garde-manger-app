@@ -1,0 +1,87 @@
+{
+  "dish": "Paupiettes de veau",
+  "slug": "paupiettes-de-veau",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/keskonmangemaman/recettes/paupiettes-de-veau-sauce-tomate-aux-champignons",
+      "site": "chefsimon.com",
+      "nom": "Paupiettes de veau sauce tomate aux champignons",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "6 très fines escalopes de veau",
+        "400 g de chair de veau (ou mélange 50-50 veau et porc)",
+        "2 gousses d'ail",
+        "1/4 de bouquet de persil plat",
+        "2 c. à soupe d'origan séché",
+        "1 œuf",
+        "2 tranches de pain de mie",
+        "10 cl de lait",
+        "sel et poivre du moulin",
+        "1 oignon jaune ou blanc",
+        "10 cl de vin blanc sec",
+        "800 ml de sauce tomate cuisinée",
+        "500 g de champignons de paris",
+        "4 c. à soupe d'huile d'olive",
+        "ficelle de cuisine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "803c09e3535ba50b"
+    },
+    {
+      "url": "https://www.mesrecettesfaciles.fr/recipe/paupiettes-de-veau-sauce-tomate-aux-champignons",
+      "site": "mesrecettesfaciles.fr",
+      "nom": "Paupiettes de veau, sauce tomate aux champignons",
+      "portions": "4 parts",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4  Paupiettes de veau",
+        "1 boîte Tomates concassées",
+        "200 g Champignons de Paris",
+        "1  Oignon",
+        "150 ml Vin blanc sec",
+        "2 cuillères à soupe Huile d'olive",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 559,
+        "sha256": "3bcff683a60dd6d8"
+      },
+      "sha256_page": "c92089dae848d64d"
+    },
+    {
+      "url": "https://www.supertoinette.com/recette/4749/paupiettes-de-veau.html",
+      "site": "supertoinette.com",
+      "nom": "Paupiettes de veau aux champignons et tomates",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "750 g de paupiettes de veau soit 6",
+        "600 g de tomates soit 6",
+        "200 g de champignons de Paris",
+        "200 g d'oignons soit 2",
+        "150 g de vin blanc sec",
+        "30 g d'huile d'olive",
+        "3 g de persil",
+        "1 g de sel",
+        "1 g de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 741,
+        "sha256": "500ee387b26b3c2b"
+      },
+      "sha256_page": "4bd142d32c30d200"
+    }
+  ]
+}

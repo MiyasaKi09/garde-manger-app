@@ -1,0 +1,122 @@
+{
+  "dish": "Pan bagnat",
+  "slug": "pan-bagnat",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pan-bagnat_28840.aspx",
+      "site": "marmiton.org",
+      "nom": "PAN BAGNAT : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "4 pains ronds de 8/10 cm de diamètre",
+        "2 tomates",
+        "1 grosse boîte de thon au naturel",
+        "1 oignon blanc",
+        "3 oeufs durs",
+        "30 févettes (7 gousses)",
+        "8 radis",
+        "12 olives niçoises (caillettes)",
+        "4 anchois",
+        "huile d'olive",
+        "vinaigre de vin",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 536,
+        "sha256": "eab50ca8743940e2"
+      },
+      "sha256_page": "66181fa35f04487c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pan-bagnat_14571.aspx",
+      "site": "marmiton.org",
+      "nom": "Pan-bagnat : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "2 pains ronds",
+        "2 tomates moyennes",
+        "2 oeufs",
+        "1 boîte de thon à l'huile",
+        "crème d'anchois",
+        "huile d'olive",
+        "vinaigre balsamique"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 824,
+        "sha256": "c7a757e79abd7de3"
+      },
+      "sha256_page": "3d2944a4153af5c9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/zika/recettes/pan-bagnat-nicois-8bbb9e2d-c575-4a7f-93fb-58e361448d8e",
+      "site": "chefsimon.com",
+      "nom": "Pan bagnat niçois",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "pains (2 par personne)",
+        "tomates en tranches",
+        "œufs durs en rondelles",
+        "thon émietté",
+        "filets d'anchois (2 par pain)",
+        "olives noires",
+        "fromage frais type brousse (facultatif)",
+        "radis, oignons, coriandre fraîche et laitue (facultatif, pour la version originale)",
+        "500 g de farine à pain",
+        "50 g de semoule fine",
+        "80 g de crème sure ou crème épaisse",
+        "15 g de levure boulangère sèche",
+        "10 g de sel",
+        "1 cuillère à café de sucre",
+        "1 jaune d'œuf + 1 cuillère à soupe de lait",
+        "100 ml de lben",
+        "250 ml d'eau tiède",
+        "grains de sésame (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "50d9c071024c1104"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lesfillesatable-com/recettes/ciabatta-comme-un-pan-bagnat",
+      "site": "chefsimon.com",
+      "nom": "Ciabatta comme un pan bagnat",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "pain ciabatta",
+        "une boîte de thon à l'huile d'olive",
+        "tomates",
+        "œufs durs",
+        "concombre",
+        "salade",
+        "oignon cébette",
+        "filets d'anchois à l'huile",
+        "olives (vertes ou noires)",
+        "huile d'olive",
+        "vinaigre",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "7503f3cdc2d2ff3c"
+    }
+  ]
+}

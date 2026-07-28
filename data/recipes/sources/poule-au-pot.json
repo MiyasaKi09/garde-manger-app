@@ -1,0 +1,104 @@
+{
+  "dish": "Poule au pot",
+  "slug": "poule-au-pot",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.750g.com/poule-au-pot-farcie-henri-iv-r792.htm",
+      "site": "750g.com",
+      "nom": "Poule au pot farcie Henri IV",
+      "portions": "6 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "1 poule  avec cœur, foie et gésiers",
+        "500 g de navets",
+        "500 g de carottes",
+        "1 kg de poireau  en botte",
+        "1 kg de pomme de terre",
+        "300 g de jambon cru",
+        "250 g d'oignons",
+        "3 oeufs",
+        "150 g de mie de pain",
+        "4 céleri branche",
+        "6 gousses d'ail",
+        "4 clous de girofle",
+        "1 chou vert",
+        "Persil plat",
+        "10 cl de lait",
+        "3 cl d'armagnac",
+        "Noix de muscade",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1633,
+        "sha256": "861290b119d543e9"
+      },
+      "sha256_page": "f198cb3fb6c2a120"
+    },
+    {
+      "url": "https://www.recettes-et-terroirs.com/poule-au-pot-dhenri-iv/",
+      "site": "recettes-et-terroirs.com",
+      "nom": "Poule au pot d&#8217;Henri IV",
+      "portions": "8",
+      "duree_preparation": "PT60M",
+      "duree_cuisson": "PT190M",
+      "ingredients": [
+        "1 poule de 2,2 kg environ, 1 oignon blanc, 6 carottes nouvelles moyennes, 6 blancs de jeunes poireaux moyens, 1/2 céleri-rave, 1 bouquet garni, 20 cl de vin blanc, 25 cl de crème liquide, 80 g de beurre doux, 2 clous de girofle, 1 truffe facultatif, 50 grammes de farine type 55, Gros sel de cuisine, Poivre noir en grains du moulin."
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 1079,
+        "sha256": "c4d3e99b9d5338c6"
+      },
+      "sha256_page": "e003f035df888e55"
+    },
+    {
+      "url": "https://www.lesfoodies.com/jeanmerode/recette/poule-au-pot-henri-iv",
+      "site": "lesfoodies.com",
+      "nom": "Poule au pot Henri IV",
+      "portions": "4",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "Une poule prete a cuire de 1 kg 4 environ",
+        "un oignon piqué de 3 clous de girofle",
+        "une carotte",
+        "un vert de poreaux",
+        "une branche de céleri",
+        "un bouquet garni",
+        "gros sel",
+        "10 grains de poivre noirs",
+        "une cac de coriandre",
+        "ficelle de cuisine.Farce; un oeuf",
+        "200 gr de chair a saucisse",
+        "50 gr de jambon de bayonne",
+        "une tranche de pain de mie complet",
+        "une gousse d ail",
+        "thym",
+        "un demi bouquet de persil",
+        "lait.Garniure",
+        "4 carottes fanes",
+        "2 beaux navets",
+        "un blanc de poireaux.Sauce;beurre",
+        "2 jaunes d oeuf",
+        "3 cas de creme fraiche",
+        "farine",
+        "sel",
+        "poivre blanc",
+        "une cas de jus de citron",
+        "noix de muscade",
+        "250gr de champignons de paris"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 2011,
+        "sha256": "81a97bae55f2bc5c"
+      },
+      "sha256_page": "a2b9db77b12119dd"
+    }
+  ]
+}

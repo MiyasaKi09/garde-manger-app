@@ -1,0 +1,189 @@
+{
+  "dish": "Croque-madame",
+  "slug": "croque-madame",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_croque-madame_22785.aspx",
+      "site": "marmiton.org",
+      "nom": "Croque madame  : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT3M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 belles tranches de pains de mie",
+        "2 oeufs bien frais",
+        "2 belles tranches de jambon cuit au torchon, du vrai svp !",
+        "10 g de beurre",
+        "30 g de gruyère râpé",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 598,
+        "sha256": "dde23394f5794a86"
+      },
+      "sha256_page": "313e9347e3ed8dd0"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_croque-madame_29744.aspx",
+      "site": "marmiton.org",
+      "nom": "Croque Madame : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "12 tranches de pains de mie",
+        "300 g d'emmental",
+        "6 oeufs",
+        "6 tranches de jambon",
+        "60 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 400,
+        "sha256": "94d4054f611a6f64"
+      },
+      "sha256_page": "481b5ce3ffaace12"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_croque-madame-au-chevre_62415.aspx",
+      "site": "marmiton.org",
+      "nom": "Croque madame au chèvre : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT4M",
+      "ingredients": [
+        "4 tranches de jambon",
+        "8 tranches de pains de mie",
+        "1 fromage de chèvre",
+        "4 oeufs",
+        "beurre",
+        "huile",
+        "poivre",
+        "sel",
+        "1 salade (selon préférence)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 406,
+        "sha256": "49040a41ee86d6e3"
+      },
+      "sha256_page": "f1f8745e1abb51e8"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/croque-madame-surprise",
+      "site": "chefsimon.com",
+      "nom": "Croque-madame surprise",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H04M",
+      "ingredients": [
+        "8 tranches de pain de mie grand format",
+        "2 grandes tranches de jambon",
+        "4 œufs",
+        "4 cs de fromage râpé",
+        "40 g de beurre, poivre",
+        "1 grand emporte-pièces"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 673,
+        "sha256": "e6989808a1415dc3"
+      },
+      "sha256_page": "9b73a78ed78c82ca"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/croque-madame-aux-epinards-a-la-creme-et-emmental",
+      "site": "chefsimon.com",
+      "nom": "Croque-madame aux épinards à la crème et emmental",
+      "portions": "1 personne",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H22M",
+      "ingredients": [
+        "2 grandes tranches de pain de mie complet",
+        "160 g d'épinards en branches surgelés à la crème",
+        "1 œuf",
+        "15 g d'emmental",
+        "échalote en poudre",
+        "piment d'Espelette",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "fe8ff571214cd713"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/keskonmangemaman/recettes/croques-madames-au-bleu-de-bresse-et-mache",
+      "site": "chefsimon.com",
+      "nom": "Croques madames au bleu de Bresse et mâche",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "8 tranches de pain de mie sans croûte",
+        "1 bleu de Bresse",
+        "4 œufs",
+        "1 barquette de mâche",
+        "50 grammes de beurre",
+        "fleur de sel",
+        "poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "45f8fe8da31b44b3"
+    },
+    {
+      "url": "https://www.750g.com/croque-madame-r38477.htm",
+      "site": "750g.com",
+      "nom": "Croque-Madame rapide et facile",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "8 tranches de pain de mie",
+        "4 tranches de jambon",
+        "4 oeufs  entiers",
+        "20 cl de crème fraîche épaisse",
+        "50 g de gruyère râpé",
+        "30 g de beurre",
+        "30 g de beurre  fondu"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 450,
+        "sha256": "f57a328e8ee70e98"
+      },
+      "sha256_page": "7f0ad713d284157c"
+    },
+    {
+      "url": "https://www.750g.com/croque-madame-r83857.htm",
+      "site": "750g.com",
+      "nom": "Croque Madame",
+      "portions": "3 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT6M",
+      "ingredients": [
+        "6 tranches de pain de mie nature",
+        "60 g de fromage râpé",
+        "30 g de beurre  fondu",
+        "3 oeufs",
+        "2 tranches de jambon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 412,
+        "sha256": "2e166e24aa9715c0"
+      },
+      "sha256_page": "f5c270c426bee100"
+    }
+  ]
+}

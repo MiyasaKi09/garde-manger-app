@@ -1,0 +1,103 @@
+{
+  "dish": "Gigot d'agneau aux flageolets",
+  "slug": "gigot-d-agneau-aux-flageolets",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/chef-papounet/recettes/gigot-d-agneau-aux-flageolets",
+      "site": "chefsimon.com",
+      "nom": "Gigot d'agneau aux flageolets",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "1 gigot d'agneau.",
+        "6 gousses d'ail.",
+        "2 branche de thym.",
+        "Huile d'olive-Sel-Poivre.",
+        "Pour les flageolets en garniture :",
+        "500 g de flageolet.",
+        "1 oignon",
+        "1 gousse d'ail.",
+        "30 g de beurre.",
+        "Persil.",
+        "Sel-Poivre."
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "486c32d4bcfa7a12"
+    },
+    {
+      "url": "https://www.750g.com/gigot-dagneau-aux-flageolets-r37774.htm",
+      "site": "750g.com",
+      "nom": "Gigot d'agneau aux flageolets",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1,5 kg de gigot d'agneau",
+        "400 g de flageolets secs",
+        "1 oignon",
+        "30 g de beurre",
+        "2 c. à s. d'huile",
+        "1 bouquet garni",
+        "1 gousse d'ail",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 918,
+        "sha256": "a9c6ebed402c308d"
+      },
+      "sha256_page": "66e8a4e1bb49dc43"
+    },
+    {
+      "url": "https://www.editions-larousse.fr/recette/gigot-dagneau-aux-flageolets/",
+      "site": "editions-larousse.fr",
+      "nom": "Gigot d’agneau aux flageolets",
+      "portions": 6,
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT90M",
+      "ingredients": [
+        "null"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1815,
+        "sha256": "9aa5aebd19d94852"
+      },
+      "sha256_page": "bbb60d28841cd7d8"
+    },
+    {
+      "url": "https://kissmychef.com/recettes/plats/gigot-dagneau-aux-flageolets/",
+      "site": "kissmychef.com",
+      "nom": "Gigot d’agneau aux flageolets",
+      "portions": [
+        "6",
+        "6 personnes"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT60M",
+      "ingredients": [
+        "1  gigot d’agneau",
+        "6 gousses d’ail",
+        "1  bouquet garni",
+        "500 g de flageolets secs",
+        "sel",
+        "poivre",
+        "huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 941,
+        "sha256": "1fc6a3719c59761c"
+      },
+      "sha256_page": "d2ab091d68d43b61"
+    }
+  ]
+}
