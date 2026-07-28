@@ -73,9 +73,13 @@ const NEW_VERSIONS = new Set([
   '20260716152121',
   '20260716162509',
   '20260727120000',
+  '20260728120000',
 ]);
 
 const NEW_EXPECTED_OBJECTS = {
+  '20260728120000': [
+    { type: 'function', schema: 'public', name: 'get_encyclopedia_coverage_v1' },
+  ],
   // Vérifier des COLONNES et pas seulement des noms de tables : `meal_feedback`
   // existait déjà pour un tout autre usage, si bien qu'un contrôle d'existence
   // par nom passait au vert sans que la migration ait rien créé.

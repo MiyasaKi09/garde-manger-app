@@ -1358,5 +1358,31 @@
     "baseline": null,
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260728120000_encyclopedia_coverage_contract.sql",
+    "github_version": "20260728120000",
+    "name": "encyclopedia_coverage_contract",
+    "sha256": "93a5bf84bfe23f2c68669a745ebd264b875ffdebcb936c374d92eb5412394087",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "get_encyclopedia_coverage_v1"
+      }
+    ]
+  },
+  {
+    "file": "20260728120000_encyclopedia_coverage_contract_rollback.sql",
+    "github_version": "20260728120000",
+    "name": "encyclopedia_coverage_contract_rollback",
+    "sha256": "2340d8ef8fec736ee4e5b03f8637824075e83aef8c95f25a2e7c11e846505d53",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]
