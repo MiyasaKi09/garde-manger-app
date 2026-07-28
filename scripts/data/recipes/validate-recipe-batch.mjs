@@ -1,0 +1,232 @@
+/**
+ * Contrôle un lot de nouvelles recettes AVANT de le verser au corpus.
+ *
+ * Le corpus vise 3 000 recettes. À ce volume, une recette fausse ne se voit
+ * plus : elle se dilue. Le seul moment où on peut encore l'arrêter est celui
+ * où elle est écrite. Ce script est ce moment.
+ *
+ * Il ne corrige rien et ne complète rien. Il refuse, en disant pourquoi.
+ *
+ *   node scripts/data/recipes/validate-recipe-batch.mjs lot.json
+ *   node scripts/data/recipes/validate-recipe-batch.mjs lot.json --json
+ */
+import { readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
+import { normalizeName } from '../lib/normalize.mjs'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const ROOT = join(__dirname, '..', '..', '..')
+const CORPUS = join(ROOT, 'data', 'recipes', 'corpus-v3.json')
+const VOCABULAIRE = join(ROOT, 'data', 'recipes', 'authoring-vocabulary.json')
+
+const [source, ...flags] = process.argv.slice(2)
+if (!source) {
+  console.error('Usage : validate-recipe-batch.mjs <lot.json> [--json]')
+  process.exit(2)
+}
+
+const corpus = JSON.parse(readFileSync(CORPUS, 'utf8'))
+const vocabulaire = JSON.parse(readFileSync(VOCABULAIRE, 'utf8'))
+const lot = JSON.parse(readFileSync(source, 'utf8'))
+const recettes = Array.isArray(lot) ? lot : (lot.recipes || lot.recettes || [])
+
+const formesEmployables = new Map(vocabulaire.formes_employables.map((forme) => [forme.normalise, forme]))
+const formesBloquees = new Map(vocabulaire.formes_bloquees.map((forme) => [forme.normalise, forme]))
+const codesExistants = new Set(corpus.recipes.map((recette) => recette.code))
+const famillesExistantes = new Map(corpus.recipes.map((recette) => [normalizeName(recette.family), recette.code]))
+
+const SCORES = ['sweet', 'salty', 'acidic', 'bitter', 'umami', 'heat', 'pungency', 'richness', 'freshness', 'intensity']
+const UNITES = new Set(['g', 'ml', 'u', 'tranche', 'feuille'])
+const IDENTITES = new Set(['named_traditional_dish', 'domestic_standard'])
+const DIFFICULTES = new Set(['facile', 'moyenne', 'difficile'])
+
+/**
+ * Une recette n'est publiable que si TOUS ses ingrédients non optionnels se
+ * convertissent en grammes et portent une composition complète. On refait ici
+ * le calcul du matérialiseur, sur le même catalogue, pour pouvoir refuser avant
+ * d'écrire plutôt que de le découvrir après.
+ */
+const grammes = (ingredient, forme) => {
+  const quantite = Number(ingredient.quantity)
+  if (!Number.isFinite(quantite) || quantite <= 0) return null
+  if (ingredient.unit === 'g') return quantite
+  if (ingredient.unit === 'ml') {
+    const densite = forme.conversion?.density_g_per_ml
+    return Number.isFinite(densite) ? quantite * densite : null
+  }
+  if (['u', 'tranche', 'feuille'].includes(ingredient.unit)) {
+    const masse = forme.conversion?.grams_per_unit
+    return Number.isFinite(masse) ? quantite * masse : null
+  }
+  return null
+}
+
+const rapports = []
+const codesDuLot = new Set()
+const famillesDuLot = new Map()
+
+for (const [rang, recette] of recettes.entries()) {
+  const refus = []
+  const reserves = []
+  const dire = (message) => refus.push(message)
+
+  // ── identité ────────────────────────────────────────────────────────────
+  const code = String(recette.code || '').trim()
+  if (!code) dire('code absent')
+  else if (!/^[A-Z0-9]{2,6}-\d{3,4}$/.test(code)) dire(`code « ${code} » hors format PREFIXE-NNN`)
+  else if (codesExistants.has(code)) dire(`code « ${code} » déjà pris par le corpus`)
+  else if (codesDuLot.has(code)) dire(`code « ${code} » en double dans le lot`)
+  codesDuLot.add(code)
+
+  const famille = String(recette.family || '').trim()
+  if (!famille) dire('family absent')
+  else {
+    const cle = normalizeName(famille)
+    if (famillesExistantes.has(cle)) dire(`« ${famille} » existe déjà au corpus sous ${famillesExistantes.get(cle)}`)
+    else if (famillesDuLot.has(cle)) dire(`« ${famille} » en double dans le lot (${famillesDuLot.get(cle)})`)
+    famillesDuLot.set(cle, code)
+  }
+
+  if (!String(recette.cuisine_origin || '').trim()) dire('cuisine_origin absent')
+  if (!IDENTITES.has(recette.identity_level)) dire(`identity_level « ${recette.identity_level} » inconnu`)
+  if (!String(recette.category || '').trim()) dire('category absente')
+  if (!DIFFICULTES.has(recette.difficulty)) dire(`difficulty « ${recette.difficulty} » inconnue`)
+  if (!['A', 'B', 'C'].includes(recette.confidence)) dire('confidence absente ou invalide')
+
+  const portions = Number(recette.servings)
+  if (!Number.isInteger(portions) || portions < 1 || portions > 12) dire(`servings « ${recette.servings} » hors bornes 1-12`)
+  const prep = Number(recette.prep_minutes)
+  const cuisson = Number(recette.cook_minutes)
+  if (!Number.isFinite(prep) || prep < 0 || prep > 240) dire(`prep_minutes « ${recette.prep_minutes} » hors bornes`)
+  if (!Number.isFinite(cuisson) || cuisson < 0 || cuisson > 720) dire(`cook_minutes « ${recette.cook_minutes} » hors bornes`)
+
+  // ── ingrédients ─────────────────────────────────────────────────────────
+  const ingredients = recette.ingredients || []
+  if (ingredients.length < 3) dire(`${ingredients.length} ingrédient(s) — trois au minimum`)
+  let kcal = 0
+  let proteines = 0
+  let glucides = 0
+  let lipides = 0
+  let masseTotale = 0
+  for (const ingredient of ingredients) {
+    const libelle = String(ingredient.form || '').trim()
+    if (!libelle) { dire('un ingrédient sans `form`'); continue }
+    if (!UNITES.has(ingredient.unit)) { dire(`« ${libelle} » : unité « ${ingredient.unit} » non gérée`); continue }
+    if (!String(ingredient.role || '').trim()) reserves.push(`« ${libelle} » sans rôle`)
+
+    const cle = normalizeName(libelle)
+    const forme = formesEmployables.get(cle)
+    if (!forme) {
+      const bloquee = formesBloquees.get(cle)
+      const motif = bloquee ? `bloquée : ${bloquee.motifs.join(' ; ')}` : 'absente du vocabulaire'
+      if (ingredient.optional) { reserves.push(`« ${libelle} » ${motif} (optionnel, ignoré au calcul)`); continue }
+      dire(`« ${libelle} » ${motif}`)
+      continue
+    }
+    if (!forme.unites.includes(ingredient.unit)) {
+      dire(`« ${libelle} » ne se convertit pas en « ${ingredient.unit} » (unités admises : ${forme.unites.join(', ')})`)
+      continue
+    }
+    const masse = grammes(ingredient, forme)
+    if (masse == null) { dire(`« ${libelle} » : quantité ou conversion inexploitable`); continue }
+    if (ingredient.optional) continue
+    masseTotale += masse
+    kcal += masse * forme.per100g.kcal / 100
+    proteines += masse * forme.per100g.proteinG / 100
+    glucides += masse * forme.per100g.carbsG / 100
+    lipides += masse * forme.per100g.fatG / 100
+  }
+
+  // ── vraisemblance ───────────────────────────────────────────────────────
+  if (portions > 0 && masseTotale > 0) {
+    const parPart = kcal / portions
+    const grammesParPart = masseTotale / portions
+    if (parPart < 80) dire(`${Math.round(parPart)} kcal par part — trop peu pour un plat, vérifiez les quantités`)
+    if (parPart > 1600) dire(`${Math.round(parPart)} kcal par part — invraisemblable`)
+    if (grammesParPart < 80) dire(`${Math.round(grammesParPart)} g par part — portion irréaliste`)
+    if (grammesParPart > 1200) reserves.push(`${Math.round(grammesParPart)} g par part — portion très généreuse`)
+    // L'identité énergétique doit tenir : si elle dérape, une composition est fausse.
+    const reconstruit = 4 * proteines + 4 * glucides + 9 * lipides
+    if (kcal > 0 && Math.abs(reconstruit - kcal) / kcal > 0.35) {
+      reserves.push(`écart de ${Math.round(Math.abs(reconstruit - kcal) / kcal * 100)} % entre l'énergie et les macros`)
+    }
+  }
+
+  // ── étapes et techniques ────────────────────────────────────────────────
+  const etapes = recette.steps || []
+  if (etapes.length < 3) dire(`${etapes.length} étape(s) — trois au minimum`)
+  etapes.forEach((etape, i) => {
+    if (Number(etape.n) !== i + 1) dire(`étape ${i + 1} numérotée « ${etape.n} »`)
+    if (String(etape.instruction || '').trim().length < 15) dire(`étape ${i + 1} trop courte pour être exécutable`)
+  })
+  if (!(recette.techniques || []).length) dire('aucune technique déclarée')
+
+  // ── empreinte sensorielle ───────────────────────────────────────────────
+  const sensoriel = recette.sensory || {}
+  if (!String(sensoriel.profile || '').trim()) dire('sensory.profile absent')
+  const scores = sensoriel.scores || {}
+  for (const cle of SCORES) {
+    const valeur = Number(scores[cle])
+    if (!Number.isInteger(valeur) || valeur < 0 || valeur > 5) dire(`sensory.scores.${cle} = « ${scores[cle] }» hors 0-5`)
+  }
+  if (Object.keys(scores).length !== SCORES.length) dire(`sensory.scores porte ${Object.keys(scores).length} clés au lieu de ${SCORES.length}`)
+  if ((sensoriel.dominant_flavors || []).length < 2) dire('moins de deux saveurs dominantes')
+  if ((sensoriel.aroma_families || []).length < 2) dire('moins de deux familles aromatiques')
+  if (!(sensoriel.target_textures || []).length) dire('aucune texture cible')
+  if ((sensoriel.identity_guardrails || []).length < 2) dire('moins de deux garde-fous d’identité')
+  const signatures = sensoriel.signature_ingredients || []
+  if (signatures.length < 2) dire('moins de deux ingrédients signature')
+  const libelles = new Set(ingredients.map((ingredient) => ingredient.form))
+  for (const signature of signatures) {
+    if (!libelles.has(signature)) dire(`ingrédient signature « ${signature} » absent de la liste d'ingrédients`)
+  }
+
+  // ── conservation et allergènes ──────────────────────────────────────────
+  if (String(recette.conservation || '').trim().length < 15) dire('conservation absente ou trop vague')
+  if (!Array.isArray(recette.allergens)) dire('allergens doit être une liste, même vide')
+  if (!Array.isArray(recette.sources) || !recette.sources.length) dire('aucune source déclarée')
+
+  rapports.push({
+    rang,
+    code: code || `(sans code, rang ${rang})`,
+    famille,
+    valide: refus.length === 0,
+    refus,
+    reserves,
+    nutrition: portions > 0 ? {
+      kcal_par_part: Math.round(kcal / portions),
+      proteines_par_part: Math.round(proteines / portions * 10) / 10,
+      grammes_par_part: Math.round(masseTotale / portions),
+    } : null,
+  })
+}
+
+const valides = rapports.filter((rapport) => rapport.valide)
+const refuses = rapports.filter((rapport) => !rapport.valide)
+
+if (flags.includes('--json')) {
+  process.stdout.write(`${JSON.stringify({ total: rapports.length, valides: valides.length, rapports }, null, 2)}\n`)
+} else {
+  console.log(`Lot : ${rapports.length} recettes — ${valides.length} valides, ${refuses.length} refusées\n`)
+  for (const rapport of refuses) {
+    console.log(`✗ ${rapport.code}  ${rapport.famille}`)
+    for (const motif of rapport.refus) console.log(`     ${motif}`)
+  }
+  const avecReserves = valides.filter((rapport) => rapport.reserves.length)
+  if (avecReserves.length) {
+    console.log(`\n${avecReserves.length} recettes valides avec réserve :`)
+    for (const rapport of avecReserves) {
+      console.log(`  ~ ${rapport.code} — ${rapport.reserves.join(' ; ')}`)
+    }
+  }
+  if (valides.length) {
+    console.log('\nValides :')
+    for (const rapport of valides) {
+      const n = rapport.nutrition
+      console.log(`  ✓ ${rapport.code}  ${rapport.famille.slice(0, 40).padEnd(42)} ${n ? `${n.kcal_par_part} kcal · ${n.proteines_par_part} g prot · ${n.grammes_par_part} g` : ''}`)
+    }
+  }
+}
+
+process.exit(refuses.length ? 1 : 0)
