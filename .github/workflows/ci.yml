@@ -350,9 +350,16 @@ jobs:
           attendu=$(node -e "console.log(JSON.parse(require('fs').readFileSync('data/recipes/corpus-v3.json','utf8')).recipes.length)")
           echo "corpus déclaré : $attendu recettes"
 
+          # Le compte est limité au jeu de données V3 : l'étape corpus-v1 a déjà
+          # chargé ses propres recettes dans la même base, et les additionner
+          # ferait échouer ce contrôle pour la mauvaise raison.
+          compte="SELECT count(*) FROM culinary.recipe_versions rv
+                  JOIN ops.source_datasets sd ON sd.id = rv.source_dataset_id
+                  WHERE sd.code = 'myko_editorial_v3';"
+
           psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f scripts/data/out/corpus-v3-load.sql
-          charge=$(psql "$DATABASE_URL" -tAc "SELECT count(*) FROM culinary.recipe_versions;")
-          echo "chargé en base : $charge versions"
+          charge=$(psql "$DATABASE_URL" -tAc "$compte")
+          echo "chargé en base : $charge versions V3"
           if [ "$charge" != "$attendu" ]; then
             echo "::error::le chargeur a écrit $charge recettes pour $attendu déclarées"
             exit 1
@@ -360,7 +367,7 @@ jobs:
 
           # Rejouer ne doit rien dupliquer : le chargeur remplace, il n'empile pas.
           psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f scripts/data/out/corpus-v3-load.sql
-          rejoue=$(psql "$DATABASE_URL" -tAc "SELECT count(*) FROM culinary.recipe_versions;")
+          rejoue=$(psql "$DATABASE_URL" -tAc "$compte")
           if [ "$rejoue" != "$attendu" ]; then
             echo "::error::seconde application : $rejoue versions au lieu de $attendu"
             exit 1
