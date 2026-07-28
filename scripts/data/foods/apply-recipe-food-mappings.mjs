@@ -20,6 +20,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { parseCiqualWorkbook } from '../parse/ciqual.mjs'
 import { normalizeName } from '../lib/normalize.mjs'
+import { comblerParAtwater } from '../lib/atwater.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
@@ -97,7 +98,18 @@ for (const decision of lot) {
     return Number(usda?.per100g[['proteinG', 'carbsG', 'fatG'][index]])
   })
   const energie = Number.isFinite(kcal) ? kcal : Number(usda?.per100g.kcal)
-  if (!Number.isFinite(energie) || !macros.every(Number.isFinite)) {
+  // Une macro encore manquante après Ciqual et USDA n'est pas rédhibitoire si
+  // la fermeture d'Atwater peut la clore — c'est ce que fait le générateur, et
+  // refuser ici alors qu'il accepterait rejetterait des décisions valables.
+  const fibres = record ? Number(record.values?.fiber_g) : Number(usda?.per100g.fiberG)
+  const cloture = macros.every(Number.isFinite) ? null : comblerParAtwater({
+    energy_kcal: energie,
+    protein_g: macros[0],
+    carbohydrate_g: macros[1],
+    fat_g: macros[2],
+    fiber_g: fibres,
+  })
+  if (!Number.isFinite(energie) || (!macros.every(Number.isFinite) && !cloture)) {
     rejeter(`macronutriments incomplets pour ${code ? `${code} « ${record.alim_nom_fr} »` : `USDA ${fdcId}`}`)
     continue
   }

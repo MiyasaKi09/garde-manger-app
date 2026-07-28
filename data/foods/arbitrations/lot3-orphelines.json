@@ -1,0 +1,198 @@
+{
+  "lot": "orphelines — formes sans aucun candidat proposé par le dossier d'arbitrage",
+  "decisions": [
+    {
+      "forme": "Aonori",
+      "alim_code": "20995",
+      "confidence": "A",
+      "note": "Même aliment, orthographe différente : le dossier d'arbitrage n'avait rien proposé parce que son index de mots ne rapproche pas « aonori » de « Ao-nori »."
+    },
+    {
+      "forme": "Rouget grondin cru",
+      "alim_code": "26106",
+      "confidence": "A",
+      "note": "Le grondin figure au classeur sous son seul nom. Ses glucides ne sont pas mesurés — comme pour tous les poissons du classeur — et la fermeture d'Atwater les clôt à zéro, ce qui est la valeur réelle."
+    },
+    {
+      "forme": "Riz cru",
+      "alim_code": "9100",
+      "confidence": "B",
+      "note": "Réduction canonique : « riz cru » sans autre précision est du riz blanc long cru."
+    },
+    {
+      "forme": "Riz jasmin cru",
+      "alim_code": "9100",
+      "confidence": "B",
+      "note": "Le jasmin est un riz long blanc. Sa composition ne se distingue pas du riz blanc long générique : la variété porte l'arôme, pas les macronutriments. Un concept culinaire, un ingrédient canonique."
+    },
+    {
+      "forme": "Riz brisé cru",
+      "alim_code": "9100",
+      "confidence": "B",
+      "note": "Même grain, fracturé au décorticage. La brisure change le temps de cuisson et la texture, pas la composition."
+    },
+    {
+      "forme": "Riz bomba cru",
+      "usda_fdc_id": "168881",
+      "usda_name": "Rice, white, short-grain, enriched, uncooked",
+      "confidence": "B",
+      "note": "Le riz rond n'existe pas au classeur français, qui ne connaît que le riz blanc long (9100). USDA distingue le grain court, dont l'amidon et donc l'absorption diffèrent : 358 kcal contre 350, 6,5 g de protéines contre 7,4. L'« enriched » américain ajoute des vitamines et minéraux, sans effet sur les macronutriments."
+    },
+    {
+      "forme": "Panko",
+      "alim_code": "7500",
+      "confidence": "B",
+      "note": "Le panko est une chapelure : pain sans croûte, séché et émietté en flocons. La forme des miettes fait la texture de la friture, la composition reste celle de la chapelure."
+    },
+    {
+      "forme": "Masa harina",
+      "usda_fdc_id": "169696",
+      "usda_name": "Corn flour, masa, unenriched, white",
+      "confidence": "B",
+      "note": "Le classeur a bien une farine de maïs (9545), mais pas la masa : la nixtamalisation à la chaux modifie la disponibilité de la niacine et du calcium, et la farine obtenue n'est pas interchangeable en cuisine — c'est elle qui fait la tortilla. USDA référence exactement la masa. Version non enrichie retenue, pour ne pas importer une fortification américaine."
+    },
+    {
+      "forme": "Morcilla asturienne",
+      "alim_code": "8703",
+      "confidence": "B",
+      "note": "Boudin noir à cuire : même concept culinaire — sang de porc, gras et aromates en boyau. La morcilla asturienne y ajoute oignon et paprika fumé, ce qui déplace l'arôme, pas la composition."
+    },
+    {
+      "forme": "Chouriço portugais",
+      "usda_fdc_id": "173859",
+      "usda_name": "Sausage, pork, chorizo, link or ground, raw",
+      "confidence": "B",
+      "note": "Le classeur ne connaît le chorizo qu'en garniture de pizza. Chouriço, chorizo et linguiça sont la même famille : saucisse de porc au paprika, séchée ou fumée. Réduction canonique sur la référence USDA du chorizo cru."
+    },
+    {
+      "forme": "Linguiça portugaise",
+      "usda_fdc_id": "173859",
+      "usda_name": "Sausage, pork, chorizo, link or ground, raw",
+      "grams_per_unit": 120,
+      "confidence": "B",
+      "note": "Même réduction que le chouriço. Comptée en unités : un maillon de linguiça pèse de 100 à 150 g, on retient 120 g."
+    },
+    {
+      "forme": "Ghee",
+      "usda_fdc_id": "171314",
+      "usda_name": "Butter, Clarified butter (ghee)",
+      "confidence": "A",
+      "note": "Absent du classeur français, référencé tel quel par USDA. Matière grasse pure : 100 g de lipides, ni protéines ni glucides — la clarification retire l'eau et les solides du lait."
+    },
+    {
+      "forme": "Paneer",
+      "usda_fdc_id": "172223",
+      "usda_name": "Cheese, fresh, queso fresco",
+      "confidence": "B",
+      "note": "Ni le classeur ni USDA ne référencent le paneer. Le queso fresco est le même objet : fromage de lait de vache caillé à l'acide, pressé, non affiné et qui ne fond pas. 299 kcal, 18,1 g de protéines, 23,8 g de lipides, contre environ 265, 18,3 et 20,8 pour le paneer — l'écart tient à la teneur en eau du pressage."
+    },
+    {
+      "forme": "Quesillo Oaxaca",
+      "usda_fdc_id": "170845",
+      "usda_name": "Cheese, mozzarella, whole milk",
+      "confidence": "B",
+      "note": "Le quesillo est une pâte filée : caillé échaudé puis étiré, exactement le procédé de la mozzarella, dont il partage le comportement à la fonte. USDA n'a pas d'entrée Oaxaca ; la mozzarella au lait entier est la même pâte."
+    },
+    {
+      "forme": "Radis daikon cru",
+      "usda_fdc_id": "168451",
+      "usda_name": "Radishes, oriental, raw",
+      "confidence": "A",
+      "note": "« Oriental radish » est le daikon. Le classeur ne connaît que le radis rouge et le radis noir, deux fois plus énergétique — l'écart n'est pas négligeable sur les quantités employées."
+    },
+    {
+      "forme": "Jaggery",
+      "alim_code": "31017",
+      "confidence": "B",
+      "note": "Sucre de canne non raffiné : le sucre roux du classeur en est l'équivalent le plus direct (389,7 kcal, 97,3 g de glucides). Le jaggery conserve un peu plus de mélasse, ce qui lui laisse des minéraux mais ne change pas son apport."
+    },
+    {
+      "forme": "Sambal",
+      "alim_code": "11112",
+      "confidence": "B",
+      "note": "Réduction canonique des pâtes de piment condimentaires sur la harissa, seule entrée du classeur pour cette famille : piment broyé, sel, un peu d'huile. L'arôme diffère, la composition non."
+    },
+    {
+      "forme": "Salsa verde",
+      "usda_fdc_id": "171824",
+      "usda_name": "Sauce, salsa, verde, ready-to-serve",
+      "confidence": "A",
+      "note": "Absente du classeur français ; USDA la référence exactement, à base de tomatille."
+    },
+    {
+      "forme": "Salsa roja",
+      "alim_code": "20169",
+      "confidence": "C",
+      "note": "Proxy assumé. Le classeur n'a ni salsa ni sauce tomate mexicaine ; ses sauces tomate sont toutes cuisinées (aux oignons, à la viande, aux olives) et portent l'huile de leur préparation. La pulpe de tomate appertisée est la base de la salsa roja sans l'assaisonnement : elle en donne le socle, pas le piment ni la coriandre. Ses lipides ne sont pas mesurés et la fermeture d'Atwater les clôt."
+    },
+    {
+      "forme": "Vin Shaoxing",
+      "alim_code": "1026",
+      "confidence": "B",
+      "note": "Le classeur référence le saké sous « Saké ou Alcool de riz », qui couvre la famille des vins de riz fermentés. Le Shaoxing est plus ambré et légèrement plus sucré, mais reste un alcool de riz autour de 130 kcal."
+    },
+    {
+      "forme": "Vin de riz taïwanais",
+      "alim_code": "1026",
+      "confidence": "B",
+      "note": "Même famille et même entrée que le Shaoxing : alcool de riz de cuisine."
+    },
+    {
+      "forme": "Dashi",
+      "alim_code": "25948",
+      "density_g_per_ml": 1,
+      "confidence": "C",
+      "note": "Proxy assumé. Le dashi est une infusion de kombu et de copeaux de bonite, filtrée : un bouillon clair à quelques kilocalories près. Le classeur n'en a pas ; son bouillon de légumes reconstitué (5,38 kcal) est le seul bouillon clair générique et donne le bon ordre de grandeur. Ce qui fait le dashi — l'umami du glutamate et de l'inosinate — n'a pas d'expression nutritionnelle."
+    },
+    {
+      "forme": "Gochugaru",
+      "alim_code": "11088",
+      "confidence": "C",
+      "note": "Proxy assumé. Le gochugaru est un piment coréen séché et broyé, nettement moins fort que le cayenne mais de composition voisine : un fruit de Capsicum séché est fait de fibres, de sucres et d'un peu d'huile de graines. Le classeur n'a que le cayenne pour cette famille."
+    },
+    {
+      "forme": "Pul biber",
+      "alim_code": "11088",
+      "confidence": "C",
+      "note": "Proxy assumé, même raisonnement que le gochugaru : flocons de piment d'Alep, séchés et huilés, sur la seule entrée de piment séché du classeur."
+    },
+    {
+      "forme": "Berbéré",
+      "alim_code": "11005",
+      "confidence": "C",
+      "note": "Proxy assumé. Le berbéré est un mélange d'épices éthiopien — piment, fenugrec, gingembre, cardamome. Le classeur n'a pas de mélange africain ; sa poudre de curry est le seul mélange d'épices référencé et en partage la structure : épices séchées et broyées, très fibreuses."
+    },
+    {
+      "forme": "Sambar powder",
+      "alim_code": "11005",
+      "confidence": "C",
+      "note": "Proxy assumé, même raisonnement que le berbéré : mélange d'épices sud-indien sur la seule poudre d'épices composée du classeur."
+    },
+    {
+      "forme": "Gochujang",
+      "alim_code": "20916",
+      "confidence": "C",
+      "note": "Proxy assumé. Pâte de soja fermentée comme le miso, mais additionnée de riz gluant et de piment, ce qui la rend nettement plus sucrée — environ 45 g de glucides contre 18 pour le miso. L'apport est donc sous-estimé ; la réserve vaut d'être connue avant de publier une recette qui en emploie beaucoup."
+    },
+    {
+      "forme": "Doubanjiang",
+      "alim_code": "20916",
+      "confidence": "C",
+      "note": "Proxy assumé. Pâte de fèves fermentées au piment : même procédé et même rôle que le miso, base de légumineuse fermentée et salée. La fève remplace le soja."
+    },
+    {
+      "forme": "Ssamjang",
+      "alim_code": "20916",
+      "confidence": "C",
+      "note": "Proxy assumé. Le ssamjang est un mélange de doenjang — une pâte de soja fermentée de la même famille que le miso — et de gochujang, allongé d'huile de sésame et de sucre."
+    },
+    {
+      "forme": "Anis étoilé",
+      "usda_fdc_id": "171316",
+      "usda_name": "Spices, anise seed",
+      "grams_per_unit": 2,
+      "confidence": "C",
+      "note": "Proxy assumé. La badiane (Illicium verum) et l'anis vert (Pimpinella anisum) sont deux plantes sans lien botanique, rapprochées par leur seul anéthol. Aucune des deux références n'a la badiane. Réserve d'usage déterminante : l'étoile est infusée puis retirée, et elle est comptée en unités — une étoile pèse environ 2 g, son apport réel est proche de nul."
+    }
+  ]
+}

@@ -123,6 +123,68 @@
       "note": null
     },
     {
+      "canonical_name": "Anis étoilé",
+      "canonical_name_normalized": "anis etoile",
+      "category": null,
+      "confidence": "C",
+      "source": "usda_fdc",
+      "source_record_key": "171316",
+      "source_name": "Spices, anise seed",
+      "state": {
+        "concept": "Anis étoilé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 2
+      },
+      "per100g": {
+        "kcal": 337,
+        "proteinG": 17.6,
+        "carbsG": 50,
+        "fatG": 15.9,
+        "fiberG": 14.6
+      },
+      "note": "Proxy assumé. La badiane (Illicium verum) et l'anis vert (Pimpinella anisum) sont deux plantes sans lien botanique, rapprochées par leur seul anéthol. Aucune des deux références n'a la badiane. Réserve d'usage déterminante : l'étoile est infusée puis retirée, et elle est comptée en unités — une étoile pèse environ 2 g, son apport réel est proche de nul."
+    },
+    {
+      "canonical_name": "Aonori",
+      "canonical_name_normalized": "aonori",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20995",
+      "source_name": "Ao-nori (Enteromorpha sp.), séchée ou déshydratée",
+      "state": {
+        "concept": "Aonori",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 224,
+        "proteinG": 13.7,
+        "carbsG": 18.8,
+        "fatG": 2.47,
+        "fiberG": 36
+      },
+      "note": "Même aliment, orthographe différente : le dossier d'arbitrage n'avait rien proposé parce que son index de mots ne rapproche pas « aonori » de « Ao-nori »."
+    },
+    {
       "canonical_name": "Aubergine fraîche",
       "canonical_name_normalized": "aubergine fraiche",
       "category": "legumes",
@@ -332,6 +394,36 @@
         "fiberG": 0.2
       },
       "note": null
+    },
+    {
+      "canonical_name": "Berbéré",
+      "canonical_name_normalized": "berbere",
+      "category": "epices",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "11005",
+      "source_name": "Curry, poudre",
+      "state": {
+        "concept": "Berbéré",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 301,
+        "proteinG": 14.5,
+        "carbsG": 2.63,
+        "fatG": 14,
+        "fiberG": 53.2
+      },
+      "note": "Proxy assumé. Le berbéré est un mélange d'épices éthiopien — piment, fenugrec, gingembre, cardamome. Le classeur n'a pas de mélange africain ; sa poudre de curry est le seul mélange d'épices référencé et en partage la structure : épices séchées et broyées, très fibreuses."
     },
     {
       "canonical_name": "Beurre clarifié",
@@ -1441,6 +1533,36 @@
       "note": null
     },
     {
+      "canonical_name": "Chouriço portugais",
+      "canonical_name_normalized": "chourico portugais",
+      "category": null,
+      "confidence": "B",
+      "source": "usda_fdc",
+      "source_record_key": "173859",
+      "source_name": "Sausage, pork, chorizo, link or ground, raw",
+      "state": {
+        "concept": "Chouriço portugais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 296,
+        "proteinG": 13.6,
+        "carbsG": 3.78,
+        "fatG": 25.1,
+        "fiberG": 0
+      },
+      "note": "Le classeur ne connaît le chorizo qu'en garniture de pizza. Chouriço, chorizo et linguiça sont la même famille : saucisse de porc au paprika, séchée ou fumée. Réduction canonique sur la référence USDA du chorizo cru."
+    },
+    {
       "canonical_name": "Ciboule fraîche",
       "canonical_name_normalized": "ciboule fraiche",
       "category": "herbes_aromates",
@@ -2179,6 +2301,38 @@
       "note": null
     },
     {
+      "canonical_name": "Dashi",
+      "canonical_name_normalized": "dashi",
+      "category": "preparations_culinaires",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "25948",
+      "source_name": "Bouillon de légumes, déshydraté reconstitué",
+      "state": {
+        "concept": "Dashi",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 5.38,
+        "proteinG": 0.34,
+        "carbsG": 0.65,
+        "fatG": 0.16,
+        "fiberG": 0
+      },
+      "note": "Proxy assumé. Le dashi est une infusion de kombu et de copeaux de bonite, filtrée : un bouillon clair à quelques kilocalories près. Le classeur n'en a pas ; son bouillon de légumes reconstitué (5,38 kcal) est le seul bouillon clair générique et donne le bon ordre de grandeur. Ce qui fait le dashi — l'umami du glutamate et de l'inosinate — n'a pas d'expression nutritionnelle."
+    },
+    {
       "canonical_name": "Dos de cabillaud cru",
       "canonical_name_normalized": "dos de cabillaud cru",
       "category": "poissons_fruits_de_mer",
@@ -2213,6 +2367,36 @@
         "fiberG": 1.1
       },
       "note": "Ciqual 2020 ne mesure pas toutes les macros de cet aliment (glucides le plus souvent). Valeur USDA SR Legacy 171955 « Fish, cod, Atlantic, raw », réellement mesurée — jamais un zéro posé par défaut."
+    },
+    {
+      "canonical_name": "Doubanjiang",
+      "canonical_name_normalized": "doubanjiang",
+      "category": "condiments_sauces",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "20916",
+      "source_name": "Miso",
+      "state": {
+        "concept": "Doubanjiang",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 163,
+        "proteinG": 11.7,
+        "carbsG": 18.1,
+        "fatG": 5.31,
+        "fiberG": 5.4
+      },
+      "note": "Proxy assumé. Pâte de fèves fermentées au piment : même procédé et même rôle que le miso, base de légumineuse fermentée et salée. La fève remplace le soja."
     },
     {
       "canonical_name": "Eau",
@@ -2891,6 +3075,36 @@
       "note": null
     },
     {
+      "canonical_name": "Ghee",
+      "canonical_name_normalized": "ghee",
+      "category": null,
+      "confidence": "B",
+      "source": "usda_fdc",
+      "source_record_key": "171314",
+      "source_name": "Butter, Clarified butter (ghee)",
+      "state": {
+        "concept": "Ghee",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 900,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 100,
+        "fiberG": 0
+      },
+      "note": "Absent du classeur français, référencé tel quel par USDA. Matière grasse pure : 100 g de lipides, ni protéines ni glucides — la clarification retire l'eau et les solides du lait."
+    },
+    {
       "canonical_name": "Gingembre frais",
       "canonical_name_normalized": "gingembre frais",
       "category": "epices",
@@ -2979,6 +3193,66 @@
         "fiberG": 2.2
       },
       "note": null
+    },
+    {
+      "canonical_name": "Gochugaru",
+      "canonical_name_normalized": "gochugaru",
+      "category": "epices",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "11088",
+      "source_name": "Poivre de Cayenne ou piment de Cayenne",
+      "state": {
+        "concept": "Gochugaru",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 376,
+        "proteinG": 12,
+        "carbsG": 29.4,
+        "fatG": 17.3,
+        "fiberG": 27.2
+      },
+      "note": "Proxy assumé. Le gochugaru est un piment coréen séché et broyé, nettement moins fort que le cayenne mais de composition voisine : un fruit de Capsicum séché est fait de fibres, de sucres et d'un peu d'huile de graines. Le classeur n'a que le cayenne pour cette famille."
+    },
+    {
+      "canonical_name": "Gochujang",
+      "canonical_name_normalized": "gochujang",
+      "category": "condiments_sauces",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "20916",
+      "source_name": "Miso",
+      "state": {
+        "concept": "Gochujang",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 163,
+        "proteinG": 11.7,
+        "carbsG": 18.1,
+        "fatG": 5.31,
+        "fiberG": 5.4
+      },
+      "note": "Proxy assumé. Pâte de soja fermentée comme le miso, mais additionnée de riz gluant et de piment, ce qui la rend nettement plus sucrée — environ 45 g de glucides contre 18 pour le miso. L'apport est donc sous-estimé ; la réserve vaut d'être connue avant de publier une recette qui en emploie beaucoup."
     },
     {
       "canonical_name": "Gousse de vanille",
@@ -3691,6 +3965,36 @@
       "note": "Le meilleur score, 16150 « Huile de palme raffinée », restreindrait à tort à une huile précise à cause du seul mot « raffinée ». Le raffinage ne modifie pas les macros (900 kcal, 100 g lipides). Même concept que « huile végétale » et « huile de friture », donc même canonique."
     },
     {
+      "canonical_name": "Jaggery",
+      "canonical_name_normalized": "jaggery",
+      "category": "produits_sucres",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "31017",
+      "source_name": "Sucre roux",
+      "state": {
+        "concept": "Jaggery",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 389.7,
+        "proteinG": 0.12,
+        "carbsG": 97.3,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Sucre de canne non raffiné : le sucre roux du classeur en est l'équivalent le plus direct (389,7 kcal, 97,3 g de glucides). Le jaggery conserve un peu plus de mélasse, ce qui lui laisse des minéraux mais ne change pas son apport."
+    },
+    {
       "canonical_name": "Jambon blanc cuit",
       "canonical_name_normalized": "jambon blanc cuit",
       "category": "produits_transformes",
@@ -4186,6 +4490,38 @@
       "note": null
     },
     {
+      "canonical_name": "Linguiça portugaise",
+      "canonical_name_normalized": "linguica portugaise",
+      "category": null,
+      "confidence": "B",
+      "source": "usda_fdc",
+      "source_record_key": "173859",
+      "source_name": "Sausage, pork, chorizo, link or ground, raw",
+      "state": {
+        "concept": "Linguiça portugaise",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {
+        "grams_per_unit": 120
+      },
+      "per100g": {
+        "kcal": 296,
+        "proteinG": 13.6,
+        "carbsG": 3.78,
+        "fatG": 25.1,
+        "fiberG": 0
+      },
+      "note": "Même réduction que le chouriço. Comptée en unités : un maillon de linguiça pèse de 100 à 150 g, on retient 120 g."
+    },
+    {
       "canonical_name": "Marsala",
       "canonical_name_normalized": "marsala",
       "category": "boissons",
@@ -4216,6 +4552,36 @@
         "fiberG": 0
       },
       "note": null
+    },
+    {
+      "canonical_name": "Masa harina",
+      "canonical_name_normalized": "masa harina",
+      "category": null,
+      "confidence": "B",
+      "source": "usda_fdc",
+      "source_record_key": "169696",
+      "source_name": "Corn flour, masa, unenriched, white",
+      "state": {
+        "concept": "Masa harina",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 363,
+        "proteinG": 8.46,
+        "carbsG": 76.6,
+        "fatG": 3.69,
+        "fiberG": 6.4
+      },
+      "note": "Le classeur a bien une farine de maïs (9545), mais pas la masa : la nixtamalisation à la chaux modifie la disponibilité de la niacine et du calcium, et la farine obtenue n'est pas interchangeable en cuisine — c'est elle qui fait la tortilla. USDA référence exactement la masa. Version non enrichie retenue, pour ne pas importer une fortification américaine."
     },
     {
       "canonical_name": "Mascarpone",
@@ -4396,6 +4762,36 @@
         "fiberG": 0
       },
       "note": null
+    },
+    {
+      "canonical_name": "Morcilla asturienne",
+      "canonical_name_normalized": "morcilla asturienne",
+      "category": "produits_transformes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "8703",
+      "source_name": "Boudin noir, à cuire",
+      "state": {
+        "concept": "Morcilla asturienne",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 313,
+        "proteinG": 12.2,
+        "carbsG": 4.5,
+        "fatG": 27.1,
+        "fiberG": 1.42
+      },
+      "note": "Boudin noir à cuire : même concept culinaire — sang de porc, gras et aromates en boyau. La morcilla asturienne y ajoute oignon et paprika fumé, ce qui déplace l'arôme, pas la composition."
     },
     {
       "canonical_name": "Morue salée sèche",
@@ -5106,6 +5502,66 @@
         "fiberG": 0
       },
       "note": null
+    },
+    {
+      "canonical_name": "Paneer",
+      "canonical_name_normalized": "paneer",
+      "category": null,
+      "confidence": "B",
+      "source": "usda_fdc",
+      "source_record_key": "172223",
+      "source_name": "Cheese, fresh, queso fresco",
+      "state": {
+        "concept": "Paneer",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 299,
+        "proteinG": 18.1,
+        "carbsG": 2.98,
+        "fatG": 23.8,
+        "fiberG": 0
+      },
+      "note": "Ni le classeur ni USDA ne référencent le paneer. Le queso fresco est le même objet : fromage de lait de vache caillé à l'acide, pressé, non affiné et qui ne fond pas. 299 kcal, 18,1 g de protéines, 23,8 g de lipides, contre environ 265, 18,3 et 20,8 pour le paneer — l'écart tient à la teneur en eau du pressage."
+    },
+    {
+      "canonical_name": "Panko",
+      "canonical_name_normalized": "panko",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "7500",
+      "source_name": "Chapelure",
+      "state": {
+        "concept": "Panko",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 369,
+        "proteinG": 12.7,
+        "carbsG": 70,
+        "fatG": 3.77,
+        "fiberG": 4.5
+      },
+      "note": "Le panko est une chapelure : pain sans croûte, séché et émietté en flocons. La forme des miettes fait la texture de la friture, la composition reste celle de la chapelure."
     },
     {
       "canonical_name": "Paprika doux",
@@ -6396,6 +6852,66 @@
       "note": null
     },
     {
+      "canonical_name": "Pul biber",
+      "canonical_name_normalized": "pul biber",
+      "category": "epices",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "11088",
+      "source_name": "Poivre de Cayenne ou piment de Cayenne",
+      "state": {
+        "concept": "Pul biber",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 376,
+        "proteinG": 12,
+        "carbsG": 29.4,
+        "fatG": 17.3,
+        "fiberG": 27.2
+      },
+      "note": "Proxy assumé, même raisonnement que le gochugaru : flocons de piment d'Alep, séchés et huilés, sur la seule entrée de piment séché du classeur."
+    },
+    {
+      "canonical_name": "Quesillo Oaxaca",
+      "canonical_name_normalized": "quesillo oaxaca",
+      "category": null,
+      "confidence": "B",
+      "source": "usda_fdc",
+      "source_record_key": "170845",
+      "source_name": "Cheese, mozzarella, whole milk",
+      "state": {
+        "concept": "Quesillo Oaxaca",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 299,
+        "proteinG": 22.2,
+        "carbsG": 2.4,
+        "fatG": 22.1,
+        "fiberG": 0
+      },
+      "note": "Le quesillo est une pâte filée : caillé échaudé puis étiré, exactement le procédé de la mozzarella, dont il partage le comportement à la fonte. USDA n'a pas d'entrée Oaxaca ; la mozzarella au lait entier est la même pâte."
+    },
+    {
       "canonical_name": "Quinoa cru",
       "canonical_name_normalized": "quinoa cru",
       "category": "cereales_feculents",
@@ -6424,6 +6940,36 @@
         "fiberG": 7
       },
       "note": null
+    },
+    {
+      "canonical_name": "Radis daikon cru",
+      "canonical_name_normalized": "radis daikon cru",
+      "category": null,
+      "confidence": "B",
+      "source": "usda_fdc",
+      "source_record_key": "168451",
+      "source_name": "Radishes, oriental, raw",
+      "state": {
+        "concept": "Radis daikon cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 18,
+        "proteinG": 0.6,
+        "carbsG": 4.1,
+        "fatG": 0.1,
+        "fiberG": 1.6
+      },
+      "note": "« Oriental radish » est le daikon. Le classeur ne connaît que le radis rouge et le radis noir, deux fois plus énergétique — l'écart n'est pas négligeable sur les quantités employées."
     },
     {
       "canonical_name": "Raisin sec",
@@ -6548,6 +7094,96 @@
       "note": "Profil riz blanc cru ; variété Arborio conservée comme identité culinaire."
     },
     {
+      "canonical_name": "Riz bomba cru",
+      "canonical_name_normalized": "riz bomba cru",
+      "category": null,
+      "confidence": "B",
+      "source": "usda_fdc",
+      "source_record_key": "168881",
+      "source_name": "Rice, white, short-grain, enriched, uncooked",
+      "state": {
+        "concept": "Riz bomba cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 358,
+        "proteinG": 6.5,
+        "carbsG": 79.2,
+        "fatG": 0.52,
+        "fiberG": 2.8
+      },
+      "note": "Le riz rond n'existe pas au classeur français, qui ne connaît que le riz blanc long (9100). USDA distingue le grain court, dont l'amidon et donc l'absorption diffèrent : 358 kcal contre 350, 6,5 g de protéines contre 7,4. L'« enriched » américain ajoute des vitamines et minéraux, sans effet sur les macronutriments."
+    },
+    {
+      "canonical_name": "Riz brisé cru",
+      "canonical_name_normalized": "riz brise cru",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9100",
+      "source_name": "Riz blanc, cru",
+      "state": {
+        "concept": "Riz brisé cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 350,
+        "proteinG": 7.4,
+        "carbsG": 78,
+        "fatG": 0.91,
+        "fiberG": 1.05
+      },
+      "note": "Même grain, fracturé au décorticage. La brisure change le temps de cuisson et la texture, pas la composition."
+    },
+    {
+      "canonical_name": "Riz cru",
+      "canonical_name_normalized": "riz cru",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9100",
+      "source_name": "Riz blanc, cru",
+      "state": {
+        "concept": "Riz cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 350,
+        "proteinG": 7.4,
+        "carbsG": 78,
+        "fatG": 0.91,
+        "fiberG": 1.05
+      },
+      "note": "Réduction canonique : « riz cru » sans autre précision est du riz blanc long cru."
+    },
+    {
       "canonical_name": "Riz japonais cru",
       "canonical_name_normalized": "riz japonais cru",
       "category": "cereales_feculents",
@@ -6576,6 +7212,36 @@
         "fiberG": 1.05
       },
       "note": "Le riz japonais (rond, à sushi) est un riz blanc ; Ciqual ne distingue pas les variétés rondes, et les riz blancs crus du classeur sont tous à 350-354 kcal. Le seul candidat proposé, 20990 « Kombu japonais séché », est une algue : correspondance sur le mot « japonais » uniquement, décision totalement fausse."
+    },
+    {
+      "canonical_name": "Riz jasmin cru",
+      "canonical_name_normalized": "riz jasmin cru",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9100",
+      "source_name": "Riz blanc, cru",
+      "state": {
+        "concept": "Riz jasmin cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 350,
+        "proteinG": 7.4,
+        "carbsG": 78,
+        "fatG": 0.91,
+        "fiberG": 1.05
+      },
+      "note": "Le jasmin est un riz long blanc. Sa composition ne se distingue pas du riz blanc long générique : la variété porte l'arôme, pas les macronutriments. Un concept culinaire, un ingrédient canonique."
     },
     {
       "canonical_name": "Riz long blanc cru",
@@ -6666,6 +7332,42 @@
         "fiberG": 14.1
       },
       "note": null
+    },
+    {
+      "canonical_name": "Rouget grondin cru",
+      "canonical_name_normalized": "rouget grondin cru",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "derived": {
+        "field": "carbohydrate_g",
+        "value": 0,
+        "method": "atwater_closure",
+        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g − 2·fiber_g) / 4"
+      },
+      "source_record_key": "26106",
+      "source_name": "Grondin, cru",
+      "state": {
+        "concept": "Rouget grondin cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 94,
+        "proteinG": 19,
+        "carbsG": 0,
+        "fatG": 2,
+        "fiberG": 0
+      },
+      "note": "Le grondin figure au classeur sous son seul nom. Ses glucides ne sont pas mesurés — comme pour tous les poissons du classeur — et la fermeture d'Atwater les clôt à zéro, ce qui est la valeur réelle."
     },
     {
       "canonical_name": "Safran",
@@ -6764,6 +7466,126 @@
         "fiberG": 0
       },
       "note": null
+    },
+    {
+      "canonical_name": "Salsa roja",
+      "canonical_name_normalized": "salsa roja",
+      "category": "legumes",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "20169",
+      "source_name": "Tomate, pulpe, appertisée",
+      "state": {
+        "concept": "Salsa roja",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 26.1,
+        "proteinG": 1.2,
+        "carbsG": 3.63,
+        "fatG": 0.5,
+        "fiberG": 1.8
+      },
+      "note": "Proxy assumé. Le classeur n'a ni salsa ni sauce tomate mexicaine ; ses sauces tomate sont toutes cuisinées (aux oignons, à la viande, aux olives) et portent l'huile de leur préparation. La pulpe de tomate appertisée est la base de la salsa roja sans l'assaisonnement : elle en donne le socle, pas le piment ni la coriandre. Ses lipides ne sont pas mesurés et la fermeture d'Atwater les clôt."
+    },
+    {
+      "canonical_name": "Salsa verde",
+      "canonical_name_normalized": "salsa verde",
+      "category": null,
+      "confidence": "B",
+      "source": "usda_fdc",
+      "source_record_key": "171824",
+      "source_name": "Sauce, salsa, verde, ready-to-serve",
+      "state": {
+        "concept": "Salsa verde",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 38,
+        "proteinG": 1.13,
+        "carbsG": 6.36,
+        "fatG": 0.89,
+        "fiberG": 1.9
+      },
+      "note": "Absente du classeur français ; USDA la référence exactement, à base de tomatille."
+    },
+    {
+      "canonical_name": "Sambal",
+      "canonical_name_normalized": "sambal",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11112",
+      "source_name": "Harissa (sauce condimentaire), préemballée",
+      "state": {
+        "concept": "Sambal",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 66.2,
+        "proteinG": 2.72,
+        "carbsG": 7.3,
+        "fatG": 2.9,
+        "fiberG": 5.1
+      },
+      "note": "Réduction canonique des pâtes de piment condimentaires sur la harissa, seule entrée du classeur pour cette famille : piment broyé, sel, un peu d'huile. L'arôme diffère, la composition non."
+    },
+    {
+      "canonical_name": "Sambar powder",
+      "canonical_name_normalized": "sambar powder",
+      "category": "epices",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "11005",
+      "source_name": "Curry, poudre",
+      "state": {
+        "concept": "Sambar powder",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 301,
+        "proteinG": 14.5,
+        "carbsG": 2.63,
+        "fatG": 14,
+        "fiberG": 53.2
+      },
+      "note": "Proxy assumé, même raisonnement que le berbéré : mélange d'épices sud-indien sur la seule poudre d'épices composée du classeur."
     },
     {
       "canonical_name": "Sauce poisson",
@@ -7154,6 +7976,36 @@
         "fiberG": 3
       },
       "note": null
+    },
+    {
+      "canonical_name": "Ssamjang",
+      "canonical_name_normalized": "ssamjang",
+      "category": "condiments_sauces",
+      "confidence": "C",
+      "source": "ciqual_2020",
+      "source_record_key": "20916",
+      "source_name": "Miso",
+      "state": {
+        "concept": "Ssamjang",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 163,
+        "proteinG": 11.7,
+        "carbsG": 18.1,
+        "fatG": 5.31,
+        "fiberG": 5.4
+      },
+      "note": "Proxy assumé. Le ssamjang est un mélange de doenjang — une pâte de soja fermentée de la même famille que le miso — et de gochujang, allongé d'huile de sésame et de sucre."
     },
     {
       "canonical_name": "Sucre brun",
@@ -7671,6 +8523,38 @@
       "note": null
     },
     {
+      "canonical_name": "Vin de riz taïwanais",
+      "canonical_name_normalized": "vin de riz taiwanais",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "1026",
+      "source_name": "Saké ou Alcool de riz",
+      "state": {
+        "concept": "Vin de riz taïwanais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 133,
+        "proteinG": 0,
+        "carbsG": 5,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Même famille et même entrée que le Shaoxing : alcool de riz de cuisine."
+    },
+    {
       "canonical_name": "Vin rouge sec",
       "canonical_name_normalized": "vin rouge sec",
       "category": "boissons",
@@ -7701,6 +8585,38 @@
         "fiberG": 0
       },
       "note": null
+    },
+    {
+      "canonical_name": "Vin Shaoxing",
+      "canonical_name_normalized": "vin shaoxing",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "1026",
+      "source_name": "Saké ou Alcool de riz",
+      "state": {
+        "concept": "Vin Shaoxing",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 133,
+        "proteinG": 0,
+        "carbsG": 5,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Le classeur référence le saké sous « Saké ou Alcool de riz », qui couvre la famille des vins de riz fermentés. Le Shaoxing est plus ambré et légèrement plus sucré, mais reste un alcool de riz autour de 130 kcal."
     },
     {
       "canonical_name": "Vinaigre de cidre",

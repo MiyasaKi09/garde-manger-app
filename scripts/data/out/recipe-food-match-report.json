@@ -3,12 +3,13 @@
   "nutrition_source": "Ciqual 2020",
   "forms_total": 719,
   "summary": {
-    "review_required": 463,
-    "curated": 208,
+    "review_required": 433,
+    "curated": 238,
     "exact_label": 48
   },
   "recipes_total": 309,
   "recipes_eligible_for_publication": 68,
+  "recipes_blocked_only_by_proxy": 34,
   "v1_enriched_eligible_for_publication": 48,
   "unresolved_required": [
     "Achiote pâte",
@@ -23,8 +24,6 @@
     "Amande mondée",
     "Amchur poudre de mangue",
     "Ananas frais",
-    "Anis étoilé",
-    "Aonori",
     "Arachide grillée moulue",
     "Asafoetida",
     "Aubergine africaine fraîche",
@@ -37,7 +36,6 @@
     "Bar entier cru vidé",
     "Basilic sacré frais",
     "Bâton de cannelle",
-    "Berbéré",
     "Betterave crue",
     "Beurre clarifié ghee",
     "Beurre demi-sel",
@@ -90,7 +88,6 @@
     "Chou noir kale",
     "Chou vert frais",
     "Choucroute crue fermentée",
-    "Chouriço portugais",
     "Chutney d abricot",
     "Chutney sec ail cacahuète",
     "Chutney vert coriandre",
@@ -118,9 +115,7 @@
     "Cuisse de poulet crue, désossée",
     "Curry de Durban",
     "Curry jamaïcain en poudre",
-    "Dashi",
     "Doenjang pâte de soja fermentée",
-    "Doubanjiang",
     "Douchi haricot noir fermenté",
     "Eau chaude",
     "Eau glacée gazeuse",
@@ -183,11 +178,8 @@
     "Garrofó cuit",
     "Gâteau de riz coréen tteok",
     "Gelée de bouillon de porc",
-    "Ghee",
     "Gingembre mariné beni shoga",
     "Gingembre mariné rouge",
-    "Gochugaru",
-    "Gochujang",
     "Gombo frais",
     "Graine de melon egusi moulue",
     "Haleem masala",
@@ -205,7 +197,6 @@
     "Huile de moutarde",
     "Huile de palme rouge",
     "Huile pimentée au roucou",
-    "Jaggery",
     "Jambon de Bayonne avec os",
     "Jambon de Parme",
     "Jambon serrano",
@@ -226,14 +217,12 @@
     "Lentille urad noire entière sèche",
     "Lentille urad sèche",
     "Levure boulangère fraîche",
-    "Linguiça portugaise",
     "Maïs blanc sec hominy",
     "Maïs choclo cuit",
     "Maïs doux en grains",
     "Maïs doux frais en grains",
     "Maïs pozolero nixtamalisé cuit",
     "Manioc cru, épluché",
-    "Masa harina",
     "Masa harina pour tamal",
     "Mayonnaise japonaise",
     "Mélasse de grenade",
@@ -242,7 +231,6 @@
     "Mirin",
     "Miso blanc",
     "Miso rouge",
-    "Morcilla asturienne",
     "Moutarde allemande",
     "Moutarde verte fermentée",
     "Msemen cuit",
@@ -284,8 +272,6 @@
     "Palette de porc demi-sel",
     "Palette de porc fumée",
     "Palourde fraîche",
-    "Paneer",
-    "Panko",
     "Papaye verte",
     "Paprika doux hongrois",
     "Paprika fort hongrois",
@@ -356,9 +342,6 @@
     "Pousse de soja blanchie",
     "Pousse de soja fraîche",
     "Pruneau dénoyauté",
-    "Pul biber",
-    "Quesillo Oaxaca",
-    "Radis daikon cru",
     "Radis frais",
     "Radis jaune mariné danmuji",
     "Rascasse crue entière",
@@ -366,28 +349,19 @@
     "Ricotta salata",
     "Rigatoni secs",
     "Riz basmati cru",
-    "Riz bomba cru",
-    "Riz brisé cru",
-    "Riz cru",
     "Riz étuvé cru",
     "Riz gluant cru grillé moulu",
-    "Riz jasmin cru",
     "Riz jasmin cuit froid",
     "Riz long blanc cuit",
     "Riz long étuvé cru",
     "Riz rond coréen cru",
     "Riz rond cru",
-    "Rouget grondin cru",
     "Rouille",
     "Roux de curry japonais",
     "Saewoojeot crevette fermentée",
     "Saindoux asiento",
     "Saké",
     "Saké de cuisine",
-    "Salsa roja",
-    "Salsa verde",
-    "Sambal",
-    "Sambar powder",
     "Sauce hoisin",
     "Sauce huître",
     "Sauce okonomiyaki",
@@ -408,7 +382,6 @@
     "Shiitaké séché",
     "Shirataki rincé",
     "Sole entière crue, parée",
-    "Ssamjang",
     "Steak de bœuf cru fin",
     "Sucre glace",
     "Sumac moulu",
@@ -444,9 +417,7 @@
     "Vermicelle fin sec",
     "Viande de chèvre crue avec os",
     "Vin blanc sec d Alsace",
-    "Vin de riz taïwanais",
     "Vin rouge de Bourgogne",
-    "Vin Shaoxing",
     "Vinaigre blanc",
     "Vinaigre de canne",
     "Vinaigre de malt",
@@ -1254,7 +1225,6 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Rascasse crue entière",
-        "Rouget grondin cru",
         "Fenouil frais",
         "Zeste d orange",
         "Rouille"
@@ -1636,7 +1606,6 @@
       "family": "Paella valenciana",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Riz bomba cru",
         "Poulet cru en morceaux",
         "Lapin cru en morceaux",
         "Haricot vert plat cru",
@@ -1654,7 +1623,6 @@
       "family": "Arroz negro",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Riz bomba cru",
         "Encre de seiche",
         "Fumet de poisson",
         "Tomate râpée",
@@ -1690,7 +1658,6 @@
       "unresolved_required_forms": [
         "Faba asturiana sèche",
         "Chorizo asturien",
-        "Morcilla asturienne",
         "Poitrine de porc salée"
       ],
       "low_confidence_required_forms": [],
@@ -1774,8 +1741,7 @@
       "family": "Caldo verde",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Chou kale portugais",
-        "Chouriço portugais"
+        "Chou kale portugais"
       ],
       "low_confidence_required_forms": [
         "Bouillon de légumes non salé"
@@ -1790,7 +1756,6 @@
       "unresolved_required_forms": [
         "Pain de mie épais",
         "Steak de bœuf cru fin",
-        "Linguiça portugaise",
         "Fromage flamengo",
         "Bière blonde"
       ],
@@ -1801,7 +1766,6 @@
       "unresolved_conversion_required_forms": [
         "Pain de mie épais",
         "Steak de bœuf cru fin",
-        "Linguiça portugaise",
         "Bière blonde",
         "Piment frais"
       ]
@@ -1917,10 +1881,11 @@
       "family": "Menemen",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Piment vert doux frais",
+        "Piment vert doux frais"
+      ],
+      "low_confidence_required_forms": [
         "Pul biber"
       ],
-      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
@@ -1939,11 +1904,10 @@
       "code": "REAL-133",
       "family": "Lahmacun",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Pul biber"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
-        "Agneau haché cru"
+        "Agneau haché cru",
+        "Pul biber"
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -2139,10 +2103,9 @@
       "code": "REAL-148",
       "family": "Doro wat",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Berbéré"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
+        "Berbéré",
         "Beurre clarifié épicé niter kibbeh"
       ],
       "incomplete_nutrition_required_forms": [],
@@ -2154,10 +2117,9 @@
       "code": "REAL-149",
       "family": "Misir wat",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Berbéré"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
+        "Berbéré",
         "Beurre clarifié épicé niter kibbeh"
       ],
       "incomplete_nutrition_required_forms": [],
@@ -2168,10 +2130,10 @@
       "family": "Shiro wat",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Farine de pois chiche grillée",
-        "Berbéré"
+        "Farine de pois chiche grillée"
       ],
       "low_confidence_required_forms": [
+        "Berbéré",
         "Beurre clarifié épicé niter kibbeh",
         "Bouillon de légumes non salé"
       ],
@@ -2213,7 +2175,6 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Mérou cru entier",
-        "Riz brisé cru",
         "Manioc cru, épluché",
         "Aubergine africaine fraîche"
       ],
@@ -2461,7 +2422,6 @@
         "Riz basmati cru",
         "Cuisse de poulet crue, désossée",
         "Oignon frit",
-        "Ghee",
         "Cardamome verte"
       ],
       "low_confidence_required_forms": [
@@ -2479,8 +2439,7 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Fenouil moulu",
-        "Cardamome noire",
-        "Ghee"
+        "Cardamome noire"
       ],
       "low_confidence_required_forms": [
         "Piment du Cachemire moulu"
@@ -2495,10 +2454,7 @@
       "code": "REAL-173",
       "family": "Saag paneer",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Paneer",
-        "Ghee"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
         "Garam masala"
       ],
@@ -2521,9 +2477,7 @@
       "code": "REAL-175",
       "family": "Rajma masala",
       "eligible_for_publication": false,
-      "unresolved_required_forms": [
-        "Ghee"
-      ],
+      "unresolved_required_forms": [],
       "low_confidence_required_forms": [
         "Garam masala",
         "Piment du Cachemire moulu"
@@ -2578,10 +2532,10 @@
         "Pois d arhar toor dal sec",
         "Gombo frais",
         "Courge fraîche",
-        "Sambar powder",
         "Asafoetida"
       ],
       "low_confidence_required_forms": [
+        "Sambar powder",
         "Graine de moutarde",
         "Feuille de curry fraîche"
       ],
@@ -2609,7 +2563,6 @@
       "family": "Masala dosa",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Riz cru",
         "Lentille urad blanche sèche"
       ],
       "low_confidence_required_forms": [
@@ -2673,7 +2626,6 @@
       "family": "Samosa aux pommes de terre",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Ghee",
         "Coriandre en graines",
         "Amchur poudre de mangue"
       ],
@@ -2706,8 +2658,7 @@
       "unresolved_required_forms": [
         "Vinaigre de palmier ou cidre",
         "Piment rouge séché",
-        "Coriandre en graines",
-        "Jaggery"
+        "Coriandre en graines"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
@@ -2721,7 +2672,6 @@
       "family": "Nihari",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Ghee",
         "Farine de blé atta",
         "Nihari masala"
       ],
@@ -2741,7 +2691,6 @@
         "Lentille chana dal sèche",
         "Lentille urad sèche",
         "Oignon frit",
-        "Ghee",
         "Haleem masala"
       ],
       "low_confidence_required_forms": [],
@@ -2768,10 +2717,10 @@
       "unresolved_required_forms": [
         "Tofu soyeux ferme",
         "Bœuf haché cru",
-        "Doubanjiang",
         "Douchi haricot noir fermenté"
       ],
       "low_confidence_required_forms": [
+        "Doubanjiang",
         "Poivre du Sichuan",
         "Huile pimentée"
       ],
@@ -2783,16 +2732,14 @@
       "family": "Gong bao ji ding",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Piment rouge séché",
-        "Vin Shaoxing"
+        "Piment rouge séché"
       ],
       "low_confidence_required_forms": [
         "Poivre du Sichuan"
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Sauce soja légère",
-        "Vin Shaoxing"
+        "Sauce soja légère"
       ]
     },
     {
@@ -2819,17 +2766,15 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Poitrine de porc crue avec couenne",
-        "Vin Shaoxing",
-        "Anis étoilé",
         "Cannelle cassia"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Anis étoilé"
+      ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Sauce soja légère",
         "Sauce soja foncée",
-        "Vin Shaoxing",
-        "Anis étoilé",
         "Cannelle cassia"
       ]
     },
@@ -2840,10 +2785,11 @@
       "unresolved_required_forms": [
         "Poitrine de porc crue avec couenne",
         "Poireau chinois",
-        "Doubanjiang",
         "Douchi haricot noir fermenté"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Doubanjiang"
+      ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Sauce soja légère"
@@ -2854,10 +2800,11 @@
       "family": "Yu xiang qie zi",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Aubergine chinoise fraîche",
+        "Aubergine chinoise fraîche"
+      ],
+      "low_confidence_required_forms": [
         "Doubanjiang"
       ],
-      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Sauce soja légère"
@@ -2892,14 +2839,12 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Porc haché cru gras",
-        "Châtaigne d’eau",
-        "Vin Shaoxing"
+        "Châtaigne d’eau"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Sauce soja légère",
-        "Vin Shaoxing"
+        "Sauce soja légère"
       ]
     },
     {
@@ -2919,15 +2864,13 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Eau chaude",
-        "Gelée de bouillon de porc",
-        "Vin Shaoxing"
+        "Gelée de bouillon de porc"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Eau chaude",
-        "Sauce soja légère",
-        "Vin Shaoxing"
+        "Sauce soja légère"
       ]
     },
     {
@@ -2948,7 +2891,6 @@
       "family": "Cantonese clay pot rice",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Riz jasmin cru",
         "Saucisse chinoise lap cheong",
         "Poulet cru désossé",
         "Shiitaké séché",
@@ -2968,14 +2910,12 @@
       "unresolved_required_forms": [
         "Échine de porc crue en bandes",
         "Sauce hoisin",
-        "Vin Shaoxing",
         "Cinq épices chinoises"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Sauce soja légère",
-        "Vin Shaoxing"
+        "Sauce soja légère"
       ]
     },
     {
@@ -3027,17 +2967,14 @@
       "family": "Lu rou fan",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Riz jasmin cru",
         "Échalote frite",
-        "Vin Shaoxing",
         "Cinq épices chinoises"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Sauce soja légère",
-        "Sauce soja foncée",
-        "Vin Shaoxing"
+        "Sauce soja foncée"
       ]
     },
     {
@@ -3046,17 +2983,15 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Jarret de bœuf cru",
-        "Nouille de blé chinoise sèche",
+        "Nouille de blé chinoise sèche"
+      ],
+      "low_confidence_required_forms": [
         "Doubanjiang",
-        "Vin Shaoxing",
         "Anis étoilé"
       ],
-      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Sauce soja légère",
-        "Vin Shaoxing",
-        "Anis étoilé"
+        "Sauce soja légère"
       ]
     },
     {
@@ -3064,7 +2999,6 @@
       "family": "San bei ji",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Vin de riz taïwanais",
         "Ail cru entier",
         "Piment rouge frais"
       ],
@@ -3072,7 +3006,6 @@
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Sauce soja légère",
-        "Vin de riz taïwanais",
         "Piment rouge frais"
       ]
     },
@@ -3083,17 +3016,17 @@
       "unresolved_required_forms": [
         "Nouille ramen fraîche",
         "Bouillon de poulet",
-        "Dashi",
         "Chashu de porc",
         "Œuf mariné ajitama",
         "Menma pousse de bambou assaisonnée",
         "Nori"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Dashi"
+      ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Bouillon de poulet",
-        "Dashi",
         "Sauce soja japonaise",
         "Œuf mariné ajitama",
         "Nori"
@@ -3141,13 +3074,13 @@
       "family": "Oyakodon",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Dashi",
         "Mirin"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Dashi"
+      ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Dashi",
         "Sauce soja japonaise",
         "Mirin"
       ]
@@ -3158,15 +3091,14 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Côte de porc désossée crue",
-        "Panko",
-        "Dashi",
         "Mirin"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Dashi"
+      ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Côte de porc désossée crue",
-        "Dashi",
         "Sauce soja japonaise",
         "Mirin"
       ]
@@ -3177,14 +3109,14 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Bœuf cru très finement tranché",
-        "Dashi",
         "Mirin",
         "Gingembre mariné beni shoga"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Dashi"
+      ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Dashi",
         "Sauce soja japonaise",
         "Mirin"
       ]
@@ -3194,36 +3126,33 @@
       "family": "Okonomiyaki Osaka",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Dashi",
         "Poitrine de porc crue fine",
         "Sauce okonomiyaki",
         "Mayonnaise japonaise",
-        "Katsuobushi",
-        "Aonori"
+        "Katsuobushi"
       ],
-      "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
+      "low_confidence_required_forms": [
         "Dashi"
-      ]
+      ],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-218",
       "family": "Takoyaki",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Dashi",
         "Tenkasu miettes de tempura",
         "Gingembre mariné rouge",
         "Sauce takoyaki",
         "Mayonnaise japonaise",
         "Katsuobushi"
       ],
-      "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
+      "low_confidence_required_forms": [
         "Dashi"
-      ]
+      ],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "REAL-219",
@@ -3234,14 +3163,14 @@
         "Aubergine japonaise fraîche",
         "Farine de blé faible en gluten",
         "Eau glacée gazeuse",
-        "Dashi",
         "Mirin"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Dashi"
+      ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Eau glacée gazeuse",
-        "Dashi",
         "Sauce soja japonaise",
         "Mirin"
       ]
@@ -3278,13 +3207,13 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Shirataki rincé",
-        "Dashi",
         "Mirin"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Dashi"
+      ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Dashi",
         "Sauce soja japonaise",
         "Mirin"
       ]
@@ -3318,8 +3247,7 @@
         "Nouille yakisoba précuite",
         "Poitrine de porc crue fine",
         "Sauce yakisoba",
-        "Gingembre mariné rouge",
-        "Aonori"
+        "Gingembre mariné rouge"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
@@ -3332,13 +3260,13 @@
       "family": "Tamagoyaki",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Dashi",
         "Mirin"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Dashi"
+      ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Dashi",
         "Sauce soja japonaise",
         "Mirin"
       ]
@@ -3363,11 +3291,11 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Riz rond coréen cru",
-        "Pousse de soja fraîche",
-        "Gochujang"
+        "Pousse de soja fraîche"
       ],
       "low_confidence_required_forms": [
-        "Shiitaké frais"
+        "Shiitaké frais",
+        "Gochujang"
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -3423,12 +3351,13 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Gâteau de riz coréen tteok",
-        "Gochujang",
-        "Gochugaru",
         "Bouillon d’anchois et algue",
         "Eomuk gâteau de poisson"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Gochujang",
+        "Gochugaru"
+      ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Bouillon d’anchois et algue"
@@ -3439,11 +3368,11 @@
       "family": "Kimchi jjigae",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Kimchi de chou fermenté mûr",
-        "Gochugaru"
+        "Kimchi de chou fermenté mûr"
       ],
       "low_confidence_required_forms": [
-        "Bouillon d’anchois"
+        "Bouillon d’anchois",
+        "Gochugaru"
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -3470,11 +3399,11 @@
       "eligible_for_publication": false,
       "unresolved_required_forms": [
         "Tofu soyeux sundubu",
-        "Palourde fraîche",
-        "Gochugaru"
+        "Palourde fraîche"
       ],
       "low_confidence_required_forms": [
-        "Bouillon d’anchois"
+        "Bouillon d’anchois",
+        "Gochugaru"
       ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
@@ -3484,12 +3413,13 @@
       "family": "Dakgalbi",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Gochujang",
-        "Gochugaru",
         "Patate douce crue, épluchée",
         "Gâteau de riz coréen tteok"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Gochujang",
+        "Gochugaru"
+      ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Sauce soja coréenne"
@@ -3535,10 +3465,11 @@
         "Doenjang pâte de soja fermentée",
         "Chou chinois salé",
         "Saewoojeot crevette fermentée",
-        "Ssamjang",
         "Ail cru tranché"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Ssamjang"
+      ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
@@ -3549,15 +3480,15 @@
       "unresolved_required_forms": [
         "Os de bœuf blanchis",
         "Nouille de riz plate sèche",
-        "Anis étoilé",
         "Cannelle cassia",
         "Pousse de soja fraîche",
         "Citron vert frais"
       ],
-      "low_confidence_required_forms": [],
+      "low_confidence_required_forms": [
+        "Anis étoilé"
+      ],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
-        "Anis étoilé",
         "Cannelle cassia",
         "Sauce poisson",
         "Citron vert frais"
@@ -3590,7 +3521,6 @@
         "Baguette vietnamienne",
         "Porc rôti vietnamien",
         "Pâté de foie",
-        "Radis daikon cru",
         "Vinaigre de riz"
       ],
       "low_confidence_required_forms": [],
@@ -3794,8 +3724,7 @@
         "Basilic sacré frais",
         "Piment oiseau frais",
         "Sauce soja claire",
-        "Sauce huître",
-        "Riz jasmin cru"
+        "Sauce huître"
       ],
       "low_confidence_required_forms": [
         "Sucre de palme"
@@ -3911,8 +3840,7 @@
       "unresolved_required_forms": [
         "Nouille de riz large fraîche",
         "Saucisse chinoise lap cheong",
-        "Pousse de soja fraîche",
-        "Sambal"
+        "Pousse de soja fraîche"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
@@ -3943,7 +3871,6 @@
       "unresolved_required_forms": [
         "Travers de porc crus",
         "Tamarin frais ou pâte",
-        "Radis daikon cru",
         "Haricot kilomètre cru",
         "Épinard d’eau kangkong"
       ],
@@ -3978,8 +3905,7 @@
       "family": "Carnitas",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Orange fraîche",
-        "Salsa verde"
+        "Orange fraîche"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
@@ -4108,7 +4034,6 @@
       "unresolved_required_forms": [
         "Masa harina pour tamal",
         "Poulet cuit effiloché",
-        "Salsa verde",
         "Feuille de maïs sèche"
       ],
       "low_confidence_required_forms": [],
@@ -4125,11 +4050,11 @@
         "Tlayuda grande",
         "Haricot noir refrit",
         "Saindoux asiento",
-        "Quesillo Oaxaca",
-        "Tasajo de bœuf",
+        "Tasajo de bœuf"
+      ],
+      "low_confidence_required_forms": [
         "Salsa roja"
       ],
-      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": [
         "Tlayuda grande",
@@ -4206,7 +4131,6 @@
       "family": "Pupusas revueltas",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Masa harina",
         "Fromage quesillo",
         "Porc cuit haché chicharrón",
         "Haricot rouge refrit",
@@ -5534,8 +5458,15 @@
       "units": [
         "u"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "171316",
+        "ciqual_name": "Spices, anise seed",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. La badiane (Illicium verum) et l'anis vert (Pimpinella anisum) sont deux plantes sans lien botanique, rapprochées par leur seul anéthol. Aucune des deux références n'a la badiane. Réserve d'usage déterminante : l'étoile est infusée puis retirée, et elle est comptée en unités — une étoile pèse environ 2 g, son apport réel est proche de nul."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -5582,8 +5513,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20995",
+        "ciqual_name": "Ao-nori (Enteromorpha sp.), séchée ou déshydratée",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même aliment, orthographe différente : le dossier d'arbitrage n'avait rien proposé parce que son index de mots ne rapproche pas « aonori » de « Ao-nori »."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -6689,8 +6627,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11005",
+        "ciqual_name": "Curry, poudre",
+        "category": "epices",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. Le berbéré est un mélange d'épices éthiopien — piment, fenugrec, gingembre, cardamome. Le classeur n'a pas de mélange africain ; sa poudre de curry est le seul mélange d'épices référencé et en partage la structure : épices séchées et broyées, très fibreuses."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -11309,8 +11254,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "173859",
+        "ciqual_name": "Sausage, pork, chorizo, link or ground, raw",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le classeur ne connaît le chorizo qu'en garniture de pizza. Chouriço, chorizo et linguiça sont la même famille : saucisse de porc au paprika, séchée ou fumée. Réduction canonique sur la référence USDA du chorizo cru."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -14117,8 +14069,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "25948",
+        "ciqual_name": "Bouillon de légumes, déshydraté reconstitué",
+        "category": "preparations_culinaires",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. Le dashi est une infusion de kombu et de copeaux de bonite, filtrée : un bouillon clair à quelques kilocalories près. Le classeur n'en a pas ; son bouillon de légumes reconstitué (5,38 kcal) est le seul bouillon clair générique et donne le bon ordre de grandeur. Ce qui fait le dashi — l'umami du glutamate et de l'inosinate — n'a pas d'expression nutritionnelle."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -14268,8 +14227,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20916",
+        "ciqual_name": "Miso",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. Pâte de fèves fermentées au piment : même procédé et même rôle que le miso, base de légumineuse fermentée et salée. La fève remplace le soja."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -18599,8 +18565,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "171314",
+        "ciqual_name": "Butter, Clarified butter (ghee)",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Absent du classeur français, référencé tel quel par USDA. Matière grasse pure : 100 g de lipides, ni protéines ni glucides — la clarification retire l'eau et les solides du lait."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -18908,8 +18881,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11088",
+        "ciqual_name": "Poivre de Cayenne ou piment de Cayenne",
+        "category": "epices",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. Le gochugaru est un piment coréen séché et broyé, nettement moins fort que le cayenne mais de composition voisine : un fruit de Capsicum séché est fait de fibres, de sucres et d'un peu d'huile de graines. Le classeur n'a que le cayenne pour cette famille."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -18956,8 +18936,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20916",
+        "ciqual_name": "Miso",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. Pâte de soja fermentée comme le miso, mais additionnée de riz gluant et de piment, ce qui la rend nettement plus sucrée — environ 45 g de glucides contre 18 pour le miso. L'apport est donc sous-estimé ; la réserve vaut d'être connue avant de publier une recette qui en emploie beaucoup."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -21133,8 +21120,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "31017",
+        "ciqual_name": "Sucre roux",
+        "category": "produits_sucres",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Sucre de canne non raffiné : le sucre roux du classeur en est l'équivalent le plus direct (389,7 kcal, 97,3 g de glucides). Le jaggery conserve un peu plus de mélasse, ce qui lui laisse des minéraux mais ne change pas son apport."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -23022,8 +23016,15 @@
       "units": [
         "u"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "173859",
+        "ciqual_name": "Sausage, pork, chorizo, link or ground, raw",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même réduction que le chouriço. Comptée en unités : un maillon de linguiça pèse de 100 à 150 g, on retient 120 g."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -23413,8 +23414,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "169696",
+        "ciqual_name": "Corn flour, masa, unenriched, white",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le classeur a bien une farine de maïs (9545), mais pas la masa : la nixtamalisation à la chaux modifie la disponibilité de la niacine et du calcium, et la farine obtenue n'est pas interchangeable en cuisine — c'est elle qui fait la tortilla. USDA référence exactement la masa. Version non enrichie retenue, pour ne pas importer une fortification américaine."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -24175,8 +24183,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "8703",
+        "ciqual_name": "Boudin noir, à cuire",
+        "category": "produits_transformes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Boudin noir à cuire : même concept culinaire — sang de porc, gras et aromates en boyau. La morcilla asturienne y ajoute oignon et paprika fumé, ce qui déplace l'arôme, pas la composition."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -27555,8 +27570,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "172223",
+        "ciqual_name": "Cheese, fresh, queso fresco",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Ni le classeur ni USDA ne référencent le paneer. Le queso fresco est le même objet : fromage de lait de vache caillé à l'acide, pressé, non affiné et qui ne fond pas. 299 kcal, 18,1 g de protéines, 23,8 g de lipides, contre environ 265, 18,3 et 20,8 pour le paneer — l'écart tient à la teneur en eau du pressage."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -27603,8 +27625,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "7500",
+        "ciqual_name": "Chapelure",
+        "category": "cereales_feculents",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le panko est une chapelure : pain sans croûte, séché et émietté en flocons. La forme des miettes fait la texture de la friture, la composition reste celle de la chapelure."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -33372,8 +33401,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11088",
+        "ciqual_name": "Poivre de Cayenne ou piment de Cayenne",
+        "category": "epices",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé, même raisonnement que le gochugaru : flocons de piment d'Alep, séchés et huilés, sur la seule entrée de piment séché du classeur."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -33420,8 +33456,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "170845",
+        "ciqual_name": "Cheese, mozzarella, whole milk",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le quesillo est une pâte filée : caillé échaudé puis étiré, exactement le procédé de la mozzarella, dont il partage le comportement à la fonte. USDA n'a pas d'entrée Oaxaca ; la mozzarella au lait entier est la même pâte."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -33523,8 +33566,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "168451",
+        "ciqual_name": "Radishes, oriental, raw",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "« Oriental radish » est le daikon. Le classeur ne connaît que le radis rouge et le radis noir, deux fois plus énergétique — l'écart n'est pas négligeable sur les quantités employées."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20045",
@@ -34127,8 +34177,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "168881",
+        "ciqual_name": "Rice, white, short-grain, enriched, uncooked",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le riz rond n'existe pas au classeur français, qui ne connaît que le riz blanc long (9100). USDA distingue le grain court, dont l'amidon et donc l'absorption diffèrent : 358 kcal contre 350, 6,5 g de protéines contre 7,4. L'« enriched » américain ajoute des vitamines et minéraux, sans effet sur les macronutriments."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "9100",
@@ -34175,8 +34232,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "9100",
+        "ciqual_name": "Riz blanc, cru",
+        "category": "cereales_feculents",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même grain, fracturé au décorticage. La brisure change le temps de cuisson et la texture, pas la composition."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "9100",
@@ -34223,8 +34287,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "9100",
+        "ciqual_name": "Riz blanc, cru",
+        "category": "cereales_feculents",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Réduction canonique : « riz cru » sans autre précision est du riz blanc long cru."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "9100",
@@ -34422,8 +34493,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "9100",
+        "ciqual_name": "Riz blanc, cru",
+        "category": "cereales_feculents",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le jasmin est un riz long blanc. Sa composition ne se distingue pas du riz blanc long générique : la variété porte l'arôme, pas les macronutriments. Un concept culinaire, un ingrédient canonique."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "9100",
@@ -34875,8 +34953,16 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "26106",
+        "ciqual_name": "Grondin, cru",
+        "category": "poissons_fruits_de_mer",
+        "nutrition_complete": true,
+        "derived_field": "carbohydrate_g",
+        "confidence": "B",
+        "note": "Le grondin figure au classeur sous son seul nom. Ses glucides ne sont pas mesurés — comme pour tous les poissons du classeur — et la fermeture d'Atwater les clôt à zéro, ce qui est la valeur réelle."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "26106",
@@ -35377,8 +35463,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20169",
+        "ciqual_name": "Tomate, pulpe, appertisée",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. Le classeur n'a ni salsa ni sauce tomate mexicaine ; ses sauces tomate sont toutes cuisinées (aux oignons, à la viande, aux olives) et portent l'huile de leur préparation. La pulpe de tomate appertisée est la base de la salsa roja sans l'assaisonnement : elle en donne le socle, pas le piment ni la coriandre. Ses lipides ne sont pas mesurés et la fermeture d'Atwater les clôt."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -35425,8 +35518,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "171824",
+        "ciqual_name": "Sauce, salsa, verde, ready-to-serve",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Absente du classeur français ; USDA la référence exactement, à base de tomatille."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -35473,8 +35573,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11112",
+        "ciqual_name": "Harissa (sauce condimentaire), préemballée",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Réduction canonique des pâtes de piment condimentaires sur la harissa, seule entrée du classeur pour cette famille : piment broyé, sel, un peu d'huile. L'arôme diffère, la composition non."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -35521,8 +35628,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11005",
+        "ciqual_name": "Curry, poudre",
+        "category": "epices",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé, même raisonnement que le berbéré : mélange d'épices sud-indien sur la seule poudre d'épices composée du classeur."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -37244,8 +37358,15 @@
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20916",
+        "ciqual_name": "Miso",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "C",
+        "note": "Proxy assumé. Le ssamjang est un mélange de doenjang — une pâte de soja fermentée de la même famille que le miso — et de gochujang, allongé d'huile de sésame et de sucre."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1000",
@@ -40004,8 +40125,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "1026",
+        "ciqual_name": "Saké ou Alcool de riz",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Même famille et même entrée que le Shaoxing : alcool de riz de cuisine."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1006",
@@ -40155,8 +40283,15 @@
       "units": [
         "ml"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "1026",
+        "ciqual_name": "Saké ou Alcool de riz",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le classeur référence le saké sous « Saké ou Alcool de riz », qui couvre la famille des vins de riz fermentés. Le Shaoxing est plus ambré et légèrement plus sucré, mais reste un alcool de riz autour de 130 kcal."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "1006",
