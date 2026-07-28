@@ -27,46 +27,46 @@ Les mesures live de Supabase enrichissent uniquement l’inventaire. Elles ne pe
 | Code | Volume | Phase | Livres | Inventorié | Rédigé | Validé | Cible | État |
 |---|---|---:|---:|---:|---:|---:|---:|---|
 | [V00](volumes/V00.md) | Vision du projet | fondations | 6 | 0 | 0 | 0 | 6 | not_started |
-| [V01](volumes/V01.md) | Bible des ingrédients | fondations | 17 | 27 | 27 | 0 | 4500 | not_started |
+| [V01](volumes/V01.md) | Bible des ingrédients | fondations | 17 | 27 | 0 | 0 | 4500 | not_started |
 | [V02](volumes/V02.md) | Bible des techniques | fondations | 10 | 363 | 0 | 0 | 250 | not_started |
 | [V03](volumes/V03.md) | Préparations intermédiaires | fondations | 8 | 116 | 0 | 0 | 250 | not_started |
 | [V04](volumes/V04.md) | Sauces | fondations | 10 | 164 | 0 | 0 | 300 | not_started |
 | [V05](volumes/V05.md) | Accompagnements | fondations | 10 | 122 | 0 | 0 | 300 | not_started |
-| [V06](volumes/V06.md) | Desserts | fondations | 8 | 25 | 25 | 0 | 350 | not_started |
-| [V07](volumes/V07.md) | Petit-déjeuners | fondations | 7 | 2 | 2 | 0 | 120 | not_started |
+| [V06](volumes/V06.md) | Desserts | fondations | 8 | 25 | 0 | 0 | 350 | not_started |
+| [V07](volumes/V07.md) | Petit-déjeuners | fondations | 7 | 2 | 0 | 0 | 120 | not_started |
 | [V08](volumes/V08.md) | Collations | fondations | 6 | 0 | 0 | 0 | 120 | not_started |
-| [V09](volumes/V09.md) | Boissons | fondations | 6 | 8 | 8 | 0 | 150 | not_started |
-| [V10](volumes/V10.md) | Catalogue maître des recettes | fondations | 5 | 309 | 309 | 0 | 2000 | not_started |
-| [V11](volumes/V11.md) | Salades et crudités | rédaction | 5 | 11 | 11 | 0 | 90 | not_started |
-| [V12](volumes/V12.md) | Soupes, veloutés et bouillons-repas | rédaction | 5 | 73 | 73 | 0 | 90 | not_started |
-| [V13](volumes/V13.md) | Bœuf, veau et agneau | rédaction | 5 | 68 | 68 | 0 | 85 | not_started |
-| [V14](volumes/V14.md) | Porc et charcuteries cuisinées | rédaction | 5 | 74 | 74 | 0 | 75 | not_started |
-| [V15](volumes/V15.md) | Volaille et lapin | rédaction | 5 | 62 | 62 | 0 | 95 | not_started |
-| [V16](volumes/V16.md) | Poissons | rédaction | 5 | 47 | 47 | 0 | 90 | not_started |
-| [V17](volumes/V17.md) | Fruits de mer et coquillages | rédaction | 5 | 22 | 22 | 0 | 70 | not_started |
-| [V18](volumes/V18.md) | Cuisine italienne | rédaction | 5 | 15 | 15 | 0 | 100 | not_started |
-| [V19](volumes/V19.md) | Cuisines ibériques | rédaction | 5 | 17 | 17 | 0 | 75 | not_started |
-| [V20](volumes/V20.md) | Cuisines grecque et levantine | rédaction | 5 | 18 | 18 | 0 | 85 | not_started |
-| [V21](volumes/V21.md) | Cuisines du Maghreb | rédaction | 5 | 7 | 7 | 0 | 80 | not_started |
-| [V22](volumes/V22.md) | Cuisines indienne et sud-asiatiques | rédaction | 5 | 23 | 23 | 0 | 105 | not_started |
-| [V23](volumes/V23.md) | Cuisines d’Asie de l’Est et du Sud-Est | rédaction | 5 | 67 | 67 | 0 | 150 | not_started |
-| [V24](volumes/V24.md) | Cuisines mexicaine et latino-américaines | rédaction | 5 | 24 | 24 | 0 | 100 | not_started |
-| [V25](volumes/V25.md) | Cuisine végétarienne et légumineuses | rédaction | 5 | 103 | 103 | 0 | 150 | not_started |
-| [V26](volumes/V26.md) | Sandwichs, tartines et wraps | rédaction | 5 | 5 | 5 | 0 | 80 | not_started |
-| [V27](volumes/V27.md) | Pizzas, quiches et tartes salées | rédaction | 5 | 6 | 6 | 0 | 90 | not_started |
-| [V28](volumes/V28.md) | Pâtes, nouilles et raviolis | rédaction | 5 | 77 | 77 | 0 | 120 | not_started |
-| [V29](volumes/V29.md) | Riz, céréales et semoules | rédaction | 5 | 79 | 79 | 0 | 110 | not_started |
-| [V30](volumes/V30.md) | Desserts français | rédaction | 5 | 18 | 18 | 0 | 120 | not_started |
-| [V31](volumes/V31.md) | Desserts du monde | rédaction | 5 | 7 | 7 | 0 | 130 | not_started |
-| [V32](volumes/V32.md) | Œufs et brunch salé | rédaction | 5 | 89 | 89 | 0 | 80 | not_started |
-| [V33](volumes/V33.md) | Mijotés, braisés et plats en sauce | rédaction | 5 | 58 | 58 | 0 | 130 | not_started |
-| [V34](volumes/V34.md) | Grillades, rôtis et cuissons au four | rédaction | 5 | 76 | 76 | 0 | 110 | not_started |
-| [V35](volumes/V35.md) | Plats complets du quotidien | rédaction | 5 | 156 | 156 | 0 | 180 | not_started |
-| [V36](volumes/V36.md) | Cuisine végétalienne | rédaction | 5 | 43 | 43 | 0 | 100 | not_started |
-| [V37](volumes/V37.md) | Fermentations et conserves maison | rédaction | 5 | 48 | 48 | 0 | 60 | not_started |
-| [V38](volumes/V38.md) | Cuisine économique et anti-gaspillage | rédaction | 5 | 4 | 4 | 0 | 120 | not_started |
-| [V39](volumes/V39.md) | Cuisine festive et invités | rédaction | 5 | 126 | 126 | 0 | 100 | not_started |
-| [V40](volumes/V40.md) | Assemblages et assiettes canoniques | rédaction | 5 | 120 | 120 | 0 | 150 | not_started |
+| [V09](volumes/V09.md) | Boissons | fondations | 6 | 8 | 0 | 0 | 150 | not_started |
+| [V10](volumes/V10.md) | Catalogue maître des recettes | fondations | 5 | 309 | 0 | 0 | 2000 | not_started |
+| [V11](volumes/V11.md) | Salades et crudités | rédaction | 5 | 11 | 0 | 0 | 90 | not_started |
+| [V12](volumes/V12.md) | Soupes, veloutés et bouillons-repas | rédaction | 5 | 73 | 0 | 0 | 90 | not_started |
+| [V13](volumes/V13.md) | Bœuf, veau et agneau | rédaction | 5 | 68 | 0 | 0 | 85 | not_started |
+| [V14](volumes/V14.md) | Porc et charcuteries cuisinées | rédaction | 5 | 74 | 0 | 0 | 75 | not_started |
+| [V15](volumes/V15.md) | Volaille et lapin | rédaction | 5 | 62 | 0 | 0 | 95 | not_started |
+| [V16](volumes/V16.md) | Poissons | rédaction | 5 | 47 | 0 | 0 | 90 | not_started |
+| [V17](volumes/V17.md) | Fruits de mer et coquillages | rédaction | 5 | 22 | 0 | 0 | 70 | not_started |
+| [V18](volumes/V18.md) | Cuisine italienne | rédaction | 5 | 15 | 0 | 0 | 100 | not_started |
+| [V19](volumes/V19.md) | Cuisines ibériques | rédaction | 5 | 17 | 0 | 0 | 75 | not_started |
+| [V20](volumes/V20.md) | Cuisines grecque et levantine | rédaction | 5 | 18 | 0 | 0 | 85 | not_started |
+| [V21](volumes/V21.md) | Cuisines du Maghreb | rédaction | 5 | 7 | 0 | 0 | 80 | not_started |
+| [V22](volumes/V22.md) | Cuisines indienne et sud-asiatiques | rédaction | 5 | 23 | 0 | 0 | 105 | not_started |
+| [V23](volumes/V23.md) | Cuisines d’Asie de l’Est et du Sud-Est | rédaction | 5 | 67 | 0 | 0 | 150 | not_started |
+| [V24](volumes/V24.md) | Cuisines mexicaine et latino-américaines | rédaction | 5 | 24 | 0 | 0 | 100 | not_started |
+| [V25](volumes/V25.md) | Cuisine végétarienne et légumineuses | rédaction | 5 | 103 | 0 | 0 | 150 | not_started |
+| [V26](volumes/V26.md) | Sandwichs, tartines et wraps | rédaction | 5 | 5 | 0 | 0 | 80 | not_started |
+| [V27](volumes/V27.md) | Pizzas, quiches et tartes salées | rédaction | 5 | 6 | 0 | 0 | 90 | not_started |
+| [V28](volumes/V28.md) | Pâtes, nouilles et raviolis | rédaction | 5 | 77 | 0 | 0 | 120 | not_started |
+| [V29](volumes/V29.md) | Riz, céréales et semoules | rédaction | 5 | 79 | 0 | 0 | 110 | not_started |
+| [V30](volumes/V30.md) | Desserts français | rédaction | 5 | 18 | 0 | 0 | 120 | not_started |
+| [V31](volumes/V31.md) | Desserts du monde | rédaction | 5 | 7 | 0 | 0 | 130 | not_started |
+| [V32](volumes/V32.md) | Œufs et brunch salé | rédaction | 5 | 89 | 0 | 0 | 80 | not_started |
+| [V33](volumes/V33.md) | Mijotés, braisés et plats en sauce | rédaction | 5 | 58 | 0 | 0 | 130 | not_started |
+| [V34](volumes/V34.md) | Grillades, rôtis et cuissons au four | rédaction | 5 | 76 | 0 | 0 | 110 | not_started |
+| [V35](volumes/V35.md) | Plats complets du quotidien | rédaction | 5 | 156 | 0 | 0 | 180 | not_started |
+| [V36](volumes/V36.md) | Cuisine végétalienne | rédaction | 5 | 43 | 0 | 0 | 100 | not_started |
+| [V37](volumes/V37.md) | Fermentations et conserves maison | rédaction | 5 | 48 | 0 | 0 | 60 | not_started |
+| [V38](volumes/V38.md) | Cuisine économique et anti-gaspillage | rédaction | 5 | 4 | 0 | 0 | 120 | not_started |
+| [V39](volumes/V39.md) | Cuisine festive et invités | rédaction | 5 | 126 | 0 | 0 | 100 | not_started |
+| [V40](volumes/V40.md) | Assemblages et assiettes canoniques | rédaction | 5 | 120 | 0 | 0 | 150 | not_started |
 | [V41](volumes/V41.md) | Menus | moteur | 7 | 0 | 0 | 0 | 72 | not_started |
 | [V42](volumes/V42.md) | Planning | moteur | 7 | 0 | 0 | 0 | 40 | not_started |
 | [V43](volumes/V43.md) | Données nutritionnelles | moteur | 5 | 0 | 0 | 0 | 60 | not_started |

@@ -189,12 +189,30 @@ const countRecipeRole = (recipes, patterns) => recipes
   .filter((recipe) => includesAny(recipeText(recipe), patterns))
   .length
 
+const hasOwn = (value, key) => Object.prototype.hasOwnProperty.call(value || {}, key)
+
 const isDraftFoodConcept = (concept) => Boolean(
   concept?.canonical_name
   && concept?.category
   && concept?.identity_confidence
+  && concept?.status
+  && concept?.provenance
+  && Array.isArray(concept?.synonyms)
+  && Array.isArray(concept?.varieties)
+  && Array.isArray(concept?.allergens)
+  && Array.isArray(concept?.compatibilities)
+  && Array.isArray(concept?.substitutions)
+  && concept?.sensory_profile
+  && hasOwn(concept, 'seasonality')
   && Array.isArray(concept?.forms)
-  && concept.forms.length,
+  && concept.forms.length
+  && concept.forms.every((form) => (
+    form?.canonical_name
+    && form?.default_quantity_unit
+    && form?.nutrition
+    && Array.isArray(form?.storage)
+    && Array.isArray(form?.conversions)
+  )),
 )
 
 const isValidatedFoodConcept = (concept) => (
@@ -207,6 +225,7 @@ const isDraftRecipe = (recipe) => Boolean(
   && recipe?.family
   && recipe?.cuisine_origin
   && recipe?.category
+  && recipe?.meal_role
   && Number(recipe?.servings) > 0
   && Array.isArray(recipe?.sources)
   && recipe.sources.length
@@ -222,6 +241,14 @@ const isDraftRecipe = (recipe) => Boolean(
   && recipe.steps.length
   && recipe.steps.every((step) => step?.instruction)
   && recipe?.sensory?.profile
+  && recipe?.nutrition
+  && recipe?.batch
+  && recipe?.freezing
+  && recipe?.reheating
+  && Array.isArray(recipe?.accompaniments)
+  && Array.isArray(recipe?.variants)
+  && Array.isArray(recipe?.substitutions)
+  && recipe?.planning_score
 )
 
 const isValidatedRecipe = (recipe) => (

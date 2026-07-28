@@ -73,8 +73,11 @@ describe('Encyclopédie Myko', () => {
   it('bloque l’intégration tant que les contenus des 48 volumes ne sont pas validés', () => {
     expect(index.summary.validated_volumes).toBe(0)
     expect(index.summary.validated_books).toBe(0)
+    expect(index.summary.drafted_food_concepts).toBe(0)
+    expect(index.summary.drafted_recipes).toBe(0)
     expect(index.summary.ready_for_integration).toBe(false)
     expect(index.coverage.every((volume) => volume.completion_status === 'not_started')).toBe(true)
+    expect(index.coverage.every((volume) => volume.drafted_entries === 0)).toBe(true)
     expect(index.coverage.every((volume) => volume.validated_entries === 0)).toBe(true)
   })
 })
