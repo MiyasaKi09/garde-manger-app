@@ -1,7 +1,7 @@
 -- ============================================================================
 -- Chargement F0 (catalogue alimentaire candidat). Généré par build-f0-corpus.mjs.
 -- corpus_hash = 50343360792c40f5a187745aee447ca7
--- corpus_path = /workspace/scratch/b1f68f05970b/repo/data/foods/f0-corpus.json
+-- corpus_path = /home/user/garde-manger-app/data/foods/f0-corpus.json
 -- IDEMPOTENT — tous les objets créés en status='candidate', published_at=NULL.
 -- ============================================================================
 

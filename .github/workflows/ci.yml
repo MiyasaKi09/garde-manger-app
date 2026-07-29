@@ -125,14 +125,19 @@ jobs:
           # « colonne derived_from_version_id inexistante » — ce qui s'est
           # produit, et ce que ce commentaire existe pour éviter de refaire.
           #
-          # 20260729180000 charge le CATALOGUE D'ALIMENTS, sans quoi aucune
-          # recette ne rattacherait ses ingrédients à une forme et l'assertion
-          # d'éligibilité plus bas serait vide de sens.
+          # 20260729180000, le CATALOGUE D'ALIMENTS, n'entre PAS ici : il
+          # arriverait avant l'étape F0, qui charge son propre petit corpus de
+          # formes et réclame le profil nutritionnel primaire de certaines
+          # d'entre elles. Les deux se disputeraient la même contrainte
+          # d'unicité. Le catalogue est donc chargé plus bas, juste avant le
+          # corpus — l'ordre même de la production. La migration, elle, est
+          # éprouvée par le scénario B, qui applique toutes les entrées « new »
+          # du manifeste sur une base qui n'a jamais vu F0.
           find supabase/migrations -maxdepth 1 -name '*.sql' \
             | grep -v '_rollback\.sql$' \
             | grep -v '/20260715171000_v3_canonical_plan_publication\.sql$' \
             | grep -v '/20260715173000_v3_recipe_execution_policy_consolidation\.sql$' \
-            | grep -E '/(20260714[2-9]|20260715|20260729140000|20260729180000)' \
+            | grep -E '/(20260714[2-9]|20260715|20260729140000)' \
             | LC_ALL=C sort \
             | while IFS= read -r f; do cp "$f" /tmp/v2mig_a/; done
           echo "Migrations V2 sélectionnées : $(ls /tmp/v2mig_a/ | wc -l)"
@@ -367,6 +372,13 @@ jobs:
           compte="SELECT count(*) FROM culinary.recipe_versions rv
                   JOIN ops.source_datasets sd ON sd.id = rv.source_dataset_id
                   WHERE sd.code = 'myko_editorial_v3';"
+
+          # Le catalogue d'aliments AVANT le corpus : c'est au chargement d'une
+          # recette que ses besoins sont rattachés à des formes. Un catalogue
+          # arrivé après ne rattacherait rien, et l'invariant d'éligibilité plus
+          # bas mesurerait le vide.
+          node scripts/data/foods/build-recipe-food-sql.mjs
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f scripts/data/out/recipe-food-load.sql
 
           psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f scripts/data/out/corpus-v3-load.sql
           charge=$(psql "$DATABASE_URL" -tAc "$compte")
