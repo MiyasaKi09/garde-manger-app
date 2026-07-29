@@ -35,11 +35,48 @@ const corpus = JSON.parse(readFileSync(CORPUS, 'utf8'))
 const lot = JSON.parse(readFileSync(source, 'utf8'))
 const nouvelles = Array.isArray(lot) ? lot : (lot.recipes || lot.recettes || [])
 
-const codes = new Set(corpus.recipes.map((recette) => recette.code))
-const familles = new Set(corpus.recipes.map((recette) => normalizeName(recette.family)))
+const parCode = new Map(corpus.recipes.map((recette) => [recette.code, recette]))
+const parFamille = new Map(corpus.recipes.map((recette) => [normalizeName(recette.family), recette]))
+const codes = new Set(parCode.keys())
+const familles = new Set(parFamille.keys())
+
+/**
+ * Une recette du lot peut REMPLACER une recette du corpus, en déclarant laquelle.
+ *
+ * C'est ce que demande la reprise du corpus historique : réécrire une recette
+ * maigre depuis un dossier de sources ne l'ajoute pas, cela la remplace. Garder
+ * son CODE compte — le planning et l'historique des repas s'y réfèrent, et lui
+ * en donner un neuf orphelinerait ce qui a déjà été cuisiné.
+ *
+ * Le remplacement doit se dire, et se dire juste : la recette remplacée doit
+ * exister, et le code annoncé doit être celui qu'on écrit. Un remplacement qui
+ * se trompe de cible est un remplacement qui n'a pas regardé — la même règle que
+ * pour les arbitrages d'ingrédients.
+ */
+const remplacements = new Map()
 const collisions = []
 for (const recette of nouvelles) {
-  if (codes.has(recette.code)) collisions.push(`code déjà pris : ${recette.code}`)
+  const remplace = String(recette.remplace || '').trim()
+  if (remplace) {
+    const cible = parCode.get(remplace)
+    if (!cible) { collisions.push(`${recette.code} annonce remplacer ${remplace}, absent du corpus`); continue }
+    if (remplace !== recette.code) {
+      collisions.push(`${recette.code} annonce remplacer ${remplace} : une reprise garde le code de la recette qu'elle remplace, sans quoi le planning perd sa référence`)
+      continue
+    }
+    const familleCible = normalizeName(cible.family)
+    const familleNeuve = normalizeName(recette.family)
+    // Renommer est permis — « Soupe à l'oignon » peut devenir « Soupe à l'oignon
+    // gratinée » — mais pas vers un nom qu'une AUTRE recette porte déjà.
+    const occupant = parFamille.get(familleNeuve)
+    if (occupant && occupant.code !== recette.code) {
+      collisions.push(`${recette.code} prend le nom « ${recette.family} », déjà porté par ${occupant.code}`)
+      continue
+    }
+    remplacements.set(recette.code, { avant: cible, apres: recette, renomme: familleCible !== familleNeuve })
+    continue
+  }
+  if (codes.has(recette.code)) collisions.push(`code déjà pris : ${recette.code} — ajouter « remplace » pour assumer une reprise`)
   if (familles.has(normalizeName(recette.family))) collisions.push(`famille déjà présente : ${recette.family}`)
   codes.add(recette.code)
   familles.add(normalizeName(recette.family))
@@ -50,7 +87,27 @@ if (collisions.length) {
   process.exit(1)
 }
 
-const recettes = [...corpus.recipes, ...nouvelles]
+const ajouts = nouvelles.filter((recette) => !remplacements.has(recette.code))
+const recettes = [
+  ...corpus.recipes.map((recette) => {
+    const reprise = remplacements.get(recette.code)
+    if (!reprise || reprise.avant !== recette) return recette
+    // Le champ `remplace` est une consigne de fusion, pas une donnée de recette :
+    // il ne doit pas entrer au corpus.
+    const { remplace, ...propre } = reprise.apres
+    return propre
+  }),
+  ...ajouts,
+]
+
+if (remplacements.size) {
+  console.log(`${remplacements.size} recette(s) reprise(s) :`)
+  for (const [code, { avant, apres, renomme }] of remplacements) {
+    const etapes = `${(avant.steps || []).length} → ${(apres.steps || []).length} étapes`
+    const ingredients = `${(avant.ingredients || []).length} → ${(apres.ingredients || []).length} ingrédients`
+    console.log(`  ${code}  ${renomme ? `« ${avant.family} » → « ${apres.family} »` : avant.family}  (${etapes}, ${ingredients})`)
+  }
+}
 
 /** Reconstruit un graphe « valeur → recettes qui l'emploient », trié par fréquence. */
 const construireGraphe = (extraire, cleValeur) => {
@@ -94,7 +151,7 @@ const fusionne = {
   forms_order: grapheFormes.map((forme, rang) => ({ rank: rang + 1, name: forme.name, recipe_count: forme.recipe_count })),
 }
 
-console.log(`Recettes : ${corpus.recipes.length} → ${recettes.length} (+${nouvelles.length})`)
+console.log(`Recettes : ${corpus.recipes.length} → ${recettes.length} (${ajouts.length} ajout·s, ${remplacements.size} reprise·s)`)
 console.log(`  formes d'aliments : ${corpus.food_form_graph.length} → ${fusionne.food_form_graph.length}`)
 console.log(`  techniques        : ${corpus.technique_graph.length} → ${fusionne.technique_graph.length}`)
 console.log(`  arômes            : ${corpus.aroma_graph.length} → ${fusionne.aroma_graph.length}`)

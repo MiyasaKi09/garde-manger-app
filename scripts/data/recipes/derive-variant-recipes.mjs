@@ -25,6 +25,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
 const CORPUS = join(ROOT, 'data', 'recipes', 'corpus-v3.json')
 const VOCABULAIRE = join(ROOT, 'data', 'recipes', 'authoring-vocabulary.json')
+const REGISTRE = join(ROOT, 'data', 'foods', 'recipe-food-mappings-v3.json')
 
 /** Opérations reconnues sur les ingrédients. Vocabulaire fermé, comme partout ailleurs. */
 const OPERATIONS = new Set(['remove', 'add', 'substitute', 'scale', 'set'])
@@ -88,7 +89,7 @@ function sensorielDerive(sensoriel, ingredients, substitutions = new Map()) {
  * Applique un delta à une recette de base et rend la recette dérivée complète.
  * Rend aussi la liste des anomalies : le script n'écrit rien tant qu'il en reste.
  */
-export function deriver(base, delta, { vocabulaire = null } = {}) {
+export function deriver(base, delta, { vocabulaire = null, arbitreesRecemment = new Set() } = {}) {
   const anomalies = []
   const refuser = (message) => anomalies.push(`${delta.code || '(sans code)'} — ${message}`)
 
@@ -209,6 +210,13 @@ export function deriver(base, delta, { vocabulaire = null } = {}) {
 
   // ── Le vocabulaire fermé s'applique aussi aux ajouts ─────────────────────
   // Une dérivée qui invente une forme est une dérivée qu'on ne peut pas peser.
+  //
+  // Une forme fraîchement ARBITRÉE fait exception, et il faut cette exception :
+  // le vocabulaire employable est construit depuis les formes que le corpus
+  // emploie DÉJÀ, si bien qu'un ingrédient nouveau n'y entre qu'après la
+  // fusion. Sans cette échappée, arbitrer une noisette ne servirait à rien —
+  // aucune variante ne pourrait jamais l'employer. C'est l'ordre normal des
+  // choses, et le validateur de recettes l'admet de la même façon.
   if (vocabulaire) {
     const nommer = (forme) => (typeof forme === 'string' ? forme : (forme.nom || forme.name || ''))
     const employables = new Set(vocabulaire.formes_employables.map((forme) => normalizeName(nommer(forme))))
@@ -217,7 +225,9 @@ export function deriver(base, delta, { vocabulaire = null } = {}) {
     for (const forme of ajoutes) {
       const cle = normalizeName(forme)
       if (bloquees.has(cle)) refuser(`« ${forme} » est bloquée au vocabulaire : ${bloquees.get(cle)}`)
-      else if (!employables.has(cle)) refuser(`« ${forme} » ne figure pas au vocabulaire employable`)
+      else if (!employables.has(cle) && !arbitreesRecemment.has(cle)) {
+        refuser(`« ${forme} » ne figure ni au vocabulaire employable ni au registre d'arbitrage`)
+      }
     }
   }
 
@@ -346,6 +356,17 @@ function principal() {
 
   const corpus = JSON.parse(readFileSync(CORPUS, 'utf8'))
   const vocabulaire = JSON.parse(readFileSync(VOCABULAIRE, 'utf8'))
+  // Formes arbitrées mais pas encore employées par une recette : elles ne sont
+  // donc pas au vocabulaire construit, et pourtant elles sont publiables. Les
+  // proxys de confiance C sont exclus — ils restent non publiables.
+  const nomsConnus = new Set([
+    ...vocabulaire.formes_employables.map((forme) => normalizeName(forme.nom || forme.name || '')),
+    ...(vocabulaire.formes_bloquees || []).map((forme) => normalizeName(forme.nom || forme.name || '')),
+  ])
+  const registre = JSON.parse(readFileSync(REGISTRE, 'utf8')).mappings || {}
+  const arbitreesRecemment = new Set(Object.entries(registre)
+    .filter(([cle, mapping]) => !nomsConnus.has(cle) && (mapping?.confidence || 'B') !== 'C')
+    .map(([cle]) => cle))
   const parCode = new Map(corpus.recipes.map((recette) => [recette.code, recette]))
   const codesPris = new Set(corpus.recipes.map((recette) => recette.code))
   const famillesPrises = new Set(corpus.recipes.map((recette) => normalizeName(recette.family)))
@@ -366,7 +387,7 @@ function principal() {
     codesPris.add(delta.code)
     famillesPrises.add(normalizeName(delta.family))
 
-    const resultat = deriver(base, delta, { vocabulaire })
+    const resultat = deriver(base, delta, { vocabulaire, arbitreesRecemment })
     anomalies.push(...resultat.anomalies)
     if (!resultat.anomalies.length) recettes.push(resultat.recette)
   }

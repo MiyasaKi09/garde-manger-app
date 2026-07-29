@@ -126,7 +126,7 @@ describe('dérivation de variantes', () => {
       operations: [{ op: 'add', form: 'Tomme inventée', quantity: 80, unit: 'g' }],
       steps: [{ op: 'insert', after: 2, instruction: 'Râper la tomme inventée sur la garniture.' }],
     }, { vocabulaire })
-    expect(messages(horsVocabulaire.anomalies)).toMatch(/ne figure pas au vocabulaire employable/)
+    expect(messages(horsVocabulaire.anomalies)).toMatch(/ne figure ni au vocabulaire employable ni au registre/)
 
     const bloquee = deriver(base(), {
       code: 'SRC-016-D6',
@@ -137,6 +137,24 @@ describe('dérivation de variantes', () => {
       steps: [{ op: 'insert', after: 2, instruction: 'Glisser le bouquet garni dans la poêle.' }],
     }, { vocabulaire })
     expect(messages(bloquee.anomalies)).toMatch(/bloquée au vocabulaire/)
+  })
+
+  // Le vocabulaire employable est construit depuis ce que le corpus emploie
+  // déjà : un ingrédient fraîchement arbitré n'y est pas encore. Le refuser
+  // rendrait tout arbitrage inutile — aucune variante ne pourrait jamais
+  // employer une forme nouvelle.
+  it('accepte une forme arbitrée que le vocabulaire construit ignore encore', () => {
+    const { recette, anomalies } = deriver(base(), {
+      code: 'SRC-016-D15',
+      base: 'SRC-016',
+      family: 'Omelette paysanne aux noisettes',
+      variant_label: 'Version au comté',
+      operations: [{ op: 'add', form: 'Noisette grillée', quantity: 40, unit: 'g', role: 'garniture croquante' }],
+      steps: [{ op: 'insert', after: 3, instruction: 'Concasser les noisettes grillées et les parsemer sur l’omelette au moment de servir.' }],
+    }, { vocabulaire, arbitreesRecemment: new Set(['noisette grillee']) })
+
+    expect(anomalies).toEqual([])
+    expect(recette.ingredients.map((i) => i.form)).toContain('Noisette grillée')
   })
 
   it('refuse un delta qui ne change rien', () => {
