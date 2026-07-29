@@ -1,0 +1,207 @@
+{
+  "dish": "Morue à la portugaise",
+  "slug": "morue-a-la-portugaise",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bacalhau-a-bras-morue-a-la-portugaise_37900.aspx",
+      "site": "marmiton.org",
+      "nom": "bacalhau a bras (morue à la portugaise) : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "3 pavés de morue (600 g environ)",
+        "6 oeufs",
+        "4 cuillères à soupe d'huile de tournesol",
+        "4 cuillères à soupe d'huile d'olive",
+        "2 oignons",
+        "2 gousses d'ail",
+        "persil",
+        "12 pommes de terre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1059,
+        "sha256": "b4b64ecce6f66464"
+      },
+      "sha256_page": "6401c541b70ff2a6"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_morue-a-la-portugaise_12609.aspx",
+      "site": "marmiton.org",
+      "nom": "Morue à la portugaise : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT1H15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 kg de morue dessalée",
+        "1 bouquet garni",
+        "6 pommes de terre",
+        "25 cl d'huile",
+        "3 oignons moyens",
+        "3 gousses d'ail",
+        "0.5 verre de vin blanc sec",
+        "6 oeufs durs",
+        "1 cuillère à soupe de persil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 831,
+        "sha256": "16e8be1874c324b9"
+      },
+      "sha256_page": "6225955c4bdb8884"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_morue-a-la-portugaise-facile_32002.aspx",
+      "site": "marmiton.org",
+      "nom": "Morue à la portugaise facile : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "4 tranches de morue (environ 1kg)",
+        "6 oignons",
+        "1 kg de pomme de teere",
+        "5 cl d'huile de d'olive",
+        "2 tomates",
+        "sel",
+        "2 poivrons (rouges ou verts)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 295,
+        "sha256": "b04585ff10d1e818"
+      },
+      "sha256_page": "d88df9536bc8ba40"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/delizioso/recettes/morue-a-la-portugaise",
+      "site": "chefsimon.com",
+      "nom": "Morue à la Portugaise",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H35M",
+      "ingredients": [
+        "500 g de Morue dessalée",
+        "6  oeufs",
+        "4  ou 5 pommes de terre",
+        "2  oignons",
+        "2  gousses d'ail",
+        "20 cl de lait",
+        "Persil plat",
+        "Huile d'olive",
+        "Huile de friture",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 248,
+        "sha256": "ff4795aea9bb5ddf"
+      },
+      "sha256_page": "3455963744e22104"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/salade-de-morue-et-pois-chiches-a-la-portugaise",
+      "site": "chefsimon.com",
+      "nom": "Salade de morue et pois chiches à la portugaise",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "500 g de pois chiches trempés la veille",
+        "350 g de morue salée",
+        "1 botte de persil plat",
+        "1  gros oignon",
+        "2 gousses d'ail",
+        "1/2  citron jaune",
+        "sel fin (poivre noir du moulin)",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 162,
+        "sha256": "a2ae0872e2bbfd94"
+      },
+      "sha256_page": "d65a5478273c487d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-portugaise/recettes/morue-a-la-creme--2",
+      "site": "chefsimon.com",
+      "nom": "Morue à la crème",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "400 ml crème (pour cuisiner)",
+        "600 g morue déchiquetée et imbibé",
+        "300 g de pommes de terre frites en cubes",
+        "1 oignon coupé en demi lunes",
+        "2 gousses d’ail écrasées",
+        "huile d’olive q.s.",
+        "1 feuille de Laurier",
+        "Persil haché pour décorer"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "c7503e5b22c93487"
+    },
+    {
+      "url": "https://www.750g.com/morue-au-four-avec-oeufs-oignons-pommes-de-terre-et-olives-recette-portugaise-r82232.htm",
+      "site": "750g.com",
+      "nom": "Morue au four avec œufs, oignons, pommes de terre et olives (recette Portugaise)",
+      "portions": "6 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "800 g de morue",
+        "5 pommes de terre",
+        "2 oignons",
+        "Olive noire",
+        "4 oeufs",
+        "2 feuilles de laurier",
+        "Huile d'olive",
+        "Persil",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 937,
+        "sha256": "8674fcf6ab53684d"
+      },
+      "sha256_page": "f7adb08b37177c85"
+    },
+    {
+      "url": "https://www.750g.com/bacalhau-a-bras-morue-a-la-portugaise-r45645.htm",
+      "site": "750g.com",
+      "nom": "Bacalhau à bras (Morue à la portugaise)",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 kg de pomme de terre",
+        "7 oeufs",
+        "500 g de morue",
+        "2 tranches d'oignons",
+        "1 dl d'huile d'olive",
+        "3 gousses d'ail  hachées",
+        "3 feuilles de laurier",
+        "Olive noire  au goût",
+        "Persil  haché au goût",
+        "Sel ou sel fin  raffiné au goût",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 866,
+        "sha256": "18900a4a24a8fbbd"
+      },
+      "sha256_page": "8d04bd27aaf059ba"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "dish": "Terrine de campagne",
+  "slug": "terrine-de-campagne",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_terrine-de-campagne-maison_36276.aspx",
+      "site": "marmiton.org",
+      "nom": "Terrine de campagne maison : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "300 g de veau",
+        "300 g de chair à saucisse",
+        "200 g de foie de génisse",
+        "200 g de foie de porc",
+        "4 bardes de lard",
+        "3 oignons",
+        "3 échalotes",
+        "1 bouquet garni (thym et laurier)",
+        "10 cl de cognac",
+        "25 cl de gelée nature",
+        "crépine",
+        "poivre",
+        "sel",
+        "10 genièvre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 781,
+        "sha256": "3be7df701fe539c3"
+      },
+      "sha256_page": "4e44c9cad4b7e38d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_terrine-de-campagne-de-messire-lolek_55110.aspx",
+      "site": "marmiton.org",
+      "nom": "Terrine de Campagne de Messire Lolek : la meilleure recette",
+      "portions": "10 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "500 g de porc",
+        "500 g de foie de porc",
+        "500 g de porc",
+        "20 g de fleur de sel",
+        "10 g de poivre noir",
+        "2 oeufs",
+        "2 tranches de pains de mie",
+        "1 verre de lait entier (20 cl)",
+        "1 verre de porto (10 cl)",
+        "0.5 verre de cognac (5 cl)",
+        "1 cuillère à café de thym",
+        "200 g de saindoux",
+        "4 échalotes",
+        "farine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 21,
+        "signes": 1143,
+        "sha256": "e12b34b0d921eeed"
+      },
+      "sha256_page": "fcad8a90a0f1145f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_terrine-de-campagne-a-l-armagnac_26540.aspx",
+      "site": "marmiton.org",
+      "nom": "Terrine de campagne à l'armagnac : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT3H",
+      "ingredients": [
+        "750 g de porc",
+        "200 g de poitrine de porc fraîche",
+        "200 g de jambon blanc",
+        "100 g de lard gras",
+        "250 g de panne fraîche ou de lard gras en tranches",
+        "2 oignons",
+        "0.5 bouquet de persil",
+        "5 cl d'armagnac",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 583,
+        "sha256": "43706df5eee286d3"
+      },
+      "sha256_page": "403a713fb2677350"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/terrine-de-campagne",
+      "site": "chefsimon.com",
+      "nom": "Terrine de campagne",
+      "portions": "",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT03H00M",
+      "ingredients": [
+        "600 g de gorge de porc",
+        "1,3 kg d'épaule de porc ou rouelle",
+        "700 g d'épaule de veau",
+        "1,3 kg de poitrine de veau",
+        "3 gros oignons",
+        "5 échalotes",
+        "6 gousses d'ail",
+        "5 tranches de pain complet",
+        "4 oeufs",
+        "20 g de sel",
+        "2 cuillers à café de quatre-épices",
+        "2 bonne cuillères à café de piment d'Espelette",
+        "4  poivrons confits",
+        "300 g d'olives pimentées"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 743,
+        "sha256": "ab91a084274febe6"
+      },
+      "sha256_page": "897587a2d1f46c4f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/terrine-de-campagne-aux-foies-de-volailles-et-pistaches",
+      "site": "chefsimon.com",
+      "nom": "Terrine de campagne aux foies de volailles et pistaches",
+      "portions": "",
+      "duree_preparation": "PT00H40M",
+      "duree_cuisson": "PT01H30M",
+      "ingredients": [
+        "1 kg de hachis porc et veau",
+        "1/4 litre de gelée brune (au madère)",
+        "2 oignons",
+        "3 gousses d’ail",
+        "1 cac de 4 épices",
+        "1 cac d’herbes de Provence",
+        "3 dl de Porto rouge",
+        "2 œufs",
+        "40 g de pistaches décortiquées",
+        "40 g de chapelure",
+        "1 blanc de poulet cuit taillé en lanières",
+        "1 blanc de poulet cru haché grossièrement",
+        "200 g de foies de volaille confits ou cuits sautés"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 1789,
+        "sha256": "a005180267d49e0a"
+      },
+      "sha256_page": "75c59f5b35bad1b0"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/terrine-de-campagne-aux-epices-de-noel",
+      "site": "chefsimon.com",
+      "nom": "Terrine de campagne aux épices de Noël",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT01H35M",
+      "ingredients": [
+        "250 g de blanc de poulet",
+        "250 g d'échine de porc",
+        "300 g de foies de volaille",
+        "200 g de crépine de porc",
+        "4 cl de porto",
+        "1 oignon",
+        "1 échalote",
+        "3 gousses d'ail",
+        "Huile d'olive",
+        "Vinaigre de vin blanc",
+        "Persil",
+        "Mélange 4 épices",
+        "Sel (poivre)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 155,
+        "sha256": "b97b2b81aab6d9ac"
+      },
+      "sha256_page": "50a3357d0628b7f9"
+    },
+    {
+      "url": "https://www.750g.com/terrine-de-campagne-au-roquefort-papillon-r99236.htm",
+      "site": "750g.com",
+      "nom": "Terrine de campagne au Roquefort Papillon",
+      "portions": "8 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1/2 sachet de gelée au madère",
+        "20 cl d'eau",
+        "Crépine",
+        "Sel",
+        "Poivre du moulin",
+        "2 c à c de thym frais",
+        "2 c à s de persil haché",
+        "100g de foie de porc haché",
+        "100g de Roquefort Papillon",
+        "50g de cerneaux de noix",
+        "3 gousses d'ail",
+        "300g d'échine de porc hachée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 938,
+        "sha256": "d3a001da6d437d89"
+      },
+      "sha256_page": "168f5f9d4b9f3cf4"
+    }
+  ]
+}

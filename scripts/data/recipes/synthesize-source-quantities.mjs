@@ -60,12 +60,19 @@ const PIECES = {
   brin: 2, brins: 2, branche: 4, branches: 4,
   feuille: 0.3, feuilles: 0.3,
   bouquet: 12, bouquets: 12,
-  tranche: 25, tranches: 25,
   sachet: 8, sachets: 8,
   cube: 10, cubes: 10,
   boite: 400, boites: 400,
-  filet: 5,
 }
+
+/**
+ * « tranche », « pavé », « filet », « morceau » n'ont pas de poids : une tranche
+ * de pain fait 25 g, une tranche de jarret d'osso buco en fait 250. Leur donner
+ * une valeur unique produisait des erreurs d'un facteur dix, invisibles parce
+ * que chiffrées — « 4 tranches de jarret de veau » ressortait à 25 g par
+ * personne. On préfère ne pas convertir et le dire : la ligne remonte alors
+ * dans les quantités non converties, où elle se voit.
+ */
 
 /** Ce qui se mesure à la cuillère sans rien peser : feuilles et poudres sèches. */
 const SEC_ET_LEGER = /s[ée]ch|moulu|en poudre|herbes de provence|origan|thym|laurier|paprika|curry|cumin|cannelle|muscade|curcuma|piment/i
@@ -264,6 +271,20 @@ const contient = (texte, mot) => {
   return texte.split(' ').some((present) => singulier(present) === cible)
 }
 
+/**
+ * Les couleurs et les découpes qualifient un aliment, elles n'en désignent
+ * aucun. Elles restent des clés — sans « rouge », le haricot rouge ne se
+ * distinguerait plus du vert — mais elles ne peuvent pas emporter à elles
+ * seules une correspondance : « 150 g de boudins noirs » a été lu comme du
+ * poivre noir, le mot « noir » étant le seul point commun. Le poids du boudin
+ * est alors devenu du poivre, à quarante grammes par personne.
+ */
+const QUALIFICATIFS = new Set([
+  'noir', 'noire', 'blanc', 'blanche', 'rouge', 'vert', 'verte', 'jaune',
+  'brun', 'brune', 'gris', 'grise', 'rose', 'dore', 'doree', 'clair', 'claire',
+  'fonce', 'foncee', 'gros', 'grosse', 'demi', 'extra', 'vierge', 'pur', 'pure',
+])
+
 const candidats = (designation) => {
   const texte = ` ${designation} `
   const notes = []
@@ -271,6 +292,8 @@ const candidats = (designation) => {
     if (!forme.cles.length) continue
     const trouves = forme.cles.filter((cle) => contient(texte, cle))
     if (!trouves.length) continue
+    // Au moins un mot trouvé doit nommer quelque chose qui se mange.
+    if (trouves.every((cle) => QUALIFICATIFS.has(cle))) continue
     // « Épaule de veau crue » reste proposable pour une ligne qui dit seulement
     // « veau », mais passe derrière les formes dont la tête, elle, correspond.
     notes.push({

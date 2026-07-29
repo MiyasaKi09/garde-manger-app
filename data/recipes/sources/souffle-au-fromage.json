@@ -1,0 +1,168 @@
+{
+  "dish": "Soufflé au fromage",
+  "slug": "souffle-au-fromage",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_souffle-au-fromage_69641.aspx",
+      "site": "marmiton.org",
+      "nom": "Soufflé au fromage : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "4 oeufs ou 5 moyens",
+        "150 g d'emmental ou gruyère râpé",
+        "60 g de beurre",
+        "60 g de farine",
+        "40 cl de lait",
+        "muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 681,
+        "sha256": "bf872c5b159383d1"
+      },
+      "sha256_page": "32c49bb6d88ef909"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_souffle-aux-deux-fromages_18409.aspx",
+      "site": "marmiton.org",
+      "nom": "Soufflé aux deux fromages : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "40 g de beurre",
+        "30 g de farine",
+        "25 cl de lait",
+        "4 oeufs",
+        "60 g d'emmental râpé",
+        "60 g de mimolette vieille",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 826,
+        "sha256": "3c5d8375b5914d20"
+      },
+      "sha256_page": "8f788432f3176bcb"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_souffle-au-fromage-bechamel_112836.aspx",
+      "site": "marmiton.org",
+      "nom": "Soufflé au fromage \"béchamel\" : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "béchamel",
+        "80 g de matière grasse (beurre)",
+        "60 g de farine",
+        "4 lait",
+        "poivre",
+        "sel",
+        "50 g de gruyère râpé + 20g pour le moule",
+        "4 oeufs",
+        "1 pincée de muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 823,
+        "sha256": "e10ea79af97f4a24"
+      },
+      "sha256_page": "c25d4883ba4e4c30"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/emma-cuisine-over-blog-com/recettes/souffle-au-fromage-facile-et-inratable",
+      "site": "chefsimon.com",
+      "nom": "Soufflé au fromage facile et inratable",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "8 oeufs",
+        "150g de fromage râpé (emmental et comté)",
+        "1/2 litre de lait",
+        "100g de farine",
+        "50g de beurre",
+        "sel, poivre et noix de muscade râpée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "848f939e8f2cba1f"
+    },
+    {
+      "url": "https://www.750g.com/souffle-au-fromage-r23889.htm",
+      "site": "750g.com",
+      "nom": "Soufflé au fromage traditionnel",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "¼ l de lait",
+        "20 g de farine",
+        "60 g de beurre",
+        "150 g de gruyère râpé",
+        "4 oeufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 619,
+        "sha256": "1d0929ce051d632a"
+      },
+      "sha256_page": "f7c81d40009c370c"
+    },
+    {
+      "url": "https://www.750g.com/souffle-au-fromage-r48983.htm",
+      "site": "750g.com",
+      "nom": "Soufflé au fromage maison",
+      "portions": "6 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "40 cl de lait",
+        "Noix de muscade",
+        "60 g de farine",
+        "60 g de beurre",
+        "Emmental rapé",
+        "Oeuf"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 803,
+        "sha256": "2d2cab7586f92b95"
+      },
+      "sha256_page": "2479dd8a5ad813ca"
+    },
+    {
+      "url": "https://www.750g.com/souffle-au-fromage-blanc-r13328.htm",
+      "site": "750g.com",
+      "nom": "Soufflé au fromage blanc",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "muscade en poudre",
+        "huile de tournesol",
+        "Sel",
+        "Poivre",
+        "4œufs",
+        "1 cuillerée de à soupe bombée de maïzena",
+        "70g de gruyere rapé",
+        "500g de fromage blanc (20% de matiere grasses)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 333,
+        "sha256": "172b420c7a38c2b9"
+      },
+      "sha256_page": "c644c04a487f69a4"
+    }
+  ]
+}

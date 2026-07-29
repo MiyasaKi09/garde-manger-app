@@ -1,0 +1,206 @@
+{
+  "dish": "Piperade",
+  "slug": "piperade",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tarte-a-la-piperade-de-ma-bonne-maman_29884.aspx",
+      "site": "marmiton.org",
+      "nom": "Tarte à la piperade de ma bonne maman : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 pâte feuilletée (ou brisée à défaut)",
+        "3 poivrons moyens (jaune, rouge et vert)",
+        "1 oignon",
+        "2 tomates (bien mûres)",
+        "2 courgettes",
+        "3 oeufs",
+        "125 g de tome de brebis",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 564,
+        "sha256": "9d94512c6ebe3682"
+      },
+      "sha256_page": "26a1177da26c2f05"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_piperade-basique_36243.aspx",
+      "site": "marmiton.org",
+      "nom": "Piperade basique : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "3 poivrons verts et 1 poivron rouge",
+        "1 petite boîte de tomates pelées",
+        "2 oignons",
+        "2 gousses d'ail pelées et écrasées",
+        "2 feuilles de laurier",
+        "2 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "sel",
+        "0.6666667 branche de thym",
+        "1 cuillère à soupe de sucre en poudre (facultatif)",
+        "0.5 verre d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 375,
+        "sha256": "41d3f47135f8f9a3"
+      },
+      "sha256_page": "6fab4ce9b43d7190"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_piperade-basque_27699.aspx",
+      "site": "marmiton.org",
+      "nom": "Piperade basque : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "8 oeufs",
+        "4 tranches de jambon crus",
+        "1 poivron rouge",
+        "1 poivron vert",
+        "4 tomates",
+        "1 oignon",
+        "2 gousses d'ail",
+        "huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 647,
+        "sha256": "92a593558d723366"
+      },
+      "sha256_page": "e6c682d9156f3f64"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/piperade-basquaise-49981836-d78a-47ab-bb4b-c55d7a4bfc0c",
+      "site": "chefsimon.com",
+      "nom": "Piperade basquaise",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "3  piments d'Espelette (ou 2 poivrons)",
+        "2  oignons",
+        "2 gousses  d'ail",
+        "2  d'huile d'olive",
+        "3  tomates",
+        "40 g de beurre",
+        "1 cuil. à soupe de persil haché",
+        "thym",
+        "laurier",
+        "sel (poivre)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 180,
+        "sha256": "bfea49452677765d"
+      },
+      "sha256_page": "9790074540b72efb"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-cuisine-d-adeline/recettes/piperade-basque-d5c110f2-3605-405f-b4c3-301293f6054e",
+      "site": "chefsimon.com",
+      "nom": "Piperade basque",
+      "portions": "",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H35M",
+      "ingredients": [
+        "3 poivrons rouges",
+        "6 tomates",
+        "1 piment doux",
+        "1 gros oignons",
+        "1 gousse d'ail",
+        "1 ou 2 pincées de piment d'Espelette",
+        "1 pincée de sucre",
+        "Huile d'olive",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 148,
+        "sha256": "4acced29232aa65a"
+      },
+      "sha256_page": "426a5d55e862422d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/alexandre/recettes/la-piperade",
+      "site": "chefsimon.com",
+      "nom": "La piperade",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "5 beaux poivrons rouges",
+        "3 ou 4 belles tomates",
+        "2 oignons",
+        "3 gousses d'ail",
+        "Quelques brins de thym",
+        "1 cuillère à café de piment d'Espelette",
+        "1 cuillère à café de sucre",
+        "Sel et poivre",
+        "Huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "2f580fde3c1b581a"
+    },
+    {
+      "url": "https://www.750g.com/piperade-r38276.htm",
+      "site": "750g.com",
+      "nom": "Piperade",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 fines tranches de jambon de Bayonne",
+        "3 c. à s. d'huile",
+        "Sel ou sel fin",
+        "Poivre du moulin",
+        "2 gousses d'ail",
+        "1 oignon",
+        "3 poivrons",
+        "2 tomates",
+        "4 oeufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 855,
+        "sha256": "783b881a54ae7da1"
+      },
+      "sha256_page": "463491b1b49e25ca"
+    },
+    {
+      "url": "https://www.750g.com/piperade-a-ma-facon-r57977.htm",
+      "site": "750g.com",
+      "nom": "Piperade à ma façon rapide",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1,5 c. à s. d'huile d'olive",
+        "2 oignon de Roscoff",
+        "Poivron"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 425,
+        "sha256": "2b3044cff1e7fa92"
+      },
+      "sha256_page": "a3d04b58ac424826"
+    }
+  ]
+}

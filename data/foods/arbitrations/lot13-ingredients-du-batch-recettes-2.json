@@ -1,0 +1,26 @@
+{
+  "lot": "lot13 — ingrédients appelés par les 30 recettes sourcées du batch 2",
+  "contexte": "Le batch 2 — poissons, plats de terroir, accompagnements — n'a laissé que trois formes du socle non employables, contre vingt-quatre au batch 1 : le catalogue a mûri. Deux se règlent ici, la troisième dans les recettes. Le bouquet garni reste un proxy de confiance C et le restera : ce n'est pas un aliment mais trois herbes ficelées, décomposées en thym, laurier et persil à la rédaction.",
+  "decisions": [
+    {
+      "cle": "moule commune crue",
+      "forme": "Moule commune crue",
+      "verdict": "mapper",
+      "alim_code": "10014",
+      "nom_ciqual": "Moule commune, crue",
+      "confidence": "A",
+      "remplace": "10014",
+      "note": "Le code était déjà au registre mais aucun arbitrage ne lui donnait de nom publiable : la forme restait donc introuvable au vocabulaire, exactement comme l'anchois dont la virgule cachait le nom. On la nomme, sans changer la référence. L'avertissement d'origine vaut d'être répété parce qu'il vise une erreur de trois pour un : le classeur mesure la CHAIR, pas la coquille. Un kilo de moules acheté donne environ 300 g de chair, et c'est ce poids-là qu'une recette déclare. Les étapes, elles, doivent parler en moules entières — c'est ce qu'on achète."
+    },
+    {
+      "cle": "pate feuilletee crue",
+      "forme": "Pâte feuilletée crue",
+      "verdict": "mapper",
+      "alim_code": "23424",
+      "nom_ciqual": "Pâte feuilletée pur beurre, crue",
+      "confidence": "A",
+      "remplace": "23481",
+      "note": "La forme pointait sur 23481, « Tarte normande aux pommes (garniture farine, œufs, crème, sucre…) » — un dessert entier, garniture comprise, servant de proxy à une pâte nue. D'où sa confiance C, justifiée, et le blocage de toute recette l'employant : tarte à l'oignon, bouchées à la reine. Le classeur porte pourtant l'entrée exacte, pâte feuilletée pur beurre crue, avec des macros complètes (368 kcal, P 6,14 / G 39,7 / L 20,1). L'écart n'était pas cosmétique : la tarte normande compte son sucre et ses pommes, une pâte n'en a pas."
+    }
+  ]
+}

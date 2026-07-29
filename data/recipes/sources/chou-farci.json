@@ -1,0 +1,225 @@
+{
+  "dish": "Chou farci",
+  "slug": "chou-farci",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_chou-farci-a-l-auvergnate_21936.aspx",
+      "site": "marmiton.org",
+      "nom": "Chou farci à l'auvergnate : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "1 chou vert ou blanc",
+        "300 g de viande hachée de veau et de porc",
+        "2 oignons",
+        "poivre",
+        "sel",
+        "quatre-épices",
+        "1 cuillère à soupe de persil haché",
+        "100 g de lard en grandes tranches",
+        "1 carotte",
+        "20 g de beurre",
+        "50 cl de bouillons"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1273,
+        "sha256": "42a6a39a55994241"
+      },
+      "sha256_page": "48c145be05c3cd34"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_chou-farci-a-la-grecque_28087.aspx",
+      "site": "marmiton.org",
+      "nom": "Chou farci à la grecque : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 chou vert frisé",
+        "500 g de viande hachée de porc",
+        "500 g de boeuf haché",
+        "1 petit bouquet de persil frais",
+        "6 gousses d'ail",
+        "800 g de tomates pelées en conserve",
+        "3 cuillères à soupe d'huile",
+        "2 cuillères à café de cumin",
+        "poivre",
+        "sel",
+        "2 oignons"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 524,
+        "sha256": "4ea225a993f26ed1"
+      },
+      "sha256_page": "2f91c64713e8a0e0"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_choux-farci-en-couche_36171.aspx",
+      "site": "marmiton.org",
+      "nom": "Choux farci en couche : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 chou blanc",
+        "500 g de chair à saucisse",
+        "ail",
+        "persil",
+        "sel",
+        "0.5 pain rassis",
+        "1 verre de lait",
+        "1 oeuf",
+        "20 cl de sauce tomate",
+        "10 cl d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 661,
+        "sha256": "dcb746e3eeb69d9d"
+      },
+      "sha256_page": "40f4e4416e4d3ff1"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/chou-farci--4",
+      "site": "chefsimon.com",
+      "nom": "Chou farci",
+      "portions": "4 personnes",
+      "duree_preparation": "PT01H30M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "Un chou vert frisé",
+        "3 gros oignons",
+        "2 gousses d'ail",
+        "un gros bouquet garni",
+        "5 belles carottes",
+        "400 g de hachis porc et veau ou de chair à saucisse si vous préférez",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1083,
+        "sha256": "69bed7a0b1b3fb1a"
+      },
+      "sha256_page": "2f1b25e09f545e50"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/passeportpourlacuisine/recettes/choux-farcis-ukrainiens",
+      "site": "chefsimon.com",
+      "nom": "Choux farcis ukrainiens",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 gros chou vert",
+        "500 g de viande hachée (porc, bœuf ou mélange)",
+        "150 g de riz",
+        "2 oignons",
+        "2 carottes",
+        "3 c à s d’huile",
+        "1 litre de coulis de tomate",
+        "Sel et poivre au goût",
+        "1 c à c de paprika doux",
+        "Quelques brins d’aneth frais (optionnel mais très ukrainien)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 791,
+        "sha256": "fdc3148ddefe4db5"
+      },
+      "sha256_page": "752eef767e93608d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lionel-giraud/recettes/chou-farci-au-cochon-noir-foie-gras-niche-au-coeur-compotee-de-rhubarbe-et-jus-reduit-au-vin-rouge",
+      "site": "chefsimon.com",
+      "nom": "Chou farci au cochon noir Foie gras niché au cœur, compotée de rhubarbe et jus réduit au vin rouge",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "1 chou vert",
+        "400 g échine de porc",
+        "100 g poitrine",
+        "80 g foie gras",
+        "1 échalote",
+        "1 gousse d'ail",
+        "1 œuf",
+        "pain trempé",
+        "2 pommes",
+        "200 g rhubarbe",
+        "beurre",
+        "vin rouge",
+        "bouillon de porc",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 18,
+        "signes": 694,
+        "sha256": "0ab30c3c01a4fc2d"
+      },
+      "sha256_page": "ff0d3727bc34d708"
+    },
+    {
+      "url": "https://www.750g.com/chou-farci-r33131.htm",
+      "site": "750g.com",
+      "nom": "Chou farci facile",
+      "portions": "8 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT3H30M",
+      "ingredients": [
+        "2 cubes de bouillon",
+        "2 carottes",
+        "Sel ou sel fin",
+        "Poivre",
+        "Thym",
+        "Laurier",
+        "4 clous de girofle",
+        "1 verre de lait",
+        "2 tranches de pain",
+        "2 oignons",
+        "400 g de tomates  (chair)",
+        "400 g de boeuf haché",
+        "1 chou vert"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 996,
+        "sha256": "1cf54dd894f6f585"
+      },
+      "sha256_page": "aea82dd85b819486"
+    },
+    {
+      "url": "https://www.750g.com/chou-farci-r1569.htm",
+      "site": "750g.com",
+      "nom": "Chou farci",
+      "portions": "4 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 chou vert",
+        "300 g de chair à saucisse",
+        "2 oignons  hachés",
+        "2 tomates",
+        "2 carottes",
+        "150 g de crépine de porc",
+        "150 g de lard de poitrine",
+        "2 oeufs",
+        "50 g de beurre",
+        "2 gousses d'ail",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1655,
+        "sha256": "ce2963fddbe1984e"
+      },
+      "sha256_page": "fd378766bab335d7"
+    }
+  ]
+}

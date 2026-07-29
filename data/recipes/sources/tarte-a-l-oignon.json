@@ -1,0 +1,203 @@
+{
+  "dish": "Tarte à l'oignon",
+  "slug": "tarte-a-l-oignon",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tarte-a-l-oignon-rapide_26201.aspx",
+      "site": "marmiton.org",
+      "nom": "Tarte à l'oignon rapide : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 pâte brisée",
+        "5 oignons",
+        "poivre",
+        "sel",
+        "20 cl de crème fraîche",
+        "2 oeufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 314,
+        "sha256": "fdaa31fc0bbcd271"
+      },
+      "sha256_page": "1c7bcf3049341fd4"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tarte-aux-oignons-lardons-et-champignons_64140.aspx",
+      "site": "marmiton.org",
+      "nom": "Tarte aux oignons, lardons et champignons : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 oignons",
+        "1 pâte brisée toute prête (à faire soi-même pour ceux qui savent...)",
+        "250 g de lardons",
+        "250 g de champignons de Paris (en boîte ça va aussi)",
+        "30 cl de crème",
+        "1 oeuf",
+        "poivre",
+        "sel",
+        "1 pincée de muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 648,
+        "sha256": "ff2ce37dd32f8b19"
+      },
+      "sha256_page": "5b737cb992e02374"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tarte-fondante-a-l-oignon-et-au-chevre_46239.aspx",
+      "site": "marmiton.org",
+      "nom": "Tarte fondante à l'oignon et au chèvre : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 pâte feuilletée prête à dérouler",
+        "20 cl de crème allégée",
+        "6 oignons",
+        "1 bûche de chèvre",
+        "200 g de lardons fumés",
+        "1 oeuf",
+        "poivre",
+        "herbes de Provence"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 476,
+        "sha256": "25ad722032e91f62"
+      },
+      "sha256_page": "01e64e12feeaa6d9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/tarte-au-ble-noir-aux-oignons-doux-et-sardines-a-l-huile",
+      "site": "chefsimon.com",
+      "nom": "Tarte au blé noir aux oignons doux et sardines à l’huile",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H50M",
+      "ingredients": [
+        "Pour la pâte",
+        "100 g de farine de sarrasin",
+        "100 g de farine de froment",
+        "100 g de beurre demi-sel",
+        "1  œuf",
+        "Pour la garniture",
+        "4  sardines à l'huile",
+        "4  oignons",
+        "20 g de beurre",
+        "quelques brins de coriandre",
+        "3  cébettes",
+        "sel (poivre)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 236,
+        "sha256": "31028b0f7d252236"
+      },
+      "sha256_page": "2816718846b7938d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lesfillesatable-com/recettes/tarte-aux-oignons-chevre-et-miel",
+      "site": "chefsimon.com",
+      "nom": "Tarte aux oignons, chèvre et miel",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "1 pâte feuilletée pur beurre",
+        "2 oignons doux",
+        "1 cuil. à soupe de miel d’acacia",
+        "3 cuil. à soupe de ricotta",
+        "1 cuil. à soupe de moutarde au miel",
+        "1 bûche de chèvre cendré",
+        "1 poignée de comté râpé",
+        "huile d’olive",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 891,
+        "sha256": "ff0c658090369651"
+      },
+      "sha256_page": "e0f410b44e3cd955"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/orianec/recettes/tarte-tatin-courgettes-oignons-rouges-et-parmesan",
+      "site": "chefsimon.com",
+      "nom": "Tarte tatin courgettes oignons rouges et parmesan",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "1 pâte feuilletée",
+        "800 g environ de courgettes",
+        "Vinaigre balsamique",
+        "Herbes de Provence",
+        "Parmesan (ou ricotta)",
+        "Miel",
+        "Huile d’olive",
+        "1 oignon rouge"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1032,
+        "sha256": "add5061a7c46a5c2"
+      },
+      "sha256_page": "290d0c141f76b90a"
+    },
+    {
+      "url": "https://www.750g.com/tarte-a-loignon-r33369.htm",
+      "site": "750g.com",
+      "nom": "Tarte à l'oignon facile",
+      "portions": null,
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "2 c. à s. de farine",
+        "1 pâte feuilletée",
+        "Sel ou sel fin",
+        "Poivre",
+        "50 g de gruyère râpé",
+        "25 cl de lait",
+        "2 c. à s. d'huile d'olive",
+        "1 c. à s. de crème fraîche",
+        "3 jaunes d'oeuf",
+        "500 g d'oignons"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 592,
+        "sha256": "5dffd8f54fad2d0b"
+      },
+      "sha256_page": "c41f7cd63567063c"
+    },
+    {
+      "url": "https://www.750g.com/tarte-a-loignon-r70173.htm",
+      "site": "750g.com",
+      "nom": "Tarte à l'oignon crémeuse",
+      "portions": "8 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "20 cl de crème",
+        "3 oeufs",
+        "20 cl de vin blanc sec",
+        "300 g d'oignons",
+        "1 pâte brisée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 316,
+        "sha256": "a2b7fbf39dc4754e"
+      },
+      "sha256_page": "253cb49bba2c235e"
+    }
+  ]
+}

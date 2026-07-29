@@ -1,0 +1,78 @@
+{
+  "dish": "Petits pois à la française",
+  "slug": "petits-pois-a-la-francaise",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_petits-pois-a-la-francaise-par-laurent-mariotte_530845.aspx",
+      "site": "marmiton.org",
+      "nom": "Petits pois à la française par Laurent Mariotte : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "400 g de petits pois frais écossés (environ 1,5 kg avec les cosses)",
+        "50 g de beurre frais",
+        "2 coeurs de laitues",
+        "12 oignons nouveaux (bulbes)",
+        "1 bouquet de cerfeuil ficelé",
+        "1 cuillère à café de sucre en poudre",
+        "sel fin",
+        "poivre blanc moulu"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 646,
+        "sha256": "30357e6f0bb7d9cd"
+      },
+      "sha256_page": "32d2f27cfcec18c5"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/petits-pois-a-la-francaise-b634bfdf-35ee-4e23-b813-6ad81d4d4996",
+      "site": "chefsimon.com",
+      "nom": "Petits pois à la française",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "400 grammes de petits pois écossés",
+        "2 gousses d'ail écrasées",
+        "2 échalotes ciselées",
+        "50 grammes de beurre",
+        "100 grammes de petits oignons glacés à blanc",
+        "une demie salade romaine ou une laitue",
+        "bouquet garni",
+        "sel et poivre."
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 569,
+        "sha256": "3c919414d1947e46"
+      },
+      "sha256_page": "78750d62279ac2d5"
+    },
+    {
+      "url": "https://www.750g.com/petits-pois-a-la-francaise-r52519.htm",
+      "site": "750g.com",
+      "nom": "Petits pois à la française",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 kg de petit pois",
+        "50 g de lardons fumés",
+        "1 oignon blanc",
+        "Feuille de laitue  (quelques)",
+        "1 beurre",
+        "Sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 486,
+        "sha256": "f068fdc4fb506eb9"
+      },
+      "sha256_page": "f7d92235d985a80d"
+    }
+  ]
+}

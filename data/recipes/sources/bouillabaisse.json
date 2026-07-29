@@ -1,0 +1,193 @@
+{
+  "dish": "Bouillabaisse",
+  "slug": "bouillabaisse",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bouillabaisse-facile_16116.aspx",
+      "site": "marmiton.org",
+      "nom": "Bouillabaisse facile : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "6 pommes de terre",
+        "1 poireau ou des oignons",
+        "1 boîte de pulpe de tomate",
+        "ail",
+        "safran",
+        "poivre",
+        "sel",
+        "huile d'olive",
+        "vin blanc",
+        "4 filets de rascasses",
+        "500 g de moules",
+        "gambas (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 508,
+        "sha256": "01e77bda69671a48"
+      },
+      "sha256_page": "3b2125b49f0f6b19"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bouillabaisse-de-poulet_14106.aspx",
+      "site": "marmiton.org",
+      "nom": "Bouillabaisse de poulet : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "blanc de poulet",
+        "1 oignon",
+        "1 fenouil",
+        "1 zeste d'orange",
+        "3 anis étoilé (ou badiane, se trouve en pharmacie)",
+        "1 boîte de fond de volaille",
+        "1 dl de pastis",
+        "1 cuillère à café de concentré de tomates",
+        "1 dose de safran",
+        "poivre",
+        "sel",
+        "thym",
+        "laurier",
+        "1 boîte de rouille (au rayon épices)",
+        "croûtons de pain grillés",
+        "d'ail épluchées"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 676,
+        "sha256": "dac55c4168bbd928"
+      },
+      "sha256_page": "0b5aa57ec61a2fc6"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bouillabaisse-ultra-facile_35356.aspx",
+      "site": "marmiton.org",
+      "nom": "Bouillabaisse ultra-facile : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "3 oignons",
+        "3 tomates",
+        "6 pommes de terre",
+        "4 filets de loups",
+        "1 cuillère à café de safran jaune",
+        "2 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "sel",
+        "2 cuillères à soupe de rouille"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 565,
+        "sha256": "3d75114dd3844a43"
+      },
+      "sha256_page": "bf761358839efbee"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/bouillabaisse-de-sardines-a-la-provencale",
+      "site": "chefsimon.com",
+      "nom": "Bouillabaisse de sardines à la provençale",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "8 à 12 sardines, vidées et légèrement écaillées",
+        "1 boites de tomates concassées",
+        "1 c à s de concentré de tomates",
+        "1 l d’eau",
+        "2 branches de fenouil",
+        "500 g ce pommes de terre",
+        "1 blanc de poireau",
+        "1 c à c de graines de fenouil",
+        "1 oignon",
+        "1 gousse d’ail",
+        "1 dose de safran",
+        "1 morceau d’écorce de citron",
+        "Laurier",
+        "Thym",
+        "Huile d’olive",
+        "Zeste de citron",
+        "Sel et poivre du moulin",
+        "Persil haché"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 866,
+        "sha256": "b10e9d5c56462632"
+      },
+      "sha256_page": "b18fcf21a9e7fa3d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/timothee/recettes/pizza-bouillabaisse",
+      "site": "chefsimon.com",
+      "nom": "Pizza bouillabaisse",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT00H07M",
+      "ingredients": [
+        "270 g de pâte a pizza",
+        "7 filets de rouget",
+        "7 grosses feuille de basilic",
+        "1 boule de mozzarella di buffala",
+        "20cl de soupe de poisson",
+        "1 c à soupe de purée de pomme de terre",
+        "15cl de sauce tomate",
+        "1 courgette",
+        "1 citron vert",
+        "piment d'espelette",
+        "1 tomate",
+        "7 tomates cerises"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 801,
+        "sha256": "df2549c550c63a2b"
+      },
+      "sha256_page": "0c161f38e336367c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/christophe-pulizzi/recettes/la-bouillabaisse-en-sept-textures-de-christophe-pulizzi",
+      "site": "chefsimon.com",
+      "nom": "La Bouillabaisse en sept textures de Christophe Pulizzi",
+      "portions": "4 personnes",
+      "duree_preparation": "PT01H00M",
+      "duree_cuisson": "PT01H30M",
+      "ingredients": [
+        "1 L de soupe de poissons",
+        "10 g de gomme de kappa",
+        "1 belle part de focaccia fraîche",
+        "6 gousses d’ail",
+        "Un filet d’huile d’olive",
+        "Lécithine de soja",
+        "Fleur de sel",
+        "1 kg de pommes de terre amandine",
+        "1 branche de fenouil",
+        "Quelques pistils de safran",
+        "2 kg de moules",
+        "2 œufs",
+        "5 cl de pastis",
+        "4 oranges",
+        "1 L de crème fraîche",
+        "15 cl de vin",
+        "Quelques branches de thym",
+        "Quelques branches de salicorne",
+        "Quelques branches de romarin",
+        "De l’anis étoilé",
+        "Des gaines de fenouil",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 33,
+        "signes": 2970,
+        "sha256": "f171ead11955d5aa"
+      },
+      "sha256_page": "856aa26c6505610f"
+    }
+  ]
+}

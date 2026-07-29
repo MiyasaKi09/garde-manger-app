@@ -1,0 +1,33 @@
+{
+  "lot": "lot14 — trois ingrédients principaux que les recettes réclamaient sans les avoir",
+  "contexte": "Trois plats du batch 2 n'avaient pas leur ingrédient central au catalogue : le boudin, l'oseille et la truite. Les rédacteurs ont inventé un nom de forme plutôt que de refuser d'écrire — c'est une entorse à la règle, mais ils l'ont signalée dans leur arbitrage canonique, ce qui a permis de la rattraper. Le boudin méritait une attention particulière : sa ligne « 150 g de boudins noirs » était lue comme du poivre noir, le mot « noir » suffisant à emporter la correspondance, si bien que le poids du boudin ressortait en poivre à quarante grammes par personne. La lecture est corrigée, et l'ingrédient entre ici.",
+  "decisions": [
+    {
+      "cle": "boudin noir a cuire",
+      "forme": "Boudin noir à cuire",
+      "verdict": "mapper",
+      "alim_code": "8703",
+      "nom_ciqual": "Boudin noir, à cuire",
+      "confidence": "A",
+      "note": "Le cru plutôt que le sauté, puisque la recette le cuit elle-même : 313 kcal contre 246 une fois poêlé, l'écart venant de l'eau perdue et non d'un gras ajouté. Retenir la forme cuite ferait compter deux fois la cuisson. Macros complètes (P 12,2 / G 4,5 / L 27,1)."
+    },
+    {
+      "cle": "oseille crue",
+      "forme": "Oseille crue",
+      "verdict": "mapper",
+      "alim_code": "20111",
+      "nom_ciqual": "Oseille, crue",
+      "confidence": "A",
+      "note": "Feuille acide qui fait tout le plat du saumon à l'oseille — elle fond en purée verte au contact de la chaleur et c'est son acidité qui coupe le gras du poisson. Sans elle, il ne reste qu'un saumon à la crème. Entrée crue directe, macros complètes."
+    },
+    {
+      "cle": "truite crue",
+      "forme": "Truite crue",
+      "verdict": "mapper",
+      "alim_code": "26092",
+      "nom_ciqual": "Truite de mer, crue",
+      "confidence": "B",
+      "note": "Le classeur ne publie la truite crue que pour la truite de mer ; l'arc-en-ciel d'élevage, celle qu'on achète pour une truite aux amandes, n'existe qu'en versions cuites (143 kcal rôtie, 117 vapeur). On retient donc le cru, puisque la recette cuit elle-même, au prix d'un proxy d'espèce assumé : 111 kcal, P 19,6 / L 3,63 pour la truite de mer contre un ordre de grandeur voisin pour l'élevage. Confiance B, l'écart portant sur l'espèce et non sur l'état. Le poids déclaré est celui des filets ou de la chair, pas celui du poisson entier vidé — une truite de 250 g en donne environ 150."
+    }
+  ]
+}

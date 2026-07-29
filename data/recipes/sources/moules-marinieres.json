@@ -1,0 +1,153 @@
+{
+  "dish": "Moules marinières",
+  "slug": "moules-marinieres",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_moules-marinieres-persillees_32408.aspx",
+      "site": "marmiton.org",
+      "nom": "Moules marinières persillées : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "2 kg de moules",
+        "25 cl de vin blanc",
+        "20 g de beurre",
+        "1 branche de céleri",
+        "2 oignons",
+        "0.5 botte de persil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 472,
+        "sha256": "459ca399ab8cf839"
+      },
+      "sha256_page": "c79a358e555a2d82"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_moules-marinieres-de-maman_63377.aspx",
+      "site": "marmiton.org",
+      "nom": "Moules marinières de maman : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "2 kg de moules de bouchot",
+        "1 oignon jaune",
+        "15 cl de vin blanc sec",
+        "2 farine",
+        "citron",
+        "4 gousses d'ail",
+        "1 petit bouquet de persil",
+        "poivre",
+        "sel",
+        "20 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 640,
+        "sha256": "54cfd7a8eec5ef6c"
+      },
+      "sha256_page": "9c18177a55da226e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_moules-mariniere-a-la-creme-et-au-curry_80320.aspx",
+      "site": "marmiton.org",
+      "nom": "Moules marinière à la crème et au curry : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1.5 kg de moules de Bouchot",
+        "1 oignon ou 2 échalotes",
+        "150 g de champignons",
+        "50 g de beurre",
+        "2 verres de vin blanc sec (Sauvignon)",
+        "1 cuillère à soupe de farine",
+        "15 cl de crème",
+        "poivre",
+        "curry",
+        "basilic"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 814,
+        "sha256": "b05a30bfbffc2431"
+      },
+      "sha256_page": "659bb2395e6c52af"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/moules-mariniere--3",
+      "site": "chefsimon.com",
+      "nom": "Moules marinière",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H03M",
+      "ingredients": [
+        "3 litres de moules de bouchot",
+        "1/2 l de vin blanc sec",
+        "2 belles branches de céleri",
+        "2 oignons",
+        "2 gousses d'ail",
+        "50 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 512,
+        "sha256": "e7529500a8d63011"
+      },
+      "sha256_page": "fcfb8fa297a32ce7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/le-popoteur/recettes/moules-marinieres-c37e1ec4-3828-4df7-9825-ae23be0c1b52",
+      "site": "chefsimon.com",
+      "nom": "Moules marinières",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "Pour 2 personnes :",
+        "1,500 kg de moules",
+        "2 belles échalotes",
+        "1 bel oignon de Roscoff",
+        "2 gousses d'ail",
+        "30 gr de persil",
+        "25 cl de vin blanc sec",
+        "30 gr de beurre demi-sel",
+        "2 feuilles de laurier"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1275,
+        "sha256": "65e90cdc8979892f"
+      },
+      "sha256_page": "434c5dbeac8e821b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-blog/recettes/moules-marinieres-au-companion",
+      "site": "chefsimon.com",
+      "nom": "Moules marinières au Companion",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 kg de moules",
+        "1  oignon",
+        "1 gousse d'ail",
+        "1  petit bouquet de persil",
+        "3 cuillères à soupe d'huile d'olive",
+        "150 ml de vin blanc sec",
+        "2 cuillères à café de farine",
+        "1  pincée de sel et de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 304,
+        "sha256": "760d8f552297d6d8"
+      },
+      "sha256_page": "88f024a3d10f9696"
+    }
+  ]
+}

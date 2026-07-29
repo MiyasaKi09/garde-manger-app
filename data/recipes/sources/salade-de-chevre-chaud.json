@@ -1,0 +1,244 @@
+{
+  "dish": "Salade de chèvre chaud",
+  "slug": "salade-de-chevre-chaud",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-de-chevre-chaud_22249.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade de Chèvre Chaud : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "4 tranches de pains de campagne",
+        "2 pélardons (fromage de chèvre AOC)",
+        "100 g de lardons natures",
+        "1 salade verte (batavia, laitue, romaine selon les goûts)",
+        "2 tomates",
+        "1 poivron rouge",
+        "1 gousse d'ail",
+        "huile d'olive",
+        "basilic"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 980,
+        "sha256": "714cf6cb53244cf0"
+      },
+      "sha256_page": "77f918694e6dcf9c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-de-chevre-chaud-au-miel-et-pesto_40068.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade de chèvre chaud au miel et pesto : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "4 chèvre frais",
+        "4 poignées de roquette (ou mâche)",
+        "1 baguette",
+        "miel liquide",
+        "pesto",
+        "8 tomates cerise"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 579,
+        "sha256": "6c197fc1153f519d"
+      },
+      "sha256_page": "c74b5518c3146eb0"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-de-chevres-chauds_25546.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade de chèvres chauds : la meilleure recette",
+      "portions": "1 personne",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "100 g de gésiers de volaille par personne",
+        "1 salade (de type frisée ou feuille de chêne)",
+        "3 chèvre frais par personne",
+        "2 oeufs",
+        "1 cuillère à soupe de chapelure",
+        "2 cuillères à soupe d'huile de pépin de raisin",
+        "1 cuillère à soupe de vinaigre balsamique"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 614,
+        "sha256": "b93ef26bcf568df9"
+      },
+      "sha256_page": "8ce87970a2b207bc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/salade-au-chevre-chaud",
+      "site": "chefsimon.com",
+      "nom": "Salade au chèvre chaud",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "Salade mesclun",
+        "4 Crottins de Chavignol",
+        "12 tranches de pain aux graines",
+        "100 grammes de haricots verts cuits à l’anglaise",
+        "24 tomates cerises",
+        "basilic petite feuilles",
+        "6 cuillers à soupe d’huile d’olive",
+        "4 cuillers à soupe de jus de citron frais",
+        "1 cuiller à café de pesto"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 604,
+        "sha256": "dfbecf00839b661c"
+      },
+      "sha256_page": "50d6440aca637014"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/del-s-cooking-twist/recettes/salade-de-chevre-chaud-et-sa-sauce-epicee",
+      "site": "chefsimon.com",
+      "nom": "Salade de chèvre chaud et sa sauce épicée",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "15g de beurre, pour la cuisson",
+        "4 tranches de pain de campagne",
+        "4 tranches épaisses de fromage de chèvre",
+        "1 cuil. à soupe d'herbes de provence",
+        "1 cuil. à soupe de miel",
+        "150g de dés de bacon",
+        "200g de salade (type laitue)",
+        "15 tomates cerises",
+        "50g de cerneaux de noix",
+        "Poivre noir, fraîchement moulu",
+        "3 cuil. à soupe d'huile d'olive",
+        "1 cuil. à soupe de vinaigre balsamique",
+        "1 cuil. à soupe de miel",
+        "1 petit piment rouge, finement ciselé",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 367,
+        "sha256": "54f12ba430f5dad5"
+      },
+      "sha256_page": "2771526d6955cbb9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/salade-de-chevre-chaud-et-lardons",
+      "site": "chefsimon.com",
+      "nom": "Salade de chèvre chaud et lardons",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "200g salade verte croquante (batavia, romaine, ou mélange)",
+        "4 cabécous (ou autres fromages de chèvre)",
+        "4 tranches de pain de campagne ou pain aux noix",
+        "1cc de miel liquide",
+        "Quelques brins de thym",
+        "100 g de lardons fumés",
+        "2 CS de pignons de pin",
+        "Une dizaine de tomates cerises",
+        "1cc de moutarde",
+        "1CS de vinaigre de cidre",
+        "1cc de miel",
+        "1CS d'huile d’olive",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 707,
+        "sha256": "ea6dd659cb69ac6c"
+      },
+      "sha256_page": "f80fac6d45db5523"
+    },
+    {
+      "url": "https://www.750g.com/salade-de-chevre-chaud-croquante-r59274.htm",
+      "site": "750g.com",
+      "nom": "Salade de chèvre chaud croquante",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 poire",
+        "50g de pignons de pins",
+        "1 salade verte",
+        "4 c à c de miel",
+        "2 cabécous (fromage de chèvre)",
+        "Herbes de Provence",
+        "4 feuilles de brick"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 808,
+        "sha256": "1ff81de0186c96c1"
+      },
+      "sha256_page": "9d90868e7f143cf9"
+    },
+    {
+      "url": "https://www.750g.com/salade-de-chevre-chaud-r35713.htm",
+      "site": "750g.com",
+      "nom": "Salade de chèvre chaud facile",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT3M",
+      "ingredients": [
+        "Salade verte",
+        "10 tomates cerise",
+        "6 fromage de chèvre  style rocamadour ou picodon",
+        "100 g de feta",
+        "30 g de cerneaux de Noix",
+        "1 bol de farine",
+        "1 bol de chapelure",
+        "1 oeuf",
+        "5 c. à s. d'huile d'olive  Andalena",
+        "4 c. à s. de vinaigre de noix",
+        "1 c. à c. de moutarde à l'ancienne",
+        "Paprika",
+        "Herbes de Provence",
+        "Huile de friture  Frial",
+        "Sel ou sel fin",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 17,
+        "signes": 1024,
+        "sha256": "0ac5516a5bb67b22"
+      },
+      "sha256_page": "0f4e6d95f9d92d4d"
+    },
+    {
+      "url": "https://www.750g.com/salade-au-chevre-chaud-jambon-et-pommes-de-terre-r93639.htm",
+      "site": "750g.com",
+      "nom": "Salade au chèvre chaud, jambon et pommes de terre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "4 œufs",
+        "1 sachet de croA»tons",
+        "Sel",
+        "Poivre",
+        "8 petites tranches de pain",
+        "2 crottins de chA?vre",
+        "8 pommes de terre",
+        "250g de jambon",
+        "2 tomates",
+        "1 salade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 405,
+        "sha256": "d79ecc8d98e62290"
+      },
+      "sha256_page": "5635577a1eaaa075"
+    }
+  ]
+}

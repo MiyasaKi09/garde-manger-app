@@ -1,0 +1,186 @@
+{
+  "dish": "Fenouil braisé",
+  "slug": "fenouil-braise",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_fenouils-braises-a-la-cocotte_41707.aspx",
+      "site": "marmiton.org",
+      "nom": "Fenouils braisés à la cocotte : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 fenouil",
+        "de citron vert",
+        "1 morceau de sucre roux",
+        "1 bouillon de légumes",
+        "1 pincée de mélange 5 baies",
+        "sel",
+        "poivre",
+        "20 g de beurre",
+        "1 oignon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 680,
+        "sha256": "ef99353d89e91c26"
+      },
+      "sha256_page": "d377a43be806017e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_fenouils-braises_35390.aspx",
+      "site": "marmiton.org",
+      "nom": "fenouils braisés : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "4 bulbes de fenouil",
+        "1 citron",
+        "1 verre de vin blanc",
+        "1 branche de thym",
+        "2 gousses d'ail",
+        "poivre",
+        "sel",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 457,
+        "sha256": "d0be8881ea3d9301"
+      },
+      "sha256_page": "7f43ea8c95639a2c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_fenouil-braise-aux-pommes-et-chataignes_174160.aspx",
+      "site": "marmiton.org",
+      "nom": "Fenouil braisé aux pommes et aux châtaignes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "6 bulbes de fenouil",
+        "4 pommes",
+        "1 oignon",
+        "1 boîte de châtaignes cuites",
+        "1 jus de citron vert",
+        "0.5 verre de vin blanc (facultatif)",
+        "eau",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 318,
+        "sha256": "f5aa6124ddd36757"
+      },
+      "sha256_page": "49b316b93d7b2c34"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/fenouil-braise-aigre-doux",
+      "site": "chefsimon.com",
+      "nom": "Fenouil braisé aigre-doux",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "4 bulbes de fenouil",
+        "6 échalions",
+        "6 gousses d'ail",
+        "3 cl d'huile d'olive",
+        "50 g de sucre",
+        "3 cuillers à soupe de vinaigre de riz",
+        "3 cuillers à soupe de sauce soja sucrée",
+        "2 cuillers à soupe rases de sauce sriracha",
+        "paprika fumé",
+        "15 g de graines de sésame",
+        "2 cuillers à soupe de concentré de tomate ou tomate séchée mixée",
+        "5 à 10 g de fécule de riz, de maïs ou de pomme de terre",
+        "20 cl d'eau froide"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 809,
+        "sha256": "40401fd3bc5749d0"
+      },
+      "sha256_page": "7b367bfed7bddec9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/simplement-frais/recettes/fenouil-braise-a-la-tomate-et-lentilles",
+      "site": "chefsimon.com",
+      "nom": "Fenouil braisé à la tomate et lentilles",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "2 gousses d’ail, émincées",
+        "1 gros bulbe de fenouil, coupé en 4 quartiers",
+        "375 ml eau",
+        "45 ml de pâte de tomate",
+        "5 g de thym",
+        "Une pincée de piments forts broyés (optionnel)",
+        "200 g de lentilles crues brunes ou vertes",
+        "250 ml d’eau",
+        "5 ml de moutarde de Dijon",
+        "2 g de zatar ou de thym",
+        "15 ml de jus de citron",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "b9fd22b05efa5ae7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/espadon-et-fenouil-braise-a-l-orange",
+      "site": "chefsimon.com",
+      "nom": "Espadon et fenouil braisé à l'orange",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "2 tranches d'espadon",
+        "2 fenouils",
+        "Le zeste et le jus d'une orange",
+        "1 c à s de beurre",
+        "1 c à c de cassonade",
+        "1 c à s d'huile d'olive",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "44b156e224b7ea6d"
+    },
+    {
+      "url": "https://www.750g.com/fenouil-braise-aux-abricots-r28356.htm",
+      "site": "750g.com",
+      "nom": "Fenouil braisé aux abricots",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "8 abricots",
+        "Sel ou sel fin",
+        "Poivre du moulin",
+        "1 c. à s. de coriandre",
+        "½ feuille de laurier",
+        "1 c. à c. d'huile d'olive",
+        "1 verre de vin blanc",
+        "8 fenouils"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 790,
+        "sha256": "1bad13a573cbea9a"
+      },
+      "sha256_page": "8a4cf900eef1c24a"
+    }
+  ]
+}

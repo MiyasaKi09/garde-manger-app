@@ -1,0 +1,111 @@
+{
+  "dish": "Salade landaise",
+  "slug": "salade-landaise",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-landaise-la-vraie_10680.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade Landaise (la vraie !) : la meilleure recette",
+      "portions": "1 personne",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "10 feuilles de salades frisée",
+        "2 tranches de foies gras de canard",
+        "1 tranche de jambon cru",
+        "5 asperges blanches",
+        "5 tranches de Magrets de canard fumé",
+        "2 cuillères à soupe de maïs",
+        "1 tomate",
+        "2 gésiers de canard",
+        "1 cuillère à soupe de pignons"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 527,
+        "sha256": "6bc8fbcd80b3fd1c"
+      },
+      "sha256_page": "c1185597cecb5701"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-landaise_28499.aspx",
+      "site": "marmiton.org",
+      "nom": "salade landaise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "1 salade mélangée",
+        "4 tranches de foies gras",
+        "8 tranches de magret fumé",
+        "gésiers de canard",
+        "huile d'olive",
+        "vinaigre de xérés",
+        "échalote"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 320,
+        "sha256": "0a96e8108379e86b"
+      },
+      "sha256_page": "c707806a062564dd"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-de-fenouil-a-l-irlandaise_24588.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade de fenouil à l'irlandaise : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "3 bulbes de fenouil",
+        "4 tranches de truites fumée",
+        "2 tomates",
+        "1 fromage frais \"cottage cheese\"",
+        "poivre",
+        "sel",
+        "moutarde",
+        "huile d'olive",
+        "vinaigre",
+        "ciboulette ou aneth"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 325,
+        "sha256": "fb3d53526ccb0336"
+      },
+      "sha256_page": "e37178acff4d0fae"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-cerise-sur-lemaillot/recettes/salade-landaise-a-l-oeuf-mollet",
+      "site": "chefsimon.com",
+      "nom": "Salade landaise à l’oeuf mollet",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "300 g de salade type mesclun ou jeunes pousses",
+        "100 g de tranches magrets de canard séchés",
+        "4 œufs extra-frais",
+        "200 g de gésiers de canard confit",
+        "4 tranches de pain complet",
+        "2 cuillères à soupe de vinaigre de cidre",
+        "1 cuillère à soupe de vinaigre balsamique",
+        "4 cuillères à soupe d’huile de noix",
+        "2 cuillères à soupe d’huile d’olive",
+        "1 cuillère à café de moutarde forte",
+        "1 cuillère à café de moutarde à l’ancienne",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "1027852f89416ef3"
+    }
+  ]
+}
