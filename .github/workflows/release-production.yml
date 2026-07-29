@@ -57,17 +57,30 @@ jobs:
           SUPABASE_POOLER_HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
           SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
         run: |
+          # Une release fait deux choses distinctes : migrer la base, puis
+          # redéployer l'application. Exiger les quatre secrets d'un bloc liait
+          # les deux, et un jeton de déploiement absent empêchait la migration
+          # d'une base dont tous les accès étaient pourtant disponibles. La
+          # production est restée quatre jours sur un corpus périmé pour cette
+          # seule raison, sans que le lien de cause à effet soit lisible.
+          #
+          # Les secrets de base de données gardent donc leur contrôle en tête de
+          # job — sans eux, rien ne peut se faire. VERCEL_TOKEN est vérifié plus
+          # bas, juste avant l'étape qui s'en sert.
           manquants=""
-          for secret in VERCEL_TOKEN SUPABASE_DB_PASSWORD SUPABASE_POOLER_HOST SUPABASE_PROJECT_REF; do
+          for secret in SUPABASE_DB_PASSWORD SUPABASE_POOLER_HOST SUPABASE_PROJECT_REF; do
             if [ -z "${!secret}" ]; then manquants="$manquants $secret"; fi
           done
           if [ -n "$manquants" ]; then
-            echo "::error title=Secret de release manquant::Secrets absents ou vides :$manquants"
+            echo "::error title=Secret de release manquant::Secrets base de données absents ou vides :$manquants"
             echo "Renseignez-les dans Settings → Secrets and variables → Actions du dépôt." >&2
             echo "Aucune migration n'a été appliquée : la production est inchangée." >&2
             exit 1
           fi
-          echo "Tous les secrets de release sont présents."
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "::warning title=VERCEL_TOKEN absent::Les migrations vont s'appliquer, mais le déploiement échouera."
+          fi
+          echo "Secrets de base de données présents."
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -149,6 +162,21 @@ jobs:
           echo "$output" | grep -E '^migrations : 0 appliquées'
           psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/ci/42_planning_final_demands.sql
           psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f scripts/db/verify-planning-production.sql
+      # À ce point la base est à jour. Le déploiement peut échouer sans remettre
+      # ce travail en cause : les migrations de ce dépôt sont rétrocompatibles
+      # par construction — la CI le vérifie sur base vierge et sur prod simulée —
+      # si bien qu'une base en avance sur le code déployé reste servable.
+      - name: Vérifier le jeton de déploiement
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "::error title=VERCEL_TOKEN absent::Migrations appliquées, déploiement impossible."
+            echo "La base de production est à jour ; l'application n'a PAS été redéployée." >&2
+            echo "Renseignez VERCEL_TOKEN dans Settings → Secrets and variables → Actions," >&2
+            echo "puis relancez ce workflow pour publier le code." >&2
+            exit 1
+          fi
       - name: Construire avec l’environnement Vercel de production
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
