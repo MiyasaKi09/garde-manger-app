@@ -1,0 +1,283 @@
+{
+  "lot": "lot1 — variantes dérivées des mijotés et rôtis du batch 1",
+  "note": "Chaque dérivation reprend une variante que la recette de base annonce déjà, et la traduit en opérations. Une variante que le corpus n'annonce pas ne se dérive pas : ce serait écrire une recette de mémoire par la porte de derrière. Les variantes qui ne changent ni ingrédient ni méthode — suggestions de service, accompagnements — restent des phrases : elles ne deviennent pas des recettes.",
+  "derivations": [
+    {
+      "code": "SRC-001-D1",
+      "base": "SRC-001",
+      "family": "Pot-au-feu de poule",
+      "variant_label": "Sans farce, en pot-au-feu de volaille",
+      "rationale": "La farce est ce qui distingue la poule au pot de la simple volaille pochée : la retirer donne un autre plat, plus rapide à monter et plus léger, où le bouillon prend toute la place.",
+      "prep_minutes": 20,
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Pain de mie"
+        },
+        {
+          "op": "remove",
+          "form": "Lait entier"
+        },
+        {
+          "op": "remove",
+          "form": "Œuf cru"
+        },
+        {
+          "op": "remove",
+          "form": "Jambon blanc cuit"
+        },
+        {
+          "op": "remove",
+          "form": "Muscade moulue"
+        },
+        {
+          "op": "set",
+          "form": "Ail cru",
+          "quantity": 10,
+          "role": "aromate"
+        },
+        {
+          "op": "set",
+          "form": "Persil plat frais",
+          "quantity": 10,
+          "role": "finition"
+        }
+      ],
+      "steps": [
+        {
+          "op": "remove",
+          "n": 1
+        },
+        {
+          "op": "remove",
+          "n": 2
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Brider la volaille sans la garnir, pour qu'elle garde sa forme pendant les trois heures de cuisson."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Ajouter l'oignon piqué des clous de girofle, le céleri, les gousses d'ail écrasées, le poivre en grains et le sel. Laisser frémir à découvert deux heures, sans jamais laisser bouillir."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Servir le bouillon d'abord, puis la volaille découpée entourée des légumes, parsemée de persil ciselé."
+        }
+      ]
+    },
+    {
+      "code": "SRC-001-D2",
+      "base": "SRC-001",
+      "family": "Poule au pot farcie au chou vert",
+      "variant_label": "Avec chou vert blanchi à part",
+      "rationale": "Le chou se cuit à part et non dans la marmite : plongé dans le bouillon, il l'emporterait sur tout le reste et le troublerait. Blanchi séparément puis fini dans une louche de bouillon, il garde sa tenue et le bouillon sa clarté.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Chou vert frais",
+          "quantity": 800,
+          "unit": "g",
+          "role": "légume"
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 6,
+          "instruction": "Pendant ce temps, ôter les grosses côtes du chou vert et le tailler en larges lanières. Le plonger cinq minutes dans une grande casserole d'eau bouillante salée, l'égoutter, puis le laisser fondre vingt minutes dans deux louches de bouillon prélevées à la marmite."
+        }
+      ]
+    },
+    {
+      "code": "SRC-003-D1",
+      "base": "SRC-003",
+      "family": "Gigot d'agneau aux flageolets à la tomate",
+      "variant_label": "Avec tomates concassées dans les haricots",
+      "rationale": "La tomate n'entre pas dans le gigot mais dans les haricots, qu'elle acidule et colore. C'est la version du Sud-Ouest, où le lit de flageolets se rapproche d'une cassoulade.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Tomate concassée en conserve",
+          "quantity": 250,
+          "unit": "g",
+          "role": "légume"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Égoutter les flageolets, les réchauffer avec la tomate concassée égouttée dix minutes à feu doux pour que l'acidité s'arrondisse, les lier au beurre et au jus de rôtissage dégraissé, puis servir le gigot tranché sur ce lit."
+        }
+      ]
+    },
+    {
+      "code": "SRC-004-D1",
+      "base": "SRC-004",
+      "family": "Poulet vallée d'Auge lié aux jaunes",
+      "variant_label": "Liaison aux jaunes d'œufs en fin de cuisson",
+      "rationale": "La liaison aux jaunes remplace la réduction : la sauce nappe sans avoir réduit, elle reste plus claire et plus douce. En contrepartie elle ne supporte plus l'ébullition, et ne se réchauffe pas.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Jaune d'œuf cru",
+          "quantity": 36,
+          "unit": "g",
+          "role": "liaison"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Retirer la viande et la garniture et les tenir au chaud. Délayer les jaunes d'œufs dans la crème, verser une louche de jus chaud dessus en fouettant, puis reverser le tout dans la cocotte hors du feu. Remuer jusqu'à ce que la sauce nappe la cuillère sans jamais la laisser bouillir, et verser sur le plat."
+        }
+      ]
+    },
+    {
+      "code": "SRC-004-D2",
+      "base": "SRC-004",
+      "family": "Poulet vallée d'Auge aux poireaux",
+      "variant_label": "Avec poireau en garniture",
+      "rationale": "Le poireau fondu apporte au plat une douceur végétale qui répond au cidre, là où la pomme seule tire vers le sucré.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Poireau cru",
+          "quantity": 350,
+          "unit": "g",
+          "role": "garniture"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Peler les pommes, les couper en quartiers et retirer les pépins. Ciseler les échalotes, tailler les carottes en petits dés, couper les champignons en quartiers. Fendre les poireaux dans la longueur, les rincer abondamment et les tronçonner en biseau."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Remettre les pommes et les échalotes, ajouter les champignons et les poireaux, et poursuivre trente minutes à couvert."
+        }
+      ]
+    },
+    {
+      "code": "SRC-005-D1",
+      "base": "SRC-005",
+      "family": "Paupiettes de veau à la tomate en conserve",
+      "variant_label": "Avec tomates concassées en conserve hors saison",
+      "rationale": "Hors saison, la tomate fraîche ne rend qu'une eau pâle. La conserve, cueillie mûre, donne une sauce plus courte et plus rouge, au prix d'une acidité un peu plus franche qu'un temps de cuisson allongé arrondit.",
+      "cook_minutes": 35,
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Tomate fraîche mûre",
+          "with": "Tomate concassée en conserve",
+          "quantity": 400,
+          "role": "sauce"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Émincer l'oignon et les champignons. Égoutter sommairement la tomate concassée en gardant un peu de son jus."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Faire revenir l'oignon dans la cocotte, ajouter la tomate concassée puis les champignons et laisser réduire dix minutes à feu moyen, jusqu'à ce que la sauce nappe le fond."
+        }
+      ]
+    },
+    {
+      "code": "SRC-005-D2",
+      "base": "SRC-005",
+      "family": "Roulés de veau à la tomate",
+      "variant_label": "Sans farce, en simple roulé de veau",
+      "rationale": "Sans farce, l'escalope n'est plus qu'un roulé : le plat perd le liant du porc haché et devient nettement plus maigre. La cuisson raccourcit d'autant, une paupiette pleine mettant plus longtemps à monter à cœur.",
+      "prep_minutes": 12,
+      "cook_minutes": 25,
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Porc haché cru"
+        },
+        {
+          "op": "set",
+          "form": "Escalope de veau crue fine",
+          "quantity": 640
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Étaler les escalopes entre deux feuilles de papier et les aplatir légèrement. Les saler, les poivrer, répartir dessus l'ail et le persil hachés, puis rouler et ficeler chaque roulé."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Retirer les ficelles et servir aussitôt, la sauce versée sur les roulés."
+        }
+      ]
+    },
+    {
+      "code": "SRC-006-D1",
+      "base": "SRC-006",
+      "family": "Veau Marengo à la tomate pelée",
+      "variant_label": "Avec tomates pelées en conserve hors saison",
+      "rationale": "La tomate entière pelée en conserve remplace la tomate fraîche quand celle-ci n'a plus de goût. Écrasée à la cuillère dans la cocotte, elle donne la même sauce, un peu plus dense.",
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Tomate fraîche mûre",
+          "with": "Tomate entière pelée en conserve",
+          "quantity": 400,
+          "role": "sauce"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Ajouter le concentré de tomate, puis les tomates entières pelées écrasées à la cuillère avec un peu de leur jus, le vin blanc et l'eau à hauteur, enfin le thym et le laurier. Saler et poivrer."
+        }
+      ]
+    },
+    {
+      "code": "SRC-006-D2",
+      "base": "SRC-006",
+      "family": "Poulet Marengo",
+      "variant_label": "Version poulet Marengo",
+      "rationale": "C'est la version d'origine, celle du soir de la bataille : le veau y a remplacé le poulet plus tard. La volaille cuit deux fois moins longtemps, et la sauce ne se lie plus par l'attente mais par la réduction finale.",
+      "cook_minutes": 55,
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Épaule de veau crue, en cubes",
+          "with": "Poulet entier cru en morceaux",
+          "quantity": 1500,
+          "role": "protéine"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Sécher les morceaux de poulet. Chauffer l'huile et le beurre dans une cocotte à fond épais et les dorer par fournées, peau vers le fond, sans les entasser."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Couvrir et laisser mijoter trente-cinq minutes à feu doux : la volaille est cuite quand la cuisse se détache, et elle s'assèche si on la pousse au-delà."
+        }
+      ]
+    }
+  ]
+}

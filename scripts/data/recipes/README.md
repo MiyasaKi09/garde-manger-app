@@ -172,3 +172,70 @@ chercher : l'arbitrage semble appliqué, l'ingrédient reste introuvable.
 gigot de 1,8 kg, os compris, quand la référence nutritionnelle porte sur la
 chair. Déclaré tel quel, le plat montait de 634 à 736 kcal la part. La quantité
 déclarée est le rendement en viande ; l'instruction d'achat reste 1,8 kg.
+
+## Écrire une variante
+
+Une variante annoncée n'était qu'une phrase : « Version aux poireaux dominants ».
+On ne pouvait pas cliquer dessus, pas la planifier, et surtout pas la peser — le
+corpus ne savait pas ce qu'elle changeait. Elle devient une recette à part
+entière, obtenue en appliquant à sa base un **delta structuré**.
+
+```bash
+node scripts/data/recipes/derive-variant-recipes.mjs data/recipes/derivations/lot1.json --lot lot.json
+node scripts/data/recipes/validate-recipe-batch.mjs lot.json
+node scripts/data/recipes/merge-recipe-batch.mjs lot.json
+```
+
+La dérivée passe ensuite par la même validation que n'importe quelle recette :
+vocabulaire fermé, vraisemblance nutritionnelle, ingrédient principal.
+
+### Le delta
+
+```json
+{
+  "code": "SRC-008-D3", "base": "SRC-008",
+  "family": "Blanquette de dinde sans crème",
+  "variant_label": "Version allégée sans crème : …",
+  "rationale": "Sans crème la sauce perd son velouté…",
+  "operations": [
+    { "op": "remove", "form": "Crème fraîche liquide entière" },
+    { "op": "set", "form": "Bouillon de volaille", "quantity": 400 }
+  ],
+  "steps": [{ "op": "replace", "n": 7, "instruction": "…" }]
+}
+```
+
+Cinq opérations sur les ingrédients — `remove`, `add`, `substitute`, `scale`,
+`set` — et trois sur les étapes — `replace`, `insert`, `remove`. Tout ce que le
+delta ne dit pas est hérité : si la base corrige ses quantités, ses variantes
+suivent.
+
+### Ce que le moteur refuse, et pourquoi
+
+- **une étiquette que la base n'annonce pas.** Une variante inventée serait une
+  recette de mémoire entrée par la porte de derrière.
+- **une opération qui vise un ingrédient absent.** Elle ne ferait rien : la
+  « variante » serait la copie exacte de sa base sous un autre nom.
+- **un delta qui ne change rien** — facteur d'échelle 1, quantité identique.
+- **un retrait dont les étapes parlent encore.** C'est le contrôle qui compte :
+  retirer les lardons en gardant « faire rissoler les lardons » donne une
+  recette dont la nutrition est juste, le vocabulaire propre, et le plat
+  infaisable. Quand le mot désigne réellement autre chose — le jaune d'œuf *cru*
+  d'une mayonnaise et les jaunes *durs* qu'on tamise — il faut le déclarer dans
+  `homonymes`, avec sa raison.
+- **un ajout qu'aucune étape n'emploie.** Il pèserait sur la nutrition sans
+  jamais arriver dans l'assiette.
+- **une forme dupliquée dans la base.** Deux lignes de thym frais rendent la
+  cible ambiguë : c'est la base qu'il faut corriger.
+- **une dérivation en cascade.** Une dérivée ne dérive pas d'une dérivée, sinon
+  la lignée devient un arbre et « ces deux plats sont-ils le même ? » n'a plus
+  de réponse locale.
+
+### La lignée, au planificateur
+
+Une dérivée porte son propre code : tous les compteurs par recette la voient
+comme un plat sans rapport avec sa base. La **lignée** — `derived_from` ou, à
+défaut, le code lui-même — corrige cela. Deux recettes de même lignée ne
+peuvent pas figurer dans la même semaine, et le délai de retour d'un plat se
+compte sur sa lignée entière. Pour une recette non dérivée, lignée et code sont
+confondus : la règle ne change rien au reste du corpus.

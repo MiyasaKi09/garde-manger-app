@@ -1404,5 +1404,25 @@
     "baseline": "new",
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260729140000_recipe_derivations.sql",
+    "github_version": "20260729140000",
+    "name": "recipe_derivations",
+    "sha256": "1abf87256778847b4410613c30e0c59c35c603065bcad1c54441ca006df16c3f",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260729150000_corpus_v3_derived_variants.sql",
+    "github_version": "20260729150000",
+    "name": "corpus_v3_derived_variants",
+    "sha256": "501765512e97f18209fd70d7c23ceadcc5566a34cbd876303b4939a48f7fc2d4",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

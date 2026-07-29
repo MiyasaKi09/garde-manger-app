@@ -1,0 +1,139 @@
+{
+  "lot": "lot2 — variantes dérivées de la blanquette, du croque-madame et du gratin",
+  "note": "Ces trois recettes annoncent des variantes déjà écrites en opérations — « doubler le poireau », « retirer le jambon et porter le gruyère à 120 g ». La dérivation ne fait que les exécuter. Une variante n'a pas été retenue : « prolonger la cuisson de l'œuf de deux minutes » règle une cuisson à point, pas une recette.",
+  "derivations": [
+    {
+      "code": "SRC-008-D1",
+      "base": "SRC-008",
+      "family": "Blanquette de dinde aux poireaux",
+      "variant_label": "Version aux poireaux dominants : doubler le poireau et réduire la carotte de moitié, pour une blanquette plus douce et plus verte.",
+      "rationale": "Le poireau fond dans la sauce et l'adoucit, là où la carotte la sucre et la colore. En inversant leur proportion, la blanquette change de couleur autant que de goût.",
+      "operations": [
+        { "op": "scale", "form": "Poireau cru", "factor": 2 },
+        { "op": "scale", "form": "Carotte crue", "factor": 0.5 }
+      ]
+    },
+    {
+      "code": "SRC-008-D2",
+      "base": "SRC-008",
+      "family": "Blanquette de dinde à l'autocuiseur",
+      "variant_label": "Cuisson accélérée en autocuiseur : 25 minutes sous pression après le déglaçage, crème et liaison ajoutées seulement à l'ouverture.",
+      "rationale": "La pression fait en vingt-cinq minutes ce que le frémissement met trois quarts d'heure à obtenir. La crème, elle, ne va jamais sous pression : elle tournerait. Elle attend l'ouverture, et la liaison avec elle.",
+      "cook_minutes": 35,
+      "steps": [
+        { "op": "replace", "n": 5, "instruction": "Transvaser dans l'autocuiseur si la cocotte n'en est pas un, fermer et compter vingt-cinq minutes à partir de la mise en rotation de la soupape. Décompresser lentement plutôt que sous l'eau froide, pour que la viande ne se resserre pas." },
+        { "op": "replace", "n": 6, "instruction": "Pendant la cuisson sous pression, saisir les champignons dans le beurre restant à feu vif jusqu'à ce que leur eau se soit évaporée et qu'ils brillent. Les réserver." },
+        { "op": "replace", "n": 7, "instruction": "À l'ouverture, verser les champignons dans la cocotte et les réchauffer une minute. Couper le feu, attendre que le bouillonnement cesse puis incorporer la crème. Si la sauce reste trop fluide, délayer la fécule dans deux cuillères de jus refroidi, l'ajouter et laisser épaissir deux minutes sans jamais faire bouillir. Rectifier l'assaisonnement et parsemer de persil ciselé au moment de servir." }
+      ]
+    },
+    {
+      "code": "SRC-008-D3",
+      "base": "SRC-008",
+      "family": "Blanquette de dinde sans crème",
+      "variant_label": "Version allégée sans crème : remplacer la crème par un supplément de bouillon lié à la fécule de maïs.",
+      "rationale": "Sans crème la sauce perd son velouté et devient un jus lié, plus franc et nettement moins gras. La fécule cesse alors d'être un secours : elle est la seule liaison, et double de rôle.",
+      "operations": [
+        { "op": "remove", "form": "Crème fraîche liquide entière" },
+        { "op": "set", "form": "Bouillon de volaille", "quantity": 400 },
+        { "op": "set", "form": "Fécule de maïs", "quantity": 25, "optional": false }
+      ],
+      "steps": [
+        { "op": "replace", "n": 7, "instruction": "Couper le feu et attendre que le bouillonnement cesse. Délayer la fécule dans quatre cuillères de jus refroidi, la reverser dans la cocotte et remuer sur feu doux deux minutes, jusqu'à ce que le jus nappe la cuillère sans jamais bouillir. Rectifier l'assaisonnement et parsemer de persil ciselé au moment de servir." }
+      ]
+    },
+    {
+      "code": "SRC-008-D4",
+      "base": "SRC-008",
+      "family": "Blanquette de dinde au four",
+      "variant_label": "Blanquette au four : transvaser après le mouillement dans une cocotte fermée et laisser confire à 150 °C pendant 1 h 30.",
+      "rationale": "La chaleur tournante du four est plus enveloppante que celle d'une plaque : rien n'attache au fond, et la viande confit plutôt qu'elle ne mijote. Le prix à payer est le temps, une heure trente contre quarante-cinq minutes.",
+      "cook_minutes": 105,
+      "steps": [
+        { "op": "replace", "n": 5, "instruction": "Préchauffer le four à 150 °C. Couvrir la cocotte et l'enfourner à mi-hauteur une heure trente, sans y toucher. La dinde doit se défaire sous la fourchette et le jus avoir à peine réduit." },
+        { "op": "replace", "n": 6, "instruction": "Vingt minutes avant la fin, saisir les champignons dans le beurre restant à feu vif jusqu'à ce que leur eau se soit évaporée et qu'ils brillent, puis les glisser dans la cocotte et refermer." }
+      ]
+    },
+    {
+      "code": "SRC-011-D1",
+      "base": "SRC-011",
+      "family": "Croque-madame au four",
+      "variant_label": "Version integralement au four : monter les croques beurres, enfourner a 210 degres pendant quinze minutes, puis coiffer chacun d'un oeuf au plat cuit a part.",
+      "rationale": "Le four cuit les quatre croques d'un coup et sans les presser : la mie reste plus aérée qu'à la poêle, la croûte plus sèche. L'œuf ne peut plus profiter du beurre de la poêle, il se cuit à part.",
+      "cook_minutes": 18,
+      "steps": [
+        { "op": "replace", "n": 4, "instruction": "Préchauffer le four à 210 °C. Déposer les croques sur une plaque garnie de papier cuisson et les enfourner à mi-hauteur douze minutes, en les retournant à mi-parcours pour que les deux faces dorent également." },
+        { "op": "replace", "n": 5, "instruction": "Sortir la plaque, couvrir les croques de gruyère râpé et les remettre trois minutes sous le gril, juste le temps que la surface prenne une croûte dorée sans que le pain ne noircisse." },
+        { "op": "replace", "n": 6, "instruction": "Pendant ce temps, faire fondre le beurre restant dans une poêle à feu doux, y casser les quatre œufs, assaisonner de sel fin et de poivre noir moulu, puis couvrir une minute pour que le blanc se fige alors que le jaune reste liquide." }
+      ]
+    },
+    {
+      "code": "SRC-011-D2",
+      "base": "SRC-011",
+      "family": "Croque-madame à l'œuf encastré",
+      "variant_label": "Version a l'oeuf encastre : decouper un disque au centre de la tranche superieure avant cuisson, retourner le croque a mi-cuisson et casser l'oeuf directement dans l'ouverture.",
+      "rationale": "L'œuf cuit dans le pain au lieu de le coiffer : le blanc prend dans la mie et le jaune se retrouve enchâssé, protégé. Le croque se tient à la main, ce que la version classique ne permet pas.",
+      "steps": [
+        { "op": "replace", "n": 3, "instruction": "Recouvrir du reste d'emmental râpé. Découper au centre des quatre tranches restantes un disque de la taille d'un jaune à l'aide d'un verre, refermer avec elles face beurrée vers le haut et tasser d'un coup de paume pour que les couches adhèrent entre elles." },
+        { "op": "replace", "n": 5, "instruction": "Retourner les croques dans la poêle, ouverture vers le haut. Casser un œuf dans chaque ouverture, assaisonner de sel fin et de poivre noir moulu, couvrir et laisser prendre trois à quatre minutes à feu doux : le blanc doit être figé, le jaune encore coulant." },
+        { "op": "replace", "n": 6, "instruction": "Parsemer le gruyère râpé sur les bords restés libres et glisser une minute sous le gril, le temps qu'il fonde sans que le jaune ne se raffermisse." },
+        { "op": "replace", "n": 7, "instruction": "Servir aussitôt, tant que le jaune coule encore à l'entaille." }
+      ]
+    },
+    {
+      "code": "SRC-012-D1",
+      "base": "SRC-012",
+      "family": "Gratin de brocolis végétarien",
+      "variant_label": "Version végétarienne : retirer le jambon blanc cuit et compenser en portant le gruyère râpé à 120 g pour garder du corps à l'appareil.",
+      "rationale": "Sans jambon, l'appareil perd son sel et sa mâche. Le gruyère majoré rend l'un et l'autre : le gratin reste un plat, il ne devient pas un accompagnement.",
+      "operations": [
+        { "op": "remove", "form": "Jambon blanc cuit" },
+        { "op": "set", "form": "Gruyère râpé", "quantity": 120 }
+      ],
+      "steps": [
+        { "op": "replace", "n": 5, "instruction": "Battre les œufs à la fourchette dans un saladier. Y verser d'abord une louche de sauce tiédie en fouettant pour les tempérer, puis reverser le tout dans la casserole et mélanger. Incorporer la moitié du gruyère râpé ; goûter et rectifier l'assaisonnement à ce stade, la cuisson ne le corrigera plus." }
+      ]
+    },
+    {
+      "code": "SRC-012-D2",
+      "base": "SRC-012",
+      "family": "Gratin de brocolis allégé",
+      "variant_label": "Version allégée : supprimer la crème fraîche liquide entière et compléter avec 150 ml de lait entier supplémentaire, quitte à cuire la béchamel deux minutes de plus.",
+      "rationale": "Le lait n'a pas le gras de la crème, donc la béchamel épaissit moins vite et doit cuire plus longtemps. Le gratin y perd en onctuosité ce qu'il gagne en légèreté.",
+      "operations": [
+        { "op": "remove", "form": "Crème fraîche liquide entière" },
+        { "op": "set", "form": "Lait entier", "quantity": 950 }
+      ],
+      "steps": [
+        { "op": "replace", "n": 4, "instruction": "Porter la sauce à léger frémissement et la laisser épaissir sept à huit minutes sans cesser de remuer, en raclant bien le fond : privée de matière grasse, elle met plus de temps à napper. Assaisonner de sel, de poivre et de muscade, puis retirer du feu. La consistance doit napper la cuillère tout en restant coulante, car elle va encore se resserrer au four." }
+      ]
+    },
+    {
+      "code": "SRC-012-D3",
+      "base": "SRC-012",
+      "family": "Gratin de brocolis à croûte renforcée",
+      "variant_label": "Croûte renforcée : doubler la chapelure de blé et l'arroser d'un filet d'huile d'olive vierge extra avant d'enfourner.",
+      "rationale": "La chapelure seule sèche et brunit sans croustiller ; arrosée d'huile, elle frit en surface. C'est la différence entre une croûte dorée et une croûte cassante.",
+      "operations": [
+        { "op": "scale", "form": "Chapelure de blé", "factor": 2 },
+        { "op": "scale", "form": "Huile d'olive vierge extra", "factor": 2.5 }
+      ],
+      "steps": [
+        { "op": "replace", "n": 6, "instruction": "Préchauffer le four à 180 °C. Répartir le brocoli et sa garniture d'oignon en une couche régulière dans un plat à gratin, napper de l'appareil et lisser la surface pour que la sauce descende partout entre les bouquets. Parsemer de chapelure puis du gruyère restant, et arroser la surface d'un filet d'huile d'olive." }
+      ]
+    },
+    {
+      "code": "SRC-012-D4",
+      "base": "SRC-012",
+      "family": "Gratin de brocolis sans œuf",
+      "variant_label": "Sans œuf : omettre l'œuf cru et augmenter la farine de blé T55 à 50 g, ce qui donne un gratin plus coulant et moins compact.",
+      "rationale": "L'œuf prend à la chaleur et fige le gratin en une masse qui se découpe. Sans lui, seule la farine tient la sauce : le plat reste coulant, et se sert à la cuillère plutôt qu'à la spatule.",
+      "operations": [
+        { "op": "remove", "form": "Œuf cru" },
+        { "op": "set", "form": "Farine de blé T55", "quantity": 50 }
+      ],
+      "steps": [
+        { "op": "replace", "n": 5, "instruction": "Incorporer à la sauce tiédie le jambon détaillé en petits dés et la moitié du gruyère râpé ; goûter et rectifier l'assaisonnement à ce stade, la cuisson ne le corrigera plus." }
+      ]
+    }
+  ]
+}
