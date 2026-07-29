@@ -3096,6 +3096,36 @@
       "note": null
     },
     {
+      "canonical_name": "Cèpe cru",
+      "canonical_name_normalized": "cepe cru",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20160",
+      "source_name": "Champignon, cèpe, cru",
+      "state": {
+        "concept": "Cèpe cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 31.6,
+        "proteinG": 3.13,
+        "carbsG": 3.03,
+        "fatG": 0.43,
+        "fiberG": 1.93
+      },
+      "note": "Entrée crue directe, macros complètes, 31,6 kcal. Même avertissement que la morille si la recette emploie du séché : la quantité déclarée est celle du champignon réhydraté."
+    },
+    {
       "canonical_name": "Cerfeuil frais",
       "canonical_name_normalized": "cerfeuil frais",
       "category": "herbes_aromates",
@@ -3859,6 +3889,39 @@
         "fiberG": 4.9
       },
       "note": "Le cavolo nero est un chou frisé à feuilles sombres : même espèce et même état que la couve galega, même code."
+    },
+    {
+      "canonical_name": "Chou rouge cru",
+      "canonical_name_normalized": "chou rouge cru",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "bounded_from_ciqual": [
+        "fat_g"
+      ],
+      "source_record_key": "20014",
+      "source_name": "Chou rouge, cru",
+      "state": {
+        "concept": "Chou rouge cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 30,
+        "proteinG": 1.13,
+        "carbsG": 4.33,
+        "fatG": 0.5,
+        "fiberG": 2.8
+      },
+      "note": "Entrée crue directe, 30 kcal. Les lipides ne sont pas publiés et se ferment par Atwater ; sur un légume à 0,1 g de gras l'incertitude est sans portée. L'entrée à l'étouffée (20310) décrit un plat déjà cuit avec sa matière grasse."
     },
     {
       "canonical_name": "Chou vert frais",
@@ -6387,6 +6450,36 @@
       "note": "Recours à USDA : le Ciqual 2020 n'a aucune feuille de vigne nature — sa seule entrée, 25217 « Feuille de vigne farcie au riz ou dolmas », est le PLAT COMPOSÉ fini (riz, huile, farce), qui ferait compter la farce deux fois. USDA 169393 « Grape leaves, canned » est exactement la feuille en saumure égouttée (69 kcal), et non 168575 « Grape leaves, raw » (93 kcal) : l'état commande, la saumure lessive et hydrate. Conversion : 1 feuille égouttée = 4 g. Contrôle : 50 u dans les dolmades = 200 g → 138 kcal pour 8 parts, soit 17 kcal d'enveloppe par personne — cohérent avec un bocal de 250 g égouttés pour une soixantaine de feuilles."
     },
     {
+      "canonical_name": "Fève à écosser fraîche",
+      "canonical_name_normalized": "feve a ecosser fraiche",
+      "category": "legumineuses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20517",
+      "source_name": "Fève à écosser, fraîche",
+      "state": {
+        "concept": "Fève à écosser fraîche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 49.9,
+        "proteinG": 6.76,
+        "carbsG": 4.2,
+        "fatG": 0.67,
+        "fiberG": 5.85
+      },
+      "note": "L'entrée nomme exactement le produit du printemps que la variante niçoise du pan bagnat réclame : la fève écossée crue, pas la sèche (20518, 26,1 g de protéines contre 6,76 — un rapport de quatre) ni la bouillie. Énergie fermée par Atwater. Le poids déclaré est celui des fèves écossées : une gousse pèse environ le double de ce qu'elle rend."
+    },
+    {
       "canonical_name": "Filet de bœuf cru en lanières",
       "canonical_name_normalized": "filet de boeuf cru en lanieres",
       "category": "viandes",
@@ -6477,6 +6570,36 @@
       "note": "Proxy assumé. Le classeur n'a pas le flanchet. 6122 « Boeuf, plat de côtes, cru » vient de la même région de la carcasse — le ventre — et partage son gras persillé et son usage en cuisson longue : 287 kcal, 18,4 g de protéines, 23,7 g de lipides. Le flanchet réel est un peu plus maigre."
     },
     {
+      "canonical_name": "Foie gras de canard cru",
+      "canonical_name_normalized": "foie gras de canard cru",
+      "category": "produits_transformes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "8328",
+      "source_name": "Foie gras de canard, cru",
+      "state": {
+        "concept": "Foie gras de canard cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 600,
+        "proteinG": 5.94,
+        "carbsG": 1.41,
+        "fatG": 63.4,
+        "fiberG": 0
+      },
+      "note": "Le cru, puisque la variante le poêle ou le cuit elle-même : 600 kcal contre 535 pour l'entier cuit, l'écart venant de la graisse rendue à la cuisson. Retenir le cuit ferait compter deux fois la perte. Les entrées « bloc » (8323 à 8331) sont des préparations reconstituées, plus maigres et salées, qui ne se poêlent pas."
+    },
+    {
       "canonical_name": "Frisée fraîche",
       "canonical_name_normalized": "frisee fraiche",
       "category": "legumes",
@@ -6505,6 +6628,36 @@
         "fiberG": 2.45
       },
       "note": "Correspondance directe : « Salade ou chicorée frisée, crue », 17,8 kcal."
+    },
+    {
+      "canonical_name": "Fromage blanc à 3 pourcent",
+      "canonical_name_normalized": "fromage blanc a 3 pourcent",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "19646",
+      "source_name": "Fromage blanc nature, 3% MG environ",
+      "state": {
+        "concept": "Fromage blanc à 3 pourcent",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 77.5,
+        "proteinG": 7.86,
+        "carbsG": 3.46,
+        "fatG": 3.26,
+        "fiberG": 0.83
+      },
+      "note": "Le 3 % de matière grasse, celui du pot ordinaire, plutôt que l'aliment moyen (19501) qui mélange les natures et les fruités — un fromage blanc aux fruits porte son sucre, 5,68 g de glucides contre 3,46. Le 0 % (19644) et le gourmand à 8 % (19649) sont des choix, pas la référence. Macros complètes, 76,9 kcal."
     },
     {
       "canonical_name": "Fromage de chèvre bûche",
@@ -6723,6 +6876,39 @@
         "fiberG": 0
       },
       "note": null
+    },
+    {
+      "canonical_name": "Gésier de canard confit",
+      "canonical_name_normalized": "gesier de canard confit",
+      "category": "produits_transformes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "bounded_from_ciqual": [
+        "fiber_g"
+      ],
+      "source_record_key": "40701",
+      "source_name": "Gésier, canard, confit, appertisé",
+      "state": {
+        "concept": "Gésier de canard confit",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 149,
+        "proteinG": 32.4,
+        "carbsG": 0,
+        "fatG": 2.1,
+        "fiberG": 1
+      },
+      "note": "Entrée directe pour la salade landaise, macros complètes : 149 kcal, P 32,4 / G 0 / L 2,1. Le chiffre surprend — un confit à deux grammes de gras — mais il décrit le gésier ÉGOUTTÉ de sa graisse, ce que fait la recette en le poêlant. Les fibres ne sont pas publiées : une viande n'en porte pas, et leur absence n'empêche pas la pesée."
     },
     {
       "canonical_name": "Ghee",
@@ -7027,6 +7213,36 @@
       "note": "Proxy assumé : Ciqual 2020 ne contient aucune graine de moutarde (seulement 11013 « Moutarde » et 11021 « Moutarde à l'ancienne », condiments humides à 152 et 142 kcal, ~68 % d'eau — facteur 3 sur une graine sèche, erreur d'état rédhibitoire). Le lin, petite graine oléagineuse (436,6 kcal ; 23,9 g prot ; 36,6 g lip), approxime de près la graine de moutarde réelle (~500 kcal ; 26 g prot ; 36 g lip) : les lipides coïncident, l'énergie est sous-estimée d'environ 14 %."
     },
     {
+      "canonical_name": "Graisse d'oie",
+      "canonical_name_normalized": "graisse d oie",
+      "category": "matieres_grasses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "16560",
+      "source_name": "Graisse d'oie",
+      "state": {
+        "concept": "Graisse d'oie",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 898,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 99.8,
+        "fiberG": 0
+      },
+      "note": "Entrée directe, 898 kcal pour 99,8 g de lipides — c'est un corps gras pur. Les pommes sarladaises la réclament et rien ne la remplace : c'est elle qui fait le plat, et l'huile donnerait des pommes de terre sautées. La graisse de canard, tout aussi employée, n'a pas d'entrée au classeur ; sa composition ne s'en distingue pas de façon mesurable, mais on ne la déclarera pas sous ce nom sans le dire."
+    },
+    {
       "canonical_name": "Gruyère râpé",
       "canonical_name_normalized": "gruyere rape",
       "category": "produits_laitiers",
@@ -7181,6 +7397,36 @@
         "fiberG": 15.2
       },
       "note": "Proxy assumé : ni cornille, ni niébé, ni dolique au classeur (0 occurrence). Ce qui est approximé : une légumineuse sèche à réhydrater, ~23 g de protéines et ~46 g de glucides pour 100 g de graine sèche. 20525 (283,9 kcal, 22,5 g de protéines) colle mieux que 20501 « Haricot blanc, sec » proposé en candidat (268 kcal, 19,1 g de protéines), en retrait de 19 % sur les protéines. L'état sec est respecté : les autres candidats (haricot vert, beurre, plat, de Lima, tous « crus ») sont des gousses fraîches à ~26-31 kcal, soit dix fois moins — contresens majeur si retenus."
+    },
+    {
+      "canonical_name": "Haricot flageolet appertisé, égoutté",
+      "canonical_name_normalized": "haricot flageolet appertise egoutte",
+      "category": "legumineuses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20508",
+      "source_name": "Haricot flageolet, appertisé, égouttés",
+      "state": {
+        "concept": "Haricot flageolet appertisé",
+        "rest": "égoutté",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 80.3,
+        "proteinG": 6.1,
+        "carbsG": 12.2,
+        "fatG": 0.79,
+        "fiberG": 6.3
+      },
+      "note": "C'est la conserve égouttée que la variante du gigot réclame, et l'égoutté est le bon état : le poids déclaré par une recette est celui du haricot sorti de la boîte, pas de la boîte entière. L'écart avec le sec est celui de l'eau reprise — 6,1 g de protéines contre 19,1 pour le flageolet vert sec, un rapport de trois. Énergie fermée par Atwater."
     },
     {
       "canonical_name": "Haricot flageolet sec",
@@ -7661,6 +7907,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
@@ -8119,6 +8366,36 @@
       "note": null
     },
     {
+      "canonical_name": "Jambonneau cuit",
+      "canonical_name_normalized": "jambonneau cuit",
+      "category": "viandes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "28960",
+      "source_name": "Jambonneau, cuit",
+      "state": {
+        "concept": "Jambonneau cuit",
+        "rest": "",
+        "cooking_state": "cooked",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 162,
+        "proteinG": 23.2,
+        "carbsG": 0.4,
+        "fatG": 7.52,
+        "fiberG": 0
+      },
+      "note": "Le cuit, puisque la variante l'effiloche après une heure de pochage. L'entrée crue (28474, jambonneau arrière découenné dégraissé désossé) décrit un morceau paré que le charcutier ne vend pas ainsi. Macros complètes : 162 kcal, P 23,2 / G 0,4 / L 7,52. Le poids déclaré est celui de la chair effilochée, pas celui du jambonneau entier avec son os — un jambonneau de 1 kg en donne environ 600 g."
+    },
+    {
       "canonical_name": "Jarret de bœuf cru",
       "canonical_name_normalized": "jarret de boeuf cru",
       "category": "viandes",
@@ -8369,6 +8646,38 @@
         "fiberG": 0.4
       },
       "note": "« Frais » désigne le jus pressé, donc la forme maison (9,1 kcal), pas 2031 « pur jus » qui est le jus conditionné."
+    },
+    {
+      "canonical_name": "Jus de tomate",
+      "canonical_name_normalized": "jus de tomate",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "2053",
+      "source_name": "Jus de tomate, pur jus (aliment moyen)",
+      "state": {
+        "concept": "Jus de tomate",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": "liquid",
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.03
+      },
+      "per100g": {
+        "kcal": 21.7,
+        "proteinG": 0.88,
+        "carbsG": 3.72,
+        "fatG": 0.14,
+        "fiberG": 0.4
+      },
+      "note": "L'aliment moyen plutôt qu'une des deux entrées salées (2026 à 3 g/L, 2032 à 6 g/L) : le sel d'un jus du commerce varie d'une marque à l'autre, et la recette assaisonne ensuite. Macros complètes, 21,7 kcal. Densité 1,03, celle d'un jus de légume peu sucré."
     },
     {
       "canonical_name": "Kecap manis",
@@ -8957,6 +9266,36 @@
       "note": "Même réduction que le chouriço. Comptée en unités : un maillon de linguiça pèse de 100 à 150 g, on retient 120 g."
     },
     {
+      "canonical_name": "Magret de canard fumé",
+      "canonical_name_normalized": "magret de canard fume",
+      "category": "volailles",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "8111",
+      "source_name": "Canard, magret fumé",
+      "state": {
+        "concept": "Magret de canard fumé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 364,
+        "proteinG": 21.9,
+        "carbsG": 0.55,
+        "fatG": 30.5,
+        "fiberG": 0
+      },
+      "note": "Le fumé, entrée de charcuterie, et non le magret cru (36206) ni le grillé (36205) : la salade landaise le sert en tranches froides, sans le cuire. Macros complètes, 364 kcal, P 21,9 / L 30,5 — le gras du magret fumé est sous la peau et la recette la garde."
+    },
+    {
       "canonical_name": "Marsala",
       "canonical_name_normalized": "marsala",
       "category": "boissons",
@@ -9261,6 +9600,42 @@
       "note": null
     },
     {
+      "canonical_name": "Mimolette demi-vieille",
+      "canonical_name_normalized": "mimolette demi vieille",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "derived": {
+        "field": "carbohydrate_g",
+        "value": 0.675,
+        "method": "atwater_closure",
+        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g − 2·fiber_g) / 4"
+      },
+      "source_record_key": "12737",
+      "source_name": "Mimolette demi-vieille",
+      "state": {
+        "concept": "Mimolette demi-vieille",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 368,
+        "proteinG": 30.8,
+        "carbsG": 0.675,
+        "fatG": 26.9,
+        "fiberG": 0
+      },
+      "note": "La demi-vieille, celle qu'on râpe : la jeune (12735) est trop souple pour la râpe et la vieille (12738) trop sèche pour fondre. L'affinage fait l'écart — 365 kcal contre 331 pour la jeune, l'eau partie et le gras concentré. Les glucides ne sont pas publiés ; un fromage affiné n'en garde pas de mesurable, et l'énergie publiée fait foi."
+    },
+    {
       "canonical_name": "Mirin",
       "canonical_name_normalized": "mirin",
       "category": "boissons",
@@ -9321,6 +9696,36 @@
         "fiberG": 1.42
       },
       "note": "Boudin noir à cuire : même concept culinaire — sang de porc, gras et aromates en boyau. La morcilla asturienne y ajoute oignon et paprika fumé, ce qui déplace l'arôme, pas la composition."
+    },
+    {
+      "canonical_name": "Morille crue",
+      "canonical_name_normalized": "morille crue",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20105",
+      "source_name": "Champignon, morille, crue",
+      "state": {
+        "concept": "Morille crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 24.5,
+        "proteinG": 3.16,
+        "carbsG": 0.1,
+        "fatG": 0.54,
+        "fiberG": 3.35
+      },
+      "note": "Le classeur ne porte que la morille FRAÎCHE, alors que les variantes qui la réclament emploient la séchée réhydratée. Ce n'est pas un obstacle mais une obligation de rédaction : la quantité déclarée est celle de la morille réhydratée, et l'instruction d'achat porte sur le poids sec — une morille séchée reprend huit à dix fois son poids en eau, si bien que 20 g secs donnent environ 180 g réhydratés. Déclarer le poids sec sur cette entrée surestimerait l'apport d'un facteur neuf."
     },
     {
       "canonical_name": "Morue salée sèche",
@@ -9510,6 +9915,36 @@
         "fiberG": 1.9
       },
       "note": null
+    },
+    {
+      "canonical_name": "Noisette grillée",
+      "canonical_name_normalized": "noisette grillee",
+      "category": "legumineuses",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "15033",
+      "source_name": "Noisette grillée",
+      "state": {
+        "concept": "Noisette grillée",
+        "rest": "",
+        "cooking_state": "cooked",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 672.4,
+        "proteinG": 17,
+        "carbsG": 5.21,
+        "fatG": 66,
+        "fiberG": 9.4
+      },
+      "note": "La grillée plutôt que la crue : la variante des lentilles tièdes torréfie à sec, et c'est la torréfaction qui fait tout son intérêt — elle sèche le fruit et développe le grillé que la noix n'a pas. L'écart n'est pas cosmétique : 66 g de lipides contre 56,9 pour la crue, l'eau partie. Le classeur ne publie pas l'énergie de cette entrée ; elle se referme par Atwater sur ses quatre macros mesurées, fibres comprises. L'entrée salée (15050) est écartée : la recette sale son assaisonnement elle-même."
     },
     {
       "canonical_name": "Noix",
@@ -10934,6 +11369,36 @@
       "note": "Proxy pâtisserie composite ; une fiche pâte sablée dédiée reste à sourcer."
     },
     {
+      "canonical_name": "Pâtes fraîches aux œufs crues",
+      "canonical_name_normalized": "pates fraiches aux oeufs crues",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9815",
+      "source_name": "Pâtes fraîches, aux oeufs, crues",
+      "state": {
+        "concept": "Pâtes fraîches aux œufs crues",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 279,
+        "proteinG": 11.1,
+        "carbsG": 53.8,
+        "fatG": 1.87,
+        "fiberG": 3.17
+      },
+      "note": "Les crues, puisque la recette cuit ses pâtes. Macros complètes, 283 kcal, P 11,1 / G 53,8. Elles se distinguent nettement des pâtes sèches (350 kcal, 12,5 g de protéines) par leur eau et leur œuf, et le poids déclaré n'est pas interchangeable : 100 g de fraîches ne remplacent pas 100 g de sèches. Les entrées « pâtes fraîches farcies » sont des plats composés."
+    },
+    {
       "canonical_name": "Pâtes sèches courtes",
       "canonical_name_normalized": "pates seches courtes",
       "category": "cereales_feculents",
@@ -11906,6 +12371,36 @@
         "fiberG": 2.47
       },
       "note": "La poire asiatique (nashi, Pyrus pyrifolia) reste une poire ; ses valeurs de référence (~42 kcal / 0,5 P / 10,7 G / 0,2 L) sont quasi identiques à 13107 (43,7 / 0,3 / 10,4 / 0,1). Elle est le plus souvent pelée à l'usage, d'où la pulpe plutôt que 13037 « pulpe et peau ». 2054 « Nectar de poire » est une boisson sucrée, à écarter."
+    },
+    {
+      "canonical_name": "Poire fraîche",
+      "canonical_name_normalized": "poire fraiche",
+      "category": "fruits",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "13107",
+      "source_name": "Poire, pulpe, crue",
+      "state": {
+        "concept": "Poire fraîche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 43.7,
+        "proteinG": 0.3,
+        "carbsG": 10.4,
+        "fatG": 0.1,
+        "fiberG": 2.47
+      },
+      "note": "La pulpe sans peau, parce que la variante taille des lamelles pour une salade et qu'on pèle rarement une poire à salade — l'entrée avec peau (13037) porterait plus de fibres. Confiance B pour deux raisons : le classeur ne publie pas l'énergie de cette entrée, qui se ferme par Atwater à environ 49 kcal, et les variétés nommées (Conférence 53,1 ; Williams 54,1) montrent une dispersion de dix pour cent que l'entrée générique lisse. L'écart est sans portée dans une salade où la poire apporte quelques lamelles."
     },
     {
       "canonical_name": "Poireau cru",
@@ -12884,6 +13379,36 @@
       "note": "Proxy assumé, même raisonnement que le gochugaru : flocons de piment d'Alep, séchés et huilés, sur la seule entrée de piment séché du classeur."
     },
     {
+      "canonical_name": "Quenelle nature crue",
+      "canonical_name_normalized": "quenelle nature crue",
+      "category": "produits_transformes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "8937",
+      "source_name": "Quenelle nature, crue",
+      "state": {
+        "concept": "Quenelle nature crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 217,
+        "proteinG": 7.68,
+        "carbsG": 14.8,
+        "fatG": 13.7,
+        "fiberG": 2.15
+      },
+      "note": "La nature crue, et non la quenelle de volaille ou de poisson : la version alsacienne des bouchées à la reine ajoute des quenelles en tronçons à une garniture qui porte déjà ses viandes. Les entrées « en sauce » (8903, 8912, 8932) sont des plats et non des ingrédients — leur énergie compte une sauce que la recette fait elle-même. Macros complètes : 217 kcal, P 7,68 / G 14,8 / L 13,7."
+    },
+    {
       "canonical_name": "Quesillo Oaxaca",
       "canonical_name_normalized": "quesillo oaxaca",
       "category": null,
@@ -13247,6 +13772,36 @@
         "fiberG": 1.05
       },
       "note": "Même grain, fracturé au décorticage. La brisure change le temps de cuisson et la texture, pas la composition."
+    },
+    {
+      "canonical_name": "Riz complet cru",
+      "canonical_name_normalized": "riz complet cru",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9102",
+      "source_name": "Riz complet, cru",
+      "state": {
+        "concept": "Riz complet cru",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 349,
+        "proteinG": 7.38,
+        "carbsG": 71.4,
+        "fatG": 2.8,
+        "fiberG": 5
+      },
+      "note": "Le cru, puisque la recette cuit son riz. Macros complètes : 350 kcal, P 7,38 / G 71,4 / L 2,8 / F 5. Le complet garde son son, d'où cinq grammes de fibres contre moins d'un pour le riz blanc, et une cuisson plus longue que la variante doit annoncer."
     },
     {
       "canonical_name": "Riz cru",
@@ -15046,6 +15601,39 @@
       "note": "« Tofu soyeux, préemballé », 52,5 kcal, 5 g de protéines. Le soyeux ferme est la version la moins hydratée de la même famille — trois fois moins dense que le tofu ferme classique (20904, 143 kcal), qu'il ne faut pas confondre avec lui."
     },
     {
+      "canonical_name": "Tomate cerise fraîche",
+      "canonical_name_normalized": "tomate cerise fraiche",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "bounded_from_ciqual": [
+        "fat_g"
+      ],
+      "source_record_key": "20172",
+      "source_name": "Tomate cerise, crue",
+      "state": {
+        "concept": "Tomate cerise fraîche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 33.7,
+        "proteinG": 1.31,
+        "carbsG": 5.62,
+        "fatG": 0.5,
+        "fiberG": 1.2
+      },
+      "note": "Entrée directe, 33,7 kcal. Elle se distingue de la tomate ordinaire par un peu plus de sucre — 5,62 g de glucides contre 2,9 — ce qui compte dans une salade où elle est crue et non réduite. Lipides fermés par Atwater."
+    },
+    {
       "canonical_name": "Tomate concassée en conserve",
       "canonical_name_normalized": "tomate concassee en conserve",
       "category": "legumes",
@@ -15360,6 +15948,36 @@
       "note": "Le classeur ne publie la truite crue que pour la truite de mer ; l'arc-en-ciel d'élevage, celle qu'on achète pour une truite aux amandes, n'existe qu'en versions cuites (143 kcal rôtie, 117 vapeur). On retient donc le cru, puisque la recette cuit elle-même, au prix d'un proxy d'espèce assumé : 111 kcal, P 19,6 / L 3,63 pour la truite de mer contre un ordre de grandeur voisin pour l'élevage. Confiance B, l'écart portant sur l'espèce et non sur l'état. Le poids déclaré est celui des filets ou de la chair, pas celui du poisson entier vidé — une truite de 250 g en donne environ 150."
     },
     {
+      "canonical_name": "Truite fumée",
+      "canonical_name_normalized": "truite fumee",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "27029",
+      "source_name": "Truite d'élevage, fumée",
+      "state": {
+        "concept": "Truite fumée",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 180,
+        "proteinG": 23.4,
+        "carbsG": 0.69,
+        "fatG": 9.27,
+        "fiberG": 0
+      },
+      "note": "Entrée directe, macros complètes, 180 kcal, P 23,4 / L 9,27. Le classeur la classe en poissons cuits, ce qui est correct pour un fumage à chaud ; elle se mange telle quelle et la recette ne la cuit pas. À ne pas confondre avec la truite crue (26092, truite de mer), retenue au lot14 pour les recettes qui cuisent le poisson."
+    },
+    {
       "canonical_name": "Vanille liquide",
       "canonical_name_normalized": "vanille liquide",
       "category": "epices",
@@ -15420,6 +16038,36 @@
         "fiberG": 3
       },
       "note": "Même code que les autres pâtes sèches de blé. Le vermicelle fin est la découpe la plus mince de la même semoule ; les nouilles de riz, elles, ont leur propre canonique sur 9900."
+    },
+    {
+      "canonical_name": "Vermouth sec",
+      "canonical_name_normalized": "vermouth sec",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "1007",
+      "source_name": "Apéritif à base de vin ou vermouth",
+      "state": {
+        "concept": "Vermouth sec",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 45.4,
+        "proteinG": 0.054,
+        "carbsG": 11.3,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Proxy assumé, et il faut le dire clairement : l'entrée est un aliment moyen d'apéritifs à base de vin, qui mélange les doux et les secs — 11,3 g de glucides, quand un vermouth SEC en porte trois à quatre. Employée pour déglacer quelques centilitres, l'erreur pèse moins de trois kilocalories par part et n'a pas de portée. Elle en aurait dans une recette qui en verserait un verre : ce serait alors une raison de refuser la forme plutôt que de l'employer. Le classeur ne porte ni Noilly, ni porto, ni madère, ni aucun vin aromatisé distinct."
     },
     {
       "canonical_name": "Vin blanc sec",
@@ -15915,6 +16563,39 @@
         "fiberG": 0
       },
       "note": "Le classeur n'a ni vinaigre de riz ni vinaigre noir. L'entrée générique « Vinaigre » (22,6 kcal) est le parent exact ; le vinaigre de Chinkiang garde un peu plus de sucres résiduels, mais 11091 « Vinaigre balsamique » (125 kcal, 25,8 g de glucides) surestimerait d'un facteur cinq."
+    },
+    {
+      "canonical_name": "Whisky",
+      "canonical_name_normalized": "whisky",
+      "category": "boissons",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "1005",
+      "source_name": "Whisky",
+      "state": {
+        "concept": "Whisky",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.94
+      },
+      "per100g": {
+        "kcal": 252,
+        "proteinG": 0,
+        "carbsG": 0.096,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "note": "Entrée directe, macros complètes, 252 kcal — l'énergie d'une eau-de-vie vient presque entièrement de l'éthanol et ne se referme pas sur les macronutriments, c'est la valeur du classeur qui fait foi. Densité 0,94 : un spiritueux à 40 % vol titre un peu plus léger que l'eau, comme le calvados du lot16. Sans cette conversion, une variante qui déglace au whisky en millilitres ne pèserait rien."
     },
     {
       "canonical_name": "Yaourt grec",

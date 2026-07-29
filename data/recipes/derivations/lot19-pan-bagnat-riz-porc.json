@@ -1,0 +1,133 @@
+{
+  "lot": "lot19 — pan bagnat de printemps, riz complet et chou rouge",
+  "note": "Trois bases, dix variantes annoncées, six déjà dérivées avant ce lot : il ne restait qu'une phrase à traiter par base, plus une à écarter. Les trois retenues attendaient toutes une forme du dernier arbitrage, et chacune n'en attendait qu'une ou deux — « Fève à écosser fraîche » et « Oignon nouveau frais » pour le pan bagnat niçois de saison, « Riz complet cru » pour la salade de riz, « Chou rouge cru » pour le sauté de porc. « Oignon nouveau frais » n'était pas dans la liste d'arbitrage mais existait déjà au vocabulaire, sous ce nom exactement : l'étiquette de SRC-017 dit « oignon nouveau cru », qui est absent, et c'est la forme fraîche du vocabulaire qui la porte, sans changement de produit. Deux dérivées ont demandé une compensation que l'étiquette ne mentionnait pas et que le plat exigeait. Sur SRC-024, la phrase impose d'allonger la cuisson « de cinq à sept minutes » seulement, ce qu'un riz complet cru ne permet pas : il a fallu un trempage d'une nuit — une heure n'aurait fait tomber la casserole qu'à une trentaine de minutes —, puis jeter le complet sept minutes avant le blanc, de sorte que la casserole totalise bien vingt-deux minutes sans que le riz blanc, lui, dépasse ses quinze — cuire les deux ensemble vingt-deux minutes aurait tenu la lettre de l'étiquette en défaisant la moitié des grains. Sur SRC-026, quatre cents grammes de chou rendent plus d'eau que les cent dix millilitres retirés au mouillement, qui passe de 330 à 220 ml : on ne descend pas plus bas parce qu'il faut de quoi déglacer et couvrir le fond avant que le chou s'affaisse, et c'est la réduction à découvert qui emporte le surplus — sans ces deux précautions la sauce finale n'aurait jamais nappé et le quatrième garde-fou d'identité du plat — « pas un bain » — serait tombé. Le chou rouge a aussi obligé à dire ce que l'étiquette laisse entendre de trop : il colore le jus, mais d'un violet qui tourne au brun, puisque rien dans la liste n'apporte l'acidité qui fixerait son pigment sur une heure et demie de cocotte ; aucun vinaigre n'a été ajouté pour l'éviter, la phrase n'en demandait pas. Une seule variante écartée, la dernière de SRC-024, qui ne fait que servir la même salade tiède à côté d'un poisson. Aucun homonyme, aucun retrait d'ingrédient sur tout le lot : les trois dérivations ajoutent sans ôter, et le contrôle des étapes orphelines n'avait rien à mordre.",
+  "derivations": [
+    {
+      "code": "SRC-017-D4",
+      "base": "SRC-017",
+      "family": "Pan bagnat niçois de printemps",
+      "variant_label": "Ajouter au printemps quelques lamelles d'oignon nouveau cru et des févettes écossées, comme dans la version niçoise de saison.",
+      "rationale": "Deux crudités de saison entrent sans que rien ne sorte : cent vingt grammes de fèves écossées apportent une mâche ferme et une amertume verte que le pan bagnat n'a pas autrement, l'oignon nouveau une pointe piquante à la place de l'ail de la version frottée. Le coût est d'abord une saison, car passé le début de l'été la fève devient farineuse sous sa robe et la variante n'a plus d'objet, puis un quart d'heure de travail pour l'écossage : il faut quatre cents grammes de gousses pour cent vingt grammes de grains. Le sandwich s'alourdit aussi de cent quatre-vingts grammes de garniture sur le même pain, ce qui demande de presser plus fermement et rend la découpe moins nette. Enfin l'heure de repos, qui profite à la tomate et à la mie, n'améliore ni la fève ni l'oignon crus, dont le mordant s'émousse à mesure.",
+      "prep_minutes": 35,
+      "operations": [
+        {
+          "op": "add",
+          "form": "Fève à écosser fraîche",
+          "quantity": 120,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "op": "add",
+          "form": "Oignon nouveau frais",
+          "quantity": 60,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 2,
+          "instruction": "Profiter du quart d'heure de macération pour écosser les fèves : compter environ quatre cents grammes de gousses pour obtenir les cent vingt grammes de grains utiles. Goûter un grain cru — sur une févette de printemps, la fine robe qui l'enveloppe est encore tendre et se mange telle quelle ; si elle accroche déjà sous la dent, l'entamer de l'ongle au sommet du grain et la faire glisser, sans passer par l'eau bouillante qui cuirait ce qui doit rester cru. Émincer l'oignon nouveau en lamelles très fines, le vert de la tige compris, puis le laisser tremper cinq minutes à l'eau froide avant de l'égoutter et de l'éponger : ainsi rincé de son jus le plus agressif, il ne prendra pas le dessus pendant l'heure de repos."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Étaler la tomate râpée égouttée sur la base, répartir dessus les rondelles d'œuf dur, puis semer les fèves écossées et les lamelles d'oignon nouveau en les glissant entre les rondelles plutôt qu'en surface : posées sur le dessus, elles roulent hors du pain dès la première pression. Parsemer enfin d'olives noires dénoyautées et grossièrement concassées."
+        }
+      ]
+    },
+    {
+      "code": "SRC-024-D2",
+      "base": "SRC-024",
+      "family": "Salade de riz niçoise au riz complet",
+      "variant_label": "Remplacer un tiers du riz blanc par du riz complet pour un grain plus mordant, en allongeant la cuisson de cinq à sept minutes.",
+      "rationale": "Un tiers du riz blanc passe au complet, quarante-cinq grammes sur cent trente : le grain garde son son, donc du mordant et un fond de noisette que le riz blanc n'a pas. Le prix est une organisation en deux temps — un trempage d'une nuit à lancer la veille, puis le riz complet jeté seul sept minutes avant le blanc, de sorte que la casserole totalise vingt-deux minutes sans que le blanc dépasse les quinze qui lui conviennent. La texture n'est plus homogène et ne cherche pas à l'être : deux grains cohabitent, l'un tendre, l'autre ferme sous la dent. Il faut aussi porter le repos au froid à une heure, le son freinant l'absorption de l'assaisonnement à la tomate.",
+      "cook_minutes": 22,
+      "operations": [
+        {
+          "op": "set",
+          "form": "Riz cru",
+          "quantity": 85,
+          "role": "féculent",
+          "optional": false
+        },
+        {
+          "op": "add",
+          "form": "Riz complet cru",
+          "quantity": 45,
+          "unit": "g",
+          "role": "féculent",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Rincer le riz complet cru à l'eau froide et le laisser tremper une nuit entière, ou quatre heures au minimum : le son qui enveloppe le grain freine l'eau, et sans trempage il demanderait trois quarts d'heure de casserole là où le riz blanc en réclame quinze minutes. Une heure ne lui ferait gagner qu'une dizaine de minutes ; pour qu'il cède en vingt-deux, il doit entrer dans la casserole déjà gorgé d'eau. L'égoutter, porter un grand volume d'eau salée à ébullition et y jeter en pluie le riz complet seul. Le laisser sept minutes à découvert et à frémissement, puis ajouter le riz blanc en pluie et poursuivre quinze minutes : le complet cuit ainsi vingt-deux minutes en tout et le blanc ses quinze, chacun cédant sous la dent en gardant un cœur ferme, au lieu que l'un se défasse pendant que l'autre reste dur."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Verser les deux riz ensemble dans une passoire, les rincer sous un filet d'eau froide en remuant à la main jusqu'à ce qu'ils ne soient plus tièdes du tout, puis les laisser s'égoutter un bon quart d'heure : le son du grain complet retient l'eau plus longtemps que l'amidon nu du blanc, et un riz mal égoutté délaye l'assaisonnement à la tomate."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Goûter, rectifier en sel et en poivre, couvrir puis réserver une heure au réfrigérateur plutôt qu'une demi-heure : protégé par son son, le grain complet boit l'assaisonnement à la tomate bien plus lentement que le blanc, et une salade goûtée trop tôt paraît sèche sur un tiers de ses grains. Remuer une dernière fois juste avant de servir bien frais."
+        }
+      ]
+    },
+    {
+      "code": "SRC-026-D3",
+      "base": "SRC-026",
+      "family": "Sauté de porc aux pruneaux et chou rouge",
+      "variant_label": "Version au chou rouge : ajouter du chou rouge cru émincé au moment du mouillement, il cuit avec la viande et colore le jus.",
+      "rationale": "Quatre cents grammes de chou rouge émincé entrent au mouillement et cuisent l'heure et demie restante avec la viande : ils fondent à l'étouffée, se chargent du gras des lardons et donnent enfin un légume de plein droit au plat, là où la carotte facultative ne servait que de garniture aromatique avec l'oignon. Le mouillement descend de trois cent trente à deux cent vingt millilitres, mais le tiers retiré ne compense qu'une partie de l'eau que le chou rendra : on n'en ôte pas plus pour garder de quoi déglacer et couvrir le fond le temps qu'il s'affaisse, et le surplus s'en va à découvert en fin de cuisson, sans quoi la sauce ne napperait pas. Le chou coûte cinq minutes de taille et une part du premier plan : son amertume légère et son sucré terreux s'installent entre le porc et le pruneau, dont le contraste se lit moins net. Sa couleur, enfin, ne tient pas — sans acidité pour la fixer, le pourpre du cru tourne au violet brun en une heure de cocotte, et c'est de cette teinte-là qu'il colore le jus.",
+      "prep_minutes": 25,
+      "operations": [
+        {
+          "op": "add",
+          "form": "Chou rouge cru",
+          "quantity": 400,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "op": "set",
+          "form": "Eau",
+          "quantity": 220,
+          "role": "mouillement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Détailler l'épaule de porc en cubes réguliers d'environ quatre centimètres, assez gros pour rester moelleux après une cuisson longue. Peler et émincer finement l'oignon jaune, tailler la carotte en petits dés. Fendre le chou rouge en quartiers, retirer le trognon central qui ne s'attendrit jamais, puis émincer les feuilles en lanières de la largeur d'un doigt : taillées plus fin, elles se défont en marmelade au bout d'une heure de cocotte."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Jeter le chou rouge émincé dans la cocotte et le retourner deux minutes dans le gras rendu par les lardons, le temps qu'il commence à s'affaisser et qu'il prenne le goût du fond. Verser l'eau et gratter aussitôt à la cuillère en bois pour décoller les sucs caramélisés : le mouillement est ici plus court d'un tiers, parce que quatre cents grammes de chou lâchent bien plus que cela pendant la cuisson et qu'un jus trop abondant ne se rattrape pas. Ne pas en retirer davantage pour autant : il faut de quoi déglacer et de quoi couvrir le fond le temps que le chou s'affaisse et prenne le relais. Poivrer, porter à petits bouillons puis couvrir et baisser au minimum."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Laisser mijoter environ une heure à frémissement à peine perceptible, en remuant de loin en loin pour faire descendre dans le jus le chou resté en surface. Il perd les deux tiers de son volume et lâche son pigment, qui teinte la sauce et jusqu'aux cubes de porc. Piquer la viande : elle doit céder sans résistance sous la pointe du couteau."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Retirer le couvercle pour les dix dernières minutes et laisser le liquide réduire jusqu'à une sauce brillante qui nappe la cuillère ; le chou ayant rendu davantage d'eau que les cent dix millilitres retirés au mouillement, prolonger de quelques minutes à feu plus vif si le jus reste fluide. Mélanger avec précaution et rectifier le poivre avant de servir. La couleur, à ce stade, a viré : faute d'acidité pour fixer son pigment, le chou longuement cuit abandonne le pourpre du cru pour un violet sombre qui tire sur le brun, et la sauce le suit."
+        }
+      ]
+    }
+  ]
+}

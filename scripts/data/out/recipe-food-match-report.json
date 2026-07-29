@@ -1,14 +1,14 @@
 {
   "generated_from": "data/recipes/corpus-v3.json",
   "nutrition_source": "Ciqual 2020",
-  "forms_total": 736,
+  "forms_total": 757,
   "summary": {
-    "review_required": 221,
-    "curated": 468,
+    "review_required": 220,
+    "curated": 490,
     "exact_label": 47
   },
-  "recipes_total": 551,
-  "recipes_eligible_for_publication": 361,
+  "recipes_total": 577,
+  "recipes_eligible_for_publication": 387,
   "recipes_blocked_only_by_proxy": 68,
   "v1_enriched_eligible_for_publication": 57,
   "unresolved_required": [
@@ -201,7 +201,6 @@
     "Tofu ferme frit",
     "Tofu puff frit",
     "Tofu soyeux sundubu",
-    "Tomate cerise fraîche",
     "Tortilla de maïs grillée",
     "Tortilla de maïs rassise",
     "Tostada de maïs",
@@ -3007,7 +3006,6 @@
       "family": "Som tam",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Tomate cerise fraîche",
         "Crevette séchée"
       ],
       "low_confidence_required_forms": [
@@ -5929,6 +5927,240 @@
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-003-D2",
+      "family": "Gigot d'agneau aux flageolets en conserve",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-009-D4",
+      "family": "Bouchées à la reine alsaciennes aux quenelles",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-014-D5",
+      "family": "Lentilles tièdes au jambonneau effiloché",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-014-D6",
+      "family": "Lentilles tièdes aux noisettes torréfiées",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-017-D4",
+      "family": "Pan bagnat niçois de printemps",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-024-D2",
+      "family": "Salade de riz niçoise au riz complet",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-026-D3",
+      "family": "Sauté de porc aux pruneaux et chou rouge",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-034-D2",
+      "family": "Calamars à l'armoricaine au whisky",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-034-D3",
+      "family": "Calamars à la crème et au safran",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-039-D3",
+      "family": "Coquilles Saint-Jacques aux morilles",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-039-D4",
+      "family": "Coquilles Saint-Jacques scellées au four",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-039-D5",
+      "family": "Poêlée de Saint-Jacques au whisky",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-040-D4",
+      "family": "Fenouil braisé à la provençale",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-049-D2",
+      "family": "Pommes de terre sarladaises aux cèpes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-049-D3",
+      "family": "Pommes de terre sarladaises à la graisse d'oie",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-050-D3",
+      "family": "Potée auvergnate au jambonneau",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-050-D4",
+      "family": "Potée auvergnate en deux services",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-053-D4",
+      "family": "Salade de chèvre chaud aux tomates cerises",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-053-D5",
+      "family": "Salade de chèvre chaud à la poire",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-054-D3",
+      "family": "Salade landaise aux gésiers et au magret fumé",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-054-D4",
+      "family": "Salade landaise au foie gras",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-054-D5",
+      "family": "Salade landaise à la truite fumée",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-055-D1",
+      "family": "Saumon à l'oseille au vermouth",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-055-D2",
+      "family": "Saumon à l'oseille sur pâtes fraîches",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-056-D4",
+      "family": "Soufflé au fromage et à la mimolette",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-056-D5",
+      "family": "Soufflé express au fromage blanc",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
     }
   ],
   "forms": [
@@ -6087,7 +6319,7 @@
       "form": "Ail cru",
       "normalized": "ail cru",
       "required": true,
-      "recipe_count": 271,
+      "recipe_count": 282,
       "units": [
         "g"
       ],
@@ -8427,7 +8659,7 @@
       "form": "Beurre doux",
       "normalized": "beurre doux",
       "required": true,
-      "recipe_count": 148,
+      "recipe_count": 157,
       "units": [
         "g"
       ],
@@ -10298,7 +10530,7 @@
       "form": "Bouillon de volaille",
       "normalized": "bouillon de volaille",
       "required": true,
-      "recipe_count": 40,
+      "recipe_count": 41,
       "units": [
         "g",
         "ml"
@@ -10904,7 +11136,7 @@
       "form": "Calamar cru nettoyé",
       "normalized": "calamar cru nettoye",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -11400,7 +11632,7 @@
       "form": "Carotte crue",
       "normalized": "carotte crue",
       "required": true,
-      "recipe_count": 107,
+      "recipe_count": 113,
       "units": [
         "g"
       ],
@@ -11672,6 +11904,61 @@
       ]
     },
     {
+      "form": "Cèpe cru",
+      "normalized": "cepe cru",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20160",
+        "ciqual_name": "Champignon, cèpe, cru",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Entrée crue directe, macros complètes, 31,6 kcal. Même avertissement que la morille si la recette emploie du séché : la quantité déclarée est celle du champignon réhydraté."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "20160",
+          "ciqual_name": "Champignon, cèpe, cru",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 101
+        },
+        {
+          "ciqual_alim_code": "10008",
+          "ciqual_name": "Escargot, cru",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": 5.5
+        },
+        {
+          "ciqual_alim_code": "10010",
+          "ciqual_name": "Homard, cru",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": 5.5
+        },
+        {
+          "ciqual_alim_code": "10015",
+          "ciqual_name": "Langouste, crue",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": 5.5
+        },
+        {
+          "ciqual_alim_code": "10016",
+          "ciqual_name": "Seiche, crue",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": 5.5
+        }
+      ]
+    },
+    {
       "form": "Cerfeuil frais",
       "normalized": "cerfeuil frais",
       "required": true,
@@ -11896,7 +12183,7 @@
       "form": "Champignon de Paris frais",
       "normalized": "champignon de paris frais",
       "required": true,
-      "recipe_count": 30,
+      "recipe_count": 32,
       "units": [
         "g"
       ],
@@ -12109,7 +12396,7 @@
       "form": "Chapelure de blé",
       "normalized": "chapelure de ble",
       "required": true,
-      "recipe_count": 26,
+      "recipe_count": 27,
       "units": [
         "g"
       ],
@@ -13144,10 +13431,65 @@
       ]
     },
     {
+      "form": "Chou rouge cru",
+      "normalized": "chou rouge cru",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20014",
+        "ciqual_name": "Chou rouge, cru",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Entrée crue directe, 30 kcal. Les lipides ne sont pas publiés et se ferment par Atwater ; sur un légume à 0,1 g de gras l'incertitude est sans portée. L'entrée à l'étouffée (20310) décrit un plat déjà cuit avec sa matière grasse."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "20014",
+          "ciqual_name": "Chou rouge, cru",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 1000
+        },
+        {
+          "ciqual_alim_code": "20045",
+          "ciqual_name": "Radis rouge, cru",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 44
+        },
+        {
+          "ciqual_alim_code": "20087",
+          "ciqual_name": "Poivron rouge, cru",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 44
+        },
+        {
+          "ciqual_alim_code": "20091",
+          "ciqual_name": "Betterave rouge, crue",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 44
+        },
+        {
+          "ciqual_alim_code": "20162",
+          "ciqual_name": "Chicorée rouge, crue",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 44
+        }
+      ]
+    },
+    {
       "form": "Chou vert frais",
       "normalized": "chou vert frais",
       "required": true,
-      "recipe_count": 8,
+      "recipe_count": 10,
       "units": [
         "g"
       ],
@@ -13772,7 +14114,7 @@
       "form": "Ciboulette fraîche",
       "normalized": "ciboulette fraiche",
       "required": true,
-      "recipe_count": 12,
+      "recipe_count": 14,
       "units": [
         "g"
       ],
@@ -14206,7 +14548,7 @@
       "form": "Clou de girofle",
       "normalized": "clou de girofle",
       "required": true,
-      "recipe_count": 26,
+      "recipe_count": 28,
       "units": [
         "g",
         "u"
@@ -14365,7 +14707,7 @@
       "form": "Cognac",
       "normalized": "cognac",
       "required": true,
-      "recipe_count": 9,
+      "recipe_count": 10,
       "units": [
         "g",
         "ml"
@@ -14476,7 +14818,7 @@
       "form": "Concentré de tomate",
       "normalized": "concentre de tomate",
       "required": true,
-      "recipe_count": 28,
+      "recipe_count": 29,
       "units": [
         "g"
       ],
@@ -14586,7 +14928,7 @@
       "form": "Confit de canard cuit",
       "normalized": "confit de canard cuit",
       "required": true,
-      "recipe_count": 12,
+      "recipe_count": 16,
       "units": [
         "g"
       ],
@@ -15335,7 +15677,7 @@
       "form": "Crème fraîche liquide entière",
       "normalized": "creme fraiche liquide entiere",
       "required": true,
-      "recipe_count": 61,
+      "recipe_count": 69,
       "units": [
         "g",
         "ml"
@@ -16545,7 +16887,7 @@
       "form": "Eau",
       "normalized": "eau",
       "required": true,
-      "recipe_count": 46,
+      "recipe_count": 48,
       "units": [
         "g",
         "ml"
@@ -16821,7 +17163,7 @@
       "form": "Échalote crue",
       "normalized": "echalote crue",
       "required": true,
-      "recipe_count": 42,
+      "recipe_count": 49,
       "units": [
         "g"
       ],
@@ -17171,7 +17513,7 @@
       "form": "Emmental râpé",
       "normalized": "emmental rape",
       "required": true,
-      "recipe_count": 7,
+      "recipe_count": 9,
       "units": [
         "g"
       ],
@@ -17488,7 +17830,7 @@
       "form": "Épaule de porc crue",
       "normalized": "epaule de porc crue",
       "required": true,
-      "recipe_count": 9,
+      "recipe_count": 10,
       "units": [
         "g"
       ],
@@ -17907,7 +18249,7 @@
       "form": "Escalope de veau crue fine",
       "normalized": "escalope de veau crue fine",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 7,
       "units": [
         "g",
         "u"
@@ -18163,7 +18505,7 @@
       "form": "Farine de blé T55",
       "normalized": "farine de ble t55",
       "required": true,
-      "recipe_count": 103,
+      "recipe_count": 106,
       "units": [
         "g"
       ],
@@ -18630,7 +18972,7 @@
       "form": "Fécule de maïs",
       "normalized": "fecule de mais",
       "required": true,
-      "recipe_count": 12,
+      "recipe_count": 13,
       "units": [
         "g"
       ],
@@ -18829,7 +19171,7 @@
       "form": "Fenouil frais",
       "normalized": "fenouil frais",
       "required": true,
-      "recipe_count": 10,
+      "recipe_count": 11,
       "units": [
         "g"
       ],
@@ -19406,7 +19748,7 @@
       "form": "Feuille de laurier séchée",
       "normalized": "feuille de laurier sechee",
       "required": true,
-      "recipe_count": 73,
+      "recipe_count": 76,
       "units": [
         "feuille",
         "u"
@@ -19661,6 +20003,61 @@
           "category": "condiments_sauces",
           "nutrition_complete": true,
           "score": 2
+        }
+      ]
+    },
+    {
+      "form": "Fève à écosser fraîche",
+      "normalized": "feve a ecosser fraiche",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20517",
+        "ciqual_name": "Fève à écosser, fraîche",
+        "category": "legumineuses",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "L'entrée nomme exactement le produit du printemps que la variante niçoise du pan bagnat réclame : la fève écossée crue, pas la sèche (20518, 26,1 g de protéines contre 6,76 — un rapport de quatre) ni la bouillie. Énergie fermée par Atwater. Le poids déclaré est celui des fèves écossées : une gousse pèse environ le double de ce qu'elle rend."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "20517",
+          "ciqual_name": "Fève à écosser, fraîche",
+          "category": "legumineuses",
+          "nutrition_complete": true,
+          "score": 1000
+        },
+        {
+          "ciqual_alim_code": "20518",
+          "ciqual_name": "Fève, sèche",
+          "category": "legumineuses",
+          "nutrition_complete": true,
+          "score": 19.5
+        },
+        {
+          "ciqual_alim_code": "20536",
+          "ciqual_name": "Fève, fraîche, surgelée",
+          "category": "legumineuses",
+          "nutrition_complete": true,
+          "score": 18
+        },
+        {
+          "ciqual_alim_code": "20541",
+          "ciqual_name": "Fève, pelée, surgelée, crue",
+          "category": "legumineuses",
+          "nutrition_complete": true,
+          "score": 16.5
+        },
+        {
+          "ciqual_alim_code": "20500",
+          "ciqual_name": "Fève, bouillie/cuite à l'eau",
+          "category": "legumineuses",
+          "nutrition_complete": true,
+          "score": 13.5
         }
       ]
     },
@@ -20118,6 +20515,61 @@
       ]
     },
     {
+      "form": "Foie gras de canard cru",
+      "normalized": "foie gras de canard cru",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "8328",
+        "ciqual_name": "Foie gras de canard, cru",
+        "category": "produits_transformes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le cru, puisque la variante le poêle ou le cuit elle-même : 600 kcal contre 535 pour l'entier cuit, l'écart venant de la graisse rendue à la cuisson. Retenir le cuit ferait compter deux fois la perte. Les entrées « bloc » (8323 à 8331) sont des préparations reconstituées, plus maigres et salées, qui ne se poêlent pas."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "8328",
+          "ciqual_name": "Foie gras de canard, cru",
+          "category": "produits_transformes",
+          "nutrition_complete": true,
+          "score": 1000
+        },
+        {
+          "ciqual_alim_code": "8323",
+          "ciqual_name": "Foie gras, canard, bloc, sans morceaux",
+          "category": "produits_transformes",
+          "nutrition_complete": true,
+          "score": 76.5
+        },
+        {
+          "ciqual_alim_code": "8331",
+          "ciqual_name": "Foie gras, canard, bloc (aliment moyen)",
+          "category": "produits_transformes",
+          "nutrition_complete": true,
+          "score": 76.5
+        },
+        {
+          "ciqual_alim_code": "8324",
+          "ciqual_name": "Foie gras, canard, bloc, 30% de morceaux",
+          "category": "produits_transformes",
+          "nutrition_complete": true,
+          "score": 75
+        },
+        {
+          "ciqual_alim_code": "8325",
+          "ciqual_name": "Foie gras, canard, bloc, 50% de morceaux",
+          "category": "produits_transformes",
+          "nutrition_complete": true,
+          "score": 75
+        }
+      ]
+    },
+    {
       "form": "Frisée fraîche",
       "normalized": "frisee fraiche",
       "required": true,
@@ -20217,6 +20669,61 @@
           "category": "legumineuses",
           "nutrition_complete": true,
           "score": 44.5
+        }
+      ]
+    },
+    {
+      "form": "Fromage blanc à 3 pourcent",
+      "normalized": "fromage blanc a 3 pourcent",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "19646",
+        "ciqual_name": "Fromage blanc nature, 3% MG environ",
+        "category": "produits_laitiers",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le 3 % de matière grasse, celui du pot ordinaire, plutôt que l'aliment moyen (19501) qui mélange les natures et les fruités — un fromage blanc aux fruits porte son sucre, 5,68 g de glucides contre 3,46. Le 0 % (19644) et le gourmand à 8 % (19649) sont des choix, pas la référence. Macros complètes, 76,9 kcal."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "19646",
+          "ciqual_name": "Fromage blanc nature, 3% MG environ",
+          "category": "produits_laitiers",
+          "nutrition_complete": true,
+          "score": 59.8
+        },
+        {
+          "ciqual_alim_code": "19647",
+          "ciqual_name": "Fromage blanc nature, 3% MG environ, au bifidus",
+          "category": "produits_laitiers",
+          "nutrition_complete": true,
+          "score": 56.8
+        },
+        {
+          "ciqual_alim_code": "19648",
+          "ciqual_name": "Fromage blanc nature, 3% MG environ, enrichi en vitamine D",
+          "category": "produits_laitiers",
+          "nutrition_complete": true,
+          "score": 53.8
+        },
+        {
+          "ciqual_alim_code": "19652",
+          "ciqual_name": "Fromage blanc ou spécialité laitière, aromatisé, sucré, 3% MG environ",
+          "category": "produits_laitiers",
+          "nutrition_complete": true,
+          "score": 53.8
+        },
+        {
+          "ciqual_alim_code": "19657",
+          "ciqual_name": "Fromage blanc ou spécialité laitière, aux fruits, sucré, 3% MG environ",
+          "category": "produits_laitiers",
+          "nutrition_complete": true,
+          "score": 52.3
         }
       ]
     },
@@ -20368,7 +20875,7 @@
       "form": "Fromage de chèvre bûche",
       "normalized": "fromage de chevre buche",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -21087,6 +21594,61 @@
       ]
     },
     {
+      "form": "Gésier de canard confit",
+      "normalized": "gesier de canard confit",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "40701",
+        "ciqual_name": "Gésier, canard, confit, appertisé",
+        "category": "produits_transformes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Entrée directe pour la salade landaise, macros complètes : 149 kcal, P 32,4 / G 0 / L 2,1. Le chiffre surprend — un confit à deux grammes de gras — mais il décrit le gésier ÉGOUTTÉ de sa graisse, ce que fait la recette en le poêlant. Les fibres ne sont pas publiées : une viande n'en porte pas, et leur absence n'empêche pas la pesée."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "40701",
+          "ciqual_name": "Gésier, canard, confit, appertisé",
+          "category": "produits_transformes",
+          "nutrition_complete": true,
+          "score": 91.5
+        },
+        {
+          "ciqual_alim_code": "8110",
+          "ciqual_name": "Confit de canard",
+          "category": "produits_transformes",
+          "nutrition_complete": true,
+          "score": 49
+        },
+        {
+          "ciqual_alim_code": "8109",
+          "ciqual_name": "Confit de canard, viande (cuisse), sans peau, réchauffé",
+          "category": "produits_transformes",
+          "nutrition_complete": false,
+          "score": 41.5
+        },
+        {
+          "ciqual_alim_code": "16550",
+          "ciqual_name": "Graisse de canard",
+          "category": "matieres_grasses",
+          "nutrition_complete": true,
+          "score": 5
+        },
+        {
+          "ciqual_alim_code": "31027",
+          "ciqual_name": "Fruit confit",
+          "category": "produits_sucres",
+          "nutrition_complete": true,
+          "score": 5
+        }
+      ]
+    },
+    {
       "form": "Ghee",
       "normalized": "ghee",
       "required": true,
@@ -21145,7 +21707,7 @@
       "form": "Gigot d'agneau cru",
       "normalized": "gigot d agneau cru",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -21781,10 +22343,65 @@
       ]
     },
     {
+      "form": "Graisse d'oie",
+      "normalized": "graisse d oie",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "16560",
+        "ciqual_name": "Graisse d'oie",
+        "category": "matieres_grasses",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Entrée directe, 898 kcal pour 99,8 g de lipides — c'est un corps gras pur. Les pommes sarladaises la réclament et rien ne la remplace : c'est elle qui fait le plat, et l'huile donnerait des pommes de terre sautées. La graisse de canard, tout aussi employée, n'a pas d'entrée au classeur ; sa composition ne s'en distingue pas de façon mesurable, mais on ne la déclarera pas sous ce nom sans le dire."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "16560",
+          "ciqual_name": "Graisse d'oie",
+          "category": "matieres_grasses",
+          "nutrition_complete": true,
+          "score": 1000
+        },
+        {
+          "ciqual_alim_code": "8030",
+          "ciqual_name": "Rillettes d'oie",
+          "category": "produits_transformes",
+          "nutrition_complete": true,
+          "score": 37
+        },
+        {
+          "ciqual_alim_code": "22070",
+          "ciqual_name": "Oeuf d'oie, cru",
+          "category": "oeufs",
+          "nutrition_complete": true,
+          "score": 35.5
+        },
+        {
+          "ciqual_alim_code": "8326",
+          "ciqual_name": "Pâté de foie d'oie",
+          "category": "volailles",
+          "nutrition_complete": true,
+          "score": 34
+        },
+        {
+          "ciqual_alim_code": "16540",
+          "ciqual_name": "Graisse de poulet",
+          "category": "matieres_grasses",
+          "nutrition_complete": true,
+          "score": 17
+        }
+      ]
+    },
+    {
       "form": "Gruyère râpé",
       "normalized": "gruyere rape",
       "required": true,
-      "recipe_count": 34,
+      "recipe_count": 36,
       "units": [
         "g"
       ],
@@ -22149,6 +22766,61 @@
           "category": "fruits",
           "nutrition_complete": true,
           "score": 13
+        }
+      ]
+    },
+    {
+      "form": "Haricot flageolet appertisé, égoutté",
+      "normalized": "haricot flageolet appertise egoutte",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20508",
+        "ciqual_name": "Haricot flageolet, appertisé, égouttés",
+        "category": "legumineuses",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "C'est la conserve égouttée que la variante du gigot réclame, et l'égoutté est le bon état : le poids déclaré par une recette est celui du haricot sorti de la boîte, pas de la boîte entière. L'écart avec le sec est celui de l'eau reprise — 6,1 g de protéines contre 19,1 pour le flageolet vert sec, un rapport de trois. Énergie fermée par Atwater."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "20508",
+          "ciqual_name": "Haricot flageolet, appertisé, égouttés",
+          "category": "legumineuses",
+          "nutrition_complete": true,
+          "score": 140.5
+        },
+        {
+          "ciqual_alim_code": "20062",
+          "ciqual_name": "Haricot vert, appertisé, égoutté",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 105.5
+        },
+        {
+          "ciqual_alim_code": "20063",
+          "ciqual_name": "Haricot beurre, appertisé, égoutté",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 105.5
+        },
+        {
+          "ciqual_alim_code": "20511",
+          "ciqual_name": "Haricot blanc, appertisé, égoutté",
+          "category": "legumineuses",
+          "nutrition_complete": true,
+          "score": 105.5
+        },
+        {
+          "ciqual_alim_code": "20524",
+          "ciqual_name": "Haricot rouge, appertisé, égoutté",
+          "category": "legumineuses",
+          "nutrition_complete": true,
+          "score": 105.5
         }
       ]
     },
@@ -23008,7 +23680,7 @@
       "form": "Herbes de Provence séchées",
       "normalized": "herbes de provence sechees",
       "required": true,
-      "recipe_count": 23,
+      "recipe_count": 25,
       "units": [
         "g"
       ],
@@ -23166,7 +23838,7 @@
       "form": "Huile d'olive vierge extra",
       "normalized": "huile d olive vierge extra",
       "required": true,
-      "recipe_count": 236,
+      "recipe_count": 255,
       "units": [
         "g",
         "ml"
@@ -23222,8 +23894,9 @@
       "form": "Huile de colza raffinée",
       "normalized": "huile de colza raffinee",
       "required": true,
-      "recipe_count": 13,
+      "recipe_count": 14,
       "units": [
+        "g",
         "ml"
       ],
       "selection_mode": "curated",
@@ -24189,6 +24862,61 @@
       ]
     },
     {
+      "form": "Jambonneau cuit",
+      "normalized": "jambonneau cuit",
+      "required": true,
+      "recipe_count": 2,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "28960",
+        "ciqual_name": "Jambonneau, cuit",
+        "category": "viandes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le cuit, puisque la variante l'effiloche après une heure de pochage. L'entrée crue (28474, jambonneau arrière découenné dégraissé désossé) décrit un morceau paré que le charcutier ne vend pas ainsi. Macros complètes : 162 kcal, P 23,2 / G 0,4 / L 7,52. Le poids déclaré est celui de la chair effilochée, pas celui du jambonneau entier avec son os — un jambonneau de 1 kg en donne environ 600 g."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "28960",
+          "ciqual_name": "Jambonneau, cuit",
+          "category": "viandes",
+          "nutrition_complete": true,
+          "score": 1000
+        },
+        {
+          "ciqual_alim_code": "28474",
+          "ciqual_name": "Porc, jambonneau arrière, découenné, dégraisssé, désossé, cru",
+          "category": "viandes",
+          "nutrition_complete": true,
+          "score": 12
+        },
+        {
+          "ciqual_alim_code": "10000",
+          "ciqual_name": "Bigorneau, cuit",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": false,
+          "score": -0.5
+        },
+        {
+          "ciqual_alim_code": "10007",
+          "ciqual_name": "Crevette, cuite",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": -0.5
+        },
+        {
+          "ciqual_alim_code": "10031",
+          "ciqual_name": "Écrevisse, cuite",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": -0.5
+        }
+      ]
+    },
+    {
       "form": "Jarret de bœuf cru",
       "normalized": "jarret de boeuf cru",
       "required": true,
@@ -24357,7 +25085,7 @@
       "form": "Jaune d'œuf cru",
       "normalized": "jaune d oeuf cru",
       "required": true,
-      "recipe_count": 20,
+      "recipe_count": 21,
       "units": [
         "g",
         "u"
@@ -24523,7 +25251,7 @@
       "form": "Jus de citron frais",
       "normalized": "jus de citron frais",
       "required": true,
-      "recipe_count": 59,
+      "recipe_count": 60,
       "units": [
         "g",
         "ml"
@@ -24627,6 +25355,61 @@
           "category": "boissons",
           "nutrition_complete": true,
           "score": 47.5
+        }
+      ]
+    },
+    {
+      "form": "Jus de tomate",
+      "normalized": "jus de tomate",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "ml"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "2053",
+        "ciqual_name": "Jus de tomate, pur jus (aliment moyen)",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "L'aliment moyen plutôt qu'une des deux entrées salées (2026 à 3 g/L, 2032 à 6 g/L) : le sel d'un jus du commerce varie d'une marque à l'autre, et la recette assaisonne ensuite. Macros complètes, 21,7 kcal. Densité 1,03, celle d'un jus de légume peu sucré."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "2053",
+          "ciqual_name": "Jus de tomate, pur jus (aliment moyen)",
+          "category": "boissons",
+          "nutrition_complete": true,
+          "score": 100
+        },
+        {
+          "ciqual_alim_code": "2032",
+          "ciqual_name": "Jus de tomate, pur jus, salé à 6g/L",
+          "category": "boissons",
+          "nutrition_complete": true,
+          "score": 97
+        },
+        {
+          "ciqual_alim_code": "2026",
+          "ciqual_name": "Jus de tomate, pur jus, salé à 3 g/L",
+          "category": "boissons",
+          "nutrition_complete": true,
+          "score": 95.5
+        },
+        {
+          "ciqual_alim_code": "20047",
+          "ciqual_name": "Tomate, crue",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 31.5
+        },
+        {
+          "ciqual_alim_code": "20189",
+          "ciqual_name": "Tomate, séchée",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 31.5
         }
       ]
     },
@@ -24950,7 +25733,7 @@
       "form": "Lait entier",
       "normalized": "lait entier",
       "required": true,
-      "recipe_count": 42,
+      "recipe_count": 44,
       "units": [
         "g",
         "ml"
@@ -25061,7 +25844,7 @@
       "form": "Laitue fraîche",
       "normalized": "laitue fraiche",
       "required": true,
-      "recipe_count": 11,
+      "recipe_count": 13,
       "units": [
         "g"
       ],
@@ -25322,7 +26105,7 @@
       "form": "Lardon fumé cru",
       "normalized": "lardon fume cru",
       "required": true,
-      "recipe_count": 40,
+      "recipe_count": 43,
       "units": [
         "g"
       ],
@@ -25480,7 +26263,7 @@
       "form": "Lentille corail sèche, crue",
       "normalized": "lentille corail seche crue",
       "required": true,
-      "recipe_count": 11,
+      "recipe_count": 13,
       "units": [
         "g"
       ],
@@ -25961,6 +26744,61 @@
           "category": "poissons_fruits_de_mer",
           "nutrition_complete": true,
           "score": -26
+        }
+      ]
+    },
+    {
+      "form": "Magret de canard fumé",
+      "normalized": "magret de canard fume",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "8111",
+        "ciqual_name": "Canard, magret fumé",
+        "category": "volailles",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le fumé, entrée de charcuterie, et non le magret cru (36206) ni le grillé (36205) : la salade landaise le sert en tranches froides, sans le cuire. Macros complètes, 364 kcal, P 21,9 / L 30,5 — le gras du magret fumé est sous la peau et la recette la garde."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "36206",
+          "ciqual_name": "Canard, magret, cru",
+          "category": "volailles",
+          "nutrition_complete": true,
+          "score": 75.5
+        },
+        {
+          "ciqual_alim_code": "8111",
+          "ciqual_name": "Canard, magret fumé",
+          "category": "volailles",
+          "nutrition_complete": true,
+          "score": 75.5
+        },
+        {
+          "ciqual_alim_code": "36205",
+          "ciqual_name": "Canard, magret, grillé/poêlé",
+          "category": "volailles",
+          "nutrition_complete": false,
+          "score": 74
+        },
+        {
+          "ciqual_alim_code": "16550",
+          "ciqual_name": "Graisse de canard",
+          "category": "matieres_grasses",
+          "nutrition_complete": true,
+          "score": 24
+        },
+        {
+          "ciqual_alim_code": "36201",
+          "ciqual_name": "Canard, viande, crue",
+          "category": "volailles",
+          "nutrition_complete": true,
+          "score": 24
         }
       ]
     },
@@ -26895,7 +27733,7 @@
       "form": "Miel",
       "normalized": "miel",
       "required": true,
-      "recipe_count": 13,
+      "recipe_count": 15,
       "units": [
         "g"
       ],
@@ -26943,6 +27781,62 @@
           "category": "produits_sucres",
           "nutrition_complete": true,
           "score": 73.5
+        }
+      ]
+    },
+    {
+      "form": "Mimolette demi-vieille",
+      "normalized": "mimolette demi vieille",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "12737",
+        "ciqual_name": "Mimolette demi-vieille",
+        "category": "produits_laitiers",
+        "nutrition_complete": true,
+        "derived_field": "carbohydrate_g",
+        "confidence": "B",
+        "note": "La demi-vieille, celle qu'on râpe : la jeune (12735) est trop souple pour la râpe et la vieille (12738) trop sèche pour fondre. L'affinage fait l'écart — 365 kcal contre 331 pour la jeune, l'eau partie et le gras concentré. Les glucides ne sont pas publiés ; un fromage affiné n'en garde pas de mesurable, et l'énergie publiée fait foi."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "12737",
+          "ciqual_name": "Mimolette demi-vieille",
+          "category": "produits_laitiers",
+          "nutrition_complete": false,
+          "score": 1000
+        },
+        {
+          "ciqual_alim_code": "12738",
+          "ciqual_name": "Mimolette vieille",
+          "category": "produits_laitiers",
+          "nutrition_complete": false,
+          "score": 55
+        },
+        {
+          "ciqual_alim_code": "12742",
+          "ciqual_name": "Mimolette extra-vieille",
+          "category": "produits_laitiers",
+          "nutrition_complete": false,
+          "score": 55
+        },
+        {
+          "ciqual_alim_code": "12735",
+          "ciqual_name": "Mimolette jeune",
+          "category": "produits_laitiers",
+          "nutrition_complete": false,
+          "score": 11
+        },
+        {
+          "ciqual_alim_code": "12740",
+          "ciqual_name": "Mimolette, sans précision",
+          "category": "produits_laitiers",
+          "nutrition_complete": false,
+          "score": 11
         }
       ]
     },
@@ -27153,6 +28047,61 @@
       ]
     },
     {
+      "form": "Morille crue",
+      "normalized": "morille crue",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20105",
+        "ciqual_name": "Champignon, morille, crue",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le classeur ne porte que la morille FRAÎCHE, alors que les variantes qui la réclament emploient la séchée réhydratée. Ce n'est pas un obstacle mais une obligation de rédaction : la quantité déclarée est celle de la morille réhydratée, et l'instruction d'achat porte sur le poids sec — une morille séchée reprend huit à dix fois son poids en eau, si bien que 20 g secs donnent environ 180 g réhydratés. Déclarer le poids sec sur cette entrée surestimerait l'apport d'un facteur neuf."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "20105",
+          "ciqual_name": "Champignon, morille, crue",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 107
+        },
+        {
+          "ciqual_alim_code": "10008",
+          "ciqual_name": "Escargot, cru",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": -0.5
+        },
+        {
+          "ciqual_alim_code": "10010",
+          "ciqual_name": "Homard, cru",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": -0.5
+        },
+        {
+          "ciqual_alim_code": "10015",
+          "ciqual_name": "Langouste, crue",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": -0.5
+        },
+        {
+          "ciqual_alim_code": "10016",
+          "ciqual_name": "Seiche, crue",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": -0.5
+        }
+      ]
+    },
+    {
       "form": "Morue salée sèche",
       "normalized": "morue salee seche",
       "required": true,
@@ -27314,7 +28263,7 @@
       "form": "Moutarde de Dijon",
       "normalized": "moutarde de dijon",
       "required": true,
-      "recipe_count": 39,
+      "recipe_count": 44,
       "units": [
         "g"
       ],
@@ -27520,7 +28469,7 @@
       "form": "Muscade moulue",
       "normalized": "muscade moulue",
       "required": true,
-      "recipe_count": 36,
+      "recipe_count": 39,
       "units": [
         "g"
       ],
@@ -27623,7 +28572,7 @@
       "form": "Navet cru",
       "normalized": "navet cru",
       "required": true,
-      "recipe_count": 8,
+      "recipe_count": 10,
       "units": [
         "g"
       ],
@@ -27771,10 +28720,65 @@
       ]
     },
     {
+      "form": "Noisette grillée",
+      "normalized": "noisette grillee",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "15033",
+        "ciqual_name": "Noisette grillée",
+        "category": "legumineuses",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "La grillée plutôt que la crue : la variante des lentilles tièdes torréfie à sec, et c'est la torréfaction qui fait tout son intérêt — elle sèche le fruit et développe le grillé que la noix n'a pas. L'écart n'est pas cosmétique : 66 g de lipides contre 56,9 pour la crue, l'eau partie. Le classeur ne publie pas l'énergie de cette entrée ; elle se referme par Atwater sur ses quatre macros mesurées, fibres comprises. L'entrée salée (15050) est écartée : la recette sale son assaisonnement elle-même."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "15033",
+          "ciqual_name": "Noisette grillée",
+          "category": "legumineuses",
+          "nutrition_complete": true,
+          "score": 1000
+        },
+        {
+          "ciqual_alim_code": "15050",
+          "ciqual_name": "Noisette grillée, salée",
+          "category": "legumineuses",
+          "nutrition_complete": true,
+          "score": 110.5
+        },
+        {
+          "ciqual_alim_code": "15004",
+          "ciqual_name": "Noisette",
+          "category": "legumineuses",
+          "nutrition_complete": true,
+          "score": 60.5
+        },
+        {
+          "ciqual_alim_code": "15021",
+          "ciqual_name": "Châtaigne, grillée",
+          "category": "legumineuses",
+          "nutrition_complete": true,
+          "score": 25.5
+        },
+        {
+          "ciqual_alim_code": "15044",
+          "ciqual_name": "Pistache, grillée",
+          "category": "legumineuses",
+          "nutrition_complete": true,
+          "score": 25.5
+        }
+      ]
+    },
+    {
       "form": "Noix",
       "normalized": "noix",
       "required": true,
-      "recipe_count": 12,
+      "recipe_count": 15,
       "units": [
         "g"
       ],
@@ -27877,7 +28881,7 @@
       "form": "Noix de Saint-Jacques crue",
       "normalized": "noix de saint jacques crue",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 6,
       "units": [
         "g"
       ],
@@ -28577,7 +29581,7 @@
       "form": "Œuf cru",
       "normalized": "oeuf cru",
       "required": true,
-      "recipe_count": 140,
+      "recipe_count": 147,
       "units": [
         "g",
         "u"
@@ -28681,7 +29685,7 @@
       "form": "Œuf dur",
       "normalized": "oeuf dur",
       "required": true,
-      "recipe_count": 20,
+      "recipe_count": 21,
       "units": [
         "g",
         "u"
@@ -29005,7 +30009,7 @@
       "form": "Oignon jaune cru",
       "normalized": "oignon jaune cru",
       "required": true,
-      "recipe_count": 277,
+      "recipe_count": 287,
       "units": [
         "g"
       ],
@@ -29060,7 +30064,7 @@
       "form": "Oignon nouveau frais",
       "normalized": "oignon nouveau frais",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 4,
       "units": [
         "g"
       ],
@@ -29170,7 +30174,7 @@
       "form": "Olive noire",
       "normalized": "olive noire",
       "required": true,
-      "recipe_count": 18,
+      "recipe_count": 19,
       "units": [
         "g"
       ],
@@ -29797,7 +30801,7 @@
       "form": "Oseille crue",
       "normalized": "oseille crue",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -30058,7 +31062,7 @@
       "form": "Pain de campagne",
       "normalized": "pain de campagne",
       "required": true,
-      "recipe_count": 21,
+      "recipe_count": 25,
       "units": [
         "g",
         "tranche"
@@ -32083,6 +33087,61 @@
       ]
     },
     {
+      "form": "Pâtes fraîches aux œufs crues",
+      "normalized": "pates fraiches aux oeufs crues",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "9815",
+        "ciqual_name": "Pâtes fraîches, aux oeufs, crues",
+        "category": "cereales_feculents",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Les crues, puisque la recette cuit ses pâtes. Macros complètes, 283 kcal, P 11,1 / G 53,8. Elles se distinguent nettement des pâtes sèches (350 kcal, 12,5 g de protéines) par leur eau et leur œuf, et le poids déclaré n'est pas interchangeable : 100 g de fraîches ne remplacent pas 100 g de sèches. Les entrées « pâtes fraîches farcies » sont des plats composés."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "9815",
+          "ciqual_name": "Pâtes fraîches, aux oeufs, crues",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 1000
+        },
+        {
+          "ciqual_alim_code": "9821",
+          "ciqual_name": "Pâtes sèches, aux oeufs, crues",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 86.5
+        },
+        {
+          "ciqual_alim_code": "9863",
+          "ciqual_name": "Pâtes ou nouilles asiatiques au blé et aux oeufs, crues, nature",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 77.5
+        },
+        {
+          "ciqual_alim_code": "22000",
+          "ciqual_name": "Oeuf, cru",
+          "category": "oeufs",
+          "nutrition_complete": true,
+          "score": 39.5
+        },
+        {
+          "ciqual_alim_code": "22001",
+          "ciqual_name": "Oeuf, blanc (blanc d'oeuf), cru",
+          "category": "oeufs",
+          "nutrition_complete": true,
+          "score": 36.5
+        }
+      ]
+    },
+    {
       "form": "Pâtes sèches courtes",
       "normalized": "pates seches courtes",
       "required": true,
@@ -32189,7 +33248,7 @@
       "form": "Pavé de saumon cru, sans peau",
       "normalized": "pave de saumon cru sans peau",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 5,
       "units": [
         "g"
       ],
@@ -32299,7 +33358,7 @@
       "form": "Persil frais",
       "normalized": "persil frais",
       "required": true,
-      "recipe_count": 110,
+      "recipe_count": 116,
       "units": [
         "g"
       ],
@@ -32354,7 +33413,7 @@
       "form": "Persil plat frais",
       "normalized": "persil plat frais",
       "required": true,
-      "recipe_count": 15,
+      "recipe_count": 19,
       "units": [
         "g"
       ],
@@ -32979,7 +34038,7 @@
       "form": "Piment de Cayenne",
       "normalized": "piment de cayenne",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -34319,6 +35378,61 @@
       ]
     },
     {
+      "form": "Poire fraîche",
+      "normalized": "poire fraiche",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "13107",
+        "ciqual_name": "Poire, pulpe, crue",
+        "category": "fruits",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "La pulpe sans peau, parce que la variante taille des lamelles pour une salade et qu'on pèle rarement une poire à salade — l'entrée avec peau (13037) porterait plus de fibres. Confiance B pour deux raisons : le classeur ne publie pas l'énergie de cette entrée, qui se ferme par Atwater à environ 49 kcal, et les variétés nommées (Conférence 53,1 ; Williams 54,1) montrent une dispersion de dix pour cent que l'entrée générique lisse. L'écart est sans portée dans une salade où la poire apporte quelques lamelles."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "13107",
+          "ciqual_name": "Poire, pulpe, crue",
+          "category": "fruits",
+          "nutrition_complete": true,
+          "score": 58
+        },
+        {
+          "ciqual_alim_code": "2054",
+          "ciqual_name": "Nectar de poire",
+          "category": "boissons",
+          "nutrition_complete": true,
+          "score": 58
+        },
+        {
+          "ciqual_alim_code": "39519",
+          "ciqual_name": "Poire belle Hélène",
+          "category": "produits_sucres",
+          "nutrition_complete": true,
+          "score": 58
+        },
+        {
+          "ciqual_alim_code": "13188",
+          "ciqual_name": "Poire Conférence, pulpe, crue",
+          "category": "fruits",
+          "nutrition_complete": true,
+          "score": 56.5
+        },
+        {
+          "ciqual_alim_code": "13189",
+          "ciqual_name": "Poire Williams, pulpe, crue",
+          "category": "fruits",
+          "nutrition_complete": true,
+          "score": 56.5
+        }
+      ]
+    },
+    {
       "form": "Poireau chinois",
       "normalized": "poireau chinois",
       "required": true,
@@ -34370,7 +35484,7 @@
       "form": "Poireau cru",
       "normalized": "poireau cru",
       "required": true,
-      "recipe_count": 36,
+      "recipe_count": 38,
       "units": [
         "g"
       ],
@@ -35215,7 +36329,7 @@
       "form": "Poivre noir moulu",
       "normalized": "poivre noir moulu",
       "required": true,
-      "recipe_count": 262,
+      "recipe_count": 288,
       "units": [
         "g"
       ],
@@ -35380,7 +36494,7 @@
       "form": "Poivron vert frais",
       "normalized": "poivron vert frais",
       "required": true,
-      "recipe_count": 19,
+      "recipe_count": 20,
       "units": [
         "g"
       ],
@@ -35545,7 +36659,7 @@
       "form": "Pomme de terre cuite",
       "normalized": "pomme de terre cuite",
       "required": true,
-      "recipe_count": 37,
+      "recipe_count": 41,
       "units": [
         "g"
       ],
@@ -36362,7 +37476,7 @@
       "form": "Poulet entier cru",
       "normalized": "poulet entier cru",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 4,
       "units": [
         "g"
       ],
@@ -36788,7 +37902,7 @@
       "form": "Pruneau dénoyauté",
       "normalized": "pruneau denoyaute",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -36891,6 +38005,61 @@
           "category": "poissons_fruits_de_mer",
           "nutrition_complete": true,
           "score": -20
+        }
+      ]
+    },
+    {
+      "form": "Quenelle nature crue",
+      "normalized": "quenelle nature crue",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "8937",
+        "ciqual_name": "Quenelle nature, crue",
+        "category": "produits_transformes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "La nature crue, et non la quenelle de volaille ou de poisson : la version alsacienne des bouchées à la reine ajoute des quenelles en tronçons à une garniture qui porte déjà ses viandes. Les entrées « en sauce » (8903, 8912, 8932) sont des plats et non des ingrédients — leur énergie compte une sauce que la recette fait elle-même. Macros complètes : 217 kcal, P 7,68 / G 14,8 / L 13,7."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "8937",
+          "ciqual_name": "Quenelle nature, crue",
+          "category": "produits_transformes",
+          "nutrition_complete": true,
+          "score": 1000
+        },
+        {
+          "ciqual_alim_code": "28501",
+          "ciqual_name": "Lardon nature, cru",
+          "category": "produits_transformes",
+          "nutrition_complete": true,
+          "score": 38
+        },
+        {
+          "ciqual_alim_code": "8910",
+          "ciqual_name": "Quenelle de volaille, crue",
+          "category": "produits_transformes",
+          "nutrition_complete": true,
+          "score": 36.5
+        },
+        {
+          "ciqual_alim_code": "8933",
+          "ciqual_name": "Quenelle de poisson, crue",
+          "category": "produits_transformes",
+          "nutrition_complete": true,
+          "score": 36.5
+        },
+        {
+          "ciqual_alim_code": "9863",
+          "ciqual_name": "Pâtes ou nouilles asiatiques au blé et aux oeufs, crues, nature",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 26
         }
       ]
     },
@@ -37747,10 +38916,65 @@
       ]
     },
     {
+      "form": "Riz complet cru",
+      "normalized": "riz complet cru",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "9102",
+        "ciqual_name": "Riz complet, cru",
+        "category": "cereales_feculents",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le cru, puisque la recette cuit son riz. Macros complètes : 350 kcal, P 7,38 / G 71,4 / L 2,8 / F 5. Le complet garde son son, d'où cinq grammes de fibres contre moins d'un pour le riz blanc, et une cuisson plus longue que la variante doit annoncer."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "9102",
+          "ciqual_name": "Riz complet, cru",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 1000
+        },
+        {
+          "ciqual_alim_code": "9121",
+          "ciqual_name": "Riz, mélange de variétés (blanc, complet, rouge, sauvage, etc.), cru",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 73
+        },
+        {
+          "ciqual_alim_code": "7352",
+          "ciqual_name": "Galette de riz soufflé complet",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 66.5
+        },
+        {
+          "ciqual_alim_code": "9870",
+          "ciqual_name": "Pâtes sèches, au blé complet, crues",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 39.5
+        },
+        {
+          "ciqual_alim_code": "9100",
+          "ciqual_name": "Riz blanc, cru",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 32
+        }
+      ]
+    },
+    {
       "form": "Riz cru",
       "normalized": "riz cru",
       "required": true,
-      "recipe_count": 18,
+      "recipe_count": 19,
       "units": [
         "g"
       ],
@@ -38637,7 +39861,7 @@
       "form": "Safran",
       "normalized": "safran",
       "required": true,
-      "recipe_count": 14,
+      "recipe_count": 15,
       "units": [
         "g"
       ],
@@ -40095,7 +41319,7 @@
       "form": "Saucisse de Montbéliard",
       "normalized": "saucisse de montbeliard",
       "required": true,
-      "recipe_count": 8,
+      "recipe_count": 10,
       "units": [
         "g",
         "u"
@@ -40151,7 +41375,7 @@
       "form": "Saucisse de Morteau",
       "normalized": "saucisse de morteau",
       "required": true,
-      "recipe_count": 4,
+      "recipe_count": 6,
       "units": [
         "g",
         "u"
@@ -40461,7 +41685,7 @@
       "form": "Sel fin",
       "normalized": "sel fin",
       "required": true,
-      "recipe_count": 321,
+      "recipe_count": 345,
       "units": [
         "g"
       ],
@@ -41258,7 +42482,7 @@
       "form": "Sucre semoule",
       "normalized": "sucre semoule",
       "required": true,
-      "recipe_count": 63,
+      "recipe_count": 64,
       "units": [
         "g"
       ],
@@ -41869,7 +43093,7 @@
       "form": "Thon au naturel en conserve, égoutté",
       "normalized": "thon au naturel en conserve egoutte",
       "required": true,
-      "recipe_count": 19,
+      "recipe_count": 20,
       "units": [
         "g"
       ],
@@ -41924,7 +43148,7 @@
       "form": "Thym frais",
       "normalized": "thym frais",
       "required": true,
-      "recipe_count": 20,
+      "recipe_count": 21,
       "units": [
         "g"
       ],
@@ -41979,7 +43203,7 @@
       "form": "Thym séché",
       "normalized": "thym seche",
       "required": true,
-      "recipe_count": 64,
+      "recipe_count": 67,
       "units": [
         "g"
       ],
@@ -42384,12 +43608,19 @@
       "form": "Tomate cerise fraîche",
       "normalized": "tomate cerise fraiche",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 2,
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20172",
+        "ciqual_name": "Tomate cerise, crue",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Entrée directe, 33,7 kcal. Elle se distingue de la tomate ordinaire par un peu plus de sucre — 5,62 g de glucides contre 2,9 — ce qui compte dans une salade où elle est crue et non réduite. Lipides fermés par Atwater."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "20172",
@@ -42653,7 +43884,7 @@
       "form": "Tomate râpée",
       "normalized": "tomate rapee",
       "required": true,
-      "recipe_count": 64,
+      "recipe_count": 71,
       "units": [
         "g"
       ],
@@ -43365,6 +44596,61 @@
       ]
     },
     {
+      "form": "Truite fumée",
+      "normalized": "truite fumee",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "27029",
+        "ciqual_name": "Truite d'élevage, fumée",
+        "category": "poissons_fruits_de_mer",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Entrée directe, macros complètes, 180 kcal, P 23,4 / L 9,27. Le classeur la classe en poissons cuits, ce qui est correct pour un fumage à chaud ; elle se mange telle quelle et la recette ne la cuit pas. À ne pas confondre avec la truite crue (26092, truite de mer), retenue au lot14 pour les recettes qui cuisent le poisson."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "27021",
+          "ciqual_name": "Truite saumonée, crue",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": false,
+          "score": 58
+        },
+        {
+          "ciqual_alim_code": "26092",
+          "ciqual_name": "Truite de mer, crue",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": false,
+          "score": 56.5
+        },
+        {
+          "ciqual_alim_code": "27008",
+          "ciqual_name": "Truite d'élevage, crue",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": false,
+          "score": 56.5
+        },
+        {
+          "ciqual_alim_code": "27029",
+          "ciqual_name": "Truite d'élevage, fumée",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": 56.5
+        },
+        {
+          "ciqual_alim_code": "26151",
+          "ciqual_name": "Oeufs de truite, semi-conserve",
+          "category": "oeufs",
+          "nutrition_complete": false,
+          "score": 55
+        }
+      ]
+    },
+    {
       "form": "Tzatziki",
       "normalized": "tzatziki",
       "required": true,
@@ -43667,6 +44953,61 @@
       ]
     },
     {
+      "form": "Vermouth sec",
+      "normalized": "vermouth sec",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "1007",
+        "ciqual_name": "Apéritif à base de vin ou vermouth",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Proxy assumé, et il faut le dire clairement : l'entrée est un aliment moyen d'apéritifs à base de vin, qui mélange les doux et les secs — 11,3 g de glucides, quand un vermouth SEC en porte trois à quatre. Employée pour déglacer quelques centilitres, l'erreur pèse moins de trois kilocalories par part et n'a pas de portée. Elle en aurait dans une recette qui en verserait un verre : ce serait alors une raison de refuser la forme plutôt que de l'employer. Le classeur ne porte ni Noilly, ni porto, ni madère, ni aucun vin aromatisé distinct."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "13042",
+          "ciqual_name": "Pruneau, sec",
+          "category": "fruits",
+          "nutrition_complete": true,
+          "score": 33.5
+        },
+        {
+          "ciqual_alim_code": "13046",
+          "ciqual_name": "Raisin, sec",
+          "category": "fruits",
+          "nutrition_complete": true,
+          "score": 33.5
+        },
+        {
+          "ciqual_alim_code": "23027",
+          "ciqual_name": "Macaron sec",
+          "category": "produits_sucres",
+          "nutrition_complete": true,
+          "score": 33.5
+        },
+        {
+          "ciqual_alim_code": "28812",
+          "ciqual_name": "Jambon sec",
+          "category": "produits_transformes",
+          "nutrition_complete": true,
+          "score": 33.5
+        },
+        {
+          "ciqual_alim_code": "30300",
+          "ciqual_name": "Saucisson sec",
+          "category": "produits_transformes",
+          "nutrition_complete": true,
+          "score": 33.5
+        }
+      ]
+    },
+    {
       "form": "Viande de chèvre crue avec os",
       "normalized": "viande de chevre crue avec os",
       "required": true,
@@ -43718,7 +45059,7 @@
       "form": "Vin blanc sec",
       "normalized": "vin blanc sec",
       "required": true,
-      "recipe_count": 59,
+      "recipe_count": 67,
       "units": [
         "g",
         "ml"
@@ -44380,7 +45721,7 @@
       "form": "Vinaigre de vin rouge",
       "normalized": "vinaigre de vin rouge",
       "required": true,
-      "recipe_count": 38,
+      "recipe_count": 46,
       "units": [
         "g",
         "ml"
@@ -44539,6 +45880,62 @@
           "category": "condiments_sauces",
           "nutrition_complete": true,
           "score": 11
+        }
+      ]
+    },
+    {
+      "form": "Whisky",
+      "normalized": "whisky",
+      "required": true,
+      "recipe_count": 2,
+      "units": [
+        "g",
+        "ml"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "1005",
+        "ciqual_name": "Whisky",
+        "category": "boissons",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Entrée directe, macros complètes, 252 kcal — l'énergie d'une eau-de-vie vient presque entièrement de l'éthanol et ne se referme pas sur les macronutriments, c'est la valeur du classeur qui fait foi. Densité 0,94 : un spiritueux à 40 % vol titre un peu plus léger que l'eau, comme le calvados du lot16. Sans cette conversion, une variante qui déglace au whisky en millilitres ne pèserait rien."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "1005",
+          "ciqual_name": "Whisky",
+          "category": "boissons",
+          "nutrition_complete": true,
+          "score": 1000
+        },
+        {
+          "ciqual_alim_code": "1013",
+          "ciqual_name": "Cocktail à base de whisky",
+          "category": "boissons",
+          "nutrition_complete": true,
+          "score": 90
+        },
+        {
+          "ciqual_alim_code": "1000",
+          "ciqual_name": "Pastis",
+          "category": "boissons",
+          "nutrition_complete": true,
+          "score": -13
+        },
+        {
+          "ciqual_alim_code": "1002",
+          "ciqual_name": "Gin",
+          "category": "boissons",
+          "nutrition_complete": true,
+          "score": -13
+        },
+        {
+          "ciqual_alim_code": "1003",
+          "ciqual_name": "Liqueur",
+          "category": "boissons",
+          "nutrition_complete": true,
+          "score": -13
         }
       ]
     },

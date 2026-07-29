@@ -1,0 +1,371 @@
+{
+  "lot": "lot18 — flageolets en conserve, quenelles alsaciennes et lentilles tièdes",
+  "note": "Trois bases, quatre variantes encore non écrites, quatre dérivations retenues et aucune écartée : les phrases qui restaient étaient précisément celles qui butaient sur un ingrédient manquant, et l'arbitrage les a toutes débloquées. « Haricot flageolet appertisé, égoutté », « Quenelle nature crue », « Jambonneau cuit » et « Noisette grillée » viennent du registre d'arbitrage et non du vocabulaire construit ; c'est l'échappée prévue par le moteur, et le validateur les signalera comme non encore catalographiées jusqu'à la prochaine reconstruction. Deux points ont demandé un arbitrage de rédaction. Le premier : SRC-003 ne prononce jamais le mot « haricot » dans ses étapes, elle dit « flageolets », si bien que le contrôle d'ajout ne reconnaissait pas la forme substituée — l'étape réécrite dit désormais « haricots flageolets appertisés », ce qui est de toute façon plus clair pour qui tient la boîte à la main. Le second : SRC-003 porte DEUX lignes de « Thym frais » (3 g au bouillon des haricots, 4 g sur le gigot), cible ambiguë que le moteur refuse ; aucune opération ne le touche donc, et le thym du bouillon devient simplement le thym du réchauffage, à quantité inchangée — l'étape 1 dit lequel des deux part avec les haricots et lequel reste pour le gigot, ce que la base laissait deviner. La même dérivée a réclamé une réécriture qui ne change rien à la méthode : l'étape 3 ouvrait sur « Pendant ce temps », qui renvoyait à l'heure de frémissement des haricots ; ce temps n'existe plus, la formule est tombée. Les spätzle de la variante alsacienne relèvent du refus d'arbitrage et de l'exception d'accompagnement : ils sont nommés à l'étape de service, dans leur plat à côté, et ne sont pas déclarés en ingrédient — ils recueillent la sauce mais ne sont pas dans l'assiette pesée. Les quatre dérivées réécrivent leur empreinte sensorielle en entier, parce que leur delta la contredisait : la conserve devait remplacer le haricot sec parmi les signatures et gagner un garde-fou sur l'ébullition, la quenelle et le jambonneau deviennent l'objet même de leur version, et « éclats de noix croquants » ne pouvait pas rester dans une salade aux noisettes. Le fruit à coque de SRC-014, facultatif à la base, cesse de l'être dans la version aux noisettes : une variante ne peut pas annoncer un ingrédient qu'on aurait le droit d'omettre. Le jambonneau a posé la seule question honnête du lot — son bouillon réclame « oignon et carotte », soit 80 g de chaque en plus, dont l'oignon finit à la poubelle comme la demi-boule que la base y jette déjà ; les tronçons de carotte, eux, sont récupérés et rejoignent la salade, ce qui évite de peser un légume que personne ne mange. Deux points de chronologie et de pesée ont été rectifiés en relecture. Le registre d'arbitrage précise que le poids déclaré du « Jambonneau cuit » est celui de la chair effilochée et non de la pièce entière avec son os ; les 400 g valent donc pour environ 700 g de jambonneau à l'achat, et l'étape 1 le dit désormais, sans quoi le lecteur en pèserait 400 g brut et n'en tirerait que la moitié. Et le pochage d'une heure ne peut pas commencer en même temps que les lentilles : elles cuisent en un quart d'heure et se seraient refroidies quarante minutes dans le saladier avant que la viande arrive, ce qui ruinait la règle la plus ferme du plat — assaisonner tiède. L'étape 1 renvoie donc leur cuisson à la dernière vingtaine de minutes du pochage. Même correction de bon sens sur le gigot : son repos de dix minutes et le réchauffage de dix minutes des flageolets se mènent ensemble, pas l'un après l'autre.",
+  "derivations": [
+    {
+      "code": "SRC-003-D2",
+      "base": "SRC-003",
+      "family": "Gigot d'agneau aux flageolets en conserve",
+      "variant_label": "Flageolets en conserve, égouttés et réchauffés",
+      "rationale": "La conserve supprime le trempage et l'heure de frémissement : le rôtissage devient la seule cuisson longue et le plat perd cinquante minutes de feu. Ce qu'il perd avec elles, c'est le bouillon de haricot, où l'oignon, le thym et le laurier avaient une heure pour se défaire — ils n'ont plus ici qu'un réchauffage de dix minutes à couvert, et le lit de flageolets est d'autant plus neutre. Le grain arrive déjà cuit et déjà salé : il ne supporte pas l'ébullition, qui le réduit en purée, et le sel de la recette descend de 14 à 11 g. Il faut 1050 g de conserve égouttée pour retrouver le volume que rendaient 500 g de sec — le volume seulement : le flageolet appertisé porte trois fois moins de protéines que le sec, et le lit en perd environ un tiers.",
+      "cook_minutes": 60,
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Haricot flageolet sec",
+          "with": "Haricot flageolet appertisé, égoutté",
+          "quantity": 1050,
+          "unit": "g",
+          "role": "féculent"
+        },
+        {
+          "op": "set",
+          "form": "Sel fin",
+          "quantity": 11
+        }
+      ],
+      "steps": [
+        {
+          "op": "remove",
+          "n": 1
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Verser les haricots flageolets appertisés dans une passoire et les rincer à l'eau froide pour ôter le jus de conserve, qui est salé et un peu farineux, puis les laisser s'égoutter le temps du rôtissage. Peler l'oignon et le garder entier ; réserver à côté de lui le laurier et la petite part de thym destinée aux haricots, le reste du thym partant sur le gigot. La conserve étant déjà cuite, ces aromates n'auront que le réchauffage final pour se faire entendre, et il ne sert à rien de les mettre à l'eau maintenant."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Peler l'ail et le tailler en éclats. Inciser le gigot à intervalles réguliers et glisser un éclat dans chaque fente."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Pendant que le gigot repose, réchauffer les flageolets égouttés dix minutes à couvert et à feu doux avec l'oignon entier, le thym et le laurier, sans ajouter d'eau et sans remuer plus que nécessaire : le grain est déjà cuit, une ébullition le réduirait en purée. Les deux dix minutes se recouvrent exactement, et c'est voulu : un gigot qui attendrait en plus le réchauffage du lit se trancherait froid. Retirer les aromates, goûter avant de saler — la conserve en apporte déjà —, puis lier au beurre et au jus de rôtissage dégraissé et servir le gigot tranché sur ce lit."
+        }
+      ],
+      "techniques": [
+        "rôtissage",
+        "repos de la viande",
+        "liaison au beurre"
+      ],
+      "conservation": "La viande tranchée se garde 2 jours au froid ; les flageolets 2 jours seulement, une conserve déjà réchauffée une fois supportant mal un second passage sur le feu. Les remettre alors à couvert sur feu très doux, sans remuer, le temps qu'ils soient chauds à cœur.",
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 1,
+          "salty": 2,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 0,
+          "heat": 3,
+          "pungency": 0,
+          "richness": 3,
+          "freshness": 4,
+          "intensity": 1
+        },
+        "dominant_flavors": [
+          "agneau_rôti",
+          "ail_confit",
+          "haricot_fondant"
+        ],
+        "aroma_families": [
+          "viande_rôtie",
+          "ail",
+          "thym"
+        ],
+        "target_textures": [
+          "croûte_dorée",
+          "chair_rosée",
+          "haricot_fondant"
+        ],
+        "signature_ingredients": [
+          "Gigot d'agneau cru",
+          "Haricot flageolet appertisé, égoutté",
+          "Ail cru"
+        ],
+        "identity_guardrails": [
+          "Le gigot repose avant d'être tranché, sinon le jus part sur la planche.",
+          "Les flageolets ne sont pas un accompagnement rapporté : ils finissent dans le jus de rôtissage.",
+          "La conserve ne se recuit pas : dix minutes à couvert suffisent à la parfumer, au-delà la peau éclate et le lit tourne en purée."
+        ]
+      }
+    },
+    {
+      "code": "SRC-009-D4",
+      "base": "SRC-009",
+      "family": "Bouchées à la reine alsaciennes aux quenelles",
+      "variant_label": "Version alsacienne de fête : augmenter la part de viandes, ajouter des quenelles coupées en tronçons au moment de réunir la garniture, et servir avec des spätzle.",
+      "rationale": "La part de viandes passe de 925 à 1200 g et les quenelles ajoutent 360 g de garniture, sans que le velouté grossisse d'un gramme : la sauce devient courte, et la quenelle, qui continue de boire une fois dans la casserole, la resserre encore. C'est pourquoi le bouillon monte de 750 à 950 g — les 600 g de la sauce ne changent pas, le supplément sert à détendre la garniture louche par louche. Les quenelles se pochent à l'eau salée et non dans le bouillon, qu'elles absorberaient au détriment de la sauce : cela coûte une casserole de plus et une douzaine de minutes. Les spätzle se servent à côté, dans leur plat : ils recueillent le surplus de sauce mais ne sont pas dans l'assiette pesée, et ne comptent donc pas dans les ingrédients.",
+      "prep_minutes": 40,
+      "cook_minutes": 100,
+      "operations": [
+        {
+          "op": "set",
+          "form": "Poulet entier cru",
+          "quantity": 900
+        },
+        {
+          "op": "set",
+          "form": "Escalope de veau crue fine",
+          "quantity": 300
+        },
+        {
+          "op": "set",
+          "form": "Bouillon de volaille",
+          "quantity": 950
+        },
+        {
+          "op": "add",
+          "form": "Quenelle nature crue",
+          "quantity": 360,
+          "unit": "g",
+          "role": "garniture",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Peler la carotte et l'oignon jaune, les couper en gros tronçons. Détailler le poulet en quatre morceaux et l'installer avec les légumes dans une cocotte assez large pour que le bouillon recouvre tout : la part de viande est ici plus lourde d'un tiers qu'au plat de base, et un morceau qui affleure cuit d'un côté seulement. Verser le bouillon de volaille, amener à frémissement puis couvrir et laisser cuire 45 minutes à tout petits bouillons, en retournant les morceaux à mi-parcours."
+        },
+        {
+          "op": "insert",
+          "after": 4,
+          "instruction": "Pocher les quenelles nature crues dans une large casserole d'eau salée à peine frémissante, dix à douze minutes selon leur grosseur : elles gonflent de moitié, remontent en surface et se raffermissent sous le doigt. À l'eau et non dans le bouillon, qu'elles boiraient au détriment de la sauce, et sans jamais laisser bouillir, sous peine de les voir éclater. Les égoutter sur un linge, les laisser tiédir pour qu'elles se tiennent au couteau, puis les couper en tronçons de deux centimètres."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Verser les cubes de viande, les champignons et les tronçons de quenelle dans le velouté, baisser au minimum et laisser les saveurs se lier 5 minutes sans que la sauce reprenne l'ébullition. La quenelle continue de boire : la sauce épaissit à vue d'œil, et c'est là que sert le bouillon gardé au chaud, une louche à la fois, jusqu'à retrouver un velouté qui nappe."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Servir sans attendre, la garniture bien chaude répartie dans des croûtes feuilletées passées quelques minutes au four, et présenter à côté un plat de spätzle beurrés, comme le veut l'usage alsacien : ils recueillent le surplus de sauce mieux qu'une croûte déjà pleine. Le reste de sauce se présente à part en saucière."
+        }
+      ],
+      "conservation": "Se garde 2 jours au réfrigérateur à 4 °C dans une boîte hermétique, la garniture bien refroidie avant fermeture. Les quenelles continuent d'absorber la sauce au froid : compter une bonne louche de bouillon au réchauffage, à feu très doux ou au bain-marie, sans jamais laisser frémir. La congélation est à proscrire deux fois : la liaison jaune d'œuf et crème tranche au dégel, et la quenelle en ressort spongieuse.",
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 1,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 5,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "volaille",
+          "champignon",
+          "crème",
+          "vin blanc",
+          "quenelle"
+        ],
+        "aroma_families": [
+          "beurré",
+          "lacté",
+          "épicé doux",
+          "champignon"
+        ],
+        "target_textures": [
+          "sauce nappante",
+          "viande fondante",
+          "lamelles de champignon tendres",
+          "tronçons de quenelle gonflés et moelleux"
+        ],
+        "signature_ingredients": [
+          "Champignon de Paris frais",
+          "Escalope de veau crue fine",
+          "Bouillon de volaille",
+          "Jaune d'œuf cru",
+          "Quenelle nature crue"
+        ],
+        "identity_guardrails": [
+          "Sans la liaison finale au Jaune d'œuf cru et à la Crème fraîche liquide entière, le velouté retombe au rang de simple béchamel et le plat perd son caractère de sauce à la reine.",
+          "Retirer le Champignon de Paris frais ou la volaille pochée vide la garniture de sa substance : ce sont les deux éléments présents dans presque toutes les sources du dossier.",
+          "Le bouillon de volaille doit être celui du pochage des viandes, pas de l'eau salée : c'est lui qui porte tout l'umami de la sauce.",
+          "La sauce ne doit jamais bouillir après l'ajout des jaunes, sous peine de grainer irrémédiablement.",
+          "Les quenelles sont pochées à part et coupées en tronçons : jetées crues dans le velouté, elles y lâchent leur farine et le troublent."
+        ]
+      }
+    },
+    {
+      "code": "SRC-014-D5",
+      "base": "SRC-014",
+      "family": "Lentilles tièdes au jambonneau effiloché",
+      "variant_label": "Version plus copieuse : effilocher un jambonneau cuit à l'eau pendant une heure avec oignon et carotte, et l'incorporer aux lentilles avant la vinaigrette.",
+      "rationale": "Le jambonneau fait basculer la salade tiède en plat unique : 400 g de viande effilochée pour quatre parts s'ajoutent aux lentilles et à l'œuf, sans que rien ne soit retiré — 400 g de chair, ce qui veut dire une pièce d'environ 700 g avec son os, sa couenne et son gras. Il coûte une heure de pochage qui doit commencer avant tout le reste, plus 80 g de carotte et 80 g d'oignon pour son bouillon — les tronçons de carotte sont récupérés et rejoignent la salade, l'oignon a donné ce qu'il avait et reste au bouillon. La viande s'incorpore tiède, avant la vinaigrette comme la phrase le demande : c'est elle et le grain qui doivent boire l'assaisonnement ensemble, sinon le jus reste en fond de saladier. Le plat devient nettement plus salé et se garde deux jours au lieu de trois.",
+      "prep_minutes": 30,
+      "cook_minutes": 65,
+      "operations": [
+        {
+          "op": "add",
+          "form": "Jambonneau cuit",
+          "quantity": 400,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "op": "set",
+          "form": "Carotte crue",
+          "quantity": 200
+        },
+        {
+          "op": "set",
+          "form": "Oignon jaune cru",
+          "quantity": 180
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Mettre le jambonneau à cuire avant tout le reste : en prendre un d'environ 700 g avec son os, c'est ce qu'il faut pour rendre les 400 g de chair annoncés. Le poser dans une cocotte, le couvrir largement d'eau froide, y jeter 80 g de carotte pelée en gros tronçons et 80 g d'oignon en quartiers, porter au frémissement et laisser cuire une heure à couvert. Il en ressort moins salé et assez détendu pour s'effilocher à la fourchette. Pendant la première demi-heure, rincer les lentilles sous l'eau froide dans une passoire fine jusqu'à ce que l'eau ressorte claire. Peler le reste de la carotte et le tailler en rondelles de 3 mm, fendre le poireau et le débiter en fines demi-rondelles après l'avoir bien lavé. Peler le reste de l'oignon et le couper en deux : une moitié partira entière à la cuisson des lentilles, l'autre sera émincée crue au dernier moment. Ne mettre les lentilles sur le feu qu'une vingtaine de minutes avant la fin du pochage : le temps de monter en température et de cuire, elles seront tièdes à point quand la viande sortira. Lancées en même temps que le jambonneau, elles auraient quarante minutes à refroidir dans le saladier et ne boiraient plus rien."
+        },
+        {
+          "op": "insert",
+          "after": 5,
+          "instruction": "Sortir le jambonneau de son bouillon, le laisser tiédir dix minutes puis l'effilocher à la fourchette en écartant l'os, la couenne et le gras ferme. Repêcher aussi les tronçons de carotte, qui ont pris le goût de la viande, et les couper en rondelles ; l'oignon du bouillon, lui, a donné ce qu'il avait et n'a plus rien à faire dans la salade. Verser viande et carotte sur les lentilles encore tièdes et mélanger tout de suite, avant d'assaisonner."
+        }
+      ],
+      "conservation": "Se garde 2 jours au réfrigérateur entre 0 et 4 °C en boîte hermétique, vinaigrette déjà incorporée — la viande effilochée ramène la salade de trois jours à deux. Sortir 30 minutes avant le service ou réchauffer 1 minute à la poêle à feu doux pour retrouver la tiédeur. Les œufs mollets ne se conservent pas plus de 24 h et se posent au dernier moment. Congélation à proscrire : la lentille corail se délite en purée à la décongélation et les herbes fraîches noircissent.",
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 3,
+          "richness": 4,
+          "freshness": 2,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "terreux",
+          "porc cuit",
+          "acidulé",
+          "herbacé",
+          "alliacé"
+        ],
+        "aroma_families": [
+          "herbacé",
+          "aromates séchés",
+          "alliacé",
+          "viande pochée"
+        ],
+        "target_textures": [
+          "lentilles fondantes mais entières",
+          "viande effilochée fondante",
+          "jaune d'œuf coulant",
+          "éclats de noix croquants",
+          "oignon cru croquant"
+        ],
+        "signature_ingredients": [
+          "Lentille corail sèche, crue",
+          "Jambonneau cuit",
+          "Huile d'olive vierge extra",
+          "Vinaigre de vin rouge",
+          "Persil frais"
+        ],
+        "identity_guardrails": [
+          "Les lentilles doivent être assaisonnées encore tièdes : une fois froides elles n'absorbent plus la vinaigrette et le plat bascule en salade froide banale.",
+          "L'eau de cuisson des lentilles reste non salée jusqu'à la fin, sinon la peau durcit et le grain ne s'attendrit plus uniformément.",
+          "La garniture aromatique carotte-poireau-oignon cuite avec la légumineuse et le duo thym-laurier constituent la base commune à toutes les sources : les retirer viderait le plat de son fond de goût.",
+          "La vinaigrette doit rester une émulsion huile d'olive et vinaigre franchement acide ; adoucie ou crémée, le contraste avec la lentille disparaît.",
+          "Le jambonneau entre effiloché et tiède, avant la vinaigrette : posé froid par-dessus au dernier moment, il ne boit rien et redevient une tranche de charcuterie à côté d'une salade."
+        ]
+      }
+    },
+    {
+      "code": "SRC-014-D6",
+      "base": "SRC-014",
+      "family": "Lentilles tièdes aux noisettes torréfiées",
+      "variant_label": "Troquer les noix contre des noisettes torréfiées à sec.",
+      "rationale": "La noisette remplace la noix à poids égal, mais pas à goût égal : elle est plus sucrée et n'a pas l'amertume tannique de la noix, celle qui répondait au vinaigre. La vinaigrette n'est pas retouchée pour autant, si bien que l'acidité paraît un peu plus nue. La torréfaction à sec coûte quatre minutes de poêle, un linge pour frotter les pellicules et le temps de refroidir — chaudes, les noisettes ramolliraient au contact des lentilles tièdes. Le fruit à coque cesse aussi d'être facultatif : c'est lui que cette version annonce, on ne peut pas l'omettre.",
+      "prep_minutes": 25,
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Noix",
+          "with": "Noisette grillée",
+          "quantity": 40,
+          "unit": "g",
+          "role": "garniture croquante",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 5,
+          "instruction": "Torréfier les noisettes à sec dans une petite poêle sur feu moyen, trois à quatre minutes en la secouant sans arrêt, jusqu'à ce qu'elles embaument et que la peau se craquèle. Les verser aussitôt dans un linge et les frotter pour ôter les pellicules, qui sont amères, puis les laisser refroidir à l'air libre : versées chaudes sur des lentilles tièdes, elles ramolliraient et ne croqueraient plus."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Ciseler le persil et la ciboulette, concasser grossièrement les noisettes refroidies au couteau — en éclats et non en poudre, sinon il ne reste rien à croquer. Les ajouter au saladier avec l'oignon cru émincé très finement, mélanger une dernière fois, répartir dans les assiettes puis poser sur chacune un œuf ouvert en deux. Rectifier en poivre et servir sans attendre, à peine tiède."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 2,
+          "salty": 2,
+          "acidic": 3,
+          "bitter": 0,
+          "umami": 2,
+          "heat": 0,
+          "pungency": 3,
+          "richness": 3,
+          "freshness": 3,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "terreux",
+          "noisette torréfiée",
+          "acidulé",
+          "herbacé",
+          "alliacé"
+        ],
+        "aroma_families": [
+          "herbacé",
+          "fruit à coque grillé",
+          "aromates séchés",
+          "alliacé"
+        ],
+        "target_textures": [
+          "lentilles fondantes mais entières",
+          "jaune d'œuf coulant",
+          "éclats de noisette croquants",
+          "oignon cru croquant"
+        ],
+        "signature_ingredients": [
+          "Lentille corail sèche, crue",
+          "Noisette grillée",
+          "Huile d'olive vierge extra",
+          "Vinaigre de vin rouge",
+          "Persil frais"
+        ],
+        "identity_guardrails": [
+          "Les lentilles doivent être assaisonnées encore tièdes : une fois froides elles n'absorbent plus la vinaigrette et le plat bascule en salade froide banale.",
+          "L'eau de cuisson reste non salée jusqu'à la fin, sinon la peau durcit et le grain ne s'attendrit plus uniformément.",
+          "La garniture aromatique carotte-poireau-oignon cuite avec la légumineuse et le duo thym-laurier constituent la base commune à toutes les sources : les retirer viderait le plat de son fond de goût.",
+          "La vinaigrette doit rester une émulsion huile d'olive et vinaigre franchement acide ; adoucie ou crémée, le contraste avec la lentille disparaît.",
+          "Les noisettes se torréfient à sec et se concassent au couteau : achetées en poudre ou en éclats déjà broyés, elles se noient dans la vinaigrette et le croquant annoncé disparaît."
+        ]
+      }
+    }
+  ]
+}

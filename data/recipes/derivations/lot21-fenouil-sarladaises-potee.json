@@ -1,0 +1,417 @@
+{
+  "lot": "lot21 — fenouil provençal, sarladaises et potée charcutière",
+  "note": "Trois bases, douze variantes annoncées, six déjà dérivées, cinq écrites ici et une écartée. Ce lot est d'abord composé de reprises : quatre des dérivations qui suivent avaient été refusées au lot14 ou renvoyées en variante par l'arbitrage de leur base, faute d'une forme au catalogue. L'arbitrage vient de les rendre, et le raisonnement de l'époque n'a plus d'objet — SRC-049 sort enfin de son unique dérivée. Trois points de méthode méritent d'être dits. D'abord le jambonneau de SRC-050 : le registre porte « Jambonneau cuit » et non le demi-sel cru que l'étiquette décrit, ce qui est cohérent avec la convention de la base, où « Pomme de terre cuite » désigne déjà des tubercules crus au moment où on les jette au bouillon — la forme nomme l'état consommé, la quantité est celle de la chair effilochée, et la note du registre le dit explicitement (« un jambonneau de 1 kg en donne environ 600 g »). Ensuite le zeste d'orange de SRC-040 : refusé à l'arbitrage puisque seule l'entrée confite existe, il figure dans les étapes sans être déclaré, ce qui est exact au gramme près — une lanière prélevée puis retirée avant le service ne laisse dans l'assiette que des composés aromatiques que Ciqual ne pèse pas. Le contrôle d'étiquette ne signale rien sur les cinq dérivations, mais c'est le point qu'un relecteur doit vérifier à la main : la consigne « ajouter une lanière de zeste d'orange » n'a aucune opération en face, et c'est délibéré, non un oubli. Le troisième point est le « ou » de SRC-049[0], « aux cèpes OU aux girolles » : la dérivée ne déclare que le cèpe, à trois cents grammes, et renvoie la girolle en prose dans l'étape de parage, où elle est donnée pour interchangeable au même poids. Déclarer les deux champignons côte à côte, comme une première rédaction le faisait, produisait une pesée mixte que ni l'une ni l'autre des deux versions annoncées ne décrit ; le corpus tranche partout ailleurs de la même façon, une branche par dérivée — SRC-053 et SRC-056 ont chacune reçu leur seconde branche dans un lot ultérieur, et rien n'interdit qu'une girolle à part entière suive un jour ici. Reste une décision de cuisson qu'on ne maquille pas : le jus de tomate acidifie le liquide de braisage et retarde le ramollissement des fibres du fenouil, d'où dix minutes de cuisson en plus, dites dans l'étape comme dans le rationale. Un piège d'outil, pour qui écrira le lot suivant : contrairement à « replace », l'« insert » du moteur splice à l'index courant du tableau et non à la numérotation de la base, si bien que deux insertions dans une même dérivée se décalent l'une l'autre. SRC-049-D2 en porte deux et les déclare de la dernière vers la première, seul ordre où chaque « after » se lit encore dans la numérotation de SRC-049 ; posées dans l'autre sens, le rissolage des champignons tombait avant l'étape qui couvre la poêle, et rien ne l'aurait signalé. Côté écartées, une seule tombe, et le lot14 s'était trompé sur l'autre. La moutarde-cornichons reste dehors : l'étiquette dit elle-même « posés sur la table », rien ne se cuit, rien n'entre dans l'assiette pesée. Le service en deux temps, en revanche, revient et devient SRC-050-D4. Le motif du lot14 — « ne change que l'ordre des assiettes » — ne tient pas à l'examen : le bouillon est versé SUR le pain, qui le boit et se mange, et « Pain de campagne » est employable depuis toujours, si bien que l'écartement n'a jamais reposé sur une forme manquante. Le corpus l'avait déjà tranché : SRC-033[1], « service à la marseillaise », est un pur changement de service et a pourtant donné SRC-033-D2, qui déclare 160 g de pain de campagne en rôle « service » et réécrit ses deux dernières étapes. Même traitement ici, aux durées de cuisson près, qui ne changent pas — c'est le repas qui change, pas la casserole.",
+  "derivations": [
+    {
+      "code": "SRC-040-D4",
+      "base": "SRC-040",
+      "family": "Fenouil braisé à la provençale",
+      "variant_label": "À la provençale : remplacer une partie de l'eau par du jus de tomate et ajouter une lanière de zeste d'orange dans le liquide de braisage.",
+      "rationale": "Cent cinquante millilitres de jus de tomate prennent la place d'autant d'eau, le volume de mouillement restant le même : le braisage se colore, gagne une acidité fruitée et un fond légèrement umami que le vin seul ne donnait pas, et le jus final réduit en un nappage rouge au lieu d'un sirop clair. Le zeste d'orange n'est pas déclaré en ingrédient — la lanière est prélevée, infusée puis retirée, elle ne pèse rien dans l'assiette et le catalogue n'a de toute façon que l'entrée confite, qui est un autre produit. Le coût est d'abord une cuisson plus longue de dix minutes : l'acide du jus de tomate raffermit les fibres du bulbe et retarde le moment où le couteau les traverse. Il est ensuite une surveillance accrue en fin de réduction, le jus de tomate accrochant au fond bien plus vite que l'eau, et une amertume qui guette si la lanière reste dans la cocotte jusqu'au service.",
+      "cook_minutes": 45,
+      "operations": [
+        {
+          "op": "set",
+          "form": "Eau",
+          "quantity": 100,
+          "unit": "ml"
+        },
+        {
+          "op": "add",
+          "form": "Jus de tomate",
+          "quantity": 150,
+          "unit": "ml",
+          "role": "mouillement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Verser le vin blanc sur le fond brûlant et gratter les sucs à la spatule ; laisser bouillonner une minute pour chasser l'alcool. Mouiller ensuite avec le jus de tomate et l'eau mêlés, qui doivent monter à mi-hauteur des quartiers comme dans la version claire : le volume total ne change pas, c'est sa nature qui change. Prélever à l'économe une large lanière de zeste d'orange en restant à la surface de l'écorce, sans emporter le blanc qui amertumerait, et la glisser entre deux morceaux de fenouil. Éparpiller le thym et le sucre, dont l'utilité devient ici plus nette puisque le jus de tomate ajoute son acidité à celle du vin et du citron, puis assaisonner de sel et de poivre."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Poser le couvercle et maintenir un frémissement paresseux pendant quarante minutes, en retournant les quartiers une fois à mi-cuisson pour qu'ils s'imprègnent des deux côtés. Compter dix minutes de plus qu'avec de l'eau seule : l'acidité du jus de tomate raffermit les parois des fibres et retarde le moment où elles cèdent. Le fenouil est prêt quand la pointe d'un couteau traverse le cœur sans résistance, et pas une minute avant — sous-cuit dans un liquide acide, il reste franchement croquant."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Retirer d'abord la lanière de zeste, qui a donné tout ce qu'elle avait et ne ferait plus que céder son amer. Ôter le couvercle et pousser le feu quelques minutes : le jus doit se resserrer jusqu'à napper les quartiers d'un enrobage rouge et brillant. Rester devant la cocotte à ce moment, cuillère à la main, car la tomate accroche au fond bien plus vite que l'eau et brûle sans prévenir. Rectifier l'assaisonnement, disperser les plumets réservés et servir sans attendre, la sauce cuillérée par-dessus."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 3,
+          "salty": 2,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 2,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 2,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "anisé",
+          "tomate cuite",
+          "orange",
+          "citronné"
+        ],
+        "aroma_families": [
+          "anisée",
+          "agrume",
+          "végétal cuit"
+        ],
+        "target_textures": [
+          "fondant",
+          "légèrement confit",
+          "jus réduit et nappant"
+        ],
+        "signature_ingredients": [
+          "Fenouil frais",
+          "Jus de tomate",
+          "Vin blanc sec"
+        ],
+        "identity_guardrails": [
+          "Le fenouil doit être braisé en quartiers gardant leur cœur : émincé finement, il devient une fondue de fenouil et perd l'identité du plat.",
+          "Le jus de tomate reste un mouillement : il se réduit autour des quartiers et les enrobe, il ne les noie pas dans une sauce tomate qui ferait du plat un autre plat.",
+          "Le zeste d'orange se retire avant la réduction finale ; laissé dans la cocotte il continue de céder son amertume et couvre l'anis du bulbe.",
+          "L'acidité du vin blanc et du citron reste structurante et le jus de tomate s'y ajoute sans la remplacer : privée d'elle, la version provençale vire au légume sucré et l'amertume du bulbe ressort.",
+          "La cuisson se fait à couvert dans un liquide court puis réduit ; rôti à sec au four, le résultat n'est plus un braisé."
+        ]
+      }
+    },
+    {
+      "code": "SRC-049-D2",
+      "base": "SRC-049",
+      "family": "Pommes de terre sarladaises aux cèpes",
+      "variant_label": "Aux cèpes ou aux girolles : quelques champignons rissolés séparément sont ajoutés en même temps que la persillade, comme le proposent plusieurs pages du dossier.",
+      "rationale": "Trois cents grammes de cèpes frais sont rissolés dans une poêle à part et rejoignent les rondelles en même temps que la persillade : le plat gagne un parfum de sous-bois et une seconde mâche, ferme au milieu des pommes de terre fondantes. L'étiquette laisse le choix entre le cèpe et la girolle, et la dérivée tranche pour le cèpe, qui est le champignon du dossier périgourdin ; l'étape de parage dit que la girolle se conduit de la même façon et peut prendre sa place au même poids, mais déclarer les deux ensemble donnerait une pesée que ni l'une ni l'autre des deux versions annoncées ne décrit. Le coût est un quart d'heure de parage à sec avant même d'allumer le feu, et une quatrième cuillerée de gras prélevée sur le confit pour la seconde poêle. C'est aussi un risque : un champignon mal essuyé ou versé cru sur les rondelles rend son eau dans la poêle et défait le croustillant que tout le reste de la méthode cherche à obtenir.",
+      "prep_minutes": 35,
+      "operations": [
+        {
+          "op": "add",
+          "form": "Cèpe cru",
+          "quantity": 300,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 6,
+          "instruction": "Profitez des dix minutes où les pommes de terre s'attendrissent à couvert pour faire chauffer la quatrième cuillerée de gras dans une seconde poêle, assez large pour recevoir les tranches en une seule couche : entassés, les cèpes s'étuvent au lieu de rissoler. Laissez-les rendre leur eau deux à trois minutes sans y toucher, puis montez le feu et sautez-les cinq à six minutes de plus, jusqu'à ce que le liquide ait entièrement disparu et que les tranches accrochent une couleur noisette. Ne salez qu'à cet instant : le sel donné plus tôt les aurait fait pleurer et les aurait empêchés de colorer."
+        },
+        {
+          "op": "insert",
+          "after": 2,
+          "instruction": "Nettoyez les cèpes à sec, sans jamais les passer sous le robinet : gorgé d'eau, un champignon ne rissole plus, il bouillonne. Grattez la terre du pied à la pointe du couteau, essuyez les chapeaux au linge à peine humide, puis détaillez pieds et chapeaux en tranches d'un demi-centimètre pour qu'ils cuisent au même rythme. Des girolles rendraient le même service au même poids, à ceci près qu'on se contente de parer leur base, de les garder entières si elles tiennent dans le pouce et de fendre en deux celles qui dépassent. Comptez un bon quart d'heure pour ce travail : c'est lui qui allonge la recette, pas la cuisson."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Prenez une cuisse de confit d'environ 220 g avec son os et son gras, qui donnera les 75 g de chair annoncés. Tiédissez-la à feu doux pour que la graisse se détache, effilochez la viande et réservez-la, en gardant cette fois quatre bonnes cuillerées de gras fondu : trois pour les rondelles, la quatrième mise de côté pour les cèpes, qui doivent rissoler dans le même gras et non dans du beurre."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Hachez finement l'ail dégermé avec le persil. Découvrez, dispersez cette persillade, la chair de confit effilochée et les cèpes rissolés, remontez le feu deux minutes tout au plus pour réveiller les parfums sans brûler l'ail, et servez aussitôt. Les cèpes arrivent déjà cuits : ils ne font que se mêler aux rondelles, et un séjour plus long leur ferait relâcher dans la poêle l'eau qu'on vient de leur faire perdre."
+        }
+      ],
+      "sensory": {
+        "profile": "savory_crisp",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 3,
+          "richness": 4,
+          "freshness": 2,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "ail",
+          "canard confit",
+          "cèpe rissolé",
+          "persil"
+        ],
+        "aroma_families": [
+          "alliacé",
+          "herbacé",
+          "gras rôti",
+          "sous-bois"
+        ],
+        "target_textures": [
+          "rondelles croustillantes en surface",
+          "cœur fondant",
+          "cèpes fermes et colorés",
+          "chair de canard effilochée"
+        ],
+        "signature_ingredients": [
+          "Pomme de terre cuite",
+          "Confit de canard cuit",
+          "Cèpe cru"
+        ],
+        "identity_guardrails": [
+          "La persillade ail-persil s'ajoute dans les toutes dernières minutes : cuite dès le départ, elle noircit et le plat perd son parfum caractéristique.",
+          "Les cèpes se rissolent dans une poêle à part et n'arrivent qu'à la fin : versés crus sur les rondelles, ils y rendent leur eau et défont le croustillant.",
+          "La cuisson se fait dans un gras de canard ou d'oie, ici celui du confit ; à l'huile, ce sont des pommes de terre sautées ordinaires, plus des sarladaises.",
+          "Les rondelles doivent être parfaitement essuyées avant la poêle, faute de quoi elles rendent leur eau et tournent à la purée."
+        ]
+      }
+    },
+    {
+      "code": "SRC-049-D3",
+      "base": "SRC-049",
+      "family": "Pommes de terre sarladaises à la graisse d'oie",
+      "variant_label": "Sans confit : simple accompagnement cuit à la graisse d'oie, servi avec un magret ou une volaille rôtie.",
+      "rationale": "Le confit sort et la graisse d'oie prend sa place comme matière grasse déclarée : soixante grammes, soit les trois cuillerées que la cuisse fournissait auparavant, mais achetées en pot au lieu d'être récupérées sur la viande. Le plat reste une sarladaise — le gras de palmipède et la persillade en font l'identité, la chair de canard n'en était qu'un supplément — mais il perd sa protéine et redevient ce que l'étiquette annonce : un accompagnement, qui se sert contre un magret poêlé ou une volaille rôtie. Ce que cela coûte est du goût : soixante-quinze grammes de chair salée et de collagène disparaissent, l'umami et la longueur en bouche avec eux, et il ne reste plus que l'ail, le persil et le gras pour tenir le plat. Ce que cela fait gagner est du temps et de la simplicité, la cuisse à tiédir et à effilocher étant le poste le plus fastidieux de la recette.",
+      "prep_minutes": 15,
+      "cook_minutes": 28,
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Confit de canard cuit",
+          "with": "Graisse d'oie",
+          "quantity": 60,
+          "unit": "g",
+          "role": "matière grasse"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Prélevez trois bonnes cuillerées de graisse d'oie dans son pot, soit les 60 g annoncés, et laissez-les attendre à température ambiante le temps de finir les rondelles : sortie du réfrigérateur, la graisse est dure comme du beurre et met une éternité à s'étaler dans la poêle. C'est elle seule qui porte désormais le goût du plat, il n'y a plus de viande pour le faire à sa place — ne la remplacez ni par de l'huile ni par du beurre, ce ne seraient plus des sarladaises."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Hachez finement l'ail dégermé avec le persil. Découvrez, dispersez cette persillade, remontez le feu deux minutes tout au plus pour réveiller les parfums sans brûler l'ail, et servez aussitôt en accompagnement d'un magret poêlé ou d'une volaille rôtie, dont le jus tiendra lieu de sauce. Sans viande dans la poêle, la persillade et la graisse d'oie sont tout ce qui distingue ces rondelles de pommes de terre sautées ordinaires : ne les comptez pas à l'économie."
+        }
+      ],
+      "sensory": {
+        "profile": "savory_crisp",
+        "scores": {
+          "sweet": 1,
+          "salty": 2,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 1,
+          "heat": 0,
+          "pungency": 3,
+          "richness": 4,
+          "freshness": 2,
+          "intensity": 2
+        },
+        "dominant_flavors": [
+          "ail",
+          "graisse d'oie",
+          "persil"
+        ],
+        "aroma_families": [
+          "alliacé",
+          "herbacé",
+          "gras rôti"
+        ],
+        "target_textures": [
+          "rondelles croustillantes en surface",
+          "cœur fondant"
+        ],
+        "signature_ingredients": [
+          "Pomme de terre cuite",
+          "Graisse d'oie",
+          "Ail cru"
+        ],
+        "identity_guardrails": [
+          "La persillade ail-persil s'ajoute dans les toutes dernières minutes : cuite dès le départ, elle noircit et le plat perd son parfum caractéristique.",
+          "La graisse d'oie est ici la seule matière grasse et le seul goût de palmipède du plat : remplacée par une huile ou par du beurre, ce ne sont plus que des pommes de terre sautées.",
+          "Le plat n'a plus de protéine : il se sert contre une viande rôtie ou poêlée, jamais seul en plat principal.",
+          "Les rondelles doivent être parfaitement essuyées avant la poêle, faute de quoi elles rendent leur eau et tournent à la purée."
+        ]
+      }
+    },
+    {
+      "code": "SRC-050-D3",
+      "base": "SRC-050",
+      "family": "Potée auvergnate au jambonneau",
+      "variant_label": "Version charcutière complète : ajouter un jambonneau demi-sel dessalé deux heures à l'eau froide courante, mis à pocher une heure avant les saucisses.",
+      "rationale": "Un jambonneau demi-sel entre au bouillon une heure avant les saucisses et donne six cents grammes de chair qui se défait à la fourchette, soit une troisième charcuterie et un plat qui nourrit franchement six couverts. Le bouillon y gagne aussi : le jarret relâche son collagène, le liquide prend du corps sans qu'on le lie, et les légumes cuisent ensuite dans quelque chose de plus dense. Le prix est double. Il est en temps d'abord — deux heures de dessalage sous l'eau froide avant même de commencer, puis soixante minutes de pochage en tête de cuisson, ce qui porte la casserole à deux heures quarante. Il est en sel ensuite : même dessalé, le jarret continue de saler le bouillon pendant toute la cuisson, de sorte que les dix grammes de sel fin de la base descendent à cinq et ne seront le plus souvent pas employés du tout. Un dessalage écourté rend le plat entier trop salé, et rien, à ce stade, ne permet de le corriger.",
+      "prep_minutes": 40,
+      "cook_minutes": 160,
+      "operations": [
+        {
+          "op": "add",
+          "form": "Jambonneau cuit",
+          "quantity": 600,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "op": "set",
+          "form": "Sel fin",
+          "quantity": 5,
+          "optional": true
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 0,
+          "instruction": "Commencer deux heures à l'avance par le dessalage du jambonneau. Prévoir une pièce demi-sel d'environ 1,1 kg avec son os, qui laissera les 600 g de chair annoncés une fois pochée et détachée. La déposer dans une bassine sous un mince filet d'eau froide courante, ou à défaut dans un grand volume d'eau froide renouvelé quatre ou cinq fois, et l'y laisser deux heures pleines. C'est ce trempage qui décide du sel du plat entier : le bouillon prendra tout ce que la viande relâchera, et plus rien ensuite ne pourra le lui retirer."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Coucher le jambonneau dessalé et égoutté au fond d'une grande cocotte et le recouvrir de quatre bons doigts d'eau froide — il faut voir plus large que pour les seules saucisses, puisqu'elles viendront s'y ajouter en cours de route. Ajouter l'oignon clouté, l'oignon fendu et l'ail, puis monter tout doucement en température."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Dès que la surface frissonne, cueillir la mousse grise à la louche jusqu'à ce que le bouillon redevienne net, puis maintenir un frémissement paresseux, couvercle posé de biais, pendant une heure : le jarret est le morceau le plus long du plat et prend cette avance sur tout le reste. Coucher alors les saucisses de Morteau et de Montbéliard entières dans le bouillon, sans jamais les piquer, écumer une seconde fois si besoin et poursuivre quarante-cinq minutes au même frémissement — une ébullition franche ferait éclater la peau des saucisses et troublerait le liquide. Ne rien saler à ce stade : entre les deux fumées et le jarret demi-sel, le bouillon se sale tout seul."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Goûter le bouillon avant toute correction. Avec trois charcuteries salées au lieu de deux, les 5 g de sel fin prévus seront le plus souvent de trop, et il n'est pas rare de n'en verser aucun : les incorporer par petites pincées successives en regoûtant chaque fois, ou les laisser dans la boîte. Donner un tour de moulin de poivre noir moulu et couper le feu."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Sortir les viandes du bouillon. Trancher les saucisses en rondelles épaisses ; dégager le jambonneau de son os et le détacher en gros morceaux à la fourchette plutôt qu'au couteau, car une chair restée près de trois heures au bouillon se défait d'elle-même et s'écraserait sous la lame. Disposer le tout au centre d'un plat creux bien chaud, ranger les légumes autour par familles, mouiller de trois ou quatre louches de bouillon brûlant et servir aussitôt, le reste du bouillon en soupière à côté."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 2,
+          "salty": 4,
+          "acidic": 0,
+          "bitter": 1,
+          "umami": 5,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "porc fumé",
+          "jarret demi-sel",
+          "chou braisé",
+          "bouillon salé"
+        ],
+        "aroma_families": [
+          "fumé",
+          "épices chaudes",
+          "végétal cuit"
+        ],
+        "target_textures": [
+          "légumes fondants",
+          "chair de jarret qui se défait à la fourchette",
+          "saucisse ferme et juteuse",
+          "bouillon corsé"
+        ],
+        "signature_ingredients": [
+          "Chou vert frais",
+          "Jambonneau cuit",
+          "Saucisse de Morteau",
+          "Saucisse de Montbéliard"
+        ],
+        "identity_guardrails": [
+          "Sans chou, ce n'est plus une potée : c'est lui qui structure le plat et parfume le bouillon en retour.",
+          "Le jambonneau s'ajoute aux deux saucisses fumées, il ne les remplace pas : c'est leur fumé qui fait le goût de cochonnaille, le jarret n'apporte que du fondant, du collagène et du sel.",
+          "Le dessalage de deux heures n'est pas négociable : un jambonneau demi-sel mis au bouillon sans dessaler rend le liquide impropre à être servi, et le bouillon est la moitié du plat.",
+          "Les légumes cuisent dans le bouillon des viandes, jamais dans une eau neuve : c'est cet échange qui distingue la potée d'un simple pot-au-feu de légumes.",
+          "Pas de liaison ni de crème : le corps du bouillon vient du jarret et de rien d'autre."
+        ]
+      }
+    },
+    {
+      "code": "SRC-050-D4",
+      "base": "SRC-050",
+      "family": "Potée auvergnate en deux services",
+      "variant_label": "Service en deux temps, à la mode paysanne : le bouillon d'abord, versé sur des tranches de pain de campagne rassis, puis viandes et légumes en plat de résistance.",
+      "rationale": "Deux cent quarante grammes de pain de campagne rassis, une bonne tranche par convive, attendent au fond des assiettes creuses et reçoivent le bouillon brûlant : le repas se fait en deux services, la soupe trempée d'abord, viandes et légumes ensuite en plat de résistance. La cuisson ne bouge pas d'une minute, mais le pain n'est pas un condiment posé au bord de la table : il boit le liquide, il est mangé, et il pèse dans l'assiette autant qu'une pomme de terre. Le coût est un pain acheté la veille — une mie encore fraîche se délite dès la première louche — et un plat de résistance qui doit attendre couvert et au chaud pendant qu'on mange la soupe, sous peine de se dessécher. Le bouillon, lui, ne se partage plus : versé sur le pain, il ne sert plus à mouiller la garniture, qui arrive donc sèche et dépend entièrement de la soupière pour qui veut en remettre.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Pain de campagne",
+          "quantity": 240,
+          "unit": "g",
+          "role": "service",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 7,
+          "instruction": "Pendant que le chou et les pommes de terre achèvent de cuire, trancher le pain de campagne rassis en six belles tranches d'une quarantaine de grammes et en déposer une au fond de chaque assiette creuse, tenue au chaud. Le pain doit être franchement sec : acheté la veille, ou passé une heure au four très doux si la miche est trop fraîche. Une mie humide se défait à la première louche et tourne en bouillie au lieu de se gorger."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Sortir les viandes et les légumes du bouillon. Trancher les saucisses en rondelles épaisses, les disposer au centre d'un plat creux bien chaud, ranger les légumes autour par familles, couvrir d'une feuille d'aluminium et glisser le plat au four à 80 °C, où il attendra le second service sans se dessécher. Remettre le bouillon un instant à frémir, puis en verser deux louches brûlantes sur chaque tranche de pain et porter les assiettes sans attendre : le pain doit se gorger devant le convive et non à la cuisine, où il se déferait avant d'arriver. Apporter le plat de viandes et de légumes une fois les assiettes creuses vidées, et laisser le reste du bouillon en soupière pour qui veut en remettre — c'est la seule sauce du second service, puisqu'il n'est plus mouillé dans le plat."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 2,
+          "salty": 4,
+          "acidic": 0,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "porc fumé",
+          "chou braisé",
+          "bouillon salé",
+          "légume-racine sucré"
+        ],
+        "aroma_families": [
+          "fumé",
+          "épices chaudes",
+          "végétal cuit"
+        ],
+        "target_textures": [
+          "pain gorgé de bouillon",
+          "légumes fondants",
+          "pomme de terre farineuse",
+          "saucisse ferme et juteuse",
+          "bouillon clair"
+        ],
+        "signature_ingredients": [
+          "Chou vert frais",
+          "Saucisse de Morteau",
+          "Saucisse de Montbéliard",
+          "Pomme de terre cuite"
+        ],
+        "identity_guardrails": [
+          "Sans chou, ce n'est plus une potée : c'est lui qui structure le plat et parfume le bouillon en retour.",
+          "La charcuterie doit être fumée et pochée entière ; remplacer Morteau et Montbéliard par une viande fraîche non fumée efface le goût de cochonnaille qui fait le plat.",
+          "Les légumes cuisent dans le bouillon des viandes, jamais dans une eau neuve : c'est cet échange qui distingue la potée d'un simple pot-au-feu de légumes.",
+          "Pas de liaison ni de crème : le bouillon reste clair et se sert tel quel.",
+          "Le pain reçoit le bouillon dans l'assiette et rien d'autre : grillé en croûtons, frotté d'ail ou mouillé d'avance, il ne fait plus la soupe trempée que le premier service annonce."
+        ]
+      }
+    }
+  ]
+}

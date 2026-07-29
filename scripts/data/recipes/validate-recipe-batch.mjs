@@ -142,12 +142,19 @@ for (const [rang, recette] of recettes.entries()) {
   const dire = (message) => refus.push(message)
 
   // ── identité ────────────────────────────────────────────────────────────
+  const reprise = String(recette.remplace || '').trim() || null
   const code = String(recette.code || '').trim()
   if (!code) dire('code absent')
   // Une dérivée suffixe le code de sa base : SRC-008-D1 se lit « première
   // variante de SRC-008 », et le lien de parenté reste visible à l'œil nu.
   else if (!/^[A-Z0-9]{2,6}-\d{3,4}(?:-D\d{1,2})?$/.test(code)) dire(`code « ${code} » hors format PREFIXE-NNN[-DN]`)
-  else if (codesExistants.has(code)) dire(`code « ${code} » déjà pris par le corpus`)
+  // Une RECETTE REPRISE réécrit une recette existante : son code et son nom sont
+  // forcément déjà pris, et c'est le but. Le champ « remplace » doit désigner
+  // exactement le code qu'elle porte — le versement applique la même règle, et
+  // pour la même raison : se tromper de cible, c'est écraser sans avoir regardé.
+  else if (reprise && reprise !== code) dire(`« remplace » annonce ${reprise} mais la recette porte le code ${code} : une reprise garde le code qu'elle remplace`)
+  else if (reprise && !codesExistants.has(code)) dire(`« remplace » désigne ${reprise}, absent du corpus`)
+  else if (!reprise && codesExistants.has(code)) dire(`code « ${code} » déjà pris par le corpus — ajouter « remplace » pour assumer une reprise`)
   else if (codesDuLot.has(code)) dire(`code « ${code} » en double dans le lot`)
   codesDuLot.add(code)
 
@@ -155,7 +162,8 @@ for (const [rang, recette] of recettes.entries()) {
   if (!famille) dire('family absent')
   else {
     const cle = normalizeName(famille)
-    if (famillesExistantes.has(cle)) dire(`« ${famille} » existe déjà au corpus sous ${famillesExistantes.get(cle)}`)
+    const occupant = famillesExistantes.get(cle)
+    if (occupant && !(reprise && occupant === code)) dire(`« ${famille} » existe déjà au corpus sous ${occupant}`)
     else if (famillesDuLot.has(cle)) dire(`« ${famille} » en double dans le lot (${famillesDuLot.get(cle)})`)
     famillesDuLot.set(cle, code)
   }
