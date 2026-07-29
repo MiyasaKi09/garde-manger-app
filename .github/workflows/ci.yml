@@ -330,6 +330,51 @@ jobs:
           echo "$n_task" | grep -qE '^[0-9]+$'
 
       # ────────────────────────────────────────────────────────────────────────
+      # [A] Corpus-v3 : le chargeur du corpus éditorial réellement servi.
+      #
+      # Les chargeurs R0, F0 et corpus-v1 étaient vérifiés ici, pas celui-ci —
+      # et c'est le seul que l'application lise. Le corpus a grandi de 302 à 339
+      # recettes sans que la base en sache rien : l'écran des recettes montrait
+      # 302 plats quand le dépôt en portait 339, et rien ne le signalait.
+      #
+      # Ce qui est vérifié : le SQL généré s'applique sur un schéma V2/V3 nu,
+      # il charge AUTANT de recettes que le corpus en déclare — un chargement
+      # partiel serait invisible autrement — et le rejouer ne crée pas de
+      # doublon.
+      # ────────────────────────────────────────────────────────────────────────
+      - name: "[A] Corpus-v3 charge autant de recettes que le corpus en déclare"
+        env:
+          DATABASE_URL: ${{ env.DB_A }}
+        run: |
+          node scripts/data/recipes/build-corpus-v3.mjs
+          attendu=$(node -e "console.log(JSON.parse(require('fs').readFileSync('data/recipes/corpus-v3.json','utf8')).recipes.length)")
+          echo "corpus déclaré : $attendu recettes"
+
+          # Le compte est limité au jeu de données V3 : l'étape corpus-v1 a déjà
+          # chargé ses propres recettes dans la même base, et les additionner
+          # ferait échouer ce contrôle pour la mauvaise raison.
+          compte="SELECT count(*) FROM culinary.recipe_versions rv
+                  JOIN ops.source_datasets sd ON sd.id = rv.source_dataset_id
+                  WHERE sd.code = 'myko_editorial_v3';"
+
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f scripts/data/out/corpus-v3-load.sql
+          charge=$(psql "$DATABASE_URL" -tAc "$compte")
+          echo "chargé en base : $charge versions V3"
+          if [ "$charge" != "$attendu" ]; then
+            echo "::error::le chargeur a écrit $charge recettes pour $attendu déclarées"
+            exit 1
+          fi
+
+          # Rejouer ne doit rien dupliquer : le chargeur remplace, il n'empile pas.
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f scripts/data/out/corpus-v3-load.sql
+          rejoue=$(psql "$DATABASE_URL" -tAc "$compte")
+          if [ "$rejoue" != "$attendu" ]; then
+            echo "::error::seconde application : $rejoue versions au lieu de $attendu"
+            exit 1
+          fi
+          echo "[A] corpus-v3 : $charge recettes chargées, idempotence vérifiée."
+
+      # ────────────────────────────────────────────────────────────────────────
       # SCÉNARIO B — Simulation d'une prod divergente, puis reconcile + apply
       #
       # Simule exactement l'état prod au 2026-07-15 :
