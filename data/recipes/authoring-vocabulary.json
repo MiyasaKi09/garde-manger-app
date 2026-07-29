@@ -10,8 +10,8 @@
     "recettes_actuelles": 339,
     "cible_recettes": 3000,
     "reste_a_ecrire": 2661,
-    "formes_employables": 425,
-    "formes_bloquees": 83
+    "formes_employables": 426,
+    "formes_bloquees": 82
   },
   "formes_employables": [
     {
@@ -8878,6 +8878,27 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Pâte feuilletée crue",
+      "normalise": "pate feuilletee crue",
+      "categorie": null,
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "fond"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 366,
+        "proteinG": 6.14,
+        "carbsG": 39.7,
+        "fatG": 20.1,
+        "fiberG": 2.32
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Pavé de saumon cru, sans peau",
       "normalise": "pave de saumon cru sans peau",
       "categorie": "poissons_fruits_de_mer",
@@ -10545,18 +10566,6 @@
       "normalise": "pate brisee crue",
       "categorie": "produits_sucres",
       "recettes_actuelles": 6,
-      "roles_observes": [
-        "fond"
-      ],
-      "motifs": [
-        "confiance C — proxy assumé, non publiable"
-      ]
-    },
-    {
-      "nom": "Pâte feuilletée crue",
-      "normalise": "pate feuilletee crue",
-      "categorie": "produits_sucres",
-      "recettes_actuelles": 1,
       "roles_observes": [
         "fond"
       ],
