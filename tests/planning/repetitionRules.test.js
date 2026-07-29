@@ -307,3 +307,67 @@ describe('auditWeekRepetition — contrôle avant publication (§17)', () => {
     expect(auditWeekRepetition({ slots: partiel }).blockers).toEqual([])
   })
 })
+
+// ── Parenté des variantes dérivées ─────────────────────────────────────────
+// Une variante dérivée porte son propre code : tous les compteurs par recette
+// la voient comme un plat sans rapport avec sa base. La lignée existe pour
+// qu'une semaine ne serve pas deux blanquettes de dinde en croyant varier.
+describe('lignée : une dérivée et sa base sont le même plat', () => {
+  const derivee = (code, lineage) => buildDiversityProfile({ recipeCode: code, lineage, family: 'plat mijoté' })
+
+  it('refuse une dérivée dans une semaine où sa base est déjà servie', () => {
+    const planned = [{ ...slot('2026-08-03', 'diner', 'SRC-008'), diversity: derivee('SRC-008', 'SRC-008') }]
+    const violations = repetitionViolations({
+      plannedSlots: planned,
+      date: '2026-08-06',
+      mealType: 'dejeuner',
+      recipeCode: 'SRC-008-D1',
+      lineage: 'SRC-008',
+    })
+    expect(violations.map((violation) => violation.code)).toContain('recipe_lineage_repeat')
+    expect(violations.find((violation) => violation.code === 'recipe_lineage_repeat').conflictsWith).toBe('SRC-008')
+  })
+
+  it('refuse deux dérivées d’une même base dans la même semaine', () => {
+    const planned = [{ ...slot('2026-08-03', 'diner', 'SRC-008-D1'), diversity: derivee('SRC-008-D1', 'SRC-008') }]
+    const violations = repetitionViolations({
+      plannedSlots: planned, date: '2026-08-06', mealType: 'dejeuner',
+      recipeCode: 'SRC-008-D2', lineage: 'SRC-008',
+    })
+    expect(violations.map((violation) => violation.code)).toContain('recipe_lineage_repeat')
+  })
+
+  it('laisse passer deux plats de lignées distinctes', () => {
+    const planned = [{ ...slot('2026-08-03', 'diner', 'SRC-008'), diversity: derivee('SRC-008', 'SRC-008') }]
+    const violations = repetitionViolations({
+      plannedSlots: planned, date: '2026-08-06', mealType: 'dejeuner',
+      recipeCode: 'SRC-020', lineage: 'SRC-020',
+    })
+    expect(violations.map((violation) => violation.code)).not.toContain('recipe_lineage_repeat')
+  })
+
+  // Sans lignée déclarée, une recette est sa propre lignée : le corpus
+  // historique doit se comporter exactement comme avant.
+  it('ne change rien pour une recette sans parenté', () => {
+    const planned = [{ ...slot('2026-08-03', 'diner', 'FR-001'), diversity: profile() }]
+    const violations = repetitionViolations({
+      plannedSlots: planned, date: '2026-08-06', mealType: 'dejeuner', recipeCode: 'FR-002',
+    })
+    expect(violations).toEqual([])
+  })
+
+  it('applique le délai de retour du plat à sa lignée entière', () => {
+    const history = buildPlanningHistory({
+      entries: [{ date: '2026-07-25', recipeCode: 'SRC-008', diversity: derivee('SRC-008', 'SRC-008') }],
+      referenceDate: '2026-07-29',
+    })
+    expect(history.lastUsedByLineage['SRC-008']).toBe('2026-07-25')
+    const penalty = historyReturnPenalty({
+      diversity: derivee('SRC-008-D1', 'SRC-008'),
+      date: '2026-07-29',
+      history,
+      rules: DEFAULT_REPETITION_RULES,
+    })
+    expect(penalty.reasons.map((reason) => reason.code)).toContain('recipe_returned_too_soon')
+  })
+})

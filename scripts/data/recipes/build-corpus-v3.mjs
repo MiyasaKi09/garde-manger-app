@@ -22,6 +22,18 @@ const num = (value) => value == null || value === '' ? 'NULL' : Number(value)
 const json = (value) => `${q(JSON.stringify(value))}::jsonb`
 const array = (values = []) => values.length ? `ARRAY[${values.map(q).join(',')}]::text[]` : `ARRAY[]::text[]`
 const hashRecipe = (recipe) => createHash('md5').update(JSON.stringify(recipe)).digest('hex')
+
+/**
+ * Lien d'une recette dérivée vers sa base, résolu par le code plutôt que par un
+ * identifiant : le corpus ne connaît que des codes, et la base réattribue ses
+ * uuid à chaque rechargement. La sous-requête ne rend rien tant que la base
+ * n'est pas chargée — d'où l'ordre imposé plus bas, les bases d'abord.
+ */
+const lienDeBase = (recipe) => (recipe.derived_from
+  ? `(SELECT base.id FROM culinary.recipe_versions base
+       JOIN ops.source_datasets base_ds ON base_ds.id = base.source_dataset_id
+      WHERE base_ds.code = 'myko_editorial_v3' AND base.source_record_key = ${q(recipe.derived_from)})`
+  : 'NULL')
 const corpusHash = createHash('md5').update(corpus.recipes.map(hashRecipe).sort().join(',')).digest('hex')
 const rulesHash = createHash('md5').update(JSON.stringify(corpus.planner_sensory_rules)).digest('hex')
 const declaredYields = new Map([
@@ -61,7 +73,15 @@ ON CONFLICT (code, version) DO UPDATE
   SET rules = EXCLUDED.rules, content_hash = EXCLUDED.content_hash;
 `
 
-for (const recipe of corpus.recipes) {
+// Les bases d'abord : une dérivée résout sa parenté par une sous-requête sur le
+// code de sa base, qui doit donc déjà être en table. Chargée dans le désordre,
+// la dérivée se poserait sans parent et personne ne le signalerait.
+const recettesOrdonnees = [
+  ...corpus.recipes.filter((recipe) => !recipe.derived_from),
+  ...corpus.recipes.filter((recipe) => recipe.derived_from),
+]
+
+for (const recipe of recettesOrdonnees) {
   const contentHash = hashRecipe(recipe)
   const eligible = eligibilityByCode.get(recipe.code)?.eligible_for_publication === true
   const declaredYield = declaredYields.get(recipe.code)
@@ -100,7 +120,8 @@ BEGIN
      quality_level, publication_status, content_hash,
      sensory_scores, dominant_flavors, aroma_families, target_textures,
      signature_ingredients, identity_guardrails, techniques, variant_candidates,
-     allergens, conservation_text, planning_eligible, eligibility_issues)
+     allergens, conservation_text, planning_eligible, eligibility_issues,
+     derived_from_version_id, derivation)
   SELECT
     v_family, 3, ${q(recipe.family)}, ds.id, ${q(recipe.code)},
     'Myko', 'editorial', ${num(recipe.servings)}, ${num(recipe.prep_minutes)}, ${num(recipe.cook_minutes)}, ${qn(recipe.difficulty)},
@@ -110,7 +131,8 @@ BEGIN
     ${array(recipe.sensory.aroma_families)}, ${array(recipe.sensory.target_textures)},
     ${array(recipe.sensory.signature_ingredients)}, ${array(recipe.sensory.identity_guardrails)},
     ${array(recipe.techniques)}, ${array(recipe.variants)}, ${array(recipe.allergens)},
-    ${qn(recipe.conservation)}, false, '[]'::jsonb
+    ${qn(recipe.conservation)}, false, '[]'::jsonb,
+    ${lienDeBase(recipe)}, ${json(recipe.derivation || {})}
   FROM ops.source_datasets ds WHERE ds.code = 'myko_editorial_v3'
   ON CONFLICT (recipe_family_id, version_number) DO UPDATE SET
     title = EXCLUDED.title,
@@ -136,7 +158,9 @@ BEGIN
     allergens = EXCLUDED.allergens,
     conservation_text = EXCLUDED.conservation_text,
     planning_eligible = false,
-    eligibility_issues = '[]'::jsonb
+    eligibility_issues = '[]'::jsonb,
+    derived_from_version_id = EXCLUDED.derived_from_version_id,
+    derivation = EXCLUDED.derivation
   RETURNING id INTO v_version;
 
   DELETE FROM quality.review_tasks rt

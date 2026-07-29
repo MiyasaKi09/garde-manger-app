@@ -390,8 +390,9 @@
     },
     "calvados": {
       "ciqual_alim_code": "1023",
+      "density_g_per_ml": 0.95,
       "confidence": "B",
-      "note": "Le Ciqual porte bien une entrée « Eau de vie, type calvados » (1024), mais sans valeur énergétique — ses macros sont toutes à zéro et l'énergie manquante. La reprendre telle quelle ferait passer un alcool à 40 % vol pour un produit à 0 kcal, ce qui est faux : l'apport d'une eau-de-vie vient presque entièrement de l'éthanol. L'entrée armagnac/cognac est le même produit du point de vue nutritionnel — un distillat à 40 % vol — et elle est chiffrée (228 kcal). C'est un proxy assumé, choisi parce qu'une absence ne doit jamais devenir un zéro."
+      "note": "Même cible qu'avant — l'entrée armagnac/cognac reste le proxy retenu, l'entrée calvados propre (1024) n'ayant aucune valeur énergétique. Seule la densité s'ajoute : une eau-de-vie à 40 % vol est un mélange d'éthanol (0,789) et d'eau, dont la masse volumique tombe autour de 0,95 g/ml. C'est la valeur que le script applique déjà au rhum, et pour la même raison. Le calvados de SRC-004 est flambé, donc une part de son alcool part à la flamme ; le corpus ne modélise pas cette perte et compte le liquide versé, ce qui majore légèrement l'apport."
     },
     "cannelle cassia": {
       "ciqual_alim_code": "11025",
@@ -586,7 +587,8 @@
     },
     "cidre brut": {
       "ciqual_alim_code": "5006",
-      "note": "Le brut plutôt que le doux : c'est celui que nomment les sources, et l'écart n'est pas anecdotique — 10,5 kcal contre 37,5, soit plus du triple, parce que le doux garde son sucre résiduel. Le cidre étant alcoolisé, l'énergie publiée ne se referme pas sur les seuls macronutriments ; c'est la valeur du classeur qui fait foi, pas un calcul d'Atwater."
+      "density_g_per_ml": 1,
+      "note": "Même cible qu'avant, seule la densité s'ajoute. Un cidre brut titre 4 à 5 % vol et garde peu de sucre : sa masse volumique reste celle de l'eau à un demi-pour-cent près, comme la bière et le vin auxquels le script applique déjà 1. Retenir 1 g/ml est exact à la précision qui compte ici — l'écart sur 300 ml se chiffre en un gramme et demi. Sans cette valeur, ces 300 ml ne comptaient pour rien : SRC-004 perdait une trentaine de kilocalories par plat, et surtout les glucides du cidre."
     },
     "cinq epices chinoises": {
       "ciqual_alim_code": "11081",

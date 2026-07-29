@@ -105,7 +105,10 @@ const TYPES_DE_PLAT = new Set([
   'coquille', 'coquilles',
 ])
 const UNITES = new Set(['g', 'ml', 'u', 'tranche', 'feuille'])
-const IDENTITES = new Set(['named_traditional_dish', 'domestic_standard'])
+// « documented_variation » désigne une recette dérivée : elle n'a pas d'identité
+// propre au répertoire, elle emprunte celle de sa base et s'en écarte d'un delta
+// documenté. Elle se valide comme les autres — même vocabulaire, mêmes bornes.
+const IDENTITES = new Set(['named_traditional_dish', 'domestic_standard', 'documented_variation'])
 const DIFFICULTES = new Set(['facile', 'moyenne', 'difficile'])
 
 /**
@@ -141,7 +144,9 @@ for (const [rang, recette] of recettes.entries()) {
   // ── identité ────────────────────────────────────────────────────────────
   const code = String(recette.code || '').trim()
   if (!code) dire('code absent')
-  else if (!/^[A-Z0-9]{2,6}-\d{3,4}$/.test(code)) dire(`code « ${code} » hors format PREFIXE-NNN`)
+  // Une dérivée suffixe le code de sa base : SRC-008-D1 se lit « première
+  // variante de SRC-008 », et le lien de parenté reste visible à l'œil nu.
+  else if (!/^[A-Z0-9]{2,6}-\d{3,4}(?:-D\d{1,2})?$/.test(code)) dire(`code « ${code} » hors format PREFIXE-NNN[-DN]`)
   else if (codesExistants.has(code)) dire(`code « ${code} » déjà pris par le corpus`)
   else if (codesDuLot.has(code)) dire(`code « ${code} » en double dans le lot`)
   codesDuLot.add(code)

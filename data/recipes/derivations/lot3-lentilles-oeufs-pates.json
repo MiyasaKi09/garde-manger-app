@@ -1,0 +1,222 @@
+{
+  "lot": "lot3 — variantes dérivées des lentilles tièdes, des œufs mimosa et des pâtes au thon",
+  "note": "SRC-015 est un cas particulier : sa base porte déjà le thon, l'avocat et la mayonnaise maison en ingrédients facultatifs, si bien que deux de ses variantes annoncées ne changent que la façon d'employer ce qu'elle a déjà. Elles se dérivent quand même, parce qu'un facultatif rendu obligatoire change la liste de courses et la nutrition — et que la méthode, elle, diffère vraiment. Une variante annoncée n'a pas pu être écrite : troquer les noix contre des noisettes torréfiées, faute de noisette au catalogue — la forme reste à arbitrer.",
+  "derivations": [
+    {
+      "code": "SRC-014-D1",
+      "base": "SRC-014",
+      "family": "Lentilles tièdes aux lardons",
+      "variant_label": "Remplacer l'œuf mollet par des lardons rissolés jusqu'au croustillant, égouttés de leur gras et parsemés tièdes sur les lentilles.",
+      "rationale": "L'œuf mollet apporte du moelleux et un jaune qui lie ; le lardon apporte du sel, du fumé et du croquant. Les deux tiennent le rôle de protéine mais ne font pas le même plat — celui-ci est plus rustique et se mange plus chaud.",
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Œuf cru",
+          "with": "Lardon fumé cru",
+          "quantity": 160,
+          "unit": "g",
+          "role": "protéine"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Pendant que les lentilles cuisent, faire rissoler les lardons à sec dans une poêle froide portée doucement à feu moyen, jusqu'à ce qu'ils rendent leur gras et croustillent sur toutes les faces. Les égoutter sur un papier absorbant et les tenir au tiède."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Ciseler le persil et la ciboulette, concasser grossièrement les noix au couteau. Les ajouter au saladier avec l'oignon cru émincé très finement, mélanger une dernière fois, répartir dans les assiettes puis parsemer les lardons tièdes. Rectifier en poivre et servir sans attendre, à peine tiède."
+        }
+      ]
+    },
+    {
+      "code": "SRC-014-D2",
+      "base": "SRC-014",
+      "family": "Lentilles tièdes au vinaigre de cidre",
+      "variant_label": "Substituer le vinaigre de vin rouge par du vinaigre de cidre, plus doux, en augmentant légèrement la dose.",
+      "rationale": "Le vinaigre de cidre est moins mordant que celui de vin rouge : à dose égale, la vinaigrette s'efface. Il en faut un tiers de plus pour retrouver la même tension, et la salade y gagne une note de pomme.",
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Vinaigre de vin rouge",
+          "with": "Vinaigre de cidre",
+          "quantity": 20,
+          "unit": "ml",
+          "role": "acide"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Dans un bol, écraser l'ail au presse-ail, ajouter le vinaigre de cidre, le poivre et une pincée de sel, puis verser l'huile d'olive en mince filet en fouettant sans arrêt jusqu'à ce que la sauce épaississe et cesse de se séparer. Verser sur les lentilles encore tièdes, mélanger à la spatule souple et laisser reposer 5 minutes : c'est en refroidissant qu'elles boivent la vinaigrette."
+        }
+      ]
+    },
+    {
+      "code": "SRC-014-D3",
+      "base": "SRC-014",
+      "family": "Lentilles tièdes à la patate douce et à la betterave",
+      "variant_label": "Ajouter des dés de patate douce rôtis au four et des dés de betterave cuite pour une salade plus sucrée et plus colorée.",
+      "rationale": "La patate douce rôtie et la betterave apportent un sucre que la lentille n'a pas, et une couleur qui change complètement l'assiette. C'est une salade plus nourrissante, où la légumineuse cesse d'être seule au centre.",
+      "prep_minutes": 30,
+      "cook_minutes": 45,
+      "operations": [
+        {
+          "op": "add",
+          "form": "Patate douce crue",
+          "quantity": 300,
+          "unit": "g",
+          "role": "légume"
+        },
+        {
+          "op": "add",
+          "form": "Betterave crue",
+          "quantity": 200,
+          "unit": "g",
+          "role": "légume"
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 1,
+          "instruction": "Préchauffer le four à 200 °C. Peler la patate douce, la tailler en dés de deux centimètres, les mêler à une cuillerée d'huile d'olive prélevée sur la dose et les rôtir vingt-cinq minutes sur une plaque, en les retournant à mi-cuisson. Cuire la betterave à l'eau bouillante jusqu'à ce qu'un couteau la traverse, la peler tiède et la couper en dés de même taille."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Ciseler le persil et la ciboulette, concasser grossièrement les noix au couteau. Les ajouter au saladier avec l'oignon cru émincé très finement, les dés de patate douce rôtis et ceux de betterave, mélanger d'une main légère pour que la betterave ne teigne pas tout, répartir dans les assiettes puis poser sur chacune un œuf ouvert en deux. Rectifier en poivre et servir sans attendre, à peine tiède."
+        }
+      ]
+    },
+    {
+      "code": "SRC-015-D1",
+      "base": "SRC-015",
+      "family": "Œufs mimosa au thon",
+      "variant_label": "Œufs mimosa au thon : émietter le thon au naturel en conserve, égoutté et l'incorporer à la farce de jaunes avant de garnir les blancs.",
+      "rationale": "Le thon transforme une entrée légère en entrée qui nourrit : la farce cesse d'être un jaune monté à la mayonnaise pour devenir une rillette. C'est la version des buffets, et celle qui tient au ventre.",
+      "operations": [
+        {
+          "op": "set",
+          "form": "Thon au naturel en conserve, égoutté",
+          "quantity": 160,
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Passer les deux tiers des jaunes durs au travers d'un tamis fin, les écraser à la fourchette avec la mayonnaise, le thon soigneusement égoutté et émietté, le sel fin, le poivre noir moulu et le persil frais finement ciselé, jusqu'à une farce lisse, souple et sans grumeaux."
+        }
+      ]
+    },
+    {
+      "code": "SRC-015-D2",
+      "base": "SRC-015",
+      "family": "Œufs mimosa à l'avocat",
+      "variant_label": "Farce à l'avocat : remplacer la mayonnaise par de la chair d'avocat écrasée avec les jaunes, du jus de citron frais, sel et poivre, dressée à la poche à douille cannelée.",
+      "rationale": "L'avocat remplace la mayonnaise dans son rôle de corps gras onctueux, sans l'œuf cru ni l'huile qu'elle demande. La farce verdit, s'allège en goût sans l'être en gras, et il faut la dresser vite : le citron ne retient l'oxydation qu'un temps.",
+      "prep_minutes": 20,
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Mayonnaise"
+        },
+        {
+          "op": "remove",
+          "form": "Jaune d'œuf cru"
+        },
+        {
+          "op": "remove",
+          "form": "Huile d'olive vierge extra"
+        },
+        {
+          "op": "add",
+          "form": "Avocat frais",
+          "quantity": 150,
+          "unit": "g",
+          "role": "liaison"
+        },
+        {
+          "op": "set",
+          "form": "Jus de citron frais",
+          "quantity": 20,
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "remove",
+          "n": 4
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Passer les deux tiers des jaunes durs au travers d'un tamis fin, les écraser à la fourchette avec la chair d'avocat, le jus de citron frais, le sel fin, le poivre noir moulu et le persil frais finement ciselé, jusqu'à une farce lisse et souple. Travailler sans attendre : la chair verdit puis brunit dès qu'elle prend l'air."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Garnir chaque demi-blanc à la poche à douille cannelée, en montant la farce en rosace sans faire déborder sur les bords du blanc."
+        }
+      ],
+      "homonymes": [
+        {
+          "form": "Jaune d'œuf cru",
+          "raison": "Le jaune retiré est le jaune CRU qui monte la mayonnaise maison. Les « jaunes » dont parlent encore les étapes sont les jaunes DURS des œufs cuits, qui font toute la recette et restent : le mot est le même, la chose ne l'est pas."
+        }
+      ]
+    },
+    {
+      "code": "SRC-018-D1",
+      "base": "SRC-018",
+      "family": "Pâtes au thon tout à l'ail",
+      "variant_label": "Version tout à l'ail : supprimer l'oignon jaune et doubler l'ail cru, écrasé et à peine blondi dans l'huile, pour une sauce plus vive et plus rapide.",
+      "rationale": "L'oignon fondu sucre la sauce et demande dix minutes ; l'ail seul la rend vive et se fait en une. Le plat perd son fond doux et gagne en franchise — c'est la version du soir pressé.",
+      "prep_minutes": 8,
+      "cook_minutes": 20,
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Oignon jaune cru"
+        },
+        {
+          "op": "scale",
+          "form": "Ail cru",
+          "factor": 2
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Dégermer l'ail puis l'écraser. Ouvrir la conserve de thon, la laisser s'égoutter quelques minutes dans une passoire et défaire la chair en miettes grossières à la fourchette."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Faire tiédir les trois quarts de l'huile d'olive dans une sauteuse large et y jeter l'ail écrasé. Le laisser à peine blondir une minute sur feu doux, sans le laisser brunir : passé la couleur noisette, il devient amer et la sauce entière avec lui."
+        }
+      ]
+    },
+    {
+      "code": "SRC-018-D2",
+      "base": "SRC-018",
+      "family": "Pâtes au thon longuement mijotées",
+      "variant_label": "Version longuement mijotée : doubler le temps de réduction de la tomate à couvert et à feu très doux, en ajoutant un peu d'eau de cuisson des pâtes si la sauce attache, pour un goût plus rond et moins acide.",
+      "rationale": "Une demi-heure à couvert casse l'acidité de la conserve, que quinze minutes laissent entière. La sauce devient plus ronde et plus sombre ; en contrepartie le plat n'est plus un plat rapide.",
+      "cook_minutes": 45,
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Verser la tomate concassée avec tout son jus, saler légèrement, donner un tour de poivre, couvrir entièrement et laisser réduire à feu très doux une demi-heure, en remuant de loin en loin et en ajoutant une cuillerée d'eau chaude si la sauce accroche au fond. Elle doit foncer et perdre son acidité de conserve."
+        }
+      ]
+    }
+  ]
+}

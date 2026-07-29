@@ -372,7 +372,20 @@ jobs:
             echo "::error::seconde application : $rejoue versions au lieu de $attendu"
             exit 1
           fi
-          echo "[A] corpus-v3 : $charge recettes chargées, idempotence vérifiée."
+          # Une recette dérivée résout sa base par une sous-requête sur le code
+          # de celle-ci. Chargée avant sa base, elle se poserait avec un parent
+          # nul — la recette existerait, la parenté aurait disparu, et rien ne
+          # le dirait. Le compte des liens doit égaler celui des dérivées.
+          derivees=$(node -e "console.log(JSON.parse(require('fs').readFileSync('data/recipes/corpus-v3.json','utf8')).recipes.filter(r => r.derived_from).length)")
+          liees=$(psql "$DATABASE_URL" -tAc \
+            "SELECT count(*) FROM culinary.recipe_versions rv
+             JOIN ops.source_datasets sd ON sd.id = rv.source_dataset_id
+             WHERE sd.code = 'myko_editorial_v3' AND rv.derived_from_version_id IS NOT NULL;")
+          if [ "$liees" != "$derivees" ]; then
+            echo "::error::$liees dérivées reliées à leur base pour $derivees déclarées"
+            exit 1
+          fi
+          echo "[A] corpus-v3 : $charge recettes chargées dont $derivees dérivées reliées, idempotence vérifiée."
 
       # ────────────────────────────────────────────────────────────────────────
       # SCÉNARIO B — Simulation d'une prod divergente, puis reconcile + apply

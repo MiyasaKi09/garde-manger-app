@@ -37,15 +37,66 @@ describe('corpus culinaire V3', () => {
       acc[recipe.identity_level] = (acc[recipe.identity_level] || 0) + 1
       return acc
     }, {})
-    // Les deux catégories restent peuplées et exhaustives : c'est l'invariant.
+    // Les trois catégories restent peuplées et exhaustives : c'est l'invariant.
     // Leur volume exact bouge à chaque lot et ne dit rien de la santé du corpus.
-    expect(Object.keys(counts).sort()).toEqual(['domestic_standard', 'named_traditional_dish'])
+    // « documented_variation » est apparu avec les recettes dérivées : une
+    // variante n'a pas d'identité propre au répertoire, elle emprunte celle de
+    // sa base — la distinguer évite de la compter comme un plat de plus.
+    expect(Object.keys(counts).sort()).toEqual(['documented_variation', 'domestic_standard', 'named_traditional_dish'])
     expect(counts.named_traditional_dish).toBeGreaterThanOrEqual(269)
     expect(counts.domestic_standard).toBeGreaterThanOrEqual(46)
+    expect(counts.documented_variation).toBeGreaterThanOrEqual(26)
   })
 
   it('porte les règles sensorielles du planificateur', () => {
     expect(corpus.planner_sensory_rules.length).toBeGreaterThanOrEqual(7)
     expect(corpus.doctrine.substitution_requires_identity_and_texture_preservation).toBe(true)
+  })
+})
+
+// ── Recettes dérivées ──────────────────────────────────────────────────────
+// Une dérivée est une recette complète, pas un renvoi vers sa base : elle porte
+// sa propre liste d'ingrédients et ses propres étapes, sans quoi elle ne
+// pourrait ni se peser ni se planifier. Ce qu'elle ne doit jamais faire, c'est
+// dériver d'une dérivée — la lignée cesserait d'avoir une réponse locale.
+describe('recettes dérivées du corpus V3', () => {
+  const derivees = corpus.recipes.filter((recipe) => recipe.derived_from)
+  const parCode = new Map(corpus.recipes.map((recipe) => [recipe.code, recipe]))
+
+  it('chaque dérivée pointe vers une base réelle qui ne dérive de rien', () => {
+    expect(derivees.length).toBeGreaterThanOrEqual(26)
+    for (const derivee of derivees) {
+      const base = parCode.get(derivee.derived_from)
+      expect(base, `base ${derivee.derived_from} de ${derivee.code}`).toBeTruthy()
+      expect(base.derived_from, `${base.code} ne doit pas dériver`).toBeFalsy()
+    }
+  })
+
+  it('chaque dérivée reprend une variante que sa base annonce', () => {
+    const plier = (value) => String(value || '')
+      .normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+    for (const derivee of derivees) {
+      const base = parCode.get(derivee.derived_from)
+      const annoncees = (base.variants || []).map(plier)
+      expect(annoncees, `${derivee.code}`).toContain(plier(derivee.derivation?.variant_label))
+    }
+  })
+
+  it('chaque dérivée est une recette complète, et n’annonce pas de variantes à son tour', () => {
+    for (const derivee of derivees) {
+      expect(derivee.ingredients.length, derivee.code).toBeGreaterThan(0)
+      expect(derivee.steps.length, derivee.code).toBeGreaterThan(0)
+      expect(derivee.variants, derivee.code).toEqual([])
+      expect(derivee.derivation.operations.length + derivee.derivation.steps.length,
+        `${derivee.code} : un delta vide n'est pas une variante`).toBeGreaterThan(0)
+    }
+  })
+
+  it('aucune dérivée ne partage son code ni son nom avec une autre recette', () => {
+    const codes = corpus.recipes.map((recipe) => recipe.code)
+    expect(new Set(codes).size).toBe(codes.length)
+    const noms = corpus.recipes.map((recipe) => recipe.family.toLowerCase())
+    expect(new Set(noms).size).toBe(noms.length)
   })
 })

@@ -7,8 +7,8 @@
     "curated": 468,
     "exact_label": 47
   },
-  "recipes_total": 369,
-  "recipes_eligible_for_publication": 178,
+  "recipes_total": 395,
+  "recipes_eligible_for_publication": 205,
   "recipes_blocked_only_by_proxy": 68,
   "v1_enriched_eligible_for_publication": 57,
   "unresolved_required": [
@@ -3782,14 +3782,11 @@
     {
       "code": "SRC-004",
       "family": "Poulet vallée d'Auge",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": [
-        "Cidre brut",
-        "Calvados"
-      ]
+      "unresolved_conversion_required_forms": []
     },
     {
       "code": "SRC-005",
@@ -4294,6 +4291,240 @@
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-001-D1",
+      "family": "Pot-au-feu de poule",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-001-D2",
+      "family": "Poule au pot farcie au chou vert",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-003-D1",
+      "family": "Gigot d'agneau aux flageolets à la tomate",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-004-D1",
+      "family": "Poulet vallée d'Auge lié aux jaunes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-004-D2",
+      "family": "Poulet vallée d'Auge aux poireaux",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-005-D1",
+      "family": "Paupiettes de veau à la tomate en conserve",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-005-D2",
+      "family": "Roulés de veau à la tomate",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-006-D1",
+      "family": "Veau Marengo à la tomate pelée",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-006-D2",
+      "family": "Poulet Marengo",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-008-D1",
+      "family": "Blanquette de dinde aux poireaux",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-008-D2",
+      "family": "Blanquette de dinde à l'autocuiseur",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-008-D3",
+      "family": "Blanquette de dinde sans crème",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-008-D4",
+      "family": "Blanquette de dinde au four",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-011-D1",
+      "family": "Croque-madame au four",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-011-D2",
+      "family": "Croque-madame à l'œuf encastré",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-012-D1",
+      "family": "Gratin de brocolis végétarien",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-012-D2",
+      "family": "Gratin de brocolis allégé",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-012-D3",
+      "family": "Gratin de brocolis à croûte renforcée",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-012-D4",
+      "family": "Gratin de brocolis sans œuf",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-014-D1",
+      "family": "Lentilles tièdes aux lardons",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-014-D2",
+      "family": "Lentilles tièdes au vinaigre de cidre",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-014-D3",
+      "family": "Lentilles tièdes à la patate douce et à la betterave",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-015-D1",
+      "family": "Œufs mimosa au thon",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-015-D2",
+      "family": "Œufs mimosa à l'avocat",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-018-D1",
+      "family": "Pâtes au thon tout à l'ail",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "SRC-018-D2",
+      "family": "Pâtes au thon longuement mijotées",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
     }
   ],
   "forms": [
@@ -4452,7 +4683,7 @@
       "form": "Ail cru",
       "normalized": "ail cru",
       "required": true,
-      "recipe_count": 157,
+      "recipe_count": 177,
       "units": [
         "g"
       ],
@@ -5752,8 +5983,9 @@
       "form": "Avocat frais",
       "normalized": "avocat frais",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 6,
       "units": [
+        "g",
         "u"
       ],
       "selection_mode": "curated",
@@ -6516,7 +6748,7 @@
       "form": "Betterave crue",
       "normalized": "betterave crue",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 2,
       "units": [
         "g"
       ],
@@ -6791,7 +7023,7 @@
       "form": "Beurre doux",
       "normalized": "beurre doux",
       "required": true,
-      "recipe_count": 75,
+      "recipe_count": 90,
       "units": [
         "g"
       ],
@@ -8662,7 +8894,7 @@
       "form": "Bouillon de volaille",
       "normalized": "bouillon de volaille",
       "required": true,
-      "recipe_count": 18,
+      "recipe_count": 22,
       "units": [
         "g",
         "ml"
@@ -8938,7 +9170,7 @@
       "form": "Brocoli cru",
       "normalized": "brocoli cru",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 5,
       "units": [
         "g"
       ],
@@ -9323,7 +9555,7 @@
       "form": "Calvados",
       "normalized": "calvados",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 3,
       "units": [
         "ml"
       ],
@@ -9334,7 +9566,7 @@
         "category": "boissons",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Le Ciqual porte bien une entrée « Eau de vie, type calvados » (1024), mais sans valeur énergétique — ses macros sont toutes à zéro et l'énergie manquante. La reprendre telle quelle ferait passer un alcool à 40 % vol pour un produit à 0 kcal, ce qui est faux : l'apport d'une eau-de-vie vient presque entièrement de l'éthanol. L'entrée armagnac/cognac est le même produit du point de vue nutritionnel — un distillat à 40 % vol — et elle est chiffrée (228 kcal). C'est un proxy assumé, choisi parce qu'une absence ne doit jamais devenir un zéro."
+        "note": "Même cible qu'avant — l'entrée armagnac/cognac reste le proxy retenu, l'entrée calvados propre (1024) n'ayant aucune valeur énergétique. Seule la densité s'ajoute : une eau-de-vie à 40 % vol est un mélange d'éthanol (0,789) et d'eau, dont la masse volumique tombe autour de 0,95 g/ml. C'est la valeur que le script applique déjà au rhum, et pour la même raison. Le calvados de SRC-004 est flambé, donc une part de son alcool part à la flamme ; le corpus ne modélise pas cette perte et compte le liquide versé, ce qui majore légèrement l'apport."
       },
       "suggestions": [
         {
@@ -9763,7 +9995,7 @@
       "form": "Carotte crue",
       "normalized": "carotte crue",
       "required": true,
-      "recipe_count": 52,
+      "recipe_count": 65,
       "units": [
         "g"
       ],
@@ -9983,7 +10215,7 @@
       "form": "Céleri branche cru",
       "normalized": "celeri branche cru",
       "required": true,
-      "recipe_count": 17,
+      "recipe_count": 19,
       "units": [
         "g"
       ],
@@ -10259,7 +10491,7 @@
       "form": "Champignon de Paris frais",
       "normalized": "champignon de paris frais",
       "required": true,
-      "recipe_count": 16,
+      "recipe_count": 26,
       "units": [
         "g"
       ],
@@ -10472,7 +10704,7 @@
       "form": "Chapelure de blé",
       "normalized": "chapelure de ble",
       "required": true,
-      "recipe_count": 12,
+      "recipe_count": 16,
       "units": [
         "g"
       ],
@@ -11510,7 +11742,7 @@
       "form": "Chou vert frais",
       "normalized": "chou vert frais",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 4,
       "units": [
         "g"
       ],
@@ -12135,7 +12367,7 @@
       "form": "Ciboulette fraîche",
       "normalized": "ciboulette fraiche",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 6,
       "units": [
         "g"
       ],
@@ -12190,7 +12422,7 @@
       "form": "Cidre brut",
       "normalized": "cidre brut",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 3,
       "units": [
         "ml"
       ],
@@ -12201,7 +12433,7 @@
         "category": "boissons",
         "nutrition_complete": true,
         "confidence": "B",
-        "note": "Le brut plutôt que le doux : c'est celui que nomment les sources, et l'écart n'est pas anecdotique — 10,5 kcal contre 37,5, soit plus du triple, parce que le doux garde son sucre résiduel. Le cidre étant alcoolisé, l'énergie publiée ne se referme pas sur les seuls macronutriments ; c'est la valeur du classeur qui fait foi, pas un calcul d'Atwater."
+        "note": "Même cible qu'avant, seule la densité s'ajoute. Un cidre brut titre 4 à 5 % vol et garde peu de sucre : sa masse volumique reste celle de l'eau à un demi-pour-cent près, comme la bière et le vin auxquels le script applique déjà 1. Retenir 1 g/ml est exact à la précision qui compte ici — l'écart sur 300 ml se chiffre en un gramme et demi. Sans cette valeur, ces 300 ml ne comptaient pour rien : SRC-004 perdait une trentaine de kilocalories par plat, et surtout les glucides du cidre."
       },
       "suggestions": [
         {
@@ -12568,7 +12800,7 @@
       "form": "Clou de girofle",
       "normalized": "clou de girofle",
       "required": true,
-      "recipe_count": 12,
+      "recipe_count": 14,
       "units": [
         "g",
         "u"
@@ -12838,7 +13070,7 @@
       "form": "Concentré de tomate",
       "normalized": "concentre de tomate",
       "required": true,
-      "recipe_count": 9,
+      "recipe_count": 11,
       "units": [
         "g"
       ],
@@ -13697,7 +13929,7 @@
       "form": "Crème fraîche liquide entière",
       "normalized": "creme fraiche liquide entiere",
       "required": true,
-      "recipe_count": 28,
+      "recipe_count": 36,
       "units": [
         "g",
         "ml"
@@ -14907,7 +15139,7 @@
       "form": "Eau",
       "normalized": "eau",
       "required": true,
-      "recipe_count": 19,
+      "recipe_count": 25,
       "units": [
         "ml"
       ],
@@ -15182,7 +15414,7 @@
       "form": "Échalote crue",
       "normalized": "echalote crue",
       "required": true,
-      "recipe_count": 22,
+      "recipe_count": 24,
       "units": [
         "g"
       ],
@@ -15532,7 +15764,7 @@
       "form": "Emmental râpé",
       "normalized": "emmental rape",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 4,
       "units": [
         "g"
       ],
@@ -16007,7 +16239,7 @@
       "form": "Épaule de veau crue, en cubes",
       "normalized": "epaule de veau crue en cubes",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 4,
       "units": [
         "g"
       ],
@@ -16213,7 +16445,7 @@
       "form": "Escalope de dinde crue",
       "normalized": "escalope de dinde crue",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 5,
       "units": [
         "g"
       ],
@@ -16268,7 +16500,7 @@
       "form": "Escalope de veau crue fine",
       "normalized": "escalope de veau crue fine",
       "required": true,
-      "recipe_count": 4,
+      "recipe_count": 6,
       "units": [
         "g",
         "u"
@@ -16524,7 +16756,7 @@
       "form": "Farine de blé T55",
       "normalized": "farine de ble t55",
       "required": true,
-      "recipe_count": 62,
+      "recipe_count": 72,
       "units": [
         "g"
       ],
@@ -16991,7 +17223,7 @@
       "form": "Fécule de maïs",
       "normalized": "fecule de mais",
       "required": true,
-      "recipe_count": 8,
+      "recipe_count": 12,
       "units": [
         "g"
       ],
@@ -17767,7 +17999,7 @@
       "form": "Feuille de laurier séchée",
       "normalized": "feuille de laurier sechee",
       "required": true,
-      "recipe_count": 34,
+      "recipe_count": 42,
       "units": [
         "feuille",
         "u"
@@ -19506,7 +19738,7 @@
       "form": "Gigot d'agneau cru",
       "normalized": "gigot d agneau cru",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 2,
       "units": [
         "g"
       ],
@@ -20145,7 +20377,7 @@
       "form": "Gruyère râpé",
       "normalized": "gruyere rape",
       "required": true,
-      "recipe_count": 7,
+      "recipe_count": 13,
       "units": [
         "g"
       ],
@@ -20517,7 +20749,7 @@
       "form": "Haricot flageolet sec",
       "normalized": "haricot flageolet sec",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 2,
       "units": [
         "g"
       ],
@@ -21369,7 +21601,7 @@
       "form": "Herbes de Provence séchées",
       "normalized": "herbes de provence sechees",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 8,
       "units": [
         "g"
       ],
@@ -21527,7 +21759,7 @@
       "form": "Huile d'olive vierge extra",
       "normalized": "huile d olive vierge extra",
       "required": true,
-      "recipe_count": 111,
+      "recipe_count": 130,
       "units": [
         "g",
         "ml"
@@ -22291,7 +22523,7 @@
       "form": "Jambon blanc cuit",
       "normalized": "jambon blanc cuit",
       "required": true,
-      "recipe_count": 9,
+      "recipe_count": 15,
       "units": [
         "g",
         "tranche"
@@ -22718,7 +22950,7 @@
       "form": "Jaune d'œuf cru",
       "normalized": "jaune d oeuf cru",
       "required": true,
-      "recipe_count": 9,
+      "recipe_count": 11,
       "units": [
         "g",
         "u"
@@ -22884,7 +23116,7 @@
       "form": "Jus de citron frais",
       "normalized": "jus de citron frais",
       "required": true,
-      "recipe_count": 33,
+      "recipe_count": 35,
       "units": [
         "g",
         "ml"
@@ -23311,7 +23543,7 @@
       "form": "Lait entier",
       "normalized": "lait entier",
       "required": true,
-      "recipe_count": 23,
+      "recipe_count": 28,
       "units": [
         "g",
         "ml"
@@ -23683,7 +23915,7 @@
       "form": "Lardon fumé cru",
       "normalized": "lardon fume cru",
       "required": true,
-      "recipe_count": 15,
+      "recipe_count": 16,
       "units": [
         "g"
       ],
@@ -23841,7 +24073,7 @@
       "form": "Lentille corail sèche, crue",
       "normalized": "lentille corail seche crue",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 9,
       "units": [
         "g"
       ],
@@ -24830,7 +25062,7 @@
       "form": "Mayonnaise",
       "normalized": "mayonnaise",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -25675,7 +25907,7 @@
       "form": "Moutarde de Dijon",
       "normalized": "moutarde de dijon",
       "required": true,
-      "recipe_count": 20,
+      "recipe_count": 22,
       "units": [
         "g"
       ],
@@ -25881,7 +26113,7 @@
       "form": "Muscade moulue",
       "normalized": "muscade moulue",
       "required": true,
-      "recipe_count": 18,
+      "recipe_count": 23,
       "units": [
         "g"
       ],
@@ -25984,7 +26216,7 @@
       "form": "Navet cru",
       "normalized": "navet cru",
       "required": true,
-      "recipe_count": 4,
+      "recipe_count": 6,
       "units": [
         "g"
       ],
@@ -26135,7 +26367,7 @@
       "form": "Noix",
       "normalized": "noix",
       "required": true,
-      "recipe_count": 4,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -26938,7 +27170,7 @@
       "form": "Œuf cru",
       "normalized": "oeuf cru",
       "required": true,
-      "recipe_count": 85,
+      "recipe_count": 95,
       "units": [
         "g",
         "u"
@@ -27311,7 +27543,7 @@
       "form": "Oignon grelot cru",
       "normalized": "oignon grelot cru",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -27366,7 +27598,7 @@
       "form": "Oignon jaune cru",
       "normalized": "oignon jaune cru",
       "required": true,
-      "recipe_count": 152,
+      "recipe_count": 171,
       "units": [
         "g"
       ],
@@ -28475,7 +28707,7 @@
       "form": "Pain de mie",
       "normalized": "pain de mie",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 8,
       "units": [
         "g",
         "tranche"
@@ -29541,7 +29773,7 @@
       "form": "Patate douce crue",
       "normalized": "patate douce crue",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 2,
       "units": [
         "g"
       ],
@@ -30660,7 +30892,7 @@
       "form": "Persil frais",
       "normalized": "persil frais",
       "required": true,
-      "recipe_count": 52,
+      "recipe_count": 63,
       "units": [
         "g"
       ],
@@ -30715,7 +30947,7 @@
       "form": "Persil plat frais",
       "normalized": "persil plat frais",
       "required": true,
-      "recipe_count": 7,
+      "recipe_count": 12,
       "units": [
         "g"
       ],
@@ -30873,7 +31105,7 @@
       "form": "Petites pâtes sèches",
       "normalized": "petites pates seches",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 4,
       "units": [
         "g"
       ],
@@ -32731,7 +32963,7 @@
       "form": "Poireau cru",
       "normalized": "poireau cru",
       "required": true,
-      "recipe_count": 15,
+      "recipe_count": 25,
       "units": [
         "g"
       ],
@@ -33521,7 +33753,7 @@
       "form": "Poivre noir en grains",
       "normalized": "poivre noir en grains",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 8,
       "units": [
         "g"
       ],
@@ -33576,7 +33808,7 @@
       "form": "Poivre noir moulu",
       "normalized": "poivre noir moulu",
       "required": true,
-      "recipe_count": 86,
+      "recipe_count": 110,
       "units": [
         "g"
       ],
@@ -34112,7 +34344,7 @@
       "form": "Pomme fraîche",
       "normalized": "pomme fraiche",
       "required": true,
-      "recipe_count": 7,
+      "recipe_count": 9,
       "units": [
         "g"
       ],
@@ -34311,7 +34543,7 @@
       "form": "Porc haché cru",
       "normalized": "porc hache cru",
       "required": true,
-      "recipe_count": 19,
+      "recipe_count": 20,
       "units": [
         "g"
       ],
@@ -34517,7 +34749,7 @@
       "form": "Poule crue",
       "normalized": "poule crue",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -34778,7 +35010,7 @@
       "form": "Poulet entier cru en morceaux",
       "normalized": "poulet entier cru en morceaux",
       "required": true,
-      "recipe_count": 4,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -38822,7 +39054,7 @@
       "form": "Sel fin",
       "normalized": "sel fin",
       "required": true,
-      "recipe_count": 143,
+      "recipe_count": 169,
       "units": [
         "g"
       ],
@@ -40230,7 +40462,7 @@
       "form": "Thon au naturel en conserve, égoutté",
       "normalized": "thon au naturel en conserve egoutte",
       "required": true,
-      "recipe_count": 8,
+      "recipe_count": 12,
       "units": [
         "g"
       ],
@@ -40285,7 +40517,7 @@
       "form": "Thym frais",
       "normalized": "thym frais",
       "required": true,
-      "recipe_count": 14,
+      "recipe_count": 19,
       "units": [
         "g"
       ],
@@ -40340,7 +40572,7 @@
       "form": "Thym séché",
       "normalized": "thym seche",
       "required": true,
-      "recipe_count": 17,
+      "recipe_count": 24,
       "units": [
         "g"
       ],
@@ -40793,7 +41025,7 @@
       "form": "Tomate concassée en conserve",
       "normalized": "tomate concassee en conserve",
       "required": true,
-      "recipe_count": 31,
+      "recipe_count": 35,
       "units": [
         "g"
       ],
@@ -40903,7 +41135,7 @@
       "form": "Tomate entière pelée en conserve",
       "normalized": "tomate entiere pelee en conserve",
       "required": true,
-      "recipe_count": 10,
+      "recipe_count": 11,
       "units": [
         "g"
       ],
@@ -40958,7 +41190,7 @@
       "form": "Tomate fraîche mûre",
       "normalized": "tomate fraiche mure",
       "required": true,
-      "recipe_count": 52,
+      "recipe_count": 54,
       "units": [
         "g",
         "u"
@@ -42079,7 +42311,7 @@
       "form": "Vin blanc sec",
       "normalized": "vin blanc sec",
       "required": true,
-      "recipe_count": 28,
+      "recipe_count": 36,
       "units": [
         "g",
         "ml"
@@ -42521,7 +42753,7 @@
       "form": "Vinaigre de cidre",
       "normalized": "vinaigre de cidre",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 2,
       "units": [
         "ml"
       ],
@@ -42741,7 +42973,7 @@
       "form": "Vinaigre de vin rouge",
       "normalized": "vinaigre de vin rouge",
       "required": true,
-      "recipe_count": 18,
+      "recipe_count": 20,
       "units": [
         "g",
         "ml"

@@ -47,8 +47,40 @@ function sentence(value) {
   return text.charAt(0).toUpperCase() + text.slice(1)
 }
 
+/** Rapproche l'étiquette d'une dérivée de la variante annoncée par sa base. */
+function normalizeLabel(value) {
+  return String(value || '')
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+}
+
 function formatQuantity(value) {
   return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(value)
+}
+
+/**
+ * Met en français le delta d'une recette dérivée. Le lecteur veut savoir ce qui
+ * change par rapport à la base — sans quoi il doit ouvrir les deux pages et les
+ * comparer ligne à ligne.
+ */
+function describeDerivation(derivation) {
+  const operations = derivation?.operations || []
+  const changes = operations.map((operation) => {
+    if (operation.op === 'remove') return `Sans ${operation.form.toLowerCase()}`
+    if (operation.op === 'add') return `Avec ${operation.form.toLowerCase()} — ${formatQuantity(operation.quantity)} ${operation.unit || 'g'}`
+    if (operation.op === 'substitute') return `${operation.with} à la place de ${operation.form.toLowerCase()}`
+    if (operation.op === 'scale') {
+      const facteur = Number(operation.factor)
+      if (facteur === 2) return `Deux fois plus de ${operation.form.toLowerCase()}`
+      if (facteur === 0.5) return `Deux fois moins de ${operation.form.toLowerCase()}`
+      return `${facteur > 1 ? 'Davantage' : 'Moins'} de ${operation.form.toLowerCase()} (× ${formatQuantity(facteur)})`
+    }
+    if (operation.op === 'set') return `${operation.form} porté à ${formatQuantity(operation.quantity)} ${operation.unit || 'g'}`
+    return null
+  }).filter(Boolean)
+  const stepCount = (derivation?.steps || []).length
+  if (stepCount > 0) changes.push(stepCount === 1 ? 'Une étape réécrite' : `${stepCount} étapes réécrites`)
+  return changes
 }
 
 function portionsOf(value, fallback) {
@@ -104,11 +136,41 @@ export default async function CanonicalRecipePage({ params, searchParams }) {
   const meaningfulGuardrails = (recipe.sensory?.identity_guardrails || []).filter((item) => !genericGuardrails.has(item))
   const profileLabel = sensoryProfileLabels[recipe.sensory?.profile] || sentence(recipe.sensory?.profile)
 
+  // Une variante écrite est une recette qu'on ouvre ; une variante seulement
+  // annoncée reste une piste. Les deux se disent, mais pas du même ton : donner
+  // l'apparence d'un lien à une piste non écrite serait promettre une page vide.
+  const changes = describeDerivation(recipe.derivation)
+  const derivatives = recipe.derivatives || []
+  const written = new Set(derivatives.map((variant) => normalizeLabel(variant.label)))
+  const suggestions = (recipe.variants || []).filter((variant) => !written.has(normalizeLabel(variant)))
+
   return (
     <main className={styles.page}>
       <nav className={styles.breadcrumb} aria-label="Fil d’Ariane">
-        <Link href="/recipes">Recettes</Link><span>→</span><span>{recipe.code}</span>
+        <Link href="/recipes">Recettes</Link><span>→</span>
+        {recipe.derivedFrom && (
+          <>
+            <Link href={`/recipes/canonical/${recipe.derivedFrom}`}>{recipe.derivedFromTitle || recipe.derivedFrom}</Link>
+            <span>→</span>
+          </>
+        )}
+        <span>{recipe.code}</span>
       </nav>
+
+      {recipe.derivedFrom && (
+        <section className={styles.derivedFrom}>
+          <p className={styles.sectionLabel}>Variante de recette</p>
+          <p>
+            Cette recette dérive de <Link href={`/recipes/canonical/${recipe.derivedFrom}`}>{recipe.derivedFromTitle || recipe.derivedFrom}</Link>.
+            {recipe.derivation?.rationale ? ` ${recipe.derivation.rationale}` : ''}
+          </p>
+          {changes.length > 0 && (
+            <ul className={styles.derivedChanges}>
+              {changes.map((change) => <li key={change}>{change}</li>)}
+            </ul>
+          )}
+        </section>
+      )}
 
       <header className={styles.hero}>
         <div>
@@ -184,11 +246,29 @@ export default async function CanonicalRecipePage({ params, searchParams }) {
         </ol>
       </section>
 
-      {recipe.variants.length > 0 && (
+      {(derivatives.length > 0 || suggestions.length > 0) && (
         <section className={styles.variants}>
           <p className={styles.sectionLabel}>Variantes de la recette</p>
           <h2>D’autres façons de la préparer</h2>
-          <ul>{recipe.variants.map((variant) => <li key={variant}>{variant}</li>)}</ul>
+          {derivatives.length > 0 && (
+            <ul className={styles.variantLinks}>
+              {derivatives.map((variant) => (
+                <li key={variant.code}>
+                  <Link href={`/recipes/canonical/${variant.code}`}>
+                    <strong>{variant.title}</strong>
+                    {variant.label && variant.label !== variant.title && <span>{variant.label}</span>}
+                    <em>Recette complète →</em>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+          {suggestions.length > 0 && (
+            <>
+              {derivatives.length > 0 && <p className={styles.sectionLabel}>Pistes encore à écrire</p>}
+              <ul>{suggestions.map((variant) => <li key={variant}>{variant}</li>)}</ul>
+            </>
+          )}
         </section>
       )}
 
