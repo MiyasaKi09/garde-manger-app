@@ -1,0 +1,354 @@
+{
+  "lot": "lot14 — petits pois, piperade, sarladaises et potée",
+  "note": "Quatre bases, seize variantes annoncées, onze dérivations retenues et cinq écartées. Le fait marquant du lot est une écartée qui ne l'est plus : l'étiquette SRC-048[0] affirme elle-même que « la forme n'existe pas au catalogue Myko, l'ajout reste hors nomenclature », mais le vocabulaire employable porte aujourd'hui « Jambon de Bayonne » (228 kcal, 28 g de protéines aux 100 g). La phrase de la base date d'un état antérieur du catalogue ; c'est le catalogue qui fait foi, la variante s'écrit donc, et l'étiquette est recopiée telle quelle, contradiction comprise — corriger la phrase reviendrait à retoucher la base, ce qui n'est pas mon travail ici. Signalé pour que quelqu'un nettoie la base. Les quatre autres écartées le sont vraiment. SRC-049 en perd deux sur trois et sort du lot avec une seule dérivée : ni « Cèpe » ni « Girolle » n'existent au vocabulaire, et « Champignon de Paris frais » n'est pas un remplaçant — le champignon de couche n'a ni le prix, ni le parfum, ni la composition d'un cèpe, et l'employer aurait fait passer un ajout de luxe pour une garniture ordinaire. Plus radical encore : le champ « graisse » du catalogue est entièrement vide, ni graisse d'oie ni graisse de canard, si bien que la variante « sans confit, cuit à la graisse d'oie » n'a aucune matière grasse à se mettre sous la dent — le gras du confit était la seule du plat, et le remplacer par une huile est précisément ce que le garde-fou de la base interdit (« à l'huile, ce sont des pommes de terre sautées ordinaires, plus des sarladaises »). Le jambonneau de SRC-050 tombe pour la même raison : « Poitrine de porc demi-sel » existe, mais un jarret maigre et une poitrine grasse ne se remplacent pas l'un l'autre. Restent deux écartées de principe, sur SRC-050 : le service en deux temps ne change que l'ordre des assiettes, et la moutarde-cornichons ne quitte jamais le bord de la table. Côté travail de fond : la version Chef Simon de SRC-047 démonte entièrement la méthode de la base — pois à l'anglaise, laitue étuvée à part, oignons grelots glacés à blanc — au point que deux garde-fous d'identité hérités devenaient faux (« la laitue braisée AVEC les pois », « le mouillement doit rester un fond d'eau réduit ») ; ils ont été réécrits, faute de quoi la dérivée se serait accusée elle-même de ne pas être son plat. Même travail sur les deux dérivées d'œufs de la piperade, dont la base impose que « les œufs sont brouillés dans les légumes » : la version pochée le contredit frontalement, la version sans œuf rend le garde-fou sans objet. La potée aux lentilles, enfin, a demandé une décision de cuisson qu'on ne peut pas cacher : versées avec les légumes-racines comme l'étiquette l'exige, les lentilles vertes font cinquante-cinq minutes de bouillon et en ressortent au-delà du fondant ; le rationale le dit plutôt que de le maquiller en cuisson maîtrisée.",
+  "derivations": [
+    {
+      "code": "SRC-047-D1",
+      "base": "SRC-047",
+      "family": "Petits pois à l'anglaise, laitue étuvée et oignons glacés",
+      "variant_label": "Version Chef Simon : pois cuits à l'anglaise puis rafraîchis à l'eau glacée, laitue étuvée séparément au beurre, les deux réunis au dernier moment et complétés de petits oignons glacés à blanc.",
+      "rationale": "Cuits à l'anglaise puis saisis dans l'eau glacée, les pois gardent un vert franc et une peau qui résiste sous la dent, là où la cuisson à l'étouffée de la base les mène au fondant et au vert éteint. Le prix est double : une part du sucre du pois s'en va dans l'eau de cuisson et n'entre jamais dans le jus, et le plat perd son unité — trois casseroles au lieu d'une, trois surveillances, et une réunion de dernière minute qui ne pardonne pas l'attente. Les oignons grelots glacés à blanc apportent une douceur ronde et une masse végétale supplémentaire, mais réclament vingt minutes de conduite à part et une épluchure fastidieuse.",
+      "prep_minutes": 30,
+      "cook_minutes": 35,
+      "operations": [
+        { "op": "add", "form": "Oignon grelot cru", "quantity": 200, "unit": "g", "role": "garniture", "optional": false },
+        { "op": "set", "form": "Beurre doux", "quantity": 70, "role": "matière grasse", "optional": false },
+        { "op": "set", "form": "Sucre semoule", "quantity": 10, "role": "assaisonnement" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Pelez l'oignon blanc et débitez-le en lamelles très fines. Dégermez la gousse d'ail et hachez-la menu. Pelez ensuite les oignons grelots sans entamer leur base : c'est elle qui les tient entiers pendant le glaçage, et un bulbe entamé se défait en pétales. Trente secondes dans l'eau bouillante décollent la première peau et vous épargnent dix minutes de lutte. Ciselez le cerfeuil et réservez-le à couvert, il n'interviendra qu'à la toute fin."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Rangez les oignons grelots en une seule couche dans une petite sauteuse, ajoutez 20 g de beurre, 5 g de sucre et de l'eau à mi-hauteur, puis couvrez d'un rond de papier cuisson percé au centre. Laissez frémir une vingtaine de minutes : l'eau part peu à peu, le beurre et le sucre restent et enrobent les bulbes d'un sirop clair. Surveillez la fin — le glaçage à blanc ne doit prendre aucune couleur, et il passe au blond en trente secondes d'inattention. Réservez-les tièdes."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Portez une grande casserole d'eau salée à gros bouillons et jetez-y les petits pois encore glacés. Comptez cinq à sept minutes à découvert dès la reprise de l'ébullition, puis égouttez-les et plongez-les aussitôt dans un saladier d'eau additionnée de glaçons : le froid brutal fixe la couleur et arrête net une cuisson qui, sans lui, se poursuivrait dans la chaleur des grains. Égouttez de nouveau dès qu'ils sont froids, sans les laisser tremper."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Dans la cocotte, faites tiédir 20 g de beurre à feu très doux et jetez-y les lardons cinq minutes sans qu'ils prennent couleur, puis l'oignon blanc et l'ail pour cinq minutes de plus. Ajoutez les rubans de laitue, le sel, le poivre blanc et le sucre restant, couvrez et laissez étuver douze à quinze minutes sans une goutte d'eau : la salade rend la sienne et tombe en compote souple. Découvrez et laissez filer ce jus jusqu'à un fond sirupeux."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Réunissez tout au tout dernier moment, sur la laitue étuvée bien chaude : les pois froids d'abord, les oignons glacés ensuite, une minute à feu vif en secouant la cocotte, le temps de les remettre à température et pas davantage. Coupez le feu et incorporez les 30 g de beurre restants, très froids et coupés en dés, en imprimant à la cocotte un mouvement circulaire jusqu'à ce que le jus nappe. Réunir tard est tout le principe de cette version : les pois n'ont pas le temps de ternir dans le fond de cuisson."
+        }
+      ],
+      "sensory": {
+        "profile": "fresh_herbal",
+        "scores": { "sweet": 3, "salty": 2, "acidic": 0, "bitter": 1, "umami": 2, "heat": 0, "pungency": 1, "richness": 3, "freshness": 5, "intensity": 2 },
+        "dominant_flavors": ["douceur végétale du petit pois", "beurre frais", "oignon glacé"],
+        "aroma_families": ["végétal frais", "lacté beurré", "herbacé anisé"],
+        "target_textures": ["petit pois ferme à la peau intacte", "laitue tombée et soyeuse", "oignon grelot fondant sous un sirop clair"],
+        "signature_ingredients": ["Petit pois surgelé", "Laitue fraîche", "Beurre doux"],
+        "identity_guardrails": [
+          "Pois et laitue cuisent séparément mais se servent ensemble : servir la laitue à part, en légume distinct, ferait sortir le plat de sa famille.",
+          "Le refroidissement à l'eau glacée n'est pas une commodité mais la raison d'être de cette version : sans lui les pois continuent de cuire et rejoignent le fondant terne de la cuisson à l'étouffée.",
+          "Les oignons grelots sont glacés à blanc, jamais à brun : une caramélisation, même légère, apporterait une amertume grillée que ce plat ne porte pas.",
+          "Ni crème ni farine : la liaison vient uniquement du beurre froid incorporé hors du feu."
+        ]
+      }
+    },
+    {
+      "code": "SRC-047-D2",
+      "base": "SRC-047",
+      "family": "Petits pois au beurre pommade",
+      "variant_label": "Version Marmiton : tous les légumes roulés à cru dans le beurre pommade avec le sel et le sucre, laissés reposer au frais une demi-heure, puis cuits en cocotte fermée par une assiette creuse remplie d'eau froide qui joue le rôle de condenseur.",
+      "rationale": "Le beurre pommade enrobe chaque grain avant toute chaleur, et le sel tire l'eau des légumes pendant la demi-heure de repos : la cuisson se fait alors dans cette eau-là et dans rien d'autre, si bien que le goût du pois sort concentré au lieu d'être dilué par le fond d'eau de la base. Le sel cesse d'être facultatif, il devient l'outil qui fait rendre le jus. Ce que cela coûte : une demi-heure d'attente qui n'existait pas, une assiette d'eau froide à caler d'aplomb sur une cocotte brûlante — geste peu commode et franchement salissant — et un risque d'accroche au fond si les légumes n'ont pas suffisamment sué au frais.",
+      "prep_minutes": 50,
+      "cook_minutes": 30,
+      "operations": [
+        { "op": "set", "form": "Sel fin", "quantity": 4, "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Sortez le beurre une bonne heure à l'avance et travaillez-le à la fourchette jusqu'à la consistance d'une pommade souple, qui s'étale sans couler. Un beurre encore ferme roulerait sur les légumes en copeaux au lieu de les enrober, et c'est cet enrobage qui fait toute la version. Réservez-en un quart pour la fin et mettez le reste dans un grand saladier."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Jetez dans ce saladier les petits pois encore glacés, les rubans de laitue, l'oignon en lamelles, l'ail haché et les lardons, puis le sucre et le sel. Roulez le tout à pleines mains jusqu'à ce que chaque grain soit luisant de gras. Couvrez et laissez reposer une demi-heure au réfrigérateur : le sel tire l'eau des légumes, et c'est elle seule qui fournira la vapeur — n'ajoutez rien d'autre, surtout pas d'eau."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Versez la préparation dans la cocotte, tassez sans écraser et fermez non pas avec le couvercle mais avec une assiette creuse remplie d'eau froide, bien calée sur le bord. Menez à feu très doux vingt-cinq à trente minutes : la vapeur monte, rencontre le fond froid de l'assiette, s'y condense et retombe en pluie sur les légumes. Tendez l'oreille plutôt que de soulever — un chuintement régulier signale que tout va bien, un grésillement sec que le feu est trop vif."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Retirez l'assiette avec précaution, en la tenant par les bords : son dessous est brûlant quand son creux est encore tiède, et l'eau qu'elle porte se renverse pour un rien. Jugez du jus au fond de la cocotte : s'il en reste trop, montez le feu une minute à découvert. Coupez le feu et incorporez en trois fois le beurre pommade réservé, en secouant la cocotte par son anse ; il fond dans la chaleur restante et lie le fond de cuisson en un jus court."
+        }
+      ]
+    },
+    {
+      "code": "SRC-047-D3",
+      "base": "SRC-047",
+      "family": "Petits pois à la laitue au beurre",
+      "variant_label": "Sans lardons pour une garniture entièrement maigre, en compensant par une noisette de beurre supplémentaire à la fin.",
+      "rationale": "Le plat devient entièrement végétarien et perd d'un coup le sel fumé et la graisse de porc qui donnaient au fond de cuisson sa profondeur : ce qui reste est plus net, plus vert, franchement plus court en bouche. Les quinze grammes de beurre ajoutés rattrapent la texture du jus, qui nappe toujours, mais rien ne rattrape le fumé — il faut l'accepter plutôt qu'essayer de le remplacer. La garniture aromatique doit compenser par le temps ce qu'elle a perdu en gras, d'où un fondu d'oignon mené plus longuement.",
+      "operations": [
+        { "op": "remove", "form": "Lardon fumé cru" },
+        { "op": "set", "form": "Beurre doux", "quantity": 65, "role": "matière grasse", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Faites tiédir un tiers du beurre dans une cocotte à fond épais, à feu très doux, et jetez-y directement l'oignon et l'ail. Laissez-les fondre huit à dix minutes en remuant de temps en temps : privée de la graisse fumée qui parfumait le fond, la garniture aromatique doit donner seule tout ce qu'elle a, et cela demande du temps plus que du feu. L'oignon doit devenir translucide et sucré, jamais doré."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Découvrez et montez le feu une minute ou deux pour faire partir l'excédent de liquide, jusqu'à ce qu'il ne reste qu'un fond sirupeux au niveau des légumes. Coupez alors le feu et incorporez le beurre restant, très froid et coupé en dés, en imprimant à la cocotte un mouvement circulaire. Il y en a un tiers de plus que dans la recette d'origine et c'est voulu : il porte désormais seul le gras du plat, et c'est lui qui décide si le jus nappe ou reste de l'eau."
+        }
+      ]
+    },
+    {
+      "code": "SRC-047-D4",
+      "base": "SRC-047",
+      "family": "Poulet aux petits pois à la française",
+      "variant_label": "En plat unique : poser une cuisse de poulet avec os et peau sur le lit de légumes en début de cuisson et prolonger à couvert jusqu'à ce que la chair se détache.",
+      "rationale": "La garniture devient un plat entier : la volaille cuit sur les légumes, leur donne son jus et sa gélatine, et le fond de cocotte y gagne une longueur que le beurre seul n'atteignait pas. Ce que cela coûte se voit à l'œil — cinquante minutes à couvert, et les pois ont dépassé le fondant, perdu leur vert vif et une partie de leur douceur au profit de la sauce. La peau, elle, ne croustillera jamais sous un couvercle : il faut la colorer d'abord à la poêle, et accepter qu'elle se ramollisse tout de même en partie.",
+      "category": "plat mijoté",
+      "prep_minutes": 25,
+      "cook_minutes": 55,
+      "operations": [
+        { "op": "add", "form": "Cuisse de poulet crue, avec os, avec peau", "quantity": 900, "unit": "g", "role": "protéine", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Versez les petits pois encore glacés par-dessus, puis les rubans de laitue, le sucre, le sel et le poivre blanc. Couchez les morceaux de volaille sur ce lit, peau vers le haut, en les enfonçant à peine — s'ils s'immergent, la peau que vous venez de colorer se détrempe. Mouillez de 15 cl d'eau, à peine plus que dans la version en légume seul : la cuisson est deux fois plus longue, mais la viande rendra son propre jus."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Couvrez, ramenez à léger frémissement et laissez aller cinquante minutes à petit feu, en secouant la cocotte par son anse toutes les dix minutes plutôt qu'en remuant. La chair doit se détacher de l'os sans résistance quand on la pousse du dos d'une cuillère. Les pois auront alors largement dépassé le fondant : c'est le prix du plat unique, et il ne sert à rien de raccourcir, une volaille à l'os ne se négocie pas."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Sortez les morceaux de volaille et tenez-les au chaud sous une feuille d'aluminium. Découvrez et montez le feu deux à trois minutes pour faire partir l'excédent de liquide, plus abondant qu'à l'ordinaire, jusqu'à ce qu'il ne reste qu'un fond sirupeux au niveau des légumes. Coupez le feu et incorporez le beurre restant, très froid et coupé en dés, en imprimant à la cocotte un mouvement circulaire : le jus s'épaissit et se met à napper."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Rectifiez le sel — le jus de volaille en a concentré une partie, goûtez avant d'en remettre —, reposez la viande sur les légumes, parsemez le cerfeuil ciselé au dernier moment et servez aussitôt dans un plat creux, une part de volaille par assiette avec sa portion de légumes et tout le jus par-dessus."
+        },
+        {
+          "op": "insert",
+          "after": 3,
+          "instruction": "Épongez les cuisses de poulet avec un papier absorbant et salez la peau. Posez-les côté peau dans une poêle bien chaude, sans matière grasse ajoutée : elles en portent assez pour se suffire. Laissez-les six à sept minutes sans y toucher, jusqu'à ce que la peau soit dorée et se détache seule du fond. Réservez-les et versez la graisse rendue dans la cocotte, où elle remplacera une part du beurre du départ."
+        }
+      ],
+      "conservation": "Se garde 2 jours au réfrigérateur à 4 °C, volaille et légumes conservés ensemble dans leur jus pour que la chair ne sèche pas, et se réchauffe à couvert sur feu très doux avec une cuillère d'eau. La peau ne redeviendra pas croustillante, autant la retirer avant de réchauffer. Congélation déconseillée : la laitue rend son eau et se défait, et les pois, déjà congelés une fois, s'écrasent à la décongélation."
+    },
+    {
+      "code": "SRC-048-D1",
+      "base": "SRC-048",
+      "family": "Piperade au jambon de Bayonne",
+      "variant_label": "Piperade au jambon de Bayonne : deux tranches par personne poêlées à part puis coupées en lanières et mêlées à la fondue juste avant les œufs — saler alors la préparation d'une main très légère, le jambon étant déjà salé. La forme n'existe pas au catalogue Myko, l'ajout reste hors nomenclature.",
+      "rationale": "Le jambon poêlé apporte du sel, du gras fondu et une note séchée qui tire la fondue vers le salé-umami, là où la base restait dans le végétal doux. C'est aussi ce qui oblige à couper le sel de moitié : ajouté à la dose d'origine, l'ensemble deviendrait immangeable. La contrepartie est un plat sensiblement plus riche et plus lourd, et une fenêtre de cuisson étroite pour le jambon — trente secondes par face suffisent, au-delà il durcit et devient cassant au lieu de fondre dans les légumes.",
+      "prep_minutes": 25,
+      "cook_minutes": 32,
+      "operations": [
+        { "op": "add", "form": "Jambon de Bayonne", "quantity": 160, "unit": "g", "role": "charcuterie", "optional": false },
+        { "op": "set", "form": "Sel fin", "quantity": 3, "role": "assaisonnement" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Incorporez la pulpe de tomate râpée, l'ail haché, le thym, les feuilles de laurier et le piment d'Espelette. Salez d'une main très légère — la moitié de ce que réclamerait la fondue seule, car la charcuterie qui la rejoindra tout à l'heure en apporte largement pour deux — et donnez un tour de poivre. Découvrez et laissez réduire vingt minutes à petits bouillons, en raclant régulièrement le fond à la spatule."
+        },
+        {
+          "op": "insert",
+          "after": 7,
+          "instruction": "Chauffez une poêle sèche à feu vif et saisissez-y les tranches de jambon de Bayonne trente secondes par face, le temps qu'elles se raidissent et lâchent un peu de leur gras. N'allez pas plus loin : une seconde de trop et elles durcissent en copeaux cassants. Débitez-les en lanières d'un bon centimètre, jetez-les dans la fondue avec le gras resté au fond de la poêle et mélangez."
+        }
+      ]
+    },
+    {
+      "code": "SRC-048-D2",
+      "base": "SRC-048",
+      "family": "Piperade en fondue, sans œufs",
+      "variant_label": "Fondue de piperade sans œuf : arrêter la recette à la fin de la réduction et servir la préparation en accompagnement d'un poulet basquaise, d'une morue ou d'un thon grillé.",
+      "rationale": "Arrêtée à la réduction, la préparation cesse d'être un plat pour devenir une garniture : elle perd la protéine et l'onctuosité qui la tenaient en assiette, et gagne en netteté ce qu'elle abandonne en rondeur. Le poivron et la tomate ne sont plus adoucis par rien, si bien que l'acidité et le piment ressortent nettement et demandent d'être goûtés à nouveau en fin de course. En échange, elle se garde quatre jours au lieu de vingt-quatre heures, se congèle sans dommage et sort de la liste des allergènes.",
+      "category": "accompagnement",
+      "prep_minutes": 18,
+      "cook_minutes": 28,
+      "operations": [
+        { "op": "remove", "form": "Œuf cru" }
+      ],
+      "steps": [
+        { "op": "remove", "n": 8 },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Goûtez une dernière fois et rectifiez avant de servir : la fondue se juge désormais toute seule, sans rien qui vienne en arrondir l'acidité ni le piquant, et supporte volontiers une pincée de sel et un tour de moulin de plus qu'à l'ordinaire. Servez-la brûlante à côté d'un poulet basquaise, d'une morue ou d'un thon grillé — ou tiède le lendemain, ce qui lui va tout aussi bien, sa saveur s'étant rassemblée pendant la nuit."
+        }
+      ],
+      "allergens": [],
+      "conservation": "Se garde 4 jours au réfrigérateur à 4 °C dans un contenant fermé, et se congèle très bien 3 mois : la fondue de légumes réduite ne souffre pas de la décongélation, contrairement à la version liée aux œufs qui, elle, ne se garde qu'une journée. Réchauffez à feu doux en remuant, ou servez tiède. Si elle a rendu de l'eau au réfrigérateur, laissez-la repasser deux minutes à découvert avant de servir.",
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": { "sweet": 3, "salty": 2, "acidic": 3, "bitter": 0, "umami": 3, "heat": 2, "pungency": 2, "richness": 2, "freshness": 1, "intensity": 3 },
+        "dominant_flavors": ["poivron doux confit", "tomate mûre", "ail", "piment doux"],
+        "aroma_families": ["végétal cuit", "fruité", "épicé doux"],
+        "target_textures": ["fondant", "nappant", "compoté"],
+        "signature_ingredients": ["Poivron rouge frais", "Tomate râpée", "Piment d'Espelette moulu"],
+        "identity_guardrails": [
+          "Le poivron rouge fondu longuement à l'huile d'olive est la base de la préparation : sans lui il ne reste qu'une sauce tomate.",
+          "Le piment d'Espelette signe l'origine basque ; le remplacer par un piment fort ou par du paprika déplace la préparation hors de son identité.",
+          "Les légumes doivent être menés jusqu'à la fondue, ni laissés croquants ni réduits en purée mixée.",
+          "La réduction va plus loin que dans la version complète, puisque plus rien ne viendra ensuite absorber le liquide : une fondue restée humide détremperait l'assiette qu'elle accompagne."
+        ]
+      }
+    },
+    {
+      "code": "SRC-048-D3",
+      "base": "SRC-048",
+      "family": "Piperade au piment doux vert",
+      "variant_label": "Piperade au piment doux vert : remplacer un tiers du poivron rouge par du piment doux d'Anglet, pour une fondue moins sucrée et plus végétale.",
+      "rationale": "Le piment doux vert n'a pas les sucres du poivron rouge mûr : la fondue perd un cran de douceur confite et gagne une amertume verte, herbacée, qui rappelle le poivron cru. La couleur change aussi, l'ensemble virant du rouge profond à un rouge terne piqué de vert, moins flatteur mais plus honnête sur ce qu'il y a dedans. Sa paroi plus mince impose de le mettre en cuisson après le rouge, sans quoi il s'affaisse en bouillie pendant que l'autre est encore raide.",
+      "operations": [
+        { "op": "set", "form": "Poivron rouge frais", "quantity": 335, "role": "légume principal" },
+        { "op": "add", "form": "Piment doux vert frais", "quantity": 165, "unit": "g", "role": "légume principal", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Prévoyez environ 400 g de poivrons rouges entiers et 200 g de piments doux verts à l'étal pour arriver aux 335 g et 165 g de chair utile de la liste. Débarrassez chacun de sa queue, de ses pépins et des membranes claires qui tapissent l'intérieur, puis débitez la chair en lanières d'un bon centimètre de large. Gardez les deux couleurs dans deux récipients séparés : la verte, à paroi bien plus mince, ne demandera pas le même temps de feu."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Ajoutez d'abord les lanières de poivron rouge seules, mélangez pour les enrober de gras, couvrez et poursuivez à feu modéré six à sept minutes. Jetez ensuite les lanières de piment doux vert et prolongez cinq minutes, en remuant une ou deux fois : leur chair fine se coucherait en charpie si elle partait en même temps que la rouge, et c'est ce décalage qui laisse aux deux le temps d'arriver ensemble."
+        }
+      ]
+    },
+    {
+      "code": "SRC-048-D4",
+      "base": "SRC-048",
+      "family": "Piperade aux œufs pochés",
+      "variant_label": "Œufs entiers pochés dans la fondue : creuser quatre nids dans la préparation réduite, y casser les œufs et couvrir cinq minutes plutôt que de les battre.",
+      "rationale": "L'œuf reste entier au lieu de se disperser : le blanc prend en une masse tendre et le jaune coule dans la fondue à la première cuillère, ce qui déplace l'onctuosité du plat entier vers un point précis de l'assiette. La préparation elle-même n'est plus liée par l'œuf et reste franchement végétale, plus acide et plus piquante que la version brouillée. La contrepartie est une fenêtre de cuisson serrée — le jaune passe de coulant à sableux en une minute — et un service qui ne se partage plus à la louche, chacun ayant son nid.",
+      "cook_minutes": 35,
+      "operations": [],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Ne battez rien cette fois. Creusez quatre nids bien espacés dans la fondue réduite, du dos d'une cuillère, en poussant les légumes vers les bords jusqu'à voir le fond de la sauteuse. Sans ce creux, le blanc s'étalerait en nappe sur toute la surface au lieu de prendre en place, et vous n'auriez ni œuf poché ni œuf brouillé. Baissez le feu au minimum avant de continuer."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Cassez un œuf de calibre moyen dans chaque nid — quatre œufs, soit les 200 g de contenu attendus une fois les coquilles écartées —, salez les blancs d'une pincée, couvrez et comptez cinq minutes exactement. Le blanc doit être entièrement pris quand le jaune tremble encore sous le doigt : une minute de plus et il tourne au sableux. Servez sans attendre, une part de fondue et son œuf par assiette, avec du pain de campagne pour le jaune."
+        }
+      ],
+      "conservation": "Se mange à la minute et ne se conserve pas : un œuf poché réchauffé durcit et son jaune se fige, ce qui supprime tout l'intérêt de cette version. Si vous devez prendre de l'avance, arrêtez-vous à la fin de la réduction — la fondue seule se garde 4 jours au réfrigérateur à 4 °C et se congèle 3 mois —, puis réchauffez-la à feu doux et pochez les œufs au moment de servir.",
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": { "sweet": 3, "salty": 2, "acidic": 3, "bitter": 0, "umami": 3, "heat": 2, "pungency": 2, "richness": 3, "freshness": 1, "intensity": 3 },
+        "dominant_flavors": ["poivron doux confit", "tomate mûre", "jaune d'œuf coulant", "piment doux"],
+        "aroma_families": ["végétal cuit", "fruité", "épicé doux"],
+        "target_textures": ["fondant", "blanc juste pris", "jaune coulant"],
+        "signature_ingredients": ["Poivron rouge frais", "Tomate râpée", "Piment d'Espelette moulu"],
+        "identity_guardrails": [
+          "Le poivron rouge fondu longuement à l'huile d'olive est la base du plat : sans lui il ne reste qu'une sauce tomate aux œufs.",
+          "Le piment d'Espelette signe l'origine basque ; le remplacer par un piment fort ou par du paprika déplace le plat hors de son identité.",
+          "Les légumes doivent être menés jusqu'à la fondue, ni laissés croquants ni réduits en purée mixée.",
+          "Les œufs pochent entiers dans la préparation et n'y sont jamais mélangés : dès qu'on remue, on retombe sur la piperade brouillée, qui est un autre plat."
+        ]
+      }
+    },
+    {
+      "code": "SRC-049-D1",
+      "base": "SRC-049",
+      "family": "Pommes de terre sarladaises à l'oignon",
+      "variant_label": "Avec oignon : un oignon émincé fondu dans le gras avant les pommes de terre, version relevée par une seule des sources.",
+      "rationale": "L'oignon fondu dans la graisse de canard avant les rondelles y laisse ses sucres et donne au plat une douceur de fond que la persillade seule n'apportait pas. Il coûte cependant deux choses : de l'eau, qui gêne la prise de croûte des premières rondelles, et une surveillance supplémentaire, puisqu'il brûlerait pendant les douze minutes de coloration s'il restait dans la poêle — il faut le sortir puis le remettre. Le plat en ressort moins tranchant, plus rond, et un peu moins croustillant.",
+      "prep_minutes": 25,
+      "cook_minutes": 38,
+      "operations": [
+        { "op": "add", "form": "Oignon jaune cru", "quantity": 150, "unit": "g", "role": "aromate", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Faites frémir ce gras dans une poêle à fond épais ou une sauteuse large et jetez-y l'oignon émincé. Laissez-le fondre sept à huit minutes à feu doux, jusqu'à ce qu'il soit translucide et souple, puis réservez-le dans un bol : laissé au fond pendant que les rondelles colorent, il noircirait bien avant elles. Montez alors le feu, versez les rondelles en couche pas trop haute et patientez deux à trois minutes sans y toucher, le temps que la première face accroche une croûte."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Hachez finement l'ail dégermé avec le persil. Découvrez, remettez l'oignon fondu, dispersez cette persillade et la chair de confit effilochée, remontez le feu deux minutes tout au plus pour réveiller les parfums sans brûler l'ail, et servez aussitôt. L'oignon a suffisamment cuit : il ne revient à la poêle que pour se réchauffer et se mêler au reste."
+        },
+        {
+          "op": "insert",
+          "after": 2,
+          "instruction": "Pelez l'oignon jaune et détaillez-le en demi-lunes fines et régulières. Trop épaisses, elles resteraient croquantes au milieu de rondelles fondantes et trahiraient l'ajout à chaque bouchée ; on veut ici une présence sucrée, pas des morceaux."
+        }
+      ]
+    },
+    {
+      "code": "SRC-050-D1",
+      "base": "SRC-050",
+      "family": "Potée au chou blanc",
+      "variant_label": "Potée au chou blanc : substituer un chou blanc au chou vert, en allongeant le blanchiment d'une minute car ses feuilles sont plus fermes.",
+      "rationale": "Le chou blanc tient mieux la longue cuisson que le vert et sort du bouillon en quartiers encore dessinés, là où le vert se relâche en feuilles molles. Il est aussi plus doux et plus sucré, ce qui adoucit d'autant le contraste avec la charcuterie fumée — on y perd l'amertume franche qui, chez certains, fait la potée. Ses feuilles serrées et cireuses laissent l'eau entrer plus lentement : une minute de blanchiment supplémentaire est nécessaire, faute de quoi la côte reste crue au cœur du quartier.",
+      "cook_minutes": 101,
+      "operations": [
+        { "op": "substitute", "form": "Chou vert frais", "with": "Chou blanc frais", "quantity": 800, "unit": "g", "role": "légume" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Parer le chou blanc : d'une pomme achetée entière d'environ 1,1 kg, jeter les feuilles extérieures fatiguées et creuser le trognon à la pointe du couteau, ce qui laisse à peu près 800 g de feuilles utilisables. Fendre en quartiers en gardant un peu de trognon à chacun pour qu'il ne se démonte pas, dégager la côte centrale — plus épaisse et plus coriace que celle de la variété verte — et rincer à grande eau."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Immerger les quartiers dans un grand volume d'eau bouillante non salée et compter trois à quatre minutes dès que l'ébullition repart, soit une bonne minute de plus qu'il n'en faudrait autrement : les feuilles serrées et cireuses de cette variété laissent l'eau pénétrer lentement. Les cueillir à l'écumoire, les rafraîchir sous le robinet froid et les laisser s'égoutter, côte vers le bas. Ce passage arrondit l'amertume, déjà modérée ici, et rend le plat plus digeste."
+        }
+      ]
+    },
+    {
+      "code": "SRC-050-D2",
+      "base": "SRC-050",
+      "family": "Potée auvergnate aux lentilles vertes",
+      "variant_label": "Potée aux lentilles : verser 300 g de lentilles vertes avec les légumes-racines, en surveillant le niveau de bouillon qu'elles absorbent.",
+      "rationale": "Les lentilles boivent le bouillon fumé et le rendent en bouche : le plat gagne une masse nourrissante, une couleur plus sombre et un liquide devenu épais, presque une soupe, là où la base servait un bouillon clair en soupière. Il faut l'accepter : versées avec les légumes-racines comme la variante l'exige, elles font cinquante-cinq minutes de cuisson et ressortent bien au-delà du fondant, une partie éclatée. La vraie difficulté est le niveau du liquide, qui descend vite et découvre les légumes si on ne complète pas à l'eau bouillante.",
+      "operations": [
+        { "op": "add", "form": "Lentille verte sèche, crue", "quantity": 300, "unit": "g", "role": "légumineuse", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Rincer les lentilles vertes à l'eau froide, sans les faire tremper. Les faire glisser dans le bouillon en même temps que les carottes et les navets, remuer une fois pour qu'elles ne s'agglutinent pas au fond, et laisser aller vingt-cinq minutes. Surveiller le niveau du liquide, qui descend beaucoup plus vite qu'à l'ordinaire, et compléter à l'eau bouillante dès que les légumes se découvrent. Ajouter alors les quartiers de chou blanchis et les pommes de terre pelées — compter à peu près 750 g de tubercules achetés pour les 600 g de chair attendus — et poursuivre trente minutes, jusqu'à ce que la lame d'un couteau traverse une pomme de terre sans buter."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Sortir les saucisses, les trancher en rondelles épaisses et les disposer au centre d'un plat creux bien chaud. Ranger les légumes autour par familles, puis verser les lentilles à la louche dans le creux du plat, où elles retiendront le bouillon qu'elles n'ont pas déjà bu. Servir aussitôt : le liquide restant est trop épais pour la soupière et se sert directement sur l'assiette, une louche par convive."
+        }
+      ]
+    }
+  ]
+}

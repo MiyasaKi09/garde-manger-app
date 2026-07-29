@@ -1,0 +1,508 @@
+{
+  "lot": "lot08 — riz sautés et salades composées",
+  "note": "Quatre bases, quatorze variantes annoncées : onze dérivations retenues, trois écartées. Deux le sont faute de forme au catalogue — le riz complet réclamé par la salade de riz niçoise (aucun riz complet parmi les formes employables, seulement des riz blancs et parfumés) et le chou rouge du sauté de porc (chou vert, blanc et chinois existent, mais aucun chou rouge : c'est justement sa couleur qui teinte le jus, un chou vert n'aurait rien fait de tel). La troisième — riz tiède arrosé de l'assaisonnement à la tomate, à côté d'un poisson grillé — n'ajoute ni ne retire aucun ingrédient, et le seul geste qu'elle déplace, servir le riz tiède au lieu de refroidi, contredit frontalement un garde-fou de la base ; ce n'est plus la salade mais un accompagnement, elle reste une phrase. Cas particuliers : la salade piémontaise à la sauce montée maison retire la mayonnaise du commerce, si bien qu'aucune étape ne peut plus employer le mot ; l'étape 4 décrit l'émulsion sans le nommer, et la conservation est ramenée à vingt-quatre heures parce que le jaune y est cru — ce que la base, stabilisée par une mayonnaise industrielle, n'avait pas à faire. Le sauté de porc sans lardons perd du même coup sa seule source de sel : du sel fin lui est ajouté et l'assaisonnement passe en fin de cuisson. Le profil sensoriel a été réécrit à la main chaque fois que le garde-fou hérité devenait faux : l'omelette en lanières pour les œufs brouillés, les légumes crus pour le poivron ébouillanté, la sauce à dominante mayonnaise pour la version à la crème, la cuisson longue à couvert pour le sauté minute au wok, et le fumé du lard pour la version qui s'en passe. Les allergènes suivent le delta : les crustacés entrent dans le riz cantonais aux crevettes.",
+  "derivations": [
+    {
+      "code": "SRC-023-D1",
+      "base": "SRC-023",
+      "family": "Riz cantonais aux crevettes",
+      "variant_label": "Version aux crevettes : remplacer tout ou partie du jambon blanc par des crevettes décortiquées jetées trente secondes dans le wok très chaud avant les légumes.",
+      "rationale": "Les crevettes crues prennent la place du jambon : saisies très vite puis réservées, elles apportent une chair douce et iodée là où la charcuterie donnait un salé franc. Rien dans la liste ne remplace ce sel — il se rattrape au goût en fin de sauté, à la sauce soja ou au sel fin —, et le riz gagne en échange un jus léger que les grains boivent au dernier moment. La marge de manœuvre se réduit : une crevette laissée une minute de trop durcit et rend son eau dans le riz, qui cesse alors d'être en grains détachés.",
+      "allergens": ["œuf", "lait", "gluten", "soja", "sésame", "crustacés"],
+      "operations": [
+        { "op": "substitute", "form": "Jambon blanc cuit", "with": "Crevette crue décortiquée", "quantity": 160, "unit": "g", "role": "protéine" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Pendant ce temps, ébouillanter les petits pois deux minutes puis les égoutter et les rafraîchir sous l'eau froide. Tailler l'oignon en petits dés, hacher l'ail au couteau et débiter la carotte en brunoise fine. Éponger les crevettes décortiquées une à une dans un linge propre : mouillées, elles bouillent au lieu de saisir et ne prennent aucune couleur."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Remettre le wok sur le feu vif et jeter dans l'huile restée au fond l'oignon, l'ail et la carotte. Les remuer sans arrêt deux à trois minutes : ils doivent s'assouplir en gardant leur teinte claire, sans jamais roussir."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Ajouter les petits pois et sauter une minute pour les enrober de matière grasse, puis verser le riz refroidi en l'écrasant du dos de la spatule pour séparer les paquets de grains. Étaler le tout contre les parois chaudes et laisser accrocher quelques secondes entre deux mouvements."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Remettre les crevettes et le jus qu'elles ont rendu dans l'assiette, disperser les lanières d'omelette, arroser de sauce soja versée en pluie sur le bord brûlant du wok, ajouter l'huile de sésame hors du feu, goûter puis rectifier en sel et en poivre. Sauter une dernière minute, le temps de réchauffer les crevettes sans les recuire, et envoyer immédiatement."
+        },
+        {
+          "op": "insert",
+          "after": 4,
+          "instruction": "Faire fumer l'huile d'olive dans un wok ou une grande sauteuse et y jeter les crevettes en une seule couche. Les laisser trente secondes sans y toucher, le temps qu'elles rosissent et se rétractent, les retourner d'un coup de spatule puis les débarrasser aussitôt dans une assiette : leur cuisson s'achèvera à la chaleur du riz."
+        }
+      ]
+    },
+    {
+      "code": "SRC-023-D2",
+      "base": "SRC-023",
+      "family": "Riz cantonais végétarien",
+      "variant_label": "Version végétarienne : supprimer le jambon, doubler la dose de petit pois et de carotte, et relever d'un trait supplémentaire de sauce soja.",
+      "rationale": "Sans jambon, le plat perd sa principale source de sel et une bonne part de son umami ; les petits pois et la carotte doublés compensent en volume, la sauce soja plus généreuse en goût. Le riz devient plus sucré et plus végétal, et un peu moins protéiné puisque l'œuf reste seul à ce poste. La carotte cesse d'être facultative : c'est elle qui porte désormais la mâche, et la sauce soja aussi devient indispensable.",
+      "operations": [
+        { "op": "remove", "form": "Jambon blanc cuit" },
+        { "op": "scale", "form": "Petit pois surgelé", "factor": 2 },
+        { "op": "set", "form": "Carotte crue", "quantity": 160, "role": "légume", "optional": false },
+        { "op": "set", "form": "Sauce soja", "quantity": 75, "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Pendant ce temps, ébouillanter les petits pois deux minutes puis les égoutter et les rafraîchir sous l'eau froide : ils sont ici deux fois plus nombreux, il faut les étaler pour qu'ils refroidissent vite. Tailler l'oignon en petits dés, hacher l'ail au couteau et débiter la carotte en brunoise fine, menue malgré sa quantité doublée, sans quoi elle resterait crue quand le reste sera prêt."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Ajouter les petits pois et sauter une minute pour les enrober de matière grasse, puis verser le riz refroidi en l'écrasant du dos de la spatule pour séparer les paquets de grains. Étaler le tout contre les parois chaudes et laisser accrocher franchement entre deux mouvements : privé de garniture de viande, c'est de cette accroche que le plat tire son goût de grillé."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Disperser les lanières d'omelette, arroser de sauce soja versée en pluie sur le bord brûlant du wok — la dose est plus large qu'à l'ordinaire, elle apporte le sel et le fond salé que la charcuterie donnait —, ajouter l'huile de sésame hors du feu, goûter puis rectifier en sel et en poivre. Sauter une dernière minute et envoyer immédiatement, tant que la vapeur monte."
+        }
+      ]
+    },
+    {
+      "code": "SRC-023-D3",
+      "base": "SRC-023",
+      "family": "Riz cantonais aux lardons fumés",
+      "variant_label": "Version aux lardons, courante chez marmiton.org : substituer des lardons fumés au jambon blanc et les faire rendre leur gras avant d'ajouter l'huile.",
+      "rationale": "Les lardons remplacent le jambon et démarrent seuls dans le wok froid, où ils fondent avant que l'huile n'arrive : la matière grasse du sauté devient fumée, et le riz avec elle. L'huile d'olive tombe de moitié puisque le lard en fournit autant, et la sauce soja recule d'un tiers, la charcuterie salant déjà beaucoup. Le plat gagne en profondeur ce qu'il perd en netteté : le fumé couvre la douceur des petits pois et l'œuf passe au second plan.",
+      "cook_minutes": 25,
+      "techniques": ["saisie", "blanchiment", "rendu de graisse"],
+      "operations": [
+        { "op": "substitute", "form": "Jambon blanc cuit", "with": "Lardon fumé cru", "quantity": 120, "unit": "g", "role": "garniture salée" },
+        { "op": "set", "form": "Huile d'olive vierge extra", "quantity": 14, "role": "matière grasse" },
+        { "op": "set", "form": "Sauce soja", "quantity": 40, "role": "assaisonnement" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Pendant ce temps, ébouillanter les petits pois deux minutes puis les égoutter et les rafraîchir sous l'eau froide. Tailler l'oignon en petits dés, hacher l'ail au couteau et débiter la carotte en brunoise fine."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Jeter les lardons fumés dans le wok encore froid et les faire fondre à feu moyen quatre à cinq bonnes minutes, jusqu'à ce qu'ils blondissent et que leur gras coule au fond : démarrés à froid, ils le rendent au lieu de le garder, mais il faut leur laisser ce temps-là. Verser alors le filet d'huile d'olive, monter le feu, ajouter l'oignon, l'ail et la carotte et les remuer sans arrêt deux à trois minutes, sans jamais les laisser roussir."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Ajouter les petits pois et sauter une minute pour les enrober du gras fumé, puis verser le riz refroidi en l'écrasant du dos de la spatule pour séparer les paquets de grains. Étaler le tout contre les parois chaudes et laisser accrocher quelques secondes entre deux mouvements."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Disperser les lanières d'omelette, arroser de sauce soja versée en pluie sur le bord brûlant du wok, mais d'une main plus retenue qu'à l'ordinaire : le lard a déjà salé le riz. Ajouter l'huile de sésame hors du feu, goûter puis rectifier en poivre et en sel seulement si c'est nécessaire. Sauter une dernière minute et envoyer immédiatement, tant que la vapeur monte."
+        }
+      ],
+      "sensory": {
+        "profile": "savory_crisp",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": ["salé", "umami", "fumé"],
+        "aroma_families": ["fumé", "alliacé", "grillé", "céréalier"],
+        "target_textures": ["grains détachés", "lardons dorés", "lanières fondantes"],
+        "signature_ingredients": ["Riz cru", "Œuf cru", "Lardon fumé cru", "Petit pois surgelé"],
+        "identity_guardrails": [
+          "L'œuf doit être cuit à part en omelette fine puis retaillé en lanières : des œufs brouillés directement dans le riz donnent un autre plat.",
+          "Le riz doit être cuit à l'avance et refroidi avant d'être sauté ; un riz encore chaud colle et fait perdre la texture en grains détachés qui définit le plat.",
+          "Les lardons partent dans un wok froid et fondent avant l'huile : jetés dans une matière grasse déjà brûlante, ils saisissent sans rien rendre et le riz n'est jamais fumé.",
+          "Le sauté se fait sur feu vif et court, jamais en mijotage : le plat n'est pas un riz cuisiné en sauce."
+        ]
+      }
+    },
+    {
+      "code": "SRC-023-D4",
+      "base": "SRC-023",
+      "family": "Riz sauté beurré aux œufs brouillés",
+      "variant_label": "Riz sauté beurré à la façon de chefsimon.com : brouiller les œufs à la spatule dans le beurre au lieu de dresser une omelette, et les réincorporer en fin de sauté.",
+      "rationale": "Brouillés au beurre plutôt que dressés en omelette, les œufs cessent d'être des lanières identifiables pour devenir des caillots crémeux répartis dans tout le riz. Le beurre passe de secours facultatif à matière grasse assumée : le sauté s'arrondit et s'éloigne du wok pour se rapprocher de la poêle. La texture ne pardonne pas l'attente — des œufs trop cuits ou réincorporés trop tôt se dessèchent en granules et le riz redevient sec.",
+      "techniques": ["saisie", "blanchiment", "brouillage rapide"],
+      "operations": [
+        { "op": "set", "form": "Beurre doux", "quantity": 30, "role": "matière grasse", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Fouetter les œufs avec une pincée de sel et un tour de moulin. Faire mousser le beurre dans une poêle à feu doux sans le laisser colorer, y verser les œufs et les travailler sans arrêt à la spatule en ramenant les bords vers le centre : ils doivent prendre en petits caillots brillants. Les débarrasser dans un bol dès qu'ils cessent de couler, la chaleur du riz finira le travail."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Verser les œufs brouillés sur le riz brûlant et les défaire en gros morceaux d'un geste bref, sans les écraser. Arroser de sauce soja versée en pluie sur le bord du wok, ajouter l'huile de sésame hors du feu, goûter puis rectifier en sel et en poivre. Sauter trente secondes à peine et envoyer immédiatement : au-delà, les œufs rendent leur eau et se raidissent."
+        }
+      ],
+      "sensory": {
+        "profile": "savory_crisp",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 1,
+          "intensity": 2
+        },
+        "dominant_flavors": ["salé", "umami", "beurre frais"],
+        "aroma_families": ["alliacé", "grillé", "lacté", "céréalier"],
+        "target_textures": ["grains détachés", "œufs en caillots crémeux", "moelleux"],
+        "signature_ingredients": ["Riz cru", "Œuf cru", "Jambon blanc cuit", "Petit pois surgelé"],
+        "identity_guardrails": [
+          "Les œufs sont brouillés au beurre à part et réincorporés en fin de sauté : versés crus sur le riz, ils l'enroberaient d'une pellicule caillée au lieu de rester en caillots.",
+          "Le riz doit être cuit à l'avance et refroidi avant d'être sauté ; un riz encore chaud colle et fait perdre la texture en grains détachés qui définit le plat.",
+          "Le trio riz, œuf et petit pois reste intouchable : retirer l'un des trois fait sortir de l'identité du riz sauté cantonais.",
+          "Le sauté se fait sur feu vif et court, jamais en mijotage : le beurre arrondit le plat, il ne le transforme pas en riz crémeux."
+        ]
+      }
+    },
+    {
+      "code": "SRC-024-D1",
+      "base": "SRC-024",
+      "family": "Salade de riz niçoise au poivron blanchi",
+      "variant_label": "Plonger les dés de poivron vert une minute dans l'eau bouillante puis les refroidir aussitôt, pour une version plus digeste tout en gardant du croquant.",
+      "rationale": "Une minute d'eau bouillante casse la crudité du poivron : la peau s'assouplit, l'amertume verte tombe et le légume se digère mieux, ce qui est tout l'objet de la manœuvre. Le refroidissement immédiat lui garde du croquant, mais un croquant moins vif que celui du dé cru — la salade y perd un peu de son mordant. Il faut éponger les dés avant de les mêler, faute de quoi l'eau retenue délaye l'assaisonnement à la tomate.",
+      "cook_minutes": 20,
+      "techniques": ["pochage", "blanchiment", "marinade", "émulsion"],
+      "operations": [],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Pendant la cuisson du riz, fendre le poivron vert frais, en ôter le pédoncule, les graines et les cloisons blanches, puis le détailler en petits dés réguliers de la taille d'un grain de maïs. Les plonger une minute dans une petite casserole d'eau bouillante, pas davantage, et les verser aussitôt dans un bol d'eau glacée : le passage est assez bref pour n'attendrir que la peau, et le choc froid arrête net une cuisson qui, poursuivie, viderait le dé de sa fermeté. Les égoutter et les éponger soigneusement avant de les mêler à la salade."
+        }
+      ],
+      "sensory": {
+        "profile": "bright_acidic",
+        "scores": {
+          "sweet": 1,
+          "salty": 2,
+          "acidic": 3,
+          "bitter": 0,
+          "umami": 2,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 3,
+          "intensity": 2
+        },
+        "dominant_flavors": ["tomate", "huile d'olive", "poivron adouci"],
+        "aroma_families": ["végétal", "fruité"],
+        "target_textures": ["grains de riz détachés", "dés de poivron tendres et fermes", "enrobage huileux léger"],
+        "signature_ingredients": ["Thon au naturel en conserve, égoutté", "Riz cru", "Huile d'olive vierge extra"],
+        "identity_guardrails": [
+          "Sans thon ni œuf dur, ce n'est plus une salade niçoise mais une salade de riz aux crudités.",
+          "Le riz est refroidi avant d'être assaisonné : tiède, il boit l'huile et devient pâteux.",
+          "Le poivron n'est qu'ébouillanté une minute puis refroidi net : cuit davantage, il s'affaisse et la salade perd le mordant qui la tient.",
+          "Les dés sont épongés avant d'être assaisonnés : l'eau de blanchiment retenue délaverait l'assaisonnement à la tomate."
+        ]
+      }
+    },
+    {
+      "code": "SRC-025-D1",
+      "base": "SRC-025",
+      "family": "Salade piémontaise à la mayonnaise maison",
+      "variant_label": "Sauce maison : monter une mayonnaise au jaune d'œuf, à la moutarde de Dijon et à l'huile d'olive vierge extra, puis la détendre au vinaigre plutôt que d'utiliser une mayonnaise du commerce.",
+      "rationale": "La sauce n'est plus un produit acheté mais une émulsion montée sur place : un jaune cru, la moutarde déjà présente et l'huile d'olive versée en filet. Le goût y gagne le fruité de l'huile et la franchise de la moutarde, la texture reste plus souple qu'une sauce industrielle stabilisée, et le vinaigre doublé la détend en fin de montage. Le prix à payer est double : l'émulsion tranche si l'huile arrive trop vite, et le jaune cru ramène la garde de quarante-huit à vingt-quatre heures.",
+      "conservation": "Se consomme dans les 24 heures, au réfrigérateur entre 0 et 4 °C et dans un contenant hermétique : la sauce est montée au jaune d'œuf cru, sans l'acidification ni la stabilisation d'une mayonnaise du commerce, et la garde en est d'autant plus courte. Sortir 10 minutes avant de servir. Ne se congèle pas : l'émulsion se déphase et la pomme de terre devient farineuse et granuleuse à la décongélation.",
+      "operations": [
+        { "op": "remove", "form": "Mayonnaise" },
+        { "op": "add", "form": "Jaune d'œuf cru", "quantity": 1, "unit": "u", "role": "liant", "optional": false },
+        { "op": "add", "form": "Huile d'olive vierge extra", "quantity": 130, "unit": "g", "role": "matière grasse", "optional": false },
+        { "op": "set", "form": "Vinaigre de vin rouge", "quantity": 10, "role": "acidité" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Sortir le jaune d'œuf cru et l'huile un quart d'heure à l'avance : une émulsion ne prend qu'avec des éléments à la même température. Dans un bol, délayer la moutarde de Dijon avec une pincée de sel, ajouter le jaune et fouetter quelques secondes, puis verser l'huile d'olive vierge extra goutte à goutte pour commencer, en filet mince ensuite, sans jamais cesser de battre : la sauce blanchit, épaissit et finit par tenir au fouet. La détendre alors avec le vinaigre de vin rouge et la crème fraîche, poivrer et goûter — elle doit paraître franchement relevée, car les pommes de terre en absorberont une bonne part."
+        }
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 3,
+          "bitter": 0,
+          "umami": 2,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 4,
+          "freshness": 3,
+          "intensity": 3
+        },
+        "dominant_flavors": ["acidulé", "salé", "moutardé", "huile d'olive"],
+        "aroma_families": ["vinaigré", "herbacé", "végétal frais"],
+        "target_textures": ["fondant", "croquant", "crémeux"],
+        "signature_ingredients": ["Pomme de terre cuite", "Cornichon au vinaigre", "Œuf dur"],
+        "identity_guardrails": [
+          "Sans dés de pomme de terre cuite refroidis, ce n'est plus une salade piémontaise mais une simple salade de crudités.",
+          "La sauce doit rester une émulsion épaisse montée à l'huile : réduite à une vinaigrette moutardée, le plat perd son onctuosité caractéristique.",
+          "L'acidité vive apportée par les cornichons et le vinaigre est constitutive du plat ; sans elle, l'ensemble devient plat et gras.",
+          "Le plat se sert froid après repos au réfrigérateur, et le jour même : la sauce au jaune cru ne se garde pas comme celle du commerce."
+        ]
+      }
+    },
+    {
+      "code": "SRC-025-D2",
+      "base": "SRC-025",
+      "family": "Salade piémontaise à la crème moutardée",
+      "variant_label": "Version allégée : remplacer une partie de la mayonnaise par de la crème fraîche liquide entière relevée de moutarde, pour une sauce plus fluide et moins riche.",
+      "rationale": "La crème liquide relevée de moutarde prend la moitié du travail de la mayonnaise, dont la dose est plus que divisée par deux et qui n'est plus là que pour donner du corps. La sauce devient fluide, plus acidulée et sensiblement moins grasse, mais elle nappe moins bien : elle glisse sur les dés au lieu de les enrober et la salade rend un peu plus d'eau au repos. La moutarde, presque doublée, passe au premier plan du goût.",
+      "operations": [
+        { "op": "set", "form": "Mayonnaise", "quantity": 60, "role": "sauce" },
+        { "op": "substitute", "form": "Crème fraîche épaisse", "with": "Crème fraîche liquide entière", "quantity": 100, "unit": "g", "role": "liant", "optional": false },
+        { "op": "set", "form": "Moutarde de Dijon", "quantity": 20, "role": "condiment" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Dans un bol, délayer la moutarde de Dijon avec le vinaigre, puis fouetter la crème fraîche liquide avec elle jusqu'à ce qu'elle épaississe légèrement — la moutarde suffit à lui donner du corps si l'on bat vivement. Incorporer la mayonnaise en dernier : elle ne sert plus qu'à tenir la sauce. Saler, poivrer, goûter : elle doit paraître franchement relevée et rester assez fluide pour couler entre les dés, car les pommes de terre en absorberont une bonne part."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Filmer le saladier et le placer au réfrigérateur au moins une heure, idéalement deux : ce repos permet à la pomme de terre de boire la sauce, qui est ici plus liquide et se laisse absorber plus vite. Remuer une fois à mi-repos pour reprendre ce qui a coulé au fond, puis rectifier le sel, le poivre et l'acidité juste avant de servir, bien frais."
+        }
+      ],
+      "sensory": {
+        "profile": "tangy_creamy",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 3,
+          "bitter": 0,
+          "umami": 2,
+          "heat": 0,
+          "pungency": 3,
+          "richness": 3,
+          "freshness": 3,
+          "intensity": 3
+        },
+        "dominant_flavors": ["acidulé", "moutardé", "lacté", "salé"],
+        "aroma_families": ["vinaigré", "herbacé", "lacté"],
+        "target_textures": ["fondant", "croquant", "sauce fluide"],
+        "signature_ingredients": ["Pomme de terre cuite", "Mayonnaise", "Cornichon au vinaigre", "Œuf dur"],
+        "identity_guardrails": [
+          "Sans dés de pomme de terre cuite refroidis, ce n'est plus une salade piémontaise mais une simple salade de crudités.",
+          "La sauce s'allège mais reste une sauce blanche liée : tombée en vinaigrette, elle glisserait au fond du saladier et laisserait la pomme de terre nue.",
+          "L'acidité vive apportée par les cornichons et le vinaigre est constitutive du plat ; sans elle, l'ensemble devient plat et gras.",
+          "Le plat se sert froid après repos au réfrigérateur : servi tiède, il n'est pas reconnaissable."
+        ]
+      }
+    },
+    {
+      "code": "SRC-025-D3",
+      "base": "SRC-025",
+      "family": "Salade piémontaise au poulet",
+      "variant_label": "Sans porc : substituer au jambon blanc des blancs de volaille cuits taillés en dés, comme le proposent certaines sources du dossier.",
+      "rationale": "Le blanc de volaille poché remplace le jambon : la salade quitte le registre de la charcuterie pour une chair neutre, plus maigre et beaucoup moins salée — il faut relever la sauce en conséquence. Le poulet se poche à peine frémissant puis refroidit dans son bouillon, sans quoi il sèche et devient filandreux au contact de la sauce froide. Compter un quart d'heure de pochage mené en même temps que les pommes de terre, et une découpe de plus au moment de l'assemblage.",
+      "prep_minutes": 30,
+      "operations": [
+        { "op": "substitute", "form": "Jambon blanc cuit", "with": "Blanc de poulet cru, sans peau", "quantity": 250, "unit": "g", "role": "protéine" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Rincer les tomates, retirer le pédoncule, les ouvrir en deux et évacuer graines et jus avec une petite cuillère pour éviter que la salade ne rende de l'eau. Tailler la chair en cubes réguliers, émincer les cornichons en fines rondelles et ciseler finement le persil."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Réunir dans un saladier les dés de pommes de terre, de tomate et de poulet, les rondelles de cornichon et le persil. Verser la sauce, puis remuer à la spatule en soulevant la masse par en dessous, sans écraser, jusqu'à ce que chaque élément soit enrobé. Ajouter les œufs durs en dernier et les mêler d'un geste léger pour garder les morceaux entiers."
+        },
+        {
+          "op": "insert",
+          "after": 2,
+          "instruction": "Dans une troisième casserole menée en même temps que les pommes de terre, plonger les blancs de poulet dans une eau salée à peine frémissante, jamais bouillante, et compter une quinzaine de minutes selon leur épaisseur : la chair doit être blanche à cœur et céder sous le doigt sans résistance. Les laisser tiédir dans leur eau de cuisson, qui les garde moelleux, puis les égoutter et les tailler en dés d'un centimètre et demi, du même calibre que les pommes de terre."
+        }
+      ]
+    },
+    {
+      "code": "SRC-025-D4",
+      "base": "SRC-025",
+      "family": "Salade piémontaise végétarienne",
+      "variant_label": "Version végétarienne : supprimer le jambon et doubler la part d'œuf dur, en renforçant le croquant avec davantage de cornichons.",
+      "rationale": "Sans jambon, l'œuf dur porte seul la protéine : doublé, il passe de garniture à composant principal et rend la salade plus douce, plus jaune, moins salée. Les cornichons renforcés ne rendent pas ce sel, mais leur acidité et leur croquant redonnent une part du relief que la charcuterie tenait. L'ensemble reste crémeux mais perd le contraste salé qui réveillait la pomme de terre : la sauce doit être assaisonnée plus fermement qu'à l'ordinaire.",
+      "operations": [
+        { "op": "remove", "form": "Jambon blanc cuit" },
+        { "op": "scale", "form": "Œuf dur", "factor": 2 },
+        { "op": "set", "form": "Cornichon au vinaigre", "quantity": 130, "role": "condiment" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Rincer les tomates, retirer le pédoncule, les ouvrir en deux et évacuer graines et jus avec une petite cuillère pour éviter que la salade ne rende de l'eau. Tailler la chair en cubes réguliers, puis émincer les cornichons en rondelles un peu épaisses — ils sont plus nombreux ici et doivent croquer sous la dent — et ciseler finement le persil."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Réunir dans un saladier les dés de pommes de terre et de tomate, les rondelles de cornichon et le persil. Verser la sauce et remuer à la spatule en soulevant la masse par en dessous, sans écraser, jusqu'à ce que chaque élément soit enrobé. Ajouter en dernier les œufs durs, deux fois plus abondants qu'à l'ordinaire puisqu'ils portent seuls la protéine du plat, et les mêler d'un geste léger pour garder les morceaux entiers."
+        }
+      ]
+    },
+    {
+      "code": "SRC-026-D1",
+      "base": "SRC-026",
+      "family": "Sauté minute de porc aux pruneaux",
+      "variant_label": "Version courte au wok : porc taillé en fines lanières, saisie vive et pruneaux ajoutés en dernière minute, pour un sauté minute au lieu du braisé.",
+      "rationale": "Le braisé devient un sauté : lanières fines saisies en deux fournées, un fond d'eau pour déglacer au lieu d'un mouillement, vingt minutes de feu vif au lieu d'une heure et demie à couvert. La viande reste ferme et franche au lieu de fondre à la fourchette, les légumes gardent du mordant, et les pruneaux jetés à la fin conservent leur forme sans gonfler ni parfumer le jus en profondeur. C'est le même accord sucré-salé dans un plat plus net et plus sec, qui ne se réchauffe pas.",
+      "prep_minutes": 25,
+      "cook_minutes": 20,
+      "techniques": ["saisie vive", "sauté wok", "déglaçage", "réduction"],
+      "conservation": "Se conserve 2 jours au réfrigérateur entre 0 et 4 °C dans un récipient fermé, mais perd beaucoup au réchauffage : les lanières saisies se contractent et les légumes rendent leur croquant. Réchauffer très vite à la poêle brûlante, jamais à couvert et jamais à l'eau. La congélation n'a pas d'intérêt ici : la viande n'a pas la structure fondante du braisé, qui seule supporte la décongélation.",
+      "operations": [
+        { "op": "set", "form": "Eau", "quantity": 100, "role": "mouillement" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Détailler l'épaule de porc en lanières de la largeur d'un doigt, en tranchant en travers de la fibre : coupée dans le sens des fibres, une viande saisie vite reste filandreuse. Peler et émincer l'oignon jaune en fines lamelles, tailler la carotte en bâtonnets courts."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Faire fumer l'huile d'olive dans un wok ou une grande sauteuse et y jeter la moitié des lanières de porc en une seule couche, sans les tasser. Les laisser une minute sans y toucher, puis les retourner jusqu'à ce qu'elles soient dorées de partout, et les débarrasser dans une assiette avant de recommencer avec le reste : une poêlée surchargée rend son eau et bout au lieu de colorer."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Remettre le wok vide sur le feu vif, y verser l'oignon et la carotte et les remuer deux à trois minutes seulement : ils doivent s'assouplir et prendre quelques taches dorées en gardant du mordant, loin de la fondue lente que demandait le braisé."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Ajouter les lardons fumés et les laisser crépiter deux minutes en remuant, le temps qu'ils libèrent leur gras et en parfument les légumes."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Verser l'eau et gratter aussitôt le fond à la cuillère en bois pour décoller les sucs caramélisés. Poivrer, puis laisser bouillir vivement deux à trois minutes jusqu'à ce qu'il ne reste qu'un fond de jus sirupeux : le mouillement est ici trois fois plus faible, il sert à déglacer et non à mijoter."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Remettre le porc et le jus qu'il a rendu dans l'assiette, et le rouler une minute dans ce fond de sauce pour l'enrober et le réchauffer. La viande est déjà cuite : prolongée, elle se contracte et sèche, là où l'épaule braisée gagnait à s'attendrir une heure."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Jeter les pruneaux dénoyautés à la toute fin et les remuer trente secondes, le temps qu'ils tiédissent et lâchent un peu de leur sucre dans le jus. Ils restent fermes et entiers, sans le moelleux gonflé que seule donne la cuisson longue."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Rectifier le poivre et servir aussitôt, tant que les légumes croquent et que la sauce brille. Ce sauté n'attend pas : gardé au chaud, il rend son eau et perd précisément ce qui le distingue du braisé."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 3,
+          "salty": 3,
+          "acidic": 1,
+          "bitter": 0,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 2,
+          "intensity": 3
+        },
+        "dominant_flavors": ["sucré du fruit sec", "porc saisi", "fumé du lard"],
+        "aroma_families": ["fruit sec", "fumé", "viande grillée"],
+        "target_textures": ["lanières de porc juste saisies", "pruneau ferme et tiède", "légumes croquants", "jus court et sirupeux"],
+        "signature_ingredients": ["Épaule de porc crue", "Pruneau dénoyauté", "Lardon fumé cru"],
+        "identity_guardrails": [
+          "Sans pruneau dénoyauté, il ne reste qu'un sauté de porc ordinaire : c'est le fruit sec qui porte le contraste sucré-salé du plat.",
+          "La viande est saisie en deux fournées et jamais entassée : c'est la seule coloration que cette version courte obtiendra, faute de cuisson longue.",
+          "La cuisson reste vive et à découvert : dix minutes sous un couvercle raidissent la lanière sans jamais la rendre fondante, et le plat n'est alors ni un sauté ni un braisé.",
+          "Le mouillement se limite à un fond d'eau destiné au déglaçage : noyée, la poêlée redevient un ragoût manqué."
+        ]
+      }
+    },
+    {
+      "code": "SRC-026-D2",
+      "base": "SRC-026",
+      "family": "Porc aux pruneaux à la cocotte",
+      "variant_label": "Sans lardons : doubler la saisie de la viande pour compenser la profondeur fumée manquante.",
+      "rationale": "Retirer les lardons ôte au plat sa colonne fumée et l'essentiel de son sel : la saisie menée en deux fournées et poussée jusqu'au brun redonne du fond au jus, mais ne remplace pas le fumé, qui disparaît vraiment. Il faut désormais saler la cocotte, ce que la recette d'origine n'avait pas à faire, et juger l'assaisonnement une fois le jus réduit. Le résultat est plus maigre, plus franchement porc et pruneau, moins complexe aussi.",
+      "techniques": ["saisie", "déglaçage", "mijotage", "réduction"],
+      "operations": [
+        { "op": "remove", "form": "Lardon fumé cru" },
+        { "op": "add", "form": "Sel fin", "quantity": 4, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Débarrasser l'oignon et la carotte dans une assiette : la saisie se mène ici en deux fournées, et des légumes laissés sur les bords d'une cocotte brûlante noirciraient pendant que la seconde colore, donnant au jus une amertume dont il ne se relève pas. Monter le feu et déposer la moitié des cubes de porc à plat, sans qu'ils se touchent. Les laisser dorer sans les bouger, les retourner face par face jusqu'à ce qu'ils soient colorés partout et presque bruns, les réserver, puis recommencer avec le reste : privée de garniture fumée, la cocotte n'a plus que cette croûte caramélisée pour donner du fond à son jus, et une viande entassée bout au lieu de saisir. Remettre alors dans la cocotte l'oignon, la carotte, toute la viande et les sucs qu'elle a rendus."
+        },
+        { "op": "remove", "n": 4 },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Verser l'eau et gratter aussitôt le fond à la cuillère en bois pour décoller les sucs caramélisés. Ajouter le sel fin et poivrer — il n'y a plus de charcuterie pour saler le jus à la place du cuisinier —, porter à petits bouillons puis couvrir et baisser au minimum."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Retirer le couvercle pour les dix dernières minutes et laisser le liquide réduire jusqu'à une sauce brillante qui nappe la cuillère. Mélanger avec précaution, goûter et rectifier en sel et en poivre seulement à ce moment : la réduction concentre l'assaisonnement, et un jus salé trop tôt devient immangeable une fois réduit."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 3,
+          "salty": 2,
+          "acidic": 1,
+          "bitter": 0,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 1,
+          "intensity": 2
+        },
+        "dominant_flavors": ["sucré du fruit sec", "porc caramélisé", "oignon confit"],
+        "aroma_families": ["fruit sec", "viande rôtie", "légume fondu"],
+        "target_textures": ["viande fondante à la fourchette", "pruneau moelleux et gonflé", "sauce nappante"],
+        "signature_ingredients": ["Épaule de porc crue", "Pruneau dénoyauté"],
+        "identity_guardrails": [
+          "Sans pruneau dénoyauté, il ne reste qu'un sauté de porc ordinaire : c'est le fruit sec qui porte le contraste sucré-salé du plat.",
+          "La viande doit être saisie en deux fournées et poussée jusqu'au brun : c'est elle seule qui donne au jus la profondeur que la garniture fumée apportait.",
+          "La cuisson reste longue et à couvert : un passage rapide à la poêle ne rend pas l'épaule fondante et ne laisse pas les pruneaux parfumer le jus.",
+          "Le mouillement se limite à un fond d'eau, pas à un bain : la sauce doit finir réduite et nappante, jamais aqueuse."
+        ]
+      }
+    }
+  ]
+}

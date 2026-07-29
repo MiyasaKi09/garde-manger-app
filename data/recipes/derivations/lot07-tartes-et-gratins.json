@@ -1,0 +1,440 @@
+{
+  "lot": "lot07 — tartes et gratins",
+  "note": "Quatre bases, dix-sept variantes annoncées, seize dérivations retenues et une écartée. La ligne de partage tenue dans ce lot : un MODE de cuisson qui change (eau bouillante → vapeur, couvert → découvert) fait une autre recette, une DÉCOUPE du légume principal qui change aussi (poivron entier chapeauté → poivron fendu en barquettes, car la farce n'est plus enfermée mais exposée), mais un simple CONTENANT qui change n'en fait pas une — d'où le seul rejet du lot, les ramequins de SRC-020. Deux arbitrages dits à découvert plutôt que faits en silence. Premièrement, la béchamel de SRC-020 : sa variante attendait explicitement que « ces formes soient disponibles au catalogue », elles le sont désormais toutes les quatre (Beurre doux, Farine de blé T55, Lait demi-écrémé, Muscade moulue), la dérivation était donc due. La crème n'y est pas retirée mais substituée par le lait, ce qui garde la ligne laitière parmi les ingrédients signature — supprimer la crème sans rien mettre à sa place aurait fait tomber le gratin à deux signatures pour une raison purement comptable. Deuxièmement, le curry de SRC-021 : la variante demande de cuire le riz « avec du curry en poudre », mais la base cuit ce riz dans l'eau de blanchiment des poivrons, un grand volume où l'épice se serait diluée en pure perte ; le riz passe donc dans une petite casserole à part, ce qui est écrit dans l'étape et dans le rationale. Deux dérivations n'agissent que sur les étapes (SRC-020-D4 vapeur, SRC-021-D4 barquettes) : leur delta ne pèse rien de plus, il cuit autrement. Aucune forme n'a manqué au catalogue.",
+  "derivations": [
+    {
+      "code": "SRC-019-D1",
+      "base": "SRC-019",
+      "family": "Pichade mentonnaise",
+      "variant_label": "Pichade mentonnaise : ajouter aux oignons des tomates pelées concassées et laisser réduire une heure avant de garnir la pâte.",
+      "rationale": "Quatre cents grammes de tomate concassée entrent dans la compotée et lui demandent une heure de réduction supplémentaire pour rendre toute leur eau. La garniture y gagne une acidité et une couleur que l'oignon seul n'a pas, et perd la douceur presque confite de la pissaladière niçoise. Le coût est double : une heure de plus devant la sauteuse, et un risque nouveau — une tomate insuffisamment réduite détrempe la pâte par en dessous et ruine le fond.",
+      "cook_minutes": 115,
+      "techniques": ["mijotage", "réduction", "rôtissage", "pétrissage"],
+      "operations": [
+        { "op": "add", "form": "Tomate concassée en conserve", "quantity": 400, "unit": "g", "role": "base humide", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Répartir la compotée d'oignons et de tomate en couche régulière jusqu'au bourrelet, croiser dessus les filets d'anchois réservés de façon à dessiner des losanges, et déposer une olive noire au creux de chaque losange."
+        },
+        {
+          "op": "insert",
+          "after": 3,
+          "instruction": "Verser la tomate concassée en conserve sur les oignons compotés, mélanger et poursuivre à découvert sur feu doux une heure pleine, en raclant le fond toutes les dix minutes. La préparation doit perdre toute son eau et se resserrer en une pâte épaisse qui garde la trace de la cuillère : une garniture encore humide passerait son eau dans la pâte pendant la cuisson et laisserait un fond mou."
+        }
+      ]
+    },
+    {
+      "code": "SRC-019-D2",
+      "base": "SRC-019",
+      "family": "Pissaladière aux olives vertes",
+      "variant_label": "Version aux olives vertes dénoyautées, plus douce et moins amère que l'olive noire.",
+      "rationale": "L'olive verte dénoyautée prend la place de l'olive noire à quantité égale et change la ponctuation du plat : là où la noire apportait une amertume sombre qui répondait à l'anchois, la verte donne une note lactique et croquante, plus courte en bouche. Le contraste avec la compotée sucrée s'en trouve adouci, ce qui rend la tarte plus accessible et un peu moins provençale. En contrepartie l'olive verte arrive en saumure vive et demande d'être rincée : les anchois écrasés dans la compotée l'ont déjà salée jusqu'à la limite, et rien n'y rattraperait un excès.",
+      "operations": [
+        { "op": "substitute", "form": "Olive noire", "with": "Olive verte dénoyautée", "quantity": 60, "unit": "g", "role": "garniture" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Rincer les olives vertes dénoyautées sous l'eau froide et les éponger : leur saumure lactique est bien plus vive que celle de l'olive noire, et la compotée, que les anchois écrasés salent déjà largement, n'a aucune marge pour en recevoir davantage. Répartir ensuite la compotée d'oignons en couche régulière jusqu'au bourrelet, croiser dessus les filets d'anchois réservés de façon à dessiner des losanges, et déposer une olive au creux de chaque losange."
+        }
+      ]
+    },
+    {
+      "code": "SRC-019-D3",
+      "base": "SRC-019",
+      "family": "Pissaladière au fenouil",
+      "variant_label": "Pissaladière au fenouil : remplacer un tiers des oignons par du fenouil émincé compoté avec eux.",
+      "rationale": "Un tiers des oignons cède la place à du fenouil émincé, soit deux cent soixante-dix-sept grammes de bulbe contre autant d'oignon en moins. La compotée perd un peu de son sucre et gagne un fond anisé qui tient tête à l'anchois au lieu de l'envelopper. Le fenouil demande cinq minutes de plus pour céder complètement, et ses côtes extérieures, si on ne les écarte pas, laissent des fils désagréables dans une garniture qu'on attend fondante.",
+      "cook_minutes": 60,
+      "operations": [
+        { "op": "scale", "form": "Oignon jaune cru", "factor": 0.6667 },
+        { "op": "add", "form": "Fenouil frais", "quantity": 277, "unit": "g", "role": "légume", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Peler les oignons et les tailler en lamelles fines et régulières. Parer les bulbes de fenouil, ôter la base dure et les côtes extérieures les plus filandreuses, puis les émincer à la même finesse pour que les deux légumes fondent au même rythme. Chauffer le reste de l'huile d'olive dans une grande sauteuse, y verser ensemble oignons et fenouil avec le sucre semoule, le thym séché, les herbes de Provence et le poivre noir moulu."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Couvrir et laisser compoter sur feu très doux une quarantaine de minutes en remuant toutes les cinq minutes ; ajouter l'ail écrasé à mi-cuisson. Le fenouil met plus longtemps que l'oignon à céder : la compotée n'est prête que lorsque ses lamelles s'écrasent sans résistance entre deux doigts, translucides et à peine blondes, sans jamais colorer ni accrocher — une cuillère d'eau suffit à rattraper le fond si besoin. Ne pas saler à cette étape."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Répartir la compotée d'oignons et de fenouil en couche régulière jusqu'au bourrelet, croiser dessus les filets d'anchois réservés de façon à dessiner des losanges, et déposer une olive noire au creux de chaque losange."
+        }
+      ]
+    },
+    {
+      "code": "SRC-019-D4",
+      "base": "SRC-019",
+      "family": "Pissaladière à l'aubergine rôtie",
+      "variant_label": "Base à l'aubergine rôtie écrasée mêlée aux oignons, pour une garniture plus fondante.",
+      "rationale": "Six cent cinquante grammes d'aubergine rôtie au four viennent s'écraser dans une compotée d'oignons réduite d'un tiers. La garniture passe de la lamelle fondante à la purée grumeleuse : elle couvre mieux la pâte, tient à la découpe et porte un goût de fumé léger que l'oignon seul ne donne pas. Le prix à payer est un four occupé quarante minutes en amont et une garniture plus lourde en eau, qu'il faut vraiment laisser sécher avant de l'étaler.",
+      "prep_minutes": 35,
+      "cook_minutes": 60,
+      "techniques": ["mijotage", "rôtissage", "pétrissage"],
+      "operations": [
+        { "op": "scale", "form": "Oignon jaune cru", "factor": 0.65 },
+        { "op": "add", "form": "Aubergine fraîche", "quantity": 650, "unit": "g", "role": "légume", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Monter le four à 220 °C. Étaler la pâte au rouleau en un rectangle d'environ 40 × 25 cm sur une plaque tapissée de papier cuisson, en laissant un léger bourrelet tout autour pour retenir la garniture."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Répartir la garniture d'oignons et d'aubergine en couche régulière jusqu'au bourrelet, croiser dessus les filets d'anchois réservés de façon à dessiner des losanges, et déposer une olive noire au creux de chaque losange."
+        },
+        {
+          "op": "insert",
+          "after": 3,
+          "instruction": "Prélever à la cuillère la chair des aubergines rôties en laissant la peau et le jus brun qui s'est amassé sous elles, l'écraser grossièrement à la fourchette et la mêler hors du feu aux oignons compotés. Garder du grain : une chair mixée trop lisse coulerait sur la pâte au lieu d'y tenir en couche."
+        },
+        {
+          "op": "insert",
+          "after": 1,
+          "instruction": "Chauffer le four à 200 °C. Fendre les aubergines en deux dans la longueur, quadriller la chair à la pointe du couteau sans entamer la peau, puis les coucher face tranchée contre une plaque tapissée de papier cuisson. Les rôtir quarante minutes pendant que les oignons compotent : la peau doit se rider et se creuser, et la chair s'enfoncer sans la moindre résistance."
+        }
+      ]
+    },
+    {
+      "code": "SRC-020-D1",
+      "base": "SRC-020",
+      "family": "Gratin de poireaux à la béchamel muscadée",
+      "variant_label": "Version béchamel classique : remplacer la crème par une sauce blanche montée au roux beurre-farine-lait, muscadée, dès que ces formes sont disponibles au catalogue.",
+      "rationale": "La crème laisse la place à une vraie béchamel : quarante grammes de beurre et autant de farine en roux blanc, mouillés d'un demi-litre de lait demi-écrémé et relevés d'une pointe de muscade. La sauce enrobe davantage et tient mieux à la cuisson qu'une crème, qui peut trancher sous le gril ; le gratin devient plus nourrissant et franchement plus farineux en bouche. Le coût est du travail en plus — un roux à surveiller, un fouet à tenir — et une dizaine de minutes ajoutées à la cuisson.",
+      "prep_minutes": 30,
+      "cook_minutes": 45,
+      "techniques": ["blanchiment", "roux", "gratinage"],
+      "operations": [
+        { "op": "substitute", "form": "Crème fraîche liquide entière", "with": "Lait demi-écrémé", "quantity": 500, "unit": "ml", "role": "béchamel" },
+        { "op": "add", "form": "Beurre doux", "quantity": 40, "unit": "g", "role": "béchamel", "optional": false },
+        { "op": "add", "form": "Farine de blé T55", "quantity": 40, "unit": "g", "role": "béchamel", "optional": false },
+        { "op": "add", "form": "Muscade moulue", "quantity": 0.5, "unit": "g", "role": "épice", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Retirer la sauteuse du feu. Dans une casserole à part, faire fondre le beurre doux à feu doux, y pleuvoir la farine de blé T55 en une seule fois et remuer deux minutes sans laisser blondir : un roux blanc doit sentir le biscuit, jamais le grillé. Verser le lait demi-écrémé froid en trois fois, en fouettant jusqu'au lisse à chaque ajout, amener à petits frémissements et laisser épaissir cinq minutes, le temps que la sauce nappe le dos de la cuillère. Assaisonner d'une pointe de muscade moulue, saler, poivrer, puis en napper les poireaux et mélanger doucement pour que chaque tronçon soit enrobé."
+        }
+      ]
+    },
+    {
+      "code": "SRC-020-D2",
+      "base": "SRC-020",
+      "family": "Gratin de poireaux à la tomate",
+      "variant_label": "Montage à la tomate façon marmiton.org : alterner des couches de tomates pelées et épépinées mijotées à l'oignon et à l'ail avec les poireaux et le fromage.",
+      "rationale": "Sept cents grammes de tomates pelées, épépinées et mijotées à l'oignon et à l'ail s'intercalent en couches entre les poireaux et le fromage. L'acidité et le sucre de la tomate coupent le gras du gruyère et donnent au gratin une lecture méridionale que la version crémée n'a pas. La crème tombe donc à soixante grammes — la sauce apporte désormais l'humidité, et en garder cent seize noierait le plat. Il faut compter vingt minutes de mijotage et un montage en trois temps là où la base se contentait d'une couche unique.",
+      "prep_minutes": 40,
+      "cook_minutes": 55,
+      "techniques": ["blanchiment", "réduction", "gratinage"],
+      "operations": [
+        { "op": "add", "form": "Tomate fraîche mûre", "quantity": 700, "unit": "g", "role": "sauce", "optional": false },
+        { "op": "add", "form": "Oignon jaune cru", "quantity": 150, "unit": "g", "role": "aromate", "optional": false },
+        { "op": "add", "form": "Ail cru", "quantity": 8, "unit": "g", "role": "aromate", "optional": false },
+        { "op": "set", "form": "Huile d'olive vierge extra", "quantity": 40, "role": "matière grasse", "optional": false },
+        { "op": "set", "form": "Crème fraîche liquide entière", "quantity": 60, "role": "liant", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Faire chauffer le reste de l'huile d'olive vierge extra dans une sauteuse large et y remuer les poireaux égouttés trois à quatre minutes sur feu vif, le temps que l'humidité restante s'évapore et que les tronçons prennent une légère coloration. Saler et poivrer à ce moment-là."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Retirer la sauteuse du feu, arroser des soixante grammes de crème fraîche liquide entière et mélanger doucement. Il n'en faut plus qu'un voile : la sauce apporte désormais l'essentiel du moelleux, et une double dose ferait un gratin qui rend du jus dans l'assiette. Goûter et rectifier le sel et le poivre."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Monter le gratin par couches dans le plat : un tiers des poireaux, un tiers de la sauce tomate étalée à la cuillère, une poignée de gruyère râpé, et recommencer deux fois. Terminer par le fromage réparti jusqu'aux bords, qui doit couvrir toute la surface — une couche de tomate laissée à l'air brunit et sèche au lieu de gratiner."
+        },
+        {
+          "op": "insert",
+          "after": 3,
+          "instruction": "Inciser les tomates en croix à la base, les plonger trente secondes dans l'eau bouillante puis aussitôt dans l'eau glacée : la peau se retire alors d'un seul geste. Les couper en deux, les épépiner au-dessus d'une passoire, puis les concasser. Faire suer l'oignon émincé et l'ail écrasé dans une cuillerée d'huile d'olive prélevée sur la dose, ajouter la pulpe et laisser mijoter vingt minutes à découvert, jusqu'à une sauce courte qui ne rend plus d'eau au fond de la casserole."
+        }
+      ]
+    },
+    {
+      "code": "SRC-020-D3",
+      "base": "SRC-020",
+      "family": "Poireaux gratinés en croûte de chapelure",
+      "variant_label": "Finition croustillante : parsemer de chapelure avant le passage au four pour une croûte plus sèche et plus craquante.",
+      "rationale": "Quarante-cinq grammes de chapelure de blé viennent coiffer le gruyère avant l'enfournement. La croûte cesse d'être une nappe de fromage élastique pour devenir une couche sèche et cassante, qui craque sous la cuillère et fait contraste avec le poireau fondant en dessous. En échange le gratin devient un peu plus sec et nettement plus glucidique, et la surveillance se resserre : la mie brunit plusieurs minutes avant le fromage et passe au brûlé sans prévenir.",
+      "operations": [
+        { "op": "add", "form": "Chapelure de blé", "quantity": 45, "unit": "g", "role": "gratinage", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Étaler la préparation dans un plat à gratin en une couche régulière, sans tasser, recouvrir uniformément de gruyère râpé jusqu'aux bords, puis parsemer par-dessus la chapelure de blé en pluie fine. La répartir du bout des doigts sans laisser d'amas : un tas de mie reste farineux au cœur là où un voile grille de part en part."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Enfourner à 210 °C sur la grille haute pendant quinze à vingt minutes, jusqu'à ce que la chapelure prenne une couleur de croûte de pain et que le fromage bouillonne dessous. La mie sèche brunit bien avant le gruyère : ne plus quitter le four sur les trois dernières minutes. Laisser reposer cinq minutes avant de servir à même le plat de cuisson, le temps que la croûte se raffermisse."
+        }
+      ]
+    },
+    {
+      "code": "SRC-020-D4",
+      "base": "SRC-020",
+      "family": "Poireaux vapeur gratinés au gruyère",
+      "variant_label": "Cuisson vapeur : passer les tronçons cinq minutes au panier vapeur au lieu de l'eau bouillante, pour un poireau moins gorgé d'eau.",
+      "rationale": "Les tronçons passent cinq minutes au panier vapeur au lieu d'un quart d'heure dans l'eau bouillante. Le poireau n'est plus lessivé : il garde son vert, son goût et sa tenue, et le pressage à la louche devient inutile puisqu'il n'a rien bu. La cuisson totale tombe d'une dizaine de minutes. En contrepartie la vapeur pardonne moins — cinq minutes de trop et les tronçons se défont en filaments au moment de les remuer dans la sauteuse.",
+      "cook_minutes": 25,
+      "techniques": ["cuisson vapeur", "gratinage"],
+      "operations": [],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Disposer les tronçons en une seule couche dans un panier vapeur posé sur une eau à gros bouillons, couvrir et compter cinq minutes montre en main. La lame doit entrer sans buter tout en rencontrant encore un peu de matière : la vapeur cuit sans dissoudre, le poireau en sort vert et ferme au lieu de gris et flasque."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Sortir le panier et laisser les tronçons s'égoutter deux minutes sans jamais les presser. Ils n'ont pas bu d'eau, il n'y a donc rien à chasser, et le dos de la louche ne ferait ici que les écraser et les défaire."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Faire chauffer l'huile d'olive vierge extra dans une sauteuse large et y remuer les poireaux deux minutes seulement sur feu vif, le temps de sécher leur surface et de leur donner une pointe de coloration. Les retourner à la spatule plutôt qu'à la cuillère, ils sont encore entiers et le resteront. Saler et poivrer à ce moment-là."
+        }
+      ]
+    },
+    {
+      "code": "SRC-021-D1",
+      "base": "SRC-021",
+      "family": "Poivrons farcis au riz et au curry",
+      "variant_label": "Version sans viande : supprimer le lardon fumé cru et cuire le riz avec du curry en poudre pour compenser la perte de profondeur.",
+      "rationale": "Le lardon fumé sort de la farce et cinq grammes de curry en poudre entrent dans l'eau du riz. Le plat perd son fumé, son sel de charcuterie et une bonne part de son gras, et se retrouve porté par l'épice, la tomate et l'ail : plus léger, plus végétal, franchement autre. Le riz cuit à part dans juste assez d'eau pour qu'il la boive presque entièrement, faute de quoi le curry resterait dans un liquide qu'on jette et n'arriverait jamais dans la farce. Il faut saler la farce d'une pincée de plus qu'à l'ordinaire, la charcuterie ne s'en chargeant plus.",
+      "techniques": ["blanchiment", "suage", "réduction", "rôtissage"],
+      "operations": [
+        { "op": "remove", "form": "Lardon fumé cru" },
+        { "op": "add", "form": "Curry en poudre", "quantity": 5, "unit": "g", "role": "épice", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Porter à ébullition trente centilitres d'eau salée dans une petite casserole, y délayer le curry en poudre, puis y jeter le riz et l'arrêter à la moitié du temps indiqué sur l'emballage. Un volume court plutôt que la grande eau de blanchiment des poivrons : le grain boit ici presque toute son eau et garde l'épice avec elle, là où plusieurs litres l'emporteraient à l'évier. Égoutter le peu de liquide restant sans rincer, puis étaler le riz pour qu'il tiédisse — il absorbera le reste de son eau pendant la cuisson au four."
+        },
+        { "op": "remove", "n": 5 },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Verser un tiers de l'huile d'olive dans une poêle, ajouter l'oignon finement émincé et l'ail écrasé, et laisser suer à feu moyen jusqu'à transparence."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Hors du feu, réunir dans un saladier le riz au curry, la fondue de tomate à l'oignon et les herbes ciselées. Saler, poivrer, puis lier avec l'œuf battu en travaillant la farce à la main pour la rendre homogène. Goûter avant de garnir : privée du gras salé de la charcuterie, cette farce demande toujours une pincée de sel de plus qu'on ne le croit."
+        }
+      ]
+    },
+    {
+      "code": "SRC-021-D2",
+      "base": "SRC-021",
+      "family": "Poivrons farcis aux herbes fraîches",
+      "variant_label": "Farce très herbacée : doubler la coriandre fraîche et le persil frais, ajoutés seulement hors du feu, et servir les poivrons tièdes plutôt que brûlants.",
+      "rationale": "La coriandre passe à trente grammes et le persil à vingt, et tous deux cessent d'être facultatifs : ce ne sont plus des herbes de finition mais l'un des trois goûts du plat, à côté du poivron et du lard. Elles n'entrent qu'une fois la préparation tiédie, faute de quoi elles noircissent et rendent en une minute ce qu'on vient de doubler. Le service tiède, une bonne demi-heure après la sortie du four — un poivron farci est dense et redescend lentement —, va dans le même sens : un poivron brûlant écrase les herbes fraîches et ne laisse entendre que le sucre du légume.",
+      "operations": [
+        { "op": "set", "form": "Coriandre fraîche", "quantity": 30, "role": "herbe", "optional": false },
+        { "op": "set", "form": "Persil frais", "quantity": 20, "role": "herbe", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Hors du feu, réunir dans un saladier le riz à mi-cuisson et la préparation lardons-tomate, et attendre que l'ensemble ait vraiment tiédi avant d'y jeter la coriandre et le persil ciselés au dernier moment. Sur une farce brûlante, les deux herbes noircissent et rendent leur eau : on aurait doublé les quantités pour rien. Saler, poivrer, puis lier avec l'œuf battu en travaillant la farce à la main pour la rendre homogène."
+        },
+        {
+          "op": "replace",
+          "n": 11,
+          "instruction": "Enfourner quarante minutes, en ôtant l'aluminium sur le dernier quart d'heure pour que le dessus sèche et prenne couleur. Laisser reposer une bonne demi-heure hors du four et servir tiède : un poivron farci est dense et tient longtemps sa chaleur, vingt minutes ne suffiraient pas à le ramener sous la brûlure. C'est à cette température seulement que la coriandre et le persil se font entendre, alors qu'un poivron sortant du four les couvre entièrement."
+        }
+      ]
+    },
+    {
+      "code": "SRC-021-D3",
+      "base": "SRC-021",
+      "family": "Poivrons farcis rôtis à découvert",
+      "variant_label": "Cuisson à découvert du début à la fin pour une farce plus sèche et une peau nettement plus grillée, en surveillant le fond de plat qui s'assèche plus vite.",
+      "rationale": "L'aluminium disparaît du début à la fin : les poivrons ne cuisent plus dans leur propre vapeur mais rôtissent à sec. La peau se tache de brun et se plisse, et la farce, qui garde sa calotte pour couvercle, se resserre et perd l'humidité qui la rendait moelleuse à cœur. Le bouillon passe de sept à dix grammes parce que le fond de plat s'évapore deux fois plus vite et qu'il faudra le rallonger en cours de route. C'est un plat plus grillé et plus concentré, mais il ne se laisse plus oublier : dix minutes de fond à sec suffisent à donner de l'amer brûlé à toute la farce.",
+      "operations": [
+        { "op": "set", "form": "Bouillon de volaille", "quantity": 10, "role": "liquide de cuisson", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 10,
+          "instruction": "Délayer le bouillon de volaille dans un grand verre d'eau chaude et le verser au fond du plat, sans arroser les chapeaux. Ne rien couvrir : c'est tout le principe de cette version, et c'est aussi ce qui fait s'évaporer le fond deux fois plus vite qu'à l'ordinaire."
+        },
+        {
+          "op": "replace",
+          "n": 11,
+          "instruction": "Enfourner quarante minutes à découvert, en regardant le fond du plat toutes les dix minutes : dès qu'il n'y reste plus de liquide, rajouter un demi-verre d'eau chaude, sans quoi les sucs attachés brûlent et communiquent leur amertume à toute la farce. La peau se ride et se marque de taches brunes, tandis que la farce, protégée par sa calotte, se resserre sans se dessécher en surface. Laisser reposer dix minutes hors du four avant de servir."
+        }
+      ]
+    },
+    {
+      "code": "SRC-021-D4",
+      "base": "SRC-021",
+      "family": "Poivrons farcis au riz en barquettes",
+      "variant_label": "Poivrons coupés en deux dans la longueur et couchés dans le plat : cuisson raccourcie d'une dizaine de minutes, portions plus faciles à répartir.",
+      "rationale": "Les poivrons sont fendus dans la longueur et couchés au lieu d'être chapeautés et dressés. Sans calotte, la farce reste à découvert : dès qu'on ôte l'aluminium, elle sèche et prend couleur sur le dessus au lieu d'étuver jusqu'au bout sous son chapeau. Une moitié s'attendrit plus vite qu'un poivron entier, si bien que le blanchiment tombe de quinze à dix minutes et le four de quarante à trente. Le service y gagne, une ou deux barquettes faisant une part nette sans découpe hasardeuse ; en échange, une moitié blanchie trop longtemps se déchire et ne tient plus sa garniture.",
+      "cook_minutes": 30,
+      "operations": [],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Mettre le four à chauffer sur 200 °C. Fendre chaque poivron en deux dans la longueur, en passant la lame de part et d'autre du pédoncule pour obtenir deux moitiés de taille égale."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Racler l'intérieur de chaque moitié à la cuillère pour ôter les pépins et les nervures pâles, sans entamer la paroi qui doit rester assez épaisse pour porter la farce. Rincer les barquettes et les éponger."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Plonger les moitiés dans une grande casserole d'eau salée à petits bouillons dix minutes seulement : ouvertes, elles s'attendrissent bien plus vite qu'un poivron entier et se déchirent si on les oublie. Les rafraîchir aussitôt à l'eau froide, puis les laisser s'égoutter retournées."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Garnir chaque moitié de farce sans la tasser, en arrondissant le dessus à la cuillère, puis coucher les barquettes côte à côte dans un plat à four badigeonné du reste d'huile d'olive, sans jamais les superposer."
+        },
+        {
+          "op": "replace",
+          "n": 10,
+          "instruction": "Délayer le bouillon de volaille dans un grand verre d'eau chaude et le verser au fond du plat, entre les barquettes et jamais dessus : arrosée par-dessus, la farce ouverte se détremperait au lieu de prendre. Couvrir de papier aluminium."
+        },
+        {
+          "op": "replace",
+          "n": 11,
+          "instruction": "Enfourner trente minutes, en ôtant l'aluminium sur les dix dernières pour que la surface sèche et prenne couleur. Laisser reposer dix minutes hors du four avant de servir, le temps que la farce se raffermisse : les barquettes se soulèvent alors d'une seule pièce à la spatule, une ou deux par assiette."
+        }
+      ]
+    },
+    {
+      "code": "SRC-022-D1",
+      "base": "SRC-022",
+      "family": "Vichyssoise",
+      "variant_label": "Servi glacé et bien lissé, additionné d'un trait de crème supplémentaire, il devient une vichyssoise d'été.",
+      "rationale": "Cinquante grammes de crème en plus et un séjour de quatre heures au froid transforment le potage chaud en velouté glacé. Le froid raidit la texture et endort le goût : d'où la crème supplémentaire, qui garde le velouté coulant, et un assaisonnement à reprendre plus franchement qu'à chaud. Le passage au chinois cesse d'être un raffinement pour devenir obligatoire, le moindre grain se signalant en bouche dès qu'une soupe est froide. Le plat n'est plus disponible dans la demi-heure : il faut le prévoir la veille ou le matin.",
+      "techniques": ["suage", "mijotage", "mixage", "refroidissement"],
+      "operations": [
+        { "op": "scale", "form": "Crème fraîche liquide entière", "factor": 1.25 }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Mixer le potage encore chaud jusqu'à une texture parfaitement lisse, puis le passer au chinois en foulant à la louche — servi froid, le moindre grain se sent, alors qu'il passerait inaperçu dans une soupe fumante. Incorporer la crème hors du feu, puis rectifier le sel et le poivre plus franchement qu'à chaud : le froid endort l'assaisonnement, ce qui semble juste à la casserole paraîtra fade au bol."
+        },
+        {
+          "op": "insert",
+          "after": 6,
+          "instruction": "Filmer au contact, laisser tiédir puis réserver au moins quatre heures au réfrigérateur, une nuit si l'on peut. Fouetter vivement le velouté glacé juste avant de le verser en assiette creuse ou en bol rafraîchi : il se resserre en reposant et demande à être remis en mouvement pour retrouver sa coulée."
+        }
+      ]
+    },
+    {
+      "code": "SRC-022-D2",
+      "base": "SRC-022",
+      "family": "Potage Parmentier aux croûtons et cerfeuil",
+      "variant_label": "Couronner chaque assiette de croûtons frits égouttés sur papier absorbant et de quelques pluches de cerfeuil.",
+      "rationale": "Cent vingt grammes de pain de campagne frits et huit grammes de cerfeuil s'ajoutent au moment du service, et l'huile d'olive cesse d'être facultative pour devenir la friture, à quarante-cinq grammes. Le potage y gagne ce qui lui manquait — du croquant et une note anisée fraîche contre le velouté lisse — et de quoi tenir plus longtemps au corps. Le coût est net : le pain frit alourdit sensiblement la part, et la fenêtre de service se réduit à quelques minutes, les croûtons buvant le potage et retombant dès qu'ils y séjournent.",
+      "prep_minutes": 20,
+      "cook_minutes": 35,
+      "techniques": ["suage", "mijotage", "mixage", "friture"],
+      "operations": [
+        { "op": "add", "form": "Pain de campagne", "quantity": 120, "unit": "g", "role": "croûtons", "optional": false },
+        { "op": "add", "form": "Cerfeuil frais", "quantity": 8, "unit": "g", "role": "herbe de finition", "optional": false },
+        { "op": "set", "form": "Huile d'olive vierge extra", "quantity": 45, "role": "friture", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Faire mousser le beurre doux seul dans une cocotte à fond épais — l'huile d'olive est ici réservée à la friture des croûtons —, y verser les poireaux et les laisser suer huit minutes à feu doux, sans jamais les laisser prendre couleur."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Mixer le potage encore chaud jusqu'à une texture veloutée, le passer au chinois pour une finesse parfaite, puis incorporer la crème hors du feu et rectifier en sel et poivre. Verser en assiette creuse, semer les croûtons au tout dernier moment et couronner de pluches de cerfeuil frais : posés d'avance, les croûtons boivent le potage et retombent, et le cerfeuil, s'il cuit, perd en quelques secondes son parfum d'anis."
+        },
+        {
+          "op": "insert",
+          "after": 5,
+          "instruction": "Tailler le pain de campagne, rassis de préférence, en cubes d'un centimètre. Chauffer l'huile d'olive vierge extra dans une petite poêle jusqu'à ce qu'un cube y grésille aussitôt, puis frire les croûtons par poignées en les remuant sans arrêt deux à trois minutes, jusqu'à ce qu'ils dorent sur toutes leurs faces. Les débarrasser sur un papier absorbant et les saler tout de suite : le sel n'accroche que sur le gras encore chaud."
+        }
+      ]
+    },
+    {
+      "code": "SRC-022-D3",
+      "base": "SRC-022",
+      "family": "Potage Parmentier végétarien",
+      "variant_label": "Remplacer le bouillon de volaille par de l'eau salée pour une version maigre plus végétale, comme le fait la trame chefsimon.",
+      "rationale": "L'eau salée remplace au gramme près le bouillon de volaille, ce qui retire du potage sa seule composante carnée et le rend accessible à une table végétarienne. Le goût se resserre sur ce qu'apportent réellement le poireau et la pomme de terre : plus végétal, plus net, mais aussi plus court, sans le fond salé qui portait l'ensemble. Le sel passe de six à dix grammes et cesse d'être facultatif, car plus rien d'autre n'assaisonne le mouillement. La cuisson doit rester au frémissement : c'est l'amidon de la pomme de terre qui fait ici toute la liaison.",
+      "operations": [
+        { "op": "substitute", "form": "Bouillon de volaille", "with": "Eau", "quantity": 750, "unit": "g", "role": "mouillement" },
+        { "op": "set", "form": "Sel fin", "quantity": 10, "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Égoutter les cubes de pomme de terre, les mêler aux poireaux fondus, mouiller d'eau bien chaude jusqu'à recouvrir les légumes, puis saler d'emblée et sans timidité — rien d'autre n'apportera de fond à ce potage, et un mouillement fade ne se rattrape pas au moment de servir. Amener au frémissement."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Couvrir et maintenir un frémissement doux vingt-cinq à trente minutes : la pointe d'un couteau doit traverser un cube de pomme de terre sans la moindre résistance. Tenir la casserole en dessous de l'ébullition franche, qui disperserait l'amidon dans le liquide alors que c'est précisément lui qui doit lier ce velouté maigre."
+        }
+      ]
+    },
+    {
+      "code": "SRC-022-D4",
+      "base": "SRC-022",
+      "family": "Potage Parmentier léger",
+      "variant_label": "Réduire la crème de moitié et allonger d'un peu de bouillon pour un potage plus léger, moins nappant.",
+      "rationale": "La crème tombe de deux cents à cent grammes et le bouillon monte à huit cent cinquante : le potage coule plus vite à la cuillère et cesse de napper l'assiette. Il perd le gras qui arrondissait les angles et laisse mieux entendre le poireau, plus franc et plus végétal. Comme la matière grasse ne porte plus les saveurs, il faut relever le sel et le poivre d'un cran pour retrouver la même intensité — sans quoi, allégé, il paraît simplement dilué.",
+      "operations": [
+        { "op": "scale", "form": "Crème fraîche liquide entière", "factor": 0.5 },
+        { "op": "set", "form": "Bouillon de volaille", "quantity": 850, "role": "mouillement", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Égoutter les cubes de pomme de terre, les mêler aux poireaux fondus, puis mouiller avec la totalité du bouillon de volaille bien chaud — une petite louche de plus que la version nappante, qui s'arrête juste à hauteur des légumes. Saler modérément et amener au frémissement."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Mixer le potage encore chaud jusqu'à une texture veloutée, le passer au chinois pour une finesse parfaite, puis incorporer les cent grammes de crème hors du feu. Le velouté nappe moins et file plus vite de la louche : c'est le but recherché, mais il faut alors reprendre le sel et le poivre d'un cran, la crème ne portant plus les saveurs comme avant. Servir aussitôt en assiette creuse."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,445 @@
+{
+  "lot": "lot13 — morue, moules, osso buco et parmigiana",
+  "note": "Quatre bases, quinze variantes annoncées, douze dérivations retenues et trois écartées. SRC-043 est la seule base qui perd la moitié de ses variantes, et pour deux raisons opposées. La variante « cuire les pommes de terre dans le bouillon de pochage » est écartée parce que la base la pratique déjà, mot pour mot, à son étape 4 : le delta serait vide et le moteur le refuserait à juste titre. La variante « servir tiède, arrosé d'un filet d'huile crue » ne touche ni la liste ni la méthode — c'est une température de service, elle reste une phrase. Restent la Brás et la version rustique. La Brás a demandé la seule substitution d'état du lot : elle frit des allumettes crues là où la base poche des rondelles, donc « Pomme de terre cuite » cède à « Pomme de terre crue, épluchée » — 480 g de chair pochée deviennent 600 g de tubercule épluché, puisque la friture perd de l'eau au lieu d'en prendre. Le mot de tête reste « pomme » des deux côtés, si bien que le contrôle de retrait ne se déclenche pas, ce qui est le comportement voulu : c'est le même légume, autrement traité. L'huile passe de 50 à 90 ml et les œufs de 215 à 250 g avec un rôle changé — ils ne sont plus une protéine complémentaire tranchée en rondelles mais la liaison même du plat, battue crue. La version rustique, elle, ajoute 750 g de légume au montage et fait passer le four de vingt minutes à 200 °C à une heure à 220 °C : cook_minutes suit, de 45 à 85. SRC-044 rend trois variantes sur quatre ; « Moules-frites du Nord » est un accompagnement et rien d'autre. La normande a exigé de réécrire l'étape 5 et l'étape 8 : « Cidre brut » remplace « Vin blanc sec », le mot de tête change donc de « vin » à « cidre », et l'étape 8 parlait encore de goûter le jus dans les termes du blanc. La substitution reporte proprement la signature — le cidre prend au corpus la place que le vin occupait dans les trois ingrédients signature. La version crémée est la seule du lot à insérer une étape entière : filtrer le jus à la mousseline et décoquiller la moitié des moules ne pouvaient tenir dans aucune étape existante sans en dénaturer une. SRC-045 rend ses quatre variantes. L'in bianco retire les deux apports de tomate et compense en liquide, vin de 200 à 300 ml et bouillon de 100 à 400 ml ; il reste trois ingrédients signature sur quatre, et l'étape 9 a été réécrite pour dire que la réduction n'est plus un rattrapage mais la seule liaison disponible. La version sans farine ni beurre est la seule du lot dont la liste d'allergènes a dû être corrigée à la main — le moteur hérite la liste de la base, qui portait gluten et lait précisément à cause des deux ingrédients retirés ; elle est ramenée à sulfites et céleri, et cook_minutes passe de 90 à 105 pour la saisie plus longue d'une viande nue et la réduction devenue obligatoire. La version agrumes et anchois ajoute l'allergène inverse, poisson, et divise par deux le sel prévu : trente grammes d'anchois fondus dans la sauce en apportent assez. SRC-046 rend ses trois variantes. La bianca a posé le seul vrai piège du lot : retirer « Feuille de laurier séchée » fait de « feuille » un mot interdit dans les étapes conservées, alors que la base en parle deux fois pour tout autre chose — la feuille d'aluminium du four et les feuilles de basilic de la finition. Plutôt que de déclarer un homonyme, ces deux étapes ont été réécrites pour dire « couvrez d'aluminium » et « le basilic ciselé » ; la dérogation ne se justifiait pas quand la prose pouvait simplement changer. La bianca supprime aussi l'oignon, qui n'existait que pour la sauce, et remonte les fromages de 250 à 400 g de mozzarella et de 50 à 90 g de parmesan, puisque plus rien d'autre ne tient les étages. La napolitaine ne pouvait pas « ajouter » des œufs durs : la base porte déjà « Œuf cru » pour la panure, et le moteur refuse un ajout qui doublerait une forme existante ; la quantité passe donc de 50 à 200 g par « set », avec un rôle qui dit les deux emplois. Sa notice de conservation a été réécrite à la main : la base autorisait la congélation, ce que trois œufs durs interdisent. Aucune forme n'a manqué au catalogue — « Poivron rouge cru », « Champignon de Paris cru » et « Citron frais » n'y figurent pas, mais « Poivron rouge frais », « Champignon de Paris frais » et « Citron jaune frais » y sont et disent exactement la même chose ; aucune variante n'a été écartée faute de vocabulaire. Relecture à charge : sept corrections. La marinière liée ajoutait de la farine sans déclarer le gluten, que la recette héritait donc absent de la base alors que son propre rationale annonçait la sortie du sans-gluten — allergènes réécrits. Six blocs hérités démentaient leur plat et ont été surchargés, comme le font déjà les lots 10, 12 et 17 : la Brás gardait « rôtissage » et « gratinage » alors que son étiquette dit « sans passage au four », plus une notice de conservation qui parlait de pommes de terre bouillies et de blancs d'œufs durs disparus ; l'in bianco gardait le profil « savory_tomato » et « tomate cuite longuement » en saveur dominante après avoir retiré les deux tomates ; la bianca gardait « mijotage » sans plus rien à mijoter et un garde-fou affirmant que la structure repose sur la sauce tomate ; les aubergines rôties gardaient « saisie » à la place du rôtissage et une conservation qui décrivait une croûte de chapelure supprimée ; les moules au cidre gardaient « vineux » en saveur dominante et un garde-fou interdisant précisément de changer le mouillement ; les moules à la crème portaient un garde-fou dont le cas d'échec était « bascule vers les moules à la crème ». Deux temps ont enfin été repris : cook_minutes de la bianca, fixé à 35 minutes, ne couvrait que le four et laissait zéro minute à la friture des tranches, qu'elle conserve pourtant — porté à 45, comme la version rôtie du même lot compte ses deux passages ; et le rationale de la napolitaine annonçait dix minutes de plus alors que le delta en ajoute dix en préparation et dix en cuisson.",
+  "derivations": [
+    {
+      "code": "SRC-043-D1",
+      "base": "SRC-043",
+      "family": "Morue à la Brás",
+      "variant_label": "Version à la Brás : la morue effeuillée est sautée avec des pommes de terre taillées en allumettes puis liée aux œufs battus à feu très doux, sans passage au four.",
+      "rationale": "Le plat change entièrement de structure : il ne se monte plus en étages au four, il se lie à la poêle. Les pommes de terre passent de rondelles pochées à des allumettes frites, ce qui impose de partir de tubercules crus et fait presque doubler l'huile ; les œufs, durs et tranchés dans la base, deviennent crus et battus pour napper le mélange. On gagne une texture crémeuse et une fin de cuisson qui tient en dix minutes à la poêle — le dessalage de la veille, lui, reste dû —, on perd la croûte gratinée et toute possibilité de le préparer à l'avance : une Brás qui attend se dessèche.",
+      "prep_minutes": 40,
+      "cook_minutes": 35,
+      "techniques": ["pochage", "effeuillage", "friture peu profonde", "liaison aux œufs"],
+      "conservation": "Se mange à la sortie de la poêle : la liaison d'œuf continue de prendre tant que le plat est chaud et tourne sèche et granuleuse en quelques minutes. Un reste se garde 24 heures au réfrigérateur à 4 °C en boîte fermée, mais il se réchauffe très doucement à la poêle avec une cuillerée d'eau, jamais au micro-ondes qui achèverait de coaguler l'œuf. La congélation est à écarter : les allumettes frites ramollissent et l'œuf pris rend son eau à la décongélation.",
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": { "sweet": 1, "salty": 3, "acidic": 1, "bitter": 1, "umami": 3, "heat": 0, "pungency": 2, "richness": 4, "freshness": 1, "intensity": 3 },
+        "dominant_flavors": ["salin marin", "oignon doux fondu", "œuf crémeux", "huile d'olive fruitée"],
+        "aroma_families": ["marin", "alliacé", "herbacé", "laurier"],
+        "target_textures": ["morue effeuillée en pétales", "allumettes de pomme de terre dorées et encore fermes", "liaison d'œuf à peine prise"],
+        "signature_ingredients": ["Morue salée sèche", "Pomme de terre crue, épluchée", "Huile d'olive vierge extra"],
+        "identity_guardrails": [
+          "La morue salée sèche doit être dessalée vingt-quatre heures puis pochée avant d'être effeuillée à la main : sans ce dessalage, le plat est immangeable, et sans effeuillage il perd sa texture en pétales.",
+          "Les pommes de terre se taillent en allumettes et se frient crues : cuites d'abord puis sautées, elles s'écrasent dans la liaison et le plat devient une purée à l'œuf.",
+          "L'œuf est ajouté cru, hors ébullition et au dernier instant : dès qu'il prend en morceaux fermes, ce n'est plus une Brás mais une brouillade de morue.",
+          "L'huile d'olive vierge extra est le seul corps gras du plat : introduire du beurre ou de la crème ferait sortir la recette de son répertoire."
+        ]
+      },
+      "operations": [
+        { "op": "substitute", "form": "Pomme de terre cuite", "with": "Pomme de terre crue, épluchée", "quantity": 600, "unit": "g", "role": "féculent" },
+        { "op": "set", "form": "Huile d'olive vierge extra", "quantity": 90 },
+        { "op": "set", "form": "Œuf cru", "quantity": 250, "role": "liaison" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Peler environ 700 g de pommes de terre crues, dont il reste à peu près 600 g de chair épluchée, et les tailler en bâtonnets de la taille d'une allumette. Les rincer à grande eau froide pour emporter l'amidon de surface, puis les sécher longuement dans un torchon : une allumette humide ne dore pas, elle bout dans sa propre vapeur et retombe molle."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Casser les œufs dans un bol et les battre à la fourchette juste le temps de mêler blancs et jaunes, sans chercher à les faire mousser. Trop d'air et la liaison prendrait comme une omelette au lieu d'enrober la morue."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Verser le reste de l'huile dans une grande poêle, la chauffer jusqu'à ce qu'un bâtonnet grésille aussitôt, et frire les allumettes par petites poignées deux à trois minutes, jusqu'à ce qu'elles dorent et raidissent ; les égoutter au fur et à mesure sur du papier absorbant. Faire glisser l'oignon à l'ail de la sauteuse dans cette poêle, y ajouter les pétales de morue et les réchauffer une minute sans les défaire, puis rendre les allumettes au mélange au tout dernier instant, pour qu'elles n'aient pas le temps de ramollir."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Baisser au plus faible et verser les œufs battus d'un seul geste, en remuant sans arrêt à la spatule : ils doivent napper la morue et les allumettes d'une crème à peine prise, jamais se rassembler en morceaux fermes. Poivrer, goûter avant de saler, puis parsemer de persil ciselé et d'olives noires et servir immédiatement, la poêle continuant de cuire tant qu'elle est chaude."
+        }
+      ]
+    },
+    {
+      "code": "SRC-043-D2",
+      "base": "SRC-043",
+      "family": "Morue au four à la tomate et au poivron",
+      "variant_label": "Ajouter des morceaux de tomate et de poivron au montage et cuire une heure à 220 °C, à la façon de la version la plus rustique du dossier.",
+      "rationale": "La tomate et le poivron ajoutent près de sept cent cinquante grammes de légume au montage et transforment un gratin sec en plat juteux : leur eau descend dans les pommes de terre pendant l'heure de four. Le poivron demande à fondre avant d'entrer dans le plat, d'où un passage en sauteuse allongé et un peu plus d'huile. Ce qu'on y gagne en fondant, on le paie en temps — l'heure à 220 °C triple la cuisson — et en netteté : la morue n'est plus seule au premier plan, elle partage l'assiette avec le légume.",
+      "prep_minutes": 45,
+      "cook_minutes": 85,
+      "operations": [
+        { "op": "add", "form": "Tomate fraîche mûre", "quantity": 450, "unit": "g", "role": "légume", "optional": false },
+        { "op": "add", "form": "Poivron rouge frais", "quantity": 300, "unit": "g", "role": "légume", "optional": false },
+        { "op": "set", "form": "Huile d'olive vierge extra", "quantity": 70 }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Chauffer un tiers de l'huile d'olive dans une sauteuse et y laisser fondre ensemble l'oignon émincé et le poivron rouge épépiné puis taillé en lanières, une douzaine de minutes à feu moyen : le poivron doit s'assouplir sans se défaire, car il lui reste une heure de four à traverser. Ajouter l'ail haché et prolonger deux minutes le temps que le parfum monte."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Huiler un plat à four et monter deux étages successifs : rondelles de pomme de terre, pétales de morue, oignon au poivron, rondelles de tomate débarrassées de leurs graines, rondelles d'œuf et olives, en filant un peu d'huile d'olive sur chaque étage. Épépiner la tomate n'est pas un raffinement : ses graines rendent une eau acide qui délave le plat sur une cuisson aussi longue. Poivrer, et ne saler qu'après avoir goûté un pétale de morue."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Enfourner une heure à 220 °C, sans couvrir : le légume rend son eau puis la reprend en concentrant, et le dessus prend une croûte franchement colorée, presque noircie sur les crêtes — c'est la marque de cette version rustique, qu'une cuisson prudente manquerait. Parsemer de persil ciselé et porter à table sans attendre."
+        }
+      ]
+    },
+    {
+      "code": "SRC-044-D1",
+      "base": "SRC-044",
+      "family": "Moules marinières au jus lié",
+      "variant_label": "Marinière liée : saupoudrer une cuillerée de farine sur les aromates fondus avant de mouiller au vin, pour un jus plus nappant",
+      "rationale": "Quinze grammes de farine cuite dans le beurre suffisent à faire tenir le jus sur la cuillère au lieu de le laisser courir au fond de l'assiette. La contrepartie est double : le jus perd un peu de sa franchise marine, que l'amidon adoucit, et le plat cesse d'être sans gluten. La farine doit cuire une minute pleine et le vin entrer en trois fois, faute de quoi le bouillon garde un goût de cru et des grumeaux qu'aucune cuisson ultérieure ne rattrape.",
+      "allergens": ["mollusques", "lait", "gluten", "sulfites", "céleri"],
+      "techniques": ["singer", "liaison au roux", "réduction", "pochage", "cuisson à couvert"],
+      "operations": [
+        { "op": "add", "form": "Farine de blé T55", "quantity": 15, "unit": "g", "role": "liaison", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Faire fondre le beurre à feu doux dans une grande marmite. Y laisser fondre l'oignon, l'ail et le céleri pendant 4 à 5 minutes en remuant, sans jamais leur laisser prendre de couleur. Saupoudrer alors la farine en pluie et remuer une minute pleine : elle doit boire tout le beurre et perdre son goût de cru avant le moindre mouillement."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Mouiller au vin blanc en trois fois, en fouettant à chaque ajout jusqu'à ce que le liquide redevienne lisse : versé d'un coup sur la farine chaude, il ferait des grumeaux que rien ne défera ensuite. Pousser le feu et laisser bouillonner deux minutes à découvert pour évaporer l'alcool ; le bouillon épaissit déjà légèrement."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Servir sans attendre, directement dans la marmite ou réparti en assiettes creuses, en nappant chaque part d'un jus qui tient maintenant aux coquilles au lieu de glisser dessus. Prévoir du pain : lié, ce jus se ramasse à la mie plus qu'il ne se boit."
+        }
+      ]
+    },
+    {
+      "code": "SRC-044-D2",
+      "base": "SRC-044",
+      "family": "Moules à la crème",
+      "variant_label": "Version crémée : filtrer le jus de cuisson, le faire réduire avec de la crème fraîche puis en napper les moules décoquillées à moitié",
+      "rationale": "Le jus cesse d'être un bouillon qu'on boit pour devenir une sauce qu'on nappe, ce qui suppose de le filtrer — il y reste toujours du sable — puis de le réduire de moitié avant d'y fondre la crème. Décoquiller la moitié des moules permet à la sauce de les enrober vraiment, au lieu de rester sur la nacre. Le plat gagne en rondeur et se mange à la fourchette, mais il perd la vivacité saline de la marinière, s'alourdit nettement et demande dix minutes de plus au moment où tout devrait aller vite.",
+      "cook_minutes": 25,
+      "techniques": ["cuisson à couvert", "filtration", "réduction", "liaison à la crème"],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 1, "salty": 4, "acidic": 2, "bitter": 0, "umami": 4, "heat": 0, "pungency": 2, "richness": 5, "freshness": 2, "intensity": 3 },
+        "dominant_flavors": ["iodé", "crème réduite", "vineux", "aillé"],
+        "aroma_families": ["marin", "alliacé", "herbacé", "lacté"],
+        "target_textures": ["chair tendre et charnue", "sauce nappante et lisse"],
+        "signature_ingredients": ["Moule commune crue", "Vin blanc sec", "Crème fraîche liquide entière", "Persil frais"],
+        "identity_guardrails": [
+          "Sans moules fraîches cuites dans leur coquille, le plat n'existe plus : la chair achetée décoquillée ne rend pas le jus qui fait la sauce",
+          "La crème vient après le vin, jamais à sa place : le mouillement reste un blanc sec, réduit et filtré, et une crème versée d'emblée sur les moules donne un plat plat et laiteux",
+          "Le jus se filtre avant d'être crémé : le sable qui traverse la sauce ne se rattrape plus",
+          "Le jus ne se sale pas d'avance : réduit puis crémé, il concentre tout le sel des coquillages",
+          "Le persil s'ajoute cru en fin de cuisson, jamais cuit avec les aromates"
+        ]
+      },
+      "operations": [
+        { "op": "add", "form": "Crème fraîche liquide entière", "quantity": 200, "unit": "ml", "role": "liaison", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 7,
+          "instruction": "Décoquiller la moitié des moules au-dessus de la marmite pour ne rien perdre de leur eau, et les réserver au chaud avec celles qu'on laisse sur coquille. Filtrer tout le jus de cuisson à travers une passoire fine doublée d'une mousseline, puis le remettre dans la marmite rincée : le sable qui dort au fond passerait sans cela dans la sauce, où on ne pourrait plus le rattraper."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Faire réduire ce jus de moitié à feu vif, verser la crème et laisser frémir cinq à six minutes, jusqu'à ce que la sauce nappe le dos d'une cuillère et qu'un doigt y trace un sillon net. Disperser le persil haché, donner un tour de poivre et goûter avant de saler : réduit puis crémé, le jus a concentré tout le sel de la mer et n'en réclame presque jamais."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Répartir les moules en assiettes creuses, celles restées en coquille mêlées à celles qu'on a détachées, et les napper de sauce brûlante. Servir aussitôt : la crème fige en refroidissant et se voile, et la chair reprise deux fois durcit."
+        }
+      ]
+    },
+    {
+      "code": "SRC-044-D3",
+      "base": "SRC-044",
+      "family": "Moules au cidre",
+      "variant_label": "Version normande : remplacer le vin blanc par du cidre brut",
+      "rationale": "Le cidre apporte une acidité plus ronde et un fond fruité là où le blanc sec tranchait, et le jus vire du citronné au pomme. Il porte aussi du sucre résiduel, même brut, ce qui demande une minute de bouillonnement de plus pour perdre son mordant de fruit cru et un tour de poivre supplémentaire à la fin pour rétablir l'équilibre. Le plat s'adoucit franchement : c'est un gain de gourmandise et une perte de nerf, et il accompagnera moins bien un pain très salé.",
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": { "sweet": 2, "salty": 4, "acidic": 2, "bitter": 0, "umami": 4, "heat": 0, "pungency": 2, "richness": 3, "freshness": 3, "intensity": 3 },
+        "dominant_flavors": ["iodé", "cidre fruité", "aillé", "beurré"],
+        "aroma_families": ["marin", "alliacé", "herbacé", "pomme"],
+        "target_textures": ["chair tendre et charnue", "jus court et fluide"],
+        "signature_ingredients": ["Moule commune crue", "Cidre brut", "Persil frais"],
+        "identity_guardrails": [
+          "Sans moules fraîches cuites dans leur coquille, le plat n'existe plus : la chair préparée à part ou décoquillée à l'avance perd le jus qui fait la marinière",
+          "Le mouillement doit rester un cidre brut, jamais un cidre doux ni un jus de pomme : le sucre d'un cidre demi-sec confit le jus et le fait basculer du côté du dessert",
+          "Le jus ne se sale pas d'avance : l'eau de mer relâchée par les coquillages est l'assaisonnement principal",
+          "Le persil s'ajoute cru en fin de cuisson, jamais cuit avec les aromates"
+        ]
+      },
+      "operations": [
+        { "op": "substitute", "form": "Vin blanc sec", "with": "Cidre brut", "quantity": 500, "unit": "ml", "role": "mouillement" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Mouiller avec le cidre brut, pousser le feu et laisser bouillonner trois minutes à découvert, une de plus qu'à l'ordinaire : le cidre porte toujours un reste de sucre qu'il faut cuire, sans quoi le bouillon garderait un goût de pomme crue au lieu du fond rond que l'on cherche."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Disperser le persil haché, donner un tour de poivre et mélanger une dernière fois avec précaution. Goûter le jus avant d'ajouter du sel : l'eau de mer rendue par les moules suffit le plus souvent, et comme le cidre a posé sa douceur sur l'ensemble, c'est plutôt un second tour de poivre qui remet le jus d'aplomb."
+        }
+      ]
+    },
+    {
+      "code": "SRC-045-D1",
+      "base": "SRC-045",
+      "family": "Osso buco in bianco",
+      "variant_label": "Osso buco in bianco : supprimer la tomate pelée et le concentré, allonger au bouillon et au vin, pour la version milanaise historique sans tomate.",
+      "rationale": "Sans pulpe ni concentré, la sauce perd son acidité, sa couleur et surtout son corps : elle ne tient plus que par le collagène du jarret et la moelle de l'os, ce qui rend la réduction finale obligatoire au lieu d'optionnelle. Le vin passe de 200 à 300 ml et le bouillon de 100 à 400 ml pour rendre le liquide qu'apportait la conserve. Le résultat est plus clair, plus franchement veau, et le zeste de la gremolata y ressort d'un cran — mais le plat pardonne moins : rien ne masque une viande insuffisamment colorée.",
+      "sensory": {
+        "profile": "rich_winey",
+        "scores": { "sweet": 1, "salty": 3, "acidic": 2, "bitter": 0, "umami": 3, "heat": 0, "pungency": 1, "richness": 4, "freshness": 2, "intensity": 3 },
+        "dominant_flavors": ["veau braisé", "vin blanc réduit", "légumes racines fondus", "zeste de citron"],
+        "aroma_families": ["agrume", "aromates séchés", "légumes racines fondus"],
+        "target_textures": ["viande fondante se détachant de l'os", "sauce claire réduite jusqu'au nappage", "moelle onctueuse"],
+        "signature_ingredients": ["Jarret de veau cru, en tranches avec os", "Vin blanc sec", "Zeste de citron"],
+        "identity_guardrails": [
+          "Le veau doit rester en tranches épaisses avec l'os et sa moelle : désossé, ou remplacé par un autre morceau, ce n'est plus un osso buco.",
+          "Le mouillement se fait au vin blanc sec et jamais au vin rouge, sinon la sauce vire au ragoût et perd son acidité claire.",
+          "Aucune tomate, sous aucune forme : c'est la définition même de l'in bianco, et une cuillerée de concentré pour « donner de la couleur » le ramène à l'osso buco courant.",
+          "La gremolata, persil et ail et zeste de citron hachés, s'ajoute crue au moment de servir : cuite, elle disparaît et le plat perd son relief.",
+          "La cuisson est longue, à couvert et à frémissement : un feu vif raccourcit le temps mais laisse la viande ferme et attachée à l'os."
+        ]
+      },
+      "operations": [
+        { "op": "remove", "form": "Tomate entière pelée en conserve" },
+        { "op": "remove", "form": "Concentré de tomate" },
+        { "op": "set", "form": "Vin blanc sec", "quantity": 300 },
+        { "op": "set", "form": "Bouillon de bœuf", "quantity": 400 }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Verser le bouillon bien chaud, ajouter le thym et les feuilles de laurier, puis remettre les tranches à plat dans la cocotte, os vers le haut, et les arroser : le liquide doit affleurer la viande sans la noyer. Le mouillement reste clair et le paraîtra jusqu'au bout de la cuisson ; c'est normal, il ne s'épaissira qu'à la réduction finale."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Retirer les tranches et les tenir au chaud, ôter le laurier et les branches de thym, puis faire réduire le fond à découvert jusqu'à ce qu'il nappe le dos d'une cuillère. Cette réduction n'est plus un rattrapage, elle fait la sauce à elle seule, et l'écourter donnerait un bouillon qui court dans l'assiette. Goûter, rectifier le sel, napper la viande et parsemer la gremolata au tout dernier moment, hors du feu."
+        }
+      ]
+    },
+    {
+      "code": "SRC-045-D2",
+      "base": "SRC-045",
+      "family": "Osso buco à l'huile d'olive",
+      "variant_label": "Sans farine ni beurre : saisir à l'huile seule et lier la sauce en fin de cuisson par simple réduction à découvert, ce qui retire le gluten et le lait.",
+      "rationale": "Le voile de farine servait à deux choses : accrocher la coloration et épaissir la sauce en fin de mijotage. Sans lui, il faut sécher les tranches davantage, colorer une minute de plus par face et réduire franchement à découvert dix à quinze minutes en fin de cuisson, d'où un quart d'heure de plus au total. La sauce reste plus fluide et plus nette de goût, la coloration légèrement moins uniforme ; en échange le plat sort du gluten et du lait, ce qui le rend servable à une table où la base ne l'était pas.",
+      "cook_minutes": 105,
+      "allergens": ["sulfites", "céleri"],
+      "operations": [
+        { "op": "remove", "form": "Farine de blé T55" },
+        { "op": "remove", "form": "Beurre doux" },
+        { "op": "set", "form": "Huile d'olive vierge extra", "quantity": 60 }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Saler et poivrer les deux faces, puis éponger les tranches une dernière fois jusqu'à ce qu'elles soient sèches au toucher : rien n'enrobe plus la viande, et une surface humide se contente de blanchir au lieu de colorer. Chauffer l'huile d'olive seule dans une cocotte à fond épais jusqu'à ce qu'elle ondule, et y coucher les tranches à plat, sans qu'elles se touchent."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Colorer à feu moyen trois à quatre minutes par face, un peu plus longtemps qu'à l'ordinaire puisque la viande est nue, jusqu'à une croûte franchement dorée. Débarrasser ensuite sur une assiette en posant les morceaux os vers le haut pour que la moelle reste en place."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Retirer les tranches et les tenir au chaud, ôter le laurier et les branches de thym, puis pousser le feu et réduire la sauce à découvert dix à quinze minutes, jusqu'à ce qu'elle nappe le dos d'une cuillère. C'est la seule liaison dont dispose cette version : l'écourter laisse un jus qui se sépare dans l'assiette. Goûter, rectifier le sel, napper la viande et parsemer la gremolata au tout dernier moment, hors du feu."
+        }
+      ]
+    },
+    {
+      "code": "SRC-045-D3",
+      "base": "SRC-045",
+      "family": "Osso buco aux agrumes et aux anchois",
+      "variant_label": "Version agrumes et anchois, relevée par une page du dossier : ajouter des quartiers de citron et d'orange lavés et quelques filets d'anchois en cours de mijotage.",
+      "rationale": "Les anchois fondent entièrement dans la sauce et n'y laissent aucun goût de poisson : ils y déposent du sel et de l'umami, ce qui oblige à diviser par deux le sel prévu. Les quartiers d'agrumes cuits avec leur écorce donnent un parfum plus large et plus amer que le zeste cru de la gremolata, à condition de les retirer au bout d'une heure — au-delà, l'écorce cède son amertume au jus et ne la reprend pas. Le plat devient nettement plus tranchant, et il faut accepter qu'il porte désormais un allergène de plus.",
+      "prep_minutes": 30,
+      "allergens": ["gluten", "lait", "poisson", "sulfites", "céleri"],
+      "operations": [
+        { "op": "add", "form": "Citron jaune frais", "quantity": 120, "unit": "g", "role": "agrume", "optional": false },
+        { "op": "add", "form": "Orange fraîche", "quantity": 200, "unit": "g", "role": "agrume", "optional": false },
+        { "op": "add", "form": "Anchois à l'huile, égoutté", "quantity": 30, "unit": "g", "role": "condiment", "optional": false },
+        { "op": "set", "form": "Sel fin", "quantity": 4 }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 6,
+          "instruction": "Brosser le citron et l'orange sous l'eau chaude pour ôter la cire de leur peau, puisqu'ils vont cuire écorce comprise, et couper chaque fruit en quartiers dans le sens de la hauteur. Écraser les anchois à la pointe du couteau jusqu'à les réduire en pâte, les délayer dans une louche de sauce chaude prélevée dans la cocotte, puis reverser le tout et glisser les quartiers entre les tranches de viande."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Couvrir, régler sur un frémissement à peine visible et compter une heure et demie. Retourner les tranches à mi-parcours et ajouter un fond d'eau chaude si la sauce attache. Retirer les quartiers d'agrumes au bout de la première heure, avant que leur écorce ne verse son amertume dans le jus. La viande est prête lorsqu'une fourchette la sépare de l'os sans effort."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Retirer les tranches et les tenir au chaud, ôter le laurier et les branches de thym, puis faire réduire la sauce à découvert quelques minutes si elle reste trop fluide. Goûter longuement avant de saler : les anchois ont disparu dans le jus mais y ont laissé tout leur sel, et la moitié de la dose prévue suffit presque toujours. Napper la viande et parsemer la gremolata au tout dernier moment, hors du feu."
+        }
+      ]
+    },
+    {
+      "code": "SRC-045-D4",
+      "base": "SRC-045",
+      "family": "Osso buco aux champignons",
+      "variant_label": "Garniture de champignons émincés ajoutés vingt minutes avant la fin, comme le font deux des sources.",
+      "rationale": "Trois cents grammes de champignons ajoutés au dernier quart d'heure apportent une garniture qui tient encore sous la dent et un fond terreux qui prolonge le veau. Le moment compte plus que la quantité : entrés au début, ils se seraient réduits en filaments et auraient délavé la sauce de leur eau. La cuisson totale ne bouge pas, mais la sauce devient plus abondante et un peu moins concentrée, ce qui peut demander deux ou trois minutes de réduction supplémentaires à la fin.",
+      "prep_minutes": 30,
+      "operations": [
+        { "op": "add", "form": "Champignon de Paris frais", "quantity": 300, "unit": "g", "role": "garniture", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 6,
+          "instruction": "Pendant que la cocotte prend son frémissement, parer le pied terreux des champignons et les essuyer au linge humide plutôt que de les passer sous l'eau, qu'ils boiraient pour la rendre ensuite dans la sauce. Les émincer en lamelles d'environ trois millimètres et les réserver à couvert."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Couvrir, régler sur un frémissement à peine visible et compter une heure et demie. Retourner les tranches à mi-parcours et ajouter un fond d'eau chaude si la sauce attache. Vingt minutes avant la fin, glisser les lamelles de champignon autour de la viande et remettre le couvercle : ce délai leur suffit pour rendre leur eau et prendre le goût du jus, là où une heure entière les réduirait en filaments. La viande est prête lorsqu'une fourchette la sépare de l'os sans effort."
+        }
+      ]
+    },
+    {
+      "code": "SRC-046-D1",
+      "base": "SRC-046",
+      "family": "Parmigiana bianca d'aubergines",
+      "variant_label": "Parmigiana bianca : on supprime la tomate et on monte les aubergines dorées avec seulement les deux fromages et le basilic.",
+      "rationale": "Privée de sauce, la parmigiana perd son acidité et son liant : ce sont les fromages qui doivent tenir les étages, d'où la mozzarella portée de 250 à 400 g et le parmesan de 50 à 90 g, et une huile d'ail et de basilic qui remplace la sauce dans le rôle de porteuse de goût. L'oignon et le laurier, qui n'existaient que pour la sauce, disparaissent avec elle. On s'épargne la demi-heure de réduction de la pulpe, mais elle se menait de front avec la friture des tranches : le temps de cuisson ne baisse que de cinq minutes. Le plat devient franchement plus riche et plus court en bouche : rien n'y relance le palais d'une bouchée à l'autre, et il faut saler et poivrer l'huile parfumée plus nettement qu'on ne salait la sauce.",
+      "prep_minutes": 25,
+      "cook_minutes": 45,
+      "techniques": ["dégorgement", "panure", "saisie", "montage en couches", "gratinage"],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 1, "salty": 4, "acidic": 0, "bitter": 1, "umami": 4, "heat": 0, "pungency": 2, "richness": 5, "freshness": 2, "intensity": 3 },
+        "dominant_flavors": ["fromage affiné", "aubergine dorée", "ail et basilic à l'huile"],
+        "aroma_families": ["herbacé", "lacté", "végétal grillé"],
+        "target_textures": ["fondant", "filant", "croûte gratinée"],
+        "signature_ingredients": ["Aubergine fraîche", "Mozzarella", "Parmesan affiné", "Basilic frais"],
+        "identity_guardrails": [
+          "Les aubergines doivent être dégorgées puis dorées avant montage : montées crues, le plat rend de l'eau et cesse d'être une parmigiana.",
+          "Le duo mozzarella fondante et parmesan affiné est obligatoire ; un seul fromage, ou un fromage à gratin neutre, casse l'identité du plat.",
+          "Ni béchamel ni pâtes : sans sauce, la structure ne repose plus que sur les tranches d'aubergine tassées et sur le fromage fondu, et toute crème ajoutée pour « lier » ferait un gratin dauphinois d'aubergines.",
+          "L'huile d'ail et de basilic est le seul assaisonnement des étages : elle se goûte et se corrige avant montage, car rien ne la rattrape au four."
+        ]
+      },
+      "operations": [
+        { "op": "remove", "form": "Tomate fraîche mûre" },
+        { "op": "remove", "form": "Oignon jaune cru" },
+        { "op": "remove", "form": "Feuille de laurier séchée" },
+        { "op": "set", "form": "Mozzarella", "quantity": 400 },
+        { "op": "set", "form": "Parmesan affiné", "quantity": 90 },
+        { "op": "set", "form": "Basilic frais", "quantity": 20 }
+      ],
+      "steps": [
+        { "op": "remove", "n": 3 },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Pendant ce temps, pelez et dégermez l'ail, hachez-le au plus fin et mêlez-le dans un bol à la moitié du basilic ciselé, à un tiers de l'huile d'olive, une pincée de sel et un tour de poivre. Cette huile parfumée tient ici le rôle que tenait la sauce : c'est elle seule qui portera le goût entre les étages, alors goûtez-la et corrigez-la maintenant, rien ne viendra la rattraper au four."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Préchauffez le four à 190 °C. Huilez le fond d'un plat à gratin au pinceau, couchez une première rangée de tranches côte à côte, arrosez-les d'un filet d'huile au basilic, puis parsemez de mozzarella coupée en dés et d'un peu de parmesan râpé. Répétez l'opération en croisant le sens des tranches à chaque étage, jusqu'à épuisement, en tassant légèrement de la paume : sans liquide entre les couches, c'est la pression qui fait tenir le plat."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Terminez par le reste de mozzarella, le reste du parmesan et la chapelure réservée, puis enfournez 30 à 35 minutes. Sans pulpe pour humidifier le dessus, la surface colore beaucoup plus vite : surveillez-la dès la vingtième minute et couvrez d'aluminium dès qu'elle est prise."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Sortez le plat et laissez-le reposer au moins 15 minutes avant de le découper, le temps que le fromage cesse de couler et que les étages se ressoudent. Parsemez le basilic restant, ciselé au dernier instant, pour garder son parfum."
+        }
+      ]
+    },
+    {
+      "code": "SRC-046-D2",
+      "base": "SRC-046",
+      "family": "Parmigiana d'aubergines rôties",
+      "variant_label": "Version allégée : au lieu d'être panées et poêlées, les tranches sont badigeonnées d'huile d'olive et rôties au four à 210 °C jusqu'à coloration, ce qui supprime la chapelure et l'œuf.",
+      "rationale": "Le four remplace la poêle : les tranches badigeonnées au pinceau boivent nettement moins d'huile que dans une friture par fournées, et la panure disparaît avec l'œuf qui la collait. Le plat perd son croustillant et une part de son moelleux — l'aubergine rôtie est plus sèche et plus concentrée que l'aubergine frite — mais il sort du gluten et de l'œuf, et se prépare en une seule opération pendant que la sauce réduit. La cuisson totale s'allonge d'une demi-heure puisque le rôtissage précède le gratin.",
+      "prep_minutes": 25,
+      "cook_minutes": 75,
+      "allergens": ["lait"],
+      "techniques": ["dégorgement", "rôtissage", "mijotage", "gratinage"],
+      "conservation": "Se garde 3 jours au réfrigérateur à 4 °C dans son plat filmé, et gagne même en tenue le lendemain ; réchauffer 20 minutes à 160 °C plutôt qu'au micro-ondes. La congélation est possible une fois le plat cuit et refroidi, jusqu'à 2 mois : sans panure à ramollir, cette version la supporte mieux que la parmigiana classique, mais la mozzarella relâche de l'eau à la décongélation — égoutter l'excédent et repasser dix minutes à four chaud pour resécher la surface. Ne jamais recongeler une part déjà décongelée.",
+      "operations": [
+        { "op": "remove", "form": "Chapelure de blé" },
+        { "op": "remove", "form": "Œuf cru" },
+        { "op": "set", "form": "Huile d'olive vierge extra", "quantity": 45 }
+      ],
+      "steps": [
+        { "op": "remove", "n": 5 },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Préchauffez le four à 210 °C et rangez les tranches d'aubergine en une seule couche sur deux plaques garnies de papier cuisson, sans qu'elles se chevauchent, sinon elles cuiraient à la vapeur les unes contre les autres. Badigeonnez-les au pinceau des deux côtés — au pinceau et non à la louche, l'aubergine boit tout ce qu'on lui donne — puis enfournez 20 à 25 minutes en retournant à mi-parcours, jusqu'à ce qu'elles soient souples au centre et colorées sur les arêtes."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Baissez le four à 190 °C. Nappez le fond d'un plat à gratin d'une louche de sauce, couchez une première rangée de tranches rôties côte à côte, parsemez de mozzarella coupée en dés et d'un peu de parmesan râpé, puis recouvrez de sauce. Répétez l'opération en croisant le sens des tranches à chaque étage, jusqu'à épuisement."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Terminez par une couche de sauce et le reste du parmesan, puis enfournez 30 à 35 minutes : le plat doit frémir sur les bords et le fromage prendre une croûte dorée. Cette croûte-là est plus fine que celle de la version panée et colore plus tôt : couvrez d'aluminium dès qu'elle a pris, pour les dix dernières minutes."
+        }
+      ]
+    },
+    {
+      "code": "SRC-046-D3",
+      "base": "SRC-046",
+      "family": "Parmigiana napolitaine à l'œuf dur",
+      "variant_label": "Version napolitaine plus riche : on glisse à chaque étage quelques rondelles d'œuf dur et de la charcuterie coupée fin entre les aubergines et la sauce.",
+      "rationale": "Trois œufs durs et cent vingt grammes de jambon coupé en fils s'ajoutent aux étages : le plat cesse d'être un gratin de légume pour devenir un plat complet, plus dense et nettement plus salé. Il faut compter dix minutes de cuisson de plus pour les œufs durs et autant de préparation pour les écaler et tailler le jambon en fils, et surveiller le sel de la sauce, que le jambon relaie déjà. La contrepartie tient à la conservation : les blancs durs deviennent caoutchouteux au froid négatif, et cette version ne se congèle plus.",
+      "prep_minutes": 40,
+      "cook_minutes": 60,
+      "conservation": "Se garde 3 jours au réfrigérateur à 4 °C dans son plat filmé, et gagne même en tenue le lendemain ; réchauffer 20 minutes à 160 °C plutôt qu'au micro-ondes. Contrairement à la parmigiana sans œuf dur, cette version ne se congèle pas : les blancs durs deviennent caoutchouteux et rendent de l'eau à la décongélation, ce qui détrempe les couches et la croûte.",
+      "operations": [
+        { "op": "set", "form": "Œuf cru", "quantity": 200, "role": "liant de panure et garniture" },
+        { "op": "add", "form": "Jambon blanc cuit", "quantity": 120, "unit": "g", "role": "charcuterie", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Réservez un œuf pour la panure et battez-le à la fourchette dans une assiette creuse ; versez la chapelure dans une seconde assiette, en en réservant environ 15 g pour la finition. Passez chaque tranche d'aubergine dans l'œuf battu, laissez l'excédent s'égoutter, puis pressez-la des deux côtés dans la chapelure pour obtenir une couche fine et régulière."
+        },
+        {
+          "op": "insert",
+          "after": 5,
+          "instruction": "Plongez les trois œufs restants dix minutes dans une eau frémissante, rafraîchissez-les aussitôt sous l'eau froide pour arrêter net la cuisson et éviter le cerne verdâtre autour du jaune, écalez-les et coupez-les en rondelles régulières. Détaillez le jambon en lanières très fines, presque en fils : coupé épais, il ferait une semelle entre les couches au lieu de s'y fondre."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Préchauffez le four à 190 °C. Nappez le fond d'un plat à gratin d'une louche de sauce, couchez une première rangée de tranches côte à côte, répartissez dessus quelques rondelles d'œuf dur et une poignée de fils de jambon, parsemez de mozzarella coupée en dés et d'un peu de parmesan râpé, puis recouvrez de sauce. Répétez en croisant le sens des tranches à chaque étage, jusqu'à épuisement, et comptez vos rondelles dès le premier niveau pour qu'il en reste à tous les autres."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+{
+  "lot": "lot05 — tartinades et œufs",
+  "note": "Quatre bases traitées, huit dérivations retenues sur quinze variantes annoncées. SRC-011 ne rend rien : ses deux variantes substantielles (four intégral, œuf encastré) sont déjà au corpus sous SRC-011-D1 et SRC-011-D2, et la troisième n'est qu'un temps de cuisson prolongé. Même situation partielle pour SRC-015, dont le thon et l'avocat sont déjà dérivés (SRC-015-D1, SRC-015-D2) : ses deux variantes restantes prennent donc les codes -D3 et -D4, la numérotation continuant celle du corpus plutôt que de la recommencer. Deux variantes de SRC-007 sont écartées : « servie en garniture sur de fines tuiles de pain de mie passées au four » est une suggestion de service, elle ne touche ni à la composition ni à la méthode du condiment lui-même ; « employée en farce, mélangée à des olives noires, pour de petits poissons rôtis au four » n'est plus une anchoïade mais un plat de poisson dont l'anchoïade serait l'assaisonnement, et elle réclamerait une forme de poisson que la base n'a pas. Cas particulier de SRC-013 : sa première variante ne remplace le vinaigre blanc que DANS LA SAUCE, le trempage de la veille le gardant ; la ligne unique de vinaigre blanc a donc été ramenée à la part du dégorgeage et le vinaigre de vin rouge ajouté à côté, plutôt que substitué en bloc — une substitution aurait fait disparaître le vinaigre du trempage, que la base réclame. Cas particulier de SRC-007 : ses trois variantes retenues font toutes passer un ingrédient facultatif au rang d'obligatoire, ce qui est justement leur intérêt — une anchoïade sans mie, avec mie, ou tomatée ne se pèse pas pareil. La version au citron emporte la mie avec elle : vingt-huit grammes de jus là où huit grammes de vinaigre suffisaient, c'est de l'eau en plus qu'il faut bien que quelque chose reprenne, faute de quoi la pommade reste lâche. Réserve à porter au dossier sur SRC-015-D3 : la variante ne mange que les jaunes, mais la ligne « Œuf cru » reste à 270 g puisqu'il faut bien cuire les œufs entiers pour les obtenir. Les quelque 180 g de blanc mis de côté sont donc comptés dans la nutrition et le poids de portion, qui s'en trouvent surestimés d'environ 45 g et 5 g de protéines par personne. Aucune écriture du vocabulaire fermé ne permet de dire « acheter cinq œufs, n'en manger que les jaunes » sans rendre la recette infaisable ; le grief est signalé plutôt que corrigé en silence. Aucune forme n'a manqué au catalogue.",
+  "derivations": [
+    {
+      "code": "SRC-007-D1",
+      "base": "SRC-007",
+      "family": "Anchoïade camarguaise",
+      "variant_label": "Version camarguaise liée à la mie de pain de mie, mixée jusqu'à une pommade très ferme qui prend comme une mayonnaise",
+      "rationale": "La mie cesse d'être un correctif facultatif pour devenir la charpente : quatre-vingts grammes de pain absorbent l'huile et donnent une pâte qui tient au bout de la spatule. Le mixeur remplace le mortier, ce qui gagne du temps mais rend la texture plus lisse et plus anonyme — on perd le grain de l'ail pilé. La tomate sort de la recette, son eau ferait retomber l'émulsion. Au total, une anchoïade plus douce, plus nourrissante et plus féculente que la provençale.",
+      "prep_minutes": 10,
+      "techniques": ["émulsion", "mixage"],
+      "operations": [
+        { "op": "set", "form": "Pain de mie", "quantity": 80, "role": "liant", "optional": false },
+        { "op": "remove", "form": "Tomate râpée" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Égoutter les filets d'anchois de leur huile et les éponger. Peler les gousses d'ail, ôter le germe, puis réunir ail et anchois dans le bol d'un mixeur avec une pincée de sel. Donner quelques impulsions brèves, en raclant les parois entre deux, jusqu'à ce qu'il ne subsiste aucun morceau reconnaissable."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Émietter toute la mie du pain de mie dans un bol, l'imbiber du vinaigre de vin rouge allongé de deux cuillerées d'eau, laisser gonfler deux minutes, puis la presser entre les doigts avant de la joindre aux anchois dans le bol. C'est cette panade qui donnera son corps à la pommade : sans elle, l'huile n'aurait rien à quoi s'accrocher."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Mixer en continu et verser l'huile d'olive vierge extra en filet très mince par la cheminée, exactement comme on monte une mayonnaise. La préparation pâlit, se resserre et finit par former une pommade très ferme. Si le bol chauffe sous la lame, arrêter trente secondes : une émulsion tiédie se rompt et ne se rattrape qu'en repartant d'un fond neuf."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Rectifier au jus de citron frais et au poivre noir moulu, puis goûter. La pommade doit tenir en dôme sur la cuillère sans s'affaisser ; si elle s'est tendue au point de graisser, quelques gouttes d'eau glacée mixées une seconde la rendent à sa souplesse."
+        }
+      ]
+    },
+    {
+      "code": "SRC-007-D2",
+      "base": "SRC-007",
+      "family": "Anchoïade au citron",
+      "variant_label": "Version au jus de citron frais en remplacement du vinaigre de vin rouge, plus ronde en bouche",
+      "rationale": "Le citron acidifie moins franchement que le vinaigre et parfume au lieu de piquer : il en faut trois fois plus pour tenir l'anchois, et l'attaque devient ronde là où elle était sèche. Ce surcroît de liquide oblige à garder la mie, qui passe de secours facultatif à ingrédient obligatoire — sans elle la pommade resterait lâche. La contrepartie est ailleurs que dans la conservation, que le sel des anchois et la couche d'huile assurent de toute façon : le parfum du citron s'émousse au bout d'un jour ou deux, là où le vinaigre gardait sa vivacité jusqu'au fond du bocal.",
+      "operations": [
+        { "op": "remove", "form": "Vinaigre de vin rouge" },
+        { "op": "set", "form": "Jus de citron frais", "quantity": 28, "role": "acidifiant", "optional": false },
+        { "op": "set", "form": "Pain de mie", "quantity": 50, "role": "liant", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Émietter la mie du pain de mie dans un bol, l'arroser des trois quarts du jus de citron frais, laisser gonfler deux minutes, puis l'incorporer à la pâte d'ail en écrasant à la fourchette jusqu'à une masse homogène et sans grumeau. Le citron mouille bien davantage qu'un acide fort : c'est la mie qui le reprend, sans quoi la pommade n'épaissirait jamais."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Détendre d'une cuillère d'eau froide si la texture devient trop tendue, puis ajouter la tomate râpée soigneusement égouttée pour une version plus fraîche. Rectifier au poivre noir moulu et, si le mordant manque encore, aux dernières gouttes de citron gardées à part — ajoutées en fin de course, elles restent vives au lieu de se fondre."
+        }
+      ]
+    },
+    {
+      "code": "SRC-007-D3",
+      "base": "SRC-007",
+      "family": "Anchoïade à la tomate",
+      "variant_label": "Version à la tomate râpée, plus fraîche et moins concentrée, servie l'été",
+      "rationale": "Cent cinquante grammes de tomate râpée pour quatre changent l'échelle du condiment : le sel de l'anchois se dilue, l'ail s'adoucit, et la tartinade devient une sauce fraîche plutôt qu'une pâte à mordre. On y gagne en légèreté, on y perd la concentration et la tenue — cette version rend de l'eau au repos et ne se garde qu'un jour ou deux.",
+      "conservation": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, 48 au plus, dans un bocal hermétique : la tomate rend de l'eau et délie peu à peu l'émulsion. Retirer le liquide remonté en surface et remuer avant chaque service. Sortir 20 minutes avant de servir, l'huile figeant au froid. La congélation est à exclure : l'émulsion se casse au dégel, la tomate s'y défait en filaments et l'ail cru y développe une amertume marquée.",
+      "operations": [
+        { "op": "set", "form": "Tomate râpée", "quantity": 150, "role": "légume", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Râper la tomate à la grosse grille, la laisser s'égoutter dix minutes dans une passoire en pressant du dos de la cuillère, puis l'incorporer à la pommade par tiers, en travaillant vite. Ajoutée d'un coup, son eau délierait l'émulsion ; fractionnée, elle se laisse absorber. Rectifier au jus de citron frais et au poivre noir moulu."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Couvrir et laisser reposer une heure au réfrigérateur : l'ail y perd son feu et les arômes se fondent. Retirer à la cuillère le peu d'eau remontée en surface, mélanger une dernière fois et servir frais, dans la journée — cette version tourne bien plus vite que l'anchoïade sèche."
+        }
+      ]
+    },
+    {
+      "code": "SRC-013-D1",
+      "base": "SRC-013",
+      "family": "Langue de bœuf sauce piquante au vinaigre de vin rouge",
+      "variant_label": "Remplacer le vinaigre blanc de la sauce par du vinaigre de vin rouge, pour une acidité plus ronde et une couleur plus soutenue.",
+      "rationale": "Seul le vinaigre de la sauce change : celui du dégorgeage reste blanc, sa neutralité convenant mieux au trempage. Le vin rouge mord moins sec, laisse une acidité plus large et fonce la réduction d'un brun profond que le concentré de tomate ne suffisait pas à donner. Le mordant net qui répondait aux cornichons s'estompe d'autant : la sauce est plus ample, moins tranchante.",
+      "operations": [
+        { "op": "set", "form": "Vinaigre blanc", "quantity": 30, "unit": "ml", "role": "dégorgeage" },
+        { "op": "add", "form": "Vinaigre de vin rouge", "quantity": 60, "unit": "ml", "role": "acidité de sauce" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "La veille, installer la langue dans un grand récipient, la noyer sous l'eau froide additionnée de tout le vinaigre blanc, puis la laisser dégorger au réfrigérateur une nuit entière en renouvelant l'eau une ou deux fois. Le blanc reste ici à sa place : il dégorge sans rien colorer, là où un vinaigre teinté marquerait la chair pour rien."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Pour la sauce, fondre le beurre doux dans une casserole à fond épais, y faire suer les échalotes ciselées sans qu'elles prennent couleur, puis mouiller avec le vin blanc et le vinaigre de vin rouge. Laisser réduire jusqu'à ce qu'il ne subsiste qu'un fond sirupeux, presque brun : c'est en s'évaporant que l'acide perd son agressivité et ne garde que sa profondeur."
+        }
+      ]
+    },
+    {
+      "code": "SRC-013-D2",
+      "base": "SRC-013",
+      "family": "Langue de bœuf à la tomate et au piment",
+      "variant_label": "Version tomatée du Sud : doubler le concentré de tomate, ajouter une pointe de piment et servir la sauce plus courte, sans roux.",
+      "rationale": "Sans farine, la sauce n'est plus liée mais réduite : il faut trente à quarante minutes d'évaporation pour obtenir la nappe que le roux donnait en vingt, et le rendement final est nettement moindre. Le concentré doublé et le piment déplacent le plat du côté méridional, la tomate prenant la place que tenait l'amidon. On y gagne une sauce plus franche et moins pâteuse, on y perd du volume et un peu de la douceur qui tempérait le vinaigre.",
+      "cook_minutes": 180,
+      "conservation": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C, tranches immergées dans la sauce ou dans un peu de bouillon filtré pour éviter le dessèchement. Réchauffer à feu doux sans ébullition, en allongeant d'une louche de bouillon : n'étant retenue par aucun amidon, cette sauce se resserre franchement au froid. La congélation est possible 2 mois pour la viande et sa sauce ensemble, et le dégel lui réussit mieux qu'à la version au roux, une réduction ne se déphasant pas. Ne jamais congeler les cornichons, à ajouter au dernier moment.",
+      "techniques": ["blanchiment", "pochage", "réduction", "déglaçage", "mijotage", "évaporation"],
+      "operations": [
+        { "op": "scale", "form": "Concentré de tomate", "factor": 2 },
+        { "op": "add", "form": "Piment de Cayenne", "quantity": 1, "unit": "g", "role": "épice" },
+        { "op": "remove", "form": "Farine de blé T55" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Incorporer le concentré de tomate aux échalotes réduites et le laisser pincer deux à trois minutes à feu doux, en remuant sans arrêt jusqu'à ce qu'il fonce et perde son goût de conserve. Ajouter le piment de Cayenne, puis verser le bouillon filtré louche après louche et laisser réduire à découvert trente à quarante minutes : rien ne lie cette sauce que sa propre évaporation, et elle est prête quand elle nappe le dos de la cuillère sans couler."
+        }
+      ]
+    },
+    {
+      "code": "SRC-013-D3",
+      "base": "SRC-013",
+      "family": "Langue de bœuf sauce piquante à l'autocuiseur",
+      "variant_label": "Cuisson accélérée en autocuiseur : quarante-cinq minutes sous pression après le blanchiment, le bouillon restant utilisé de la même façon pour la sauce.",
+      "rationale": "Les deux heures trente de frémissement tombent à quarante-cinq minutes sous pression, mais la montée en pression, la détente et la réduction du bouillon en reprennent une part : le gain réel est d'une petite heure, et surtout d'une cuisson qu'on ne surveille pas. Le prix à payer est un bouillon plus long et plus fade, la cuve fermée n'évaporant rien là où le couvercle entrouvert de la cocotte concentrait le court-bouillon d'un bout à l'autre ; il faut donc le réduire à part avant d'en mouiller la sauce, sans quoi celle-ci manque de fond. La membrane se retire aussi bien, à condition de laisser la pression retomber d'elle-même.",
+      "cook_minutes": 110,
+      "techniques": ["blanchiment", "pochage", "cuisson sous pression", "réduction", "déglaçage", "mijotage"],
+      "operations": [],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Piquer l'oignon jaune épluché des clous de girofle. Déposer la langue dans la cuve de l'autocuiseur avec cet oignon, la carotte pelée coupée en gros tronçons, le laurier, le thym, les grains de poivre et le bouillon de bœuf émietté. Couvrir d'eau chaude sans dépasser les deux tiers de la cuve — au-delà, la soupape crache et la montée en pression ne se fait plus proprement."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Fermer, porter à pression sur feu vif, puis compter quarante-cinq minutes dès que la soupape chuchote, feu réduit au minimum pour qu'elle ne siffle qu'à peine. Laisser ensuite la pression retomber seule, sans forcer la purge : une détente brutale contracte les fibres et rend la langue sèche. Ouvrir, vérifier qu'une lame traverse la partie la plus épaisse sans résistance, et laisser tiédir la pièce dans son bouillon."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Sortir la langue encore chaude, la poser côté bombé contre la planche et retirer la membrane épaisse, qui se décolle alors sans effort. Parer la base, réserver au chaud. Filtrer un litre et demi de bouillon et le faire réduire à découvert jusqu'à un litre avant de le garder frémissant : la cuve fermée n'a rien laissé s'évaporer, et ce bouillon-là est trop étendu pour porter la sauce tel quel."
+        }
+      ]
+    },
+    {
+      "code": "SRC-015-D3",
+      "base": "SRC-015",
+      "family": "Verrines mimosa au thon",
+      "variant_label": "Montage en verrine : n'utiliser que les jaunes, les mixer avec la mayonnaise et le thon jusqu'à une crème lisse, dresser en verrines et saupoudrer de jaunes tamisés.",
+      "rationale": "Le blanc quitte l'assiette : il ne sert plus de coquille et doit être recyclé ailleurs, ce qui fait de cette version la plus dispendieuse des trois. En échange, la farce n'a plus à tenir toute seule et peut être mixée plus souple, avec un tiers de mayonnaise en plus, jusqu'à une crème qu'on mange à la cuillère. Le thon devient obligatoire et porte le plat ; le contraste de texture entre blanc ferme et farce lisse, lui, disparaît.",
+      "prep_minutes": 20,
+      "techniques": ["pochage", "émulsion", "tamisage", "mixage"],
+      "operations": [
+        { "op": "set", "form": "Thon au naturel en conserve, égoutté", "quantity": 160, "role": "protéine de la crème", "optional": false },
+        { "op": "set", "form": "Mayonnaise", "quantity": 55, "role": "liaison", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Fendre chaque œuf en deux dans la longueur, lame essuyée entre chaque coupe, et faire glisser les jaunes dans un bol. Réserver les blancs à couvert : ils ne servent pas ici et se gardent deux jours au frais pour une salade ou une farce. Mettre à part deux jaunes entiers, qui feront la neige de finition."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Réunir dans le bol du mixeur les jaunes restants, la mayonnaise, le thon soigneusement égoutté et émietté, le sel fin, le poivre noir moulu et le persil frais ciselé. Mixer par impulsions courtes, racler les parois, puis mixer en continu jusqu'à une crème parfaitement lisse : elle doit tomber du ruban sans se casser ni couler."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Répartir la crème dans quatre verrines à la poche à douille, en descendant la douille au fond du verre pour ne pas emprisonner de bulle d'air, puis lisser la surface à la petite spatule. Ne pas remplir à ras bord : il faut garder la place de la neige de jaunes."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Tamiser les deux jaunes réservés directement au-dessus des verrines pour obtenir la neige jaune caractéristique, ajouter quelques pluches de persil frais, puis laisser raffermir trente minutes au réfrigérateur avant de servir bien frais, à la petite cuillère."
+        }
+      ]
+    },
+    {
+      "code": "SRC-015-D4",
+      "base": "SRC-015",
+      "family": "Œufs mimosa frits",
+      "variant_label": "Œufs mimosa frits : paner les demi-blancs (farine, œuf battu, chapelure), les frire une à deux minutes en huile chaude, puis les garnir de la farce mimosa au moment de servir.",
+      "rationale": "La panure change la nature du plat : le blanc n'est plus une coquille froide mais une croquette chaude, et l'entrée passe de légère à franchement riche entre la friture et la chapelure. Un œuf supplémentaire est nécessaire pour la dorure, et la préparation cesse d'être une entrée qu'on prend de l'avance — panée puis garnie, elle ramollit en une demi-heure et se sert donc à la minute.",
+      "prep_minutes": 35,
+      "cook_minutes": 20,
+      "techniques": ["pochage", "émulsion", "tamisage", "panure", "friture"],
+      "conservation": "Ne se conserve pas : la panure ramollit en moins d'une heure au contact de la farce et de l'humidité des blancs. Frire et garnir au moment de servir ; les demi-blancs panés crus peuvent en revanche attendre deux heures au réfrigérateur avant friture.",
+      "operations": [
+        { "op": "set", "form": "Œuf cru", "quantity": 330, "role": "protéine principale" },
+        { "op": "add", "form": "Farine de blé T55", "quantity": 40, "unit": "g", "role": "panure" },
+        { "op": "add", "form": "Chapelure de blé", "quantity": 80, "unit": "g", "role": "panure" },
+        { "op": "add", "form": "Huile de friture", "quantity": 400, "unit": "ml", "role": "friture" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Mettre de côté un œuf entier cru, qui servira à la dorure. Ranger les autres dans une casserole, les couvrir d'eau froide salée et porter sur feu vif ; dès les premiers bouillons, baisser à frémissement et compter dix minutes, en faisant rouler les œufs à la cuillère pendant la première minute pour que les jaunes restent au centre."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Fendre chaque œuf en deux dans la longueur, lame essuyée entre chaque coupe, puis faire glisser le jaune hors de son logement en préservant l'intégrité du blanc : une entaille et la panure laisserait entrer l'huile jusque dans le creux. Réserver les jaunes dans un bol et aligner les demi-blancs sur une plaque, creux vers le haut, prêts à être panés."
+        },
+        {
+          "op": "insert",
+          "after": 3,
+          "instruction": "Battre à la fourchette l'œuf cru réservé dans une assiette creuse. Disposer à côté la farine de blé dans une première assiette et la chapelure de blé dans une seconde. Passer chaque demi-blanc dans la farine en tapotant l'excédent, puis dans l'œuf battu, puis dans la chapelure en pressant du bout des doigts jusque dans le creux — c'est là que la panure lâche si on la néglige. Ranger les demi-blancs panés au frais, le temps de monter la farce : la friture ne vient qu'après elle."
+        },
+        {
+          "op": "insert",
+          "after": 6,
+          "instruction": "La farce prête, chauffer l'huile de friture dans une petite casserole à haut bord jusqu'à 175 °C — une pincée de chapelure jetée dedans doit grésiller aussitôt sans noircir. Y descendre les demi-blancs trois ou quatre à la fois, creux vers le haut, et les laisser une à deux minutes, le temps que la croûte prenne couleur sans que le blanc ne caoutchoute. Les remonter à l'écumoire et les égoutter sur un papier absorbant."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Laisser les demi-blancs frits tiédir cinq minutes, le temps que la croûte se raffermisse, puis les garnir de la farce à la poche à douille en bombant la surface. Ne pas déborder sur la panure : mouillée, elle ramollit en quelques minutes et tout le travail est perdu."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Tamiser le dernier tiers des jaunes réservés au-dessus des œufs garnis pour obtenir la neige jaune caractéristique, ajouter quelques pluches de persil frais et servir sans attendre. Contrairement aux mimosa classiques, ceux-ci ne passent pas au réfrigérateur : ils y perdraient en une demi-heure tout le croustillant qu'on vient de leur donner."
+        }
+      ]
+    }
+  ]
+}

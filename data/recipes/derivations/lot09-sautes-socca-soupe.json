@@ -1,0 +1,297 @@
+{
+  "lot": "lot09 — sautés, socca et soupe",
+  "note": "Quatre bases, dix-sept variantes annoncées, dix dérivations retenues et sept écartées. SRC-027 rend ses quatre variantes. Deux d'entre elles ont demandé un détour : le moteur refuse de substituer une forme déjà présente dans la base, or « Eau » et « Gruyère râpé » y figuraient déjà. La version sans alcool retire donc le vin blanc et porte l'eau de 400 à 600 ml — la même quantité de liquide, sur une seule ligne au lieu de deux. Même détour pour SRC-029-D2 : le parmesan est retiré et la ligne unique de gruyère portée à 220 g, dont 90 g montés dans le pistou et 130 g présentés à part ; les étapes 6 et 7 énoncent explicitement cette répartition, faute de quoi la recette ne saurait pas où va quoi. SRC-028 ne rend qu'une variante sur quatre : la découpe en petits carrés et la répartition sur deux plaques sont déjà écrites mot pour mot dans la base (étapes 7 et 3) et ne changent rien ; la tourtière de cuivre au four à bois ne touche ni ingrédient ni quantité, et les temps d'un four à bois ne se déduisent pas de ceux d'un four ménager — les inventer aurait été écrire de mémoire. SRC-029 rend ses cinq variantes. Homonyme déclaré sur SRC-029-D4 : les « pâtes sèches courtes » retirées de la soupe laissent dans l'étape du pistou une « pâte vert sombre » qui est la pommade d'ail et de basilic, pas un reste de pâtes. SRC-030 ne rend rien, pour deux raisons distinctes. Ses variantes 3 et 4 ne sont que des emplois — une cuillerée dans le ventre d'un poisson, une couche sur un fond de tarte : elles ne modifient pas la tapenade, elles la déplacent ailleurs, exactement comme les deux emplois de l'anchoïade écartés au lot05. Ses variantes 1 et 2 (hachage au couteau, ail blanchi) sont en revanche de vrais changements de méthode, et le moteur les accepte sans aucune anomalie — mais le validateur les refuse toutes deux : « 55 g par part — portion irréaliste pour un rôle \"undefined\" ». La cause n'est pas la recette : deriver() ne recopie pas le champ `plate` de la base dans la dérivée, si bien que le plancher de 80 g par part d'un plat s'applique à un condiment dont la base déclare pourtant plate.role = \"component\" (plancher 20 g). La base elle-même est à 55 g par part et ne passerait pas ce contrôle. Aucune dérivée de SRC-030 n'est publiable tant que `plate` n'est pas transmis par le moteur ; ces deux variantes sont donc gardées en réserve, pas condamnées. Dernier point à signaler en amont : les étapes de SRC-029 sont stockées sans accents dans corpus-v3.json. Les réécritures sont, elles, en français accentué, ce qui rend ces cinq dérivées visuellement mixtes — c'est un défaut de la base à corriger là-bas, pas une décision d'écriture. Aucune forme n'a manqué au catalogue. — Révision à charge : six griefs relevés et corrigés sur place. Le plus lourd tenait aux allergènes, que ni le moteur ni le validateur ne contrôlent au fond : deriver() recopie `allergens` de la base, si bien qu'un delta qui supprime la SEULE source d'un allergène le laisse déclaré. SRC-029-D4 supprime les pâtes et se disait « sans gluten » tout en publiant `[\"gluten\",\"lait\"]` ; SRC-027-D4 supprime le vin blanc et gardait `sulfites`, alors que le corpus n'attribue jamais les sulfites aux olives (SRC-030, tapenade pure, déclare une liste vide). Les deux dérivées déclarent désormais leurs allergènes en propre. Même mécanisme pour `conservation` : SRC-027-D2 dit dans son rationale que les tranches minces supportent mal le réchauffage, tandis que le texte hérité de la base promettait un plat qui « gagne à être réchauffé le lendemain » — il est réécrit pour cette dérivée. Trois retouches mineures pour finir : le rationale de SRC-029-D1 attribuait au bouillon un appauvrissement qui ne le concerne pas, la tomate étant réservée au pistou dans la base ; son étape 2 revendiquait un quart d'heure gagné que prep_minutes ne reflétait pas — la prose est corrigée et prep_minutes passe à 25 ; l'étape 2 de SRC-029-D3 parlait de « face coupée » sans avoir jamais dit de couper les tomates en deux. Le blocage annoncé sur SRC-030 a été vérifié en écrivant les deux dérivées : le moteur les accepte, le validateur les refuse bien sur « 55 g par part — portion irréaliste pour un rôle \"undefined\" », faute de `plate` recopié. Le diagnostic tient.",
+  "derivations": [
+    {
+      "code": "SRC-027-D1",
+      "base": "SRC-027",
+      "family": "Sauté de veau à la corse",
+      "variant_label": "Version corse : doubler les lardons fumés et allonger le mijotage à deux heures pour une sauce plus courte et plus fumée.",
+      "rationale": "Doubler la poitrine fumée et pousser le mijotage à deux heures fait basculer le plat du côté fumé : le gras se rend entièrement dans la sauce, qui devient plus courte et nappe davantage. Le veau y gagne du fondant mais perd sa mâche franche, et la part grimpe fortement en lipides et en sel. La poitrine cesse d'être facultative — sans elle cette version n'existe pas.",
+      "cook_minutes": 165,
+      "operations": [
+        {
+          "op": "set",
+          "form": "Lardon fumé cru",
+          "quantity": 260,
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Couvrez et maintenez un frémissement à peine perceptible pendant deux heures pleines, en remuant délicatement de loin en loin pour que rien n'attache. C'est ce long tirage qui fait descendre le fumé de la poitrine dans la sauce au lieu de le laisser flotter en surface, et qui amène la viande au point où elle se défait à la cuillère."
+        }
+      ]
+    },
+    {
+      "code": "SRC-027-D2",
+      "base": "SRC-027",
+      "family": "Sauté de veau aux olives et au citron",
+      "variant_label": "Version au citron : ajouter des rondelles de citron avec les olives et réduire la cuisson à trente minutes en utilisant des tranches fines de veau plutôt que des cubes.",
+      "rationale": "Taillé en tranches fines, le veau cuit en une demi-heure au lieu de deux : la fibre n'a pas le temps de se défaire, la viande reste ferme et la sauce, moins longuement tirée, nappe moins. Les rondelles de citron cuites avec leur écorce apportent une amertume et une acidité franches qui recouvrent en partie le fond de tomate. Le plat gagne en vivacité ce qu'il perd en fondant, et supporte mal d'être réchauffé.",
+      "cook_minutes": 45,
+      "conservation": "Se garde deux jours au réfrigérateur entre 0 et 4 °C dans un récipient hermétique, mais à la différence du sauté en cubes il ne gagne rien à attendre : les tranches minces se resserrent au réchauffage et l'écorce du citron, laissée dans la sauce, y pousse son amertume d'un jour sur l'autre. Retirer les rondelles avant de mettre au froid. La congélation est déconseillée pour les mêmes raisons.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Citron jaune frais",
+          "quantity": 120,
+          "unit": "g",
+          "role": "acidifiant",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Parez l'épaule de veau et détaillez-la en tranches fines de moins d'un centimètre, la lame en travers de la fibre pour qu'elles ne se rétractent pas à la chaleur, puis farinez-les d'une face et de l'autre et secouez-les pour ne garder qu'un voile mince."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Chauffez l'huile d'olive dans une cocotte à fond épais et saisissez les tranches de veau à plat, trois ou quatre à la fois, une minute par face à peine : plus minces que des cubes, elles se dessèchent dès qu'on cherche la croûte ambrée ; débarrassez la viande et faites rendre leur gras aux lardons au même endroit."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Couvrez et maintenez un frémissement à peine perceptible vingt minutes seulement, le temps que les tranches s'attendrissent sans se défiler en filaments."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Ajoutez les olives égouttées et le citron débité en rondelles très fines, écorce comprise, retirez le couvercle et prolongez dix minutes, pas davantage : au-delà, la peau du citron vire à l'amer et ne revient plus. Goûtez et rectifiez le sel en tenant compte des olives et de l'acidité apportée par les rondelles avant d'envoyer à table."
+        }
+      ]
+    },
+    {
+      "code": "SRC-027-D3",
+      "base": "SRC-027",
+      "family": "Sauté de veau aux olives et pommes de terre",
+      "variant_label": "Version tout-en-un : glisser des pommes de terre en quartiers en même temps que les olives, ce qui fait passer le plat en rôle complet.",
+      "rationale": "Les quartiers de pomme de terre cuisent dans la sauce, en boivent une part et rendent leur amidon : le jus épaissit sans farine supplémentaire et le plat se suffit à lui-même, sans riz ni pâtes à côté. En échange la sauce devient moins abondante et moins franche, diluée par sept cents grammes de féculent, et la part pèse près d'une fois et demie celle de la base.",
+      "cook_minutes": 125,
+      "operations": [
+        {
+          "op": "add",
+          "form": "Pomme de terre crue, épluchée",
+          "quantity": 700,
+          "unit": "g",
+          "role": "féculent",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Ajoutez les olives égouttées et les pommes de terre taillées en gros quartiers, retirez le couvercle et prolongez trente-cinq minutes : les quartiers doivent s'ouvrir à la pointe du couteau sans se déliter, et l'amidon qu'ils lâchent achève d'épaissir la sauce. Remuez le moins possible pour ne pas les casser, goûtez et rectifiez le sel en tenant compte des olives avant d'envoyer à table."
+        }
+      ]
+    },
+    {
+      "code": "SRC-027-D4",
+      "base": "SRC-027",
+      "family": "Sauté de veau aux olives sans alcool",
+      "variant_label": "Version sans alcool : remplacer le vin blanc par la même quantité d'eau et une pointe supplémentaire de concentré de tomate.",
+      "rationale": "Le déglaçage à l'eau décolle les sucs mais n'apporte ni acidité ni amertume : la sauce repose alors sur le seul concentré de tomate, à peine renforcé. Le fond devient plus rond, plus tomaté, moins tendu, et les olives y ressortent d'autant. On y gagne un plat servable à tous et débarrassé des sulfites que le vin apportait, on y perd la ligne acide qui coupait le gras du veau.",
+      "allergens": ["gluten"],
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Vin blanc sec"
+        },
+        {
+          "op": "set",
+          "form": "Eau",
+          "quantity": 600,
+          "unit": "ml"
+        },
+        {
+          "op": "set",
+          "form": "Concentré de tomate",
+          "quantity": 26
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Baissez le feu, jetez l'oignon finement émincé et la carotte en rondelles dans la graisse de cuisson, laissez-les fondre sans brunir, ajoutez l'ail écrasé puis le concentré de tomate — un peu plus généreusement qu'à l'ordinaire — et tournez deux bonnes minutes pour qu'il perde son mordant : c'est lui qui devra porter seul la profondeur et l'acidité du fond."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Mouillez avec un grand verre d'eau prélevé sur les six cents millilitres et raclez aussitôt les sucs collés au fond à la spatule, tant qu'ils se décollent encore ; laissez réduire de moitié, remettez la viande et les lardons, versez le reste de l'eau à hauteur, parsemez de thym et de romarin, salez et poivrez."
+        }
+      ]
+    },
+    {
+      "code": "SRC-028-D1",
+      "base": "SRC-028",
+      "family": "Socca au poivre du moulin",
+      "variant_label": "Finition très poivrée au moulin juste avant de servir, jusqu'à couvrir visiblement la surface.",
+      "rationale": "Quatre grammes de poivre fraîchement moulu au lieu d'une pincée : le poivre cesse d'être un assaisonnement pour devenir la seconde saveur de la galette, à côté du pois chiche. Sa pointe piquante et résineuse recouvre en partie le goût de farine grillée, et la socca ne convient plus aux palais sensibles. L'assaisonnement passe donc du rang de facultatif à celui d'obligatoire.",
+      "operations": [
+        {
+          "op": "set",
+          "form": "Poivre noir moulu",
+          "quantity": 4,
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Décoller la galette à la spatule et la débiter en morceaux irréguliers, puis passer le moulin sur toute la surface en allées serrées, jusqu'à ce que le poivre noir moulu se voie franchement sur le doré de la pâte. Servir brûlant, à la main : moulu au dernier moment et posé sur un support gras et chaud, le poivre libère ses arômes volatils au lieu de rester une poussière sèche."
+        }
+      ]
+    },
+    {
+      "code": "SRC-029-D1",
+      "base": "SRC-029",
+      "family": "Soupe au pistou sans tomate",
+      "variant_label": "Pistou sans tomate, monte seulement a l'ail, au basilic, au parmesan et a l'huile d'olive, comme dans la version la plus depouillee du dossier.",
+      "rationale": "Privé de pulpe, le pistou ne se détend plus : il reste une pommade serrée et franchement aillée, qui se délaye moins facilement dans le bouillon et demande d'être fouettée hors du feu. Le goût gagne en netteté sur l'ail et le basilic et perd l'acidité qui arrondissait la soupe. Le bouillon, lui, ne change pas : la tomate n'y entrait jamais, elle était réservée au pistou. Ce sont donc trois cent soixante-dix grammes qui manquent tout à la fin, au moment précis où la soupe recevait sa touche fraîche.",
+      "prep_minutes": 25,
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Tomate fraîche mûre"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Détailler les carottes et l'oignon en dés réguliers d'un demi-centimètre, les courgettes en bâtonnets courts, les pommes de terre en cubes un peu plus gros. Effiler les haricots verts et les casser en deux. Aucun légume ne demande ici de passer par l'eau bouillante : tout entre au faitout tel quel, et l'on s'épargne d'un coup la casserole à ébouillanter, le dépouillage et l'épépinage."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Pendant ce temps, monter le pistou. Dégermer les gousses d'ail et les réduire en purée au mortier avec une pincée de sel, ajouter les feuilles de basilic et piler jusqu'à obtenir une pâte vert sombre. Travailler le parmesan râpé dedans, puis verser le reste de l'huile d'olive en mince filet sans cesser de tourner, comme pour une mayonnaise, jusqu'à une pommade brillante et serrée que rien ne viendra détendre ensuite : prévoir donc une louche de bouillon chaud pour la délayer au moment de l'incorporer."
+        }
+      ]
+    },
+    {
+      "code": "SRC-029-D2",
+      "base": "SRC-029",
+      "family": "Soupe au pistou au gruyère",
+      "variant_label": "Remplacer le parmesan du pistou par du gruyere rape, ou partager la quantite entre les deux fromages.",
+      "rationale": "Le gruyère fond mieux que le parmesan mais sale moins et n'a pas cet umami sec qui donnait au pistou sa longueur en bouche. La pommade devient plus grasse et plus filante, un peu plus douce ; il en faut quatre-vingt-dix grammes là où soixante-quinze de parmesan suffisaient. Le fromage cesse d'être facultatif puisqu'il lie désormais le pistou en plus d'être présenté à part.",
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Parmesan affiné"
+        },
+        {
+          "op": "set",
+          "form": "Gruyère râpé",
+          "quantity": 220,
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Pendant ce temps, monter le pistou. Dégermer les gousses d'ail et les réduire en purée au mortier avec une pincée de sel, ajouter les feuilles de basilic et piler jusqu'à obtenir une pâte vert sombre. Travailler dedans quatre-vingt-dix grammes de gruyère râpé prélevés sur la quantité totale, puis verser le reste de l'huile d'olive en mince filet sans cesser de tourner, comme pour une mayonnaise, jusqu'à une pommade brillante. Finir en mélangeant la pulpe de tomate hachée."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Retirer le faitout du feu avant d'y délayer le pistou : au-delà du frémissement, le basilic noircit et l'émulsion se rompt. Couvrir et laisser les arômes se diffuser dix à quinze minutes, puis servir avec le gruyère râpé restant présenté à part, cent trente grammes environ."
+        }
+      ]
+    },
+    {
+      "code": "SRC-029-D3",
+      "base": "SRC-029",
+      "family": "Soupe au pistou à la tomate râpée",
+      "variant_label": "Utiliser de la tomate rapee incorporee directement au bouillon plutot que de la tomate fraiche pelee.",
+      "rationale": "Râpée crue et versée au bouillon, la tomate cuit quarante minutes avec les légumineuses : elle donne sa couleur et son acidité au liquide entier au lieu de rester concentrée dans le pistou. On s'épargne l'ébouillantage et le dépouillage, mais le pistou reste sec et serré, et la fraîcheur tomatée de la dernière minute disparaît, fondue dans la soupe.",
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Tomate fraîche mûre",
+          "with": "Tomate râpée",
+          "quantity": 370
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Détailler les carottes et l'oignon en dés réguliers d'un demi-centimètre, les courgettes en bâtonnets courts, les pommes de terre en cubes un peu plus gros. Effiler les haricots verts et les casser en deux. Couper les tomates en deux à l'équateur et les râper sur la grosse grille, face coupée contre la lame et peau tournée vers la paume : la chair passe, la peau reste en main, et l'on s'épargne le passage à l'eau bouillante."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Mouiller avec l'eau froide, ajouter les haricots secs égouttés et la tomate râpée, porter à frémissement et écumer la mousse grise qui monte. Laisser mijoter à couvert quarante minutes, en salant seulement à mi-parcours pour ne pas durcir la peau des légumineuses : la tomate cuite si longtemps perd son mordant et colore tout le bouillon."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Pendant ce temps, monter le pistou. Dégermer les gousses d'ail et les réduire en purée au mortier avec une pincée de sel, ajouter les feuilles de basilic et piler jusqu'à obtenir une pâte vert sombre. Travailler le parmesan râpé dedans, puis verser le reste de l'huile d'olive en mince filet sans cesser de tourner, comme pour une mayonnaise, jusqu'à une pommade brillante. Elle restera ferme, rien ne venant plus la détendre à la fin."
+        }
+      ]
+    },
+    {
+      "code": "SRC-029-D4",
+      "base": "SRC-029",
+      "family": "Soupe au pistou aux pommes de terre",
+      "variant_label": "Supprimer les pates courtes et augmenter la part de pomme de terre pour une soupe plus rustique et sans gluten.",
+      "rationale": "Sans pâtes, la liaison du bouillon repose entièrement sur l'amidon des pommes de terre, portées de quatre cent cinquante à sept cents grammes et partiellement écrasées en fin de cuisson. La soupe devient plus épaisse et plus paysanne, et convient aux régimes sans gluten : les pâtes en étaient la seule source, l'allergène tombe donc avec elles. Elle perd en revanche la mâche des pâtes et se tient moins bien au réchauffage, la fécule se délitant d'un jour sur l'autre.",
+      "allergens": ["lait"],
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Pâtes sèches courtes"
+        },
+        {
+          "op": "set",
+          "form": "Pomme de terre cuite",
+          "quantity": 700
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Incorporer les dés de pomme de terre et les haricots verts, puis poursuivre une demi-heure à petits bouillons en écrasant quelques cubes contre la paroi du faitout : leur amidon prend le relais et lie le bouillon, qui doit rester juste couvrant. Rectifier alors en sel fin et en poivre noir moulu, la liaison ayant changé le goût du liquide."
+        }
+      ],
+      "homonymes": [
+        {
+          "form": "Pâtes sèches courtes",
+          "raison": "L'étape du pistou parle d'une « pâte vert sombre » : c'est la pommade d'ail et de basilic pilée au mortier, une pâte au singulier, sans rapport avec les pâtes sèches retirées de la soupe."
+        }
+      ]
+    },
+    {
+      "code": "SRC-029-D5",
+      "base": "SRC-029",
+      "family": "Soupe au pistou aux deux haricots",
+      "variant_label": "Ajouter les haricots rouges secs aux haricots blancs pour une version deux legumineuses, plus dense et plus coloree.",
+      "rationale": "Trois cents grammes de légumineuses au lieu de cent cinquante : le bouillon s'épaissit franchement et l'apport en protéines végétales double, tandis que le haricot rouge le teinte d'un rose brunâtre. Le trempage doit se faire dans deux récipients séparés, faute de quoi les blancs virent au rose dès la veille. Le plat devient plus lourd et le goût de légumineuse couvre une part de la finesse des légumes d'été.",
+      "operations": [
+        {
+          "op": "set",
+          "form": "Haricot rouge sec",
+          "quantity": 150,
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "La veille, couvrir largement d'eau froide les haricots blancs secs et les haricots rouges secs, dans deux récipients séparés pour que les rouges ne déteignent pas sur les blancs. Les égoutter et les rincer au moment de cuisiner : sans ce trempage, ils resteraient fermes après une heure de bouillon."
+        }
+      ]
+    }
+  ]
+}

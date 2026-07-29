@@ -239,3 +239,42 @@ défaut, le code lui-même — corrige cela. Deux recettes de même lignée ne
 peuvent pas figurer dans la même semaine, et le délai de retour d'un plat se
 compte sur sa lignée entière. Pour une recette non dérivée, lignée et code sont
 confondus : la règle ne change rien au reste du corpus.
+
+### Ce qui reste une phrase
+
+Toutes les variantes annoncées ne deviennent pas des recettes, et c'est voulu.
+Trois motifs d'écart, chacun légitime :
+
+- **la suggestion de service.** « Servie sur de fines tuiles de pain grillé »
+  ne change ni ingrédient ni méthode : elle décrit ce sur quoi on pose le plat.
+- **la préférence de cuisson.** « Prolonger la cuisson de l'œuf de deux minutes »
+  règle un point de cuisson, pas une recette.
+- **l'ingrédient absent du catalogue.** Une variante qui réclame une noisette,
+  un pied de veau ou un jambonneau ne s'écrit pas tant que la forme n'est pas
+  arbitrée : la remplacer par un voisin fausserait la nutrition en silence, et
+  l'écrire sans elle donnerait une recette qui ne correspond plus à son
+  étiquette.
+
+Le troisième motif est le seul qui se résorbe : il attend un arbitrage, pas une
+décision éditoriale. Les formes qui bloquent aujourd'hui sont consignées dans
+les champs `note` des lots de dérivations.
+
+### Confronter le delta à ce qu'il promet
+
+```bash
+node scripts/data/recipes/check-derivation-matches-label.mjs --tous
+```
+
+Le moteur vérifie qu'un delta est cohérent ; il ne vérifie pas qu'il fait ce
+qu'il ANNONCE. Une variante étiquetée « doubler le poireau et réduire la carotte
+de moitié » dont le delta ne touche que la carotte passe tous les contrôles :
+elle est cohérente, elle est simplement fausse. Ce script lit l'étiquette comme
+une consigne et cherche l'opération en face.
+
+Il **signale**, il ne refuse pas — une étiquette est de la prose, et le delta
+peut la tenir avec d'autres mots. Ses heuristiques ont d'ailleurs dû être
+corrigées plusieurs fois avant d'être lisibles : le pain d'épices était compté
+comme une épice, le piment doux d'Anglet comme un condiment, un œuf pour quatre
+parts comme une quantité dérisoire, et « ajouter aux oignons des tomates » comme
+un ajout d'oignons. Un contrôle qui crie à chaque ligne ne se lit plus ; les cas
+corrigés sont verrouillés dans `tests/data/checkDerivationLabel.test.js`.

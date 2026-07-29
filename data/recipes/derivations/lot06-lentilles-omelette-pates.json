@@ -1,0 +1,337 @@
+{
+  "lot": "lot06 — lentilles, omelette, pan bagnat et pâtes",
+  "note": "Quatre bases, dix-sept variantes annoncées : neuf dérivations retenues, trois variantes écartées faute de forme au catalogue, cinq déjà dérivées au corpus par un lot antérieur. SRC-014 et SRC-018 étaient déjà partiellement dérivées au corpus (SRC-014-D1 à D3, SRC-018-D1 et D2) : la numérotation reprend donc à -D4 et -D3 plutôt que de recommencer, et les variantes déjà traitées sont déclarées écartées avec ce motif. Trois variantes butent sur le catalogue et sont écartées faute de forme : le jambonneau et la noisette pour SRC-014, la fève pour la version niçoise de printemps du pan bagnat — l'oignon nouveau frais existe pourtant, mais écrire la variante sans ses févettes aurait donné une recette qui ne correspond plus à son étiquette. Cas particulier de SRC-016 : sa première variante remplace la pomme de terre par des croûtons de pain rassis, ce qui déplace un ingrédient signature ; la substitution le reporte proprement, mais le profil sensoriel a dû être réécrit à la main, ses garde-fous parlant de pommes de terre colorées à part. Même chose pour les deux versions plates, dont le garde-fou hérité — quitter le feu encore crémeuse — est exactement ce qu'elles cessent de faire. La note de conservation de la base disait la même chose et a dû être réécrite pour la galette râpée, la version plate et la version froide : trois recettes sur quatre auraient sinon promis un cœur crémeux qu'elles ne produisent plus, et refusé une garde qu'elles supportent parfaitement. Le gluten a été ajouté aux allergènes de l'omelette aux croûtons, le lait retiré de ceux de l'omelette froide qui se passe de beurre : la liste d'allergènes suit le delta, elle ne s'hérite pas les yeux fermés.",
+  "derivations": [
+    {
+      "code": "SRC-014-D4",
+      "base": "SRC-014",
+      "family": "Lentilles tièdes au poireau confit",
+      "variant_label": "Faire fondre le poireau à la poêle avec un peu d'huile et de thym au lieu de le cuire avec les lentilles, pour un goût plus confit.",
+      "rationale": "Le poireau quitte le bouillon pour la poêle : il n'y laisse plus son goût aux lentilles, il le garde pour lui et se sucre à l'étouffée. Le thym cesse d'être une brindille facultative jetée dans l'eau pour devenir l'aromate de cette fondue, et quinze grammes d'huile supplémentaires partent à la poêle. Le fond de cuisson des lentilles s'appauvrit d'autant, l'ensemble devient plus gras et demande une poêle occupée vingt minutes de plus.",
+      "cook_minutes": 30,
+      "techniques": ["mijotage", "pochage", "émulsion", "étuvée"],
+      "operations": [
+        { "op": "scale", "form": "Huile d'olive vierge extra", "factor": 1.2 },
+        { "op": "set", "form": "Thym séché", "quantity": 2, "role": "aromate", "optional": false },
+        { "op": "set", "form": "Poireau cru", "quantity": 150, "role": "légume confit" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Réunir dans une casserole les lentilles, la carotte, la demi-moitié d'oignon entière et le laurier ; le poireau et le thym restent de côté, ils partiront à la poêle. Recouvrir de deux fois leur volume d'eau froide, sans sel : une eau salée dès le départ durcit la peau de la légumineuse et l'empêche de s'attendrir régulièrement."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Saler seulement à ce moment-là, puis égoutter immédiatement et sans rincer pour stopper la cuisson. Retirer la moitié d'oignon et la feuille de laurier, garder la carotte, qui est désormais le seul légume à avoir cuit avec le grain. Étaler le tout dans un saladier large : la chaleur retombe vite et les grains cessent de se coller entre eux."
+        },
+        {
+          "op": "insert",
+          "after": 2,
+          "instruction": "Poser dans le même temps la poêle du poireau, pour que les deux cuissons avancent de front : chauffer une bonne cuillerée à soupe d'huile d'olive dans une petite poêle à feu doux, y jeter les demi-rondelles de poireau avec le thym et une pincée de sel, couvrir et laisser fondre vingt minutes en remuant de temps en temps. Le poireau ne doit jamais prendre couleur : c'est l'étouffée qui le rend sucré et fondant, la coloration lui donnerait une amertume de brûlé qu'aucune vinaigrette ne rattrape."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Dans un bol, écraser l'ail au presse-ail, ajouter le vinaigre, le poivre et une pincée de sel, puis verser le reste de l'huile d'olive en mince filet en fouettant sans arrêt jusqu'à ce que la sauce épaississe et cesse de se séparer. Verser sur les lentilles encore tièdes, ajouter la fondue de poireau avec l'huile parfumée de la poêle, mélanger à la spatule souple et laisser reposer 5 minutes : c'est en refroidissant qu'elles boivent la vinaigrette."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": { "sweet": 2, "salty": 2, "acidic": 3, "bitter": 0, "umami": 2, "heat": 0, "pungency": 3, "richness": 3, "freshness": 3, "intensity": 3 },
+        "dominant_flavors": ["terreux", "poireau confit", "acidulé", "alliacé"],
+        "aroma_families": ["herbacé", "aromates séchés", "alliacé fondu"],
+        "target_textures": ["lentilles fondantes mais entières", "poireau fondant", "jaune d'œuf coulant", "éclats de noix croquants"],
+        "signature_ingredients": ["Lentille corail sèche, crue", "Huile d'olive vierge extra", "Vinaigre de vin rouge", "Persil frais"],
+        "identity_guardrails": [
+          "Les lentilles doivent être assaisonnées encore tièdes : une fois froides elles n'absorbent plus la vinaigrette et le plat bascule en salade froide banale.",
+          "L'eau de cuisson reste non salée jusqu'à la fin, sinon la peau durcit et le grain ne s'attendrit plus uniformément.",
+          "Carotte, oignon et laurier restent dans l'eau de cuisson : seul le poireau en sort, sans quoi le grain cuirait dans une eau sans fond de goût.",
+          "Le poireau se fond à couvert et sans coloration ; grillé, il apporterait une amertume que la vinaigrette ne peut pas équilibrer."
+        ]
+      }
+    },
+    {
+      "code": "SRC-016-D1",
+      "base": "SRC-016",
+      "family": "Omelette aux croûtons et aux lardons",
+      "variant_label": "Version marmiton.org : faire dorer des lardons à la poêle, y ajouter des croûtons de pain rassis et de l'ail pressé, puis verser l'appareil additionné d'une cuillerée de crème fraîche sur cette garniture.",
+      "rationale": "Le pain rassis prend la place de la pomme de terre : cent quatre-vingts grammes de croûtons dorés au lieu de quatre cents grammes de rondelles, soit une garniture qui pèse moins de la moitié mais tient davantage de place dans la poêle, bien plus dense en énergie, et qui ramollit à mesure qu'elle attend. L'ail écrasé et la crème ajoutent une rondeur que la version aux pommes de terre n'a pas, au prix d'un appareil plus riche et de trente grammes de crème de plus. Le croustillant ne dure que quelques minutes une fois l'œuf versé : l'omelette se sert immédiatement ou perd ce qui la distingue.",
+      "prep_minutes": 15,
+      "cook_minutes": 15,
+      "techniques": ["saisie", "omelette roulée", "rissolage"],
+      "allergens": ["œuf", "lait", "gluten"],
+      "operations": [
+        { "op": "substitute", "form": "Pomme de terre cuite", "with": "Pain rassis", "quantity": 180, "unit": "g", "role": "féculent" },
+        { "op": "add", "form": "Ail cru", "quantity": 8, "unit": "g", "role": "aromate", "optional": false },
+        { "op": "add", "form": "Crème fraîche liquide entière", "quantity": 30, "unit": "g", "role": "liaison", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Tailler le pain rassis en dés d'un bon centimètre, croûte comprise, émincer l'oignon et dégermer l'ail avant de l'écraser au plat du couteau."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Jeter les dés de pain dans la poêle avec le beurre et les faire dorer à feu moyen en les remuant souvent, jusqu'à ce qu'ils croustillent dehors en restant tendres au centre. Ne pas pousser le feu pour aller plus vite : l'oignon blondi à l'étape précédente est déjà au bord de brunir et emporterait toute la poêlée dans son amertume. Ajouter l'ail écrasé dans la dernière minute seulement : plus tôt il noircirait dans la graisse chaude et donnerait son amertume à son tour."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Battre les œufs à la fourchette avec la crème fraîche liquide entière, saler légèrement — les lardons salent déjà — et poivrer, puis incorporer la ciboulette ciselée. La crème allonge l'appareil et le retient de serrer trop vite au contact de la poêle brûlante."
+        }
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 0, "salty": 3, "acidic": 0, "bitter": 0, "umami": 3, "heat": 0, "pungency": 2, "richness": 4, "freshness": 2, "intensity": 3 },
+        "dominant_flavors": ["œuf", "lardon fumé", "ail", "ciboulette"],
+        "aroma_families": ["œuf cuit", "pain doré", "alliacé grillé"],
+        "target_textures": ["moelleux", "croûtons croustillants", "baveux à cœur"],
+        "signature_ingredients": ["Pain rassis", "Lardon fumé cru", "Œuf cru"],
+        "identity_guardrails": [
+          "Les croûtons sont dorés dans la graisse des lardons avant l'arrivée de l'œuf ; ajoutés crus à l'appareil, ils s'y détrempent au lieu de croustiller.",
+          "L'ail entre en toute fin de coloration, jamais au début : brûlé, il domine et amertume tout le plat.",
+          "L'omelette quitte le feu encore crémeuse au centre et se sert aussitôt, sans quoi les croûtons ramollissent."
+        ]
+      }
+    },
+    {
+      "code": "SRC-016-D2",
+      "base": "SRC-016",
+      "family": "Omelette de pommes de terre râpées",
+      "variant_label": "Version 750g.com : blanchir brièvement du lard, râper finement des pommes de terre bien séchées dans un linge et émincer un oignon en rondelles, le tout mélangé aux œufs battus avant cuisson.",
+      "rationale": "La pomme de terre passe de cuite à crue et de rondelles à râpure, ce qui change tout l'ordre du travail : plus rien n'est coloré à part, tout est mélangé à l'œuf et cuit d'un seul bloc. Il faut compter quatre cent cinquante grammes de tubercule cru pour retrouver le poids de quatre cents grammes de pomme de terre déjà cuite, un essorage sérieux au linge et une dizaine de minutes de cuisson douce en plus pour que la râpure s'attendrisse. On y gagne une galette dense et liée, on y perd la croûte des rondelles rissolées et le cœur baveux de l'omelette paysanne.",
+      "prep_minutes": 20,
+      "cook_minutes": 20,
+      "techniques": ["blanchiment", "cuisson à couvert"],
+      "conservation": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C en boîte hermétique : cuite de part en part, cette galette n'a pas le cœur crémeux qui interdit à l'omelette paysanne d'attendre. Se mange froide en parts ou retiédie deux minutes par face à la poêle couverte sur feu doux, jamais au micro-ondes qui la rend spongieuse. Congélation à proscrire : la pomme de terre râpée rend son eau à la décongélation et la galette se délite.",
+      "operations": [
+        { "op": "substitute", "form": "Pomme de terre cuite", "with": "Pomme de terre crue, épluchée", "quantity": 450, "unit": "g", "role": "féculent" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Râper les pommes de terre épluchées à la grille moyenne, les enfermer dans un linge propre et tordre fermement pour en chasser l'eau. Émincer l'oignon en fines rondelles. Une râpure mal essorée rendrait son eau dans la poêle et l'appareil ne prendrait jamais."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Plonger les lardons une demi-minute dans une petite casserole d'eau bouillante, les égoutter et les éponger. Ce blanchiment leur retire l'excès de sel et de fumé, qui domineraient tout dans un appareil aussi nu."
+        },
+        { "op": "remove", "n": 3 },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Battre les œufs à la fourchette, saler franchement — le blanchiment a emporté une bonne part du sel des lardons et la râpure de pomme de terre en boit beaucoup — et poivrer, puis incorporer la ciboulette ciselée, la râpure essorée, les rondelles d'oignon et les lardons. Mélanger jusqu'à ce que chaque filament soit enrobé d'œuf, sans laisser reposer : la râpure noircirait à l'air."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Faire fondre le beurre dans une poêle à feu moyen, y verser l'appareil d'un coup et l'étaler à la spatule sur toute la surface. Baisser aussitôt le feu au minimum : le tubercule cru demande une douzaine de minutes pour s'attendrir, et un feu vif brûlerait le dessous bien avant."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Couvrir et laisser cuire à petit feu jusqu'à ce que le dessus soit pris, puis retourner la galette à l'aide d'une assiette et la laisser colorer deux minutes de l'autre côté. Vérifier d'une pointe de couteau : elle doit traverser sans résistance, faute de quoi la râpure reste croquante et crayeuse."
+        }
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 1, "salty": 2, "acidic": 0, "bitter": 0, "umami": 3, "heat": 0, "pungency": 1, "richness": 3, "freshness": 2, "intensity": 2 },
+        "dominant_flavors": ["pomme de terre", "œuf", "ciboulette"],
+        "aroma_families": ["œuf cuit", "alliacé frais", "beurre noisette"],
+        "target_textures": ["galette dense", "filaments fondants", "surface dorée"],
+        "signature_ingredients": ["Pomme de terre crue, épluchée", "Lardon fumé cru", "Œuf cru"],
+        "identity_guardrails": [
+          "La râpure doit être essorée au linge : gorgée d'eau, elle empêche l'œuf de prendre et la galette se défait.",
+          "Tout est mêlé à l'œuf avant cuisson ; rien n'est coloré à part, c'est ce qui distingue cette version de l'omelette paysanne.",
+          "La cuisson reste douce et couverte jusqu'au cœur, la pomme de terre crue ne s'attendrit pas autrement."
+        ]
+      }
+    },
+    {
+      "code": "SRC-016-D3",
+      "base": "SRC-016",
+      "family": "Omelette paysanne plate",
+      "variant_label": "Omelette plate à l'espagnole : ne pas plier, terminer la cuisson à couvert sur feu doux ou sous le gril pour obtenir un disque entier que l'on découpe en parts.",
+      "rationale": "La garniture ne bouge pas, la conduite du feu change entièrement : l'œuf n'est plus ramené vers le centre mais laissé prendre en un disque, et la cuisson se termine à couvert ou sous le gril. Six minutes de plus sur le feu suffisent à faire disparaître le cœur crémeux qui fait l'omelette paysanne — c'est le prix à payer pour obtenir une galette qui se découpe en parts et se mange aussi bien tiède. En contrepartie, elle attend sans souffrir et se transporte.",
+      "cook_minutes": 18,
+      "techniques": ["saisie", "rissolage", "cuisson à couvert"],
+      "conservation": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, refroidie à découvert puis rangée en boîte hermétique : prise d'une seule pièce jusqu'au dessus, elle n'a plus le cœur crémeux qui obligeait l'omelette paysanne à passer du feu à l'assiette. Se mange tiède ou froide, découpée en parts, ou retiédie deux minutes à la poêle couverte sur feu très doux. Congélation à proscrire : l'œuf coagulé rend son eau à la décongélation et la texture devient spongieuse.",
+      "operations": [],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Verser les œufs sur la garniture bien chaude, secouer la poêle pour répartir l'appareil jusqu'aux bords, puis baisser le feu au minimum et ne plus toucher à rien. L'omelette doit prendre d'une seule pièce : la spatule qui ramène les bords vers le centre est précisément ce dont cette version se passe."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Couvrir et laisser finir six à huit minutes à feu doux, ou glisser la poêle sous le gril chaud le temps que le dessus perde son brillant. Laisser reposer deux minutes hors du feu avant de faire glisser le disque sur un plat et de le découper en parts comme une tarte : à peine sortie du feu, elle se casserait au couteau."
+        }
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 0, "salty": 3, "acidic": 0, "bitter": 0, "umami": 3, "heat": 0, "pungency": 1, "richness": 3, "freshness": 2, "intensity": 2 },
+        "dominant_flavors": ["œuf", "lardon fumé", "ciboulette"],
+        "aroma_families": ["œuf cuit", "alliacé frais", "poivré"],
+        "target_textures": ["disque ferme", "cœur juste pris", "surface dorée"],
+        "signature_ingredients": ["Pomme de terre cuite", "Lardon fumé cru", "Œuf cru"],
+        "identity_guardrails": [
+          "Sans pomme de terre ni lardons, c'est une omelette nature : la garniture est ce qui fait la paysanne.",
+          "L'omelette n'est ni pliée ni roulée : elle cuit et se sert en disque entier, découpé en parts.",
+          "La cuisson se termine à couvert ou sous le gril, jamais en remuant : c'est ce qui donne un dessus lisse et une tenue à la découpe."
+        ]
+      }
+    },
+    {
+      "code": "SRC-016-D4",
+      "base": "SRC-016",
+      "family": "Omelette paysanne froide en lanières",
+      "variant_label": "Sans matière grasse laitière ni pliage, laisser l'omelette légèrement plus cuite à cœur pour un service froid, coupée en lanières.",
+      "rationale": "Le beurre disparaît : les pommes de terre colorent dans la seule graisse rendue par les lardons, plus lentement et avec une croûte plus sèche. La cuisson va jusqu'au cœur ferme, ce qui interdit le service crémeux mais rend l'omelette découpable en lanières une fois froide — un cœur baveux rendrait son eau au réfrigérateur et détremperait les tranches. Trente grammes de beurre en moins allègent la part d'autant, et le lait sort de la liste des allergènes.",
+      "cook_minutes": 16,
+      "techniques": ["saisie", "rissolage"],
+      "allergens": ["œuf"],
+      "conservation": "Se conserve 48 heures au réfrigérateur entre 0 et 4 °C, refroidie à découvert puis rangée en boîte hermétique, les lanières séparées d'un papier absorbant qui retient l'eau qu'elles rendent. Se mange froide, sans réchauffage : repassée à la poêle elle sèche et devient caoutchouteuse. Congélation à proscrire, l'œuf coagulé se défait en cristaux à la décongélation.",
+      "operations": [
+        { "op": "remove", "form": "Beurre doux" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Ajouter les rondelles de pomme de terre dans la seule graisse rendue par les lardons et les laisser colorer sans trop les remuer. La croûte se forme plus lentement qu'avec une matière grasse laitière et reste plus sèche : compter deux ou trois minutes de plus et résister à l'envie de retourner les rondelles trop tôt."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Verser les œufs sur la garniture bien chaude et baisser le feu, sans ramener les bords vers le centre. L'omelette doit rester plate et d'épaisseur régulière : c'est à cette condition qu'elle se découpera droit une fois froide."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Prolonger la cuisson à feu doux jusqu'à ce que le cœur soit pris et ne tremble plus sous la poêle secouée, puis faire glisser l'omelette sur une grille et la laisser refroidir complètement. La détailler alors en lanières d'un centimètre : un cœur resté coulant se déferait au couteau et rendrait son eau en refroidissant."
+        }
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 0, "salty": 3, "acidic": 0, "bitter": 0, "umami": 3, "heat": 0, "pungency": 1, "richness": 2, "freshness": 2, "intensity": 2 },
+        "dominant_flavors": ["œuf", "lardon fumé", "ciboulette"],
+        "aroma_families": ["œuf cuit", "alliacé frais", "poivré"],
+        "target_textures": ["lanières fermes", "cœur pris", "croûte sèche"],
+        "signature_ingredients": ["Pomme de terre cuite", "Lardon fumé cru", "Œuf cru"],
+        "identity_guardrails": [
+          "Sans pomme de terre ni lardons, c'est une omelette nature : la garniture est ce qui fait la paysanne.",
+          "Aucune matière grasse laitière : la graisse des lardons est la seule à colorer les rondelles.",
+          "L'omelette cuit jusqu'au cœur ferme et refroidit entière avant d'être détaillée ; découpée tiède, elle s'effondre."
+        ]
+      }
+    },
+    {
+      "code": "SRC-017-D1",
+      "base": "SRC-017",
+      "family": "Pan bagnat à l'ail",
+      "variant_label": "Frotter la mie d'une gousse d'ail coupée avant de l'huiler, pour un pain plus parfumé.",
+      "rationale": "Une gousse coupée frottée sur la mie sèche y laisse à peine quelques grammes de pulpe, mais ce peu suffit à parfumer tout le sandwich puisque l'huile qui suit le diffuse dans la mie. Le geste ne coûte aucun temps et n'ajoute presque rien au poids, il ajoute en revanche un piquant cru qui ne s'atténue pas au repos, plutôt le contraire. À éviter donc si le pan bagnat doit attendre plusieurs heures avec des convives sensibles à l'ail.",
+      "operations": [
+        { "op": "add", "form": "Ail cru", "quantity": 5, "unit": "g", "role": "aromate", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Frotter énergiquement les deux faces internes avec la gousse d'ail fendue en deux, côté tranché contre la mie, jusqu'à ce qu'il n'en reste presque rien : c'est la mie sèche qui râpe l'ail, et non l'inverse. Badigeonner ensuite de l'huile d'olive restante, puis arroser du jus rendu par la tomate jusqu'à ce que la mie soit franchement humide sans être détrempée."
+        }
+      ]
+    },
+    {
+      "code": "SRC-017-D2",
+      "base": "SRC-017",
+      "family": "Pan bagnat aux tomates en rondelles",
+      "variant_label": "Remplacer la tomate râpée par de fines rondelles de tomate laissées à dégorger dans l'huile et le vinaigre.",
+      "rationale": "La pulpe râpée cède la place à des rondelles entières : la tomate se mange en tranches franches au lieu de fondre dans la mie, et la mâche du sandwich s'en trouve plus nette. Le revers est liquide — une tomate en rondelles ne rend qu'une fraction du jus d'une tomate râpée, et c'est ce jus qui imbibe le pain. Il faut donc verser la marinade lentement, en plusieurs fois, sous peine d'un pain sec par endroits et noyé ailleurs.",
+      "operations": [
+        { "op": "substitute", "form": "Tomate râpée", "with": "Tomate fraîche mûre", "quantity": 480, "unit": "g", "role": "légume" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Couper les tomates en rondelles de trois millimètres et les ranger à plat dans un saladier avec le vinaigre de vin rouge, les deux tiers de l'huile d'olive, le sel fin et le poivre noir moulu ; laisser dégorger un quart d'heure, le temps que le sel tire l'eau de la chair et que la marinade se colore."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Badigeonner les deux faces internes avec l'huile d'olive restante, puis les arroser de la marinade recueillie au fond du saladier. Elle est bien moins abondante que le jus d'une pulpe râpée : verser en trois fois, en laissant la mie boire entre chaque passage, sinon le pain reste sec d'un côté et détrempé de l'autre."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Ranger les rondelles de tomate égouttées sur la base en les faisant se chevaucher comme des tuiles, sur deux couches régulières si nécessaire : quatre cent quatre-vingts grammes de tomate ne tiennent pas à plat sur une demi-miche, et une garniture d'épaisseur constante vaut mieux qu'un tas au centre. Répartir dessus les rondelles d'œuf dur et parsemer d'olives noires dénoyautées et grossièrement concassées."
+        }
+      ]
+    },
+    {
+      "code": "SRC-017-D3",
+      "base": "SRC-017",
+      "family": "Pan bagnat pressé de la veille",
+      "variant_label": "Préparer la veille et laisser presser toute la nuit sous un poids léger pour une mie totalement imprégnée.",
+      "rationale": "Le repos passe d'une demi-heure sous la paume à douze heures sous un poids : la mie finit par boire tout le jus et l'huile jusqu'au cœur, et le sandwich se tient d'un bloc à la découpe. La contrepartie est que le pain perd le peu de mâche qui lui restait et que la tomate, longuement pressée, rend son eau au point de fatiguer. Le froid fige aussi l'huile d'olive, il faut sortir le pan bagnat une bonne demi-heure avant de le servir pour qu'il retrouve son parfum.",
+      "conservation": "Se mange le jour de la découpe : la nuit de pressage compte déjà dans la vie du sandwich et une seconde journée délite la mie. Garder entre 0 et 4 °C sous son papier et son poids jusqu'au service, puis sortir 30 minutes avant de découper pour que l'huile d'olive se refluidifie. Congélation exclue : le pain imbibé et l'œuf dur deviennent spongieux et caoutchouteux à la décongélation.",
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Recoiffer avec la partie supérieure, presser fermement de la paume, envelopper serré dans un papier puis dans un film bien tendu. Poser le paquet sur une assiette, coiffer d'une petite planche et lester d'une boîte de conserve, sans excès : un poids trop lourd chasse l'huile au lieu de la faire pénétrer. Laisser au réfrigérateur toute la nuit, puis sortir le sandwich une demi-heure avant de le découper en quatre parts."
+        }
+      ]
+    },
+    {
+      "code": "SRC-018-D3",
+      "base": "SRC-018",
+      "family": "Pâtes au thon à l'huile d'olive crue",
+      "variant_label": "Version sans herbes séchées : omettre les herbes de Provence et compter uniquement sur l'ail et l'huile d'olive crue ajoutée au dressage.",
+      "rationale": "Le mélange séché sort du plat et rien ne le remplace : il ne reste que l'ail fondu au départ et l'huile versée crue à la fin pour tenir le parfum. La moitié de l'huile est donc réservée au dressage au lieu du quart, ce qui lui laisse son amertume poivrée et son fruité, détruits dès qu'elle chauffe. La sauce y gagne en franchise et sent davantage la tomate et le poisson, elle perd la couche aromatique un peu couvrante que le thym et le romarin séchés apportaient.",
+      "operations": [
+        { "op": "remove", "form": "Herbes de Provence séchées" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Faire tiédir la moitié de l'huile d'olive dans une sauteuse large, y laisser fondre l'oignon à feu doux jusqu'à ce qu'il devienne translucide sans prendre couleur, puis ajouter l'ail écrasé pour la dernière minute seulement, le temps qu'il libère son parfum. Réserver l'autre moitié de l'huile : c'est elle qui assaisonnera le plat au dressage, et elle ne doit pas voir le feu."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Baisser le feu sous la sauce et y disperser les miettes de thon, puis laisser confire cinq minutes sans remuer trop fort : le poisson doit se réchauffer et prendre le goût de la tomate en restant en morceaux. Rien d'autre ne vient parfumer la sauteuse à ce stade, c'est l'ail fondu du début qui doit s'entendre sous la tomate."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Réunir les pâtes égouttées et la sauce dans la sauteuse, verser l'huile d'olive réservée bien crue et un filet d'eau de cuisson si l'ensemble paraît sec, mélanger hors du feu pour enrober chaque pâte. Une huile qui n'a pas chauffé garde son amertume poivrée et son fruité vert, et c'est tout l'assaisonnement du plat : rectifier sel et poivre, puis servir sans attendre."
+        }
+      ],
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": { "sweet": 1, "salty": 3, "acidic": 3, "bitter": 1, "umami": 4, "heat": 0, "pungency": 2, "richness": 3, "freshness": 1, "intensity": 3 },
+        "dominant_flavors": ["tomate cuite", "iodé", "aillé"],
+        "aroma_families": ["aillé", "fruité vert", "tomate confite"],
+        "target_textures": ["pâtes al dente", "sauce nappante", "miettes de poisson fondantes"],
+        "signature_ingredients": ["Thon au naturel en conserve, égoutté", "Tomate concassée en conserve", "Petites pâtes sèches"],
+        "identity_guardrails": [
+          "Le thon doit être ajouté en fin de cuisson et rester en miettes visibles : émietté trop tôt ou remué jusqu'à disparaître, le plat devient une simple sauce tomate.",
+          "La tomate concassée doit réduire avant l'arrivée du poisson : une sauce non réduite délave le plat.",
+          "La moitié de l'huile d'olive vierge extra reste crue et n'arrive qu'au dressage : chauffée, elle perd le fruité qui remplace ici les aromates.",
+          "Aucun aromate séché n'entre dans la sauce : l'ail et l'huile crue portent seuls le parfum."
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "lot": "lot04 — mijotés et farcis",
+  "note": "Quatre bases, onze variantes annoncées, huit dérivations retenues. SRC-003 ne rend rien : sa variante « flageolets en conserve » réclame une forme que le catalogue n'a pas (il ne porte que le flageolet sec), et sa variante « tomates concassées » est déjà dérivée au corpus sous SRC-003-D1 — la réécrire aurait fait doublon de nom et de code. SRC-002 perd de même sa variante au pied de veau : « Pied de veau cru » est absent du vocabulaire et « Pied de porc cru » y est bloqué ; aucun substitut ne rend la même gélatine sans fausser la nutrition. SRC-009 perd sa version alsacienne, faute de quenelles et de spätzle au catalogue. Deux arbitrages à signaler, faits à découvert plutôt qu'en silence : le « fromage râpé » de la version apéritive des bouchées est écrit en « Emmental râpé », qui en est la réalisation française ordinaire et non un ingrédient approchant ; et la version express, qui demande « les viandes déjà cuites », tourne au seul « Poulet cuit effiloché » — le catalogue ne porte pas de veau cuit, le veau est donc retiré, ce qui est dit dans son rationale plutôt que dissimulé.",
+  "derivations": [
+    {
+      "code": "SRC-002-D1",
+      "base": "SRC-002",
+      "family": "Bœuf mode en gelée",
+      "variant_label": "Servi froid en gelée",
+      "rationale": "Le plat ne change pas de cuisson mais change d'état : le jus de braisage est filtré, dégraissé, réduit et gélifié, puis la viande prend au froid une nuit entière. La farine disparaît, car un jus singé se fige en pâte au réfrigérateur au lieu de trancher net sous le couteau. Ce que la version chaude donnait en velouté, celle-ci le rend en fraîcheur et en franchise, au prix d'une nuit d'attente et d'un assaisonnement à relever davantage, le froid éteignant le sel.",
+      "prep_minutes": 45,
+      "cook_minutes": 195,
+      "techniques": ["saisie", "mijotage", "réduction", "gelée de bouillon", "prise au froid"],
+      "operations": [
+        { "op": "remove", "form": "Farine de blé T55" },
+        { "op": "add", "form": "Gélatine feuille", "quantity": 12, "unit": "g", "role": "gélifiant", "optional": false }
+      ],
+      "steps": [
+        { "op": "replace", "n": 4, "instruction": "Déglacer au vin blanc et gratter les sucs jusqu'à ce qu'ils se détachent du fond, puis laisser réduire de moitié. On ne singe pas cette version : un jus épaissi se prend en pâte trouble au froid, là où un jus nu se coupe net." },
+        { "op": "replace", "n": 7, "instruction": "Retirer le thym et le laurier, puis sortir la viande et les carottes à l'écumoire. Filtrer le jus au chinois, le laisser reposer quelques minutes et le dégraisser à la louche, avant de le réduire à environ six cents millilitres. Rectifier l'assaisonnement franchement, plus haut que pour un plat chaud, puis dissoudre hors du feu la gélatine ramollie dix minutes à l'eau très froide et essorée entre les doigts." },
+        { "op": "insert", "after": 7, "instruction": "Ranger la viande et les carottes en couches serrées dans une terrine, en parsemant de persil ciselé entre chacune, puis verser le jus tiède jusqu'à les recouvrir. Laisser prendre au réfrigérateur une nuit entière : quelques heures suffisent à figer la surface mais pas le cœur. Démouler en trempant trois secondes le moule dans l'eau chaude, et trancher au couteau à lame fine." }
+      ]
+    },
+    {
+      "code": "SRC-009-D1",
+      "base": "SRC-009",
+      "family": "Bouchées à la reine au saumon",
+      "variant_label": "Version aux fruits de mer inspirée de chefsimon.com : remplacer les viandes par du Pavé de saumon cru, sans peau taillé en cubes et poché 3 minutes dans le velouté en fin de cuisson, avec un zeste de citron et un peu d'estragon dans la sauce.",
+      "rationale": "Le poisson ne se poche pas quarante-cinq minutes : le long pochage des viandes disparaît, et avec lui l'essentiel du temps de cuisson. Le bouillon n'est plus fabriqué par la recette, il est seulement infusé aux légumes, ce qui donne un velouté plus court en goût — c'est le zeste et l'estragon qui compensent. Le saumon ne rejoint la sauce qu'une fois celle-ci liée aux jaunes, trois minutes avant le service : il reste nacré mais ne pardonne pas l'attente, et cette version se sert dans la minute ou ne se sert pas.",
+      "prep_minutes": 25,
+      "cook_minutes": 50,
+      "operations": [
+        { "op": "substitute", "form": "Poulet entier cru", "with": "Pavé de saumon cru, sans peau", "quantity": 600, "unit": "g", "role": "protéine" },
+        { "op": "remove", "form": "Escalope de veau crue fine" },
+        { "op": "add", "form": "Zeste de citron", "quantity": 4, "unit": "g", "role": "aromate", "optional": false },
+        { "op": "add", "form": "Estragon frais", "quantity": 6, "unit": "g", "role": "aromate", "optional": false }
+      ],
+      "steps": [
+        { "op": "replace", "n": 1, "instruction": "Peler la carotte et l'oignon jaune, les couper en gros tronçons et les mettre dans une casserole avec le bouillon de volaille. Porter à frémissement, couvrir et laisser infuser vingt minutes, le temps que les légumes donnent au liquide un peu de rondeur. Filtrer au chinois, prélever 600 g pour la sauce et garder le reste au chaud pour détendre la garniture si besoin." },
+        { "op": "remove", "n": 2 },
+        { "op": "replace", "n": 3, "instruction": "Éponger les pavés de saumon, passer la pince à arêtes sur la ligne médiane, puis les tailler en cubes d'environ 2 cm — un peu plus gros que pour une viande, car le poisson se rétracte à la chaleur. Les réserver au frais sous un film jusqu'au dernier moment." },
+        { "op": "replace", "n": 6, "instruction": "Retirer la casserole du feu et verser le bouillon chaud en filet, fouet en main, pour éviter tout grumeau. Ajouter le vin blanc sec puis le lait entier, remettre sur feu moyen et laisser réduire 15 minutes en fouettant régulièrement, jusqu'à ce que le velouté nappe le dos d'une cuillère. Assaisonner de poivre noir moulu et de muscade moulue, puis incorporer le zeste de citron et l'estragon frais ciselé : l'un tend une sauce que le poisson ne salera pas, l'autre lui donne son parfum d'anis." },
+        { "op": "replace", "n": 7, "instruction": "Verser les champignons réservés dans le velouté, baisser au minimum et laisser les saveurs se lier 5 minutes sans que la sauce reprenne l'ébullition. La sauce doit être entièrement terminée avant que le poisson n'y entre : on ne rattrape pas un velouté autour de cubes de saumon sans les défaire." },
+        { "op": "insert", "after": 7, "instruction": "Garder la sauce liée sur le feu le plus doux, à peine tremblante, et y glisser les cubes de saumon en une seule couche. Compter trois minutes sans jamais remuer, puis couvrir et retirer du feu : ils achèvent de cuire dans la chaleur du velouté et restent nacrés au cœur. Un fouet à ce stade défait les cubes et fait grainer les jaunes." }
+      ]
+    },
+    {
+      "code": "SRC-009-D2",
+      "base": "SRC-009",
+      "family": "Bouchées apéritives aux champignons gratinées",
+      "variant_label": "Version apéritive d'après 750g.com : garnir des mini-bouchées de champignons de Paris crémés, parsemer de fromage râpé et gratiner 8 à 15 minutes à 170 °C.",
+      "rationale": "Sans les viandes, le champignon passe de garniture à sujet du plat : il faut plus du triple pour que la bouchée ait encore quelque chose à mordre, et une saisie en deux fois pour qu'il dore au lieu de bouillir. Le velouté est ramené de moitié et lié plus serré — la garniture ayant perdu les deux tiers de sa matière, la sauce de la base y ferait une soupe qui déborderait de croûtes minuscules ; il n'a plus non plus de bouillon de pochage pour le nourrir, seulement une infusion de carotte et d'oignon, ce qui le rend plus lacté et moins profond. Le gratinage referme le tout d'une croûte de fromage que la version chaude en croûte n'a pas.",
+      "prep_minutes": 25,
+      "cook_minutes": 60,
+      "category": "entrée",
+      "techniques": ["mijotage", "réduction", "liaison", "gratinage"],
+      "operations": [
+        { "op": "remove", "form": "Poulet entier cru" },
+        { "op": "remove", "form": "Escalope de veau crue fine" },
+        { "op": "set", "form": "Champignon de Paris frais", "quantity": 500, "role": "légume", "optional": false },
+        { "op": "set", "form": "Bouillon de volaille", "quantity": 300, "role": "liquide" },
+        { "op": "set", "form": "Lait entier", "quantity": 150 },
+        { "op": "set", "form": "Vin blanc sec", "quantity": 90 },
+        { "op": "set", "form": "Farine de blé T55", "quantity": 30 },
+        { "op": "set", "form": "Carotte crue", "quantity": 40 },
+        { "op": "set", "form": "Oignon jaune cru", "quantity": 50 },
+        { "op": "set", "form": "Beurre doux", "quantity": 60 },
+        { "op": "add", "form": "Emmental râpé", "quantity": 80, "unit": "g", "role": "fromage", "optional": false }
+      ],
+      "steps": [
+        { "op": "replace", "n": 1, "instruction": "Peler la carotte et l'oignon jaune, les couper en gros tronçons et les jeter dans une casserole avec le bouillon de volaille. Porter à frémissement, couvrir et laisser infuser vingt minutes : sans viande à pocher, c'est ce seul passage des légumes qui donnera au liquide de quoi soutenir le velouté. Filtrer au chinois et réserver au chaud." },
+        { "op": "remove", "n": 2 },
+        { "op": "remove", "n": 3 },
+        { "op": "replace", "n": 4, "instruction": "Nettoyer les champignons de Paris frais en grattant le chapeau et en coupant le bout terreux du pied, puis les émincer en lamelles fines. Les faire sauter en deux fournées à feu vif dans la moitié du beurre doux, jusqu'à ce que toute l'eau rendue se soit évaporée et que les lamelles prennent couleur. En deux fournées et non en une : une poêle surchargée fait bouillir les champignons, et ici ils portent la garniture à eux seuls. Réserver hors du feu, l'autre moitié du beurre revenant au roux." },
+        { "op": "replace", "n": 7, "instruction": "Verser les champignons réservés dans le velouté, baisser au minimum et laisser les saveurs se lier 5 minutes sans que la sauce reprenne l'ébullition. La sauce, deux fois moins abondante qu'au plat de la base et liée plus serré, doit à peine napper les lamelles : trop fluide, la garniture déborderait des petites croûtes au gratinage." },
+        { "op": "replace", "n": 9, "instruction": "Chauffer le four à 170 °C. Garnir les mini-croûtes feuilletées à ras bord, les ranger sur une plaque, parsemer chacune d'emmental râpé et enfourner de 8 à 15 minutes selon leur taille, jusqu'à ce que le fromage colore et que la garniture frémisse en surface. Servir brûlant et à la main, dès la sortie du four : une bouchée apéritive tiède retombe et détrempe sa croûte." }
+      ]
+    },
+    {
+      "code": "SRC-009-D3",
+      "base": "SRC-009",
+      "family": "Bouchées à la reine express au poulet",
+      "variant_label": "Version express : sauter les viandes déjà cuites au lieu de les pocher et monter le velouté directement sur du bouillon de volaille reconstitué, en 20 minutes chrono.",
+      "rationale": "Le pochage disparaît, et avec lui les aromates qui n'existaient que pour lui : carotte et oignon n'ont plus rien à parfumer, le bouillon arrivant tout fait. On y gagne une heure pleine, sans atteindre pour autant les vingt minutes annoncées : la réduction du velouté en réclame quinze à elle seule, et sa liaison aux jaunes trois de plus. On y perd la profondeur d'un bouillon fabriqué par la recette, que la saisie du poulet ne rattrape qu'en partie. Faute de veau cuit au catalogue, cette version tourne au seul poulet : la garniture est plus unie, moins fine que le mélange volaille et veau de la base.",
+      "prep_minutes": 10,
+      "cook_minutes": 30,
+      "techniques": ["sauté", "réduction", "liaison"],
+      "operations": [
+        { "op": "substitute", "form": "Poulet entier cru", "with": "Poulet cuit effiloché", "quantity": 450, "unit": "g", "role": "protéine" },
+        { "op": "remove", "form": "Escalope de veau crue fine" },
+        { "op": "remove", "form": "Carotte crue" },
+        { "op": "remove", "form": "Oignon jaune cru" },
+        { "op": "set", "form": "Bouillon de volaille", "quantity": 600, "role": "liquide" },
+        { "op": "set", "form": "Beurre doux", "quantity": 60 }
+      ],
+      "steps": [
+        { "op": "replace", "n": 1, "instruction": "Verser le bouillon de volaille dans une casserole, le porter à frémissement et le garder au chaud. Il entre directement dans la sauce sans avoir rien cuit : c'est là toute l'économie de temps de cette version, et c'est aussi pourquoi il vaut la peine de le choisir bon." },
+        { "op": "remove", "n": 2 },
+        { "op": "replace", "n": 3, "instruction": "Détacher le poulet cuit effiloché en filaments courts et le saisir deux minutes à feu vif dans une noisette du beurre doux, jusqu'à ce que les bords accrochent et blondissent. Cette coloration remplace, en partie seulement, le goût qu'un pochage aurait déposé dans le bouillon. Réserver, et garder la poêle telle quelle pour les champignons." },
+        { "op": "replace", "n": 7, "instruction": "Verser le poulet réservé et les champignons dans le velouté, baisser au minimum et laisser les saveurs se lier 5 minutes sans que la sauce reprenne l'ébullition. Une viande déjà cuite ne demande rien de plus que d'être réchauffée : la faire mijoter la dessécherait en filaments secs." }
+      ]
+    },
+    {
+      "code": "SRC-010-D1",
+      "base": "SRC-010",
+      "family": "Courgettes farcies au brochet",
+      "variant_label": "Version au poisson relevée dans le dossier : remplacer les viandes par de la chair de brochet crue, avec une pointe de jus de citron frais.",
+      "rationale": "La farce perd le gras du porc et le liant du bœuf : elle devient légère, presque maigre, et c'est le citron qui la tient debout à la place de la viande. Le brochet est haché cru et n'est pas passé à la poêle, sans quoi il cuirait deux fois et deviendrait cotonneux — le four s'en charge seul. Le temps de cuisson ne bouge pas pour autant : c'est la paroi de la courgette qui le fixe, et le brochet, cuit bien avant elle, demande seulement d'être couvert tôt pour ne pas sécher.",
+      "prep_minutes": 25,
+      "operations": [
+        { "op": "substitute", "form": "Porc haché cru", "with": "Chair de brochet crue", "quantity": 600, "unit": "g", "role": "protéine" },
+        { "op": "remove", "form": "Bœuf haché cru 15 % MG" },
+        { "op": "add", "form": "Jus de citron frais", "quantity": 20, "unit": "g", "role": "acidité", "optional": false }
+      ],
+      "steps": [
+        { "op": "replace", "n": 5, "instruction": "Retirer la poêle du feu et laisser tiédir la fondue de courgette. Hacher la chair de brochet crue au couteau, en grain un peu grossier, et la mêler à la fondue sans la remettre sur le feu : un poisson maigre saisi puis enfourné cuit deux fois et sort filandreux. Assaisonner de sel, de poivre et, si l'on y tient, d'une pincée de cumin." },
+        { "op": "replace", "n": 6, "instruction": "Incorporer le persil et le basilic finement ciselés, puis le jus de citron frais, qui resserre la chair du brochet et réveille une farce que le gras de la viande ne soutient plus. Rectifier l'assaisonnement en poêlant à blanc une noisette de farce pour la goûter : une farce de poisson crue ne se juge pas à la cuillère, et une fois les barquettes au four il est trop tard pour la reprendre." },
+        { "op": "replace", "n": 9, "instruction": "Enfourner cinquante minutes environ et poser une feuille d'aluminium dès la vingtième : c'est la paroi de la courgette qui commande l'horloge, non le poisson, et le brochet serait desséché bien avant qu'un centimètre de chair ne cède. La cuisson est juste quand la pointe d'un couteau traverse la peau sans effort. Laisser reposer cinq minutes avant de porter à table." }
+      ]
+    },
+    {
+      "code": "SRC-010-D2",
+      "base": "SRC-010",
+      "family": "Courgettes farcies à l'orientale",
+      "variant_label": "Version orientale : accentuer le cumin moulu, ajouter de la coriandre fraîche ciselée et un filet de jus de citron frais au moment de servir.",
+      "rationale": "Le cumin passe de facultatif à structurant : doublé et plus, il cesse d'être une note de fond pour devenir le goût dominant de la farce, ce qui oblige à saler un peu plus pour l'équilibrer. La coriandre se partage entre la farce et le service, la moitié cuite pour le fond, la moitié crue pour la vivacité. Le citron ne va pas au four, où il ne laisserait que son amertume : il s'ajoute à table.",
+      "operations": [
+        { "op": "set", "form": "Cumin moulu", "quantity": 12, "role": "épice", "optional": false },
+        { "op": "add", "form": "Coriandre fraîche", "quantity": 15, "unit": "g", "role": "herbe", "optional": false },
+        { "op": "add", "form": "Jus de citron frais", "quantity": 25, "unit": "g", "role": "acidité", "optional": false }
+      ],
+      "steps": [
+        { "op": "replace", "n": 6, "instruction": "Retirer la poêle du feu et mélanger à la farce encore chaude le persil, le basilic et la moitié de la coriandre fraîche, tous finement ciselés, afin qu'ils gardent leur parfum. Goûter à ce moment-là : le cumin, plus que doublé, mène désormais la farce et réclame un peu plus de sel pour ne pas y régner seul." },
+        { "op": "insert", "after": 9, "instruction": "Au sortir du four, parsemer les barquettes du reste de coriandre fraîche et les asperger du jus de citron frais. Ni l'herbe crue ni l'acidité ne supportent la cuisson : ajoutées à table, elles éclaircissent le cumin au lieu de s'y dissoudre." }
+      ]
+    },
+    {
+      "code": "SRC-010-D3",
+      "base": "SRC-010",
+      "family": "Courgettes rondes farcies",
+      "variant_label": "Avec des courgettes rondes : décalotter, évider, blanchir dix minutes à l'eau bouillante avant de garnir, puis remettre le chapeau pour la cuisson au four.",
+      "rationale": "Le contenant change et toute la méthode suit : une coque ronde a bien plus de chair à traverser qu'une barquette fendue, d'où le blanchiment préalable sans lequel elle sortirait crue au cœur. Le chapeau remis retient la vapeur et garde la farce moelleuse, mais interdit le dôme et la croûte dorée de la version en barquettes. On y gagne en tenue et en présentation, on y perd le gratiné du dessus et dix minutes de préparation.",
+      "prep_minutes": 30,
+      "techniques": ["saisie", "blanchiment", "rôtissage"],
+      "steps": [
+        { "op": "replace", "n": 1, "instruction": "Chauffer le four à 200 °C. Rincer les courgettes rondes sans retirer la peau, puis les décalotter au tiers supérieur d'un coup de couteau franc. Garder les chapeaux de côté, ils reviendront sur les coques à l'enfournement." },
+        { "op": "replace", "n": 2, "instruction": "Évider chaque courgette à la petite cuillère en laissant une paroi d'un centimètre et sans percer le fond : une coque ronde ne tient que par son épaisseur, et une paroi trouée laisserait fuir le jus de la farce. Hacher grossièrement la pulpe recueillie et la mettre de côté." },
+        { "op": "replace", "n": 4, "instruction": "Verser la pulpe de courgette hachée dans la poêle et poursuivre cinq à six minutes à feu vif, le temps que l'eau de végétation s'évapore : une farce trop humide détremperait des coques que le blanchiment a déjà gorgées d'eau." },
+        { "op": "replace", "n": 7, "instruction": "Ranger les coques égouttées côte à côte dans un plat à four et les remplir de farce en tassant légèrement, jusqu'à ras bord et sans dôme : le chapeau doit pouvoir se reposer à plat dessus." },
+        { "op": "replace", "n": 8, "instruction": "Écraser les tomates pelées à la fourchette et les répartir avec leur jus dans le fond du plat, autour des courgettes et non dessus. Arroser d'un filet du reste d'huile d'olive la farce encore à découvert, avant de recoiffer." },
+        { "op": "replace", "n": 9, "instruction": "Poser sur chaque courgette son propre chapeau et enfourner quarante minutes environ. Le couvercle retient la vapeur et empêche la farce de sécher, mais il interdit aussi tout gratiné : inutile de guetter le brunissement, la cuisson est juste quand la pointe d'un couteau traverse la paroi sans effort. Laisser reposer cinq minutes avant de porter à table." },
+        { "op": "insert", "after": 2, "instruction": "Plonger les coques et leurs chapeaux dix minutes dans une grande casserole d'eau bouillante salée, puis les égoutter tête en bas sur un linge. Une courgette ronde offre au four une paroi bien plus épaisse qu'une barquette : sans ce blanchiment, la farce serait cuite quand le légume ne le serait pas encore." }
+      ]
+    },
+    {
+      "code": "SRC-010-D4",
+      "base": "SRC-010",
+      "family": "Courgettes farcies à la tomate râpée",
+      "variant_label": "Sauce plus fraîche : troquer la tomate entière pelée en conserve contre de la tomate râpée étalée dans le fond du plat.",
+      "rationale": "La conserve apporte une tomate déjà cuite, confite et un peu sucrée ; râpée crue, elle rend son eau au four et donne un jus plus clair, plus acide, qui déglace la farce au lieu de l'enrober. Il en faut davantage, cette eau s'évaporant en partie. En contrepartie le fond du plat est moins nappant et supporte mal d'attendre : il se boit presque, et se sert dans la foulée.",
+      "operations": [
+        { "op": "substitute", "form": "Tomate entière pelée en conserve", "with": "Tomate râpée", "quantity": 300, "unit": "g", "role": "mouillement" }
+      ],
+      "steps": [
+        { "op": "replace", "n": 8, "instruction": "Râper les tomates sur la grosse grille, peau tournée vers la main, et étaler la pulpe obtenue en couche régulière dans le fond du plat, autour des courgettes et non dessus. Crue et non concassée, elle rendra son eau à la cuisson et donnera un jus plus léger que la conserve, qui arrive déjà confite. Arroser les dômes du reste d'huile d'olive." }
+      ]
+    }
+  ]
+}

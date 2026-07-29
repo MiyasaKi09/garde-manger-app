@@ -1,0 +1,243 @@
+{
+  "lot": "lot11 — crudités, cassoulet et chou",
+  "note": "Quatre bases, quinze variantes annoncées, quatorze dérivations retenues et une écartée. SRC-035 rend ses trois variantes : la marocaine oblige à intervertir les étapes 3 et 4 de la base, puisque les raisins doivent gonfler dans un jus d'orange chaud qui n'était pressé qu'ensuite, et elle porte le raisin de 15 à 30 g, deux ou trois grains par assiette ne faisant pas le service tiède que l'étiquette annonce ; la version douce monte le sel à 4 g et le poivre à 1,5 g, puisque ses étapes demandent de forcer l'assaisonnement une fois le vinaigre parti — la liste devait le dire, pas seulement la prose ; la version aux suprêmes augmente l'orange de 180 à 320 g, car lever des suprêmes ne rend guère plus de la moitié du fruit et il faut encore presser les membranes pour monter la sauce. SRC-036 rend ses quatre variantes. Deux détours à signaler. Le premier : la version de Castelnaudary retire la Montbéliard fumée, étrangère au Lauragais, en même temps que la tomate — mais le mot « saucisse » demeure aux étapes 5 et 7, où il désigne la Toulouse, seule saucisse conservée ; c'est un homonyme, déclaré comme tel. Le second : la variante 2 propose la Montbéliard « à la place ou en complément » de la Toulouse. La lecture « à la place » était impossible à écrire proprement — le moteur refuse de substituer vers une forme déjà présente dans la base, et retirer la Toulouse aurait exigé un second homonyme sur le même mot dans le même lot. La lecture « en complément » a donc été retenue : la Montbéliard cesse d'être facultative et passe de 200 à 350 g. La variante 4 (cuisson en deux jours) ne touche aucun ingrédient : elle n'est qu'un déplacement de la cuisson dans le temps, mais c'en est un vrai — trois heures la veille, refroidissement complet, une heure de reprise — et le delta porte donc uniquement sur les étapes 9 et 10 et sur cook_minutes, porté de 240 à 300. SRC-037 ne rend que trois variantes sur quatre. La version blanchie a demandé de déplacer l'assaisonnement : la base sale et citronne les filaments à l'étape 2, puis les fait dégorger un quart d'heure — plonger ensuite ce céleri trente secondes à l'eau bouillante et le rafraîchir à l'eau glacée aurait rincé le sel et le citron dans la casserole et défait le dégorgement qu'on venait d'obtenir. L'étape 2 est donc réécrite pour ne rien assaisonner, et le sel, le jus de citron et le repos d'un quart d'heure passent après le bain glacé. La version allégée sans jaune d'œuf ni huile passe le moteur sans une anomalie, mais le validateur la refuse à 67 kcal par part, yaourt déjà porté à 300 g. La cause n'est pas la recette : SRC-037 déclare plate.role = « side », dont le plancher est de 60 kcal, or deriver() ne recopie pas le champ `plate` de la base dans la dérivée, si bien que le plancher de 80 kcal d'un plat complet s'applique à une entrée de crudités. Retirer 160 g d'huile d'olive d'une rémoulade fait mécaniquement tomber la part sous cette barre, et rien dans la variante ne permet de la relever sans écrire autre chose que ce qu'elle annonce. Le calcul a été refait : le validateur n'additionne que les ingrédients non facultatifs, si bien qu'il faudrait porter le yaourt à plus de 415 g pour quatre parts — un pot par convive dans un saladier de céleri — pour repasser la barre, et forcer la pomme facultative en garniture obligatoire l'aurait fait passer au prix d'un ingrédient que l'étiquette ne mentionne pas. Ni l'un ni l'autre n'est écrivable honnêtement. Cette variante est gardée en réserve, pas condamnée : elle sera publiable dès que `plate` sera transmis. SRC-038 rend ses quatre variantes, dont trois démontent complètement le montage de la base : les petits paquets et le gratin suppriment tous deux l'étape 9, celle de la ficelle, qui n'a plus d'objet dès que le chou n'est plus reconstitué en boule. Leurs temps ont été recalculés plutôt que recopiés — des paquets de la taille du poing cuisent en une heure et quart, non en deux heures, et le gratin suit l'heure à 180 °C que l'étiquette annonce. La version dombiste a demandé la seule vraie substitution du lot : « Chair de brochet crue » figure bien au vocabulaire employable, ce qui a évité de l'écarter ; elle remplace les 500 g de bœuf haché par 450 g de brochet, ramenant la viande à un peu moins de la moitié de la farce, et l'allergène « poisson » a été ajouté à la liste héritée. Deux autres listes héritées ont été corrigées à la main : le cassoulet sans chapelure perd son seul apport de gluten, et sa notice de conservation ne pouvait plus parler d'une croûte panée à refaire. Aucune forme n'a manqué au catalogue.",
+  "derivations": [
+    {
+      "code": "SRC-035-D1",
+      "base": "SRC-035",
+      "family": "Carottes râpées à la marocaine",
+      "variant_label": "Version marocaine : doubler le cumin et servir tiède les raisins secs regonflés dans le jus d'orange chaud",
+      "rationale": "Le cumin doublé passe d'arrière-plan à premier plan et la salade cesse d'être une simple crudité acidulée. Faire gonfler les raisins dans le jus d'orange chaud plutôt que dans l'eau leur donne le parfum de l'agrume et les rend indispensables : ils cessent d'être une garniture qu'on peut sauter, et passent de 15 à 30 g, car deux ou trois raisins par assiette ne feraient pas le service tiède que l'étiquette annonce. Le service tiède supprime le passage au froid, donc le temps de repos long, mais la salade ne se garde plus : elle se mange dans la demi-heure ou elle retombe.",
+      "prep_minutes": 20,
+      "operations": [
+        { "op": "set", "form": "Cumin moulu", "quantity": 4, "optional": false },
+        { "op": "set", "form": "Raisin sec", "quantity": 30, "optional": false }
+      ],
+      "steps": [
+        { "op": "replace", "n": 3, "instruction": "Presser l'orange et faire tiédir son jus dans une petite casserole sans jamais le laisser bouillir, sous peine de lui donner un goût cuit. Y jeter les raisins secs hors du feu et les laisser gonfler dix minutes : ils boivent l'agrume au lieu de l'eau et en gardent le parfum. Les égoutter au-dessus du bol en réservant tout le jus." },
+        { "op": "replace", "n": 4, "instruction": "Délayer la moutarde à la fourchette dans le jus d'orange encore tiède jusqu'à disparition des grumeaux, ajouter le vinaigre, puis verser l'huile en mince filet en fouettant, jusqu'à ce que la sauce épaississe et cesse de se séparer." },
+        { "op": "replace", "n": 5, "instruction": "Saler, poivrer et incorporer les quatre grammes de cumin en deux fois, en goûtant entre les deux : doublée, l'épice doit se sentir franchement dès le bol, sans pour autant couvrir l'orange qui la porte." },
+        { "op": "replace", "n": 7, "instruction": "Couvrir et laisser reposer un quart d'heure à température ambiante seulement, jamais au réfrigérateur : le froid figerait l'huile et refermerait le cumin, qui ne s'ouvre qu'à la chaleur. Remuer une dernière fois, rectifier le sel et servir tiède, les raisins encore chauds au milieu des carottes." }
+      ]
+    },
+    {
+      "code": "SRC-035-D2",
+      "base": "SRC-035",
+      "family": "Carottes râpées douces à l'orange",
+      "variant_label": "Version douce sans vinaigre : monter la vinaigrette au seul jus d'orange et à la moutarde, pour des convives sensibles à l'acidité",
+      "rationale": "Sans acidité vive, la sauce devient franchement douce et l'orange cesse d'être un accent pour devenir la base du goût. Il faut plus de fruit — 250 g au lieu de 180 — pour retrouver le liquide perdu et garder une sauce qui coule. Ce qu'on y gagne en confort de bouche se paie en tenue : rien ne relance plus le palais d'une bouchée à l'autre, et l'assaisonnement monte à 4 g de sel et 1,5 g de poivre au lieu de 3 et 1, faute de quoi la salade paraîtrait plate.",
+      "operations": [
+        { "op": "remove", "form": "Vinaigre de vin rouge" },
+        { "op": "set", "form": "Orange fraîche", "quantity": 250 },
+        { "op": "set", "form": "Sel fin", "quantity": 4 },
+        { "op": "set", "form": "Poivre noir moulu", "quantity": 1.5 }
+      ],
+      "steps": [
+        { "op": "replace", "n": 4, "instruction": "Presser l'orange au-dessus d'un bol — il en faut nettement plus qu'à l'ordinaire, son jus tenant désormais seul le rôle de l'acidité — y délayer la moutarde à la fourchette jusqu'à disparition des grumeaux, puis verser l'huile en mince filet en fouettant, jusqu'à ce que la sauce épaississe et cesse de se séparer." },
+        { "op": "replace", "n": 5, "instruction": "Saler, poivrer et incorporer le cumin à la sauce, puis goûter : privée de mordant, elle paraîtra fade si on la sale timidement. Forcer un peu le sel et le poivre, qui prennent ici le relais et donnent seuls le contraste." }
+      ]
+    },
+    {
+      "code": "SRC-035-D3",
+      "base": "SRC-035",
+      "family": "Carottes râpées aux suprêmes d'orange",
+      "variant_label": "Version agrumes entiers : lever des suprêmes d'orange et les mêler aux carottes juste avant le service",
+      "rationale": "L'orange cesse d'être un liquide fondu dans la sauce pour devenir un morceau qu'on croque : la salade y gagne un contraste de texture et des bouchées franchement sucrées entre les filaments. Lever des suprêmes ne rend qu'un peu plus de la moitié du fruit, d'où les 320 g d'orange au lieu de 180, le reste étant pressé à la main pour monter la sauce. La contrepartie est le temps de découpe et la fragilité : mêlés trop tôt, les suprêmes se défont et détrempent les carottes.",
+      "prep_minutes": 25,
+      "operations": [
+        { "op": "set", "form": "Orange fraîche", "quantity": 320 }
+      ],
+      "steps": [
+        { "op": "replace", "n": 4, "instruction": "Peler l'orange à vif au couteau au-dessus d'un bol pour ne rien perdre, puis glisser la lame le long de chaque membrane afin d'en détacher les suprêmes ; les réserver au frais sur une assiette. Presser à la main les membranes et le cœur restants au-dessus du bol : c'est ce jus, plus court que celui d'un fruit pressé entier, qui reçoit la moutarde délayée à la fourchette, puis le vinaigre, puis l'huile versée en mince filet et fouettée jusqu'à ce que la sauce épaississe." },
+        { "op": "replace", "n": 6, "instruction": "Verser la sauce sur les carottes, ajouter les raisins égouttés et mélanger longuement à deux fourchettes en soulevant la masse, de façon à enrober chaque filament plutôt que d'écraser le tas. Laisser les suprêmes de côté à ce stade : brassés avec le reste, ils se briseraient en pulpe." },
+        { "op": "replace", "n": 7, "instruction": "Couvrir et laisser reposer trente minutes au réfrigérateur, puis remuer et rectifier le sel. Répartir les suprêmes d'orange sur la salade au dernier moment seulement et les mêler d'un geste léger, du bout des doigts : posés plus tôt, ils rendraient leur jus et noieraient les carottes. Servir aussitôt, bien frais." }
+      ]
+    },
+    {
+      "code": "SRC-036-D1",
+      "base": "SRC-036",
+      "family": "Cassoulet du Lauragais",
+      "variant_label": "Version de Castelnaudary : uniquement porc, couenne et confit de canard, sans agneau ni tomate.",
+      "rationale": "Sans tomate râpée ni concentré, le plat perd sa couleur rouge et son acidité de fond : il reste blanc, franchement gras, et tout le goût vient du confit, de la couenne et du bouillon de haricots. La liaison n'a plus de purée de légume pour l'aider, elle ne tient que par l'amidon des grains : la louche de haricots écrasée contre la paroi avant le montage et les crevages de croûte répétés toutes les quarante minutes au four deviennent ici les seuls gestes liants. La Montbéliard fumée, étrangère au Lauragais, sort également de la liste : sa fumée masquerait précisément ce que cette version cherche à laisser entendre.",
+      "operations": [
+        { "op": "remove", "form": "Tomate râpée" },
+        { "op": "remove", "form": "Concentré de tomate" },
+        { "op": "remove", "form": "Saucisse de Montbéliard" }
+      ],
+      "steps": [
+        { "op": "replace", "n": 6, "instruction": "Dans la même graisse, jetez le reste d'oignon émincé et les deux tiers de l'ail écrasé. Quand l'oignon devient translucide et commence à peine à blondir, mouillez de deux louches du bouillon de haricots et grattez les sucs collés au fond jusqu'à ce qu'ils se dissolvent entièrement. Laissez réduire de moitié : c'est tout ce que cette version accorde en fait de fond, il doit donc être franc." },
+        { "op": "replace", "n": 7, "instruction": "Égouttez les haricots en gardant tout leur bouillon, retirez l'oignon clouté, la carotte et les feuilles de laurier. Mélangez-les à la fondue d'oignon et d'ail, puis écrasez-en une bonne louche contre la paroi de la cocotte pour amorcer la liaison — rien d'autre ici ne viendra épaissir le jus, le plat ne compte que sur l'amidon de ses propres grains. Assaisonnez ici seulement : les 12 g de sel fin pour huit parts suffisent, car poitrine, saucisse et confit en apportent déjà beaucoup. Poivrez généreusement." },
+        { "op": "replace", "n": 8, "instruction": "Frottez d'ail cru l'intérieur d'une cassole ou d'une cocotte en terre, couchez la couenne au fond gras contre la paroi, puis montez par couches alternées : haricots, viandes rissolées, morceaux de confit, et terminez par une couche de haricots. Versez du bouillon jusqu'à effleurer la surface, sans jamais la recouvrir." }
+      ],
+      "homonymes": [
+        {
+          "form": "Saucisse de Montbéliard",
+          "raison": "Le mot « saucisse » subsiste aux étapes 5 et 7, où il désigne la saucisse de Toulouse, seule saucisse conservée dans cette version ; la Montbéliard ne figure plus ni dans la liste ni au montage de l'étape 8."
+        }
+      ]
+    },
+    {
+      "code": "SRC-036-D2",
+      "base": "SRC-036",
+      "family": "Cassoulet à la croûte de haricots",
+      "variant_label": "Version sans chapelure : on se contente d'enfoncer sept fois la croûte de haricots au cours de la cuisson au four.",
+      "rationale": "Sans les 100 g de chapelure, le dessus n'est plus une croûte panée mais la peau que les haricots forment d'eux-mêmes et qu'on renvoie sept fois sous le jus. Le liant y gagne — chaque enfoncement rend de l'amidon au bouillon — mais la surface finale est plus fine, plus fragile et moins croustillante. Le plat perd du même coup son seul apport de gluten, ce qui l'ouvre à des convives que la version gratinée écartait.",
+      "operations": [
+        { "op": "remove", "form": "Chapelure de blé" }
+      ],
+      "steps": [
+        { "op": "replace", "n": 9, "instruction": "Enfournez à 150 °C pour trois heures à découvert, et comptez sept enfoncements en tout, régulièrement espacés sur la durée. Chaque fois, crevez la peau formée en surface avec le dos d'une cuillère et faites-la couler sous le jus, en rajoutant une louche de bouillon chaud si le dessus s'assèche. Ces sept gestes sont ici la seule source du liant et le seul moyen de reformer sept fois une surface : il ne faut en sauter aucun." },
+        { "op": "replace", "n": 10, "instruction": "Après le septième enfoncement, montez le four à 170 °C pour la dernière demi-heure et laissez la surface se reformer sans plus y toucher. Brunie par le seul gras de confit remonté au-dessus, elle est plus fine et plus cassante que celle d'un plat gratiné, et c'est elle que la cuillère devra briser. Sortez le plat et laissez-le se détendre vingt minutes avant de servir à la louche, dans des assiettes chaudes." }
+      ],
+      "allergens": ["sulfites"],
+      "conservation": "Se conserve 4 jours au réfrigérateur entre 0 et 4 °C, dans son plat couvert d'un film ; il gagne au réchauffage lent à 150 °C avec une louche de bouillon. Congélation possible 3 mois : n'ayant pas de croûte panée à refaire, il supporte mieux le passage au froid que la version gratinée, mais il faut le décongeler complètement au réfrigérateur puis crever une dernière fois sa surface au réchauffage pour lui rendre son liant."
+    },
+    {
+      "code": "SRC-036-D3",
+      "base": "SRC-036",
+      "family": "Cassoulet aux deux saucisses",
+      "variant_label": "Ajout de Saucisse de Montbéliard pour une note fumée, à la place ou en complément de la saucisse de Toulouse.",
+      "rationale": "La Montbéliard cesse d'être facultative et passe de 200 à 350 g : le fumé traverse alors tout le plat au lieu de se cantonner à une cuillerée, et il tire le cassoulet vers l'est, loin du profil doux du Lauragais. La part gagne en viande et donc en lipides comme en sel, la Montbéliard étant déjà cuite et salée. C'est le prix d'un plat plus démonstratif, où le confit passe au second plan.",
+      "operations": [
+        { "op": "set", "form": "Saucisse de Montbéliard", "quantity": 350, "optional": false }
+      ],
+      "steps": [
+        { "op": "replace", "n": 5, "instruction": "Faites fondre la graisse de confit réservée dans une large sauteuse. Colorez-y la saucisse de Toulouse enroulée en escargot, puis la Montbéliard taillée en rondelles épaisses — deux minutes par face suffisent, elle est déjà cuite et fumée, et s'obstiner ne ferait que la dessécher —, puis les lardons de poitrine, enfin le porc haché roulé en petites boulettes serrées. Cherchez une belle teinte ambrée, jamais une croûte brûlée, et débarrassez au fur et à mesure." },
+        { "op": "replace", "n": 8, "instruction": "Frottez d'ail cru l'intérieur d'une cassole ou d'une cocotte en terre, couchez la couenne au fond gras contre la paroi, puis montez par couches alternées : haricots, viandes rissolées, morceaux de confit, et les rondelles de Montbéliard semées une à une à chaque étage plutôt que groupées, faute de quoi le fumé resterait prisonnier d'une seule strate. Terminez par une couche de haricots et versez du bouillon jusqu'à effleurer la surface." }
+      ]
+    },
+    {
+      "code": "SRC-036-D4",
+      "base": "SRC-036",
+      "family": "Cassoulet de la veille",
+      "variant_label": "Cuisson en deux jours : trois heures de four la veille, refroidissement complet, puis une heure de reprise avant le service.",
+      "rationale": "Le refroidissement complet fait tout le travail que la cuisson continue ne fait pas : les haricots achèvent de boire le gras en se contractant, et le jus prend corps en figeant. La reprise d'une heure au lendemain ne sert qu'à remonter en température et à former la croûte, si bien que le plat sort plus lié et plus rond qu'en une seule séance. Le prix est le calendrier, une heure de cuisson de plus au total, et l'obligation de garder du bouillon de côté pour détendre une surface qui aura pris.",
+      "cook_minutes": 300,
+      "operations": [],
+      "steps": [
+        { "op": "replace", "n": 9, "instruction": "La veille, enfournez à 150 °C pour trois heures à découvert. Toutes les quarante minutes, crevez la croûte formée en surface avec le dos d'une cuillère et rajoutez une louche de bouillon chaud si le dessus s'assèche. Au terme des trois heures, sortez le plat, laissez-le refroidir à découvert jusqu'à température ambiante, puis passez-le au frais pour la nuit ; réservez à part, au frais également, tout le bouillon de haricots restant." },
+        { "op": "replace", "n": 10, "instruction": "Le lendemain, sortez la cassole une heure avant d'allumer le four : une terre encore glacée enfournée se fend. Détendez la surface figée avec deux louches du bouillon réservé, poudrez la chapelure de blé sur toute l'étendue du plat, puis comptez une heure à 170 °C, jusqu'à ce que le jus revienne à frémissement sur les bords et que la croûte soit dorée et cassante. Laissez se détendre vingt minutes avant de servir à la louche, dans des assiettes chaudes." }
+      ]
+    },
+    {
+      "code": "SRC-037-D1",
+      "base": "SRC-037",
+      "family": "Rémoulade de céleri blanchi",
+      "variant_label": "Céleri plongé trente secondes dans l'eau bouillante salée puis rafraîchi à l'eau glacée, pour des filaments plus tendres et moins piquants.",
+      "rationale": "Trente secondes d'eau bouillante suffisent à casser le piquant poivré du céleri cru et à assouplir la fibre : la rémoulade devient beaucoup plus douce et plus facile à mâcher, ce qui la rend abordable pour qui la trouve d'ordinaire agressive. Elle y perd le croquant net qui fait l'intérêt de la version crue, et le sel comme le jus de citron ne se posent plus qu'après le bain glacé, sous peine de partir dans l'eau de blanchiment. Le geste ajoute dix minutes de mise en place, le temps de porter l'eau à ébullition et de préparer le bain de glace.",
+      "prep_minutes": 35,
+      "operations": [],
+      "steps": [
+        { "op": "replace", "n": 2, "instruction": "Râper la chair en filaments fins, à la mandoline ou au robot muni de la grille à râper, et les laisser tomber sans les tasser dans un saladier. Ne rien assaisonner à ce stade, contrairement à la version crue : le sel et le citron partiraient dans l'eau de blanchiment qui suit et on assaisonnerait dans le vide." },
+        { "op": "insert", "after": 2, "instruction": "Porter une grande casserole d'eau salée à ébullition franche et préparer à côté un saladier d'eau très froide chargée de glaçons. Plonger les filaments de céleri trente secondes, montre en main et pas une de plus, puis les transvaser d'un coup dans l'eau glacée : la chaleur brise le piquant et attendrit la fibre, le froid arrête net la cuisson avant que les filaments ne s'affaissent. Les égoutter dès qu'ils sont froids et les presser dans un linge propre, car ils sortent gorgés d'eau et délaveraient la sauce. Les arroser alors seulement du reste de jus de citron, saler, mélanger à pleines mains et laisser reposer un quart d'heure : posée après le bain, l'acidité tient sur les filaments au lieu de se perdre dans la casserole." },
+        { "op": "replace", "n": 5, "instruction": "Presser une dernière fois le céleri entre les paumes, puis l'incorporer à la sauce en trois fois, en soulevant la masse à la fourchette pour enrober chaque filament sans l'écraser. Assoupli par l'eau bouillante, il boit la sauce bien plus vite qu'à cru : rectifier le sel et l'acidité une fois seulement qu'il l'a bue, sans quoi on assaisonne dans le vide et la rémoulade ressort trop salée." }
+      ]
+    },
+    {
+      "code": "SRC-037-D2",
+      "base": "SRC-037",
+      "family": "Céleri rémoulade aux câpres",
+      "variant_label": "Sauce relevée de câpres rincées et grossièrement hachées, comme dans la variante marmiton.",
+      "rationale": "Trente grammes de câpres hachées mettent des points d'acidité saline dans une sauce qui n'en avait qu'une, diffuse : la rémoulade devient plus vive et plus longue en bouche, proche d'une sauce gribiche. Même rincées, les câpres apportent leur propre sel, d'où le gramme retiré à l'assaisonnement pour ne pas doubler la mise. Elles couvrent en revanche un peu la douceur du céleri et rendent le plat plus difficile à marier avec un vin.",
+      "operations": [
+        { "op": "add", "form": "Câpre au vinaigre, égouttée", "quantity": 30, "unit": "g", "role": "condiment", "optional": false },
+        { "op": "set", "form": "Sel fin", "quantity": 3 }
+      ],
+      "steps": [
+        { "op": "replace", "n": 4, "instruction": "Assouplir cette base avec le yaourt nature, donner un tour de moulin à poivre et n'ajouter la pincée de sucre que si la moutarde domine trop. Rincer les câpres à l'eau froide pour les débarrasser de leur saumure, les éponger dans un linge et les hacher grossièrement au couteau — laissées entières, elles éclateraient par paquets sous la dent au lieu de se répartir —, puis les mêler à la sauce. Celle-ci doit napper le dos d'une cuillère sans couler." },
+        { "op": "replace", "n": 5, "instruction": "Presser le céleri râpé entre les paumes pour chasser l'eau de dégorgement, puis l'incorporer à la sauce en trois fois, en soulevant la masse à la fourchette pour enrober chaque filament sans l'écraser. Goûter avant de rectifier : le sel des câpres se réveille au repos et une main trop généreuse ici ne se rattrape plus." }
+      ]
+    },
+    {
+      "code": "SRC-037-D3",
+      "base": "SRC-037",
+      "family": "Rémoulade de céleri à la pomme",
+      "variant_label": "Bâtonnets de pomme acidulée mêlés à la masse plutôt que posés dessus, pour une rémoulade franchement fruitée.",
+      "rationale": "La pomme cesse d'être une garniture facultative posée au dernier moment pour devenir un composant à part entière, à 250 g : chaque bouchée mêle le céleri et le fruit au lieu de les servir l'un après l'autre. Le plat s'adoucit nettement et il faut relever le sel et l'acidité, que le sucre de la pomme émousse. Il devient en revanche périssable à vue d'œil — au-delà de deux heures les bâtonnets rendent leur eau, s'amollissent et détrempent la sauce.",
+      "operations": [
+        { "op": "set", "form": "Pomme fraîche", "quantity": 250, "optional": false }
+      ],
+      "steps": [
+        { "op": "replace", "n": 5, "instruction": "Tailler la pomme en bâtonnets fins et les jeter aussitôt dans la sauce, dont l'acidité les gardera clairs. Presser le céleri râpé entre les paumes pour chasser l'eau de dégorgement, puis l'incorporer par-dessus en trois fois, en soulevant la masse à la fourchette pour enrober chaque filament sans l'écraser. Rectifier le sel et l'acidité en tenant compte du sucre de la pomme, qui arrondit tout et fait paraître la sauce plus douce qu'elle n'est." },
+        { "op": "replace", "n": 6, "instruction": "Couvrir et laisser reposer trente minutes au réfrigérateur, sans aller au-delà de deux heures : passé ce délai les bâtonnets rendent leur eau, s'amollissent et la rémoulade tourne à la compote. Au moment de servir, remuer une dernière fois et parsemer le persil ciselé." }
+      ]
+    },
+    {
+      "code": "SRC-038-D1",
+      "base": "SRC-038",
+      "family": "Paupiettes de chou à la tomate",
+      "variant_label": "Chou farci en petits paquets : une boulette de farce par feuille blanchie, refermée en aumônière et mijotée dans la tomate râpée",
+      "rationale": "Le chou n'est plus reconstitué en boule mais divisé en paquets individuels, ce qui supprime la ficelle et rend le service immédiat : plus de découpe en quartiers qui s'effondrent. Chaque paquet cuit en une heure et quart au lieu de deux heures, mais la mise en place s'allonge d'un quart d'heure, feuille par feuille. La tomate passe de 400 à 700 g et le bouillon tombe à 250 ml, car les paquets doivent mijoter immergés aux deux tiers dans un jus court plutôt qu'être arrosés d'un liquide clair.",
+      "prep_minutes": 55,
+      "cook_minutes": 90,
+      "operations": [
+        { "op": "set", "form": "Tomate râpée", "quantity": 700 },
+        { "op": "set", "form": "Bouillon de volaille", "quantity": 250 }
+      ],
+      "steps": [
+        { "op": "replace", "n": 7, "instruction": "Écarter une à une les feuilles du chou tiédi en progressant de l'extérieur vers le centre, sans les déchirer : compter deux à trois grandes feuilles par convive. Aplatir au couteau la côte centrale de chacune, qui résiste sinon au pliage et fait craquer la feuille en deux. Détacher le cœur, trop serré pour être farci, le hacher menu et le mêler à la farce, qui gagne ainsi le goût du chou." },
+        { "op": "replace", "n": 8, "instruction": "Déposer au creux de chaque feuille une boulette de farce de la taille d'un gros œuf, rabattre la base sur elle, puis les deux côtés, et rouler jusqu'au bout pour fermer le paquet. Poser chacun soudure en dessous : le poids de la farce suffit alors à le tenir clos, et rien ne s'ouvrira à la cuisson." },
+        { "op": "remove", "n": 9 },
+        { "op": "replace", "n": 10, "instruction": "Beurrer largement le fond d'une cocotte ou d'un large sautoir, y étaler les lamelles d'oignon et les rondelles de carotte en lit régulier, puis ranger les paquets dessus côte à côte et bien serrés, de façon qu'ils s'épaulent les uns les autres. Verser la tomate râpée et le bouillon de volaille le long des parois jusqu'à les immerger aux deux tiers, jamais davantage : le dessus doit rester au-dessus du jus." },
+        { "op": "replace", "n": 11, "instruction": "Amener à frémissement à découvert, couvrir, puis tenir le feu au plus bas une heure et quart. Des paquets de la taille du poing cuisent bien plus vite qu'une tête entière : passé ce temps, la feuille cède sous la cuillère et la farce est prise à cœur. Arroser deux ou trois fois du jus en cours de route et vérifier que rien n'accroche au fond." },
+        { "op": "replace", "n": 12, "instruction": "Laisser reposer dix minutes hors du feu, le temps que la farce se raffermisse et que les paquets se laissent soulever entiers à la spatule. Servir deux ou trois par assiette, nappés de la tomate réduite au fond de la cocotte." }
+      ],
+      "conservation": "Se gardent 3 jours au réfrigérateur entre 0 et 4 °C, rangés serrés dans leur jus et couverts ; réchauffer à couvert et à feu doux, jamais à gros bouillons. Congélation possible en paquets individuels jusqu'à 3 mois : plus petits qu'une tête entière, ils prennent et reprennent le froid bien mieux qu'elle, mais congeler le jus à part et le réduire au moment du service, sans quoi il ressort délavé."
+    },
+    {
+      "code": "SRC-038-D2",
+      "base": "SRC-038",
+      "family": "Chou farci de la Dombes",
+      "variant_label": "Version dombiste : la moitié de la viande est remplacée par de la chair de brochet crue, pour une farce plus fine et plus pâle",
+      "rationale": "Les 500 g de bœuf haché cèdent la place à 450 g de brochet, ce qui ramène la viande à un peu moins de la moitié de la farce et change tout le caractère du plat : la farce devient pâle, fine, presque une quenelle, et le goût passe du rôti au lacustre. Elle demande un malaxage court, le poisson se défaisant si on insiste, et une cuisson raccourcie d'un quart d'heure, faute de quoi elle se dessèche. La part perd beaucoup de lipides mais le plat gagne un allergène : le poisson.",
+      "cook_minutes": 120,
+      "operations": [
+        { "op": "substitute", "form": "Bœuf haché cru 15 % MG", "with": "Chair de brochet crue", "quantity": 450, "unit": "g", "role": "protéine" }
+      ],
+      "steps": [
+        { "op": "replace", "n": 5, "instruction": "Passer la chair de brochet crue au hachoir à grille fine, ou la travailler longuement au couteau jusqu'à obtenir une pâte souple, en la palpant du bout des doigts pour n'y laisser aucune arête. Détailler la poitrine de porc au couteau en très petits dés, puis réunir le tout dans un grand saladier avec le porc haché, l'ail écrasé, le persil ciselé, l'oignon haché, les œufs battus et la mie pressée." },
+        { "op": "replace", "n": 6, "instruction": "Saler, poivrer, puis malaxer la farce à pleines mains une minute seulement, là où une farce de viande seule en demande deux : le poisson se défait et rend son eau si l'on insiste. Elle doit être homogène, nettement plus pâle qu'à l'ordinaire et à peine collante au creux de la paume." },
+        { "op": "replace", "n": 9, "instruction": "Croiser deux longueurs de ficelle de cuisine sur le plan de travail, asseoir le chou reconstitué au centre et nouer les brins sur le dessus, assez serré pour que rien ne s'ouvre pendant la cuisson mais sans mordre dans les feuilles, qu'une ficelle trop tendue trancherait." },
+        { "op": "replace", "n": 11, "instruction": "Amener à frémissement à découvert, couvrir, puis tenir le feu au plus bas une heure trois quarts. La farce au brochet prend plus tôt qu'une farce de viande et se dessèche si on la pousse : dès qu'une lame glissée jusqu'au cœur en ressort chaude, c'est cuit. Arroser le dessus du chou avec le jus toutes les demi-heures et vérifier que rien n'accroche au fond." }
+      ],
+      "allergens": ["gluten", "lait", "œuf", "poisson"]
+    },
+    {
+      "code": "SRC-038-D3",
+      "base": "SRC-038",
+      "family": "Gratin de chou farci",
+      "variant_label": "Montage en gratin : couches alternées de feuilles et de farce dans un plat, nappées de tomate râpée et cuites une heure à 180 °C",
+      "rationale": "Le montage à plat supprime la reconstitution en boule et la ficelle, et ramène la cuisson à une heure de four contre deux heures de cocotte : c'est la version la plus courte des quatre. La surface gratine au lieu de mijoter, ce qui donne un dessus caramélisé que le chou farci classique n'a jamais, mais les feuilles supérieures s'assèchent si le jus ne remonte pas. La tomate monte à 600 g pour napper toute l'étendue du plat et le bouillon tombe à 200 ml, un gratin trop mouillé ne faisant jamais de croûte.",
+      "prep_minutes": 45,
+      "cook_minutes": 75,
+      "operations": [
+        { "op": "set", "form": "Tomate râpée", "quantity": 600 },
+        { "op": "set", "form": "Bouillon de volaille", "quantity": 200 }
+      ],
+      "steps": [
+        { "op": "replace", "n": 7, "instruction": "Écarter une à une les feuilles du chou tiédi, en progressant de l'extérieur vers le centre, jusqu'à dégager complètement le cœur. Aplatir au couteau la côte de chaque grande feuille pour qu'elle se couche à plat sans bomber, faute de quoi les couches ne se tiendront pas. Détacher le cœur, le hacher menu et le mêler à la farce, qui gagne ainsi le goût du chou." },
+        { "op": "replace", "n": 8, "instruction": "Beurrer largement un plat à gratin et y étaler les lamelles d'oignon et les rondelles de carotte en lit régulier. Poser dessus un premier rang de feuilles qui se chevauchent et débordent un peu sur les bords, étaler le tiers de la farce en couche égale, couvrir de feuilles, et recommencer deux fois en terminant par des feuilles rabattues et lissées de la paume." },
+        { "op": "remove", "n": 9 },
+        { "op": "replace", "n": 10, "instruction": "Napper toute la surface de tomate râpée, de façon qu'elle recouvre les feuilles sans les noyer, puis verser le bouillon de volaille le long des parois seulement : le dessus doit gratiner et non bouillir, et un plat trop mouillé ne fera jamais de croûte." },
+        { "op": "replace", "n": 11, "instruction": "Enfourner à 180 °C pour une heure. À mi-cuisson, presser légèrement le dessus avec le dos d'une cuillère pour faire remonter le jus et arroser les feuilles supérieures, qui sinon se dessèchent avant que la farce ne soit prise ; si la surface fonce trop vite, la couvrir d'une feuille de papier cuisson pour le dernier quart d'heure." },
+        { "op": "replace", "n": 12, "instruction": "Laisser reposer dix minutes hors du four, le temps que les couches se tiennent et cessent de glisser les unes sur les autres, puis découper en parts carrées à la spatule et servir chacune nappée du jus rassemblé au fond du plat." }
+      ],
+      "conservation": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C, dans son plat couvert d'un film ; réchauffer à 160 °C à couvert, puis découvrir dix minutes pour redonner du mordant à la surface. Congélation possible en parts jusqu'à 3 mois, mais les feuilles rendent de l'eau à la décongélation : décongeler au réfrigérateur, égoutter l'excédent de jus, puis repasser au four à découvert."
+    },
+    {
+      "code": "SRC-038-D4",
+      "base": "SRC-038",
+      "family": "Chou blanc farci",
+      "variant_label": "Au chou blanc frais quand le chou vert manque : les feuilles sont plus serrées, allonger le blanchiment de cinq minutes",
+      "rationale": "Le chou blanc a des feuilles plus épaisses, plus serrées et plus cassantes : sans cinq minutes de blanchiment supplémentaires, elles se brisent au moment de les écarter et le chou ne se remonte pas. Le plat en ressort plus sucré et plus dense, avec une mâche plus ferme sous la dent et, du seul fait du légume, une trentaine de calories de plus par part : le chou blanc pèse 36,5 kcal aux 100 g contre 21,5 au chou vert. C'est une substitution de dépannage assumée : le goût soufré et l'amertume légère du chou vert ne se retrouvent pas.",
+      "cook_minutes": 140,
+      "operations": [
+        { "op": "substitute", "form": "Chou vert frais", "with": "Chou blanc frais" }
+      ],
+      "steps": [
+        { "op": "replace", "n": 2, "instruction": "Partir d'un chou blanc d'environ 1,6 kg tel qu'on l'achète chez le primeur. Ôter les feuilles extérieures fanées ou tachées et raccourcir le trognon au couteau : il reste à peu près les 1,2 kg de chou réellement comestible annoncés dans la liste. La pomme est ici plus lourde et plus dense à volume égal, les feuilles y sont blanches, épaisses et serrées les unes contre les autres." },
+        { "op": "replace", "n": 3, "instruction": "Immerger la tête entière dans un grand faitout d'eau salée maintenue à petits frémissements et compter vingt minutes, cinq de plus qu'il n'en faut à un chou vert : des feuilles aussi serrées ne s'assouplissent pas au même rythme et se briseraient net au moment de les écarter. Sortir le chou, le poser à l'envers dans une passoire et le laisser tiédir sans jamais l'écraser." }
+      ]
+    }
+  ]
+}

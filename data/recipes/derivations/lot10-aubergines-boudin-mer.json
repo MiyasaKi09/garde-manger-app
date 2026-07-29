@@ -1,0 +1,695 @@
+{
+  "lot": "lot10 — aubergines, boudin et retour de mer",
+  "note": "Quatre bases inégalement dociles. SRC-031 et SRC-033 se prêtent bien au delta ; SRC-032 annonce six variantes dont quatre déplacent la structure entière du plat (tourte, tatin, pommes farcies, poêlée de rattes) : leurs étapes sont réécrites presque toutes, et la catégorie est redéclarée quand le mode de cuisson change. Deux points d'écriture méritent d'être signalés. « Riz cuit » n'existe pas au vocabulaire — seules les formes crues y figurent — donc SRC-031-D1 porte « Riz long blanc cru » à 120 g et le cuit dans l'étape 4 : la pesée reste juste, ce qu'un riz déclaré cuit aurait faussé. Les « rattes » de SRC-032-D4 sont portées par « Pomme de terre nouvelle crue », l'état le plus proche (petite pomme de terre à chair ferme, cuite en robe), et l'étape le dit en toutes lettres. Trois variantes de SRC-034 sont écartées : deux réclament des formes absentes du catalogue (bisque de crustacés, whisky), la troisième contredit frontalement deux garde-fous d'identité de sa propre base. Les profils sensoriels ne sont redéclarés que là où un garde-fou hérité serait devenu faux : farce sans viande, farce sans œuf, pomme passée en compote, et les deux montages où le boudin ne voit jamais la poêle — la tatin et les pommes farcies ne peuvent porter ni « la chair de sang poêlée » ni « saisie brève puis feu doux : le boyau éclate », puisqu'il n'y a ni saisie ni boyau, et les pommes farcies pas davantage « la pomme doit rester en morceaux identifiables ».",
+  "derivations": [
+    {
+      "code": "SRC-031-D1",
+      "base": "SRC-031",
+      "family": "Aubergines farcies au riz",
+      "variant_label": "Sans viande : remplacer le bœuf haché par du riz cuit et doubler le Gruyère râpé, comme sur la version au jambon et au comté de 750g.com.",
+      "rationale": "Le riz prend la place du bœuf à volume de farce comparable, mais la farce perd les sucs bruns de la viande saisie et, avec eux, l'essentiel de son umami. Le gruyère doublé compense en salant et en gratinant plus franchement ; il ne rend pas la profondeur d'une viande. La part perd près d'un tiers de ses protéines sans rien gagner en légèreté, le riz et le fromage rendant à eux deux ce que le bœuf apportait en calories, et le plat devient végétarien à condition d'accepter une garniture plus douce, portée par la tomate et l'aubergine seules.",
+      "techniques": ["rôtissage", "cuisson du riz", "réduction", "gratinage"],
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Bœuf haché cru 15 % MG",
+          "with": "Riz long blanc cru",
+          "quantity": 120,
+          "unit": "g",
+          "role": "féculent"
+        },
+        {
+          "op": "scale",
+          "form": "Gruyère râpé",
+          "factor": 2
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Retirer d'abord du feu la poêle d'oignon et d'ail, qui attendra la farce sans brunir : douze minutes de plus sur la flamme suffiraient à l'amertume. Porter une casserole d'eau salée à ébullition et y verser le riz. Le cuire une douzaine de minutes seulement, puis l'égoutter tant qu'il reste ferme au cœur : il finira de gonfler dans la farce, puis au four, et un grain déjà tendre s'y déferait en bouillie. L'étaler dans un plat pour qu'il rende sa vapeur au lieu de coller en masse."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Retirer du feu et verser le riz égoutté dans la poêle, en le mêlant à la fourchette pour que les grains se répartissent sans s'écraser. Ajouter le persil et le basilic ciselés, laisser la chaleur retomber deux minutes, puis lier avec les deux œufs battus en remuant sans arrêt, pour qu'ils épaississent la farce au lieu de coaguler en filaments."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Garnir les coques en tassant à peine — une farce au riz trop serrée devient compacte — puis couvrir de la totalité du gruyère râpé, deux fois la dose habituelle, qui forme ici une croûte franche et non un voile. Remettre au four 20 minutes à 200 °C, jusqu'à une surface dorée et boursouflée, et laisser reposer 5 minutes : le riz se tient nettement mieux tiède qu'à la sortie."
+        }
+      ],
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 3,
+          "freshness": 2,
+          "intensity": 3
+        },
+        "dominant_flavors": ["tomate cuite", "fromage gratiné", "ail"],
+        "aroma_families": ["herbacé", "alliacé", "fromager"],
+        "target_textures": ["chair fondante", "farce moelleuse", "surface gratinée"],
+        "signature_ingredients": ["Aubergine fraîche", "Riz long blanc cru", "Tomate râpée"],
+        "identity_guardrails": [
+          "La coque d'aubergine rôtie doit rester le contenant : servie en gratin dans un plat, la préparation redevient un simple riz à la tomate.",
+          "La chair prélevée retourne obligatoirement dans la farce ; la jeter fait perdre au plat son goût d'aubergine et son moelleux.",
+          "Le riz entre dans la farce ferme au cœur : cuit à point avant l'assemblage, il se délite au four et la garniture devient pâteuse."
+        ]
+      }
+    },
+    {
+      "code": "SRC-031-D2",
+      "base": "SRC-031",
+      "family": "Aubergines farcies à la crème",
+      "variant_label": "Version crémeuse : napper la farce d'un filet de Crème fraîche liquide entière juste avant le passage au gratin.",
+      "rationale": "La crème descend dans la farce pendant le gratinage et la détend : la garniture devient onctueuse là où elle était serrée, et le fromage prend au-dessus au lieu d'adhérer directement à la tomate. Le coût est en gras — quatre-vingts grammes de crème entière ajoutent près de deux cent quarante kilocalories au plat — et en netteté, l'acidité de la tomate s'arrondissant jusqu'à perdre son tranchant.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Crème fraîche liquide entière",
+          "quantity": 80,
+          "unit": "g",
+          "role": "liaison",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Garnir les coques en tassant légèrement, napper chacune d'un filet de crème fraîche liquide entière, puis couvrir de gruyère râpé. Remettre au four 20 minutes à 200 °C : la crème s'enfonce dans la farce et la détend pendant que le fromage colore au-dessus. Laisser reposer 5 minutes avant de servir, le temps que le nappage cesse de couler dans le plat."
+        }
+      ]
+    },
+    {
+      "code": "SRC-031-D3",
+      "base": "SRC-031",
+      "family": "Aubergines farcies à la friteuse à air",
+      "variant_label": "Cuisson en air fryer : 30 minutes à 180 °C pour les coques, puis 8 minutes une fois garnies et fromagées (chefsimon.com).",
+      "rationale": "La friteuse à air remplace le four sur les deux passages : trente minutes à 180 °C pour les coques, huit une fois garnies. L'air brassé assèche la surface bien plus vite qu'un four, ce qui donne une peau ferme et une croûte de fromage rapide, mais la plupart des paniers n'acceptent pas les quatre moitiés d'un coup. Le gain — une douzaine de minutes et la chaleur d'un four — ne vaut donc que si tout tient en un seul passage : en deux fournées, le second rôtissage de trente minutes rend la cuisson plus longue qu'au four, pas plus courte. On perd dans les deux cas le moelleux un peu humide que donne une enceinte pleine.",
+      "cook_minutes": 38,
+      "operations": [],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Préchauffer le panier de la friteuse à air trois minutes à 180 °C. Prendre deux aubergines d'environ 280 g pièce, soit à peu près 560 g sur la balance du primeur, qui donnent les 500 g nets une fois les pédoncules coupés. Les rincer, les fendre en deux dans la longueur et vérifier qu'elles tiennent à plat dans le panier : entassées, elles cuisent à la vapeur au lieu de rôtir, quitte à les faire en deux fournées."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Quadriller la chair à la pointe du couteau sans traverser la peau, saler du bout des doigts et badigeonner avec la moitié de l'huile d'olive — l'air brassé dessèche vite, et une chair nue se racornit avant de fondre. Ranger les moitiés chair vers le haut et compter 30 minutes à 180 °C : elles doivent s'affaisser et céder sous la cuillère."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Garnir les coques en tassant légèrement, couvrir de gruyère râpé et remettre 8 minutes à 180 °C dans le panier. Surveiller la dernière minute : le souffle chaud brunit le fromage bien plus tôt qu'un four et le brûlerait avant que la farce ne soit chaude à cœur. Laisser reposer 5 minutes avant de servir."
+        }
+      ]
+    },
+    {
+      "code": "SRC-031-D4",
+      "base": "SRC-031",
+      "family": "Aubergines farcies sans œuf",
+      "variant_label": "Sans œuf : supprimer le liant et prolonger la réduction de 5 minutes, la tomate assurant seule la tenue de la farce.",
+      "rationale": "Privée d'œuf, la farce n'a plus de liant : c'est la tomate, réduite cinq minutes de plus, qui doit tenir seule la garniture. Elle y parvient à condition d'être franchement sèche au moment du garnissage, faute de quoi la farce rend son eau dans la coque et le fond du plat se remplit. Le plat sort de l'allergène œuf sans s'alléger vraiment, mais la texture change : plus friable, moins moelleuse, et la part se tranche mal.",
+      "cook_minutes": 55,
+      "allergens": ["lait"],
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Œuf cru"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Ajouter la tomate râpée, le sucre, les herbes de Provence et un tour de poivre. Laisser réduire à découvert une vingtaine de minutes, cinq de plus que d'ordinaire : rien ne viendra lier la farce à la fin, c'est donc l'évaporation seule qui doit la resserrer. Le sillon laissé par la cuillère doit tenir sans se refermer."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Retirer du feu et incorporer hors flamme le persil et le basilic ciselés, qui garderont ainsi leur vert. Laisser la farce reposer dix minutes avant de garnir : en refroidissant, la tomate longuement réduite prend d'elle-même et tient la garniture aussi bien qu'un liant."
+        }
+      ],
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 3,
+          "freshness": 2,
+          "intensity": 3
+        },
+        "dominant_flavors": ["tomate cuite", "viande rôtie", "ail"],
+        "aroma_families": ["herbacé", "alliacé", "fromager"],
+        "target_textures": ["chair fondante", "farce serrée", "surface gratinée"],
+        "signature_ingredients": ["Aubergine fraîche", "Bœuf haché cru 15 % MG", "Tomate râpée"],
+        "identity_guardrails": [
+          "La coque d'aubergine rôtie doit rester le contenant : servie en gratin dans un plat, la préparation redevient une simple sauce à la viande.",
+          "La chair prélevée retourne obligatoirement dans la farce ; la jeter fait perdre au plat son goût d'aubergine et son moelleux.",
+          "La tenue vient de la seule tomate longuement réduite : une farce encore humide au garnissage s'affaisse dans la coque et rend son eau au four. Aucune béchamel ne vient la remplacer, qui ferait basculer le plat vers la moussaka."
+        ]
+      }
+    },
+    {
+      "code": "SRC-032-D1",
+      "base": "SRC-032",
+      "family": "Tourte au boudin noir et aux poireaux",
+      "variant_label": "Tourte feuilletée : compote de pomme, tronçons de blanc de poireau et rondelles de boudin sans peau entre deux abaisses, dorées à l'œuf, 35 min à 210 °C (750g.com).",
+      "rationale": "La poêlée devient une tourte : compote de pomme, fondue de poireau et d'oignon, rondelles de boudin dépouillées de leur boyau, le tout pris entre deux abaisses. Le boudin cuit à l'étouffée sous la pâte au lieu d'être saisi — il reste fondant mais ne développe aucune croûte, et son gras imbibe le feuilletage au lieu de rester dans la poêle. Passée en compote, la pomme perd les morceaux caramélisés dont vivait l'accord sucré-salé de la base ; en échange la tourte se transporte, se réchauffe et se coupe en parts. Le feuilletage pèse en calories presque autant que la charcuterie et fait quasiment doubler la part.",
+      "category": "tourte sucrée-salée",
+      "prep_minutes": 40,
+      "cook_minutes": 60,
+      "allergens": ["lait", "gluten", "œuf"],
+      "techniques": ["compotage", "suer", "fonçage", "cuisson au four"],
+      "operations": [
+        {
+          "op": "add",
+          "form": "Pâte feuilletée crue",
+          "quantity": 450,
+          "unit": "g",
+          "role": "pâte",
+          "optional": false
+        },
+        {
+          "op": "add",
+          "form": "Poireau cru",
+          "quantity": 300,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "op": "add",
+          "form": "Œuf cru",
+          "quantity": 50,
+          "unit": "g",
+          "role": "dorure",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Pelez et évidez quatre pommes à chair ferme, soit environ 450 g de fruits entiers pour 320 g de chair nette, et détaillez-les en dés. Arrosez-les du jus de citron, poudrez-les du sucre et faites-les fondre à couvert une dizaine de minutes sur feu doux, puis écrasez-les grossièrement à la fourchette : la compote doit rester granuleuse et un peu sèche, une purée lisse détremperait le fond de la tourte."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Épluchez 280 g d'oignons pour en obtenir 250 g nets et émincez-les finement. Fendez les blancs de poireau en quatre dans la longueur, lavez-les à grande eau entre les feuilles et débitez-les en tronçons courts. Faites fondre le tout à couvert dans la totalité du beurre, sur feu très doux, une quinzaine de minutes, jusqu'à ce que le poireau cède sous le doigt sans avoir pris couleur — c'est le seul gras de la tourte, le feuilletage apportant le reste. Égouttez cette fondue et laissez-la refroidir : posée chaude, elle ferait fondre le feuilletage avant qu'il n'entre au four."
+        },
+        {
+          "op": "remove",
+          "n": 3
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Le boudin se vend en boyau : prévoyez quatre tronçons d'environ 150 g, soit près de 600 g sur la balance du charcutier, qui donnent les 560 g de chair annoncés une fois les extrémités parées. Fendez le boyau d'un coup de lame et retirez-le entièrement — sous la pâte il resterait élastique sous la dent — puis coupez la chair en rondelles d'un bon centimètre, en la manipulant le moins possible, car elle se défait vite une fois nue."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Étalez la moitié de la pâte feuilletée sur une plaque garnie de papier cuisson, piquez-la à la fourchette et laissez deux centimètres de bord libre tout autour. Étalez la compote de pomme au centre, couvrez-la de la fondue de poireau et d'oignon bien égouttée, puis rangez les rondelles de boudin en une seule couche sans les faire chevaucher. Salez, poivrez, et humectez le bord au pinceau."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Posez la seconde abaisse par-dessus, soudez les bords en les pinçant fermement, dorez toute la surface à l'œuf battu et percez une cheminée au centre : sans elle, la vapeur soulève la pâte puis la fait retomber détrempée. Enfournez 35 minutes à 210 °C, jusqu'à ce que le dessus soit brun et le dessous sec au toucher, et attendez dix minutes avant de couper, sinon la garniture glisse hors des parts."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 3,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 5,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": ["pomme compotée", "sucré", "profond", "beurré"],
+        "aroma_families": ["beurre", "oignon_compoté", "porc"],
+        "target_textures": ["protéine_fondante", "tendre", "feuilletage_croustillant"],
+        "signature_ingredients": ["Boudin noir à cuire", "Pomme fraîche"],
+        "identity_guardrails": [
+          "Sans boudin noir, le plat n'existe plus : la chair de sang en est l'axe et aucune autre charcuterie ne la remplace.",
+          "En tourte, la pomme passe en compote : elle doit rester granuleuse et peu sucrée, une purée lisse détrempant le fond et empêchant la pâte de cuire.",
+          "Le boyau se retire entièrement : conservé sous la pâte, il se rétracte sans jamais dorer et reste élastique.",
+          "Le poivre reste un assaisonnement de finition : la médiane du dossier est faussée par des pesées de boudin et ne doit jamais être appliquée telle quelle."
+        ]
+      }
+    },
+    {
+      "code": "SRC-032-D2",
+      "base": "SRC-032",
+      "family": "Tarte tatin de boudin noir aux pommes",
+      "variant_label": "Version tatin : quartiers de pomme beurrés et rondelles de boudin recouverts de pâte feuilletée piquée, 30 min à 200 °C (marmiton.org).",
+      "rationale": "Le montage renversé fait confire les quartiers de pomme dans le beurre et le sucre au fond du moule, puis les couvre d'une abaisse unique. Le boudin, débarrassé de son boyau et couché en rondelles, cuit à l'étouffée sous la pâte : on perd la saisie et le contraste d'une chair croûtée, on gagne un plat qui se démoule entier et se partage. Le feuilletage ajoute du gras à une assiette qui n'en manquait pas, et le démoulage doit se faire tiède, sous peine de voir le caramel figé retenir les fruits au fond.",
+      "category": "tarte salée",
+      "prep_minutes": 30,
+      "cook_minutes": 45,
+      "allergens": ["lait", "gluten"],
+      "techniques": ["caramélisation", "suer", "cuisson au four", "renversement"],
+      "operations": [
+        {
+          "op": "add",
+          "form": "Pâte feuilletée crue",
+          "quantity": 250,
+          "unit": "g",
+          "role": "pâte",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Faites mousser tout le beurre restant dans un moule qui va sur le feu, poudrez du sucre et rangez-y les quartiers de pomme à plat, face bombée dessous et bien serrés. Laissez-les prendre couleur cinq minutes sur feu moyen sans y toucher : ce caramel de fond deviendra le dessus de la tarte au démoulage, et remuer les quartiers l'empêcherait de se former."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Le boudin se vend en boyau : prévoyez quatre tronçons d'environ 150 g, soit près de 600 g sur la balance du charcutier, pour les 560 g de chair annoncés. Fendez le boyau d'un coup de lame et retirez-le entièrement, puis coupez la chair en rondelles d'un bon centimètre : sous la pâte, le boyau ne trouverait ni chaleur vive ni surface libre pour se tendre, et resterait caoutchouteux."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Répartissez les oignons fondus sur les pommes, rangez les rondelles de boudin par-dessus en une seule couche, puis recouvrez de la pâte feuilletée découpée au diamètre du moule. Piquez-la de plusieurs coups de fourchette, rentrez les bords à l'intérieur du moule pour enfermer la garniture, et enfournez 30 minutes à 200 °C jusqu'à ce que le feuilletage soit sec et cuivré."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Sortez le moule et laissez-le reposer cinq minutes, pas davantage : le caramel se figerait et retiendrait les fruits au fond. Retournez la tarte d'un geste franc sur un plat plus large, salez, donnez deux tours de moulin à poivre sur les pommes maintenant visibles et servez sans attendre, la pâte perdant son croustillant dès qu'elle refroidit sous les fruits."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 3,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 5,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": ["pomme caramélisée", "sucré", "profond", "beurré"],
+        "aroma_families": ["beurre", "oignon_compoté", "porc"],
+        "target_textures": ["protéine_fondante", "tendre", "feuilletage_croustillant"],
+        "signature_ingredients": ["Boudin noir à cuire", "Pomme fraîche"],
+        "identity_guardrails": [
+          "Sans boudin noir, le plat n'existe plus : la chair de sang en est l'axe et aucune autre charcuterie ne la remplace.",
+          "La pomme doit rester en quartiers identifiables et caramélisés au fond du moule ; réduite en compote ou remplacée par de la pomme de terre, l'accord sucré-salé se défait et le renversement n'a plus d'objet.",
+          "Le boudin cuit sous la pâte, sans saisie et sans boyau : gardé en boyau à l'étouffée, il se rétracte sans jamais dorer et reste élastique.",
+          "Le démoulage se fait tiède et dans les cinq minutes : le caramel figé retient les fruits au fond et la tarte sort nue.",
+          "Le poivre reste un assaisonnement de finition : la médiane du dossier est faussée par des pesées de boudin et ne doit jamais être appliquée telle quelle."
+        ]
+      }
+    },
+    {
+      "code": "SRC-032-D3",
+      "base": "SRC-032",
+      "family": "Boudin noir aux pommes, purée et oignons au miel",
+      "variant_label": "Assiette complète : purée de pomme de terre et oignons confits au miel servis avec le boudin poêlé (marmiton.org).",
+      "rationale": "Deux choses changent réellement : les oignons sont poussés jusqu'au confit avec du miel, et une purée de pomme de terre montée au beurre rejoint l'assiette. Le miel accélère la coloration des oignons et les rend franchement sucrés, ce qui appuie l'accord avec le boudin mais rapproche le plat du dessert si l'on force la dose — et il brûle bien avant le sucre propre de l'oignon. Les sept cents grammes de pomme de terre font du plat un repas entier, sans pain ni féculent à côté, au prix d'une part nettement plus lourde et d'un troisième feu à mener de front.",
+      "prep_minutes": 35,
+      "cook_minutes": 45,
+      "operations": [
+        {
+          "op": "add",
+          "form": "Pomme de terre crue, épluchée",
+          "quantity": 700,
+          "unit": "g",
+          "role": "féculent",
+          "optional": false
+        },
+        {
+          "op": "add",
+          "form": "Miel",
+          "quantity": 25,
+          "unit": "g",
+          "role": "condiment",
+          "optional": false
+        },
+        {
+          "op": "set",
+          "form": "Beurre doux",
+          "quantity": 90,
+          "role": "matière grasse"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Épluchez 280 g d'oignons pour en obtenir 250 g nets, émincez-les finement et laissez-les fondre à couvert dans un tiers du beurre, sur feu très doux. Au bout de dix minutes, versez le miel, découvrez et poursuivez dix minutes en remuant souvent : ils doivent devenir sirupeux et brun clair sans jamais accrocher, le miel noircissant longtemps avant le sucre propre de l'oignon."
+        },
+        {
+          "op": "insert",
+          "after": 2,
+          "instruction": "Épluchez 800 g de pommes de terre pour en obtenir 700 g nets, coupez-les en gros cubes et faites-les cuire vingt minutes à l'eau salée, départ à froid, jusqu'à ce que la pointe du couteau les traverse sans effort. Égouttez-les en réservant une louche d'eau de cuisson, écrasez-les au presse-purée avec un autre tiers du beurre et détendez avec l'eau réservée : au fouet ou au mixeur, l'amidon se délite et la purée devient élastique."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Salez et donnez deux tours de moulin à poivre au dressage. Étalez un large trait de purée dans des assiettes chaudes, posez le boudin par-dessus, ajoutez une cuillerée d'oignons au miel et rangez les quartiers de pomme caramélisés à côté. Nappez du beurre de cuisson resté dans la poêle : l'assiette se suffit alors à elle-même et n'appelle plus ni pain ni féculent."
+        }
+      ]
+    },
+    {
+      "code": "SRC-032-D4",
+      "base": "SRC-032",
+      "family": "Poêlée de rattes au boudin noir et aux raisins secs",
+      "variant_label": "Poêlée de rattes en rondelles avec dés de pomme et raisins secs, boudin doré à part et ajouté au dernier moment (750g.com).",
+      "rationale": "Les rattes cuites à l'eau puis dorées en rondelles, les dés de pomme et les raisins secs forment une poêlée unique, dans laquelle le boudin n'entre qu'au dressage, coupé et posé dessus. Le sucre disparaît : ce sont les raisins gonflés au beurre qui portent seuls le sucré. Le plat gagne son féculent et un jeu de textures que la base n'avait pas, mais la pomme, taillée en dés et sautée vite, ne laque plus comme un quartier caramélisé, et le boudin posé trop tôt détremperait les rondelles dorées.",
+      "prep_minutes": 30,
+      "cook_minutes": 45,
+      "operations": [
+        {
+          "op": "add",
+          "form": "Pomme de terre nouvelle crue",
+          "quantity": 600,
+          "unit": "g",
+          "role": "féculent",
+          "optional": false
+        },
+        {
+          "op": "add",
+          "form": "Raisin sec",
+          "quantity": 60,
+          "unit": "g",
+          "role": "garniture",
+          "optional": false
+        },
+        {
+          "op": "remove",
+          "form": "Sucre semoule"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Comptez quatre pommes à chair ferme, soit environ 450 g de fruits entiers : pelées, évidées et débarrassées des pépins, il en reste près de 320 g de chair. Détaillez-les en dés d'un centimètre plutôt qu'en quartiers — ils doivent sauter à la même allure que les rondelles de ratte — et arrosez-les aussitôt du jus de citron pour qu'ils gardent leur teinte claire."
+        },
+        {
+          "op": "insert",
+          "after": 1,
+          "instruction": "Brossez 600 g de rattes sans les peler, ces petites pommes de terre allongées tenant justement leur rondelle grâce à leur peau fine, et faites-les cuire vingt minutes à l'eau salée jusqu'à ce que la pointe du couteau entre sans forcer. Égouttez-les, laissez-les tiédir puis coupez-les en rondelles d'un demi-centimètre : jetées crues dans la poêle, elles brûleraient dehors bien avant d'être fondantes dedans."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Dans une seconde poêle, faites mousser la moitié du beurre restant et couchez-y les rondelles de ratte à plat. Laissez-les dorer cinq minutes sans y toucher, retournez-les, ajoutez les dés de pomme et les raisins secs, puis poursuivez cinq minutes à feu moyen : les raisins gonflent au contact du beurre chaud et suffisent à sucrer la poêlée. Réservez au chaud."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Essuyez la poêle qui a servi à la poêlée, chauffez-y le reste du beurre et posez le boudin sur feu vif juste le temps de le colorer, puis baissez immédiatement l'allure. Huit à dix minutes de cuisson douce en le tournant avec délicatesse suffisent : ne le piquez jamais, sous peine de voir le boyau se rompre et le gras s'échapper dans une poêle où plus rien ne viendra le boire."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Salez, poivrez au moulin et mêlez les oignons fondus à la poêlée de rattes. Répartissez-la dans des assiettes chaudes et posez les tronçons de boudin dessus au tout dernier moment, sans les enfouir : posé trop tôt, il rend son gras et détrempe les rondelles dorées qui faisaient tout l'intérêt du plat."
+        }
+      ]
+    },
+    {
+      "code": "SRC-032-D5",
+      "base": "SRC-032",
+      "family": "Pommes au four farcies au boudin noir",
+      "variant_label": "Pommes entières évidées, passées au four puis garnies du hachis de boudin grillé et d'oignons fondus (750g.com).",
+      "rationale": "La pomme cesse d'être une garniture pour devenir le contenant : évidée, cuite au four, puis remplie du boudin grillé, écrasé et mêlé aux oignons fondus. Il faut deux fois plus de fruit — quatre pommes entières au lieu de quatre pommes détaillées — et le boudin, grillé nu puis haché, perd sa forme de tronçon et une part de son gras dans la poêle. La cuisson est plus longue, le service plus délicat, et le sucré du fruit domine nettement plus l'assiette que dans la poêlée d'origine.",
+      "category": "plat au four",
+      "cook_minutes": 45,
+      "techniques": ["évidage", "suer", "grillade", "farcissage", "cuisson au four"],
+      "operations": [
+        {
+          "op": "set",
+          "form": "Pomme fraîche",
+          "quantity": 640,
+          "role": "contenant"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Choisissez quatre pommes à chair ferme d'environ 200 g pièce, soit 800 g de fruits entiers, qui donneront les 640 g de chair annoncés une fois le cœur ôté. Lavez-les sans les peler, retirez le trognon au vide-pomme en creusant jusqu'aux deux tiers de la hauteur sans percer le fond, élargissez la cavité à la petite cuillère et badigeonnez-la du jus de citron pour qu'elle ne noircisse pas."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Rangez les pommes debout dans un plat, poudrez l'intérieur des cavités du sucre, posez une noisette du beurre restant sur chacune et enfournez 25 minutes à 180 °C. Elles doivent s'assouplir sans s'affaisser : trop cuite, une pomme s'ouvre en éventail et ne retient plus rien."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Le boudin se vend en boyau : prévoyez quatre tronçons d'environ 150 g, soit près de 600 g sur la balance du charcutier, pour les 560 g de chair annoncés. Fendez le boyau, retirez-le entièrement, puis grillez la chair nue cinq minutes à la poêle bien chaude en l'écrasant à la fourchette, jusqu'à ce qu'elle accroche par endroits. Hachez-la grossièrement au couteau une fois tiède."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Mêlez le hachis de boudin grillé aux oignons fondus, salez, poivrez, puis garnissez-en les cavités en tassant à la cuillère et en laissant un dôme dépasser. Remettez au four 10 minutes à 180 °C, le temps que la farce chauffe à cœur et que le dessus se croûte légèrement."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Servez les pommes brûlantes dans leur plat, arrosées du jus caramélisé qui a coulé au fond et d'un dernier tour de moulin à poivre. Elles ne supportent pas d'être dressées à l'assiette sans se briser : mieux vaut porter le plat entier et laisser chacun s'en servir."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 4,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": ["pomme au four", "sucré", "profond", "grillé"],
+        "aroma_families": ["beurre", "oignon_compoté", "porc"],
+        "target_textures": ["chair fondante", "farce grumeleuse", "peau tendue"],
+        "signature_ingredients": ["Boudin noir à cuire", "Pomme fraîche"],
+        "identity_guardrails": [
+          "Sans boudin noir, le plat n'existe plus : la chair de sang en est l'axe et aucune autre charcuterie ne la remplace.",
+          "La pomme entière est ici le contenant, non la garniture : farcie dans un plat à gratin ou remplacée par un autre fruit, la préparation redevient un simple hachis de boudin aux oignons.",
+          "La pomme doit s'assouplir sans s'affaisser : trop cuite, elle s'ouvre en éventail et ne retient plus rien.",
+          "Le boyau se retire entièrement et la chair se grille nue : c'est cette accroche à la poêle qui rend au hachis ce que la cuisson au four lui retire.",
+          "Le poivre reste un assaisonnement de finition : la médiane du dossier est faussée par des pesées de boudin et ne doit jamais être appliquée telle quelle."
+        ]
+      }
+    },
+    {
+      "code": "SRC-032-D6",
+      "base": "SRC-032",
+      "family": "Boudin noir aux pommes flambées au calvados",
+      "variant_label": "Flambage au calvados sur les pommes caramélisées, ou mousse froide de boudin et de pomme montée en verrine (chefsimon.com).",
+      "rationale": "Le calvados versé hors du feu sur les quartiers déjà laqués puis enflammé brûle son alcool et laisse un sirop de pomme concentré, qu'on récupère au dressage. L'eau-de-vie appuie le fruit et tranche le gras du boudin ; mal conduite — versée sans flamber, ou laissée bouillir — elle laisse au contraire une amertume tenace. La seconde proposition de la même phrase, la mousse froide en verrine, n'est pas reprise ici : c'est une préparation froide et mixée, qui ne se décrit pas comme un écart à cette poêlée.",
+      "techniques": ["saisie", "sauté", "suer", "flambage"],
+      "operations": [
+        {
+          "op": "add",
+          "form": "Calvados",
+          "quantity": 40,
+          "unit": "g",
+          "role": "alcool de flambage",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Dans une seconde poêle, faites mousser la moitié du beurre restant et couchez-y les quartiers de pomme à plat. Poudrez-les de sucre, laissez-les prendre couleur cinq minutes à couvert, retournez chaque morceau puis poursuivez à découvert jusqu'à ce que les faces soient laquées. Retirez alors la poêle du feu, versez le calvados et enflammez-le en écartant le visage : laissez la flamme mourir seule, elle emporte l'alcool et laisse le parfum du fruit, alors qu'une eau-de-vie simplement bouillie garde son amertume. Débarrassez aussitôt les quartiers et la totalité du sirop dans un plat creux tenu au chaud — la poêle servira ensuite au boudin, et tout ce qui y resterait partirait avec le coup de papier."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Salez et donnez deux tours de moulin à poivre au dressage. Répartissez les oignons fondus au fond d'assiettes chaudes, posez le boudin par-dessus et rangez les quartiers de pomme autour. Versez sur le tout le sirop réservé avec les fruits : c'est là que le calvados s'est concentré, et non dans le beurre où le boudin a cuit ensuite."
+        }
+      ]
+    },
+    {
+      "code": "SRC-033-D1",
+      "base": "SRC-033",
+      "family": "Bouillabaisse du pêcheur",
+      "variant_label": "Version pêcheur : remplacer une partie des moules par des filets de poisson de roche déposés sur le bouillon et pochés hors du feu cinq minutes.",
+      "rationale": "La moitié des moules cède la place à des filets de rouget grondin, poisson de roche des mêmes fonds, posés sur le bouillon et pochés hors du feu. Le plat gagne en chair et en tenue ce qu'il perd en iode : moitié moins de coquillages, c'est aussi moitié moins de jus de moules pour saler et parfumer le bouillon, qu'il faut donc goûter de plus près avant de rectifier. Le pochage hors du feu est la seule façon de garder les filets entiers ; un frémissement, même léger, les défait en lambeaux en deux minutes.",
+      "cook_minutes": 45,
+      "operations": [
+        {
+          "op": "scale",
+          "form": "Moule commune crue",
+          "factor": 0.5
+        },
+        {
+          "op": "add",
+          "form": "Rouget grondin cru",
+          "quantity": 500,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Compter 625 g de moules en coquille chez le poissonnier, moitié moins que dans la version toute marine : c'est le poids d'achat qui donne les 188 g de chair annoncés. Les gratter, tirer le byssus, les rincer à grande eau froide et jeter sans hésiter toute coquille fêlée ou qui refuse de se refermer lorsqu'on la tapote. Demander au même moment de lever en filets 1,3 kg de rougets grondins entiers : la tête cuirassée et l'arête de ce poisson de roche emportent près des deux tiers du poids, et il n'en reste que les 500 g de chair annoncés."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Verser le vin blanc dans un faitout, y jeter les moules, couvrir et monter à feu vif trois à quatre minutes en secouant une fois la casserole — moitié moins de coquillages s'ouvrent d'autant plus vite, et les oublier une minute de trop les racornit. Les retirer dès qu'elles bâillent, décoquiller les trois quarts et garder le reste en coquille pour le service. Filtrer le jus rendu à travers une passoire doublée d'un linge : c'est lui qui apportera le sel et l'iode, le sable doit rester dedans."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Couper le feu et déposer les filets de rouget grondin à plat sur le bouillon, sans les enfoncer. Couvrir et laisser pocher cinq minutes hors du feu : la chaleur retenue suffit à raffermir la chair, alors qu'un frémissement la déferait en lambeaux. Remettre alors la chair de moule et les coquilles réservées, goûter seulement à cet instant avant de saler — avec moitié moins de jus de coquillage, la base est nettement moins salée qu'à l'ordinaire — puis servir en assiette creuse en répartissant bouillon, pommes de terre, filets et coquillages."
+        }
+      ]
+    },
+    {
+      "code": "SRC-033-D2",
+      "base": "SRC-033",
+      "family": "Bouillabaisse en deux services",
+      "variant_label": "Service à la marseillaise : passer le bouillon et le servir à part, brûlant, avec des croûtons frottés d'ail, la garniture étant présentée à côté sur un plat creux.",
+      "rationale": "Le bouillon est passé au chinois et part seul à table, brûlant, avec des croûtons de pain de campagne frottés d'ail ; la garniture suit sur un plat creux. La cuisson ne bouge pas, le repas change : le bouillon se boit clair et concentré au lieu d'être bu dilué autour des pommes de terre, et le pain grillé lui rend le corps que la filtration lui retire. Il faut deux gousses d'ail de plus pour frotter les cent soixante grammes de pain, et deux services au lieu d'un — la garniture attend, et refroidit si le plat n'est pas tenu au chaud.",
+      "prep_minutes": 40,
+      "cook_minutes": 45,
+      "allergens": ["poisson", "mollusques", "sulfites", "gluten"],
+      "techniques": ["mijotage", "pochage", "réduction", "infusion", "filtration", "grillade du pain"],
+      "operations": [
+        {
+          "op": "add",
+          "form": "Pain de campagne",
+          "quantity": 160,
+          "unit": "g",
+          "role": "accompagnement",
+          "optional": false
+        },
+        {
+          "op": "scale",
+          "form": "Ail cru",
+          "factor": 1.5
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Couper le feu, remettre la chair de moule et les coquilles réservées, couvrir deux minutes pour les réchauffer sans les raidir. Prélever ensuite à l'écumoire les pommes de terre et les coquillages et les dresser sur un plat creux tenu au chaud, puis passer le bouillon au chinois au-dessus d'une casserole et le remettre à frémir : c'est lui qui part le premier à table, brûlant, en assiette creuse."
+        },
+        {
+          "op": "insert",
+          "after": 8,
+          "instruction": "Griller les tranches de pain de campagne des deux côtés et les frotter énergiquement d'ail cru tant qu'elles sont chaudes, en changeant de gousse dès que la première s'use — froides, elles ne râpent plus rien et l'ail reste dessus au lieu de fondre. Les servir avec le bouillon, la garniture suivant dans un second temps sur son plat creux, chacun se resservant de bouillon par-dessus."
+        }
+      ]
+    },
+    {
+      "code": "SRC-033-D3",
+      "base": "SRC-033",
+      "family": "Bouillabaisse sans alcool",
+      "variant_label": "Sans alcool : supprimer le vin blanc, ouvrir les moules dans un fond d'eau et rattraper la vivacité par un trait de jus de citron au moment de servir.",
+      "rationale": "Les moules s'ouvrent dans un fond d'eau et le jus de citron, ajouté hors du feu, rend au bouillon le tranchant que l'acidité de l'alcool lui donnait. L'ouverture à l'eau produit un jus plus court et plus franchement iodé, mais moins parfumé : le bouillon y perd sa longueur et son fond légèrement vineux. Le plat sort des sulfites et convient à qui ne boit pas d'alcool, à condition d'ajouter le citron au tout dernier moment — chauffé, il vire à l'amer et ne se rattrape plus.",
+      "allergens": ["poisson", "mollusques"],
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Vin blanc sec"
+        },
+        {
+          "op": "add",
+          "form": "Eau",
+          "quantity": 150,
+          "unit": "ml",
+          "role": "liquide",
+          "optional": false
+        },
+        {
+          "op": "add",
+          "form": "Jus de citron frais",
+          "quantity": 15,
+          "unit": "ml",
+          "role": "acidité",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Verser l'eau dans un faitout, y jeter les moules, couvrir et monter à feu vif quatre à cinq minutes en secouant une fois la casserole. Les retirer dès qu'elles bâillent, décoquiller les trois quarts et garder le reste en coquille pour le service. Filtrer le jus rendu à travers une passoire doublée d'un linge : privé de tout apport aromatique à l'ouverture, ce jus est la seule chose qui apporte le sel et l'iode, et le sable doit rester dans le linge."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Couper le feu, remettre la chair de moule et les coquilles réservées, couvrir deux minutes pour les réchauffer sans les raidir. Ajouter le jus de citron hors du feu et goûter seulement à cet instant avant de saler : c'est lui qui redonne au bouillon le tranchant que l'acidité de l'alcool lui apportait, et il s'évanouit dès qu'on le fait chauffer. Servir aussitôt en assiette creuse en répartissant bouillon, pommes de terre et coquillages."
+        }
+      ]
+    },
+    {
+      "code": "SRC-034-D1",
+      "base": "SRC-034",
+      "family": "Calamars à l'armoricaine sans crème",
+      "variant_label": "Sans crème ni persil, à la façon des versions marmiton.org les plus dépouillées : la sauce reste franchement tomatée et se réduit un peu plus longtemps à découvert.",
+      "rationale": "La crème et le persil disparaissent : la sauce n'est plus lissée en fin de cuisson et reste franchement tomatée, plus acide et plus concentrée. Il faut réduire cinq minutes de plus à découvert pour qu'elle nappe encore, puisque rien ne vient l'épaissir à la fin. On perd le rond de la liaison et la note fraîche de l'herbe ; on gagne une sauce plus directe, sans lait, qui supporte bien mieux d'être réchauffée le lendemain.",
+      "cook_minutes": 60,
+      "allergens": ["mollusques", "sulfites"],
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Crème fraîche liquide entière"
+        },
+        {
+          "op": "remove",
+          "form": "Persil frais"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Couvrir et maintenir un frémissement paresseux pendant trente-cinq minutes environ, en remuant deux ou trois fois. Les anneaux se raffermissent d'abord puis se détendent : goûter à partir de la trentième minute et prolonger si la chair résiste encore sous la dent. Retirer ensuite le couvercle et laisser réduire un bon quart d'heure, cinq minutes de plus qu'à l'ordinaire — rien ne viendra lier la sauce à la fin, c'est l'évaporation seule qui doit l'amener à napper le dos d'une cuillère."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Couper le feu, rectifier le sel et le piment, puis laisser reposer cinq minutes hors du feu pour que les parfums se rassemblent. La sauce reste rouge et franche, sans rien pour en arrondir l'acidité : servir brûlant avec un riz blanc long, qui l'absorbe et adoucit ce que la réduction a resserré."
+        }
+      ]
+    }
+  ]
+}
