@@ -147,6 +147,28 @@ jobs:
         run: |
           node scripts/db/build-manifest.mjs
           git diff --exit-code -- scripts/db/migration-manifest.json
+
+          # Une migration écrite récemment ne peut pas relever du socle
+          # historique. Si elle y tombe, la réconciliation l'inscrira comme
+          # appliquée sans l'exécuter : la release passera au vert sur une base
+          # inchangée, et rien dans les journaux ne le dira. C'est ce qui est
+          # arrivé au rechargement du corpus V3, resté sans effet pendant que
+          # tout affichait un succès.
+          suspectes=$(node -e "
+            const m = require('./scripts/db/migration-manifest.json');
+            const socle = '20260715174000';
+            const mauvaises = m
+              .filter((e) => e.baseline === 'trust')
+              .filter((e) => /^[0-9]{14}\$/.test(e.github_version))
+              .filter((e) => e.github_version > socle)
+              .map((e) => e.file);
+            console.log(mauvaises.join(' '));
+          ")
+          if [ -n "$suspectes" ]; then
+            echo "::error title=Migration neuve classée « trust »::$suspectes"
+            echo "Ces migrations seraient inscrites au registre sans être exécutées." >&2
+            exit 1
+          fi
       - name: Réconcilier le registre de migrations
         run: |
           bash scripts/db/reconcile-ledger.sh --dry-run

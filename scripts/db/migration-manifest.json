@@ -1290,7 +1290,7 @@
     "name": "fix_planning_task_production_cascade",
     "sha256": "d4401a67ea81647e975984c88466d78cf7678232e990abc7763ca9bbfa47e948",
     "role": "apply",
-    "baseline": "trust",
+    "baseline": "new",
     "historical_version": null,
     "expected_objects": []
   },
@@ -1386,12 +1386,12 @@
     "expected_objects": []
   },
   {
-    "file": "20260728220000_corpus_v3_batch1_sources.sql",
-    "github_version": "20260728220000",
+    "file": "20260729080000_corpus_v3_batch1_sources.sql",
+    "github_version": "20260729080000",
     "name": "corpus_v3_batch1_sources",
-    "sha256": "ac7fc04849ec0a6b8df3f7128457bf8afdc52d1aea9c2493d15f684b927c8c22",
+    "sha256": "bf318858d6b938c8f16f4c45b98bf60540f354ed4945c7c6d6740fe0b8af5612",
     "role": "apply",
-    "baseline": "trust",
+    "baseline": "new",
     "historical_version": null,
     "expected_objects": []
   }

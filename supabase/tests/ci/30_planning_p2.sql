@@ -169,14 +169,24 @@ BEGIN
     RAISE EXCEPTION '[P2] contrainte planned_consumptions_positive_measure manquante';
   END IF;
 
-  -- FK source des consommations en RESTRICT (confdeltype='r'), jamais SET NULL
+  -- FK source des consommations en CASCADE (confdeltype='c'), jamais SET NULL
+  -- Cette FK a été posée en RESTRICT par P2, puis passée en CASCADE le
+  -- 2026-07-25 par fix_planning_task_production_cascade : productions et
+  -- consommations planifiées sont des projections d'une tâche de préparation,
+  -- et lorsqu'un planning non exécuté est remplacé, elles doivent disparaître
+  -- avec elle plutôt que de bloquer le remplacement.
+  --
+  -- L'assertion est restée sur RESTRICT pendant quatre jours sans rien casser,
+  -- parce que la CI n'appliquait jamais cette migration : la réconciliation la
+  -- classait « déjà appliquée ». La production, elle, porte bien CASCADE depuis
+  -- le 27. Corriger le classement des migrations a révélé la contradiction.
   PERFORM 1 FROM pg_constraint
     WHERE conrelid = 'public.planned_consumptions'::regclass
       AND contype = 'f'
       AND confrelid = 'public.planned_productions'::regclass
-      AND confdeltype = 'r';
+      AND confdeltype = 'c';
   IF NOT FOUND THEN
-    RAISE EXCEPTION '[P2] FK planned_consumptions→planned_productions devrait être ON DELETE RESTRICT';
+    RAISE EXCEPTION '[P2] FK planned_consumptions→planned_productions devrait être ON DELETE CASCADE';
   END IF;
 
   RAISE NOTICE '[P2] toutes les assertions passent.';

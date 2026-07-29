@@ -1,15 +1,22 @@
 -- Corpus culinaire V3 — rechargement après le batch 1 sourcé.
 --
 -- Le corpus est écrit dans data/recipes/corpus-v3.json, et c'est lui qui fait
--- autorité. La base, elle, ne le connaît que par ce chargement : tant qu'il
--- n'est pas rejoué, l'application montre l'état d'un corpus révolu. C'est ce
--- qui vient d'arriver — 339 recettes au dépôt, 302 affichées, et les trente
--- plats du batch 1 introuvables dans la liste.
+-- autorité. La base ne le connaît que par ce chargement : tant qu'il n'est pas
+-- rejoué, l'application montre l'état d'un corpus révolu — 339 recettes au
+-- dépôt, 302 affichées, et les trente plats du batch 1 introuvables.
 --
--- D'où cette migration plutôt qu'une exécution manuelle : versionnée, elle
--- s'applique à la production au même titre que le schéma, et le décalage ne
--- peut plus s'installer sans que personne le voie. Chaque publication du
--- corpus en demande une nouvelle, son empreinte étant figée une fois appliquée.
+-- POURQUOI CETTE VERSION ET PAS 20260728220000
+-- Cette migration a d'abord porté le numéro 20260728220000. La réconciliation
+-- du registre l'a classée « trust » — le repli par défaut pour toute version
+-- inconnue — c'est-à-dire réputée appliquée de longue date. Elle a donc été
+-- inscrite au registre sans être exécutée, l'étape d'application n'a plus rien
+-- eu à faire, et la release est passée au vert sur une base inchangée.
+--
+-- Le repli par défaut est corrigé dans scripts/db/build-manifest.mjs : ce qui
+-- est postérieur au socle historique s'applique, et seule l'appartenance à ce
+-- socle se déclare. Mais l'inscription mensongère, elle, subsiste en base pour
+-- 20260728220000 : republier sous une version neuve est le moyen de s'appliquer
+-- sans avoir à réécrire l'historique du registre.
 --
 -- Le chargement est idempotent recette par recette : il remplace les étapes,
 -- besoins et composants de CHAQUE recette qu'il porte, sans jamais vider une

@@ -186,11 +186,35 @@ function isRollback(base) {
   return base.endsWith('_rollback');
 }
 
+/**
+ * Dernière migration du socle historique.
+ *
+ * En dessous, une migration absente du ledger a presque sûrement été appliquée
+ * hors traçage, il y a longtemps : la réconcilier sans la rejouer est le bon
+ * comportement. Au-dessus, elle est neuve et doit s'appliquer pour de vrai.
+ *
+ * Cette borne existe parce que le repli par défaut était `trust`, et qu'une
+ * migration inconnue de NEW_VERSIONS — donc toute migration écrite après cette
+ * liste — était réputée déjà appliquée. Le rechargement du corpus V3 en a fait
+ * les frais : la release est passée au vert, le registre a inscrit la migration
+ * à la seconde où la réconciliation s'achevait, l'étape d'application n'a plus
+ * rien trouvé à faire, et la base est restée sur 302 recettes. Rien dans les
+ * journaux ne disait qu'une migration avait été sautée.
+ *
+ * Le défaut est donc inversé : ce qui est neuf s'applique, et seule
+ * l'appartenance au socle se déclare.
+ */
+const SOCLE_HISTORIQUE = '20260715174000';
+
 function classify(version, rollback) {
   if (rollback) return { role: 'rollback', baseline: null };
   if (NEW_VERSIONS.has(version)) return { role: 'apply', baseline: 'new' };
   if (LEDGER_MATCH[version]) return { role: 'apply', baseline: 'ledger_match' };
   if (VERIFY_OBJECTS[version]) return { role: 'apply', baseline: 'verify_objects' };
+  // Les versions non numériques sont les toutes premières migrations du dépôt
+  // (« 001 », « 012 »…) : elles appartiennent au socle par construction.
+  const numerique = /^\d{14}$/.test(version);
+  if (numerique && version > SOCLE_HISTORIQUE) return { role: 'apply', baseline: 'new' };
   return { role: 'apply', baseline: 'trust' };
 }
 
