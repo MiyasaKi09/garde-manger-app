@@ -72,7 +72,15 @@ describe('densité protéique du corpus', () => {
 describe('une semaine réelle pour un foyer à cible protéique élevée', () => {
   const recipes = getCanonicalRecipes({ servings: 2 })
 
-  it('couvre nettement mieux la cible qu’avant l’enrichissement', { timeout: 20000 }, () => {
+  // Le budget de temps suit le vivier, qui grandit à chaque lot. Mesure du
+  // 29 juillet 2026 : 361 recettes éligibles, ~7 s pour résoudre une semaine,
+  // soit ~19 ms par recette et par semaine. Le test en résout deux. Le coût est
+  // LINÉAIRE dans le nombre de candidats — c'est ce qu'il faut surveiller : un
+  // dépassement accompagné d'un vivier stable, ou qui croît plus vite que lui,
+  // signalerait une régression du solveur et non la croissance du corpus.
+  // À 3 000 recettes publiables, la même mesure donnerait près d'une minute par
+  // semaine : la recherche demandera alors un élagage, pas un budget plus large.
+  it('couvre nettement mieux la cible qu’avant l’enrichissement', { timeout: 60000 }, () => {
     const releves = ['2026-08-03', '2026-08-10'].map((start) => {
       const plan = semaine(start, recipes)
       expect(plan.status).toBe('published')

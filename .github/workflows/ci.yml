@@ -124,6 +124,15 @@ jobs:
           # ajoute. Sans lui, l'étape corpus échoue sur la première recette avec
           # « colonne derived_from_version_id inexistante » — ce qui s'est
           # produit, et ce que ce commentaire existe pour éviter de refaire.
+          #
+          # 20260729180000, le CATALOGUE D'ALIMENTS, n'entre PAS ici : il
+          # arriverait avant l'étape F0, qui charge son propre petit corpus de
+          # formes et réclame le profil nutritionnel primaire de certaines
+          # d'entre elles. Les deux se disputeraient la même contrainte
+          # d'unicité. Le catalogue est donc chargé plus bas, juste avant le
+          # corpus — l'ordre même de la production. La migration, elle, est
+          # éprouvée par le scénario B, qui applique toutes les entrées « new »
+          # du manifeste sur une base qui n'a jamais vu F0.
           find supabase/migrations -maxdepth 1 -name '*.sql' \
             | grep -v '_rollback\.sql$' \
             | grep -v '/20260715171000_v3_canonical_plan_publication\.sql$' \
@@ -364,6 +373,13 @@ jobs:
                   JOIN ops.source_datasets sd ON sd.id = rv.source_dataset_id
                   WHERE sd.code = 'myko_editorial_v3';"
 
+          # Le catalogue d'aliments AVANT le corpus : c'est au chargement d'une
+          # recette que ses besoins sont rattachés à des formes. Un catalogue
+          # arrivé après ne rattacherait rien, et l'invariant d'éligibilité plus
+          # bas mesurerait le vide.
+          node scripts/data/foods/build-recipe-food-sql.mjs
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f scripts/data/out/recipe-food-load.sql
+
           psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -q -f scripts/data/out/corpus-v3-load.sql
           charge=$(psql "$DATABASE_URL" -tAc "$compte")
           echo "chargé en base : $charge versions V3"
@@ -392,7 +408,33 @@ jobs:
             echo "::error::$liees dérivées reliées à leur base pour $derivees déclarées"
             exit 1
           fi
-          echo "[A] corpus-v3 : $charge recettes chargées dont $derivees dérivées reliées, idempotence vérifiée."
+          # ── L'invariant qui manquait ────────────────────────────────────
+          # Le corpus déclare N recettes publiables : toutes leurs quantités se
+          # convertissent en grammes et leur composition est complète. La base
+          # doit en trouver AUTANT de planifiables. L'écart, quand il existe,
+          # signifie que le catalogue d'aliments ne porte pas une forme que les
+          # recettes emploient — et rien ne le disait : la production a servi
+          # 85 recettes planifiables pendant que le corpus en déclarait 361,
+          # parce que le chargement du catalogue n'était versionné nulle part.
+          publiables=$(node -e "console.log(JSON.parse(require('fs').readFileSync('scripts/data/out/corpus-v3-report.json','utf8')).recipes_static_eligible)")
+          planifiables=$(psql "$DATABASE_URL" -tAc \
+            "SELECT count(*) FROM culinary.recipe_versions rv
+             JOIN ops.source_datasets sd ON sd.id = rv.source_dataset_id
+             WHERE sd.code = 'myko_editorial_v3' AND rv.planning_eligible;")
+          if [ "$planifiables" != "$publiables" ]; then
+            echo "::error::$planifiables recettes planifiables en base pour $publiables déclarées publiables : une forme manque au catalogue"
+            psql "$DATABASE_URL" -tAc \
+              "SELECT DISTINCT req.source_name
+               FROM culinary.recipe_ingredient_requirements req
+               JOIN culinary.recipe_versions rv ON rv.id = req.recipe_version_id
+               JOIN ops.source_datasets sd ON sd.id = rv.source_dataset_id
+               WHERE sd.code = 'myko_editorial_v3'
+                 AND req.strictness = 'required' AND req.preferred_food_form_id IS NULL
+               ORDER BY 1 LIMIT 40;"
+            exit 1
+          fi
+
+          echo "[A] corpus-v3 : $charge recettes chargées dont $derivees dérivées reliées, $planifiables planifiables, idempotence vérifiée."
 
       # ────────────────────────────────────────────────────────────────────────
       # SCÉNARIO B — Simulation d'une prod divergente, puis reconcile + apply

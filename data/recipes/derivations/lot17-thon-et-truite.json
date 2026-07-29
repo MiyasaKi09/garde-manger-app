@@ -1,0 +1,345 @@
+{
+  "lot": "lot17 — thon à la basquaise et truite aux amandes",
+  "note": "Deux bases, sept variantes annoncées, sept dérivations retenues et aucune écartée — c'est le premier lot où toutes les phrases de variante décrivaient un vrai geste, et non un accompagnement ou une préférence de cuisson. SRC-059 a posé le seul cas d'homonymie du lot, et il était inévitable : la base porte à la fois « Piment doux vert frais » (un légume) et « Piment d'Espelette moulu » (une épice), deux formes dont le mot de tête est le même. Retirer le premier laisse forcément « piment » dans l'étape 5, où il ne désigne plus que l'Espelette conservé ; l'homonyme est déclaré à ce titre, après réécriture des étapes 1 et 4 d'où le piment doux a réellement disparu. La substitution demandée par la phrase n'a pas pu s'écrire en « substitute » : la forme de remplacement, « Poivron vert frais », figure déjà dans la base, et le moteur refuse à juste titre de créer une double ligne — il a fallu retirer le piment doux puis doubler le poivron vert, ce qui porte la chair verte de 200 à 400 g. Deux dérivées de ce lot ne touchent à aucune quantité et l'assument : la version gratinée de SRC-059 et les filets levés de SRC-060 ne changent que la conduite, la première en couchant le thon sur la piperade étalée pour trois minutes de gril, la seconde en ramenant la cuisson de huit à quatre minutes sur une chair sans peau. SRC-060 a demandé le plus de travail sur les empreintes sensorielles, parce que ses garde-fous d'identité sont écrits contre deux de ses propres variantes : « pochée, fumée ou gratinée, elle sort de l'identité du plat » et « remplacé par une crème, ce n'est plus une truite aux amandes » contredisent frontalement la version au four à la crème. L'empreinte de cette dérivée a donc été réécrite en entier — textures, saveurs et garde-fous — plutôt que de laisser une recette porter des interdits que sa propre méthode enfreint ; même correction, plus légère, pour les filets dépouillés, dont la base exigeait la peau. La version au four est aussi la seule à perdre un allergène : la farine T55 disparaît avec l'enrobage, et le gluten avec elle. Le seul alcool employé, « Cognac », existe au vocabulaire ; « alcool ambré » y trouvait aussi « Rhum ambré » et « Calvados », le cognac a été retenu comme la lecture la plus courante du flambage de poisson, et le rationale ne prétend pas que la phrase en nommait un. Aucune forme n'a manqué au catalogue sur ce lot.",
+  "derivations": [
+    {
+      "code": "SRC-059-D1",
+      "base": "SRC-059",
+      "family": "Thon à la basquaise aux deux poivrons",
+      "variant_label": "Remplacer le piment doux vert par un second poivron vert quand la variété basque manque à l'étal.",
+      "rationale": "Le piment doux du Pays basque cède la place à un second poivron vert, ce qui porte la chair verte de 200 à 400 g et fait pencher volontairement le duo vers le vert. On y gagne un plat réalisable partout, et une piperade plus franchement végétale. On y perd le parfum herbacé et la pointe de chaleur de la variété basque, que seul le piment d'Espelette de la liste compense encore, et un peu de temps : la paroi du poivron est plus épaisse, elle met plus longtemps à s'assouplir.",
+      "operations": [
+        { "op": "remove", "form": "Piment doux vert frais" },
+        { "op": "scale", "form": "Poivron vert frais", "factor": 2 }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Prévoir environ 260 g de poivrons rouges entiers et 520 g de verts, soit un rouge et deux verts de belle taille, pour obtenir les 200 g de chair rouge et les 400 g de chair verte utiles. Les fendre, arracher le pédoncule, secouer les graines, raser les cloisons blanches puis débiter la chair en lanières larges comme un doigt, en gardant les deux couleurs séparées jusqu'à la sauteuse."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Verser d'abord les lanières vertes, remonter légèrement la flamme et les laisser quatre minutes seules, puis ajouter les rouges et poursuivre douze minutes à découvert : les bords doivent s'assouplir et prendre quelques marques dorées. Le vert étant deux fois plus abondant que le rouge, l'étaler franchement et remuer plus souvent, sans quoi il s'entasse au fond et cuit à l'étouffée au lieu de rissoler."
+        }
+      ],
+      "homonymes": [
+        {
+          "form": "Piment doux vert frais",
+          "raison": "Le mot « piment » qui subsiste à l'étape 5 nomme le piment d'Espelette moulu, épice conservée dans la liste et sans rapport avec le légume retiré ; le piment doux vert frais, lui, a bien disparu des étapes 1 et 4 en même temps que de la liste."
+        }
+      ]
+    },
+    {
+      "code": "SRC-059-D2",
+      "base": "SRC-059",
+      "family": "Thon sur piperade liée à l'œuf",
+      "variant_label": "Ajouter un œuf battu en fin de réduction pour glisser vers la piperade liée, et servir le thon dessus.",
+      "rationale": "Les œufs battus versés en fin de réduction lient la piperade : le jus de tomate cesse de napper les légumes pour devenir une masse crémeuse qui les tient. La phrase parle d'un œuf, la base sert quatre personnes — il en faut deux pour que la liaison se sente sans virer à la brouillade. Le thon n'est plus enrobé mais couché dessus, ce qui le garde en pétales lisibles et le prive de l'échange de saveurs que le mélange produisait. Le prix réel est la fenêtre de service : liée à l'œuf, la piperade se raffermit en refroidissant et ne se réchauffe plus sans grainer.",
+      "cook_minutes": 37,
+      "operations": [
+        { "op": "add", "form": "Œuf cru", "quantity": 2, "unit": "u", "role": "liant", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 6,
+          "instruction": "Casser les deux œufs dans un bol et les battre à la fourchette juste assez pour mêler jaunes et blancs, sans les faire mousser. Baisser la flamme sous la piperade, verser les œufs en filet et remuer sans arrêt à la spatule en raclant le fond. Retirer du feu dès que le mélange épaissit et nappe la spatule, au bout d'une minute à peine : poussé plus loin, l'œuf coagule en grumeaux et la liaison tourne en brouillade."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Étaler la piperade liée dans un plat creux ou la répartir directement dans quatre assiettes, puis coucher les pétales de thon par-dessus sans les enfouir. Le poisson reste ainsi identifiable sous la fourchette et ne subit pas une seconde chauffe dans une masse brûlante, où ses fibres se dessécheraient."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Goûter la piperade seule avant de rectifier avec le sel fin et le poivre noir : la saumure du thon a déjà salé le plat, mais l'œuf, lui, réclame son sel. Servir sans attendre, tant que la liaison est encore souple — elle se raffermit en quelques minutes et ne revient pas en arrière."
+        }
+      ],
+      "techniques": ["mijotage", "réduction", "liaison aux œufs"],
+      "allergens": ["poisson", "œuf"],
+      "conservation": "Se garde deux jours au réfrigérateur entre 0 et 4 °C dans une boîte fermée, mais la liaison à l'œuf ne supporte pas un vrai réchauffage : la reprendre à feu très doux en remuant, ou la manger tiède, faute de quoi elle graine. La congélation est exclue : l'œuf tranche au dégel et la chair de thon en conserve devient cotonneuse.",
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 0,
+          "umami": 3,
+          "heat": 1,
+          "pungency": 2,
+          "richness": 3,
+          "freshness": 2,
+          "intensity": 3
+        },
+        "dominant_flavors": ["tomate cuite", "poivron confit", "œuf lié"],
+        "aroma_families": ["végétal cuit", "fruité olive", "piment doux"],
+        "target_textures": ["légumes fondants", "liaison crémeuse à l'œuf", "pétales de thon effeuillés"],
+        "signature_ingredients": [
+          "Thon au naturel en conserve, égoutté",
+          "Poivron rouge frais",
+          "Piment d'Espelette moulu"
+        ],
+        "identity_guardrails": [
+          "L'œuf entre hors ébullition et se retire dès qu'il nappe la spatule : poussé plus loin il grumelle, et la piperade liée n'est plus qu'une brouillade aux légumes.",
+          "Le thon se couche sur la piperade et ne s'y mélange jamais : incorporé, il se délite dans la masse et le plat perd la lecture en deux couches qui le définit.",
+          "Le piment d'Espelette est l'épice d'ancrage régional ; le poivre seul ou le piment fort le remplacent mal."
+        ]
+      }
+    },
+    {
+      "code": "SRC-059-D3",
+      "base": "SRC-059",
+      "family": "Thon à la basquaise gratiné",
+      "variant_label": "Étendre la piperade dans un plat, coucher le thon par-dessus et passer trois minutes sous le gril pour une version tiède gratinée.",
+      "rationale": "Rien ne bouge dans la liste, tout se joue dans les trois dernières minutes : au lieu d'être enrobé hors du feu, le thon est couché sur la piperade étalée et passé sous le gril. Les bords des pétales sèchent et se colorent, ce qui donne un contraste que la version mélangée n'a jamais, et le plat arrive à table dans son récipient de cuisson. En contrepartie le gril déshydrate la surface du poisson, exactement ce que la base cherchait à éviter, et l'assaisonnement doit être arrêté avant d'enfourner puisqu'on ne remue plus rien ensuite.",
+      "cook_minutes": 38,
+      "operations": [],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Préchauffer le gril du four. Étaler la piperade brûlante dans un plat à four en l'égalisant à la spatule, puis coucher les pétales de thon par-dessus en une seule couche, à plat et sans les enfouir : c'est la face exposée qui prendra la couleur, une pièce à demi enterrée ne dorera jamais."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Rectifier le sel fin et le poivre noir maintenant, avant la chaleur, en se souvenant que la saumure du thon a déjà salé le plat : une fois gratiné, plus rien ne se mélange et l'assaisonnement reste où il est tombé. Glisser le plat à mi-hauteur sous le gril trois minutes, pas davantage — on cherche des bords dorés sur les pétales, pas une cuisson. Laisser reposer cinq minutes hors du four et servir tiède, avec un riz blanc."
+        }
+      ],
+      "techniques": ["mijotage", "réduction", "gratinage"]
+    },
+    {
+      "code": "SRC-060-D1",
+      "base": "SRC-060",
+      "family": "Truite aux amandes grillées à sec",
+      "variant_label": "Amandes blondies à sec dans une poêle sans matière grasse, puis parsemées au dernier moment sur les truites : sauce plus légère, croquant plus sec.",
+      "rationale": "Les amandes blondissent dans une poêle nue et cessent d'être le prétexte à fondre le reste du beurre : celui-ci tombe de 50 à 30 g, dont dix seulement pour la sauce. Le croquant est plus sec et tient plus longtemps, puisque les amandes ne s'imbibent plus de gras avant d'être posées, et la part perd une bonne part de sa matière grasse. Ce qui disparaît, c'est le beurre noisette lui-même : il portait le goût de la sauce, et le jus de citron à peine lié qui le remplace est plus vif mais beaucoup plus court. Il faut aussi surveiller davantage — sans beurre pour tempérer la fonte, les amandes passent du blond au brûlé en quelques secondes.",
+      "operations": [
+        { "op": "set", "form": "Beurre doux", "quantity": 30 }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Faire chauffer l'huile d'olive avec les deux tiers du beurre dans une grande poêle sur feu moyen-vif, en gardant le dernier tiers de côté pour la sauce. Déposer les truites côté peau et les laisser prendre couleur environ cinq minutes sans y toucher, puis les retourner deux à trois minutes côté chair. La chair doit se détacher en lamelles opaques sous la pointe d'un couteau. Réserver au chaud sur le plat de service."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Verser les amandes effilées dans une petite poêle parfaitement sèche, sans une trace de gras, et les blondir sur feu moyen quatre à cinq minutes en secouant sans arrêt. Elles colorent plus lentement qu'au beurre et plus régulièrement, mais rien ne les protège : dès que l'odeur de noisette monte, les faire glisser sur une assiette froide, car la fonte continue de les cuire longtemps après le feu coupé."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Essuyer la poêle des truites avec du papier absorbant, la remettre sur feu doux et y faire fondre le reste du beurre, puis retirer du feu et verser le jus de citron en faisant tourner la poêle. Napper les poissons de ce jus à peine lié, puis semer les amandes par-dessus au tout dernier moment : posées sur une sauce courte au lieu d'y baigner, elles gardent un croquant net et cassant jusqu'à l'assiette."
+        }
+      ],
+      "techniques": ["saisie", "déglaçage", "torréfaction à sec"],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 2,
+          "heat": 0,
+          "pungency": 0,
+          "richness": 3,
+          "freshness": 3,
+          "intensity": 3
+        },
+        "dominant_flavors": ["amande torréfiée", "citron", "beurre fondu"],
+        "aroma_families": ["fruit à coque torréfié", "agrume", "lacté"],
+        "target_textures": ["chair floconneuse", "amandes sèches et cassantes", "surface farinée dorée"],
+        "signature_ingredients": ["Truite crue", "Amande effilée", "Beurre doux"],
+        "identity_guardrails": [
+          "Les amandes sont grillées à sec et semées au dernier moment : versées dans la sauce, elles s'imbibent en quelques secondes et le croquant sec que vise cette version disparaît.",
+          "Le beurre reste la matière grasse de la sauce, même réduit à dix grammes : sans lui le jus de citron ne se lie pas et le plat n'est plus qu'un poisson fariné arrosé d'acide.",
+          "La truite est farinée puis saisie à la poêle, peau comprise ; pochée, fumée ou gratinée, elle sort de l'identité du plat."
+        ]
+      }
+    },
+    {
+      "code": "SRC-060-D2",
+      "base": "SRC-060",
+      "family": "Truite flambée au cognac et aux amandes",
+      "variant_label": "Version flambée : arroser les truites saisies d'un alcool ambré chauffé puis enflammé avant d'ajouter les amandes.",
+      "rationale": "Quarante millilitres de cognac tiédi puis enflammé sur les truites encore en poêle ajoutent une couche boisée et vanillée que le beurre seul ne donne pas, et laissent au fond des sucs caramélisés dont la sauce hérite. L'alcool brûle presque entièrement : il en reste le parfum et une vingtaine de calories par part. Le geste coûte de l'attention plus que du temps — hotte coupée, visage écarté, manche tenu à distance — et il accélère la coloration des amandes, que le fond sucré fait virer plus vite. La phrase de la base dit « un alcool ambré » sans le nommer ; le cognac est ici la lecture retenue, non une indication de la source.",
+      "cook_minutes": 17,
+      "operations": [
+        { "op": "add", "form": "Cognac", "quantity": 40, "unit": "ml", "role": "alcool", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Faire chauffer l'huile d'olive avec le tiers du beurre dans une grande poêle sur feu moyen-vif. Déposer les truites côté peau et les laisser prendre couleur environ cinq minutes sans y toucher, puis les retourner deux à trois minutes côté chair. La chair doit se détacher en lamelles opaques sous la pointe d'un couteau. Les laisser dans la poêle cette fois : c'est là qu'elles vont être flambées."
+        },
+        {
+          "op": "insert",
+          "after": 3,
+          "instruction": "Tiédir le cognac quelques secondes dans une petite casserole — un alcool froid ne s'enflamme pas —, couper la hotte, le verser sur les truites et l'enflammer aussitôt en tenant le manche à bout de bras et le visage écarté. Laisser la flamme s'éteindre d'elle-même, une demi-minute environ : elle brûle l'alcool et ne laisse que le parfum de fût accroché à la peau dorée. Réserver ensuite les poissons au chaud sur le plat de service."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Ne pas essuyer la poêle cette fois : le fond porte le cognac réduit avec les sucs, et c'est lui qui fera la sauce. Y faire fondre le reste du beurre sur feu doux et verser les amandes effilées. Remuer sans arrêt trois à quatre minutes jusqu'au blond noisette, en surveillant de près — le sucre laissé par l'alcool les colore plus vite que dans un beurre propre."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Retirer la poêle du feu, verser le jus de citron sur les amandes et faire tourner la poêle pour lier le beurre, les sucs et l'acidité en une sauce ambrée. En napper aussitôt les truites et servir sans attendre, tant que les amandes croquent encore."
+        }
+      ],
+      "techniques": ["saisie", "flambage", "déglaçage", "torréfaction"],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 1,
+          "umami": 2,
+          "heat": 0,
+          "pungency": 0,
+          "richness": 4,
+          "freshness": 2,
+          "intensity": 4
+        },
+        "dominant_flavors": ["beurre noisette", "amande grillée", "eau-de-vie boisée"],
+        "aroma_families": ["lacté", "fruit à coque torréfié", "spiritueux vieilli"],
+        "target_textures": ["chair floconneuse", "amandes croquantes", "sauce ambrée aux sucs"],
+        "signature_ingredients": ["Truite crue", "Amande effilée", "Beurre doux"],
+        "identity_guardrails": [
+          "L'alcool s'enflamme tiède et brûle jusqu'à extinction naturelle : étouffé trop tôt, il laisse dans la sauce une amertume d'alcool cru que rien ne rattrape ensuite.",
+          "La poêle ne s'essuie pas après le flambage : les sucs au cognac sont la sauce, les retirer ramène le plat à sa version d'origine sans rien lui avoir apporté.",
+          "L'amande doit être effilée et blondie juste avant le service : réduite en poudre, mixée en crème ou laissée crue, le plat perd le croquant qui le nomme."
+        ]
+      }
+    },
+    {
+      "code": "SRC-060-D3",
+      "base": "SRC-060",
+      "family": "Truite au four à la crème d'amandes",
+      "variant_label": "Version au four : filets couverts d'une crème aux amandes effilées et enfournés à couvert une vingtaine de minutes, plus moelleuse mais sans croûte dorée.",
+      "rationale": "Le plat quitte la poêle pour le four et change de nature : filets nus, sans enrobage ni huile, couverts d'une crème aux amandes et cuits vingt minutes à couvert. La chair reste nacrée et ne peut plus se dessécher, la sauce se lie d'elle-même au jus rendu, et le service se fait à la cuillère plutôt qu'à la spatule. Le coût est double : ni croûte dorée ni beurre noisette, et deux cents millilitres de crème entière qui alourdissent nettement la part. Les amandes noyées gonflent au lieu de croquer, seul le tiers semé en surface garde un peu de mordant.",
+      "cook_minutes": 20,
+      "operations": [
+        { "op": "remove", "form": "Farine de blé T55" },
+        { "op": "remove", "form": "Huile d'olive vierge extra" },
+        { "op": "set", "form": "Beurre doux", "quantity": 20 },
+        { "op": "add", "form": "Crème fraîche liquide entière", "quantity": 200, "unit": "ml", "role": "sauce", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Prévoir quatre truites entières d'environ 250 g, soit un kilo au comptoir du poissonnier : demandez-lui de les écailler, de les vider et de lever les huit filets en ôtant la peau. Il reste environ 520 g de chair nue, ce qui correspond à la quantité utile de la recette. Passer le doigt à plat sur chaque filet pour repérer les arêtes oubliées et les tirer à la pince, puis éponger au papier absorbant."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Chauffer le four à 180 °C. Beurrer largement le fond d'un plat à four avec la moitié du beurre, saler et poivrer les filets sur les deux faces, puis les coucher côte à côte sans jamais les superposer : empilés, ils cuiraient à des vitesses différentes et ceux du dessous rendraient toute leur eau dans le plat."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Faire fondre le reste du beurre dans une petite casserole, retirer du feu et y verser la crème avec le jus de citron. Saler légèrement, mêler à la fourchette, puis ajouter les deux tiers des amandes effilées : elles vont gonfler pendant la cuisson et donner à la sauce un goût d'amande fraîche, laiteux, très loin du fruit grillé de la version à la poêle."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Napper les filets de cette crème aux amandes en la faisant couler jusqu'entre les pièces, semer le reste des amandes en surface, couvrir le plat d'une feuille d'aluminium bien pincée sur les bords et enfourner vingt minutes. La vapeur retenue sous la feuille cuit la truite sans jamais la saisir : elle reste nacrée et souple, mais aucune croûte ne se formera, et découvrir le plat pour la chercher ferait un tout autre plat."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Sortir le plat, ôter l'aluminium et laisser reposer trois minutes avant de servir à la cuillère, en récupérant la sauce liée au fond. Elle a bu le jus des filets et c'est ce qui fait l'intérêt de la version au four : présentée à part, elle n'aurait plus que le goût de la crème."
+        }
+      ],
+      "techniques": ["cuisson au four", "cuisson à couvert", "liaison à la crème"],
+      "allergens": ["poisson", "fruits à coque", "lait"],
+      "conservation": "Se garde 48 h au réfrigérateur à 4 °C dans le plat filmé, la crème protégeant la chair du dessèchement bien mieux que ne le faisait la sauce au beurre. Réchauffer à couvert une dizaine de minutes à 150 °C, jamais à la poêle où la crème tranche. Ne pas congeler : la crème se sépare au dégel et la truite rend son eau.",
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 1,
+          "salty": 2,
+          "acidic": 2,
+          "bitter": 0,
+          "umami": 2,
+          "heat": 0,
+          "pungency": 0,
+          "richness": 4,
+          "freshness": 2,
+          "intensity": 2
+        },
+        "dominant_flavors": ["crème cuite", "amande fraîche", "citron"],
+        "aroma_families": ["lacté", "fruit à coque", "agrume"],
+        "target_textures": ["chair nacrée et moelleuse", "amandes gonflées dans la crème", "sauce courte liée au jus de cuisson"],
+        "signature_ingredients": ["Truite crue", "Amande effilée", "Beurre doux"],
+        "identity_guardrails": [
+          "La cuisson se fait à couvert et sans coloration : découvrir le plat pour faire dorer la surface donne un gratin, c'est-à-dire autre chose que ce que cette version annonce.",
+          "Les amandes restent effilées et pour partie noyées dans la crème : réduites en poudre elles épaississent la sauce en frangipane salée, et il ne reste plus rien à croquer.",
+          "La truite est levée en filets et cuite nue, sans enrobage : un poisson enrobé délaverait son voile dans la crème et la troublerait."
+        ]
+      }
+    },
+    {
+      "code": "SRC-060-D4",
+      "base": "SRC-060",
+      "family": "Filets de truite meunière aux amandes",
+      "variant_label": "Filets levés et dépouillés plutôt que poissons entiers : cuisson ramenée à deux minutes par face, service plus facile à table.",
+      "rationale": "Les truites sont levées en filets et dépouillées : la cuisson du poisson tombe de huit à quatre minutes, et personne ne trie d'arêtes dans son assiette. La chair nue prend la farine bien plus vite qu'une peau, il faut donc tapoter deux fois plus sous peine d'un enrobage épais qui roussit avant que le poisson soit chaud. On perd la peau croustillante, qui faisait la moitié du plaisir de la version entière, et toute marge d'erreur : deux minutes de trop et un filet mince est sec sans retour.",
+      "cook_minutes": 10,
+      "operations": [],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Prévoir quatre truites entières d'environ 250 g, soit un kilo au comptoir du poissonnier : demandez-lui de les vider, de lever les huit filets et d'en retirer la peau. Il reste environ 520 g de chair nue, ce qui correspond à la quantité utile de la recette. Passer le doigt à plat le long de chaque filet pour repérer les arêtes oubliées et les tirer à la pince, puis sécher soigneusement au papier absorbant : une chair humide ne dore pas."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Saler et poivrer les filets sur les deux faces, puis les passer dans la farine T55 étalée sur une assiette. Tapoter deux fois plus franchement que sur un poisson entier : sans peau pour la retenir, la chair nue en prend beaucoup, et l'excédent roussirait dans la poêle avant même que le filet soit cuit."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Faire chauffer l'huile d'olive avec le tiers du beurre dans une grande poêle sur feu moyen-vif. Coucher les filets côté peau, celui qui vient d'être dépouillé, et les laisser deux minutes sans y toucher, puis les retourner deux minutes de l'autre côté. Ils sont minces et cuisent presque instantanément : une minute de trop et la chair se casse en la soulevant. Réserver au chaud sur le plat de service."
+        }
+      ],
+      "techniques": ["saisie", "cuisson courte", "déglaçage", "torréfaction"],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 1,
+          "umami": 2,
+          "heat": 0,
+          "pungency": 0,
+          "richness": 4,
+          "freshness": 2,
+          "intensity": 3
+        },
+        "dominant_flavors": ["beurre noisette", "amande grillée", "citron"],
+        "aroma_families": ["lacté", "fruit à coque torréfié", "agrume"],
+        "target_textures": ["chair floconneuse", "amandes croquantes", "surface farinée dorée"],
+        "signature_ingredients": ["Truite crue", "Amande effilée", "Beurre doux"],
+        "identity_guardrails": [
+          "L'amande doit être effilée et blondie juste avant le service : réduite en poudre, mixée en crème ou laissée crue, le plat perd le croquant qui le nomme.",
+          "Le beurre est la matière grasse de la sauce ; remplacé par une crème ou une sauce montée à l'huile seule, ce n'est plus une truite aux amandes.",
+          "Le filet reste fariné et saisi à la poêle : c'est ce que la découpe ne change pas, et sans cet enrobage doré il ne reste qu'un poisson poêlé nappé de beurre."
+        ]
+      }
+    }
+  ]
+}

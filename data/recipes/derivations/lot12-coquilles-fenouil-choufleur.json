@@ -1,0 +1,519 @@
+{
+  "lot": "lot12 — coquilles, fenouil et chou-fleur",
+  "note": "Quatre bases, seize variantes annoncées, douze dérivations retenues et quatre écartées — toutes les quatre pour la même raison, une forme que le catalogue ne porte pas. SRC-039 est la base la plus amputée : trois de ses cinq variantes tombent. Les morilles réhydratées n'ont aucune forme au vocabulaire — « Champignon séché » existe, mais l'employer aurait fait passer 20 g de morille pour 20 g de champignon anonyme, dont ni le prix ni la composition ne se ressemblent. La pâte à luter n'existe pas davantage, et la fabriquer sur place en gonflant la farine de la base aurait été pire que de l'écarter : la pâte à luter se jette après cuisson, et ses cent grammes de farine se seraient retrouvés comptés dans l'assiette, soit près de quatre-vingt-dix kilocalories par part que personne ne mange. L'alcool de grain enfin n'a ni whisky ni vodka au catalogue — seul le cognac y figure, qui est un alcool de vin et non de grain, donc pas un remplaçant. Les deux variantes retenues, elles, ont demandé du travail de fond : la Mornay retire à la sauce la crème qui la portait, et un roux de 25 g de farine ne tient pas 350 ml de lait comme il tenait 300 g de crème — la farine est donc passée à 30 g et le temps d'épaississement allongé d'une minute, faute de quoi la dérivée aurait annoncé une sauce nappante en décrivant un lait lié. Elle abandonne aussi les coquilles creuses au profit de poêlons, ce qui a obligé à réécrire les étapes 2 et 8, où le contenant est nommé, et à monter le beurre de 40 à 50 g : les 40 g de la base sont intégralement affectés dans ses étapes (10 g pour les échalotes, 25 g pour le roux, 5 g sur le gratin), et une coquille ne se graisse pas quand un poêlon le réclame. SRC-040 perd sa provençale, qui réclame deux formes absentes à la fois : « Jus de tomate » et « Zeste d'orange ». Le catalogue porte « Jus de citron frais » et « Zeste de citron », ce qui montre bien que jus et zestes s'y catalognent séparément — ces deux-là sont des voisins manquants, pas des synonymes à bricoler avec « Tomate concassée en conserve » et « Orange fraîche ». Le départ blanchi est la seule dérivation du lot qui ne touche aucun ingrédient : c'est un pur changement de méthode, mais un vrai, et il déplace le temps sans en faire gagner : la coloration tombe à trois minutes puisque la chair précuite prend couleur bien plus vite, le braisage à vingt minutes, et le total ne monte que de 35 à 40 minutes, les dix minutes gagnées sur le braisage repartant dans la casserole d'eau à porter à ébullition. Le blanchiment n'achète pas non plus une meilleure tenue : il attendrit, donc il rapproche le moment où le quartier se défait, et la dérivée le dit dans son étape comme dans son rationale. SRC-041 rend ses quatre variantes sans difficulté ; celle au bouillon a demandé de déplacer la crème de l'étape 5 à l'étape 6, puisque l'étiquette la veut « en filet final » et non fouettée dans la sauce, et de faire tomber sa quantité de 100 à 40 ml. Cette crème sortie de la sauce, il a fallu monter le bouillon à 600 ml et non 500 : les 35 g de farine de la base travaillent sur 600 ml de liquide (500 de lait plus 100 de crème), et les laisser sur 500 ml aurait donné une sauce plus serrée que celle de la base — l'inverse exact de l'allègement annoncé — et un volume trop court pour recouvrir les bouquets. Son garde-fou d'identité a dû être réécrit : la base affirmait que remplacer le roux beurre-farine-lait « change la nature du plat », ce que la variante fait précisément — le nouveau garde-fou dit ce qui reste vrai, à savoir que c'est le roux qui compte, pas le liquide. SRC-042 rend ses trois variantes. Les deux premières contredisaient frontalement le deuxième garde-fou de la base — « les grains doivent tenir entiers ; passés au mixeur, le plat bascule en velouté » — hérité tel quel, il aurait fait dire à la veloutée qu'elle n'est pas elle-même ; il a été réécrit dans chacune. La version corail a aussi vu son mouillage descendre d'un litre à 800 ml, la corail buvant moins longtemps que la verte, et sa cuisson passer de 40 à 25 minutes. Pour la veloutée, attention au point de comparaison des calories : la base porte déjà 150 g de crème dans sa liste, même facultative, si bien que passer à 200 g n'ajoute qu'une quarantaine de kilocalories par part — c'est la rendre obligatoire qui coûte cher à qui s'en passait, et les deux chiffres sont dits séparément.",
+  "derivations": [
+    {
+      "code": "SRC-039-D1",
+      "base": "SRC-039",
+      "family": "Coquilles Saint-Jacques sur fondue de poireaux",
+      "variant_label": "Fond de fondue de poireaux : blancs de poireaux émincés fondus 20 minutes au beurre sous la sauce, comme sur deux pages de 750g.com.",
+      "rationale": "La fondue glisse une couche végétale douce entre la coquille et la chair, absorbe une part du gras de la sauce et allonge la bouchée d'un fond doux et fibreux. Elle coûte vingt minutes de cuisson douce en plus, trente grammes de beurre supplémentaires et près de cent kilocalories par part. Le poireau apporte aussi son eau : la sauce doit être menée un peu plus serrée qu'à l'ordinaire, sans quoi le montage rend du jus au fond de la coquille et la chapelure se détrempe par en dessous.",
+      "prep_minutes": 40,
+      "cook_minutes": 45,
+      "operations": [
+        { "op": "add", "form": "Poireau cru", "quantity": 500, "unit": "g", "role": "légume", "optional": false },
+        { "op": "set", "form": "Beurre doux", "quantity": 70, "role": "matière grasse", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Étaler la fondue de poireaux au fond des coquilles creuses posées sur une plaque, en une couche régulière d'un demi-centimètre à peine — davantage, et elle prendrait le pas sur la chair. Trancher les grosses pièces en deux dans l'épaisseur, les coucher sur ce lit, napper de sauce sans noyer, saupoudrer de chapelure et parsemer des 5 g de beurre restants en tout petits éclats."
+        },
+        {
+          "op": "insert",
+          "after": 2,
+          "instruction": "Fendre les blancs de poireaux en deux dans la longueur, les laver sous un filet d'eau froide en écartant les feuilles pour chasser le sable pris entre elles, puis les émincer en fines demi-lunes. Les faire tomber dans 30 g de beurre à feu très doux et à couvert, une vingtaine de minutes, en remuant de loin en loin : ils doivent se défaire en compote blonde sans jamais accrocher, car le moindre roussi couvrirait l'iode de la chair. Saler d'une pincée et réserver."
+        }
+      ]
+    },
+    {
+      "code": "SRC-039-D2",
+      "base": "SRC-039",
+      "family": "Coquilles Saint-Jacques sauce Mornay",
+      "variant_label": "Sauce Mornay au gruyère râpé et à la muscade, montée au lait, servie en petits poêlons individuels.",
+      "rationale": "Le lait remplace la crème et le gruyère prend le relais du gras : la sauce devient plus légère en bouche mais plus salée et plus franchement fromagère, et l'iode de la chair passe désormais au second plan. Un roux de 25 g ne tenait le liquide que parce que la crème l'épaississait déjà, d'où trente grammes de farine et une minute de cuisson supplémentaire. Le poêlon remplace la coquille : on y gagne un fond plus large et une croûte plus étendue, on y perd le geste de servir dans le coquillage, qui faisait la moitié de l'effet du plat, et il faut dix grammes de beurre de plus pour le graisser, la coquille s'en passant.",
+      "operations": [
+        { "op": "substitute", "form": "Crème fraîche liquide entière", "with": "Lait entier", "quantity": 350, "unit": "ml", "role": "liquide de sauce" },
+        { "op": "set", "form": "Farine de blé T55", "quantity": 30, "role": "liant" },
+        { "op": "set", "form": "Beurre doux", "quantity": 50, "role": "matière grasse" },
+        { "op": "add", "form": "Gruyère râpé", "quantity": 100, "unit": "g", "role": "fromage", "optional": false },
+        { "op": "add", "form": "Muscade moulue", "quantity": 1, "unit": "g", "role": "épice", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Ouvrir chaque coquille en engageant une lame rigide contre la face plate, au niveau de la charnière, puis en rasant l'intérieur du couvercle pour trancher le muscle. Détacher la chair, ôter la frange grise et le petit nerf latéral, rincer très vite et éponger à fond. Les valves n'ont pas d'emploi ici : le montage se fait dans quatre petits poêlons de fonte ou de terre, beurrés de 10 g prélevés sur le beurre puis mis à tiédir près du four, dont le fond plus large donnera une croûte plus étendue."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Dans une casserole à part, fondre 25 g de beurre, pluie de farine, remuer une minute à feu doux : le mélange doit mousser sans blondir. Verser la réduction passée au tamis puis le lait tiédi en trois fois, en fouettant à chaque ajout. Laisser épaissir 6 à 7 minutes à petits bouillons — privée du gras qui la portait, la sauce demande un roux un peu plus fourni et une minute de plus pour napper le dos d'une cuillère."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Retirer du feu, attendre une minute, puis incorporer les jaunes d'œufs un par un au fouet — la sauce ne doit plus jamais bouillir, sous peine de grainer. Jeter le gruyère râpé en trois fois dans la chaleur restante en fouettant jusqu'à ce qu'il file sans se séparer, râper la muscade par-dessus, poivrer et ciseler le persil dedans. Goûter et n'ajuster le sel qu'après : la réduction et le fromage en apportent déjà beaucoup à eux deux."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Trancher les grosses pièces de chair en deux dans l'épaisseur, les répartir dans les poêlons tièdes sans les serrer, napper de sauce sans noyer, saupoudrer de chapelure et parsemer des 5 g de beurre restants en tout petits éclats."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Enfourner dans le haut d'un four préchauffé à 210 °C pour 8 à 10 minutes, le temps que la chapelure prenne couleur et que la surface boursoufle. S'arrêter dès que la croûte est dorée : au-delà, la chair se rétracte et devient élastique. Servir les poêlons brûlants, posés chacun sur une assiette doublée d'un rond de papier pour qu'ils ne glissent pas."
+        }
+      ],
+      "conservation": "Monté mais non enfourné, le plat attend jusqu'à 12 h à 4 °C sous film. Cuit, il se garde 24 h au réfrigérateur et se réchauffe 6 à 7 minutes à 180 °C, jamais au micro-ondes. La chair crue parée ne dépasse pas 24 h posée sur un lit de glace. Congélation : acceptable pour la chair crue étalée à plat et bien épongée (2 mois), déconseillée pour le plat sauce comprise — une Mornay liée aux jaunes tranche encore plus vite qu'une sauce à la crème, le fromage se séparant du lait au réchauffage."
+    },
+    {
+      "code": "SRC-040-D1",
+      "base": "SRC-040",
+      "family": "Fenouil blanchi puis braisé",
+      "variant_label": "Départ blanchi, façon 750g.com : plonger les demi-bulbes cinq minutes dans une eau bouillante salée et les égoutter avant de les colorer, pour un cœur encore plus fondant.",
+      "rationale": "Le passage à l'eau bouillante attendrit le cœur du bulbe avant qu'il ne rencontre la matière grasse, si bien que le braisage tombe à vingt minutes. Le prix est triple : une casserole d'eau de plus à porter à ébullition, une part de l'anis et des sucres du fenouil qui s'en va dans cette eau sans jamais revenir dans le jus, et une marge de cuisson qui se resserre — une chair déjà attendrie passe du fondant à la charpie en quelques minutes et demande d'être goûtée tôt. La coloration devient aussi plus ingrate, une chair humide dorant moins franchement qu'une chair crue. Au total le temps de feu bouge à peine : les dix minutes de braisage gagnées repartent dans l'eau à porter à ébullition.",
+      "cook_minutes": 40,
+      "operations": [],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Raccourcir la base terreuse au couteau sans creuser le cœur : c'est lui qui empêchera les morceaux de se défaire pendant la cuisson. Fendre chaque bulbe en deux dans la hauteur et s'en tenir là pour l'instant, la découpe fine venant après le passage à l'eau. Citronner aussitôt les faces tranchées pour qu'elles ne noircissent pas."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Coucher les quartiers de fenouil sur leur face tranchée, bien à plat contre le fond, et les laisser dorer trois à quatre minutes seulement : une chair déjà attendrie prend couleur bien plus vite qu'une chair crue et brûlerait au temps de la version directe. Les retourner pour marquer l'autre face, puis glisser l'ail écrasé entre les morceaux au tout dernier moment afin qu'il parfume sans amertume."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Poser le couvercle et maintenir un frémissement paresseux une vingtaine de minutes, en retournant les quartiers une fois à mi-cuisson pour qu'ils s'imprègnent des deux côtés. Le blanchiment a pris de l'avance sur le braisage : goûter dès dix-huit minutes, car un fenouil déjà attendri passe du fondant à la charpie en quelques minutes."
+        },
+        {
+          "op": "insert",
+          "after": 2,
+          "instruction": "Porter une grande casserole d'eau salée à pleine ébullition et y plonger les demi-bulbes cinq minutes, pas davantage : il s'agit d'attendrir le cœur, pas de le cuire. Les sortir à l'écumoire, les laisser s'égoutter retournés sur un linge, puis les recouper en quartiers de deux à trois centimètres d'épaisseur. Les éponger à fond avant la poêle, sans quoi ils bouilliront dans leur propre eau au lieu de dorer."
+        }
+      ]
+    },
+    {
+      "code": "SRC-040-D2",
+      "base": "SRC-040",
+      "family": "Fenouil braisé au citron",
+      "variant_label": "Sans alcool : supprimer le vin blanc sec, compenser par la même quantité d'eau et doubler le jus de citron frais en fin de réduction.",
+      "rationale": "Sans le déglaçage alcoolisé, le jus perd la charpente acide et légèrement amère qui tenait tête au sucre du bulbe ; le citron doublé la rétablit, mais elle devient plus pointue et plus courte en bouche. L'eau ne remplace le liquide que par le volume : elle n'apporte ni sucres ni tanins, si bien que la réduction finale nappe moins et met un peu plus de temps à se resserrer. En échange le plat devient servable aux enfants et perd ses sulfites.",
+      "operations": [
+        { "op": "remove", "form": "Vin blanc sec" },
+        { "op": "set", "form": "Eau", "quantity": 400, "unit": "ml", "role": "mouillement" },
+        { "op": "scale", "form": "Jus de citron frais", "factor": 2 }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Raccourcir la base terreuse au couteau sans creuser le cœur : c'est lui qui empêchera les morceaux de se défaire pendant la cuisson. Fendre chaque bulbe en deux dans la hauteur, puis recouper en quartiers de deux à trois centimètres d'épaisseur selon la taille du légume. Les citronner aussitôt, mais avec la moitié du jus seulement : l'autre moitié part de côté jusqu'à la fin de cuisson, où elle rendra l'acidité qu'un déglaçage sans alcool ne donne plus."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Verser la moitié de l'eau sur le fond brûlant et gratter les sucs à la spatule, puis compléter avec le reste. Sans alcool pour dissoudre ce qui a attaché, ce seul mouillement doit tout faire : gratter franchement, jusqu'à ce que le fond redevienne clair. Le liquide monte à mi-hauteur des quartiers. Éparpiller le thym et le sucre, puis assaisonner de sel et de poivre."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Retirer le couvercle et pousser le feu quelques minutes : le jus doit se resserrer jusqu'à napper les quartiers d'un sirop léger et brillant, ce qui demande ici une minute ou deux de plus qu'à l'ordinaire. Verser alors hors du feu la moitié du jus de citron gardée pour la fin — c'est elle qui rend l'acidité perdue au déglaçage, et elle la garde d'autant mieux qu'elle n'a pas bouilli. Rectifier l'assaisonnement, disperser les plumets réservés et servir sans attendre."
+        }
+      ],
+      "allergens": ["lait"],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 3,
+          "salty": 2,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 1,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 3,
+          "intensity": 2
+        },
+        "dominant_flavors": ["anisé", "citronné", "sucré végétal"],
+        "aroma_families": ["anisée", "agrume", "herbacée"],
+        "target_textures": ["fondant", "légèrement confit", "jus sirupeux"],
+        "signature_ingredients": ["Fenouil frais", "Jus de citron frais"],
+        "identity_guardrails": [
+          "Le fenouil doit être braisé en quartiers gardant leur cœur : émincé finement, il devient une fondue de fenouil et perd l'identité du plat.",
+          "La cuisson se fait à couvert dans un liquide court puis réduit ; rôti à sec au four, le résultat n'est plus un braisé.",
+          "Privé de déglaçage alcoolisé, le plat n'a plus que le citron pour tenir son acidité : le doubler et en garder la moitié pour le hors-feu n'est pas un détail mais la condition pour que le bulbe ne vire pas au légume sucré."
+        ]
+      }
+    },
+    {
+      "code": "SRC-040-D3",
+      "base": "SRC-040",
+      "family": "Fenouil braisé à l'huile d'olive",
+      "variant_label": "Tout à l'huile d'olive : retirer le beurre et monter à 40 g d'huile, pour une version maigre et une conservation plus longue au froid.",
+      "rationale": "Sans matière grasse laitière, le fond de cocotte perd le lacté qui arrondissait l'anis et le jus devient plus net, plus fruité, franchement méditerranéen. Les douze grammes d'huile supplémentaires ne compensent pas tout : le sirop final nappe moins et brille davantage, faute des protéines du lait qui l'aidaient à s'accrocher aux quartiers. En échange le plat devient végétalien et tient deux jours de plus au réfrigérateur.",
+      "operations": [
+        { "op": "remove", "form": "Beurre doux" },
+        { "op": "set", "form": "Huile d'olive vierge extra", "quantity": 40, "role": "matière grasse" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Chauffer l'huile d'olive seule dans une cocotte assez large pour recevoir tous les quartiers sur une seule couche : la portion est montée à 40 g, faute de quoi le fond manquerait de corps une fois le braisage lancé et le légume se contenterait de bouillir. Y jeter l'oignon finement émincé et le laisser s'attendrir cinq minutes à feu modéré, jusqu'à ce qu'il perde son opacité, sans lui laisser prendre de couleur."
+        }
+      ],
+      "allergens": ["sulfites"],
+      "conservation": "Se conserve 4 à 5 jours au réfrigérateur à 4 °C, dans une boîte hermétique et baigné de son jus de braisage : sans matière grasse laitière, rien ne tourne aussi vite et le jus fige à peine au froid. Réchauffer doucement à couvert avec une cuillère d'eau, ou servir tiède, l'huile d'olive supportant très bien la seconde chauffe. La congélation reste déconseillée : les fibres du fenouil éclatent au dégel et le légume rend son eau, donnant une texture filandreuse et un jus délavé."
+    },
+    {
+      "code": "SRC-041-D1",
+      "base": "SRC-041",
+      "family": "Gratin de chou-fleur au bouillon de volaille",
+      "variant_label": "Version au bouillon, comme sur marmiton : remplacer le lait entier par du bouillon de volaille bien chaud pour une sauce plus légère, et ne garder la crème qu'en filet final.",
+      "rationale": "Le velouté au bouillon allège franchement le plat et laisse le chou-fleur au premier plan, là où la béchamel le couvrait ; en contrepartie la sauce est plus fluide, moins couvrante, et se sépare plus vite à l'attente. Le bouillon monte à 600 ml pour reprendre aussi les cent millilitres de crème qui détendaient la béchamel : à 500 ml, le même roux donnerait une sauce plus serrée que celle de la base, et il en manquerait pour recouvrir les bouquets. Le sel demande de la prudence, le bouillon en apportant déjà. Les quarante millilitres de crème versés en filet ne servent qu'à rendre un peu de rondeur en surface, pas à lier : mélangés dans la sauce, ils ne se verraient plus.",
+      "operations": [
+        { "op": "substitute", "form": "Lait entier", "with": "Bouillon de volaille", "quantity": 600, "unit": "ml", "role": "liquide de sauce" },
+        { "op": "set", "form": "Crème fraîche liquide entière", "quantity": 40, "role": "finition" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Faire fondre le reste du beurre à feu doux dans une casserole, verser la farine d'un coup et remuer une bonne minute jusqu'à ce que le mélange mousse sans colorer. Retirer du feu quelques secondes, puis incorporer le bouillon de volaille très chaud en trois fois, en fouettant à chaque ajout : un liquide bouillant sur un roux tiédi se lie sans grumeau, l'inverse demande dix minutes de patience."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Remettre sur feu doux et laisser épaissir cinq à six minutes en fouettant sans arrêt, jusqu'à ce que la sauce voile la spatule. Elle nappera moins franchement qu'une béchamel et c'est normal : le bouillon n'a ni gras ni protéines laitières pour épauler la farine, et il ne faut surtout pas chercher à rattraper cette légèreté en poussant la réduction, sous peine de manquer de sauce au montage. Saler avec prudence — le bouillon a déjà sa part de sel —, poivrer, râper la muscade, puis fouetter hors du feu un tiers du gruyère pour qu'il fonde dans la sauce encore chaude."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Étaler une louche de sauce au fond du plat beurré, ranger les bouquets serrés et tête vers le bas afin que la sauce s'infiltre entre les fleurettes, puis napper du reste jusqu'à recouvrir les sommets. Verser enfin la crème en filet sur toute la surface, sans chercher à la mélanger : c'est elle qui rendra au gratin le peu de rondeur que le bouillon lui a retiré."
+        }
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": ["bouillon de volaille", "fromage affiné", "légume crucifère doux"],
+        "aroma_families": ["bouillon", "beurré", "épices douces"],
+        "target_textures": ["bouquets fondants", "sauce fluide et nappante", "croûte gratinée"],
+        "signature_ingredients": ["Chou-fleur frais", "Gruyère râpé", "Bouillon de volaille"],
+        "identity_guardrails": [
+          "Les bouquets de chou-fleur doivent rester entiers et identifiables sous la sauce : réduits en purée, le plat devient un flan de légume et non un gratin.",
+          "C'est le roux beurre-farine qui fait la sauce, pas le liquide qu'on y verse : remplacer le lait par du bouillon reste un gratin, verser un jus de cuisson non lié n'en est plus un.",
+          "La couche de fromage gratinée en surface est obligatoire : sans croûte dorée, il ne reste qu'un chou-fleur au velouté."
+        ]
+      }
+    },
+    {
+      "code": "SRC-041-D2",
+      "base": "SRC-041",
+      "family": "Gratin de chou-fleur au curry",
+      "variant_label": "Version au curry de chefsimon : fouetter une petite cuillerée de curry en poudre dans la béchamel juste avant de napper, en rallongeant d'un peu de lait si la sauce s'épaissit trop.",
+      "rationale": "Quatre grammes de curry suffisent à colorer la sauce et à poser une chaleur douce derrière le lacté, sans que le chou-fleur disparaisse dessous. Le mélange contient de l'amidon et de la fécule : il resserre la béchamel, d'où les cinquante millilitres de lait tenus en réserve. Ajouté trop tôt ou cuit longuement, il vire à l'amer et grise la sauce — c'est le seul vrai risque de la variante.",
+      "operations": [
+        { "op": "add", "form": "Curry en poudre", "quantity": 4, "unit": "g", "role": "épice", "optional": false },
+        { "op": "set", "form": "Lait entier", "quantity": 550, "role": "liquide de sauce" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Faire fondre le reste du beurre à feu doux dans une casserole, verser la farine d'un coup et remuer une bonne minute jusqu'à ce que le mélange mousse sans colorer. Retirer du feu quelques secondes, puis incorporer 500 ml de lait tiédi en trois fois, en fouettant à chaque ajout pour éviter les grumeaux. Garder les 50 ml restants de côté : ils serviront peut-être en fin de sauce."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Remettre sur feu doux et laisser épaissir cinq à six minutes en fouettant sans arrêt, jusqu'à ce que la sauce nappe la spatule. La détendre avec la crème, puis avec le lait réservé si elle s'est trop resserrée. Saler, poivrer, râper la muscade, fouetter hors du feu un tiers du gruyère, et n'incorporer le curry en poudre qu'en tout dernier, juste avant de napper : longuement cuit il tourne à l'amer et grise, jeté au dernier moment il garde son parfum entier."
+        }
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 1,
+          "pungency": 2,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": ["lacté crémeux", "curry doux", "légume crucifère doux"],
+        "aroma_families": ["lacté", "épices douces", "curcuma et coriandre"],
+        "target_textures": ["bouquets fondants", "sauce nappante", "croûte gratinée"],
+        "signature_ingredients": ["Chou-fleur frais", "Gruyère râpé", "Lait entier", "Curry en poudre"],
+        "identity_guardrails": [
+          "Les bouquets de chou-fleur doivent rester entiers et identifiables sous la sauce : réduits en purée, le plat devient un flan de légume et non un gratin.",
+          "Le curry se fouette hors du feu et au dernier moment : cuit avec la sauce il devient amer et la sauce grise.",
+          "La couche de fromage gratinée en surface est obligatoire : sans croûte dorée, il ne reste qu'un chou-fleur à la béchamel."
+        ]
+      }
+    },
+    {
+      "code": "SRC-041-D3",
+      "base": "SRC-041",
+      "family": "Gratin de chou-fleur à l'oignon",
+      "variant_label": "Version à l'oignon : faire blondir un oignon jaune finement émincé dans le beurre avant d'ajouter la farine, ce qui donne une sauce plus douce et plus sucrée.",
+      "rationale": "L'oignon fondu dans le beurre avant le roux sucre la sauce et lui donne une profondeur que le lait seul n'a pas, ce qui adoucit l'amertume propre au chou-fleur. Il coûte huit à dix minutes de feu doux et une vigilance : passé la teinte de miel, il brunit et emmène toute la sauce vers l'amer. Sa présence en morceaux change aussi la texture, qui n'est plus tout à fait lisse sous la fourchette.",
+      "prep_minutes": 25,
+      "cook_minutes": 48,
+      "operations": [
+        { "op": "add", "form": "Oignon jaune cru", "quantity": 130, "unit": "g", "role": "aromate", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Faire fondre le reste du beurre à feu doux dans une casserole et y laisser blondir l'oignon jaune finement émincé huit à dix minutes, en remuant : il doit devenir translucide puis prendre juste une teinte de miel, sans jamais brunir, faute de quoi la sauce entière tirerait sur l'amer. Verser alors la farine d'un coup et remuer une bonne minute jusqu'à ce que le mélange mousse. Retirer du feu quelques secondes, puis incorporer le lait tiédi en trois fois, en fouettant à chaque ajout pour éviter les grumeaux."
+        }
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": ["lacté crémeux", "oignon fondu", "fromage affiné"],
+        "aroma_families": ["lacté", "alliacé", "épices douces"],
+        "target_textures": ["bouquets fondants", "sauce nappante piquée d'oignon", "croûte gratinée"],
+        "signature_ingredients": ["Chou-fleur frais", "Gruyère râpé", "Lait entier"],
+        "identity_guardrails": [
+          "Les bouquets de chou-fleur doivent rester entiers et identifiables sous la sauce : réduits en purée, le plat devient un flan de légume et non un gratin.",
+          "L'oignon doit blondir et non brunir : coloré trop loin, il emporte toute la sauce vers l'amer et annule le bénéfice de la variante.",
+          "La couche de fromage gratinée en surface est obligatoire : sans croûte dorée, il ne reste qu'un chou-fleur à la béchamel."
+        ]
+      }
+    },
+    {
+      "code": "SRC-041-D4",
+      "base": "SRC-041",
+      "family": "Gratin de chou-fleur aux noix",
+      "variant_label": "Version croquante : parsemer une poignée de noix grossièrement concassées avec le fromage du dessus, à ajouter en fin de cuisson pour qu'elles ne brûlent pas.",
+      "rationale": "Les noix donnent au gratin le contraste de texture qui lui manque, tout en fondu et en croûte molle, et leur amertume légère répond bien au gruyère. Elles ajoutent en revanche cinquante grammes d'un aliment à près de sept cents kilocalories aux cent grammes, ce qui pèse davantage que la poignée ne le laisse croire. Elles imposent aussi de fractionner la cuisson au four et interdisent le réchauffage prolongé, qui les ramollit sans retour.",
+      "operations": [
+        { "op": "add", "form": "Noix", "quantity": 50, "unit": "g", "role": "garniture croquante", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Répartir le gruyère restant sur toute la surface et enfourner vingt-cinq minutes à mi-hauteur. Concasser pendant ce temps les noix grossièrement au couteau, en gros éclats plutôt qu'en poudre, les parsemer sur le gratin et remettre au four cinq minutes seulement : au-delà leur huile chauffe et elles tournent à l'amer. Si le dessus manque de couleur, terminer deux minutes sous le gril en surveillant, puis laisser reposer cinq minutes avant de servir."
+        }
+      ],
+      "allergens": ["gluten", "lait", "fruits à coque"],
+      "conservation": "Se conserve trois jours au réfrigérateur entre 0 et 4 °C, plat couvert d'un film une fois refroidi. Réchauffer vingt minutes à 160 °C plutôt qu'au micro-ondes ; les noix, elles, ne retrouveront pas leur croquant et auront ramolli dans la sauce — mieux vaut en garder une part à concasser au moment de la seconde table. La congélation est déconseillée : le chou-fleur relâche son eau, la béchamel tranche à la décongélation et les noix deviennent pâteuses.",
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 2,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 5,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": ["lacté crémeux", "fromage affiné", "noix grillée"],
+        "aroma_families": ["lacté", "beurré", "fruit à coque torréfié"],
+        "target_textures": ["bouquets fondants", "sauce nappante", "éclats de noix craquants"],
+        "signature_ingredients": ["Chou-fleur frais", "Gruyère râpé", "Lait entier"],
+        "identity_guardrails": [
+          "Les bouquets de chou-fleur doivent rester entiers et identifiables sous la sauce : réduits en purée, le plat devient un flan de légume et non un gratin.",
+          "Les noix n'entrent au four que pour les cinq dernières minutes : enfournées d'emblée, leur huile brûle et l'amertume gagne tout le plat.",
+          "La couche de fromage gratinée en surface est obligatoire : sans croûte dorée, il ne reste qu'un chou-fleur à la béchamel."
+        ]
+      }
+    },
+    {
+      "code": "SRC-042-D1",
+      "base": "SRC-042",
+      "family": "Velouté de lentilles au lard",
+      "variant_label": "Version veloutée du dossier : mixer la moitié de la casserole, remonter à la crème et remettre les lardons entiers par-dessus",
+      "rationale": "Mixer la moitié seulement donne un jus épais qui porte les grains restés entiers, au lieu de la soupe uniforme qu'un mixage complet produirait. La crème cesse d'être facultative et passe de cent cinquante à deux cents grammes : c'est elle qui tient la liaison. Le supplément ne pèse qu'une quarantaine de kilocalories par part, mais la rendre obligatoire en coûte cent dix de plus à qui faisait la version sans. Les lardons ne descendent plus dans le bouillon à mi-cuisson mais se posent entiers en surface, ce qui préserve leur croustillant à condition de les repasser à la poêle avant de servir, et retire au jus une partie du fumé qu'il tirait d'eux.",
+      "operations": [
+        { "op": "set", "form": "Crème fraîche liquide entière", "quantity": 200, "role": "liaison", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Glisser le thym, le laurier et les clous de girofle, porter à petits bouillons puis baisser jusqu'au frémissement. Couvrir aux trois quarts et laisser aller trente-cinq à quarante minutes. Les lardons restent de côté cette fois, à couvert et hors du feu : passés au mixeur avec le reste, leur fumé se dissoudrait dans le velouté au lieu de le couronner. Les garder au chaud trois quarts d'heure les rendrait coriaces — mieux vaut les laisser attendre à température ambiante et les réveiller trente secondes à la poêle au moment de dresser. Ne rien saler à ce stade."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Retirer le laurier et les clous de girofle, prélever la moitié de la casserole et la passer au mixeur plongeant jusqu'à obtenir une purée lisse, sans grain sous la langue. La reverser sur l'autre moitié restée entière et remonter avec la crème, en laissant frémir trois minutes de plus pour qu'elle se lie au jus. Saler enfin, poivrer, répartir les lardons entiers par-dessus sans les enfouir, et parsemer de persil ciselé au moment de porter à table."
+        }
+      ],
+      "techniques": ["saisie", "mijotage", "réduction", "mixage"],
+      "conservation": "Trois jours au réfrigérateur à 4 °C dans une boîte fermée, lardons rangés à part pour qu'ils ne s'amollissent pas dans le velouté. La partie mixée épaissit beaucoup en refroidissant : rallonger d'un fond d'eau à la réchauffe douce et fouetter pour la relisser. La congélation est ici déconseillée, la crème n'étant plus facultative et tranchant au dégel — mieux vaut congeler le velouté avant liaison et le remonter au moment de servir.",
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 5,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": ["fumé", "terreux", "crème cuite"],
+        "aroma_families": ["fumé", "herbacé sec", "lacté"],
+        "target_textures": ["moitié veloutée et moitié restée grainée", "lardon doré posé entier en surface", "liaison crémeuse"],
+        "signature_ingredients": ["Lentille verte sèche, crue", "Lardon fumé cru", "Thym séché"],
+        "identity_guardrails": [
+          "Sans lardon fumé, il ne reste que des lentilles mijotées : le fumé du porc est la moitié du nom du plat",
+          "Seule la moitié de la casserole passe au mixeur ; tout mixer effacerait la lentille entière et ferait basculer le plat en soupe",
+          "Les lardons ne descendent jamais dans le mixeur : ils se posent entiers au dernier moment, faute de quoi leur fumé se dilue et la surface perd son contraste"
+        ]
+      }
+    },
+    {
+      "code": "SRC-042-D2",
+      "base": "SRC-042",
+      "family": "Lentilles corail au lard",
+      "variant_label": "Avec de la lentille corail, qui se délite en purée en une vingtaine de minutes et donne un plat plus fondant que grainé",
+      "rationale": "La corail est décortiquée : elle n'a plus de peau pour tenir le grain et se défait en purée, ce qui lie le jus toute seule et raccourcit la cuisson de quarante à vingt-cinq minutes. Le plat y perd sa mâche et le contraste entre la lentille ferme et le lardon fondant, qui faisait une partie de son intérêt. Il faut aussi mouiller moins — huit cents millilitres au lieu d'un litre — et remuer, la corail accrochant au fond dès qu'elle commence à se déliter.",
+      "cook_minutes": 25,
+      "operations": [
+        { "op": "substitute", "form": "Lentille verte sèche, crue", "with": "Lentille corail sèche, crue", "quantity": 320, "unit": "g", "role": "légumineuse" }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Verser les lentilles dans une passoire et les rincer sous l'eau froide jusqu'à ce que l'eau cesse de blanchir : décortiquées, elles rendent beaucoup d'amidon en surface, et l'emporter dans la cocotte ferait mousser le bouillon. Aucun trempage — elles n'en ont pas besoin et se déferaient avant même d'avoir cuit."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Ajouter les lentilles égouttées et les remuer une minute dans les légumes gras : elles doivent se laquer et prendre le parfum du fond de cocotte avant tout liquide. Mouiller avec 800 ml d'eau froide seulement, un doigt au-dessus du niveau des grains : la corail boit moins longtemps que la verte et un litre donnerait une soupe."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Glisser le thym, le laurier et les clous de girofle, porter à petits bouillons puis baisser jusqu'au frémissement. Couvrir aux trois quarts et compter vingt minutes seulement, en remettant les lardons au bout de dix pour qu'ils parfument sans se dessécher. Passer la spatule plate sur le fond de temps à autre : la corail y accroche dès qu'elle commence à se défaire. Ne rien saler à ce stade."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Goûter : les grains ont perdu leur forme et s'écrasent en purée sous la langue, le jus s'étant épaissi de lui-même sans qu'on ait rien lié. Retirer le laurier et les clous de girofle, saler enfin, poivrer, et verser la crème pour arrondir encore si on le souhaite, en laissant frémir trois minutes de plus. Parsemer de persil ciselé au moment de porter à table."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": ["fumé", "terreux"],
+        "aroma_families": ["fumé", "herbacé sec", "végétal cuit"],
+        "target_textures": ["lentille délitée en purée", "lardon doré aux arêtes croustillantes", "jus épais lié par l'amidon du grain"],
+        "signature_ingredients": ["Lentille corail sèche, crue", "Lardon fumé cru", "Thym séché"],
+        "identity_guardrails": [
+          "Sans lardon fumé, il ne reste que des lentilles mijotées : le fumé du porc est la moitié du nom du plat",
+          "La corail se défait par nature et c'est tout le propos de la variante, mais elle interdit de dépasser vingt-cinq minutes, au-delà desquelles il ne reste qu'une bouillie sans relief",
+          "Le sel ne s'ajoute qu'en fin de cuisson et à petite dose, le lard ayant déjà salé le bouillon"
+        ]
+      }
+    },
+    {
+      "code": "SRC-042-D3",
+      "base": "SRC-042",
+      "family": "Lentilles au lard à l'huile d'olive",
+      "variant_label": "Sans crème, simplement lustrée d'un filet d'huile d'olive crue et relevée de persil et d'un tour de moulin",
+      "rationale": "Sans crème, le jus reste court et franc : le fumé du lard et le terreux de la lentille passent devant, sans le voile lacté qui les arrondissait. Les douze grammes d'huile crue versés hors du feu lustrent les grains et portent les arômes, mais ne lient rien — le plat est plus liquide, et il faut le servir dans une assiette creuse. Le persil cesse d'être facultatif : c'est lui, avec le poivre, qui apporte la fraîcheur que la crème donnait autrement.",
+      "operations": [
+        { "op": "remove", "form": "Crème fraîche liquide entière" },
+        { "op": "set", "form": "Huile d'olive vierge extra", "quantity": 40, "role": "matière grasse" },
+        { "op": "set", "form": "Persil frais", "quantity": 15, "role": "herbe", "optional": false },
+        { "op": "set", "form": "Poivre noir moulu", "quantity": 2, "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Remettre la cocotte sur feu moyen avec 28 g de l'huile d'olive, les 12 g restants étant tenus de côté pour la fin, et y faire fondre carotte, oignon et échalote sans les brunir, une bonne poignée de minutes, jusqu'à ce qu'ils deviennent translucides. Ajouter l'ail haché et poursuivre trente secondes, le temps qu'il embaume."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Goûter un grain : il doit céder sous la dent tout en gardant sa forme. Retirer alors le laurier et les clous de girofle, saler enfin et donner un tour de moulin franc. Verser hors du feu l'huile d'olive réservée, à cru, en remuant une seule fois : chauffée, elle perdrait le fruité qui fait tout l'intérêt du geste. Parsemer largement de persil ciselé au moment de porter à table."
+        }
+      ],
+      "allergens": [],
+      "conservation": "Trois jours au réfrigérateur à 4 °C dans une boîte fermée ; les lentilles boivent leur jus en refroidissant, rallonger d'un fond d'eau à la réchauffe douce. Refaire le filet d'huile crue et le persil à l'assiette : ceux de la veille ont perdu leur parfum dans le froid. Sans crème, la congélation ne pose aucun problème — deux mois sans que rien ne tranche au dégel.",
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 3,
+          "freshness": 2,
+          "intensity": 3
+        },
+        "dominant_flavors": ["fumé", "terreux", "huile d'olive fruitée"],
+        "aroma_families": ["fumé", "herbacé sec", "végétal cuit"],
+        "target_textures": ["lentille fondante restée entière", "lardon doré aux arêtes croustillantes", "jus court et lustré"],
+        "signature_ingredients": ["Lentille verte sèche, crue", "Lardon fumé cru", "Thym séché"],
+        "identity_guardrails": [
+          "Sans lardon fumé, il ne reste que des lentilles mijotées : le fumé du porc est la moitié du nom du plat",
+          "Les grains doivent tenir entiers ; passés au mixeur, le plat bascule en velouté et change d'identité",
+          "L'huile de finition se verse hors du feu et à cru : chauffée, elle ne lustre plus rien et le plat perd le seul relief qui remplace la crème"
+        ]
+      }
+    }
+  ]
+}

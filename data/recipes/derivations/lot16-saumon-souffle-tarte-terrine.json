@@ -1,0 +1,815 @@
+{
+  "lot": "lot16 — saumon à l'oseille, soufflé, tarte à l'oignon et terrine",
+  "note": "Quatre bases, quatorze variantes annoncées, onze dérivations retenues et trois écartées — mais la répartition est très inégale et c'est le fait du lot : SRC-055 sort avec ZÉRO dérivée, ses trois variantes tombant toutes sur le catalogue. « Version Troisgros » réclame un fumet de poisson réduit ; « Fumet de poisson » figure aux formes bloquées, motif « confiance C — proxy assumé, non publiable », et il n'existe aucun fond de poisson de remplacement. Monter la sauce à l'eau ou au bouillon de volaille aurait produit une recette signée Troisgros qui n'est pas la sienne. La variante au vermouth tombe plus sèchement encore : ni « Vermouth sec », ni Noilly, ni le moindre vin aromatisé n'existent au vocabulaire (le catalogue porte sept vins, tous non aromatisés), et remplacer un vermouth par un vin blanc sec — c'est-à-dire par l'ingrédient que la variante demande justement de retirer — aurait fait une dérivée identique à sa base. La troisième est une écartée de principe doublée d'une forme manquante : servir sur des pâtes fraîches est un accompagnement, et le catalogue ne porte de toute façon que des pâtes sèches, dont la composition n'est pas celle d'une pâte fraîche à l'œuf. Une quatrième écartée, sur SRC-056 : la « version express sans roux » demande du fromage blanc, absent du catalogue (seul « Fromage de chèvre bûche » répond à la recherche), et l'étiquette annonce elle-même une préparation « sans véritable levée » qui contredit frontalement deux garde-fous de la base — c'était de toute façon un autre plat. Sur la même base, la variante « fromage plus typé » offre deux branches ; seule celle du comté est écrite, la mimolette n'existant pas au vocabulaire, et le nom de la dérivée dit « Soufflé au comté » et non « au comté vieux » puisque la forme catalogue est un comté générique dont la composition ne connaît pas l'affinage. Travail de fond ailleurs : trois dérivées ont exigé la réécriture d'un garde-fou hérité devenu faux. La tarte fine sans appareil œuf-crème contredit le garde-fou « l'appareil œuf-crème doit rester salé et prendre au four » — c'est précisément ce qu'elle supprime ; sa conservation a été réécrite aussi, une tarte fine ne tenant pas trois jours au réfrigérateur comme sa base. La terrine en bocaux contredit « sans pressage et repos de 24 heures, la tranche ne se tient pas » : elle ne se tient effectivement pas et se sert à la cuillère, ce que le rationale dit plutôt que de le maquiller. Les soufflés individuels ont vu leur garde-fou « le moule se remplit aux deux tiers » transposé au ramequin, où l'appel d'air froid est plus brutal encore. Deux ajustements d'allergènes enfin : la terrine au pain d'épices gagne le gluten qu'une terrine ne porte jamais, et la tarte fine perd l'œuf.",
+  "derivations": [
+    {
+      "code": "SRC-056-D1",
+      "base": "SRC-056",
+      "family": "Soufflés au fromage individuels",
+      "variant_label": "Soufflés individuels : répartir l'appareil dans six ramequins beurrés et chemisés de gruyère, cuisson ramenée à 18-20 minutes.",
+      "rationale": "Le même appareil réparti en six petits volumes cuit en moins de vingt minutes, parce que la chaleur atteint presque aussitôt le cœur d'une masse aussi mince. Le rapport entre croûte et cœur bascule : beaucoup plus de surface dorée, beaucoup moins de crémeux au centre, ce qui déçoit qui vient chercher le fondant du grand soufflé. La retombée est plus brutale encore, une minute ou deux sur la table et la couronne est plate. Et le service devient tyrannique — six ramequins à enfourner et à sortir ensemble, six convives déjà assis.",
+      "servings": 6,
+      "cook_minutes": 19,
+      "operations": [],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Prélever une noix sur les 50 g de beurre doux et en enduire au pinceau six ramequins d'environ dix centimètres, en montant du fond vers le haut par traits verticaux. Chemiser chacun d'une pincée prise sur le gruyère râpé, tourner le ramequin pour en tapisser toute la paroi puis le retourner pour chasser l'excédent : cette paroi rugueuse donne prise à l'appareil qui grimpe. Ranger les ramequins sur une plaque, ils partiront et sortiront du four ensemble."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Répartir l'appareil dans les six ramequins en les remplissant aux deux tiers seulement, égaliser la surface à la petite spatule et passer le pouce dans une rainure le long de chaque paroi pour décoller l'appareil du bord. Sur un si petit diamètre, un ramequin trop plein déborde avant d'avoir levé et sa couronne se colle au bord au lieu de monter droit."
+        },
+        {
+          "op": "replace",
+          "n": 10,
+          "instruction": "Enfourner la plaque entière pour dix-huit à vingt minutes, porte fermée pendant les douze premières : une petite masse chauffe vite et se trouve cuite bien avant un grand soufflé. Ils sont prêts lorsqu'ils dépassent le bord de deux bons centimètres, que le dessus est franchement doré et que le centre tremble encore quand on bouge la plaque. Passer directement du four à la table, ramequin brûlant posé sur assiette : à cette taille la retombée s'amorce en moins de deux minutes."
+        }
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "fromage affiné",
+          "beurre",
+          "jaune d'œuf"
+        ],
+        "aroma_families": [
+          "lactée",
+          "beurrée",
+          "épicée douce"
+        ],
+        "target_textures": [
+          "mousseux",
+          "aérien",
+          "croûte dorée généreuse",
+          "cœur crémeux réduit"
+        ],
+        "signature_ingredients": [
+          "Œuf cru",
+          "Gruyère râpé",
+          "Emmental râpé"
+        ],
+        "identity_guardrails": [
+          "Les blancs doivent être montés à part et incorporés à la maryse en fin d'appareil : mélangés au batteur ou battus avec les jaunes, la préparation ne lève plus et devient une omelette au four.",
+          "Le fromage à pâte pressée cuite râpé, emmental et gruyère, porte tout le goût du plat : sans lui il ne reste qu'un soufflé nature.",
+          "La base doit être une béchamel épaisse au beurre et à la farine, seule assez ferme pour tenir les bulles d'air ; un liant à la fécule délayée donne une texture caoutchouteuse hors identité.",
+          "Chaque ramequin se remplit aux deux tiers au maximum et la porte du four reste fermée en début de cuisson : sur un si petit volume, un appel d'air froid effondre la levée en quelques secondes."
+        ]
+      }
+    },
+    {
+      "code": "SRC-056-D2",
+      "base": "SRC-056",
+      "family": "Soufflé au comté",
+      "variant_label": "Fromage plus typé : remplacer tout ou partie de l'emmental par un comté vieux, ou ajouter une soixantaine de grammes de mimolette vieille comme le fait l'une des sources du dossier.",
+      "rationale": "L'emmental cède toute sa place au comté, à poids égal : le soufflé gagne une profondeur de noisette et de croûte, un salé fruité que l'emmental n'a jamais eu, et perd la douceur neutre qui le rendait consensuel. Le comté est plus salé et plus gras, il faut donc saler la base d'une main encore plus légère et accepter un appareil un peu plus lourd à monter. Il fond aussi moins docilement : versé dans une béchamel bouillante il rend son gras et grumelle au lieu de se fondre. La seconde branche de la variante, celle de la mimolette vieille, n'est pas écrite ici faute de forme au catalogue.",
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Emmental râpé",
+          "with": "Comté",
+          "quantity": 105,
+          "unit": "g",
+          "role": "fromage"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Laisser retomber la chaleur cinq minutes, puis incorporer les jaunes un par un au fouet, en attendant que chacun disparaisse avant d'ajouter le suivant. Verser ensuite le comté et le gruyère râpé restant en plusieurs fois, hors du feu et sur une base seulement tiède : jeté dans une béchamel encore bouillante, un fromage aussi gras rend son huile et grumelle au lieu de fondre. Râper la muscade moulue, poivrer, et saler d'une main plus légère encore que d'ordinaire, le comté apportant déjà son propre sel."
+        }
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 4,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 5,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "comté affiné",
+          "noisette",
+          "beurre",
+          "jaune d'œuf"
+        ],
+        "aroma_families": [
+          "lactée",
+          "beurrée",
+          "épicée douce"
+        ],
+        "target_textures": [
+          "mousseux",
+          "aérien",
+          "croûte dorée",
+          "cœur crémeux"
+        ],
+        "signature_ingredients": [
+          "Œuf cru",
+          "Gruyère râpé",
+          "Comté"
+        ],
+        "identity_guardrails": [
+          "Les blancs doivent être montés à part et incorporés à la maryse en fin d'appareil : mélangés au batteur ou battus avec les jaunes, la préparation ne lève plus et devient une omelette au four.",
+          "Le fromage à pâte pressée cuite râpé, ici comté et gruyère, porte tout le goût du plat : sans lui il ne reste qu'un soufflé nature.",
+          "La base doit être une béchamel épaisse au beurre et à la farine, seule assez ferme pour tenir les bulles d'air ; un liant à la fécule délayée donne une texture caoutchouteuse hors identité.",
+          "Le moule se remplit aux deux tiers au maximum et la porte du four reste fermée en début de cuisson, sinon la levée s'effondre.",
+          "Le comté s'incorpore hors du feu dans une base tiède : fondu à chaud, il se sépare et laisse un appareil huileux que les blancs ne rattrapent plus."
+        ]
+      }
+    },
+    {
+      "code": "SRC-056-D3",
+      "base": "SRC-056",
+      "family": "Soufflé au fromage et à la ciboulette",
+      "variant_label": "Soufflé aux herbes : une cuillerée de ciboulette ou d'estragon ciselé ajoutée aux jaunes, sans jamais dépasser cette dose sous peine d'alourdir l'appareil.",
+      "rationale": "Huit grammes de ciboulette ciselée, soit la cuillerée de la variante et pas un brin de plus : son rôle est de tendre un fil vert et allié à travers le gras du fromage, non de parfumer franchement. Ce qu'elle coûte est double — elle apporte de l'eau et un peu de matière à un appareil dont toute la tenue repose sur la légèreté, et sa couleur passe au vert olive éteint sous les trente-cinq minutes de four. Doubler la dose se voit immédiatement : la levée est plus basse et la croûte se piquette de points brunis.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Ciboulette fraîche",
+          "quantity": 8,
+          "unit": "g",
+          "role": "herbe",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Laisser retomber la chaleur cinq minutes, puis incorporer les jaunes un par un au fouet, en attendant que chacun disparaisse avant d'ajouter le suivant. Ciseler la ciboulette fraîche au couteau bien aiguisé, en coupant net plutôt qu'en hachant : écrasée, elle noircit et rend une eau verte qui strie la base. L'ajouter à ce moment précis, dans un appareil encore tiède dont la chaleur libère le parfum sans le cuire. Verser ensuite l'emmental râpé et le gruyère râpé restant en plusieurs fois, hors du feu, jusqu'à obtenir une base lisse et brillante, puis râper la muscade moulue, poivrer et saler d'une main légère seulement."
+        }
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 4,
+          "freshness": 2,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "fromage affiné",
+          "ciboulette",
+          "beurre"
+        ],
+        "aroma_families": [
+          "lactée",
+          "beurrée",
+          "alliacée fraîche"
+        ],
+        "target_textures": [
+          "mousseux",
+          "aérien",
+          "croûte dorée piquée de vert",
+          "cœur crémeux"
+        ],
+        "signature_ingredients": [
+          "Œuf cru",
+          "Gruyère râpé",
+          "Emmental râpé"
+        ],
+        "identity_guardrails": [
+          "Les blancs doivent être montés à part et incorporés à la maryse en fin d'appareil : mélangés au batteur ou battus avec les jaunes, la préparation ne lève plus et devient une omelette au four.",
+          "Le fromage à pâte pressée cuite râpé, emmental et gruyère, porte tout le goût du plat : sans lui il ne reste qu'un soufflé nature.",
+          "La base doit être une béchamel épaisse au beurre et à la farine, seule assez ferme pour tenir les bulles d'air ; un liant à la fécule délayée donne une texture caoutchouteuse hors identité.",
+          "Le moule se remplit aux deux tiers au maximum et la porte du four reste fermée en début de cuisson, sinon la levée s'effondre.",
+          "La ciboulette reste une trace et non un ingrédient de poids : au-delà d'une cuillerée, l'appareil s'alourdit et le soufflé cesse de monter droit."
+        ]
+      }
+    },
+    {
+      "code": "SRC-057-D1",
+      "base": "SRC-057",
+      "family": "Tarte à l'oignon alsacienne",
+      "variant_label": "Version alsacienne stricte : supprimer les lardons et râper un peu de muscade dans l'appareil œuf-crème.",
+      "rationale": "Privée de lardons, la tarte perd sa colonne salée et fumée : le sucre de l'oignon compoté et le lacté de la crème, jusque-là au second plan, passent devant, et la muscade vient occuper le vide aromatique laissé par le lard. Elle est aussi nettement moins riche et moins nourrissante — elle ne fait plus le plat à elle seule et réclame vraiment la salade à côté. La compotée doit en contrepartie aller quelques minutes plus loin, puisque c'est elle seule qui porte désormais le goût.",
+      "cook_minutes": 48,
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Lardon fumé cru"
+        },
+        {
+          "op": "add",
+          "form": "Muscade moulue",
+          "quantity": 0.4,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Retirer le couvercle et poursuivre quinze minutes à feu moyen en remuant régulièrement, jusqu'à ce que toute l'humidité se soit évaporée et que les oignons soient blonds et translucides, sans jamais brunir. Rien ne vient plus saler ni graisser la compotée en cours de route : elle doit aller trois bonnes minutes plus loin que dans la version courante, jusqu'à ce que le sucre se devine nettement. Débarrasser dans un plat et laisser tiédir."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Casser deux gros œufs, soit environ cent dix grammes coquille comprise pour les cent grammes d'œuf de la liste, et les fouetter avec la crème jusqu'à obtenir un appareil homogène. Râper la muscade par-dessus, très peu, une dizaine d'allers-retours sur la râpe fine : elle doit se deviner derrière l'oignon sans jamais s'annoncer, une muscade trop généreuse assèche la bouche et tourne à l'amer. Saler un peu plus franchement qu'à l'ordinaire, poivrer, goûter."
+        }
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 3,
+          "salty": 2,
+          "acidic": 1,
+          "bitter": 0,
+          "umami": 2,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 1,
+          "intensity": 2
+        },
+        "dominant_flavors": [
+          "oignon compoté sucré",
+          "crème cuite",
+          "muscade"
+        ],
+        "aroma_families": [
+          "allium doux",
+          "lacté",
+          "épicée douce"
+        ],
+        "target_textures": [
+          "feuilletage croustillant",
+          "appareil crémeux tout juste pris",
+          "oignons fondants"
+        ],
+        "signature_ingredients": [
+          "Oignon jaune cru",
+          "Crème fraîche liquide entière",
+          "Pâte feuilletée crue"
+        ],
+        "identity_guardrails": [
+          "Sans oignon jaune longuement compoté à feu doux jusqu'au blond, ce n'est plus une tarte à l'oignon mais une quiche quelconque.",
+          "L'appareil œuf-crème doit rester salé et prendre au four : le remplacer par du fromage fondu ou une sauce blanche change de plat.",
+          "La garniture doit reposer sur un fond de pâte cuit dans un moule, jamais sur une base de pain ou de pizza.",
+          "L'absence de lard n'est pas un oubli mais la définition même de cette version : y remettre des lardons la ramène à la tarte à l'oignon courante."
+        ]
+      }
+    },
+    {
+      "code": "SRC-057-D2",
+      "base": "SRC-057",
+      "family": "Tarte à l'oignon au chèvre",
+      "variant_label": "Tarte à l'oignon au chèvre : disposer des rondelles de Fromage de chèvre bûche sur la compotée avant de verser l'appareil.",
+      "rationale": "Les rondelles de chèvre posées en surface fondent en poches crémeuses et acidulées qui tranchent le sucre de la compotée : la tarte cesse d'être uniformément douce et se lit par bouchées contrastées. Elle devient en revanche sensiblement plus grasse et plus salée, et le lard fumé se dispute désormais le premier plan avec le chèvre au lieu de s'effacer derrière l'oignon. Il faut enfin accepter une surface irrégulière : un chèvre noyé dans l'appareil ne dore pas, et les rondelles doivent affleurer.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Fromage de chèvre bûche",
+          "quantity": 150,
+          "unit": "g",
+          "role": "fromage",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Répartir la compotée tiède sur le fond de pâte en couche égale, puis disposer par-dessus le fromage de chèvre en bûche détaillé en rondelles d'un demi-centimètre, régulièrement espacées pour que chaque part en reçoive deux ou trois. Verser l'appareil autour et entre les rondelles sans jamais les recouvrir : elles doivent affleurer, c'est à cette condition qu'elles dorent et rendent leur gras en surface au lieu de se dissoudre. Enfourner trente minutes, jusqu'à ce que la crème soit prise au centre, que les rondelles soient blondes et boursouflées et que le pourtour du feuilletage soit bien doré."
+        }
+      ],
+      "sensory": {
+        "profile": "tangy_creamy",
+        "scores": {
+          "sweet": 3,
+          "salty": 4,
+          "acidic": 2,
+          "bitter": 0,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 5,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "oignon compoté sucré",
+          "chèvre acidulé",
+          "lard fumé"
+        ],
+        "aroma_families": [
+          "allium doux",
+          "caprine",
+          "fumé",
+          "lacté"
+        ],
+        "target_textures": [
+          "feuilletage croustillant",
+          "poches de chèvre fondu",
+          "oignons fondants"
+        ],
+        "signature_ingredients": [
+          "Oignon jaune cru",
+          "Fromage de chèvre bûche",
+          "Pâte feuilletée crue"
+        ],
+        "identity_guardrails": [
+          "Sans oignon jaune longuement compoté à feu doux jusqu'au blond, ce n'est plus une tarte à l'oignon mais une quiche quelconque.",
+          "L'appareil œuf-crème doit rester salé et prendre au four : le remplacer par du fromage fondu ou une sauce blanche change de plat.",
+          "La garniture doit reposer sur un fond de pâte cuit dans un moule, jamais sur une base de pain ou de pizza.",
+          "Le chèvre se pose en rondelles sur la compotée et affleure l'appareil : émietté ou fondu dedans, il se dissout en un fond lactique et le contraste qui justifie cette version disparaît."
+        ]
+      }
+    },
+    {
+      "code": "SRC-057-D3",
+      "base": "SRC-057",
+      "family": "Tarte à l'oignon aux herbes de Provence",
+      "variant_label": "Version méridionale : parfumer la compotée d'Herbes de Provence séderisées — ici, une cuillère d'Herbes de Provence séchées ajoutée en fin de compotée.",
+      "rationale": "Deux grammes d'herbes sèches jetées hors du feu suffisent à déplacer la tarte vers le sud : le thym et la sarriette du mélange rencontrent le sucre de l'oignon et donnent un ensemble plus résineux, moins strictement lacté. C'est peu de matière pour beaucoup d'effet, et c'est là le risque — une cuillère bombée au lieu d'une rase, ou des herbes mises à cuire dès le départ, et l'amertume sèche du romarin couvre l'oignon pour de bon. Le fumé du lard, lui, ne s'accorde qu'à moitié à ce registre et se retrouve un peu en travers.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Herbes de Provence séchées",
+          "quantity": 2,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Retirer le couvercle, ajouter les lardons et poursuivre douze minutes à feu moyen en remuant régulièrement, jusqu'à ce que l'humidité se soit évaporée et que les oignons soient blonds et translucides, sans jamais brunir. Couper le feu, verser les herbes de Provence séchées sur la compotée brûlante et mélanger : la chaleur résiduelle suffit à les ouvrir, alors qu'ajoutées en début de cuisson elles auraient bouilli vingt minutes et rendu une amertume de tisane. Débarrasser dans un plat et laisser tiédir."
+        }
+      ],
+      "sensory": {
+        "profile": "earthy_herbal",
+        "scores": {
+          "sweet": 3,
+          "salty": 3,
+          "acidic": 1,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 2,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "oignon compoté sucré",
+          "herbes sèches résineuses",
+          "lard fumé"
+        ],
+        "aroma_families": [
+          "allium doux",
+          "herbacé résineux",
+          "fumé",
+          "lacté"
+        ],
+        "target_textures": [
+          "feuilletage croustillant",
+          "appareil crémeux tout juste pris",
+          "oignons fondants"
+        ],
+        "signature_ingredients": [
+          "Oignon jaune cru",
+          "Crème fraîche liquide entière",
+          "Pâte feuilletée crue"
+        ],
+        "identity_guardrails": [
+          "Sans oignon jaune longuement compoté à feu doux jusqu'au blond, ce n'est plus une tarte à l'oignon mais une quiche quelconque.",
+          "L'appareil œuf-crème doit rester salé et prendre au four : le remplacer par du fromage fondu ou une sauce blanche change de plat.",
+          "La garniture doit reposer sur un fond de pâte cuit dans un moule, jamais sur une base de pain ou de pizza.",
+          "Les herbes s'ajoutent hors du feu en toute fin de compotée : mises à cuire, elles virent à l'amer et couvrent l'oignon, qui doit rester le sujet de la tarte."
+        ]
+      }
+    },
+    {
+      "code": "SRC-057-D4",
+      "base": "SRC-057",
+      "family": "Tarte fine à l'oignon confit au miel",
+      "variant_label": "Compotée poussée plus loin au miel, étalée seule sur le feuilletage sans appareil œuf-crème, façon tarte fine à servir tiède.",
+      "rationale": "Sans appareil œuf-crème il ne reste que la compotée et la pâte : la tarte quitte le moelleux de la quiche pour devenir un feuilletage sec chargé d'une confiture d'oignon. Elle est plus légère et beaucoup plus sucrée — le miel, deux fois et demie plus présent et poussé jusqu'à la caramélisation, occupe la place que tenait la crème — mais elle nourrit moins et cesse d'être un plat complet. Elle ne se garde pas non plus : une tarte fine ramollit dans l'heure, là où l'appareil pris protégeait le fond de l'humidité de la garniture.",
+      "cook_minutes": 55,
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Crème fraîche liquide entière"
+        },
+        {
+          "op": "remove",
+          "form": "Œuf cru"
+        },
+        {
+          "op": "set",
+          "form": "Miel",
+          "quantity": 25,
+          "role": "caramélisation",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Retirer le couvercle, ajouter les lardons et poursuivre vingt-cinq minutes à feu moyen en remuant souvent, bien au-delà du blond : les oignons doivent s'affaisser en une confiture brune et brillante où le miel a fini de caraméliser et où plus une goutte d'eau ne subsiste. C'est la seule garantie de cette version — rien ne viendra plus retenir l'humidité, et une compotée encore mouillée détremperait le feuilletage par en dessous. Débarrasser dans un plat et laisser tiédir."
+        },
+        {
+          "op": "remove",
+          "n": 5
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Étaler la compotée tiède sur le fond de pâte en couche mince et régulière, en laissant deux centimètres de bord nus, puis enfourner vingt-cinq minutes. La garniture n'a plus rien à faire prendre : c'est le feuilletage qui commande la cuisson, et il est cuit quand ses bords sont montés, franchement dorés et secs au toucher."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Sortir la tarte et la laisser reposer cinq minutes sur une grille. Elle se mange tiède et jamais brûlante : c'est en retombant un peu que le sucre caramélisé cesse de couler et que la douceur de l'oignon se lit vraiment. La détailler en carrés plutôt qu'en parts, la couche est trop mince pour tenir sur une pointe."
+        }
+      ],
+      "sensory": {
+        "profile": "smoky_sweet",
+        "scores": {
+          "sweet": 4,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 0,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "oignon confit caramélisé",
+          "miel",
+          "lard fumé"
+        ],
+        "aroma_families": [
+          "allium confit",
+          "caramel",
+          "fumé"
+        ],
+        "target_textures": [
+          "feuilletage sec et cassant",
+          "compotée dense et brillante"
+        ],
+        "signature_ingredients": [
+          "Oignon jaune cru",
+          "Pâte feuilletée crue",
+          "Miel"
+        ],
+        "identity_guardrails": [
+          "La compotée va ici jusqu'au brun brillant, bien au-delà du blond de la version courante : arrêtée trop tôt, elle rend son eau sur le feuilletage et la tarte fine devient molle.",
+          "Aucun appareil œuf-crème : c'est précisément ce que cette version supprime, et le remettre même en fine couche la ramène à la tarte à l'oignon ordinaire.",
+          "La garniture doit reposer sur un fond de pâte cuit dans un moule, jamais sur une base de pain ou de pizza.",
+          "Le miel n'est plus un correcteur d'amertume mais la matière sucrée du plat : il doit caraméliser dans la compotée et non se verser en filet au dressage."
+        ]
+      },
+      "conservation": "Une tarte fine se mange le jour même et tiède, dans les deux heures qui suivent la sortie du four : sans appareil pris pour isoler le feuilletage de la garniture, la compotée l'humidifie et le croustillant est perdu en une nuit. Les restes se gardent 48 h au réfrigérateur entre 0 et 4 °C, filmés une fois complètement froids, et se rattrapent en partie en repassant huit minutes à 190 °C à même la grille, sans plaque. La congélation n'a pas de sens ici : une pâte aussi fine ne survit pas au cycle et la compotée relâche son eau à la décongélation.",
+      "allergens": [
+        "gluten",
+        "lait"
+      ]
+    },
+    {
+      "code": "SRC-058-D1",
+      "base": "SRC-058",
+      "family": "Terrine de campagne au poulet",
+      "variant_label": "Version volaille de chefsimon.com : une partie du porc remplacee par du Blanc de poulet cru, sans peau juste colore a la poele, taille en lanieres et monte en etages entre deux couches de farce.",
+      "rationale": "La moitié du porc haché cède la place à des lanières de blanc de poulet saisies puis montées en étages : la tranche se dessine en couches claires et la terrine s'allège nettement, le blanc n'apportant presque pas de gras. C'est justement ce qui la menace — la farce a moins de matière grasse à redistribuer, et un poulet déjà coloré à la poêle puis passé deux heures au bain-marie sèche vite dès que le cœur dépasse les 72 degrés. La texture se divise aussi : on quitte le grain homogène d'une campagne pour une alternance de farce grossière et de viande en morceaux, plus près d'une terrine montée que d'un pâté.",
+      "prep_minutes": 50,
+      "operations": [
+        {
+          "op": "scale",
+          "form": "Porc haché cru",
+          "factor": 0.5
+        },
+        {
+          "op": "add",
+          "form": "Blanc de poulet cru, sans peau",
+          "quantity": 250,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 4,
+          "instruction": "Detaillez les blancs de poulet en lanieres d'un bon centimetre dans le sens de la longueur, salez-les legerement et colorez-les a feu vif dans une poele a peine huilee, une minute par face et pas davantage : il s'agit de leur fixer une croute doree et du gout, pas de les cuire, car ils passeront encore deux heures au bain-marie et un blanc cuit deux fois ressort cotonneux. Debarrassez-les sur une assiette froide et reservez au refrigerateur jusqu'au montage."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Incorporez le porc hache cru, les oeufs battus, la fondue d'aromates refroidie et le persil cisele, puis travaillez la farce a la main pendant deux a trois minutes, jusqu'a ce qu'elle devienne franchement collante et se decolle des parois en un seul bloc. Le porc hache est ici reduit de moitie et les lanieres de poulet prendront sa place en volume : une farce moins abondante doit etre d'autant mieux liee pour tenir autour d'elles et ne pas se fendre a la coupe."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Tassez un tiers de la farce au fond d'un moule a terrine d'environ 1,2 litre en chassant chaque poche d'air du poing, rangez dessus la moitie des lanieres de poulet bien a plat et tete-beche, couvrez d'un deuxieme tiers de farce, puis du reste des lanieres, et finissez par la farce restante. Disposez les lanieres perpendiculairement a la longueur du moule : c'est ainsi que la tranche montrera des etages nets plutot que des accidents. Lissez la surface en la bombant legerement, puis fermez avec le couvercle ou une double feuille d'aluminium bien serree."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 0,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "porc gras",
+          "volaille saisie",
+          "poivre noir",
+          "eau-de-vie"
+        ],
+        "aroma_families": [
+          "herbacé",
+          "alliacé",
+          "boisé"
+        ],
+        "target_textures": [
+          "farce grossière",
+          "lanières de volaille fermes",
+          "tranche en étages"
+        ],
+        "signature_ingredients": [
+          "Échine de porc crue",
+          "Poitrine de porc crue",
+          "Cognac"
+        ],
+        "identity_guardrails": [
+          "Sans la part de gras apportée par la poitrine de porc, la farce cuit sec et s'effrite : ce n'est plus une terrine mais un pain de viande.",
+          "Sans hachage grossier, la texture devient lisse et mousseuse et le plat bascule du côté du pâté de foie.",
+          "Sans cuisson lente au bain-marie puis pressage et repos de 24 heures au froid, la tranche ne se tient pas et la terrine perd son identité de charcuterie de garde.",
+          "Les lanières de poulet se rangent en étages et doivent se voir à la coupe : hachées avec le reste, elles ne feraient qu'appauvrir la farce en gras sans rien apporter à la tranche."
+        ]
+      }
+    },
+    {
+      "code": "SRC-058-D2",
+      "base": "SRC-058",
+      "family": "Terrine de campagne aux poivrons et aux olives",
+      "variant_label": "Version meridionale : ajout de Poivron rouge frais confit et d'olives detaillees, incorpores en fin de melange pour garder les morceaux entiers.",
+      "rationale": "Le poivron confit et les olives entrent en morceaux dans une farce déjà liée : la tranche se pique de rouge et de noir, et le gras du porc trouve enfin en face de lui une douceur acidulée et un salé fruité qui l'allègent en bouche. Le prix est une terrine plus humide et plus fragile — le poivron rend de l'eau même longuement égoutté, et chaque morceau est une amorce de rupture de plus dans une tranche qui doit déjà se tenir seule. Le sel demande aussi d'être revu à la baisse, les olives en apportant une part que la macération ne prévoyait pas.",
+      "prep_minutes": 55,
+      "cook_minutes": 150,
+      "operations": [
+        {
+          "op": "add",
+          "form": "Poivron rouge frais",
+          "quantity": 250,
+          "unit": "g",
+          "role": "garniture",
+          "optional": false
+        },
+        {
+          "op": "add",
+          "form": "Olive noire dénoyautée",
+          "quantity": 80,
+          "unit": "g",
+          "role": "garniture",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 4,
+          "instruction": "Passez les poivrons rouges au four a 200 degres une trentaine de minutes, jusqu'a ce que la peau cloque et noircisse par plaques, enfermez-les dix minutes dans un saladier couvert puis pelez-les et otez graines et cloisons. Taillez la chair en lanieres d'un centimetre et laissez-les s'egoutter a plat sur un papier absorbant : un poivron confit qui garde son jus le rendra dans la farce, et une farce mouillee ne se tranche pas. Detaillez les olives en deux ou en trois selon leur taille, sans jamais les hacher."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Incorporez le porc hache cru, les oeufs battus, la fondue d'aromates refroidie et le persil cisele, puis travaillez la farce a la main pendant deux a trois minutes, jusqu'a ce qu'elle devienne franchement collante et se decolle des parois en un seul bloc. Ajoutez seulement alors les lanieres de poivron et les olives, et melangez a la spatule en une dizaine de gestes larges : incorpores plus tot, ils seraient reduits en puree par le travail de la farce, or c'est leur integrite en morceaux qui fait tout l'interet de cette version."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Poelez une petite boulette de farce prelevee avec un morceau d'olive dedans, laissez-la tiedir et goutez-la froide avant de rectifier : crue, une farce de terrine trompe systematiquement le palais sur le sel et le poivre. Attendez-vous ici a ne rien ajouter, voire a regretter d'avoir sale a seize grammes — les olives apportent leur propre saumure et continueront de la diffuser pendant les deux heures de cuisson."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 1,
+          "salty": 4,
+          "acidic": 1,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "porc gras",
+          "poivron confit",
+          "olive noire",
+          "poivre noir"
+        ],
+        "aroma_families": [
+          "herbacé",
+          "alliacé",
+          "végétal grillé"
+        ],
+        "target_textures": [
+          "farce grossière",
+          "lanières de poivron fondantes",
+          "tranche piquée de morceaux"
+        ],
+        "signature_ingredients": [
+          "Échine de porc crue",
+          "Poitrine de porc crue",
+          "Cognac"
+        ],
+        "identity_guardrails": [
+          "Sans la part de gras apportée par la poitrine de porc, la farce cuit sec et s'effrite : ce n'est plus une terrine mais un pain de viande.",
+          "Sans hachage grossier, la texture devient lisse et mousseuse et le plat bascule du côté du pâté de foie.",
+          "Sans cuisson lente au bain-marie puis pressage et repos de 24 heures au froid, la tranche ne se tient pas et la terrine perd son identité de charcuterie de garde.",
+          "Poivron et olives s'ajoutent en fin de mélange et restent en morceaux visibles : broyés avec la farce, ils la colorent et la détrempent sans rien donner à la coupe."
+        ]
+      }
+    },
+    {
+      "code": "SRC-058-D3",
+      "base": "SRC-058",
+      "family": "Terrine de campagne en bocaux",
+      "variant_label": "Version 750g.com en bocaux : la farce est repartie dans des bocaux cuits au bain-marie 45 minutes a 200 degres, puis coloree 10 minutes a decouvert.",
+      "rationale": "La cuisson en bocaux change l'échelle et donc les temps : quarante-cinq minutes à 200 degrés au lieu de deux heures à 150, parce qu'un petit volume monte en température beaucoup plus vite. La terrine y gagne un portionnement immédiat et des contenants qu'on entame un à un, elle y perd la tranche — sans pressage, la farce reste lâche et friable, elle se prend à la cuillère plutôt qu'au couteau. La coloration finale à découvert remplace la croûte que donnait le grand moule, mais elle ne concerne que la surface : le reste n'a jamais vu la chaleur sèche.",
+      "cook_minutes": 55,
+      "operations": [],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Repartissez la farce dans quatre a six bocaux a joint d'environ 350 ml, ebouillantes et parfaitement secs, en tassant chaque couche a la cuillere pour chasser l'air. Arretez-vous a deux bons centimetres du bord : la farce gonfle a la chaleur et un bocal trop plein deborde dans le bain-marie. Essuyez soigneusement le col avant de poser le couvercle sans le verrouiller."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Rangez les bocaux dans un plat creux assez haut, versez de l'eau bouillante jusqu'aux deux tiers de leur hauteur et enfournez a 200 degres pendant quarante-cinq minutes. Le volume est petit et la chaleur bien plus vive qu'au moule a terrine : quarante-cinq minutes suffisent la ou une grande terrine en demande deux. Verifiez au thermometre a sonde que le coeur d'un bocal atteint bien 72 degres avant d'aller plus loin."
+        },
+        {
+          "op": "replace",
+          "n": 10,
+          "instruction": "Otez les couvercles et laissez les bocaux dix minutes de plus a decouvert, le temps que la surface prenne couleur, puis sortez-les du bain-marie. Aucun pressage ici : la farce refroidit dans son bocal et s'y tasse d'elle-meme, ce qui donne une charcuterie plus tendre et plus friable qu'une tranche lestee. Verrouillez les couvercles a chaud, laissez refroidir a temperature ambiante puis comptez 24 heures au refrigerateur avant d'ouvrir le premier bocal."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 0,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 5,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "porc gras",
+          "poivre noir",
+          "ail",
+          "eau-de-vie"
+        ],
+        "aroma_families": [
+          "herbacé",
+          "alliacé",
+          "boisé"
+        ],
+        "target_textures": [
+          "farce grossière",
+          "texture lâche qui se prend à la cuillère",
+          "surface colorée"
+        ],
+        "signature_ingredients": [
+          "Échine de porc crue",
+          "Poitrine de porc crue",
+          "Cognac"
+        ],
+        "identity_guardrails": [
+          "Sans la part de gras apportée par la poitrine de porc, la farce cuit sec et s'effrite : ce n'est plus une terrine mais un pain de viande.",
+          "Sans hachage grossier, la texture devient lisse et mousseuse et le plat bascule du côté du pâté de foie.",
+          "Le bocal remplace le moule et le pressage : la farce s'y tasse seule et se sert à la cuillère. Lui demander une tranche nette, c'est lui demander d'être une autre recette.",
+          "La cuisson en bocal n'est pas une stérilisation : le repos de 24 heures au froid et la chaîne du froid ensuite restent entiers."
+        ]
+      },
+      "conservation": "Comptez 24 heures au réfrigérateur avant d'ouvrir le premier bocal, le temps que la farce se raffermisse et que l'assaisonnement s'égalise. Fermés et couverts de leur graisse figée, les bocaux se gardent 8 à 10 jours entre 0 et 4 degrés : quarante-cinq minutes de bain-marie cuisent la farce à cœur mais ne stérilisent rien, et aucune règle de froid ne saute. Un bocal entamé se consomme sous 4 jours, sa surface lissée et remise au contact de sa graisse. La congélation est possible par bocal jusqu'à 2 mois, mais elle détend une farce déjà plus friable que celle d'une terrine pressée."
+    },
+    {
+      "code": "SRC-058-D4",
+      "base": "SRC-058",
+      "family": "Terrine de campagne au pain d'épices",
+      "variant_label": "Version douce : quelques miettes de Pain d'epices dans la farce, qui apportent une note miel-epices et arrondissent le poivre.",
+      "rationale": "Soixante grammes de pain d'épices émietté font deux choses à la fois : ils posent une note de miel et d'épices douces qui arrondit les cinq grammes de poivre de la base, et ils boivent le jus de macération comme le ferait une panade. La farce en sort plus serrée et la tranche plus tendre, mais aussi franchement plus sucrée — c'est un parti pris, et il ne convient pas à qui attend d'une campagne qu'elle reste sèchement poivrée. La mie introduit enfin du gluten dans une charcuterie qui n'en portait aucun, ce que l'étiquette d'allergènes doit dire.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Pain d'épices",
+          "quantity": 60,
+          "unit": "g",
+          "role": "liant aromatique",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Emiettez le pain d'epices entre les doigts jusqu'a une chapelure grossiere, sans jamais le reduire en poudre : ce sont ces miettes qui doivent se sentir sous la dent et fondre a la cuisson. Incorporez le porc hache cru, les oeufs battus, la fondue d'aromates refroidie, le persil cisele et le pain d'epices, puis travaillez la farce a la main pendant deux a trois minutes, jusqu'a ce qu'elle devienne franchement collante et se decolle des parois en un seul bloc. La mie sucree boit une part du jus de maceration et resserre la farce : n'allongez rien pour compenser, c'est precisement ce liant qu'on cherche."
+        }
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 5,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "porc gras",
+          "miel et épices douces",
+          "poivre noir",
+          "eau-de-vie"
+        ],
+        "aroma_families": [
+          "herbacé",
+          "alliacé",
+          "épicée douce"
+        ],
+        "target_textures": [
+          "farce grossière mais resserrée",
+          "tranche compacte",
+          "fondant gras"
+        ],
+        "signature_ingredients": [
+          "Échine de porc crue",
+          "Poitrine de porc crue",
+          "Cognac"
+        ],
+        "identity_guardrails": [
+          "Sans la part de gras apportée par la poitrine de porc, la farce cuit sec et s'effrite : ce n'est plus une terrine mais un pain de viande.",
+          "Sans hachage grossier, la texture devient lisse et mousseuse et le plat bascule du côté du pâté de foie.",
+          "Sans cuisson lente au bain-marie puis pressage et repos de 24 heures au froid, la tranche ne se tient pas et la terrine perd son identité de charcuterie de garde.",
+          "Le pain d'épices reste une trace : soixante grammes pour près d'un kilo de viande arrondissent le poivre, le double sucrerait la terrine et la ferait basculer du côté d'un pâté de fête."
+        ]
+      },
+      "allergens": [
+        "œuf",
+        "gluten"
+      ]
+    }
+  ]
+}

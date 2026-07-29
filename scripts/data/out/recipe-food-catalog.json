@@ -2703,6 +2703,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
@@ -4224,6 +4225,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "u"
       ],
       "conversion": {
@@ -5325,6 +5327,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {

@@ -1,0 +1,345 @@
+{
+  "lot": "lot15 — ratatouille, pilaf et salades composées",
+  "note": "Quatre bases, dix-huit variantes annoncées, treize dérivations retenues et cinq écartées. SRC-051 rend ses quatre variantes, et c'est la seule base du lot dont deux dérivées ne touchent presque pas à la liste d'ingrédients : la version confite au four et la version en un seul récipient changent la méthode de fond en comble sans rien ajouter. La confite descend l'huile de 80 à 60 g — trois saisies successives en absorbaient davantage qu'un simple arrosage — et remonte la cuisson à une heure ; la rapide ne modifie aucune quantité et assume de n'être qu'un changement de conduite, ce que le moteur accepte puisque cinq étapes sont réécrites. La version au basilic est la seule à retirer quelque chose : « à la place ou en plus du thym » ouvrait les deux lectures, la première a été choisie parce qu'elle produit un vrai delta, et l'étape 8 a dû être réécrite pour que le mot « thym » disparaisse de la méthode en même temps que l'ingrédient de la liste. SRC-052 rend quatre variantes sur cinq. La garniture aromatique de restaurant est écartée pour une raison mécanique et non rédactionnelle : « Bouquet garni frais » figure aux formes bloquées du vocabulaire, et retenir la variante en n'ajoutant que l'échalote aurait décrit autre chose que ce que la base annonce. La version végétarienne a posé la seule substitution du lot sur un ingrédient signature : « Bouillon de volaille » cède à « Bouillon de légumes », le mot de tête reste « bouillon » des deux côtés, le contrôle de retrait ne se déclenche donc pas et la signature se reporte proprement — le pilaf garde ses trois ingrédients signature. Le pilaf aux vermicelles est le seul à rééquilibrer deux féculents entre eux : le riz descend de 275 à 225 g pour laisser place à 50 g de vermicelles, de sorte que la masse de céréale et le volume de bouillon restent ceux de la base. SRC-053 rend trois variantes sur quatre. Le remplacement de la tomate râpée par des tomates cerises est écarté faute de forme : le catalogue ne porte ni « Tomate cerise fraîche » ni équivalent, et « Cerise fraîche dénoyautée » est un fruit, pas une tomate — écrire l'une pour l'autre aurait faussé la nutrition en silence. La variante sucrée-parfumée a été retenue à moitié, et le rationale le dit : le basilic frais existe au vocabulaire, la poire non — seule « Poire asiatique fraîche » y figure, qui est un autre fruit. La version sans porc est la seule du lot où le contrôle de retrait avait quelque chose à mordre : « lardon » apparaissait dans deux étapes, la deuxième et la septième, toutes deux réécrites ; la notice de conservation, qui parlait elle aussi des lardons, a été refaite à la main puisque le moteur l'hérite sans la lire. SRC-054 est la base la plus amputée du lot : trois variantes sur cinq tombent, et toutes pour la même raison de catalogue. Les gésiers confits, le magret fumé, le foie gras de canard et la truite fumée n'ont aucune forme employable — le vocabulaire ne connaît du canard que « Confit de canard cuit » et de la truite que « Truite crue », qui n'est pas une truite fumée. Restent le lit de frisée et la finition pignons-échalote. Le lit de frisée a demandé de remonter la vinaigrette de 28 à 45 g d'huile : la base n'assaisonnait qu'une pulpe de tomate, 200 g de feuilles réclament de quoi les enrober. Les deux variantes qui ajoutent des pignons portent l'allergène « fruits à coque » ; il était déjà présent dans SRC-053 à cause des noix, il a fallu l'ajouter à SRC-054-D2.",
+  "derivations": [
+    {
+      "code": "SRC-051-D1",
+      "base": "SRC-051",
+      "family": "Ratatouille confite au four",
+      "variant_label": "Version confite au four : les légumes sont empilés crus en couches dans une cocotte en fonte, salés et parfumés entre chaque étage, puis cuits couvercle fermé une heure à four moyen, sans une goutte d'eau ajoutée.",
+      "rationale": "La cuisson change entièrement de nature : plus aucune saisie, les légumes entrent crus et confisent dans la vapeur qu'ils libèrent eux-mêmes sous le couvercle. On y gagne une heure sans surveillance et des dés uniformément fondants jusqu'au cœur ; on y perd la coloration de la sauteuse, ce goût de légume grillé que le confit ne produit jamais, et la possibilité de garder chaque légume distinct. L'huile descend de 80 à 60 g, faute des trois passages successifs qui en absorbaient à chaque tour.",
+      "cook_minutes": 60,
+      "operations": [
+        { "op": "set", "form": "Huile d'olive vierge extra", "quantity": 60 }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Chauffer le four à 160 °C. Frotter d'huile le fond et les parois d'une cocotte en fonte, puis y étaler la moitié des oignons émincés et la moitié de l'ail haché : placés dessous, ils fondent les premiers et parfument par en bas tout ce qui les surplombe."
+        },
+        { "op": "remove", "n": 7 },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Empiler les légumes crus par étages successifs — aubergine, courgette, poivron rouge, puis le poivron vert s'il entre dans la version choisie — en salant, poivrant et semant un peu de thym entre chaque couche, et en glissant le reste d'oignon et d'ail à mi-hauteur. Coiffer du concassé de tomate, compléter de la tomate râpée si les tomates manquent de maturité, poser les feuilles de laurier et arroser du reste d'huile. Ne rien mouiller : les légumes rendront à eux seuls tout le liquide dont la cocotte a besoin."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Fermer le couvercle et enfourner une heure pleine sans jamais soulever. La vapeur retenue sous la fonte fait tout le travail : les dés s'affaissent lentement dans leur propre jus au lieu de rissoler, et chaque étage se parfume de celui qui le surmonte."
+        },
+        {
+          "op": "replace",
+          "n": 10,
+          "instruction": "Sortir la cocotte, ôter le couvercle et les feuilles de laurier, puis remettre dix à quinze minutes à découvert si le fond baigne encore. Mélanger d'un geste large en soulevant par-dessous plutôt qu'en remuant, pour ne pas réduire les étages en purée, rectifier le sel et laisser tiédir : la ratatouille confite se sert à peine chaude, ou réchauffée le lendemain, jamais brûlante."
+        }
+      ]
+    },
+    {
+      "code": "SRC-051-D2",
+      "base": "SRC-051",
+      "family": "Ratatouille minute",
+      "variant_label": "Version rapide en un seul récipient : tous les dés sont saisis ensemble à feu moyen puis mijotés vingt minutes, le résultat est plus fondu et moins distinct.",
+      "rationale": "Rien ne change dans la liste, tout change dans la conduite : une seule sauteuse, une seule saisie, et la cuisson tombe de cinquante-cinq à trente minutes. Le gain est le temps de présence devant le feu, divisé par deux, et la vaisselle réduite à un récipient. Le prix est la texture : saisis ensemble, les dés se rendent leur eau mutuellement, la courgette part avant que l'aubergine ne dore, et le plat arrive fondu et homogène là où la version longue tient chaque légume séparé.",
+      "cook_minutes": 30,
+      "operations": [],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Chauffer toute l'huile dans une grande sauteuse à feu moyen, y jeter les oignons émincés deux minutes, puis verser d'un seul coup les dés d'aubergine, de courgette et de poivron. Remuer largement pour que chacun s'enrobe de gras, puis laisser prendre couleur une dizaine de minutes en retournant de temps en temps, sans chercher à dorer face par face : la sauteuse est trop chargée pour cela."
+        },
+        { "op": "remove", "n": 7 },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Ajouter l'ail haché, le laisser une minute, puis verser la pulpe de tomate avec le thym, le laurier, le sel et le poivre, en complétant de la tomate râpée si les tomates manquent de maturité. Mélanger pour que la sauce descende jusqu'au fond et enrobe tous les dés."
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Couvrir et laisser mijoter vingt minutes à feu doux, en remuant deux ou trois fois seulement. Les dés vont s'affaisser et se confondre : c'est le prix du récipient unique, la sauce prend le goût de tout mais plus rien ne se distingue. Découvrir cinq minutes de plus si le fond reste trop liquide."
+        }
+      ]
+    },
+    {
+      "code": "SRC-051-D3",
+      "base": "SRC-051",
+      "family": "Ratatouille aux olives noires",
+      "variant_label": "Ajout d'olives noires dénoyautées et tranchées dans les dix dernières minutes de cuisson.",
+      "rationale": "Quatre-vingts grammes d'olives noires apportent une amertume saline et un fond légèrement fermenté que la ratatouille de base n'a pas, et qui tire le plat du côté de la caponata. Elles obligent à revoir le sel : ajoutées en fin de mijotage, elles rendent encore assez de saumure pour qu'un assaisonnement mené à l'aveugle passe le plat au salé. Elles ferment aussi la porte au service froid le lendemain, où leur amertume s'installe.",
+      "operations": [
+        { "op": "add", "form": "Olive noire dénoyautée", "quantity": 80, "unit": "g", "role": "garniture", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Remettre tous les légumes réservés dans la sauteuse avec le jus qu'ils ont rendu, mélanger avec précaution pour ne pas les écraser, couvrir et laisser mijoter à tout petit feu une vingtaine de minutes. Dix minutes avant la fin, semer les olives noires dénoyautées et taillées en rondelles, puis découvrir pour laisser le fond réduire : jetées plus tôt, elles rendraient toute leur saumure dans la sauce et le plat serait salé sans retour possible."
+        },
+        {
+          "op": "replace",
+          "n": 10,
+          "instruction": "Retirer les feuilles de laurier et goûter avant de saler : les olives ont déjà porté leur part et il en faut souvent moins que prévu. Laisser reposer hors du feu au moins un quart d'heure ; cette ratatouille se sert tiède, ou réchauffée le lendemain, jamais brûlante."
+        }
+      ]
+    },
+    {
+      "code": "SRC-051-D4",
+      "base": "SRC-051",
+      "family": "Ratatouille au basilic",
+      "variant_label": "Basilic ciselé jeté hors du feu au moment de servir, à la place ou en plus du thym.",
+      "rationale": "Le thym séché sort de la liste et vingt grammes de basilic frais le remplacent, jetés hors du feu : la ratatouille perd sa note résineuse de garrigue, cuite et fondue dans la sauce, et gagne un parfum vert et volatil posé par-dessus. Le changement est plus grand qu'il n'y paraît, parce que le basilic ne cuit pas — il n'imprègne rien et il faut le disperser au dernier moment. Le plat ne supporte plus le réchauffage du lendemain sans qu'on refasse la finition avec des feuilles fraîches.",
+      "operations": [
+        { "op": "remove", "form": "Thym séché" },
+        { "op": "add", "form": "Basilic frais", "quantity": 20, "unit": "g", "role": "finition", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Dans le même récipient, faire tomber les oignons à feu doux jusqu'à ce qu'ils deviennent translucides, ajouter l'ail une minute, puis la pulpe de tomate, le laurier, le sel et le poivre ; laisser réduire à découvert un quart d'heure, en complétant avec la tomate râpée si les tomates manquent de maturité. Aucune herbe séchée n'entre ici : la sauce doit rester franche et sans note résineuse pour que le parfum vert de la finition arrive intact."
+        },
+        {
+          "op": "replace",
+          "n": 10,
+          "instruction": "Retirer les feuilles de laurier, rectifier l'assaisonnement et laisser tiédir une dizaine de minutes hors du feu. Ciseler alors le basilic frais et le disperser sur le plat sans le mélanger longuement : posé sur une ratatouille encore brûlante ou remué trop tôt, il noircit et perd en quelques minutes tout ce qu'il apportait."
+        }
+      ]
+    },
+    {
+      "code": "SRC-052-D1",
+      "base": "SRC-052",
+      "family": "Riz pilaf au curry",
+      "variant_label": "Pilaf au curry : ajouter une cuillerée de curry en poudre au moment de l'assaisonnement, sur les oignons blondis, comme le fait 750g.com.",
+      "rationale": "Six grammes de curry en poudre torréfiés dans le corps gras teintent le riz et lui donnent un fond épicé chaud que le bouillon de volaille seul ne porte pas. La conduite de l'oignon change avec eux : il faut le laisser blondir aux bords au lieu de le garder translucide, sans quoi la poudre n'a pas de gras assez chaud pour s'ouvrir. Le pilaf cesse d'être un accompagnement neutre et impose sa couleur à ce qu'on servira avec.",
+      "operations": [
+        { "op": "add", "form": "Curry en poudre", "quantity": 6, "unit": "g", "role": "épice", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Dans une sauteuse large à fond épais, faire tiédir l'huile d'olive avec la moitié du beurre. Y laisser fondre l'oignon et l'ail à feu doux pendant 5 à 6 minutes, en remuant, jusqu'à ce qu'ils rendent leur eau et blondissent tout juste aux bords. Verser alors le curry en poudre et le remuer une minute pleine dans le corps gras chaud : c'est la graisse et non le bouillon qui ouvre ses arômes, et une poudre jetée crue dans le liquide garderait jusqu'au bout un goût de farine d'épice."
+        }
+      ]
+    },
+    {
+      "code": "SRC-052-D2",
+      "base": "SRC-052",
+      "family": "Riz pilaf aux vermicelles",
+      "variant_label": "Pilaf aux vermicelles : faire roussir une poignée de vermicelles dans le corps gras avant d'ajouter le riz rincé, version décrite par marmiton.org.",
+      "rationale": "Cinquante grammes de vermicelles roussis prennent la place d'autant de riz, si bien que la masse de céréale et le volume de bouillon ne bougent pas. Ils apportent une note grillée de noisette et des fragments qui restent fermes au milieu des grains, mais ils imposent de rincer le riz, donc de renoncer à l'amidon de surface sur lequel repose le nacrage classique. La marge d'erreur se réduit : deux minutes de trop dans la poêle et les vermicelles virent à l'amer, ce que rien ne rattrape ensuite.",
+      "prep_minutes": 15,
+      "operations": [
+        { "op": "set", "form": "Riz cru", "quantity": 225 },
+        { "op": "add", "form": "Vermicelle fin sec", "quantity": 50, "unit": "g", "role": "féculent", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 2,
+          "instruction": "Casser les vermicelles en tronçons de deux centimètres au creux de la main et les jeter dans le corps gras avec l'oignon fondu. Les remuer sans les quitter des yeux deux à trois minutes, jusqu'à ce qu'ils prennent une couleur de noisette : au-delà, ils passent au brun et deviennent amers, et l'amertume traversera tout le plat."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Rincer le riz à l'eau froide dans une passoire jusqu'à ce que l'eau s'écoule claire, l'égoutter à fond, puis le verser hors du feu sur les vermicelles roussis. Mélanger une minute à la spatule pour l'enrober du gras restant. Le rinçage ayant emporté l'amidon de surface, le nacrage est ici plus court et le voile laiteux à peine visible : ce sont les fragments grillés répartis dans la masse qui empêcheront les grains de se prendre en bloc."
+        }
+      ]
+    },
+    {
+      "code": "SRC-052-D3",
+      "base": "SRC-052",
+      "family": "Riz pilaf au potimarron",
+      "variant_label": "Pilaf au four aux dés de courge : ajouter des cubes de potimarron avec le bouillon et cuire 40 minutes en cocotte fermée à 180 °C.",
+      "rationale": "Quatre cents grammes de potimarron posés sur le riz doublent la durée de cuisson et font passer l'accompagnement du côté du plat unique végétarien, avec une douceur sucrée qui répond au bouillon salé. Le four devient obligatoire : sur une flamme, le fond brûlerait avant que la courge ne s'attendrisse. Le riz en ressort un peu moins égrené, coloré par la chair qui se défait en partie, et le plat ne se réchauffe plus aussi bien — les cubes tournent en purée au second passage.",
+      "prep_minutes": 20,
+      "cook_minutes": 40,
+      "operations": [
+        { "op": "add", "form": "Potimarron frais, épépiné", "quantity": 400, "unit": "g", "role": "légume", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 1,
+          "instruction": "Fendre le potimarron en deux, retirer les graines et les filaments à la cuillère, puis détailler la chair en cubes de deux centimètres sans la peler — la peau du potimarron fond à la cuisson et tient les cubes ensemble. Compter environ 500 g de courge entière pour les 400 g de chair nette portés à la liste."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Remettre sur le feu, verser le bouillon chaud d'un seul trait, saler et poivrer, puis répartir les cubes de potimarron à la surface sans les enfoncer. Porter au premier frémissement en mélangeant une fois pour répartir l'oignon, puis ne plus toucher : la courge doit cuire posée sur le riz, dans la vapeur, sinon elle se délite au fond et le pilaf devient une purée."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Transvaser dans une cocotte en fonte si la sauteuse ne va pas au four, poser à même le riz un disque de papier cuisson percé d'un trou au centre, coiffer du couvercle et enfourner 40 minutes à 180 °C sans ouvrir une seule fois. Le four chauffe par le dessus autant que par le fond, ce qui laisse à la courge le temps de s'attendrir sans que la couche de riz du dessous n'attache."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Sortir la cocotte et laisser reposer 5 minutes à couvert pour que l'humidité résiduelle finisse d'être bue. Ôter le papier, déposer le reste du beurre en parcelles et égrainer à la fourchette, dents à plat, en soulevant par-dessous plutôt qu'en remuant : les cubes de potimarron sont fondants et le moindre brassage appuyé les réduirait en bouillie orange. Goûter un grain, rectifier en sel et servir aussitôt."
+        }
+      ]
+    },
+    {
+      "code": "SRC-052-D4",
+      "base": "SRC-052",
+      "family": "Riz pilaf végétarien aux poivrons",
+      "variant_label": "Version végétarienne : remplacer le bouillon de volaille par un bouillon de légumes et démarrer sur des lanières de poivron revenues à l'huile.",
+      "rationale": "Le bouillon de légumes retire au pilaf le fond de volaille qui portait son umami, et deux cents grammes de poivron rouge revenus à l'huile viennent occuper cette place avec une douceur végétale et un léger goût de grillé. Le plat reste lacté par son beurre, donc végétarien et non végétalien. Il perd en profondeur ce qu'il gagne en fraîcheur : le bouillon de légumes sale moins et parfume moins, et il faut vérifier l'assaisonnement au moment d'égrainer plutôt que de s'y fier d'avance.",
+      "operations": [
+        { "op": "substitute", "form": "Bouillon de volaille", "with": "Bouillon de légumes", "quantity": 500, "unit": "ml", "role": "liquide de cuisson" },
+        { "op": "add", "form": "Poivron rouge frais", "quantity": 200, "unit": "g", "role": "légume", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Fendre les poivrons rouges, ôter la queue, les côtes blanches et les pépins, puis les tailler en lanières fines. Dans une sauteuse large à fond épais, faire tiédir l'huile d'olive avec la moitié du beurre et y jeter les lanières en premier : les laisser revenir six à sept minutes à feu moyen, jusqu'à ce qu'elles s'assouplissent et que leurs bords se marquent. Baisser alors le feu, ajouter l'oignon et l'ail et poursuivre 4 à 5 minutes sans coloration. C'est le poivron qui doit porter le goût que la volaille ne donne plus, et il lui faut ce temps de gras pour le construire."
+        }
+      ]
+    },
+    {
+      "code": "SRC-053-D1",
+      "base": "SRC-053",
+      "family": "Salade de chèvre pané",
+      "variant_label": "Chèvre pané : tremper les rondelles dans l'œuf cru puis dans la chapelure de blé et les dorer à la poêle au lieu de les gratiner sur le pain",
+      "rationale": "Le fromage change de contenant : au lieu de fondre à découvert sur son toast, il est enfermé dans une croûte de chapelure qui le retient et le laisse à peine s'amollir. Le contraste se déplace — croustillant sec contre cœur crémeux, là où la version gratinée opposait un dessus doré à un pain croustillant. Cela coûte une manipulation de plus, une double panure sans laquelle le chèvre s'échappe dans la poêle, et un allergène supplémentaire avec l'œuf ; le pain, désormais grillé à part, n'est plus qu'un socle et ne recueille plus le fromage coulé.",
+      "prep_minutes": 25,
+      "cook_minutes": 15,
+      "techniques": ["panure", "saisie", "émulsion", "grillade du pain"],
+      "allergens": ["gluten", "lait", "fruits à coque", "moutarde", "sulfites", "œuf"],
+      "operations": [
+        { "op": "add", "form": "Œuf cru", "quantity": 1, "unit": "u", "role": "panure", "optional": false },
+        { "op": "add", "form": "Chapelure de blé", "quantity": 60, "unit": "g", "role": "panure", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Monter la vinaigrette en premier pour qu'elle attende au frais : délayer la moutarde de Dijon dans le vinaigre de vin rouge avec le sel fin, puis incorporer 90 g d'huile d'olive en mince filet au fouet jusqu'à ce que le mélange épaississe et cesse de se séparer. Poivrer et réserver ; les 30 g d'huile restants iront pour moitié au pain, pour moitié à la poêle où doreront les rondelles panées."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Mettre le gril du four en chauffe à 220 °C avec une plaque garnie de papier cuisson. Trancher le pain de campagne en quatre larges tranches d'environ 50 g et un doigt d'épaisseur, les badigeonner de la moitié de l'huile réservée et les passer sous le gril deux à trois minutes par face, juste le temps qu'elles raidissent. Elles serviront de socle croustillant et ne recevront plus le fromage à gratiner."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Ôter les deux extrémités croûtées de la bûche de chèvre et la débiter en quatre rondelles d'environ 25 g. Battre l'œuf cru à la fourchette dans une assiette creuse, verser la chapelure de blé dans une seconde et y mêler les herbes de Provence pincées entre les doigts. Passer chaque rondelle dans l'œuf puis dans la chapelure, presser du plat de la main pour faire tenir la couche, et recommencer une seconde fois : une seule passe laisse toujours une brèche par où le fromage s'échappe dès qu'il chauffe."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Chauffer le reste de l'huile dans une petite poêle antiadhésive à feu moyen et y coucher les rondelles panées. Deux minutes par face suffisent : la croûte doit prendre une couleur de pain grillé pendant que le cœur s'amollit à peine. Les retourner une seule fois, à la spatule et non à la pince, puis les débarrasser aussitôt sur une grille — posées dans une assiette, elles ramolliraient par-dessous dans leur propre vapeur."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Pendant la cuisson, laver et essorer la laitue, la répartir en dômes dans quatre assiettes, semer la tomate râpée, les lardons égouttés et les éclats de noix. Napper de vinaigrette au dernier moment, poser une rondelle panée et une tranche de pain grillé sur chaque assiette, puis filer le miel sur le fromage brûlant : versé à ce moment-là seulement, il coule sans cuire ni brunir, et il ne détrempe pas la panure."
+        }
+      ]
+    },
+    {
+      "code": "SRC-053-D2",
+      "base": "SRC-053",
+      "family": "Salade de chèvre chaud aux pignons de pin",
+      "variant_label": "Version sans porc : troquer les lardons contre des pignons de pin grillés à sec dans une poêle chaude",
+      "rationale": "Soixante grammes de pignons torréfiés remplacent deux cents grammes de lardons : la salade perd le fumé, le sel et le gras rendu qui lui donnaient son ossature, et gagne une amertume douce de résine plus une seconde texture croquante à côté des noix. Elle devient sans viande, mais elle ne s'allège pas pour autant — le pignon est presque entièrement gras et pèse plus lourd en calories que le lardon qu'il remplace — et elle repose désormais entièrement sur la vinaigrette pour le sel, qu'il faut goûter avec plus d'attention. La torréfaction ne pardonne pas : quelques secondes de trop et les pignons deviennent amers au lieu d'être blonds.",
+      "conservation": "La vinaigrette se garde cinq jours en bocal fermé à 4 °C et les pignons torréfiés une semaine dans une boîte hermétique, à l'abri de l'humidité qui les ramollit. Les toasts gratinés se mangent dans la minute : réchauffés, le fromage se dessèche et le pain devient cassant. La salade assaisonnée ne se conserve pas, les feuilles tombent en une heure. Rien dans ce plat ne supporte la congélation, ni le chèvre frais qui rend son eau à la décongélation, ni la laitue.",
+      "operations": [
+        { "op": "substitute", "form": "Lardon fumé cru", "with": "Pignon de pin", "quantity": 60, "unit": "g", "role": "garniture croquante", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Verser les pignons de pin dans une poêle froide sans aucune matière grasse, monter à feu moyen et les remuer sans arrêt trois à quatre minutes, jusqu'à ce qu'ils blondissent et sentent la résine chaude. Les faire glisser aussitôt dans une assiette froide : laissés dans la poêle même hors du feu, ils continuent de cuire sur la fonte et passent du doré à l'amer en moins d'une minute."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Pendant le gratinage, laver et essorer la laitue, la répartir en dômes dans quatre assiettes, semer la tomate râpée, les pignons torréfiés et les éclats de noix. Napper de vinaigrette au dernier moment, en goûtant d'abord son sel puisque plus rien d'autre n'en apporte, puis poser un toast brûlant sur chaque assiette et servir sans attendre pour garder le contraste chaud-froid."
+        }
+      ]
+    },
+    {
+      "code": "SRC-053-D3",
+      "base": "SRC-053",
+      "family": "Salade de chèvre chaud au basilic",
+      "variant_label": "Ajouter de fines lamelles de poire ou quelques feuilles de basilic frais pour une note sucrée et parfumée",
+      "rationale": "Des deux finitions annoncées, seule celle au basilic est retenue : le vocabulaire ne porte aucune poire européenne et l'écrire avec un autre fruit fausserait le calcul nutritionnel en silence. Une douzaine de grammes de feuilles déchirées au-dessus des assiettes ajoutent une note poivrée et anisée qui allège l'ensemble et répond au miel du toast. Le coût est une fenêtre de service encore plus courte que celle de la base : le basilic posé sur un toast brûlant noircit en quelques minutes et il faut donc dresser assiette par assiette.",
+      "operations": [
+        { "op": "add", "form": "Basilic frais", "quantity": 12, "unit": "g", "role": "finition", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Pendant le gratinage, laver et essorer la laitue, la répartir en dômes dans quatre assiettes, semer la tomate râpée, les lardons égouttés et les éclats de noix. Napper de vinaigrette au dernier moment, poser un toast brûlant sur chaque assiette, puis déchirer les feuilles de basilic frais à la main juste au-dessus : coupées au couteau, leurs nervures noircissent et l'essentiel du parfum reste sur la planche. Servir sans attendre pour garder le contraste chaud-froid."
+        }
+      ]
+    },
+    {
+      "code": "SRC-054-D1",
+      "base": "SRC-054",
+      "family": "Salade landaise à la frisée",
+      "variant_label": "Monter l'assiette sur un lit de frisée ou de jeunes pousses assaisonnées, comme le fait la majorité des pages du dossier.",
+      "rationale": "Deux cents grammes de frisée transforment un dressage de pulpe de tomate en vraie salade composée : l'amertume des feuilles coupe le gras du confit et donne à l'assiette un volume que la base n'avait pas. La vinaigrette doit suivre — de 28 à 45 g d'huile, de 15 à 24 g de vinaigre — puisqu'elle n'assaisonne plus une seule pulpe mais un lit de feuilles. En contrepartie, la fenêtre de service se resserre encore : la frisée s'affaisse sous le canard tiède plus vite qu'une tomate râpée ne se délave.",
+      "prep_minutes": 20,
+      "operations": [
+        { "op": "add", "form": "Frisée fraîche", "quantity": 200, "unit": "g", "role": "salade", "optional": false },
+        { "op": "set", "form": "Huile d'olive vierge extra", "quantity": 45 },
+        { "op": "set", "form": "Vinaigre de vin rouge", "quantity": 24 },
+        { "op": "set", "form": "Moutarde de Dijon", "quantity": 8 }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 5,
+          "instruction": "Trier la frisée en ne gardant que le cœur blond et les feuilles tendres, écarter les grandes côtes vertes trop amères, laver à grande eau froide et essorer sans ménagement. Une feuille encore humide repousse la vinaigrette au lieu de la retenir, et le lit se retrouve à la fois fade et détrempé."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Assaisonner la frisée d'un tiers de la vinaigrette et la retourner à la main, sans la brasser, puis en dresser un lit souple au centre de chaque assiette. Répartir la pulpe de tomate égouttée autour, poser dessus la chair de canard encore tiède et les éclats de peau, napper du reste de vinaigrette au tout dernier moment et porter à table aussitôt : la frisée s'affaisse en quelques minutes sous le gras tiède, et le contraste tiède contre frais s'efface avec elle."
+        }
+      ]
+    },
+    {
+      "code": "SRC-054-D2",
+      "base": "SRC-054",
+      "family": "Salade landaise aux pignons et à l'échalote",
+      "variant_label": "Parsemer de pignons torréfiés à sec et glisser une échalote ciselée dans la vinaigrette.",
+      "rationale": "Deux ajouts modestes qui travaillent chacun à un bout du plat : quarante grammes de pignons torréfiés opposent un croquant sec à la chair effilochée, et trente grammes d'échalote fondus dans le vinaigre donnent à la sauce un mordant aromatique que la moutarde seule ne fournit pas. L'échalote demande un temps de dégorgement dans le vinaigre, sans quoi elle reste agressive et remonte longtemps après le repas. Les pignons introduisent l'allergène fruits à coque dans une recette qui n'en portait aucun, et perdent leur croquant dès qu'ils touchent la vinaigrette : ils se sèment au tout dernier geste.",
+      "prep_minutes": 20,
+      "cook_minutes": 12,
+      "techniques": ["saisie", "émulsion", "torréfaction"],
+      "allergens": ["moutarde", "sulfites", "fruits à coque"],
+      "operations": [
+        { "op": "add", "form": "Pignon de pin", "quantity": 40, "unit": "g", "role": "garniture croquante", "optional": false },
+        { "op": "add", "form": "Échalote crue", "quantity": 30, "unit": "g", "role": "aromate", "optional": false }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 4,
+          "instruction": "Verser les pignons de pin dans une petite poêle froide, sans matière grasse, et les faire blondir à feu moyen environ trois minutes en les remuant sans cesse. Les débarrasser dans une assiette froide dès qu'ils sentent la résine : leur propre huile les fait passer du doré à l'amer en quelques secondes de trop, et la poêle chaude continue de les cuire hors du feu."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Éplucher l'échalote et la ciseler le plus finement possible, puis la laisser dégorger cinq minutes dans le vinaigre avec une pincée de sel prise sur les 3 g : l'acide mange son mordant et elle ne remontera plus en bouche longtemps après le repas. Délayer ensuite la moutarde dans ce vinaigre parfumé, donner un tour de moulin à poivre, puis incorporer l'huile en mince filet sans cesser de fouetter, jusqu'à obtenir une sauce lisse qui nappe le dos d'une cuillère."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Étaler la pulpe de tomate au fond de chaque assiette, répartir dessus la chair de canard encore tiède et les éclats de peau, parsemer des pignons torréfiés, napper d'un filet de vinaigrette au tout dernier moment et porter à table aussitôt : les pignons perdent leur croquant dès qu'ils trempent dans la sauce, et le contraste tiède contre frais s'efface en quelques minutes."
+        }
+      ]
+    }
+  ]
+}
