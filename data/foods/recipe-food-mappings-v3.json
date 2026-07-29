@@ -281,6 +281,10 @@
       "confidence": "B",
       "note": "Troisième libellé du même concept (bœuf cru tranché très fin) ; « persillé » est un qualificatif de qualité, pas un aliment distinct, exactement comme « huile végétale raffinée » face à « huile végétale ». Le faux-filet est précisément la découpe persillée. Les cinq candidats proposés étaient tous faux (trois plats cuisinés, un bœuf braisé)."
     },
+    "boudin noir a cuire": {
+      "ciqual_alim_code": "8703",
+      "note": "Le cru plutôt que le sauté, puisque la recette le cuit elle-même : 313 kcal contre 246 une fois poêlé, l'écart venant de l'eau perdue et non d'un gras ajouté. Retenir la forme cuite ferait compter deux fois la cuisson. Macros complètes (P 12,2 / G 4,5 / L 27,1)."
+    },
     "bouillon d agneau": {
       "ciqual_alim_code": "25930",
       "confidence": "C",
@@ -1283,6 +1287,10 @@
       "confidence": "B",
       "note": "« Noix » sans qualificatif désigne en français le cerneau de noix (Juglans regia), et la forme de garde-manger est le fruit séché, disponible toute l'année, non la noix fraîche de saison. 15023 « Noix, fraîche » (370 kcal) sous-estimerait l'énergie de 46%. Code absent des cinq candidats. Les autres propositions désignent des espèces distinctes (noix du Brésil, pécan, macadamia) ou une huile."
     },
+    "noix de saint jacques crue": {
+      "ciqual_alim_code": "10045",
+      "note": "La noix seule, sans corail : c'est ce que vend le poissonnier et ce que la recette poêle. L'entrée noix+corail (10003) est plus grasse et plus sucrée — 0,78 g de glucides contre 1,15, et un profil différent — mais surtout elle décrit un produit qu'on achète rarement tel quel en France métropolitaine. Le poids déclaré par une recette est celui des noix décoquillées : une belle coquille entière donne environ 30 g de noix, si bien que compter en coquilles reviendrait à multiplier l'apport par cinq ou six."
+    },
     "nouille de ble chinoise seche": {
       "ciqual_alim_code": "9863",
       "confidence": "B",
@@ -1351,6 +1359,10 @@
       "ciqual_alim_code": "6101",
       "confidence": "C",
       "note": "Proxy viande bovine braisée ; moelle dédiée absente de Ciqual."
+    },
+    "oseille crue": {
+      "ciqual_alim_code": "20111",
+      "note": "Feuille acide qui fait tout le plat du saumon à l'oseille — elle fond en purée verte au contact de la chaleur et c'est son acidité qui coupe le gras du poisson. Sans elle, il ne reste qu'un saumon à la crème. Entrée crue directe, macros complètes."
     },
     "pain blanc rassis": {
       "ciqual_alim_code": "7012",
@@ -2053,6 +2065,11 @@
     "tortilla de mais": {
       "ciqual_alim_code": "7813",
       "note": "Le candidat en tête (38105 « Chips de maïs ou tortilla chips », 495 kcal) est un produit apéritif frit, pas une galette : écarté malgré son score."
+    },
+    "truite crue": {
+      "ciqual_alim_code": "26092",
+      "confidence": "B",
+      "note": "Le classeur ne publie la truite crue que pour la truite de mer ; l'arc-en-ciel d'élevage, celle qu'on achète pour une truite aux amandes, n'existe qu'en versions cuites (143 kcal rôtie, 117 vapeur). On retient donc le cru, puisque la recette cuit elle-même, au prix d'un proxy d'espèce assumé : 111 kcal, P 19,6 / L 3,63 pour la truite de mer contre un ordre de grandeur voisin pour l'élevage. Confiance B, l'écart portant sur l'espèce et non sur l'état. Le poids déclaré est celui des filets ou de la chair, pas celui du poisson entier vidé — une truite de 250 g en donne environ 150."
     },
     "vanille liquide": {
       "ciqual_alim_code": "11098"

@@ -1,0 +1,15 @@
+{
+  "lot": "lot15 — la noix de Saint-Jacques, qui manquait à son propre plat",
+  "contexte": "La recette « Coquilles Saint-Jacques » a été écrite avec du Saint-pierre — un poisson plat sans rapport, retenu faute de mieux parce qu'aucune forme de Saint-Jacques n'existait au catalogue. Le contrôle d'ingrédient principal l'a arrêtée : le nom du plat annonce des coquilles, la liste n'en portait aucune. C'est la même faute que les moules marinières sans moules, et c'est le même garde-fou qui l'a vue.",
+  "decisions": [
+    {
+      "cle": "noix de saint jacques crue",
+      "forme": "Noix de Saint-Jacques crue",
+      "verdict": "mapper",
+      "alim_code": "10045",
+      "nom_ciqual": "Coquille Saint-Jacques, noix, crue",
+      "confidence": "A",
+      "note": "La noix seule, sans corail : c'est ce que vend le poissonnier et ce que la recette poêle. L'entrée noix+corail (10003) est plus grasse et plus sucrée — 0,78 g de glucides contre 1,15, et un profil différent — mais surtout elle décrit un produit qu'on achète rarement tel quel en France métropolitaine. Le poids déclaré par une recette est celui des noix décoquillées : une belle coquille entière donne environ 30 g de noix, si bien que compter en coquilles reviendrait à multiplier l'apport par cinq ou six."
+    }
+  ]
+}

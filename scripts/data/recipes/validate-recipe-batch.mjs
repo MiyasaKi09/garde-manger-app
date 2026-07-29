@@ -92,6 +92,17 @@ const TYPES_DE_PLAT = new Set([
   // « sauté » au lexique des aliments. C'est une découpe et une cuisson, pas un
   // ingrédient : un sauté de porc n'a pas à contenir du sauté.
   'saute', 'sautee', 'mijote', 'fricassee', 'potage', 'veloute',
+  // Noms de plats que le classeur porte comme aliments composés : « Cassoulet »,
+  // « Osso buco », « Piperade » y ont leur entrée, si bien que leur premier mot
+  // entre au lexique et que le contrôle réclame un cassoulet dans le cassoulet.
+  'cassoulet', 'osso', 'buco', 'piperade', 'ratatouille', 'parmigiana',
+  'bouillabaisse', 'remoulade', 'pilaf', 'sarladaise', 'sarladaises',
+  'potee', 'souffle',
+  // « Coquilles Saint-Jacques » désigne le plat servi dans sa coquille : c'est
+  // un contenant, pas un ingrédient. Ce qui se mange est la noix, et c'est elle
+  // que la liste doit porter — le contrôle a d'ailleurs bien fait son travail en
+  // arrêtant une version écrite au Saint-pierre.
+  'coquille', 'coquilles',
 ])
 const UNITES = new Set(['g', 'ml', 'u', 'tranche', 'feuille'])
 const IDENTITES = new Set(['named_traditional_dish', 'domestic_standard'])

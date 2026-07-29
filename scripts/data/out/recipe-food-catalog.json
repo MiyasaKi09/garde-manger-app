@@ -1880,6 +1880,36 @@
       "note": "Troisième libellé du même concept (bœuf cru tranché très fin) ; « persillé » est un qualificatif de qualité, pas un aliment distinct, exactement comme « huile végétale raffinée » face à « huile végétale ». Le faux-filet est précisément la découpe persillée. Les cinq candidats proposés étaient tous faux (trois plats cuisinés, un bœuf braisé)."
     },
     {
+      "canonical_name": "Boudin noir à cuire",
+      "canonical_name_normalized": "boudin noir a cuire",
+      "category": "produits_transformes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "8703",
+      "source_name": "Boudin noir, à cuire",
+      "state": {
+        "concept": "Boudin noir à cuire",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 313,
+        "proteinG": 12.2,
+        "carbsG": 4.5,
+        "fatG": 27.1,
+        "fiberG": 1.42
+      },
+      "note": "Le cru plutôt que le sauté, puisque la recette le cuit elle-même : 313 kcal contre 246 une fois poêlé, l'écart venant de l'eau perdue et non d'un gras ajouté. Retenir la forme cuite ferait compter deux fois la cuisson. Macros complètes (P 12,2 / G 4,5 / L 27,1)."
+    },
+    {
       "canonical_name": "Bouillon d’agneau",
       "canonical_name_normalized": "bouillon d agneau",
       "category": "preparations_culinaires",
@@ -3060,6 +3090,36 @@
         "fiberG": 2.2
       },
       "note": null
+    },
+    {
+      "canonical_name": "Cerfeuil frais",
+      "canonical_name_normalized": "cerfeuil frais",
+      "category": "herbes_aromates",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "11002",
+      "source_name": "Cerfeuil, frais",
+      "state": {
+        "concept": "Cerfeuil frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 39.9,
+        "proteinG": 3.72,
+        "carbsG": 3.63,
+        "fatG": 0.6,
+        "fiberG": 2.55
+      },
+      "note": "Herbe de finition citée par plusieurs sources. Employée en brins, donc en quantités où l'apport est négligeable — mais la nommer évite de la faire disparaître de la liste."
     },
     {
       "canonical_name": "Cerise fraîche dénoyautée",
@@ -4319,6 +4379,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
@@ -6436,6 +6497,42 @@
         "fiberG": 2.45
       },
       "note": "Correspondance directe : « Salade ou chicorée frisée, crue », 17,8 kcal."
+    },
+    {
+      "canonical_name": "Fromage de chèvre bûche",
+      "canonical_name_normalized": "fromage de chevre buche",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "derived": {
+        "field": "carbohydrate_g",
+        "value": 0.925,
+        "method": "atwater_closure",
+        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g − 2·fiber_g) / 4"
+      },
+      "source_record_key": "12812",
+      "source_name": "Fromage de chèvre bûche",
+      "state": {
+        "concept": "Fromage de chèvre bûche",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 287,
+        "proteinG": 18.4,
+        "carbsG": 0.925,
+        "fatG": 23.3,
+        "fiberG": 0
+      },
+      "note": "Forme la plus courante du chèvre en cuisine domestique, et celle que nomment les sources. Glucides non renseignés, fermés par Atwater."
     },
     {
       "canonical_name": "Fromage frais mexicain",
@@ -9254,6 +9351,36 @@
       "note": "Ciqual 2020 ne mesure pas toutes les macros de cet aliment (glucides le plus souvent). Valeur USDA SR Legacy 175159 « Fish, cod, Atlantic, dried and salted », réellement mesurée — jamais un zéro posé par défaut."
     },
     {
+      "canonical_name": "Moule commune crue",
+      "canonical_name_normalized": "moule commune crue",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "10014",
+      "source_name": "Moule commune, crue",
+      "state": {
+        "concept": "Moule commune crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 71.8,
+        "proteinG": 11.2,
+        "carbsG": 2.69,
+        "fatG": 1.82,
+        "fiberG": 0
+      },
+      "note": "Le code était déjà au registre mais aucun arbitrage ne lui donnait de nom publiable : la forme restait donc introuvable au vocabulaire, exactement comme l'anchois dont la virgule cachait le nom. On la nomme, sans changer la référence. L'avertissement d'origine vaut d'être répété parce qu'il vise une erreur de trois pour un : le classeur mesure la CHAIR, pas la coquille. Un kilo de moules acheté donne environ 300 g de chair, et c'est ce poids-là qu'une recette déclare. Les étapes, elles, doivent parler en moules entières — c'est ce qu'on achète."
+    },
+    {
       "canonical_name": "Moutarde de Dijon",
       "canonical_name_normalized": "moutarde de dijon",
       "category": "condiments_sauces",
@@ -9405,6 +9532,36 @@
         "fiberG": 6.7
       },
       "note": "« Noix » sans qualificatif désigne en français le cerneau de noix (Juglans regia), et la forme de garde-manger est le fruit séché, disponible toute l'année, non la noix fraîche de saison. 15023 « Noix, fraîche » (370 kcal) sous-estimerait l'énergie de 46%. Code absent des cinq candidats. Les autres propositions désignent des espèces distinctes (noix du Brésil, pécan, macadamia) ou une huile."
+    },
+    {
+      "canonical_name": "Noix de Saint-Jacques crue",
+      "canonical_name_normalized": "noix de saint jacques crue",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "10045",
+      "source_name": "Coquille Saint-Jacques, noix, crue",
+      "state": {
+        "concept": "Noix de Saint-Jacques crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 83.6,
+        "proteinG": 17.9,
+        "carbsG": 1.15,
+        "fatG": 0.84,
+        "fiberG": 0
+      },
+      "note": "La noix seule, sans corail : c'est ce que vend le poissonnier et ce que la recette poêle. L'entrée noix+corail (10003) est plus grasse et plus sucrée — 0,78 g de glucides contre 1,15, et un profil différent — mais surtout elle décrit un produit qu'on achète rarement tel quel en France métropolitaine. Le poids déclaré par une recette est celui des noix décoquillées : une belle coquille entière donne environ 30 g de noix, si bien que compter en coquilles reviendrait à multiplier l'apport par cinq ou six."
     },
     {
       "canonical_name": "Nouille de blé chinoise sèche",
@@ -9900,6 +10057,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "u"
       ],
       "conversion": {},
@@ -10003,6 +10161,36 @@
         "fiberG": 0
       },
       "note": "Proxy viande bovine braisée ; moelle dédiée absente de Ciqual."
+    },
+    {
+      "canonical_name": "Oseille crue",
+      "canonical_name_normalized": "oseille crue",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20111",
+      "source_name": "Oseille, crue",
+      "state": {
+        "concept": "Oseille crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 19.6,
+        "proteinG": 1.84,
+        "carbsG": 1.6,
+        "fatG": 0.65,
+        "fiberG": 1.8
+      },
+      "note": "Feuille acide qui fait tout le plat du saumon à l'oseille — elle fond en purée verte au contact de la chaleur et c'est son acidité qui coupe le gras du poisson. Sans elle, il ne reste qu'un saumon à la crème. Entrée crue directe, macros complètes."
     },
     {
       "canonical_name": "Pain blanc rassis",
@@ -14105,6 +14293,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "u"
       ],
       "conversion": {},
@@ -14135,6 +14324,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "u"
       ],
       "conversion": {},
@@ -15124,6 +15314,44 @@
       "note": "Le candidat en tête (38105 « Chips de maïs ou tortilla chips », 495 kcal) est un produit apéritif frit, pas une galette : écarté malgré son score."
     },
     {
+      "canonical_name": "Truite crue",
+      "canonical_name_normalized": "truite crue",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "derived": {
+        "field": "carbohydrate_g",
+        "value": 0,
+        "raw_value": -0.018,
+        "clamped_to_zero": true,
+        "method": "atwater_closure",
+        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g − 2·fiber_g) / 4"
+      },
+      "source_record_key": "26092",
+      "source_name": "Truite de mer, crue",
+      "state": {
+        "concept": "Truite crue",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 111,
+        "proteinG": 19.6,
+        "carbsG": 0,
+        "fatG": 3.63,
+        "fiberG": 0
+      },
+      "note": "Le classeur ne publie la truite crue que pour la truite de mer ; l'arc-en-ciel d'élevage, celle qu'on achète pour une truite aux amandes, n'existe qu'en versions cuites (143 kcal rôtie, 117 vapeur). On retient donc le cru, puisque la recette cuit elle-même, au prix d'un proxy d'espèce assumé : 111 kcal, P 19,6 / L 3,63 pour la truite de mer contre un ordre de grandeur voisin pour l'élevage. Confiance B, l'écart portant sur l'espèce et non sur l'état. Le poids déclaré est celui des filets ou de la chair, pas celui du poisson entier vidé — une truite de 250 g en donne environ 150."
+    },
+    {
       "canonical_name": "Vanille liquide",
       "canonical_name_normalized": "vanille liquide",
       "category": "epices",
@@ -15399,6 +15627,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
