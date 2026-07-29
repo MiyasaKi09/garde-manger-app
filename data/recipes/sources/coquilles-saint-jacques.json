@@ -1,0 +1,222 @@
+{
+  "dish": "Coquilles Saint-Jacques",
+  "slug": "coquilles-saint-jacques",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_coquilles-saint-jacques-a-l-ancienne_24318.aspx",
+      "site": "marmiton.org",
+      "nom": "Coquilles Saint Jacques à l'ancienne : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "500 g de coquilles saint-jacques congelées (sans corail)",
+        "0.25 l de vin blanc sec",
+        "250 g de crème fraîche",
+        "2 échalotes",
+        "30 g de beurre",
+        "2 oeufs",
+        "1 demi de citron",
+        "1 cuillère à soupe de farine",
+        "chapelure",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 749,
+        "sha256": "f9e4a804329bd8bb"
+      },
+      "sha256_page": "766718a96cfc391a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_risotto-cremeux-aux-coquilles-saint-jacques_43268.aspx",
+      "site": "marmiton.org",
+      "nom": "Risotto crémeux aux coquilles saint-jacques : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "300 g de riz pour risotto à risotto",
+        "100 g de beurre",
+        "80 cl de bouillon de poule (2 cubes de bouillons + l'eau)",
+        "2 oignons",
+        "10 cl de vin blanc de cuisine",
+        "16 coquilles saint-jacques",
+        "parmesan à volonté",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 883,
+        "sha256": "48c974cfaaab86f0"
+      },
+      "sha256_page": "0e6adac1f5aeba3e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_coquilles-saint-jacques-au-whisky_21840.aspx",
+      "site": "marmiton.org",
+      "nom": "Coquilles Saint Jacques au whisky : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT6M",
+      "ingredients": [
+        "10 noix de saint-jacques",
+        "0.5 verre de Liqueur de whisky",
+        "beurre",
+        "crème fraîche",
+        "poivre",
+        "sel",
+        "persil (haché)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 387,
+        "sha256": "9afb112616e6ebbb"
+      },
+      "sha256_page": "1a85b5eeea2897dd"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/noix-de-saint-jacques-cuites-en-coquilles",
+      "site": "chefsimon.com",
+      "nom": "Noix de Saint-Jacques cuites en coquilles",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 coquilles Saint-Jacques",
+        "une carotte",
+        "quelques feuilles de persil plat ou tiges d'oignons ou d'échalotes ciselées",
+        "1 dl de vin blanc sec",
+        "huile d'olive",
+        "sel et poivre du moulin.",
+        "100 g de farine",
+        "50 g de sel",
+        "eau (en quantité suffisante)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 752,
+        "sha256": "3f346efeddb11e31"
+      },
+      "sha256_page": "cf386eb6f3e6ef9b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/ouvrir-et-decoquiller-une-coquille-saint-jacques",
+      "site": "chefsimon.com",
+      "nom": "Ouvrir et décoquiller une coquille Saint Jacques",
+      "portions": "",
+      "duree_preparation": "PT00H02M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "Des coquilles saint-jacques fraîches"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 818,
+        "sha256": "95f01f8e91ded70d"
+      },
+      "sha256_page": "ea14c63608285995"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/coquille-saint-jacques-de-la-baie-de-saint-brieuc/recettes/noix-de-saint-jacques-en-coquille-aux-morilles",
+      "site": "chefsimon.com",
+      "nom": "Noix de saint-jacques en coquille aux morilles",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "9 noix de Saint-Jacques de la baie de Saint-Brieuc",
+        "150 g de morilles égouttées",
+        "1 noix de beurre",
+        "2 traits d’huile d’olive",
+        "5 cl de vin blanc",
+        "½ gousse d’ail",
+        "3 œufs",
+        "50 cl de crème fraîche",
+        "1 cuillère à soupe de chapelure",
+        "Quelques feuilles de persil plat",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 691,
+        "sha256": "12613af2fe6a0c07"
+      },
+      "sha256_page": "fad29d63bf8d590e"
+    },
+    {
+      "url": "https://www.750g.com/coquille-saint-jacques-sur-fondue-de-poireaux-r81898.htm",
+      "site": "750g.com",
+      "nom": "Coquilles Saint-Jacques et fondue de poireaux gratinées",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "Beurre",
+        "Sel ou sel fin",
+        "Poivre",
+        "20 g de chapelure",
+        "1 échalote",
+        "2 poireaux",
+        "8 noix de Saint-Jacques"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 434,
+        "sha256": "5deab5f2063e37a8"
+      },
+      "sha256_page": "0d21ff408fd39257"
+    },
+    {
+      "url": "https://www.750g.com/coquilles-saint-jacques-sur-lit-de-poireaux-r32573.htm",
+      "site": "750g.com",
+      "nom": "Coquilles Saint-Jacques sur lit de poireau et Noilly",
+      "portions": "6 personnes",
+      "duree_preparation": "PT2M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "Noilly prat",
+        "1 c.à s. d'huile, 15 g. de beurre",
+        "4 blancs de poireau",
+        "6 pers. 24 noix corail ou non"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 558,
+        "sha256": "5f5eaed24f0e8bf8"
+      },
+      "sha256_page": "504788a0682ef6b7"
+    },
+    {
+      "url": "https://www.750g.com/coquilles-saint-jacques-a-la-sauce-mornay-r41610.htm",
+      "site": "750g.com",
+      "nom": "Coquilles Saint-Jacques à la sauce Mornay",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 noix de coquilles SaintJacques",
+        "2 c. à soupe de chapelure",
+        "4 mini poêlons Pyrex® Wave en céramique",
+        "2 c. à soupe de gruyère râpé",
+        "1 pincée de noix de muscade",
+        "30 g de farine Suprême Francine",
+        "20 cl de lait",
+        "Sel",
+        "Poivre",
+        "30 g de Le Beurre Tendre d'Elle &amp; Vire"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 760,
+        "sha256": "c1aab16a66e5eceb"
+      },
+      "sha256_page": "6e8501141ba3a0ad"
+    }
+  ]
+}

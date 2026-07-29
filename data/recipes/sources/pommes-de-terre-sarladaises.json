@@ -1,0 +1,160 @@
+{
+  "dish": "Pommes de terre sarladaises",
+  "slug": "pommes-de-terre-sarladaises",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pommes-de-terre-sarladaises_25698.aspx",
+      "site": "marmiton.org",
+      "nom": "Pommes de terre Sarladaises : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "800 g de pommes de terre",
+        "1 gousse d'ail",
+        "1 oignon",
+        "persil",
+        "graisse d'oie",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 540,
+        "sha256": "32b457e0b969f9b8"
+      },
+      "sha256_page": "42ae18e74cc6cd5f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pommes-de-terre-sarladaises_22651.aspx",
+      "site": "marmiton.org",
+      "nom": "Pommes de terre sarladaises : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "500 g de pommes de terre qui se tiennent (charlotte par exemple)",
+        "50 g de canard ou d'oie",
+        "1 gousse d'ail",
+        "2 cuillères à soupe de persil",
+        "250 g de girolles"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 789,
+        "sha256": "7858b705069e2fb1"
+      },
+      "sha256_page": "bb95fc4269719505"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pommes-de-terre-sarladaises-par-laurent-mariotte_527912.aspx",
+      "site": "marmiton.org",
+      "nom": "Pommes de terre sarladaises par Laurent Mariotte : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 kg de pomme de terre",
+        "4 gousses d'ail",
+        "de persil (l'équivalent d'1/4)",
+        "3 cuillères à soupe de graisse d'oie",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 515,
+        "sha256": "c72c157a2e07f880"
+      },
+      "sha256_page": "3ebcf54006a9ebfc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/aux-fourneaux/recettes/pommes-de-terre-a-la-sarladaise-93b67f06-eaa7-4c2e-a573-ef90d1334f61",
+      "site": "chefsimon.com",
+      "nom": "Pommes de terre à la Sarladaise",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "800 g de pommes de terre",
+        "2 gousses d'ail",
+        "2 cuillères à soupe de persil ciselé",
+        "3 cuillères à soupe de graisse d'oie",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 113,
+        "sha256": "dbb7f6b1075eedd3"
+      },
+      "sha256_page": "2802ee3fb9e00f63"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/pommes-de-terre-sarladaises--2",
+      "site": "chefsimon.com",
+      "nom": "Pommes de terre sarladaises",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "800 g de pommes de terre",
+        "100 g de graisse de canard ou d’oie",
+        "cèpes frais ou déshydratés selon la saison",
+        "2 gousses d'ail",
+        "5 branches de persil plat",
+        "sel (poivre)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 167,
+        "sha256": "6d27b8c7fbf9d418"
+      },
+      "sha256_page": "6b96484a3f39ef57"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-blog/recettes/pommes-de-terre-sarladaises",
+      "site": "chefsimon.com",
+      "nom": "Pommes de terre Sarladaises",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 Kg de pommes de terre",
+        "2  gousses d'ail",
+        "1  branche de persil",
+        "de graisse de canard ou d'oie",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 262,
+        "sha256": "c7a2302944ffe5db"
+      },
+      "sha256_page": "25b03acaa09309cd"
+    },
+    {
+      "url": "https://www.750g.com/pommes-de-terre-sarladaises-r20806.htm",
+      "site": "750g.com",
+      "nom": "Pommes de terre sarladaises",
+      "portions": null,
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "Du sel",
+        "Du poivre",
+        "du persil",
+        "3 gousses d'ail",
+        "de la graisse canard",
+        "5 pommes de terre à chair ferme"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 868,
+        "sha256": "e7755e14587b8800"
+      },
+      "sha256_page": "7ea150322773c1fd"
+    }
+  ]
+}

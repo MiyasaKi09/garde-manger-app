@@ -1,0 +1,215 @@
+{
+  "dish": "Boudin noir aux pommes",
+  "slug": "boudin-noir-aux-pommes",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_boudin-noir-poele-aux-pommes_27785.aspx",
+      "site": "marmiton.org",
+      "nom": "Boudin noir poêlé aux pommes : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "250 g de boudins noirs à l'oignon (ou nature)",
+        "3 pommes reinettes ou golden",
+        "1 citron",
+        "20 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 775,
+        "sha256": "fc493062e591873f"
+      },
+      "sha256_page": "c94d0d3be7e30b9e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tatin-au-boudin-noir-et-aux-pommes_87788.aspx",
+      "site": "marmiton.org",
+      "nom": "Tatin au boudin noir et aux pommes : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "3 pommes golden",
+        "10 noisettes de beurre",
+        "150 g de boudins noirs",
+        "1 pâte feuilletée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 328,
+        "sha256": "dbd8f1962b026964"
+      },
+      "sha256_page": "050d468caf3d3443"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_boudin-noir-aux-pommes-et-miel_88139.aspx",
+      "site": "marmiton.org",
+      "nom": "Boudin noir aux pommes et miel : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "2 boudins noirs aux oignons ou pas",
+        "2 pommes",
+        "3 oignons",
+        "1 cuillère à soupe de miel",
+        "30 g de beurre",
+        "800 g de pommes de terre (cette proportion est au choix, selon l'appétit de chacun! Il faut de quoi faire une purée!)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 765,
+        "sha256": "d6302750034bd5c7"
+      },
+      "sha256_page": "7ec6caf4ffec298e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/casimir/recettes/mousse-boudin-noir-pomme",
+      "site": "chefsimon.com",
+      "nom": "Mousse boudin noir pomme",
+      "portions": "5 personnes",
+      "duree_preparation": "PT01H30M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "mousse boudin :",
+        "200g boudin noir",
+        "400cl crème fraîche",
+        "4càs Manzana",
+        "2 feuilles de gélatine",
+        "mousse pomme:",
+        "400g pommes",
+        "3 blancs œufs",
+        "1/2jus de citron",
+        "30g sucre",
+        "200 ml crème fraîche",
+        "3 feuille de gélatine",
+        "pomme de terre et Andouille de Guémené.1/2l jus de pomme pour la gelée et 2g agar agar."
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 1384,
+        "sha256": "74ed399a2d02c03c"
+      },
+      "sha256_page": "996bb7cc4313657e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/leroi/recettes/pomme-pompidou-flambee-au-calvados-accompagne-de-son-boudin-noir-et-sa-compotee-d-oignons",
+      "site": "chefsimon.com",
+      "nom": "Pomme Pompidou flambée au calvados accompagné de son boudin noir et sa compotée d'oignons",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "3 pomme Pompidou",
+        "1 noisette de beurre",
+        "100g de sucre",
+        "Un bouchon de calvados pour le flambage",
+        "2 boudin noir",
+        "3 oignons"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 671,
+        "sha256": "94c14d7c22146ea3"
+      },
+      "sha256_page": "5ca58c1ea46a3977"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/bricks-aux-pommes-et-au-boudin-noir",
+      "site": "chefsimon.com",
+      "nom": "Bricks aux pommes et au boudin noir",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "1  pomme",
+        "125 g de boudin noir aux oignons",
+        "4 feuilles de brick",
+        "cannelle",
+        "1 cuil. à café de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 133,
+        "sha256": "feb68d4113bdd15e"
+      },
+      "sha256_page": "a2248bbe170f07d9"
+    },
+    {
+      "url": "https://www.750g.com/poelee-de-boudin-noir-aux-deux-pommes-r38014.htm",
+      "site": "750g.com",
+      "nom": "Poêlée de boudin noir aux deux pommes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "2 boudins noirs",
+        "500 g de pommes de terre ratte du touquet",
+        "2 c. à s. d'huile d'olive",
+        "1 petite grappe de raisin blanc",
+        "1 échalote",
+        "1 pomme Golden",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 894,
+        "sha256": "46e7bbdc2c97591e"
+      },
+      "sha256_page": "447d9ceb47e00da5"
+    },
+    {
+      "url": "https://www.750g.com/pommes-roties-au-boudin-noir-r47435.htm",
+      "site": "750g.com",
+      "nom": "Pommes rôties au boudin noir",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "Poivre",
+        "Beurre",
+        "Sel ou sel fin",
+        "Persil",
+        "6 boudins noirs",
+        "2 oignons",
+        "6 pommes  à cuire"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 534,
+        "sha256": "0fb8a2d877390c0d"
+      },
+      "sha256_page": "22f04e8317097520"
+    },
+    {
+      "url": "https://www.750g.com/tourte-au-boudin-noir-sur-lit-de-pommes-poireaux-r77318.htm",
+      "site": "750g.com",
+      "nom": "Tourte au boudin noir sur lit de pommes-poireaux",
+      "portions": "5 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT55M",
+      "ingredients": [
+        "20 g de beurre",
+        "3 c. à s. de vinaigre de cidre",
+        "Poivre",
+        "1 oeuf",
+        "20 g de sucre en poudre ou sucre semoule",
+        "450 g de boudins noirs",
+        "400 g de pommes",
+        "250 g d'oignons",
+        "200 g de blancs de poireau",
+        "2 pâte feuilletée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 744,
+        "sha256": "70ef71760c98f694"
+      },
+      "sha256_page": "d31d7fa9b603116e"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "dish": "Gratin de chou-fleur",
+  "slug": "gratin-de-chou-fleur",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-chou-fleur-leger_28811.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin de chou-fleur léger : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 chou-fleur",
+        "25 g de beurre",
+        "30 g de farine",
+        "1 bouillon de volaille",
+        "40 cl d'eau",
+        "5 cl de crème",
+        "50 g de fromage râpé",
+        "sel",
+        "poivre",
+        "muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 929,
+        "sha256": "46b81fa25ebe3fbe"
+      },
+      "sha256_page": "a62b3b4c37d30955"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-chou-fleur-a-la-creme-d-oignon_40400.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin de chou-fleur à la crème d'oignon : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 chou-fleur",
+        "3 oignons",
+        "100 g de beurre",
+        "2 cuillères à soupe de farine",
+        "50 cl de bouillon de volaille (cube)",
+        "10 cl de crème fraîche liquide",
+        "poivre",
+        "sel",
+        "muscade",
+        "chapelure",
+        "gruyère râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 854,
+        "sha256": "bbdabb196b4a3365"
+      },
+      "sha256_page": "272106d0261a6afb"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-chou-fleur-savoureux_80531.aspx",
+      "site": "marmiton.org",
+      "nom": "gratin de chou-fleur savoureux : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "1 kg de chou-fleur surgelé",
+        "400 g de lardons allumette",
+        "80 cl de crème fraîche liquide",
+        "6 cuillères à soupe de farine",
+        "300 g de gruyère râpé (300g)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 525,
+        "sha256": "7ab5ad9ffbb7a798"
+      },
+      "sha256_page": "4aa893b2cd487f6d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/gratin-de-chou-fleur-au-curry-228e6aff-a774-4e8f-89d6-78dd2c0efb74",
+      "site": "chefsimon.com",
+      "nom": "Gratin de chou-fleur au curry",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "1 chou-fleur",
+        "30 g de beurre",
+        "30 g de farine",
+        "1/2 litre de lait",
+        "100 g de fromage au choix (comté, beaufort, gruyère, emmental...)",
+        "une cas de curry"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 717,
+        "sha256": "6cb4ebc0e0843d6e"
+      },
+      "sha256_page": "abe93e8c54698b4b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/le-popoteur/recettes/gratin-de-chou-fleur-au-chaource",
+      "site": "chefsimon.com",
+      "nom": "Gratin de chou-fleur au chaource",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "1 beau chou-fleur de 2 kg environ",
+        "700 gr de pommes de terre moyennes",
+        "1 oignon",
+        "2 gousses d'ail",
+        "1 carotte moyenne",
+        "1 poireau",
+        "1 branche de céleri",
+        "20 gr de persil",
+        "2 feuilles de laurier",
+        "3 clous de girofle",
+        "gros sel",
+        "1 fromage chaource de 250 gr",
+        "60 cl de bouillon de cuisson du chou-fleur",
+        "2 beaux oignons (300 gr)",
+        "3 gousses d'ail",
+        "300 gr de poitrine de porc fumé en tranches",
+        "70 gr de beurre + 20 gr",
+        "70 gr de farine",
+        "sel fin/poivre blanc du moulin",
+        "1 belle noix de beurre pour graisser les contenants",
+        "500 gr de fromage chaource"
+      ],
+      "etapes_empreinte": {
+        "nombre": 38,
+        "signes": 3488,
+        "sha256": "97973670e4f35e6b"
+      },
+      "sha256_page": "1f754caf325650d9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/leila-martin/recettes/gratin-de-chou-fleur-au-streusel-et-au-bleu",
+      "site": "chefsimon.com",
+      "nom": "Gratin de chou-fleur au streusel et au bleu",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1   gros chou-fleur",
+        "1  noix de beurre",
+        "1 gros oignon jaune  ((ou 2 petits))",
+        "250 ml de crème fraîche entière",
+        "200 g de bleu des Vosges",
+        "sel, poivre",
+        "50 g de farine",
+        "50 g de poudre de noisettes",
+        "50 g de bleu des Vosges ((ou autre bleu à votre goût))",
+        "35 g de beurre",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 230,
+        "sha256": "f8c3e38e611e5b5e"
+      },
+      "sha256_page": "0e82d727730933fa"
+    },
+    {
+      "url": "https://www.750g.com/gratin-de-chou-fleur-r91836.htm",
+      "site": "750g.com",
+      "nom": "Gratin de chou-fleur au comté",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "200 g de comté râpé",
+        "50 cl de lait",
+        "50 g de farine",
+        "50 g de beurre",
+        "1 chou-fleur"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 465,
+        "sha256": "b96d3acfa29400a7"
+      },
+      "sha256_page": "a36d33bb13782e12"
+    },
+    {
+      "url": "https://www.750g.com/gratin-de-chou-fleur-r41644.htm",
+      "site": "750g.com",
+      "nom": "Gratin de chou-fleur maison",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "500 ml de lait d'avoine",
+        "Sel ou sel fin",
+        "Poivre",
+        "Noix de muscade",
+        "40 g de farine",
+        "40 g de beurre",
+        "4 tranches de jambon blanc",
+        "50 g de gruyère râpé",
+        "1 chou-fleur"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 761,
+        "sha256": "0b907062e4fc513e"
+      },
+      "sha256_page": "8c1ef0e04477b7bd"
+    }
+  ]
+}

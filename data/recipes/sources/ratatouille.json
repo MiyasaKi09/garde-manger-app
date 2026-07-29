@@ -1,0 +1,246 @@
+{
+  "dish": "Ratatouille",
+  "slug": "ratatouille",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_ratatouille_23223.aspx",
+      "site": "marmiton.org",
+      "nom": "Ratatouille : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT55M",
+      "ingredients": [
+        "350 g d'aubergines",
+        "350 g de courgettes",
+        "350 g de poivrons de couleur rouge et vert",
+        "350 g d'oignons",
+        "500 g de tomates bien mûres",
+        "3 gousses d'ail",
+        "6 cuillères à soupe d'huile d'olive",
+        "1 brin de thym",
+        "1 feuille de laurier",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 731,
+        "sha256": "36300f50e5981627"
+      },
+      "sha256_page": "3ce0690adc382513"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_ratatouille-confite_32057.aspx",
+      "site": "marmiton.org",
+      "nom": "Ratatouille confite : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "2 oignons",
+        "2 aubergines",
+        "2 poivrons verts",
+        "4 courgettes",
+        "4 tomates",
+        "huile d'olive",
+        "poivre",
+        "sel",
+        "herbes (selon votre goût)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 613,
+        "sha256": "b8d2e8faeb59f4af"
+      },
+      "sha256_page": "a0fa9c4281271d76"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_ratatouille-meridionale_46962.aspx",
+      "site": "marmiton.org",
+      "nom": "Ratatouille méridionale : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 aubergines",
+        "2 courgettes",
+        "2 poivrons (1 rouge, 1 vert)",
+        "3 tomates",
+        "1 oignon ou 4 petits oignons frais",
+        "10 olives noires dénoyautées",
+        "3 gousses d'ail",
+        "thym",
+        "poivre",
+        "sel",
+        "6 cuillères à soupe d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 999,
+        "sha256": "c75ddf41d7fa3125"
+      },
+      "sha256_page": "c8a268aa677996c7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/ratatouille--10",
+      "site": "chefsimon.com",
+      "nom": "Ratatouille",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "4 courgettes bien fermes",
+        "2 aubergines pas trop grosses",
+        "2 oignons",
+        "6 a 8 gousses d'ail dégermées",
+        "4 échalotes",
+        "6 belles tomates roma",
+        "2 poivrons",
+        "1 bouquet de thym",
+        "huile d'olive",
+        "sel et poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 794,
+        "sha256": "0565e97a6428decb"
+      },
+      "sha256_page": "233de2b348027998"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mag6357/recettes/ratatouille-a-la-provencale",
+      "site": "chefsimon.com",
+      "nom": "Ratatouille à la provençale",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "1 aubergine",
+        "3 courgettes",
+        "2 oignons",
+        "6 gousses d'ail",
+        "8 cuillères à soupe d'huile d'olive (Soit 12 cl)",
+        "1 bocal d'olive noir (160g net égoûté environ)",
+        "2 poivrons (rouge et vert)",
+        "1 belle tomate jaune côtelée",
+        "4 tomates ronde en grappe",
+        "2 branches de thym",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 553,
+        "sha256": "3d717ca5e9833e01"
+      },
+      "sha256_page": "cb4bfd15cb1c7e98"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/ratatouille-nicoise-445359d0-1d73-433d-96b4-a47bd2b9f68c",
+      "site": "chefsimon.com",
+      "nom": "Ratatouille niçoise",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "2  oignons jaunes",
+        "2  gousses d’ail",
+        "2  aubergines",
+        "4  courgettes",
+        "1  poivron vert",
+        "1  poivron rouge",
+        "600 g de tomates mûres",
+        "10 cl d’huile d’olive",
+        "1  feuille de laurier",
+        "1  branche de thym",
+        "½ cuil. à café de sucre",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 304,
+        "sha256": "d8ffa26bc55c92b8"
+      },
+      "sha256_page": "5164399597651dbc"
+    },
+    {
+      "url": "https://www.750g.com/ratatouille-r1527.htm",
+      "site": "750g.com",
+      "nom": "Ratatouille méditerranéenne ",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "2 gousses d'ail",
+        "2 c. à s. d'huile d'olive",
+        "Thym",
+        "Sel ou sel fin",
+        "Poivre",
+        "Tomate  bien mûre",
+        "Oignon",
+        "4 courgettes",
+        "1 poivron rouge",
+        "1 poivron vert",
+        "1 aubergine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 354,
+        "sha256": "7fc126ab9cffdf80"
+      },
+      "sha256_page": "4ea762ef8770dc5e"
+    },
+    {
+      "url": "https://www.750g.com/ratatouille-r38385.htm",
+      "site": "750g.com",
+      "nom": "Ratatouille classique",
+      "portions": null,
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 poivron rouge",
+        "2 c. à s. d'huile d'olive",
+        "1 c. à c. de thym",
+        "Sel ou sel fin",
+        "Poivre",
+        "1 poivron vert",
+        "1 poivron jaune",
+        "1 aubergine",
+        "2 oignons",
+        "2 tomates",
+        "2 courgettes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 458,
+        "sha256": "7ee6d95cf505e940"
+      },
+      "sha256_page": "268eabf3def5f2b7"
+    },
+    {
+      "url": "https://www.750g.com/ratatouille-facile-r59352.htm",
+      "site": "750g.com",
+      "nom": "Ratatouille provençale facile",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT1M",
+      "ingredients": [
+        "Huile d'olive",
+        "Sel ou sel fin",
+        "Poivre",
+        "Chair à saucisse",
+        "Aubergine",
+        "Tomate",
+        "Poivron",
+        "Courgette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1285,
+        "sha256": "5ce3dd17aa0ae12f"
+      },
+      "sha256_page": "a071b7b4e5a69a66"
+    }
+  ]
+}

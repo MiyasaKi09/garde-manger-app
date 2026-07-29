@@ -1,0 +1,199 @@
+{
+  "dish": "Parmigiana d'aubergines",
+  "slug": "parmigiana-d-aubergines",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_aubergine-alla-parmigiana_64508.aspx",
+      "site": "marmiton.org",
+      "nom": "Aubergine alla parmigiana : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "2 aubergines",
+        "sel",
+        "100 g de chapelure",
+        "1 oeuf",
+        "huile d'olive",
+        "40 cl de coulis de tomate",
+        "parmesan (d'où le titre mais on peut remplacer par du gruyère, de la mozzarella râpée ...)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 694,
+        "sha256": "325148ba59331291"
+      },
+      "sha256_page": "1744f494188d1918"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_aubergines-parmigiana-express-au-airfryer_537433.aspx",
+      "site": "marmiton.org",
+      "nom": "Aubergines parmigiana express au Airfryer : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT26M",
+      "ingredients": [
+        "4 pièces d'aubergines",
+        "200 ml de sauce tomate",
+        "100 g de mozzarella",
+        "80 g de parmesan râpé",
+        "4 cuillères à soupe d'huile d'olive",
+        "4 cuillères à soupe de chapelure",
+        "2 gousses d'ail",
+        "2 tiges de basilic",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 959,
+        "sha256": "c87d098e69a0a1e2"
+      },
+      "sha256_page": "c1c09f6b6a384011"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_aubergines-a-la-parmigiana_36293.aspx",
+      "site": "marmiton.org",
+      "nom": "Aubergines à la Parmigiana : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 kg d'aubergine",
+        "800 g de tomates concassées en conserve",
+        "2 cuillères à soupe de concentré de tomates",
+        "250 g de mozzarella",
+        "2 gousses d'ail",
+        "parmesan à râper",
+        "huile d'olive",
+        "10 cl de vin rouge",
+        "10 cl d'eau",
+        "poivre",
+        "sel",
+        "gros sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 813,
+        "sha256": "db1f4234ff5c77d1"
+      },
+      "sha256_page": "1843e08385a38cef"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/aubergines-alla-parmigiana-de-jamie-oliver",
+      "site": "chefsimon.com",
+      "nom": "Aubergines alla parmigiana de Jamie Oliver",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H55M",
+      "ingredients": [
+        "3  aubergines",
+        "huile d'olive",
+        "1  oignon",
+        "1  à 2 gousses d'ail",
+        "2  cuil. à café d'origan",
+        "1 kg de tomates bien mûres (en hiver, 800 gr de tomates pelées en boîte feront l'affaire)",
+        "6  à 8 feuilles de basilic",
+        "60 gr de parmesan râpé",
+        "30 gr de chapelure",
+        "sel (poivre du moulin)",
+        "vinaigre de vin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 125,
+        "sha256": "51a4ed78b2f997d6"
+      },
+      "sha256_page": "555972127e7648ad"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clarisse-en-cuisine/recettes/boulettes-d-aubergine-a-la-parmigiana-3f940871-82b1-4ebd-9ea4-1eeee3325496",
+      "site": "chefsimon.com",
+      "nom": "Boulettes d’aubergine à la parmigiana",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "500 gr nets d’aubergine",
+        "50 gr de fromage ricotta (à défaut, personnellement mascarpone)",
+        "40 gr de fromage parmesan râpé",
+        "1 gros œuf",
+        "50 gr de chapelure",
+        "3 c à soupe d’huile d’olives",
+        "sel / poivre du moulin",
+        "optionnel : quelques feuilles de menthe fraîche ciselées pour le service",
+        "5 belles tomates charnues et mûres",
+        "2 gousses d’ail pelées, dégermées et pressées",
+        "1 oignon ciselé finement",
+        "1/2 c à café de thym",
+        "6 feuilles de basilic ciselées",
+        "1/2 c à café d’origan",
+        "1 branche de livèche",
+        "1 à 2 c à soupe d’huile d’olive",
+        "sel/poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "3ab18b59075e1549"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/aubergines-farcies-facon-parmigiana-47c4bfb6-1a27-4ecc-aaf0-34b702589c89",
+      "site": "chefsimon.com",
+      "nom": "Aubergines farcies façon parmigiana",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "4 aubergines",
+        "250 g de sauce tomate",
+        "2 boules de mozzarella",
+        "35 g de parmesan râpé",
+        "35 g de pecorino râpé",
+        "1 poignée de pignons de pin",
+        "quelques feuilles de basilic",
+        "huile d’olive",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "f42e215666732f42"
+    },
+    {
+      "url": "https://www.750g.com/parmigiana-daubergines-r76429.htm",
+      "site": "750g.com",
+      "nom": "Parmigiana d'aubergines",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "3 aubergines  (grandes)",
+        "700 g de sauce tomate",
+        "250 g de mozzarella",
+        "3 oeufs",
+        "60 g de parmesan",
+        "¼ oignon",
+        "Huile d'olive",
+        "Huile de friture",
+        "Farine",
+        "2 gousses d'ail",
+        "3 feuilles de basilic  frais haché",
+        "Sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 2006,
+        "sha256": "f4ece598b7ad04aa"
+      },
+      "sha256_page": "bf1af837d92ce1c5"
+    }
+  ]
+}

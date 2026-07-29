@@ -1,0 +1,278 @@
+{
+  "dish": "Osso buco",
+  "slug": "osso-buco",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_osso-buco-a-la-milanaise_14064.aspx",
+      "site": "marmiton.org",
+      "nom": "Osso buco à la milanaise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "4 morceaux de tendrons de veau",
+        "1 oignon coupé très fin",
+        "1 carotte coupée très fin",
+        "1 branche de céleri coupée très fin",
+        "1 boîte de tomates pelées",
+        "1 petite boîte de concentré de tomates",
+        "huile d'olive",
+        "farine",
+        "poivre",
+        "sel",
+        "1 feuille de laurier",
+        "20 cl de vin blanc sec"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 961,
+        "sha256": "dd8aadf025e5b732"
+      },
+      "sha256_page": "f642df4ef28ca8ec"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_osso-buco_21953.aspx",
+      "site": "marmiton.org",
+      "nom": "Osso buco : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "4 morceaux de jarrets de veau",
+        "1 oignon",
+        "1 boîte de concentré de tomates",
+        "1 grosse boîte de tomates pelées",
+        "paprika",
+        "sel /poivre",
+        "50 g de beurre",
+        "2 verres de vin blanc"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 676,
+        "sha256": "79b1c600a951630c"
+      },
+      "sha256_page": "804cea241e39a84c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_osso-buco-allege_16332.aspx",
+      "site": "marmiton.org",
+      "nom": "Osso buco allégé : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "4 tranches de jarrets de veau",
+        "2 carottes",
+        "0.25 céleri-rave",
+        "6 tomates",
+        "2 oignons",
+        "100 g de navets",
+        "ail",
+        "persil",
+        "basilic",
+        "1 verre de vin blanc"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 563,
+        "sha256": "af74aa3f5318b53b"
+      },
+      "sha256_page": "a027ca0b71fc81a9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/osso-buco-forestiere",
+      "site": "chefsimon.com",
+      "nom": "Osso buco forestière",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "4 tranches de jarret de veau (osso buco) de 250 g minimum",
+        "2 gros oignons",
+        "1 carotte",
+        "thym",
+        "laurier",
+        "3 gousses d'ail",
+        "400 g de champignons",
+        "50 cl de fond de veau lié",
+        "25 cl de vin blanc sec",
+        "100 g de beurre",
+        "huile",
+        "un demi bouquet de persil ou d'estragon",
+        "4 échalotes ciselées",
+        "sel",
+        "poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 17,
+        "signes": 1282,
+        "sha256": "694030cbed2e16a3"
+      },
+      "sha256_page": "c9f72fbb9e2808d1"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clarisse-en-cuisine/recettes/medaillons-de-filet-mignon-facon-osso-buco",
+      "site": "chefsimon.com",
+      "nom": "Médaillons de filet mignon façon osso buco",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT01H15M",
+      "ingredients": [
+        "1 filet mignon de porc ou de veau",
+        "1 beau tendron de veau avec os",
+        "3 c à soupe d'huile d'olive",
+        "1 oignon rouge moyen",
+        "2 gousses d'ail dégermées et ciselées",
+        "2 carottes en rondelles",
+        "1 poireau moyen",
+        "1 branche de céleri",
+        "1 petite branche de thym",
+        "1 feuille de laurier",
+        "1/4 c à café d'origan",
+        "1 pointe de couteau de Piment d'Espelette",
+        "1 clou de girofle",
+        "1/2 tablette bouillon de bœuf + 1 tablette de jus de rôti de veau",
+        "1 boîte 400 g tomates pelées",
+        "1/2 petite brique de purée de tomate (soit 100 ml)",
+        "1/2 c à café de concentré de tomates",
+        "12 cl vin blanc sec",
+        "2 lamelles de zeste de citron bio",
+        "sel",
+        "1 c à café rase de sucre semoule",
+        "épaississant à sauce",
+        "une petite poignée de persil haché finement",
+        "zeste d'1/2 citron bio lavé",
+        "2 gousses d'ail dégermées et pressées",
+        "1 coupelle de parmesan râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 2121,
+        "sha256": "25ad239d4d5964cb"
+      },
+      "sha256_page": "5f3eb74477371706"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/osso-buco-a-la-toscane-aux-haricots-blancs",
+      "site": "chefsimon.com",
+      "nom": "Osso buco à la toscane aux haricots blancs",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "8 tranches de jarret de veau",
+        "680 g de haricots blancs",
+        "500 g de coulis de tomate",
+        "3  tomates",
+        "2  carottes",
+        "1 branche de céleri",
+        "1 botte d’oignons nouveaux",
+        "1 cuil. à café de concentré de tomate",
+        "20 cL de vin blanc",
+        "1  feuille de laurier",
+        "thym",
+        "beurre",
+        "huile d’olive",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 157,
+        "sha256": "43d183ff4acc3f6c"
+      },
+      "sha256_page": "fd1190763f904228"
+    },
+    {
+      "url": "https://www.750g.com/osso-buco-aux-champignons-r33850.htm",
+      "site": "750g.com",
+      "nom": "Osso-buco aux champignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "4 tranches de jarret de veau",
+        "2 oignons",
+        "2 échalotes",
+        "2 carottes",
+        "4 tomates  bien mûres",
+        "200 g de champignons de Paris",
+        "3 c. à s. d'huile",
+        "30 g de beurre",
+        "2 c. à s. de concentré de tomates",
+        "2 c. à s. de farine",
+        "25 cl de vin blanc sec",
+        "10 cl de bouillon de boeuf",
+        "1 tête d'ail  entière",
+        "1 bouquet garni",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1025,
+        "sha256": "fd3c3496d940f3e2"
+      },
+      "sha256_page": "453f76d89c1a723c"
+    },
+    {
+      "url": "https://www.750g.com/osso-buco-a-laubergine-r19130.htm",
+      "site": "750g.com",
+      "nom": "Osso buco à l'aubergine",
+      "portions": "4 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "20 cl de bouillon de veau",
+        "Sel ou sel fin",
+        "Poivre blanc  du moulin",
+        "2 c. à s. de persil  haché",
+        "Beurre  pour la cuisson",
+        "1 verre de vin rouge",
+        "Farine",
+        "½ carotte",
+        "½ aubergine  (petite)",
+        "100 g de céleri rave",
+        "1 oignon jaune  (gros)",
+        "1,2 kg de veau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 409,
+        "sha256": "c32cbdc5e1fc162b"
+      },
+      "sha256_page": "d8953990a510dca8"
+    },
+    {
+      "url": "https://www.750g.com/osso-buco-aux-agrumes-r89204.htm",
+      "site": "750g.com",
+      "nom": "Osso buco aux agrumes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "Poivre",
+        "Huile d'olive",
+        "Persil",
+        "Zestes de citron",
+        "Miel",
+        "1 c à s de miel",
+        "1 grand verre de vin blanc Lichette",
+        "2 oignons",
+        "9 filets d'anchois",
+        "2 oranges",
+        "2 clémentines bio",
+        "3 feuilles de laurier",
+        "1 à 1,2 kg de jarret de veau (6 rouelles de 3 cm d'épaisseur)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 953,
+        "sha256": "672deb8c29a1c862"
+      },
+      "sha256_page": "2cf0a38f301079c3"
+    }
+  ]
+}

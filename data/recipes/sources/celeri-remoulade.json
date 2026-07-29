@@ -1,0 +1,214 @@
+{
+  "dish": "Céleri rémoulade",
+  "slug": "celeri-remoulade",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_celeri-remoulade-super-leger_85731.aspx",
+      "site": "marmiton.org",
+      "nom": "Céleri rémoulade super léger : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "1 sachet de céleri haché",
+        "4 cuillères à soupe de mayonnaise (allégée)",
+        "1 cuillère à café de moutarde",
+        "4 cuillères à soupe de yaourts natures allégé",
+        "0.5 cuillère à café de sucre",
+        "1 cuillère à soupe de vinaigre (de vin ou de cidre)",
+        "5 gouttes de tabasco",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 204,
+        "sha256": "d28dca9a8a04f399"
+      },
+      "sha256_page": "2a5b56e95211911b"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_celeri-remoulade-leger-et-dietetique_336642.aspx",
+      "site": "marmiton.org",
+      "nom": "Céleri rémoulade léger et diététique : la meilleure recette",
+      "portions": "2 Personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT1M",
+      "ingredients": [
+        "0.5 céleri rave épluché",
+        "0.5 yaourt 0%",
+        "0.25 citron (le jus)",
+        "0.5 cuillère à café de moutarde de Dijon",
+        "1 cuillère à soupe de câpres",
+        "1 pincée de sel",
+        "1 pincée de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 477,
+        "sha256": "fffcedc9aa3d8631"
+      },
+      "sha256_page": "23ced27f69b66eac"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_celeri-remoulade-par-laurent-mariotte_533354.aspx",
+      "site": "marmiton.org",
+      "nom": "Céleri rémoulade par Laurent Mariotte : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20H",
+      "duree_cuisson": "PT9M",
+      "ingredients": [
+        "1 céleri-rave",
+        "1 citron",
+        "1 pomme acide, type Reine des reinettes",
+        "2 oeufs",
+        "1 jaune d'oeuf",
+        "1 cuillère à soupe de moutarde",
+        "25 cl d'huile de tournesol",
+        "1 cuillère à soupe de vinaigre de vin blanc",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 670,
+        "sha256": "a8af4115bdcd03a5"
+      },
+      "sha256_page": "ab60554b9ee705d9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/celeri-remoulade--3",
+      "site": "chefsimon.com",
+      "nom": "Céleri rémoulade",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "½ boule de céleri rave",
+        "1 citron",
+        "1 jaune d’œuf",
+        "une cuillère à soupe de moutarde",
+        "25 cl d'huile",
+        "une cuillère à café de vinaigre de vin blanc",
+        "2 cuillères à soupe de persil haché fin",
+        "ou ciboulette ciselée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 381,
+        "sha256": "830b64b93d51b1ff"
+      },
+      "sha256_page": "8a0ab3bfe44f8f5a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/benjamin-reilhes/recettes/celeri-pas-tres-remoulade-de-benjamin-reilhes",
+      "site": "chefsimon.com",
+      "nom": "Céleri pas très rémoulade de Benjamin Reilhes",
+      "portions": "6 personnes",
+      "duree_preparation": "PT01H00M",
+      "duree_cuisson": "PT01H30M",
+      "ingredients": [
+        "1.5 kg de céleri boule",
+        "1 gr agar-agar",
+        "150 g de carottes taillées finement",
+        "90 g beurre",
+        "1 litre de bouillon de légumes",
+        "150 g de crème liquide 35%",
+        "300 gr de vin jaune",
+        "½ céleri boule",
+        "300gr de beurre",
+        "1 cs de raifort en purée",
+        "200 gr sucre",
+        "400 gr de vinaigre",
+        "600 gr d’eau",
+        "12 gr de sel",
+        "½ céleri boule"
+      ],
+      "etapes_empreinte": {
+        "nombre": 25,
+        "signes": 1153,
+        "sha256": "615a1750a8da5590"
+      },
+      "sha256_page": "0c8a1cd5583919ca"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-bonne-bouffe-a-sam/recettes/pied-de-cochon-en-terrine-celeri-remoulade-aux-pommes",
+      "site": "chefsimon.com",
+      "nom": "Pied de cochon en terrine, céleri rémoulade aux pommes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT01H00M",
+      "duree_cuisson": "PT03H00M",
+      "ingredients": [
+        "2 pieds de cochon crus",
+        "Gros sel de Guérande",
+        "un oignon",
+        "une carotte",
+        "un quart de céleri boule",
+        "2 pommes (fermes, acides et sucrées)",
+        "5 tiges et feuilles de persil",
+        "2 clous de girofle",
+        "1 œil de badiane",
+        "3 verts de poireau",
+        "5 petits bouquets de sauge",
+        "2 cuillers à soupe de poivre gris",
+        "vinaigre",
+        "2 cuillers à soupe d’oignon rouge de Roscoff haché",
+        "1 cuiller à soupe d’estragon haché",
+        "Huile de noix"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "d25dba3ce0058a90"
+    },
+    {
+      "url": "https://www.750g.com/celeri-remoulade-r21472.htm",
+      "site": "750g.com",
+      "nom": "Céleri rémoulade",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "600 g de céleri rave",
+        "50 g de mayonnaise",
+        "10 g de moutarde forte",
+        "1 citron",
+        "¼ botte de persil",
+        "Sel ou sel fin",
+        "Poivre blanc"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 272,
+        "sha256": "e50f3e7a876b7403"
+      },
+      "sha256_page": "820506f8146d0f6d"
+    },
+    {
+      "url": "https://www.750g.com/remoulade-de-celeri-rave-a-la-pomme-verte-r100552.htm",
+      "site": "750g.com",
+      "nom": "Rémoulade de céleri rave à la pomme verte",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "2 pommes vertes",
+        "1 céleri rave",
+        "1 citron",
+        "1 yaourt nature",
+        "1 moutarde",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 419,
+        "sha256": "01077726573a1142"
+      },
+      "sha256_page": "bdc0afc3b7e3a416"
+    }
+  ]
+}

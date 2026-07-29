@@ -1,0 +1,211 @@
+{
+  "dish": "Lentilles au lard",
+  "slug": "lentilles-au-lard",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-de-lentilles-vertes-au-lard_164499.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe de lentilles vertes au lard : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 blanc de poireau",
+        "1 carotte",
+        "1 oignon",
+        "1 échalote",
+        "150 g de lentilles vertes",
+        "300 g de sel fumée en tranche.",
+        "3 cuillères à soupe d'huile d'olive .",
+        "1 bouillon",
+        "1.5 l d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 934,
+        "sha256": "d108165343127ed4"
+      },
+      "sha256_page": "b77727f2f368c4a3"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-de-lentilles-au-lard_27788.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe de lentilles au lard : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "300 g de lentilles",
+        "100 g de beurre",
+        "2 carottes",
+        "2 oignons",
+        "100 g de lard",
+        "1 bouquet garni",
+        "22.5 cl de crème",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 333,
+        "sha256": "049451991aeb13ed"
+      },
+      "sha256_page": "8e5f091b385bb3bb"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_puree-de-lentilles-corails-et-lard-fumee_53257.aspx",
+      "site": "marmiton.org",
+      "nom": "Purée de lentilles corails et lard fumée : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "500 g de lentilles corail",
+        "100 g de lard fumé",
+        "1 branche de thym"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 338,
+        "sha256": "a5217216d86bce5d"
+      },
+      "sha256_page": "28c752b027e2630a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/epicetout/recettes/skrei-roti-au-cumin-lentilles-et-lard-fume",
+      "site": "chefsimon.com",
+      "nom": "Skrei rôti au cumin lentilles et lard fumé",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 filets de skrei (ou de cabillaud)",
+        "250 g de lentilles",
+        "4 fines tranches de lard fumé",
+        "1 gousse d'ail",
+        "1 oignon",
+        "1/2 citron",
+        "40 g de raisins secs",
+        "4 pincées de cumin",
+        "4 cuillères à soupe d'huile d'olive + 1",
+        "1 bouquet garni",
+        "2 cuillères à soupe de ciboulette ciselée",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "59baaa804c456226"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-papounet/recettes/lentilles-au-lard-fume",
+      "site": "chefsimon.com",
+      "nom": "Lentilles au lard fumé",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "500 g de lentilles vertes du puy",
+        "200 g de lard paysan fumé",
+        "2 carottes",
+        "2 oignons",
+        "3 clous de girofle",
+        "2 gousses d'ail",
+        "1 l de fond de veau ou de volaille",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "73e044d994093c7b"
+    },
+    {
+      "url": "https://www.750g.com/lentilles-au-lard-r94979.htm",
+      "site": "750g.com",
+      "nom": "Lentilles au lard",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "350 g de lentilles",
+        "100 g de lard",
+        "2 gousses d'ail",
+        "Sel ou sel fin",
+        "15 cl de crème liquide",
+        "Persil",
+        "1 clou de girofle",
+        "3 cl d'huile d'olive",
+        "1 carotte",
+        "1 oignon",
+        "Thym",
+        "Laurier"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 332,
+        "sha256": "b85407a3aab6269d"
+      },
+      "sha256_page": "d8e54fdae9fb3214"
+    },
+    {
+      "url": "https://www.750g.com/pintade-aux-lentilles-veloute-de-lard-fume-r19769.htm",
+      "site": "750g.com",
+      "nom": "Pintade aux lentilles, velouté de lard fumé",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "30 cl de crème fluide",
+        "3 échalotes",
+        "Sel",
+        "Poivre",
+        "gros sel",
+        "ciboulette",
+        "250 g de lard fumé (ou lardons)",
+        "250 g de lentilles du Puy",
+        "1 cuillère à soupe d'huile",
+        "50 g de beurre",
+        "1 bouquet garni (queues de persil, thym, laurier)",
+        "1 oignon",
+        "1 carotte",
+        "4 suprêmes de pintade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 757,
+        "sha256": "ccca4f4dff7c6481"
+      },
+      "sha256_page": "dd1bc88c4b502ebd"
+    },
+    {
+      "url": "https://www.750g.com/merlu-grille-sur-lit-de-lentilles-au-lard-r33344.htm",
+      "site": "750g.com",
+      "nom": "Merlu grillé sur lit de lentilles au lard",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "Sel",
+        "Poivre",
+        "Thym",
+        "4 darnes de merlu",
+        "1 oignon",
+        "8 tranches fines de lard",
+        "300g de lentilles"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 460,
+        "sha256": "390c3f2d800993dd"
+      },
+      "sha256_page": "b088c20d6cb70086"
+    }
+  ]
+}

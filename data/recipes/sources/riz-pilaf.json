@@ -1,0 +1,215 @@
+{
+  "dish": "Riz pilaf",
+  "slug": "riz-pilaf",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_riz-pilaf_27905.aspx",
+      "site": "marmiton.org",
+      "nom": "Riz pilaf de Caro : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "250 g de riz",
+        "3 cuillères à soupe d'huile ou 40 g de beurre",
+        "50 cl de bouillons",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 262,
+        "sha256": "65cdaec1e56fd2c1"
+      },
+      "sha256_page": "8004e877070dc3dd"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_riz-pilaf-au-thon_33739.aspx",
+      "site": "marmiton.org",
+      "nom": "Riz pilaf au thon : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1.5 verres de riz ou environ 100 g",
+        "1 oignon (ou plus selon les goûts)",
+        "beurre ou huile d'olive",
+        "3 verres de bouillons",
+        "crème fraîche",
+        "curry",
+        "1 boîte de thon au naturel (200 g)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 535,
+        "sha256": "206c6727f26a7f56"
+      },
+      "sha256_page": "2087c67bfa47b957"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_riz-pilaf-armenien_29016.aspx",
+      "site": "marmiton.org",
+      "nom": "riz pilaf (armenien) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "20 g de vermicelles",
+        "2 verres de riz",
+        "1 bouillon de poule",
+        "beurre ou huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 457,
+        "sha256": "ebcee0ea80823e2d"
+      },
+      "sha256_page": "f6b3c010c3ecf223"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/riz-pilaf--4",
+      "site": "chefsimon.com",
+      "nom": "Riz pilaf",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "400 g de riz basmati ou riz long",
+        "1 gros oignon",
+        "2 échalotes",
+        "2 gousses d'ail",
+        "eau ou fond blanc de veau, volaille, ou de fumet (1 fois et demie le volume de riz)",
+        "30 g de beurre doux",
+        "5 cl d'huile d'olive, huile de tournesol ou huile de pépin de raisin",
+        "un petit bouquet garni"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 767,
+        "sha256": "8ca12f5ac3d4840c"
+      },
+      "sha256_page": "467fef631ea0e1c0"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/riz-pilaf-aux-epices-et-chou-fleur",
+      "site": "chefsimon.com",
+      "nom": "Riz pilaf aux épices et chou fleur",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "200 g de riz basmati",
+        "200 g de bouquets de chou-fleur",
+        "1  oignon",
+        "2  gousses d’ail",
+        "1  cuil. à café de gingembre en poudre",
+        "½  cuil. à café de curcuma en poudre",
+        "4  gousses de cardamome",
+        "1  ou 2 feuilles de laurier",
+        "Bouillon de légume (1,5 fois le volume de riz)",
+        "Facultatif",
+        "4  ou 5 tiges de ciboulette",
+        "Pistaches concassées"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 131,
+        "sha256": "49ebefeaeb8ac8c7"
+      },
+      "sha256_page": "b35edfed30c88d98"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/pilaf-de-riz-aux-chipolatas",
+      "site": "chefsimon.com",
+      "nom": "Pilaf de riz aux chipolatas",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "6  chipolatas",
+        "300 g de riz long grains",
+        "1  cube de bouillon de volaille",
+        "100 g de parmesan",
+        "70 g de beurre",
+        "1  cuil. à café d’épices à paëlla"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 207,
+        "sha256": "c64cd32ee82c7586"
+      },
+      "sha256_page": "ccace80ab68b897f"
+    },
+    {
+      "url": "https://www.750g.com/riz-pilaf-r44527.htm",
+      "site": "750g.com",
+      "nom": "Riz pilaf traditionnel",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "½ c. à c. de gingembre (en poudre)",
+        "1 cube de bouillon de volaille  ou 1 cuillère à soupe de fond de veau",
+        "3 c. à s. de curry",
+        "1,5 oignon  (gros)",
+        "1,5 volume d'eau  (calculé sur le volume de riz)",
+        "200 g de riz"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 777,
+        "sha256": "fb5f9ed88f0cd45f"
+      },
+      "sha256_page": "081dde51c9e386d8"
+    },
+    {
+      "url": "https://www.750g.com/riz-pilaf-au-potimarron-r206837.htm",
+      "site": "750g.com",
+      "nom": "Riz pilaf au potimarron",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "300 g de riz complet",
+        "1 oignon",
+        "50 cl de bouillon de légumes",
+        "200 g de potimarrons",
+        "50 g de noisettes  torréfiées",
+        "3 c. à s. d'huile d'olive",
+        "1 c. à c. de sel ou sel fin",
+        "4 pincées de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 637,
+        "sha256": "29cc5197b062fe95"
+      },
+      "sha256_page": "4a32e061476ac7e1"
+    },
+    {
+      "url": "https://www.750g.com/riz-pilaf-aux-poivrons-r34748.htm",
+      "site": "750g.com",
+      "nom": "Riz pilaf aux poivrons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "Sel ou sel fin",
+        "Poivre",
+        "Herbes de Provence",
+        "Huile d'olive",
+        "2 volumes de bouillon de légumes",
+        "1 poivron rouge  (gros)",
+        "250 g de riz"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 499,
+        "sha256": "99a311e5b401c071"
+      },
+      "sha256_page": "778c49726f0d5b05"
+    }
+  ]
+}

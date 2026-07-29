@@ -1,0 +1,186 @@
+{
+  "dish": "Saumon à l'oseille",
+  "slug": "saumon-a-l-oseille",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_saumon-a-l-oseille_34988.aspx",
+      "site": "marmiton.org",
+      "nom": "Saumon à l'oseille : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "325 g d'oseille",
+        "40 g de beurre",
+        "2 échalotes émincées",
+        "4 cuillères à soupe de vin blanc sec",
+        "15 cl de crème fraîche",
+        "poivre",
+        "sel",
+        "4 pavés de saumon",
+        "2 cuillères à soupe d'huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 448,
+        "sha256": "2d4e8ecd2f239e15"
+      },
+      "sha256_page": "3ef811d66bc47847"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cake-au-saumon-et-a-l-oseille_40660.aspx",
+      "site": "marmiton.org",
+      "nom": "Cake au saumon et à l'oseille : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "3 oeufs",
+        "150 g de farine",
+        "1 sachet de levure",
+        "10 cl d'huile de tournesol",
+        "12.5 cl de lait entier",
+        "100 g de gruyère râpé",
+        "1 pavé de saumon frais sans la peau",
+        "200 g d'oseille",
+        "1 noix de beurre demi-sel",
+        "2 pincées de sel",
+        "2 pincées de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 547,
+        "sha256": "4d4297b440340931"
+      },
+      "sha256_page": "66809828ab6e226a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tarte-saumon-fume-oseille_49662.aspx",
+      "site": "marmiton.org",
+      "nom": "Tarte saumon fumé oseille : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 rouleau de pâte feuilletée",
+        "200 g de saumon fumé",
+        "1 petit bouquet d'oseille",
+        "4 oeufs",
+        "15 cl de crème fraîche",
+        "poivre",
+        "sel",
+        "gruyère râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 340,
+        "sha256": "2a5ec421009be38a"
+      },
+      "sha256_page": "a8f5e6291180339e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-blog/recettes/bricks-de-saumon-a-l-oseille-et-ricotta",
+      "site": "chefsimon.com",
+      "nom": "Bricks de saumon à l'oseille et ricotta",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "2  pavés de saumon",
+        "2 feuilles de brick",
+        "60 g de ricotta",
+        "2  cuil. à soupe de crème fraîche épaisse",
+        "6",
+        "8 feuilles d'oseille fraiches",
+        "Huile d'olive",
+        "Sel (poivre)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 201,
+        "sha256": "6b08be136b71c1aa"
+      },
+      "sha256_page": "f2867155c4791408"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/saumon-a-l-oseille-en-croute-et-sauce-a-la-ciboulette",
+      "site": "chefsimon.com",
+      "nom": "Saumon à l’oseille en croûte et sauce à la ciboulette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "700 g de filet de saumon",
+        "200 g d’oseille décongelée",
+        "1 bouquet de ciboulette",
+        "1  échalote ciselée",
+        "200 g de pâte feuilletée",
+        "1  jaune d’œuf",
+        "30 cL de crème fleurette",
+        "25 g de beurre",
+        "10 cL de vermouth (Noilly Prat)",
+        "1 cuil. à soupe de fumet de poissons en poudre",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 121,
+        "sha256": "7292db283a6b893f"
+      },
+      "sha256_page": "cbe5757995cf54ab"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/petite-cuillere-et-charentaises/recettes/saumon-a-l-oseille--2",
+      "site": "chefsimon.com",
+      "nom": "Saumon à l'oseille",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "4 pavés de saumon",
+        "200 g d’oseille",
+        "1 petite échalote",
+        "1/2 verre de vin blanc",
+        "3 grosses CS de crème fraîche",
+        "30 g de beurre",
+        "1 CS d'huile d'olive",
+        "Une pincée de noix de muscade fraîchement râpée",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "f9154be9fbb6db05"
+    },
+    {
+      "url": "https://www.750g.com/saumon-a-loseille-en-cuisson-basse-temperature-et-sa-pasta-r25760.htm",
+      "site": "750g.com",
+      "nom": "Saumon à l'oseille en cuisson basse température et sa pasta",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 filets de saumon avec peau",
+        "1 échalote émincée finement",
+        "2 c à s de vin blanc",
+        "1 noisette de beurre",
+        "15 cl de crème liquide",
+        "QS de pappardelle",
+        "Une vingtaine de feuilles d'oseille",
+        "Huile d'olive",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 1719,
+        "sha256": "9793d923a9a6b825"
+      },
+      "sha256_page": "245ce1dd36078cc8"
+    }
+  ]
+}

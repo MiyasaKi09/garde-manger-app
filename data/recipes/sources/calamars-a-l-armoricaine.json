@@ -1,0 +1,166 @@
+{
+  "dish": "Calamars à l'armoricaine",
+  "slug": "calamars-a-l-armoricaine",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_calamars-a-l-armoricaine_31894.aspx",
+      "site": "marmiton.org",
+      "nom": "Calamars à l'armoricaine : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 kg de calamar",
+        "2 oignons",
+        "2 gousses d'ail",
+        "0.5 l de vin blanc",
+        "2 boîtes de tomates concassées (celles de 425 ml)",
+        "1 petit verre de cognac",
+        "huile d'olive",
+        "poivre",
+        "sel",
+        "de homard concentrée (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 790,
+        "sha256": "037bc2d424dd5735"
+      },
+      "sha256_page": "63be450f60fc2868"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_lamelles-de-calamars-a-l-armoricaine_55823.aspx",
+      "site": "marmiton.org",
+      "nom": "Lamelles de calamars à l'armoricaine : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 kg de calamar congelés",
+        "1 boîte de homard",
+        "1 blanc de poireau",
+        "1 oignon",
+        "125 g de crème fraîche",
+        "1 cuillère de café concentré tomates",
+        "1 kg de tomate au jus",
+        "poivre",
+        "sel",
+        "ail",
+        "persil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 661,
+        "sha256": "87ef71b04eb41cfc"
+      },
+      "sha256_page": "0219ceafc47ea423"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_calamars-a-l-armoricaine-facile_32256.aspx",
+      "site": "marmiton.org",
+      "nom": "Calamars à l'armoricaine facile : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "400 g de seiches",
+        "1 boîte de concentré de tomates",
+        "4 oignons",
+        "0.5 l de vin blanc",
+        "1 pincée de piment de Cayenne",
+        "whisky ou cognac pour flamber"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 257,
+        "sha256": "5594dd0c488bd6cd"
+      },
+      "sha256_page": "dfed9117212772ce"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/miechambo-cuisine--2/recettes/calamars-ou-totenes-a-l-armoricaine",
+      "site": "chefsimon.com",
+      "nom": "Calamars ou totènes à l'armoricaine",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "1 kg de calamars nettoyés et vidés",
+        "4  oignons",
+        "3 échalotes",
+        "2  gousses d’ail",
+        "3 c. à soupe de concentré de tomates",
+        "1 petite branche d’estragon",
+        "1 dl d’huile d’olive",
+        "4 cl d’alcool (Cognac ou autre)",
+        "½ litre de vin blanc sec",
+        "Sel  poivre",
+        "Piment de Cayenne"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "2e2d1e47be3894c9"
+    },
+    {
+      "url": "https://www.750g.com/calamars-a-l-armoricaine-r204069.htm",
+      "site": "750g.com",
+      "nom": "Calamars à l'Armoricaine",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "800 g de calamars  surgelés",
+        "30 cl de bisque de homard",
+        "1 boite de tomate",
+        "1 boite de concentré de tomates",
+        "200 g de vin blanc sec",
+        "1 oignon",
+        "1 petit verre de cognac",
+        "1 échalote",
+        "1 gousse d'ail  hachée",
+        "1 bouquet garni",
+        "Huile d'olive",
+        "1 c. à c. de farine",
+        "Piment d'Espelette",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 748,
+        "sha256": "09125404e75248ce"
+      },
+      "sha256_page": "c2a68e9b9af3b15f"
+    },
+    {
+      "url": "https://www.750g.com/calamar-a-larmoricaine-de-meme-r7015.htm",
+      "site": "750g.com",
+      "nom": "Calamar à l'armoricaine de mémé",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 kg de calamar",
+        "1 dl de fumet de poisson",
+        "4 cl de cognac",
+        "Safran",
+        "1 dl de crème liquide",
+        "¼ botte de persil",
+        "2 échalotes",
+        "500 g de champignons de Paris",
+        "2 gousses d'ail"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 342,
+        "sha256": "d64d31c7972cc16b"
+      },
+      "sha256_page": "b4f9f7ce3ac2b6cc"
+    }
+  ]
+}

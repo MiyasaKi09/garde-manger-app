@@ -8,9 +8,9 @@
     "exact_label": 47
   },
   "recipes_total": 339,
-  "recipes_eligible_for_publication": 147,
-  "recipes_blocked_only_by_proxy": 69,
-  "v1_enriched_eligible_for_publication": 56,
+  "recipes_eligible_for_publication": 148,
+  "recipes_blocked_only_by_proxy": 68,
+  "v1_enriched_eligible_for_publication": 57,
   "unresolved_required": [
     "Achiote pâte",
     "Amchur poudre de mangue",
@@ -805,11 +805,9 @@
     {
       "code": "FR-032",
       "family": "Tarte tatin aux pommes",
-      "eligible_for_publication": false,
+      "eligible_for_publication": true,
       "unresolved_required_forms": [],
-      "low_confidence_required_forms": [
-        "Pâte feuilletée crue"
-      ],
+      "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
     },
@@ -29646,12 +29644,12 @@
       ],
       "selection_mode": "curated",
       "selected": {
-        "ciqual_alim_code": "23481",
-        "ciqual_name": "Tarte normande aux pommes (garniture farine, oeufs, crème, sucre, calvados)",
-        "category": "produits_sucres",
+        "ciqual_alim_code": "23424",
+        "ciqual_name": "Pâte feuilletée pur beurre, crue",
+        "category": null,
         "nutrition_complete": true,
-        "confidence": "C",
-        "note": "Proxy pâtisserie composite ; une fiche pâte feuilletée dédiée reste à sourcer."
+        "confidence": "B",
+        "note": "La forme pointait sur 23481, « Tarte normande aux pommes (garniture farine, œufs, crème, sucre…) » — un dessert entier, garniture comprise, servant de proxy à une pâte nue. D'où sa confiance C, justifiée, et le blocage de toute recette l'employant : tarte à l'oignon, bouchées à la reine. Le classeur porte pourtant l'entrée exacte, pâte feuilletée pur beurre crue, avec des macros complètes (368 kcal, P 6,14 / G 39,7 / L 20,1). L'écart n'était pas cosmétique : la tarte normande compte son sucre et ses pommes, une pâte n'en a pas."
       },
       "suggestions": [
         {

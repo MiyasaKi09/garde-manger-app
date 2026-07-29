@@ -1,0 +1,165 @@
+{
+  "dish": "Thon à la basquaise",
+  "slug": "thon-a-la-basquaise",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_thon-basquaise_71842.aspx",
+      "site": "marmiton.org",
+      "nom": "Thon basquaise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 tranches de thon (140 gr chacune)",
+        "1 tranche épaisse de jambon cru",
+        "2 poivrons verts",
+        "1 oignon",
+        "3 gousses d'ail",
+        "5 tomates",
+        "3 cuillères d'huile d'olive",
+        "1 bouquet garni",
+        "1 cuillère à soupe de Fines herbes hachées",
+        "poivre",
+        "sel",
+        "piment d'Espelette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 669,
+        "sha256": "7abd45c59c7ecb6a"
+      },
+      "sha256_page": "623667a7093e9e71"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_thon-basquaise_32705.aspx",
+      "site": "marmiton.org",
+      "nom": "Thon basquaise d'Alice : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 portions de thon (rouge de préférence)",
+        "huile d'olive",
+        "mélange d'herbes pour poisson",
+        "de ratatouille",
+        "poivre",
+        "sel",
+        "jus de citron",
+        "tapenade d'olives noires"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 505,
+        "sha256": "76fc573a9e73c2ca"
+      },
+      "sha256_page": "ef5279cafbde39f0"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_thon-facon-basquaise_27965.aspx",
+      "site": "marmiton.org",
+      "nom": "Thon façon basquaise : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 kg de thon frais",
+        "5 tomates bien mûres",
+        "1 poivron vert",
+        "2 poivrons rouges",
+        "2 oignons",
+        "10 cl de vin blanc sec",
+        "0.5 bouquet de basilic",
+        "huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 623,
+        "sha256": "cc4d5fe108de97f5"
+      },
+      "sha256_page": "cb5fb2a53258bb1e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/philandcocuisine/recettes/thon-a-la-basquaise",
+      "site": "chefsimon.com",
+      "nom": "Thon à la basquaise",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 steaks de thon de 125 g frais ou surgelés",
+        "1 gros poivron vert ou 3 piments doux",
+        "3 tomates moyennes",
+        "1 oignon",
+        "1 gousse d'ail",
+        "3 c. à soupe d'huile d'olive",
+        "sel et piment d'Espelette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "cc56cf8e5f0dd1cc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/recettes-de-clairette/recettes/thon-a-la-basquaise-6c4b67a6-a32f-4ab5-9940-ac0b032e1f7c",
+      "site": "chefsimon.com",
+      "nom": "Thon à la basquaise",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 pavés de thon frais",
+        "2 oignons rouges",
+        "3 gousses d'ail",
+        "600 g de tomates pelées",
+        "environ 250 g de piquillos",
+        "environ 50 g de farine de maïs",
+        "30 g d'huile d'olive",
+        "thym",
+        "piment d'Espelette",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "3ca8ad473939ee70"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-en-folie/recettes/thon-basquaise-c13999fa-a0a7-4a30-b48c-ba87224cb8e1",
+      "site": "chefsimon.com",
+      "nom": "Thon basquaise",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "400g de tranches de thon (longe) ou 2 belles darnes",
+        "1 poivron rouge",
+        "2 poivrons verts ou 2 piments doux",
+        "1 aubergine",
+        "6 tomates émondées",
+        "2 oignons",
+        "2 gousses d'ail",
+        "2 cébettes (ou cives)",
+        "quelques branches de thym frais",
+        "1/2 cuillère à café de piment d'Espelette",
+        "sel et poivre du moulin",
+        "huile d'olive",
+        "2 cuillères à soupe de farine",
+        "riz blanc (basmati) pour l'accompagnement"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "a17b9603ff503450"
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "dish": "Truite aux amandes",
+  "slug": "truite-aux-amandes",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_filet-de-truite-aux-amandes-four_68018.aspx",
+      "site": "marmiton.org",
+      "nom": "Filet de truite aux amandes (four) : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "2 filets de truites (ou un gros)",
+        "80 g d'amandes effilées",
+        "20 cl de crème liquide 5% MG",
+        "ail",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 417,
+        "sha256": "df7214345acbb49a"
+      },
+      "sha256_page": "4c8c24660de92dc5"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_truite-fondante-aux-amandes_20530.aspx",
+      "site": "marmiton.org",
+      "nom": "Truite fondante aux amandes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT14M",
+      "ingredients": [
+        "4 truites",
+        "10 g de beurre",
+        "100 g d'amandes en poudre",
+        "1 oeuf",
+        "1 citron",
+        "2 cuillères à soupe de farine",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 207,
+        "sha256": "6da7fd15af7e34cd"
+      },
+      "sha256_page": "a9a44e2d062a908a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_truites-aux-amandes-flambees-au-whisky_67388.aspx",
+      "site": "marmiton.org",
+      "nom": "Truites aux amandes flambées au whisky : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "2 truites",
+        "4 cuillères à soupe de whisky",
+        "1 bonne poignée d'amandes effilées",
+        "1 bouquet de menthe fraîche",
+        "huile",
+        "poivre",
+        "sel",
+        "farine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 482,
+        "sha256": "f047ff9f62bf6ad9"
+      },
+      "sha256_page": "a8701a98ff14cfa7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/xavier-mathieu/recettes/truite-de-la-sorgue-fumee-amandes-et-citron-de-xavier-mathieu",
+      "site": "chefsimon.com",
+      "nom": "Truite de la Sorgue fumée, amandes et citron de Xavier Mathieu",
+      "portions": "10 personnes",
+      "duree_preparation": "PT01H00M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "Truites Arc en Ciel cal 2/3kg",
+        "Gros sel 1kg",
+        "Sucre 1kg",
+        "Aneth PM",
+        "Huile d’amandes grillées 150gr",
+        "Jus d’anchois 50gr",
+        "Amandes blanches 250gr",
+        "Eau 1l.",
+        "Huile d’amandes Grillé 200gr",
+        "Jus citron 15gr",
+        "Encre de seiche 5 gr",
+        "Xantana",
+        "Sel",
+        "8 citrons jaunes (zestes et segments à vif)",
+        "Sirop (500gr",
+        "Sucre, 2kg",
+        "Eau)",
+        "1 kg de fromage frais",
+        "50 gr de spiruline fraiche",
+        "Cube de citron",
+        "Amandes vertes épluchées",
+        "Amandes brutes coupées à la mandoline"
+      ],
+      "etapes_empreinte": {
+        "nombre": 30,
+        "signes": 1936,
+        "sha256": "a8bb9ad6ab514df6"
+      },
+      "sha256_page": "90a6a05171f79cca"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/kaderick/recettes/papillote-truite-pyrenees-aux-amandes-citron-et-aneth",
+      "site": "chefsimon.com",
+      "nom": "Papillote truite Pyrénées aux amandes, citron et aneth",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 truites d'environ 200 grammes chacune",
+        "amandes effilées bio",
+        "1 citron bio",
+        "2 cuillères à soupe d'huile d'olive",
+        "1 cuillère à soupe de vinaigre blanc au citron et à l'aneth",
+        "gros sel",
+        "1 pincée de piment d'Espelette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "abd4d0140db16e74"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/epicetout/recettes/truites-aux-amandes-096d865b-7b38-4aa9-9220-473718f64a73",
+      "site": "chefsimon.com",
+      "nom": "Truites aux amandes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "4 truites prêtes à cuire de 250 g chacune environ",
+        "1 gros citron bio (ou 2 petits)",
+        "50 g de beurre mou",
+        "50 g d’amandes effilées",
+        "Persil plat",
+        "Huile neutre",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "482bacf3edc79dfe"
+    },
+    {
+      "url": "https://www.750g.com/filet-de-truite-aux-amandes-r85804.htm",
+      "site": "750g.com",
+      "nom": "Filet de truite aux amandes effilées",
+      "portions": "6 personnes",
+      "duree_preparation": "PT39M",
+      "duree_cuisson": "PT7M",
+      "ingredients": [
+        "3 truites",
+        "110 g de beurre",
+        "100 g d'amandes effilées",
+        "100 g de farine",
+        "5 c. à s. d'huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 680,
+        "sha256": "07ac50284583f374"
+      },
+      "sha256_page": "193eb87dbaead6a2"
+    }
+  ]
+}

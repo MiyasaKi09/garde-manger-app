@@ -1,0 +1,243 @@
+{
+  "dish": "Aubergines farcies",
+  "slug": "aubergines-farcies",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_aubergines-farcies-aux-legumes-ou-mixte_17955.aspx",
+      "site": "marmiton.org",
+      "nom": "Aubergines farcies (aux légumes ou mixte) : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "1 aubergine",
+        "2 oignons",
+        "1 tomate",
+        "1 oeuf",
+        "100 g de chair à saucisse (ou rien, si vous ne voulez qu'avec des légumes)",
+        "Condiments (sel, poivre, persil, ail, basilic, huile d'olive...)",
+        "25 g de gruyère râpé ..."
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 925,
+        "sha256": "fd06535fbdcae435"
+      },
+      "sha256_page": "3dd2d0960ccad4d2"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_aubergines-farcies-a-la-bolognaise_21622.aspx",
+      "site": "marmiton.org",
+      "nom": "Aubergines farcies à la bolognaise : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 aubergine",
+        "500 g de viande hachée",
+        "2 oignons moyens",
+        "2 gousses d'ail",
+        "2 tomates",
+        "0.5 l de purée de tomate",
+        "4 cuillères à soupe de chapelure",
+        "de sauce soja et de jus de citron, herbes de Provence, piment doux ou autres épices selon les goûts"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 837,
+        "sha256": "046efa0f02fc2764"
+      },
+      "sha256_page": "00231385c57fd4e6"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_aubergines-farcies-a-la-cretoise_30836.aspx",
+      "site": "marmiton.org",
+      "nom": "Aubergines farcies à la crétoise : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "2 aubergines",
+        "200 g de boeuf haché",
+        "4 oignons",
+        "3 gousses d'ail",
+        "350 g de tomates pelées (petite boîte)",
+        "180 g de feta",
+        "menthe fraîche",
+        "huile d'olive",
+        "poivre",
+        "sel",
+        "sucre en poudre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 884,
+        "sha256": "adb304f11258e3ef"
+      },
+      "sha256_page": "d96786c576fda6a7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/aubergines-farcies-iman-bayildi",
+      "site": "chefsimon.com",
+      "nom": "Aubergines farcies « Iman Bayildi »",
+      "portions": "4 personnes",
+      "duree_preparation": "PT01H30M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "4 personnes",
+        "4 aubergines moyennes",
+        "2 oignons",
+        "2 gousses d’ail épluchées",
+        "1 poivron rouge",
+        "6 c à s d’huile d’olive",
+        "2 c à s de persil frais ciselé",
+        "1 c à c de cumin moulu",
+        "2 c à c de paprika",
+        "2 c à s de pignons",
+        "1 branche de thym (frais pour moi)",
+        "5 tomates",
+        "1/2 c à c de sucre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 17,
+        "signes": 1362,
+        "sha256": "bb1d3c8a4702807a"
+      },
+      "sha256_page": "f88fad126aa6f449"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/aubergine-farcie-au-poulet-au-air-fryer-ou-au-four",
+      "site": "chefsimon.com",
+      "nom": "Aubergine farcie au poulet au Air fryer ou au four",
+      "portions": "1 personne",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H53M",
+      "ingredients": [
+        "1 aubergine",
+        "1 blanc de poulet de 100 g",
+        "1 tomate bien mûre",
+        "40 g d'emmental",
+        "20 g de concentré de tomates",
+        "1/2 oignon",
+        "1 gousse d'ail",
+        "1 filet d'huile d'olive",
+        "1 branche de romarin",
+        "quelques branches de thym",
+        "piment d'Espelette",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 932,
+        "sha256": "9e5b2e13577aa43f"
+      },
+      "sha256_page": "e5c75f106de0a0c4"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/deliacious/recettes/tomates-farcies-au-quinoa-citron-confit-et-aubergine",
+      "site": "chefsimon.com",
+      "nom": "Tomates farcies au quinoa, citron confit et aubergine",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "4 tomates",
+        "40 g quinoa",
+        "50 g d'aubergine",
+        "1/4 briquette crème de soja",
+        "1/2 c. à café coriandre moulue",
+        "1 pincée noix de muscade moulue",
+        "QS sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 263,
+        "sha256": "97fcffd736edc7ae"
+      },
+      "sha256_page": "12bef77e0c178e42"
+    },
+    {
+      "url": "https://www.750g.com/aubergines-farcies-de-delphine-r3316.htm",
+      "site": "750g.com",
+      "nom": "Aubergines farcies de Delphine",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "Fines herbes",
+        "Huile d'olive",
+        "Sel ou sel fin",
+        "Poivre",
+        "1 crème fraîche liquide",
+        "150 g de jambon",
+        "125 g de riz",
+        "150 g de comté",
+        "2 aubergines"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 796,
+        "sha256": "b7a9f0973be53567"
+      },
+      "sha256_page": "99cb2c8cd8d05c20"
+    },
+    {
+      "url": "https://www.750g.com/barquette-daubergines-farcies-r14907.htm",
+      "site": "750g.com",
+      "nom": "Barquette d'aubergines farcies",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 aubergines",
+        "2 tomates",
+        "2 oignons",
+        "200 g de boeuf haché",
+        "100 g de gruyère râpé",
+        "30 cl de lait",
+        "30 g de farine",
+        "30 g de beurre",
+        "1 c. à s. de cognac",
+        "1 c. à s. d'aneth  ciselé",
+        "1 c. à s. de persil  cisèlé",
+        "Huile d'olive",
+        "Noix de muscade",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1085,
+        "sha256": "56043d85a6d97517"
+      },
+      "sha256_page": "71a212cc81eb05ab"
+    },
+    {
+      "url": "https://www.750g.com/aubergines-farcies-r27213.htm",
+      "site": "750g.com",
+      "nom": "Aubergines Farcies",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "3 aubergines",
+        "350 g de boeuf haché ( 5% de MG )",
+        "1 courgette",
+        "3 oeufs",
+        "½ verre d'huile d'olive",
+        "2 gousses d'ail",
+        "2 c. à s. de flocons d'avoine",
+        "½ botte de persil",
+        "2 brins de basilic"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 529,
+        "sha256": "420232322553a323"
+      },
+      "sha256_page": "6cd005cef5c76c19"
+    }
+  ]
+}

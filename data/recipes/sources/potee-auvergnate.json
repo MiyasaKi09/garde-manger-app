@@ -1,0 +1,144 @@
+{
+  "dish": "Potée auvergnate",
+  "slug": "potee-auvergnate",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_une-potee-auvergnate_221229.aspx",
+      "site": "marmiton.org",
+      "nom": "Potée auvergnate : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT2H17M",
+      "duree_cuisson": "PT4H50M",
+      "ingredients": [
+        "10 carottes",
+        "5 navets moyens",
+        "1 chou vert",
+        "1 oignon",
+        "20 clous de girofle",
+        "1 bouquet garni",
+        "8 pommes de terre",
+        "poivre en grains ou 5 baies",
+        "100 g de graisse de canard",
+        "1 kg de palette salée",
+        "1 kg de petit salé",
+        "1 jambonneau",
+        "1 saucisse de Morteau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1509,
+        "sha256": "a6fe099819bbdd49"
+      },
+      "sha256_page": "8bd2c494f83918e4"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_potee-auvergnate_166555.aspx",
+      "site": "marmiton.org",
+      "nom": "Potée Auvergnate : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "1 kg de sel",
+        "1 jambonneau demi-sel",
+        "8 saucisses",
+        "1 chou",
+        "8 carottes",
+        "8 pommes de terre",
+        "4 choux -raves",
+        "1 oignon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 200,
+        "sha256": "7b35808b7c392f2c"
+      },
+      "sha256_page": "a28ff91aed7af29d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_potee-auvergnate-aux-lentilles_28290.aspx",
+      "site": "marmiton.org",
+      "nom": "Potée auvergnate aux lentilles : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "600 g de lentilles",
+        "1 jambonneau",
+        "300 g de gîtes de boeuf",
+        "300 g de lard fumé",
+        "3 saucisses fumées",
+        "1 bouquet garni",
+        "3 oignons piqués chacun d'1 clou de girofle",
+        "3 gousses d'ail",
+        "75 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 392,
+        "sha256": "d57d1ee253b124d1"
+      },
+      "sha256_page": "4e55eacbf5d7b569"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/popotte/recettes/potee-auvergnate",
+      "site": "chefsimon.com",
+      "nom": "Potée auvergnate",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "4 saucisses fumées (Montbéliard, Morteau,...)",
+        "400 g de pommes de terre",
+        "1 oignon",
+        "4 carottes",
+        "1 petit chou frisé",
+        "2 gousses d’ail",
+        "1 cube de bouillon de légumes",
+        "1 bouquet garni",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "2d2a8c64031c606a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/le-popoteur/recettes/potee-auvergnate-4dbc8f29-a834-4efb-9ad6-a2bb8c6bd2f9",
+      "site": "chefsimon.com",
+      "nom": "Potée auvergnate",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT01H40M",
+      "ingredients": [
+        "1 kg de jarret de porc demi-sel",
+        "600 g morceau de lard demi-sel",
+        "1 kg palette de porc demi-sel",
+        "1 saucisse de Morteau (ou autre spécialité régionale)",
+        "4 saucisses fumées",
+        "2 choux-verts",
+        "6 carottes moyennes",
+        "6 pommes de terre",
+        "12 petits navets",
+        "3 beaux poireaux",
+        "2 branches de céleri",
+        "6 branches de persil frisé",
+        "2 oignons moyens",
+        "4 clous de girofle",
+        "4 gousses d'ail",
+        "3 grosses cuillères à soupe de moutarde forte",
+        "poivre du moulin (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "b175714de232256c"
+    }
+  ]
+}

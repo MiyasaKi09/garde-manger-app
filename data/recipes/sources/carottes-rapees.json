@@ -1,0 +1,179 @@
+{
+  "dish": "Carottes râpées",
+  "slug": "carottes-rapees",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_carottes-rapees-au-sesame_37033.aspx",
+      "site": "marmiton.org",
+      "nom": "Carottes râpées au sésame : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "1 kg de carotte",
+        "2 cuillères à soupe de sésame",
+        "2 cuillères à soupe d'huile d'olive",
+        "2 cuillères à soupe de vinaigre balsamique",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 294,
+        "sha256": "6faa03f8b17ec540"
+      },
+      "sha256_page": "8732fd95dd0c088f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tarte-aux-carottes-rapees-et-au-poulet_50445.aspx",
+      "site": "marmiton.org",
+      "nom": "Tarte aux carottes râpées et au poulet : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "250 g de pâtes brisées",
+        "2 filets de poulet",
+        "400 g de carottes",
+        "3 oignons moyens",
+        "2 cuillères à soupe de moutarde à l'ancienne",
+        "25 cl de crème fraîche",
+        "1 oeuf",
+        "1 cuillère à café de cumin en poudre",
+        "muscade",
+        "huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 608,
+        "sha256": "84f3216f2b705371"
+      },
+      "sha256_page": "bf53176322a1b288"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-de-carottes-et-pommes-rapees_28111.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade de carottes et pommes râpées : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "4 carottes",
+        "1 pomme",
+        "1 jus d'orange pressée",
+        "raisins secs",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 88,
+        "sha256": "83d244b098c93a0a"
+      },
+      "sha256_page": "727b26240f56d0f8"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/salade-de-courgettes-carottes-rapees",
+      "site": "chefsimon.com",
+      "nom": "Salade de courgettes, carottes râpées",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 courgettes blanches ou Grisette",
+        "1 carotte",
+        "2 CS huile d'olive",
+        "Sel et poivre",
+        "2 CS Jus de citron (optionnel)",
+        "2 CS de cacahuètes non salées"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 311,
+        "sha256": "ce7e1ea8d3131922"
+      },
+      "sha256_page": "7074d1bfdc8c77da"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/carottes-de-france/recettes/carottes-primeur-rapees-aux-epices-et-gingembre",
+      "site": "chefsimon.com",
+      "nom": "Carottes primeur râpées aux épices et gingembre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "6 carottes primeur",
+        "25 g vinaigre xérès",
+        "5 g d’huile d’amande",
+        "25 g d’huile d’olive",
+        "20 g amandes sans peau",
+        "15 g de raisins secs",
+        "15 g de pistache",
+        "10 feuilles de menthe",
+        "1 orange",
+        "1 citron vert",
+        "10 g de graines de sésame",
+        "100 g de chèvre frais",
+        "1 échalote",
+        "50 g de gingembre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 860,
+        "sha256": "486af9a9a1ea71d7"
+      },
+      "sha256_page": "fb1d3e0d8abcd409"
+    },
+    {
+      "url": "https://www.750g.com/carottes-betterave-rapees-vinaigrette-agrumes-et-coriandre-r34687.htm",
+      "site": "750g.com",
+      "nom": "Carottes & betterave râpées, vinaigrette agrumes et coriandre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "Coriandre",
+        "Sel ou sel fin",
+        "Poivre",
+        "Huile d'olive",
+        "2 c. à c. de moutarde douce",
+        "1 betterave  (petite)",
+        "½ orange",
+        "1 citron jaune",
+        "4 carottes  (grosses)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 472,
+        "sha256": "49030a033fb9970e"
+      },
+      "sha256_page": "bb308c5bc99a7664"
+    },
+    {
+      "url": "https://www.750g.com/carottes-rapees-au-cumin-et-a-lorange-r31812.htm",
+      "site": "750g.com",
+      "nom": "Carottes râpées au cumin et à l'orange",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "400 g de carottes",
+        "½ orange  pressée",
+        "6 c. à s. d'huile d'olive",
+        "2 gousses d'ail",
+        "2 c. à s. de vinaigre de vin",
+        "15 g de cumin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 460,
+        "sha256": "916a28bee3a7fdfb"
+      },
+      "sha256_page": "83c5ad832a27132c"
+    }
+  ]
+}

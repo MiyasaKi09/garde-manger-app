@@ -10680,11 +10680,11 @@
     {
       "canonical_name": "Pâte feuilletée crue",
       "canonical_name_normalized": "pate feuilletee crue",
-      "category": "produits_sucres",
-      "confidence": "C",
+      "category": null,
+      "confidence": "B",
       "source": "ciqual_2020",
-      "source_record_key": "23481",
-      "source_name": "Tarte normande aux pommes (garniture farine, oeufs, crème, sucre, calvados)",
+      "source_record_key": "23424",
+      "source_name": "Pâte feuilletée pur beurre, crue",
       "state": {
         "concept": "Pâte feuilletée crue",
         "rest": "",
@@ -10699,13 +10699,13 @@
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 313,
-        "proteinG": 4.44,
-        "carbsG": 38.7,
-        "fatG": 15,
-        "fiberG": 2.5
+        "kcal": 366,
+        "proteinG": 6.14,
+        "carbsG": 39.7,
+        "fatG": 20.1,
+        "fiberG": 2.32
       },
-      "note": "Proxy pâtisserie composite ; une fiche pâte feuilletée dédiée reste à sourcer."
+      "note": "La forme pointait sur 23481, « Tarte normande aux pommes (garniture farine, œufs, crème, sucre…) » — un dessert entier, garniture comprise, servant de proxy à une pâte nue. D'où sa confiance C, justifiée, et le blocage de toute recette l'employant : tarte à l'oignon, bouchées à la reine. Le classeur porte pourtant l'entrée exacte, pâte feuilletée pur beurre crue, avec des macros complètes (368 kcal, P 6,14 / G 39,7 / L 20,1). L'écart n'était pas cosmétique : la tarte normande compte son sucre et ses pommes, une pâte n'en a pas."
     },
     {
       "canonical_name": "Pâte sablée crue",
