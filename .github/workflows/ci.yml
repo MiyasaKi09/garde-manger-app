@@ -124,11 +124,15 @@ jobs:
           # ajoute. Sans lui, l'étape corpus échoue sur la première recette avec
           # « colonne derived_from_version_id inexistante » — ce qui s'est
           # produit, et ce que ce commentaire existe pour éviter de refaire.
+          #
+          # 20260729180000 charge le CATALOGUE D'ALIMENTS, sans quoi aucune
+          # recette ne rattacherait ses ingrédients à une forme et l'assertion
+          # d'éligibilité plus bas serait vide de sens.
           find supabase/migrations -maxdepth 1 -name '*.sql' \
             | grep -v '_rollback\.sql$' \
             | grep -v '/20260715171000_v3_canonical_plan_publication\.sql$' \
             | grep -v '/20260715173000_v3_recipe_execution_policy_consolidation\.sql$' \
-            | grep -E '/(20260714[2-9]|20260715|20260729140000)' \
+            | grep -E '/(20260714[2-9]|20260715|20260729140000|20260729180000)' \
             | LC_ALL=C sort \
             | while IFS= read -r f; do cp "$f" /tmp/v2mig_a/; done
           echo "Migrations V2 sélectionnées : $(ls /tmp/v2mig_a/ | wc -l)"
@@ -392,7 +396,33 @@ jobs:
             echo "::error::$liees dérivées reliées à leur base pour $derivees déclarées"
             exit 1
           fi
-          echo "[A] corpus-v3 : $charge recettes chargées dont $derivees dérivées reliées, idempotence vérifiée."
+          # ── L'invariant qui manquait ────────────────────────────────────
+          # Le corpus déclare N recettes publiables : toutes leurs quantités se
+          # convertissent en grammes et leur composition est complète. La base
+          # doit en trouver AUTANT de planifiables. L'écart, quand il existe,
+          # signifie que le catalogue d'aliments ne porte pas une forme que les
+          # recettes emploient — et rien ne le disait : la production a servi
+          # 85 recettes planifiables pendant que le corpus en déclarait 361,
+          # parce que le chargement du catalogue n'était versionné nulle part.
+          publiables=$(node -e "console.log(JSON.parse(require('fs').readFileSync('scripts/data/out/corpus-v3-report.json','utf8')).recipes_static_eligible)")
+          planifiables=$(psql "$DATABASE_URL" -tAc \
+            "SELECT count(*) FROM culinary.recipe_versions rv
+             JOIN ops.source_datasets sd ON sd.id = rv.source_dataset_id
+             WHERE sd.code = 'myko_editorial_v3' AND rv.planning_eligible;")
+          if [ "$planifiables" != "$publiables" ]; then
+            echo "::error::$planifiables recettes planifiables en base pour $publiables déclarées publiables : une forme manque au catalogue"
+            psql "$DATABASE_URL" -tAc \
+              "SELECT DISTINCT req.source_name
+               FROM culinary.recipe_ingredient_requirements req
+               JOIN culinary.recipe_versions rv ON rv.id = req.recipe_version_id
+               JOIN ops.source_datasets sd ON sd.id = rv.source_dataset_id
+               WHERE sd.code = 'myko_editorial_v3'
+                 AND req.strictness = 'required' AND req.preferred_food_form_id IS NULL
+               ORDER BY 1 LIMIT 40;"
+            exit 1
+          fi
+
+          echo "[A] corpus-v3 : $charge recettes chargées dont $derivees dérivées reliées, $planifiables planifiables, idempotence vérifiée."
 
       # ────────────────────────────────────────────────────────────────────────
       # SCÉNARIO B — Simulation d'une prod divergente, puis reconcile + apply
