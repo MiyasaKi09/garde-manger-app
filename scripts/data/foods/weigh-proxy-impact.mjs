@@ -147,6 +147,52 @@ for (const constat of aTrancher) {
   )
 }
 
+// ── Vue par forme ───────────────────────────────────────────────────────────
+// La décision se prend PAR FORME, pas par recette : relever « Garam masala » de
+// C à B relève tous les plats qui l'emploient d'un coup. Ce qui compte n'est donc
+// pas ce qu'il pèse dans une assiette, mais ce qu'il pèse dans la PLUS CHARGÉE de
+// toutes celles où il apparaît — y compris celles que d'autres motifs bloquent
+// déjà, sans quoi la décision serait prise sur un échantillon favorable.
+const impactParForme = new Map()
+for (const recette of corpus.recipes) {
+  let total = 0
+  const lignes = []
+  for (const ingredient of recette.ingredients) {
+    const pese = kcalDe(ingredient)
+    if (!pese) continue
+    total += pese.kcal
+    lignes.push({ ingredient, ...pese })
+  }
+  if (!total) continue
+  for (const ligne of lignes) {
+    if (ligne.forme.confidence !== 'C') continue
+    const part = ligne.kcal / total * 100
+    const vu = impactParForme.get(ligne.ingredient.form)
+    if (!vu || part > vu.part_max) {
+      impactParForme.set(ligne.ingredient.form, {
+        forme: ligne.ingredient.form,
+        proxy: ligne.forme.source_name,
+        part_max: Number(part.toFixed(1)),
+        pire_recette: `${recette.code} ${recette.family}`,
+        recettes: (vu?.recettes || 0) + 1,
+      })
+    } else {
+      vu.recettes += 1
+    }
+  }
+}
+
+const formes = [...impactParForme.values()].sort((gauche, droite) => gauche.part_max - droite.part_max)
+const surs = formes.filter((forme) => forme.part_max * MARGE <= SEUIL)
+console.log(`\n── PAR FORME : ${surs.length} proxys dont le pire cas, TOUTES recettes confondues, reste sous le seuil ──`)
+console.log('   (relever ceux-là de C à B ne peut pas déplacer une assiette de plus de ' + SEUIL + ' %)')
+for (const forme of surs) {
+  console.log(
+    `  ${String((forme.part_max * MARGE).toFixed(2)).padStart(5)} %  ${forme.forme.slice(0, 30).padEnd(30)}`
+    + ` ${String(forme.recettes).padStart(2)} recettes  pire : ${forme.pire_recette.slice(0, 30).padEnd(30)} (${forme.part_max} % des kcal)`,
+  )
+}
+
 const sortie = argument('--json', null)
 if (sortie) {
   writeFileSync(sortie, `${JSON.stringify({ marge: MARGE, seuil: SEUIL, constats }, null, 2)}\n`)
