@@ -115,7 +115,7 @@ BEGIN
   RETURNING id INTO v_family;
 
   INSERT INTO culinary.recipe_versions
-    (recipe_family_id, version_number, title, source_dataset_id, source_record_key,
+    (recipe_family_id, version_number, title, short_description, source_dataset_id, source_record_key,
      author_name, source_license, servings, prep_minutes, cook_minutes, difficulty,
      yield_quantity, yield_unit,
      quality_level, publication_status, content_hash,
@@ -124,7 +124,7 @@ BEGIN
      allergens, conservation_text, planning_eligible, eligibility_issues,
      derived_from_version_id, derivation)
   SELECT
-    v_family, 3, ${q(recipe.family)}, ds.id, ${q(recipe.code)},
+    v_family, 3, ${q(recipe.family)}, ${qn(recipe.description_courte)}, ds.id, ${q(recipe.code)},
     'Myko', 'editorial', ${num(recipe.servings)}, ${num(recipe.prep_minutes)}, ${num(recipe.cook_minutes)}, ${qn(recipe.difficulty)},
     ${declaredYield ? num(declaredYield.quantity) : 'NULL'}, ${declaredYield ? q(declaredYield.unit) : 'NULL'},
     ${q(recipe.confidence)}, 'candidate', ${q(contentHash)},
@@ -137,6 +137,7 @@ BEGIN
   FROM ops.source_datasets ds WHERE ds.code = 'myko_editorial_v3'
   ON CONFLICT (recipe_family_id, version_number) DO UPDATE SET
     title = EXCLUDED.title,
+    short_description = EXCLUDED.short_description,
     source_dataset_id = EXCLUDED.source_dataset_id,
     source_record_key = EXCLUDED.source_record_key,
     servings = EXCLUDED.servings,
