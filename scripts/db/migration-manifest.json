@@ -1504,5 +1504,15 @@
     "baseline": "new",
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260730210000_corpus_v3_roles_dessert.sql",
+    "github_version": "20260730210000",
+    "name": "corpus_v3_roles_dessert",
+    "sha256": "7ac0ea85278b47b59e651e0669e17a48bc0d8a6a67cc29ae927faae421dfc051",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

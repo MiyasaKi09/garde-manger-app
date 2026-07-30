@@ -32861,7 +32861,12 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Crêpes fines : dessert, et petit-déjeuner selon la garniture. Le corpus la range déjà dans les deux usages ; le rôle dessert l'écarte des créneaux de repas sans lui retirer sa place au petit-déjeuner, qui passe par la rotation des supports et non par le catalogue des plats."
+      }
     },
     {
       "code": "DESS-002",
@@ -33148,7 +33153,12 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Gâteau au yaourt : gâteau de ménage, servi en part."
+      }
     },
     {
       "code": "DESS-004",
@@ -33294,7 +33304,12 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Tiramisu : dessert froid, servi en verrine ou en part."
+      }
     },
     {
       "code": "DESS-005",
@@ -33426,7 +33441,12 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Mousse au chocolat : dessert froid, portion individuelle."
+      }
     },
     {
       "code": "DESS-006",
@@ -33593,7 +33613,12 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Flan pâtissier : pâtisserie servie en part. Sa pâte brisée pèse 44 % des calories de la fiche, ce qui en fait un dessert lourd — le moteur en sert une fraction."
+      }
     },
     {
       "code": "DESS-007",
@@ -33735,7 +33760,12 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Crumble aux pommes : dessert chaud, servi en part."
+      }
     },
     {
       "code": "DESS-008",
@@ -33860,7 +33890,12 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Riz au lait : dessert lacté, portion individuelle. L'un des plus légers du lot, donc un bon candidat quand le budget énergétique restant est modeste."
+      }
     },
     {
       "code": "FR-024",
@@ -34791,7 +34826,12 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Banana bread : gâteau, servi en tranche."
+      }
     },
     {
       "code": "DESS-010",
@@ -34929,7 +34969,12 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Fondant au chocolat : gâteau, portion individuelle."
+      }
     },
     {
       "code": "DESS-011",
@@ -35084,7 +35129,12 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Tarte au citron meringuée : tarte sucrée, servie en part. Sa pâte sablée en porte le tiers des calories."
+      }
     },
     {
       "code": "FR-029",
@@ -35396,7 +35446,12 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Clafoutis aux cerises : dessert cuit au four, servi en part."
+      }
     },
     {
       "code": "FR-031",
@@ -35724,7 +35779,12 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Tarte tatin : tarte sucrée, servie en part."
+      }
     },
     {
       "code": "FR-033",
@@ -36868,7 +36928,12 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Tarte aux pommes alsacienne : tarte sucrée, servie en part. Elle porte le même piège que la tatin — le mot « tarte » ne dit pas si elle est salée, seul le contenu tranche."
+      }
     },
     {
       "code": "DESS-012",
@@ -36988,7 +37053,12 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Panna cotta : dessert froid, portion individuelle."
+      }
     },
     {
       "code": "FR-040",
@@ -37139,7 +37209,12 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Madeleines au miel : petit gâteau, se compte en pièces. Un dessert de fin de repas naturellement léger."
+      }
     },
     {
       "code": "REAL-073",
@@ -39756,7 +39831,12 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Kouign-amann : pâtisserie levée feuilletée bretonne. C'est la recette qui a rendu le défaut visible — servie trois fois comme repas du soir, à 1006 kcal la portion pour 7,8 g de protéines. Elle reste au corpus et devient ce qu'elle est : un dessert riche, servi à une fraction de sa part."
+      }
     },
     {
       "code": "REAL-090",
@@ -39901,7 +39981,12 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Cannelés de Bordeaux : petit gâteau, se compte en pièces."
+      }
     },
     {
       "code": "REAL-091",
@@ -44568,7 +44653,12 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Pastéis de nata : petite pâtisserie portugaise, se compte en pièces."
+      }
     },
     {
       "code": "REAL-123",
