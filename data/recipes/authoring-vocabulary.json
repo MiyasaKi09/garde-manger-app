@@ -10,7 +10,7 @@
     "recettes_actuelles": 576,
     "cible_recettes": 3000,
     "reste_a_ecrire": 2424,
-    "formes_employables": 454,
+    "formes_employables": 452,
     "formes_bloquees": 82
   },
   "formes_employables": [
@@ -18,7 +18,7 @@
       "nom": "Sel fin",
       "normalise": "sel fin",
       "categorie": "condiments_sauces",
-      "recettes_actuelles": 344,
+      "recettes_actuelles": 352,
       "roles_observes": [
         "assaisonnement",
         "crumble",
@@ -43,7 +43,7 @@
       "nom": "Poivre noir moulu",
       "normalise": "poivre noir moulu",
       "categorie": "epices",
-      "recettes_actuelles": 287,
+      "recettes_actuelles": 303,
       "roles_observes": [
         "assaisonnement",
         "épice"
@@ -62,40 +62,10 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Oignon jaune cru",
-      "normalise": "oignon jaune cru",
-      "categorie": "legumes",
-      "recettes_actuelles": 286,
-      "roles_observes": [
-        "aromate",
-        "aromate de court-bouillon",
-        "aromatique",
-        "base",
-        "farce",
-        "garniture",
-        "légume",
-        "légume aromatique",
-        "légume principal",
-        "soffritto"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 37.8,
-        "proteinG": 1.19,
-        "carbsG": 6.39,
-        "fatG": 0.5,
-        "fiberG": 2.6
-      },
-      "source": "ciqual_2020"
-    },
-    {
       "nom": "Ail cru",
       "normalise": "ail cru",
       "categorie": "herbes_aromates",
-      "recettes_actuelles": 281,
+      "recettes_actuelles": 289,
       "roles_observes": [
         "aromate",
         "aromatique",
@@ -118,10 +88,41 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Oignon jaune cru",
+      "normalise": "oignon jaune cru",
+      "categorie": "legumes",
+      "recettes_actuelles": 287,
+      "roles_observes": [
+        "aromate",
+        "aromate de court-bouillon",
+        "aromatique",
+        "base",
+        "base aromatique",
+        "farce",
+        "garniture",
+        "légume",
+        "légume aromatique",
+        "légume principal",
+        "soffritto"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 37.8,
+        "proteinG": 1.19,
+        "carbsG": 6.39,
+        "fatG": 0.5,
+        "fiberG": 2.6
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Huile d'olive vierge extra",
       "normalise": "huile d olive vierge extra",
       "categorie": "matieres_grasses",
-      "recettes_actuelles": 213,
+      "recettes_actuelles": 219,
       "roles_observes": [
         "assaisonnement",
         "corps gras",
@@ -160,7 +161,7 @@
       "nom": "Beurre doux",
       "normalise": "beurre doux",
       "categorie": "matieres_grasses",
-      "recettes_actuelles": 157,
+      "recettes_actuelles": 158,
       "roles_observes": [
         "béchamel",
         "caramel",
@@ -172,6 +173,7 @@
         "finition",
         "matiere grasse",
         "matière grasse",
+        "matière grasse de cuisson",
         "panade",
         "panade_et_sauce",
         "plat",
@@ -249,7 +251,7 @@
       "nom": "Persil frais",
       "normalise": "persil frais",
       "categorie": "herbes_aromates",
-      "recettes_actuelles": 116,
+      "recettes_actuelles": 117,
       "roles_observes": [
         "aromate",
         "finition",
@@ -286,6 +288,7 @@
         "légume",
         "légume aromatique",
         "légume de garniture",
+        "légume dur",
         "légume principal",
         "namul",
         "pickle",
@@ -309,7 +312,7 @@
       "nom": "Farine de blé T55",
       "normalise": "farine de ble t55",
       "categorie": "cereales_feculents",
-      "recettes_actuelles": 106,
+      "recettes_actuelles": 109,
       "roles_observes": [
         "béchamel",
         "crumble",
@@ -340,7 +343,7 @@
       "nom": "Feuille de laurier séchée",
       "normalise": "feuille de laurier sechee",
       "categorie": "epices",
-      "recettes_actuelles": 75,
+      "recettes_actuelles": 78,
       "roles_observes": [
         "aromate"
       ],
@@ -359,6 +362,38 @@
         "carbsG": 48.6,
         "fatG": 8.36,
         "fiberG": 26.3
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Crème fraîche liquide entière",
+      "normalise": "creme fraiche liquide entiere",
+      "categorie": "produits_laitiers",
+      "recettes_actuelles": 72,
+      "roles_observes": [
+        "appareil",
+        "base",
+        "enrichissement",
+        "finition",
+        "liaison",
+        "liaison crémeuse",
+        "liant",
+        "liquide",
+        "sauce"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1.03
+      },
+      "per100g": {
+        "kcal": 297,
+        "proteinG": 2.44,
+        "carbsG": 1.94,
+        "fatG": 30.7,
+        "fiberG": 3
       },
       "source": "ciqual_2020"
     },
@@ -391,38 +426,6 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Crème fraîche liquide entière",
-      "normalise": "creme fraiche liquide entiere",
-      "categorie": "produits_laitiers",
-      "recettes_actuelles": 69,
-      "roles_observes": [
-        "appareil",
-        "base",
-        "enrichissement",
-        "finition",
-        "liaison",
-        "liaison crémeuse",
-        "liant",
-        "liquide",
-        "sauce"
-      ],
-      "unites": [
-        "g",
-        "ml"
-      ],
-      "conversion": {
-        "density_g_per_ml": 1.03
-      },
-      "per100g": {
-        "kcal": 297,
-        "proteinG": 2.44,
-        "carbsG": 1.94,
-        "fatG": 30.7,
-        "fiberG": 3
-      },
-      "source": "ciqual_2020"
-    },
-    {
       "nom": "Thym séché",
       "normalise": "thym seche",
       "categorie": "herbes_aromates",
@@ -448,7 +451,7 @@
       "nom": "Vin blanc sec",
       "normalise": "vin blanc sec",
       "categorie": "boissons",
-      "recettes_actuelles": 67,
+      "recettes_actuelles": 66,
       "roles_observes": [
         "braisage",
         "déglaçage",
@@ -549,7 +552,7 @@
       "nom": "Jus de citron frais",
       "normalise": "jus de citron frais",
       "categorie": "boissons",
-      "recettes_actuelles": 60,
+      "recettes_actuelles": 61,
       "roles_observes": [
         "acidifiant",
         "acidité",
@@ -572,30 +575,6 @@
         "carbsG": 2.41,
         "fatG": 0.24,
         "fiberG": 0.3
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Échalote crue",
-      "normalise": "echalote crue",
-      "categorie": "legumes",
-      "recettes_actuelles": 49,
-      "roles_observes": [
-        "aromate",
-        "aromate de sauce",
-        "aromatique",
-        "service"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 63.6,
-        "proteinG": 1.81,
-        "carbsG": 12.2,
-        "fatG": 0.5,
-        "fiberG": 2.6
       },
       "source": "ciqual_2020"
     },
@@ -630,10 +609,34 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Échalote crue",
+      "normalise": "echalote crue",
+      "categorie": "legumes",
+      "recettes_actuelles": 48,
+      "roles_observes": [
+        "aromate",
+        "aromate de sauce",
+        "aromatique",
+        "service"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 63.6,
+        "proteinG": 1.81,
+        "carbsG": 12.2,
+        "fatG": 0.5,
+        "fiberG": 2.6
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Vinaigre de vin rouge",
       "normalise": "vinaigre de vin rouge",
       "categorie": "condiments_sauces",
-      "recettes_actuelles": 46,
+      "recettes_actuelles": 47,
       "roles_observes": [
         "acide",
         "acidifiant",
@@ -660,35 +663,10 @@
       "source": "ciqual_2020+usda_fdc"
     },
     {
-      "nom": "Gingembre frais",
-      "normalise": "gingembre frais",
-      "categorie": "epices",
-      "recettes_actuelles": 44,
-      "roles_observes": [
-        "aromate",
-        "aromatique",
-        "finition",
-        "pochage",
-        "épice"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 32.9,
-        "proteinG": 1.1,
-        "carbsG": 3.4,
-        "fatG": 1.1,
-        "fiberG": 2.7
-      },
-      "source": "ciqual_2020"
-    },
-    {
       "nom": "Lait entier",
       "normalise": "lait entier",
       "categorie": "produits_laitiers",
-      "recettes_actuelles": 44,
+      "recettes_actuelles": 46,
       "roles_observes": [
         "appareil",
         "béchamel",
@@ -697,6 +675,7 @@
         "farce",
         "liaison",
         "liquide",
+        "liquide de détente",
         "liquide de sauce",
         "panade",
         "purée",
@@ -721,62 +700,10 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Moutarde de Dijon",
-      "normalise": "moutarde de dijon",
-      "categorie": "condiments_sauces",
-      "recettes_actuelles": 44,
-      "roles_observes": [
-        "condiment",
-        "condiment émulsifiant",
-        "finition",
-        "liant",
-        "marinade",
-        "sauce",
-        "vinaigrette",
-        "émulsifiant"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 152,
-        "proteinG": 6.92,
-        "carbsG": 4.33,
-        "fatG": 11.2,
-        "fiberG": 1
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Lardon fumé cru",
-      "normalise": "lardon fume cru",
-      "categorie": "produits_transformes",
-      "recettes_actuelles": 43,
-      "roles_observes": [
-        "garniture",
-        "garniture carnée",
-        "garniture salée",
-        "protéine"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 275,
-        "proteinG": 16.7,
-        "carbsG": 0.96,
-        "fatG": 22.6,
-        "fiberG": 0.34
-      },
-      "source": "ciqual_2020"
-    },
-    {
       "nom": "Bouillon de volaille",
       "normalise": "bouillon de volaille",
       "categorie": "preparations_culinaires",
-      "recettes_actuelles": 41,
+      "recettes_actuelles": 45,
       "roles_observes": [
         "base",
         "cuisson",
@@ -807,6 +734,109 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Gingembre frais",
+      "normalise": "gingembre frais",
+      "categorie": "epices",
+      "recettes_actuelles": 44,
+      "roles_observes": [
+        "aromate",
+        "aromatique",
+        "finition",
+        "pochage",
+        "épice"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 32.9,
+        "proteinG": 1.1,
+        "carbsG": 3.4,
+        "fatG": 1.1,
+        "fiberG": 2.7
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Lardon fumé cru",
+      "normalise": "lardon fume cru",
+      "categorie": "produits_transformes",
+      "recettes_actuelles": 44,
+      "roles_observes": [
+        "garniture",
+        "garniture carnée",
+        "garniture salée",
+        "protéine",
+        "salaison"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 275,
+        "proteinG": 16.7,
+        "carbsG": 0.96,
+        "fatG": 22.6,
+        "fiberG": 0.34
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Moutarde de Dijon",
+      "normalise": "moutarde de dijon",
+      "categorie": "condiments_sauces",
+      "recettes_actuelles": 43,
+      "roles_observes": [
+        "condiment",
+        "condiment émulsifiant",
+        "finition",
+        "liant",
+        "marinade",
+        "sauce",
+        "vinaigrette",
+        "émulsifiant"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 152,
+        "proteinG": 6.92,
+        "carbsG": 4.33,
+        "fatG": 11.2,
+        "fiberG": 1
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Muscade moulue",
+      "normalise": "muscade moulue",
+      "categorie": "epices",
+      "recettes_actuelles": 42,
+      "roles_observes": [
+        "aromate",
+        "assaisonnement",
+        "béchamel",
+        "farce",
+        "épice"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 504,
+        "proteinG": 6.26,
+        "carbsG": 28.5,
+        "fatG": 36.3,
+        "fiberG": 20.8
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Pomme de terre cuite",
       "normalise": "pomme de terre cuite",
       "categorie": "cereales_feculents",
@@ -832,35 +862,35 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Muscade moulue",
-      "normalise": "muscade moulue",
-      "categorie": "epices",
-      "recettes_actuelles": 39,
+      "nom": "Gruyère râpé",
+      "normalise": "gruyere rape",
+      "categorie": "produits_laitiers",
+      "recettes_actuelles": 40,
       "roles_observes": [
-        "aromate",
-        "assaisonnement",
-        "béchamel",
-        "farce",
-        "épice"
+        "fromage",
+        "fromage de gratinage",
+        "garniture",
+        "gratinage"
       ],
       "unites": [
         "g"
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 504,
-        "proteinG": 6.26,
-        "carbsG": 28.5,
-        "fatG": 36.3,
-        "fiberG": 20.8
+        "kcal": 426,
+        "proteinG": 27.9,
+        "carbsG": 0.75,
+        "fatG": 34.6,
+        "fiberG": 0
       },
-      "source": "ciqual_2020"
+      "source": "ciqual_2020",
+      "valeur_derivee": "carbohydrate_g"
     },
     {
       "nom": "Poireau cru",
       "normalise": "poireau cru",
       "categorie": "legumes",
-      "recettes_actuelles": 38,
+      "recettes_actuelles": 37,
       "roles_observes": [
         "aromatique",
         "garniture",
@@ -883,12 +913,41 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Poivron rouge frais",
+      "normalise": "poivron rouge frais",
+      "categorie": "legumes",
+      "recettes_actuelles": 37,
+      "roles_observes": [
+        "aromatique",
+        "base",
+        "garniture",
+        "légume",
+        "légume principal",
+        "légume support",
+        "sauce",
+        "sofrito"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 36.6,
+        "proteinG": 1.06,
+        "carbsG": 5.98,
+        "fatG": 0.5,
+        "fiberG": 3.2
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Tomate concassée en conserve",
       "normalise": "tomate concassee en conserve",
       "categorie": "legumes",
       "recettes_actuelles": 37,
       "roles_observes": [
         "base",
+        "base de sauce",
         "base humide",
         "bouillon",
         "liaison",
@@ -906,57 +965,6 @@
         "carbsG": 3.63,
         "fatG": 0.5,
         "fiberG": 1.8
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Gruyère râpé",
-      "normalise": "gruyere rape",
-      "categorie": "produits_laitiers",
-      "recettes_actuelles": 36,
-      "roles_observes": [
-        "fromage",
-        "fromage de gratinage",
-        "gratinage"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 426,
-        "proteinG": 27.9,
-        "carbsG": 0.75,
-        "fatG": 34.6,
-        "fiberG": 0
-      },
-      "source": "ciqual_2020",
-      "valeur_derivee": "carbohydrate_g"
-    },
-    {
-      "nom": "Poivron rouge frais",
-      "normalise": "poivron rouge frais",
-      "categorie": "legumes",
-      "recettes_actuelles": 36,
-      "roles_observes": [
-        "aromatique",
-        "base",
-        "garniture",
-        "légume",
-        "légume principal",
-        "légume support",
-        "sauce"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 36.6,
-        "proteinG": 1.06,
-        "carbsG": 5.98,
-        "fatG": 0.5,
-        "fiberG": 3.2
       },
       "source": "ciqual_2020"
     },
@@ -1032,6 +1040,27 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Cumin moulu",
+      "normalise": "cumin moulu",
+      "categorie": "epices",
+      "recettes_actuelles": 31,
+      "roles_observes": [
+        "épice"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 427,
+        "proteinG": 17.8,
+        "carbsG": 33.7,
+        "fatG": 22.3,
+        "fiberG": 10.5
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Céleri branche cru",
       "normalise": "celeri branche cru",
       "categorie": "legumes",
@@ -1057,6 +1086,35 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Concentré de tomate",
+      "normalise": "concentre de tomate",
+      "categorie": "legumes",
+      "recettes_actuelles": 30,
+      "roles_observes": [
+        "aromate",
+        "base de sauce",
+        "base tomate",
+        "coloration et fond de sauce",
+        "condiment",
+        "liaison",
+        "liant",
+        "renfort de sauce",
+        "sauce"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 99.2,
+        "proteinG": 4.4,
+        "carbsG": 17.1,
+        "fatG": 0.53,
+        "fiberG": 4.2
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Basilic frais",
       "normalise": "basilic frais",
       "categorie": "herbes_aromates",
@@ -1078,55 +1136,6 @@
         "carbsG": 2.55,
         "fatG": 0.47,
         "fiberG": 3.47
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Concentré de tomate",
-      "normalise": "concentre de tomate",
-      "categorie": "legumes",
-      "recettes_actuelles": 29,
-      "roles_observes": [
-        "aromate",
-        "base de sauce",
-        "base tomate",
-        "coloration et fond de sauce",
-        "condiment",
-        "liaison",
-        "liant",
-        "sauce"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 99.2,
-        "proteinG": 4.4,
-        "carbsG": 17.1,
-        "fatG": 0.53,
-        "fiberG": 4.2
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Cumin moulu",
-      "normalise": "cumin moulu",
-      "categorie": "epices",
-      "recettes_actuelles": 29,
-      "roles_observes": [
-        "épice"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 427,
-        "proteinG": 17.8,
-        "carbsG": 33.7,
-        "fatG": 22.3,
-        "fiberG": 10.5
       },
       "source": "ciqual_2020"
     },
@@ -1167,7 +1176,6 @@
         "farce",
         "frites",
         "féculent",
-        "liaison",
         "légume",
         "purée"
       ],
@@ -1188,7 +1196,7 @@
       "nom": "Chapelure de blé",
       "normalise": "chapelure de ble",
       "categorie": "cereales_feculents",
-      "recettes_actuelles": 27,
+      "recettes_actuelles": 26,
       "roles_observes": [
         "croûte",
         "finition",
@@ -1263,10 +1271,34 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Courgette fraîche",
+      "normalise": "courgette fraiche",
+      "categorie": "legumes",
+      "recettes_actuelles": 24,
+      "roles_observes": [
+        "legume",
+        "légume",
+        "légume tendre",
+        "namul"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 16.5,
+        "proteinG": 1.23,
+        "carbsG": 1.8,
+        "fatG": 0.26,
+        "fiberG": 1.05
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Pain de campagne",
       "normalise": "pain de campagne",
       "categorie": "cereales_feculents",
-      "recettes_actuelles": 25,
+      "recettes_actuelles": 24,
       "roles_observes": [
         "accompagnement",
         "croûtons",
@@ -1284,29 +1316,6 @@
         "carbsG": 50,
         "fatG": 1.3,
         "fiberG": 4.3
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Courgette fraîche",
-      "normalise": "courgette fraiche",
-      "categorie": "legumes",
-      "recettes_actuelles": 24,
-      "roles_observes": [
-        "legume",
-        "légume",
-        "namul"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 16.5,
-        "proteinG": 1.23,
-        "carbsG": 1.8,
-        "fatG": 0.26,
-        "fiberG": 1.05
       },
       "source": "ciqual_2020"
     },
@@ -1383,6 +1392,68 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Jaune d'œuf cru",
+      "normalise": "jaune d oeuf cru",
+      "categorie": "oeufs",
+      "recettes_actuelles": 20,
+      "roles_observes": [
+        "appareil",
+        "crème",
+        "dorure",
+        "liaison",
+        "liant",
+        "sauce",
+        "émulsifiant",
+        "émulsifiant (mayonnaise maison)"
+      ],
+      "unites": [
+        "g",
+        "u",
+        "tranche",
+        "feuille"
+      ],
+      "conversion": {
+        "grams_per_unit": 18
+      },
+      "per100g": {
+        "kcal": 307,
+        "proteinG": 15.5,
+        "carbsG": 1.09,
+        "fatG": 26.7,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Parmesan affiné",
+      "normalise": "parmesan affine",
+      "categorie": "produits_laitiers",
+      "recettes_actuelles": 20,
+      "roles_observes": [
+        "assaisonnement",
+        "finition",
+        "fromage",
+        "fromage d'assaisonnement",
+        "gratin",
+        "gratinage",
+        "sauce",
+        "service",
+        "umami"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 409,
+        "proteinG": 30.5,
+        "carbsG": 3.22,
+        "fatG": 31,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020+usda_fdc"
+    },
+    {
       "nom": "Poitrine de porc crue",
       "normalise": "poitrine de porc crue",
       "categorie": "viandes",
@@ -1403,28 +1474,6 @@
         "carbsG": 0,
         "fatG": 20.5,
         "fiberG": 0
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Poivron vert frais",
-      "normalise": "poivron vert frais",
-      "categorie": "legumes",
-      "recettes_actuelles": 20,
-      "roles_observes": [
-        "garniture",
-        "légume"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 26,
-        "proteinG": 0.81,
-        "carbsG": 3.43,
-        "fatG": 0.5,
-        "fiberG": 3.2
       },
       "source": "ciqual_2020"
     },
@@ -1483,38 +1532,6 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Jaune d'œuf cru",
-      "normalise": "jaune d oeuf cru",
-      "categorie": "oeufs",
-      "recettes_actuelles": 19,
-      "roles_observes": [
-        "appareil",
-        "crème",
-        "liaison",
-        "liant",
-        "sauce",
-        "émulsifiant",
-        "émulsifiant (mayonnaise maison)"
-      ],
-      "unites": [
-        "g",
-        "u",
-        "tranche",
-        "feuille"
-      ],
-      "conversion": {
-        "grams_per_unit": 18
-      },
-      "per100g": {
-        "kcal": 307,
-        "proteinG": 15.5,
-        "carbsG": 1.09,
-        "fatG": 26.7,
-        "fiberG": 0
-      },
-      "source": "ciqual_2020"
-    },
-    {
       "nom": "Olive noire",
       "normalise": "olive noire",
       "categorie": "condiments_sauces",
@@ -1558,6 +1575,28 @@
         "carbsG": 3.48,
         "fatG": 0.63,
         "fiberG": 4.3
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Poivron vert frais",
+      "normalise": "poivron vert frais",
+      "categorie": "legumes",
+      "recettes_actuelles": 19,
+      "roles_observes": [
+        "garniture",
+        "légume"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 26,
+        "proteinG": 0.81,
+        "carbsG": 3.43,
+        "fatG": 0.5,
+        "fiberG": 3.2
       },
       "source": "ciqual_2020"
     },
@@ -1606,34 +1645,6 @@
         "fiberG": 1.5
       },
       "source": "ciqual_2020"
-    },
-    {
-      "nom": "Parmesan affiné",
-      "normalise": "parmesan affine",
-      "categorie": "produits_laitiers",
-      "recettes_actuelles": 18,
-      "roles_observes": [
-        "assaisonnement",
-        "finition",
-        "fromage",
-        "fromage d'assaisonnement",
-        "gratinage",
-        "sauce",
-        "service",
-        "umami"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 409,
-        "proteinG": 30.5,
-        "carbsG": 3.22,
-        "fatG": 31,
-        "fiberG": 0
-      },
-      "source": "ciqual_2020+usda_fdc"
     },
     {
       "nom": "Pomme fraîche",
@@ -1749,7 +1760,8 @@
         "base de sauce",
         "légume",
         "mouillement",
-        "sauce"
+        "sauce",
+        "sofrito"
       ],
       "unites": [
         "g"
@@ -1812,6 +1824,30 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Ciboulette fraîche",
+      "normalise": "ciboulette fraiche",
+      "categorie": "herbes_aromates",
+      "recettes_actuelles": 15,
+      "roles_observes": [
+        "aromate",
+        "finition",
+        "herbe",
+        "herbe de finition"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 29.7,
+        "proteinG": 2.57,
+        "carbsG": 2.1,
+        "fatG": 0.52,
+        "fiberG": 3.19
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Huile de friture",
       "normalise": "huile de friture",
       "categorie": "matieres_grasses",
@@ -1847,7 +1883,7 @@
         "laque",
         "sucrant",
         "sucre et arôme",
-        "équilibre"
+        "équilibre sucré"
       ],
       "unites": [
         "g"
@@ -1907,39 +1943,70 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Ciboulette fraîche",
-      "normalise": "ciboulette fraiche",
-      "categorie": "herbes_aromates",
+      "nom": "Bouillon de bœuf",
+      "normalise": "bouillon de boeuf",
+      "categorie": "preparations_culinaires",
       "recettes_actuelles": 14,
       "roles_observes": [
-        "aromate",
-        "finition",
-        "herbe"
+        "braisage",
+        "cuisson",
+        "fond",
+        "mouillement",
+        "sauce"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 9.05,
+        "proteinG": 0.6,
+        "carbsG": 1.33,
+        "fatG": 0.15,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Fécule de maïs",
+      "normalise": "fecule de mais",
+      "categorie": "cereales_feculents",
+      "recettes_actuelles": 14,
+      "roles_observes": [
+        "liaison",
+        "liant",
+        "marinade"
       ],
       "unites": [
         "g"
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 29.7,
-        "proteinG": 2.57,
-        "carbsG": 2.1,
-        "fatG": 0.52,
-        "fiberG": 3.19
+        "kcal": 362,
+        "proteinG": 0.43,
+        "carbsG": 89.2,
+        "fatG": 0.25,
+        "fiberG": 0.8
       },
       "source": "ciqual_2020"
     },
     {
-      "nom": "Huile de colza raffinée",
-      "normalise": "huile de colza raffinee",
+      "nom": "Huile végétale",
+      "normalise": "huile vegetale",
       "categorie": "matieres_grasses",
       "recettes_actuelles": 14,
       "roles_observes": [
         "cuisson",
+        "feuilletage",
+        "finition",
+        "friture",
+        "marinade",
         "matière grasse",
-        "saisie",
-        "tadka",
-        "vinaigrette"
+        "vinaigrette",
+        "émulsion"
       ],
       "unites": [
         "g",
@@ -1950,9 +2017,9 @@
       },
       "per100g": {
         "kcal": 900,
-        "proteinG": 0,
+        "proteinG": 0.21,
         "carbsG": 0,
-        "fatG": 100,
+        "fatG": 99.9,
         "fiberG": 0
       },
       "source": "ciqual_2020"
@@ -2009,57 +2076,6 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Bouillon de bœuf",
-      "normalise": "bouillon de boeuf",
-      "categorie": "preparations_culinaires",
-      "recettes_actuelles": 13,
-      "roles_observes": [
-        "braisage",
-        "cuisson",
-        "fond",
-        "mouillement",
-        "sauce"
-      ],
-      "unites": [
-        "g",
-        "ml"
-      ],
-      "conversion": {
-        "density_g_per_ml": 1
-      },
-      "per100g": {
-        "kcal": 9.05,
-        "proteinG": 0.6,
-        "carbsG": 1.33,
-        "fatG": 0.15,
-        "fiberG": 0
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Fécule de maïs",
-      "normalise": "fecule de mais",
-      "categorie": "cereales_feculents",
-      "recettes_actuelles": 13,
-      "roles_observes": [
-        "liaison",
-        "liant",
-        "marinade"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 362,
-        "proteinG": 0.43,
-        "carbsG": 89.2,
-        "fatG": 0.25,
-        "fiberG": 0.8
-      },
-      "source": "ciqual_2020"
-    },
-    {
       "nom": "Haricot blanc sec",
       "normalise": "haricot blanc sec",
       "categorie": "legumineuses",
@@ -2079,36 +2095,6 @@
         "carbsG": 43.9,
         "fatG": 1.78,
         "fiberG": 16.8
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Huile végétale",
-      "normalise": "huile vegetale",
-      "categorie": "matieres_grasses",
-      "recettes_actuelles": 13,
-      "roles_observes": [
-        "cuisson",
-        "feuilletage",
-        "finition",
-        "friture",
-        "marinade",
-        "matière grasse",
-        "émulsion"
-      ],
-      "unites": [
-        "g",
-        "ml"
-      ],
-      "conversion": {
-        "density_g_per_ml": 0.92
-      },
-      "per100g": {
-        "kcal": 900,
-        "proteinG": 0.21,
-        "carbsG": 0,
-        "fatG": 99.9,
-        "fiberG": 0
       },
       "source": "ciqual_2020"
     },
@@ -2206,6 +2192,30 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Anchois à l'huile, égoutté",
+      "normalise": "anchois a l huile egoutte",
+      "categorie": "poissons_fruits_de_mer",
+      "recettes_actuelles": 12,
+      "roles_observes": [
+        "condiment",
+        "garniture",
+        "protéine",
+        "umami et sel"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 182,
+        "proteinG": 26.4,
+        "carbsG": 0.2,
+        "fatG": 8.45,
+        "fiberG": 0.25
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Chou blanc frais",
       "normalise": "chou blanc frais",
       "categorie": "legumes",
@@ -2232,27 +2242,26 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Crème fraîche épaisse",
-      "normalise": "creme fraiche epaisse",
-      "categorie": "produits_laitiers",
+      "nom": "Haricot vert cru",
+      "normalise": "haricot vert cru",
+      "categorie": "legumes",
       "recettes_actuelles": 12,
       "roles_observes": [
-        "appareil",
-        "finition",
-        "liaison",
-        "liant",
-        "sauce"
+        "base",
+        "legume",
+        "légume",
+        "légume tendre"
       ],
       "unites": [
         "g"
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 304,
-        "proteinG": 2.94,
-        "carbsG": 2.8,
-        "fatG": 30.7,
-        "fiberG": 3
+        "kcal": 25.9,
+        "proteinG": 1.85,
+        "carbsG": 4.14,
+        "fatG": 0.21,
+        "fiberG": 2.85
       },
       "source": "ciqual_2020"
     },
@@ -2374,25 +2383,24 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Anchois à l'huile, égoutté",
-      "normalise": "anchois a l huile egoutte",
-      "categorie": "poissons_fruits_de_mer",
+      "nom": "Bœuf à braiser cru",
+      "normalise": "boeuf a braiser cru",
+      "categorie": "produits_transformes",
       "recettes_actuelles": 11,
       "roles_observes": [
-        "condiment",
-        "garniture",
-        "protéine"
+        "protéine",
+        "viande"
       ],
       "unites": [
         "g"
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 182,
-        "proteinG": 26.4,
-        "carbsG": 0.2,
-        "fatG": 8.45,
-        "fiberG": 0.25
+        "kcal": 164,
+        "proteinG": 24,
+        "carbsG": 0,
+        "fatG": 7.5,
+        "fiberG": 0
       },
       "source": "ciqual_2020"
     },
@@ -2424,6 +2432,31 @@
         "carbsG": 1.56,
         "fatG": 0.5,
         "fiberG": 0.5
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Crème fraîche épaisse",
+      "normalise": "creme fraiche epaisse",
+      "categorie": "produits_laitiers",
+      "recettes_actuelles": 11,
+      "roles_observes": [
+        "appareil",
+        "finition",
+        "liaison",
+        "liant",
+        "sauce"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 304,
+        "proteinG": 2.94,
+        "carbsG": 2.8,
+        "fatG": 30.7,
+        "fiberG": 3
       },
       "source": "ciqual_2020"
     },
@@ -2470,29 +2503,6 @@
         "carbsG": 2.63,
         "fatG": 0.5,
         "fiberG": 2.6
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Haricot vert cru",
-      "normalise": "haricot vert cru",
-      "categorie": "legumes",
-      "recettes_actuelles": 11,
-      "roles_observes": [
-        "base",
-        "legume",
-        "légume"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 25.9,
-        "proteinG": 1.85,
-        "carbsG": 4.14,
-        "fatG": 0.21,
-        "fiberG": 2.85
       },
       "source": "ciqual_2020"
     },
@@ -2744,6 +2754,34 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Huile de colza raffinée",
+      "normalise": "huile de colza raffinee",
+      "categorie": "matieres_grasses",
+      "recettes_actuelles": 10,
+      "roles_observes": [
+        "cuisson",
+        "matière grasse",
+        "saisie",
+        "tadka",
+        "vinaigrette"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.92
+      },
+      "per100g": {
+        "kcal": 900,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 100,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Jus de citron vert frais",
       "normalise": "jus de citron vert frais",
       "categorie": "boissons",
@@ -2867,24 +2905,23 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Bœuf à braiser cru",
-      "normalise": "boeuf a braiser cru",
-      "categorie": "produits_transformes",
+      "nom": "Cannelle moulue",
+      "normalise": "cannelle moulue",
+      "categorie": "epices",
       "recettes_actuelles": 9,
       "roles_observes": [
-        "protéine",
-        "viande"
+        "épice"
       ],
       "unites": [
         "g"
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 164,
-        "proteinG": 24,
-        "carbsG": 0,
-        "fatG": 7.5,
-        "fiberG": 0
+        "kcal": 243,
+        "proteinG": 3.87,
+        "carbsG": 27.5,
+        "fatG": 1.22,
+        "fiberG": 53.1
       },
       "source": "ciqual_2020"
     },
@@ -3049,60 +3086,6 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Vin rouge sec",
-      "normalise": "vin rouge sec",
-      "categorie": "boissons",
-      "recettes_actuelles": 9,
-      "roles_observes": [
-        "braisage",
-        "cuisson",
-        "déglaçage",
-        "liquide de braisage",
-        "marinade"
-      ],
-      "unites": [
-        "g",
-        "ml"
-      ],
-      "conversion": {
-        "density_g_per_ml": 1
-      },
-      "per100g": {
-        "kcal": 82.1,
-        "proteinG": 0.07,
-        "carbsG": 2.63,
-        "fatG": 0,
-        "fiberG": 0
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Bouillon de légumes non salé",
-      "normalise": "bouillon de legumes non sale",
-      "categorie": "preparations_culinaires",
-      "recettes_actuelles": 8,
-      "roles_observes": [
-        "cuisson",
-        "liquide",
-        "pochage"
-      ],
-      "unites": [
-        "g",
-        "ml"
-      ],
-      "conversion": {
-        "density_g_per_ml": 1
-      },
-      "per100g": {
-        "kcal": 5.38,
-        "proteinG": 0.34,
-        "carbsG": 0.65,
-        "fatG": 0.16,
-        "fiberG": 0
-      },
-      "source": "ciqual_2020"
-    },
-    {
       "nom": "Cannelle en bâton",
       "normalise": "cannelle en baton",
       "categorie": "epices",
@@ -3119,27 +3102,6 @@
       "conversion": {
         "grams_per_unit": 4
       },
-      "per100g": {
-        "kcal": 243,
-        "proteinG": 3.87,
-        "carbsG": 27.5,
-        "fatG": 1.22,
-        "fiberG": 53.1
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Cannelle moulue",
-      "normalise": "cannelle moulue",
-      "categorie": "epices",
-      "recettes_actuelles": 8,
-      "roles_observes": [
-        "épice"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
       "per100g": {
         "kcal": 243,
         "proteinG": 3.87,
@@ -3170,29 +3132,6 @@
         "fiberG": 2.2
       },
       "source": "ciqual_2020"
-    },
-    {
-      "nom": "Comté",
-      "normalise": "comte",
-      "categorie": "produits_laitiers",
-      "recettes_actuelles": 8,
-      "roles_observes": [
-        "fromage",
-        "garniture",
-        "gratinage"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 420,
-        "proteinG": 26.7,
-        "carbsG": 0.36,
-        "fatG": 34.6,
-        "fiberG": 0
-      },
-      "source": "ciqual_2020+usda_fdc"
     },
     {
       "nom": "Cuisse de poulet crue, avec os, avec peau",
@@ -3294,7 +3233,8 @@
         "cœur",
         "fromage",
         "fromage fondant",
-        "garniture"
+        "garniture",
+        "protéine et gratin"
       ],
       "unites": [
         "g"
@@ -3354,6 +3294,55 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Piment de Cayenne",
+      "normalise": "piment de cayenne",
+      "categorie": "epices",
+      "recettes_actuelles": 8,
+      "roles_observes": [
+        "épice"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 376,
+        "proteinG": 12,
+        "carbsG": 29.4,
+        "fatG": 17.3,
+        "fiberG": 27.2
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Vin rouge sec",
+      "normalise": "vin rouge sec",
+      "categorie": "boissons",
+      "recettes_actuelles": 8,
+      "roles_observes": [
+        "braisage",
+        "cuisson",
+        "déglaçage",
+        "liquide de braisage",
+        "marinade"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 82.1,
+        "proteinG": 0.07,
+        "carbsG": 2.63,
+        "fatG": 0,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Boudin noir à cuire",
       "normalise": "boudin noir a cuire",
       "categorie": "produits_transformes",
@@ -3371,34 +3360,6 @@
         "carbsG": 4.5,
         "fatG": 27.1,
         "fiberG": 1.42
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Bouillon de bœuf non salé",
-      "normalise": "bouillon de boeuf non sale",
-      "categorie": "preparations_culinaires",
-      "recettes_actuelles": 7,
-      "roles_observes": [
-        "cuisson",
-        "liquide",
-        "liquide de braisage",
-        "moelleux",
-        "sauce"
-      ],
-      "unites": [
-        "g",
-        "ml"
-      ],
-      "conversion": {
-        "density_g_per_ml": 1
-      },
-      "per100g": {
-        "kcal": 9.05,
-        "proteinG": 0.6,
-        "carbsG": 1.33,
-        "fatG": 0.15,
-        "fiberG": 0
       },
       "source": "ciqual_2020"
     },
@@ -3558,8 +3519,8 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Paprika fumé",
-      "normalise": "paprika fume",
+      "nom": "Paprika doux",
+      "normalise": "paprika doux",
       "categorie": "epices",
       "recettes_actuelles": 7,
       "roles_observes": [
@@ -3600,27 +3561,6 @@
         "carbsG": 6.31,
         "fatG": 65,
         "fiberG": 10
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Piment de Cayenne",
-      "normalise": "piment de cayenne",
-      "categorie": "epices",
-      "recettes_actuelles": 7,
-      "roles_observes": [
-        "épice"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 376,
-        "proteinG": 12,
-        "carbsG": 29.4,
-        "fatG": 17.3,
-        "fiberG": 27.2
       },
       "source": "ciqual_2020"
     },
@@ -3934,6 +3874,7 @@
       "categorie": "viandes",
       "recettes_actuelles": 6,
       "roles_observes": [
+        "protéine",
         "viande"
       ],
       "unites": [
@@ -4042,7 +3983,8 @@
       "recettes_actuelles": 6,
       "roles_observes": [
         "base",
-        "garniture"
+        "garniture",
+        "garniture salée"
       ],
       "unites": [
         "g"
@@ -4054,6 +3996,27 @@
         "carbsG": 0.1,
         "fatG": 17.2,
         "fiberG": 6.2
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Paprika fumé",
+      "normalise": "paprika fume",
+      "categorie": "epices",
+      "recettes_actuelles": 6,
+      "roles_observes": [
+        "épice"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 319,
+        "proteinG": 14.1,
+        "carbsG": 19.1,
+        "fatG": 12.9,
+        "fiberG": 34.9
       },
       "source": "ciqual_2020"
     },
@@ -4123,28 +4086,6 @@
         "fiberG": 5.45
       },
       "source": "ciqual_2020"
-    },
-    {
-      "nom": "Pomme de terre crue, avec peau",
-      "normalise": "pomme de terre crue avec peau",
-      "categorie": "cereales_feculents",
-      "recettes_actuelles": 6,
-      "roles_observes": [
-        "base",
-        "féculent"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 77,
-        "proteinG": 1.44,
-        "carbsG": 17.5,
-        "fatG": 0.3,
-        "fiberG": 1.6
-      },
-      "source": "ciqual_2020+usda_fdc"
     },
     {
       "nom": "Poulet cuit effiloché",
@@ -4352,6 +4293,59 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Bouillon de bœuf non salé",
+      "normalise": "bouillon de boeuf non sale",
+      "categorie": "preparations_culinaires",
+      "recettes_actuelles": 5,
+      "roles_observes": [
+        "cuisson",
+        "liquide de braisage",
+        "moelleux",
+        "sauce"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 9.05,
+        "proteinG": 0.6,
+        "carbsG": 1.33,
+        "fatG": 0.15,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Bouillon de légumes non salé",
+      "normalise": "bouillon de legumes non sale",
+      "categorie": "preparations_culinaires",
+      "recettes_actuelles": 5,
+      "roles_observes": [
+        "cuisson",
+        "liquide",
+        "pochage"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 5.38,
+        "proteinG": 0.34,
+        "carbsG": 0.65,
+        "fatG": 0.16,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Bouillon de volaille non salé",
       "normalise": "bouillon de volaille non sale",
       "categorie": "preparations_culinaires",
@@ -4406,6 +4400,7 @@
         "condiment",
         "farce",
         "garniture",
+        "garniture acide",
         "sauce"
       ],
       "unites": [
@@ -4446,6 +4441,28 @@
         "fiberG": 4.3
       },
       "source": "ciqual_2020"
+    },
+    {
+      "nom": "Comté",
+      "normalise": "comte",
+      "categorie": "produits_laitiers",
+      "recettes_actuelles": 5,
+      "roles_observes": [
+        "fromage",
+        "gratinage"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 420,
+        "proteinG": 26.7,
+        "carbsG": 0.36,
+        "fatG": 34.6,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020+usda_fdc"
     },
     {
       "nom": "Escalope de dinde crue",
@@ -4491,23 +4508,25 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Paprika doux",
-      "normalise": "paprika doux",
-      "categorie": "epices",
+      "nom": "Pain rassis",
+      "normalise": "pain rassis",
+      "categorie": "cereales_feculents",
       "recettes_actuelles": 5,
       "roles_observes": [
-        "épice"
+        "croûtons",
+        "féculent",
+        "liaison"
       ],
       "unites": [
         "g"
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 319,
-        "proteinG": 14.1,
-        "carbsG": 19.1,
-        "fatG": 12.9,
-        "fiberG": 34.9
+        "kcal": 273,
+        "proteinG": 9.01,
+        "carbsG": 54.4,
+        "fatG": 1.61,
+        "fiberG": 3.84
       },
       "source": "ciqual_2020"
     },
@@ -4554,25 +4573,26 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Piment séché",
-      "normalise": "piment seche",
-      "categorie": "epices",
+      "nom": "Pomme de terre crue, avec peau",
+      "normalise": "pomme de terre crue avec peau",
+      "categorie": "cereales_feculents",
       "recettes_actuelles": 5,
       "roles_observes": [
-        "épice"
+        "base",
+        "féculent"
       ],
       "unites": [
         "g"
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 376,
-        "proteinG": 12,
-        "carbsG": 29.4,
-        "fatG": 17.3,
-        "fiberG": 27.2
+        "kcal": 77,
+        "proteinG": 1.44,
+        "carbsG": 17.5,
+        "fatG": 0.3,
+        "fiberG": 1.6
       },
-      "source": "ciqual_2020"
+      "source": "ciqual_2020+usda_fdc"
     },
     {
       "nom": "Sauce soja coréenne",
@@ -4663,6 +4683,28 @@
         "proteinG": 0.27,
         "carbsG": 0,
         "fatG": 99.9,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Blanc de poulet cru, sans peau",
+      "normalise": "blanc de poulet cru sans peau",
+      "categorie": "volailles",
+      "recettes_actuelles": 4,
+      "roles_observes": [
+        "protéine",
+        "viande"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 110,
+        "proteinG": 23.4,
+        "carbsG": 0,
+        "fatG": 1.5,
         "fiberG": 0
       },
       "source": "ciqual_2020"
@@ -4850,49 +4892,6 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Pain rassis",
-      "normalise": "pain rassis",
-      "categorie": "cereales_feculents",
-      "recettes_actuelles": 4,
-      "roles_observes": [
-        "féculent",
-        "liaison"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 273,
-        "proteinG": 9.01,
-        "carbsG": 54.4,
-        "fatG": 1.61,
-        "fiberG": 3.84
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Paleron de bœuf cru",
-      "normalise": "paleron de boeuf cru",
-      "categorie": "viandes",
-      "recettes_actuelles": 4,
-      "roles_observes": [
-        "viande"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 144,
-        "proteinG": 21.2,
-        "carbsG": 0,
-        "fatG": 6.54,
-        "fiberG": 0
-      },
-      "source": "ciqual_2020"
-    },
-    {
       "nom": "Piment de la Jamaïque moulu",
       "normalise": "piment de la jamaique moulu",
       "categorie": "epices",
@@ -4910,6 +4909,48 @@
         "carbsG": 50.5,
         "fatG": 8.69,
         "fiberG": 21.6
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Piment rouge séché",
+      "normalise": "piment rouge seche",
+      "categorie": "epices",
+      "recettes_actuelles": 4,
+      "roles_observes": [
+        "épice"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 376,
+        "proteinG": 12,
+        "carbsG": 29.4,
+        "fatG": 17.3,
+        "fiberG": 27.2
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Piment séché",
+      "normalise": "piment seche",
+      "categorie": "epices",
+      "recettes_actuelles": 4,
+      "roles_observes": [
+        "épice"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 376,
+        "proteinG": 12,
+        "carbsG": 29.4,
+        "fatG": 17.3,
+        "fiberG": 27.2
       },
       "source": "ciqual_2020"
     },
@@ -5142,28 +5183,6 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Blanc de poulet cru, sans peau",
-      "normalise": "blanc de poulet cru sans peau",
-      "categorie": "volailles",
-      "recettes_actuelles": 3,
-      "roles_observes": [
-        "protéine",
-        "viande"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 110,
-        "proteinG": 23.4,
-        "carbsG": 0,
-        "fatG": 1.5,
-        "fiberG": 0
-      },
-      "source": "ciqual_2020"
-    },
-    {
       "nom": "Bœuf cru finement tranché",
       "normalise": "boeuf cru finement tranche",
       "categorie": "viandes",
@@ -5186,6 +5205,31 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Bouillon de légumes",
+      "normalise": "bouillon de legumes",
+      "categorie": "preparations_culinaires",
+      "recettes_actuelles": 3,
+      "roles_observes": [
+        "liquide",
+        "liquide de cuisson"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 5.38,
+        "proteinG": 0.34,
+        "carbsG": 0.65,
+        "fatG": 0.16,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Cassonade",
       "normalise": "cassonade",
       "categorie": "produits_sucres",
@@ -5193,7 +5237,7 @@
       "roles_observes": [
         "crumble",
         "sucre",
-        "équilibre"
+        "équilibre sucré"
       ],
       "unites": [
         "g"
@@ -5475,12 +5519,12 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Paleron de bœuf cru, paré",
-      "normalise": "paleron de boeuf cru pare",
+      "nom": "Paleron de bœuf cru",
+      "normalise": "paleron de boeuf cru",
       "categorie": "viandes",
       "recettes_actuelles": 3,
       "roles_observes": [
-        "protéine"
+        "viande"
       ],
       "unites": [
         "g"
@@ -5540,23 +5584,28 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Piment rouge séché",
-      "normalise": "piment rouge seche",
-      "categorie": "epices",
+      "nom": "Piment rouge frais",
+      "normalise": "piment rouge frais",
+      "categorie": "legumes",
       "recettes_actuelles": 3,
       "roles_observes": [
         "épice"
       ],
       "unites": [
-        "g"
+        "g",
+        "u",
+        "tranche",
+        "feuille"
       ],
-      "conversion": {},
+      "conversion": {
+        "grams_per_unit": 15
+      },
       "per100g": {
-        "kcal": 376,
-        "proteinG": 12,
-        "carbsG": 29.4,
-        "fatG": 17.3,
-        "fiberG": 27.2
+        "kcal": 41.2,
+        "proteinG": 1.87,
+        "carbsG": 7.7,
+        "fatG": 0.32,
+        "fiberG": 1.65
       },
       "source": "ciqual_2020"
     },
@@ -5703,8 +5752,7 @@
       "categorie": "cereales_feculents",
       "recettes_actuelles": 3,
       "roles_observes": [
-        "féculent",
-        "pâtes"
+        "féculent"
       ],
       "unites": [
         "g"
@@ -5876,13 +5924,13 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Bouillon de légumes",
-      "normalise": "bouillon de legumes",
-      "categorie": "preparations_culinaires",
+      "nom": "Bière blonde",
+      "normalise": "biere blonde",
+      "categorie": "boissons",
       "recettes_actuelles": 2,
       "roles_observes": [
-        "liquide",
-        "liquide de cuisson"
+        "liquide de braisage",
+        "sauce"
       ],
       "unites": [
         "g",
@@ -5892,10 +5940,10 @@
         "density_g_per_ml": 1
       },
       "per100g": {
-        "kcal": 5.38,
-        "proteinG": 0.34,
-        "carbsG": 0.65,
-        "fatG": 0.16,
+        "kcal": 12.4,
+        "proteinG": 0.39,
+        "carbsG": 2.7,
+        "fatG": 0,
         "fiberG": 0
       },
       "source": "ciqual_2020"
@@ -5971,27 +6019,6 @@
         "carbsG": 40.5,
         "fatG": 6.7,
         "fiberG": 28
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Carvi en graines",
-      "normalise": "carvi en graines",
-      "categorie": "epices",
-      "recettes_actuelles": 2,
-      "roles_observes": [
-        "épice"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 334,
-        "proteinG": 19.8,
-        "carbsG": 11.9,
-        "fatG": 14.6,
-        "fiberG": 38
       },
       "source": "ciqual_2020"
     },
@@ -6469,51 +6496,6 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Haut de cuisse de poulet cru, désossé, sans peau",
-      "normalise": "haut de cuisse de poulet cru desosse sans peau",
-      "categorie": "volailles",
-      "recettes_actuelles": 2,
-      "roles_observes": [
-        "protéine"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 116,
-        "proteinG": 19.7,
-        "carbsG": 0,
-        "fatG": 4.12,
-        "fiberG": 0
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Huile de noix",
-      "normalise": "huile de noix",
-      "categorie": "matieres_grasses",
-      "recettes_actuelles": 2,
-      "roles_observes": [
-        "vinaigrette"
-      ],
-      "unites": [
-        "g",
-        "ml"
-      ],
-      "conversion": {
-        "density_g_per_ml": 0.92
-      },
-      "per100g": {
-        "kcal": 900,
-        "proteinG": 0,
-        "carbsG": 0,
-        "fatG": 100,
-        "fiberG": 0
-      },
-      "source": "ciqual_2020"
-    },
-    {
       "nom": "Jambon serrano",
       "normalise": "jambon serrano",
       "categorie": "produits_transformes",
@@ -6796,6 +6778,27 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Paleron de bœuf cru, paré",
+      "normalise": "paleron de boeuf cru pare",
+      "categorie": "viandes",
+      "recettes_actuelles": 2,
+      "roles_observes": [
+        "protéine"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 144,
+        "proteinG": 21.2,
+        "carbsG": 0,
+        "fatG": 6.54,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Papaye verte",
       "normalise": "papaye verte",
       "categorie": "fruits",
@@ -6814,27 +6817,6 @@
         "carbsG": 8.53,
         "fatG": 0.3,
         "fiberG": 1.8
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Paprika doux hongrois",
-      "normalise": "paprika doux hongrois",
-      "categorie": "epices",
-      "recettes_actuelles": 2,
-      "roles_observes": [
-        "épice"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 319,
-        "proteinG": 14.1,
-        "carbsG": 19.1,
-        "fatG": 12.9,
-        "fiberG": 34.9
       },
       "source": "ciqual_2020"
     },
@@ -6943,32 +6925,6 @@
       ],
       "conversion": {
         "grams_per_unit": 1
-      },
-      "per100g": {
-        "kcal": 41.2,
-        "proteinG": 1.87,
-        "carbsG": 7.7,
-        "fatG": 0.32,
-        "fiberG": 1.65
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Piment rouge frais",
-      "normalise": "piment rouge frais",
-      "categorie": "legumes",
-      "recettes_actuelles": 2,
-      "roles_observes": [
-        "épice"
-      ],
-      "unites": [
-        "g",
-        "u",
-        "tranche",
-        "feuille"
-      ],
-      "conversion": {
-        "grams_per_unit": 15
       },
       "per100g": {
         "kcal": 41.2,
@@ -7459,31 +7415,6 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Vinaigre de cidre",
-      "normalise": "vinaigre de cidre",
-      "categorie": "condiments_sauces",
-      "recettes_actuelles": 2,
-      "roles_observes": [
-        "acide",
-        "acidité"
-      ],
-      "unites": [
-        "g",
-        "ml"
-      ],
-      "conversion": {
-        "density_g_per_ml": 1
-      },
-      "per100g": {
-        "kcal": 22.6,
-        "proteinG": 0.04,
-        "carbsG": 0.62,
-        "fatG": 0.1,
-        "fiberG": 0
-      },
-      "source": "ciqual_2020"
-    },
-    {
       "nom": "Vinaigre de xérès",
       "normalise": "vinaigre de xeres",
       "categorie": "condiments_sauces",
@@ -7815,27 +7746,6 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Béchamel préparée",
-      "normalise": "bechamel preparee",
-      "categorie": "condiments_sauces",
-      "recettes_actuelles": 1,
-      "roles_observes": [
-        "sauce"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 146.6,
-        "proteinG": 3.84,
-        "carbsG": 8.97,
-        "fatG": 10.6,
-        "fiberG": 0.2
-      },
-      "source": "ciqual_2020"
-    },
-    {
       "nom": "Beurre clarifié ghee",
       "normalise": "beurre clarifie ghee",
       "categorie": "matieres_grasses",
@@ -7852,30 +7762,6 @@
         "proteinG": 0.27,
         "carbsG": 0,
         "fatG": 99.9,
-        "fiberG": 0
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Bière blonde",
-      "normalise": "biere blonde",
-      "categorie": "boissons",
-      "recettes_actuelles": 1,
-      "roles_observes": [
-        "sauce"
-      ],
-      "unites": [
-        "g",
-        "ml"
-      ],
-      "conversion": {
-        "density_g_per_ml": 1
-      },
-      "per100g": {
-        "kcal": 12.4,
-        "proteinG": 0.39,
-        "carbsG": 2.7,
-        "fatG": 0,
         "fiberG": 0
       },
       "source": "ciqual_2020"
@@ -7903,30 +7789,6 @@
         "fiberG": 0
       },
       "source": "ciqual_2020"
-    },
-    {
-      "nom": "Bière brune belge",
-      "normalise": "biere brune belge",
-      "categorie": "boissons",
-      "recettes_actuelles": 1,
-      "roles_observes": [
-        "liquide de braisage"
-      ],
-      "unites": [
-        "g",
-        "ml"
-      ],
-      "conversion": {
-        "density_g_per_ml": 1
-      },
-      "per100g": {
-        "kcal": 43,
-        "proteinG": 0.43,
-        "carbsG": 4.1,
-        "fatG": 0,
-        "fiberG": 0
-      },
-      "source": "ciqual_2020+usda_fdc"
     },
     {
       "nom": "Biscuit cuillère",
@@ -8364,6 +8226,27 @@
         "carbsG": 7.59,
         "fatG": 0.5,
         "fiberG": 2.7
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Carvi en graines",
+      "normalise": "carvi en graines",
+      "categorie": "epices",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "épice"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 334,
+        "proteinG": 19.8,
+        "carbsG": 11.9,
+        "fatG": 14.6,
+        "fiberG": 38
       },
       "source": "ciqual_2020"
     },
@@ -9171,12 +9054,57 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Haut de cuisse de poulet cru, désossé, sans peau",
+      "normalise": "haut de cuisse de poulet cru desosse sans peau",
+      "categorie": "volailles",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "protéine"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 116,
+        "proteinG": 19.7,
+        "carbsG": 0,
+        "fatG": 4.12,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Huile de dendê",
       "normalise": "huile de dende",
       "categorie": "matieres_grasses",
       "recettes_actuelles": 1,
       "roles_observes": [
         "signature"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 0.92
+      },
+      "per100g": {
+        "kcal": 900,
+        "proteinG": 0,
+        "carbsG": 0,
+        "fatG": 100,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Huile de noix",
+      "normalise": "huile de noix",
+      "categorie": "matieres_grasses",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "vinaigrette"
       ],
       "unites": [
         "g",
@@ -9703,6 +9631,27 @@
         "carbsG": 70,
         "fatG": 3.77,
         "fiberG": 4.5
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Paprika doux hongrois",
+      "normalise": "paprika doux hongrois",
+      "categorie": "epices",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "épice"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 319,
+        "proteinG": 14.1,
+        "carbsG": 19.1,
+        "fatG": 12.9,
+        "fiberG": 34.9
       },
       "source": "ciqual_2020"
     },
@@ -10502,6 +10451,30 @@
       ],
       "conversion": {
         "density_g_per_ml": 1.01
+      },
+      "per100g": {
+        "kcal": 22.6,
+        "proteinG": 0.04,
+        "carbsG": 0.62,
+        "fatG": 0.1,
+        "fiberG": 0
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Vinaigre de cidre",
+      "normalise": "vinaigre de cidre",
+      "categorie": "condiments_sauces",
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "acide"
+      ],
+      "unites": [
+        "g",
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
       },
       "per100g": {
         "kcal": 22.6,
@@ -11582,35 +11555,35 @@
   "techniques": [
     {
       "nom": "mijotage",
-      "recettes": 177
+      "recettes": 172
     },
     {
       "nom": "réduction",
-      "recettes": 144
+      "recettes": 143
     },
     {
       "nom": "saisie",
-      "recettes": 144
+      "recettes": 142
     },
     {
       "nom": "émulsion",
-      "recettes": 75
+      "recettes": 73
     },
     {
       "nom": "pochage",
-      "recettes": 75
-    },
-    {
-      "nom": "déglaçage",
-      "recettes": 71
+      "recettes": 72
     },
     {
       "nom": "blanchiment",
       "recettes": 69
     },
     {
+      "nom": "déglaçage",
+      "recettes": 67
+    },
+    {
       "nom": "gratinage",
-      "recettes": 56
+      "recettes": 55
     },
     {
       "nom": "marinade",
@@ -11629,16 +11602,16 @@
       "recettes": 32
     },
     {
-      "nom": "assemblage",
-      "recettes": 25
-    },
-    {
       "nom": "trempage",
       "recettes": 24
     },
     {
-      "nom": "montage",
+      "nom": "assemblage",
       "recettes": 23
+    },
+    {
+      "nom": "montage",
+      "recettes": 21
     },
     {
       "nom": "friture",
@@ -11649,11 +11622,11 @@
       "recettes": 20
     },
     {
-      "nom": "suer",
-      "recettes": 20
+      "nom": "farce",
+      "recettes": 19
     },
     {
-      "nom": "farce",
+      "nom": "suer",
       "recettes": 19
     },
     {
@@ -11661,19 +11634,19 @@
       "recettes": 18
     },
     {
-      "nom": "torréfaction",
-      "recettes": 16
-    },
-    {
       "nom": "grillade",
       "recettes": 15
     },
     {
-      "nom": "compotage",
-      "recettes": 14
+      "nom": "liaison",
+      "recettes": 15
     },
     {
-      "nom": "liaison",
+      "nom": "torréfaction",
+      "recettes": 15
+    },
+    {
+      "nom": "compotage",
       "recettes": 14
     },
     {
@@ -11729,19 +11702,15 @@
       "recettes": 9
     },
     {
+      "nom": "béchamel",
+      "recettes": 8
+    },
+    {
       "nom": "cuisson al dente",
       "recettes": 8
     },
     {
       "nom": "cuisson séquencée",
-      "recettes": 8
-    },
-    {
-      "nom": "effilochage",
-      "recettes": 8
-    },
-    {
-      "nom": "mélange",
       "recettes": 8
     },
     {
@@ -11753,11 +11722,11 @@
       "recettes": 7
     },
     {
-      "nom": "béchamel",
+      "nom": "cuisson à couvert",
       "recettes": 7
     },
     {
-      "nom": "cuisson à couvert",
+      "nom": "effilochage",
       "recettes": 7
     },
     {
@@ -11765,11 +11734,19 @@
       "recettes": 7
     },
     {
+      "nom": "liaison à la crème",
+      "recettes": 7
+    },
+    {
+      "nom": "mélange",
+      "recettes": 7
+    },
+    {
       "nom": "poêlage",
       "recettes": 7
     },
     {
-      "nom": "précuisson",
+      "nom": "singer",
       "recettes": 7
     },
     {
@@ -11781,31 +11758,11 @@
       "recettes": 7
     },
     {
-      "nom": "cuissons séparées",
-      "recettes": 6
-    },
-    {
       "nom": "dessalage",
       "recettes": 6
     },
     {
-      "nom": "dessiccation",
-      "recettes": 6
-    },
-    {
-      "nom": "écrasement",
-      "recettes": 6
-    },
-    {
       "nom": "égouttage",
-      "recettes": 6
-    },
-    {
-      "nom": "étuvée",
-      "recettes": 6
-    },
-    {
-      "nom": "évaporation",
       "recettes": 6
     },
     {
@@ -11817,11 +11774,11 @@
       "recettes": 6
     },
     {
-      "nom": "roulage",
+      "nom": "précuisson",
       "recettes": 6
     },
     {
-      "nom": "singer",
+      "nom": "roulage",
       "recettes": 6
     },
     {
@@ -11861,7 +11818,23 @@
       "recettes": 5
     },
     {
-      "nom": "enrobage",
+      "nom": "cuissons séparées",
+      "recettes": 5
+    },
+    {
+      "nom": "dessiccation",
+      "recettes": 5
+    },
+    {
+      "nom": "écrasement",
+      "recettes": 5
+    },
+    {
+      "nom": "étuvée",
+      "recettes": 5
+    },
+    {
+      "nom": "évaporation",
       "recettes": 5
     },
     {
@@ -11869,11 +11842,15 @@
       "recettes": 5
     },
     {
-      "nom": "liaison à la crème",
+      "nom": "parage",
       "recettes": 5
     },
     {
       "nom": "pilonnage",
+      "recettes": 5
+    },
+    {
+      "nom": "sofrito",
       "recettes": 5
     },
     {
@@ -11901,15 +11878,15 @@
       "recettes": 4
     },
     {
+      "nom": "enrobage",
+      "recettes": 4
+    },
+    {
       "nom": "fermentation",
       "recettes": 4
     },
     {
       "nom": "finition",
-      "recettes": 4
-    },
-    {
-      "nom": "finition crème",
       "recettes": 4
     },
     {
@@ -11933,15 +11910,7 @@
       "recettes": 4
     },
     {
-      "nom": "purée",
-      "recettes": 4
-    },
-    {
       "nom": "réchauffage",
-      "recettes": 4
-    },
-    {
-      "nom": "réhydratation",
       "recettes": 4
     },
     {
@@ -11949,19 +11918,19 @@
       "recettes": 4
     },
     {
-      "nom": "rinçage",
-      "recettes": 4
-    },
-    {
       "nom": "rissolage",
       "recettes": 4
     },
     {
-      "nom": "soffritto",
+      "nom": "roux",
       "recettes": 4
     },
     {
-      "nom": "sofrito",
+      "nom": "roux blanc",
+      "recettes": 4
+    },
+    {
+      "nom": "soffritto",
       "recettes": 4
     },
     {
@@ -11993,10 +11962,6 @@
       "recettes": 3
     },
     {
-      "nom": "cuisson au bouillon",
-      "recettes": 3
-    },
-    {
       "nom": "cuisson forte",
       "recettes": 3
     },
@@ -12009,10 +11974,6 @@
       "recettes": 3
     },
     {
-      "nom": "cuisson vapeur",
-      "recettes": 3
-    },
-    {
       "nom": "effeuillage",
       "recettes": 3
     },
@@ -12022,6 +11983,10 @@
     },
     {
       "nom": "évidage",
+      "recettes": 3
+    },
+    {
+      "nom": "finition crème",
       "recettes": 3
     },
     {
@@ -12041,10 +12006,6 @@
       "recettes": 3
     },
     {
-      "nom": "liaison au pain",
-      "recettes": 3
-    },
-    {
       "nom": "liaison aux œufs",
       "recettes": 3
     },
@@ -12053,7 +12014,19 @@
       "recettes": 3
     },
     {
-      "nom": "mijotage séquencé",
+      "nom": "mijotage doux",
+      "recettes": 3
+    },
+    {
+      "nom": "montage en couches",
+      "recettes": 3
+    },
+    {
+      "nom": "purée",
+      "recettes": 3
+    },
+    {
+      "nom": "réhydratation",
       "recettes": 3
     },
     {
@@ -12065,7 +12038,7 @@
       "recettes": 3
     },
     {
-      "nom": "roux",
+      "nom": "rinçage",
       "recettes": 3
     },
     {
@@ -12089,6 +12062,10 @@
       "recettes": 2
     },
     {
+      "nom": "assaisonnement tiède",
+      "recettes": 2
+    },
+    {
       "nom": "battage",
       "recettes": 2
     },
@@ -12105,15 +12082,11 @@
       "recettes": 2
     },
     {
-      "nom": "coloration",
-      "recettes": 2
-    },
-    {
       "nom": "confit",
       "recettes": 2
     },
     {
-      "nom": "cuisson à l'eau",
+      "nom": "cuisson au bouillon",
       "recettes": 2
     },
     {
@@ -12137,6 +12110,10 @@
       "recettes": 2
     },
     {
+      "nom": "cuisson vapeur",
+      "recettes": 2
+    },
+    {
       "nom": "dépelliculage",
       "recettes": 2
     },
@@ -12153,11 +12130,19 @@
       "recettes": 2
     },
     {
+      "nom": "enrobage à l'eau de cuisson",
+      "recettes": 2
+    },
+    {
       "nom": "étalage",
       "recettes": 2
     },
     {
       "nom": "farinage",
+      "recettes": 2
+    },
+    {
+      "nom": "fondue d'oignons",
       "recettes": 2
     },
     {
@@ -12193,10 +12178,6 @@
       "recettes": 2
     },
     {
-      "nom": "glacage",
-      "recettes": 2
-    },
-    {
       "nom": "imbibage",
       "recettes": 2
     },
@@ -12206,6 +12187,14 @@
     },
     {
       "nom": "laminage",
+      "recettes": 2
+    },
+    {
+      "nom": "liaison à la fécule",
+      "recettes": 2
+    },
+    {
+      "nom": "liaison au pain",
       "recettes": 2
     },
     {
@@ -12229,7 +12218,7 @@
       "recettes": 2
     },
     {
-      "nom": "mijotage doux",
+      "nom": "mijotage séquencé",
       "recettes": 2
     },
     {
@@ -12237,15 +12226,7 @@
       "recettes": 2
     },
     {
-      "nom": "montage en couches",
-      "recettes": 2
-    },
-    {
       "nom": "omelette roulée",
-      "recettes": 2
-    },
-    {
-      "nom": "parage",
       "recettes": 2
     },
     {
@@ -12281,10 +12262,6 @@
       "recettes": 2
     },
     {
-      "nom": "roux blanc",
-      "recettes": 2
-    },
-    {
       "nom": "sablage",
       "recettes": 2
     },
@@ -12301,11 +12278,7 @@
       "recettes": 2
     },
     {
-      "nom": "sauter",
-      "recettes": 2
-    },
-    {
-      "nom": "tombée",
+      "nom": "torréfaction à sec",
       "recettes": 2
     },
     {
@@ -12317,7 +12290,15 @@
       "recettes": 1
     },
     {
+      "nom": "ajout tardif des légumes",
+      "recettes": 1
+    },
+    {
       "nom": "ajustement de texture",
+      "recettes": 1
+    },
+    {
+      "nom": "appareil à cake salé",
       "recettes": 1
     },
     {
@@ -12333,11 +12314,11 @@
       "recettes": 1
     },
     {
-      "nom": "assaisonnement tardif",
+      "nom": "assaisonnement en deux temps",
       "recettes": 1
     },
     {
-      "nom": "assaisonnement tiède",
+      "nom": "assaisonnement tardif",
       "recettes": 1
     },
     {
@@ -12373,6 +12354,10 @@
       "recettes": 1
     },
     {
+      "nom": "braisage à couvert",
+      "recettes": 1
+    },
+    {
       "nom": "braisage à découvert",
       "recettes": 1
     },
@@ -12381,15 +12366,15 @@
       "recettes": 1
     },
     {
+      "nom": "braisage long",
+      "recettes": 1
+    },
+    {
       "nom": "brûlage",
       "recettes": 1
     },
     {
       "nom": "caramélisation des oignons",
-      "recettes": 1
-    },
-    {
-      "nom": "caramélisation lente",
       "recettes": 1
     },
     {
@@ -12405,6 +12390,10 @@
       "recettes": 1
     },
     {
+      "nom": "coloration",
+      "recettes": 1
+    },
+    {
       "nom": "comal",
       "recettes": 1
     },
@@ -12413,11 +12402,19 @@
       "recettes": 1
     },
     {
+      "nom": "compotée d'oignons",
+      "recettes": 1
+    },
+    {
       "nom": "confire",
       "recettes": 1
     },
     {
       "nom": "confit d’oignon",
+      "recettes": 1
+    },
+    {
+      "nom": "confit tiédi",
       "recettes": 1
     },
     {
@@ -12437,6 +12434,10 @@
       "recettes": 1
     },
     {
+      "nom": "croûtons à la graisse de lard",
+      "recettes": 1
+    },
+    {
       "nom": "cuisson",
       "recettes": 1
     },
@@ -12449,7 +12450,15 @@
       "recettes": 1
     },
     {
+      "nom": "cuisson à l'eau",
+      "recettes": 1
+    },
+    {
       "nom": "cuisson à l’eau",
+      "recettes": 1
+    },
+    {
+      "nom": "cuisson à l'eau départ à froid",
       "recettes": 1
     },
     {
@@ -12461,7 +12470,7 @@
       "recettes": 1
     },
     {
-      "nom": "cuisson contrôlée",
+      "nom": "cuisson contrôlée à cœur",
       "recettes": 1
     },
     {
@@ -12493,6 +12502,10 @@
       "recettes": 1
     },
     {
+      "nom": "cuisson du concentré",
+      "recettes": 1
+    },
+    {
       "nom": "cuisson du dal",
       "recettes": 1
     },
@@ -12502,6 +12515,10 @@
     },
     {
       "nom": "cuisson en papillote",
+      "recettes": 1
+    },
+    {
+      "nom": "cuisson en pâte à choux",
       "recettes": 1
     },
     {
@@ -12537,6 +12554,10 @@
       "recettes": 1
     },
     {
+      "nom": "cuisson séquencée par tenue des légumes",
+      "recettes": 1
+    },
+    {
       "nom": "curry",
       "recettes": 1
     },
@@ -12553,6 +12574,18 @@
       "recettes": 1
     },
     {
+      "nom": "déglaçage à la bière",
+      "recettes": 1
+    },
+    {
+      "nom": "déglaçage au vin blanc",
+      "recettes": 1
+    },
+    {
+      "nom": "déglaçage des sucs",
+      "recettes": 1
+    },
+    {
       "nom": "déglacage sauce",
       "recettes": 1
     },
@@ -12565,7 +12598,23 @@
       "recettes": 1
     },
     {
+      "nom": "démoulage à tiède",
+      "recettes": 1
+    },
+    {
       "nom": "départ à froid",
+      "recettes": 1
+    },
+    {
+      "nom": "desséchage de la panade",
+      "recettes": 1
+    },
+    {
+      "nom": "détente au lait chaud",
+      "recettes": 1
+    },
+    {
+      "nom": "dorure au jaune",
       "recettes": 1
     },
     {
@@ -12578,6 +12627,10 @@
     },
     {
       "nom": "double marinade",
+      "recettes": 1
+    },
+    {
+      "nom": "dressage en quartiers",
       "recettes": 1
     },
     {
@@ -12597,6 +12650,14 @@
       "recettes": 1
     },
     {
+      "nom": "effilochage à la main",
+      "recettes": 1
+    },
+    {
+      "nom": "émincer",
+      "recettes": 1
+    },
+    {
       "nom": "empilage",
       "recettes": 1
     },
@@ -12605,7 +12666,27 @@
       "recettes": 1
     },
     {
+      "nom": "émulsion moutardée",
+      "recettes": 1
+    },
+    {
+      "nom": "enrobage de la garniture à la farine",
+      "recettes": 1
+    },
+    {
       "nom": "enveloppement",
+      "recettes": 1
+    },
+    {
+      "nom": "épépinage des tomates",
+      "recettes": 1
+    },
+    {
+      "nom": "étuvée à couvert",
+      "recettes": 1
+    },
+    {
+      "nom": "évaporation des champignons",
       "recettes": 1
     },
     {
@@ -12633,6 +12714,10 @@
       "recettes": 1
     },
     {
+      "nom": "finition à l'huile crue",
+      "recettes": 1
+    },
+    {
       "nom": "finition aromatique",
       "recettes": 1
     },
@@ -12645,7 +12730,7 @@
       "recettes": 1
     },
     {
-      "nom": "fondue d’oignons",
+      "nom": "fondue d'oignons et de poivrons",
       "recettes": 1
     },
     {
@@ -12654,6 +12739,10 @@
     },
     {
       "nom": "friture de sauce",
+      "recettes": 1
+    },
+    {
+      "nom": "friture des plantains",
       "recettes": 1
     },
     {
@@ -12681,7 +12770,23 @@
       "recettes": 1
     },
     {
+      "nom": "frottage de l'oignon au sel",
+      "recettes": 1
+    },
+    {
+      "nom": "frottage sec aux épices",
+      "recettes": 1
+    },
+    {
       "nom": "gélification",
+      "recettes": 1
+    },
+    {
+      "nom": "glacage",
+      "recettes": 1
+    },
+    {
+      "nom": "gratinage sous le gril",
       "recettes": 1
     },
     {
@@ -12717,7 +12822,7 @@
       "recettes": 1
     },
     {
-      "nom": "hachage fin",
+      "nom": "hachage au couteau",
       "recettes": 1
     },
     {
@@ -12749,15 +12854,15 @@
       "recettes": 1
     },
     {
-      "nom": "incorporation de garniture",
-      "recettes": 1
-    },
-    {
       "nom": "incorporation délicate",
       "recettes": 1
     },
     {
-      "nom": "incorporation des œufs",
+      "nom": "incorporation des œufs à la texture",
+      "recettes": 1
+    },
+    {
+      "nom": "infusion à froid de l'ail et du piment",
       "recettes": 1
     },
     {
@@ -12765,15 +12870,15 @@
       "recettes": 1
     },
     {
-      "nom": "lavage",
+      "nom": "lavage à l'eau claire",
+      "recettes": 1
+    },
+    {
+      "nom": "lavage et essorage de salade",
       "recettes": 1
     },
     {
       "nom": "liaison à l'eau de cuisson",
-      "recettes": 1
-    },
-    {
-      "nom": "liaison à la fécule",
       "recettes": 1
     },
     {
@@ -12782,6 +12887,10 @@
     },
     {
       "nom": "liaison à la moutarde hors du feu",
+      "recettes": 1
+    },
+    {
+      "nom": "liaison au pain d'épices",
       "recettes": 1
     },
     {
@@ -12837,6 +12946,10 @@
       "recettes": 1
     },
     {
+      "nom": "mijotage à couvert partiel",
+      "recettes": 1
+    },
+    {
       "nom": "mijotage sous couvercle tombant",
       "recettes": 1
     },
@@ -12845,11 +12958,19 @@
       "recettes": 1
     },
     {
+      "nom": "montage au beurre froid",
+      "recettes": 1
+    },
+    {
       "nom": "montage brick",
       "recettes": 1
     },
     {
       "nom": "montage des blancs",
+      "recettes": 1
+    },
+    {
+      "nom": "montage en sandwich",
       "recettes": 1
     },
     {
@@ -12866,6 +12987,10 @@
     },
     {
       "nom": "mouillage progressif",
+      "recettes": 1
+    },
+    {
+      "nom": "mouillement au bouillon",
       "recettes": 1
     },
     {
@@ -12897,6 +13022,10 @@
       "recettes": 1
     },
     {
+      "nom": "paprika hors du feu",
+      "recettes": 1
+    },
+    {
       "nom": "parboiling",
       "recettes": 1
     },
@@ -12918,6 +13047,14 @@
     },
     {
       "nom": "plaque",
+      "recettes": 1
+    },
+    {
+      "nom": "pochage à la poche",
+      "recettes": 1
+    },
+    {
+      "nom": "pochage des gnocchi",
       "recettes": 1
     },
     {
@@ -12945,6 +13082,10 @@
       "recettes": 1
     },
     {
+      "nom": "précuisson à l'eau salée",
+      "recettes": 1
+    },
+    {
       "nom": "précuisson dans le lait",
       "recettes": 1
     },
@@ -12957,6 +13098,14 @@
       "recettes": 1
     },
     {
+      "nom": "presse-purée",
+      "recettes": 1
+    },
+    {
+      "nom": "purée au presse-purée",
+      "recettes": 1
+    },
+    {
       "nom": "rabats",
       "recettes": 1
     },
@@ -12965,7 +13114,19 @@
       "recettes": 1
     },
     {
+      "nom": "réduction de sauce tomate",
+      "recettes": 1
+    },
+    {
+      "nom": "réduction glacée à découvert",
+      "recettes": 1
+    },
+    {
       "nom": "réduction longue",
+      "recettes": 1
+    },
+    {
+      "nom": "réduction vive",
       "recettes": 1
     },
     {
@@ -12973,7 +13134,15 @@
       "recettes": 1
     },
     {
+      "nom": "rendu du gras à sec",
+      "recettes": 1
+    },
+    {
       "nom": "repos long",
+      "recettes": 1
+    },
+    {
+      "nom": "riz à l'étouffée",
       "recettes": 1
     },
     {
@@ -12986,6 +13155,18 @@
     },
     {
       "nom": "saisie de viande",
+      "recettes": 1
+    },
+    {
+      "nom": "saisie du haché",
+      "recettes": 1
+    },
+    {
+      "nom": "saisie en deux fournées",
+      "recettes": 1
+    },
+    {
+      "nom": "saisie en plusieurs fournées",
       "recettes": 1
     },
     {
@@ -13018,6 +13199,18 @@
     },
     {
       "nom": "sauté sur plaque",
+      "recettes": 1
+    },
+    {
+      "nom": "sauter",
+      "recettes": 1
+    },
+    {
+      "nom": "sauter en poêle",
+      "recettes": 1
+    },
+    {
+      "nom": "séchage",
       "recettes": 1
     },
     {
@@ -13061,15 +13254,15 @@
       "recettes": 1
     },
     {
+      "nom": "tombée",
+      "recettes": 1
+    },
+    {
+      "nom": "tombée au beurre",
+      "recettes": 1
+    },
+    {
       "nom": "tombée des épinards",
-      "recettes": 1
-    },
-    {
-      "nom": "torréfaction à sec",
-      "recettes": 1
-    },
-    {
-      "nom": "torréfaction douce",
       "recettes": 1
     },
     {
@@ -13078,6 +13271,18 @@
     },
     {
       "nom": "tranchage fin",
+      "recettes": 1
+    },
+    {
+      "nom": "trempage à froid du boulgour",
+      "recettes": 1
+    },
+    {
+      "nom": "trempage des légumineuses",
+      "recettes": 1
+    },
+    {
+      "nom": "trempage des pruneaux à l'eau chaude",
       "recettes": 1
     },
     {
@@ -13096,15 +13301,15 @@
   "aromes": [
     {
       "nom": "oignon_compoté",
-      "recettes": 151
+      "recettes": 143
     },
     {
       "nom": "ail",
-      "recettes": 141
+      "recettes": 137
     },
     {
       "nom": "tomate_cuite",
-      "recettes": 98
+      "recettes": 94
     },
     {
       "nom": "lacté",
@@ -13112,19 +13317,19 @@
     },
     {
       "nom": "agrume",
-      "recettes": 82
+      "recettes": 81
     },
     {
       "nom": "herbacé",
-      "recettes": 80
+      "recettes": 81
     },
     {
       "nom": "piment",
-      "recettes": 77
+      "recettes": 76
     },
     {
       "nom": "beurre",
-      "recettes": 69
+      "recettes": 65
     },
     {
       "nom": "alliacé",
@@ -13132,22 +13337,22 @@
     },
     {
       "nom": "gingembre",
-      "recettes": 53
+      "recettes": 52
     },
     {
       "nom": "fumé",
-      "recettes": 41
+      "recettes": 40
     },
     {
       "nom": "soja_fermenté",
       "recettes": 36
     },
     {
-      "nom": "tomate",
-      "recettes": 32
+      "nom": "porc",
+      "recettes": 31
     },
     {
-      "nom": "porc",
+      "nom": "tomate",
       "recettes": 31
     },
     {
@@ -13156,14 +13361,10 @@
     },
     {
       "nom": "cumin",
-      "recettes": 30
+      "recettes": 29
     },
     {
       "nom": "aillé",
-      "recettes": 24
-    },
-    {
-      "nom": "moutarde",
       "recettes": 24
     },
     {
@@ -13175,8 +13376,8 @@
       "recettes": 22
     },
     {
-      "nom": "laurier",
-      "recettes": 21
+      "nom": "moutarde",
+      "recettes": 22
     },
     {
       "nom": "soja",
@@ -13195,6 +13396,10 @@
       "recettes": 20
     },
     {
+      "nom": "laurier",
+      "recettes": 20
+    },
+    {
       "nom": "cannelle",
       "recettes": 19
     },
@@ -13203,35 +13408,23 @@
       "recettes": 18
     },
     {
-      "nom": "thym",
-      "recettes": 18
-    },
-    {
-      "nom": "vin_rouge_réduit",
-      "recettes": 18
+      "nom": "champignon",
+      "recettes": 16
     },
     {
       "nom": "oignon",
-      "recettes": 17
+      "recettes": 16
     },
     {
-      "nom": "champignon_terreux",
+      "nom": "vin_rouge_réduit",
       "recettes": 16
     },
     {
       "nom": "citron",
-      "recettes": 16
-    },
-    {
-      "nom": "bœuf",
       "recettes": 15
     },
     {
-      "nom": "échalote",
-      "recettes": 15
-    },
-    {
-      "nom": "sésame_toasté",
+      "nom": "thym",
       "recettes": 15
     },
     {
@@ -13239,7 +13432,11 @@
       "recettes": 15
     },
     {
-      "nom": "champignon",
+      "nom": "bœuf",
+      "recettes": 14
+    },
+    {
+      "nom": "champignon_terreux",
       "recettes": 14
     },
     {
@@ -13247,15 +13444,19 @@
       "recettes": 14
     },
     {
+      "nom": "sésame_toasté",
+      "recettes": 14
+    },
+    {
+      "nom": "échalote",
+      "recettes": 13
+    },
+    {
       "nom": "épices chaudes",
       "recettes": 13
     },
     {
       "nom": "poulet",
-      "recettes": 13
-    },
-    {
-      "nom": "vin_blanc_réduit",
       "recettes": 13
     },
     {
@@ -13275,10 +13476,6 @@
       "recettes": 11
     },
     {
-      "nom": "fromage_affiné",
-      "recettes": 11
-    },
-    {
       "nom": "fruité olive",
       "recettes": 11
     },
@@ -13287,11 +13484,15 @@
       "recettes": 11
     },
     {
-      "nom": "agneau",
-      "recettes": 10
+      "nom": "vin_blanc_réduit",
+      "recettes": 11
     },
     {
       "nom": "céréalier",
+      "recettes": 10
+    },
+    {
+      "nom": "fromage_affiné",
       "recettes": 10
     },
     {
@@ -13303,8 +13504,16 @@
       "recettes": 10
     },
     {
+      "nom": "oignon compoté",
+      "recettes": 10
+    },
+    {
       "nom": "paprika",
       "recettes": 10
+    },
+    {
+      "nom": "agneau",
+      "recettes": 9
     },
     {
       "nom": "allium",
@@ -13327,6 +13536,10 @@
       "recettes": 9
     },
     {
+      "nom": "grillé",
+      "recettes": 9
+    },
+    {
       "nom": "herbacé sec",
       "recettes": 9
     },
@@ -13340,14 +13553,6 @@
     },
     {
       "nom": "œuf",
-      "recettes": 9
-    },
-    {
-      "nom": "parmesan",
-      "recettes": 9
-    },
-    {
-      "nom": "safran",
       "recettes": 9
     },
     {
@@ -13371,15 +13576,19 @@
       "recettes": 8
     },
     {
-      "nom": "grillé",
-      "recettes": 8
-    },
-    {
       "nom": "marine",
       "recettes": 8
     },
     {
       "nom": "menthe",
+      "recettes": 8
+    },
+    {
+      "nom": "muscade",
+      "recettes": 8
+    },
+    {
+      "nom": "safran",
       "recettes": 8
     },
     {
@@ -13391,19 +13600,11 @@
       "recettes": 7
     },
     {
-      "nom": "comté",
-      "recettes": 7
-    },
-    {
       "nom": "épicée douce",
       "recettes": 7
     },
     {
-      "nom": "olive",
-      "recettes": 7
-    },
-    {
-      "nom": "vinaigre",
+      "nom": "parmesan",
       "recettes": 7
     },
     {
@@ -13416,6 +13617,10 @@
     },
     {
       "nom": "beurre noisette",
+      "recettes": 6
+    },
+    {
+      "nom": "bouillon de volaille",
       "recettes": 6
     },
     {
@@ -13435,7 +13640,7 @@
       "recettes": 6
     },
     {
-      "nom": "persil",
+      "nom": "olive",
       "recettes": 6
     },
     {
@@ -13456,6 +13661,10 @@
     },
     {
       "nom": "vin_blanc",
+      "recettes": 6
+    },
+    {
+      "nom": "vinaigre",
       "recettes": 6
     },
     {
@@ -13480,14 +13689,6 @@
     },
     {
       "nom": "beurrée",
-      "recettes": 5
-    },
-    {
-      "nom": "bouillon de volaille",
-      "recettes": 5
-    },
-    {
-      "nom": "câpre",
       "recettes": 5
     },
     {
@@ -13531,7 +13732,7 @@
       "recettes": 5
     },
     {
-      "nom": "oignon compoté",
+      "nom": "persil",
       "recettes": 5
     },
     {
@@ -13568,6 +13769,10 @@
     },
     {
       "nom": "beurre_noisette",
+      "recettes": 4
+    },
+    {
+      "nom": "câpre",
       "recettes": 4
     },
     {
@@ -13615,10 +13820,6 @@
       "recettes": 4
     },
     {
-      "nom": "muscade",
-      "recettes": 4
-    },
-    {
       "nom": "piment doux",
       "recettes": 4
     },
@@ -13651,6 +13852,10 @@
       "recettes": 3
     },
     {
+      "nom": "bouillon",
+      "recettes": 3
+    },
+    {
       "nom": "cacao",
       "recettes": 3
     },
@@ -13659,7 +13864,15 @@
       "recettes": 3
     },
     {
+      "nom": "céleri",
+      "recettes": 3
+    },
+    {
       "nom": "combava",
+      "recettes": 3
+    },
+    {
+      "nom": "comté",
       "recettes": 3
     },
     {
@@ -13695,6 +13908,10 @@
       "recettes": 3
     },
     {
+      "nom": "gruyère",
+      "recettes": 3
+    },
+    {
       "nom": "lactee",
       "recettes": 3
     },
@@ -13707,15 +13924,7 @@
       "recettes": 3
     },
     {
-      "nom": "miel",
-      "recettes": 3
-    },
-    {
       "nom": "morue",
-      "recettes": 3
-    },
-    {
-      "nom": "noix",
       "recettes": 3
     },
     {
@@ -13752,10 +13961,6 @@
     },
     {
       "nom": "porc_fumé",
-      "recettes": 3
-    },
-    {
-      "nom": "pruneau",
       "recettes": 3
     },
     {
@@ -13811,23 +14016,11 @@
       "recettes": 2
     },
     {
-      "nom": "bouillon",
-      "recettes": 2
-    },
-    {
       "nom": "bouillon_corsé",
       "recettes": 2
     },
     {
       "nom": "café",
-      "recettes": 2
-    },
-    {
-      "nom": "carvi",
-      "recettes": 2
-    },
-    {
-      "nom": "céleri",
       "recettes": 2
     },
     {
@@ -13844,6 +14037,10 @@
     },
     {
       "nom": "cinq_épices",
+      "recettes": 2
+    },
+    {
+      "nom": "courge",
       "recettes": 2
     },
     {
@@ -13883,6 +14080,10 @@
       "recettes": 2
     },
     {
+      "nom": "estragon",
+      "recettes": 2
+    },
+    {
       "nom": "fenouil",
       "recettes": 2
     },
@@ -13904,10 +14105,6 @@
     },
     {
       "nom": "gochugaru",
-      "recettes": 2
-    },
-    {
-      "nom": "haricot_noir",
       "recettes": 2
     },
     {
@@ -13935,10 +14132,6 @@
       "recettes": 2
     },
     {
-      "nom": "lardon",
-      "recettes": 2
-    },
-    {
       "nom": "légumes",
       "recettes": 2
     },
@@ -13955,11 +14148,23 @@
       "recettes": 2
     },
     {
+      "nom": "miel",
+      "recettes": 2
+    },
+    {
       "nom": "niter_kibbeh",
       "recettes": 2
     },
     {
+      "nom": "noix",
+      "recettes": 2
+    },
+    {
       "nom": "notes fumées de croûte",
+      "recettes": 2
+    },
+    {
+      "nom": "pain grillé",
       "recettes": 2
     },
     {
@@ -14023,6 +14228,10 @@
       "recettes": 2
     },
     {
+      "nom": "pruneau",
+      "recettes": 2
+    },
+    {
       "nom": "rhum",
       "recettes": 2
     },
@@ -14044,6 +14253,10 @@
     },
     {
       "nom": "thon",
+      "recettes": 2
+    },
+    {
+      "nom": "tomate cuite",
       "recettes": 2
     },
     {
@@ -14087,6 +14300,14 @@
       "recettes": 1
     },
     {
+      "nom": "agneau mijoté",
+      "recettes": 1
+    },
+    {
+      "nom": "ail_confit",
+      "recettes": 1
+    },
+    {
       "nom": "ail_frit",
       "recettes": 1
     },
@@ -14096,6 +14317,10 @@
     },
     {
       "nom": "ajwain",
+      "recettes": 1
+    },
+    {
+      "nom": "alliacé doux",
       "recettes": 1
     },
     {
@@ -14111,11 +14336,19 @@
       "recettes": 1
     },
     {
+      "nom": "allium caramélisé",
+      "recettes": 1
+    },
+    {
       "nom": "allium confit",
       "recettes": 1
     },
     {
       "nom": "amande",
+      "recettes": 1
+    },
+    {
+      "nom": "amande grillée",
       "recettes": 1
     },
     {
@@ -14147,6 +14380,10 @@
       "recettes": 1
     },
     {
+      "nom": "banane frite",
+      "recettes": 1
+    },
+    {
       "nom": "basilic_sacré",
       "recettes": 1
     },
@@ -14163,6 +14400,10 @@
       "recettes": 1
     },
     {
+      "nom": "beurre noisette naissant",
+      "recettes": 1
+    },
+    {
       "nom": "beurre_clarifié",
       "recettes": 1
     },
@@ -14171,7 +14412,7 @@
       "recettes": 1
     },
     {
-      "nom": "bœuf_effiloché",
+      "nom": "bœuf mijoté",
       "recettes": 1
     },
     {
@@ -14216,6 +14457,10 @@
     },
     {
       "nom": "caramel_léger",
+      "recettes": 1
+    },
+    {
+      "nom": "carvi",
       "recettes": 1
     },
     {
@@ -14287,7 +14532,7 @@
       "recettes": 1
     },
     {
-      "nom": "courge",
+      "nom": "croûte grillée",
       "recettes": 1
     },
     {
@@ -14335,11 +14580,11 @@
       "recettes": 1
     },
     {
-      "nom": "epinard",
+      "nom": "épices torréfiées",
       "recettes": 1
     },
     {
-      "nom": "estragon",
+      "nom": "epinard",
       "recettes": 1
     },
     {
@@ -14363,15 +14608,19 @@
       "recettes": 1
     },
     {
-      "nom": "frisée",
-      "recettes": 1
-    },
-    {
       "nom": "friture_légère",
       "recettes": 1
     },
     {
+      "nom": "fromage gratiné",
+      "recettes": 1
+    },
+    {
       "nom": "fromage_blanc",
+      "recettes": 1
+    },
+    {
+      "nom": "fromage_gratiné",
       "recettes": 1
     },
     {
@@ -14380,6 +14629,10 @@
     },
     {
       "nom": "fruit à coque grillé",
+      "recettes": 1
+    },
+    {
+      "nom": "fruit sec cuit",
       "recettes": 1
     },
     {
@@ -14407,6 +14660,10 @@
       "recettes": 1
     },
     {
+      "nom": "graisse de canard",
+      "recettes": 1
+    },
+    {
       "nom": "grillade",
       "recettes": 1
     },
@@ -14419,11 +14676,19 @@
       "recettes": 1
     },
     {
+      "nom": "haricot_noir",
+      "recettes": 1
+    },
+    {
       "nom": "harissa",
       "recettes": 1
     },
     {
       "nom": "herbacé résineux",
+      "recettes": 1
+    },
+    {
+      "nom": "herbes fraîches coupées",
       "recettes": 1
     },
     {
@@ -14475,6 +14740,10 @@
       "recettes": 1
     },
     {
+      "nom": "lardon",
+      "recettes": 1
+    },
+    {
       "nom": "lardon_fumé",
       "recettes": 1
     },
@@ -14495,6 +14764,10 @@
       "recettes": 1
     },
     {
+      "nom": "malt",
+      "recettes": 1
+    },
+    {
       "nom": "manioc",
       "recettes": 1
     },
@@ -14504,6 +14777,10 @@
     },
     {
       "nom": "matière_grasse_chauffée",
+      "recettes": 1
+    },
+    {
+      "nom": "mie_dorée",
       "recettes": 1
     },
     {
@@ -14535,11 +14812,23 @@
       "recettes": 1
     },
     {
+      "nom": "oignon cru",
+      "recettes": 1
+    },
+    {
       "nom": "oignon_caramélisé",
       "recettes": 1
     },
     {
       "nom": "oignon_confit",
+      "recettes": 1
+    },
+    {
+      "nom": "olive_noire",
+      "recettes": 1
+    },
+    {
+      "nom": "olive_verte",
       "recettes": 1
     },
     {
@@ -14551,7 +14840,15 @@
       "recettes": 1
     },
     {
+      "nom": "pain_d_épices",
+      "recettes": 1
+    },
+    {
       "nom": "pain_épices",
+      "recettes": 1
+    },
+    {
+      "nom": "pain_grillé",
       "recettes": 1
     },
     {
@@ -14575,6 +14872,10 @@
       "recettes": 1
     },
     {
+      "nom": "pâte_à_choux",
+      "recettes": 1
+    },
+    {
       "nom": "pâte_fermentée",
       "recettes": 1
     },
@@ -14588,6 +14889,10 @@
     },
     {
       "nom": "pâte_levée",
+      "recettes": 1
+    },
+    {
+      "nom": "persil frais",
       "recettes": 1
     },
     {
@@ -14608,10 +14913,6 @@
     },
     {
       "nom": "piment_séché",
-      "recettes": 1
-    },
-    {
-      "nom": "plantain",
       "recettes": 1
     },
     {
@@ -14763,6 +15064,10 @@
       "recettes": 1
     },
     {
+      "nom": "tomate mijotée",
+      "recettes": 1
+    },
+    {
       "nom": "tomate_crue",
       "recettes": 1
     },
@@ -14791,6 +15096,10 @@
       "recettes": 1
     },
     {
+      "nom": "viande_rissolée",
+      "recettes": 1
+    },
+    {
       "nom": "viandes_grillées",
       "recettes": 1
     },
@@ -14804,6 +15113,10 @@
     },
     {
       "nom": "vin_rouge",
+      "recettes": 1
+    },
+    {
+      "nom": "vinaigre de vin rouge",
       "recettes": 1
     },
     {
@@ -14830,19 +15143,19 @@
   "profils_sensoriels": [
     {
       "nom": "warm_aromatic",
-      "recettes": 139
+      "recettes": 132
     },
     {
       "nom": "creamy_savory",
-      "recettes": 74
+      "recettes": 79
     },
     {
       "nom": "savory_crisp",
-      "recettes": 62
+      "recettes": 65
     },
     {
       "nom": "savory_tomato",
-      "recettes": 39
+      "recettes": 42
     },
     {
       "nom": "spicy_umami",
@@ -14854,18 +15167,18 @@
     },
     {
       "nom": "earthy_herbal",
-      "recettes": 24
+      "recettes": 23
     },
     {
       "nom": "smoky_sweet",
-      "recettes": 23
+      "recettes": 22
     },
     {
       "nom": "tomato_herbal",
-      "recettes": 23
+      "recettes": 21
     },
     {
-      "nom": "creamy_delicate",
+      "nom": "brothy_umami",
       "recettes": 20
     },
     {
@@ -14873,15 +15186,15 @@
       "recettes": 19
     },
     {
-      "nom": "brothy_umami",
+      "nom": "creamy_delicate",
       "recettes": 18
     },
     {
-      "nom": "rich_winey",
-      "recettes": 17
+      "nom": "bright_acidic",
+      "recettes": 16
     },
     {
-      "nom": "bright_acidic",
+      "nom": "rich_winey",
       "recettes": 16
     },
     {
@@ -14903,47 +15216,55 @@
     {
       "nom": "sweet_fresh",
       "recettes": 4
+    },
+    {
+      "nom": "rich_savory",
+      "recettes": 1
     }
   ],
   "textures": [
     {
       "nom": "sauce nappante",
-      "recettes": 46
-    },
-    {
-      "nom": "tendre",
-      "recettes": 43
-    },
-    {
-      "nom": "contraste_léger",
-      "recettes": 41
+      "recettes": 47
     },
     {
       "nom": "sauce_nappante",
       "recettes": 37
     },
     {
-      "nom": "fondant",
-      "recettes": 29
+      "nom": "tendre",
+      "recettes": 35
     },
     {
-      "nom": "protéine_fondante",
-      "recettes": 23
+      "nom": "contraste_léger",
+      "recettes": 33
+    },
+    {
+      "nom": "fondant",
+      "recettes": 30
     },
     {
       "nom": "viande fondante",
-      "recettes": 19
+      "recettes": 20
+    },
+    {
+      "nom": "protéine_fondante",
+      "recettes": 18
     },
     {
       "nom": "croûte gratinée",
       "recettes": 13
     },
     {
-      "nom": "viande_fondante",
-      "recettes": 13
+      "nom": "dessus_doré",
+      "recettes": 12
     },
     {
-      "nom": "dessus_doré",
+      "nom": "nappant",
+      "recettes": 12
+    },
+    {
+      "nom": "viande_fondante",
       "recettes": 12
     },
     {
@@ -14952,10 +15273,6 @@
     },
     {
       "nom": "moelleux",
-      "recettes": 10
-    },
-    {
-      "nom": "nappant",
       "recettes": 10
     },
     {
@@ -14999,11 +15316,27 @@
       "recettes": 7
     },
     {
+      "nom": "croûte croustillante",
+      "recettes": 7
+    },
+    {
       "nom": "jaune d'œuf coulant",
       "recettes": 7
     },
     {
       "nom": "lentilles fondantes mais entières",
+      "recettes": 7
+    },
+    {
+      "nom": "pâtes_fermes",
+      "recettes": 7
+    },
+    {
+      "nom": "sans fibre",
+      "recettes": 7
+    },
+    {
+      "nom": "velouté lisse",
       "recettes": 7
     },
     {
@@ -15099,7 +15432,7 @@
       "recettes": 5
     },
     {
-      "nom": "croûte croustillante",
+      "nom": "cœur fondant",
       "recettes": 5
     },
     {
@@ -15163,6 +15496,10 @@
       "recettes": 5
     },
     {
+      "nom": "jaune coulant",
+      "recettes": 5
+    },
+    {
       "nom": "jaune d'œuf crémeux",
       "recettes": 5
     },
@@ -15195,10 +15532,6 @@
       "recettes": 5
     },
     {
-      "nom": "légumes_tendres",
-      "recettes": 5
-    },
-    {
       "nom": "mie imbibée et moelleuse",
       "recettes": 5
     },
@@ -15223,15 +15556,15 @@
       "recettes": 5
     },
     {
+      "nom": "oignons fondants",
+      "recettes": 5
+    },
+    {
       "nom": "olive charnue",
       "recettes": 5
     },
     {
       "nom": "onctueux",
-      "recettes": 5
-    },
-    {
-      "nom": "pâtes_fermes",
       "recettes": 5
     },
     {
@@ -15259,10 +15592,6 @@
       "recettes": 5
     },
     {
-      "nom": "sans fibre",
-      "recettes": 5
-    },
-    {
       "nom": "sauce courte et nappante",
       "recettes": 5
     },
@@ -15283,16 +15612,16 @@
       "recettes": 5
     },
     {
-      "nom": "velouté lisse",
-      "recettes": 5
-    },
-    {
       "nom": "viande confite qui s'effiloche",
       "recettes": 5
     },
     {
       "nom": "viande fondante se détachant de l'os",
       "recettes": 5
+    },
+    {
+      "nom": "amandes croquantes",
+      "recettes": 4
     },
     {
       "nom": "bords_croustillants",
@@ -15327,10 +15656,6 @@
       "recettes": 4
     },
     {
-      "nom": "cœur fondant",
-      "recettes": 4
-    },
-    {
       "nom": "cœur_juteux",
       "recettes": 4
     },
@@ -15347,15 +15672,11 @@
       "recettes": 4
     },
     {
+      "nom": "croûte_dorée",
+      "recettes": 4
+    },
+    {
       "nom": "éclats croquants de cornichon",
-      "recettes": 4
-    },
-    {
-      "nom": "éléments_distincts",
-      "recettes": 4
-    },
-    {
-      "nom": "éléments_tendres",
       "recettes": 4
     },
     {
@@ -15371,10 +15692,6 @@
       "recettes": 4
     },
     {
-      "nom": "jaune coulant",
-      "recettes": 4
-    },
-    {
       "nom": "jus sirupeux",
       "recettes": 4
     },
@@ -15383,7 +15700,7 @@
       "recettes": 4
     },
     {
-      "nom": "liquide_nappant",
+      "nom": "légumes_tendres",
       "recettes": 4
     },
     {
@@ -15392,10 +15709,6 @@
     },
     {
       "nom": "moelleux des raisins regonflés",
-      "recettes": 4
-    },
-    {
-      "nom": "oignons fondants",
       "recettes": 4
     },
     {
@@ -15429,10 +15742,6 @@
     {
       "nom": "viande_effilochable",
       "recettes": 4
-    },
-    {
-      "nom": "amandes croquantes",
-      "recettes": 3
     },
     {
       "nom": "anneaux tendres sous la dent",
@@ -15479,11 +15788,15 @@
       "recettes": 3
     },
     {
-      "nom": "croûte_dorée",
+      "nom": "croûte_gratinée",
       "recettes": 3
     },
     {
       "nom": "crudités_croquantes",
+      "recettes": 3
+    },
+    {
+      "nom": "éléments_distincts",
       "recettes": 3
     },
     {
@@ -15512,14 +15825,6 @@
     },
     {
       "nom": "gras_fondant",
-      "recettes": 3
-    },
-    {
-      "nom": "haricots_crémeux",
-      "recettes": 3
-    },
-    {
-      "nom": "jaune_coulant",
       "recettes": 3
     },
     {
@@ -15591,10 +15896,6 @@
       "recettes": 3
     },
     {
-      "nom": "amandes_croquantes",
-      "recettes": 2
-    },
-    {
       "nom": "aubergine_fondante",
       "recettes": 2
     },
@@ -15640,6 +15941,10 @@
     },
     {
       "nom": "cœur souple et fondant",
+      "recettes": 2
+    },
+    {
+      "nom": "cœur_fondant",
       "recettes": 2
     },
     {
@@ -15695,11 +16000,19 @@
       "recettes": 2
     },
     {
+      "nom": "haricots_crémeux",
+      "recettes": 2
+    },
+    {
       "nom": "haricots_fondants",
       "recettes": 2
     },
     {
       "nom": "herbes_fraîches",
+      "recettes": 2
+    },
+    {
+      "nom": "jaune_coulant",
       "recettes": 2
     },
     {
@@ -15739,7 +16052,15 @@
       "recettes": 2
     },
     {
+      "nom": "lisse",
+      "recettes": 2
+    },
+    {
       "nom": "maïs_chewy",
+      "recettes": 2
+    },
+    {
+      "nom": "mie_moelleuse",
       "recettes": 2
     },
     {
@@ -15843,10 +16164,6 @@
       "recettes": 2
     },
     {
-      "nom": "très_frais",
-      "recettes": 2
-    },
-    {
       "nom": "veau_tendre",
       "recettes": 2
     },
@@ -15880,6 +16197,10 @@
     },
     {
       "nom": "amandes sèches et cassantes",
+      "recettes": 1
+    },
+    {
+      "nom": "amandes_croquantes",
       "recettes": 1
     },
     {
@@ -15983,6 +16304,14 @@
       "recettes": 1
     },
     {
+      "nom": "bouillon nappant",
+      "recettes": 1
+    },
+    {
+      "nom": "bouillon rouge lié",
+      "recettes": 1
+    },
+    {
       "nom": "bouillon_blanc_émulsionné",
       "recettes": 1
     },
@@ -16007,6 +16336,10 @@
       "recettes": 1
     },
     {
+      "nom": "bouillon_lié",
+      "recettes": 1
+    },
+    {
       "nom": "bouillon_liquide",
       "recettes": 1
     },
@@ -16016,10 +16349,6 @@
     },
     {
       "nom": "bouillon_piquant",
-      "recettes": 1
-    },
-    {
-      "nom": "bouillon_rouge",
       "recettes": 1
     },
     {
@@ -16075,6 +16404,10 @@
       "recettes": 1
     },
     {
+      "nom": "chair filandreuse",
+      "recettes": 1
+    },
+    {
       "nom": "chair nacrée effeuillée",
       "recettes": 1
     },
@@ -16083,7 +16416,15 @@
       "recettes": 1
     },
     {
+      "nom": "champignon_ferme",
+      "recettes": 1
+    },
+    {
       "nom": "champignons colorés",
+      "recettes": 1
+    },
+    {
+      "nom": "champignons poêlés fermes",
       "recettes": 1
     },
     {
@@ -16147,10 +16488,6 @@
       "recettes": 1
     },
     {
-      "nom": "cœur_fondant",
-      "recettes": 1
-    },
-    {
       "nom": "cœur_humide_alvéolé",
       "recettes": 1
     },
@@ -16176,6 +16513,14 @@
     },
     {
       "nom": "consommé_gélatineux",
+      "recettes": 1
+    },
+    {
+      "nom": "contraste marqué",
+      "recettes": 1
+    },
+    {
+      "nom": "coque_croustillante",
       "recettes": 1
     },
     {
@@ -16223,6 +16568,10 @@
       "recettes": 1
     },
     {
+      "nom": "croûte de fromage gratinée",
+      "recettes": 1
+    },
+    {
       "nom": "croûte dorée généreuse",
       "recettes": 1
     },
@@ -16243,15 +16592,15 @@
       "recettes": 1
     },
     {
-      "nom": "croûte_gratinée",
-      "recettes": 1
-    },
-    {
       "nom": "croûte_légère",
       "recettes": 1
     },
     {
       "nom": "croûte_très_caramélisée",
+      "recettes": 1
+    },
+    {
+      "nom": "croûton sec",
       "recettes": 1
     },
     {
@@ -16303,6 +16652,10 @@
       "recettes": 1
     },
     {
+      "nom": "dés de tomate fermes",
+      "recettes": 1
+    },
+    {
       "nom": "dessus_custard",
       "recettes": 1
     },
@@ -16320,6 +16673,10 @@
     },
     {
       "nom": "éclats de noix craquants",
+      "recettes": 1
+    },
+    {
+      "nom": "éclats_charnus",
       "recettes": 1
     },
     {
@@ -16399,6 +16756,10 @@
       "recettes": 1
     },
     {
+      "nom": "feuille croquante",
+      "recettes": 1
+    },
+    {
       "nom": "feuille_tendre",
       "recettes": 1
     },
@@ -16408,6 +16769,10 @@
     },
     {
       "nom": "feuilletage_dense",
+      "recettes": 1
+    },
+    {
+      "nom": "filaments de viande en sauce courte",
       "recettes": 1
     },
     {
@@ -16475,6 +16840,10 @@
       "recettes": 1
     },
     {
+      "nom": "garniture_en_dés",
+      "recettes": 1
+    },
+    {
       "nom": "garnitures_crémeuses",
       "recettes": 1
     },
@@ -16492,6 +16861,14 @@
     },
     {
       "nom": "glaçage_collant",
+      "recettes": 1
+    },
+    {
+      "nom": "gnocchi_moelleux",
+      "recettes": 1
+    },
+    {
+      "nom": "grain de boulgour tendre",
       "recettes": 1
     },
     {
@@ -16519,7 +16896,27 @@
       "recettes": 1
     },
     {
+      "nom": "haché fondant",
+      "recettes": 1
+    },
+    {
+      "nom": "haché_fondant",
+      "recettes": 1
+    },
+    {
+      "nom": "hachis fin et aéré",
+      "recettes": 1
+    },
+    {
+      "nom": "haricot entier sous la dent",
+      "recettes": 1
+    },
+    {
       "nom": "haricot_croquant",
+      "recettes": 1
+    },
+    {
+      "nom": "haricots crémeux",
       "recettes": 1
     },
     {
@@ -16532,10 +16929,6 @@
     },
     {
       "nom": "haricots_très_tendres",
-      "recettes": 1
-    },
-    {
-      "nom": "herbes_légères",
       "recettes": 1
     },
     {
@@ -16560,6 +16953,10 @@
     },
     {
       "nom": "intérieur_coulant_moelleux",
+      "recettes": 1
+    },
+    {
+      "nom": "intérieur_creux",
       "recettes": 1
     },
     {
@@ -16659,15 +17056,15 @@
       "recettes": 1
     },
     {
+      "nom": "lardon doré",
+      "recettes": 1
+    },
+    {
       "nom": "lardon doré posé entier en surface",
       "recettes": 1
     },
     {
       "nom": "lardons dorés",
-      "recettes": 1
-    },
-    {
-      "nom": "lardons_croustillants",
       "recettes": 1
     },
     {
@@ -16680,6 +17077,10 @@
     },
     {
       "nom": "légumes_encore_texturés",
+      "recettes": 1
+    },
+    {
+      "nom": "légumes_tendres_distincts",
       "recettes": 1
     },
     {
@@ -16715,10 +17116,6 @@
       "recettes": 1
     },
     {
-      "nom": "lisse",
-      "recettes": 1
-    },
-    {
       "nom": "longues_fibres_tendres",
       "recettes": 1
     },
@@ -16732,6 +17129,10 @@
     },
     {
       "nom": "mie_aérée_et_huileuse",
+      "recettes": 1
+    },
+    {
+      "nom": "mie_soufflée",
       "recettes": 1
     },
     {
@@ -16827,6 +17228,10 @@
       "recettes": 1
     },
     {
+      "nom": "pain imbibé",
+      "recettes": 1
+    },
+    {
       "nom": "pain_fin_aux_bords_croustillants",
       "recettes": 1
     },
@@ -16919,15 +17324,11 @@
       "recettes": 1
     },
     {
-      "nom": "peu_de_boulgour",
-      "recettes": 1
-    },
-    {
       "nom": "pita_souple",
       "recettes": 1
     },
     {
-      "nom": "plantain_caramélisé",
+      "nom": "plantain fondant à bords croustillants",
       "recettes": 1
     },
     {
@@ -16972,6 +17373,14 @@
     },
     {
       "nom": "poissons_entiers_non_défaits",
+      "recettes": 1
+    },
+    {
+      "nom": "poivron tendre",
+      "recettes": 1
+    },
+    {
+      "nom": "pomme de terre juste tenue",
       "recettes": 1
     },
     {
@@ -17051,7 +17460,11 @@
       "recettes": 1
     },
     {
-      "nom": "pruneaux_glacés",
+      "nom": "pruneaux gonflés entiers",
+      "recettes": 1
+    },
+    {
+      "nom": "purée souple",
       "recettes": 1
     },
     {
@@ -17087,6 +17500,10 @@
       "recettes": 1
     },
     {
+      "nom": "riz détaché",
+      "recettes": 1
+    },
+    {
       "nom": "riz_et_lentilles_distincts",
       "recettes": 1
     },
@@ -17115,7 +17532,7 @@
       "recettes": 1
     },
     {
-      "nom": "salade_croquante",
+      "nom": "sans croquant",
       "recettes": 1
     },
     {
@@ -17140,6 +17557,10 @@
     },
     {
       "nom": "sauce fluide et nappante",
+      "recettes": 1
+    },
+    {
+      "nom": "sauce nappante et brillante",
       "recettes": 1
     },
     {
@@ -17275,6 +17696,14 @@
       "recettes": 1
     },
     {
+      "nom": "souple à la cuillère",
+      "recettes": 1
+    },
+    {
+      "nom": "soyeux",
+      "recettes": 1
+    },
+    {
       "nom": "spongieux",
       "recettes": 1
     },
@@ -17367,6 +17796,10 @@
       "recettes": 1
     },
     {
+      "nom": "très_frais",
+      "recettes": 1
+    },
+    {
       "nom": "trinité_croquante",
       "recettes": 1
     },
@@ -17395,11 +17828,19 @@
       "recettes": 1
     },
     {
+      "nom": "velouté",
+      "recettes": 1
+    },
+    {
       "nom": "vermicelles",
       "recettes": 1
     },
     {
       "nom": "viande effilochée fondante",
+      "recettes": 1
+    },
+    {
+      "nom": "viande qui se détache de l'os",
       "recettes": 1
     },
     {
@@ -17439,6 +17880,10 @@
       "recettes": 1
     },
     {
+      "nom": "viande_rosée_tendre",
+      "recettes": 1
+    },
+    {
       "nom": "viande_sèche_aux_bords_rôtis",
       "recettes": 1
     },
@@ -17465,6 +17910,10 @@
     {
       "nom": "viandes_juteuses",
       "recettes": 1
+    },
+    {
+      "nom": "volaille_moelleuse",
+      "recettes": 1
     }
   ],
   "categories": [
@@ -17485,12 +17934,12 @@
       "recettes": 18
     },
     {
-      "nom": "accompagnement",
+      "nom": "tarte salée",
       "recettes": 15
     },
     {
-      "nom": "tarte salée",
-      "recettes": 15
+      "nom": "accompagnement",
+      "recettes": 14
     },
     {
       "nom": "soupe",
@@ -17541,10 +17990,6 @@
       "recettes": 5
     },
     {
-      "nom": "plat complet",
-      "recettes": 5
-    },
-    {
       "nom": "salade",
       "recettes": 5
     },
@@ -17553,11 +17998,11 @@
       "recettes": 4
     },
     {
-      "nom": "pâtes",
+      "nom": "pâtes en sauce",
       "recettes": 4
     },
     {
-      "nom": "pâtes en sauce",
+      "nom": "plat complet",
       "recettes": 4
     },
     {
@@ -17566,10 +18011,6 @@
     },
     {
       "nom": "plat de pâtes",
-      "recettes": 4
-    },
-    {
-      "nom": "sandwich chaud",
       "recettes": 4
     },
     {
@@ -17585,6 +18026,10 @@
       "recettes": 3
     },
     {
+      "nom": "pâtes",
+      "recettes": 3
+    },
+    {
       "nom": "plat complet mijoté",
       "recettes": 3
     },
@@ -17594,6 +18039,10 @@
     },
     {
       "nom": "poisson",
+      "recettes": 3
+    },
+    {
+      "nom": "sandwich chaud",
       "recettes": 3
     },
     {
@@ -17889,6 +18338,10 @@
       "recettes": 1
     },
     {
+      "nom": "fondue de légumes, accompagnement",
+      "recettes": 1
+    },
+    {
       "nom": "friture légère",
       "recettes": 1
     },
@@ -17909,6 +18362,10 @@
       "recettes": 1
     },
     {
+      "nom": "gougères apéritives en pâte à choux",
+      "recettes": 1
+    },
+    {
       "nom": "grande tortilla garnie",
       "recettes": 1
     },
@@ -17922,6 +18379,10 @@
     },
     {
       "nom": "gratin de viande épicée",
+      "recettes": 1
+    },
+    {
+      "nom": "gratin parmentier",
       "recettes": 1
     },
     {
@@ -18029,10 +18490,6 @@
       "recettes": 1
     },
     {
-      "nom": "pâte à choux salée",
-      "recettes": 1
-    },
-    {
       "nom": "pâte de maïs vapeur",
       "recettes": 1
     },
@@ -18042,6 +18499,10 @@
     },
     {
       "nom": "pâtes et légumes",
+      "recettes": 1
+    },
+    {
+      "nom": "pâtes gratinées",
       "recettes": 1
     },
     {
@@ -18365,10 +18826,6 @@
       "recettes": 1
     },
     {
-      "nom": "salade d herbes",
-      "recettes": 1
-    },
-    {
       "nom": "salade de pain",
       "recettes": 1
     },
@@ -18382,6 +18839,10 @@
     },
     {
       "nom": "salade sauce cacahuète",
+      "recettes": 1
+    },
+    {
+      "nom": "sandwich chaud gratiné",
       "recettes": 1
     },
     {
@@ -18493,6 +18954,10 @@
       "recettes": 1
     },
     {
+      "nom": "taboulé, salade d'herbes crues",
+      "recettes": 1
+    },
+    {
       "nom": "tacos de porc mariné",
       "recettes": 1
     },
@@ -18564,15 +19029,15 @@
   "cuisines": [
     {
       "nom": "France",
-      "recettes": 276
+      "recettes": 283
     },
     {
       "nom": "France / cuisine domestique internationale",
-      "recettes": 71
+      "recettes": 55
     },
     {
       "nom": "Italie",
-      "recettes": 24
+      "recettes": 25
     },
     {
       "nom": "Japon",
@@ -18719,6 +19184,10 @@
       "recettes": 1
     },
     {
+      "nom": "Belgique et Flandre française",
+      "recettes": 1
+    },
+    {
       "nom": "Brésil Bahia",
       "recettes": 1
     },
@@ -18739,7 +19208,27 @@
       "recettes": 1
     },
     {
+      "nom": "France — Bourgogne",
+      "recettes": 1
+    },
+    {
+      "nom": "France — cuisine de café parisienne",
+      "recettes": 1
+    },
+    {
+      "nom": "France — cuisine domestique",
+      "recettes": 1
+    },
+    {
       "nom": "France (Bourgogne)",
+      "recettes": 1
+    },
+    {
+      "nom": "France (Lyon)",
+      "recettes": 1
+    },
+    {
+      "nom": "France (Sud-Ouest)",
       "recettes": 1
     },
     {
@@ -18764,6 +19253,10 @@
     },
     {
       "nom": "Inde/Royaume-Uni",
+      "recettes": 1
+    },
+    {
+      "nom": "Italie / cuisine domestique française",
       "recettes": 1
     },
     {
@@ -18836,6 +19329,10 @@
     },
     {
       "nom": "Salvador",
+      "recettes": 1
+    },
+    {
+      "nom": "Tex-Mex, adapté en cuisine domestique française",
       "recettes": 1
     },
     {

@@ -64,14 +64,22 @@ describe('arithmétique d’un arbitrage', () => {
 })
 
 describe('décompte de sources d’un arbitrage', () => {
-  it('signale un dénominateur que le dossier contredit', () => {
-    const remarques = remarquesSurArbitrage(recette('Deux sources sur trois portent le paprika.'), { total: 4 })
+  it('signale un dénominateur qui dépasse le dossier', () => {
+    const remarques = remarquesSurArbitrage(recette('Huit sources sur neuf portent le paprika.'), { total: 6 })
     expect(remarques).toHaveLength(1)
-    expect(remarques[0]).toMatch(/« Deux sources sur trois » alors que le dossier porte 4 sources/)
+    expect(remarques[0]).toMatch(/« Huit sources sur neuf » alors que le dossier ne porte que 6 sources/)
   })
 
   it('se tait quand le dénominateur est le bon', () => {
     expect(remarquesSurArbitrage(recette('Six sources sur sept emploient le blanc.'), { total: 7 })).toEqual([])
+  })
+
+  // Un dénominateur PLUS PETIT que le dossier compte un sous-ensemble, et la
+  // phrase le dit : « les trois sources qui portent le poivron » puis « rouge
+  // dans deux sources sur trois », sur un dossier de quatre. C'est juste, et le
+  // contrôle criait dessus — un vrai faux positif, trouvé sur REAL-295.
+  it('accepte un dénominateur qui compte un sous-ensemble', () => {
+    expect(remarquesSurArbitrage(recette('Le poivron est rouge dans deux sources sur trois.'), { total: 4 })).toEqual([])
   })
 
   // « six pages sur trois SITES » est une répartition, pas une fraction : six
@@ -84,6 +92,6 @@ describe('décompte de sources d’un arbitrage', () => {
   })
 
   it('ne contrôle rien sans dossier de référence', () => {
-    expect(remarquesSurArbitrage(recette('Deux sources sur trois portent le paprika.'))).toEqual([])
+    expect(remarquesSurArbitrage(recette('Huit sources sur neuf portent le paprika.'))).toEqual([])
   })
 })

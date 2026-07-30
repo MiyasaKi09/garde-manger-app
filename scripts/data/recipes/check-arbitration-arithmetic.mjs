@@ -157,10 +157,17 @@ export function remarquesSurArbitrage(recette, { total: sourcesReelles = null } 
   if (sourcesReelles) {
     for (const trouve of arbitrage.matchAll(FRACTION)) {
       const denominateur = nombre(trouve[2])
-      if (denominateur === null || denominateur === sourcesReelles) continue
+      if (denominateur === null) continue
+      // Un dénominateur PLUS PETIT que le dossier est licite : il compte souvent
+      // un sous-ensemble, et la phrase le dit — « les trois sources qui portent
+      // le poivron » puis « rouge dans deux sources sur trois ». C'est une
+      // tournure juste, et la signaler faisait crier le contrôle sur du bon
+      // travail. Seul un dénominateur SUPÉRIEUR au dossier est nécessairement
+      // faux : on ne peut pas compter plus de sources qu'il n'en existe.
+      if (denominateur <= sourcesReelles) continue
       remarques.push(
-        `décompte : « ${trouve[0].trim()} » alors que le dossier porte ${sourcesReelles} sources `
-        + `— un dénominateur faux vient presque toujours du tableau de synthèse, pas du dossier`,
+        `décompte : « ${trouve[0].trim()} » alors que le dossier ne porte que ${sourcesReelles} sources `
+        + `— un dénominateur qui dépasse le dossier ne peut venir que du tableau de synthèse`,
       )
     }
   }

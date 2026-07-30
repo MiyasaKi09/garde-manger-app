@@ -823,8 +823,7 @@
         "skin_state": null
       },
       "units_used": [
-        "g",
-        "u"
+        "g"
       ],
       "conversion": {
         "grams_per_unit": 180
@@ -1021,36 +1020,6 @@
         "fiberG": 53.1
       },
       "note": "Même épice, même matière (écorce de cannelier) : seule la présentation diffère, bâton contre poudre, sans effet sur la composition. Ciqual ne propose que la poudre — c'était d'ailleurs l'unique candidat, et il est correct. Conversion : 1 bâton = 4 g d'écorce. Infusé dans le lait des pastéis puis RETIRÉ : la masse sert au calcul, l'apport réel est nul. Contrôle : 1 u = 4 g → 9,7 kcal pour toute la recette."
-    },
-    {
-      "canonical_name": "Béchamel préparée",
-      "canonical_name_normalized": "bechamel preparee",
-      "category": "condiments_sauces",
-      "confidence": "B",
-      "source": "ciqual_2020",
-      "source_record_key": "11143",
-      "source_name": "Sauce béchamel, maison",
-      "state": {
-        "concept": "Béchamel préparée",
-        "rest": "",
-        "cooking_state": null,
-        "preservation_state": null,
-        "physical_state": null,
-        "bone_state": null,
-        "skin_state": null
-      },
-      "units_used": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 146.6,
-        "proteinG": 3.84,
-        "carbsG": 8.97,
-        "fatG": 10.6,
-        "fiberG": 0.2
-      },
-      "note": null
     },
     {
       "canonical_name": "Berbéré",
@@ -1355,45 +1324,6 @@
         "fiberG": 0
       },
       "note": "« Froide » désigne une température de service, pas un état de transformation : la composition est identique à « bière blonde ». Un concept culinaire, un canonique — même code que la forme précédente, conformément à la règle de la Bible."
-    },
-    {
-      "canonical_name": "Bière brune belge",
-      "canonical_name_normalized": "biere brune belge",
-      "category": "boissons",
-      "confidence": "B",
-      "source": "ciqual_2020+usda_fdc",
-      "filled_from_usda": {
-        "fdc_id": "168746",
-        "fields": [
-          "energy_kcal",
-          "fat_g"
-        ]
-      },
-      "source_record_key": "5000",
-      "source_name": "Bière brune",
-      "state": {
-        "concept": "Bière brune belge",
-        "rest": "",
-        "cooking_state": null,
-        "preservation_state": null,
-        "physical_state": null,
-        "bone_state": null,
-        "skin_state": null
-      },
-      "units_used": [
-        "ml"
-      ],
-      "conversion": {
-        "density_g_per_ml": 1
-      },
-      "per100g": {
-        "kcal": 43,
-        "proteinG": 0.43,
-        "carbsG": 4.1,
-        "fatG": 0,
-        "fiberG": 0
-      },
-      "note": "Ciqual 2020 ne mesure ni l'énergie ni les lipides de la bière ; USDA les fournit sur la bière ordinaire. La brune belge est plus dense qu'une blonde standard, mais elle sert de liquide de braisage et s'évapore en grande partie : l'écart est sans effet sur l'assiette."
     },
     {
       "canonical_name": "Biscuit cuillère",
