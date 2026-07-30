@@ -38,6 +38,8 @@ function profileFrom(member, goal) {
       breakfast: Boolean(planning.breakfast),
       snack: Boolean(planning.snack),
       vegetarian_meat_swaps_per_week: Number(planning.vegetarian_meat_swaps_per_week) || 0,
+      dessert_after_lunch: Boolean(planning.dessert_after_lunch),
+      dessert_after_dinner: Boolean(planning.dessert_after_dinner),
     },
     age: numberOrBlank(goal?.age),
     sex: goal?.sex || 'M',
@@ -160,6 +162,8 @@ export default function PlanningSettingsPage() {
                 breakfast: profile.planning.breakfast,
                 snack: profile.planning.snack,
                 vegetarian_meat_swaps_per_week: Number(profile.planning.vegetarian_meat_swaps_per_week) || 0,
+                dessert_after_lunch: profile.planning.dessert_after_lunch,
+                dessert_after_dinner: profile.planning.dessert_after_dinner,
               },
             },
           }),
@@ -319,6 +323,8 @@ export default function PlanningSettingsPage() {
               <div className="ps-toggles">
                 <label><input type="checkbox" checked={selected.planning.breakfast} onChange={(event) => patchPlanning({ breakfast: event.target.checked })} /><span><b>Petit-déjeuner</b><small>Ajouté chaque jour pour {selected.name}</small></span></label>
                 <label><input type="checkbox" checked={selected.planning.snack} onChange={(event) => patchPlanning({ snack: event.target.checked })} /><span><b>Collation</b><small>Ajoutée chaque jour pour {selected.name}</small></span></label>
+                <label><input type="checkbox" checked={selected.planning.dessert_after_lunch} onChange={(event) => patchPlanning({ dessert_after_lunch: event.target.checked })} /><span><b>Dessert après le déjeuner</b><small>Un fruit ou une pâtisserie en fin de repas pour {selected.name}</small></span></label>
+                <label><input type="checkbox" checked={selected.planning.dessert_after_dinner} onChange={(event) => patchPlanning({ dessert_after_dinner: event.target.checked })} /><span><b>Dessert après le dîner</b><small>Un fruit ou une pâtisserie en fin de repas pour {selected.name}</small></span></label>
                 <label className="ps-swap"><span><b>Variantes végétariennes</b><small>Nombre de repas carnés remplacés par semaine</small></span><input type="number" min="0" max="14" value={selected.planning.vegetarian_meat_swaps_per_week} onChange={(event) => patchPlanning({ vegetarian_meat_swaps_per_week: event.target.value })} /></label>
               </div>
             </section>
