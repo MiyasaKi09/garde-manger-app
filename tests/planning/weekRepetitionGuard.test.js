@@ -79,9 +79,26 @@ describe('lot 0 — la semaine dégradée ne peut plus être publiée', () => {
     // Quatre recettes pour quatorze créneaux : aucune semaine conforme
     // n'existe. Le moteur rend quand même un plan complet — « mieux vaut une
     // semaine à compléter » — mais il l'annonce comme telle.
+    //
+    // Les quatre sont NOMMÉES, et non prises aux quatre premières places du
+    // corpus. Ce découpage par position paraissait équivalent ; il ne l'est pas.
+    // Le corpus canonique ne contient que les recettes publiables, donc son
+    // ordre change dès qu'une recette le devient : le jour où la quiche lorraine
+    // a cessé d'être bloquée par un proxy, elle a pris la quatrième place, et le
+    // quatuor obtenu n'avait plus d'accompagnement. Le moteur n'a alors REMPLI
+    // AUCUN créneau — sur un corpus trop pauvre pour que même la passe relâchée
+    // aboutisse, il rend le meilleur plan partiel plutôt qu'une semaine
+    // complète, ce que ce test n'a jamais eu pour objet de vérifier.
+    //
+    // Nommer les recettes garde au test ce qu'il veut dire : un corpus pauvre
+    // MAIS composable — trois plats et un accompagnement.
+    const choisies = ['FR-003', 'FR-004', 'IT-001', 'FR-006']
+    const recipes = choisies.map((code) => corpus().find((recipe) => recipe.code === code))
+    expect(recipes.every(Boolean), `corpus canonique incomplet : ${choisies.join(', ')}`).toBe(true)
+
     const plan = generateClosedLoopPlan({
       slots: buildWeekSlots(WINDOW_START),
-      recipes: corpus().slice(0, 4),
+      recipes,
       constraints: { allowShopping: true, maxMinutesByMeal: { dejeuner: 120, diner: 240 } },
       beamWidth: 24,
     })

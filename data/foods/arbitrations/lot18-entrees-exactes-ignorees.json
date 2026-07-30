@@ -1,0 +1,27 @@
+{
+  "lot": "lot18-entrees-exactes-ignorees",
+  "contexte": "Deux formes portaient un proxy assumé alors que le classeur contient l'entrée EXACTE, macros complètes. Elles n'ont pas été trouvées parce que le moteur de suggestions rapproche par tokens et que « pâte » l'emmène vers les pâtes alimentaires : pour « Pâte brisée crue » il proposait « Pâtes sèches standard, crues » et « Pâtes fraîches aux oeufs », jamais les six entrées de pâte brisée du classeur. L'écart n'était pas cosmétique. La pâte brisée portait la nutrition d'une TARTE NORMANDE AUX POMMES — farine, oeufs, crème, sucre, calvados — dans une quiche lorraine où elle pèse 59 % des calories de l'assiette, et à 313 kcal contre 390 pour la vraie pâte, elle sous-déclarait d'un quart l'ingrédient le plus lourd du plat. Ces décisions ont été trouvées en cherchant, pour chaque forme en confiance C, si le classeur portait un nom contenant tous ses mots porteurs — un contrôle que le moteur de suggestions ne fait pas.",
+  "piege_a_connaitre": "Un troisième candidat a été écrit puis retiré, et il mérite d'être consigné parce que le piège se retendra. « Fumet de poisson » porte un proxy dont la note affirme qu'« il n'existe pas de fumet au Ciqual ». Or data/foods/ciqual-reference/ contient bien 11303 « Fumet de poisson, prêt à consommer, préemballé », macros complètes — de quoi croire la note fautive. Elle ne l'est pas : ces shards sont CIQUAL 2025, quand le catalogue d'aliments et le registre des mappings sont construits sur CIQUAL 2020. Chercher une référence dans les shards peut donc proposer des entrées que le catalogue ne sait pas employer, et l'applicateur les refuse avec « code Ciqual inexistant ». C'est lui qui a arrêté l'erreur ; sans ce contrôle, la décision passait.",
+  "decisions": [
+    {
+      "cle": "pate brisee crue",
+      "forme": "Pâte brisée crue",
+      "verdict": "mapper",
+      "remplace": "23481",
+      "alim_code": "23414",
+      "nom_ciqual": "Pâte brisée, pur beurre, préemballée, crue",
+      "confidence": "A",
+      "note": "L'entrée exacte, dans le bon état. Le classeur porte six pâtes brisées et le proxy n'en retenait aucune : il pointait 23481 « Tarte normande aux pommes », une pâtisserie sucrée complète prise pour une pâte à foncer. Entre les deux pâtes brisées crues disponibles, on retient la pur beurre (23414, 390 kcal, 20 g de lipides) plutôt que celle à matière grasse végétale (23410, 392 kcal, 21,7 g) : les six recettes concernées sont de la cuisine domestique française — quiche lorraine, flamiche aux poireaux, tartes salées et flan pâtissier — où la pâte est au beurre, et les deux valeurs sont de toute façon à moins de 1 % l'une de l'autre en énergie. L'écart avec le proxy, lui, était de 25 % sur l'ingrédient qui porte la moitié de l'assiette."
+    },
+    {
+      "cle": "pate sablee crue",
+      "forme": "Pâte sablée crue",
+      "verdict": "mapper",
+      "remplace": "23481",
+      "alim_code": "23444",
+      "nom_ciqual": "Pâte sablée, pur beurre, préemballée, crue",
+      "confidence": "A",
+      "note": "Même faute que la pâte brisée, même correction : 23481 « Tarte normande aux pommes » remplaçait une pâte à foncer par une tarte finie. On retient la pur beurre crue (23444, 383 kcal, 15,8 g de lipides, 53,6 g de glucides) plutôt que 23440 « Pâte sablée, préemballée, crue » (419 kcal, 21,8 g de lipides) : la seconde est un aliment moyen qui agrège les pâtes industrielles à matière grasse végétale, et la tarte au citron meringuée qui l'emploie est une pâte de ménage. La distinction pèse ici davantage que pour la brisée — 36 kcal et 6 g de lipides aux cent grammes séparent les deux entrées."
+    }
+  ]
+}
