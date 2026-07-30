@@ -1,0 +1,31 @@
+{
+  "dish": "Salmorejo cordobés",
+  "slug": "salmorejo-cordobes",
+  "sources_count": 1,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/sweet-kwisine/recettes/le-salmorejo-cordobes",
+      "site": "chefsimon.com",
+      "nom": "Le salmorejo cordobés",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 Kg tomates (bien mûres)",
+        "2  gousses d'ail",
+        "100 g pain (rassis de préférence)",
+        "15 cl d'huile d'olive (de bonne qualité)",
+        "1 Cas de vinaigre rouge",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "a6c4d34ad153b0c3"
+    }
+  ]
+}

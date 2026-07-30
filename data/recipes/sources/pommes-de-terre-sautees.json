@@ -1,0 +1,120 @@
+{
+  "dish": "Pommes de terre sautées",
+  "slug": "pommes-de-terre-sautees",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pommes-de-terres-sautees_36392.aspx",
+      "site": "marmiton.org",
+      "nom": "Pommes de terres sautées : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "6 pommes de terre à chair ferme",
+        "3 cuillères à soupe d'huile",
+        "1 tour de moulin de poivre",
+        "2 pincées de sel",
+        "3 pincées de curry"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 875,
+        "sha256": "56c289fa8ef59570"
+      },
+      "sha256_page": "e70a26906fc5a398"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pommes-de-terre-sautees-a-l-ail-et-au-persil_27838.aspx",
+      "site": "marmiton.org",
+      "nom": "Pommes de terre sautées à l'ail et au persil : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "6 pommes de terre de taille moyenne",
+        "7 gousses d'ail (plus il y en a, meilleur c'est !)",
+        "persil (une demi-botte)",
+        "sel (selon votre goût)",
+        "eau (assez pour faire bouillir les pommes de terre",
+        "huile pour faire dorer les pommes de terre (légère de préférence, tournesol)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1164,
+        "sha256": "5f14b8d6d63ae3d8"
+      },
+      "sha256_page": "a13159c2b8931ebc"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pommes-de-terre-rattes-sautees-a-l-ail-laurier-et-thym_342657.aspx",
+      "site": "marmiton.org",
+      "nom": "Pommes de terre rattes sautées à l'ail, laurier et thym : la meilleure recette",
+      "portions": "4 personne",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 kg de pomme de terre rattes",
+        "1 pincée de poivre",
+        "1 cuillère à soupe d'huile d'olive",
+        "1 cuillère à soupe de gros sel gris ou de fleur de sel",
+        "2 gousses d'ail non épluchées",
+        "1 feuille de laurier",
+        "1 cuillère à café de thym frais"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 348,
+        "sha256": "59d981e66126f92d"
+      },
+      "sha256_page": "e086b0a0cf73f1ef"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/pommes-de-terre-sautees-de-gordon-ramsay",
+      "site": "chefsimon.com",
+      "nom": "Pommes de terre sautées de Gordon Ramsay",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "5  pommes de terre à chair ferme",
+        "1  cuil. à soupe de graisse d’oie",
+        "2  échalotes",
+        "3  gousses d’ail",
+        "romarin",
+        "thym",
+        "sel et poivrer"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 260,
+        "sha256": "a40c66bc36b8a804"
+      },
+      "sha256_page": "0f359db83fb90925"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/aux-fourneaux/recettes/pommes-de-terre-sautees-au-chorizo",
+      "site": "chefsimon.com",
+      "nom": "Pommes de terre sautées au chorizo",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "800g de pommes de terre",
+        "150g de chorizo doux ou fort",
+        "1 oignon",
+        "2 gousses d'ail",
+        "1 pincée de piment",
+        "Huile d'olive",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 120,
+        "sha256": "39b8de9e58581ec2"
+      },
+      "sha256_page": "8c1137d729c2112a"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "dish": "Salade de pois chiches, tomate et concombre",
+  "slug": "salade-de-pois-chiches-tomate-et-concombre",
+  "sources_count": 1,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/tangerine-zest/recettes/salade-pois-chiche-a-la-tomate-concombre-et-feta",
+      "site": "chefsimon.com",
+      "nom": "Salade pois chiche à la tomate, concombre et feta",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "265 g pois-chiche en boîte égouttés",
+        "2 tomates",
+        "1 concombre",
+        "60 g de feta de brebis",
+        "1 oignon cébette ou 1/2 oignon rouge finement ciselé",
+        "Sel et poivre du moulin",
+        "1 pincée de chili ou piment en poudre",
+        "15 olives noires à la grecque",
+        "Quelques brins de persil plat finement ciselé",
+        "Huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "e846a86e252a928b"
+    }
+  ]
+}

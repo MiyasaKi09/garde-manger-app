@@ -1,0 +1,171 @@
+{
+  "dish": "Carbonade flamande",
+  "slug": "carbonade-flamande",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_carbonade-flamande-belgique_13458.aspx",
+      "site": "marmiton.org",
+      "nom": "Carbonade Flamande (belgique) : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "1 noix de beurre",
+        "500 g de boeuf",
+        "2 oignons",
+        "4 tranches de pains d'épices (sans morceaux de sucre)",
+        "50 cl de bières de table (ou de Gueuze)",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 423,
+        "sha256": "a7af4a4510ed970c"
+      },
+      "sha256_page": "a36910449fc0de52"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_carbonade-flamande-de-nanou_57155.aspx",
+      "site": "marmiton.org",
+      "nom": "Carbonade flamande de Nanou : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT3H",
+      "ingredients": [
+        "1.5 kg de boeuf (type bourguignon)",
+        "3 oignons",
+        "75 cl de bière blonde (leffe, 3 monts)",
+        "2 cuillères à soupe de farine",
+        "1 cuillère à soupe de vinaigre",
+        "50 g de sucre roux en poudre",
+        "40 cl d'eau",
+        "4 tranches de pains d'épices",
+        "moutarde de Dijon",
+        "poivre",
+        "sel",
+        "30 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 722,
+        "sha256": "8c15f526cbebb743"
+      },
+      "sha256_page": "79d62775db4c3c05"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_carbonade-flamande-traditionnelle-au-monsieur-cuisine_383172.aspx",
+      "site": "marmiton.org",
+      "nom": "Carbonade flamande traditionnelle au Monsieur Cuisine : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "1 kg de boeuf maigre à braiser (paleron, gîte, hampe, etc.)",
+        "250 g de lard fumé entier",
+        "5 tranches de pains d'épices",
+        "1 l de bière brune",
+        "3 oignons",
+        "2 cuillères à café de bouquets garnis en poudre",
+        "3 cuillères à soupe de moutarde",
+        "1 cuillère à soupe de cassonade",
+        "30 g de beurre",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1107,
+        "sha256": "cc3c731ae490f737"
+      },
+      "sha256_page": "36400fbc218e70e7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/carbonade-flamande--10",
+      "site": "chefsimon.com",
+      "nom": "Carbonade flamande",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT02H30M",
+      "ingredients": [
+        "500 g de macreuse",
+        "500 g de paleron détaillés en cube de 70 g maximum",
+        "500 g de gîte détaillée en fines tranches",
+        "300 g de poitrine de porc salée en tranches larges",
+        "4 gros oignons émincés",
+        "8 grosses échalotes",
+        "5 gousses d'ail écrasées",
+        "un bouquet garni",
+        "8 tranches de pain d'épices ou de pain rassis",
+        "1 cuiller de farine",
+        "1 litre de fond de veau lié",
+        "une bouteille de bière Jenlain ou de Leffe brune",
+        "200 g de petits oignons glacés à brun avec 20 g de beurre et 20 g de sucre",
+        "50 g de vergeoise (facultatif)",
+        "1 dl de vinaigre de vin (facultatif)",
+        "50 g de moutarde"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1528,
+        "sha256": "07ae3137b9f3556a"
+      },
+      "sha256_page": "4829d5e3d3217da0"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/laurent-bazet/recettes/carbonade-flamande-de-mamie-yvonne",
+      "site": "chefsimon.com",
+      "nom": "Carbonade flamande de Mamie Yvonne",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT05H00M",
+      "ingredients": [
+        "5 gros oignons",
+        "1 kg de jarret de boeuf",
+        "30 g de beurre",
+        "2 cas d'huile",
+        "1 cas de farine",
+        "1 cas de vergeoise",
+        "25 cl de bière blonde",
+        "25 cl de bouillon de boeuf",
+        "1 cas de vinaigre",
+        "1 bouquet garni"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 642,
+        "sha256": "b74500cdcb26eb79"
+      },
+      "sha256_page": "fec04e86b61a2150"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/une-pincee-de-gourmandise/recettes/carbonade-flamande--7",
+      "site": "chefsimon.com",
+      "nom": "Carbonade flamande",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT03H00M",
+      "ingredients": [
+        "1,2 kg de joue de boeuf (vous pouvez remplacer par du paleron)",
+        "Matière grasse de votre choix (huile pour moi)",
+        "1 gros oignon",
+        "2 à 3 belles carottes selon leur taille",
+        "2 càs de farine",
+        "75cl de bière blonde du Nord A TEMPERATURE AMBIANTE (ou ambrée si vous préférez)",
+        "1 filet de vinaigre de Xérés",
+        "Laurier et thym en branche",
+        "40g de vergeoise blonde ou brune (vous pouvez remplacer par de la cassonade)",
+        "2 tranches de pain d’épices",
+        "Moutarde de Dijon",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1348,
+        "sha256": "54294186a6166337"
+      },
+      "sha256_page": "da276e174ba359bb"
+    }
+  ]
+}

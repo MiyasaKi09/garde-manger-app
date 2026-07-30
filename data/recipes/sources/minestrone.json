@@ -1,0 +1,254 @@
+{
+  "dish": "Minestrone",
+  "slug": "minestrone",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_minestrone-paysan_83988.aspx",
+      "site": "marmiton.org",
+      "nom": "Minestrone paysan : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 oignon",
+        "2 tomates",
+        "1 courgette",
+        "1 carotte",
+        "2 branches de céleri vert(ou blanc si on n'en trouve pas)",
+        "1 pomme de terre",
+        "1 gousse d'ail",
+        "200 g de haricots princesse (frais ou surgelés)",
+        "250 g de lardons fumés ou salés",
+        "250 g de cornettes (ou autres pâtes coupées)",
+        "huile d'olive",
+        "3 cuillères à soupe de persil haché (frais ou en pot)",
+        "3 cuillères à soupe de basilic haché (frais ou en pot)",
+        "2 cubes de bouillon de volaille",
+        "poivre",
+        "sel",
+        "1.5 l d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1007,
+        "sha256": "ac2cded43cacf538"
+      },
+      "sha256_page": "25cdfb14d3b551fe"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-minestrone-au-pistou_29861.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe Minestrone au pistou  : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "500 g de haricots blancs",
+        "100 g de haricots verts",
+        "150 g de macaroni",
+        "4 tomates",
+        "3 courgettes",
+        "2 pommes de terre",
+        "2 oignons",
+        "2 feuilles de sauge (facultatif)",
+        "2 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "sel",
+        "1 bouquet de basilic",
+        "4 gousses d'ail",
+        "6 cuillères à soupe de parmesan râpé",
+        "4 cuillères à soupe d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 921,
+        "sha256": "e3a2a617863c9711"
+      },
+      "sha256_page": "1e445861ecd3d5db"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_minestrone-epice_314048.aspx",
+      "site": "marmiton.org",
+      "nom": "Minestrone épicé : la meilleure recette",
+      "portions": "10 Personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "400 g de lardons fumés",
+        "1 chorizo fort (ou doux pour moins épicé )",
+        "4 cubes de bouillon de poulet",
+        "1 grosse boîte de tomates pelées",
+        "1 boîte de petits pois (280 gr)",
+        "1 boîte de haricot blancs (400 gr )",
+        "5 carottes",
+        "1 courgette",
+        "3 oignons",
+        "4 gousses d'ail",
+        "3 pommes de terre",
+        "3 branches de céleri",
+        "1 bouquet de persil plat",
+        "de basilic frais",
+        "170 g de coquillettes ou autres petites pâtes",
+        "4 cuillères d'huile (olive pour moi )",
+        "2.5 l d'eau",
+        "1 grosse cuillère à soupe de herbes de Provence",
+        "parmesan rapé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 1339,
+        "sha256": "3785ae718247d862"
+      },
+      "sha256_page": "cfee0baa3d7636aa"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/nicolas-bottero/recettes/homard-breton-en-fine-gelee-au-minestrone-de-jeunes-legumes-primeurs",
+      "site": "chefsimon.com",
+      "nom": "Homard breton en fine gelée au minestrone de jeunes légumes primeurs",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT01H30M",
+      "ingredients": [
+        "8 homards bretons (500g)",
+        "2 fenouils",
+        "2 oignons",
+        "2 bâtons de citronnelle",
+        "2 zestes de citron vert",
+        "30 g de gingembre frais",
+        "1 litre de vin blanc",
+        "250 g de chair de poisson",
+        "250g de parures de légumes",
+        "100 g de blancs d’œufs",
+        "2 bottes de carottes fanes",
+        "1 botte de radis roses",
+        "200 g de pois gourmands",
+        "200 g de petits pois",
+        "6 oignons cébettes",
+        "4 pc de navets fanes",
+        "6 pc d'asperges vertes",
+        "2 pc de citron caviar",
+        "4 feuilles de gélatine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 24,
+        "signes": 1446,
+        "sha256": "419cb3dd2d314cdc"
+      },
+      "sha256_page": "94deb9ca176526bc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-petits-plats-du-prince/recettes/preparation-deshydratee-pour-soupe-minestrone",
+      "site": "chefsimon.com",
+      "nom": "Préparation déshydratée pour soupe minestrone",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10H00M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "courgettes",
+        "4 carottes",
+        "1 poignée de haricots verts",
+        "4 tomates type Roma",
+        "2 navets",
+        "2 pommes de terre",
+        "1 poivron",
+        "1 oignon",
+        "1 branche de céleri",
+        "2 gousses d'ail",
+        "1 branche de thym",
+        "1 tranche de ventrèche ou un talon de jambon de pays",
+        "1 bouquet de basilic",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 698,
+        "sha256": "fba76b30e53055e0"
+      },
+      "sha256_page": "f35d03976be66351"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/minestrone-a-l-epeautre",
+      "site": "chefsimon.com",
+      "nom": "Minestrone à l'épeautre",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H35M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "2  courgettes",
+        "2  carottes",
+        "2  poireaux",
+        "200 g de haricots verts",
+        "200 g de haricots blancs",
+        "150 g de pancetta",
+        "basilic",
+        "2  gousses d’ail",
+        "1  oignon",
+        "100 g d’épeautre",
+        "100 g de parmesan",
+        "3  cuil. à soupe d’huile d’olive",
+        "2  cubes de bouillon de légumes",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 149,
+        "sha256": "ad7ddc1e2a8b49a9"
+      },
+      "sha256_page": "5705efd4fb4bb556"
+    },
+    {
+      "url": "https://www.750g.com/minestrone-de-legumes-dhiver-r86011.htm",
+      "site": "750g.com",
+      "nom": "Minestrone de légumes d'hiver",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "200g de fromage blanc 0%",
+        "50g de feuilles de céleri branche",
+        "1 l de bouillon de volaille ou de légumes",
+        "5 cl de huile de colza",
+        "300g de purée de châtaigne",
+        "150g de céleri branche",
+        "150g de carottes",
+        "150g de potimarron",
+        "150g de choux rave",
+        "150g de pommes de terre Princesse Amandine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 696,
+        "sha256": "7c15e0ebbaac4728"
+      },
+      "sha256_page": "6240c6681cb20813"
+    },
+    {
+      "url": "https://www.750g.com/minestrone-aux-haricots-rouges-r34620.htm",
+      "site": "750g.com",
+      "nom": "Minestrone aux haricots rouges",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "60 g de beurre",
+        "200 g de pâtes",
+        "Sel ou sel fin",
+        "Poivre du moulin",
+        "1 tomate",
+        "1 blanc de poireau",
+        "1 oignon",
+        "2 branches de céleri",
+        "1 carotte",
+        "300 g d'haricots rouges"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 900,
+        "sha256": "cc3f0e3ea005cbbb"
+      },
+      "sha256_page": "2717bcd329be3629"
+    }
+  ]
+}

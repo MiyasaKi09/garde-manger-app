@@ -1,0 +1,182 @@
+{
+  "dish": "Tajine d’agneau aux pruneaux",
+  "slug": "tajine-d-agneau-aux-pruneaux",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tajine-d-agneau-aux-pruneaux_13086.aspx",
+      "site": "marmiton.org",
+      "nom": "Tajine d'agneau aux pruneaux : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "500 g de pruneaux",
+        "thé chaud",
+        "500 g d'oignons",
+        "huile d'olive",
+        "1.5 kg d'épaules d'agneau coupée en morceaux",
+        "2 gousses d'ail",
+        "0.5 cuillère à café de cannelle",
+        "0.5 cuillère à café de gingembre",
+        "1 dosette de safran",
+        "de coriandre écrasés",
+        "100 g d'amandes émondées",
+        "3 cuillères à soupe de miel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 692,
+        "sha256": "e7d5e3ed3b9c17bd"
+      },
+      "sha256_page": "ff2f1db9317fd0e7"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tajine-d-agneau-aux-pruneaux-et-aux-amandes_41981.aspx",
+      "site": "marmiton.org",
+      "nom": "Tajine d'agneau aux pruneaux et aux amandes : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "1.5 kg d'épaules d'agneau",
+        "2 cuillères à soupe d'huile",
+        "2 oignons",
+        "3 gousses d'ail",
+        "1 cuillère à café de sel",
+        "1 cuillère à soupe de cannelle",
+        "1 cuillère à café de gingembre",
+        "1 pincée de safran",
+        "500 g de pruneaux entiers",
+        "100 g d'amandes épluchées",
+        "50 g de sésame",
+        "5 cuillères à soupe de sucre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 745,
+        "sha256": "fc20826fc115e3ca"
+      },
+      "sha256_page": "900a0491e1db9e4b"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tajine-d-agneau-aux-pruneaux-et-fruits-secs_28497.aspx",
+      "site": "marmiton.org",
+      "nom": "Tajine d'agneau aux pruneaux et fruits secs : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT5H",
+      "ingredients": [
+        "300 g d'agneau et 3 petits os de veau",
+        "1.6 kg d'épaules d’agneau",
+        "huile d'olive",
+        "1 bâton de cannelle",
+        "1 cuillère à café de cannelle en poudre",
+        "1 cuillère à café de cumin",
+        "1 cuillère à café de Ras el Hanout",
+        "15 g d'ail",
+        "15 g de gingembre frais",
+        "1 gousse de vanille fendue",
+        "2 piments de Cayenne émiettés",
+        "1 dose de safran en poudre",
+        "500 g d'oignons",
+        "600 g d'abricots secs",
+        "10 branches de coriandre fraîche",
+        "150 g d'amandes",
+        "250 g de dattes",
+        "3 cuillères à soupe de miel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 23,
+        "signes": 1154,
+        "sha256": "ed82cd4916b625f2"
+      },
+      "sha256_page": "87052757984a1cbc"
+    },
+    {
+      "url": "https://www.750g.com/tajine-dagneau-aux-pruneaux-r13156.htm",
+      "site": "750g.com",
+      "nom": "Tajine d'agneau aux pruneaux",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "1,2 kg d'épaule d'agneau",
+        "400 g de pruneaux",
+        "100 g d'amandes émondées",
+        "2 oignons  (gros)",
+        "1 bâton de cannelle",
+        "3 c. à s. de miel",
+        "3 c. à s. d'huile",
+        "1 c. à c. de cannelle en poudre",
+        "½ c. à c. de curcuma",
+        "Sel ou sel fin",
+        "1 c. à c. de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 888,
+        "sha256": "1ee04bd7725a4d76"
+      },
+      "sha256_page": "6671881a3d5c8755"
+    },
+    {
+      "url": "https://www.750g.com/tajine-dagneau-aux-pruneaux-r7152.htm",
+      "site": "750g.com",
+      "nom": "Tajine d'agneau du Limousin aux pruneaux",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "3 cuillères à soupe d'huile d'olive",
+        "1/2 cuillère à café de cannelle moulue",
+        "1 sachet de thé parfumé",
+        "Sel",
+        "Poivre du moulin",
+        "1 livre d'oignons",
+        "100 g de graines de sésame",
+        "700 g de semoule de couscous grain moyen",
+        "7 à 8 filaments de safran (ou une dosette)",
+        "1 cuillère à café de cumin, de curcumain et de curry",
+        "500g de pruneaux dénoyautés et mi-cuits",
+        "1 Kg 200 d'agneau du Limousin prélevé dans l'épaule désossée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 1376,
+        "sha256": "08cebbdc99852046"
+      },
+      "sha256_page": "d2e5df97b8d392c4"
+    },
+    {
+      "url": "https://www.750g.com/tajine-de-souris-dagneau-aux-pruneaux-et-poires-r66123.htm",
+      "site": "750g.com",
+      "nom": "Tajine de souris d'agneau aux pruneaux et poires",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT4M",
+      "ingredients": [
+        "2 souris d'agneau",
+        "2 poires Williams",
+        "60 g de pruneau d'Agen dénoyauté",
+        "6 gousses d'ail",
+        "15 cl d'eau",
+        "1 jus d'orange",
+        "1 c. à s. d'huile d'olive",
+        "1 c. à c. rase(s) de curcuma",
+        "1 c. à c. rase(s) de cumin",
+        "Zeste d'orange  quelques",
+        "Thym",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 439,
+        "sha256": "76be63cf69f0b61c"
+      },
+      "sha256_page": "405137153dc5b15d"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "dish": "Salade lyonnaise",
+  "slug": "salade-lyonnaise",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-lyonnaise_21573.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade lyonnaise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "4 oeufs",
+        "200 g de lard fumé",
+        "400 g de pissenlits",
+        "4 tranches de pains un peu rassis",
+        "ciboulette",
+        "huile",
+        "vinaigre de vin rouge",
+        "moutarde"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 888,
+        "sha256": "258e48eb89802f29"
+      },
+      "sha256_page": "86d5d48d9e41db09"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-lyonnaise-de-frisee-aux-lardons_26381.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade lyonnaise de frisée aux lardons : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 salade frisée",
+        "1 saucisson lyonnais à cuire",
+        "200 g de lard de poitrine",
+        "7 cl d'huile",
+        "3 cl de vinaigre",
+        "1 cuillère à café de moutarde",
+        "1 cuillère à soupe de sauce maggi",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 463,
+        "sha256": "adfbd45f6f968b03"
+      },
+      "sha256_page": "18707b83099c2ded"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-lyonnaise-au-saucisson_25419.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade lyonnaise au saucisson : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 saucisson à cuire aux pistaches",
+        "1 salade (chicorée frisée)",
+        "150 g de lardons fumés",
+        "50 g de cerneaux de noix",
+        "3 cuillères à soupe d'huile",
+        "1 cuillère à soupe de vinaigre",
+        "1 cuillère à café de moutarde",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 415,
+        "sha256": "cc550c1d1a8fd991"
+      },
+      "sha256_page": "1494d839b34587d3"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/salade-lyonnaise-1063f215-ce44-4cce-947d-74129bdb9b4b",
+      "site": "chefsimon.com",
+      "nom": "Salade lyonnaise",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H17M",
+      "ingredients": [
+        "feuilles de batavia",
+        "3 grosses tranches de poitrine fumée, pour 160 g de lardons",
+        "2 œufs",
+        "2 tranches de pain complet",
+        "1 échalote",
+        "3 c. à soupe d'huile de tournesol",
+        "1 c. à soupe de vinaigre de vin rouge",
+        "1 c. à café de moutarde de Dijon",
+        "10 g de beurre",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1161,
+        "sha256": "45d62ff1b69612fa"
+      },
+      "sha256_page": "733f5461238383a1"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-enfants-du-gone/recettes/salade-lyonnaise--3",
+      "site": "chefsimon.com",
+      "nom": "Salade lyonnaise",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "roquette",
+        "200 g lardons",
+        "3 oeufs",
+        "croutons de pains",
+        "huile d'olive",
+        "sel poivre",
+        "vinaigre",
+        "moutarde"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 492,
+        "sha256": "02db6275ce457bd9"
+      },
+      "sha256_page": "0b1fa45057cb0b8a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/darya-de-tortore/recettes/salade-lyonnaise--5",
+      "site": "chefsimon.com",
+      "nom": "Salade lyonnaise",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 à 3 c. à soupe d'huile de pépins de raisin (ou d'huile d'olive)",
+        "1/2 c. à café bombée de moutarde de Dijon forte",
+        "2 tranches de pain rassis, coupées en dés d'environ 1 cm x 1 cm",
+        "Environ 150 g de pissenlits frais, racine ôtée, lavés et séchés",
+        "Environ 100 g de poitrine fumée, découpée en lardons",
+        "1 œuf par personne",
+        "Une pincée de sel",
+        "Une pincée de poivre",
+        "1 c. à soupe de vinaigre de vin blanc ou rouge",
+        "2 à 3 c. à soupe d'huile végétale (pépins de raisin) ou d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "a2ccc3c9f1db7c4e"
+    },
+    {
+      "url": "https://www.750g.com/saladier-ou-salade-lyonnaise-r660.htm",
+      "site": "750g.com",
+      "nom": "Saladier ou salade lyonnaise",
+      "portions": null,
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 brin d'estragon",
+        "1 brin de persil",
+        "1 pluche de cerfeuil",
+        "3 ou 4 brins de ciboulette",
+        "1 vinaigrette",
+        "1 foie de volaille",
+        "3 œufs durs",
+        "les filets de 2 harengs",
+        "1 pied de mouton"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 313,
+        "sha256": "58c3fdc1c8aa65d0"
+      },
+      "sha256_page": "4d3ffb9ac7114461"
+    }
+  ]
+}

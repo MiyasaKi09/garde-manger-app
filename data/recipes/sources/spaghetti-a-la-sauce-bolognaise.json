@@ -1,0 +1,236 @@
+{
+  "dish": "Spaghetti à la sauce bolognaise",
+  "slug": "spaghetti-a-la-sauce-bolognaise",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_incontournable-sauce-bolognaise-pour-spaghetti_35980.aspx",
+      "site": "marmiton.org",
+      "nom": "Incontournable sauce bolognaise pour spaghetti  : la meilleure recette",
+      "portions": "10 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT3H",
+      "ingredients": [
+        "1 poivron vert",
+        "1 poivron rouge",
+        "1 poivron orangé",
+        "2 branches de céleri",
+        "1 oignon",
+        "1 champignon frais",
+        "480 g de tomates étuvées, coupées en dés, assaisonnées à l'italienne",
+        "1 grosse boîte de concentré de tomates",
+        "1 grosse boîte de sauce tomate",
+        "1 bouteille de chili avec gros morceaux",
+        "3.5 kg de viande hachée (boeuf)",
+        "20 cl de crème de tomates (facultatif selon la consistance)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 455,
+        "sha256": "4402005cf6346a93"
+      },
+      "sha256_page": "09a0f48e8f4424c9"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_spaghetti-sauce-bolognaise_80415.aspx",
+      "site": "marmiton.org",
+      "nom": "Spaghetti, sauce Bolognaise : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT13M",
+      "ingredients": [
+        "250 g de spaghetti",
+        "2 steaks hachés",
+        "2 échalotes",
+        "50 g de beurre",
+        "140 g de concentré de tomates"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 608,
+        "sha256": "e7ca2c6f7add8c26"
+      },
+      "sha256_page": "490b6a0992efebf0"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_spaghettis-de-courgettes-a-la-sauce-bolognaise_27941.aspx",
+      "site": "marmiton.org",
+      "nom": "Spaghettis de courgettes à la sauce bolognaise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "800 g de courgettes",
+        "100 g de champignons de Paris",
+        "2 tranches de jambon blanc",
+        "150 g de boeuf haché",
+        "160 g de foie de volaille",
+        "300 g de sauce tomate au basilic",
+        "2 cuillères à soupe d'huile d'olive",
+        "1 oignon ou 2 petits",
+        "thym et laurier",
+        "poivre",
+        "sel",
+        "2 feuilles de basilic pour décorer"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 681,
+        "sha256": "f6eb4f4b65f6dcb9"
+      },
+      "sha256_page": "f6a2dbc83f69a9fc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/madame-potiron/recettes/spaghettis-a-la-sauce-bolognaise-vegetale",
+      "site": "chefsimon.com",
+      "nom": "Spaghettis à la sauce bolognaise végétale",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 oignon",
+        "1 carotte",
+        "1 branche de céleri",
+        "2 gros champignons Portobello",
+        "1 gousse d'ail",
+        "1 boite de lentilles",
+        "100 ml de vin rouge",
+        "200 gr de tomates concassées en boite",
+        "200 gr de spaghettis",
+        "1 càs de thym",
+        "1 càc d'origan",
+        "1 càs de purée de tomate",
+        "sel &amp; poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 58,
+        "sha256": "8de27e0b61bd291f"
+      },
+      "sha256_page": "3b4bc90498d8056f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-papounet/recettes/spaghettis-bolognaise-maison",
+      "site": "chefsimon.com",
+      "nom": "Spaghettis bolognaise maison",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "1 paquet de spaghettis",
+        "300 g de viande de boeuf hachée",
+        "6 tomates",
+        "2 oignons",
+        "4 gousses d'ail",
+        "1 cc d'herbes de Provence",
+        "2 branches de thym",
+        "2 feuilles de laurier",
+        "1 pincée de sucre",
+        "Persil pour la présentation",
+        "Parmesan râpé (Facultatif)",
+        "Concentré de tomate (Facultatif)",
+        "Huile d'olive-Sel-poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "3d17fa4b491b6401"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ouest-delices/recettes/spaghetti-bolognaise-a-l-italienne",
+      "site": "chefsimon.com",
+      "nom": "Spaghetti bolognaise à l’italienne",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "3 à 4 càs d'huile d'olive",
+        "1 ou 2 carotte coupée en dés",
+        "2 branches de céleri coupé en dés",
+        "1 oignon jaune émincé",
+        "300 g de chair à saucisse",
+        "80 g de pancetta longue coupée en dés",
+        "300 g de viande de bœuf haché (ou veau, ou mélange)",
+        "400 g de tomates fraîches coupées en petits dés (ou en boîte)",
+        "400 g de passata",
+        "1 verre de vin rouge",
+        "2 verres de lait frais entier",
+        "2 feuilles de laurier",
+        "1 brin de romarin",
+        "sel et poivre",
+        "500 g de spaghetti al bronzo",
+        "5 litres d'eau",
+        "50 g de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "8879929c89ea1055"
+    },
+    {
+      "url": "https://www.750g.com/spaghettis-bolognaise-r86618.htm",
+      "site": "750g.com",
+      "nom": "Spaghettis bolognaise",
+      "portions": "8 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 belles tomates",
+        "1 branche de céleri",
+        "1 l de coulis de tomate",
+        "Sel",
+        "Poivre",
+        "2 carottes",
+        "Herbes en fonction de vos goût (Persil, cive etc...)",
+        "1 oignon rouge",
+        "2 gousses d'ail",
+        "Epices en fonction de vos goûts",
+        "Huile d'olive",
+        "500g de bœuf haché",
+        "Spaghetti"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1907,
+        "sha256": "9ba801009bad1993"
+      },
+      "sha256_page": "57c90d556be17297"
+    },
+    {
+      "url": "https://www.750g.com/spaghetti-bolognaise-r98317.htm",
+      "site": "750g.com",
+      "nom": "Spaghetti bolognaise",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "500 g de spaghetti",
+        "400 g de boeuf haché",
+        "1 oignon",
+        "1 gousse d'ail",
+        "1 carotte",
+        "1 branche de céleri",
+        "400 g de pulpe de tomates  en boite",
+        "1 c. à s. de concentré de tomates",
+        "Huile d'olive",
+        "Thym",
+        "Basilic",
+        "75 g de parmesan râpé",
+        "1 carré de sucre",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 1098,
+        "sha256": "790c25808906b3b5"
+      },
+      "sha256_page": "b4d5f2dccd647311"
+    }
+  ]
+}

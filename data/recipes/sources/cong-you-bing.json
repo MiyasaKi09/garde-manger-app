@@ -1,0 +1,31 @@
+{
+  "dish": "Cong you bing",
+  "slug": "cong-you-bing",
+  "sources_count": 1,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/196-flavors/recettes/cong-you-bing",
+      "site": "chefsimon.com",
+      "nom": "Cong You Bing",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "500 g de farine",
+        "230 ml d'eau bouillante",
+        "60 ml d'eau froide",
+        "1 cuillère à café de sel",
+        "250 g d'oignons verts",
+        "1 cuillère à soupe d'huile de sésame",
+        "Huile neutre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 187,
+        "sha256": "920e1da7a5f399b7"
+      },
+      "sha256_page": "2d033eb3b6581e52"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "dish": "Fondue de poireaux",
+  "slug": "fondue-de-poireaux",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_fondue-de-poireaux_20348.aspx",
+      "site": "marmiton.org",
+      "nom": "Fondue aux poireaux : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "600 g de poireaux",
+        "30 g de beurre",
+        "1 cuillère à soupe de moutarde de Dijon",
+        "2 cuillères à soupe de crème fraîche",
+        "2 cuillères à soupe de jus de citron",
+        "sel",
+        "poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 421,
+        "sha256": "43c60ff492548676"
+      },
+      "sha256_page": "9a3e5970151719eb"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-a-la-moutarde-a-l-ancienne-et-sa-fondue-de-poireaux_71677.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet à la moutarde à l'ancienne et sa fondue de poireaux : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "4 filets de poulet",
+        "0.5 oignon",
+        "4 cuillères à soupe de moutarde à l'ancienne",
+        "4 poireaux",
+        "150 g de lardons",
+        "4 cuillères à soupe de crème fraîche",
+        "huile d'olive",
+        "poivre",
+        "sel",
+        "persil et origan."
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 885,
+        "sha256": "99b86f99a9352637"
+      },
+      "sha256_page": "a9523c53cf98b77d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cabillaud-sur-fondue-de-poireaux_20342.aspx",
+      "site": "marmiton.org",
+      "nom": "cabillaud sur fondue de poireaux : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 filets de lieu noir",
+        "6 poireaux",
+        "20 cl de vin blanc sec",
+        "20 cl de crème fraîche liquide",
+        "beurre",
+        "poivre et sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 594,
+        "sha256": "f32e36238e6221ac"
+      },
+      "sha256_page": "f2489cdbcfaee990"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/fondue-de-poireaux-f3f9cbf2-2222-4640-9363-d1413b376c31",
+      "site": "chefsimon.com",
+      "nom": "Fondue de poireaux",
+      "portions": "",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 blancs de poireaux",
+        "2 échalotes ciselées",
+        "50 g de beurre",
+        "sel et poivre",
+        "une cuiller à soupe de crème épaisse (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 472,
+        "sha256": "91b861a3d74ecac2"
+      },
+      "sha256_page": "109a216b6319b19c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/noix-de-saint-jacques-a-la-fondue-de-poireaux",
+      "site": "chefsimon.com",
+      "nom": "Noix de saint-jacques à la fondue de poireaux",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "8 noix de saint-jaques",
+        "4 blancs de poireaux",
+        "100 g de beurre doux",
+        "2 dl de crème épaisse entière",
+        "sel",
+        "piment"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 697,
+        "sha256": "9a38a5ffbc758bf7"
+      },
+      "sha256_page": "e6087217dc3add9f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/croustillant-de-haddock-a-la-fondue-de-poireaux",
+      "site": "chefsimon.com",
+      "nom": "Croustillant de haddock à la fondue de poireaux",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 blancs de poireaux",
+        "250 g de haddock poché au lait",
+        "4 feuilles de brick",
+        "1/4 de litre de velouté de moules additionné d'un peu de sauce hollandaise réalisée avec 200 g de beurre et 2 jaunes d'oeufs",
+        "curry"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1201,
+        "sha256": "376f99a33046214e"
+      },
+      "sha256_page": "2dbe1e8f12178fda"
+    },
+    {
+      "url": "https://www.750g.com/fondue-de-poireaux-r5395.htm",
+      "site": "750g.com",
+      "nom": "Fondue de poireaux",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 kg de poireau",
+        "60 g de beurre",
+        "3 c. à s. de crème fraîche",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 472,
+        "sha256": "553eebab8048633d"
+      },
+      "sha256_page": "a82c068ff58d87dd"
+    },
+    {
+      "url": "https://www.750g.com/fondue-de-poireaux-et-de-carottes-au-cidre-r50145.htm",
+      "site": "750g.com",
+      "nom": "Fondue de poireaux et de carottes au cidre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "Sel ou sel fin",
+        "Poivre",
+        "Fines herbes",
+        "Huile d'olive",
+        "2 c. à s. de crème fraîche",
+        "400 ml de cidre",
+        "4 carottes",
+        "2 échalotes",
+        "4 blancs de poireau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 434,
+        "sha256": "d51a515c084e8f94"
+      },
+      "sha256_page": "857de000eee2dee1"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "dish": "Pappa al pomodoro",
+  "slug": "pappa-al-pomodoro",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/196-flavors/recettes/pappa-al-pomodoro-cd8999a9-bef2-458a-8213-984874613c9b",
+      "site": "chefsimon.com",
+      "nom": "Pappa al Pomodoro",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "800 g de tomates ((ou tomates pelées en conserve de haute qualité))",
+        "300 g de pain toscan rassis (, tranché)",
+        "1 l de bouillon de légumes",
+        "1 bouquet de basilic",
+        "2 gousses d'ail",
+        "1 cuillère à café de sucre",
+        "Sel",
+        "Poivre noir fraîchement moulu",
+        "Huile d'olive extra vierge ((au goût))"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 188,
+        "sha256": "fc1944d88c8133e2"
+      },
+      "sha256_page": "b5c2a8c3185b12b4"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-recettes-de-nathou/recettes/pappa-al-pomodoro",
+      "site": "chefsimon.com",
+      "nom": "Pappa al'pomodoro",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "400 gr de tomates bien mûres et très goûteuses (Roma, Olivette...)",
+        "100 gr de pain de campagne pas trop frais",
+        "1 gousse d'ail",
+        "8 feuilles de basilic frais",
+        "15 cl de bouillon de légumes (eau chaude + cube)",
+        "huile d'olive",
+        "sel et poivre du moulin",
+        "ciabatta ou panini pour accompagner"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "3faed397fe9d4e70"
+    }
+  ]
+}

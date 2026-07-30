@@ -1,0 +1,87 @@
+{
+  "dish": "Ratatouille provençale",
+  "slug": "ratatouille-provencale",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_ratatouille-provencale_80582.aspx",
+      "site": "marmiton.org",
+      "nom": "Ratatouille provençale : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "4 oignons",
+        "5 gousses d'ail",
+        "2 aubergines",
+        "5 courgettes",
+        "6 tomates",
+        "0.5 poivron pour la couleur (rouge ou jaune)",
+        "huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 780,
+        "sha256": "2e5b490e04ad3920"
+      },
+      "sha256_page": "b45f835c312e456b"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_ma-ratatouille-provencale-aux-lardons_171839.aspx",
+      "site": "marmiton.org",
+      "nom": "Ma ratatouille provençale aux lardons : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "2 courgettes",
+        "1 aubergine",
+        "1 poivron vert",
+        "1 poivron jaune (pour la couleur)",
+        "1 oignon blanc",
+        "3 tomates mures",
+        "100 g de lardons nature",
+        "herbes de Provence",
+        "huile d'olive",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 795,
+        "sha256": "c87e2a8e3f478c56"
+      },
+      "sha256_page": "df69c13c538c79f3"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mag6357/recettes/ratatouille-a-la-provencale",
+      "site": "chefsimon.com",
+      "nom": "Ratatouille à la provençale",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "1 aubergine",
+        "3 courgettes",
+        "2 oignons",
+        "6 gousses d'ail",
+        "8 cuillères à soupe d'huile d'olive (Soit 12 cl)",
+        "1 bocal d'olive noir (160g net égoûté environ)",
+        "2 poivrons (rouge et vert)",
+        "1 belle tomate jaune côtelée",
+        "4 tomates ronde en grappe",
+        "2 branches de thym",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 553,
+        "sha256": "3d717ca5e9833e01"
+      },
+      "sha256_page": "be4e95685a87aa53"
+    }
+  ]
+}

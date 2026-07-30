@@ -1,0 +1,32 @@
+{
+  "dish": "Wiener schnitzel",
+  "slug": "wiener-schnitzel",
+  "sources_count": 1,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_wiener-schnitzel-ou-escalope-viennoise_94252.aspx",
+      "site": "marmiton.org",
+      "nom": "Wiener Schnitzel ou escalope viennoise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 escalopes de veau",
+        "2 oeufs .",
+        "3 cuillères à café de lait .",
+        "1 huile .",
+        "poivre .",
+        "sel",
+        "200 g de farine .",
+        "150 g de chapelure ,en rajouter si nécessaire."
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 503,
+        "sha256": "30667facd93274d2"
+      },
+      "sha256_page": "a6259c4e62e34185"
+    }
+  ]
+}

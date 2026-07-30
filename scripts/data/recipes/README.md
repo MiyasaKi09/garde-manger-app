@@ -278,3 +278,85 @@ comme une épice, le piment doux d'Anglet comme un condiment, un œuf pour quatr
 parts comme une quantité dérisoire, et « ajouter aux oignons des tomates » comme
 un ajout d'oignons. Un contrôle qui crie à chaque ligne ne se lit plus ; les cas
 corrigés sont verrouillés dans `tests/data/checkDerivationLabel.test.js`.
+
+## Reprendre une recette du corpus historique
+
+Les 309 recettes d'origine ont été écrites sans dossier de sources : aucune n'en
+a, 281 n'ont pas d'arbitrage canonique, et la médiane est de **quatre étapes**
+dont la moitié font moins de soixante signes. Les reprendre au propre, c'est leur
+faire passer la même chaîne que les recettes sourcées — mais le résultat REMPLACE
+la recette au lieu de s'ajouter à elle.
+
+```bash
+node scripts/data/recipes/find-recipe-urls.mjs --plan plan.json "Soupe à l'oignon gratinée"
+node scripts/data/recipes/scrape-recipe-sources.mjs plan.json --travail /hors-depot.json
+node scripts/data/recipes/audit-recipe-sources.mjs
+node scripts/data/recipes/synthesize-source-quantities.mjs --tous --json synthese.json
+        (rédaction, avec « remplace »)
+node scripts/data/recipes/validate-recipe-batch.mjs lot.json
+node scripts/data/recipes/merge-recipe-batch.mjs lot.json
+```
+
+### Ce que « remplace » exige
+
+Une recette reprise porte `"remplace": "<son propre code>"`. Trois règles, et la
+raison de chacune :
+
+- **elle garde le code de la recette qu'elle remplace.** Le planning et
+  l'historique des repas s'y réfèrent ; lui donner un code neuf orphelinerait ce
+  qui a déjà été cuisiné.
+- **la cible doit exister.** Un remplacement qui se trompe de code est un
+  remplacement qui n'a pas regardé — même règle que pour les arbitrages
+  d'ingrédients.
+- **renommer est permis, pas usurper.** « Soupe à l'oignon » peut devenir « Soupe
+  à l'oignon gratinée », mais pas prendre le nom qu'une autre recette porte déjà.
+
+Les trois maillons de la chaîne appliquent la même règle : le moteur de
+dérivation (drapeau `--reprendre`), le validateur, et le versement. Ils ont dû
+être alignés un par un — le versement savait reprendre quand les deux autres
+refusaient encore pour doublon de code, ce qui rendait la reprise impraticable.
+
+### La limite de la chaîne, à connaître avant de choisir un lot
+
+Le sourçage interroge les moteurs internes de marmiton, chefsimon et 750g. Ce
+sont des sites français : ils couvrent largement la cuisine française et les
+classiques internationaux, beaucoup moins un *cong you bing* ou un *kenyan beef
+wet fry*. Un lot se compose donc en soumettant plus de plats que nécessaire et en
+gardant ceux qui rendent assez de sources — deux solides sur deux sites
+distincts. Les plats que ces trois sites ne couvrent pas ne se reprennent pas par
+cette chaîne, et le dire est plus honnête que d'écrire de mémoire.
+
+## Retirer une recette du corpus
+
+```bash
+node scripts/data/recipes/merge-recipe-batch.mjs --retirer FR-007 --motif "…"
+```
+
+C'est la seule opération du versement qui soustrait, et elle ne s'emploie que
+pour un doublon ou une fiche qu'aucun dossier ne soutient. **Elle n'efface rien
+en base.** Le chargeur remplace ce qu'il porte et laisse le reste : une recette
+sortie du dépôt garderait sa ligne, toujours offerte au catalogue et au
+planificateur. Le retrait la **marque** — `quality_level = 'D'`, qui la sort du
+catalogue éditorial (A et B seulement), et `planning_eligible = false`, qui la
+sort du planificateur — et écrit le motif dans `eligibility_issues`, là où
+l'application lit déjà les raisons de non-éligibilité.
+
+Marquer plutôt qu'effacer, c'est le point. Des repas déjà planifiés référencent
+la recette, et chacun garde son **instantané d'exécution** — ingrédients, étapes
+et nutrition figés au moment de la planification — qui le rend lisible sans elle.
+La supprimer orphelinerait ce qui a déjà été cuisiné.
+
+Le registre `data/recipes/retraits.json` survit au corpus, qui ne garde que ce
+qu'il porte : c'est lui que le chargeur relit à chaque génération pour réémettre
+la marque. Le retrait est donc rejouable et idempotent.
+
+Trois refus, chacun contre un corpus incohérent plutôt que contre un caprice :
+
+- **un code absent du corpus** — se tromper de code, c'est retirer sans regarder.
+- **un retrait sans motif** — six mois plus tard on saurait qu'un plat a disparu,
+  pas pourquoi, donc on ne pourrait ni le défendre ni le refaire.
+- **une base dont des variantes dérivent** — les laisser sans parent, c'est les
+  priver de ce qui les calcule. Les retirer d'abord, ou renoncer.
+
+Retirer une recette n'est pas une décision technique : le mécanisme s'arrête là,
+l'arbitrage revient à l'utilisateur.

@@ -1,0 +1,163 @@
+{
+  "dish": "Purée de pommes de terre",
+  "slug": "puree-de-pommes-de-terre",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_puree-de-pommes-de-terre-maison_28054.aspx",
+      "site": "marmiton.org",
+      "nom": "Purée de pommes de terre maison : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 kg de pomme de terre (chair tendre, variété pour purée)",
+        "20 cl de lait",
+        "crème fraîche",
+        "muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 387,
+        "sha256": "783cb30d85d7d7f6"
+      },
+      "sha256_page": "a06e19a57f56d55f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_puree-de-pommes-de-terre-a-l-ail_37139.aspx",
+      "site": "marmiton.org",
+      "nom": "Purée de pommes de terre à l'ail : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 kg de pomme de terre à purée",
+        "4 gousses d'ail",
+        "50 g de beurre",
+        "25 cl de crème liquide",
+        "1 cuillère à soupe de moutarde à l'ancienne",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 211,
+        "sha256": "25dfaf35329874ff"
+      },
+      "sha256_page": "50f30717cc4ca059"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_divine-puree-fenouil-et-pommes-de-terre_55358.aspx",
+      "site": "marmiton.org",
+      "nom": "Divine purée fenouil et pommes de terre : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "2 bulbes de fenouil",
+        "6 pommes de terre",
+        "40 g de beurre",
+        "2 cuillères à soupe de crème fraîche épaisse",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 671,
+        "sha256": "ed45f33c149f58ce"
+      },
+      "sha256_page": "1771221334c6ca48"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/puree-de-pommes-de-terre--5",
+      "site": "chefsimon.com",
+      "nom": "Purée de pommes de terre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 kg de pommes de terre",
+        "100 g de beurre",
+        "5 cl de crème",
+        "sel",
+        "poivre",
+        "muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 622,
+        "sha256": "1c250263b5ecbaf3"
+      },
+      "sha256_page": "4393601fdde8605a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/puree-de-pommes-de-terre-a-l-ail-confit",
+      "site": "chefsimon.com",
+      "nom": "Purée de pommes de terre à l'ail confit",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 kg de pommes de terre",
+        "100 g de beurre doux",
+        "5 cl de crème selon la qualité des pommes de terre",
+        "sel",
+        "poivre",
+        "1 tête d'ail",
+        "persil plat ou frisé haché"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1064,
+        "sha256": "026bf831a204e1fd"
+      },
+      "sha256_page": "4e6fffe7189e5155"
+    },
+    {
+      "url": "https://www.750g.com/puree-de-pommes-de-terre-et-de-carottes-r6335.htm",
+      "site": "750g.com",
+      "nom": "Purée de pommes de terre et de carottes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "6 pommes de terre",
+        "6 carottes",
+        "7,5 cl de lait",
+        "30 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 222,
+        "sha256": "f1da6933b4237923"
+      },
+      "sha256_page": "4b968eaf4e9898e8"
+    },
+    {
+      "url": "https://www.750g.com/puree-de-pommes-de-terre-carottes-en-cocotte-r34672.htm",
+      "site": "750g.com",
+      "nom": "Purée de pommes de terre carottes en cocotte",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "10 cl de lait",
+        "1 cà soupe de fond de bœuf déshydraté",
+        "Sel",
+        "Poivre",
+        "25 g de beurre demisel",
+        "50 g de beurre",
+        "400 g de carottes",
+        "Ciboulette",
+        "600 g de pommes de terre à chair farineuse"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 781,
+        "sha256": "f943d64eed433730"
+      },
+      "sha256_page": "515bf7fa0ae81391"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "retraits": [
+    {
+      "code": "FR-007",
+      "family": "Ratatouille provençale",
+      "motif": "Doublon de SRC-051 « Ratatouille », écrite depuis un dossier de sept sources. Garder les deux mettait le même plat deux fois au corpus, que le moteur de diversité comptait comme deux plats distincts dans une semaine. Le retrait ne supprime rien en base : vingt-deux créneaux planifiés référencent FR-007 — neuf repas distincts, dont trois à venir sur le plan vivant — et chacun garde son instantané d'exécution, ingrédients, étapes et nutrition figés au moment de la planification, ce qui les rend lisibles sans elle."
+    }
+  ]
+}

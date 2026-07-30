@@ -1,0 +1,232 @@
+{
+  "dish": "Œufs en meurette",
+  "slug": "oeufs-en-meurette",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_oeufs-en-meurette-de-ma-maman_42411.aspx",
+      "site": "marmiton.org",
+      "nom": "Oeufs en Meurette de ma Maman : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 oeuf par personne",
+        "100 g de lard (ou de lardons) fumé",
+        "100 g de champignons de Paris",
+        "1 oignon",
+        "1 gousse d'ail",
+        "1 cuillère à soupe de farine",
+        "50 cl de vin rouge (moi je préfère 2/3 vin rouge, 1/3 eau)",
+        "1 bouquet garni",
+        "1 carré de sucre",
+        "beurre",
+        "poivre",
+        "sel",
+        "vieille tranches de pain rassis pour faire des croûtons"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 885,
+        "sha256": "c48f56bd75650bf5"
+      },
+      "sha256_page": "ceb5bd85dbcac101"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_oeufs-en-meurette_22037.aspx",
+      "site": "marmiton.org",
+      "nom": "Oeufs en meurette : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "6 oeufs",
+        "100 ml de vinaigre",
+        "6 tranches de pains",
+        "50 g de beurre",
+        "3 oignons",
+        "75 cl de vin rouge corsé",
+        "150 g de lardons fumés",
+        "1 cuillère à soupe de farine",
+        "thym",
+        "laurier"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 620,
+        "sha256": "5d5f15a45ced0192"
+      },
+      "sha256_page": "63f7f3e658cfe200"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_oeufs-en-meurette-au-vin-rouge-et-a-la-moelle_24089.aspx",
+      "site": "marmiton.org",
+      "nom": "Oeufs en meurette au vin rouge et à la moëlle : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "100 g de moelles",
+        "100 g de lardons demi-sel",
+        "60 g de beurre",
+        "50 cl de vin rouge",
+        "8 oeufs",
+        "1 carotte",
+        "1 échalote",
+        "1 oignon",
+        "1 bouquet garni",
+        "1 morceau de sucre",
+        "10 brins de ciboulette",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 822,
+        "sha256": "5ef6abcf9a3c3a85"
+      },
+      "sha256_page": "bbb059ec16859d7c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/oeufs-de-france/recettes/l-oeuf-meurette-en-ile-flottante",
+      "site": "chefsimon.com",
+      "nom": "L’œuf meurette en île flottante",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 gros œufs",
+        "200 g de lardons",
+        "2 échalotes",
+        "60 g de beurre doux",
+        "200 g de champignons de Paris",
+        "1 bouquet de persil plat",
+        "Jeunes pousses pour la décoration",
+        "2 feuilles de laurier",
+        "2 c à c de thym sec",
+        "1 l de vin rouge",
+        "50 g de fond de veau",
+        "1 c à s rase de sucre",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 971,
+        "sha256": "d7c908c366a281b2"
+      },
+      "sha256_page": "78ca8eed19d71138"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/oeufs-de-france/recettes/l-oeuf-mollet-facon-meurette-en-declinaison-de-garniture",
+      "site": "chefsimon.com",
+      "nom": "L’œuf mollet façon meurette en déclinaison de garniture",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 œufs + 2 blancs",
+        "400 g de poitrine fumée",
+        "Vinaigre d’alcool blanc",
+        "185 g de farine",
+        "6 g de sel fin",
+        "60 g de lait",
+        "95 g de beurre doux",
+        "1 grosse bote de persil plat",
+        "500 g de champignons de Paris",
+        "2 oignons",
+        "2 grosses échalotes",
+        "1 bouquet garni",
+        "90 g de beurre",
+        "40 cl de pinot noir de Bourgogne"
+      ],
+      "etapes_empreinte": {
+        "nombre": 19,
+        "signes": 1811,
+        "sha256": "11ebeb8fdecad283"
+      },
+      "sha256_page": "5e27f3c0d27b83df"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/passeportpourlacuisine/recettes/oeufs-meurette-aux-lentilles",
+      "site": "chefsimon.com",
+      "nom": "Oeufs meurette aux lentilles",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 grosse carotte",
+        "200 g de lentilles vertes",
+        "1 cube de bouillon de légumes",
+        "200 g de lardons fumés",
+        "50 cl de vin rouge de Bourgogne",
+        "25 g de beurre",
+        "1 cs de vinaigre blanc",
+        "2 gros œufs extra frais",
+        "½ botte de ciboulette",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 885,
+        "sha256": "a5a06519e6000b35"
+      },
+      "sha256_page": "df4a502a2414a775"
+    },
+    {
+      "url": "https://www.750g.com/oeuf-meurette-r1465.htm",
+      "site": "750g.com",
+      "nom": "Œuf meurette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "Aromate",
+        "1 c. à s. de farine",
+        "1 noix de beurre",
+        "Sel ou sel fin",
+        "Poivre",
+        "2 échalotes",
+        "Ail",
+        "3 c. à s. de vinaigre de vin",
+        "½ l de vin rouge",
+        "2 oignons",
+        "6 oeufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 455,
+        "sha256": "1a3292b677087408"
+      },
+      "sha256_page": "bc8ed59eb5482d17"
+    },
+    {
+      "url": "https://www.750g.com/oeufs-en-meurette-r204356.htm",
+      "site": "750g.com",
+      "nom": "Œufs en meurette",
+      "portions": "4 pièces",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 oeufs  extra frais",
+        "50 cl de vin rouge",
+        "30 cl de fond brun",
+        "8 champignons de Paris",
+        "2 tranches de pain de mie",
+        "1 échalote",
+        "1 branche de thym",
+        "1 feuille de laurier",
+        "1 pincée de sucre",
+        "Huile d'olive",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1274,
+        "sha256": "588fdbf5499c36d0"
+      },
+      "sha256_page": "ef43f26dc772912d"
+    }
+  ]
+}

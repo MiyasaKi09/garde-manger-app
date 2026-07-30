@@ -4,7 +4,7 @@
  * review tasks. It never promotes a recipe with unresolved food truth.
  */
 import { createHash } from 'node:crypto'
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { normalizeName } from '../lib/normalize.mjs'
@@ -12,6 +12,7 @@ import { normalizeName } from '../lib/normalize.mjs'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
 const OUT = join(__dirname, '..', 'out')
+const RETRAITS = join(ROOT, 'data', 'recipes', 'retraits.json')
 const corpus = JSON.parse(readFileSync(join(ROOT, 'data', 'recipes', 'corpus-v3.json'), 'utf8'))
 const foodReport = JSON.parse(readFileSync(join(OUT, 'recipe-food-match-report.json'), 'utf8'))
 const eligibilityByCode = new Map(foodReport.recipe_eligibility.map((item) => [item.code, item]))
@@ -329,6 +330,47 @@ BEGIN
 END
 $composition$;
 `
+
+// ── Recettes retirées ───────────────────────────────────────────────────────
+// Le chargeur n'efface rien : il remplace ce qu'il porte et laisse le reste. Une
+// recette sortie du corpus garderait donc sa ligne en base, toujours offerte au
+// catalogue et au planificateur — retirée dans le dépôt et nulle part ailleurs.
+//
+// On la MARQUE au lieu de la supprimer, et c'est voulu : des repas déjà planifiés
+// la référencent, et ils gardent leur instantané d'exécution — ingrédients,
+// étapes et nutrition figés au moment de la planification — qui les rend lisibles
+// sans elle. La supprimer orphelinerait ce qui a déjà été cuisiné.
+//
+// Le retrait tient à DEUX colonnes de la version, et à elles seules :
+// `quality_level = 'D'` la sort du catalogue éditorial, qui n'admet que A et B,
+// et `planning_eligible = false` la sort du planificateur. Le motif est écrit
+// dans `eligibility_issues`, là où l'application lit déjà les raisons de
+// non-éligibilité.
+//
+// La famille, elle, n'est PAS touchée. Elle n'est atteignable qu'à travers ses
+// versions : sans version en A ou B, elle ne produit plus aucune ligne de
+// catalogue et devient invisible d'elle-même. Lui poser un statut « retired »
+// serait inventer un mot que rien dans l'application ne lit — un vocabulaire
+// d'un seul terme, qui donnerait l'illusion d'un mécanisme là où il n'y a
+// qu'une étiquette.
+const retraits = existsSync(RETRAITS) ? (JSON.parse(readFileSync(RETRAITS, 'utf8')).retraits || []) : []
+for (const retrait of retraits) {
+  sql += `
+-- Retrait de ${retrait.code} — ${retrait.family}
+UPDATE culinary.recipe_versions rv
+SET quality_level = 'D',
+    planning_eligible = false,
+    eligibility_issues = jsonb_build_array(jsonb_build_object(
+      'code', 'recipe_retired',
+      'family', ${q(retrait.family)},
+      'reason', ${q(retrait.motif)}
+    ))
+FROM ops.source_datasets ds
+WHERE ds.id = rv.source_dataset_id
+  AND ds.code = 'myko_editorial_v3'
+  AND upper(rv.source_record_key) = ${q(retrait.code)};
+`
+}
 
 const report = {
   corpus_version: corpus.corpus_version,

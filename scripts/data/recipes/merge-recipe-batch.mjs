@@ -14,8 +14,21 @@
  *
  *   node scripts/data/recipes/merge-recipe-batch.mjs lot.json
  *   node scripts/data/recipes/merge-recipe-batch.mjs lot.json --dry-run
+ *   node scripts/data/recipes/merge-recipe-batch.mjs --retirer FR-007 --motif "…"
+ *
+ * `--retirer` fait la même opération en soustrayant : retirer une recette du
+ * corpus demande de reconstruire les mêmes graphes qu'en ajouter une. Le premier
+ * cas est apparu avec la reprise du corpus historique, qui met au jour des
+ * doublons — « Ratatouille provençale » et « Ratatouille » sont le même plat, et
+ * le moteur de diversité en comptait deux.
+ *
+ * Un retrait ne supprime RIEN en base. Il sort la recette du corpus, donc des
+ * prochains chargements et du catalogue, et inscrit le retrait à un registre que
+ * la migration lira pour marquer la ligne. Les repas déjà planifiés qui la
+ * référencent gardent leur instantané d'exécution — ingrédients, étapes et
+ * nutrition figés au moment de la planification — et restent donc lisibles.
  */
-import { readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { normalizeName } from '../lib/normalize.mjs'
@@ -23,16 +36,25 @@ import { normalizeName } from '../lib/normalize.mjs'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
 const CORPUS = join(ROOT, 'data', 'recipes', 'corpus-v3.json')
+const REGISTRE_RETRAITS = join(ROOT, 'data', 'recipes', 'retraits.json')
 
-const [source, ...flags] = process.argv.slice(2)
-if (!source) {
+const arguments_ = process.argv.slice(2)
+const valeurDe = (nom) => {
+  const position = arguments_.indexOf(nom)
+  return position >= 0 ? arguments_[position + 1] : null
+}
+const aRetirer = valeurDe('--retirer')
+const motifDuRetrait = valeurDe('--motif')
+const source = aRetirer ? null : arguments_[0]
+if (!source && !aRetirer) {
   console.error('Usage : merge-recipe-batch.mjs <lot.json> [--dry-run]')
+  console.error('        merge-recipe-batch.mjs --retirer <CODE> --motif "<pourquoi>"')
   process.exit(2)
 }
-const simulation = flags.includes('--dry-run')
+const simulation = arguments_.includes('--dry-run')
 
 const corpus = JSON.parse(readFileSync(CORPUS, 'utf8'))
-const lot = JSON.parse(readFileSync(source, 'utf8'))
+const lot = source ? JSON.parse(readFileSync(source, 'utf8')) : { recipes: [] }
 const nouvelles = Array.isArray(lot) ? lot : (lot.recipes || lot.recettes || [])
 
 const parCode = new Map(corpus.recipes.map((recette) => [recette.code, recette]))
@@ -87,9 +109,40 @@ if (collisions.length) {
   process.exit(1)
 }
 
+// ── Retrait d'une recette ───────────────────────────────────────────────────
+// Un retrait se refuse dans trois cas, et chacun protège d'un corpus incohérent
+// plutôt que d'un caprice.
+const retraits = []
+if (aRetirer) {
+  const cible = parCode.get(aRetirer)
+  if (!cible) {
+    console.error(`Retrait refusé : ${aRetirer} n'est pas au corpus.`)
+    process.exit(1)
+  }
+  if (!String(motifDuRetrait || '').trim()) {
+    console.error('Retrait refusé : un retrait sans motif ne se relit pas. Ajoutez --motif.')
+    process.exit(1)
+  }
+  const derivees = corpus.recipes.filter((recette) => recette.derived_from === aRetirer)
+  if (derivees.length) {
+    console.error(`Retrait refusé : ${derivees.length} variante(s) dérivent de ${aRetirer} — ${derivees.map((r) => r.code).join(', ')}.`)
+    console.error('Retirer leur base les laisserait orphelines. Retirez-les d\'abord, ou renoncez.')
+    process.exit(1)
+  }
+  // Le corpus ne modélise pas encore les sous-recettes par code, mais une
+  // recette citée comme composant d'une autre le serait par son nom de famille.
+  const citee = corpus.recipes.filter((recette) => recette.code !== aRetirer
+    && (recette.ingredients || []).some((ingredient) => normalizeName(ingredient.form) === normalizeName(cible.family)))
+  if (citee.length) {
+    console.error(`Retrait refusé : ${citee.map((r) => r.code).join(', ')} emploient « ${cible.family} » comme ingrédient.`)
+    process.exit(1)
+  }
+  retraits.push({ code: aRetirer, family: cible.family, motif: String(motifDuRetrait).trim() })
+}
+
 const ajouts = nouvelles.filter((recette) => !remplacements.has(recette.code))
 const recettes = [
-  ...corpus.recipes.map((recette) => {
+  ...corpus.recipes.filter((recette) => recette.code !== aRetirer).map((recette) => {
     const reprise = remplacements.get(recette.code)
     if (!reprise || reprise.avant !== recette) return recette
     // Le champ `remplace` est une consigne de fusion, pas une donnée de recette :
@@ -151,7 +204,13 @@ const fusionne = {
   forms_order: grapheFormes.map((forme, rang) => ({ rank: rang + 1, name: forme.name, recipe_count: forme.recipe_count })),
 }
 
-console.log(`Recettes : ${corpus.recipes.length} → ${recettes.length} (${ajouts.length} ajout·s, ${remplacements.size} reprise·s)`)
+if (retraits.length) {
+  for (const retrait of retraits) {
+    console.log(`Retrait : ${retrait.code} « ${retrait.family} »`)
+    console.log(`  motif : ${retrait.motif}`)
+  }
+}
+console.log(`Recettes : ${corpus.recipes.length} → ${recettes.length} (${ajouts.length} ajout·s, ${remplacements.size} reprise·s, ${retraits.length} retrait·s)`)
 console.log(`  formes d'aliments : ${corpus.food_form_graph.length} → ${fusionne.food_form_graph.length}`)
 console.log(`  techniques        : ${corpus.technique_graph.length} → ${fusionne.technique_graph.length}`)
 console.log(`  arômes            : ${corpus.aroma_graph.length} → ${fusionne.aroma_graph.length}`)
@@ -169,6 +228,23 @@ if (simulation) {
   console.log('\nSimulation : rien écrit.')
 } else {
   writeFileSync(CORPUS, `${JSON.stringify(fusionne, null, 2)}\n`)
+  // Le registre des retraits survit au corpus : celui-ci ne garde que ce qui
+  // existe, or la base garde la ligne et il faut pouvoir la marquer. Sans ce
+  // registre, un retrait se ferait dans le corpus et nulle part ailleurs — la
+  // recette continuerait d'être offerte par le catalogue.
+  if (retraits.length) {
+    const registre = existsSync(REGISTRE_RETRAITS)
+      ? JSON.parse(readFileSync(REGISTRE_RETRAITS, 'utf8'))
+      : { retraits: [] }
+    for (const retrait of retraits) {
+      const deja = registre.retraits.findIndex((entree) => entree.code === retrait.code)
+      if (deja >= 0) registre.retraits[deja] = retrait
+      else registre.retraits.push(retrait)
+    }
+    registre.retraits.sort((gauche, droite) => gauche.code.localeCompare(droite.code))
+    writeFileSync(REGISTRE_RETRAITS, `${JSON.stringify(registre, null, 2)}\n`)
+    console.log(`Registre des retraits : ${registre.retraits.length} entrée(s).`)
+  }
   console.log('\nCorpus écrit. Enchaînez :')
   console.log('  node scripts/data/foods/build-recipe-food-corpus.mjs')
   console.log('  node scripts/data/recipes/export-authoring-vocabulary.mjs')
