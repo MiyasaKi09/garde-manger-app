@@ -10,8 +10,8 @@
     "recettes_actuelles": 576,
     "cible_recettes": 3000,
     "reste_a_ecrire": 2424,
-    "formes_employables": 452,
-    "formes_bloquees": 82
+    "formes_employables": 454,
+    "formes_bloquees": 80
   },
   "formes_employables": [
     {
@@ -4017,6 +4017,27 @@
         "carbsG": 19.1,
         "fatG": 12.9,
         "fiberG": 34.9
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Pâte brisée crue",
+      "normalise": "pate brisee crue",
+      "categorie": null,
+      "recettes_actuelles": 6,
+      "roles_observes": [
+        "fond"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 381,
+        "proteinG": 6.33,
+        "carbsG": 44.9,
+        "fatG": 19.5,
+        "fiberG": 1.88
       },
       "source": "ciqual_2020"
     },
@@ -9677,6 +9698,27 @@
       "source": "ciqual_2020"
     },
     {
+      "nom": "Pâte sablée crue",
+      "normalise": "pate sablee crue",
+      "categorie": null,
+      "recettes_actuelles": 1,
+      "roles_observes": [
+        "fond"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 383,
+        "proteinG": 5.95,
+        "carbsG": 53.6,
+        "fatG": 15.8,
+        "fiberG": 1.65
+      },
+      "source": "ciqual_2020"
+    },
+    {
       "nom": "Pâtes fraîches aux œufs crues",
       "normalise": "pates fraiches aux oeufs crues",
       "categorie": "cereales_feculents",
@@ -11249,30 +11291,6 @@
       "recettes_actuelles": 1,
       "roles_observes": [
         "garniture"
-      ],
-      "motifs": [
-        "confiance C — proxy assumé, non publiable"
-      ]
-    },
-    {
-      "nom": "Pâte brisée crue",
-      "normalise": "pate brisee crue",
-      "categorie": "produits_sucres",
-      "recettes_actuelles": 6,
-      "roles_observes": [
-        "fond"
-      ],
-      "motifs": [
-        "confiance C — proxy assumé, non publiable"
-      ]
-    },
-    {
-      "nom": "Pâte sablée crue",
-      "normalise": "pate sablee crue",
-      "categorie": "produits_sucres",
-      "recettes_actuelles": 1,
-      "roles_observes": [
-        "fond"
       ],
       "motifs": [
         "confiance C — proxy assumé, non publiable"

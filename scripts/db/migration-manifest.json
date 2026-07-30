@@ -1484,5 +1484,25 @@
     "baseline": "new",
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260730160000_catalog_pate_brisee_exacte.sql",
+    "github_version": "20260730160000",
+    "name": "catalog_pate_brisee_exacte",
+    "sha256": "0ff1fb4a4b42620768ccaa84aa21cd4d4643dd35486fadddeb251ad7a4620f78",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260730160500_corpus_v3_392_publiables.sql",
+    "github_version": "20260730160500",
+    "name": "corpus_v3_392_publiables",
+    "sha256": "e344b7bb21bc52b6cf3b7dc434f57d4033b8d6600b668f0772045132f2ef704b",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
   }
 ]
