@@ -1,0 +1,648 @@
+{
+ "recipes": [
+  {
+   "code": "FR-003",
+   "remplace": "FR-003",
+   "family": "Carbonade flamande",
+   "cuisine_origin": "Belgique et Flandre française",
+   "identity_level": "named_traditional_dish",
+   "category": "plat mijoté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 6,
+   "prep_minutes": 30,
+   "cook_minutes": 165,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:carbonade-flamande",
+    "marmiton.org",
+    "chefsimon.com"
+   ],
+   "canonical_arbitration": "Six sources, de trois à huit portions. Ramenées à la portion, elles donnent 194 g de viande, 125 g de bière, 83 g d'oignon et une tranche de pain d'épices par personne : d'où 1,2 kg, 75 cl, 500 g et 150 g pour six ; prépa et cuisson suivent aussi les médianes, 30 min et 2 h 45. Premier désaccord, le morceau de bœuf : bourguignon, paleron, gîte, hampe, macreuse, jarret, joue — six sources, sept coupes, toutes des morceaux de braise riches en collagène. Aucune ne fait autorité contre les autres, et le catalogue ne porte ni macreuse ni joue ni gîte : on retient la forme générique « Bœuf à braiser cru » et l'instruction d'achat descend dans les étapes, là où le choix reste ouvert. Deuxième désaccord, la bière : trois sources nomment une blonde du Nord (Leffe, 3 Monts, blonde du Nord), deux une brune (bière brune, Jenlain ou Leffe brune), une une bière de table ou une gueuze. La blonde a la pluralité, on la retient ; la brune passe en variante attestée, car elle change la couleur et l'amertume de la sauce sans toucher à la méthode. Reste sur la bière un désaccord que cette reprise avait d'abord passé sous silence : la moitié du dossier ne mouille pas à la bière seule. Une source ajoute 40 cl d'eau à ses 75 cl de bière, une autre 1 litre de fond de veau lié à sa bouteille, une troisième descend à 25 cl de bière pour 25 cl de bouillon de bœuf — trois sources sur six, soit exactement le seuil, quand les trois autres braisent à la bière et à rien d'autre. Aucune majorité ne se dégage, on tranche donc pour la bière seule : c'est elle qui porte l'identité du plat, et couper le liquide de moitié éteindrait l'amertume que la cassonade et le pain d'épices sont là pour équilibrer. Le mouillement d'appoint passe en variante attestée, où il sert à qui trouve la sauce trop courte ou la bière trop amère. Troisième point, le sucre : cinq sources sur six en mettent, sous trois noms — sucre roux, cassonade, vergeoise. La vergeoise est absente du catalogue et une source donne elle-même l'équivalence (« vergeoise blonde ou brune, vous pouvez remplacer par de la cassonade ») : on écrit donc Cassonade, à 35 g, médiane des cinq lignes ramenées à la portion. Le pain d'épices tartiné de moutarde est ce que quatre sources partagent le plus littéralement : c'est le liant du plat, il reste non optionnel. Le bouquet garni que trois sources emploient est bloqué au vocabulaire comme proxy non publiable ; on le décompose en thym et laurier, ce que la sixième source écrit d'ailleurs en clair (« laurier et thym en branche »). Deux corrections sur la recette remplacée : le vinaigre de cidre qu'elle portait n'est attesté nulle part — le dossier dit « vinaigre », « vinaigre de vin », « vinaigre de Xérès », on écrit donc Vinaigre de vin rouge — et la farine que quatre sources sur six emploient pour singer manquait à sa liste. Enfin, les lardons ou la poitrine de porc (deux sources), les carottes (une), les petits oignons glacés (une) et l'ail (une) restent sous le seuil de moitié : ils passent en variantes plutôt qu'en ingrédients. Le nom du corpus est juste, la recette n'est pas renommée.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Viande braisée et sauce, sans féculent dans l'assiette : la carbonade appelle des frites, des pommes vapeur ou une purée pour saucer."
+   },
+   "ingredients": [
+    {
+     "form": "Bœuf à braiser cru",
+     "quantity": 1200,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Bière blonde",
+     "quantity": 750,
+     "unit": "ml",
+     "role": "liquide de braisage",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 500,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Pain d'épices",
+     "quantity": 150,
+     "unit": "g",
+     "role": "liaison et douceur",
+     "optional": false
+    },
+    {
+     "form": "Moutarde de Dijon",
+     "quantity": 50,
+     "unit": "g",
+     "role": "condiment",
+     "optional": false
+    },
+    {
+     "form": "Cassonade",
+     "quantity": 35,
+     "unit": "g",
+     "role": "équilibre sucré",
+     "optional": false
+    },
+    {
+     "form": "Farine de blé T55",
+     "quantity": 30,
+     "unit": "g",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 30,
+     "unit": "g",
+     "role": "saisie",
+     "optional": false
+    },
+    {
+     "form": "Vinaigre de vin rouge",
+     "quantity": 15,
+     "unit": "ml",
+     "role": "acidité",
+     "optional": false
+    },
+    {
+     "form": "Thym séché",
+     "quantity": 2,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Feuille de laurier séchée",
+     "quantity": 2,
+     "unit": "u",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 8,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Demander au boucher un morceau de bœuf à braiser désossé et paré — paleron, macreuse, joue ou gîte conviennent tous — et compter 1,2 kg de chair nette pour six. Le détailler en cubes de 60 à 70 g, puis les éponger : une viande humide bouillit au lieu de dorer."
+    },
+    {
+     "n": 2,
+     "instruction": "Faire chauffer le beurre dans une cocotte en fonte et colorer les cubes par petites fournées, sur toutes leurs faces. Les réserver dans un plat creux avec le jus qu'ils rendent — il repartira dans la sauce."
+    },
+    {
+     "n": 3,
+     "instruction": "Émincer les oignons et les laisser fondre vingt bonnes minutes dans la graisse de saisie, à feu modéré, jusqu'à ce qu'ils prennent une couleur blonde et se défassent. C'est cette compotée qui fait le corps de la carbonade : l'écourter donne une sauce maigre que rien ne rattrape ensuite."
+    },
+    {
+     "n": 4,
+     "instruction": "Saupoudrer les oignons de farine, remuer une minute pour la faire roussir, puis ajouter la cassonade et le vinaigre. Laisser caraméliser quelques secondes, puis verser la bière en raclant le fond de la cocotte pour décoller les sucs."
+    },
+    {
+     "n": 5,
+     "instruction": "Remettre la viande et son jus, saler, poivrer, glisser le thym et le laurier. Tartiner les tranches de pain d'épices de moutarde et les poser côté moutarde à la surface du liquide, sans les enfoncer : elles se déferont d'elles-mêmes et lieront la sauce en cours de cuisson."
+    },
+    {
+     "n": 6,
+     "instruction": "Couvrir et laisser mijoter deux heures trente à trois heures à très petit feu, ou au four à 150 °C. Le liquide doit à peine frémir : une ébullition franche resserre les fibres au lieu de les fondre, et la viande reste ferme quelle que soit la durée."
+    },
+    {
+     "n": 7,
+     "instruction": "Découvrir, remuer pour incorporer complètement le pain d'épices, et laisser réduire dix minutes si la sauce reste liquide. Goûter et rééquilibrer : une pointe de vinaigre si le sucre domine, une pointe de cassonade si l'amertume de la bière ressort trop."
+    },
+    {
+     "n": 8,
+     "instruction": "Retirer le thym et le laurier, puis laisser reposer la cocotte hors du feu un quart d'heure avant de servir. La carbonade est meilleure réchauffée le lendemain, quand la sauce a fini de prendre et que l'amer de la bière s'est arrondi."
+    }
+   ],
+   "techniques": [
+    "saisie",
+    "compotée d'oignons",
+    "singer",
+    "déglaçage à la bière",
+    "braisage",
+    "liaison au pain d'épices"
+   ],
+   "variants": [
+    "Bière brune belge (Leffe brune, Jenlain) à la place de la blonde : deux sources sur six la préfèrent",
+    "Mouillement d'appoint en plus de la bière — eau, bouillon de bœuf ou fond de veau lié, à hauteur d'un tiers à la moitié du liquide (trois sources sur six)",
+    "Bière de table ou gueuze à la place de la blonde du Nord (une source)",
+    "Lardons fumés ou poitrine de porc salée dorés avec la viande (deux sources)",
+    "Carottes en rondelles ajoutées avec les oignons (une source)",
+    "Petits oignons glacés au beurre et au sucre en garniture finale (une source)",
+    "Ail écrasé dans la compotée d'oignons (une source)",
+    "Tranches de pain rassis tartinées de moutarde si le pain d'épices manque (une source)"
+   ],
+   "formes_manquantes": [
+    {
+     "ligne_source": "40 g de vergeoise blonde ou brune / 50 g de vergeoise / 1 cas de vergeoise",
+     "sources": 3,
+     "motif": "La vergeoise n'a pas de forme au catalogue. Écrite en Cassonade sur l'équivalence qu'une source du dossier donne elle-même ; la vergeoise reste à créer."
+    },
+    {
+     "ligne_source": "macreuse / joue de bœuf / gîte / hampe",
+     "sources": 3,
+     "motif": "Aucune de ces coupes de braise n'existe au catalogue. Écrites sous la forme générique « Bœuf à braiser cru », le choix du morceau descendant dans les étapes."
+    }
+   ],
+   "sensory": {
+    "profile": "rich_winey",
+    "scores": {
+     "sweet": 3,
+     "salty": 3,
+     "acidic": 2,
+     "bitter": 2,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 2,
+     "richness": 4,
+     "freshness": 0,
+     "intensity": 4
+    },
+    "dominant_flavors": [
+     "bière_maltée",
+     "oignon_compoté",
+     "bœuf_braisé",
+     "aigre_doux"
+    ],
+    "aroma_families": [
+     "malt",
+     "oignon_compoté",
+     "pain_d_épices",
+     "moutarde"
+    ],
+    "target_textures": [
+     "viande_fondante",
+     "sauce_nappante"
+    ],
+    "signature_ingredients": [
+     "Bœuf à braiser cru",
+     "Bière blonde",
+     "Oignon jaune cru",
+     "Pain d'épices"
+    ],
+    "identity_guardrails": [
+     "Sans bière, ce n'est plus une carbonade : le liquide de braisage est l'identité même du plat, et le vin en ferait une daube.",
+     "Le pain d'épices tartiné de moutarde lie et adoucit la sauce ; remplacé par de la fécule, il ne reste qu'un ragoût de bœuf à la bière.",
+     "Le poids d'oignons compotés approche la moitié de celui de la viande ; réduit à un oignon, la sauce perd son corps et son sucre."
+    ]
+   },
+   "conservation": "Trois jours au réfrigérateur, et meilleure au deuxième jour : la sauce finit de lier et l'amertume de la bière s'arrondit. Se congèle trois mois. Réchauffer à couvert et à feu doux, en ajoutant une cuillerée d'eau si la sauce a trop épaissi au froid.",
+   "allergens": [
+    "gluten",
+    "lait",
+    "moutarde"
+   ]
+  },
+  {
+   "code": "FR-009",
+   "remplace": "FR-009",
+   "family": "Poulet à la moutarde et champignons",
+   "cuisine_origin": "France",
+   "identity_level": "domestic_standard",
+   "category": "plat en sauce",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 35,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:poulet-a-la-moutarde-et-champignons",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "canonical_arbitration": "Sept sources, de deux à quatre portions, deux sans rendement déclaré. Ramenées à la portion : 100 g de champignons de Paris, 23 g de crème, 5 g de moutarde sur les seules lignes converties, et pour la volaille 100 g mesurés dans la seule source qui la pèse — trois autres comptent un blanc par personne et deux le laissent sans rendement, soit environ 150 g. On retient donc 600 g de poulet, 400 g de champignons, 100 g de crème et 25 g de moutarde pour quatre ; la moutarde est le seul poste où l'on dépasse la médiane convertie, et il faut le dire : trois des sept lignes se comptent en cuillères à soupe « grosses » ou « bombées » que la synthèse ne convertit pas, quand les deux valeurs qui tirent la médiane vers le bas sont des cuillerées à café. La médiane des seules lignes converties donnerait 20 g pour quatre ; on écrit 25 g, soit 6 g par personne, pour ne pas laisser trancher le groupe le plus léger à lui seul ; les médianes de durée, 15 et 30 minutes, sont portées à 20 et 35 parce que les champignons se colorent à part avant la sauce. Premier arbitrage, le morceau de volaille : six sources sur sept emploient le blanc, le filet ou l'aiguillette, une seule les cuisses — la synthèse n'en compte que cinq parce qu'elle rapproche les « 4 filets de poulet » d'une source du filet mignon de porc, rapprochement qu'on écarte ici en relisant le dossier. La recette remplacée partait du haut de cuisse, que le dossier n'atteste pas : on redresse vers le blanc, majoritaire, et la cuisse passe en variante avec son temps de cuisson propre. Deuxième, la crème : sa médiane de 23 g par personne est tirée vers le bas par deux versions allégées qui la mesurent à la cuillère à café, mais la médiane est justement l'outil qui encaisse ces écarts sans les effacer — on la suit, à 100 g pour quatre, et la fécule que deux sources emploient donne à cette quantité modeste de quoi napper. Troisième, le liquide de sauce : quatre sources sur sept la montent sur un cube de volaille, deux d'entre elles le dissolvant dans un demi-verre à un verre d'eau — soit 37 g par personne dans l'une et 75 dans l'autre, une seule sur du vin blanc. La synthèse annonce ici 3,8 g par personne parce qu'elle pèse le cube et non le bouillon reconstitué : on écarte ce chiffre et on lit les deux lignes qui déclarent l'eau. On retient le bouillon de volaille à 150 ml pour quatre, soit la plus basse des deux valeurs et non leur milieu, parce que la sauce est ensuite crémée et liée à la fécule et qu'un mouillement plus large obligerait à réduire davantage que les trente-cinq minutes annoncées. Le vin passe en variante ; c'est une correction sur la recette remplacée, qui déglaçait au vin quand le dossier ne le porte qu'une fois sur sept. Deux sources spécifient une moutarde à l'ancienne en grains, forme absente du catalogue ; les cinq autres écrivent « moutarde » sans qualificatif, et c'est cette ligne largement majoritaire qu'on suit avec la Moutarde de Dijon du catalogue — on ne substitue pas un produit à un autre, l'ancienne reste signalée en variante et en forme manquante. L'aromate se partage exactement : deux sources emploient l'échalote, deux l'oignon jaune. On garde l'échalote, plus fine dans une sauce crémée, à 120 g. Restent l'estragon (deux sources, qui en font l'herbe du plat) et la fécule (deux sources), tous deux retenus, puis le citron, le persil, l'aneth, le curcuma, les graines de fenouil, le fromage blanc et les tomates séchées, cités une fois chacun : ils passent en variantes. Le nom annonce moutarde et champignons, les deux sont au socle du dossier : la recette n'est pas renommée.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Volaille en sauce sans féculent : appelle du riz, des pâtes ou des pommes vapeur pour saucer — une source du dossier sert d'ailleurs le plat avec un riz pilaf."
+   },
+   "ingredients": [
+    {
+     "form": "Blanc de poulet cru, sans peau",
+     "quantity": 600,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Champignon de Paris frais",
+     "quantity": 400,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Bouillon de volaille",
+     "quantity": 150,
+     "unit": "ml",
+     "role": "liquide de sauce",
+     "optional": false
+    },
+    {
+     "form": "Échalote crue",
+     "quantity": 120,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Crème fraîche liquide entière",
+     "quantity": 100,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Moutarde de Dijon",
+     "quantity": 25,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 20,
+     "unit": "ml",
+     "role": "saisie",
+     "optional": false
+    },
+    {
+     "form": "Fécule de maïs",
+     "quantity": 10,
+     "unit": "g",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Estragon frais",
+     "quantity": 6,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 5,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1.5,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Nettoyer les champignons à sec, au pinceau ou dans un linge humide, puis les couper en quartiers. Passés sous l'eau du robinet ils la boivent et la rendront ensuite dans la sauce, qu'ils délaveraient. Émincer les échalotes finement."
+    },
+    {
+     "n": 2,
+     "instruction": "Détailler les blancs de poulet en aiguillettes épaisses ou en gros cubes, les éponger et les saler légèrement. Chauffer l'huile dans une sauteuse large et les colorer deux minutes par face à feu vif, sans chercher à les cuire à cœur : ils finiront leur cuisson dans la sauce."
+    },
+    {
+     "n": 3,
+     "instruction": "Réserver le poulet sur une assiette. Jeter les champignons dans la sauteuse chaude, sans ajouter de matière grasse, et les laisser rendre leur eau à feu vif. Attendre que le liquide se soit évaporé et qu'ils grésillent en prenant couleur : un champignon doré donne du goût, un champignon bouilli n'en donne aucun."
+    },
+    {
+     "n": 4,
+     "instruction": "Ajouter les échalotes aux champignons et les faire suer deux à trois minutes, jusqu'à ce qu'elles deviennent translucides, en raclant les sucs collés au fond de la sauteuse."
+    },
+    {
+     "n": 5,
+     "instruction": "Verser le bouillon de volaille et laisser réduire de moitié à feu vif. Délayer la fécule dans une cuillerée d'eau froide, la verser en remuant, puis ajouter la crème et laisser épaissir une à deux minutes à petit frémissement."
+    },
+    {
+     "n": 6,
+     "instruction": "Retirer la sauteuse du feu, attendre que les bouillons cessent, puis fouetter la moutarde dans la sauce tiédie. Ne plus jamais la faire bouillir ensuite : la chaleur détruit son piquant et ne laisse qu'une amertume plate."
+    },
+    {
+     "n": 7,
+     "instruction": "Remettre le poulet et le jus qu'il a rendu, remuer pour l'enrober et laisser cuire huit à dix minutes à feu très doux, jusqu'à 75 °C à cœur. Ajouter l'estragon ciselé à la dernière minute pour qu'il garde son parfum, goûter et rectifier sel et poivre."
+    }
+   ],
+   "techniques": [
+    "saisie",
+    "évaporation des champignons",
+    "réduction",
+    "liaison à la fécule",
+    "mijotage doux"
+   ],
+   "variants": [
+    "Cuisses ou hauts de cuisse de poulet à la place des blancs, comptés trente à quarante-cinq minutes de cuisson (une source)",
+    "Moutarde à l'ancienne en grains, que deux sources préfèrent à la moutarde lisse",
+    "Oignon jaune à la place de l'échalote : le dossier se partage exactement, deux sources contre deux",
+    "Beurre à la place de l'huile d'olive pour la saisie (deux sources)",
+    "Déglaçage au vin blanc sec à la place du bouillon de volaille (une source)",
+    "Estragon remplacé par du persil ou de l'aneth (deux sources)",
+    "Filet de jus de citron en fin de cuisson (une source)",
+    "Tomates séchées ajoutées avec les champignons (une source)",
+    "Sauce montée au fromage blanc et relevée de curcuma, sans crème (une source)"
+   ],
+   "formes_manquantes": [
+    {
+     "ligne_source": "2 cuillères à soupe de moutarde à l'ancienne",
+     "sources": 2,
+     "motif": "Le catalogue ne porte que la Moutarde de Dijon. On suit la ligne majoritaire du dossier, qui écrit « moutarde » sans qualificatif, plutôt que de substituer un produit à un autre ; la moutarde à l'ancienne en grains reste à créer."
+    }
+   ],
+   "sensory": {
+    "profile": "creamy_savory",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 1,
+     "bitter": 0,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 3,
+     "richness": 3,
+     "freshness": 2,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "moutarde",
+     "champignon_terreux",
+     "crème"
+    ],
+    "aroma_families": [
+     "moutarde",
+     "champignon",
+     "échalote",
+     "estragon"
+    ],
+    "target_textures": [
+     "volaille_moelleuse",
+     "sauce_nappante",
+     "champignon_ferme"
+    ],
+    "signature_ingredients": [
+     "Blanc de poulet cru, sans peau",
+     "Champignon de Paris frais",
+     "Moutarde de Dijon"
+    ],
+    "identity_guardrails": [
+     "La moutarde entre hors du feu et ne bout jamais ensuite : bouillie, elle perd son piquant et ne laisse qu'une amertume.",
+     "Les champignons se colorent à part avant d'entrer dans la sauce ; jetés directement dans la crème, ils la délavent de leur eau.",
+     "Le nom porte la moutarde ET les champignons : retirer l'un des deux fait un autre plat, pas une variante."
+    ]
+   },
+   "conservation": "Deux à trois jours au réfrigérateur dans un récipient fermé. Réchauffer à feu doux sans laisser bouillir, crème et moutarde tranchant à l'ébullition. Congélation déconseillée : la sauce se déphase et les champignons rendent leur eau à la décongélation.",
+   "allergens": [
+    "lait",
+    "moutarde"
+   ]
+  },
+  {
+   "code": "FR-018",
+   "remplace": "FR-018",
+   "family": "Filet mignon de porc à la moutarde",
+   "cuisine_origin": "France",
+   "identity_level": "domestic_standard",
+   "category": "viande en sauce",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 30,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:filet-mignon-de-porc-a-la-moutarde",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "canonical_arbitration": "Cinq sources, quatre données pour trois ou quatre portions, une sans rendement déclaré. Ramenées à la portion, elles donnent 86 g de crème, 50 g de vin blanc, 11 g de moutarde et 7 g de beurre : d'où 340 g, 200 ml, 45 g et 25 g pour quatre, avec des médianes de 15 et 30 minutes pour la prépa et la cuisson. Le poids de viande est le point le plus incertain du dossier : trois sources pèsent le filet — 600 à 700 g pour quatre, 700 à 800 g pour trois, et 700 g dans une source qui ne déclare pas son rendement — mais seules les deux premières se ramènent à la portion, soit 162 et 250 g par personne ; les deux dernières comptent « un filet mignon » et « deux filets » sans les peser, quantités qu'on ne sait donc pas convertir. On retient 200 g de chair parée par personne, entre les deux valeurs pesées, soit 800 g pour quatre : un gros filet ou deux petits. Le filet mignon se vend désossé et la membrane nacrée retirée au parage ne pèse rien, si bien que la quantité déclarée est bien un poids comestible et non un poids de boucherie. Désaccord suivant, la moutarde : une source en met une cuillerée à soupe, une autre six réparties entre moutarde forte et Savora. La médiane, 11 g par personne, correspond aux trois cuillerées que trois sources écrivent, et c'est elle qu'on retient ; la moutarde à l'ancienne, absente du catalogue, et le mélange de deux moutardes passent en variantes. La crème, elle, est massive et presque unanime : quatre sources sur cinq, entre 52 et 103 g par personne, toujours liquide ou fluide. On garde la crème liquide entière à 340 g — la recette remplacée en annonçait 180 g de crème épaisse, soit à peine la moitié de ce que le dossier montre. Trois retraits assumés. Le thym que portait la recette remplacée n'apparaît dans aucune des cinq sources : il sort, faute d'attestation. Les champignons en boîte, présents dans deux sources, restent en variante : le catalogue n'a pas de forme pour un champignon de Paris appertisé égoutté, et les remplacer par du frais fausserait la pesée en silence. Le bouillon de légumes de deux sources, sous le seuil de moitié, rejoint aussi les variantes ; le vin blanc, lui, est à 4/5 et reste le liquide de déglaçage. L'aromate est minoritaire et on le dit franchement : deux sources sur cinq seulement en portent un, une échalote ciselée dans l'une, un oignon rouge dans l'autre — on retient l'échalote, sans prétendre que ce soit un socle. La quantité, elle, ne vient pas du dossier : la seule source qui en porte écrit « 1 échalote ciselée », soit une vingtaine de grammes, et l'on monte à 60 g pour quatre — trois échalotes. L'écart est assumé et non médian : 200 ml de vin réduits des deux tiers puis 340 g de crème noient une seule échalote, et la sauce n'aurait plus d'aromate identifiable. Qui veut s'en tenir au dossier à la lettre en mettra 20 g. Enfin l'huile de saisie : une source nomme l'huile d'olive, une autre exige une huile neutre, deux écrivent seulement « huile ». Aucune majorité ne se dégage ; on prend l'huile d'olive, matière grasse de saisie par défaut du corpus, et l'huile neutre reste tout aussi défendable. Le nom du corpus est exact, la recette n'est pas renommée.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch",
+     "vegetables"
+    ],
+    "reason": "Viande en sauce sans garniture : appelle un féculent pour saucer — une source du dossier la sert avec une purée de pommes de terre — et un légume vert reste bienvenu."
+   },
+   "ingredients": [
+    {
+     "form": "Filet mignon de porc cru",
+     "quantity": 800,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Crème fraîche liquide entière",
+     "quantity": 340,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Vin blanc sec",
+     "quantity": 200,
+     "unit": "ml",
+     "role": "déglaçage",
+     "optional": false
+    },
+    {
+     "form": "Échalote crue",
+     "quantity": 60,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Moutarde de Dijon",
+     "quantity": 45,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 25,
+     "unit": "g",
+     "role": "saisie",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 20,
+     "unit": "ml",
+     "role": "saisie",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 5,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1.5,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Sortir le filet mignon vingt minutes avant de le cuire et retirer la fine membrane nacrée qui court le long du morceau : elle se rétracte à la chaleur et tord la pièce. Compter 800 g de chair parée pour quatre, soit un gros filet ou deux petits."
+    },
+    {
+     "n": 2,
+     "instruction": "Détailler le filet en médaillons de trois centimètres d'épaisseur, ou le garder entier pour le trancher après cuisson. Saler et poivrer sur toutes les faces, puis éponger l'humidité que le sel fait remonter — sans quoi la viande grisera au lieu de dorer."
+    },
+    {
+     "n": 3,
+     "instruction": "Chauffer l'huile et le beurre dans une sauteuse jusqu'à ce que la mousse retombe, et colorer les médaillons deux minutes par face à feu vif. Ne pas les entasser : serrés, ils rendent leur eau et pochent. Les réserver sur une assiette tiède."
+    },
+    {
+     "n": 4,
+     "instruction": "Baisser le feu, jeter l'échalote ciselée dans la graisse de cuisson et la faire suer une minute sans la laisser brunir : brûlée, elle donnerait une amertume que la crème ne rattrape pas."
+    },
+    {
+     "n": 5,
+     "instruction": "Déglacer au vin blanc en raclant les sucs collés au fond de la sauteuse, puis laisser réduire des deux tiers à feu vif. C'est cette réduction qui empêche la sauce d'être seulement crémeuse : elle y remet de l'acidité et du fond."
+    },
+    {
+     "n": 6,
+     "instruction": "Verser la crème et laisser épaissir trois à quatre minutes à frémissement. Retirer du feu, attendre que les bouillons cessent, puis fouetter la moutarde dans la sauce : bouillie, elle tourne amère et perd tout son mordant."
+    },
+    {
+     "n": 7,
+     "instruction": "Remettre les médaillons et le jus rendu dans la sauce, et les réchauffer deux à trois minutes à feu très doux jusqu'à 63 à 65 °C à cœur. Le porc doit rester rosé : poussé plus loin, il se dessèche irrémédiablement."
+    },
+    {
+     "n": 8,
+     "instruction": "Laisser reposer cinq minutes hors du feu avant de servir, le temps que les fibres se détendent et réabsorbent leur jus, et napper les médaillons de sauce au moment de dresser."
+    }
+   ],
+   "techniques": [
+    "parage",
+    "saisie",
+    "déglaçage au vin blanc",
+    "réduction",
+    "liaison à la crème",
+    "cuisson contrôlée à cœur"
+   ],
+   "variants": [
+    "Version moutarde et miel : une cuillerée de miel ajoutée avec la moutarde (une source)",
+    "Deux moutardes, forte et Savora, mélangées à parts égales (une source)",
+    "Moutarde à l'ancienne en grains à la place de la moutarde lisse (une source)",
+    "Champignons de Paris en boîte, égouttés, ajoutés à la sauce (deux sources)",
+    "Sauce montée sur un bouillon de légumes en plus du vin blanc (deux sources)",
+    "Oignon rouge à la place de l'échalote (une source)",
+    "Ail en semoule et herbes de Provence frottés sur la viande avant la saisie (une source)",
+    "Tournedos panés d'amandes effilées, sauce liée au mascarpone (une source)"
+   ],
+   "formes_manquantes": [
+    {
+     "ligne_source": "500 g de champignons en boîte / 2 boîtes de champignons de Paris entiers",
+     "sources": 2,
+     "motif": "Pas de forme pour un champignon de Paris appertisé égoutté. Écarté plutôt que remplacé par du frais, qui fausserait la pesée en silence ; laissé en variante."
+    },
+    {
+     "ligne_source": "3 cuillères à soupe de moutarde à l'ancienne / 3 cuillères à soupe de moutarde Savora",
+     "sources": 2,
+     "motif": "Le catalogue ne porte que la Moutarde de Dijon. Les deux moutardes du dossier restent en variantes."
+    }
+   ],
+   "sensory": {
+    "profile": "creamy_delicate",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 2,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 3,
+     "richness": 4,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "moutarde",
+     "crème",
+     "vin_blanc_réduit"
+    ],
+    "aroma_families": [
+     "moutarde",
+     "lacté",
+     "vin_blanc_réduit",
+     "échalote"
+    ],
+    "target_textures": [
+     "viande_rosée_tendre",
+     "sauce_nappante"
+    ],
+    "signature_ingredients": [
+     "Filet mignon de porc cru",
+     "Moutarde de Dijon",
+     "Crème fraîche liquide entière"
+    ],
+    "identity_guardrails": [
+     "La moutarde entre hors du feu : portée à ébullition, elle perd son piquant et laisse une amertume qui domine toute la sauce.",
+     "Le filet mignon se sert rosé, à 63-65 °C à cœur ; cuit à point franc, il devient sec et le plat n'a plus d'intérêt.",
+     "Le vin réduit avant la crème ; sans cette réduction, il ne reste qu'une sauce crémée sans acidité ni fond."
+    ]
+   },
+   "conservation": "Deux jours au réfrigérateur, viande et sauce ensemble dans un récipient fermé. Réchauffer à feu très doux ou au bain-marie, sans ébullition, sous peine de voir la crème trancher et le porc durcir. Congélation déconseillée, pour la sauce comme pour la viande tranchée.",
+   "allergens": [
+    "lait",
+    "moutarde",
+    "sulfites"
+   ]
+  }
+ ]
+}

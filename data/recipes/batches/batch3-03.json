@@ -1,0 +1,260 @@
+{
+  "recipes": [
+    {
+      "code": "FR-021",
+      "remplace": "FR-021",
+      "family": "Fondue de poireaux",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "fondue de légumes, accompagnement",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 25,
+      "cook_minutes": 30,
+      "difficulty": "facile",
+      "sources": [
+        "dossier:fondue-de-poireaux",
+        "marmiton.org",
+        "chefsimon.com",
+        "750g.com"
+      ],
+      "canonical_arbitration": "Le dossier porte huit sources, mais elles ne parlent pas toutes du même objet : trois seulement publient la fondue pour elle-même (Marmiton, Chef Simon, 750g), quatre l'emploient comme lit sous une protéine — blancs de poulet à la moutarde à l'ancienne, filets de lieu noir, noix de Saint-Jacques, croustillant de haddock — et la huitième la marie aux carottes et au cidre. Premier arbitrage, donc, et le plus lourd : les filets de poulet, le lieu noir, les noix, le haddock, les 150 g de lardons, les feuilles de brick et les jaunes d'œufs de la hollandaise appartiennent au plat d'accueil, pas à la fondue, et sortent de la liste. Cette exclusion n'est pas cosmétique, elle décide des quantités : la médiane globale de crème que rend la synthèse (11,6 g par personne, étendue 8 à 52) est inutilisable parce que son haut de fourchette — 20 cl de crème liquide sous le lieu noir, 2 dl de crème épaisse sous les Saint-Jacques — est la sauce du poisson et non la liaison du poireau. On recalcule donc chaque ligne sur les trois fondues seules. Le poireau : cité par 8 sources sur 8, médiane 200 g par personne, étendue 150 à 250 — mais deux valeurs pesées seulement soutiennent cette médiane, les 600 g de Marmiton et le kilo de 750g, les six autres comptant en pièces (2, 4, 4, 4, 4 et 6 poireaux ou blancs) que la synthèse ne convertit pas, faute de poids de pièce au catalogue. Ces deux poids sont des poids d'achat, poireaux entiers, alors que la quantité déclarée doit être le rendement comestible : le parage — racines, première feuille abîmée, vert foncé filandreux — en retire près d'un tiers. On part donc de la médiane, soit 800 g à l'achat pour quatre, et on déclare 560 g de poireau paré ; l'instruction d'achat descend dans la première étape. Le kilo de 750g est le haut de l'étendue et non la médiane : le prendre pour base d'achat gonflerait d'un quart le seul ingrédient qui porte le plat, et c'est pour cette raison que les 700 g d'un premier calcul ont été ramenés à 560. Le beurre : cité par six sources, dont cinq en ligne propre — la sixième l'enfouit dans une hollandaise de 200 g de beurre, qui n'est pas le beurre de la fondue ; les trois fondues donnent 30, 50 et 60 g pour quatre, médiane 50 g, qu'on retient. Les 100 g de la version Saint-Jacques cuisent aussi les noix, ils ne mesurent pas le beurre de la fondue. La crème : les trois fondues donnent 2 cuillerées à soupe, 1 cuillerée (annoncée facultative) et 3 cuillerées, médiane 2 cuillerées, soit 30 g. Sur la forme, deux sources écrivent « crème fraîche » sans qualificatif et une « crème épaisse » : en usage français la crème fraîche non qualifiée est l'épaisse, et c'est elle qu'il faut ici pour enrober sans détremper. On retient donc Crème fraîche épaisse et on écarte la Crème fraîche liquide entière que la synthèse proposait en premier. La moutarde de Dijon et le jus de citron ne sont attestés que par une des trois fondues, celle de Marmiton — la moutarde à l'ancienne de la seconde citation assaisonne le poulet, pas les poireaux : ils restent en finition optionnelle, 15 g et 30 ml, aux proportions de leur source. L'échalote est dans la fondue de Chef Simon et dans la version au cidre, soit une des trois fondues : optionnelle, 40 g pour deux échalotes. Restent minoritaires et passent en variantes : le vin blanc sec (1/8), le cidre (1/8), les lardons (1/8), le curry (1/8), les fines herbes (1/8). Aucune ligne du dossier n'a manqué au vocabulaire. Deux corrections sur la recette remplacée, qui avait été écrite sans dossier : elle portait 100 g de crème et un jus de citron non optionnel à 10 ml, deux chiffres qu'aucune proportion du dossier ne soutient, et son score d'umami à 4 n'a pas de sens pour un plat de poireau, de beurre et de crème. Le nom du corpus est juste, la recette n'est pas renommée.",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Un légume étuvé et crémé, sans féculent ni protéine : la fondue de poireaux se sert à côté d'un poisson poêlé, d'une volaille ou d'un œuf, et le dossier lui-même la montre quatre fois sur huit en lit sous une protéine. Elle ne prétend pas faire un repas."
+      },
+      "ingredients": [
+        { "form": "Poireau cru", "quantity": 560, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Beurre doux", "quantity": 50, "unit": "g", "role": "matière grasse de cuisson", "optional": false },
+        { "form": "Crème fraîche épaisse", "quantity": 30, "unit": "g", "role": "liaison", "optional": false },
+        { "form": "Sel fin", "quantity": 4, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Échalote crue", "quantity": 40, "unit": "g", "role": "aromatique", "optional": true },
+        { "form": "Moutarde de Dijon", "quantity": 15, "unit": "g", "role": "finition", "optional": true },
+        { "form": "Jus de citron frais", "quantity": 30, "unit": "ml", "role": "finition", "optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Compter environ 800 g de poireaux entiers pour obtenir les 560 g annoncés : couper les racines, retirer la première feuille souvent abîmée, puis sacrifier le vert le plus foncé et le plus raide, qui reste filandreux quelle que soit la durée de cuisson." },
+        { "n": 2, "instruction": "Fendre chaque poireau en deux dans la longueur et le passer sous l'eau claire en écartant les feuilles une à une : le sable se dépose entre elles et un rinçage extérieur ne l'emporte pas. Émincer ensuite en demi-rondelles de trois à quatre millimètres, régulières, pour que tout s'affaisse en même temps." },
+        { "n": 3, "instruction": "Faire fondre le beurre à feu doux dans une sauteuse large, sans le laisser colorer, et y jeter les poireaux avec l'échalote ciselée si vous l'employez. Remuer pour les enrober : chaque lamelle doit briller de gras avant de commencer à rendre son eau." },
+        { "n": 4, "instruction": "Saler dès maintenant, contrairement à l'usage habituel. Ici le sel travaille pour vous : il fait sortir l'eau du poireau, qui devient son propre liquide de cuisson et l'empêche d'attacher sans qu'on ait à mouiller." },
+        { "n": 5, "instruction": "Couvrir et laisser étuver vingt à vingt-cinq minutes à feu très doux, en remuant toutes les cinq minutes. Les poireaux doivent s'affaisser jusqu'à ne plus offrir aucune résistance à la fourchette, et surtout ne prendre aucune couleur — une fondue qui roussit tourne à l'amer et cesse d'être une fondue." },
+        { "n": 6, "instruction": "Découvrir et monter légèrement le feu deux ou trois minutes pour évaporer l'eau rendue : le fond de la sauteuse doit redevenir sec. Sans cette étape, la crème se diluerait dans le jus de cuisson au lieu de lier, et les poireaux baigneraient au lieu d'être enrobés." },
+        { "n": 7, "instruction": "Ajouter la crème hors du gros bouillon et laisser à peine frémir deux minutes, le temps qu'elle nappe les lamelles. Pour la finition relevée, fouetter d'abord la moutarde et le jus de citron dans la crème froide, puis incorporer le mélange : la moutarde ne doit pas bouillir, elle y perdrait son piquant." },
+        { "n": 8, "instruction": "Poivrer, goûter et rectifier le sel en dernier seulement : l'évaporation a concentré l'assaisonnement, et ce qui paraissait juste avant la réduction se révèle souvent trop salé après." }
+      ],
+      "techniques": [
+        "lavage à l'eau claire",
+        "émincer",
+        "tombée au beurre",
+        "étuvée à couvert",
+        "réduction",
+        "liaison à la crème"
+      ],
+      "variants": [
+        "Fondue de poireaux et de carottes au cidre, avec deux échalotes et des fines herbes (750g)",
+        "Finition à la moutarde de Dijon et au jus de citron (Marmiton)",
+        "Mouillée au vin blanc sec et crémée à la crème liquide, en lit sous un filet de lieu noir (Marmiton)",
+        "Aux lardons, sous des blancs de poulet à la moutarde à l'ancienne (Marmiton)",
+        "Au beurre seul, sans crème (Chef Simon)",
+        "Relevée d'une pointe de curry, sous un croustillant de haddock (Chef Simon)"
+      ],
+      "sensory": {
+        "profile": "creamy_delicate",
+        "scores": {
+          "sweet": 2,
+          "salty": 2,
+          "acidic": 1,
+          "bitter": 0,
+          "umami": 1,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 2
+        },
+        "dominant_flavors": ["poireau étuvé", "beurre", "crème"],
+        "aroma_families": ["lacté", "alliacé doux", "beurre noisette naissant"],
+        "target_textures": ["fondant", "soyeux", "sans croquant"],
+        "signature_ingredients": ["Poireau cru", "Beurre doux", "Crème fraîche épaisse"],
+        "identity_guardrails": [
+          "Le poireau étuvé au beurre est le plat entier : remplacé par un autre légume, il ne reste plus qu'une compotée quelconque.",
+          "Aucune coloration : dès que les lamelles roussissent, on a fait une poêlée de poireaux, amère et croquante, qui n'est plus une fondue.",
+          "La crème lie en fin de cuisson, sur un fond sec, et reste à la dose d'une liaison : noyée de crème, la préparation devient une sauce dans laquelle les poireaux flottent."
+        ]
+      },
+      "conservation": "Trois jours au réfrigérateur dans un récipient fermé. Réchauffer à couvert sur feu doux avec une cuillerée d'eau, jamais au micro-ondes à pleine puissance qui fait trancher la crème. Pour congeler, arrêter la préparation avant l'ajout de crème : la fondue nature tient deux mois, on la crème au réchauffage.",
+      "allergens": ["lait", "moutarde"]
+    },
+    {
+      "code": "FR-025",
+      "remplace": "FR-025",
+      "family": "Purée de pommes de terre",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "accompagnement",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 25,
+      "difficulty": "facile",
+      "sources": [
+        "dossier:puree-de-pommes-de-terre",
+        "marmiton.org",
+        "chefsimon.com",
+        "750g.com"
+      ],
+      "canonical_arbitration": "Sept sources, dont quatre seulement sont une purée de pommes de terre : Marmiton « maison », Marmiton à l'ail, Chef Simon, Chef Simon à l'ail confit. Les trois autres mêlent un second légume — deux bulbes de fenouil pour six pommes de terre chez Marmiton, six carottes chez 750g, 400 g de carottes pour 600 g de pommes de terre dans la version en cocotte. Ce fenouil et ces carottes appartiennent à leurs plats et sortent de la liste, et c'est cette exclusion qui rend la médiane globale de beurre inexploitable : la synthèse annonce 10 g par personne parce que les purées composées sont maigres rapportées au poids de pomme de terre. La pomme de terre : citée 7 fois sur 7, et les quatre purées vraies disent toutes 1 kg pour quatre, soit 250 g par personne — chiffre que la médiane globale confirme malgré l'étendue de 13 à 250 que les lignes composées introduisent. Trois sources précisent la variété (« chair tendre, variété pour purée » et « à purée » chez Marmiton, « chair farineuse » dans la version en cocotte) : c'est une exigence de méthode, elle descend dans les étapes et ne devient pas un ingrédient. Vient ensuite le piège de pesée : 1 kg est un poids d'achat, pelure comprise, alors que la référence nutritionnelle porte sur la chair. On déclare donc 850 g de pommes de terre épluchées pour 1 kg acheté, et l'instruction d'achat est écrite en clair à l'étape 2. Sur la forme, la synthèse proposait « Pomme de terre cuite » : on ne la retient pas. L'ingrédient entre cru dans la recette, et l'eau qu'il prend au pochage part à l'égouttage puis au dessèchement — compter la forme cuite ferait entrer dans le calcul une eau qui ne reste pas dans le plat. Le beurre : Marmiton à l'ail donne 50 g, Chef Simon 100 g deux fois, d'où 100 g pour quatre, exactement le rapport classique d'un dixième du poids de pomme de terre. La version « maison » de Marmiton n'en liste aucun, une ligne seule contre trois. Le liquide : le dossier ne tranche pas et se scinde en deux lignes qu'il faut lire séparément. Ligne lait — 20 cl chez Marmiton maison, 7,5 cl et 10 cl dans les versions aux carottes. Ligne crème — 25 cl chez Marmiton à l'ail, 5 cl chez Chef Simon deux fois, 2 cuillerées d'épaisse dans la version au fenouil. La crème se tranche par la médiane de sa ligne — 250, 50 et 50 ml, médiane 50 ml, soit les 50 g déclarés, et c'est aussi la médiane des trois purées vraies qui la citent. Le lait ne se tranche pas de la même façon, et il faut le dire au lieu de l'habiller : la médiane de sa ligne vaut 10 cl bruts, environ 137 ml ramenés à la portion, mais ses deux valeurs basses sont celles des purées de carottes qu'on vient d'écarter, et la seule purée de pommes de terre du dossier qui mouille au lait — Marmiton maison — en met 20 cl pour quatre. On retient donc 200 ml, écart assumé vers le haut de la ligne, pour la raison même qui a fait garder la muscade : sur une ligne que les autres n'éclairent pas, la source la moins adultérée du dossier fait foi. Garder les deux liquides plutôt qu'un seul n'ajoute rien que le dossier ne porte, puisque Marmiton maison est justement la source qui emploie lait et crème ensemble ; n'en retenir qu'un reviendrait à supprimer soit la détente, soit l'enrichissement. La muscade est citée deux fois sur sept, mais précisément par les deux purées les moins adultérées du dossier — Marmiton maison et Chef Simon : elle reste, non optionnelle, à dose de râpé. L'ail (4 gousses cuites avec les pommes de terre ; une tête entière confite) est dans deux sources sur sept : c'est une variante nommée, pas la base. Écartés faute de pluralité : la moutarde à l'ancienne (1/7), le persil plat (1/7), la ciboulette (1/7). Une lecture de la synthèse est refusée au passage : la cuillerée de fond de bœuf déshydraté de la version en cocotte a été rapprochée de « Bœuf haché cru 15 % MG » — un cube de fond n'est pas de la viande hachée, et l'ingrédient est simplement écarté plutôt que mal converti. Les deux lignes orphelines, « variété pour purée) » et « 7 », sont des débris de découpage : aucun ingrédient derrière elles. Aucune absence réelle au vocabulaire. Le nombre de portions passe de six à quatre pour s'asseoir sur le compte du dossier, où six sources sur sept servent quatre personnes. Le nom du corpus est juste, la recette n'est pas renommée.",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Un féculent monté au beurre, sans protéine ni légume vert : la purée accompagne une viande, un poisson ou une saucisse et n'a jamais prétendu tenir seule dans l'assiette. Le rôle est déclaré « side » et non « component » parce qu'elle se sert telle quelle, sans entrer dans une autre préparation."
+      },
+      "ingredients": [
+        { "form": "Pomme de terre crue, épluchée", "quantity": 850, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Beurre doux", "quantity": 100, "unit": "g", "role": "matière grasse", "optional": false },
+        { "form": "Lait entier", "quantity": 200, "unit": "ml", "role": "liquide de détente", "optional": false },
+        { "form": "Crème fraîche liquide entière", "quantity": 50, "unit": "g", "role": "enrichissement", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Muscade moulue", "quantity": 0.5, "unit": "g", "role": "épice", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Choisir une variété farineuse — bintje, agria, ou une pomme de terre vendue pour la purée. Une chair ferme ne s'écrase pas : elle se déchire en filaments et donne une purée à la fois grumeleuse et collante, défaut qu'aucune quantité de beurre ne rattrape ensuite." },
+        { "n": 2, "instruction": "Compter 1 kg de pommes de terre à l'achat pour les 850 g de chair annoncés. Les peler, les couper en gros morceaux de calibre égal afin qu'ils cuisent en même temps, et les rincer une seule fois rapidement : un rinçage prolongé emporte l'amidon de surface dont la purée a besoin pour se lier." },
+        { "n": 3, "instruction": "Les couvrir largement d'eau froide salée, porter à ébullition puis maintenir un frémissement vingt à vingt-cinq minutes. Le départ à froid n'est pas une coquetterie : jetés dans l'eau bouillante, les morceaux se délitent en surface avant que le cœur soit cuit. La pointe d'un couteau doit traverser sans aucune résistance." },
+        { "n": 4, "instruction": "Égoutter, puis remettre les morceaux dans la casserole vide sur feu doux une à deux minutes en les remuant. La vapeur qui s'échappe est autant d'eau en moins dans la purée, et c'est ce dessèchement qui décide de sa tenue bien plus que le dosage du lait." },
+        { "n": 5, "instruction": "Écraser au presse-purée ou passer au moulin à légumes, grille fine. Ne jamais employer de mixeur plongeant ni de robot : les lames font éclater les grains d'amidon, qui libèrent leurs longues chaînes et transforment la purée en pâte élastique en quelques secondes, sans retour possible." },
+        { "n": 6, "instruction": "Incorporer le beurre froid coupé en morceaux, hors du feu et avant tout liquide, en travaillant à la spatule. Froid, il émulsionne dans la chaleur de la pomme de terre au lieu de fondre en flaque grasse, et c'est de cette émulsion que vient le velouté." },
+        { "n": 7, "instruction": "Verser ensuite le lait bien chaud en trois fois, en travaillant entre chaque ajout, puis la crème. Un liquide froid figerait le beurre déjà incorporé et rendrait l'ensemble grumeleux : la température compte autant que la quantité." },
+        { "n": 8, "instruction": "Râper la muscade, rectifier le sel et le poivre, et servir sans attendre. Une purée qui patiente au chaud rend de l'eau et se rattrape mal ; si vous devez la tenir, couvrez-la au contact et remontez-la d'un filet de lait chaud au dernier moment." }
+      ],
+      "techniques": [
+        "cuisson à l'eau départ à froid",
+        "dessiccation",
+        "presse-purée",
+        "montage au beurre froid",
+        "détente au lait chaud"
+      ],
+      "variants": [
+        "Purée à l'ail : quatre gousses cuites avec les pommes de terre, crème liquide et une cuillerée de moutarde à l'ancienne (Marmiton)",
+        "Purée à l'ail confit : une tête entière confite écrasée dans la purée, persil haché à la fin (Chef Simon)",
+        "Purée moitié fenouil : deux bulbes braisés pour six pommes de terre, crème épaisse (Marmiton)",
+        "Purée de pommes de terre et carottes, à parts égales, montée au lait (750g)",
+        "Version en cocotte au beurre demi-sel, fond de bœuf et ciboulette (750g)"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 1,
+          "heat": 0,
+          "pungency": 0,
+          "richness": 5,
+          "freshness": 0,
+          "intensity": 2
+        },
+        "dominant_flavors": ["beurre", "pomme de terre", "lait chaud"],
+        "aroma_families": ["lacté", "beurre", "muscade"],
+        "target_textures": ["velouté", "lisse", "souple à la cuillère"],
+        "signature_ingredients": ["Pomme de terre crue, épluchée", "Beurre doux", "Lait entier"],
+        "identity_guardrails": [
+          "Une variété farineuse et un écrasement mécanique, jamais de lame : passée au robot, la préparation devient une colle élastique qui n'est plus une purée.",
+          "Le beurre entre avant le liquide et à froid ; versé après le lait, il ne s'émulsionne plus et la purée reste grasse au palais au lieu d'être veloutée.",
+          "La proportion d'un dixième de beurre pour la pomme de terre est ce qui distingue la purée de la pomme de terre écrasée : divisée par trois, il ne reste qu'un légume mouillé."
+        ]
+      },
+      "conservation": "Deux jours au réfrigérateur au maximum : une purée reprise perd sa liaison et rend de l'eau. Réchauffer à la casserole sur feu doux avec un fond de lait chaud, en travaillant à la spatule. La congélation tient deux mois mais laisse une texture plus granuleuse : congeler en portions déjà écrasées, sans crème, et remonter au beurre et au lait au réchauffage.",
+      "allergens": ["lait"]
+    },
+    {
+      "code": "FR-027",
+      "remplace": "FR-027",
+      "family": "Pommes de terre sautées",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "accompagnement",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 35,
+      "difficulty": "facile",
+      "sources": [
+        "dossier:pommes-de-terre-sautees",
+        "marmiton.org",
+        "chefsimon.com"
+      ],
+      "canonical_arbitration": "Cinq sources, dont quatre sont des pommes de terre sautées nues et une les garnit de chorizo et d'oignon : ce chorizo et cet oignon appartiennent à la version garnie et passent en variante. La pomme de terre est unanime, 5 sources sur 5, et les lignes chiffrées convergent : 1 kg pour quatre chez Marmiton (rattes), 800 g chez Chef Simon, et ailleurs cinq à six pommes de terre pour trois ou quatre personnes, soit 240 à 250 g par personne. La synthèse donne 250 g par personne, on la suit. Piège de pesée : ces poids sont des poids d'achat, et la référence nutritionnelle porte sur la chair — on déclare 850 g de pommes de terre épluchées pour 1 kg acheté, l'achat étant écrit à l'étape 1. Sur la forme, la synthèse proposait « Pomme de terre cuite » : refusée, la pomme de terre entre crue et c'est son poids cru paré qui compte. Deux sources exigent une chair ferme, une emploie des rattes sans dire si elle les pèle — l'usage veut qu'on saute la ratte en peau, mais le dossier ne l'atteste pas, les seules « non épluchées » qu'il porte étant deux gousses d'ail : la base est donc épluchée, et la peau n'est signalée que comme un usage courant. Le corps gras : trois sources sur cinq citent une huile, médiane 6,9 g par personne, étendue 3 à 10, soit 30 g pour quatre. Sur laquelle : deux la nomment huile d'olive, une dit tournesol, une dit « huile » sans plus, une emploie de la graisse d'oie. L'huile d'olive a la pluralité, on l'écrit ; la graisse d'oie devient une variante nommée, car elle change le goût du plat sans toucher à la méthode. C'est ici que se joue la correction la plus lourde de la reprise : le dossier ne contient AUCUN beurre, et la recette remplacée — écrite sans dossier — en déclarait 20 g en finition, ce qui lui faisait porter « lait » parmi ses allergènes. Le beurre sort et l'allergène disparaît avec lui : une reprise qui laisserait un allergène inventé serait pire qu'une reprise incomplète. L'ail est cité par 4 sources sur 5, médiane 3,8 g par personne, étendue 3 à 12, soit 15 g pour quatre, à peu près trois gousses. La ligne à sept gousses (« plus il y en a, meilleur c'est ») est le haut de l'étendue et ne déplace pas la médiane, ce qui est exactement l'intérêt de prendre la médiane. Le sel est unanime, médiane 2 g par personne, soit 8 g ; une source écrit gros sel gris ou fleur de sel, que le catalogue ne porte pas — écart de vocabulaire et non absence réelle, on emploie Sel fin, chimiquement le même sel. Le poivre est cité par quatre sources sur cinq — deux en ligne propre, deux noyées dans un « sel et poivre » que la synthèse ne compte pas à part —, on l'écrit à 1 g. Le thym est cité deux fois, frais chez Marmiton, sans précision chez Chef Simon : on le garde en optionnel, sous sa forme fraîche. Le persil (une demi-botte, 1/5) reste optionnel lui aussi. Passent en variantes, sous le seuil : romarin (1/5), laurier (1/5), curry (1/5), échalote (1/5), oignon (1/5), piment (1/5). Reste le désaccord de méthode, le plus intéressant du dossier : deux écoles s'y opposent. L'une saute à cru — Chef Simon (10 min de préparation, 20 de cuisson) et la première recette Marmiton. L'autre précuit à l'eau puis colore : la version à l'ail et au persil liste explicitement « eau, assez pour faire bouillir les pommes de terre », et la version aux rattes annonce 35 minutes de préparation pour 25 de cuisson, ce qui ne s'explique que par un pochage préalable. On retient la précuisson, et il faut dire à quel prix : le dossier ne l'atteste explicitement qu'une fois sur cinq, et l'absence d'eau dans les quatre autres listes ne prouve rien, une liste d'ingrédients ne mentionnant presque jamais l'eau de cuisson. Ce qui la fait pencher, ce sont les durées : trois sources sur cinq tiennent toute la cuisson en 20 minutes ou moins, ce qui est court pour des morceaux crus, et la version aux rattes réserve 35 minutes à sa seule préparation. L'école à cru reste parfaitement tenable — Chef Simon lui donne 20 minutes de poêle — et l'étape 3 la signale avec son surcoût de temps : c'est une préférence de méthode, argumentée, pas une nécessité que le dossier imposerait. Les durées déclarées additionnent en conséquence les deux cuissons, sept à huit minutes de pochage puis une vingtaine de minutes de poêle : 35 minutes, au-dessus de la médiane du dossier (20 minutes) précisément parce que la précuisson s'y ajoute. L'eau de pochage n'est pas déclarée en ingrédient : elle est jetée. Les deux lignes orphelines de la synthèse, « meilleur c'est !) » et « tournesol) », sont des fins de parenthèses coupées, aucun ingrédient derrière. Aucune absence réelle au vocabulaire. Le nom du corpus est juste, la recette n'est pas renommée.",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Un féculent poêlé et rien d'autre : les pommes sautées se rangent à côté d'une entrecôte, d'un confit ou d'un œuf au plat. Le dossier le confirme en creux — dès qu'une de ses sources veut en faire un plat, elle y ajoute 150 g de chorizo."
+      },
+      "ingredients": [
+        { "form": "Pomme de terre crue, épluchée", "quantity": 850, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 30, "unit": "g", "role": "matière grasse de cuisson", "optional": false },
+        { "form": "Ail cru", "quantity": 15, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Thym frais", "quantity": 2, "unit": "g", "role": "aromate", "optional": true },
+        { "form": "Persil frais", "quantity": 15, "unit": "g", "role": "aromate", "optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Prendre environ 1 kg de pommes de terre à chair ferme pour les 850 g de chair annoncés : charlotte, belle de Fontenay ou ratte, dont la tenue supporte le double passage à l'eau puis à la poêle. Une variété farineuse s'y effondrerait en bouillie sans jamais dorer." },
+        { "n": 2, "instruction": "Les peler et les tailler en rondelles épaisses de cinq millimètres ou en cubes de deux centimètres, mais d'un calibre régulier : un mélange de tailles donne inévitablement des morceaux brûlés à côté de morceaux encore crus, et la poêle ne pardonne pas cette approximation." },
+        { "n": 3, "instruction": "Les plonger sept à huit minutes dans une grande eau salée bouillante, jusqu'à ce qu'elles cèdent en surface tout en restant fermes au cœur, puis les égoutter et les laisser sécher dix minutes à l'air libre sur un torchon. Cette précuisson est ce qui permet un intérieur fondant en vingt minutes de poêle ; à cru, il faut compter le double et le résultat reste inégal." },
+        { "n": 4, "instruction": "Chauffer l'huile dans une grande poêle jusqu'à ce que la surface ondule, puis déposer les morceaux en une seule couche, à plat. Faire deux fournées plutôt que d'entasser : serrées, les pommes de terre cuisent dans la vapeur de leur propre eau et ne dorent jamais." },
+        { "n": 5, "instruction": "Laisser cinq bonnes minutes sans y toucher avant de retourner. La croûte a besoin d'un temps de contact continu pour se former, et remuer trop tôt l'arrache par plaques. Continuer ensuite à retourner toutes les trois ou quatre minutes jusqu'à ce que toutes les faces soient dorées." },
+        { "n": 6, "instruction": "Ajouter l'ail haché et le thym effeuillé seulement dans les deux dernières minutes, feu baissé. L'ail brûle en moins d'une minute sur une poêle à cette température et vire à l'amer : mis au départ, il gâche l'ensemble du plat sans qu'on puisse le rattraper." },
+        { "n": 7, "instruction": "Saler à la sortie de la poêle, poivrer, parsemer de persil grossièrement haché et servir aussitôt, à découvert. Sous un couvercle ou dans un plat en attente, la croûte s'amollit en quelques minutes et tout le travail des étapes précédentes est perdu." }
+      ],
+      "techniques": [
+        "parage",
+        "précuisson à l'eau salée",
+        "séchage",
+        "sauter en poêle",
+        "finition aromatique"
+      ],
+      "variants": [
+        "Rattes non épluchées sautées à l'huile d'olive avec deux gousses d'ail en chemise, laurier et thym frais, finies au gros sel (Marmiton)",
+        "À la graisse d'oie, avec échalote, ail, romarin et thym (Chef Simon)",
+        "Au chorizo doux ou fort et à l'oignon, relevées d'une pincée de piment (Chef Simon)",
+        "Relevées de trois pincées de curry (Marmiton)",
+        "À l'ail et au persil, sept gousses pour trois personnes (Marmiton)"
+      ],
+      "sensory": {
+        "profile": "savory_crisp",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 1,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 3,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": ["pomme de terre rissolée", "ail", "huile d'olive"],
+        "aroma_families": ["ail", "herbacé", "grillé"],
+        "target_textures": ["croûte croustillante", "cœur fondant", "contraste marqué"],
+        "signature_ingredients": ["Pomme de terre crue, épluchée", "Huile d'olive vierge extra", "Ail cru"],
+        "identity_guardrails": [
+          "Le contraste entre une croûte dorée et un cœur fondant est tout le plat : sans coloration, ce sont des pommes de terre à l'eau réchauffées.",
+          "L'ail entre dans les deux dernières minutes et jamais au départ ; brûlé, son amertume couvre la pomme de terre et le plat devient inmangeable.",
+          "Une variété à chair ferme est indispensable : une farineuse se délite à la précuisson et on obtient un écrasé huileux au lieu de morceaux distincts."
+        ]
+      },
+      "conservation": "Deux jours au réfrigérateur dans une boîte fermée, mais la croûte ne se rattrape pas au micro-ondes. Réchauffer à la poêle bien chaude, à sec ou avec une goutte d'huile, cinq minutes à découvert en retournant une fois. Ne pas congeler : les morceaux se délitent à la décongélation et rendent leur eau dans la poêle.",
+      "allergens": []
+    }
+  ]
+}

@@ -1,0 +1,335 @@
+{
+  "recipes": [
+    {
+      "code": "FR-012",
+      "remplace": "FR-012",
+      "family": "Soupe à l’oignon gratinée",
+      "cuisine_origin": "France",
+      "identity_level": "named_traditional_dish",
+      "category": "soupe",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 45,
+      "difficulty": "facile",
+      "sources": [
+        "dossier:soupe-a-l-oignon-gratinee",
+        "marmiton.org",
+        "chefsimon.com",
+        "750g.com"
+      ],
+      "canonical_arbitration": "Le dossier réunit six pages sur trois sites, et elles s'accordent sur une seule chose vraiment structurante : l'oignon, cité six fois sur six, à 120 g par portion de médiane (étendue de 50 à 167 g). Tout le reste se négocie. Le mouillement d'abord : la médiane brute affichée par la synthèse (166,7 g/portion) est un artefact de lecture — « 1 litre et demi » a été lu comme un litre, et deux cubes de bouillon comptés comme des pièces de 2,5 g. Reprises source par source, les cinq pages qui chiffrent un liquide donnent 250, 250, 175, 240 et 375 g par portion : on retient 250 g, soit les 1,5 l pour six que posent à l'identique la première page marmiton et celle de Chef Simon. Le fromage ensuite : la synthèse l'éclate en quatre formes parce que trois pages écrivent seulement « fromage râpé » — dont deux ont été rapprochées d'un fromage de chèvre en bûche, ce qui est faux et écarté ici. En réalité les six pages gratinent, et les six quantités ramenées à la portion donnent 10, 20, 20, 37,5, 41,7 et 50 g : médiane 30 g, soit 180 g pour six. Le gruyère est nommé par trois pages sur deux sites distincts, le comté par deux, le beaufort comme équivalent : on retient le gruyère râpé et les autres passent en variantes. Le vin est le vrai désaccord : quatre pages sur six introduisent un alcool — vin blanc sec pour trois d'entre elles, attesté sur deux sites, champagne et porto pour la quatrième. Les deux pages qui s'en passent mouillent l'une et l'autre à 250 g par portion, mais ce ne sont pas les plus généreuses du dossier : celle qui mouille le plus (750g, 375 g par portion) met au contraire 15 cl de vin. Sur la quantité, la synthèse affiche 28,8 g par portion, un chiffre qui ne repose que sur deux des trois pages — la troisième ne déclare pas ses parts et n'est donc pas convertie. Ses quatre tranches de pain la mettent à quatre portions, ce qui porte ses 5 cl à 12,5 g par portion et ramène la médiane des trois à 20. C'est ce chiffre qu'on retient, 120 ml pour six, en assumant l'écart avec la synthèse ; la trame au champagne devient une variante. La farine n'est citée que par quatre pages sur six, mais aucune ne s'en passe sans la remplacer par autre chose : on la garde à la médiane de 5 g par portion, soit 30 g, ce qui donne du corps sans faire une sauce. L'ail (deux pages, deux sites) sert à frotter les croûtons plutôt qu'à parfumer les oignons — le dossier ne porte pas le texte des étapes, ce choix de geste est éditorial et assumé. Thym frais et laurier sont chacun attestés par deux pages et conservés à dose d'aromate. Sont écartés parce que minoritaires et non structurants : jaunes d'œuf, porto, champagne, sucre, quatre-épices, muscade, vermicelles — tous repris en variantes. Les durées enfin : le dossier déclare de 20 à 45 minutes de cuisson, médiane 27,5, mais brunir 720 g d'oignons ne se fait pas en vingt minutes ; on retient le haut de la fourchette attestée, 45 minutes, soit trente minutes pour les oignons, dix de mijotage et cinq de gril. Les 75 minutes que portait la fiche historique ne sont soutenues par aucune source du dossier, pas plus que son bouillon de bœuf : cinq pages sur six mouillent à la volaille ou à l'eau cubée, aucune au bœuf.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Le croûton gratiné apporte le féculent et sa couverture de fromage la part de protéine : le bol se sert seul, en souper, et n'appelle rien à côté. C'est ce qui le distingue d'un potage d'entrée."
+      },
+      "ingredients": [
+        { "form": "Oignon jaune cru", "quantity": 720, "unit": "g", "role": "base", "optional": false },
+        { "form": "Beurre doux", "quantity": 45, "unit": "g", "role": "cuisson", "optional": false },
+        { "form": "Farine de blé T55", "quantity": 30, "unit": "g", "role": "liaison", "optional": false },
+        { "form": "Vin blanc sec", "quantity": 120, "unit": "ml", "role": "déglaçage", "optional": false },
+        { "form": "Bouillon de volaille", "quantity": 1500, "unit": "ml", "role": "liquide", "optional": false },
+        { "form": "Ail cru", "quantity": 10, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Thym frais", "quantity": 4, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Feuille de laurier séchée", "quantity": 1, "unit": "feuille", "role": "aromate", "optional": false },
+        { "form": "Pain de campagne", "quantity": 240, "unit": "g", "role": "croûtons", "optional": false },
+        { "form": "Gruyère râpé", "quantity": 180, "unit": "g", "role": "gratinage", "optional": false },
+        { "form": "Sel fin", "quantity": 6, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 1.5, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Peler les oignons et les émincer en demi-lunes fines et régulières ; prévoir environ 800 g d'oignons entiers à l'achat pour arriver aux 720 g épluchés déclarés ici. Des lamelles d'épaisseur égale colorent ensemble, des lamelles inégales donnent du brûlé et du cru dans le même bol." },
+        { "n": 2, "instruction": "Faire fondre le beurre dans une cocotte à fond épais, y verser les oignons avec le thym et la feuille de laurier, couvrir et laisser rendre l'eau dix minutes à feu doux. Ne pas saler à ce stade : le sel appelle l'eau vers l'extérieur et retarde d'autant la coloration." },
+        { "n": 3, "instruction": "Découvrir et poursuivre vingt minutes à feu moyen en remuant régulièrement et en raclant le fond, jusqu'à une teinte d'acajou uniforme. Toute la soupe est là : cette caramélisation lente ne se remplace par aucune cuisson vive, qui ne donnerait que du brûlé et de l'amertume." },
+        { "n": 4, "instruction": "Poudrer les oignons de farine et la travailler une minute pour lui faire perdre son cru, puis déglacer au vin blanc en grattant les sucs collés au fond de la cocotte et laisser réduire presque à sec avant de mouiller." },
+        { "n": 5, "instruction": "Verser le bouillon de volaille chaud, porter au frémissement et laisser mijoter dix minutes à découvert. Rectifier seulement maintenant en sel et en poivre : le bouillon a réduit et sa salinité s'est concentrée, saler avant reviendrait à saler deux fois." },
+        { "n": 6, "instruction": "Pendant ce temps, tailler le pain de campagne en tranches d'un bon centimètre et les faire sécher au four à chaleur douce jusqu'à ce qu'elles croustillent sans brunir, puis frotter chaque tranche encore tiède avec une gousse d'ail coupée. Une tranche qui n'a pas séché se délite dans le bouillon et le gratin s'effondre." },
+        { "n": 7, "instruction": "Répartir la soupe dans des bols à gratin, poser une tranche de pain par bol, la couvrir généreusement de gruyère râpé et passer sous le gril cinq minutes, jusqu'à ce que le fromage boursoufle et se tache de brun. Servir aussitôt, tant que la croûte résiste encore à la cuillère." }
+      ],
+      "techniques": [
+        "caramélisation des oignons",
+        "roux",
+        "déglaçage",
+        "mijotage",
+        "gratinage"
+      ],
+      "variants": [
+        "La trame marmiton au champagne troque le bouillon contre 35 cl de champagne et 3 cl de porto, et lie la soupe de deux jaunes d'œuf battus avant de la passer au gril.",
+        "Le comté et le beaufort tiennent le rôle du gruyère sur deux des six pages : le comté sale davantage, le beaufort donne une croûte plus souple et plus grasse.",
+        "Deux auteurs de chefsimon relèvent la soupe d'une pincée de quatre-épices ou de muscade râpée ajoutée au bouillon.",
+        "Une cuillerée à soupe de sucre jetée sur les oignons en début de cuisson accélère leur coloration, comme le fait une page de chefsimon.",
+        "Chef Simon jette une poignée de vermicelles fins dans le bouillon en fin de cuisson, en option, pour épaissir la soupe sans farine.",
+        "Une page de chefsimon prend du pain complet ou aux céréales pour les croûtons, ce qui donne un gratin plus rustique et plus dense."
+      ],
+      "sensory": {
+        "profile": "brothy_umami",
+        "scores": {
+          "sweet": 3,
+          "salty": 3,
+          "acidic": 1,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 0,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "oignon caramélisé",
+          "bouillon de volaille réduit",
+          "gruyère gratiné",
+          "vin blanc réduit"
+        ],
+        "aroma_families": [
+          "allium caramélisé",
+          "bouillon de volaille",
+          "fromage gratiné",
+          "pain grillé"
+        ],
+        "target_textures": [
+          "bouillon nappant",
+          "oignons fondants",
+          "croûte de fromage gratinée",
+          "pain imbibé"
+        ],
+        "signature_ingredients": [
+          "Oignon jaune cru",
+          "Bouillon de volaille",
+          "Pain de campagne",
+          "Gruyère râpé"
+        ],
+        "identity_guardrails": [
+          "L'oignon doit atteindre une coloration acajou franche : simplement fondu et blond, il donne une soupe d'oignons, pas la soupe à l'oignon gratinée.",
+          "Le gratin est le plat autant que le bouillon : sans la tranche de pain couverte de fromage et passée au gril, il ne reste qu'une soupe d'oignons.",
+          "Le mouillement doit rester un bouillon clair et peu lié ; la farine ne sert qu'à donner du corps, et une soupe liée comme une sauce cesse d'être ce plat.",
+          "Aucune crème n'entre ici : sur les six pages du dossier, pas une n'en met, et la richesse vient du beurre de départ et du fromage fondu."
+        ]
+      },
+      "conservation": "Le bouillon d'oignons se garde trois jours au réfrigérateur entre 0 et 4 °C dans un contenant fermé, et se congèle jusqu'à trois mois ; il gagne même à reposer une nuit, la caramélisation continuant de diffuser. Ne jamais conserver la soupe déjà gratinée : le pain se défait en bouillie et le fromage refroidi devient élastique. Gratiner au moment du service, sur du pain séché du jour et une soupe ramenée au frémissement.",
+      "allergens": ["gluten", "lait", "sulfites"]
+    },
+    {
+      "code": "FR-013",
+      "remplace": "FR-013",
+      "family": "Velouté de champignons",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "soupe",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 35,
+      "difficulty": "facile",
+      "sources": [
+        "dossier:veloute-de-champignons",
+        "marmiton.org",
+        "chefsimon.com",
+        "750g.com"
+      ],
+      "canonical_arbitration": "Neuf pages, trois sites, et un dossier qui dérive : deux titres n'appartiennent pas vraiment au plat. La page chefsimon « Velouté de poireaux au gingembre, champignons et bacon grillés » est un velouté de poireaux dont le champignon n'est qu'une décoration, et la page 750g « Velouté aux champignons des bois » remplace le champignon de Paris par des sauvages, du chili et du gingembre râpé. Toutes deux sont écartées du cœur de la recette et reversées en variantes. Restent sept pages qui décrivent bien la même chose, et leur accord porte sur trois points. Le champignon : six citations, médiane 125 g par portion (étendue 83 à 167), soit 750 g pour six. La crème : sept citations sur les neuf, médiane 15,5 g par portion — remarquablement basse, mais l'étendue va de 5 à 64 g et il s'agit d'une finition, pas d'une base ; on retient 90 ml. Le roux : cinq pages farinent (médiane 11,3 g/portion) et quatre beurrent (médiane 13,8 g/portion), les deux médianes tombant sur un couple cohérent — 65 g de farine pour 80 g de beurre, soit un roux à 43 g de farine par litre de liquide, exactement la proportion d'un velouté. Le désaccord réel est le liquide, et il est plus vif que ne le laisse voir la synthèse. Chef Simon écrit « 1 litre de fonds blanc ou de lait », un ou exclusif qui ne tranche rien. Deux pages chiffrent les deux liquides et elles se contredisent exactement : la première page marmiton donne un tiers de bouillon pour deux tiers de lait (25 cl et 50 cl), le « Velouté aux champignons » de 750g pose l'inverse, une tasse de lait pour deux tasses de bouillon de poulet. Aucune page ne va au tout-lait : le velouté économique de 750g pèse ½ l de lait mais porte aussi un bouillon non chiffré, et les deux autres pages marmiton n'ont pas une goutte de lait — l'express mouille à l'eau avec deux cubes de bœuf. On retient donc le total, seul vrai point de convergence — 250 g de liquide par portion, soit 1,5 l pour six — et on suit pour la répartition le rapport de marmiton, 1 l de lait entier pour 50 cl de bouillon de volaille. Ce partage est un choix éditorial pris contre le rapport inverse de 750g : un velouté est une soupe lactée, et c'est la page marmiton qui décrit le plus exactement le plat visé. Le citron (deux pages, deux sites) est gardé mais NON mis à l'échelle : ces deux pages font 3 et 2 portions et emploient un citron entier, ce qui donnerait plus de 110 g de jus pour six et une soupe acide. Le citron sert à garder les lames claires, pas à assaisonner : 20 ml suffisent, et c'est un arbitrage éditorial assumé contre la médiane. Persil (cinq citations, médiane 4,5 g par portion ramenée à 20 g pour six : c'est une finition, pas un légume, et l'écart est délibéré), ail (six citations, 10 g), oignon (sept citations, dont la synthèse ne convertit aucune, estimé à une pièce et demie soit 150 g) et muscade (une seule mention, chez Chef Simon, gardée à dose d'assaisonnement) complètent. Sont écartés : la pomme de terre liante (deux pages seulement, dont l'une est le velouté de poireaux), le céleri branche, le vin blanc, les jaunes d'œuf, les champignons en boîte, le madère, le paprika fumé et les graines germées — repris en variantes pour l'essentiel. Enfin, quatre propositions de rapprochement de la synthèse sont manifestement fausses et rejetées : les tranches de bacon de la page aux poireaux, lues une fois comme du « jarret de veau cru en tranches avec os » et une autre comme du « bœuf à griller en fines lamelles » ; le mot « haché » d'une ligne de garniture devenu du « porc haché cru » ; et les graines germées prises pour de la « graine de moutarde ». Aucune n'entre dans la liste. La fiche historique liait au contraire le velouté à 250 g de pomme de terre et le mouillait entièrement au bouillon de légumes : ni l'un ni l'autre n'est majoritaire dans le dossier, où le velouté est lacté et lié au roux.",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Velouté d'entrée : il apporte le légume et une part de protéine laitière, mais aucun féculent et aucune viande. Il ouvre le repas ou accompagne un plat, il ne le constitue pas — et il n'a rien à recevoir non plus, un velouté ne s'accompagne pas."
+      },
+      "ingredients": [
+        { "form": "Champignon de Paris frais", "quantity": 750, "unit": "g", "role": "base", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 150, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Ail cru", "quantity": 10, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Beurre doux", "quantity": 80, "unit": "g", "role": "béchamel", "optional": false },
+        { "form": "Farine de blé T55", "quantity": 65, "unit": "g", "role": "liaison", "optional": false },
+        { "form": "Lait entier", "quantity": 1000, "unit": "ml", "role": "liquide", "optional": false },
+        { "form": "Bouillon de volaille", "quantity": 500, "unit": "ml", "role": "liquide", "optional": false },
+        { "form": "Crème fraîche liquide entière", "quantity": 90, "unit": "ml", "role": "finition", "optional": false },
+        { "form": "Jus de citron frais", "quantity": 20, "unit": "ml", "role": "acidifiant", "optional": false },
+        { "form": "Persil frais", "quantity": 20, "unit": "g", "role": "finition", "optional": false },
+        { "form": "Muscade moulue", "quantity": 0.5, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 5, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Parer les champignons : couper le bout terreux des pieds et essuyer les chapeaux avec un linge humide plutôt que de les passer sous l'eau, qui les gorge et emporte le parfum. Compter environ 800 g bruts pour les 750 g parés déclarés ici." },
+        { "n": 2, "instruction": "Réserver une petite poignée des plus fermes pour la garniture et émincer le reste en lamelles, puis arroser aussitôt la masse émincée du jus de citron. Sans cet acide, les lames noircissent en quelques minutes et le velouté vire au gris sale." },
+        { "n": 3, "instruction": "Faire fondre 20 g du beurre dans une sauteuse large, y laisser suer l'oignon haché et l'ail écrasé cinq minutes sans coloration, puis ajouter les champignons émincés et monter le feu. Ils rendent d'abord beaucoup d'eau : il faut la laisser s'évaporer entièrement avant qu'ils commencent à dorer, sinon ils bouillent au lieu de concentrer." },
+        { "n": 4, "instruction": "Dans une casserole à part, cuire les 60 g de beurre restants avec la farine deux minutes en remuant pour obtenir un roux à peine blond — il faut à peu près autant de gras que de farine, un roux trop sec restant sableux et refusant le lait, puis verser le lait froid en trois fois en fouettant à chaque ajout. Terminer par le bouillon de volaille et laisser épaissir cinq minutes à feu doux." },
+        { "n": 5, "instruction": "Réunir les champignons et leur jus au velouté, râper la muscade, couvrir et laisser mijoter quinze minutes à petit feu. C'est le temps dont le champignon a besoin pour céder son goût au liquide ; en dessous, la soupe reste laiteuse et le champignon garde tout pour lui." },
+        { "n": 6, "instruction": "Mixer longuement, deux bonnes minutes, puis passer au chinois pour une texture parfaitement soyeuse. Incorporer la crème hors du feu, rectifier en sel et en poivre — la crème arrondit et masque, il faut donc goûter après elle et non avant." },
+        { "n": 7, "instruction": "Poêler les champignons réservés, coupés en quartiers, à sec dans une poêle bien chaude jusqu'à ce qu'ils dorent en restant fermes. Les répartir sur les assiettes avec le persil haché et servir sans attendre, la garniture ramollissant vite au contact du velouté chaud." }
+      ],
+      "techniques": [
+        "parage",
+        "suer",
+        "roux blanc",
+        "mijotage",
+        "mixage",
+        "poêlage"
+      ],
+      "variants": [
+        "Chef Simon lie le velouté hors du feu de deux jaunes d'œuf battus avec la crème : la texture s'épaissit sans farine supplémentaire, mais toute ébullition est ensuite interdite.",
+        "Une page chefsimon déglace les champignons de 10 cl de vin blanc sec avant de mouiller, ce qui apporte une acidité plus franche que le citron.",
+        "La version express de marmiton part de 460 g de champignons de Paris en boîte égouttés, remplace le lait par 25 cl de crème liquide et lie au pain sec émietté.",
+        "Deux pages se passent de roux et lient le velouté d'une pomme de terre cuite avec les champignons puis mixée avec eux.",
+        "750g monte un velouté aux champignons des bois où les champignons de Paris cèdent la place à des sauvages, relevés de poudre de chili, de gingembre râpé et de paprika fumé.",
+        "Deux cuillerées à café de madère ajoutées en fin de cuisson, en option chez marmiton.",
+        "Une page chefsimon monte le même velouté sur une base de poireaux et de gingembre frais, les champignons n'y étant plus qu'une garniture poêlée avec du bacon grillé."
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 1,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "champignon terreux",
+          "lait et crème",
+          "beurre",
+          "oignon fondu"
+        ],
+        "aroma_families": [
+          "champignon",
+          "lacté",
+          "beurre",
+          "persil frais"
+        ],
+        "target_textures": [
+          "velouté lisse",
+          "nappant",
+          "sans fibre",
+          "champignons poêlés fermes"
+        ],
+        "signature_ingredients": [
+          "Champignon de Paris frais",
+          "Lait entier",
+          "Crème fraîche liquide entière"
+        ],
+        "identity_guardrails": [
+          "Le champignon doit rester l'ingrédient dominant en masse : dès qu'un autre légume prend le dessus — poireau, pomme de terre, carotte — le velouté change de nom, comme le montrent les deux titres dérivants du dossier.",
+          "Le liquide est lacté : remplacer entièrement le lait par de l'eau ou du bouillon donne une soupe de champignons, pas un velouté.",
+          "Les champignons doivent avoir rendu puis évaporé leur eau avant le mouillement ; noyés trop tôt, ils bouillent au lieu de concentrer et le velouté reste plat.",
+          "La texture doit être entièrement mixée et sans fibre : des lamelles laissées entières en feraient une soupe rustique."
+        ]
+      },
+      "conservation": "Se garde trois jours au réfrigérateur entre 0 et 4 °C dans un contenant bien fermé — le champignon capte vite les odeurs voisines. Réchauffer à feu doux sans jamais bouillir, la crème tranchant à l'ébullition. Pour la congélation, congeler la base mixée non crémée jusqu'à trois mois et n'incorporer la crème qu'au réchauffage : congelée crémée, elle se déphase et rend le velouté granuleux. Les champignons poêlés de garniture se font au dernier moment, ils ramollissent en quelques heures.",
+      "allergens": ["gluten", "lait"]
+    },
+    {
+      "code": "FR-014",
+      "remplace": "FR-014",
+      "family": "Velouté de potimarron",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "soupe",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 30,
+      "difficulty": "facile",
+      "formes_manquantes": ["Châtaigne cuite"],
+      "sources": [
+        "dossier:veloute-de-potimarron",
+        "marmiton.org",
+        "chefsimon.com",
+        "750g.com"
+      ],
+      "canonical_arbitration": "Le dossier est confus partout, et son seul point d'apparence ferme ne l'est pas non plus. La synthèse affiche le potimarron à 200 g par portion sur huit pages et sans aucune étendue, ce qui a l'air d'une unanimité : ce n'en est pas une. Elle ne convertit qu'une seule ligne — les 800 g pour quatre de Chef Simon — et laisse les sept autres de côté (« 1 potimarron », « 2 potimarrons », et un « 1 potimarron de 1,2 kg » coupé à la virgule) ; l'absence de dispersion est un artefact d'affichage, pas un accord des sources. Trois pages seulement pèsent la courge, et sur trois bases différentes : 1,2 kg pour six chez marmiton, qui est un poids de fruit entier à l'achat ; 830 g pour quatre « poids épluché » chez chefsimon, donc une chair pelée, soit 207,5 g par portion ; 800 g pour quatre « poids cru, vidé, non pelé » chez un autre auteur chefsimon, soit 200 g. On retient 200 g de chair par portion, non pas au nom d'un accord des huit pages, mais parce que c'est ce que donnent les deux seules pages qui déclarent un poids déjà préparé (200 et 207,5 g). Soit 1200 g pour six, en rappelant dans les étapes qu'un fruit entier d'environ 1,4 kg est nécessaire à l'achat pour l'obtenir — un poids de courge entière n'est pas un poids comestible, et le déclarer tel quel gonflerait la nutrition. La peau, en revanche, ne fait pas l'unanimité que l'on pourrait croire : la page qui pèse 830 g épluche explicitement, celle qui pèse 800 g garde la peau. On la garde ici — la forme du catalogue est « Potimarron frais, épépiné » et le parfum de châtaigne en dépend — mais c'est un choix éditorial, pas une lecture du dossier. Le reste se partage en deux. Le liquide : deux pages seulement le chiffrent en volume, et elles tombent toutes deux sur 250 g par portion (1 l de bouillon de légumes pour quatre chez l'une, 1,5 l d'eau et deux cubes de légumes pour six chez l'autre) ; trois autres se contentent d'annoncer « un bouillon » ou « un cube », ce que la synthèse traduit en 1,7 g par portion, chiffre qui n'a aucun sens. On retient 250 g par portion, soit 1,5 l, et le bouillon de légumes plutôt que la volaille : c'est le seul mouillement chiffré en litres du dossier, il est attesté sur les deux pages qui le mesurent, et il laisse le plat végétarien. La crème est citée par quatre pages, avec une étendue énorme — de 8 à 129 g par portion, cette borne haute venant d'une page qui met 50 cl de crème pour quatre et fait un plat tout autre. La médiane, 25,8 g, donne 150 ml pour six, et c'est ce qu'on retient : une finition, pas une base. La matière grasse se partage — deux pages au beurre (médiane 8,3 g/portion, une troisième mettant « une noix de beurre » sans la peser), une à l'huile d'olive, une à l'huile de colza, une à l'huile de noisette que la synthèse range à tort avec l'huile d'olive ; on retient le beurre, arbitrairement mais explicitement, parce que sa médiane est chiffrée et qu'il convient au suage sans coloration. L'allium se partage de même : deux pages à l'oignon, deux à l'échalote ; on retient l'oignon jaune, une pièce et demie soit 150 g, et l'échalote reste une équivalence libre. Un rapprochement enfin est refusé net : deux pages ajoutent des châtaignes cuites (« 1 demi de châtaignes pelées », « 200 g de châtaignes cuites ») et la synthèse les rapproche de la châtaigne d'eau — une forme explicitement bloquée au vocabulaire, et pour cause : la châtaigne d'eau est un tubercule aquatique sans lien avec le Castanea, deux à six fois moins énergétique. Substituer serait fausser la nutrition en silence. La châtaigne est donc une absence réelle, portée en formes_manquantes, et la variante aux châtaignes reste une phrase en attendant son arbitrage. Écartés de même parce que minoritaires : carotte et pomme de terre (deux pages), panais, safran, cumin, jus d'orange, clou de girofle, gingembre, morilles, lait — tous repris en variantes. La fiche historique mouillait au bouillon de légumes non salé et ajoutait 250 g de pomme de terre pour lier : le dossier ne soutient pas cette pomme de terre, et 1200 g de potimarron cuits puis mixés lient très bien seuls.",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Velouté d'entrée : légume, bouillon et une pointe de crème, mais ni protéine ni féculent. Il ouvre le repas ou accompagne un plat, il ne le remplace pas — et il ne reçoit rien lui-même, un velouté ne s'accompagne pas."
+      },
+      "ingredients": [
+        { "form": "Potimarron frais, épépiné", "quantity": 1200, "unit": "g", "role": "base", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 150, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Ail cru", "quantity": 5, "unit": "g", "role": "aromate", "optional": true },
+        { "form": "Beurre doux", "quantity": 50, "unit": "g", "role": "cuisson", "optional": false },
+        { "form": "Bouillon de légumes", "quantity": 1500, "unit": "ml", "role": "liquide", "optional": false },
+        { "form": "Crème fraîche liquide entière", "quantity": 150, "unit": "ml", "role": "finition", "optional": false },
+        { "form": "Muscade moulue", "quantity": 0.5, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 6, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Laver le potimarron, le fendre en deux et retirer à la cuillère les graines et les filaments. Ne pas l'éplucher : sa peau fine cuit et se mixe sans laisser de fibre, et elle porte une part du goût de châtaigne qui fait la réputation de cette courge. Compter un fruit d'environ 1,4 kg entier pour arriver aux 1200 g épépinés déclarés ici." },
+        { "n": 2, "instruction": "Détailler la chair en cubes de deux à trois centimètres, aussi réguliers que possible pour qu'ils cuisent ensemble, puis hacher finement l'oignon et écraser l'ail du plat du couteau." },
+        { "n": 3, "instruction": "Faire fondre le beurre dans une cocotte et y laisser suer l'oignon et l'ail cinq à six minutes à feu doux, sans les laisser prendre couleur. La moindre caramélisation apporterait une amertume qui se remarque immédiatement dans un velouté aussi doux que celui-ci." },
+        { "n": 4, "instruction": "Ajouter les cubes de potimarron, les enrober de beurre deux minutes en remuant, puis mouiller avec le bouillon de légumes chaud juste à hauteur. Un mouillement qui noie les cubes dilue le goût et oblige à réduire ensuite pour rien : mieux vaut en garder un peu de côté pour détendre à la fin." },
+        { "n": 5, "instruction": "Couvrir et laisser cuire vingt-cinq à trente minutes à petits bouillons, jusqu'à ce qu'un cube s'écrase sans résistance sous le dos d'une cuillère. Râper la muscade dans les dernières minutes, à chaud : jetée à froid dans un velouté déjà mixé, elle reste poudreuse et se sent à part du reste." },
+        { "n": 6, "instruction": "Mixer très finement, deux bonnes minutes, jusqu'à une texture lisse et nappante, en ajoutant un peu du bouillon réservé si le velouté s'est trop resserré. Incorporer la crème hors du feu, rectifier en sel et en poivre et servir bien chaud en assiette creuse." }
+      ],
+      "techniques": [
+        "parage",
+        "suer",
+        "cuisson au bouillon",
+        "mixage",
+        "liaison"
+      ],
+      "variants": [
+        "Deux pages du dossier, une marmiton et une chefsimon, ajoutent 200 g de châtaignes cuites au mouillement : le velouté s'épaissit et la note de châtaigne double. La forme n'existe pas au catalogue et la variante reste une indication tant qu'elle n'est pas arbitrée.",
+        "Une page marmiton complète le potimarron de quatre carottes et de trois pommes de terre, ce qui donne un velouté plus dense, plus terreux et moins sucré.",
+        "Chef Simon marie le potimarron à un gros panais, mouillé simplement à l'eau et à deux cubes de bouillon de légumes.",
+        "Une page chefsimon parfume le velouté d'une dizaine de pistils de safran, d'une cuillerée à café de cumin en poudre et d'un trait de jus d'orange, et remplace la crème par de la crème de soja.",
+        "Marmiton mouille au lait entier plutôt qu'au bouillon, après l'avoir infusé de deux clous de girofle, de grains de poivre noir et de lamelles de gingembre frais, et termine chaque assiette de ciboulette ciselée.",
+        "750g monte la crème liquide en chantilly non sucrée et en dépose une cuillerée sur chaque assiette au moment de servir ; une autre page y ajoute des morilles séchées réhydratées.",
+        "L'échalote remplace l'oignon sur deux des huit pages ; ailleurs le beurre cède la place à l'huile d'olive, à l'huile de colza ou à l'huile de noisette, une page chacune."
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 3,
+          "salty": 2,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 2,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 1,
+          "intensity": 2
+        },
+        "dominant_flavors": [
+          "potimarron sucré",
+          "crème lactée",
+          "beurre",
+          "muscade"
+        ],
+        "aroma_families": [
+          "courge",
+          "lacté",
+          "beurre",
+          "muscade"
+        ],
+        "target_textures": [
+          "velouté lisse",
+          "nappant",
+          "sans fibre"
+        ],
+        "signature_ingredients": [
+          "Potimarron frais, épépiné",
+          "Crème fraîche liquide entière",
+          "Bouillon de légumes"
+        ],
+        "identity_guardrails": [
+          "Le potimarron reste seul en scène, à 200 g de chair par portion : l'adjonction massive de carotte, de pomme de terre ou de panais en fait un autre velouté.",
+          "La peau ne s'enlève pas : c'est ce qui distingue le potimarron d'une courge à éplucher, et son parfum de châtaigne en dépend.",
+          "L'oignon doit suer sans coloration ; une base caramélisée écrase la douceur qui est tout l'intérêt du plat.",
+          "La crème s'incorpore hors du feu, en finition, et jamais en début de cuisson."
+        ]
+      },
+      "conservation": "Se garde quatre jours au réfrigérateur entre 0 et 4 °C dans un contenant fermé, et se réchauffe à feu doux sans ébullition pour que la crème ne tranche pas. Le potimarron supporte très bien la congélation : congeler la base mixée non crémée jusqu'à quatre mois et n'incorporer la crème qu'au réchauffage, une base congelée déjà crémée se déphasant et rendant le velouté granuleux. Le velouté s'épaissit en refroidissant, prévoir un peu de bouillon pour le détendre au réchauffage.",
+      "allergens": ["lait"]
+    }
+  ]
+}

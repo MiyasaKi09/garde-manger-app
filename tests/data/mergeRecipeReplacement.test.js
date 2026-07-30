@@ -70,7 +70,11 @@ describe('reprise d’une recette existante au versement', () => {
     const { code, sortie } = fusionner([reprise])
     expect(code).toBe(0)
     expect(sortie).toMatch(/1 recette\(s\) reprise\(s\)/)
-    expect(sortie).toMatch(/4 → 6 étapes/)
+    // Le compte d'étapes AVANT se lit sur le corpus, il ne se fige pas ici :
+    // FR-025 a justement été reprise depuis, passant de quatre étapes à huit, et
+    // un « 4 → 6 » écrit en dur faisait échouer ce test pour la seule raison que
+    // le corpus avait progressé — exactement ce qu'il est censé permettre.
+    expect(sortie).toMatch(new RegExp(`${existante.steps.length} → 6 étapes`))
     expect(sortie).toMatch(new RegExp(`${corpus.recipes.length} → ${corpus.recipes.length} \\(0 ajout`))
   })
 })

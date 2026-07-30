@@ -294,8 +294,50 @@ node scripts/data/recipes/audit-recipe-sources.mjs
 node scripts/data/recipes/synthesize-source-quantities.mjs --tous --json synthese.json
         (rédaction, avec « remplace »)
 node scripts/data/recipes/validate-recipe-batch.mjs lot.json
+node scripts/data/recipes/check-arbitration-arithmetic.mjs lot.json
 node scripts/data/recipes/merge-recipe-batch.mjs lot.json
 ```
+
+### Relire l'arbitrage, et pourquoi il fallait un contrôle
+
+```bash
+node scripts/data/recipes/check-arbitration-arithmetic.mjs data/recipes/batches/*.json
+node scripts/data/recipes/check-arbitration-arithmetic.mjs --corpus
+```
+
+L'arbitrage canonique est le cœur du travail éditorial : il dit ce que le dossier
+montre, où les sources divergent, et ce qu'on a tranché. **Rien ne le relisait.**
+Le validateur regarde la forme, le contrôle de prose regarde la recopie, la
+synthèse propose des quantités — aucun ne relit l'arbitrage. Et un arbitrage faux
+coûte plus cher qu'une quantité fausse, parce que c'est lui qui sert de preuve au
+relecteur suivant.
+
+Le batch 3 a montré la famille de fautes. Deux réfuteurs indépendants, sur des
+lots différents, ont trouvé les mêmes deux choses :
+
+- **des arbitrages qui se contredisent en arithmétique.** « médiane 72 g par
+  personne, soit 400 g » pour six parts : 72 × 6 fait 432. Le relecteur qui refait
+  le calcul ne sait plus si c'est la médiane ou le total qui est faux.
+- **des décomptes de sources recopiés du tableau de synthèse** au lieu d'être relus
+  sur le dossier. Le script rapproche parfois à faux — le piment de Cayenne rangé
+  sous « poivre noir moulu », « 4 filets de poulet » sous « filet mignon de porc »,
+  « 1 sachet de gruyère râpé 200 g » lu comme un sachet de huit grammes — donc le
+  nombre de sources qu'il rattache à une ligne n'est pas celui du dossier. Le
+  dénominateur, lui, est vérifiable exactement.
+
+Il **signale**, il ne refuse pas : un arbitrage est de la prose, et un écart peut
+être une décision assumée ailleurs dans le paragraphe. Trois tournures justes ont
+dû lui être apprises avant qu'il ne soit lisible — « médiane 2 cuillerées, soit
+30 g » (l'unité de comptage n'est pas une masse par personne), « la médiane est 45.
+On descend à 40 g, soit 160 g » (un écart énoncé est une décision, et 40 × 4 fait
+bien 160), et « six pages sur trois sites » (une répartition, pas une fraction).
+Elles sont verrouillées dans `tests/data/checkArbitrationArithmetic.test.js`.
+
+Une réserve à connaître : sur les 295 arbitrages du corpus, seuls trois emploient
+la tournure arithmétique contrôlée. Les recettes des batchs 1 et 2 écrivent des
+arbitrages plus courts, qui ne montrent pas leur calcul — le contrôle n'a donc
+presque aucune prise sur elles, et leur silence n'est pas un quitus. Les quinze
+fractions « N sources sur M » qu'elles portent, en revanche, sont toutes justes.
 
 ### Ce que « remplace » exige
 

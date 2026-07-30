@@ -1,0 +1,879 @@
+{
+  "recipes": [
+    {
+      "code": "REAL-295",
+      "remplace": "REAL-295",
+      "family": "Goulash hongrois",
+      "cuisine_origin": "Hongrie",
+      "identity_level": "named_traditional_dish",
+      "category": "soupe-ragoût de bœuf",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 8,
+      "prep_minutes": 30,
+      "cook_minutes": 180,
+      "difficulty": "moyenne",
+      "sources": [
+        "dossier:goulash-hongrois",
+        "marmiton.org",
+        "chefsimon.com"
+      ],
+      "canonical_arbitration": "Quatre sources, trois sur marmiton et une sur chefsimon, données pour quatre, six et quatre portions, la quatrième sans portion déclarée. On garde les huit portions du code repris — un goulash se fait en cocotte pleine — et on remonte les médianes par personne. La viande d'abord : trois sources sur quatre pèsent du bœuf à braiser, à 250, 125 et 187,5 g par personne — cette dernière est la source chefsimon, sans portion déclarée, à qui l'on attribue les huit portions cibles pour la rendre comparable aux autres : 1 500 g ÷ 8 —, médiane 187,5, soit 1 500 g pour huit. La quatrième ne dit que « 500 g de bœuf » sans découpe et la synthèse l'a rattachée à du bœuf haché à 15 % de matière grasse : rapprochement refusé, un goulash de trois heures ne se fait pas au haché. Le paleron que déclarait la recette remplacée n'apparaît qu'en parenthèse d'une source, à côté du gîte — on écrit donc la forme générique que le dossier emploie, « Bœuf à braiser cru », qui couvre les deux. Le désaccord le plus lourd porte sur la farine. Deux sources sur quatre annoncent 500 g et 1 kg de farine avec quatre œufs, du sel et de l'eau, ce qui donne une médiane de 187,5 g de farine par personne — 1,5 kg pour huit. Ce n'est pas le ragoût, c'est la pâte des galuska qu'on poche à l'eau salée et qu'on sert à côté ; déclarée dans la liste, elle mettrait la moitié de l'énergie du plat sur une garniture cuite dans une autre casserole. Elle sort de la liste et descend en variante attestée. La farine de la quatrième source, deux cuillerées à soupe pour lier en fin de cuisson, est un autre usage encore et reste minoritaire à un quart : notée, non retenue. L'oignon ensuite. Une seule source le pèse, à 200 g pour six, soit 33 g par personne, et la synthèse s'est arrêtée là ; les trois autres comptent en pièces — deux, deux et trois oignons — que le script n'a pas su convertir. Une pièce moyenne à 130 g donne 65, 33, 65 et 49 g par personne, médiane 57, soit 450 g pour huit. C'est moins que les 600 g de la recette remplacée et beaucoup plus que la médiane brute du script ; c'est aussi le tiers du poids de viande, proportion qui tient le plat, puisque c'est l'oignon fondu et non la farine qui lie la sauce d'un goulash. Le paprika est le point où la recette remplacée était le plus fausse : elle en déclarait 30 g pour huit quand la ligne la plus généreuse du dossier — deux cuillerées à soupe de paprika doux pour 1,5 kg de viande, exactement notre poids — en donne 14. On écrit 15 g. Le paprika fort est contesté, une source sur quatre en met une demi-cuillerée à café et une autre précise expressément « doux et non pas fort » : il reste dans la liste mais déclaré optionnel, à 2 g. Les pommes de terre départagent deux plats sous un même nom : 25 g par personne dans la version soupe, 250 dans une version ragoût, environ 300 dans l'autre — huit pièces pour quatre. Les extrêmes décrivent deux choses différentes, un garnissage d'un côté, le féculent du plat de l'autre ; la catégorie du corpus dit « soupe-ragoût » et la source qui pèse le moins s'intitule elle-même soupe de goulash. On tranche entre les deux à 150 g par personne, 1 200 g pour huit. Tomate et poivron sont comptés en pièces par les trois sources qui les portent : à 120 g la tomate on obtient 30, 60 et 60 g par personne, médiane 60, soit 480 g ; à 150 g le poivron, 37,5, 50 et 37,5, médiane 37,5, soit 300 g. La synthèse proposait « Tomate râpée » pour « 1 tomate » — refusé, une tomate entière n'est pas une tomate râpée. Le poivron est rouge dans deux sources sur trois, l'une l'accompagnant d'un vert : on écrit rouge et le panachage passe en variante. Le corps gras est partagé, une source au saindoux à 3,3 g par personne, une à l'huile d'olive, deux muettes ; on garde le saindoux, qui est la graisse du plat, mais à 30 g pour huit et non aux 70 g de la recette remplacée, qui doublaient l'unique ligne chiffrée du dossier. Le mouillement vient de la même source, 0,75 l de bouillon et 0,5 l d'eau chaude pour six, soit 208 ml par personne ; on écrit 1 600 ml de bouillon de bœuf pour huit, et non de volaille comme le proposait la synthèse — la quatrième source nomme explicitement un bouillon de bœuf. L'ail est à deux sources sur quatre : la synthèse a lu « 2 ou 3 gousses d'ail » comme une gousse de vanille, faute refusée, et les deux lignes donnent environ 2 g par personne, soit 15 g. Le piment est à trois sources sur quatre, une pièce pour quatre personnes, l'une le donnant pour facultatif : deux pièces pour huit, en piment rouge frais puisque c'est ainsi que la source qui le qualifie l'écrit. Le carvi que déclarait la recette remplacée n'est attesté par aucune source du dossier et il disparaît, quoi qu'en dise l'usage hongrois : la mémoire n'a pas autorité ici. Le cumin, lui, est attesté une fois, en demi-cuillerée à café mêlée à de la marjolaine, et on le garde à 2 g ; la marjolaine est arbitrée mais pas encore au catalogue et elle passe en variante plutôt que de suspendre le calcul nutritionnel de la recette. La crème fraîche est le dernier désaccord : deux sources sur quatre en finissent le plat, 10 g par personne dans l'une, 20 cl dans l'autre. La moitié du dossier n'est pas une pluralité et un goulash lié à la crème devient un paprikás ; elle reste donc dans la liste comme finition optionnelle, 100 g, à ajouter dans l'assiette. Lard fumé, concentré de tomate, maïzena et carotte sont à une source sur quatre chacun et descendent tous en variantes. Durées : préparation 30 minutes, médiane des quatre sources ; cuisson 180 minutes, médiane des trois lignes exploitables — la quatrième déclare zéro parce qu'elle cuit à la mijoteuse. Le nom du corpus est juste, la recette n'est pas renommée.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "La viande, le féculent et les légumes cuisent dans la même cocotte : 1,2 kg de pommes de terre pour huit tiennent le rôle du féculent et il n'y a rien à ajouter à côté. Deux sources sur quatre servent le plat avec des pâtes fraîches à l'œuf, mais c'est une seconde garniture amidonnée sur un plat qui en porte déjà une — on la garde en variante et on ne l'adjoint pas."
+      },
+      "ingredients": [
+        {
+          "form": "Bœuf à braiser cru",
+          "quantity": 1500,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Pomme de terre crue, épluchée",
+          "quantity": 1200,
+          "unit": "g",
+          "role": "féculent",
+          "optional": false
+        },
+        {
+          "form": "Bouillon de bœuf",
+          "quantity": 1600,
+          "unit": "ml",
+          "role": "mouillement",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 450,
+          "unit": "g",
+          "role": "base aromatique",
+          "optional": false
+        },
+        {
+          "form": "Tomate fraîche mûre",
+          "quantity": 480,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Poivron rouge frais",
+          "quantity": 300,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Saindoux",
+          "quantity": 30,
+          "unit": "g",
+          "role": "cuisson",
+          "optional": false
+        },
+        {
+          "form": "Paprika doux",
+          "quantity": 15,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 15,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Piment rouge frais",
+          "quantity": 2,
+          "unit": "u",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 12,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Cumin moulu",
+          "quantity": 2,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 2,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Paprika fort hongrois",
+          "quantity": 2,
+          "unit": "g",
+          "role": "épice",
+          "optional": true
+        },
+        {
+          "form": "Crème fraîche épaisse",
+          "quantity": 100,
+          "unit": "g",
+          "role": "finition",
+          "optional": true
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Tailler le bœuf à braiser en cubes de trois centimètres de côté et les éponger au papier absorbant. Plus petits, les morceaux se défont en filaments au bout de trois heures ; plus gros, ils restent secs au cœur. Une surface humide ne colore pas, elle bouillonne dans sa propre eau — c'est la seule raison de cet épongeage."
+        },
+        {
+          "n": 2,
+          "instruction": "Émincer les oignons en demi-lunes fines et les faire fondre dans le saindoux, à feu doux et à couvert, vingt à vingt-cinq minutes. Ils doivent devenir translucides et sucrés sans prendre de couleur. Cette masse d'oignons — le tiers du poids de la viande — n'est pas un aromate d'appoint : c'est elle qui liera la sauce en fin de cuisson, et c'est pourquoi un goulash n'a besoin d'aucune farine."
+        },
+        {
+          "n": 3,
+          "instruction": "Retirer la cocotte du feu et attendre une bonne minute avant d'y jeter le paprika doux, l'ail haché et le cumin. Le paprika brûle très bas et son amertume est irréversible : ajouté hors du feu, il s'ouvre dans la graisse tiède et donne au plat sa couleur rouge profonde au lieu d'un goût de poudre grillée. Remuer vivement pour l'enrober de gras."
+        },
+        {
+          "n": 4,
+          "instruction": "Remettre sur feu moyen, ajouter les cubes de bœuf et les retourner cinq minutes le temps qu'ils s'habillent d'oignon et de paprika. Ne pas chercher de croûte brune : ici la viande cuit dans l'oignon, elle ne se poêle pas, et vouloir la saisir décollerait le paprika du fond en le brûlant. Ajouter les tomates concassées et les piments fendus en deux, puis laisser rendre leur eau deux ou trois minutes."
+        },
+        {
+          "n": 5,
+          "instruction": "Verser le bouillon de bœuf, porter à tout petits frémissements et couvrir. Compter deux heures à feu très doux, la surface juste tremblante : une ébullition franche resserre les fibres et la viande reste dure quoi qu'on fasse ensuite. N'ajouter que la moitié du sel à ce stade et garder le reste pour la fin, une fois le volume établi par la réduction."
+        },
+        {
+          "n": 6,
+          "instruction": "Éplucher les pommes de terre, les couper en gros quartiers, tailler le poivron rouge en larges lanières, puis les glisser dans la cocotte pour les trente à quarante dernières minutes. Ajoutés au départ, ils se délitent et rendent le bouillon farineux ; ajoutés là, ils cuisent juste et leur amidon suffit à épaissir la sauce."
+        },
+        {
+          "n": 7,
+          "instruction": "Goûter, finir de saler, poivrer, et retirer les piments si la chaleur paraît suffisante. Laisser reposer un quart d'heure hors du feu avant de servir : la graisse remonte et se prélève à la cuillère, le bouillon se clarifie et les pommes de terre finissent de s'imbiber. Servir à la louche en assiette creuse, avec, pour qui le veut, une cuillerée de crème fraîche déposée dans l'assiette et non dans la cocotte."
+        }
+      ],
+      "techniques": [
+        "fondue d'oignons",
+        "paprika hors du feu",
+        "braisage long",
+        "mouillement au bouillon",
+        "ajout tardif des légumes"
+      ],
+      "variants": [
+        "Servi avec des galuska, pâte de farine et d'œufs battus à l'eau salée puis pochée en petits morceaux, comptée à part du ragoût (marmiton, deux versions sur quatre)",
+        "Version soupe : viande taillée plus menue, mouillement doublé, carotte et poivron vert ajoutés, une cuillerée de crème fraîche au service (marmiton)",
+        "Une demi-cuillerée à café de paprika fort en plus du doux, pour six (marmiton)",
+        "Marjolaine séchée mêlée au cumin, à parts égales (marmiton)",
+        "À la mijoteuse : 300 g de lard fumé taillé épais, du double concentré de tomate à la place des tomates fraîches, et une liaison farine-fécule de maïs en fin de cuisson (chefsimon)",
+        "Finition à la crème fraîche semi-épaisse, 20 cl versés dans la cocotte (chefsimon)",
+        "Panachage des poivrons, un rouge et un vert (marmiton)"
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 2,
+          "pungency": 2,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "paprika doux",
+          "oignon fondu",
+          "bœuf braisé",
+          "tomate cuite"
+        ],
+        "aroma_families": [
+          "paprika",
+          "oignon compoté",
+          "bœuf mijoté",
+          "tomate cuite"
+        ],
+        "target_textures": [
+          "viande fondante",
+          "pomme de terre juste tenue",
+          "bouillon rouge lié"
+        ],
+        "signature_ingredients": [
+          "Bœuf à braiser cru",
+          "Paprika doux",
+          "Oignon jaune cru"
+        ],
+        "identity_guardrails": [
+          "Sans paprika doux en quantité — 15 g pour huit, ajoutés hors du feu — ce n'est qu'un ragoût de bœuf : la couleur et le parfum du plat ne viennent de rien d'autre",
+          "L'oignon se compte en centaines de grammes, un tiers du poids de la viande, et c'est lui qui lie la sauce",
+          "Le paprika brûlé rend le plat amer et rien ne le rattrape : il n'entre jamais sur le feu",
+          "Une liaison à la farine ou une base de crème en feraient un paprikás, pas un goulash",
+          "Le bouillon reste franchement liquide : la sauce nappe à peine, elle ne se réduit pas en sauce brune"
+        ]
+      },
+      "conservation": "Se garde 3 à 4 jours au réfrigérateur dans un récipient fermé, et gagne à être réchauffé le lendemain — le paprika continue de diffuser dans le bouillon. Se congèle 3 mois, mais en retirant les pommes de terre avant congélation : elles ressortent granuleuses. Réchauffer à couvert et à feu doux en rallongeant d'un peu de bouillon, sans jamais faire rebouillir, ce qui durcirait la viande. Si l'on sert avec de la crème, l'ajouter à l'assiette et non dans la cocotte, pour que le reste se conserve tel quel.",
+      "allergens": [
+        "lait"
+      ]
+    },
+    {
+      "code": "REAL-287",
+      "remplace": "REAL-287",
+      "family": "Pabellón criollo",
+      "cuisine_origin": "Venezuela",
+      "identity_level": "named_traditional_dish",
+      "category": "assiette bœuf haricots riz",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 40,
+      "cook_minutes": 150,
+      "difficulty": "moyenne",
+      "sources": [
+        "dossier:pabellon-criollo",
+        "marmiton.org",
+        "chefsimon.com"
+      ],
+      "canonical_arbitration": "C'est le dossier le plus mince du lot : deux sources seulement, une marmiton pour six et une chefsimon pour quatre, soit le minimum que l'audit accepte — deux versions publiées sur deux sites distincts. On garde les six portions du code repris. Les deux sources s'accordent sur la structure du plat et divergent sur son cœur. L'accord d'abord : haricots noirs secs, riz blanc, bananes plantain mûres frites, et un sofrito d'oignon, de poivron rouge, d'ail et de tomate. Les haricots sont pesés par les deux, 83 et 60 g par personne, médiane 71,7, soit 430 g pour six. Le riz n'est pesé que par une, 60 g par personne — l'autre compte « 2 verres », que la synthèse n'a pas converti et qu'on ne convertira pas non plus : on retient 360 g pour six. Le plantain est compté en pièces, une par personne d'un côté, une demie de l'autre, médiane 0,75 ; à 180 g la pièce au catalogue, cela fait 135 g par personne, 800 g pour six. Ce poids est celui de la chair : un plantain se pèse avec sa peau au marché et la peau en fait le quart, si bien qu'il faut compter environ 1,1 kg brut, et l'instruction d'achat descend dans les étapes. Le désaccord, maintenant, et il porte sur la protéine, c'est-à-dire sur l'identité du plat. La première source poche 1 kg de bœuf — macreuse ou jarret — qu'on effiloche : c'est la carne mechada, la viande effilochée qui fait un pabellón. La seconde la remplace par 400 g de fruit du jacquier en saumure, égoutté et effiloché de même, relevé de paprika fumé, de piment et de sriracha ; c'est une version végétale, et elle est publiée sous le même nom. Une source sur deux n'est pas une pluralité, mais le nom du corpus, sa catégorie et le nom espagnol du plat désignent tous la viande, et le jacquier est de toute façon absent du catalogue — la synthèse l'a rattaché à « Saumure légère », rapprochement à refuser puisqu'il ne retient du libellé que le mot de conditionnement. On écrit donc la version au bœuf, 1 000 g de bœuf à braiser pour six, et la version au jacquier descend en variante attestée, avec sa forme signalée comme manquante plutôt que remplacée par un voisin. Même refus pour la sriracha, lue par la synthèse comme de la sauce poisson : absente du catalogue, elle est signalée, et elle appartient de toute façon à la version qu'on ne retient pas. Troisième refus, la ligne « Chorizo criollo » que la synthèse propose avec une confiance C : elle vient de l'en-tête « Ingredients pour le jacquier du pabellon criollo », c'est-à-dire d'un titre de section et non d'un ingrédient. Sur la viande, la mise en garde de pesée s'applique à moitié : la source offre macreuse ou jarret ; la macreuse est désossée et le kilo annoncé est alors du kilo de chair, mais un jarret se vend avec son os et il en faudrait environ 1,4 kg pour le même rendement. On déclare 1 000 g de chair et on met l'équivalence dans les étapes. Les aromates ensuite, tous comptés en pièces par les deux sources. Les oignons : cinq pour six d'un côté, trois pour quatre de l'autre ; à 130 g la pièce, 108 et 98 g par personne, soit 600 g pour six, ce qui double les 300 g de la recette remplacée. Le chiffre paraît haut mais l'oignon se partage entre le sofrito de la viande et la marmite de haricots, où les deux sources en mettent aussi. Les poivrons rouges : deux pour six et deux et demi pour quatre ; à 150 g la pièce, 50 et 94 g par personne, médiane 72, soit 430 g. L'ail : dix gousses pour six et cinq pour quatre, soit 8,3 et 6,2 g par personne à 5 g la gousse, environ 40 g pour six. La tomate est le seul point où les deux sources ne parlent pas de la même chose : 750 g de tomates pelées en conserve d'un côté, une tomate fraîche de l'autre. La conserve est la seule ligne chiffrée et c'est elle qu'on écrit, 750 g, déclarés avec leur jus puisque c'est ainsi qu'ils entrent dans un sofrito — on n'égoutte pas des tomates pelées destinées à mijoter. L'huile est comptée à trois lignes distinctes dans la source qui la pèse, une par préparation, soit quatre cuillerées à soupe pour quatre personnes ; la synthèse a médiané ces lignes une à une et sorti 3,5 g par personne, ce qui les compte comme si l'on n'en utilisait qu'une. Additionnées, elles donnent près de 14 g par personne, et on déclare 70 ml pour six, à répartir entre le sofrito, les haricots et la friture des plantains. Cumin et laurier sont aux deux sources, sans poids exploitable — une pincée d'un côté, « en poudre » de l'autre — et on écrit 3 g et deux feuilles. Le persil est à une source, six branches pour quatre, soit 25 g pour six : retenu, il ne pèse rien et finit la viande. Restent les lignes d'une seule source qu'on écarte en le disant : les câpres et le poireau, non chiffrés, qui passent en variantes ; le safran et le beurre du riz, de même ; les deux bouillons cubes, remplacés dans les étapes par un pochage à l'eau aromatisée ; et les herbes de Provence, qui sont une francisation et n'ont rien à faire dans un plat vénézuélien. La recette remplacée déclarait aussi de la tomate fraîche et une quantité d'ail trois fois moindre : les deux sont corrigées. Durées : le dossier annonce 2 et 20 minutes de préparation, la première étant manifestement fautive, et 60 et 50 minutes de cuisson. Aucune de ces cuissons ne couvre le pochage d'un kilo de bœuf à braiser ni la cuisson de haricots secs trempés. On déclare 40 minutes de préparation et 150 minutes de cuisson, trempage des haricots exclu. Un mot enfin sur l'énergie, parce que le chiffre surprend : la part ressort à un peu plus de 1 000 kcal, et ce n'est pas une erreur de pesée. Le dossier donne pour six personnes 1 kg de viande, 430 g de haricots secs, 360 g de riz sec et 800 g de plantain, quatre composants qui se cumulent au lieu de se remplacer, puisque le plat les sert côte à côte. La recette remplacée était déjà au même niveau sans même déclarer de matière grasse. C'est un plat de repas unique et il est écrit comme tel.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Le plat EST l'assiette composée : viande effilochée, haricots noirs, riz blanc et plantain frit dressés côte à côte, protéine, légumineuse, féculent et fruit cuit réunis. Il n'y a rien à lui adjoindre, et lui donner un accompagnement ajouterait un cinquième quartier à un drapeau qui en compte quatre."
+      },
+      "ingredients": [
+        {
+          "form": "Bœuf à braiser cru",
+          "quantity": 1000,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Banane plantain mûre",
+          "quantity": 800,
+          "unit": "g",
+          "role": "garniture",
+          "optional": false
+        },
+        {
+          "form": "Tomate entière pelée en conserve",
+          "quantity": 750,
+          "unit": "g",
+          "role": "sofrito",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 600,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Haricot noir sec",
+          "quantity": 430,
+          "unit": "g",
+          "role": "légumineuse",
+          "optional": false
+        },
+        {
+          "form": "Poivron rouge frais",
+          "quantity": 430,
+          "unit": "g",
+          "role": "sofrito",
+          "optional": false
+        },
+        {
+          "form": "Riz long blanc cru",
+          "quantity": 360,
+          "unit": "g",
+          "role": "féculent",
+          "optional": false
+        },
+        {
+          "form": "Huile d'olive vierge extra",
+          "quantity": 70,
+          "unit": "ml",
+          "role": "cuisson",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 40,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Persil frais",
+          "quantity": 25,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 12,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Cumin moulu",
+          "quantity": 3,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 3,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Feuille de laurier séchée",
+          "quantity": 2,
+          "unit": "feuille",
+          "role": "aromate",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "La veille, mettre les haricots noirs à tremper dans trois fois leur volume d'eau froide, à température ambiante. Un haricot noir non trempé demande le double de cuisson et sa peau éclate bien avant que le cœur ne devienne crémeux. Le lendemain, jeter l'eau de trempage, qui a pris l'amertume des peaux, et rincer les haricots à l'eau claire."
+        },
+        {
+          "n": 2,
+          "instruction": "Poser le bœuf en un seul morceau dans une grande casserole, le couvrir largement d'eau froide, ajouter une feuille de laurier, un des oignons coupé en deux et une pointe de sel. Porter à frémissement et laisser pocher une heure et demie à deux heures, la surface tremblante et jamais bouillonnante. Si l'on prend du jarret plutôt que de la macreuse, compter environ 1,4 kg avec l'os pour obtenir le kilo de chair annoncé. Laisser tiédir la viande dans son bouillon : refroidie à sec, elle se rétracte et refuse de s'effilocher."
+        },
+        {
+          "n": 3,
+          "instruction": "Pendant ce temps, couvrir les haricots d'eau froide non salée, ajouter la seconde feuille de laurier, un quart des oignons émincés, deux gousses d'ail écrasées et un filet d'huile. Cuire une heure à une heure et quart à petit feu et ne saler que les dix dernières minutes : le sel précoce durcit la peau et le haricot reste ferme sous la dent quelle que soit la durée. Ils sont prêts quand la fourchette les écrase sans effort ; garder un peu de leur jus de cuisson, il fait toute la liaison."
+        },
+        {
+          "n": 4,
+          "instruction": "Effiler la viande tiède à la main, dans le sens de la fibre, en filaments et non en cubes — c'est cet effilochage qui donne son nom à la carne mechada. Faire suer le reste des oignons et les poivrons rouges taillés en fines lanières dans deux cuillerées d'huile, dix minutes à feu moyen, puis ajouter l'ail haché et le cumin. Verser les tomates pelées écrasées à la main avec leur jus, laisser réduire un quart d'heure, puis incorporer les filaments de bœuf et deux louches du bouillon de pochage. Poursuivre vingt minutes à découvert : la sauce doit napper la viande, pas baigner autour d'elle."
+        },
+        {
+          "n": 5,
+          "instruction": "Rincer le riz à l'eau froide jusqu'à ce qu'elle ressorte claire, puis le faire nacrer une minute dans un filet d'huile avec une pincée de sel. Mouiller d'une fois et demie son volume d'eau bouillante, couvrir et cuire quinze minutes sans jamais soulever le couvercle — chaque coup d'œil coûte de la vapeur et laisse le dessus cru. Laisser reposer cinq minutes hors du feu avant de l'égrener à la fourchette : le riz du pabellón se sert blanc et détaché, il fait le fond neutre sur lequel les trois autres éléments se lisent."
+        },
+        {
+          "n": 6,
+          "instruction": "Choisir des plantains dont la peau est noircie par plaques ; verts, ils sont farineux et ne caramélisent pas. Les éplucher — compter environ 1,1 kg avec la peau pour les 800 g de chair déclarés — et les trancher en biais, en lames d'un centimètre. Les frire dans le reste de l'huile bien chaude, deux à trois minutes par face, jusqu'à ce que les bords brunissent et que le cœur devienne moelleux. Les égoutter sur du papier et les saler à la sortie, jamais avant : le sel fait perler l'eau et l'huile crache."
+        },
+        {
+          "n": 7,
+          "instruction": "Dresser chaque assiette en quartiers distincts et non mélangés : le riz blanc, les haricots noirs avec un peu de leur jus, la viande effilochée en sauce, les tranches de plantain rangées en éventail sur le bord. Le plat tire son nom de ce drapeau — c'est l'assemblage qui fait le pabellón, et tout brasser en ferait une autre préparation."
+        },
+        {
+          "n": 8,
+          "instruction": "Parsemer le persil ciselé sur la viande, donner un tour de moulin à poivre et rectifier le sel élément par élément plutôt qu'à l'ensemble : chacun arrive séparément en bouche et doit être juste pour lui-même. Servir aussitôt, tant que les plantains croustillent encore sur les bords et que le riz est chaud."
+        }
+      ],
+      "techniques": [
+        "trempage des légumineuses",
+        "pochage",
+        "effilochage à la main",
+        "sofrito",
+        "riz à l'étouffée",
+        "friture des plantains",
+        "dressage en quartiers"
+      ],
+      "variants": [
+        "Version végétale : le bœuf effiloché remplacé par 400 g de fruit du jacquier en saumure égoutté, effiloché de même, relevé de paprika fumé, de piment en poudre et de sauce sriracha (chefsimon)",
+        "Câpres égouttées ajoutées à la viande en sauce (marmiton)",
+        "Un poireau émincé dans le sofrito, avec les oignons (marmiton)",
+        "Riz safrané plutôt que blanc, cuit avec une pointe de safran et une noix de beurre (marmiton)",
+        "Bœuf poché au bouillon cube plutôt qu'à l'eau aromatisée, deux cubes pour six (marmiton)",
+        "Plantains poudrés d'un voile de fécule avant friture, pour une croûte plus sèche (chefsimon)",
+        "Une pincée de cumin sur les plantains à la sortie du bain de friture (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": {
+          "sweet": 3,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 1,
+          "pungency": 2,
+          "richness": 3,
+          "freshness": 2,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "bœuf effiloché",
+          "tomate et poivron confits",
+          "haricot noir",
+          "plantain caramélisé"
+        ],
+        "aroma_families": [
+          "sofrito",
+          "oignon compoté",
+          "tomate cuite",
+          "cumin",
+          "banane frite"
+        ],
+        "target_textures": [
+          "filaments de viande en sauce courte",
+          "haricots crémeux",
+          "riz détaché",
+          "plantain fondant à bords croustillants"
+        ],
+        "signature_ingredients": [
+          "Bœuf à braiser cru",
+          "Haricot noir sec",
+          "Riz long blanc cru",
+          "Banane plantain mûre"
+        ],
+        "identity_guardrails": [
+          "Quatre éléments dressés séparément — riz, haricots noirs, bœuf effiloché, plantain frit : mélangés en un seul appareil, ce n'est plus un pabellón",
+          "Le bœuf se poche puis s'effiloche à la main ; du bœuf haché ou taillé en cubes ne fait pas la carne mechada",
+          "Les plantains doivent être mûrs à peau noircie : verts et farineux, ils ne donnent pas le sucre qui répond aux haricots",
+          "Aucun autre haricot ne remplace le haricot noir dans ce plat, c'est lui qui fait le noir du drapeau",
+          "Le riz reste blanc et neutre, sans sofrito ni tomate : il sépare les trois autres éléments au lieu de se mêler à eux"
+        ]
+      },
+      "conservation": "Chaque élément se garde 3 jours au réfrigérateur dans son propre récipient : réunis, le riz absorbe le jus des haricots et durcit. La viande en sauce et les haricots se congèlent 3 mois et gagnent même au repos ; le riz cuit se congèle mal et les plantains frits pas du tout, ils ressortent mous. Réchauffer viande et haricots à la casserole avec une cuillerée d'eau, le riz à la vapeur ou couvert au four avec un filet d'eau, et frire les plantains le jour même du service.",
+      "allergens": []
+    },
+    {
+      "code": "REAL-138",
+      "remplace": "REAL-138",
+      "family": "Taboulé libanais",
+      "cuisine_origin": "Liban",
+      "identity_level": "named_traditional_dish",
+      "category": "taboulé, salade d'herbes crues",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 35,
+      "cook_minutes": 0,
+      "difficulty": "moyenne",
+      "sources": [
+        "dossier:taboule-libanais",
+        "marmiton.org",
+        "chefsimon.com",
+        "750g.com"
+      ],
+      "canonical_arbitration": "Cinq sources sur trois sites, données pour cinq, trois, quatre, huit et quatre portions, médiane quatre ; on garde les six portions du code repris. Le dossier tranche net sur le point qui définit le plat : le boulgour est minoritaire. Trois sources le pèsent, à 7,5, 25 et 7,5 g par personne, une quatrième parle d'une « petite poignée » et la cinquième le remplace par du quinoa. Médiane 7,5 g par personne, soit 45 g pour six — presque la moitié des 80 g que déclarait la recette remplacée. La source à 25 g par personne, 200 g pour huit, est celle qui tire vers le taboulé français ; elle reste minoritaire à une sur trois et descend en variante. Une remarque de lecture, parce qu'elle aurait pu passer inaperçue : la synthèse sort une ligne « Semoule de blé dur moyenne sèche » pour cette même source. Elle vient d'un « 4 to mates moyennes » coupé par un espace parasite au relevé — ce sont des tomates, pas de la semoule, et aucune source du dossier ne porte de semoule de couscous. Le persil est le vrai sujet, et aucune source ne le pèse : elles comptent en bottes et en bouquets, deux bottes pour cinq, une grosse botte pour trois, deux petits bouquets pour quatre, quatre bouquets pour huit, trois bottes pour quatre. La synthèse a supposé douze grammes par bouquet, ce qui est dix fois trop bas et explique qu'elle sorte le persil comme un aromate d'appoint ; elle a par ailleurs rattaché « 2 petits bouquets de persil frisé » à un bouquet garni, rapprochement refusé. Une botte de marché pèse environ 100 g et les feuilles en font les deux tiers : les cinq lectures donnent alors 27, 22, 17, 33 et 50 g de feuille par personne, médiane 27 — on déclare 250 g de feuilles pour six, à 42 g par personne, nettement au-dessus de la médiane stricte mais en ligne avec les sources les plus généreuses (marmiton : 27 g/p, 750g : 50 g/p), pour tenir le rapport qui définit le plat. C'est moins que les 400 g de la recette remplacée mais cinq fois et demie le poids du boulgour, et c'est là le point : le persil est l'ingrédient principal, pas l'herbe. Le poids déclaré est celui de la feuille effeuillée, les tiges pesant le tiers d'une botte sans se manger ; l'instruction d'achat — cinq à six bottes — descend dans les étapes. Sur la variété, deux sources écrivent « plat », l'une en capitales, deux écrivent « frisé » et la cinquième ne dit rien : on garde le persil plat de la recette remplacée, qui est celui du plat libanais, et le frisé passe en variante puisqu'il est réellement attesté. La menthe est aux cinq sources et jamais pesée non plus : une botte pour cinq, une cuillerée à café pour trois, une poignée donnée pour facultative pour quatre, un bouquet pour huit, quatre brins pour quatre. Ramenées au poids de feuille, ces lectures vont de 0,7 à 5 g par personne, médiane environ 2,5 : on déclare 20 g pour six, soit la moitié des 40 g de la recette remplacée. Les tomates sont comptées en pièces par les cinq sources : quatre pour cinq, une ou deux pour trois, deux pour quatre, quatre pour huit, quatre pour quatre. À 120 g la pièce, cela donne 96, 60, 60, 60 et 120 g par personne, médiane 60, soit 360 g pour six. La synthèse proposait « Tomate râpée » pour « 4 tomates fermes » : refusé, on taille des dés dans un taboulé, on ne râpe pas. Le citron est aux cinq sources, en pièces ou en cuillerées : un citron pour cinq, trois cuillerées à soupe pour trois puis pour quatre, deux citrons pour huit, trois citrons pour quatre. À 40 ml de jus par citron, les lectures donnent 8, 15, 11, 10 et 30 ml par personne, médiane 11, soit 70 ml pour six — contre 100 ml déclarés avant. L'huile d'olive est pesée par les cinq : 9, 13, 10, 11 et 15 ml par personne, médiane 11, soit 70 ml, contre 90 avant. L'allium est à quatre sources sur cinq, et trois de ces quatre le veulent frais : une botte d'oignons verts pour cinq, deux oignons verts pour quatre, un oignon blanc en garniture pour trois, deux oignons jaunes moyens pour huit. La synthèse les a tous rangés sous « Oignon jaune cru », ce qui inverse la pluralité ; on garde l'oignon nouveau de la recette remplacée, à 110 g pour six d'après les lectures ramenées au poids, et l'oignon jaune passe en variante. Le sel est aux cinq sources, jamais chiffré au-delà de « deux pincées » : on écrit 5 g. Le poivre est à deux sources, on écrit 1 g. Restent les lignes uniques, toutes conservées comme variantes attestées et aucune dans la liste : le quinoa qui remplace le boulgour, la menthe séchée en supplément de la fraîche, le demi-concombre en garniture, le piment d'Espelette et la cannelle, ces deux derniers donnés pour facultatifs par la source qui les porte. Durées : la médiane de préparation est de 20 minutes, mais une source annonce une heure quarante et c'est elle qui dit la vérité du geste — hacher au couteau cinq à six bottes de persil sans les réduire en purée prend à soi seul un bon quart d'heure. On déclare 35 minutes, et zéro cuisson, ce que quatre sources sur cinq confirment. Le nom du corpus est juste et il n'est pas renommé ; la catégorie est réécrite pour porter le mot taboulé, qui nomme la préparation.",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Un taboulé libanais est un plat de mezzé : il se sert avec d'autres, à côté d'une grillade ou parmi une table de petites assiettes, et il ne porte ni protéine ni féculent en quantité — 45 g de boulgour pour six. Déclaré comme accompagnement, il ne reçoit rien : lui adjoindre un féculent reviendrait à accompagner une garniture."
+      },
+      "ingredients": [
+        {
+          "form": "Tomate fraîche mûre",
+          "quantity": 360,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Persil plat frais",
+          "quantity": 250,
+          "unit": "g",
+          "role": "base",
+          "optional": false
+        },
+        {
+          "form": "Oignon nouveau frais",
+          "quantity": 110,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Jus de citron frais",
+          "quantity": 70,
+          "unit": "ml",
+          "role": "acidité",
+          "optional": false
+        },
+        {
+          "form": "Huile d'olive vierge extra",
+          "quantity": 70,
+          "unit": "ml",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Boulgour fin cru",
+          "quantity": 45,
+          "unit": "g",
+          "role": "céréale",
+          "optional": false
+        },
+        {
+          "form": "Menthe fraîche",
+          "quantity": 20,
+          "unit": "g",
+          "role": "herbe",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 5,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 1,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Verser le boulgour fin dans un bol et le couvrir tout juste d'eau froide, deux fois son volume et pas davantage. Le laisser gonfler vingt minutes, puis le presser entre les paumes au-dessus de l'évier pour en chasser l'eau. Un boulgour fin ne se cuit pas : il s'attendrit à froid, et gonflé à l'eau bouillante il tourne à la bouillie. Ce sont 45 g pour six, une poignée, et pas un gramme de plus — ici le blé assaisonne le persil, il ne le remplace pas."
+        },
+        {
+          "n": 2,
+          "instruction": "Compter cinq à six bottes de persil plat pour obtenir les 250 g de feuilles déclarés : les tiges pèsent le tiers d'une botte et ne se mangent pas dans ce plat. Laver le persil en le plongeant tête en bas dans une grande eau froide, le secouer, puis le sécher soigneusement au linge ou en essoreuse. Un persil humide se hache en pâte et le taboulé rend son eau au fond du saladier — c'est le séchage qui décide de la texture finale, avant le couteau."
+        },
+        {
+          "n": 3,
+          "instruction": "Effeuiller le persil, rassembler les feuilles en tas serré sur la planche et les hacher au couteau bien affûté, en allers-retours nets plutôt qu'en écrasant. Ne jamais passer le persil au robot : la lame le meurtrit, il noircit en quelques minutes et son parfum part avec le jus. Effeuiller la menthe de la même façon et la ciseler plus grossièrement, mais seulement au moment de l'assemblage — son huile essentielle s'évapore vite et une menthe hachée trop tôt ne laisse qu'une amertume verte."
+        },
+        {
+          "n": 4,
+          "instruction": "Couper les tomates en deux, retirer la partie gélatineuse et les graines à la petite cuillère, puis tailler la chair en dés de cinq millimètres. Épépiner n'est pas une coquetterie : c'est l'eau des graines qui délave l'assaisonnement et fait tomber le hachis au fond du plat. Poser les dés dans une passoire avec une pincée de sel et les laisser s'égoutter dix minutes."
+        },
+        {
+          "n": 5,
+          "instruction": "Émincer les oignons nouveaux très finement, le blanc et le vert ensemble, puis les frotter du bout des doigts avec une pincée de sel. Ce frottage casse en quelques secondes leur agressivité soufrée, là où un oignon cru laissé tel quel prend le dessus sur les herbes et se sent encore le lendemain."
+        },
+        {
+          "n": 6,
+          "instruction": "Mélanger le jus de citron, l'huile d'olive, le sel et le poivre dans le fond du saladier, puis y ajouter le boulgour pressé et remuer. Le blé boit le citron avant les herbes et s'assaisonne ainsi de l'intérieur ; versée sur le tout à la fin, la même quantité resterait en flaque au fond. Ajouter ensuite les oignons frottés, les tomates égouttées, le persil puis la menthe, dans cet ordre, et mélanger à deux fourchettes en soulevant plutôt qu'en tournant."
+        },
+        {
+          "n": 7,
+          "instruction": "Goûter et rectifier, en jugeant le citron avant le sel : un taboulé libanais doit être franchement acide, presque au bord du trop, parce que c'est l'acidité qui tient un hachis d'herbes crues. Le laisser reposer un quart d'heure au frais, pas davantage — le temps que le boulgour finisse de boire, avant que le persil ne commence à faner. Servir frais, étalé dans un plat large plutôt que dressé en dôme, où le poids tasse les herbes et chasse le jus."
+        }
+      ],
+      "techniques": [
+        "trempage à froid du boulgour",
+        "hachage au couteau",
+        "épépinage des tomates",
+        "frottage de l'oignon au sel",
+        "assaisonnement en deux temps"
+      ],
+      "variants": [
+        "Au quinoa plutôt qu'au boulgour : 80 g pour trois, cuits à l'eau puis refroidis (chefsimon)",
+        "Au persil frisé plutôt que plat, deux petits bouquets pour quatre (chefsimon, deux versions)",
+        "Version plus chargée en blé : 200 g de boulgour fin pour huit, avec de l'oignon jaune à la place de l'oignon nouveau (chefsimon)",
+        "Une cuillerée à soupe de menthe séchée en plus de la menthe fraîche (chefsimon)",
+        "Une pincée de piment d'Espelette et une pointe de cannelle, toutes deux données pour facultatives (750g)",
+        "Un demi-concombre en petits dés ajouté au moment du service (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "fresh_acidic",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 5,
+          "bitter": 1,
+          "umami": 1,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 2,
+          "freshness": 5,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "persil",
+          "citron",
+          "menthe",
+          "huile d'olive"
+        ],
+        "aroma_families": [
+          "herbes fraîches coupées",
+          "agrume",
+          "menthe",
+          "oignon cru"
+        ],
+        "target_textures": [
+          "hachis fin et aéré",
+          "grain de boulgour tendre",
+          "dés de tomate fermes"
+        ],
+        "signature_ingredients": [
+          "Persil plat frais",
+          "Boulgour fin cru",
+          "Jus de citron frais",
+          "Menthe fraîche"
+        ],
+        "identity_guardrails": [
+          "Le persil est l'ingrédient principal et non l'herbe d'appoint : 250 g de feuilles contre 45 g de boulgour, cinq fois et demie plus",
+          "Le boulgour reste minoritaire et jamais cuit, gonflé à l'eau froide — remplacé en volume par de la semoule de couscous, on obtient le taboulé français, qui est un autre plat",
+          "Citron abondant, huile mesurée : sans acidité franche, un hachis d'herbes crues n'a plus de colonne",
+          "Hachage au couteau seulement : le persil passé au robot noircit et rend son eau, et la texture du plat est perdue",
+          "Rien de cuit, rien de tiède dans le saladier"
+        ]
+      },
+      "conservation": "Se garde 2 jours au réfrigérateur, couvert, mais perd sa tenue dès le premier : le persil fane et la tomate rend son eau. Ne se congèle pas, les herbes crues ressortant noires et détrempées. Pour préparer d'avance, hacher et réserver les éléments séparément au froid et n'assembler avec le citron et l'huile qu'un quart d'heure avant de servir. Égoutter le fond du saladier et rectifier le citron avant de resservir un reste.",
+      "allergens": [
+        "gluten"
+      ]
+    },
+    {
+      "code": "REAL-143",
+      "remplace": "REAL-143",
+      "family": "Tajine d’agneau aux pruneaux",
+      "cuisine_origin": "Maroc",
+      "identity_level": "named_traditional_dish",
+      "category": "tajine sucré-salé",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 30,
+      "cook_minutes": 120,
+      "difficulty": "moyenne",
+      "sources": [
+        "dossier:tajine-d-agneau-aux-pruneaux",
+        "marmiton.org",
+        "750g.com"
+      ],
+      "canonical_arbitration": "Six sources sur deux sites, données pour six, huit, six, six, quatre et deux portions, médiane six — on garde les six portions du code repris. La viande est unanime dans son morceau : cinq sources sur six annoncent de l'épaule d'agneau, à 250, 187, 267, 200 et 300 g par personne, médiane 250, soit 1,5 kg pour six. Mais ce 1,5 kg est un poids d'achat, pas un poids comestible : une seule des cinq précise « épaule désossée », les quatre autres écrivent « épaules d'agneau », c'est-à-dire, dans un tajine, des morceaux détaillés avec leur os. L'os et les parures pèsent près du tiers d'une épaule et la référence nutritionnelle porte sur la chair. On déclare donc 1 100 g de chair pour six et l'instruction d'achat — 1,5 kg avec os — descend dans les étapes, l'os restant d'ailleurs dans la cocotte, où il donne du corps à la sauce sans rien peser dans l'assiette. La sixième source cuit deux souris d'agneau pour deux personnes ; la synthèse l'a rattachée, avec une confiance C, à de l'agneau haché cru, en même temps qu'une ligne « 300 g d'agneau et 3 petits os de veau ». Rapprochement refusé deux fois : une souris est un muscle entier et un tajine ne se fait pas au haché. Les pruneaux ensuite, et c'est ici que le dossier se contredit le plus utilement. Cinq sources sur six les pèsent, à 83, 62, 67, 125 et 30 g par personne, médiane 67, soit 400 g pour six — un peu plus que les 350 g de la recette remplacée. La sixième porte le mot « pruneaux » dans son titre mais pas dans sa liste : elle donne 600 g d'abricots secs et 250 g de dattes à la place. Ce n'est pas une variante du plat, c'est un plat voisin sous une étiquette empruntée ; on l'écarte de la liste et on la garde en variante attestée, en signalant que ni l'abricot sec ni la datte ne sont au catalogue — la synthèse proposait d'ailleurs « Chutney d'abricot » pour les abricots secs, rapprochement à refuser. Les oignons sont à cinq sources sur six, deux les pesant à 500 g et une livre, les trois autres comptant en pièces : ramenées au poids, les lectures donnent 83, 33, 83, 53 et 125 g par personne, médiane 83, soit 500 g pour six, contre 350 avant. Un tajine aux pruneaux se construit sur ce lit d'oignons fondus qui, avec le miel, fait la sauce. Le miel est à trois sources sur six, toutes trois à trois cuillerées à soupe, soit environ 10 g par personne : 60 g pour six, chiffre que la recette remplacée avait déjà juste. Une quatrième source sucre au sucre semoule, cinq cuillerées à soupe pour huit, et passe en variante : le miel a la pluralité et il apporte en plus le glaçage que le sucre seul ne donne pas. Les amandes sont à quatre sources sur six, à 16,7, 12,5, 25 et 16,7 g par personne, médiane 16,7, soit 100 g pour six, contre 120 avant. Deux sources les disent « émondées » ou « épluchées » : on écrit la forme mondée. Le sésame n'est qu'à deux sources, et à des poids sans commune mesure — 6,25 g par personne d'un côté, 25 de l'autre. On garde les 30 g de la recette remplacée — légèrement en dessous de la borne basse des sources (37,5 g en ramenant les 50 g de la source 2 à six portions) — parce que le sésame est une finition et non un ingrédient de masse : l'écart de 7 g n'a pas d'incidence nutritionnelle significative. La cannelle est le point le plus divergent des épices : cinq sources sur six en mettent de la moulue, de 0,19 à 0,87 g par personne, médiane 0,38, soit 2 à 3 g pour six — c'est-à-dire une cuillerée à café, très peu au regard de ce qu'on imagine ; deux sources ajoutent en plus un bâton entier dans la cocotte. On écrit les deux, 3 g de moulue pour les épices frottées sur la viande et un bâton pour l'infusion longue, ce qui est aussi la seule lecture qui rende compte de la double présence dans le dossier. La recette remplacée ne déclarait que les bâtons, et deux au lieu d'un. Le safran est à quatre sources sur six, en dosette, en pincée et en filaments, jamais chiffré : on garde les 0,2 g déclarés avant. Le gingembre moulu est à deux sources, environ 0,3 g par personne, soit 2 g pour six et non 4 comme avant ; le gingembre frais râpé d'une troisième source passe en variante. Le cumin est à trois sources sur six, médiane 0,3 g par personne, soit 2 g. L'ail est à quatre sources sur six, entre 1,7 et 2,5 g par personne pour trois d'entre elles, une quatrième montant à 15 : médiane environ 2,2, soit 12 g pour six. La recette remplacée n'en portait aucun, c'est une correction. Sel et poivre sont à quatre et trois sources : 8 g et 2 g. L'huile est aux six sources, médiane 6,9 g par personne, soit 45 ml pour six. Deux lignes du dossier ne se rapprochent d'aucune forme et méritent d'être dites plutôt que tues : le thé, que deux sources sur six emploient pour faire gonfler les pruneaux, et qui n'a pas d'entrée au catalogue. La règle impose d'écrire le plat sans cet ingrédient si le plat tient encore — et il tient : les pruneaux se font également dans de l'eau chaude, et la variante au thé, attestée par deux sources sur six (marmiton source 1, 750g source 5), est portée dans les variantes plutôt que dans la liste. La coriandre, enfin, a été comptée à deux sources par la synthèse ; à la lecture, l'une écrit « de coriandre écrasés » au masculin, ce qui désigne des graines et non l'herbe, et il ne reste qu'une source pour la coriandre fraîche. Elle sort de la liste et passe en variante. Sortent de même, chacune à une source sur six : la vanille, le ras el-hanout, les piments de Cayenne, le curcuma, les poires, l'orange et le thym — la synthèse lisait d'ailleurs le zeste d'orange comme un zeste de citron. Restent les 700 g de semoule de couscous d'une source, qui ne sont pas un ingrédient du tajine mais son accompagnement : ils vont dans le rôle d'assiette, pas dans la liste. Durées : la médiane brute de cuisson est de 75 minutes, mais elle est tirée vers le bas par deux lignes aberrantes, une souris en quatre minutes et une version en trente-cinq ; les quatre lignes cohérentes vont de 60 à 300 minutes. Une heure et demie de braisage à couvert plus vingt-cinq minutes de réduction à découvert donnent les 120 minutes déclarées, celles que portait déjà la recette remplacée. La préparation est déclarée à 30 minutes, au-dessus de la médiane de 20, parce que le frottage des épices et le trempage des pruneaux s'ajoutent à la découpe. Le nom du corpus est juste, la recette n'est pas renommée.",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Viande, oignons fondus et fruits en sauce : le plat porte la protéine et son légume, mais rien pour éponger un jus volontairement réduit et sucré. Une source du dossier le sert d'ailleurs avec 700 g de semoule de couscous pour quatre. Il lui manque donc un féculent — semoule, boulgour ou pain — et un seul."
+      },
+      "ingredients": [
+        {
+          "form": "Épaule d’agneau crue",
+          "quantity": 1100,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 500,
+          "unit": "g",
+          "role": "base aromatique",
+          "optional": false
+        },
+        {
+          "form": "Pruneau dénoyauté",
+          "quantity": 400,
+          "unit": "g",
+          "role": "fruit",
+          "optional": false
+        },
+        {
+          "form": "Amande mondée",
+          "quantity": 100,
+          "unit": "g",
+          "role": "garniture",
+          "optional": false
+        },
+        {
+          "form": "Miel",
+          "quantity": 60,
+          "unit": "g",
+          "role": "équilibre sucré",
+          "optional": false
+        },
+        {
+          "form": "Huile d'olive vierge extra",
+          "quantity": 45,
+          "unit": "ml",
+          "role": "cuisson",
+          "optional": false
+        },
+        {
+          "form": "Sésame",
+          "quantity": 30,
+          "unit": "g",
+          "role": "finition",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 12,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 8,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Cannelle en bâton",
+          "quantity": 1,
+          "unit": "u",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Cannelle moulue",
+          "quantity": 3,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Gingembre moulu",
+          "quantity": 2,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Cumin moulu",
+          "quantity": 2,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 2,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Safran",
+          "quantity": 0.2,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Mettre les pruneaux dénoyautés à gonfler dans de l'eau chaude — non bouillante, juste frémissante — pendant une demi-heure. Le trempage à l'eau détend leur peau sans la crever et les tient entiers dans la sauce : trop court, ils resteraient secs au cœur ; à l'eau bouillante, ils se déferaient avant même d'entrer dans la cocotte. Les égoutter en réservant l'eau de trempage, qui a pris le goût du fruit et servira à mouiller la cocotte."
+        },
+        {
+          "n": 2,
+          "instruction": "Compter 1,5 kg d'épaule d'agneau avec os pour obtenir les 1,1 kg de chair déclarés : l'os et les parures en pèsent près du tiers. Demander qu'elle soit détaillée en morceaux de la taille d'un gros abricot, os compris — ce sont eux qui donneront du corps à la sauce. Éponger les morceaux et les laisser vingt minutes à température ambiante : une viande sortie du froid refroidit la cocotte et rend son eau au lieu de colorer."
+        },
+        {
+          "n": 3,
+          "instruction": "Mélanger dans un bol la cannelle moulue, le gingembre, le cumin, le poivre, la moitié du sel et le safran écrasé entre les doigts. En frotter les morceaux d'agneau sur toutes leurs faces et les laisser prendre l'odeur le temps d'émincer les oignons. Frotter les épices sur la viande crue plutôt que les jeter dans le liquide les met en contact du gras, qui seul les dissout : sinon la sauce garde ce goût de poudre en suspension qu'on ne rattrape plus."
+        },
+        {
+          "n": 4,
+          "instruction": "Chauffer l'huile d'olive dans un faitout à fond épais et y colorer l'agneau sur toutes ses faces, en deux fournées pour ne pas encombrer le fond — entassés, les morceaux rendent leur eau et bouillent au lieu de dorer. Les réserver, puis faire fondre les oignons émincés dans la graisse restante, dix minutes à feu moyen, en grattant les sucs attachés qui se dissolvent dans leur jus. Ajouter l'ail haché sur la dernière minute, pour qu'il ne brûle pas."
+        },
+        {
+          "n": 5,
+          "instruction": "Remettre la viande dans le faitout avec le bâton de cannelle, mouiller à mi-hauteur de l'eau de trempage des pruneaux complétée d'eau fraîche si nécessaire, et porter à petits frémissements. Couvrir et cuire une heure et demie à feu très doux, en retournant les morceaux deux ou trois fois. La viande est prête quand elle se détache de l'os sans résistance mais tient encore en morceaux : un tajine se sert en pièces entières, il ne s'effiloche pas."
+        },
+        {
+          "n": 6,
+          "instruction": "Ajouter les pruneaux égouttés et le miel, puis poursuivre vingt à vingt-cinq minutes à découvert. Le liquide doit réduire jusqu'à napper le dos de la cuillère et prendre une brillance sombre : c'est ce glaçage qui fait le sucré-salé du plat, et il ne s'obtient que couvercle ôté. Remuer en secouant le faitout par les poignées plutôt qu'à la cuillère, pour ne pas crever les pruneaux."
+        },
+        {
+          "n": 7,
+          "instruction": "Pendant cette réduction, faire dorer les amandes mondées à sec dans une poêle, à feu moyen, en les remuant sans cesse jusqu'à ce qu'elles blondissent et sentent le grillé ; deux minutes de trop et elles deviennent amères. Les réserver, puis torréfier le sésame dans la même poêle une minute à peine, jusqu'au premier crépitement."
+        },
+        {
+          "n": 8,
+          "instruction": "Goûter la sauce et finir de saler : elle doit être franchement sucrée mais tenue par le sel, le poivre et le gras de l'agneau, sinon le plat glisse vers le dessert. Laisser reposer dix minutes hors du feu, retirer le bâton de cannelle, puis parsemer amandes et sésame au dernier moment seulement — posés plus tôt, ils boivent la sauce, ramollissent et ne servent plus à rien. Servir avec une semoule ou un pain pour éponger le jus."
+        }
+      ],
+      "techniques": [
+        "trempage des pruneaux à l'eau chaude",
+        "frottage sec aux épices",
+        "saisie en deux fournées",
+        "braisage à couvert",
+        "réduction glacée à découvert",
+        "torréfaction à sec"
+      ],
+      "variants": [
+        "Aux fruits secs plutôt qu'aux pruneaux : 600 g d'abricots secs et 250 g de dattes pour six, avec ras el-hanout, gousse de vanille fendue et deux piments de Cayenne émiettés (marmiton)",
+        "Sucré au sucre semoule, cinq cuillerées à soupe pour huit, plutôt qu'au miel (marmiton)",
+        "En souris d'agneau entières, avec deux poires Williams, du jus et du zeste d'orange à la place du miel (750g)",
+        "Curcuma en plus du safran, une demi-cuillerée à café pour six (750g)",
+        "Coriandre fraîche ciselée au service, une dizaine de branches (marmiton)",
+        "Gingembre frais râpé, 15 g, à la place du gingembre moulu (marmiton)",
+        "Sésame en quantité, 100 g de graines pour quatre, servi avec une semoule de couscous grain moyen (750g)",
+        "Pruneaux gonflés dans un thé noir léger plutôt que dans de l'eau chaude : le tanin raffermit la peau et empêche le pruneau de se défaire dans la sauce, son amertume légère répondant au miel (marmiton source 1 ; 750g source 5 utilise un thé parfumé)"
+      ],
+      "sensory": {
+        "profile": "sweet_spiced",
+        "scores": {
+          "sweet": 5,
+          "salty": 2,
+          "acidic": 1,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "pruneau",
+          "miel",
+          "cannelle",
+          "agneau braisé"
+        ],
+        "aroma_families": [
+          "cannelle",
+          "oignon compoté",
+          "fruit sec cuit",
+          "agneau mijoté",
+          "amande grillée"
+        ],
+        "target_textures": [
+          "viande qui se détache de l'os",
+          "pruneaux gonflés entiers",
+          "sauce nappante et brillante",
+          "amandes croquantes"
+        ],
+        "signature_ingredients": [
+          "Épaule d’agneau crue",
+          "Pruneau dénoyauté",
+          "Miel",
+          "Cannelle moulue"
+        ],
+        "identity_guardrails": [
+          "Sans pruneaux, ce n'est plus ce tajine : remplacés par des abricots secs ou des dattes, on obtient un plat voisin de la même famille et non une variante de celui-ci",
+          "Le sucré est assumé mais tenu par le sel, le poivre et le gras de l'agneau — un tajine seulement sucré tombe au dessert",
+          "La réduction se fait à découvert en fin de cuisson : sans ce glaçage, la sauce reste un jus et le plat perd sa brillance",
+          "L'agneau se sert en morceaux entiers détachables à la cuillère, jamais effiloché ni haché",
+          "Amandes et sésame arrivent grillés au dernier moment : incorporés à la cuisson, ils ramollissent et n'apportent plus rien"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur, couvert, et gagne au repos — la sauce se resserre et les épices se fondent. Se congèle 3 mois sans les amandes ni le sésame, qu'on torréfie au moment de servir. Réchauffer à couvert et à feu doux avec deux cuillerées d'eau, sans jamais faire bouillir, sinon les pruneaux se déferaient et la sauce tournerait au sirop. Ajouter les fruits secs grillés seulement à la sortie du feu.",
+      "allergens": [
+        "fruits à coque",
+        "sésame"
+      ]
+    }
+  ]
+}

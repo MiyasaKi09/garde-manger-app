@@ -1474,5 +1474,15 @@
     "baseline": "new",
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260730140000_corpus_v3_reprises_batch3.sql",
+    "github_version": "20260730140000",
+    "name": "corpus_v3_reprises_batch3",
+    "sha256": "7445ab160d6aee022f38d32e4e97fffed633d961dc2703cfc06a82b9116febe1",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

@@ -1,0 +1,575 @@
+{
+  "recipes": [
+    {
+      "code": "FR-023",
+      "remplace": "FR-023",
+      "family": "Croque-monsieur",
+      "cuisine_origin": "France — cuisine de café parisienne",
+      "identity_level": "named_traditional_dish",
+      "category": "sandwich chaud gratiné",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "difficulty": "facile",
+      "sources": [
+        "dossier:croque-monsieur",
+        "marmiton.org",
+        "chefsimon.com",
+        "750g.com"
+      ],
+      "canonical_arbitration": "Sept sources, dont deux qui ne sont pas des croque-monsieur au pain : marmiton publie un « croque-monsieur d'aubergines » monté sur des tranches d'aubergine, sans pain ni jambon, et 750g un « croque monsieur en gratin » où des biscottes trempent dans un litre de béchamel pour six. La première est un homonyme et sort de tous les calculs — un croque sans pain et sans jambon ne pèse pas dans la médiane d'un croque. La seconde reste dans la lecture pour ce qu'elle apprend de la sauce, mais son montage passe en variante. Restent cinq sources qui construisent un croque sur du pain de mie, et sur elles le socle est franc : pain de mie, jambon cuit, fromage râpé, un corps gras laitier. Portions déclarées : 2, 4, 4, 2 et 6 ; deux sources n'en déclarent aucune. On retient quatre. Le pain : les deux sources qui à la fois le chiffrent et déclarent leurs portions donnent 2 tranches par personne (marmiton béchamel, 8 pour 4) et 4 tranches (chefsimon ail des ours, 8 pour 2). Le désaccord ne porte pas sur le montage — toutes les sources ferment le croque sur deux tranches — mais sur le nombre de croques que vaut une portion. On retient un croque par personne, soit 8 tranches pour quatre, 240 g. Le pain de chefsimon est un pain de mie maison à l'ail des ours, que la synthèse a rattaché à de l'ail tranché à cause du mot « tranches » : on écrit du pain de mie nature, l'aromatisation du pain n'étant attestée qu'une fois. Le jambon : 6 sources sur 7, médiane 40 g par personne, soit 160 g pour quatre, une tranche par croque. Les noms divergent — jambon blanc, jambon d'york, épaule — mais désignent tous du jambon cuit, et la forme du catalogue les couvre. Le fromage : la synthèse compte trois sources pour le gruyère râpé, mais deux d'entre elles sont les homonymes — l'aubergine, qu'on a précisément sortie des calculs, et le gratin de biscottes. Sur les cinq croques montés au pain, le compte réel est celui-ci : emmental dans deux sources chefsimon distinctes — l'ail des ours (emmental en tranches et râpé dans la même source) et la crème de champignons (80 g d'emmental) —, gruyère râpé une (marmiton express), comté râpé une (chefsimon airfryer), « fromage râpé » sans précision une (marmiton béchamel), tranche de fromage fondu une (chefsimon airfryer). L'emmental mène donc d'une voix et aucun fromage n'a de majorité. On retient tout de même le gruyère râpé, non au nombre de pages mais au nombre de sites : c'est le seul fromage que deux sites différents nomment, marmiton et 750g, l'emmental restant l'affaire du seul chefsimon, et le « fromage râpé » sans précision de la sixième source pointe vers l'un autant que vers l'autre. Le départage est éditorial et il est écrit ici plutôt que caché derrière un décompte. L'emmental râpé et le comté râpé passent en variantes à quantité égale ; la nutrition les sépare peu. Sa quantité, en revanche, ne peut pas être prise à la synthèse : « 1 sachet de gruyère râpé 200 g » y a été lu comme un sachet de 8 g, ce qui écrase la médiane à 16,7 g par personne. Relues à la main, les sources qui chiffrent un fromage râpé et laissent déduire leurs portions donnent 50, 50, 40 et 16,7 g par personne, dont la médiane est 45. On descend à 40 g, soit 160 g pour quatre, et l'écart est déclaré : les deux valeurs à 50 g viennent de pages qui ne déclarent aucune portion, où le rendement de deux croques est déduit de leurs quatre tranches de pain, et 40 g de râpé par croque couvrent déjà le dedans et le dessus. Le liant est le vrai point de rupture du dossier. Deux sources nomment une béchamel (l'une la porte telle quelle en ingrédient, l'autre la construit avec 1 l de lait, 50 g de farine et 50 g de beurre), trois humectent le pain d'un simple filet de lait, deux emploient une crème — mais chacune une crème différente, crème liquide, pot de crème épaisse, crème de champignons au parmesan du commerce, et aucune ne recoupe l'autre. Personne n'a la majorité. On retient la béchamel : c'est la seule sauce blanche que deux sites nomment par son nom, et la seule dont une source donne la formule entière. Sa proportion, elle, demande une correction déclarée : les 50 g de farine pour un litre de lait de 750g font une sauce à tremper des biscottes, un gramme de farine pour vingt millilitres ; sur du pain de mie elle traverserait la mie. On garde la parité beurre-farine que la source écrit (50/50) et on épaissit à un gramme de farine pour dix millilitres de lait, soit 25 cl de lait, 25 g de beurre et 25 g de farine pour quatre croques. La parité vient du dossier, la consistance est un choix technique, et il est dit ici plutôt que caché dans un chiffre. La muscade est portée par deux sources (chefsimon, 750g) : 0,5 g, négligeable en masse et classique dans une béchamel. La moutarde est portée par une seule source, et c'est celle aux aubergines : elle sort de la liste et passe en variante — la recette remplacée la portait en optionnel sans qu'aucune source ne l'appuie. Durées : médiane de préparation 15 min, de cuisson 15 min. On garde 15 à la cuisson ; on monte la préparation à 20, médiane des deux sources qui fabriquent réellement une sauce (25 et 15), parce que celles qui annoncent 5 ou 10 minutes ouvrent un pot. Deux dernières lectures de la synthèse ont été écartées à la main : « 4 tranches d'emmenthal » a été rattaché à du jarret de veau en tranches avec os, et « Noix de muscade » à la noix — ni l'un ni l'autre n'entre dans la liste. Le nom du corpus est juste, la recette n'est pas renommée ; son niveau d'identité passe de domestic_standard à named_traditional_dish, le croque-monsieur ayant un nom fixe et un montage fixe malgré la dispersion des sites.",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Le croque porte son féculent (le pain) et sa protéine (jambon et fromage) : c'est un plat, pas un accompagnement. Ce qui lui manque est le légume — en brasserie il arrive avec une salade verte, et c'est exactement le vide que l'assiette doit combler."
+      },
+      "ingredients": [
+        {
+          "form": "Pain de mie",
+          "quantity": 8,
+          "unit": "tranche",
+          "role": "base",
+          "optional": false
+        },
+        {
+          "form": "Jambon blanc cuit",
+          "quantity": 4,
+          "unit": "tranche",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Gruyère râpé",
+          "quantity": 160,
+          "unit": "g",
+          "role": "fromage",
+          "optional": false
+        },
+        {
+          "form": "Lait entier",
+          "quantity": 250,
+          "unit": "ml",
+          "role": "béchamel",
+          "optional": false
+        },
+        {
+          "form": "Beurre doux",
+          "quantity": 25,
+          "unit": "g",
+          "role": "béchamel",
+          "optional": false
+        },
+        {
+          "form": "Farine de blé T55",
+          "quantity": 25,
+          "unit": "g",
+          "role": "béchamel",
+          "optional": false
+        },
+        {
+          "form": "Muscade moulue",
+          "quantity": 0.5,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 3,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 1,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Acheter du pain de mie en tranches carrées épaisses, de celles qui tiennent debout sans plier, et du jambon cuit détaillé à la même largeur que le pain : une tranche qui dépasse brûle au four, une tranche trop petite laisse des coins de pain nus qui se dessèchent. Compter deux tranches de pain et une de jambon par croque."
+        },
+        {
+          "n": 2,
+          "instruction": "Faire fondre le beurre dans une petite casserole à feu doux, verser la farine d'un coup et remuer une bonne minute sans laisser prendre couleur. Ce temps-là n'est pas décoratif : une farine crue donne à la sauce un goût de colle que le fromage ne couvre pas."
+        },
+        {
+          "n": 3,
+          "instruction": "Verser le lait en trois fois, en fouettant à chaque ajout jusqu'à ce que la sauce redevienne lisse avant la suivante. Laisser épaissir trois à quatre minutes à petit feu, puis saler, poivrer et râper la muscade. La béchamel doit napper le dos d'une cuillère et retomber en ruban lent : trop liquide elle détrempe la mie, trop serrée elle ne s'étale pas."
+        },
+        {
+          "n": 4,
+          "instruction": "Préchauffer le four à 200 °C et passer les tranches de pain au grille-pain sur un réglage doux, une minute à peine, juste pour les raidir sans les colorer. Le pain de mie est une éponge ; sec, il retient la sauce en surface, humide il la boit et le croque s'affaisse."
+        },
+        {
+          "n": 5,
+          "instruction": "Étaler une cuillerée de béchamel sur la face intérieure de chaque tranche, poser le jambon plié à la taille du pain, répartir la moitié du gruyère par-dessus et refermer en pressant légèrement de la paume pour souder le montage."
+        },
+        {
+          "n": 6,
+          "instruction": "Napper le dessus des croques du reste de béchamel en allant jusqu'aux bords — c'est la sauce qui protège les angles du pain — puis couvrir du gruyère restant. Poser sur une plaque garnie de papier cuisson, sans que les croques se touchent, pour que la chaleur circule sur les côtés."
+        },
+        {
+          "n": 7,
+          "instruction": "Enfourner dix à douze minutes à 200 °C, puis passer deux à trois minutes sous le gril en surveillant sans quitter le four : le fromage passe du blond au brûlé en quelques secondes. Le croque est prêt quand le gruyère cloque et qu'un liseré doré remonte sur les bords du pain."
+        },
+        {
+          "n": 8,
+          "instruction": "Laisser reposer deux minutes hors du four avant de couper en deux en diagonale. Coupé aussitôt sorti, le fromage coule et le croque se vide ; deux minutes suffisent à ce qu'il se tienne à la lame."
+        }
+      ],
+      "techniques": [
+        "roux blanc",
+        "béchamel",
+        "montage en sandwich",
+        "cuisson au four",
+        "gratinage sous le gril"
+      ],
+      "variants": [
+        "Croque-monsieur en gratin : pain remplacé par des biscottes, noyées dans un litre de béchamel pour six et gratinées en plat (750g.com)",
+        "Croque-monsieur d'aubergines : tranches d'aubergine à la place du pain, avec tomate, crème et moutarde — un homonyme plutôt qu'une variante (marmiton.org)",
+        "Crème épaisse étalée à cru à la place de la béchamel, sans roux (marmiton.org) — la crème liquide, elle, n'apparaît que dans le croque d'aubergines",
+        "Un simple filet de lait sur le pain, sans sauce — quatre cuillerées à soupe pour deux croques, ou une cuisson à l'airfryer (chefsimon.com, deux sources)",
+        "Emmental râpé ou comté râpé à la place du gruyère (trois sources)",
+        "Crème de champignons au parmesan en remplacement de la béchamel (chefsimon.com)",
+        "Une pointe de moutarde : le dossier ne la porte que dans le croque d'aubergines, où elle est étalée sur le légume et non sur du pain (marmiton.org)",
+        "Pain de mie maison à l'ail des ours, et origan ou herbes de Provence sur le fromage (chefsimon.com, marmiton.org)"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 4,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 0,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "fromage_fondu",
+          "jambon_cuit",
+          "beurre",
+          "muscade"
+        ],
+        "aroma_families": [
+          "beurre",
+          "gruyère",
+          "pain_grillé",
+          "muscade"
+        ],
+        "target_textures": [
+          "croûte_gratinée",
+          "mie_moelleuse",
+          "cœur_fondant"
+        ],
+        "signature_ingredients": [
+          "Pain de mie",
+          "Jambon blanc cuit",
+          "Gruyère râpé"
+        ],
+        "identity_guardrails": [
+          "Sans pain de mie, ce n'est plus un croque-monsieur : la version montée sur des tranches d'aubergine que porte le dossier est un homonyme, et le nom ne suit pas l'ingrédient.",
+          "Le jambon cuit et le fromage fondant vont par paire ; retirer le jambon donne un croque au fromage, qui porte un autre nom et n'a plus la même part de protéine.",
+          "La sauce blanche doit napper le pain dessus et dedans : réduite à un filet de lait, le croque sort sec et devient un toast grillé, ce que deux sources assument d'ailleurs comme une recette distincte."
+        ]
+      },
+      "conservation": "Se mange en sortant du four : la croûte gratinée retombe en quelques minutes et la mie finit par boire la sauce. Les croques montés crus se gardent vingt-quatre heures au réfrigérateur, à plat et sous film, et se cuisent directement à la sortie du froid, sans repos, en comptant cinq minutes de plus. La béchamel seule tient trois jours au frais, filmée au contact pour l'empêcher de faire une peau, et se détend au fouet avec une cuillerée de lait tiède. Ne pas congeler un croque cuit : le pain rend son eau au réchauffage et la mie devient spongieuse.",
+      "allergens": [
+        "gluten",
+        "lait"
+      ]
+    },
+    {
+      "code": "FR-028",
+      "remplace": "FR-028",
+      "family": "Cake jambon et olives",
+      "cuisine_origin": "France — cuisine domestique",
+      "identity_level": "domestic_standard",
+      "category": "cake salé",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 15,
+      "cook_minutes": 45,
+      "difficulty": "facile",
+      "sources": [
+        "dossier:cake-jambon-et-olives",
+        "marmiton.org",
+        "chefsimon.com",
+        "750g.com"
+      ],
+      "canonical_arbitration": "Huit sources, de quatre à douze portions, médiane six — c'est le rendement retenu. Le squelette est unanime là où il compte : les huit sources portent des œufs, du jambon, de la levure chimique et une farine ; six une farine de blé, sept une matière grasse liquide, six des olives vertes — dont quatre les disent dénoyautées, une les prend farcies aux poivrons et une n'en précise rien. Les œufs : quatre dans six sources, trois dans deux — quatre œufs, mode et médiane à la fois, soit 200 g. La farine : deux sources cuisent sans gluten (farine de riz plus maïzena chez l'une, farine de riz complet plus poudre d'amande chez l'autre) et tirent la médiane de la synthèse vers le bas ; les six sources au blé donnent 150, 200, 225, 200, 300 et 200 g, médiane 200 g, retenue. La levure : un sachet partout, et deux sources chefsimon sont les seules à le peser — 11 g pour l'une, 5,5 g pour l'autre, qui est aussi celle qui lève 250 g de farine de riz et de poudre d'amande. Le désaccord est réel et il est dit : on écrit 11 g, le poids d'un sachet entier du commerce et la seule des deux pesées qui corresponde au « un sachet » que les huit sources annoncent, plutôt que les 8 g que la synthèse suppose à un sachet non pesé. Le jambon : médiane 25 g par personne, soit 150 g pour six. Les sources l'appellent dés de jambon, talon de jambon ou tranches de jambon blanc ; c'est la même viande, le talon simplement taillé plus épais, et la forme du catalogue les couvre. Les olives : vertes dans six sources — quatre les disent dénoyautées, une les prend farcies aux poivrons, une n'ajoute rien —, de Kalamata dans une, sans couleur ni précision dans la dernière. Médiane 25 g par personne, soit 150 g. Le poids est celui des olives égouttées, sorties du bocal, puisque c'est ainsi que les sources les pèsent et ainsi qu'on les emploie. Les Kalamata passent en variante : une olive noire change la couleur de la mie et son amertume. Le fromage : présent dans cinq sources sur huit — 75 g de gruyère pour 6, 100 g de gruyère pour 4, 80 g de comté pour 4, 75 g de râpé pour 12, et 120 g de râpé plus 50 g de comté pour 6. Ramené à la portion : 12,5, 25, 20, 6,25 et 28,3 g, médiane 20 g, soit 120 g pour six. On retient le gruyère râpé, nommé deux fois, et vers qui pointe aussi le « fromage râpé » sans précision de deux autres sources ; le comté, nommé deux fois lui aussi, passe en variante. Le liquide est le vrai désaccord du dossier. Deux sources mouillent au lait (10 cl pour 6, 8 cl pour 4), deux au vin blanc sec (10 cl pour 12, 15 cl pour 6), une à la boisson au soja, et trois ne mouillent pas du tout — leurs quatre œufs et leur huile font toute l'humidité de l'appareil. Aucune majorité. On retient le lait : c'est le seul liquide que deux sources donnent dans un rapport comparable, et il n'engage la recette sur rien. Médiane des deux, ramenée à la portion, 19 g par personne, soit 110 ml. Le vin blanc sec passe en variante, attesté deux fois et caractéristique des versions du Sud. La matière grasse : huile d'olive dans cinq sources, de 1 cuillère à soupe à 10 cl, beurre fondu dans une (125 g), huile de tournesol à côté de l'olive dans une. Médiane 7,7 g par personne, soit 46 g — on écrit 50 ml d'huile d'olive. Le beurre fondu passe en variante : il change la mie autant que le goût. Le sel : trois sources sur huit seulement en parlent, et chacune sous forme de pincée. Ce n'est pas un oubli — 150 g de jambon, 150 g d'olives saumurées et 120 g de gruyère salent la mie à eux seuls. On retient 3 g, et l'étape dit pourquoi c'est si peu. Tombent sous la moitié des sources et passent donc en variantes : la moutarde (deux sources, 3 cuillères à soupe puis 1 cuillère à café), le thym (deux), le persil (une), le curcuma (une), les tomates semi-séchées (une), les blancs de poireau (une), le mélange de graines (une) et la crème épaisse (une). Deux lectures de la synthèse ont été écartées à la main : « Moule à cake d'environ 24 centimètres » a été rattaché à la moule commune crue, et « 15 centilitres de boisson au soja » à la sauce soja légère ; ni l'une ni l'autre n'entre dans la liste. Durées : médiane de préparation 12,5 min, portée à 15 parce qu'il faut tailler le jambon et égoutter les olives ; médiane de cuisson 45 min, retenue telle quelle. Le nom du corpus est exact et ses deux ingrédients annoncés sont bien dans la liste : rien n'est renommé. L'empreinte sensorielle de la recette remplacée, en revanche, était un gabarit rempli — chaleur 3, piquant 3, intensité 5 pour un cake au jambon et aux olives, une seule famille aromatique, et pour ingrédients signature la farine, l'œuf, le lait et l'huile, c'est-à-dire les quatre choses que ce cake partage avec tous les autres. Elle est réécrite autour de ce qui le distingue.",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Coupé en six, chaque part fait deux tranches épaisses qui portent le féculent, le jambon, l'œuf et le fromage : c'est un déjeuner, pas une bouchée. Ce qui manque à l'assiette est le légume, une salade verte ou des crudités — coupé plus fin, le même cake sert à l'apéritif, mais ce n'est alors plus une portion de plat."
+      },
+      "ingredients": [
+        {
+          "form": "Farine de blé T55",
+          "quantity": 200,
+          "unit": "g",
+          "role": "pâte",
+          "optional": false
+        },
+        {
+          "form": "Œuf cru",
+          "quantity": 4,
+          "unit": "u",
+          "role": "pâte",
+          "optional": false
+        },
+        {
+          "form": "Lait demi-écrémé",
+          "quantity": 110,
+          "unit": "ml",
+          "role": "pâte",
+          "optional": false
+        },
+        {
+          "form": "Huile d'olive vierge extra",
+          "quantity": 50,
+          "unit": "ml",
+          "role": "pâte",
+          "optional": false
+        },
+        {
+          "form": "Levure chimique",
+          "quantity": 11,
+          "unit": "g",
+          "role": "levée",
+          "optional": false
+        },
+        {
+          "form": "Jambon blanc cuit",
+          "quantity": 150,
+          "unit": "g",
+          "role": "garniture",
+          "optional": false
+        },
+        {
+          "form": "Olive verte dénoyautée",
+          "quantity": 150,
+          "unit": "g",
+          "role": "garniture",
+          "optional": false
+        },
+        {
+          "form": "Gruyère râpé",
+          "quantity": 120,
+          "unit": "g",
+          "role": "garniture",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 3,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 1,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Préchauffer le four à 180 °C et chemiser un moule à cake de vingt-quatre centimètres de papier cuisson, ou le huiler au pinceau avec un peu de l'huile pesée. Un cake salé colle plus qu'un cake sucré : la garniture fond au contact des parois et le démoulage arrache la mie si rien ne la protège."
+        },
+        {
+          "n": 2,
+          "instruction": "Tailler le jambon en dés d'un centimètre, égoutter les olives et les éponger dans un linge, puis les couper en deux dans la longueur. Les olives sortent du bocal chargées de saumure ; non essuyées, elles mouillent l'appareil par endroits et laissent des poches grises dans la mie. Si elles sont très salées, les rincer à l'eau froide et les sécher à nouveau."
+        },
+        {
+          "n": 3,
+          "instruction": "Mélanger au fouet la farine et la levure dans un grand saladier, en réservant une cuillerée à soupe de farine à part. Creuser un puits, y casser les œufs et les incorporer un à un, puis verser le lait et l'huile en filet sans cesser de tourner, jusqu'à obtenir une pâte lisse et coulante. S'arrêter dès qu'elle est homogène : plus on la travaille, plus le gluten se développe et plus la mie sortira élastique."
+        },
+        {
+          "n": 4,
+          "instruction": "Rouler les olives dans la cuillerée de farine réservée, puis ajouter à l'appareil les olives, les dés de jambon et le gruyère. Poivrer et ne saler que de trois grammes : le jambon, les olives saumurées et le fromage apportent déjà l'essentiel du sel, et un cake trop salé ne se rattrape pas. Mélanger à la spatule en repliant la pâte, le temps que la garniture soit partout enrobée — c'est cet enrobage qui l'empêche de tomber au fond pendant la cuisson."
+        },
+        {
+          "n": 5,
+          "instruction": "Verser dans le moule, égaliser la surface à la spatule et enfourner quarante-cinq minutes à 180 °C. Ne pas ouvrir la porte avant la trentième minute : l'appareil, lourd de garniture, ne tient sa levée que par la chaleur constante, et un courant d'air le fait retomber au centre."
+        },
+        {
+          "n": 6,
+          "instruction": "Vérifier la cuisson en plantant la pointe d'un couteau au cœur : elle doit ressortir sèche, sans trace de pâte crue. Sortir le cake, attendre dix minutes, démouler sur une grille et le laisser tiédir complètement avant de le trancher. Coupé chaud, il s'effrite et les olives déchirent la tranche ; froid ou juste tiède, il se coupe net."
+        }
+      ],
+      "techniques": [
+        "appareil à cake salé",
+        "enrobage de la garniture à la farine",
+        "cuisson au four",
+        "démoulage à tiède"
+      ],
+      "variants": [
+        "Vin blanc sec à la place du lait, 10 à 15 cl (chefsimon.com, 750g.com)",
+        "Beurre fondu, 125 g, à la place de l'huile d'olive (marmiton.org)",
+        "Comté en cubes ou râpé à la place du gruyère (marmiton.org, 750g.com)",
+        "Olives noires de Kalamata et tomates semi-séchées à l'huile (chefsimon.com)",
+        "Moutarde dans l'appareil, d'une cuillère à café à trois cuillères à soupe (marmiton.org, 750g.com)",
+        "Thym en feuilles ou persil haché dans la pâte (chefsimon.com, marmiton.org)",
+        "Trois blancs de poireau émincés et fondus ajoutés à la garniture (750g.com)",
+        "Version sans gluten : moitié farine de riz, moitié maïzena, levure sans gluten, et une pointe de curcuma pour la couleur (marmiton.org)",
+        "Mélange de graines parsemé sur le dessus avant cuisson (chefsimon.com)",
+        "Cuisson en machine à pain, programme cake, 45 minutes (750g.com)"
+      ],
+      "sensory": {
+        "profile": "savory_crisp",
+        "scores": {
+          "sweet": 1,
+          "salty": 4,
+          "acidic": 1,
+          "bitter": 2,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "olive_saumurée",
+          "jambon_cuit",
+          "fromage_fondu"
+        ],
+        "aroma_families": [
+          "olive_verte",
+          "gruyère",
+          "mie_dorée"
+        ],
+        "target_textures": [
+          "mie_moelleuse",
+          "garniture_en_dés",
+          "croûte_dorée"
+        ],
+        "signature_ingredients": [
+          "Jambon blanc cuit",
+          "Olive verte dénoyautée",
+          "Gruyère râpé"
+        ],
+        "identity_guardrails": [
+          "Sans olives, il ne reste qu'un cake au jambon : c'est leur point de sel et leur amertume qui donnent au plat son nom et sa mâche, et six sources sur huit les prennent vertes et dénoyautées.",
+          "Sans jambon, c'est un cake aux olives, autre plat et autre part de protéine ; le jambon se taille en dés visibles à la coupe, pas en lanières qui disparaissent dans la mie.",
+          "La levure chimique n'est pas négociable : les huit sources en mettent un sachet, et sans elle un appareil aussi chargé de garniture sort compact."
+        ]
+      },
+      "conservation": "Quatre jours au réfrigérateur, enveloppé serré dans du film ou du papier d'aluminium : à l'air libre la mie sèche en une demi-journée. Il se tranche mieux le lendemain, quand la mie a fini de se serrer autour de la garniture. Se congèle trois mois, entier ou en tranches séparées par du papier cuisson — les tranches se réchauffent alors sans décongélation, dix minutes à 150 °C, ce qui rend le moelleux bien mieux que le micro-ondes, qui le rend caoutchouteux. Se sert tiède ou froid, jamais brûlant : à chaud le gras du fromage domine et les olives deviennent amères.",
+      "allergens": [
+        "gluten",
+        "lait",
+        "œuf"
+      ]
+    },
+    {
+      "code": "FR-031",
+      "remplace": "FR-031",
+      "family": "Gougères au fromage",
+      "cuisine_origin": "France — Bourgogne",
+      "identity_level": "named_traditional_dish",
+      "category": "gougères apéritives en pâte à choux",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 20,
+      "difficulty": "moyenne",
+      "sources": [
+        "dossier:gougeres-au-fromage",
+        "marmiton.org",
+        "chefsimon.com",
+        "750g.com"
+      ],
+      "canonical_arbitration": "Neuf sources. Les portions déclarées sont 4, 6, 6, 6, 6, 6 et 8, médiane six — c'est le rendement retenu. Une neuvième compte son rendu en pièces, « 20 gougères », que la synthèse a pris pour vingt portions : toutes ses quantités par personne se sont retrouvées au cinquième des autres, ce qui explique les étendues très larges du tableau. Elle est écartée de la médiane des portions et gardée pour ses rapports. Sur la structure, les neuf sources sont d'accord : eau, beurre, farine, œufs, fromage. C'est le rapport qu'il faut trancher, et la médiane par personne est ici le mauvais outil, puisque les sources cuisent des fournées de tailles très différentes. Chaque source a donc été ramenée à 100 g de farine. L'eau : 156, 167, 179, 188, 167, 167, 160 et 160 ml, médiane 167. Le beurre : 53, 33, 50, 79, 56, 47, 53, 65 et 62 g, médiane 53. Les œufs : 3,0, 2,67, 2,67, 3,57, 2,5, 3,33, 2,67, 3,0 et 3,0, médiane 3,0. Le fromage : 100, 100, 60, 107, 78, 133, 100, 75 et 100 g, médiane 100. Sur 150 g de farine — elle-même médiane des neuf sources, qui donnent 150, 225, 150, 140, 160, 150, 150, 100 et 100 — cela fait 250 ml d'eau, 80 g de beurre, quatre œufs et demi et 150 g de fromage. On déclare quatre œufs, ce que quatre sources écrivent noir sur blanc et ce qu'une panade de cette taille absorbe ; le demi-œuf que la médiane suggère vient des deux sources qui beurrent aussi plus, et l'étape renvoie le dernier ajout à la texture plutôt qu'au décompte, dans un sens comme dans l'autre — un choux se mène à l'œil. À signaler : la première source de marmiton ne liste aucune eau, alors qu'aucune pâte à choux ne s'en passe. C'est un trou dans la source, pas une recette sans eau, et il n'est pas comblé de mémoire : la quantité vient des huit autres. Le fromage : gruyère râpé nommé par quatre sources, comté par une — qui donne elle-même le gruyère râpé comme équivalent —, un « fromage râpé » sans précision par deux, parmesan et fromage de chèvre basque par une, mimolette avec gouda et emmental par une. Le gruyère râpé a la pluralité, on le retient à 150 g. Le gouda n'a aucune forme au catalogue et n'entre donc pas dans la liste : la version aux trois fromages passe entière en variante, ce qui la conserve sans obliger à remplacer un fromage par un autre. Le sel : sept sources sur neuf en parlent, une seule le pèse, 5 g pour une fournée à 140 g de farine. On retient 5 g. La muscade : trois sources, une par site (marmiton, chefsimon, 750g), retenue à 0,5 g — négligeable en masse et présente dans le goût. Le poivre : six sources sur neuf en mettent, sous quatre noms qui ne disent pas la même chose — poivre ou poivre du moulin dans trois, piment de Cayenne ou d'Espelette dans trois autres. La synthèse n'en compte que quatre parce qu'elle range le Cayenne de l'une sous le poivre noir et l'Espelette des deux dernières sous le piment. On retient le poivre noir à 1 g, seul commun aux trois premières ; le Cayenne et l'Espelette, trois sources et deux sites, passent en variantes, car ils déplacent le profil au lieu de l'assaisonner. La dorure : trois sources badigeonnent les choux pochés, l'une d'un jaune supplémentaire, l'une d'un demi-œuf battu, l'une d'un œuf entier. Elle est déclarée optionnelle, à un jaune : elle colore la coque sans rien changer à la pâte. Le lait : une source remplace la moitié de l'eau par du lait, ce qui donne une coque plus tendre — variante. Durées : la préparation s'étale de 10 à 30 minutes et la cuisson de 12 à 25, dispersion qui tient surtout à l'endroit où chaque site range la casserole, tantôt en préparation tantôt en cuisson. Médianes 15 et 20. On garde 20 minutes de cuisson, avec le repère de cuisson dans l'étape plutôt qu'un chiffre sec — les douze minutes d'une source cuisent des bâtonnets fins, pas des gougères pochées à quatre centimètres. On porte la préparation à 20 minutes pour y inclure le desséchage de la panade et le pochage, qu'aucune source annonçant dix minutes n'a pu compter. Deux lectures de la synthèse ont été écartées à la main : « noix de muscade » a été rattaché à la noix, le fruit, et l'intertitre « La pâte à choux pour gougères : » à de petites pâtes sèches. Le nom du corpus est juste, rien n'est renommé. L'empreinte sensorielle de la recette remplacée était un gabarit rempli — chaleur 3 et piquant 3 pour un choux au fromage, et pour ingrédients signature l'eau, le beurre, la farine et l'œuf, c'est-à-dire la pâte à choux et non la gougère : le fromage, qui fait tout le plat, n'y figurait pas. Elle est réécrite.",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Bouchée apéritive : les gougères ouvrent le repas ou accompagnent un verre. Elles apportent du fromage et une pâte, mais ni légume ni plat, et elles ne reçoivent rien elles-mêmes — on ne complète pas une gougère, on la sert par cinq ou six."
+      },
+      "ingredients": [
+        {
+          "form": "Eau",
+          "quantity": 250,
+          "unit": "ml",
+          "role": "panade",
+          "optional": false
+        },
+        {
+          "form": "Beurre doux",
+          "quantity": 80,
+          "unit": "g",
+          "role": "panade",
+          "optional": false
+        },
+        {
+          "form": "Farine de blé T55",
+          "quantity": 150,
+          "unit": "g",
+          "role": "panade",
+          "optional": false
+        },
+        {
+          "form": "Œuf cru",
+          "quantity": 4,
+          "unit": "u",
+          "role": "pâte",
+          "optional": false
+        },
+        {
+          "form": "Gruyère râpé",
+          "quantity": 150,
+          "unit": "g",
+          "role": "fromage",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 5,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 1,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Muscade moulue",
+          "quantity": 0.5,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Jaune d'œuf cru",
+          "quantity": 1,
+          "unit": "u",
+          "role": "dorure",
+          "optional": true
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Tout peser et tout sortir avant d'allumer le feu : râper le fromage s'il est en bloc, casser les quatre œufs dans un bol et les battre à la fourchette, tailler le beurre en petits cubes. Une pâte à choux est une chaîne de gestes rapides ; chercher un ingrédient au milieu de la panade suffit à la laisser refroidir. Préchauffer le four à 190 °C, chaleur tournante coupée si le four le permet."
+        },
+        {
+          "n": 2,
+          "instruction": "Réunir l'eau, le beurre en cubes et le sel dans une casserole à fond épais et chauffer à feu moyen. Le beurre doit être entièrement fondu au moment où l'eau se met à bouillir : si l'ébullition arrive avant, une partie de l'eau s'est déjà évaporée et le rapport eau-farine est faussé pour toute la suite."
+        },
+        {
+          "n": 3,
+          "instruction": "Retirer du feu et verser la farine d'un seul coup, puis remuer énergiquement à la spatule jusqu'à ce que la pâte se rassemble en une boule lisse qui n'accroche plus aux parois. Verser la farine en plusieurs fois ferait des grumeaux qu'on ne rattrape ensuite qu'en travaillant la pâte, donc en la refroidissant."
+        },
+        {
+          "n": 4,
+          "instruction": "Remettre la casserole sur feu moyen et dessécher la panade une à deux minutes en la remuant sans arrêt, jusqu'à ce qu'un léger film blanc se forme au fond et que la boule s'en détache d'un bloc. C'est cette minute qui décide de tout : elle chasse l'eau excédentaire pour que la pâte puisse ensuite absorber les œufs, et une panade mal desséchée donne des gougères plates quelle que soit la cuisson."
+        },
+        {
+          "n": 5,
+          "instruction": "Débarrasser la panade dans un saladier et la laisser tiédir deux à trois minutes en la remuant — versés dans une pâte brûlante, les œufs coaguleraient. Incorporer alors les œufs battus par petites quantités, en travaillant chaque ajout jusqu'à ce que la pâte redevienne homogène avant le suivant. S'arrêter quand elle tombe de la spatule en ruban lent et qu'un sillon tracé du doigt se referme doucement : c'est cette texture qui compte, et non le nombre d'œufs — selon la farine et le desséchage, le dernier œuf peut n'être utile qu'à moitié, ou en réclamer un demi de plus."
+        },
+        {
+          "n": 6,
+          "instruction": "Ajouter le fromage râpé en gardant deux cuillerées pour le dessus, puis la muscade et le poivre. Mélanger juste assez pour répartir le fromage : incorporé dans la pâte et non seulement parsemé dessus, c'est lui qui donne son goût à l'intérieur creux de la gougère."
+        },
+        {
+          "n": 7,
+          "instruction": "Poser des tas de la taille d'une grosse noix sur une plaque garnie de papier cuisson, à la poche à douille lisse ou à deux cuillères, en les espaçant de quatre centimètres — ils doublent de volume. Lisser les pointes du bout d'un doigt mouillé, car une pointe sèche brûle avant le reste, badigeonner de jaune d'œuf si l'on veut une coque brillante, et parsemer du fromage réservé."
+        },
+        {
+          "n": 8,
+          "instruction": "Enfourner vingt minutes à 190 °C, jusqu'à vingt-cinq pour de grosses gougères, sans ouvrir la porte pendant les quinze premières minutes : c'est la vapeur enfermée qui les fait gonfler, et elle s'échappe avec le premier courant d'air. Elles sont cuites quand la coque est bien dorée, ferme sous le doigt et sonne creux. Les laisser perdre leur vapeur sur une grille deux ou trois minutes avant de servir : posées à plat sur une assiette, elles ramollissent par le dessous."
+        }
+      ],
+      "techniques": [
+        "panade",
+        "desséchage de la panade",
+        "incorporation des œufs à la texture",
+        "pochage à la poche",
+        "cuisson en pâte à choux",
+        "dorure au jaune"
+      ],
+      "variants": [
+        "Gougères aux trois fromages : mimolette, gouda et emmental à parts égales à la place du gruyère (marmiton.org)",
+        "Parmesan et fromage de chèvre basque, 150 g et 50 g (chefsimon.com)",
+        "Comté râpé à la place du gruyère, la source donnant les deux comme équivalents (chefsimon.com)",
+        "Moitié eau, moitié lait entier dans la panade, pour une coque plus tendre (750g.com)",
+        "Pointe de piment de Cayenne ou de piment d'Espelette à la place du poivre (750g.com, marmiton.org)",
+        "Thym ou ciboulette hachée dans la pâte (marmiton.org)",
+        "Mélange de graines sur le dessus et pâte pochée en bâtonnets, cuits douze minutes (750g.com)",
+        "Beignets de gougères : la même pâte, plus fluide et frite au lieu d'être cuite au four (marmiton.org)"
+      ],
+      "sensory": {
+        "profile": "savory_crisp",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 0,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "fromage_affiné",
+          "beurre",
+          "muscade"
+        ],
+        "aroma_families": [
+          "beurre",
+          "gruyère",
+          "pâte_à_choux"
+        ],
+        "target_textures": [
+          "coque_croustillante",
+          "intérieur_creux",
+          "mie_soufflée"
+        ],
+        "signature_ingredients": [
+          "Gruyère râpé",
+          "Beurre doux",
+          "Œuf cru",
+          "Farine de blé T55"
+        ],
+        "identity_guardrails": [
+          "Sans fromage, ce sont des choux salés et non des gougères : les neuf sources en mettent en moyenne 100 g pour 100 g de farine, autant que la farine elle-même.",
+          "La panade doit être desséchée sur le feu avant les œufs ; sans ce passage la pâte ne gonfle pas et on obtient des galettes, quelle que soit la température du four.",
+          "Le fromage est râpé et incorporé dans la pâte, pas seulement parsemé dessus : la gougère est creuse, et si le goût n'est pas dans la coque il n'est nulle part."
+        ]
+      },
+      "conservation": "Meilleures dans l'heure qui suit la cuisson. Deux jours dans une boîte hermétique à température ambiante, jamais au réfrigérateur : l'humidité du froid ramollit la coque en une nuit. Elles retrouvent leur croustillant en cinq minutes à 160 °C, four sec et porte entrouverte à la fin. La pâte crue se poche directement sur une plaque et se congèle telle quelle : les tas pris se rangent ensuite en sac et se cuisent sans décongélation, en ajoutant trois à quatre minutes. Cuites, elles se congèlent aussi trois mois et se réchauffent au four sans être décongelées.",
+      "allergens": [
+        "gluten",
+        "lait",
+        "œuf"
+      ]
+    }
+  ]
+}
