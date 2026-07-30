@@ -1,0 +1,791 @@
+{
+  "lot": "lot22 — les variantes que l'arbitrage vient de débloquer",
+  "note": "Quatre bases, seize étiquettes de variantes, dont huit portaient déjà une dérivée. Des huit restées vierges, sept s'écrivent ici et une seule reste une phrase ; deux dérivées de plus viennent de branches laissées de côté dans des étiquettes pourtant déjà traitées, ce qui porte le lot à neuf. Il ne doit rien à une relecture nouvelle des étiquettes : il doit tout à l'arbitrage lot17, qui a fait entrer au registre les dix formes sur lesquelles ces variantes butaient. Deux cas méritent d'être signalés parce qu'ils reviennent sur un jugement antérieur plutôt que sur une variante neuve. SRC-053-D3 avait retenu le basilic et laissé la poire de côté, faute de poire européenne au vocabulaire ; SRC-056-D2 avait retenu le comté et laissé la mimolette, pour la même raison. Ces deux étiquettes offraient chacune deux branches, et la branche manquante s'écrit maintenant sous un code propre : une même phrase de variante porte donc deux dérivées, ce que le moteur admet puisqu'il ne contrôle l'unicité que du code et de la famille. Le troisième retour en arrière est celui du saumon sur pâtes fraîches, que lot16 avait écarté comme accompagnement : ce n'en est pas un, le poisson est effeuillé DANS la sauce qui nappe les pâtes et l'oseille se dédouble entre fondue et crue — le féculent est dans l'assiette pesée, pas posé à côté. La forme « Pâtes fraîches aux œufs crues » a d'ailleurs été arbitrée avec la mention « les crues, puisque la recette cuit ses pâtes », ce qui ne laisse guère de doute sur la variante visée. Deux libellés d'étiquette ne se tiennent pas au mot près et le rationale le dit : la mimolette est prise demi-vieille et non vieille, la vieille étant trop sèche pour fondre, et le foie gras est pris cru et poêlé, seule entrée honnête du classeur — l'arbitrage l'a choisi en sachant que la variante le cuirait. La seule écartée est la version Troisgros du saumon, bloquée exactement comme en lot16 : « Fumet de poisson » reste aux formes bloquées en confiance C et il n'existe aucun fond de poisson de remplacement. Deux notes d'unité : le vermouth est déclaré en grammes et non en millilitres, l'arbitrage ne lui ayant pas donné de densité, et cinquante grammes valent les cinquante millilitres de vin blanc qu'ils remplacent à un gramme près. Enfin la version express du soufflé a demandé le travail le plus lourd : elle contredit frontalement deux garde-fous de sa base — blancs montés, béchamel au beurre et à la farine — et lot16 l'avait écartée pour cette raison autant que pour le fromage blanc manquant. Elle est écrite ici, mais avec ses propres garde-fous, ses propres techniques, sa propre conservation et son propre nom : « Soufflé express au fromage blanc », celui de la source qui la porte, plutôt qu'un nom qui promettrait une levée qu'elle n'a pas. Elle change aussi de moule, et il faut le dire car aucun contrôle ne le voit : un appareil qui ne lève pas n'occupe que les huit cents grammes qu'il pèse, il ne remplirait pas le tiers du moule à soufflé de 18 cm de la base, d'où un moule d'un litre rempli aux trois quarts sur cinq centimètres d'épaisseur.",
+  "derivations": [
+    {
+      "code": "SRC-053-D4",
+      "base": "SRC-053",
+      "family": "Salade de chèvre chaud aux tomates cerises",
+      "variant_label": "Remplacer la tomate râpée par des tomates cerises coupées en deux, comme le font la moitié des sources",
+      "rationale": "La pulpe râpée cède la place à deux cent cinquante grammes de fruits entiers coupés en deux : la salade perd la pluie humide et légèrement acide que la râpure semait sur les dômes de laitue, et gagne des éclats de jus qui n'arrivent qu'au moment où l'on mord. La tomate cerise porte près du double de sucre de la tomate ordinaire — 5,62 g de glucides contre 2,9, comme le relève l'arbitrage — ce qui rapproche encore le légume du miel posé sur le toast, et la vinaigrette doit donc rester franchement vinaigrée pour que l'assiette ne bascule pas du côté sucré. Le coût est un appui perdu : la râpure se collait aux feuilles et retenait la sauce avec elles, les demi-tomates la laissent glisser au fond de l'assiette, et il faut compter sur la seule laitue pour la porter.",
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Tomate râpée",
+          "with": "Tomate cerise fraîche",
+          "quantity": 250,
+          "unit": "g",
+          "role": "légume"
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 3,
+          "instruction": "Rincer les tomates cerises à l'eau froide, ôter les pédoncules et les couper en deux dans le sens de la hauteur plutôt que par l'équateur : fendues ainsi, elles gardent leurs loges et ne se vident pas de leur jus dans le saladier. Les laisser à température ambiante en attendant le dressage, une tomate sortie du froid n'a presque pas de goût."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Pendant le gratinage, laver et essorer la laitue, la répartir en dômes dans quatre assiettes, semer les demi-tomates cerises face coupée vers le haut, les lardons égouttés et les éclats de noix. Napper de vinaigrette au dernier moment en visant les feuilles plutôt que les tomates, qui ne retiennent rien, puis poser un toast brûlant sur chaque assiette et servir sans attendre pour garder le contraste chaud-froid."
+        }
+      ],
+      "sensory": {
+        "profile": "savory_crisp",
+        "scores": {
+          "sweet": 3,
+          "salty": 3,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 4,
+          "freshness": 4,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "chèvre lactique",
+          "acidité vinaigrée",
+          "miel",
+          "tomate sucrée",
+          "fumé"
+        ],
+        "aroma_families": [
+          "lactée",
+          "herbacée",
+          "toastée"
+        ],
+        "target_textures": [
+          "fromage fondant",
+          "pain croustillant",
+          "feuilles croquantes",
+          "demi-tomates juteuses",
+          "éclats de noix"
+        ],
+        "signature_ingredients": [
+          "Fromage de chèvre bûche",
+          "Pain de campagne",
+          "Miel"
+        ],
+        "identity_guardrails": [
+          "Le chèvre doit arriver chaud et coulant sur l'assiette : servi froid ou émietté à cru, le plat perd son nom",
+          "Le pain de campagne grillé sous le fromage est le socle du plat, pas une garniture — sans lui il ne reste qu'une salade au fromage",
+          "Les tomates cerises se posent coupées, jamais entières : entières elles roulent, ne prennent pas la vinaigrette et éclatent en bouche au mauvais moment",
+          "La vinaigrette reste franchement acidulée pour trancher la richesse du fromage et le sucre des tomates cerises"
+        ]
+      }
+    },
+    {
+      "code": "SRC-053-D5",
+      "base": "SRC-053",
+      "family": "Salade de chèvre chaud à la poire",
+      "variant_label": "Ajouter de fines lamelles de poire ou quelques feuilles de basilic frais pour une note sucrée et parfumée",
+      "rationale": "L'étiquette offrait deux finitions et seule celle au basilic avait pu être écrite, le vocabulaire ne portant alors aucune poire européenne ; la voici. Deux belles poires pelées, deux cent soixante grammes de chair taillée en lamelles, apportent le sucre et le grain fondant là où le basilic n'apportait qu'un parfum. Le miel du toast n'est plus seul à sucrer et la vinaigrette doit être goûtée avec attention : trop sage, elle laisse l'assiette glisser vers le dessert. Le fruit coûte cinq minutes de parage, il brunit dans le quart d'heure si on ne l'acidule pas dès la coupe, et il ne supporte pas d'être glissé sous le toast brûlant, où il rend son eau et se défait.",
+      "prep_minutes": 25,
+      "operations": [
+        {
+          "op": "add",
+          "form": "Poire fraîche",
+          "quantity": 260,
+          "unit": "g",
+          "role": "fruit",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 3,
+          "instruction": "Peler deux belles poires mûres mais encore fermes, les couper en quartiers, ôter le cœur et les pépins, puis les tailler en lamelles de deux à trois millimètres — assez fines pour plier sous la fourchette, assez épaisses pour ne pas tourner en compote au contact du toast. Les arroser aussitôt d'une cuillerée de vinaigrette prise sur la réserve : sans cet acide, la chair coupée brunit en un quart d'heure et le fruit arrive gris sur la table."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Pendant le gratinage, laver et essorer la laitue, la répartir en dômes dans quatre assiettes, semer la tomate râpée, les lardons égouttés et les éclats de noix, puis coucher les lamelles de poire en éventail d'un côté de l'assiette, à l'écart du toast. Napper de vinaigrette au dernier moment, poser le toast brûlant et servir sans attendre : glissée dessous, la poire chauffe, rend son eau et devient molle en deux minutes."
+        }
+      ],
+      "sensory": {
+        "profile": "savory_crisp",
+        "scores": {
+          "sweet": 4,
+          "salty": 3,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 4,
+          "freshness": 3,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "chèvre lactique",
+          "poire sucrée",
+          "acidité vinaigrée",
+          "miel",
+          "fumé"
+        ],
+        "aroma_families": [
+          "lactée",
+          "fruitée",
+          "toastée"
+        ],
+        "target_textures": [
+          "fromage fondant",
+          "pain croustillant",
+          "feuilles croquantes",
+          "lamelles de poire fondantes",
+          "éclats de noix"
+        ],
+        "signature_ingredients": [
+          "Fromage de chèvre bûche",
+          "Pain de campagne",
+          "Miel"
+        ],
+        "identity_guardrails": [
+          "Le chèvre doit arriver chaud et coulant sur l'assiette : servi froid ou émietté à cru, le plat perd son nom",
+          "Le pain de campagne grillé sous le fromage est le socle du plat, pas une garniture — sans lui il ne reste qu'une salade au fromage",
+          "La poire se pose crue, en lamelles et à l'écart du toast : cuite ou réchauffée elle rend son eau et délave la vinaigrette",
+          "La vinaigrette reste franchement acidulée : avec le miel et la poire, deux sources de sucre pèsent désormais sur l'assiette"
+        ]
+      }
+    },
+    {
+      "code": "SRC-054-D3",
+      "base": "SRC-054",
+      "family": "Salade landaise aux gésiers et au magret fumé",
+      "variant_label": "Ajouter des gésiers confits réchauffés à la poêle, taillés en morceaux, et deux tranches de magret fumé par personne.",
+      "rationale": "Deux abats et une charcuterie de plus, et la salade change de catégorie : de garniture de tomate au canard effiloché, elle devient l'assiette de charcuterie gasconne complète. Les gésiers apportent une mâche ferme et un goût d'abat franc que la chair effilochée n'a pas — débarrassés de leur graisse comme les veut la poêle, ils sont la pièce la plus maigre de l'assiette, deux grammes de lipides aux cent grammes contre dix-neuf pour le confit ; le magret fumé arrive en tranche froide, salée et fumée qui répond au gras tiède du confit, et c'est lui, à trente-deux grammes aux cent, qui apporte presque tout le gras ajouté. Le coût est d'abord de poids : trois cent vingt grammes de canard s'ajoutent aux deux cents de la base, soit cent trente grammes de viande par personne, et la vinaigrette de la base suffit tout juste à trancher autant de gras. Le coût le moins visible est le sel : gésiers et magret sont deux salaisons, l'assiette passe d'environ un gramme et demi de sel par part à plus de trois, et la pincée prise sur les 3 g pour la vinaigrette est désormais tout ce qu'on peut ajouter. Le coût est enfin de température : le magret fumé ne doit pas tiédir, son gras fond à rien et perd son parfum, alors que les gésiers doivent être chauds — deux exigences contraires dans la même assiette.",
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "operations": [
+        {
+          "op": "add",
+          "form": "Gésier de canard confit",
+          "quantity": 200,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "op": "add",
+          "form": "Magret de canard fumé",
+          "quantity": 120,
+          "unit": "g",
+          "role": "charcuterie",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 6,
+          "instruction": "Remettre la poêle du confit sur feu moyen sans la laver, une fois la vinaigrette montée et non avant : les gésiers doivent arriver chauds dans l'assiette et n'attendent pas. Y coucher les gésiers de canard confits, débarrassés à la main du gras figé qui les enrobe, et les laisser raffermir et grésiller trois à quatre minutes en les retournant une fois, jusqu'à ce que les arêtes brunissent — réchauffés trop doucement ils restent caoutchouteux, poussés trop loin ils durcissent d'un coup. Les tailler chacun en deux ou trois morceaux dans l'épaisseur, jamais en dés, et les garder dans la poêle hors du feu le temps de dresser : un gésier se mange en bouchées qui résistent."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Détailler le magret de canard fumé en tranches très fines, deux par personne et une trentaine de grammes par assiette : plus épaisses, elles mâchent au lieu de fondre. Étaler la pulpe de tomate au fond de chaque assiette, répartir dessus la chair de canard encore tiède, les éclats de peau et les morceaux de gésier chauds, puis poser les tranches de magret en éventail sur le bord de l'assiette, là où rien ne les réchauffera. Napper d'un filet de vinaigrette au tout dernier moment et porter à table aussitôt : le gras du magret fumé fond dès qu'il tiédit et emporte son parfum avec lui."
+        }
+      ],
+      "conservation": "À manger dans la foulée du dressage. Les éléments se gardent séparément : chair de canard désossée trois jours à 4 °C recouverte de sa graisse, gésiers poêlés deux jours au réfrigérateur, vinaigrette une semaine en bocal fermé, pulpe de tomate le jour même. Le magret fumé entamé tient cinq jours serré dans son film, mais tranché il sèche en quelques heures : il se coupe au dernier moment. Ne se congèle pas monté : la tomate râpée rend toute son eau à la décongélation, la peau croustillante devient molle et le magret fumé perd son gras ; seuls le confit non désossé et les gésiers sous graisse supportent le congélateur, trois mois.",
+      "sensory": {
+        "profile": "savory_crisp",
+        "scores": {
+          "sweet": 1,
+          "salty": 4,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 4,
+          "freshness": 2,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "gras de canard confit",
+          "fumé du magret",
+          "abat ferme",
+          "acidité vinaigrée",
+          "moutarde"
+        ],
+        "aroma_families": [
+          "rôti",
+          "fumée",
+          "acidulé"
+        ],
+        "target_textures": [
+          "peau de canard croustillante",
+          "chair effilochée fondante",
+          "gésier ferme sous la dent",
+          "tranche de magret souple",
+          "pulpe de tomate fraîche"
+        ],
+        "signature_ingredients": [
+          "Confit de canard cuit",
+          "Magret de canard fumé",
+          "Moutarde de Dijon",
+          "Huile d'olive vierge extra"
+        ],
+        "identity_guardrails": [
+          "Sans canard confit, ce n'est plus une salade landaise : le gras de canard tiédi est le cœur du plat, et les gésiers comme le magret s'ajoutent à lui sans le remplacer.",
+          "La sauce doit rester une vinaigrette moutardée et franchement acide, seule capable de trancher le gras du confit et celui du magret fumé, qui portent à eux deux presque tout le gras de l'assiette ; une sauce crémée efface l'identité gasconne.",
+          "Le magret fumé se pose froid et cru sur le bord de l'assiette, jamais sur la viande chaude : passé à la poêle ou seulement tiédi, il rend son gras et perd le fumé qui le justifie.",
+          "Les gésiers se servent chauds et en gros morceaux : froids ou coupés en dés, ils deviennent caoutchouteux et disparaissent dans la salade."
+        ]
+      }
+    },
+    {
+      "code": "SRC-054-D4",
+      "base": "SRC-054",
+      "family": "Salade landaise au foie gras",
+      "variant_label": "Version festive : une tranche de foie gras de canard posée au centre juste avant de servir.",
+      "rationale": "Une escalope de cinquante grammes par assiette, saisie à sec et posée au centre au tout dernier geste : la salade cesse d'être une entrée de tous les jours et devient un plat de fête. Le foie gras n'ajoute pas un goût neuf — on reste dans le canard — mais une texture que rien d'autre ne donne, crémeuse et tiède au milieu de la chair effilochée. Le catalogue ne porte que le foie gras cru : la tranche est donc poêlée plutôt que découpée dans une terrine, ce qui est le choix de l'arbitrage et non un contournement, l'entrée cuite comptant déjà la graisse rendue à la cuisson. Ce que la variante coûte est franc : cinquante grammes de foie gras cru pèsent trois cents kilocalories, davantage à eux seuls que tout le reste de l'assiette réuni, la fenêtre de cuisson tient dans trente secondes de part et d'autre, et l'assiette ne se rattrape pas — refroidi, le foie gras fige et graisse le fond.",
+      "prep_minutes": 20,
+      "cook_minutes": 12,
+      "operations": [
+        {
+          "op": "add",
+          "form": "Foie gras de canard cru",
+          "quantity": 200,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 6,
+          "instruction": "Sortir le foie gras du froid au dernier moment et le trancher en quatre escalopes d'un bon centimètre, la lame passée sous l'eau chaude et essuyée entre chaque coupe pour qu'elle glisse au lieu d'écraser. Chauffer une poêle à sec jusqu'à ce qu'elle commence à peine à fumer, assaisonner les escalopes des deux côtés d'une pincée prise sur le sel restant et d'un tour de moulin, puis les saisir trente à quarante secondes par face : le dessus doit être coloré et le centre encore crémeux. Les débarrasser aussitôt sur du papier absorbant — laissées dans la poêle, elles continuent de fondre et il ne reste qu'une flaque de graisse."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Étaler la pulpe de tomate au fond de chaque assiette, disposer la chair de canard tiède et les éclats de peau en couronne autour d'un creux laissé libre, napper d'un filet de vinaigrette, puis poser l'escalope de foie gras brûlante dans ce creux au tout dernier geste. Porter à table sans attendre : le foie gras poêlé continue de rendre son gras dans l'assiette et fige dès qu'il refroidit, et c'est la seule pièce du plat qu'on ne peut pas servir tiède."
+        }
+      ],
+      "conservation": "À manger dans la foulée du dressage, et plus strictement encore que la base : une escalope de foie gras poêlée ne se réchauffe pas, elle refond et se vide de son gras. Le foie gras cru se garde deux jours au plus à 4 °C, serré dans un linge, et se tranche au dernier moment. Les autres éléments tiennent séparément : chair de canard désossée trois jours sous sa graisse, vinaigrette une semaine en bocal fermé, pulpe de tomate le jour même. Rien ne se congèle une fois l'assiette montée ; le foie gras cru entier supporte trois mois au congélateur, jamais tranché.",
+      "sensory": {
+        "profile": "savory_crisp",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 5,
+          "freshness": 2,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "foie gras poêlé",
+          "gras de canard confit",
+          "acidité vinaigrée",
+          "moutarde"
+        ],
+        "aroma_families": [
+          "rôti",
+          "abats",
+          "acidulé"
+        ],
+        "target_textures": [
+          "foie gras crémeux et tiède",
+          "peau de canard croustillante",
+          "chair effilochée fondante",
+          "pulpe de tomate fraîche"
+        ],
+        "signature_ingredients": [
+          "Confit de canard cuit",
+          "Foie gras de canard cru",
+          "Moutarde de Dijon",
+          "Huile d'olive vierge extra"
+        ],
+        "identity_guardrails": [
+          "Sans canard confit, ce n'est plus une salade landaise : le foie gras se pose sur le confit, il ne le remplace pas.",
+          "La sauce doit rester une vinaigrette moutardée et franchement acide, seule capable de trancher le gras du confit et celui du foie gras ; une sauce crémée efface l'identité gasconne.",
+          "L'escalope se saisit à sec, poêle très chaude et moins d'une minute par face : cuite plus longtemps ou lancée dans une matière grasse ajoutée, elle fond et il ne reste rien à poser au centre.",
+          "Le foie gras arrive brûlant sur une base froide et se sert dans la minute : refroidi, il fige et graisse le fond de l'assiette."
+        ]
+      }
+    },
+    {
+      "code": "SRC-054-D5",
+      "base": "SRC-054",
+      "family": "Salade landaise à la truite fumée",
+      "variant_label": "Variante landaise à la truite fumée, détaillée en lanières, en remplacement d'une partie du canard.",
+      "rationale": "Le confit descend de deux cuisses à une seule, cent vingt grammes de chair au lieu de deux cents, et cent cinquante grammes de truite fumée viennent occuper la place — plus large, en vérité, que celle qui vient d'être libérée : l'assiette passe de deux cents à deux cent soixante-dix grammes de protéine, soit soixante-sept grammes par personne, et bascule de l'entrée vers la salade de repas. Elle garde son ossature gasconne — la peau croustillante, le gras tiède, la vinaigrette moutardée — mais l'oppose désormais à un poisson froid, salé et fumé au lieu de la doubler. Ce qui recule est la sensation de graisse fondue, non la graisse elle-même : la truite fumée porte moins de la moitié des lipides d'une chair de confit aux cent grammes, mais comme il en entre presque deux fois plus qu'il n'est sorti de canard, le gras de l'assiette perd moins d'un dixième et l'énergie ne recule pas du tout — elle monte même de quelques kilocalories par part. Le vrai coût est ailleurs : un allergène de plus, le poisson, dans une recette qui n'en portait aucun ; un sel qui passe d'environ un gramme et demi à près de deux grammes et demi par part, la truite fumée en portant trois aux cent grammes ; et une contrainte de dressage — la truite doit rester froide et se détailler au dernier moment, sans quoi ses lanières sèchent et se collent entre elles.",
+      "prep_minutes": 20,
+      "operations": [
+        {
+          "op": "set",
+          "form": "Confit de canard cuit",
+          "quantity": 120,
+          "role": "protéine"
+        },
+        {
+          "op": "add",
+          "form": "Truite fumée",
+          "quantity": 150,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Sortir le confit du froid une demi-heure à l'avance, le temps que la graisse figée se détende. Ici une seule cuisse suffit, la plus grosse du bocal, environ 220 g avec l'os et sa couche de graisse : elle rendra les 120 g de chair comestible portés dans la liste, la truite fumée tenant le reste de l'assiette."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Racler la graisse de couverture et la garder de côté pour un autre usage. Coucher la cuisse peau vers le bas dans une poêle encore froide, sans rien ajouter, puis monter à feu moyen : la graisse résiduelle fond seule et sert de bain de friture. Une seule pièce dans une grande poêle colore mieux qu'un fond encombré, il n'y a donc pas lieu de prendre plus petit."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Dès que la cuisse se manipule, ôter l'os et les cartilages, séparer la peau croustillante et la briser en éclats, puis défaire la chair en filaments à la fourchette. Garder l'ensemble au tiède, pas au chaud."
+        },
+        {
+          "op": "insert",
+          "after": 4,
+          "instruction": "Détailler la truite fumée en lanières d'un bon centimètre, en suivant le sens des feuillets plutôt qu'en travers : coupée à contresens, elle se casse en miettes qui disparaîtront dans la salade. La garder au réfrigérateur jusqu'au dressage et à l'écart de la poêle — un poisson fumé posé dans la chaleur perd son gras et sa fermeté en quelques minutes."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Étaler la pulpe de tomate au fond de chaque assiette, répartir dessus la chair de canard encore tiède et les éclats de peau, puis entrelacer les lanières de truite fumée sorties du froid, sans les poser sur la viande chaude. Napper d'un filet de vinaigrette au tout dernier moment et porter à table aussitôt : le contraste s'efface en quelques minutes, et il joue ici entre le gras tiède du canard et le fumé froid du poisson."
+        }
+      ],
+      "allergens": ["moutarde", "sulfites", "poisson"],
+      "conservation": "À manger dans la foulée du dressage. La truite fumée sous vide se garde jusqu'à sa date, mais deux jours seulement une fois le sachet ouvert, et elle se détaille au dernier moment : les lanières coupées à l'avance sèchent et se collent entre elles. Les autres éléments se gardent séparément : chair de canard désossée trois jours à 4 °C sous sa graisse, vinaigrette une semaine en bocal fermé, pulpe de tomate le jour même. Ne se congèle pas : la tomate râpée rend son eau, la peau de canard ramollit, et une truite déjà fumée devient farineuse à la décongélation.",
+      "sensory": {
+        "profile": "savory_crisp",
+        "scores": {
+          "sweet": 1,
+          "salty": 4,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 3,
+          "freshness": 3,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "gras de canard confit",
+          "truite fumée",
+          "acidité vinaigrée",
+          "moutarde"
+        ],
+        "aroma_families": [
+          "rôti",
+          "fumée",
+          "marine"
+        ],
+        "target_textures": [
+          "peau de canard croustillante",
+          "chair effilochée fondante",
+          "lanières de truite souples et froides",
+          "pulpe de tomate fraîche"
+        ],
+        "signature_ingredients": [
+          "Confit de canard cuit",
+          "Truite fumée",
+          "Moutarde de Dijon",
+          "Huile d'olive vierge extra"
+        ],
+        "identity_guardrails": [
+          "Le canard confit reste dans l'assiette, en quantité réduite mais présent : la truite en remplace une partie, jamais la totalité, sans quoi le plat n'a plus rien de landais.",
+          "La sauce doit rester une vinaigrette moutardée et franchement acide, seule capable de tenir ensemble un gras tiède et un poisson fumé ; une sauce crémée efface l'identité gasconne.",
+          "La truite se sert froide et telle quelle, en lanières taillées au dernier moment : passée à la poêle ou seulement tiédie, elle s'effrite et perd le fumé qui la justifie.",
+          "Le canard se pose tiède, la truite froide, sur une base non assaisonnée à l'avance : tout mettre à la même température transforme le plat en autre chose."
+        ]
+      }
+    },
+    {
+      "code": "SRC-055-D1",
+      "base": "SRC-055",
+      "family": "Saumon à l'oseille au vermouth",
+      "variant_label": "Remplacer le vin blanc sec par la même quantité de vermouth sec, comme le fait l'une des sources du dossier.",
+      "rationale": "Cinquante grammes de vermouth pour cinquante millilitres de vin blanc, soit la même quantité au gramme près, et ce n'est pas un simple changement de bouteille : le vermouth apporte l'absinthe, le quinquina et les écorces de son infusion, qui survivent à la réduction là où un vin blanc ne laisse que son acidité. La sauce y gagne une amertume aromatique qui répond à l'acidité de l'oseille au lieu de la doubler. Ce qu'elle y perd est de la franchise : un vermouth reste plus sucré et moins acide qu'un vin sec, il faut donc goûter avant de saler et accepter une sauce plus ronde. Réserve de mesure, à dire puisqu'elle est connue : la forme retenue au catalogue est un aliment moyen d'apéritifs à base de vin, plus sucré qu'un vermouth réellement sec, mais sur cinquante grammes de déglaçage l'écart ne dépasse pas trois kilocalories par part.",
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Vin blanc sec",
+          "with": "Vermouth sec",
+          "quantity": 50,
+          "unit": "g",
+          "role": "déglaçage"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Mouiller au vermouth sec, remonter le feu et conduire la réduction jusqu'au sirop, presque à sec. Compter une minute de plus qu'avec un blanc ordinaire : un vermouth est muté, seize à dix-huit degrés contre douze, et son alcool demande d'autant plus de temps pour s'évacuer. Son sucre, lui, épaissit la réduction avant qu'elle ne s'assèche : ne pas quitter la sauteuse et gratter le fond au fouet, les plantes amères s'y attachent et brûleraient là où elles doivent revenir dans le liquide."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Ajouter la crème, ramener à petits frémissements et laisser épaissir quelques minutes, jusqu'à ce qu'un trait tracé au doigt tienne au dos de la cuillère. Goûter avant de saler : le vermouth a laissé une amertume douce que le sel amplifie, et c'est le dernier moment pour rectifier, la sauce ne se resalera plus une fois l'oseille dedans."
+        }
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 3,
+          "bitter": 2,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 5,
+          "freshness": 3,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "acidulé végétal",
+          "amertume aromatique du vermouth",
+          "lacté beurré",
+          "gras iodé du saumon"
+        ],
+        "aroma_families": [
+          "lactée",
+          "végétale acidulée",
+          "aromatique amère",
+          "marine"
+        ],
+        "target_textures": [
+          "chair nacrée qui se détache en feuillets",
+          "sauce nappante",
+          "oseille fondue"
+        ],
+        "signature_ingredients": [
+          "Pavé de saumon cru, sans peau",
+          "Oseille crue",
+          "Crème fraîche liquide entière"
+        ],
+        "identity_guardrails": [
+          "Sans oseille fondue dans la crème, ce n'est plus un saumon à l'oseille : c'est son acidité citronnée qui coupe le gras du poisson et de la crème, aucun jus de citron ne la remplace.",
+          "Le saumon est saisi à part et nappé au dernier moment, jamais cuit dans la sauce : pochée dedans, la chair grise, se dessèche et perd le nacré qui fait le plat.",
+          "Le vermouth se réduit jusqu'au sirop comme le ferait un vin : versé et laissé tel quel, il garde un goût d'apéritif et de sucre qui domine l'oseille.",
+          "La liaison se fait à la crème réduite, sans farine ni roux — une sauce épaissie à la farine transforme le plat en gratin de poisson."
+        ]
+      }
+    },
+    {
+      "code": "SRC-055-D2",
+      "base": "SRC-055",
+      "family": "Saumon à l'oseille sur pâtes fraîches",
+      "variant_label": "Servir la sauce et le saumon effeuillé sur de larges pâtes fraîches, en parsemant au dressage quelques lanières d'oseille crue pour relancer l'acidité.",
+      "rationale": "Ce n'est pas un accompagnement posé à côté : les quatre cents grammes de pâtes fraîches sont mêlés à la sauce, le pavé y est effeuillé, et le plat devient une assiette unique où le poisson n'est plus une pièce mais une garniture. L'oseille se dédouble pour tenir le coup — deux cent cinquante grammes au lieu de deux cents, dont cinquante réservés crus et semés au dressage, parce qu'une sauce étendue sur un féculent perd l'acidité qui la définit. Le volume, lui, se rattrape à l'eau de cuisson des pâtes et non à la crème : les cent cinquante millilitres de la base ont été calculés pour napper quatre pavés, ils doivent maintenant enrober quatre cents grammes de pâtes en plus, et une louche d'eau farineuse les allonge là où une crème supplémentaire ne ferait qu'alourdir. Le prix est celui du féculent : cent grammes de pâtes fraîches par personne ajoutent l'œuf et le gluten à une recette qui n'en portait pas, et une part passe de poisson en sauce à plat complet. Le prix est aussi celui de la minute : des pâtes fraîches cuisent en deux ou trois minutes et boivent la sauce en un quart d'heure, si bien que le dressage ne souffre aucun retard.",
+      "prep_minutes": 25,
+      "cook_minutes": 25,
+      "operations": [
+        {
+          "op": "add",
+          "form": "Pâtes fraîches aux œufs crues",
+          "quantity": 400,
+          "unit": "g",
+          "role": "féculent",
+          "optional": false
+        },
+        {
+          "op": "set",
+          "form": "Oseille crue",
+          "quantity": 250,
+          "role": "légume signature"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Compter à peu près 375 g d'oseille en bottes pour obtenir les 250 g de feuilles nettes : effeuiller, ôter la côte centrale en tirant la nervure de la base vers la pointe, laver à grande eau, essorer sans écraser puis tailler grossièrement en larges lanières. Mettre à part une poignée d'une cinquantaine de grammes, choisie parmi les feuilles les plus jeunes : elle ne verra pas la casserole et ira crue sur les assiettes au dressage."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Jeter dans la crème chaude les seules lanières destinées à la sauce, feu coupé ou très doux, en laissant la poignée réservée de côté : elles s'affaissent et virent au vert olive en moins d'une minute. Arrêter là et réserver à couvert sans bouillir — une cuisson prolongée brunit l'oseille et efface l'acidité qui fait tout le plat, et c'est justement pour la rendre que l'on a gardé des feuilles crues."
+        },
+        {
+          "op": "insert",
+          "after": 6,
+          "instruction": "Mettre à chauffer une grande casserole d'eau salée avant de toucher au poisson. Des pâtes fraîches cuisent en deux ou trois minutes et doivent trouver leur eau à gros bouillons au moment où le saumon sort de la poêle, jamais l'inverse : c'est l'eau qui attend le poisson, pas le poisson qui attend l'eau."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Plonger les pâtes fraîches aux œufs dans l'eau bouillante et les égoutter dès qu'elles remontent et cèdent sous la dent, deux à trois minutes, sans les rincer — la farine qu'elles gardent en surface aide la sauce à tenir. Prélever une petite louche de cette eau blanchie avant d'égoutter : la sauce a été montée pour napper quatre pavés et doit maintenant enrober les pâtes avec eux. Les mêler délicatement à la sauce à l'oseille hors du feu, en rendant l'eau réservée cuillerée par cuillerée jusqu'à ce que la sauce enrobe sans couler, et les répartir dans des assiettes chaudes. Effeuiller les pavés à la fourchette en larges lamelles, en suivant les feuillets de la chair, les coucher sur les pâtes, puis semer les lanières d'oseille crue réservées et servir aussitôt : crue, l'oseille garde un mordant acide et un vert franc que la cuisson dans la crème efface en moins d'une minute."
+        }
+      ],
+      "allergens": ["poisson", "lait", "sulfites", "gluten", "œuf"],
+      "conservation": "Rien ne se garde une fois monté : les pâtes fraîches boivent la sauce en un quart d'heure et l'assiette devient pâteuse. La sauce à l'oseille se garde 48 h à 4 °C en bocal fermé et se réchauffe à feu très doux sans jamais bouillir ; le saumon cuit tient 24 h au réfrigérateur et se mange plutôt froid ou tiède. Les pâtes fraîches crues se gardent deux jours au frais dans leur farine et cuisent alors une trentaine de secondes de plus. Ni la sauce ni le poisson ne supportent la congélation : la crème tranche, l'oseille rend son eau et devient filandreuse, la chair du saumon se délite et les pâtes cuites tournent en bouillie. Congeler éventuellement l'oseille crue ciselée en portions, à jeter telle quelle dans la crème chaude.",
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 4,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 3,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "acidulé végétal",
+          "lacté beurré",
+          "gras iodé du saumon"
+        ],
+        "aroma_families": [
+          "lactée",
+          "végétale acidulée",
+          "marine"
+        ],
+        "target_textures": [
+          "pâtes fraîches souples",
+          "chair nacrée effeuillée",
+          "sauce nappante",
+          "oseille fondue",
+          "lanières d'oseille crue"
+        ],
+        "signature_ingredients": [
+          "Pavé de saumon cru, sans peau",
+          "Oseille crue",
+          "Crème fraîche liquide entière"
+        ],
+        "identity_guardrails": [
+          "Sans oseille fondue dans la crème, ce n'est plus un saumon à l'oseille : c'est son acidité citronnée qui coupe le gras du poisson et de la crème, aucun jus de citron ne la remplace.",
+          "Le saumon est saisi à part et effeuillé au dressage, jamais cuit ni réchauffé dans la sauce : mêlé aux pâtes brûlantes puis attendu, il grise et se dessèche.",
+          "La poignée d'oseille crue du dressage n'est pas une décoration : elle rend l'acidité que la sauce perd en s'étendant sur un féculent, et elle se sème hors du feu.",
+          "La liaison se fait à la crème réduite, sans farine ni roux — une sauce épaissie à la farine transforme le plat en gratin de pâtes."
+        ]
+      }
+    },
+    {
+      "code": "SRC-056-D4",
+      "base": "SRC-056",
+      "family": "Soufflé au fromage et à la mimolette",
+      "variant_label": "Fromage plus typé : remplacer tout ou partie de l'emmental par un comté vieux, ou ajouter une soixantaine de grammes de mimolette vieille comme le fait l'une des sources du dossier.",
+      "rationale": "L'étiquette offrait deux branches et seule celle du comté avait pu être écrite ; voici la seconde. Soixante grammes de mimolette s'ajoutent aux deux fromages de la base sans rien leur retirer : la pâte gagne une pointe de noisette, un salé plus long et une couleur franchement orangée qui se voit à la coupe. La forme retenue est la demi-vieille et non la vieille annoncée par l'étiquette, faute d'entrée râpable au catalogue — la vieille est trop sèche pour fondre, la jeune trop souple pour la râpe, et c'est l'affinage intermédiaire qui correspond à ce que la recette fait du fromage. Le coût est double : deux cent trente-cinq grammes de fromage au total alourdissent l'appareil et la levée monte un peu moins haut qu'avec les seuls emmental et gruyère, et le carotène de la mimolette colore la croûte avant que le cœur soit pris, ce qui oblige à surveiller le dessus plutôt que la montre.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Mimolette demi-vieille",
+          "quantity": 60,
+          "unit": "g",
+          "role": "fromage",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Laisser retomber la chaleur cinq minutes, puis incorporer les jaunes un par un au fouet, en attendant que chacun disparaisse avant d'ajouter le suivant. Râper la mimolette demi-vieille à la grille moyenne, ni plus fin ni plus gros que les deux autres fromages, puis la verser avec l'emmental râpé et le gruyère râpé restant, en plusieurs fois et hors du feu, jusqu'à obtenir une base lisse et nettement orangée. Râper la muscade moulue, poivrer, et saler d'une main légère seulement : trois fromages affinés apportent déjà beaucoup de sel, et la mimolette est le plus salé des trois."
+        },
+        {
+          "op": "replace",
+          "n": 10,
+          "instruction": "Enfourner 35 minutes en gardant la porte fermée pendant les vingt premières : le soufflé est prêt lorsqu'il dépasse le moule — un peu moins haut que celui de la base, l'appareil étant plus lourd de soixante grammes de fromage — que le dessus a pris une couleur d'abricot foncé et que le cœur tremble encore très légèrement quand on remue le moule. Surveiller la croûte à partir de la vingt-cinquième minute : le carotène de la mimolette la colore plus vite qu'un fromage pâle, et un dessus déjà sombre peut arriver avant que le centre soit pris. Passer directement du four à la table, il commence à redescendre au bout de deux à trois minutes."
+        }
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 4,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 5,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "fromage affiné",
+          "mimolette noisette",
+          "beurre",
+          "jaune d'œuf"
+        ],
+        "aroma_families": [
+          "lactée",
+          "beurrée",
+          "épicée douce"
+        ],
+        "target_textures": [
+          "mousseux",
+          "aérien",
+          "croûte dorée",
+          "cœur crémeux"
+        ],
+        "signature_ingredients": [
+          "Œuf cru",
+          "Mimolette demi-vieille",
+          "Gruyère râpé",
+          "Emmental râpé"
+        ],
+        "identity_guardrails": [
+          "Les blancs doivent être montés à part et incorporés à la maryse en fin d'appareil : mélangés au batteur ou battus avec les jaunes, la préparation ne lève plus et devient une omelette au four.",
+          "La mimolette s'ajoute aux deux pâtes pressées cuites, elle ne les remplace pas : seule, elle fond mal et le soufflé perd le liant fromager qui le tient.",
+          "La base doit être une béchamel épaisse au beurre et à la farine, seule assez ferme pour tenir les bulles d'air ; un liant à la fécule délayée donne une texture caoutchouteuse hors identité.",
+          "Le moule se remplit aux deux tiers au maximum et la porte du four reste fermée en début de cuisson, sinon la levée s'effondre — et elle est déjà moins haute avec un appareil chargé de trois fromages."
+        ]
+      }
+    },
+    {
+      "code": "SRC-056-D5",
+      "base": "SRC-056",
+      "family": "Soufflé express au fromage blanc",
+      "variant_label": "Version express sans roux relevée dans le corpus : œufs battus en omelette avec fromage blanc, fécule et fromage râpé, versés dans un moule huilé — plus dense, plus rustique, et sans véritable levée.",
+      "rationale": "Tout ce qui fait techniquement un soufflé disparaît : plus de roux, plus de béchamel, plus de blancs montés. Quatre cents grammes de fromage blanc et vingt grammes de fécule remplacent le lait, le beurre et la farine, les œufs se battent entiers en omelette, et le moule est huilé au lieu d'être beurré — et pris plus petit, un litre et quatorze centimètres au lieu des dix-huit de la base, parce qu'un appareil qui ne lève pas n'a que ses huit cents grammes à occuper et ne ferait qu'un fond de trois centimètres dans un moule à soufflé. Le gain est réel et c'est le seul que la variante revendique : un quart d'heure de préparation, aucun geste rattrapable manqué, et un plat qui ne s'effondre pas puisqu'il ne monte pas. Le coût est l'identité même — l'appareil gonfle d'un bon centimètre, se tasse en refroidissant, et la fécule lui donne une tenue légèrement caoutchouteuse que la base tenait pour hors identité. Le nom retenu est celui de la source qui la porte, « soufflé au fromage blanc », plutôt qu'un nom qui promettrait une levée absente ; les garde-fous, les techniques, les allergènes et la conservation ont été réécrits en conséquence, le gluten de la farine partant avec le roux.",
+      "prep_minutes": 15,
+      "cook_minutes": 40,
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Beurre doux"
+        },
+        {
+          "op": "remove",
+          "form": "Farine de blé T55"
+        },
+        {
+          "op": "remove",
+          "form": "Lait entier"
+        },
+        {
+          "op": "add",
+          "form": "Fromage blanc à 3 pourcent",
+          "quantity": 400,
+          "unit": "g",
+          "role": "liant",
+          "optional": false
+        },
+        {
+          "op": "add",
+          "form": "Fécule de maïs",
+          "quantity": 20,
+          "unit": "g",
+          "role": "liant",
+          "optional": false
+        },
+        {
+          "op": "add",
+          "form": "Huile de colza raffinée",
+          "quantity": 10,
+          "unit": "g",
+          "role": "matière grasse",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Chauffer le four à 180 °C en chaleur tournante, grille placée au tiers bas. Inutile ici de sortir les œufs longtemps à l'avance pour les faire monter : ils partent entiers et se battent en omelette, ce qui fait de cette version la plus rapide du dossier — un quart d'heure de préparation et pas un geste qu'on puisse rater."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Huiler généreusement au pinceau un moule à bords hauts d'un litre, quatorze centimètres de diamètre environ, fond et parois, puis saupoudrer les parois d'une cuillerée prise sur le gruyère râpé et retourner le moule pour chasser l'excédent. Prendre plus petit que le moule de 18 cm de la base n'est pas un détail : cet appareil ne lève pas, il n'occupe que les huit cents grammes qu'il pèse, à peine plus de sept cent cinquante millilitres, et dans un moule à soufflé il ne ferait qu'un fond de trois centimètres. L'huile de colza raffinée convient mieux ici qu'une huile de goût : elle ne parfume rien et tient les 180 °C sans amertume. Cette paroi rugueuse n'a plus à faire grimper l'appareil, elle sert surtout à ce qu'il se décolle proprement à la cuillère."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Compter quatre œufs moyens, soit près de 240 g sur la balance coquille comprise, pour les 200 g de matière utile de la recette. Les casser entiers dans un grand saladier, sans rien séparer, et les battre à la fourchette jusqu'à ce que jaunes et blancs ne fassent plus qu'un liquide de couleur uniforme. Battre plus longtemps n'apporte rien : l'air incorporé à la fourchette ne tient pas et rien dans cette version ne s'appuie sur lui."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Verser le fromage blanc à 3 pourcent dans un bol et y tamiser la fécule de maïs en deux fois, en fouettant entre chaque : jetée d'un seul coup, la fécule prend en grains blancs qui ne se défont plus et qu'on retrouve sous la dent. Le mélange doit être lisse et tomber du fouet en ruban épais."
+        },
+        {
+          "op": "remove",
+          "n": 5
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Réunir les œufs battus et le mélange au fromage blanc, puis incorporer l'emmental râpé et le gruyère râpé restant en deux fois. Râper la muscade moulue, poivrer, et saler d'une main légère : le fromage blanc est acide plus que salé, mais les deux pâtes pressées apportent déjà ce qu'il faut. L'appareil reste liquide et ne nappe pas le fouet, c'est normal — c'est la fécule qui le prendra au four, pas une base épaissie d'avance."
+        },
+        {
+          "op": "remove",
+          "n": 7
+        },
+        {
+          "op": "remove",
+          "n": 8
+        },
+        {
+          "op": "replace",
+          "n": 9,
+          "instruction": "Verser l'appareil dans le petit moule : il doit en emplir les trois quarts et s'y tenir sur cinq bons centimètres d'épaisseur. Rien ne monte ici, et garder un tiers de vide ne servirait qu'à cuire un fond plat au milieu d'un grand moule. Égaliser la surface et laisser les bords tranquilles : dégager une rainure à la pointe du couteau n'a plus d'objet, il n'y a pas de couronne à aider."
+        },
+        {
+          "op": "replace",
+          "n": 10,
+          "instruction": "Enfourner 40 minutes, cette fois sans avoir à ménager la porte : l'appareil est plus liquide et plus lourd que celui d'un soufflé, et cinq centimètres d'épaisseur mettent plus longtemps à prendre au cœur. Il est cuit lorsqu'il a gonflé d'un bon centimètre à peine, sans jamais menacer le bord, que le dessus est doré et ferme sous le doigt, et qu'une lame plantée au centre ressort à peine humide. Il ne s'effondrera pas en sortant du four : il se tasse doucement en refroidissant, se sert à la cuillère et reste bon tiède, ce qu'aucun soufflé n'accepte."
+        }
+      ],
+      "techniques": ["liaison à la fécule", "cuisson au four"],
+      "allergens": ["lait", "œuf"],
+      "conservation": "Cette version se garde bien mieux qu'un soufflé, faute de mousse à perdre : couverte, elle tient 48 heures à 4 °C et se réchauffe 15 minutes à 150 °C sans changer de texture, puisqu'elle est déjà dense. Elle se mange aussi froide, prise à la cuillère, ce qu'un soufflé ne permet pas. L'appareil cru attend une heure au réfrigérateur sans dommage — rien n'y est monté qui puisse retomber — mais pas davantage, la fécule se déposant au fond du saladier. La congélation reste à proscrire : le fromage blanc rend son eau à la décongélation et l'ensemble se délite en grains.",
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "fromage affiné",
+          "fromage blanc acidulé",
+          "œuf"
+        ],
+        "aroma_families": [
+          "lactée",
+          "épicée douce"
+        ],
+        "target_textures": [
+          "dense",
+          "moelleux",
+          "croûte dorée"
+        ],
+        "signature_ingredients": [
+          "Œuf cru",
+          "Fromage blanc à 3 pourcent",
+          "Gruyère râpé",
+          "Emmental râpé"
+        ],
+        "identity_guardrails": [
+          "Les œufs se battent entiers, en omelette : il n'y a pas de blancs montés et il ne faut attendre aucune levée — l'appareil gonfle d'un bon centimètre et se tasse en refroidissant sans se creuser.",
+          "La liaison se fait à la fécule délayée dans le fromage blanc, jamais à un roux : c'est ce qui rend la version express, et c'est aussi ce qui la tient plus dense et légèrement caoutchouteuse.",
+          "Le fromage à pâte pressée cuite râpé, emmental et gruyère, porte tout le goût : sans lui il ne reste qu'un flan salé au fromage blanc.",
+          "Le moule est plus petit que celui du soufflé — un litre, quatorze centimètres — et se remplit aux trois quarts puisque rien ne monte : dans le moule de 18 cm de la base, le même appareil ne ferait qu'un fond plat. Le plat se sert à la cuillère plutôt que découpé."
+        ]
+      }
+    }
+  ]
+}

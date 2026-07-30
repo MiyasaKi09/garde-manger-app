@@ -15,6 +15,14 @@
  *
  *   node scripts/data/recipes/derive-variant-recipes.mjs derivations.json --lot lot.json
  *   node scripts/data/recipes/derive-variant-recipes.mjs derivations.json --check
+ *   node scripts/data/recipes/derive-variant-recipes.mjs derivations.json --lot lot.json --reprendre
+ *
+ * `--reprendre` régénère les dérivées DÉJÀ versées au corpus au lieu de refuser
+ * leur code. C'est ce qu'il faut quand le moteur lui-même a changé — la première
+ * version ne transmettait pas le rôle d'assiette de la base, et les 182 dérivées
+ * écrites avant le correctif devaient être refaites. Chaque recette régénérée
+ * sort avec un champ « remplace » que le versement exige pour écraser sans
+ * risque de se tromper de cible.
  */
 import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
@@ -25,6 +33,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
 const CORPUS = join(ROOT, 'data', 'recipes', 'corpus-v3.json')
 const VOCABULAIRE = join(ROOT, 'data', 'recipes', 'authoring-vocabulary.json')
+const REGISTRE = join(ROOT, 'data', 'foods', 'recipe-food-mappings-v3.json')
 
 /** Opérations reconnues sur les ingrédients. Vocabulaire fermé, comme partout ailleurs. */
 const OPERATIONS = new Set(['remove', 'add', 'substitute', 'scale', 'set'])
@@ -88,7 +97,7 @@ function sensorielDerive(sensoriel, ingredients, substitutions = new Map()) {
  * Applique un delta à une recette de base et rend la recette dérivée complète.
  * Rend aussi la liste des anomalies : le script n'écrit rien tant qu'il en reste.
  */
-export function deriver(base, delta, { vocabulaire = null } = {}) {
+export function deriver(base, delta, { vocabulaire = null, arbitreesRecemment = new Set() } = {}) {
   const anomalies = []
   const refuser = (message) => anomalies.push(`${delta.code || '(sans code)'} — ${message}`)
 
@@ -209,6 +218,13 @@ export function deriver(base, delta, { vocabulaire = null } = {}) {
 
   // ── Le vocabulaire fermé s'applique aussi aux ajouts ─────────────────────
   // Une dérivée qui invente une forme est une dérivée qu'on ne peut pas peser.
+  //
+  // Une forme fraîchement ARBITRÉE fait exception, et il faut cette exception :
+  // le vocabulaire employable est construit depuis les formes que le corpus
+  // emploie DÉJÀ, si bien qu'un ingrédient nouveau n'y entre qu'après la
+  // fusion. Sans cette échappée, arbitrer une noisette ne servirait à rien —
+  // aucune variante ne pourrait jamais l'employer. C'est l'ordre normal des
+  // choses, et le validateur de recettes l'admet de la même façon.
   if (vocabulaire) {
     const nommer = (forme) => (typeof forme === 'string' ? forme : (forme.nom || forme.name || ''))
     const employables = new Set(vocabulaire.formes_employables.map((forme) => normalizeName(nommer(forme))))
@@ -217,7 +233,9 @@ export function deriver(base, delta, { vocabulaire = null } = {}) {
     for (const forme of ajoutes) {
       const cle = normalizeName(forme)
       if (bloquees.has(cle)) refuser(`« ${forme} » est bloquée au vocabulaire : ${bloquees.get(cle)}`)
-      else if (!employables.has(cle)) refuser(`« ${forme} » ne figure pas au vocabulaire employable`)
+      else if (!employables.has(cle) && !arbitreesRecemment.has(cle)) {
+        refuser(`« ${forme} » ne figure ni au vocabulaire employable ni au registre d'arbitrage`)
+      }
     }
   }
 
@@ -325,6 +343,14 @@ export function deriver(base, delta, { vocabulaire = null } = {}) {
     techniques: delta.techniques || base.techniques,
     variants: [],
     sensory: delta.sensory || sensorielDerive(base.sensory, ingredients, substitutions),
+    // Le RÔLE D'ASSIETTE est déclaré par le rédacteur, et cette déclaration prime
+    // sur tout ce qu'on pourrait déduire du nom ou de la catégorie. Ne pas la
+    // transmettre faisait juger un accompagnement dérivé au plancher calorique
+    // d'un plat complet : un céleri rémoulade allégé sortait « trop maigre » à
+    // 130 kcal pour quatre parts, alors que le plancher d'un accompagnement est
+    // à 60. Le delta peut la remplacer — une variante qui retire la protéine
+    // d'un plat complet cesse d'être un plat complet.
+    ...(delta.plate || base.plate ? { plate: delta.plate || base.plate } : {}),
     conservation: delta.conservation || base.conservation,
     allergens: delta.allergens || base.allergens,
   }
@@ -343,12 +369,24 @@ function principal() {
     const position = drapeaux.indexOf('--lot')
     return position >= 0 ? drapeaux[position + 1] : null
   })()
+  const reprise = drapeaux.includes('--reprendre')
 
   const corpus = JSON.parse(readFileSync(CORPUS, 'utf8'))
   const vocabulaire = JSON.parse(readFileSync(VOCABULAIRE, 'utf8'))
+  // Formes arbitrées mais pas encore employées par une recette : elles ne sont
+  // donc pas au vocabulaire construit, et pourtant elles sont publiables. Les
+  // proxys de confiance C sont exclus — ils restent non publiables.
+  const nomsConnus = new Set([
+    ...vocabulaire.formes_employables.map((forme) => normalizeName(forme.nom || forme.name || '')),
+    ...(vocabulaire.formes_bloquees || []).map((forme) => normalizeName(forme.nom || forme.name || '')),
+  ])
+  const registre = JSON.parse(readFileSync(REGISTRE, 'utf8')).mappings || {}
+  const arbitreesRecemment = new Set(Object.entries(registre)
+    .filter(([cle, mapping]) => !nomsConnus.has(cle) && (mapping?.confidence || 'B') !== 'C')
+    .map(([cle]) => cle))
   const parCode = new Map(corpus.recipes.map((recette) => [recette.code, recette]))
+  const parFamille = new Map(corpus.recipes.map((recette) => [normalizeName(recette.family), recette]))
   const codesPris = new Set(corpus.recipes.map((recette) => recette.code))
-  const famillesPrises = new Set(corpus.recipes.map((recette) => normalizeName(recette.family)))
 
   const fichier = JSON.parse(readFileSync(source, 'utf8'))
   const deltas = Array.isArray(fichier) ? fichier : (fichier.derivations || [])
@@ -357,18 +395,29 @@ function principal() {
   const anomalies = []
   for (const delta of deltas) {
     if (!delta.code) { anomalies.push('une dérivation sans code'); continue }
-    if (codesPris.has(delta.code)) { anomalies.push(`${delta.code} — code déjà pris au corpus`); continue }
     if (!delta.family) { anomalies.push(`${delta.code} — sans nom de famille`); continue }
-    if (famillesPrises.has(normalizeName(delta.family))) { anomalies.push(`${delta.code} — famille « ${delta.family} » déjà présente`); continue }
+    // En mode reprise, un code et un nom déjà pris par la dérivée ELLE-MÊME sont
+    // attendus : c'est elle qu'on refait. Pris par une AUTRE recette, ils
+    // restent une collision.
+    const dejaVersee = parCode.get(delta.code)
+    const occupantDuNom = parFamille.get(normalizeName(delta.family))
+    const seReprend = reprise && dejaVersee?.derived_from === delta.base
+    if (!seReprend && codesPris.has(delta.code)) { anomalies.push(`${delta.code} — code déjà pris au corpus`); continue }
+    if (occupantDuNom && !(seReprend && occupantDuNom.code === delta.code)) {
+      anomalies.push(`${delta.code} — famille « ${delta.family} » déjà présente sous ${occupantDuNom.code}`)
+      continue
+    }
     const base = parCode.get(delta.base)
     if (!base) { anomalies.push(`${delta.code} — base « ${delta.base} » introuvable au corpus`); continue }
     if (base.derived_from) { anomalies.push(`${delta.code} — ${delta.base} est elle-même une dérivée : pas de dérivation en cascade`); continue }
     codesPris.add(delta.code)
-    famillesPrises.add(normalizeName(delta.family))
+    if (!seReprend) parFamille.set(normalizeName(delta.family), { code: delta.code })
 
-    const resultat = deriver(base, delta, { vocabulaire })
+    const resultat = deriver(base, delta, { vocabulaire, arbitreesRecemment })
     anomalies.push(...resultat.anomalies)
-    if (!resultat.anomalies.length) recettes.push(resultat.recette)
+    if (!resultat.anomalies.length) {
+      recettes.push(seReprend ? { ...resultat.recette, remplace: delta.code } : resultat.recette)
+    }
   }
 
   if (anomalies.length) {

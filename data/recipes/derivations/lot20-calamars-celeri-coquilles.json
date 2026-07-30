@@ -1,0 +1,552 @@
+{
+  "lot": "lot20 — calamars, céleri et coquilles",
+  "note": "Trois bases, treize variantes annoncées, six déjà dérivées par les lots précédents : restaient sept à traiter, cinq écrites et deux écartées. Ce lot est celui où deux refus de lot12 tombent grâce à l'arbitrage : « Morille crue » et « Whisky » existent désormais, ce qui rend écrivables la coquille aux morilles et la poêlée à l'alcool de grain, toutes deux abandonnées faute de forme. La morille impose sa règle de rédaction, celle que porte le registre : la quantité déclarée est celle de la morille RÉHYDRATÉE — 180 g — et l'instruction d'achat porte sur le poids sec, 20 g, une morille séchée reprenant huit à dix fois son poids en eau. Déclarer le poids sec sur une entrée de morille fraîche aurait multiplié l'apport par neuf. La coquille lutée est écrite elle aussi, mais sans pâte à luter en liste : la pâte se jette avec les coquilles, et gonfler la farine de la base pour la fabriquer aurait fait compter dans l'assiette une centaine de grammes que personne ne mange — l'étape la nomme, dit avec quoi on la pétrit et précise qu'elle est prise EN DEHORS des 25 g comptés pour le roux, faute de quoi le lecteur aurait sacrifié son roux au joint. Cette variante a demandé de réécrire l'étape 2 de la base, qui ne garde que les valves creuses : ici il faut les deux valves appariées, sinon rien ne scelle. Elle a aussi obligé à un avertissement que l'étiquette ne donne pas : sous une coquille close, une sauce liée aux jaunes remonte vite en température, et dix minutes à 200 °C sont un maximum, pas une durée indicative. La poêlée au whisky est le delta le plus lourd du lot — elle démonte le gratin : plus de roux, plus d'œufs, plus de chapelure, donc plus de gluten ni d'œuf aux allergènes, et le beurre tombe de 40 à 10 g puisque les 25 g du roux et les 5 g du gratinage n'ont plus d'emploi : il ne reste que les 10 g qui font suer les échalotes, et déclarer davantage aurait mis dans l'assiette un beurre qu'aucune étape ne fait fondre. Sa crème descend de 300 à 250 g : privée de liant, elle ne tient que par l'évaporation et il faut lui laisser perdre un tiers du volume. Le riz et les pommes de terre de l'étiquette restent hors liste, comme le fait déjà la base de SRC-034 pour son riz : ils sont posés à côté, l'étiquette elle-même hésite entre les deux, et choisir pour le cuisinier aurait ajouté au plat pesé un féculent que personne ne lui a demandé. Chez les calamars, la substitution du Cognac par le whisky contredisait frontalement le deuxième garde-fou de la base — « le flambage au Cognac est constitutif de l'armoricaine » — hérité tel quel, il aurait fait dire à la dérivée qu'elle n'est pas elle-même ; il a été réécrit pour dire ce qui reste vrai, à savoir que c'est le flambage qui compte et non l'eau-de-vie, et un quatrième garde-fou ajouté pour prévenir du whisky tourbé, qui couvre l'iode. La version crème et safran est celle qui s'éloigne le plus : elle perd les 510 g de base rouge de la liste, ce qui vide la cocotte d'un tiers de son volume et oblige à ramener le vin de 400 à 250 g — 400 g de vin ne réduisent pas en douze minutes et la sauce serait restée un bouillon acide. Sa cuisson courte a été prise au mot mais pas sans avertissement : le calamar est tendre avant un quart d'heure et après une heure, coriace entre les deux, et son étape le dit plutôt que de laisser croire qu'on peut s'arrêter n'importe où. Elle quitte le registre de l'armoricaine, son nom ne le revendique pas et son garde-fou l'écrit. Deux écartées, pour deux raisons différentes. La bisque de crustacés de SRC-034 est une préparation composée et non un aliment : rien à substituer, rien à décomposer honnêtement — un fond de bisque n'est ni de la tomate ni de la crème, et le rendre avec l'une ou l'autre aurait été écrire une autre variante que celle annoncée. La version allégée de SRC-037 échoue exactement où lot11 l'avait laissée, et pour la même cause mécanique : deriver() ne recopie pas le champ `plate` de la base, si bien que le plancher de 80 kcal par part d'un plat complet s'applique à une entrée de crudités dont le rôle déclaré est « side », plancher 60. Le calcul a été refait sur les valeurs du catalogue : céleri, moutarde, citron et vinaigre pèsent 130 kcal à eux quatre pour quatre parts, il faudrait donc 416 g de yaourt — trois pots et demi pour quatre convives, dans un saladier de céleri qui n'en réclame que 250 — pour repasser la barre des 80. Retirer 160 g d'huile d'olive à une rémoulade la fait tomber sous ce seuil par construction, et forcer la pomme facultative en garniture obligatoire pour rattraper les calories aurait ajouté un ingrédient dont l'étiquette ne parle pas, en plus de doubler la dérivée à la pomme qui existe déjà. Elle reste en réserve, pas condamnée, mais que le prochain rédacteur ne s'y trompe pas : `plate` transmis ne la débloquera pas à lui seul. Avec le plancher de 60 qui lui revient alors, les 60 g de yaourt de la base ne rendent encore que 39 kcal la part — 157 kcal pour les quatre, tout compris. Il faudra dans le même geste porter le yaourt aux 250 g que le saladier réclame, ce qui la ramène à 61 kcal la part et la fait passer. C'est une ligne de plus, pas zéro.",
+  "derivations": [
+    {
+      "code": "SRC-034-D2",
+      "base": "SRC-034",
+      "family": "Calamars à l'armoricaine au whisky",
+      "variant_label": "Remplacer le Cognac par un whisky, variante explicitement proposée par une source, pour une note plus fumée que fruitée.",
+      "rationale": "Le whisky prend la place du Cognac à volume égal : le flambage reste le même geste, mais le fond de sauce perd les notes de fruit confit de l'eau-de-vie de vin pour une amertume céréalière et fumée qui tient plus longtemps en bouche. Le coût est un risque de dosage plutôt qu'un coût calorique — les deux alcools pèsent presque le même poids d'éthanol, et l'apport par part ne bouge pas d'une dizaine de kilocalories. Ce qui change vraiment, c'est l'équilibre : un whisky tourbé recouvre l'iode du calamar et rend la sauce médicinale, si bien que la variante ne tient qu'avec un grain léger, non tourbé.",
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Cognac",
+          "with": "Whisky",
+          "quantity": 32,
+          "unit": "g",
+          "role": "alcool de flambage"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Remettre les calamars et leur jus dans la cocotte, monter le feu, verser le whisky et l'enflammer en écartant le visage et en éteignant la hotte. Attendre que la flamme retombe d'elle-même et la laisser aller jusqu'au bout : un alcool de grain brûle plus court qu'une eau-de-vie de vin et laisse au fond une amertume qu'il faut lui laisser perdre dans la flamme. Racler ensuite le fond à la cuillère en bois pour décoller ce qui a caramélisé."
+        }
+      ],
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 2,
+          "pungency": 2,
+          "richness": 3,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "tomate concentrée",
+          "iodé",
+          "whisky flambé",
+          "vin blanc"
+        ],
+        "aroma_families": [
+          "marin",
+          "céréalier fumé",
+          "vineux",
+          "alliacé"
+        ],
+        "target_textures": [
+          "anneaux tendres sous la dent",
+          "sauce nappante",
+          "oignons fondus"
+        ],
+        "signature_ingredients": [
+          "Calamar cru nettoyé",
+          "Whisky",
+          "Concentré de tomate",
+          "Vin blanc sec"
+        ],
+        "identity_guardrails": [
+          "Sans calamar, il n'y a plus de plat : c'est le mollusque, et non un poisson ou une autre chair, qui porte l'identité.",
+          "C'est le flambage qui est constitutif de l'armoricaine, pas l'eau-de-vie employée : l'alcool doit brûler dans la cocotte, versé cru il ne laisserait que son alcool.",
+          "La base doit rester tomate et vin blanc : une liaison crémeuse dominante bascule vers une autre recette.",
+          "Le whisky se choisit non tourbé : la fumée de tourbe recouvre l'iode du mollusque et donne à la sauce un goût médicinal que rien ne rattrape."
+        ]
+      }
+    },
+    {
+      "code": "SRC-034-D3",
+      "base": "SRC-034",
+      "family": "Calamars à la crème et au safran",
+      "variant_label": "Version crème et safran de 750g.com : champignons de Paris avec les échalotes, cuisson courte, liaison à la crème et quelques pistils de safran à la place de la tomate.",
+      "rationale": "En perdant ses 510 g de base rouge, le plat perd aussi l'acidité et la mâche qui portaient la sauce : le safran devient l'axe du goût, la crème le liant, et les champignons rendent le volume végétal que la tomate occupait. La cocotte se vidant d'un tiers, le vin descend de 400 à 250 g — quatre cents grammes ne réduisent pas en douze minutes et laisseraient un bouillon acide. Le coût est double : la part passe d'une sauce maigre à une sauce montée à la crème, et la cuisson courte n'est tenable qu'à la minute près, le calamar étant tendre avant un quart d'heure et après une heure, coriace entre les deux. Le plat quitte le registre de l'armoricaine et ne peut plus en porter le nom.",
+      "prep_minutes": 30,
+      "cook_minutes": 40,
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Concentré de tomate"
+        },
+        {
+          "op": "remove",
+          "form": "Tomate râpée"
+        },
+        {
+          "op": "add",
+          "form": "Champignon de Paris frais",
+          "quantity": 250,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "op": "add",
+          "form": "Safran",
+          "quantity": 0.2,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "op": "set",
+          "form": "Vin blanc sec",
+          "quantity": 250
+        },
+        {
+          "op": "set",
+          "form": "Crème fraîche liquide entière",
+          "quantity": 200,
+          "role": "liaison",
+          "optional": false
+        },
+        {
+          "op": "set",
+          "form": "Échalote crue",
+          "quantity": 40,
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Baisser sous la cocotte, y verser l'oignon jaune et l'échalote finement ciselés et les laisser suer une bonne huitaine de minutes en grattant les sucs, jusqu'à transparence et sans qu'ils blondissent. Jeter alors les champignons de Paris émincés épais et remonter le feu : ils rendent d'abord toute leur eau, qu'il faut laisser s'évaporer sans couvrir, puis se colorent en cinq à six minutes — émincés trop fin ou étouffés sous un couvercle, ils se réduiraient à rien dans la sauce. Ajouter l'ail haché seulement dans la dernière minute pour qu'il reste parfumé plutôt qu'amer."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Mouiller avec le vin blanc sec, gratter le fond une dernière fois et laisser réduire de moitié à découvert : rien ne portera la sauce ici qu'elle-même, et c'est cette réduction seule qui lui donnera du corps. Écraser les pistils de safran entre les doigts, les jeter dans le liquide chaud et couper le feu deux minutes le temps qu'ils s'ouvrent — dans un liquide froid ils ne rendent rien, à gros bouillons ils rendent leur couleur sans leur parfum. Saler, poivrer, et ne poudrer le piment de Cayenne qu'à la pointe du couteau si l'on y tient : le safran s'efface derrière le piquant."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Couvrir et maintenir un frémissement paresseux douze minutes, pas davantage. Le calamar n'a que deux points de tendreté : avant un quart d'heure, quand il est encore ferme et juteux, et après une heure de mijotage, quand le collagène a cédé. Entre les deux il se raidit. Goûter donc à la dixième minute et trancher franchement : soit on sert tout de suite, soit on rallonge d'une heure — s'arrêter à la demi-heure donnerait la seule texture que personne ne cherche."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Couper le feu, verser la crème fraîche liquide entière en filet et la lier à la sauce safranée sans jamais la ramener à ébullition, sous peine de la voir se dissocier en grains autour des anneaux. Parsemer du persil haché, rectifier le sel, laisser reposer cinq minutes hors du feu pour que le safran finisse de se diffuser — c'est au repos qu'il prend sa couleur, pas à la cuisson — puis servir avec un riz blanc long, qui se teintera dans l'assiette."
+        }
+      ],
+      "techniques": [
+        "saisie",
+        "flambage",
+        "déglaçage",
+        "cuisson courte",
+        "réduction"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 1,
+          "pungency": 2,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "safran",
+          "iodé",
+          "crème",
+          "vin blanc"
+        ],
+        "aroma_families": [
+          "marin",
+          "safrané",
+          "lacté",
+          "vineux"
+        ],
+        "target_textures": [
+          "anneaux fermes et juteux",
+          "sauce nappante",
+          "champignons colorés"
+        ],
+        "signature_ingredients": [
+          "Calamar cru nettoyé",
+          "Safran",
+          "Crème fraîche liquide entière",
+          "Vin blanc sec"
+        ],
+        "identity_guardrails": [
+          "Sans calamar, il n'y a plus de plat : c'est le mollusque qui porte l'identité, la crème et le safran ne font que l'habiller.",
+          "Le safran doit rester lisible sans dominer : les 0,2 g de la liste, soit la dose courante du commerce pour quatre, sont un plafond et non un point de départ — au-delà il vire au métallique et écrase l'iode.",
+          "La cuisson est courte ou elle est longue, jamais moyenne : douze minutes laissent l'anneau ferme, une heure le détend, la demi-heure le rend coriace.",
+          "Cette version abandonne la tomate et sort du registre de l'armoricaine : elle ne peut pas en revendiquer le nom, seulement la parenté."
+        ]
+      },
+      "conservation": "Se garde 48 heures au réfrigérateur à 4 °C dans un contenant hermétique, mais ne gagne rien à attendre, contrairement à la version mijotée : la cuisson courte n'a pas détendu la chair et un jour de plus la raffermit. Réchauffer à feu très doux sans ébullition, la crème liée à froid tranchant dès le premier bouillon. Congélation déconseillée telle quelle — le safran s'affadit et la liaison rend son eau ; congeler à la rigueur les calamars et les champignons cuits sans crème, un mois, et lier au moment de servir."
+    },
+    {
+      "code": "SRC-039-D3",
+      "base": "SRC-039",
+      "family": "Coquilles Saint-Jacques aux morilles",
+      "variant_label": "Version aux morilles réhydratées poêlées à l'ail, avec un appareil crème-œufs versé directement sur la chair avant chapelure.",
+      "rationale": "La morille apporte un fond de sous-bois qui n'existait pas dans la base et son eau de trempage renforce la réduction ; en échange, l'appareil crème-œufs versé cru remplace la sauce liée au roux, ce qui donne une texture de flan salé au lieu d'une sauce nappante. On perd donc le contrôle qu'offrait la casserole : l'appareil prend au four ou il graine, d'où les 190 °C à mi-hauteur au lieu des 210 °C du haut du four, et un quart d'heure au lieu de huit minutes. Le coût est aussi celui du produit sec, une vingtaine de grammes de morilles séchées, et une demi-heure de trempage à prévoir avant tout le reste.",
+      "prep_minutes": 40,
+      "cook_minutes": 35,
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Farine de blé T55"
+        },
+        {
+          "op": "add",
+          "form": "Morille crue",
+          "quantity": 180,
+          "unit": "g",
+          "role": "champignon",
+          "optional": false
+        },
+        {
+          "op": "add",
+          "form": "Ail cru",
+          "quantity": 6,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "op": "set",
+          "form": "Œuf cru",
+          "quantity": 3,
+          "unit": "u",
+          "role": "appareil"
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 1,
+          "instruction": "Commencer par les morilles, qui demandent une demi-heure d'avance. Peser 20 g de morilles séchées — c'est le poids d'achat, elles reprendront huit à dix fois leur poids en eau et donneront les 180 g de la liste — les couvrir d'eau à peine frémissante et les laisser gonfler trente minutes. Les sortir à la main sans presser le bol, puis les rincer une par une sous un filet d'eau froide en écartant les alvéoles, où le sable se loge et ne part pas tout seul. Filtrer le jus de trempage au linge fin et le réserver : il porte tout ce que l'eau a pris au champignon, et le jeter serait perdre la moitié de l'intérêt du produit."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Ciseler les échalotes menu et les faire suer deux minutes dans 10 g de beurre sans les colorer. Mouiller avec le vin blanc, ajouter le jus rendu par la chair et le jus de trempage filtré, puis laisser réduire à feu moyen jusqu'à ce qu'il ne reste que deux ou trois cuillerées sirupeuses. Le trempage a doublé le volume à évaporer : compter cinq minutes de plus qu'à l'ordinaire et ne pas abréger, c'est cette réduction qui remplacera le liant de la version gratinée."
+        },
+        {
+          "op": "insert",
+          "after": 5,
+          "instruction": "Éponger les morilles dans un linge et les faire sauter à feu vif dans 25 g de beurre, cinq à six minutes, jusqu'à ce qu'elles cessent de rendre de l'eau et sentent la noisette. Ajouter l'ail haché fin pour la dernière minute seulement, saler d'une pincée et débarrasser hors du feu. Cette poêlée n'est pas facultative : la morille ne se mange ni crue ni juste tiédie, il lui faut une cuisson franche, et l'ail brûlé couvrirait le seul parfum du plat qui soit fragile."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Casser les œufs entiers dans un saladier et les battre juste ce qu'il faut pour rompre les jaunes, sans les faire mousser. Verser la crème dessus en filet en fouettant, puis incorporer la réduction passée au tamis, tiède et surtout pas bouillante : versée brûlante elle prendrait les œufs en fils. L'appareil doit rester franchement liquide et ne nappe pas la cuillère — il n'y a rien ici pour l'épaissir sur le feu, c'est le four qui le fera prendre."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Poivrer l'appareil, y ciseler le persil, goûter et n'ajuster le sel qu'après : la réduction en apporte déjà beaucoup. Ne pas céder à la tentation de le chauffer pour l'épaissir — un mélange d'œufs entiers et de crème coagule vers 80 °C et grainerait dans la casserole avant même d'atteindre la coquille. On le monte froid, on l'enfourne aussitôt."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Trancher les grosses pièces de chair en deux dans l'épaisseur et les répartir dans les coquilles creuses posées sur une plaque. Distribuer les morilles sautées par-dessus, puis verser l'appareil directement sur la chair, jusqu'aux deux tiers de la hauteur seulement : il gonfle un peu au four et déborderait d'une coquille remplie à ras. Saupoudrer de chapelure et parsemer des 5 g de beurre restants en tout petits éclats."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Enfourner à mi-hauteur d'un four préchauffé à 190 °C pour 14 à 16 minutes : l'appareil doit prendre comme un flan, à peine tremblant au centre, et la chapelure dorer sans plus. Plus chaud ou plus haut dans le four, il boursoufle puis retombe en rendant de l'eau autour de la chair, qui se rétracte du même coup. Servir sans attendre, les coquilles calées sur un lit de gros sel."
+        }
+      ],
+      "techniques": [
+        "réhydratation",
+        "saisie",
+        "sauté",
+        "réduction",
+        "déglaçage",
+        "appareil à crème prise",
+        "gratinage"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 1,
+          "salty": 2,
+          "acidic": 2,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "iodé",
+          "morille",
+          "crémeux beurré",
+          "ail"
+        ],
+        "aroma_families": [
+          "marin",
+          "sous-bois",
+          "lacté",
+          "alliacé"
+        ],
+        "target_textures": [
+          "chair nacrée et moelleuse",
+          "appareil pris comme un flan",
+          "croûte de chapelure croustillante"
+        ],
+        "signature_ingredients": [
+          "Noix de Saint-Jacques crue",
+          "Morille crue",
+          "Crème fraîche liquide entière",
+          "Chapelure de blé"
+        ],
+        "identity_guardrails": [
+          "Sans noix de Saint-Jacques, ce n'est pas le plat : un autre poisson blanc en fait une simple coquille de poisson à la crème.",
+          "Les noix se saisissent très vite, une minute par face au plus : au-delà elles se rétractent et deviennent caoutchouteuses.",
+          "La morille passe obligatoirement à la poêle avant le four : ni crue ni simplement réchauffée, elle reste indigeste.",
+          "L'appareil aux œufs entiers ne se cuit pas sur le feu, il prend au four : chauffé en casserole, il graine et la variante n'a plus de sauce."
+        ]
+      },
+      "conservation": "Monté, le plat n'attend pas comme celui de la base : l'appareil cru rend son eau au contact de la chair et détrempe la coquille par le fond, deux heures à 4 °C sous film sont un maximum. Cuit, il se garde 24 h au réfrigérateur et se réchauffe 8 minutes à 160 °C, jamais plus chaud — un appareil pris qui recuit se rétracte et rend son eau. Le trempage des morilles ne se conserve pas : réhydratées, elles sont à cuire dans la journée. Congélation déconseillée pour le plat monté ou cuit ; les morilles séchées, elles, se gardent un an au sec."
+    },
+    {
+      "code": "SRC-039-D4",
+      "base": "SRC-039",
+      "family": "Coquilles Saint-Jacques scellées au four",
+      "variant_label": "Coquilles refermées et scellées d'un boudin de pâte à luter, cuites 10 minutes à 200 °C et ouvertes au couteau à table.",
+      "category": "plat au four",
+      "rationale": "La coquille refermée retient la vapeur au lieu de la laisser partir dans le four : la chair cuit dans son parfum, la sauce reste liquide et l'iode ne s'évapore pas, mais il n'y a plus de gratin, donc plus de chapelure ni de contraste croustillant. Ce que la variante achète, c'est le moment du service : le couvercle qui cède sous le couteau libère d'un coup une bouffée de vin et de mer que la version ouverte diffuse pendant la cuisson. Elle coûte cinq minutes de mise en place pour la pâte et le sertissage, et une vigilance nouvelle sur le four — sous une coquille close, une sauce liée aux jaunes monte vite en température et dix minutes sont un maximum, pas une indication.",
+      "prep_minutes": 35,
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Chapelure de blé"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Ouvrir chaque coquille en engageant une lame rigide contre la face plate, au niveau de la charnière, puis en rasant l'intérieur du couvercle pour trancher le muscle. Détacher la chair, ôter la frange grise et le petit nerf latéral, rincer très vite et éponger à fond. Garder ici les deux valves de huit coquilles, chaque plate appariée à la creuse dont elle vient, brossées puis passées à l'eau bouillante une minute. La plate servira de couvercle et doit retomber d'aplomb sur sa jumelle : deux valves dépareillées ne se rejoignent nulle part et le joint ne prendra pas."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Trancher les grosses pièces de chair en deux dans l'épaisseur, les répartir dans les coquilles creuses posées sur une plaque, napper de sauce sans remplir jusqu'au bord et parsemer des 5 g de beurre restants en tout petits éclats. Pétrir à part, dans un bol, deux grosses cuillerées de farine avec un filet d'eau froide, jusqu'à une pâte ferme et non collante. Prendre cette farine en plus des 25 g comptés pour le roux, qu'il ne faut pas entamer : la pâte à luter ne se mange pas, elle scelle, elle cuit et on la jette avec les valves — sacrifier le roux au joint laisserait une sauce sans liant. La rouler en boudins minces, en ceinturer le bord de chaque coquille creuse, poser le couvercle et pincer le joint tout autour du pouce et de l'index."
+        },
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Enfourner à mi-hauteur d'un four préchauffé à 200 °C pour 10 minutes, montre en main. Sous la coquille close la chaleur ne s'échappe plus : la sauce ne doit pas y revenir à ébullition, sinon les jaunes qui la lient grainent sans retour, et la chair déjà saisie se rétracte. Le seul repère visible est le joint, qui durcit et brunit. Servir les coquilles brûlantes calées sur un lit de gros sel, avec la pointe d'un couteau pour rompre le sceau à table : c'est là que tout se joue, dans la bouffée d'iode et de vin qui sort quand le couvercle cède."
+        }
+      ],
+      "techniques": [
+        "saisie",
+        "réduction",
+        "déglaçage",
+        "cuisson couverte"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 2,
+          "salty": 2,
+          "acidic": 2,
+          "bitter": 0,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "iodé",
+          "crémeux beurré",
+          "vin blanc réduit",
+          "échalote fondue"
+        ],
+        "aroma_families": [
+          "marin",
+          "lacté",
+          "alliacé",
+          "vineux"
+        ],
+        "target_textures": [
+          "chair nacrée et moelleuse",
+          "sauce nappante restée liquide",
+          "aucune croûte : tout est moelleux sous le couvercle"
+        ],
+        "signature_ingredients": [
+          "Noix de Saint-Jacques crue",
+          "Crème fraîche liquide entière",
+          "Vin blanc sec"
+        ],
+        "identity_guardrails": [
+          "Sans noix de Saint-Jacques, ce n'est pas le plat : un autre poisson blanc en fait une simple coquille de poisson à la crème.",
+          "Les noix se saisissent très vite, une minute par face au plus : au-delà elles se rétractent et deviennent caoutchouteuses.",
+          "Le poids déclaré est celui des noix décoquillées — une coquille entière n'en donne qu'une trentaine de grammes.",
+          "Dix minutes à 200 °C sont un plafond et non une durée à rallonger : la coquille scellée retient la chaleur, et la sauce liée aux jaunes graine dès qu'elle bout."
+        ]
+      },
+      "conservation": "Scellées mais non enfournées, les coquilles attendent 2 à 3 heures à 4 °C, pas davantage : le joint sèche, se fendille et ne tient plus la vapeur. Une fois ouvertes, elles se mangent tout de suite — il n'y a rien à réchauffer dans une coquille dont le sceau est rompu, et la sauce liée aux jaunes ne supporte pas un second passage au four. La chair crue parée ne dépasse pas 24 h posée sur un lit de glace. Congélation : acceptable pour la chair crue étalée à plat et bien épongée (2 mois), exclue pour le plat monté."
+    },
+    {
+      "code": "SRC-039-D5",
+      "base": "SRC-039",
+      "family": "Poêlée de Saint-Jacques au whisky",
+      "variant_label": "Poêlée simple flambée à l'alcool de grain, crème et persil, dressée sur riz ou pommes de terre tièdes.",
+      "category": "plat sauté",
+      "rationale": "Tout le montage du gratin tombe : plus de roux, plus d'appareil aux œufs, plus de chapelure ni de coquille, et la sauce se fait dans la poêle qui a saisi la chair. Le whisky flambé remplace le four comme source de goût grillé et donne un fond céréalier que la version gratinée n'a pas ; en échange on perd la croûte, le contraste de textures et le service en coquille, qui faisait la moitié de l'effet. La crème descend de 300 à 250 g parce que rien ne l'épaissit plus : elle ne tient que par l'évaporation, et il faut lui laisser perdre un bon tiers de son volume. Le plat sort du registre du gratin — il ne se garde pas, il se dresse et se mange dans la minute — et perd du même coup le gluten et l'œuf de ses allergènes.",
+      "prep_minutes": 25,
+      "cook_minutes": 20,
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Farine de blé T55"
+        },
+        {
+          "op": "remove",
+          "form": "Œuf cru"
+        },
+        {
+          "op": "remove",
+          "form": "Chapelure de blé"
+        },
+        {
+          "op": "add",
+          "form": "Whisky",
+          "quantity": 40,
+          "unit": "ml",
+          "role": "alcool de flambage",
+          "optional": false
+        },
+        {
+          "op": "set",
+          "form": "Crème fraîche liquide entière",
+          "quantity": 250
+        },
+        {
+          "op": "set",
+          "form": "Beurre doux",
+          "quantity": 10
+        },
+        {
+          "op": "set",
+          "form": "Persil plat frais",
+          "quantity": 15,
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Ouvrir chaque coquille en engageant une lame rigide contre la face plate, au niveau de la charnière, puis en rasant l'intérieur du couvercle pour trancher le muscle. Détacher la chair, ôter la frange grise et le petit nerf latéral, rincer très vite et éponger à fond. Rien ici ne se cuit dans le coquillage : le dressage se fait à l'assiette, et les valves peuvent être brossées et rangées pour un autre service ou jetées sans regret."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Chauffer une grande poêle jusqu'à ce qu'elle fume légèrement, y verser l'huile d'olive et saisir la chair bien sèche 45 secondes par face, en deux fois pour ne pas encombrer la poêle. Réunir alors toutes les pièces, retirer la poêle du feu une seconde, verser le whisky, la remettre sur la flamme et l'enflammer en écartant le visage et en éteignant la hotte. Laisser la flamme mourir d'elle-même, puis débarrasser aussitôt la chair sur une assiette froide et garder le jus rendu : elle est encore nacrée à cœur et doit le rester."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Ciseler les échalotes menu et les faire suer deux minutes dans 10 g de beurre, dans la même poêle et sans les colorer. Mouiller avec le vin blanc, ajouter le jus rendu par la chair et gratter les sucs collés au fond, où l'alcool brûlé a laissé sa part la plus intéressante. Laisser réduire à feu moyen jusqu'à un fond sirupeux, environ la moitié du volume."
+        },
+        {
+          "op": "replace",
+          "n": 5,
+          "instruction": "Verser la crème sur la réduction et la laisser bouillonner doucement six à huit minutes, jusqu'à ce qu'elle nappe le dos d'une cuillère. Rien ne l'épaissira ici qu'elle-même : sans le roux de la version gratinée, elle ne tient que par l'évaporation, et il faut accepter de lui laisser perdre un bon tiers de son volume avant qu'elle prenne du corps. Monter enfin le feu dix secondes si elle reste trop fluide, jamais plus longtemps."
+        },
+        {
+          "op": "replace",
+          "n": 6,
+          "instruction": "Retirer la poêle du feu, poivrer, ciseler le persil plat dedans et goûter avant de saler : la réduction en apporte déjà beaucoup. Remettre la chair dans la sauce avec le peu de jus qu'elle a encore rendu au repos, la rouler une fois pour l'enrober et la laisser là une minute sans jamais ramener à ébullition — elle finit de cuire dans la chaleur retenue, et c'est la seule cuisson qu'il lui reste à faire."
+        },
+        {
+          "op": "replace",
+          "n": 7,
+          "instruction": "Dresser sans attendre, sur un lit tiède au fond d'assiettes creuses : un riz long égrené, ou des pommes de terre à l'eau écrasées grossièrement à la fourchette. Poser la chair dessus, napper de sauce et servir. L'accompagnement se choisit au marché et ne compte pas dans la liste : ce qui se pèse ici, c'est la poêlée, le féculent est posé à côté."
+        },
+        {
+          "op": "remove",
+          "n": 8
+        }
+      ],
+      "techniques": [
+        "saisie",
+        "flambage",
+        "déglaçage",
+        "réduction"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 2,
+          "salty": 2,
+          "acidic": 2,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 2,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "iodé",
+          "whisky flambé",
+          "crémeux",
+          "persil"
+        ],
+        "aroma_families": [
+          "marin",
+          "lacté",
+          "céréalier fumé",
+          "herbacé"
+        ],
+        "target_textures": [
+          "chair nacrée et moelleuse",
+          "sauce nappante par réduction"
+        ],
+        "signature_ingredients": [
+          "Noix de Saint-Jacques crue",
+          "Whisky",
+          "Crème fraîche liquide entière",
+          "Vin blanc sec"
+        ],
+        "identity_guardrails": [
+          "Sans noix de Saint-Jacques, ce n'est pas le plat : un autre poisson blanc en fait une simple poêlée de poisson à la crème.",
+          "La chair ne connaît qu'un aller-retour à la poêle et un dernier tour hors du feu dans la sauce : une seconde cuisson franche la rendrait élastique.",
+          "Le whisky se flambe et ne se verse pas cru : l'alcool non brûlé domine l'iode et laisse la sauce mordante.",
+          "La sauce n'a pas de liant et ne doit pas en recevoir : la rattraper avec un épaississant ferait retomber la variante dans la version gratinée."
+        ]
+      },
+      "allergens": [
+        "mollusques",
+        "poisson",
+        "lait",
+        "sulfites"
+      ],
+      "conservation": "Ne se conserve pas : une poêlée se dresse et se mange dans la minute, la chair continuant de cuire dans la sauce chaude tant qu'on la laisse. Ce qui peut s'avancer, c'est la chair parée — 24 h au maximum sur un lit de glace — et rien d'autre. Réchauffage exclu : la noix se rétracte et la sauce, tenue par la seule évaporation, se sépare au second bouillon. Congélation acceptable pour la chair crue étalée à plat et bien épongée (2 mois), exclue pour le plat terminé."
+    }
+  ]
+}
