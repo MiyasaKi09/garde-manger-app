@@ -1514,5 +1514,35 @@
     "baseline": "new",
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260731000000_recipe_short_description.sql",
+    "github_version": "20260731000000",
+    "name": "recipe_short_description",
+    "sha256": "275ca431836f28c74ec8059615745390f934bdccddd77d56ddcbe225ca152232",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260731000000_recipe_short_description_rollback.sql",
+    "github_version": "20260731000000",
+    "name": "recipe_short_description_rollback",
+    "sha256": "9d604f9cefdb3438070f42610ca8e32f3159f1b60febe3f7fa2efdf85d3b3c2c",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260731000500_corpus_v3_descriptions.sql",
+    "github_version": "20260731000500",
+    "name": "corpus_v3_descriptions",
+    "sha256": "e2557918add0d7cf8e29d2a45ae5f00ff720561abb6aa195b0ad83a64cc3a1c8",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

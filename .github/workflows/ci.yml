@@ -125,6 +125,13 @@ jobs:
           # « colonne derived_from_version_id inexistante » — ce qui s'est
           # produit, et ce que ce commentaire existe pour éviter de refaire.
           #
+          # 20260731000000 rejoint le socle pour la MÊME RAISON que 20260729140000,
+          # et la faute a été refaite : il ajoute la colonne short_description que
+          # le chargeur de corpus renseigne. Sans lui, l'étape corpus échoue sur la
+          # première recette avec « colonne short_description inexistante ». Toute
+          # migration qui ajoute une colonne ÉCRITE PAR UN CHARGEUR doit entrer ici,
+          # sans quoi le scénario A charge dans un schéma qui ne la connaît pas.
+          #
           # 20260729180000, le CATALOGUE D'ALIMENTS, n'entre PAS ici : il
           # arriverait avant l'étape F0, qui charge son propre petit corpus de
           # formes et réclame le profil nutritionnel primaire de certaines
@@ -137,7 +144,7 @@ jobs:
             | grep -v '_rollback\.sql$' \
             | grep -v '/20260715171000_v3_canonical_plan_publication\.sql$' \
             | grep -v '/20260715173000_v3_recipe_execution_policy_consolidation\.sql$' \
-            | grep -E '/(20260714[2-9]|20260715|20260729140000)' \
+            | grep -E '/(20260714[2-9]|20260715|20260729140000|20260731000000)' \
             | LC_ALL=C sort \
             | while IFS= read -r f; do cp "$f" /tmp/v2mig_a/; done
           echo "Migrations V2 sélectionnées : $(ls /tmp/v2mig_a/ | wc -l)"

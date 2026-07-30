@@ -1,12 +1,12 @@
 {
   "corpus_version": "v3-300-real-dishes",
-  "corpus_hash": "22eb0eb67db4316098aad87d716d8c6e",
+  "corpus_hash": "c7079d1c46b93d646cfcc278ffe90609",
   "recipe_count": 576,
   "food_forms_total_normalized": 754,
   "recipes_static_eligible": 392,
   "v1_enriched_static_eligible": 61,
   "planner_rule_count": 7,
-  "sql_bytes": 10320053,
+  "sql_bytes": 10397863,
   "sql_chunk_count": 578,
   "source_name_chunk_count": 24
 }
