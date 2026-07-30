@@ -1,0 +1,292 @@
+{
+  "recipes": [
+    {
+      "code": "IT-004",
+      "remplace": "IT-004",
+      "family": "Spaghetti à la sauce bolognaise",
+      "cuisine_origin": "France / cuisine domestique internationale",
+      "identity_level": "domestic_standard",
+      "category": "pâtes en sauce",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 45,
+      "difficulty": "facile",
+      "sources": ["dossier:spaghetti-a-la-sauce-bolognaise", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Huit sources, dont deux ne cuisinent pas le plat nommé : l'une remplace les pâtes par des spaghettis de courgettes, l'autre monte une bolognaise végétale aux lentilles. Une troisième — « Incontournable sauce bolognaise », 3,5 kg de viande pour dix, trois poivrons et une bouteille de sauce chili — est un chili américain sous un nom italien : elle est la valeur aberrante que la médiane est faite pour absorber, et on la laisse peser exactement ce qu'une source pèse. Ramenées à la portion, les six sources qui déclarent leurs rendements donnent 104 g de pâtes, 75 g de bœuf haché et 130 g de base tomate par personne : d'où 600 g, 450 g et 800 g pour six. Premier désaccord, la nature de la tomate. Le dossier en propose cinq formes : tomates fraîches (trois sources), pulpe ou concassée en boîte (deux), passata, coulis ou « sauce tomate » (quatre), concentré (quatre) et même une « crème de tomates ». Ni passata ni coulis ne figurent au catalogue, et ce sont l'un et l'autre de la tomate en conserve passée : on écrit donc « Tomate concassée en conserve », qui est un écart de vocabulaire et non un remplacement — le produit et sa composition sont les mêmes. Le concentré, lui, appelle un arbitrage contre la médiane : celle-ci ressort à 25 g par personne, soit 150 g pour six, parce que deux sources l'emploient comme SEULE tomate du plat (140 g de concentré pour trois personnes chez l'une, sans autre tomate). Là où il vient renforcer une base déjà présente, les sources en mettent une cuillerée à soupe. On retient donc 30 g, deux cuillerées, et le motif de l'écart est dit ici plutôt que caché dans le chiffre. Deuxième désaccord, la viande. Six sources sur huit hachent du bœuf, et la septième — le seul vrai ragù du dossier, « Spaghetti bolognaise à l'italienne » — en met trois : 300 g de bœuf, 300 g de chair à saucisse, 80 g de pancetta, mouillés au vin rouge et au lait entier. Elle est seule, un huitième du dossier, et ni « Chair à saucisse crue » ni « Pancetta » ne sont au catalogue : son montage passe en variante attestée, avec ses formes manquantes signalées, et on ne le remplace pas par du porc haché approchant. Le « 2 steaks hachés » d'une autre source, que la synthèse propose de rattacher à du porc haché, est du bœuf en France : la proposition est refusée. Troisième point, le vin rouge. Deux sources sur huit déglacent au vin, une seule ajoute du lait. Sous le seuil de moitié, ils descendent en variantes — et le profil sensoriel change avec eux : la recette remplacée annonçait « rich_winey » sur un vin que ses sources ne portaient pas, on écrit « savory_tomato ». Le céleri demande une correction de pesée : la synthèse le chiffre à 0,8 g par personne parce qu'elle compte une branche de céleri au poids d'un brin d'herbe, quatre grammes. Une côte de céleri en pèse quarante ; les cinq sources qui en mettent une à deux donnent donc 100 g pour six, et non douze. Restent au-dessus ou à la moitié du dossier, et donc dans la liste : oignon (six sources sur huit, deux autres employant échalote ou oignon rouge), carotte et ail (quatre chacun), huile d'olive (cinq), thym (quatre des six sources qui aromatisent), laurier (trois des six) et le sel-poivre. Le parmesan, que deux sources nomment dont une en le marquant « facultatif », est déclaré optionnel au service. Enfin les durées : les six champs remplis vont de 13 minutes à trois heures, médiane 17 minutes ; on écrit 45. Le motif est le volume retenu — 800 g de tomate et 450 g de viande pour six ne réduisent pas en un quart d'heure — et les trois heures sont le fait de la seule source qui cuit 3,5 kg de viande. La médiane brute est écartée, et le dire fait partie de l'arbitrage. Le nom du corpus est juste, la recette n'est pas renommée.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "L'assiette porte son féculent (100 g de pâtes sèches par personne), sa protéine (75 g de bœuf) et ses légumes (le soffritto et 130 g de tomate) : c'est un plat unique, et c'est ainsi que les huit sources le servent. Une salade verte à côté est un usage, pas un manque."
+      },
+      "ingredients": [
+        { "form": "Spaghetti secs", "quantity": 600, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Bœuf haché cru 15 % MG", "quantity": 450, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Tomate concassée en conserve", "quantity": 800, "unit": "g", "role": "base de sauce", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 200, "unit": "g", "role": "soffritto", "optional": false },
+        { "form": "Carotte crue", "quantity": 150, "unit": "g", "role": "soffritto", "optional": false },
+        { "form": "Céleri branche cru", "quantity": 100, "unit": "g", "role": "soffritto", "optional": false },
+        { "form": "Concentré de tomate", "quantity": 30, "unit": "g", "role": "renfort de sauce", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 30, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Ail cru", "quantity": 15, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Thym séché", "quantity": 2, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Feuille de laurier séchée", "quantity": 2, "unit": "u", "role": "aromate", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Parmesan affiné", "quantity": 80, "unit": "g", "role": "service", "optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Éplucher oignon, carotte et céleri, puis les tailler en dés de deux à trois millimètres. Le soffritto n'a pas à se retrouver sous la dent : son travail est de fondre dans la sauce et d'en faire le fond sucré. Taillé gros, il reste croquant après une heure de feu et le plat garde un goût de légumes ajoutés." },
+        { "n": 2, "instruction": "Faire chauffer l'huile d'olive dans une sauteuse large, y verser les légumes et les laisser suer dix à douze minutes à feu moyen, en remuant. Les saler d'une pincée dès le début : le sel tire l'eau des légumes et les fait fondre au lieu de les colorer. Ils doivent devenir translucides et l'oignon à peine blond, sans jamais roussir." },
+        { "n": 3, "instruction": "Pousser le feu, ajouter le bœuf haché en deux fois et l'écraser à la cuillère de bois pour le détacher. Une viande versée d'un seul coup rend son eau, bouillit dans son jus et ressort grise — c'est cet écueil qu'on évite en procédant en deux fois : c'est la coloration brune, pas grise, qui fait toute la profondeur de la sauce. Attendre que le fond de la sauteuse crépite avant de remuer." },
+        { "n": 4, "instruction": "Ajouter le concentré de tomate et le remuer une bonne minute au contact du fond chaud, le temps qu'il perde son goût métallique de crudité et qu'il fonce. Puis verser la tomate concassée, l'ail écrasé, le thym et le laurier. Rincer la boîte avec un fond d'eau et le verser aussi — c'est de la sauce qui resterait collée au métal." },
+        { "n": 5, "instruction": "Laisser mijoter quarante-cinq minutes à découvert, à petits bouillons, en raclant le fond toutes les dix minutes. La sauce est prête quand elle ne coule plus de la cuillère et que la graisse remonte en brillant à la surface. Goûter alors : si l'acidité de la tomate reste piquante, une pincée de sucre l'arrondit mieux qu'un ajout de gras." },
+        { "n": 6, "instruction": "Porter à ébullition un grand volume d'eau — comptez un litre et dix grammes de sel pour cent grammes de pâtes — et y cuire les spaghetti. Les égoutter une minute avant le temps du paquet, en réservant une louche d'eau de cuisson. Ne jamais les rincer ni les huiler : l'amidon de surface est ce qui fera tenir la sauce." },
+        { "n": 7, "instruction": "Retirer thym et laurier, verser les pâtes dans la sauteuse avec une petite louche d'eau de cuisson et remuer une minute sur le feu. L'amidon lie la sauce aux pâtes et l'enrobe au lieu de la laisser au fond de l'assiette. Servir aussitôt, le parmesan râpé à part pour ceux qui en veulent." }
+      ],
+      "techniques": ["soffritto", "saisie du haché", "cuisson du concentré", "mijotage", "cuisson al dente", "enrobage à l'eau de cuisson"],
+      "variants": [
+        "Ragù à l'italienne (une source) : trois viandes — bœuf haché, chair à saucisse et pancetta — déglacées au vin rouge puis mouillées au lait entier, avec romarin et laurier ; ni la chair à saucisse ni la pancetta ne sont au catalogue",
+        "Déglaçage au vin rouge avant la tomate (deux sources sur huit)",
+        "Deux verres de lait entier en fin de mijotage pour arrondir l'acidité (une source)",
+        "Version végétale : une boîte de lentilles et deux gros champignons portobello à la place du bœuf (une source)",
+        "Champignons de Paris émincés avec le soffritto (deux sources)",
+        "Foie de volaille haché ajouté au bœuf, 160 g pour quatre (une source)",
+        "Spaghettis de courgettes à la place des pâtes, 800 g pour quatre (une source)",
+        "Pincée de sucre ou carré de sucre pour corriger l'acidité (deux sources)",
+        "Basilic frais ciselé en finition plutôt que thym et laurier (deux sources)"
+      ],
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 3, "bitter": 1, "umami": 4, "heat": 0, "pungency": 1, "richness": 3, "freshness": 1, "intensity": 4 },
+        "dominant_flavors": ["tomate cuite", "viande rissolée", "légume compoté"],
+        "aroma_families": ["tomate_cuite", "oignon_compoté", "viande_rissolée", "thym"],
+        "target_textures": ["sauce_nappante", "pâtes_fermes", "haché_fondant"],
+        "signature_ingredients": ["Spaghetti secs", "Bœuf haché cru 15 % MG", "Tomate concassée en conserve", "Carotte crue", "Céleri branche cru"],
+        "identity_guardrails": [
+          "Sans le trio oignon-carotte-céleri fondu au départ, il reste une sauce tomate à la viande : c'est le soffritto qui donne au plat son sucre et son corps, et cinq à six sources sur huit le portent.",
+          "La viande hachée doit rissoler avant d'être mouillée ; pochée directement dans la tomate, elle ne développe rien et la sauce reste plate quelle que soit la durée du mijotage.",
+          "La tomate doit être une base longuement réduite, pas un concentré délayé : deux sources font l'inverse et produisent une autre sauce, épaisse et sucrée, qui ne mijote pas.",
+          "Les pâtes se terminent dans la sauce avec un peu de leur eau de cuisson ; servies nues avec la sauce posée dessus, le plat se dissocie dans l'assiette."
+        ]
+      },
+      "conservation": "La sauce se garde quatre jours au réfrigérateur dans un récipient fermé et gagne à être faite la veille : la tomate finit de perdre son acidité au froid. Elle se congèle trois mois, sans les pâtes. Réchauffer à feu doux avec une cuillerée d'eau. Les pâtes déjà enrobées ne se conservent pas plus de vingt-quatre heures et ne se congèlent pas : elles rendent leur eau et deviennent farineuses.",
+      "allergens": ["gluten", "céleri", "lait"]
+    },
+    {
+      "code": "REAL-102",
+      "remplace": "REAL-102",
+      "family": "Spaghetti alla puttanesca",
+      "cuisine_origin": "Italie",
+      "identity_level": "named_traditional_dish",
+      "category": "pâtes en sauce",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 20,
+      "difficulty": "facile",
+      "sources": ["dossier:spaghetti-alla-puttanesca", "marmiton.org", "chefsimon.com"],
+      "canonical_arbitration": "Deux sources seulement, toutes deux pour quatre personnes et toutes deux à quinze minutes de préparation : le dossier est mince, mais il est unanime sur ce qui fait le plat. Six lignes sont communes aux deux — spaghetti, tomate, câpres, olives noires, anchois, huile d'olive — et ce sont exactement les six qui portent l'identité de la puttanesca. Sur les quantités, deux sources donnent une médiane qui est leur milieu, et les écarts sont grands : 500 g de pâtes contre 200 (médiane 87,5 g par personne, soit 350 g pour quatre) ; 100 g d'olives contre 30 (médiane 65 g) ; 30 g de câpres de part et d'autre, seul point où elles se rejoignent au gramme. Premier arbitrage, la tomate : une source part d'un kilo de tomates cerise fraîches, l'autre de 400 g de concassée en boîte, soit 250 g et 100 g par personne. Le milieu est 175 g par personne, 700 g pour quatre, et on retient la conserve — c'est le produit qui tient toute l'année et celui qui réduit en sauce, la tomate cerise fraîche passant en variante avec son poids propre. Deuxième arbitrage, l'anchois, et c'est le plus lourd : une source en met douze filets, l'autre deux. Un filet à l'huile égoutté pèse quatre grammes, ce qui donne 48 g contre 8 g pour le même nombre de convives — un facteur six. Ni l'une ni l'autre ne fait autorité, on retient leur milieu, 30 g, soit sept à huit filets ; en dessous, l'anchois ne sale plus le plat et la sauce n'a plus d'épine dorsale. Troisième point, les câpres : une source les prend au sel, l'autre en saumure. « Câpre au sel » n'est pas au catalogue et le rinçage préalable ramène de toute façon les deux produits au même point ; on écrit « Câpre au vinaigre, égouttée », et l'instruction de rinçage descend dans les étapes, là où elle est utile. Le poids déclaré est celui de l'égoutté, comme celui des olives est celui de la chair dénoyautée — une olive avec son noyau n'est pas un poids comestible, et compter le noyau fausserait la pesée d'un cinquième. Quatrième point, le fromage. Une source sur deux termine par 20 g de parmesan râpé, l'autre n'en met pas, et l'usage napolitain est de ne pas mettre de fromage sur une sauce d'anchois. On le déclare optionnel au service : ni effacer la source qui l'ajoute, ni l'imposer contre l'autre. Restent l'ail et le piment, une source chacun — la moitié du dossier, donc retenus : l'ail à 10 g, deux gousses, au-dessus de la gousse unique que sa source annonce pour quatre, et l'écart est assumé ici plutôt que dissimulé ; le piment rouge à 2 g. Deux corrections sur la recette remplacée. Elle portait 20 g de persil frais en finition : le dossier n'en porte aucun, dans aucune des deux sources, et il disparaît — c'est précisément le genre de ligne écrite de mémoire que cette reprise est faite de retirer. Elle annonçait par ailleurs 50 g d'anchois et 700 g de tomates pelées entières là où le dossier donne 30 g et de la concassée. Les durées : les deux sources déclarent quinze minutes de préparation, une seule remplit la cuisson à quinze minutes et l'autre laisse le champ à zéro. On écrit vingt minutes, la sauce réduisant douze à quinze minutes et les pâtes ne cuisant qu'en partie pendant ce temps. Le nom du corpus est juste, la recette n'est pas renommée.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Pâtes, poisson salé et légume-fruit dans la même assiette : la puttanesca est un plat unique par construction, une sauce montée en un quart d'heure sur ce que le garde-manger contient déjà. Elle n'appelle rien d'autre — et surtout pas un féculent, elle en est un."
+      },
+      "ingredients": [
+        { "form": "Spaghetti secs", "quantity": 350, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Tomate concassée en conserve", "quantity": 700, "unit": "g", "role": "base de sauce", "optional": false },
+        { "form": "Olive noire dénoyautée", "quantity": 65, "unit": "g", "role": "garniture salée", "optional": false },
+        { "form": "Câpre au vinaigre, égouttée", "quantity": 30, "unit": "g", "role": "garniture acide", "optional": false },
+        { "form": "Anchois à l'huile, égoutté", "quantity": 30, "unit": "g", "role": "umami et sel", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 30, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Ail cru", "quantity": 10, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Piment rouge séché", "quantity": 2, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Parmesan affiné", "quantity": 20, "unit": "g", "role": "service", "optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Mettre à chauffer un grand volume d'eau. Rincer les câpres sous l'eau froide et les éponger : conservées au sel comme dans l'une des sources, elles saleraient à elles seules une sauce qui porte déjà de l'anchois et de l'olive. Dénoyauter les olives si elles ne le sont pas — le poids annoncé est celui de la chair, pas celui du noyau." },
+        { "n": 2, "instruction": "Émincer l'ail en fines lamelles et émietter le piment. Les mettre dans l'huile d'olive à froid dans une sauteuse, puis monter doucement en température jusqu'à ce que l'ail chante sans prendre couleur. Un ail qui brunit devient amer, et cette amertume ne quitte plus la sauce : c'est la seule vraie difficulté du plat." },
+        { "n": 3, "instruction": "Ajouter les filets d'anchois et les écraser à la cuillère de bois dans l'huile chaude. Ils doivent disparaître complètement en une à deux minutes, fondus en une pâte brune. C'est là que le plat prend son sel et son umami : des filets encore entiers laisseraient une sauce fade par endroits et violemment salée à d'autres." },
+        { "n": 4, "instruction": "Verser la tomate concassée, les câpres et les olives, mélanger et laisser réduire douze à quinze minutes à feu vif, à découvert. Ne pas saler à ce stade : anchois, câpres et olives apportent déjà l'essentiel, et une sauce qui réduit concentre son sel. La sauce est prête quand elle fonce et qu'elle laisse une trace nette au fond de la sauteuse." },
+        { "n": 5, "instruction": "Saler l'eau bouillante et y cuire les spaghetti, en les égouttant deux minutes avant le temps du paquet. Prélever une louche d'eau de cuisson avant d'égoutter : c'est le seul liant dont la sauce a besoin, elle ne porte ni beurre ni crème." },
+        { "n": 6, "instruction": "Verser les pâtes encore fermes dans la sauteuse avec un peu de leur eau et finir la cuisson une à deux minutes en remuant vivement. Les pâtes achèvent de cuire dans la sauce et l'absorbent au lieu de la porter. Goûter et rectifier le sel maintenant seulement, une fois que tout est réuni ; poivrer au moulin." },
+        { "n": 7, "instruction": "Servir immédiatement, les pâtes n'attendent pas. Le parmesan reste à part : une des deux sources en râpe vingt grammes dessus, l'usage napolitain est de s'en passer sur une sauce d'anchois, et chacun tranchera dans son assiette." }
+      ],
+      "techniques": ["fonte des anchois", "infusion à froid de l'ail et du piment", "réduction vive", "cuisson al dente", "enrobage à l'eau de cuisson"],
+      "variants": [
+        "Un kilo de tomates cerise fraîches pour quatre à la place de la concassée en boîte (une source sur deux), fendues et écrasées à la fourchette en cours de cuisson",
+        "Câpres au sel rincées longuement plutôt que câpres au vinaigre (une source) — forme absente du catalogue",
+        "Sans ail, le piment rouge seul portant l'aromatique (une source)",
+        "Sans piment, l'ail seul portant l'aromatique (une source)",
+        "Vingt grammes de parmesan fraîchement râpé au service (une source), contre l'usage napolitain"
+      ],
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": { "sweet": 1, "salty": 4, "acidic": 3, "bitter": 1, "umami": 5, "heat": 2, "pungency": 3, "richness": 3, "freshness": 2, "intensity": 5 },
+        "dominant_flavors": ["salin marin", "tomate réduite", "acidulé de câpre"],
+        "aroma_families": ["anchois", "ail_confit", "tomate_cuite", "olive_noire", "piment"],
+        "target_textures": ["sauce_concentrée", "pâtes_fermes", "éclats_charnus"],
+        "signature_ingredients": ["Anchois à l'huile, égoutté", "Câpre au vinaigre, égouttée", "Olive noire dénoyautée", "Spaghetti secs"],
+        "identity_guardrails": [
+          "Les trois salaisons — anchois, câpre, olive noire — sont le plat : les deux sources du dossier les portent toutes les trois, et en retirer une laisse une sauce tomate à l'ail, pas une puttanesca.",
+          "L'anchois doit fondre dans l'huile avant la tomate ; ajouté après, il ne se dissout plus et le plat devient une sauce tomate garnie de poisson.",
+          "Aucun sel n'entre dans la sauce avant le goût final : la réduction concentre celui des câpres, des olives et de l'anchois, et une sauce salée d'avance devient impossible à corriger.",
+          "La sauce ne porte ni crème ni beurre : sa liaison vient de la réduction et de l'eau de cuisson des pâtes, et tout corps gras ajouté en émousse la pointe saline."
+        ]
+      },
+      "conservation": "La sauce se garde trois jours au réfrigérateur, couverte, et se réchauffe à feu doux avec un peu d'eau — elle épaissit beaucoup au froid. Elle se congèle deux mois mais les câpres et les olives y perdent leur croquant : mieux vaut congeler la base tomate-anchois et ajouter câpres et olives au réchauffage. Les pâtes enrobées se mangent le jour même, elles boivent la sauce en refroidissant.",
+      "allergens": ["gluten", "poisson", "lait"]
+    },
+    {
+      "code": "IT-006",
+      "remplace": "IT-006",
+      "family": "Gnocchi tomate et mozzarella",
+      "cuisine_origin": "Italie / cuisine domestique française",
+      "identity_level": "domestic_standard",
+      "category": "pâtes gratinées",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 30,
+      "difficulty": "facile",
+      "sources": ["dossier:gnocchi-tomate-et-mozzarella", "marmiton.org", "chefsimon.com"],
+      "canonical_arbitration": "C'est le dossier le plus maigre du lot, et le plus dispersé : trois sources qui cuisinent trois plats différents. La première est une poêlée de poireau et de tomates cerise avec des gnocchi à poêler et une noix de beurre, pour deux. La deuxième est un montage sans cuisson — PT0S au champ cuisson — d'oignons frits, de tomates confites à l'huile et de billes de mozzarella, et son champ portions est illisible (« 0 0 »). La troisième est un gnocchi alla Sorrentina : oignon et ail fondus, 400 g de tomates concassées en boîte, gnocchi, mozzarella di bufala et parmesan dessus, avec en plus une aubergine et des tomates séchées. Deux lignes seulement sont unanimes : les gnocchi et la mozzarella. C'est peu pour trancher, et l'arbitrage est donc dit franchement : on suit la seule source qui monte réellement une sauce tomate cuite et la fait gratiner sous la mozzarella, débarrassée de ce qu'elle ajoute au-delà du nom du plat — l'aubergine et les tomates séchées passent en variantes. Les deux autres sources ne sont pas écartées pour autant : elles fournissent les seuls ancrages par portion du dossier. La poêlée, seule à déclarer un nombre de convives, donne 125 g de gnocchi et une boule de mozzarella pour deux, soit 62,5 g de fromage par personne : d'où 500 g de gnocchi et 250 g de mozzarella pour quatre, ce qui fait deux boules. La sauce, elle, n'a qu'une source et aucune portion : ses 400 g de concassée accompagnent 300 g de gnocchi, qui servent deux à trois personnes — la sauce se situe donc entre 130 et 200 g par personne, et on retient 150 g, soit 600 g pour quatre. Sur les aromatiques, l'écart au seuil de moitié est reconnu et déclaré : l'ail est dans deux sources sur trois et reste ; l'oignon jaune, l'huile d'olive et le basilic ne sont que dans la source à la sauce, un tiers du dossier, et ils sont retenus quand même parce que ce sont les composants de cette sauce et qu'on ne peut pas suivre sa méthode en lui retirant sa base. Les « 120 g d'oignons frits » de la deuxième source ne sont pas cet oignon-là — c'est un oignon croustillant en garniture, pas un oignon fondu — et la synthèse qui les rattache à « Oignon jaune cru » propose une lecture qu'on refuse. Deux formes du dossier n'ont rien au catalogue et l'absence est réelle, pas un écart de vocabulaire : la tomate confite ou séchée à l'huile, que deux sources sur trois emploient, et l'oignon frit croustillant. La recette est donc écrite sans elles : la tomate confite est un renfort de goût sur un plat qui porte déjà 600 g de tomate cuite, le plat tient sans elle, et il n'est pas question de la remplacer par de la tomate fraîche ou du concentré — ce serait une autre composition sous le même chiffre. La « mozzarella di bufala » d'une source devient « Mozzarella », qui est un écart de vocabulaire assumé : le catalogue ne distingue pas les laits. Restent les durées. Préparation : 5, 20 et 15 minutes, médiane 15. Cuisson : un seul champ rempli, 15 minutes pour la poêlée, les deux autres à zéro dont un légitimement — le montage ne cuit pas. On écrit 30 minutes, ce que la méthode retenue demande : vingt minutes de réduction de la sauce et dix de gratin. Le nom du corpus est juste — gnocchi, tomate, mozzarella, les trois y sont — et la recette n'est pas renommée, même si la méthode retenue est celle de la Sorrentina.",
+      "plate": {
+        "role": "main",
+        "accepts": ["vegetables"],
+        "reason": "Le plat porte son féculent (125 g de gnocchi par personne) et sa protéine (62,5 g de mozzarella), mais le seul légume de l'assiette est la tomate de la sauce : il manque du vert. Une salade verte ou des légumes rôtis complètent — et le dossier le montre en creux, la source la plus construite y ajoute une aubergine entière."
+      },
+      "ingredients": [
+        { "form": "Gnocchi de pomme de terre frais", "quantity": 500, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Tomate concassée en conserve", "quantity": 600, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Mozzarella", "quantity": 250, "unit": "g", "role": "protéine et gratin", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 120, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 25, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Basilic frais", "quantity": 12, "unit": "g", "role": "finition", "optional": false },
+        { "form": "Ail cru", "quantity": 8, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Sel fin", "quantity": 5, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Parmesan affiné", "quantity": 40, "unit": "g", "role": "gratin", "optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Sortir la mozzarella de sa saumure, la fendre en deux et la laisser s'égoutter un bon quart d'heure sur du papier absorbant avant de la déchirer en morceaux. Une mozzarella posée humide sur un gratin rend son eau dans le plat, délave la sauce et ressort caoutchouteuse : l'égouttage n'est pas un détail de confort, c'est ce qui décide de la texture finale." },
+        { "n": 2, "instruction": "Émincer finement l'oignon et le faire fondre huit à dix minutes dans l'huile d'olive, à feu moyen, jusqu'à ce qu'il devienne translucide sans blondir. Ajouter alors seulement l'ail écrasé et le laisser trente secondes : l'ail brûle en un tiers du temps que met l'oignon à fondre, et mis ensemble au départ il est amer avant que l'oignon soit prêt." },
+        { "n": 3, "instruction": "Verser la tomate concassée, saler, poivrer et laisser réduire vingt minutes à découvert et à petit feu. La sauce doit napper la cuillère et se détacher du fond en une masse. Une sauce encore liquide à ce stade inonderait le plat sous le gril : les gnocchi y flotteraient au lieu de s'en enrober, et le gratin ne prendrait pas." },
+        { "n": 4, "instruction": "Préchauffer le four à 220 °C. Pocher les gnocchi dans un grand volume d'eau salée frémissante — non bouillante à gros bouillons, qui les malmène — et les récupérer à l'écumoire dès qu'ils remontent, au bout de deux minutes environ. Ils sont cuits quand ils flottent ; laissés plus longtemps, ils se gorgent d'eau et se défont à la cuillère." },
+        { "n": 5, "instruction": "Mélanger les gnocchi égouttés avec les deux tiers de la sauce, directement hors du feu, puis les verser dans un plat à gratin sans les tasser. Étaler le tiers de sauce restant sur le dessus, répartir la mozzarella déchirée et, si l'on en met, le parmesan râpé par-dessus." },
+        { "n": 6, "instruction": "Enfourner dix à douze minutes, le temps que le fromage fonde, cloque et se tache de brun. On ne cherche plus à cuire quoi que ce soit : les gnocchi et la sauce sont prêts, le four ne travaille que la croûte. Passé ce point, la mozzarella rend sa graisse et le plat devient huileux." },
+        { "n": 7, "instruction": "Sortir le plat et déchirer le basilic dessus à la sortie du four, jamais avant : au four, ses feuilles noircissent et perdent tout leur parfum en quelques minutes. Laisser reposer cinq minutes avant de servir, le temps que le fromage cesse de couler et que les portions se tiennent à la cuillère." }
+      ],
+      "techniques": ["suer", "réduction de sauce tomate", "pochage des gnocchi", "gratinage"],
+      "variants": [
+        "Gnocchi alla Sorrentina complet (une source) : une aubergine en dés rissolée ajoutée à la sauce et une dizaine de tomates confites",
+        "Tomates confites ou séchées à l'huile, 120 g pour la garniture (deux sources sur trois) — forme absente du catalogue",
+        "Poêlée sans four (une source) : gnocchi à poêler au beurre avec un poireau émincé et des tomates cerise, mozzarella fondue hors du feu",
+        "Oignons frits croustillants en garniture au lieu de l'oignon fondu, 120 g (une source) — forme absente du catalogue",
+        "Mozzarella di bufala à la place de la mozzarella au lait de vache (une source)",
+        "Trente grammes de parmesan râpé sur le gratin (une source)"
+      ],
+      "sensory": {
+        "profile": "tomato_herbal",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 3, "bitter": 0, "umami": 3, "heat": 0, "pungency": 1, "richness": 3, "freshness": 2, "intensity": 3 },
+        "dominant_flavors": ["tomate cuite", "fromage fondu", "basilic"],
+        "aroma_families": ["tomate_cuite", "oignon_compoté", "fromage_gratiné", "basilic"],
+        "target_textures": ["gnocchi_moelleux", "sauce_nappante", "croûte_gratinée"],
+        "signature_ingredients": ["Gnocchi de pomme de terre frais", "Mozzarella", "Tomate concassée en conserve", "Basilic frais"],
+        "identity_guardrails": [
+          "Les trois éléments du nom doivent être là et rester distincts : des gnocchi moelleux, une sauce tomate réduite, une mozzarella fondue en surface. Fondue dans la sauce, elle disparaît et le plat n'est plus qu'un gnocchi à la tomate.",
+          "La mozzarella s'égoutte avant de passer au four : son eau de saumure délave la sauce et la rend filandreuse, et c'est la faute qui défait ce plat le plus souvent.",
+          "La sauce doit être réduite avant l'assemblage — les gnocchi ne rendent pas d'eau à la cuisson mais n'en absorbent pas non plus, et rien ne rattrapera au four une sauce trop liquide.",
+          "Le basilic entre à la sortie du four : passé au gril, il noircit et le plat perd la seule note fraîche qui l'équilibre."
+        ]
+      },
+      "conservation": "Trois jours au réfrigérateur, couvert. Le gratin se réchauffe au four à 180 °C, quinze minutes, plutôt qu'au micro-ondes qui détend les gnocchi et fait rendre son gras à la mozzarella. La congélation est déconseillée sur le plat monté : les gnocchi de pomme de terre se délitent à la décongélation. On peut en revanche congeler la sauce seule trois mois et monter le gratin ensuite.",
+      "allergens": ["gluten", "lait"]
+    },
+    {
+      "code": "IT-008",
+      "remplace": "IT-008",
+      "family": "Minestrone",
+      "cuisine_origin": "Italie",
+      "identity_level": "named_traditional_dish",
+      "category": "soupe complète",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 8,
+      "prep_minutes": 30,
+      "cook_minutes": 55,
+      "difficulty": "facile",
+      "sources": ["dossier:minestrone", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Huit sources, dont deux qui ne font pas de minestrone. L'une est un « homard breton en fine gelée au minestrone de jeunes légumes primeurs » : le mot y désigne une garniture de légumes taillés, et la recette porte huit homards, de la citronnelle et quatre feuilles de gélatine. L'autre est un « minestrone de légumes d'hiver » monté au fromage blanc à 0 % et à 300 g de purée de châtaigne, sans tomate, sans légumineuse et sans pâtes. Les deux restent comptées comme des sources — c'est le rôle de la médiane d'absorber ce qui dépasse — mais leurs lignes propres n'entrent nulle part. Une troisième est une préparation déshydratée : sa liste de légumes est un minestrone parfaitement ordinaire, sa méthode non, et c'est sa liste qu'on lit. Ramenées à la portion, les six sources qui cuisinent la soupe donnent 30 g de carotte, 27 g d'oignon, 52 g de courgette, 80 g de tomate, 45 g de pomme de terre, 13 g de céleri branche, 21 g de haricot vert, 33 g de pâtes sèches et 250 ml de mouillement par personne : d'où, pour huit, 250 g, 200 g, 400 g, 600 g, 350 g, 120 g, 150 g, 250 g et deux litres. Premier arbitrage, la tomate. Quatre sources la prennent fraîche — deux, quatre, quatre tomates Roma, une — et une seule ouvre une grosse boîte de pelées. La pluralité est nette : on écrit « Tomate fraîche mûre », 600 g pour huit, et la conserve passe en variante d'hiver. C'est une correction de la recette remplacée, qui portait 500 g de concassée en boîte que le dossier ne soutient qu'à une source sur huit. Deuxième arbitrage, les légumineuses, et il touche la pesée. Trois sources mettent du haricot blanc : 500 g secs pour six, une boîte de 400 g pour dix, 200 g secs pour huit. Un haricot sec ne se déclare pas sec quand il entre cuit dans la casserole — un poids de sachet n'est pas un poids comestible, pas plus qu'un gigot avec son os. Ramenés au rendement cuit, à 2,2 fois le poids sec, ces trois lignes donnent 183, 24 et 55 g par personne ; la médiane est 55, soit 450 g de haricots cuits égouttés pour huit, et c'est ce que la recette déclare. La quatrième source à légumineuse met 300 g de haricots rouges pour quatre : elle passe en variante, la couleur change la soupe. Troisième arbitrage, le lard. Quatre sources sur huit font revenir un porc fumé au départ — 250 g de lardons, 400 g de lardons, une tranche de ventrèche, 150 g de pancetta — et quatre n'en mettent aucun. C'est la moitié exacte du dossier, et trancher dans un sens ou dans l'autre serait décider à sa place. On déclare donc « Lardon fumé cru » optionnel, à 200 g, médiane des quatre ramenée à huit portions : la soupe sans lard reste un minestrone entier, et la nutrition affichée est celle de la version maigre. Quatrième point, le mouillement. Deux sources cubent un bouillon de volaille, une un bouillon de poulet, une un bouillon de légumes, une écrit « bouillon de volaille ou de légumes » : la volaille a la pluralité, trois lignes contre deux, et on retient « Bouillon de volaille » à deux litres — 250 ml par personne, chiffre sur lequel les deux sources qui mesurent leur eau tombent d'accord au millilitre près. Cinquième point, les pâtes. Quatre sources sur huit en mettent, toutes de petit format : cornettes, macaroni, coquillettes, « pâtes ». On écrit « Petites pâtes sèches », 250 g, et l'épeautre d'une source comme le riz passent en variantes. Restent au-dessus du seuil de moitié, et donc dans la liste : carotte (sept sources sur huit), oignon (sept), courgette (cinq), pomme de terre (cinq, que la recette remplacée ignorait complètement), basilic (cinq), ail (cinq), haricot vert (quatre), huile d'olive (quatre) et le sel-poivre. Sous le seuil, et donc en variantes : le poireau (deux sources, que la recette remplacée déclarait à 180 g), le persil (deux), les petits pois (une), le navet (une), le chorizo (une), le potimarron et le chou-rave (une), la sauge (une), les herbes de Provence (une). Le parmesan, trois sources sur huit, est déclaré optionnel au service. Une lecture de la synthèse est refusée : les « 200 g de haricots princesse » de la première source sont des haricots verts fins, pas du haricot blanc sec, et ils sont comptés comme tels. Les durées, enfin : les préparations vont de 10 à 45 minutes, médiane 32, on écrit 30 ; les cuissons remplies donnent 20, 60, 45, 90, 45 et 120 minutes, médiane 52, on écrit 55 — ce que demande la cuisson séquencée retenue, vingt-cinq minutes de légumes durs, dix de légumes tendres, le temps des pâtes et la mise en place. Le nom est un type de préparation, il n'annonce aucun ingrédient et la recette n'est pas renommée.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "L'assiette porte son féculent deux fois (pâtes et pomme de terre), sa protéine végétale (55 g de haricots blancs cuits par personne) et sept légumes : c'est le sens même du minestrone, une soupe qui fait le repas et non un potage d'entrée. Le pain et le parmesan au service sont un usage, pas un complément nécessaire."
+      },
+      "ingredients": [
+        { "form": "Bouillon de volaille", "quantity": 2000, "unit": "ml", "role": "mouillement", "optional": false },
+        { "form": "Tomate fraîche mûre", "quantity": 600, "unit": "g", "role": "base", "optional": false },
+        { "form": "Haricot blanc cuit, égoutté", "quantity": 450, "unit": "g", "role": "légumineuse", "optional": false },
+        { "form": "Courgette fraîche", "quantity": 400, "unit": "g", "role": "légume tendre", "optional": false },
+        { "form": "Pomme de terre crue, épluchée", "quantity": 350, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Carotte crue", "quantity": 250, "unit": "g", "role": "légume dur", "optional": false },
+        { "form": "Petites pâtes sèches", "quantity": 250, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 200, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Haricot vert cru", "quantity": 150, "unit": "g", "role": "légume tendre", "optional": false },
+        { "form": "Céleri branche cru", "quantity": 120, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 40, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Ail cru", "quantity": 15, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Basilic frais", "quantity": 15, "unit": "g", "role": "finition", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Lardon fumé cru", "quantity": 200, "unit": "g", "role": "salaison", "optional": true },
+        { "form": "Parmesan affiné", "quantity": 80, "unit": "g", "role": "service", "optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Préparer les haricots blancs la veille si on part du sec : deux cents grammes secs, trempés une nuit puis cuits cinquante à soixante minutes dans une eau non salée, donnent les quatre cent cinquante grammes annoncés — le poids déclaré est celui du haricot cuit et égoutté, pas celui du sachet. En boîte, rincer et égoutter : le poids compté est celui du contenu sorti de la conserve, saumure exclue." },
+        { "n": 2, "instruction": "Tailler carotte, céleri, oignon et pomme de terre en dés d'un centimètre, tous de la même taille. Un minestrone se juge à la cuillère : des dés réguliers cuisent ensemble et se prennent ensemble. Mettre à part la courgette, taillée pareil, et les haricots verts coupés en tronçons de deux centimètres — ces deux-là entreront bien plus tard." },
+        { "n": 3, "instruction": "Si l'on met du lard, le faire rendre à sec dans une grande cocotte à feu moyen jusqu'à ce qu'il croustille, puis ajouter l'huile d'olive. Sinon, chauffer l'huile seule. Verser oignon, carotte, céleri et ail écrasé et les laisser suer dix minutes sans coloration, à couvert et à feu doux : on cherche à ouvrir les légumes, pas à les rôtir." },
+        { "n": 4, "instruction": "Ajouter les pommes de terre et les tomates concassées grossièrement — pelées si l'on veut, après trente secondes d'eau bouillante et un passage à l'eau froide. Laisser la tomate se défaire cinq minutes à découvert avant de mouiller : elle perd là son acidité crue, ce qu'elle ne fera plus une fois noyée dans deux litres de bouillon." },
+        { "n": 5, "instruction": "Verser le bouillon, porter à frémissement puis baisser le feu et laisser cuire vingt-cinq minutes à couvert. Le bouillon doit à peine trembler : une ébullition franche défait les dés et trouble la soupe, qui doit rester une soupe de légumes reconnaissables et non une purée claire." },
+        { "n": 6, "instruction": "Ajouter la courgette, les haricots verts et les haricots blancs cuits, et poursuivre dix minutes. La courgette mise au départ aurait fondu sans laisser de trace, et les haricots blancs déjà cuits n'ont besoin que de se réchauffer et de prendre le goût du bouillon — les faire mijoter plus longtemps leur ferait perdre leur peau." },
+        { "n": 7, "instruction": "Verser les petites pâtes directement dans la soupe et les cuire deux minutes de moins que le temps du paquet, en goûtant. C'est leur amidon qui donne au minestrone son épaisseur, et c'est pour cela qu'on ne les cuit pas à part. Mais elles continuent de boire après l'arrêt du feu : les laisser tout juste fermes, sinon la soupe sera un plat de pâtes le lendemain." },
+        { "n": 8, "instruction": "Retirer du feu, déchirer le basilic dedans et ajouter un filet d'huile d'olive crue. Goûter et saler seulement maintenant : le bouillon, le lard s'il y en a et le parmesan du service apportent déjà beaucoup de sel, et une soupe salée en début de cuisson devient impossible à corriger après réduction. Servir avec le parmesan râpé à part." }
+      ],
+      "techniques": ["suer", "cuisson séquencée par tenue des légumes", "cuisson des pâtes dans le bouillon", "finition à l'huile crue"],
+      "variants": [
+        "Grosse boîte de tomates pelées à la place des tomates fraîches, hors saison (une source sur huit)",
+        "Trois cents grammes de haricots rouges pour quatre à la place du haricot blanc (une source)",
+        "Cent grammes d'épeautre à la place des pâtes, mis avec les légumes durs (une source)",
+        "Deux poireaux émincés ou un blanc de poireau ajoutés au soffritto (deux sources)",
+        "Trois cuillerées de persil haché avec le basilic en finition (deux sources)",
+        "Version épicée (une source) : un chorizo fort en rondelles avec les lardons, herbes de Provence, et une boîte de petits pois avec les légumes tendres",
+        "Deux navets en dés avec les légumes durs (une source)",
+        "Version d'hiver (une source) : potimarron et chou-rave à la place de la courgette et des haricots verts",
+        "Soupe au pistou (une source) : basilic, ail et parmesan pilés à l'huile, montés en pistou et servis à part à la place du basilic déchiré",
+        "Deux feuilles de sauge dans le bouillon (une source)",
+        "Beurre à la place de l'huile d'olive au départ, soixante grammes (une source)"
+      ],
+      "sensory": {
+        "profile": "brothy_umami",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 2, "bitter": 0, "umami": 3, "heat": 0, "pungency": 1, "richness": 2, "freshness": 3, "intensity": 3 },
+        "dominant_flavors": ["bouillon de légumes", "tomate", "basilic"],
+        "aroma_families": ["bouillon", "tomate_cuite", "oignon_compoté", "basilic", "céleri"],
+        "target_textures": ["légumes_tendres_distincts", "bouillon_lié", "pâtes_fermes"],
+        "signature_ingredients": ["Haricot blanc cuit, égoutté", "Petites pâtes sèches", "Tomate fraîche mûre", "Courgette fraîche", "Basilic frais"],
+        "identity_guardrails": [
+          "Un minestrone porte à la fois une légumineuse et un féculent en grain — haricot blanc et petites pâtes ici : sans eux, il reste une soupe de légumes, et six sources sur huit portent l'un ou l'autre.",
+          "Les légumes restent en dés distincts sous la cuillère : mixé, le plat devient un velouté et perd la définition qui fait son nom.",
+          "Les légumes entrent par ordre de tenue, les durs d'abord et les tendres dix minutes avant la fin ; tous ensemble, la courgette disparaît et la carotte reste crue.",
+          "Les pâtes cuisent dans le bouillon et non à part : leur amidon est le seul liant de la soupe, et cuites séparément elles laissent un bouillon clair."
+        ]
+      },
+      "conservation": "Quatre jours au réfrigérateur, et la soupe gagne du goût la deuxième journée. Réserve faite des pâtes : elles continuent d'absorber le bouillon au froid et la soupe se resserre en plat épais — allonger d'un demi-litre de bouillon au réchauffage, ou cuire les pâtes le jour même dans la portion qu'on va servir et garder le reste sans elles. Se congèle trois mois, sans les pâtes ni la pomme de terre, qui se délitent à la décongélation. Réchauffer à frémissement et ajouter le basilic seulement au moment de servir.",
+      "allergens": ["gluten", "céleri", "lait"]
+    }
+  ]
+}

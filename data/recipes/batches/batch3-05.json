@@ -1,0 +1,673 @@
+{
+  "recipes": [
+    {
+      "code": "FR-037",
+      "remplace": "FR-037",
+      "family": "Parmentier de canard",
+      "cuisine_origin": "France (Sud-Ouest)",
+      "identity_level": "named_traditional_dish",
+      "category": "gratin parmentier",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 40,
+      "cook_minutes": 50,
+      "difficulty": "facile",
+      "sources": [
+        "dossier:parmentier-de-canard",
+        "marmiton.org",
+        "chefsimon.com",
+        "750g.com"
+      ],
+      "canonical_arbitration": "Neuf sources, de quatre à huit portions, médiane quatre ; on garde les six portions du code repris et on remonte les médianes par personne. Elles donnent 158 g de pomme de terre, 0,75 cuisse de confit, 12,5 g de beurre, 51 g de lait, 25 g de fromage râpé et 0,375 oignon par personne, d'où 950 g de pomme de terre, quatre à cinq cuisses, 75 g, 300 ml, 150 g et 250 g pour six. Les sources pèsent la pomme de terre telle qu'on l'achète, en robe ; la forme déclarée est épluchée, donc la quantité portée est le rendement — 810 g pour 950 g achetés — et les 950 g du dossier descendent dans les étapes comme instruction d'achat. Le désaccord le plus net porte sur ce qui n'est pas le canard : quatre sources sur neuf mettent autre chose sous le canard — potiron vanillé et lait de soja chez l'une, qui pèse d'ailleurs 600 g de pommes de terre à côté de ses 800 g de potiron, petits pois écossés et oignons nouveaux chez une autre, courgettes et panais chez une troisième, purée du commerce et foie gras chez une quatrième. Elles portent toutes le nom de parmentier mais aucune n'a la pluralité : six sources sur neuf pèsent des pommes de terre, et c'est la ligne qu'on retient ; les autres descendent en variantes attestées, où elles se lisent pour ce qu'elles sont, des écarts documentés et non des équivalents. Le potiron manque au catalogue et il est de toute façon minoritaire — il est signalé, pas remplacé : substituer une autre courge fausserait la nutrition en silence. Deuxième point, le poids du canard. Les sources comptent en cuisses confites, pas en chair : 0,75 cuisse par personne, soit quatre à cinq cuisses pour six, environ 1,3 kg brut. Un confit se pèse avec son os et sa graisse, la référence nutritionnelle porte sur la chair effilochée : la quantité déclarée est le rendement comestible, 650 g, et l'instruction d'achat descend dans les étapes. La synthèse rattachait d'ailleurs cinq de ces lignes à de la cuisse de poulet crue — un rapprochement à refuser, une cuisse de canard confite n'est ni du poulet ni crue. Troisième point, la liaison de la purée : quatre sources sur neuf mouillent au lait — dont l'une au lait de soja —, trois ajoutent de la crème, la troisième écrivant « beurre et crème selon le goût » sans rien peser. Le lait a le plus de voix, on l'écrit ; la crème, sous la moitié, passe en variante. Quatrième point, le dessus. Trois sources sur neuf gratinent au fromage râpé, dont une nomme le comté : on écrit Comté, la seule des trois qui soit désignée. Les deux qui le pèsent donnent 100 g pour quatre l'une et l'autre, soit 25 g par personne : la médiane ramenée à la portion vaut 150 g pour six, et non les 100 g du plat de quatre. La chapelure que portait la recette remplacée n'est attestée qu'une fois sur neuf et elle disparaît de la liste. Deux corrections encore sur la recette remplacée : l'échalote qu'elle donnait pour aromatique n'apparaît que dans une source, l'oignon dans quatre — on inverse, et l'échalote passe en variante. L'ail est retenu à deux sources, le persil et la muscade à trois, parce qu'ils ne pèsent presque rien et ne déplacent pas le plat. Les durées suivent les médianes du dossier pour la préparation (40 min) ; pour la cuisson, la médiane brute de 30 min ne couvre que le passage au four parce que plusieurs sources comptent la cuisson des pommes de terre en préparation — on déclare 50 min, cuisson des pommes de terre comprise. Le nom du corpus est juste, la recette n'est pas renommée.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Protéine et féculent dans le même plat, sous une croûte gratinée : le parmentier remplit l'assiette à lui seul et c'est précisément ce qu'on lui demande. Rien ne lui manque ; une salade verte à côté relève du goût, pas de la complétion."
+      },
+      "ingredients": [
+        {
+          "form": "Pomme de terre crue, épluchée",
+          "quantity": 810,
+          "unit": "g",
+          "role": "féculent",
+          "optional": false
+        },
+        {
+          "form": "Confit de canard cuit, effiloché",
+          "quantity": 650,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Lait entier",
+          "quantity": 300,
+          "unit": "ml",
+          "role": "purée",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 250,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Comté",
+          "quantity": 150,
+          "unit": "g",
+          "role": "gratinage",
+          "optional": false
+        },
+        {
+          "form": "Beurre doux",
+          "quantity": 75,
+          "unit": "g",
+          "role": "purée",
+          "optional": false
+        },
+        {
+          "form": "Persil frais",
+          "quantity": 15,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 12,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 8,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 2,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Muscade moulue",
+          "quantity": 1,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Compter quatre à cinq cuisses de canard confites, soit environ 1,3 kg brut, pour obtenir les 650 g de chair annoncés : l'os et la graisse pèsent près de la moitié d'une cuisse. Les sortir de leur graisse et les poser dans un plat, côté peau vers le haut, puis les tiédir vingt minutes à four doux — 130 °C suffisent. La graisse se liquéfie et la chair se détache alors sans forcer, ce qu'on n'obtient pas sur un confit sorti du froid."
+        },
+        {
+          "n": 2,
+          "instruction": "Éplucher les pommes de terre — prévoir les 950 g du dossier avant épluchage pour obtenir les 810 g déclarés — et les couper en morceaux réguliers, de la taille d'une grosse noix. Les couvrir d'eau froide salée, porter à ébullition et laisser cuire vingt à vingt-cinq minutes, jusqu'à ce que la lame d'un couteau traverse sans résistance. Démarrer à froid plutôt qu'à l'eau bouillante fait cuire le cœur et la surface au même rythme : c'est ce qui évite les morceaux délités au bord et fermes au centre."
+        },
+        {
+          "n": 3,
+          "instruction": "Pendant cette cuisson, désosser les cuisses tièdes : retirer l'os, la peau si on la juge trop grasse, et effiler la chair aux doigts en filaments plutôt qu'au couteau en cubes — la fibre du confit se sépare naturellement, et c'est ce qui donne au parmentier sa texture filandreuse. Prélever deux cuillerées de la graisse de confit et les réserver ; le reste se garde au réfrigérateur pour d'autres usages."
+        },
+        {
+          "n": 4,
+          "instruction": "Chauffer la graisse réservée dans une sauteuse et y faire fondre les oignons finement émincés à feu moyen pendant une dizaine de minutes, sans les colorer : on cherche leur sucre, pas leur amertume. Ajouter l'ail haché, laisser prendre l'odeur une minute à peine, puis verser la chair effilochée. Réchauffer l'ensemble deux ou trois minutes, ajouter le persil ciselé hors du feu, poivrer généreusement et goûter avant de saler — un confit est déjà salé et la moitié des 8 g prévus peut suffire ici."
+        },
+        {
+          "n": 5,
+          "instruction": "Égoutter les pommes de terre et les laisser rendre leur vapeur deux minutes dans la casserole vide, sur le feu éteint : une purée montée sur des pommes de terre encore humides tourne à la colle. Les écraser au presse-purée ou au moulin à légumes, jamais au robot, dont la lame libère l'amidon et rend l'appareil élastique. Incorporer le beurre en parcelles, puis le lait chaud petit à petit jusqu'à obtenir une purée souple qui retombe du fouet en ruban. Râper la muscade, rectifier le sel."
+        },
+        {
+          "n": 6,
+          "instruction": "Étaler la garniture de canard au fond d'un plat à gratin d'environ deux litres, en la tassant à peine pour qu'elle reste aérée. Recouvrir de la purée en la déposant à la cuillère par petits tas que l'on relie ensuite, plutôt qu'en l'étalant d'un seul geste : on évite ainsi d'entraîner le canard dans la couche du dessus. Lisser à la fourchette en laissant des sillons — ce sont eux qui dorent."
+        },
+        {
+          "n": 7,
+          "instruction": "Répartir le comté râpé sur toute la surface et enfourner à 190 °C pour vingt-cinq à trente minutes. Le plat est prêt quand la croûte est franchement brune et que la garniture bouillonne sur les bords. Si le dessus reste pâle alors que le cœur est chaud, passer deux minutes sous le gril en surveillant sans s'éloigner."
+        },
+        {
+          "n": 8,
+          "instruction": "Sortir le plat et le laisser reposer dix minutes avant de servir. Ce repos n'est pas une politesse : à la sortie du four les couches glissent l'une sur l'autre et la part s'effondre dans l'assiette, alors qu'après dix minutes elle se découpe nette et garde ses deux étages visibles."
+        }
+      ],
+      "techniques": [
+        "confit tiédi",
+        "effilochage",
+        "fondue d'oignons",
+        "purée au presse-purée",
+        "montage en couches",
+        "gratinage"
+      ],
+      "variants": [
+        "Au potiron vanillé, moitié potiron moitié pomme de terre, la purée mouillée au lait de soja (marmiton)",
+        "Aux noisettes concassées dans la garniture et au comté sur le dessus (chefsimon)",
+        "Aux petits pois écossés et oignons nouveaux à la place de la purée de pomme de terre (chefsimon)",
+        "Aux courgettes et panais mêlés à la purée, finition ciboulette (750g)",
+        "Garniture déglacée au madère ou au porto et liée d'un fond de canard, montée sur des tranches de pain (chefsimon)",
+        "Purée enrichie de crème fraîche en plus du lait (marmiton, chefsimon)",
+        "Une pointe de miel dans le canard effiloché (marmiton)",
+        "Dessus de chapelure plutôt que de fromage, éventuellement avec un éclat de foie gras dans la garniture (750g)"
+      ],
+      "formes_manquantes": [
+        {
+          "ligne_source": "800 g de potiron",
+          "sources": 1,
+          "motif": "Le potiron n'a pas de forme au catalogue et la seule source qui le pèse est minoritaire. Signalé plutôt que remplacé par la Courge fraîche du catalogue, qui n'a ni la même chair ni les mêmes valeurs : la substitution fausserait la nutrition en silence. Le plat tient sans lui, la ligne descend en variante."
+        }
+      ],
+      "sensory": {
+        "profile": "rich_savory",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 5,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "canard confit",
+          "beurre",
+          "oignon fondu",
+          "fromage gratiné"
+        ],
+        "aroma_families": [
+          "graisse de canard",
+          "oignon compoté",
+          "croûte grillée",
+          "muscade"
+        ],
+        "target_textures": [
+          "chair filandreuse",
+          "purée souple",
+          "croûte croustillante"
+        ],
+        "signature_ingredients": [
+          "Confit de canard cuit, effiloché",
+          "Pomme de terre crue, épluchée",
+          "Beurre doux"
+        ],
+        "identity_guardrails": [
+          "Sans confit de canard ce n'est plus qu'un hachis parmentier : la chair effilochée cuite dans sa graisse est le plat lui-même",
+          "Deux couches distinctes, garniture dessous et purée dessus — mélangées, c'est une autre préparation",
+          "Une croûte dorée au four : un parmentier servi sans gratiner n'est pas fini",
+          "Aucune viande hachée crue en remplacement du confit, même à protéines égales"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur, couvert, et se réchauffe 25 minutes à 170 °C plutôt qu'au micro-ondes, qui détrempe la croûte. Se congèle 2 mois, cru ou cuit, dans son plat filmé : décongeler une nuit au froid avant de cuire ou de réchauffer. Ne pas recongeler un confit déjà décongelé.",
+      "allergens": [
+        "lait"
+      ]
+    },
+    {
+      "code": "REAL-087",
+      "remplace": "REAL-087",
+      "family": "Salade lyonnaise",
+      "cuisine_origin": "France (Lyon)",
+      "identity_level": "named_traditional_dish",
+      "category": "salade composée",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "difficulty": "moyenne",
+      "sources": [
+        "dossier:salade-lyonnaise",
+        "marmiton.org",
+        "chefsimon.com",
+        "750g.com"
+      ],
+      "canonical_arbitration": "Sept sources, de deux à six portions, médiane quatre — on garde les quatre portions du code repris. Le dossier s'ouvre sur un problème d'identité qu'il faut trancher avant les quantités : la source 750g intitulée « Saladier ou salade lyonnaise » ne décrit pas ce plat. Elle pèse des filets de hareng, un foie de volaille, un pied de mouton et des œufs durs — c'est le saladier lyonnais, un autre plat des bouchons qui partage le nom de la ville et rien d'autre. On l'écarte en bloc, et avec elle les rapprochements que la synthèse en avait tirés : filet mignon de porc pour les harengs, pied de porc pour le pied de mouton, foie gras de canard pour le foie de volaille, trois lectures fausses à refuser plutôt qu'à corriger. Restent six sources. Sur elles, quatre points se décident. La verdure d'abord : deux sources mettent de la frisée, deux du pissenlit, une de la batavia, une de la roquette. Le pissenlit manque au catalogue et il est signalé comme tel — pas remplacé par une autre amère, qui ne pèserait pas la même chose. Frisée et pissenlit sont à égalité, deux sources chacun : ce qui tranche n'est donc pas le nombre mais le catalogue, où la frisée existe et le pissenlit non, et le titre de la source la plus explicite du lot, qui la nomme. On écrit Frisée fraîche, 300 g pour quatre. Aucune des deux sources à frisée ne la pèse — elles comptent une salade entière, pour six et pour quatre —, et la seule verdure pesée dont on connaisse les portions est un pissenlit à 100 g par personne. Les 75 g par personne déclarés sont donc la lecture des pièces, une frisée parée rendant de 300 à 350 g de feuilles, et non la médiane de lignes chiffrées. L'œuf ensuite, et c'est le seul point d'unanimité chiffrée : les quatre sources qui en portent en mettent exactement un par personne — quatre œufs pour quatre, deux pour deux, trois pour trois, « un œuf par personne ». On écrit 4 unités et l'arbitrage s'arrête là. L'huile de la vinaigrette est le point le plus douteux du dossier : trois sources écrivent « huile » sans la qualifier, une dit tournesol, une dit olive, une dit pépins de raisin avec l'olive en repli. Aucune ne l'emporte, et la synthèse rangeait pourtant les six sous l'huile d'olive — un choix qui donnerait au plat un accent qu'aucune source ne réclame. On retient Huile végétale, la forme du catalogue qui couvre l'huile neutre non désignée, à 10,5 g par personne soit 45 ml pour quatre. Le vinaigre est nommé rouge trois fois, dont une sous la forme « vinaigre de vin blanc ou rouge », et laissé sans qualificatif les trois autres : aucune source n'impose le blanc seul, on écrit Vinaigre de vin rouge, 20 ml. La moutarde est présente six fois sur sept, toujours à la cuillère à café : 6 g. Le lard vient en quatrième point : six sources sur sept en pèsent, sous cinq libellés — lard fumé, lard de poitrine, lardons fumés, lardons, poitrine fumée découpée en lardons. Cinq d'entre elles déclarent leurs couverts et se ramènent donc à la personne ; la sixième, chez chefsimon, n'annonce aucun nombre de convives et sort de tous les calculs par portion de cet arbitrage. La médiane des cinq est franche, 50 g par personne, d'où 200 g. Les croûtons de pain rassis apparaissent dans quatre sources sur sept, soit une majorité, à une tranche par personne : 120 g de pain rassis. Ce qui reste sous la moitié descend en variantes : le saucisson lyonnais à cuire de deux sources — absent du catalogue et signalé —, les cerneaux de noix, l'échalote de la vinaigrette, la sauce Maggi d'une seule source, que la synthèse avait d'ailleurs rattachée à de la sauce poisson, autre lecture à refuser. La ciboulette n'est citée qu'une fois parmi les six sources retenues — la seconde mention appartient au saladier écarté et ne compte pas —, mais c'est une herbe de finition qui ne pèse rien : elle reste en liste, déclarée optionnelle. Trois corrections sur la recette remplacée, qui ne s'appuyait sur aucun dossier : elle donnait deux huiles dont une huile de noix qu'aucune source ne porte, elle chiffrait la moutarde à 15 g quand les sources tiennent à la cuillère à café, et elle mettait 60 g d'échalote pour une seule mention sur sept. Les durées suivent les médianes : 20 minutes de préparation, une quinzaine de cuisson pour les lardons, les croûtons et les œufs. Le nom du corpus est juste, la recette n'est pas renommée.",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "La salade porte sa verdure et sa protéine — œuf et lard —, mais les croûtons sont une poignée de garniture et non une part de féculent : servie en repas elle appelle du pain de campagne ou des pommes sautées à côté. En entrée, elle n'a besoin de rien."
+      },
+      "ingredients": [
+        {
+          "form": "Frisée fraîche",
+          "quantity": 300,
+          "unit": "g",
+          "role": "salade",
+          "optional": false
+        },
+        {
+          "form": "Lardon fumé cru",
+          "quantity": 200,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Pain rassis",
+          "quantity": 120,
+          "unit": "g",
+          "role": "croûtons",
+          "optional": false
+        },
+        {
+          "form": "Œuf cru",
+          "quantity": 4,
+          "unit": "u",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Huile végétale",
+          "quantity": 45,
+          "unit": "ml",
+          "role": "vinaigrette",
+          "optional": false
+        },
+        {
+          "form": "Vinaigre de vin rouge",
+          "quantity": 20,
+          "unit": "ml",
+          "role": "vinaigrette",
+          "optional": false
+        },
+        {
+          "form": "Moutarde de Dijon",
+          "quantity": 6,
+          "unit": "g",
+          "role": "vinaigrette",
+          "optional": false
+        },
+        {
+          "form": "Ciboulette fraîche",
+          "quantity": 8,
+          "unit": "g",
+          "role": "herbe de finition",
+          "optional": true
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 3,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 1,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Détacher les feuilles de frisée, écarter le trognon et les côtes les plus dures, puis laver dans un grand volume d'eau froide en soulevant la verdure hors de l'eau plutôt qu'en la versant dans une passoire — le sable descend et reste au fond. Essorer longuement, en essoreuse ou dans un torchon claqué à bout de bras : une feuille encore mouillée refuse la vinaigrette, qui glisse et se ramasse au fond du saladier. Réserver au frais dans un linge."
+        },
+        {
+          "n": 2,
+          "instruction": "Couper le pain rassis en dés d'environ un centimètre, croûte comprise. Le prendre de la veille et non frais : un pain frais absorbe la graisse comme une éponge et rend le croûton lourd, alors qu'un pain sec sèche encore et croustille. Réserver."
+        },
+        {
+          "n": 3,
+          "instruction": "Faire revenir les lardons à sec dans une poêle froide, à feu moyen, sans ajouter de matière grasse. Le froid au départ laisse le gras fondre avant que la chair ne se contracte, et on obtient des lardons dorés au lieu de lardons durs nageant dans leur eau. Compter huit à dix minutes, en remuant. Les égoutter à l'écumoire et les garder au chaud, en laissant toute la graisse dans la poêle."
+        },
+        {
+          "n": 4,
+          "instruction": "Jeter les dés de pain dans cette graisse chaude et les faire dorer trois à quatre minutes en secouant la poêle sans arrêt, pour qu'ils prennent couleur sur toutes leurs faces. C'est ici que le plat se lie : le croûton porte le goût du lard et non celui d'un corps gras neutre. Les débarrasser sur du papier absorbant dès qu'ils sont bruns, ils continueraient à cuire dans la poêle."
+        },
+        {
+          "n": 5,
+          "instruction": "Monter la vinaigrette dans le fond du saladier : délayer la moutarde avec le vinaigre et une pincée de sel, fouetter jusqu'à ce que le sel soit dissous, puis verser l'huile en filet en fouettant pour obtenir une sauce liée et courte. Dissoudre le sel dans le vinaigre avant l'huile, et non l'inverse : dans un corps gras il ne se dissout pas et reste en grains sur la salade. Poivrer."
+        },
+        {
+          "n": 6,
+          "instruction": "Pocher les œufs un par un. Porter une casserole large d'eau à petits frémissements, ajouter une cuillerée de vinaigre, casser chaque œuf dans une louche puis le glisser au ras de l'eau. Compter trois minutes exactement : le blanc doit prendre et le jaune rester liquide, puisque c'est lui qui viendra napper la salade quand on le percera. Retirer à l'écumoire, égoutter sur un linge et parer les filaments de blanc aux ciseaux. Ne pas saler l'eau, le sel disperse le blanc."
+        },
+        {
+          "n": 7,
+          "instruction": "Verser la frisée sur la vinaigrette, ajouter les lardons encore chauds et retourner largement à la main, du fond vers la surface, une dizaine de gestes seulement. La chaleur des lardons attendrit à peine la feuille et libère l'huile de la vinaigrette : c'est ce contraste de tiède et de cru qui fait la salade lyonnaise, et il ne dure pas."
+        },
+        {
+          "n": 8,
+          "instruction": "Répartir aussitôt dans quatre assiettes creuses, semer les croûtons sur le dessus pour qu'ils restent secs, poser un œuf poché au centre de chacune et parsemer de ciboulette ciselée. Donner un tour de moulin et porter à table sans attendre : au bout de cinq minutes la frisée s'affaisse et les croûtons ramollissent."
+        }
+      ],
+      "techniques": [
+        "lavage et essorage de salade",
+        "rendu du gras à sec",
+        "croûtons à la graisse de lard",
+        "émulsion moutardée",
+        "pochage",
+        "assaisonnement tiède"
+      ],
+      "variants": [
+        "Avec un saucisson lyonnais à cuire, poché et servi en rondelles tièdes sur la salade (marmiton, deux sources)",
+        "Cerneaux de noix concassés ajoutés aux croûtons (marmiton)",
+        "Une échalote ciselée fondue dans la vinaigrette (chefsimon)",
+        "Pissenlits à la place de la frisée, racine ôtée (marmiton, chefsimon)",
+        "Batavia ou roquette à la place de la frisée (chefsimon)",
+        "Croûtons dorés au beurre plutôt qu'à la graisse de lard (chefsimon)",
+        "Une pointe de sauce Maggi dans la vinaigrette (marmiton)"
+      ],
+      "formes_manquantes": [
+        {
+          "ligne_source": "400 g de pissenlits / Environ 150 g de pissenlits frais, racine ôtée",
+          "sources": 2,
+          "motif": "Le pissenlit n'a pas de forme au catalogue. Écarté plutôt que remplacé par une autre amère : ni la frisée ni la roquette ne pèsent la même chose, et la substitution passerait pour une équivalence. La ligne descend en variante ; le pissenlit reste à créer."
+        },
+        {
+          "ligne_source": "1 saucisson lyonnais à cuire / 1 saucisson à cuire aux pistaches",
+          "sources": 2,
+          "motif": "Aucun saucisson à cuire au catalogue — la synthèse le rattachait au Boudin noir à cuire, un rapprochement à refuser. Deux sources sur sept, sous la moitié : la ligne descend en variante plutôt que d'être remplacée par une autre charcuterie."
+        }
+      ],
+      "sensory": {
+        "profile": "fresh_acidic",
+        "scores": {
+          "sweet": 1,
+          "salty": 4,
+          "acidic": 4,
+          "bitter": 3,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 3,
+          "freshness": 4,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "amertume de la frisée",
+          "vinaigre de vin",
+          "lard fumé",
+          "moutarde"
+        ],
+        "aroma_families": [
+          "fumé",
+          "vinaigre de vin rouge",
+          "moutarde",
+          "pain grillé"
+        ],
+        "target_textures": [
+          "feuille croquante",
+          "lardon doré",
+          "croûton sec",
+          "jaune coulant"
+        ],
+        "signature_ingredients": [
+          "Frisée fraîche",
+          "Lardon fumé cru",
+          "Œuf cru"
+        ],
+        "identity_guardrails": [
+          "Une verdure amère : sur une laitue douce, la vinaigrette et le lard n'ont plus rien à équilibrer",
+          "Un jaune coulant qui fait sauce quand on le perce — œuf cuit dur, le plat perd sa liaison",
+          "Lardons et croûtons ajoutés chauds sur la salade crue : le contraste tiède-cru est le plat",
+          "Vinaigrette au vinaigre de vin et à la moutarde, jamais une sauce crémée"
+        ]
+      },
+      "conservation": "Ne se conserve pas assemblée : la frisée rend son eau et les croûtons ramollissent en moins d'un quart d'heure. Préparer les éléments à l'avance et monter au dernier moment — la frisée lavée tient 2 jours au réfrigérateur dans un linge humide, la vinaigrette 5 jours en bocal, les croûtons 2 jours en boîte hermétique à température ambiante. Les lardons se réchauffent, les œufs pochés se pochent à la commande.",
+      "allergens": [
+        "gluten",
+        "moutarde",
+        "œuf"
+      ]
+    },
+    {
+      "code": "MX-001",
+      "remplace": "MX-001",
+      "family": "Chili con carne",
+      "cuisine_origin": "Tex-Mex, adapté en cuisine domestique française",
+      "identity_level": "named_traditional_dish",
+      "category": "plat mijoté",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 80,
+      "difficulty": "facile",
+      "sources": [
+        "dossier:chili-con-carne",
+        "marmiton.org",
+        "chefsimon.com",
+        "750g.com"
+      ],
+      "canonical_arbitration": "Neuf sources, de deux à huit portions, médiane quatre ; on garde les six portions du code repris, un chili se faisant en quantité. Deux lignes sont unanimes et fixent le plat : le haricot rouge et le bœuf haché, que les neuf sources portent l'un et l'autre. La synthèse n'en rattache que huit au bœuf, parce qu'elle lit « 500 g de tende de tranche ou de bœuf haché par votre boucher » comme une pièce à trancher et qu'elle ne convertit pas le « 1,5 kg » écrit à la virgule : c'est un artefact de lecture, pas une abstention de source. Les neuf lignes ramenées à la personne donnent 87,5, 100, 100, 116,7, 125, 125, 133,3, 166,7 et 187,5 g, médiane 125 g, soit 750 g pour six. Le haricot ressort à 116,7 g par personne, soit 700 g. Les deux ne sont donc pas à parts égales : la viande passe devant, de peu. Le haricot demande une décision : six sources sur neuf l'achètent explicitement en boîte — « grosse boîte de haricots rouges égouttés », « 400 g de haricots rouges en boîte », « 2 grosses boites » —, les trois autres donnent un poids nu (500 g, 265 g, 750 g) qui est celui d'une conserve, et la synthèse rattachait pourtant l'ensemble au haricot rouge sec. C'est un facteur deux sur la nutrition, silencieux : une conserve se déclare égouttée et son poids est celui du contenu sorti de la boîte, donc Haricot rouge cuit, égoutté à 700 g. Une réserve à porter plutôt qu'à taire : une des lignes retenues est écrite « avec son jus » et plusieurs autres sont des poids nets de boîte, si bien que les 700 g sont un plafond — les mêmes lignes lues en contenu égoutté descendraient plus bas, et la pesée mérite d'être reprise sur des poids égouttés déclarés. Deuxième décision, la base tomate, et c'est le désaccord structurant du dossier : quatre sources ouvrent une boîte de tomates pelées ou concassées, trois n'emploient que du concentré, une des tomates fraîches et du coulis, une dernière une boîte de sauce bolognaise. Or aucune source ne met les deux — concentré et conserve de tomates sont strictement alternatifs ici, et les cumuler serait inventer une recette que personne n'a écrite. On retient la ligne majoritaire, Tomate concassée en conserve, à la médiane des quatre sources ramenées à la portion, 102 g par personne soit 600 g ; le concentré passe en variante attestée. La boîte de sauce bolognaise, que la synthèse rattachait à de la sauce poisson, est écartée avec sa lecture. Troisième décision, la chaleur, et le dossier la donne en deux familles distinctes qu'on garde toutes deux parce qu'elles ne font pas le même travail : cinq sources versent une poudre de fond — « chili en poudre », « chili », deux sachets d'épices mexicaines, un mélange d'épices chili —, trois nomment un piment vif, le Cayenne, une y ajoute de l'Espelette et du Tabasco. On écrit donc Piment en poudre à 6 g pour la masse et Piment de Cayenne à 2 g pour le mordant. Les mélanges tout prêts n'ont pas de forme au catalogue et ils sont signalés ; plutôt que de leur substituer un approchant, on les décompose en ce que les autres sources écrivent en clair — cumin, paprika, origan —, ce qui est la lecture du dossier et non une reconstitution de mémoire. Le paprika demande d'ailleurs une correction sur la recette remplacée, qui le donnait fumé : les deux sources qui en pèsent disent « paprika » et « paprika mild », c'est-à-dire doux ; le fumé est un autre arôme et personne ne le réclame — on écrit Paprika doux, 8 g. Quatrième décision, le poivron : quatre sources sur neuf en mettent, à une demi-pièce par personne, soit trois poivrons parés pour six, environ 400 g de chair. Il est juste sous la moitié mais on le garde en liste plutôt qu'en variante, parce qu'il est le légume du plat et ce qui distingue le chili domestique français du chili texan sans haricots ni poivron. Le mouillement suit : quatre sources versent un bouillon, deux seulement un verre d'eau ; la médiane des lignes chiffrées donne 62,5 g par personne, on écrit 350 ml de Bouillon de bœuf : le bœuf et la volaille sont nommés une fois chacun — « 30 cl de bouillon de boeuf » d'un côté, « 30 cL de fond de volaille » de l'autre —, les deux autres lignes ne disent que « bouillon », et c'est le plat, un chili au bœuf, qui départage à égalité de voix. Le sel descend à 6 g pour cette raison, le bouillon en apportant déjà. La matière grasse, elle, divise sans peser lourd : deux sources versent de l'huile d'olive, une « de l'huile » sans la nommer, une seule beurre son fond de 50 g, les cinq dernières n'en portent aucune. On écrit Huile d'olive vierge extra à 40 ml, médiane des lignes chiffrées ; le beurre reste isolé à une source et ne descend pas même en variante. Passent en variantes ce qui reste sous le seuil : le maïs de trois sources — absent du catalogue et signalé, la synthèse l'ayant rattaché à de la fécule de maïs, ce qui n'a aucun rapport et aurait ajouté un liant là où il faut un légume sucré —, le chorizo, les lardons, le verre de vin rouge, la carotte, la gratinée d'emmental et de chapelure, le thym, le gingembre, le persil et la coriandre de finition. Deux sources servent le chili avec du riz : c'est ce qui fixe le rôle d'assiette, « main » qui accepte un féculent, plutôt que le « plat complet » que la seule présence des haricots pourrait suggérer. Les durées : 20 minutes de préparation, médiane du dossier ; pour la cuisson, la médiane brute de 30 minutes ne décrit que la moitié express du lot, dont les temps vont de 20 minutes à 2 h 15 — on déclare 80 minutes, entre la médiane et la queue longue, parce que les haricots entrent tard et doivent encore prendre la sauce. C'est aussi ce que somment les étapes : dix minutes de saisie en plusieurs fournées, un quart d'heure de fondue d'oignons et de poivrons, quarante minutes de mijotage, vingt de plus une fois les haricots entrés. Le nom du corpus est juste, la recette n'est pas renommée.",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Viande, légumineuse et légume dans une sauce courte, mais pas de céréale : le chili se sert sur du riz, avec des tortillas ou du pain, et deux sources du dossier le disent en clair — l'une ajoute 100 g de riz « pour un plat plus consistant », l'autre porte « riz pour accompagner » dans sa liste. Les haricots nourrissent mais ne remplacent pas le féculent dans l'assiette."
+      },
+      "ingredients": [
+        {
+          "form": "Bœuf haché cru 15 % MG",
+          "quantity": 750,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Haricot rouge cuit, égoutté",
+          "quantity": 700,
+          "unit": "g",
+          "role": "légumineuse",
+          "optional": false
+        },
+        {
+          "form": "Tomate concassée en conserve",
+          "quantity": 600,
+          "unit": "g",
+          "role": "base de sauce",
+          "optional": false
+        },
+        {
+          "form": "Poivron rouge frais",
+          "quantity": 400,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Bouillon de bœuf",
+          "quantity": 350,
+          "unit": "ml",
+          "role": "mouillement",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 250,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Huile d'olive vierge extra",
+          "quantity": 40,
+          "unit": "ml",
+          "role": "cuisson",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 12,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Paprika doux",
+          "quantity": 8,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Piment en poudre",
+          "quantity": 6,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 6,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Cumin moulu",
+          "quantity": 4,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Origan séché",
+          "quantity": 3,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Piment de Cayenne",
+          "quantity": 2,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 2,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Émincer les oignons, hacher l'ail, épépiner les poivrons et les tailler en morceaux d'environ deux centimètres — trois poivrons rouges donnent les 400 g de chair annoncés, les pédoncules et les graines partant à la poubelle. Égoutter les haricots rouges dans une passoire et les rincer à l'eau froide jusqu'à ce qu'elle cesse de mousser : le jus de conserve est épais et un peu amer, et il trouble la sauce si on le verse avec."
+        },
+        {
+          "n": 2,
+          "instruction": "Chauffer la moitié de l'huile dans une cocotte à fond épais et y colorer le bœuf haché en deux ou trois fois, en couche mince, sans remuer pendant la première minute. Une seule fournée refroidirait le fond, la viande rendrait son eau et bouillirait au lieu de brunir — or c'est cette croûte brune qui donne au chili sa profondeur. Débarrasser la viande colorée dans un plat au fur et à mesure, en gardant les sucs."
+        },
+        {
+          "n": 3,
+          "instruction": "Verser le reste d'huile dans la cocotte et y faire fondre les oignons huit minutes à feu moyen, en grattant le fond avec la cuillère pour dissoudre les sucs de la viande. Ajouter les poivrons et poursuivre cinq minutes, le temps qu'ils perdent leur cru sans se défaire, puis l'ail haché pour une minute seulement — au-delà il brûle et devient amer."
+        },
+        {
+          "n": 4,
+          "instruction": "Baisser le feu et jeter d'un coup le paprika doux, le piment en poudre, le cumin, l'origan et le Cayenne sur les légumes. Remuer trente à quarante secondes, pas plus : la chaleur et le gras réveillent les huiles essentielles des épices et changent leur odeur, qui passe du poussiéreux au grillé. Guetter ce virage et mouiller aussitôt — une épice brûlée ne se rattrape pas, elle amertume le plat entier."
+        },
+        {
+          "n": 5,
+          "instruction": "Remettre la viande et ses sucs, verser les tomates concassées et le bouillon, poivrer et porter à petite ébullition. Baisser à frémissement, couvrir à demi et laisser mijoter quarante minutes en remuant de temps en temps pour que rien n'attache. La sauce doit réduire lentement et napper la cuillère ; si elle épaissit trop tôt, ajouter un fond d'eau chaude plutôt que de couvrir complètement."
+        },
+        {
+          "n": 6,
+          "instruction": "Ajouter les haricots rincés et poursuivre vingt minutes à découvert. Ils entrent tard exprès : une heure de mijotage les ferait éclater et leur peau se détacherait dans la sauce, alors que vingt minutes suffisent à les charger d'épices en les laissant entiers sous la dent."
+        },
+        {
+          "n": 7,
+          "instruction": "Ne saler qu'ici, en fin de cuisson, et par petites pincées en goûtant : le bouillon a déjà salé le plat et la réduction a concentré ce qu'il apportait — les 6 g prévus sont un plafond, pas une consigne. Rectifier la chaleur au Cayenne si le chili est trop sage, l'acidité en prolongeant le mijotage de cinq minutes si les tomates piquent encore, et la texture en poussant deux minutes à feu vif si la sauce reste liquide."
+        },
+        {
+          "n": 8,
+          "instruction": "Laisser reposer un quart d'heure hors du feu avant de servir, ou mieux, préparer le chili la veille : les épices continuent de se diffuser à froid et le plat réchauffé est nettement plus rond que le plat sorti de la cocotte. Servir sur du riz long, avec des tortillas ou du pain, dans des assiettes creuses."
+        }
+      ],
+      "techniques": [
+        "saisie en plusieurs fournées",
+        "déglaçage des sucs",
+        "fondue d'oignons et de poivrons",
+        "torréfaction des épices",
+        "mijotage à couvert partiel",
+        "réduction"
+      ],
+      "variants": [
+        "Base de concentré de tomate à la place des tomates concassées, allongée d'eau (marmiton, 750g : trois sources)",
+        "Avec du maïs doux en conserve égoutté, ajouté en même temps que les haricots (chefsimon, 750g : trois sources)",
+        "Lardons et demi-chorizo revenus avec l'oignon, mouillement au verre de vin rouge (marmiton)",
+        "Gratiné au four : emmental râpé et chapelure sur le dessus en fin de cuisson (chefsimon)",
+        "Une carotte taillée en petits dés avec l'oignon (750g)",
+        "Thym frais et gingembre moulu en plus du cumin (chefsimon)",
+        "Piment d'Espelette et quelques gouttes de Tabasco pour monter la chaleur (750g)",
+        "Persil ou coriandre ciselés à l'envoi (trois sources sur neuf)"
+      ],
+      "formes_manquantes": [
+        {
+          "ligne_source": "1 petite boîte de maïs / 285 g de maïs / 1 boite de maïs",
+          "sources": 3,
+          "motif": "Pas de forme pour un maïs doux en conserve égoutté ; le catalogue ne porte que la Fécule de maïs, la Farine de maïs et la Tortilla, auxquelles la synthèse rattachait ces lignes — un liant là où il faut un légume sucré. Trois sources sur neuf, sous la moitié : la ligne descend en variante plutôt que d'être remplacée."
+        },
+        {
+          "ligne_source": "1 sachet de mélange d'épices mexicaines / 1 sachet d'épices mexicaines / un mélange d'épices chili / chili en poudre / chili",
+          "sources": 5,
+          "motif": "Aucun mélange tout prêt n'a de forme au catalogue, et la synthèse rattachait « chili en poudre » au Curry en poudre et les sachets au Pain d'épices, deux lectures à refuser. Décomposés en ce que les autres sources écrivent en clair — Piment en poudre pour la part de piment, Cumin moulu, Paprika doux, Origan séché —, plutôt que remplacés par un approchant. Les mélanges eux-mêmes restent à créer."
+        }
+      ],
+      "sensory": {
+        "profile": "spicy_umami",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 1,
+          "umami": 4,
+          "heat": 4,
+          "pungency": 3,
+          "richness": 3,
+          "freshness": 1,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "piment",
+          "cumin",
+          "tomate cuite",
+          "bœuf bruni"
+        ],
+        "aroma_families": [
+          "épices torréfiées",
+          "oignon compoté",
+          "tomate mijotée",
+          "paprika"
+        ],
+        "target_textures": [
+          "haché fondant",
+          "haricot entier sous la dent",
+          "sauce nappante",
+          "poivron tendre"
+        ],
+        "signature_ingredients": [
+          "Bœuf haché cru 15 % MG",
+          "Haricot rouge cuit, égoutté",
+          "Piment en poudre"
+        ],
+        "identity_guardrails": [
+          "Du piment en quantité perceptible : sans chaleur, ce n'est qu'une sauce à la viande",
+          "Le haricot rouge, que les neuf sources du dossier portent sans exception",
+          "Du bœuf haché brièvement bruni avant le mouillement, jamais bouilli d'entrée",
+          "Cumin et origan : c'est ce couple qui sort le plat du registre de la bolognaise"
+        ]
+      },
+      "conservation": "Se garde 4 jours au réfrigérateur dans un contenant fermé et gagne au repos : les épices se diffusent encore à froid. Se congèle 3 mois en portions, sans le riz ; décongeler une nuit au réfrigérateur puis réchauffer à couvert à feu doux avec deux cuillerées d'eau, la sauce ayant épaissi au froid. Ne pas réchauffer plus d'une fois.",
+      "allergens": []
+    }
+  ]
+}
