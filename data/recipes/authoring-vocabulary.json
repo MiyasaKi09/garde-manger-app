@@ -7,10 +7,10 @@
   },
   "regle": "Une nouvelle recette n'emploie que des formes de `formes_employables`, avec une unité listée dans `unites`. Toute autre forme rend la recette non publiable et l'envoie à l'arbitrage. Réutiliser une technique, un arôme, un profil ou une catégorie existants avant d'en créer un : les graphes de diversité du planificateur ne rapprochent pas deux synonymes.",
   "etat": {
-    "recettes_actuelles": 577,
+    "recettes_actuelles": 576,
     "cible_recettes": 3000,
-    "reste_a_ecrire": 2423,
-    "formes_employables": 455,
+    "reste_a_ecrire": 2424,
+    "formes_employables": 454,
     "formes_bloquees": 82
   },
   "formes_employables": [
@@ -18,7 +18,7 @@
       "nom": "Sel fin",
       "normalise": "sel fin",
       "categorie": "condiments_sauces",
-      "recettes_actuelles": 345,
+      "recettes_actuelles": 344,
       "roles_observes": [
         "assaisonnement",
         "crumble",
@@ -43,7 +43,7 @@
       "nom": "Poivre noir moulu",
       "normalise": "poivre noir moulu",
       "categorie": "epices",
-      "recettes_actuelles": 288,
+      "recettes_actuelles": 287,
       "roles_observes": [
         "assaisonnement",
         "épice"
@@ -65,7 +65,7 @@
       "nom": "Oignon jaune cru",
       "normalise": "oignon jaune cru",
       "categorie": "legumes",
-      "recettes_actuelles": 287,
+      "recettes_actuelles": 286,
       "roles_observes": [
         "aromate",
         "aromate de court-bouillon",
@@ -95,7 +95,7 @@
       "nom": "Ail cru",
       "normalise": "ail cru",
       "categorie": "herbes_aromates",
-      "recettes_actuelles": 282,
+      "recettes_actuelles": 281,
       "roles_observes": [
         "aromate",
         "aromatique",
@@ -121,7 +121,7 @@
       "nom": "Huile d'olive vierge extra",
       "normalise": "huile d olive vierge extra",
       "categorie": "matieres_grasses",
-      "recettes_actuelles": 214,
+      "recettes_actuelles": 213,
       "roles_observes": [
         "assaisonnement",
         "corps gras",
@@ -340,7 +340,7 @@
       "nom": "Feuille de laurier séchée",
       "normalise": "feuille de laurier sechee",
       "categorie": "epices",
-      "recettes_actuelles": 76,
+      "recettes_actuelles": 75,
       "roles_observes": [
         "aromate"
       ],
@@ -479,7 +479,7 @@
       "nom": "Tomate fraîche mûre",
       "normalise": "tomate fraiche mure",
       "categorie": "legumes",
-      "recettes_actuelles": 66,
+      "recettes_actuelles": 65,
       "roles_observes": [
         "base",
         "base de sauce",
@@ -883,33 +883,6 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Poivron rouge frais",
-      "normalise": "poivron rouge frais",
-      "categorie": "legumes",
-      "recettes_actuelles": 37,
-      "roles_observes": [
-        "aromatique",
-        "base",
-        "garniture",
-        "légume",
-        "légume principal",
-        "légume support",
-        "sauce"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 36.6,
-        "proteinG": 1.06,
-        "carbsG": 5.98,
-        "fatG": 0.5,
-        "fiberG": 3.2
-      },
-      "source": "ciqual_2020"
-    },
-    {
       "nom": "Tomate concassée en conserve",
       "normalise": "tomate concassee en conserve",
       "categorie": "legumes",
@@ -959,6 +932,33 @@
       },
       "source": "ciqual_2020",
       "valeur_derivee": "carbohydrate_g"
+    },
+    {
+      "nom": "Poivron rouge frais",
+      "normalise": "poivron rouge frais",
+      "categorie": "legumes",
+      "recettes_actuelles": 36,
+      "roles_observes": [
+        "aromatique",
+        "base",
+        "garniture",
+        "légume",
+        "légume principal",
+        "légume support",
+        "sauce"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 36.6,
+        "proteinG": 1.06,
+        "carbsG": 5.98,
+        "fatG": 0.5,
+        "fiberG": 3.2
+      },
+      "source": "ciqual_2020"
     },
     {
       "nom": "Porc haché cru",
@@ -1214,7 +1214,7 @@
       "nom": "Aubergine fraîche",
       "normalise": "aubergine fraiche",
       "categorie": "legumes",
-      "recettes_actuelles": 26,
+      "recettes_actuelles": 25,
       "roles_observes": [
         "base",
         "garniture",
@@ -1236,29 +1236,6 @@
         "carbsG": 2.39,
         "fatG": 0.14,
         "fiberG": 2.7
-      },
-      "source": "ciqual_2020"
-    },
-    {
-      "nom": "Courgette fraîche",
-      "normalise": "courgette fraiche",
-      "categorie": "legumes",
-      "recettes_actuelles": 25,
-      "roles_observes": [
-        "legume",
-        "légume",
-        "namul"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 16.5,
-        "proteinG": 1.23,
-        "carbsG": 1.8,
-        "fatG": 0.26,
-        "fiberG": 1.05
       },
       "source": "ciqual_2020"
     },
@@ -1311,24 +1288,25 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Thym frais",
-      "normalise": "thym frais",
-      "categorie": "herbes_aromates",
+      "nom": "Courgette fraîche",
+      "normalise": "courgette fraiche",
+      "categorie": "legumes",
       "recettes_actuelles": 24,
       "roles_observes": [
-        "aromate",
-        "herbe"
+        "legume",
+        "légume",
+        "namul"
       ],
       "unites": [
         "g"
       ],
       "conversion": {},
       "per100g": {
-        "kcal": 107,
-        "proteinG": 5.56,
-        "carbsG": 10.5,
-        "fatG": 1.68,
-        "fiberG": 14
+        "kcal": 16.5,
+        "proteinG": 1.23,
+        "carbsG": 1.8,
+        "fatG": 0.26,
+        "fiberG": 1.05
       },
       "source": "ciqual_2020"
     },
@@ -1352,6 +1330,28 @@
         "carbsG": 2.1,
         "fatG": 0.52,
         "fiberG": 3.19
+      },
+      "source": "ciqual_2020"
+    },
+    {
+      "nom": "Thym frais",
+      "normalise": "thym frais",
+      "categorie": "herbes_aromates",
+      "recettes_actuelles": 23,
+      "roles_observes": [
+        "aromate",
+        "herbe"
+      ],
+      "unites": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 107,
+        "proteinG": 5.56,
+        "carbsG": 10.5,
+        "fatG": 1.68,
+        "fiberG": 14
       },
       "source": "ciqual_2020"
     },
@@ -9864,27 +9864,6 @@
       "source": "ciqual_2020"
     },
     {
-      "nom": "Poivron jaune frais",
-      "normalise": "poivron jaune frais",
-      "categorie": "legumes",
-      "recettes_actuelles": 1,
-      "roles_observes": [
-        "légume"
-      ],
-      "unites": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 30.7,
-        "proteinG": 0.94,
-        "carbsG": 4.73,
-        "fatG": 0.3,
-        "fiberG": 1.2
-      },
-      "source": "ciqual_2020"
-    },
-    {
       "nom": "Poulpe cuit",
       "normalise": "poulpe cuit",
       "categorie": "poissons_fruits_de_mer",
@@ -11603,7 +11582,7 @@
   "techniques": [
     {
       "nom": "mijotage",
-      "recettes": 178
+      "recettes": 177
     },
     {
       "nom": "réduction",
@@ -11686,12 +11665,12 @@
       "recettes": 16
     },
     {
-      "nom": "compotage",
+      "nom": "grillade",
       "recettes": 15
     },
     {
-      "nom": "grillade",
-      "recettes": 15
+      "nom": "compotage",
+      "recettes": 14
     },
     {
       "nom": "liaison",
@@ -11782,10 +11761,6 @@
       "recettes": 7
     },
     {
-      "nom": "cuissons séparées",
-      "recettes": 7
-    },
-    {
       "nom": "farcissage",
       "recettes": 7
     },
@@ -11804,6 +11779,10 @@
     {
       "nom": "vapeur",
       "recettes": 7
+    },
+    {
+      "nom": "cuissons séparées",
+      "recettes": 6
     },
     {
       "nom": "dessalage",
@@ -11898,10 +11877,6 @@
       "recettes": 5
     },
     {
-      "nom": "taillage",
-      "recettes": 5
-    },
-    {
       "nom": "tamisage",
       "recettes": 5
     },
@@ -11991,6 +11966,10 @@
     },
     {
       "nom": "tadka",
+      "recettes": 4
+    },
+    {
+      "nom": "taillage",
       "recettes": 4
     },
     {
@@ -13117,15 +13096,15 @@
   "aromes": [
     {
       "nom": "oignon_compoté",
-      "recettes": 152
+      "recettes": 151
     },
     {
       "nom": "ail",
-      "recettes": 142
+      "recettes": 141
     },
     {
       "nom": "tomate_cuite",
-      "recettes": 99
+      "recettes": 98
     },
     {
       "nom": "lacté",
@@ -13192,12 +13171,12 @@
       "recettes": 23
     },
     {
-      "nom": "laurier",
+      "nom": "marin",
       "recettes": 22
     },
     {
-      "nom": "marin",
-      "recettes": 22
+      "nom": "laurier",
+      "recettes": 21
     },
     {
       "nom": "soja",
@@ -13220,11 +13199,11 @@
       "recettes": 19
     },
     {
-      "nom": "thym",
-      "recettes": 19
+      "nom": "huile_olive",
+      "recettes": 18
     },
     {
-      "nom": "huile_olive",
+      "nom": "thym",
       "recettes": 18
     },
     {
@@ -14878,11 +14857,11 @@
       "recettes": 24
     },
     {
-      "nom": "tomato_herbal",
-      "recettes": 24
+      "nom": "smoky_sweet",
+      "recettes": 23
     },
     {
-      "nom": "smoky_sweet",
+      "nom": "tomato_herbal",
       "recettes": 23
     },
     {
@@ -14941,7 +14920,7 @@
     },
     {
       "nom": "sauce_nappante",
-      "recettes": 38
+      "recettes": 37
     },
     {
       "nom": "fondant",
@@ -14949,7 +14928,7 @@
     },
     {
       "nom": "protéine_fondante",
-      "recettes": 24
+      "recettes": 23
     },
     {
       "nom": "viande fondante",
@@ -17974,10 +17953,6 @@
       "recettes": 1
     },
     {
-      "nom": "légumes mijotés",
-      "recettes": 1
-    },
-    {
       "nom": "légumineuses",
       "recettes": 1
     },
@@ -18593,7 +18568,7 @@
     },
     {
       "nom": "France / cuisine domestique internationale",
-      "recettes": 72
+      "recettes": 71
     },
     {
       "nom": "Italie",

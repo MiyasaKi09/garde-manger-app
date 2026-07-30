@@ -100,3 +100,63 @@ describe('recettes dérivées du corpus V3', () => {
     expect(new Set(noms).size).toBe(noms.length)
   })
 })
+
+/**
+ * Le chargeur ne supprime jamais une ligne : il remplace ce qu'il porte et laisse
+ * le reste. Une recette sortie du corpus garderait donc sa ligne en base,
+ * toujours offerte au catalogue et au planificateur — retirée dans le dépôt et
+ * nulle part ailleurs. Le registre des retraits existe pour que le chargeur
+ * MARQUE ce qu'il ne porte plus, et c'est cette traduction qu'on vérifie ici.
+ */
+describe('registre des retraits', () => {
+  const registre = JSON.parse(readFileSync(join(process.cwd(), 'data', 'recipes', 'retraits.json'), 'utf8'))
+  const sql = readFileSync(join(process.cwd(), 'scripts', 'data', 'out', 'corpus-v3-load.sql'), 'utf8')
+
+  it('chaque retrait porte un code, une famille et un motif', () => {
+    expect(registre.retraits.length).toBeGreaterThan(0)
+    for (const retrait of registre.retraits) {
+      expect(retrait.code).toMatch(/^[A-Z0-9]{2,6}-\d{3,4}(?:-D\d{1,2})?$/)
+      expect(String(retrait.family || '').trim().length).toBeGreaterThan(0)
+      // Un motif d'une ligne ne se relit pas : on exige de quoi comprendre la
+      // décision sans retrouver la conversation qui l'a prise.
+      expect(String(retrait.motif || '').trim().length).toBeGreaterThan(80)
+    }
+  })
+
+  it('aucune recette retirée n’est restée au corpus', () => {
+    const codes = new Set(corpus.recipes.map((recipe) => recipe.code))
+    for (const retrait of registre.retraits) {
+      expect(codes.has(retrait.code)).toBe(false)
+    }
+  })
+
+  // Retirer une base laisserait ses dérivées sans parent : le versement le
+  // refuse, et le corpus doit en porter la preuve.
+  it('aucune dérivée ne pointe vers une recette retirée', () => {
+    const retires = new Set(registre.retraits.map((retrait) => retrait.code))
+    for (const recipe of corpus.recipes) {
+      if (recipe.derived_from) expect(retires.has(recipe.derived_from)).toBe(false)
+    }
+  })
+
+  it('le SQL généré marque chaque retrait au lieu de le supprimer', () => {
+    for (const retrait of registre.retraits) {
+      const debut = sql.indexOf(`-- Retrait de ${retrait.code} —`)
+      expect(debut, `aucun bloc de retrait pour ${retrait.code}`).toBeGreaterThan(-1)
+      const bloc = sql.slice(debut, sql.indexOf(';', debut) + 1)
+
+      // Les deux colonnes qui font le retrait : l'une le sort du catalogue
+      // éditorial (A et B seulement), l'autre du planificateur.
+      expect(bloc).toMatch(/SET quality_level = 'D',/)
+      expect(bloc).toMatch(/planning_eligible = false,/)
+      // Le motif est écrit là où l'application lit déjà les non-éligibilités.
+      expect(bloc).toMatch(/'code', 'recipe_retired'/)
+      expect(bloc).toContain(`'${retrait.code}';`)
+      // La cible est bien la recette, pas tout le jeu de données.
+      expect(bloc).toMatch(/upper\(rv\.source_record_key\) =/)
+    }
+    // Aucun DELETE ne doit accompagner un retrait : des repas déjà planifiés
+    // référencent la recette et gardent leur instantané d'exécution.
+    expect(sql).not.toMatch(/DELETE\s+FROM\s+culinary\.recipe_versions/i)
+  })
+})

@@ -325,3 +325,38 @@ wet fry*. Un lot se compose donc en soumettant plus de plats que nécessaire et 
 gardant ceux qui rendent assez de sources — deux solides sur deux sites
 distincts. Les plats que ces trois sites ne couvrent pas ne se reprennent pas par
 cette chaîne, et le dire est plus honnête que d'écrire de mémoire.
+
+## Retirer une recette du corpus
+
+```bash
+node scripts/data/recipes/merge-recipe-batch.mjs --retirer FR-007 --motif "…"
+```
+
+C'est la seule opération du versement qui soustrait, et elle ne s'emploie que
+pour un doublon ou une fiche qu'aucun dossier ne soutient. **Elle n'efface rien
+en base.** Le chargeur remplace ce qu'il porte et laisse le reste : une recette
+sortie du dépôt garderait sa ligne, toujours offerte au catalogue et au
+planificateur. Le retrait la **marque** — `quality_level = 'D'`, qui la sort du
+catalogue éditorial (A et B seulement), et `planning_eligible = false`, qui la
+sort du planificateur — et écrit le motif dans `eligibility_issues`, là où
+l'application lit déjà les raisons de non-éligibilité.
+
+Marquer plutôt qu'effacer, c'est le point. Des repas déjà planifiés référencent
+la recette, et chacun garde son **instantané d'exécution** — ingrédients, étapes
+et nutrition figés au moment de la planification — qui le rend lisible sans elle.
+La supprimer orphelinerait ce qui a déjà été cuisiné.
+
+Le registre `data/recipes/retraits.json` survit au corpus, qui ne garde que ce
+qu'il porte : c'est lui que le chargeur relit à chaque génération pour réémettre
+la marque. Le retrait est donc rejouable et idempotent.
+
+Trois refus, chacun contre un corpus incohérent plutôt que contre un caprice :
+
+- **un code absent du corpus** — se tromper de code, c'est retirer sans regarder.
+- **un retrait sans motif** — six mois plus tard on saurait qu'un plat a disparu,
+  pas pourquoi, donc on ne pourrait ni le défendre ni le refaire.
+- **une base dont des variantes dérivent** — les laisser sans parent, c'est les
+  priver de ce qui les calcule. Les retirer d'abord, ou renoncer.
+
+Retirer une recette n'est pas une décision technique : le mécanisme s'arrête là,
+l'arbitrage revient à l'utilisateur.

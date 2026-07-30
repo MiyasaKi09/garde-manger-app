@@ -1464,5 +1464,15 @@
     "baseline": "new",
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260730100000_corpus_v3_576_retrait_fr007.sql",
+    "github_version": "20260730100000",
+    "name": "corpus_v3_576_retrait_fr007",
+    "sha256": "cb755187440345c6a611dd217343d62ff0f2d9973812a05a30b0f22a35e9ba64",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

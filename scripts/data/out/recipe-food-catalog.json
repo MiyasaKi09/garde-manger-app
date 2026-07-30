@@ -12763,36 +12763,6 @@
       "note": null
     },
     {
-      "canonical_name": "Poivron jaune frais",
-      "canonical_name_normalized": "poivron jaune frais",
-      "category": "legumes",
-      "confidence": "B",
-      "source": "ciqual_2020",
-      "source_record_key": "20168",
-      "source_name": "Poivron jaune, cru",
-      "state": {
-        "concept": "Poivron jaune frais",
-        "rest": "",
-        "cooking_state": null,
-        "preservation_state": "fresh",
-        "physical_state": null,
-        "bone_state": null,
-        "skin_state": null
-      },
-      "units_used": [
-        "g"
-      ],
-      "conversion": {},
-      "per100g": {
-        "kcal": 30.7,
-        "proteinG": 0.94,
-        "carbsG": 4.73,
-        "fatG": 0.3,
-        "fiberG": 1.2
-      },
-      "note": null
-    },
-    {
       "canonical_name": "Poivron rouge frais",
       "canonical_name_normalized": "poivron rouge frais",
       "category": "legumes",

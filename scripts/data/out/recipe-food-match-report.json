@@ -1,16 +1,16 @@
 {
   "generated_from": "data/recipes/corpus-v3.json",
   "nutrition_source": "Ciqual 2020",
-  "forms_total": 757,
+  "forms_total": 756,
   "summary": {
     "review_required": 220,
-    "curated": 490,
+    "curated": 489,
     "exact_label": 47
   },
-  "recipes_total": 577,
-  "recipes_eligible_for_publication": 387,
+  "recipes_total": 576,
+  "recipes_eligible_for_publication": 386,
   "recipes_blocked_only_by_proxy": 68,
-  "v1_enriched_eligible_for_publication": 57,
+  "v1_enriched_eligible_for_publication": 56,
   "unresolved_required": [
     "Achiote pâte",
     "Amchur poudre de mangue",
@@ -280,15 +280,6 @@
     {
       "code": "FR-006",
       "family": "Gratin dauphinois",
-      "eligible_for_publication": true,
-      "unresolved_required_forms": [],
-      "low_confidence_required_forms": [],
-      "incomplete_nutrition_required_forms": [],
-      "unresolved_conversion_required_forms": []
-    },
-    {
-      "code": "FR-007",
-      "family": "Ratatouille provençale",
       "eligible_for_publication": true,
       "unresolved_required_forms": [],
       "low_confidence_required_forms": [],
@@ -6319,7 +6310,7 @@
       "form": "Ail cru",
       "normalized": "ail cru",
       "required": true,
-      "recipe_count": 282,
+      "recipe_count": 281,
       "units": [
         "g"
       ],
@@ -7453,7 +7444,7 @@
       "form": "Aubergine fraîche",
       "normalized": "aubergine fraiche",
       "required": true,
-      "recipe_count": 26,
+      "recipe_count": 25,
       "units": [
         "g",
         "u"
@@ -15464,7 +15455,7 @@
       "form": "Courgette fraîche",
       "normalized": "courgette fraiche",
       "required": true,
-      "recipe_count": 25,
+      "recipe_count": 24,
       "units": [
         "g"
       ],
@@ -19748,7 +19739,7 @@
       "form": "Feuille de laurier séchée",
       "normalized": "feuille de laurier sechee",
       "required": true,
-      "recipe_count": 76,
+      "recipe_count": 75,
       "units": [
         "feuille",
         "u"
@@ -23838,7 +23829,7 @@
       "form": "Huile d'olive vierge extra",
       "normalized": "huile d olive vierge extra",
       "required": true,
-      "recipe_count": 255,
+      "recipe_count": 254,
       "units": [
         "g",
         "ml"
@@ -30009,7 +30000,7 @@
       "form": "Oignon jaune cru",
       "normalized": "oignon jaune cru",
       "required": true,
-      "recipe_count": 287,
+      "recipe_count": 286,
       "units": [
         "g"
       ],
@@ -36329,7 +36320,7 @@
       "form": "Poivre noir moulu",
       "normalized": "poivre noir moulu",
       "required": true,
-      "recipe_count": 288,
+      "recipe_count": 287,
       "units": [
         "g"
       ],
@@ -36381,65 +36372,10 @@
       ]
     },
     {
-      "form": "Poivron jaune frais",
-      "normalized": "poivron jaune frais",
-      "required": true,
-      "recipe_count": 1,
-      "units": [
-        "g"
-      ],
-      "selection_mode": "curated",
-      "selected": {
-        "ciqual_alim_code": "20168",
-        "ciqual_name": "Poivron jaune, cru",
-        "category": "legumes",
-        "nutrition_complete": true,
-        "confidence": "B",
-        "note": null
-      },
-      "suggestions": [
-        {
-          "ciqual_alim_code": "20168",
-          "ciqual_name": "Poivron jaune, cru",
-          "category": "legumes",
-          "nutrition_complete": true,
-          "score": 75.5
-        },
-        {
-          "ciqual_alim_code": "20041",
-          "ciqual_name": "Poivron, vert, jaune ou rouge, cru",
-          "category": "legumes",
-          "nutrition_complete": true,
-          "score": 71
-        },
-        {
-          "ciqual_alim_code": "20328",
-          "ciqual_name": "Poivron jaune, sauté/poêlé sans matière grasse",
-          "category": "legumes",
-          "nutrition_complete": true,
-          "score": 69.5
-        },
-        {
-          "ciqual_alim_code": "20085",
-          "ciqual_name": "Poivron vert, cru",
-          "category": "legumes",
-          "nutrition_complete": true,
-          "score": 24
-        },
-        {
-          "ciqual_alim_code": "20086",
-          "ciqual_name": "Poivron vert, cuit",
-          "category": "legumes",
-          "nutrition_complete": true,
-          "score": 24
-        }
-      ]
-    },
-    {
       "form": "Poivron rouge frais",
       "normalized": "poivron rouge frais",
       "required": true,
-      "recipe_count": 37,
+      "recipe_count": 36,
       "units": [
         "g"
       ],
@@ -41685,7 +41621,7 @@
       "form": "Sel fin",
       "normalized": "sel fin",
       "required": true,
-      "recipe_count": 345,
+      "recipe_count": 344,
       "units": [
         "g"
       ],
@@ -43148,7 +43084,7 @@
       "form": "Thym frais",
       "normalized": "thym frais",
       "required": true,
-      "recipe_count": 21,
+      "recipe_count": 20,
       "units": [
         "g"
       ],
@@ -43828,7 +43764,7 @@
       "form": "Tomate fraîche mûre",
       "normalized": "tomate fraiche mure",
       "required": true,
-      "recipe_count": 66,
+      "recipe_count": 65,
       "units": [
         "g",
         "u"

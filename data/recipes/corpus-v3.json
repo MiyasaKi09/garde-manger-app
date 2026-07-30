@@ -22,27 +22,27 @@
     {
       "rank": 1,
       "name": "Sel fin",
-      "recipe_count": 345
+      "recipe_count": 344
     },
     {
       "rank": 2,
       "name": "Poivre noir moulu",
-      "recipe_count": 288
+      "recipe_count": 287
     },
     {
       "rank": 3,
       "name": "Oignon jaune cru",
-      "recipe_count": 287
+      "recipe_count": 286
     },
     {
       "rank": 4,
       "name": "Ail cru",
-      "recipe_count": 282
+      "recipe_count": 281
     },
     {
       "rank": 5,
       "name": "Huile d'olive vierge extra",
-      "recipe_count": 255
+      "recipe_count": 254
     },
     {
       "rank": 6,
@@ -72,7 +72,7 @@
     {
       "rank": 11,
       "name": "Feuille de laurier séchée",
-      "recipe_count": 76
+      "recipe_count": 75
     },
     {
       "rank": 12,
@@ -97,7 +97,7 @@
     {
       "rank": 16,
       "name": "Tomate fraîche mûre",
-      "recipe_count": 66
+      "recipe_count": 65
     },
     {
       "rank": 17,
@@ -166,17 +166,17 @@
     },
     {
       "rank": 30,
-      "name": "Poivron rouge frais",
-      "recipe_count": 37
-    },
-    {
-      "rank": 31,
       "name": "Tomate concassée en conserve",
       "recipe_count": 37
     },
     {
-      "rank": 32,
+      "rank": 31,
       "name": "Gruyère râpé",
+      "recipe_count": 36
+    },
+    {
+      "rank": 32,
+      "name": "Poivron rouge frais",
       "recipe_count": 36
     },
     {
@@ -232,22 +232,22 @@
     {
       "rank": 43,
       "name": "Aubergine fraîche",
-      "recipe_count": 26
-    },
-    {
-      "rank": 44,
-      "name": "Courgette fraîche",
       "recipe_count": 25
     },
     {
-      "rank": 45,
+      "rank": 44,
       "name": "Herbes de Provence séchées",
       "recipe_count": 25
     },
     {
-      "rank": 46,
+      "rank": 45,
       "name": "Pain de campagne",
       "recipe_count": 25
+    },
+    {
+      "rank": 46,
+      "name": "Courgette fraîche",
+      "recipe_count": 24
     },
     {
       "rank": 47,
@@ -266,22 +266,22 @@
     },
     {
       "rank": 50,
-      "name": "Thym frais",
-      "recipe_count": 21
-    },
-    {
-      "rank": 51,
       "name": "Poitrine de porc crue",
       "recipe_count": 20
     },
     {
-      "rank": 52,
+      "rank": 51,
       "name": "Poivron vert frais",
       "recipe_count": 20
     },
     {
-      "rank": 53,
+      "rank": 52,
       "name": "Thon au naturel en conserve, égoutté",
+      "recipe_count": 20
+    },
+    {
+      "rank": 53,
+      "name": "Thym frais",
       "recipe_count": 20
     },
     {
@@ -3316,491 +3316,486 @@
     },
     {
       "rank": 660,
-      "name": "Poivron jaune frais",
-      "recipe_count": 1
-    },
-    {
-      "rank": 661,
       "name": "Pomme de terre jaune cuite",
       "recipe_count": 1
     },
     {
-      "rank": 662,
+      "rank": 661,
       "name": "Pomme de terre paille",
       "recipe_count": 1
     },
     {
-      "rank": 663,
+      "rank": 662,
       "name": "Pomme fraîche râpée",
       "recipe_count": 1
     },
     {
-      "rank": 664,
+      "rank": 663,
       "name": "Porc cru en julienne",
       "recipe_count": 1
     },
     {
-      "rank": 665,
+      "rank": 664,
       "name": "Porc cuit haché chicharrón",
       "recipe_count": 1
     },
     {
-      "rank": 666,
+      "rank": 665,
       "name": "Porc haché cru gras",
       "recipe_count": 1
     },
     {
-      "rank": 667,
+      "rank": 666,
       "name": "Porc rôti vietnamien",
       "recipe_count": 1
     },
     {
-      "rank": 668,
+      "rank": 667,
       "name": "Poulet cru désossé",
       "recipe_count": 1
     },
     {
-      "rank": 669,
+      "rank": 668,
       "name": "Poulet cru en morceaux",
       "recipe_count": 1
     },
     {
-      "rank": 670,
+      "rank": 669,
       "name": "Poulpe cru nettoyé",
       "recipe_count": 1
     },
     {
-      "rank": 671,
+      "rank": 670,
       "name": "Poulpe cuit",
       "recipe_count": 1
     },
     {
-      "rank": 672,
+      "rank": 671,
       "name": "Pousse de soja blanchie",
       "recipe_count": 1
     },
     {
-      "rank": 673,
+      "rank": 672,
       "name": "Quenelle nature crue",
       "recipe_count": 1
     },
     {
-      "rank": 674,
+      "rank": 673,
       "name": "Quesillo Oaxaca",
       "recipe_count": 1
     },
     {
-      "rank": 675,
+      "rank": 674,
       "name": "Quinoa cru",
       "recipe_count": 1
     },
     {
-      "rank": 676,
+      "rank": 675,
       "name": "Radis jaune mariné danmuji",
       "recipe_count": 1
     },
     {
-      "rank": 677,
+      "rank": 676,
       "name": "Rascasse crue entière",
       "recipe_count": 1
     },
     {
-      "rank": 678,
+      "rank": 677,
       "name": "Reblochon au lait cru",
       "recipe_count": 1
     },
     {
-      "rank": 679,
+      "rank": 678,
       "name": "Ricotta salata",
       "recipe_count": 1
     },
     {
-      "rank": 680,
+      "rank": 679,
       "name": "Rigatoni secs",
       "recipe_count": 1
     },
     {
-      "rank": 681,
+      "rank": 680,
       "name": "Riz brisé cru",
       "recipe_count": 1
     },
     {
-      "rank": 682,
+      "rank": 681,
       "name": "Riz complet cru",
       "recipe_count": 1
     },
     {
-      "rank": 683,
+      "rank": 682,
       "name": "Riz étuvé cru",
       "recipe_count": 1
     },
     {
-      "rank": 684,
+      "rank": 683,
       "name": "Riz gluant cru grillé moulu",
       "recipe_count": 1
     },
     {
-      "rank": 685,
+      "rank": 684,
       "name": "Riz jasmin cuit froid",
       "recipe_count": 1
     },
     {
-      "rank": 686,
+      "rank": 685,
       "name": "Riz long blanc cuit",
       "recipe_count": 1
     },
     {
-      "rank": 687,
+      "rank": 686,
       "name": "Riz long étuvé cru",
       "recipe_count": 1
     },
     {
-      "rank": 688,
+      "rank": 687,
       "name": "Riz rond blanc cru",
       "recipe_count": 1
     },
     {
-      "rank": 689,
+      "rank": 688,
       "name": "Rouille",
       "recipe_count": 1
     },
     {
-      "rank": 690,
+      "rank": 689,
       "name": "Roux de curry japonais",
       "recipe_count": 1
     },
     {
-      "rank": 691,
+      "rank": 690,
       "name": "Saewoojeot crevette fermentée",
       "recipe_count": 1
     },
     {
-      "rank": 692,
+      "rank": 691,
       "name": "Saindoux asiento",
       "recipe_count": 1
     },
     {
-      "rank": 693,
+      "rank": 692,
       "name": "Saint-pierre cru",
       "recipe_count": 1
     },
     {
-      "rank": 694,
+      "rank": 693,
       "name": "Saké",
       "recipe_count": 1
     },
     {
-      "rank": 695,
+      "rank": 694,
       "name": "Saké de cuisine",
       "recipe_count": 1
     },
     {
-      "rank": 696,
+      "rank": 695,
       "name": "Salsa roja",
       "recipe_count": 1
     },
     {
-      "rank": 697,
+      "rank": 696,
       "name": "Sambal",
       "recipe_count": 1
     },
     {
-      "rank": 698,
+      "rank": 697,
       "name": "Sambar powder",
       "recipe_count": 1
     },
     {
-      "rank": 699,
+      "rank": 698,
       "name": "Sauce huître",
       "recipe_count": 1
     },
     {
-      "rank": 700,
+      "rank": 699,
       "name": "Sauce okonomiyaki",
       "recipe_count": 1
     },
     {
-      "rank": 701,
+      "rank": 700,
       "name": "Sauce soja claire",
       "recipe_count": 1
     },
     {
-      "rank": 702,
+      "rank": 701,
       "name": "Sauce soja légère spéciale poisson",
       "recipe_count": 1
     },
     {
-      "rank": 703,
+      "rank": 702,
       "name": "Sauce soja philippine",
       "recipe_count": 1
     },
     {
-      "rank": 704,
+      "rank": 703,
       "name": "Sauce takoyaki",
       "recipe_count": 1
     },
     {
-      "rank": 705,
+      "rank": 704,
       "name": "Sauce tomate salvadorienne",
       "recipe_count": 1
     },
     {
-      "rank": 706,
+      "rank": 705,
       "name": "Sauce Worcestershire",
       "recipe_count": 1
     },
     {
-      "rank": 707,
+      "rank": 706,
       "name": "Sauce yakisoba",
       "recipe_count": 1
     },
     {
-      "rank": 708,
+      "rank": 707,
       "name": "Saucisse de Strasbourg",
       "recipe_count": 1
     },
     {
-      "rank": 709,
+      "rank": 708,
       "name": "Saucisse fumée kielbasa",
       "recipe_count": 1
     },
     {
-      "rank": 710,
+      "rank": 709,
       "name": "Saucisse linguiça",
       "recipe_count": 1
     },
     {
-      "rank": 711,
+      "rank": 710,
       "name": "Saumure légère",
       "recipe_count": 1
     },
     {
-      "rank": 712,
+      "rank": 711,
       "name": "Semoule de blé dur moyenne sèche",
       "recipe_count": 1
     },
     {
-      "rank": 713,
+      "rank": 712,
       "name": "Sole entière crue, parée",
       "recipe_count": 1
     },
     {
-      "rank": 714,
+      "rank": 713,
       "name": "Ssamjang",
       "recipe_count": 1
     },
     {
-      "rank": 715,
+      "rank": 714,
       "name": "Steak de bœuf cru fin",
       "recipe_count": 1
     },
     {
-      "rank": 716,
+      "rank": 715,
       "name": "Sucre glace",
       "recipe_count": 1
     },
     {
-      "rank": 717,
+      "rank": 716,
       "name": "Tahini de sésame chinois",
       "recipe_count": 1
     },
     {
-      "rank": 718,
+      "rank": 717,
       "name": "Tamarin frais ou pâte",
       "recipe_count": 1
     },
     {
-      "rank": 719,
+      "rank": 718,
       "name": "Tare de soja",
       "recipe_count": 1
     },
     {
-      "rank": 720,
+      "rank": 719,
       "name": "Tasajo de bœuf",
       "recipe_count": 1
     },
     {
-      "rank": 721,
+      "rank": 720,
       "name": "Tempeh frit",
       "recipe_count": 1
     },
     {
-      "rank": 722,
+      "rank": 721,
       "name": "Tenkasu miettes de tempura",
       "recipe_count": 1
     },
     {
-      "rank": 723,
+      "rank": 722,
       "name": "Terasi pâte de crevette",
       "recipe_count": 1
     },
     {
-      "rank": 724,
+      "rank": 723,
       "name": "Thon à l’huile en conserve, égoutté",
       "recipe_count": 1
     },
     {
-      "rank": 725,
+      "rank": 724,
       "name": "Tlayuda grande",
       "recipe_count": 1
     },
     {
-      "rank": 726,
+      "rank": 725,
       "name": "Tofu ferme frit",
       "recipe_count": 1
     },
     {
-      "rank": 727,
+      "rank": 726,
       "name": "Tofu puff frit",
       "recipe_count": 1
     },
     {
-      "rank": 728,
+      "rank": 727,
       "name": "Tofu rouge fermenté",
       "recipe_count": 1
     },
     {
-      "rank": 729,
+      "rank": 728,
       "name": "Tofu soyeux ferme",
       "recipe_count": 1
     },
     {
-      "rank": 730,
+      "rank": 729,
       "name": "Tofu soyeux sundubu",
       "recipe_count": 1
     },
     {
-      "rank": 731,
+      "rank": 730,
       "name": "Tome fraîche de l’Aubrac",
       "recipe_count": 1
     },
     {
-      "rank": 732,
+      "rank": 731,
       "name": "Tonnarelli secs",
       "recipe_count": 1
     },
     {
-      "rank": 733,
+      "rank": 732,
       "name": "Toor dal cuit",
       "recipe_count": 1
     },
     {
-      "rank": 734,
+      "rank": 733,
       "name": "Tortilla de maïs grillée",
       "recipe_count": 1
     },
     {
-      "rank": 735,
+      "rank": 734,
       "name": "Tortilla de maïs rassise",
       "recipe_count": 1
     },
     {
-      "rank": 736,
+      "rank": 735,
       "name": "Tostada de maïs",
       "recipe_count": 1
     },
     {
-      "rank": 737,
+      "rank": 736,
       "name": "Tranche de bœuf crue fine",
       "recipe_count": 1
     },
     {
-      "rank": 738,
+      "rank": 737,
       "name": "Travers de bœuf flanken cru",
       "recipe_count": 1
     },
     {
-      "rank": 739,
+      "rank": 738,
       "name": "Travers de porc crus",
       "recipe_count": 1
     },
     {
-      "rank": 740,
+      "rank": 739,
       "name": "Travers de porc salés",
       "recipe_count": 1
     },
     {
-      "rank": 741,
+      "rank": 740,
       "name": "Truite fumée",
       "recipe_count": 1
     },
     {
-      "rank": 742,
+      "rank": 741,
       "name": "Tzatziki",
       "recipe_count": 1
     },
     {
-      "rank": 743,
+      "rank": 742,
       "name": "Veau haché cru",
       "recipe_count": 1
     },
     {
-      "rank": 744,
+      "rank": 743,
       "name": "Vermicelle de riz cuit",
       "recipe_count": 1
     },
     {
-      "rank": 745,
+      "rank": 744,
       "name": "Vermicelle de riz sec",
       "recipe_count": 1
     },
     {
-      "rank": 746,
+      "rank": 745,
       "name": "Vermouth sec",
       "recipe_count": 1
     },
     {
-      "rank": 747,
+      "rank": 746,
       "name": "Viande de chèvre crue avec os",
       "recipe_count": 1
     },
     {
-      "rank": 748,
+      "rank": 747,
       "name": "Vin blanc sec d Alsace",
       "recipe_count": 1
     },
     {
-      "rank": 749,
+      "rank": 748,
       "name": "Vin de riz taïwanais",
       "recipe_count": 1
     },
     {
-      "rank": 750,
+      "rank": 749,
       "name": "Vin rouge de Bourgogne",
       "recipe_count": 1
     },
     {
-      "rank": 751,
+      "rank": 750,
       "name": "Vinaigre de canne",
       "recipe_count": 1
     },
     {
-      "rank": 752,
+      "rank": 751,
       "name": "Vinaigre de malt",
       "recipe_count": 1
     },
     {
-      "rank": 753,
+      "rank": 752,
       "name": "Vinaigre de palmier ou cidre",
       "recipe_count": 1
     },
     {
-      "rank": 754,
+      "rank": 753,
       "name": "Xérès sec",
       "recipe_count": 1
     },
     {
-      "rank": 755,
+      "rank": 754,
       "name": "Yaourt grec",
       "recipe_count": 1
     },
     {
-      "rank": 756,
+      "rank": 755,
       "name": "Zakwas de betterave fermenté",
       "recipe_count": 1
     },
     {
-      "rank": 757,
+      "rank": 756,
       "name": "Zeste d orange",
       "recipe_count": 1
     }
@@ -3809,7 +3804,7 @@
     {
       "name": "Sel fin",
       "normalized": "sel fin",
-      "recipe_count": 345,
+      "recipe_count": 344,
       "recipes": [
         "FR-001",
         "FR-002",
@@ -3818,7 +3813,6 @@
         "IT-001",
         "FR-005",
         "FR-006",
-        "FR-007",
         "FR-008",
         "FR-009",
         "MAG-001",
@@ -4161,7 +4155,7 @@
     {
       "name": "Poivre noir moulu",
       "normalized": "poivre noir moulu",
-      "recipe_count": 288,
+      "recipe_count": 287,
       "recipes": [
         "FR-001",
         "FR-003",
@@ -4169,7 +4163,6 @@
         "IT-001",
         "FR-005",
         "FR-006",
-        "FR-007",
         "FR-009",
         "FR-010",
         "FR-011",
@@ -4456,14 +4449,13 @@
     {
       "name": "Oignon jaune cru",
       "normalized": "oignon jaune cru",
-      "recipe_count": 287,
+      "recipe_count": 286,
       "recipes": [
         "FR-001",
         "FR-002",
         "FR-003",
         "FR-004",
         "IT-001",
-        "FR-007",
         "FR-008",
         "MAG-001",
         "MX-001",
@@ -4750,11 +4742,10 @@
     {
       "name": "Ail cru",
       "normalized": "ail cru",
-      "recipe_count": 282,
+      "recipe_count": 281,
       "recipes": [
         "FR-001",
         "FR-006",
-        "FR-007",
         "FR-008",
         "MX-001",
         "VEG-001",
@@ -5039,11 +5030,10 @@
     {
       "name": "Huile d'olive vierge extra",
       "normalized": "huile d olive vierge extra",
-      "recipe_count": 255,
+      "recipe_count": 254,
       "recipes": [
         "FR-004",
         "IT-001",
-        "FR-007",
         "FR-008",
         "FR-009",
         "MAG-001",
@@ -5975,10 +5965,9 @@
     {
       "name": "Feuille de laurier séchée",
       "normalized": "feuille de laurier sechee",
-      "recipe_count": 76,
+      "recipe_count": 75,
       "recipes": [
         "FR-003",
-        "FR-007",
         "VEG-001",
         "REAL-074",
         "REAL-113",
@@ -6360,9 +6349,8 @@
     {
       "name": "Tomate fraîche mûre",
       "normalized": "tomate fraiche mure",
-      "recipe_count": 66,
+      "recipe_count": 65,
       "recipes": [
-        "FR-007",
         "VEG-002",
         "FR-029",
         "FR-035",
@@ -7123,50 +7111,6 @@
       ]
     },
     {
-      "name": "Poivron rouge frais",
-      "normalized": "poivron rouge frais",
-      "recipe_count": 37,
-      "recipes": [
-        "FR-007",
-        "FR-008",
-        "MX-001",
-        "VEG-003",
-        "MED-001",
-        "REAL-078",
-        "REAL-092",
-        "REAL-133",
-        "REAL-140",
-        "REAL-152",
-        "REAL-158",
-        "REAL-166",
-        "REAL-277",
-        "REAL-287",
-        "REAL-290",
-        "SRC-021",
-        "SRC-048",
-        "SRC-051",
-        "SRC-059",
-        "SRC-021-D1",
-        "SRC-021-D2",
-        "SRC-021-D3",
-        "SRC-021-D4",
-        "SRC-043-D2",
-        "SRC-048-D1",
-        "SRC-048-D2",
-        "SRC-048-D3",
-        "SRC-048-D4",
-        "SRC-051-D1",
-        "SRC-051-D2",
-        "SRC-051-D3",
-        "SRC-051-D4",
-        "SRC-052-D4",
-        "SRC-058-D2",
-        "SRC-059-D1",
-        "SRC-059-D2",
-        "SRC-059-D3"
-      ]
-    },
-    {
       "name": "Tomate concassée en conserve",
       "normalized": "tomate concassee en conserve",
       "recipe_count": 37,
@@ -7251,6 +7195,49 @@
         "SRC-056-D3",
         "SRC-056-D4",
         "SRC-056-D5"
+      ]
+    },
+    {
+      "name": "Poivron rouge frais",
+      "normalized": "poivron rouge frais",
+      "recipe_count": 36,
+      "recipes": [
+        "FR-008",
+        "MX-001",
+        "VEG-003",
+        "MED-001",
+        "REAL-078",
+        "REAL-092",
+        "REAL-133",
+        "REAL-140",
+        "REAL-152",
+        "REAL-158",
+        "REAL-166",
+        "REAL-277",
+        "REAL-287",
+        "REAL-290",
+        "SRC-021",
+        "SRC-048",
+        "SRC-051",
+        "SRC-059",
+        "SRC-021-D1",
+        "SRC-021-D2",
+        "SRC-021-D3",
+        "SRC-021-D4",
+        "SRC-043-D2",
+        "SRC-048-D1",
+        "SRC-048-D2",
+        "SRC-048-D3",
+        "SRC-048-D4",
+        "SRC-051-D1",
+        "SRC-051-D2",
+        "SRC-051-D3",
+        "SRC-051-D4",
+        "SRC-052-D4",
+        "SRC-058-D2",
+        "SRC-059-D1",
+        "SRC-059-D2",
+        "SRC-059-D3"
       ]
     },
     {
@@ -7627,9 +7614,8 @@
     {
       "name": "Aubergine fraîche",
       "normalized": "aubergine fraiche",
-      "recipe_count": 26,
+      "recipe_count": 25,
       "recipes": [
-        "FR-007",
         "GR-001",
         "REAL-103",
         "REAL-105",
@@ -7651,38 +7637,6 @@
         "SRC-046-D1",
         "SRC-046-D2",
         "SRC-046-D3",
-        "SRC-051-D1",
-        "SRC-051-D2",
-        "SRC-051-D3",
-        "SRC-051-D4"
-      ]
-    },
-    {
-      "name": "Courgette fraîche",
-      "normalized": "courgette fraiche",
-      "recipe_count": 25,
-      "recipes": [
-        "FR-007",
-        "MAG-001",
-        "FR-010",
-        "VEG-003",
-        "IT-008",
-        "FR-020",
-        "REAL-227",
-        "REAL-233",
-        "PROT-007",
-        "SRC-010",
-        "SRC-029",
-        "SRC-051",
-        "SRC-010-D1",
-        "SRC-010-D2",
-        "SRC-010-D3",
-        "SRC-010-D4",
-        "SRC-029-D1",
-        "SRC-029-D2",
-        "SRC-029-D3",
-        "SRC-029-D4",
-        "SRC-029-D5",
         "SRC-051-D1",
         "SRC-051-D2",
         "SRC-051-D3",
@@ -7751,6 +7705,37 @@
         "SRC-050-D4",
         "SRC-053-D4",
         "SRC-053-D5"
+      ]
+    },
+    {
+      "name": "Courgette fraîche",
+      "normalized": "courgette fraiche",
+      "recipe_count": 24,
+      "recipes": [
+        "MAG-001",
+        "FR-010",
+        "VEG-003",
+        "IT-008",
+        "FR-020",
+        "REAL-227",
+        "REAL-233",
+        "PROT-007",
+        "SRC-010",
+        "SRC-029",
+        "SRC-051",
+        "SRC-010-D1",
+        "SRC-010-D2",
+        "SRC-010-D3",
+        "SRC-010-D4",
+        "SRC-029-D1",
+        "SRC-029-D2",
+        "SRC-029-D3",
+        "SRC-029-D4",
+        "SRC-029-D5",
+        "SRC-051-D1",
+        "SRC-051-D2",
+        "SRC-051-D3",
+        "SRC-051-D4"
       ]
     },
     {
@@ -7840,34 +7825,6 @@
       ]
     },
     {
-      "name": "Thym frais",
-      "normalized": "thym frais",
-      "recipe_count": 21,
-      "recipes": [
-        "FR-007",
-        "FR-008",
-        "FR-013",
-        "FR-017",
-        "FR-018",
-        "FR-038",
-        "REAL-288",
-        "REAL-289",
-        "PROT-008",
-        "PROT-009",
-        "SRC-002",
-        "SRC-003",
-        "SRC-004",
-        "SRC-006",
-        "SRC-003-D1",
-        "SRC-004-D1",
-        "SRC-004-D2",
-        "SRC-006-D1",
-        "SRC-006-D2",
-        "SRC-002-D1",
-        "SRC-003-D2"
-      ]
-    },
-    {
       "name": "Poitrine de porc crue",
       "normalized": "poitrine de porc crue",
       "recipe_count": 20,
@@ -7946,6 +7903,33 @@
         "SRC-059-D2",
         "SRC-059-D3",
         "SRC-024-D2"
+      ]
+    },
+    {
+      "name": "Thym frais",
+      "normalized": "thym frais",
+      "recipe_count": 20,
+      "recipes": [
+        "FR-008",
+        "FR-013",
+        "FR-017",
+        "FR-018",
+        "FR-038",
+        "REAL-288",
+        "REAL-289",
+        "PROT-008",
+        "PROT-009",
+        "SRC-002",
+        "SRC-003",
+        "SRC-004",
+        "SRC-006",
+        "SRC-003-D1",
+        "SRC-004-D1",
+        "SRC-004-D2",
+        "SRC-006-D1",
+        "SRC-006-D2",
+        "SRC-002-D1",
+        "SRC-003-D2"
       ]
     },
     {
@@ -14286,14 +14270,6 @@
       ]
     },
     {
-      "name": "Poivron jaune frais",
-      "normalized": "poivron jaune frais",
-      "recipe_count": 1,
-      "recipes": [
-        "FR-007"
-      ]
-    },
-    {
       "name": "Pomme de terre jaune cuite",
       "normalized": "pomme de terre jaune cuite",
       "recipe_count": 1,
@@ -15073,10 +15049,9 @@
   "technique_graph": [
     {
       "technique": "mijotage",
-      "recipe_count": 178,
+      "recipe_count": 177,
       "recipes": [
         "IT-001",
-        "FR-007",
         "FR-008",
         "FR-009",
         "MX-001",
@@ -16355,27 +16330,6 @@
       ]
     },
     {
-      "technique": "compotage",
-      "recipe_count": 15,
-      "recipes": [
-        "FR-007",
-        "REAL-092",
-        "REAL-106",
-        "REAL-126",
-        "REAL-130",
-        "REAL-131",
-        "REAL-149",
-        "REAL-150",
-        "REAL-154",
-        "REAL-162",
-        "REAL-166",
-        "REAL-198",
-        "REAL-272",
-        "PROT-001",
-        "SRC-032-D1"
-      ]
-    },
-    {
       "technique": "grillade",
       "recipe_count": 15,
       "recipes": [
@@ -16394,6 +16348,26 @@
         "REAL-285",
         "PROT-005",
         "SRC-032-D5"
+      ]
+    },
+    {
+      "technique": "compotage",
+      "recipe_count": 14,
+      "recipes": [
+        "REAL-092",
+        "REAL-106",
+        "REAL-126",
+        "REAL-130",
+        "REAL-131",
+        "REAL-149",
+        "REAL-150",
+        "REAL-154",
+        "REAL-162",
+        "REAL-166",
+        "REAL-198",
+        "REAL-272",
+        "PROT-001",
+        "SRC-032-D1"
       ]
     },
     {
@@ -16741,19 +16715,6 @@
       ]
     },
     {
-      "technique": "cuissons séparées",
-      "recipe_count": 7,
-      "recipes": [
-        "FR-007",
-        "FR-035",
-        "REAL-227",
-        "REAL-230",
-        "REAL-237",
-        "REAL-256",
-        "REAL-287"
-      ]
-    },
-    {
       "technique": "farcissage",
       "recipe_count": 7,
       "recipes": [
@@ -16816,6 +16777,18 @@
         "REAL-201",
         "REAL-205",
         "REAL-269"
+      ]
+    },
+    {
+      "technique": "cuissons séparées",
+      "recipe_count": 6,
+      "recipes": [
+        "FR-035",
+        "REAL-227",
+        "REAL-230",
+        "REAL-237",
+        "REAL-256",
+        "REAL-287"
       ]
     },
     {
@@ -17083,17 +17056,6 @@
       ]
     },
     {
-      "technique": "taillage",
-      "recipe_count": 5,
-      "recipes": [
-        "FR-007",
-        "VEG-002",
-        "DESS-007",
-        "REAL-137",
-        "REAL-273"
-      ]
-    },
-    {
       "technique": "tamisage",
       "recipe_count": 5,
       "recipes": [
@@ -17324,6 +17286,16 @@
         "REAL-180",
         "REAL-183",
         "PROT-001"
+      ]
+    },
+    {
+      "technique": "taillage",
+      "recipe_count": 4,
+      "recipes": [
+        "VEG-002",
+        "DESS-007",
+        "REAL-137",
+        "REAL-273"
       ]
     },
     {
@@ -19401,14 +19373,13 @@
   "aroma_graph": [
     {
       "aroma": "oignon_compoté",
-      "recipe_count": 152,
+      "recipe_count": 151,
       "recipes": [
         "FR-001",
         "FR-002",
         "FR-003",
         "FR-004",
         "IT-001",
-        "FR-007",
         "FR-008",
         "MAG-001",
         "MX-001",
@@ -19559,12 +19530,11 @@
     },
     {
       "aroma": "ail",
-      "recipe_count": 142,
+      "recipe_count": 141,
       "recipes": [
         "FR-001",
         "FR-002",
         "FR-006",
-        "FR-007",
         "FR-008",
         "MX-001",
         "VEG-001",
@@ -19707,10 +19677,9 @@
     },
     {
       "aroma": "tomate_cuite",
-      "recipe_count": 99,
+      "recipe_count": 98,
       "recipes": [
         "IT-001",
-        "FR-007",
         "FR-008",
         "MAG-001",
         "MX-001",
@@ -20686,34 +20655,6 @@
       ]
     },
     {
-      "aroma": "laurier",
-      "recipe_count": 22,
-      "recipes": [
-        "FR-003",
-        "FR-007",
-        "VEG-001",
-        "REAL-074",
-        "REAL-113",
-        "REAL-125",
-        "REAL-152",
-        "REAL-154",
-        "REAL-164",
-        "REAL-167",
-        "REAL-259",
-        "REAL-262",
-        "REAL-276",
-        "REAL-292",
-        "REAL-298",
-        "REAL-299",
-        "PROT-002",
-        "PROT-008",
-        "PROT-009",
-        "SRC-043",
-        "SRC-043-D1",
-        "SRC-043-D2"
-      ]
-    },
-    {
       "aroma": "marin",
       "recipe_count": 22,
       "recipes": [
@@ -20739,6 +20680,33 @@
         "SRC-039-D3",
         "SRC-039-D4",
         "SRC-039-D5"
+      ]
+    },
+    {
+      "aroma": "laurier",
+      "recipe_count": 21,
+      "recipes": [
+        "FR-003",
+        "VEG-001",
+        "REAL-074",
+        "REAL-113",
+        "REAL-125",
+        "REAL-152",
+        "REAL-154",
+        "REAL-164",
+        "REAL-167",
+        "REAL-259",
+        "REAL-262",
+        "REAL-276",
+        "REAL-292",
+        "REAL-298",
+        "REAL-299",
+        "PROT-002",
+        "PROT-008",
+        "PROT-009",
+        "SRC-043",
+        "SRC-043-D1",
+        "SRC-043-D2"
       ]
     },
     {
@@ -20873,31 +20841,6 @@
       ]
     },
     {
-      "aroma": "thym",
-      "recipe_count": 19,
-      "recipes": [
-        "FR-003",
-        "FR-007",
-        "FR-008",
-        "VEG-001",
-        "FR-012",
-        "FR-013",
-        "FR-017",
-        "FR-018",
-        "FR-038",
-        "REAL-073",
-        "REAL-083",
-        "REAL-152",
-        "REAL-288",
-        "REAL-289",
-        "PROT-008",
-        "PROT-009",
-        "SRC-003",
-        "SRC-003-D1",
-        "SRC-003-D2"
-      ]
-    },
-    {
       "aroma": "huile_olive",
       "recipe_count": 18,
       "recipes": [
@@ -20919,6 +20862,30 @@
         "REAL-130",
         "REAL-134",
         "REAL-136"
+      ]
+    },
+    {
+      "aroma": "thym",
+      "recipe_count": 18,
+      "recipes": [
+        "FR-003",
+        "FR-008",
+        "VEG-001",
+        "FR-012",
+        "FR-013",
+        "FR-017",
+        "FR-018",
+        "FR-038",
+        "REAL-073",
+        "REAL-083",
+        "REAL-152",
+        "REAL-288",
+        "REAL-289",
+        "PROT-008",
+        "PROT-009",
+        "SRC-003",
+        "SRC-003-D1",
+        "SRC-003-D2"
       ]
     },
     {
@@ -25910,187 +25877,6 @@
       "allergens": [
         "lait"
       ]
-    },
-    {
-      "code": "FR-007",
-      "family": "Ratatouille provençale",
-      "cuisine_origin": "France / cuisine domestique internationale",
-      "identity_level": "named_traditional_dish",
-      "category": "légumes mijotés",
-      "status": "candidate",
-      "confidence": "B",
-      "servings": 6,
-      "prep_minutes": 35,
-      "cook_minutes": 60,
-      "difficulty": "facile",
-      "sources": [
-        "marmiton_ratatouille",
-        "serious_stews",
-        "marmiton_top"
-      ],
-      "canonical_arbitration": "La cuisson séparée est retenue pour préserver l’identité de chaque légume.",
-      "ingredients": [
-        {
-          "form": "Aubergine fraîche",
-          "quantity": 500,
-          "unit": "g",
-          "role": "légume",
-          "optional": false
-        },
-        {
-          "form": "Courgette fraîche",
-          "quantity": 500,
-          "unit": "g",
-          "role": "légume",
-          "optional": false
-        },
-        {
-          "form": "Poivron rouge frais",
-          "quantity": 300,
-          "unit": "g",
-          "role": "légume",
-          "optional": false
-        },
-        {
-          "form": "Poivron jaune frais",
-          "quantity": 300,
-          "unit": "g",
-          "role": "légume",
-          "optional": false
-        },
-        {
-          "form": "Tomate fraîche mûre",
-          "quantity": 700,
-          "unit": "g",
-          "role": "légume",
-          "optional": false
-        },
-        {
-          "form": "Oignon jaune cru",
-          "quantity": 200,
-          "unit": "g",
-          "role": "aromatique",
-          "optional": false
-        },
-        {
-          "form": "Ail cru",
-          "quantity": 15,
-          "unit": "g",
-          "role": "aromatique",
-          "optional": false
-        },
-        {
-          "form": "Huile d'olive vierge extra",
-          "quantity": 60,
-          "unit": "ml",
-          "role": "cuisson",
-          "optional": false
-        },
-        {
-          "form": "Thym frais",
-          "quantity": 5,
-          "unit": "g",
-          "role": "aromate",
-          "optional": false
-        },
-        {
-          "form": "Feuille de laurier séchée",
-          "quantity": 2,
-          "unit": "u",
-          "role": "aromate",
-          "optional": false
-        },
-        {
-          "form": "Sel fin",
-          "quantity": 8,
-          "unit": "g",
-          "role": "assaisonnement",
-          "optional": false
-        },
-        {
-          "form": "Poivre noir moulu",
-          "quantity": 2,
-          "unit": "g",
-          "role": "assaisonnement",
-          "optional": true
-        }
-      ],
-      "steps": [
-        {
-          "n": 1,
-          "instruction": "Tailler tous les légumes en morceaux réguliers."
-        },
-        {
-          "n": 2,
-          "instruction": "Cuire séparément aubergines, courgettes et poivrons dans un peu d’huile pour maîtriser leurs textures."
-        },
-        {
-          "n": 3,
-          "instruction": "Faire fondre oignon et ail, puis ajouter les tomates et les herbes ; compoter 15 minutes."
-        },
-        {
-          "n": 4,
-          "instruction": "Réunir les légumes et mijoter encore 20 à 25 minutes."
-        },
-        {
-          "n": 5,
-          "instruction": "Rectifier l’assaisonnement et servir chaud, tiède ou froid."
-        }
-      ],
-      "techniques": [
-        "taillage",
-        "cuissons séparées",
-        "compotage",
-        "mijotage"
-      ],
-      "variants": [
-        "Cuisson tout-en-un plus simple mais texture moins précise",
-        "œuf poché ou pois chiches en ajout"
-      ],
-      "sensory": {
-        "profile": "tomato_herbal",
-        "scores": {
-          "sweet": 2,
-          "salty": 3,
-          "acidic": 3,
-          "bitter": 0,
-          "umami": 4,
-          "heat": 1,
-          "pungency": 2,
-          "richness": 3,
-          "freshness": 3,
-          "intensity": 4
-        },
-        "dominant_flavors": [
-          "tomate",
-          "herbacé",
-          "acidulé"
-        ],
-        "aroma_families": [
-          "ail",
-          "oignon_compoté",
-          "tomate_cuite",
-          "thym",
-          "laurier"
-        ],
-        "target_textures": [
-          "protéine_fondante",
-          "sauce_nappante"
-        ],
-        "signature_ingredients": [
-          "Aubergine fraîche",
-          "Courgette fraîche",
-          "Poivron rouge frais",
-          "Poivron jaune frais"
-        ],
-        "identity_guardrails": [
-          "conserver_les_ingrédients_signatures",
-          "conserver_la_technique_centrale",
-          "ne_pas_remplacer_par_un_simple_équivalent_nutritionnel"
-        ]
-      },
-      "conservation": "4 jours au réfrigérateur ; congélation 3 mois.",
-      "allergens": []
     },
     {
       "code": "FR-008",
