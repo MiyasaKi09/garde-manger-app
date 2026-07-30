@@ -5,6 +5,7 @@ import { listOperationalRecipes } from '@/lib/db/operationalRecipeCatalog'
 import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 import { toGramsV2 } from '@/lib/domain/units'
 import { generateClosedLoopPlan, isMealSuitableRecipe, recipeDiversityProfile } from '@/lib/domain/planning/closedLoopPlanner'
+import { isDessertRecipe } from '@/lib/domain/planning/plateRole'
 import { buildPlanningHistory, buildRepetitionRules } from '@/lib/domain/planning/repetitionRules'
 import { buildWeeklyBalance } from '@/lib/domain/planning/weeklyBalance'
 import { buildHouseholdTasteProfile } from '@/lib/domain/planning/tastePreferences'
@@ -462,7 +463,10 @@ export async function POST(request) {
     const servings = Math.max(1, members.reduce((sum, member) => sum + (Number(member.portion_multiplier) || 1), 0))
     const operationalCatalog = await listOperationalRecipes(supabase, { servings })
     const allRecipes = operationalCatalog.recipes.filter(isMealSuitableRecipe)
-    if (!allRecipes.length) throw new Error('Aucune recette complète n’est disponible pour le planning')
+    if (!allRecipes.length) throw new Error('Aucune recette complète n\'est disponible pour le planning')
+    // Pool des recettes-dessert (exclues du solveur principal, proposées en fin
+    // de repas uniquement si le membre a activé le réglage correspondant).
+    const dessertPool = operationalCatalog.recipes.filter(isDessertRecipe)
 
     const recipeCodes = new Set(allRecipes.map((recipe) => recipe.code))
     const existingBySlot = new Map(existing.slots.map((slot) => [
@@ -526,6 +530,10 @@ export async function POST(request) {
       // Niveau de nouveauté du foyer (§6) : le mode le plus prudent exprimé
       // par ses membres, ou un nombre exact de découvertes s'il est fixé.
       discoveryTarget: discoveryTarget({ members, mealCount: slots.length }),
+      // Recettes-dessert (rôle déclaré). Exclues du solveur principal par
+      // `isMealSuitableRecipe` ; fournies ici pour que chaque membre puisse
+      // en recevoir une portion de fin de repas si son réglage l'autorise.
+      dessertPool,
     }
     const planOptions = {
       inventoryLots: plannerLots,
@@ -625,7 +633,7 @@ export async function POST(request) {
     // une semaine à revoir : on refuse d'écrire.
     const structural = checkPlanInvariants(plan, { expectedSlotCount: slots.length, slotStates: existing.slotStates })
     if (structural.length) {
-      const failure = new Error('Le planning calculé est structurellement incohérent et n’a pas été publié')
+      const failure = new Error("Le planning calculé est structurellement incohérent et n'a pas été publié")
       failure.code = 'plan_invariant_violation'
       failure.status = 500
       failure.details = { violations: structural.slice(0, 10) }

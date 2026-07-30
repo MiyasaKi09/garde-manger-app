@@ -20,6 +20,13 @@
 .planning-repair { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 1px solid var(--terracotta); border-radius: 6px; color: var(--terracotta); background: transparent; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; cursor: pointer; }
 .planning-repair:hover:not(:disabled) { color: white; background: var(--terracotta); }
 .planning-repair:disabled { opacity: .55; cursor: not-allowed; }
+/* Liste des issues du plan (raisons d'un statut review_required) */
+.planning-issue-list { margin: 8px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.planning-issue-item { font-size: 12px; line-height: 1.4; color: var(--ink-2); padding-left: 14px; position: relative; }
+.planning-issue-item::before { content: '·'; position: absolute; left: 4px; color: var(--terracotta); font-weight: 700; }
+.planning-issue-item.planning-issue-blocker,
+.planning-issue-item.planning-issue-error { color: var(--terracotta); }
+.planning-issue-item.planning-issue-warning { color: var(--ink-2); }
 .planning-summary { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--ink-1); }
 .planning-summary .planning-summary-warn svg { color: var(--terracotta); }
 .planning-summary .planning-summary-warn small { color: var(--terracotta); }

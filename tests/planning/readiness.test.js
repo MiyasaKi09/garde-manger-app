@@ -51,4 +51,42 @@ describe('computeWeekReadiness', () => {
     expect(computeWeekReadiness({ expectedMeals: 'abc', uniqueMealCount: 49, prepTaskCount: 2 }).reason).toBe('goals_missing')
     expect(computeWeekReadiness({ expectedMeals: 49, uniqueMealCount: null, prepTaskCount: 2 }).missingMeals).toBe(49)
   })
+
+  // Cas réel : 14 repas complets, plan review_required (protéines hors portée).
+  // La grille doit s'afficher (selectedImportId existe) — seul `ready` est faux.
+  it('review_required avec tous les repas présents → ready:false, raison connue, missingMeals:0', () => {
+    const result = computeWeekReadiness({
+      expectedMeals: 14,
+      uniqueMealCount: 14,
+      prepTaskCount: 7,
+      planStatus: 'review_required',
+    })
+    expect(result.ready).toBe(false)
+    expect(result.reason).toBe('review_required')
+    expect(result.missingMeals).toBe(0)
+  })
+
+  it('planStatus falsy (published ou null) ne déclenche pas review_required', () => {
+    expect(computeWeekReadiness({
+      expectedMeals: 14, uniqueMealCount: 14, prepTaskCount: 7, planStatus: 'published',
+    }).ready).toBe(true)
+    expect(computeWeekReadiness({
+      expectedMeals: 14, uniqueMealCount: 14, prepTaskCount: 7, planStatus: null,
+    }).ready).toBe(true)
+    expect(computeWeekReadiness({
+      expectedMeals: 14, uniqueMealCount: 14, prepTaskCount: 7,
+    }).ready).toBe(true)
+  })
+
+  it('validationStatus review_required suffit (même sans planStatus) pour marquer la revue', () => {
+    const result = computeWeekReadiness({
+      expectedMeals: 14,
+      uniqueMealCount: 14,
+      prepTaskCount: 7,
+      planStatus: null,
+      validationStatus: 'review_required',
+    })
+    expect(result.ready).toBe(false)
+    expect(result.reason).toBe('review_required')
+  })
 })

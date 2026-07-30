@@ -181,6 +181,12 @@ export default function WeekGrid({
       ? coverageByMeal[coverageMeal.id]
       : null
     const dishStyle = done ? { textDecoration: 'line-through', opacity: 0.5 } : undefined
+    // Dessert de fin de repas : companion dont le rôle est 'dessert', avec une
+    // quantité effective > 0 (le solveur peut l'avoir mis à l'échelle de 0
+    // si la portion du plat principal est nulle, ce qui n'arrive pas en pratique).
+    const dessertComp = clickable
+      ? (typeMeals[0]?.portion_details?.companions || []).find((c) => c.role === 'dessert' && (c.quantity_g || 0) > 0)
+      : null
     // Repas couvert par une préparation batch (déjeuners liés par la Routine) → réchauffe.
     const batched = typeMeals.some(m => m.batch_recipe_id)
 
@@ -213,6 +219,11 @@ export default function WeekGrid({
           >
             <span className="wg-dish" style={dishStyle}>{renderDishName(dishName)}</span>
           </button>
+        )}
+        {dessertComp && (
+          <span className="wg-dessert" style={done ? { opacity: 0.5 } : undefined}>
+            {dessertComp.label?.toLowerCase()}
+          </span>
         )}
         {stockCov && (
           <StockDot

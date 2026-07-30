@@ -72,18 +72,33 @@ export default function PlanningPage() {
   const [intent, setIntent] = useState('balanced')
   const [instructions, setInstructions] = useState('')
   const [modifyStatus, setModifyStatus] = useState('idle')
+  // Garde en mémoire le dernier import généré par cette session (weekStart + id).
+  // Sert de dernier recours quand refreshImports() renvoie encore la liste
+  // stale depuis le cache HTTP (max-age=15 côté serveur). Ainsi, la grille
+  // s'affiche immédiatement après la génération même si le cache n'est pas
+  // encore invalidé.
+  const [generatedImport, setGeneratedImport] = useState(null)
 
   const weekDates = weekDatesForOffset(weekOffset)
   const weekStart = localIso(weekDates[0])
   const weekEnd = localIso(weekDates[6])
   const selectedImport = findImport(imports, weekStart, weekEnd)
   const selectedImportId = selectedImport?.id || null
+  // `effectiveImportId` : identifiant résolu. Priorité à la liste fraîche ;
+  // si introuvable, on retombe sur le dernier import généré pour cette semaine
+  // (cas review_required où le cache HTTP retourne encore l'ancienne liste).
+  const effectiveImportId = selectedImportId
+    || (generatedImport?.weekStart === weekStart ? generatedImport.importId : null)
   const meals = weekData?.meals || []
   const batchRecipes = weekData?.batchRecipes || []
   const shoppingItems = weekData?.shoppingItems || []
 
-  const refreshImports = useCallback(async () => {
-    const response = await authFetch('/api/planning/imports')
+  // `fresh: true` contourne le cache HTTP (max-age=15) et le cache SWR interne.
+  // À utiliser après toute mutation (génération, réparation) pour que la liste
+  // d'imports reflète immédiatement le plan qui vient d'être écrit en base.
+  const refreshImports = useCallback(async ({ fresh = false } = {}) => {
+    const options = fresh ? { cache: 'no-store' } : undefined
+    const response = await authFetch('/api/planning/imports', options)
     const data = await response.json().catch(() => ({}))
     if (!response.ok) throw new Error(data.error || 'Impossible de charger les semaines')
     setImports(data.imports || [])
@@ -128,12 +143,12 @@ export default function PlanningPage() {
 
   useEffect(() => {
     setWeekData(null)
-    if (!selectedImportId) { setWeekStatus('idle'); return }
+    if (!effectiveImportId) { setWeekStatus('idle'); return }
     let cancelled = false
     setWeekStatus('loading')
     ;(async () => {
       try {
-        const response = await authFetch(`/api/planning/imports/${selectedImportId}`)
+        const response = await authFetch(`/api/planning/imports/${effectiveImportId}`)
         const data = await response.json().catch(() => ({}))
         if (!response.ok) throw new Error(data.error || 'Semaine indisponible')
         if (!cancelled) {
@@ -145,6 +160,7 @@ export default function PlanningPage() {
             readiness: data.readiness || null,
             householdMembers: data.householdMembers || [],
             activePlanVersion: data.activePlanVersion || null,
+            planIssues: data.planIssues || [],
             canonicalPreparationCount: data.canonicalPreparationCount || 0,
           })
           setWeekStatus('ready')
@@ -157,20 +173,21 @@ export default function PlanningPage() {
       }
     })()
     return () => { cancelled = true }
-  }, [selectedImportId, reloadKey])
+  }, [effectiveImportId, reloadKey])
 
   async function repairWeek() {
-    if (!selectedImportId || repairStatus === 'saving') return
+    if (!effectiveImportId || repairStatus === 'saving') return
     setRepairStatus('saving')
     try {
       const response = await authFetch('/api/planning/generate-v3', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ import_id: selectedImportId, window_start: weekStart, scope: 'week', intent: 'balanced' }),
+        body: JSON.stringify({ import_id: effectiveImportId, window_start: weekStart, scope: 'week', intent: 'balanced' }),
       })
       const data = await response.json().catch(() => ({}))
       if (!response.ok) throw new Error(data.error || 'Recalcul de la semaine impossible')
-      await refreshImports()
+      if (data.import_id) setGeneratedImport({ importId: data.import_id, weekStart })
+      await refreshImports({ fresh: true })
       setReloadKey((value) => value + 1)
       setRepairStatus('idle')
       if (data.status === 'review_required') {
@@ -216,9 +233,9 @@ export default function PlanningPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          import_id: selectedImportId,
+          import_id: effectiveImportId,
           window_start: weekStart,
-          scope: selectedImportId ? modifyScope : 'week',
+          scope: effectiveImportId ? modifyScope : 'week',
           days: modifyScope === 'days' ? modifyDays : [],
           meals: modifyScope === 'meals' ? modifyMeals : [],
           intent,
@@ -227,7 +244,11 @@ export default function PlanningPage() {
       })
       const data = await response.json().catch(() => ({}))
       if (!response.ok) throw new Error(data.error || 'La modification a échoué')
-      await refreshImports()
+      // Stocker l'import généré avant de rafraîchir la liste : si le cache HTTP
+      // retourne encore l'ancienne liste (max-age=15), `effectiveImportId` prend
+      // le relais pour déclencher le chargement de la grille.
+      if (data.import_id) setGeneratedImport({ importId: data.import_id, weekStart })
+      await refreshImports({ fresh: true })
       setReloadKey((value) => value + 1)
       setModifyOpen(false)
       const recalculated = data.summary?.changed ?? data.summary?.personalized_meals ?? 14
@@ -246,7 +267,7 @@ export default function PlanningPage() {
   }
 
   function openBatch() {
-    if (selectedImportId) router.push(`/planning/${selectedImportId}/batch`)
+    if (effectiveImportId) router.push(`/planning/${effectiveImportId}/batch`)
   }
 
   const plannedSlots = new Set(meals
@@ -254,16 +275,17 @@ export default function PlanningPage() {
     .map((meal) => `${meal.meal_date}|${meal.meal_type}`)).size
   const personalizedMeals = new Set(meals.map((meal) => `${meal.meal_date}|${meal.meal_type}|${meal.person_name}`)).size
   const plannedDays = new Set(meals.map((meal) => meal.meal_date)).size
-  const readiness = weekData?.readiness || { ready: false, missingMeals: 0, reason: selectedImportId ? 'loading' : 'meals_missing' }
+  const readiness = weekData?.readiness || { ready: false, missingMeals: 0, reason: effectiveImportId ? 'loading' : 'meals_missing' }
   const expectedMeals = Number(weekData?.readiness?.expectedMeals) || 0
   const preparationCount = Number(weekData?.canonicalPreparationCount) || batchRecipes.length
+  const planIssues = weekData?.planIssues || []
   const rangeLabel = `${weekDates[0].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })} — ${weekDates[6].toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}`
   const nextWeekStart = addDays(localIso(mondayForOffset(0)), 7)
   const nextWeekReady = imports.some((item) => item.file_name === 'myko-canonical-v3' && item.date_range_start === nextWeekStart)
   const horizonStatus = nextWeekReady ? 'ready' : 'idle'
   const loading = authLoading || !importsLoaded
   const weekLoading = weekStatus === 'loading'
-  const weekAssessed = !loading && goalsStatus !== 'loading' && (selectedImportId ? weekStatus === 'ready' : true)
+  const weekAssessed = !loading && goalsStatus !== 'loading' && (effectiveImportId ? weekStatus === 'ready' : true)
   const mobileWeekTitle = weekOffset === 0
     ? 'Cette semaine'
     : weekOffset === 1
@@ -298,7 +320,7 @@ export default function PlanningPage() {
             <span>{nextWeekReady ? 'Semaine suivante déjà prête' : 'Semaine suivante non préparée'}</span>
           </div>
           <button className="planning-primary" onClick={() => openModification({ scope: 'week' })}>
-            <Sparkles size={16} /> {selectedImportId ? 'Modifier la semaine' : 'Préparer cette semaine'}
+            <Sparkles size={16} /> {effectiveImportId ? 'Modifier la semaine' : 'Préparer cette semaine'}
           </button>
         </div>
       </header>
@@ -315,26 +337,49 @@ export default function PlanningPage() {
           <ChevronRight size={20} />
         </button>
         <button type="button" className="planning-mobile-week-action" onClick={() => openModification({ scope: 'week' })}>
-          <Sparkles size={16} /> {selectedImportId ? 'Modifier cette semaine' : 'Préparer cette semaine'}
+          <Sparkles size={16} /> {effectiveImportId ? 'Modifier cette semaine' : 'Préparer cette semaine'}
         </button>
       </section>
 
-      {weekAssessed && selectedImportId && !readiness.ready && (
+      {weekAssessed && effectiveImportId && !readiness.ready && (
         <section className="planning-incomplete" role="status">
           <AlertTriangle size={16} />
           <div className="planning-incomplete-text">
-            <b>Semaine incomplète</b>
-            <p>
-              {readiness.reason === 'goals_missing'
-                ? 'Objectifs nutritionnels indisponibles : le nombre de prises attendues ne peut pas être vérifié.'
-                : readiness.reason === 'review_required'
-                  ? 'La version active demande une revue : Myko ne la présente pas comme prête.'
-                  : readiness.reason === 'meals_missing'
-                    ? `${readiness.missingMeals} prise${readiness.missingMeals > 1 ? 's' : ''} manquante${readiness.missingMeals > 1 ? 's' : ''} sur les ${expectedMeals} attendues (petits-déjeuners, collations ou variantes non générés).`
-                    : 'Aucune tâche de préparation n’est planifiée pour cette semaine.'}
-            </p>
+            {readiness.reason === 'review_required' ? (
+              <>
+                <b>Semaine générée — objectifs nutritionnels non atteints</b>
+                <p>
+                  Les repas sont planifiés et visibles ci-dessous. Certains objectifs du foyer
+                  n&apos;ont pas pu être atteints avec les recettes disponibles — la semaine est
+                  présentée à titre indicatif.
+                </p>
+                {planIssues.filter((issue) => ['blocker', 'error', 'warning'].includes(issue.severity)).length > 0 && (
+                  <ul className="planning-issue-list">
+                    {planIssues
+                      .filter((issue) => ['blocker', 'error', 'warning'].includes(issue.severity))
+                      .slice(0, 5)
+                      .map((issue, index) => (
+                        <li key={index} className={`planning-issue-item planning-issue-${issue.severity}`}>
+                          {issue.message || issue.code}
+                        </li>
+                      ))}
+                  </ul>
+                )}
+              </>
+            ) : (
+              <>
+                <b>Semaine incomplète</b>
+                <p>
+                  {readiness.reason === 'goals_missing'
+                    ? 'Objectifs nutritionnels indisponibles : le nombre de prises attendues ne peut pas être vérifié.'
+                    : readiness.reason === 'meals_missing'
+                      ? `${readiness.missingMeals} prise${readiness.missingMeals > 1 ? 's' : ''} manquante${readiness.missingMeals > 1 ? 's' : ''} sur les ${expectedMeals} attendues (petits-déjeuners, collations ou variantes non générés).`
+                      : "Aucune tâche de préparation n'est planifiée pour cette semaine."}
+                </p>
+              </>
+            )}
           </div>
-          {!['goals_missing', 'review_required'].includes(readiness.reason) && (
+          {readiness.reason !== 'goals_missing' && (
             <button className="planning-repair" onClick={repairWeek} disabled={repairStatus === 'saving'}>
               <RefreshCw size={14} className={repairStatus === 'saving' ? 'planning-spin' : undefined} />
               {repairStatus === 'saving' ? 'Recalcul en cours…' : 'Recalculer la semaine (remplace les repas non verrouillés)'}
@@ -343,12 +388,12 @@ export default function PlanningPage() {
         </section>
       )}
 
-      {!loading && selectedImportId && weekStatus === 'error' && (
+      {!loading && effectiveImportId && weekStatus === 'error' && (
         <section className="planning-incomplete" role="alert">
           <AlertTriangle size={16} />
           <div className="planning-incomplete-text">
             <b>Semaine impossible à charger</b>
-            <p>Les repas de cette semaine n’ont pas pu être lus. Rien n’a été modifié — réessaie dans un instant.</p>
+            <p>Les repas de cette semaine n&apos;ont pas pu être lus. Rien n&apos;a été modifié — réessaie dans un instant.</p>
           </div>
           <button className="planning-repair" onClick={() => setReloadKey((value) => value + 1)}>
             <RefreshCw size={14} /> Réessayer
@@ -376,31 +421,31 @@ export default function PlanningPage() {
       ) : (
         <div className="planning-workspace">
           <section className="planning-main">
-            {selectedImportId && weekStatus === 'ready' && <WeeklyNutritionRecap meals={meals} goals={nutritionGoals} />}
+            {effectiveImportId && weekStatus === 'ready' && <WeeklyNutritionRecap meals={meals} goals={nutritionGoals} />}
             {weekLoading ? (
               <div className="planning-loading" aria-busy="true"><RefreshCw className="planning-spin" /> Chargement de la semaine…</div>
-            ) : selectedImportId && weekStatus === 'error' ? (
+            ) : effectiveImportId && weekStatus === 'error' ? (
               <div className="planning-empty">
                 <AlertTriangle size={30} />
-                <h2>La semaine n’a pas pu être chargée.</h2>
-                <p>Les repas existent peut-être déjà : rien n’a été modifié.</p>
+                <h2>La semaine n&apos;a pas pu être chargée.</h2>
+                <p>Les repas existent peut-être déjà : rien n&apos;a été modifié.</p>
                 <button className="planning-primary" onClick={() => setReloadKey((value) => value + 1)}>Réessayer</button>
               </div>
-            ) : selectedImportId ? (
+            ) : effectiveImportId ? (
               <WeekGrid
                 meals={meals}
                 weekDates={weekDates}
                 weekOffset={weekOffset}
                 onPrevWeek={() => setWeekOffset((value) => value - 1)}
                 onNextWeek={() => setWeekOffset((value) => value + 1)}
-                importId={selectedImportId}
+                importId={effectiveImportId}
                 onModifyDay={(date) => openModification({ scope: 'days', date })}
                 onModifyMeal={(date, type) => openModification({ scope: 'meals', date, type })}
               />
             ) : (
               <div className="planning-empty">
                 <CalendarDays size={30} />
-                <h2>Cette semaine n’est pas encore dressée.</h2>
+                <h2>Cette semaine n&apos;est pas encore dressée.</h2>
                 <p>Myko peut la composer immédiatement avec les règles fixes du foyer.</p>
                 <button className="planning-primary" onClick={() => openModification({ scope: 'week' })}>Préparer la semaine</button>
               </div>
@@ -412,11 +457,11 @@ export default function PlanningPage() {
               <span className="planning-side-label">Cuisine en avance</span>
               <h2>Préparer sans courir</h2>
               <p>Les déjeuners compatibles sont regroupés en sessions de cuisine et reliés aux jours où ils seront servis.</p>
-              <button onClick={openBatch} disabled={!selectedImportId}>
+              <button onClick={openBatch} disabled={!effectiveImportId}>
                 <Clock3 size={14} /> Voir le jour de cuisine
               </button>
-              {selectedImportId && preparationCount > 0 && (
-                <button className="planning-batch-link" onClick={() => router.push(`/planning/${selectedImportId}/batch`)}>
+              {effectiveImportId && preparationCount > 0 && (
+                <button className="planning-batch-link" onClick={() => router.push(`/planning/${effectiveImportId}/batch`)}>
                   <ArrowRight size={14} /> Voir les préparations
                 </button>
               )}
@@ -471,7 +516,7 @@ export default function PlanningPage() {
             <label className="planning-instructions">
               <span className="planning-field-label">Demande précise <small>facultatif</small></span>
               <textarea value={instructions} onChange={(event) => setInstructions(event.target.value)} rows={2} placeholder="Ex. : plus rapide, végétarien, utiliser le stock urgent…" />
-              <small>Les mots-clés sont traduits en règles fixes ; aucun appel à une IA n’est nécessaire.</small>
+              <small>Les mots-clés sont traduits en règles fixes ; aucun appel à une IA n'est nécessaire.</small>
             </label>
 
             <footer>

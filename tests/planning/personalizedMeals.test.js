@@ -188,6 +188,107 @@ describe('personalized deterministic meals', () => {
     expect(SUPPLEMENT_FORMS.every((form) => Number(form.gramsPerUnit) > 0)).toBe(true)
   })
 
+  // Deux membres aux régimes différents sur un même créneau : le membre végétarien
+  // reçoit d'abord une VARIANTE DU MÊME PLAT (même lignée) si le corpus la
+  // fournit ; sinon un plat entièrement différent — cas dégradé qui doit être
+  // SIGNALÉ, pas dissimulé. C'est l'exigence sortie de l'incident du planning :
+  // Zoé ne doit pas recevoir une shakshuka pendant que Julien mange un suya de
+  // bœuf sans que le moteur avoue qu'il n'a pas trouvé mieux.
+  it('sert la même lignée en deux versions quand elle existe, sinon signale le repli', () => {
+    // Plat carné A : dispose d'une variante végétarienne de la MÊME LIGNÉE.
+    const suyaMeat = recipe('SUYA', 'Suya de bœuf', { kcal: 620, proteinG: 50, carbsG: 20, fatG: 32, fiberG: 4 }, 'viandes')
+    const suyaVeg = {
+      ...recipe('SUYA-D1', 'Suya végétarien de tofu grillé', { kcal: 540, proteinG: 30, carbsG: 30, fatG: 26, fiberG: 6 }),
+      derivedFrom: 'SUYA',
+    }
+
+    // Plat carné B : AUCUNE variante végétarienne de sa lignée n'existe
+    // au corpus. Le solveur doit tomber sur un plat végétarien différent
+    // et marquer la substitution comme hors-lignée.
+    const boeufSeul = recipe('BOEUF', 'Bœuf mijoté aux carottes', { kcal: 600, proteinG: 48, carbsG: 45, fatG: 24, fiberG: 7 }, 'viandes')
+
+    // Plat végétarien candidat au fallback (lignée « ratatouille » distincte).
+    const ratatouille = recipe('RATA', 'Ratatouille de saison', { kcal: 480, proteinG: 25, carbsG: 60, fatG: 15, fiberG: 16 })
+
+    // Dîner constant (plat neutre pour ne pas parasiter le test).
+    const pasta = recipe('PASTA', 'Pâtes aux légumes', { kcal: 520, proteinG: 20, carbsG: 90, fatG: 10, fiberG: 8 })
+
+    const slots = []
+    for (let day = 20; day <= 26; day++) {
+      const date = `2026-07-${day}`
+      // Lundi (20) : SUYA — Zoé aura sa variante lignée.
+      // Mardi (21) : BOEUF — Zoé aura un plat différent, SIGNALÉ.
+      // Les autres jours : PASTA (végé pour tous, aucun swap déclenché).
+      let lunchCode = 'PASTA'
+      if (day === 20) lunchCode = 'SUYA'
+      else if (day === 21) lunchCode = 'BOEUF'
+      slots.push({ key: `${date}-dejeuner`, date, mealType: 'dejeuner', recipeCode: lunchCode })
+      slots.push({ key: `${date}-diner`, date, mealType: 'diner', recipeCode: 'PASTA' })
+    }
+
+    const result = buildPersonalizedMeals({
+      plan: { slots },
+      recipes: [suyaMeat, suyaVeg, boeufSeul, ratatouille, pasta],
+      members: [
+        { id: 'j', name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: false, snack: false } } },
+        // Zoé demande DEUX swaps végétariens dans la semaine — le solveur va
+        // les affecter aux deux slots carnés dans l'ordre (SUYA puis BOEUF).
+        { id: 'z', name: 'Zoé', portion_multiplier: 1, preferences: { planning: { breakfast: false, snack: false, vegetarian_meat_swaps_per_week: 2 } } },
+      ],
+      goals: [
+        { person_name: 'Julien', target_calories: 2200, target_protein_g: 140, target_carbs_g: 220, target_fat_g: 75, target_fiber_g: 30 },
+        { person_name: 'Zoé', target_calories: 1700, target_protein_g: 90, target_carbs_g: 200, target_fat_g: 55, target_fiber_g: 22 },
+      ],
+    })
+
+    // Julien mange son plat du foyer les deux jours.
+    const julienSuya = result.meals.find((m) => m.person_name === 'Julien' && m.meal_date === '2026-07-20' && m.meal_type === 'dejeuner')
+    const julienBoeuf = result.meals.find((m) => m.person_name === 'Julien' && m.meal_date === '2026-07-21' && m.meal_type === 'dejeuner')
+    expect(julienSuya).toMatchObject({ canonical_recipe_code: 'SUYA', variant_kind: 'household_base' })
+    expect(julienBoeuf).toMatchObject({ canonical_recipe_code: 'BOEUF', variant_kind: 'household_base' })
+
+    // Zoé — cas idéal : variante VÉGÉ de la MÊME LIGNÉE (SUYA-D1 dérive de SUYA).
+    const zoeSuya = result.meals.find((m) => m.person_name === 'Zoé' && m.meal_date === '2026-07-20' && m.meal_type === 'dejeuner')
+    expect(zoeSuya).toMatchObject({
+      canonical_recipe_code: 'SUYA-D1',
+      variant_kind: 'vegetarian_swap_lineage',
+    })
+    expect(zoeSuya.portion_details.same_lineage).toBe(true)
+    expect(zoeSuya.portion_details.substitution_fallback).toBeUndefined()
+
+    // Zoé — cas dégradé : aucune variante lignée du BOEUF, tombe sur un plat
+    // entièrement différent (RATA ou toute autre végé compatible que le solveur
+    // aura jugée la plus proche nutritionnellement). Peu importe l'identité
+    // exacte du remplaçant — ce qui compte est que ce ne soit PAS de la
+    // lignée BOEUF et que la substitution soit tracée comme repli.
+    const zoeBoeuf = result.meals.find((m) => m.person_name === 'Zoé' && m.meal_date === '2026-07-21' && m.meal_type === 'dejeuner')
+    expect(zoeBoeuf.canonical_recipe_code).not.toBe('BOEUF')
+    expect(zoeBoeuf.variant_kind).toBe('vegetarian_swap')
+    expect(zoeBoeuf.portion_details.same_lineage).toBe(false)
+    expect(zoeBoeuf.portion_details.substitution_fallback).toMatchObject({
+      reason: 'vegetarian_swap',
+      baseCode: 'BOEUF',
+      altCode: zoeBoeuf.canonical_recipe_code,
+    })
+
+    // Compteur au niveau de la journée : ZÉRO le lundi (variante lignée),
+    // UN le mardi (repli signalé).
+    const zoeMondayDaily = result.daily.find((d) => d.person_name === 'Zoé' && d.meal_date === '2026-07-20')
+    const zoeTuesdayDaily = result.daily.find((d) => d.person_name === 'Zoé' && d.meal_date === '2026-07-21')
+    expect(zoeMondayDaily.substitutions_out_of_lineage).toEqual([])
+    expect(zoeTuesdayDaily.substitutions_out_of_lineage).toHaveLength(1)
+    expect(zoeTuesdayDaily.substitutions_out_of_lineage[0]).toMatchObject({
+      reason: 'vegetarian_swap',
+      baseCode: 'BOEUF',
+      altCode: zoeBoeuf.canonical_recipe_code,
+    })
+
+    // Julien, lui, n'a jamais de substitution — sa journée reste vierge de
+    // toute liste hors-lignée.
+    const julienMondayDaily = result.daily.find((d) => d.person_name === 'Julien' && d.meal_date === '2026-07-20')
+    expect(julienMondayDaily.substitutions_out_of_lineage).toEqual([])
+  })
+
   // MAJOR 2 : les aliases couvrent le vocabulaire réel des lots (canonical_foods /
   // archetypes des exports) — égalité exacte, jamais de fuzzy.
   it('expose des aliases normalisés du vocabulaire réel, sans collision entre entrées', () => {
