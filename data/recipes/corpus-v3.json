@@ -25767,7 +25767,8 @@
         "gluten",
         "lait",
         "moutarde"
-      ]
+      ],
+      "description_courte": "Bœuf braisé à la bière blonde avec une compotée d'oignons liée au pain d'épices"
     },
     {
       "code": "FR-004",
@@ -25950,7 +25951,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Bœuf effiloché recouvert d'une purée de pommes de terre, gratiné au four"
     },
     {
       "code": "IT-001",
@@ -26166,7 +26168,8 @@
         "céleri",
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Feuilles de lasagne alternées de sauce bolognaise bœuf-porc et de béchamel, gratinées au four"
     },
     {
       "code": "FR-005",
@@ -26323,7 +26326,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Tarte salée garnie de lardons fumés dans un appareil œufs-crème, cuite au four"
     },
     {
       "code": "FR-006",
@@ -26476,7 +26480,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Fines lamelles de pommes de terre fondantes dans la crème et le lait parfumés à l'ail et à la muscade"
     },
     {
       "code": "FR-008",
@@ -26658,7 +26663,8 @@
         ]
       },
       "conservation": "3 jours au réfrigérateur ; congélation 3 mois.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Cuisses de poulet mijotées avec poivrons rouges et verts, tomates et vin blanc"
     },
     {
       "code": "FR-009",
@@ -26865,7 +26871,8 @@
       "allergens": [
         "lait",
         "moutarde"
-      ]
+      ],
+      "description_courte": "Blancs de poulet en sauce crème-moutarde avec champignons de Paris et échalote"
     },
     {
       "code": "MAG-001",
@@ -27301,7 +27308,8 @@
         ]
       },
       "conservation": "Se garde 4 jours au réfrigérateur dans un contenant fermé et gagne au repos : les épices se diffusent encore à froid. Se congèle 3 mois en portions, sans le riz ; décongeler une nuit au réfrigérateur puis réchauffer à couvert à feu doux avec deux cuillerées d'eau, la sauce ayant épaissi au froid. Ne pas réchauffer plus d'une fois.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Bœuf haché mijoté avec haricots rouges, tomate, poivrons et épices torréfiées dans un bouillon relevé"
     },
     {
       "code": "FR-010",
@@ -27454,7 +27462,8 @@
       "conservation": "1 jour au réfrigérateur après cuisson.",
       "allergens": [
         "poisson"
-      ]
+      ],
+      "description_courte": "Pavé de saumon cuit en papillote avec julienne de courgette, carotte, poireau et aneth"
     },
     {
       "code": "FR-011",
@@ -27613,7 +27622,8 @@
       "allergens": [
         "lait",
         "poisson"
-      ]
+      ],
+      "description_courte": "Dos de cabillaud poêlé accompagné de riz et haricots verts, nappé d'un beurre au citron"
     },
     {
       "code": "VEG-001",
@@ -27777,7 +27787,8 @@
       "conservation": "4 jours au réfrigérateur ; congélation 3 mois.",
       "allergens": [
         "céleri"
-      ]
+      ],
+      "description_courte": "Lentilles vertes cuites avec carottes, céleri, oignon et ail dans un bouillon au laurier et au thym"
     },
     {
       "code": "VEG-002",
@@ -27940,7 +27951,8 @@
         ]
       },
       "conservation": "2 jours au réfrigérateur.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Pois chiches avec tomates fraîches, concombre, oignon rouge et persil, en vinaigrette au citron et cumin"
     },
     {
       "code": "EGG-001",
@@ -28073,7 +28085,8 @@
       "allergens": [
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Omelette crémeuse aux œufs, pliée, parfumée au persil et à la ciboulette"
     },
     {
       "code": "VEG-003",
@@ -28230,7 +28243,8 @@
         ]
       },
       "conservation": "4 jours au réfrigérateur.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Quinoa cuit avec courgettes, poivrons et carottes rôtis, finition au jus de citron et persil"
     },
     {
       "code": "IND-001",
@@ -28417,7 +28431,8 @@
       "conservation": "4 jours au réfrigérateur ; congélation 3 mois.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Pois chiches et épinards mijotés dans une sauce tomate-lait de coco aux épices avec ail et gingembre"
     },
     {
       "code": "IND-002",
@@ -28773,7 +28788,8 @@
       "conservation": "2 jours pour la sauce seule ; œufs à cuire au moment.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Œufs pochés dans une sauce tomate-poivrons épicée au cumin et paprika fumé"
     },
     {
       "code": "LEV-001",
@@ -28917,7 +28933,8 @@
       "conservation": "4 jours au réfrigérateur.",
       "allergens": [
         "sésame"
-      ]
+      ],
+      "description_courte": "Tartinade lisse de pois chiches mixés avec tahini, jus de citron, ail et cumin"
     },
     {
       "code": "LEV-002",
@@ -29078,7 +29095,8 @@
         ]
       },
       "conservation": "3 jours au réfrigérateur ; congélation avant ou après cuisson.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Boulettes de pois chiches secs mixés crus avec oignon, ail, persil, coriandre et cumin, cuites au four"
     },
     {
       "code": "IT-002",
@@ -29248,7 +29266,8 @@
       "conservation": "2 jours au réfrigérateur, mais meilleur immédiatement.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Riz arborio nacré et mouillé progressivement au bouillon avec champignons, parmesan et beurre en finale"
     },
     {
       "code": "IT-003",
@@ -29393,7 +29412,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Spaghettis liés à une émulsion de guanciale, jaunes d'œufs et pecorino, généreusement poivrés"
     },
     {
       "code": "IT-004",
@@ -29617,7 +29637,8 @@
         "gluten",
         "céleri",
         "lait"
-      ]
+      ],
+      "description_courte": "Spaghettis avec sauce de bœuf haché longuement mijoté avec le soffritto et la tomate"
     },
     {
       "code": "IT-005",
@@ -29761,7 +29782,8 @@
         "fruits à coque",
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Pâtes liées à une sauce de basilic frais pilé avec parmesan, pignons et ail dans l'huile d'olive"
     },
     {
       "code": "IT-006",
@@ -29951,7 +29973,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Gnocchi de pomme de terre pochés dans une sauce tomate, gratinés à la mozzarella"
     },
     {
       "code": "IT-007",
@@ -30102,7 +30125,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Pâte levée garnie d'une sauce tomate et mozzarella fraîche, cuite à haute température"
     },
     {
       "code": "FR-012",
@@ -30309,7 +30333,8 @@
         "gluten",
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Oignons longuement caramélisés en soupe liée, servie avec croûtons et fromage gratiné"
     },
     {
       "code": "FR-013",
@@ -30523,7 +30548,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Champignons de Paris mixés en velouté sur une base de béchamel, liés à la crème fraîche"
     },
     {
       "code": "FR-014",
@@ -30705,7 +30731,8 @@
       "conservation": "Se garde quatre jours au réfrigérateur entre 0 et 4 °C dans un contenant fermé, et se réchauffe à feu doux sans ébullition pour que la crème ne tranche pas. Le potimarron supporte très bien la congélation : congeler la base mixée non crémée jusqu'à quatre mois et n'incorporer la crème qu'au réchauffage, une base congelée déjà crémée se déphasant et rendant le velouté granuleux. Le velouté s'épaissit en refroidissant, prévoir un peu de bouillon pour le détendre au réchauffage.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Potimarron fondu au bouillon, mixé en velouté et lié à la crème fraîche avec une touche de muscade"
     },
     {
       "code": "IT-008",
@@ -30955,7 +30982,8 @@
         "gluten",
         "céleri",
         "lait"
-      ]
+      ],
+      "description_courte": "Soupe de légumes de saison avec haricots blancs, pommes de terre et petites pâtes dans un bouillon"
     },
     {
       "code": "FR-015",
@@ -31476,7 +31504,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Poulet entier rôti au four avec pommes de terre, oignon et ail, arrosé régulièrement"
     },
     {
       "code": "FR-018",
@@ -31679,7 +31708,8 @@
         "lait",
         "moutarde",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Filet mignon de porc saisi puis nappé d'une sauce crème-moutarde de Dijon au vin blanc"
     },
     {
       "code": "FR-019",
@@ -31851,7 +31881,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Boulettes de bœuf haché liées à l'œuf et à la chapelure, mijotées dans une sauce tomate"
     },
     {
       "code": "GR-001",
@@ -32204,7 +32235,8 @@
       "allergens": [
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Courgettes poêlées gratinées dans un appareil œufs-crème fraîche au comté"
     },
     {
       "code": "FR-021",
@@ -32382,7 +32414,8 @@
       "allergens": [
         "lait",
         "moutarde"
-      ]
+      ],
+      "description_courte": "Poireaux émincés fondus longuement au beurre à couvert, liés à la crème fraîche"
     },
     {
       "code": "FR-022",
@@ -32531,7 +32564,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Endives cuites à la vapeur, roulées dans du jambon blanc, nappées de béchamel et gratinées au comté"
     },
     {
       "code": "FR-023",
@@ -32721,7 +32755,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Pain de mie fourré au jambon blanc et gruyère, nappé de béchamel, gratiné au four"
     },
     {
       "code": "DESS-001",
@@ -32866,7 +32901,8 @@
         "role": "dessert",
         "accepts": [],
         "reason": "Crêpes fines : dessert, et petit-déjeuner selon la garniture. Le corpus la range déjà dans les deux usages ; le rôle dessert l'écarte des créneaux de repas sans lui retirer sa place au petit-déjeuner, qui passe par la rotation des supports et non par le catalogue des plats."
-      }
+      },
+      "description_courte": "Crêpes à la farine de blé, œufs et lait, cuites à la poêle en fines galettes"
     },
     {
       "code": "DESS-002",
@@ -33006,7 +33042,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Crêpes épaisses levées à la farine, œufs, lait et levure chimique, cuites en petits disques à la poêle"
     },
     {
       "code": "DESS-003",
@@ -33158,7 +33195,8 @@
         "role": "dessert",
         "accepts": [],
         "reason": "Gâteau au yaourt : gâteau de ménage, servi en part."
-      }
+      },
+      "description_courte": "Gâteau moelleux au yaourt nature, farine, œufs et huile, cuit au four"
     },
     {
       "code": "DESS-004",
@@ -33309,7 +33347,8 @@
         "role": "dessert",
         "accepts": [],
         "reason": "Tiramisu : dessert froid, servi en verrine ou en part."
-      }
+      },
+      "description_courte": "Couches de biscuits cuillère imbibés de café alternées avec une crème mascarpone-œufs sucrée, servies froides avec du cacao"
     },
     {
       "code": "DESS-005",
@@ -33446,7 +33485,8 @@
         "role": "dessert",
         "accepts": [],
         "reason": "Mousse au chocolat : dessert froid, portion individuelle."
-      }
+      },
+      "description_courte": "Mousse aérienne de chocolat noir à 70 % montée sur des blancs d'œufs battus"
     },
     {
       "code": "DESS-006",
@@ -33765,7 +33805,8 @@
         "role": "dessert",
         "accepts": [],
         "reason": "Crumble aux pommes : dessert chaud, servi en part."
-      }
+      },
+      "description_courte": "Pommes coupées sous un crumble sablé de farine, beurre et cassonade, cuites au four"
     },
     {
       "code": "DESS-008",
@@ -34028,7 +34069,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Sauce blanche de base, roux mouillé au lait et assaisonné à la muscade"
     },
     {
       "code": "FR-025",
@@ -34196,7 +34238,8 @@
       "conservation": "Deux jours au réfrigérateur au maximum : une purée reprise perd sa liaison et rend de l'eau. Réchauffer à la casserole sur feu doux avec un fond de lait chaud, en travaillant à la spatule. La congélation tient deux mois mais laisse une texture plus granuleuse : congeler en portions déjà écrasées, sans crème, et remonter au beurre et au lait au réchauffage.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Pommes de terre écrasées au presse-purée, montées au beurre froid et détendues au lait chaud"
     },
     {
       "code": "FR-026",
@@ -34321,7 +34364,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Haricots verts blanchis puis revenus au beurre avec ail et persil"
     },
     {
       "code": "FR-027",
@@ -34482,7 +34526,8 @@
         ]
       },
       "conservation": "Deux jours au réfrigérateur dans une boîte fermée, mais la croûte ne se rattrape pas au micro-ondes. Réchauffer à la poêle bien chaude, à sec ou avec une goutte d'huile, cinq minutes à découvert en retournant une fois. Ne pas congeler : les morceaux se délitent à la décongélation et rendent leur eau dans la poêle.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Pommes de terre précuites à l'eau puis rissolées à l'huile d'olive avec ail"
     },
     {
       "code": "FR-028",
@@ -34671,7 +34716,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Cake salé au jambon blanc, olives vertes et gruyère, cuit au four"
     },
     {
       "code": "DESS-009",
@@ -34831,7 +34877,8 @@
         "role": "dessert",
         "accepts": [],
         "reason": "Banana bread : gâteau, servi en tranche."
-      }
+      },
+      "description_courte": "Gâteau à la mie dense aux bananes mûres écrasées, beurre, œufs et cassonade"
     },
     {
       "code": "DESS-010",
@@ -34974,7 +35021,8 @@
         "role": "dessert",
         "accepts": [],
         "reason": "Fondant au chocolat : gâteau, portion individuelle."
-      }
+      },
+      "description_courte": "Gâteau à cœur fondant de chocolat noir à 70 % et beurre, peu fariné, cuit brièvement"
     },
     {
       "code": "DESS-011",
@@ -35134,7 +35182,8 @@
         "role": "dessert",
         "accepts": [],
         "reason": "Tarte au citron meringuée : tarte sucrée, servie en part. Sa pâte sablée en porte le tiers des calories."
-      }
+      },
+      "description_courte": "Fond sablé garni d'une crème au citron et au beurre, coiffé d'une meringue"
     },
     {
       "code": "FR-029",
@@ -35298,7 +35347,8 @@
         "moutarde",
         "poisson",
         "œuf"
-      ]
+      ],
+      "description_courte": "Tarte salée garnie de thon en conserve et tomates sur un fond de moutarde, dans un appareil œufs-crème"
     },
     {
       "code": "FR-030",
@@ -35451,7 +35501,8 @@
         "role": "dessert",
         "accepts": [],
         "reason": "Clafoutis aux cerises : dessert cuit au four, servi en part."
-      }
+      },
+      "description_courte": "Cerises noyées dans un appareil liquide œufs-lait-crème parfumé à la vanille, cuit au four"
     },
     {
       "code": "FR-031",
@@ -35640,7 +35691,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Petits choux au gruyère soufflés au four, servis chauds en apéritif"
     },
     {
       "code": "FR-032",
@@ -35784,7 +35836,8 @@
         "role": "dessert",
         "accepts": [],
         "reason": "Tarte tatin : tarte sucrée, servie en part."
-      }
+      },
+      "description_courte": "Pommes caramélisées au beurre recouvertes d'une pâte feuilletée, cuites au four et renversées"
     },
     {
       "code": "FR-033",
@@ -35952,7 +36005,8 @@
         "fruits à coque",
         "moutarde",
         "œuf"
-      ]
+      ],
+      "description_courte": "Lentilles vertes tièdes avec œuf mollet, carottes et vinaigrette à l'huile de noix et moutarde"
     },
     {
       "code": "FR-034",
@@ -36092,7 +36146,8 @@
       "allergens": [
         "moutarde",
         "œuf"
-      ]
+      ],
+      "description_courte": "Poireaux cuits à la vapeur, servis tièdes ou froids avec une vinaigrette moutardée au persil"
     },
     {
       "code": "FR-035",
@@ -36261,7 +36316,8 @@
       "allergens": [
         "poisson",
         "œuf"
-      ]
+      ],
+      "description_courte": "Salade composée de thon, œufs, tomates, haricots verts, pommes de terre et olives en vinaigrette"
     },
     {
       "code": "FR-036",
@@ -36415,7 +36471,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Fond de pâte brisée garni d'une fondue de poireaux et lardons dans un appareil crème-œufs"
     },
     {
       "code": "FR-037",
@@ -36625,7 +36682,8 @@
       "conservation": "Se garde 3 jours au réfrigérateur, couvert, et se réchauffe 25 minutes à 170 °C plutôt qu'au micro-ondes, qui détrempe la croûte. Se congèle 2 mois, cru ou cuit, dans son plat filmé : décongeler une nuit au froid avant de cuire ou de réchauffer. Ne pas recongeler un confit déjà décongelé.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Confit de canard effiloché recouvert d'une purée de pommes de terre, gratiné au comté"
     },
     {
       "code": "FR-038",
@@ -36785,7 +36843,8 @@
       "allergens": [
         "lait",
         "moutarde"
-      ]
+      ],
+      "description_courte": "Lapin braisé au vin blanc et bouillon, nappé d'une sauce crème-moutarde à l'échalote et au thym"
     },
     {
       "code": "FR-039",
@@ -36933,7 +36992,8 @@
         "role": "dessert",
         "accepts": [],
         "reason": "Tarte aux pommes alsacienne : tarte sucrée, servie en part. Elle porte le même piège que la tatin — le mot « tarte » ne dit pas si elle est salée, seul le contenu tranche."
-      }
+      },
+      "description_courte": "Fond de pâte brisée garni de tranches de pommes et d'un appareil crème-œufs à la cannelle"
     },
     {
       "code": "DESS-012",
@@ -37214,7 +37274,8 @@
         "role": "dessert",
         "accepts": [],
         "reason": "Madeleines au miel : petit gâteau, se compte en pièces. Un dessert de fin de repas naturellement léger."
-      }
+      },
+      "description_courte": "Petits gâteaux bombés au beurre noisette et miel, parfumés au zeste de citron"
     },
     {
       "code": "REAL-073",
@@ -37677,7 +37738,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Gratin de pommes de terre, lardons et oignons recouvert de reblochon fondant"
     },
     {
       "code": "REAL-076",
@@ -38446,7 +38508,8 @@
         "gluten",
         "lait",
         "poisson"
-      ]
+      ],
+      "description_courte": "Morue dessalée et pochée, émulsionnée à l'huile d'olive, au lait et à l'ail jusqu'à obtenir une pâte crémeuse"
     },
     {
       "code": "REAL-081",
@@ -39564,7 +39627,8 @@
         "gluten",
         "moutarde",
         "œuf"
-      ]
+      ],
+      "description_courte": "Frisée en vinaigrette moutardée avec lardons dorés, croûtons et un œuf poché"
     },
     {
       "code": "REAL-088",
@@ -39702,7 +39766,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Fond de pâte brisée garni d'une fondue de poireaux dans un appareil crème-œufs"
     },
     {
       "code": "REAL-089",
@@ -39836,7 +39901,8 @@
         "role": "dessert",
         "accepts": [],
         "reason": "Kouign-amann : pâtisserie levée feuilletée bretonne. C'est la recette qui a rendu le défaut visible — servie trois fois comme repas du soir, à 1006 kcal la portion pour 7,8 g de protéines. Elle reste au corpus et devient ce qu'elle est : un dessert riche, servi à une fraction de sa part."
-      }
+      },
+      "description_courte": "Pâtisserie levée bretonne feuilletée au beurre demi-sel et caramélisée au sucre"
     },
     {
       "code": "REAL-090",
@@ -40122,7 +40188,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Flan épais à la farine, lait entier et œufs, avec des pruneaux, cuit longuement au four"
     },
     {
       "code": "REAL-092",
@@ -40274,7 +40341,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Compotée de poivrons rouges, piment doux, tomates et oignons au piment d'Espelette"
     },
     {
       "code": "REAL-093",
@@ -40741,7 +40809,8 @@
         ]
       },
       "conservation": "3 jours au réfrigérateur.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Cuisses de poulet braisées avec champignons de Paris, tomates et vin rouge"
     },
     {
       "code": "REAL-096",
@@ -41063,7 +41132,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Boules de riz au safran farcies d'un ragù de bœuf haché et de mozzarella, panées et frites"
     },
     {
       "code": "REAL-098",
@@ -41353,7 +41423,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "gluten"
-      ]
+      ],
+      "description_courte": "Soupe toscane de tomates et pain rassis lié au bouillon, fini à l'huile d'olive et au basilic"
     },
     {
       "code": "REAL-100",
@@ -41464,7 +41535,8 @@
       "conservation": "À consommer immédiatement.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Pâtes tonnarelli liées à une émulsion de pecorino et poivre noir torréfié, sans autre matière grasse"
     },
     {
       "code": "REAL-101",
@@ -41594,7 +41666,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Pâtes épaisses bucatini avec guanciale grillé, tomates et pecorino"
     },
     {
       "code": "REAL-102",
@@ -41791,7 +41864,8 @@
         "gluten",
         "poisson",
         "lait"
-      ]
+      ],
+      "description_courte": "Spaghettis avec sauce tomate aux olives noires, câpres, anchois et piment séché"
     },
     {
       "code": "REAL-103",
@@ -42215,7 +42289,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Tranches d'aubergines frites ou rôties, montées en gratin avec sauce tomate, mozzarella et parmesan"
     },
     {
       "code": "REAL-106",
@@ -42377,7 +42452,8 @@
         "céleri",
         "fruits à coque",
         "gluten"
-      ]
+      ],
+      "description_courte": "Aigre-doux sicilien d'aubergines avec céleri, olives vertes, câpres en sauce tomate sucrée-vinaigrée"
     },
     {
       "code": "REAL-107",
@@ -42630,7 +42706,8 @@
       "conservation": "2 jours au réfrigérateur.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Omelette épaisse espagnole de pommes de terre confites à l'huile d'olive"
     },
     {
       "code": "REAL-109",
@@ -42772,7 +42849,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Croquettes crémeuses de béchamel au jambon serrano, panées et frites"
     },
     {
       "code": "REAL-110",
@@ -43530,7 +43608,8 @@
       "conservation": "2 jours au réfrigérateur.",
       "allergens": [
         "gluten"
-      ]
+      ],
+      "description_courte": "Soupe froide de tomates, concombre et poivron vert, émulsionnée à l'huile d'olive et vinaigre de xérès"
     },
     {
       "code": "REAL-115",
@@ -43670,7 +43749,8 @@
       "allergens": [
         "gluten",
         "œuf"
-      ]
+      ],
+      "description_courte": "Crème froide épaisse de tomates et pain blanc à l'huile d'olive, garnie d'œuf dur et jambon"
     },
     {
       "code": "REAL-116",
@@ -43812,7 +43892,8 @@
       "allergens": [
         "crustacés",
         "gluten"
-      ]
+      ],
+      "description_courte": "Crevettes saisies dans l'huile d'olive infusée à l'ail et au piment séché"
     },
     {
       "code": "REAL-117",
@@ -43929,7 +44010,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "poisson"
-      ]
+      ],
+      "description_courte": "Morue dessalée confite à l'huile d'olive et à l'ail, liée en émulsion crémeuse par les gélatines du poisson"
     },
     {
       "code": "REAL-118",
@@ -44344,7 +44426,8 @@
         ]
       },
       "conservation": "3 jours au réfrigérateur.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Soupe de pommes de terre et chou kale en chiffonnade avec du chouriço"
     },
     {
       "code": "REAL-121",
@@ -44965,7 +45048,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "fruits à coque"
-      ]
+      ],
+      "description_courte": "Feuilles de vigne farcies de riz cru, aneth, menthe et oignons, cuites à l'étouffée et acidulées au citron"
     },
     {
       "code": "REAL-125",
@@ -45113,7 +45197,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "céleri"
-      ]
+      ],
+      "description_courte": "Soupe de haricots blancs avec tomates concassées, carottes, céleri et huile d'olive"
     },
     {
       "code": "REAL-126",
@@ -45261,7 +45346,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "céleri"
-      ]
+      ],
+      "description_courte": "Haricots géants cuits au four dans une sauce tomate à l'aneth et au persil"
     },
     {
       "code": "REAL-127",
@@ -45552,7 +45638,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Épaule d'agneau marinée au citron et à l'origan, cuite lentement en papillote"
     },
     {
       "code": "REAL-129",
@@ -45694,7 +45781,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Soupe de bouillon de poulet et riz, liée à l'émulsion d'œufs et de jus de citron frais"
     },
     {
       "code": "REAL-130",
@@ -45844,7 +45932,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "gluten"
-      ]
+      ],
+      "description_courte": "Aubergines farcies d'une compotée d'oignons, tomates et ail à l'huile d'olive, confites au four"
     },
     {
       "code": "REAL-131",
@@ -46735,7 +46824,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Riz et lentilles brunes assaisonnés au cumin, surmontés d'oignons longuement caramélisés"
     },
     {
       "code": "REAL-137",
@@ -47090,7 +47180,8 @@
       "conservation": "Se garde 2 jours au réfrigérateur, couvert, mais perd sa tenue dès le premier : le persil fane et la tomate rend son eau. Ne se congèle pas, les herbes crues ressortant noires et détrempées. Pour préparer d'avance, hacher et réserver les éléments séparément au froid et n'assembler avec le citron et l'huile qu'un quart d'heure avant de servir. Égoutter le fond du saladier et rectifier le citron avant de resservir un reste.",
       "allergens": [
         "gluten"
-      ]
+      ],
+      "description_courte": "Salade dense de persil plat haché, tomates, oignon nouveau et boulgour, assaisonnée au citron"
     },
     {
       "code": "REAL-139",
@@ -47222,7 +47313,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "sésame"
-      ]
+      ],
+      "description_courte": "Purée d'aubergines grillées à la flamme, mélangées au tahini, jus de citron et ail"
     },
     {
       "code": "REAL-140",
@@ -47674,7 +47766,8 @@
         ]
       },
       "conservation": "3 jours au réfrigérateur.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Cuisses de poulet mijotées à l'étouffée avec citron confit au sel, olives vertes et épices au safran"
     },
     {
       "code": "REAL-143",
@@ -47911,7 +48004,8 @@
       "allergens": [
         "fruits à coque",
         "sésame"
-      ]
+      ],
+      "description_courte": "Épaule d'agneau braisée avec pruneaux, miel et amandes dans un glacé sucré-salé au sésame"
     },
     {
       "code": "REAL-144",
@@ -48090,7 +48184,8 @@
       "allergens": [
         "céleri",
         "gluten"
-      ]
+      ],
+      "description_courte": "Soupe de lentilles, pois chiches, tomates, céleri, coriandre et vermicelles fins"
     },
     {
       "code": "REAL-145",
@@ -49652,7 +49747,8 @@
       "allergens": [
         "arachide",
         "moutarde"
-      ]
+      ],
+      "description_courte": "Cuisses de poulet grillées puis mijotées dans une compotée d'oignons au citron et à la moutarde"
     },
     {
       "code": "REAL-155",
@@ -49808,7 +49904,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "arachide"
-      ]
+      ],
+      "description_courte": "Bœuf mijoté dans une sauce à l'arachide avec patate douce, carottes, chou et piment"
     },
     {
       "code": "REAL-156",
@@ -49965,7 +50062,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "arachide"
-      ]
+      ],
+      "description_courte": "Lamelles de bœuf marinées à sec dans un mélange d'arachides moulues et d'épices, grillées en brochette"
     },
     {
       "code": "REAL-157",
@@ -50534,7 +50632,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "arachide"
-      ]
+      ],
+      "description_courte": "Tranches de banane plantain mûre épicées au gingembre, clou de girofle et piment, frites"
     },
     {
       "code": "REAL-161",
@@ -50799,7 +50898,8 @@
         ]
       },
       "conservation": "3 jours au réfrigérateur.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Bœuf en petits cubes cuit à sec puis mijoté avec tomates, oignon rouge et coriandre fraîche"
     },
     {
       "code": "REAL-163",
@@ -50931,7 +51031,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "gluten"
-      ]
+      ],
+      "description_courte": "Polenta de farine de maïs ferme servie avec un sauté de chou kale aux tomates et oignons"
     },
     {
       "code": "REAL-164",
@@ -51418,7 +51519,8 @@
         ]
       },
       "conservation": "3 jours au réfrigérateur.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Relish de légumes sautés et compotés — poivron, carotte, chou et tomate — aux épices de curry"
     },
     {
       "code": "REAL-167",
@@ -51564,7 +51666,8 @@
         ]
       },
       "conservation": "3 jours au réfrigérateur.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Poulet entier en morceaux cuit hermétiquement à l'étouffée avec tomates, aubergine africaine, piment et gingembre"
     },
     {
       "code": "REAL-168",
@@ -54768,7 +54871,8 @@
         ]
       },
       "conservation": "3 jours au réfrigérateur.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Épaule de porc marinée au vinaigre et aux épices grillées, mijotée en curry pimenté et aigre"
     },
     {
       "code": "REAL-188",
@@ -56519,7 +56623,8 @@
       "allergens": [
         "gluten",
         "œuf"
-      ]
+      ],
+      "description_courte": "Œufs brouillés vifs auxquels sont ajoutées des tomates fraîches compotées et de la ciboule"
     },
     {
       "code": "REAL-199",
@@ -56826,7 +56931,8 @@
         "gluten",
         "soja",
         "sésame"
-      ]
+      ],
+      "description_courte": "Raviolis pliés à la main farcis de porc haché et ciboulette chinoise, pochés ou poêlés"
     },
     {
       "code": "REAL-201",
@@ -57100,7 +57206,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "gluten"
-      ]
+      ],
+      "description_courte": "Galette croustillante feuilletée de pâte eau chaude, garnie de ciboule hachée"
     },
     {
       "code": "REAL-203",
@@ -58323,7 +58430,8 @@
       "allergens": [
         "soja",
         "sésame"
-      ]
+      ],
+      "description_courte": "Morceaux de poulet braisés et glacés dans un mélange de sauce soja, huile de sésame et vin de riz, finis au basilic thaï"
     },
     {
       "code": "REAL-211",
@@ -63701,7 +63809,8 @@
         "gluten",
         "poisson",
         "œuf"
-      ]
+      ],
+      "description_courte": "Poitrine de porc braisée à l'eau de coco avec des œufs durs dans un caramel de sauce poisson"
     },
     {
       "code": "REAL-245",
@@ -66164,7 +66273,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "soja"
-      ]
+      ],
+      "description_courte": "Cuisses de poulet marinées et braisées dans un mélange vinaigre de canne et sauce soja à l'ail et au laurier"
     },
     {
       "code": "REAL-260",
@@ -69330,7 +69440,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Croquettes en forme de cuisse farcies de poulet effiloché aux tomates et oignons, panées et frites"
     },
     {
       "code": "REAL-280",
@@ -69487,7 +69598,8 @@
       "allergens": [
         "gluten",
         "œuf"
-      ]
+      ],
+      "description_courte": "Chaussons de pâte au saindoux farcis de bœuf haché au couteau avec œuf dur, olives et cumin"
     },
     {
       "code": "REAL-281",
@@ -70663,7 +70775,8 @@
         ]
       },
       "conservation": "Chaque élément se garde 3 jours au réfrigérateur dans son propre récipient : réunis, le riz absorbe le jus des haricots et durcit. La viande en sauce et les haricots se congèlent 3 mois et gagnent même au repos ; le riz cuit se congèle mal et les plantains frits pas du tout, ils ressortent mous. Réchauffer viande et haricots à la casserole avec une cuillerée d'eau, le riz à la vapeur ou couvert au four avec un filet d'eau, et frire les plantains le jour même du service.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Bœuf effiloché en sofrito, haricots noirs, riz blanc et tranches de plantain frites, servis ensemble"
     },
     {
       "code": "REAL-288",
@@ -70829,7 +70942,8 @@
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [
         "soja"
-      ]
+      ],
+      "description_courte": "Poulet en morceaux marinés dans un mélange de piment scotch bonnet, piment de la Jamaïque et thym, grillé"
     },
     {
       "code": "REAL-289",
@@ -71969,7 +72083,8 @@
       "conservation": "Se garde 3 à 4 jours au réfrigérateur dans un récipient fermé, et gagne à être réchauffé le lendemain — le paprika continue de diffuser dans le bouillon. Se congèle 3 mois, mais en retirant les pommes de terre avant congélation : elles ressortent granuleuses. Réchauffer à couvert et à feu doux en rallongeant d'un peu de bouillon, sans jamais faire rebouillir, ce qui durcirait la viande. Si l'on sert avec de la crème, l'ajouter à l'assiette et non dans la cocotte, pour que le reste se conserve tel quel.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Bœuf mijoté longuement dans un bouillon paprikaté avec pommes de terre, tomates et poivrons"
     },
     {
       "code": "REAL-296",
@@ -72118,7 +72233,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Cuisses de poulet cuites avec des oignons dans une sauce paprika doux hongrois liée à la crème aigre"
     },
     {
       "code": "REAL-297",
@@ -72737,7 +72853,8 @@
         "gluten",
         "lait",
         "moutarde"
-      ]
+      ],
+      "description_courte": "Lamelles de filet de bœuf saisies vif avec des champignons, nappées d'une sauce crème aigre et moutarde"
     },
     {
       "code": "REAL-301",
@@ -73269,7 +73386,8 @@
       "conservation": "2 jours au réfrigérateur, dal et poisson séparés. Réchauffer le dal seul et remettre le poisson hors du feu. Congélation déconseillée pour le poisson vapeur.",
       "allergens": [
         "poisson"
-      ]
+      ],
+      "description_courte": "Dos de cabillaud cuit à la vapeur accompagné d'un dal de lentilles corail et épinards aux épices"
     },
     {
       "code": "PROT-002",
@@ -73465,7 +73583,8 @@
       "conservation": "3 jours au réfrigérateur, encore meilleur le lendemain à température ambiante. Ne pas congeler après dessalage.",
       "allergens": [
         "poisson"
-      ]
+      ],
+      "description_courte": "Morue dessalée et pois chiches rôtis au four avec épinards, tomates et huile d'olive"
     },
     {
       "code": "PROT-005",
@@ -73677,7 +73796,8 @@
       "conservation": "3 jours au réfrigérateur ; le dal se congèle 2 mois, le poulet se réchauffe à la poêle.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Hauts de cuisse de poulet marinés au yaourt et grillés, servis avec un dal d'épinards aux lentilles corail"
     },
     {
       "code": "PROT-006",
@@ -73860,7 +73980,8 @@
       "conservation": "3 jours au réfrigérateur ; réchauffer doucement pour ne pas trancher la moutarde.",
       "allergens": [
         "moutarde"
-      ]
+      ],
+      "description_courte": "Filet mignon de porc saisi, nappé d'une sauce moutarde, servi avec lentilles vertes et champignons"
     },
     {
       "code": "PROT-007",
@@ -74056,7 +74177,8 @@
         ]
       },
       "conservation": "4 jours au réfrigérateur, meilleur réchauffé le lendemain ; se congèle 2 mois.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Épaule de veau mijotée longuement avec lentilles corail, courgettes et épices de tajine"
     },
     {
       "code": "PROT-008",
@@ -74247,7 +74369,8 @@
       "conservation": "3 jours au réfrigérateur ; les haricots se congèlent 2 mois, le poulet se réchauffe au four.",
       "allergens": [
         "céleri"
-      ]
+      ],
+      "description_courte": "Poulet entier rôti aux épices créoles, accompagné de haricots rouges à la tomate"
     },
     {
       "code": "PROT-009",
@@ -74471,7 +74594,8 @@
       "conservation": "4 jours au réfrigérateur ; 3 mois au congélateur sans les épinards (les ajouter au réchauffage). Meilleur le lendemain, le jus prend en gelée grâce au collagène du jarret.",
       "allergens": [
         "moutarde"
-      ]
+      ],
+      "description_courte": "Jarret de bœuf braisé au vin blanc avec lentilles vertes et épinards, lié à la moutarde en fin de cuisson"
     },
     {
       "code": "SRC-001",
@@ -74695,7 +74819,8 @@
         "role": "complete",
         "accepts": [],
         "reason": "Volaille, légumes et bouillon dans la même marmite : rien à ajouter."
-      }
+      },
+      "description_courte": "Poule entière pochée longuement avec une farce de pain de mie, lait, jambon et persil"
     },
     {
       "code": "SRC-002",
@@ -74912,7 +75037,8 @@
           "starch"
         ],
         "reason": "Plat de viande en sauce : appelle un féculent pour la saucer."
-      }
+      },
+      "description_courte": "Bœuf braisé au vin blanc avec des carottes fondantes dans un fond de bouillon lié à la farine"
     },
     {
       "code": "SRC-003",
@@ -75109,7 +75235,8 @@
           "vegetables"
         ],
         "reason": "Viande et féculent dans la même assiette ; un légume vert reste possible."
-      }
+      },
+      "description_courte": "Gigot d'agneau rôti accompagné de haricots flageolets au beurre avec thym et laurier"
     },
     {
       "code": "SRC-004",
@@ -75314,7 +75441,8 @@
           "starch"
         ],
         "reason": "Volaille en sauce : appelle un féculent, riz ou pommes vapeur."
-      }
+      },
+      "description_courte": "Poulet flambé au calvados, mijoté au cidre avec des pommes et champignons, lié à la crème"
     },
     {
       "code": "SRC-005",
@@ -75502,7 +75630,8 @@
           "vegetables"
         ],
         "reason": "Viande en sauce tomate : appelle un féculent ou un légume vert."
-      }
+      },
+      "description_courte": "Escalopes de veau roulées autour d'une farce au porc haché, braisées dans une sauce tomate"
     },
     {
       "code": "SRC-006",
@@ -75741,7 +75870,8 @@
           "starch"
         ],
         "reason": "Ragoût en sauce : appelle riz, pâtes ou pommes vapeur."
-      }
+      },
+      "description_courte": "Épaule de veau saisie et braisée au vin blanc avec champignons, oignons grelots et tomates"
     },
     {
       "code": "SRC-007",
@@ -75909,7 +76039,8 @@
         "role": "component",
         "accepts": [],
         "reason": "C'est un condiment à tartiner ou à tremper, servi avec du pain grillé et des crudités, jamais comme un plat à lui seul."
-      }
+      },
+      "description_courte": "Sauce provençale d'anchois mixés avec ail, huile d'olive et vinaigre, servie sur pain grillé"
     },
     {
       "code": "SRC-008",
@@ -76152,7 +76283,8 @@
           "starch"
         ],
         "reason": "Viande en sauce sans féculent intégré : les sources la servent avec du riz, du blé ou des pommes de terre, que le planificateur doit donc ajouter."
-      }
+      },
+      "description_courte": "Escalopes de dinde pochées dans un bouillon avec carottes, champignons et poireau, liées à la crème"
     },
     {
       "code": "SRC-009",
@@ -76380,7 +76512,8 @@
           "starch"
         ],
         "reason": "La garniture est une viande en sauce sans féculent : elle appelle les croûtes feuilletées, du riz, des nouilles ou des spätzle au moment du service, comme le proposent les sources."
-      }
+      },
+      "description_courte": "Bouchées feuilletées garnies d'une fricassée de poulet et veau dans une sauce liée avec champignons"
     },
     {
       "code": "SRC-010",
@@ -76590,7 +76723,8 @@
           "starch"
         ],
         "reason": "Le plat apporte la protéine et le légume mais aucun féculent : les sources du dossier le servent accompagné de riz, que le planificateur doit donc ajouter."
-      }
+      },
+      "description_courte": "Courgettes évidées farcies d'un mélange de porc et bœuf haché à la tomate, cuites au four"
     },
     {
       "code": "SRC-011",
@@ -76761,7 +76895,8 @@
           "vegetables"
         ],
         "reason": "Pain, jambon, fromage et oeuf reunissent deja feculent et proteine dans une seule assiette ; seule une salade verte, proposee par plusieurs sources du dossier, vient utilement l'accompagner."
-      }
+      },
+      "description_courte": "Pain de mie fourré au jambon et emmental, gratiné, surmonté d'un œuf"
     },
     {
       "code": "SRC-012",
@@ -76981,7 +77116,8 @@
         "role": "side",
         "accepts": [],
         "reason": "Malgré la béchamel et les dés de jambon, la portion de protéine reste au niveau d'une garniture (moins de 30 g par personne) : le gratin accompagne une viande ou un poisson plutôt qu'il ne constitue le repas."
-      }
+      },
+      "description_courte": "Bouquets de brocolis blanchis nappés d'une sauce béchamel crémeuse, gratinés au four"
     },
     {
       "code": "SRC-013",
@@ -77234,7 +77370,8 @@
           "vegetables"
         ],
         "reason": "Viande en sauce sans féculent intégré : les sources l'accompagnent de riz ou de pommes de terre sautées avec une salade."
-      }
+      },
+      "description_courte": "Langue de bœuf pochée longuement dans un court-bouillon, servie avec une sauce au vinaigre et cornichons"
     },
     {
       "code": "SRC-014",
@@ -77460,7 +77597,8 @@
           "vegetables"
         ],
         "reason": "La légumineuse apporte à la fois le féculent et une part des protéines, l'œuf mollet complète l'apport protéique et carotte, poireau et oignon fournissent déjà le légume : l'assiette se suffit sans accompagnement."
-      }
+      },
+      "description_courte": "Lentilles corail tièdes avec œuf poché, carottes, poireau et vinaigrette à l'huile d'olive"
     },
     {
       "code": "SRC-015",
@@ -77645,7 +77783,8 @@
         "role": "side",
         "accepts": [],
         "reason": "Entrée froide ou hors-d'œuvre servi en bouchées : trop léger et trop peu féculent pour constituer un repas à lui seul, il n'appelle pas non plus d'accompagnement cuisiné."
-      }
+      },
+      "description_courte": "Œufs durs farcis d'un mélange de jaunes tamisés avec mayonnaise et moutarde"
     },
     {
       "code": "SRC-016",
@@ -77812,7 +77951,8 @@
           "vegetables"
         ],
         "reason": "L'appareil n'apporte que la protéine et son aromate, sans féculent ni légume : il appelle une salade verte ou des pommes de terre pour composer un repas."
-      }
+      },
+      "description_courte": "Omelette roulée aux pommes de terre et lardons avec oignon, garnie de ciboulette"
     },
     {
       "code": "SRC-017",
@@ -77982,7 +78122,8 @@
           "vegetables"
         ],
         "reason": "Le pain, la tomate et l'œuf dur réunissent féculent, légume et protéine dans une même portion : le sandwich constitue un repas à lui seul, tout au plus accompagné de crudités."
-      }
+      },
+      "description_courte": "Sandwich de pain de campagne pressé avec tomates, œuf dur, olives noires et huile d'olive"
     },
     {
       "code": "SRC-018",
@@ -78153,7 +78294,8 @@
           "vegetables"
         ],
         "reason": "Le plat associe déjà le féculent (pâtes) et la protéine (thon) dans une sauce, il se suffit à lui-même et n'appelle au plus qu'une salade ou un légume vert à côté."
-      }
+      },
+      "description_courte": "Petites pâtes avec thon en conserve et sauce tomate réduite à l'ail"
     },
     {
       "code": "SRC-019",
@@ -78361,7 +78503,8 @@
           "vegetables"
         ],
         "reason": "La pâte apporte le féculent, les oignons le légume et les anchois la part salée protéinée : le plat se suffit, une salade verte suffit à l'accompagner."
-      }
+      },
+      "description_courte": "Tarte sur pâte levée à l'huile, garnie d'oignons longuement confits, anchois et olives noires"
     },
     {
       "code": "SRC-020",
@@ -78514,7 +78657,8 @@
         "role": "side",
         "accepts": [],
         "reason": "C'est un gratin de légumes riche mais sans protéine ni féculent : il accompagne une viande ou un poisson plutôt qu'il ne constitue le repas à lui seul."
-      }
+      },
+      "description_courte": "Poireaux blanchis gratinés sous une couche de crème fraîche et gruyère"
     },
     {
       "code": "SRC-021",
@@ -78739,7 +78883,8 @@
           "vegetables"
         ],
         "reason": "Le plat réunit déjà le féculent (riz), la protéine (lardons et œuf) et le légume (poivron, tomate, oignon) dans une même portion, et n'appelle au mieux qu'une salade verte à côté."
-      }
+      },
+      "description_courte": "Poivrons rouges blanchis farcis de riz, lardons et tomate liés à l'œuf, rôtis au four"
     },
     {
       "code": "SRC-022",
@@ -78905,7 +79050,8 @@
         "role": "side",
         "accepts": [],
         "reason": "Potage d'entrée apportant féculent et légume mais aucune protéine : il ouvre le repas ou l'accompagne plutôt qu'il ne le constitue."
-      }
+      },
+      "description_courte": "Soupe mixée de pommes de terre et poireau dans un bouillon de volaille, liée à la crème"
     },
     {
       "code": "SRC-023",
@@ -79115,7 +79261,8 @@
           "vegetables"
         ],
         "reason": "Le plat réunit déjà le féculent (riz), la protéine (œuf et jambon) et le légume (petits pois, carotte) : il se suffit en repas et n'accepte au mieux qu'une garniture de légumes ou une salade en accompagnement."
-      }
+      },
+      "description_courte": "Riz sauté à la poêle avec œufs brouillés, jambon blanc et petits pois"
     },
     {
       "code": "SRC-024",
@@ -79281,7 +79428,8 @@
         "role": "side",
         "accepts": [],
         "reason": "Réduite à ses formes validées, la préparation associe un féculent et des légumes crus sans aucune source de protéine, ce qui en fait un accompagnement frais à servir à côté d'un poisson ou d'une viande plutôt qu'un plat complet."
-      }
+      },
+      "description_courte": "Riz froid avec thon, œufs, tomates et poivron vert en vinaigrette"
     },
     {
       "code": "SRC-025",
@@ -79480,7 +79628,8 @@
           "vegetables"
         ],
         "reason": "La salade réunit déjà un féculent (pomme de terre), une protéine (jambon et œuf dur) et des légumes, ce qui en fait un plat unique complet, éventuellement accompagné d'une salade verte."
-      }
+      },
+      "description_courte": "Pommes de terre en rondelles avec jambon blanc, œufs durs, cornichons et mayonnaise moutardée"
     },
     {
       "code": "SRC-026",
@@ -79657,7 +79806,8 @@
           "vegetables"
         ],
         "reason": "Viande mijotée en sauce sans féculent intégré : elle réclame un support neutre (pommes vapeur, riz, pâtes fraîches) pour absorber le jus réduit."
-      }
+      },
+      "description_courte": "Épaule de porc saisie puis mijotée avec des pruneaux et des lardons fumés"
     },
     {
       "code": "SRC-027",
@@ -79888,7 +80038,8 @@
           "vegetables"
         ],
         "reason": "C'est une viande en sauce sans féculent intégré : elle appelle un riz, des pâtes fraîches ou des pommes de terre pour éponger le jus."
-      }
+      },
+      "description_courte": "Épaule de veau braisée au vin blanc avec olives vertes et noires dans une sauce tomate"
     },
     {
       "code": "SRC-028",
@@ -80031,7 +80182,8 @@
         "role": "side",
         "accepts": [],
         "reason": "Galette de pois chiche que l'on grignote brûlante à l'apéritif ou en accompagnement d'un plat niçois, elle n'apporte ni protéine ni légume en quantité suffisante pour tenir lieu de repas."
-      }
+      },
+      "description_courte": "Galette croustillante de farine de pois chiche à l'huile d'olive, cuite à haute température au four"
     },
     {
       "code": "SRC-029",
@@ -80267,7 +80419,8 @@
         "role": "complete",
         "accepts": [],
         "reason": "Légumineuses, pommes de terre, pâtes, légumes et fromage sont déjà réunis dans la même marmite : la soupe tient lieu de repas entier, éventuellement avec du pain."
-      }
+      },
+      "description_courte": "Soupe provençale de légumes variés et haricots avec pâtes, servie avec un pistou de basilic et ail"
     },
     {
       "code": "SRC-030",
@@ -80405,7 +80558,8 @@
         "role": "component",
         "accepts": [],
         "reason": "C'est un condiment à tartiner ou à farcir, qui accompagne pain, légumes crus ou poisson mais ne constitue jamais un repas à lui seul."
-      }
+      },
+      "description_courte": "Condiment d'olives noires dénoyautées mixées avec ail et huile d'olive"
     },
     {
       "code": "SRC-031",
@@ -80623,7 +80777,8 @@
           "starch"
         ],
         "reason": "Légume garni de viande, sans féculent dans l'assiette : les sources l'accompagnent de riz ou d'une salade."
-      }
+      },
+      "description_courte": "Aubergines évidées farcies de bœuf haché à la tomate et à l'ail, gratinées au gruyère"
     },
     {
       "code": "SRC-032",
@@ -80792,7 +80947,8 @@
           "starch"
         ],
         "reason": "Le boudin apporte la protéine et les pommes la garniture fruitée, mais l'assiette n'a aucun féculent : purée de pomme de terre, rattes sautées ou pain de campagne la complètent."
-      }
+      },
+      "description_courte": "Boudin noir poêlé avec des pommes et oignons sautés au beurre"
     },
     {
       "code": "SRC-033",
@@ -81026,7 +81182,8 @@
           "vegetables"
         ],
         "reason": "Le plat réunit déjà la protéine marine, le bouillon et 625 g de pommes de terre : il constitue un repas entier et n'appelle qu'une salade verte en accompagnement facultatif."
-      }
+      },
+      "description_courte": "Soupe de moules et pommes de terre dans un bouillon de poisson avec tomates et vin blanc"
     },
     {
       "code": "SRC-034",
@@ -81247,7 +81404,8 @@
           "vegetables"
         ],
         "reason": "Mollusque en sauce sans féculent intégré : les sources le servent avec du riz, qui absorbe la sauce tomatée."
-      }
+      },
+      "description_courte": "Calamars flambés au cognac et mijotés dans une sauce tomate au vin blanc"
     },
     {
       "code": "SRC-035",
@@ -81422,7 +81580,8 @@
         "role": "side",
         "accepts": [],
         "reason": "Salade crue d'entrée ou d'accompagnement, sans protéine ni féculent : elle se place à côté d'un plat principal plutôt que de constituer un repas."
-      }
+      },
+      "description_courte": "Carottes râpées en salade avec vinaigrette moutardée et jus d'orange fraîche"
     },
     {
       "code": "SRC-036",
@@ -81673,7 +81832,8 @@
           "vegetables"
         ],
         "reason": "Les haricots blancs tiennent lieu de féculent et les viandes de protéine : le plat se suffit, tout au plus accompagné d'une salade verte acidulée."
-      }
+      },
+      "description_courte": "Haricots blancs mijotés longuement avec confit de canard, saucisse de Toulouse et poitrine de porc"
     },
     {
       "code": "SRC-037",
@@ -81865,7 +82025,8 @@
         "role": "side",
         "accepts": [],
         "reason": "Hors-d'œuvre froid de crudités qui accompagne ou ouvre le repas mais ne constitue pas un plat complet, faute de protéine et de féculent."
-      }
+      },
+      "description_courte": "Céleri branche en julienne avec une sauce rémoulade à la moutarde, jaune d'œuf et yaourt"
     },
     {
       "code": "SRC-038",
@@ -82113,7 +82274,8 @@
         "role": "complete",
         "accepts": [],
         "reason": "Le plat réunit déjà la viande et le légume dans la même cocotte et se tient seul, mais son jus court appelle volontiers des pommes de terre vapeur pour être sauçé."
-      }
+      },
+      "description_courte": "Feuilles de chou vert blanchies farcies d'un mélange bœuf-porc haché, mijotées longuement"
     },
     {
       "code": "SRC-039",
@@ -82326,7 +82488,8 @@
           "vegetables"
         ],
         "reason": "Protéine marine en sauce servie en coquille, sans féculent : le planificateur doit ajouter un riz, des tagliatelles ou une purée pour composer le repas."
-      }
+      },
+      "description_courte": "Noix de Saint-Jacques dans leur coquille, gratinées avec sauce crème et chapelure"
     },
     {
       "code": "SRC-040",
@@ -82524,7 +82687,8 @@
         "role": "side",
         "accepts": [],
         "reason": "Légume braisé sans protéine ni féculent, servi en accompagnement d'une viande blanche ou d'un poisson plutôt qu'en plat unique."
-      }
+      },
+      "description_courte": "Fenouil en quartiers saisi puis braisé au vin blanc et bouillon, acidulé au citron"
     },
     {
       "code": "SRC-041",
@@ -82699,7 +82863,8 @@
         "role": "side",
         "accepts": [],
         "reason": "Riche mais sans protéine ni féculent, ce gratin de légume accompagne une viande blanche ou une volaille rôtie plutôt qu'il ne constitue un repas à lui seul."
-      }
+      },
+      "description_courte": "Bouquets de chou-fleur blanchis gratinés dans une béchamel crémeuse au gruyère"
     },
     {
       "code": "SRC-042",
@@ -82909,7 +83074,8 @@
           "vegetables"
         ],
         "reason": "Légumineuse, viande fumée et garniture aromatique cuisent ensemble dans la même cocotte : l'assiette est déjà équilibrée et n'appelle qu'une salade verte ou un légume vert pour la fraîcheur."
-      }
+      },
+      "description_courte": "Lentilles vertes mijotées avec lardons fumés, carottes et oignons parfumés au thym"
     },
     {
       "code": "SRC-043",
@@ -83106,7 +83272,8 @@
           "vegetables"
         ],
         "reason": "Le plat réunit déjà la protéine (morue et œufs) et le féculent (pommes de terre en rondelles) ; il n'appelle qu'une salade verte ou un légume acidulé en accompagnement facultatif."
-      }
+      },
+      "description_courte": "Morue dessalée cuite au four avec pommes de terre, œufs et persil"
     },
     {
       "code": "SRC-044",
@@ -83295,7 +83462,8 @@
           "starch"
         ],
         "reason": "Coquillage en jus court, sans féculent dans la recette : il appelle des frites, du pain de campagne ou un riz nature pour éponger le bouillon."
-      }
+      },
+      "description_courte": "Moules cuites à couvert dans un fumet de vin blanc, ail et beurre, finies au persil"
     },
     {
       "code": "SRC-045",
@@ -83550,7 +83718,8 @@
           "starch"
         ],
         "reason": "Viande braisée en sauce sans féculent intégré : elle appelle un support amylacé, risotto milanais, polenta ou tagliatelles, pour absorber la sauce."
-      }
+      },
+      "description_courte": "Rondelles de jarret de veau braisées dans une garniture aromatique au vin blanc"
     },
     {
       "code": "SRC-046",
@@ -83768,7 +83937,8 @@
           "vegetables"
         ],
         "reason": "Riche en fromage et en légume, la parmigiana tient le centre du repas mais ne contient aucun féculent : elle appelle du pain de campagne ou une salade verte à côté."
-      }
+      },
+      "description_courte": "Tranches d'aubergines panées et frites, montées en gratin avec sauce tomate, mozzarella et parmesan"
     },
     {
       "code": "SRC-047",
@@ -83954,7 +84124,8 @@
         "role": "side",
         "accepts": [],
         "reason": "C'est une garniture de légumes beurrée sans féculent ni protéine principale, traditionnellement servie à côté d'une volaille rôtie ou d'un agneau, et qui ne constitue pas un repas à elle seule."
-      }
+      },
+      "description_courte": "Petits pois mijotés avec de la laitue effilée, oignons blancs et beurre"
     },
     {
       "code": "SRC-048",
@@ -84161,7 +84332,8 @@
           "starch"
         ],
         "reason": "Les œufs apportent la protéine et la fondue de poivrons le légume, mais l'assiette reste sans féculent : la piperade se mange traditionnellement avec du pain de campagne ou des pommes de terre sautées."
-      }
+      },
+      "description_courte": "Compotée de poivrons rouges, tomates et oignons au piment d'Espelette avec des œufs"
     },
     {
       "code": "SRC-049",
@@ -84312,7 +84484,8 @@
         "role": "side",
         "accepts": [],
         "reason": "Malgré les quelques grammes de confit qui la parfument, cette poêlée reste l'accompagnement périgourdin classique d'un magret, d'une volaille rôtie ou d'une cuisse de confit entière, et ne constitue pas un repas à elle seule."
-      }
+      },
+      "description_courte": "Pommes de terre rissolées dans la graisse de confit de canard avec ail et persil"
     },
     {
       "code": "SRC-050",
@@ -84516,7 +84689,8 @@
           "vegetables"
         ],
         "reason": "Le plat réunit déjà la protéine (saucisses fumées), le féculent (pommes de terre) et une large garniture de légumes cuits dans le même bouillon : il constitue un repas entier et n'appelle aucun accompagnement, hormis éventuellement une salade verte derrière."
-      }
+      },
+      "description_courte": "Chou vert mijoté longuement avec saucisses de Morteau et Montbéliard, pommes de terre et légumes racines"
     },
     {
       "code": "SRC-051",
@@ -84732,7 +84906,8 @@
         "role": "side",
         "accepts": [],
         "reason": "Plat de légumes sans protéine ni féculent : il accompagne une viande grillée, un poisson ou un œuf, et ne constitue pas un repas à lui seul."
-      }
+      },
+      "description_courte": "Compotée provençale d'aubergines, courgettes, poivrons et tomates à l'huile d'olive et à l'ail"
     },
     {
       "code": "SRC-052",
@@ -84895,7 +85070,8 @@
         "role": "side",
         "accepts": [],
         "reason": "C'est un riz d'accompagnement, sans protéine ni légume à part entière : il se dresse à côté d'une viande, d'un poisson ou d'un plat en sauce plutôt que de constituer le repas."
-      }
+      },
+      "description_courte": "Riz nacré à l'oignon puis absorbant un bouillon de volaille, finit au beurre"
     },
     {
       "code": "SRC-053",
@@ -85106,7 +85282,8 @@
           "vegetables"
         ],
         "reason": "Le plat réunit déjà la protéine (fromage de chèvre et lardons), le féculent (pain de campagne grillé) et la verdure, il se tient donc seul en repas et n'appelle qu'un éventuel supplément de légumes."
-      }
+      },
+      "description_courte": "Salade verte avec tranches de fromage de chèvre gratinées sur croûtons, vinaigrette au miel"
     },
     {
       "code": "SRC-054",
@@ -85269,7 +85446,8 @@
           "vegetables"
         ],
         "reason": "Salade composée qui porte déjà sa protéine et sa garniture crue, et qui n'appelle qu'un complément de verdure ou de crudités si l'on veut étoffer l'assiette."
-      }
+      },
+      "description_courte": "Salade avec confit de canard chaud, tomates et vinaigrette moutardée"
     },
     {
       "code": "SRC-055",
@@ -85453,7 +85631,8 @@
           "vegetables"
         ],
         "reason": "Poisson en sauce crémeuse sans aucun féculent intégré : les sources le servent systématiquement avec des pommes vapeur ou de larges pâtes, que le planificateur doit donc ajouter."
-      }
+      },
+      "description_courte": "Pavé de saumon saisi puis nappé d'une sauce crème-oseille au vin blanc"
     },
     {
       "code": "SRC-056",
@@ -85647,7 +85826,8 @@
           "vegetables"
         ],
         "reason": "Le soufflé fait le plat à lui seul côté protéine et féculent — la béchamel apporte déjà la farine — mais il reste riche et sans verdure : les sources le servent avec une simple salade de mâche à la vinaigrette."
-      }
+      },
+      "description_courte": "Appareil de béchamel au gruyère et emmental allégé avec des blancs montés, cuit aussitôt au four"
     },
     {
       "code": "SRC-057",
@@ -85828,7 +86008,8 @@
           "vegetables"
         ],
         "reason": "La pâte apporte le féculent et les lardons la protéine, l'ensemble se suffit en plat : les sources la servent simplement flanquée d'une salade verte."
-      }
+      },
+      "description_courte": "Fond de pâte feuilletée garni d'oignons longuement fondus avec lardons dans un appareil crème-œufs"
     },
     {
       "code": "SRC-058",
@@ -86041,7 +86222,8 @@
           "vegetables"
         ],
         "reason": "Charcuterie servie froide en tranches epaisses, riche en proteine mais depourvue de feculent : elle appelle du pain de campagne et des cornichons ou une salade verte acidulee pour equilibrer le gras."
-      }
+      },
+      "description_courte": "Hachis de porc gras et maigre avec échine, ail et persil, cuit en bain-marie et pressé froid"
     },
     {
       "code": "SRC-059",
@@ -86240,7 +86422,8 @@
           "starch"
         ],
         "reason": "Poisson et légumes en sauce sans féculent intégré : un riz blanc ou des pommes vapeur absorbent le jus de piperade."
-      }
+      },
+      "description_courte": "Thon en conserve mijoté avec une compotée de poivrons rouges et verts, tomates et ail"
     },
     {
       "code": "SRC-060",
@@ -86406,7 +86589,8 @@
           "vegetables"
         ],
         "reason": "Poisson saisi nappé d'une sauce au beurre, sans féculent ni légume dans la recette : il appelle des pommes vapeur, du riz ou des haricots verts pour faire un repas."
-      }
+      },
+      "description_courte": "Truite farineuse saisie au beurre, garnie d'amandes effilées torréfiées"
     },
     {
       "code": "SRC-001-D1",
@@ -86647,7 +86831,8 @@
         "gluten",
         "œuf",
         "lait"
-      ]
+      ],
+      "description_courte": "Poule entière pochée longuement avec carottes, navets, poireau et céleri, sans farce"
     },
     {
       "code": "SRC-001-D2",
@@ -86900,7 +87085,8 @@
         "gluten",
         "œuf",
         "lait"
-      ]
+      ],
+      "description_courte": "Poule entière pochée avec une farce de pain de mie, lait, jambon et persil, avec un dôme de chou vert"
     },
     {
       "code": "SRC-003-D1",
@@ -87122,7 +87308,8 @@
       "conservation": "La viande tranchée se garde 2 jours au froid ; les flageolets 3 jours, et se réchauffent mieux que la viande.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Gigot d'agneau rôti avec haricots flageolets mijotés dans une sauce tomate au beurre et thym"
     },
     {
       "code": "SRC-004-D1",
@@ -87352,7 +87539,8 @@
       "conservation": "Se garde 2 jours au froid. La sauce crémée supporte mal la congélation : elle tranche à la décongélation.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Poulet flambé au calvados, mijoté au cidre avec pommes et champignons, lié aux jaunes d'œufs et crème"
     },
     {
       "code": "SRC-004-D2",
@@ -87587,7 +87775,8 @@
       "conservation": "Se garde 2 jours au froid. La sauce crémée supporte mal la congélation : elle tranche à la décongélation.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Poulet flambé au calvados, mijoté au cidre avec pommes, champignons et poireaux ajoutés"
     },
     {
       "code": "SRC-005-D1",
@@ -87798,7 +87987,8 @@
         "reason": "Viande en sauce tomate : appelle un féculent ou un légume vert."
       },
       "conservation": "Se garde 3 jours au froid, se réchauffe doucement dans sa sauce. Se congèle 2 mois.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Escalopes de veau roulées farcies au porc haché, braisées dans une sauce tomate en conserve"
     },
     {
       "code": "SRC-005-D2",
@@ -88004,7 +88194,8 @@
         "reason": "Viande en sauce tomate : appelle un féculent ou un légume vert."
       },
       "conservation": "Se garde 3 jours au froid, se réchauffe doucement dans sa sauce. Se congèle 2 mois.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Escalopes de veau roulées farcies au porc haché, braisées dans une sauce tomate fraîche au persil"
     },
     {
       "code": "SRC-006-D1",
@@ -88261,7 +88452,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Veau braisé au vin blanc avec champignons, oignons grelots et tomates pelées en conserve"
     },
     {
       "code": "SRC-006-D2",
@@ -88523,7 +88715,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Poulet en morceaux braisé au vin blanc avec champignons, oignons grelots et tomates fraîches"
     },
     {
       "code": "SRC-008-D1",
@@ -88779,7 +88972,8 @@
         "gluten",
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Dinde pochée avec carottes, champignons et poireaux dans un bouillon, liée à la crème"
     },
     {
       "code": "SRC-008-D2",
@@ -89040,7 +89234,8 @@
         "gluten",
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Dinde et légumes cuits sous pression puis liés à la crème fraîche"
     },
     {
       "code": "SRC-008-D3",
@@ -89299,7 +89494,8 @@
         "gluten",
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Dinde pochée avec carottes, champignons et poireau dans un bouillon au vin blanc, sans liaison crémeuse"
     },
     {
       "code": "SRC-008-D4",
@@ -89555,7 +89751,8 @@
         "gluten",
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Dinde et légumes cuits au four dans un bouillon de volaille, liés à la crème fraîche"
     },
     {
       "code": "SRC-011-D1",
@@ -89745,7 +89942,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Pain de mie au jambon et emmental gratiné au four, surmonté d'un œuf"
     },
     {
       "code": "SRC-011-D2",
@@ -89940,7 +90138,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Pain de mie au jambon et emmental avec l'œuf cuit dans un évidement central"
     },
     {
       "code": "SRC-012-D1",
@@ -90171,7 +90370,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Brocolis blanchis gratinés dans une sauce béchamel crémeuse, sans protéine animale"
     },
     {
       "code": "SRC-012-D2",
@@ -90402,7 +90602,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Brocolis blanchis avec béchamel crémeuse et jambon blanc en garniture"
     },
     {
       "code": "SRC-012-D3",
@@ -90641,7 +90842,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Brocolis blanchis dans une béchamel crémeuse, gratiné avec une croûte dorée épaissie"
     },
     {
       "code": "SRC-012-D4",
@@ -90872,7 +91074,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Brocolis blanchis dans une béchamel crémeuse au jambon blanc, sans liant à l'œuf"
     },
     {
       "code": "SRC-014-D1",
@@ -91118,7 +91321,8 @@
         "œuf",
         "fruits à coque",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Lentilles corail tièdes avec lardons fumés, carottes, poireau et vinaigrette à l'huile d'olive"
     },
     {
       "code": "SRC-014-D2",
@@ -91359,7 +91563,8 @@
         "œuf",
         "fruits à coque",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Lentilles corail tièdes avec œuf poché, légumes aromatiques et vinaigrette au vinaigre de cidre"
     },
     {
       "code": "SRC-014-D3",
@@ -91629,7 +91834,8 @@
         "œuf",
         "fruits à coque",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Lentilles corail tièdes avec œuf poché et légumes de saison en vinaigrette"
     },
     {
       "code": "SRC-015-D1",
@@ -91829,7 +92035,8 @@
         "œuf",
         "moutarde",
         "poisson"
-      ]
+      ],
+      "description_courte": "Œufs durs farcis d'un mélange de jaunes à la mayonnaise avec du thon émietté"
     },
     {
       "code": "SRC-015-D2",
@@ -92038,7 +92245,8 @@
         "œuf",
         "moutarde",
         "poisson"
-      ]
+      ],
+      "description_courte": "Œufs durs farcis d'un mélange de jaunes lié à l'avocat frais et au citron"
     },
     {
       "code": "SRC-018-D1",
@@ -92226,7 +92434,8 @@
       "allergens": [
         "gluten",
         "poisson"
-      ]
+      ],
+      "description_courte": "Petites pâtes avec thon en conserve et sauce tomate relevée uniquement à l'ail"
     },
     {
       "code": "SRC-018-D2",
@@ -92406,7 +92615,8 @@
       "allergens": [
         "gluten",
         "poisson"
-      ]
+      ],
+      "description_courte": "Petites pâtes avec thon dans une sauce tomate réduite longuement avec oignon et ail"
     },
     {
       "code": "SRC-002-D1",
@@ -92661,7 +92871,8 @@
       "conservation": "Se garde 3 jours au froid et gagne à être réchauffé le lendemain. Se congèle 3 mois.",
       "allergens": [
         "gluten"
-      ]
+      ],
+      "description_courte": "Bœuf braisé aux carottes, refroidi et servi en gelée naturelle formée par le bouillon"
     },
     {
       "code": "SRC-009-D1",
@@ -92956,7 +93167,8 @@
         "lait",
         "œuf",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Bouchées feuilletées garnies d'une fricassée de saumon et champignons liée"
     },
     {
       "code": "SRC-009-D2",
@@ -93259,7 +93471,8 @@
         "lait",
         "œuf",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Petites bouchées feuilletées garnies d'une fricassée de champignons liée et gratinées en entrée"
     },
     {
       "code": "SRC-009-D3",
@@ -93514,7 +93727,8 @@
         "lait",
         "œuf",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Bouchées feuilletées avec une fricassée de poulet effiloché et champignons liée à la crème"
     },
     {
       "code": "SRC-010-D1",
@@ -93762,7 +93976,8 @@
         "reason": "Le plat apporte la protéine et le légume mais aucun féculent : les sources du dossier le servent accompagné de riz, que le planificateur doit donc ajouter."
       },
       "conservation": "Se garde 3 jours au réfrigérateur à 4 °C dans un plat couvert, et se réchauffe 15 minutes à 160 °C plutôt qu'au micro-ondes pour que la barquette ne s'affaisse pas. La congélation de la farce seule tient 2 mois à -18 °C ; en revanche les courgettes garnies supportent mal le gel, elles rendent leur eau et deviennent flasques à la décongélation.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Courgettes évidées farcies de chair de brochet et oignons, cuites au four dans la tomate"
     },
     {
       "code": "SRC-010-D2",
@@ -94027,7 +94242,8 @@
         "reason": "Le plat apporte la protéine et le légume mais aucun féculent : les sources du dossier le servent accompagné de riz, que le planificateur doit donc ajouter."
       },
       "conservation": "Se garde 3 jours au réfrigérateur à 4 °C dans un plat couvert, et se réchauffe 15 minutes à 160 °C plutôt qu'au micro-ondes pour que la barquette ne s'affaisse pas. La congélation de la farce seule tient 2 mois à -18 °C ; en revanche les courgettes garnies supportent mal le gel, elles rendent leur eau et deviennent flasques à la décongélation.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Courgettes farcies de viande hachée relevée au cumin pour un profil épicé"
     },
     {
       "code": "SRC-010-D3",
@@ -94280,7 +94496,8 @@
         "reason": "Le plat apporte la protéine et le légume mais aucun féculent : les sources du dossier le servent accompagné de riz, que le planificateur doit donc ajouter."
       },
       "conservation": "Se garde 3 jours au réfrigérateur à 4 °C dans un plat couvert, et se réchauffe 15 minutes à 160 °C plutôt qu'au micro-ondes pour que la barquette ne s'affaisse pas. La congélation de la farce seule tient 2 mois à -18 °C ; en revanche les courgettes garnies supportent mal le gel, elles rendent leur eau et deviennent flasques à la décongélation.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Courgettes rondes blanchies puis farcies de viande hachée à la tomate"
     },
     {
       "code": "SRC-010-D4",
@@ -94507,7 +94724,8 @@
         "reason": "Le plat apporte la protéine et le légume mais aucun féculent : les sources du dossier le servent accompagné de riz, que le planificateur doit donc ajouter."
       },
       "conservation": "Se garde 3 jours au réfrigérateur à 4 °C dans un plat couvert, et se réchauffe 15 minutes à 160 °C plutôt qu'au micro-ondes pour que la barquette ne s'affaisse pas. La congélation de la farce seule tient 2 mois à -18 °C ; en revanche les courgettes garnies supportent mal le gel, elles rendent leur eau et deviennent flasques à la décongélation.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Courgettes farcies de viande hachée mouillées de tomate fraîche râpée plutôt qu'en conserve"
     },
     {
       "code": "SRC-007-D1",
@@ -94703,7 +94921,8 @@
         "poisson",
         "gluten",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Anchoïade d'anchois et ail à l'huile d'olive épaissie avec du pain de mie mixé"
     },
     {
       "code": "SRC-007-D2",
@@ -94895,7 +95114,8 @@
         "poisson",
         "gluten",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Anchoïade d'anchois et ail à l'huile d'olive, acidulée au jus de citron plutôt qu'au vinaigre"
     },
     {
       "code": "SRC-007-D3",
@@ -95083,7 +95303,8 @@
         "poisson",
         "gluten",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Anchoïade d'anchois et ail à l'huile d'olive avec tomate râpée incorporée"
     },
     {
       "code": "SRC-013-D1",
@@ -95372,7 +95593,8 @@
         "gluten",
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Langue de bœuf pochée puis servie avec une sauce piquante au vinaigre de vin rouge et cornichons"
     },
     {
       "code": "SRC-013-D2",
@@ -95652,7 +95874,8 @@
         "gluten",
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Langue de bœuf pochée puis mijotée dans une sauce tomate légèrement pimentée"
     },
     {
       "code": "SRC-013-D3",
@@ -95925,7 +96148,8 @@
         "gluten",
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Langue de bœuf sauce piquante aux cornichons, cuite sous pression pour gagner du temps"
     },
     {
       "code": "SRC-015-D3",
@@ -96149,7 +96373,8 @@
         "œuf",
         "moutarde",
         "poisson"
-      ]
+      ],
+      "description_courte": "Verrine de crème de thon et jaunes d'œufs à la mayonnaise, garnie d'œuf mimosa"
     },
     {
       "code": "SRC-015-D4",
@@ -96426,7 +96651,8 @@
         "œuf",
         "moutarde",
         "poisson"
-      ]
+      ],
+      "description_courte": "Œufs mimosa à la mayonnaise moutardée, panés à la chapelure et frits"
     },
     {
       "code": "SRC-014-D4",
@@ -96697,7 +96923,8 @@
         "œuf",
         "fruits à coque",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Lentilles corail tièdes avec œuf poché, poireaux étuvés doucement et vinaigrette"
     },
     {
       "code": "SRC-016-D1",
@@ -96923,7 +97150,8 @@
         "œuf",
         "lait",
         "gluten"
-      ]
+      ],
+      "description_courte": "Omelette paysanne aux pommes de terre et lardons enrichie de croûtons et d'une cuillerée de crème"
     },
     {
       "code": "SRC-016-D2",
@@ -97126,7 +97354,8 @@
       "allergens": [
         "œuf",
         "lait"
-      ]
+      ],
+      "description_courte": "Omelette plate aux pommes de terre fraîchement râpées et lardons"
     },
     {
       "code": "SRC-016-D3",
@@ -97306,7 +97535,8 @@
       "allergens": [
         "œuf",
         "lait"
-      ]
+      ],
+      "description_courte": "Omelette épaisse non roulée, cuite des deux côtés, aux pommes de terre et lardons"
     },
     {
       "code": "SRC-016-D4",
@@ -97487,7 +97717,8 @@
       "conservation": "Se conserve 48 heures au réfrigérateur entre 0 et 4 °C, refroidie à découvert puis rangée en boîte hermétique, les lanières séparées d'un papier absorbant qui retient l'eau qu'elles rendent. Se mange froide, sans réchauffage : repassée à la poêle elle sèche et devient caoutchouteuse. Congélation à proscrire, l'œuf coagulé se défait en cristaux à la décongélation.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Omelette paysanne refroidie et taillée en lanières pour une salade ou une garniture froide"
     },
     {
       "code": "SRC-017-D1",
@@ -97681,7 +97912,8 @@
         "gluten",
         "œuf",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Sandwich pressé de pain de campagne avec tomates, œuf dur, olives noires et huile d'olive frottée à l'ail"
     },
     {
       "code": "SRC-017-D2",
@@ -97878,7 +98110,8 @@
         "gluten",
         "œuf",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Sandwich provençal pressé avec tomates fraîches en rondelles, œuf dur et olives"
     },
     {
       "code": "SRC-017-D3",
@@ -98056,7 +98289,8 @@
         "gluten",
         "œuf",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Pan bagnat classique préparé la veille pour une meilleure imprégnation des ingrédients"
     },
     {
       "code": "SRC-018-D3",
@@ -98245,7 +98479,8 @@
       "allergens": [
         "gluten",
         "poisson"
-      ]
+      ],
+      "description_courte": "Petites pâtes avec thon en conserve dans une sauce tomate finie à l'huile d'olive crue"
     },
     {
       "code": "SRC-019-D1",
@@ -98487,7 +98722,8 @@
       "allergens": [
         "gluten",
         "poisson"
-      ]
+      ],
+      "description_courte": "Tarte sur pâte levée garnie d'oignons confits, anchois et olives, proche de la pissaladière"
     },
     {
       "code": "SRC-019-D2",
@@ -98712,7 +98948,8 @@
       "allergens": [
         "gluten",
         "poisson"
-      ]
+      ],
+      "description_courte": "Tarte niçoise levée aux oignons confits, anchois et olives vertes"
     },
     {
       "code": "SRC-019-D3",
@@ -98959,7 +99196,8 @@
       "allergens": [
         "gluten",
         "poisson"
-      ]
+      ],
+      "description_courte": "Tarte levée aux oignons confits et anchois, avec une couche de fenouil braisé"
     },
     {
       "code": "SRC-019-D4",
@@ -99219,7 +99457,8 @@
       "allergens": [
         "gluten",
         "poisson"
-      ]
+      ],
+      "description_courte": "Tarte niçoise levée aux oignons confits, anchois, olives et tranches d'aubergine rôtie"
     },
     {
       "code": "SRC-020-D1",
@@ -99434,7 +99673,8 @@
       "conservation": "Se conserve 3 jours au réfrigérateur entre 0 et 4 °C, couvert une fois complètement refroidi, et se réchauffe 15 minutes à 180 °C pour retrouver la croûte. La congélation est déconseillée : le poireau relâche son eau à la décongélation et la crème risque de trancher.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Poireaux blanchis nappés d'une béchamel à la muscade, gratinés au gruyère"
     },
     {
       "code": "SRC-020-D2",
@@ -99674,7 +99914,8 @@
       "conservation": "Se conserve 3 jours au réfrigérateur entre 0 et 4 °C, couvert une fois complètement refroidi, et se réchauffe 15 minutes à 180 °C pour retrouver la croûte. La congélation est déconseillée : le poireau relâche son eau à la décongélation et la crème risque de trancher.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Poireaux blanchis dans une sauce tomate fraîche à l'ail, gratinés au gruyère"
     },
     {
       "code": "SRC-020-D3",
@@ -99855,7 +100096,8 @@
       "conservation": "Se conserve 3 jours au réfrigérateur entre 0 et 4 °C, couvert une fois complètement refroidi, et se réchauffe 15 minutes à 180 °C pour retrouver la croûte. La congélation est déconseillée : le poireau relâche son eau à la décongélation et la crème risque de trancher.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Poireaux blanchis dans une crème fraîche, gratinés sous une croûte de chapelure et gruyère"
     },
     {
       "code": "SRC-020-D4",
@@ -100025,7 +100267,8 @@
       "conservation": "Se conserve 3 jours au réfrigérateur entre 0 et 4 °C, couvert une fois complètement refroidi, et se réchauffe 15 minutes à 180 °C pour retrouver la croûte. La congélation est déconseillée : le poireau relâche son eau à la décongélation et la crème risque de trancher.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Poireaux cuits à la vapeur puis gratinés dans une crème fraîche au gruyère"
     },
     {
       "code": "SRC-021-D1",
@@ -100280,7 +100523,8 @@
       "conservation": "Trois jours au réfrigérateur entre 0 et 4 °C dans une boîte hermétique, réchauffés vingt minutes à 160 °C plutôt qu'au micro-ondes qui détrempe la peau. La congélation tient deux mois mais ramollit beaucoup le poivron à la décongélation : mieux vaut congeler la farce seule et garnir des poivrons frais le jour du repas.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Poivrons rouges farcis de riz cuisiné au curry dans un bouillon de volaille, rôtis au four"
     },
     {
       "code": "SRC-021-D2",
@@ -100533,7 +100777,8 @@
       "conservation": "Trois jours au réfrigérateur entre 0 et 4 °C dans une boîte hermétique, réchauffés vingt minutes à 160 °C plutôt qu'au micro-ondes qui détrempe la peau. La congélation tient deux mois mais ramollit beaucoup le poivron à la décongélation : mieux vaut congeler la farce seule et garnir des poivrons frais le jour du repas.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Poivrons rouges farcis de riz et lardons à la tomate, parfumés aux herbes fraîches"
     },
     {
       "code": "SRC-021-D3",
@@ -100779,7 +101024,8 @@
       "conservation": "Trois jours au réfrigérateur entre 0 et 4 °C dans une boîte hermétique, réchauffés vingt minutes à 160 °C plutôt qu'au micro-ondes qui détrempe la peau. La congélation tient deux mois mais ramollit beaucoup le poivron à la décongélation : mieux vaut congeler la farce seule et garnir des poivrons frais le jour du repas.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Poivrons rouges farcis de riz et lardons à la tomate, rôtis à découvert pour une peau plus dorée"
     },
     {
       "code": "SRC-021-D4",
@@ -101037,7 +101283,8 @@
       "conservation": "Trois jours au réfrigérateur entre 0 et 4 °C dans une boîte hermétique, réchauffés vingt minutes à 160 °C plutôt qu'au micro-ondes qui détrempe la peau. La congélation tient deux mois mais ramollit beaucoup le poivron à la décongélation : mieux vaut congeler la farce seule et garnir des poivrons frais le jour du repas.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Poivrons rouges coupés en barquettes, farcis de riz et lardons à la tomate"
     },
     {
       "code": "SRC-022-D1",
@@ -101227,7 +101474,8 @@
       "conservation": "Se garde trois jours au réfrigérateur entre 0 et 4 °C dans un contenant fermé ; réchauffer doucement sans faire bouillir pour éviter que la crème ne tranche. Pour la congélation, congeler la base mixée sans crème jusqu'à trois mois et n'incorporer la crème qu'au réchauffage : congelée crémée, elle se déphase et rend le velouté granuleux.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Soupe froide lisse de poireaux et pommes de terre dans le bouillon, liée à la crème"
     },
     {
       "code": "SRC-022-D2",
@@ -101454,7 +101702,8 @@
       "conservation": "Se garde trois jours au réfrigérateur entre 0 et 4 °C dans un contenant fermé ; réchauffer doucement sans faire bouillir pour éviter que la crème ne tranche. Pour la congélation, congeler la base mixée sans crème jusqu'à trois mois et n'incorporer la crème qu'au réchauffage : congelée crémée, elle se déphase et rend le velouté granuleux.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Soupe de poireau et pomme de terre dans le bouillon, garnie de croûtons frits et de cerfeuil frais"
     },
     {
       "code": "SRC-022-D3",
@@ -101649,7 +101898,8 @@
       "conservation": "Se garde trois jours au réfrigérateur entre 0 et 4 °C dans un contenant fermé ; réchauffer doucement sans faire bouillir pour éviter que la crème ne tranche. Pour la congélation, congeler la base mixée sans crème jusqu'à trois mois et n'incorporer la crème qu'au réchauffage : congelée crémée, elle se déphase et rend le velouté granuleux.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Soupe de poireau et pomme de terre à l'eau, liée à la crème, sans bouillon de viande"
     },
     {
       "code": "SRC-022-D4",
@@ -101841,7 +102091,8 @@
       "conservation": "Se garde trois jours au réfrigérateur entre 0 et 4 °C dans un contenant fermé ; réchauffer doucement sans faire bouillir pour éviter que la crème ne tranche. Pour la congélation, congeler la base mixée sans crème jusqu'à trois mois et n'incorporer la crème qu'au réchauffage : congelée crémée, elle se déphase et rend le velouté granuleux.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Soupe de poireaux et pommes de terre dans un bouillon de volaille, liée légèrement à la crème"
     },
     {
       "code": "SRC-023-D1",
@@ -102093,7 +102344,8 @@
         "soja",
         "sésame",
         "crustacés"
-      ]
+      ],
+      "description_courte": "Riz sauté avec crevettes décortiquées, œufs brouillés, petits pois et oignons"
     },
     {
       "code": "SRC-023-D2",
@@ -102337,7 +102589,8 @@
         "gluten",
         "soja",
         "sésame"
-      ]
+      ],
+      "description_courte": "Riz sauté avec œufs brouillés, carottes, petits pois et sauce soja, sans protéine animale"
     },
     {
       "code": "SRC-023-D3",
@@ -102593,7 +102846,8 @@
         "gluten",
         "soja",
         "sésame"
-      ]
+      ],
+      "description_courte": "Riz sauté avec œufs brouillés, lardons fumés et petits pois"
     },
     {
       "code": "SRC-023-D4",
@@ -102826,7 +103080,8 @@
         "gluten",
         "soja",
         "sésame"
-      ]
+      ],
+      "description_courte": "Riz sauté au beurre avec œufs brouillés et jambon blanc, sans sauce soja"
     },
     {
       "code": "SRC-024-D1",
@@ -103003,7 +103258,8 @@
       "allergens": [
         "poisson",
         "œuf"
-      ]
+      ],
+      "description_courte": "Riz froid avec thon, œufs, tomates et poivron vert blanchi en vinaigrette"
     },
     {
       "code": "SRC-025-D1",
@@ -103243,7 +103499,8 @@
         "moutarde",
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Pommes de terre, jambon blanc, œufs durs, cornichons avec mayonnaise maison à la moutarde"
     },
     {
       "code": "SRC-025-D2",
@@ -103477,7 +103734,8 @@
         "moutarde",
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Pommes de terre, jambon blanc, œufs durs et cornichons liés à une mayonnaise allégée à la crème"
     },
     {
       "code": "SRC-025-D3",
@@ -103707,7 +103965,8 @@
         "moutarde",
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Pommes de terre, blanc de poulet poché, œufs durs et cornichons en mayonnaise moutardée"
     },
     {
       "code": "SRC-025-D4",
@@ -103928,7 +104187,8 @@
         "moutarde",
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Pommes de terre, œufs durs et cornichons liés à la mayonnaise moutardée, sans charcuterie"
     },
     {
       "code": "SRC-026-D1",
@@ -104155,7 +104415,8 @@
       "conservation": "Se conserve 2 jours au réfrigérateur entre 0 et 4 °C dans un récipient fermé, mais perd beaucoup au réchauffage : les lanières saisies se contractent et les légumes rendent leur croquant. Réchauffer très vite à la poêle brûlante, jamais à couvert et jamais à l'eau. La congélation n'a pas d'intérêt ici : la viande n'a pas la structure fondante du braisé, qui seule supporte la décongélation.",
       "allergens": [
         "sulfites"
-      ]
+      ],
+      "description_courte": "Porc sauté rapidement à feu vif avec pruneaux et lardons fumés"
     },
     {
       "code": "SRC-026-D2",
@@ -104361,7 +104622,8 @@
       "conservation": "Se conserve 3 jours au réfrigérateur entre 0 et 4 °C dans un récipient fermé, et gagne même en goût réchauffé le lendemain à feu doux avec une cuillère d'eau. Le plat se congèle très bien 3 mois : la viande et la sauce supportent la décongélation, les pruneaux ressortent seulement un peu plus fondus.",
       "allergens": [
         "sulfites"
-      ]
+      ],
+      "description_courte": "Épaule de porc mijotée en cocotte avec des pruneaux"
     },
     {
       "code": "SRC-027-D1",
@@ -104607,7 +104869,8 @@
       "allergens": [
         "gluten",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Veau braisé aux olives vertes et noires avec concentré de tomate dans le style corse"
     },
     {
       "code": "SRC-027-D2",
@@ -104877,7 +105140,8 @@
       "allergens": [
         "gluten",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Veau braisé aux olives vertes et noires avec un zeste de citron en finition"
     },
     {
       "code": "SRC-027-D3",
@@ -105132,7 +105396,8 @@
       "allergens": [
         "gluten",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Veau braisé aux olives avec pommes de terre cuites dans le même jus de cuisson"
     },
     {
       "code": "SRC-027-D4",
@@ -105384,7 +105649,8 @@
       "conservation": "Se garde trois jours au réfrigérateur entre 0 et 4 °C dans un récipient hermétique, et gagne même à être réchauffé doucement le lendemain. La congélation est possible trois mois à -18 °C, mais mieux vaut congeler la viande et sa sauce sans les olives, dont la chair se ramollit à la décongélation, et les ajouter au réchauffage.",
       "allergens": [
         "gluten"
-      ]
+      ],
+      "description_courte": "Veau braisé aux olives dans une sauce tomate concentrée, sans vin de déglaçage"
     },
     {
       "code": "SRC-028-D1",
@@ -105542,7 +105808,8 @@
         "reason": "Galette de pois chiche que l'on grignote brûlante à l'apéritif ou en accompagnement d'un plat niçois, elle n'apporte ni protéine ni légume en quantité suffisante pour tenir lieu de repas."
       },
       "conservation": "La socca se mange dans les minutes qui suivent la sortie du four, quand la croûte est encore craquante. À défaut, la garder quelques heures à température ambiante sous un linge, ou deux jours au réfrigérateur entre 0 et 4 °C en boîte hermétique, puis la repasser deux à trois minutes sous le gril pour lui rendre du croustillant. La congélation est déconseillée : la décongélation détrempe la croûte et rend le cœur caoutchouteux.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Galette de pois chiche à l'huile d'olive, assaisonnée généreusement au poivre noir du moulin"
     },
     {
       "code": "SRC-029-D1",
@@ -105788,7 +106055,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Soupe de légumes et haricots avec pâtes courtes dans un bouillon, servie avec pistou, sans tomate"
     },
     {
       "code": "SRC-029-D2",
@@ -106040,7 +106308,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Soupe de légumes et haricots avec pâtes, servie avec du gruyère râpé fondu en surface"
     },
     {
       "code": "SRC-029-D3",
@@ -106300,7 +106569,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Soupe de légumes et haricots avec pâtes, à la tomate râpée pour une note plus fraîche"
     },
     {
       "code": "SRC-029-D4",
@@ -106545,7 +106815,8 @@
       "conservation": "Se garde 3 jours au réfrigérateur à 4 °C dans un récipient fermé ; le goût de pistou s'estompe dès le lendemain, mieux vaut en réserver une part fraîche à ajouter au réchauffage. Le bouillon garni se congèle 3 mois s'il est préparé sans pâtes ni pommes de terre, qui se délitent à la décongélation ; le pistou, lui, ne supporte pas la congélation car l'émulsion se sépare.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Soupe de légumes et haricots avec des pommes de terre en morceaux en plus des pâtes"
     },
     {
       "code": "SRC-029-D5",
@@ -106795,7 +107066,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Soupe de légumes avec haricots blancs et haricots rouges réunis, liée au pistou"
     },
     {
       "code": "SRC-031-D1",
@@ -107045,7 +107317,8 @@
       "allergens": [
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Aubergines évidées farcies de riz cuit à la tomate, gratinées au gruyère"
     },
     {
       "code": "SRC-031-D2",
@@ -107287,7 +107560,8 @@
       "allergens": [
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Aubergines évidées farcies de bœuf haché à la tomate, la farce liée à la crème"
     },
     {
       "code": "SRC-031-D3",
@@ -107523,7 +107797,8 @@
       "allergens": [
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Aubergines farcies de bœuf haché à la tomate, cuites à la friteuse à air"
     },
     {
       "code": "SRC-031-D4",
@@ -107751,7 +108026,8 @@
       "conservation": "Trois jours au réfrigérateur à 4 °C dans une boîte fermée ; réchauffer 15 minutes à 160 °C plutôt qu'au micro-ondes, qui détrempe la croûte. Congélation possible deux mois avant gratinage, mais la coque rend beaucoup d'eau à la décongélation et perd sa tenue.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Aubergines farcies de bœuf haché à la tomate et gruyère, sans liant à l'œuf"
     },
     {
       "code": "SRC-032-D1",
@@ -107995,7 +108271,8 @@
         "lait",
         "gluten",
         "œuf"
-      ]
+      ],
+      "description_courte": "Tourte feuilletée garnie de boudin noir, pommes caramélisées et fondue de poireaux"
     },
     {
       "code": "SRC-032-D2",
@@ -108204,7 +108481,8 @@
       "allergens": [
         "lait",
         "gluten"
-      ]
+      ],
+      "description_courte": "Tarte renversée de pommes caramélisées et boudin noir sur pâte feuilletée"
     },
     {
       "code": "SRC-032-D3",
@@ -108430,7 +108708,8 @@
       "conservation": "Se garde 48 h à 4 °C en boîte fermée, boudin et pommes séparés, et se réchauffe à la poêle sur feu doux ou au four à 140 °C. Congélation déconseillée : le boudin cuit relargue son gras et devient granuleux, les pommes s'affaissent en rendant leur eau.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Boudin noir poêlé avec pommes, oignons caramélisés au miel et purée de pommes de terre"
     },
     {
       "code": "SRC-032-D4",
@@ -108657,7 +108936,8 @@
       "conservation": "Se garde 48 h à 4 °C en boîte fermée, boudin et pommes séparés, et se réchauffe à la poêle sur feu doux ou au four à 140 °C. Congélation déconseillée : le boudin cuit relargue son gras et devient granuleux, les pommes s'affaissent en rendant leur eau.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Boudin noir poêlé avec pommes, pommes de terre nouvelles et raisins secs"
     },
     {
       "code": "SRC-032-D5",
@@ -108862,7 +109142,8 @@
       "conservation": "Se garde 48 h à 4 °C en boîte fermée, boudin et pommes séparés, et se réchauffe à la poêle sur feu doux ou au four à 140 °C. Congélation déconseillée : le boudin cuit relargue son gras et devient granuleux, les pommes s'affaissent en rendant leur eau.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Pommes évidées farcies de boudin noir et oignons, cuites au four"
     },
     {
       "code": "SRC-032-D6",
@@ -109059,7 +109340,8 @@
       "conservation": "Se garde 48 h à 4 °C en boîte fermée, boudin et pommes séparés, et se réchauffe à la poêle sur feu doux ou au four à 140 °C. Congélation déconseillée : le boudin cuit relargue son gras et devient granuleux, les pommes s'affaissent en rendant leur eau.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Boudin noir et pommes sautés au beurre, flambés au calvados"
     },
     {
       "code": "SRC-033-D1",
@@ -109333,7 +109615,8 @@
         "poisson",
         "mollusques",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Soupe de moules et pommes de terre dans un bouillon de poisson aux tomates râpées"
     },
     {
       "code": "SRC-033-D2",
@@ -109609,7 +109892,8 @@
         "mollusques",
         "sulfites",
         "gluten"
-      ]
+      ],
+      "description_courte": "Bouillabaisse servie d'abord en soupe filtrée, puis avec les fruits de mer en assiette"
     },
     {
       "code": "SRC-033-D3",
@@ -109884,7 +110168,8 @@
       "allergens": [
         "poisson",
         "mollusques"
-      ]
+      ],
+      "description_courte": "Soupe de moules dans un bouillon de poisson et tomates avec concentré, sans vin blanc"
     },
     {
       "code": "SRC-034-D1",
@@ -110112,7 +110397,8 @@
       "allergens": [
         "mollusques",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Calamars flambés au cognac, mijotés dans une sauce tomate au vin blanc, sans crème"
     },
     {
       "code": "SRC-035-D1",
@@ -110324,7 +110610,8 @@
       "allergens": [
         "moutarde",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Carottes râpées en vinaigrette à l'orange avec cumin et raisins secs"
     },
     {
       "code": "SRC-035-D2",
@@ -110526,7 +110813,8 @@
       "allergens": [
         "moutarde",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Carottes râpées assaisonnées d'une vinaigrette douce à l'orange sans vinaigre"
     },
     {
       "code": "SRC-035-D3",
@@ -110726,7 +111014,8 @@
       "allergens": [
         "moutarde",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Carottes râpées avec des suprêmes d'orange frais en vinaigrette moutardée"
     },
     {
       "code": "SRC-036-D1",
@@ -110987,7 +111276,8 @@
       "allergens": [
         "gluten",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Haricots blancs avec confit de canard, saucisse de Toulouse et poitrine de porc, cuits longuement au four"
     },
     {
       "code": "SRC-036-D2",
@@ -111248,7 +111538,8 @@
       "conservation": "Se conserve 4 jours au réfrigérateur entre 0 et 4 °C, dans son plat couvert d'un film ; il gagne au réchauffage lent à 150 °C avec une louche de bouillon. Congélation possible 3 mois : n'ayant pas de croûte panée à refaire, il supporte mieux le passage au froid que la version gratinée, mais il faut le décongeler complètement au réfrigérateur puis crever une dernière fois sa surface au réchauffage pour lui rendre son liant.",
       "allergens": [
         "sulfites"
-      ]
+      ],
+      "description_courte": "Cassoulet avec une croûte épaisse de haricots et de chapelure, mitonnée plusieurs fois au four"
     },
     {
       "code": "SRC-036-D3",
@@ -111519,7 +111810,8 @@
       "allergens": [
         "gluten",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Cassoulet avec saucisse de Toulouse et saucisse de Montbéliard réunies"
     },
     {
       "code": "SRC-036-D4",
@@ -111783,7 +112075,8 @@
       "allergens": [
         "gluten",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Cassoulet préparé la veille pour une texture plus concentrée après réchauffage"
     },
     {
       "code": "SRC-037-D1",
@@ -111997,7 +112290,8 @@
         "œuf",
         "lait",
         "moutarde"
-      ]
+      ],
+      "description_courte": "Céleri branche blanchi puis assaisonné d'une rémoulade à la moutarde et yaourt"
     },
     {
       "code": "SRC-037-D2",
@@ -112223,7 +112517,8 @@
         "œuf",
         "lait",
         "moutarde"
-      ]
+      ],
+      "description_courte": "Céleri rémoulade classique avec ajout de câpres pour une note piquante"
     },
     {
       "code": "SRC-037-D3",
@@ -112435,7 +112730,8 @@
         "œuf",
         "lait",
         "moutarde"
-      ]
+      ],
+      "description_courte": "Céleri rémoulade avec des dés de pomme fraîche mélangés"
     },
     {
       "code": "SRC-038-D1",
@@ -112722,7 +113018,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Feuilles de chou farcies d'un mélange bœuf-porc haché, mijotées dans une sauce tomate"
     },
     {
       "code": "SRC-038-D2",
@@ -113003,7 +113300,8 @@
         "lait",
         "œuf",
         "poisson"
-      ]
+      ],
+      "description_courte": "Chou farci avec une farce de brochet et porc haché, dans le style de la Dombes"
     },
     {
       "code": "SRC-038-D3",
@@ -113290,7 +113588,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Chou farci à la viande, terminé sous le gril avec une couche gratinée"
     },
     {
       "code": "SRC-038-D4",
@@ -113557,7 +113856,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Feuilles de chou blanc farcies d'un mélange bœuf-porc haché, mijotées longuement"
     },
     {
       "code": "SRC-039-D1",
@@ -113809,7 +114109,8 @@
         "œuf",
         "gluten",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Noix de Saint-Jacques gratinées dans leur coquille sur un lit de poireaux fondus"
     },
     {
       "code": "SRC-039-D2",
@@ -114100,7 +114401,8 @@
         "œuf",
         "gluten",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Noix de Saint-Jacques dans leur coquille, nappées d'une sauce Mornay et gratinées"
     },
     {
       "code": "SRC-040-D1",
@@ -114325,7 +114627,8 @@
       "allergens": [
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Fenouil d'abord blanchi puis saisi et braisé au vin blanc avec jus de citron"
     },
     {
       "code": "SRC-040-D2",
@@ -114549,7 +114852,8 @@
       "conservation": "Se conserve 3 jours au réfrigérateur à 4 °C, dans une boîte hermétique et baigné de son jus de braisage ; réchauffer doucement à couvert avec une cuillère d'eau. La congélation est déconseillée : les fibres du fenouil éclatent au dégel et le légume rend son eau, donnant une texture filandreuse et un jus délavé.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Fenouil braisé dans un bouillon léger fortement acidulé au jus de citron, sans vin"
     },
     {
       "code": "SRC-040-D3",
@@ -114758,7 +115062,8 @@
       "conservation": "Se conserve 4 à 5 jours au réfrigérateur à 4 °C, dans une boîte hermétique et baigné de son jus de braisage : sans matière grasse laitière, rien ne tourne aussi vite et le jus fige à peine au froid. Réchauffer doucement à couvert avec une cuillère d'eau, ou servir tiède, l'huile d'olive supportant très bien la seconde chauffe. La congélation reste déconseillée : les fibres du fenouil éclatent au dégel et le légume rend son eau, donnant une texture filandreuse et un jus délavé.",
       "allergens": [
         "sulfites"
-      ]
+      ],
+      "description_courte": "Fenouil braisé avec une proportion plus importante d'huile d'olive et sans beurre"
     },
     {
       "code": "SRC-041-D1",
@@ -114966,7 +115271,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Chou-fleur blanchi gratiné dans une sauce au bouillon de volaille liée au gruyère"
     },
     {
       "code": "SRC-041-D2",
@@ -115177,7 +115483,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Chou-fleur blanchi dans une béchamel parfumée au curry, gratinée au gruyère"
     },
     {
       "code": "SRC-041-D3",
@@ -115376,7 +115683,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Chou-fleur blanchi dans une béchamel enrichie d'oignons fondus, gratiné au gruyère"
     },
     {
       "code": "SRC-041-D4",
@@ -115576,7 +115884,8 @@
         "gluten",
         "lait",
         "fruits à coque"
-      ]
+      ],
+      "description_courte": "Chou-fleur blanchi dans une béchamel crémeuse avec des noix concassées, gratiné"
     },
     {
       "code": "SRC-042-D1",
@@ -115810,7 +116119,8 @@
       "conservation": "Trois jours au réfrigérateur à 4 °C dans une boîte fermée, lardons rangés à part pour qu'ils ne s'amollissent pas dans le velouté. La partie mixée épaissit beaucoup en refroidissant : rallonger d'un fond d'eau à la réchauffe douce et fouetter pour la relisser. La congélation est ici déconseillée, la crème n'étant plus facultative et tranchant au dégel — mieux vaut congeler le velouté avant liaison et le remonter au moment de servir.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Lentilles vertes et lardons mixés en velouté crémeux avec carottes et thym"
     },
     {
       "code": "SRC-042-D2",
@@ -116053,7 +116363,8 @@
       "conservation": "Trois jours au réfrigérateur à 4 °C dans une boîte fermée ; les lentilles boivent leur jus en refroidissant, rallonger d'un fond d'eau à la réchauffe douce. Congélation possible deux mois à condition de n'avoir pas mis la crème, celle-ci tranchant à la décongélation : la verser plutôt après réchauffage.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Lentilles corail mijotées avec lardons fumés, carottes et oignons au thym"
     },
     {
       "code": "SRC-042-D3",
@@ -116294,7 +116605,8 @@
         "reason": "Légumineuse, viande fumée et garniture aromatique cuisent ensemble dans la même cocotte : l'assiette est déjà équilibrée et n'appelle qu'une salade verte ou un légume vert pour la fraîcheur."
       },
       "conservation": "Trois jours au réfrigérateur à 4 °C dans une boîte fermée ; les lentilles boivent leur jus en refroidissant, rallonger d'un fond d'eau à la réchauffe douce. Refaire le filet d'huile crue et le persil à l'assiette : ceux de la veille ont perdu leur parfum dans le froid. Sans crème, la congélation ne pose aucun problème — deux mois sans que rien ne tranche au dégel.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Lentilles vertes et lardons cuits à l'huile d'olive, assaisonnés au poivre noir en finition"
     },
     {
       "code": "SRC-043-D1",
@@ -116537,7 +116849,8 @@
       "allergens": [
         "poisson",
         "œuf"
-      ]
+      ],
+      "description_courte": "Morue effeuillée saisie avec des pommes de terre frites en fins bâtonnets et liée aux œufs brouillés"
     },
     {
       "code": "SRC-043-D2",
@@ -116788,7 +117101,8 @@
       "allergens": [
         "poisson",
         "œuf"
-      ]
+      ],
+      "description_courte": "Morue dessalée cuite au four avec pommes de terre, tomates fraîches et poivrons"
     },
     {
       "code": "SRC-044-D1",
@@ -117014,7 +117328,8 @@
         "gluten",
         "sulfites",
         "céleri"
-      ]
+      ],
+      "description_courte": "Moules cuites dans le vin blanc et beurre, dont le jus est lié à une farine pour une sauce courte"
     },
     {
       "code": "SRC-044-D2",
@@ -117244,7 +117559,8 @@
         "lait",
         "sulfites",
         "céleri"
-      ]
+      ],
+      "description_courte": "Moules cuites dans le vin blanc et beurre, finies avec de la crème fraîche"
     },
     {
       "code": "SRC-044-D3",
@@ -117455,7 +117771,8 @@
         "lait",
         "sulfites",
         "céleri"
-      ]
+      ],
+      "description_courte": "Moules cuites à couvert dans du cidre brut avec ail et beurre"
     },
     {
       "code": "SRC-045-D1",
@@ -117728,7 +118045,8 @@
         "lait",
         "sulfites",
         "céleri"
-      ]
+      ],
+      "description_courte": "Jarret de veau braisé sans tomate dans une garniture aromatique de légumes au vin blanc"
     },
     {
       "code": "SRC-045-D2",
@@ -117999,7 +118317,8 @@
       "allergens": [
         "sulfites",
         "céleri"
-      ]
+      ],
+      "description_courte": "Jarret de veau mijoté à l'huile d'olive avec tomates pelées et vin blanc"
     },
     {
       "code": "SRC-045-D3",
@@ -118328,7 +118647,8 @@
         "poisson",
         "sulfites",
         "céleri"
-      ]
+      ],
+      "description_courte": "Jarret de veau braisé avec une gremolata d'agrumes et d'anchois en finition"
     },
     {
       "code": "SRC-045-D4",
@@ -118616,7 +118936,8 @@
         "lait",
         "sulfites",
         "céleri"
-      ]
+      ],
+      "description_courte": "Jarret de veau braisé avec champignons ajoutés en garniture"
     },
     {
       "code": "SRC-046-D1",
@@ -118866,7 +119187,8 @@
         "lait",
         "gluten",
         "œuf"
-      ]
+      ],
+      "description_courte": "Aubergines panées et saisies, montées sans tomate avec mozzarella, parmesan et basilic"
     },
     {
       "code": "SRC-046-D2",
@@ -119101,7 +119423,8 @@
       "conservation": "Se garde 3 jours au réfrigérateur à 4 °C dans son plat filmé, et gagne même en tenue le lendemain ; réchauffer 20 minutes à 160 °C plutôt qu'au micro-ondes. La congélation est possible une fois le plat cuit et refroidi, jusqu'à 2 mois : sans panure à ramollir, cette version la supporte mieux que la parmigiana classique, mais la mozzarella relâche de l'eau à la décongélation — égoutter l'excédent et repasser dix minutes à four chaud pour resécher la surface. Ne jamais recongeler une part déjà décongelée.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Aubergines rôties au four puis montées en gratin avec tomate, mozzarella et parmesan"
     },
     {
       "code": "SRC-046-D3",
@@ -119364,7 +119687,8 @@
         "lait",
         "gluten",
         "œuf"
-      ]
+      ],
+      "description_courte": "Parmigiana dans le style napolitain, avec des tranches d'œuf dur intercalées entre les couches"
     },
     {
       "code": "SRC-047-D1",
@@ -119608,7 +119932,8 @@
       "conservation": "Se garde 2 à 3 jours au réfrigérateur à 4 °C dans une boîte hermétique, et se réchauffe à couvert sur feu très doux avec une cuillère d'eau. La congélation est déconseillée : la laitue rend son eau et se défait, et les pois, déjà congelés une fois, s'écrasent à la décongélation.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Petits pois mijotés avec laitue, oignons blancs et oignons grelots glacés"
     },
     {
       "code": "SRC-047-D2",
@@ -119825,7 +120150,8 @@
       "conservation": "Se garde 2 à 3 jours au réfrigérateur à 4 °C dans une boîte hermétique, et se réchauffe à couvert sur feu très doux avec une cuillère d'eau. La congélation est déconseillée : la laitue rend son eau et se défait, et les pois, déjà congelés une fois, s'écrasent à la décongélation.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Petits pois à la française liés au beurre pommade en finition"
     },
     {
       "code": "SRC-047-D3",
@@ -120029,7 +120355,8 @@
       "conservation": "Se garde 2 à 3 jours au réfrigérateur à 4 °C dans une boîte hermétique, et se réchauffe à couvert sur feu très doux avec une cuillère d'eau. La congélation est déconseillée : la laitue rend son eau et se défait, et les pois, déjà congelés une fois, s'écrasent à la décongélation.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Petits pois avec laitue effilée dans un beurre monté, sans oignons grelots"
     },
     {
       "code": "SRC-047-D4",
@@ -120263,7 +120590,8 @@
       "conservation": "Se garde 2 jours au réfrigérateur à 4 °C, volaille et légumes conservés ensemble dans leur jus pour que la chair ne sèche pas, et se réchauffe à couvert sur feu très doux avec une cuillère d'eau. La peau ne redeviendra pas croustillante, autant la retirer avant de réchauffer. Congélation déconseillée : la laitue rend son eau et se défait, et les pois, déjà congelés une fois, s'écrasent à la décongélation.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Cuisses de poulet ajoutées aux petits pois à la française avec laitue et oignons"
     },
     {
       "code": "SRC-048-D1",
@@ -120509,7 +120837,8 @@
       "conservation": "La fondue de légumes seule se garde 4 jours au réfrigérateur à 4 °C dans un contenant fermé et se congèle très bien 3 mois, sa texture ne souffrant pas de la décongélation. Une fois les œufs incorporés, en revanche, consommez dans les 24 heures et ne congelez pas : les œufs brouillés rendent leur eau et deviennent granuleux. Réchauffez la fondue à feu doux avant d'y lier des œufs frais.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Compotée de poivrons et tomates au piment d'Espelette avec œufs brouillés et jambon de Bayonne"
     },
     {
       "code": "SRC-048-D2",
@@ -120720,7 +121049,8 @@
         "reason": "Les œufs apportent la protéine et la fondue de poivrons le légume, mais l'assiette reste sans féculent : la piperade se mange traditionnellement avec du pain de campagne ou des pommes de terre sautées."
       },
       "conservation": "Se garde 4 jours au réfrigérateur à 4 °C dans un contenant fermé, et se congèle très bien 3 mois : la fondue de légumes réduite ne souffre pas de la décongélation, contrairement à la version liée aux œufs qui, elle, ne se garde qu'une journée. Réchauffez à feu doux en remuant, ou servez tiède. Si elle a rendu de l'eau au réfrigérateur, laissez-la repasser deux minutes à découvert avant de servir.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Fondue de poivrons et tomates au piment d'Espelette sans œufs, servie en accompagnement"
     },
     {
       "code": "SRC-048-D3",
@@ -120962,7 +121292,8 @@
       "conservation": "La fondue de légumes seule se garde 4 jours au réfrigérateur à 4 °C dans un contenant fermé et se congèle très bien 3 mois, sa texture ne souffrant pas de la décongélation. Une fois les œufs incorporés, en revanche, consommez dans les 24 heures et ne congelez pas : les œufs brouillés rendent leur eau et deviennent granuleux. Réchauffez la fondue à feu doux avant d'y lier des œufs frais.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Compotée de poivrons rouges et piments doux verts aux œufs brouillés, au piment d'Espelette"
     },
     {
       "code": "SRC-048-D4",
@@ -121182,7 +121513,8 @@
       "conservation": "Se mange à la minute et ne se conserve pas : un œuf poché réchauffé durcit et son jaune se fige, ce qui supprime tout l'intérêt de cette version. Si vous devez prendre de l'avance, arrêtez-vous à la fin de la réduction — la fondue seule se garde 4 jours au réfrigérateur à 4 °C et se congèle 3 mois —, puis réchauffez-la à feu doux et pochez les œufs au moment de servir.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Compotée de poivrons et tomates avec des œufs pochés dans la sauce plutôt que brouillés"
     },
     {
       "code": "SRC-049-D1",
@@ -121372,7 +121704,8 @@
         "reason": "Malgré les quelques grammes de confit qui la parfument, cette poêlée reste l'accompagnement périgourdin classique d'un magret, d'une volaille rôtie ou d'une cuisse de confit entière, et ne constitue pas un repas à elle seule."
       },
       "conservation": "Trois jours au réfrigérateur à 4 °C dans une boîte hermétique. Réchauffage à la poêle bien chaude pour retrouver le croustillant, jamais au micro-ondes. Congélation déconseillée : la pomme de terre déjà cuite rend son eau et devient farineuse à la décongélation.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Pommes de terre rissolées dans la graisse de canard avec ail, persil et oignons fondus"
     },
     {
       "code": "SRC-050-D1",
@@ -121597,7 +121930,8 @@
       "conservation": "Trois jours au réfrigérateur à 4 °C, viandes et légumes conservés immergés dans leur bouillon pour ne pas sécher ; réchauffer à frémissement doux, jamais à gros bouillons. Le goût s'améliore au deuxième jour. Congélation possible deux mois pour les saucisses et le bouillon dans des boîtes séparées, mais retirer d'abord les pommes de terre, qui deviennent farineuses et grumeleuses, et le chou, qui se défait en filaments à la décongélation.",
       "allergens": [
         "sulfites"
-      ]
+      ],
+      "description_courte": "Chou blanc mijoté avec saucisses de Morteau et Montbéliard, pommes de terre et légumes racines"
     },
     {
       "code": "SRC-050-D2",
@@ -121829,7 +122163,8 @@
       "conservation": "Trois jours au réfrigérateur à 4 °C, viandes et légumes conservés immergés dans leur bouillon pour ne pas sécher ; réchauffer à frémissement doux, jamais à gros bouillons. Le goût s'améliore au deuxième jour. Congélation possible deux mois pour les saucisses et le bouillon dans des boîtes séparées, mais retirer d'abord les pommes de terre, qui deviennent farineuses et grumeleuses, et le chou, qui se défait en filaments à la décongélation.",
       "allergens": [
         "sulfites"
-      ]
+      ],
+      "description_courte": "Potée d'hiver avec saucisses fumées, chou vert et lentilles vertes ajoutées aux légumes"
     },
     {
       "code": "SRC-051-D1",
@@ -122074,7 +122409,8 @@
         "reason": "Plat de légumes sans protéine ni féculent : il accompagne une viande grillée, un poisson ou un œuf, et ne constitue pas un repas à lui seul."
       },
       "conservation": "Trois à quatre jours au réfrigérateur à 4 °C dans un contenant hermétique ; le goût se raffermit après une nuit de repos. Se congèle jusqu'à trois mois, mais les courgettes relâchent beaucoup d'eau à la décongélation : réchauffer à découvert pour faire évaporer le surplus avant de servir.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Légumes méditerranéens confits séparément puis réunis et confits au four à basse température"
     },
     {
       "code": "SRC-051-D2",
@@ -122308,7 +122644,8 @@
         "reason": "Plat de légumes sans protéine ni féculent : il accompagne une viande grillée, un poisson ou un œuf, et ne constitue pas un repas à lui seul."
       },
       "conservation": "Trois à quatre jours au réfrigérateur à 4 °C dans un contenant hermétique ; le goût se raffermit après une nuit de repos. Se congèle jusqu'à trois mois, mais les courgettes relâchent beaucoup d'eau à la décongélation : réchauffer à découvert pour faire évaporer le surplus avant de servir.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Ratatouille provençale cuite rapidement à la poêle pour garder les légumes plus fermes"
     },
     {
       "code": "SRC-051-D3",
@@ -122553,7 +122890,8 @@
         "reason": "Plat de légumes sans protéine ni féculent : il accompagne une viande grillée, un poisson ou un œuf, et ne constitue pas un repas à lui seul."
       },
       "conservation": "Trois à quatre jours au réfrigérateur à 4 °C dans un contenant hermétique ; le goût se raffermit après une nuit de repos. Se congèle jusqu'à trois mois, mais les courgettes relâchent beaucoup d'eau à la décongélation : réchauffer à découvert pour faire évaporer le surplus avant de servir.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Ratatouille provençale enrichie d'olives noires ajoutées en cours de cuisson"
     },
     {
       "code": "SRC-051-D4",
@@ -122795,7 +123133,8 @@
         "reason": "Plat de légumes sans protéine ni féculent : il accompagne une viande grillée, un poisson ou un œuf, et ne constitue pas un repas à lui seul."
       },
       "conservation": "Trois à quatre jours au réfrigérateur à 4 °C dans un contenant hermétique ; le goût se raffermit après une nuit de repos. Se congèle jusqu'à trois mois, mais les courgettes relâchent beaucoup d'eau à la décongélation : réchauffer à découvert pour faire évaporer le surplus avant de servir.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Ratatouille provençale avec basilic frais ajouté en finition hors du feu"
     },
     {
       "code": "SRC-052-D1",
@@ -122981,7 +123320,8 @@
       "conservation": "Se conserve 2 à 3 jours au réfrigérateur à 4 °C dans une boîte hermétique, refroidi rapidement après le service. Réchauffer à couvert avec une à deux cuillerées de bouillon ou d'eau pour réhydrater les grains. La congélation est possible 2 mois en portions étalées à plat, mais le riz ressort un peu plus mou et moins égrené au décongelage.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Riz pilaf nacré à l'oignon et parfumé au curry avant absorption du bouillon"
     },
     {
       "code": "SRC-052-D2",
@@ -123181,7 +123521,8 @@
       "conservation": "Se conserve 2 à 3 jours au réfrigérateur à 4 °C dans une boîte hermétique, refroidi rapidement après le service. Réchauffer à couvert avec une à deux cuillerées de bouillon ou d'eau pour réhydrater les grains. La congélation est possible 2 mois en portions étalées à plat, mais le riz ressort un peu plus mou et moins égrené au décongelage.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Riz pilaf avec des vermicelles dorés au beurre mélangés au riz avant absorption du bouillon"
     },
     {
       "code": "SRC-052-D3",
@@ -123386,7 +123727,8 @@
       "conservation": "Se conserve 2 à 3 jours au réfrigérateur à 4 °C dans une boîte hermétique, refroidi rapidement après le service. Réchauffer à couvert avec une à deux cuillerées de bouillon ou d'eau pour réhydrater les grains. La congélation est possible 2 mois en portions étalées à plat, mais le riz ressort un peu plus mou et moins égrené au décongelage.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Riz pilaf avec des dés de potimarron cuits dans le bouillon"
     },
     {
       "code": "SRC-052-D4",
@@ -123580,7 +123922,8 @@
       "conservation": "Se conserve 2 à 3 jours au réfrigérateur à 4 °C dans une boîte hermétique, refroidi rapidement après le service. Réchauffer à couvert avec une à deux cuillerées de bouillon ou d'eau pour réhydrater les grains. La congélation est possible 2 mois en portions étalées à plat, mais le riz ressort un peu plus mou et moins égrené au décongelage.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Riz pilaf nacré avec poivrons rouges dans un bouillon de légumes sans viande"
     },
     {
       "code": "SRC-053-D1",
@@ -123852,7 +124195,8 @@
         "moutarde",
         "sulfites",
         "œuf"
-      ]
+      ],
+      "description_courte": "Salade verte avec du fromage de chèvre pané et frit, vinaigrette au miel"
     },
     {
       "code": "SRC-053-D2",
@@ -124086,7 +124430,8 @@
         "fruits à coque",
         "moutarde",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Salade verte avec chèvre gratiné sur croûton, pignons de pin torréfiés et vinaigrette au miel"
     },
     {
       "code": "SRC-053-D3",
@@ -124321,7 +124666,8 @@
         "fruits à coque",
         "moutarde",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Salade verte avec chèvre gratiné sur croûton et vinaigrette au miel et basilic frais"
     },
     {
       "code": "SRC-054-D1",
@@ -124531,7 +124877,8 @@
       "allergens": [
         "moutarde",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Frisée avec confit de canard chaud et tomates en vinaigrette moutardée"
     },
     {
       "code": "SRC-054-D2",
@@ -124748,7 +125095,8 @@
         "moutarde",
         "sulfites",
         "fruits à coque"
-      ]
+      ],
+      "description_courte": "Salade au confit de canard avec pignons de pin torréfiés et échalotes en vinaigrette"
     },
     {
       "code": "SRC-056-D1",
@@ -124960,7 +125308,8 @@
         "lait",
         "œuf",
         "gluten"
-      ]
+      ],
+      "description_courte": "Soufflés au fromage de ménage cuits dans des ramequins individuels"
     },
     {
       "code": "SRC-056-D2",
@@ -125173,7 +125522,8 @@
         "lait",
         "œuf",
         "gluten"
-      ]
+      ],
+      "description_courte": "Soufflé à la béchamel de gruyère et comté affiné pour une saveur plus prononcée"
     },
     {
       "code": "SRC-056-D3",
@@ -125392,7 +125742,8 @@
         "lait",
         "œuf",
         "gluten"
-      ]
+      ],
+      "description_courte": "Soufflé au gruyère et emmental relevé de ciboulette fraîche"
     },
     {
       "code": "SRC-057-D1",
@@ -125598,7 +125949,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Fond feuilleté garni d'oignons longuement fondus avec crème liée aux œufs à la muscade"
     },
     {
       "code": "SRC-057-D2",
@@ -125803,7 +126155,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Tarte à l'oignon sur fond feuilleté avec lardons et fromage de chèvre en garniture"
     },
     {
       "code": "SRC-057-D3",
@@ -126008,7 +126361,8 @@
         "gluten",
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Tarte à l'oignon avec lardons, relevée d'herbes de Provence séchées"
     },
     {
       "code": "SRC-057-D4",
@@ -126206,7 +126560,8 @@
       "allergens": [
         "gluten",
         "lait"
-      ]
+      ],
+      "description_courte": "Tarte fine feuilletée d'oignons longuement confits au miel et lardons, sans appareil à crème"
     },
     {
       "code": "SRC-058-D1",
@@ -126463,7 +126818,8 @@
       "conservation": "Repos obligatoire de 24 a 48 heures entre 0 et 4 degres avant la premiere tranche. Entiere et couverte de sa graisse figee, la terrine se garde 8 a 10 jours au refrigerateur ; une fois entamee, filmez la coupe au contact et consommez sous 4 jours. La congelation est possible en portions filmees jusqu'a 2 mois, mais elle detend la farce et rend la tranche plus friable a la decongelation, qui doit se faire une nuit au refrigerateur.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Terrine de porc haché et échine avec des morceaux de poulet intégrés dans la masse"
     },
     {
       "code": "SRC-058-D2",
@@ -126730,7 +127086,8 @@
       "conservation": "Repos obligatoire de 24 a 48 heures entre 0 et 4 degres avant la premiere tranche. Entiere et couverte de sa graisse figee, la terrine se garde 8 a 10 jours au refrigerateur ; une fois entamee, filmez la coupe au contact et consommez sous 4 jours. La congelation est possible en portions filmees jusqu'a 2 mois, mais elle detend la farce et rend la tranche plus friable a la decongelation, qui doit se faire une nuit au refrigerateur.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Terrine de porc haché avec poivrons rôtis et olives en garniture intercalée"
     },
     {
       "code": "SRC-058-D3",
@@ -126962,7 +127319,8 @@
       "conservation": "Comptez 24 heures au réfrigérateur avant d'ouvrir le premier bocal, le temps que la farce se raffermisse et que l'assaisonnement s'égalise. Fermés et couverts de leur graisse figée, les bocaux se gardent 8 à 10 jours entre 0 et 4 degrés : quarante-cinq minutes de bain-marie cuisent la farce à cœur mais ne stérilisent rien, et aucune règle de froid ne saute. Un bocal entamé se consomme sous 4 jours, sa surface lissée et remise au contact de sa graisse. La congélation est possible par bocal jusqu'à 2 mois, mais elle détend une farce déjà plus friable que celle d'une terrine pressée.",
       "allergens": [
         "œuf"
-      ]
+      ],
+      "description_courte": "Terrine de campagne conditionnée en bocaux stérilisés pour une conservation longue durée"
     },
     {
       "code": "SRC-058-D4",
@@ -127201,7 +127559,8 @@
       "allergens": [
         "œuf",
         "gluten"
-      ]
+      ],
+      "description_courte": "Terrine de porc haché aromatisée aux épices du pain d'épices"
     },
     {
       "code": "SRC-059-D1",
@@ -127417,7 +127776,8 @@
       "conservation": "Se garde trois jours au réfrigérateur entre 0 et 4 °C dans une boîte fermée, et gagne même en rondeur le lendemain. Réchauffer en douceur à couvert, jamais à gros bouillon. La congélation est déconseillée : la chair de thon en conserve devient cotonneuse et les poivrons rendent leur eau à la décongélation.",
       "allergens": [
         "poisson"
-      ]
+      ],
+      "description_courte": "Thon en conserve mijoté dans une compotée de poivrons rouges et verts à la tomate"
     },
     {
       "code": "SRC-059-D2",
@@ -127657,7 +128017,8 @@
       "allergens": [
         "poisson",
         "œuf"
-      ]
+      ],
+      "description_courte": "Thon mijoté dans une piperade de poivrons et tomates liée aux œufs en fin de cuisson"
     },
     {
       "code": "SRC-059-D3",
@@ -127871,7 +128232,8 @@
       "conservation": "Se garde trois jours au réfrigérateur entre 0 et 4 °C dans une boîte fermée, et gagne même en rondeur le lendemain. Réchauffer en douceur à couvert, jamais à gros bouillon. La congélation est déconseillée : la chair de thon en conserve devient cotonneuse et les poivrons rendent leur eau à la décongélation.",
       "allergens": [
         "poisson"
-      ]
+      ],
+      "description_courte": "Thon à la basquaise terminé sous le gril avec une couche de fromage gratinée"
     },
     {
       "code": "SRC-060-D1",
@@ -128061,7 +128423,8 @@
         "fruits à coque",
         "lait",
         "gluten"
-      ]
+      ],
+      "description_courte": "Truite meunière avec amandes effilées torréfiées à sec au beurre, sans déglacage"
     },
     {
       "code": "SRC-060-D2",
@@ -128271,7 +128634,8 @@
         "fruits à coque",
         "lait",
         "gluten"
-      ]
+      ],
+      "description_courte": "Truite poêlée puis flambée au cognac, servie avec des amandes effilées"
     },
     {
       "code": "SRC-060-D3",
@@ -128479,7 +128843,8 @@
         "poisson",
         "fruits à coque",
         "lait"
-      ]
+      ],
+      "description_courte": "Truite cuite au four sous une couche de crème fraîche et amandes effilées"
     },
     {
       "code": "SRC-060-D4",
@@ -128664,7 +129029,8 @@
         "fruits à coque",
         "lait",
         "gluten"
-      ]
+      ],
+      "description_courte": "Filets de truite enrobés de farine, saisis au beurre et garnis d'amandes effilées"
     },
     {
       "code": "SRC-003-D2",
@@ -128895,7 +129261,8 @@
       "conservation": "La viande tranchée se garde 2 jours au froid ; les flageolets 2 jours seulement, une conserve déjà réchauffée une fois supportant mal un second passage sur le feu. Les remettre alors à couvert sur feu très doux, sans remuer, le temps qu'ils soient chauds à cœur.",
       "allergens": [
         "lait"
-      ]
+      ],
+      "description_courte": "Gigot d'agneau rôti avec haricots flageolets en conserve cuits au beurre avec thym et laurier"
     },
     {
       "code": "SRC-009-D4",
@@ -129185,7 +129552,8 @@
         "lait",
         "œuf",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Bouchées feuilletées avec fricassée de poulet et veau dans la tradition alsacienne aux quenelles"
     },
     {
       "code": "SRC-014-D5",
@@ -129457,7 +129825,8 @@
         "œuf",
         "fruits à coque",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Lentilles corail tièdes avec œuf poché et effilochée de jambonneau"
     },
     {
       "code": "SRC-014-D6",
@@ -129712,7 +130081,8 @@
         "œuf",
         "fruits à coque",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Lentilles corail tièdes avec œuf poché, légumes aromatiques et noisettes torréfiées"
     },
     {
       "code": "SRC-017-D4",
@@ -129930,7 +130300,8 @@
         "gluten",
         "œuf",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Pan bagnat provençal pressé avec fèves fraîches et oignon nouveau en saison"
     },
     {
       "code": "SRC-024-D2",
@@ -130138,7 +130509,8 @@
       "allergens": [
         "poisson",
         "œuf"
-      ]
+      ],
+      "description_courte": "Riz complet froid avec thon, œufs, tomates et poivron vert en vinaigrette"
     },
     {
       "code": "SRC-026-D3",
@@ -130362,7 +130734,8 @@
       "conservation": "Se conserve 3 jours au réfrigérateur entre 0 et 4 °C dans un récipient fermé, et gagne même en goût réchauffé le lendemain à feu doux avec une cuillère d'eau. Le plat se congèle très bien 3 mois : la viande et la sauce supportent la décongélation, les pruneaux ressortent seulement un peu plus fondus.",
       "allergens": [
         "sulfites"
-      ]
+      ],
+      "description_courte": "Épaule de porc mijotée avec pruneaux, lardons et chou rouge"
     },
     {
       "code": "SRC-034-D2",
@@ -130600,7 +130973,8 @@
         "mollusques",
         "sulfites",
         "lait"
-      ]
+      ],
+      "description_courte": "Calamars flambés au whisky, mijotés dans une sauce tomate au vin blanc"
     },
     {
       "code": "SRC-034-D3",
@@ -130887,7 +131261,8 @@
         "mollusques",
         "sulfites",
         "lait"
-      ]
+      ],
+      "description_courte": "Calamars flambés au cognac, mijotés dans un vin blanc lié à la crème fraîche au safran"
     },
     {
       "code": "SRC-039-D3",
@@ -131184,7 +131559,8 @@
         "œuf",
         "gluten",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Noix de Saint-Jacques avec champignons morilles réhydratés dans une sauce crème, gratinées"
     },
     {
       "code": "SRC-039-D4",
@@ -131412,7 +131788,8 @@
         "œuf",
         "gluten",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Noix de Saint-Jacques cuites dans leur coquille scellée au four dans une sauce crème"
     },
     {
       "code": "SRC-039-D5",
@@ -131678,7 +132055,8 @@
         "poisson",
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Noix de Saint-Jacques saisies, flambées au whisky et nappées d'une sauce crème à l'échalote"
     },
     {
       "code": "SRC-040-D4",
@@ -131919,7 +132297,8 @@
       "allergens": [
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Fenouil braisé au vin blanc avec ail et herbes dans le style provençal"
     },
     {
       "code": "SRC-049-D2",
@@ -132122,7 +132501,8 @@
         "reason": "Malgré les quelques grammes de confit qui la parfument, cette poêlée reste l'accompagnement périgourdin classique d'un magret, d'une volaille rôtie ou d'une cuisse de confit entière, et ne constitue pas un repas à elle seule."
       },
       "conservation": "Trois jours au réfrigérateur à 4 °C dans une boîte hermétique. Réchauffage à la poêle bien chaude pour retrouver le croustillant, jamais au micro-ondes. Congélation déconseillée : la pomme de terre déjà cuite rend son eau et devient farineuse à la décongélation.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Pommes de terre sarladaises enrichies de cèpes frais rissolés avec l'ail et le persil"
     },
     {
       "code": "SRC-049-D3",
@@ -132296,7 +132676,8 @@
         "reason": "Malgré les quelques grammes de confit qui la parfument, cette poêlée reste l'accompagnement périgourdin classique d'un magret, d'une volaille rôtie ou d'une cuisse de confit entière, et ne constitue pas un repas à elle seule."
       },
       "conservation": "Trois jours au réfrigérateur à 4 °C dans une boîte hermétique. Réchauffage à la poêle bien chaude pour retrouver le croustillant, jamais au micro-ondes. Congélation déconseillée : la pomme de terre déjà cuite rend son eau et devient farineuse à la décongélation.",
-      "allergens": []
+      "allergens": [],
+      "description_courte": "Pommes de terre rissolées dans de la graisse d'oie pure avec ail et persil"
     },
     {
       "code": "SRC-050-D3",
@@ -132554,7 +132935,8 @@
       "conservation": "Trois jours au réfrigérateur à 4 °C, viandes et légumes conservés immergés dans leur bouillon pour ne pas sécher ; réchauffer à frémissement doux, jamais à gros bouillons. Le goût s'améliore au deuxième jour. Congélation possible deux mois pour les saucisses et le bouillon dans des boîtes séparées, mais retirer d'abord les pommes de terre, qui deviennent farineuses et grumeleuses, et le chou, qui se défait en filaments à la décongélation.",
       "allergens": [
         "sulfites"
-      ]
+      ],
+      "description_courte": "Potée traditionnelle avec jambonneau et saucisses fumées, chou et légumes d'hiver"
     },
     {
       "code": "SRC-050-D4",
@@ -132792,7 +133174,8 @@
       "conservation": "Trois jours au réfrigérateur à 4 °C, viandes et légumes conservés immergés dans leur bouillon pour ne pas sécher ; réchauffer à frémissement doux, jamais à gros bouillons. Le goût s'améliore au deuxième jour. Congélation possible deux mois pour les saucisses et le bouillon dans des boîtes séparées, mais retirer d'abord les pommes de terre, qui deviennent farineuses et grumeleuses, et le chou, qui se défait en filaments à la décongélation.",
       "allergens": [
         "sulfites"
-      ]
+      ],
+      "description_courte": "Potée servie d'abord en soupe de bouillon puis en assiette de viande et légumes séparés"
     },
     {
       "code": "SRC-053-D4",
@@ -133032,7 +133415,8 @@
         "fruits à coque",
         "moutarde",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Salade verte avec chèvre gratiné sur croûton et tomates cerises fraîches"
     },
     {
       "code": "SRC-053-D5",
@@ -133279,7 +133663,8 @@
         "fruits à coque",
         "moutarde",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Salade verte avec chèvre gratiné sur croûton et lamelles de poire fraîche"
     },
     {
       "code": "SRC-054-D3",
@@ -133495,7 +133880,8 @@
       "allergens": [
         "moutarde",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Salade avec confit de canard, gésiers confits et magret de canard fumé en vinaigrette"
     },
     {
       "code": "SRC-054-D4",
@@ -133694,7 +134080,8 @@
       "allergens": [
         "moutarde",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Salade landaise avec tranche de foie gras de canard en plus du confit"
     },
     {
       "code": "SRC-054-D5",
@@ -133915,7 +134302,8 @@
         "moutarde",
         "sulfites",
         "poisson"
-      ]
+      ],
+      "description_courte": "Salade avec confit de canard et filet de truite fumée en vinaigrette moutardée"
     },
     {
       "code": "SRC-055-D1",
@@ -134125,7 +134513,8 @@
         "poisson",
         "lait",
         "sulfites"
-      ]
+      ],
+      "description_courte": "Saumon saisi puis nappé d'une sauce crème-oseille déglacée au vermouth sec"
     },
     {
       "code": "SRC-055-D2",
@@ -134364,7 +134753,8 @@
         "sulfites",
         "gluten",
         "œuf"
-      ]
+      ],
+      "description_courte": "Saumon en sauce crème-oseille au vin blanc, servi sur des pâtes fraîches aux œufs"
     },
     {
       "code": "SRC-056-D4",
@@ -134589,7 +134979,8 @@
         "lait",
         "œuf",
         "gluten"
-      ]
+      ],
+      "description_courte": "Soufflé au gruyère avec de la mimolette demi-vieille pour une couleur et saveur dorées"
     },
     {
       "code": "SRC-056-D5",
@@ -134855,7 +135246,8 @@
       "allergens": [
         "lait",
         "œuf"
-      ]
+      ],
+      "description_courte": "Soufflé léger lié au fromage blanc et à la fécule, sans béchamel"
     }
   ]
 }
