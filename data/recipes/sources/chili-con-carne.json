@@ -1,0 +1,253 @@
+{
+  "dish": "Chili con carne",
+  "slug": "chili-con-carne",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_chili-con-carne-facile_15415.aspx",
+      "site": "marmiton.org",
+      "nom": "Chili con carne facile : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "50 g de beurre",
+        "2 oignons",
+        "2 gousses d'ail écrasées",
+        "500 g de boeuf haché",
+        "1 cuillère à café de chili en poudre",
+        "2 cuillères à café de cumin en poudre",
+        "65 g de concentré de tomates",
+        "1 grosse boîte de haricots rouges égouttés",
+        "30 cl de bouillon de boeuf",
+        "sel",
+        "poivre",
+        "persil pour décorer"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 402,
+        "sha256": "24478ebb253b54c3"
+      },
+      "sha256_page": "4b95e7527e842cd1"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_chili-con-carne-express_14369.aspx",
+      "site": "marmiton.org",
+      "nom": "Chili con carne express : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 oignon",
+        "1 gousse d'ail",
+        "400 g de viande hachée",
+        "400 g de haricots rouges en boîte",
+        "400 g de tomates pelées en boîte",
+        "2 cuillères à café de chili",
+        "poivre",
+        "sel",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 339,
+        "sha256": "285382f29d4f06b7"
+      },
+      "sha256_page": "01623024f8204c63"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_chili-con-carne-simple_18702.aspx",
+      "site": "marmiton.org",
+      "nom": "Chili con carne simple : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "200 g de lardons",
+        "1 demi de chorizo",
+        "400 g de viande hachée",
+        "2 poivrons rouges",
+        "1 oignon",
+        "1 gousse d'ail",
+        "1 boîte de haricots rouges",
+        "1 boîte de concentré de tomates",
+        "1 verre de vin rouge",
+        "1 verre d'eau",
+        "1 cuillère de paprika",
+        "persil",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 595,
+        "sha256": "106812570524ee63"
+      },
+      "sha256_page": "3aab85603efadc37"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/chili-con-carne--32",
+      "site": "chefsimon.com",
+      "nom": "Chili con carne",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "500 g de tende de tranche ou de boeuf haché par votre boucher",
+        "2 gros oignons jaunes",
+        "3 gousses d’ail écrasées",
+        "un bouquet de thym frais ou une cuillère à soupe de thym sec",
+        "piment de Cayenne",
+        "500 g de tomates concassées",
+        "1 petite boîte de maïs",
+        "1 petite boîte de haricots rouges",
+        "une cuillère à soupe de paprika mild",
+        "une cuillère à café de cumin en poudre",
+        "une cuillère à café de gingembre moulu ou un mélange d'épices chili"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 738,
+        "sha256": "de6b546f8e1a18c5"
+      },
+      "sha256_page": "c25675a2453db088"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/bourgue-mickaelle/recettes/chili-con-carne-a691d08a-c79f-480b-81ff-a7e3d370ca85",
+      "site": "chefsimon.com",
+      "nom": "Chili con carne",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "200g de viande hachée",
+        "500g de haricots rouges",
+        "1 oignon",
+        "1 poivron ou 1/2 vert et 1/2 rouge",
+        "2 tomates",
+        "coulis de tomates",
+        "1 cube de bouillon",
+        "sel, poivre, piment",
+        "Pour un plat plus consistant et complet : 100g de riz."
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 753,
+        "sha256": "aeaa45a3dbd34e38"
+      },
+      "sha256_page": "a087b4a882a429ab"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/chili-con-carne-gratine--2",
+      "site": "chefsimon.com",
+      "nom": "Chili con carne gratiné",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H50M",
+      "ingredients": [
+        "1 kg de viande de bœuf hachée",
+        "2 gousses d’ail",
+        "4  oignons",
+        "265 g de haricots rouges",
+        "476 g de tomates pelées",
+        "285 g de maïs",
+        "2 cuil. à soupe de chapelure",
+        "120 g d’emmental râpé",
+        "30 cL de fond de volaille",
+        "1 cuil. à soupe de coriandre",
+        "1 cuil. à soupe de persil",
+        "1 sachet de mélange d’épices mexicaines",
+        "2 cuil. à soupe d’huile",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 194,
+        "sha256": "b76bda1448ff7d74"
+      },
+      "sha256_page": "f8ff865a085e498d"
+    },
+    {
+      "url": "https://www.750g.com/chili-con-carne-r6882.htm",
+      "site": "750g.com",
+      "nom": "Chili con carne aux épices mexicaines",
+      "portions": "8 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT2H15M",
+      "ingredients": [
+        "1 c. à c. d'origan séché",
+        "1 c. à c. de graine de cumin",
+        "Tabasco",
+        "2 c. à c. de piment d'Espelette",
+        "Sel ou sel fin",
+        "½ c. à c. de piment de Cayenne ou poivre de Cayenne",
+        "4 c. à s. d'huile d'olive",
+        "50 cl de cubes de bouillon",
+        "1 poivron",
+        "3 gousses d'ail",
+        "400 g de tomates pelées",
+        "750 g d'haricots rouges",
+        "1,5 kg de boeuf haché",
+        "2 oignons  (gros)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 537,
+        "sha256": "c218fcf60db3608e"
+      },
+      "sha256_page": "874b1b4051fe035f"
+    },
+    {
+      "url": "https://www.750g.com/chili-con-carne-a-ma-facon-r31552.htm",
+      "site": "750g.com",
+      "nom": "Chili con carne à ma façon",
+      "portions": "3 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 gousses d'ail",
+        "1 c à c de cumin",
+        "1 c à s d'origan",
+        "1 c à c de piment de cayenne",
+        "1 oigon",
+        "1 carotte",
+        "1/2 tube de concentré de tomate de 140ml",
+        "1 verre d'eau",
+        "400g de haricots rouges en boite avec son jus",
+        "350g de viande hachée de bœuf (type cheveux d'ange)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 530,
+        "sha256": "6093911816a50e55"
+      },
+      "sha256_page": "139fd0afc6d09d0c"
+    },
+    {
+      "url": "https://www.750g.com/chili-con-carne-r26668.htm",
+      "site": "750g.com",
+      "nom": "Chili con carne gourmand",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "1 grosse boite de sauce bolognaise",
+        "1 sachet d'épices mexicaines",
+        "riz pour accompagner",
+        "1 oignon",
+        "1 boite de maïs",
+        "3 poivrons",
+        "2 grosses boites de haricots rouges",
+        "350g de viande hachée (bœuf)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 456,
+        "sha256": "7e0f9c6cf18cce97"
+      },
+      "sha256_page": "d9d8c54e8b162bd9"
+    }
+  ]
+}

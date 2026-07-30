@@ -1,0 +1,224 @@
+{
+  "dish": "Gougères au fromage",
+  "slug": "gougeres-au-fromage",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gougeres-au-fromage_20095.aspx",
+      "site": "marmiton.org",
+      "nom": "Gougères au fromage : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "4 oeufs + 1 jaune (pas obligé)",
+        "150 g de gruyère râpé",
+        "150 g de farine tamisée",
+        "80 g de beurre + 15 g pour la plaque",
+        "1 pincée de muscade râpée",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 632,
+        "sha256": "e0f3402a702d69cb"
+      },
+      "sha256_page": "250fe20abf4d31e0"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_beignets-de-gougeres-au-fromage_22435.aspx",
+      "site": "marmiton.org",
+      "nom": "Beignets de gougères au fromage : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "35 cl d'eau",
+        "75 g de beurre",
+        "225 g de farine",
+        "225 g de gruyère râpé",
+        "6 oeufs",
+        "sel",
+        "1 pincée de poivre de Cayenne"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 526,
+        "sha256": "a8de2a0af1607a35"
+      },
+      "sha256_page": "0c58d6a0d13cafac"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gougere-aux-trois-fromage_217849.aspx",
+      "site": "marmiton.org",
+      "nom": "Gougères aux trois fromages : la meilleure recette",
+      "portions": "20 gougeres",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "75 g de beurre",
+        "25 cl d'eau",
+        "150 g de farine",
+        "30 g de mimolette",
+        "30 g de gouda",
+        "30 g d'emmental",
+        "4 oeufs",
+        "thym ou ciboulette (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 989,
+        "sha256": "35c6ed392485f592"
+      },
+      "sha256_page": "e1c3a779d0593e92"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/gougeres-au-fromage-de-bernard",
+      "site": "chefsimon.com",
+      "nom": "Gougères au fromage de Bernard",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "250 ml d'eau",
+        "5  oeufs",
+        "140 g de farine",
+        "110 g de beurre",
+        "5 g de sel",
+        "poivre",
+        "noix de muscade",
+        "150 g de comté (ou de gruyère râpé + un peu pour parsemer)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 116,
+        "sha256": "331cb0b4a8069445"
+      },
+      "sha256_page": "d914f7d871811c16"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-p-tite-cuisine-de-pauline/recettes/gougeres-au-fromage-af7562e1-f903-4e2f-bb7d-5b5e500d975c",
+      "site": "chefsimon.com",
+      "nom": "Gougères au fromage",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "90g de beurre",
+        "30cl d’eau",
+        "160g farine",
+        "125g de fromage râpé",
+        "4 oeufs",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "1513d556fa3dc563"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/veb-9b0f8344-9a4e-4ce4-9336-4b466721cff2/recettes/gougeres-au-parmesan-et-au-fromage-basque",
+      "site": "chefsimon.com",
+      "nom": "Gougères au parmesan et au fromage basque",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "150 g de parmesan",
+        "50 g de fromage de chèvre basque",
+        "5 œufs",
+        "70 g de beurre",
+        "150 g de farine",
+        "25 cl d'eau",
+        "1 pincée de sel",
+        "poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "a1b61a426c96688f"
+    },
+    {
+      "url": "https://www.750g.com/gougeres-au-fromage-r47136.htm",
+      "site": "750g.com",
+      "nom": "Gougères au fromage",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "25 cl d'eau",
+        "4 oeufs",
+        "150 g de gruyère râpé",
+        "150 g de farine",
+        "80 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 16,
+        "signes": 1271,
+        "sha256": "464c4a3f68751531"
+      },
+      "sha256_page": "d3d39585f594697e"
+    },
+    {
+      "url": "https://www.750g.com/gougeres-au-fromage-r4137.htm",
+      "site": "750g.com",
+      "nom": "Gougères au fromage légèrement pimentées",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 pincée de noix de muscade",
+        "75 gr de gruyère râpé haché",
+        "1 pointe de piment de Cayenne ou de Piment d'Espelette",
+        "Dorure :",
+        "1/2 œuf entier",
+        "une pincée de sel",
+        "La pâte à choux pour gougères :",
+        "3 œufs",
+        "100 gr de farine",
+        "80 gr de lait entier ou 1/2 écrémé",
+        "80 gr d'eau",
+        "65 gr de beurre en parcelles",
+        "1 grosse pincée de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 777,
+        "sha256": "97c0ae69e71746be"
+      },
+      "sha256_page": "0c4d2ad823411a33"
+    },
+    {
+      "url": "https://www.750g.com/fingers-gougeres-graines-et-fromage-r70435.htm",
+      "site": "750g.com",
+      "nom": "Finger's gougères graines et fromage",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT12M",
+      "ingredients": [
+        "160 g d'eau",
+        "100 g de fromage râpé  type comté ou parmesan",
+        "100 g de farine de blé blanche (T55)",
+        "62 g de beurre",
+        "3 oeufs",
+        "4 c. à s. de mélange de graines",
+        "1 pincée de sel ou sel fin",
+        "1 pincée de piment d'Espelette",
+        "1 oeuf  pour la dorure",
+        "1 pincée de sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 681,
+        "sha256": "cfb90473f03b2d33"
+      },
+      "sha256_page": "1bdd13452384e79e"
+    }
+  ]
+}

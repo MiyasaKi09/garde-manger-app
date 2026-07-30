@@ -1,0 +1,137 @@
+{
+  "dish": "Filet mignon de porc à la moutarde",
+  "slug": "filet-mignon-de-porc-a-la-moutarde",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_filet-mignon-de-porc-a-la-moutarde_36310.aspx",
+      "site": "marmiton.org",
+      "nom": "Filet mignon de porc à la moutarde : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT18M",
+      "duree_cuisson": "PT47M",
+      "ingredients": [
+        "1 filet mignon de porc de 600 à 700 g environ",
+        "25 cl de vin blanc sec",
+        "1 bouillon de légumes",
+        "40 cl de crème fraîche",
+        "500 g de champignons en boîte",
+        "moutarde",
+        "huile d'olive",
+        "beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 529,
+        "sha256": "7493f75af404c1e7"
+      },
+      "sha256_page": "b4b905870d33b938"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_filet-mignon-de-porc-a-la-moutarde-et-au-miel_254353.aspx",
+      "site": "marmiton.org",
+      "nom": "Filet mignon de porc à la moutarde et au miel : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 filet mignon",
+        "20 g de beurre",
+        "15 cl de vin blanc",
+        "1 cuillère à soupe de moutarde",
+        "1 cuillère à soupe de miel",
+        "20 cl de crème liquide entière",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 555,
+        "sha256": "67c1b7e25913c9c3"
+      },
+      "sha256_page": "7d7c7e06a0cb14f7"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_filet-mignon-de-porc-aux-deux-moutardes-facile-et-rapide_167033.aspx",
+      "site": "marmiton.org",
+      "nom": "Filet mignon de porc aux deux moutardes facile et rapide : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "1 filet mignon de porc d'environ 700 ou 800g",
+        "1 cuillère à soupe d'ail en semoule",
+        "1 cuillère à soupe de herbes de Provence",
+        "3 cuillères à soupe de moutarde Savora",
+        "3 cuillères à soupe de moutarde",
+        "1 cuillère à soupe d'huile",
+        "25 g de beurre",
+        "poivre",
+        "sel",
+        "25 cl de crème fraîche fluide"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 500,
+        "sha256": "f82929ad9b564b2a"
+      },
+      "sha256_page": "b55025620cb917f8"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/stella-cuisine/recettes/filet-mignon-de-porc-a-la-moutarde-659cf205-a566-417a-98ed-35b61969d2ef",
+      "site": "chefsimon.com",
+      "nom": "Filet mignon de porc à la moutarde",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "700 grammes de filet mignon de porc",
+        "3 cuillères à soupe de moutarde à l’ancienne",
+        "1  oignon rouge",
+        "20 cl de vin blanc de cuisine",
+        "1  bouillon de légumes",
+        "25 cl d'eau",
+        "2 boîtes de champignons de Paris entiers",
+        "2 noix de beurre",
+        "2 cuillères à soupe d'huile neutre",
+        "20 cl de crème fraîche liquide"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 178,
+        "sha256": "ceef051cf32a0f22"
+      },
+      "sha256_page": "4bdbf0bd084a09f3"
+    },
+    {
+      "url": "https://www.750g.com/tournedos-de-filet-mignon-de-porc-a-la-moutarde-forte-r50245.htm",
+      "site": "750g.com",
+      "nom": "Tournedos de filet mignon de porc à la moutarde forte",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "2 filets de filets mignon de porc",
+        "3 c. à s. de moutarde forte",
+        "3 c. à s. de moutarde forte",
+        "Mascarpone",
+        "1 échalote  ciselée",
+        "1 verre de vin blanc sec",
+        "8 c. à s. d'amandes effilées",
+        "1 c. à c. de moutarde forte",
+        "1 oeuf  entier",
+        "Beurre",
+        "Huile",
+        "Sel ou sel fin",
+        "Purée de pomme de terre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1781,
+        "sha256": "2c1f586b4f1c16db"
+      },
+      "sha256_page": "f358d4be0161e1fb"
+    }
+  ]
+}

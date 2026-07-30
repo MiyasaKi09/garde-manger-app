@@ -1,0 +1,105 @@
+{
+  "dish": "Curry de pois chiches et épinards",
+  "slug": "curry-de-pois-chiches-et-epinards",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/curry-de-champignons-au-lait-de-coco-pois-chiches-et-epinards",
+      "site": "chefsimon.com",
+      "nom": "Curry de champignons au lait de coco, pois chiches et épinards",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "250 g de champignons de Paris tranchés",
+        "200 g de pois chiches égouttés et rincés",
+        "150 g d’épinards frais",
+        "200 ml de lait de coco entier",
+        "1 c. à soupe de pâte de curry jaune ou rouge",
+        "1 c. à café de curcuma",
+        "1 c. à café de cumin moulu",
+        "1 pincée de piment de Cayenne",
+        "1 oignon jaune",
+        "3 gousses d’ail",
+        "2,5 cm de gingembre frais râpé",
+        "le jus d’un citron jaune",
+        "coriandre fraîche ciselée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 649,
+        "sha256": "ade7716658e1420f"
+      },
+      "sha256_page": "08d5759c68715849"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/eldorami/recettes/curry-de-pois-chiches-epinards-et-riz-complet",
+      "site": "chefsimon.com",
+      "nom": "Curry de pois chiches épinards et riz complet",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "2 cuillères à soupe Huile d'olive",
+        "1  Oignon jaune",
+        "3  Gousses d'ail",
+        "2 cuillères à café Gingembre frais",
+        "200 millilitres Crème de coco",
+        "200 millilitres Lait de coco",
+        "2 cuillères à soupe Concentré de tomates",
+        "400 grammes Pois chiches",
+        "150 grammes Épinards",
+        "150 millilitres Eau",
+        "2 cuillères à café Pâte de curry jaune",
+        "1 cuillère à café Curcuma",
+        "0.5 cuillères à soupe Curry",
+        "0.5 cuillères à soupe Garam masala",
+        "0.5 cuillères à café Cumin",
+        "0.5 cuillères à café Paprika",
+        "Sel",
+        "Poivre",
+        "1  Citron vert",
+        "3 pincées Coriandre",
+        "1  Carotte",
+        "50 grammes Raisins secs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 230,
+        "sha256": "85acd6338fe91b1a"
+      },
+      "sha256_page": "fd454e9d75a59af4"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/curry-de-pommes-de-terre-pois-chiches-et-epinards-b540ee25-de85-406c-896c-dc3047772a6e",
+      "site": "chefsimon.com",
+      "nom": "Curry de pommes de terre, pois chiches et épinards",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "500 g de pommes de terres pelées et coupées en morceaux",
+        "1  gros oignon (ou 2 petits émincé)",
+        "3  gousses d’ail",
+        "1 boîte de 400 g de pois chiches",
+        "2  belles tomates fraiches coupées en morceaux (ou une boite de 400 g de tomates)",
+        "1 boîte de 400 ml de lait de coco",
+        "2 belles oignées d’épinards frais",
+        "3 cuil. à café de poudre de curry de Madras",
+        "1 cuil. à café rase de curcuma",
+        "1 cuil. à café de cumin en poudre",
+        "½ cuil. à café de coriandre en poudre",
+        "huile végétale ou ghee",
+        "piment",
+        "sel (poivre)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 142,
+        "sha256": "c761fd9815ba7d33"
+      },
+      "sha256_page": "45cf4a0334824919"
+    }
+  ]
+}

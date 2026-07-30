@@ -1,0 +1,227 @@
+{
+  "dish": "Parmentier de canard",
+  "slug": "parmentier-de-canard",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_parmentier-de-canard-au-potiron-vanille_34465.aspx",
+      "site": "marmiton.org",
+      "nom": "Parmentier de canard au potiron vanillé : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "0.75 l de lait de soja",
+        "3 oignons",
+        "800 g de potiron",
+        "600 g de pommes de terre",
+        "4 canard confit",
+        "1 gousse de vanille",
+        "muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1453,
+        "sha256": "383a718a83b3c7be"
+      },
+      "sha256_page": "406250cc361524e0"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_hachis-parmentier-au-canard-confit_32899.aspx",
+      "site": "marmiton.org",
+      "nom": "Hachis Parmentier au canard confit : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 grande boîte de confit de canard",
+        "miel",
+        "500 g de pommes de terre",
+        "beurre et crème (selon le goût pour la purée)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 574,
+        "sha256": "2bfe08d53dfab19c"
+      },
+      "sha256_page": "b8ab7309124f4270"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_hachis-parmentier-au-canard_31272.aspx",
+      "site": "marmiton.org",
+      "nom": "Hachis parmentier au canard : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "2 cuisses de canard",
+        "1 bouquet garni (laurier / sauge / thym)",
+        "1 carotte",
+        "1 oignon",
+        "1 kg de pomme de terre (de préférence des Bintje)",
+        "1 oeuf",
+        "2 cuillères à soupe de crème",
+        "20 g de beurre",
+        "fromage râpé",
+        "poivre",
+        "sel",
+        "muscade (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1342,
+        "sha256": "25864207f48d9b5a"
+      },
+      "sha256_page": "a0c0fc343cc07cd7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/parmentier-de-canard-confit",
+      "site": "chefsimon.com",
+      "nom": "Parmentier de canard confit",
+      "portions": "6 personnes",
+      "duree_preparation": "PT01H30M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 cuisses de canard confites avec la graisse",
+        "1 oignon",
+        "3 échalotes",
+        "3 gousses d'ail",
+        "2 dl de madère ou porto",
+        "4 dl de fond de canard ou de veau",
+        "6 tranches de pain",
+        "petits champignons sautés en décor",
+        "1 kg de pommes de terre à chair ferme",
+        "2 têtes d'ail",
+        "40 g de beurre",
+        "30 g de crème fraîche entière",
+        "1/4 de bouquet de persil",
+        "sel et poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 23,
+        "signes": 1764,
+        "sha256": "abbb5fe7277acef7"
+      },
+      "sha256_page": "8e561c3a1f30979a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/confit-de-canard-aux-petits-pois-facon-parmentier",
+      "site": "chefsimon.com",
+      "nom": "Confit de canard aux petits pois façon parmentier",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "6  cuisses de canard confit Lafitte®",
+        "100 g de beurre",
+        "2,5 kg de petits pois frais (1 kg de petits pois écossés)",
+        "12  oignons nouveaux",
+        "2  gousses d’ail",
+        "1  bouquet garni",
+        "baies roses",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 182,
+        "sha256": "8861509c4a3efda5"
+      },
+      "sha256_page": "dacfaf5a14082a29"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/parmentier-de-canard-confit-aux-noisettes",
+      "site": "chefsimon.com",
+      "nom": "Parmentier de canard confit aux noisettes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H50M",
+      "ingredients": [
+        "5 cuisses de canard confit",
+        "80 g de noisettes",
+        "800 g de pommes de terre",
+        "75 g de beurre",
+        "10 cL de lait",
+        "100 g de comté râpé",
+        "sel (mélange 5 baies)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 167,
+        "sha256": "2554590c685cd1cb"
+      },
+      "sha256_page": "dc94eca0068ded9f"
+    },
+    {
+      "url": "https://www.750g.com/parmentier-de-confit-de-canard-r32900.htm",
+      "site": "750g.com",
+      "nom": "Parmentier de confit de canard rapide",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 boite de cuisse de canard confite",
+        "2 oignons",
+        "Purée",
+        "Foie gras",
+        "Chapelure"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 661,
+        "sha256": "430d33a9efcd8d0f"
+      },
+      "sha256_page": "64515562dc3cccb5"
+    },
+    {
+      "url": "https://www.750g.com/parmentier-au-confit-de-canard-et-legumes-r23230.htm",
+      "site": "750g.com",
+      "nom": "Parmentier au confit de canard et légumes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "4 cuisses de canard confites",
+        "4 courgettes",
+        "100 g de fromage rapé",
+        "4 panais (à défaut, utiliser des raves)",
+        "1/4 de litre de lait",
+        "Un bouquet de persil",
+        "Un peu de ciboulette ciselée",
+        "1 c à s d'huile d'olive",
+        "3 c à s de sucre",
+        "Lel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 1752,
+        "sha256": "0242e4caf30f8741"
+      },
+      "sha256_page": "cd831afdc81929cb"
+    },
+    {
+      "url": "https://www.750g.com/parmentier-au-confit-de-canard-r7685.htm",
+      "site": "750g.com",
+      "nom": "Parmentier de canard confit",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "6 brins de persil",
+        "Sel ou sel fin",
+        "Poivre du moulin",
+        "4 cuisse de canard",
+        "1 pincée de noix de muscade",
+        "80 g de beurre",
+        "30 cl de lait",
+        "800 g de pommes de terre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 698,
+        "sha256": "9ae39889a48e5184"
+      },
+      "sha256_page": "900c0f4210bea4e0"
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "dish": "Croque-monsieur",
+  "slug": "croque-monsieur",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_croque-monsieur-d-aubergines_32571.aspx",
+      "site": "marmiton.org",
+      "nom": "Croque monsieur d'aubergines : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 aubergine",
+        "2 tomates",
+        "1 cuillère à dessert de moutarde",
+        "10 cl de crème liquide",
+        "50 g de gruyère",
+        "herbes de Provence"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 515,
+        "sha256": "7e603b60206f2c2e"
+      },
+      "sha256_page": "2530dcca623c6a15"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_croque-monsieur-express_19367.aspx",
+      "site": "marmiton.org",
+      "nom": "Croque-monsieur express : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 pain de mie en tranches carrées",
+        "1 pot de crème épaisse",
+        "1 sachet de gruyère râpé 200 g",
+        "6 tranches de jambon blanc ou épaule",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 379,
+        "sha256": "58282cd09b94f92d"
+      },
+      "sha256_page": "f0b3bec8e3119f6c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_croque-monsieur-a-la-sauce-bechamel_20410.aspx",
+      "site": "marmiton.org",
+      "nom": "croque-monsieur à la sauce béchamel : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "8 tranches de pains de mie",
+        "fromage râpé",
+        "beurre",
+        "béchamel",
+        "2 tranches de jambon d'york"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 497,
+        "sha256": "fae5f49c792c6361"
+      },
+      "sha256_page": "d4914dafc7246054"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/croque-monsieur-a-l-ail-des-ours",
+      "site": "chefsimon.com",
+      "nom": "Croque-monsieur à l'ail des ours",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "8 tranches de pain de mie à l'ail des ours",
+        "2 tranches de jambon",
+        "4 tranches d'emmenthal",
+        "Sel et poivre",
+        "4 c à s de lait",
+        "Emmenthal râpé",
+        "Noix de muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 492,
+        "sha256": "1a3b01da9ff55351"
+      },
+      "sha256_page": "225608067656c3fc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/croque-monsieur-au-airfryer",
+      "site": "chefsimon.com",
+      "nom": "Croque-monsieur au airfryer",
+      "portions": "",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "4 tranches de pain de mie",
+        "2 tranches de fromage fondu de type toastinette",
+        "1 tranche de jambon",
+        "100g de comté râpé",
+        "½ verre de lait"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 781,
+        "sha256": "e43f8c139a4ad80e"
+      },
+      "sha256_page": "e25d3656f853e315"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/croque-monsieur-au-jambon-et-creme-de-champignons",
+      "site": "chefsimon.com",
+      "nom": "Croque-monsieur au jambon et crème de champignons",
+      "portions": "",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "4 tranches de pain de mie complet",
+        "1 tranche de jambon",
+        "100 g de crème de champignons au parmesan",
+        "80 g d'emmental + un peu de lait",
+        "origan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 441,
+        "sha256": "8bb5d844d3386e3b"
+      },
+      "sha256_page": "945d8befb43eaf54"
+    },
+    {
+      "url": "https://www.750g.com/croque-monsieur-en-gratin-r26746.htm",
+      "site": "750g.com",
+      "nom": "croque monsieur en gratin",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "50 g de farine",
+        "Sel ou sel fin",
+        "Poivre",
+        "Noix de muscade",
+        "50 g de beurre",
+        "1 l de lait",
+        "1 paquet de biscotte",
+        "100 g de gruyère râpé",
+        "6 tranches de jambon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 587,
+        "sha256": "c42d4204fb2d382b"
+      },
+      "sha256_page": "9e0a0d4c1982add3"
+    }
+  ]
+}

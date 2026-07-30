@@ -1,0 +1,122 @@
+{
+  "dish": "Goulash hongrois",
+  "slug": "goulash-hongrois",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_goulash-hongroise-traditionnelle_68509.aspx",
+      "site": "marmiton.org",
+      "nom": "Goulash hongroise traditionnelle : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT3H",
+      "ingredients": [
+        "1 kg de boeuf à braiser",
+        "1 tomate",
+        "2 oignons",
+        "1 poivron rouge",
+        "paprika doux (et non pas fort)",
+        "8 pommes de terre",
+        "sel",
+        "poivre",
+        "1 piment (facultatif)",
+        "1 kg de farine",
+        "4 oeufs",
+        "2 cuillères à soupe de sel",
+        "eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1293,
+        "sha256": "d46ed8959b014299"
+      },
+      "sha256_page": "506e9e9809f3310d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-de-goulash-a-la-hongroise_12064.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe de goulash à la Hongroise : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H10M",
+      "ingredients": [
+        "500 g de boeuf",
+        "20 g de saindoux",
+        "200 g d'oignons",
+        "2 gousses d'ail",
+        "1 cuillère à café de paprika doux",
+        "0.5 cuillère à café de paprika fort",
+        "0.75 l de bouillon",
+        "0.5 l d'eau chaude",
+        "0.5 cuillère à café de cumin et marjolaine",
+        "1 piment rouge",
+        "150 g de pommes de terre",
+        "1 carotte",
+        "2 poivrons (1 rouge et 1 vert)",
+        "3 tomates",
+        "60 g de crème fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 701,
+        "sha256": "8c17b9fd25639285"
+      },
+      "sha256_page": "ad39e568ce12525a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_goulash-hongrois_62733.aspx",
+      "site": "marmiton.org",
+      "nom": "Goulash hongrois : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT3H",
+      "ingredients": [
+        "500 g de boeuf à braiser (paleron ou gîte)",
+        "1 kg de pomme de terre",
+        "2 oignons",
+        "1 poivron",
+        "2 tomates",
+        "1 piment",
+        "1 pot de paprika doux",
+        "sel",
+        "500 g de farine",
+        "4 oeufs",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1061,
+        "sha256": "e8136fbdec69c059"
+      },
+      "sha256_page": "31dd113eda4e2fbb"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/delizioso/recettes/goulash-de-boeuf-hongrois-a-la-mijoteuse",
+      "site": "chefsimon.com",
+      "nom": "Goulash de Boeuf Hongrois à la Mijoteuse",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1,5 kg de bœuf à braiser",
+        "300 g de lard fumé épais",
+        "3  oignons moyen",
+        "2  ou 3 gousses d’ail",
+        "1  petite boite de double concentré de tomate (70g)",
+        "2  cs de paprika doux",
+        "2  cs de farine",
+        "1  cc de maïzena",
+        "1  marmite de bouillon de bœuf",
+        "20 cl de crème fraîche semi épaisse",
+        "Huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 268,
+        "sha256": "c60db51d0348ef60"
+      },
+      "sha256_page": "bfa49a9c37afe0d3"
+    }
+  ]
+}

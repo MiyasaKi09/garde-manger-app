@@ -1,0 +1,55 @@
+{
+  "dish": "İmam bayıldı",
+  "slug": "imam-bay-ld",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/passeportpourlacuisine/recettes/imam-bayildi-turque",
+      "site": "chefsimon.com",
+      "nom": "Imam bayildi turque",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 aubergines moyennes",
+        "1 oignons",
+        "3 gousses d’ail",
+        "3 tomates mûres (ou une boîte de tomates concassées)",
+        "100 ml d’huile d’olive",
+        "Quelques brins de persil ou d’origan",
+        "Sel &amp; poivre (facultatif) Un peu de jus de citron"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 748,
+        "sha256": "6f7b82ea0aca22c1"
+      },
+      "sha256_page": "5ee71556b2d9474c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/plat-et-recette/recettes/imam-bayildi-028315e7-7a0d-4ce7-9b71-8a4654bcd183",
+      "site": "chefsimon.com",
+      "nom": "Imam Bayildi",
+      "portions": "",
+      "duree_preparation": "PT00H22M",
+      "duree_cuisson": "PT00H50M",
+      "ingredients": [
+        "1 aubergine de grande taille",
+        "De l'eau",
+        "1 oignon",
+        "1 cuillère à soupe d'huile d'olive",
+        "2 gousses d'ail hachées",
+        "4 tomates cerises",
+        "Du persil haché",
+        "20 g de parmesan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "4428e98c649a99b9"
+    }
+  ]
+}

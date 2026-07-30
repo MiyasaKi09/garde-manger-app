@@ -1,0 +1,246 @@
+{
+  "dish": "Velouté de champignons",
+  "slug": "veloute-de-champignons",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veloute-de-champignons_26749.aspx",
+      "site": "marmiton.org",
+      "nom": "Velouté de champignons : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "3 cuillères à soupe de beurre",
+        "1 oignon",
+        "250 g de champignons de Paris surgelés",
+        "2 cuillères à soupe de farine",
+        "0.25 l de bouillon",
+        "0.5 l de lait",
+        "1 citron",
+        "2 cuillères à soupe de crème fraîche",
+        "1 cuillère à soupe de persil haché",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 705,
+        "sha256": "276ec7b8ce0e8337"
+      },
+      "sha256_page": "38875aacfad731a1"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veloute-de-champignons-ultra-simple_53543.aspx",
+      "site": "marmiton.org",
+      "nom": "Velouté de champignons ultra simple : la meilleure recette",
+      "portions": "1 litre",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "250 g de champignons",
+        "2 oignons",
+        "1 branche de persil ou deux pincés de persil lyophilisé",
+        "1 gousse d'ail",
+        "1 cuillère à soupe d'huile d'olive",
+        "1 cuillère à soupe de crème fraîche",
+        "1 cube de bouillon de poule"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 384,
+        "sha256": "ff3409a88ae5da21"
+      },
+      "sha256_page": "48d461f7b191e43b"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veloute-de-champignons-express-champignons-en-boite_83749.aspx",
+      "site": "marmiton.org",
+      "nom": "Velouté de champignons express (champignons en boîte) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "460 g de champignons de Paris en boite",
+        "1.5 l d'eau",
+        "25 cl de crème liquide",
+        "30 g de beurre",
+        "1 demi de pain sec",
+        "1 cuillère à soupe d'ail en poudre",
+        "1 cuillère à soupe de persil en poudre",
+        "2 cubes de bouillon de boeuf",
+        "1 kub or",
+        "2 cuillères à café de madère (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 705,
+        "sha256": "22631aba038a43fc"
+      },
+      "sha256_page": "3c3a24e053fdc36f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/veloute-de-champignons--6",
+      "site": "chefsimon.com",
+      "nom": "Velouté de champignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "500 g de champignons de Paris",
+        "une noix de beurre",
+        "2 gousses d'ail",
+        "50 g de beurre",
+        "50 g de farine",
+        "1 litre de fonds blanc ou de lait",
+        "1 dl de crème",
+        "2 jaunes d'oeufs (facultatif)",
+        "sel",
+        "muscade pour assaisonner"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 1022,
+        "sha256": "09148f5922e3320c"
+      },
+      "sha256_page": "c3ddbfc80016b9f0"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/veloute-de-champignons-de-paris-e4bb1c95-4808-4bf6-8db4-cf83e2ab4573",
+      "site": "chefsimon.com",
+      "nom": "Velouté de champignons de Paris",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "1 kg de champignons de Paris",
+        "1 oignon",
+        "1 gousse d'ail",
+        "1 échalote",
+        "1 bouquet garni",
+        "2CS de farine",
+        "1 cube Kubor",
+        "10cl de vin blanc sec",
+        "15cl de crème liquide entière ou crème fraîche",
+        "Sel et poivre, huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1044,
+        "sha256": "cc9d783b6b9d34c5"
+      },
+      "sha256_page": "d211f83d068fa45d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/moilaurie/recettes/veloute-de-poireaux-au-gingembre-champignons-et-bacon-grilles",
+      "site": "chefsimon.com",
+      "nom": "Velouté de poireaux au gingembre champignons et bacon grillés",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "Pour le velouté :",
+        "2 poireaux, épluchés et coupés en rondelles",
+        "½ oignon, émincé",
+        "1 càc : huile d'olive (1ère pression à froid)",
+        "3cm : gingembre frais finement émincé",
+        "2 pommes de terre, épluchées, coupées en dès",
+        "1l : eau bouillante",
+        "2 cubes de bouillon de légumes",
+        "Pour la décoration :",
+        "4 champignons de Paris, coupés en 4 ou 6",
+        "4 tranches fines de bacon, coupées en fines lamelles",
+        "1 gousse d’ail, haché",
+        "4 brins de cerfeuil entiers",
+        "4 càc : crème fraîche allégée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 1556,
+        "sha256": "e0a629da164b35c7"
+      },
+      "sha256_page": "64b00588449c9b64"
+    },
+    {
+      "url": "https://www.750g.com/veloute-aux-champignons-r28665.htm",
+      "site": "750g.com",
+      "nom": "Velouté aux champignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 tasse de lait",
+        "Marjolaineselcayenne",
+        "1 pomme de terre",
+        "2 tasses de bouillon de poulet",
+        "2 branches de céleri haché",
+        "2 tasses de champignons tranchée",
+        "1 oignon haché"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 267,
+        "sha256": "ad9f9783ab22c22d"
+      },
+      "sha256_page": "3cc68a2e7a18e888"
+    },
+    {
+      "url": "https://www.750g.com/veloute-de-champignons-r18589.htm",
+      "site": "750g.com",
+      "nom": "Velouté de champignons économique",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "2 c. à s. de crème fraîche",
+        "1 c. à s. de persil  haché",
+        "Sel ou sel fin",
+        "Poivre",
+        "1 citron",
+        "½ l de lait",
+        "1 oignon",
+        "250 g de champignons de Paris",
+        "2 c. à s. de farine",
+        "Bouillon",
+        "3 c. à s. de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 734,
+        "sha256": "9c47a3a34f49eb7e"
+      },
+      "sha256_page": "b39601b0e3cf6717"
+    },
+    {
+      "url": "https://www.750g.com/veloute-aux-champignons-des-bois-r206283.htm",
+      "site": "750g.com",
+      "nom": "Velouté aux champignons des bois",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "500 g de champignons",
+        "2 oignons",
+        "1 gousse d'ail",
+        "2 c. à s. de farine",
+        "1,2 l de bouillon",
+        "1 c. à s. d'huile d'olive",
+        "1 c. à c. de poudre de Chili",
+        "1 c. à c. de gingembre râpé",
+        "1 c. à c. de fleur de sel",
+        "Champignon",
+        "1 c. à s. d'huile d'olive",
+        "Graines germées",
+        "Persil",
+        "Paprika fumé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 859,
+        "sha256": "7260c4b3f00e60c9"
+      },
+      "sha256_page": "32ba6a67b9280dea"
+    }
+  ]
+}

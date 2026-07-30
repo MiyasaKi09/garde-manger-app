@@ -1,0 +1,94 @@
+{
+  "dish": "Fasolada",
+  "slug": "fasolada",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/196-flavors/recettes/fasolada",
+      "site": "chefsimon.com",
+      "nom": "Fasoláda",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT02H30M",
+      "ingredients": [
+        "500 g de haricots blancs secs",
+        "2 gousses d'ail (pressées)",
+        "3  oignons frais (coupés en petits dés)",
+        "3  carottes (coupées en rondelles)",
+        "1 branche de céleri (avec feuilles) ciselée",
+        "3  tomates mûres (épépinées et hachées)",
+        "1 feuille de laurier",
+        "6 cuillères à soupe d'huile d'olive vierge",
+        "Sel",
+        "Poivre",
+        "2 cuillères à soupe de concentré de tomate",
+        "2½ l d'eau bouillante",
+        "½  botte de persil (finement ciselé)",
+        "Jus d'un citron"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 260,
+        "sha256": "5cb14961e16bc1c9"
+      },
+      "sha256_page": "8e4f5c0ac0497024"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/kilometre-0/recettes/fasolada-7fd3dc3f-6e28-4fd8-ab5b-f3af26960125",
+      "site": "chefsimon.com",
+      "nom": "Fasolada",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H30M",
+      "ingredients": [
+        "500 g de haricots blancs",
+        "4 oignons",
+        "4 carottes",
+        "2 branches de céleri",
+        "800 g de tomates",
+        "thym et laurier",
+        "sel et poivre",
+        "huile d'olive",
+        "150 g de feta",
+        "1 petit bocal d' olives"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "d2a1ec425bfbfeeb"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clarisse-en-cuisine/recettes/fasolada-e5b5a6d1-54a0-4675-8018-238bb93520fc",
+      "site": "chefsimon.com",
+      "nom": "Fasolada",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "250 à 350 g de coco de Paimpol ou mogettes de Vendée",
+        "2 oignons hachés",
+        "2 belles carottes",
+        "2 branches de céleri",
+        "400 g de tomates pelées en conserve",
+        "2 gousses d'ail",
+        "2 c à soupe d'huile d'olive",
+        "1 c à café de thym frais",
+        "1 feuille de laurier",
+        "1 pincée de sucre",
+        "850 ml d'eau",
+        "1 c à café de pâte de bouillon de bœuf, ou 1 tablette de bouillon de légumes",
+        "sel, poivre",
+        "2 c à soupe de persil haché"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "9282719b49fb407c"
+    }
+  ]
+}

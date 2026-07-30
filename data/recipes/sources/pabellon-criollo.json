@@ -1,0 +1,84 @@
+{
+  "dish": "Pabellón criollo",
+  "slug": "pabellon-criollo",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pabellon-criollo-venezuela_32673.aspx",
+      "site": "marmiton.org",
+      "nom": "Pabellon criollo (Venezuela) : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT2M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 kg de boeuf (macreuse ou jarret)",
+        "5 oignons",
+        "2 poivrons",
+        "1 poireau",
+        "750 g de tomates pelées en conserve",
+        "500 g de haricots noirs",
+        "6 bananes plantain (les acheter plusieurs jours à l'avance pour qu'elles soient bien mûres au moment de les cuisiner !)",
+        "2 verres de riz",
+        "10 gousses d'ail",
+        "câpres",
+        "2 bouillon de boeuf",
+        "poivre",
+        "sel",
+        "safran",
+        "cumin en poudre",
+        "herbes de Provence",
+        "laurier",
+        "huile",
+        "beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 17,
+        "signes": 2129,
+        "sha256": "fa3bfa72d4d8e398"
+      },
+      "sha256_page": "8971799b8a158526"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clementine-4c402d8e-2ca5-400b-88f1-beb80aa54df8/recettes/pabellon-criollo",
+      "site": "chefsimon.com",
+      "nom": "Pabellon criollo",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H50M",
+      "ingredients": [
+        "240 g de riz blanc",
+        "½ poivron rouge épépiné",
+        "Sel et poivre du moulin",
+        "Ingredients pour le jacquier du pabellon criollo :",
+        "400 g de fruit de jacquier égoutté (veillez à acheter du jacquier en saumure et non au sirop)",
+        "3 gousses d’ail pilé",
+        "2 oignons émincés",
+        "2 poivrons rouges",
+        "1 tomate",
+        "6 branches de persil",
+        "½ cuillère à café de paprika fumé",
+        "1 cuillère à café de piment",
+        "2 cuillères à soupe d’huile d’olive",
+        "Ingredients pour les bananes plantain :",
+        "2 bananes plantain",
+        "1 pincée de cumin",
+        "2 cuillères à café de sauce sriracha",
+        "1 cuillère à soupe d’huile d’olive",
+        "Éventuellement, un peu de fécule (facultatif)",
+        "Ingredients pour les haricots noirs :",
+        "240 g de haricots noirs crus",
+        "1 feuille de laurier",
+        "1 oignon émincé",
+        "2 gousses d’ail pilé",
+        "1 cuillère d’huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "abb66485637fab4a"
+    }
+  ]
+}

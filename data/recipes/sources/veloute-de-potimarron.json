@@ -1,0 +1,197 @@
+{
+  "dish": "Velouté de potimarron",
+  "slug": "veloute-de-potimarron",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veloute-de-potimarron_32994.aspx",
+      "site": "marmiton.org",
+      "nom": "Velouté de potimarron : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 potimarron de 1,2 kg environ",
+        "1 gousse d'ail",
+        "2 échalotes",
+        "2 clous de girofle",
+        "5 grains de poivre noir",
+        "2 lamelles de gingembre frais",
+        "50 g de beurre",
+        "60 cl de lait",
+        "poivre",
+        "sel",
+        "6 brins de ciboulette",
+        "muscade râpée",
+        "10 cl de crème fraîche liquide"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1060,
+        "sha256": "54b61d458a7c17da"
+      },
+      "sha256_page": "c2a4ffebdedc62f0"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veloute-de-potimarron-aux-chataignes_42720.aspx",
+      "site": "marmiton.org",
+      "nom": "Velouté de potimarron aux châtaignes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 potimarron",
+        "1 bouillon de volaille",
+        "1 demi de châtaignes pelées",
+        "2 cuillères à soupe de crème fraîche",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 398,
+        "sha256": "0b0884284ebd099a"
+      },
+      "sha256_page": "58d9cbf113114e45"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veloute-de-potimarron-pommes-de-terre-carottes_41750.aspx",
+      "site": "marmiton.org",
+      "nom": "Velouté de potimarron, pommes de terre, carottes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 potimarron (ou 2 petits)",
+        "4 carottes",
+        "3 pommes de terre",
+        "50 cl de crème fraîche",
+        "poivre",
+        "sel",
+        "ail (facultatif)",
+        "2 bouillon de volaille ou boeuf"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 383,
+        "sha256": "8c9d1f6c7162fcc4"
+      },
+      "sha256_page": "880585d40291b80a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/veloute-de-potimarron-et-chataignes-5b1fda61-ddbd-485c-87f3-d3c50fc06255",
+      "site": "chefsimon.com",
+      "nom": "Velouté de potimarron et châtaignes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H12M",
+      "duree_cuisson": "PT00H07M",
+      "ingredients": [
+        "1 potimarron de 830 g, poids épluché",
+        "200 g de châtaignes cuites",
+        "1 oignon doux",
+        "200 g de crème semi épaisse à 4% de MG",
+        "1 litre de bouillon de légumes",
+        "1 filet d'huile de colza",
+        "noix de muscade râpée au goût",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 775,
+        "sha256": "644283bf3d2d401a"
+      },
+      "sha256_page": "d95f527696b48052"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-petits-plats-du-prince/recettes/veloute-de-potimarron-et-de-panais",
+      "site": "chefsimon.com",
+      "nom": "Velouté de potimarron et de panais",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "1 potimarron",
+        "1 gros panais",
+        "1,5 l d'eau",
+        "2 bouillons cube de légumes",
+        "sel et poivre",
+        "50 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 778,
+        "sha256": "20b899ed59b6ada5"
+      },
+      "sha256_page": "8b043dd668809f0a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/orianec/recettes/veloute-de-potimarron-au-safran-et-a-l-orange",
+      "site": "chefsimon.com",
+      "nom": "Velouté de potimarron au safran et à l'orange",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "800 g de potimarron (poids cru, vidé, non pelé)",
+        "50 g environ de jus d’orange",
+        "Une dizaine de pistils de safran",
+        "Un filet de crème de soja",
+        "1 càc de cumin en poudre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 369,
+        "sha256": "06f1f704b31cc25c"
+      },
+      "sha256_page": "0fcd4a32f9ae6a5b"
+    },
+    {
+      "url": "https://www.750g.com/veloute-de-potimarron-a-la-creme-fouettee-r69048.htm",
+      "site": "750g.com",
+      "nom": "Velouté de potimarron à la crème fouettée",
+      "portions": "6 personnes",
+      "duree_preparation": "PT50M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "2 potimarrons",
+        "1 oignon",
+        "20 cl de crème liquide entière ( 30% de MG )",
+        "1 cube de bouillon",
+        "Sel ou sel fin",
+        "Poivre",
+        "Huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1092,
+        "sha256": "ff06d7dc503b57fd"
+      },
+      "sha256_page": "ecb5d7681f94226b"
+    },
+    {
+      "url": "https://www.750g.com/veloute-de-potimarron-et-son-nuage-de-morilles-r66190.htm",
+      "site": "750g.com",
+      "nom": "Velouté de potimarron et son nuage de morilles",
+      "portions": "5 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "20 cl de champignons",
+        "2 c. à s. d'huile de noisette",
+        "1 noix de beurre",
+        "5 cl d'eau",
+        "1 échalote",
+        "4 carottes",
+        "10 g de morilles séchées",
+        "1 potimarron"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 825,
+        "sha256": "9657544484278a8e"
+      },
+      "sha256_page": "01008316ce464fc4"
+    }
+  ]
+}

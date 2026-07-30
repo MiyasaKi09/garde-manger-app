@@ -1,0 +1,56 @@
+{
+  "dish": "Spaghetti alla puttanesca",
+  "slug": "spaghetti-alla-puttanesca",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_spaghetti-alla-puttanesca-par-laurent-mariotte_531399.aspx",
+      "site": "marmiton.org",
+      "nom": "Spaghetti alla puttanesca par Laurent Mariotte : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 kg de tomates cerise",
+        "2 cuillères à soupe de câpres au sel",
+        "1 gousse d'ail",
+        "2 cuillères à soupe d'huile d'olive",
+        "12 anchois à l’huile d’olive",
+        "100 g d'olives noires dénoyautées",
+        "500 g de spaghetti",
+        "sel et poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 468,
+        "sha256": "59d8c03302960755"
+      },
+      "sha256_page": "ad39720ce971fd88"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/120streetcook/recettes/spaghetti-alla-puttanesca-983c92b7-9a61-4bff-b350-12edf7481d00",
+      "site": "chefsimon.com",
+      "nom": "Spaghetti alla puttanesca",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "200 gr de spaghettis",
+        "400 gr de tomates concassées",
+        "30 gr de câpres",
+        "30 gr d'olives noire",
+        "2 filets d'anchois",
+        "2 c.a.s d'huile d'olive",
+        "1 petit piment rouge (égrainé)",
+        "20 gr de parmesan fraîchement râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "3e03849409d8cec4"
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "dish": "Poulet à la moutarde et champignons",
+  "slug": "poulet-a-la-moutarde-et-champignons",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_eminces-de-poulet-a-la-moutarde-champignons-et-tomates-sechees_56515.aspx",
+      "site": "marmiton.org",
+      "nom": "Emincés de poulet à la moutarde, champignons et tomates séchées : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "4 blancs de poulet",
+        "1 petite boîte de champignon",
+        "tomate séchée",
+        "2 grosses cuillères à soupe de moutarde",
+        "25 cl de crème liquide",
+        "1 cuillère à café de fécule (ou farine)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 398,
+        "sha256": "c9ab8cb02aba9317"
+      },
+      "sha256_page": "1102541b7cd34a51"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-a-la-moutarde-a-l-estragon-et-aux-champignons_19374.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet à la moutarde, à l'estragon et aux champignons : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 blancs de poulet sans la peau",
+        "200 g de champignons de Paris émincés",
+        "1 cube de bouillon de volaille dissout dans 1/2 verre d'eau",
+        "2 cuillères à café de moutarde",
+        "2 cuillères à café de crème fraîche allégée",
+        "2 cuillères à café d'estragon",
+        "2 cuillères à café d'huile d'olive",
+        "2 échalotes émincée",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 465,
+        "sha256": "6333251aa79d0b80"
+      },
+      "sha256_page": "2e61de760517feee"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cuisses-de-poulet-aux-champignons-et-a-la-moutarde_53590.aspx",
+      "site": "marmiton.org",
+      "nom": "Cuisses de poulet aux champignons et à la moutarde : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "4 cuisses de poulet",
+        "1 oignon",
+        "1 cuillère à soupe de moutarde",
+        "100 g de crème fraîche",
+        "400 g de champignons de Paris",
+        "1 cuillère à soupe de fond de volaille",
+        "1 cube de bouillon de poule",
+        "1 cuillère à soupe de jus de citron",
+        "1 cuillère à soupe de maïzena",
+        "50 g de beurre",
+        "huile d'olive",
+        "2 carottes",
+        "2 feuilles de laurier"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 642,
+        "sha256": "4e7a0f83dd333f94"
+      },
+      "sha256_page": "50dedb9dbc9f0afd"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/plat-et-recette/recettes/poulet-a-la-moutarde-et-aux-champignons",
+      "site": "chefsimon.com",
+      "nom": "Poulet à la moutarde et aux champignons",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "200 g de blanc de poulet",
+        "120 g de champignons",
+        "1 bouillon cube de volaille",
+        "1 verre d’eau",
+        "3 échalotes",
+        "2 cuillères à café de moutarde",
+        "2 cuillères à café de crème fraîche",
+        "3 cuillères à café d’estragon",
+        "2 cuillères à café d’huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 153,
+        "sha256": "8306a3e8676ad589"
+      },
+      "sha256_page": "e1a3cccffdb9678a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/laurence-peguet/recettes/poulet-sauce-moutarde-et-champignons",
+      "site": "chefsimon.com",
+      "nom": "Poulet sauce moutarde et champignons",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 filets de poulet",
+        "1 oignon émincé",
+        "500 g de champignons de Paris",
+        "2 cuillères à soupe de moutarde à l'ancienne",
+        "2 cuillères à soupe de crème fraîche épaisse",
+        "1 cuillère à soupe de crème liquide",
+        "Huile d'olive",
+        "Beurre",
+        "Sel",
+        "Persil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "5c1ff5c99c39c14f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-en-folie/recettes/aiguillettes-de-poulet-aux-champignons-sauce-moutarde-au-fromage-blanc",
+      "site": "chefsimon.com",
+      "nom": "Aiguillettes de poulet aux champignons sauce moutarde au fromage blanc",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "aiguillettes de poulet (ou blancs de poulet) pour 2 personnes",
+        "200g de fromage blanc",
+        "1 cuillère à soupe bombée de moutarde",
+        "1 dizaine de champignons de Paris",
+        "1 cuillère à café de curcuma",
+        "graines de fenouil",
+        "2 branches d'aneth",
+        "sel et poivre du moulin",
+        "huile d'olive",
+        "riz pilaf (en accompagnement)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "8a3e8588f481dc96"
+    },
+    {
+      "url": "https://www.750g.com/poulet-moutarde-champignons-r51302.htm",
+      "site": "750g.com",
+      "nom": "Poulet moutarde - champignons",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "25 cl de vin blanc",
+        "Sel ou sel fin",
+        "Poivre",
+        "½ bouillon",
+        "2 c. à s. de moutarde à l'ancienne",
+        "200 g de champignons  frais",
+        "3 c. à s. de crème fraîche",
+        "2 blancs de poulet"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 541,
+        "sha256": "dbe246c7149ffc98"
+      },
+      "sha256_page": "807011ef7768544f"
+    }
+  ]
+}

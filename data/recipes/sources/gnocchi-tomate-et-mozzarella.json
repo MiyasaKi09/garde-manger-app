@@ -1,0 +1,79 @@
+{
+  "dish": "Gnocchi tomate et mozzarella",
+  "slug": "gnocchi-tomate-et-mozzarella",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poelee-de-poireaux-tomates-gnocchi-et-mozzarella_305415.aspx",
+      "site": "marmiton.org",
+      "nom": "Poêlée de poireaux tomates gnocchi et mozzarella : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 poireau",
+        "10 tomates cerise",
+        "250 g de gnocchi à poêler",
+        "1 boule de mozzarella",
+        "1 noix de beurre",
+        "1 gousse d'ail",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 341,
+        "sha256": "2e9d351c395031a5"
+      },
+      "sha256_page": "dd46bf3de86fd9cc"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gnocchi-tomate-mozzarella_533338.aspx",
+      "site": "marmiton.org",
+      "nom": "Gnocchi tomate mozzarella : la meilleure recette",
+      "portions": "0 0",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "120 g d'Oignons frits",
+        "120 g de tomates confites à l’huile",
+        "100 g de billes de mozzarella",
+        "1 paquet de gnocchi"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 156,
+        "sha256": "4578d3f51b2e97f8"
+      },
+      "sha256_page": "c7187272c6f7b13f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-recettes-de-nathou/recettes/gnocchi-alla-sorrentina-aux-aubergines-tomates-sechees-et-mozzarella-di-buffala",
+      "site": "chefsimon.com",
+      "nom": "Gnocchi alla Sorrentina aux aubergines, tomates séchées et mozzarella di buffala",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "300 gr de gnocchi",
+        "1 aubergine",
+        "1 oignon pas trop gros",
+        "1 petite gousse d'ail",
+        "environ 10 tomates confites",
+        "400 gr de tomates concassées (boite)",
+        "1 boule de mozzarella di buffala",
+        "30 gr de parmesan râpé",
+        "quelques feuilles de basilic",
+        "huile d'olive",
+        "sel et poivre noir"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "2ed65ffe669c9510"
+    }
+  ]
+}

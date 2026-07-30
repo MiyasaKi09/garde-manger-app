@@ -1,0 +1,216 @@
+{
+  "dish": "Cake jambon et olives",
+  "slug": "cake-jambon-et-olives",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cake-sale-au-jambon-et-aux-olives_18876.aspx",
+      "site": "marmiton.org",
+      "nom": "Cake salé au jambon et aux olives : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "150 g de farine",
+        "100 g de dés de jambon",
+        "150 g d'olives vertes dénoyautées",
+        "75 g de gruyère râpé",
+        "4 oeufs",
+        "10 cl de lait",
+        "1 sachet de levure chimique",
+        "1 cuillère à soupe d'huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 355,
+        "sha256": "c06049087cc32a23"
+      },
+      "sha256_page": "f199fb472dd88e9f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cake-au-jambon-et-aux-olives_18909.aspx",
+      "site": "marmiton.org",
+      "nom": "Cake au jambon et aux olives : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "200 g de dés de jambon",
+        "100 g d'olives vertes dénoyautées",
+        "125 g de beurre fondu",
+        "4 oeufs",
+        "1 bouquet de persil",
+        "3 cuillères à soupe de moutarde",
+        "200 g de farine",
+        "1 sachet de levure chimique",
+        "100 g de gruyère râpé",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 308,
+        "sha256": "e4eb5d1f44ca635c"
+      },
+      "sha256_page": "31b113f43c428cd6"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cake-jambon-olives-sans-gluten_337729.aspx",
+      "site": "marmiton.org",
+      "nom": "Cake jambon olives sans gluten : la meilleure recette",
+      "portions": "4 Personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "90 g de farine de riz",
+        "90 g de maïzena",
+        "1 sachet de levure sans gluten",
+        "3 oeufs",
+        "6 cl d'huile d'olive",
+        "8 cl de lait demi-écrémé",
+        "150 g d'olives vertes dénoyautées",
+        "3 tranches de jambon blanc",
+        "80 g de comté",
+        "2 cuillères à café rases de curcuma",
+        "1 pincée de sel",
+        "1 pincée de poivre",
+        "1 noix de beurre  pour le moule"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 460,
+        "sha256": "06414d34e5b38db4"
+      },
+      "sha256_page": "64bcb32c79ad7092"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/cake-aux-olives-et-jambon-blanc",
+      "site": "chefsimon.com",
+      "nom": "Cake aux olives et jambon blanc",
+      "portions": "12 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H35M",
+      "ingredients": [
+        "225 g de farine",
+        "4 œufs",
+        "200 grammes de talon de jambon",
+        "100 g (15) d’olives vertes farcies aux poivrons",
+        "75 g de fromage râpé",
+        "10 cl d’huile d’olive",
+        "10 cl de vin blanc sec",
+        "1 sachet (11 g) de levure chimique",
+        "2 cc de thym",
+        "Poivre du moulin",
+        "Moule à cake d'environ 24 centimètres, papier cuisson"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1287,
+        "sha256": "f234b0cf31d8bcdc"
+      },
+      "sha256_page": "6491367d68570f74"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/cake-au-jambon-tomates-sechees-et-olives-de-kalamata",
+      "site": "chefsimon.com",
+      "nom": "Cake au jambon, tomates séchées et olives de Kalamata",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "120 g d'olive de Kalamata",
+        "150 g de tomate semi-séchée à l'huile",
+        "150 g de dés de jambon",
+        "125 g de farine de riz complet",
+        "125 g de poudre d'amande",
+        "4  oeufs",
+        "15  centilitres de boisson au soja",
+        "5  centilitres d'huile d'olive",
+        "5,5  grammes de levure",
+        "feuilles de thym",
+        "2  cuillère à soupe de mélange de graines"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 208,
+        "sha256": "988608d9b18379fb"
+      },
+      "sha256_page": "8b288482555d9589"
+    },
+    {
+      "url": "https://www.750g.com/cake-jambon-olives-comte-ultra-moelleux-r52843.htm",
+      "site": "750g.com",
+      "nom": "Cake jambon olives comté ultra moelleux",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "200 g de jambon  coupé en petits cubes",
+        "50 g de comté  coupé en petits cubes",
+        "120 g de fromage râpé",
+        "150 g d'olives vertes dénoyautées",
+        "200 g de farine",
+        "4 oeufs",
+        "1 paquet de levure chimique",
+        "15 cl de vin blanc sec",
+        "5 cl d'huile de tournesol",
+        "5 cl d'huile d'olive",
+        "45 g de crème épaisse",
+        "1 petite pincée de sel ou sel fin",
+        "1 c. à c. de moutarde"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 541,
+        "sha256": "4e1e46db2c42bc62"
+      },
+      "sha256_page": "1b01304d769971fb"
+    },
+    {
+      "url": "https://www.750g.com/cake-au-jambon-et-olives-en-machine-a-pain-r92827.htm",
+      "site": "750g.com",
+      "nom": "Cake au jambon et olives en machine a pain",
+      "portions": "6 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "150 g de dés de jambon",
+        "100 g d'olives",
+        "300 g de farine",
+        "1 sachet de levure chimique",
+        "2 c. à s. d'huile d'olive",
+        "3 oeufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 181,
+        "sha256": "8425600b5728c94a"
+      },
+      "sha256_page": "8ba2928323086865"
+    },
+    {
+      "url": "https://www.750g.com/cake-poireaux-des-de-jambon-olives-r34461.htm",
+      "site": "750g.com",
+      "nom": "Cake poireaux, dés de jambon, olives",
+      "portions": null,
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "1 paquet de jambon",
+        "2 c. à s. d'olives vertes",
+        "1 sachet de levure chimique",
+        "4 oeufs",
+        "4 c. à s. d'huile d'olive",
+        "200 g de farine",
+        "3 blancs de poireau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 696,
+        "sha256": "e9f9c57df92dbb16"
+      },
+      "sha256_page": "0155e7fd5a3e9e3d"
+    }
+  ]
+}

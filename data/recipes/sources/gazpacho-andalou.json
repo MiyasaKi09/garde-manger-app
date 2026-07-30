@@ -1,0 +1,31 @@
+{
+  "dish": "Gazpacho andalou",
+  "slug": "gazpacho-andalou",
+  "sources_count": 1,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gazpacho-blanco-andalousie_22782.aspx",
+      "site": "marmiton.org",
+      "nom": "Gazpacho blanco (Andalousie) : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "125 g d'amandes crues pelées",
+        "100 g de pains blanc dur (de la veille)",
+        "1 gousse d'ail",
+        "2 pincées de sel",
+        "70 ml d'huile d´olive",
+        "1 cuillère à soupe de vinaigre",
+        "1 tasse de raisin de corinthe (ou d´autres, épépinés)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 474,
+        "sha256": "86d14173491052f6"
+      },
+      "sha256_page": "d8474af17003c1b8"
+    }
+  ]
+}

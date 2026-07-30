@@ -1,0 +1,130 @@
+{
+  "dish": "Taboulé libanais",
+  "slug": "taboule-libanais",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_le-vrai-taboule-libanais_26796.aspx",
+      "site": "marmiton.org",
+      "nom": "Le vrai taboulé libanais : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "4 tomates fermes",
+        "1 botte d'oignon verts",
+        "2 bottes de persil PLAT",
+        "1 botte de menthe fraîche",
+        "1 petite poignée de boulgour brun moyen (blé concassé)",
+        "1 citron",
+        "3 cuillères d'huile d'olive",
+        "2 pincées de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 782,
+        "sha256": "233f08119d39549b"
+      },
+      "sha256_page": "0d730ab4af192d41"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/taboule-de-quinoa-a-la-libanaise",
+      "site": "chefsimon.com",
+      "nom": "Taboulé de quinoa à la libanaise",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "1 grosse botte de persil frisé",
+        "1 ou 2 tomates, coupées en petits dés",
+        "80g de quinoa, non cuit",
+        "260ml d'eau (pour cuire le quinoa)",
+        "40ml d'huile d'olive",
+        "3CS de jus de citron",
+        "Sel et poivre",
+        "Toppings : 1 demi-concombre, 1cc de menthe fraîche, 1 oignon blanc"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 453,
+        "sha256": "187fc58264943183"
+      },
+      "sha256_page": "873b4e723db58165"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/taboule-libanais-b0684902-e752-4bac-bdc0-8331227c0e1e",
+      "site": "chefsimon.com",
+      "nom": "Taboulé libanais",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 petits bouquets de persil frisé (ou 1 gros bouquet)",
+        "3CS de jus de citron (soit 1 citron)",
+        "2 tomates fermes",
+        "30g boulgour",
+        "40ml d'huile d'olive",
+        "1 poignée de menthe fraîche (en option)",
+        "Sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 554,
+        "sha256": "28d583d98e0cc477"
+      },
+      "sha256_page": "c7f693bf863ba1a8"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/taboule-libanais-be3e8a88-0d42-4476-839d-208b99bf235f",
+      "site": "chefsimon.com",
+      "nom": "Taboulé libanais",
+      "portions": "8 personnes",
+      "duree_preparation": "PT01H40M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "200 g de boulghour fin",
+        "4 to  mates moyennes",
+        "2  oignons moyens",
+        "2  citrons",
+        "4  bouquets de persil",
+        "1  bouquet de menthe fraîche",
+        "1  cuil. à soupe de menthe séchée",
+        "6  cuil. à soupe d’huile d’olive",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 165,
+        "sha256": "6e7d493c4de8154a"
+      },
+      "sha256_page": "ac736bea5c228c4c"
+    },
+    {
+      "url": "https://www.750g.com/taboule-libanais-r99965.htm",
+      "site": "750g.com",
+      "nom": "Taboulé Libanais",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "30 g de boulgour fin",
+        "4 tomates  bien mûres mais fermes",
+        "3 citrons",
+        "2 oignons verts",
+        "3 bottes de persil plat",
+        "4 brins de menthe",
+        "4 c. à s. d'huile d'olive",
+        "1 pincée de piment d'Espelette  ou (facultatif)",
+        "1 petite pincée de cannelle  (petite) ou (facultatif)",
+        "Sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1519,
+        "sha256": "586a0f39fa38352c"
+      },
+      "sha256_page": "7f6ba1a061590a64"
+    }
+  ]
+}

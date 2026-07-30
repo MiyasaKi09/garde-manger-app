@@ -1,0 +1,164 @@
+{
+  "dish": "Soupe à l’oignon gratinée",
+  "slug": "soupe-a-l-oignon-gratinee",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-a-l-oignon-gratinee_20864.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe à l'oignon gratinée : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "12 oignons moyens",
+        "45 g de beurre",
+        "2 gousses d'ail",
+        "15 g de farine",
+        "1.5 l de bouillons",
+        "1 feuille de laurier",
+        "poivre et sel",
+        "6 tranches de pains",
+        "60 g de fromage râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 409,
+        "sha256": "874fb53256f7c648"
+      },
+      "sha256_page": "c07f2299a9ec5f36"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-a-l-oignon-gratinee-au-champagne_30125.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe à l'oignon gratinée au champagne : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "200 g d'oignons",
+        "150 g de gruyère râpé",
+        "2 jaunes d'oeuf",
+        "25 g de beurre",
+        "3 cl de porto",
+        "poivre",
+        "sel",
+        "4 tranches de pains grillé",
+        "35 cl de champagne"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 556,
+        "sha256": "4698f45a344f608d"
+      },
+      "sha256_page": "85c5a944a08167d9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/soupe-a-l-oignon-gratinee--5",
+      "site": "chefsimon.com",
+      "nom": "Soupe à l'oignon gratinée",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "1 kg d'oignons jaunes",
+        "100 g de beurre",
+        "2 gousses d’ail",
+        "2 branches de thym",
+        "1 litre et demi de bouillon de volaille",
+        "1 baguette pour les croûtons",
+        "250 g de gruyère ou beaufort",
+        "sel et poivre du moulin",
+        "vermicelles (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 17,
+        "signes": 1200,
+        "sha256": "9de26adae005570f"
+      },
+      "sha256_page": "53d0437113299425"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/stella-cuisine/recettes/soupe-a-l-oignon-gratinee--7",
+      "site": "chefsimon.com",
+      "nom": "Soupe à l’oignon gratinée",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "250 grammes d'oignons",
+        "30 grammes de beurre",
+        "1 cuillère à soupe de sucre",
+        "1 cuillère à soupe de farine",
+        "70 cl d'eau",
+        "5 cl de vin blanc",
+        "1 cube de bouillon ((ici, de poule))",
+        "1 branche de thym",
+        "80 grammes de fromage râpé ((ici, Conté))",
+        "4 tranches de pain",
+        "1 pincée de sel",
+        "1 pincée de poivre",
+        "1 pincée de noix de muscade (en poudre)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 211,
+        "sha256": "51b570fad337b1d5"
+      },
+      "sha256_page": "832b0d30664df108"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/soupe-a-l-oignon-gratinee-0ed47e04-c6e5-44fc-a83d-83c468a55c08",
+      "site": "chefsimon.com",
+      "nom": "Soupe à l’oignon gratinée",
+      "portions": "5 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "600 g d’oignons",
+        "1,2 L de bouillon de volaille ou de légumes",
+        "10 cL de vin blanc",
+        "40 g de beurre salé",
+        "25 g de farine",
+        "1 pincée de 4 épices",
+        "100 g de gruyère râpé",
+        "4 tranches de pain complet ou aux céréales",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 235,
+        "sha256": "3e67a29657558f68"
+      },
+      "sha256_page": "a0beebe7da15feda"
+    },
+    {
+      "url": "https://www.750g.com/soupe-a-loignon-gratinee-r79897.htm",
+      "site": "750g.com",
+      "nom": "Soupe à l'oignon gratinée",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "2 c. à s. de farine",
+        "1,5 l d'eau",
+        "Sel ou sel fin",
+        "Poivre",
+        "Tranche de pain",
+        "200 g de comté",
+        "1 feuille de laurier",
+        "1 cube de bouillon de volaille",
+        "15 cl de vin blanc",
+        "30 g de beurre",
+        "4 oignons  (gros)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 771,
+        "sha256": "88683df4ba552ba5"
+      },
+      "sha256_page": "91163fddc3b7a235"
+    }
+  ]
+}
