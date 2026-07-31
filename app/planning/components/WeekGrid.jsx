@@ -184,8 +184,12 @@ export default function WeekGrid({
     // Dessert de fin de repas : companion dont le rôle est 'dessert', avec une
     // quantité effective > 0 (le solveur peut l'avoir mis à l'échelle de 0
     // si la portion du plat principal est nulle, ce qui n'arrive pas en pratique).
+    // On scrute TOUS les repas du créneau, pas seulement le premier : dans un
+    // foyer, seul un membre peut avoir le réglage dessert activé — son repas
+    // est le seul à porter le companion, et il n'est pas forcément le premier
+    // de la liste quand person === 'all'.
     const dessertComp = clickable
-      ? (typeMeals[0]?.portion_details?.companions || []).find((c) => c.role === 'dessert' && (c.quantity_g || 0) > 0)
+      ? typeMeals.flatMap((m) => m.portion_details?.companions || []).find((c) => c.role === 'dessert' && (c.quantity_g || 0) > 0)
       : null
     // Repas couvert par une préparation batch (déjeuners liés par la Routine) → réchauffe.
     const batched = typeMeals.some(m => m.batch_recipe_id)
@@ -220,6 +224,11 @@ export default function WeekGrid({
             <span className="wg-dish" style={dishStyle}>{renderDishName(dishName)}</span>
           </button>
         )}
+        {clickable && representative.short_description && (
+          <span className="wg-short-desc" style={done ? { opacity: 0.5 } : undefined}>
+            {representative.short_description}
+          </span>
+        )}
         {dessertComp && (
           <span className="wg-dessert" style={done ? { opacity: 0.5 } : undefined}>
             {dessertComp.label?.toLowerCase()}
@@ -236,7 +245,18 @@ export default function WeekGrid({
         )}
         {batched && <span className="wg-batch">préparé · réchauffer</span>}
         {isSpecial && person === 'all' && altMeal && (
-          <span className="wg-alt"><span className="wg-alt-k">{altMeal.person_name}</span>{renderDishName(dishOf(altMeal))}</span>
+          <span className="wg-alt">
+            <span className="wg-alt-k">{altMeal.person_name}</span>
+            {renderDishName(dishOf(altMeal))}
+            {altMeal.portion_details?.same_lineage === false && (
+              <span
+                className="wg-alt-fallback"
+                title={altMeal.portion_details?.substitution_fallback?.reason || 'Aucune variante disponible dans la même famille de plats'}
+              >
+                pis-aller
+              </span>
+            )}
+          </span>
         )}
         {onModifyMeal && (
           <button

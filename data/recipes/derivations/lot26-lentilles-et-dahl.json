@@ -1,0 +1,150 @@
+{
+  "lot": "lot26 — variantes des lentilles vertes mijotées",
+  "note": "Trois variantes sur VEG-001. Les lardons ajoutés séparément donnent la version carnée du plat, l'œuf mollet apporte une protéine supplémentaire, la moutarde enrichit la vinaigrette. Les trois dérivées du dahl de lentilles corail (IND-002-D1, D2, D3) sont retenues dans le fichier mais non soumises au versement : IND-002 porte 'Garam masala' bloqué (confiance C — proxy assumé, non publiable), hérité d'une arbitrage antérieur au durcissement de la politique de confiance. Les dérivées héritent de cet ingrédient et échouent au validateur de recettes. Elles devront être activées quand la base aura été réarbitrée.",
+  "derivations": [
+    {
+      "code": "VEG-001-D1",
+      "base": "VEG-001",
+      "family": "Lentilles vertes mijotées aux lardons",
+      "variant_label": "Lardons ajoutés séparément",
+      "rationale": "Les lardons rissolés séparément et posés au dernier moment gardent leur croustillant et contrastent avec le fondant des lentilles. Si on les mettait à mijoter avec elles, ils rendraient leur gras dans la casserole et finiraient mous — ce n'est pas ce qu'on cherche ici.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Lardon fumé cru",
+          "quantity": 150,
+          "unit": "g",
+          "role": "salaison"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Faire revenir les lardons à sec dans la casserole à feu moyen, en remuant, jusqu'à légère coloration et croustillant. Les réserver sur du papier absorbant. Dans la même casserole avec l'huile, faire suer oignon, carotte et céleri."
+        },
+        {
+          "op": "insert",
+          "after": 4,
+          "instruction": "Répartir les lardons rissolés sur les lentilles au moment de servir, tièdes ou à peine sortis de leur papier, pour qu'ils gardent leur croustillant."
+        }
+      ]
+    },
+    {
+      "code": "VEG-001-D2",
+      "base": "VEG-001",
+      "family": "Lentilles vertes mijotées avec œuf mollet",
+      "variant_label": "œuf mollet",
+      "rationale": "Un œuf mollet par assiette complète les lentilles en protéines sans alourdir le plat : le blanc pris et le jaune coulant se mêlent à la vinaigrette et lient le tout. Il se cuit à part pendant que les lentilles terminent leur cuisson.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Œuf cru",
+          "quantity": 4,
+          "unit": "u",
+          "role": "protéine"
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 3,
+          "instruction": "Porter à ébullition une casserole d'eau et y plonger les œufs délicatement pendant quatre minutes exactement. Les plonger aussitôt dans un bain d'eau froide et les écaler dès qu'ils ont tiédi : le blanc doit être juste pris et le jaune encore coulant."
+        }
+      ]
+    },
+    {
+      "code": "VEG-001-D3",
+      "base": "VEG-001",
+      "family": "Lentilles vertes à la vinaigrette de moutarde",
+      "variant_label": "moutarde dans la vinaigrette",
+      "rationale": "La moutarde de Dijon émulsionnée au vinaigre de vin rouge donne à la vinaigrette un corps qu'elle n'a pas quand on verse le vinaigre seul. Elle nappe mieux les lentilles et tient plus longtemps sans se séparer.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Moutarde de Dijon",
+          "quantity": 15,
+          "unit": "g",
+          "role": "assaisonnement"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Saler vers la fin, égoutter si nécessaire. Dans un bol, fouetter la moutarde avec le vinaigre de vin rouge pour les émulsionner, puis verser l'huile d'olive en filet en continuant de fouetter. Verser sur les lentilles chaudes et remuer pour que la vinaigrette nappe bien les grains."
+        }
+      ]
+    },
+    {
+      "code": "IND-002-D1",
+      "base": "IND-002",
+      "family": "Dahl de lentilles corail aux épinards",
+      "variant_label": "Épinards",
+      "rationale": "Les épinards ajoutés en fin de cuisson fondent en deux minutes dans le dahl chaud et apportent de la fraîcheur et du vert sans changer la texture crémeuse des lentilles. Les plonger trop tôt les ferait perdre leur couleur et leur goût.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Épinard frais",
+          "quantity": 200,
+          "unit": "g",
+          "role": "légume"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Mijoter vingt minutes en remuant souvent, puis ajouter les épinards et poursuivre cinq minutes à feu doux : ils fondent rapidement et leur légère amertume s'arrondit dans la sauce aux épices."
+        }
+      ]
+    },
+    {
+      "code": "IND-002-D2",
+      "base": "IND-002",
+      "family": "Dahl de lentilles corail à la carotte",
+      "variant_label": "carotte",
+      "rationale": "La carotte en petits dés ajoutée avec l'oignon apporte une douceur naturelle qui atténue l'acidité de la tomate et répond au curcuma. Elle fond presque entièrement dans les lentilles corail sans se voir, mais sa contribution aromatique est sensible.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Carotte crue",
+          "quantity": 150,
+          "unit": "g",
+          "role": "légume"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Faire revenir cumin, oignon, ail et gingembre dans l'huile deux à trois minutes à feu moyen. Ajouter la carotte taillée en petits dés et la laisser revenir deux minutes supplémentaires pour l'ouvrir avant d'ajouter le liquide."
+        }
+      ]
+    },
+    {
+      "code": "IND-002-D3",
+      "base": "IND-002",
+      "family": "Dahl de lentilles corail sans lait de coco",
+      "variant_label": "version sans coco avec bouillon",
+      "rationale": "Sans lait de coco, le dahl perd son onctuosité grasse mais gagne en légèreté. Le bouillon de légumes reprend le rôle de mouillement sans apporter de matière grasse, et les lentilles corail, qui se défont naturellement, lient la sauce d'elles-mêmes.",
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Lait de coco",
+          "with": "Bouillon de légumes",
+          "quantity": 300,
+          "unit": "ml",
+          "role": "mouillement"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Ajouter curcuma, tomate concassée, lentilles rincées et le bouillon de légumes. Compléter avec 500 ml d'eau et porter à frémissement."
+        }
+      ]
+    }
+  ]
+}

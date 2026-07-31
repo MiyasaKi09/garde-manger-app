@@ -1,0 +1,125 @@
+{
+  "lot": "lot24 — variantes des lasagnes à la bolognaise et des spaghetti à la sauce bolognaise",
+  "note": "Quatre variantes sur deux bases de pâtes farcies ou nappées. Pour les lasagnes : le ragù 100 % bœuf est la version la plus fréquente en France, et les courgettes-lentilles donnent une version végétarienne attestée par la base. La variante épinards-ricotta est écartée : la ricotta n'est pas au vocabulaire. Pour les spaghetti : le déglaçage au vin rouge est attesté par deux sources sur huit, et les champignons au soffritto par deux autres.",
+  "derivations": [
+    {
+      "code": "IT-001-D1",
+      "base": "IT-001",
+      "family": "Lasagnes ragù bœuf seul",
+      "variant_label": "Ragù 100 % bœuf",
+      "rationale": "Le ragù tout-bœuf est plus commun hors d'Italie. Sans le porc, la sauce perd un peu de gras et de douceur mais gagne en franchise — elle est moins ronde mais plus franche. Pour compenser les 250 g de porc retirés, le bœuf passe à 800 g.",
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Porc haché cru"
+        },
+        {
+          "op": "set",
+          "form": "Bœuf haché cru 15 % MG",
+          "quantity": 800
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Faire suer finement oignon, carotte et céleri. Ajouter le bœuf haché en deux fois et l'émietter à la cuillère jusqu'à légère coloration sans excès."
+        }
+      ]
+    },
+    {
+      "code": "IT-001-D3",
+      "base": "IT-001",
+      "family": "Lasagnes courgettes et lentilles",
+      "variant_label": "courgettes-lentilles",
+      "rationale": "Les courgettes en dés et les lentilles vertes remplacent la viande en apportant des textures différentes : la lentille lie le ragù comme le faisait le bœuf, la courgette l'aère. La béchamel et le parmesan restent — c'est le seul liant qui tienne le montage sans viande. La durée de mijotage tombe à trente minutes, les lentilles cuisant nettement plus vite que la viande hachée.",
+      "operations": [
+        {
+          "op": "remove",
+          "form": "Bœuf haché cru 15 % MG"
+        },
+        {
+          "op": "remove",
+          "form": "Porc haché cru"
+        },
+        {
+          "op": "add",
+          "form": "Courgette fraîche",
+          "quantity": 500,
+          "unit": "g",
+          "role": "légume"
+        },
+        {
+          "op": "add",
+          "form": "Lentille verte sèche, crue",
+          "quantity": 200,
+          "unit": "g",
+          "role": "protéine végétale"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Faire suer finement oignon, carotte et céleri. Ajouter les courgettes taillées en dés de cinq millimètres et les laisser revenir deux minutes à feu vif jusqu'à légère coloration."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Déglacer au vin rouge, laisser réduire, ajouter les lentilles vertes rincées, la tomate concassée et 150 ml de lait. Couvrir et mijoter trente minutes à feu doux, jusqu'à ce que les lentilles soient tendres et la sauce liée."
+        }
+      ]
+    },
+    {
+      "code": "IT-004-D1",
+      "base": "IT-004",
+      "family": "Spaghetti bolognaise au vin rouge",
+      "variant_label": "Déglaçage au vin rouge avant la tomate (deux sources sur huit)",
+      "rationale": "Le vin rouge déglace les sucs de la viande avant la tomate : il ramasse ce que la viande a laissé au fond, l'acidité s'évapore à la chaleur et il reste une profondeur que la tomate seule ne donnerait pas. C'est la méthode de deux sources sur huit — minoritaire mais documentée.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Vin rouge sec",
+          "quantity": 150,
+          "unit": "ml",
+          "role": "déglaçage"
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 3,
+          "instruction": "Verser le vin rouge dans la sauteuse et gratter immédiatement les sucs caramélisés du fond à la cuillère de bois. Laisser réduire à feu vif jusqu'à presque complète évaporation — une à deux minutes suffit, et l'alcool part avant la fumée."
+        }
+      ]
+    },
+    {
+      "code": "IT-004-D2",
+      "base": "IT-004",
+      "family": "Spaghetti bolognaise aux champignons",
+      "variant_label": "Champignons de Paris émincés avec le soffritto (deux sources)",
+      "rationale": "Les champignons de Paris ajoutés au soffritto apportent de l'umami sans alourdir la sauce, et fondent en rendant leur eau, ce qui raccourcit la prise de la tomate. Attesté par deux sources sur huit, c'est une variation courante en cuisine domestique.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Champignon de Paris frais",
+          "quantity": 250,
+          "unit": "g",
+          "role": "soffritto"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Éplucher oignon, carotte et céleri, puis les tailler en dés de deux à trois millimètres. Émincer finement les champignons de Paris — pas trop petits, ils fondent à la cuisson et disparaîtraient s'ils étaient hachés fin. Le soffritto n'a pas à se retrouver sous la dent : son travail est de fondre dans la sauce et d'en faire le fond sucré et umami."
+        },
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Faire chauffer l'huile d'olive dans une sauteuse large, y verser les légumes du soffritto et les champignons émincés, et les laisser suer douze à quinze minutes à feu moyen, en remuant. Les saler d'une pincée dès le début : le sel tire l'eau des légumes et des champignons et les fait fondre au lieu de les colorer. Ils doivent devenir translucides, l'oignon à peine blond, sans jamais roussir."
+        }
+      ]
+    }
+  ]
+}

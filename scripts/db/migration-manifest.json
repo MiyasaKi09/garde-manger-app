@@ -1544,5 +1544,25 @@
     "baseline": "new",
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260731010000_recipe_short_description_rpc.sql",
+    "github_version": "20260731010000",
+    "name": "recipe_short_description_rpc",
+    "sha256": "601c5027cbb908d467717d36103b867dcc72c4fd8601931be7d84e68b9d9d526",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260731120000_corpus_v3_589_variantes.sql",
+    "github_version": "20260731120000",
+    "name": "corpus_v3_589_variantes",
+    "sha256": "b45e99a98dde46a221ee862bdda0790b10be229252bbfc57a7c428ca66cb315b",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

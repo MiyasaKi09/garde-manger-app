@@ -7,8 +7,8 @@
     "curated": 487,
     "exact_label": 47
   },
-  "recipes_total": 576,
-  "recipes_eligible_for_publication": 392,
+  "recipes_total": 589,
+  "recipes_eligible_for_publication": 405,
   "recipes_blocked_only_by_proxy": 62,
   "v1_enriched_eligible_for_publication": 61,
   "unresolved_required": [
@@ -6139,6 +6139,123 @@
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "IT-007-D1",
+      "family": "Pizza margherita pâte maturée",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "IT-007-D2",
+      "family": "Pizza aux légumes grillés",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "IT-001-D1",
+      "family": "Lasagnes ragù bœuf seul",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "IT-001-D3",
+      "family": "Lasagnes courgettes et lentilles",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "IT-004-D1",
+      "family": "Spaghetti bolognaise au vin rouge",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "IT-004-D2",
+      "family": "Spaghetti bolognaise aux champignons",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "IT-008-D1",
+      "family": "Minestrone aux tomates pelées en conserve",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "IT-008-D2",
+      "family": "Minestrone aux poireaux",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "MX-001-D1",
+      "family": "Chili con carne à la carotte",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "MX-001-D2",
+      "family": "Chili con carne gratiné",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VEG-001-D1",
+      "family": "Lentilles vertes mijotées aux lardons",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VEG-001-D2",
+      "family": "Lentilles vertes mijotées avec œuf mollet",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VEG-001-D3",
+      "family": "Lentilles vertes à la vinaigrette de moutarde",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
     }
   ],
   "forms": [
@@ -6297,7 +6414,7 @@
       "form": "Ail cru",
       "normalized": "ail cru",
       "required": true,
-      "recipe_count": 289,
+      "recipe_count": 298,
       "units": [
         "g"
       ],
@@ -7431,7 +7548,7 @@
       "form": "Aubergine fraîche",
       "normalized": "aubergine fraiche",
       "required": true,
-      "recipe_count": 25,
+      "recipe_count": 26,
       "units": [
         "g",
         "u"
@@ -8031,7 +8148,7 @@
       "form": "Basilic frais",
       "normalized": "basilic frais",
       "required": true,
-      "recipe_count": 29,
+      "recipe_count": 33,
       "units": [
         "g"
       ],
@@ -8581,7 +8698,7 @@
       "form": "Beurre doux",
       "normalized": "beurre doux",
       "required": true,
-      "recipe_count": 158,
+      "recipe_count": 160,
       "units": [
         "g"
       ],
@@ -9516,7 +9633,7 @@
       "form": "Bœuf haché cru 15 % MG",
       "normalized": "boeuf hache cru 15 mg",
       "required": true,
-      "recipe_count": 19,
+      "recipe_count": 24,
       "units": [
         "g"
       ],
@@ -9956,7 +10073,7 @@
       "form": "Bouillon de bœuf",
       "normalized": "bouillon de boeuf",
       "required": true,
-      "recipe_count": 14,
+      "recipe_count": 16,
       "units": [
         "g",
         "ml"
@@ -10397,7 +10514,7 @@
       "form": "Bouillon de volaille",
       "normalized": "bouillon de volaille",
       "required": true,
-      "recipe_count": 45,
+      "recipe_count": 47,
       "units": [
         "g",
         "ml"
@@ -11499,7 +11616,7 @@
       "form": "Carotte crue",
       "normalized": "carotte crue",
       "required": true,
-      "recipe_count": 113,
+      "recipe_count": 123,
       "units": [
         "g"
       ],
@@ -11719,7 +11836,7 @@
       "form": "Céleri branche cru",
       "normalized": "celeri branche cru",
       "required": true,
-      "recipe_count": 30,
+      "recipe_count": 39,
       "units": [
         "g"
       ],
@@ -12050,7 +12167,7 @@
       "form": "Champignon de Paris frais",
       "normalized": "champignon de paris frais",
       "required": true,
-      "recipe_count": 32,
+      "recipe_count": 33,
       "units": [
         "g"
       ],
@@ -12263,7 +12380,7 @@
       "form": "Chapelure de blé",
       "normalized": "chapelure de ble",
       "required": true,
-      "recipe_count": 26,
+      "recipe_count": 27,
       "units": [
         "g"
       ],
@@ -14685,7 +14802,7 @@
       "form": "Concentré de tomate",
       "normalized": "concentre de tomate",
       "required": true,
-      "recipe_count": 30,
+      "recipe_count": 32,
       "units": [
         "g"
       ],
@@ -15331,7 +15448,7 @@
       "form": "Courgette fraîche",
       "normalized": "courgette fraiche",
       "required": true,
-      "recipe_count": 24,
+      "recipe_count": 28,
       "units": [
         "g"
       ],
@@ -16218,7 +16335,7 @@
       "form": "Cumin moulu",
       "normalized": "cumin moulu",
       "required": true,
-      "recipe_count": 31,
+      "recipe_count": 33,
       "units": [
         "g"
       ],
@@ -16754,7 +16871,7 @@
       "form": "Eau",
       "normalized": "eau",
       "required": true,
-      "recipe_count": 48,
+      "recipe_count": 50,
       "units": [
         "g",
         "ml"
@@ -17380,7 +17497,7 @@
       "form": "Emmental râpé",
       "normalized": "emmental rape",
       "required": true,
-      "recipe_count": 9,
+      "recipe_count": 10,
       "units": [
         "g"
       ],
@@ -18372,7 +18489,7 @@
       "form": "Farine de blé T55",
       "normalized": "farine de ble t55",
       "required": true,
-      "recipe_count": 109,
+      "recipe_count": 111,
       "units": [
         "g"
       ],
@@ -18475,7 +18592,7 @@
       "form": "Farine de blé type 00",
       "normalized": "farine de ble type 00",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -19560,7 +19677,7 @@
       "form": "Feuille de lasagne sèche",
       "normalized": "feuille de lasagne seche",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -19615,7 +19732,7 @@
       "form": "Feuille de laurier séchée",
       "normalized": "feuille de laurier sechee",
       "required": true,
-      "recipe_count": 78,
+      "recipe_count": 83,
       "units": [
         "feuille",
         "u"
@@ -22427,7 +22544,7 @@
       "form": "Haricot blanc cuit, égoutté",
       "normalized": "haricot blanc cuit egoutte",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 4,
       "units": [
         "g"
       ],
@@ -23018,7 +23135,7 @@
       "form": "Haricot rouge cuit, égoutté",
       "normalized": "haricot rouge cuit egoutte",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -23224,7 +23341,7 @@
       "form": "Haricot vert cru",
       "normalized": "haricot vert cru",
       "required": true,
-      "recipe_count": 12,
+      "recipe_count": 14,
       "units": [
         "g"
       ],
@@ -23705,7 +23822,7 @@
       "form": "Huile d'olive vierge extra",
       "normalized": "huile d olive vierge extra",
       "required": true,
-      "recipe_count": 258,
+      "recipe_count": 271,
       "units": [
         "g",
         "ml"
@@ -25545,7 +25662,7 @@
       "form": "Lait demi-écrémé",
       "normalized": "lait demi ecreme",
       "required": true,
-      "recipe_count": 11,
+      "recipe_count": 13,
       "units": [
         "ml"
       ],
@@ -25972,7 +26089,7 @@
       "form": "Lardon fumé cru",
       "normalized": "lardon fume cru",
       "required": true,
-      "recipe_count": 44,
+      "recipe_count": 47,
       "units": [
         "g"
       ],
@@ -26343,7 +26460,7 @@
       "form": "Lentille verte sèche, crue",
       "normalized": "lentille verte seche crue",
       "required": true,
-      "recipe_count": 9,
+      "recipe_count": 13,
       "units": [
         "g"
       ],
@@ -26453,7 +26570,7 @@
       "form": "Levure boulangère sèche",
       "normalized": "levure boulangere seche",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 5,
       "units": [
         "g"
       ],
@@ -28130,7 +28247,7 @@
       "form": "Moutarde de Dijon",
       "normalized": "moutarde de dijon",
       "required": true,
-      "recipe_count": 43,
+      "recipe_count": 44,
       "units": [
         "g"
       ],
@@ -28233,7 +28350,7 @@
       "form": "Mozzarella",
       "normalized": "mozzarella",
       "required": true,
-      "recipe_count": 8,
+      "recipe_count": 10,
       "units": [
         "g"
       ],
@@ -28336,7 +28453,7 @@
       "form": "Muscade moulue",
       "normalized": "muscade moulue",
       "required": true,
-      "recipe_count": 42,
+      "recipe_count": 44,
       "units": [
         "g"
       ],
@@ -29448,7 +29565,7 @@
       "form": "Œuf cru",
       "normalized": "oeuf cru",
       "required": true,
-      "recipe_count": 147,
+      "recipe_count": 148,
       "units": [
         "g",
         "u"
@@ -29876,7 +29993,7 @@
       "form": "Oignon jaune cru",
       "normalized": "oignon jaune cru",
       "required": true,
-      "recipe_count": 287,
+      "recipe_count": 298,
       "units": [
         "g"
       ],
@@ -30462,7 +30579,7 @@
       "form": "Origan séché",
       "normalized": "origan seche",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -31776,7 +31893,7 @@
       "form": "Paprika doux",
       "normalized": "paprika doux",
       "required": true,
-      "recipe_count": 7,
+      "recipe_count": 9,
       "units": [
         "g"
       ],
@@ -31996,7 +32113,7 @@
       "form": "Parmesan affiné",
       "normalized": "parmesan affine",
       "required": true,
-      "recipe_count": 20,
+      "recipe_count": 26,
       "units": [
         "g"
       ],
@@ -33438,7 +33555,7 @@
       "form": "Petites pâtes sèches",
       "normalized": "petites pates seches",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -33905,7 +34022,7 @@
       "form": "Piment de Cayenne",
       "normalized": "piment de cayenne",
       "required": true,
-      "recipe_count": 8,
+      "recipe_count": 10,
       "units": [
         "g"
       ],
@@ -34181,7 +34298,7 @@
       "form": "Piment en poudre",
       "normalized": "piment en poudre",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 5,
       "units": [
         "g"
       ],
@@ -35351,7 +35468,7 @@
       "form": "Poireau cru",
       "normalized": "poireau cru",
       "required": true,
-      "recipe_count": 37,
+      "recipe_count": 38,
       "units": [
         "g"
       ],
@@ -36196,7 +36313,7 @@
       "form": "Poivre noir moulu",
       "normalized": "poivre noir moulu",
       "required": true,
-      "recipe_count": 303,
+      "recipe_count": 311,
       "units": [
         "g"
       ],
@@ -36251,7 +36368,7 @@
       "form": "Poivron rouge frais",
       "normalized": "poivron rouge frais",
       "required": true,
-      "recipe_count": 37,
+      "recipe_count": 40,
       "units": [
         "g"
       ],
@@ -36416,7 +36533,7 @@
       "form": "Pomme de terre crue, épluchée",
       "normalized": "pomme de terre crue epluchee",
       "required": true,
-      "recipe_count": 28,
+      "recipe_count": 30,
       "units": [
         "g"
       ],
@@ -41497,7 +41614,7 @@
       "form": "Sel fin",
       "normalized": "sel fin",
       "required": true,
-      "recipe_count": 352,
+      "recipe_count": 365,
       "units": [
         "g"
       ],
@@ -41923,7 +42040,7 @@
       "form": "Spaghetti secs",
       "normalized": "spaghetti secs",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 5,
       "units": [
         "g"
       ],
@@ -43015,7 +43132,7 @@
       "form": "Thym séché",
       "normalized": "thym seche",
       "required": true,
-      "recipe_count": 67,
+      "recipe_count": 72,
       "units": [
         "g"
       ],
@@ -43475,7 +43592,7 @@
       "form": "Tomate concassée en conserve",
       "normalized": "tomate concassee en conserve",
       "required": true,
-      "recipe_count": 37,
+      "recipe_count": 43,
       "units": [
         "g"
       ],
@@ -43585,7 +43702,7 @@
       "form": "Tomate entière pelée en conserve",
       "normalized": "tomate entiere pelee en conserve",
       "required": true,
-      "recipe_count": 17,
+      "recipe_count": 20,
       "units": [
         "g"
       ],
@@ -43640,7 +43757,7 @@
       "form": "Tomate fraîche mûre",
       "normalized": "tomate fraiche mure",
       "required": true,
-      "recipe_count": 65,
+      "recipe_count": 66,
       "units": [
         "g",
         "u"
@@ -45092,7 +45209,7 @@
       "form": "Vin rouge sec",
       "normalized": "vin rouge sec",
       "required": true,
-      "recipe_count": 8,
+      "recipe_count": 11,
       "units": [
         "ml"
       ],
@@ -45533,7 +45650,7 @@
       "form": "Vinaigre de vin rouge",
       "normalized": "vinaigre de vin rouge",
       "required": true,
-      "recipe_count": 47,
+      "recipe_count": 50,
       "units": [
         "g",
         "ml"
