@@ -573,6 +573,31 @@ const DESCRIPTIONS = {
   'SRC-060-D2': "Truite poêlée puis flambée au cognac, servie avec des amandes effilées",
   'SRC-060-D3': "Truite cuite au four sous une couche de crème fraîche et amandes effilées",
   'SRC-060-D4': "Filets de truite enrobés de farine, saisis au beurre et garnis d'amandes effilées",
+
+  /* ── Dérivées IT-007 ────────────────────────────────────────────────── */
+  'IT-007-D1': "Pâte à pizza maturée vingt-quatre heures au froid, garnie de sauce tomate écrasée et mozzarella fraîche",
+  'IT-007-D2': "Pâte levée garnie de sauce tomate, mozzarella fraîche et légumes grillés — courgette, aubergine, poivron rouge",
+
+  /* ── Dérivées IT-001 ────────────────────────────────────────────────── */
+  'IT-001-D1': "Couches de pâtes alternées avec un ragù de bœuf haché seul et une béchamel à la muscade, gratinées au parmesan",
+  'IT-001-D3': "Couches de pâtes alternées avec un ragù de courgettes et lentilles vertes et une béchamel à la muscade, gratinées au parmesan",
+
+  /* ── Dérivées IT-004 ────────────────────────────────────────────────── */
+  'IT-004-D1': "Spaghetti nappés d'un ragù de bœuf haché au soffritto, déglacé au vin rouge avant la tomate",
+  'IT-004-D2': "Spaghetti nappés d'un ragù de bœuf haché et champignons de Paris émincés au soffritto, mijotés à la tomate",
+
+  /* ── Dérivées IT-008 ────────────────────────────────────────────────── */
+  'IT-008-D1': "Soupe épaisse de légumes de saison, légumineuses et petites pâtes au bouillon, avec tomates entières pelées en conserve à la place des fraîches",
+  'IT-008-D2': "Soupe épaisse de légumes de saison et légumineuses au bouillon de volaille, avec poireaux émincés fondus dans le soffritto",
+
+  /* ── Dérivées MX-001 ────────────────────────────────────────────────── */
+  'MX-001-D1': "Bœuf haché mijoté aux haricots rouges, tomate, poivron et carotte en petits dés dans un bouillon épicé au cumin et piment",
+  'MX-001-D2': "Bœuf haché mijoté aux haricots rouges, tomate et poivron dans un bouillon épicé, gratiné sous un mélange emmental-chapelure",
+
+  /* ── Dérivées VEG-001 ────────────────────────────────────────────────── */
+  'VEG-001-D1': "Lentilles vertes mijotées aux carottes, oignon et céleri, avec des lardons fumés rissolés séparément et ajoutés à l'envoi",
+  'VEG-001-D2': "Lentilles vertes mijotées aux légumes en vinaigrette, accompagnées d'un œuf mollet à blanc pris et jaune coulant",
+  'VEG-001-D3': "Lentilles vertes mijotées aux légumes, nappées d'une vinaigrette émulsionnée à la moutarde de Dijon et au vinaigre de vin rouge",
 }
 
 /* ── Application au corpus ──────────────────────────────────────────── */

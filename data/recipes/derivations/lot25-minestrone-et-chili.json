@@ -1,0 +1,116 @@
+{
+  "lot": "lot25 — variantes du minestrone et du chili con carne",
+  "note": "Quatre variantes sur deux bases. Pour le minestrone : la substitution tomate fraîche / tomates pelées en conserve est attestée par une source sur huit — c'est la version d'hiver quand la tomate fraîche n'a plus de goût. L'ajout de poireaux au soffritto est attesté par deux sources. Pour le chili con carne : la carotte est attestée par une source (750g) et le gratin par une source (chefsimon). La variante avec maïs doux est écartée : le maïs doux en conserve est absent du vocabulaire.",
+  "derivations": [
+    {
+      "code": "IT-008-D1",
+      "base": "IT-008",
+      "family": "Minestrone aux tomates pelées en conserve",
+      "variant_label": "Grosse boîte de tomates pelées à la place des tomates fraîches, hors saison (une source sur huit)",
+      "rationale": "Hors saison, la tomate fraîche ne rend qu'une eau pâle et acide. La conserve de tomates entières pelées, récoltée mûre, donne une base plus colorée et plus douce, au prix d'une texture légèrement plus fondue. On l'égoutte partiellement pour ne pas noyer le bouillon.",
+      "operations": [
+        {
+          "op": "substitute",
+          "form": "Tomate fraîche mûre",
+          "with": "Tomate entière pelée en conserve",
+          "quantity": 400,
+          "unit": "g",
+          "role": "base"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Ajouter les pommes de terre en dés et les tomates entières pelées égouttées sommairement, en les écrasant grossièrement à la cuillère directement dans la cocotte pour les défaire sans les mixer. Laisser cinq minutes à découvert à feu moyen pour réduire l'acidité avant de mouiller."
+        }
+      ]
+    },
+    {
+      "code": "IT-008-D2",
+      "base": "IT-008",
+      "family": "Minestrone aux poireaux",
+      "variant_label": "Deux poireaux émincés ou un blanc de poireau ajoutés au soffritto (deux sources)",
+      "rationale": "Le poireau fondu apporte une douceur végétale qui répond bien au bouillon de volaille et à la tomate — il s'intègre dans le soffritto sans l'alourdir, contrairement à l'oignon supplémentaire qui aurait le même effet sucrant mais une présence plus piquante.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Poireau cru",
+          "quantity": 300,
+          "unit": "g",
+          "role": "aromatique"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Tailler carotte, céleri, oignon et pomme de terre en dés d'un centimètre, tous de la même taille. Fendre les poireaux dans la longueur, les rincer abondamment sous l'eau pour ôter le sable et les émincer en rondelles de trois millimètres. Mettre à part la courgette, taillée pareil, et les haricots verts coupés en tronçons de deux centimètres."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Si l'on met du lard, le faire rendre à sec dans une grande cocotte à feu moyen jusqu'à ce qu'il croustille, puis ajouter l'huile d'olive. Sinon, chauffer l'huile seule. Verser oignon, carotte, céleri, poireaux et ail écrasé et les laisser suer dix minutes sans coloration, à couvert et à feu doux : on cherche à ouvrir les légumes, pas à les rôtir."
+        }
+      ]
+    },
+    {
+      "code": "MX-001-D1",
+      "base": "MX-001",
+      "family": "Chili con carne à la carotte",
+      "variant_label": "Une carotte taillée en petits dés avec l'oignon (750g)",
+      "rationale": "La carotte taillée menu fond dans le chili sans se voir sous la dent, mais elle y laisse une douceur qui arrondit l'acidité de la tomate et tempère légèrement le piment — utile quand le Cayenne est généreux. Attesté par une source parmi les neuf consultées.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Carotte crue",
+          "quantity": 150,
+          "unit": "g",
+          "role": "légume"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 1,
+          "instruction": "Émincer les oignons, hacher l'ail, épépiner les poivrons et les tailler en morceaux d'environ deux centimètres. Éplucher la carotte et la tailler en petits dés d'un demi-centimètre, de la même taille que l'oignon pour qu'elle cuise et fonde avec lui. Égoutter les haricots rouges dans une passoire et les rincer à l'eau froide jusqu'à ce qu'elle cesse de mousser."
+        },
+        {
+          "op": "replace",
+          "n": 3,
+          "instruction": "Verser le reste d'huile dans la cocotte et y faire fondre les oignons et la carotte huit minutes à feu moyen, en grattant le fond avec la cuillère pour dissoudre les sucs de la viande. Ajouter les poivrons et poursuivre cinq minutes, le temps qu'ils perdent leur cru sans se défaire, puis l'ail haché pour une minute seulement — au-delà il brûle et devient amer."
+        }
+      ]
+    },
+    {
+      "code": "MX-001-D2",
+      "base": "MX-001",
+      "family": "Chili con carne gratiné",
+      "variant_label": "Gratiné au four : emmental râpé et chapelure sur le dessus en fin de cuisson (chefsimon)",
+      "rationale": "Le gratin transforme un plat mijoté en plat de four : la croûte d'emmental et de chapelure capte la chaleur du gril et forme une couche dorée et croustillante qui contraste avec le chili fondant dessous. Attesté par une source (chefsimon).",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Emmental râpé",
+          "quantity": 100,
+          "unit": "g",
+          "role": "gratinage"
+        },
+        {
+          "op": "add",
+          "form": "Chapelure de blé",
+          "quantity": 30,
+          "unit": "g",
+          "role": "gratinage"
+        }
+      ],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 8,
+          "instruction": "Laisser reposer un quart d'heure hors du feu, puis verser le chili dans un plat à gratin ou dans des ramequins individuels. Mélanger la chapelure et l'emmental râpé et en parsemer uniformément le dessus. Passer cinq à huit minutes sous le gril préchauffé, en surveillant, jusqu'à belle coloration dorée. Servir immédiatement."
+        }
+      ]
+    }
+  ]
+}

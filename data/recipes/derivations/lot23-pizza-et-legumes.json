@@ -1,0 +1,63 @@
+{
+  "lot": "lot23 — variantes de la pizza margherita maison",
+  "note": "Les deux variantes que la base IT-007 annonce. La première ne change aucun ingrédient : seule la fermentation diffère, en passant du pointage de deux heures à température ambiante à une maturation de vingt-quatre heures au froid qui développe davantage les arômes de la pâte. La seconde ajoute des légumes grillés à la garniture — courgette, aubergine et poivron rouge, tous trois au vocabulaire.",
+  "derivations": [
+    {
+      "code": "IT-007-D1",
+      "base": "IT-007",
+      "family": "Pizza margherita pâte maturée",
+      "variant_label": "Pâte maturée 24 h au froid",
+      "rationale": "La fermentation longue au froid ralentit l'activité des levures et laisse les enzymes travailler : la pâte développe des arômes plus complexes, une mie plus alvéolée et une croûte plus croustillante. Il n'y a pas d'ingrédient supplémentaire — c'est la gestion du temps qui change tout.",
+      "operations": [],
+      "steps": [
+        {
+          "op": "replace",
+          "n": 2,
+          "instruction": "Couvrir la pâte et laisser reposer trente minutes à température ambiante, puis placer au réfrigérateur pour vingt-quatre heures. Sortir deux heures avant usage, diviser en pâtons et laisser se détendre trente minutes à l'air libre sous un linge."
+        }
+      ]
+    },
+    {
+      "code": "IT-007-D2",
+      "base": "IT-007",
+      "family": "Pizza aux légumes grillés",
+      "variant_label": "légumes grillés",
+      "rationale": "La courgette, l'aubergine et le poivron rouge grillés à sec sur une poêle-gril deviennent fondants et légèrement fumés, ce qui équilibre l'acidité de la tomate et remplace avantageusement toute charcuterie. La pizza reste végétarienne et gagne en couleur et en structure.",
+      "operations": [
+        {
+          "op": "add",
+          "form": "Courgette fraîche",
+          "quantity": 200,
+          "unit": "g",
+          "role": "garniture"
+        },
+        {
+          "op": "add",
+          "form": "Aubergine fraîche",
+          "quantity": 150,
+          "unit": "g",
+          "role": "garniture"
+        },
+        {
+          "op": "add",
+          "form": "Poivron rouge frais",
+          "quantity": 200,
+          "unit": "g",
+          "role": "garniture"
+        }
+      ],
+      "steps": [
+        {
+          "op": "insert",
+          "after": 3,
+          "instruction": "Trancher la courgette et l'aubergine en rondelles de cinq millimètres, tailler le poivron rouge épépiné en lanières. Faire chauffer une poêle-gril à feu vif sans matière grasse et y faire griller les légumes par fournées, deux minutes par face, jusqu'à ce qu'ils marquent. Réserver."
+        },
+        {
+          "op": "replace",
+          "n": 4,
+          "instruction": "Étaler chaque pâton sans rouleau, garnir légèrement de tomate écrasée, disposer les légumes grillés et la mozzarella égouttée en évitant de surcharger."
+        }
+      ]
+    }
+  ]
+}
