@@ -220,10 +220,13 @@ describe('découplage — rater les protéines n\'autorise pas de répéter un p
   // par construction — doit continuer à respecter le socle. Le verrou vérifie
   // que les deux couches ne se contaminent pas.
   it('un plan avec protéines relâchées ne recuisine jamais deux fois la même recette', () => {
-    const recipes = buildRecipePool(7).map((r) => ({
+    // Assez de recettes distinctes pour que le beam remplisse la semaine sans
+    // recuisiner deux fois la même (14 recettes couvrent 14 créneaux frais).
+    // Chaque recette est structurée pour faire tourner le solveur portion
+    // (per100g renseigné) et volontairement PAUVRE en protéines — la cible
+    // 300 g/2000 kcal est hors d'atteinte, protein_gate_relaxed va s'activer.
+    const recipes = buildRecipePool(14).map((r) => ({
       ...r,
-      // Un ingrédient par recette pour rester dans la structure attendue par
-      // buildPersonalizedMeals (nutrition per100g × grammes).
       exactIngredients: [
         {
           name: r.exactIngredients[0].name,
@@ -241,8 +244,6 @@ describe('découplage — rater les protéines n\'autorise pas de répéter un p
       constraints: { allowShopping: true, maxMinutesByMeal: { dejeuner: 120, diner: 240 } },
       beamWidth: 24,
     })
-    // Le beam search remplit la semaine (7 recettes / 14 slots reste faisable
-    // via des mécanismes de dégradation).
     expect(plan.slots).toHaveLength(14)
 
     // Passe le plan dans buildPersonalizedMeals avec une cible protéique
