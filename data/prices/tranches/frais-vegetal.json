@@ -1,0 +1,1727 @@
+{
+  "schema_version": "1.0.0",
+  "price_set_version": "2026.08-frais-vegetal",
+  "country": "FR",
+  "currency": "EUR",
+  "reference_date": "2026-08-24",
+  "derived_license": "odbl-1.0",
+  "catalog_version": "v3-300-real-dishes",
+  "built_at": "2026-08-24",
+  "notes": "Tranche « frais végétal » (catégories legumes, fruits, legumineuses) du référentiel de prix. 71 formes du corpus relèvent de ces catégories. 29 portent un prix retenu (14 en A, 15 en B), 5 une lecture conservée en C — donc ni affichée ni comptée —, et 37 ne portent rien du tout. En formes, la couverture est de 41 % ; mais le tri s'est fait par fréquence, si bien qu'elle atteint 77 % des lignes d'ingrédients de la tranche et 78 % de sa masse. Les absences sont volontaires : aucune source du registre ne cote ces formes, et le CONTRAT §0 préfère l'absence à un chiffre vraisemblable.\n\nSÉLECTION. RNM/FranceAgriMer est la source de tête : pages /prix?<PRODUIT>&12MOIS, stade « Détail », circuit « DETAIL GMS » (c'est le prix TTC que paie un ménage ; les stades gros, expédition et producteur sont HT et ne décrivent pas sa dépense), unité « le kg ». Les libellés « biologique » sont écartés : le RNM publie au détail autant de séries bio que conventionnelles alors que le bio est minoritaire dans les achats, et les mélanger laisserait la couverture éditoriale de la source décider de la médiane — une pondération inventée. Écarter est un choix énoncé et réversible ; mélanger aurait été un choix silencieux. Conséquence assumée : ces prix décrivent le conventionnel, et le référentiel ne prétend pas couvrir le bio (CONTRAT §11). Open Prices prend le relais là où le RNM ne cote au détail que du bio spécialisé, ou rien : France, prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions.\n\nPIÈGE VÉRIFIÉ. L'API Open Prices ignore silencieusement les paramètres qu'elle ne connaît pas : location_osm_address_country=France et =Deutschland renvoient le même total, tout comme un paramètre inventé. Le pays est donc filtré après coup sur le code pays du magasin. Sans cela, des relevés EDEKA et ALDI Süd seraient passés pour français. Seul date__gte a été vérifié comme réellement appliqué.\n\nFOURCHETTE. low/high sont les déciles D1/D9 des observations retenues dès qu'il y en a dix ; en deçà, ce sont les extrêmes, déclarés comme tels (min_max), ce qui plafonne l'entrée à B. central est toujours la médiane. La dispersion mêle conditionnement, origine, enseigne et mois : c'est un constat, pas une décomposition (CONTRAT §3.1). Réserve importante sur les entrées RNM : les observations sont des moyennes mensuelles NATIONALES ; la dispersion entre points de vente n'y figure pas, la fourchette est donc plus étroite que la réalité en rayon. Les entrées Open Prices, faites de relevés individuels en magasin, portent au contraire cette dispersion-là.\n\nRENDEMENT COMESTIBLE. Aucune entrée n'en porte un. Ce n'est pas un oubli : le registre data/prices/sources.json ne contient aucune source capable d'en porter un. Les quatre sources de prix publient des prix, pas des parts comestibles, et myko_reasoning ne peut porter qu'un rendement de 1,00 par nature — ce qu'aucun légume frais n'est. Toutes les entrées sont donc à 1,00 déclaré inconnu, et toutes les estimations qui en découlent sont des MINORANTS. L'écart n'est pas anecdotique sur cette tranche : oignon, carotte, navet et betterave s'achètent non épluchés, poireau avec son vert dur et ses racines, orange, citron, banane, poire et avocat entiers quand le catalogue n'en compte que la pulpe, cerise avec ses noyaux. C'est le premier défaut à corriger, et il se corrige au registre, pas ici.\n\nCE QUI A ÉTÉ REFUSÉ. Convertir les cotations RNM « à la pièce » (avocat, concombre, laitue, chicorée) avec la masse par pièce du catalogue : cette masse est celle de la PULPE (Ciqual), l'appliquer au prix d'un fruit entier reviendrait à glisser un rendement que personne n'a sourcé. Reconstituer un €/kg d'épicerie (conserves, légumes secs, fruits secs, purées) en divisant un prix de contenant par sa masse nette : le contrat n'a pas de base pour cela — voir la note de rapport. Utiliser une cotation de gros comme prix de détail. Faire passer un relevé bio en magasin spécialisé pour un prix conventionnel.",
+  "entries": [
+    {
+      "form": "Oignon jaune cru",
+      "form_normalized": "oignon jaune cru",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 2.25,
+        "central": 2.31,
+        "high": 2.73,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 14,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 2.25,
+        "central": 2.31,
+        "high": 2.73,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "S'achète non paré et se compte épluché au catalogue (Ciqual). Aucune source du registre ne publie de part comestible : le rendement reste à 1,00 déclaré inconnu, l'estimation est donc un minorant de sens connu, jamais une correction inventée."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?OIGNON&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57200460+57200767",
+        "citation": "RNM — FranceAgriMer, page « OIGNON — prix mensuels », stade Détail, circuit « Légumes France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « OIGNON jaune France filet 1kg » (id 57200460) + « OIGNON jaune hors Fr. filet 1kg » (id 57200767), soit 14 moyennes mensuelles lues en €/kg, de 2,22 à 3,20 €/kg ; médiane 2,31 €/kg, D1 2,25, D9 2,73."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente."
+    },
+    {
+      "form": "Carotte crue",
+      "form_normalized": "carotte crue",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.04,
+        "central": 1.71,
+        "high": 2.03,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 45,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 1.04,
+        "central": 1.71,
+        "high": 2.03,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "S'achète non paré et se compte épluché au catalogue (Ciqual). Aucune source du registre ne publie de part comestible : le rendement reste à 1,00 déclaré inconnu, l'estimation est donc un minorant de sens connu, jamais une correction inventée."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?CAROTTE&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57232119+57233388+57200424+57200425+57232437+57234023+57200751",
+        "citation": "RNM — FranceAgriMer, page « CAROTTE — prix mensuels », stade Détail, circuit « Légumes France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « CAROTTE France lavée sachet 1,5 kg » (id 57232119) + « CAROTTE France lavée sachet 1kg » (id 57233388) + « CAROTTE France lavée sachet 2kg » (id 57200424) + « CAROTTE France lavée vrac » (id 57200425) + « CAROTTE hors Fr. lavée sachet 1,5 kg » (id 57232437) + « CAROTTE hors Fr. lavée sachet 1kg » (id 57234023) + « CAROTTE hors Fr. lavée vrac » (id 57200751), soit 45 moyennes mensuelles lues en €/kg, de 1,01 à 2,12 €/kg ; médiane 1,71 €/kg, D1 1,04, D9 2,03."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente."
+    },
+    {
+      "form": "Tomate fraîche mûre",
+      "form_normalized": "tomate fraiche mure",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 2.06,
+        "central": 3.1,
+        "high": 4.51,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 92,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 2.06,
+        "central": 3.1,
+        "high": 4.51,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?TOMATE&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57234838+57229038+57229114+57229895+57228282+57229106+57228306+57228283+57228581+57228284+57229039+57229076+57228285+57228512",
+        "citation": "RNM — FranceAgriMer, page « TOMATE — prix mensuels », stade Détail, circuit « Légumes France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « TOMATE ronde rouge autre pays filet 1kg » (id 57234838) + « TOMATE ronde rouge Belgique 77-82 ou 82-102mm vrac » (id 57229038) + « TOMATE ronde rouge Espagne 57-67 ou 67-82mm vrac » (id 57229114) + « TOMATE ronde rouge Espagne 77-82 ou 82-102mm vrac » (id 57229895) + « TOMATE ronde rouge Espagne filet 1kg » (id 57228282) + « TOMATE ronde rouge Espagne grappe vrac » (id 57229106) + « TOMATE ronde rouge France 57-67 ou 67-82mm vrac » (id 57228306) + « TOMATE ronde rouge France 77-82 ou 82-102mm vrac » (id 57228283) + « TOMATE ronde rouge France filet 1kg » (id 57228581) + « TOMATE ronde rouge France grappe vrac » (id 57228284) + « TOMATE ronde rouge Maroc 57-67 ou 67-82mm vrac » (id 57229039) + « TOMATE ronde rouge Maroc 77-82 ou 82-102mm vrac » (id 57229076) + « TOMATE ronde rouge Maroc filet 1kg » (id 57228285) + « TOMATE ronde rouge Pays-Bas grappe vrac » (id 57228512), soit 92 moyennes mensuelles lues en €/kg, de 1,91 à 5,60 €/kg ; médiane 3,10 €/kg, D1 2,06, D9 4,51."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente. Les lignes cerise, cocktail et côtelée sont écartées : ce sont des types distincts, nettement plus chers, qui tireraient la médiane de la tomate ronde."
+    },
+    {
+      "form": "Tomate cerise fraîche",
+      "form_normalized": "tomate cerise fraiche",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 3.98,
+        "central": 4.48,
+        "high": 10.18,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 23,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 3.98,
+        "central": 4.48,
+        "high": 10.18,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?TOMATE&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57233277+57233278",
+        "citation": "RNM — FranceAgriMer, page « TOMATE — prix mensuels », stade Détail, circuit « Légumes France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « TOMATE cerise allongée rouge France barq.250g » (id 57233277) + « TOMATE cerise allongée rouge hors Fr. barq.250g » (id 57233278), soit 23 moyennes mensuelles lues en €/kg, de 3,96 à 12,87 €/kg ; médiane 4,48 €/kg, D1 3,98, D9 10,18."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente."
+    },
+    {
+      "form": "Poireau cru",
+      "form_normalized": "poireau cru",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.8,
+        "central": 2.17,
+        "high": 2.79,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 23,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 1.8,
+        "central": 2.17,
+        "high": 2.79,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "S'achète non paré et se compte épluché au catalogue (Ciqual). Aucune source du registre ne publie de part comestible : le rendement reste à 1,00 déclaré inconnu, l'estimation est donc un minorant de sens connu, jamais une correction inventée."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?POIREAU&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57200445+57200446+57200761",
+        "citation": "RNM — FranceAgriMer, page « POIREAU — prix mensuels », stade Détail, circuit « Légumes France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « POIREAU France entier botte 1kg » (id 57200445) + « POIREAU France entier vrac » (id 57200446) + « POIREAU hors Fr. entier vrac » (id 57200761), soit 23 moyennes mensuelles lues en €/kg, de 1,77 à 2,99 €/kg ; médiane 2,17 €/kg, D1 1,80, D9 2,79."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente. Le poireau se vend entier et se cuisine sans son vert dur ni ses racines : la part écartée est ici parmi les plus grandes de la tranche."
+    },
+    {
+      "form": "Poivron rouge frais",
+      "form_normalized": "poivron rouge frais",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 3.88,
+        "central": 4.42,
+        "high": 5.28,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 18,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 3.88,
+        "central": 4.42,
+        "high": 5.28,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?POIVRON&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57233344+57233112",
+        "citation": "RNM — FranceAgriMer, page « POIVRON — prix mensuels », stade Détail, circuit « Légumes France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « POIVRON rouge carré France vrac » (id 57233344) + « POIVRON rouge carré hors Fr. vrac » (id 57233112), soit 18 moyennes mensuelles lues en €/kg, de 3,77 à 5,57 €/kg ; médiane 4,42 €/kg, D1 3,88, D9 5,28."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente."
+    },
+    {
+      "form": "Poivron vert frais",
+      "form_normalized": "poivron vert frais",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 3.95,
+        "central": 4.42,
+        "high": 5.14,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 20,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 3.95,
+        "central": 4.42,
+        "high": 5.14,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?POIVRON&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57233345+57233113",
+        "citation": "RNM — FranceAgriMer, page « POIVRON — prix mensuels », stade Détail, circuit « Légumes France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « POIVRON vert carré France vrac » (id 57233345) + « POIVRON vert carré hors Fr. vrac » (id 57233113), soit 20 moyennes mensuelles lues en €/kg, de 3,84 à 5,44 €/kg ; médiane 4,42 €/kg, D1 3,95, D9 5,14."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente."
+    },
+    {
+      "form": "Courgette fraîche",
+      "form_normalized": "courgette fraiche",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.86,
+        "central": 2.29,
+        "high": 3.33,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 36,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 1.86,
+        "central": 2.29,
+        "high": 3.33,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?COURGETTE&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57200756+57200757+57200442+57200443",
+        "citation": "RNM — FranceAgriMer, page « COURGETTE — prix mensuels », stade Détail, circuit « Légumes France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « COURGETTE longue verte France filet 1kg » (id 57200756) + « COURGETTE longue verte France vrac » (id 57200757) + « COURGETTE longue verte hors Fr. filet 1kg » (id 57200442) + « COURGETTE longue verte hors Fr. vrac » (id 57200443), soit 36 moyennes mensuelles lues en €/kg, de 1,61 à 4,57 €/kg ; médiane 2,29 €/kg, D1 1,86, D9 3,33."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente."
+    },
+    {
+      "form": "Aubergine fraîche",
+      "form_normalized": "aubergine fraiche",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 2.9,
+        "central": 3.45,
+        "high": 4.28,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 22,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 2.9,
+        "central": 3.45,
+        "high": 4.28,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?AUBERGINE&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57228398+57228399",
+        "citation": "RNM — FranceAgriMer, page « AUBERGINE — prix mensuels », stade Détail, circuit « Légumes France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « AUBERGINE violette France vrac » (id 57228398) + « AUBERGINE violette hors Fr. vrac » (id 57228399), soit 22 moyennes mensuelles lues en €/kg, de 2,82 à 5,26 €/kg ; médiane 3,45 €/kg, D1 2,90, D9 4,28."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente."
+    },
+    {
+      "form": "Endive fraîche",
+      "form_normalized": "endive fraiche",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 2.76,
+        "central": 3.5,
+        "high": 3.84,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 24,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 2.76,
+        "central": 3.5,
+        "high": 3.84,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?ENDIVE&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57200497+57200498",
+        "citation": "RNM — FranceAgriMer, page « ENDIVE — prix mensuels », stade Détail, circuit « Légumes France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « ENDIVE France sachet 1kg » (id 57200497) + « ENDIVE France vrac » (id 57200498), soit 24 moyennes mensuelles lues en €/kg, de 2,69 à 4,07 €/kg ; médiane 3,50 €/kg, D1 2,76, D9 3,84."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente."
+    },
+    {
+      "form": "Pomme fraîche",
+      "form_normalized": "pomme fraiche",
+      "category": "fruits",
+      "observed": {
+        "basis": "kg",
+        "low": 1.7,
+        "central": 2.54,
+        "high": 3.04,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 111,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 1.7,
+        "central": 2.54,
+        "high": 3.04,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?POMME&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57227911+57218057+57218056+57218061+57218060+57227912+57218063+57218062+57227914+57227913",
+        "citation": "RNM — FranceAgriMer, page « POMME — prix mensuels », stade Détail, circuit « Fruits France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « POMME Bicolore France sachet » (id 57227911) + « POMME Gala France 136/180g vrac » (id 57218057) + « POMME Gala France +170g vrac » (id 57218056) + « POMME Golden France 136/180g vrac » (id 57218061) + « POMME Golden France +170g vrac » (id 57218060) + « POMME Golden France sachet » (id 57227912) + « POMME Granny smith France 136/180g vrac » (id 57218063) + « POMME Granny smith France +170g vrac » (id 57218062) + « POMME Reinette grise du Canada France 136/180g vrac » (id 57227914) + « POMME Reinette grise du Canada France +170g vrac » (id 57227913), soit 111 moyennes mensuelles lues en €/kg, de 1,54 à 3,32 €/kg ; médiane 2,54 €/kg, D1 1,70, D9 3,04."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente. Dix variétés et deux calibres sont mis dans le même sac : l'écart entre sachet et vrac est la première cause de la largeur de la fourchette."
+    },
+    {
+      "form": "Poire fraîche",
+      "form_normalized": "poire fraiche",
+      "category": "fruits",
+      "observed": {
+        "basis": "kg",
+        "low": 3.27,
+        "central": 3.6,
+        "high": 3.89,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 65,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 3.27,
+        "central": 3.6,
+        "high": 3.89,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le catalogue compte la pulpe seule (Ciqual), le prix porte le fruit entier avec sa peau. L'écart est ici notable et va tout entier dans le sens de la sous-estimation. Aucune source du registre ne publie de part comestible : rendement 1,00 déclaré inconnu."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?POIRE&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57200355+57200356+57200357+57200358+57200359+57207730+57200360+57200361+57200362",
+        "citation": "RNM — FranceAgriMer, page « POIRE — prix mensuels », stade Détail, circuit « Fruits France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « POIRE Abate Fétel hors Fr. vrac » (id 57200355) + « POIRE Conférence France vrac » (id 57200356) + « POIRE Conférence hors Fr. vrac » (id 57200357) + « POIRE Doyenne du comice France vrac » (id 57200358) + « POIRE Doyenne du comice hors Fr. vrac » (id 57200359) + « POIRE Guyot ou Limonera France vrac » (id 57207730) + « POIRE Rochas hors Fr. vrac » (id 57200360) + « POIRE Williams verte France vrac » (id 57200361) + « POIRE Williams verte hors Fr. vrac » (id 57200362), soit 65 moyennes mensuelles lues en €/kg, de 3,17 à 4,22 €/kg ; médiane 3,60 €/kg, D1 3,27, D9 3,89."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente."
+    },
+    {
+      "form": "Orange fraîche",
+      "form_normalized": "orange fraiche",
+      "category": "fruits",
+      "observed": {
+        "basis": "kg",
+        "low": 2.49,
+        "central": 2.69,
+        "high": 3.18,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 12,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 2.49,
+        "central": 2.69,
+        "high": 3.18,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le catalogue compte la pulpe seule (Ciqual), le prix porte le fruit entier avec sa peau. L'écart est ici notable et va tout entier dans le sens de la sous-estimation. Aucune source du registre ne publie de part comestible : rendement 1,00 déclaré inconnu."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?ORANGE&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57229958",
+        "citation": "RNM — FranceAgriMer, page « ORANGE — prix mensuels », stade Détail, circuit « Fruits France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « ORANGE hors Fr. vrac » (id 57229958), soit 12 moyennes mensuelles lues en €/kg, de 2,49 à 3,19 €/kg ; médiane 2,69 €/kg, D1 2,49, D9 3,18."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente. Une seule série cotée au détail (ORANGE hors Fr. vrac) : la fourchette ne décrit ici que la saisonnalité, pas la dispersion entre offres."
+    },
+    {
+      "form": "Banane mûre",
+      "form_normalized": "banane mure",
+      "category": "fruits",
+      "observed": {
+        "basis": "kg",
+        "low": 1.81,
+        "central": 1.9,
+        "high": 1.96,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 36,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 1.81,
+        "central": 1.9,
+        "high": 1.96,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le catalogue compte la pulpe seule (Ciqual), le prix porte le fruit entier avec sa peau. L'écart est ici notable et va tout entier dans le sens de la sous-estimation. Aucune source du registre ne publie de part comestible : rendement 1,00 déclaré inconnu."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?BANANE&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57200336+57200337+57200730",
+        "citation": "RNM — FranceAgriMer, page « BANANE — prix mensuels », stade Détail, circuit « Fruits France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « BANANE Afrique vrac » (id 57200336) + « BANANE Amérique vrac » (id 57200337) + « BANANE France vrac » (id 57200730), soit 36 moyennes mensuelles lues en €/kg, de 1,75 à 1,99 €/kg ; médiane 1,90 €/kg, D1 1,81, D9 1,96."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente."
+    },
+    {
+      "form": "Tomate râpée",
+      "form_normalized": "tomate rapee",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 2.06,
+        "central": 3.1,
+        "high": 4.51,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 92,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 2.06,
+        "central": 3.1,
+        "high": 4.51,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "B",
+      "confidence_reason": "rnm_detail_gms_forme_preparee_du_produit_cote",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?TOMATE&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57234838+57229038+57229114+57229895+57228282+57229106+57228306+57228283+57228581+57228284+57229039+57229076+57228285+57228512",
+        "citation": "RNM — FranceAgriMer, page « TOMATE — prix mensuels », stade Détail, circuit « Légumes France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « TOMATE ronde rouge autre pays filet 1kg » (id 57234838) + « TOMATE ronde rouge Belgique 77-82 ou 82-102mm vrac » (id 57229038) + « TOMATE ronde rouge Espagne 57-67 ou 67-82mm vrac » (id 57229114) + « TOMATE ronde rouge Espagne 77-82 ou 82-102mm vrac » (id 57229895) + « TOMATE ronde rouge Espagne filet 1kg » (id 57228282) + « TOMATE ronde rouge Espagne grappe vrac » (id 57229106) + « TOMATE ronde rouge France 57-67 ou 67-82mm vrac » (id 57228306) + « TOMATE ronde rouge France 77-82 ou 82-102mm vrac » (id 57228283) + « TOMATE ronde rouge France filet 1kg » (id 57228581) + « TOMATE ronde rouge France grappe vrac » (id 57228284) + « TOMATE ronde rouge Maroc 57-67 ou 67-82mm vrac » (id 57229039) + « TOMATE ronde rouge Maroc 77-82 ou 82-102mm vrac » (id 57229076) + « TOMATE ronde rouge Maroc filet 1kg » (id 57228285) + « TOMATE ronde rouge Pays-Bas grappe vrac » (id 57228512), soit 92 moyennes mensuelles lues en €/kg, de 1,91 à 5,60 €/kg ; médiane 3,10 €/kg, D1 2,06, D9 4,51."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente. Adaptation : le RNM cote la tomate ronde fraîche ; « Tomate râpée » est cette même tomate après une opération de cuisine. Le produit acheté est identique, l'état ne l'est pas — d'où B et non A."
+    },
+    {
+      "form": "Piment doux vert frais",
+      "form_normalized": "piment doux vert frais",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 3.95,
+        "central": 4.42,
+        "high": 5.14,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 20,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 3.95,
+        "central": 4.42,
+        "high": 5.14,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "B",
+      "confidence_reason": "rnm_detail_gms_forme_approchee_poivron_vert",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?POIVRON&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57233345+57233113",
+        "citation": "RNM — FranceAgriMer, page « POIVRON — prix mensuels », stade Détail, circuit « Légumes France DETAIL GMS », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « POIVRON vert carré France vrac » (id 57233345) + « POIVRON vert carré hors Fr. vrac » (id 57233113), soit 20 moyennes mensuelles lues en €/kg, de 3,84 à 5,44 €/kg ; médiane 4,42 €/kg, D1 3,95, D9 5,14."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente. Adaptation : le RNM ne cote pas le piment doux au détail. Le rapprochement avec le poivron vert n'est pas de mon fait — le catalogue lui-même adosse cette forme à « Poivron vert, cru » pour la nutrition. Réutiliser le même rapprochement pour le prix est cohérent, mais reste une approximation."
+    },
+    {
+      "form": "Cerise fraîche dénoyautée",
+      "form_normalized": "cerise fraiche denoyautee",
+      "category": "fruits",
+      "observed": {
+        "basis": "kg",
+        "low": 8.14,
+        "central": 9.98,
+        "high": 11.76,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 6,
+        "period_start": "2026-05-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 8.14,
+        "central": 9.98,
+        "high": 11.76,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le catalogue compte le fruit dénoyauté, le prix porte le fruit entier avec ses noyaux et ses queues. Aucune source du registre ne publie de part comestible : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "B",
+      "confidence_reason": "rnm_detail_gms_saison_courte_moins_de_dix_observations",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?CERISE&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "2252503+57231121",
+        "citation": "RNM — FranceAgriMer, page « CERISE — prix mensuels », stade Détail, circuit « Fruits France DETAIL GMS », € TTC. Prix moyens mensuels du 01-05-2026 au 31-07-2026 : « CERISE rouge France barq. » (id 2252503) + « CERISE rouge France vrac » (id 57231121), soit 6 moyennes mensuelles lues en €/kg, de 8,14 à 11,76 €/kg ; médiane 9,98 €/kg, bornes basse 8,14 et haute 11,76 (étendue, faute de dix observations)."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente. Adaptation double : six moyennes mensuelles seulement (la cerise n'est cotée au détail que de mai à juillet), d'où des bornes en étendue et non en déciles ; et la forme est dénoyautée alors que le prix porte le fruit entier."
+    },
+    {
+      "form": "Échalote crue",
+      "form_normalized": "echalote crue",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 3.14,
+        "central": 6.49,
+        "high": 7.99,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 14,
+        "period_start": "2025-09-12",
+        "period_end": "2026-07-04"
+      },
+      "per_kg": {
+        "low": 3.14,
+        "central": 6.49,
+        "high": 7.99,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "S'achète non paré et se compte épluché au catalogue (Ciqual). Aucune source du registre ne publie de part comestible : le rendement reste à 1,00 déclaré inconnu, l'estimation est donc un minorant de sens connu, jamais une correction inventée."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_france_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:shallots&date__gte=2025-08-01&size=100&order_by=date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-04",
+        "source_record_key": "142149,152288,153231,156268,234175,279624,279518,289381,288686,289376,289473,290857,291317,293644",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:shallots », relevés en magasin en France, du 2025-09-12 au 2026-07-04, hors promotion et hors bio : 14 prix au kilogramme relevés par les contributeurs, de 2,99 à 9,98 €/kg — par exemple 2,99 €/kg le 2026-05-29 (en:shallots), 2,99 €/kg le 2026-07-03 (ECHALOTE), 3,50 €/kg le 2025-10-30 (en:shallots). Médiane 6,49 €/kg, D1 3,14, D9 7,99."
+      },
+      "reindexation": null,
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Écartés nommément : un relevé de mâche classé à tort en échalote, et les échalions, que le RNM cote comme un produit distinct."
+    },
+    {
+      "form": "Citron jaune frais",
+      "form_normalized": "citron jaune frais",
+      "category": "fruits",
+      "observed": {
+        "basis": "kg",
+        "low": 2.08,
+        "central": 3.99,
+        "high": 4.99,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 23,
+        "period_start": "2025-10-17",
+        "period_end": "2026-08-11"
+      },
+      "per_kg": {
+        "low": 2.08,
+        "central": 3.99,
+        "high": 4.99,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le catalogue compte la pulpe seule (Ciqual), le prix porte le fruit entier avec sa peau. L'écart est ici notable et va tout entier dans le sens de la sous-estimation. Aucune source du registre ne publie de part comestible : rendement 1,00 déclaré inconnu."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_france_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:lemons&date__gte=2025-08-01&size=100&order_by=date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-11",
+        "source_record_key": "152414,156000,191814,195105,195130,271007,273700,273701,273092,273047,278221,278764,278867,279546,278979,290700,290699,291049,293623,291864,293442,301639,308022",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:lemons », relevés en magasin en France, du 2025-10-17 au 2026-08-11, hors promotion et hors bio : 23 prix au kilogramme relevés par les contributeurs, de 1,29 à 5,20 €/kg — par exemple 1,29 €/kg le 2026-05-29 (en:lemons), 1,98 €/kg le 2026-01-30 (Citron 500 g), 1,98 €/kg le 2026-05-09 (CITRON 500G). Médiane 3,99 €/kg, D1 2,08, D9 4,99."
+      },
+      "reindexation": null,
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Écarté nommément : un relevé de citron vert, qui est un autre fruit."
+    },
+    {
+      "form": "Oignon rouge cru",
+      "form_normalized": "oignon rouge cru",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.99,
+        "central": 2.99,
+        "high": 4.99,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 23,
+        "period_start": "2025-09-12",
+        "period_end": "2026-08-14"
+      },
+      "per_kg": {
+        "low": 1.99,
+        "central": 2.99,
+        "high": 4.99,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "S'achète non paré et se compte épluché au catalogue (Ciqual). Aucune source du registre ne publie de part comestible : le rendement reste à 1,00 déclaré inconnu, l'estimation est donc un minorant de sens connu, jamais une correction inventée."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_france_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:red-onions&date__gte=2025-08-01&size=100&order_by=date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-14",
+        "source_record_key": "142145,151527,190009,195137,195144,195920,249773,255379,262790,266699,288823,266313,266728,267033,267675,279625,288689,289469,291319,293586,295606,302967,308752",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:red-onions », relevés en magasin en France, du 2025-09-12 au 2026-08-14, hors promotion et hors bio : 23 prix au kilogramme relevés par les contributeurs, de 1,90 à 6,38 €/kg — par exemple 1,90 €/kg le 2026-04-20 (Oignon rouge), 1,95 €/kg le 2026-08-01 (en:red-onions), 1,99 €/kg le 2026-01-30 (Oignon rouge vrac). Médiane 2,99 €/kg, D1 1,99, D9 4,99."
+      },
+      "reindexation": null,
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Écarté nommément : un relevé bio que le champ de label ne portait pas."
+    },
+    {
+      "form": "Navet cru",
+      "form_normalized": "navet cru",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.99,
+        "central": 2.44,
+        "high": 3.58,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 18,
+        "period_start": "2025-10-16",
+        "period_end": "2026-08-09"
+      },
+      "per_kg": {
+        "low": 1.99,
+        "central": 2.44,
+        "high": 3.58,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "S'achète non paré et se compte épluché au catalogue (Ciqual). Aucune source du registre ne publie de part comestible : le rendement reste à 1,00 déclaré inconnu, l'estimation est donc un minorant de sens connu, jamais une correction inventée."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_france_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:turnip&date__gte=2025-08-01&size=100&order_by=date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-09",
+        "source_record_key": "152430,153959,152578,164944,164962,195135,249746,266698,267130,278668,279692,289393,289402,293044,291338,293184,293607,305927",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:turnip », relevés en magasin en France, du 2025-10-16 au 2026-08-09, hors promotion et hors bio : 18 prix au kilogramme relevés par les contributeurs, de 1,20 à 4,49 €/kg — par exemple 1,20 €/kg le 2026-04-18 (NAVET), 1,99 €/kg le 2025-10-17 (Navet vrac), 1,99 €/kg le 2026-01-30 (Navet vrac). Médiane 2,44 €/kg, D1 1,99, D9 3,58."
+      },
+      "reindexation": null,
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Le catalogue compte le navet pelé (Ciqual « Navet, pelé, cru »)."
+    },
+    {
+      "form": "Brocoli cru",
+      "form_normalized": "brocoli cru",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 2.7,
+        "central": 3.99,
+        "high": 7.69,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 14,
+        "period_start": "2025-09-06",
+        "period_end": "2026-08-09"
+      },
+      "per_kg": {
+        "low": 2.7,
+        "central": 3.99,
+        "high": 7.69,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_france_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:broccoli&date__gte=2025-08-01&size=100&order_by=date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-09",
+        "source_record_key": "137511,152881,152400,153966,152519,156244,159749,166472,169293,190134,266950,278848,289373,305929",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:broccoli », relevés en magasin en France, du 2025-09-06 au 2026-08-09, hors promotion et hors bio : 14 prix au kilogramme relevés par les contributeurs, de 2,48 à 8,60 €/kg — par exemple 2,48 €/kg le 2025-10-17 (Brocoli 400g), 2,58 €/kg le 2026-05-29 (BROCOLI 500G), 2,99 €/kg le 2025-10-18 (CHOUX BROCOLI). Médiane 3,99 €/kg, D1 2,70, D9 7,69."
+      },
+      "reindexation": null,
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source."
+    },
+    {
+      "form": "Champignon de Paris frais",
+      "form_normalized": "champignon de paris frais",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 4.85,
+        "central": 7.39,
+        "high": 12.47,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 17,
+        "period_start": "2025-08-24",
+        "period_end": "2026-07-04"
+      },
+      "per_kg": {
+        "low": 4.85,
+        "central": 7.39,
+        "high": 12.47,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_categorie_generique_restreinte_par_libelle",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:mushrooms&date__gte=2025-08-01&size=100&order_by=date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-04",
+        "source_record_key": "134689,137512,152279,152333,153931,169912,185087,195096,195115,202264,204154,258840,267041,289326,289250,289370,291344",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:mushrooms », relevés en magasin en France, du 2025-08-24 au 2026-07-04, hors promotion et hors bio : 17 prix au kilogramme relevés par les contributeurs, de 2,59 à 13,95 €/kg — par exemple 2,59 €/kg le 2025-08-24 (CHAMPIGNON BRON), 4,69 €/kg le 2025-12-06 (CHAMPIGNON BLANC VRA), 4,95 €/kg le 2025-10-17 (CHAMPIGNON BLANC 200G). Médiane 7,39 €/kg, D1 4,85, D9 12,47."
+      },
+      "reindexation": null,
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. La catégorie en:mushrooms mêle toutes les espèces : elle est restreinte aux libellés « champignon », pleurotes, émincés et champignons à farcir écartés. Restent des blancs et des blonds/bruns, qui sont la même espèce à des stades de maturité différents. Le RNM ne cote ce produit au détail qu'en magasin spécialisé bio, ce qui était inutilisable ici."
+    },
+    {
+      "form": "Haricot vert cru",
+      "form_normalized": "haricot vert cru",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 2.98,
+        "central": 4.75,
+        "high": 11.96,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 6,
+        "period_start": "2025-10-17",
+        "period_end": "2026-07-18"
+      },
+      "per_kg": {
+        "low": 2.98,
+        "central": 4.75,
+        "high": 11.96,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_france_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:green-beans&date__gte=2025-08-01&size=100&order_by=date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-18",
+        "source_record_key": "153979,278268,291339,293185,292017,294945",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:green-beans », relevés en magasin en France, du 2025-10-17 au 2026-07-18, hors promotion et hors bio : 6 prix au kilogramme relevés par les contributeurs, de 2,98 à 11,96 €/kg — par exemple 2,98 €/kg le 2025-10-17 (Haricot vert sachet 500 g), 3,98 €/kg le 2026-07-04 (HARICOT VERT), 4,50 €/kg le 2026-07-07 (HARICOT VERT FIN). Médiane 4,75 €/kg, bornes basse 2,98 et haute 11,96 (étendue, faute de dix relevés)."
+      },
+      "reindexation": null,
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Six relevés : bornes en étendue, pas en déciles. Le RNM ne cote au détail que du haricot vert bio ramassé main, deux à trois fois plus cher."
+    },
+    {
+      "form": "Concombre frais",
+      "form_normalized": "concombre frais",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.19,
+        "central": 1.79,
+        "high": 4.99,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 5,
+        "period_start": "2025-10-18",
+        "period_end": "2026-08-07"
+      },
+      "per_kg": {
+        "low": 1.19,
+        "central": 1.79,
+        "high": 4.99,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_france_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:cucumbers&date__gte=2025-08-01&size=100&order_by=date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-07",
+        "source_record_key": "152562,287916,287910,291704,304780",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:cucumbers », relevés en magasin en France, du 2025-10-18 au 2026-08-07, hors promotion et hors bio : 5 prix au kilogramme relevés par les contributeurs, de 1,19 à 4,99 €/kg — par exemple 1,19 €/kg le 2025-10-18 (CONCOMBRE), 1,49 €/kg le 2026-08-07 (en:cucumbers), 1,79 €/kg le 2026-06-15 (en:cucumbers). Médiane 1,79 €/kg, bornes basse 1,19 et haute 4,99 (étendue, faute de dix relevés)."
+      },
+      "reindexation": null,
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Cinq relevés, soit le plancher exact du registre : bornes en étendue. Le RNM cote le concombre à la pièce, sans masse publiée — inconvertible."
+    },
+    {
+      "form": "Avocat frais",
+      "form_normalized": "avocat frais",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 2.19,
+        "central": 4.67,
+        "high": 7.99,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 7,
+        "period_start": "2025-10-17",
+        "period_end": "2026-07-04"
+      },
+      "per_kg": {
+        "low": 2.19,
+        "central": 4.67,
+        "high": 7.99,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le catalogue compte la pulpe seule (Ciqual), le prix porte le fruit entier avec sa peau. L'écart est ici notable et va tout entier dans le sens de la sous-estimation. Aucune source du registre ne publie de part comestible : rendement 1,00 déclaré inconnu."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_france_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:avocados&date__gte=2025-08-01&size=100&order_by=date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-04",
+        "source_record_key": "156627,152551,253701,253702,278389,279529,293463",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:avocados », relevés en magasin en France, du 2025-10-17 au 2026-07-04, hors promotion et hors bio : 7 prix au kilogramme relevés par les contributeurs, de 2,19 à 7,99 €/kg — par exemple 2,19 €/kg le 2026-05-29 (en:avocados), 2,44 €/kg le 2025-10-17 (AVOCAT HASS), 4,67 €/kg le 2026-03-28 (AVOCAT FILET 3 PIECES). Médiane 4,67 €/kg, bornes basse 2,19 et haute 7,99 (étendue, faute de dix relevés)."
+      },
+      "reindexation": null,
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Sept relevés : bornes en étendue. Le RNM cote l'avocat à la pièce ; le catalogue porte bien une masse par pièce, mais c'est la masse de la PULPE (Ciqual « Avocat, pulpe, cru »). L'utiliser pour convertir le prix d'un fruit entier reviendrait à appliquer en douce un rendement que personne n'a sourcé — exactement ce que le CONTRAT §2 interdit. Conversion refusée."
+    },
+    {
+      "form": "Céleri branche cru",
+      "form_normalized": "celeri branche cru",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 2.14,
+        "central": 2.77,
+        "high": 4.99,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 6,
+        "period_start": "2024-11-01",
+        "period_end": "2025-10-30"
+      },
+      "per_kg": {
+        "low": 2.14,
+        "central": 2.77,
+        "high": 4.99,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_fenetre_elargie_a_24_mois",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:celery&date__gte=2024-08-01&size=100&order_by=date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2025-10-30",
+        "source_record_key": "43637,44435,71242,94176,128287,156245",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:celery », relevés en magasin en France, du 2024-11-01 au 2025-10-30, hors promotion et hors bio : 6 prix au kilogramme relevés par les contributeurs, de 2,14 à 4,99 €/kg — par exemple 2,14 €/kg le 2024-12-19 (en:celery), 2,49 €/kg le 2024-11-04 (en:celery), 2,55 €/kg le 2025-10-30 (en:celery). Médiane 2,77 €/kg, bornes basse 2,14 et haute 4,99 (étendue, faute de dix relevés)."
+      },
+      "reindexation": null,
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Adaptation : la fenêtre a été portée à 24 mois pour atteindre les cinq relevés qu'exige le registre — sur douze mois il n'y en avait qu'un. Le relevé le plus récent, qui date l'entrée, a moins de douze mois ; les plus anciens en ont près de vingt et un."
+    },
+    {
+      "form": "Chou vert frais",
+      "form_normalized": "chou vert frais",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.6,
+        "central": 2.5,
+        "high": 3.95,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 6,
+        "period_start": "2024-11-01",
+        "period_end": "2026-04-18"
+      },
+      "per_kg": {
+        "low": 1.6,
+        "central": 2.5,
+        "high": 3.95,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_categorie_generique_fenetre_elargie",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:cabbages&date__gte=2024-08-01&size=100&order_by=date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-04-18",
+        "source_record_key": "43782,45382,60481,74469,266947,266730",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:cabbages », relevés en magasin en France, du 2024-11-01 au 2026-04-18, hors promotion et hors bio : 6 prix au kilogramme relevés par les contributeurs, de 1,60 à 3,95 €/kg — par exemple 1,60 €/kg le 2026-04-18 (CHOUX VERT SUCRE), 1,90 €/kg le 2024-11-01 (en:cabbages), 2,00 €/kg le 2026-04-18 (Cabbage). Médiane 2,50 €/kg, bornes basse 1,60 et haute 3,95 (étendue, faute de dix relevés)."
+      },
+      "reindexation": null,
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Double adaptation : fenêtre portée à 24 mois pour atteindre cinq relevés, et catégorie générique « choux » qui ne distingue pas toujours la variété. Le lot contient un chou vert nommément, les autres relevés sont génériques ou blancs. La fourchette porte donc le chou pommé ordinaire, pas le chou vert seul."
+    },
+    {
+      "form": "Chou blanc frais",
+      "form_normalized": "chou blanc frais",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.6,
+        "central": 2.5,
+        "high": 3.95,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 6,
+        "period_start": "2024-11-01",
+        "period_end": "2026-04-18"
+      },
+      "per_kg": {
+        "low": 1.6,
+        "central": 2.5,
+        "high": 3.95,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_categorie_generique_fenetre_elargie",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:cabbages&date__gte=2024-08-01&size=100&order_by=date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-04-18",
+        "source_record_key": "43782,45382,60481,74469,266947,266730",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:cabbages », relevés en magasin en France, du 2024-11-01 au 2026-04-18, hors promotion et hors bio : 6 prix au kilogramme relevés par les contributeurs, de 1,60 à 3,95 €/kg — par exemple 1,60 €/kg le 2026-04-18 (CHOUX VERT SUCRE), 1,90 €/kg le 2024-11-01 (en:cabbages), 2,00 €/kg le 2026-04-18 (Cabbage). Médiane 2,50 €/kg, bornes basse 1,60 et haute 3,95 (étendue, faute de dix relevés)."
+      },
+      "reindexation": null,
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Même lot que « Chou vert frais », et mêmes réserves : la catégorie Open Prices ne sépare pas les variétés de chou pommé. Deux formes du catalogue partagent donc ici une seule lecture, ce qui est une approximation assumée, pas une mesure distincte."
+    },
+    {
+      "form": "Noix",
+      "form_normalized": "noix",
+      "category": "legumineuses",
+      "observed": {
+        "basis": "kg",
+        "low": 5.9,
+        "central": 6.67,
+        "high": 8.72,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "monthly_mean",
+        "n_observations": 25,
+        "period_start": "2025-09-01",
+        "period_end": "2026-02-28"
+      },
+      "per_kg": {
+        "low": 5.9,
+        "central": 6.67,
+        "high": 8.72,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le catalogue compte des cerneaux (Ciqual « Noix, séchée, cerneaux »), le RNM cote la noix en coque. Le rapport entre les deux est ici le facteur dominant du prix, et aucune source du registre ne le publie : rendement 1,00 déclaré inconnu."
+      },
+      "confidence": "C",
+      "confidence_reason": "produit_cote_en_coque_forme_en_cerneaux_rendement_non_source",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?NOIX&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-02-28",
+        "source_record_key": "1852503+1862503+52+57206165+57206728",
+        "citation": "RNM — FranceAgriMer, page « NOIX — prix mensuels », stade Détail, circuit « Fruits France DETAIL GMS », € TTC. Prix moyens mensuels du 01-09-2025 au 28-02-2026 : « NOIX AOP Grenoble sac 1kg » (id 1852503) + « NOIX AOP Grenoble sachet 500g » (id 1862503) + « NOIX AOP Grenoble vrac » (id 52) + « NOIX sans label France sac 1kg » (id 57206165) + « NOIX sans label France vrac » (id 57206728), soit 25 moyennes mensuelles lues en €/kg, de 5,84 à 8,96 €/kg ; médiane 6,67 €/kg, D1 5,90, D9 8,72."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg », libellés bio écartés. La fourchette agrège conditionnements, origines et mois de la période : le RNM ne publie pas la dispersion entre magasins, elle est donc absente de ces bornes, qui décrivent la dispersion entre séries nationales et non entre points de vente. Refusée en A comme en B : appliquer un prix de noix en coque à des cerneaux sous-estimerait le coût dans un rapport de plus de deux, ce qu'aucune mention d'interface ne rattraperait. L'entrée reste ici parce que la lecture est bonne et qu'elle deviendra utilisable le jour où une part comestible sourcée entrera au catalogue, ou le jour où un relevé de cerneaux sera trouvé."
+    },
+    {
+      "form": "Épinard frais",
+      "form_normalized": "epinard frais",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 5.71,
+        "central": 6.54,
+        "high": 7.08,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 12,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 5.71,
+        "central": 6.54,
+        "high": 7.08,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "C",
+      "confidence_reason": "releve_bio_magasin_specialise_gamme_non_representative",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?EPINARD&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57231702",
+        "citation": "RNM — FranceAgriMer, page « EPINARD — prix mensuels », stade Détail, circuit « Légumes France DETAIL MAG. SPECIALISES BIO », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « ÉPINARD France feuille biologique » (id 57231702), soit 12 moyennes mensuelles lues en €/kg, de 5,63 à 7,18 €/kg ; médiane 6,54 €/kg, D1 5,71, D9 7,08."
+      },
+      "reindexation": null,
+      "notes": "Le RNM ne cote l'épinard au détail qu'en magasin spécialisé bio. Afficher ce niveau pour de l'épinard conventionnel surestimerait franchement, et l'écart ne serait visible dans aucun contrôle de forme. La lecture est conservée en C : elle est vraie, elle ne décrit simplement pas le produit que la recette achète."
+    },
+    {
+      "form": "Fenouil frais",
+      "form_normalized": "fenouil frais",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 4.4,
+        "central": 5.3,
+        "high": 5.98,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 12,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 4.4,
+        "central": 5.3,
+        "high": 5.98,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "C",
+      "confidence_reason": "releve_bio_magasin_specialise_gamme_non_representative",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?FENOUIL&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57231703",
+        "citation": "RNM — FranceAgriMer, page « FENOUIL — prix mensuels », stade Détail, circuit « Légumes France DETAIL MAG. SPECIALISES BIO », € TTC. Prix moyens mensuels du 01-08-2025 au 31-07-2026 : « FENOUIL France biologique » (id 57231703), soit 12 moyennes mensuelles lues en €/kg, de 4,21 à 6,59 €/kg ; médiane 5,30 €/kg, D1 4,40, D9 5,98."
+      },
+      "reindexation": null,
+      "notes": "Même situation que l'épinard : seul le circuit bio spécialisé est coté au détail."
+    },
+    {
+      "form": "Laitue fraîche",
+      "form_normalized": "laitue fraiche",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.69,
+        "central": 3.65,
+        "high": 9.01,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 4,
+        "period_start": "2024-12-19",
+        "period_end": "2025-11-04"
+      },
+      "per_kg": {
+        "low": 1.69,
+        "central": 3.65,
+        "high": 9.01,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
+      },
+      "confidence": "C",
+      "confidence_reason": "moins_de_cinq_releves_apres_exclusion_de_la_mache",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:lettuces&date__gte=2024-08-01&size=100&order_by=date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2025-11-04",
+        "source_record_key": "71087,88762,157938,157939",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:lettuces », relevés en magasin en France, du 2024-12-19 au 2025-11-04, hors promotion et hors bio : 4 prix au kilogramme relevés par les contributeurs, de 1,69 à 9,01 €/kg — par exemple 1,69 €/kg le 2025-03-15 (SALADE BATAVIA), 2,99 €/kg le 2024-12-19 (en:lettuces), 4,31 €/kg le 2025-11-04 (Salade Batavia Verte). Médiane 3,65 €/kg, bornes basse 1,69 et haute 9,01 (étendue, faute de dix relevés)."
+      },
+      "reindexation": null,
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Deux des six relevés de la catégorie étaient de la mâche, qui est une autre salade et coûte trois fois plus : écartés. Restent quatre relevés, sous le plancher de cinq du registre, même sur 24 mois. Le RNM cote la laitue à la pièce, sans masse publiée. Conservée en C : la lecture existe, elle ne suffit pas."
+    },
+    {
+      "form": "Betterave crue",
+      "form_normalized": "betterave crue",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 3.45,
+        "central": 3.98,
+        "high": 4.0,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 3,
+        "period_start": "2024-11-29",
+        "period_end": "2026-02-21"
+      },
+      "per_kg": {
+        "low": 3.45,
+        "central": 3.98,
+        "high": 4.0,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "S'achète non paré et se compte épluché au catalogue (Ciqual). Aucune source du registre ne publie de part comestible : le rendement reste à 1,00 déclaré inconnu, l'estimation est donc un minorant de sens connu, jamais une correction inventée."
+      },
+      "confidence": "C",
+      "confidence_reason": "moins_de_cinq_releves_apres_exclusion_de_la_betterave_cuite",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:beetroot&date__gte=2024-08-01&size=100&order_by=date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-02-21",
+        "source_record_key": "72155,60485,232040",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:beetroot », relevés en magasin en France, du 2024-11-29 au 2026-02-21, hors promotion et hors bio : 3 prix au kilogramme relevés par les contributeurs, de 3,45 à 4,00 €/kg — par exemple 3,45 €/kg le 2026-02-21 (BETTERAVE ROUGE VRAC), 3,98 €/kg le 2024-12-19 (en:beetroot), 4,00 €/kg le 2024-11-29 (en:beetroot). Médiane 3,98 €/kg, bornes basse 3,45 et haute 4,00 (étendue, faute de dix relevés)."
+      },
+      "reindexation": null,
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. La catégorie mêle betterave crue et betterave cuite sous vide, qui est un produit transformé : les cuites sont écartées, il reste trois relevés. Le RNM ne cote la betterave au détail qu'en magasin spécialisé bio."
+    }
+  ]
+}
