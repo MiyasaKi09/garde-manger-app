@@ -17,9 +17,12 @@ export function entree({
   form = 'Oignon jaune cru',
   formNormalized = 'oignon jaune cru',
   category = 'legumes',
-  low = 2,
+  // `low` et `high` suivent `central` par défaut : sans cela, surcharger la
+  // seule valeur centrale produirait une fourchette inversée que l'index
+  // refuserait — un piège qui coûte une demi-heure à chaque nouveau test.
   central = 3,
-  high = 4,
+  low = central * 0.8,
+  high = central * 1.2,
   basis = 'kg',
   confidence = 'A',
   observedOn = '2026-07-31',
@@ -31,7 +34,13 @@ export function entree({
   licenseCode = 'etalab-2.0',
   shareAlike = false,
   attributionRequired = true,
+  // Échappatoire réservée aux tests qui veulent EXPRESSÉMENT une entrée
+  // incohérente, pour vérifier que l'index la refuse.
+  incoherenceVoulue = false,
 } = {}) {
+  if (!incoherenceVoulue && !(low <= central && central <= high)) {
+    throw new Error(`fixture incoherente: ${low} / ${central} / ${high} — une fourchette inversee serait refusee par l'index, pas testee.`)
+  }
   return {
     form,
     form_normalized: formNormalized,

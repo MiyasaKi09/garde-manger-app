@@ -390,12 +390,20 @@ CREATE TABLE IF NOT EXISTS catalog.food_form_prices (
 
   -- Le seul cas où l'arithmétique du pivot est EXACTE, donc vérifiable sans
   -- tolérance : l'identité. Pour la densité et la masse à la pièce, la division
-  -- produit un arrondi dont la règle appartient au contrôleur — une CHECK avec
-  -- tolérance arbitraire refuserait des entrées justes ou en laisserait passer
-  -- de fausses, ce qui est pire qu'un contrôle honnêtement situé ailleurs.
+  -- produit un arrondi dont la règle appartient au contrôleur ; la porte SQL
+  -- s'en tient à un filet à grosses mailles (voir enforce_price_provenance).
   CONSTRAINT ffp_identity_is_exact CHECK (
     conversion_kind <> 'identity'
     OR (per_kg_low = observed_low AND per_kg_central = observed_central AND per_kg_high = observed_high)
+  ),
+
+  -- Le facteur porte sa provenance, et cette provenance est le catalogue. Un
+  -- `from` qui ne commence pas par « catalog: » est un facteur ressaisi à la
+  -- main, c'est-à-dire une seconde vérité sur un nombre qui en a déjà une. La
+  -- forme visée n'est pas contrainte à être la forme de l'entrée : une variante
+  -- peut légitimement emprunter la densité de sa forme parente.
+  CONSTRAINT ffp_conversion_from_catalog CHECK (
+    conversion_from IS NULL OR conversion_from LIKE 'catalog:%'
   ),
 
   CONSTRAINT ffp_yield_range CHECK (edible_yield_value > 0 AND edible_yield_value <= 1),
@@ -531,6 +539,7 @@ DECLARE
   v_rank_entry integer;
   v_rank_src   integer;
   v_factor     numeric;
+  v_expected   numeric;
 BEGIN
   SELECT * INTO v_set FROM catalog.price_sets WHERE id = NEW.price_set_id;
   IF NOT FOUND THEN
@@ -615,6 +624,26 @@ BEGIN
       RAISE EXCEPTION
         'reindexation_invalid : le facteur déclaré (%) ne vaut pas to_value/from_value (%)',
         NEW.reindexation->>'factor', v_factor;
+    END IF;
+  END IF;
+
+  -- ── Le pivot dit-il à peu près ce que la conversion produirait ? ─────────
+  -- Filet à GROSSES MAILLES, et c'est délibéré : 2 % laisse passer tous les
+  -- arrondis d'écriture (un prix de 0,50 €/kg arrondi à deux décimales dérive
+  -- déjà de 0,6 %) et attrape la seule faute qui compte vraiment — la
+  -- conversion oubliée, ou le facteur appliqué à l'envers, qui déplacent le
+  -- pivot de 8 % (huile) à 1000 % (pièce). L'arithmétique exacte, avec sa règle
+  -- d'arrondi, reste au contrôleur : le fichier est le lieu où la précision se
+  -- vérifie, la base est le lieu où l'absurde se refuse.
+  IF NEW.conversion_kind <> 'identity' THEN
+    v_expected := CASE NEW.conversion_kind
+                    WHEN 'density'         THEN NEW.observed_central / NEW.conversion_factor
+                    WHEN 'grams_per_piece' THEN NEW.observed_central / (NEW.conversion_factor / 1000)
+                  END;
+    IF v_expected IS NULL OR abs(NEW.per_kg_central - v_expected) > (0.02 * v_expected) THEN
+      RAISE EXCEPTION
+        'per_kg_arithmetic : per_kg_central vaut % alors que % ÷ % en produit environ %',
+        NEW.per_kg_central, NEW.observed_central, NEW.conversion_factor, round(v_expected, 4);
     END IF;
   END IF;
 

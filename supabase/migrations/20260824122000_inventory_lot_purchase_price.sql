@@ -134,11 +134,15 @@ COMMENT ON COLUMN public.inventory_lots.purchase_price_source IS
    référentiel sur le foyer (étape 3) serait circulaire s''il se nourrissait
    d''estimations issues de ce même référentiel.';
 
--- Le chemin d'accès du recalage : les lots valorisés d'un foyer, par date
--- d'achat. Index partiel — les lots sans prix, qui resteront la majorité
--- longtemps, n'ont pas à peser dessus.
+-- Le chemin d'accès du recalage : les lots valorisés d'un foyer. Index PARTIEL,
+-- parce que les lots sans prix resteront longtemps la majorité et n'ont pas à
+-- peser dessus. Il ne porte que `user_id` : `acquired_on` aurait été le second
+-- terme naturel, mais le socle de stock rejoué en CI ne porte pas cette colonne,
+-- et faire dépendre une migration de production d'un fixture de test est une
+-- dette qu'on paie deux fois. Le tri par date se fait à la lecture — sur un
+-- garde-manger de foyer, la sélection partielle a déjà tout fait.
 CREATE INDEX IF NOT EXISTS inventory_lots_user_priced_idx
-  ON public.inventory_lots (user_id, acquired_on DESC)
+  ON public.inventory_lots (user_id)
   WHERE purchase_price IS NOT NULL;
 
 
