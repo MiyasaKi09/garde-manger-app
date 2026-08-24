@@ -7,7 +7,7 @@
   "derived_license": "odbl-1.0",
   "catalog_version": "v3-300-real-dishes",
   "built_at": "2026-08-24",
-  "notes": "Tranche « frais végétal » (catégories legumes, fruits, legumineuses) du référentiel de prix. 71 formes du corpus relèvent de ces catégories. 29 portent un prix retenu (14 en A, 15 en B), 5 une lecture conservée en C — donc ni affichée ni comptée —, et 37 ne portent rien du tout. En formes, la couverture est de 41 % ; mais le tri s'est fait par fréquence, si bien qu'elle atteint 77 % des lignes d'ingrédients de la tranche et 78 % de sa masse. Les absences sont volontaires : aucune source du registre ne cote ces formes, et le CONTRAT §0 préfère l'absence à un chiffre vraisemblable.\n\nSÉLECTION. RNM/FranceAgriMer est la source de tête : pages /prix?<PRODUIT>&12MOIS, stade « Détail », circuit « DETAIL GMS » (c'est le prix TTC que paie un ménage ; les stades gros, expédition et producteur sont HT et ne décrivent pas sa dépense), unité « le kg ». Les libellés « biologique » sont écartés : le RNM publie au détail autant de séries bio que conventionnelles alors que le bio est minoritaire dans les achats, et les mélanger laisserait la couverture éditoriale de la source décider de la médiane — une pondération inventée. Écarter est un choix énoncé et réversible ; mélanger aurait été un choix silencieux. Conséquence assumée : ces prix décrivent le conventionnel, et le référentiel ne prétend pas couvrir le bio (CONTRAT §11). Open Prices prend le relais là où le RNM ne cote au détail que du bio spécialisé, ou rien : France, prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions.\n\nPIÈGE VÉRIFIÉ. L'API Open Prices ignore silencieusement les paramètres qu'elle ne connaît pas : location_osm_address_country=France et =Deutschland renvoient le même total, tout comme un paramètre inventé. Le pays est donc filtré après coup sur le code pays du magasin. Sans cela, des relevés EDEKA et ALDI Süd seraient passés pour français. Seul date__gte a été vérifié comme réellement appliqué.\n\nFOURCHETTE. low/high sont les déciles D1/D9 des observations retenues dès qu'il y en a dix ; en deçà, ce sont les extrêmes, déclarés comme tels (min_max), ce qui plafonne l'entrée à B. central est toujours la médiane. La dispersion mêle conditionnement, origine, enseigne et mois : c'est un constat, pas une décomposition (CONTRAT §3.1). Réserve importante sur les entrées RNM : les observations sont des moyennes mensuelles NATIONALES ; la dispersion entre points de vente n'y figure pas, la fourchette est donc plus étroite que la réalité en rayon. Les entrées Open Prices, faites de relevés individuels en magasin, portent au contraire cette dispersion-là.\n\nRENDEMENT COMESTIBLE. Aucune entrée n'en porte un. Ce n'est pas un oubli : le registre data/prices/sources.json ne contient aucune source capable d'en porter un. Les quatre sources de prix publient des prix, pas des parts comestibles, et myko_reasoning ne peut porter qu'un rendement de 1,00 par nature — ce qu'aucun légume frais n'est. Toutes les entrées sont donc à 1,00 déclaré inconnu, et toutes les estimations qui en découlent sont des MINORANTS. L'écart n'est pas anecdotique sur cette tranche : oignon, carotte, navet et betterave s'achètent non épluchés, poireau avec son vert dur et ses racines, orange, citron, banane, poire et avocat entiers quand le catalogue n'en compte que la pulpe, cerise avec ses noyaux. C'est le premier défaut à corriger, et il se corrige au registre, pas ici.\n\nCE QUI A ÉTÉ REFUSÉ. Convertir les cotations RNM « à la pièce » (avocat, concombre, laitue, chicorée) avec la masse par pièce du catalogue : cette masse est celle de la PULPE (Ciqual), l'appliquer au prix d'un fruit entier reviendrait à glisser un rendement que personne n'a sourcé. Reconstituer un €/kg d'épicerie (conserves, légumes secs, fruits secs, purées) en divisant un prix de contenant par sa masse nette : le contrat n'a pas de base pour cela — voir la note de rapport. Utiliser une cotation de gros comme prix de détail. Faire passer un relevé bio en magasin spécialisé pour un prix conventionnel.",
+  "notes": "Tranche « frais végétal » (catégories legumes, fruits, legumineuses) du référentiel de prix. 71 formes du corpus relèvent de ces catégories. 27 portent un prix retenu (14 en A, 13 en B), 7 une lecture conservée en C — donc ni affichée ni comptée —, et 37 ne portent rien du tout. En formes, la couverture est de 38 % ; mais le tri s'est fait par fréquence, si bien qu'elle porte encore environ trois quarts des lignes d'ingrédients de la tranche et de sa masse. Le compte était de 29 formes chiffrées avant la relecture adverse : concombre et avocat en sont sortis, soit douze lignes de recette et moins de deux kilogrammes, pour la raison dite au dernier paragraphe. Les absences sont volontaires : aucune source du registre ne cote ces formes, et le CONTRAT §0 préfère l'absence à un chiffre vraisemblable.\n\nSÉLECTION. RNM/FranceAgriMer est la source de tête : pages /prix?<PRODUIT>&12MOIS, stade « Détail », circuit « DETAIL GMS » (c'est le prix TTC que paie un ménage ; les stades gros, expédition et producteur sont HT et ne décrivent pas sa dépense), unité « le kg ». Les libellés « biologique » sont écartés : le RNM publie au détail autant de séries bio que conventionnelles alors que le bio est minoritaire dans les achats, et les mélanger laisserait la couverture éditoriale de la source décider de la médiane — une pondération inventée. Écarter est un choix énoncé et réversible ; mélanger aurait été un choix silencieux. Conséquence assumée : ces prix décrivent le conventionnel, et le référentiel ne prétend pas couvrir le bio (CONTRAT §11). Open Prices prend le relais là où le RNM ne cote au détail que du bio spécialisé, ou rien : France, prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions.\n\nPIÈGE VÉRIFIÉ. L'API Open Prices ignore silencieusement les paramètres qu'elle ne connaît pas : location_osm_address_country=France et =Deutschland renvoient le même total, tout comme un paramètre inventé. Le pays est donc filtré après coup sur le code pays du magasin. Sans cela, des relevés EDEKA et ALDI Süd seraient passés pour français. Seul date__gte a été vérifié comme réellement appliqué.\n\nFOURCHETTE. low/high sont les déciles D1/D9 des observations retenues dès qu'il y en a dix ; en deçà, ce sont les extrêmes, déclarés comme tels (min_max), ce qui plafonne l'entrée à B. central est toujours la médiane. La dispersion mêle conditionnement, origine, enseigne et mois : c'est un constat, pas une décomposition (CONTRAT §3.1). Réserve importante sur les entrées RNM : les observations sont des moyennes mensuelles NATIONALES ; la dispersion entre points de vente n'y figure pas, la fourchette est donc plus étroite que la réalité en rayon. Les entrées Open Prices, faites de relevés individuels en magasin, portent au contraire cette dispersion-là.\n\nRENDEMENT COMESTIBLE. Aucune entrée n'en porte un. Ce n'est pas un oubli : le registre data/prices/sources.json ne contient aucune source capable d'en porter un. Les quatre sources de prix publient des prix, pas des parts comestibles, et myko_reasoning ne peut porter qu'un rendement de 1,00 par nature — ce qu'aucun légume frais n'est. Toutes les entrées sont donc à 1,00 déclaré inconnu, et toutes les estimations qui en découlent sont des MINORANTS. L'écart n'est pas anecdotique sur cette tranche : oignon, carotte, navet et betterave s'achètent non épluchés, poireau avec son vert dur et ses racines, orange, citron, banane, poire et avocat entiers quand le catalogue n'en compte que la pulpe, cerise avec ses noyaux. C'est le premier défaut à corriger, et il se corrige au registre, pas ici.\n\nCE QUI A ÉTÉ REFUSÉ. Convertir les cotations RNM « à la pièce » (avocat, concombre, laitue, chicorée) avec la masse par pièce du catalogue : cette masse est celle de la PULPE (Ciqual), l'appliquer au prix d'un fruit entier reviendrait à glisser un rendement que personne n'a sourcé. Reconstituer un €/kg d'épicerie (conserves, légumes secs, fruits secs, purées) en divisant un prix de contenant par sa masse nette : le contrat n'a pas de base pour cela — voir la note de rapport. Utiliser une cotation de gros comme prix de détail. Faire passer un relevé bio en magasin spécialisé pour un prix conventionnel.\n\nRELECTURE ADVERSE (2026-08-24). Les vingt entrées RNM ont été recalculées série par série depuis les pages rechargées ce jour : les 72 séries de cotation citées existent toutes, portent bien le stade et le circuit annoncés, l'unité « le kg », et les 596 moyennes mensuelles qu'elles totalisent redonnent exactement les médianes, déciles et bornes écrites. Les 146 relevés Open Prices cités ont été rappelés un par un sur /api/v1/prices/<id> : tous en France, tous en price_per KILOGRAM, tous en euros, aucun en promotion, aucun sous label bio, tous dans la fenêtre déclarée — et les médianes se retrouvent. Aucun chiffre inventé.\n\nDeux défauts ont été trouvés, tous deux invisibles au contrôleur. Le premier : cinq relevés Open Prices portent duplicate_of, c'est-à-dire que l'API elle-même les désigne comme la recopie d'un relevé déjà retenu. Les compter n'ajoutait aucune observation, doublait le poids d'une valeur dans la médiane et gonflait le n qui sert de seuil au registre — l'oignon rouge passait ainsi de 3,29 à 2,99 €/kg. Le second, plus grave : sur le concombre et l'avocat, des prix À LA PIÈCE ont été saisis par les contributeurs sous l'étiquette KILOGRAM. Le RNM, qui cote justement ces deux produits à la pièce au détail, permet de le voir sans le supposer — 1,19 à 2,05 € la pièce pour le concombre, quand les relevés « au kilo » retenus valaient 1,19 à 1,79. Ces deux entrées sont passées en C : le concombre était faux d'un facteur voisin de trois.\n\nRESTE À TRANCHER, non corrigé ici. observed_on porte la date du relevé le plus récent, ce qui est la convention du gabarit du CONTRAT §10.3 ; sur les entrées à fenêtre élargie (chou vert, chou blanc, céleri branche) elle masque que la moitié des observations ont dix-huit à vingt et un mois, donc qu'elles tomberaient dans la bande où le §5.2 rend la réindexation obligatoire. Le contrôleur ne voit qu'un scalaire et ne peut pas le savoir. Le niveau de prix reste corroboré par les relevés à la pièce des mêmes catégories, d'où le choix de ne pas y toucher tranche par tranche : c'est une décision de contrat, à prendre une fois pour les quatre.",
   "entries": [
     {
       "form": "Oignon jaune cru",
@@ -968,18 +968,18 @@
       "observed": {
         "basis": "kg",
         "low": 1.99,
-        "central": 2.99,
+        "central": 3.29,
         "high": 4.99,
         "unit": "EUR/kg",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 23,
+        "n_observations": 21,
         "period_start": "2025-09-12",
         "period_end": "2026-08-14"
       },
       "per_kg": {
         "low": 1.99,
-        "central": 2.99,
+        "central": 3.29,
         "high": 4.99,
         "conversion": {
           "kind": "identity"
@@ -1006,11 +1006,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-14",
-        "source_record_key": "142145,151527,190009,195137,195144,195920,249773,255379,262790,266699,288823,266313,266728,267033,267675,279625,288689,289469,291319,293586,295606,302967,308752",
-        "citation": "Open Prices (Open Food Facts), catégorie « en:red-onions », relevés en magasin en France, du 2025-09-12 au 2026-08-14, hors promotion et hors bio : 23 prix au kilogramme relevés par les contributeurs, de 1,90 à 6,38 €/kg — par exemple 1,90 €/kg le 2026-04-20 (Oignon rouge), 1,95 €/kg le 2026-08-01 (en:red-onions), 1,99 €/kg le 2026-01-30 (Oignon rouge vrac). Médiane 2,99 €/kg, D1 1,99, D9 4,99."
+        "source_record_key": "142145,151527,190009,195137,195920,249773,255379,262790,266699,266313,266728,267033,267675,279625,288689,289469,291319,293586,295606,302967,308752",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:red-onions », relevés en magasin en France, du 2025-09-12 au 2026-08-14, hors promotion et hors bio : 21 prix au kilogramme relevés par les contributeurs, de 1,90 à 6,38 €/kg — par exemple 1,90 €/kg le 2026-04-20 (Oignon rouge), 1,95 €/kg le 2026-08-01 (en:red-onions), 1,99 €/kg le 2026-01-30 (Oignon rouge vrac). Médiane 3,29 €/kg, D1 1,99, D9 4,99."
       },
       "reindexation": null,
-      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Écarté nommément : un relevé bio que le champ de label ne portait pas."
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Écarté nommément : un relevé bio que le champ de label ne portait pas, et deux relevés que l'API marque elle-même duplicate_of d'un relevé déjà retenu (195144 de 195137, 288823 de 266699). Un doublon n'est pas une seconde observation : le garder doublait le poids de 1,99 et de 2,99 dans la médiane, qui tombait à 2,99 au lieu de 3,29, et portait le compte à 23 là où il n'y a que 21 lectures distinctes."
     },
     {
       "form": "Navet cru",
@@ -1120,20 +1120,20 @@
       "category": "legumes",
       "observed": {
         "basis": "kg",
-        "low": 4.85,
+        "low": 4.82,
         "central": 7.39,
-        "high": 12.47,
+        "high": 12.6,
         "unit": "EUR/kg",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 17,
+        "n_observations": 16,
         "period_start": "2025-08-24",
         "period_end": "2026-07-04"
       },
       "per_kg": {
-        "low": 4.85,
+        "low": 4.82,
         "central": 7.39,
-        "high": 12.47,
+        "high": 12.6,
         "conversion": {
           "kind": "identity"
         }
@@ -1159,11 +1159,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-07-04",
-        "source_record_key": "134689,137512,152279,152333,153931,169912,185087,195096,195115,202264,204154,258840,267041,289326,289250,289370,291344",
-        "citation": "Open Prices (Open Food Facts), catégorie « en:mushrooms », relevés en magasin en France, du 2025-08-24 au 2026-07-04, hors promotion et hors bio : 17 prix au kilogramme relevés par les contributeurs, de 2,59 à 13,95 €/kg — par exemple 2,59 €/kg le 2025-08-24 (CHAMPIGNON BRON), 4,69 €/kg le 2025-12-06 (CHAMPIGNON BLANC VRA), 4,95 €/kg le 2025-10-17 (CHAMPIGNON BLANC 200G). Médiane 7,39 €/kg, D1 4,85, D9 12,47."
+        "source_record_key": "134689,137512,152279,152333,153931,169912,185087,195096,202264,204154,258840,267041,289250,289326,289370,291344",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:mushrooms », relevés en magasin en France, du 2025-08-24 au 2026-07-04, hors promotion et hors bio : 16 prix au kilogramme relevés par les contributeurs, de 2,59 à 13,95 €/kg — par exemple 2,59 €/kg le 2025-08-24 (CHAMPIGNON BRON), 4,69 €/kg le 2025-12-06 (CHAMPIGNON BLANC VRA), 4,95 €/kg le 2025-10-17 (CHAMPIGNON BLANC 200G). Médiane 7,39 €/kg, D1 4,82, D9 12,60."
       },
       "reindexation": null,
-      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. La catégorie en:mushrooms mêle toutes les espèces : elle est restreinte aux libellés « champignon », pleurotes, émincés et champignons à farcir écartés. Restent des blancs et des blonds/bruns, qui sont la même espèce à des stades de maturité différents. Le RNM ne cote ce produit au détail qu'en magasin spécialisé bio, ce qui était inutilisable ici."
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. La catégorie en:mushrooms mêle toutes les espèces : elle est restreinte aux libellés « champignon », pleurotes, émincés et champignons à farcir écartés. Restent des blancs et des blonds/bruns, qui sont la même espèce à des stades de maturité différents. Le RNM ne cote ce produit au détail qu'en magasin spécialisé bio, ce qui était inutilisable ici. Écarté en outre : le relevé 195115, que l'API marque duplicate_of du 195096 déjà retenu. La médiane ne bouge pas, les déciles si (4,85/12,47 devenaient 4,82/12,60) — un doublon déplace toujours quelque chose, jamais rien de visible."
     },
     {
       "form": "Haricot vert cru",
@@ -1222,19 +1222,19 @@
       "category": "legumes",
       "observed": {
         "basis": "kg",
-        "low": 1.19,
-        "central": 1.79,
+        "low": 4.99,
+        "central": 4.99,
         "high": 4.99,
         "unit": "EUR/kg",
         "dispersion": "min_max",
-        "aggregation": "annual_mean",
-        "n_observations": 5,
-        "period_start": "2025-10-18",
-        "period_end": "2026-08-07"
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-07-04",
+        "period_end": "2026-07-04"
       },
       "per_kg": {
-        "low": 1.19,
-        "central": 1.79,
+        "low": 4.99,
+        "central": 4.99,
         "high": 4.99,
         "conversion": {
           "kind": "identity"
@@ -1245,8 +1245,8 @@
         "known": false,
         "note": "Pertes de parage limitées mais non nulles (pédoncule, trognon, extrémités), qu'aucune source du registre ne chiffre : rendement 1,00 déclaré inconnu, estimation minorante."
       },
-      "confidence": "B",
-      "confidence_reason": "open_prices_mediane_releves_france_plafond_source_b",
+      "confidence": "C",
+      "confidence_reason": "quatre_releves_sur_cinq_etaient_des_prix_a_la_piece_reste_une_lecture",
       "provenance": {
         "source_code": "open_prices",
         "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:cucumbers&date__gte=2025-08-01&size=100&order_by=date",
@@ -1260,12 +1260,12 @@
           "share_alike": true
         },
         "retrieved_on": "2026-08-24",
-        "observed_on": "2026-08-07",
-        "source_record_key": "152562,287916,287910,291704,304780",
-        "citation": "Open Prices (Open Food Facts), catégorie « en:cucumbers », relevés en magasin en France, du 2025-10-18 au 2026-08-07, hors promotion et hors bio : 5 prix au kilogramme relevés par les contributeurs, de 1,19 à 4,99 €/kg — par exemple 1,19 €/kg le 2025-10-18 (CONCOMBRE), 1,49 €/kg le 2026-08-07 (en:cucumbers), 1,79 €/kg le 2026-06-15 (en:cucumbers). Médiane 1,79 €/kg, bornes basse 1,19 et haute 4,99 (étendue, faute de dix relevés)."
+        "observed_on": "2026-07-04",
+        "source_record_key": "291704",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:cucumbers », relevé en magasin en France le 2026-07-04, hors promotion et hors bio : « CONCOMBRE NOA VRAC », 4,99 €/kg, seul relevé de la catégorie dont le libellé établit qu'il porte bien un prix au kilogramme et non un prix à la pièce."
       },
       "reindexation": null,
-      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Cinq relevés, soit le plancher exact du registre : bornes en étendue. Le RNM cote le concombre à la pièce, sans masse publiée — inconvertible."
+      "notes": "Entrée corrigée à la relecture adverse, et le cas est le plus net de la tranche. Le RNM cote « CONCOMBRE France » au détail GMS À LA PIÈCE, entre 1,19 et 2,05 € la pièce sur les douze mois, médiane 1,36 €. Les quatre relevés Open Prices d'abord retenus — 1,19, 1,49, 1,79 et 1,79 €/kg, dont trois sans aucun libellé — tombent exactement dans cette fourchette à la pièce, tandis que les seuls relevés de la catégorie dont le libellé porte KG ou VRAC valent 4,99, 6,45, 6,45 et 6,50 €/kg. Ces quatre lectures sont donc des prix à la pièce saisis sous l'étiquette KILOGRAM : un concombre pèse environ 400 g, et 1,79 €/kg en ferait un concombre à 0,72 €, moitié moins que ce que le RNM cote. La médiane publiée, 1,79 €/kg, était fausse d'un facteur voisin de trois, dans le sens qui minore. Le cinquième relevé était en outre marqué duplicate_of par l'API (287916 recopie 287910) : le seuil de cinq lectures du registre n'était atteint que par ce doublon. Il ne reste qu'une lecture défendable, 4,99 €/kg le 2026-07-04, et une lecture unique est C par construction — elle est gardée pour la traçabilité, elle ne s'affiche pas et ne compte pas dans la couverture. Les trois relevés à 6,45–6,50 €/kg, qui auraient conforté ce niveau, portent price_is_discounted et sont exclus par la même règle que le reste de la tranche."
     },
     {
       "form": "Avocat frais",
@@ -1273,19 +1273,19 @@
       "category": "legumes",
       "observed": {
         "basis": "kg",
-        "low": 2.19,
-        "central": 4.67,
+        "low": 4.67,
+        "central": 6.99,
         "high": 7.99,
         "unit": "EUR/kg",
         "dispersion": "min_max",
-        "aggregation": "annual_mean",
-        "n_observations": 7,
-        "period_start": "2025-10-17",
+        "aggregation": "point",
+        "n_observations": 4,
+        "period_start": "2025-10-18",
         "period_end": "2026-07-04"
       },
       "per_kg": {
-        "low": 2.19,
-        "central": 4.67,
+        "low": 4.67,
+        "central": 6.99,
         "high": 7.99,
         "conversion": {
           "kind": "identity"
@@ -1296,8 +1296,8 @@
         "known": false,
         "note": "Le catalogue compte la pulpe seule (Ciqual), le prix porte le fruit entier avec sa peau. L'écart est ici notable et va tout entier dans le sens de la sous-estimation. Aucune source du registre ne publie de part comestible : rendement 1,00 déclaré inconnu."
       },
-      "confidence": "B",
-      "confidence_reason": "open_prices_mediane_releves_france_plafond_source_b",
+      "confidence": "C",
+      "confidence_reason": "releves_au_kilo_indiscernables_de_prix_a_la_piece_reste_moins_de_cinq_lectures",
       "provenance": {
         "source_code": "open_prices",
         "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:avocados&date__gte=2025-08-01&size=100&order_by=date",
@@ -1312,11 +1312,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-07-04",
-        "source_record_key": "156627,152551,253701,253702,278389,279529,293463",
-        "citation": "Open Prices (Open Food Facts), catégorie « en:avocados », relevés en magasin en France, du 2025-10-17 au 2026-07-04, hors promotion et hors bio : 7 prix au kilogramme relevés par les contributeurs, de 2,19 à 7,99 €/kg — par exemple 2,19 €/kg le 2026-05-29 (en:avocados), 2,44 €/kg le 2025-10-17 (AVOCAT HASS), 4,67 €/kg le 2026-03-28 (AVOCAT FILET 3 PIECES). Médiane 4,67 €/kg, bornes basse 2,19 et haute 7,99 (étendue, faute de dix relevés)."
+        "source_record_key": "152551,253701,278389,293463",
+        "citation": "Open Prices (Open Food Facts), catégorie « en:avocados », relevés en magasin en France, du 2025-10-18 au 2026-07-04, hors promotion et hors bio : 4 prix au kilogramme retenus, de 4,67 à 7,99 €/kg — 4,67 €/kg le 2026-03-28 (AVOCAT FILET 3 PIECES), 6,99 €/kg le 2026-05-26 (AVOCAT TROPICAL BRESIL), 6,99 €/kg le 2026-07-04 (AVOCAT TROPICAL VRAC BRESIL), 7,99 €/kg le 2025-10-18 (AVOCAT TROPICAL). Médiane 6,99 €/kg, étendue 4,67–7,99."
       },
       "reindexation": null,
-      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio — mêmes exclusions que la sélection RNM. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. L'entrée est la médiane de relevés ponctuels répartis sur la période, et non une moyenne publiée par la source. Sept relevés : bornes en étendue. Le RNM cote l'avocat à la pièce ; le catalogue porte bien une masse par pièce, mais c'est la masse de la PULPE (Ciqual « Avocat, pulpe, cru »). L'utiliser pour convertir le prix d'un fruit entier reviendrait à appliquer en douce un rendement que personne n'a sourcé — exactement ce que le CONTRAT §2 interdit. Conversion refusée."
+      "notes": "Sélection : France (filtrée sur le code pays du magasin, l'API ignorant silencieusement le filtre pays), prix au kilogramme relevé tel quel, hors promotion, hors bio. Le RNM cote l'avocat au détail GMS à la pièce (filet 0,69–0,79 €, vrac 1,04–1,43 €) et n'en publie un prix au kilo qu'en magasin spécialisé bio, entre 4,24 et 6,66 €/kg. Deux relevés d'abord retenus, 2,19 €/kg (sans libellé) et 2,44 €/kg (AVOCAT HASS), ne se ramènent à aucune de ces lectures : à 2,44 €/kg un Hass de 180 g coûterait 0,44 €, moins que le fruit le moins cher coté à la pièce par le RNM. Ce sont selon toute vraisemblance des prix à la pièce saisis sous l'étiquette KILOGRAM — l'erreur que ni la source ni le contrôleur ne peuvent voir. Écarté aussi le relevé 253702, que l'API marque duplicate_of du 253701 : c'est lui qui portait la médiane à 4,67 en se comptant deux fois. Restent quatre lectures dont le libellé ou le conditionnement établit qu'elles sont bien au kilo — sous le plancher de cinq qu'exige le registre pour dépasser C. La médiane de ces quatre, 6,99 €/kg, est cohérente avec le kilo bio du RNM ; elle n'est pas publiée pour autant, et l'avocat reste non chiffré. Passer l'entrée en C plutôt que garder six lectures et une médiane à 5,83 €/kg est le choix du CONTRAT §0 : en cas d'hésitation, l'absence."
     },
     {
       "form": "Céleri branche cru",

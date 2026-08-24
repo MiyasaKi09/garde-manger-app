@@ -757,20 +757,20 @@
       "category": "produits_laitiers",
       "observed": {
         "basis": "l",
-        "low": 4.41,
-        "central": 7,
-        "high": 15.58,
+        "low": 4.39,
+        "central": 6.59,
+        "high": 15.66,
         "unit": "EUR/l",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 79,
+        "n_observations": 64,
         "period_start": "2025-09-05",
         "period_end": "2026-08-19"
       },
       "per_kg": {
-        "low": 4.28,
-        "central": 6.8,
-        "high": 15.13,
+        "low": 4.26,
+        "central": 6.4,
+        "high": 15.2,
         "conversion": {
           "kind": "density",
           "factor": 1.03,
@@ -813,11 +813,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-19",
-        "source_record_key": "open_prices:en:creams + fr:cremes-fraiches/FR/hors-bio-hors-promo/2025-09-05..2026-08-19/n=79 · ids 253327,278513,243657,258315,243662,252921,244159,208620,185577,203556,218335,266337,234814,263457,234478,266879,217034,136948,252927,203779,207320,234813,234480,145045,225643,234853,209379,263408,238922,278277,263654,207244,243658,289316,222047,262795,176679,207321,289245,207242,234431,313535,289317,278738,278314,282607,278313,203557,243197,163332,171123,252926,253000,252913,167506,252918,207281,243198,252999,232472,258286,176680,210038,289104,253329,286057,178812,217029,217515,263608,281536,205423,225162,278737,217026,167549,234477,249195,167534",
-        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:creams + fr:cremes-fraiches », du 2025-09-05 au 2026-08-19, hors promotion et hors bio : 79 relevés retenus après dédoublonnage (134 bruts), ramenés au litre par le poids net du contenant, de 3,90 à 21,50 EUR/l — par exemple 3,90 EUR/l le 2026-03-27 pour « Crème fraîche 30% mg » (Délisse) en 500 ml (relevé n° 253327) ; 7,00 EUR/l le 2026-02-07 pour « Elle & vire creme fleurette entiere 31%mg brique 33cl » (Elle & vire) en 330 ml (relevé n° 207242) ; 21,50 EUR/l le 2025-11-25 pour « La Crème Entière De Normandie 30%MG » (Elle & Vire) en 200 ml (relevé n° 167534). Médiane 7,00 EUR/l, D1 4,41, D9 15,58."
+        "source_record_key": "open_prices:en:creams + fr:cremes-fraiches/FR/hors-bio-hors-promo/2025-09-05..2026-08-19/n=64 · ids 253327,278513,258315,243662,252921,244159,208620,185577,203556,218335,266337,263457,234478,266879,217034,136948,252927,203779,207320,234813,234480,145045,225643,234853,209379,263408,238922,278277,263654,207244,243658,289316,222047,262795,176679,207321,289245,207242,234431,313535,289317,278738,278314,282607,278313,203557,163332,167506,252918,232472,289104,253329,286057,217029,217515,263608,281536,205423,225162,278737,217026,167549,249195,167534",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:creams + fr:cremes-fraiches », du 2025-09-05 au 2026-08-19, hors promotion et hors bio : 64 relevés retenus après dédoublonnage puis retrait de 15 relevés hors sélection (voir notes), ramenés au litre par le poids net du contenant, de 3,90 à 21,50 EUR/l — par exemple 3,90 EUR/l le 2026-03-27 pour « Crème fraîche 30% mg » (Délisse) en 500 ml (relevé n° 253327) ; 6,58 EUR/l le 2026-06-20 pour « La Crème Entière De Normandie 30%MG » (Elle & Vire) en 500 ml (relevé n° 289316) (relevé le plus proche de la médiane) ; 21,50 EUR/l le 2025-11-25 pour « La Crème Entière De Normandie 30%MG » (Elle & Vire) en 200 ml (relevé n° 167534). Médiane 6,59 EUR/l, D1 4,39, D9 15,66."
       },
       "reindexation": null,
-      "notes": "Écartées : crèmes épaisses (forme distincte du catalogue), crèmes allégées à 4–18 % de matière grasse, crèmes végétales, crèmes à cuisiner et crèmes dessert. Conditionnement : la brique de 50 cl domine (26 relevés) mais la brique de 20 cl arrive juste derrière (23), et c'est elle qui tire tout le haut de la fourchette : les huit relevés les plus chers de l'échantillon sont tous des briques de 20 cl, entre 15,45 et 21,50 €/l (La Crème Entière de Normandie d'Elle & Vire, relevée chez E.Leclerc Express, Carrefour City, Franprix). Le D9 à plus du double de la médiane n'est donc pas une aberration : c'est le format.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Acreams&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=fr%3Acremes-fraiches&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en ml, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent."
+      "notes": "Écartées : crèmes épaisses (forme distincte du catalogue), crèmes allégées à 4–18 % de matière grasse, crèmes végétales, crèmes à cuisiner et crèmes dessert. Conditionnement : la brique de 50 cl domine (26 relevés) mais la brique de 20 cl arrive juste derrière (23), et c'est elle qui tire tout le haut de la fourchette : les huit relevés les plus chers de l'échantillon sont tous des briques de 20 cl, entre 15,45 et 21,50 €/l (La Crème Entière de Normandie d'Elle & Vire, relevée chez E.Leclerc Express, Carrefour City, Franprix). Le D9 à plus du double de la médiane n'est donc pas une aberration : c'est le format.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Acreams&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=fr%3Acremes-fraiches&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en ml, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent.\n\nRÉVISION DU 2026-08-24 (relecture adverse, chaque relevé cité rouvert sur l'API Open Prices). 15 relevés ont été RETIRÉS de l'échantillon : crèmes ÉPAISSES (en:refrigerated-30-fat-thick-cream : Isigny, Bresse, crue fermière), crèmes ALLÉGÉES (fr:cremes-legeres) et crèmes AU MASCARPONE — la note déclarait déjà écarter les épaisses, les allégées et les crèmes à cuisiner — et la crème épaisse est une forme distincte, chiffrée à part dans ce même fichier. La fourchette publiée passe de 4,41 / 7,00 / 15,58 à 4,39 / 6,59 / 15,66 EUR/l, et l'effectif de 79 à 64. Identifiants retirés : 243657, 234814, 243197, 171123, 252926, 253000, 252913, 207281, 243198, 252999, 258286, 176680, 210038, 178812, 234477 — ils sont nommés ici pour que le calcul puisse être refait dans les deux sens. Le critère du retrait est le classement d'Open Food Facts lui-même (categories_tags), et non une lecture du libellé : c'est le seul qu'un relecteur puisse rejouer à l'identique."
     },
     {
       "form": "Lait entier",
@@ -1325,20 +1325,20 @@
       "category": "produits_laitiers",
       "observed": {
         "basis": "kg",
-        "low": 14.95,
+        "low": 14.62,
         "central": 20.95,
-        "high": 24.95,
+        "high": 25.13,
         "unit": "EUR/kg",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 51,
+        "n_observations": 45,
         "period_start": "2025-08-26",
         "period_end": "2026-08-18"
       },
       "per_kg": {
-        "low": 14.95,
+        "low": 14.62,
         "central": 20.95,
-        "high": 24.95,
+        "high": 25.13,
         "conversion": {
           "kind": "identity"
         }
@@ -1364,11 +1364,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-18",
-        "source_record_key": "open_prices:en:comte/FR/hors-bio-hors-promo/2025-08-26..2026-08-18/n=51 · ids 135362,270691,304111,312117,174129,241536,312125,258782,273478,188592,241240,173784,241535,241529,241255,192479,270647,273150,241834,272122,273395,241254,172714,165560,178670,265818,263611,241528,272121,243369,273394,272120,265725,280864,270334,273479,272123,139341,270336,243367,249005,240873,233355,263642,263612,272038,241253,265820,273147,270384,168144",
-        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:comte », du 2025-08-26 au 2026-08-18, hors promotion et hors bio : 51 relevés retenus après dédoublonnage (96 bruts), ramenés au kilogramme par le poids net du contenant, de 13,68 à 28,45 EUR/kg — par exemple 13,68 EUR/kg le 2025-08-26 pour « Comté » (Chêne d'argent) en 250 g (relevé n° 135362) ; 20,95 EUR/kg le 2026-04-15 pour « Comté Le Caractère 12 Mois » (Entremont) en 200 g (relevé n° 265818) ; 28,45 EUR/kg le 2025-11-28 pour « COMTÉ Affiné 9 MOIS » (Fort des Rousses) en 200 g (relevé n° 168144). Médiane 20,95 EUR/kg, D1 14,95, D9 24,95."
+        "source_record_key": "open_prices:en:comte/FR/hors-bio-hors-promo/2025-08-26..2026-08-18/n=45 · ids 135362,270691,304111,312117,174129,241536,312125,258782,273478,188592,241240,173784,241535,241255,270647,273150,241834,272122,273395,241254,172714,178670,265818,263611,272121,273394,272120,265725,280864,270334,273479,272123,139341,270336,249005,240873,233355,263642,263612,272038,241253,265820,273147,270384,168144",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:comte », du 2025-08-26 au 2026-08-18, hors promotion et hors bio : 45 relevés retenus après dédoublonnage puis retrait de 6 relevés hors sélection (voir notes), ramenés au kilogramme par le poids net du contenant, de 13,68 à 28,45 EUR/kg — par exemple 13,68 EUR/kg le 2025-08-26 pour « Comté » (Chêne d'argent) en 250 g (relevé n° 135362) ; 20,95 EUR/kg le 2026-04-15 pour « Comté Le Caractère 12 Mois » (Entremont) en 200 g (relevé n° 265818) ; 28,45 EUR/kg le 2025-11-28 pour « COMTÉ Affiné 9 MOIS » (Fort des Rousses) en 200 g (relevé n° 168144). Médiane 20,95 EUR/kg, D1 14,62, D9 25,13."
       },
       "reindexation": null,
-      "notes": "Le comté râpé est écarté : c'est un autre article, à un autre prix au kilo. La durée d'affinage, qui explique une bonne part de l'écart entre 13,68 et 28,45 €/kg, n'est pas segmentée — le catalogue ne la porte pas, et le CONTRAT §3.1 laisse la dispersion l'absorber. Rendement inconnu : le comté s'achète avec sa croûte.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Acomte&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent."
+      "notes": "Le comté râpé est écarté : c'est un autre article, à un autre prix au kilo. La durée d'affinage, qui explique une bonne part de l'écart entre 13,68 et 28,45 €/kg, n'est pas segmentée — le catalogue ne la porte pas, et le CONTRAT §3.1 laisse la dispersion l'absorber. Rendement inconnu : le comté s'achète avec sa croûte.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Acomte&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent.\n\nRÉVISION DU 2026-08-24 (relecture adverse, chaque relevé cité rouvert sur l'API Open Prices). 6 relevés ont été RETIRÉS de l'échantillon : comté RÂPÉ d'Entremont (2×70 g et 130 g) — la note déclarait déjà l'écarter — le générique Open Food Facts du 3123930771004 porte « Comté Rapé ». La fourchette publiée passe de 14,95 / 20,95 / 24,95 à 14,62 / 20,95 / 25,13 EUR/kg, et l'effectif de 51 à 45. Identifiants retirés : 241529, 192479, 165560, 241528, 243369, 243367 — ils sont nommés ici pour que le calcul puisse être refait dans les deux sens. Le critère du retrait est le classement d'Open Food Facts lui-même (categories_tags), et non une lecture du libellé : c'est le seul qu'un relecteur puisse rejouer à l'identique."
     },
     {
       "form": "Pecorino romano",
@@ -1743,19 +1743,19 @@
       "observed": {
         "basis": "kg",
         "low": 1.75,
-        "central": 3.29,
-        "high": 5.44,
+        "central": 3.18,
+        "high": 5.28,
         "unit": "EUR/kg",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 66,
+        "n_observations": 61,
         "period_start": "2025-09-14",
         "period_end": "2026-08-21"
       },
       "per_kg": {
         "low": 1.75,
-        "central": 3.29,
-        "high": 5.44,
+        "central": 3.18,
+        "high": 5.28,
         "conversion": {
           "kind": "identity"
         }
@@ -1796,11 +1796,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-21",
-        "source_record_key": "open_prices:en:rices/FR/hors-bio-hors-promo/2025-09-14..2026-08-21/n=66 · ids 292853,188496,304082,238525,238115,268710,312074,224529,211507,209842,289107,209843,206753,225085,224326,310264,138131,310329,315472,302912,313375,258133,246383,238119,180538,258256,211510,171217,216455,300904,281343,246384,305310,216458,209797,310330,180541,224371,216453,199348,138117,237914,268288,216457,199347,205959,206616,216664,199345,311287,213205,237550,209985,242776,216449,237585,171187,268658,241331,224372,270989,138121,287341,266942,218381,199346",
-        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:rices », du 2025-09-14 au 2026-08-21, hors promotion et hors bio : 66 relevés retenus après dédoublonnage (127 bruts), ramenés au kilogramme par le poids net du contenant, de 1,13 à 15,92 EUR/kg — par exemple 1,13 EUR/kg le 2026-06-23 pour « Riz Long » (Eco+) en 1000 g (relevé n° 292853) ; 3,23 EUR/kg le 2026-08-09 pour « Riz long grain incollable » (Lustucru) en 900 g (relevé n° 305310) ; 15,92 EUR/kg le 2026-02-03 pour « Riz Long Grain » (Ben's) en 125 g (relevé n° 199346). Médiane 3,29 EUR/kg, D1 1,75, D9 5,44."
+        "source_record_key": "open_prices:en:rices/FR/hors-bio-hors-promo/2025-09-14..2026-08-21/n=61 · ids 292853,188496,304082,238525,238115,268710,312074,224529,211507,209842,289107,209843,206753,225085,224326,310264,138131,310329,315472,302912,313375,258133,246383,180538,258256,211510,171217,216455,300904,281343,246384,305310,216458,209797,310330,180541,224371,216453,199348,138117,237914,268288,216457,199347,205959,206616,216664,199345,213205,237550,209985,242776,237585,171187,268658,241331,224372,287341,266942,218381,199346",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:rices », du 2025-09-14 au 2026-08-21, hors promotion et hors bio : 61 relevés retenus après dédoublonnage puis retrait de 5 relevés hors sélection (voir notes), ramenés au kilogramme par le poids net du contenant, de 1,13 à 15,92 EUR/kg — par exemple 1,13 EUR/kg le 2026-06-23 pour « Riz Long » (Eco+) en 1000 g (relevé n° 292853) ; 3,17 EUR/kg le 2026-03-18 pour « TA RIZ MED 800G C20 » (Taureau Ailé) en 800 g (relevé n° 246384) (relevé le plus proche de la médiane) ; 15,92 EUR/kg le 2026-02-03 pour « Riz Long Grain » (Ben's) en 125 g (relevé n° 199346). Médiane 3,18 EUR/kg, D1 1,75, D9 5,28."
       },
       "reindexation": null,
-      "notes": "Riz long blanc uniquement : les riz complets, basmati, thaï, jasmin, ronds et à risotto sont écartés, ainsi que les riz précuits par leurs catégories Open Food Facts. Le paquet de 1 kg premier prix descend à 1,13 €/kg, le sachet de 125 g de marque monte à 15,92 €/kg — ce dernier est au-dessus du D9 et ne déplace aucune borne publiée.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Arices&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, hors catégories de plats préparés ou précuits, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent."
+      "notes": "Riz long blanc uniquement : les riz complets, basmati, thaï, jasmin, ronds et à risotto sont écartés, ainsi que les riz précuits par leurs catégories Open Food Facts. Le paquet de 1 kg premier prix descend à 1,13 €/kg, le sachet de 125 g de marque monte à 15,92 €/kg — ce dernier est au-dessus du D9 et ne déplace aucune borne publiée.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Arices&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, hors catégories de plats préparés ou précuits, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent.\n\nRÉVISION DU 2026-08-24 (relecture adverse, chaque relevé cité rouvert sur l'API Open Prices). 5 relevés ont été RETIRÉS de l'échantillon : riz parfumés jasmin, basmati et riz noir — la note déclarait déjà les écarter. La fourchette publiée passe de 1,75 / 3,29 / 5,44 à 1,75 / 3,18 / 5,28 EUR/kg, et l'effectif de 66 à 61. Identifiants retirés : 238119, 311287, 216449, 270989, 138121 — ils sont nommés ici pour que le calcul puisse être refait dans les deux sens. Le critère du retrait est le classement d'Open Food Facts lui-même (categories_tags), et non une lecture du libellé : c'est le seul qu'un relecteur puisse rejouer à l'identique."
     },
     {
       "form": "Riz rond cru",
@@ -2006,20 +2006,20 @@
       "category": "cereales_feculents",
       "observed": {
         "basis": "kg",
-        "low": 2.36,
-        "central": 3.78,
-        "high": 7.14,
+        "low": 2.2,
+        "central": 3.58,
+        "high": 5.22,
         "unit": "EUR/kg",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 110,
+        "n_observations": 97,
         "period_start": "2025-10-04",
         "period_end": "2026-08-10"
       },
       "per_kg": {
-        "low": 2.36,
-        "central": 3.78,
-        "high": 7.14,
+        "low": 2.2,
+        "central": 3.58,
+        "high": 5.22,
         "conversion": {
           "kind": "identity"
         }
@@ -2060,11 +2060,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-10",
-        "source_record_key": "open_prices:en:sliced-breads/FR/hors-bio-hors-promo/2025-10-04..2026-08-10/n=110 · ids 306219,200829,176155,261413,270577,263587,201609,269238,208737,305698,306387,306386,300759,274978,265184,212462,268368,268345,272807,257064,274961,209644,270575,268366,261945,263589,235171,230960,149794,145427,276684,200876,231462,268239,268273,234584,263630,274981,269234,244732,218365,244734,244884,283478,164070,297748,261351,274503,268703,274452,216700,283564,270390,230961,300131,283657,275010,261705,268319,268318,283561,261364,297818,291442,272733,269197,202034,278435,194055,160090,155307,276859,270857,200792,306393,270392,269199,215112,257063,297817,244885,261703,274445,201211,223666,257042,274485,297883,261355,213104,271436,283954,186756,278433,202134,297830,200818,274447,261704,212881,247336,192512,247634,175586,223160,247320,250873,174773,223675,282968",
-        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:sliced-breads », du 2025-10-04 au 2026-08-10, hors promotion et hors bio : 110 relevés retenus après dédoublonnage (164 bruts), ramenés au kilogramme par le poids net du contenant, de 1,38 à 19,61 EUR/kg — par exemple 1,38 EUR/kg le 2026-08-10 pour « Pain de mie » (Marque Repère) en 500 g (relevé n° 306219) ; 3,78 EUR/kg le 2026-07-28 pour « Pain de mie nature sans croûte en grandes tranches 500g » (U) en 500 g (relevé n° 300131) ; 19,61 EUR/kg le 2026-06-11 pour « Super sandwich » (Schär) en 280 g (relevé n° 282968). Médiane 3,78 EUR/kg, D1 2,36, D9 7,14."
+        "source_record_key": "open_prices:en:sliced-breads/FR/hors-bio-hors-promo/2025-10-04..2026-08-10/n=97 · ids 306219,200829,176155,261413,270577,263587,201609,269238,208737,305698,306387,306386,300759,274978,265184,212462,268368,268345,272807,257064,274961,209644,270575,268366,261945,263589,235171,230960,149794,145427,276684,200876,231462,268239,268273,234584,263630,274981,269234,244732,218365,244734,244884,283478,164070,297748,261351,274503,268703,274452,216700,283564,270390,230961,300131,261705,268319,268318,283561,261364,297818,272733,269197,202034,278435,194055,160090,155307,276859,270857,200792,306393,270392,269199,215112,257063,297817,244885,261703,274445,201211,223666,257042,274485,297883,261355,213104,271436,283954,186756,278433,202134,297830,200818,274447,261704,212881",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:sliced-breads », du 2025-10-04 au 2026-08-10, hors promotion et hors bio : 97 relevés retenus après dédoublonnage puis retrait de 13 relevés hors sélection (voir notes), ramenés au kilogramme par le poids net du contenant, de 1,38 à 7,97 EUR/kg — par exemple 1,38 EUR/kg le 2026-08-10 pour « Pain de mie » (Marque Repère) en 500 g (relevé n° 306219) ; 3,58 EUR/kg le 2026-04-24 pour « Pain de mie » (Jacquet) en 825 g (relevé n° 268703) ; 7,97 EUR/kg le 2026-02-10 pour « Pain 100% mie longue conservation » (Harrys) en 325 g (relevé n° 212881). Médiane 3,58 EUR/kg, D1 2,20, D9 5,22."
       },
       "reindexation": null,
-      "notes": "Le catalogue compte cette forme à la tranche (30 g) autant qu'au gramme, mais Open Prices publie le prix du paquet : le relevé est donc ramené au kilo par le poids net du paquet, et non par le nombre de tranches, qui n'est pas publié de façon fiable. Conditionnement dominant : le paquet de 500 g (55 relevés sur 110). Écartés : pains de mie complets, aux céréales, briochés, sans gluten, et les pains à burger.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asliced-breads&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, hors catégories de plats préparés ou précuits, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent."
+      "notes": "Le catalogue compte cette forme à la tranche (30 g) autant qu'au gramme, mais Open Prices publie le prix du paquet : le relevé est donc ramené au kilo par le poids net du paquet, et non par le nombre de tranches, qui n'est pas publié de façon fiable. Conditionnement dominant : le paquet de 500 g (55 relevés sur 110). Écartés : pains de mie complets, aux céréales, briochés, sans gluten, et les pains à burger.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asliced-breads&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, hors catégories de plats préparés ou précuits, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent.\n\nRÉVISION DU 2026-08-24 (relecture adverse, chaque relevé cité rouvert sur l'API Open Prices). 13 relevés ont été RETIRÉS de l'échantillon : sans gluten (Gerblé, Schär) et complets (Jacquet) — la note déclarait déjà les écarter ; ils tiraient le D9 de 5,22 à 7,14 €/kg à eux seuls. La fourchette publiée passe de 2,36 / 3,78 / 7,14 à 2,20 / 3,58 / 5,22 EUR/kg, et l'effectif de 110 à 97. Identifiants retirés : 283657, 275010, 291442, 247336, 192512, 247634, 175586, 223160, 247320, 250873, 174773, 223675, 282968 — ils sont nommés ici pour que le calcul puisse être refait dans les deux sens. Le critère du retrait est le classement d'Open Food Facts lui-même (categories_tags), et non une lecture du libellé : c'est le seul qu'un relecteur puisse rejouer à l'identique."
     },
     {
       "form": "Fécule de maïs",
@@ -2138,20 +2138,20 @@
       "category": "cereales_feculents",
       "observed": {
         "basis": "kg",
-        "low": 1.54,
-        "central": 2.56,
-        "high": 7.16,
+        "low": 1.49,
+        "central": 2.38,
+        "high": 4.29,
         "unit": "EUR/kg",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 96,
+        "n_observations": 80,
         "period_start": "2025-09-14",
         "period_end": "2026-08-24"
       },
       "per_kg": {
-        "low": 1.54,
-        "central": 2.56,
-        "high": 7.16,
+        "low": 1.49,
+        "central": 2.38,
+        "high": 4.29,
         "conversion": {
           "kind": "identity"
         }
@@ -2192,11 +2192,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-24",
-        "source_record_key": "open_prices:en:pastas/FR/hors-bio-hors-promo/2025-09-14..2026-08-24/n=96 · ids 304091,238451,295450,273247,174115,304088,238468,238084,238450,211957,241391,317849,200043,255272,238053,317645,246466,302908,238475,211526,251542,312076,302796,211553,202059,246404,260023,312493,201757,195609,316325,245631,146350,195552,317430,202056,317643,202058,317529,271869,238087,238047,238478,238079,215016,280587,238477,271814,238496,238096,310458,273267,202057,169403,258143,317531,138088,224422,266992,302526,267804,315524,315523,258141,238449,146367,266937,273529,224475,298115,281676,273308,195546,267160,229549,149815,243627,243630,138082,317404,237218,258652,238490,299775,268336,305794,243629,147719,165673,171183,148105,231361,233818,314712,231362,316899",
-        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:pastas », du 2025-09-14 au 2026-08-24, hors promotion et hors bio : 96 relevés retenus après dédoublonnage (136 bruts), ramenés au kilogramme par le poids net du contenant, de 0,89 à 24,20 EUR/kg — par exemple 0,89 EUR/kg le 2026-08-04 pour « Pâtes coquillettes éco+ » (Éco+) en 1000 g (relevé n° 304091) ; 2,56 EUR/kg le 2026-05-06 pour « Pates Etoiles 500g » (Barilla) en 500 g (relevé n° 271814) ; 24,20 EUR/kg le 2026-08-23 pour « Vermicelles » (Suzi wan) en 100 g (relevé n° 316899). Médiane 2,56 EUR/kg, D1 1,54, D9 7,16."
+        "source_record_key": "open_prices:en:pastas/FR/hors-bio-hors-promo/2025-09-14..2026-08-24/n=80 · ids 304091,238451,295450,273247,174115,304088,238468,238084,238450,211957,241391,317849,200043,255272,238053,317645,246466,302908,238475,211526,251542,312076,302796,211553,202059,246404,260023,312493,201757,195609,316325,245631,146350,195552,317430,202056,317643,202058,317529,271869,238087,238047,238478,238079,215016,280587,238477,271814,238496,238096,310458,273267,202057,169403,258143,317531,138088,224422,302526,267804,315524,315523,258141,238449,146367,273529,224475,298115,281676,273308,195546,229549,243627,243630,138082,237218,258652,238490,268336,305794",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:pastas », du 2025-09-14 au 2026-08-24, hors promotion et hors bio : 80 relevés retenus après dédoublonnage puis retrait de 16 relevés hors sélection (voir notes), ramenés au kilogramme par le poids net du contenant, de 0,89 à 6,08 EUR/kg — par exemple 0,89 EUR/kg le 2026-08-04 pour « Pâtes coquillettes éco+ » (Éco+) en 1000 g (relevé n° 304091) ; 2,38 EUR/kg le 2026-05-06 pour « Pâtes Barilla Risoni Langues d'oiseau » (Barilla) en 500 g (relevé n° 271869) ; 6,08 EUR/kg le 2026-08-09 pour « Pâtes Coquillettes aux oeufs IGP d'Alsace, sachet 250g » (U) en 250 g (relevé n° 305794). Médiane 2,38 EUR/kg, D1 1,49, D9 4,29."
       },
       "reindexation": null,
-      "notes": "Coquillettes, alphabets, étoiles, risoni, perles, vermicelles de blé : les petits formats de potage et d'accompagnement. Le paquet de 500 g fait 57 relevés sur 96. Un lot de vermicelles asiatiques à 24,20 €/kg subsiste au-dessus du D9 sans déplacer les bornes publiées.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apastas&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, hors catégories de plats préparés ou précuits, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent."
+      "notes": "Coquillettes, alphabets, étoiles, risoni, perles, vermicelles de blé : les petits formats de potage et d'accompagnement. Le paquet de 500 g fait 57 relevés sur 96. Un lot de vermicelles asiatiques à 24,20 €/kg subsiste au-dessus du D9 sans déplacer les bornes publiées.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apastas&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, hors catégories de plats préparés ou précuits, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent.\n\nRÉVISION DU 2026-08-24 (relecture adverse, chaque relevé cité rouvert sur l'API Open Prices). 16 relevés ont été RETIRÉS de l'échantillon : vermicelles de riz et de haricot mungo, et coquillettes sans gluten — la note annonçait des « vermicelles de blé » ; ces relevés-là sont d'autres produits, et ils portaient le D9 de 4,29 à 7,16 €/kg. La fourchette publiée passe de 1,54 / 2,56 / 7,16 à 1,49 / 2,38 / 4,29 EUR/kg, et l'effectif de 96 à 80. Identifiants retirés : 266992, 266937, 267160, 149815, 317404, 299775, 243629, 147719, 165673, 171183, 148105, 231361, 233818, 314712, 231362, 316899 — ils sont nommés ici pour que le calcul puisse être refait dans les deux sens. Le critère du retrait est le classement d'Open Food Facts lui-même (categories_tags), et non une lecture du libellé : c'est le seul qu'un relecteur puisse rejouer à l'identique."
     },
     {
       "form": "Pâtes sèches courtes",
@@ -2204,20 +2204,20 @@
       "category": "cereales_feculents",
       "observed": {
         "basis": "kg",
-        "low": 1.37,
-        "central": 2.44,
-        "high": 4.83,
+        "low": 1.35,
+        "central": 2.38,
+        "high": 4.6,
         "unit": "EUR/kg",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 194,
+        "n_observations": 186,
         "period_start": "2025-09-07",
         "period_end": "2026-08-24"
       },
       "per_kg": {
-        "low": 1.37,
-        "central": 2.44,
-        "high": 4.83,
+        "low": 1.35,
+        "central": 2.38,
+        "high": 4.6,
         "conversion": {
           "kind": "identity"
         }
@@ -2258,11 +2258,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-24",
-        "source_record_key": "open_prices:en:penne + en:fusilli + en:pastas/FR/hors-bio-hors-promo/2025-09-07..2026-08-24/n=194 · ids 304091,312080,238451,312083,273554,273247,273246,251541,238285,174115,163868,304086,313541,238471,185042,304088,292349,251469,238468,237213,238084,257446,238450,238470,211957,176126,241391,241738,211477,200043,317849,238098,232687,238092,255272,317533,242783,229796,238053,317645,184798,302908,215746,199340,238475,238566,282580,280660,238300,241619,211526,238073,211482,260033,312076,302796,211553,211471,211523,202059,238467,246404,271537,260023,277548,238567,238095,312493,273725,273304,195609,195550,316325,146365,245631,238099,273968,199549,242787,195552,317430,243008,238447,317643,273305,202058,211567,246403,146232,317529,211469,317534,238080,238087,211475,238478,211554,238097,238079,224430,238068,215016,238078,241392,238077,238497,237330,192870,280587,258142,251472,195872,273249,238096,273254,202057,237882,238051,237883,258143,243616,273257,238495,272775,224422,268364,267804,243021,205587,237931,238136,312494,258141,146185,238449,146367,197488,145638,232307,317709,238579,191806,238281,147452,146218,291714,224475,232275,298115,146194,273308,247244,238572,262476,237768,195546,137091,197812,312355,215054,229549,233412,204061,156198,238482,316950,242928,243627,243615,238825,242930,138082,317405,272984,241389,258847,139284,237218,258769,258652,238320,180203,166339,317526,238568,238490,258307,223834,268336,305794,305795,224429,284936,281731",
-        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:penne + en:fusilli + en:pastas », du 2025-09-07 au 2026-08-24, hors promotion et hors bio : 194 relevés retenus après dédoublonnage (271 bruts), ramenés au kilogramme par le poids net du contenant, de 0,89 à 10,32 EUR/kg — par exemple 0,89 EUR/kg le 2026-08-04 pour « Pâtes coquillettes éco+ » (Éco+) en 1000 g (relevé n° 304091) ; 2,44 EUR/kg le 2026-02-09 pour « Penne rigate qualité supérieure 500g » (Panzani) en 500 g (relevé n° 211554) ; 10,32 EUR/kg le 2026-06-07 pour « Fusilli de pois cassés » (Carrefour) en 250 g (relevé n° 281731). Médiane 2,44 EUR/kg, D1 1,37, D9 4,83."
+        "source_record_key": "open_prices:en:penne + en:fusilli + en:pastas/FR/hors-bio-hors-promo/2025-09-07..2026-08-24/n=186 · ids 304091,312080,238451,312083,273554,273247,273246,251541,238285,174115,163868,304086,313541,238471,185042,304088,292349,251469,238468,237213,238084,257446,238450,238470,211957,176126,241391,241738,211477,200043,317849,238098,232687,238092,255272,317533,242783,229796,238053,317645,184798,302908,215746,199340,238475,238566,282580,280660,238300,241619,211526,238073,211482,260033,312076,302796,211553,211471,211523,202059,238467,246404,271537,260023,277548,238567,238095,312493,273725,273304,195609,195550,316325,146365,245631,238099,273968,199549,242787,195552,317430,243008,238447,317643,273305,202058,211567,246403,146232,317529,211469,317534,238080,238087,211475,238478,211554,238097,238079,224430,238068,215016,238078,241392,238077,238497,237330,192870,280587,258142,251472,195872,273249,238096,273254,202057,237882,238051,237883,258143,243616,273257,238495,272775,224422,268364,267804,243021,205587,237931,238136,312494,258141,146185,238449,146367,197488,145638,232307,317709,238579,191806,238281,147452,146218,291714,224475,232275,298115,146194,273308,247244,238572,262476,237768,195546,137091,197812,312355,215054,229549,233412,204061,156198,238482,316950,242928,243627,243615,238825,242930,138082,258847,237218,258769,258652,238320,180203,238568,238490,258307,268336,305794,305795,224429,284936",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:penne + en:fusilli + en:pastas », du 2025-09-07 au 2026-08-24, hors promotion et hors bio : 186 relevés retenus après dédoublonnage puis retrait de 8 relevés hors sélection (voir notes), ramenés au kilogramme par le poids net du contenant, de 0,89 à 6,70 EUR/kg — par exemple 0,89 EUR/kg le 2026-08-04 pour « Pâtes coquillettes éco+ » (Éco+) en 1000 g (relevé n° 304091) ; 2,38 EUR/kg le 2026-02-09 pour « penne rigate » (Auchan) en 500 g (relevé n° 211469) ; 6,70 EUR/kg le 2026-06-13 pour « Penne Rigate N°66 » (Rummo) en 500 g (relevé n° 284936). Médiane 2,38 EUR/kg, D1 1,35, D9 4,60."
       },
       "reindexation": null,
-      "notes": "Le plus gros lot de la tranche : 194 relevés, 117 références, 26 magasins. Écartées : pâtes fraîches, farcies, complètes, sans gluten, et pâtes de légumineuses (pois chiche, lentille), qui sont trois à quatre fois plus chères et ne sont pas des pâtes de blé dur. Conditionnement : 500 g (132 relevés) puis 1 kg (43).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apenne&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Afusilli&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apastas&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, hors catégories de plats préparés ou précuits, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent."
+      "notes": "Le plus gros lot de la tranche : 194 relevés, 117 références, 26 magasins. Écartées : pâtes fraîches, farcies, complètes, sans gluten, et pâtes de légumineuses (pois chiche, lentille), qui sont trois à quatre fois plus chères et ne sont pas des pâtes de blé dur. Conditionnement : 500 g (132 relevés) puis 1 kg (43).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apenne&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Afusilli&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apastas&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, hors catégories de plats préparés ou précuits, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent.\n\nRÉVISION DU 2026-08-24 (relecture adverse, chaque relevé cité rouvert sur l'API Open Prices). 8 relevés ont été RETIRÉS de l'échantillon : sans gluten (maïs-riz) et pâtes de légumineuses — la note déclarait déjà les écarter. La fourchette publiée passe de 1,37 / 2,44 / 4,83 à 1,35 / 2,38 / 4,60 EUR/kg, et l'effectif de 194 à 186. Identifiants retirés : 317405, 272984, 241389, 139284, 166339, 317526, 223834, 281731 — ils sont nommés ici pour que le calcul puisse être refait dans les deux sens. Le critère du retrait est le classement d'Open Food Facts lui-même (categories_tags), et non une lecture du libellé : c'est le seul qu'un relecteur puisse rejouer à l'identique."
     },
     {
       "form": "Spaghetti secs",
@@ -2270,20 +2270,20 @@
       "category": "cereales_feculents",
       "observed": {
         "basis": "kg",
-        "low": 1.38,
-        "central": 2.29,
-        "high": 5.12,
+        "low": 1.37,
+        "central": 2.18,
+        "high": 3.84,
         "unit": "EUR/kg",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 63,
+        "n_observations": 57,
         "period_start": "2025-09-13",
         "period_end": "2026-08-24"
       },
       "per_kg": {
-        "low": 1.38,
-        "central": 2.29,
-        "high": 5.12,
+        "low": 1.37,
+        "central": 2.18,
+        "high": 3.84,
         "conversion": {
           "kind": "identity"
         }
@@ -2324,11 +2324,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-24",
-        "source_record_key": "open_prices:en:spaghetti + en:pastas/FR/hors-bio-hors-promo/2025-09-13..2026-08-24/n=63 · ids 312082,238452,188583,163855,242472,238294,282585,238321,167325,238070,238074,197999,278139,282035,273248,264329,241388,238494,238279,211467,211552,211476,238570,233458,238054,211566,251470,184801,238315,223922,241817,238066,272878,272827,305615,199550,211481,199341,290247,290190,314721,238322,238324,238071,200044,199342,303468,224423,138003,211472,242782,202619,180194,180195,317573,145088,195549,308742,317641,280639,233411,317706,223835",
-        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:spaghetti + en:pastas », du 2025-09-13 au 2026-08-24, hors promotion et hors bio : 63 relevés retenus après dédoublonnage (115 bruts), ramenés au kilogramme par le poids net du contenant, de 0,88 à 5,75 EUR/kg — par exemple 0,88 EUR/kg le 2026-08-18 pour « Spaghetti » (Eco) en 1000 g (relevé n° 312082) ; 2,29 EUR/kg le 2026-03-05 pour « Panzani spaghetti 3 minutes 1kg » (Panzani) en 1000 g (relevé n° 238066) ; 5,75 EUR/kg le 2026-02-17 pour « Spaghetti senza glutine mais riso » (Barilla) en 400 g (relevé n° 223835). Médiane 2,29 EUR/kg, D1 1,38, D9 5,12."
+        "source_record_key": "open_prices:en:spaghetti + en:pastas/FR/hors-bio-hors-promo/2025-09-13..2026-08-24/n=57 · ids 312082,238452,188583,163855,242472,238294,282585,238321,167325,238070,238074,197999,278139,282035,273248,264329,241388,238494,238279,211467,211552,211476,238570,233458,238054,211566,251470,184801,238315,223922,241817,238066,272878,272827,305615,199550,211481,199341,290247,290190,314721,238322,238324,238071,200044,199342,303468,224423,138003,211472,242782,202619,180194,195549,280639,233411,317706",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:spaghetti + en:pastas », du 2025-09-13 au 2026-08-24, hors promotion et hors bio : 57 relevés retenus après dédoublonnage puis retrait de 6 relevés hors sélection (voir notes), ramenés au kilogramme par le poids net du contenant, de 0,88 à 5,47 EUR/kg — par exemple 0,88 EUR/kg le 2026-08-18 pour « Spaghetti » (Eco) en 1000 g (relevé n° 312082) ; 2,18 EUR/kg le 2026-03-05 pour « Les bons spaghetti courts français » (Lustucru) en 500 g (relevé n° 238315) ; 5,47 EUR/kg le 2026-08-24 pour « Spaghetti Barilla Protéine » (Barilla) en 400 g (relevé n° 317706). Médiane 2,18 EUR/kg, D1 1,37, D9 3,84."
       },
       "reindexation": null,
-      "notes": "Spaghetti et spaghettoni de blé dur, hors pâtes fraîches, aux œufs, complètes, sans gluten et de légumineuses. 63 relevés, 34 références, 24 magasins ; paquets de 400 g, 500 g et 1 kg.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aspaghetti&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apastas&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, hors catégories de plats préparés ou précuits, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent."
+      "notes": "Spaghetti et spaghettoni de blé dur, hors pâtes fraîches, aux œufs, complètes, sans gluten et de légumineuses. 63 relevés, 34 références, 24 magasins ; paquets de 400 g, 500 g et 1 kg.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aspaghetti&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apastas&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, hors catégories de plats préparés ou précuits, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent.\n\nRÉVISION DU 2026-08-24 (relecture adverse, chaque relevé cité rouvert sur l'API Open Prices). 6 relevés ont été RETIRÉS de l'échantillon : sans gluten (maïs-riz, Barilla et Arrighi) — la note déclarait déjà les écarter ; ils tiraient le D9 de 3,84 à 5,12 €/kg. La fourchette publiée passe de 1,38 / 2,29 / 5,12 à 1,37 / 2,18 / 3,84 EUR/kg, et l'effectif de 63 à 57. Identifiants retirés : 180195, 317573, 145088, 308742, 317641, 223835 — ils sont nommés ici pour que le calcul puisse être refait dans les deux sens. Le critère du retrait est le classement d'Open Food Facts lui-même (categories_tags), et non une lecture du libellé : c'est le seul qu'un relecteur puisse rejouer à l'identique."
     },
     {
       "form": "Feuille de lasagne sèche",
@@ -2402,20 +2402,20 @@
       "category": "cereales_feculents",
       "observed": {
         "basis": "kg",
-        "low": 1.49,
-        "central": 2.29,
-        "high": 5.52,
+        "low": 1.47,
+        "central": 1.86,
+        "high": 4.6,
         "unit": "EUR/kg",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 12,
+        "n_observations": 11,
         "period_start": "2025-09-14",
         "period_end": "2026-08-24"
       },
       "per_kg": {
-        "low": 1.49,
-        "central": 2.29,
-        "high": 5.52,
+        "low": 1.47,
+        "central": 1.86,
+        "high": 4.6,
         "conversion": {
           "kind": "identity"
         }
@@ -2456,11 +2456,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-24",
-        "source_record_key": "open_prices:en:pastas/FR/hors-bio-hors-promo/2025-09-14..2026-08-24/n=12 · ids 295450,146346,241384,251581,246466,146360,317531,238581,138088,243630,299775,314922",
-        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:pastas », du 2025-09-14 au 2026-08-24, hors promotion et hors bio : 12 relevés retenus après dédoublonnage (15 bruts), ramenés au kilogramme par le poids net du contenant, de 0,99 à 7,20 EUR/kg — par exemple 0,99 EUR/kg le 2026-07-21 pour « Vermicelle » (Eco+) en 1000 g (relevé n° 295450) ; 1,86 EUR/kg le 2025-10-05 pour « Cheveux d'ange » (Auchan) en 500 g (relevé n° 146360) ; 7,20 EUR/kg le 2026-08-19 pour « Cheveux d'Ange » (Dari) en 500 g (relevé n° 314922). Médiane 2,29 EUR/kg, D1 1,49, D9 5,52."
+        "source_record_key": "open_prices:en:pastas/FR/hors-bio-hors-promo/2025-09-14..2026-08-24/n=11 · ids 295450,146346,241384,251581,246466,146360,317531,238581,138088,243630,314922",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:pastas », du 2025-09-14 au 2026-08-24, hors promotion et hors bio : 11 relevés retenus après dédoublonnage puis retrait de 1 relevé hors sélection (voir notes), ramenés au kilogramme par le poids net du contenant, de 0,99 à 7,20 EUR/kg — par exemple 0,99 EUR/kg le 2026-07-21 pour « Vermicelle » (Eco+) en 1000 g (relevé n° 295450) ; 1,86 EUR/kg le 2026-03-18 pour « Pâtes Vermicelle qualité supérieure, sachet de 500g » (U) en 500 g (relevé n° 246466) ; 7,20 EUR/kg le 2026-08-19 pour « Cheveux d'Ange » (Dari) en 500 g (relevé n° 314922). Médiane 1,86 EUR/kg, D1 1,47, D9 4,60."
       },
       "reindexation": null,
-      "notes": "Vermicelles et cheveux d'ange de BLÉ. Les vermicelles de riz, de soja et de haricot mungo sont écartés nommément : ce sont d'autres produits, jusqu'à 13 €/kg, et les confondre aurait porté le rapport haut/bas à plus de 7 sans décrire la forme du catalogue.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apastas&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, hors catégories de plats préparés ou précuits, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent."
+      "notes": "Vermicelles et cheveux d'ange de BLÉ. Les vermicelles de riz, de soja et de haricot mungo sont écartés nommément : ce sont d'autres produits, jusqu'à 13 €/kg, et les confondre aurait porté le rapport haut/bas à plus de 7 sans décrire la forme du catalogue.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apastas&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, hors catégories de plats préparés ou précuits, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent.\n\nRÉVISION DU 2026-08-24 (relecture adverse, chaque relevé cité rouvert sur l'API Open Prices). 1 relevé a été RETIRÉ de l'échantillon : vermicelle de riz — la note écartait « nommément » les vermicelles de riz ; celui-ci était resté, et il portait la médiane de 1,86 à 2,29 €/kg. La fourchette publiée passe de 1,49 / 2,29 / 5,52 à 1,47 / 1,86 / 4,60 EUR/kg, et l'effectif de 12 à 11. Identifiants retirés : 299775 — ils sont nommés ici pour que le calcul puisse être refait dans les deux sens. Le critère du retrait est le classement d'Open Food Facts lui-même (categories_tags), et non une lecture du libellé : c'est le seul qu'un relecteur puisse rejouer à l'identique."
     },
     {
       "form": "Pâtes fraîches aux œufs crues",
@@ -3033,19 +3033,19 @@
       "observed": {
         "basis": "kg",
         "low": 0.88,
-        "central": 1.75,
-        "high": 2.18,
+        "central": 1.72,
+        "high": 2.15,
         "unit": "EUR/kg",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 19,
-        "period_start": "2025-08-26",
+        "n_observations": 18,
+        "period_start": "2025-09-17",
         "period_end": "2026-08-23"
       },
       "per_kg": {
         "low": 0.88,
-        "central": 1.75,
-        "high": 2.18,
+        "central": 1.72,
+        "high": 2.15,
         "conversion": {
           "kind": "identity"
         }
@@ -3086,11 +3086,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-23",
-        "source_record_key": "open_prices:en:white-sugars + en:granulated-sugars/FR/hors-bio-hors-promo/2025-08-26..2026-08-23/n=19 · ids 292390,300758,316883,185036,167170,188552,313527,212846,183966,211455,238883,212845,212737,230159,212735,180951,311366,167333,135927",
-        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:white-sugars + en:granulated-sugars », du 2025-08-26 au 2026-08-23, hors promotion et hors bio : 19 relevés retenus après dédoublonnage (49 bruts), ramenés au kilogramme par le poids net du contenant, de 0,79 à 2,93 EUR/kg — par exemple 0,79 EUR/kg le 2026-07-08 pour « Sucre en poudre blanc » (Eco+) en 1000 g (relevé n° 292390) ; 1,75 EUR/kg le 2026-02-09 pour « Auchan sucre en poudre bec verseur 1kg » (Auchan) en 1000 g (relevé n° 211455) ; 2,93 EUR/kg le 2025-08-26 pour « PETIT SUCRE » (Béghin Say®) en 1000 g (relevé n° 135927). Médiane 1,75 EUR/kg, D1 0,88, D9 2,18."
+        "source_record_key": "open_prices:en:white-sugars + en:granulated-sugars/FR/hors-bio-hors-promo/2025-09-17..2026-08-23/n=18 · ids 292390,300758,316883,185036,167170,188552,313527,212846,183966,211455,238883,212845,212737,230159,212735,180951,311366,167333",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:white-sugars + en:granulated-sugars », du 2025-09-17 au 2026-08-23, hors promotion et hors bio : 18 relevés retenus après dédoublonnage puis retrait de 1 relevé hors sélection (voir notes), ramenés au kilogramme par le poids net du contenant, de 0,79 à 2,28 EUR/kg — par exemple 0,79 EUR/kg le 2026-07-08 pour « Sucre en poudre blanc » (Eco+) en 1000 g (relevé n° 292390) ; 1,69 EUR/kg le 2026-01-10 pour « Sucre en Poudre » (Carrefour) en 1000 g (relevé n° 183966) (relevé le plus proche de la médiane) ; 2,28 EUR/kg le 2025-11-24 pour « Etui Bec Verseur Sucre en Poudre Saint Louis Sucre 1kg » (Saint louis) en 1000 g (relevé n° 167333). Médiane 1,72 EUR/kg, D1 0,88, D9 2,15."
       },
       "reindexation": null,
-      "notes": "Sucre blanc en poudre ou cristallisé uniquement. Écartés nommément : sucre glace, sucre vanillé, sucres roux, sucres spéciaux (gélifiant, confiture), et toutes les présentations en morceaux, bûchettes, sticks et dosettes, dont le prix au kilo n'a aucun rapport (jusqu'à 6 €/kg). 19 relevés, 16 références, 13 magasins ; le paquet de 1 kg fait 16 relevés sur 19, un sac de 5 kg apparaît à 0,87 €/kg — l'illustration exacte du piège du conditionnement.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Awhite-sugars&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Agranulated-sugars&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent."
+      "notes": "Sucre blanc en poudre ou cristallisé uniquement. Écartés nommément : sucre glace, sucre vanillé, sucres roux, sucres spéciaux (gélifiant, confiture), et toutes les présentations en morceaux, bûchettes, sticks et dosettes, dont le prix au kilo n'a aucun rapport (jusqu'à 6 €/kg). 19 relevés, 16 références, 13 magasins ; le paquet de 1 kg fait 16 relevés sur 19, un sac de 5 kg apparaît à 0,87 €/kg — l'illustration exacte du piège du conditionnement.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Awhite-sugars&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Agranulated-sugars&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent.\n\nRÉVISION DU 2026-08-24 (relecture adverse, chaque relevé cité rouvert sur l'API Open Prices). 1 relevé a été RETIRÉ de l'échantillon : sucre en morceaux (en:lump-sugar) — la note déclarait déjà écarter « toutes les présentations en morceaux ». La fourchette publiée passe de 0,88 / 1,75 / 2,18 à 0,88 / 1,72 / 2,15 EUR/kg, et l'effectif de 19 à 18. Identifiants retirés : 135927 — ils sont nommés ici pour que le calcul puisse être refait dans les deux sens. Le critère du retrait est le classement d'Open Food Facts lui-même (categories_tags), et non une lecture du libellé : c'est le seul qu'un relecteur puisse rejouer à l'identique."
     },
     {
       "form": "Miel",
