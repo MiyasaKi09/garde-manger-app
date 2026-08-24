@@ -351,20 +351,20 @@
       "category": "matieres_grasses",
       "observed": {
         "basis": "l",
-        "low": 1.52,
-        "central": 2.09,
-        "high": 3.36,
+        "low": 1.55,
+        "central": 2.1,
+        "high": 3.38,
         "unit": "EUR/l",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 44,
+        "n_observations": 42,
         "period_start": "2025-09-17",
         "period_end": "2026-08-23"
       },
       "per_kg": {
-        "low": 1.65,
-        "central": 2.27,
-        "high": 3.65,
+        "low": 1.68,
+        "central": 2.28,
+        "high": 3.67,
         "conversion": {
           "kind": "density",
           "factor": 0.92,
@@ -407,11 +407,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-23",
-        "source_record_key": "open_prices:en:sunflower-oils + en:rapeseed-oils/FR/hors-bio-hors-promo/2025-09-17..2026-08-23/n=44 · ids 232310,275532,304094,167178,188578,241414,316609,273720,312440,304095,292357,249515,167180,167179,188576,174113,237769,188577,211556,213266,241742,211533,143828,305864,211492,179417,232998,211491,289294,213196,217301,241344,187541,167829,241416,243608,243603,289295,316474,213197,212349,292493,233000,212348",
-        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:sunflower-oils + en:rapeseed-oils », du 2025-09-17 au 2026-08-23, hors promotion et hors bio : 44 relevés retenus après dédoublonnage (80 bruts), ramenés au litre par le poids net du contenant, de 1,00 à 4,58 EUR/l — par exemple 1,00 EUR/l le 2026-02-24 pour « Huile de Tournesol BOUTON D'OR 1L » (Bouton d'or) en 2000 ml (relevé n° 232310) ; 2,09 EUR/l le 2026-02-09 pour « 100% huile de tournesol raffinée » (Auchan) en 1000 ml (relevé n° 211533) ; 4,58 EUR/l le 2026-02-10 pour « Huile Cœur de Tournesol » (Lesieur) en 500 ml (relevé n° 212348). Médiane 2,09 EUR/l, D1 1,52, D9 3,36."
+        "source_record_key": "open_prices:en:sunflower-oils + en:rapeseed-oils/FR/hors-bio-hors-promo/2025-09-17..2026-08-23/n=42 · ids 304094,167178,188578,241414,316609,273720,312440,304095,292357,249515,167180,167179,188576,174113,237769,188577,211556,213266,241742,211533,143828,305864,211492,179417,232998,211491,289294,213196,217301,241344,187541,167829,241416,243608,243603,289295,316474,213197,212349,292493,233000,212348",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:sunflower-oils + en:rapeseed-oils », du 2025-09-17 au 2026-08-23, hors promotion et hors bio : 42 relevés retenus après dédoublonnage puis retrait de 2 relevés hors sélection (voir notes), ramenés au litre par le poids net du contenant, de 1,46 à 4,58 EUR/l — par exemple 1,46 EUR/l le 2026-08-04 pour « Huile de Colza » (Eco+) en 1000 ml (relevé n° 304094) ; 2,11 EUR/l le 2026-08-09 pour « Huile de tournesol Bouteille 1L » (U) en 1000 ml (relevé n° 305864) (relevé le plus proche de la médiane) ; 4,58 EUR/l le 2026-02-10 pour « Huile Cœur de Tournesol » (Lesieur) en 500 ml (relevé n° 212348). Médiane 2,10 EUR/l, D1 1,55, D9 3,38."
       },
       "reindexation": null,
-      "notes": "ADAPTATION DÉCLARÉE, et c'est le point à relire en priorité : « Huile de friture » n'est pas un produit commercial identifiable, c'est ce que la recette écrit quand elle ne précise pas. Aucune source du registre ne cote une « huile de friture ». Le chiffre est donc celui du rayon des huiles neutres de base — tournesol et colza raffinés confondus, 44 relevés, 35 références, 16 magasins — qui est ce qu'on achète effectivement pour frire en France. Les deux huiles sont proches (médiane 2,11 €/l pour le tournesol seul, 1,78 €/l pour le colza seul), ce qui rend le choix peu sensible ; l'huile d'olive, de sésame, de noix et d'arachide sont exclues. Un relecteur qui juge l'adaptation abusive doit traiter cette ligne comme non chiffrée : c'est exactement pourquoi elle est en B et pas en A.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asunflower-oils&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Arapeseed-oils&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en ml, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent."
+      "notes": "ADAPTATION DÉCLARÉE, et c'est le point à relire en priorité : « Huile de friture » n'est pas un produit commercial identifiable, c'est ce que la recette écrit quand elle ne précise pas. Aucune source du registre ne cote une « huile de friture ». Le chiffre est donc celui du rayon des huiles neutres de base — tournesol et colza raffinés confondus, 44 relevés, 35 références, 16 magasins — qui est ce qu'on achète effectivement pour frire en France. Les deux huiles sont proches (médiane 2,11 €/l pour le tournesol seul, 1,78 €/l pour le colza seul), ce qui rend le choix peu sensible ; l'huile d'olive, de sésame, de noix et d'arachide sont exclues. Un relecteur qui juge l'adaptation abusive doit traiter cette ligne comme non chiffrée : c'est exactement pourquoi elle est en B et pas en A.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asunflower-oils&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Arapeseed-oils&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en ml, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent.\n\nRÉVISION DU 2026-08-24 (relecture adverse, chaque relevé cité rouvert sur l'API Open Prices). Deux relevés du même article (Bouton d'Or, code 3250390000549) ont été RETIRÉS : Open Food Facts publie pour cette référence un libellé « Huile de Tournesol BOUTON D'OR 1L » et une quantité de 2 000 ml. La source se contredit, donc le prix au litre n'en est pas déductible : à 2 L, les 2,01 € et 2,30 € relevés donnaient 1,00 et 1,15 €/l, soit la moitié de l'huile de tournesol la moins chère de France. Le filtre annoncé exigeait une « quantité nette connue » ; ici elle ne l'est pas. C'est le pendant, par le bas, des lots de six bouteilles signalés sur le lait entier — à ceci près que ces deux-là déplaçaient le D1. La fourchette publiée passe de 1,52 / 2,09 / 3,36 à 1,55 / 2,10 / 3,38 EUR/l, et l'effectif de 44 à 42."
     },
     {
       "form": "Huile végétale",
@@ -419,20 +419,20 @@
       "category": "matieres_grasses",
       "observed": {
         "basis": "l",
-        "low": 1.52,
-        "central": 2.09,
-        "high": 3.36,
+        "low": 1.55,
+        "central": 2.1,
+        "high": 3.38,
         "unit": "EUR/l",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 44,
+        "n_observations": 42,
         "period_start": "2025-09-17",
         "period_end": "2026-08-23"
       },
       "per_kg": {
-        "low": 1.65,
-        "central": 2.27,
-        "high": 3.65,
+        "low": 1.68,
+        "central": 2.28,
+        "high": 3.67,
         "conversion": {
           "kind": "density",
           "factor": 0.92,
@@ -475,11 +475,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-23",
-        "source_record_key": "open_prices:en:sunflower-oils + en:rapeseed-oils/FR/hors-bio-hors-promo/2025-09-17..2026-08-23/n=44 · ids 232310,275532,304094,167178,188578,241414,316609,273720,312440,304095,292357,249515,167180,167179,188576,174113,237769,188577,211556,213266,241742,211533,143828,305864,211492,179417,232998,211491,289294,213196,217301,241344,187541,167829,241416,243608,243603,289295,316474,213197,212349,292493,233000,212348",
-        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:sunflower-oils + en:rapeseed-oils », du 2025-09-17 au 2026-08-23, hors promotion et hors bio : 44 relevés retenus après dédoublonnage (80 bruts), ramenés au litre par le poids net du contenant, de 1,00 à 4,58 EUR/l — par exemple 1,00 EUR/l le 2026-02-24 pour « Huile de Tournesol BOUTON D'OR 1L » (Bouton d'or) en 2000 ml (relevé n° 232310) ; 2,09 EUR/l le 2026-02-09 pour « 100% huile de tournesol raffinée » (Auchan) en 1000 ml (relevé n° 211533) ; 4,58 EUR/l le 2026-02-10 pour « Huile Cœur de Tournesol » (Lesieur) en 500 ml (relevé n° 212348). Médiane 2,09 EUR/l, D1 1,52, D9 3,36."
+        "source_record_key": "open_prices:en:sunflower-oils + en:rapeseed-oils/FR/hors-bio-hors-promo/2025-09-17..2026-08-23/n=42 · ids 304094,167178,188578,241414,316609,273720,312440,304095,292357,249515,167180,167179,188576,174113,237769,188577,211556,213266,241742,211533,143828,305864,211492,179417,232998,211491,289294,213196,217301,241344,187541,167829,241416,243608,243603,289295,316474,213197,212349,292493,233000,212348",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:sunflower-oils + en:rapeseed-oils », du 2025-09-17 au 2026-08-23, hors promotion et hors bio : 42 relevés retenus après dédoublonnage puis retrait de 2 relevés hors sélection (voir notes), ramenés au litre par le poids net du contenant, de 1,46 à 4,58 EUR/l — par exemple 1,46 EUR/l le 2026-08-04 pour « Huile de Colza » (Eco+) en 1000 ml (relevé n° 304094) ; 2,11 EUR/l le 2026-08-09 pour « Huile de tournesol Bouteille 1L » (U) en 1000 ml (relevé n° 305864) (relevé le plus proche de la médiane) ; 4,58 EUR/l le 2026-02-10 pour « Huile Cœur de Tournesol » (Lesieur) en 500 ml (relevé n° 212348). Médiane 2,10 EUR/l, D1 1,55, D9 3,38."
       },
       "reindexation": null,
-      "notes": "Même adaptation déclarée que « Huile de friture » : la forme est générique, le prix est celui du rayon des huiles neutres de base (tournesol et colza raffinés). Voir les notes de cette entrée pour le raisonnement complet et ses limites.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asunflower-oils&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Arapeseed-oils&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en ml, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent."
+      "notes": "Même adaptation déclarée que « Huile de friture » : la forme est générique, le prix est celui du rayon des huiles neutres de base (tournesol et colza raffinés). Voir les notes de cette entrée pour le raisonnement complet et ses limites.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asunflower-oils&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Arapeseed-oils&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en ml, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent.\n\nRÉVISION DU 2026-08-24 (relecture adverse, chaque relevé cité rouvert sur l'API Open Prices). Même retrait que « Huile de friture » : voir les notes de cette entrée. La fourchette publiée passe de 1,52 / 2,09 / 3,36 à 1,55 / 2,10 / 3,38 EUR/l, et l'effectif de 44 à 42."
     },
     {
       "form": "Huile végétale raffinée",
@@ -487,20 +487,20 @@
       "category": "matieres_grasses",
       "observed": {
         "basis": "l",
-        "low": 1.52,
-        "central": 2.09,
-        "high": 3.36,
+        "low": 1.55,
+        "central": 2.1,
+        "high": 3.38,
         "unit": "EUR/l",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 44,
+        "n_observations": 42,
         "period_start": "2025-09-17",
         "period_end": "2026-08-23"
       },
       "per_kg": {
-        "low": 1.65,
-        "central": 2.27,
-        "high": 3.65,
+        "low": 1.68,
+        "central": 2.28,
+        "high": 3.67,
         "conversion": {
           "kind": "density",
           "factor": 0.92,
@@ -543,11 +543,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-23",
-        "source_record_key": "open_prices:en:sunflower-oils + en:rapeseed-oils/FR/hors-bio-hors-promo/2025-09-17..2026-08-23/n=44 · ids 232310,275532,304094,167178,188578,241414,316609,273720,312440,304095,292357,249515,167180,167179,188576,174113,237769,188577,211556,213266,241742,211533,143828,305864,211492,179417,232998,211491,289294,213196,217301,241344,187541,167829,241416,243608,243603,289295,316474,213197,212349,292493,233000,212348",
-        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:sunflower-oils + en:rapeseed-oils », du 2025-09-17 au 2026-08-23, hors promotion et hors bio : 44 relevés retenus après dédoublonnage (80 bruts), ramenés au litre par le poids net du contenant, de 1,00 à 4,58 EUR/l — par exemple 1,00 EUR/l le 2026-02-24 pour « Huile de Tournesol BOUTON D'OR 1L » (Bouton d'or) en 2000 ml (relevé n° 232310) ; 2,09 EUR/l le 2026-02-09 pour « 100% huile de tournesol raffinée » (Auchan) en 1000 ml (relevé n° 211533) ; 4,58 EUR/l le 2026-02-10 pour « Huile Cœur de Tournesol » (Lesieur) en 500 ml (relevé n° 212348). Médiane 2,09 EUR/l, D1 1,52, D9 3,36."
+        "source_record_key": "open_prices:en:sunflower-oils + en:rapeseed-oils/FR/hors-bio-hors-promo/2025-09-17..2026-08-23/n=42 · ids 304094,167178,188578,241414,316609,273720,312440,304095,292357,249515,167180,167179,188576,174113,237769,188577,211556,213266,241742,211533,143828,305864,211492,179417,232998,211491,289294,213196,217301,241344,187541,167829,241416,243608,243603,289295,316474,213197,212349,292493,233000,212348",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:sunflower-oils + en:rapeseed-oils », du 2025-09-17 au 2026-08-23, hors promotion et hors bio : 42 relevés retenus après dédoublonnage puis retrait de 2 relevés hors sélection (voir notes), ramenés au litre par le poids net du contenant, de 1,46 à 4,58 EUR/l — par exemple 1,46 EUR/l le 2026-08-04 pour « Huile de Colza » (Eco+) en 1000 ml (relevé n° 304094) ; 2,11 EUR/l le 2026-08-09 pour « Huile de tournesol Bouteille 1L » (U) en 1000 ml (relevé n° 305864) (relevé le plus proche de la médiane) ; 4,58 EUR/l le 2026-02-10 pour « Huile Cœur de Tournesol » (Lesieur) en 500 ml (relevé n° 212348). Médiane 2,10 EUR/l, D1 1,55, D9 3,38."
       },
       "reindexation": null,
-      "notes": "Même adaptation déclarée que « Huile de friture ». Le mot « raffinée » est ici cohérent avec la sélection, qui ne retient que des huiles raffinées de grande distribution.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asunflower-oils&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Arapeseed-oils&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en ml, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent."
+      "notes": "Même adaptation déclarée que « Huile de friture ». Le mot « raffinée » est ici cohérent avec la sélection, qui ne retient que des huiles raffinées de grande distribution.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asunflower-oils&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Arapeseed-oils&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en ml, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent.\n\nRÉVISION DU 2026-08-24 (relecture adverse, chaque relevé cité rouvert sur l'API Open Prices). Même retrait que « Huile de friture » : voir les notes de cette entrée. La fourchette publiée passe de 1,52 / 2,09 / 3,36 à 1,55 / 2,10 / 3,38 EUR/l, et l'effectif de 44 à 42."
     },
     {
       "form": "Huile d’arachide",
@@ -1076,20 +1076,20 @@
       "category": "produits_laitiers",
       "observed": {
         "basis": "kg",
-        "low": 6.17,
-        "central": 9.41,
-        "high": 19.26,
+        "low": 6.61,
+        "central": 9.48,
+        "high": 19.39,
         "unit": "EUR/kg",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 62,
+        "n_observations": 57,
         "period_start": "2025-09-17",
         "period_end": "2026-08-24"
       },
       "per_kg": {
-        "low": 6.17,
-        "central": 9.41,
-        "high": 19.26,
+        "low": 6.61,
+        "central": 9.48,
+        "high": 19.39,
         "conversion": {
           "kind": "identity"
         }
@@ -1130,11 +1130,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-24",
-        "source_record_key": "open_prices:en:mozzarella/FR/hors-bio-hors-promo/2025-09-17..2026-08-24/n=62 · ids 266322,304990,258292,312111,302575,317652,265036,262530,291829,273382,299591,250615,253293,253147,143008,241015,262796,256884,188590,258832,258300,163272,301633,270731,302115,241596,246253,315030,270656,270661,235570,304924,292193,302265,253292,253148,268304,317547,268305,317681,241029,241013,241595,315221,241300,272126,271549,232097,254868,235569,307849,241030,253144,189514,189511,179932,316989,189513,258851,166027,272046,248793",
-        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:mozzarella », du 2025-09-17 au 2026-08-24, hors promotion et hors bio : 62 relevés retenus après dédoublonnage (118 bruts), ramenés au kilogramme par le poids net du contenant, de 4,50 à 26,80 EUR/kg — par exemple 4,50 EUR/kg le 2026-04-17 pour « MOZZARELLA » (Carrefour) en 220 g (relevé n° 266322) ; 9,36 EUR/kg le 2026-03-01 pour « Mozzarella di latte di Bufala » (Casa Azzurra) en 250 g (relevé n° 235570) ; 26,80 EUR/kg le 2026-03-20 pour « Mozzarella » (Casino) en 125 g (relevé n° 248793). Médiane 9,41 EUR/kg, D1 6,17, D9 19,26."
+        "source_record_key": "open_prices:en:mozzarella/FR/hors-bio-hors-promo/2025-09-17..2026-08-24/n=57 · ids 266322,258292,312111,302575,317652,265036,262530,299591,250615,253293,253147,241015,262796,256884,188590,258832,163272,301633,270731,302115,241596,246253,315030,270656,270661,235570,304924,292193,302265,253292,253148,268304,317547,268305,317681,241029,241013,241595,315221,241300,272126,271549,232097,254868,235569,307849,241030,253144,189514,189511,179932,316989,189513,258851,166027,272046,248793",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:mozzarella », du 2025-09-17 au 2026-08-24, hors promotion et hors bio : 57 relevés retenus après dédoublonnage puis retrait de 5 relevés hors sélection (voir notes), ramenés au kilogramme par le poids net du contenant, de 4,50 à 26,80 EUR/kg — par exemple 4,50 EUR/kg le 2026-04-17 pour « MOZZARELLA » (Carrefour) en 220 g (relevé n° 266322) ; 9,48 EUR/kg le 2026-07-31 pour « Mozzarella di latte di Bufala » (Casa Azzurra) en 250 g (relevé n° 302265) ; 26,80 EUR/kg le 2026-03-20 pour « Mozzarella » (Casino) en 125 g (relevé n° 248793). Médiane 9,48 EUR/kg, D1 6,61, D9 19,39."
       },
       "reindexation": null,
-      "notes": "La mozzarella di bufala est CONSERVÉE dans l'échantillon — c'est bien de la mozzarella, plus chère — tandis que les mozzarellas aromatisées (truffe, pesto) et les préparations sont écartées. Le poids retenu est le poids net égoutté publié par Open Food Facts, pas le poids avec saumure. La boule de 125 g fait 24 relevés sur 62 : c'est le format de référence.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Amozzarella&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent."
+      "notes": "La mozzarella di bufala est CONSERVÉE dans l'échantillon — c'est bien de la mozzarella, plus chère — tandis que les mozzarellas aromatisées (truffe, pesto) et les préparations sont écartées. Le poids retenu est le poids net égoutté publié par Open Food Facts, pas le poids avec saumure. La boule de 125 g fait 24 relevés sur 62 : c'est le format de référence.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Amozzarella&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent.\n\nRÉVISION DU 2026-08-24 (relecture adverse, chaque relevé cité rouvert sur l'API Open Prices). Cinq relevés RETIRÉS, pour deux raisons distinctes. (1) Deux PIZZAS quatre fromages surgelées (n° 273382 et 143008, Auchan) portaient les catégories en:frozen-pizzas, en:four-cheese-pizza et en:meals : ce sont des plats préparés, que le filtre annoncé écarte, et ils tiraient le D1 vers le bas. (2) Trois relevés (n° 304990, 291829, 258300) dont Open Food Facts publie le poids BRUT avec la saumure quand l'étiquette annonce le poids égoutté : 390 g pour une mozzarella de 250 g égouttés, 250 g pour une di bufala de 125 g, 210 g pour une autre de 125 g. Ils sous-estimaient le prix du fromage de 36 à 56 %. La fourchette publiée passe de 6,17 / 9,41 / 19,26 à 6,61 / 9,48 / 19,39 EUR/kg, et l'effectif de 62 à 57."
     },
     {
       "form": "Crème fraîche épaisse",
@@ -3099,19 +3099,19 @@
       "observed": {
         "basis": "kg",
         "low": 9.04,
-        "central": 17.32,
-        "high": 26.21,
+        "central": 17.33,
+        "high": 26.25,
         "unit": "EUR/kg",
         "dispersion": "d1_d9",
         "aggregation": "annual_mean",
-        "n_observations": 124,
+        "n_observations": 123,
         "period_start": "2025-09-12",
         "period_end": "2026-08-23"
       },
       "per_kg": {
         "low": 9.04,
-        "central": 17.32,
-        "high": 26.21,
+        "central": 17.33,
+        "high": 26.25,
         "conversion": {
           "kind": "identity"
         }
@@ -3152,11 +3152,11 @@
         },
         "retrieved_on": "2026-08-24",
         "observed_on": "2026-08-23",
-        "source_record_key": "open_prices:en:honeys/FR/hors-bio-hors-promo/2025-09-12..2026-08-23/n=124 · ids 265409,224214,223630,163605,184018,301825,199183,253991,305312,223707,281776,281696,305503,169980,244591,261029,264820,210781,265335,265333,251388,281698,197212,210793,264765,197363,310271,316288,265338,260550,184019,240250,244508,244433,170593,180355,264766,261028,301846,223633,210787,170636,310376,301826,158769,184183,305328,289346,260551,262154,183992,264767,301824,185254,169979,301823,301855,219289,262083,289345,264758,219288,156351,260387,154093,305504,288102,260552,198007,207056,260385,264819,262060,223710,223636,222810,177650,168083,210782,289238,278746,265336,301856,158741,177652,137529,264839,264818,301844,301820,156339,301817,237039,301857,262058,223709,260554,262061,260553,262081,177701,264840,301819,260382,223748,183991,316291,301871,277697,301822,277761,301845,210789,291699,260386,224218,277786,224213,262059,285941,310507,174540,285942,285939",
-        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:honeys », du 2025-09-12 au 2026-08-23, hors promotion et hors bio : 124 relevés retenus après dédoublonnage (157 bruts), ramenés au kilogramme par le poids net du contenant, de 5,96 à 46,00 EUR/kg — par exemple 5,96 EUR/kg le 2026-03-15 pour « Miel des fleurs » (Prix Mini) en 500 g (relevé n° 265409) ; 17,31 EUR/kg le 2026-02-14 pour « Miel de fleurs du massif du Jura » (Nos Régions ont du Talent) en 375 g (relevé n° 219288) ; 46,00 EUR/kg le 2026-06-14 pour « Miel d'acacia » (Albert Ménès) en 250 g (relevé n° 285939). Médiane 17,32 EUR/kg, D1 9,04, D9 26,21."
+        "source_record_key": "open_prices:en:honeys/FR/hors-bio-hors-promo/2025-09-12..2026-08-23/n=123 · ids 265409,224214,223630,163605,184018,301825,199183,253991,305312,223707,281776,281696,305503,169980,244591,261029,264820,210781,265335,265333,251388,281698,197212,210793,264765,197363,310271,316288,265338,260550,184019,240250,244508,244433,170593,264766,261028,301846,223633,210787,170636,310376,301826,158769,184183,305328,289346,260551,262154,183992,264767,301824,185254,169979,301823,301855,219289,262083,289345,264758,219288,156351,260387,154093,305504,288102,260552,198007,207056,260385,264819,262060,223710,223636,222810,177650,168083,210782,289238,278746,265336,301856,158741,177652,137529,264839,264818,301844,301820,156339,301817,237039,301857,262058,223709,260554,262061,260553,262081,177701,264840,301819,260382,223748,183991,316291,301871,277697,301822,277761,301845,210789,291699,260386,224218,277786,224213,262059,285941,310507,174540,285942,285939",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:honeys », du 2025-09-12 au 2026-08-23, hors promotion et hors bio : 123 relevés retenus après dédoublonnage puis retrait de 1 relevé hors sélection (voir notes), ramenés au kilogramme par le poids net du contenant, de 5,96 à 46,00 EUR/kg — par exemple 5,96 EUR/kg le 2026-03-15 pour « Miel des fleurs » (Prix Mini) en 500 g (relevé n° 265409) ; 17,33 EUR/kg le 2025-10-30 pour « Miel crémeux de fleurs de France » (Monoprix) en 375 g (relevé n° 156351) ; 46,00 EUR/kg le 2026-06-14 pour « Miel d'acacia » (Albert Ménès) en 250 g (relevé n° 285939). Médiane 17,33 EUR/kg, D1 9,04, D9 26,25."
       },
       "reindexation": null,
-      "notes": "Aucune restriction de variété : la forme du catalogue est « Miel » sans plus de précision, et l'écart entre un miel de fleurs premier prix (5,96 €/kg) et un miel d'acacia de marque (46 €/kg) est précisément ce que la fourchette doit porter. 124 relevés, 105 références, 21 magasins — le lot le plus divers de la tranche. Conditionnements de 230 g à 1 kg, le pot de 375 g en tête.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ahoneys&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent."
+      "notes": "Aucune restriction de variété : la forme du catalogue est « Miel » sans plus de précision, et l'écart entre un miel de fleurs premier prix (5,96 €/kg) et un miel d'acacia de marque (46 €/kg) est précisément ce que la fourchette doit porter. 124 relevés, 105 références, 21 magasins — le lot le plus divers de la tranche. Conditionnements de 230 g à 1 kg, le pot de 375 g en tête.\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ahoneys&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, puis sélection sur le libellé, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent.\n\nRÉVISION DU 2026-08-24 (relecture adverse, chaque relevé cité rouvert sur l'API Open Prices). Un relevé RETIRÉ (n° 180355) : le libellé annonce « 500g (17.7oz) » et la quantité publiée vaut 375 g. Comme pour l'huile de tournesol de cette même tranche, la source se contredit sur la quantité nette et le prix au kilo n'en est pas déductible. Le retrait ne déplace aucune borne (la médiane passe de 17,32 à 17,33 €/kg) : il est fait pour que la règle soit la même partout, et non parce qu'il changeait quelque chose. La fourchette publiée passe de 9,04 / 17,32 / 26,21 à 9,04 / 17,33 / 26,25 EUR/kg, et l'effectif de 124 à 123."
     },
     {
       "form": "Cassonade",
