@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.0.0",
+  "price_set_version": "GABARIT",
+  "country": "FR",
+  "currency": "EUR",
+  "reference_date": "2026-08-01",
+  "derived_license": "odbl-1.0",
+  "catalog_version": "v3",
+  "built_at": "2026-08-24",
+  "notes": "GABARIT DU CONTRAT — ce fichier n'est PAS un référentiel. Il montre la forme exacte d'une entrée dans les deux cas qui comptent : conversion identité (base kg) et conversion par densité (base litre). Les montants 1,11 / 2,22 / 3,33 et 4,44 / 5,55 / 6,66 sont synthétiques et reconnaissables comme tels : aucun relevé n'a été fait. Trois garde-fous rendent ce fichier inerte, exprès — les entrées sont en C (donc jamais affichées, jamais comptées dans la couverture), leurs citations portent le marqueur GABARIT (donc le contrôleur les refuse), et les licences des sources ne sont pas encore vérifiées. Copier ce fichier tel quel dans reference-fr.json fait échouer la CI, ce qui est le comportement voulu.",
+  "entries": [
+    {
+      "form": "Oignon jaune cru",
+      "form_normalized": "oignon jaune cru",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.11,
+        "central": 2.22,
+        "high": 3.33,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 52,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 1.11,
+        "central": 2.22,
+        "high": 3.33,
+        "conversion": { "kind": "identity" }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Part comestible de l'oignon non sourcée. Défaut 1,00 : l'estimation devient un minorant déclaré, jamais une correction inventée."
+      },
+      "confidence": "C",
+      "confidence_reason": "exemple_non_releve",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?<page-de-cotation-effectivement-lue>",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": { "store_raw": true, "redistribute": true, "modify": true, "attribution_required": true },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "GABARIT",
+        "citation": "GABARIT NON RELEVÉ — chiffres synthétiques, à remplacer par la lecture réelle. Forme attendue : « Oignon jaune France cat. I, sac 5 kg — moyenne 12 mois 2,22 €/kg (D1 1,11 ; D9 3,33) »."
+      },
+      "reindexation": null,
+      "notes": "Pour passer cette entrée en A : relever une moyenne sur 12 mois sur une page RNM datée, écrire la citation avec le chiffre lu et son libellé source, renseigner source_record_key, inscrire license_verified_on au registre, et justifier confidence_reason."
+    },
+    {
+      "form": "Huile d'olive vierge extra",
+      "form_normalized": "huile d olive vierge extra",
+      "category": "matieres_grasses",
+      "observed": {
+        "basis": "l",
+        "low": 4.44,
+        "central": 5.55,
+        "high": 6.66,
+        "unit": "EUR/l",
+        "dispersion": "d1_d9",
+        "aggregation": "monthly_mean",
+        "n_observations": 18,
+        "period_start": "2026-07-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 4.83,
+        "central": 6.03,
+        "high": 7.24,
+        "conversion": {
+          "kind": "density",
+          "factor": 0.92,
+          "from": "catalog:huile d olive vierge extra"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Une huile n'a pas de partie non comestible : le rendement vaut 1 par nature du produit, et non par ignorance. La distinction compte, parce qu'elle décide si l'interface doit écrire « hors pertes de parage ».",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": { "store_raw": false, "redistribute": true, "modify": true, "attribution_required": false },
+          "retrieved_on": "2026-08-24",
+          "observed_on": "2026-08-24",
+          "citation": "Rendement 1,00 par nature du produit : une huile est intégralement le produit acheté."
+        }
+      },
+      "confidence": "C",
+      "confidence_reason": "exemple_non_releve",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/<requete-effectivement-lue>",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": { "store_raw": true, "redistribute": true, "modify": true, "attribution_required": true, "share_alike": true },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-07-31",
+        "source_record_key": "GABARIT",
+        "citation": "GABARIT NON RELEVÉ — chiffres synthétiques. Forme attendue : « Huile d'olive vierge extra, 18 relevés juillet 2026, médiane 5,55 €/l (D1 4,44 ; D9 6,66) »."
+      },
+      "reindexation": null,
+      "notes": "Base litre : c'est la seule arithmétique délicate du référentiel. 5,55 €/l ÷ 0,92 g/ml = 6,03 €/kg. Le facteur 0,92 n'est pas ressaisi ici, il est recopié de conversion.density_g_per_ml de la forme du catalogue, et le contrôleur vérifie l'égalité — sans quoi les deux valeurs dériveraient en silence. Sans densité au catalogue, l'entrée serait refusée : on n'écrit jamais 1,00 par défaut. Source ODbL, donc derived_license du jeu vaut odbl-1.0."
+    }
+  ]
+}

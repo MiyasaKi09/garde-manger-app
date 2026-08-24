@@ -15,7 +15,8 @@
     "encyclopedia:check": "node scripts/data/encyclopedia/build-library.mjs --check",
     "test:e2e": "playwright test",
     "ingredients:build": "node scripts/data/foods/build-ciqual-reference-corpus.mjs",
-    "ingredients:check": "node scripts/data/foods/build-ciqual-reference-corpus.mjs --check && node scripts/data/foods/validate-ciqual-reference-corpus.mjs"
+    "ingredients:check": "node scripts/data/foods/build-ciqual-reference-corpus.mjs --check && node scripts/data/foods/validate-ciqual-reference-corpus.mjs",
+    "prices:check": "node scripts/data/prices/check-price-provenance.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.82.0",
