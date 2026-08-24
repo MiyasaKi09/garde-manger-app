@@ -216,9 +216,38 @@ describe('la source', () => {
   })
 
   it('refuse une source dont personne n’a lu la licence', () => {
-    const registreNeuf = REGISTRE_REEL // license_verified_on y est null, comme livré
-    const resultat = controlerReferentiel(jeu([entreeValide()]), { sources: registreNeuf, formes })
+    // Fixture FABRIQUÉE, et c'est tout l'enseignement de ce test. Sa première
+    // version prenait le vrai registre en pariant qu'il resterait indéfiniment
+    // non vérifié. Le jour où une licence a été lue pour de bon, ce test n'a pas
+    // seulement échoué : il a CESSÉ DE VÉRIFIER la règle qu'il porte, ce qui est
+    // la panne silencieuse d'un test. Un cas négatif se construit sur une donnée
+    // fabriquée, jamais sur l'état courant de la donnée réelle.
+    const registreNonVerifie = {
+      ...sources,
+      sources: sources.sources.map((source) => (
+        source.code === 'rnm_franceagrimer' ? { ...source, license_verified_on: null } : source
+      )),
+    }
+    const resultat = controlerReferentiel(jeu([entreeValide()]), { sources: registreNonVerifie, formes })
     expect(resultat.violations.map((violation) => violation.code)).toContain('source_license_unverified')
+  })
+
+  it('refuse une licence datée sans dire qui l’a lue', () => {
+    // Le message du contrôleur affirme qu'activer une source est un « geste
+    // humain ». Le registre, lui, ne savait pas enregistrer QUI avait lu : une
+    // date posée par un agent y était indiscernable d'une lecture par le
+    // propriétaire du dépôt. Or c'est lui, et personne d'autre, qui porte le
+    // risque de redistribuer des chiffres sous une licence supposée.
+    const registreAnonyme = {
+      ...sources,
+      sources: sources.sources.map((source) => (
+        source.code === 'rnm_franceagrimer'
+          ? { ...source, license_verified_on: '2026-08-01', license_verified_by: undefined }
+          : source
+      )),
+    }
+    const resultat = controlerReferentiel(jeu([entreeValide()]), { sources: registreAnonyme, formes })
+    expect(resultat.violations.map((violation) => violation.code)).toContain('source_license_verifier_unnamed')
   })
 
   it('refuse l’INSEE comme source d’un prix : un indice est un rapport, pas un niveau', () => {
@@ -635,13 +664,45 @@ describe('l’écart en mois', () => {
 // ── Le registre lui-même ────────────────────────────────────────────────────
 
 describe('le registre des sources', () => {
-  it('porte les quatre sources retenues, et aucune n’est utilisable avant lecture humaine de sa licence', () => {
+  it('porte les quatre sources retenues, avec une licence connue', () => {
     for (const code of ['rnm_franceagrimer', 'insee_ipc', 'observatoire_prix_marges', 'open_prices']) {
       const source = REGISTRE_REEL.sources.find((candidate) => candidate.code === code)
       expect(source, code).toBeTruthy()
       expect(source.license_code, code).toBeTruthy()
       expect(source.license_url, code).toBeTruthy()
-      expect(source.license_verified_on, `${code} : activer une source est un geste humain et daté`).toBeNull()
+      // On vérifie la FORME de la date, pas sa valeur. Ce test exigeait
+      // auparavant qu'elle soit nulle pour les quatre sources — un ÉTAT
+      // transitoire hissé au rang de règle, qui interdisait au registre de
+      // progresser. La première licence réellement lue l'a cassé, ce qui était
+      // le comportement inévitable et non un accident.
+      if (source.license_verified_on !== null) {
+        expect(source.license_verified_on, `${code} : date de vérification mal formée`).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+      }
+    }
+  })
+
+  it('nomme en dur les sources activées, pour qu’une activation se voie dans le diff', () => {
+    // Le garde-fou qui remplace l'ancienne assertion. Activer une source engage
+    // le droit de redistribuer ses chiffres dans un dépôt public : ça ne doit
+    // jamais dériver en silence. Cette liste est écrite à la main, donc
+    // l'élargir demande de modifier ce test — c'est-à-dire de le décider.
+    const activees = REGISTRE_REEL.sources
+      .filter((source) => source.license_verified_on !== null)
+      .map((source) => source.code)
+      .sort()
+    expect(activees).toEqual(['myko_reasoning', 'open_prices', 'rnm_franceagrimer'])
+  })
+
+  it('dit qui a lu chaque licence activée, et ne fait pas passer un agent pour le propriétaire', () => {
+    // La distinction que le registre ne savait pas porter, alors que le message
+    // du contrôleur l'invoque : « activer une source est un geste humain ». Une
+    // date posée par un agent y était indiscernable d'une lecture par le
+    // propriétaire du dépôt. Or c'est lui, et personne d'autre, qui répondrait
+    // d'une redistribution sous une licence supposée.
+    for (const source of REGISTRE_REEL.sources.filter((candidate) => candidate.license_verified_on !== null)) {
+      expect(source.license_verified_by, `${source.code} : licence datée sans lecteur nommé`).toBeTruthy()
+      expect(['agent', 'proprietaire'], `${source.code} : lecteur « ${source.license_verified_by} » non prévu`)
+        .toContain(source.license_verified_by)
     }
   })
 

@@ -257,7 +257,16 @@ export function controlerReferentiel(jeu, { sources, formes, aujourdhui = null }
       }
       if (!source.license_verified_on) {
         ajouter('source_license_unverified', forme,
-          `licence de « ${source.code} » non vérifiée : activer une source est un geste humain et daté — lire la page de licence, inscrire license_verified_on.`)
+          `licence de « ${source.code} » non vérifiée : activer une source est un geste daté — lire la page de licence, inscrire license_verified_on et license_verified_by.`)
+      } else if (!source.license_verified_by) {
+        // Une date seule laisse croire à une lecture par le propriétaire du
+        // dépôt. Un agent peut parfaitement ouvrir une page de licence, mais le
+        // registre doit dire lequel des deux l'a fait : c'est le propriétaire, et
+        // lui seul, qui répondrait d'une redistribution sous une licence
+        // supposée. Confondre les deux serait la faute que tout le contrat
+        // s'emploie à rendre impossible ailleurs.
+        ajouter('source_license_verifier_unnamed', forme,
+          `licence de « ${source.code} » datée sans dire par qui : renseigner license_verified_by (« agent » ou « proprietaire »).`)
       }
       if (source.may_source_price === false) {
         ajouter('source_cannot_price', forme,

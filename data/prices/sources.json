@@ -18,7 +18,6 @@
     "grants_confidence dit le MAXIMUM qu'une source peut valoir. Une entrée peut être",
     "moins bien notée que sa source ne le permet ; jamais mieux."
   ],
-
   "sources": [
     {
       "code": "rnm_franceagrimer",
@@ -28,6 +27,7 @@
       "license_code": "etalab-2.0",
       "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
       "license_verified_on": "2026-08-24",
+      "license_verified_by": "agent",
       "allowed_uses": {
         "store_raw": true,
         "redistribute": true,
@@ -103,6 +103,7 @@
       "license_code": "odbl-1.0",
       "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
       "license_verified_on": "2026-08-24",
+      "license_verified_by": "agent",
       "allowed_uses": {
         "store_raw": true,
         "redistribute": true,
@@ -131,6 +132,7 @@
       "license_code": "n/a",
       "license_url": null,
       "license_verified_on": "2026-08-24",
+      "license_verified_by": "agent",
       "allowed_uses": {
         "store_raw": false,
         "redistribute": true,
@@ -146,7 +148,6 @@
       "admissible_for": "Uniquement edible_yield, et uniquement quand le rendement vaut 1 par NATURE du produit : une huile, un sel, un sucre n'ont pas de partie non comestible. Rien d'autre.",
       "proscribed": "Jamais un prix (may_source_price: false, le contrôleur le refuse). Jamais un rendement inférieur à 1 : « un oignon perd à peu près 10 % à l'épluchage » est exactement le nombre plausible et invérifiable que le CONTRAT §0 proscrit. Un rendement < 1 exige une table publiée de parts comestibles."
     },
-
     {
       "code": "scraping_enseignes",
       "name": "Extraction automatisée des sites d'enseignes (Carrefour, Leclerc, Intermarché, Auchan, drives…)",
