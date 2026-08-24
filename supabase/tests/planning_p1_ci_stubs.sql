@@ -60,6 +60,13 @@ CREATE TABLE IF NOT EXISTS public.meal_plan_slots (
 -- fichier idempotent si la structure évolue.
 ALTER TABLE public.inventory_lots ADD COLUMN IF NOT EXISTS canonical_food_id bigint;
 ALTER TABLE public.inventory_lots ADD COLUMN IF NOT EXISTS updated_at timestamptz DEFAULT now();
+-- `acquired_on` existe en production depuis longtemps — 20260713122954 indexe
+-- déjà (user_id, acquired_on DESC) — mais legacy_stock_fixture.sql fabrique un
+-- inventory_lots minimal qui l'omet. L'écart est resté invisible tant qu'aucune
+-- migration POST-snapshot n'y touchait : les migrations antérieures sont
+-- baseline, donc jamais rejouées ici. La première qui s'y est appuyée a échoué
+-- sur une colonne pourtant bien présente en vrai.
+ALTER TABLE public.inventory_lots ADD COLUMN IF NOT EXISTS acquired_on date;
 
 ALTER TABLE public.canonical_foods ADD COLUMN IF NOT EXISTS density_g_per_ml numeric;
 ALTER TABLE public.canonical_foods ADD COLUMN IF NOT EXISTS unit_weight_grams numeric;

@@ -1569,7 +1569,7 @@
     "file": "20260824120000_prices_reference_catalog.sql",
     "github_version": "20260824120000",
     "name": "prices_reference_catalog",
-    "sha256": "c8c9ac576b48aae94f4529a7d24a682c6e6e92a190fc8e78ae0944926a2dd0f8",
+    "sha256": "79434c854a2ee5af22ab7649c38fe193e5d96beecf415188a25e98e2f4148ce5",
     "role": "apply",
     "baseline": "new",
     "historical_version": null,

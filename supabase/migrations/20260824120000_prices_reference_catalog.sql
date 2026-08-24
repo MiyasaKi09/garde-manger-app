@@ -343,6 +343,12 @@ CREATE TABLE IF NOT EXISTS catalog.food_form_prices (
   updated_at        timestamptz NOT NULL DEFAULT now(),
 
   -- ── Cohérence interne, tout ce qu'une CHECK peut porter seule ────────────
+  -- Forme exacte de normalizeFoodForm : minuscules, chiffres, espaces simples.
+  -- Une clé mal normalisée ne casse rien — elle ne joint simplement jamais, et
+  -- la forme apparaît « non couverte » sans que rien ne le signale. C'est le
+  -- genre de panne muette qu'on met des mois à attribuer.
+  CONSTRAINT ffp_normalized_shape  CHECK (form_normalized ~ '^[a-z0-9]+( [a-z0-9]+)*$'),
+
   CONSTRAINT ffp_basis_check       CHECK (observed_basis IN ('kg', 'l', 'piece')),
   CONSTRAINT ffp_dispersion_check  CHECK (observed_dispersion IN ('d1_d9', 'quoted_range', 'min_max')),
   CONSTRAINT ffp_aggregation_check CHECK (observed_aggregation IN ('point', 'monthly_mean', 'annual_mean')),
@@ -550,6 +556,22 @@ BEGIN
   IF NOT FOUND THEN
     RAISE EXCEPTION 'source_unknown : source % absente du registre ops.source_datasets',
       NEW.source_dataset_id;
+  END IF;
+
+  -- ── La recopie du catalogue dit-elle encore la vérité ? ──────────────────
+  -- form_label et form_normalized sont une COPIE, au même titre que le facteur
+  -- de conversion. Une copie non vérifiée finit par contredire son original :
+  -- un prix rattaché à la forme X mais exporté sous le libellé Y se joindrait,
+  -- côté artefact, à une tout autre ligne de recette.
+  IF NOT EXISTS (
+    SELECT 1 FROM catalog.food_forms ff
+    WHERE ff.id = NEW.food_form_id
+      AND ff.canonical_name = NEW.form_label
+      AND ff.canonical_name_normalized = NEW.form_normalized
+  ) THEN
+    RAISE EXCEPTION
+      'form_label_mismatch : « % » / « % » ne sont pas le libellé et la clé de la forme % au catalogue',
+      NEW.form_label, NEW.form_normalized, NEW.food_form_id;
   END IF;
 
   -- ── La source a-t-elle le droit d'être ici ? ──────────────────────────────
