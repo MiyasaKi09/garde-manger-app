@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getEditorialRecipe } from '@/lib/db/operationalRecipeCatalog'
 import { createCookieSupabase } from '@/lib/supabase/request'
+import { estimationRecette } from '@/app/_pricing/estimations'
+import { EstimationBloc, EstimationSources } from '@/components/pricing/Estimation'
 import styles from './recipe.module.css'
 
 export const dynamic = 'force-dynamic'
@@ -130,6 +132,22 @@ export default async function CanonicalRecipePage({ params, searchParams }) {
   const servings = portionsOf(searchParams?.portions, baseRecipe.servings)
   const recipe = servings === baseRecipe.servings ? baseRecipe : await loadRecipe(params.code, servings)
 
+  /**
+   * Le coût estimé de la recette, calculé côté serveur sur la recette DÉJÀ mise
+   * à l'échelle : les grammes portés par `recipe.exactIngredients` sont ceux du
+   * nombre de portions demandé, et la couche de coût les lit tels quels.
+   *
+   * Enveloppé : une fiche recette qui ne s'ouvre plus parce qu'un prix n'a pas
+   * pu se calculer serait un très mauvais échange. La recette est la fonction,
+   * l'estimation est un service rendu à la recette.
+   */
+  let estimation = null
+  try {
+    estimation = estimationRecette(recipe)
+  } catch {
+    estimation = null
+  }
+
   const scores = Object.entries(recipe.sensory?.scores || {})
   const nutrition = recipe.nutritionPerServing
   const nutritionComplete = recipe.operationalEligible && recipe.nutritionCoverage.pct === 100
@@ -190,6 +208,25 @@ export default async function CanonicalRecipePage({ params, searchParams }) {
             <input id="portions" name="portions" type="number" min="1" max="24" step="1" defaultValue={recipe.servings} />
             <button type="submit">Recalculer</button>
           </form>
+
+          {/* §6.2 — une fiche recette affiche `coutConsomme`, jamais `coutAchat` :
+              ce que le plat emploie, pas ce qu'on pose sur le tapis de caisse.
+              Le total de la recette suit le coût par portion, en plus petit :
+              c'est la portion qui se compare d'une fiche à l'autre. */}
+          {estimation?.parPortion && (
+            <EstimationBloc
+              vue={estimation.parPortion}
+              titre="Coût estimé par portion"
+              suffixe={recipe.servings ? `pour ${recipe.servings} portions` : null}
+              enfants={estimation.total?.affichable && (
+                <p className={styles.microcopy}>
+                  Soit {estimation.total.negligeable
+                    ? estimation.total.montant
+                    : `${estimation.total.minorant ? 'au moins' : 'environ'} ${estimation.total.montant}`} pour le plat entier.
+                </p>
+              )}
+            />
+          )}
         </div>
       </header>
 
@@ -301,7 +338,12 @@ export default async function CanonicalRecipePage({ params, searchParams }) {
       </div>
 
       <footer className={styles.footer}>
-        <div>{recipe.techniques.length > 0 && <strong>{recipe.techniques.map(sentence).join(' · ')}</strong>}</div>
+        <div>
+          {recipe.techniques.length > 0 && <strong>{recipe.techniques.map(sentence).join(' · ')}</strong>}
+          {/* L'une des deux sources du référentiel est sous ODbL : créditer
+              n'est pas une politesse, c'est une clause de la licence. */}
+          <EstimationSources vue={estimation?.parPortion} licence={estimation?.referentiel?.licence} />
+        </div>
         <Link href={`/planning?recipe=${recipe.code}`}>Intégrer au planning →</Link>
       </footer>
     </main>

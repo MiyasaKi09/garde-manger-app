@@ -8,6 +8,7 @@ import { authFetch } from '@/lib/authFetch'
 import { toast } from '@/components/Toast'
 import WeekGrid from './components/WeekGrid'
 import WeeklyNutritionRecap from './components/WeeklyNutritionRecap'
+import EstimationCourses from '@/components/pricing/EstimationCourses'
 import './PlanningDashboard.css'
 
 const DAY_SHORT = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
@@ -92,6 +93,13 @@ export default function PlanningPage() {
   const meals = weekData?.meals || []
   const batchRecipes = weekData?.batchRecipes || []
   const shoppingItems = weekData?.shoppingItems || []
+  /**
+   * Un import vaut une semaine sur cet écran (`findImport` le sélectionne par
+   * son lundi), donc le total de l'import EST le total de la semaine. C'est le
+   * même chiffre que la liste de courses affiche, calculé au même endroit —
+   * deux calculs parallèles finiraient par ne pas dire la même chose.
+   */
+  const estimationSemaine = weekData?.estimation?.total || null
 
   // `fresh: true` contourne le cache HTTP (max-age=15) et le cache SWR interne.
   // À utiliser après toute mutation (génération, réparation) pour que la liste
@@ -162,6 +170,9 @@ export default function PlanningPage() {
             activePlanVersion: data.activePlanVersion || null,
             planIssues: data.planIssues || [],
             canonicalPreparationCount: data.canonicalPreparationCount || 0,
+            // Estimation des courses de la semaine, rédigée côté serveur : la
+            // page n'en reçoit que des chaînes, jamais le référentiel de prix.
+            estimation: data.estimation || null,
           })
           setWeekStatus('ready')
         }
@@ -413,6 +424,16 @@ export default function PlanningPage() {
         <div><ShoppingBasket size={18} /><span><b>{shoppingItems.length} produits</b><small>À prévoir aux courses</small></span></div>
         <div><Clock3 size={18} /><span><b>{preparationCount} préparations</b><small>Organisation en avance</small></span></div>
       </section>
+
+      {/* L'estimation a son propre bloc plutôt qu'une cinquième case du bandeau :
+          le contrat exige la date du référentiel ET le compte des lignes
+          chiffrées à côté de tout montant (§7.1, §8.5), ce qu'une case de
+          quarante pixels ne peut pas porter sans mentir par omission. */}
+      {estimationSemaine && (
+        <section className="planning-estimation" aria-label="Estimation des courses de la semaine">
+          <EstimationCourses estimation={estimationSemaine} compact />
+        </section>
+      )}
 
       {loading ? (
         <section className="planning-loading" aria-busy="true">

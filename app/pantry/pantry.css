@@ -89,6 +89,12 @@ button.v21-it {
 .stock-rail { border-right: 1px solid var(--ink-1); min-width: 0; }
 .stock-rblk { padding: 26px; border-bottom: 1px solid var(--line); }
 .stock-rblk:last-child { border-bottom: none; }
+/* Le bloc de valorisation ouvre le rail. Filet supérieur épais et fond de
+   papier légèrement plus chaud : il se lit comme une affirmation, pas comme
+   un compteur de plus. Aucune couleur d'alerte — le montant terracotta du
+   composant suffit, et un cadre jaune apprendrait à ignorer un signal qui
+   s'allume toutes les semaines. */
+.stock-rvaleur { border-top: 3px solid var(--ink-1); background: var(--surface-soft); }
 .stock-rlink { padding-top: 20px; padding-bottom: 20px; }
 
 .stock-twin { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }

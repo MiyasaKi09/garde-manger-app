@@ -13,6 +13,7 @@ import EditLotForm from './components/EditLotForm';
 import RestesManager from '@/components/RestesManager';
 import { toast } from '@/components/Toast';
 import { authFetch, invalidateAuthCache } from '@/lib/authFetch';
+import WasteValue from '@/components/pricing/WasteValue';
 import './pantry.css';
 
 // Registre V21 — onglets de statut (mappés sur statusFilter)
@@ -74,6 +75,9 @@ export default function PantryPage() {
   const [activeTab, setActiveTab] = useState('inventory'); // inventory, waste, stats
   const [userId, setUserId] = useState(null);
   const [showOcr, setShowOcr] = useState(false);
+  // Valorisation servie par /api/pantry : des chaînes déjà rédigées, jamais des
+  // prix bruts. Le référentiel (670 ko importés au build) reste au serveur.
+  const [wasteValue, setWasteValue] = useState(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -98,6 +102,11 @@ export default function PantryPage() {
     // Revisite instantanée : on rend le dernier stock connu sans skeleton.
     const cached = readCache('pantry');
     if (cached) { setItems(cached); setLoading(false); }
+    // La valorisation a son propre cache : la forme de 'pantry' (un tableau de
+    // lots) est lue ailleurs, et y glisser un objet casserait les revisites
+    // instantanées de tous ceux qui la relisent.
+    const cachedWaste = readCache('pantry:valeur');
+    if (cachedWaste) setWasteValue(cachedWaste);
     loadPantryItems();
   }, []);
 
@@ -201,6 +210,8 @@ export default function PantryPage() {
       const lots = data.lots || [];
       setItems(lots);
       writeCache('pantry', lots);
+      setWasteValue(data.wasteValue || null);
+      writeCache('pantry:valeur', data.wasteValue || null);
     } catch (error) {
       toast.error('Erreur lors du chargement du garde-manger');
       setItems([]);
@@ -481,6 +492,21 @@ export default function PantryPage() {
 
             {/* RAIL — synthèse / cockpit */}
             <aside className="stock-rail">
+
+              {/*
+                EN TÊTE DU RAIL, ET PAS AILLEURS.
+                C'est le seul chiffre de Myko qu'aucune autre application ne
+                peut produire : il faut pour cela un modèle de péremption par
+                lot — dates ajustées à l'ouverture, FEFO, quantité restante —
+                que ni un comparateur de prix ni un suivi de budget ne possède.
+                Le mettre après les compteurs en ferait une ligne de plus.
+              */}
+              {wasteValue && (
+                <div className="stock-rblk stock-rvaleur">
+                  <WasteValue valeur={wasteValue} compact limiteLots={4} />
+                </div>
+              )}
+
               <div className="stock-rblk">
                 <div className="stock-twin">
                   <div className="stock-cell">

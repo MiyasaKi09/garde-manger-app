@@ -3,6 +3,7 @@ import { authenticateRequest } from '@/lib/apiAuth'
 import { getExpirationStatus, getEffectiveExpiration } from '@/app/pantry/components/pantryUtils'
 import { daysUntil } from '@/lib/dates'
 import { resolveInventoryDisplayName } from '@/lib/inventoryDisplayName'
+import { estimationGardeManger } from '@/app/_pricing/estimations'
 
 export const dynamic = 'force-dynamic'
 
@@ -166,5 +167,25 @@ export async function GET(request) {
       .sort((a, b) => b.count - a.count),
   }
 
-  return NextResponse.json({ lots: transformed, stats })
+  /**
+   * Valorisation du garde-manger — calculée ICI et pas dans la page.
+   *
+   * Le référentiel de prix est importé au build : 670 ko de JSON qui n'ont
+   * aucune raison de traverser le réseau. La page reçoit donc des chaînes déjà
+   * rédigées (montants arrondis au §7.2, phrases de couverture du §7.3) et le
+   * référentiel reste au serveur.
+   *
+   * Le calcul est enveloppé : une estimation est un CONFORT, l'inventaire est
+   * la fonction. Si la valorisation échoue — un lot mal formé, une tranche
+   * illisible — le garde-manger s'affiche quand même, sans montant. Laisser
+   * remonter l'erreur transformerait un agrément en panne d'inventaire.
+   */
+  let wasteValue = null
+  try {
+    wasteValue = estimationGardeManger(transformed)
+  } catch {
+    wasteValue = null
+  }
+
+  return NextResponse.json({ lots: transformed, stats, wasteValue })
 }

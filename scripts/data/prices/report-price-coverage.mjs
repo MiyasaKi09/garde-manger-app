@@ -109,11 +109,20 @@ for (const recette of publiables) {
   })
 }
 
-// Le contrat (§8) refuse d'afficher un montant sous 70 % des lignes OU sous 90 %
-// des calories. Le second seuil est celui qui attrape la viande manquante ; le
-// premier attrape le total bâti sur trois ingrédients. On compte donc les
-// recettes réellement AFFICHABLES, pas celles « plutôt bien couvertes ».
-const affichables = recettes.filter((r) => r.pct >= 70 && r.pctByMass >= 90)
+// ATTENTION À CE QUE CE NOMBRE EST, ET N'EST PAS.
+//
+// Ce script apparie une forme à une entrée du référentiel et s'arrête là. Le
+// chemin réel de l'application en fait davantage : `buildPriceIndex` écarte les
+// entrées en confiance C (§4, « C équivaut à l'absence »), les relevés périmés
+// à plus de 24 mois (§5) et les rendements non sourcés, puis départage les
+// formes présentes dans deux tranches. Ce qui sort ici est donc un MAJORANT.
+//
+// Mesuré le 29 août 2026 : ce script annonçait 180 recettes franchissant les
+// seuils, la chaîne réelle en affiche 138. L'écart n'est pas une erreur de l'un
+// ou de l'autre — c'est la différence entre « une entrée existe » et « elle est
+// exploitable ». Le nombre qui compte pour l'utilisateur est le second, et il se
+// lit par les cartes du catalogue, pas ici.
+const majorantAffichables = recettes.filter((r) => r.pct >= 70 && r.pctByMass >= 90)
 const paliers = (seuil) => recettes.filter((r) => r.pct >= seuil).length
 
 const pct = (part, tout) => tout ? Number((part / tout * 100).toFixed(1)) : 0
@@ -133,8 +142,11 @@ console.log(`\nRecettes par couverture de lignes :`)
 console.log(`  ≥ 90 % : ${paliers(90)}`)
 console.log(`  ≥ 70 % : ${paliers(70)}`)
 console.log(`  < 70 % : ${recettes.length - paliers(70)}`)
-console.log(`\nRecettes AFFICHABLES au sens du contrat §8 (≥ 70 % des lignes ET ≥ 90 % des calories) :`)
-console.log(`  ${affichables.length} / ${recettes.length} = ${pct(affichables.length, recettes.length)} %`)
+console.log(`\nMAJORANT des recettes affichables (≥ 70 % des lignes ET ≥ 90 % des calories) :`)
+console.log(`  ${majorantAffichables.length} / ${recettes.length} = ${pct(majorantAffichables.length, recettes.length)} %`)
+console.log(`  ⚠ majorant seulement : ce script apparie, il n'applique ni l'exclusion des`)
+console.log(`    entrées en confiance C, ni la péremption, ni la règle de collision. Le`)
+console.log(`    nombre réel se lit sur les cartes du catalogue (138 au 29 août 2026).`)
 
 const restant = [...manquantes.entries()]
   .map(([forme, vu]) => ({ forme, ...vu }))
@@ -155,7 +167,7 @@ if (sortie) {
     pct_lignes: pct(lignesChiffrees, lignes),
     pct_calories: pct(kcalChiffrees, kcalTotal),
     par_confiance: parConfiance,
-    affichables: affichables.length,
+    majorant_affichables: majorantAffichables.length,
     recettes: recettes.length,
     manquantes: restant,
   }, null, 2)}\n`)

@@ -29,6 +29,13 @@ export default function SettingsHome() {
             </span>
             <span className="v21-it-r">Répondre →</span>
           </Link>
+          <Link href="/settings/budget" className="v21-it v21-link-row">
+            <span className="v21-it-main">
+              <span className="v21-it-name">Enveloppe alimentaire</span>
+              <span className="v21-it-sub">Ce que le foyer se donne pour manger, en gamme et non en plafond — comparée aux estimations de courses</span>
+            </span>
+            <span className="v21-it-r">Poser →</span>
+          </Link>
         </div>
       </section>
 

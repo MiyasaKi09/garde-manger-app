@@ -7,9 +7,15 @@ import { supabase } from '@/lib/supabaseClient';
 import { authFetch } from '@/lib/authFetch';
 import { readCache, writeCache } from '@/lib/pageCache';
 import { limitRecipePreview, selectDiverseAntiWaste } from '@/lib/domain/recipes/catalogPresentation';
+import { vueCoutCarte } from '@/components/pricing/estimationView';
+import { EstimationLigne } from '@/components/pricing/Estimation';
 import './recipes.css';
 
-const RECIPES_CACHE_KEY = 'recipes:v3-editorial-complete:1';
+// :2 — les cartes portent désormais l'estimation par portion. Sans ce
+// changement de clé, une revisite afficherait d'abord l'ancienne liste, sans
+// montant, puis le ferait apparaître au rafraîchissement : un scintillement
+// pour rien, alors que la donnée est déjà en route.
+const RECIPES_CACHE_KEY = 'recipes:v3-editorial-complete:2';
 
 /* ── Fiche recette horizontale (vignette + infos), barre d'état à gauche ── */
 function variantOf(s) {
@@ -25,6 +31,11 @@ function Fiche({ r, s, variant }) {
   const time = (r.prep_min || 0) + (r.cook_min || 0);
   const total = s?.total || 0;
   const avail = s?.available || 0;
+  // Le bloc `cost` transporte des nombres ; la mise en mots (arrondi §7.2,
+  // « au moins » d'une couverture partielle, compte des lignes chiffrées) se
+  // fait ici, à partir de la seule arithmétique pure — le référentiel de prix
+  // lui-même ne descend jamais jusqu'au navigateur.
+  const cout = vueCoutCarte(r.canonical_quality?.cost);
 
   let cuis = null;
   if (v === 'ag' && s?.expiringName) {
@@ -57,6 +68,15 @@ function Fiche({ r, s, variant }) {
           {time > 0 ? `${time} min` : '—'}{r.servings ? ` · ${r.servings} pers` : ''}
           {r.rating ? <span className="rc-score"><i>★</i>{(+r.rating).toFixed(1)}</span> : null}
         </div>
+        {/* Le montant ne va jamais sans le compte des lignes chiffrées (§8.5) :
+            c'est ce qui empêche deux cartes de couvertures différentes de se
+            comparer comme si elles disaient la même chose. Les cartes ne sont
+            d'ailleurs jamais triées par ce montant (§8.4). */}
+        {cout?.affichable && (
+          <span className="rc-cout" title={cout.phrase}>
+            <EstimationLigne vue={cout} suffixe="par portion" />
+          </span>
+        )}
       </div>
       {v === 'ok' && <span className="rc-cook">Cuisiner →</span>}
     </Link>
