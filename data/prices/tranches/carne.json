@@ -1,0 +1,675 @@
+{
+  "schema_version": "1.0.0",
+  "price_set_version": "2026.08-carne",
+  "country": "FR",
+  "currency": "EUR",
+  "reference_date": "2026-08-24",
+  "derived_license": "odbl-1.0",
+  "catalog_version": "v3-300-real-dishes",
+  "built_at": "2026-08-29",
+  "notes": "Tranche « carne » : viandes de boucherie et volailles restées sans prix après la tranche « frais animal ». Vingt-six formes à chiffrer, huit chiffrées et affichables (A ou B), cinq écrites en C — c'est-à-dire non affichées et non comptées dans la couverture — et treize laissées entièrement absentes. Le résultat est maigre, et la raison en est double. PREMIÈREMENT, ce que le RNM cote réellement au détail. Vérifié le 2026-08-29 sur les deux seuls marchés de détail du secteur Viande (M2501 « Viande France DETAIL GMS » et M3029 « MAG. SPECIALISES BIO ») : sept libellés au total, et sept seulement — agneau gigot, bœuf steak haché 15 % MG conventionnel et bio, lapin entier, porc côte avec os, poulet prêt à cuire bio et label rouge. La même liste apparaît en semaine 3-2025, donc ce n'est pas un creux de publication. Six de ces sept séries étaient déjà exploitées par la tranche « frais animal » ; la septième, « PORC (côte) avec os », est la seule cotation RNM neuve de ce lot. Pas de veau, pas d'abats, pas de volaille découpée, pas de haché de porc, pas d'épaule d'agneau. Les cotations de gros du MIN de Rungis couvrent bien plus de morceaux et restent écartées pour la raison déjà retenue par la tranche « frais animal » : convertir un prix de gros en prix payé en caisse demanderait un coefficient de marge qu'aucune source du registre ne publie. DEUXIÈMEMENT, l'Observatoire de la formation des prix et des marges n'a PAS pu être employé, bien que le registre le déclare actif et qu'il accorde A. Son champ license_verified_on vaut null dans data/prices/sources.json, et le contrôleur refuse toute entrée qui s'en réclame (source_license_unverified). Activer la source suppose d'écrire dans sources.json, ce que la consigne de ce lot interdit — six agents écrivent en parallèle, chacun dans sa tranche. C'est un blocage de procédure et non de fond : quelqu'un doit ouvrir la page de licence de l'Observatoire, inscrire la date et le vérificateur, et ses moyennes annuelles au détail redeviendront utilisables. TROISIÈMEMENT, le reste vient donc d'Open Prices, plafonné à B par le registre, ce qui impose derived_license = odbl-1.0 à cette tranche et, par contamination, au référentiel fusionné. MÉTHODE OPEN PRICES, commune à toutes les entrées : magasins en France, euros, fenêtre de douze mois close à la date de référence (2025-08-25 → 2026-08-24), hors promotion, hors bio. La fenêtre est de douze mois et non de vingt-quatre exprès : aucune entrée n'a alors besoin d'être réindexée, et observed_on peut valoir la fin de période sans qu'une partie des relevés soit plus vieille que ce que cette date laisse croire. Prix au kilo : direct pour les relevés de catégorie (price_per = KILOGRAM, c'est le prix au rayon boucherie), et prix divisé par le poids net Open Food Facts pour les produits emballés ; un produit sans poids net est écarté. Déduplication : plusieurs barquettes du même libellé, au même magasin, le même jour, au même prix au kilo ne comptent que pour un relevé. Cette déduplication est la règle qui a fait le plus de dégâts sur le rendement du lot, et elle est délibérée : elle a fait tomber la poitrine de porc de sept « relevés » à quatre. DISPERSION : au-dessus de dix relevés, low et high sont les 1er et 9e déciles empiriques (d1_d9) ; en dessous, le minimum et le maximum (min_max). Les tranches sœurs déclarent d1_d9 même à cinq relevés ; c'est un écart assumé, dans le sens de la prudence. AGRÉGATION : un relevé unique est déclaré « point » ; un agrégat étalé sur plus de quatre mois « annual_mean » ; en dessous « monthly_mean ». period_start et period_end portent la période exacte, ces étiquettes n'en sont que le résumé grossier. AUCUNE ENTRÉE EN A, et aucune ne pouvait l'être : le RNM ne publie ses déciles que sur la cotation hebdomadaire, qui est ponctuelle au sens du §4, et Open Prices est plafonné à B par construction. AUCUN RENDEMENT SOURCÉ, sur aucune des treize entrées écrites : ni le RNM ni Open Prices ne publient de table de parts comestibles, et myko_reasoning n'a le droit de porter un rendement de 1,00 que lorsqu'il découle de la nature du produit, ce qui ne vaut pour aucune viande. Toutes les estimations de cette tranche sont donc des minorants déclarés, et fortement minorants sur les morceaux avec os (cuisse de poulet, jarret de veau) et sur la poule entière. FORMES LAISSÉES ENTIÈREMENT ABSENTES, et pourquoi : langue de bœuf (Open Prices ne connaît que des plats cuisinés « langue sauce madère », dont la langue n'est qu'une partie du poids) ; jarret de bœuf avec os (aucun relevé, seul le jarret de PORC est relevé) ; épaule, épaule en cubes et escalope de veau (aucun relevé, et interpoler entre le collier et le tendron aurait été fabriquer un prix) ; épaule d'agneau (seul le gigot est relevé, et le RNM ne cote que le gigot) ; filet mignon de porc (tous les relevés sont des plats cuisinés « filet mignon et écrasé de pommes de terre » ou de la charcuterie sèche) ; filet de bœuf en lanières (un seul relevé, un tournedos) ; magret de canard fumé (trois relevés) ; poulet cuit effiloché et bœuf cuit effiloché (les seuls relevés sont des produits cuits vendus en barquette, trop peu nombreux ; et les chiffrer avec le prix de la viande CRUE aurait cumulé deux minorations, l'os et la perte à la cuisson, dont aucune source du registre ne publie le facteur de rétention) ; haut de cuisse de poulet désossé, avec ou sans peau (les seuls relevés sont des hauts de cuisse AVEC os, et appliquer un prix d'achat avec os à une forme explicitement désossée n'est pas la même chose que de laisser un rendement à 1,00 : ce n'est plus le même objet acheté). CE QUE LE LOT CHANGE, mesuré et non annoncé, en ne comptant que les entrées A ou B et en écartant les C comme le fait la couche de lecture : la part des calories du corpus publiable qui porte un prix passe de 69,3 % à 72,6 %, et le majorant des recettes franchissant les deux seuils d'affichage de 168 à 178 sur 405. Cela représente environ 28 800 kcal sur les 104 000 que ce lot devait débloquer — un peu plus du quart. Les trois quarts restants sont dans la liste ci-dessus, et ils y resteront tant qu'aucune source ne les cotera.",
+  "entries": [
+    {
+      "form": "Échine de porc crue",
+      "form_normalized": "echine de porc crue",
+      "category": "viandes",
+      "observed": {
+        "basis": "kg",
+        "low": 4.45,
+        "central": 6.75,
+        "high": 8.99,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 4.45,
+        "central": 6.75,
+        "high": 8.99,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "La cotation porte des côtes AVEC OS ; la forme du catalogue est la viande d'échine (Ciqual 28302, « Porc, échine, crue »), donc désossée. Le rapport entre les deux — la part d'os d'un carré de côtes — n'est publié par aucune source du registre, et le chiffrer de tête serait exactement le nombre plausible et invérifiable que le contrat proscrit. Rendement laissé à 1,00 déclaré inconnu : l'estimation est un minorant, et le sens de l'erreur est connu."
+      },
+      "confidence": "B",
+      "confidence_reason": "rnm_detail_gms_forme_approchee_cote_pour_echine",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2501:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2501/57230062/2026-08-20",
+        "citation": "RNM — Viande France DETAIL GMS (cours Détail, € TTC le kg), semaine 34 du 17-08-2026 au 23-08-2026 : « PORC (côte) avec os France cdt 4à10 » — prix moyen 6.75 €/kg, variation -0.86, mini 4.45, maxi 8.99. Série RNM n° 57230062."
+      },
+      "reindexation": null,
+      "notes": "ADAPTATION DÉCLARÉE, et c'est elle qui plafonne l'entrée à B : le RNM ne cote pas l'échine, il cote « PORC (côte) avec os ». La côte de porc est taillée dans la longe, dont l'échine est l'extrémité — en France la « côte échine » EST une côte d'échine — donc même animal, morceau contigu, même usage culinaire (rôtir, griller, mijoter). C'est un rapprochement de voisinage, pas une équivalence, et le prix retenu est celui des côtes, os compris. Ce que le RNM cote réellement au détail, vérifié le 2026-08-29 : sept libellés et sept seulement — agneau gigot, bœuf steak haché 15 % MG (conventionnel et bio), lapin entier, porc côte avec os, poulet prêt à cuire (bio et label rouge). La même liste apparaît en semaine 3-2025, donc ce n'est pas un creux passager de la publication. Les deux seuls marchés de détail du secteur Viande sont « Viande France DETAIL GMS » (M2501) et « Viande France DETAIL MAG. SPECIALISES BIO » (M3029, une seule série, poulet bio). Aucune cotation de veau, d'abats, de volaille découpée, de haché de porc. Les cotations de gros du MIN de Rungis couvrent beaucoup plus de morceaux mais restent écartées, pour la raison déjà retenue par la tranche « frais animal » : passer d'un prix de gros à un prix payé en caisse demanderait un coefficient de marge qu'aucune source du registre ne publie. Cotation hebdomadaire, panel de 150 magasins de plus de 400 m², plan de sondage stratifié (surface de vente, zonage géographique, taille de l'unité urbaine) ; le prix moyen est une moyenne PONDÉRÉE, et la page « définition, méthodologie » (https://rnm.franceagrimer.fr/prix?M2501:INFO) dit explicitement que le MIN et le MAX publiés sont les premier et neuvième déciles de la série : d'où dispersion = d1_d9 et non quoted_range. n_observations vaut 1 parce qu'une seule cotation publiée a été lue ; le RNM ne dit pas combien de magasins ont coté ce libellé, et l'inventer serait écrire un chiffre de plus. Biais déclaré par la source : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas ». Moyennes mensuelles de la même série sur douze mois (page M2501:12MOIS), à titre de recoupement : 7,59 / 7,35 / 7,31 / 7,02 / 7,90 / 6,96 / 7,61 / 7,24 / 7,08 / 7,25 / 6,94 / 7,21 €/kg d'août 2025 à juillet 2026 — la semaine retenue est donc un peu sous la moyenne de l'année, et ces moyennes ne sont pas retenues parce que le RNM les publie sans aucune dispersion. Semaines voisines de la même série, relevées le 2026-08-29 sur sa page d'historique : 6,75 le 20/08, 7,61 le 13/08, 7,23 le 06/08, 7,66 le 30/07, 6,89 le 23/07, 7,79 le 16/07 — la cotation bouge de près d'un euro d'une semaine à l'autre, et celle qui est retenue est basse. Elle l'est parce que c'est la dernière publiée à la date de référence du jeu, et non parce qu'elle aurait été choisie. Pour retrouver la cotation : la page du marché affiche la dernière semaine ; le formulaire « autre date » est un POST (MARCHE=2501, DATE=20-08-26), il n'existe pas de lien direct daté. Pour la série seule et son historique de trois ans, POST sur /prix avec LIBCOD=57230062 — c'est ce que fait le lien du libellé dans la page du marché."
+    },
+    {
+      "form": "Cuisse de poulet crue, avec os, avec peau",
+      "form_normalized": "cuisse de poulet crue avec os avec peau",
+      "category": "volailles",
+      "observed": {
+        "basis": "kg",
+        "low": 4.04,
+        "central": 4.82,
+        "high": 6.77,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 8,
+        "period_start": "2025-09-25",
+        "period_end": "2026-03-01"
+      },
+      "per_kg": {
+        "low": 4.04,
+        "central": 4.82,
+        "high": 6.77,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le morceau s'achète avec son os ; le catalogue compte la forme en viande et peau (Ciqual 36002, « Poulet, cuisse, viande et peau, cru »), donc sans os. Aucune source du registre ne publie la part d'os d'une cuisse de poulet, et la relecture précédente de cette tranche a retiré — plutôt que remplacé par un pourcentage — une note qui affirmait que le rendement était « sans effet pratique ». On ne recommence pas. Rendement 1,00 déclaré inconnu, estimation minorante. Ce que les lignes du corpus disent, sans trancher : 1 500 g pour 6 personnes (FR-008, REAL-095, REAL-134, REAL-259, REAL-296), 1 600 g pour 6 (FR-016), 1 400 g pour 8 (MAG-001), 900 g pour 4 (SRC-047-D4), soit environ 250 g par personne — l'ordre de grandeur d'une cuisse entière AVEC son os, ce qui suggère que les auteurs ont pesé le morceau acheté et non la chair. Si c'est le cas, la minoration est faible ici ; si c'est la lecture Ciqual qui vaut, elle est forte. Les deux lectures sont ouvertes et aucune source ne permet de choisir : c'est pourquoi rien n'est corrigé."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_agregat_morceaux_de_cuisse_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en:chicken-thighs&size=100",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-03-01",
+        "source_record_key": "183083,236214,163816,173370,151873,141012,235423,236098",
+        "citation": "Open Prices (Open Food Facts), morceaux de cuisse de poulet crus avec os, relevés en magasin en France du 2025-09-25 au 2026-03-01, hors promotion et hors bio : 8 relevés au kilogramme, de 4,04 à 6,77 €/kg — 4,04 €/kg le 2026-01-06 (« Cuisses de poulet avec portion de dos », E.Leclerc Canteleu) ; 4,69 €/kg le 2025-12-16 (« Cuisses de poulet », E.Leclerc Niort) ; 4,95 €/kg le 2025-10-13 (catégorie en:chicken-thighs au rayon, E.Leclerc Niort) ; 6,77 €/kg le 2026-03-01 (« Haut cuisses poulet », Centre Commercial E.Leclerc Gennevilliers). Médiane 4.82 €/kg."
+      },
+      "reindexation": null,
+      "notes": "Agrégat de huit relevés, dans quatre magasins (E.Leclerc Canteleu, E.Leclerc Niort, Centre Commercial E.Leclerc Gennevilliers, Netto Prévessin) : cuisses entières, cuisses avec portion de dos, hauts de cuisse et pilons ont été mis dans le même panier. C'est une adaptation, et elle est assumée : ces morceaux se vendent au même rayon, dans la même gamme de prix (4,04 à 6,77 €/kg), et aucune source du registre ne les cote séparément. Un relevé « Pilons de poulet halal » y figure ; le halal n'est pas une gamme au sens du §3.1 et son prix est dans la même plage, il n'a donc pas été écarté. Règle de dispersion de cette tranche : au-dessus de 10 relevés, low/high sont les 1er et 9e déciles empiriques des relevés retenus (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. Ici huit relevés, donc min_max. Sélection Open Prices : magasins situés en France (filtre appliqué sur le code pays du magasin, l'API n'offrant pas de filtre pays), euros, relevés du 2025-09-25 au 2026-03-01, hors promotion (price_is_discounted) et hors bio. Prix au kilo : pour un relevé de type CATEGORY, le prix est déjà au kilo (price_per = KILOGRAM) ; pour un relevé de type PRODUCT, il est divisé par le poids net du catalogue Open Food Facts (product_quantity), et un produit sans poids net déclaré est écarté. Déduplication : plusieurs barquettes du même libellé, au même magasin, le même jour et au même prix au kilo ne comptent que pour UN relevé — sans quoi trois paquets pesés d'un même rayon gonfleraient l'effectif sans rien ajouter. Chaque identifiant de source_record_key se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. Recoupement de vraisemblance : le RNM cote au même moment le poulet entier prêt à cuire label rouge à 7,68 €/kg, et un morceau de cuisse se vend moins cher qu'un poulet entier label rouge — l'ordre de grandeur tient. Ce recoupement n'est PAS la source du chiffre, seulement une vérification."
+    },
+    {
+      "form": "Cuisse de poulet crue, avec os, sans peau",
+      "form_normalized": "cuisse de poulet crue avec os sans peau",
+      "category": "volailles",
+      "observed": {
+        "basis": "kg",
+        "low": 4.04,
+        "central": 4.82,
+        "high": 6.77,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 8,
+        "period_start": "2025-09-25",
+        "period_end": "2026-03-01"
+      },
+      "per_kg": {
+        "low": 4.04,
+        "central": 4.82,
+        "high": 6.77,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Même prix que la cuisse avec peau parce que c'est le même achat : la peau se retire après, elle ne se déduit pas du ticket. La forme du catalogue est la chair seule (Ciqual 36024, « Poulet, cuisse, viande, cru »), donc sans os NI peau, alors que ce qui est acheté porte les deux. La minoration est donc plus forte ici que sur la forme avec peau, et elle n'est pas chiffrée : ni l'os ni la peau ne sont pesés par une source du registre. Rendement 1,00 déclaré inconnu."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_meme_achat_que_la_cuisse_avec_peau_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en:chicken-thighs&size=100",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-03-01",
+        "source_record_key": "183083,236214,163816,173370,151873,141012,235423,236098",
+        "citation": "Open Prices (Open Food Facts), morceaux de cuisse de poulet crus avec os, relevés en magasin en France du 2025-09-25 au 2026-03-01, hors promotion et hors bio : 8 relevés au kilogramme, de 4,04 à 6,77 €/kg — 4,04 €/kg le 2026-01-06 (« Cuisses de poulet avec portion de dos », E.Leclerc Canteleu) ; 4,69 €/kg le 2025-12-16 (« Cuisses de poulet », E.Leclerc Niort) ; 4,95 €/kg le 2025-10-13 (catégorie en:chicken-thighs au rayon, E.Leclerc Niort) ; 6,77 €/kg le 2026-03-01 (« Haut cuisses poulet », Centre Commercial E.Leclerc Gennevilliers). Médiane 4.82 €/kg."
+      },
+      "reindexation": null,
+      "notes": "Aucune source ne cote la cuisse de poulet sans peau : elle ne s'achète pas comme telle en grande surface, on achète une cuisse avec peau et on la retire. Le prix porté est donc exactement celui de la forme avec peau, et c'est une adaptation déclarée, pas une mesure distincte. Agrégat de huit relevés, dans quatre magasins (E.Leclerc Canteleu, E.Leclerc Niort, Centre Commercial E.Leclerc Gennevilliers, Netto Prévessin) : cuisses entières, cuisses avec portion de dos, hauts de cuisse et pilons ont été mis dans le même panier. C'est une adaptation, et elle est assumée : ces morceaux se vendent au même rayon, dans la même gamme de prix (4,04 à 6,77 €/kg), et aucune source du registre ne les cote séparément. Un relevé « Pilons de poulet halal » y figure ; le halal n'est pas une gamme au sens du §3.1 et son prix est dans la même plage, il n'a donc pas été écarté. Règle de dispersion de cette tranche : au-dessus de 10 relevés, low/high sont les 1er et 9e déciles empiriques des relevés retenus (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. Ici huit relevés, donc min_max. Sélection Open Prices : magasins situés en France (filtre appliqué sur le code pays du magasin, l'API n'offrant pas de filtre pays), euros, relevés du 2025-09-25 au 2026-03-01, hors promotion (price_is_discounted) et hors bio. Prix au kilo : pour un relevé de type CATEGORY, le prix est déjà au kilo (price_per = KILOGRAM) ; pour un relevé de type PRODUCT, il est divisé par le poids net du catalogue Open Food Facts (product_quantity), et un produit sans poids net déclaré est écarté. Déduplication : plusieurs barquettes du même libellé, au même magasin, le même jour et au même prix au kilo ne comptent que pour UN relevé — sans quoi trois paquets pesés d'un même rayon gonfleraient l'effectif sans rien ajouter. Chaque identifiant de source_record_key se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. Recoupement de vraisemblance : le RNM cote au même moment le poulet entier prêt à cuire label rouge à 7,68 €/kg, et un morceau de cuisse se vend moins cher qu'un poulet entier label rouge — l'ordre de grandeur tient. Ce recoupement n'est PAS la source du chiffre, seulement une vérification."
+    },
+    {
+      "form": "Escalope de dinde crue",
+      "form_normalized": "escalope de dinde crue",
+      "category": "volailles",
+      "observed": {
+        "basis": "kg",
+        "low": 14.63,
+        "central": 20.92,
+        "high": 24.45,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 13,
+        "period_start": "2025-08-30",
+        "period_end": "2026-06-29"
+      },
+      "per_kg": {
+        "low": 14.63,
+        "central": 20.92,
+        "high": 24.45,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Une escalope de dinde est vendue parée, sans os ni peau : il n'y a rien à jeter avant de cuisiner. Le rendement reste malgré tout à 1,00 « inconnu » et non « connu », parce qu'aucune source du registre ne publie de part comestible pour cette forme et que myko_reasoning n'admet un rendement de 1,00 que lorsqu'il découle de la NATURE du produit — une huile, un sel. Une escalope parée en est proche, mais « proche » n'est pas « par nature », et l'exception du §2.2 est étroite volontairement."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_france_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en:turkey-cutlets&size=100",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-06-29",
+        "source_record_key": "143727,175575,139026,206804,235428,153137,153831,170873,157047,168229,173377,289688,136223",
+        "citation": "Open Prices (Open Food Facts), escalope de dinde crue, relevés en magasin en France du 2025-08-30 au 2026-06-29, hors promotion et hors bio : 13 relevés au kilogramme, de 14,54 à 27,85 €/kg — 14,54 €/kg le 2025-09-30 (« Escalopes de dinde extra fines x2 », E.Leclerc Niort) ; 16,79 €/kg le 2026-02-07 (« Escalope de dinde » Le Gaulois, Super U Lyon) ; 21,71 €/kg le 2025-11-01 (catégorie en:turkey-cutlets au rayon, E.Leclerc Niort) ; 27,85 €/kg le 2025-08-30 (catégorie en:turkey-cutlets, Super U Échiré). Médiane 20.92 €/kg, D1 14.63, D9 24.45."
+      },
+      "reindexation": null,
+      "notes": "AVERTISSEMENT SUR L'ÉCHANTILLON, à lire avant d'utiliser ce chiffre : neuf des treize relevés retenus viennent d'un seul magasin, l'E.Leclerc de Niort, dont sept sont des prix au rayon relevés à sept dates différentes entre septembre et décembre 2025, autour de 21 €/kg. La médiane de 20,92 €/kg est donc, pour l'essentiel, le prix de ce rayon-là. Les quatre autres relevés (Super U Lyon 16,79 ; Centre Commercial E.Leclerc Gennevilliers 17,00 ; Intermarché Avallon 25,08 ; Super U Échiré 27,85) encadrent ce niveau sans le déplacer. Le contrat range explicitement cette non-représentativité dans ce que le plafond B assume (§4) et la fourchette D1–D9 la montre ; elle est écrite ici parce qu'un lecteur qui ne lirait que le montant ne la verrait pas. Écartés nommément : un « 2 Escalopes de Dinde à la Normande » (cordon bleu pané, catégorie en:breaded-products) à 9,25 €/kg, et tous les produits panés, cordons bleus et plats cuisinés à base d'escalope. Règle de dispersion de cette tranche : au-dessus de 10 relevés, low/high sont les 1er et 9e déciles empiriques des relevés retenus (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. Ici treize relevés, donc d1_d9. Sélection Open Prices : magasins situés en France (filtre appliqué sur le code pays du magasin, l'API n'offrant pas de filtre pays), euros, relevés du 2025-08-30 au 2026-06-29, hors promotion (price_is_discounted) et hors bio. Prix au kilo : pour un relevé de type CATEGORY, le prix est déjà au kilo (price_per = KILOGRAM) ; pour un relevé de type PRODUCT, il est divisé par le poids net du catalogue Open Food Facts (product_quantity), et un produit sans poids net déclaré est écarté. Déduplication : plusieurs barquettes du même libellé, au même magasin, le même jour et au même prix au kilo ne comptent que pour UN relevé — sans quoi trois paquets pesés d'un même rayon gonfleraient l'effectif sans rien ajouter. Chaque identifiant de source_record_key se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Contributions volontaires : l'échantillon n'est représentatif de rien en particulier, d'où le plafond B du registre. Le RNM ne cote aucune volaille découpée au détail — seulement le poulet entier prêt à cuire — d'où le recours à Open Prices."
+    },
+    {
+      "form": "Blanc de poulet cru, sans peau",
+      "form_normalized": "blanc de poulet cru sans peau",
+      "category": "volailles",
+      "observed": {
+        "basis": "kg",
+        "low": 10.41,
+        "central": 12.3,
+        "high": 14.82,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 14,
+        "period_start": "2025-10-24",
+        "period_end": "2026-08-04"
+      },
+      "per_kg": {
+        "low": 10.41,
+        "central": 12.3,
+        "high": 14.82,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le filet de poulet s'achète paré, sans os ni peau : la forme achetée et la forme du catalogue (Ciqual 36017, « Poulet, filet, sans peau, cru ») coïncident, et il n'y a pas de perte de parage connue à déduire. Le rendement reste néanmoins déclaré inconnu plutôt que connu : Aucune des sources du registre — RNM, Open Prices — ne publie de table de parts comestibles, et myko_reasoning n'a le droit de porter qu'un rendement de 1,00 par NATURE du produit, ce qui n'est le cas d'aucune viande. Le rendement reste donc à 1,00 déclaré inconnu : l'estimation est un minorant de sens connu, et jamais une perte de parage inventée."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_france_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en:chicken-breasts&size=100",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-08-04",
+        "source_record_key": "280724,273081,154055,168179,170777,258120,263307,276502,265706,304471,265779,167835,292904,187277",
+        "citation": "Open Prices (Open Food Facts), filet de poulet cru sans peau, relevés en magasin en France du 2025-10-24 au 2026-08-04, hors promotion et hors bio : 14 relevés au kilogramme, de 9,49 à 19,98 €/kg — 9,49 €/kg le 2026-06-05 (« Filet de poulet jaune sans peau », Lidl Avignon) ; 12,30 €/kg le 2025-10-24 (« Filets de poulet », E.Leclerc Drive Nancy) ; 15,20 €/kg le 2026-07-10 (catégorie en:chicken-breasts au rayon, Intermarché Super Bresson) ; 19,98 €/kg le 2026-01-20 (« Filets de poulet blanc », E.Leclerc Canteleu). Médiane 12.30 €/kg, D1 10.41, D9 14.82."
+      },
+      "reindexation": null,
+      "notes": "PIÈGE DE LIBELLÉ, et c'est le tri le plus important de cette entrée : en France, « blanc de poulet » désigne au rayon libre-service une charcuterie CUITE en tranches (jambon de volaille, 80 à 240 g, 12 à 33 €/kg), et non le filet cru. Tous les produits portant les catégories en:poultry-hams, fr:charcuteries-cuites ou en:cooked-chicken-breast-slices ont donc été écartés, ainsi que les brochettes marinées, les filets rôtis, les émincés cuits, les panés et les plats cuisinés « filet de poulet et ses pommes de terre ». Quatre des relevés retenus portent en outre la catégorie Ciqual en:chicken-breast-without-skin-raw d'Open Food Facts, qui certifie le cru sans peau. Écartés par prudence, faute de pouvoir trancher : les « Escalopes de poulet tendres » Maître CoQ (600 g) et l'« Escalope Poulet Label Rouge Alsace », que la base classe en en:cooked-poultries alors que le produit paraît cru — un classement contradictoire ne se corrige pas à la main. Sept magasins (Lidl Avignon, Carrefour Lyon Part-Dieu, E.Leclerc Drive Nancy, E. Leclerc Vandœuvre-lès-Nancy, E. Leclerc Relais Paris, Intermarché Super Bresson, E.Leclerc Canteleu) ; sept des quatorze relevés viennent du drive de Nancy, à sept dates différentes, tous autour de 12,30 €/kg. Règle de dispersion de cette tranche : au-dessus de 10 relevés, low/high sont les 1er et 9e déciles empiriques des relevés retenus (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. Ici quatorze relevés, donc d1_d9. Sélection Open Prices : magasins situés en France (filtre appliqué sur le code pays du magasin, l'API n'offrant pas de filtre pays), euros, relevés du 2025-10-24 au 2026-08-04, hors promotion (price_is_discounted) et hors bio. Prix au kilo : pour un relevé de type CATEGORY, le prix est déjà au kilo (price_per = KILOGRAM) ; pour un relevé de type PRODUCT, il est divisé par le poids net du catalogue Open Food Facts (product_quantity), et un produit sans poids net déclaré est écarté. Déduplication : plusieurs barquettes du même libellé, au même magasin, le même jour et au même prix au kilo ne comptent que pour UN relevé — sans quoi trois paquets pesés d'un même rayon gonfleraient l'effectif sans rien ajouter. Chaque identifiant de source_record_key se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Contributions volontaires, d'où le plafond B du registre."
+    },
+    {
+      "form": "Jambonneau cuit",
+      "form_normalized": "jambonneau cuit",
+      "category": "viandes",
+      "observed": {
+        "basis": "kg",
+        "low": 10.88,
+        "central": 11.97,
+        "high": 21.58,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 9,
+        "period_start": "2026-01-26",
+        "period_end": "2026-08-10"
+      },
+      "per_kg": {
+        "low": 10.88,
+        "central": 11.97,
+        "high": 21.58,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le jambonneau vendu en charcuterie est cuit, désossé et paré : ce qui est pesé au rayon est ce qui se mange. Rendement laissé à 1,00 déclaré inconnu comme le contrat l'impose par défaut ; Aucune des sources du registre — RNM, Open Prices — ne publie de table de parts comestibles, et myko_reasoning n'a le droit de porter qu'un rendement de 1,00 par NATURE du produit, ce qui n'est le cas d'aucune viande. Le rendement reste donc à 1,00 déclaré inconnu : l'estimation est un minorant de sens connu, et jamais une perte de parage inventée."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_france_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en:hams&size=100",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-08-10",
+        "source_record_key": "273224,302798,262064,302540,272115,306537,297958,228425,203444",
+        "citation": "Open Prices (Open Food Facts), jambonneau cuit, relevés en magasin en France du 2026-01-26 au 2026-08-10, hors promotion et hors bio : 9 relevés au kilogramme, de 10,88 à 21,58 €/kg — 10,88 €/kg le 2026-05-09 (« Jambonneau » 400 g, Auchan Nancy) ; 11,97 €/kg le 2026-05-06 (« Jambonneau » 400 g, E. Leclerc Vandœuvre-lès-Nancy) ; 15,16 €/kg le 2026-02-21 (« Jambonneau » 250 g, Centre Commercial E.Leclerc Clichy) ; 21,58 €/kg le 2026-01-26 (« Jambonneau cuit au torchon » 500 g à 10,79 €, Carrefour Market Paris). Médiane 11.97 €/kg."
+      },
+      "reindexation": null,
+      "notes": "Le jambonneau est l'une des rares formes de ce lot que la grande distribution vend emballée et code-barrée, ce qui explique qu'elle soit ici l'entrée la mieux répartie : neuf relevés dans six magasins (Auchan Nancy, Auchan Bron, E. Leclerc Vandœuvre-lès-Nancy, E. Leclerc Nancy, Centre Commercial E.Leclerc Clichy, Carrefour Market Paris) et sur sept mois. La forme du catalogue est elle-même le produit cuit (Ciqual 28960, « Jambonneau, cuit »), donc il n'y a pas d'écart cru/cuit à déclarer, contrairement aux formes « effilochées » de ce même lot qui sont restées sans prix pour cette raison. Le haut de fourchette (21,58 €/kg) est un jambonneau au torchon, une gamme au-dessus du jambonneau standard ; il est conservé parce que le §3.1 range explicitement la gamme dans ce que la dispersion absorbe. Règle de dispersion de cette tranche : au-dessus de 10 relevés, low/high sont les 1er et 9e déciles empiriques des relevés retenus (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. Ici neuf relevés, donc min_max. Sélection Open Prices : magasins situés en France (filtre appliqué sur le code pays du magasin, l'API n'offrant pas de filtre pays), euros, relevés du 2026-01-26 au 2026-08-10, hors promotion (price_is_discounted) et hors bio. Prix au kilo : pour un relevé de type CATEGORY, le prix est déjà au kilo (price_per = KILOGRAM) ; pour un relevé de type PRODUCT, il est divisé par le poids net du catalogue Open Food Facts (product_quantity), et un produit sans poids net déclaré est écarté. Déduplication : plusieurs barquettes du même libellé, au même magasin, le même jour et au même prix au kilo ne comptent que pour UN relevé — sans quoi trois paquets pesés d'un même rayon gonfleraient l'effectif sans rien ajouter. Chaque identifiant de source_record_key se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Contributions volontaires, d'où le plafond B."
+    },
+    {
+      "form": "Guanciale cru",
+      "form_normalized": "guanciale cru",
+      "category": "viandes",
+      "observed": {
+        "basis": "kg",
+        "low": 19.3,
+        "central": 30.3,
+        "high": 49.9,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 7,
+        "period_start": "2025-09-17",
+        "period_end": "2026-04-06"
+      },
+      "per_kg": {
+        "low": 19.3,
+        "central": 30.3,
+        "high": 49.9,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Charcuterie sèche vendue tranchée ou en pièce parée : rien n'est jeté avant emploi. Rendement à 1,00 déclaré inconnu ; Aucune des sources du registre — RNM, Open Prices — ne publie de table de parts comestibles, et myko_reasoning n'a le droit de porter qu'un rendement de 1,00 par NATURE du produit, ce qui n'est le cas d'aucune viande. Le rendement reste donc à 1,00 déclaré inconnu : l'estimation est un minorant de sens connu, et jamais une perte de parage inventée."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_pancetta_pour_guanciale_forme_approchee_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en:pancetta&size=100",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-04-06",
+        "source_record_key": "180101,218518,229461,230352,257893,261804,261805",
+        "citation": "Open Prices (Open Food Facts), pancetta, relevés en magasin en France du 2025-09-17 au 2026-04-06, hors promotion et hors bio : 7 relevés au kilogramme, de 19,30 à 49,90 €/kg — 19,30 €/kg le 2025-09-17 (« Pancetta », Graoucoop Metz) ; 28,90 €/kg le 2026-02-14 (« Pancetta italienne x 10 tranches » 100 g, Centre Commercial E.Leclerc Clichy) ; 32,30 €/kg le 2026-04-01 (« Pancetta - x10 tranches, 100 g », Super U Paris) ; 49,90 €/kg le 2026-04-06 (« Pancetta des Pyrénées » 100 g, Carrefour Gennevilliers). Médiane 30.30 €/kg."
+      },
+      "reindexation": null,
+      "notes": "ADAPTATION DÉCLARÉE : aucune source du registre ne relève le guanciale — un seul prix Open Prices porte la catégorie en:guanciale dans le monde entier, et il n'est pas français. Le prix retenu est celui de la PANCETTA, qui est le rapprochement que le catalogue alimentaire fait déjà de son côté pour la nutrition (la forme « Guanciale cru » est adossée à Ciqual 28858, « Pancetta ou Poitrine roulée sèche »). Guanciale et pancetta sont deux salaisons crues de porc de la même famille — joue pour l'un, poitrine pour l'autre — employées de la même façon et vendues au même rayon ; c'est un voisinage, pas une identité. BIAIS À CONNAÎTRE, et il va vers le HAUT, contrairement à tout le reste de cette tranche : six des sept relevés sont des barquettes de 100 g de tranches d'apéritif, le format le plus cher au kilo. Un guanciale acheté en pièce chez un traiteur serait vraisemblablement moins cher au kilo, mais « vraisemblablement » n'est pas un relevé et rien n'a été corrigé. La médiane de 30,30 €/kg reste dans la plage où se vend le guanciale en France, ce qui est une vérification d'ordre de grandeur et non une source. Règle de dispersion de cette tranche : au-dessus de 10 relevés, low/high sont les 1er et 9e déciles empiriques des relevés retenus (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. Ici sept relevés, donc min_max. Sélection Open Prices : magasins situés en France (filtre appliqué sur le code pays du magasin, l'API n'offrant pas de filtre pays), euros, relevés du 2025-09-17 au 2026-04-06, hors promotion (price_is_discounted) et hors bio. Prix au kilo : pour un relevé de type CATEGORY, le prix est déjà au kilo (price_per = KILOGRAM) ; pour un relevé de type PRODUCT, il est divisé par le poids net du catalogue Open Food Facts (product_quantity), et un produit sans poids net déclaré est écarté. Déduplication : plusieurs barquettes du même libellé, au même magasin, le même jour et au même prix au kilo ne comptent que pour UN relevé — sans quoi trois paquets pesés d'un même rayon gonfleraient l'effectif sans rien ajouter. Chaque identifiant de source_record_key se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Cinq magasins. Contributions volontaires, plafond B."
+    },
+    {
+      "form": "Bœuf à griller cru, en fines lamelles",
+      "form_normalized": "boeuf a griller cru en fines lamelles",
+      "category": "viandes",
+      "observed": {
+        "basis": "kg",
+        "low": 21.51,
+        "central": 29.9,
+        "high": 39.44,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 13,
+        "period_start": "2026-01-12",
+        "period_end": "2026-07-18"
+      },
+      "per_kg": {
+        "low": 21.51,
+        "central": 29.9,
+        "high": 39.44,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Les morceaux à griller se vendent parés et désossés — sauf la côte de bœuf, présente une fois dans l'échantillon, qui porte son os et tire donc le bas de la fourchette. Rendement à 1,00 déclaré inconnu ; Aucune des sources du registre — RNM, Open Prices — ne publie de table de parts comestibles, et myko_reasoning n'a le droit de porter qu'un rendement de 1,00 par NATURE du produit, ce qui n'est le cas d'aucune viande. Le rendement reste donc à 1,00 déclaré inconnu : l'estimation est un minorant de sens connu, et jamais une perte de parage inventée."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_agregat_morceaux_a_griller_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en:beef&size=100",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-07-18",
+        "source_record_key": "213475,184723,295152,211013,229685,295151,295153,295154,271847,236865,229830,213075,295150",
+        "citation": "Open Prices (Open Food Facts), morceaux de bœuf à griller crus, relevés en magasin en France du 2026-01-12 au 2026-07-18, hors promotion et hors bio : 13 relevés au kilogramme, de 16,95 à 41,90 €/kg — 16,95 €/kg le 2026-02-10 (« Côte de boeuf à griller » 1 388 g à 23,53 €, E.Leclerc Canteleu) ; 28,25 €/kg le 2026-02-09 (« Faux-filet de bœuf » 200 g, Franprix Clichy) ; 29,90 €/kg le 2026-07-18 (catégorie en:beef-hanger-steak au rayon, Intermarché Mons-en-Barœul) ; 41,90 €/kg le 2026-07-18 (catégorie en:beef-sirloin-steak, même rayon). Médiane 29.90 €/kg, D1 21.51, D9 39.44."
+      },
+      "reindexation": null,
+      "notes": "AGRÉGAT DE MORCEAUX, déclaré : la forme du catalogue est adossée au faux-filet (Ciqual 6111), mais un seul morceau ne donne pas cinq relevés. Ont été réunis les morceaux que la boucherie vend explicitement à griller — bavette d'aloyau, onglet, faux-filet, entrecôte et côte, rumsteck — et eux seuls. Le filet et le tournedos ont été ÉCARTÉS parce que le catalogue leur réserve une forme distincte (« Filet de bœuf cru en lanières »), restée sans prix faute d'un effectif suffisant : les mélanger aurait chiffré la forme la plus chère avec la médiane des autres. Ont été écartés aussi tous les steaks hachés — déjà cotés par le RNM dans la tranche « frais animal » — et les pavés marinés ou en sauce (« L'Absolu Pavés de Rumsteck à l'Échalote »). Cinq des treize relevés sont des prix au rayon boucherie d'un même Intermarché (Mons-en-Barœul) saisis le même jour, mais sur cinq morceaux DIFFÉRENTS : ce sont bien cinq observations distinctes, et non un prix compté cinq fois. Six magasins au total. Règle de dispersion de cette tranche : au-dessus de 10 relevés, low/high sont les 1er et 9e déciles empiriques des relevés retenus (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. Ici treize relevés, donc d1_d9. Sélection Open Prices : magasins situés en France (filtre appliqué sur le code pays du magasin, l'API n'offrant pas de filtre pays), euros, relevés du 2026-01-12 au 2026-07-18, hors promotion (price_is_discounted) et hors bio. Prix au kilo : pour un relevé de type CATEGORY, le prix est déjà au kilo (price_per = KILOGRAM) ; pour un relevé de type PRODUCT, il est divisé par le poids net du catalogue Open Food Facts (product_quantity), et un produit sans poids net déclaré est écarté. Déduplication : plusieurs barquettes du même libellé, au même magasin, le même jour et au même prix au kilo ne comptent que pour UN relevé — sans quoi trois paquets pesés d'un même rayon gonfleraient l'effectif sans rien ajouter. Chaque identifiant de source_record_key se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Contributions volontaires, plafond B."
+    },
+    {
+      "form": "Porc haché cru",
+      "form_normalized": "porc hache cru",
+      "category": "viandes",
+      "observed": {
+        "basis": "kg",
+        "low": 12.23,
+        "central": 13.11,
+        "high": 13.11,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 3,
+        "period_start": "2026-02-14",
+        "period_end": "2026-02-15"
+      },
+      "per_kg": {
+        "low": 12.23,
+        "central": 13.11,
+        "high": 13.11,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le porc haché s'achète tel qu'il se cuisine ; il n'y a pas de parage. Rendement 1,00 déclaré inconnu."
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_trois_releves_en_dessous_du_minimum_de_cinq",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en:ground-pork&size=100",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-02-15",
+        "source_record_key": "218732,218791,222201",
+        "citation": "Open Prices (Open Food Facts), viande de porc hachée, relevés en magasin en France du 2026-02-14 au 2026-02-15, hors promotion et hors bio : 3 relevés au kilogramme — 12,23 €/kg le 2026-02-14 (« 2 hachés de porc » 220 g, Centre Commercial E.Leclerc Clichy) ; 13,11 €/kg le 2026-02-14 (« Viande de porc hachée » 350 g, même magasin) ; 13,11 €/kg le 2026-02-15 (même produit, Centre Commercial E.Leclerc Gennevilliers). Médiane 13.11 €/kg."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE NON AFFICHABLE, conservée pour la file de revue. C'est la forme la plus lourde du lot — 23 lignes du corpus, environ 14 700 kcal non chiffrées, le premier verrou du référentiel — et elle reste sans prix retenu. Trois relevés seulement, dans deux magasins, sur deux jours consécutifs de février 2026 : le registre exige cinq relevés pour qu'Open Prices dépasse C, et ce plancher n'est pas négociable ici. Élargir la fenêtre à vingt-quatre mois ne change rien : le corpus Open Prices ne contient toujours que ces trois relevés. Le RNM ne cote aucun haché de porc au détail (il cote le steak haché de bœuf, pas le porc). Deux voisinages ont été envisagés et refusés : la chair à saucisse, qui est assaisonnée, et la cotation « PORC (côte) avec os », qui est un morceau entier — l'un et l'autre auraient été des formes rapprochées de loin, donc C de toute façon, mais avec l'apparence trompeuse d'un prix. Ce qu'il faudrait pour la débloquer : soit une extension du panel RNM au haché de porc, soit deux relevés Open Prices de plus dans d'autres magasins."
+    },
+    {
+      "form": "Poitrine de porc crue",
+      "form_normalized": "poitrine de porc crue",
+      "category": "viandes",
+      "observed": {
+        "basis": "kg",
+        "low": 3.07,
+        "central": 3.25,
+        "high": 6.9,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 4,
+        "period_start": "2025-11-26",
+        "period_end": "2026-02-24"
+      },
+      "per_kg": {
+        "low": 3.07,
+        "central": 3.25,
+        "high": 6.9,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "La poitrine entière s'achète avec sa couenne et ses os de travers ; la forme du catalogue (Ciqual 28002) est la poitrine parée. Aucune source du registre ne publie ce rapport. Rendement 1,00 déclaré inconnu."
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_quatre_releves_un_seul_magasin_en_dessous_du_minimum",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en:pork-belly&size=100",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-02-24",
+        "source_record_key": "232898,232727,167662,187270",
+        "citation": "Open Prices (Open Food Facts), poitrine de porc fraîche, relevés en magasin en France du 2025-11-26 au 2026-02-24, hors promotion et hors bio : 4 relevés au kilogramme — 3,07 €/kg le 2026-02-24 et 3,21 €/kg le 2026-02-17 (« Poitrine entière », E.Leclerc Canteleu) ; 3,29 €/kg le 2025-11-26 (« Poitrine Entière », même magasin) ; 6,90 €/kg le 2026-01-20 (« Poitrine de porc en morceau », même magasin). Médiane 3.25 €/kg."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE NON AFFICHABLE, conservée pour la file de revue. Troisième forme du lot par les calories manquantes (16 lignes, environ 9 900 kcal). Quatre relevés après déduplication — cinq barquettes de « Poitrine Entière » pesées le même jour au même rayon ne comptent que pour une observation — et TOUS dans le même magasin, l'E.Leclerc de Canteleu. Deux motifs de refus se cumulent donc : moins de cinq relevés, et un seul point de vente, alors que la fourchette du contrat prétend décrire une dispersion entre magasins. L'écart interne est d'ailleurs de un à deux (3,07 contre 6,90 €/kg) entre la poitrine entière et la poitrine détaillée en morceaux, ce qui est un signe de plus qu'une médiane sur quatre points ne dirait rien. En remontant à vingt-quatre mois on atteint sept relevés, mais toujours dans le même magasin, et la période sortirait de la fenêtre de douze mois que cette tranche s'impose pour n'avoir à réindexer aucune entrée. Écartés : les « cubes de poitrine nature » et les lardons, qui sont de la poitrine SALÉE et non de la poitrine fraîche."
+    },
+    {
+      "form": "Épaule de porc crue",
+      "form_normalized": "epaule de porc crue",
+      "category": "viandes",
+      "observed": {
+        "basis": "kg",
+        "low": 3.47,
+        "central": 5.02,
+        "high": 6.95,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 4,
+        "period_start": "2025-10-15",
+        "period_end": "2026-05-12"
+      },
+      "per_kg": {
+        "low": 3.47,
+        "central": 5.02,
+        "high": 6.95,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "L'épaule de porc à sauter est vendue désossée et parée. Rendement 1,00 déclaré inconnu."
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_quatre_releves_un_seul_magasin_en_dessous_du_minimum",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en:pork&size=100",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-05-12",
+        "source_record_key": "165565,273997,151758,163523",
+        "citation": "Open Prices (Open Food Facts), « Échine/épaule à sauté de porc », relevés en magasin en France du 2025-10-15 au 2026-05-12, hors promotion et hors bio : 4 relevés au kilogramme — 3,47 €/kg le 2025-11-18 ; 3,54 €/kg le 2026-05-12 ; 6,50 €/kg le 2025-10-15 ; 6,95 €/kg le 2025-11-13, tous à l'E.Leclerc de Canteleu. Médiane 5.02 €/kg."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE NON AFFICHABLE, conservée pour la file de revue (5 lignes, environ 5 700 kcal). Le seul produit Open Prices qui nomme l'épaule la nomme conjointement avec l'échine — « Échine/épaule à sauté de porc » — et les quatre relevés viennent du même magasin, avec un écart du simple au double d'un relevé à l'autre. La cotation RNM « PORC (côte) avec os » a été explicitement REFUSÉE pour cette forme : l'épaule se vend moins cher que la côte, lui appliquer le prix de la côte surestimerait, et le contrat n'accorde le niveau B qu'à une forme voisine, pas à un morceau dont on sait qu'il est d'une autre gamme de prix. Une surestimation est plus dangereuse qu'une absence : elle traverse tous les contrôles et personne ne la relit."
+    },
+    {
+      "form": "Poule crue",
+      "form_normalized": "poule crue",
+      "category": "viandes",
+      "observed": {
+        "basis": "kg",
+        "low": 3.95,
+        "central": 3.95,
+        "high": 3.95,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 3,
+        "period_start": "2026-01-20",
+        "period_end": "2026-02-04"
+      },
+      "per_kg": {
+        "low": 3.95,
+        "central": 3.95,
+        "high": 3.95,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "La poule est vendue entière, éviscérée : le catalogue compte la viande seule (Ciqual 36001, « Poule, viande, crue »), donc sans os ni peau. L'écart est important et aucune source du registre ne le publie. Rendement 1,00 déclaré inconnu, estimation franchement minorante."
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_trois_releves_un_seul_magasin_en_dessous_du_minimum",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en:chickens&size=100",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-02-04",
+        "source_record_key": "187308,213485,187315",
+        "citation": "Open Prices (Open Food Facts), poule prête à cuire, relevés en magasin en France du 2026-01-20 au 2026-02-04, hors promotion et hors bio : 3 relevés au kilogramme, tous à 3.95 €/kg — « Poule prête à cuire eviscérée sans abats » 1 383 g et « Poule prête à cuire » 1 093 g le 2026-01-20, « Poule prête à cuire » 1 127 g le 2026-02-04, E.Leclerc Canteleu."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE NON AFFICHABLE, conservée pour la file de revue (3 lignes, environ 5 600 kcal, toutes des variantes d'une même recette). Trois relevés, un seul magasin, deux dates, et un prix identique aux trois — c'est un rayon, pas un échantillon. La fourchette dégénérée (3,95 partout) le montre littéralement. Le RNM ne cote pas la poule : son unique série de volaille au détail est le poulet prêt à cuire. Écartés : les plats « Poule au riz et carottes », qui ne sont pas de la poule crue."
+    },
+    {
+      "form": "Jarret de veau cru, en tranches avec os",
+      "form_normalized": "jarret de veau cru en tranches avec os",
+      "category": "viandes",
+      "observed": {
+        "basis": "kg",
+        "low": 20.9,
+        "central": 20.9,
+        "high": 20.9,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-07-18",
+        "period_end": "2026-07-18"
+      },
+      "per_kg": {
+        "low": 20.9,
+        "central": 20.9,
+        "high": 20.9,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le jarret de veau en tranches s'achète AVEC son os (c'est l'osso-buco) ; le catalogue compte la viande seule (Ciqual 6583). La part d'os d'un jarret est considérable et n'est publiée par aucune source du registre. Rendement 1,00 déclaré inconnu, estimation très minorante."
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_releve_unique",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en:veal-knuckle&size=100",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-07-18",
+        "source_record_key": "295147",
+        "citation": "Open Prices (Open Food Facts), relevé de catégorie en:veal-knuckle (jarret de veau) au rayon boucherie, prix au kilogramme : 20.90 €/kg le 2026-07-18, Intermarché de Mons-en-Barœul, France. Relevé unique."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE NON AFFICHABLE, conservée pour la file de revue (5 lignes, environ 4 700 kcal). Un relevé unique : le contrat le range en C sans discussion. Il est écrit ici parce que c'est le SEUL prix de veau au détail que ce lot ait trouvé en France, et que le morceau correspond exactement à la forme du catalogue — ce qui est rare. Le même contributeur a relevé le même jour, au même rayon, quatre autres morceaux de veau (collier 21,90 ; tendron 18,90 ; côte 26,90 ; filet 28,90 €/kg) ; aucun ne correspond à l'épaule, et interpoler l'épaule entre le collier et le tendron aurait été fabriquer un prix. Les quatre formes de veau du lot — épaule, épaule en cubes, jarret, escalope, ensemble environ 16 400 kcal — restent donc sans prix retenu. Le RNM ne cote aucun veau au stade détail."
+    }
+  ]
+}

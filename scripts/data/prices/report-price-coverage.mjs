@@ -16,14 +16,24 @@
  *   node scripts/data/prices/report-price-coverage.mjs
  *   node scripts/data/prices/report-price-coverage.mjs --json rapport.json
  */
-import { readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { normalizeName } from '../lib/normalize.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
-const TRANCHES = ['assaisonnement', 'epicerie', 'frais-animal', 'frais-vegetal']
+
+// Le répertoire fait foi, PAS une liste écrite ici. La liste en dur a produit la
+// faute qu'elle était censée éviter : six tranches venaient d'être ajoutées et ce
+// rapport continuait d'en mesurer quatre, en annonçant une couverture inchangée
+// que rien ne contredisait. C'est la troisième fois que ce dépôt se fait prendre
+// par une liste de tranches tenue à la main — les deux autres étaient dans
+// lib/domain/pricing/tranches.js, où un test la garde désormais.
+const TRANCHES = readdirSync(join(ROOT, 'data', 'prices', 'tranches'))
+  .filter((nom) => nom.endsWith('.json'))
+  .map((nom) => nom.replace(/\.json$/, ''))
+  .sort()
 
 const argument = (nom, defaut) => {
   const index = process.argv.indexOf(nom)

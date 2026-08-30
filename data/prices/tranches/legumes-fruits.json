@@ -1,0 +1,698 @@
+{
+  "schema_version": "1.0.0",
+  "price_set_version": "2026.08-legumes-fruits",
+  "country": "FR",
+  "currency": "EUR",
+  "reference_date": "2026-08-24",
+  "derived_license": "odbl-1.0",
+  "catalog_version": "v3-300-real-dishes",
+  "built_at": "2026-08-30",
+  "notes": "Tranche « légumes et fruits » : les 26 formes des catégories legumes et fruits que les quatre tranches précédentes avaient laissées sans prix. Huit portent un prix retenu — toutes en B, aucune en A —, quatre une lecture conservée en C (ni affichée, ni comptée), et quatorze ne portent rien du tout. C'est une couverture de 8 formes sur 26, soit 31 % du lot en nombre de formes, mais 13 819 des 18 584 kcal manquantes (74 %) et 105 des 154 lignes de recette (68 %), parce que la liste de travail était triée par calories et qu'on l'a suivie de haut en bas.\n\nAUCUNE ENTRÉE EN A, et la raison est structurelle. Le CONTRAT §4 exige pour A une source qui l'accorde, un agrégat déclaré, moins de douze mois et une dispersion en DÉCILES. Les deux seules sources de prix dont la licence est vérifiée au registre sont le RNM et Open Prices : le RNM accorde A mais ne publie aucun décile sur ses moyennes mensuelles, et Open Prices est plafonnée à B par construction. La condition de dispersion et la condition de source ne peuvent donc pas être satisfaites ensemble sur ce lot. L'Observatoire de la formation des prix et des marges reste à licence non vérifiée ; activer une source est un geste humain et daté, pas un effet de bord d'un import, et le registre n'a pas été touché.\n\nderived_license vaut odbl-1.0 : Open Prices porte sept des huit entrées retenues et impose son partage à l'identique à la base dérivée.\n\nCE QUE LE RNM A DONNÉ, ET CE QU'IL N'A PAS PU DONNER. Il devait être la source de tête — c'est le dispositif public qui cote les fruits et légumes français au détail. Il n'a fourni qu'une seule entrée retenue, le potimarron, et voici précisément pourquoi. Sur les vingt-six formes du lot, huit sont des produits d'épicerie, de conserve ou de surgelé que le RNM ne cote pas et dit ne pas couvrir. Restent dix-huit formes fraîches, et voici le compte exact. UNE SEULE est cotée au détail GMS, au kilo, en conventionnel : le potimarron — c'est celle qui est retenue. DEUX le sont au détail GMS, en série mensuelle nationale complète, mais À LA PIÈCE : le chou-fleur (série 57200431, douze moyennes mensuelles de 1,88 à 4,13 € la pièce) et la chicorée frisée (série 57200499, douze moyennes de 2,93 à 3,24 € la pièce). Le catalogue des formes ne porte pas de conversion.grams_per_unit pour « chou fleur frais » ni pour « frisee fraiche » ; sans facteur, pas de prix (CONTRAT §1.2, règle 3). Ces deux-là ne demandent PAS une source — la source existe, elle est publique, nationale et mensuelle : elles demandent une masse par pièce au catalogue, et elles basculeraient aussitôt en prix retenu. C'est le retour le plus actionnable de cette tranche. TROIS ne sont cotées qu'au circuit « DETAIL MAG. SPECIALISES BIO », donc en biologique et en magasin spécialisé : le chou kale (au kilo — sa lecture est conservée en C plus bas), le chou rouge (à la pièce) et l'oignon blanc (à la botte, avec fane). SIX ne le sont qu'aux stades gros, import ou production, hors taxes : cèpe, morille, oseille et les trois piments. Un prix de gros HT n'est pas ce qu'un foyer paie, et le convertir aurait demandé un coefficient de marge qu'aucune source du registre ne publie. SIX enfin n'ont aucune cotation nulle part : banane plantain, oignon grelot, oignon nouveau, chou kale portugais, aubergine africaine, zeste de citron.\n\nCONVENTION D'AGRÉGATION, écrite une fois pour toute la tranche. Le champ aggregation n'offre que point, monthly_mean et annual_mean, et aucun des trois ne décrit exactement un ensemble de relevés individuels agrégés sur une fenêtre. Aucune entrée n'est déclarée point — ce serait faux, et le contrat le refuse d'ailleurs sur les catégories saisonnières. La règle retenue : annual_mean quand les relevés retenus couvrent au moins onze des douze mois de la fenêtre (le seul cas est le raisin sec), monthly_mean sinon. Les entrées concernées sont, sauf le potimarron, des conserves, des surgelés et des fruits secs, pour lesquels la saison ne fait pas le prix ; l'objection du CONTRAT §4 — « une courgette de juillet n'est pas une courgette de janvier » — ne mord donc pas sur elles. Elle mordrait sur le potimarron, et c'est précisément pourquoi son entrée porte cinq moyennes mensuelles publiées et non un relevé du jour.\n\nDÉDOUBLONNAGE OPEN PRICES, la décision de méthode la plus lourde de conséquence. Un seul relevé est retenu par couple (code-barres, magasin), le plus récent. Sans cette règle, la tomate entière pelée serait chiffrée à 1,38 €/kg au lieu de 3,42, parce que vingt-sept de ses quarante-neuf relevés bruts sont deux références Eco+ scannées chaque semaine dans le même magasin. La médiane brute mesurait un rayon ; la médiane dédoublonnée mesure des références et des magasins. Le prix de ce choix est dit dans la note de l'entrée : l'échantillon compte alors la petite boîte de 235 g à égalité avec la boîte de 800 g, sans aucune pondération par les volumes vendus, qu'Open Prices ne publie pas. C'est une des raisons pour lesquelles le registre plafonne cette source à B.\n\nPRIX AU KILO RECONSTITUÉ. Sept entrées sur huit portent sur des produits emballés dont le prix est relevé au contenant. Le €/kg est obtenu en divisant le prix payé par le poids net publié par Open Food Facts — ce qui est la définition même du pivot au CONTRAT §1.1, « poids net du contenant, emballage exclu ». La tranche « épicerie » a fait de même pour le beurre et les huiles ; la tranche « frais végétal » s'y était refusée. Le désaccord entre les deux est réel et mérite d'être tranché une fois pour le référentiel, pas tranche par tranche. L'argument retenu ici est que chaque nombre reste intégralement retrouvable : l'identifiant du relevé, le prix payé, la masse publiée et la division figurent dans la citation, et un relecteur peut rappeler /api/v1/prices/<id> pour chacun.\n\nRENDEMENT COMESTIBLE. Cinq entrées le déclarent CONNU et égal à 1,00 par nature du produit, via myko_reasoning : concentré de tomate, tomate concentrée, pruneau dénoyauté, raisin sec, petit pois surgelé. Ce sont des produits sans partie non comestible — le noyau du pruneau est retiré avant la vente, le pois est écossé avant congélation. Les autres restent à 1,00 DÉCLARÉ INCONNU, et leurs estimations sont donc des minorants : le potimarron est coté entier quand le catalogue le compte épépiné, les conserves de tomates se paient jus compris quand la recette peut n'employer que la chair. Aucune source du registre ne publie de part comestible ; c'est au registre que cela se corrige, pas ici.\n\nCE QUI A ÉTÉ REFUSÉ, nommément. Convertir une cotation RNM « à la pièce » avec une masse que le catalogue ne porte pas. Utiliser une cotation de gros ou d'import, hors taxes, comme prix payé en caisse (cèpe, morille, oseille, les trois piments, potiron). Faire passer une cotation de magasin bio spécialisé pour un prix conventionnel (chou kale, chou rouge, citron). Prendre le prix de la banane dessert pour celui de la banane plantain, ou celui de l'aubergine violette pour l'aubergine africaine. Élargir la fenêtre au-delà de douze mois pour franchir le seuil de cinq relevés d'Open Prices, ce qui aurait mêlé des prix de plus d'un an sous un unique observed_on. Déduire un prix du zeste de citron de celui du citron, faute de toute table publiée donnant la part de zeste d'un fruit.\n\nLES QUATRE ENTRÉES EN C sont des lectures réelles, conservées pour dire ce qui a été cherché : elles ne s'affichent pas et ne comptent pas dans la couverture. Trois échouent au seuil de cinq relevés du registre (banane plantain à quatre, piment à quatre, oignon blanc à trois) ; la quatrième, le chou kale, est refusée pour son circuit bio spécialisé.",
+  "entries": [
+    {
+      "form": "Concentré de tomate",
+      "form_normalized": "concentre de tomate",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 4.46,
+        "central": 8.0,
+        "high": 16.19,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "monthly_mean",
+        "n_observations": 25,
+        "period_start": "2025-10-18",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 4.46,
+        "central": 8.0,
+        "high": 16.19,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un concentré de tomate en boîte ou en tube est intégralement le produit acheté : il n'a aucune partie non comestible.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un concentré de tomate en boîte ou en tube est intégralement le produit acheté : il n'a aucune partie non comestible."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_magasin_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Atomato-pastes&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-24",
+        "source_record_key": "open_prices:en:tomato-pastes+en:double-concentrate-tomato-paste/FR/hors-bio-hors-promo/2025-10-18..2026-08-24/n=25 · ids 295453,188574,307031,163891,188572,233034,205592,278252,163888,299978,317406,314501,317279,316876,307027,317251,188573,307272,281340,317612,317250,171477,306846,317601,263697",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégories Open Food Facts « en:tomato-pastes » / « en:double-concentrate-tomato-paste », du 2025-10-18 au 2026-08-24, hors promotion et hors bio, un relevé par couple (référence, magasin) : 25 relevés retenus, ramenés au kilogramme par le poids net publié — de 2,55 à 29,86 EUR/kg. Par exemple 1,12 EUR pour 440 g de « Double concentré de tomates » (€CO+) le 2026-07-21 à Canteleu, soit 2,55 EUR/kg (relevé n° 295453) ; 1,20 EUR pour 150 g de « Double concentré de tomate » (Prix Mini) le 2026-08-24 à Lyon, soit 8,00 EUR/kg (relevé n° 317279) ; 2,09 EUR pour 70 g de « Double concentré de tomates » (Carrefour) le 2026-04-11 à Vannes, soit 29,86 EUR/kg (relevé n° 263697). Médiane 8,00 EUR/kg, D1 4,46, D9 16,19."
+      },
+      "reindexation": null,
+      "notes": "Méthode Open Prices commune à la tranche, rappelée ici pour que l'entrée se relise seule : moisson complète de la catégorie par pagination (size=100), PUIS filtrage en local — l'API ignore silencieusement les paramètres qu'elle ne connaît pas, donc aucun filtre ne lui est délégué. Sont écartés : devise ≠ EUR, magasin hors France (code pays OSM du magasin, pas l'adresse en clair), relevé en promotion, produit portant un label bio, relevé marqué duplicate_of par l'API, relevé hors de la fenêtre 2025-08-25 → 2026-08-24. Puis UN SEUL relevé par couple (code-barres, magasin), le plus récent : sans cette règle, un magasin qui rescanne la même boîte chaque semaine pèse vingt fois dans la médiane, et la dispersion mesurée serait celle d'un rayon suivi dans le temps, pas celle des prix français. Le €/kg est le prix payé divisé par le poids net publié par Open Food Facts (product_quantity) — c'est exactement le pivot du CONTRAT §1.1, « poids net du contenant, emballage exclu ». D1 et D9 sont les déciles empiriques (interpolation linéaire) de l'échantillon retenu dès qu'il compte au moins dix relevés ; en deçà, ce sont les extrêmes, déclarés min_max. La fourchette est large (D9/D1 = 3,6) et ce n'est pas un défaut de mesure : le concentré se vend en tubes de 70 à 150 g et en boîtes de 200 à 440 g, et le prix au kilo d'un petit conditionnement est mécaniquement trois à cinq fois celui d'un grand. Le CONTRAT §3.1 range explicitement le conditionnement dans ce que la dispersion absorbe. DEUX RELEVÉS À ROUVRIR SI L'ON DOUTE : 317601 et 263697, tous deux « Double concentré de tomates » Carrefour, code 3560070278046, pour lesquels Open Food Facts publie 70 g. Si le prix saisi était en réalité celui d'un étui de 3 × 70 g, leur €/kg serait trois fois trop haut et le D9 baisserait. La quantité publiée par la source a été reprise telle quelle plutôt que corrigée par supposition. ÉCARTÉ NOMMÉMENT : le relevé 264297 (« Oncu Domates Salcasi / Tomatoe Paste - 4200 G »), dont le libellé annonce 4200 g quand product_quantity vaut 700 g — Open Food Facts se contredit elle-même, et aucun des deux chiffres ne peut être préféré à l'autre. Le RNM ne cote aucun produit transformé (son registre le dit : « ne couvre pas les produits transformés »), il n'y avait donc pas de source publique française à préférer à celle-ci. RACCOURCI DE VÉRIFICATION : la sous-catégorie la plus étroite se rappelle directement par https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Adouble-concentrate-tomato-paste"
+    },
+    {
+      "form": "Tomate concentrée",
+      "form_normalized": "tomate concentree",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 4.46,
+        "central": 8.0,
+        "high": 16.19,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "monthly_mean",
+        "n_observations": 25,
+        "period_start": "2025-10-18",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 4.46,
+        "central": 8.0,
+        "high": 16.19,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un concentré de tomate en boîte ou en tube est intégralement le produit acheté : il n'a aucune partie non comestible.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un concentré de tomate en boîte ou en tube est intégralement le produit acheté : il n'a aucune partie non comestible."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "meme_aliment_que_concentre_de_tomate_libelle_double_au_catalogue",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Atomato-pastes&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-24",
+        "source_record_key": "open_prices:en:tomato-pastes+en:double-concentrate-tomato-paste/FR/hors-bio-hors-promo/2025-10-18..2026-08-24/n=25 · ids 295453,188574,307031,163891,188572,233034,205592,278252,163888,299978,317406,314501,317279,316876,307027,317251,188573,307272,281340,317612,317250,171477,306846,317601,263697",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégories Open Food Facts « en:tomato-pastes » / « en:double-concentrate-tomato-paste », du 2025-10-18 au 2026-08-24, hors promotion et hors bio, un relevé par couple (référence, magasin) : 25 relevés retenus, ramenés au kilogramme par le poids net publié — de 2,55 à 29,86 EUR/kg. Par exemple 1,12 EUR pour 440 g de « Double concentré de tomates » (€CO+) le 2026-07-21 à Canteleu, soit 2,55 EUR/kg (relevé n° 295453) ; 1,20 EUR pour 150 g de « Double concentré de tomate » (Prix Mini) le 2026-08-24 à Lyon, soit 8,00 EUR/kg (relevé n° 317279) ; 2,09 EUR pour 70 g de « Double concentré de tomates » (Carrefour) le 2026-04-11 à Vannes, soit 29,86 EUR/kg (relevé n° 263697). Médiane 8,00 EUR/kg, D1 4,46, D9 16,19."
+      },
+      "reindexation": null,
+      "notes": "ADAPTATION DÉCLARÉE, et la seule de cette entrée : « Tomate concentrée » et « Concentré de tomate » sont deux libellés du catalogue pour le même produit — même catégorie, même valeur énergétique au catalogue (99,2 kcal/100 g). Le même relevé porte donc les deux, comme la tranche « frais animal » fait porter à l'œuf dur le prix de l'œuf cru. Si un jour le catalogue fusionne les deux libellés, cette entrée disparaît sans que le prix de l'autre bouge. Méthode Open Prices commune à la tranche, rappelée ici pour que l'entrée se relise seule : moisson complète de la catégorie par pagination (size=100), PUIS filtrage en local — l'API ignore silencieusement les paramètres qu'elle ne connaît pas, donc aucun filtre ne lui est délégué. Sont écartés : devise ≠ EUR, magasin hors France (code pays OSM du magasin, pas l'adresse en clair), relevé en promotion, produit portant un label bio, relevé marqué duplicate_of par l'API, relevé hors de la fenêtre 2025-08-25 → 2026-08-24. Puis UN SEUL relevé par couple (code-barres, magasin), le plus récent : sans cette règle, un magasin qui rescanne la même boîte chaque semaine pèse vingt fois dans la médiane, et la dispersion mesurée serait celle d'un rayon suivi dans le temps, pas celle des prix français. Le €/kg est le prix payé divisé par le poids net publié par Open Food Facts (product_quantity) — c'est exactement le pivot du CONTRAT §1.1, « poids net du contenant, emballage exclu ». D1 et D9 sont les déciles empiriques (interpolation linéaire) de l'échantillon retenu dès qu'il compte au moins dix relevés ; en deçà, ce sont les extrêmes, déclarés min_max."
+    },
+    {
+      "form": "Tomate concassée en conserve",
+      "form_normalized": "tomate concassee en conserve",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.86,
+        "central": 3.33,
+        "high": 6.07,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "monthly_mean",
+        "n_observations": 19,
+        "period_start": "2026-01-21",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 1.86,
+        "central": 3.33,
+        "high": 6.07,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "1,00 déclaré inconnu. Ce n'est pas ici une perte de parage mais une incertitude de base : on paie le contenu net de la boîte (chair + jus) alors qu'une recette peut n'employer que la chair égouttée. Aucune source du registre ne publie ce rapport ; le laisser à 1,00 fait de l'estimation un minorant de sens connu."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_magasin_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Acanned-tomatoes&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-23",
+        "source_record_key": "open_prices:en:tomato-pulps+fr:chair-de-tomates/FR/hors-bio-hors-promo/2026-01-21..2026-08-23/n=19 · ids 266316,299515,315329,222395,305905,191885,302506,313428,215687,316322,216920,302507,307078,243248,233908,216596,209858,187514,313427",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégories Open Food Facts « en:tomato-pulps » / « fr:chair-de-tomates », du 2026-01-21 au 2026-08-23, hors promotion et hors bio, un relevé par couple (référence, magasin) : 19 relevés retenus, ramenés au kilogramme par le poids net publié — de 1,74 à 9,74 EUR/kg. Par exemple 2,09 EUR pour 1200 g (3 × 400 g) de « Pulpe de tomates Au jus » (Carrefour) le 2026-04-17 à Vannes, soit 1,74 EUR/kg (relevé n° 266316) ; 1,33 EUR pour 400 g de « Pulpe de tomates concassées » (Auchan) le 2026-08-23 à Lyon, soit 3,33 EUR/kg (relevé n° 316322) ; 1,85 EUR pour 190 g de « Chair de tomates » (Monoprix) le 2026-08-19 à Lyon, soit 9,74 EUR/kg (relevé n° 313427). Médiane 3,33 EUR/kg, D1 1,86, D9 6,07."
+      },
+      "reindexation": null,
+      "notes": "Méthode Open Prices commune à la tranche, rappelée ici pour que l'entrée se relise seule : moisson complète de la catégorie par pagination (size=100), PUIS filtrage en local — l'API ignore silencieusement les paramètres qu'elle ne connaît pas, donc aucun filtre ne lui est délégué. Sont écartés : devise ≠ EUR, magasin hors France (code pays OSM du magasin, pas l'adresse en clair), relevé en promotion, produit portant un label bio, relevé marqué duplicate_of par l'API, relevé hors de la fenêtre 2025-08-25 → 2026-08-24. Puis UN SEUL relevé par couple (code-barres, magasin), le plus récent : sans cette règle, un magasin qui rescanne la même boîte chaque semaine pèse vingt fois dans la médiane, et la dispersion mesurée serait celle d'un rayon suivi dans le temps, pas celle des prix français. Le €/kg est le prix payé divisé par le poids net publié par Open Food Facts (product_quantity) — c'est exactement le pivot du CONTRAT §1.1, « poids net du contenant, emballage exclu ». D1 et D9 sont les déciles empiriques (interpolation linéaire) de l'échantillon retenu dès qu'il compte au moins dix relevés ; en deçà, ce sont les extrêmes, déclarés min_max. SÉLECTION : sont exigées les catégories « en:tomato-pulps » ou « fr:chair-de-tomates » — la pulpe et la chair de tomate, c'est-à-dire la tomate concassée. Sont écartées nommément les sauces (en:tomato-sauces), les passata (en:strained-tomatoes, qui sont tamisées et non concassées) et tout libellé portant un aromate (basilic, herbes, provençale, ail, oignon) : ce ne sont plus le même aliment, et leur prix est franchement plus élevé. RÉSERVE À CONNAÎTRE : product_quantity d'Open Food Facts n'a pas toujours la même définition d'un produit à l'autre — poids net total pour les uns, poids net égoutté pour les autres (le relevé 313427, « Chair de tomates » Monoprix, porte « 190 g / 212 ml », donc l'égoutté). La fourchette mêle donc deux bases légèrement différentes. Aucune source du registre ne permet de les redresser ; les corriger à la main aurait été inventer une masse. RACCOURCI DE VÉRIFICATION : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Atomato-pulps"
+    },
+    {
+      "form": "Tomate entière pelée en conserve",
+      "form_normalized": "tomate entiere pelee en conserve",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.67,
+        "central": 3.42,
+        "high": 5.12,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "monthly_mean",
+        "n_observations": 22,
+        "period_start": "2025-12-08",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 1.67,
+        "central": 3.42,
+        "high": 5.12,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "1,00 déclaré inconnu. On paie le contenu net de la boîte, jus compris, quand une recette peut n'employer que les tomates égouttées. Aucune source du registre ne publie ce rapport : 1,00 fait de l'estimation un minorant de sens connu, jamais une correction inventée."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_magasin_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apeeled-tomatoes&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-23",
+        "source_record_key": "open_prices:en:whole-peeled-tomatoes-in-tomato-juice+fr:tomates-entieres-pelees-au-jus/FR/hors-bio-hors-promo/2025-12-08..2026-08-23/n=22 · ids 307010,307008,209987,191955,170742,174093,174092,209850,229732,301261,216918,301399,250185,219698,222713,316509,209849,246541,222576,246476,225776,236854",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégories Open Food Facts « en:whole-peeled-tomatoes-in-tomato-juice » / « fr:tomates-entieres-pelees-au-jus », du 2025-12-08 au 2026-08-23, hors promotion et hors bio, un relevé par couple (référence, magasin) : 22 relevés retenus, ramenés au kilogramme par le poids net publié — de 1,225 à 5,53 EUR/kg. Par exemple 0,49 EUR pour 400 g de « Tomates entières pelées au jus » (Eco+) le 2026-08-11 à Canteleu, soit 1,225 EUR/kg (relevé n° 307010) ; 0,84 EUR pour 240 g de « Tomates entières pelées au jus » (Marque Repère, Notre Jardin) le 2026-07-30 à Nancy, soit 3,50 EUR/kg (relevé n° 301399) ; 1,30 EUR pour 235 g de « Tomates pelées d'aucy 235g » (D'aucy) le 2026-03-02 à Clichy, soit 5,53 EUR/kg (relevé n° 236854). Médiane 3,42 EUR/kg, D1 1,67, D9 5,12."
+      },
+      "reindexation": null,
+      "notes": "Méthode Open Prices commune à la tranche, rappelée ici pour que l'entrée se relise seule : moisson complète de la catégorie par pagination (size=100), PUIS filtrage en local — l'API ignore silencieusement les paramètres qu'elle ne connaît pas, donc aucun filtre ne lui est délégué. Sont écartés : devise ≠ EUR, magasin hors France (code pays OSM du magasin, pas l'adresse en clair), relevé en promotion, produit portant un label bio, relevé marqué duplicate_of par l'API, relevé hors de la fenêtre 2025-08-25 → 2026-08-24. Puis UN SEUL relevé par couple (code-barres, magasin), le plus récent : sans cette règle, un magasin qui rescanne la même boîte chaque semaine pèse vingt fois dans la médiane, et la dispersion mesurée serait celle d'un rayon suivi dans le temps, pas celle des prix français. Le €/kg est le prix payé divisé par le poids net publié par Open Food Facts (product_quantity) — c'est exactement le pivot du CONTRAT §1.1, « poids net du contenant, emballage exclu ». D1 et D9 sont les déciles empiriques (interpolation linéaire) de l'échantillon retenu dès qu'il compte au moins dix relevés ; en deçà, ce sont les extrêmes, déclarés min_max. CE QUE LE DÉDOUBLONNAGE A CHANGÉ, et il faut le savoir pour juger l'entrée : sur les 49 relevés bruts retenus par les filtres, 27 sont deux références Eco+ suivies chaque semaine dans le MÊME magasin (identifiant 400) ; la médiane brute vaut alors 1,38 EUR/kg, c'est-à-dire le prix d'un rayon unique. Après un relevé par couple (référence, magasin), il reste 22 relevés et la médiane monte à 3,42. C'est la deuxième valeur qui est publiée ici, parce qu'elle décrit des références et des magasins différents plutôt qu'un rayon suivi dans le temps. La contrepartie est réelle et doit être dite : l'échantillon compte alors autant les petites boîtes de 235-240 g, chères au kilo, que les 800 g qu'un foyer achète le plus souvent, et Open Prices ne publie aucune pondération par les volumes vendus. C'est exactement pourquoi le registre plafonne cette source à B. RÉSERVE À CONNAÎTRE : product_quantity d'Open Food Facts n'a pas toujours la même définition d'un produit à l'autre — poids net total pour les uns, poids net égoutté pour les autres (le relevé 313427, « Chair de tomates » Monoprix, porte « 190 g / 212 ml », donc l'égoutté). La fourchette mêle donc deux bases légèrement différentes. Aucune source du registre ne permet de les redresser ; les corriger à la main aurait été inventer une masse. RACCOURCI DE VÉRIFICATION : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Awhole-peeled-tomatoes-in-tomato-juice"
+    },
+    {
+      "form": "Pruneau dénoyauté",
+      "form_normalized": "pruneau denoyaute",
+      "category": "fruits",
+      "observed": {
+        "basis": "kg",
+        "low": 10.88,
+        "central": 14.65,
+        "high": 18.08,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "monthly_mean",
+        "n_observations": 19,
+        "period_start": "2025-10-24",
+        "period_end": "2026-07-04"
+      },
+      "per_kg": {
+        "low": 10.88,
+        "central": 14.65,
+        "high": 18.08,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un pruneau vendu dénoyauté n'a plus de partie non comestible : le noyau est retiré avant la vente, et c'est une définition du produit, pas une mesure.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un pruneau vendu dénoyauté n'a plus de partie non comestible : le noyau est retiré avant la vente, et c'est une définition du produit, pas une mesure."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_magasin_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Adried-fruits&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-07-04",
+        "source_record_key": "open_prices:en:dried-prunes+fr:pruneaux-d-agen/denoyautes/FR/hors-bio-hors-promo/2025-10-24..2026-07-04/n=19 · ids 242608,218682,242972,258115,212629,231953,242641,242602,171569,261546,221948,154096,172182,242640,255462,242604,212551,261799,291356",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégories Open Food Facts « en:dried-prunes » / « fr:pruneaux-d-agen », libellés portant explicitement « dénoyauté » (ou « entsteint »), du 2025-10-24 au 2026-07-04, hors promotion et hors bio, un relevé par couple (référence, magasin) : 19 relevés retenus, ramenés au kilogramme par le poids net publié — de 8,30 à 23,96 EUR/kg. Par exemple 4,15 EUR pour 500 g de « Pruneaux d'agen denoyautes tres gros 44/55 » (Paquito) le 2026-03-12 à Jarville-la-Malgrange, soit 8,30 EUR/kg (relevé n° 242608) ; 10,99 EUR pour 750 g de « Pruneaux d'Agen dénoyautés » (Maître Prunille) le 2026-04-06 à Gennevilliers, soit 14,65 EUR/kg (relevé n° 261546) ; 5,99 EUR pour 250 g de « Pruneaux d'agen dénoyautés » (Maitre Prunille) le 2026-07-04 à Aubervilliers, soit 23,96 EUR/kg (relevé n° 291356). Médiane 14,65 EUR/kg, D1 10,88, D9 18,08."
+      },
+      "reindexation": null,
+      "notes": "Méthode Open Prices commune à la tranche, rappelée ici pour que l'entrée se relise seule : moisson complète de la catégorie par pagination (size=100), PUIS filtrage en local — l'API ignore silencieusement les paramètres qu'elle ne connaît pas, donc aucun filtre ne lui est délégué. Sont écartés : devise ≠ EUR, magasin hors France (code pays OSM du magasin, pas l'adresse en clair), relevé en promotion, produit portant un label bio, relevé marqué duplicate_of par l'API, relevé hors de la fenêtre 2025-08-25 → 2026-08-24. Puis UN SEUL relevé par couple (code-barres, magasin), le plus récent : sans cette règle, un magasin qui rescanne la même boîte chaque semaine pèse vingt fois dans la médiane, et la dispersion mesurée serait celle d'un rayon suivi dans le temps, pas celle des prix français. Le €/kg est le prix payé divisé par le poids net publié par Open Food Facts (product_quantity) — c'est exactement le pivot du CONTRAT §1.1, « poids net du contenant, emballage exclu ». D1 et D9 sont les déciles empiriques (interpolation linéaire) de l'échantillon retenu dès qu'il compte au moins dix relevés ; en deçà, ce sont les extrêmes, déclarés min_max. SÉLECTION : seuls les libellés qui disent « dénoyauté » sont retenus, parce que c'est la forme du catalogue. Les pruneaux « avec noyaux » et « entiers » sont écartés : à masse égale on y achète du noyau, et leur prix au kilo n'est pas comparable. Le tri est fait sur le libellé publié par Open Food Facts, donc reproductible ; il coûte dix-sept relevés sur trente-six. Écarter les « avec noyaux » relève la médiane (14,65 contre 11,78 tous pruneaux confondus) — l'écart est dit ici pour qu'on puisse contester le choix, pas pour le cacher. PAS DE SOURCE PUBLIQUE CONCURRENTE : le RNM tient bien une page PRUNEAU (https://rnm.franceagrimer.fr/prix?PRUNEAU&12MOIS), mais son tableau de cotations est VIDE sur les douze mois du 01-08-2025 au 31-07-2026, à tous les stades. Il n'y avait donc rien à préférer à Open Prices, et rien non plus à recouper. CE QUI FAIT LA FOURCHETTE : le conditionnement, et il faut le savoir avant de lire la médiane. Les sachets de 250 g valent de 12 à 24 EUR/kg, ceux de 500 à 1000 g de 8 à 16. Le dédoublonnage par couple (référence, magasin) met les deux formats à égalité, alors qu'un foyer achète plutôt le grand. La médiane de 14,65 EUR/kg est donc au-dessus de ce que paie un acheteur de 500 g, dont le D1 à 10,88 rend mieux compte. Open Prices ne publie aucune pondération par les volumes vendus qui permettrait de corriger cela sans l'inventer. RACCOURCI DE VÉRIFICATION : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Adried-prunes"
+    },
+    {
+      "form": "Raisin sec",
+      "form_normalized": "raisin sec",
+      "category": "fruits",
+      "observed": {
+        "basis": "kg",
+        "low": 5.58,
+        "central": 8.76,
+        "high": 14.86,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 23,
+        "period_start": "2025-09-03",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 5.58,
+        "central": 8.76,
+        "high": 14.86,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un raisin sec est intégralement le produit acheté : il n'a ni peau à retirer, ni noyau, ni queue.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un raisin sec est intégralement le produit acheté : il n'a ni peau à retirer, ni noyau, ni queue."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_releves_magasin_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Araisins&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-23",
+        "source_record_key": "open_prices:en:raisins+en:sultana-raisins/FR/hors-bio-hors-promo/2025-09-03..2026-08-23/n=23 · ids 156487,136743,136745,282284,316854,218724,218688,148351,188596,188598,316855,221960,217230,300720,156917,251487,310130,230085,251488,306303,306492,251485,206767",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégories Open Food Facts « en:raisins » / « en:sultana-raisins », mélanges de fruits secs et de graines exclus, du 2025-09-03 au 2026-08-23, hors promotion et hors bio, un relevé par couple (référence, magasin) : 23 relevés retenus, ramenés au kilogramme par le poids net publié — de 5,28 à 17,52 EUR/kg. Par exemple 2,64 EUR pour 500 g de « Raisins Secs Sultanine » (O'Régal) le 2025-10-27 à Maromme, soit 5,28 EUR/kg (relevé n° 156487) ; 2,19 EUR pour 250 g de « Raisins golden » (Marque Repère, Couleurs vives) le 2026-02-15 à Gennevilliers, soit 8,76 EUR/kg (relevé n° 221960) ; 2,19 EUR pour 125 g de « Raisins bruns sultanine » (Sainte Lucie) le 2026-02-07 à Lyon, soit 17,52 EUR/kg (relevé n° 206767). Médiane 8,76 EUR/kg, D1 5,58, D9 14,86."
+      },
+      "reindexation": null,
+      "notes": "Méthode Open Prices commune à la tranche, rappelée ici pour que l'entrée se relise seule : moisson complète de la catégorie par pagination (size=100), PUIS filtrage en local — l'API ignore silencieusement les paramètres qu'elle ne connaît pas, donc aucun filtre ne lui est délégué. Sont écartés : devise ≠ EUR, magasin hors France (code pays OSM du magasin, pas l'adresse en clair), relevé en promotion, produit portant un label bio, relevé marqué duplicate_of par l'API, relevé hors de la fenêtre 2025-08-25 → 2026-08-24. Puis UN SEUL relevé par couple (code-barres, magasin), le plus récent : sans cette règle, un magasin qui rescanne la même boîte chaque semaine pèse vingt fois dans la médiane, et la dispersion mesurée serait celle d'un rayon suivi dans le temps, pas celle des prix français. Le €/kg est le prix payé divisé par le poids net publié par Open Food Facts (product_quantity) — c'est exactement le pivot du CONTRAT §1.1, « poids net du contenant, emballage exclu ». D1 et D9 sont les déciles empiriques (interpolation linéaire) de l'échantillon retenu dès qu'il compte au moins dix relevés ; en deçà, ce sont les extrêmes, déclarés min_max. AGRÉGATION : c'est la seule entrée de la tranche dont les relevés couvrent réellement les douze mois de la fenêtre (2025-09-03 → 2026-08-23), d'où annual_mean ; les autres, qui n'en couvrent qu'une partie, sont déclarées monthly_mean. La règle est écrite dans les notes du jeu. SÉLECTION : sont écartés les mélanges (fruits secs assortis, mélanges graines-raisins, « duo de raisins ») qui ne sont pas du raisin sec, et les sachets d'apéritif à base de fruits à coque. Les sultanines, golden, brunes et de Corinthe sont toutes gardées : ce sont des variétés du même aliment, et le CONTRAT §3.1 range la variété dans ce que la dispersion absorbe. Le conditionnement explique l'essentiel de la fourchette : les sachets de 125 g valent deux fois le kilo des sachets de 500 g. RACCOURCI DE VÉRIFICATION : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asultana-raisins"
+    },
+    {
+      "form": "Petit pois surgelé",
+      "form_normalized": "petit pois surgele",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.5,
+        "central": 2.82,
+        "high": 5.49,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 7,
+        "period_start": "2026-01-30",
+        "period_end": "2026-04-04"
+      },
+      "per_kg": {
+        "low": 1.5,
+        "central": 2.82,
+        "high": 5.49,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un petit pois surgelé est écossé avant congélation : le sachet ne contient que la partie comestible, et c'est une définition du produit.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un petit pois surgelé est écossé avant congélation : le sachet ne contient que la partie comestible, et c'est une définition du produit."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_sept_releves_extremes_declares_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Afrozen-vegetables&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-04-04",
+        "source_record_key": "open_prices:en:frozen-green-peas/FR/hors-bio-hors-promo/2026-01-30..2026-04-04/n=7 · ids 206385,207462,194789,207461,259339,206771,206386",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:frozen-green-peas » (mélanges et plats cuisinés exclus), du 2026-01-30 au 2026-04-04, hors promotion et hors bio, un relevé par couple (référence, magasin) : 7 relevés retenus, ramenés au kilogramme par le poids net publié — de 1,50 à 5,49 EUR/kg. Par exemple 1,50 EUR pour 1000 g de « Petit pois doux » (Eco+) le 2026-02-07 à Clichy, soit 1,50 EUR/kg (relevé n° 206385) ; 1,69 EUR pour 600 g de « Pois doux ''garden peas'' » (Marque Repère, Notre Jardin) le 2026-02-07 à Clichy, soit 2,82 EUR/kg (relevé n° 207461) ; 4,12 EUR pour 750 g de « Petits Pois SRP 750G » (Bonduelle) le 2026-02-07 à Clichy, soit 5,49 EUR/kg (relevé n° 206386). Médiane 2,82 EUR/kg, mini 1,50, maxi 5,49."
+      },
+      "reindexation": null,
+      "notes": "Méthode Open Prices commune à la tranche, rappelée ici pour que l'entrée se relise seule : moisson complète de la catégorie par pagination (size=100), PUIS filtrage en local — l'API ignore silencieusement les paramètres qu'elle ne connaît pas, donc aucun filtre ne lui est délégué. Sont écartés : devise ≠ EUR, magasin hors France (code pays OSM du magasin, pas l'adresse en clair), relevé en promotion, produit portant un label bio, relevé marqué duplicate_of par l'API, relevé hors de la fenêtre 2025-08-25 → 2026-08-24. Puis UN SEUL relevé par couple (code-barres, magasin), le plus récent : sans cette règle, un magasin qui rescanne la même boîte chaque semaine pèse vingt fois dans la médiane, et la dispersion mesurée serait celle d'un rayon suivi dans le temps, pas celle des prix français. Le €/kg est le prix payé divisé par le poids net publié par Open Food Facts (product_quantity) — c'est exactement le pivot du CONTRAT §1.1, « poids net du contenant, emballage exclu ». D1 et D9 sont les déciles empiriques (interpolation linéaire) de l'échantillon retenu dès qu'il compte au moins dix relevés ; en deçà, ce sont les extrêmes, déclarés min_max. SEPT RELEVÉS SEULEMENT, et il faut le lire comme tel. Le registre exige cinq relevés pour qu'Open Prices dépasse C : le seuil est franchi, de peu. Les bornes ne sont donc PAS des déciles mais les extrêmes de l'échantillon, déclarés min_max comme le CONTRAT §3.1 l'impose quand on n'a pas de distribution — écrire des déciles sur sept points aurait fabriqué une précision que l'échantillon n'a pas. Autre limite : six des sept relevés viennent de deux magasins de Clichy et Bourgoin, sur deux mois d'hiver. La dispersion décrite est donc surtout celle des marques (premier prix contre Bonduelle), pas celle du territoire. Le surgelé ne connaît pas de saison au rayon — c'est même sa raison d'être — donc l'étroitesse de la fenêtre pèse ici bien moins que sur un légume frais. RACCOURCI DE VÉRIFICATION : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Afrozen-green-peas"
+    },
+    {
+      "form": "Potimarron frais, épépiné",
+      "form_normalized": "potimarron frais epepine",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 2.0,
+        "central": 2.05,
+        "high": 2.17,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 5,
+        "period_start": "2025-09-01",
+        "period_end": "2026-01-31"
+      },
+      "per_kg": {
+        "low": 2.0,
+        "central": 2.05,
+        "high": 2.17,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le RNM cote la courge ENTIÈRE ; le catalogue compte le potimarron épépiné. Il y a donc une perte réelle — pépins et pédoncule — qu'aucune source du registre ne chiffre. 1,00 déclaré inconnu : l'estimation est un minorant de sens connu. Inventer « 0,90 » aurait été exactement le nombre plausible et invérifiable que le CONTRAT §0 proscrit."
+      },
+      "confidence": "B",
+      "confidence_reason": "rnm_detail_gms_cinq_moyennes_mensuelles_extremes_declares",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?COURGE&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-01-31",
+        "source_record_key": "RNM/M2502/57230563/2025-09..2026-01",
+        "citation": "RNM — FranceAgriMer, page « COURGE — prix moyens mensuels du 01-08-2025 au 31-07-2026 », marché « Légumes France DETAIL GMS » (cours Détail en € TTC), série n° 57230563 : « COURGE Potimarron France entière (le kg) ». Cinq moyennes mensuelles publiées, les seules de la série : Septembre 2025 2.00, Octobre 2025 2.17, Novembre 2025 2.05, Décembre 2025 2.06, Janvier 2026 2.00 EUR/kg. Médiane 2,05 EUR/kg, mini 2,00, maxi 2,17."
+      },
+      "reindexation": null,
+      "notes": "LA FORME QUI DÉBLOQUE LE VELOUTÉ, et la seule de cette tranche qui vienne d'une cotation publique française au détail. Sélection : stade Détail, circuit « DETAIL GMS » (le prix TTC que paie un ménage), unité « le kg », libellé conventionnel. Trois autres séries de la même page ont été écartées et il faut dire pourquoi : « COURGE Potimarron France » et « COURGE Potimarron France biologique » sont cotées À LA PIÈCE, et le catalogue ignore la masse d'une pièce de potimarron — sans facteur, pas de prix (CONTRAT §1.2) ; « COURGE Potimarron France biologique » du circuit MAG. SPECIALISES BIO est un prix de magasin bio spécialisé, qu'on ne fera pas passer pour un prix conventionnel. SAISON : le potimarron est un légume d'automne, et la série s'arrête en janvier parce que le produit quitte les rayons — les cinq mois cotés sont donc toute la saison, pas un morceau arbitraire de l'année. Le prix affiché est celui de la pleine saison ; hors saison, il n'y a pas de potimarron français en GMS, donc pas de prix à donner. BORNES : cinq moyennes mensuelles ne font pas une distribution. Les bornes sont les extrêmes de la série, déclarés min_max, ce qui plafonne l'entrée à B — le CONTRAT §4 réserve A à une dispersion en déciles, et le RNM ne publie pas de déciles sur ses moyennes mensuelles. La fourchette 2,00-2,17 est donc TRÈS étroite, et cette étroitesse ne décrit pas le rayon : elle décrit l'écart entre cinq moyennes NATIONALES. La dispersion entre magasins, que le RNM ne publie pas ici, est absente de ces bornes. Pour retrouver la cotation : ouvrir https://rnm.franceagrimer.fr/prix?COURGE&12MOIS et chercher le bloc « Légumes France DETAIL GMS » ; la série porte l'identifiant 57230563 dans le lien histo_lib de sa ligne."
+    },
+    {
+      "form": "Banane plantain mûre",
+      "form_normalized": "banane plantain mure",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 2.5,
+        "central": 2.81,
+        "high": 3.99,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 4,
+        "period_start": "2025-10-30",
+        "period_end": "2026-07-04"
+      },
+      "per_kg": {
+        "low": 2.5,
+        "central": 2.81,
+        "high": 3.99,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "La peau de la banane plantain n'est pas comestible et le prix relevé porte le fruit entier. Aucune source du registre ne publie la part comestible ; 1,00 déclaré inconnu."
+      },
+      "confidence": "C",
+      "confidence_reason": "quatre_releves_sous_le_seuil_de_cinq_du_registre",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en%3Aplantain-bananas&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-07-04",
+        "source_record_key": "open_prices:en:plantain-bananas/FR/KILOGRAM/hors-bio-hors-promo/2025-10-30..2026-07-04/n=4 · ids 266727,156227,294133,294115",
+        "citation": "Open Prices (Open Food Facts), relevés au kilogramme (price_per = KILOGRAM) en magasin en France, catégorie Open Food Facts « en:plantain-bananas », du 2025-10-30 au 2026-07-04, hors promotion et hors bio : 4 relevés seulement — 2,50 EUR/kg le 2026-04-18 à Paris (n° 266727), 2,65 le 2025-10-30 à Roubaix (n° 156227), 2,98 le 2026-07-04 à Paris (n° 294133), 3,99 le 2026-07-04 à Paris (n° 294115). Médiane 2,81 EUR/kg (2,815 avant arrondi au centime), mini 2,50, maxi 3,99."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE EN C : NON AFFICHÉE, NON COMPTÉE DANS LA COUVERTURE. Elle est conservée pour dire ce qui a été cherché et ce qui manque. Le registre exige cinq relevés pour qu'Open Prices dépasse C ; il y en a quatre. Un de plus et cette forme — 2 286 kcal du corpus, la troisième de la liste de travail — passerait en B. AUCUNE AUTRE SOURCE : le RNM ne cote pas la banane plantain. Sa page BANANE ne porte que la banane dessert (Afrique, Amérique, France, au kilo, DETAIL GMS) et sa rubrique LEGUMES-EXOTIQUES ne liste que chouchou, curcuma, gingembre, gombo, igname, manioc, patate douce et taro. Prendre le prix de la banane dessert (trois séries conventionnelles au kilo, de 1,75 à 1,99 EUR/kg sur douze mois) pour celui de la plantain aurait été un rapprochement de loin, c'est-à-dire un C de toute façon, mais un C qui aurait eu l'air d'un prix. Six relevés supplémentaires existent hors de la fenêtre de douze mois. Les faire entrer aurait franchi le seuil, mais en mêlant des prix de plus d'un an à des prix récents sous un unique observed_on — le défaut que la tranche « frais végétal » a laissé ouvert, et qu'on n'a pas voulu propager."
+    },
+    {
+      "form": "Piment frais",
+      "form_normalized": "piment frais",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 3.98,
+        "central": 12.99,
+        "high": 32.9,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 4,
+        "period_start": "2026-04-18",
+        "period_end": "2026-07-04"
+      },
+      "per_kg": {
+        "low": 3.98,
+        "central": 12.99,
+        "high": 32.9,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le piment s'achète entier et se compte équeuté et épépiné au catalogue. Aucune source du registre ne publie la part comestible ; 1,00 déclaré inconnu."
+      },
+      "confidence": "C",
+      "confidence_reason": "quatre_releves_sous_le_seuil_de_cinq_du_registre",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en%3Achili-peppers&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-07-04",
+        "source_record_key": "open_prices:en:chili-peppers/FR/KILOGRAM/hors-bio-hors-promo/2026-04-18..2026-07-04/n=4 · ids 293495,293492,294098,267515",
+        "citation": "Open Prices (Open Food Facts), relevés au kilogramme (price_per = KILOGRAM) en magasin en France, catégorie Open Food Facts « en:chili-peppers », du 2026-04-18 au 2026-07-04, hors promotion et hors bio : 4 relevés seulement — 3,98 EUR/kg le 2026-07-04 à Paris (n° 293495), 9,99 le 2026-07-04 à Aubervilliers (n° 293492), 15,99 le 2026-07-04 à Paris (n° 294098), 32,90 le 2026-04-18 à Paris (n° 267515). Médiane 12,99 EUR/kg, mini 3,98, maxi 32,90."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE EN C : NON AFFICHÉE, NON COMPTÉE. Quatre relevés, sous le seuil de cinq du registre ; et même à cinq, un rapport de huit entre le moins cher et le plus cher sur quatre points d'un même bassin parisien ne décrirait pas un marché. Le RNM ne cote le piment qu'aux stades gros, import et marché de producteurs, tous hors taxes : ce n'est pas ce qu'un foyer paie, et le convertir aurait demandé un coefficient de marge qu'aucune source du registre ne publie. Cette lecture vaut aussi comme réponse pour « Piment rouge frais » et « Piment scotch bonnet », laissés sans prix : rien ne les distingue ici, et rien ne les couvre."
+    },
+    {
+      "form": "Oignon blanc cru",
+      "form_normalized": "oignon blanc cru",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 3.49,
+        "central": 4.79,
+        "high": 16.6,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 3,
+        "period_start": "2025-10-16",
+        "period_end": "2026-06-24"
+      },
+      "per_kg": {
+        "low": 3.49,
+        "central": 4.79,
+        "high": 16.6,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "S'achète non épluché et se compte épluché au catalogue (Ciqual). Aucune source du registre ne publie la part comestible ; 1,00 déclaré inconnu."
+      },
+      "confidence": "C",
+      "confidence_reason": "trois_releves_sous_le_seuil_de_cinq_du_registre",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?category_tag=en%3Awhite-onions&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-06-24",
+        "source_record_key": "open_prices:en:white-onions/FR/KILOGRAM/hors-bio-hors-promo/2025-10-16..2026-06-24/n=3 · ids 288692,153188,152264",
+        "citation": "Open Prices (Open Food Facts), relevés au kilogramme (price_per = KILOGRAM) en magasin en France, catégorie Open Food Facts « en:white-onions », du 2025-10-16 au 2026-06-24, hors promotion et hors bio : 3 relevés seulement — 3,49 EUR/kg le 2026-06-24 à Grenoble (n° 288692), 4,79 le 2025-10-17 à Paris (n° 153188), 16,60 le 2025-10-16 à Paris (n° 152264). Médiane 4,79 EUR/kg, mini 3,49, maxi 16,60."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE EN C : NON AFFICHÉE, NON COMPTÉE. Trois relevés, et un rapport de près de cinq entre eux. Le RNM ne cote au détail que « OIGNON blanc France avec fane biologique », à la botte et en magasin bio spécialisé : ni la bonne unité, ni la bonne gamme. L'oignon jaune, lui, est bien coté et déjà chiffré par la tranche « frais végétal » — mais l'oignon blanc n'est pas de l'oignon jaune, et le catalogue tient deux formes distinctes. Même situation, sans même trois relevés, pour « Oignon grelot cru » et « Oignon nouveau frais », laissés sans prix."
+    },
+    {
+      "form": "Chou kale frais",
+      "form_normalized": "chou kale frais",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 5.55,
+        "central": 6.33,
+        "high": 7.18,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 7,
+        "period_start": "2025-10-01",
+        "period_end": "2026-04-30"
+      },
+      "per_kg": {
+        "low": 5.55,
+        "central": 6.33,
+        "high": 7.18,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le kale s'achète en branches et se compte effeuillé et équeuté au catalogue. Aucune source du registre ne publie la part comestible ; 1,00 déclaré inconnu."
+      },
+      "confidence": "C",
+      "confidence_reason": "cotation_bio_en_magasin_specialise_non_transposable_au_conventionnel",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?CHOU&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-04-30",
+        "source_record_key": "RNM/M3027/57231690/2025-10..2026-04",
+        "citation": "RNM — FranceAgriMer, page « CHOU — prix moyens mensuels du 01-08-2025 au 31-07-2026 », marché « Légumes France DETAIL MAG. SPECIALISES BIO » (cours Détail en € TTC), série n° 57231690 : « CHOU Kale France biologique (le kg) ». Sept moyennes mensuelles : Octobre 2025 6.33, Novembre 2025 6.48, Décembre 2025 6.58, Janvier 2026 5.55, Février 2026 7.18, Mars 2026 6.04, Avril 2026 6.16 EUR/kg. Médiane 6,33 EUR/kg, mini 5,55, maxi 7,18."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE EN C, ET C'EST UN CHOIX, PAS UNE LIMITE TECHNIQUE. La cotation est bonne : sept moyennes mensuelles nationales, au kilo, au stade détail, sur une série publique datée. Ce qui la disqualifie est son circuit : « MAG. SPECIALISES BIO », c'est-à-dire des magasins bio spécialisés, et un produit biologique. Le RNM ne cote AUCUN kale conventionnel en GMS, et Open Prices n'a aucun relevé de kale non bio en France sur la période. La faire passer en B reviendrait à présenter un prix de bio spécialisé comme un prix de marché. Le motif de fond n'est pas la pureté doctrinale mais le SENS du biais : toutes les autres entrées du référentiel sont des minorants déclarés (rendement à 1,00, prix d'entrée de gamme), et celle-ci serait un majorant. Mélanger deux sens de biais dans un même panier rend le total ininterprétable — on ne saurait plus dire s'il est trop haut ou trop bas. Vaut aussi pour « Chou kale portugais », laissé sans prix : la couve galega n'est pas le kale frisé, et le seul relevé disponible est déjà refusé pour le kale lui-même."
+    }
+  ]
+}

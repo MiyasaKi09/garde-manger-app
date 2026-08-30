@@ -1,0 +1,871 @@
+{
+  "schema_version": "1.0.0",
+  "price_set_version": "2026.08-legumineuses",
+  "country": "FR",
+  "currency": "EUR",
+  "reference_date": "2026-08-24",
+  "derived_license": "odbl-1.0",
+  "catalog_version": "v3-300-real-dishes",
+  "built_at": "2026-08-29",
+  "notes": "Tranche « légumineuses, céréales et féculents ». Source unique : Open Prices (Open Food Facts), interrogée par son API v1 sur les catégories Open Food Facts listées dans chaque entrée, relevés arrêtés au 24 août 2026 pour que la date de référence reste celle des quatre tranches déjà versées. derived_license vaut odbl-1.0 : ODbL est à partage à l'identique et contamine le référentiel produit. Aucune entrée en A, et c'est structurel — le registre plafonne Open Prices à B, définitivement, parce que ses contributions sont volontaires.\n\nPOURQUOI LE RNM N'APPARAÎT PAS. Le registre le dit lui-même : le RNM « ne couvre pas l'épicerie sèche ». Il cote les légumes frais et la viande, pas le paquet de lentilles. L'Observatoire des prix et des marges s'arrête aux familles carnées et laitières. Il ne restait qu'Open Prices, et c'est bien le rôle que le registre lui assigne.\n\nLE PIÈGE CENTRAL DE CE LOT EST LE SEC CONTRE LE CUIT. Cent grammes de légumineuse sèche donnent environ deux cent quarante grammes de légumineuse cuite : confondre les deux multiplie ou divise le prix par près de trois, sans qu'aucun contrôle de forme puisse le voir. Le rayon des légumineuses en grande surface est majoritairement occupé par la conserve, et les catégories Open Food Facts mélangent les deux états sous le même tag. Chaque référence a donc été examinée une par une, sur son code-barres, son libellé, son format et ses tags, et les entrées publiées ne retiennent que le produit SEC, tel qu'il s'achète.\n\nCE QUE CETTE TRANCHE NE CHIFFRE PAS, ET POURQUOI. Douze des vingt-cinq formes du lot restent sans prix. Elles se rangent en quatre familles.\n1. LES FORMES CUITES ET ÉGOUTTÉES — « Pois chiche cuit, égoutté », « Haricot blanc cuit, égoutté », « Haricot rouge cuit, égoutté », « Haricot flageolet appertisé, égoutté ». Elles s'achètent en boîte, et la boîte se vend au POIDS NET, saumure comprise, quand la recette compte le POIDS ÉGOUTTÉ. Sur les rares boîtes qui affichent les deux dans Open Food Facts — « 570 g (400g égoutté) », « 400 g, 425 ml, 250 g égoutté », « 870 g (540 g égoutté) », « 330 g (égoutté : 175 g) » — l'égoutté pèse de 53 % à 70 % du net, soit un prix au kilo d'égoutté de 1,4 à 1,9 fois celui du net. Ce facteur doit être sourcé boîte par boîte, pas supposé, et il n'est renseigné que pour ces cinq libellés dans tout le corpus interrogé — bien moins que les cinq relevés par forme qu'exige le registre. L'autre chemin — partir du prix du sec et appliquer un facteur de réhydratation — demande un facteur que personne ne publie, et que le schéma ne saurait de toute façon pas porter : ses seules conversions sont l'identité, la densité et la masse d'une pièce. Ces quatre formes sont donc absentes, et ce n'est pas un oubli.\n2. LES FORMES DONT LE RAYON SEC EXISTE MAIS EST TROP MINCE — « Haricot flageolet sec » (deux relevés), « Haricot noir sec » (deux relevés, tous deux en sachet de 1 kg), « Haricot géant sec » (un seul relevé), « Fève à écosser fraîche » (deux relevés, dont un surgelé et un apéritif au paprika). Le registre exige cinq relevés pour qu'Open Prices dépasse C. Les chiffres existent, ils sont trop peu nombreux, et les publier reviendrait à faire passer une observation isolée pour une distribution.\n3. « FARINE DE BLÉ TYPE 00 » — la forme la plus lourde des absentes (5 280 kcal du lot). Aucun relevé français d'Open Prices ne porte la mention « type 00 » : ni dans en:wheat-flours (198 relevés), ni dans en:flours (397), et les tags fr:farine-type-00, en:wheat-flour-type-00 et en:pizza-flours sont vides. Il aurait été facile de reprendre le panier des farines blanches panifiables françaises — T45, T55, T65 — que la tranche « épicerie » a constitué pour « Farine de blé T55 », et de déclarer une forme approchée. Cela n'a pas été fait : la type 00 est une farine italienne d'importation, vendue à un autre étage de prix que la T45 d'enseigne, et je n'ai AUCUNE source qui mesure cet écart. Écrire le prix de la T45 sous le nom de la type 00, ou l'écrire en le disant « plancher », reviendrait à publier une croyance sous l'apparence d'un relevé. Le CONTRAT §0 tranche : en cas d'hésitation, l'absence.\n4. LES FORMES DONT LE VOISIN N'EST PAS ASSEZ VOISIN — « Tonnarelli secs » (voir la note de « Bucatini secs », qui explique pourquoi l'adaptation vaut pour l'un et pas pour l'autre), « Pain toscan rassis » (le pain toscan est un pain sans sel qu'aucune enseigne française ne vend ; le chiffrer sur le panier du pain blanc courant demanderait deux adaptations empilées, toscan → pain blanc puis rassis → frais), « Amande mondée » (un seul relevé d'amandes émondées ; le catalogue porte par ailleurs une forme « Amande » générique qui n'appartient pas à ce lot).\n\nQUATRE ENTRÉES SUR TREIZE PORTENT UNE ADAPTATION DÉCLARÉE, chacune nommée dans son confidence_reason et argumentée dans ses notes, avec la lecture concurrente écrite pour qu'un relecteur puisse la préférer : « Lentille brune sèche, crue » (chiffrée sur la lentille blonde, que le commerce français vend sous ce nom), « Arachide grillée moulue » (chiffrée sur la cacahuète grillée entière non salée, la mouture étant une opération de cuisine), « Noisette grillée » (chiffrée sur les amandons de noisette, torréfiés ou non), « Bucatini secs » (chiffré sur les pâtes longues sèches de blé dur).\n\nMÉTHODE DE CALCUL, identique pour toutes les entrées. Les relevés sont ramenés au kilogramme par le poids net du contenant (product_quantity), après rejet de ceux dont le poids annoncé dans le libellé contredit product_quantity — Open Food Facts en porte plusieurs, par exemple un « 215G ... BOCAL » enregistré à 14 g, qui produisait un prix de 177 EUR/kg. Ils sont ensuite dédoublonnés par couple (référence produit, magasin) en gardant le plus récent, ce qui empêche un magasin qui recote souvent la même boîte de peser douze fois dans la médiane. low et high sont les premier et neuvième déciles des relevés retenus, central leur médiane, conformément au CONTRAT §3.1. Tous les identifiants de relevés retenus sont écrits dans source_record_key : chaque entrée est rejouable relevé par relevé sur https://prices.openfoodfacts.org/api/v1/prices/<id>.\n\nREVUE ADVERSE DU 2026-08-30 — CE QUI A ÉTÉ ROUVERT, CE QUI A CHANGÉ. Les 256 identifiants de relevés cités dans les source_record_key des treize entrées ont été rouverts un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Pour chacun ont été revérifiés le prix, la quantité nette, l'unité, la date, la marque, la devise, le pays du magasin et l'absence de promotion et de label bio ; puis les trois bornes de chaque entrée ont été recalculées depuis les relevés bruts. Résultat : aucun prix inventé, aucune erreur de facteur dix, aucune confusion €/kg contre €/pièce ou €/l, aucun doublon (référence, magasin), aucune date hors de la période annoncée, et les trente-neuf relevés nommément cités en exemple dans les citations concordent tous au centime avec la source. Les décomptes de population annoncés dans les notes ont été rejoués contre l'API et se retrouvent (en:white-beans 186 relevés dont 118 survivent aux filtres une fois retirés les huit relevés que l'API signale elle-même comme doublons ; en:lentils 480 dont 435 français ; en:pine-nuts 25 ; en:sesame 51 ; en:tahini 40 ; en:bucatini 3 relevés, tous américains ; en:brown-lentils 2, tous deux étrangers).\n\nTROIS DÉFAUTS ONT ÉTÉ TROUVÉS ET CORRIGÉS, chacun documenté dans les notes de son entrée. (1) « Bucatini secs » : neuf des 74 relevés retenus étaient des pâtes aux œufs ou sans gluten, c'est-à-dire précisément ce que la citation de l'entrée disait exclure, et tous les neuf étaient dans la queue chère — le panier passe à 65 relevés et la médiane de 2,56 à 2,38 EUR/kg. C'est la seule correction de la passe qui change un prix. (2) « Noisette grillée » : la note justifiait l'adaptation par trois relevés torréfiés qu'elle disait inclus dans le panier ; deux des trois sont datés après la date d'arrêt du jeu et n'y sont pas — la justification est réécrite, le prix ne bouge pas. (3) « Arachide grillée moulue » : la citation annonçait une sélection « non salées ou sans sel » que les relevés ne portent pas — la clause est réécrite pour dire ce qui a réellement été fait, le prix ne bouge pas. Une réserve documentée a par ailleurs été ajoutée à « Sésame », dont la médiane est la lecture la plus chère d'une référence unique. Aucune entrée n'a été supprimée : aucun des treize prix n'a résisté à la vérification par sa plausibilité seule, chacun se rejoue relevé par relevé.",
+  "entries": [
+    {
+      "form": "Haricot blanc sec",
+      "form_normalized": "haricot blanc sec",
+      "category": "legumineuses",
+      "observed": {
+        "basis": "kg",
+        "low": 3.37,
+        "central": 4.18,
+        "high": 6.82,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 9,
+        "period_start": "2025-09-17",
+        "period_end": "2026-08-14"
+      },
+      "per_kg": {
+        "low": 3.37,
+        "central": 4.18,
+        "high": 6.82,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "ce qui est dans le sachet est intégralement l'aliment, une légumineuse sèche n'ayant ni peau à jeter, ni os, ni fane.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-29",
+          "observed_on": "2026-08-29",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : ce qui est dans le sachet est intégralement l'aliment, une légumineuse sèche n'ayant ni peau à jeter, ni os, ni fane."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_relevés_magasin_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Awhite-beans&date__gte=2025-08-25&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-08-14",
+        "source_record_key": "open_prices:en:white-beans+en:coco-white-beans+en:common-beans/FR/haricots-blancs-secs-hors-appertise/2025-09-17..2026-08-14/n=9 · ids 163853,179722,163854,258888,254757,269462,290738,310157,194926",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:white-beans » + « en:coco-white-beans » + « en:common-beans », du 2025-09-17 au 2026-08-14, hors promotion et hors bio : 9 relevés retenus après dédoublonnage (11 bruts avant dédoublonnage), sélection restreinte aux haricots blancs vendus SECS en étui ou en sachet (lingots, cocos, mogettes de Vendée, haricots blancs secs), à l'exclusion de toute boîte ou bocal, ramenés au kilogramme par le poids net du contenant, de 3,24 à 7,24 EUR/kg — par exemple 3,24 EUR/kg le 2025-10-20 pour « LINGOTS BLANCS ETUI » (Netto) en 500 g (relevé n° 163853) ; 4,18 EUR/kg le 2026-03-28 pour « HARICOT BLC,NOTRE JARDIN,500G » (Marque Repère, Notre Jardin) en 500 g (relevé n° 254757) ; 7,24 EUR/kg le 2026-01-30 pour « MOGETTE DE VENDEE 0.5 Kg » (Itineraire de nos regions, Itinéraire des Saveurs) en 500 g (relevé n° 194926). Médiane 4,18 EUR/kg, D1 3,37, D9 6,82."
+      },
+      "reindexation": null,
+      "notes": "LE PIÈGE DE CETTE FORME EST LE SEC CONTRE L'APPERTISÉ, et il change le prix d'un facteur deux à trois dans les deux sens à la fois. Le rayon « haricots blancs » est massivement occupé par la conserve : sur les 118 relevés de la catégorie en:white-beans qui survivent aux filtres pays, promotion, bio et quantité connue, l'écrasante majorité porte un tag en:canned-foods ou un format de boîte (265 g, 400 g, 530 g, 820 g). Ces relevés ont TOUS été écartés, un par un, sur le code-barres. Ne restent que sept références vendues sèches, toutes en étui ou sachet de 500 g : lingots blancs (Netto, Belle France), cocos blancs (Netto), haricots blancs secs (Franprix, Notre Jardin) et mogettes de Vendée sèches (Nos Régions ont du Talent, Itinéraire des Saveurs). Écartée nommément : la référence 5606456010645 « HARICOTS BLANCS MG 570G » (Marca Guia), à 1,93 €/kg. Elle ne porte aucun tag de conserve, mais son format de 570 g et son prix sont ceux des boîtes que la même marque vend sous des codes voisins — la référence 5606456010669 « POIS CHICHE MG 570G », même marque et même format, porte bien en:canned-foods. Le doute n'a pas été tranché, donc elle est sortie.\n\nLECTURE CONCURRENTE, écrite pour qu'un relecteur puisse la préférer. Le catalogue porte aussi une forme « Haricot lingot sec » distincte. En retirant du panier les trois références de lingots et de cocos, il ne reste que six relevés — haricots blancs secs et mogettes — dont la médiane monte à 6,32 €/kg (D1 4,14 ; D9 6,98), parce que la mogette de Vendée, sous IGP, se vend deux fois le prix du haricot blanc de premier prix. Le panier publié est le plus large des deux : il compte plus de références, il ne laisse pas une variété sous appellation décider seule de la médiane, et le CONTRAT §3.1 range explicitement la gamme dans ce que la dispersion absorbe. Un relecteur qui juge que « haricot blanc sec » ne doit pas contenir de lingots doit lire 6,32 €/kg au lieu de 4,18.\n\nConditionnement : les neuf relevés retenus sont tous des paquets de 500 g. Aucun sac de 5 kg n'apparaît dans Open Prices, et le prix au kilo publié ici est donc celui du petit conditionnement de grande surface, pas celui du gros.\n\nÉchantillon : 9 relevés retenus, 7 références, 8 magasins. Conditionnements : 500 g (9).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Awhite-beans&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Acoco-white-beans&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Acommon-beans&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity, puis sélection sur le libellé et sur les catégories Open Food Facts (sec contre appertisé/cuisiné), puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent, puis arrêt des relevés au 2026-08-24. Le libellé cité pour chaque relevé est son product_name quand il en porte un, sinon celui du produit Open Food Facts rattaché — les deux figurent dans la même réponse de l'API, sous product_name et sous product.product_name."
+    },
+    {
+      "form": "Lentille verte sèche, crue",
+      "form_normalized": "lentille verte seche crue",
+      "category": "legumineuses",
+      "observed": {
+        "basis": "kg",
+        "low": 2.76,
+        "central": 3.58,
+        "high": 5.67,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 35,
+        "period_start": "2025-09-17",
+        "period_end": "2026-07-28"
+      },
+      "per_kg": {
+        "low": 2.76,
+        "central": 3.58,
+        "high": 5.67,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "ce qui est dans le sachet est intégralement l'aliment, une légumineuse sèche n'ayant ni peau à jeter, ni os, ni fane.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-29",
+          "observed_on": "2026-08-29",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : ce qui est dans le sachet est intégralement l'aliment, une légumineuse sèche n'ayant ni peau à jeter, ni os, ni fane."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_relevés_magasin_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Adried-green-lentils&date__gte=2025-08-25&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-07-28",
+        "source_record_key": "open_prices:en:dried-green-lentils+en:lentils+en:dried-lentils/FR/lentilles-vertes-seches/2025-09-17..2026-07-28/n=35 · ids 290737,263238,161674,163878,215134,274876,163882,161676,163879,300715,290065,138952,215133,218802,300714,231034,254004,268249,163885,268248,218803,218604,271665,260039,281744,290715,179680,281682,284580,260038,148152,251047,148153,281680,179679",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:dried-green-lentils » + « en:lentils » + « en:dried-lentils », du 2025-09-17 au 2026-07-28, hors promotion et hors bio : 35 relevés retenus après dédoublonnage (59 bruts avant dédoublonnage), sélection restreinte aux lentilles vertes vendues sèches en sachet ou en étui, à l'exclusion des lentilles cuisinées, appertisées, en bocal et des sachets vapeur, ramenés au kilogramme par le poids net du contenant, de 2,73 à 9,58 EUR/kg — par exemple 2,73 EUR/kg le 2026-07-02 pour « ST ELOI LENTILLE VERTE SC » (Les Mousquetaires, Saint eloi, Sélection des Mousquetaires) en 1000 g (relevé n° 290737) ; 3,58 EUR/kg le 2026-04-23 pour « V PAILLE LENTILLE VERTE 500G VIVIEN PAILLE » (Vivien Paille) en 500 g (relevé n° 268249) ; 9,58 EUR/kg le 2025-09-17 pour « Lentilles Vertes du Puy » (La Ponote) en 500 g (relevé n° 179679). Médiane 3,58 EUR/kg, D1 2,76, D9 5,67."
+      },
+      "reindexation": null,
+      "notes": "La forme la mieux couverte du lot : 35 relevés, 20 références, 18 magasins. Le piège du sec contre le cuit est ici très concret — la catégorie en:lentils compte 435 relevés français, dont 241 portent le tag en:prepared-lentils (lentilles cuisinées à l'auvergnate, à la graisse d'oie, façon petit salé, en boîte 1/2 ou 4/4). Tous ont été écartés. Écartée nommément aussi : la référence 3039822720015 « LENTIL VERTE DU PUY 2' 250G » (Vivien Paille), qui porte les tags en:microwave-meals et en:prepared-lentils — c'est un sachet micro-ondes de lentilles déjà cuites, pas un paquet de lentilles sèches, et son prix au kilo n'est pas celui du même produit.\n\nGamme : le panier va du 1 kg de premier prix (2,73 €/kg, Saint Éloi) à la lentille verte du Puy AOP en paquet de 500 g (9,58 €/kg, La Ponote). Aucune segmentation n'est tentée : le CONTRAT §3.1 range la gamme dans ce que la dispersion absorbe, et c'est exactement ce que font ici le D1 à 2,76 et le D9 à 5,67. Les lentilles BLONDES ne sont pas dans ce panier : c'est une autre variété, et le catalogue lui donne sa propre forme.\n\nConditionnement : 24 relevés en 500 g, 11 en 1 kg. Le kilo est nettement moins cher au kilo que le demi-kilo, et cet écart fait partie de la dispersion publiée.\n\nÉchantillon : 35 relevés retenus, 20 références, 18 magasins. Conditionnements : 500 g (24), 1000 g (11).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Adried-green-lentils&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Alentils&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Adried-lentils&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity, puis sélection sur le libellé et sur les catégories Open Food Facts (sec contre appertisé/cuisiné), puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent, puis arrêt des relevés au 2026-08-24. Le libellé cité pour chaque relevé est son product_name quand il en porte un, sinon celui du produit Open Food Facts rattaché — les deux figurent dans la même réponse de l'API, sous product_name et sous product.product_name."
+    },
+    {
+      "form": "Lentille corail sèche, crue",
+      "form_normalized": "lentille corail seche crue",
+      "category": "legumineuses",
+      "observed": {
+        "basis": "kg",
+        "low": 3.44,
+        "central": 4.73,
+        "high": 5.88,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 14,
+        "period_start": "2025-09-04",
+        "period_end": "2026-07-02"
+      },
+      "per_kg": {
+        "low": 3.44,
+        "central": 4.73,
+        "high": 5.88,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "ce qui est dans le sachet est intégralement l'aliment, une légumineuse sèche n'ayant ni peau à jeter, ni os, ni fane.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-29",
+          "observed_on": "2026-08-29",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : ce qui est dans le sachet est intégralement l'aliment, une légumineuse sèche n'ayant ni peau à jeter, ni os, ni fane."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_relevés_magasin_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ared-lentils&date__gte=2025-08-25&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-07-02",
+        "source_record_key": "open_prices:en:red-lentils+en:lentils/FR/lentilles-corail-seches/2025-09-04..2026-07-02/n=14 · ids 254181,192867,204295,250794,179672,260037,281679,258811,148122,148143,136802,258638,281765,290712",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:red-lentils » + « en:lentils », du 2025-09-04 au 2026-07-02, hors promotion et hors bio : 14 relevés retenus après dédoublonnage (15 bruts avant dédoublonnage), sélection restreinte aux lentilles corail (décortiquées) vendues sèches en sachet ou en étui, à l'exclusion des préparations cuisinées et des pâtes de lentille corail, ramenés au kilogramme par le poids net du contenant, de 3,02 à 7,29 EUR/kg — par exemple 3,02 EUR/kg le 2026-03-28 pour « LENTILLES CORAIL 1KG MOSAIQUE » (Mosaïque) en 1000 g (relevé n° 254181) ; 4,78 EUR/kg le 2026-04-02 pour « LENTILLES CORAIL 450G MFP » (Franprix) en 450 g (relevé n° 258811) ; 7,29 EUR/kg le 2026-07-02 pour « SABAROT LENT CORAIL ZRP 4 0.45 kg » (Sabarot) en 450 g (relevé n° 290712). Médiane 4,73 EUR/kg, D1 3,44, D9 5,88."
+      },
+      "reindexation": null,
+      "notes": "Écartées nommément : la référence 8076809577021 « spaghetti de lentilles corail » (Barilla, 18,36 €/kg), qui est une pâte et non une lentille, et la référence 3564706772359 « lentilles corail tomates & épices » (Notre Jardin), qui est un plat assaisonné. La lentille corail est vendue décortiquée par construction : la mention « 10 minutes » ou « Top Chrono » que portent certains paquets désigne son temps de cuisson naturel, pas une précuisson — la référence 3560070829651 porte les tags en:decorticated-red-lentils et aucun tag de conserve, elle est donc restée dans le panier.\n\nConditionnement : le sachet de 450 g (cinq relevés) coexiste avec l'étui de 500 g (huit relevés) ; un seul relevé en 1 kg, et c'est le moins cher au kilo du panier (3,02 €/kg).\n\nÉchantillon : 14 relevés retenus, 10 références, 12 magasins. Conditionnements : 500 g (8), 450 g (5), 1000 g (1).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ared-lentils&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Alentils&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity, puis sélection sur le libellé et sur les catégories Open Food Facts (sec contre appertisé/cuisiné), puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent, puis arrêt des relevés au 2026-08-24. Le libellé cité pour chaque relevé est son product_name quand il en porte un, sinon celui du produit Open Food Facts rattaché — les deux figurent dans la même réponse de l'API, sous product_name et sous product.product_name."
+    },
+    {
+      "form": "Haricot rouge sec",
+      "form_normalized": "haricot rouge sec",
+      "category": "legumineuses",
+      "observed": {
+        "basis": "kg",
+        "low": 3.5,
+        "central": 3.78,
+        "high": 4.0,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 11,
+        "period_start": "2025-09-03",
+        "period_end": "2026-08-08"
+      },
+      "per_kg": {
+        "low": 3.5,
+        "central": 3.78,
+        "high": 4.0,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "ce qui est dans le sachet est intégralement l'aliment, une légumineuse sèche n'ayant ni peau à jeter, ni os, ni fane.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-29",
+          "observed_on": "2026-08-29",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : ce qui est dans le sachet est intégralement l'aliment, une légumineuse sèche n'ayant ni peau à jeter, ni os, ni fane."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_relevés_magasin_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ared-beans&date__gte=2025-08-25&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-08-08",
+        "source_record_key": "open_prices:en:red-beans+en:common-beans+en:pulses/FR/haricots-rouges-secs-hors-appertise/2025-09-03..2026-08-08/n=11 · ids 136747,274872,269857,161680,253968,258875,179381,305867,188498,148120,233030",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:red-beans » + « en:common-beans » + « en:pulses », du 2025-09-03 au 2026-08-08, hors promotion et hors bio : 11 relevés retenus après dédoublonnage (20 bruts avant dédoublonnage), sélection restreinte aux haricots rouges vendus SECS en sachet, tous porteurs du tag Open Food Facts en:dried-red-kidney-beans à une exception près, à l'exclusion de toute boîte, ramenés au kilogramme par le poids net du contenant, de 3,28 à 4,29 EUR/kg — par exemple 3,28 EUR/kg le 2025-09-03 pour « Haricots rouges » (L'épicier du monde) en 1000 g (relevé n° 136747) ; 3,78 EUR/kg le 2026-04-02 pour « HARICOTS ROUGES 450G MFP » (Franprix) en 450 g (relevé n° 258875) ; 4,29 EUR/kg le 2026-02-27 pour « SAMIA HARICOTS ROUGES 1KG » (Samia) en 1000 g (relevé n° 233030). Médiane 3,78 EUR/kg, D1 3,50, D9 4,00."
+      },
+      "reindexation": null,
+      "notes": "Même piège que le haricot blanc, mais le tri est ici plus sûr : Open Food Facts distingue explicitement en:dried-red-kidney-beans de en:canned-kidney-common-beans, et les huit références retenues portent le tag « sec ». Le rayon appertisé — Bonduelle très peu de jus, d'aucy, façon chili, Belle France — représente à lui seul plus de soixante-dix relevés, tous écartés.\n\nÉcartée nommément : la référence 3564700643372 « HARICOTS ROUGES N JARDIN 500G », dont le format de 500 g pourrait passer pour un sachet mais qui porte les tags en:canned-foods et en:canned-kidney-common-beans — le doute n'a pas été tranché, donc elle est sortie. Écartée aussi : 3250392271817 « SAINT ELOI HARICOT ROUGE 0,5 kg », sans aucun tag qui permette de dire si c'est un sachet ou une boîte.\n\nLa fourchette est ici remarquablement serrée (D9/D1 = 1,14) : le haricot rouge sec est un produit de commodité, vendu au même prix d'une enseigne à l'autre, sans appellation ni label qui viennent l'étaler. C'est un constat, pas une précision revendiquée.\n\nÉchantillon : 11 relevés retenus, 8 références, 10 magasins. Conditionnements : 1000 g (5), 500 g (4), 450 g (2).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ared-beans&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Acommon-beans&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apulses&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity, puis sélection sur le libellé et sur les catégories Open Food Facts (sec contre appertisé/cuisiné), puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent, puis arrêt des relevés au 2026-08-24. Le libellé cité pour chaque relevé est son product_name quand il en porte un, sinon celui du produit Open Food Facts rattaché — les deux figurent dans la même réponse de l'API, sous product_name et sous product.product_name."
+    },
+    {
+      "form": "Pois chiche sec, cru",
+      "form_normalized": "pois chiche sec cru",
+      "category": "legumineuses",
+      "observed": {
+        "basis": "kg",
+        "low": 2.57,
+        "central": 3.18,
+        "high": 4.06,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 13,
+        "period_start": "2025-11-10",
+        "period_end": "2026-08-19"
+      },
+      "per_kg": {
+        "low": 2.57,
+        "central": 3.18,
+        "high": 4.06,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "ce qui est dans le sachet est intégralement l'aliment, une légumineuse sèche n'ayant ni peau à jeter, ni os, ni fane.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-29",
+          "observed_on": "2026-08-29",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : ce qui est dans le sachet est intégralement l'aliment, une légumineuse sèche n'ayant ni peau à jeter, ni os, ni fane."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_relevés_magasin_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Adried-chickpeas&date__gte=2025-08-25&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-08-19",
+        "source_record_key": "open_prices:en:dried-chickpeas+en:chickpeas/FR/pois-chiches-secs-hors-appertise/2025-11-10..2026-08-19/n=13 · ids 163875,282286,305859,306322,313547,169041,161681,305849,188501,268332,258643,281681,302333",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:dried-chickpeas » + « en:chickpeas », du 2025-11-10 au 2026-08-19, hors promotion et hors bio : 13 relevés retenus après dédoublonnage (20 bruts avant dédoublonnage), sélection restreinte aux pois chiches vendus SECS en sachet ou en étui, à l'exclusion des boîtes, bocaux, sachets vapeur et préparations au curry, ramenés au kilogramme par le poids net du contenant, de 2,36 à 4,44 EUR/kg — par exemple 2,36 EUR/kg le 2025-11-15 pour « -POIS CHICHES POLY1KG BASMAISON GT101 » (Sabarot) en 1000 g (relevé n° 163875) ; 3,18 EUR/kg le 2025-12-02 pour « POIS CHICHES SACHET MARCA GUIA 500G » (Marca Guia,Notre Jardin) en 500 g (relevé n° 169041) ; 4,44 EUR/kg le 2026-07-31 pour « POIS CHICHES TRES GROS 1 KG » (Samia) en 1000 g (relevé n° 302333). Médiane 3,18 EUR/kg, D1 2,57, D9 4,06."
+      },
+      "reindexation": null,
+      "notes": "Le rayon pois chiche est majoritairement appertisé (Sultanines d'aucy, Bonduelle très peu de jus, boîtes 1/2 et 4/4 d'enseigne) : ces relevés ont été écartés. Restent dix références sèches, dont sept portent le tag en:dried-chickpeas. La référence 3256227769153 « POIS CHICHES U ETUI 500G » porte à la fois un tag de conserve et un tag « sec » dans Open Food Facts — contradiction de la base ; son libellé dit « étui de 500 g », qui est le conditionnement du sec, et c'est ce libellé qui a tranché.\n\nConditionnement : sept relevés en 1 kg, six en 500 g. Le sac de 1 kg est le format dominant du pois chiche sec, contrairement à la lentille.\n\nÉchantillon : 13 relevés retenus, 10 références, 11 magasins. Conditionnements : 1000 g (7), 500 g (6).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Adried-chickpeas&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Achickpeas&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity, puis sélection sur le libellé et sur les catégories Open Food Facts (sec contre appertisé/cuisiné), puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent, puis arrêt des relevés au 2026-08-24. Le libellé cité pour chaque relevé est son product_name quand il en porte un, sinon celui du produit Open Food Facts rattaché — les deux figurent dans la même réponse de l'API, sous product_name et sous product.product_name."
+    },
+    {
+      "form": "Lentille brune sèche, crue",
+      "form_normalized": "lentille brune seche crue",
+      "category": "legumineuses",
+      "observed": {
+        "basis": "kg",
+        "low": 1.77,
+        "central": 3.62,
+        "high": 8.27,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 19,
+        "period_start": "2025-10-03",
+        "period_end": "2026-08-11"
+      },
+      "per_kg": {
+        "low": 1.77,
+        "central": 3.62,
+        "high": 8.27,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "ce qui est dans le sachet est intégralement l'aliment, une légumineuse sèche n'ayant ni peau à jeter, ni os, ni fane.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-29",
+          "observed_on": "2026-08-29",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : ce qui est dans le sachet est intégralement l'aliment, une légumineuse sèche n'ayant ni peau à jeter, ni os, ni fane."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "forme_approchee_lentille_blonde_pour_lentille_brune_adaptation_declaree",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Adried-blond-lentils&date__gte=2025-08-25&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-08-11",
+        "source_record_key": "open_prices:en:dried-blond-lentils+en:lentils/FR/lentilles-blondes-seches-forme-approchee/2025-10-03..2026-08-11/n=19 · ids 292846,218800,163873,161675,163881,206765,163876,293522,145093,188499,281764,148118,268186,281678,185164,242666,307259,149152,145623",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:dried-blond-lentils » + « en:lentils », du 2025-10-03 au 2026-08-11, hors promotion et hors bio : 19 relevés retenus après dédoublonnage (46 bruts avant dédoublonnage), sélection restreinte aux lentilles BLONDES vendues sèches en sachet ou en étui, à l'exclusion des lentilles cuisinées et appertisées, ramenés au kilogramme par le poids net du contenant, de 1,54 à 10,38 EUR/kg — par exemple 1,54 EUR/kg le 2026-06-17 pour « LENTILLES BLONDE 500G ECO + » (eco+) en 500 g (relevé n° 292846) ; 3,62 EUR/kg le 2025-10-03 pour « LENTILLES BLONDES ETUI ST ELOI 500 g » (Saint Eloi) en 500 g (relevé n° 145093) ; 10,38 EUR/kg le 2025-10-03 pour « LENTILLES BLONDE SAC » (la lentille BLONDE de Saint-Flour) en 500 g (relevé n° 145623). Médiane 3,62 EUR/kg, D1 1,77, D9 8,27."
+      },
+      "reindexation": null,
+      "notes": "ADAPTATION DÉCLARÉE, et elle mérite d'être discutée. Aucun relevé français d'Open Prices ne porte la mention « lentille brune » : le commerce français ne l'emploie pas. La lentille que le reste du monde appelle brune est vendue en France sous le nom de « lentille blonde » — c'est la même graine, le même rayon, le même paquet de 500 g, et Open Food Facts range les deux sous en:blonde-lentils / en:dried-blond-lentils. Le panier publié est donc celui des lentilles blondes sèches. C'est le type même de la forme approchée que le CONTRAT §4 admet en B, et l'adaptation est portée par confidence_reason.\n\nLa fourchette est large (D9/D1 = 4,7) et cela se lit sur les relevés : le paquet de 500 g de premier prix descend à 1,54 €/kg (Éco+) quand la « lentille blonde de Saint-Flour » monte à 10,38 €/kg. Ce n'est pas un mélange de deux produits — ce sont bien 19 relevés de lentille blonde sèche en paquet — mais l'écart entre le premier prix et la lentille de terroir est ici le plus fort du lot.\n\nUn relecteur qui juge que « lentille brune » et « lentille blonde » ne sont pas la même graine doit traiter cette ligne comme non chiffrée.\n\nÉchantillon : 19 relevés retenus, 13 références, 16 magasins. Conditionnements : 500 g (17), 1000 g (1), 300 g (1).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Adried-blond-lentils&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Alentils&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity, puis sélection sur le libellé et sur les catégories Open Food Facts (sec contre appertisé/cuisiné), puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent, puis arrêt des relevés au 2026-08-24. Le libellé cité pour chaque relevé est son product_name quand il en porte un, sinon celui du produit Open Food Facts rattaché — les deux figurent dans la même réponse de l'API, sous product_name et sous product.product_name."
+    },
+    {
+      "form": "Amande effilée",
+      "form_normalized": "amande effilee",
+      "category": "legumineuses",
+      "observed": {
+        "basis": "kg",
+        "low": 15.76,
+        "central": 20.16,
+        "high": 31.89,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 10,
+        "period_start": "2025-10-16",
+        "period_end": "2026-04-12"
+      },
+      "per_kg": {
+        "low": 15.76,
+        "central": 20.16,
+        "high": 31.89,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "une graine ou un amandon vendu décortiqué est intégralement l'aliment acheté.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-29",
+          "observed_on": "2026-08-29",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : une graine ou un amandon vendu décortiqué est intégralement l'aliment acheté."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_relevés_magasin_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ablanched-almonds&date__gte=2025-08-25&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-04-12",
+        "source_record_key": "open_prices:en:blanched-almonds+en:almonds/FR/amandes-effilees/2025-10-16..2026-04-12/n=10 · ids 254353,242138,230078,152152,264852,230071,171570,231379,242153,250018",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:blanched-almonds » + « en:almonds », du 2025-10-16 au 2026-04-12, hors promotion et hors bio : 10 relevés retenus après dédoublonnage (11 bruts avant dédoublonnage), sélection restreinte aux sachets d'amandes EFFILÉES, à l'exclusion des amandes entières, décortiquées, en poudre, hachées, grillées, salées ou fumées, ramenés au kilogramme par le poids net du contenant, de 14,32 à 33,04 EUR/kg — par exemple 14,32 EUR/kg le 2026-03-28 pour « 125G AMANDES EFFIL » (Carrefour) en 125 g (relevé n° 254353) ; 18,00 EUR/kg le 2026-04-12 pour « CHABRIOR AMANDES EFFILEES » (Chabrior, Elodie) en 125 g (relevé n° 264852) ; 33,04 EUR/kg le 2026-03-24 pour « AMANDES EFFILEES MC CORNICK FRANCE DUCROS 125g » (Vahine) en 125 g (relevé n° 250018). Médiane 20,16 EUR/kg, D1 15,76, D9 31,89."
+      },
+      "reindexation": null,
+      "notes": "L'amande effilée est un produit de rayon pâtisserie, distinct de l'amande entière du rayon apéritif : elle se vend en sachet de 125 g et coûte au kilo davantage que l'amande décortiquée, parce que l'émondage et l'effilage sont facturés. Les deux rayons n'ont donc pas été mélangés, et les amandes en poudre, hachées, grillées, salées ou fumées sont restées dehors — le catalogue leur donne d'ailleurs des formes distinctes (« Amande », « Amande grillée », « Amande mondée »).\n\nÉcartée nommément : la référence 3256220209656 « AMANDES GRILLEES FIL.U 125G », dont l'abréviation du libellé ne permet pas de dire si « FIL. » désigne des amandes effilées ou un autre découpage, et dont le nom Open Food Facts ne dit que « amandes grillées ».\n\nConditionnement : neuf relevés sur dix en sachet de 125 g. C'est le format unique de ce rayon, ce qui rend la comparaison au kilo homogène — la dispersion publiée est celle des marques, pas celle des formats.\n\nÉchantillon : 10 relevés retenus, 6 références, 7 magasins. Conditionnements : 125 g (9), 200 g (1).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ablanched-almonds&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aalmonds&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity, puis sélection sur le libellé et sur les catégories Open Food Facts (sec contre appertisé/cuisiné), puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent, puis arrêt des relevés au 2026-08-24. Le libellé cité pour chaque relevé est son product_name quand il en porte un, sinon celui du produit Open Food Facts rattaché — les deux figurent dans la même réponse de l'API, sous product_name et sous product.product_name."
+    },
+    {
+      "form": "Pignon de pin",
+      "form_normalized": "pignon de pin",
+      "category": "legumineuses",
+      "observed": {
+        "basis": "kg",
+        "low": 48.96,
+        "central": 78.3,
+        "high": 98.88,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 7,
+        "period_start": "2025-10-16",
+        "period_end": "2026-06-25"
+      },
+      "per_kg": {
+        "low": 48.96,
+        "central": 78.3,
+        "high": 98.88,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "une graine ou un amandon vendu décortiqué est intégralement l'aliment acheté.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-29",
+          "observed_on": "2026-08-29",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : une graine ou un amandon vendu décortiqué est intégralement l'aliment acheté."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_relevés_magasin_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apine-nuts&date__gte=2025-08-25&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-06-25",
+        "source_record_key": "open_prices:en:pine-nuts/FR/pignons-de-pin/2025-10-16..2026-06-25/n=7 · ids 171553,152884,276040,156918,288743,264812,247240",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:pine-nuts », du 2025-10-16 au 2026-06-25, hors promotion et hors bio : 7 relevés retenus après dédoublonnage (8 bruts avant dédoublonnage), sélection restreinte aux sachets de pignons de pin nature, à l'exclusion des sauces et pestos qui en contiennent, ramenés au kilogramme par le poids net du contenant, de 45,60 à 105,00 EUR/kg — par exemple 45,60 EUR/kg le 2025-12-09 pour « Pignon de pin » (Carrefour) en 125 g (relevé n° 171553) ; 78,30 EUR/kg le 2025-11-01 pour « SUN SACHT PIGNON DE PIN1 » (Color Foods, Sun fruits secs) en 100 g (relevé n° 156918) ; 105,00 EUR/kg le 2026-03-16 pour « 50G PIGNONS DE PIN VAHINE » (Vahiné) en 50 g (relevé n° 247240). Médiane 78,30 EUR/kg, D1 48,96, D9 98,88."
+      },
+      "reindexation": null,
+      "notes": "Sept relevés seulement, soit deux de plus que le seuil de cinq qu'Open Prices impose pour dépasser C : c'est l'entrée la plus fragile du lot parmi celles qui s'affichent. Elle est conservée parce que le produit est cher (78 €/kg à la médiane), qu'il pèse dans les recettes où il apparaît, et que les sept relevés sont sept magasins différents.\n\nÉcartée nommément : la référence 5030343841379 « OTTOLENGHI Miso Pesto » (47,00 €/kg), que la catégorie en:pine-nuts contient parce que le pesto en contient — c'est une sauce, pas un pignon.\n\nConditionnement : quatre relevés sur sept en sachet de 50 g, qui est le format le plus cher au kilo (jusqu'à 105 €/kg). Le seul relevé en 125 g est le moins cher du panier (45,60 €/kg). L'effet du conditionnement est ici plus fort que celui de la marque, et la fourchette publiée le porte : un cuisinier qui achète en 125 g paiera plutôt le D1 que la médiane.\n\nÉchantillon : 7 relevés retenus, 5 références, 7 magasins. Conditionnements : 50 g (4), 125 g (1), 75 g (1), 100 g (1).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apine-nuts&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity, puis sélection sur le libellé et sur les catégories Open Food Facts (sec contre appertisé/cuisiné), puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent, puis arrêt des relevés au 2026-08-24. Le libellé cité pour chaque relevé est son product_name quand il en porte un, sinon celui du produit Open Food Facts rattaché — les deux figurent dans la même réponse de l'API, sous product_name et sous product.product_name."
+    },
+    {
+      "form": "Arachide grillée moulue",
+      "form_normalized": "arachide grillee moulue",
+      "category": "legumineuses",
+      "observed": {
+        "basis": "kg",
+        "low": 3.87,
+        "central": 7.13,
+        "high": 9.03,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 31,
+        "period_start": "2025-09-17",
+        "period_end": "2026-08-11"
+      },
+      "per_kg": {
+        "low": 3.87,
+        "central": 7.13,
+        "high": 9.03,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "une graine ou un amandon vendu décortiqué est intégralement l'aliment acheté.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-29",
+          "observed_on": "2026-08-29",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : une graine ou un amandon vendu décortiqué est intégralement l'aliment acheté."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "arachide_moulue_chiffree_au_prix_de_l_arachide_grillee_entiere_adaptation_declaree",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aroasted-peanuts&date__gte=2025-08-25&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-08-11",
+        "source_record_key": "open_prices:en:roasted-peanuts+en:peanuts/FR/cacahuetes-grillees-non-salees-forme-approchee/2025-09-17..2026-08-11/n=31 · ids 248245,188487,307509,167173,247865,139099,255761,233650,174090,255877,255801,251175,178352,174091,166039,255845,174086,247110,173211,247095,287171,248081,307523,247858,255800,255718,233649,250639,224013,251106,233559",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:roasted-peanuts » + « en:peanuts », du 2025-09-17 au 2026-08-11, hors promotion et hors bio : 31 relevés retenus après dédoublonnage (59 bruts avant dédoublonnage), sélection restreinte aux cacahuètes grillées à sec vendues en sachet, à l'exclusion des cacahuètes enrobées, du beurre de cacahuète, des barres et des mélanges apéritifs — la distinction salé / non salé n'a PAS pu être appliquée de façon fiable, voir les notes, ramenés au kilogramme par le poids net du contenant, de 3,00 à 11,00 EUR/kg — par exemple 3,00 EUR/kg le 2026-03-19 pour « CACAHUETES ECO+ 150G » (Eco+,Leclerc) en 150 g (relevé n° 248245) ; 7,13 EUR/kg le 2026-03-29 pour « 700G CACAHUETE GRILLEE A SEC » (Menguy's) en 700 g (relevé n° 255845) ; 11,00 EUR/kg le 2026-02-27 pour « BENENUTS CACAHUETES GRILLEES A SEC NATURE 120G » (benenuts) en 120 g (relevé n° 233559). Médiane 7,13 EUR/kg, D1 3,87, D9 9,03."
+      },
+      "reindexation": null,
+      "notes": "ADAPTATION DÉCLARÉE. L'arachide grillée MOULUE ne se vend pas au rayon d'une grande surface française : on achète des cacahuètes grillées et on les passe au mixeur. Le prix retenu est donc celui de l'arachide grillée entière non salée, et la mouture est une opération de cuisine qui ne change ni la masse ni le prix payé — c'est exactement le raisonnement que la tranche « frais animal » applique à l'œuf dur, chiffré au prix de l'œuf cru.\n\nLE SEL : CE QUE LA CITATION PRÉTENDAIT, ET CE QUI A RÉELLEMENT ÉTÉ FAIT — corrigé en revue adverse (2026-08-30). La citation annonçait une sélection « non salées ou sans sel ». Les relevés ne la portent pas : 23 des 31 relevés retenus sont rangés par Open Food Facts sous en:salted-peanuts, et ce tag ne discrimine rien, puisqu'il est porté aussi bien par le n° 255801 « CACAHUETES GRILLEES SANS SEL CRF 200G » que par le n° 174086 « CACAHUETES SS SEL AJOUT.U 150G ». Six libellés seulement portent une mention explicite d'absence de sel ou de produit nature (n° 255801, 174086, 178352, 247110, 248081, 233559) ; les vingt-cinq autres disent seulement « grillées » ou « grillées à sec », qui nomme un mode de torréfaction et non une absence de sel. Le panier publié est donc celui de la cacahuète grillée à sec vendue en sachet, salée ou non. L'écart de prix que cela introduit est mesurable et faible : la médiane des six relevés explicitement non salés vaut 7,61 EUR/kg, contre 7,13 pour le panier entier. Un relecteur qui exige le non-salé strict n'a que six relevés, soit au-dessus du seuil de cinq, et lira 7,61 au lieu de 7,13.\n\nLe catalogue porte par ailleurs une forme « Cacahuète grillée » distincte, qu'il faudra chiffrer sur ce même panier ou sur un panier élargi au salé : ce lot ne la couvre pas.\n\nÉchantillon : 31 relevés retenus, 22 références, 11 magasins. Conditionnements : 150 g (11), 200 g (7), 450 g (4), 320 g (2), 120 g (2), 250 g (1).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aroasted-peanuts&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apeanuts&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity, puis sélection sur le libellé et sur les catégories Open Food Facts (sec contre appertisé/cuisiné), puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent, puis arrêt des relevés au 2026-08-24. Le libellé cité pour chaque relevé est son product_name quand il en porte un, sinon celui du produit Open Food Facts rattaché — les deux figurent dans la même réponse de l'API, sous product_name et sous product.product_name."
+    },
+    {
+      "form": "Noisette grillée",
+      "form_normalized": "noisette grillee",
+      "category": "legumineuses",
+      "observed": {
+        "basis": "kg",
+        "low": 18.4,
+        "central": 26.12,
+        "high": 35.16,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 16,
+        "period_start": "2025-09-12",
+        "period_end": "2026-08-20"
+      },
+      "per_kg": {
+        "low": 18.4,
+        "central": 26.12,
+        "high": 35.16,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "une graine ou un amandon vendu décortiqué est intégralement l'aliment acheté.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-29",
+          "observed_on": "2026-08-29",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : une graine ou un amandon vendu décortiqué est intégralement l'aliment acheté."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "forme_approchee_amandons_de_noisette_torrefies_ou_non_adaptation_declaree",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ahazelnuts&date__gte=2025-08-25&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-08-20",
+        "source_record_key": "open_prices:en:hazelnuts/FR/amandons-de-noisette-forme-approchee/2025-09-12..2026-08-20/n=16 · ids 265085,218714,222077,168494,156919,164303,314671,310132,261557,230092,212549,137710,251583,255520,245854,206563",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:hazelnuts », du 2025-09-12 au 2026-08-20, hors promotion et hors bio : 16 relevés retenus après dédoublonnage (16 bruts avant dédoublonnage), sélection restreinte aux amandons de noisette vendus décortiqués, émondés, grillés ou torréfiés, à l'exclusion de la poudre de noisette, des pâtes, biscuits, barres et produits chocolatés qui en contiennent, ramenés au kilogramme par le poids net du contenant, de 14,84 à 36,40 EUR/kg — par exemple 14,84 EUR/kg le 2026-03-21 pour « noisettes décortiquées » (sun fruits secs) en 500 g (relevé n° 265085) ; 25,92 EUR/kg le 2026-08-14 pour « NOISETTES DECORTIQUEES CHABRIOR 125 g » (Chabrior) en 125 g (relevé n° 310132) ; 36,40 EUR/kg le 2026-02-07 pour « NOISETTES DE FRANCE DECORTIQUE » (Sainte Lucie) en 125 g (relevé n° 206563). Médiane 26,12 EUR/kg, D1 18,40, D9 35,16."
+      },
+      "reindexation": null,
+      "notes": "ADAPTATION DÉCLARÉE, ET SA JUSTIFICATION A ÉTÉ CORRIGÉE EN REVUE ADVERSE (2026-08-30). La rédaction initiale affirmait que trois relevés français portent explicitement la torréfaction ou le grillage — 22,97 / 30,00 / 51,90 EUR/kg — et que « le panier publié les inclut ». C'est faux, et la vérification est rejouable sur la catégorie en:hazelnuts : DEUX de ces trois relevés sont datés APRÈS la date d'arrêt du jeu et ne sont donc pas dans le panier — le n° 322639 « NOISETTES DECOTIQ GRILLEE PAQUITO 0.175 Kg », 22,97 EUR/kg, est du 2026-08-28, et le n° 320646 « NOIS.GIFFONI EMONDE TORREFIE », 51,90 EUR/kg, est du 2026-08-27, quand le jeu arrête ses relevés au 2026-08-24. Le relevé le plus cher du panier publié vaut 36,40 EUR/kg : à lui seul, ce chiffre suffisait à montrer que 51,90 n'y était pas.\n\nCE QUI RESTE VRAI, ET CE QUI NE L'EST PLUS. Le panier publié est celui des amandons de noisette vendus décortiqués ou émondés, torréfiés ou non, qui occupent le même rayon et le même sachet de 125 g ; c'est la forme approchée que le CONTRAT §4 admet en B, et confidence_reason la porte. Un seul relevé explicitement torréfié survit à la date d'arrêt et se trouve donc dans le panier : le n° 251583 « NOISETTES EMONDEES TORREFIEES 0.1kg » (Sainte Lucie), à 30,00 EUR/kg, entre la médiane (26,12) et le D9 (35,16). Mais l'affirmation « le grillage ne déplace pas le niveau de prix » N'EST PAS ÉTABLIE : elle reposait sur trois points dont deux ne sont pas dans le panier, et le second relevé torréfié français connu, à 51,90 EUR/kg, est très au-dessus du D9 publié. Un seul point à l'intérieur de la fourchette ne prouve rien.\n\nÉcartés : la poudre de noisette (autre produit, autre rayon), les feuilles Kambly, les barres céréalières et tout ce qui contient de la noisette sans en être.\n\nUn relecteur qui juge que « grillée » doit être relevée telle quelle doit traiter cette ligne comme non chiffrée : un seul relevé torréfié dans le panier ne suffit pas, et les deux autres relevés torréfiés connus sont hors période.\n\nÉchantillon : 16 relevés retenus, 13 références, 13 magasins. Conditionnements : 125 g (8), 200 g (3), 300 g (2), 500 g (1), 250 g (1), 100 g (1).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ahazelnuts&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity, puis sélection sur le libellé et sur les catégories Open Food Facts (sec contre appertisé/cuisiné), puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent, puis arrêt des relevés au 2026-08-24. Le libellé cité pour chaque relevé est son product_name quand il en porte un, sinon celui du produit Open Food Facts rattaché — les deux figurent dans la même réponse de l'API, sous product_name et sous product.product_name."
+    },
+    {
+      "form": "Sésame",
+      "form_normalized": "sesame",
+      "category": "legumineuses",
+      "observed": {
+        "basis": "kg",
+        "low": 11.74,
+        "central": 48.0,
+        "high": 77.89,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 13,
+        "period_start": "2025-12-18",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 11.74,
+        "central": 48.0,
+        "high": 77.89,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "une graine ou un amandon vendu décortiqué est intégralement l'aliment acheté.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-29",
+          "observed_on": "2026-08-29",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : une graine ou un amandon vendu décortiqué est intégralement l'aliment acheté."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_relevés_magasin_dispersion_de_conditionnement_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asesame&date__gte=2025-08-25&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-08-24",
+        "source_record_key": "open_prices:en:sesame/FR/graines-de-sesame-non-grillees/2025-12-18..2026-08-24/n=13 · ids 225996,315252,265966,173818,231961,215226,317592,278464,315421,315422,316275,305559,305726",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:sesame », du 2025-12-18 au 2026-08-24, hors promotion et hors bio : 13 relevés retenus après dédoublonnage (13 bruts avant dédoublonnage), sélection restreinte aux graines de sésame nature (blanches, dorées, blanchies), à l'exclusion du sésame grillé ou torréfié, du tahini et des biscuits aux graines, ramenés au kilogramme par le poids net du contenant, de 9,80 à 78,91 EUR/kg — par exemple 9,80 EUR/kg le 2026-02-20 pour « SESAME DORE SACHET 100 G MOSAIQUE » (Mosaïque) en 100 g (relevé n° 225996) ; 48,00 EUR/kg le 2026-08-24 pour « SESAME BLANCHI 80G » (Albert Ménès) en 80 g (relevé n° 317592) ; 78,91 EUR/kg le 2026-08-09 pour « SESAME DORE Graine 0.055 Kg » (La Compagnie des Épices) en 55 g (relevé n° 305726). Médiane 48,00 EUR/kg, D1 11,74, D9 77,89."
+      },
+      "reindexation": null,
+      "notes": "LE CONDITIONNEMENT DOMINE ICI TOUT LE RESTE, et il faut le dire avant le chiffre. Le sésame se vend dans deux rayons qui n'ont pas le même prix au kilo : le rayon épices, en flacon ou sachet de 50 à 80 g, entre 45 et 79 EUR/kg ; et le rayon du monde, en sachet de 100 à 125 g, entre 9,80 et 22 EUR/kg. Le rapport entre les deux est de l'ordre de cinq. La médiane publiée, 48,00 EUR/kg, tombe dans le premier rayon parce que celui-ci fournit la majorité des relevés (huit sur treize sont des formats de 80 g ou moins) — ce n'est donc PAS le prix que paie quelqu'un qui achète son sésame en sachet de 100 g, lequel est plus proche du D1 à 11,74 EUR/kg.\n\nLe rapport D9/D1 vaut 6,6, sous le seuil de 10 au-delà duquel le contrôleur refuse une fourchette, mais il en est plus près qu'aucune autre entrée du lot. La fourchette est ici l'information principale ; la médiane seule tromperait.\n\nCONCENTRATION DE L'ÉCHANTILLON, ajouté en revue adverse (2026-08-30) après réouverture des treize relevés un par un. Les treize observations ne portent que sur NEUF codes-barres, et le haut de la distribution est encore plus concentré : cinq des treize observations viennent de DEUX références seulement, les flacons de 55 g des codes 3183811059881 (vu dans trois magasins, à 70,73 / 73,82 / 78,91 EUR/kg) et 3183811059874 (vu dans deux magasins, à 72,55 et 78,91). Plus gênant pour la lecture du chiffre publié : la médiane 48,00 EUR/kg est elle-même l'une des deux observations du code 3234750030094 (sachet de 80 g Albert Ménès), dont l'autre observation, dans un autre magasin, vaut 32,50 EUR/kg. La valeur centrale de cette entrée est donc la lecture la plus chère d'une référence unique, et non le centre d'un nuage de références. Le dédoublonnage par couple (référence, magasin) que le jeu applique partout ne corrige pas cela — il est fait pour empêcher un magasin de recoter douze fois la même boîte, pas pour empêcher une référence de peser cinq treizièmes d'un panier.\n\nCE QUI A ÉTÉ VÉRIFIÉ ET QUI TIENT : la date d'arrêt n'est pas ce qui produit ce chiffre. En repoussant les relevés jusqu'au 2026-08-28, quatre relevés français supplémentaires entrent (30,70 ; 45,80 ; 63,64 ; 64,91 EUR/kg) et la médiane reste à 48,00 EUR/kg. La médiane est robuste à la fenêtre ; elle ne l'est pas à la composition du rayon. Un relecteur qui estime que la forme « Sésame » d'une recette désigne le sachet du rayon du monde et non le flacon du rayon épices doit lire le D1, 11,74 EUR/kg, et non la médiane — c'est écrit deux paragraphes plus haut, et c'est la lecture que recommande cette note.\n\nÉcarté : le sésame GRILLÉ ou torréfié (le catalogue lui donne la forme distincte « Sésame grillé »), le tahini que la catégorie en:sesame contient, et les biscuits aux graines.\n\nÉchantillon : 13 relevés retenus, 9 références, 11 magasins. Conditionnements : 55 g (5), 100 g (4), 80 g (2), 125 g (1), 50 g (1).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asesame&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity, puis sélection sur le libellé et sur les catégories Open Food Facts (sec contre appertisé/cuisiné), puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent, puis arrêt des relevés au 2026-08-24. Le libellé cité pour chaque relevé est son product_name quand il en porte un, sinon celui du produit Open Food Facts rattaché — les deux figurent dans la même réponse de l'API, sous product_name et sous product.product_name."
+    },
+    {
+      "form": "Bucatini secs",
+      "form_normalized": "bucatini secs",
+      "category": "cereales_feculents",
+      "observed": {
+        "basis": "kg",
+        "low": 1.35,
+        "central": 2.38,
+        "high": 4.02,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 65,
+        "period_start": "2025-09-13",
+        "period_end": "2026-08-20"
+      },
+      "per_kg": {
+        "low": 1.35,
+        "central": 2.38,
+        "high": 4.02,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "une pâte sèche est intégralement l'aliment acheté.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-29",
+          "observed_on": "2026-08-29",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : une pâte sèche est intégralement l'aliment acheté."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "forme_approchee_pates_longues_seches_de_ble_dur_adaptation_declaree",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aspaghetti&date__gte=2025-08-25&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-08-20",
+        "source_record_key": "open_prices:en:spaghetti+en:linguine/FR/pates-longues-seches-de-ble-dur-forme-approchee/2025-09-13..2026-08-20/n=65 · ids 312082,238452,188583,163855,271674,242472,168605,238294,282585,238297,167325,238070,238074,197999,238301,278139,238573,282035,238494,241388,264329,238279,211476,211552,211566,241387,184801,238315,290708,273260,238066,241817,272827,272878,305615,199550,251509,199341,290247,238083,314721,290189,238324,199342,303468,224423,258810,156774,179723,138003,223920,211472,237885,242782,238306,137893,299293,238139,180194,138084,238481,138188,279138,289085,290193",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:spaghetti » + « en:linguine », du 2025-09-13 au 2026-08-20, hors promotion et hors bio : 65 relevés retenus après dédoublonnage (120 bruts avant dédoublonnage, et 9 relevés retirés en revue adverse), sélection restreinte aux pâtes LONGUES sèches de blé dur (spaghetti, spaghettoni, spaghettini, linguine, vermicelles), à l'exclusion des pâtes fraîches, aux œufs, complètes, sans gluten, enrichies en protéines et des pâtes de légumineuses, ramenés au kilogramme par le poids net du contenant, de 0,88 à 5,50 EUR/kg — par exemple 0,88 EUR/kg le 2026-08-18 pour « SPAGHETTI SACHET ECO+ 1KG » (Eco, Eco +, Scamark (Filiale E. Leclerc)) en 1000 g (relevé n° 312082) ; 2,38 EUR/kg le 2026-05-09 pour « SPAGHETTI N5 BARILLA ETUI 500G » (Barilla) en 500 g (relevé n° 272878) ; 5,50 EUR/kg le 2026-07-01 pour « 500G LINGUINE AL BRONZO » (Barilla, Barilla Al Bronzo) en 500 g (relevé n° 290193). Médiane 2,38 EUR/kg, D1 1,35, D9 4,02."
+      },
+      "reindexation": null,
+      "notes": "ADAPTATION DÉCLARÉE. Aucun relevé français d'Open Prices ne porte le mot « bucatini » : la recherche sur les 1 796 relevés de pâtes retenus n'en trouve aucun. Le panier publié est celui des pâtes longues sèches de blé dur — spaghetti, linguine, vermicelles — dont le bucatino est une forme, vendue par les mêmes marques (Barilla, Panzani, De Cecco) dans le même étui de 500 g et au même rang de prix. C'est la forme approchée que le CONTRAT §4 admet en B, et c'est la même adaptation que la tranche « épicerie » a faite pour « Pâtes sèches courtes » en réunissant penne et fusilli.\n\nPOURQUOI « TONNARELLI SECS » N'EST PAS CHIFFRÉ ICI, alors que la même adaptation aurait pu l'être : le seul relevé français portant le mot tonnarelli est la référence 3270160861521, un plat traiteur réfrigéré « Tonnarelli Cacio e Pepe » de Picard à 12,67 EUR/kg, qui n'est pas une pâte sèche. Et le tonnarello, contrairement au bucatino, est une spécialité vendue le plus souvent fraîche et aux œufs, dont rien ne dit qu'elle s'aligne sur le prix du spaghetti industriel. L'adaptation qui tient pour l'un ne tient pas pour l'autre, et la seconde forme reste donc sans prix.\n\nCORRIGÉ EN REVUE ADVERSE (2026-08-30). La citation de cette entrée annonçait une sélection « à l'exclusion des pâtes fraîches, aux œufs, complètes, sans gluten, enrichies en protéines » — et neuf des 74 relevés retenus contredisaient cette clause : cinq pâtes AUX ŒUFS, porteuses des tags Open Food Facts en:egg-pastas et en:egg-spaghetti (n° 195547 et 310327 « SPAGHETTI COURTS LUSTUCRU » 250 g, n° 228242 et 230841 « SPAGHETTI TURINI » 350 g, n° 290222 « 250G SPAGHETTIS GRAND'MERE »), et quatre pâtes SANS GLUTEN, porteuses du tag en:gluten-free-pasta (n° 180195 « Spaghetti 5 » Arrighi, n° 317573, 308742 et 223835 « SPAGHETTI SANS GLUTEN » Barilla 400 g). Les neuf étaient tous dans la queue chère du panier, de 3,76 à 6,00 EUR/kg, et le relevé que la citation donnait pour exemple le plus cher — le n° 290222, à 6,00 EUR/kg — était lui-même une pâte aux œufs, c'est-à-dire l'un des produits que l'entrée disait exclure. Les neuf ont été retirés. Le panier passe de 74 à 65 relevés, de 40 à 35 références, de 35 à 32 magasins, et les trois bornes baissent : médiane de 2,56 à 2,38 EUR/kg (−7 %), D1 de 1,36 à 1,35, D9 de 4,77 à 4,02 (−16 %). La correction ne touche ni la méthode ni les sources : elle applique à la lettre la règle que l'entrée s'était donnée.\n\nConditionnement : 45 relevés en 500 g, 20 en 1 kg. Le kilo de premier prix descend à 0,88 EUR/kg, l'étui de 500 g de marque premium (linguine al bronzo) monte à 5,50 EUR/kg.\n\nÉchantillon : 65 relevés retenus, 35 références, 32 magasins. Conditionnements : 500 g (45), 1000 g (20).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aspaghetti&date__gte=2025-08-25&size=100&order_by=-date | https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Alinguine&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity, puis sélection sur le libellé et sur les catégories Open Food Facts (sec contre appertisé/cuisiné), puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent, puis arrêt des relevés au 2026-08-24. Le libellé cité pour chaque relevé est son product_name quand il en porte un, sinon celui du produit Open Food Facts rattaché — les deux figurent dans la même réponse de l'API, sous product_name et sous product.product_name."
+    },
+    {
+      "form": "Tahini",
+      "form_normalized": "tahini",
+      "category": "legumineuses",
+      "observed": {
+        "basis": "kg",
+        "low": 10.12,
+        "central": 12.39,
+        "high": 31.84,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 4,
+        "period_start": "2026-03-28",
+        "period_end": "2026-08-08"
+      },
+      "per_kg": {
+        "low": 10.12,
+        "central": 12.39,
+        "high": 31.84,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "une graine ou un amandon vendu décortiqué est intégralement l'aliment acheté.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-29",
+          "observed_on": "2026-08-29",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : une graine ou un amandon vendu décortiqué est intégralement l'aliment acheté."
+        }
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_4_releves_sous_le_seuil_de_5_de_la_source",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Atahini&date__gte=2025-08-25&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-08-08",
+        "source_record_key": "open_prices:en:tahini/FR/purees-de-sesame/2026-03-28..2026-08-08/n=4 · ids 305827,254018,302290,289677",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:tahini », du 2026-03-28 au 2026-08-08, hors promotion et hors bio : 4 relevés retenus après dédoublonnage (4 bruts avant dédoublonnage), sélection restreinte aux purées de sésame (tahini, tahina) en pot ou en boîte, ramenés au kilogramme par le poids net du contenant, de 9,36 à 39,96 EUR/kg — par exemple 9,36 EUR/kg le 2026-08-08 pour « CHTAURA TAHINA 800G » (Conserves Modernes Chtaura) en 800 g (relevé n° 305827) ; 12,89 EUR/kg le 2026-07-31 pour « AL WADI TAHINA 454G » (alwadi al.akhdar) en 454 g (relevé n° 302290) ; 39,96 EUR/kg le 2026-06-28 pour « JANA TAHINI 250G » (Jana) en 250 g (relevé n° 289677). Médiane 12,39 EUR/kg, D1 10,12, D9 31,84."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE EN C : ELLE NE S'AFFICHE PAS ET NE COMPTE PAS DANS LA COUVERTURE. Elle est écrite pour la traçabilité et pour la file de revue, comme le CONTRAT §4 le prévoit.\n\nLe registre exige au moins cinq relevés pour qu'Open Prices dépasse C. Après dédoublonnage par couple (référence, magasin) et arrêt des relevés au 24 août 2026, il en reste QUATRE, sur trois références. Il en manque un seul, et la tentation de rester à six en repoussant la date d'arrêt de quatre jours — deux relevés de plus existent, datés du 28 août — a été écartée : la date de référence du jeu est celle des tranches déjà versées, et la déplacer pour faire passer une entrée serait choisir la règle en fonction du résultat.\n\nLes quatre relevés sont par ailleurs très dispersés (9,36 à 39,96 EUR/kg) parce que le conditionnement va de 250 g à 800 g et que les marques libanaises en gros pot n'ont pas le même positionnement que les petits pots. Ce que ce panier vaudra une fois complété reste à vérifier.\n\nÉchantillon : 4 relevés retenus, 3 références, 4 magasins. Conditionnements : 454 g (2), 800 g (1), 250 g (1).\n\nRequêtes rejouables (Open Prices, API v1) : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Atahini&date__gte=2025-08-25&size=100&order_by=-date. Filtres appliqués ensuite, dans cet ordre : pays du magasin = FR, devise = EUR, hors promotion (price_is_discounted), hors produits portant un label bio, quantité nette connue et exprimée en g, rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity, puis sélection sur le libellé et sur les catégories Open Food Facts (sec contre appertisé/cuisiné), puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent, puis arrêt des relevés au 2026-08-24. Le libellé cité pour chaque relevé est son product_name quand il en porte un, sinon celui du produit Open Food Facts rattaché — les deux figurent dans la même réponse de l'API, sous product_name et sous product.product_name."
+    }
+  ]
+}
