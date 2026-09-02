@@ -37,6 +37,12 @@ jobs:
       - name: Tests unitaires
         run: npx vitest run
 
+      # Le référentiel de prix est refusé, pas signalé : un prix douteux est un
+      # nombre multiplié par toutes les recettes qui emploient la forme, et que
+      # plus personne ne relira. Contrat : data/prices/CONTRAT.md.
+      - name: Provenance des prix
+        run: npm run prices:check
+
       - name: Build Next.js
         run: npm run build
 

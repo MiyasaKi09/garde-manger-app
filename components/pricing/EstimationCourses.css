@@ -1,0 +1,68 @@
+/* =============================================================================
+   components/pricing/EstimationCourses.css
+   -----------------------------------------------------------------------------
+   Le montant est en encre, pas en couleur : contrairement à la valeur de ce qui
+   va périmer, une estimation de courses n'appelle aucune action immédiate. Elle
+   informe. Seul le verdict d'enveloppe prend une couleur, et seulement quand il
+   affirme un dépassement — les trois autres états restent gris, parce qu'ils ne
+   demandent rien.
+   ============================================================================= */
+
+.myko-cou-est { display: block; }
+
+.myko-cou-tete {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+}
+.myko-cou-somme {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--ink-1);
+}
+.myko-cou-est-compact .myko-cou-somme { font-size: 30px; }
+
+.myko-cou-sous {
+  margin: 6px 0 0;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.myko-cou-surplus,
+.myko-cou-contenants {
+  max-width: 56ch;
+  margin: 12px 0 0;
+  font-family: var(--font-text);
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.myko-cou-surplus b { font-weight: 600; color: var(--ink-1); }
+.myko-cou-contenants { color: var(--ink-3); }
+
+/* ── Verdict d'enveloppe ───────────────────────────────────────────────────── */
+.myko-cou-budget {
+  margin: 14px 0 0;
+  padding: 9px 12px;
+  border-left: 3px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.myko-cou-budget-dedans { border-left-color: var(--brand); }
+.myko-cou-budget-dessous { border-left-color: var(--olive); }
+/* Le seul état qui affirme quelque chose de désagréable, et il l'affirme quand
+   même la borne la plus favorable dépasse — c'est-à-dire quand c'est vrai. */
+.myko-cou-budget-dessus {
+  border-left-color: var(--terracotta);
+  color: var(--terracotta);
+}
+.myko-cou-budget-indetermine { border-left-style: dashed; color: var(--ink-3); }

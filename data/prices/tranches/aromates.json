@@ -1,0 +1,831 @@
+{
+  "schema_version": "1.0.0",
+  "price_set_version": "2026.08-aromates",
+  "country": "FR",
+  "currency": "EUR",
+  "reference_date": "2026-08-24",
+  "derived_license": "odbl-1.0",
+  "catalog_version": "v3-300-real-dishes",
+  "built_at": "2026-08-30",
+  "notes": "Tranche « aromates » : herbes aromatiques fraîches et séchées, épices de la liste de travail. 25 formes à chiffrer, 404 lignes du corpus. 10 formes portent un prix retenu (1 en A, 9 en B), 4 une lecture conservée en C — donc ni affichée ni comptée —, et 11 ne portent rien du tout. En lignes de recette, les entrées retenues en couvrent 242 sur 404, soit 60 % : ce sont les décomptes de lignes de la passe précédente, non recomptés ici, diminués des 3 lignes que cette même passe attribuait à « Menthe fraîche », rétrogradée en C.\n\nSOURCES. Open Prices (Open Food Facts), ODbL 1.0, pour tout sauf l'ail — d'où derived_license: odbl-1.0, que le partage à l'identique impose au référentiel produit. Le RNM pour l'ail seul, qui est la seule forme de cette tranche qu'il cote au détail et au kilogramme. L'Observatoire des prix et des marges n'a pas de licence vérifiée au registre et, de son propre aveu, ne couvre pas les épices.\n\nCE QUE LE RNM NE PEUT PAS FAIRE ICI, ET POURQUOI C'EST LE FAIT CENTRAL DE CETTE TRANCHE. Le RNM cote bien le persil, le basilic, la ciboulette, le thym, le laurier, la menthe, l'aneth, l'estragon et le cerfeuil : les pages /prix?PERSIL&12MOIS, ?BASILIC&12MOIS, ?CIBOULETTE&12MOIS, ?THYM&12MOIS, ?LAURIER&12MOIS et ?MENTHE&12MOIS ont toutes été lues le 2026-08-29. Mais il les cote au stade Grossistes ou Production, en euros HORS TAXES, et à la BOTTE — « THYM France botte (les 10 bottes) », « LAURIER France botte (les 10 bottes) », « PERSIL frisé France botte (la botte) ». Deux obstacles, chacun suffisant : un prix de gros hors taxes n'est pas ce qu'un ménage paie, et le catalogue des formes ne porte aucune masse par botte, donc aucun facteur de conversion (CONTRAT §1.2 : « pas de facteur, pas de prix »). La seule cotation de détail sur le persil est « PERSIL France biologique (la botte) » en magasins spécialisés bio : bio, et à la botte. Le basilic, la ciboulette, la coriandre, la menthe, le thym, le laurier, l'aneth, l'estragon, le romarin et le cerfeuil n'ont AUCUNE série de détail, quelle qu'elle soit ; la ciboule et le safran ne sont pas cotés du tout. Écrire une masse de botte aurait été le nombre plausible et invérifiable que le §0 proscrit. Les 27 relevés Open Prices de persil au prix unitaire butent sur exactement le même obstacle.\n\nCONSÉQUENCE, DÉCLARÉE PLUTÔT QUE MASQUÉE. Les herbes fraîches ne s'achètent pas au poids en France : elles s'achètent à la botte ou en pot. Aucune source du registre ne publie leur prix au kilogramme au détail. Les seuls produits d'herbe fraîche vendus au poids net sont les barquettes de 11 à 30 g, et la source n'en contient presque aucun : quatre relevés pour la ciboulette sur vingt-quatre mois, quatre pour le basilic, trois pour la coriandre, un pour le thym, un pour l'aneth, aucun pour la ciboule, l'estragon, le romarin ou le basilic thaï. Le cerfeuil en a deux, mais ce sont deux flacons de 7 et 8 g qu'Open Food Facts range à tort en « fresh chervil » : la source étiquette « frais » des herbes séchées, et c'est pourquoi aucune sélection de cette tranche ne repose sur ce seul tag. Là où le passage par le SURGELÉ était possible — persil, basilic —, il a été fait et déclaré ligne à ligne. Ailleurs, la forme reste sans prix.\n\nL'ADAPTATION LA PLUS FORTE, ET IL FAUT LA LIRE AVANT DE LIRE LES CHIFFRES. Trois entrées — Persil frais, Persil plat frais, Basilic frais, soit 158 des 404 lignes — portent le prix du produit SURGELÉ, coupé et vendu au poids net, et non celui de l'herbe fraîche. Le raisonnement est écrit dans les notes de chaque entrée. En deux phrases : le surgelé a la même teneur en eau que le frais, donc son prix au kilo est comparable au kilo près, ce qui n'est jamais le cas du séché ; et son poids net est celui de la feuille, c'est-à-dire l'état dans lequel le catalogue compte les grammes. C'est une « forme approchée, état voisin » au sens du CONTRAT §4, elle plafonne l'entrée à B, et le sens de l'erreur n'est pas connu. Un relecteur qui juge cette adaptation trop large doit supprimer ces trois entrées : elles sont écrites pour être trouvables et discutables, pas pour passer inaperçues.\n\nFRAIS, SURGELÉ, SÉCHÉ : TROIS PRODUITS. Ils n'ont jamais été mélangés dans un même panier, et la vérification est arithmétique : persil surgelé de 11,88 à 22,40 €/kg, persil séché en flacon de 78 à 333 €/kg, persil lyophilisé jusqu'à 927 €/kg. Un panier commun aurait un rapport haut/bas supérieur à 13, au-delà du seuil de 10 que le contrôleur refuse — et il le refuserait à juste titre, parce qu'un tel mélange n'a pas de médiane qui veuille dire quelque chose.\n\nL'ORDRE DE GRANDEUR EST LE PIÈGE DE CETTE TRANCHE, ET IL EST TRAITÉ EXPLICITEMENT. Une herbe séchée en flacon de 14 g à 2,33 € fait 166 €/kg, ce qui est JUSTE. La même herbe en recharge de 85 g à 3,35 € fait 39 €/kg. Chaque entrée consigne dans sa citation au moins un calcul de contrôle « prix payé ÷ contenance = €/kg » depuis un conditionnement réel, de sorte qu'un relecteur puisse vérifier l'ordre de grandeur sans refaire la recherche.\n\nMÉTHODE OPEN PRICES. Fenêtre du 25 août 2025 au 24 août 2026, moissonnée page à page depuis l'API publique sur les catégories de produits (paramètre product__categories_tags__contains, qui lui est réellement appliqué), puis agrégée localement : 15 943 relevés rapatriés, dont 8 949 en France et en euros. Les douze mois précédents (25 août 2024 au 24 août 2025) ont été moissonnés séparément, uniquement pour vérifier si les paniers trop minces s'étoffaient : ils ne s'étoffent pas, et aucun relevé de cette fenêtre n'entre dans un chiffre publié. Le prix au kilo d'un produit conditionné est le prix payé divisé par la contenance nette publiée par Open Food Facts ; les produits sans contenance en grammes sont écartés, y compris ceux dont la contenance est publiée en millilitres pour un produit sec (le flacon « COOK » de persil d'Arcadie, 10 g annoncés au libellé, est enregistré « 100 ml »). La valeur centrale est la MÉDIANE des relevés retenus, les bornes leurs premier et neuvième déciles.\n\nPAYS. Le filtre pays de l'API est accepté et ignoré : location_osm_address_country=France renvoie exactement le même total qu'un paramètre inventé. Le pays est donc filtré après coup sur le code pays du magasin, repris du bloc location de chaque relevé. Sans cela, des relevés américains (3 950), norvégiens (1 127), allemands (622 : Netto, Lidl, Kaufland, REWE) et suédois (548) — 44 % du corpus moissonné — seraient passés pour français.\n\nAGRÉGATION. observed.aggregation vaut annual_mean parce que l'énumération du contrat n'offre rien d'autre pour un agrégat de douze mois ; il s'agit en fait d'une médiane sur douze mois, conformément au §3.1 qui définit central comme la médiane. L'écart de vocabulaire est signalé et non résolu unilatéralement, comme l'a fait la tranche assaisonnement.\n\nDATES. observed_on est la date MÉDIANE des relevés retenus, pas la fin de la période : prendre la fin de période aurait rajeuni chaque entrée sans qu'aucune observation ne le justifie. Aucune entrée n'a plus de douze mois, donc aucune réindexation INSEE n'est requise — ce qui est heureux, l'INSEE ne pouvant de toute façon jamais porter un niveau de prix.\n\nRENDEMENT COMESTIBLE. Les épices et herbes SÉCHÉES portent un rendement de 1,00 déclaré CONNU, par nature du produit : un flacon de thym séché ou de clous de girofle est intégralement ce qu'on emploie. Les herbes FRAÎCHES et l'ail portent 1,00 déclaré INCONNU : elles s'achètent en botte, en barquette ou en tête, avec des tiges et des tuniques que la recette ne compte pas. Toutes les estimations qui en découlent sont donc des MINORANTS, et l'écart est le plus fort sur l'ail, vendu en têtes entières quand le catalogue compte la gousse épluchée.\n\nCE QUI A ÉTÉ REFUSÉ. Convertir un prix à la botte en prix au kilo en écrivant une masse de botte : c'est le nombre invérifiable type. Faire du thym séché le prix du thym frais, ou l'inverse : le séché a perdu son eau et vaut environ trois fois plus au kilo à emploi égal. Chiffrer le safran, dont les neuf relevés français n'ont aucun d'eux de contenance exploitable — Open Food Facts enregistre 0 g ou rien pour les dosettes de 0,1 à 1 g. Chiffrer le piment de la Jamaïque, qu'aucun relevé français ne porte. Chiffrer le paprika FORT hongrois à partir du panier du paprika DOUX hongrois : doux et fort ne sont ni le même produit ni le même prix. Faire du laurier une entrée affichable en y jetant les flacons d'épicerie fine de 2,5 g : le panier aurait un rapport de 16,6 et une médiane de 950 €/kg qui n'est le prix de rien.\n\nFORMES SANS PRIX, ET LA RAISON. Ciboule fraîche, Ciboulette chinoise fraîche, Coriandre fraîche, Aneth frais, Romarin frais, Estragon frais, Cerfeuil frais, Basilic thaï frais : moins de cinq relevés au poids net, souvent aucun. Safran : aucune contenance exploitable. Piment de la Jamaïque en grains : aucun relevé. Paprika fort hongrois : aucun relevé. S'y ajoutent les trois entrées conservées en C — Feuille de laurier séchée, Ciboulette fraîche, Thym frais — qui ne comptent pas davantage dans la couverture, mais dont la lecture est consignée pour que la prochaine passe reparte d'un état connu plutôt que de zéro.\n\nREVUE ADVERSE DU 2026-08-30 — CE QUI A ÉTÉ VÉRIFIÉ ET CE QUI A CHANGÉ. Les onze paniers ont été reconstitués depuis zéro : remoissonnage indépendant d'Open Prices sur dix-sept catégories (1 164 relevés uniques France/EUR sur la fenêtre), relecture une par une des 31 fiches de relevé citées, relecture des fiches produit Open Food Facts pour les contenances et l'état frais/surgelé/séché, et refetch de la page RNM ?AIL&12MOIS. Les onze médianes et les vingt-deux déciles publiés par la passe précédente se recalculent tous à l'identique depuis la source, à la deuxième décimale près, y compris les 24 moyennes mensuelles de l'ail (médiane 11,28 ; D1 10,87 ; D9 11,80, relues sur les séries « AIL blanc sec France vrac » et « AIL blanc sec hors Fr. vrac », stade Détail GMS, € TTC, le kg). Aucun prix inventé n'a été trouvé, aucune erreur de facteur dix, aucune confusion €/kg contre €/pièce ou €/L, aucun rendement fantaisiste.\n\nUN DÉFAUT A ÉTÉ TROUVÉ, ET IL EST DE MÉTHODE : trois paniers comptaient deux fois une même observation. Open Prices adosse chaque relevé à une PREUVE (une photo d'étiquette ou de ticket) ; deux relevés qui partagent la même preuve, le même produit, le même prix et la même date sont une seule observation saisie deux fois, parfois par deux contributeurs qui transcrivent la même photo. Trois telles paires ont été trouvées dans les paniers chiffrés : 186345/186522 (persil), 186341/186645 (basilic), 194334/194336 (menthe). Conséquences : « Persil frais » et « Persil plat frais » passent de 6 à 5 relevés et de 18,90 à 19,80 €/kg ; « Basilic frais » passe de 8 à 7 relevés et de 34,40 à 35,00 €/kg ; « Menthe fraîche » tombe à 4 relevés distincts, sous le minimum de cinq qu'Open Prices impose, et RÉTROGRADE EN C — elle n'est plus affichée ni comptée. La citation de la menthe portait en outre une affirmation fausse sur les catégories Open Food Facts de la référence Florette ; elle est corrigée dans les notes de l'entrée.\n\nCE QUI A ÉTÉ EXAMINÉ ET LAISSÉ EN L'ÉTAT. L'adaptation « surgelé pour frais » du persil et du basilic reste en place : elle relève bien de la « forme approchée, état voisin » du CONTRAT §4, elle plafonne à B, et elle est écrite en toutes lettres dans chaque entrée. Elle reste la décision la plus discutable de la tranche et le premier point à rouvrir. Deux doutes de dédoublonnage n'ont PAS été tranchés faute de preuve, et sont consignés dans les notes des entrées concernées : 199691/199956 sur le basilic et 139104/139111 sur le thym séché, deux paires de relevés identiques par le produit, le prix, le jour et le magasin, mais adossées à deux preuves distinctes. Le « Persil Plat Bio » Saint Eloi 50 g reste écarté du panier du persil, faute de mention frais ou surgelé sur sa fiche Open Food Facts, alors que les deux autres références du même conditionnement chez cette marque (basilic et ciboulette) y sont explicitement surgelées ; s'il devait entrer, la médiane du persil monterait à 20,80 €/kg. L'écart est consigné plutôt que résolu au jugé.",
+  "entries": [
+    {
+      "form": "Persil frais",
+      "form_normalized": "persil frais",
+      "category": "herbes_aromates",
+      "observed": {
+        "basis": "kg",
+        "low": 14.33,
+        "central": 19.8,
+        "high": 22.16,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 5,
+        "period_start": "2025-08-25",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 14.33,
+        "central": 19.8,
+        "high": 22.16,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Rendement déclaré INCONNU, et le 1,00 est ici un défaut, pas une certitude. Le produit relevé (persil coupé surgelé) est entièrement consommable, mais l'entrée prétend chiffrer « Persil frais », qui s'achète en botte et se pare de ses tiges. Aucune source du registre ne publie cette part comestible ; myko_reasoning ne peut pas la porter, car un rendement inférieur à 1 exige une table publiée. On laisse donc 1,00 déclaré inconnu."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_persil_surgele_pour_persil_frais_mediane_12_mois",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aparsley&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=id",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-02-01",
+        "source_record_key": "open_prices/relevés 164759,186345,197817,199953,206406",
+        "citation": "Open Prices (Open Food Facts) — 5 relevés DISTINCTS en France et en euros, du 2025-11-16 au 2026-02-07, produits de persil coupé surgelé vendus au poids net (catégories Open Food Facts en:parsley et en:frozen-parsley ; codes-barres 3267180368536 Gineys, 3564700282236 Marque Repère/Rustica, 3560070351060 Carrefour, dont l'état surgelé a été relu sur https://world.openfoodfacts.org/api/v2/product/3560070351060.json qui porte en:frozen-parsley), conditionnements retenus de 50 à 250 g. Médiane 19,80 €/kg ; premier décile 14,33 €/kg ; neuvième décile 22,16 €/kg. Les cinq relevés, chacun vérifiable sur https://prices.openfoodfacts.org/api/v1/prices/<id> : 2,97 € les 250 g — Persil coupé surgelé, Gineys, 2025-11-16, relevé n° 164759 — soit 11,88 €/kg ; 4,50 € les 250 g — même produit, 2026-01-18, relevé n° 186345 — soit 18,00 €/kg ; 0,99 € les 50 g — Persil coupé surgelé, Marque Repère, Rustica, 2026-02-07, relevé n° 206406 — soit 19,80 €/kg ; 1,09 € les 50 g — Persil, Carrefour, 2026-02-03, relevé n° 199953 — soit 21,80 €/kg ; 1,12 € les 50 g — même produit, 2026-02-01, relevé n° 197817 — soit 22,40 €/kg. ÉCARTÉ comme doublon : le relevé n° 186522, adossé à la même preuve (proof 63828) que le n° 186345 — même magasin, même jour, même produit, même prix de 4,50 €, transcrit deux fois."
+      },
+      "reindexation": null,
+      "notes": "Sélection : trois références de persil coupé surgelé, identifiées comme surgelées soit par leur nom (« Persil coupé surgelé »), soit par la catégorie Open Food Facts en:frozen-parsley. Sont écartés : le persil séché en flacon (5 à 30 g, de 78 à 333 €/kg), le persil lyophilisé (jusqu'à 927 €/kg), les persillades et mélanges, le bouillon Knorr « bouquet garni », et le sachet frais Florette de 11 g (1,78 € les 11 g, soit 161,82 €/kg) — seul relevé de persil authentiquement frais du corpus, et un relevé ne fait pas un prix. Le « Persil Plat Bio » Saint Eloi 50 g a été écarté lui aussi : sa fiche Open Food Facts ne dit pas s'il est frais ou surgelé, et on ne retient pas ce qu'on ne peut pas confirmer. Contrôle d'ordre de grandeur consigné dans la citation : 0,99 € les 50 g font bien 19,80 €/kg. Agrégat : médiane et déciles D1/D9 des relevés retenus, prix payé divisé par la contenance nette publiée par Open Food Facts. Date d'observation = date médiane des relevés, et non la fin de période, pour ne pas rajeunir l'entrée. Pays confirmé sur le code pays du magasin : le filtre pays de l'API est accepté et ignoré, il ne protège de rien. ADAPTATION DÉCLARÉE, ET C'EST LA PLUS FORTE DE LA TRANCHE : le prix retenu est celui du PERSIL COUPÉ SURGELÉ, pas d'une botte de persil frais. Aucune source du registre ne cote le persil frais au kilogramme au détail : le RNM ne publie, au stade Détail, qu'une série « PERSIL France biologique (la botte) » en magasins spécialisés bio (page /prix?PERSIL&12MOIS, lue le 2026-08-29), et le catalogue des formes ne porte aucune masse par botte — sans facteur, pas de prix (CONTRAT §1.2). Les 27 relevés Open Prices de catégorie « en:parsley » au prix unitaire sont eux aussi à la botte, donc inconvertibles. Le surgelé a été préféré au sachet frais de 11 g (Florette, 161,82 €/kg) parce qu'il se vend au poids net et que ce poids net est celui de la FEUILLE, c'est-à-dire l'état dans lequel le catalogue compte les grammes ; la teneur en eau, elle, est la même qu'au frais, ce qui n'est pas le cas du séché — mêler frais et séché aurait fait un rapport de 1 à 10 sur la même ligne. Les deux paniers ne peuvent pas être fusionnés : leur rapport haut/bas dépasse 13, au-delà du seuil de 10 que le contrôleur refuse à juste titre. Le sens de l'erreur n'est pas connu : le surgelé peut être plus cher que la botte au kilo (transformation, chaîne du froid) ou moins cher (la botte est vendue en petite quantité, à la pièce). CORRECTION DE REVUE ADVERSE (2026-08-30). Le panier de la passe précédente comptait deux fois la même observation : deux relevés Open Prices distincts par leur identifiant mais adossés à la MÊME preuve (champ proof_id), donc à une seule photo d'étiquette, dans le même magasin, le même jour, pour le même produit et au même prix. Un doublon de saisie n'est pas une seconde observation : il gonfle n_observations et tire la médiane vers sa propre valeur. Le relevé surnuméraire a été retiré et les agrégats recalculés. Ici le doublon était la paire 186345 / 186522 (preuve 63828, magasin 1660, 2026-01-18, 4,50 € les 250 g, saisie par deux contributeurs différents depuis la même photo). Le panier passe de 6 à 5 relevés : médiane 18,90 → 19,80 €/kg, D1 14,94 → 14,33, D9 22,10 → 22,16, et observed_on 2026-01-18 → 2026-02-01, la date médiane des cinq relevés restants. Le seuil de cinq relevés d'Open Prices reste atteint, l'entrée reste en B."
+    },
+    {
+      "form": "Persil plat frais",
+      "form_normalized": "persil plat frais",
+      "category": "herbes_aromates",
+      "observed": {
+        "basis": "kg",
+        "low": 14.33,
+        "central": 19.8,
+        "high": 22.16,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 5,
+        "period_start": "2025-08-25",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 14.33,
+        "central": 19.8,
+        "high": 22.16,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Rendement déclaré INCONNU. Comme pour « Persil frais » : le produit relevé est déjà paré, mais la forme du catalogue s'achète en botte, et aucune source du registre ne publie sa part comestible."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_persil_surgele_variete_non_distinguee_mediane_12_mois",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aparsley&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=id",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-02-01",
+        "source_record_key": "open_prices/relevés 164759,186345,197817,199953,206406",
+        "citation": "Open Prices (Open Food Facts) — 5 relevés DISTINCTS en France et en euros, du 2025-11-16 au 2026-02-07, produits de persil coupé surgelé vendus au poids net (catégories Open Food Facts en:parsley et en:frozen-parsley ; codes-barres 3267180368536 Gineys, 3564700282236 Marque Repère/Rustica, 3560070351060 Carrefour, dont l'état surgelé a été relu sur https://world.openfoodfacts.org/api/v2/product/3560070351060.json qui porte en:frozen-parsley), conditionnements retenus de 50 à 250 g. Médiane 19,80 €/kg ; premier décile 14,33 €/kg ; neuvième décile 22,16 €/kg. Les cinq relevés, chacun vérifiable sur https://prices.openfoodfacts.org/api/v1/prices/<id> : 2,97 € les 250 g — Persil coupé surgelé, Gineys, 2025-11-16, relevé n° 164759 — soit 11,88 €/kg ; 4,50 € les 250 g — même produit, 2026-01-18, relevé n° 186345 — soit 18,00 €/kg ; 0,99 € les 50 g — Persil coupé surgelé, Marque Repère, Rustica, 2026-02-07, relevé n° 206406 — soit 19,80 €/kg ; 1,09 € les 50 g — Persil, Carrefour, 2026-02-03, relevé n° 199953 — soit 21,80 €/kg ; 1,12 € les 50 g — même produit, 2026-02-01, relevé n° 197817 — soit 22,40 €/kg. ÉCARTÉ comme doublon : le relevé n° 186522, adossé à la même preuve (proof 63828) que le n° 186345 — même magasin, même jour, même produit, même prix de 4,50 €, transcrit deux fois."
+      },
+      "reindexation": null,
+      "notes": "Même panier que « Persil frais », et donc DEUX adaptations déclarées au lieu d'une : l'état (surgelé pour frais) et la variété (aucune des trois références retenues ne dit si le persil est plat ou frisé ; les seuls libellés qui le disent, « Persil Plat 11g » Florette et « Persil Plat Bio » Saint Eloi, ne font que deux relevés, et l'un des deux ne dit pas son état de conservation). Le RNM, lui, distingue « PERSIL simple » de « PERSIL frisé » mais seulement aux stades gros et production, en € HT, ce qui n'est pas ce qu'un ménage paie. Écrire ici le même chiffre que pour le persil frisé est un choix énoncé : la source ne sépare pas les deux variétés au détail. Agrégat : médiane et déciles D1/D9 des relevés retenus, prix payé divisé par la contenance nette publiée par Open Food Facts. Date d'observation = date médiane des relevés, et non la fin de période, pour ne pas rajeunir l'entrée. Pays confirmé sur le code pays du magasin : le filtre pays de l'API est accepté et ignoré, il ne protège de rien. ADAPTATION DÉCLARÉE, ET C'EST LA PLUS FORTE DE LA TRANCHE : le prix retenu est celui du PERSIL COUPÉ SURGELÉ, pas d'une botte de persil frais. Aucune source du registre ne cote le persil frais au kilogramme au détail : le RNM ne publie, au stade Détail, qu'une série « PERSIL France biologique (la botte) » en magasins spécialisés bio (page /prix?PERSIL&12MOIS, lue le 2026-08-29), et le catalogue des formes ne porte aucune masse par botte — sans facteur, pas de prix (CONTRAT §1.2). Les 27 relevés Open Prices de catégorie « en:parsley » au prix unitaire sont eux aussi à la botte, donc inconvertibles. Le surgelé a été préféré au sachet frais de 11 g (Florette, 161,82 €/kg) parce qu'il se vend au poids net et que ce poids net est celui de la FEUILLE, c'est-à-dire l'état dans lequel le catalogue compte les grammes ; la teneur en eau, elle, est la même qu'au frais, ce qui n'est pas le cas du séché — mêler frais et séché aurait fait un rapport de 1 à 10 sur la même ligne. Les deux paniers ne peuvent pas être fusionnés : leur rapport haut/bas dépasse 13, au-delà du seuil de 10 que le contrôleur refuse à juste titre. Le sens de l'erreur n'est pas connu : le surgelé peut être plus cher que la botte au kilo (transformation, chaîne du froid) ou moins cher (la botte est vendue en petite quantité, à la pièce). CORRECTION DE REVUE ADVERSE (2026-08-30). Le panier de la passe précédente comptait deux fois la même observation : deux relevés Open Prices distincts par leur identifiant mais adossés à la MÊME preuve (champ proof_id), donc à une seule photo d'étiquette, dans le même magasin, le même jour, pour le même produit et au même prix. Un doublon de saisie n'est pas une seconde observation : il gonfle n_observations et tire la médiane vers sa propre valeur. Le relevé surnuméraire a été retiré et les agrégats recalculés. Ici le doublon était la paire 186345 / 186522 (preuve 63828, magasin 1660, 2026-01-18, 4,50 € les 250 g, saisie par deux contributeurs différents depuis la même photo). Le panier passe de 6 à 5 relevés : médiane 18,90 → 19,80 €/kg, D1 14,94 → 14,33, D9 22,10 → 22,16, et observed_on 2026-01-18 → 2026-02-01, la date médiane des cinq relevés restants. Le seuil de cinq relevés d'Open Prices reste atteint, l'entrée reste en B."
+    },
+    {
+      "form": "Basilic frais",
+      "form_normalized": "basilic frais",
+      "category": "herbes_aromates",
+      "observed": {
+        "basis": "kg",
+        "low": 15.94,
+        "central": 35.0,
+        "high": 42.24,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 7,
+        "period_start": "2025-08-25",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 15.94,
+        "central": 35.0,
+        "high": 42.24,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Rendement déclaré INCONNU. Le basilic surgelé relevé est entièrement consommable, mais la forme « Basilic frais » s'achète en bouquet ou en pot et perd ses tiges ; aucune table publiée de parts comestibles n'est au registre."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_basilic_surgele_pour_basilic_frais_mediane_12_mois",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aherbs&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=id",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-02-01",
+        "source_record_key": "open_prices/relevés 164590,186341,189815,197317,199691,199956,299593",
+        "citation": "Open Prices (Open Food Facts) — 7 relevés DISTINCTS en France et en euros, du 2025-11-16 au 2026-06-18, produits de basilic coupé surgelé vendus au poids net (codes-barres 3267180368550 Gineys, 3560070351039 Carrefour, 3250390714682 Saint Eloi, 3560071225476 Carrefour Bio ; l'état surgelé des quatre a été relu un par un sur https://world.openfoodfacts.org/api/v2/product/<code>.json, où tous portent en:frozen-foods), conditionnements retenus de 50 à 250 g. Médiane 35,00 €/kg ; premier décile 15,94 €/kg ; neuvième décile 42,24 €/kg. Les sept relevés, chacun vérifiable sur https://prices.openfoodfacts.org/api/v1/prices/<id> : 3,21 € les 250 g — basilic coupé congelé, Gineys, 2025-11-16, relevé n° 164590 — soit 12,84 €/kg ; 4,50 € les 250 g — même produit, 2026-01-18, relevé n° 186341 — soit 18,00 €/kg ; 1,69 € les 50 g — Basilic boîte refermable, Carrefour, 2026-06-18, relevé n° 299593 — soit 33,80 €/kg ; 1,75 € les 50 g — même produit, 2026-02-03, relevés n° 199691 et 199956 — soit 35,00 €/kg chacun ; 2,00 € les 50 g — Basilic bio, Saint Eloi, 2026-02-01, relevé n° 197317 — soit 40,00 €/kg ; 2,28 € les 50 g — Basilic BIO, Carrefour BIO, 2026-01-23, relevé n° 189815 — soit 45,60 €/kg. ÉCARTÉ comme doublon : le relevé n° 186645, adossé à la même preuve (proof 63828) que le n° 186341 — même magasin, même jour, même produit, même prix de 4,50 €, transcrit deux fois."
+      },
+      "reindexation": null,
+      "notes": "Même adaptation que pour le persil : le basilic frais en barquette ne fournit que quatre relevés en France sur douze mois (Florette 11 g à 158 €/kg, « Barq. basilic Frais 20 g » de Cueillettes et Cuisine sans contenance exploitable), en deçà des cinq qu'Open Prices exige pour dépasser C. Le basilic surgelé se vend au poids net de feuilles, à la même teneur en eau que le frais. L'état surgelé de chacune des quatre références a été vérifié sur sa fiche Open Food Facts (catégorie « Frozen basils » pour 3560070351039 et 3250390714682, libellé « basilic coupe congelé » pour 3267180368550). Le basilic séché en flacon (11 à 20 g, de 122 à 228 €/kg) et le basilic lyophilisé (625 €/kg) sont écartés : ce n'est ni le même produit ni la même masse d'eau. Les deux références portant le label biologique sont conservées : le CONTRAT §3.1 range explicitement la gamme dans ce que la dispersion absorbe, faute de source qui la segmente ; les écarter aurait ramené le panier à six relevés et aurait été un choix silencieux sur la gamme. Contrôle d'ordre de grandeur : 1,75 € les 50 g font 35,00 €/kg. Agrégat : médiane et déciles D1/D9 des relevés retenus, prix payé divisé par la contenance nette publiée par Open Food Facts. Date d'observation = date médiane des relevés, et non la fin de période, pour ne pas rajeunir l'entrée. Pays confirmé sur le code pays du magasin : le filtre pays de l'API est accepté et ignoré, il ne protège de rien. CORRECTION DE REVUE ADVERSE (2026-08-30). Le panier de la passe précédente comptait deux fois la même observation : deux relevés Open Prices distincts par leur identifiant mais adossés à la MÊME preuve (champ proof_id), donc à une seule photo d'étiquette, dans le même magasin, le même jour, pour le même produit et au même prix. Un doublon de saisie n'est pas une seconde observation : il gonfle n_observations et tire la médiane vers sa propre valeur. Le relevé surnuméraire a été retiré et les agrégats recalculés. Ici le doublon était la paire 186341 / 186645 (preuve 63828, magasin 1660, 2026-01-18, 4,50 € les 250 g). Le panier passe de 8 à 7 relevés : médiane 34,40 → 35,00 €/kg, D1 16,45 → 15,94, D9 41,68 → 42,24, et observed_on 2026-01-23 → 2026-02-01, date médiane des sept relevés restants. Le seuil de cinq est toujours atteint, l'entrée reste en B. DOUTE RÉSIDUEL CONSIGNÉ ET NON TRANCHÉ : les relevés 199691 et 199956 portent le même produit, le même prix, le même jour et le même magasin (3877), mais DEUX preuves distinctes (70811 et 70813) ; ce sont peut-être deux photos d'une même étiquette. Ils ont été conservés comme deux observations parce que rien dans la source ne permet de l'affirmer. S'ils n'en font qu'une, le panier tombe à 6 relevés, la médiane à 34,40 €/kg, D1 à 15,42 et D9 à 42,80 — l'entrée resterait affichable."
+    },
+    {
+      "form": "Thym séché",
+      "form_normalized": "thym seche",
+      "category": "herbes_aromates",
+      "observed": {
+        "basis": "kg",
+        "low": 27.78,
+        "central": 93.53,
+        "high": 190.13,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 27,
+        "period_start": "2025-08-25",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 27.78,
+        "central": 93.53,
+        "high": 190.13,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "« Thym séché » : rendement 1 par nature du produit, et non par ignorance — la totalité de ce qui est acheté entre dans la recette, rien n'est paré ni jeté.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit. « Thym séché » est intégralement ce qu'on achète : aucune partie n'est parée, épluchée ni égouttée avant l'emploi."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_contributions_agregees_mediane_12_mois",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Athyme&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=id",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-03-19",
+        "source_record_key": "open_prices/relevés 139104,161686,177251",
+        "citation": "Open Prices (Open Food Facts) — 27 relevés en France et en euros, du 2025-09-14 au 2026-08-23, produits de thym séché en flacon, pot ou recharge (catégorie Open Food Facts en:thyme, libellé contenant « thym », hors thym frais, thym citronné et thym d'infusion), conditionnements retenus de 14 à 90 g. Médiane 93,53 €/kg ; premier décile 27,78 €/kg ; neuvième décile 190,13 €/kg. Trois des relevés retenus, vérifiables un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id> — le moins cher, celui du milieu du classement, le plus cher : 1,20 € les 50 g — Thym entier, Haudecoeur,Samia, 2025-09-20, relevé n° 139104 — soit 24,00 €/kg ; 1,59 € les 17 g — Thym, Ducros, 2025-11-10, relevé n° 161686 — soit 93,53 €/kg ; 3,07 € les 15 g — Thym, Masalchi, 2025-12-31, relevé n° 177251 — soit 204,67 €/kg."
+      },
+      "reindexation": null,
+      "notes": "Sélection : 19 références, du sachet d'épicerie orientale de 50 g à 1,20 € (24,00 €/kg) au flacon d'épicerie fine de 15 g à 3,07 € (204,67 €/kg). Sont écartés : « Thym frais » (3411061111210), le « Thym Citronné » de Jardin bio et le « Thym du sud de la France » de la Tisanière — ces deux derniers sont vendus en infusion et non comme aromate —, le bouillon Knorr « bouquet garni thym, persil et laurier », le houmous au thym et le vinaigre thym-citron. Le rapport haut/bas du panier est de 6,8, en dessous du seuil de 10 : la dispersion s'explique entièrement par le format, la recharge de 85 g revenant à 39,41 €/kg quand le flacon de 14 g de la même marque revient à 166,43 €/kg. C'est le piège d'ordre de grandeur signalé au §3.1 du contrat : 200 €/kg pour une herbe séchée en petit flacon est juste, pas aberrant. Agrégat : médiane et déciles D1/D9 des relevés retenus, prix payé divisé par la contenance nette publiée par Open Food Facts. Date d'observation = date médiane des relevés, et non la fin de période, pour ne pas rajeunir l'entrée. Pays confirmé sur le code pays du magasin : le filtre pays de l'API est accepté et ignoré, il ne protège de rien. DOUTE RÉSIDUEL CONSIGNÉ PAR LA REVUE ADVERSE DU 2026-08-30, ET NON TRANCHÉ : les relevés n° 139104 et 139111 portent le même produit (Thym entier Samia 50 g), le même prix de 1,20 €, la même date du 2025-09-20, le même magasin (397) et le même contributeur, mais DEUX preuves distinctes (48582 et 48585). Ils ont été conservés comme deux observations, parce que deux preuves séparées ne permettent pas d'affirmer qu'il s'agit d'une seule photo transcrite deux fois — contrairement aux doublons corrigés sur le persil, le basilic et la menthe, où la preuve était partagée. Si ces deux relevés n'en font qu'un, le panier tombe à 26 relevés et la médiane passe de 93,53 à 106,77 €/kg (D1 31,39, D9 191,67) : l'ordre de grandeur ne change pas, la valeur affichée si."
+    },
+    {
+      "form": "Menthe fraîche",
+      "form_normalized": "menthe fraiche",
+      "category": "herbes_aromates",
+      "observed": {
+        "basis": "kg",
+        "low": 70.65,
+        "central": 120.23,
+        "high": 156.09,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 4,
+        "period_start": "2025-08-25",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 70.65,
+        "central": 120.23,
+        "high": 156.09,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Rendement déclaré INCONNU. Les barquettes relevées contiennent des tiges que la recette ne compte pas ; aucune source du registre ne publie la part comestible de la menthe."
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_quatre_releves_distincts_seuil_de_cinq_non_atteint",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Amint&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=id",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-01-30",
+        "source_record_key": "open_prices/relevés 155313,194334,239823,251851",
+        "citation": "Open Prices (Open Food Facts) — 4 relevés DISTINCTS en France et en euros, du 2025-10-27 au 2026-03-26, barquettes de menthe fraîche vendues au poids net (codes-barres 3411061111289 Cueillettes et Cuisine et 3368980120031 Jardin du Printemps, tous deux porteurs de en:fresh-mint ; 3280220923007 Florette, qui ne porte que en:mint et dont l'état frais tient au libellé et au format de 11 g, non à un tag), conditionnements retenus de 11 à 20 g. Médiane 120,23 €/kg — demi-somme des deux valeurs centrales 85,00 et 155,45 ; premier décile 70,65 €/kg ; neuvième décile 156,09 €/kg. Les quatre relevés, chacun vérifiable sur https://prices.openfoodfacts.org/api/v1/prices/<id> : 1,29 € les 20 g — Menthe fraîche, Cueillettes et cuisine, 2026-03-26, relevé n° 251851 — soit 64,50 €/kg ; 1,70 € les 20 g — Menthe Jardin du Printemps barquette, 2025-10-27, relevé n° 155313 — soit 85,00 €/kg ; 1,71 € les 11 g — Menthe, Florette, 2026-01-30, relevé n° 194334 — soit 155,45 €/kg ; 1,72 € les 11 g — même produit, 2026-03-07, relevé n° 239823 — soit 156,36 €/kg. ÉCARTÉ comme doublon : le relevé n° 194336, adossé à la même preuve (proof 67500) que le n° 194334, même contributeur, même magasin, même jour, même prix, créé trois secondes après lui."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE RÉTROGRADÉE EN C PAR LA REVUE ADVERSE DU 2026-08-30, DONC NI AFFICHÉE NI COMPTÉE. La passe précédente l'affichait en B sur cinq relevés, « le minimum exact qu'Open Prices exige ». Ce cinquième relevé n'existe pas : les n° 194334 et 194336 sont adossés à la MÊME preuve Open Prices (proof 67500), au même magasin (1920), au même contributeur, au même produit (Florette 11 g, code 3280220923007), au même prix de 1,71 € et à la même date du 2026-01-30, créés à trois secondes d'intervalle. C'est une saisie faite deux fois, pas deux observations. Le panier retombe donc à QUATRE relevés distincts, sous le seuil de cinq que le registre impose à Open Prices (sources.json, min_observations), et le contrôleur refuse à juste titre un B dans ce cas. Les valeurs recalculées sur les quatre relevés restants sont conservées pour la traçabilité : médiane 120,23 €/kg, D1 70,65, D9 156,09 — la médiane n'est plus le prix d'un format mais la demi-somme de deux formats que rien ne rapproche (85,00 et 155,45 €/kg), ce qui est une raison de plus de ne pas l'afficher.\n\nSECONDE INEXACTITUDE CORRIGÉE, dans l'appareil de provenance lui-même : la citation précédente affirmait que les cinq relevés portaient « la catégorie Open Food Facts en:fresh-mint ou en:fresh-aromatic-plants ». C'est faux pour la référence Florette 3280220923007, relue le 2026-08-30 sur https://world.openfoodfacts.org/api/v2/product/3280220923007.json : ses catégories sont en:condiments, en:culinary-plants, en:herbs-and-spices, en:aromatic-plants, en:herbs, en:mint, en:groceries — aucun tag « fresh ». Or c'est cette référence qui portait trois des cinq relevés et sur laquelle tombait la médiane. Le produit est très probablement frais (sachet de 11 g de la gamme herbes fraîches de Florette), mais le critère de sélection annoncé ne le sélectionnait pas : une annotation de provenance qui ne décrit pas ce qui a été fait coûte plus cher qu'un chiffre manquant.\n\nLe panier reste bimodal — deux barquettes de 20 g à 64,50 et 85,00 €/kg, deux sachets de 11 g à environ 155 €/kg. Le corpus a été remoissonné le 2026-08-30 sur en:mint, en:fresh-mint, en:fresh-aromatic-plants, en:aromatic-plants, en:culinary-plants, en:herbs et en:frozen-aromatic-plants (1 164 relevés uniques) : aucun cinquième relevé de menthe fraîche au poids net en France n'y figure sur la fenêtre. Pour sortir de C il faut un relevé de plus, pas un arrangement du panier existant. Agrégat : médiane et déciles D1/D9 des relevés retenus, prix payé divisé par la contenance nette publiée par Open Food Facts. Date d'observation = date médiane des relevés. Pays confirmé sur le code pays du magasin."
+    },
+    {
+      "form": "Feuille de laurier séchée",
+      "form_normalized": "feuille de laurier sechee",
+      "category": "epices",
+      "observed": {
+        "basis": "kg",
+        "low": 74.72,
+        "central": 76.74,
+        "high": 105.07,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 4,
+        "period_start": "2025-08-25",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 74.72,
+        "central": 76.74,
+        "high": 105.07,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "« Feuille de laurier séchée » : rendement 1 par nature du produit, et non par ignorance — la totalité de ce qui est acheté entre dans la recette, rien n'est paré ni jeté.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit. « Feuille de laurier séchée » est intégralement ce qu'on achète : aucune partie n'est parée, épluchée ni égouttée avant l'emploi."
+        }
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_quatre_releves_seulement_seuil_de_cinq_non_atteint",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Abay-laurel&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=id",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-19",
+        "source_record_key": "open_prices/relevés 301456,317059,315318",
+        "citation": "Open Prices (Open Food Facts) — 4 relevés en France et en euros, du 2026-07-23 au 2026-08-21, flacons et sachets de feuilles de laurier séchées (catégorie Open Food Facts en:bay-laurel ; codes-barres 3162050040447 Sainte Lucie, 3166290200647 et 3166291452106 Ducros), conditionnements retenus de 17 à 25 g. Médiane 76,74 €/kg ; premier décile 74,72 €/kg ; neuvième décile 105,07 €/kg. Trois des relevés retenus, vérifiables un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id> — le moins cher, celui du milieu du classement, le plus cher : 1,85 € les 25 g — Laurier feuilles coupées, Sainte Lucie, 2026-07-23, relevé n° 301456 — soit 74,00 €/kg ; 1,85 € les 24 g — Laurier, Ducros, 2026-08-19, relevé n° 317059 — soit 77,08 €/kg ; 1,99 € les 17 g — Laurier, Ducros, 2026-08-21, relevé n° 315318 — soit 117,06 €/kg."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE CONSERVÉE EN C, DONC NI AFFICHÉE NI COMPTÉE, et c'est le plus gros manque de la tranche : 74 lignes du corpus emploient cette forme. Quatre relevés seulement portent une contenance en grammes sur les douze mois, alors qu'Open Prices en exige cinq pour dépasser C ; la fenêtre des douze mois précédents (2024-08-25 à 2025-08-24) n'en ajoute aucun, elle a été moissonnée et vérifiée. Trois relevés de plus existent — le flacon d'épicerie fine Albert Ménès de 2,5 g, à 1,90, 1,95 et 2,46 € — mais Open Food Facts arrondit sa contenance à 2 g, ce qui donnerait de 950 à 1 230 €/kg : mêlés aux quatre autres, ils portent le rapport haut/bas à 16,6, très au-delà du seuil de 10 que le contrôleur refuse. Ce refus est justifié : un flacon de 2,5 g de laurier est un format d'appoint, pas le laurier de cuisine, et la médiane d'un tel mélange ne décrirait rien. La contenance de 25 g de la référence Sainte Lucie a été lue sur https://world.openfoodfacts.org/api/v2/product/3162050040447.json (champ quantity « 25 g »), le relevé de prix ne la portant pas. Pour sortir de C il faut cinq relevés de format de cuisine : c'est la première chose à reprendre sur cette tranche. Agrégat : médiane et déciles D1/D9 des relevés retenus, prix payé divisé par la contenance nette publiée par Open Food Facts. Date d'observation = date médiane des relevés, et non la fin de période, pour ne pas rajeunir l'entrée. Pays confirmé sur le code pays du magasin : le filtre pays de l'API est accepté et ignoré, il ne protège de rien."
+    },
+    {
+      "form": "Piment en poudre",
+      "form_normalized": "piment en poudre",
+      "category": "epices",
+      "observed": {
+        "basis": "kg",
+        "low": 36.7,
+        "central": 54.74,
+        "high": 86.13,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 9,
+        "period_start": "2025-08-25",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 36.7,
+        "central": 54.74,
+        "high": 86.13,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "« Piment en poudre » : rendement 1 par nature du produit, et non par ignorance — la totalité de ce qui est acheté entre dans la recette, rien n'est paré ni jeté.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit. « Piment en poudre » est intégralement ce qu'on achète : aucune partie n'est parée, épluchée ni égouttée avant l'emploi."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_contributions_agregees_mediane_12_mois",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Acayenne-peppers&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=id",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-07-20",
+        "source_record_key": "open_prices/relevés 248297,263432,268476",
+        "citation": "Open Prices (Open Food Facts) — 9 relevés en France et en euros, du 2026-01-24 au 2026-08-21, poudres de piment fort en flacon, toutes porteuses de la catégorie Open Food Facts en:cayenne-peppers (libellés « piment de Cayenne moulu », « poivre de Cayenne moulu », « piments de Cayenne moulus », « piment de Cayenne extra fort »), conditionnements retenus de 35 à 65 g. Médiane 54,74 €/kg ; premier décile 36,70 €/kg ; neuvième décile 86,13 €/kg. Trois des relevés retenus, vérifiables un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id> — le moins cher, celui du milieu du classement, le plus cher : 1,11 € les 38 g — Piment de cayenne - flacon, Marque Repère,Rustica, 2026-03-19, relevé n° 248297 — soit 29,21 €/kg ; 2,08 € les 38 g — Piment de Cayenne Extra Fort, Ducros, 2026-04-08, relevé n° 263432 — soit 54,74 €/kg ; 5,90 € les 40 g — PIMENT de Cayenne, Arcadie,Cook, 2026-04-23, relevé n° 268476 — soit 147,50 €/kg."
+      },
+      "reindexation": null,
+      "notes": "ADAPTATION DÉCLARÉE : la source ne publie aucun libellé « piment moulu » générique. Les sept références retenues sont toutes des poudres de piment de Cayenne, seule poudre de piment fort qu'on trouve en rayon sous un nom stable, et le chiffre vaut donc pour elle. Sont écartés les MÉLANGES, qui sont nombreux et trompeurs sous ce nom : « chili poudre » et « chili » sont des assaisonnements tex-mex (catégories Open Food Facts en:spice-blends et en:spice-mix, piment plus cumin plus origan), de même que « mélange pour chili mexicain », « assaisonnement pour chili con carne » et « mix épices chili » ; les inclure aurait fait passer un mélange pour une épice simple. Sont écartés aussi les piments DOUX moulus — qui sont du paprika sous un autre nom et relèvent d'une autre forme du catalogue —, le piment d'Espelette, les piments entiers ou concassés (traités sous « Piment séché »), et toute la famille des pâtes et purées de piment, harissas et sauces, qui domine numériquement la catégorie et n'est pas une épice sèche. Contrôle d'ordre de grandeur : 2,08 € les 38 g font 54,74 €/kg. Agrégat : médiane et déciles D1/D9 des relevés retenus, prix payé divisé par la contenance nette publiée par Open Food Facts. Date d'observation = date médiane des relevés, et non la fin de période, pour ne pas rajeunir l'entrée. Pays confirmé sur le code pays du magasin : le filtre pays de l'API est accepté et ignoré, il ne protège de rien."
+    },
+    {
+      "form": "Piment rouge séché",
+      "form_normalized": "piment rouge seche",
+      "category": "epices",
+      "observed": {
+        "basis": "kg",
+        "low": 105.05,
+        "central": 164.09,
+        "high": 270.58,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 7,
+        "period_start": "2025-08-25",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 105.05,
+        "central": 164.09,
+        "high": 270.58,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "« Piment rouge séché » : rendement 1 par nature du produit, et non par ignorance — la totalité de ce qui est acheté entre dans la recette, rien n'est paré ni jeté.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit. « Piment rouge séché » est intégralement ce qu'on achète : aucune partie n'est parée, épluchée ni égouttée avant l'emploi."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_varietes_de_piment_sec_agregees_mediane_12_mois",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Achili-peppers&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=id",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-09",
+        "source_record_key": "open_prices/relevés 317705,190250,312325",
+        "citation": "Open Prices (Open Food Facts) — 7 relevés en France et en euros, du 2026-01-24 au 2026-08-24, piments forts séchés entiers ou concassés en flacon (catégorie Open Food Facts en:chili-peppers ; libellés « piments oiseaux entiers », « piment habanero rouge », « piment chipotle », « piment fort langue d'oiseau pili-pili », « piments concassés »), conditionnements retenus de 15 à 40 g. Médiane 164,09 €/kg ; premier décile 105,05 €/kg ; neuvième décile 270,58 €/kg. Trois des relevés retenus, vérifiables un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id> — le moins cher, celui du milieu du classement, le plus cher : 2,82 € les 29 g — Piments concassés, Ducros, McCormick, 2026-08-24, relevé n° 317705 — soit 97,24 €/kg ; 3,61 € les 22 g — Piment Habanero rouge, Sainte Lucie, 2026-01-24, relevé n° 190250 — soit 164,09 €/kg ; 6,54 € les 22 g — Piments Langue d'Oiseau Pili-Pili, Albert Ménès, 2026-08-18, relevé n° 312325 — soit 297,27 €/kg."
+      },
+      "reindexation": null,
+      "notes": "Sélection : 6 références de piment séché entier ou concassé, hors poudres (traitées à part sous « Piment en poudre ») et hors piment d'Espelette. La dispersion tient à la variété : le chipotle et les piments concassés sont à environ 100 €/kg, les piments oiseaux et le pili-pili montent à 250-300 €/kg. La source ne publie pas de libellé « piment rouge séché » générique ; le panier mêle donc plusieurs variétés, ce qui est une adaptation déclarée. Contrôle d'ordre de grandeur : 3,61 € les 22 g font 164,09 €/kg. Agrégat : médiane et déciles D1/D9 des relevés retenus, prix payé divisé par la contenance nette publiée par Open Food Facts. Date d'observation = date médiane des relevés, et non la fin de période, pour ne pas rajeunir l'entrée. Pays confirmé sur le code pays du magasin : le filtre pays de l'API est accepté et ignoré, il ne protège de rien. Adaptation supplémentaire pour cette forme : la couleur n'est écrite au libellé que sur une des six références (« Piment Habanero rouge »). Le pili-pili et les piments oiseaux séchés sont rouges, le chipotle est un jalapeño rouge fumé, mais la source ne le dit pas, et le déduire serait ajouter une information qu'elle ne porte pas."
+    },
+    {
+      "form": "Piment séché",
+      "form_normalized": "piment seche",
+      "category": "epices",
+      "observed": {
+        "basis": "kg",
+        "low": 105.05,
+        "central": 164.09,
+        "high": 270.58,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 7,
+        "period_start": "2025-08-25",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 105.05,
+        "central": 164.09,
+        "high": 270.58,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "« Piment séché » : rendement 1 par nature du produit, et non par ignorance — la totalité de ce qui est acheté entre dans la recette, rien n'est paré ni jeté.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit. « Piment séché » est intégralement ce qu'on achète : aucune partie n'est parée, épluchée ni égouttée avant l'emploi."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_varietes_de_piment_sec_agregees_mediane_12_mois",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Achili-peppers&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=id",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-09",
+        "source_record_key": "open_prices/relevés 317705,190250,312325",
+        "citation": "Open Prices (Open Food Facts) — 7 relevés en France et en euros, du 2026-01-24 au 2026-08-24, piments forts séchés entiers ou concassés en flacon (catégorie Open Food Facts en:chili-peppers ; libellés « piments oiseaux entiers », « piment habanero rouge », « piment chipotle », « piment fort langue d'oiseau pili-pili », « piments concassés »), conditionnements retenus de 15 à 40 g. Médiane 164,09 €/kg ; premier décile 105,05 €/kg ; neuvième décile 270,58 €/kg. Trois des relevés retenus, vérifiables un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id> — le moins cher, celui du milieu du classement, le plus cher : 2,82 € les 29 g — Piments concassés, Ducros, McCormick, 2026-08-24, relevé n° 317705 — soit 97,24 €/kg ; 3,61 € les 22 g — Piment Habanero rouge, Sainte Lucie, 2026-01-24, relevé n° 190250 — soit 164,09 €/kg ; 6,54 € les 22 g — Piments Langue d'Oiseau Pili-Pili, Albert Ménès, 2026-08-18, relevé n° 312325 — soit 297,27 €/kg."
+      },
+      "reindexation": null,
+      "notes": "Sélection : 6 références de piment séché entier ou concassé, hors poudres (traitées à part sous « Piment en poudre ») et hors piment d'Espelette. La dispersion tient à la variété : le chipotle et les piments concassés sont à environ 100 €/kg, les piments oiseaux et le pili-pili montent à 250-300 €/kg. La source ne publie pas de libellé « piment rouge séché » générique ; le panier mêle donc plusieurs variétés, ce qui est une adaptation déclarée. Contrôle d'ordre de grandeur : 3,61 € les 22 g font 164,09 €/kg. Agrégat : médiane et déciles D1/D9 des relevés retenus, prix payé divisé par la contenance nette publiée par Open Food Facts. Date d'observation = date médiane des relevés, et non la fin de période, pour ne pas rajeunir l'entrée. Pays confirmé sur le code pays du magasin : le filtre pays de l'API est accepté et ignoré, il ne protège de rien. Cette forme et « Piment rouge séché » portent le même panier et donc le même chiffre : la source ne distingue pas les deux, et fabriquer un écart entre elles aurait été inventer une différence que rien n'a mesurée."
+    },
+    {
+      "form": "Paprika doux hongrois",
+      "form_normalized": "paprika doux hongrois",
+      "category": "epices",
+      "observed": {
+        "basis": "kg",
+        "low": 77.42,
+        "central": 81.04,
+        "high": 97.35,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 5,
+        "period_start": "2025-08-25",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 77.42,
+        "central": 81.04,
+        "high": 97.35,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "« Paprika doux hongrois » : rendement 1 par nature du produit, et non par ignorance — la totalité de ce qui est acheté entre dans la recette, rien n'est paré ni jeté.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit. « Paprika doux hongrois » est intégralement ce qu'on achète : aucune partie n'est parée, épluchée ni égouttée avant l'emploi."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_deux_references_hongroises_cinq_releves_echantillon_minimal",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Apaprika&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=id",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-04-23",
+        "source_record_key": "open_prices/relevés 180122,313804,268481",
+        "citation": "Open Prices (Open Food Facts) — 5 relevés en France et en euros, du 2025-09-03 au 2026-08-18, flacons de paprika doux d'origine hongroise, la mention « de Hongrie » figurant au libellé du produit (codes-barres 3166291744669 Ducros « Paprika de hongrie » et 3417960022893 Cook « PAPRIKA DOUX de Hongrie »), conditionnements retenus de 40 à 48 g. Médiane 81,04 €/kg ; premier décile 77,42 €/kg ; neuvième décile 97,35 €/kg. Trois des relevés retenus, vérifiables un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id> — le moins cher, celui du milieu du classement, le plus cher : 3,00 € les 40 g — PAPRIKA DOUX de Hongrie, Arcadie, Cook, 2025-09-17, relevé n° 180122 — soit 75,00 €/kg ; 3,89 € les 48 g — Paprika de hongrie, Ducros, 2026-08-15, relevé n° 313804 — soit 81,04 €/kg ; 3,99 € les 40 g — PAPRIKA DOUX de Hongrie, Arcadie, Cook, 2026-04-23, relevé n° 268481 — soit 99,75 €/kg."
+      },
+      "reindexation": null,
+      "notes": "Cinq relevés, deux références : le minimum exact qu'Open Prices exige, et il faut le dire. L'origine hongroise n'est pas inférée, elle est écrite au libellé du produit publié par la source — c'est la seule chose qui sépare cette forme du « Paprika doux » générique, déjà chiffré dans la tranche assaisonnement, et c'est pour cela que le panier a été restreint à ces deux références plutôt qu'élargi. Le paprika fumé est écarté. Contrôle d'ordre de grandeur : 3,89 € les 48 g font 81,04 €/kg. Agrégat : médiane et déciles D1/D9 des relevés retenus, prix payé divisé par la contenance nette publiée par Open Food Facts. Date d'observation = date médiane des relevés, et non la fin de période, pour ne pas rajeunir l'entrée. Pays confirmé sur le code pays du magasin : le filtre pays de l'API est accepté et ignoré, il ne protège de rien."
+    },
+    {
+      "form": "Clou de girofle moulu",
+      "form_normalized": "clou de girofle moulu",
+      "category": "epices",
+      "observed": {
+        "basis": "kg",
+        "low": 64.29,
+        "central": 94.93,
+        "high": 132.34,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 24,
+        "period_start": "2025-08-25",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 64.29,
+        "central": 94.93,
+        "high": 132.34,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "« Clou de girofle moulu » : rendement 1 par nature du produit, et non par ignorance — la totalité de ce qui est acheté entre dans la recette, rien n'est paré ni jeté.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit. « Clou de girofle moulu » est intégralement ce qu'on achète : aucune partie n'est parée, épluchée ni égouttée avant l'emploi."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_clous_entiers_et_moulus_agreges_mediane_12_mois",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Acloves&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=id",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-07-27",
+        "source_record_key": "open_prices/relevés 236543,316622,215429",
+        "citation": "Open Prices (Open Food Facts) — 24 relevés en France et en euros, du 2025-09-03 au 2026-08-24, clous de girofle entiers ou moulus en flacon (catégorie Open Food Facts en:cloves ou en:ground-cloves), conditionnements retenus de 23 à 50 g. Médiane 94,93 €/kg ; premier décile 64,29 €/kg ; neuvième décile 132,34 €/kg. Trois des relevés retenus, vérifiables un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id> — le moins cher, celui du milieu du classement, le plus cher : 1,34 € les 23 g — Clous de girofle, Marque Repère, Rustica, 2026-03-02, relevé n° 236543 — soit 58,26 €/kg ; 2,78 € les 29 g — Clous de Girofle, Ducros, 2026-08-23, relevé n° 316622 — soit 95,86 €/kg ; 7,19 € les 50 g — Clous de girofle, Albert Ménès, 2026-02-11, relevé n° 215429 — soit 143,80 €/kg."
+      },
+      "reindexation": null,
+      "notes": "Adaptation déclarée : les clous de girofle MOULUS ne comptent que quatre relevés (la seule référence Ducros 35 g, de 64,29 à 94,00 €/kg), un de moins que les cinq exigés. Le panier réunit donc les clous entiers et les clous moulus, qui sont la même épice au même prix d'achat — la mouture ne change ni la matière ni la masse. La médiane obtenue, 94,93 €/kg, est cohérente avec les 100,63 €/kg que la tranche assaisonnement retient pour « Clou de girofle » entier sur un panier voisin, ce qui est un contrôle croisé et non une coïncidence : les deux paniers partagent une partie de leurs relevés. Contrôle d'ordre de grandeur : 2,78 € les 29 g font 95,86 €/kg. Agrégat : médiane et déciles D1/D9 des relevés retenus, prix payé divisé par la contenance nette publiée par Open Food Facts. Date d'observation = date médiane des relevés, et non la fin de période, pour ne pas rajeunir l'entrée. Pays confirmé sur le code pays du magasin : le filtre pays de l'API est accepté et ignoré, il ne protège de rien."
+    },
+    {
+      "form": "Ciboulette fraîche",
+      "form_normalized": "ciboulette fraiche",
+      "category": "herbes_aromates",
+      "observed": {
+        "basis": "kg",
+        "low": 33.92,
+        "central": 37.6,
+        "high": 37.76,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 3,
+        "period_start": "2025-08-25",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 33.92,
+        "central": 37.6,
+        "high": 37.76,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Rendement déclaré INCONNU, comme pour toutes les herbes fraîches de la tranche."
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_trois_releves_seulement_seuil_de_cinq_non_atteint",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Achives&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=id",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-02-03",
+        "source_record_key": "open_prices/relevés 199692,197427,280929",
+        "citation": "Open Prices (Open Food Facts) — 3 relevés en France et en euros, du 2026-02-01 au 2026-05-16, ciboulette coupée surgelée vendue au poids net (catégorie Open Food Facts en:frozen-chives ; codes-barres 3560070351091 Carrefour et 3250390714699 Saint Eloi), conditionnements retenus de 50 g. Médiane 37,60 €/kg ; premier décile 33,92 €/kg ; neuvième décile 37,76 €/kg. Trois des relevés retenus, vérifiables un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id> — le moins cher, celui du milieu du classement, le plus cher : 1,65 € les 50 g — Ciboulette, Carrefour, 2026-02-03, relevé n° 199692 — soit 33,00 €/kg ; 1,88 € les 50 g — Ciboulette bio, Saint Eloi, 2026-02-01, relevé n° 197427 — soit 37,60 €/kg ; 1,89 € les 50 g — Ciboulette bio, Saint Eloi, 2026-05-16, relevé n° 280929 — soit 37,80 €/kg."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE CONSERVÉE EN C, DONC NI AFFICHÉE NI COMPTÉE. Trois relevés de ciboulette surgelée, deux références : en deçà des cinq qu'Open Prices exige. La ciboulette authentiquement fraîche fait quatre relevés au poids net sur vingt-quatre mois (Florette 11 g, Les Crudettes 11 g, Mechinaud 20 g, Les herbes du Roussillon 30 g, de 66 à 158 €/kg), soit un panier distinct et lui aussi trop mince ; les fusionner aurait mêlé deux états et deux fenêtres de temps pour gagner un relevé, ce qui n'est pas une méthode. La ciboulette séchée et lyophilisée (4 à 5 g, de 170 à 1 047 €/kg) est un tout autre produit. Agrégat : médiane et déciles D1/D9 des relevés retenus, prix payé divisé par la contenance nette publiée par Open Food Facts. Date d'observation = date médiane des relevés, et non la fin de période, pour ne pas rajeunir l'entrée. Pays confirmé sur le code pays du magasin : le filtre pays de l'API est accepté et ignoré, il ne protège de rien."
+    },
+    {
+      "form": "Thym frais",
+      "form_normalized": "thym frais",
+      "category": "herbes_aromates",
+      "observed": {
+        "basis": "kg",
+        "low": 67.0,
+        "central": 67.0,
+        "high": 67.0,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2025-08-25",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 67.0,
+        "central": 67.0,
+        "high": 67.0,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Rendement déclaré INCONNU : le thym frais s'achète en branches, dont la recette n'emploie que les feuilles."
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_releve_unique",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Athyme&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=id",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-03-26",
+        "source_record_key": "open_prices/relevés 251849,251849,251849",
+        "citation": "Open Prices (Open Food Facts) — relevé unique en France et en euros : 1,34 € la barquette de 20 g de « Thym frais » (code-barres 3411061111210), le 2026-03-26, relevé n° 251849 — soit 67,00 €/kg. Vérifiable sur https://prices.openfoodfacts.org/api/v1/prices/251849."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE CONSERVÉE EN C, DONC NI AFFICHÉE NI COMPTÉE. Un seul relevé de thym frais existe dans la source sur les douze mois, et un relevé n'est pas un prix. Le thym séché, chiffré plus haut à 93,53 €/kg, n'est PAS un substitut : le séché a perdu son eau, il est environ trois fois plus concentré, et les grammes d'une recette ne s'y transposent pas. Le RNM ne cote le thym qu'à Rungis, en € HT, à la botte (« THYM France botte, les 10 bottes », 6,00 € sur les douze mois) : un prix de gros hors taxes n'est pas ce qu'un ménage paie, et le catalogue ne porte pas la masse d'une botte. Les 22 lignes du corpus qui emploient cette forme restent donc sans prix. Agrégat : médiane et déciles D1/D9 des relevés retenus, prix payé divisé par la contenance nette publiée par Open Food Facts. Date d'observation = date médiane des relevés, et non la fin de période, pour ne pas rajeunir l'entrée. Pays confirmé sur le code pays du magasin : le filtre pays de l'API est accepté et ignoré, il ne protège de rien."
+    },
+    {
+      "form": "Ail cru entier",
+      "form_normalized": "ail cru entier",
+      "category": "herbes_aromates",
+      "observed": {
+        "basis": "kg",
+        "low": 10.87,
+        "central": 11.28,
+        "high": 11.8,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 24,
+        "period_start": "2025-08-01",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 10.87,
+        "central": 11.28,
+        "high": 11.8,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Rendement déclaré INCONNU. L'ail s'achète en têtes, avec ses tuniques et son plateau racinaire, quand le catalogue compte la gousse épluchée : l'estimation est donc un MINORANT, et l'écart n'est pas anecdotique sur cette forme. Aucune source du registre ne publie de part comestible, et myko_reasoning ne peut pas porter un rendement inférieur à 1."
+      },
+      "confidence": "A",
+      "confidence_reason": "rnm_detail_gms_moyennes_mensuelles_12_mois_deciles_calcules",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?AIL&12MOIS",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-29",
+        "observed_on": "2026-07-31",
+        "source_record_key": "57222233+57222236",
+        "citation": "RNM — FranceAgriMer, page « AIL — prix moyens mensuels du 01-08-2025 au 31-07-2026 », stade Détail, circuit « Légumes France DETAIL GMS », € TTC, unité « le kg ». Deux séries retenues : « AIL blanc sec France vrac » (id 57222233), douze moyennes mensuelles de 11,19 à 11,89 €/kg, et « AIL blanc sec hors Fr. vrac » (id 57222236), douze moyennes mensuelles de 10,69 à 11,30 €/kg — soit 24 moyennes mensuelles lues en €/kg ; médiane 11,28 €/kg, D1 10,87, D9 11,80."
+      },
+      "reindexation": null,
+      "notes": "Sélection : stade Détail, circuit « DETAIL GMS », unité « le kg ». Sont écartées la série « filet 3 têtes », cotée à la pièce de filet et non au kilo — le catalogue ne porte aucune masse de filet, donc aucune conversion —, et les deux séries « biologique », pour la raison énoncée par la tranche frais végétal : le RNM publie au détail autant de séries bio que conventionnelles alors que le bio est minoritaire dans les achats, et les mélanger laisserait la couverture éditoriale de la source décider de la médiane. Écarter est un choix énoncé et réversible ; mélanger aurait été un choix silencieux. Réserve importante, identique à celle des autres entrées RNM du référentiel : les observations sont des moyennes mensuelles NATIONALES, la dispersion entre points de vente n'y figure pas, et la fourchette est donc plus étroite que la réalité en rayon — elle décrit la dispersion entre séries nationales et entre mois. L'ail est aussi la seule forme de cette tranche que le RNM cote au détail au kilogramme : il n'est traité ici que parce que le catalogue le range en herbes_aromates."
+    }
+  ]
+}

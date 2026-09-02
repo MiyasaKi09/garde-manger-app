@@ -1,0 +1,801 @@
+{
+  "schema_version": "1.0.0",
+  "price_set_version": "2026.08-frais-animal",
+  "country": "FR",
+  "currency": "EUR",
+  "reference_date": "2026-08-24",
+  "derived_license": "etalab-2.0",
+  "catalog_version": "v3-300-real-dishes",
+  "built_at": "2026-08-24",
+  "notes": "Tranche « frais animal » : viandes, volailles, poissons et fruits de mer, œufs. Source unique : le RNM de FranceAgriMer, et uniquement ses trois enquêtes de DÉTAIL en GMS (M2501 viande, M2500 marée, M2504 lait-œuf). Les cotations de gros (Rungis) ont été écartées délibérément : elles couvrent bien plus de produits, mais un prix de gros hors taxes n’est pas ce qu’un foyer paie, et le convertir aurait demandé un coefficient de marge qu’aucune source du registre ne publie — donc qu’il aurait fallu inventer. derived_license reste etalab-2.0 : aucune donnée Open Prices n’entre dans cette tranche, donc aucune contamination ODbL ne vient d’ici. Aucune entrée en A : le RNM ne publie ses déciles que sur la cotation hebdomadaire, qui est ponctuelle au sens du §4, et ses moyennes mensuelles sans aucune dispersion. Le contrat exige les deux à la fois pour A ; il fallait choisir, et la fourchette réelle a été préférée.",
+  "entries": [
+    {
+      "form": "Œuf cru",
+      "form_normalized": "oeuf cru",
+      "category": "oeufs",
+      "observed": {
+        "basis": "piece",
+        "low": 0.225,
+        "central": 0.27,
+        "high": 0.3317,
+        "unit": "EUR/piece",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 4.5,
+        "central": 5.4,
+        "high": 6.634,
+        "conversion": {
+          "kind": "grams_per_piece",
+          "factor": 50,
+          "from": "catalog:oeuf cru"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Part non comestible sans objet ici : la conversion pièce → kilo passe par la masse comestible du catalogue (50 g), donc la coquille est déjà hors du calcul. 1,00 déclaré inconnu par défaut du contrat, sans minoration cachée."
+      },
+      "confidence": "B",
+      "confidence_reason": "cotation_detail_hebdomadaire_gamme_sans_label",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2504:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2504/57230051/2026-08-20",
+        "citation": "RNM — Lait Oeuf DETAIL GMS (cours Détail, € TTC), semaine 34-2026 (17 au 23 août 2026) : « OEUF sans label France barq. de 6 (la boîte de 6) » — prix moyen 1.62 € la boîte de 6, mini (D1) 1.35, maxi (D9) 1.99. Soit 0.27 € l’œuf (1.62 ÷ 6). Série RNM n° 57230051."
+      },
+      "reindexation": null,
+      "notes": "Trois qualités sont cotées au détail (sans label 1,62 € ; label rouge 2,09 € ; biologique 2,50 €). La forme du catalogue ne porte aucune mention de gamme : la cotation « sans label » a été retenue parce qu’elle est la plus vendue et la moins chère — l’estimation est donc un plancher, et non une moyenne de marché. Le §3.1 du contrat range explicitement la gamme dans ce que la dispersion absorbe, faute de source qui la segmente. Rendement : la coquille n’entre PAS dans le calcul, et ce n’est pas une omission. La conversion se fait à la pièce, avec la masse catalogue (Ciqual, part comestible) ; le prix d’une pièce rapporté à sa masse comestible donne donc déjà des euros par kilo d’œuf mangeable. edible_yield reste à 1,00 « inconnu » comme le contrat l’impose par défaut, mais ici, contrairement au poulet ou à la moule, il n’y a pas de perte de parage cachée. La forme la plus fréquente du corpus (148 lignes sur les 589 recettes ; 115 sur les 405 publiables — la relecture avait noté que « le décompte ne l’était pas », à tort : les deux chiffres sont exacts, sur deux populations différentes, et c’est la population publiable qui avait été donnée au lot de sourcing) et la seule de la tranche qui se compte à la pièce. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2504:MARCHE affiche la dernière semaine ; saisir 20-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 34-2026 (17 au 23 août 2026)."
+    },
+    {
+      "form": "Œuf dur",
+      "form_normalized": "oeuf dur",
+      "category": "oeufs",
+      "observed": {
+        "basis": "piece",
+        "low": 0.225,
+        "central": 0.27,
+        "high": 0.3317,
+        "unit": "EUR/piece",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 4.5,
+        "central": 5.4,
+        "high": 6.634,
+        "conversion": {
+          "kind": "grams_per_piece",
+          "factor": 50,
+          "from": "catalog:oeuf dur"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Même situation que l’œuf cru : la conversion à la pièce passe par la masse comestible du catalogue (50 g)."
+      },
+      "confidence": "B",
+      "confidence_reason": "prix_de_l_oeuf_cru_achete_forme_cuite",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2504:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2504/57230051/2026-08-20",
+        "citation": "RNM — Lait Oeuf DETAIL GMS (cours Détail, € TTC), semaine 34-2026 (17 au 23 août 2026) : « OEUF sans label France barq. de 6 (la boîte de 6) » — prix moyen 1.62 € la boîte de 6, mini (D1) 1.35, maxi (D9) 1.99. Soit 0.27 € l’œuf (1.62 ÷ 6). Série RNM n° 57230051."
+      },
+      "reindexation": null,
+      "notes": "Adaptation déclarée : aucune source ne cote l’œuf dur, qui ne s’achète pas — on achète un œuf cru et on le cuit. Le prix retenu est donc celui de l’œuf cru sans label, et la cuisson à l’eau ne change ni la masse ni le prix payé. Trois qualités sont cotées au détail (sans label 1,62 € ; label rouge 2,09 € ; biologique 2,50 €). La forme du catalogue ne porte aucune mention de gamme : la cotation « sans label » a été retenue parce qu’elle est la plus vendue et la moins chère — l’estimation est donc un plancher, et non une moyenne de marché. Le §3.1 du contrat range explicitement la gamme dans ce que la dispersion absorbe, faute de source qui la segmente. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2504:MARCHE affiche la dernière semaine ; saisir 20-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 34-2026 (17 au 23 août 2026)."
+    },
+    {
+      "form": "Jaune d'œuf cru",
+      "form_normalized": "jaune d oeuf cru",
+      "category": "oeufs",
+      "observed": {
+        "basis": "piece",
+        "low": 0.225,
+        "central": 0.27,
+        "high": 0.3317,
+        "unit": "EUR/piece",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 12.5,
+        "central": 15,
+        "high": 18.4278,
+        "conversion": {
+          "kind": "grams_per_piece",
+          "factor": 18,
+          "from": "catalog:jaune d oeuf cru"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "La conversion pièce → kilo utilise la masse catalogue du jaune seul (18 g). Aucune perte de parage supplémentaire n’est appliquée."
+      },
+      "confidence": "B",
+      "confidence_reason": "prix_de_l_oeuf_entier_attribue_au_jaune",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2504:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2504/57230051/2026-08-20",
+        "citation": "RNM — Lait Oeuf DETAIL GMS (cours Détail, € TTC), semaine 34-2026 (17 au 23 août 2026) : « OEUF sans label France barq. de 6 (la boîte de 6) » — prix moyen 1.62 € la boîte de 6, mini (D1) 1.35, maxi (D9) 1.99. Soit 0.27 € l’œuf (1.62 ÷ 6). Série RNM n° 57230051."
+      },
+      "reindexation": null,
+      "notes": "CONVENTION EXPLICITE, à rejeter si on la juge fausse : aucune source ne cote un jaune d’œuf séparément. Le prix porté ici est celui de l’œuf ENTIER qu’il faut acheter pour obtenir un jaune (0,27 €), rapporté aux 18 g de jaune du catalogue — d’où 15,00 €/kg de jaune. La convention SURESTIME dès que le blanc est employé ailleurs dans la même recette, et c’est le seul endroit de cette tranche où le biais va vers le haut. Elle a été préférée à l’absence parce que le nombre reste entièrement traçable : un prix relevé, un facteur du catalogue, une règle écrite. Vérifié en relecture : sur les lignes du corpus exprimées en pièces — la majorité — la convention rend exactement le prix des œufs qu’il faut acheter (2 jaunes = 2 × 18 g × 15,00 €/kg = 0,54 € = 2 œufs à 0,27 €), ce qui est le résultat recherché et non une coïncidence. Trois qualités sont cotées au détail (sans label 1,62 € ; label rouge 2,09 € ; biologique 2,50 €). La forme du catalogue ne porte aucune mention de gamme : la cotation « sans label » a été retenue parce qu’elle est la plus vendue et la moins chère — l’estimation est donc un plancher, et non une moyenne de marché. Le §3.1 du contrat range explicitement la gamme dans ce que la dispersion absorbe, faute de source qui la segmente. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2504:MARCHE affiche la dernière semaine ; saisir 20-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 34-2026 (17 au 23 août 2026)."
+    },
+    {
+      "form": "Blanc d'œuf cru",
+      "form_normalized": "blanc d oeuf cru",
+      "category": "oeufs",
+      "observed": {
+        "basis": "piece",
+        "low": 0.225,
+        "central": 0.27,
+        "high": 0.3317,
+        "unit": "EUR/piece",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 6.8182,
+        "central": 8.1818,
+        "high": 10.0515,
+        "conversion": {
+          "kind": "grams_per_piece",
+          "factor": 33,
+          "from": "catalog:blanc d oeuf cru"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "La conversion pièce → kilo utilise la masse catalogue du blanc seul (33 g)."
+      },
+      "confidence": "B",
+      "confidence_reason": "prix_de_l_oeuf_entier_attribue_au_blanc",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2504:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2504/57230051/2026-08-20",
+        "citation": "RNM — Lait Oeuf DETAIL GMS (cours Détail, € TTC), semaine 34-2026 (17 au 23 août 2026) : « OEUF sans label France barq. de 6 (la boîte de 6) » — prix moyen 1.62 € la boîte de 6, mini (D1) 1.35, maxi (D9) 1.99. Soit 0.27 € l’œuf (1.62 ÷ 6). Série RNM n° 57230051."
+      },
+      "reindexation": null,
+      "notes": "Même convention que le jaune, et même réserve : le prix est celui de l’œuf entier acheté pour en tirer un blanc (0,27 € ÷ 33 g = 8,18 €/kg de blanc). Additionner un jaune et un blanc de la même recette compterait deux œufs là où un seul est acheté ; la couche d’affichage n’a aucun moyen de le savoir, et c’est une limite connue de cette tranche. Mesurée en relecture : une seule recette sur les 589 du corpus emploie à la fois le jaune et le blanc (DESS-011, tarte au citron meringuée). Le double comptage est donc réel, mais circonscrit à ce cas. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2504:MARCHE affiche la dernière semaine ; saisir 20-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 34-2026 (17 au 23 août 2026)."
+    },
+    {
+      "form": "Bœuf haché cru 15 % MG",
+      "form_normalized": "boeuf hache cru 15 mg",
+      "category": "viandes",
+      "observed": {
+        "basis": "kg",
+        "low": 13.96,
+        "central": 17.6,
+        "high": 20.2,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 13.96,
+        "central": 17.6,
+        "high": 20.2,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un steak haché est intégralement consommé : le rendement vaut 1 par nature du produit, non par ignorance.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-24",
+          "observed_on": "2026-08-24",
+          "citation": "Rendement 1,00 par nature du produit : un steak haché est vendu paré et consommé en entier, il n’a pas de partie non comestible."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "cotation_detail_hebdomadaire_libelle_identique",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2501:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2501/57200395/2026-08-20",
+        "citation": "RNM — Viande France DETAIL GMS (cours Détail, € TTC le kg), semaine 34-2026 (17 au 23 août 2026) : « BOEUF (steak haché) 15% MG France cdt 1à3 » — prix moyen 17.60 €/kg, mini (D1) 13.96, maxi (D9) 20.20. Série RNM n° 57200395."
+      },
+      "reindexation": null,
+      "notes": "Le seul appariement littéral de la tranche : le libellé RNM « BOEUF (steak haché) 15% MG » et la source Ciqual de la forme (« Boeuf, steak haché 15% MG, cru ») désignent le même produit, au même taux de matière grasse. Reste en B et non en A parce que la cotation est hebdomadaire, donc ponctuelle au sens du §4 du contrat, qui réserve A à une moyenne mensuelle ou annuelle — or le RNM ne publie ses déciles QUE sur la cotation hebdomadaire, et ses moyennes mensuelles sans dispersion. Le choix a donc été : la fourchette réelle en B, plutôt qu’une moyenne mensuelle sans fourchette impossible à écrire. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2501:MARCHE affiche la dernière semaine ; saisir 20-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 34-2026 (17 au 23 août 2026)."
+    },
+    {
+      "form": "Bœuf haché au couteau",
+      "form_normalized": "boeuf hache au couteau",
+      "category": "viandes",
+      "observed": {
+        "basis": "kg",
+        "low": 13.96,
+        "central": 17.6,
+        "high": 20.2,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 13.96,
+        "central": 17.6,
+        "high": 20.2,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un steak haché est intégralement consommé : le rendement vaut 1 par nature du produit, non par ignorance.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-24",
+          "observed_on": "2026-08-24",
+          "citation": "Rendement 1,00 par nature du produit : un haché est consommé en entier."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "cotation_du_steak_hache_industriel_pour_une_preparation_bouchere",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2501:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2501/57200395/2026-08-20",
+        "citation": "RNM — Viande France DETAIL GMS (cours Détail, € TTC le kg), semaine 34-2026 (17 au 23 août 2026) : « BOEUF (steak haché) 15% MG France cdt 1à3 » — prix moyen 17.60 €/kg, mini (D1) 13.96, maxi (D9) 20.20. Série RNM n° 57200395."
+      },
+      "reindexation": null,
+      "notes": "Adaptation déclarée : le haché au couteau est une préparation de boucherie, habituellement vendue plus cher que le steak haché conditionné qui est ici coté ; l’estimation est donc un minorant pour cette forme. Le catalogue lui-même rattache la forme à la même ligne Ciqual que le steak haché 15 % MG. Une seule ligne du corpus l’emploie : le retenir ou non ne change presque rien à la couverture, mais l’écarter aurait laissé croire qu’aucune donnée n’existe. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2501:MARCHE affiche la dernière semaine ; saisir 20-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 34-2026 (17 au 23 août 2026)."
+    },
+    {
+      "form": "Lapin cru, découpé",
+      "form_normalized": "lapin cru decoupe",
+      "category": "viandes",
+      "observed": {
+        "basis": "kg",
+        "low": 10.49,
+        "central": 12.83,
+        "high": 14.9,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 10.49,
+        "central": 12.83,
+        "high": 14.9,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le lapin est coté entier, os compris, tandis que la forme du catalogue est rattachée à « Lapin, viande crue ». Le rapport os/viande n’est publié par aucune source du registre : 1,00 déclaré, l’estimation est un minorant. Vérification faite sur le corpus, la seule ligne qui emploie cette forme demande 1 400 g pour 6 portions, c’est-à-dire le poids d’un lapin entier découpé et non celui de sa chair désossée — le minorant est donc, en pratique, faible."
+      },
+      "confidence": "B",
+      "confidence_reason": "cotation_lapin_entier_pour_lapin_decoupe",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2501:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2501/57200410/2026-08-20",
+        "citation": "RNM — Viande France DETAIL GMS (cours Détail, € TTC le kg), semaine 34-2026 (17 au 23 août 2026) : « LAPIN (entier) France » — prix moyen 12.83 €/kg, mini (D1) 10.49, maxi (D9) 14.90. Série RNM n° 57200410."
+      },
+      "reindexation": null,
+      "notes": "La découpe n’est pas cotée séparément : le RNM ne suit au détail que le lapin entier. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2501:MARCHE affiche la dernière semaine ; saisir 20-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 34-2026 (17 au 23 août 2026)."
+    },
+    {
+      "form": "Gigot d'agneau cru",
+      "form_normalized": "gigot d agneau cru",
+      "category": "viandes",
+      "observed": {
+        "basis": "kg",
+        "low": 23.85,
+        "central": 26.03,
+        "high": 28.9,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-10",
+        "period_end": "2026-08-16"
+      },
+      "per_kg": {
+        "low": 23.85,
+        "central": 26.03,
+        "high": 28.9,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le gigot est coté avec son os, la forme du catalogue vient de « Agneau, gigot, cru » (la chair). La part osseuse n’est publiée par aucune source du registre : 1,00 déclaré, l’estimation est un minorant du coût réel."
+      },
+      "confidence": "B",
+      "confidence_reason": "cotation_detail_semaine_anterieure_faute_de_deciles_en_semaine_34",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2501:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-13",
+        "source_record_key": "RNM/M2501/32501/2026-08-13",
+        "citation": "RNM — Viande France DETAIL GMS (cours Détail, € TTC le kg), semaine 33-2026 (10 au 16 août 2026) : « AGNEAU (gigot) France » — prix moyen 26.03 €/kg, mini (D1) 23.85, maxi (D9) 28.90. Série RNM n° 32501."
+      },
+      "reindexation": null,
+      "notes": "Seule entrée de la tranche datée d’une autre semaine, et pour une raison précise : en semaine 34-2026 le RNM publie le prix moyen du gigot (25,20 €/kg) mais laisse ses colonnes mini et maxi VIDES. Sans déciles, il n’y a pas de fourchette, et le contrat interdit d’en fabriquer une — la semaine 33, qui les publie, a donc été retenue plutôt que d’écrire trois fois le même nombre, ce qui aurait affirmé une dispersion nulle qui est fausse. L’épaule d’agneau, elle, reste non chiffrée : elle vaut nettement moins cher que le gigot et aucune source du registre ne la cote. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2501:MARCHE affiche la dernière semaine ; saisir 13-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 33-2026 (10 au 16 août 2026)."
+    },
+    {
+      "form": "Poulet entier cru",
+      "form_normalized": "poulet entier cru",
+      "category": "volailles",
+      "observed": {
+        "basis": "kg",
+        "low": 6.35,
+        "central": 7.68,
+        "high": 9.7,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 6.35,
+        "central": 7.68,
+        "high": 9.7,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le poulet est coté prêt à cuire, carcasse comprise, alors que la forme du catalogue vient de Ciqual « Poulet, viande et peau » ou « Poulet, viande ». La part de carcasse n’est publiée par aucune source du registre, donc 1,00 déclaré. CORRIGÉ EN RELECTURE ADVERSE : la note portait que ce défaut était « SANS effet pratique », au motif que le corpus demanderait 1 400 à 1 800 g pour 6 à 10 portions. Le relevé des quatre lignes de CETTE forme dit autre chose — 1 400 g/6 p (Avgolemono, rôle bouillon) et 1 400 g/6 p (Ají de gallina), mais aussi 700 g/6 p (Bouchées à la reine) et 900 g/6 p (sa variante alsacienne). 700 g pour six personnes n’est pas un poulet entier : c’est de la chair désossée. Sur ces deux lignes, le rendement 1,00 sous-évalue donc réellement l’achat, de la part de la carcasse et des os. Le sens de l’erreur reste connu — minorant, §2.3 — mais son ampleur ne l’est pas, et aucune source du registre ne permet de la chiffrer. La lecture rassurante a été retirée plutôt que réécrite à la baisse : la remplacer par un autre pourcentage aurait été inventer ce qu’on vient de constater qu’on ignore."
+      },
+      "confidence": "B",
+      "confidence_reason": "cotation_detail_poulet_pac_label_rouge_seule_gamme_cotee",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2501:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2501/57229979/2026-08-20",
+        "citation": "RNM — Viande France DETAIL GMS (cours Détail, € TTC le kg), semaine 34-2026 (17 au 23 août 2026) : « POULET prêt à cuire France label rouge cdt 1 » — prix moyen 7.68 €/kg, mini (D1) 6.35, maxi (D9) 9.70. Série RNM n° 57229979."
+      },
+      "reindexation": null,
+      "notes": "Adaptation déclarée et coûteuse : au détail, le RNM ne cote QUE le poulet label rouge (7,68 €/kg) et le poulet biologique (12,36 €/kg). Le poulet standard, qui est celui que la forme du catalogue décrit, n’est pas coté au détail — il l’est à Rungis, mais au stade de gros et hors taxes (3,70 €/kg), ce qui n’est pas un prix payé. Le label rouge a donc été retenu, et il MAJORE un poulet standard. C’est le sens d’erreur inverse du rendement, et les deux ne se compensent pas de façon connue : c’est pourquoi l’entrée reste en B. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2501:MARCHE affiche la dernière semaine ; saisir 20-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 34-2026 (17 au 23 août 2026)."
+    },
+    {
+      "form": "Poulet entier cru en morceaux",
+      "form_normalized": "poulet entier cru en morceaux",
+      "category": "volailles",
+      "observed": {
+        "basis": "kg",
+        "low": 6.35,
+        "central": 7.68,
+        "high": 9.7,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 6.35,
+        "central": 7.68,
+        "high": 9.7,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le poulet est coté prêt à cuire, carcasse comprise, alors que la forme du catalogue vient de Ciqual « Poulet, viande et peau » ou « Poulet, viande ». La part de carcasse n’est publiée par aucune source du registre, donc 1,00 déclaré. Vérification faite en relecture sur les sept lignes de cette forme — 1 500 g ×4, 1 600 g ×2, 1 800 g ×1, pour 6 à 10 portions — toutes demandent la masse d’un poulet entier acheté et non celle de sa chair désossée. Sur cette forme-ci, et contrairement à « Poulet entier cru », le défaut est effectivement sans portée pratique."
+      },
+      "confidence": "B",
+      "confidence_reason": "cotation_detail_poulet_pac_label_rouge_seule_gamme_cotee",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2501:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2501/57229979/2026-08-20",
+        "citation": "RNM — Viande France DETAIL GMS (cours Détail, € TTC le kg), semaine 34-2026 (17 au 23 août 2026) : « POULET prêt à cuire France label rouge cdt 1 » — prix moyen 7.68 €/kg, mini (D1) 6.35, maxi (D9) 9.70. Série RNM n° 57229979."
+      },
+      "reindexation": null,
+      "notes": "Adaptation déclarée et coûteuse : au détail, le RNM ne cote QUE le poulet label rouge (7,68 €/kg) et le poulet biologique (12,36 €/kg). Le poulet standard, qui est celui que la forme du catalogue décrit, n’est pas coté au détail — il l’est à Rungis, mais au stade de gros et hors taxes (3,70 €/kg), ce qui n’est pas un prix payé. Le label rouge a donc été retenu, et il MAJORE un poulet standard. C’est le sens d’erreur inverse du rendement, et les deux ne se compensent pas de façon connue : c’est pourquoi l’entrée reste en B. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2501:MARCHE affiche la dernière semaine ; saisir 20-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 34-2026 (17 au 23 août 2026)."
+    },
+    {
+      "form": "Poulet entier cru, prêt à cuire",
+      "form_normalized": "poulet entier cru pret a cuire",
+      "category": "volailles",
+      "observed": {
+        "basis": "kg",
+        "low": 6.35,
+        "central": 7.68,
+        "high": 9.7,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 6.35,
+        "central": 7.68,
+        "high": 9.7,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le poulet est coté prêt à cuire, carcasse comprise, alors que la forme du catalogue vient de Ciqual « Poulet, viande et peau » ou « Poulet, viande ». La part de carcasse n’est publiée par aucune source du registre, donc 1,00 déclaré. Les deux lignes de cette forme (1 800 g/6 p et 1 200 g/4 p) sont des masses de poulet entier : le défaut est sans portée pratique ici aussi. Reste l’écart de définition, qui est le plus grand des trois formes : le catalogue rattache celle-ci à « Poulet, viande, crue », c’est-à-dire sans la peau, alors que la cotation porte sur l’oiseau entier."
+      },
+      "confidence": "B",
+      "confidence_reason": "cotation_detail_poulet_pac_label_rouge_seule_gamme_cotee",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2501:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2501/57229979/2026-08-20",
+        "citation": "RNM — Viande France DETAIL GMS (cours Détail, € TTC le kg), semaine 34-2026 (17 au 23 août 2026) : « POULET prêt à cuire France label rouge cdt 1 » — prix moyen 7.68 €/kg, mini (D1) 6.35, maxi (D9) 9.70. Série RNM n° 57229979."
+      },
+      "reindexation": null,
+      "notes": "Adaptation déclarée et coûteuse : au détail, le RNM ne cote QUE le poulet label rouge (7,68 €/kg) et le poulet biologique (12,36 €/kg). Le poulet standard, qui est celui que la forme du catalogue décrit, n’est pas coté au détail — il l’est à Rungis, mais au stade de gros et hors taxes (3,70 €/kg), ce qui n’est pas un prix payé. Le label rouge a donc été retenu, et il MAJORE un poulet standard. C’est le sens d’erreur inverse du rendement, et les deux ne se compensent pas de façon connue : c’est pourquoi l’entrée reste en B. Cette forme-ci (« prêt à cuire ») est celle dont le libellé colle le mieux à la cotation, mais le catalogue la rattache à « Poulet, viande, crue », c’est-à-dire sans la peau — l’écart de rendement y est donc le plus grand des trois. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2501:MARCHE affiche la dernière semaine ; saisir 20-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 34-2026 (17 au 23 août 2026)."
+    },
+    {
+      "form": "Dos de cabillaud cru",
+      "form_normalized": "dos de cabillaud cru",
+      "category": "poissons_fruits_de_mer",
+      "observed": {
+        "basis": "kg",
+        "low": 32.9,
+        "central": 36.93,
+        "high": 39.99,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 32.9,
+        "central": 36.93,
+        "high": 39.99,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le dos de cabillaud est vendu paré, sans arête ni peau, et la forme du catalogue désigne le même morceau : la perte attendue est nulle ou proche de zéro. Elle n’est pas pour autant DÉCLARÉE connue — aucune source du registre ne publie de part comestible, et myko_reasoning n’admet le 1,00 que lorsqu’il découle de la nature du produit, ce qui se défend pour un haché mais pas pour un morceau de poisson."
+      },
+      "confidence": "B",
+      "confidence_reason": "cotation_detail_hebdomadaire_libelle_identique",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2500:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2500/57220755/2026-08-20",
+        "citation": "RNM — Marée France DETAIL GMS (cours Détail, € TTC le kg), semaine 34-2026 (17 au 23 août 2026) : « CABILLAUD (dos de cabillaud) » — prix moyen 36.93 €/kg, mini (D1) 32.90, maxi (D9) 39.99. Série RNM n° 57220755."
+      },
+      "reindexation": null,
+      "notes": "Second appariement littéral de la tranche : le libellé RNM est exactement le nom du morceau que la forme du catalogue désigne. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2500:MARCHE affiche la dernière semaine ; saisir 20-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 34-2026 (17 au 23 août 2026)."
+    },
+    {
+      "form": "Pavé de saumon cru, sans peau",
+      "form_normalized": "pave de saumon cru sans peau",
+      "category": "poissons_fruits_de_mer",
+      "observed": {
+        "basis": "kg",
+        "low": 16.9,
+        "central": 21.69,
+        "high": 27.9,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 16.9,
+        "central": 21.69,
+        "high": 27.9,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "La cotation ne précise pas si le pavé est vendu avec ou sans peau, là où la forme du catalogue dit « sans peau ». La différence de rendement entre les deux n’est publiée par aucune source du registre : 1,00 déclaré."
+      },
+      "confidence": "B",
+      "confidence_reason": "cotation_pave_aquaculture_origine_hors_france_peau_non_precisee",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2500:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2500/57229981/2026-08-20",
+        "citation": "RNM — Marée France DETAIL GMS (cours Détail, € TTC le kg), semaine 34-2026 (17 au 23 août 2026) : « SAUMON pavé aquaculture hors Fr. » — prix moyen 21.69 €/kg, mini (D1) 16.90, maxi (D9) 27.90. Série RNM n° 57229981."
+      },
+      "reindexation": null,
+      "notes": "Deux écarts déclarés plutôt qu’un : la cotation porte sur du saumon d’aquaculture d’origine hors France (Norvège, Écosse), alors que la forme du catalogue est générique ; et elle ne dit pas si le pavé porte sa peau. La fourchette est la plus large de la tranche (16,90 – 27,90 €/kg, rapport 1,65), ce qui reflète un rayon où le premier prix et le label cohabitent — le §3.1 du contrat assume que la dispersion absorbe la gamme. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2500:MARCHE affiche la dernière semaine ; saisir 20-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 34-2026 (17 au 23 août 2026)."
+    },
+    {
+      "form": "Moule commune crue",
+      "form_normalized": "moule commune crue",
+      "category": "poissons_fruits_de_mer",
+      "observed": {
+        "basis": "kg",
+        "low": 3.35,
+        "central": 5.26,
+        "high": 6.99,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 3.35,
+        "central": 5.26,
+        "high": 6.99,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "C’est exactement le rendement qui manque, et il vaut nettement moins que 1 : la moule s’achète en coquille. Le corpus, relu ligne à ligne en relecture adverse, ne dit pas dans quel état il la compte (voir notes). Aucune table de parts comestibles n’est au registre des sources ; myko_reasoning a interdiction d’en porter une."
+      },
+      "confidence": "C",
+      "confidence_reason": "ecart_coquille_chair_non_source",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2500:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2500/57200414/2026-08-20",
+        "citation": "RNM — Marée France DETAIL GMS (cours Détail, € TTC le kg), semaine 34-2026 (17 au 23 août 2026) : « MOULE vrac France » — prix moyen 5.26 €/kg, mini (D1) 3.35, maxi (D9) 6.99. Série RNM n° 57200414."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE VOLONTAIREMENT EN C : le prix, lui, est bien relevé et vérifiable. Ce qui bloque est le rendement. Le RNM cote la moule en vrac, coquille comprise ; la forme du catalogue vient de Ciqual « Moule commune, crue », c’est-à-dire la chair. CORRIGÉ EN RELECTURE ADVERSE : la note affirmait que le corpus « tranche » en faveur de la chair, au vu de 375 g pour 4 portions. Le relevé des huit lignes ne tranche pas — 900 g/4 p sur quatre d’entre elles (Moules marinières et ses trois variantes), 375 g/4 p sur trois (Bouillabaisse et variantes), 188 g/4 p sur une. Soit 225 g par personne d’un côté, 94 g de l’autre : trop peu pour de la moule en coquille servie en plat, trop pour de la seule chair. Le corpus est donc ambigu, et cette ambiguïté RENFORCE le refus au lieu de l’affaiblir — on ignore non seulement le rendement, mais jusqu’à l’état dans lequel la recette exprime sa quantité. Publier reviendrait à parier sur l’un des deux, avec un facteur d’écart entre les deux paris. Publier 5,26 €/kg avec un rendement de 1,00 afficherait donc un coût plusieurs fois trop bas — pas un minorant de quelques pour cent, un facteur. Le §0 du contrat préfère l’absence, et le §2.3 n’autorise le défaut à 1,00 que comme biais de sens connu, pas comme division par trois silencieuse. L’entrée est conservée pour que le travail de relevé ne soit pas à refaire le jour où une part comestible sourcée entrera au registre : il suffira alors de renseigner edible_yield et de passer en B. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2500:MARCHE affiche la dernière semaine ; saisir 20-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 34-2026 (17 au 23 août 2026)."
+    },
+    {
+      "form": "Truite crue",
+      "form_normalized": "truite crue",
+      "category": "poissons_fruits_de_mer",
+      "observed": {
+        "basis": "kg",
+        "low": 12.99,
+        "central": 15.52,
+        "high": 16.95,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 12.99,
+        "central": 15.52,
+        "high": 16.95,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Rendement poisson entier vidé → chair non sourcé, et sensiblement inférieur à 1 (tête, arêtes, peau). Aucune source du registre ne le publie."
+      },
+      "confidence": "C",
+      "confidence_reason": "ecart_poisson_entier_chair_non_source",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M2500:MARCHE",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-24",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M2500/57230065/2026-08-20",
+        "citation": "RNM — Marée France DETAIL GMS (cours Détail, € TTC le kg), semaine 34-2026 (17 au 23 août 2026) : « TRUITE (entière) vidée aquaculture portion France » — prix moyen 15.52 €/kg, mini (D1) 12.99, maxi (D9) 16.95. Série RNM n° 57230065."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE VOLONTAIREMENT EN C, pour la même raison que la moule et avec un facteur plus faible mais du même ordre : le RNM cote la truite ENTIÈRE vidée, la forme du catalogue vient de « Truite de mer, crue » et le corpus demande 520 g pour 4 portions, soit 130 g par personne — une quantité de chair, pas de poisson entier. Le prix est relevé et reste ici pour la traçabilité ; il deviendra publiable le jour où une part comestible sourcée sera disponible. Noter au passage un second écart, moindre : la cotation porte sur de la truite d’aquaculture portion France, la ligne Ciqual sur de la truite de mer. Cotation hebdomadaire du panel RNM : 150 magasins de plus de 400 m², plan de sondage stratifié (surface, zonage géographique, taille de l’unité urbaine). Le prix moyen est une moyenne PONDÉRÉE des relevés, et le MIN/MAX publié est explicitement le premier et le neuvième décile de la série (page « définition, méthodologie » du marché) : d’où dispersion = d1_d9, et non quoted_range. n_observations vaut 1 parce qu’une seule cotation publiée a été lue ; le RNM ne publie pas le nombre de magasins ayant coté ce libellé-là, et l’inventer aurait été écrire un chiffre de plus. Biais connu et déclaré : « lorsque, dans un même magasin, plusieurs références correspondent à un même libellé, le prix relevé est celui le plus bas » — la cotation est donc un bas de gamme du rayon. Pour retrouver la cotation : https://rnm.franceagrimer.fr/prix?M2500:MARCHE affiche la dernière semaine ; saisir 20-08-26 dans le champ « autre date » (formulaire POST, il n’existe pas de lien direct daté) restitue semaine 34-2026 (17 au 23 août 2026)."
+    }
+  ]
+}

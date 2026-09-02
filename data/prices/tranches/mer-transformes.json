@@ -1,0 +1,705 @@
+{
+  "schema_version": "1.0.0",
+  "price_set_version": "2026.08-mer-transformes",
+  "country": "FR",
+  "currency": "EUR",
+  "reference_date": "2026-08-24",
+  "derived_license": "odbl-1.0",
+  "catalog_version": "v3-300-real-dishes",
+  "built_at": "2026-08-30",
+  "notes": "Tranche « mer et transformés » : produits de la mer, produits transformés, produits laitiers et matières grasses. Dix-sept formes à traiter, sept chiffrées et affichables, six conservées en C pour la traçabilité, quatre laissées sans entrée du tout.\n\nRELECTURE ADVERSE DU 2026-08-30. Les treize entrées ont été rouvertes contre leurs sources. Les 153 relevés Open Prices cités dans les clés d'enregistrement ont été relus un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>, leur prix au kilo recalculé à partir du prix et du poids net, et chaque médiane, décile, minimum et maximum publié refait : tous concordent au centime. Aucune citation ne dit autre chose que ce que la source dit, aucun magasin ni aucune date n'est inexact, aucun relevé n'est en promotion, hors de France ou postérieur à la date de référence, et aucun couple (référence, magasin) n'apparaît deux fois dans un panier. La méthode a été rejouée depuis les catégories brutes pour six paniers : elle reproduit exactement les paniers publiés. La cotation RNM de la morue (18,00 €/kg, série 290505) a été retrouvée sur la page du marché, comme celles du brochet (11,00) et du rouget grondin (7,50) citées plus bas.\n\nDEUX ENTRÉES ONT ÉTÉ RETIRÉES DE L'AFFICHAGE PAR CETTE RELECTURE, non pour un chiffre faux mais pour un appariement de forme faux. « Crevette crue décortiquée » (26,50 €/kg) reposait à quinze relevés sur dix-sept sur de la crevette CUITE, la médiane elle-même étant tenue par un produit cuit et seulement semi-décortiqué. « Mimolette demi-vieille » (12,05 €/kg) reposait sur des mimolettes d'affinage non déclaré dont le panier montre qu'elles se vendent au prix de la mimolette jeune, quand les deux relevés du même panier qui portent l'affinage demandé valent 24,80 et 31,45 €/kg. Les deux entrées passent en C sur les seuls relevés qui portent l'état ou l'affinage du catalogue ; le détail et le panier retiré sont écrits dans leurs notes. La couverture du lot descend de neuf formes à sept, de 22 à 19 lignes du corpus publiable et de 19 901 à 18 928 kcal — décomptes refaits à la relecture sur les 405 recettes éligibles à la publication, et non sur les 589 du corpus brut — une baisse assumée, parce qu'un prix retiré est un prix qui ne ment plus.\n\nDEUX SOURCES SEULEMENT, ET C'EST UNE CONTRAINTE DU REGISTRE. Open Prices porte douze des treize entrées ; le RNM de FranceAgriMer en porte une, en C. L'Observatoire de la formation des prix et des marges aurait été la source naturelle pour les produits laitiers et les transformés — le registre lui accorde A et l'autorise à porter un prix — mais son champ license_verified_on y vaut encore null, et le contrôleur refuse par construction toute entrée qui s'en réclamerait (source_license_unverified). Lever ce verrou est un geste humain et daté qui n'appartient pas à cette tranche : elle n'a pas touché au registre.\n\nderived_license vaut odbl-1.0 : Open Prices est sous Open Database License, qui est à partage à l'identique et impose donc sa licence au référentiel produit dès qu'une seule de ses lignes y entre. Ce n'est pas un détail juridique lointain, c'est une conséquence sur la licence du dépôt.\n\nAUCUNE ENTRÉE EN A, et ce n'est pas un oubli. Le §4 du contrat exige pour A une source qui accorde A ; Open Prices est plafonnée à B au registre, définitivement, parce que ses contributions sont volontaires. Toute la tranche est donc en B ou en C par construction.\n\nLES COTATIONS DE GROS ONT ÉTÉ ÉCARTÉES, comme dans les tranches « frais animal » et « carné ». Le RNM cote au MIN de Rungis la morue salée sèche, la noix de Saint-Jacques décortiquée, l'encornet, la crevette, le brochet et le grondin — c'est-à-dire précisément les formes que ce lot peine à chiffrer. Ces cotations sont des cours de grossistes hors taxes : les convertir en prix payé en caisse demanderait une marge de distribution et un taux de TVA qu'aucune source du registre ne publie. Le seul marché de détail RNM des produits de la mer, Marée France DETAIL GMS (M2500), ne cote que sept libellés, tous déjà employés par la tranche « frais animal ».\n\nQUATRE FORMES N'ONT REÇU AUCUNE ENTRÉE, faute d'un relevé qui porte sur le bon produit : « Bœuf à braiser cru, en petits cubes » (même ligne Ciqual que « Bœuf à braiser cru », même relevé unique, rien à ajouter) ; « Graisse d'oie » (zéro relevé, et le mot « oie » n'apparaît dans aucun des 2 310 relevés de la catégorie « en:animal-fats », toutes dates confondues ; seule la graisse de CANARD est relevée, six fois sur les douze mois interrogés après dédoublonnage par couple (référence, magasin) — recompté à la relecture adverse sur les 2 310 relevés : n° 235870 à 9,69 ; 183787 à 9,84 ; 301994 à 10,91 ; 306992 à 10,94 ; 316955 à 17,00 ; 212175 à 18,83 €/kg, soit une médiane de 10,92 €/kg — un autre animal, un autre prix, et la publier sous le nom de l'oie aurait été écrire un chiffre pour une forme qui n'a pas été mesurée) ; « Chair de brochet crue » (le seul relevé français d'Open Prices est une boîte de quenelles ; le RNM ne cote que « BROCHET (entier) 2-3 kg Import », 11,00 €/kg HT au MIN de Rungis au marché du 29/08/26, soit un cours de gros ET un poisson entier non fileté) ; « Rouget grondin cru » (aucun relevé Open Prices ; le RNM ne cote que « ROUGET Grondin gris (entier) 300-400 g France », 7,50 €/kg HT au même marché et à la même date, mêmes deux défauts). Dans les deux derniers cas, deux corrections auraient été nécessaires — la marge de détail et le rendement de filetage — et aucune des deux n'est sourçable au registre.",
+  "entries": [
+    {
+      "form": "Boudin noir à cuire",
+      "form_normalized": "boudin noir a cuire",
+      "category": "produits_transformes",
+      "observed": {
+        "basis": "kg",
+        "low": 7.52,
+        "central": 11.2,
+        "high": 14.68,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 13,
+        "period_start": "2025-09-16",
+        "period_end": "2026-06-11"
+      },
+      "per_kg": {
+        "low": 7.52,
+        "central": 11.2,
+        "high": 14.68,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le boudin se vend dans son boyau, que la recette cuit avec et que le mangeur laisse ou non dans l'assiette. Aucune source du registre ne publie la part du boyau dans le poids net, et myko_reasoning a interdiction d'en porter une. Rendement 1,00 déclaré inconnu : l'estimation est un minorant, et le sens de l'erreur est connu."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_13_releves_boudin_noir_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ablack-pudding&date__gte=2025-08-25&size=100&order_by=-date",
+        "observed_on": "2026-06-11",
+        "source_record_key": "open_prices:en:black-pudding/boudin-noir/FR/2025-09-16..2026-06-11/n=13 · ids 226707,223285,299573,299367,227252,226702,230237,149309,159349,260951,260956,260957,262646",
+        "citation": "Open Prices (Open Food Facts), catégorie Open Food Facts « en:black-pudding », relevés en magasin en France du 2025-09-16 au 2026-06-11, hors promotion, ramenés au kilogramme par le poids net du contenant : 13 relevés retenus après dédoublonnage, de 6,77 à 15,30 €/kg — 6,77 €/kg le 2026-02-21 pour « Boudin noir aux oignons » (Tradilège/Marque Repère, barquette 375 g, 2,54 €, Centre Commercial E.Leclerc Clichy, relevé n° 226707) ; 8,17 €/kg le 2026-02-25 pour « Boudin Noir Antillais » (Le Père Benoît, 600 g, 4,90 €, Carrefour Villeurbanne, relevé n° 299367) ; 11,20 €/kg le 2026-02-22 pour « Boudin noir antillais » (Tradilège, 375 g, 4,20 €, Centre Commercial E.Leclerc Gennevilliers, relevé n° 230237) ; 15,30 €/kg le 2026-04-05 pour « Boudin Noir à l'Ancienne ANTILLAIS » (Carrefour, 300 g, 4,59 €, Carrefour Gennevilliers, relevé n° 262646). Médiane 11,20 €/kg, D1 7,52, D9 14,68."
+      },
+      "reindexation": null,
+      "notes": "SÉLECTION. La catégorie Open Food Facts « en:black-pudding » mélange le boudin NOIR et le boudin BLANC. Sur les 26 relevés français que les filtres communs laissent passer, treize ont été écartés : huit portent « blanc », « Rethel » ou « Reithel » dans leur libellé et n'ont rien à voir avec la forme du catalogue (Ciqual 8703, « Boudin noir, à cuire ») ; les cinq autres sont AMBIGUS et sortis pour cette seule raison — « Boudin à l'ancienne » (Bahier, 10,00 et 12,68 €/kg), « Boudin à l'ancienne aux pommes du verger » (Bahier, 10,08 €/kg), « Boudin traditionnel Antillais au Piment de Cayenne » (Bahier, 10,50 €/kg) et « 40 mini boudins créoles » (Madrange, 11,74 €/kg), qui sont probablement du boudin noir mais ne le disent pas. Le critère retenu est littéral, donc rejouable : le libellé doit porter « noir ». Ce choix ne va PAS dans le sens du prix publié — réintégrer les cinq ambigus donnerait 18 relevés et abaisserait la médiane de 11,20 à 10,94 €/kg.\n\nCOMPOSITION DU PANIER. Treize relevés, onze références, six magasins (E.Leclerc Clichy et Gennevilliers, Auchan Grenoble, Carrefour Villeurbanne et Gennevilliers, Picard Montreuil). Le panier mêle trois familles que le rayon vend côte à côte : boudin noir aux oignons, boudin noir aux pommes et boudin noir antillais. Ciqual ne distingue pas ces variantes, et le §3.1 du contrat range explicitement la gamme dans ce que la dispersion absorbe. Deux relevés Picard portent sur du boudin noir SURGELÉ (13,60 €/kg les deux) : c'est le haut du panier, et c'est déclaré.\n\nÉCART CONNU. Une même référence peut varier fortement d'un magasin à l'autre : « Boudin Noir Antillais » Le Père Benoît 600 g (code 3295216000099) se relève à 4,90 € chez Carrefour Villeurbanne et à 8,29 € chez Carrefour Gennevilliers, soit 8,17 contre 13,82 €/kg pour le même produit. C'est exactement la dispersion que low et high décrivent, et non une erreur.\n\nMéthode Open Prices commune à toute la tranche, appliquée dans cet ordre : (1) interrogation de l'API v1 sur une ou plusieurs catégories Open Food Facts, avec date__gte=2025-08-25, soit les douze mois qui précèdent la date de référence du jeu — aucun relevé plus ancien n'entre, ce qui rend la réindexation INSEE inutile plutôt que facultative ; (2) magasin situé en France (code pays OpenStreetMap du magasin, l'API n'offrant pas de filtre pays), devise EUR ; (3) rejet des relevés en promotion (price_is_discounted) ; (4) rejet des relevés postérieurs au 2026-08-24 ; (5) passage au kilo : pour un relevé de type CATEGORY le prix est déjà au kilo quand price_per vaut KILOGRAM, pour un relevé de type PRODUCT il est divisé par le poids net déclaré au catalogue Open Food Facts (product_quantity), et un produit sans poids net, ou dont le poids net est exprimé en volume, est écarté — jamais de densité supposée ; (6) rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity ; (7) sélection sur le libellé et sur le code-barres, décrite entrée par entrée ; (8) dédoublonnage par couple (référence, magasin), en gardant le relevé le plus récent — sans quoi un magasin qui saisit trois fois la même barquette pèserait trois fois. Dispersion : au-dessus de dix relevés retenus, low et high sont les premier et neuvième déciles empiriques (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. central est toujours la médiane des relevés retenus. Chaque identifiant cité se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Plafond B définitif : les contributions sont volontaires, l'échantillon n'est représentatif de rien en particulier."
+    },
+    {
+      "form": "Noix de Saint-Jacques crue",
+      "form_normalized": "noix de saint jacques crue",
+      "category": "poissons_fruits_de_mer",
+      "observed": {
+        "basis": "kg",
+        "low": 29.36,
+        "central": 56.72,
+        "high": 58.85,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 13,
+        "period_start": "2025-11-16",
+        "period_end": "2026-02-15"
+      },
+      "per_kg": {
+        "low": 29.36,
+        "central": 56.72,
+        "high": 58.85,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "La noix décoquillée est intégralement comestible, mais les noix surgelées portent couramment un glaçage d'eau compté dans le poids net vendu, et aucune source du registre ne publie ce taux de glaçage. Le rendement reste donc à 1,00 déclaré inconnu : l'estimation est un minorant. Le cas n'est PAS celui du rendement de décoquillage — la forme du catalogue est déjà la noix seule, et le panier ne contient aucune coquille entière."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_13_releves_noix_decoquillees_saison_declaree_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ascallop&date__gte=2025-08-25&size=100&order_by=-date",
+        "observed_on": "2026-02-15",
+        "source_record_key": "open_prices:en:scallop+en:st-jacques-shells/noix/FR/2025-11-16..2026-02-15/n=13 · ids 206376,164725,221684,212532,221688,206378,206595,207526,190096,206375,197237,197248,221701",
+        "citation": "Open Prices (Open Food Facts), catégories Open Food Facts « en:scallop » et « en:st-jacques-shells », relevés en magasin en France du 2025-11-16 au 2026-02-15, hors promotion, ramenés au kilogramme par le poids net du contenant : 13 relevés retenus après dédoublonnage, tous des NOIX décoquillées, de 23,13 à 59,33 €/kg — 23,13 €/kg le 2026-02-07 pour « Noix de Saint-Jacques » (Éco+, 300 g, 6,94 €, Centre Commercial E.Leclerc Clichy, relevé n° 206376) ; 41,95 €/kg le 2026-02-10 pour « Noix de Saint Jacques sans corail » (Pescanova, 200 g, 8,39 €, Super U Grenoble, relevé n° 212532) ; 56,72 €/kg le 2026-02-07 pour « Noix de St Jacques, Pecten Maximus, pêchée en Atlantique Nord-Est, barquette 250 g » (U, 14,18 €, Super U Lyon, relevé n° 206595) ; 59,33 €/kg le 2026-02-15 pour « Noix de Saint-Jacques de Normandie » (Nos Régions ont du Talent, 300 g, 17,80 €, Centre Commercial E.Leclerc Gennevilliers, relevé n° 221701). Médiane 56,72 €/kg, D1 29,36, D9 58,85."
+      },
+      "reindexation": null,
+      "notes": "CE QUI A ÉTÉ ÉCARTÉ, ET POURQUOI. Les catégories « en:scallop » et « en:st-jacques-shells » sont largement occupées par des PLATS : coquilles Saint-Jacques à la bretonne, à la normande, fondue de poireaux, papillotes à la crème. Ce sont des préparations en coquille, pas la noix crue que désigne la forme du catalogue (Ciqual 10045, « Coquille Saint-Jacques, noix, crue »). Sur les 39 relevés français que les filtres communs laissent passer, 26 ont été écartés : 23 dont le libellé ne porte même pas le mot « noix » (coquilles à la bretonne, à la normande, fondue de poireaux, papillotes à la crème, cocktails de fruits de mer) et 3 qui le portent sans être le bon produit — les conserves « Noix de St Jacques au naturel » (Nautilus, 25,51 et 35,32 €/kg), appertisées donc cuites, et « Coquilles Noix de St Jacques à la Bretonne » (Mix Buffet, 28,89 €/kg), qui est un plat.\n\nLECTURE CONCURRENTE, écrite pour qu'un relecteur puisse la préférer. Le panier publié contient deux relevés de « Noix de Saint-Jacques AVEC CORAIL 20/40 ASC » (29,00 et 30,80 €/kg), alors que la fiche du catalogue retient explicitement la noix SANS corail. Les retirer laisserait onze relevés, médiane 56,76 €/kg (D1 41,95 ; D9 58,90) : la médiane ne bouge quasiment pas, mais la borne basse monte de 29,36 à 41,95. Le panier le plus large a été publié parce qu'il compte plus de références et que la dispersion est censée décrire ce qu'un acheteur rencontre au rayon ; un relecteur qui juge que le corail n'a rien à faire ici doit lire 41,95 au lieu de 29,36 en borne basse.\n\nPANIER BIMODAL, ET C'EST LE FAIT MARQUANT. Les treize relevés forment deux amas nets : cinq entre 23 et 48 €/kg (noix surgelées d'aquaculture ou de pêche lointaine, 20/40 pièces au kilo) et huit entre 56 et 60 €/kg (Pecten maximus de Normandie, de Saint-Brieuc, MSC). La médiane tombe dans l'amas haut parce que huit relevés sur treize y sont. Ce n'est pas un artefact de calcul : c'est ce que l'échantillon dit, et l'échantillon est petit et volontaire. Un panier plus fourni pourrait déplacer la médiane vers le bas.\n\nSAISON. Tous les relevés retenus tombent entre le 16 novembre et le 15 février, c'est-à-dire dans la saison de pêche et dans les fêtes. Open Prices ne contient aucun relevé français de noix de Saint-Jacques hors de cette fenêtre sur les douze mois interrogés. La catégorie poissons_fruits_de_mer n'est pas rangée parmi les catégories saisonnières du contrôleur, donc l'entrée n'est pas automatiquement dégradée ; mais le prix publié est bien un prix de saison, et il faut le lire comme tel.\n\nRNM. Le Réseau des Nouvelles des Marchés cote la coquille Saint-Jacques décortiquée, mais uniquement au MIN de Rungis (« COQUILLE SAINT JACQUES fraîche décortiquée blanche Import », 23,00 €/kg HT le 29/08/26) : c'est un cours de GROSSISTES hors taxes, que passer en prix de caisse demanderait un coefficient de marge qu'aucune source du registre ne publie. Écarté, pour la raison déjà retenue par les tranches « frais animal » et « carné ». Le marché de détail RNM des produits de la mer (Marée France DETAIL GMS, M2500) ne cote que sept libellés et la Saint-Jacques n'en fait pas partie.\n\nMéthode Open Prices commune à toute la tranche, appliquée dans cet ordre : (1) interrogation de l'API v1 sur une ou plusieurs catégories Open Food Facts, avec date__gte=2025-08-25, soit les douze mois qui précèdent la date de référence du jeu — aucun relevé plus ancien n'entre, ce qui rend la réindexation INSEE inutile plutôt que facultative ; (2) magasin situé en France (code pays OpenStreetMap du magasin, l'API n'offrant pas de filtre pays), devise EUR ; (3) rejet des relevés en promotion (price_is_discounted) ; (4) rejet des relevés postérieurs au 2026-08-24 ; (5) passage au kilo : pour un relevé de type CATEGORY le prix est déjà au kilo quand price_per vaut KILOGRAM, pour un relevé de type PRODUCT il est divisé par le poids net déclaré au catalogue Open Food Facts (product_quantity), et un produit sans poids net, ou dont le poids net est exprimé en volume, est écarté — jamais de densité supposée ; (6) rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity ; (7) sélection sur le libellé et sur le code-barres, décrite entrée par entrée ; (8) dédoublonnage par couple (référence, magasin), en gardant le relevé le plus récent — sans quoi un magasin qui saisit trois fois la même barquette pèserait trois fois. Dispersion : au-dessus de dix relevés retenus, low et high sont les premier et neuvième déciles empiriques (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. central est toujours la médiane des relevés retenus. Chaque identifiant cité se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Plafond B définitif : les contributions sont volontaires, l'échantillon n'est représentatif de rien en particulier."
+    },
+    {
+      "form": "Confit de canard cuit, effiloché",
+      "form_normalized": "confit de canard cuit effiloche",
+      "category": "produits_transformes",
+      "observed": {
+        "basis": "kg",
+        "low": 10.22,
+        "central": 13.44,
+        "high": 24.1,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 14,
+        "period_start": "2025-09-30",
+        "period_end": "2026-07-04"
+      },
+      "per_kg": {
+        "low": 10.22,
+        "central": 13.44,
+        "high": 24.1,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le poids net de la boîte comprend l'os des cuisses et la graisse de couverture ; la forme du catalogue est la chair effilochée, désossée et égouttée. Le rapport entre les deux n'est publié par aucune source du registre, et myko_reasoning a interdiction de porter un rendement inférieur à 1. Rendement 1,00 déclaré inconnu : l'estimation est un minorant de sens connu, d'ampleur non nulle."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_14_releves_conserves_de_confit_rendement_os_et_graisse_declare_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aduck-confit&date__gte=2025-08-25&size=100&order_by=-date",
+        "observed_on": "2026-07-04",
+        "source_record_key": "open_prices:en:duck-confit/confit/FR/2025-09-30..2026-07-04/n=14 · ids 251576,271875,291505,142951,172689,172795,238222,173162,172734,172676,224389,173334,173187,172688",
+        "citation": "Open Prices (Open Food Facts), catégorie Open Food Facts « en:duck-confit », relevés en magasin en France du 2025-09-30 au 2026-07-04, hors promotion, ramenés au kilogramme par le poids net du contenant : 14 relevés retenus après dédoublonnage, de 9,33 à 70,42 €/kg — 9,33 €/kg le 2026-03-26 pour « Confit de canard du sud ouest » (Nos régions ont du talent, 300 g, 2,80 €, Centre Commercial E.Leclerc Clichy, relevé n° 251576) ; 12,36 €/kg le 2025-12-14 pour « Confit De Canard du sud-ouest 4 cuisses » (Auchan Gourmet, boîte 1 350 g, 16,69 €, Auchan Supermarché Grenoble, relevé n° 172689) ; 14,34 €/kg le 2025-12-16 pour « Confit de canard 4 cuisses » (Maison Montfort, 1 000 g, 14,34 €, E.Leclerc Canteleu, relevé n° 173162) ; 27,15 €/kg le 2025-12-16 pour « Confit de Canard du Sud-Ouest » (Reflets de France, 425 g, 11,54 €, Carrefour City Grenoble, relevé n° 173187). Médiane 13,44 €/kg, D1 10,22, D9 24,10."
+      },
+      "reindexation": null,
+      "notes": "CE QUE LE PRIX PORTE, ET CE QUE LA RECETTE EMPLOIE — c'est le point faible de cette entrée et il est déclaré deux fois, ici et dans edible_yield. Le prix est celui de la BOÎTE, poids net réglementaire, qui contient des cuisses avec leur os et la graisse de couverture. La forme du catalogue est « Confit de canard cuit, effiloché » (Ciqual 8110), c'est-à-dire la chair effilochée, sans os et égouttée. Le kilogramme de chair effilochée coûte donc davantage que le kilogramme de boîte. Aucune source du registre ne publie le rapport entre les deux ; le chiffrer de tête serait précisément le nombre plausible et invérifiable que le §0 du contrat proscrit. Le rendement reste donc à 1,00 déclaré inconnu, et le montant affiché est un MINORANT dont on connaît le sens (§2.3). Il n'est pas mis en C, à la différence de la moule de la tranche « frais animal » : là-bas l'écart coquille/chair était d'un facteur et le corpus ne disait même pas dans quel état il comptait ; ici l'état demandé est sans ambiguïté et l'écart est borné par la part d'os et de graisse d'une cuisse, qui ne fait pas un facteur.\n\nSÉLECTION. Ont été écartés sur le libellé tous les PLATS CUISINÉS que la catégorie contient et qui ne sont pas du confit vendu seul : « Canard confit & écrasé de Pommes de terre » (Marie, onze relevés de 14,47 à 20,10 €/kg), « Confit de canard pommes-de-terre à la Sarladaise » (La Belle Chaurie), « Lentilles cuisinées au confit de canard » (Maison Rivière, 4,67 €/kg). Les gésiers confits, qui portent la même catégorie, sont écartés ici : ils font l'objet d'une entrée séparée.\n\nVALEUR EXTRÊME CONSERVÉE. Le relevé n° 172688 — « Confit de canard » El Dawaq, boîte de 240 g à 16,90 €, soit 70,42 €/kg — est quatre à cinq fois la médiane. Le poids net déclaré au catalogue Open Food Facts (240 g) est cohérent avec le libellé, donc la règle de rejet des poids contradictoires ne s'applique pas et le relevé a été conservé. Il ne déforme pas l'entrée parce que la dispersion est prise en déciles empiriques : D9 vaut 24,10 €/kg, pas 70,42. Le supprimer aurait été une intervention non écrite dans la méthode.\n\nFORMATS. Le panier mêle des boîtes de 240 g à 1 350 g. Le petit conditionnement se paie beaucoup plus cher au kilo (425 g à 27,15 €/kg contre 1 350 g à 12,36 €/kg) ; c'est un fait de rayon, pas un défaut du relevé, et c'est une part importante de la largeur de la fourchette publiée.\n\nMéthode Open Prices commune à toute la tranche, appliquée dans cet ordre : (1) interrogation de l'API v1 sur une ou plusieurs catégories Open Food Facts, avec date__gte=2025-08-25, soit les douze mois qui précèdent la date de référence du jeu — aucun relevé plus ancien n'entre, ce qui rend la réindexation INSEE inutile plutôt que facultative ; (2) magasin situé en France (code pays OpenStreetMap du magasin, l'API n'offrant pas de filtre pays), devise EUR ; (3) rejet des relevés en promotion (price_is_discounted) ; (4) rejet des relevés postérieurs au 2026-08-24 ; (5) passage au kilo : pour un relevé de type CATEGORY le prix est déjà au kilo quand price_per vaut KILOGRAM, pour un relevé de type PRODUCT il est divisé par le poids net déclaré au catalogue Open Food Facts (product_quantity), et un produit sans poids net, ou dont le poids net est exprimé en volume, est écarté — jamais de densité supposée ; (6) rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity ; (7) sélection sur le libellé et sur le code-barres, décrite entrée par entrée ; (8) dédoublonnage par couple (référence, magasin), en gardant le relevé le plus récent — sans quoi un magasin qui saisit trois fois la même barquette pèserait trois fois. Dispersion : au-dessus de dix relevés retenus, low et high sont les premier et neuvième déciles empiriques (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. central est toujours la médiane des relevés retenus. Chaque identifiant cité se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Plafond B définitif : les contributions sont volontaires, l'échantillon n'est représentatif de rien en particulier."
+    },
+    {
+      "form": "Crème aigre",
+      "form_normalized": "creme aigre",
+      "category": "produits_laitiers",
+      "observed": {
+        "basis": "kg",
+        "low": 3.61,
+        "central": 4.0,
+        "high": 4.53,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 7,
+        "period_start": "2025-11-05",
+        "period_end": "2026-04-02"
+      },
+      "per_kg": {
+        "low": 3.61,
+        "central": 4.0,
+        "high": 4.53,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "ce qui est dans le pot est intégralement l'aliment : une crème n'a ni peau à jeter, ni os, ni parage.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : le contenu d'un pot de crème est intégralement l'aliment, il n'a aucune partie non comestible."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_7_releves_creme_epaisse_legere_15pct_mg_appariement_du_catalogue_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Arefrigerated-15-20-fat-light-thick-cream&date__gte=2025-08-25&size=100&order_by=-date",
+        "observed_on": "2026-04-02",
+        "source_record_key": "open_prices:cremes-fraiches/epaisse-legere-15pct/3155251205425+3270190020868+3256222803128/FR/2025-11-05..2026-04-02/n=7 · ids 158757,258528,243196,158756,207322,243371,258168",
+        "citation": "Open Prices (Open Food Facts), crème fraîche ÉPAISSE LÉGÈRE à 15 % de matière grasse, relevés en magasin en France du 2025-11-05 au 2026-04-02, hors promotion, ramenés au kilogramme par le poids net du pot : 7 relevés retenus après dédoublonnage, sur trois références seulement, de 3,61 à 4,53 €/kg — 3,61 €/kg le 2025-11-05 pour « Crème fraîche épaisse légère » (Carrefour, pot 202 g, 0,73 €, Carrefour Lyon Part-Dieu, relevé n° 158757) ; 3,84 €/kg le 2026-04-02 pour « Crème fraîche épaisse légère 15%MG - pot 190 g » (U, 0,73 €, Super U Paris, relevé n° 258528) ; 4,21 €/kg le 2026-02-07 pour « Crème Fraiche Légère & épaisse 15%MG » (Bridélice, 497 g, 2,09 €, Auchan Clichy, relevé n° 207322) ; 4,53 €/kg le 2026-04-02 pour la même référence Bridélice (2,25 €, Diagonal Clichy, relevé n° 258168). Médiane 4,00 €/kg, minimum 3,61, maximum 4,53."
+      },
+      "reindexation": null,
+      "notes": "APPARIEMENT, ET IL VIENT DU CATALOGUE LUI-MÊME. « Crème aigre » ne se vend pas sous ce nom en grande surface française. Le catalogue alimentaire a déjà tranché la question pour la nutrition : la forme « Crème aigre » y est rattachée à Ciqual 19431, « Crème de lait, 15 à 20 % MG, légère, épaisse, rayon frais », au motif que la crème épaisse du rayon frais est maturée par ferments lactiques, donc bien une crème acidifiée. Le prix relevé ici est celui de ce produit-là et d'aucun autre : crème fraîche épaisse légère à 15 % de matière grasse. C'est une adaptation déclarée, et c'est elle qui plafonne l'entrée à B en plus du plafond de la source.\n\nSÉLECTION PAR LE TAUX DE MATIÈRE GRASSE, VÉRIFIÉ RÉFÉRENCE PAR RÉFÉRENCE. Le rayon crème est un piège : la même catégorie Open Food Facts contient des crèmes entières à 30 %, des « extra légères » à 4 %, des allégées à 12 % et des crèmes sans lactose. Les trois références retenues ont été vérifiées une par une sur leur fiche produit Open Food Facts, champ fat_100g : 3155251205425 Bridélice = 15,0 g/100 g ; 3270190020868 Carrefour = 15,0 ; 3256222803128 U = 15,0. Ont été écartées, nommément : Elle & Vire épaisse légère 12 % (3451790439506, quatre relevés de 5,06 à 5,64 €/kg), Elle & Vire sans lactose 4 % (3451790012914), Bridélice « Extra Légère & Épaisse » (3155253026172, 3,50 €/kg), Yoplait crème fraîche légère à 11,9 % (3329770062702) et la crème d'Isigny à 30 % (7,55 à 7,93 €/kg). Chacune est un produit voisin, aucune n'est à 15-20 % MG.\n\nFAIBLESSE À CONNAÎTRE. Sept relevés, mais seulement TROIS références et cinq magasins, dont quatre relevés sur la seule Bridélice 497 g. La fourchette 3,61-4,53 €/kg décrit donc surtout l'écart entre magasins sur un petit nombre de produits, pas la diversité du rayon. En dessous de dix relevés, low et high sont le minimum et le maximum observés, et non des déciles : c'est ce que dit dispersion = min_max.\n\nMéthode Open Prices commune à toute la tranche, appliquée dans cet ordre : (1) interrogation de l'API v1 sur une ou plusieurs catégories Open Food Facts, avec date__gte=2025-08-25, soit les douze mois qui précèdent la date de référence du jeu — aucun relevé plus ancien n'entre, ce qui rend la réindexation INSEE inutile plutôt que facultative ; (2) magasin situé en France (code pays OpenStreetMap du magasin, l'API n'offrant pas de filtre pays), devise EUR ; (3) rejet des relevés en promotion (price_is_discounted) ; (4) rejet des relevés postérieurs au 2026-08-24 ; (5) passage au kilo : pour un relevé de type CATEGORY le prix est déjà au kilo quand price_per vaut KILOGRAM, pour un relevé de type PRODUCT il est divisé par le poids net déclaré au catalogue Open Food Facts (product_quantity), et un produit sans poids net, ou dont le poids net est exprimé en volume, est écarté — jamais de densité supposée ; (6) rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity ; (7) sélection sur le libellé et sur le code-barres, décrite entrée par entrée ; (8) dédoublonnage par couple (référence, magasin), en gardant le relevé le plus récent — sans quoi un magasin qui saisit trois fois la même barquette pèserait trois fois. Dispersion : au-dessus de dix relevés retenus, low et high sont les premier et neuvième déciles empiriques (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. central est toujours la médiane des relevés retenus. Chaque identifiant cité se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Plafond B définitif : les contributions sont volontaires, l'échantillon n'est représentatif de rien en particulier."
+    },
+    {
+      "form": "Crevette crue décortiquée",
+      "form_normalized": "crevette crue decortiquee",
+      "category": "poissons_fruits_de_mer",
+      "observed": {
+        "basis": "kg",
+        "low": 18.9,
+        "central": 22.1,
+        "high": 25.3,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 2,
+        "period_start": "2026-02-03",
+        "period_end": "2026-08-11"
+      },
+      "per_kg": {
+        "low": 18.9,
+        "central": 22.1,
+        "high": 25.3,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Sans objet tant que le prix n'est pas publiable. Pour mémoire : la crevette décortiquée est intégralement comestible, mais les sachets surgelés portent couramment un glaçage d'eau compté dans le poids net vendu, et aucune source du registre ne publie ce taux."
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_deux_releves_crus_et_decortiques_sous_le_minimum_de_cinq_du_registre",
+      "provenance": {
+        "source_code": "open_prices",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=fr%3Acrevettes-decortiquees&date__gte=2025-08-25&size=100&order_by=-date",
+        "observed_on": "2026-08-11",
+        "source_record_key": "open_prices:en:shrimps+fr:crevettes-decortiquees+en:shrimps-tails/crues-ET-decortiquees/FR/2026-02-03..2026-08-11/n=2 · ids 200455,307071",
+        "citation": "Open Prices (Open Food Facts), catégories Open Food Facts « en:shrimps », « fr:crevettes-decortiquees » et « en:shrimps-tails », crevettes dont le libellé porte À LA FOIS l'état cru et le décorticage, relevés en magasin en France, hors promotion, ramenés au kilogramme par le poids net du contenant : 2 relevés seulement sur les douze mois interrogés — 25,30 €/kg le 2026-02-03 pour « Queues de Crevettes crues décortiquées » (Carrefour, 300 g, 7,59 €, Carrefour Arcueil, relevé n° 200455) ; 18,90 €/kg le 2026-08-11 pour « Queues de crevettes decortiquees crues 300 g ASC » (Odyssée, 5,67 €, Intermarché Mons-en-Barœul, relevé n° 307071). Un troisième relevé de cette même référence au même magasin, le n° 294408 du 2026-07-18 à 19,20 €/kg, sort au dédoublonnage. Médiane des deux relevés 22,10 €/kg, minimum 18,90, maximum 25,30."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE REMISE EN C PAR LA RELECTURE ADVERSE DU 2026-08-30, ET C'EST LA LECTURE CONCURRENTE QUE L'AUTEUR DU LOT AVAIT LUI-MÊME ÉCRITE. Le panier de dix-sept relevés qui portait la médiane de 26,50 €/kg a été rouvert relevé par relevé sur https://prices.openfoodfacts.org/api/v1/prices/<id> : l'arithmétique était exacte au centime, la sélection conforme à la méthode déclarée, aucun chiffre n'était inventé. Ce qui ne tient pas, c'est l'appariement de la forme. Quinze des dix-sept relevés portent sur de la crevette CUITE, et le relevé qui tenait exactement la médiane — le n° 199605, « Queues de crevettes, cuites, semi-décortiquées » — n'est ni cru ni entièrement décortiqué, c'est-à-dire ni l'un ni l'autre des deux états que nomme la forme du catalogue (Ciqual 10021, « Crevette, crue »).\n\nTROIS RAISONS, CHACUNE SUFFISANTE. (1) Sur l'état demandé, Open Prices ne donne que DEUX relevés français après dédoublonnage sur les douze mois interrogés, quand le registre (sources.json, open_prices.min_observations) en exige cinq pour dépasser C. (2) Le biais n'est pas du bruit mais a un sens connu : la cuisson fait perdre de l'eau à la crevette, donc un prix au kilo de crevette cuite appliqué à des grammes de crevette crue SURESTIME le coût — et de fait, la médiane publiée de 26,50 €/kg dépassait de 20 % le point milieu des deux relevés crus (22,10 €/kg). (3) L'état est précisément la propriété qu'on ne rapproche pas : c'est la même règle qui a fait refuser, dans cette tranche, la médiane du foie gras CUIT sous le nom du foie gras cru.\n\nCE QUE VALENT LES DEUX RELEVÉS CONSERVÉS. Deux relevés, deux références, deux enseignes, deux dates éloignées de six mois. C'est trop peu pour une médiane représentative, et la valeur centrale écrite ici (22,10 €/kg) n'est que le point milieu des deux : elle est publiée en C, donc jamais affichée et jamais comptée dans la couverture, et elle existe pour que la file de revue sache exactement d'où repartir.\n\nCE QUI A ÉTÉ ÉCARTÉ, ET REVÉRIFIÉ À LA RELECTURE. Les crevettes ENTIÈRES, avec carapace — le catalogue demande le décortiqué et l'écart de rendement n'est publié par aucune source du registre. La fiche produit de « Queues de crevettes CRUES » Carrefour 450 g (3560070422067) a été rouverte sur world.openfoodfacts.org : son nom générique dit « Queues de crevette AVEC CARAPACE crues, surgelées » — l'exclusion est confirmée, et elle joue contre le prix, puisque ce relevé est à 15,98 €/kg. Écartés de même « Crevettes rouges crues d'Argentine » (3760287430408) et « GAMBAS entières crues » (3256227108310) ; écarté aussi « Queues de crevettes crues surgelées » Gineys (3267180361407, 29,90 €/kg) parce que ni le libellé ni la fiche ne disent si elles sont décortiquées, et qu'on ne devine pas. Écartés enfin tous les apprêts : nems, pizzas, crevettes à l'ail et au persil, couronnes en sauce cocktail, beignets.\n\nLE PANIER RETIRÉ, GARDÉ ICI POUR LA TRAÇABILITÉ. Dix-sept relevés (ids 204823, 143021, 307071, 223149, 177008, 288676, 197238, 200455, 199605, 291976, 269150, 292001, 223150, 251756, 300238, 251757, 251722), médiane 26,50 €/kg, D1 15,54, D9 40,48 — chiffres recalculés et confirmés à la relecture, mais portant sur « crevette décortiquée toutes cuissons » et non sur la forme du catalogue. Le panier mêlait des sachets surgelés de 300 à 500 g (9,98 à 25,30 €/kg) et des barquettes fraîches de 100 à 180 g au rayon traiteur (29,50 à 47,20 €/kg) : le petit conditionnement frais est nettement plus cher au kilo, et c'est lui qui tenait le haut de la fourchette.\n\nRNM. Le marché de détail des produits de la mer (M2500, « Marée France DETAIL GMS ») ne cote pas la crevette — vérifié à la relecture : il ne porte que sept libellés (cabillaud dos, huître creuse vrac, lieu noir filet, moule vrac, saumon pavé, sole portion, truite entière). Les cotations crevette du RNM sont toutes des cours de grossistes au MIN de Rungis, hors taxes, écartés pour la raison retenue par les tranches déjà versées.\n\nMéthode Open Prices commune à toute la tranche, appliquée dans cet ordre : (1) interrogation de l'API v1 sur une ou plusieurs catégories Open Food Facts, avec date__gte=2025-08-25, soit les douze mois qui précèdent la date de référence du jeu — aucun relevé plus ancien n'entre, ce qui rend la réindexation INSEE inutile plutôt que facultative ; (2) magasin situé en France (code pays OpenStreetMap du magasin, l'API n'offrant pas de filtre pays), devise EUR ; (3) rejet des relevés en promotion (price_is_discounted) ; (4) rejet des relevés postérieurs au 2026-08-24 ; (5) passage au kilo : pour un relevé de type CATEGORY le prix est déjà au kilo quand price_per vaut KILOGRAM, pour un relevé de type PRODUCT il est divisé par le poids net déclaré au catalogue Open Food Facts (product_quantity), et un produit sans poids net, ou dont le poids net est exprimé en volume, est écarté — jamais de densité supposée ; (6) rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity ; (7) sélection sur le libellé et sur le code-barres, décrite entrée par entrée ; (8) dédoublonnage par couple (référence, magasin), en gardant le relevé le plus récent — sans quoi un magasin qui saisit trois fois la même barquette pèserait trois fois. Dispersion : au-dessus de dix relevés retenus, low et high sont les premier et neuvième déciles empiriques (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. central est toujours la médiane des relevés retenus. Chaque identifiant cité se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Plafond B définitif : les contributions sont volontaires, l'échantillon n'est représentatif de rien en particulier."
+    },
+    {
+      "form": "Fromage blanc à 3 pourcent",
+      "form_normalized": "fromage blanc a 3 pourcent",
+      "category": "produits_laitiers",
+      "observed": {
+        "basis": "kg",
+        "low": 1.98,
+        "central": 2.24,
+        "high": 3.95,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 23,
+        "period_start": "2025-09-17",
+        "period_end": "2026-08-17"
+      },
+      "per_kg": {
+        "low": 1.98,
+        "central": 2.24,
+        "high": 3.95,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "ce qui est dans le pot est intégralement l'aliment : un fromage blanc n'a ni croûte, ni peau, ni parage.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : le contenu d'un pot de fromage blanc est intégralement l'aliment, il n'a aucune partie non comestible."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_23_releves_fromage_blanc_nature_3pct_mg_verifie_reference_par_reference_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aplain-fresh-cream-cheese-around-3-fat&date__gte=2025-08-25&size=100&order_by=-date",
+        "observed_on": "2026-08-17",
+        "source_record_key": "open_prices:fromages-blancs-natures/3pct-mg-verifie/FR/2025-09-17..2026-08-17/n=23 · ids 258314,258313,263796,260111,233343,192092,292920,304984,203572,287847,287835,250302,281661,245006,179186,311610,263859,160755,250368,250363,243225,270659,250303",
+        "citation": "Open Prices (Open Food Facts), fromage blanc ou fromage frais NATURE à environ 3 % de matière grasse, relevés en magasin en France du 2025-09-17 au 2026-08-17, hors promotion, ramenés au kilogramme par le poids net du pot : 23 relevés retenus après dédoublonnage, sur 17 références et 15 magasins, de 1,79 à 4,40 €/kg — 1,79 €/kg le 2026-04-02 pour « Fromage blanc 3 % de matière grasse » (Top Budget, pot 1 kg, 1,79 €, Intermarché Super Bresson, relevé n° 258314) ; 2,09 €/kg le 2026-08-05 pour « Fromage blanc 3.2 % mg merci » (MERCI!, 1 kg, 2,09 €, Intermarché Hyper Cavaillon, relevé n° 304984) ; 2,24 €/kg le 2026-03-24 pour « Fromage blanc 3 % » (Délisse/Marque Repère, 12 × 100 g soit 1 200 g, 2,69 €, Centre Commercial E.Leclerc Clichy, relevé n° 250302) ; 4,40 €/kg le 2026-03-24 pour « Danone fromage blanc 3,2 % de mg nature 100 g × 4 » (400 g, 1,76 €, même magasin, relevé n° 250303). Médiane 2,24 €/kg, D1 1,98, D9 3,95."
+      },
+      "reindexation": null,
+      "notes": "SÉLECTION VÉRIFIÉE UN PRODUIT À LA FOIS. Le rayon fromage blanc contient du 0 %, du 1 %, du 8 % « gourmand », des fruités sucrés et des skyr, tous rangés dans les mêmes catégories Open Food Facts. Les dix-sept références retenues ont été contrôlées une par une sur leur fiche produit Open Food Facts, champ fat_100g : toutes tombent entre 2,8 et 3,6 g de lipides pour 100 g, ce qui est bien le « 3 % MG environ » de la forme du catalogue (Ciqual 19646, « Fromage blanc nature, 3 % MG environ »). Le seul cas ambigu, « Fromage frais Nature Malo 20 % » (3278691190011), a été gardé après vérification : son 20 % est exprimé sur extrait sec et sa fiche donne 2,8 g de lipides pour 100 g de produit fini.\n\nDEUX RELEVÉS ÉCARTÉS NOMMÉMENT. (1) « Fromage frais nature 3 % MG 6 × 60 g CC » Biocoop (3760121213419, relevé n° 136479) : le libellé annonce six pots de 60 g, le catalogue Open Food Facts déclare un poids net de 60 g, et le prix au kilo calculé sur ce poids atteint 33,17 €/kg, six fois le reste du panier. Le poids du libellé contredit product_quantity : rejeté par la règle générale de la tranche. (2) « FROMAGE BLANC 3,2 % NATURE CALIN EXTRA » Yoplait (3329770076464) : sa teneur en sucres, 6,6 g/100 g, est le double des autres références du panier (3,2 à 4,7 g, soit le lactose seul) et de la ligne Ciqual retenue (3,46 g de glucides). Ce n'est pas le même produit ; écarté.\n\nCE QUE LE PANIER MONTRE, ET QUI EST LE VRAI RÉSULTAT ICI : le prix au kilo du fromage blanc nature est d'abord une affaire de FORMAT, pas de marque. Les pots de 900 g à 1,2 kg se tiennent entre 1,79 et 2,45 €/kg ; les pots de 400 à 825 g, et les packs de petits pots individuels, entre 3,24 et 4,40 €/kg, soit près du double. La fourchette publiée (D1 1,98 ; D9 3,95) recouvre exactement cet écart de conditionnement. Un foyer qui achète le grand pot paie le bas de la fourchette. Un seul relevé biologique (U Bio 3,6 % MG, 3,50 €/kg) figure au panier ; il est au milieu, pas au sommet.\n\nMéthode Open Prices commune à toute la tranche, appliquée dans cet ordre : (1) interrogation de l'API v1 sur une ou plusieurs catégories Open Food Facts, avec date__gte=2025-08-25, soit les douze mois qui précèdent la date de référence du jeu — aucun relevé plus ancien n'entre, ce qui rend la réindexation INSEE inutile plutôt que facultative ; (2) magasin situé en France (code pays OpenStreetMap du magasin, l'API n'offrant pas de filtre pays), devise EUR ; (3) rejet des relevés en promotion (price_is_discounted) ; (4) rejet des relevés postérieurs au 2026-08-24 ; (5) passage au kilo : pour un relevé de type CATEGORY le prix est déjà au kilo quand price_per vaut KILOGRAM, pour un relevé de type PRODUCT il est divisé par le poids net déclaré au catalogue Open Food Facts (product_quantity), et un produit sans poids net, ou dont le poids net est exprimé en volume, est écarté — jamais de densité supposée ; (6) rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity ; (7) sélection sur le libellé et sur le code-barres, décrite entrée par entrée ; (8) dédoublonnage par couple (référence, magasin), en gardant le relevé le plus récent — sans quoi un magasin qui saisit trois fois la même barquette pèserait trois fois. Dispersion : au-dessus de dix relevés retenus, low et high sont les premier et neuvième déciles empiriques (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. central est toujours la médiane des relevés retenus. Chaque identifiant cité se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Plafond B définitif : les contributions sont volontaires, l'échantillon n'est représentatif de rien en particulier."
+    },
+    {
+      "form": "Gésier de canard confit",
+      "form_normalized": "gesier de canard confit",
+      "category": "produits_transformes",
+      "observed": {
+        "basis": "kg",
+        "low": 11.87,
+        "central": 26.0,
+        "high": 36.42,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 8,
+        "period_start": "2025-09-30",
+        "period_end": "2026-07-31"
+      },
+      "per_kg": {
+        "low": 11.87,
+        "central": 26.0,
+        "high": 36.42,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Le poids net du bocal comprend la graisse de couverture dans laquelle les gésiers sont confits ; la ligne Ciqual retenue décrit le gésier ÉGOUTTÉ, ce que fait la recette en le poêlant. Le rapport entre les deux n'est publié par aucune source du registre. Rendement 1,00 déclaré inconnu, estimation minorante de sens connu."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_8_releves_gesiers_de_canard_confits_rendement_graisse_declare_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aduck-gizzards&date__gte=2025-08-25&size=100&order_by=-date",
+        "observed_on": "2026-07-31",
+        "source_record_key": "open_prices:en:duck-gizzards/canard/FR/2025-09-30..2026-07-31/n=8 · ids 142948,302542,302539,281442,183784,260921,233246,173325",
+        "citation": "Open Prices (Open Food Facts), catégorie Open Food Facts « en:duck-gizzards », gésiers de CANARD confits, relevés en magasin en France du 2025-09-30 au 2026-07-31, hors promotion, ramenés au kilogramme par le poids net du bocal ou de la boîte : 8 relevés retenus après dédoublonnage, de 11,87 à 36,42 €/kg — 11,87 €/kg le 2025-09-30 pour « Gésiers de canard confits » (Secret de Chef, 385 g, 4,57 €, Auchan Supermarché Grenoble, relevé n° 142948) ; 18,60 €/kg le 2026-07-31 pour « Confit de gésiers de canard du sud ouest » (Maison Montfort, 385 g, 7,16 €, Auchan Nancy, relevé n° 302539) ; 32,51 €/kg le 2026-02-27 pour « Gésiers confits canard » (Nos Régions Ont Du Talent, 215 g, 6,99 €, E. Leclerc Nancy, relevé n° 233246) ; 36,42 €/kg le 2025-12-16 pour « Gésiers de canards » (Reflets de France, 212 g, 7,72 €, Carrefour City Grenoble, relevé n° 173325). Médiane 26,00 €/kg, minimum 11,87, maximum 36,42."
+      },
+      "reindexation": null,
+      "notes": "SÉLECTION. La catégorie « en:duck-gizzards » contient aussi des « Gésiers de VOLAILLE confits » (Le Gaulois, trois relevés de 12,67 à 18,30 €/kg) : la volaille n'est pas le canard, et la forme du catalogue est explicitement le gésier de canard (Ciqual 40701, « Gésier, canard, confit, appertisé »). Ces trois relevés ont été écartés, alors qu'ils auraient abaissé la médiane.\n\nPANIER BIMODAL, ET LA MÉDIANE TOMBE ENTRE LES DEUX AMAS. Quatre relevés portent sur des bocaux de 385 g (11,87 à 19,51 €/kg), quatre sur des boîtes de 212-215 g (32,50 à 36,42 €/kg). Il n'y a rien entre les deux, et la médiane de 26,00 €/kg est donc un point que le rayon ne propose nulle part : elle est la médiane statistique d'un échantillon à deux modes, pas un prix qu'on voit sur une étiquette. C'est aussi pourquoi la fourchette publiée est large (11,87-36,42, rapport 3,1) : elle décrit honnêtement un rayon où le format commande le prix au kilo.\n\nHuit relevés seulement, six références, sept magasins : au-dessous de dix, low et high sont le minimum et le maximum observés et non des déciles.\n\nMéthode Open Prices commune à toute la tranche, appliquée dans cet ordre : (1) interrogation de l'API v1 sur une ou plusieurs catégories Open Food Facts, avec date__gte=2025-08-25, soit les douze mois qui précèdent la date de référence du jeu — aucun relevé plus ancien n'entre, ce qui rend la réindexation INSEE inutile plutôt que facultative ; (2) magasin situé en France (code pays OpenStreetMap du magasin, l'API n'offrant pas de filtre pays), devise EUR ; (3) rejet des relevés en promotion (price_is_discounted) ; (4) rejet des relevés postérieurs au 2026-08-24 ; (5) passage au kilo : pour un relevé de type CATEGORY le prix est déjà au kilo quand price_per vaut KILOGRAM, pour un relevé de type PRODUCT il est divisé par le poids net déclaré au catalogue Open Food Facts (product_quantity), et un produit sans poids net, ou dont le poids net est exprimé en volume, est écarté — jamais de densité supposée ; (6) rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity ; (7) sélection sur le libellé et sur le code-barres, décrite entrée par entrée ; (8) dédoublonnage par couple (référence, magasin), en gardant le relevé le plus récent — sans quoi un magasin qui saisit trois fois la même barquette pèserait trois fois. Dispersion : au-dessus de dix relevés retenus, low et high sont les premier et neuvième déciles empiriques (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. central est toujours la médiane des relevés retenus. Chaque identifiant cité se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Plafond B définitif : les contributions sont volontaires, l'échantillon n'est représentatif de rien en particulier."
+    },
+    {
+      "form": "Truite fumée",
+      "form_normalized": "truite fumee",
+      "category": "poissons_fruits_de_mer",
+      "observed": {
+        "basis": "kg",
+        "low": 34.49,
+        "central": 45.97,
+        "high": 57.82,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 34,
+        "period_start": "2025-09-17",
+        "period_end": "2026-08-22"
+      },
+      "per_kg": {
+        "low": 34.49,
+        "central": 45.97,
+        "high": 57.82,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Des tranches de truite fumée en sachet n'ont pas de partie à jeter, et la perte attendue est nulle ou proche de zéro. Elle n'est pas pour autant DÉCLARÉE connue : aucune source du registre ne publie de part comestible, et la tranche « frais animal » a déjà refusé, pour le dos de cabillaud, de faire porter à myko_reasoning un 1,00 « par nature » sur un morceau de poisson. On ne fait pas ici ce qu'on a refusé là."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_34_releves_libelle_identique_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asmoked-trouts&date__gte=2025-08-25&size=100&order_by=-date",
+        "observed_on": "2026-08-22",
+        "source_record_key": "open_prices:en:smoked-trouts/FR/2025-09-17..2026-08-22/n=34 · ids 281811,252726,252675,263637,252778,316068,251803,300176,224522,300157,252698,181168,300164,184648,263602,271329,252676,270687,252697,306561,252678,184740,252677,267798,306328,306505,271330,270318,210140,270375,209754,252679,292506,270317",
+        "citation": "Open Prices (Open Food Facts), catégorie Open Food Facts « en:smoked-trouts », relevés en magasin en France du 2025-09-17 au 2026-08-22, hors promotion, ramenés au kilogramme par le poids net du sachet : 34 relevés retenus après dédoublonnage, sur 25 références et 14 magasins, de 22,10 à 62,33 €/kg — 22,10 €/kg le 2026-06-07 pour « Truite fumée » (Eco+, 100 g, 2,21 €, E.Leclerc Drive Nancy, relevé n° 281811) ; 34,40 €/kg le 2026-04-10 pour « Truite Fumée de France » (Ovive, 100 g, 3,44 €, E.Leclerc Express Nancy, relevé n° 263637) ; 45,97 €/kg est la médiane du panier, encadrée par « Truite des Pyrénées fumée » à 45,27 €/kg le 2026-03-27 (Pêcheries Basques, 110 g, 4,98 €, Centre Commercial E.Leclerc Clichy, relevé n° 252676) et à 46,67 €/kg le 2026-04-30 (Pêcheries Basques, 120 g, 5,60 €, Colruyt Laneuveville-devant-Nancy, relevé n° 270687) ; 62,33 €/kg le 2026-04-30 pour « Truite Fumée Aquitaine » (Ovive, 60 g, 3,74 €, Match Saint-Max, relevé n° 270317). Médiane 45,97 €/kg, D1 34,49, D9 57,82."
+      },
+      "reindexation": null,
+      "notes": "L'ENTRÉE LA MIEUX APPUYÉE DE LA TRANCHE : 34 relevés, 25 références, 14 magasins, sur onze mois pleins, et un appariement littéral — la catégorie Open Food Facts « en:smoked-trouts » désigne exactement la forme du catalogue (Ciqual 27029, « Truite d'élevage, fumée »), qui se mange telle quelle et que la recette ne cuit pas.\n\nDEUX RELEVÉS ÉCARTÉS NOMMÉMENT. (1) « Truite fumée et oeufs de truite » (Delicemer, deux relevés à 24,17 et 27,67 €/kg) : le sachet contient deux aliments, dont l'un n'est pas la forme du catalogue, et le poids net ne dit pas dans quelle proportion. (2) « Truite Fumée LANDVIKA 6T 150 g » (3392780004109, relevé n° 252727) : le libellé annonce 150 g, le catalogue Open Food Facts déclare 60 g. Le poids du libellé contredit product_quantity, donc rejet par la règle générale. En revanche « Truite Fumée Aquitaine » 60 g (3392780003454, relevés n° 252679 et 270317) a été gardée : son libellé n'annonce aucun poids, le 60 g déclaré n'est contredit par rien, et un sachet de deux tranches existe bel et bien au rayon — c'est un vrai petit format, cher au kilo, pas une erreur de saisie.\n\nCE QUE LA FOURCHETTE DÉCRIT. Elle est large (34,49-57,82 €/kg) et elle recouvre deux choses à la fois : le format (60 à 180 g) et la provenance revendiquée. Les truites de premier prix et les truites « de France » sans origine plus précise tiennent le bas ; les truites des Pyrénées, d'Aquitaine, de Bretagne et les biologiques (56,25 et 59,70 €/kg) tiennent le haut. Le §3.1 du contrat range explicitement la gamme dans ce que la dispersion absorbe : elle n'est pas décomposée ici, elle est constatée.\n\nRNM. Le marché de détail des produits de la mer (M2500) cote la truite ENTIÈRE vidée, pas la truite fumée ; cette cotation-là sert déjà, en C, à la forme « Truite crue » de la tranche « frais animal ». Aucune cotation RNM de détail ne porte sur du poisson fumé.\n\nMéthode Open Prices commune à toute la tranche, appliquée dans cet ordre : (1) interrogation de l'API v1 sur une ou plusieurs catégories Open Food Facts, avec date__gte=2025-08-25, soit les douze mois qui précèdent la date de référence du jeu — aucun relevé plus ancien n'entre, ce qui rend la réindexation INSEE inutile plutôt que facultative ; (2) magasin situé en France (code pays OpenStreetMap du magasin, l'API n'offrant pas de filtre pays), devise EUR ; (3) rejet des relevés en promotion (price_is_discounted) ; (4) rejet des relevés postérieurs au 2026-08-24 ; (5) passage au kilo : pour un relevé de type CATEGORY le prix est déjà au kilo quand price_per vaut KILOGRAM, pour un relevé de type PRODUCT il est divisé par le poids net déclaré au catalogue Open Food Facts (product_quantity), et un produit sans poids net, ou dont le poids net est exprimé en volume, est écarté — jamais de densité supposée ; (6) rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity ; (7) sélection sur le libellé et sur le code-barres, décrite entrée par entrée ; (8) dédoublonnage par couple (référence, magasin), en gardant le relevé le plus récent — sans quoi un magasin qui saisit trois fois la même barquette pèserait trois fois. Dispersion : au-dessus de dix relevés retenus, low et high sont les premier et neuvième déciles empiriques (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. central est toujours la médiane des relevés retenus. Chaque identifiant cité se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Plafond B définitif : les contributions sont volontaires, l'échantillon n'est représentatif de rien en particulier."
+    },
+    {
+      "form": "Mimolette demi-vieille",
+      "form_normalized": "mimolette demi vieille",
+      "category": "produits_laitiers",
+      "observed": {
+        "basis": "kg",
+        "low": 24.8,
+        "central": 24.8,
+        "high": 24.8,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2025-09-17",
+        "period_end": "2025-09-17"
+      },
+      "per_kg": {
+        "low": 24.8,
+        "central": 24.8,
+        "high": 24.8,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Sans objet tant que le prix n'est pas publiable. Pour mémoire : la mimolette porte une croûte qu'on ne mange pas et que le poids net comprend quand le fromage est vendu en morceau ; aucune source du registre n'en publie la part."
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_un_seul_releve_a_l_affinage_demande_sous_le_minimum_de_cinq_du_registre",
+      "provenance": {
+        "source_code": "open_prices",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Amimolette-cheese&date__gte=2025-08-25&size=100&order_by=-date",
+        "observed_on": "2025-09-17",
+        "source_record_key": "open_prices:en:mimolette-cheese/demi-vieille-etiquetee/FR/2025-09-17/n=1 · ids 179869",
+        "citation": "Open Prices (Open Food Facts), catégorie Open Food Facts « en:mimolette-cheese », relevé en magasin en France, hors promotion : un seul relevé français dont le libellé porte l'affinage que nomme la forme du catalogue ET dont le poids net permet le passage au kilo — « Mimolette Bio (27 % MG) Demi-vieille » (Lait Plaisirs/Vitafrais, 200 g, 4,96 €, soit 24.80 €/kg) le 2025-09-17 à Graoucoop Metz, relevé n° 179869. Deux relevés voisins ne sont pas retenus : « Mimolette Demie Vieille au lait pasteurisé, 27 %MG » (Isigny Ste-Mère, Carrefour Market Vannes, 2026-04-07, relevé n° 262805) n'a pas de poids net déclaré au catalogue Open Food Facts et ne se ramène donc pas au kilogramme ; « MIMOLETTE BIO 6 MOIS » (Isigny Sainte-Mère, 200 g, 6,29 €, soit 31,45 €/kg, Carrefour Gennevilliers, 2026-04-06, relevé n° 261823) porte une durée d'affinage et non la mention demi-vieille."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE REMISE EN C PAR LA RELECTURE ADVERSE DU 2026-08-30, SUR UNE PREUVE TIRÉE DU PANIER LUI-MÊME. L'entrée publiait 12,05 €/kg comme médiane de dix-neuf relevés de mimolette dont l'affinage n'est pas déclaré, après exclusion des mimolettes explicitement JEUNES et explicitement VIEILLES. Le raisonnement était que le rayon étiquette l'affinage quand il est extrême et le tait quand il est intermédiaire. La population complète de la catégorie « en:mimolette-cheese » a été rouverte à la relecture, et elle contredit ce raisonnement : les deux relevés écartés pour porter la mention « jeune » sont « Mimolette jeune format familial en tranches » de Marque Repère / Les Croisés, à 9,23 €/kg au Centre Commercial E.Leclerc de Clichy (n° 263945) et 9,69 €/kg à celui de Gennevilliers (n° 240882) ; or le panier publié CONSERVAIT, dans ces mêmes deux magasins, la « Mimolette » de la même marque en barquette de 200 g, à 9,25 €/kg (n° 201366) et 9,70 €/kg (n° 240881). Au centime près le même prix au kilo, la même marque, le même magasin. Le filtre n'a donc pas retiré la mimolette jeune : il a retiré les étiquettes qui le disaient. La médiane publiée était un prix de mimolette jeune ou d'affinage indéterminé, sous le nom d'une forme que le catalogue définit par son affinage (Ciqual 12737, « Mimolette demi-vieille »).\n\nL'ORDRE DE GRANDEUR DE L'ÉCART, MESURÉ SUR LE PANIER PUBLIÉ. Les deux seuls relevés de ce panier qui portent l'affinage demandé — « Mimolette Bio (27 % MG) Demi-vieille » (n° 179869) et « MIMOLETTE BIO 6 MOIS » (n° 261823) — valent 24,80 et 31,45 €/kg, soit deux à deux fois et demie la médiane publiée de 12,05 €/kg. Un écart de ce rang, documenté par les relevés du panier eux-mêmes, n'est plus la « variété voisine » que le §4 du contrat admet en B : c'est un voisin déguisé en relevé, et c'est ce que le §0 refuse.\n\nCE QUI RESTE, ET POURQUOI C'EST C. Un seul relevé étiqueté demi-vieille se ramène au kilogramme, et le registre exige cinq relevés pour qu'Open Prices dépasse C. Un deuxième relevé étiqueté demi-vieille existe (n° 262805, Isigny Ste-Mère au Carrefour Market de Vannes) mais son poids net n'est pas déclaré au catalogue Open Food Facts, et la méthode de la tranche interdit d'en supposer un. La note de l'entrée publiée affirmait « un seul relevé français porte explicitement la mention demi-vieille » : c'est inexact au sens strict, il y en a deux, dont un seul est convertible. Le correctif est écrit ici parce qu'une annotation fausse dans un appareil de provenance coûte plus cher qu'un chiffre manquant.\n\nLE PANIER RETIRÉ, GARDÉ POUR LA TRAÇABILITÉ. Dix-neuf relevés (ids 186386, 201366, 240881, 260306, 258175, 136681, 243362, 258201, 155903, 155322, 241723, 136697, 240961, 227046, 226915, 257403, 179869, 261595, 261823), médiane 12,05 €/kg, D1 9,61, D9 25,16 — chiffres recalculés et confirmés au centime à la relecture, mais portant sur « mimolette d'affinage non déclaré » et non sur la forme du catalogue. Y figuraient aussi de la mimolette française (Isigny Sainte-Mère) et de la hollandaise (Heinrichsthaler, U), cinq relevés biologiques et des formats de 120 à 250 g. Un relevé avait été écarté sur le libellé, « Dés de Gouda & Mimolette » (Carrefour, 21,00 €/kg) : deux fromages dans le même sachet, dans une proportion que le poids net ne dit pas. Cette exclusion-là reste juste.\n\nC'est la dernière forme du lot par les calories débloquées (221 kcal, une seule ligne du corpus). La retirer de la couverture coûte peu ; l'y laisser aurait coûté un prix faux du simple au double.\n\nMéthode Open Prices commune à toute la tranche, appliquée dans cet ordre : (1) interrogation de l'API v1 sur une ou plusieurs catégories Open Food Facts, avec date__gte=2025-08-25, soit les douze mois qui précèdent la date de référence du jeu — aucun relevé plus ancien n'entre, ce qui rend la réindexation INSEE inutile plutôt que facultative ; (2) magasin situé en France (code pays OpenStreetMap du magasin, l'API n'offrant pas de filtre pays), devise EUR ; (3) rejet des relevés en promotion (price_is_discounted) ; (4) rejet des relevés postérieurs au 2026-08-24 ; (5) passage au kilo : pour un relevé de type CATEGORY le prix est déjà au kilo quand price_per vaut KILOGRAM, pour un relevé de type PRODUCT il est divisé par le poids net déclaré au catalogue Open Food Facts (product_quantity), et un produit sans poids net, ou dont le poids net est exprimé en volume, est écarté — jamais de densité supposée ; (6) rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity ; (7) sélection sur le libellé et sur le code-barres, décrite entrée par entrée ; (8) dédoublonnage par couple (référence, magasin), en gardant le relevé le plus récent — sans quoi un magasin qui saisit trois fois la même barquette pèserait trois fois. Dispersion : au-dessus de dix relevés retenus, low et high sont les premier et neuvième déciles empiriques (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. central est toujours la médiane des relevés retenus. Chaque identifiant cité se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Plafond B définitif : les contributions sont volontaires, l'échantillon n'est représentatif de rien en particulier."
+    },
+    {
+      "form": "Morue salée sèche",
+      "form_normalized": "morue salee seche",
+      "category": "poissons_fruits_de_mer",
+      "observed": {
+        "basis": "kg",
+        "low": 17.0,
+        "central": 18.0,
+        "high": 19.0,
+        "unit": "EUR/kg",
+        "dispersion": "quoted_range",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-08-20",
+        "period_end": "2026-08-20"
+      },
+      "per_kg": {
+        "low": 17.0,
+        "central": 18.0,
+        "high": 19.0,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Sans objet tant que le prix n'est pas publiable. Pour mémoire, la forme du catalogue est le poisson SEC et le prix cité porte sur le poisson sec : le rendement à documenter le jour venu ne serait pas un rendement de parage mais le rapport de réhydratation entre le sec acheté et le dessalé employé, et il exige une source publiée."
+      },
+      "confidence": "C",
+      "confidence_reason": "cotation_de_gros_ht_rungis_non_convertible_en_prix_paye_en_caisse",
+      "provenance": {
+        "source_code": "rnm_franceagrimer",
+        "license_code": "etalab-2.0",
+        "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true
+        },
+        "retrieved_on": "2026-08-30",
+        "source_url": "https://rnm.franceagrimer.fr/prix?M0505:MARCHE",
+        "observed_on": "2026-08-20",
+        "source_record_key": "RNM/M0505/290505/2026-08-20",
+        "citation": "RNM — MIN de Rungis : marée transformée (cours Grossistes, € HT le kg), marché du 20/08/26 : « MORUE salée-sechée (filet) France » — prix moyen 18.00 €/kg, variation =, mini 17.00, maxi 19.00. Série RNM n° 290505. Deux libellés voisins au même marché et à la même date : « MORUE salée-sechée (filet) Import » 17.00 (16.00 - 18.00) et « MORUE salée-fraîche (filet) 500-600 g Import » 15.50 (15.00 - 16.00)."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE VOLONTAIREMENT EN C, ET C'EST LE RÉSULTAT PRINCIPAL DE CETTE FORME. La cotation existe, elle est datée, elle porte exactement le produit du catalogue — « Morue, salée, sèche », Ciqual 26098, le poisson SEC tel qu'il s'achète avant dessalage — et elle est retrouvable. Ce qui bloque n'est ni la forme ni l'état : c'est le STADE COMMERCIAL. Le RNM ne cote la morue salée sèche qu'au MIN de Rungis, en cours de grossistes et HORS TAXES. Passer de là au prix payé en caisse par un foyer demanderait une marge de distribution et un taux de TVA, c'est-à-dire un coefficient qu'aucune source du registre ne publie : le fabriquer serait exactement le nombre plausible et invérifiable que le §0 du contrat proscrit. Les deux tranches déjà versées, « frais animal » et « carné », ont pris la même décision sur les cotations de gros, et il n'y a pas de raison de la défaire ici.\n\nCE QUI A ÉTÉ CHERCHÉ AILLEURS, ET N'EXISTE PAS. (1) Marché de détail RNM des produits de la mer (Marée France DETAIL GMS, M2500) : sept libellés seulement à la semaine 34-2026 — cabillaud dos, huître creuse, lieu noir filet, moule vrac, saumon pavé, sole portion, truite entière. Pas de morue salée. (2) Open Prices : la catégorie Open Food Facts « en:salted-dried-cod » contient cinq produits français, et AUCUN d'eux ne porte le moindre relevé de prix — vérifié en interrogeant l'API sur leurs cinq codes-barres (8436581145403, 5608190013524, 5060343749597, 2482874112702, 3567892011424), qui renvoie zéro. (3) Un balayage des 3 240 relevés français de la catégorie « en:seafood » sur douze mois ne trouve que trois produits de morue salée, et ce sont des morues DESSALÉES : « Filet de morue dessalée » (Gaytan, 35,63 €/kg), « Morue dessalage rapide » (Delpierre, 37,60 €/kg), « Pavés De Morue Sans Dessalage » (Delpierre, 47,80 €/kg).\n\nLE PIÈGE DU DESSALAGE, PUISQU'IL SE PRÉSENTE. Ces trois relevés dessalés ne peuvent pas servir à chiffrer la forme sèche pour deux raisons indépendantes, et il suffit d'une. D'abord ils sont trois, quand Open Prices en exige cinq au registre pour dépasser C. Ensuite et surtout, le poids acheté et le poids employé ne sont pas les mêmes objets : la morue sèche se dessale et se réhydrate, et le facteur qui relie un kilo de sec à un kilo de dessalé n'est publié par aucune source du registre. L'écrire de tête ferait entrer un facteur inventé dans la chaîne de calcul, à l'endroit précis où personne ne le reverrait. La forme du catalogue désigne le produit SEC ; le seul prix du sec qui existe est un prix de gros ; donc rien n'est publié.\n\nn_observations vaut 1 parce qu'une seule cotation publiée a été lue. La page « définition, méthodologie » du marché (https://rnm.franceagrimer.fr/prix?M0505:INFO) indique que l'enquêteur relève les prix des vendeurs chaque jeudi et qu'« il doit disposer de 3 sources minimum » pour établir une cotation : c'est un plancher déclaré par la source, pas un effectif publié, et il n'a donc pas été recopié dans n_observations. Le mini et le maxi sont une plage de cotation et non des déciles — d'où dispersion = quoted_range. Pour retrouver la cotation : la page du marché affiche le dernier marché ; le formulaire « autre date » est un POST (ESPECE=538 pour la morue, DATE=21-08-26), il n'existe pas de lien direct daté."
+    },
+    {
+      "form": "Bœuf à braiser cru",
+      "form_normalized": "boeuf a braiser cru",
+      "category": "produits_transformes",
+      "observed": {
+        "basis": "kg",
+        "low": 16.95,
+        "central": 16.95,
+        "high": 16.95,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-02-14",
+        "period_end": "2026-02-14"
+      },
+      "per_kg": {
+        "low": 16.95,
+        "central": 16.95,
+        "high": 16.95,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Sans objet tant que le prix n'est pas publiable. Le relevé cité porte sur de la viande parée en barquette, sans os, donc dans le même état que la forme du catalogue."
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_un_seul_releve_sous_le_minimum_de_cinq_du_registre",
+      "provenance": {
+        "source_code": "open_prices",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Abeef-and-its-products&date__gte=2025-08-25&size=100&order_by=-date",
+        "observed_on": "2026-02-14",
+        "source_record_key": "open_prices:en:beef-and-its-products/paleron/FR/2026-02-14..2026-02-14/n=1 · ids 219549",
+        "citation": "Open Prices (Open Food Facts), catégorie Open Food Facts « en:beef-and-its-products », relevé en magasin en France, hors promotion : un seul relevé sur douze mois — « Paleron de bœuf » (Bigard, barquette 400 g, 6,78 €, soit 16.95 €/kg) le 2026-02-14 au Centre Commercial E.Leclerc Clichy, relevé n° 219549."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE EN C FAUTE D'EFFECTIF, ET C'EST LE PLUS GROS TROU DE CE LOT : la forme et sa variante « en petits cubes » pèsent à elles deux 13 120 kcal non chiffrées, soit davantage que tout le reste du lot réuni. Le relevé cité est bien du bœuf à braiser — le paleron est l'un des morceaux que couvre la ligne Ciqual 6231, « Boeuf, à bourguignon ou pot-au-feu, cru » — mais il est SEUL, et le registre exige cinq relevés d'Open Prices pour dépasser C. Un prix unique n'est pas une médiane et ne porte aucune dispersion.\n\nCE QUI A ÉTÉ CHERCHÉ, ET COMMENT. (1) Balayage exhaustif des 5 341 relevés français de la catégorie « en:meats » sur les douze mois : aucun libellé de bœuf à mijoter (bourguignon, à braiser, pot-au-feu, paleron, macreuse, gîte, jumeau, basses côtes, collier, carbonade). Le rayon bœuf d'Open Prices est occupé presque entièrement par du haché, des boulettes et des burgers, qui sont des produits emballés à code-barres — le morceau à braiser se vend au rayon traditionnel, où il n'a pas de code-barres et n'entre donc pas dans Open Prices. (2) Catégories spécialisées : « en:beef-stew-meat » (le fr:bœuf-à-bourguignon d'Open Food Facts) ne porte que deux relevés, tous deux en Belgique (Delhaize, 17,98 €/kg) ; « en:beef-chuck » un seul, en Croatie. Écartés : le référentiel est français. (3) Les 53 produits emballés qu'Open Food Facts classe en bœuf à bourguignon ont été interrogés un par un dans Open Prices sur leur code-barres : zéro relevé. (4) RNM, marché de détail Viande France DETAIL GMS (M2501), semaine 34-2026 : sept libellés seulement — agneau gigot, bœuf steak haché 15 % MG conventionnel et biologique, lapin entier, porc côte avec os, poulet prêt à cuire biologique et label rouge. Pas de morceau à braiser.\n\nCE QU'IL A ÉTÉ REFUSÉ DE FAIRE. Rapprocher le bœuf à braiser de la cotation RNM « BOEUF (steak haché) 15 % MG France » (17,60 €/kg au détail, semaine 34-2026) aurait suffi à publier un montant, et le chiffre serait même tombé près du relevé de paleron ci-dessus. C'est un rapprochement refusé : le haché et le morceau entier sont deux formes distinctes au catalogue, avec deux lignes Ciqual différentes et des teneurs en lipides qui ne se ressemblent pas, et la tranche « frais animal » a déjà attribué cette même cotation à deux formes de haché. Lui en faire porter une troisième, pour un produit qui n'est pas du haché, serait la « forme rapprochée de loin » que le §4 du contrat range explicitement en C.\n\nLa forme « Bœuf à braiser cru, en petits cubes » partage la même ligne Ciqual et n'a reçu aucune entrée séparée : elle aurait porté le même relevé unique et la même conclusion, sans rien ajouter au dossier.\n\nMéthode Open Prices commune à toute la tranche, appliquée dans cet ordre : (1) interrogation de l'API v1 sur une ou plusieurs catégories Open Food Facts, avec date__gte=2025-08-25, soit les douze mois qui précèdent la date de référence du jeu — aucun relevé plus ancien n'entre, ce qui rend la réindexation INSEE inutile plutôt que facultative ; (2) magasin situé en France (code pays OpenStreetMap du magasin, l'API n'offrant pas de filtre pays), devise EUR ; (3) rejet des relevés en promotion (price_is_discounted) ; (4) rejet des relevés postérieurs au 2026-08-24 ; (5) passage au kilo : pour un relevé de type CATEGORY le prix est déjà au kilo quand price_per vaut KILOGRAM, pour un relevé de type PRODUCT il est divisé par le poids net déclaré au catalogue Open Food Facts (product_quantity), et un produit sans poids net, ou dont le poids net est exprimé en volume, est écarté — jamais de densité supposée ; (6) rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity ; (7) sélection sur le libellé et sur le code-barres, décrite entrée par entrée ; (8) dédoublonnage par couple (référence, magasin), en gardant le relevé le plus récent — sans quoi un magasin qui saisit trois fois la même barquette pèserait trois fois. Dispersion : au-dessus de dix relevés retenus, low et high sont les premier et neuvième déciles empiriques (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. central est toujours la médiane des relevés retenus. Chaque identifiant cité se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Plafond B définitif : les contributions sont volontaires, l'échantillon n'est représentatif de rien en particulier."
+    },
+    {
+      "form": "Calamar cru nettoyé",
+      "form_normalized": "calamar cru nettoye",
+      "category": "poissons_fruits_de_mer",
+      "observed": {
+        "basis": "kg",
+        "low": 13.58,
+        "central": 13.58,
+        "high": 13.58,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "point",
+        "n_observations": 1,
+        "period_start": "2026-02-07",
+        "period_end": "2026-02-07"
+      },
+      "per_kg": {
+        "low": 13.58,
+        "central": 13.58,
+        "high": 13.58,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Sans objet tant que le prix n'est pas publiable. Le relevé cité porte sur des anneaux déjà nettoyés, donc dans le même état que la forme du catalogue."
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_un_seul_releve_de_calamar_cru_sous_le_minimum_de_cinq_du_registre",
+      "provenance": {
+        "source_code": "open_prices",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asquid&date__gte=2025-08-25&size=100&order_by=-date",
+        "observed_on": "2026-02-07",
+        "source_record_key": "open_prices:en:squid+en:seafood/anneaux-d-encornet/FR/2026-02-07..2026-02-07/n=1 · ids 206365",
+        "citation": "Open Prices (Open Food Facts), catégories « en:squid » et « en:seafood », relevé en magasin en France, hors promotion : un seul relevé de céphalopode cru et nettoyé sur douze mois — « Anneaux d'encornet » (Pêche Océan/Marque Repère, sachet 500 g, 6,79 €, soit 13.58 €/kg) le 2026-02-07 au Centre Commercial E.Leclerc Clichy, relevé n° 206365."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE EN C FAUTE D'EFFECTIF. Le relevé cité correspond bien à la forme du catalogue — « Calamar cru nettoyé », Ciqual 10001, « Calmar ou calamar ou encornet, cru », le « nettoyé » décrivant un parage et non un état nutritionnel — mais il est seul, et le registre exige cinq relevés d'Open Prices pour dépasser C.\n\nCE QUI A ÉTÉ CHERCHÉ. Le balayage des 3 240 relevés français de la catégorie « en:seafood » sur douze mois remonte 32 relevés de céphalopodes, et tous les autres sont des APPRÊTS : anneaux à la romaine et beignets panés (4,82 à 19,94 €/kg, sept relevés), calmars en sauce ou à l'encre, encornets géants à l'ail et au persil, poulpe cuit, mariné ou grillé, salades et pizzas. Aucun n'est du calamar cru. Le RNM cote l'encornet — « ENCORNET frais moyen France » 21,50 €/kg le 29/08/26 — mais uniquement au MIN de Rungis, en cours de grossistes hors taxes, et sur l'animal ENTIER non vidé : deux défauts cumulés, le stade commercial et l'état, dont le second exige un rendement de nettoyage qu'aucune source du registre ne publie. Le marché de détail M2500 ne cote pas les céphalopodes.\n\nL'entrée est conservée pour que le relevé ne soit pas à refaire : il suffira de quatre relevés français supplémentaires de calamar cru pour la faire passer en B.\n\nMéthode Open Prices commune à toute la tranche, appliquée dans cet ordre : (1) interrogation de l'API v1 sur une ou plusieurs catégories Open Food Facts, avec date__gte=2025-08-25, soit les douze mois qui précèdent la date de référence du jeu — aucun relevé plus ancien n'entre, ce qui rend la réindexation INSEE inutile plutôt que facultative ; (2) magasin situé en France (code pays OpenStreetMap du magasin, l'API n'offrant pas de filtre pays), devise EUR ; (3) rejet des relevés en promotion (price_is_discounted) ; (4) rejet des relevés postérieurs au 2026-08-24 ; (5) passage au kilo : pour un relevé de type CATEGORY le prix est déjà au kilo quand price_per vaut KILOGRAM, pour un relevé de type PRODUCT il est divisé par le poids net déclaré au catalogue Open Food Facts (product_quantity), et un produit sans poids net, ou dont le poids net est exprimé en volume, est écarté — jamais de densité supposée ; (6) rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity ; (7) sélection sur le libellé et sur le code-barres, décrite entrée par entrée ; (8) dédoublonnage par couple (référence, magasin), en gardant le relevé le plus récent — sans quoi un magasin qui saisit trois fois la même barquette pèserait trois fois. Dispersion : au-dessus de dix relevés retenus, low et high sont les premier et neuvième déciles empiriques (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. central est toujours la médiane des relevés retenus. Chaque identifiant cité se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Plafond B définitif : les contributions sont volontaires, l'échantillon n'est représentatif de rien en particulier."
+    },
+    {
+      "form": "Foie gras de canard cru",
+      "form_normalized": "foie gras de canard cru",
+      "category": "produits_transformes",
+      "observed": {
+        "basis": "kg",
+        "low": 51.0,
+        "central": 51.0,
+        "high": 62.96,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "annual_mean",
+        "n_observations": 3,
+        "period_start": "2026-02-10",
+        "period_end": "2026-04-11"
+      },
+      "per_kg": {
+        "low": 51.0,
+        "central": 51.0,
+        "high": 62.96,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Sans objet tant que le prix n'est pas publiable. Un foie gras cru extra-éveiné est vendu paré ; un foie cru entier non éveiné perd ses veines au déveinage, et aucune source du registre ne publie cette perte."
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_trois_releves_sous_le_minimum_de_cinq_du_registre",
+      "provenance": {
+        "source_code": "open_prices",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Afoies-gras-from-ducks&date__gte=2025-08-25&size=100&order_by=-date",
+        "observed_on": "2026-04-11",
+        "source_record_key": "open_prices:en:foies-gras-from-ducks/cru/FR/2026-02-10..2026-04-11/n=3 · ids 212634,212635,263932",
+        "citation": "Open Prices (Open Food Facts), catégories « en:foies-gras-from-ducks », « en:foies-gras » et « en:whole-foies-gras-from-ducks », foie gras de canard CRU, relevés en magasin en France, hors promotion : 3 relevés seulement sur douze mois — 51.00 €/kg le 2026-02-10 pour « Foie gras de canard cru extra éveiné surgelé » (Maison Montfort, 450 g, 22,95 €, Super U Grenoble, relevé n° 212635) ; 51,00 €/kg le même jour et au même magasin pour « Escalopes de foie gras surgelées » (Montfort, 450 g, 22,95 €, relevé n° 212634) ; 62,96 €/kg le 2026-04-11 pour « Foie gras de canard du Périgord cru spécial terrine » (Nos Régions ont du Talent, 500 g, 31,48 €, Centre Commercial E.Leclerc Clichy, relevé n° 263932). Médiane 51.00 €/kg, minimum 51,00, maximum 62,96."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE EN C FAUTE D'EFFECTIF : trois relevés, quand le registre en exige cinq pour qu'Open Prices dépasse C. Deux des trois viennent d'ailleurs du même magasin le même jour.\n\nCE QU'IL A ÉTÉ REFUSÉ DE FAIRE, ET C'EST L'ESSENTIEL. La catégorie foie gras est très fournie dans Open Prices : 80 relevés français retenus par les filtres communs, médiane 85,04 €/kg. Mais ces 80 relevés portent presque tous sur du foie gras CUIT — foie gras entier en bocal ou en boîte, blocs, mi-cuits, conserves de fête. La forme du catalogue est le foie gras CRU (Ciqual 8328, 600 kcal), choisi précisément parce que la recette le poêle ou le cuit elle-même. Publier la médiane du cuit sous le nom du cru aurait multiplié le prix par près de deux et l'aurait fait passer pour un relevé du bon produit : c'est le contraire d'une adaptation déclarée, puisque le cuit et le cru ne sont pas non plus au même prix par accident — le second est une matière première, le premier une préparation festive. Le contrat préfère l'absence, et l'absence est ici la réponse.\n\nL'entrée est conservée pour la file de revue : deux relevés supplémentaires de foie gras cru suffiraient à la faire passer en B.\n\nMéthode Open Prices commune à toute la tranche, appliquée dans cet ordre : (1) interrogation de l'API v1 sur une ou plusieurs catégories Open Food Facts, avec date__gte=2025-08-25, soit les douze mois qui précèdent la date de référence du jeu — aucun relevé plus ancien n'entre, ce qui rend la réindexation INSEE inutile plutôt que facultative ; (2) magasin situé en France (code pays OpenStreetMap du magasin, l'API n'offrant pas de filtre pays), devise EUR ; (3) rejet des relevés en promotion (price_is_discounted) ; (4) rejet des relevés postérieurs au 2026-08-24 ; (5) passage au kilo : pour un relevé de type CATEGORY le prix est déjà au kilo quand price_per vaut KILOGRAM, pour un relevé de type PRODUCT il est divisé par le poids net déclaré au catalogue Open Food Facts (product_quantity), et un produit sans poids net, ou dont le poids net est exprimé en volume, est écarté — jamais de densité supposée ; (6) rejet des relevés dont le poids annoncé dans le libellé contredit product_quantity ; (7) sélection sur le libellé et sur le code-barres, décrite entrée par entrée ; (8) dédoublonnage par couple (référence, magasin), en gardant le relevé le plus récent — sans quoi un magasin qui saisit trois fois la même barquette pèserait trois fois. Dispersion : au-dessus de dix relevés retenus, low et high sont les premier et neuvième déciles empiriques (dispersion d1_d9) ; en dessous, ce sont le minimum et le maximum observés (min_max), parce que dix relevés ne portent pas de déciles et qu'appeler « décile » l'avant-dernier point serait se donner une précision qu'on n'a pas. central est toujours la médiane des relevés retenus. Chaque identifiant cité se relit un par un sur https://prices.openfoodfacts.org/api/v1/prices/<id>. Plafond B définitif : les contributions sont volontaires, l'échantillon n'est représentatif de rien en particulier."
+    }
+  ]
+}

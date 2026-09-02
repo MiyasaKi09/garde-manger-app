@@ -84,6 +84,11 @@
 .rc-cuis.mut { color: var(--ink-3); }
 .rc-k { font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); margin-right: 5px; }
 .rc-meta { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.02em; margin-top: 6px; }
+/* Estimation par portion sur la fiche horizontale. Volontairement sous la
+   ligne de méta et non dans le bandeau d'état : le coût informe, il ne dit pas
+   si la recette est cuisinable ce soir — le confondre avec un signal de stock
+   ferait lire un prix comme une urgence. */
+.rc-cout { display: block; margin-top: 7px; }
 .rc-score { margin-left: 6px; color: var(--ink-3); }
 .rc-score i { color: var(--saffron, #E0A92E); font-style: normal; margin-right: 1px; }
 .rc-cook { position: absolute; right: 16px; bottom: 14px; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; color: var(--brand); }

@@ -3,6 +3,7 @@ import { authenticateRequest } from '@/lib/apiAuth'
 import { convertWithMeta } from '@/lib/units'
 import { listEditorialRecipes } from '@/lib/db/operationalRecipeCatalog'
 import { operationalRecipeCards } from '@/lib/domain/recipes/operationalCatalog'
+import { coutsDeCartes } from '@/app/_pricing/estimations'
 import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 import { getEffectiveExpiration } from '@/lib/utils'
 
@@ -224,14 +225,37 @@ export async function GET(request) {
     console.error('[recipes/catalog] Inventory unavailable', inventoryResult.error)
   }
 
+  /**
+   * Le coût estimé par portion, posé sur chaque carte.
+   *
+   * Calculé ici et non dans la page : le référentiel de prix est importé au
+   * build (670 ko de JSON) et n'a rien à faire dans le bundle du navigateur.
+   * La carte ne reçoit que des nombres et un verdict d'affichage — la mise en
+   * mots se fait côté page, via `vueCoutCarte`, qui ne dépend que de
+   * l'arithmétique pure de `priceMath`.
+   *
+   * Enveloppé : le catalogue de recettes doit s'afficher même sans prix.
+   */
+  let couts = null
+  try {
+    couts = coutsDeCartes(operationalCatalog.recipes)
+  } catch (error) {
+    console.error('[recipes/catalog] estimation de coût indisponible', error)
+  }
+
   const recipesOut = recipes.map(({ linked_ingredients: _linkedIngredients, ...card }) => ({
     ...card,
+    canonical_quality: {
+      ...card.canonical_quality,
+      cost: couts?.parCode.get(card.id) || null,
+    },
     availability: availabilityByKey?.[card.key] || null,
   }))
 
   return jsonNoStore({
     recipes: recipesOut,
     canonical_catalog: operationalCatalog.metadata,
+    price_reference: couts?.referentiel || null,
     source_policy: recipeCatalogSourcePolicy,
   })
 }

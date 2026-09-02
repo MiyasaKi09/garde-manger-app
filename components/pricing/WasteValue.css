@@ -1,0 +1,137 @@
+/* =============================================================================
+   components/pricing/WasteValue.css — la valeur de ce qui va être perdu
+   -----------------------------------------------------------------------------
+   Le seul montant de l'application qui a le droit d'être en terracotta.
+
+   Partout ailleurs, une estimation est de l'encre : elle informe. Ici elle
+   appelle une décision ce soir, et le rouge de terre du système (--terracotta,
+   déjà l'accent d'état « périmé ») porte l'urgence sans crier. Le montant déjà
+   perdu, lui, revient à l'encre normale : il ne demande rien, et le peindre en
+   rouge ferait du tableau de bord un reproche.
+   ============================================================================= */
+
+.myko-waste { display: block; }
+
+.myko-waste-tete {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+}
+.myko-waste-somme {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(30px, 4.2vw, 44px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--terracotta);
+}
+.myko-waste-compact .myko-waste-somme { font-size: 30px; }
+
+.myko-waste-phrase {
+  margin: 10px 0 0;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+.myko-waste-phrase b { font-style: normal; font-weight: 600; color: var(--ink-1); }
+
+.myko-waste-calme-texte {
+  margin: 4px 0 0;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-2);
+}
+
+/* ── Les lots nommés ───────────────────────────────────────────────────────── */
+.myko-waste-lots {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  border-top: 1px solid var(--line);
+}
+.myko-waste-lot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--ink-1);
+}
+.myko-waste-lot-nom {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.myko-waste-lot-nom em {
+  margin-left: 6px;
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--clay);
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  padding: 1px 4px;
+}
+.myko-waste-lot-quand {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.03em;
+  color: var(--state-soon);
+  white-space: nowrap;
+}
+.myko-waste-lot-valeur {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-1);
+  white-space: nowrap;
+}
+/* Un lot sans prix sourcé reste dans la liste, en retrait. Le retirer ferait
+   croire que le garde-manger à risque se limite à ce qu'on sait chiffrer. */
+.myko-waste-lot-nu .myko-waste-lot-nom,
+.myko-waste-lot-nu .myko-waste-lot-valeur { color: var(--ink-3); }
+.myko-waste-lot-valeur i {
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.myko-waste-reste {
+  margin: 8px 0 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ink-3);
+}
+
+/* ── Déjà périmé : un constat, pas une alarme ──────────────────────────────── */
+.myko-waste-perime {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-3);
+}
+.myko-waste-perime-l { letter-spacing: 0.06em; text-transform: uppercase; }
+.myko-waste-perime-v {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink-2);
+  margin-left: auto;
+}
+.myko-waste-perime-c { color: var(--ink-3); }

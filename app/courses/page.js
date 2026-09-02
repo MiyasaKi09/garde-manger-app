@@ -13,6 +13,7 @@ import Link from 'next/link'
 import { getFoodEmoji } from '@/lib/foodEmoji'
 import StoragePlanSheet from '@/components/StoragePlanSheet'
 import IngredientReviewPanel from '@/components/IngredientReviewPanel'
+import EstimationCourses from '@/components/pricing/EstimationCourses'
 import './courses.css'
 
 const RAYON_TINTS = ['#E4EBDC', '#F1E9D4', '#EFD9D0', '#E8E2D2', '#EADFCB', '#DEE7EC']
@@ -27,6 +28,9 @@ export default function CoursesPage() {
   const [importLabel, setImportLabel] = useState('')
   const [imports, setImports]         = useState([])
   const [importIndex, setImportIndex] = useState(0)
+  // Estimation servie par la route de l'import : des chaînes déjà rédigées.
+  // Le référentiel de prix (670 ko importés au build) ne descend jamais ici.
+  const [estimation, setEstimation]   = useState(null)
 
   // ── Navigation ────────────────────────────────────────────────────────────────
   const [activeWeek, setActiveWeek]   = useState(null)
@@ -105,6 +109,7 @@ export default function CoursesPage() {
     const d = await res.json()
     const list = d.shoppingItems || []
     setItems(list)
+    setEstimation(d.estimation || null)
 
     const weeks = [...new Set(list.map(i => i.week_label))].sort()
     setActiveWeek(weeks.length > 0 ? weeks[0] : null)
@@ -124,6 +129,9 @@ export default function CoursesPage() {
         const res2 = await authFetch(`/api/planning/imports/${imp.id}`)
         const d2 = await res2.json()
         setItems(d2.shoppingItems || [])
+        // La résolution vient de relier des articles au catalogue : l'estimation
+        // renvoyée avec eux porte donc une couverture différente de la première.
+        setEstimation(d2.estimation || null)
         setResolutionPending(false)
       } catch {
         setResolutionPending(false)
@@ -168,6 +176,17 @@ export default function CoursesPage() {
   const filteredItems = useMemo(() =>
     activeWeek ? items.filter(i => i.week_label === activeWeek) : items,
     [items, activeWeek])
+
+  /**
+   * L'estimation suit la semaine affichée, pas l'import entier : un plan peut
+   * porter un mois, et « le total du mois » ne répond pas à la question qu'on
+   * se pose devant une liste de courses. Repli sur le total quand le plan n'a
+   * qu'une semaine — c'est alors le même chiffre.
+   */
+  const estimationSemaine = useMemo(() => {
+    if (!estimation) return null
+    return (activeWeek && estimation.parSemaine?.[activeWeek]) || estimation.total || null
+  }, [estimation, activeWeek])
 
   const groupedItems = useMemo(() => {
     const groups = {}
@@ -729,6 +748,15 @@ export default function CoursesPage() {
               <span className="cou-rsub">{allCheckedCount}/{allTotalCount} sur tout le plan</span>
             )}
           </section>
+
+          {/* Estimation — au CONTENANT réel, pas au gramme (contrat §6.2).
+              Placée juste sous l'avancement : c'est la question qu'on se pose
+              en même temps que « combien me reste-t-il à prendre ». */}
+          {estimationSemaine && (
+            <section className="cou-rsec">
+              <EstimationCourses estimation={estimationSemaine} compact titre="Estimation" />
+            </section>
+          )}
 
           {/* Semaine */}
           {(weekLabels.length > 0 || imports.length > 1) && (

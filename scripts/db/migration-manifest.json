@@ -1564,5 +1564,85 @@
     "baseline": "new",
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260824120000_prices_reference_catalog.sql",
+    "github_version": "20260824120000",
+    "name": "prices_reference_catalog",
+    "sha256": "79434c854a2ee5af22ab7649c38fe193e5d96beecf415188a25e98e2f4148ce5",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260824120000_prices_reference_catalog_rollback.sql",
+    "github_version": "20260824120000",
+    "name": "prices_reference_catalog_rollback",
+    "sha256": "c40c4ad65d686c5b68b202466badb7b8dea7a9ac15afef8ddb94224ab890bc70",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260824121000_household_food_budget.sql",
+    "github_version": "20260824121000",
+    "name": "household_food_budget",
+    "sha256": "9ce6ffa4ac2fbfe365a616c44c2eb93b0812caa41fdcf22650e71f4da1b30822",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260824121000_household_food_budget_rollback.sql",
+    "github_version": "20260824121000",
+    "name": "household_food_budget_rollback",
+    "sha256": "06c1394e1a63dd84f6f5c14cdf8626975044a05fd2190073ef7489ef5cc612c5",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260824122000_inventory_lot_purchase_price.sql",
+    "github_version": "20260824122000",
+    "name": "inventory_lot_purchase_price",
+    "sha256": "fd05e0775700801c8531210497d411013fef17d8275cf0404c84c83b89b8de51",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260824122000_inventory_lot_purchase_price_rollback.sql",
+    "github_version": "20260824122000",
+    "name": "inventory_lot_purchase_price_rollback",
+    "sha256": "1ea7e7ed5a90fb7ff56b54abd5cf897470c5153844b3c0ad2612616070977438",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260824123000_shopping_item_estimated_cost.sql",
+    "github_version": "20260824123000",
+    "name": "shopping_item_estimated_cost",
+    "sha256": "d6fe084ad744c64dcde7d9bd9005ff059c606d8c0593a1c81036476e6bdeb03b",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260824123000_shopping_item_estimated_cost_rollback.sql",
+    "github_version": "20260824123000",
+    "name": "shopping_item_estimated_cost_rollback",
+    "sha256": "9c573d095cab2ed1c2f2251c4cfe5f7d372277ed63b4a309d3efc685d05bf78f",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

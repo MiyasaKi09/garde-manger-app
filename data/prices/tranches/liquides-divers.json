@@ -1,0 +1,723 @@
+{
+  "schema_version": "1.0.0",
+  "price_set_version": "2026.08-liquides-divers",
+  "country": "FR",
+  "currency": "EUR",
+  "reference_date": "2026-08-24",
+  "derived_license": "odbl-1.0",
+  "catalog_version": "v3-300-real-dishes",
+  "built_at": "2026-08-30",
+  "notes": "Tranche « liquides et divers » : boissons, condiments et sauces, préparations culinaires, produits sucrés, et les formes que le catalogue laisse sans catégorie. 37 formes demandées, 11 chiffrées. C'est le lot le plus hétéroclite du chantier, et c'est aussi celui dont la couverture est la plus honnêtement médiocre : 131 lignes du corpus sur 258 (51 %) et 6 037 kcal sur 11 370 (53 %).\n\nCORRECTION DE RELECTURE ADVERSE (kilocalories). La première version de cette note annonçait « 3 336 kcal sur 6 688 ». Ces deux totaux sont exacts mais ne portent que sur les 56 lignes du lot dont la quantité est exprimée en GRAMMES : ils laissent de côté les 196 lignes exprimées en millilitres, c'est-à-dire les trois quarts du lot, et notamment les deux formes pour lesquelles ce lot a été ouvert — Vin blanc sec (62 lignes) et Jus de citron frais (50 lignes), toutes deux intégralement en ml. L'omission n'était pas imposée par une conversion manquante : les 196 lignes en millilitres portent TOUTES une densité au catalogue, vérification faite forme par forme. Recalculé selon la règle de conversion du CONTRAT §1.2 — grammes tels quels, millilitres × densité recopiée du catalogue — le lot pèse 11 370 kcal, dont 6 037 chiffrées, soit 53 %. Le taux bouge peu et dans le bon sens ; ce sont les deux totaux qui étaient sous-estimés d'un facteur 1,7. Les décomptes de lignes (37 formes, 258 lignes, 131 chiffrées) sont eux exactement reproductibles sur la population des 405 recettes publiables (recipes_static_eligible de scripts/data/out/recipe-food-match-report.json) et n'ont pas été touchés. Ce qui suit dit pourquoi, forme par forme, parce qu'une couverture à moitié est un résultat utile seulement si l'autre moitié est expliquée.\n\nUNE SEULE SOURCE, ET CE N'EST PAS UN CHOIX. Deux sources du registre seulement pouvaient porter un prix au moment de l'import : rnm_franceagrimer et open_prices — les autres ont may_source_price à false (insee_ipc, myko_reasoning) ou une licence non vérifiée (observatoire_prix_marges, dont license_verified_on est resté null ; le contrôleur refuse toute entrée qui s'en réclamerait, et aucune ne s'en réclame). Or le registre dit lui-même que le RNM « ne couvre pas les épices, produits transformés, épicerie sèche, boissons » — c'est-à-dire exactement le contenu de ce lot. Les onze entrées viennent donc toutes d'Open Prices, plafonnée à B par le registre. AUCUNE ENTRÉE EN A DANS CETTE TRANCHE, et ce n'est pas un défaut de soin : c'est le plafond de la seule source qui couvre ces produits. Le registre n'a pas été modifié — activer une source est un geste humain et daté, pas un effet de bord d'un import.\n\nderived_license vaut odbl-1.0 : Open Prices est sous ODbL, à partage à l'identique, et impose sa licence à la base dérivée.\n\nFILTRE UNIFORME, appliqué à toutes les entrées sans exception et dans cet ordre : pays du magasin = FR, devise EUR, hors promotion (price_is_discounted), hors produit portant un label biologique, quantité nette connue et exprimée dans l'unité de la base, sélection sur le libellé quand la catégorie Open Food Facts mélange des produits différents, dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent. D1, médiane et D9 sont ensuite calculés sur les relevés restants. Ce filtre n'a JAMAIS été assoupli pour faire passer une forme au-dessus des 5 relevés qu'Open Prices exige : la gélatine en feuilles s'arrête à 4 relevés non bio quand elle en aurait 6 avec le bio, et elle reste non chiffrée. Changer de règle par forme pour atteindre un seuil, c'est régler le filtre sur le résultat voulu, et le résultat n'aurait plus voulu dire grand-chose.\n\nCONVENTION SUR aggregation. Toutes les entrées déclarent annual_mean. Cela signifie ici : médiane de tous les relevés que la fenêtre de douze mois (2025-08-25 → 2026-08-24) contient pour cette forme — et non moyenne d'une année pleine. L'étendue réelle des relevés retenus est donnée sans arrondi par period_start et period_end de chaque entrée, et elle est parfois beaucoup plus courte que douze mois (deux mois pour l'oignon en poudre, six pour le jus de citron vert). L'énumération du schéma n'offre que point, monthly_mean et annual_mean ; « point » aurait été faux pour un agrégat de plusieurs relevés, « monthly_mean » aussi. Le champ period dit la vérité que l'énumération ne sait pas dire.\n\nL'EAU : 47 LIGNES DÉLIBÉRÉMENT NON CHIFFRÉES. « Eau » (45 lignes), « Eau chaude » et « Eau glacée » (1 chacune) restent absentes, et c'est une décision, pas un oubli. L'eau du robinet A un prix public réel — les services d'eau publient leur tarif au mètre cube, et l'ordre de grandeur en France est de quelques millièmes d'euro le litre. Écrire zéro serait donc faux. Mais AUCUNE SOURCE DU REGISTRE NE PEUT PORTER CE PRIX : le RNM cote des fruits, des légumes, des viandes et de la marée ; l'INSEE a may_source_price à false ; l'Observatoire a une licence non vérifiée ; myko_reasoning ne peut porter qu'un rendement ; et Open Prices ne relève que des produits commerciaux, c'est-à-dire de l'eau EN BOUTEILLE. Or la forme du catalogue est adossée à Ciqual 18066, « Eau du robinet ». Payer l'eau de cuisson au prix de l'eau embouteillée serait une erreur d'un facteur cinquante à cent, dans le sens du haut, sur 47 lignes, et indétectable ensuite : exactement la fiction que le CONTRAT §0 proscrit. Un tarif de service d'eau (SISPEA, régies) serait la bonne source, mais elle n'est pas au registre, et une source hors registre est refusée. CE QUE CELA COÛTE, dit franchement : l'interface listera « Eau » parmi les ingrédients non chiffrés de dizaines de recettes, ce qui paraîtra bien pire que ce ne l'est, puisque le montant manquant est de l'ordre du millième d'euro. C'est un défaut de couverture au sens du nombre de lignes (CONTRAT §6), et un non-événement au sens du montant. La correction utile n'est pas ici : elle est au registre, en y inscrivant une source tarifaire des services d'eau.\n\nLES BOUILLONS : 62 LIGNES NON CHIFFRÉES, ET C'EST LE PLUS GROS TROU DE CE LOT. « Bouillon de volaille » (37 lignes), « Bouillon de bœuf » (14), « Bouillon de bœuf non salé » (4), « Bouillon de légumes non salé » (3), « Bouillon de légumes » (2) et « Bouillon de volaille non salé » (2) restent absents. La raison est précise. Les six formes désignent le bouillon RECONSTITUÉ, le liquide prêt à consommer : le catalogue les adosse à « Bouillon de volaille, déshydraté reconstitué » (5,58 kcal/100 g) et sa note avertit explicitement de ne jamais les mapper sur le cube déshydraté (233 kcal), « facteur quarante ». Or ce qu'Open Prices relève en France, ce sont presque uniquement des CUBES : sur 310 relevés France de la catégorie « en:broths », 290 ont une quantité en grammes — des tablettes, des sachets, des poudres, vendus au gramme de cube. Porter un prix au kilo de cube sur une forme dont le kilo est du bouillon liquide reproduirait exactement l'erreur de facteur quarante que le catalogue a pris soin d'écarter. Passer du cube au litre demanderait le taux de dilution imprimé sur l'emballage (« une tablette pour 50 cl »), qu'aucune source du registre ne publie — l'écrire de mémoire aurait été inventer le facteur, donc inventer le prix. Restait le bouillon liquide prêt à l'emploi : la catégorie « en:liquid-broths » ne compte que 4 relevés France sur douze mois, dont un concentré Maggi de 400 ml et une soupe aux vermicelles ; il reste deux briques de « Caldo de pollo » (Don Simón), soit trois de moins que les 5 relevés qu'Open Prices exige pour dépasser C. Pour le bœuf, aucun relevé liquide. RIEN N'A DONC ÉTÉ ÉCRIT. Ce qui débloquerait ces 62 lignes est identifié et tient en une ligne : une source qui publie soit des prix de bouillon liquide prêt à l'emploi, soit le taux de dilution des cubes.\n\nCINQ FORMES DU LOT NE SONT PAS AU CATALOGUE, et aucun prix ne peut donc leur être attaché : « Xérès sec », « Feta », « Agneau cru en petits dés », « Arachide grillée », « Fromage catupiry » (1 ligne chacune). Vérification faite dans scripts/data/out/recipe-food-catalog.json (534 formes) : leurs clés normalisées n'y figurent pas, et le contrôleur refuserait toute entrée les portant (form_unknown). Ce ne sont pas des produits introuvables — la feta et le xérès se vendent en supermarché — mais des libellés que le catalogue de formes ne reconnaît pas, parfois parce qu'un canonique voisin existe sous un autre nom (« arachide grillée moulue », « vinaigre de xérès », « épaule d'agneau crue »). Le défaut est en amont, au rapprochement catalogue, pas au sourcing des prix : c'est là qu'il faut le corriger.\n\nLES AUTRES FORMES NON CHIFFRÉES, et la raison exacte de chacune. Échantillon trop mince, c'est-à-dire moins de 5 relevés France non bio hors promotion sur douze mois — le minimum qu'Open Prices exige pour dépasser C : « Farine de maïs blanche » 2 relevés (les autres résultats de la catégorie sont de la MAÏZENA, qui est de la fécule et non de la farine, et deux pains au maïs — écartés) ; « Farine de pois chiche » 1 relevé ; « Gélatine feuille » 4 relevés ; « Levure boulangère fraîche » 3 relevés clairement frais (la catégorie mélange la levure sèche, trois fois plus concentrée, et le catalogue avertit de ne pas les confondre). Aucun relevé du tout : « Sucre candi », « Jaggery », « Marsala », « Vin de riz taïwanais », « Vinaigre de canne », « Feuille de vigne en saumure » — pour cette dernière, les 16 relevés de la seule catégorie voisine sont des feuilles de vigne FARCIES, c'est-à-dire le plat fini, et le catalogue dit expressément que les employer « ferait compter la farce deux fois ». Pas de facteur de conversion au catalogue : « Vermouth sec » a bien 8 relevés France exploitables, mais sa forme ne porte AUCUNE densité, et le CONTRAT §1.2 est catégorique — pas de facteur, pas de prix, on n'écrit jamais 1,00 par défaut ; l'entrée est donc refusée par le contrat lui-même, et il suffirait d'ajouter la densité au catalogue pour la débloquer. Enfin « Café expresso refroidi » : le prix d'un café infusé demanderait le prix du café en grains ET le taux d'extraction, que personne ne publie ; deux inconnues pour zéro kilocalorie et une ligne.\n\nCE QUE CETTE TRANCHE N'A PAS TENTÉ, et qu'il faut savoir pour ne pas le retenter par erreur. Aucun prix n'a été fabriqué par rapprochement lointain : le sucre candi n'a pas reçu le prix du sucre blanc (le catalogue dit que la composition est la même, le rayon dit que le prix ne l'est pas), le vinaigre de canne n'a pas reçu celui du vinaigre générique (dont le rapport D9/D1 de 17 dépasse le seuil du contrôleur et prouve que ce rayon n'est pas un aliment), le marsala n'a pas reçu celui du porto. Chacun de ces rapprochements aurait produit un nombre plausible, aurait passé le contrôleur, et n'aurait été adossé à aucune observation du produit demandé.\n\nRELECTURE ADVERSE À FAIRE. Chaque relevé cité se rouvre individuellement, sans rejouer la requête, à l'adresse https://prices.openfoodfacts.org/api/v1/prices/<identifiant> : les dix relevés témoins écrits dans les citations ont été rouverts un par un de cette façon avant de rendre la tranche, et tous redonnent la date, le prix, la marque et la quantité nette annoncés. Les onze entrées citent l'intégralité des identifiants de relevés Open Prices qui les composent (champ source_record_key). Chaque médiane est donc recalculable en rejouant la requête de provenance, en appliquant le filtre uniforme ci-dessus, et en comparant la liste d'identifiants obtenue à celle qui est écrite. Deux entrées méritent d'être rouvertes en priorité parce que leur échantillon est le plus faible : « Oignon en poudre » (5 relevés, dont 4 sur la même référence Ducros) et « Jus de citron vert frais » (6 relevés, distribution bimodale dont la médiane tombe dans un trou). Une troisième mérite un arbitrage humain plutôt qu'une vérification : « Olive noire dénoyautée », dont les relevés mélangent poids net et poids net égoutté sans qu'on puisse trancher relevé par relevé.",
+  "entries": [
+    {
+      "form": "Vin blanc sec",
+      "form_normalized": "vin blanc sec",
+      "category": "boissons",
+      "observed": {
+        "basis": "l",
+        "low": 4.33,
+        "central": 6.86,
+        "high": 16.44,
+        "unit": "EUR/l",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 10,
+        "period_start": "2025-09-13",
+        "period_end": "2026-07-28"
+      },
+      "per_kg": {
+        "low": 4.33,
+        "central": 6.86,
+        "high": 16.44,
+        "conversion": {
+          "kind": "density",
+          "factor": 1,
+          "from": "catalog:vin blanc sec"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un vin n'a pas de partie non comestible : ce qui est acheté est intégralement ce qui est versé dans la casserole.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un vin n'a pas de partie non comestible : ce qui est acheté est intégralement ce qui est versé dans la casserole."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_10_releves_hors_vins_moelleux_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Awhite-wines&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-07-28",
+        "source_record_key": "open_prices:en:white-wines/FR/hors-bio-hors-promo-hors-moelleux/2025-09-13..2026-07-28/n=10 · ids 299294,299932,265179,299933,299648,263526,268264,184088,138007,166387",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:white-wines », du 2025-09-13 au 2026-07-28, hors promotion, hors bio et hors vins moelleux ou liquoreux : 10 relevés retenus après dédoublonnage, ramenés au litre par le volume net du contenant, de 4,32 à 23,03 EUR/l — par exemple 4,32 EUR/l le 2025-12-23 pour « Vin blanc sec » (La Villageoise) en 250 ml à 1,08 EUR (relevé n° 299294) ; 7,69 EUR/l le 2026-04-07 pour « Vin blanc AOP Touraine Sauvignon Les Hauts Buis 75cl » (U) en 750 ml à 5,77 EUR (relevé n° 263526) ; 23,03 EUR/l le 2025-11-21 pour « Chablis » (Laroche) en 750 ml à 17,27 EUR (relevé n° 166387). Médiane 6,86 EUR/l, D1 4,33, D9 16,44."
+      },
+      "reindexation": null,
+      "notes": "Forme la plus fréquente de la tranche et l'une des plus fréquentes du corpus : 62 lignes. C'est elle qui justifiait à elle seule d'ouvrir ce lot.\n\nSÉLECTION. La catégorie « en:white-wines » mélange les secs et les moelleux. Trois relevés portant explicitement « moelleux » ou « Monbazillac » ont été écartés : un Monbazillac n'est pas un vin blanc sec, et la forme du catalogue est « Vin blanc (sec) » (Ciqual 5215). La catégorie plus étroite « en:dry-white-wines » existe mais ne porte que 2 relevés France sur douze mois, soit moins que les 5 qu'Open Prices exige pour dépasser C : elle a donc été écartée non par confort mais parce qu'elle n'aurait rien donné d'affichable. Le compromis retenu — catégorie large, exclusion explicite des sucrés — est un rapprochement déclaré, et c'est lui qui plafonne l'entrée à B autant que le plafond de la source.\n\nCE QUE DÉCRIT LA FOURCHETTE. Deux mondes cohabitent dans l'échantillon : le vin de cuisine (« Vin blanc sec » et « Vin blanc cuisine » La Villageoise, 25 cl et 1,5 L, 4,32 et 4,33 EUR/l ; cubi de 3 L à 4,39) et le vin de table à boire (Touraine 7,69 ; Mâcon 9,39 ; Chablis 23,03). Aucune des sources du registre ne segmente ces deux usages, et le CONTRAT §3.1 range explicitement ce genre d'écart dans ce que la dispersion absorbe. Concrètement : une recette qui déglace au vin de cuisine coûtera près du D1, une recette dont le cuisinier ouvre la bouteille du dîner coûtera davantage. La médiane 6,86 EUR/l ne décrit ni l'un ni l'autre exactement ; elle décrit le rayon.\n\nn = 10, c'est peu — deux relevés de plus que le minimum de la source. Le D9 s'appuie sur les deux seuls relevés au-dessus de 15 EUR/l (une Roussette de Savoie en 37,5 cl et un Chablis) : il est donc peu robuste, et un relevé supplémentaire le déplacerait sensiblement. La médiane, elle, s'appuie sur le cœur de l'échantillon et bouge beaucoup moins.\n\nRequête rejouable : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Awhite-wines&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date — Filtres appliqués, identiques pour toutes les entrées de la tranche et dans cet ordre : pays du magasin = FR, devise EUR, hors promotion (price_is_discounted), hors produit portant un label biologique, quantité nette connue et exprimée dans l'unité de la base (ml pour un litre, g pour un kilo), puis sélection sur le libellé quand la catégorie Open Food Facts mélange des produits différents, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent. D1, médiane et D9 sont calculés sur les relevés restants."
+    },
+    {
+      "form": "Vin rouge sec",
+      "form_normalized": "vin rouge sec",
+      "category": "boissons",
+      "observed": {
+        "basis": "l",
+        "low": 4.25,
+        "central": 7.87,
+        "high": 13.39,
+        "unit": "EUR/l",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 7,
+        "period_start": "2025-11-27",
+        "period_end": "2026-06-07"
+      },
+      "per_kg": {
+        "low": 4.25,
+        "central": 7.87,
+        "high": 13.39,
+        "conversion": {
+          "kind": "density",
+          "factor": 1,
+          "from": "catalog:vin rouge sec"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un vin n'a pas de partie non comestible : ce qui est acheté est intégralement ce qui est versé dans la casserole.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un vin n'a pas de partie non comestible : ce qui est acheté est intégralement ce qui est versé dans la casserole."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_7_releves_hors_porto_muscat_et_sans_alcool_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ared-wines&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-06-07",
+        "source_record_key": "open_prices:en:red-wines/FR/hors-bio-hors-promo-hors-mutes-hors-sans-alcool/2025-11-27..2026-06-07/n=7 · ids 275577,275575,168082,281666,220567,220401,176192",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:red-wines », du 2025-11-27 au 2026-06-07, hors promotion, hors bio, hors vins mutés (porto, muscat) et hors vins désalcoolisés : 7 relevés retenus après dédoublonnage, ramenés au litre par le volume net du contenant, de 3,12 à 13,72 EUR/l — par exemple 3,12 EUR/l le 2026-05-16 pour « Vin rouge » (Cramoisay) en 5000 ml à 15,59 EUR (relevé n° 275577) ; 7,87 EUR/l le 2026-06-07 pour « Fitou Rouge » (La Cave d'Augustin Florent) en 750 ml à 5,90 EUR (relevé n° 281666) ; 13,72 EUR/l le 2025-12-30 pour « Côtes du Rhône » (E. Guigal) en 750 ml à 10,29 EUR (relevé n° 176192). Médiane 7,87 EUR/l, D1 4,25, D9 13,39."
+      },
+      "reindexation": null,
+      "notes": "5 lignes du corpus. Même construction que le vin blanc sec, avec deux exclusions supplémentaires que la catégorie Open Food Facts imposait : « Porto rouge » (Cruz) apparaît dans « en:red-wines » alors que c'est un vin muté à 19°, deux fois plus sucré et vendu comme apéritif ; « Vin rouge sans alcool » (Bonne Nouvelle) y apparaît aussi, et un vin désalcoolisé ne déglace pas comme un vin. Trois relevés désalcoolisés et deux portos ont donc été retirés, ce qui est une adaptation déclarée et non un tri de convenance : les cinq relevés écartés sont nommés ici et leurs identifiants figurent dans la requête rejouable.\n\nn = 7 : deux au-dessus du minimum de la source. L'échantillon va du cubi de 5 L (3,12 EUR/l) au Côtes du Rhône de vigneron (13,72), avec un seul relevé entre 6 et 12 EUR/l. La médiane tombe donc sur ce relevé unique (Fitou à 7,87) et non dans un peloton : elle est nettement moins robuste que celle du vin blanc, où l'échantillon est mieux rempli au centre. À prendre comme un ordre de grandeur du rayon, pas comme le prix d'un vin donné.\n\nRequête rejouable : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ared-wines&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date — Filtres appliqués, identiques pour toutes les entrées de la tranche et dans cet ordre : pays du magasin = FR, devise EUR, hors promotion (price_is_discounted), hors produit portant un label biologique, quantité nette connue et exprimée dans l'unité de la base (ml pour un litre, g pour un kilo), puis sélection sur le libellé quand la catégorie Open Food Facts mélange des produits différents, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent. D1, médiane et D9 sont calculés sur les relevés restants."
+    },
+    {
+      "form": "Biscuit cuillère",
+      "form_normalized": "biscuit cuillere",
+      "category": "produits_sucres",
+      "observed": {
+        "basis": "kg",
+        "low": 7.94,
+        "central": 10.2,
+        "high": 16.52,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 28,
+        "period_start": "2025-09-17",
+        "period_end": "2026-06-10"
+      },
+      "per_kg": {
+        "low": 7.94,
+        "central": 10.2,
+        "high": 16.52,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un biscuit sec n'a pas de partie non comestible : le paquet acheté est intégralement mangé.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un biscuit sec n'a pas de partie non comestible : le paquet acheté est intégralement mangé."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_28_releves_categorie_exacte_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asponge-fingers-biscuit&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-06-10",
+        "source_record_key": "open_prices:en:sponge-fingers-biscuit/FR/hors-bio-hors-promo/2025-09-17..2026-06-10/n=28 · ids 232102,261331,282644,250051,261692,273958,251036,198686,207082,178278,232934,198606,211387,257468,227406,211386,264860,276616,232871,198580,256347,257467,250052,178173,250050,174013,264188,198785",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:sponge-fingers-biscuit » (biscuits à la cuiller, boudoirs), du 2025-09-17 au 2026-06-10, hors promotion et hors bio : 28 relevés retenus après dédoublonnage, ramenés au kilo par le poids net du paquet, de 4,12 à 25,96 EUR/kg — par exemple 4,12 EUR/kg le 2026-02-24 pour « Boudoirs » (Prix Mini) en 400 g à 1,65 EUR (relevé n° 232102) ; 10,63 EUR/kg le 2026-02-21 pour « 30 boudoirs 175g » (Brossard) en 175 g à 1,86 EUR (relevé n° 227406) ; 25,96 EUR/kg le 2026-02-02 pour « biscuits a la cuillere » (Bonne Maman) en 250 g à 6,49 EUR (relevé n° 198785). Médiane 10,20 EUR/kg, D1 7,94, D9 16,52."
+      },
+      "reindexation": null,
+      "notes": "L'entrée la mieux tenue de la tranche : 28 relevés dans 10 enseignes, rapport D9/D1 de 2,1, et une catégorie Open Food Facts qui recouvre exactement la forme du catalogue (« Biscuit sec aux oeufs à la cuillère (cuiller) ou Boudoir »). Aucun rapprochement de libellé n'a été nécessaire ; l'entrée reste en B uniquement parce qu'Open Prices est plafonnée à B par le registre, et non à cause d'une adaptation.\n\nCE QUE DÉCRIT LA FOURCHETTE. Elle suit le format : les paquets de 400 g de premier prix descendent à 4-6 EUR/kg, les paquets de 175 g de marque tiennent 8-12 EUR/kg, et les biscuits de dégustation en 125-250 g montent à 14-26 EUR/kg. Le format explique donc l'essentiel de la dispersion — un tiramisu fait avec un paquet familial et un tiramisu fait avec des biscuits Bonne Maman ne coûtent pas le même prix, et c'est un fait, pas un bruit de mesure.\n\nRequête rejouable : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asponge-fingers-biscuit&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date — Filtres appliqués, identiques pour toutes les entrées de la tranche et dans cet ordre : pays du magasin = FR, devise EUR, hors promotion (price_is_discounted), hors produit portant un label biologique, quantité nette connue et exprimée dans l'unité de la base (ml pour un litre, g pour un kilo), puis sélection sur le libellé quand la catégorie Open Food Facts mélange des produits différents, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent. D1, médiane et D9 sont calculés sur les relevés restants."
+    },
+    {
+      "form": "Olive noire dénoyautée",
+      "form_normalized": "olive noire denoyautee",
+      "category": "condiments_sauces",
+      "observed": {
+        "basis": "kg",
+        "low": 7.17,
+        "central": 14.5,
+        "high": 17.23,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 21,
+        "period_start": "2025-12-06",
+        "period_end": "2026-08-19"
+      },
+      "per_kg": {
+        "low": 7.17,
+        "central": 14.5,
+        "high": 17.23,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Rendement inconnu, et pas seulement par défaut : la forme du catalogue est « Olive noire, en saumure, ÉGOUTTÉE », alors que la quantité publiée par Open Food Facts est tantôt le poids net (saumure comprise), tantôt le poids net égoutté — voir la note de l'entrée. Faute de savoir laquelle des deux porte chaque relevé, aucun rendement n'est appliqué : 1,00 déclaré inconnu, donc estimation minorante, comme le CONTRAT §2.3 l'impose."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_21_releves_poids_net_et_net_egoutte_melanges_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ablack-pitted-olives&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-19",
+        "source_record_key": "open_prices:en:black-pitted-olives/FR/hors-bio-hors-promo/2025-12-06..2026-08-19/n=21 · ids 307397,299839,307395,314839,299791,314840,206168,317164,232288,302172,292022,170580,169959,299823,291902,232290,318147,195927,183777,242651,299800",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:black-pitted-olives », du 2025-12-06 au 2026-08-19, hors promotion et hors bio : 21 relevés retenus après dédoublonnage, ramenés au kilo par la quantité nette publiée par Open Food Facts, de 3,98 à 20,90 EUR/kg — par exemple 3,98 EUR/kg le 2026-08-11 pour « Pitted Ripe Olives » (Crespo) en 425 g à 1,69 EUR (relevé n° 307397) ; 14,50 EUR/kg le 2026-07-07 pour « Olives noires à la grecques denoyautees » (Tramier) en 220 g à 3,19 EUR (relevé n° 292022) ; 20,90 EUR/kg le 2026-07-21 pour « Olives noires à la grecque dénoyautées » (Tramier) en 100 g à 2,09 EUR (relevé n° 299800). Médiane 14,50 EUR/kg, D1 7,17, D9 17,23."
+      },
+      "reindexation": null,
+      "notes": "6 lignes du corpus.\n\nDÉFAUT CONNU ET NON CORRIGÉ, à lire avant d'employer ce chiffre. Une olive se vend en saumure, et l'emballage porte deux poids : le poids net (olives + saumure) et le poids net égoutté. Open Food Facts n'en enregistre qu'un seul dans product_quantity, et l'échantillon prouve qu'il enregistre tantôt l'un tantôt l'autre : « Olives noires à la grecque » (Le brin d'olivier) publie la quantité « 335 g net, 210 g égoutté » et product_quantity vaut 335, tandis que « Spanische Oliven, entsteint » (Las Cuarenta) publie « 160 g (340 g) » et product_quantity vaut 160. Les prix au kilo calculés ici mélangent donc deux bases, et le rapport entre elles est de l'ordre de 1,6.\n\nCONSÉQUENCE, et son SENS. La recette compte des olives égouttées ; une part des relevés rapporte le prix à un poids qui inclut la saumure, donc les sous-évalue. L'estimation est un MINORANT, ce qui va dans le même sens que le rendement 1,00 déclaré inconnu — les deux biais ne se compensent pas, ils s'ajoutent. Aucune correction n'a été appliquée : il aurait fallu un taux d'égouttage par produit qu'aucune source du registre ne publie, et le §0 du contrat interdit de l'inventer. La fourchette D1-D9 absorbe une partie du mélange, elle ne le corrige pas.\n\nDeux relevés portant « bio » dans leur libellé (olives de Kalamata Iliada, relevés n° 270250 et 297706) ont été écartés bien qu'Open Food Facts ne leur mette pas le label organic. C'est la SEULE entorse de la tranche au filtre mécanique — le libellé au lieu du label — et elle est écrite ici pour qu'un relecteur puisse la refuser.\n\nCORRECTION DE RELECTURE ADVERSE. La première version de cette note les disait « les deux plus chers de l'échantillon » : c'est faux. À 18,04 et 20,43 EUR/kg ils sont le quatrième et le deuxième prix des 23 relevés éligibles ; deux relevés RETENUS leur sont supérieurs (n° 242651 à 18,06 et n° 299800 à 20,90). L'effet de leur retrait a été recalculé en entier : les garder aurait donné D1 7,25 au lieu de 7,17, médiane 14,53 au lieu de 14,50 et D9 18,05 au lieu de 17,23. Le chiffre du D9 annoncé par la note d'origine était donc juste, mais elle taisait que les deux autres bornes bougeaient aussi, et elle qualifiait mal les deux relevés.\n\nRequête rejouable : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Ablack-pitted-olives&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date — Filtres appliqués, identiques pour toutes les entrées de la tranche et dans cet ordre : pays du magasin = FR, devise EUR, hors promotion (price_is_discounted), hors produit portant un label biologique, quantité nette connue et exprimée dans l'unité de la base (ml pour un litre, g pour un kilo), puis sélection sur le libellé quand la catégorie Open Food Facts mélange des produits différents, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent. D1, médiane et D9 sont calculés sur les relevés restants."
+    },
+    {
+      "form": "Chouriço portugais",
+      "form_normalized": "chourico portugais",
+      "category": null,
+      "observed": {
+        "basis": "kg",
+        "low": 8.4,
+        "central": 16.54,
+        "high": 26.5,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 66,
+        "period_start": "2025-08-25",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 8.4,
+        "central": 16.54,
+        "high": 26.5,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Rendement inconnu. Un chouriço se vend en boyau, et le boyau n'est pas toujours mangé ; aucune table publiée de parts comestibles du registre ne le chiffre. 1,00 déclaré inconnu, donc estimation minorante (CONTRAT §2.3)."
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_66_releves_chorizo_pour_chourico_forme_approchee_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Achorizo&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-24",
+        "source_record_key": "open_prices:en:chorizo/FR/hors-bio-hors-promo/2025-08-25..2026-08-24/n=66 · ids 312069,167612,251748,221719,258122,274994,312066,312067,312068,274995,229676,229677,229674,170874,167489,136576,221716,221988,231324,178601,178603,274936,136380,231326,230897,218520,218519,221987,221986,306189,264046,233785,222003,228919,209679,257856,257922,213602,217870,172083,317587,254272,236212,229468,218686,207573,258006,230365,297736,231936,229462,226607,246225,230899,192313,217084,265822,231606,317588,317459,297541,229658,262660,254267,140187,261807",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:chorizo », du 2025-08-25 au 2026-08-24, hors promotion et hors bio : 66 relevés retenus après dédoublonnage dans 17 enseignes, ramenés au kilo par le poids net du conditionnement, de 5,88 à 51,13 EUR/kg — par exemple 5,88 EUR/kg le 2026-08-18 pour « Chorizo Doux » (Eco+) en 250 g à 1,47 EUR (relevé n° 312069) ; 16,50 EUR/kg le 2026-02-15 pour « Chorizo doux » (Argal) en 200 g à 3,30 EUR (relevé n° 222003) ; 51,13 EUR/kg le 2026-04-06 pour « Chorizo » (Corte del Gusto) en 80 g à 4,09 EUR (relevé n° 261807). Médiane 16,54 EUR/kg, D1 8,40, D9 26,50."
+      },
+      "reindexation": null,
+      "notes": "1 ligne du corpus, mais 740 kcal : c'est la deuxième forme de la tranche par les calories qu'elle débloque.\n\nADAPTATION DÉCLARÉE. Aucune source du registre ne cote le chouriço portugais. Le prix retenu est celui du chorizo vendu en France, et c'est le catalogue lui-même qui autorise le rapprochement : sa note dit que « Chouriço, chorizo et linguiça sont la même famille : saucisse de porc au paprika, séchée ou fumée » et le réduit à la même référence nutritionnelle. Le rapprochement est donc déjà arbitré en amont, au niveau de l'aliment ; il est repris ici au niveau du prix, et c'est lui qui constitue l'adaptation exigée pour le niveau B. Ce qu'il ne dit pas : un chouriço de charcuterie portugaise ne se vend pas au même prix qu'un chorizo de grande surface, et personne ne mesure l'écart.\n\nCE QUE DÉCRIT LA FOURCHETTE. Le format domine, comme pour le biscuit : le bâton de 225-250 g de marque distributeur tient 6-9 EUR/kg, les tranches et les dés préemballés en 100-150 g montent à 18-25 EUR/kg, les mini-bûchettes apéritives en 75-120 g dépassent 30 EUR/kg. Une recette qui emploie du chouriço au poids paiera plutôt le bas de la fourchette ; la médiane 16,54 EUR/kg décrit le rayon entier, tranches comprises.\n\nRequête rejouable : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Achorizo&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date — Filtres appliqués, identiques pour toutes les entrées de la tranche et dans cet ordre : pays du magasin = FR, devise EUR, hors promotion (price_is_discounted), hors produit portant un label biologique, quantité nette connue et exprimée dans l'unité de la base (ml pour un litre, g pour un kilo), puis sélection sur le libellé quand la catégorie Open Food Facts mélange des produits différents, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent. D1, médiane et D9 sont calculés sur les relevés restants."
+    },
+    {
+      "form": "Jus de citron frais",
+      "form_normalized": "jus de citron frais",
+      "category": "boissons",
+      "observed": {
+        "basis": "l",
+        "low": 3.07,
+        "central": 4.24,
+        "high": 7.65,
+        "unit": "EUR/l",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 15,
+        "period_start": "2025-09-27",
+        "period_end": "2026-08-15"
+      },
+      "per_kg": {
+        "low": 2.98,
+        "central": 4.12,
+        "high": 7.43,
+        "conversion": {
+          "kind": "density",
+          "factor": 1.03,
+          "from": "catalog:jus de citron frais"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un jus embouteillé n'a pas de partie non comestible : le flacon acheté est intégralement du jus.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un jus embouteillé n'a pas de partie non comestible : le flacon acheté est intégralement du jus."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_15_releves_jus_embouteille_pour_jus_presse_forme_approchee_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Alemon-juice&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-15",
+        "source_record_key": "open_prices:en:lemon-juice/FR/hors-bio-hors-promo-citron-jaune-pur/2025-09-27..2026-08-15/n=15 · ids 233068,217467,241780,205270,241509,241510,259267,142445,205633,241209,241203,307565,275616,313792,313677",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:lemon-juice », du 2025-09-27 au 2026-08-15, hors promotion, hors bio, restreint au jus de citron jaune (les jus de citron vert, le yuzu, les « spécialités au jus de citron » aromatisées et un vinaigre au jus de citron ont été écartés) : 15 relevés retenus après dédoublonnage, ramenés au litre par le volume net du flacon, de 3,00 à 28,96 EUR/l — par exemple 3,00 EUR/l le 2026-02-27 pour « Jus de citron à base de concentré » (Auchan, Pouce) en 200 ml à 0,60 EUR (relevé n° 233068) ; 4,24 EUR/l le 2025-09-27 pour « Jus de citron de Sicile » (Marque Repère, Rustica) en 250 ml à 1,06 EUR (relevé n° 142445) ; 28,96 EUR/l le 2026-08-15 pour « Jus de citron » (Carrefour) en 48 ml à 1,39 EUR (relevé n° 313677). Médiane 4,24 EUR/l, D1 3,07, D9 7,65."
+      },
+      "reindexation": null,
+      "notes": "50 lignes du corpus : la deuxième forme la plus fréquente de la tranche.\n\nADAPTATION DÉCLARÉE, et elle est importante. La forme du catalogue est « Jus de citron, maison » (Ciqual 2007) : du jus PRESSÉ. Le prix porté ici est celui du jus EMBOUTEILLÉ, parce que c'est le seul que les sources du registre cotent. Ce ne sont pas les mêmes euros. Pour obtenir du jus pressé, on achète des citrons entiers ; le passage du kilo de citrons au litre de jus demande un taux de pressage qu'aucune source du registre ne publie, et l'inventer aurait été exactement ce que le CONTRAT §0 proscrit — d'où le choix du produit embouteillé plutôt qu'un calcul depuis le prix du citron.\n\nSENS DU BIAIS, connu : un litre de jus pressé à la maison coûte NETTEMENT plus cher qu'un litre de jus embouteillé, parce qu'il faut plusieurs kilos de citrons pour un litre de jus. L'estimation est donc un MINORANT pour qui presse réellement ses citrons, et un chiffre juste pour qui ouvre un flacon. Elle ne doit jamais être présentée comme « le prix du jus de citron frais ».\n\nUn relevé isolé à 28,96 EUR/l (flacon de 48 ml) est le plus cher de l'échantillon ; il est au-dessus du D9 et ne déplace donc aucune borne publiée.\n\nRequête rejouable : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Alemon-juice&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date — Filtres appliqués, identiques pour toutes les entrées de la tranche et dans cet ordre : pays du magasin = FR, devise EUR, hors promotion (price_is_discounted), hors produit portant un label biologique, quantité nette connue et exprimée dans l'unité de la base (ml pour un litre, g pour un kilo), puis sélection sur le libellé quand la catégorie Open Food Facts mélange des produits différents, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent. D1, médiane et D9 sont calculés sur les relevés restants."
+    },
+    {
+      "form": "Jus de citron vert frais",
+      "form_normalized": "jus de citron vert frais",
+      "category": "boissons",
+      "observed": {
+        "basis": "l",
+        "low": 4.55,
+        "central": 7.88,
+        "high": 11.02,
+        "unit": "EUR/l",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 6,
+        "period_start": "2026-02-07",
+        "period_end": "2026-08-15"
+      },
+      "per_kg": {
+        "low": 4.42,
+        "central": 7.65,
+        "high": 10.7,
+        "conversion": {
+          "kind": "density",
+          "factor": 1.03,
+          "from": "catalog:jus de citron vert frais"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un jus embouteillé n'a pas de partie non comestible : le flacon acheté est intégralement du jus.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un jus embouteillé n'a pas de partie non comestible : le flacon acheté est intégralement du jus."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_6_releves_jus_embouteille_echantillon_bimodal_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Alime-juices&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-15",
+        "source_record_key": "open_prices:en:lime-juices/FR/hors-bio-hors-promo/2026-02-07..2026-08-15/n=6 · ids 259268,241781,205632,233634,313791,211558",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:lime-juices », du 2026-02-07 au 2026-08-15, hors promotion et hors bio : 6 relevés retenus après dédoublonnage, tous en flacon de 200 ml, ramenés au litre par le volume net, de 4,45 à 11,30 EUR/l — par exemple 4,45 EUR/l le 2026-04-04 pour « Jus de citron vert » (Marque Repère, Rustica) en 200 ml à 0,89 EUR (relevé n° 259268) ; 10,45 EUR/l le 2026-02-27 pour « Jus de citron vert » (Siracuse) en 200 ml à 2,09 EUR (relevé n° 233634) ; 11,30 EUR/l le 2026-02-09 pour « Jus de citron vert » (Siracuse) en 200 ml à 2,26 EUR (relevé n° 211558). Médiane 7,88 EUR/l, D1 4,55, D9 11,02."
+      },
+      "reindexation": null,
+      "notes": "1 ligne du corpus. Même adaptation que le jus de citron jaune, et le catalogue la nomme lui-même : « Frais désigne le jus pressé, donc la forme maison, pas le pur jus qui est le jus conditionné. » Le prix porté ici est celui du jus conditionné ; l'estimation MINORE donc le coût réel de qui presse des citrons verts.\n\nFAIBLESSE PROPRE À CETTE ENTRÉE, à connaître avant de s'en servir : l'échantillon est BIMODAL. Trois relevés de marque distributeur tiennent 4,45-5,30 EUR/l, trois relevés Siracuse tiennent 10,45-11,30 EUR/l, et il n'y a strictement rien entre les deux. La médiane 7,88 EUR/l tombe donc dans un trou de la distribution : aucun jus de citron vert ne se vend à ce prix. Avec six relevés, D1 et D9 sont simplement les deux extrêmes adoucis. Le nombre est retrouvable et honnêtement calculé, mais il décrit un rayon coupé en deux, pas un prix de marché.\n\nRequête rejouable : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Alime-juices&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date — Filtres appliqués, identiques pour toutes les entrées de la tranche et dans cet ordre : pays du magasin = FR, devise EUR, hors promotion (price_is_discounted), hors produit portant un label biologique, quantité nette connue et exprimée dans l'unité de la base (ml pour un litre, g pour un kilo), puis sélection sur le libellé quand la catégorie Open Food Facts mélange des produits différents, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent. D1, médiane et D9 sont calculés sur les relevés restants."
+    },
+    {
+      "form": "Sauce soja légère",
+      "form_normalized": "sauce soja legere",
+      "category": "condiments_sauces",
+      "observed": {
+        "basis": "l",
+        "low": 8.67,
+        "central": 17.81,
+        "high": 33.27,
+        "unit": "EUR/l",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 124,
+        "period_start": "2025-09-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 7.35,
+        "central": 15.09,
+        "high": 28.19,
+        "conversion": {
+          "kind": "density",
+          "factor": 1.18,
+          "from": "catalog:sauce soja legere"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Une sauce n'a pas de partie non comestible : le flacon acheté est intégralement employé.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Une sauce n'a pas de partie non comestible : le flacon acheté est intégralement employé."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_124_releves_sauces_salees_seules_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asoy-sauces&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-23",
+        "source_record_key": "open_prices:en:soy-sauces/FR/hors-bio-hors-promo-hors-sauces-sucrees/2025-09-17..2026-08-23/n=124 · ids 311293,311460,311410,150626,311411,311461,297926,254525,267752,161178,284900,311532,311348,311349,311350,163895,158809,271400,305278,285851,246427,312621,302326,299787,217516,168556,254545,233831,233307,310247,271401,311379,311347,305528,253888,275039,302749,310243,215060,275038,233942,254526,310244,302629,223010,305898,270681,302327,310273,313437,300419,180681,300294,302325,233302,265914,215061,215062,153403,305900,142567,316662,311380,231358,307342,307566,168553,316902,302750,316822,313785,307343,311481,302630,314987,273025,315271,300297,230481,300296,253866,230483,316773,315220,300355,299523,190246,190245,253865,210929,237326,233903,198393,237288,313400,244218,215058,302748,233943,169693,254656,233316,169691,243836,314771,215056,180684,315375,233314,215057,315376,247252,217554,316257,314601,245376,267753,300293,315219,300352,267754,316558,316559,315217",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:soy-sauces », du 2025-09-17 au 2026-08-23, hors promotion, hors bio, et restreint aux sauces soja SALÉES (les sauces sucrées, kecap manis, teriyaki, yakitori, sauces d'huître, de poisson, wok et sushi ont été écartées) : 124 relevés retenus après dédoublonnage dans 22 enseignes, ramenés au litre par le volume net du flacon, de 3,54 à 39,00 EUR/l — par exemple 3,54 EUR/l le 2026-08-17 pour une sauce soja (Healthy Boy) en 4500 ml à 15,95 EUR (relevé n° 311293) ; 17,62 EUR/l le 2026-08-23 pour « Sauce soja salée » (Suzi Wan) en 143 ml à 2,52 EUR (relevé n° 316662) ; 39,00 EUR/l le 2026-08-21 pour une sauce soja (Kikkoman) en 150 ml à 5,85 EUR (relevé n° 315217). Médiane 17,81 EUR/l, D1 8,67, D9 33,27."
+      },
+      "reindexation": null,
+      "notes": "2 lignes du corpus. L'échantillon le plus fourni de la tranche : 124 relevés, 22 enseignes, rapport D9/D1 de 3,8.\n\nSÉLECTION. La catégorie Open Food Facts « en:soy-sauces » sert de fourre-tout aux sauces asiatiques : elle contient les sauces sucrées (kecap manis), les teriyaki, les sauces d'huître et de poisson. Toutes ont été écartées sur le libellé, parce que le catalogue rattache « Sauce soja légère » à Ciqual 11104 « Sauce soja, préemballée », la sauce SALÉE — et qu'une sauce sucrée en est un autre aliment, pas une variante de gamme. 75 relevés ont été retirés à ce titre.\n\nCE QUE DÉCRIT LA FOURCHETTE : le format, presque entièrement. Le bidon de 4,5 L d'épicerie asiatique descend à 3,54 EUR/l, les flacons de 150 ml de grande surface tiennent 15-25 EUR/l, et les petits flacons Kikkoman montent à 39 EUR/l. Une même sauce peut donc coûter dix fois plus cher au litre selon le contenant. Le CONTRAT §3.1 range cet écart dans ce que la dispersion absorbe ; la médiane 17,81 EUR/l correspond au flacon de 150 ml qui domine l'échantillon (42 relevés sur 124).\n\nConversion : 17,81 EUR/l ÷ 1,18 g/ml = 15,09 EUR/kg. Le facteur 1,18 est recopié du catalogue (conversion.density_g_per_ml de la forme), jamais ressaisi.\n\nRequête rejouable : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asoy-sauces&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date — Filtres appliqués, identiques pour toutes les entrées de la tranche et dans cet ordre : pays du magasin = FR, devise EUR, hors promotion (price_is_discounted), hors produit portant un label biologique, quantité nette connue et exprimée dans l'unité de la base (ml pour un litre, g pour un kilo), puis sélection sur le libellé quand la catégorie Open Food Facts mélange des produits différents, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent. D1, médiane et D9 sont calculés sur les relevés restants."
+    },
+    {
+      "form": "Sauce soja philippine",
+      "form_normalized": "sauce soja philippine",
+      "category": "condiments_sauces",
+      "observed": {
+        "basis": "l",
+        "low": 8.67,
+        "central": 17.81,
+        "high": 33.27,
+        "unit": "EUR/l",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 124,
+        "period_start": "2025-09-17",
+        "period_end": "2026-08-23"
+      },
+      "per_kg": {
+        "low": 7.35,
+        "central": 15.09,
+        "high": 28.19,
+        "conversion": {
+          "kind": "density",
+          "factor": 1.18,
+          "from": "catalog:sauce soja philippine"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Une sauce n'a pas de partie non comestible : le flacon acheté est intégralement employé.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Une sauce n'a pas de partie non comestible : le flacon acheté est intégralement employé."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_124_releves_sauce_soja_generique_pour_toyo_forme_approchee_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asoy-sauces&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-23",
+        "source_record_key": "open_prices:en:soy-sauces/FR/hors-bio-hors-promo-hors-sauces-sucrees/2025-09-17..2026-08-23/n=124 · ids 311293,311460,311410,150626,311411,311461,297926,254525,267752,161178,284900,311532,311348,311349,311350,163895,158809,271400,305278,285851,246427,312621,302326,299787,217516,168556,254545,233831,233307,310247,271401,311379,311347,305528,253888,275039,302749,310243,215060,275038,233942,254526,310244,302629,223010,305898,270681,302327,310273,313437,300419,180681,300294,302325,233302,265914,215061,215062,153403,305900,142567,316662,311380,231358,307342,307566,168553,316902,302750,316822,313785,307343,311481,302630,314987,273025,315271,300297,230481,300296,253866,230483,316773,315220,300355,299523,190246,190245,253865,210929,237326,233903,198393,237288,313400,244218,215058,302748,233943,169693,254656,233316,169691,243836,314771,215056,180684,315375,233314,215057,315376,247252,217554,316257,314601,245376,267753,300293,315219,300352,267754,316558,316559,315217",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:soy-sauces », du 2025-09-17 au 2026-08-23, hors promotion, hors bio, et restreint aux sauces soja SALÉES (les sauces sucrées, kecap manis, teriyaki, yakitori, sauces d'huître, de poisson, wok et sushi ont été écartées) : 124 relevés retenus après dédoublonnage dans 22 enseignes, ramenés au litre par le volume net du flacon, de 3,54 à 39,00 EUR/l — par exemple 3,54 EUR/l le 2026-08-17 pour une sauce soja (Healthy Boy) en 4500 ml à 15,95 EUR (relevé n° 311293) ; 17,62 EUR/l le 2026-08-23 pour « Sauce soja salée » (Suzi Wan) en 143 ml à 2,52 EUR (relevé n° 316662) ; 39,00 EUR/l le 2026-08-21 pour une sauce soja (Kikkoman) en 150 ml à 5,85 EUR (relevé n° 315217). Médiane 17,81 EUR/l, D1 8,67, D9 33,27."
+      },
+      "reindexation": null,
+      "notes": "1 ligne du corpus. MÊME ÉCHANTILLON, MÊMES CHIFFRES que « Sauce soja légère » : c'est un choix, et il faut le voir. Aucun relevé du registre ne porte sur le toyo philippin, et le catalogue a déjà tranché la question au niveau de l'aliment — sa note dit que « le toyo philippin relève du concept sauce soja : sauce claire et salée, que rien ne distingue nutritionnellement de la sauce soja générique », et lui donne la même référence Ciqual et la même densité 1,18. Le prix suit le même rapprochement, et c'est lui qui constitue l'adaptation déclarée du niveau B.\n\nCE QUE CELA NE DIT PAS : le toyo se vend en épicerie asiatique, souvent en grand format, et probablement moins cher au litre que la médiane du rayon français retenue ici. Personne ne le mesure, donc rien n'est corrigé. Deux formes portant le même prix produiront un total identique dans une recette qui emploierait les deux — ce serait un artefact de ce rapprochement, pas une observation.\n\nRequête rejouable : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Asoy-sauces&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date — Filtres appliqués, identiques pour toutes les entrées de la tranche et dans cet ordre : pays du magasin = FR, devise EUR, hors promotion (price_is_discounted), hors produit portant un label biologique, quantité nette connue et exprimée dans l'unité de la base (ml pour un litre, g pour un kilo), puis sélection sur le libellé quand la catégorie Open Food Facts mélange des produits différents, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent. D1, médiane et D9 sont calculés sur les relevés restants."
+    },
+    {
+      "form": "Vinaigre de palmier ou cidre",
+      "form_normalized": "vinaigre de palmier ou cidre",
+      "category": "condiments_sauces",
+      "observed": {
+        "basis": "l",
+        "low": 1.16,
+        "central": 2.49,
+        "high": 6.33,
+        "unit": "EUR/l",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 27,
+        "period_start": "2025-09-17",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 1.15,
+        "central": 2.47,
+        "high": 6.27,
+        "conversion": {
+          "kind": "density",
+          "factor": 1.01,
+          "from": "catalog:vinaigre de palmier ou cidre"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un vinaigre n'a pas de partie non comestible : la bouteille achetée est intégralement employée.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un vinaigre n'a pas de partie non comestible : la bouteille achetée est intégralement employée."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_27_releves_vinaigre_de_cidre_branche_nommee_par_la_forme_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Acider-vinegars&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-24",
+        "source_record_key": "open_prices:en:cider-vinegars/FR/hors-bio-hors-promo/2025-09-17..2026-08-24/n=27 · ids 262244,316797,318205,297905,265325,215137,205623,155960,241658,310437,316845,290198,174895,181218,215213,205929,265981,215139,273455,205603,217590,233582,317350,265477,313384,241826,300382",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:cider-vinegars », du 2025-09-17 au 2026-08-24, hors promotion et hors bio : 27 relevés retenus après dédoublonnage dans 10 enseignes, ramenés au litre par le volume net de la bouteille, de 0,91 à 21,96 EUR/l — par exemple 0,91 EUR/l le 2026-04-06 pour « Vinaigre de cidre 5% d'acidité » (Pouce) en 1000 ml à 0,91 EUR (relevé n° 262244) ; 2,49 EUR/l le 2025-09-17 pour « Vinaigre de Cidre » (Belle France) en 750 ml à 1,87 EUR (relevé n° 181218) ; 21,96 EUR/l le 2026-07-28 pour « Vinaigre De Cidre Normand » (Oluf lorentzen as) en 250 ml à 5,49 EUR (relevé n° 300382). Médiane 2,49 EUR/l, D1 1,16, D9 6,33."
+      },
+      "reindexation": null,
+      "notes": "1 ligne du corpus. Le libellé de la forme porte lui-même l'alternative — « Vinaigre de palmier OU cidre » — et c'est la branche « cidre » qui a été chiffrée, parce que c'est la seule des deux que les sources du registre cotent. Le vinaigre de palme n'apparaît dans aucun relevé France.\n\nPOURQUOI PAS LE VINAIGRE GÉNÉRIQUE. Le catalogue réduit cette forme à Ciqual 11018 « Vinaigre » tout court, et il aurait été tentant de prendre le rayon vinaigre entier, qui compte 276 relevés France. Cela a été essayé puis écarté : la fourchette obtenue va de 1,19 à 20,76 EUR/l, soit un rapport D9/D1 de 17, au-delà du seuil de 10 du contrôleur — et le contrôleur a raison, un rayon qui mélange le vinaigre d'alcool à 0,36 EUR/l et le balsamique de Modène à 35 EUR/l ne décrit plus un aliment, et sa médiane ne veut rien dire non plus. La branche « cidre », elle, tient un rapport de 5,5 et reste un produit reconnaissable.\n\nRequête rejouable : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Acider-vinegars&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date — Filtres appliqués, identiques pour toutes les entrées de la tranche et dans cet ordre : pays du magasin = FR, devise EUR, hors promotion (price_is_discounted), hors produit portant un label biologique, quantité nette connue et exprimée dans l'unité de la base (ml pour un litre, g pour un kilo), puis sélection sur le libellé quand la catégorie Open Food Facts mélange des produits différents, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent. D1, médiane et D9 sont calculés sur les relevés restants."
+    },
+    {
+      "form": "Oignon en poudre",
+      "form_normalized": "oignon en poudre",
+      "category": null,
+      "observed": {
+        "basis": "kg",
+        "low": 176.83,
+        "central": 322.22,
+        "high": 350,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "annual_mean",
+        "n_observations": 5,
+        "period_start": "2026-06-20",
+        "period_end": "2026-08-24"
+      },
+      "per_kg": {
+        "low": 176.83,
+        "central": 322.22,
+        "high": 350,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Une poudre d'épice n'a pas de partie non comestible : le flacon acheté est intégralement employé.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-08-30",
+          "observed_on": "2026-08-30",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Une poudre d'épice n'a pas de partie non comestible : le flacon acheté est intégralement employé."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_mediane_5_releves_minimum_de_la_source_atteint_de_justesse_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aonion-powders&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-08-30",
+        "observed_on": "2026-08-24",
+        "source_record_key": "open_prices:en:onion-powders/FR/hors-bio-hors-promo/2026-06-20..2026-08-24/n=5 · ids 315333,317626,317151,315579,289290",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:onion-powders », du 2026-06-20 au 2026-08-24, hors promotion et hors bio : 5 relevés retenus après dédoublonnage dans 3 enseignes, ramenés au kilo par le poids net du flacon, de 82,86 à 350,00 EUR/kg — par exemple 82,86 EUR/kg le 2026-08-21 pour « Oignon semoule » (Marius) en 35 g à 2,90 EUR (relevé n° 315333) ; 322,22 EUR/kg le 2026-08-19 pour « Première Saveur Oignon » (Ducros) en 9 g à 2,90 EUR (relevé n° 317151) ; 350,00 EUR/kg le 2026-06-20 pour « Première Saveur Oignon » (Ducros) en 9 g à 3,15 EUR (relevé n° 289290). Médiane 322,22 EUR/kg, D1 176,83, D9 350,00."
+      },
+      "reindexation": null,
+      "notes": "1 ligne du corpus, 17 kcal. L'entrée la plus fragile de la tranche, publiée quand même parce qu'elle est entièrement retrouvable — mais il faut savoir ce qu'elle vaut.\n\nCE QUI LA FRAGILISE. Cinq relevés, soit exactement le minimum qu'Open Prices exige pour dépasser C, et quatre des cinq portent LA MÊME référence (Ducros « Première Saveur Oignon », flacon de 9 g) relevée dans quatre magasins différents. La dispersion décrit donc surtout l'écart de prix d'une seule référence d'un magasin à l'autre, pas l'écart entre produits. Le cinquième relevé, un flacon de 35 g de la marque Marius, est quatre fois moins cher au kilo (82,86 contre 322,22) : c'est lui, à lui seul, qui tire le D1 vers le bas, et c'est le format qui l'explique.\n\nORDRE DE GRANDEUR, pour que le chiffre ne surprenne pas : 322 EUR/kg est le prix normal d'une épice vendue en flacon de 9 grammes. Rapporté à l'usage, une cuillère à café d'oignon en poudre (environ 2 g) coûte de l'ordre de 0,65 EUR. Le nombre paraît énorme au kilo parce que personne n'achète un kilo d'oignon en poudre — c'est le pivot du référentiel qui impose le kilo, pas le rayon.\n\nRequête rejouable : https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Aonion-powders&date__gte=2025-08-25&date__lte=2026-08-24&size=100&order_by=-date — Filtres appliqués, identiques pour toutes les entrées de la tranche et dans cet ordre : pays du magasin = FR, devise EUR, hors promotion (price_is_discounted), hors produit portant un label biologique, quantité nette connue et exprimée dans l'unité de la base (ml pour un litre, g pour un kilo), puis sélection sur le libellé quand la catégorie Open Food Facts mélange des produits différents, puis dédoublonnage par couple (référence, magasin) en gardant le relevé le plus récent. D1, médiane et D9 sont calculés sur les relevés restants."
+    }
+  ]
+}

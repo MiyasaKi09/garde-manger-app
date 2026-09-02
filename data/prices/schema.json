@@ -1,0 +1,275 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://myko.local/schemas/prices/1.0.0",
+  "title": "Référentiel de prix Myko",
+  "description": "Schéma STRICT d'un jeu de prix et de ses entrées. Le document qui fait autorité est data/prices/CONTRAT.md ; ce schéma en est la forme exécutable. additionalProperties est false partout : un champ non prévu est un champ que personne n'a arbitré, et il doit être refusé plutôt que traversé en silence. Le schéma décrit la FORME ; les règles qui lient les champs entre eux (arithmétique des conversions, cohérence confiance/source, péremption, citation portant le chiffre lu) sont vérifiées par scripts/data/prices/check-price-provenance.mjs, parce qu'elles demandent le registre des sources et le catalogue des formes.",
+  "contract_version": "1.0.0",
+
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "price_set_version",
+    "country",
+    "currency",
+    "reference_date",
+    "derived_license",
+    "catalog_version",
+    "built_at",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0",
+      "description": "Doit égaler la version du contrat. Un jeu qui déclare autre chose est refusé : on ne lit pas un fichier avec les règles d'une autre version."
+    },
+    "price_set_version": { "type": "string", "minLength": 1, "examples": ["2026.08"] },
+    "country": { "const": "FR" },
+    "currency": { "const": "EUR" },
+    "reference_date": {
+      "$ref": "#/$defs/date",
+      "description": "Date à laquelle TOUS les prix du jeu sont ramenés. C'est elle qui s'affiche à côté de chaque montant, et c'est par rapport à elle que se calcule la péremption."
+    },
+    "derived_license": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Licence du référentiel PRODUIT, qui n'est pas forcément celle des sources. ODbL est à partage à l'identique : faire entrer Open Prices impose odbl-1.0 ici."
+    },
+    "catalog_version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Version du catalogue de formes contre lequel les form_normalized ont été joints."
+    },
+    "built_at": { "$ref": "#/$defs/date" },
+    "notes": { "type": "string" },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entry" },
+      "description": "Une entrée par forme, sans doublon de form_normalized. Une forme absente est une forme non couverte : c'est un état normal, jamais une erreur."
+    }
+  },
+
+  "$defs": {
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "description": "ISO 8601, comparée en UTC (cf. CLAUDE.md, piège 4)."
+    },
+    "month": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$" },
+    "money": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Montant en euros, strictement positif. Un prix nul ou négatif n'existe pas ; 0 serait la façon la plus discrète d'écrire « je ne sais pas »."
+    },
+
+    "allowed_uses": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["store_raw", "redistribute", "modify", "attribution_required"],
+      "properties": {
+        "store_raw": { "type": "boolean" },
+        "redistribute": { "type": "boolean" },
+        "modify": { "type": "boolean" },
+        "attribution_required": { "type": "boolean" },
+        "share_alike": { "type": "boolean" }
+      }
+    },
+
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_code",
+        "source_url",
+        "license_code",
+        "license_url",
+        "allowed_uses",
+        "retrieved_on",
+        "observed_on",
+        "citation"
+      ],
+      "properties": {
+        "source_code": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Code d'une source de data/prices/sources.json. Un code inconnu, désactivé ou à licence non vérifiée est refusé."
+        },
+        "source_url": {
+          "type": "string",
+          "minLength": 1,
+          "description": "L'URL de la PAGE LUE, pas la racine du site. Une citation ne vaut que si un humain peut y retourner."
+        },
+        "license_code": { "type": "string", "minLength": 1 },
+        "license_url": { "type": ["string", "null"] },
+        "allowed_uses": { "$ref": "#/$defs/allowed_uses" },
+        "retrieved_on": { "$ref": "#/$defs/date", "description": "Date de LECTURE de la source." },
+        "observed_on": { "$ref": "#/$defs/date", "description": "Date de l'OBSERVATION du prix. C'est elle qui vieillit — les confondre est la faute classique." },
+        "source_record_key": {
+          "type": "string",
+          "description": "Identifiant de la ligne dans la source. Obligatoire pour une entrée en A."
+        },
+        "citation": {
+          "type": "string",
+          "minLength": 20,
+          "description": "LE CHIFFRE LU, DANS SA PHRASE, avec le libellé sous lequel la source le publie. Doit contenir littéralement la valeur centrale observée. C'est le seul champ qui rende l'invention coûteuse."
+        }
+      }
+    },
+
+    "observed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "basis", "low", "central", "high", "unit",
+        "dispersion", "aggregation", "n_observations",
+        "period_start", "period_end"
+      ],
+      "properties": {
+        "basis": {
+          "enum": ["kg", "l", "piece"],
+          "description": "Base NATIVE de l'observation, telle que la source la publie. Jamais convertie ici."
+        },
+        "low": { "$ref": "#/$defs/money" },
+        "central": { "$ref": "#/$defs/money", "description": "Médiane des observations retenues. C'est le nombre qui s'affiche." },
+        "high": { "$ref": "#/$defs/money" },
+        "unit": { "enum": ["EUR/kg", "EUR/l", "EUR/piece"] },
+        "dispersion": {
+          "enum": ["d1_d9", "quoted_range", "min_max"],
+          "description": "Ce que représentent low et high : déciles D1/D9 (le cas nominal), plage de cotation publiée telle quelle (plafonne à B), ou extrêmes (dominés par les aberrations, plafonne à B)."
+        },
+        "aggregation": {
+          "enum": ["point", "monthly_mean", "annual_mean"],
+          "description": "Un point isolé n'est jamais A, et il est automatiquement C sur les catégories saisonnières."
+        },
+        "n_observations": { "type": "integer", "minimum": 1 },
+        "period_start": { "$ref": "#/$defs/date" },
+        "period_end": { "$ref": "#/$defs/date" }
+      }
+    },
+
+    "conversion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": { "enum": ["identity", "density", "grams_per_piece"] },
+        "factor": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Densité en g/ml, ou masse d'une pièce en grammes. Absent quand kind vaut identity."
+        },
+        "from": {
+          "type": "string",
+          "minLength": 1,
+          "description": "D'où vient le facteur : catalog:<form_normalized>. Il n'est JAMAIS ressaisi — deux vérités sur le même nombre finissent toujours par se contredire."
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "identity" } } },
+          "then": { "not": { "required": ["factor"] } },
+          "else": { "required": ["factor", "from"] }
+        }
+      ]
+    },
+
+    "per_kg": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["low", "central", "high", "conversion"],
+      "description": "LE PIVOT, en euros par kilogramme net acheté. C'est le seul bloc que la couche de calcul lit. Il est matérialisé dans le fichier et son arithmétique est refaite par le contrôleur, pour que la conversion ne diverge jamais en silence.",
+      "properties": {
+        "low": { "$ref": "#/$defs/money" },
+        "central": { "$ref": "#/$defs/money" },
+        "high": { "$ref": "#/$defs/money" },
+        "conversion": { "$ref": "#/$defs/conversion" }
+      }
+    },
+
+    "edible_yield": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "known"],
+      "description": "Part réellement consommée de ce qu'on achète. Vit à terme dans le catalogue des formes (propriété de l'aliment, pas de son prix) ; porté ici tant que le catalogue ne l'a pas.",
+      "properties": {
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "description": "Dans ]0, 1]. Défaut 1,00 quand il est inconnu : l'estimation devient un MINORANT déclaré, ce qui est un biais de sens connu — au lieu d'un 0,85 typique, qui serait une correction inventée."
+        },
+        "known": { "type": "boolean" },
+        "note": { "type": "string" },
+        "provenance": {
+          "$ref": "#/$defs/provenance",
+          "description": "Obligatoire dès que value ≠ 1 ou que known vaut true. Sans elle, le rendement serait la porte de service par laquelle les nombres inventés rentrent."
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "known": { "const": false } } },
+          "then": { "properties": { "value": { "const": 1 } } }
+        },
+        {
+          "if": { "properties": { "known": { "const": true } } },
+          "then": { "required": ["provenance"] }
+        }
+      ]
+    },
+
+    "reindexation": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": [
+        "coicop", "index_source", "index_series",
+        "from_period", "from_value", "to_period", "to_value", "factor"
+      ],
+      "description": "Obligatoire entre 12 et 24 mois d'âge. L'INSEE fournit un RAPPORT, jamais un niveau : ce bloc vieillit un prix relevé ailleurs, il n'en crée aucun.",
+      "properties": {
+        "coicop": { "type": "string", "pattern": "^01\\.[0-9]+(\\.[0-9]+)*$" },
+        "index_source": { "const": "insee_ipc" },
+        "index_series": { "type": "string", "minLength": 1 },
+        "from_period": { "$ref": "#/$defs/month" },
+        "from_value": { "type": "number", "exclusiveMinimum": 0 },
+        "to_period": { "$ref": "#/$defs/month" },
+        "to_value": { "type": "number", "exclusiveMinimum": 0 },
+        "factor": { "type": "number", "exclusiveMinimum": 0, "description": "to_value / from_value. Le contrôleur refait la division." }
+      }
+    },
+
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "form", "form_normalized", "category",
+        "observed", "per_kg", "edible_yield",
+        "confidence", "confidence_reason", "provenance", "reindexation"
+      ],
+      "properties": {
+        "form": { "type": "string", "minLength": 1, "description": "Libellé EXACT du catalogue (canonical_name)." },
+        "form_normalized": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9]+( [a-z0-9]+)*$",
+          "description": "Clé de jointure, telle que normalizeFoodForm la produit : minuscules, sans accent, espaces simples."
+        },
+        "category": { "type": ["string", "null"] },
+        "observed": { "$ref": "#/$defs/observed" },
+        "per_kg": { "$ref": "#/$defs/per_kg" },
+        "edible_yield": { "$ref": "#/$defs/edible_yield" },
+        "confidence": {
+          "enum": ["A", "B", "C"],
+          "description": "Calqué sur le catalogue alimentaire, où C est un bloqueur dans materializeRecipe. Ici C ÉQUIVAUT À L'ABSENCE : ne s'affiche pas, ne compte pas dans la couverture, reste au fichier pour la traçabilité."
+        },
+        "confidence_reason": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Code court disant ce qui a valu ce niveau. Une confiance sans justification est refusée : le niveau doit être un constat, pas une opinion."
+        },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "reindexation": { "$ref": "#/$defs/reindexation" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,177 @@
+/* =============================================================================
+   components/pricing/Estimation.css — l'écriture d'une estimation
+   -----------------------------------------------------------------------------
+   Tokens de app/globals.css et app/styles/tokens.css uniquement. Aucune couleur
+   en dur : une estimation doit vieillir avec le thème, pas contre lui.
+
+   PARTI PRIS : l'estimation partielle n'est PAS un avertissement.
+   Pas de jaune, pas de bordure d'alerte, pas d'icône de danger. Le référentiel
+   couvre 160 formes sur 534 et le restera longtemps : traiter le cas normal
+   comme une anomalie apprendrait à l'utilisateur à ignorer un signal qui
+   s'allume tout le temps. La différence entre « Estimation ≈ » et « Au moins »
+   se joue dans les mots et dans une nuance d'encre, jamais dans une couleur
+   d'alarme.
+
+   Le chiffre est en Fraunces (--font-display) : c'est la police des titres, et
+   un montant est ici une affirmation éditoriale. Tout ce qui le qualifie —
+   couverture, date, sources — est en JetBrains Mono, petit et gris : la
+   hiérarchie visuelle dit littéralement « voici le chiffre, et voici ce qui le
+   relativise ».
+   ============================================================================= */
+
+/* ── Montant ───────────────────────────────────────────────────────────────── */
+.myko-est-montant {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: var(--ink-1);
+}
+.myko-est-prefixe {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.myko-est-valeur {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.myko-est-fourchette {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.myko-est-petit .myko-est-valeur { font-size: 20px; }
+.myko-est-moyen .myko-est-valeur { font-size: 30px; }
+.myko-est-grand .myko-est-valeur { font-size: clamp(34px, 5vw, 52px); }
+.myko-est-grand .myko-est-prefixe { font-size: 12px; }
+
+.myko-est-suffixe {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+/* ── Détail : ce que le contrat impose à côté du montant ───────────────────── */
+.myko-est-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+/* Le séparateur est dessiné, pas écrit : un « · » entre deux <span> serait un
+   caractère à recopier dans chaque appelant, et il manquerait un jour. */
+.myko-est-detail > span + span::before {
+  content: '·';
+  margin-right: 10px;
+  color: var(--line-strong);
+}
+.myko-est-couverture { color: var(--ink-2); }
+.myko-est-date { color: var(--ink-3); }
+.myko-est-nuance { font-style: italic; }
+.myko-est-manquants {
+  flex-basis: 100%;
+  color: var(--ink-3);
+}
+.myko-est-detail > .myko-est-manquants::before { content: none; margin: 0; }
+
+/* ── Bloc ──────────────────────────────────────────────────────────────────── */
+.myko-est-bloc {
+  padding: 18px 0;
+  border-top: 1px solid var(--line-strong);
+}
+.myko-est-titre {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}
+.myko-est-ligne { margin: 0; }
+
+/* Le bloc sans chiffre garde exactement la même boîte que le bloc chiffré.
+   Une mise en page qui change avec la couverture ferait de l'absence de prix un
+   événement graphique, alors que c'est l'état le plus fréquent. */
+.myko-est-bloc-vide .myko-est-titre { color: var(--ink-3); }
+.myko-est-refus { display: grid; gap: 6px; }
+.myko-est-refus-texte {
+  margin: 0;
+  font-family: var(--font-editorial);
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+.myko-est-refus-liste,
+.myko-est-refus .myko-est-date {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+
+/* ── Ligne compacte (cartes, rangées) ──────────────────────────────────────── */
+.myko-est-inline {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--ink-2);
+}
+.myko-est-inline b {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  color: var(--ink-1);
+}
+.myko-est-inline-suffixe { color: var(--ink-3); }
+/* Le compte des lignes chiffrées, toujours présent (§8.5). Il est discret mais
+   il n'est pas escamotable : c'est lui qui empêche deux cartes de couvertures
+   différentes de se comparer comme si elles disaient la même chose. */
+.myko-est-inline-cov {
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 1px 4px;
+}
+.myko-est-inline-date { font-size: 10px; color: var(--ink-3); }
+.myko-est-inline-vide {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.03em;
+  color: var(--ink-3);
+}
+
+/* ── Attribution des sources (ODbL : obligatoire, pas décoratif) ───────────── */
+.myko-est-sources {
+  margin: 12px 0 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+}
+
+@media (max-width: 720px) {
+  .myko-est-moyen .myko-est-valeur { font-size: 26px; }
+  .myko-est-montant { gap: 6px; }
+}
