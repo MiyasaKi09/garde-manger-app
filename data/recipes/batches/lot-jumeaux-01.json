@@ -1,0 +1,431 @@
+{
+  "lot": "jumeaux-01",
+  "intention": "Premier lot de jumeaux végétariens de même lignée (plan « planning parfait », chantier C2). Un jumeau est le même plat que sa base carnée — même structure, même féculent, même technique — dont la protéine animale est remplacée par une protéine végétale que les sources attestent ; « derived_from » porte le code du parent, ce qui en fait, pour le planificateur, la version végétarienne du même plat. Cinq jumeaux visés, trois écrits, deux refusés faute de sources publiées de la version végétarienne. Toutes les quantités viennent des dossiers de data/recipes/sources/, relus ligne à ligne ; la méthode est reformulée et n'emprunte aucune prose. Aucun parent n'est modifié.",
+  "refuses": [
+    {
+      "twin_family": "Pastitsio aux lentilles",
+      "parent": "VAR-014",
+      "reason": "Aucune page sur marmiton, chefsimon ni 750g pour « pastitsio aux lentilles », « pastitsio végétarien », « gratin de pâtes aux lentilles » ; « pastitsio » seul ne ramène que les pages carnées du parent. Hors des trois sites, trois pages relevées : notparisienne.fr (soja texturé et champignons, sauce au lait végétal et yaourt de coco), freethepickle.fr (soja texturé, béchamel au lait et à l'œuf), forksoverknives.com (lentilles, mais sauce de pommes de terre et levure maltée sans béchamel). Aucune ne construit un pastitsio aux lentilles à béchamel laitière ; le soja texturé n'a pas de forme au catalogue ; l'audit ne retient qu'une source solide au titre. Le plat n'est pas attesté sur deux sites : refusé, dossier retiré."
+    },
+    {
+      "twin_family": "Tajine de pois chiches et lentilles corail aux courgettes",
+      "parent": "PROT-007",
+      "reason": "Aucune page pour « tajine pois chiches courgettes », « tajine lentilles corail courgettes », « tajine végétarien pois chiches lentilles corail » ; « tajine pois chiches » ne ramène que des tajines d'agneau, de bœuf, de poulet et de rognons. Sous « tajine végétarien » et « tajine de légumes », dix pages relevées et cinq solides sur deux sites, mais aucune n'a la structure du parent : tajines à la pomme de terre et au navet, aux aubergines et aux œufs, aux lentilles et au riz, aux azukis et pruneaux. Hors des trois sites, les pages trouvées sont un dhal, un tajine au lait de coco ou un tajine aux keftas. Le parent est une composition maison dont la version végétarienne n'est publiée nulle part sous cette forme : refusé, dossier retiré. « Tajine de légumes » existe déjà au corpus (VAR-019) et n'est pas un jumeau de PROT-007."
+    }
+  ],
+  "recipes": [
+    {
+      "code": "JUM-001",
+      "family": "Spaghetti à la bolognaise de lentilles",
+      "derived_from": "IT-004",
+      "cuisine_origin": "France / cuisine domestique internationale",
+      "identity_level": "domestic_standard",
+      "category": "pâtes en sauce",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 45,
+      "difficulty": "facile",
+      "sources": [
+        "dossier:bolognaise-de-lentilles",
+        "marmiton.org",
+        "chefsimon.com",
+        "750g.com"
+      ],
+      "description_courte": "Spaghettis enrobés d'une sauce tomate au soffritto où des lentilles vertes tiennent la place du bœuf haché — le jumeau végétarien de la bolognaise",
+      "canonical_arbitration": "Jumeau végétarien de IT-004 « Spaghetti à la sauce bolognaise » : même soffritto, même tomate longuement réduite, mêmes spaghettis finis dans la sauce ; le bœuf haché est remplacé par des lentilles, et rien d'autre ne bouge. Le dossier compte cinq pages sur trois sites — deux de marmiton, deux de chefsimon, une de 750g — données pour quatre, deux, quatre, quatre et quatre personnes, ramenées aux six parts du parent. Deux pages de plus, titrées « lentilles à la bolognaise » et « lentilles façon bolognaise », ont été écartées avant relevé : elles ajoutent du bœuf haché aux lentilles et ne sont pas le plat végétarien. Les cinq pages retenues construisent la même chose — un fond d'oignon et de carotte, de la tomate, des lentilles mijotées dedans, des pâtes — ce qui est déjà une convergence. La lentille : trois lignes pesées en sec, à 30, 22,5 et 37,5 g par personne, et une ligne en cuit, 320 g pour quatre, soit 80 g par personne, ce qui fait à peu près 35 g de sec, une lentille cuite pesant deux fois et demie son poids sec ; la cinquième page compte en verres, unité sans masse, et sort du calcul. Médiane des quatre lignes 32,5 g par personne, soit 195 g, qu'on écrit 200 g. La variété divise le dossier : deux pages emploient la corail, une la verte, une la blonde, une ne précise pas mais la cuit vingt-cinq minutes, ce qui exclut la corail. On écrit la lentille verte : elle garde le grain sous la dent, ce qui est exactement le rôle du haché dans le parent, quand la corail se défait en purée et donnerait une autre sauce ; la corail descend en variante. La tomate : cinq lignes, à 200, 100, 175, 50 et 200 g par personne, médiane 175 g par personne, soit 1050 g, qu'on écrit 1000 g. C'est plus que les 800 g du parent, et c'est voulu : les lentilles boivent du liquide là où la viande en rend. L'oignon : cinq lignes en pièces, à 130 g l'oignon et 80 g le petit, soit 32,5, 32,5, 20, 16 et 32,5 g par personne, médiane 32,5 g par personne, soit 195 g, qu'on écrit 200 g — le chiffre du parent. La carotte, dans quatre pages sur cinq, en pièces à 100 g et 70 g la petite : 25, 50, 17,5 et 25 g par personne, médiane 25 g par personne, soit 150 g, encore le chiffre du parent. Le céleri n'est que dans une page sur cinq, une branche pour quatre, soit 10 g par personne — 60 g pour six ; on le garde à cette quantité parce qu'il est le troisième pied du soffritto que le parent tient pour son identité, et on dit qu'une seule page le porte. L'ail : deux pages sur cinq, deux gousses pour quatre chacune, 2,5 g par personne, soit 15 g. Le concentré de tomate : deux pages sur cinq, une cuillerée à soupe pour quatre, soit 3,75 g par personne et 22,5 g pour six ; on garde les 30 g du parent, deux cuillerées, parce que sans viande rissolée c'est lui qui apporte le fond que le parent tirait du haché coloré. L'huile d'olive : deux lignes chiffrées, à 15 et 3,75 ml par personne, médiane 9,4 ml par personne, soit 56 ml ; les trois autres pages disent un filet ou une cocotte huilée, et on écrit 45 ml, trois cuillerées. Les pâtes : deux pages seulement les pèsent, à 62,5 et 60 g par personne, médiane 61,25 g par personne, soit 367 g ; les trois autres disent « des spaghettis » ou « des pâtes » sans quantité. C'est peu pour un plat complet, et ces deux pages sont des recettes de sauce pour quatre où les pâtes ne sont pas le sujet. On garde les 600 g du parent, mesurés sur six lignes de son propre dossier : le féculent d'un jumeau est celui de sa base, c'est ce qui fait que Julien et Zoé mangent la même assiette. Le thym et le laurier viennent du parent ; une page sur cinq met des herbes de Provence, mélange à base de thym, les autres n'aromatisent qu'à la tomate ou au paprika. Le parmesan est dans deux pages sur cinq, au service : il reste optionnel, 80 g comme dans le parent, et l'on dit que le parmesan est fait à la présure animale — un végétarien strict le remplace par un fromage à pâte dure sans présure, ce que la recette ne juge pas. Le vin, blanc dans une page et rouge dans une autre, les champignons dans deux pages, le poireau, le miel, les noix, les tomates séchées et le paprika chacun dans une, descendent en variantes. Sel et poivre sont ceux du parent. Durées : préparation, médiane 20 minutes des cinq lignes ; cuisson, médiane 30 minutes sur des pages qui emploient de la corail ou des lentilles déjà cuites — avec des lentilles vertes sèches cuites à part pendant que le soffritto et la tomate avancent, puis un quart d'heure ensemble, on compte 45 minutes.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Même assiette que le parent : les spaghettis pour le féculent (100 g de pâtes sèches par personne), les lentilles pour la protéine (33 g de sec, soit à peu près 25 g de protéines la part avec les pâtes), le soffritto et 167 g de tomate pour le légume. Plat unique, servi seul dans les cinq pages."
+      },
+      "ingredients": [
+        { "form": "Spaghetti secs", "quantity": 600, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Lentille verte sèche, crue", "quantity": 200, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Tomate concassée en conserve", "quantity": 1000, "unit": "g", "role": "base de sauce", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 200, "unit": "g", "role": "soffritto", "optional": false },
+        { "form": "Carotte crue", "quantity": 150, "unit": "g", "role": "soffritto", "optional": false },
+        { "form": "Céleri branche cru", "quantity": 60, "unit": "g", "role": "soffritto", "optional": false },
+        { "form": "Concentré de tomate", "quantity": 30, "unit": "g", "role": "renfort de sauce", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 45, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Ail cru", "quantity": 15, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Thym séché", "quantity": 2, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Feuille de laurier séchée", "quantity": 2, "unit": "u", "role": "aromate", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Parmesan affiné", "quantity": 80, "unit": "g", "role": "service", "optional": true }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Rincer les lentilles vertes, les couvrir de trois fois leur volume d'eau froide sans sel, porter à frémissement et cuire vingt à vingt-cinq minutes, jusqu'à ce qu'elles cèdent sous la dent en gardant leur forme, puis égoutter. Elles cuisent à part et à l'eau, pas dans la tomate : l'acidité comme le sel durcissent la peau d'une légumineuse, et une lentille versée crue dans la sauce y resterait ferme une heure plus tard. On les arrête un peu fermes, elles finiront dans la sauce."
+        },
+        {
+          "n": 2,
+          "instruction": "Tailler l'oignon, la carotte et le céleri en dés de deux à trois millimètres, les verser dans l'huile chaude avec une pincée de sel et les laisser suer dix à douze minutes à feu moyen sans coloration, jusqu'à ce qu'ils soient fondus et translucides. C'est le soffritto du parent, et il compte davantage ici : sans le gras et les sucs d'une viande, ce sont ces trois légumes fondus qui donnent à la sauce son sucre et son corps."
+        },
+        {
+          "n": 3,
+          "instruction": "Ajouter le concentré de tomate au contact du fond de la sauteuse et le remuer une bonne minute : il fonce, perd son goût de fer et apporte ce que la viande rissolée donnait au parent. Verser ensuite les tomates concassées, l'ail écrasé, le thym et le laurier, et rincer la boîte d'un fond d'eau qu'on verse aussi."
+        },
+        {
+          "n": 4,
+          "instruction": "Laisser mijoter vingt minutes à découvert et à petits bouillons, en raclant le fond de temps en temps, jusqu'à ce que la sauce ait perdu son eau libre. La tomate doit réduire seule avant l'arrivée des lentilles : elles boivent du liquide, et une sauce encore claire à ce stade donnerait un plat fade et lâche."
+        },
+        {
+          "n": 5,
+          "instruction": "Ajouter les lentilles égouttées et poursuivre quinze minutes à feu doux. Écraser une louche de lentilles contre la paroi et la remuer dans la sauce : cet écrasement partiel libère leur amidon et lie la sauce, ce qui remplace le collagène et le gras du haché. Saler, poivrer, goûter ; si l'acidité pique encore, une pincée de sucre l'arrondit. Retirer le thym et le laurier."
+        },
+        {
+          "n": 6,
+          "instruction": "Cuire les spaghetti dans un grand volume d'eau salée — un litre et dix grammes de sel par cent grammes de pâtes — et les égoutter une minute avant le temps du paquet en réservant une louche d'eau. Ni rinçage ni huile : l'amidon resté en surface est ce qui accrochera la sauce."
+        },
+        {
+          "n": 7,
+          "instruction": "Verser les pâtes dans la sauce avec une petite louche d'eau de cuisson et remuer une minute sur le feu, jusqu'à ce que chaque spaghetti soit enrobé et que la sauce ne reste plus au fond. Servir aussitôt, le parmesan à part pour ceux qui en veulent."
+        }
+      ],
+      "techniques": [
+        "cuissons séparées",
+        "soffritto",
+        "cuisson du concentré",
+        "mijotage",
+        "liaison par écrasement",
+        "cuisson al dente",
+        "enrobage à l'eau de cuisson"
+      ],
+      "variants": [
+        "Aux lentilles corail, 30 g par personne cuites directement dans la tomate un quart d'heure, pour une sauce plus fondue (marmiton, chefsimon)",
+        "Aux champignons de Paris émincés et revenus avec l'oignon, 120 à 300 g pour quatre (chefsimon)",
+        "Déglacée au vin rouge, 7 cl pour quatre, avant la tomate (750g), ou mouillée d'un verre de vin blanc avec les tomates (marmiton)",
+        "Au poireau émincé avec l'oignon, à la place du céleri, et aux herbes de Provence (marmiton)",
+        "Aux tomates séchées, noix concassées et paprika, sur des pâtes courtes (chefsimon)",
+        "Une cuillerée à café de miel dans la sauce pour arrondir l'acidité (marmiton)",
+        "Servie avec du parmesan râpé — ou, pour un végétarien strict, un fromage à pâte dure sans présure animale (chefsimon, 750g)"
+      ],
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 2,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "tomate cuite",
+          "lentille",
+          "légume compoté"
+        ],
+        "aroma_families": [
+          "tomate_cuite",
+          "oignon_compoté",
+          "lentille",
+          "thym"
+        ],
+        "target_textures": [
+          "sauce_nappante",
+          "pâtes_fermes",
+          "lentilles fondantes mais entières"
+        ],
+        "signature_ingredients": [
+          "Spaghetti secs",
+          "Lentille verte sèche, crue",
+          "Tomate concassée en conserve",
+          "Carotte crue",
+          "Céleri branche cru"
+        ],
+        "identity_guardrails": [
+          "Le soffritto oignon-carotte-céleri fondu au départ est ce qui reste de la bolognaise quand la viande s'en va : sans lui c'est une sauce tomate aux lentilles",
+          "Les lentilles cuisent à part, à l'eau non salée, et n'entrent qu'une fois la tomate réduite : versées crues dans l'acide elles restent dures",
+          "Une louche de lentilles écrasée lie la sauce : c'est ce qui remplace le gras et le collagène du haché, et pourquoi le plat ne prend ni farine ni crème",
+          "Les pâtes finissent dans la sauce avec un peu de leur eau, comme dans le parent ; servies nues sous la sauce, le plat se dissocie"
+        ]
+      },
+      "conservation": "La sauce se garde quatre jours au réfrigérateur dans un récipient fermé et gagne à être faite la veille : les lentilles finissent d'absorber la tomate et la sauce s'arrondit. Elle se congèle trois mois, sans les pâtes — les lentilles supportent la congélation sans s'écraser davantage. Réchauffer à feu doux avec deux cuillerées d'eau, la sauce ayant épaissi au froid. Les pâtes déjà enrobées ne se gardent pas plus de vingt-quatre heures et ne se congèlent pas : elles rendent leur eau et deviennent farineuses. C'est ce que dit le parent, et c'est ce que fait physiquement une sauce de légumineuse.",
+      "allergens": ["gluten", "céleri", "lait"]
+    },
+    {
+      "code": "JUM-002",
+      "family": "Blanquette de tofu",
+      "derived_from": "SRC-008",
+      "cuisine_origin": "France",
+      "identity_level": "named_traditional_dish",
+      "category": "plat mijoté",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 35,
+      "difficulty": "facile",
+      "sources": [
+        "dossier:blanquette-de-tofu",
+        "750g.com",
+        "ptitchef.com",
+        "recette-painperdu.fr",
+        "supertoinette.com"
+      ],
+      "description_courte": "Cubes de tofu ferme pochés dans un bouillon de légumes avec carottes, poireau et champignons, liés au roux et à la crème — la blanquette de dinde sans la dinde",
+      "canonical_arbitration": "Jumeau végétarien de SRC-008 « Blanquette de dinde » : mêmes légumes, même sauce blanche liée au roux et montée à la crème, même règle — rien ne colore ; l'escalope de dinde devient du tofu ferme et le bouillon de volaille un bouillon de légumes. Le dossier est mince et il faut le savoir en le lisant : quatre pages relevées, trois retenues par l'audit, sur trois sites distincts. Sur marmiton, chefsimon et 750g, une seule page porte le tofu dans son titre ; les « blanquette végétarienne » de marmiton sont aux haricots blancs ou au soja texturé, la « blanquette de seitan » de chefsimon réclame une forme absente du catalogue, et magimix, clementinecuisine, primeal, florenceservanschreiber n'ont aucun balisage lisible. Deux sites hors du README, ptitchef.com et recette-painperdu.fr, publient la recette avec un balisage complet et complètent le dossier ; supertoinette.com, « Blanquette végétarienne » au tofu ferme, est relevée mais écartée par l'audit sur son titre — on la cite pour ce qu'elle confirme, jamais pour un chiffre qu'elle serait seule à porter. Une réserve sur la page de recette-painperdu.fr : elle est anonyme et son écriture est celle d'un contenu généré ; elle est la seule à décrire la blanquette complète, roux et crème, mais chacune de ses lignes est recoupée ici par une autre page, retenue ou écartée, et aucune quantité ne repose sur elle seule. Le tofu : trois lignes retenues, à 100, 100 et 150 g par personne, médiane 100 g par personne, soit 400 g — la quatrième page, écartée, est à 62,5. Les carottes, dans les quatre pages, en pièces à 100 g : 100, 50 et 75 g par personne sur les lignes retenues, médiane 75 g par personne, soit 300 g ; le parent en met 500 g, et l'on suit le dossier. Les champignons de Paris, dans deux pages sur quatre retenues, à 62,5 et 62,5 g par personne, médiane 62,5 g par personne, soit 250 g. Le poireau, dans deux pages sur quatre, à 150 g le poireau : 75 et 37,5 g par personne, médiane 56,25 g par personne, soit 225 g, qu'on écrit 200 g comme le parent. L'oignon, dans les quatre pages, en pièces à 130 g : 65, 32,5, 32,5 et 32,5 g par personne, médiane 32,5 g par personne, soit 130 g. Le bouillon de légumes est dans trois pages sur quatre mais une seule ligne retenue le chiffre, 750 ml pour quatre, soit 187,5 ml par personne ; la page écartée en met un litre, la troisième dit « à hauteur ». On écrit 750 ml, et la sauce réduit dessus : c'est le mouillement du parent (bouillon, eau et vin, 470 ml) augmenté de ce que le vin et la viande n'apportent plus — aucune page ne met de vin, il ne figure donc pas. La liaison : deux pages lient à la farine, une à la fécule de maïs, une ne lie pas ; on écrit le roux, farine et beurre, qui est celui du parent. La farine : deux lignes, 12,5 g par personne dans la page retenue et 7,5 g dans la page écartée, médiane 10 g par personne, soit 40 g. Le beurre : une ligne chiffrée, 50 g pour quatre, et « une noix » dans une autre ; on écrit 50 g, dont une part pour les champignons. La crème : trois pages sur quatre en mettent, une seule ligne retenue la chiffre — 200 ml de crème entière pour quatre, soit 50 ml par personne — la page écartée en met 25 cl de crème de soja, la troisième une cuillerée à café de crème de soja au service ; on écrit 200 ml de crème fraîche liquide entière, la forme du parent, la crème de soja n'ayant pas de forme au catalogue. Le jaune d'œuf et le jus de citron de la liaison classique ne sont que dans une page : ils descendent en variante, et le parent n'en a pas. Thym et laurier sont dans trois pages sur quatre, sous forme de bouquet garni ou de branches : 2 g de thym séché et deux feuilles de laurier, le bouquet garni étant bloqué au catalogue. Les clous de girofle, dans deux pages, le céleri branche, les pommes de terre dans deux pages, les pruneaux et la moutarde dans une, descendent en variantes. Le persil de finition est celui du parent ; une page le met au bouquet garni, une autre finit à la ciboulette. Sel et poivre suivent le parent. Durées : préparation, médiane 20 minutes des quatre lignes, le pressage du tofu compris ; cuisson, 35 minutes — c'est la ligne de la seule page qui décrit la blanquette entière, les autres étant à 15 et 20 minutes pour des versions sans roux.",
+      "plate": {
+        "role": "main",
+        "accepts": ["starch"],
+        "reason": "Même rôle que le parent : une garniture en sauce sans féculent intégré, que trois pages sur quatre servent avec du riz ou des pommes de terre, et que le planificateur doit donc compléter."
+      },
+      "ingredients": [
+        { "form": "Tofu ferme", "quantity": 400, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Carotte crue", "quantity": 300, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Champignon de Paris frais", "quantity": 250, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Poireau cru", "quantity": 200, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 130, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Bouillon de légumes", "quantity": 750, "unit": "ml", "role": "mouillement", "optional": false },
+        { "form": "Crème fraîche liquide entière", "quantity": 200, "unit": "ml", "role": "liaison", "optional": false },
+        { "form": "Beurre doux", "quantity": 50, "unit": "g", "role": "matière grasse", "optional": false },
+        { "form": "Farine de blé T55", "quantity": 40, "unit": "g", "role": "liaison", "optional": false },
+        { "form": "Thym séché", "quantity": 2, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Feuille de laurier séchée", "quantity": 2, "unit": "u", "role": "aromate", "optional": false },
+        { "form": "Persil frais", "quantity": 12, "unit": "g", "role": "finition", "optional": false },
+        { "form": "Sel fin", "quantity": 6, "unit": "g", "role": "assaisonnement", "optional": true },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": true }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Couper le tofu ferme en cubes de trois centimètres et les poser entre deux linges sous une planche lestée pendant un quart d'heure. Le tofu est gorgé d'eau : pressé, il devient plus dense, tient à la cuisson et se laisse imprégner par la sauce au lieu de la diluer."
+        },
+        {
+          "n": 2,
+          "instruction": "Éplucher les carottes et les couper en tronçons épais, fendre le poireau, le laver et le tronçonner, émincer l'oignon, brosser les champignons et les partager en quartiers. Des morceaux gros, parce qu'ils cuisent longtemps dans un liquide et doivent arriver entiers dans l'assiette."
+        },
+        {
+          "n": 3,
+          "instruction": "Réunir carottes, poireau et oignon dans une cocotte, verser le bouillon de légumes froid, ajouter le thym et le laurier, porter à frémissement et cuire vingt minutes à couvert. Une blanquette ne colore rien : les légumes cuisent dans le bouillon dès le départ, et c'est ce bouillon, enrichi par eux, qui fera la sauce."
+        },
+        {
+          "n": 4,
+          "instruction": "Ajouter les cubes de tofu et les champignons, poursuivre dix minutes à petit frémissement, puis passer le contenu de la cocotte au tamis en gardant le bouillon d'un côté et la garniture de l'autre. Le tofu n'a rien à raidir comme une viande : il prend le goût du bouillon en y pochant, et dix minutes y suffisent."
+        },
+        {
+          "n": 5,
+          "instruction": "Dans la cocotte essuyée, fondre le beurre, ajouter la farine d'un coup et cuire ce roux deux minutes à feu doux en fouettant, sans le laisser blondir. Verser le bouillon chaud par louches en fouettant à chaque fois, puis laisser épaissir dix minutes à feu doux : la sauce doit napper la cuillère sans coller. Le roux cuit d'abord à sec pour perdre son goût de farine crue ; mouillé trop vite, il fait des grumeaux."
+        },
+        {
+          "n": 6,
+          "instruction": "Hors du feu, incorporer la crème, saler, poivrer, puis remettre la garniture et le tofu dans la sauce et réchauffer deux ou trois minutes sans jamais atteindre l'ébullition. Une crème qui bout dans une sauce déjà liée tranche et perd son velouté ; le tofu, lui, n'a besoin que d'être réchauffé."
+        },
+        {
+          "n": 7,
+          "instruction": "Parsemer de persil ciselé et servir avec du riz ou des pommes de terre vapeur, comme le parent : la sauce en demande."
+        }
+      ],
+      "techniques": [
+        "pressage",
+        "pochage",
+        "cuisson au bouillon",
+        "roux blanc",
+        "liaison au roux",
+        "finition crème"
+      ],
+      "variants": [
+        "Liée au jaune d'œuf battu dans la crème, avec le jus d'un demi-citron, hors du feu (recette-painperdu)",
+        "Aux pommes de terre en gros cubes cuites dans le bouillon avec les carottes, ce qui en fait un plat complet (750g, supertoinette)",
+        "Tofu mariné dix minutes à la moutarde puis saisi à l'huile avant d'entrer dans la sauce, et crème de soja à la place de la crème (supertoinette)",
+        "Au céleri branche avec les poireaux, liée à la fécule de maïs, avec deux clous de girofle (ptitchef)",
+        "Aux pruneaux trempés, ajoutés au mijotage, et nappée d'une cuillerée de crème de soja (750g)",
+        "Finie à la ciboulette plutôt qu'au persil (supertoinette)"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 1,
+          "bitter": 0,
+          "umami": 2,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 4,
+          "freshness": 1,
+          "intensity": 2
+        },
+        "dominant_flavors": [
+          "crème",
+          "champignon",
+          "légumes racines fondus"
+        ],
+        "aroma_families": [
+          "lacté",
+          "champignon_terreux",
+          "thym",
+          "poireau"
+        ],
+        "target_textures": [
+          "sauce nappante",
+          "tofu",
+          "légumes tendres"
+        ],
+        "signature_ingredients": [
+          "Tofu ferme",
+          "Crème fraîche liquide entière",
+          "Champignon de Paris frais"
+        ],
+        "identity_guardrails": [
+          "Rien ne colore : légumes et tofu cuisent dans le bouillon, et la sauce reste ivoire — une saisie brune donnerait un sauté en sauce, plus une blanquette",
+          "Le tofu se presse avant d'entrer dans le bouillon, sinon il rend son eau dans la sauce et la détend",
+          "La liaison est un roux mouillé au bouillon de cuisson et monté à la crème hors du feu : sans elle, il reste un bouillon de légumes au tofu",
+          "Bouillon de légumes, jamais de volaille : c'est ce qui fait de ce plat le jumeau végétarien de la blanquette de dinde"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur dans un contenant fermé ; réchauffer à feu doux sans bouillir pour que la sauce ne tranche pas. Le tofu, contrairement à la dinde, gagne au deuxième jour : il finit de s'imprégner de la sauce. La congélation est déconseillée telle quelle : le tofu ferme congelé change de texture et devient spongieux, et la crème grène au réchauffage. Si l'on veut congeler, on congèle la base non crémée sans le tofu — légumes et sauce liée, deux mois — et l'on poche le tofu au moment du réchauffage, crème ajoutée en dernier. C'est ce que fait le parent pour la crème, et ce que le tofu impose en plus.",
+      "allergens": ["gluten", "lait", "soja"]
+    },
+    {
+      "code": "JUM-003",
+      "family": "Paneer tikka et dal palak",
+      "derived_from": "PROT-005",
+      "cuisine_origin": "Inde du Nord",
+      "identity_level": "named_traditional_dish",
+      "category": "plat complet",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 25,
+      "cook_minutes": 40,
+      "difficulty": "moyenne",
+      "sources": [
+        "dossier:paneer-tikka",
+        "196flavors.com",
+        "grainedepices.fr",
+        "air-fryer-ninja.fr",
+        "cookwithmanali.com",
+        "vegrecipesofindia.com"
+      ],
+      "description_courte": "Cubes de paneer marinés au yaourt et aux épices, grillés en brochettes avec poivron et oignon rouge, servis sur le dal d'épinards aux lentilles corail du parent",
+      "canonical_arbitration": "Jumeau végétarien de PROT-005 « Murgh tandoori et dal palak » : même marinade lactique aux épices, même cuisson vive sous le gril, même dal palak dessous ; le haut de cuisse de poulet devient du paneer. Le plat de paneer mariné et grillé à la façon du tandoor s'appelle paneer tikka, et c'est le nom que portent toutes les pages — « tikka » désigne les morceaux, « tandoori » la cuisson ; on nomme le jumeau comme les sources le nomment. Aucune page sur marmiton, chefsimon ni 750g : « paneer » n'y ramène que des palak paneer. Le dossier vient donc de cinq sites, deux en français — l'édition française de 196flavors et grainedepices — et trois en anglais ou bilingues, air-fryer-ninja, cookwithmanali et vegrecipesofindia, le plat portant le même nom dans les deux langues ; yaksha.fr n'a pas de balisage lisible. Cinq pages sur cinq sites, données pour six, quatre, quatre, cinq et trois personnes, ramenées aux quatre parts du parent. Le dal palak, lui, n'est pas resourcé : c'est celui de la fiche du parent, quantités comprises — 225 g de lentilles corail, 350 g d'épinards, 100 g de tomate, 70 g d'oignon et ses épices — parce que le paneer n'y change rien ; le parent n'a pas de dossier, et le jumeau ne peut pas être mieux sourcé que lui sur la partie qu'ils partagent. Quatre pages relevées sous « dal, dhal ou dahl aux épinards » sur les trois sites du README en confirment la structure, lentilles corail, épinards, cumin, coriandre, curcuma et gingembre, mais l'audit les écarte sur leur titre et aucun chiffre n'en est pris ; ce dossier n'est pas conservé. Le paneer : cinq lignes, à 66,7, 100, 100, 60 et 75 g par personne, médiane 75 g par personne, soit 300 g ; on écrit 400 g. L'écart est dit et voulu : les deux pages à 100 g sont celles qui servent le paneer tikka en plat pour quatre, les trois autres le servent en entrée ou en amuse-bouche pour cinq ou six, et ce jumeau est un plat — la part de protéine du parent est de 287 g de poulet. Le yaourt : cinq lignes, à 33,3, 25, 37,5, 30 et 66,7 g par personne, médiane 33,3 g par personne, soit 133 g, qu'on écrit 130 g. Les cinq pages veulent un yaourt épais — dahi, yaourt grec, hung curd — et on écrit le yaourt à la grecque, le « yaourt grec » du catalogue étant bloqué. Le poivron, dans quatre pages sur cinq, en pièces : 40, 37,5, 40 et 25 g par personne, médiane 38,75 g par personne, soit 155 g, qu'on écrit 150 g, en poivron rouge, celui de deux pages, une troisième mêlant vert et rouge. L'oignon des brochettes, dans quatre pages sur cinq, en pièces : 33, 20, 40 et 25 g par personne, médiane 29 g par personne, soit 116 g, qu'on écrit 120 g, en oignon rouge comme deux pages le précisent. Ces légumes embrochés ne sont pas dans le parent, qui grille ses cuisses seules ; ils sont dans quatre pages sur cinq et font partie du plat nommé, on les garde. L'ail : quatre pages sur cinq, en gousses ou en pâte, médiane 2,5 g par personne, soit 10 g pour la marinade ; le dal du parent en prend 6 g, et l'on écrit 15 g en tout. Le gingembre, même dossier, médiane 2,5 g par personne, soit 10 g pour la marinade, plus les 7,5 g du dal : 18 g. La coriandre moulue, dans quatre pages sur cinq, à 0,67, 0,5, 0,8 et 0,67 g par personne, médiane 0,67 g par personne, soit 2,7 g, qu'on écrit 3 g pour la marinade ; avec les 4 g du dal, 7 g. Le cumin, dans trois pages sur cinq, à 0,5, 0,25 et 0,67 g par personne, médiane 0,5 g par personne, soit 2 g ; avec les 2 g du dal, 4 g — le chiffre du parent. Le curcuma, dans trois pages sur cinq, à 0,5, 0,25 et 0,33 g par personne, médiane 0,33 g par personne, soit 1,3 g, qu'on écrit 1,5 g pour la marinade ; avec les 3 g du dal, 4,5 g. Le piment rouge doux, celui qui colore — piment du Cachemire, deggi mirch, piment doux — est dans les cinq pages : 1,2, 0,5, 0,5, 0,4 et 1,33 g par personne, médiane 0,5 g par personne, soit 2 g ; on monte à 4 g, les deux pages qui le mesurent à la cuillerée à soupe étant à 1,2 et 1,33 g par personne, et c'est lui qui donne au tikka sa couleur. Le « piment du Cachemire moulu » du catalogue est bloqué, et une page dit elle-même « ou du paprika doux » : on écrit le paprika doux, qui remplace le paprika fumé et le piment d'Espelette de la marinade du parent — aucune page ne fume. Un piment fort en poudre, dans trois pages, à une demi ou un quart de cuillerée à café : 1 g. Le garam masala est dans quatre pages sur cinq mais sa forme au catalogue est un proxy de confiance C, non publiable : il descend en variante, à regret, avec le chaat masala, le kasuri methi, l'amchur et l'ajwain, qui n'ont pas de forme. L'huile : cinq lignes, à 5, 7,5, 3,75, 6 et 5 ml par personne, médiane 5 ml par personne, soit 20 ml ; trois pages emploient de l'huile de moutarde, forme bloquée, deux une huile neutre — on écrit l'huile végétale. Le jus de citron : cinq lignes, à 6,7, 7,5, 3,75, 6 et 2,5 ml par personne, médiane 6 ml par personne, soit 24 ml, qu'on écrit 25 ml, une part au service. La coriandre fraîche de finition est celle du parent, 20 g ; deux pages en mettent dans la marinade avec de la menthe, une troisième en fait un chutney — variantes. Le sel suit le parent. Durées : préparation, médiane 15 minutes des cinq lignes pour le tikka seul, hors marinade ; avec le dal, 25 minutes comme le parent. La marinade va de trente minutes à six heures selon les pages, médiane deux heures ; on demande une heure au moins. Cuisson : médiane 15 minutes des cinq lignes pour le gril ; le dal en prend vingt-cinq en parallèle, 40 minutes en tout comme le parent.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Même rôle que le parent : 100 g de paneer et 56 g de lentilles corail par part pour la protéine, 87 g d'épinards et les légumes des brochettes pour le légume ; le dal tient le rôle du féculent et l'assiette se suffit."
+      },
+      "ingredients": [
+        { "form": "Paneer", "quantity": 400, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Yaourt à la grecque", "quantity": 130, "unit": "g", "role": "marinade", "optional": false },
+        { "form": "Lentille corail sèche, crue", "quantity": 225, "unit": "g", "role": "légumineuse", "optional": false },
+        { "form": "Épinard frais", "quantity": 350, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Poivron rouge frais", "quantity": 150, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon rouge cru", "quantity": 120, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Tomate fraîche mûre", "quantity": 100, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 70, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Ail cru", "quantity": 15, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Gingembre frais", "quantity": 18, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Huile végétale", "quantity": 20, "unit": "ml", "role": "marinade", "optional": false },
+        { "form": "Jus de citron frais", "quantity": 25, "unit": "ml", "role": "acidité", "optional": false },
+        { "form": "Paprika doux", "quantity": 4, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Coriandre moulue", "quantity": 7, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Curcuma moulu", "quantity": 4.5, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Cumin moulu", "quantity": 4, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Piment en poudre", "quantity": 1, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Coriandre fraîche", "quantity": 20, "unit": "g", "role": "finition", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Fouetter le yaourt jusqu'à ce qu'il soit lisse, puis y mélanger la moitié de l'ail et du gingembre râpés, le paprika, le piment, trois grammes de coriandre moulue, la moitié du cumin, un tiers du curcuma, l'huile, la moitié du jus de citron et une cuillerée à café de sel. Couper le paneer en cubes de trois centimètres, tailler poivron et oignon rouge en carrés du même calibre, enrober le tout de marinade et laisser au frais une heure au moins, deux si possible. La marinade doit rester épaisse : un yaourt fluide glisse du paneer, qui n'absorbe pas comme une chair, et brûle sur la plaque au lieu d'y rester."
+        },
+        {
+          "n": 2,
+          "instruction": "Rincer les lentilles corail, les couvrir de trois fois leur volume d'eau avec le reste du curcuma et les laisser frémir un quart d'heure à découvert, en écumant, jusqu'à ce qu'elles se défassent en purée souple. Sans sel à ce stade : il ralentirait leur cuisson."
+        },
+        {
+          "n": 3,
+          "instruction": "Dans une cocotte bien chaude et à sec, blondir l'oignon jaune émincé en remuant, ajouter le reste d'ail et de gingembre, le reste de cumin et de coriandre moulue, remuer une minute pour ouvrir les épices, puis la tomate en dés et laisser compoter cinq minutes. C'est la base du dal palak du parent, inchangée : le paneer ne demande aucun aménagement au dal."
+        },
+        {
+          "n": 4,
+          "instruction": "Verser les lentilles dans la cocotte, ajouter les épinards par poignées et les laisser tomber cinq minutes, saler. Le dal doit rester coulant — l'allonger d'un peu d'eau chaude s'il épaissit — parce que c'est lui qui tient le rôle du féculent et qui recevra les brochettes."
+        },
+        {
+          "n": 5,
+          "instruction": "Préchauffer le four en position gril, à 230 °C, un bon quart d'heure. Enfiler paneer, poivron et oignon en alternance sur des brochettes, les poser sur une plaque chemisée et les passer au pinceau huilé. Cuire dix minutes sous le gril, retourner, puis deux à cinq minutes de plus, jusqu'à ce que les arêtes du paneer noircissent par endroits. Ne pas prolonger : un paneer trop cuit durcit et devient caoutchouteux, là où le poulet du parent devait atteindre sa température à cœur."
+        },
+        {
+          "n": 6,
+          "instruction": "Poser les brochettes sur le dal, arroser du reste de jus de citron, parsemer de coriandre fraîche et servir aussitôt, le paneer perdant son moelleux en refroidissant."
+        }
+      ],
+      "techniques": [
+        "marinade lactique",
+        "grillade",
+        "brochette",
+        "mijotage",
+        "tempérage des épices"
+      ],
+      "variants": [
+        "Au garam masala, une cuillerée à café dans la marinade — forme bloquée au catalogue, proxy de confiance C (196flavors, air-fryer-ninja, cookwithmanali, vegrecipesofindia)",
+        "Au chaat masala saupoudré à la sortie du gril, et au kasuri methi, fenugrec séché écrasé, dans la marinade — formes absentes du catalogue (196flavors, cookwithmanali, vegrecipesofindia)",
+        "À l'huile de moutarde plutôt qu'à l'huile neutre — forme bloquée au catalogue (196flavors, cookwithmanali, vegrecipesofindia)",
+        "Coriandre et menthe ciselées dans la marinade, et chutney de coriandre-menthe au service (196flavors, cookwithmanali)",
+        "Paneer seul sur les brochettes, sans poivron ni oignon, au barbecue (grainedepices)",
+        "Cuisson en friteuse à air, 200 °C, sept minutes puis cinq à huit après retournement (air-fryer-ninja)",
+        "Marinade de six heures au réfrigérateur, puis passage au four à 230 °C suivi de deux minutes sur le grille-viande pour noircir les bords (196flavors)"
+      ],
+      "sensory": {
+        "profile": "spicy_umami",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 3,
+          "bitter": 1,
+          "umami": 3,
+          "heat": 2,
+          "pungency": 4,
+          "richness": 3,
+          "freshness": 3,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "épices grillées",
+          "yaourt acidulé",
+          "paneer",
+          "lentille terreuse"
+        ],
+        "aroma_families": [
+          "cumin",
+          "coriandre",
+          "gingembre",
+          "ail",
+          "paprika",
+          "paneer",
+          "epinard"
+        ],
+        "target_textures": [
+          "paneer_doré",
+          "bords_grillés",
+          "dal_crémeux",
+          "épinard_fondant",
+          "poivron tendre"
+        ],
+        "signature_ingredients": [
+          "Paneer",
+          "Yaourt à la grecque",
+          "Lentille corail sèche, crue"
+        ],
+        "identity_guardrails": [
+          "La marinade est au yaourt épais et aux épices, comme celle du poulet du parent : c'est elle qui fait le tikka, un paneer simplement poêlé n'en est pas un",
+          "Cuisson vive et courte sous le gril ou au barbecue, jusqu'aux bords noircis ; prolongée, elle durcit le paneer — il n'a pas de température à cœur à atteindre",
+          "Le dal palak est celui du parent, sans crème ; c'est lui qui fait l'assiette complète",
+          "Le paneer et le yaourt sont les seules origines animales du plat : lait, jamais viande ni volaille — c'est ce qui en fait le jumeau végétarien du murgh tandoori"
+        ]
+      },
+      "conservation": "Le dal se garde 3 jours au réfrigérateur et se congèle 2 mois, comme celui du parent. Le paneer tikka se garde 2 jours au réfrigérateur dans une boîte fermée — c'est ce que dit l'une des pages — et se réchauffe doucement à la poêle ou au four, jamais au micro-ondes à pleine puissance, qui le rend caoutchouteux. Il ne se congèle pas : le paneer congelé perd son moelleux et devient granuleux, et le yaourt de la marinade grène. C'est ce que fait un fromage frais pressé, et c'est ce qu'on choisit ici.",
+      "allergens": ["lait"]
+    }
+  ]
+}
