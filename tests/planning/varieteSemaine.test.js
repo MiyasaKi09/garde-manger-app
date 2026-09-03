@@ -34,16 +34,20 @@ const semaine = (debut, recipes) => generateClosedLoopPlan({
 })
 
 describe('variété de la semaine servie', () => {
+  // Les trois semaines sont planifiées UNE FOIS et observées trois fois.
+  // Replanifier dans chaque `it` faisait dépasser à chaque assertion les vingt
+  // secondes de la CI — une recherche en faisceau de largeur 48 sur un corpus de
+  // cinq cents recettes n'est pas gratuite, et rien n'obligeait à la refaire.
+  // Trois départs différents parce qu'un seul pourrait passer par chance sur un
+  // corpus qui tourne avec la saison.
   const recipes = getCanonicalRecipes({ servings: 2 })
+  const semaines = ['2026-08-31', '2026-09-07', '2026-09-14']
+    .map((debut) => ({ debut, plan: semaine(debut, recipes) }))
 
   it('ne sert jamais trois fois le même plat dans la semaine', () => {
-    // Trois semaines de départs différents : une seule pourrait passer par
-    // chance sur un corpus qui tourne avec la saison.
-    for (const debut of ['2026-08-31', '2026-09-07', '2026-09-14']) {
-      const plan = semaine(debut, recipes)
-      const codes = plan.slots.map((slot) => slot.recipeCode)
+    for (const { debut, plan } of semaines) {
       const parCode = new Map()
-      for (const code of codes) parCode.set(code, (parCode.get(code) || 0) + 1)
+      for (const slot of plan.slots) parCode.set(slot.recipeCode, (parCode.get(slot.recipeCode) || 0) + 1)
       const trop = [...parCode.entries()].filter(([, n]) => n > 2)
       expect(trop, `${debut} : ${JSON.stringify(trop)}`).toEqual([])
     }
@@ -53,18 +57,15 @@ describe('variété de la semaine servie', () => {
     // Le garde-fou du garde-fou. Interdire la troisième assiette ne vaut que si
     // le corpus permet encore de remplir quatorze créneaux : sinon on aurait
     // troqué la monotonie contre des trous, ce qui est pire.
-    for (const debut of ['2026-08-31', '2026-09-07', '2026-09-14']) {
-      const plan = semaine(debut, recipes)
+    for (const { debut, plan } of semaines) {
       expect(plan.slots.length, debut).toBe(14)
       expect(plan.slots.map((slot) => slot.recipeCode).filter(Boolean).length, debut).toBe(14)
     }
   })
 
   it('sert au moins douze plats distincts sur quatorze créneaux', () => {
-    for (const debut of ['2026-08-31', '2026-09-07', '2026-09-14']) {
-      const plan = semaine(debut, recipes)
-      const distincts = new Set(plan.slots.map((slot) => slot.recipeCode)).size
-      expect(distincts, debut).toBeGreaterThanOrEqual(12)
+    for (const { debut, plan } of semaines) {
+      expect(new Set(plan.slots.map((slot) => slot.recipeCode)).size, debut).toBeGreaterThanOrEqual(12)
     }
   })
 })

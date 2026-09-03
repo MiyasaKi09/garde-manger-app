@@ -158448,7 +158448,7 @@
         "role": "main",
         "accepts": [
           "starch",
-          "vegetable"
+          "vegetables"
         ],
         "reason": "Protéine seule, cuite en huit minutes : elle appelle un riz, des pâtes ou du pain pour éponger l'huile aillée. Sans féculent dans l'assiette, elle ne peut pas porter un dîner à elle seule."
       },
@@ -159695,7 +159695,7 @@
         "role": "main",
         "accepts": [
           "starch",
-          "vegetable"
+          "vegetables"
         ],
         "reason": "Un poisson et sa garniture d'oignons, sans féculent : il appelle des pommes vapeur, du riz ou du pain pour le jus citronné du plat."
       },
@@ -159847,7 +159847,7 @@
         "role": "main",
         "accepts": [
           "starch",
-          "vegetable"
+          "vegetables"
         ],
         "reason": "Un poisson et sa sauce, rien d'autre dans l'assiette : riz, pommes vapeur ou pâtes fraîches sont ce qui reçoit la crème moutardée."
       },
@@ -160017,7 +160017,7 @@
         "role": "main",
         "accepts": [
           "starch",
-          "vegetable"
+          "vegetables"
         ],
         "reason": "Des brochettes de protéine nue, grillées : elles se servent avec une semoule, un riz ou une salade. Aucune des sept sources ne les donne comme un repas complet."
       },
@@ -161766,7 +161766,7 @@
       "plate": {
         "role": "main",
         "accepts": [
-          "vegetable",
+          "vegetables",
           "starch"
         ],
         "reason": "Deux œufs et 60 g de crevettes par personne, sans légume ni féculent : cette omelette-là appelle une salade et du pain, ce qu'une omelette garnie n'exigerait pas."
@@ -161907,7 +161907,7 @@
       "plate": {
         "role": "main",
         "accepts": [
-          "vegetable",
+          "vegetables",
           "starch"
         ],
         "reason": "Des œufs et du jambon, sans légume ni féculent : elle se sert avec une salade et du pain. Quatre des cinq sources la donnent comme un plat de dépannage, pas comme un repas complet."
