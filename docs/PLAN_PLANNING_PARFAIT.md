@@ -13,6 +13,12 @@ plupart des plats ne peuvent pas être en batch, une plus grande intelligence de
 choix du planning »* — précisé ensuite : *Zoé n'est pas végétarienne, elle veut
 simplement manger moins de viande que Julien.*
 
+Décisions prises le 3 septembre 2026 (voir §7) : tout ce qui concerne une
+personne est **réglable par personne** ; la cible protéique se **calcule depuis
+le poids cible** renseigné ; la capacité de cuisine est **réglable** ; le vivier
+vise **3 000 recettes de très bonne qualité**, et c'est l'agent qui conduit
+cette production.
+
 ---
 
 ## 0. Le verdict en une page
@@ -32,8 +38,12 @@ choix**, et qu'il en voit de fausses :
 
 Le plan qui en découle inverse l'ordre intuitif : **d'abord rendre vraies les
 données que le moteur lit, ensuite lui donner ce qu'il ne voit pas (viande par
-personne, densité par personne, bases partagées), enfin seulement grossir le
-vivier — de façon ciblée, jamais en masse.**
+personne, densité par personne, bases partagées), puis grossir le vivier vers
+3 000 recettes — par lots qui passent tous les mêmes portes de qualité, jamais
+en masse non vérifiée.** Les deux premiers temps sont courts ; le troisième
+est une usine qui tourne des mois, et qui ne vaut que si les deux premiers ont
+eu lieu : 3 000 recettes servies à un moteur qui classe le boudin noir en
+végétarien produiraient 3 000 occasions de plus de se tromper.
 
 Et avant tout : **redéployer**. Le corpus est importé au build ; la production
 sert encore la version d'avant les correctifs de répétition et de rôles
@@ -52,7 +62,7 @@ et sur **trois semaines consécutives** pour que la chance n'y soit pour rien.
 | P1 | Plats distincts sur 14 créneaux | 12 | ≥ 12, et 0 reprise à 3 semaines (déjà tenu) |
 | P2 | Part des créneaux sur pâtes | 15 / 56 = 27 % | ≤ 15 % ; aucun féculent > 25 % |
 | P3 | Part des repas dont la protéine principale est laitier ou œuf | 18 / 56 = 32 % | ≤ 20 % |
-| P4 | Julien — jours ≥ 85 % de la cible protéique | 2 / 7 (moyenne 66 %) | ≥ 6 / 7 (moyenne ≥ 90 %) |
+| P4 | Julien — jours ≥ 85 % de la cible protéique **calculée depuis le poids cible** | 2 / 7 (moyenne 66 % d'une cible en dur) | ≥ 6 / 7 (moyenne ≥ 90 %) |
 | P5 | Julien — ratio de portion nécessaire pour atteindre les kcal | 1,6 à 2,0 (plafond 2) | ≤ 1,3 |
 | P6 | Zoé — repas carnés par semaine | identiques à Julien (6 / 14) | = sa cible déclarée (ex. 3), Julien inchangé |
 | P7 | Zoé — substitutions **hors lignée** (autre plat que Julien) | 4 / 4 | 0 quand un jumeau existe ; ≤ 1 sinon |
@@ -63,6 +73,8 @@ et sur **trois semaines consécutives** pour que la chance n'y soit pour rien.
 | P12 | Plats liés à une base partagée | 0 / 520 | ≥ 120, et ≥ 4 repas / semaine en tirent parti |
 | P13 | Cuisines distinctes sur 3 semaines | 17 libellés, France 9 + 7 | ≥ 8 cuisines, aucune > 40 % |
 | P14 | Retour de goût atteignable depuis le planning | non (aucun appelant) | oui, et lu par la génération suivante |
+| P15 | Recettes servables ayant passé **toutes** les portes de qualité (§4 C6) | 470 | 3 000, sans qu'aucune porte ne soit assouplie en route |
+| P16 | Temps de résolution d'une semaine | ≈ 7 s pour 520 recettes (linéaire) | ≤ 10 s à 3 000 recettes, par élagage des candidats avant la recherche |
 
 Ces quatorze lignes sont la définition de « fait ». Un chantier qui n'en bouge
 aucune n'est pas prioritaire, quel que soit son attrait.
@@ -233,8 +245,10 @@ Trois bugs de vérité, chacun avec un test sur **tout le corpus**, pas un
 Le besoin n'est pas un régime : c'est **un curseur par personne**. Trois
 mouvements.
 
-1. **Modèle : le quota de viande est personnel.** Remplacer « nombre de swaps »
-   par `meat_meals_per_week` par membre (Zoé : 3, Julien : 6, au choix). Le
+1. **Modèle : le quota de viande est personnel et réglable** (décision du 3
+   septembre). Remplacer « nombre de swaps » par `meat_meals_per_week` par
+   membre, réglé dans Paramètres → Planning pour chaque personne, sans valeur
+   imposée par le code (Zoé et Julien choisissent chacun le leur). Le
    solveur choisit la semaine du foyer avec, en plus, la contrainte que Zoé
    puisse tenir son quota **sans changer de plat** aussi souvent que possible.
    L'interface existante (Paramètres → Planning) change de libellé et de
@@ -270,9 +284,19 @@ dégradée et elle doit être signalée comme telle — jamais présentée comme
 2. **Mesurer les poids avant d'y toucher.** Rejouer trois semaines à 0,34 /
    0,40 / 0,45 / 0,55 sur les protéines et consigner P4 pour chaque valeur ; ne
    retenir que ce qui améliore P4 sans dégrader P1–P3.
-3. **Décision à prendre par le foyer, pas par le code** : 216 g pour 2 357 kcal
-   font 37 % de l'énergie. Le plan ne baisse pas cette cible en silence (le test
-   le dit lui-même) ; il demande qu'elle soit confirmée ou révisée.
+3. **La cible protéique se calcule depuis le poids cible** (décision du 3
+   septembre). Aujourd'hui `calculateMacros` multiplie le poids **actuel** par
+   1,4 / 1,6 / 1,8 g/kg selon le rythme de perte : les 216 g de Julien sont
+   1,8 g/kg de son poids actuel, une cible que le corpus ne peut pas servir
+   sans doubler les portions. La cible devient
+   `coefficient × poids_cible`, où le coefficient (g/kg) est **réglable par
+   personne** avec un défaut documenté par rythme (1,6 en perte, 1,4 en
+   maintien), recalculée à chaque changement de poids cible et versionnée dans
+   `nutrition_target_versions` avec sa règle de calcul. Les kcal restent
+   calculées par Mifflin-St Jeor sur le poids actuel (c'est lui qui dépense).
+   Le test de densité protéique reprend alors la cible calculée au lieu de
+   216 g en dur — sa borne n'est pas abaissée, c'est la cible qui devient
+   atteignable. Déplace P4 sans toucher au solveur.
 
 ### C4 — Un batch qui prépare vite plus de plats différents (4 semaines, après C1)
 
@@ -281,11 +305,14 @@ dégradée et elle doit être signalée comme telle — jamais présentée comme
    de légumes…) qui pose `ingredient.component.code`, avec fichier d'arbitrage
    relu. Cible ≥ 120 plats liés. `sharedBases.js` se met alors à fonctionner
    sans une ligne de code. Déplace P12, P9, P10.
-2. **Des productions bornées par la capacité, pas par une constante.** Les
-   `cooking_days` / `quick_days` du questionnaire deviennent la capacité : une
-   session du dimanche porte 2 à 3 productions + 2 bases ; un soir « rapide »
-   n'en porte aucune. `MAX_PLAN_PRODUCTIONS = 2` devient une conséquence de la
-   capacité déclarée. Déplace P10.
+2. **Des productions bornées par la capacité, réglable, pas par une
+   constante** (décision du 3 septembre). Les `cooking_days` / `quick_days` du
+   questionnaire, aujourd'hui stockés et jamais lus, deviennent la capacité,
+   réglable par personne dans Paramètres → Planning : une session du dimanche
+   porte 2 à 3 productions + 2 bases ; un soir « rapide » n'en porte aucune ;
+   la capacité du foyer est l'union de celles de ses membres présents.
+   `MAX_PLAN_PRODUCTIONS = 2` devient une conséquence de la capacité déclarée.
+   Déplace P10.
 3. **Le congélateur comme semaine N+1.** La fenêtre congélateur existe déjà dans
    le moteur (`freezerUseBy`) ; une fois `freezable` vrai, une production peut
    nourrir la semaine suivante — ce qui casse la répétition intra-semaine sans
@@ -305,24 +332,90 @@ dégradée et elle doit être signalée comme telle — jamais présentée comme
    pénalité hors saison) plutôt que 12 regex à +4 — ou assumer que la saison ne
    compte pas. Ne pas laisser un terme qui ne fait rien.
 
-### C6 — Plus de recettes, mais ciblées (en continu, un lot toutes les 2 semaines)
+### C6 — L'usine à recettes : 3 000 recettes de très bonne qualité (en continu, conduite par l'agent)
 
-Le corpus n'est pas la cause, c'est un moyen ; chaque lot doit **déplacer une
-ligne du §1** ou il n'est pas lancé. Dans l'ordre :
+Décision du 3 septembre : le vivier vise **3 000 recettes de très bonne
+qualité**, et c'est l'agent qui conduit cette production. Ce chantier ne
+remplace pas C1–C5 ; il les suppose faits, sans quoi il multiplie leurs défauts.
 
-1. jumeaux végé (C2) — 60 ;
-2. plats **complets** à densité ≥ 0,10 g / kcal, hors poisson blanc uniquement
-   (P4) — 40 ;
-3. plats à ≤ 30 min au total (76 aujourd'hui), du quotidien, pas de restaurant
-   (P10) — 40 ;
-4. cuisines sous-représentées avec des plats de semaine : Italie du quotidien,
-   Espagne, Maghreb, Levant, Inde du Nord, Asie du Sud-Est, Mexique (P13) — 60 ;
-5. les 21 proxies d'épices C → B (libère ≈ 15 recettes et 3 dahls) ;
-6. **ne pas** poursuivre les 186 bloquées au-delà (queue de 295 formes).
+**Ce que « très bonne qualité » veut dire — les portes, toutes obligatoires.**
+Une recette entre au vivier quand elle passe **chacune** de ces portes, et la
+chaîne refuse toute recette qui en manque une ; une porte assouplie « pour
+tenir la cadence » est une porte supprimée.
 
-Toujours par la chaîne existante (sources réelles, deux sites, empreintes, pas
-de prose). Cible : 470 → 650 servables en un trimestre, et un vivier dont la
-France pèse < 60 %.
+1. Deux sources réelles, solides, sur deux sites distincts ; empreintes
+   conservées, jamais la prose (`audit-recipe-sources`, `check-no-copied-prose`).
+2. Quantités arbitrées entre les sources, arithmétique vérifiée
+   (`synthesize-source-quantities`, `check-arbitration-arithmetic`).
+3. Chaque ingrédient sur une forme **connue** du catalogue, à confiance A ou B
+   — jamais un proxy C, jamais une forme inventée pour l'occasion.
+4. Nutrition complète par portion sur données CIQUAL, conversion en grammes A/B.
+5. Rôle d'assiette déclaré ; origine carnée / végétale déclarée par le
+   catalogue (C1) ; conservation structurée (C1) ; description en français pour
+   un plat étranger ; pas de dessert en repas.
+6. Relecture adverse du lot par un second agent, qui cherche à faire tomber
+   chaque recette, et qui consigne ce qu'il a écarté et pourquoi.
+7. Le lot **déplace une ligne du §1** (P2, P3, P4, P7, P10, P13) : un lot qui
+   n'améliore aucune mesure n'est pas fusionné, quelle que soit sa taille.
+
+**Ce que 3 000 impose au reste de l'application** — à faire **avant** que le
+vivier ne dépasse un millier, sinon il casse ce qui marche :
+
+- *Servir le corpus autrement.* Aujourd'hui `corpus-v3.json` (6 Mo pour 706
+  recettes) est importé au build et livré avec l'application ; à 3 000 il
+  pèserait ≈ 25 Mo par déploiement. La base Supabase est déjà la source de
+  vérité déclarée (`docs/RECONNEXION_V3_ET_REFONTE_2026-07.md`) : le
+  planificateur et les écrans lisent la base (ou des tranches publiées par
+  famille), le JSON reste un artefact d'import et d'audit.
+- *Élaguer avant de chercher.* Le solveur coûte ≈ 19 ms par recette et par
+  semaine, linéairement : ≈ 7 s à 520, près d'une minute à 3 000. Une
+  politique de candidats (`recipeCandidatePolicy`) retient, par créneau, les
+  quelques centaines de recettes compatibles (rôle, temps, quota, goût,
+  historique) avant le faisceau. P16 tient le budget.
+- *Faire grandir le catalogue de formes au rythme des recettes.* Chaque lot
+  apporte ses formes nouvelles, avec nutrition CIQUAL, conversion et, quand
+  elle existe, estimation de prix sourcée — le contrat des prix
+  (`data/prices/CONTRAT.md`) s'applique tel quel : une forme sans prix est
+  affichée sans prix, jamais avec un prix deviné.
+- *Un rapport de vivier* publié à chaque lot : servables, répartition par
+  rôle, cuisine, temps, densité protéique, jumeaux végé, batchables déclarés.
+  C'est lui qui décide du lot suivant.
+
+**Cadence et jalons.** Un lot de 100 à 150 recettes par semaine est le rythme
+que la chaîne a déjà tenu (#161 : 115 recettes, dont 23 relues à l'adversaire),
+à condition que la vérification des sources reste le goulot accepté — c'est
+elle qui fait la qualité, on ne l'accélère pas.
+
+| Jalon | Servables | Ce qui doit être vrai |
+|---|---|---|
+| J0 (aujourd'hui) | 470 | — |
+| J1 | 1 000 | C1 fait ; corpus servi hors bundle ; élagage en place |
+| J2 | 2 000 | 60 jumeaux végé ; P2/P3/P13 tenus ; France < 50 % du vivier |
+| J3 | 3 000 | P4 tenu avec la cible calculée ; P16 ≤ 10 s ; 0 porte assouplie |
+
+À 100–150 par semaine, J3 est à **cinq à six mois** ; chaque lot est une PR
+relue, jamais un dépôt en masse.
+
+**Ordre des lots**, du manque le plus mesuré au moins mesuré :
+
+1. jumeaux végé de même lignée (C2) — 60 ;
+2. plats **complets** à densité ≥ 0,10 g / kcal, hors poisson blanc seul (P4)
+   — 100 ;
+3. plats à ≤ 30 min au total (76 aujourd'hui), du quotidien (P10) — 150 ;
+4. cuisines sous-représentées, plats de semaine : Italie du quotidien, Espagne,
+   Maghreb, Levant, Inde du Nord, Asie du Sud-Est, Mexique, Afrique de l'Ouest,
+   Europe centrale (P13) — 400 ;
+5. plats batch de haute tenue à conservation déclarée (mijotés, plats au four,
+   soupes, légumineuses) (P10, P12) — 300 ;
+6. petits-déjeuners, collations, accompagnements et bases (aujourd'hui des
+   rotations codées en dur) — 200 ;
+7. le reste du chemin vers 3 000 par le rapport de vivier, jamais par
+   opportunité de source.
+
+**Ce que l'usine ne fait pas.** Elle ne poursuit pas les 186 recettes
+bloquées au-delà des 21 proxies d'épices (queue de 295 formes) ; elle ne fait
+pas écrire de quantités ni d'étapes par un modèle de langage ; elle ne publie
+pas une recette « en attendant » sa deuxième source.
 
 ### C7 — Sortir la Routine LLM du chemin de décision
 
@@ -341,7 +434,8 @@ rédaction. Ce chantier est la condition pour que C5.2 tienne dans le temps.
 | Semaines 2–4 | C2 + C3 en parallèle | quota de viande par membre ; densité par membre ; mesure des poids ; décision 216 g |
 | Semaines 4–8 | C4 + C5 | liaison aux bases ; capacité ; plafonds ; boutons branchés |
 | Semaines 6–10 | C7 | modification sous règles |
-| En continu | C6 | un lot / 2 semaines, chacun rapporté au tableau du §1 |
+| En continu, dès la semaine 2 | C6 | un lot de 100–150 recettes par semaine, chacun rapporté au tableau du §1 ; corpus hors bundle et élagage livrés avant le millième |
+| ≈ mois 5–6 | C6 J3 | 3 000 servables, 0 porte assouplie |
 
 Premier livrable de C1, avant tout correctif : **le rapport de qualité de
 semaine** (les mesures de l'annexe, rendues durables et exécutées en CI sur
@@ -365,18 +459,29 @@ trois semaines). C'est lui qui dira si chaque chantier a payé.
 
 ---
 
-## 7. Décisions attendues du foyer
+## 7. Décisions prises par le foyer (3 septembre 2026)
 
-1. **Zoé : combien de repas carnés par semaine ?** (le plan suppose 3 sur 14 ;
-   Julien inchangé).
-2. **Julien : 216 g de protéines, confirmé ?** Sinon, quelle valeur ? Le plan ne
-   la change pas seul.
-3. **Capacité de cuisine** : quels jours pour une vraie session (2–3 heures) et
-   quels soirs « 20 minutes maximum » ? Le questionnaire les stocke déjà mais
-   rien ne les lit : ils ne bornent aujourd'hui aucune production.
-4. **Rythme des lots de recettes** : un lot de 40 toutes les deux semaines est
-   soutenable avec la chaîne actuelle ; plus vite, la vérification des sources
-   devient le goulot.
+Les quatre questions posées par la première version de ce plan ont reçu leur
+réponse ; elles sont intégrées aux chantiers ci-dessus.
+
+1. **Repas carnés de Zoé — « réglable par personne ».** Pas de valeur imposée :
+   `meat_meals_per_week` se règle pour chaque membre (C2.1). Le plan ne
+   suppose plus « 3 sur 14 ».
+2. **Cible protéique — « calculée en fonction du poids cible renseigné ».**
+   Le calcul passe du poids actuel au poids cible, coefficient g/kg réglable
+   par personne (C3.3). Il reste à fixer les **défauts** du coefficient par
+   rythme (1,6 en perte, 1,4 en maintien, proposés) — un réglage, pas une
+   décision bloquante.
+3. **Capacité de cuisine — « réglable ».** Jours de session et soirs rapides
+   réglables par personne et enfin lus par le moteur (C4.2).
+4. **Vivier — « 3 000 recettes de très bonne qualité », conduit par l'agent.**
+   C6 devient une usine à lots hebdomadaires avec sept portes de qualité, trois
+   jalons et les travaux d'infrastructure qui doivent précéder le millième
+   (corpus hors bundle, élagage du solveur, catalogue de formes).
+
+Reste ouvert, et sans urgence : les défauts du coefficient protéique (point 2)
+et le nombre exact de repas carnés que chacun se règle (point 1) — les deux
+sont des réglages dans l'application, pas des décisions de plan.
 
 ---
 
