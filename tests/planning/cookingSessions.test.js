@@ -117,6 +117,13 @@ describe('generateClosedLoopPlan — capacité temporelle des sessions (audit P3
       slots: fourDaySlots,
       recipes: [longPrep, ...fillers],
       constraints: { allowShopping: true, planning: { maxSessionActiveMinutes: 90 } },
+      // Ce test mesure une BORNE HORAIRE — 55 + 10 = 65 contre un plafond de 90
+      // — et ne dépendait du nombre de consommations que par accident. Depuis
+      // que le défaut est passé à deux assiettes du même plat par semaine, cette
+      // dépendance implicite décidait à la place du réglage produit. Elle est
+      // donc rendue explicite : la règle de répétition est desserrée ICI, pour
+      // que ce qui est éprouvé reste le temps de session et rien d'autre.
+      repetitionRules: { maxConsumptionsPerRecipe: 3 },
     })
     // 55 + 10 = 65 ≤ 90 : les deux créneaux espacés sont couverts.
     expect(plan.slots[0].production.consumerSlotKeys).toEqual(['2026-07-21-diner', '2026-07-23-dejeuner'])

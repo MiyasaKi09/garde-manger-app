@@ -28682,7 +28682,14 @@
         "gluten",
         "lait"
       ],
-      "description_courte": "Bœuf effiloché recouvert d'une purée de pommes de terre, gratiné au four"
+      "description_courte": "Bœuf effiloché recouvert d'une purée de pommes de terre, gratiné au four",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Hachis parmentier : 200 g de pommes de terre et 117 g de bœuf effiloché par part, et 25 g de carotte qui n’est qu’un fond — la salade est offerte, jamais imposée."
+      }
     },
     {
       "code": "IT-001",
@@ -28899,7 +28906,12 @@
         "gluten",
         "lait"
       ],
-      "description_courte": "Feuilles de lasagne alternées de sauce bolognaise bœuf-porc et de béchamel, gratinées au four"
+      "description_courte": "Feuilles de lasagne alternées de sauce bolognaise bœuf-porc et de béchamel, gratinées au four",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Lasagnes à la bolognaise : 44 g de pâtes sèches, 106 g de viande et 180 g de tomate-soffritto par part — féculent, protéine et légumes sont déjà montés dans le plat."
+      }
     },
     {
       "code": "FR-005",
@@ -29057,7 +29069,14 @@
         "lait",
         "œuf"
       ],
-      "description_courte": "Tarte salée garnie de lardons fumés dans un appareil œufs-crème, cuite au four"
+      "description_courte": "Tarte salée garnie de lardons fumés dans un appareil œufs-crème, cuite au four",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Quiche lorraine : 47 g de pâte brisée et 37 g de lardons par part dans un appareil œufs-crème, aucun légume — c’est l’exemple même que le dossier du moteur donne du plat qui se suffit ou s’accompagne d’une salade. TARTE SALÉE."
+      }
     },
     {
       "code": "FR-006",
@@ -29211,7 +29230,12 @@
       "allergens": [
         "lait"
       ],
-      "description_courte": "Fines lamelles de pommes de terre fondantes dans la crème et le lait parfumés à l'ail et à la muscade"
+      "description_courte": "Fines lamelles de pommes de terre fondantes dans la crème et le lait parfumés à l'ail et à la muscade",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Gratin dauphinois : 233 g de pommes de terre à la crème par part et aucune protéine — le corpus le range lui-même en accompagnement."
+      }
     },
     {
       "code": "FR-008",
@@ -29394,7 +29418,14 @@
       },
       "conservation": "3 jours au réfrigérateur ; congélation 3 mois.",
       "allergens": [],
-      "description_courte": "Cuisses de poulet mijotées avec poivrons rouges et verts, tomates et vin blanc"
+      "description_courte": "Cuisses de poulet mijotées avec poivrons rouges et verts, tomates et vin blanc",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Poulet basquaise : 250 g de poulet avec os et 275 g de poivrons et tomate par part, aucun féculent — la sauce appelle du riz."
+      }
     },
     {
       "code": "FR-009",
@@ -30193,7 +30224,14 @@
       "allergens": [
         "poisson"
       ],
-      "description_courte": "Pavé de saumon cuit en papillote avec julienne de courgette, carotte, poireau et aneth"
+      "description_courte": "Pavé de saumon cuit en papillote avec julienne de courgette, carotte, poireau et aneth",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Saumon en papillote : 150 g de saumon et 170 g de julienne par part ; les légumes sont là, le féculent n’entre pas dans la papillote."
+      }
     },
     {
       "code": "FR-011",
@@ -30353,7 +30391,12 @@
         "lait",
         "poisson"
       ],
-      "description_courte": "Dos de cabillaud poêlé accompagné de riz et haricots verts, nappé d'un beurre au citron"
+      "description_courte": "Dos de cabillaud poêlé accompagné de riz et haricots verts, nappé d'un beurre au citron",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Cabillaud au beurre citronné : 150 g de poisson, 70 g de riz sec et 125 g de haricots verts par part — la fiche porte elle-même son accompagnement, jusque dans son titre."
+      }
     },
     {
       "code": "VEG-001",
@@ -30518,7 +30561,14 @@
       "allergens": [
         "céleri"
       ],
-      "description_courte": "Lentilles vertes cuites avec carottes, céleri, oignon et ail dans un bouillon au laurier et au thym"
+      "description_courte": "Lentilles vertes cuites avec carottes, céleri, oignon et ail dans un bouillon au laurier et au thym",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Lentilles vertes mijotées : 67 g de lentilles sèches par part, soit protéine ET féculent dans le même grain ; les 50 g de carotte-céleri restent un fond de cuisson, d’où le vert offert."
+      }
     },
     {
       "code": "VEG-002",
@@ -30682,7 +30732,12 @@
       },
       "conservation": "2 jours au réfrigérateur.",
       "allergens": [],
-      "description_courte": "Pois chiches avec tomates fraîches, concombre, oignon rouge et persil, en vinaigrette au citron et cumin"
+      "description_courte": "Pois chiches avec tomates fraîches, concombre, oignon rouge et persil, en vinaigrette au citron et cumin",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Salade de pois chiches, tomate et concombre : 125 g de pois chiches et 160 g de crudités par part, autour de 250 kcal — une salade de mezze, trop légère pour tenir un repas."
+      }
     },
     {
       "code": "EGG-001",
@@ -30816,7 +30871,15 @@
         "lait",
         "œuf"
       ],
-      "description_courte": "Omelette crémeuse aux œufs, pliée, parfumée au persil et à la ciboulette"
+      "description_courte": "Omelette crémeuse aux œufs, pliée, parfumée au persil et à la ciboulette",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch",
+          "vegetables"
+        ],
+        "reason": "Omelette aux fines herbes : deux œufs et 8 g d’herbes par part, rien d’autre dans la poêle — ni féculent ni légume."
+      }
     },
     {
       "code": "VEG-003",
@@ -30974,7 +31037,12 @@
       },
       "conservation": "4 jours au réfrigérateur.",
       "allergens": [],
-      "description_courte": "Quinoa cuit avec courgettes, poivrons et carottes rôtis, finition au jus de citron et persil"
+      "description_courte": "Quinoa cuit avec courgettes, poivrons et carottes rôtis, finition au jus de citron et persil",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Quinoa aux légumes rôtis : 70 g de quinoa sec et 238 g de légumes par part — lui adjoindre un féculent ferait doublon avec le quinoa."
+      }
     },
     {
       "code": "IND-001",
@@ -31162,7 +31230,14 @@
       "allergens": [
         "lait"
       ],
-      "description_courte": "Pois chiches et épinards mijotés dans une sauce tomate-lait de coco aux épices avec ail et gingembre"
+      "description_courte": "Pois chiches et épinards mijotés dans une sauce tomate-lait de coco aux épices avec ail et gingembre",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Curry de pois chiches et épinards : 117 g de pois chiches et 67 g d’épinards par part dans une sauce coco-tomate — un curry se verse sur du riz."
+      }
     },
     {
       "code": "IND-002",
@@ -31519,7 +31594,14 @@
       "allergens": [
         "œuf"
       ],
-      "description_courte": "Œufs pochés dans une sauce tomate-poivrons épicée au cumin et paprika fumé"
+      "description_courte": "Œufs pochés dans une sauce tomate-poivrons épicée au cumin et paprika fumé",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Shakshuka : un œuf et demi et 275 g de tomate et poivron par part, sans féculent dans la poêle — le pain fait partie du service."
+      }
     },
     {
       "code": "LEV-001",
@@ -31664,7 +31746,12 @@
       "allergens": [
         "sésame"
       ],
-      "description_courte": "Tartinade lisse de pois chiches mixés avec tahini, jus de citron, ail et cumin"
+      "description_courte": "Tartinade lisse de pois chiches mixés avec tahini, jus de citron, ail et cumin",
+      "plate": {
+        "role": "component",
+        "accepts": [],
+        "reason": "Houmous : 62 g de pois chiches et 12 g de tahini par part, mixés en tartinade — il se trempe et s’étale, comme le tzatziki et le guacamole déjà déclarés « component »."
+      }
     },
     {
       "code": "LEV-002",
@@ -31826,7 +31913,14 @@
       },
       "conservation": "3 jours au réfrigérateur ; congélation avant ou après cuisson.",
       "allergens": [],
-      "description_courte": "Boulettes de pois chiches secs mixés crus avec oignon, ail, persil, coriandre et cumin, cuites au four"
+      "description_courte": "Boulettes de pois chiches secs mixés crus avec oignon, ail, persil, coriandre et cumin, cuites au four",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Falafels au four : 87 g de pois chiches secs par part, soit la protéine ET le féculent dans la même boulette — il ne manque que le cru, jamais du riz."
+      }
     },
     {
       "code": "IT-002",
@@ -31997,7 +32091,12 @@
       "allergens": [
         "lait"
       ],
-      "description_courte": "Riz arborio nacré et mouillé progressivement au bouillon avec champignons, parmesan et beurre en finale"
+      "description_courte": "Riz arborio nacré et mouillé progressivement au bouillon avec champignons, parmesan et beurre en finale",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Risotto aux champignons : 80 g de riz arborio et 125 g de champignons par part, monté au beurre et au parmesan ; un risotto se sert seul, c’est sa définition même."
+      }
     },
     {
       "code": "IT-003",
@@ -32143,7 +32242,12 @@
         "lait",
         "œuf"
       ],
-      "description_courte": "Spaghettis liés à une émulsion de guanciale, jaunes d'œufs et pecorino, généreusement poivrés"
+      "description_courte": "Spaghettis liés à une émulsion de guanciale, jaunes d'œufs et pecorino, généreusement poivrés",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Spaghetti carbonara : 100 g de pâtes et 45 g de guanciale par part ; le dossier du moteur cite nommément la carbonara comme le plat auquel on n’ajoute pas de haricots verts."
+      }
     },
     {
       "code": "IT-004",
@@ -32513,7 +32617,12 @@
         "gluten",
         "lait"
       ],
-      "description_courte": "Pâtes liées à une sauce de basilic frais pilé avec parmesan, pignons et ail dans l'huile d'olive"
+      "description_courte": "Pâtes liées à une sauce de basilic frais pilé avec parmesan, pignons et ail dans l'huile d'olive",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Pâtes au pesto : 100 g de pâtes par part liées à 25 ml d’huile, parmesan et pignons — une assiette de pâtes se sert telle quelle."
+      }
     },
     {
       "code": "IT-006",
@@ -32856,7 +32965,12 @@
         "gluten",
         "lait"
       ],
-      "description_courte": "Pâte levée garnie d'une sauce tomate et mozzarella fraîche, cuite à haute température"
+      "description_courte": "Pâte levée garnie d'une sauce tomate et mozzarella fraîche, cuite à haute température",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Pizza margherita : 125 g de pâte, 100 g de tomate et 75 g de mozzarella par part ; le dossier du moteur range la pizza avec la carbonara parmi les plats qu’on n’accompagne pas."
+      }
     },
     {
       "code": "FR-012",
@@ -34235,7 +34349,14 @@
       "allergens": [
         "lait"
       ],
-      "description_courte": "Poulet entier rôti au four avec pommes de terre, oignon et ail, arrosé régulièrement"
+      "description_courte": "Poulet entier rôti au four avec pommes de terre, oignon et ail, arrosé régulièrement",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Poulet rôti et pommes de terre : 300 g de poulet avec os et 200 g de pommes de terre par part, rôtis ensemble ; il ne manque qu’un vert, et seulement si on le veut."
+      }
     },
     {
       "code": "FR-018",
@@ -34612,7 +34733,14 @@
         "lait",
         "œuf"
       ],
-      "description_courte": "Boulettes de bœuf haché liées à l'œuf et à la chapelure, mijotées dans une sauce tomate"
+      "description_courte": "Boulettes de bœuf haché liées à l'œuf et à la chapelure, mijotées dans une sauce tomate",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Boulettes de bœuf sauce tomate : 125 g de bœuf et 150 g de tomate par part — les 10 g de chapelure lient la boulette, ils ne font pas une ration de féculent."
+      }
     },
     {
       "code": "GR-001",
@@ -34966,7 +35094,12 @@
         "lait",
         "œuf"
       ],
-      "description_courte": "Courgettes poêlées gratinées dans un appareil œufs-crème fraîche au comté"
+      "description_courte": "Courgettes poêlées gratinées dans un appareil œufs-crème fraîche au comté",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Gratin de courgettes : 200 g de courgettes par part liées à un demi-œuf et 20 g de comté — un gratin de légumes est une garniture, pas une assiette."
+      }
     },
     {
       "code": "FR-021",
@@ -35295,7 +35428,14 @@
         "gluten",
         "lait"
       ],
-      "description_courte": "Endives cuites à la vapeur, roulées dans du jambon blanc, nappées de béchamel et gratinées au comté"
+      "description_courte": "Endives cuites à la vapeur, roulées dans du jambon blanc, nappées de béchamel et gratinées au comté",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Endives au jambon : deux endives et deux tranches de jambon par part ; les 15 g de farine de la béchamel ne font pas un féculent, il manque les pommes vapeur."
+      }
     },
     {
       "code": "FR-023",
@@ -35773,7 +35913,12 @@
         "lait",
         "œuf"
       ],
-      "description_courte": "Crêpes épaisses levées à la farine, œufs, lait et levure chimique, cuites en petits disques à la poêle"
+      "description_courte": "Crêpes épaisses levées à la farine, œufs, lait et levure chimique, cuites en petits disques à la poêle",
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Pancakes moelleux : 35 g de sucre, 12 g de levure chimique et 250 g de farine pour quatre parts ; le corpus les range en « petit-déjeuner », donc aucun balayage de libellé ne les aurait vus — même arbitrage que les crêpes fines (DESS-001), le rôle dessert les sort des créneaux de repas sans leur retirer le petit-déjeuner, qui passe par la rotation des supports."
+      }
     },
     {
       "code": "DESS-003",
@@ -36800,7 +36945,12 @@
         "gluten",
         "lait"
       ],
-      "description_courte": "Sauce blanche de base, roux mouillé au lait et assaisonné à la muscade"
+      "description_courte": "Sauce blanche de base, roux mouillé au lait et assaisonné à la muscade",
+      "plate": {
+        "role": "component",
+        "accepts": [],
+        "reason": "Béchamel de base : 60 g de roux pour 750 ml de lait — elle nappe, elle lie, elle gratine ; le corpus la range déjà en sauce de base et lui déclare un rendement."
+      }
     },
     {
       "code": "FR-025",
@@ -37095,7 +37245,12 @@
       "allergens": [
         "lait"
       ],
-      "description_courte": "Haricots verts blanchis puis revenus au beurre avec ail et persil"
+      "description_courte": "Haricots verts blanchis puis revenus au beurre avec ail et persil",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Haricots verts persillés : 175 g de haricots par part, du beurre et du persil, rien d’autre."
+      }
     },
     {
       "code": "FR-027",
@@ -38078,7 +38233,14 @@
         "poisson",
         "œuf"
       ],
-      "description_courte": "Tarte salée garnie de thon en conserve et tomates sur un fond de moutarde, dans un appareil œufs-crème"
+      "description_courte": "Tarte salée garnie de thon en conserve et tomates sur un fond de moutarde, dans un appareil œufs-crème",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Tarte thon, tomate et moutarde : 47 g de pâte, 47 g de thon et 83 g de tomate par part sous un appareil œufs-crème — TARTE SALÉE, le mot « tarte » de son libellé ne dit rien de sa garniture."
+      }
     },
     {
       "code": "FR-030",
@@ -38736,7 +38898,12 @@
         "moutarde",
         "œuf"
       ],
-      "description_courte": "Lentilles vertes tièdes avec œuf mollet, carottes et vinaigrette à l'huile de noix et moutarde"
+      "description_courte": "Lentilles vertes tièdes avec œuf mollet, carottes et vinaigrette à l'huile de noix et moutarde",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Salade de lentilles et œuf mollet : 75 g de lentilles sèches et un œuf entier par part ; la légumineuse fait protéine et féculent, la carotte fait le légume."
+      }
     },
     {
       "code": "FR-034",
@@ -38877,7 +39044,12 @@
         "moutarde",
         "œuf"
       ],
-      "description_courte": "Poireaux cuits à la vapeur, servis tièdes ou froids avec une vinaigrette moutardée au persil"
+      "description_courte": "Poireaux cuits à la vapeur, servis tièdes ou froids avec une vinaigrette moutardée au persil",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Poireaux vinaigrette : 200 g de poireaux et une vinaigrette par part, les œufs durs étant marqués facultatifs — ni protéine ni féculent."
+      }
     },
     {
       "code": "FR-035",
@@ -39047,7 +39219,12 @@
         "poisson",
         "œuf"
       ],
-      "description_courte": "Salade composée de thon, œufs, tomates, haricots verts, pommes de terre et olives en vinaigrette"
+      "description_courte": "Salade composée de thon, œufs, tomates, haricots verts, pommes de terre et olives en vinaigrette",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Salade niçoise : 125 g de pommes de terre, 75 g de thon, un œuf et 200 g de crudités par part — c’est l’assiette entière, pas une entrée."
+      }
     },
     {
       "code": "FR-036",
@@ -39202,7 +39379,14 @@
         "lait",
         "œuf"
       ],
-      "description_courte": "Fond de pâte brisée garni d'une fondue de poireaux et lardons dans un appareil crème-œufs"
+      "description_courte": "Fond de pâte brisée garni d'une fondue de poireaux et lardons dans un appareil crème-œufs",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Tarte aux poireaux et lardons : 47 g de pâte, 117 g de poireaux fondus et 30 g de lardons par part — c’est LA fiche que le motif de nom « tarte aux » avait classée dessert ; elle est salée de bout en bout."
+      }
     },
     {
       "code": "FR-037",
@@ -39574,7 +39758,15 @@
         "lait",
         "moutarde"
       ],
-      "description_courte": "Lapin braisé au vin blanc et bouillon, nappé d'une sauce crème-moutarde à l'échalote et au thym"
+      "description_courte": "Lapin braisé au vin blanc et bouillon, nappé d'une sauce crème-moutarde à l'échalote et au thym",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch",
+          "vegetables"
+        ],
+        "reason": "Lapin à la moutarde : 233 g de lapin par part dans une sauce crème-moutarde ; les 25 g d’échalote sont un aromate, pas un légume."
+      }
     },
     {
       "code": "FR-039",
@@ -40469,7 +40661,14 @@
       "allergens": [
         "lait"
       ],
-      "description_courte": "Gratin de pommes de terre, lardons et oignons recouvert de reblochon fondant"
+      "description_courte": "Gratin de pommes de terre, lardons et oignons recouvert de reblochon fondant",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Tartiflette : 200 g de pommes de terre, 83 g de reblochon et 42 g de lardons par part — l’usage savoyard lui adjoint une salade verte, et rien d’autre."
+      }
     },
     {
       "code": "REAL-076",
@@ -41239,7 +41438,14 @@
         "lait",
         "poisson"
       ],
-      "description_courte": "Morue dessalée et pochée, émulsionnée à l'huile d'olive, au lait et à l'ail jusqu'à obtenir une pâte crémeuse"
+      "description_courte": "Morue dessalée et pochée, émulsionnée à l'huile d'olive, au lait et à l'ail jusqu'à obtenir une pâte crémeuse",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Brandade de morue : 117 g de morue, 100 g de pommes de terre et 50 g de pain de campagne par part — protéine et féculent réunis dans la fiche."
+      }
     },
     {
       "code": "REAL-081",
@@ -42497,7 +42703,14 @@
         "lait",
         "œuf"
       ],
-      "description_courte": "Fond de pâte brisée garni d'une fondue de poireaux dans un appareil crème-œufs"
+      "description_courte": "Fond de pâte brisée garni d'une fondue de poireaux dans un appareil crème-œufs",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Flamiche aux poireaux : 53 g de pâte brisée et 150 g de poireaux fondus par part dans un appareil crème-œufs — TARTE SALÉE, pas une pâtisserie, malgré le fond de pâte."
+      }
     },
     {
       "code": "REAL-089",
@@ -42919,7 +43132,12 @@
         "lait",
         "œuf"
       ],
-      "description_courte": "Flan épais à la farine, lait entier et œufs, avec des pruneaux, cuit longuement au four"
+      "description_courte": "Flan épais à la farine, lait entier et œufs, avec des pruneaux, cuit longuement au four",
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Far breton aux pruneaux : 160 g de sucre, 200 g de farine, 900 ml de lait et 350 g de pruneaux pour dix parts — c’est LA fiche servie au dîner de dimanche, et un flan sucré ne peut occuper un créneau de repas."
+      }
     },
     {
       "code": "REAL-092",
@@ -43072,7 +43290,12 @@
       "allergens": [
         "œuf"
       ],
-      "description_courte": "Compotée de poivrons rouges, piment doux, tomates et oignons au piment d'Espelette"
+      "description_courte": "Compotée de poivrons rouges, piment doux, tomates et oignons au piment d'Espelette",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Piperade basquaise : 350 g de poivrons et tomate compotés par part ; les œufs et le jambon de la fiche sont marqués facultatifs et « service », la compotée seule est une garniture."
+      }
     },
     {
       "code": "REAL-093",
@@ -43540,7 +43763,14 @@
       },
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [],
-      "description_courte": "Cuisses de poulet braisées avec champignons de Paris, tomates et vin rouge"
+      "description_courte": "Cuisses de poulet braisées avec champignons de Paris, tomates et vin rouge",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Pollo alla cacciatora : 250 g de poulet avec os et 175 g de tomate et champignons par part, aucun féculent."
+      }
     },
     {
       "code": "REAL-096",
@@ -43863,7 +44093,14 @@
         "lait",
         "œuf"
       ],
-      "description_courte": "Boules de riz au safran farcies d'un ragù de bœuf haché et de mozzarella, panées et frites"
+      "description_courte": "Boules de riz au safran farcies d'un ragù de bœuf haché et de mozzarella, panées et frites",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Arancini siciliens : 62 g de riz sec, 37 g de bœuf et 31 g de mozzarella par part — la boule porte déjà le féculent et la protéine, il ne lui manque qu’un cru."
+      }
     },
     {
       "code": "REAL-098",
@@ -44154,7 +44391,12 @@
       "allergens": [
         "gluten"
       ],
-      "description_courte": "Soupe toscane de tomates et pain rassis lié au bouillon, fini à l'huile d'olive et au basilic"
+      "description_courte": "Soupe toscane de tomates et pain rassis lié au bouillon, fini à l'huile d'olive et au basilic",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Pappa al pomodoro : 58 g de pain rassis et 167 g de tomate par part — le pain absorbé EST le féculent de la soupe, qui se sert telle quelle."
+      }
     },
     {
       "code": "REAL-100",
@@ -44266,7 +44508,12 @@
       "allergens": [
         "lait"
       ],
-      "description_courte": "Pâtes tonnarelli liées à une émulsion de pecorino et poivre noir torréfié, sans autre matière grasse"
+      "description_courte": "Pâtes tonnarelli liées à une émulsion de pecorino et poivre noir torréfié, sans autre matière grasse",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Cacio e pepe : 100 g de pâtes et 45 g de pecorino par part ; le dossier du moteur la cite avec la carbonara comme plat qu’on n’accompagne pas."
+      }
     },
     {
       "code": "REAL-101",
@@ -44397,7 +44644,12 @@
       "allergens": [
         "lait"
       ],
-      "description_courte": "Pâtes épaisses bucatini avec guanciale grillé, tomates et pecorino"
+      "description_courte": "Pâtes épaisses bucatini avec guanciale grillé, tomates et pecorino",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Bucatini all’amatriciana : 100 g de bucatini, 45 g de guanciale et 150 g de tomate par part — féculent, protéine et sauce réunis."
+      }
     },
     {
       "code": "REAL-102",
@@ -45020,7 +45272,14 @@
         "gluten",
         "lait"
       ],
-      "description_courte": "Tranches d'aubergines frites ou rôties, montées en gratin avec sauce tomate, mozzarella et parmesan"
+      "description_courte": "Tranches d'aubergines frites ou rôties, montées en gratin avec sauce tomate, mozzarella et parmesan",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Parmigiana di melanzane : 200 g d’aubergine et 85 g de mozzarella et parmesan par part — protéine et légume y sont, le pain est ce qu’on lui adjoint."
+      }
     },
     {
       "code": "REAL-106",
@@ -45183,7 +45442,12 @@
         "fruits à coque",
         "gluten"
       ],
-      "description_courte": "Aigre-doux sicilien d'aubergines avec céleri, olives vertes, câpres en sauce tomate sucrée-vinaigrée"
+      "description_courte": "Aigre-doux sicilien d'aubergines avec céleri, olives vertes, câpres en sauce tomate sucrée-vinaigrée",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Caponata sicilienne : 125 g d’aubergine par part avec olives et câpres — les 40 g de sucre équilibrent les 80 ml de vinaigre, c’est un contorno qui se mange à la fourchette."
+      }
     },
     {
       "code": "REAL-107",
@@ -45618,7 +45882,12 @@
         "lait",
         "œuf"
       ],
-      "description_courte": "Croquettes crémeuses de béchamel au jambon serrano, panées et frites"
+      "description_courte": "Croquettes crémeuses de béchamel au jambon serrano, panées et frites",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Croquetas de jamón : 22 g de jambon par part dans une béchamel panée — une tapa, jamais un plat, contrairement à la coxinha qui porte 70 g de poulet."
+      }
     },
     {
       "code": "REAL-110",
@@ -46377,7 +46646,12 @@
       "allergens": [
         "gluten"
       ],
-      "description_courte": "Soupe froide de tomates, concombre et poivron vert, émulsionnée à l'huile d'olive et vinaigre de xérès"
+      "description_courte": "Soupe froide de tomates, concombre et poivron vert, émulsionnée à l'huile d'olive et vinaigre de xérès",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Gazpacho andalou : 200 g de tomate, 75 g de crudités et 17 g de pain par part, aucune protéine — le corpus range déjà ses veloutés de légumes en accompagnement."
+      }
     },
     {
       "code": "REAL-115",
@@ -46518,7 +46792,12 @@
         "gluten",
         "œuf"
       ],
-      "description_courte": "Crème froide épaisse de tomates et pain blanc à l'huile d'olive, garnie d'œuf dur et jambon"
+      "description_courte": "Crème froide épaisse de tomates et pain blanc à l'huile d'olive, garnie d'œuf dur et jambon",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Salmorejo cordobés : 42 g de pain, un demi-œuf dur et 20 g de jambon serrano par part — contrairement au gazpacho il porte un féculent et une garniture protéique, donc il tient l’assiette."
+      }
     },
     {
       "code": "REAL-116",
@@ -46661,7 +46940,14 @@
         "crustacés",
         "gluten"
       ],
-      "description_courte": "Crevettes saisies dans l'huile d'olive infusée à l'ail et au piment séché"
+      "description_courte": "Crevettes saisies dans l'huile d'olive infusée à l'ail et au piment séché",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Gambas al ajillo : 150 g de crevettes et 75 g de pain de campagne par part, le pain étant porté par la fiche pour saucer l’huile à l’ail — protéine et féculent y sont."
+      }
     },
     {
       "code": "REAL-117",
@@ -46779,7 +47065,15 @@
       "allergens": [
         "poisson"
       ],
-      "description_courte": "Morue dessalée confite à l'huile d'olive et à l'ail, liée en émulsion crémeuse par les gélatines du poisson"
+      "description_courte": "Morue dessalée confite à l'huile d'olive et à l'ail, liée en émulsion crémeuse par les gélatines du poisson",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch",
+          "vegetables"
+        ],
+        "reason": "Bacalao al pil-pil : 200 g de morue par part émulsionnée à l’huile et à l’ail — la fiche ne contient rien d’autre."
+      }
     },
     {
       "code": "REAL-118",
@@ -47195,7 +47489,12 @@
       },
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [],
-      "description_courte": "Soupe de pommes de terre et chou kale en chiffonnade avec du chouriço"
+      "description_courte": "Soupe de pommes de terre et chou kale en chiffonnade avec du chouriço",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Caldo verde : 133 g de pommes de terre, 58 g de chou kale et 42 g de chouriço par part — soupe-repas complète."
+      }
     },
     {
       "code": "REAL-121",
@@ -47817,7 +48116,12 @@
       "allergens": [
         "fruits à coque"
       ],
-      "description_courte": "Feuilles de vigne farcies de riz cru, aneth, menthe et oignons, cuites à l'étouffée et acidulées au citron"
+      "description_courte": "Feuilles de vigne farcies de riz cru, aneth, menthe et oignons, cuites à l'étouffée et acidulées au citron",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Dolmades : 44 g de riz cru par part enroulés dans des feuilles de vigne, sans protéine — un mezzé, comme le taboulé libanais déjà rangé en accompagnement."
+      }
     },
     {
       "code": "REAL-125",
@@ -47966,7 +48270,12 @@
       "allergens": [
         "céleri"
       ],
-      "description_courte": "Soupe de haricots blancs avec tomates concassées, carottes, céleri et huile d'olive"
+      "description_courte": "Soupe de haricots blancs avec tomates concassées, carottes, céleri et huile d'olive",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Fasolada : 83 g de haricots blancs secs par part avec carotte, céleri et tomate ; la légumineuse apporte à elle seule la protéine et le féculent."
+      }
     },
     {
       "code": "REAL-126",
@@ -48115,7 +48424,12 @@
       "allergens": [
         "céleri"
       ],
-      "description_courte": "Haricots géants cuits au four dans une sauce tomate à l'aneth et au persil"
+      "description_courte": "Haricots géants cuits au four dans une sauce tomate à l'aneth et au persil",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Gigantes plaki : 83 g de haricots géants secs par part confits au four dans une sauce tomate aux légumes — même équilibre que la fasolada."
+      }
     },
     {
       "code": "REAL-127",
@@ -48407,7 +48721,14 @@
       "allergens": [
         "lait"
       ],
-      "description_courte": "Épaule d'agneau marinée au citron et à l'origan, cuite lentement en papillote"
+      "description_courte": "Épaule d'agneau marinée au citron et à l'origan, cuite lentement en papillote",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Kleftiko d’agneau : 233 g d’épaule et 167 g de pommes de terre par part, cuits dans la même papillote."
+      }
     },
     {
       "code": "REAL-129",
@@ -48550,7 +48871,12 @@
       "allergens": [
         "œuf"
       ],
-      "description_courte": "Soupe de bouillon de poulet et riz, liée à l'émulsion d'œufs et de jus de citron frais"
+      "description_courte": "Soupe de bouillon de poulet et riz, liée à l'émulsion d'œufs et de jus de citron frais",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Avgolemono : 30 g de riz, la chair d’un poulet poché et un demi-œuf par part — bouillon, féculent et protéine dans la même louche."
+      }
     },
     {
       "code": "REAL-130",
@@ -48701,7 +49027,12 @@
       "allergens": [
         "gluten"
       ],
-      "description_courte": "Aubergines farcies d'une compotée d'oignons, tomates et ail à l'huile d'olive, confites au four"
+      "description_courte": "Aubergines farcies d'une compotée d'oignons, tomates et ail à l'huile d'olive, confites au four",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "İmam bayıldı : une aubergine et 180 g de compotée d’oignon-tomate par part, ni protéine ni féculent ; les 8 g de sucre facultatifs corrigent l’acidité de la tomate."
+      }
     },
     {
       "code": "REAL-131",
@@ -49593,7 +49924,14 @@
       "allergens": [
         "lait"
       ],
-      "description_courte": "Riz et lentilles brunes assaisonnés au cumin, surmontés d'oignons longuement caramélisés"
+      "description_courte": "Riz et lentilles brunes assaisonnés au cumin, surmontés d'oignons longuement caramélisés",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Mujaddara : 58 g de lentilles brunes et 50 g de riz par part sous 133 g d’oignons caramélisés — la salade au yaourt est l’usage levantin, pas une nécessité structurelle."
+      }
     },
     {
       "code": "REAL-137",
@@ -50082,7 +50420,12 @@
       "allergens": [
         "sésame"
       ],
-      "description_courte": "Purée d'aubergines grillées à la flamme, mélangées au tahini, jus de citron et ail"
+      "description_courte": "Purée d'aubergines grillées à la flamme, mélangées au tahini, jus de citron et ail",
+      "plate": {
+        "role": "component",
+        "accepts": [],
+        "reason": "Baba ganoush : 125 g d’aubergine fumée par part réduite en purée au tahini — une tartinade à la cuillère, pas une portion de légume à la fourchette comme la caponata."
+      }
     },
     {
       "code": "REAL-140",
@@ -50535,7 +50878,14 @@
       },
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [],
-      "description_courte": "Cuisses de poulet mijotées à l'étouffée avec citron confit au sel, olives vertes et épices au safran"
+      "description_courte": "Cuisses de poulet mijotées à l'étouffée avec citron confit au sel, olives vertes et épices au safran",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Tajine de poulet au citron confit : 250 g de poulet et 67 g d’oignons par part — la semoule ou le pain manquent à l’assiette."
+      }
     },
     {
       "code": "REAL-143",
@@ -50953,7 +51303,12 @@
         "céleri",
         "gluten"
       ],
-      "description_courte": "Soupe de lentilles, pois chiches, tomates, céleri, coriandre et vermicelles fins"
+      "description_courte": "Soupe de lentilles, pois chiches, tomates, céleri, coriandre et vermicelles fins",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Harira : 25 g de lentilles, 50 g de pois chiches et 15 g de vermicelles par part dans une base tomate — la composition confirme le « soupe complète » du corpus."
+      }
     },
     {
       "code": "REAL-145",
@@ -52516,7 +52871,14 @@
         "arachide",
         "moutarde"
       ],
-      "description_courte": "Cuisses de poulet grillées puis mijotées dans une compotée d'oignons au citron et à la moutarde"
+      "description_courte": "Cuisses de poulet grillées puis mijotées dans une compotée d'oignons au citron et à la moutarde",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Poulet yassa : 250 g de poulet et 167 g d’oignons compotés par part — l’usage sénégalais le sert sur du riz blanc."
+      }
     },
     {
       "code": "REAL-155",
@@ -52673,7 +53035,14 @@
       "allergens": [
         "arachide"
       ],
-      "description_courte": "Bœuf mijoté dans une sauce à l'arachide avec patate douce, carottes, chou et piment"
+      "description_courte": "Bœuf mijoté dans une sauce à l'arachide avec patate douce, carottes, chou et piment",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Mafé de bœuf : 125 g de bœuf, 62 g de patate douce et 81 g de carotte et chou par part — la patate douce est un légume de la sauce, pas la ration de féculent, et le mafé se mange sur du riz."
+      }
     },
     {
       "code": "REAL-156",
@@ -52831,7 +53200,14 @@
       "allergens": [
         "arachide"
       ],
-      "description_courte": "Lamelles de bœuf marinées à sec dans un mélange d'arachides moulues et d'épices, grillées en brochette"
+      "description_courte": "Lamelles de bœuf marinées à sec dans un mélange d'arachides moulues et d'épices, grillées en brochette",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Suya de bœuf : 133 g de bœuf en lamelles par part, avec 83 g d’oignon et tomate crus au service — brochette sans féculent."
+      }
     },
     {
       "code": "REAL-157",
@@ -53401,7 +53777,12 @@
       "allergens": [
         "arachide"
       ],
-      "description_courte": "Tranches de banane plantain mûre épicées au gingembre, clou de girofle et piment, frites"
+      "description_courte": "Tranches de banane plantain mûre épicées au gingembre, clou de girofle et piment, frites",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Kelewele : 167 g de plantain frit par part, relevé au gingembre, au clou de girofle et au piment de Cayenne — le sucré vient du fruit mûr, aucun sucre n’est ajouté, c’est une garniture salée."
+      }
     },
     {
       "code": "REAL-161",
@@ -53667,7 +54048,14 @@
       },
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [],
-      "description_courte": "Bœuf en petits cubes cuit à sec puis mijoté avec tomates, oignon rouge et coriandre fraîche"
+      "description_courte": "Bœuf en petits cubes cuit à sec puis mijoté avec tomates, oignon rouge et coriandre fraîche",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Kenyan beef wet fry : 150 g de bœuf et 133 g de tomate et poivron par part, sauce courte sans féculent — l’ugali ou le chapati manquent."
+      }
     },
     {
       "code": "REAL-163",
@@ -53800,7 +54188,12 @@
       "allergens": [
         "gluten"
       ],
-      "description_courte": "Polenta de farine de maïs ferme servie avec un sauté de chou kale aux tomates et oignons"
+      "description_courte": "Polenta de farine de maïs ferme servie avec un sauté de chou kale aux tomates et oignons",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Ugali et sukuma wiki : 83 g de farine de maïs et 133 g de chou kale par part — la fiche porte le féculent et son légume dans le même service, le nom le dit."
+      }
     },
     {
       "code": "REAL-164",
@@ -54288,7 +54681,12 @@
       },
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [],
-      "description_courte": "Relish de légumes sautés et compotés — poivron, carotte, chou et tomate — aux épices de curry"
+      "description_courte": "Relish de légumes sautés et compotés — poivron, carotte, chou et tomate — aux épices de curry",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Chakalaka : 190 g de poivron, carotte, chou et tomate par part relevés au curry — un relish qui se pose à côté du pap et de la viande."
+      }
     },
     {
       "code": "REAL-167",
@@ -54435,7 +54833,14 @@
       },
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [],
-      "description_courte": "Poulet entier en morceaux cuit hermétiquement à l'étouffée avec tomates, aubergine africaine, piment et gingembre"
+      "description_courte": "Poulet entier en morceaux cuit hermétiquement à l'étouffée avec tomates, aubergine africaine, piment et gingembre",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Kedjenou de poulet : 267 g de poulet et 183 g de tomate et aubergine par part, cuits sans eau ni féculent."
+      }
     },
     {
       "code": "REAL-168",
@@ -57640,7 +58045,15 @@
       },
       "conservation": "3 jours au réfrigérateur.",
       "allergens": [],
-      "description_courte": "Épaule de porc marinée au vinaigre et aux épices grillées, mijotée en curry pimenté et aigre"
+      "description_courte": "Épaule de porc marinée au vinaigre et aux épices grillées, mijotée en curry pimenté et aigre",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch",
+          "vegetables"
+        ],
+        "reason": "Vindaloo de porc : 183 g de porc par part dans une pâte d’épices vinaigrée ; les 20 g de jaggery équilibrent l’acidité et l’oignon est un aromate."
+      }
     },
     {
       "code": "REAL-188",
@@ -59392,7 +59805,14 @@
         "gluten",
         "œuf"
       ],
-      "description_courte": "Œufs brouillés vifs auxquels sont ajoutées des tomates fraîches compotées et de la ciboule"
+      "description_courte": "Œufs brouillés vifs auxquels sont ajoutées des tomates fraîches compotées et de la ciboule",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Fan qie chao dan : deux œufs et 175 g de tomate par part ; les 3 g de sucre corrigent l’acidité de la tomate, et le plat se mange sur du riz."
+      }
     },
     {
       "code": "REAL-199",
@@ -59700,7 +60120,12 @@
         "soja",
         "sésame"
       ],
-      "description_courte": "Raviolis pliés à la main farcis de porc haché et ciboulette chinoise, pochés ou poêlés"
+      "description_courte": "Raviolis pliés à la main farcis de porc haché et ciboulette chinoise, pochés ou poêlés",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Jiaozi porc-ciboulette : 62 g de farine, 62 g de porc et 62 g de ciboulette chinoise par part — le ravioli enferme déjà pâte, viande et légume."
+      }
     },
     {
       "code": "REAL-201",
@@ -59975,7 +60400,12 @@
       "allergens": [
         "gluten"
       ],
-      "description_courte": "Galette croustillante feuilletée de pâte eau chaude, garnie de ciboule hachée"
+      "description_courte": "Galette croustillante feuilletée de pâte eau chaude, garnie de ciboule hachée",
+      "plate": {
+        "role": "component",
+        "accepts": [],
+        "reason": "Cong you bing : 83 g de farine par part, une galette feuilletée à la ciboule qu’on fait par fournée — un pain plat, comme le msemen et les blinis déjà déclarés « component »."
+      }
     },
     {
       "code": "REAL-203",
@@ -61199,7 +61629,15 @@
         "soja",
         "sésame"
       ],
-      "description_courte": "Morceaux de poulet braisés et glacés dans un mélange de sauce soja, huile de sésame et vin de riz, finis au basilic thaï"
+      "description_courte": "Morceaux de poulet braisés et glacés dans un mélange de sauce soja, huile de sésame et vin de riz, finis au basilic thaï",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch",
+          "vegetables"
+        ],
+        "reason": "San bei ji : 225 g de poulet par part glacé au soja et au sésame ; les 30 g de sucre candi font la laque, il n’y a ni légume ni féculent."
+      }
     },
     {
       "code": "REAL-211",
@@ -66578,7 +67016,15 @@
         "poisson",
         "œuf"
       ],
-      "description_courte": "Poitrine de porc braisée à l'eau de coco avec des œufs durs dans un caramel de sauce poisson"
+      "description_courte": "Poitrine de porc braisée à l'eau de coco avec des œufs durs dans un caramel de sauce poisson",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch",
+          "vegetables"
+        ],
+        "reason": "Thịt kho trứng : 167 g de poitrine de porc et 1,3 œuf dur par part — les 70 g de sucre font le caramel de braisage, et il manque le riz comme les crudités."
+      }
     },
     {
       "code": "REAL-245",
@@ -69042,7 +69488,15 @@
       "allergens": [
         "soja"
       ],
-      "description_courte": "Cuisses de poulet marinées et braisées dans un mélange vinaigre de canne et sauce soja à l'ail et au laurier"
+      "description_courte": "Cuisses de poulet marinées et braisées dans un mélange vinaigre de canne et sauce soja à l'ail et au laurier",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch",
+          "vegetables"
+        ],
+        "reason": "Chicken adobo : 250 g de poulet avec os par part braisé au vinaigre de canne et au soja, sans aucun accompagnement dans la fiche."
+      }
     },
     {
       "code": "REAL-260",
@@ -72209,7 +72663,14 @@
         "lait",
         "œuf"
       ],
-      "description_courte": "Croquettes en forme de cuisse farcies de poulet effiloché aux tomates et oignons, panées et frites"
+      "description_courte": "Croquettes en forme de cuisse farcies de poulet effiloché aux tomates et oignons, panées et frites",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Coxinha de frango : 70 g de poulet effiloché et 50 g de farine par part — la croquette porte pâte et farce, contrairement aux croquetas qui ne portent que de la béchamel."
+      }
     },
     {
       "code": "REAL-280",
@@ -72367,7 +72828,14 @@
         "gluten",
         "œuf"
       ],
-      "description_courte": "Chaussons de pâte au saindoux farcis de bœuf haché au couteau avec œuf dur, olives et cumin"
+      "description_courte": "Chaussons de pâte au saindoux farcis de bœuf haché au couteau avec œuf dur, olives et cumin",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Empanadas argentines : 60 g de pâte et 70 g de bœuf haché au couteau par part — le chausson est l’assiette."
+      }
     },
     {
       "code": "REAL-281",
@@ -73711,7 +74179,15 @@
       "allergens": [
         "soja"
       ],
-      "description_courte": "Poulet en morceaux marinés dans un mélange de piment scotch bonnet, piment de la Jamaïque et thym, grillé"
+      "description_courte": "Poulet en morceaux marinés dans un mélange de piment scotch bonnet, piment de la Jamaïque et thym, grillé",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch",
+          "vegetables"
+        ],
+        "reason": "Jerk chicken : 225 g de poulet par part sortant du gril, marinade comprise ; les 40 g de sucre brun équilibrent le scotch bonnet, et rien n’accompagne la viande."
+      }
     },
     {
       "code": "REAL-289",
@@ -75002,7 +75478,14 @@
         "gluten",
         "lait"
       ],
-      "description_courte": "Cuisses de poulet cuites avec des oignons dans une sauce paprika doux hongrois liée à la crème aigre"
+      "description_courte": "Cuisses de poulet cuites avec des oignons dans une sauce paprika doux hongrois liée à la crème aigre",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Chicken paprikash : 250 g de poulet et 83 g d’oignons par part dans une sauce à la crème aigre, sans féculent — les nokedli manquent."
+      }
     },
     {
       "code": "REAL-297",
@@ -75622,7 +76105,14 @@
         "lait",
         "moutarde"
       ],
-      "description_courte": "Lamelles de filet de bœuf saisies vif avec des champignons, nappées d'une sauce crème aigre et moutarde"
+      "description_courte": "Lamelles de filet de bœuf saisies vif avec des champignons, nappées d'une sauce crème aigre et moutarde",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Beef stroganoff : 133 g de filet de bœuf et 67 g de champignons par part dans une sauce crème aigre-moutarde, sans féculent — le mot « crème » de son libellé de catégorie désigne de la crème AIGRE, pas une pâtisserie."
+      }
     },
     {
       "code": "REAL-301",
@@ -76155,7 +76645,12 @@
       "allergens": [
         "poisson"
       ],
-      "description_courte": "Dos de cabillaud cuit à la vapeur accompagné d'un dal de lentilles corail et épinards aux épices"
+      "description_courte": "Dos de cabillaud cuit à la vapeur accompagné d'un dal de lentilles corail et épinards aux épices",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Cabillaud vapeur et dal : 250 g de poisson, 60 g de lentilles corail et 120 g d’épinards par part — protéine, féculent et légume dans la même assiette."
+      }
     },
     {
       "code": "PROT-002",
@@ -76352,7 +76847,12 @@
       "allergens": [
         "poisson"
       ],
-      "description_courte": "Morue dessalée et pois chiches rôtis au four avec épinards, tomates et huile d'olive"
+      "description_courte": "Morue dessalée et pois chiches rôtis au four avec épinards, tomates et huile d'olive",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Morue et pois chiches au four : 130 g de morue, 56 g de pois chiches secs et 120 g d’épinards par part."
+      }
     },
     {
       "code": "PROT-005",
@@ -76565,7 +77065,12 @@
       "allergens": [
         "lait"
       ],
-      "description_courte": "Hauts de cuisse de poulet marinés au yaourt et grillés, servis avec un dal d'épinards aux lentilles corail"
+      "description_courte": "Hauts de cuisse de poulet marinés au yaourt et grillés, servis avec un dal d'épinards aux lentilles corail",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Murgh tandoori et dal palak : 287 g de poulet, 56 g de lentilles corail et 87 g d’épinards par part — le dal tient le rôle du féculent."
+      }
     },
     {
       "code": "PROT-006",
@@ -76749,7 +77254,12 @@
       "allergens": [
         "moutarde"
       ],
-      "description_courte": "Filet mignon de porc saisi, nappé d'une sauce moutarde, servi avec lentilles vertes et champignons"
+      "description_courte": "Filet mignon de porc saisi, nappé d'une sauce moutarde, servi avec lentilles vertes et champignons",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Filet mignon et lentilles vertes : 295 g de porc, 57 g de lentilles sèches et 130 g de champignons et haricots verts par part."
+      }
     },
     {
       "code": "PROT-007",
@@ -76946,7 +77456,12 @@
       },
       "conservation": "4 jours au réfrigérateur, meilleur réchauffé le lendemain ; se congèle 2 mois.",
       "allergens": [],
-      "description_courte": "Épaule de veau mijotée longuement avec lentilles corail, courgettes et épices de tajine"
+      "description_courte": "Épaule de veau mijotée longuement avec lentilles corail, courgettes et épices de tajine",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Tajine de veau aux lentilles corail : 280 g de veau, 56 g de lentilles et 100 g de courgettes par part ; les lentilles lient la sauce et tiennent le féculent."
+      }
     },
     {
       "code": "PROT-008",
@@ -77138,7 +77653,12 @@
       "allergens": [
         "céleri"
       ],
-      "description_courte": "Poulet entier rôti aux épices créoles, accompagné de haricots rouges à la tomate"
+      "description_courte": "Poulet entier rôti aux épices créoles, accompagné de haricots rouges à la tomate",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Poulet créole et haricots rouges : 300 g de poulet, 55 g de haricots rouges secs et 145 g de légumes par part."
+      }
     },
     {
       "code": "PROT-009",
@@ -77363,7 +77883,12 @@
       "allergens": [
         "moutarde"
       ],
-      "description_courte": "Jarret de bœuf braisé au vin blanc avec lentilles vertes et épinards, lié à la moutarde en fin de cuisson"
+      "description_courte": "Jarret de bœuf braisé au vin blanc avec lentilles vertes et épinards, lié à la moutarde en fin de cuisson",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Jarret de bœuf braisé : 325 g de jarret, 57 g de lentilles sèches et 200 g d’épinards et champignons par part."
+      }
     },
     {
       "code": "SRC-001",
@@ -138177,7 +138702,12 @@
         "gluten",
         "lait"
       ],
-      "description_courte": "Pâte à pizza maturée vingt-quatre heures au froid, garnie de sauce tomate écrasée et mozzarella fraîche"
+      "description_courte": "Pâte à pizza maturée vingt-quatre heures au froid, garnie de sauce tomate écrasée et mozzarella fraîche",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Pizza à pâte maturée : même assiette que IT-007, la maturation de vingt-quatre heures ne change que la pâte."
+      }
     },
     {
       "code": "IT-007-D2",
@@ -138391,7 +138921,12 @@
         "gluten",
         "lait"
       ],
-      "description_courte": "Pâte levée garnie de sauce tomate, mozzarella fraîche et légumes grillés — courgette, aubergine, poivron rouge"
+      "description_courte": "Pâte levée garnie de sauce tomate, mozzarella fraîche et légumes grillés — courgette, aubergine, poivron rouge",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Pizza aux légumes grillés : la garniture ajoute 137 g de courgette, aubergine et poivron par part à la pâte et à la mozzarella — rien ne manque."
+      }
     },
     {
       "code": "IT-001-D1",
@@ -138619,7 +139154,12 @@
         "gluten",
         "lait"
       ],
-      "description_courte": "Couches de pâtes alternées avec un ragù de bœuf haché seul et une béchamel à la muscade, gratinées au parmesan"
+      "description_courte": "Couches de pâtes alternées avec un ragù de bœuf haché seul et une béchamel à la muscade, gratinées au parmesan",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Lasagnes au ragù de bœuf seul : 44 g de pâtes et 100 g de bœuf par part, même montage que IT-001."
+      }
     },
     {
       "code": "IT-001-D3",
@@ -138871,7 +139411,12 @@
         "gluten",
         "lait"
       ],
-      "description_courte": "Couches de pâtes alternées avec un ragù de courgettes et lentilles vertes et une béchamel à la muscade, gratinées au parmesan"
+      "description_courte": "Couches de pâtes alternées avec un ragù de courgettes et lentilles vertes et une béchamel à la muscade, gratinées au parmesan",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Lasagnes courgettes et lentilles : 44 g de pâtes, 25 g de lentilles sèches et 62 g de courgettes par part — la protéine est végétale, l’assiette est entière."
+      }
     },
     {
       "code": "IT-004-D1",
@@ -140620,7 +141165,14 @@
       "allergens": [
         "céleri"
       ],
-      "description_courte": "Lentilles vertes mijotées aux carottes, oignon et céleri, avec des lardons fumés rissolés séparément et ajoutés à l'envoi"
+      "description_courte": "Lentilles vertes mijotées aux carottes, oignon et céleri, avec des lardons fumés rissolés séparément et ajoutés à l'envoi",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Lentilles aux lardons : 67 g de lentilles et 25 g de lardons par part — même assiette que la base, la salaison ne fait qu’ajouter à la protéine."
+      }
     },
     {
       "code": "VEG-001-D2",
@@ -140813,7 +141365,14 @@
       "allergens": [
         "céleri"
       ],
-      "description_courte": "Lentilles vertes mijotées aux légumes en vinaigrette, accompagnées d'un œuf mollet à blanc pris et jaune coulant"
+      "description_courte": "Lentilles vertes mijotées aux légumes en vinaigrette, accompagnées d'un œuf mollet à blanc pris et jaune coulant",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Lentilles à l’œuf mollet : 67 g de lentilles et deux tiers d’œuf par part — même assiette que la base."
+      }
     },
     {
       "code": "VEG-001-D3",
@@ -141002,7 +141561,14 @@
       "allergens": [
         "céleri"
       ],
-      "description_courte": "Lentilles vertes mijotées aux légumes, nappées d'une vinaigrette émulsionnée à la moutarde de Dijon et au vinaigre de vin rouge"
+      "description_courte": "Lentilles vertes mijotées aux légumes, nappées d'une vinaigrette émulsionnée à la moutarde de Dijon et au vinaigre de vin rouge",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Lentilles à la vinaigrette de moutarde : composition identique à la base, les 15 g de moutarde ne sont qu’un assaisonnement."
+      }
     },
     {
       "code": "RAP-001",
