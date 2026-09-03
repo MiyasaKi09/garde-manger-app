@@ -4962,6 +4962,39 @@
       "note": "Etat cru respecte ; « entiere » ne designe qu'un mode de presentation. Attention au candidat 9320 « Orge entiere, crue », classe haut par le seul mot « entiere »."
     },
     {
+      "canonical_name": "Crevette crue surgelée",
+      "canonical_name_normalized": "crevette crue surgelee",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "bounded_from_ciqual": [
+        "fiber_g"
+      ],
+      "source_record_key": "10038",
+      "source_name": "Crevette, surgelée, crue",
+      "state": {
+        "concept": "Crevette crue surgelée",
+        "rest": "",
+        "cooking_state": "raw",
+        "preservation_state": "frozen",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 105,
+        "proteinG": 23.4,
+        "carbsG": 0.74,
+        "fatG": 0.9,
+        "fiberG": 0.5
+      },
+      "note": "Correspondance exacte. 105 kcal, P 23,4 / G 0,74 / L 0,9. Les fibres sont lues sur une borne supérieure du classeur (statut « inférieur à 0,5 g ») : c'est une valeur majorée, pas une absence, et le générateur le consignera dans bounded_from_ciqual. Le mot « crue » est dans le libellé parce que le rayon vend les deux — la crevette cuite rose est un autre produit, et une recette qui la ferait sauter deux minutes la cuirait deux fois. Le catalogue porte déjà « Crevette crue décortiquée » et « Crevette crue entière » au frais ; cette forme est leur troisième état, pas leur doublon."
+    },
+    {
       "canonical_name": "Cuisse de poulet crue, avec os, avec peau",
       "canonical_name_normalized": "cuisse de poulet crue avec os avec peau",
       "category": "volailles",
@@ -5786,6 +5819,36 @@
       "note": null
     },
     {
+      "canonical_name": "Épinard surgelé",
+      "canonical_name_normalized": "epinard surgele",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20083",
+      "source_name": "Épinard, surgelé, cru",
+      "state": {
+        "concept": "Épinard surgelé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "frozen",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 19.5,
+        "proteinG": 2.87,
+        "carbsG": 0.89,
+        "fatG": 0.49,
+        "fiberG": 2.7
+      },
+      "note": "Correspondance exacte : l'ANSES mesure l'épinard surgelé cru pour lui-même. 19,5 kcal, P 2,87 / G 0,89 / L 0,49, fibres 2,7 — macros complètes et toutes mesurées, aucune borne, aucune fermeture d'Atwater. L'écart avec « Épinard frais » (20059, 24 kcal) est réel et vient du blanchiment : c'est précisément pourquoi on n'adosse pas le surgelé au frais. UNE SEULE FORME POUR LES BRANCHES ET LE HACHÉ, et le classeur le dit lui-même : le libellé 2025 du même code 20083 devient « Epinard, haché ou purée ou en branches, surgelé, cru ». L'ANSES ne les sépare pas, donc les séparer ici fabriquerait une distinction que la mesure ne porte pas — et les graphes de diversité du planificateur ne rapprochent pas deux synonymes."
+    },
+    {
       "canonical_name": "Escalope de dinde crue",
       "canonical_name_normalized": "escalope de dinde crue",
       "category": "volailles",
@@ -6501,6 +6564,42 @@
       "note": "Correspondance directe : 132 kcal, 21,6 g de protéines. La découpe en lanières est un geste, pas un état."
     },
     {
+      "canonical_name": "Filet de merlu surgelé",
+      "canonical_name_normalized": "filet de merlu surgele",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "derived": {
+        "field": "carbohydrate_g",
+        "value": 0,
+        "method": "atwater_closure",
+        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g − 2·fiber_g) / 4"
+      },
+      "source_record_key": "26048",
+      "source_name": "Merlu, filet, surgelé, cru",
+      "state": {
+        "concept": "Filet de merlu surgelé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "frozen",
+        "physical_state": null,
+        "bone_state": "boneless",
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 82,
+        "proteinG": 15.1,
+        "carbsG": 0,
+        "fatG": 2.4,
+        "fiberG": 0
+      },
+      "note": "Correspondance exacte, filet compris — le libellé Ciqual porte lui-même le mot. 82 kcal, P 15,1 / L 2,4, fibres 0 ; les glucides sont au statut « traces » et la fermeture d'Atwater les clôt à 0, comme pour tous les poissons du catalogue. Le filet surgelé est le poisson de semaine par excellence : ni écaillage, ni levée, ni arêtes. ÉCARTÉ 26233 « Merlu blanc du Cap, surgelé, cru » : c'est une autre espèce (Merluccius capensis contre Merluccius merluccius) et c'est celle que le rayon vend le plus, mais deux formes de merlu à 4 kcal d'écart obligeraient le rédacteur à choisir sans critère. L'espèce se déclare du côté du prix, où elle est visible et documentée."
+    },
+    {
       "canonical_name": "Filet mignon de porc cru",
       "canonical_name_normalized": "filet mignon de porc cru",
       "category": "viandes",
@@ -6745,6 +6844,36 @@
         "fiberG": 0
       },
       "note": "Proxy assumé : aucun queso fresco/cotija au classeur. Ce qui est approximé : un fromage de vache frais, salé, non affiné, qui s'émiette (~285 kcal, 18 g de protéines, 21 g de lipides) ; 12060 (271 kcal, 16,4 g de protéines, 21,7 g de lipides) en est l'analogue le plus proche — fromage de vache frais en saumure, même texture friable. Les candidats proposés sont tous faux : 19689 est un cheesecake, 19864 un tzatziki, et les petits-suisses (19661-19664, 57 à 93 kcal, 0 à 4 % MG) sont des fromages frais lactés sucrés ou maigres, cinq fois moins gras qu'un queso fresco."
+    },
+    {
+      "canonical_name": "Fruits de mer cuits surgelés",
+      "canonical_name_normalized": "fruits de mer cuits surgeles",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "10080",
+      "source_name": "Fruits de mer, cuits, surgelés",
+      "state": {
+        "concept": "Fruits de mer cuits surgelés",
+        "rest": "",
+        "cooking_state": "cooked",
+        "preservation_state": "frozen",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 79.5,
+        "proteinG": 13.5,
+        "carbsG": 2.83,
+        "fatG": 1.57,
+        "fiberG": 0
+      },
+      "note": "Correspondance exacte. 79,5 kcal, P 13,5 / G 2,83 / L 1,57, énergie mesurée. Seule entrée du lot volontairement adossée à un état CUIT, et pour une raison qui tient au produit et non à la commodité : le cocktail de fruits de mer surgelé est vendu cuit, il n'existe pas cru au rayon, et une recette ne fait que le réchauffer. L'adosser à une entrée crue aurait décrit un produit qui ne se vend pas."
     },
     {
       "canonical_name": "Fumet de poisson",
@@ -7860,6 +7989,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
@@ -8122,6 +8252,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
@@ -8655,6 +8786,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
@@ -9254,6 +9386,44 @@
         "fiberG": 1.9
       },
       "note": null
+    },
+    {
+      "canonical_name": "Lieu noir surgelé",
+      "canonical_name_normalized": "lieu noir surgele",
+      "category": "poissons_fruits_de_mer",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "derived": {
+        "field": "carbohydrate_g",
+        "value": 0,
+        "raw_value": -0.032,
+        "clamped_to_zero": true,
+        "method": "atwater_closure",
+        "formula": "carbohydrate_g = (kcal − 4·protein_g − 9·fat_g − 2·fiber_g) / 4"
+      },
+      "source_record_key": "26047",
+      "source_name": "Lieu noir, surgelé, cru",
+      "state": {
+        "concept": "Lieu noir surgelé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "frozen",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 82.4,
+        "proteinG": 19.8,
+        "carbsG": 0,
+        "fatG": 0.37,
+        "fiberG": 0
+      },
+      "note": "Correspondance exacte. 82,4 kcal, P 19,8 / L 0,37, glucides clos à 0 par Atwater depuis un statut « traces ». Poisson maigre distinct du merlu et du colin d'Alaska : le classeur mesure séparément 26047 « Lieu noir » (Pollachius virens) et 26006 « Lieu ou colin d'Alaska, cru » (Gadus chalcogrammus), et le rayon les étiquette distinctement parce que la réglementation l'impose. Le colin d'Alaska n'a PAS d'entrée surgelée au classeur 2020 : lui ouvrir une forme aurait obligé à l'adosser à l'entrée crue non surgelée, donc à un proxy de confiance C — non publiable, et silencieux sur la raison. On préfère l'absence."
     },
     {
       "canonical_name": "Linguiça portugaise",

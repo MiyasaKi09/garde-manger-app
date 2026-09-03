@@ -1,14 +1,14 @@
 {
   "generated_from": "data/recipes/corpus-v3.json",
   "nutrition_source": "Ciqual 2020",
-  "forms_total": 760,
+  "forms_total": 765,
   "summary": {
     "review_required": 219,
-    "curated": 494,
+    "curated": 499,
     "exact_label": 47
   },
-  "recipes_total": 683,
-  "recipes_eligible_for_publication": 497,
+  "recipes_total": 706,
+  "recipes_eligible_for_publication": 520,
   "recipes_blocked_only_by_proxy": 62,
   "v1_enriched_eligible_for_publication": 61,
   "unresolved_required": [
@@ -7104,6 +7104,213 @@
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-001",
+      "family": "Crevettes sautées à l'ail",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-002",
+      "family": "Crevettes au lait de coco",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-003",
+      "family": "Poêlée de fruits de mer",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-004",
+      "family": "Cassolette de fruits de mer",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-005",
+      "family": "Gratin de fruits de mer",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-006",
+      "family": "Pâtes aux fruits de mer",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-007",
+      "family": "Spaghetti aux crevettes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-008",
+      "family": "Merlu au four",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-009",
+      "family": "Lieu noir à la crème",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-010",
+      "family": "Brochettes de crevettes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-011",
+      "family": "Poulet aux brocolis",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-012",
+      "family": "Poulet aux haricots verts",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-013",
+      "family": "Émincé de poulet aux champignons",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-014",
+      "family": "Bœuf aux brocolis",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-015",
+      "family": "Wok de poulet aux légumes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-016",
+      "family": "Poulet aux lentilles",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-017",
+      "family": "Poulet aux pois chiches",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-018",
+      "family": "Omelette aux épinards",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-019",
+      "family": "Omelette au thon",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-020",
+      "family": "Omelette aux crevettes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-021",
+      "family": "Omelette au jambon",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-022",
+      "family": "Frittata aux épinards",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "DEN-023",
+      "family": "Curry de poisson",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
     }
   ],
   "forms": [
@@ -7262,7 +7469,7 @@
       "form": "Ail cru",
       "normalized": "ail cru",
       "required": true,
-      "recipe_count": 337,
+      "recipe_count": 347,
       "units": [
         "g"
       ],
@@ -8996,7 +9203,7 @@
       "form": "Basilic frais",
       "normalized": "basilic frais",
       "required": true,
-      "recipe_count": 42,
+      "recipe_count": 43,
       "units": [
         "g"
       ],
@@ -9546,7 +9753,7 @@
       "form": "Beurre doux",
       "normalized": "beurre doux",
       "required": true,
-      "recipe_count": 190,
+      "recipe_count": 193,
       "units": [
         "g"
       ],
@@ -9876,7 +10083,7 @@
       "form": "Blanc de poulet cru, sans peau",
       "normalized": "blanc de poulet cru sans peau",
       "required": true,
-      "recipe_count": 14,
+      "recipe_count": 20,
       "units": [
         "g"
       ],
@@ -10151,7 +10358,7 @@
       "form": "Bœuf à griller cru, en fines lamelles",
       "normalized": "boeuf a griller cru en fines lamelles",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 4,
       "units": [
         "g"
       ],
@@ -11362,7 +11569,7 @@
       "form": "Bouillon de volaille",
       "normalized": "bouillon de volaille",
       "required": true,
-      "recipe_count": 52,
+      "recipe_count": 55,
       "units": [
         "g",
         "ml"
@@ -11638,7 +11845,7 @@
       "form": "Brocoli cru",
       "normalized": "brocoli cru",
       "required": true,
-      "recipe_count": 7,
+      "recipe_count": 9,
       "units": [
         "g"
       ],
@@ -12189,7 +12396,7 @@
       "form": "Cannelle moulue",
       "normalized": "cannelle moulue",
       "required": true,
-      "recipe_count": 14,
+      "recipe_count": 15,
       "units": [
         "g"
       ],
@@ -12464,7 +12671,7 @@
       "form": "Carotte crue",
       "normalized": "carotte crue",
       "required": true,
-      "recipe_count": 139,
+      "recipe_count": 140,
       "units": [
         "g"
       ],
@@ -13015,7 +13222,7 @@
       "form": "Champignon de Paris frais",
       "normalized": "champignon de paris frais",
       "required": true,
-      "recipe_count": 41,
+      "recipe_count": 42,
       "units": [
         "g"
       ],
@@ -13228,7 +13435,7 @@
       "form": "Chapelure de blé",
       "normalized": "chapelure de ble",
       "required": true,
-      "recipe_count": 30,
+      "recipe_count": 31,
       "units": [
         "g"
       ],
@@ -14946,7 +15153,7 @@
       "form": "Ciboulette fraîche",
       "normalized": "ciboulette fraiche",
       "required": true,
-      "recipe_count": 16,
+      "recipe_count": 17,
       "units": [
         "g"
       ],
@@ -15214,7 +15421,7 @@
       "form": "Citron jaune frais",
       "normalized": "citron jaune frais",
       "required": true,
-      "recipe_count": 13,
+      "recipe_count": 14,
       "units": [
         "g",
         "u"
@@ -15650,7 +15857,7 @@
       "form": "Concentré de tomate",
       "normalized": "concentre de tomate",
       "required": true,
-      "recipe_count": 37,
+      "recipe_count": 38,
       "units": [
         "g"
       ],
@@ -16028,7 +16235,7 @@
       "form": "Coriandre fraîche",
       "normalized": "coriandre fraiche",
       "required": true,
-      "recipe_count": 42,
+      "recipe_count": 45,
       "units": [
         "g"
       ],
@@ -16296,7 +16503,7 @@
       "form": "Courgette fraîche",
       "normalized": "courgette fraiche",
       "required": true,
-      "recipe_count": 39,
+      "recipe_count": 40,
       "units": [
         "g"
       ],
@@ -16509,7 +16716,7 @@
       "form": "Crème fraîche liquide entière",
       "normalized": "creme fraiche liquide entiere",
       "required": true,
-      "recipe_count": 84,
+      "recipe_count": 90,
       "units": [
         "g",
         "ml"
@@ -16668,7 +16875,7 @@
       "form": "Crevette crue décortiquée",
       "normalized": "crevette crue decortiquee",
       "required": true,
-      "recipe_count": 10,
+      "recipe_count": 13,
       "units": [
         "g"
       ],
@@ -16819,6 +17026,61 @@
           "category": "cereales_feculents",
           "nutrition_complete": true,
           "score": 58
+        }
+      ]
+    },
+    {
+      "form": "Crevette crue surgelée",
+      "normalized": "crevette crue surgelee",
+      "required": true,
+      "recipe_count": 2,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "10038",
+        "ciqual_name": "Crevette, surgelée, crue",
+        "category": "poissons_fruits_de_mer",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Correspondance exacte. 105 kcal, P 23,4 / G 0,74 / L 0,9. Les fibres sont lues sur une borne supérieure du classeur (statut « inférieur à 0,5 g ») : c'est une valeur majorée, pas une absence, et le générateur le consignera dans bounded_from_ciqual. Le mot « crue » est dans le libellé parce que le rayon vend les deux — la crevette cuite rose est un autre produit, et une recette qui la ferait sauter deux minutes la cuirait deux fois. Le catalogue porte déjà « Crevette crue décortiquée » et « Crevette crue entière » au frais ; cette forme est leur troisième état, pas leur doublon."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "10038",
+          "ciqual_name": "Crevette, surgelée, crue",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": 89.5
+        },
+        {
+          "ciqual_alim_code": "10021",
+          "ciqual_name": "Crevette, crue",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": 74.5
+        },
+        {
+          "ciqual_alim_code": "10059",
+          "ciqual_name": "Crevette rose, crue",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": 38
+        },
+        {
+          "ciqual_alim_code": "13132",
+          "ciqual_name": "Myrtille, surgelée, crue",
+          "category": "fruits",
+          "nutrition_complete": true,
+          "score": 38
+        },
+        {
+          "ciqual_alim_code": "13136",
+          "ciqual_name": "Framboise, surgelée, crue",
+          "category": "fruits",
+          "nutrition_complete": true,
+          "score": 38
         }
       ]
     },
@@ -17183,7 +17445,7 @@
       "form": "Cumin moulu",
       "normalized": "cumin moulu",
       "required": true,
-      "recipe_count": 39,
+      "recipe_count": 40,
       "units": [
         "g"
       ],
@@ -17238,7 +17500,7 @@
       "form": "Curcuma moulu",
       "normalized": "curcuma moulu",
       "required": true,
-      "recipe_count": 12,
+      "recipe_count": 13,
       "units": [
         "g"
       ],
@@ -17341,7 +17603,7 @@
       "form": "Curry en poudre",
       "normalized": "curry en poudre",
       "required": true,
-      "recipe_count": 11,
+      "recipe_count": 12,
       "units": [
         "g"
       ],
@@ -17995,7 +18257,7 @@
       "form": "Échalote crue",
       "normalized": "echalote crue",
       "required": true,
-      "recipe_count": 52,
+      "recipe_count": 57,
       "units": [
         "g"
       ],
@@ -18971,7 +19233,7 @@
       "form": "Épinard frais",
       "normalized": "epinard frais",
       "required": true,
-      "recipe_count": 12,
+      "recipe_count": 13,
       "units": [
         "g"
       ],
@@ -19019,6 +19281,61 @@
           "category": "legumes",
           "nutrition_complete": true,
           "score": 58
+        }
+      ]
+    },
+    {
+      "form": "Épinard surgelé",
+      "normalized": "epinard surgele",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20083",
+        "ciqual_name": "Épinard, surgelé, cru",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Correspondance exacte : l'ANSES mesure l'épinard surgelé cru pour lui-même. 19,5 kcal, P 2,87 / G 0,89 / L 0,49, fibres 2,7 — macros complètes et toutes mesurées, aucune borne, aucune fermeture d'Atwater. L'écart avec « Épinard frais » (20059, 24 kcal) est réel et vient du blanchiment : c'est précisément pourquoi on n'adosse pas le surgelé au frais. UNE SEULE FORME POUR LES BRANCHES ET LE HACHÉ, et le classeur le dit lui-même : le libellé 2025 du même code 20083 devient « Epinard, haché ou purée ou en branches, surgelé, cru ». L'ANSES ne les sépare pas, donc les séparer ici fabriquerait une distinction que la mesure ne porte pas — et les graphes de diversité du planificateur ne rapprochent pas deux synonymes."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "20083",
+          "ciqual_name": "Épinard, surgelé, cru",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 110.5
+        },
+        {
+          "ciqual_alim_code": "20121",
+          "ciqual_name": "Épinard, surgelé, cuit",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 110.5
+        },
+        {
+          "ciqual_alim_code": "20027",
+          "ciqual_name": "Épinard, cuit",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 25.5
+        },
+        {
+          "ciqual_alim_code": "20059",
+          "ciqual_name": "Épinard, cru",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 25.5
+        },
+        {
+          "ciqual_alim_code": "20285",
+          "ciqual_name": "Épinard, purée",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 25.5
         }
       ]
     },
@@ -19337,7 +19654,7 @@
       "form": "Farine de blé T55",
       "normalized": "farine de ble t55",
       "required": true,
-      "recipe_count": 125,
+      "recipe_count": 126,
       "units": [
         "g"
       ],
@@ -19859,7 +20176,7 @@
       "form": "Fécule de maïs",
       "normalized": "fecule de mais",
       "required": true,
-      "recipe_count": 15,
+      "recipe_count": 16,
       "units": [
         "g"
       ],
@@ -20643,7 +20960,7 @@
       "form": "Feuille de laurier séchée",
       "normalized": "feuille de laurier sechee",
       "required": true,
-      "recipe_count": 85,
+      "recipe_count": 86,
       "units": [
         "feuille",
         "u"
@@ -21104,6 +21421,62 @@
           "category": "poissons_fruits_de_mer",
           "nutrition_complete": false,
           "score": 36.5
+        }
+      ]
+    },
+    {
+      "form": "Filet de merlu surgelé",
+      "normalized": "filet de merlu surgele",
+      "required": true,
+      "recipe_count": 2,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "26048",
+        "ciqual_name": "Merlu, filet, surgelé, cru",
+        "category": "poissons_fruits_de_mer",
+        "nutrition_complete": true,
+        "derived_field": "carbohydrate_g",
+        "confidence": "B",
+        "note": "Correspondance exacte, filet compris — le libellé Ciqual porte lui-même le mot. 82 kcal, P 15,1 / L 2,4, fibres 0 ; les glucides sont au statut « traces » et la fermeture d'Atwater les clôt à 0, comme pour tous les poissons du catalogue. Le filet surgelé est le poisson de semaine par excellence : ni écaillage, ni levée, ni arêtes. ÉCARTÉ 26233 « Merlu blanc du Cap, surgelé, cru » : c'est une autre espèce (Merluccius capensis contre Merluccius merluccius) et c'est celle que le rayon vend le plus, mais deux formes de merlu à 4 kcal d'écart obligeraient le rédacteur à choisir sans critère. L'espèce se déclare du côté du prix, où elle est visible et documentée."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "26048",
+          "ciqual_name": "Merlu, filet, surgelé, cru",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": false,
+          "score": 91.5
+        },
+        {
+          "ciqual_alim_code": "26233",
+          "ciqual_name": "Merlu blanc du Cap, surgelé, cru",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": false,
+          "score": 44.5
+        },
+        {
+          "ciqual_alim_code": "26244",
+          "ciqual_name": "Rouget-barbet, filet avec peau, surgelé, cru (Thaïlande, Sénégal…)",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": false,
+          "score": 40
+        },
+        {
+          "ciqual_alim_code": "20083",
+          "ciqual_name": "Épinard, surgelé, cru",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 5
+        },
+        {
+          "ciqual_alim_code": "20121",
+          "ciqual_name": "Épinard, surgelé, cuit",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 5
         }
       ]
     },
@@ -22077,6 +22450,61 @@
       ]
     },
     {
+      "form": "Fruits de mer cuits surgelés",
+      "normalized": "fruits de mer cuits surgeles",
+      "required": true,
+      "recipe_count": 4,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "10080",
+        "ciqual_name": "Fruits de mer, cuits, surgelés",
+        "category": "poissons_fruits_de_mer",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Correspondance exacte. 79,5 kcal, P 13,5 / G 2,83 / L 1,57, énergie mesurée. Seule entrée du lot volontairement adossée à un état CUIT, et pour une raison qui tient au produit et non à la commodité : le cocktail de fruits de mer surgelé est vendu cuit, il n'existe pas cru au rayon, et une recette ne fait que le réchauffer. L'adosser à une entrée crue aurait décrit un produit qui ne se vend pas."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "10080",
+          "ciqual_name": "Fruits de mer, cuits, surgelés",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": 1000
+        },
+        {
+          "ciqual_alim_code": "25038",
+          "ciqual_name": "Gratin ou cassolette de poisson et / ou fruits de mer, préemballé, cuit",
+          "category": "preparations_culinaires",
+          "nutrition_complete": true,
+          "score": 46.5
+        },
+        {
+          "ciqual_alim_code": "10043",
+          "ciqual_name": "Fruits de mer (aliment moyen)",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": true,
+          "score": 40
+        },
+        {
+          "ciqual_alim_code": "25188",
+          "ciqual_name": "Risotto, aux fruits de mer, préemballé",
+          "category": "preparations_culinaires",
+          "nutrition_complete": true,
+          "score": 38.5
+        },
+        {
+          "ciqual_alim_code": "25463",
+          "ciqual_name": "Pizza aux fruits de mer, préemballée",
+          "category": "preparations_culinaires",
+          "nutrition_complete": true,
+          "score": 38.5
+        }
+      ]
+    },
+    {
       "form": "Fumet de poisson",
       "normalized": "fumet de poisson",
       "required": true,
@@ -22712,7 +23140,7 @@
       "form": "Gingembre frais",
       "normalized": "gingembre frais",
       "required": true,
-      "recipe_count": 47,
+      "recipe_count": 51,
       "units": [
         "g"
       ],
@@ -23351,7 +23779,7 @@
       "form": "Gruyère râpé",
       "normalized": "gruyere rape",
       "required": true,
-      "recipe_count": 48,
+      "recipe_count": 50,
       "units": [
         "g"
       ],
@@ -24307,7 +24735,7 @@
       "form": "Haricot vert cru",
       "normalized": "haricot vert cru",
       "required": true,
-      "recipe_count": 16,
+      "recipe_count": 17,
       "units": [
         "g"
       ],
@@ -24733,8 +25161,9 @@
       "form": "Huile d’arachide",
       "normalized": "huile d arachide",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 6,
       "units": [
+        "g",
         "ml"
       ],
       "selection_mode": "exact_label",
@@ -24788,7 +25217,7 @@
       "form": "Huile d'olive vierge extra",
       "normalized": "huile d olive vierge extra",
       "required": true,
-      "recipe_count": 318,
+      "recipe_count": 336,
       "units": [
         "g",
         "ml"
@@ -25176,8 +25605,9 @@
       "form": "Huile de sésame grillé",
       "normalized": "huile de sesame grille",
       "required": true,
-      "recipe_count": 19,
+      "recipe_count": 21,
       "units": [
+        "g",
         "ml"
       ],
       "selection_mode": "curated",
@@ -25554,7 +25984,7 @@
       "form": "Jambon blanc cuit",
       "normalized": "jambon blanc cuit",
       "required": true,
-      "recipe_count": 21,
+      "recipe_count": 22,
       "units": [
         "g",
         "tranche"
@@ -26202,7 +26632,7 @@
       "form": "Jus de citron frais",
       "normalized": "jus de citron frais",
       "required": true,
-      "recipe_count": 69,
+      "recipe_count": 70,
       "units": [
         "g",
         "ml"
@@ -26258,8 +26688,9 @@
       "form": "Jus de citron vert frais",
       "normalized": "jus de citron vert frais",
       "required": true,
-      "recipe_count": 12,
+      "recipe_count": 13,
       "units": [
+        "g",
         "ml"
       ],
       "selection_mode": "curated",
@@ -26574,7 +27005,7 @@
       "form": "Lait de coco",
       "normalized": "lait de coco",
       "required": true,
-      "recipe_count": 13,
+      "recipe_count": 15,
       "units": [
         "ml"
       ],
@@ -26684,7 +27115,7 @@
       "form": "Lait entier",
       "normalized": "lait entier",
       "required": true,
-      "recipe_count": 56,
+      "recipe_count": 59,
       "units": [
         "g",
         "ml"
@@ -27427,7 +27858,7 @@
       "form": "Lentille verte sèche, crue",
       "normalized": "lentille verte seche crue",
       "required": true,
-      "recipe_count": 14,
+      "recipe_count": 15,
       "units": [
         "g"
       ],
@@ -27640,6 +28071,62 @@
           "category": "boissons",
           "nutrition_complete": true,
           "score": -26
+        }
+      ]
+    },
+    {
+      "form": "Lieu noir surgelé",
+      "normalized": "lieu noir surgele",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "26047",
+        "ciqual_name": "Lieu noir, surgelé, cru",
+        "category": "poissons_fruits_de_mer",
+        "nutrition_complete": true,
+        "derived_field": "carbohydrate_g",
+        "confidence": "B",
+        "note": "Correspondance exacte. 82,4 kcal, P 19,8 / L 0,37, glucides clos à 0 par Atwater depuis un statut « traces ». Poisson maigre distinct du merlu et du colin d'Alaska : le classeur mesure séparément 26047 « Lieu noir » (Pollachius virens) et 26006 « Lieu ou colin d'Alaska, cru » (Gadus chalcogrammus), et le rayon les étiquette distinctement parce que la réglementation l'impose. Le colin d'Alaska n'a PAS d'entrée surgelée au classeur 2020 : lui ouvrir une forme aurait obligé à l'adosser à l'entrée crue non surgelée, donc à un proxy de confiance C — non publiable, et silencieux sur la raison. On préfère l'absence."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "26047",
+          "ciqual_name": "Lieu noir, surgelé, cru",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": false,
+          "score": 114.5
+        },
+        {
+          "ciqual_alim_code": "26015",
+          "ciqual_name": "Lieu noir, cuit",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": false,
+          "score": 37
+        },
+        {
+          "ciqual_alim_code": "26134",
+          "ciqual_name": "Lieu noir, cru",
+          "category": "poissons_fruits_de_mer",
+          "nutrition_complete": false,
+          "score": 37
+        },
+        {
+          "ciqual_alim_code": "20083",
+          "ciqual_name": "Épinard, surgelé, cru",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 17
+        },
+        {
+          "ciqual_alim_code": "20121",
+          "ciqual_name": "Épinard, surgelé, cuit",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 17
         }
       ]
     },
@@ -29214,7 +29701,7 @@
       "form": "Moutarde de Dijon",
       "normalized": "moutarde de dijon",
       "required": true,
-      "recipe_count": 51,
+      "recipe_count": 53,
       "units": [
         "g"
       ],
@@ -30532,7 +31019,7 @@
       "form": "Œuf cru",
       "normalized": "oeuf cru",
       "required": true,
-      "recipe_count": 168,
+      "recipe_count": 173,
       "units": [
         "g",
         "u"
@@ -30960,7 +31447,7 @@
       "form": "Oignon jaune cru",
       "normalized": "oignon jaune cru",
       "required": true,
-      "recipe_count": 335,
+      "recipe_count": 347,
       "units": [
         "g"
       ],
@@ -32861,7 +33348,7 @@
       "form": "Paprika doux",
       "normalized": "paprika doux",
       "required": true,
-      "recipe_count": 16,
+      "recipe_count": 19,
       "units": [
         "g"
       ],
@@ -33081,7 +33568,7 @@
       "form": "Parmesan affiné",
       "normalized": "parmesan affine",
       "required": true,
-      "recipe_count": 31,
+      "recipe_count": 33,
       "units": [
         "g"
       ],
@@ -34097,7 +34584,7 @@
       "form": "Pâtes sèches courtes",
       "normalized": "pates seches courtes",
       "required": true,
-      "recipe_count": 9,
+      "recipe_count": 10,
       "units": [
         "g"
       ],
@@ -34365,7 +34852,7 @@
       "form": "Persil plat frais",
       "normalized": "persil plat frais",
       "required": true,
-      "recipe_count": 23,
+      "recipe_count": 28,
       "units": [
         "g"
       ],
@@ -34935,7 +35422,7 @@
       "form": "Piment d'Espelette moulu",
       "normalized": "piment d espelette moulu",
       "required": true,
-      "recipe_count": 15,
+      "recipe_count": 18,
       "units": [
         "g"
       ],
@@ -34990,7 +35477,7 @@
       "form": "Piment de Cayenne",
       "normalized": "piment de cayenne",
       "required": true,
-      "recipe_count": 13,
+      "recipe_count": 14,
       "units": [
         "g"
       ],
@@ -36491,7 +36978,7 @@
       "form": "Pois chiche cuit, égoutté",
       "normalized": "pois chiche cuit egoutte",
       "required": true,
-      "recipe_count": 9,
+      "recipe_count": 10,
       "units": [
         "g"
       ],
@@ -37281,7 +37768,7 @@
       "form": "Poivre noir moulu",
       "normalized": "poivre noir moulu",
       "required": true,
-      "recipe_count": 383,
+      "recipe_count": 405,
       "units": [
         "g"
       ],
@@ -37391,7 +37878,7 @@
       "form": "Poivron rouge frais",
       "normalized": "poivron rouge frais",
       "required": true,
-      "recipe_count": 50,
+      "recipe_count": 53,
       "units": [
         "g"
       ],
@@ -41570,7 +42057,7 @@
       "form": "Sauce soja",
       "normalized": "sauce soja",
       "required": true,
-      "recipe_count": 10,
+      "recipe_count": 13,
       "units": [
         "ml"
       ],
@@ -42637,7 +43124,7 @@
       "form": "Sel fin",
       "normalized": "sel fin",
       "required": true,
-      "recipe_count": 450,
+      "recipe_count": 472,
       "units": [
         "g"
       ],
@@ -43063,7 +43550,7 @@
       "form": "Spaghetti secs",
       "normalized": "spaghetti secs",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 6,
       "units": [
         "g"
       ],
@@ -43434,7 +43921,7 @@
       "form": "Sucre semoule",
       "normalized": "sucre semoule",
       "required": true,
-      "recipe_count": 81,
+      "recipe_count": 82,
       "units": [
         "g"
       ],
@@ -44045,7 +44532,7 @@
       "form": "Thon au naturel en conserve, égoutté",
       "normalized": "thon au naturel en conserve egoutte",
       "required": true,
-      "recipe_count": 22,
+      "recipe_count": 23,
       "units": [
         "g"
       ],
@@ -44100,7 +44587,7 @@
       "form": "Thym frais",
       "normalized": "thym frais",
       "required": true,
-      "recipe_count": 27,
+      "recipe_count": 29,
       "units": [
         "g"
       ],
@@ -44155,7 +44642,7 @@
       "form": "Thym séché",
       "normalized": "thym seche",
       "required": true,
-      "recipe_count": 73,
+      "recipe_count": 74,
       "units": [
         "g"
       ],
@@ -44615,7 +45102,7 @@
       "form": "Tomate concassée en conserve",
       "normalized": "tomate concassee en conserve",
       "required": true,
-      "recipe_count": 49,
+      "recipe_count": 51,
       "units": [
         "g"
       ],
@@ -44780,7 +45267,7 @@
       "form": "Tomate fraîche mûre",
       "normalized": "tomate fraiche mure",
       "required": true,
-      "recipe_count": 88,
+      "recipe_count": 91,
       "units": [
         "g",
         "u"
@@ -46066,7 +46553,7 @@
       "form": "Vin blanc sec",
       "normalized": "vin blanc sec",
       "required": true,
-      "recipe_count": 70,
+      "recipe_count": 72,
       "units": [
         "g",
         "ml"
