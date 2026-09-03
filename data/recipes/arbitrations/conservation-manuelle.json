@@ -1,6 +1,6 @@
 {
   "lot": "conservation-manuelle",
-  "contexte": "Ce fichier tranche à la main ce qu’aucun parseur ne peut lire dans la prose de conservation du corpus (data/recipes/corpus-v3.json, champ « conservation ») : les 47 recettes dont la prose donne des durées par composant ou aucune durée lisible, et les 103 recettes dont le nom ou la catégorie évoque un service froid, pour lesquelles le champ serve_cold ne peut être que déclaré (16 recettes sont dans les deux listes : 134 décisions). La mesure d’origine (PLAN_PLANNING_PARFAIT §2.5, chantier C1) a montré que le moteur produisait un pan bagnat à 24 h en batch de 3 jours puis le « réchauffait », et comptait congelables 90 plats qui refusent la congélation dans leur propre prose. Règles appliquées : le profil décrit le plat tel qu’il est servi, pas ses composants — quand les composants se gardent mais que le plat se monte au moment, eat_immediately vaut true et fridge_hours porte sur la plus courte des avances chiffrées par la prose ; une durée à l’ambiante est reportée dans fridge_hours et signalée comme telle dans le motif ; pour une fourchette (« 8 à 10 jours ») on retient la borne basse, la seule que la prose garantit ; freezable vaut true si la prose autorise la congélation du plat servi, false si elle la refuse ou si le plat ne la supporte manifestement pas (crudités, œuf poché ou dur, friture, mayonnaise), false aussi quand la prose ne l’autorise que pour une forme crue ou partielle qui n’est pas le plat servi, et null quand la prose se tait et que rien n’est manifeste — null est une réponse, pas un oubli, et le moteur le traite comme non congelable ; freezer_months n’est reporté que si freezable est true ; serve_cold vaut true seulement pour un plat mangé froid ou à l’ambiante sans réchauffage — un plat tiède (lentilles tièdes, salade au chèvre chaud, confit saisi) n’est pas froid — et null pour les pâtisseries et pains hors repas. Aucune durée n’a été fabriquée : quand la prose n’en porte pas, fridge_hours est null et le motif le dit.",
+  "contexte": "Ce fichier tranche à la main ce qu’aucun parseur ne peut lire dans la prose de conservation du corpus (data/recipes/corpus-v3.json, champ « conservation ») : les 47 recettes dont la prose donne des durées par composant ou aucune durée lisible, et les 103 recettes dont le nom ou la catégorie évoque un service froid, pour lesquelles le champ serve_cold ne peut être que déclaré (16 recettes sont dans les deux listes : 134 décisions). La mesure d’origine (PLAN_PLANNING_PARFAIT §2.5, chantier C1) a montré que le moteur produisait un pan bagnat à 24 h en batch de 3 jours puis le « réchauffait », et comptait congelables 90 plats qui refusent la congélation dans leur propre prose. Règles appliquées : le profil décrit le plat tel qu’il est servi, pas ses composants — quand les composants se gardent mais que le plat se monte au moment, eat_immediately vaut true et fridge_hours porte sur la plus courte des avances chiffrées par la prose ; une durée à l’ambiante est reportée dans fridge_hours et signalée comme telle dans le motif ; pour une fourchette (« 8 à 10 jours ») on retient la borne basse, la seule que la prose garantit ; freezable vaut true si la prose autorise la congélation du plat servi, false si elle la refuse ou si le plat ne la supporte manifestement pas (crudités, œuf poché ou dur, friture, mayonnaise) ; quand la prose n’autorise la congélation que d’une forme crue ou partielle qui n’est pas le plat servi (croquette avant friture, pâte crue, poulet mariné), cette autorisation ne vaut pas pour le plat : freezable est false si le plat servi ne la supporte manifestement pas (friture, sandwich garni, salade montée), null si rien n’est manifeste (petit pain cuit), et les mois ne sont jamais reportés ; null quand la prose se tait et que rien n’est manifeste — null est une réponse, pas un oubli, et le moteur le traite comme non congelable ; freezer_months n’est reporté que si freezable est true ; serve_cold vaut true seulement pour un plat mangé froid ou à l’ambiante sans réchauffage — un plat tiède (lentilles tièdes, salade au chèvre chaud, confit saisi) n’est pas froid — et null pour les pâtisseries et pains hors repas. Aucune durée n’a été fabriquée : quand la prose n’en porte pas, fridge_hours est null et le motif le dit.",
   "decisions": [
     {
       "code": "MED-001",
@@ -52,7 +52,7 @@
         "freezer_months": 3,
         "serve_cold": null
       },
-      "motif": "5 jours bien emballé, sans lieu précisé : pour un cake c’est l’ambiante, comme le gâteau au yaourt du même lot. Congélation autorisée 3 mois en toutes lettres. Servi à l’ambiante : serve_cold non pertinent."
+      "motif": "5 jours bien emballé, sans lieu précisé : on garde le chiffre tel quel sans décider du lieu (la prose ne parle ni de réfrigérateur ni d’ambiante). Congélation autorisée 3 mois en toutes lettres. Gâteau servi à l’ambiante : serve_cold non pertinent."
     },
     {
       "code": "FR-033",
@@ -78,7 +78,7 @@
         "freezer_months": null,
         "serve_cold": null
       },
-      "motif": "4 jours en boîte hermétique : c’est une garde à l’ambiante, pas au froid. Rien sur la congélation. Petit gâteau servi à l’ambiante : serve_cold non pertinent."
+      "motif": "4 jours en boîte hermétique, sans lieu précisé : on garde le chiffre tel quel sans décider du lieu. Rien sur la congélation. Petit gâteau servi à l’ambiante : serve_cold non pertinent."
     },
     {
       "code": "REAL-079",
@@ -143,7 +143,7 @@
         "freezer_months": 2,
         "serve_cold": null
       },
-      "motif": "2 jours sans lieu précisé — pour un pain plat c’est l’ambiante, la prose ne parle pas de réfrigérateur. Congélation autorisée 2 mois. Pain servi à l’ambiante ou tiède : serve_cold non pertinent."
+      "motif": "2 jours sans lieu précisé : on garde le chiffre tel quel sans décider du lieu. Congélation autorisée 2 mois en toutes lettres. Pain servi à l’ambiante ou tiède : serve_cold non pertinent."
     },
     {
       "code": "REAL-109",
