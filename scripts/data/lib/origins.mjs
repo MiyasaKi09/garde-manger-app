@@ -5,8 +5,9 @@
  * build-recipe-food-corpus.mjs dans cet ordre, et rien d'autre :
  *   a. une origine EXPLICITE dans une décision d'arbitrage
  *      (data/foods/arbitrations/lot21-origine-des-formes.json) ;
- *   b. sinon le groupe / sous-groupe Ciqual de la fiche, MAIS SEULEMENT quand
- *      le sous-groupe est sans ambiguïté — c'est la table ci-dessous ;
+ *   b. sinon le groupe / sous-groupe / sous-sous-groupe Ciqual de la fiche,
+ *      MAIS SEULEMENT quand cette case est sans ambiguïté — c'est la table
+ *      ci-dessous ;
  *   c. sinon 'inconnu'. JAMAIS une regex sur le nom pour deviner.
  *
  * Le vocabulaire des valeurs vit dans lib/domain/foods/origins.js (le code
@@ -14,36 +15,61 @@
  * peut pas importer un module ESM en .js d'un projet sans "type": "module") ;
  * un test vérifie que les deux listes sont identiques.
  *
- * LA TABLE A ÉTÉ ÉCRITE APRÈS ÉNUMÉRATION des valeurs réelles de grp_nom et
- * ssgrp_nom du classeur Ciqual 2020 (data/sources/raw/ciqual_2020_FR_…), pas
- * d'après ce qu'on croit y trouver. Les shards data/foods/ciqual-reference/
- * (Ciqual 2025) portent la même taxonomie sous source_taxonomy.group /
- * subgroup, aux mêmes libellés. Ce que l'énumération a appris et qui a
- * décidé de « sûr » ou « ambigu » :
+ * LA TABLE A ÉTÉ ÉCRITE APRÈS ÉNUMÉRATION des valeurs réelles de grp_nom,
+ * ssgrp_nom et ssssgrp_nom du classeur Ciqual 2020
+ * (data/sources/raw/ciqual_2020_FR_2020-07-07.xls.gz, 3 186 fiches), pas
+ * d'après ce qu'on croit y trouver. C'est CE classeur que le catalogue lit,
+ * et non les shards 2025 de data/foods/ciqual-reference/ : l'énumération des
+ * shards (3 484 entrées) montre qu'ils RENOMMENT plusieurs cases — « produits
+ * laitiers » sans « et assimilés », « viandes, oeufs, poissons », « fromages
+ * et alternatives végétales », « charcuteries et alternatives végétales », et
+ * de nouveaux sous-groupes « farines », « pâtes à tarte », « ingrédients pour
+ * végétariens », « tartinables végétariens ». Le jour de la bascule 2025, la
+ * table est à ré-énumérer, pas à recopier.
+ *
+ * Ce que l'énumération a appris et qui a décidé de « sûr » ou « ambigu » :
  *   - le classeur n'a AUCUN sous-groupe « volailles » : « Poulet, filet, cru »
- *     est dans « viandes crues » avec le bœuf. Viande contre volaille ne se
- *     lit donc pas dans le groupe → ambigu, chaque viande est arbitrée ;
+ *     est dans « viandes crues » avec le bœuf. Mais le SOUS-SOUS-GROUPE
+ *     (ssssgrp_nom) sépare « poulet », « dinde », « bœuf et veau », « porc »,
+ *     « agneau et mouton », « gibier », « abats » et « autres viandes » — et
+ *     chacun a été relu fiche par fiche. Les six premiers sont homogènes
+ *     (16 fiches « poulet », toutes du poulet ; 39 « bœuf et veau », toutes
+ *     bœuf ou veau…) : ils sont sûrs. « abats » mêle foie de veau et foie de
+ *     volaille, « autres viandes » mêle canard, oie, pintade, poule (volaille)
+ *     et cheval, lapin, chevreau, autruche (viande) : ambigus. Le gibier va
+ *     en viande — le faisan est un gibier à plumes, pas une volaille de
+ *     basse-cour, et c'est la définition que porte le vocabulaire ;
+ *   - de même pour « charcuteries et assimilés » : « jambons secs et crus »
+ *     (10 fiches, toutes de porc : jambon cru, Bayonne, Parme, Serrano, coppa,
+ *     pancetta) et « saucisson secs » (6 fiches, toutes de porc) sont sûrs ;
+ *     « jambons cuits » contient « Jambon de dinde » et « Jambon de poulet »,
+ *     « saucisses et assimilés » des saucisses de volaille, « rillettes » des
+ *     rillettes de canard et de poulet, « pâtés et terrines » des terrines de
+ *     canard, « quenelles » des quenelles de poisson et de volaille, « autres
+ *     spécialités charcutières » le confit de canard et le haché de volaille,
+ *     et « substituts de charcuteries pour végétariens » du seitan : ambigus ;
  *   - « substitus de produits carnés » (sic) contient le tofu, le seitan et
  *     des « bouchées au soja et blé (ne convient pas aux véganes) » → ambigu ;
  *   - « légumes » contient « Carotte, purée cuisinée à la crème » (20298),
- *     « pommes de terre et autres tubercules » contient quatre purées au lait
- *     ou à la crème (4016–4019, 4103), « œufs » contient « Omelette aux
- *     lardons » (22507) et « Omelette, garnitures diverses… viandes » (22511),
- *     « pâtes, riz et céréales » contient cinq pâtes AUX ŒUFS (9815, 9816,
- *     9821, 9822, 9863), « fromages et assimilés » trois spécialités
- *     végétales (1027–1029), « produits laitiers frais et assimilés » dix
- *     desserts au soja ou végétaux, « mollusques et crustacés » l'escargot et
- *     la grenouille. Ces sous-groupes sont sûrs À L'EXCEPTION de ces codes,
+ *     « pommes de terre et autres tubercules » quatre purées au lait ou à la
+ *     crème (4016–4019, 4103), « œufs » contient « Omelette aux lardons »
+ *     (22507) et « Omelette, garnitures diverses… viandes » (22511),
+ *     « pâtes, riz et céréales » cinq pâtes AUX ŒUFS (9815, 9816, 9821, 9822,
+ *     9863), « fromages et assimilés » trois spécialités végétales
+ *     (1027–1029), « produits laitiers frais et assimilés » dix desserts au
+ *     soja ou végétaux, « mollusques et crustacés » l'escargot et la
+ *     grenouille. Ces sous-groupes sont sûrs À L'EXCEPTION de ces codes,
  *     consignés un par un dans EXCEPTIONS_PAR_CODE : le code retombe en
  *     ambigu et passe par (a) ;
  *   - « condiments » contient la tapenade et des olives farcies aux anchois,
  *     « aides culinaires » les fonds de veau et de volaille, « ingrédients
  *     divers » la gélatine, la gelée royale et le tofu soyeux, « sauces » la
- *     mayonnaise et le nuoc-mâm → ambigus ;
+ *     mayonnaise et le nuoc-mâm, « autres matières grasses » le saindoux, la
+ *     graisse d'oie et l'huile de paraffine → ambigus ;
  *   - « boissons sans alcool » contient des boissons lactées, « boisson
  *     alcoolisées » un « Marsala aux oeufs » → ambigus ;
- *   - 45 fiches n'ont AUCUN groupe (farines, fécules, flocons d'avoine,
- *     « Dessert (aliment moyen) ») → ambigu, elles passent par (a).
+ *   - 45 fiches n'ont AUCUN groupe (farines, fécules, pâtes à tarte, feuille
+ *     de brick, « Dessert (aliment moyen) ») → ambigu, elles passent par (a).
  */
 
 /** Même liste que lib/domain/foods/origins.js — un test tient l'égalité. */
@@ -59,8 +85,10 @@ export const isKnownOrigin = (value) => ORIGIN_SET.has(value)
 export const AMBIGU = 'ambigu'
 
 /**
- * Table grp_nom → ssgrp_nom → origine sûre, ou AMBIGU. Toute paire absente de
- * la table est ambiguë (on ne complète pas une table par vraisemblance).
+ * Table grp_nom → ssgrp_nom → origine sûre, ou AMBIGU, ou — quand seul le
+ * sous-sous-groupe tranche — un objet ssssgrp_nom → origine sûre / AMBIGU.
+ * Toute case absente de la table est ambiguë (on ne complète pas une table par
+ * vraisemblance). Les libellés sont ceux du classeur, en minuscules.
  */
 export const ORIGINE_PAR_GROUPE = Object.freeze({
   'aides culinaires et ingrédients divers': {
@@ -142,9 +170,41 @@ export const ORIGINE_PAR_GROUPE = Object.freeze({
     'poissons cuits': 'animal:poisson',
     'mollusques et crustacés crus': 'animal:fruits_de_mer', // sauf escargot, grenouille, voir EXCEPTIONS_PAR_CODE
     'mollusques et crustacés cuits': 'animal:fruits_de_mer',
-    'viandes crues': AMBIGU,                                // volaille et viande de boucherie mêlées
-    'viandes cuites': AMBIGU,
-    'charcuteries et assimilés': AMBIGU,                    // confit de canard, magret fumé, jambon, boudin
+    // Volaille et viande de boucherie sont mêlées au sous-groupe : seul le
+    // sous-sous-groupe tranche, et seulement là où il est homogène.
+    'viandes crues': {
+      'bœuf et veau': 'animal:viande',
+      'porc': 'animal:viande',
+      'agneau et mouton': 'animal:viande',
+      'gibier': 'animal:viande',
+      'poulet': 'animal:volaille',
+      'dinde': 'animal:volaille',
+      'abats': AMBIGU,            // foie de veau et foie de volaille
+      'autres viandes': AMBIGU,   // canard, oie, pintade, poule / cheval, lapin, chevreau
+    },
+    'viandes cuites': {
+      'bœuf et veau': 'animal:viande',
+      'porc': 'animal:viande',
+      'agneau et mouton': 'animal:viande',
+      'gibier': 'animal:viande',
+      'poulet': 'animal:volaille',
+      'dinde': 'animal:volaille',
+      'abats': AMBIGU,
+      'autres viandes': AMBIGU,
+      '-': AMBIGU,                // « Viande cuite (aliment moyen) », « Volaille, cuite (aliment moyen) »
+    },
+    'charcuteries et assimilés': {
+      'jambons secs et crus': 'animal:viande',          // 10 fiches, toutes de porc
+      'saucisson secs': 'animal:viande',                // 6 fiches, toutes de porc
+      'jambons cuits': AMBIGU,                          // jambon de dinde, jambon de poulet
+      'saucisses et assimilés': AMBIGU,                 // saucisses de volaille
+      'pâtés et terrines': AMBIGU,                      // terrine de canard, pâté aux champignons
+      'rillettes': AMBIGU,                              // rillettes de canard, de poulet
+      'quenelles': AMBIGU,                              // quenelle de poisson, de volaille, nature
+      'autres spécialités charcutières': AMBIGU,        // confit de canard, magret fumé, haché de volaille
+      'substituts de charcuteries pour végétariens': AMBIGU,
+      '-': AMBIGU,                                      // « Charcuterie (aliment moyen) »
+    },
     'autres produits à base de viande': AMBIGU,             // nuggets de poulet, boulettes bœuf-porc
     'produits à base de poissons et produits de la mer': AMBIGU, // surimi, tarama, rillettes de saumon : poisson ou mer
     'substitus de produits carnés': AMBIGU,                 // tofu, seitan, bouchées « ne convient pas aux véganes »
@@ -188,19 +248,27 @@ export const EXCEPTIONS_PAR_CODE = Object.freeze({
   '34501': 'Grenouille, cuisse, grillée/poêlée (mollusques et crustacés)',
 })
 
+const normaliserLibelle = (value) => String(value || '').trim().toLowerCase()
+
 /**
- * @param {{ alim_code?: string, grp_nom?: string, ssgrp_nom?: string }|null} record fiche Ciqual
+ * @param {{ alim_code?: string, grp_nom?: string, ssgrp_nom?: string, ssssgrp_nom?: string }|null} record fiche Ciqual
  * @returns {{ origin: string, source: string }|null}
- *   origine sûre et le sous-groupe qui l'a donnée ; null quand le groupe est
- *   ambigu, absent, ou que le code est une exception consignée.
+ *   origine sûre et la case Ciqual qui l'a donnée ; null quand la case est
+ *   ambiguë, absente, ou que le code est une exception consignée.
  */
 export function resolveOriginFromCiqual(record) {
   if (!record) return null
   const code = String(record.alim_code || '')
   if (EXCEPTIONS_PAR_CODE[code]) return null
-  const groupe = String(record.grp_nom || '').trim().toLowerCase()
-  const sousGroupe = String(record.ssgrp_nom || '').trim().toLowerCase()
-  const origin = ORIGINE_PAR_GROUPE[groupe]?.[sousGroupe]
-  if (!origin || origin === AMBIGU) return null
-  return { origin, source: `ciqual:${groupe} / ${sousGroupe}` }
+  const groupe = normaliserLibelle(record.grp_nom)
+  const sousGroupe = normaliserLibelle(record.ssgrp_nom)
+  const sousSousGroupe = normaliserLibelle(record.ssssgrp_nom)
+  const parSousGroupe = ORIGINE_PAR_GROUPE[groupe]?.[sousGroupe]
+  if (!parSousGroupe || parSousGroupe === AMBIGU) return null
+  if (typeof parSousGroupe === 'string') {
+    return { origin: parSousGroupe, source: `ciqual:${groupe} / ${sousGroupe}` }
+  }
+  const parSousSousGroupe = parSousGroupe[sousSousGroupe]
+  if (!parSousSousGroupe || parSousSousGroupe === AMBIGU) return null
+  return { origin: parSousSousGroupe, source: `ciqual:${groupe} / ${sousGroupe} / ${sousSousGroupe}` }
 }
