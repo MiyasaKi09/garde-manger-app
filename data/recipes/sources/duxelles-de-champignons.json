@@ -1,0 +1,241 @@
+{
+  "dish": "Duxelles de champignons",
+  "slug": "duxelles-de-champignons",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_duxelles-de-champignons_19119.aspx",
+      "site": "marmiton.org",
+      "nom": "Duxelles de champignons : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "300 g de champignons de couche",
+        "1 oignon",
+        "2 échalotes",
+        "30 g de beurre",
+        "1 cuillère à café de persil haché",
+        "2 tours de moulin de poivre",
+        "1 pincée de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 601,
+        "sha256": "a39a9d940ef0bafe"
+      },
+      "sha256_page": "db7f94b02ce197ec"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_roule-de-dinde-et-duxelle-de-champignons_171968.aspx",
+      "site": "marmiton.org",
+      "nom": "Roulé de dinde et duxelle de champignons : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 escalopes de dinde",
+        "500 g de champignons de Paris",
+        "3 échalotes",
+        "1 l d'eau",
+        "2 bouillon de volaille",
+        "1 noix de beurre",
+        "1 noix de beurre",
+        "1 cuillère à soupe de fond de volaille",
+        "10 cl de vin blanc",
+        "1 louche de bouillon",
+        "20 cl de crème allégée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1102,
+        "sha256": "bda2da9b0d0843f5"
+      },
+      "sha256_page": "6e1dc130710289be"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-de-bresse-farci-au-fois-gras-de-canard-duxelle-de-champignons-du-moment_232675.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet de Bresse farci au fois gras de canard & duxelle de champignons du moment : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT3H",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 poulet de bresse (1,6 kg)",
+        "200 g de beurre",
+        "250 g de champignons de Paris",
+        "100 g d'oignons grelots",
+        "70 g de trompettes de la mort",
+        "4 pièces d'escalopes de Fois Gras de canard",
+        "3 échalotes",
+        "50 g de carottes",
+        "1 courgette",
+        "1 navet (ou 2 selon la taille du navet)",
+        "6 tomates cerise",
+        "1 bouquet garni",
+        "70 g de concentré de tomates"
+      ],
+      "etapes_empreinte": {
+        "nombre": 23,
+        "signes": 2037,
+        "sha256": "c5a65ca488b0b172"
+      },
+      "sha256_page": "66417a05c9b45d36"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/duxelles-de-champignons--3",
+      "site": "chefsimon.com",
+      "nom": "Duxelles de champignons",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "500 grammes de champignons de Paris ultra-frais",
+        "2 grosses échalotes",
+        "30 à 40 g de beurre."
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1053,
+        "sha256": "59686484ec93f2c5"
+      },
+      "sha256_page": "2ce45012f8fd37e6"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/courgettes-farcies-au-quinoa-et-duxelles-de-champignons",
+      "site": "chefsimon.com",
+      "nom": "Courgettes farcies au quinoa et duxelles de champignons",
+      "portions": "6 personnes",
+      "duree_preparation": "PT01H00M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "6 courgettes rondes de Nice",
+        "300 g de quinoa",
+        "3 échalotes",
+        "1 gousse d'ail",
+        "300 g de champignons de Paris",
+        "1 dl d'huile d'olive",
+        "cumin",
+        "6 tomates",
+        "100 g de tomates séchées (facultatif)",
+        "3 gousses d’ail",
+        "3 échalotes",
+        "piment d'Espelette",
+        "basilic",
+        "un demi bouquet de persil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 23,
+        "signes": 1404,
+        "sha256": "3e79f20ffd46436a"
+      },
+      "sha256_page": "e56b87c07889f285"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/viviengerard/recettes/agneau-farci-aux-herbes-duxelles-de-champignons-creme-de-mamac-pomme-de-terre",
+      "site": "chefsimon.com",
+      "nom": "Agneau farci aux herbes, duxelles de champignons, crème de mamac, pomme de terre",
+      "portions": "5 personnes",
+      "duree_preparation": "PT01H00M",
+      "duree_cuisson": "PT05H00M",
+      "ingredients": [
+        "une épaule d'agneau désossée",
+        "500g de porc haché grossièrement pris dans l'échine",
+        "un bouquet d'herbes (persil, cerfeuil, ciboulette, coriandre)",
+        "trois têtes d'ail",
+        "du fil ou de la crépine",
+        "2/3 pommes de terre",
+        "beurre clarifié ou du ghee",
+        "sel poivre",
+        "20 cl de crème liquide légère",
+        "les têtes d'ail du roti",
+        "700g de champignon",
+        "une belle noix de beurre",
+        "deux échalotes",
+        "sel poivre",
+        "persil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 23,
+        "signes": 2155,
+        "sha256": "d2a4da049b2ad4ac"
+      },
+      "sha256_page": "9312b9245ae5fe54"
+    },
+    {
+      "url": "https://www.750g.com/mini-zakouski-feuillete-de-duxelles-de-champignons-des-bois-et-spiruline-r204633.htm",
+      "site": "750g.com",
+      "nom": "Mini zakouski feuilleté de duxelles de champignons des bois et spiruline",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT8M",
+      "ingredients": [
+        "6 amuse-bouches, mini zakouski",
+        "3 beaux cèpes ou bolets",
+        "1/2 petit oignon",
+        "1/2 gousse d'ail",
+        "4 feuilles d'estragon",
+        "1 c à s de mascarpone",
+        "2 c à s de crème fraîche",
+        "Fleur de sel Espelette",
+        "Spiruline"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 671,
+        "sha256": "61eab3fec605f9fd"
+      },
+      "sha256_page": "708fbf9b634aeb4f"
+    },
+    {
+      "url": "https://www.750g.com/roules-de-dinde-farcis-a-la-duxelle-de-champignons-r61663.htm",
+      "site": "750g.com",
+      "nom": "Roulés de dinde farcis à la duxelle de champignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 c. à c. de fond brun de veau lié en poudre",
+        "25 cl de vin blanc",
+        "Sel ou sel fin",
+        "Poivre",
+        "½ bouquet de persil",
+        "4 échalotes",
+        "150 g de veau  haché",
+        "600 g de champignons de Paris",
+        "4 escalopes de dinde"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 868,
+        "sha256": "04f031f55fd0367d"
+      },
+      "sha256_page": "32972c01679a4d5b"
+    },
+    {
+      "url": "https://www.750g.com/pommes-de-terre-farcies-a-la-duxelles-de-champignons-r82093.htm",
+      "site": "750g.com",
+      "nom": "Pommes de terre farcies à la duxelles de champignons",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "Chapelure",
+        "Sel ou sel fin",
+        "Poivre",
+        "Persil",
+        "20 g de beurre",
+        "2 échalotes",
+        "200 g de champignons de Paris",
+        "2 pommes de terre  (grosses)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 530,
+        "sha256": "b538b196f287132c"
+      },
+      "sha256_page": "8e1242479b84f6d6"
+    }
+  ]
+}

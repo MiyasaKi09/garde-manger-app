@@ -1,0 +1,181 @@
+{
+  "dish": "Poulet au gingembre",
+  "slug": "poulet-au-gingembre",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-citron-miel-gingembre-facon-anne_61796.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet citron miel gingembre façon Anne : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "8 pilons de poulet (ou 4 cuisses ou 8 blancs ou encore 1 poulet coupé en morceaux)",
+        "1 cuillère à café rase de gingembre râpé",
+        "2 grosses cuillères à soupe de miel",
+        "1 citron jaune (zeste + jus)",
+        "1 échalote",
+        "2 cuillères à soupe d'huile",
+        "50 cl de crème semi-épaisse",
+        "poivre",
+        "sel",
+        "300 g de riz parfumé",
+        "eau = 2 x le volume du riz",
+        "1 dose de safran",
+        "20 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1063,
+        "sha256": "cd1c67c45c53faea"
+      },
+      "sha256_page": "b0c4dd8e21c238e8"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-epice-au-gingembre_51661.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet épicé au gingembre : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "3 blancs de poulet",
+        "80 g de gingembre frais",
+        "2 cuillères à soupe de curry",
+        "1 cuillère à soupe de piment doux",
+        "1 oignon",
+        "1 échalote",
+        "2 cuillères à soupe d'huile d'olive",
+        "3 cuillères à soupe de miel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 420,
+        "sha256": "103da250ea521eff"
+      },
+      "sha256_page": "23854ec63017f5ed"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_riz-au-poulet-et-au-gingembre_17265.aspx",
+      "site": "marmiton.org",
+      "nom": "Riz au poulet et au gingembre  : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "320 g de riz",
+        "2 oeufs",
+        "2 escalopes de poulet ou de dinde",
+        "1 morceau de gingembre",
+        "huile",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 606,
+        "sha256": "5bff1d6cf5b19cca"
+      },
+      "sha256_page": "e5091a5af566039e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/poulet-au-citron-et-gingembre-en-crapaudine",
+      "site": "chefsimon.com",
+      "nom": "Poulet au citron et gingembre en crapaudine",
+      "portions": "5 personnes",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT01H15M",
+      "ingredients": [
+        "1 poulet fermier (1,5-1,8 kg)",
+        "4 oignons nouveaux",
+        "4-5 gousses d’ail",
+        "2 citrons non traités (2, l'un pour le zeste et le jus, l'autre en rondelles)",
+        "5 cm de gingembre",
+        "10 tiges de coriandre fraîche",
+        "1 cs de harissa",
+        "2 gros oignons",
+        "200 g de confiture de citron",
+        "1 cs de cardamome",
+        "3 cs d’huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 2114,
+        "sha256": "a5beab83f13c20b1"
+      },
+      "sha256_page": "01c2eb4c984383a2"
+    },
+    {
+      "url": "https://www.750g.com/poulet-au-gingembre-r3712.htm",
+      "site": "750g.com",
+      "nom": "Poulet au gingembre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 kg d'haut de cuisse de poulet",
+        "5 échalotes",
+        "4 c. à c. de miel",
+        "5 c. à s. de nuoc-mâm",
+        "3 c. à s. de sauce soja",
+        "1 gros morceau de gingembre  (gros)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 572,
+        "sha256": "76fc795449408092"
+      },
+      "sha256_page": "48a116496cd6a484"
+    },
+    {
+      "url": "https://www.750g.com/poulet-bouilli-au-gingembre-r202080.htm",
+      "site": "750g.com",
+      "nom": "Poulet bouilli au gingembre",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "½ poulet fermier",
+        "1 gros morceau de gingembre  frais de la taille de deux gros pouces",
+        "5 brins de ciboule chinoise",
+        "5 c. à s. d'huile de tournesol",
+        "1 c. à c. de sel ou sel fin",
+        "Bouillon de volaille  (1/8 de cube écrasé)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1612,
+        "sha256": "2896f027f8055165"
+      },
+      "sha256_page": "a30e5d88d8574657"
+    },
+    {
+      "url": "https://www.750g.com/poulet-gingembre-r61534.htm",
+      "site": "750g.com",
+      "nom": "Poulet gingembre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "20 cl de crème",
+        "Beurre ou huile",
+        "Sel",
+        "Poivre",
+        "1l de bouillon de poulet",
+        "2 cm de gingembre frais (ou 1 c à c de gingembre moulu)",
+        "250g de champignon",
+        "2 ou 3 oignon (selon leur taille)",
+        "3 gousse d'ail (1 c à c d'ail sèche)",
+        "400g de poulet"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 756,
+        "sha256": "5594105d276b6cb3"
+      },
+      "sha256_page": "dd40c25e31fdc516"
+    }
+  ]
+}

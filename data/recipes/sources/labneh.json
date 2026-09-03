@@ -1,0 +1,165 @@
+{
+  "dish": "Labneh",
+  "slug": "labneh",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-tres-fraiche-et-snow-labneh-de-julien-sebbag_392173.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade très fraîche et snow (labneh) de Julien Sebbag : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 poire ou pomme",
+        "1 chou-rave",
+        "1 fenouil",
+        "1 avocat",
+        "persil frais",
+        "30 g d'amandes",
+        "1 citron",
+        "huile d'olive",
+        "3 cuillères à soupe de ricotta (facultative)",
+        "1 oignon blanc",
+        "1 cuillère à soupe de miel",
+        "1 cuillère à soupe de sucre de canne",
+        "noix ou pignon",
+        "1 pot de yaourt à la grecque",
+        "1 pincée de paprika",
+        "1 pincée de zaatar",
+        "gros sel",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1411,
+        "sha256": "1607e716ad84a707"
+      },
+      "sha256_page": "726cda2da0763f99"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_labneh-maison_28758.aspx",
+      "site": "marmiton.org",
+      "nom": "Labneh maison : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "500 g de yaourts à la grecque",
+        "1 cuillère à café de zaatar",
+        "1 g de sel",
+        "huile d'olive",
+        "5 feuilles de menthe"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 357,
+        "sha256": "192c6a25c99eda3a"
+      },
+      "sha256_page": "eba49ac68ad40793"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_labneh_25352.aspx",
+      "site": "marmiton.org",
+      "nom": "Labneh : la meilleure recette",
+      "portions": "1 personne",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "fromage blanc battu épais",
+        "sel (1 à 2 pincées)",
+        "ail semoule",
+        "menthe fraîche",
+        "paprika"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 920,
+        "sha256": "cf3ccbf5f5df535d"
+      },
+      "sha256_page": "b2ab60374953815f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/veloute-de-carottes-aux-agrumes-et-labneh",
+      "site": "chefsimon.com",
+      "nom": "Velouté de carottes aux agrumes et labneh",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H35M",
+      "ingredients": [
+        "300 g de vrai yaourt grec",
+        "250 g de yaourt à la grecque",
+        "1 cc de fleur de sel + poivre",
+        "6 carottes moyennes",
+        "1 orange",
+        "1 pamplemousse",
+        "10 tiges de coriandre",
+        "6 cc d’huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1758,
+        "sha256": "b22eb17cc3e58cfd"
+      },
+      "sha256_page": "e5d6264bfc97367b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/pamplemousse-de-floride/recettes/labneh-au-pamplemousse-rose-de-floride",
+      "site": "chefsimon.com",
+      "nom": "Labneh au pamplemousse rose de Floride",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 pamplemousse de Floride",
+        "400 g de labneh",
+        "1 petite gousse d'ail",
+        "¼ oignon rouge",
+        "¼ grenade",
+        "1 cuill à café de miel",
+        "40 g de pignons de pin",
+        "½ cuill à café de piment d'Espelette",
+        "1 cuill à soupe de sumac",
+        "1 petit bouquet d'aneth",
+        "1 petite botte de ciboulette",
+        "Huile d'olive",
+        "Sel et poivre",
+        "Pour le service : un bon pain plat type pita"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 872,
+        "sha256": "b2dd8a3e4cc9653b"
+      },
+      "sha256_page": "ae7ca03ff3c1e360"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/labneh-citronne-menthe-et-zaatar",
+      "site": "chefsimon.com",
+      "nom": "Labneh citronné menthe et zaatar",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "500 g de skyr ou 250 g de yaourt de vache, 250 g de yaourt de brebis",
+        "1 tomate",
+        "20 g d’olives noires",
+        "2 c à c de Zaatar",
+        "1 c à c de sumac",
+        "Huile d’olive",
+        "Menthe",
+        "Amandes effilées grillées",
+        "Sel",
+        "Pain pita",
+        "1 citron"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 528,
+        "sha256": "c7993425ca297f48"
+      },
+      "sha256_page": "8163693464c5789e"
+    }
+  ]
+}

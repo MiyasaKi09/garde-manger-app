@@ -1,0 +1,237 @@
+{
+  "dish": "Calzone",
+  "slug": "calzone",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_calzone-au-brocolis_310351.aspx",
+      "site": "marmiton.org",
+      "nom": "Calzone au brocolis : la meilleure recette",
+      "portions": "4 Personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "1 pâte brisée",
+        "500 g de brocolis",
+        "2 tomates",
+        "1 oeuf",
+        "50 g d'emmental",
+        "10 cl de crème fraîche",
+        "sel",
+        "poivre",
+        "2 cuillères à soupe de lait"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 779,
+        "sha256": "bd2326d8b118998e"
+      },
+      "sha256_page": "3cfb9783238f712d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pizza-calzone-tomate-mozzarella_35911.aspx",
+      "site": "marmiton.org",
+      "nom": "Pizza calzone tomate mozzarella : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "400 g de farine",
+        "1 cube de levure de boulanger",
+        "1 grosse pincée de sel",
+        "0.5 verre d'eau tiède",
+        "2 boîtes de sauce tomate concentrée",
+        "4 boules de mozzarella (ou 2 grosses)",
+        "basilic frais ou surgelé (une bonne poignée de feuilles)",
+        "4 jaunes d'oeuf",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 989,
+        "sha256": "0fed06d90d37eb76"
+      },
+      "sha256_page": "968b1f8a15772120"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_calzone-feuillete-aux-legumes-du-soleil-vegan_528273.aspx",
+      "site": "marmiton.org",
+      "nom": "Calzone feuilleté aux légumes du soleil (vegan) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "1 pâte feuilletée végétale",
+        "2 tomates",
+        "1 courgette",
+        "1 poivron rouge",
+        "0.5 oignon",
+        "1 cuillère à soupe de herbes de Provence",
+        "4 cuillères à café de crème balsamique"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 491,
+        "sha256": "9a4b5b0a5487047a"
+      },
+      "sha256_page": "92f6225c5fd054a4"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jawahir/recettes/calzone-aux-fruit-rouge-et-mascarpone",
+      "site": "chefsimon.com",
+      "nom": "Calzone aux fruit rouge et mascarpone",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "Ingrédients pâte à pizza :",
+        "250 gr de farine blanche",
+        "1/2 sachet de levure instantané",
+        "eau tiède",
+        "2 cuillère à soupe d’huile d’olive",
+        "sel",
+        "2 Cuillère a soupe de sucre fin",
+        "Framboise, Fraise, myrtille, mascarpone.",
+        "1 jaune d’oeuf + lait pour la dorure"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 453,
+        "sha256": "b52f551981cb91c1"
+      },
+      "sha256_page": "01d7bdda0d0832f0"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-petites-recettes-de-vero/recettes/calzone",
+      "site": "chefsimon.com",
+      "nom": "Calzone",
+      "portions": "3 personnes",
+      "duree_preparation": "PT01H10M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "Pour la pâte à pizza maison :",
+        "450g de farine",
+        "27 cl d’eau tiède",
+        "1 sachet de levure de boulanger (pour 1 càs)",
+        "1,5 càc de sel",
+        "3 càs d’huile d’olive",
+        "1 càc d’origan séché",
+        "Pour le « calzone »",
+        "De la sauce tomate maison",
+        "2 tranches de jambon blanc",
+        "1 petite boîte de champignons de Paris",
+        "Du fromage rapé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 948,
+        "sha256": "ced6dc9eb266944b"
+      },
+      "sha256_page": "2323f128a63094ab"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-en-folie/recettes/calzone-ricotta-prosciutto-mozzarella-et-basilic",
+      "site": "chefsimon.com",
+      "nom": "Calzone Ricotta, Prosciutto, mozzarella et basilic",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H40M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "500g de farine T00 si vous trouvez, sinon T 45",
+        "250 à 260ml d'eau à température ambiante",
+        "1 cuillère à café de sel fin",
+        "1/2 cuillère à café de sucre en poudre",
+        "1 sachet de levure de boulanger sèche",
+        "2 cuillères à soupe d'huile d'olive à peu près 30g"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "8393b7f1c4231854"
+    },
+    {
+      "url": "https://www.750g.com/calzone-r79307.htm",
+      "site": "750g.com",
+      "nom": "Calzone",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "425 g de farine",
+        "20 cl d'eau",
+        "1 sachet de levure de boulanger",
+        "1 pincée de sel ou sel fin",
+        "1 filet d'huile d'olive  ou 1 c à s d'huile d'olive",
+        "1 petite boîte de concentré de tomates",
+        "100 g de mozzarella",
+        "4 tranches de jambon",
+        "6 tranches de chorizo",
+        "1 fromage râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1113,
+        "sha256": "d8440be1f95c7ae6"
+      },
+      "sha256_page": "d989d6f349e80f82"
+    },
+    {
+      "url": "https://www.750g.com/calzone-jambon-fromage-r98441.htm",
+      "site": "750g.com",
+      "nom": "Calzone jambon fromage",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "425 g de farine",
+        "20 cl d'eau",
+        "1 sachet de levure de boulanger",
+        "1 pincée de sel ou sel fin",
+        "1 filet d'huile d'olive  ou 1 c à s d'huile d'olive",
+        "1 petite boîte de concentré de tomates",
+        "100 g de mozzarella",
+        "4 tranches de jambon",
+        "1 fromage râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 950,
+        "sha256": "e9126abd2a6ddc21"
+      },
+      "sha256_page": "3d8ba4564fb3664d"
+    },
+    {
+      "url": "https://www.750g.com/calzone-au-boeuf-et-fromage-r98285.htm",
+      "site": "750g.com",
+      "nom": "Calzone au bœuf et fromage",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "425 g de farine",
+        "20 cl d'eau",
+        "1 sachet de levure de boulanger",
+        "1 pincée de sel ou sel fin",
+        "1 filet d'huile d'olive  ou 1 c à s d'huile d'olive",
+        "200 g de boeuf haché",
+        "125 g de mozzarella",
+        "100 g de champignons de Paris",
+        "1 petite boîte de concentré de tomates",
+        "1 oignon",
+        "1 fromage râpé",
+        "Huile d'olive",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1187,
+        "sha256": "559e8decaf2ebd6f"
+      },
+      "sha256_page": "645418b54264b4f5"
+    }
+  ]
+}

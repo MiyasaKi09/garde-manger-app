@@ -1,0 +1,139 @@
+{
+  "dish": "Chich taouk",
+  "slug": "chich-taouk",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_chich-taouk-poulet-marine-grille-recette-libanaise_14098.aspx",
+      "site": "marmiton.org",
+      "nom": "Chich taouk (poulet mariné grillé, recette libanaise) : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "900 g de blancs de poulet en morceaux",
+        "4 gousses d'ail hachées",
+        "3 cuillères à soupe d'huile d'olive",
+        "1 cuillère à café de thym",
+        "1 cuillère à café de piment",
+        "1 cuillère à café de cumin",
+        "1 cuillère à café de cannelle",
+        "1 cuillère à café de sumac",
+        "1 dose de safran",
+        "2 citrons",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 239,
+        "sha256": "b1d43aff8ddca1af"
+      },
+      "sha256_page": "d866cdcb28ba0391"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_chich-taouk-simplifie-liban_81301.aspx",
+      "site": "marmiton.org",
+      "nom": "Chich taouk simplifié (Liban) : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 escalopes de poulet",
+        "1 petite boîte de concentré de tomates",
+        "3 gousses d'ail écrasées",
+        "citron",
+        "2 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 241,
+        "sha256": "014f7c40eee23f84"
+      },
+      "sha256_page": "e38a62598cab3c6b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/une-aiguille-dans-l-potage/recettes/brochette-de-poulet-chich-taouk",
+      "site": "chefsimon.com",
+      "nom": "Brochette de poulet chich taouk",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H06M",
+      "ingredients": [
+        "900 g de blanc de poulet",
+        "2 citrons jaunes",
+        "3 c à s d'huile d'olive",
+        "4 petites gousses d'ail hachées",
+        "1 c à c de thym",
+        "1 c à c de piment doux ou fort",
+        "1 c à c de cannelle",
+        "1 c à c de sumac (facultatif)",
+        "1 dose de safran",
+        "Sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "a1f9f868ac0b0a68"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/passeportpourlacuisine/recettes/chich-taouk-2044546b-f0a7-42f9-a268-7bc2a9d6eee9",
+      "site": "chefsimon.com",
+      "nom": "Chich Taouk",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 filets de poulet",
+        "1 yaourt bulgare",
+        "10 gousses d'ail",
+        "1 citron",
+        "1 cuillère à soupe d'huile d'olive",
+        "1 cuillère à soupe de paprika",
+        "1 cuillère à soupe de thym séché"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "2a26096c0c6d9d01"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/zika/recettes/chich-taouk-en-sauce",
+      "site": "chefsimon.com",
+      "nom": "Chich Taouk en sauce",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "600 g de viande de veau, poulet ou agneau sans os hachée",
+        "1 oignon haché",
+        "1 petit bouquet de persil haché menu",
+        "1/2 cc de poivre",
+        "1/2 cc de carvi en poudre",
+        "1/2 cc de coriandre en poudre",
+        "1/2 cc de paprika fort",
+        "2 gousses d'ail écrasées",
+        "20 g de mie de pain rassis trempée dans de l'eau et pressée",
+        "1 blanc d'œuf",
+        "jus de 2 citrons",
+        "chapelure selon le besoin",
+        "beurre selon le besoin",
+        "1 cuillère à dessert de concentré de tomate",
+        "250 g de fromage frais ou petit-suisse",
+        "1 cc de fécule"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "cbfb8c9606d4175c"
+    }
+  ]
+}

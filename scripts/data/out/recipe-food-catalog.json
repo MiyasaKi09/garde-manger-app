@@ -3226,7 +3226,7 @@
         "concept": "Champignon séché",
         "rest": "",
         "cooking_state": null,
-        "preservation_state": null,
+        "preservation_state": "dried",
         "physical_state": null,
         "bone_state": null,
         "skin_state": null
@@ -6033,6 +6033,36 @@
       "note": "359 kcal, 22,4 g de protéines. Le grillage préalable de la farine (besan grillé) développe l'arôme et retire un peu d'eau ; il ne déplace pas les macronutriments de façon mesurable."
     },
     {
+      "canonical_name": "Farine de sarrasin",
+      "canonical_name_normalized": "farine de sarrasin",
+      "category": null,
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "9540",
+      "source_name": "Farine de sarrasin",
+      "state": {
+        "concept": "Farine de sarrasin",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 348,
+        "proteinG": 11.5,
+        "carbsG": 68.4,
+        "fatG": 2.19,
+        "fiberG": 4.2
+      },
+      "note": "Correspondance de libellé mot pour mot. 348 kcal, P 11,5 / L 2,19 / G 68,4, fibres 4,2 — toutes mesurées, aucune borne. Le classeur porte aussi 9380 « Sarrasin entier, cru », qui est la graine et non la farine, et 23801 « Galette de sarrasin, nature, préemballée », qui est le produit fini : les deux ont été écartés parce qu'une galette complète se fait avec de la farine, et qu'adosser une farine à une galette déjà cuite ferait entrer l'eau de la pâte dans la composition de l'ingrédient sec."
+    },
+    {
       "canonical_name": "Fécule de maïs",
       "canonical_name_normalized": "fecule de mais",
       "category": "cereales_feculents",
@@ -6137,7 +6167,7 @@
         "concept": "Fenugrec séché kasuri methi",
         "rest": "",
         "cooking_state": null,
-        "preservation_state": null,
+        "preservation_state": "dried",
         "physical_state": null,
         "bone_state": null,
         "skin_state": null
@@ -6154,6 +6184,36 @@
         "fiberG": 24.6
       },
       "note": "Proxy assumé, et le piège est dans la partie de la plante. Le kasuri methi est la FEUILLE de fenugrec séchée ; 11077 est la GRAINE (350 kcal, 27,1 g de protéines, 6,41 g de lipides). La feuille séchée est nettement moins grasse et moins protéinée. Le classeur n'a que la graine, et l'emploi est de l'ordre du gramme, écrasé entre les paumes en fin de cuisson."
+    },
+    {
+      "canonical_name": "Feta",
+      "canonical_name_normalized": "feta",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "12066",
+      "source_name": "Feta AOP",
+      "state": {
+        "concept": "Feta",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 286,
+        "proteinG": 14.8,
+        "carbsG": 0.65,
+        "fatG": 24.3,
+        "fiberG": 0
+      },
+      "note": "Les quatre sources authentiques de salade grecque écrivent « feta » sans autre qualificatif, et deux d'entre elles la comptent en pot ou en morceau de 100 à 180 g. Le classeur en porte quatre entrées : 12066 « Feta AOP », 12061 « Fromage 100 % brebis (Feta AOP ou type Feta) », 12060 « type feta, au lait de vache » et 12063 « type feta à l'huile et aux aromates ». On prend l'AOP, qui est le produit que le mot désigne : 285 kcal, P 14,8 / L 24,3 / G 0,65, sel 2,27 — macros complètes et toutes mesurées. Le type vache (12060) aurait été un choix de repli si le mot avait été qualifié, ce qu'aucune source ne fait ; la version à l'huile (12063) est un autre produit, dont le gras déclaré n'est pas celui du fromage. Le sel de 2,27 g pour 100 g est élevé et il est réel : c'est lui qui explique qu'une salade grecque se sale peu."
     },
     {
       "canonical_name": "Feuille de brick",
@@ -6173,6 +6233,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "u"
       ],
       "conversion": {},
@@ -6624,6 +6685,36 @@
         "fiberG": 0
       },
       "note": "Forme la plus courante du chèvre en cuisine domestique, et celle que nomment les sources. Glucides non renseignés, fermés par Atwater."
+    },
+    {
+      "canonical_name": "Fromage fondu en portions",
+      "canonical_name_normalized": "fromage fondu en portions",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "12310",
+      "source_name": "Fromage fondu en portions ou en cubes environ 20% MG",
+      "state": {
+        "concept": "Fromage fondu en portions",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 243,
+        "proteinG": 10.4,
+        "carbsG": 6.38,
+        "fatG": 19.3,
+        "fiberG": 0
+      },
+      "note": "Quatre des huit sources du velouté de courgettes montent leur velouté avec des portions de fromage fondu du commerce, comptées à la portion et jamais pesées. Le classeur porte trois entrées de fromage fondu en portions : 12305 (environ 8 % MG), 12310 (environ 20 %) et 12320 (double crème, environ 31 %). On prend 12310, qui correspond au produit courant, et surtout la seule des trois dont les macros soient complètes — 12305 n'a ni énergie ni glucides au classeur, ce qui suffit à l'écarter. Confiance B et non A parce que les sources ne donnent aucun taux de matière grasse : le choix des 20 % est celui du produit de référence du rayon, pas une lecture de la source. Le poids d'une portion, 17 g environ, reste une convention de cuisine et non une mesure : il est déclaré comme tel dans l'arbitrage de la recette."
     },
     {
       "canonical_name": "Fromage frais mexicain",
@@ -7340,7 +7431,7 @@
         "concept": "Haricot flageolet appertisé",
         "rest": "égoutté",
         "cooking_state": null,
-        "preservation_state": null,
+        "preservation_state": "canned",
         "physical_state": null,
         "bone_state": null,
         "skin_state": null
@@ -7672,7 +7763,7 @@
         "cooking_state": "raw",
         "preservation_state": null,
         "physical_state": null,
-        "bone_state": null,
+        "bone_state": "boneless",
         "skin_state": null
       },
       "units_used": [
@@ -7702,7 +7793,7 @@
         "cooking_state": "raw",
         "preservation_state": null,
         "physical_state": null,
-        "bone_state": null,
+        "bone_state": "boneless",
         "skin_state": "skinless"
       },
       "units_used": [
@@ -7902,6 +7993,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "ml"
       ],
       "conversion": {
@@ -8023,7 +8115,7 @@
       "state": {
         "concept": "Huile de sésame grillé",
         "rest": "",
-        "cooking_state": null,
+        "cooking_state": "cooked",
         "preservation_state": null,
         "physical_state": null,
         "bone_state": null,
@@ -10455,7 +10547,7 @@
         "concept": "Origan mexicain séché",
         "rest": "",
         "cooking_state": null,
-        "preservation_state": null,
+        "preservation_state": "dried",
         "physical_state": null,
         "bone_state": null,
         "skin_state": null
@@ -10485,7 +10577,7 @@
         "concept": "Origan séché",
         "rest": "",
         "cooking_state": null,
-        "preservation_state": null,
+        "preservation_state": "dried",
         "physical_state": null,
         "bone_state": null,
         "skin_state": null
@@ -10737,6 +10829,7 @@
         "skin_state": null
       },
       "units_used": [
+        "g",
         "u"
       ],
       "conversion": {},
@@ -11507,7 +11600,7 @@
         "concept": "Petit pois surgelé",
         "rest": "",
         "cooking_state": null,
-        "preservation_state": null,
+        "preservation_state": "frozen",
         "physical_state": null,
         "bone_state": null,
         "skin_state": null
@@ -11627,7 +11720,7 @@
         "concept": "Piment ancho séché",
         "rest": "",
         "cooking_state": null,
-        "preservation_state": null,
+        "preservation_state": "dried",
         "physical_state": null,
         "bone_state": null,
         "skin_state": null
@@ -11905,7 +11998,7 @@
         "concept": "Piment guajillo séché",
         "rest": "",
         "cooking_state": null,
-        "preservation_state": null,
+        "preservation_state": "dried",
         "physical_state": null,
         "bone_state": null,
         "skin_state": null
@@ -12031,7 +12124,7 @@
         "concept": "Piment pasilla séché",
         "rest": "",
         "cooking_state": null,
-        "preservation_state": null,
+        "preservation_state": "dried",
         "physical_state": null,
         "bone_state": null,
         "skin_state": null
@@ -12094,7 +12187,7 @@
         "concept": "Piment rouge séché",
         "rest": "",
         "cooking_state": null,
-        "preservation_state": null,
+        "preservation_state": "dried",
         "physical_state": null,
         "bone_state": null,
         "skin_state": null
@@ -12156,7 +12249,7 @@
         "concept": "Piment séché",
         "rest": "",
         "cooking_state": null,
-        "preservation_state": null,
+        "preservation_state": "dried",
         "physical_state": null,
         "bone_state": null,
         "skin_state": null
@@ -12691,6 +12784,36 @@
         "fiberG": 25.7
       },
       "note": null
+    },
+    {
+      "canonical_name": "Poivron jaune frais",
+      "canonical_name_normalized": "poivron jaune frais",
+      "category": "legumes",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "20168",
+      "source_name": "Poivron jaune, cru",
+      "state": {
+        "concept": "Poivron jaune frais",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": "fresh",
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 30.7,
+        "proteinG": 0.94,
+        "carbsG": 4.73,
+        "fatG": 0.3,
+        "fiberG": 1.2
+      },
+      "note": "ENTRÉE DÉJÀ AU REGISTRE, sans note, et ce lot ne fait que la documenter et l'employer. Le catalogue construit porte le poivron rouge et le poivron vert, pas le jaune, alors que quatre dossiers de ce lot le nomment expressément — les poivrons grillés (deux rouges et deux jaunes pour quatre), le poulet aux poivrons, le wok de légumes et les légumes rôtis. Le registre le rattachait déjà à 20168 « Poivron jaune, cru » ; la correspondance est exacte et je la confirme plutôt que d'en créer une seconde. L'écart avec le rouge est réel dans les deux sens : 30,7 kcal et 4,73 g de glucides pour le jaune contre 36,6 et 5,98 pour le rouge, soit un sixième, plus l'écart en caroténoïdes que le classeur mesure séparément. On écarte 20041 « Poivron, vert, jaune ou rouge, cru », entrée agrégée qui efface justement la distinction qu'on cherche à porter."
     },
     {
       "canonical_name": "Poivron rouge frais",
@@ -14963,7 +15086,7 @@
       "state": {
         "concept": "Sésame grillé",
         "rest": "",
-        "cooking_state": null,
+        "cooking_state": "cooked",
         "preservation_state": null,
         "physical_state": null,
         "bone_state": null,
@@ -15024,7 +15147,7 @@
         "concept": "Shiitaké séché",
         "rest": "",
         "cooking_state": null,
-        "preservation_state": null,
+        "preservation_state": "dried",
         "physical_state": null,
         "bone_state": null,
         "skin_state": null
@@ -15419,7 +15542,7 @@
         "concept": "Thym séché",
         "rest": "",
         "cooking_state": null,
-        "preservation_state": null,
+        "preservation_state": "dried",
         "physical_state": null,
         "bone_state": null,
         "skin_state": null
@@ -15778,6 +15901,36 @@
         "fiberG": 3
       },
       "note": "Pâtes sèches de semoule de blé dur, comme les spaghettis déjà arbitrés sur ce code. Le tonnarello est un spaghetto à section carrée : une filière, pas une composition."
+    },
+    {
+      "canonical_name": "Tortilla de blé",
+      "canonical_name_normalized": "tortilla de ble",
+      "category": "cereales_feculents",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "7815",
+      "source_name": "Tortilla souple (à garnir), à base de blé",
+      "state": {
+        "concept": "Tortilla de blé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "u"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 323,
+        "proteinG": 9.15,
+        "carbsG": 52.1,
+        "fatG": 8.2,
+        "fiberG": 3.85
+      },
+      "note": "Le catalogue portait « Tortilla de maïs » (galette mexicaine) mais rien pour la galette de BLÉ, qui est celle des wraps et des quesadillas françaises — les sources écrivent « galettes de blé », « wraps au blé complet », « tortillas de blé ». 7815 la nomme exactement : « souple, à garnir, à base de blé ». 327 kcal, P 9,15 / L 8,2 / G 52,1, fibres 3,85, sel 1,25 — toutes mesurées. Le sel de 1,25 g pour 100 g n'est pas anodin : deux galettes en apportent près d'un gramme et demi, ce qui suffit à expliquer pourquoi un wrap se sale à peine. Ne pas confondre avec 38105 « Chips de maïs ou tortilla chips », qui est un produit frit."
     },
     {
       "canonical_name": "Tortilla de maïs",
@@ -16166,6 +16319,41 @@
       "note": "Le classeur référence le saké sous « Saké ou Alcool de riz », qui couvre la famille des vins de riz fermentés. Le Shaoxing est plus ambré et légèrement plus sucré, mais reste un alcool de riz autour de 130 kcal."
     },
     {
+      "canonical_name": "Vinaigre balsamique",
+      "canonical_name_normalized": "vinaigre balsamique",
+      "category": "condiments_sauces",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "bounded_from_ciqual": [
+        "fat_g"
+      ],
+      "source_record_key": "11091",
+      "source_name": "Vinaigre balsamique",
+      "state": {
+        "concept": "Vinaigre balsamique",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "ml"
+      ],
+      "conversion": {
+        "density_g_per_ml": 1
+      },
+      "per100g": {
+        "kcal": 125,
+        "proteinG": 0.69,
+        "carbsG": 25.8,
+        "fatG": 0.6,
+        "fiberG": 0.5
+      },
+      "note": "Correspondance de libellé mot pour mot, et l'écart avec le vinaigre de vin est loin d'être cosmétique : 125 kcal et 25,8 g de glucides pour 100 g contre 21,6 kcal et 0,27 g pour 11220 « Vinaigre de vin rouge ». C'est un sirop sucré, pas un acide nu. Écrire l'un pour l'autre — ce que la salade caprese et la salade de chou blanc auraient dû faire faute de forme — divisait par six l'énergie de la ligne et effaçait tout son sucre. Réserve : les lipides sont donnés comme borne supérieure et non comme mesure, ce qui est sans conséquence sur un vinaigre."
+    },
+    {
       "canonical_name": "Vinaigre blanc",
       "canonical_name_normalized": "vinaigre blanc",
       "category": "condiments_sauces",
@@ -16496,6 +16684,39 @@
         "fiberG": 0
       },
       "note": "Entrée directe, macros complètes, 252 kcal — l'énergie d'une eau-de-vie vient presque entièrement de l'éthanol et ne se referme pas sur les macronutriments, c'est la valeur du classeur qui fait foi. Densité 0,94 : un spiritueux à 40 % vol titre un peu plus léger que l'eau, comme le calvados du lot16. Sans cette conversion, une variante qui déglace au whisky en millilitres ne pèserait rien."
+    },
+    {
+      "canonical_name": "Yaourt à la grecque",
+      "canonical_name_normalized": "yaourt a la grecque",
+      "category": "produits_laitiers",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "bounded_from_ciqual": [
+        "fiber_g"
+      ],
+      "source_record_key": "19860",
+      "source_name": "Yaourt à la grecque, nature",
+      "state": {
+        "concept": "Yaourt à la grecque",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 113.1,
+        "proteinG": 3.25,
+        "carbsG": 4.21,
+        "fatG": 9.22,
+        "fiberG": 0.14
+      },
+      "note": "Correspondance exacte sur le PRODUIT QU'ON ACHÈTE, et c'est là tout l'arbitrage. Les six sources de tzatziki écrivent « yaourt grec » ou « yaourt à la grecque » ; en France ces deux mots désignent le même pot de rayon frais, un yaourt de vache enrichi de crème, et 19860 le mesure pour lui-même : P 3,25 / L 9,22 / G 4,21, toutes mesurées. L'entrée existante « Yaourt grec » (19646, fromage blanc à 3 %, confiance C) visait un AUTRE produit — le yaourt égoutté à 9 g de protéines du commerce anglo-saxon — et sa note le dit ; elle avait écarté 19550 « au lait de brebis » à juste titre, mais n'avait pas examiné 19860. Réserve honnête : l'énergie n'est pas donnée par le classeur pour ce code, elle sera close par Atwater (≈ 113 kcal), ce que le générateur sait faire et signale. Les deux formes ne se concurrencent pas dans une recette publiable, la précédente étant bloquée."
     },
     {
       "canonical_name": "Yaourt grec",

@@ -1,0 +1,220 @@
+{
+  "dish": "Bolognaise végétarienne",
+  "slug": "bolognaise-vegetarienne",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_sauce-pour-pates-pseudo-bolognaise-vegetarienne_33256.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauce pour pâtes ' pseudo-bolognaise ' végétarienne : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 grosses cuillères de pesto (plus si vous aimez bien)",
+        "2 boîtes de tomates concassées",
+        "20 olives noires natures dénoyautées",
+        "origan",
+        "poivre",
+        "sel",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1428,
+        "sha256": "05ab4700c282793f"
+      },
+      "sha256_page": "6ce2e4a068be169f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_sauce-bolognaise-vegetarienne_16561.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauce bolognaise végétarienne : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 courgette",
+        "2 carottes",
+        "1 oignon",
+        "poivre et basilic",
+        "sel",
+        "1 boîte de coulis de tomate"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 337,
+        "sha256": "44a496ae66c49f6b"
+      },
+      "sha256_page": "e507ab2cfafb98e1"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bolognaise-vegetarienne-au-soja_80962.aspx",
+      "site": "marmiton.org",
+      "nom": "Bolognaise végétarienne au soja : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 carottes moyennes",
+        "1 courgette",
+        "1 oignon",
+        "3 champignons de Paris",
+        "50 g de protéines de soja (petit)",
+        "70 g de concentré de tomates",
+        "1 cuillère à café de herbes de Provence",
+        "poivre",
+        "sel",
+        "2 gousses d'ail (selon les goûts)",
+        "1 sucre",
+        "1 cuillère à café d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 771,
+        "sha256": "ecd3a709ef7b45f5"
+      },
+      "sha256_page": "f60fa049f8f667dd"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/virginie-et-fabien/recettes/sauce-tomate-vegetarienne-facon-bolognaise",
+      "site": "chefsimon.com",
+      "nom": "Sauce tomate végétarienne façon bolognaise",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H35M",
+      "ingredients": [
+        "2 kg de tomates",
+        "1 oignon",
+        "1 gousse d'ail",
+        "1 carotte",
+        "1 petite aubergine",
+        "2 petites courgettes",
+        "1 cuillère à soupe de basilic",
+        "1 cuillère à café de laurier",
+        "1 cuillère à café de romarin",
+        "1 cuillère à café de thym",
+        "huile d'olive",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "e460e1f6416ff6f1"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/gelin-evelyne/recettes/sauce-bolognaise-vegetarienne",
+      "site": "chefsimon.com",
+      "nom": "Sauce bolognaise végétarienne",
+      "portions": "",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "400 ml de sauce tomate",
+        "240 g de haché végétal de préférence à la tomate",
+        "1 oignon jaune de 100 g environ",
+        "2 cuil. à soupe ou à table de beurre de cacahuète ou d'amande",
+        "1 cuil. soupe ou à table d'origan séché",
+        "1 cuil. à soupe ou à table d'huile d'olive",
+        "1/2 cuil. à soupe ou à table de thym séché",
+        "1/2 cuil. à soupe ou à table de concentré ou pâte de tomate",
+        "1/2 cuil. à café ou à thé de paprika",
+        "1/4 de cuil. à café ou à thé de curcuma",
+        "poivre fraîchement moulu au goût"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "617568b5f925c064"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-recettes-de-nathou/recettes/gnocchi-a-la-sauce-bolognaise-vegetarienne",
+      "site": "chefsimon.com",
+      "nom": "Gnocchi à la sauce bolognaise végétarienne",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 ravier de haché Rul (200 g)",
+        "300 g de gnocchi (ou autres pâtes)",
+        "1 boîte de tomates pelées en morceaux",
+        "1 petite boîte de concentré de tomates",
+        "1 oignon",
+        "1 gousse d'ail",
+        "épices séchées : origan, basilic",
+        "1 cube de bouillon de bœuf",
+        "1 sucre",
+        "sel et poivre du moulin",
+        "huile d'olive",
+        "parmesan râpé frais"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "382610eabdda8dc2"
+    },
+    {
+      "url": "https://www.750g.com/pates-a-la-bolognaise-vegetarienne-r34392.htm",
+      "site": "750g.com",
+      "nom": "Pâtes à la bolognaise végétarienne",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1/2 poivron rouge ou vert",
+        "1 oignon",
+        "1/2 courgette",
+        "1/2 aubergine",
+        "1 branche de céleri",
+        "1 tomate",
+        "1 carotte",
+        "1 càc de tomate concentré",
+        "1 verre de vin rouge",
+        "300g de pâtes à l'encre de seiche biologique",
+        "150g de protéine de soja",
+        "levure maltée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 854,
+        "sha256": "2b7692986a97bd0b"
+      },
+      "sha256_page": "b1ad1e7c7fb79234"
+    },
+    {
+      "url": "https://www.750g.com/pasta-a-la-bolognaise-vegetarienne-r27671.htm",
+      "site": "750g.com",
+      "nom": "Pasta à la bolognaise végétarienne",
+      "portions": "4 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 verre de verre rouge",
+        "1 CC de tomate concentré",
+        "300g de pâtes à l'encre de seiche biologique",
+        "150g de protéine de soja",
+        "1 peu de levure maltée",
+        "1 carotte",
+        "1 tomate",
+        "1 oignon",
+        "1/2 courgette",
+        "1/2 aubergine",
+        "1 branche de céleri",
+        "1/2 poivron rouge ou vert"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 640,
+        "sha256": "c2d0aaf06221d5f9"
+      },
+      "sha256_page": "6387c748643cad2d"
+    }
+  ]
+}

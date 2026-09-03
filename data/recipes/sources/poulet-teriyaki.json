@@ -1,0 +1,169 @@
+{
+  "dish": "Poulet teriyaki",
+  "slug": "poulet-teriyaki",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-teriyaki_82647.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet Teriyaki : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "250 g de poulets",
+        "1 cuillère à café de gingembre",
+        "3 cuillères à soupe de soja ou Tamari",
+        "3 cuillères à soupe d'huile de sésame",
+        "1 cuillère à soupe de saké",
+        "1 cuillère à soupe de vinaigre japonais",
+        "1 cuillère à café de sucre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 624,
+        "sha256": "87390773de12c152"
+      },
+      "sha256_page": "57f531c8a2813977"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_ailes-de-poulet-teriyaki_19404.aspx",
+      "site": "marmiton.org",
+      "nom": "ailes de poulet teriyaki : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "0.3333333 tasse de jus de citron",
+        "0.25 tasse de ketchup",
+        "0.25 tasse de soja",
+        "0.25 tasse d'huile végétale",
+        "2 cuillères à soupe de cassonade bien tassée",
+        "0.25 cuillère de thé de poudre d'ail",
+        "0.25 cuillère de thé de poivre",
+        "3 ailes de poulet"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 540,
+        "sha256": "9b8aa6b74b587c42"
+      },
+      "sha256_page": "94329cb0b93c03c8"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-teriyaki_92874.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet teriyaki : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "500 g de blancs de poulet",
+        "15 cl de saké",
+        "15 cl de sauce soja",
+        "15 cl de mirin (vinaigre japonais)",
+        "1 gingembre frais",
+        "1 cuillère à café de sauce soja",
+        "2 cuillères à soupe d'huile",
+        "poivre et sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 613,
+        "sha256": "c30d7887770ff82b"
+      },
+      "sha256_page": "c577a697093dceb1"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/poulet-teriyaki-a422c62f-20a7-41fe-a9f4-002bcd822930",
+      "site": "chefsimon.com",
+      "nom": "Poulet Teriyaki",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "2 blancs de poulet fermier",
+        "3 oignons rouges émincés",
+        "3 échalotes émincées",
+        "4 gousses d'ail écrasées",
+        "1 tasse de graines de sésame blanc",
+        "5 cl d'huile de sésame brune",
+        "3 dl de sauce teriyaki",
+        "1,5 dl de vinaigre de riz"
+      ],
+      "etapes_empreinte": {
+        "nombre": 16,
+        "signes": 1224,
+        "sha256": "1c9a5216a9164db0"
+      },
+      "sha256_page": "2e4edea126ef7b56"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-fabrique-gourmande/recettes/poulet-teriyaki",
+      "site": "chefsimon.com",
+      "nom": "Poulet teriyaki",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "5 haut de cuisses de poulet désossées avec la peau ou (saumon ou encore du tofu)",
+        "4 cuillères à soupe de sauce soja",
+        "4 cuillères à soupe de mirin",
+        "4 cuillères à soupe de saké",
+        "2 cuillère à soupe de sucre",
+        "2 cuillère à café de gingembre frais râpé",
+        "1 gousse d’ ail râpé",
+        "1,5 cuillère à soupe d’huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1040,
+        "sha256": "043bbf9dd2173a75"
+      },
+      "sha256_page": "168faf7799b8f9cf"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/poulet-a-la-sauce-teriyaki",
+      "site": "chefsimon.com",
+      "nom": "Poulet à la sauce Teriyaki",
+      "portions": "2 personnes",
+      "duree_preparation": "PT01H05M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "300 g de poulet",
+        "1  cuil. à soupe de vinaigre balsamique",
+        "30 g de miel d'oranger",
+        "100 mL de sauce Teriyaki",
+        "2  cuil. à soupe d'huile de tournesol",
+        "1  oignon nouveau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 161,
+        "sha256": "a62361f1711eb774"
+      },
+      "sha256_page": "73f3d6d6f34b8bbc"
+    },
+    {
+      "url": "https://www.750g.com/poulet-sauce-teriyaki-r47283.htm",
+      "site": "750g.com",
+      "nom": "Poulet sauce teriyaki",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "150 g de champignons de Paris",
+        "160 g de riz",
+        "Sauce Teriyaki",
+        "2 filets de filets de poulet"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 435,
+        "sha256": "89ff5991113d89a0"
+      },
+      "sha256_page": "9c597371d8e1f765"
+    }
+  ]
+}

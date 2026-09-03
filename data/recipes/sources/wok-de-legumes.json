@@ -1,0 +1,250 @@
+{
+  "dish": "Wok de légumes",
+  "slug": "wok-de-legumes",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_wok-de-legumes_71867.aspx",
+      "site": "marmiton.org",
+      "nom": "Wok de légumes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 poivron rouge frais ou surgelés",
+        "1 poivron vert frais ou surgelés",
+        "1 poivron jaune frais ou surgelés",
+        "200 g de haricots verts frais ou surgelés",
+        "2 courgettes fraîches ou surgelées",
+        "5 carottes",
+        "4 cuillères à soupe d'huile d'arachide",
+        "4 cuillères à soupe de soja",
+        "2 cuillères à soupe de miel liquide",
+        "0.5 citron (le jus)",
+        "3 gingembre (ou gingembre en poudre)",
+        "1 cuillère à soupe de vinaigre de riz",
+        "4 gousses d'ail",
+        "2 cuillères à soupe d'arachides écrasées",
+        "1 oignon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 458,
+        "sha256": "e626f809043d8e25"
+      },
+      "sha256_page": "d57c940f84d6e930"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_wok-de-legumes-aux-crevettes-et-vermicelles-de-riz_61552.aspx",
+      "site": "marmiton.org",
+      "nom": "Wok de légumes aux crevettes et vermicelles de riz : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "100 g de vermicelles de riz",
+        "150 g de haricots verts",
+        "4 carottes",
+        "100 g de crevettes décortiquées",
+        "2.5 dl de lait de coco",
+        "1 cuillère à café de pâte de curry vert",
+        "1 cuillère à soupe de sauce soja",
+        "1 cuillère à soupe de nuoc mam",
+        "de sauce sichuan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 829,
+        "sha256": "245fe5cec9a37404"
+      },
+      "sha256_page": "07e7094fd36549df"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_saute-de-porc-vermicels-et-legumes-au-wok_51290.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauté de porc vermicels et légumes au wok : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "100 g de vermicelles de riz chinois",
+        "300 g de porc",
+        "4 carottes",
+        "3 gousses d'ail",
+        "2 échalotes",
+        "1 oignon",
+        "3 cuillères à soupe d'huile",
+        "4 cuillères à soupe de sauce soja (ou sauce nem selon les goûts",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 692,
+        "sha256": "fb4b8921ab85dbee"
+      },
+      "sha256_page": "d647228c10ac6adf"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/comite-interprofessionnel-de-la-pintade/recettes/wok-de-pintade-aux-legumes-de-noel",
+      "site": "chefsimon.com",
+      "nom": "Wok de pintade aux légumes de Noël",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "1 pintade entière",
+        "45 g de beurre",
+        "3 oignons",
+        "150 g de potimarron",
+        "150 g de patate douce",
+        "100 g de châtaignes cuites",
+        "1,5 càs d’huile d’olive",
+        "1,5 càs de miel",
+        "3 càs de vinaigre balsamique blanc",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 751,
+        "sha256": "9cb1211b2081892b"
+      },
+      "sha256_page": "2a910fe2a2f5c0b2"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/keskonmangemaman/recettes/wok-de-legumes-et-poulet-a-la-coriandre",
+      "site": "chefsimon.com",
+      "nom": "Wok de légumes et poulet à la Coriandre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "4 blancs de poulet",
+        "200 grammes de jeunes épis de maïs",
+        "2 carottes",
+        "1 poivron rouge",
+        "200 grammes de pois gourmands",
+        "2 échalotes",
+        "1 doigt de gingembre",
+        "1 bouquet de coriandre",
+        "8 pak choï",
+        "3 c à soupe d'huile de sésame x2",
+        "1 c à café de poudre d'ail",
+        "sel et poivre du moulin",
+        "de la sauce aigre douce pimentée pour servir."
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1383,
+        "sha256": "e0f1c1bc9846e092"
+      },
+      "sha256_page": "9f5fcedeb21c0d9a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/wok-de-boeuf-aux-legumes",
+      "site": "chefsimon.com",
+      "nom": "Wok de bœuf aux légumes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "450 g de rumsteack",
+        "2  courgettes",
+        "1  poignée de haricots plats",
+        "1  carotte",
+        "4  oignons fanes",
+        "2  cuil. à soupe de fines herbes (persil, coriandre ou ciboulette)",
+        "3  cuil. à soupe de moutarde",
+        "2  cuil. à soupe d’huile",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 228,
+        "sha256": "0388b6e530a86156"
+      },
+      "sha256_page": "012b6d816f6f607a"
+    },
+    {
+      "url": "https://www.750g.com/wok-de-legumes-r76740.htm",
+      "site": "750g.com",
+      "nom": "Wok de légumes inratable",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 carottes",
+        "250 g de champignons de Paris",
+        "250 g d'haricots verts",
+        "150 g de soja",
+        "1 poivron rouge",
+        "1 poivron jaune",
+        "2 c. à s. de sauce soja",
+        "1 c. à s. de graine de sésame",
+        "1 c. à s. de vinaigre de xérès",
+        "1 c. à s. d'huile de sésame",
+        "2 ciboules",
+        "Sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 607,
+        "sha256": "e0cc6f35aa0cf934"
+      },
+      "sha256_page": "98bab76b81535eca"
+    },
+    {
+      "url": "https://www.750g.com/wok-de-legumes-sauce-aigre-douce-au-ketchup-r68555.htm",
+      "site": "750g.com",
+      "nom": "Wok de légumes sauce aigre-douce",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 poivron vert",
+        "1 poivron rouge",
+        "1 carotte",
+        "1 courgette",
+        "1 oignon",
+        "1 petite boîte d'ananas  en morceaux",
+        "30 g de pousses de bambou",
+        "125 g de sucre roux",
+        "2 gousses d'ail",
+        "12,5 cl de vinaigre de vin",
+        "4 c. à s. de ketchup  Amora",
+        "2 c. à s. de fécule"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 889,
+        "sha256": "fb8613f0ae5fe0ce"
+      },
+      "sha256_page": "2577fb909b575d04"
+    },
+    {
+      "url": "https://www.750g.com/wok-de-legumes-r32396.htm",
+      "site": "750g.com",
+      "nom": "Wok de légumes variés à la coriandre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "2 c. à s. de sauce soja",
+        "1 c. à s. de sésame",
+        "Noix de cajou",
+        "1 c. à c. de coriandre en poudre ou coriandre moulue",
+        "1 c. à s. d'huile",
+        "1 poivron rouge",
+        "1 oignon  (gros)",
+        "500 g de carottes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 382,
+        "sha256": "79fd8d8b73dad2f0"
+      },
+      "sha256_page": "3044c22db0c58d59"
+    }
+  ]
+}

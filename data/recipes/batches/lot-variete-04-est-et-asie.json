@@ -1,0 +1,592 @@
+{
+  "recipes": [
+    {
+      "code": "VAR-026",
+      "family": "Bortsch",
+      "cuisine_origin": "Russie",
+      "identity_level": "named_traditional_dish",
+      "category": "soupe complète",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 90,
+      "difficulty": "facile",
+      "sources": ["dossier:bortsch", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Six pages sur trois sites. L'une est à écarter et pour une raison qui saute aux yeux une fois vérifiée : le « bortsch d'agneau » de chefsimon ne contient aucune betterave. Sans betterave il n'y a pas de bortsch, et une médiane prise sur les six aurait dilué le seul ingrédient qui nomme le plat. Restent cinq pages, sur les trois sites. La betterave : trois lignes pesées, à 125, 83,3 et 50 g par personne, médiane 83,3 g par personne, soit 500 g pour six. Trois pages sur cinq emploient de la betterave déjà cuite et deux de la crue ; le catalogue ne porte que la forme crue, et c'est elle qu'on écrit — l'écart porte sur le temps de cuisson, pas sur l'ingrédient, et il est signalé dans les étapes. Le chou blanc : trois lignes pesées, mêmes valeurs, médiane 83,3 g par personne, soit 500 g. Une page panache chou vert et chou rouge et reste isolée. La pomme de terre : trois lignes, médiane 62,5 g par personne, soit 375 g. La carotte : deux lignes, médiane 31,25 g par personne, soit 187 g, qu'on écrit 200 g. L'oignon : quatre lignes, médiane 32,5 g par personne, soit 195 g, écrit 200 g. La viande : deux lignes pesées seulement, 75 et 125 g par personne, médiane 100 g par personne, soit 600 g. Les pages parlent de gîte, de paleron ou de collier, toutes coupes à bouillir : on écrit le bœuf à braiser. Une page ajoute 100 g de poitrine de porc et reste seule. Le mouillement : trois lignes, à 250, 541,7 et 500 ml par personne, médiane 500 ml par personne, soit 3 000 ml — on écrit 2 500 ml, la médiane étant tirée par une page qui fait d'abord un bouillon de carcasse de poulet qu'elle réduit ensuite. Deux pages emploient un cube de bœuf, une un bouillon de volaille : on écrit le bouillon de bœuf, cohérent avec la viande déclarée. L'acidité est le point qui définit un bortsch et le dossier la partage : deux pages versent du vinaigre, deux du jus de citron. Le vinaigre de vin est nommé par une page qui le chiffre à 3,75 ml par personne ; on écrit 25 ml de vinaigre de vin rouge pour six et le citron descend en variante. Le concentré de tomate est dans deux pages, à 10 et 3,75 g par personne, médiane 6,9 g par personne, soit 41 g, écrit 40 g. Le persil est dans trois pages, jamais pesé : 20 g. L'huile est dans deux pages, l'une à 10 ml par personne : 40 ml. La crème aigre — la smetana — n'est attestée que par une seule page, 100 g pour six : elle reste dans la liste comme finition facultative et sort du calcul nutritionnel, plutôt que d'être écrite comme un ingrédient acquis. L'aneth, présent dans une seule page, descend en variante, ce qui est une perte : c'est l'herbe du bortsch. Durées : préparation, médiane 12,5 minutes des quatre lignes exploitables — la ligne à six heures est un temps de repos et non de travail — on écrit 20 minutes, deux kilos de légumes ne se taillant pas en douze ; cuisson, médiane 90 minutes des trois lignes exploitables.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Bœuf, pommes de terre, betterave, chou et carotte dans le même bol : la protéine, le féculent et le légume y sont ensemble. Les pages le servent en assiette creuse avec du pain noir, jamais comme une entrée."
+      },
+      "ingredients": [
+        { "form": "Bouillon de bœuf", "quantity": 2500, "unit": "ml", "role": "mouillement", "optional": false },
+        { "form": "Bœuf à braiser cru", "quantity": 600, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Betterave crue", "quantity": 500, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Chou blanc frais", "quantity": 500, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Pomme de terre crue, épluchée", "quantity": 375, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Carotte crue", "quantity": 200, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 200, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Huile végétale", "quantity": 40, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Concentré de tomate", "quantity": 40, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Vinaigre de vin rouge", "quantity": 25, "unit": "ml", "role": "acidité", "optional": false },
+        { "form": "Persil plat frais", "quantity": 20, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Crème aigre", "quantity": 100, "unit": "g", "role": "finition", "optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Tailler le bœuf en cubes de trois centimètres, les couvrir du bouillon froid et porter lentement à frémissement. Écumer soigneusement la mousse grise pendant le premier quart d'heure : c'est elle qui trouble le bouillon, et dans une soupe dont la couleur est l'argument principal, un bouillon terne se voit tout de suite." },
+        { "n": 2, "instruction": "Laisser cuire une heure à couvert et à petits frémissements, jusqu'à ce que la viande cède sous la fourchette. Une ébullition franche resserre les fibres et fait une viande dure dans un bouillon gras : le bortsch se cuit à la surface juste tremblante." },
+        { "n": 3, "instruction": "Pendant ce temps, râper la betterave crue à la grosse grille et la faire revenir dix minutes dans l'huile avec l'oignon émincé, le concentré de tomate et le vinaigre. C'est l'étape qui décide de la couleur : l'acide fixe le pigment de la betterave, qui vire au brun quand il cuit longtemps en milieu neutre. Sans vinaigre à ce moment-là, le bortsch finit terre de Sienne." },
+        { "n": 4, "instruction": "Ajouter au bouillon les pommes de terre en dés et les carottes en rondelles, cuire quinze minutes, puis le chou finement émincé et cuire dix minutes de plus. Le chou en dernier : il passe de croquant à filandreux en un quart d'heure et c'est lui qui donne au bortsch sa mâche." },
+        { "n": 5, "instruction": "Verser enfin la betterave revenue avec son jus dans la marmite et laisser dix minutes à feu doux, sans faire bouillir. Elle entre en dernier et ne bout pas : c'est la seconde condition de la couleur, et c'est aussi pourquoi une betterave déjà cuite, si l'on en emploie, se contente de ces dix minutes." },
+        { "n": 6, "instruction": "Saler, poivrer, goûter et rectifier l'acidité — le bortsch doit être franchement acidulé, sensiblement plus que ce que l'on croit en le goûtant chaud. Couper le feu, jeter le persil ciselé, couvrir et laisser reposer une demi-heure : la soupe se stabilise et le goût s'arrondit." },
+        { "n": 7, "instruction": "Servir très chaud, avec une cuillerée de crème aigre déposée dans chaque assiette pour qui en veut. La crème se met dans l'assiette et non dans la marmite : elle tranche à l'ébullition, et le reste de la soupe se conserve mieux sans elle." }
+      ],
+      "techniques": ["écumage", "mijotage", "sauté de la betterave à l'acide", "cuisson séquencée", "repos"],
+      "variants": [
+        "Au jus de citron à la place du vinaigre, deux cuillerées à soupe pour six (chefsimon, 750g)",
+        "À l'aneth : un petit bouquet ciselé avec le persil en fin de cuisson (chefsimon)",
+        "Végétarien : bouillon de légumes, betteraves déjà cuites avec leur jus, tomates pelées en boîte et une pincée de piment d'Espelette (chefsimon)",
+        "Aux deux choux, moitié vert et moitié rouge, avec du cumin (marmiton)",
+        "Avec 100 g de poitrine de porc taillée en lardons cuits avec le bœuf, et du céleri-rave (marmiton)"
+      ],
+      "sensory": {
+        "profile": "brothy_umami",
+        "scores": { "sweet": 3, "salty": 3, "acidic": 4, "bitter": 1, "umami": 4, "heat": 0, "pungency": 1, "richness": 2, "freshness": 2, "intensity": 3 },
+        "dominant_flavors": ["betterave", "bœuf mijoté", "vinaigre", "chou"],
+        "aroma_families": ["betterave", "bœuf mijoté", "végétal cuit", "vinaigre"],
+        "target_textures": ["bouillon_clair", "viande fondante", "légumes fondants"],
+        "signature_ingredients": ["Betterave crue", "Chou blanc frais", "Bœuf à braiser cru"],
+        "identity_guardrails": [
+          "Sans betterave il n'y a pas de bortsch : une page du dossier en fait la démonstration par l'absurde en n'en mettant aucune",
+          "La betterave se revient avec le vinaigre et le concentré, à part, et entre en dernier — sinon la couleur vire au brun",
+          "La soupe doit rester franchement acidulée : c'est l'acidité qui distingue un bortsch d'un pot-au-feu à la betterave",
+          "La crème aigre se dépose dans l'assiette, jamais dans la marmite, où elle trancherait"
+        ]
+      },
+      "conservation": "Se garde 4 jours au réfrigérateur et il est meilleur le lendemain, l'acidité et la betterave s'étant réparties. Réchauffer à feu doux sans bouillir, ce qui préserve la couleur. Se congèle 3 mois, mais en retirant les pommes de terre, qui ressortent granuleuses. Ne jamais congeler avec la crème aigre, qui tranche. C'est une soupe qui gagne à être faite en grande quantité : la base sans pommes de terre se congèle en portions et se termine en quinze minutes.",
+      "allergens": ["lait"]
+    },
+    {
+      "code": "VAR-027",
+      "family": "Bœuf Stroganoff",
+      "cuisine_origin": "Russie",
+      "identity_level": "named_traditional_dish",
+      "category": "plat sauté",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 25,
+      "difficulty": "facile",
+      "sources": ["dossier:boeuf-stroganoff", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Huit pages sur trois sites, de deux à quatre portions, l'une sans portions à qui l'on attribue les quatre parts cibles. Elles décrivent toutes la même chose et le dossier est solide : du bœuf en lanières saisi vite, des champignons, de l'oignon, de la moutarde et de la crème. La découpe est le premier arbitrage et il est net : sept pages sur huit taillent le bœuf en lanières fines ou en morceaux à saisir — steak, filet, rumsteck, bavette, viande à fondue — et une seule parle de bœuf à mijoter. La synthèse proposait « Bœuf haché cru 15 % MG » pour ces lignes : rapprochement refusé, un stroganoff ne se fait pas au haché et la faute aurait été invisible dans la nutrition. On écrit le bœuf à griller en fines lamelles. Huit lignes pesées, de 75 à 250 g par personne, médiane 125 g par personne, soit 500 g pour quatre. Les champignons de Paris : six lignes, de 25 à 125 g par personne, médiane 65,6 g par personne, soit 262 g, qu'on écrit 260 g. L'oignon : sept lignes, médiane 32,5 g par personne, soit 130 g — une page monte à 500 g pour quatre et une autre à six oignons blancs, toutes deux isolées. La crème est le désaccord le plus large : huit lignes, de 12,5 à 125 g par personne, médiane 34,4 g par personne, soit 137 g, qu'on écrit 140 g. Deux pages sur huit précisent une crème aigre ou une crème additionnée de jus de citron, ce qui est la forme russe du plat ; six emploient de la crème fraîche ordinaire, et c'est elle qu'on écrit, la crème aigre passant en variante. La moutarde est présente dans cinq pages sur huit et c'est elle, avec le paprika, qui donne au plat son caractère : cinq lignes, médiane 1,875 g par personne, soit 7,5 g — on écrit 10 g, deux cuillerées à café, la médiane étant tirée vers le bas par des lignes qui comptent en cuillerées à café rases. Le paprika est dans trois pages, médiane 0,5 g par personne, soit 2 g, écrit 3 g. Le beurre : trois lignes, médiane 11,25 g par personne, soit 45 g. L'huile : deux lignes, médiane 5,6 ml par personne, soit 22,5 ml, écrite 25 ml. Le bouillon de bœuf est dans quatre pages, trois le chiffrant : médiane 62,5 ml par personne, soit 250 ml. Le vin blanc est dans trois pages, toutes à 12,5 ml par personne : 50 ml. Le concentré de tomate est dans deux pages sur deux sites, à 3,75 g par personne : 15 g. La farine de liaison est dans deux pages, l'une à 5 g par personne : 20 g. Le persil est dans deux pages : 10 g. Le sucre d'une page, le gingembre d'une autre, le citron d'une troisième restent en variantes. Durées : préparation, médiane 15 minutes des huit lignes ; cuisson, médiane 20 minutes des sept lignes exploitables, écrite 25 — les champignons doivent avoir rendu leur eau avant que la crème n'entre.",
+      "plate": {
+        "role": "main",
+        "accepts": ["starch"],
+        "reason": "Viande en sauce et champignons, sans féculent : la sauce à la moutarde et à la crème est faite pour être saucée. Les sources la servent avec du riz, des pâtes fraîches ou des pommes vapeur."
+      },
+      "ingredients": [
+        { "form": "Bœuf à griller cru, en fines lamelles", "quantity": 500, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Champignon de Paris frais", "quantity": 260, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Bouillon de bœuf", "quantity": 250, "unit": "ml", "role": "mouillement", "optional": false },
+        { "form": "Crème fraîche épaisse", "quantity": 140, "unit": "g", "role": "liaison", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 130, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Vin blanc sec", "quantity": 50, "unit": "ml", "role": "déglaçage", "optional": false },
+        { "form": "Beurre doux", "quantity": 45, "unit": "g", "role": "cuisson", "optional": false },
+        { "form": "Huile végétale", "quantity": 25, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Farine de blé T55", "quantity": 20, "unit": "g", "role": "liaison", "optional": false },
+        { "form": "Concentré de tomate", "quantity": 15, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Moutarde de Dijon", "quantity": 10, "unit": "g", "role": "condiment", "optional": false },
+        { "form": "Persil plat frais", "quantity": 10, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Paprika doux", "quantity": 3, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 5, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Tailler le bœuf en lanières de un centimètre de large sur cinq de long, en travaillant perpendiculairement au sens des fibres, puis les éponger. Coupée dans le sens du grain, la même viande ressort filandreuse quelle que soit la cuisson ; épongée, elle colore au lieu de bouillir dans son eau." },
+        { "n": 2, "instruction": "Saisir les lanières en deux ou trois fois dans une poêle très chaude avec un peu d'huile, une minute par face, et les réserver dès qu'elles sont colorées mais encore rosées à cœur. Toutes ensemble, elles font tomber la température de la poêle et rendent leur jus : elles bouillent, grisent, et durcissent. C'est l'erreur qui ruine ce plat, et elle est irréversible." },
+        { "n": 3, "instruction": "Dans la même poêle, faire sauter les champignons émincés à feu vif dans le beurre, sans sel, jusqu'à ce que l'eau rendue se soit évaporée et qu'ils commencent à dorer. Le sel les ferait dégorger tout de suite et ils cuiraient dans leur jus au lieu de rôtir." },
+        { "n": 4, "instruction": "Ajouter l'oignon émincé et le laisser fondre cinq minutes, puis singer avec la farine, remuer une minute, et déglacer au vin blanc en grattant tout ce qui est attaché au fond. Les sucs bruns collés sous la viande et les champignons sont l'essentiel du goût de la sauce ; les laisser là revient à jeter la moitié du plat." },
+        { "n": 5, "instruction": "Verser le bouillon et le concentré de tomate, porter à petits bouillons et laisser réduire cinq à sept minutes jusqu'à ce que la sauce nappe la cuillère. Elle doit être un peu plus épaisse que ce que l'on veut à l'arrivée : la crème et le jus rendu par la viande vont la détendre." },
+        { "n": 6, "instruction": "Baisser le feu au minimum, incorporer la crème puis la moutarde et le paprika hors ébullition. La moutarde ne doit jamais bouillir : elle perd son piquant en quelques secondes et laisse un goût plat et légèrement amer. C'est la raison pour laquelle elle entre en dernier et pas avec le bouillon." },
+        { "n": 7, "instruction": "Remettre la viande et son jus, réchauffer une minute à peine sans laisser frémir, saler, poivrer et parsemer de persil. Servir aussitôt : la viande a été saisie pour rester rosée, et cinq minutes de plus dans la sauce chaude suffisent à la cuire une seconde fois." }
+      ],
+      "techniques": ["saisie", "sauté à feu vif", "singer", "déglaçage", "réduction", "liaison à la crème"],
+      "variants": [
+        "À la crème aigre, 80 à 125 ml, ou à la crème additionnée de jus de citron (chefsimon)",
+        "Au gingembre frais râpé, avec du fond de veau à la place du bouillon (marmiton)",
+        "De luxe : viande à fondue, six oignons blancs, 500 g de champignons, trois cuillerées à soupe de moutarde et un demi-litre de crème (marmiton)",
+        "Sans farine, liaison à la fécule de maïs pour une version sans gluten (chefsimon)",
+        "Avec une pincée de sucre pour corriger l'acidité de la moutarde et du vin (marmiton)"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 3, "bitter": 0, "umami": 4, "heat": 1, "pungency": 3, "richness": 4, "freshness": 1, "intensity": 4 },
+        "dominant_flavors": ["moutarde", "crème", "champignon", "bœuf saisi"],
+        "aroma_families": ["moutarde", "champignon_terreux", "lactée", "paprika"],
+        "target_textures": ["sauce_nappante", "tendre", "champignon_fondant"],
+        "signature_ingredients": ["Bœuf à griller cru, en fines lamelles", "Moutarde de Dijon", "Crème fraîche épaisse"],
+        "identity_guardrails": [
+          "Le bœuf se taille en lanières et se saisit en plusieurs fois : entassé, il bout et durcit sans retour",
+          "La moutarde entre hors ébullition et en dernier — bouillie, elle perd tout son piquant",
+          "Ce n'est jamais un plat de viande hachée ni de bœuf à mijoter : la cuisson totale de la viande est de deux minutes",
+          "Les champignons se sautent à sec et sans sel avant la sauce, sinon ils rendent leur eau dedans"
+        ]
+      },
+      "conservation": "Se garde 2 jours au réfrigérateur, mais la viande se raffermit au réchauffage — c'est un plat qui se mange le jour même. Réchauffer à feu très doux sans jamais faire bouillir, la crème et la moutarde ne le supportant pas. Ne se congèle pas : la sauce à la crème tranche et les lanières deviennent fibreuses. La sauce seule, sans viande, se prépare la veille et se garde 3 jours ; il ne reste alors que deux minutes de poêle le soir venu.",
+      "allergens": ["lait", "gluten", "moutarde"]
+    },
+    {
+      "code": "VAR-028",
+      "family": "Blinis",
+      "cuisine_origin": "Russie",
+      "identity_level": "named_traditional_dish",
+      "category": "blinis à la levure",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 15,
+      "cook_minutes": 15,
+      "difficulty": "facile",
+      "sources": ["dossier:blinis", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Neuf pages sur trois sites, et trois d'entre elles ne donnent pas de pâte à blinis : l'une est un plat de Saint-Jacques rôties où les blinis ne sont qu'un support, une autre monte des mini-blinis du commerce avec du fromage à tartiner, une troisième les fait au potiron. Restent six pages, sur les trois sites, qui donnent toutes la même chose : farine, lait, œufs, un levant, du sel, cuits par petites louches à la poêle. La farine : cinq lignes pesées, à 37,5, 41,7, 9, 26,7 et 26,7 g par personne, médiane 26,7 g par personne, soit 160 g pour six. La ligne à 9 g est celle d'une page donnée pour vingt personnes en format apéritif et elle ne déplace pas la médiane. Une page ajoute 100 g de farine de sarrasin aux 150 g de farine de blé — c'est la forme la plus proche du blini russe, et le catalogue ne porte pas la farine de sarrasin : elle descend en variante, et c'est une perte réelle sur le goût, pas seulement sur la couleur. Le lait : cinq lignes, médiane 50 ml par personne, soit 300 ml. Les œufs : six lignes, de 0,1 à 0,5 par personne, médiane 0,33 par personne, soit 2 œufs. Le levant partage le dossier exactement en deux, et sur les deux sites à la fois : deux pages emploient de la levure de boulanger, dont l'une en pèse 10 g pour quatre et l'autre 10 g pour six, deux pages de la levure chimique. On écrit la levure de boulanger, à 2,08 g par personne, soit 12 g, parce que c'est elle qui donne au blini son goût légèrement acide et sa mie alvéolée — un blini à la levure chimique est une crêpe épaisse. La levure chimique descend en variante avec sa quantité. Le beurre n'est pesé que par une page, 60 g pour six, soit 10 g par personne : on écrit 60 g. Le sucre est dans deux pages sur deux sites, une cuillerée à café rase : 5 g. Le sel est dans les six pages, jamais pesé : 3 g. Ce que le dossier ne soutient pas comme ingrédient : le gruyère, le jambon et le bacon de trois pages, qui sont des garnitures posées sur les blinis et non des composants de la pâte — ils descendent en variantes. Durées : préparation, médiane 17,5 minutes des six lignes, écrite 15 ; cuisson, médiane 5 minutes des cinq lignes exploitables — on écrit 15, ces cinq minutes étant celles d'une fournée et non de la douzaine de blinis que donne cette pâte. Le temps de pousse, une heure, ne se compte ni en préparation ni en cuisson.",
+      "plate": {
+        "role": "component",
+        "accepts": [],
+        "reason": "Un blini n'est pas un plat : c'est un support qu'on garnit, et le dossier le montre bien puisque trois de ses pages ne parlent que de ce qu'on pose dessus. Fait une fois, il sert plusieurs repas dans la semaine sous des garnitures différentes — c'est exactement ce que le corpus appelle un composant."
+      },
+      "ingredients": [
+        { "form": "Lait entier", "quantity": 300, "unit": "ml", "role": "pâte", "optional": false },
+        { "form": "Farine de blé T55", "quantity": 160, "unit": "g", "role": "pâte", "optional": false },
+        { "form": "Œuf cru", "quantity": 2, "unit": "u", "role": "pâte", "optional": false },
+        { "form": "Beurre doux", "quantity": 60, "unit": "g", "role": "cuisson", "optional": false },
+        { "form": "Levure boulangère fraîche", "quantity": 12, "unit": "g", "role": "pâte", "optional": false },
+        { "form": "Sucre semoule", "quantity": 5, "unit": "g", "role": "pâte", "optional": false },
+        { "form": "Sel fin", "quantity": 3, "unit": "g", "role": "pâte", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Tiédir le lait à trente-cinq degrés — la température du doigt, ni chaude ni froide — et y émietter la levure avec le sucre. Attendre dix minutes qu'une mousse se forme. Au-dessus de quarante-cinq degrés la levure meurt sans qu'on le voie, et la pâte ne lèvera jamais." },
+        { "n": 2, "instruction": "Verser le lait levuré sur la farine et le sel en fouettant, jusqu'à obtenir une pâte lisse et assez épaisse, de la consistance d'une crème fraîche fluide. Trop liquide, elle s'étale en crêpe ; trop épaisse, le blini reste cru au centre." },
+        { "n": 3, "instruction": "Séparer les œufs, incorporer les jaunes à la pâte, couvrir et laisser pousser une heure à température ambiante, jusqu'à ce que la surface se couvre de bulles. C'est cette pousse qui fait le blini plutôt que la crêpe : elle acidifie légèrement la pâte et lui donne le goût lacté et un peu aigre qu'aucune levure chimique ne reproduit." },
+        { "n": 4, "instruction": "Juste avant de cuire, monter les blancs en neige ferme et les incorporer à la spatule en soulevant la masse, sans jamais tourner. Cette dernière opération se fait au dernier moment : les blancs retombent en un quart d'heure, et avec eux la légèreté qu'ils apportaient." },
+        { "n": 5, "instruction": "Chauffer une poêle à feu moyen, la beurrer légèrement, et déposer des louches de la taille d'une cuillère à soupe en les espaçant. Cuire deux minutes, jusqu'à ce que la surface soit criblée de trous ouverts, puis retourner et compter une minute. Les trous sont le signal : retourné avant qu'ils ne s'ouvrent, le blini s'affaisse ; après, il sèche." },
+        { "n": 6, "instruction": "Empiler les blinis cuits sur une assiette sous un linge propre, ce qui les garde souples pendant qu'on termine la fournée. À l'air libre, ils croûtent en dix minutes et cassent quand on les plie. Beurrer la poêle entre chaque fournée, pas davantage : un excès de beurre les fait frire et tacher." }
+      ],
+      "techniques": ["fermentation", "blancs en neige", "cuisson à la poêle"],
+      "variants": [
+        "Au sarrasin : 150 g de farine de blé et 100 g de farine de sarrasin, forme absente du catalogue et donc non écrite ici (chefsimon)",
+        "À la levure chimique : 8 g pour six, sans temps de pousse (marmiton, chefsimon)",
+        "Au yaourt : 200 g de yaourt épais à la place d'une partie du lait, avec de l'huile d'olive plutôt que du beurre (chefsimon, marmiton)",
+        "Garnis de gruyère râpé et de jambon blanc, ou de bacon, cuits dans la pâte (750g)",
+        "En version apéritive : louches de la taille d'une cuillère à café, une douzaine de plus par fournée (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "creamy_delicate",
+        "scores": { "sweet": 2, "salty": 2, "acidic": 2, "bitter": 0, "umami": 1, "heat": 0, "pungency": 0, "richness": 3, "freshness": 0, "intensity": 2 },
+        "dominant_flavors": ["lait", "beurre", "levure"],
+        "aroma_families": ["lacté", "beurre", "pain grillé"],
+        "target_textures": ["moelleux", "alvéolé", "dessus_doré"],
+        "signature_ingredients": ["Farine de blé T55", "Lait entier", "Levure boulangère fraîche"],
+        "identity_guardrails": [
+          "Une heure de pousse à la levure de boulanger : sans elle, c'est une crêpe épaisse et non un blini",
+          "Les blancs montés s'incorporent au dernier moment — ils retombent en un quart d'heure",
+          "On retourne quand la surface est criblée de trous ouverts, pas avant",
+          "Les blinis cuits s'empilent sous un linge : à l'air, ils croûtent en dix minutes"
+        ]
+      },
+      "conservation": "Se gardent 3 jours au réfrigérateur en boîte fermée et se réchauffent trente secondes par face à la poêle sèche ou dix secondes au grille-pain. Se congèlent 2 mois, empilés avec du papier cuisson entre chaque, et se réchauffent sans décongélation — c'est la forme la plus utile, une poignée sortie à la demande. La pâte crue ne se garde pas au-delà de deux heures après la pousse : elle retombe et le blini devient plat.",
+      "allergens": ["gluten", "lait", "œuf"]
+    },
+    {
+      "code": "VAR-029",
+      "family": "Koulibiac de saumon",
+      "cuisine_origin": "Russie",
+      "identity_level": "named_traditional_dish",
+      "category": "tourte",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 30,
+      "cook_minutes": 60,
+      "difficulty": "moyenne",
+      "sources": ["dossier:koulibiac-de-saumon", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Sept pages sur trois sites, de quatre à dix portions, deux sans portions déclarées à qui l'on attribue les six parts cibles. Toutes décrivent la même construction : un saumon, un riz, un légume vert, des œufs durs, le tout enfermé dans une pâte feuilletée et doré au jaune d'œuf. Le saumon : sept lignes pesées, de 50 à 200 g par personne, médiane 83,3 g par personne, soit 500 g pour six. La ligne à 200 g est celle d'une page qui supprime le riz et n'a donc rien d'autre à mettre dans le chausson. La pâte feuilletée : trois lignes pesées, à 55,6, 80 et 83,3 g par personne, médiane 80 g par personne, soit 480 g — on écrit 500 g, ce que font deux rouleaux du commerce, quatre pages en comptant précisément deux. Le riz : six lignes, de 10 à 41,7 g par personne, médiane 20,85 g par personne, soit 125 g. Trois pages précisent le basmati, une le riz long, deux ne disent rien : on écrit le basmati. Les épinards : cinq lignes, à 30, 250, 41,7, 50 et 50 g par personne, médiane 50 g par personne, soit 300 g. Trois de ces cinq pages emploient des épinards surgelés en branches et deux des frais ; le catalogue ne porte que l'épinard frais et c'est lui qu'on écrit, en notant que la forme surgelée, déjà blanchie et pressée, épargne l'étape de dégorgement et non un ingrédient. Les champignons : trois lignes, médiane 30 g par personne, soit 180 g, qu'on écrit 200 g. Les œufs durs : quatre lignes, médiane 0,37 par personne, soit 2,2 — on écrit 3 œufs, qui se rangent en file au centre de la tourte et donnent la tranche jaune et blanche qui fait ce plat. Le beurre : cinq lignes, de 3 à 25 g par personne, médiane 5 g par personne, soit 30 g. Le jaune d'œuf de dorure est dans six pages sur sept : un jaune. Le jus de citron est dans cinq pages, jamais pesé : 30 ml. L'aneth est dans deux pages sur deux sites : 15 g. La crème, présente dans trois pages, y sert de sauce servie à part et non de liant intérieur : elle descend en variante avec sa quantité. Le fenouil d'une page, le comté d'une autre, le sésame d'une troisième, le cerfeuil et la ciboulette d'une quatrième sont à une source chacun. Durées : préparation, médiane 20 minutes des sept lignes — on écrit 30, le montage en couches et le soudage prenant ce temps ; cuisson, médiane 60 minutes des cinq lignes exploitables. La cuisson du riz et des œufs durs peut se faire la veille et c'est ce qui rend ce plat praticable un soir de semaine.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Pâte pour le féculent, saumon et œufs pour la protéine, épinards et champignons pour le légume, riz en plus : la tourte porte le repas entier. Les sources la servent avec une salade verte ou une sauce à part, jamais avec un accompagnement de fond."
+      },
+      "ingredients": [
+        { "form": "Pâte feuilletée crue", "quantity": 500, "unit": "g", "role": "enveloppe", "optional": false },
+        { "form": "Pavé de saumon cru, sans peau", "quantity": 500, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Épinard frais", "quantity": 300, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Champignon de Paris frais", "quantity": 200, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Œuf dur", "quantity": 3, "unit": "u", "role": "protéine", "optional": false },
+        { "form": "Riz basmati cru", "quantity": 125, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Beurre doux", "quantity": 30, "unit": "g", "role": "cuisson", "optional": false },
+        { "form": "Jus de citron frais", "quantity": 30, "unit": "ml", "role": "assaisonnement", "optional": false },
+        { "form": "Aneth frais", "quantity": 15, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Jaune d'œuf cru", "quantity": 1, "unit": "u", "role": "dorure", "optional": false },
+        { "form": "Sel fin", "quantity": 6, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Cuire le riz à l'eau salée, l'égoutter et l'étaler sur une plaque pour qu'il refroidisse complètement. Un riz tiède dégage de la vapeur sous la pâte et c'est ce qui donne un fond détrempé : tout ce qui entre dans une tourte doit être froid, sans exception." },
+        { "n": 2, "instruction": "Faire tomber les épinards à la poêle dans un peu de beurre, puis les presser fortement entre les mains ou dans un linge jusqu'à ce qu'il n'en sorte plus une goutte. Trois cents grammes d'épinards rendent près d'un verre d'eau ; enfermée dans le feuilletage, cette eau ressort en cuisant et décolle le fond." },
+        { "n": 3, "instruction": "Faire sauter les champignons émincés à feu vif dans le reste de beurre, sans les saler, jusqu'à évaporation complète de leur eau. Les saler maintenant leur ferait rendre leur jus dans la poêle sans jamais qu'ils dorent." },
+        { "n": 4, "instruction": "Tailler le saumon en pavés réguliers, l'arroser du jus de citron, saler, poivrer et mêler l'aneth ciselé aux épinards refroidis. Le citron sur le saumon reste dix minutes au plus : au-delà, l'acide commence à cuire la chair et la tourte contiendra un poisson déjà blanc." },
+        { "n": 5, "instruction": "Étaler la première pâte, y monter les couches en laissant quatre centimètres de bord libre : riz d'abord, puis la moitié des épinards, le saumon, les œufs durs coupés en deux rangés bout à bout au milieu, les champignons, et le reste des épinards. L'ordre compte — le riz en dessous absorbe le peu de jus que le saumon rendra, et les œufs au centre donnent la tranche qui fait reconnaître un koulibiac." },
+        { "n": 6, "instruction": "Poser la seconde pâte, souder les bords à l'eau en pinçant, badigeonner de jaune d'œuf battu et pratiquer une cheminée au centre en y glissant un petit rouleau de papier. La cheminée n'est pas décorative : sans elle, la vapeur soulève le couvercle et le fait éclater sur un côté." },
+        { "n": 7, "instruction": "Enfourner à 200 °C pour vingt minutes, puis baisser à 180 °C et poursuivre quarante minutes, jusqu'à ce que le dessus soit brun doré et que la pointe d'un couteau ressorte brûlante. Laisser reposer un quart d'heure avant de trancher, sur une grille pour que le dessous ne cuise pas dans sa propre vapeur. Découper au couteau-scie, sans appuyer." }
+      ],
+      "techniques": ["refroidissement", "pressage", "sauté à sec", "montage", "soudage", "cuisson au four", "repos"],
+      "variants": [
+        "Sauce d'accompagnement : 40 cl de crème liquide réduite avec le jus d'un citron, servie à part (chefsimon, 750g)",
+        "Aux épinards seuls, sans riz : 1 kg d'épinards frais et 800 g de saumon pour quatre, avec des graines de sésame sur la dorure (marmiton)",
+        "Au fenouil : 400 g de fenouil émincé à la place des champignons (chefsimon)",
+        "Au comté : 150 g râpés répartis sur le riz (750g)",
+        "Aux œufs de caille, douze pièces à la place des trois œufs durs (chefsimon)",
+        "Saumon poché au court-bouillon et au vin blanc avant montage, avec cerfeuil et ciboulette (marmiton)"
+      ],
+      "sensory": {
+        "profile": "creamy_delicate",
+        "scores": { "sweet": 1, "salty": 3, "acidic": 2, "bitter": 0, "umami": 3, "heat": 0, "pungency": 0, "richness": 4, "freshness": 2, "intensity": 3 },
+        "dominant_flavors": ["saumon", "aneth", "beurre", "champignon"],
+        "aroma_families": ["marin", "herbacé", "beurre", "champignon"],
+        "target_textures": ["feuilletage croustillant", "chair_moelleuse", "contraste_léger"],
+        "signature_ingredients": ["Pavé de saumon cru, sans peau", "Pâte feuilletée crue", "Aneth frais"],
+        "identity_guardrails": [
+          "Tout ce qui entre dans la tourte doit être froid et sec : un riz tiède ou des épinards mal pressés détrempent le fond",
+          "Les œufs durs se rangent en file au centre — c'est la tranche qui fait reconnaître un koulibiac",
+          "Une cheminée dans le couvercle, sinon la vapeur fait éclater la pâte sur le côté",
+          "Un quart d'heure de repos sur grille avant la découpe, sans quoi la tranche s'effondre"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur et se réchauffe par tranches, 12 minutes à 190 °C sur une grille — le micro-ondes rend le feuilletage mou. Se mange aussi froid, en tranche épaisse, ce qui est un usage russe. Se congèle 2 mois cru et monté, sans dorure : on l'enfourne alors sans décongélation en ajoutant vingt-cinq minutes et en dorant au sortir du congélateur. Le riz, les œufs durs et les épinards pressés se préparent la veille et se gardent séparément 2 jours.",
+      "allergens": ["gluten", "poisson", "œuf", "lait"]
+    },
+    {
+      "code": "VAR-030",
+      "family": "Salade russe",
+      "cuisine_origin": "Russie",
+      "identity_level": "named_traditional_dish",
+      "category": "salade composée",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 25,
+      "difficulty": "facile",
+      "sources": ["dossier:salade-russe", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Huit pages sur trois sites, et deux sont à écarter. La première, intitulée « Salade Russe (le manteau) », monte du saumon fumé, des betteraves et des pommes de terre en couches nappées de mayonnaise : c'est un hareng sous manteau, un autre plat qui porte un autre nom en russe, et ses betteraves n'ont rien à faire dans une médiane de salade russe. La seconde remplace la pomme de terre par du riz et la mayonnaise par de la crème fraîche. Restent six pages sur les trois sites, qui donnent toutes le même assemblage : pommes de terre et carottes cuites en dés, petits pois, œufs durs, mayonnaise. La pomme de terre : six lignes, de 45 à 187,5 g par personne, médiane 137,5 g par personne, soit 825 g, qu'on écrit 800 g. C'est la forme cuite qu'on déclare, puisqu'elle est cuite puis taillée, et non l'inverse. La carotte : cinq lignes, médiane 50 g par personne, soit 300 g. Les petits pois : cinq lignes, médiane 25 g par personne, soit 150 g — deux pages précisent surgelés ou en boîte, et le catalogue ne porte que la forme surgelée, qui est de toute façon celle de la cuisine domestique. Les œufs durs : six lignes, médiane 0,5 par personne, soit 3 œufs. La mayonnaise : quatre lignes pesées, à 15, 10, 40 et 7,5 g par personne, médiane 12,5 g par personne, soit 75 g. On écrit 120 g : soixante-quinze grammes ne lient pas 1,3 kg de légumes, et la ligne la plus généreuse du dossier en donne 40 g par personne. C'est un écart assumé, et il pèse directement sur la nutrition affichée. Le thon est dans trois pages sur deux sites, deux le pesant à 20 et 25 g par personne : médiane 22,5 g par personne, soit 135 g. Les olives vertes sont dans deux pages sur deux sites, douze pour six et vingt pour dix : on écrit 60 g. Les cornichons, présents dans une seule page, descendent en variante — c'est une perte, ils sont l'acidité de la salade Olivier. Le poulet de deux pages, l'aneth de deux autres, le maïs, la macédoine et les crevettes d'une page chacun suivent le même chemin. Durées : préparation, médiane 17,5 minutes des six lignes, écrite 20 ; cuisson, médiane 25 minutes des cinq lignes exploitables — c'est le temps des pommes de terre et des œufs, tout le reste étant un assemblage à froid.",
+      "plate": {
+        "role": "main",
+        "accepts": ["vegetables"],
+        "reason": "Pommes de terre pour le féculent, œufs et thon pour la protéine : l'assiette tient debout, mais ses légumes sont tous cuits et peu nombreux. Une salade verte ou des crudités à côté équilibrent le repas ; un second féculent le doublerait."
+      },
+      "ingredients": [
+        { "form": "Pomme de terre cuite", "quantity": 800, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Carotte crue", "quantity": 300, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Petit pois surgelé", "quantity": 150, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Thon au naturel en conserve, égoutté", "quantity": 135, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Mayonnaise", "quantity": 120, "unit": "g", "role": "liaison", "optional": false },
+        { "form": "Œuf dur", "quantity": 3, "unit": "u", "role": "protéine", "optional": false },
+        { "form": "Olive verte dénoyautée", "quantity": 60, "unit": "g", "role": "garniture", "optional": false },
+        { "form": "Sel fin", "quantity": 4, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Cuire les pommes de terre entières et non épluchées dans une grande eau salée, vingt à vingt-cinq minutes selon leur taille : la lame d'un couteau doit les traverser sans effort. Cuites entières et en robe, elles ne boivent pas l'eau de cuisson : coupées avant, elles ressortent gorgées et la mayonnaise glisse dessus au lieu d'adhérer." },
+        { "n": 2, "instruction": "Cuire les carottes en morceaux dans la même eau les dix dernières minutes, et les œufs dix minutes à part. Les carottes doivent rester fermes sous la dent : trop cuites, elles s'écrasent au moment du mélange et colorent toute la salade en orange." },
+        { "n": 3, "instruction": "Jeter les petits pois encore surgelés dans l'eau bouillante trois minutes, puis les rafraîchir aussitôt dans l'eau glacée. Ce refroidissement brutal fixe leur vert et arrête la cuisson net ; sans lui, ils continuent de cuire dans leur propre chaleur et virent au kaki." },
+        { "n": 4, "instruction": "Peler les pommes de terre tièdes et les tailler, avec les carottes, en dés d'un centimètre bien réguliers. La régularité est le seul point de style de ce plat : des morceaux inégaux le font ressembler à un reste de pot-au-feu écrasé." },
+        { "n": 5, "instruction": "Laisser tous les éléments refroidir complètement avant d'ajouter la mayonnaise. Sur des légumes tièdes, elle se dissocie et rend de l'huile : la salade paraît alors grasse et brillante au lieu d'être liée et mate." },
+        { "n": 6, "instruction": "Mélanger délicatement les dés, les petits pois, le thon égoutté et émietté, deux œufs durs coupés en dés et la mayonnaise, saler et poivrer. Remuer à la spatule en soulevant plutôt qu'en tournant, sinon la pomme de terre se délite et la salade tourne à la purée." },
+        { "n": 7, "instruction": "Tasser dans un plat, lisser la surface et décorer du troisième œuf en rondelles et des olives. Réserver au moins deux heures au réfrigérateur avant de servir : la salade a besoin de ce temps pour que les goûts se lient, et elle se coupe alors à la cuillère sans s'affaisser." }
+      ],
+      "techniques": ["cuisson en robe des champs", "blanchiment", "refroidissement", "taille en dés", "assemblage", "repos au froid"],
+      "variants": [
+        "Salade Olivier : 250 g de blancs de poulet et six cornichons taillés en dés, aneth ou persil (chefsimon)",
+        "Stolichny : un filet de poulet, 100 g de haricots verts et un demi-concombre, aneth (chefsimon)",
+        "À la macédoine et au maïs en boîte, avec des pommes de terre grenaille (750g)",
+        "Aux crevettes, 50 g ajoutées avec le thon, et six tomates cerises (750g)",
+        "Aux olives vertes seules, sans thon ni poulet, six cuillerées de mayonnaise pour six (marmiton)"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 3, "bitter": 0, "umami": 3, "heat": 0, "pungency": 1, "richness": 4, "freshness": 2, "intensity": 2 },
+        "dominant_flavors": ["mayonnaise", "pomme de terre", "œuf dur", "thon"],
+        "aroma_families": ["moutarde", "lactée", "marin", "végétal cuit"],
+        "target_textures": ["dés fermes", "crémeux", "contraste_léger"],
+        "signature_ingredients": ["Pomme de terre cuite", "Mayonnaise", "Œuf dur"],
+        "identity_guardrails": [
+          "Pommes de terre cuites entières et en robe, taillées après : coupées avant, elles se gorgent d'eau",
+          "Tout doit être froid avant la mayonnaise, qui se dissocie sur des légumes tièdes",
+          "Dés réguliers d'un centimètre — c'est la seule tenue de ce plat",
+          "On mélange en soulevant, jamais en tournant, sous peine de purée"
+        ]
+      },
+      "conservation": "Se garde 2 jours au réfrigérateur, couverte, et pas davantage : la mayonnaise et les œufs durs limitent la conservation. Elle est meilleure le lendemain de sa confection. Ne se congèle pas — la mayonnaise tranche et la pomme de terre devient farineuse. Les légumes cuits et taillés se gardent en revanche 3 jours nature, sans mayonnaise, ce qui permet d'assembler la salade en cinq minutes le jour venu.",
+      "allergens": ["œuf", "poisson", "moutarde"]
+    },
+    {
+      "code": "VAR-031",
+      "family": "Porc au caramel",
+      "cuisine_origin": "Vietnam",
+      "identity_level": "named_traditional_dish",
+      "category": "plat mijoté",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 45,
+      "difficulty": "facile",
+      "sources": ["dossier:porc-au-caramel", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Huit pages sur trois sites, de quatre à six portions. Toutes font la même chose : un caramel à sec, du porc, une sauce salée fermentée, un mouillement, et une réduction longue jusqu'à ce que la sauce laque la viande. La coupe est nette : l'échine est nommée par quatre pages, le filet mignon par deux, la poitrine par deux également et toujours en complément — on écrit l'échine, qui a le gras qu'il faut pour supporter quarante-cinq minutes de réduction sans se dessécher. Huit lignes pesées, de 100 à 250 g par personne, médiane 200 g par personne, soit 800 g pour quatre. Le sucre : six lignes, de 3,75 à 40 g par personne, médiane 27,9 g par personne, soit 112 g, qu'on écrit 110 g. La ligne à 3,75 g est celle d'un wok sauté en quinze minutes, qui ne fait pas de caramel du tout. La sauce salée est le point où le dossier se partage sans se contredire : cinq pages emploient du nuoc-mâm, six de la sauce soja, et quatre les deux ensemble. On écrit les deux. La sauce poisson : cinq lignes, de 7,5 à 18,75 ml par personne, médiane 15 ml par personne, soit 60 ml. La sauce soja : cinq lignes, médiane 11,25 ml par personne, soit 45 ml. Le mouillement : trois pages le chiffrent, à 125, 83,3 et 200 ml par personne, médiane 125 ml par personne, soit 500 ml. Deux de ces pages y délayent deux cubes de bouillon de volaille : on écrit le bouillon de volaille plutôt que l'eau, ce qui suit le dossier au plus près. L'oignon est dans quatre pages, médiane 32,5 g par personne, soit 130 g. L'échalote est dans trois pages, médiane 10 g par personne, soit 40 g. L'ail est dans quatre pages, médiane 3,75 g par personne, soit 15 g. Le gingembre est dans quatre pages, trois le comptant en cuillerées de poudre et une en centimètres de racine fraîche : médiane 1 g par personne, soit 4 g de gingembre moulu. L'huile, deux lignes, médiane 5,6 ml par personne, soit 22,5 ml, écrite 25 ml. Le mélange quatre-épices de deux pages n'a pas de forme au catalogue et descend en variante, comme l'eau de coco d'une page, la limonade d'une autre, le citron vert et le piment oiseau d'une troisième. Le sel n'apparaît nulle part et c'est logique : le nuoc-mâm et la sauce soja en apportent assez. Durées : préparation, médiane 15 minutes des huit lignes ; cuisson, médiane 42,5 minutes des huit lignes, écrite 45.",
+      "plate": {
+        "role": "main",
+        "accepts": ["starch"],
+        "reason": "Une viande laquée dans une sauce courte, sans légume ni féculent. Deux pages du dossier prévoient explicitement du riz à côté, et la sauce sucrée-salée est faite pour être bue par un riz blanc."
+      },
+      "ingredients": [
+        { "form": "Échine de porc crue", "quantity": 800, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Bouillon de volaille", "quantity": 500, "unit": "ml", "role": "mouillement", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 130, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Sucre semoule", "quantity": 110, "unit": "g", "role": "caramel", "optional": false },
+        { "form": "Sauce poisson", "quantity": 60, "unit": "ml", "role": "assaisonnement", "optional": false },
+        { "form": "Sauce soja", "quantity": 45, "unit": "ml", "role": "assaisonnement", "optional": false },
+        { "form": "Échalote crue", "quantity": 40, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Huile végétale", "quantity": 25, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Ail cru", "quantity": 15, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Gingembre moulu", "quantity": 4, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Tailler l'échine en cubes de trois centimètres en gardant le gras, qui fondra et donnera à la sauce son onctuosité. Une viande parée de tout son gras finit sèche et cordée au bout de quarante-cinq minutes de réduction : ici, le gras n'est pas un défaut mais un ingrédient." },
+        { "n": 2, "instruction": "Verser le sucre seul dans une cocotte à fond épais, sur feu moyen, et le laisser fondre sans y toucher jusqu'à ce qu'il prenne une couleur d'ambre foncé, presque acajou. Ne pas remuer et ne pas ajouter d'eau : le sucre remué masse et cristallise. C'est la couleur qui décide du goût — un caramel blond donne un plat plat et sucré, un caramel poussé donne l'amertume qui équilibre le nuoc-mâm." },
+        { "n": 3, "instruction": "Dès la bonne couleur atteinte, ajouter l'huile puis les cubes de porc et remuer vivement pour les enrober. Le caramel va durcir au contact de la viande froide et se figer en plaques : c'est normal, il refondra dans les minutes qui suivent, et il ne faut ni s'alarmer ni monter le feu." },
+        { "n": 4, "instruction": "Ajouter l'oignon et l'échalote émincés, l'ail haché et le gingembre, laisser suer cinq minutes, puis verser la sauce poisson et la sauce soja et faire réduire deux minutes à feu vif. Ce court passage à découvert retire à la sauce poisson son odeur agressive et ne lui laisse que le fond salé." },
+        { "n": 5, "instruction": "Mouiller du bouillon, poivrer, porter à frémissement, couvrir à demi et laisser cuire quarante minutes à feu doux. La sauce doit réduire des deux tiers : à mi-parcours elle est encore liquide et il ne faut pas s'en inquiéter, l'essentiel de la réduction se joue dans le dernier quart d'heure." },
+        { "n": 6, "instruction": "Découvrir sur la fin et surveiller sans quitter la cocotte : quand la sauce nappe la viande et que le fond commence à laisser des traces brillantes, couper le feu immédiatement. Entre une sauce sirupeuse et un caramel brûlé au fond, il n'y a qu'une minute ou deux. Laisser reposer cinq minutes et servir avec du riz blanc." }
+      ],
+      "techniques": ["caramel à sec", "saisie", "réduction", "mijotage", "laquage"],
+      "variants": [
+        "À l'eau de coco : un litre à la place du bouillon, avec citron vert, coriandre et piment oiseau (chefsimon)",
+        "Au quatre-épices, une cuillerée à soupe avec le gingembre (marmiton, deux pages)",
+        "Poitrine de porc et œufs durs : 600 g de poitrine mijotés deux heures avec quatre œufs durs (750g)",
+        "Moitié échine, moitié poitrine fraîche, avec six grosses échalotes (chefsimon)",
+        "En wok, quinze minutes : filet de porc, brocolis, germes de soja, champignons et poivron rouge, trois cuillerées à café de sucre seulement (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "smoky_sweet",
+        "scores": { "sweet": 4, "salty": 5, "acidic": 1, "bitter": 2, "umami": 5, "heat": 0, "pungency": 2, "richness": 4, "freshness": 0, "intensity": 5 },
+        "dominant_flavors": ["caramel", "nuoc-mâm", "porc", "gingembre"],
+        "aroma_families": ["caramel", "soja_fermenté", "porc", "gingembre"],
+        "target_textures": ["viande fondante", "sauce laquée", "jus court et nappant"],
+        "signature_ingredients": ["Échine de porc crue", "Sucre semoule", "Sauce poisson"],
+        "identity_guardrails": [
+          "Caramel à sec poussé jusqu'à l'ambre foncé : blond, il ne donne que du sucre, et c'est son amertume qui équilibre le nuoc-mâm",
+          "On garde le gras de l'échine — sans lui la viande est cordée au bout de quarante-cinq minutes",
+          "La sauce poisson est indispensable : sans elle, c'est un porc au sucre",
+          "La réduction se surveille à l'œil sur la fin : une minute sépare la sauce laquée du fond brûlé"
+        ]
+      },
+      "conservation": "Se garde 4 jours au réfrigérateur et gagne nettement à être réchauffé : la sauce continue de pénétrer la viande. Réchauffer à couvert et à feu doux avec deux cuillerées d'eau, la sauce s'étant figée au froid. Se congèle 3 mois sans dommage — c'est l'un des plats du lot qui supporte le mieux le congélateur, la sauce sucrée-salée protégeant la viande. C'est aussi un bon candidat au double : la moitié se sert avec du riz, l'autre effilochée dans un bouillon ou un sandwich.",
+      "allergens": ["poisson", "soja", "gluten"]
+    },
+    {
+      "code": "VAR-032",
+      "family": "Poulet teriyaki",
+      "cuisine_origin": "Japon",
+      "identity_level": "named_traditional_dish",
+      "category": "plat sauté",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 15,
+      "difficulty": "facile",
+      "sources": ["dossier:poulet-teriyaki", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Sept pages sur trois sites, de deux à quatre portions. Trois d'entre elles emploient une sauce teriyaki du commerce et ne disent donc rien de sa composition ; une quatrième la remplace par du ketchup et de la cassonade. Restent trois pages, sur deux sites, qui composent réellement la sauce, et elles s'accordent sur sa base : sauce soja, saké, sucre, gingembre. C'est ce quatuor qu'on écrit. Le mirin, présent dans trois pages, est une forme bloquée au catalogue et ne peut pas être écrit ; il ne se remplace pas non plus par le couple sucre-saké en faisant comme si c'était la même chose, alors on le déclare en variante et l'on note que la sauce écrite ici est celle des pages qui n'en emploient pas — la première d'entre elles, sur marmiton, monte sa sauce au soja, au saké, au vinaigre et au sucre sans mirin du tout. Le poulet : trois lignes pesées, à 125, 125 et 150 g par personne, médiane 125 g par personne, soit 500 g pour quatre. Trois pages emploient des blancs, deux des hauts de cuisse, une des ailes : on écrit le blanc, majoritaire, en notant que le haut de cuisse tient mieux la réduction. La sauce soja : quatre lignes chiffrées, à 15, 15, 22,5 et 37,5 ml par personne, médiane 18,75 ml par personne, soit 75 ml. On descend à 60 ml — soixante-quinze millilitres de sauce soja pour 500 g de poulet donnent un plat que le sel domine, et deux des quatre lignes tiennent à 15 ml par personne. Le saké : trois lignes, à 7,5, 37,5 et 15 ml par personne, médiane 15 ml par personne, soit 60 ml. Le sucre : trois lignes, à 2,5, 6 et 7,5 g par personne, médiane 6 g par personne, soit 24 g, qu'on écrit 25 g. Le gingembre est dans quatre pages, frais dans deux et moulu dans une : on écrit le gingembre frais, 15 g. L'ail est dans deux pages sur deux sites, une gousse et quatre gousses : 10 g. L'huile : quatre lignes, médiane 10 ml par personne, soit 40 ml — deux pages emploient une huile de sésame comme corps gras de cuisson, ce qui est inhabituel et brûle vite ; on écrit une huile végétale neutre, à 30 ml, et l'huile de sésame descend en variante comme finition. Le sésame en graines d'une page, le vinaigre de riz d'une autre — forme bloquée —, le miel d'une troisième et l'oignon rouge d'une quatrième sont à une source chacun. Durées : préparation, médiane 20 minutes des sept lignes, écrite 15 ; cuisson, médiane 15 minutes des sept lignes. Trente minutes en tout : c'est l'un des plats les plus courts du lot.",
+      "plate": {
+        "role": "main",
+        "accepts": ["starch", "vegetables"],
+        "reason": "Un poulet laqué, sans féculent ni légume : la sauce très salée demande un riz blanc pour l'équilibrer, et deux pages du dossier le servent ainsi. Un légume vert vapeur complète l'assiette."
+      },
+      "ingredients": [
+        { "form": "Blanc de poulet cru, sans peau", "quantity": 500, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Sauce soja japonaise", "quantity": 60, "unit": "ml", "role": "sauce", "optional": false },
+        { "form": "Saké de cuisine", "quantity": 60, "unit": "ml", "role": "sauce", "optional": false },
+        { "form": "Huile végétale", "quantity": 30, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Sucre semoule", "quantity": 25, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Gingembre frais", "quantity": 15, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Ail cru", "quantity": 10, "unit": "g", "role": "aromatique", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Mélanger la sauce soja, le saké, le sucre, le gingembre râpé et l'ail écrasé dans un bol, et remuer jusqu'à dissolution complète du sucre. Le sucre doit être dissous avant de rencontrer la poêle : en cristaux, il caramélise par plaques et brûle par endroits pendant que le reste de la sauce est encore liquide." },
+        { "n": 2, "instruction": "Tailler les blancs de poulet en morceaux de trois centimètres ou en lanières épaisses, et les éponger. Une surface humide ne colore pas : elle relâche de la vapeur qui empêche tout contact sec avec la poêle, et le poulet blanchit au lieu de dorer." },
+        { "n": 3, "instruction": "Saisir le poulet à feu vif dans l'huile, sans le remuer pendant les deux premières minutes, jusqu'à une belle face dorée, puis le retourner et compter deux minutes encore. On cherche la coloration, pas la cuisson complète : le poulet finira dans la sauce, et cuit à cœur maintenant, il serait sec au moment de servir." },
+        { "n": 4, "instruction": "Baisser à feu moyen, verser la sauce d'un coup et laisser bouillonner en retournant les morceaux régulièrement. Le liquide va réduire de moitié en cinq à sept minutes et devenir sirupeux. Retourner souvent est ce qui construit le laquage : chaque passage dépose une couche mince qui s'épaissit sur la précédente." },
+        { "n": 5, "instruction": "Arrêter dès que la sauce nappe le dos d'une cuillère et qu'elle laisse un sillon net au fond de la poêle. Au-delà, elle passe en trente secondes du sirop au caramel amer, et le sucre de la sauce ne pardonne pas : c'est la seule difficulté de ce plat." },
+        { "n": 6, "instruction": "Laisser reposer deux minutes hors du feu avant de servir, le temps que la sauce épaississe encore un peu et adhère. Servir sur du riz blanc, en versant tout ce qui reste au fond de la poêle : c'est là qu'est le plus concentré." }
+      ],
+      "techniques": ["marinade minute", "saisie", "réduction", "laquage"],
+      "variants": [
+        "Au mirin : quatre cuillerées à soupe avec le saké et la sauce soja, forme bloquée au catalogue et donc non écrite ici (marmiton, chefsimon)",
+        "Aux hauts de cuisse désossés avec la peau, qui tiennent mieux la réduction (chefsimon)",
+        "Finition à l'huile de sésame grillé et aux graines de sésame blanc, avec oignons rouges et échalotes émincés (chefsimon, marmiton)",
+        "Au miel d'oranger, 30 g pour deux, et vinaigre balsamique (chefsimon)",
+        "Aux ailes de poulet, sauce au ketchup, jus de citron, cassonade et poudre d'ail, 45 minutes au four (marmiton)"
+      ],
+      "sensory": {
+        "profile": "spicy_umami",
+        "scores": { "sweet": 4, "salty": 5, "acidic": 1, "bitter": 1, "umami": 5, "heat": 0, "pungency": 2, "richness": 2, "freshness": 1, "intensity": 4 },
+        "dominant_flavors": ["sauce soja", "sucre caramélisé", "gingembre", "saké"],
+        "aroma_families": ["soja_fermenté", "caramel", "gingembre", "ail"],
+        "target_textures": ["sauce laquée", "chair_moelleuse", "nappant"],
+        "signature_ingredients": ["Sauce soja japonaise", "Saké de cuisine", "Sucre semoule"],
+        "identity_guardrails": [
+          "Le laquage se construit en retournant souvent dans une sauce qui réduit — versée à la fin, elle ne fait que napper",
+          "Le sucre doit être dissous avant la poêle, sinon il brûle par plaques",
+          "On arrête dès que la sauce nappe : trente secondes de plus et le sucre vire à l'amer",
+          "Le poulet est saisi puis fini dans la sauce, jamais cuit à cœur d'abord"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur et se réchauffe deux minutes à la poêle avec une cuillerée d'eau, la sauce s'étant figée. Se mange aussi froid, tranché, sur un riz vinaigré. Se congèle 2 mois, la sauce sucrée-salée protégeant la chair, mais le blanc de poulet en ressort un peu sec — le haut de cuisse supporte mieux. La sauce seule se prépare en avance et se garde 2 semaines au réfrigérateur en bocal : c'est ce qui ramène le plat à dix minutes.",
+      "allergens": ["soja", "gluten"]
+    },
+    {
+      "code": "VAR-033",
+      "family": "Yakitori de poulet",
+      "cuisine_origin": "Japon",
+      "identity_level": "named_traditional_dish",
+      "category": "brochette yakitori",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "difficulty": "facile",
+      "sources": ["dossier:yakitori-de-poulet", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Sept pages sur trois sites. Trois emploient une sauce yakitori ou teriyaki du commerce et ne composent donc rien ; restent quatre pages, sur deux sites, qui montent la tare — la sauce à laquer — à partir de sauce soja, de saké, de mirin et de sucre. Le mirin est dans les quatre et c'est une forme bloquée au catalogue : elle ne peut pas être écrite, et on ne la remplace pas en silence. La sauce écrite ici est donc la tare amputée de son mirin, soja-saké-sucre, ce que l'une des pages admet d'ailleurs explicitement en écrivant « si tu n'as pas mirin, saké ». Il faut le savoir en lisant la fiche : il manque une douceur sirupeuse que le sucre seul ne rend pas tout à fait. Le poulet : trois lignes pesées, à 125, 187,5 et 100 g par personne, médiane 125 g par personne, soit 500 g pour quatre. La découpe partage le dossier en deux — trois pages emploient des cuisses désossées, trois des blancs ou des filets — et on écrit le haut de cuisse désossé, qui est la coupe des deux pages qui pèsent le plus haut et surtout la seule qui supporte la flamme sans sécher. Le poireau est dans trois pages, compté en pièces entières : un pour quatre, trois pour quatre, quatre pour quatre, soit une médiane de 112,5 g par personne, ou 450 g. On écrit 250 g, parce que seul le blanc va sur les brochettes et qu'il représente environ la moitié d'un poireau ; c'est un écart assumé sur une ligne que les sources comptent en légumes entiers. La sauce soja : trois lignes chiffrées, à 37,5, 37,5 et 11,25 ml par personne, médiane 37,5 ml par personne, soit 150 ml. On descend à 100 ml : la tare réduit et se pose au pinceau, elle n'est pas une marinade dans laquelle le poulet baigne, et 150 ml pour 500 g de viande donnent une brochette immangeable de sel. Le saké : trois lignes, à 11,25, 30 et 3,75 ml par personne, médiane 11,25 ml par personne, soit 45 ml. Le sucre : trois lignes, à 6, 3,75 et 3,75 g par personne, médiane 3,75 g par personne, soit 15 g. Le miel d'une page, le sésame d'une autre, le shichimi togarashi de deux — forme absente du catalogue — sont en variantes. Durées : préparation, médiane 60 minutes des cinq lignes renseignées, mais cette médiane compte le temps de marinade que deux pages rangent en préparation ; le travail réel est d'un quart d'heure et on écrit 20 minutes, l'embrochage compris. Cuisson, médiane 12,5 minutes des quatre lignes exploitables, écrite 15.",
+      "plate": {
+        "role": "main",
+        "accepts": ["starch", "vegetables"],
+        "reason": "Des brochettes laquées et rien d'autre : le poireau qui alterne avec la viande est un aromate, pas une garniture. Deux pages du dossier les servent sur un bol de riz chaud, et c'est le complément qu'elles appellent."
+      },
+      "ingredients": [
+        { "form": "Haut de cuisse de poulet cru, désossé", "quantity": 500, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Poireau cru", "quantity": 250, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Sauce soja japonaise", "quantity": 100, "unit": "ml", "role": "sauce", "optional": false },
+        { "form": "Saké de cuisine", "quantity": 45, "unit": "ml", "role": "sauce", "optional": false },
+        { "form": "Sucre semoule", "quantity": 15, "unit": "g", "role": "sauce", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Faire tremper des brochettes en bois vingt minutes dans l'eau froide. Sèches, elles s'enflamment sur un gril bien chaud avant que la viande ne soit cuite, et les morceaux tombent dans le feu." },
+        { "n": 2, "instruction": "Réunir la sauce soja, le saké et le sucre dans une petite casserole, porter à frémissement et laisser réduire d'un tiers à feu moyen, sept à huit minutes, jusqu'à ce que la sauce nappe légèrement une cuillère. C'est cette réduction préalable qui fait la tare : versée crue sur la viande, la sauce reste liquide, coule dans le feu et ne laque rien." },
+        { "n": 3, "instruction": "Tailler les hauts de cuisse en morceaux de trois centimètres et le blanc de poireau en tronçons de la même longueur. Une taille égale n'est pas de l'esthétique : sur une brochette, un morceau plus gros que ses voisins reste cru quand les autres sont noirs." },
+        { "n": 4, "instruction": "Enfiler en alternant poulet et poireau, quatre à cinq morceaux par brochette, sans serrer. Le poireau entre les morceaux de viande n'est pas une garniture : il rend un peu d'eau et de sucre pendant la cuisson, ce qui empêche les faces qui se touchent de sécher." },
+        { "n": 5, "instruction": "Cuire sur un gril très chaud, une plaque en fonte ou sous le gril du four, huit à dix minutes en tournant régulièrement, jusqu'à ce que la viande soit dorée. Ne pas badigeonner pendant cette première phase : le sucre de la tare brûlerait bien avant que le poulet ne soit cuit, et c'est la faute la plus courante." },
+        { "n": 6, "instruction": "Badigeonner alors de tare au pinceau, laisser trente secondes sur le feu, tourner, badigeonner de nouveau, et répéter trois ou quatre fois. Les couches successives se posent l'une sur l'autre et forment une laque brillante et collante ; en une seule application, on n'obtient qu'un vernis mat qui coule. Servir aussitôt, avec le reste de tare à part." }
+      ],
+      "techniques": ["réduction de la tare", "embrochage", "grillade", "laquage en couches"],
+      "variants": [
+        "Avec mirin : trois à quatre cuillerées à soupe dans la tare, forme bloquée au catalogue et donc non écrite ici (marmiton, 750g)",
+        "Aux blancs de poulet en lanières, laqués à la sauce teriyaki et au miel, avec ail et gingembre moulu (marmiton)",
+        "Finition aux graines de sésame et au shichimi togarashi, mélange d'épices absent du catalogue (chefsimon, 750g)",
+        "Servis sur un bol de riz chaud, la tare restante versée sur le riz (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "spicy_umami",
+        "scores": { "sweet": 4, "salty": 5, "acidic": 0, "bitter": 1, "umami": 5, "heat": 0, "pungency": 1, "richness": 2, "freshness": 1, "intensity": 4 },
+        "dominant_flavors": ["sauce soja réduite", "poulet grillé", "poireau", "sucre caramélisé"],
+        "aroma_families": ["soja_fermenté", "caramel", "végétal grillé"],
+        "target_textures": ["sauce laquée", "chair_moelleuse", "arêtes grillées"],
+        "signature_ingredients": ["Haut de cuisse de poulet cru, désossé", "Sauce soja japonaise", "Poireau cru"],
+        "identity_guardrails": [
+          "La tare se réduit avant d'être appliquée : crue, elle coule et ne laque pas",
+          "On ne badigeonne qu'en fin de cuisson, en trois ou quatre couches — le sucre brûle en une minute sur un gril chaud",
+          "Le poireau alterne avec la viande sur la brochette et n'est pas un accompagnement",
+          "Le haut de cuisse plutôt que le blanc : c'est la seule coupe qui supporte la flamme sans sécher"
+        ]
+      },
+      "conservation": "La tare réduite se garde un mois au réfrigérateur en bocal et s'améliore d'un usage à l'autre — c'est la préparation à faire en quantité. Les brochettes crues montées se gardent 24 heures au réfrigérateur et se congèlent 2 mois, à plat sur une plaque puis en sac. Cuites, elles se gardent 2 jours et se mangent froides ou réchauffées deux minutes sous le gril ; au micro-ondes, la laque se liquéfie et la viande durcit.",
+      "allergens": ["soja", "gluten"]
+    },
+    {
+      "code": "VAR-034",
+      "family": "Bo bun",
+      "cuisine_origin": "Vietnam",
+      "identity_level": "named_traditional_dish",
+      "category": "salade composée",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 30,
+      "cook_minutes": 10,
+      "difficulty": "moyenne",
+      "sources": ["dossier:bo-bun", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Huit pages sur trois sites, dont deux à écarter : un wok de chou pointu aux crevettes « façon bo bun », qui n'a ni bœuf ni vermicelles montés en bol, et des croustillants de ris de veau. Restent six pages sur les trois sites, qui construisent toutes le même bol : vermicelles froids, bœuf sauté, crudités crues, herbes, cacahuètes, et une sauce nuoc-mâm sucrée-acide versée dessus. Le bœuf : trois lignes pesées, à 175, 83,3 et 150 g par personne, médiane 150 g par personne, soit 600 g pour quatre. Les pages nomment le filet, le steak, la tende de tranche : toutes des coupes à saisir vite, et on écrit le bœuf à griller en fines lamelles. Les vermicelles : quatre lignes pesées, à 50, 66,7, 75 et 25 g par personne, médiane 58,3 g par personne, soit 233 g, qu'on écrit 230 g. La forme est un arbitrage à connaître : les six pages disent « vermicelles de riz », et le catalogue ne porte aucun vermicelle de riz — il a un vermicelle fin de blé et une nouille de riz plate. On écrit la nouille de riz, qui garde la bonne céréale et se trompe de forme, plutôt que le vermicelle de blé, qui garderait la forme et se tromperait de céréale ; le riz est ce qui compte ici, pour la texture comme pour le régime. Les crudités : la carotte, trois lignes, médiane 75 g par personne, soit 300 g ; le concombre, quatre lignes, médiane 37,5 g par personne, soit 150 g ; les pousses de soja, trois lignes pesées, médiane 33,3 g par personne, soit 133 g, écrites 130 g ; la salade, comptée en feuilles ou en pieds par cinq pages et jamais pesée, 150 g. L'oignon est dans quatre pages, médiane 37,9 g par personne, soit 152 g, écrit 150 g. Les herbes sont dans les six pages et ce sont elles qui font le plat : menthe et coriandre, jamais pesées, 20 g et 15 g. Les cacahuètes sont dans quatre pages, une seule les pèse à 12,5 g par personne : 50 g. La sauce : le nuoc-mâm est dans les six pages, quatre le chiffrant, médiane 7,5 ml par personne, soit 30 ml — on écrit 40 ml ; le sucre, quatre lignes dont deux exploitables, médiane 3,75 g par personne, soit 15 g, écrit 20 g ; le jus de citron vert, deux pages, 30 ml ; le vinaigre, trois pages, mais deux emploient un vinaigre de riz qui est une forme bloquée au catalogue — on écrit le vinaigre blanc de la troisième, 20 ml. L'ail, quatre lignes, médiane 1,46 g par personne, soit 6 g, écrit 8 g. L'huile, une ligne à 15 ml par personne : 30 ml. Deux absences comptent et il faut les nommer : la citronnelle, présente dans quatre pages sur huit, est bloquée au catalogue, et les nems, que trois pages posent sur le bol, n'ont aucune forme employable — un bo bun sans nems reste un bo bun, mais ce n'est pas la version complète. Durées : préparation, médiane 30 minutes des six lignes ; cuisson, médiane 5 minutes, écrite 10 — le bœuf se saisit en trois minutes, les vermicelles cuisent en cinq.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Vermicelles pour le féculent, bœuf pour la protéine, quatre crudités et deux herbes pour le reste : le bol est le repas entier, servi en une seule assiette creuse. C'est ainsi que les six pages le montent."
+      },
+      "ingredients": [
+        { "form": "Bœuf à griller cru, en fines lamelles", "quantity": 600, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Nouille de riz plate sèche", "quantity": 230, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Carotte crue", "quantity": 300, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Laitue fraîche", "quantity": 150, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Concombre frais", "quantity": 150, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 150, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Pousse de soja fraîche", "quantity": 130, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Cacahuète grillée", "quantity": 50, "unit": "g", "role": "garniture", "optional": false },
+        { "form": "Sauce poisson", "quantity": 40, "unit": "ml", "role": "sauce", "optional": false },
+        { "form": "Jus de citron vert frais", "quantity": 30, "unit": "ml", "role": "sauce", "optional": false },
+        { "form": "Huile végétale", "quantity": 30, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Menthe fraîche", "quantity": 20, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Vinaigre blanc", "quantity": 20, "unit": "ml", "role": "sauce", "optional": false },
+        { "form": "Sucre semoule", "quantity": 20, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Coriandre fraîche", "quantity": 15, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Ail cru", "quantity": 8, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Préparer la sauce en dissolvant le sucre dans le jus de citron vert et le vinaigre, puis en ajoutant la sauce poisson, la moitié de l'ail haché et quatre cuillerées à soupe d'eau. Goûter : elle doit être à la fois franchement salée, nettement acide et perceptiblement sucrée, et paraître trop forte seule — elle sera diluée par les crudités et les vermicelles au fond du bol." },
+        { "n": 2, "instruction": "Cuire les nouilles de riz selon leur épaisseur, cinq minutes environ, les égoutter et les rincer longuement à l'eau froide en les démêlant à la main. Le rinçage n'est pas un refroidissement de confort : il retire l'amidon qui, sans cela, soude les nouilles en un bloc compact au fond du bol." },
+        { "n": 3, "instruction": "Faire mariner le bœuf taillé en lamelles fines vingt minutes avec le reste de l'ail, l'oignon émincé, du poivre et une cuillerée de sauce poisson. Une marinade courte suffit sur une viande taillée mince : au-delà d'une heure, le sel commence à la raffermir." },
+        { "n": 4, "instruction": "Râper les carottes en longs filaments, tailler le concombre en bâtonnets, ciseler la salade et laver les pousses de soja. Tout doit être prêt et froid avant que la viande ne touche la poêle : le bo bun se monte en deux minutes, et la viande chaude sur des crudités froides est précisément le contraste recherché." },
+        { "n": 5, "instruction": "Saisir le bœuf en deux fois dans une poêle brûlante avec l'huile, deux minutes à peine par fournée, en le laissant colorer sans le remuer sans arrêt. Tout ensemble, il rend son eau et bout dans son jus : il devient gris et coriace, et c'est la seule chose qui puisse rater dans ce plat." },
+        { "n": 6, "instruction": "Monter les bols dans l'ordre : salade ciselée au fond, vermicelles par-dessus, puis carotte, concombre et pousses de soja disposés en secteurs, le bœuf brûlant au centre, et pour finir les herbes déchirées à la main et les cacahuètes concassées. Chacun verse la sauce au moment de manger et mélange lui-même — versée en cuisine, elle détrempe la salade en cinq minutes." }
+      ],
+      "techniques": ["marinade minute", "cuisson des nouilles", "rinçage", "saisie à feu vif", "assemblage en bol"],
+      "variants": [
+        "Avec nems : deux à huit nems frits coupés en tronçons posés sur le bol, forme absente du catalogue (marmiton, chefsimon, 750g)",
+        "À la citronnelle : deux tiges hachées dans la marinade du bœuf, forme bloquée au catalogue (chefsimon, 750g)",
+        "Au vinaigre de riz à la place du vinaigre blanc, forme bloquée au catalogue (chefsimon, 750g)",
+        "À la sauce d'huître : trois cuillerées à soupe et du curry doux dans la marinade du bœuf (marmiton)",
+        "Aux noix de macadamia torréfiées et pilées en plus des cacahuètes (chefsimon)",
+        "Aux crevettes à la place du bœuf, sautées deux minutes (marmiton)"
+      ],
+      "sensory": {
+        "profile": "fresh_acidic",
+        "scores": { "sweet": 3, "salty": 4, "acidic": 4, "bitter": 0, "umami": 4, "heat": 1, "pungency": 3, "richness": 2, "freshness": 5, "intensity": 4 },
+        "dominant_flavors": ["nuoc-mâm", "citron vert", "menthe", "bœuf saisi"],
+        "aroma_families": ["marin", "herbacé", "agrume", "cacahuète"],
+        "target_textures": ["nouilles souples", "croquant", "contraste_léger"],
+        "signature_ingredients": ["Bœuf à griller cru, en fines lamelles", "Nouille de riz plate sèche", "Sauce poisson"],
+        "identity_guardrails": [
+          "La sauce se verse à table par chacun : versée en cuisine, elle détrempe la salade en cinq minutes",
+          "Les nouilles se rincent longuement à l'eau froide, sinon elles se soudent en bloc au fond du bol",
+          "Le bœuf se saisit en deux fournées et arrive brûlant sur des crudités froides — c'est le contraste du plat",
+          "Menthe et coriandre entrent crues et déchirées à la main, en quantité franche : ce sont elles qui font le bo bun"
+        ]
+      },
+      "conservation": "Ne se monte qu'au moment de servir. Les éléments se préparent en revanche à l'avance et séparément : la sauce se garde 2 semaines au réfrigérateur en bocal, les nouilles cuites et rincées 2 jours dans une boîte fermée avec un filet d'huile, les crudités taillées 2 jours, le bœuf mariné cru 24 heures. Rien ne se congèle utilement, sauf le bœuf dans sa marinade, 2 mois. Monté, le bol ne se garde pas : les crudités rendent leur eau en une heure.",
+      "allergens": ["poisson", "arachide"]
+    }
+  ]
+}

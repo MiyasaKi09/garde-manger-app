@@ -1,0 +1,213 @@
+{
+  "dish": "Couscous végétarien",
+  "slug": "couscous-vegetarien",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_couscous-vegetarien-facile_62233.aspx",
+      "site": "marmiton.org",
+      "nom": "Couscous végétarien facile : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "2 verres de semoule de couscous grain moyen",
+        "1 petite boîte de pois chiches",
+        "4 carottes",
+        "4 navets",
+        "4 tomates",
+        "2 courgettes",
+        "2 oignons",
+        "2 gousses d'ail",
+        "2 cuillères à soupe d'huile d'olive",
+        "100 g de margarine végétale ou de beurre",
+        "1.5 cuillères à café de curcuma",
+        "2 cuillères à café de graines de coriandre",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 900,
+        "sha256": "3fe8ed97c8a524ff"
+      },
+      "sha256_page": "c5196642f4eb1cb2"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_couscous-vegetarien_31694.aspx",
+      "site": "marmiton.org",
+      "nom": "Couscous végétarien (couscoussier) : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "500 g de carottes",
+        "500 g de haricots verts (frais ou surgelés) (variante, 500 g de fèves fraîches de saison)",
+        "1 poivron rouge",
+        "1 poivron vert",
+        "1 fenouil",
+        "2 courgettes",
+        "2 pommes de terre",
+        "300 g de petits pois surgelés",
+        "1 kg d'oignon",
+        "3 ail",
+        "500 g de couscous fin",
+        "sel",
+        "cumin",
+        "coriandre fraaîche (facultatif)",
+        "poivre gris"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1404,
+        "sha256": "cbe3157ae8105d69"
+      },
+      "sha256_page": "ed9cefff72579d4a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_couscous-vegetarien-a-la-quebecoise_33820.aspx",
+      "site": "marmiton.org",
+      "nom": "Couscous végétarien à la québecoise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "10 cl de bouillon de légumes",
+        "35 cl de semoule pour couscous",
+        "30 cl d'huile d'olive",
+        "240 ml de champignons émincés",
+        "240 ml d'oignons émincés",
+        "240 ml de carottes (en julienne ou émincées, au goût)",
+        "120 ml de céleri émincé",
+        "5 ml de gingembre râpé",
+        "3 gousses d'ail",
+        "3 cl de sauce soja",
+        "1 cuillère à soupe de jus de citron (ou plus, selon votre goût)",
+        "épices à couscous , au goût (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 493,
+        "sha256": "b4e46443ab211d0b"
+      },
+      "sha256_page": "c2789e1266072462"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/stella-cuisine/recettes/couscous-vegetarien-aux-legumes",
+      "site": "chefsimon.com",
+      "nom": "Couscous végétarien aux légumes",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "250 grammes de semoule fine pour couscous",
+        "4  tomates",
+        "2  carottes",
+        "2  navets",
+        "1  aubergine",
+        "20 cl de coulis de tomates",
+        "2 boîtes de champignons de Paris émincés",
+        "1 boîte de pois chiches",
+        "1 boîte de pommes de terre (vapeur)",
+        "1 boîte de concentré de tomates",
+        "1 cube de bouillon de légumes",
+        "1  oignon",
+        "1 gousse d'ail",
+        "2 pincées d’épices Ras-el-Hanout",
+        "Persil plat frais",
+        "1 pincée de sel",
+        "1 pincée de poivre",
+        "1 filet d'huile neutre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 204,
+        "sha256": "d959c88ae87d3a89"
+      },
+      "sha256_page": "4d9f894c95dbe7d8"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/keskonmangemaman/recettes/couscous-vegetarien-b63e3a71-c26f-4b68-ab5e-26e3e521ac05",
+      "site": "chefsimon.com",
+      "nom": "Couscous végétarien",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "300 g de semoule moyenne",
+        "4 oignons",
+        "250 g de raisins secs",
+        "2 c. à soupe de ras el hanout",
+        "huile d'olive",
+        "25 g de beurre doux",
+        "sel",
+        "poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "d2022d02e2bb3eee"
+    },
+    {
+      "url": "https://www.750g.com/couscous-vegetarien-r203666.htm",
+      "site": "750g.com",
+      "nom": "Couscous végétarien",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "200 g de couscous en perles  Ebly",
+        "80 g de pois chiches  cuits",
+        "50 g de raisin secs",
+        "50 cl de bouillon de légumes",
+        "4 carottes",
+        "2 courgettes",
+        "2 navets",
+        "1 oignon",
+        "1 bâton de cannelle",
+        "4 c. à s. d'huile d'olive",
+        "1 c. à s. de persil  haché",
+        "1 c. à c. de curcuma",
+        "½ c. à c. de gingembre (en poudre)",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 857,
+        "sha256": "6ca05ed0aeda60ca"
+      },
+      "sha256_page": "8ffe50c091fba790"
+    },
+    {
+      "url": "https://www.750g.com/couscous-vegetarien-r48647.htm",
+      "site": "750g.com",
+      "nom": "Couscous végétarien",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 c à s d'huile d'olive",
+        "1 c à s d'épice a couscous",
+        "1 c à s de paprika",
+        "2 cubes de bouillon knorr",
+        "500g de semoule moyenne",
+        "1/2 poivron à l'huile",
+        "1 tomate",
+        "2 navets",
+        "2 carottes",
+        "100g de pois chiche",
+        "1 courgette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 656,
+        "sha256": "2aa82d286b0b369c"
+      },
+      "sha256_page": "78e3967dee91b4c3"
+    }
+  ]
+}

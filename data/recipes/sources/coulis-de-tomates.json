@@ -1,0 +1,224 @@
+{
+  "dish": "Coulis de tomates",
+  "slug": "coulis-de-tomates",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_flan-de-courgette-et-son-coulis-de-tomate_32444.aspx",
+      "site": "marmiton.org",
+      "nom": "Flan de courgette et son coulis de tomate : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "3 courgettes",
+        "1 bouillon",
+        "1 oignon",
+        "3 oeufs",
+        "100 g de gruyère râpé",
+        "1 cuillère à soupe de chapelure",
+        "1 cuillère à soupe de farine",
+        "1 pot de crème fraîche",
+        "1 brique de coulis de tomate",
+        "poivre",
+        "sel",
+        "herbes de Provence",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 844,
+        "sha256": "c9a8e5e59f9c9705"
+      },
+      "sha256_page": "2260d6b05b3a1dce"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_coulis-de-tomates-maison_24059.aspx",
+      "site": "marmiton.org",
+      "nom": "Coulis de tomates maison : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "9 tomates mûres à point",
+        "6 cuillères à soupe d'huile d'olive",
+        "3 gousses d'ail",
+        "6 feuilles de basilic",
+        "1 cuillère à soupe de sucre",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 583,
+        "sha256": "25ee50f6a95516ac"
+      },
+      "sha256_page": "61f0a897b1ceee48"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_mozzarella-panee-sur-coulis-de-tomates_45399.aspx",
+      "site": "marmiton.org",
+      "nom": "Mozzarella panée sur coulis de tomates : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "2 boules de mozzarella",
+        "1 oeuf",
+        "chapelure",
+        "6 tomates",
+        "1 oignon",
+        "1 gousse d'ail",
+        "basilic",
+        "1 morceau de sucre",
+        "huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 722,
+        "sha256": "4cd4c193febbe9b4"
+      },
+      "sha256_page": "61e1e8aed57ddfd8"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/conserves-de-coulis-de-tomates-et-poivrons",
+      "site": "chefsimon.com",
+      "nom": "Conserves de coulis de tomates et poivrons",
+      "portions": "",
+      "duree_preparation": "PT02H30M",
+      "duree_cuisson": "PT01H30M",
+      "ingredients": [
+        "4 poivrons rouges",
+        "4,5 kg de tomates roma",
+        "2 échalotes \"cuisse de poulet\"",
+        "2 gros oignons",
+        "8 gousses d'ail",
+        "4 petits piments séchés",
+        "1,5 dl d'huile d'olive",
+        "1 bouquet garni",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 757,
+        "sha256": "969a3f23db7549ed"
+      },
+      "sha256_page": "4ea465a7c73a0392"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/quoi-qu-on-mange/recettes/blanc-manger-au-parmesan-coulis-de-tomates-emulsion-au-basilic",
+      "site": "chefsimon.com",
+      "nom": "Blanc-manger au parmesan, coulis de tomates, émulsion au basilic",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "500 g de crème liquide",
+        "150 g de parmesan ou de Parmigiano Reggiano",
+        "7 g de feuilles de gélatine pour moi gélatine bio",
+        "250 g de sauce tomates",
+        "Pesto de basilic",
+        "Huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1168,
+        "sha256": "9f8dc8128cb7513d"
+      },
+      "sha256_page": "961d3638d3be3a15"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/nathalielielie/recettes/coulis-de-tomates",
+      "site": "chefsimon.com",
+      "nom": "Coulis de tomates",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H50M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "1 kg de tomates bien mûres",
+        "1 oignon",
+        "1 gousse d’ail",
+        "Sel",
+        "1 branche de romarin",
+        "1 branche de thym",
+        "5 feuilles de basilic",
+        "huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 703,
+        "sha256": "398cc87b2dd0487b"
+      },
+      "sha256_page": "8b42accb238ae034"
+    },
+    {
+      "url": "https://www.750g.com/coulis-de-tomates-fraiches-r75523.htm",
+      "site": "750g.com",
+      "nom": "Coulis de tomates fraîches",
+      "portions": "6 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "2Kg de tomates allongées ( type roma)",
+        "1 oignon",
+        "Sel",
+        "Thermomix"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1086,
+        "sha256": "72aff07e632085fa"
+      },
+      "sha256_page": "17fa0e9d58848ac1"
+    },
+    {
+      "url": "https://www.750g.com/coulis-de-tomates-r89762.htm",
+      "site": "750g.com",
+      "nom": "Coulis de tomates : une recette hivernale ",
+      "portions": null,
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "Sel ou sel fin",
+        "Poivre",
+        "1 c. à c. de sucre",
+        "5 brins de thym",
+        "5 gousses d'ail",
+        "2,5 kg de tomates"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 547,
+        "sha256": "03f21d73af4dd5c9"
+      },
+      "sha256_page": "abe41424dcca8a85"
+    },
+    {
+      "url": "https://www.750g.com/le-coulis-de-tomates-r34866.htm",
+      "site": "750g.com",
+      "nom": "Le coulis de tomates",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT19M",
+      "ingredients": [
+        "1 kg de tomate Roma  ou Tomates olivettes",
+        "10 feuilles de basilic",
+        "100 g d'oignons",
+        "3 gousses d'ail",
+        "1 c. à c. de sucre en poudre ou sucre semoule",
+        "2 feuilles de thym",
+        "50 g d'huile d'olive",
+        "1,5 c. à c. de sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 610,
+        "sha256": "ea341b40fd6ac905"
+      },
+      "sha256_page": "58bbdc505d0e3a41"
+    }
+  ]
+}

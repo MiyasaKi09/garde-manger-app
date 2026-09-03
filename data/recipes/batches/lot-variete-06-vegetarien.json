@@ -1,0 +1,282 @@
+{
+  "recipes": [
+    {
+      "code": "VAR-042",
+      "family": "Chili sin carne",
+      "cuisine_origin": "Tex-Mex, adapté en cuisine domestique française",
+      "identity_level": "named_traditional_dish",
+      "category": "légumineuses",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 50,
+      "difficulty": "facile",
+      "sources": ["dossier:chili-sin-carne", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Six pages sur trois sites, données pour quatre personnes sauf une sans portions à qui l'on attribue les quatre parts de référence, ramenées ensuite aux six parts cibles. Toutes construisent la même chose : des haricots rouges, de la tomate, de l'oignon et un trio d'épices cumin-paprika-origan. Trois d'entre elles remplacent la viande par des protéines de soja texturées ou un haché végétal du commerce ; ces produits n'ont aucune forme au catalogue et ne peuvent pas être écrits. Ce n'est pas un manque grave ici — les trois autres pages, réparties sur les trois sites, se passent entièrement de substitut et font reposer le plat sur la légumineuse, ce qui est la lecture la plus solide. Le haricot rouge : quatre lignes exploitables, à 75, 100, 62,5 et 62,5 g par personne, médiane 68,75 g par personne, soit 412 g, qu'on écrit 400 g de haricots cuits égouttés. Une page part de haricots crus, 180 g pour quatre, ce qui donne à peu près le même poids une fois cuits ; une autre ajoute autant de haricots noirs, forme séchée que le catalogue porte mais qu'une seule page emploie, et elle descend en variante. La tomate : quatre lignes pesées, à 125, 100, 150 et 250 g par personne, médiane 137,5 g par personne, soit 825 g, qu'on écrit 800 g de tomates concassées. L'oignon : six lignes, médiane 32,5 g par personne, soit 195 g, écrit 200 g. Le poivron rouge n'est que dans deux pages, l'une avec un poivron pour quatre et l'autre avec trois : médiane 75 g par personne, soit 450 g — on écrit 300 g, la ligne haute étant isolée et 450 g de poivron dominant tout le reste. L'ail : trois lignes, médiane 2,5 g par personne, soit 15 g. La carotte est dans deux pages sur deux sites : 150 g. Les épices sont ce qui fait ce plat et le dossier les compte en cuillerées : le cumin dans quatre pages, médiane 0,31 g par personne, soit 1,9 g — on écrit 3 g ; le paprika dans trois, même médiane, écrit 3 g, une page précisant fumé ; l'origan dans deux, écrit 3 g. Le piquant est apporté par du tabasco dans trois pages, par des piments frais dans une, par du piment d'Espelette ou du cayenne dans deux autres — six formes pour six pages, ce qui interdit d'en canoniser une : on écrit 2 g de piment de Cayenne, forme du catalogue, et les autres passent en variantes. La coriandre fraîche est dans trois pages sur deux sites : 20 g. L'huile d'olive : trois lignes chiffrées, médiane 7,5 ml par personne, soit 45 ml. Le bouillon n'est mesuré que par une page, 500 ml pour quatre, soit 125 ml par personne — 750 ml pour six : on descend à 500 ml, les 800 g de tomate apportant déjà beaucoup de liquide. Le maïs, présent dans trois pages, n'existe au catalogue que sous une forme surgelée fraîchement arbitrée qui suspendrait le calcul nutritionnel de toute la fiche : il descend en variante. L'avocat, le citron vert, le cacao amer, le céleri, les champignons et les lentilles vertes sont à une source chacun. Durées : préparation, médiane 15 minutes des six lignes, écrite 20 ; cuisson, médiane 50 minutes des cinq lignes exploitables.",
+      "plate": {
+        "role": "main",
+        "accepts": ["starch"],
+        "reason": "Les haricots apportent la protéine et les légumes le reste, mais le plat n'a pas de céréale : quatre des six pages prévoient explicitement du riz à côté, et c'est ce que la sauce demande."
+      },
+      "ingredients": [
+        { "form": "Tomate concassée en conserve", "quantity": 800, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Bouillon de légumes", "quantity": 500, "unit": "ml", "role": "mouillement", "optional": false },
+        { "form": "Haricot rouge cuit, égoutté", "quantity": 400, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Poivron rouge frais", "quantity": 300, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 200, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Carotte crue", "quantity": 150, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 45, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Coriandre fraîche", "quantity": 20, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Ail cru", "quantity": 15, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Cumin moulu", "quantity": 3, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Paprika fumé", "quantity": 3, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Origan séché", "quantity": 3, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Piment de Cayenne", "quantity": 2, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 6, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Tailler l'oignon, le poivron et la carotte en dés d'un demi-centimètre et les faire revenir douze minutes dans l'huile d'olive à feu moyen, jusqu'à ce que l'oignon soit translucide et la carotte encore ferme. Sans viande pour donner du corps, cette base est le seul fondement du plat : bâclée, le chili reste une soupe de haricots à la tomate." },
+        { "n": 2, "instruction": "Ajouter l'ail haché, le cumin, le paprika fumé, l'origan et le cayenne, et remuer trente à quarante secondes dans le gras chaud avant tout liquide. Les épices moulues sont solubles dans la matière grasse et non dans l'eau : versées après la tomate, elles restent en suspension et donnent un goût poudreux au lieu d'un fond aromatique." },
+        { "n": 3, "instruction": "Verser les tomates concassées et le bouillon, porter à frémissement et laisser mijoter à découvert vingt-cinq minutes. Le sel n'entre pas encore : les haricots, même déjà cuits, se raffermissent dans un liquide salé et refusent ensuite de s'attendrir." },
+        { "n": 4, "instruction": "Ajouter les haricots rouges rincés et égouttés et poursuivre vingt minutes à petits bouillons, en écrasant une louche de haricots contre la paroi de la cocotte. Cet écrasement partiel libère leur amidon et lie la sauce : c'est ce qui remplace la viande hachée dans le rôle d'épaississant, et c'est pourquoi un chili sin carne n'a pas besoin de farine." },
+        { "n": 5, "instruction": "Saler, poivrer, goûter et rectifier le piquant. Le chili doit être goûté à ce moment-là et non plus tôt : les épices ont eu quarante-cinq minutes pour se développer, et ce qui paraissait fort au départ s'est arrondi." },
+        { "n": 6, "instruction": "Couper le feu, parsemer de coriandre ciselée et laisser reposer un quart d'heure à couvert avant de servir avec du riz. Ce repos n'est pas une politesse : la sauce s'épaissit encore en refroidissant légèrement, et le plat passe d'un état soupe à un état ragoût." }
+      ],
+      "techniques": ["suer", "épices ouvertes dans le gras", "mijotage", "liaison par écrasement", "repos"],
+      "variants": [
+        "Aux protéines de soja texturées, 60 à 150 g réhydratées, ou à un haché végétal — formes absentes du catalogue (marmiton, chefsimon, 750g)",
+        "Au maïs doux, 140 g égouttés ajoutés avec les haricots (chefsimon, 750g)",
+        "Aux haricots noirs, 180 g crus en plus des rouges, avec du céleri et des champignons (chefsimon)",
+        "Servi avec un avocat en dés, un quart de citron jaune et une demi-échalote crue (chefsimon)",
+        "Relevé au tabasco, une demi à une cuillerée à café, ou au piment d'Espelette (marmiton, chefsimon, 750g)",
+        "Aux lentilles vertes : 350 g cuites avec les haricots (750g)"
+      ],
+      "sensory": {
+        "profile": "spicy_umami",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 3, "bitter": 1, "umami": 3, "heat": 3, "pungency": 4, "richness": 2, "freshness": 2, "intensity": 4 },
+        "dominant_flavors": ["cumin", "paprika fumé", "tomate mijotée", "haricot rouge"],
+        "aroma_families": ["cumin", "fumé", "tomate_cuite", "piment"],
+        "target_textures": ["sauce_épaisse", "haricots fondants mais entiers", "légumes fondants"],
+        "signature_ingredients": ["Haricot rouge cuit, égoutté", "Cumin moulu", "Paprika fumé"],
+        "identity_guardrails": [
+          "Les épices s'ouvrent dans l'huile avant la tomate, sinon le plat garde un goût poudreux",
+          "On écrase une louche de haricots pour lier : c'est ce qui remplace la viande et évite toute farine",
+          "Le sel n'entre qu'après la cuisson des haricots, qu'il durcirait",
+          "Ni soja texturé ni haché végétal ici : trois pages sur six s'en passent entièrement, et le plat tient sur la légumineuse"
+        ]
+      },
+      "conservation": "Se garde 5 jours au réfrigérateur et gagne beaucoup au deuxième jour, les épices ayant fini de se répartir. Se congèle 3 mois sans rien perdre : c'est l'un des meilleurs candidats du corpus au travail d'avance, et doubler les quantités ne coûte presque rien. Réchauffer à couvert et à feu doux avec deux cuillerées d'eau. Les restes servent aussi de garniture — sur une pomme de terre au four, dans une tortilla, sous un œuf au plat.",
+      "allergens": []
+    },
+    {
+      "code": "VAR-043",
+      "family": "Lasagnes végétariennes",
+      "cuisine_origin": "Italie",
+      "identity_level": "named_traditional_dish",
+      "category": "pâtes au four",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 30,
+      "cook_minutes": 35,
+      "difficulty": "moyenne",
+      "sources": ["dossier:lasagnes-vegetariennes", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Huit pages sur trois sites, presque toutes données pour quatre personnes, ramenées ici aux six parts cibles. Elles s'accordent sur la structure — feuilles de lasagne, légumes d'été, tomate, fromage fondant — et divergent sur le liant, qui est le vrai sujet de cette fiche. Les feuilles : une seule page les pèse, 200 g de feuilles fraîches pour quatre, soit 50 g par personne ; les sept autres en comptent de six à vingt sans jamais les peser. On écrit 300 g de feuilles sèches pour six, ce que donne cette unique ligne ramenée aux six parts, et c'est un chiffre à relire. La courgette : six lignes en pièces, médiane 100 g par personne, soit 600 g. L'aubergine : six lignes, médiane 62,5 g par personne, soit 375 g. La tomate : quatre lignes exploitables de coulis ou de concassée, à 50, 100, 100 et 75 g par personne, médiane 87,5 g par personne, soit 525 g, qu'on écrit 500 g. La mozzarella : deux lignes pesées, à 62,5 et 12,5 g par personne, médiane 37,5 g par personne, soit 225 g ; deux autres pages la comptent en boules. L'oignon : cinq lignes, médiane 32,5 g par personne, soit 195 g, écrit 200 g. Le liant, donc. Deux pages sur deux sites montent une béchamel ou versent de la crème, à 125 et 150 ml de lait par personne ; une troisième met quatre cuillerées de crème liquide, une quatrième 15 cl de crème et deux œufs. Aucune ne s'accorde exactement avec une autre, mais la présence d'un appareil lacté est bien attestée sur deux sites, et une lasagne de légumes sans liant se dessèche : on écrit une béchamel de 700 ml de lait, 60 g de farine et 60 g de beurre pour six, ce qui est la lecture médiane des deux pages qui la composent. Le fromage râpé est le point le plus dispersé : une page met 400 g de gruyère pour quatre — 100 g par personne, chiffre isolé et considérable —, une autre 90 g de parmesan pour six, soit 15 g par personne, les autres disent « fromage râpé ». On écrit 90 g de parmesan, la seule ligne pesée qui ne soit pas aberrante, et le gruyère descend en variante. L'ail est dans deux pages : 10 g. Le basilic est dans cinq pages, jamais pesé : 15 g. Les herbes de Provence sont dans trois pages : 3 g. L'huile d'olive est dans cinq pages, une seule la chiffrant à 10 ml par personne : 50 ml. Ce que le dossier ne soutient pas : la ricotta et les épinards d'une page, le chèvre de deux pages mais sur un seul site, le pesto d'une troisième, les carottes de deux pages, le provolone d'une quatrième. Tous en variantes. Durées : préparation, médiane 25 minutes des huit lignes, écrite 30 ; cuisson, médiane 32,5 minutes des huit lignes, écrite 35.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Feuilles de lasagne pour le féculent, béchamel, mozzarella et parmesan pour la protéine, un kilo de légumes pour le reste : le plat porte l'assiette entière, et les huit pages le servent seul."
+      },
+      "ingredients": [
+        { "form": "Lait entier", "quantity": 700, "unit": "ml", "role": "béchamel", "optional": false },
+        { "form": "Courgette fraîche", "quantity": 600, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Tomate concassée en conserve", "quantity": 500, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Aubergine fraîche", "quantity": 375, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Feuille de lasagne sèche", "quantity": 300, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Mozzarella", "quantity": 225, "unit": "g", "role": "fromage", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 200, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Parmesan affiné", "quantity": 90, "unit": "g", "role": "fromage", "optional": false },
+        { "form": "Beurre doux", "quantity": 60, "unit": "g", "role": "béchamel", "optional": false },
+        { "form": "Farine de blé T55", "quantity": 60, "unit": "g", "role": "béchamel", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 50, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Basilic frais", "quantity": 15, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Ail cru", "quantity": 10, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Herbes de Provence séchées", "quantity": 3, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Trancher les aubergines et les courgettes en rondelles d'un demi-centimètre, les ranger sur des plaques, les badigeonner d'huile d'olive et les rôtir vingt minutes à 200 °C en les retournant à mi-cuisson. Un kilo de légumes d'été contient près de neuf cents grammes d'eau : rôtis, ils en perdent le tiers et concentrent leur goût ; crus dans le plat, ils la rendent tous entre les feuilles de pâte." },
+        { "n": 2, "instruction": "Pendant ce temps, faire fondre l'oignon émincé dans le reste d'huile avec l'ail et les herbes de Provence, puis verser les tomates concassées et laisser réduire vingt minutes jusqu'à une sauce épaisse qui ne coule plus de la cuillère. Sans viande pour absorber l'eau, cette sauce doit être nettement plus réduite qu'un ragù." },
+        { "n": 3, "instruction": "Monter la béchamel : faire un roux blond avec le beurre et la farine, verser le lait froid d'un coup en fouettant, et cuire jusqu'à ce qu'elle nappe. La faire un peu plus fluide qu'une béchamel de gratin — elle doit pouvoir s'insinuer entre les feuilles, qui vont s'en servir pour cuire." },
+        { "n": 4, "instruction": "Monter le plat en quatre couches : une louche de béchamel au fond, des feuilles de lasagne, la sauce tomate, les légumes rôtis, la mozzarella en dés, un peu de béchamel, et recommencer en terminant par béchamel et parmesan. Les feuilles sèches ne doivent jamais toucher le fond nu du plat ni rester à l'air en surface : partout où elles ne sont pas mouillées, elles restent dures." },
+        { "n": 5, "instruction": "Presser légèrement la surface à la spatule pour chasser les poches d'air et vérifier que la dernière couche de pâte est entièrement couverte. Une lasagne montée trop lâche s'affaisse à la cuisson et laisse des zones sèches." },
+        { "n": 6, "instruction": "Enfourner à 180 °C pour trente-cinq minutes, jusqu'à ce que le dessus soit doré et que la pointe d'un couteau traverse toutes les couches sans résistance. Parsemer le basilic déchiré au sortir du four et non avant : cuit trente-cinq minutes, il noircit et ne sert plus à rien." },
+        { "n": 7, "instruction": "Laisser reposer un quart d'heure avant de découper. Une lasagne coupée brûlante coule dans l'assiette ; celle qui a reposé se tient en parts nettes, et c'est encore plus vrai d'une lasagne de légumes, qui n'a pas de viande pour la structurer." }
+      ],
+      "techniques": ["rôtissage", "réduction", "béchamel", "montage", "gratinage", "repos"],
+      "variants": [
+        "Au gruyère râpé, jusqu'à 400 g pour quatre, à la place du parmesan (marmiton)",
+        "Au chèvre : 100 g de fromage de chèvre frais entre les couches, ou une crème de chèvre au pesto (marmiton, deux pages)",
+        "À la ricotta et aux épinards : 300 g de ricotta, 450 g d'épinards frais et deux œufs (750g)",
+        "Aux carottes râpées, une à deux, ajoutées à la sauce tomate (750g)",
+        "Au provolone, 100 g en plus de la mozzarella, avec de l'origan frais et des tomates cerises rôties (chefsimon)",
+        "Sans béchamel : quatre cuillerées de crème liquide réparties entre les couches (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": { "sweet": 3, "salty": 3, "acidic": 2, "bitter": 1, "umami": 4, "heat": 0, "pungency": 1, "richness": 4, "freshness": 1, "intensity": 3 },
+        "dominant_flavors": ["aubergine rôtie", "tomate mijotée", "mozzarella fondue", "basilic"],
+        "aroma_families": ["tomate_cuite", "végétal grillé", "lacté", "basilic"],
+        "target_textures": ["croûte gratinée", "pâtes_fermes", "légumes fondants"],
+        "signature_ingredients": ["Feuille de lasagne sèche", "Aubergine fraîche", "Mozzarella"],
+        "identity_guardrails": [
+          "Les légumes se rôtissent avant : crus entre les feuilles, ils rendent près d'un litre d'eau",
+          "La sauce tomate doit être franchement réduite — sans viande, rien n'absorbe l'excès",
+          "Aucune feuille ne doit rester sèche : partout où elle n'est pas mouillée, elle reste dure",
+          "Quinze minutes de repos avant la découpe, faute de quoi la part coule dans l'assiette"
+        ]
+      },
+      "conservation": "Se garde 4 jours au réfrigérateur et se réchauffe par parts, 15 minutes à 180 °C sous aluminium. Elle se coupe mieux froide que chaude. Se congèle 3 mois, crue et montée ou déjà cuite : crue, elle s'enfourne sans décongélation en ajoutant vingt-cinq minutes. Les légumes rôtis et la sauce se préparent 3 jours à l'avance et se congèlent séparément, ce qui ramène le montage à un quart d'heure.",
+      "allergens": ["gluten", "lait"]
+    },
+    {
+      "code": "VAR-044",
+      "family": "Bolognaise végétarienne",
+      "cuisine_origin": "Italie",
+      "identity_level": "domestic_standard",
+      "category": "sauce",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 35,
+      "difficulty": "facile",
+      "sources": ["dossier:bolognaise-vegetarienne", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Huit pages sur trois sites, et deux façons opposées de faire une bolognaise sans viande. La première remplace la viande par un produit qui l'imite : protéines de soja texturées, haché végétal du commerce, haché à la tomate. Elle est dans quatre pages, et aucun de ces produits n'a de forme au catalogue — ils ne peuvent pas être écrits. La seconde ne remplace rien : elle taille les légumes en très petits dés et les laisse fondre longuement jusqu'à obtenir la texture d'un ragù. Elle est dans quatre pages également, réparties sur les trois sites, et c'est celle qu'on écrit. Une neuvième lecture, une page qui monte une sauce au pesto et aux olives, ne décrit ni l'une ni l'autre et sort. La tomate : une seule ligne pesée, 2 kg de tomates fraîches pour huit, soit 250 g par personne — 1 500 g pour six, qui perdent la moitié de leur poids en réduisant. On écrit 800 g de tomates concassées en conserve, ce que quatre pages emploient sous le nom de coulis, de pelées ou de concassée, et qui donne le même rendement. Le concentré de tomate est dans trois pages, deux le chiffrant à 17,5 et 1,25 g par personne : médiane 9,4 g par personne, soit 56 g, qu'on écrit 60 g. La courgette : cinq lignes, médiane 50 g par personne, soit 300 g. La carotte : cinq lignes, médiane 25 g par personne, soit 150 g. L'aubergine : trois lignes, toutes à 31,25 g par personne, soit 187 g, qu'on écrit 190 g. L'oignon : cinq lignes, médiane 32,5 g par personne, soit 195 g, écrit 200 g. L'ail : deux lignes, médiane 1,56 g par personne, soit 9,4 g, écrit 10 g. Le basilic est dans trois pages sur les trois sites : 20 g, jamais pesé. Le sucre, qui corrige l'acidité de la tomate, est dans deux pages sur deux sites, un morceau chacune : 5 g. L'huile d'olive est dans cinq pages, une seule la chiffrant : 40 ml. Ce que le dossier ne soutient pas comme constant : le poivron rouge et le céleri, présents dans deux pages qui sont en réalité la même recette publiée deux fois sur le même site ; le vin rouge des mêmes ; les champignons d'une autre ; le beurre de cacahuète, le curcuma et le paprika d'une quatrième. Tous en variantes. Durées : préparation, médiane 15 minutes des sept lignes, écrite 20 parce que la taille en très petits dés est ce qui prend le temps ; cuisson, médiane 20 minutes des cinq lignes exploitables — on écrit 35, ce que donne la page qui pousse la réduction le plus loin, parce qu'une sauce de légumes non réduite reste une soupe de légumes.",
+      "plate": {
+        "role": "component",
+        "accepts": [],
+        "reason": "C'est une sauce, pas un plat : elle se sert sur des pâtes, se monte en lasagnes, se glisse sous une purée ou dans un gratin. Faite une fois en grande quantité, elle donne trois repas différents dans la semaine — c'est la définition même d'une base partagée."
+      },
+      "ingredients": [
+        { "form": "Tomate concassée en conserve", "quantity": 800, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Courgette fraîche", "quantity": 300, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 200, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Aubergine fraîche", "quantity": 190, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Carotte crue", "quantity": 150, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Concentré de tomate", "quantity": 60, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 40, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Basilic frais", "quantity": 20, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Ail cru", "quantity": 10, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Sucre semoule", "quantity": 5, "unit": "g", "role": "équilibre", "optional": false },
+        { "form": "Sel fin", "quantity": 6, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Tailler l'oignon, la carotte, la courgette et l'aubergine en dés de trois à quatre millimètres, aussi réguliers que possible. C'est la seule opération vraiment longue de la recette et c'est aussi la seule qui compte : à cette taille, les légumes fondent en une masse qui accroche aux pâtes comme le fait une viande hachée. En dés d'un centimètre, on obtient une ratatouille et non une bolognaise, et aucune cuisson ne rattrape la découpe." },
+        { "n": 2, "instruction": "Faire revenir l'oignon et la carotte dans l'huile d'olive à feu moyen pendant dix minutes, puis ajouter l'aubergine et la courgette et poursuivre dix minutes en remuant. L'aubergine boit beaucoup d'huile dans les premières minutes puis la relâche : ne pas en rajouter à ce moment-là, sous peine d'une sauce grasse." },
+        { "n": 3, "instruction": "Ajouter l'ail haché et le concentré de tomate, remuer deux minutes à feu vif jusqu'à ce que le concentré fonce légèrement et sente le grillé. C'est ce court passage sur le feu qui lui retire son goût métallique et apporte à la sauce la profondeur qu'un ragù tire de la viande saisie." },
+        { "n": 4, "instruction": "Verser les tomates concassées, le sucre, saler et poivrer, et laisser mijoter trente-cinq minutes à découvert et à feu doux, en remuant de temps à autre pour décoller le fond. La sauce est prête quand un sillon tracé à la cuillère au fond de la casserole met deux secondes à se refermer." },
+        { "n": 5, "instruction": "Goûter et rectifier le sel et le sucre. Une sauce de légumes est plus acide qu'un ragù parce que rien n'y apporte de gras animal pour l'arrondir : c'est le rôle du morceau de sucre, et il faut parfois en ajouter un second selon les tomates." },
+        { "n": 6, "instruction": "Hors du feu, incorporer le basilic déchiré à la main. Ajouté en cours de cuisson, il noircit et perd tout son parfum en cinq minutes ; jeté à la fin dans une sauce encore brûlante, il infuse juste assez." }
+      ],
+      "techniques": ["taille en brunoise", "suer", "torréfaction du concentré", "mijotage", "réduction"],
+      "variants": [
+        "Aux protéines de soja texturées ou au haché végétal, 50 à 240 g réhydratés, formes absentes du catalogue (marmiton, chefsimon, 750g)",
+        "Au poivron rouge, au céleri branche et à un verre de vin rouge (750g, deux pages)",
+        "Aux champignons de Paris, trois pièces émincées avec les légumes (marmiton)",
+        "Au beurre de cacahuète, deux cuillerées à soupe, avec paprika et curcuma (chefsimon)",
+        "Au romarin, au thym et au laurier, une cuillerée à café de chaque (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "tomato_herbal",
+        "scores": { "sweet": 3, "salty": 3, "acidic": 3, "bitter": 1, "umami": 3, "heat": 0, "pungency": 1, "richness": 2, "freshness": 2, "intensity": 3 },
+        "dominant_flavors": ["tomate mijotée", "légumes fondus", "basilic", "ail"],
+        "aroma_families": ["tomate_cuite", "oignon_compoté", "basilic", "huile_olive"],
+        "target_textures": ["sauce_épaisse", "légumes fondants", "nappant"],
+        "signature_ingredients": ["Tomate concassée en conserve", "Aubergine fraîche", "Carotte crue"],
+        "identity_guardrails": [
+          "Les légumes se taillent en dés de trois à quatre millimètres : c'est la découpe, et non la cuisson, qui donne la texture d'un ragù",
+          "Le concentré de tomate se torréfie deux minutes avant d'être mouillé, sinon il garde son goût de boîte",
+          "Trente-cinq minutes de réduction à découvert : une sauce de légumes non réduite reste une soupe",
+          "Le basilic entre hors du feu — cuit, il noircit en cinq minutes"
+        ]
+      },
+      "conservation": "Se garde 5 jours au réfrigérateur en bocal fermé sous un film d'huile d'olive, et se congèle 4 mois en portions — c'est la préparation à faire en double ou en triple. Elle sert de sauce à pâtes, de couche de lasagnes, de base de gratin de courgettes ou de fond sous une purée. Réchauffer à feu doux avec une cuillerée d'eau. Le basilic se rajoute frais à chaque usage plutôt que congelé avec la sauce.",
+      "allergens": []
+    },
+    {
+      "code": "VAR-045",
+      "family": "Hachis parmentier végétarien",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "hachis parmentier de légumes",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 30,
+      "cook_minutes": 45,
+      "difficulty": "facile",
+      "sources": ["dossier:hachis-parmentier-vegetarien", "marmiton.org", "chefsimon.com"],
+      "canonical_arbitration": "Cinq pages sur deux sites, toutes données pour quatre personnes, ramenées ici aux six parts cibles. Le dossier est mince et surtout hétérogène : chaque page remplace la viande par autre chose — des haricots rouges dans l'une, du boulgour et de la macédoine surgelée dans une autre, des lentilles et de la patate douce dans une troisième. Deux pages, une sur chaque site, font exactement la même chose et ce sont elles qui donnent le plat : une garniture de légumes racines et de champignons taillés menu, fondue au vin blanc, sous une purée. Les autres restent au calcul pour ce qu'elles partagent et descendent en variantes pour le reste. La pomme de terre : trois lignes exploitables, à 150, 250 et 250 g par personne, médiane 250 g par personne, soit 1 500 g. On descend à 200 g par personne, soit 1 200 g : la purée est ici la couverture d'un plat qui porte déjà 1,5 kg d'autres légumes, et un kilo et demi de pomme de terre en ferait une purée garnie plutôt qu'un hachis. La carotte : quatre lignes, à 75, 50, 250 et 100 g par personne — la ligne à 250 est celle d'une page dont la carotte remplace toute la garniture — médiane 87,5 g par personne, soit 525 g, qu'on écrit 500 g. Le navet est dans les deux pages qui font le plat, une pièce et deux pièces pour quatre : médiane 48,75 g par personne, soit 292 g, écrit 300 g. Le poireau, dans les deux mêmes, une pièce pour quatre chacune : 37,5 g par personne, soit 225 g. Les champignons sont dans trois pages, une seule les pesant à 50 g par personne : on écrit 250 g. L'oignon : trois lignes, médiane 65 g par personne, soit 390 g — on écrit 300 g, deux des trois lignes ne comptant qu'un oignon pour quatre. Le vin blanc est dans les deux pages du plat, 200 ml pour quatre et un demi-verre pour quatre : médiane 37,5 ml par personne, soit 225 ml, qu'on écrit 200 ml. La crème est dans deux pages, à 50 et 25 ml par personne : médiane 37,5 ml par personne, soit 225 ml, écrite 200 ml. Le beurre : deux lignes, médiane 8,75 g par personne, soit 52 g, écrit 50 g. Le fromage râpé est dans deux pages, l'une pesant 50 g d'emmental pour quatre, soit 12,5 g par personne : on écrit 100 g, la seconde couvrant la surface de mozzarella. L'huile d'olive : trois lignes, toutes à 7,5 ml par personne, soit 45 ml. Le thym est dans deux pages : 3 g. Le persil est dans deux pages : 15 g. Le céleri branche, le jaune d'œuf, la sauce soja, le concentré de tomate, la muscade et le pain de mie sont à une source chacun. Durées : préparation, médiane 30 minutes des cinq lignes ; cuisson, médiane 45 minutes des cinq lignes.",
+      "plate": {
+        "role": "main",
+        "accepts": ["vegetables"],
+        "reason": "Purée pour le féculent, légumes fondus pour le corps du plat, crème et fromage pour une part de protéine laitière : il manque une protéine franche, que les variantes du dossier apportent par des haricots ou des lentilles. Une salade verte à côté finit le repas."
+      },
+      "ingredients": [
+        { "form": "Pomme de terre crue, épluchée", "quantity": 1200, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Carotte crue", "quantity": 500, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Navet cru", "quantity": 300, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 300, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Champignon de Paris frais", "quantity": 250, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Poireau cru", "quantity": 225, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Crème fraîche liquide entière", "quantity": 200, "unit": "ml", "role": "purée", "optional": false },
+        { "form": "Vin blanc sec", "quantity": 200, "unit": "ml", "role": "déglaçage", "optional": false },
+        { "form": "Emmental râpé", "quantity": 100, "unit": "g", "role": "gratinage", "optional": false },
+        { "form": "Beurre doux", "quantity": 50, "unit": "g", "role": "purée", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 45, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Persil plat frais", "quantity": 15, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Thym frais", "quantity": 3, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Éplucher les pommes de terre, les couper en morceaux réguliers et les cuire départ eau froide salée, vingt-cinq minutes, jusqu'à ce qu'elles s'écrasent sans résistance. Départ eau froide et non eau bouillante : jetées dans l'eau chaude, elles cuisent en surface avant le cœur et la purée reste grumeleuse quoi qu'on fasse." },
+        { "n": 2, "instruction": "Tailler la carotte, le navet, l'oignon, le poireau et les champignons en dés de cinq millimètres. C'est ce qui remplace le hachis de viande : le plat s'appelle hachis, et sans cette découpe menue la couche du dessous reste un ragoût de légumes sous une purée, ce qui n'est pas la même chose en bouche." },
+        { "n": 3, "instruction": "Faire revenir les légumes dans l'huile d'olive à feu vif, sept à huit minutes, en les laissant colorer sans les remuer en permanence, puis ajouter le thym. La coloration est la seule source de goût brun d'un plat sans viande : à feu doux, les légumes suent et le hachis reste pâle et fade." },
+        { "n": 4, "instruction": "Déglacer au vin blanc, gratter le fond, et laisser réduire à découvert une quinzaine de minutes jusqu'à ce qu'il ne reste plus de liquide libre. Une garniture humide fait remonter la purée et l'empêche de gratiner : le dessous doit être moelleux mais non mouillé." },
+        { "n": 5, "instruction": "Écraser les pommes de terre au presse-purée — jamais au robot, qui rend l'amidon élastique et donne une colle — puis incorporer le beurre en parcelles et la crème chaude, saler, poivrer. La crème froide sur une purée chaude la fait figer par plaques ; chaude, elle s'incorpore d'un coup." },
+        { "n": 6, "instruction": "Étaler la garniture dans un plat, parsemer le persil ciselé, couvrir de la purée en lissant à la fourchette pour former des sillons, et parsemer d'emmental râpé. Les sillons ne sont pas décoratifs : ils multiplient la surface exposée et c'est là que se forme la croûte." },
+        { "n": 7, "instruction": "Enfourner à 200 °C pour vingt-cinq à trente minutes, jusqu'à ce que le dessus soit doré et que les bords bouillonnent. Laisser reposer dix minutes avant de servir, le temps que la garniture se raffermisse et que la part se tienne à la cuillère." }
+      ],
+      "techniques": ["cuisson départ eau froide", "taille en dés", "sauté à feu vif", "déglaçage", "purée au presse-purée", "gratinage"],
+      "variants": [
+        "Aux haricots rouges : 800 g égouttés dans la garniture, avec 125 g de mozzarella et du concentré de tomate (marmiton)",
+        "Aux lentilles et à la patate douce : 200 g de lentilles, 400 g de tomates concassées et une purée de quatre patates douces (chefsimon)",
+        "Au boulgour : 85 g avec un kilo de carottes et 250 g de macédoine surgelée, sous un bouquet garni (marmiton)",
+        "Purée liée d'un jaune d'œuf avant gratinage (chefsimon)",
+        "Une cuillerée à café de sauce soja dans la garniture, avec deux branches de céleri et une tranche de pain de mie émiettée (marmiton)"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 3, "salty": 3, "acidic": 1, "bitter": 0, "umami": 3, "heat": 0, "pungency": 1, "richness": 4, "freshness": 1, "intensity": 2 },
+        "dominant_flavors": ["purée au beurre", "champignon", "légumes racines", "thym"],
+        "aroma_families": ["beurre", "champignon_terreux", "végétal cuit", "thym"],
+        "target_textures": ["croûte gratinée", "purée lisse", "légumes fondants"],
+        "signature_ingredients": ["Pomme de terre crue, épluchée", "Champignon de Paris frais", "Carotte crue"],
+        "identity_guardrails": [
+          "Les légumes se taillent en dés de cinq millimètres : c'est ce qui fait un hachis et non un ragoût sous purée",
+          "Ils se colorent à feu vif — sans viande, la coloration est la seule source de goût brun du plat",
+          "La garniture doit être sèche avant d'être couverte, sinon la purée remonte et ne gratine pas",
+          "Purée au presse-purée et jamais au robot, qui la rend élastique"
+        ]
+      },
+      "conservation": "Se garde 4 jours au réfrigérateur et se réchauffe 20 minutes à 180 °C, couvert d'aluminium les dix premières minutes. Se congèle 3 mois, cru et monté ou déjà cuit : cru, il s'enfourne sans décongélation en ajoutant trente minutes. La garniture de légumes se prépare seule 3 jours à l'avance et se congèle 3 mois ; elle sert aussi de fond de tourte ou de garniture de crêpes salées, ce qui en fait une base à doubler.",
+      "allergens": ["lait"]
+    }
+  ]
+}

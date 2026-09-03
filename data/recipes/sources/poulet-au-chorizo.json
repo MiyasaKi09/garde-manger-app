@@ -1,0 +1,227 @@
+{
+  "dish": "Poulet au chorizo",
+  "slug": "poulet-au-chorizo",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_risotto-au-poulet-et-chorizo_36084.aspx",
+      "site": "marmiton.org",
+      "nom": "Risotto au poulet et chorizo : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "3 verres de riz",
+        "huile d'olive",
+        "beurre",
+        "2 verres de vin blanc",
+        "parmesan",
+        "1 oignon ou plus suivant les goûts",
+        "1 l de bouillon de volaille",
+        "1 oignon",
+        "huile d'olive",
+        "2 blancs de poulet en dés",
+        "1 chorizo (fort ou non suivant les goûts)",
+        "1 poivron rouge",
+        "1 poivron vert",
+        "1 poivron jaune",
+        "2 poignées de petits pois"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 590,
+        "sha256": "d11afd77bec12acc"
+      },
+      "sha256_page": "f2faba10abfc049c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_paella-fruits-de-mer-chorizo-et-poulet-de-patou_50730.aspx",
+      "site": "marmiton.org",
+      "nom": "Paëlla fruits de mer, chorizo et poulet de Patou : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "500 g de riz",
+        "1 kg de filet de poulet",
+        "500 g de calamars",
+        "1 l de moules",
+        "15 crevettes",
+        "1 chorizo",
+        "2 poivrons",
+        "1 kg de tomate",
+        "2 oignons",
+        "3 gousses d'ail",
+        "3 doses de safran",
+        "1 l de bouillon de volaille",
+        "5 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 534,
+        "sha256": "d11e07d2a6db6975"
+      },
+      "sha256_page": "0db5656139b0753f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-au-chorizo_21682.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet au chorizo : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT1H5M",
+      "ingredients": [
+        "1 poulet",
+        "2 cuillères à café de paprika en poudre",
+        "4 cuillères à soupe d'huile d'olive",
+        "2 oignons hachés (petits)",
+        "6 gousses d'ail hachées",
+        "150 g de chorizo",
+        "400 g de tomates concassées",
+        "2 feuilles de laurier",
+        "5 cuillères à soupe de Xérès",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 496,
+        "sha256": "35ac306797b8a93c"
+      },
+      "sha256_page": "0fdfcb2867007987"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/marmite-de-poulet-au-poivron-et-pommes-de-terre-au-chorizo",
+      "site": "chefsimon.com",
+      "nom": "Marmite de poulet au poivron et pommes de terre au chorizo",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H21M",
+      "ingredients": [
+        "2 blancs de poulet",
+        "50 g de chorizo",
+        "70 g de tomates cerises",
+        "50 g de poivrons surgelés",
+        "4 pommes de terre cuites à la vapeur (facultatif)",
+        "15 g de concentré de tomates",
+        "50 ml de vin blanc sec + 200 ml d'eau",
+        "1 échalote",
+        "2 gousses d'ail",
+        "1 c. à café de maïzena",
+        "1 filet d'huile de pépins de raisin",
+        "branches de thym",
+        "piment d'Espelette",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 983,
+        "sha256": "bdfa298876674404"
+      },
+      "sha256_page": "38e61e76cfd34694"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/blancs-de-poulet-a-la-creme-infusee-au-chorizo-de-philippe-etchebest",
+      "site": "chefsimon.com",
+      "nom": "Blancs de poulet à la crème infusée au chorizo de Philippe Etchebest",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H12M",
+      "duree_cuisson": "PT00H23M",
+      "ingredients": [
+        "2 blancs de poulet",
+        "30 g de chorizo",
+        "100 g de crème demi épaisse à 4% de MG",
+        "80 ml de jus de ratatouille ou bouillon de légumes",
+        "1 échalote",
+        "1 gousse d'ail",
+        "branches de thym",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 582,
+        "sha256": "7e75807bb8bd62ce"
+      },
+      "sha256_page": "e2c7e2c43c8b4e46"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/kitchen-story/recettes/paella-au-chorizo-et-poulet",
+      "site": "chefsimon.com",
+      "nom": "Paella au chorizo et poulet",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "100g de blanc de poulet",
+        "60g de chorizo",
+        "40g de petits pois",
+        "5g d'épices à paella",
+        "2 petites échalotes",
+        "1 demi poivron",
+        "150g de riz blanc",
+        "Quelques pistils de safran"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 792,
+        "sha256": "1b2506f4a3a023ae"
+      },
+      "sha256_page": "a8dbfe17dff4a1be"
+    },
+    {
+      "url": "https://www.750g.com/poulet-au-chorizo-r75043.htm",
+      "site": "750g.com",
+      "nom": "Poulet au chorizo et tomates",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "Sel",
+        "Poivre",
+        "Huile d'olive",
+        "4 échalotes",
+        "500g de purée de tomate",
+        "1 chorizo, fort ou non selon les goûts",
+        "1 boîte de tomates ou tomates fraiches coupées en dés",
+        "4 cuisses de poulet",
+        "3 filets de poulets"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 507,
+        "sha256": "d096b135aaeade17"
+      },
+      "sha256_page": "7e0764cafd03ef96"
+    },
+    {
+      "url": "https://www.750g.com/blanc-de-poulet-au-chorizo-poivrons-r28973.htm",
+      "site": "750g.com",
+      "nom": "Blanc de poulet au chorizo & poivrons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 blancs de poulet  coupés en lamelle",
+        "1 poivron vert",
+        "1 poivron rouge",
+        "1 poivron jaune",
+        "8 tranches de chorizo",
+        "1 c. à s. de piment de Cayenne ou poivre de Cayenne",
+        "4 piment oiseau",
+        "1 c. à s. de miel  (si servi avec de la semoule)",
+        "4 c. à s. d'epices mexicaines",
+        "4 tomates  concassées",
+        "2 c. à s. d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 935,
+        "sha256": "be5297a8c28ac17f"
+      },
+      "sha256_page": "0fe12552fac4a020"
+    }
+  ]
+}

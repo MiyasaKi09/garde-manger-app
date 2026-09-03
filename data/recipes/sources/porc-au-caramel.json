@@ -1,0 +1,208 @@
+{
+  "dish": "Porc au caramel",
+  "slug": "porc-au-caramel",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_porc-caramel_72335.aspx",
+      "site": "marmiton.org",
+      "nom": "Porc caramel : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "1 filet mignon ou de l'échine de porc pour 4 personnes (800 g)",
+        "50 cl d'eau chaude",
+        "2 cubes de bouillon de poule",
+        "1 cuillère à soupe de gingembre moulu",
+        "1 cuillère à soupe de mélange 4 épices (girofle, muscade, cannelle, et poivre)",
+        "3 cuillères à soupe de sauce soja",
+        "30 morceaux de sucre (peu importe la couleur)",
+        "5 cl d'eau",
+        "1 oignon jaune"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 683,
+        "sha256": "eca4b2d01f41fa16"
+      },
+      "sha256_page": "f9eabd2c26ac45fd"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_porc-au-caramel_16944.aspx",
+      "site": "marmiton.org",
+      "nom": "Porc au caramel : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 oignons",
+        "2 échalotes",
+        "3 gousses d'ail",
+        "600 g de porc",
+        "1 caramel liquide",
+        "4 cuillères à soupe de nuoc mam voire plus",
+        "riz basmati pour 4 personnes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 397,
+        "sha256": "e8ff36097818cd26"
+      },
+      "sha256_page": "73abbeba592698e9"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_porc-au-caramel-quatre-epices_313263.aspx",
+      "site": "marmiton.org",
+      "nom": "Porc au caramel quatre épices : la meilleure recette",
+      "portions": "6 Personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1.5 kg de porc",
+        "5 cuillères à soupe de sauce soja",
+        "1 cuillère à soupe de quatre-épices",
+        "1 cuillère à soupe de gingembre",
+        "0.5 l d'eau chaude",
+        "2 cubes de bouillon de poule",
+        "125 g de sucre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 870,
+        "sha256": "00a8cea19e1f31aa"
+      },
+      "sha256_page": "e9b9f12f749fc13d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/porc-au-caramel--13",
+      "site": "chefsimon.com",
+      "nom": "Porc au caramel",
+      "portions": "5 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "600 g d'échine",
+        "400 g de poitrine fraîche",
+        "200 g de sucre",
+        "1 litre d'eau",
+        "4 belles cuillers à soupe de nuoc mam",
+        "6 grosses échalotes",
+        "poivre",
+        "sauce soja"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 736,
+        "sha256": "a8853739a3934c01"
+      },
+      "sha256_page": "b8f2c5b52a317fd7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lesfillesatable-com/recettes/porc-au-caramel-7846bee6-9402-4dac-957f-f99a157e356a",
+      "site": "chefsimon.com",
+      "nom": "Porc au caramel",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT01H30M",
+      "ingredients": [
+        "1 rôti de porc dans l’échine d’environ 1 kg",
+        "5 cuillerées à soupe de nuoc-mâm",
+        "5 cuillerées à soupe de sauce soja salée",
+        "1 litre d’eau de coco",
+        "1 citron vert",
+        "1 oignon nouveau (pas mis)",
+        "1 bouquet de coriandre",
+        "huile de tournesol",
+        "4 gousses d’ail",
+        "4 cm de gingembre frais (1 cuil. à café de gingembre en poudre pour moi)",
+        "1 échalote",
+        "1 piment oiseau (1 cuil. à café de piment d’espelette pour moi)",
+        "140 g de sucre de canne",
+        "5 cl d’eau",
+        "le jus d’un citron vert"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 1168,
+        "sha256": "a39b819fd7391ec1"
+      },
+      "sha256_page": "83903108247b3d2a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/wok-de-porc-au-caramel--2",
+      "site": "chefsimon.com",
+      "nom": "Wok de porc au caramel",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "400 g de filet de porc",
+        "300 g de brocolis",
+        "1  bocal de germes de soja",
+        "115 g de champignons de Paris émincés en boite",
+        "1  poivron rouge",
+        "1  cuil. à soupe de sauce soja",
+        "2  cuil. à soupe de sauce nuoc-mâm",
+        "1  cuil. à café de gingembre en poudre",
+        "1  cuil. à soupe d’huile",
+        "3  cuil. à café de sucre en poudre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 191,
+        "sha256": "9a612364afdb4598"
+      },
+      "sha256_page": "a90df40695e30326"
+    },
+    {
+      "url": "https://www.750g.com/porc-au-caramel-r100554.htm",
+      "site": "750g.com",
+      "nom": "Poitrine de porc au caramel mijoté avec des œufs",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "600 g de poitrine de porc",
+        "1 l de limonade",
+        "4 oeufs  durs",
+        "1 quartier d'oignon  en quartiers",
+        "1 gousse d'ail  hachée",
+        "Sucre",
+        "Huile",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 510,
+        "sha256": "99b8743540e1818a"
+      },
+      "sha256_page": "7038d71e0fa41d55"
+    },
+    {
+      "url": "https://www.750g.com/porc-au-caramel-r2040.htm",
+      "site": "750g.com",
+      "nom": "Porc au caramel",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "800 g d'échine de porc",
+        "1 oignon rouge",
+        "5 c. à s. de nuoc-mâm",
+        "4 c. à s. de sucre en poudre ou sucre semoule",
+        "2 c. à s. d'huile",
+        "3 gousses d'ail",
+        "1 c. à s. bombée(s) de sauce soja"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 695,
+        "sha256": "cd655b399c7d0243"
+      },
+      "sha256_page": "673c05b010101598"
+    }
+  ]
+}

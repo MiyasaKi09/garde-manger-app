@@ -1,0 +1,225 @@
+{
+  "dish": "Quiche aux courgettes",
+  "slug": "quiche-aux-courgettes",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_quiche-courgettes-et-saumon-fume_23320.aspx",
+      "site": "marmiton.org",
+      "nom": "Quiche courgettes et saumon fumé : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 rouleau de pâte brisée",
+        "3 courgettes",
+        "2 tranches de saumon fumé",
+        "3 oeufs",
+        "20 cl de crème fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 416,
+        "sha256": "7cfda6ec76c2e251"
+      },
+      "sha256_page": "034069578169340f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_quiche-poireaux-courgettes_27564.aspx",
+      "site": "marmiton.org",
+      "nom": "Quiche poireaux courgettes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "pâte brisée ou feuilletée",
+        "2 poireaux",
+        "2 courgettes",
+        "100 g de lardons fumés coupés fin",
+        "1 tranche de jambon blanc (facultatif)",
+        "20 cl de crème fraîche liquide",
+        "2 oeufs",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 526,
+        "sha256": "2f709db9d0a5fff7"
+      },
+      "sha256_page": "8c4ad30424277f2c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_quiche-aux-courgettes-et-au-chevre_22074.aspx",
+      "site": "marmiton.org",
+      "nom": "Quiche aux courgettes et au chèvre : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "1 pâte brisée",
+        "3 courgettes",
+        "2 oeufs",
+        "25 cl de lait",
+        "25 cl de crème fraîche",
+        "150 g de chèvre frais",
+        "herbes de Provence",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 376,
+        "sha256": "fa0f1c3e06c63d82"
+      },
+      "sha256_page": "7c57f091ae86aca9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lesfillesatable-com/recettes/quiche-aux-courgettes-et-pistou",
+      "site": "chefsimon.com",
+      "nom": "Quiche aux courgettes et pistou",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "150 g de farine d’épeautre T110 (ou farine de blé)",
+        "50 g de poudre d’amande",
+        "45 g d’huile d’olive",
+        "55 g d’eau froide",
+        "1/4 de cuil. à café de sel",
+        "3 courgettes",
+        "3 oeufs",
+        "150 g de crème fleurette",
+        "1 gousse d’ail",
+        "piment d’Espelette",
+        "sel, poivre",
+        "1 botte de basilic",
+        "1 gousse d’ail",
+        "100 g de parmesan",
+        "50 g d’eau",
+        "100 g d’huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 982,
+        "sha256": "2c661a189299eec5"
+      },
+      "sha256_page": "357f60c943168168"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/orianec/recettes/quiche-sarrasin-courgettes-et-feta",
+      "site": "chefsimon.com",
+      "nom": "Quiche sarrasin, courgettes et feta",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H50M",
+      "ingredients": [
+        "100 g de farine de blé",
+        "50 g de farine de sarrasin",
+        "50 g de beurre",
+        "Un peu d’eau froide",
+        "400 g de courgettes",
+        "1 càs d’huile d’olive",
+        "2 oeufs",
+        "200 g de yaourt entier (ou un mélange de lait et de crème)",
+        "De la feta",
+        "Une dizaine de feuilles de menthe (et / ou marjolaine, sauge, etc.)",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 729,
+        "sha256": "d82bf7f94660909d"
+      },
+      "sha256_page": "fbac5865f1dacedc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/quiche-aux-courgettes-et-amandes",
+      "site": "chefsimon.com",
+      "nom": "Quiche aux courgettes et amandes",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H35M",
+      "ingredients": [
+        "Pâte brisée",
+        "250 g de farine",
+        "60 g de matière grasse (saindoux pour moi, beurre si vous préférez)",
+        "quelques cuillères d'eau glacée",
+        "Garniture",
+        "2  courgettes de taille moyenne",
+        "3  œufs",
+        "25 cl de crème liquide",
+        "60  grammes de parmesan",
+        "une bonne poignée d'amandes effilées",
+        "herbes fraîches (menthe et coriandre)",
+        "huile d'olive",
+        "sel (poivre)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 185,
+        "sha256": "802b4af3be81deed"
+      },
+      "sha256_page": "28d0f74a6d6f9c75"
+    },
+    {
+      "url": "https://www.750g.com/quiche-a-la-courgette-r9741.htm",
+      "site": "750g.com",
+      "nom": "Quiche à la courgette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "1 verre de lait",
+        "4 oeufs",
+        "250 g de lardons",
+        "1 rouleau de pâte feuilletée",
+        "Ail",
+        "1 poivron vert",
+        "Sel ou sel fin",
+        "Poivre",
+        "3,4 courgettes",
+        "Huile d'olive",
+        "Persil",
+        "Thym",
+        "2 feuilles de laurier",
+        "Estragon",
+        "2,3 oignons nouveaux ou Cébettes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 635,
+        "sha256": "f71165d6a62c22f1"
+      },
+      "sha256_page": "e333799cbfea457c"
+    },
+    {
+      "url": "https://www.750g.com/quiche-aux-courgettes-r4939.htm",
+      "site": "750g.com",
+      "nom": "Quiche aux courgettes",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "sel",
+        "poivre",
+        "muscade",
+        "gruyère rapé",
+        "40 cl de crème",
+        "3 œufs",
+        "1 paquet de lardons nature",
+        "2 courgettes moyennes coupées en rondelles avec leur peau",
+        "6 champignons nettoyés et coupés en lamelles",
+        "1 gros oignon",
+        "1 rouleau de pâte brisée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 422,
+        "sha256": "ba56bf109112f266"
+      },
+      "sha256_page": "7d47c96988e28bde"
+    }
+  ]
+}

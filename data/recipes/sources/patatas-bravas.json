@@ -1,0 +1,230 @@
+{
+  "dish": "Patatas bravas",
+  "slug": "patatas-bravas",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_patatas-bravas-pommes-de-terre-frites-a-la-sauce-tomate-epicee_23420.aspx",
+      "site": "marmiton.org",
+      "nom": "Patatas bravas (pommes de terre frites à la sauce tomate épicée) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "500 g de pommes de terre",
+        "1 oignon",
+        "3 tomates moyennes mûres",
+        "1 feuille de laurier",
+        "1 cuillère à soupe de concentré de tomates",
+        "1 pincée de sucre en poudre",
+        "0.5 piment d'Espelette épépiné et émietté, ou 1/2 cuillère à café de pimento dulce",
+        "1 petit verre de vin blanc sec",
+        "1 cuillère à soupe de moutarde",
+        "1 cuillère à soupe de persil haché",
+        "huile d'olive",
+        "tabasco",
+        "poivre du moulin",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 708,
+        "sha256": "e532fce36bb69b08"
+      },
+      "sha256_page": "fadb167dd3579f15"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_patatas-bravas-et-croquetas-devant-don-quichotte_535298.aspx",
+      "site": "marmiton.org",
+      "nom": "Patatas bravas et croquetas devant le ballet Don Quichotte : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "60 g de beurre",
+        "200 g de farine",
+        "60 l de lait",
+        "100 g de jambon ibérique",
+        "50 g de manchego",
+        "2 oeufs",
+        "150 g de chapelure",
+        "huile de friture",
+        "4 pommes de terre",
+        "1 boîte de tomates concassées",
+        "1 oignon",
+        "5 cl de vinaigre",
+        "1 pincée de piment",
+        "1 gousse d'ail",
+        "1 cuillère à café de paprika",
+        "3 cuillères à soupe d'huile d'olive",
+        "huile de friture",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1706,
+        "sha256": "7c0b461ca3acb9c9"
+      },
+      "sha256_page": "b97ad9bab3252051"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/stella-cuisine/recettes/patatas-bravas",
+      "site": "chefsimon.com",
+      "nom": "Patatas bravas",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "400 grammes de pommes de terre",
+        "2 cuillères à soupe d'huile d'olive",
+        "3 gousses d'ail",
+        "4  tomates (pelées)",
+        "12  gouttes de Tabasco® rouge",
+        "1/2 cuillère à café de Pimenton (ou paprika)",
+        "2 cuillères à café de vinaigre (ici de vin blanc)",
+        "1 cuillère à café de sucre",
+        "1 pincée de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 208,
+        "sha256": "6f60d9767b56a499"
+      },
+      "sha256_page": "6de0172e7db00d49"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lafrancesa/recettes/patatas-bravas-chic-et-light",
+      "site": "chefsimon.com",
+      "nom": "Patatas bravas chic et light",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "4 pommes-de-terre de belle taille",
+        "sel fin marin sans anti-agglomérant",
+        "huile d'olive vierge extra",
+        "sel fin marin sans anti-agglomérant",
+        "2 gousse d'ail (pour la sauce alioli)",
+        "1 oeuf ultra frais (pour la sauce alioli)",
+        "1/2 citron (pour la sauce alioli)",
+        "sel fin marin sans anti-agglomérant (pour la sauce alioli)",
+        "huile d'olive vierge extra (pour la sauce alioli)",
+        "huile de tournesol (pour la sauce alioli)",
+        "1/2 kg de tomates mûres ou 40 cl de pulpe de tomate mixée (pour la salsa brava)",
+        "1 poivron rouge (pour la salsa brava)",
+        "1 oignon (pour la salsa brava)",
+        "1 ou 2 gousses d'ail (pour la salsa brava)",
+        "laurier, thym, romarin (pour la salsa brava)",
+        "sel fin marin sans anti-agglomérant (pour la salsa brava)",
+        "huile d'olive vierge extra (pour la salsa brava)",
+        "vinaigre de vin rouge (pour la salsa brava)",
+        "pimenton ou paprika doux (pour la salsa brava)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1492,
+        "sha256": "291f168e5375c424"
+      },
+      "sha256_page": "459d87b3d7df88d0"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/epicetout/recettes/patatas-bravas-21180e4b-1204-4049-a560-da25e4f832c4",
+      "site": "chefsimon.com",
+      "nom": "Patatas bravas",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "4 pommes de terre à chair ferme",
+        "1 petit oignon",
+        "1 gousse d’ail",
+        "2 cuillères à café de paprika fumé",
+        "1 pincée de piment de cayenne",
+        "1 boîte de tomates pelées",
+        "5 cl de vinaigre blanc",
+        "huile d’olive",
+        "Fleur de sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "945283fe86e213df"
+    },
+    {
+      "url": "https://www.750g.com/patatas-bravas-r82370.htm",
+      "site": "750g.com",
+      "nom": "Patatas bravas classiques",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 pommes de terre",
+        "Huile pour friture",
+        "1 jaune d'œuf",
+        "1 c à s de moutarde",
+        "20 cl d'huile d'olive ou d'arachide",
+        "1/2 c à c de paprika",
+        "1/2 c à c de purée de piment d'Espelette",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 1157,
+        "sha256": "cc63ee186454ab7d"
+      },
+      "sha256_page": "e98e3c825ebc8e5f"
+    },
+    {
+      "url": "https://www.750g.com/patatas-bravas-r100955.htm",
+      "site": "750g.com",
+      "nom": "Patatas bravas",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 kg de pomme de terre",
+        "600 g de tomates",
+        "1 oignon",
+        "2 gousses d'ail",
+        "5 cl d'huile d'olive",
+        "2 c. à s. de persil  haché",
+        "1 c. à c. de pâte de piment",
+        "Goutte de tabasco",
+        "Sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 620,
+        "sha256": "53b5dbb80c32d00c"
+      },
+      "sha256_page": "55f0dc0517fc8986"
+    },
+    {
+      "url": "https://www.750g.com/patatas-bravas-au-ketchup-r68525.htm",
+      "site": "750g.com",
+      "nom": "Patatas bravas au ketchup",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "750 g de pommes de terre",
+        "1 gousse d'ail",
+        "6 c. à s. de ketchup  Hot Amora",
+        "1 c. à c. de paprika",
+        "Huile d'olive",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 982,
+        "sha256": "4dcadc27f6229a64"
+      },
+      "sha256_page": "3c1c14e6dae0c51b"
+    }
+  ]
+}

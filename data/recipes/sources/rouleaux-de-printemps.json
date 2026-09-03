@@ -1,0 +1,196 @@
+{
+  "dish": "Rouleaux de printemps",
+  "slug": "rouleaux-de-printemps",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_rouleaux-de-printemps-simplifies_65222.aspx",
+      "site": "marmiton.org",
+      "nom": "Rouleaux de printemps simplifiés : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "2 galettes de riz (rayon exotique dans les grands supermarchés)",
+        "25 g de vermicelles de riz (même rayon)",
+        "1 tranche de blanc de poulet",
+        "2 cuillères à café de sauce soja classique",
+        "1 petite boîte de germes de soja",
+        "1 petit sachet de salade toute prête",
+        "5 feuilles de menthe",
+        "2 crevettes moyennes coupées dans le sens de la longueur",
+        "sauce pour nem"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1830,
+        "sha256": "b260aa553a09eff4"
+      },
+      "sha256_page": "3fcee39dfa658bd1"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_sauce-nuoc-mam-nems-et-rouleaux-de-printemps_54866.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauce nuoc mam (nems et rouleaux de printemps) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "6 cuillères de sauce nuoc mam (sauce de poisson)",
+        "3 cuillères de sucre en poudre",
+        "3 cuillères de vinaigre de cidre ou de vin blanc",
+        "18 cuillères d'eau plate",
+        "0.5 pincée de carotte râpée",
+        "1 petite gousse d'ail coupée en tous petits morceaux",
+        "1 pointe de couteau de piment (selon goût)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 174,
+        "sha256": "08a32bb5f126dd3e"
+      },
+      "sha256_page": "6a952fe0c78fa5ab"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_rouleaux-de-printemps-rapide_19687.aspx",
+      "site": "marmiton.org",
+      "nom": "Rouleaux de printemps rapide : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "galette de riz",
+        "nouilles chinoises fines",
+        "1 bouillon",
+        "menthe fraîche",
+        "carotte râpées",
+        "laitue fraîche",
+        "blanc de poulet",
+        "ail",
+        "miel",
+        "de vanille",
+        "sauce piquante",
+        "gingembre frais"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1152,
+        "sha256": "fb2d5c1486fa0658"
+      },
+      "sha256_page": "a159ace9ca2f8876"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/rouleaux-de-printemps--19",
+      "site": "chefsimon.com",
+      "nom": "Rouleaux de printemps",
+      "portions": "",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "16 crevettes",
+        "8 galettes de riz",
+        "8 feuilles de laitue ou sucrine",
+        "2 petites carottes râpées ou émincées",
+        "2 oignons blancs nouveaux",
+        "1 petit pot de pousses de soja",
+        "coriandre fraîche",
+        "40 g de vermicelles de riz",
+        "un avocat mûr à point",
+        "1 volume de sauce soja sucrée",
+        "1 volume d'eau",
+        "1 volume de vinaigre de riz",
+        "sauce sriracha à doser selon votre appréciation"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1096,
+        "sha256": "b9f1b4bf4bb68724"
+      },
+      "sha256_page": "448d7dda7e61bcee"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/rouleaux-de-concombre-facon-rouleaux-de-printemps",
+      "site": "chefsimon.com",
+      "nom": "Rouleaux de concombre, façon rouleaux de printemps",
+      "portions": "",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "2 concombres",
+        "3 carottes",
+        "50 g de vermicelles de riz (thaï)",
+        "150 g de petites crevettes",
+        "1 cs de miel",
+        "2 citrons verts",
+        "1 cs de nuoc mam",
+        "2 cs d’huile de sésame (ou d’olive)",
+        "5 brins de menthe",
+        "1 cs de cacahuètes non salées hachées (facultatif)",
+        "film alimentaire : 4 morceaux de 30 cm"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1418,
+        "sha256": "00a362a021aa375a"
+      },
+      "sha256_page": "9d0bdb807cd5fc45"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/interprofession-du-lapin/recettes/rouleaux-de-printemps-au-lapin",
+      "site": "chefsimon.com",
+      "nom": "Rouleaux de printemps au lapin",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "4 filets de lapin",
+        "15 g de gingembre",
+        "1 cuill à café de moutarde",
+        "1 cuill à café de sauce barbecue",
+        "8 crevettes cuites décortiquées",
+        "12 radis roses ou rouges",
+        "1 avocat",
+        "1 citron",
+        "4 grandes feuilles de laitue romaine",
+        "8 feuilles de riz rondes",
+        "2 branches de menthe",
+        "8 brins de coriandre",
+        "Sauce pour rouleau de printemps",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1525,
+        "sha256": "11a00349e4a80e3d"
+      },
+      "sha256_page": "1a6ca54047a94070"
+    },
+    {
+      "url": "https://www.750g.com/rouleaux-de-printemps-r44550.htm",
+      "site": "750g.com",
+      "nom": "Rouleaux de printemps classiques",
+      "portions": "8 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 demi paquet de vermicelles de riz cuits et refroidis",
+        "Feuilles de riz",
+        "16 crevettes roses cuites et décortiquées",
+        "Sauce pour rouleau de printemps",
+        "Feuilles de laitue",
+        "1 bouquet de coriandre",
+        "1 c à s de sauce soja",
+        "poivre",
+        "1 bouquet de menthe",
+        "2 côtes de porc dans l'échine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1163,
+        "sha256": "1287dcfb9d18ca14"
+      },
+      "sha256_page": "cb465013fb3e821e"
+    }
+  ]
+}

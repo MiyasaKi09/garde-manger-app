@@ -1,0 +1,176 @@
+{
+  "dish": "Riz créole",
+  "slug": "riz-creole",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_riz-creole_87237.aspx",
+      "site": "marmiton.org",
+      "nom": "Riz créole : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "200 g de riz",
+        "1 oignon",
+        "2 gousses d'ail",
+        "1 cuillère à soupe de curcuma ou safran",
+        "4 cuillères à soupe d'huile",
+        "poivre",
+        "sel",
+        "50 cl d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 326,
+        "sha256": "59230f7f4714b438"
+      },
+      "sha256_page": "dd0c23b3def5d8f1"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_le-vrai-riz-creole_34140.aspx",
+      "site": "marmiton.org",
+      "nom": "Le vrai riz créole : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT2M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 verre de riz",
+        "2 verres d'eau",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 346,
+        "sha256": "850dfa61f3de4212"
+      },
+      "sha256_page": "c11dc95e52b25804"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_riz-creole-sucre-sale_56937.aspx",
+      "site": "marmiton.org",
+      "nom": "Riz créole (sucré-salé) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "200 g de riz",
+        "2 oeufs",
+        "200 g de lard frais (ou de jambon en allumettes)",
+        "1 poivron rouge",
+        "2 bananes",
+        "1 petite boîte d'ananas au sirop",
+        "1 oignon",
+        "50 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 478,
+        "sha256": "a3d158e14698e876"
+      },
+      "sha256_page": "f3421c9189e664cd"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/riz-creole--4",
+      "site": "chefsimon.com",
+      "nom": "Riz créole",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "140 g de riz",
+        "sel (10 g au litre)",
+        "eau (6 fois le volume de riz)."
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 559,
+        "sha256": "8ebc34830a0c2ddb"
+      },
+      "sha256_page": "77fa1ee046eb1592"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/riz-creole-crevettes-sautees-et-chorizo",
+      "site": "chefsimon.com",
+      "nom": "Riz créole, crevettes sautées et chorizo",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "200 g de bon chorizo",
+        "300 g de riz long semi-complet",
+        "1  oignon doux",
+        "250 g de poivron vert",
+        "100 g de céleri branche",
+        "4 cuil. à soupe d’huile d’olive",
+        "400 g de tomates pelées et concassées",
+        "3  clous de girofle",
+        "2 feuilles de laurier",
+        "persil",
+        "1/2 cuil. à café de piment de Cayenne en poudre",
+        "60 cL de bouillon de volaille",
+        "15  crevettes crues",
+        "3 gousses d’ail"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 217,
+        "sha256": "bb2e34b7bb943984"
+      },
+      "sha256_page": "62d11ff4f11427a0"
+    },
+    {
+      "url": "https://www.750g.com/gateau-de-riz-creole-r8718.htm",
+      "site": "750g.com",
+      "nom": "Gâteau de riz créole",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "2 càs de crème fraîche",
+        "5 càs de rhum",
+        "sel, gousse de vanille égrainée",
+        "200 g de chocolat",
+        "3 noix de beurre",
+        "1/2 litre de lait",
+        "3 œufs",
+        "110g de sucre",
+        "200g de riz spécial dessert"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 692,
+        "sha256": "7f42cc86ac3e2e41"
+      },
+      "sha256_page": "dd20a713d38c8428"
+    },
+    {
+      "url": "https://www.750g.com/raie-au-citron-riz-a-la-creole-r4416.htm",
+      "site": "750g.com",
+      "nom": "Raie au citron, riz à la créole",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "125g de beurre",
+        "3 c à c de crème fraiche épaisse",
+        "Sel",
+        "Poivre du moulin",
+        "2 jaunes d'œufs",
+        "200g de riz blanc",
+        "1 1/2 citron",
+        "quelques bouquets de persil plat frais",
+        "4 tomates",
+        "3 courgettes",
+        "4 ailes de raies de 400g environ"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 1327,
+        "sha256": "0002e6e2a036db54"
+      },
+      "sha256_page": "3bc384d615781778"
+    }
+  ]
+}

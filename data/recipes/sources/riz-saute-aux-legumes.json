@@ -1,0 +1,113 @@
+{
+  "dish": "Riz sauté aux légumes",
+  "slug": "riz-saute-aux-legumes",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_riz-saute-aux-legumes-et-au-tofu_528167.aspx",
+      "site": "marmiton.org",
+      "nom": "Riz sauté aux légumes et au tofu : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT0S",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "250 g de riz",
+        "300 g de tofu",
+        "1 carotte",
+        "6 champignons",
+        "1 oignon",
+        "1 gousse d'ail",
+        "3 cuillères à soupe de sauce soja",
+        "1 cuillère à café de miel",
+        "1 bâton de citronnelle",
+        "2 cuillères à soupe d'huile de sésame",
+        "1 oeuf",
+        "2 oignons cébettes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 601,
+        "sha256": "695b2ae2e893414a"
+      },
+      "sha256_page": "50bd65c371ada0d8"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-saute-au-riz-et-legumes_54794.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet sauté au riz et légumes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "4 escalopes de poulet",
+        "400 g de riz (environ)",
+        "2 courgettes",
+        "1 poivron",
+        "2 tomates",
+        "2 oignons",
+        "de brocoli",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 499,
+        "sha256": "40dc16d1b659cb37"
+      },
+      "sha256_page": "3e7c260282c64056"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_riz-et-dinde-sautes-aux-epices-et-aux-legumes_45571.aspx",
+      "site": "marmiton.org",
+      "nom": "Riz et dinde sautés aux épices et aux légumes : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 escalopes de dinde",
+        "2 poivrons rouges",
+        "1 poivron vert",
+        "4 carottes",
+        "1 oignon",
+        "0.5 gousse d'ail",
+        "2 cuillères à café de curcuma ou curry",
+        "1 cuillère à café de graines de coriandre",
+        "40 cl de crème fraîche liquide",
+        "1 cuillère à café de gros sel",
+        "300 g de riz thai ou basmati",
+        "1 cuillère à soupe d'huile",
+        "1 l d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 577,
+        "sha256": "5cd1d1c85c22be9c"
+      },
+      "sha256_page": "c647f94bf3654afa"
+    },
+    {
+      "url": "https://www.750g.com/riz-saute-aux-legumes-de-printemps-r14711.htm",
+      "site": "750g.com",
+      "nom": "Riz sauté aux légumes de printemps",
+      "portions": "3 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "un trait d'huile de sésame",
+        "huile de tournesol (ou autre huile neutre)",
+        "5 cuill. à soupe de sauce soja",
+        "les 3/4 d'un brocolis",
+        "4 carottes",
+        "1 botte d'asperges",
+        "250 g de riz basmati ou thai"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 854,
+        "sha256": "1dee2fb9c144709e"
+      },
+      "sha256_page": "166f37b020a0c7f8"
+    }
+  ]
+}

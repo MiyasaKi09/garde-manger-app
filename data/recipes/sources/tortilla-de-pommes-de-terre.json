@@ -1,0 +1,150 @@
+{
+  "dish": "Tortilla de pommes de terre",
+  "slug": "tortilla-de-pommes-de-terre",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tortilla-de-pommes-de-terre_24594.aspx",
+      "site": "marmiton.org",
+      "nom": "Tortilla de pommes de terre : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "8 oeufs",
+        "3 pommes de terre moyenne",
+        "1 oignon",
+        "huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 546,
+        "sha256": "6350948d1015ce5e"
+      },
+      "sha256_page": "195464b63338c64a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tortilla-aux-pommes-de-terre-carottes-et-feta_95021.aspx",
+      "site": "marmiton.org",
+      "nom": "Tortilla aux pommes de terre, carottes et feta : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "3 oeufs",
+        "2 pommes de terre (pas trop petites)",
+        "1 carotte",
+        "0.5 boîte de feta (boite standard, rectangulaire)",
+        "3 cuillères à soupe de crème fraîche",
+        "1 cuillère à soupe de moutarde",
+        "fromage râpé",
+        "ciboulette (ou autres selon vos goûts)",
+        "4 cuillères à soupe d'huile d'olive",
+        "sel /poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 878,
+        "sha256": "7b98cfb302e2256b"
+      },
+      "sha256_page": "30b630184c048bdf"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tortilla-de-pommes-de-terre-a-deguster-devant-carmen_535294.aspx",
+      "site": "marmiton.org",
+      "nom": "Tortilla de pommes de terre à déguster devant l'opéra Carmen : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "5 oeufs",
+        "1 oignon",
+        "600 g de pommes de terre",
+        "sel",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 977,
+        "sha256": "24ade91a49a78005"
+      },
+      "sha256_page": "dee7dd469b4be911"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clarisse-en-cuisine/recettes/galette-de-pommes-de-terre-facon-tortilla",
+      "site": "chefsimon.com",
+      "nom": "Galette de pommes de terre façon tortilla",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "3-4 c à soupe d’huile d’olives",
+        "600 gr nets de pommes de terre fermes (type Charlotte) déjà cuites en robe des champs et bien refroidies",
+        "1 oignon moyen",
+        "50 gr de chorizo artisanal doux (ou fort selon les goûts)",
+        "3 œufs",
+        "2 c à soupe de persil ciselé",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "15aa5fe224dbc73b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/epicetout/recettes/tortillas-pommes-de-terre-et-manchego",
+      "site": "chefsimon.com",
+      "nom": "Tortillas pommes de terre et manchego",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H35M",
+      "ingredients": [
+        "6 oeufs",
+        "2 pommes de terre moyennes",
+        "1 oignon",
+        "2 tranches fines de chorizo fort",
+        "20 cl de crème",
+        "50 g de manchego râpé",
+        "1 cuillère à soupe de persil ciselé",
+        "40 g de beurre",
+        "Jambon ibérique",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "488c0c1f8167d572"
+    },
+    {
+      "url": "https://www.750g.com/tortilla-aux-pommes-de-terre-r83416.htm",
+      "site": "750g.com",
+      "nom": "Tortilla aux pommes de terre et poulet",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "250 g de pommes de terre",
+        "4 blancs de poulet",
+        "3 oeufs",
+        "1 oignon",
+        "Fromage râpé",
+        "Huile d'olive",
+        "1 gousse d'ail"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1090,
+        "sha256": "1d7bc85b2f8da521"
+      },
+      "sha256_page": "6611349d68b0c46f"
+    }
+  ]
+}

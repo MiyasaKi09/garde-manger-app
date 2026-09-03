@@ -1,0 +1,198 @@
+{
+  "dish": "Soupe miso",
+  "slug": "soupe-miso",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_miso-shiru-soupe-miso_23937.aspx",
+      "site": "marmiton.org",
+      "nom": "Miso Shiru (soupe miso) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "dashi en granulés (bouillon de bonite séché)",
+        "miso (miso blanc. il existe plusieurs types de miso, allant du blanc au rouge, en passant par un mélange des deux. Plus un miso est foncé plus il est salé. Le miso rouge ou 'akamiso' convient pour les plats complexes, type marinades ou Ramen, le blanc pour les soupes claires, type miso)",
+        "wakame",
+        "shichimi togarashi (melange d'épices japonais, sesame noir et blanc, piment, écorce d'orange)",
+        "tofu ferme (le tofu exite sous deux forme, le ferme et le souple, le souple ressemble à une crème, il ne se tient pas et ne convient donc pas ici) A noter que le tofu japonais a un gout spécifique plus fin que le chinois ou celui des magasins bio, prendre garde à la provenance de celui ci.",
+        "pois mange-tout",
+        "autres légumes de saison, poireaux, oignons, carottes. Compter une petite poignée de légumes par personne. Ils ont plus une vocation esthétique que gustative"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 890,
+        "sha256": "d7978229b4211533"
+      },
+      "sha256_page": "ce9e820a0bd1d2ba"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-miso-traditionnelle_38508.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe Miso traditionnelle : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "1 l d'eau",
+        "250 g de tofu",
+        "100 g de misos",
+        "125 ml de dashi",
+        "1 cuillère à soupe de mirin",
+        "1 échalote"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 497,
+        "sha256": "f3ff84d81f834fa6"
+      },
+      "sha256_page": "cb80816636ac357c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-miso-facile_228623.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe miso facile : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "2 cuillères à soupe de misos",
+        "0.5 cube de bouillon de légumes",
+        "1 cuillère à café de sauce nuoc mam",
+        "1 cuillère à soupe de sauce soja japonaise",
+        "50 g de tofu",
+        "2 cive (ou 1 oignon frais)",
+        "1 l d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 489,
+        "sha256": "c28a3e38d18b386a"
+      },
+      "sha256_page": "066a32fc35891791"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/soupe-paysanne-a-la-creme-de-miso",
+      "site": "chefsimon.com",
+      "nom": "Soupe paysanne à la crème de miso",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "2 c à s de pâte de miso",
+        "2 carottes",
+        "1 navet",
+        "1 oignon",
+        "1 branche de céleri",
+        "3 pommes de terre",
+        "2 c à s de crème fraîche épaisse",
+        "2 feuilles de laurier",
+        "eau",
+        "persil",
+        "2 c à s d'huile d'olive",
+        "graines de sésame"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "e4bd95082da29747"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/une-aiguille-dans-l-potage/recettes/soupe-miso-290bc9c0-fb7c-4761-b7b5-a656ce01602e",
+      "site": "chefsimon.com",
+      "nom": "Soupe miso",
+      "portions": "1 personne",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "200 ml de bouillon dashi",
+        "Environ 1 c. à soupe de pâte miso blanc",
+        "Tofu ferme (facultatif)",
+        "Algue wakamé (facultatif)",
+        "Champignons shiitaké en lamelles (facultatif)",
+        "Daikon (facultatif)",
+        "Carottes (facultatif)",
+        "Crevettes (facultatif)",
+        "Oignons nouveaux ou ciboule ciselés (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "8178241584c723a7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/my-nomad-cuisine/recettes/soupe-au-potiron-et-au-miso",
+      "site": "chefsimon.com",
+      "nom": "Soupe au potiron et au miso",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "500 g potiron (pelé et coupé en cubes)",
+        "1 oignon",
+        "1 carotte",
+        "1 pomme",
+        "1 petite branche de céleri",
+        "2 c.a.s d'huile de coco",
+        "2 c.a.s de miso",
+        "poivre",
+        "1/2 c.a.c noix de muscade",
+        "2 oignons nouveaux"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "69ff2676c65cf213"
+    },
+    {
+      "url": "https://www.750g.com/soupe-miso-r99258.htm",
+      "site": "750g.com",
+      "nom": "Soupe miso au tofu, cébette, algues wakamé et dashi en poudre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "100 g de tofu ferme",
+        "1 oignon nouveau ou Cébette",
+        "3 c. à s. de miso",
+        "2 c. à s. d'algue wakamé séchée",
+        "2 c. à c. de dashi en poudre",
+        "80 cl d'eau filtrée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 430,
+        "sha256": "52c62fa42b7eeff2"
+      },
+      "sha256_page": "4b190b9c19929caa"
+    },
+    {
+      "url": "https://www.750g.com/soupe-miso-au-tofu-et-au-wakame-r44916.htm",
+      "site": "750g.com",
+      "nom": "Soupe miso au tofu et au wakame",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "Quelques morceaux de wakame sec (10 à 20g)",
+        "1 petit bloc de tofu soyeux (100 à 150g)",
+        "4 c à s de pâte miso",
+        "5,3g de dashi (vérifiez qu'il n'y en ait pas déjà dans votre pâte miso)",
+        "80 cl d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 889,
+        "sha256": "64cb19fa3117a855"
+      },
+      "sha256_page": "e56176d471bdfdc6"
+    }
+  ]
+}

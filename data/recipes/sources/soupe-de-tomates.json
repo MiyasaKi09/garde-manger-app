@@ -1,0 +1,158 @@
+{
+  "dish": "Soupe de tomates",
+  "slug": "soupe-de-tomates",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-a-la-tomate_20417.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe à la tomate : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 cuillères à soupe de concentré de tomates",
+        "1.5 l d'eau",
+        "1 oignon",
+        "1 cube de bouillon de poule",
+        "vermicelles",
+        "1 cuillère à soupe de farine",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 507,
+        "sha256": "cbdc19b29f43313d"
+      },
+      "sha256_page": "7facbdc1dab069b7"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-de-tomates-au-pistou_11397.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe de tomates au pistou : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 kg de tomate mûres",
+        "1 poireau",
+        "1 céleri",
+        "1 oignon",
+        "2 gousses d'ail",
+        "10 feuilles de basilic",
+        "1 cube de bouillon de volaille",
+        "80 g de parmesan râpé",
+        "2 cuillères à soupe de crème fraîche",
+        "2 cuillères à soupe d'huile d'olive",
+        "1 morceau de sucre",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 872,
+        "sha256": "49c0be4bd4e4eaa7"
+      },
+      "sha256_page": "ee059b59b711bcf8"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-a-la-tomate-express_70859.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe à la tomate express : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "2 cuillères à soupe d'huile d'olive",
+        "1 gousse d'ail (fraîche ou congelée)",
+        "1 oignon coupé en dés (frais ou une poignée d'oignons congelés)",
+        "1 boîte de tomates pelées",
+        "poivre",
+        "sel",
+        "1 pointe de cumin",
+        "1 cuillère à soupe de sucre en poudre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 422,
+        "sha256": "2f949a7b18bf7dc7"
+      },
+      "sha256_page": "632c14b8b4cd9e16"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/le-comptoir-de-toamasina/recettes/soupe-ultra-rapide-a-la-tomate-et-riz",
+      "site": "chefsimon.com",
+      "nom": "Soupe ultra rapide à la tomate et riz",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "1kg de tomate",
+        "2 oignons rouges",
+        "1 gousse d’ail",
+        "100 g de riz basmati",
+        "100 g de crème fraîche",
+        "750 ml d’eau",
+        "1 c. à soupe d’huile",
+        "2 c. à café d’origan et de basilic séché",
+        "2 c. à café de bouillon de légumes",
+        "1 c. à café de sucre",
+        "un peu de poivre sauvage de Madagascar et peut-être du sel",
+        "Basilic frais"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 724,
+        "sha256": "d09fe265031bfaac"
+      },
+      "sha256_page": "4ee36ac252ae64e4"
+    },
+    {
+      "url": "https://www.750g.com/soupe-tomates-cerises-roties-r83160.htm",
+      "site": "750g.com",
+      "nom": "Soupe tomates cerises rôties",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "500g de tomates cerises",
+        "2 c à s d'huile d'olive",
+        "2 gousses d'ail",
+        "1 bouillon Kub pour environ 500ml d'eau",
+        "4 tartines de pain un peu dur",
+        "1 c à s d'huile d'olive",
+        "3 gousses d'ail"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1083,
+        "sha256": "f8c27b8728c49e49"
+      },
+      "sha256_page": "3a24e4feaa08f33d"
+    },
+    {
+      "url": "https://www.750g.com/soupe-a-la-tomate-r52265.htm",
+      "site": "750g.com",
+      "nom": "Soupe à la tomate maison",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "Sel ou sel fin",
+        "Poivre",
+        "1 cube de bouillon de volaille",
+        "2 échalotes",
+        "2 courgettes",
+        "400 g de pulpe de tomates  en conserve"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 241,
+        "sha256": "0be4f8d26a4e2f3b"
+      },
+      "sha256_page": "b5ec3f7ca7547130"
+    }
+  ]
+}

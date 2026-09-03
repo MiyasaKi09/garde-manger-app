@@ -598,6 +598,114 @@ const DESCRIPTIONS = {
   'VEG-001-D1': "Lentilles vertes mijotées aux carottes, oignon et céleri, avec des lardons fumés rissolés séparément et ajoutés à l'envoi",
   'VEG-001-D2': "Lentilles vertes mijotées aux légumes en vinaigrette, accompagnées d'un œuf mollet à blanc pris et jaune coulant",
   'VEG-001-D3': "Lentilles vertes mijotées aux légumes, nappées d'une vinaigrette émulsionnée à la moutarde de Dijon et au vinaigre de vin rouge",
+
+  /* ── Lot variété ─────────────────────────────────────────────────────────
+   * Chacune se déduit de la recette elle-même — sa liste d'ingrédients, ses
+   * techniques, sa catégorie — jamais d'un souvenir du plat. C'est la règle qui
+   * gouverne tout ce dépôt, et elle vaut ici comme ailleurs : si un plat semble
+   * devoir contenir un ingrédient qui n'est pas dans sa liste, il n'y est pas.
+   * La question à laquelle répond cette ligne est « qu'est-ce que je mange ce
+   * soir », pas « d'où vient ce plat ».
+   */
+  'VAR-001': "Riz arborio mouillé au bouillon de volaille et au vin blanc, lié au parmesan et au beurre",
+  'VAR-002': "Salade froide de pain rassis détrempé, tomates, concombre et oignon rouge, relevée à l'huile et au vinaigre",
+  'VAR-003': "Escalope de veau panée à la chapelure et au parmesan, cuite au beurre",
+  'VAR-004': "Disques de semoule cuite au lait, gratinés au parmesan et au beurre",
+  'VAR-005': "Pizza repliée et scellée, garnie de mozzarella, d'emmental et de champignons à la tomate",
+  'VAR-006': "Pizza à pâte fine garnie de tomate, d'anchois et d'oignon",
+  'VAR-009': "Cubes de pommes de terre frits, servis avec une sauce tomate relevée au vinaigre",
+  'VAR-011': "Riz bomba cuit au bouillon avec moules, calamars et crevettes",
+  'VAR-012': "Crème au lait parfumée au zeste de citron et à la vanille, caramélisée à la cassonade",
+  'VAR-013': "Pain pita garni de poulet grillé, de crudités et d'une sauce au yaourt et au concombre",
+  'VAR-014': "Pâtes courtes et bœuf haché à la tomate, recouverts de béchamel et gratinés au four",
+  'VAR-015': "Aubergines, courgettes et poivrons en couches sous une béchamel gratinée",
+  'VAR-016': "Brochettes de blanc de poulet marinées à l'ail, au thym et à la cannelle, grillées",
+  'VAR-017': "Yaourt égoutté jusqu'à consistance de fromage frais, servi à l'huile d'olive et à la menthe",
+  'VAR-018': "Boulettes de bœuf haché mijotées dans une sauce tomate aux olives vertes et à la coriandre",
+  'VAR-019': "Pommes de terre, courgettes, carottes et navets mijotés ensemble à la tomate",
+  'VAR-020': "Aubergines et tomates fondues à l'ail et écrasées, servies froides aux herbes",
+  'VAR-021': "Poivrons et tomates grillés puis écrasés, relevés au piment vert et à l'huile d'olive",
+  'VAR-022': "Soupe d'épaule d'agneau aux légumes et aux pois chiches, servie en plat complet",
+  'VAR-023': "Galette feuilletée de farine et de semoule, pliée en carré et cuite à la poêle",
+  'VAR-024': "Triangles de feuille de brick fourrés d'amandes, frits puis enrobés de miel",
+  'VAR-025': "Semoule servie avec des courgettes, navets et oignons mijotés au bouillon, sans viande",
+  'VAR-026': "Soupe de betterave et de chou blanc au bœuf braisé, servie en plat complet",
+  'VAR-027': "Lamelles de bœuf sautées aux champignons dans une sauce à la crème et au vin blanc",
+  'VAR-028': "Petites crêpes épaisses à la levure de boulanger, cuites à la poêle",
+  'VAR-029': "Tourte feuilletée garnie de saumon, de riz, d'épinards et de champignons",
+  'VAR-030': "Dés de pommes de terre, carottes et petits pois liés à la mayonnaise, garnis de thon",
+  'VAR-031': "Échine de porc mijotée dans un caramel salé à la sauce poisson et à la sauce soja",
+  'VAR-032': "Blanc de poulet sauté puis glacé dans une sauce soja sucrée au saké et au gingembre",
+  'VAR-033': "Brochettes de cuisse de poulet et de poireau, laquées à la sauce soja sucrée",
+  'VAR-034': "Nouilles de riz froides garnies de bœuf sauté, de carotte et de concombre",
+  'VAR-035': "Tarte salée aux poireaux fondus dans un appareil œufs-crème, gratinée au gruyère",
+  'VAR-036': "Tarte salée au saumon et à l'aneth dans un appareil œufs-crème, sur pâte feuilletée",
+  'VAR-037': "Tarte salée aux courgettes revenues à l'ail dans un appareil œufs-crème",
+  'VAR-038': "Tarte salée au thon et à la tomate dans un appareil œufs-crème, gratinée",
+  'VAR-039': "Œufs battus cuits à la poêle et garnis de gruyère râpé",
+  'VAR-040': "Lentilles vertes mijotées au bouillon avec carotte et oignon, servies en soupe",
+  'VAR-041': "Tarte salée aux tomates sur un fond moutardé, gratinée au gruyère",
+  'VAR-042': "Haricots rouges mijotés à la tomate avec poivrons et carottes, sans viande",
+  'VAR-043': "Feuilles de lasagne alternées avec courgettes, aubergines et tomate, gratinées à la mozzarella",
+  'VAR-044': "Sauce tomate mijotée avec courgette, aubergine et carotte finement taillées, sans viande",
+  'VAR-045': "Légumes hachés recouverts d'une purée de pommes de terre, gratinés au four",
+
+  /* ── Lot rapide ──────────────────────────────────────────────────────────
+   * Reportées ici depuis le corpus, où leur rédacteur les avait écrites
+   * directement. Le script est la source de vérité — un test l exige, et il a
+   * raison : deux endroits pour la même donnée, c est deux vérités qui
+   * divergeront.
+   */
+  "RAP-001": "Tomates fraîches mondées et réduites quarante minutes sur un fond d'oignon, finies au basilic cru",
+  "RAP-002": "Tomates réduites à l'ail et à l'huile d'olive puis passées au tamis, en crème rouge lisse",
+  "RAP-003": "Farine, eau à 60 %, levure et huile d'olive pétries dix minutes et poussées une à deux heures",
+  "RAP-004": "Deux fois plus de farine que de beurre, sablée du bout des doigts et rassemblée à l'eau froide",
+  "RAP-005": "Beurre pommade crémé au sucre, œuf entier puis farine, abaissée à froid et cuite à blanc",
+  "RAP-006": "Deux volumes de lait pour un poids de farine, quatre œufs et beurre fondu, reposée une heure",
+  "RAP-007": "Carottes, poireaux, oignon et céleri infusés trois quarts d'heure dans trois litres d'eau, puis filtrés",
+  "RAP-008": "Oignons émincés fondus à l'huile d'olive, acidulés au vinaigre et laqués d'une pointe de sucre",
+  "RAP-009": "Champignons de Paris et échalotes hachés menu, desséchés au beurre jusqu'à une pâte brune et sèche",
+  "RAP-010": "Carottes, navets, pommes de terre et oignons en gros morceaux, rôtis à l'huile d'olive, à l'ail et au thym",
+  "RAP-011": "Poivrons rouges et jaunes grillés au four jusqu'à noircir, pelés à chaud puis marinés à l'huile d'olive et à l'ail",
+  "RAP-012": "Concombre dégorgé et yaourt à la grecque montés à l'ail, à la menthe et à l'huile d'olive",
+  "RAP-013": "Avocats écrasés à la fourchette, relevés d'oignon, de tomate, de citron vert et de coriandre",
+  "RAP-014": "Pommes fondues à couvert avec une pointe de cassonade, de cannelle et de citron, écrasées à la fourchette",
+  "RAP-015": "Œufs cuits durs départ eau bouillante, refroidis à l'eau glacée pour un jaune jaune et une coquille qui s'ôte",
+  "RAP-016": "Riz cuit à grande eau salée puis égoutté, grains détachés, prêt à accompagner ou à sauter le lendemain",
+  "RAP-017": "Bœuf haché lié à l'œuf et à la chapelure, oignon et persil, roulé en boulettes et doré à la poêle",
+  "RAP-018": "Farine et œufs pétris en pâte ferme, reposée puis abaissée et taillée, cuite trois minutes",
+  "RAP-019": "Jaune d'œuf et moutarde montés à l'huile en filet, relevés d'un trait de vinaigre",
+  "RAP-020": "Pois chiches égouttés, séchés puis rôtis longuement à l'huile et au curry jusqu'à devenir croustillants",
+  "RAP-021": "Beurre pommade travaillé au persil, au citron et au poivre, roulé en boudin et raffermi au froid",
+  "RAP-022": "Poulet entier beurré, aillé et thymé, rôti une heure et arrosé de son jus, reposé avant découpe",
+  "RAP-023": "Champignons de Paris poêlés à sec puis au beurre, enfermés dans une omelette baveuse crémée",
+  "RAP-024": "Œufs remués sans arrêt à feu très doux avec du beurre, crémés hors du feu et finis à la ciboulette",
+  "RAP-025": "Un œuf par ramequin sur un fond de crème, cuit au bain-marie jusqu'au blanc pris et au jaune coulant",
+  "RAP-026": "Penne à une sauce tomate fraîche montée à l'ail et au piment rouge frais, franchement piquante",
+  "RAP-027": "Romaine, poulet grillé et croûtons à l'ail liés d'une sauce montée au jaune d'œuf, moutarde, citron et parmesan",
+  "RAP-028": "Tomates, concombre, poivron vert, oignon rouge et olives noires sous un pavé de feta, à l'origan",
+  "RAP-029": "Tranches de tomate et de mozzarella alternées, basilic, huile d'olive et vinaigre balsamique",
+  "RAP-030": "Pâtes courtes refroidies, tomates cerises, mozzarella, olives et basilic, liées à l'huile d'olive",
+  "RAP-031": "Chou blanc en fines lanières, carotte et pomme râpées, liés d'une sauce mayonnaise-moutarde acidulée",
+  "RAP-032": "Carottes, courgettes et patate douce mijotées au curry dans du lait de coco, jusqu'à la lame qui passe",
+  "RAP-033": "Blancs de poulet dorés puis mijotés au curry dans du lait de coco, avec oignon et ail",
+  "RAP-034": "Émincé de poulet saisi puis mijoté dans une sauce crème, citron et sauge déglacée au vin blanc",
+  "RAP-035": "Émincé de poulet sauté avec trois couleurs de poivrons, oignon et gingembre, à feu vif",
+  "RAP-036": "Escalopes de dinde saisies, sauce échalote, champignons et crème moutardée montée dans la poêle",
+  "RAP-037": "Dos de cabillaud sur un lit de courgette et de tomate, citronné et enfermé au papier cuisson",
+  "RAP-038": "Pavés de saumon saisis côté peau puis nappés d'une crème d'échalotes montée dans la même poêle",
+  "RAP-039": "Crevettes jetées à la dernière minute dans une sauce curry-coco montée sur oignon et ail",
+  "RAP-040": "Filets de poisson blanc passés farine, œuf et chapelure, saisis trois minutes par face",
+  "RAP-041": "Riz froid sauté au wok avec carotte, brocoli et champignons, lié d'un œuf brouillé et de sauce soja",
+  "RAP-042": "Nouilles de blé sautées au wok avec poulet, brocoli, ail et gingembre, laquées soja et nuoc-mâm",
+  "RAP-043": "Carottes, poivrons, courgette et haricots verts sautés à feu vif, laqués soja, vinaigre et sésame",
+  "RAP-044": "Galette de sarrasin garnie de jambon, gruyère et d'un œuf cuit sur place, bords rabattus en carré",
+  "RAP-047": "Épinards frais fondus à la poêle, pressés puis liés au beurre, à la crème et à la muscade",
+  "RAP-048": "Haricots verts blanchis puis sautés au beurre avec de l'ail émincé, croquants et brillants",
+  "RAP-049": "Petits pois surgelés cuits au lait, mixés longuement et crémés, relevés d'une pointe de menthe",
+  "RAP-050": "Courgettes non épluchées fondues au bouillon, mixées avec des portions de fromage fondu",
+  "RAP-051": "Tomates fondues avec oignon et ail dans un bouillon, sucrées d'une pointe, mixées et crémées",
+  "RAP-052": "Bouquets de chou-fleur huilés au paprika et à l'ail, rôtis à four vif jusqu'aux pointes brunies",
 }
 
 /* ── Application au corpus ──────────────────────────────────────────── */
@@ -664,6 +772,7 @@ if (dryRun) {
 } else {
   writeFileSync(CORPUS, `${JSON.stringify(corpus, null, 2)}\n`)
   console.log(`\n${CORPUS} mis à jour.`)
+
 }
 
 export { DESCRIPTIONS }

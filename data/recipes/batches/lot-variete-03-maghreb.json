@@ -1,0 +1,538 @@
+{
+  "recipes": [
+    {
+      "code": "VAR-018",
+      "family": "Tajine de kefta",
+      "cuisine_origin": "Maroc",
+      "identity_level": "named_traditional_dish",
+      "category": "plat mijoté",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 30,
+      "difficulty": "facile",
+      "sources": ["dossier:tajine-de-kefta", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Neuf pages sur trois sites, de trois à six portions. Elles décrivent toutes des boulettes de viande hachée épicée mijotées dans une sauce tomate, et se séparent ensuite en deux familles qu'il faut trancher : trois pages cassent des œufs dans la sauce en fin de cuisson, trois autres y ajoutent des pommes de terre, et chacune de ces deux formes est attestée sur deux sites distincts. On écrit la version aux œufs, qui est la plus courte — treize à vingt-cinq minutes de cuisson contre quarante à quatre-vingt-dix pour celles aux pommes de terre — et qui donne un plat complet sans doubler le féculent ; celle aux pommes de terre descend en variante entière, et c'est une perte assumée, pas un oubli. La viande : neuf lignes pesées, de 50 à 183,3 g par personne, médiane 125 g par personne, soit 500 g pour quatre. Six pages disent « viande hachée » ou « bœuf haché », deux « bœuf ou agneau », une un mélange de bœuf et d'agneau ; l'agneau haché est une forme bloquée au catalogue et on écrit donc le bœuf haché, qui est de toute façon le terme majoritaire. L'oignon : neuf lignes en pièces ou pesées, médiane 32,5 g par personne, soit 130 g. La tomate : six lignes exploitables, de 50 à 120 g par personne, médiane 100 g par personne, soit 400 g — les pages parlent tantôt de tomates fraîches, tantôt de coulis, tantôt de pulpe ou de concassée, et la concassée en conserve est la forme qui les recouvre toutes. Les œufs : trois pages, à 2, 1,25 et 1 par personne, médiane 1,25 par personne, soit 5 œufs ; on écrit 4 œufs, un par personne, un demi-œuf n'ayant pas de sens dans un plat où chacun reçoit le sien. Les épices sont le cœur du plat et le dossier y est net : le cumin est dans six pages, médiane 0,5 g par personne, soit 2 g — on écrit 3 g ; le paprika dans cinq, même médiane, même écriture ; le gingembre moulu dans quatre, médiane 0,375 g par personne, soit 1,5 g, écrit 2 g. La coriandre fraîche est présente dans huit pages sur neuf, ce qui en fait le second marqueur du plat après le cumin ; elle n'est jamais pesée et on écrit 20 g. L'ail est dans quatre pages, médiane 2,08 g par personne, soit 8 g, écrit 10 g. Les olives vertes sont dans trois pages sur deux sites, deux d'entre elles à 100 g pour quatre : on écrit 100 g. L'huile d'olive, six lignes, médiane 8,75 g par personne, soit 35 g, qu'on écrit 40 ml. Le ras el-hanout de deux pages est une forme bloquée au catalogue et ne peut pas être écrit ; la cannelle de deux pages, le curcuma et la harissa d'une seule descendent en variantes. Durées : préparation, médiane 15 minutes des neuf lignes, écrite 20 parce que les boulettes se roulent ; cuisson, médiane 40 minutes sur les neuf lignes, mais cette médiane est celle du dossier entier, pommes de terre comprises — les trois pages aux œufs donnent 13, 20 et 25 minutes, médiane 20. On écrit 30 minutes : la sauce doit réduire avant que les œufs n'entrent, et vingt minutes n'y suffisent pas pour 400 g de tomate.",
+      "plate": {
+        "role": "main",
+        "accepts": ["starch"],
+        "reason": "Boulettes, sauce tomate et œufs : la protéine et le légume sont là, le féculent n'y est pas. Les pages servent ce tajine avec du pain ou de la semoule, et la sauce est faite pour être saucée. Les versions du dossier qui ajoutent des pommes de terre le complètent autrement, et c'est pourquoi elles cuisent deux fois plus longtemps."
+      },
+      "ingredients": [
+        { "form": "Bœuf haché cru", "quantity": 500, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Tomate concassée en conserve", "quantity": 400, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Œuf cru", "quantity": 4, "unit": "u", "role": "protéine", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 130, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Olive verte dénoyautée", "quantity": 100, "unit": "g", "role": "garniture", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 40, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Coriandre fraîche", "quantity": 20, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Ail cru", "quantity": 10, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Cumin moulu", "quantity": 3, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Paprika doux", "quantity": 3, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Gingembre moulu", "quantity": 2, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 6, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Râper la moitié de l'oignon très finement au-dessus d'un saladier et le mêler au bœuf haché avec l'ail écrasé, la moitié de la coriandre ciselée, un tiers du cumin, un tiers du paprika, le gingembre, du sel et du poivre. Râpé plutôt que haché, l'oignon rend son jus dans la viande et la garde moelleuse ; en morceaux il fait éclater les boulettes à la cuisson." },
+        { "n": 2, "instruction": "Travailler la viande une minute à la main, en la ramenant sur elle-même, jusqu'à ce qu'elle devienne collante, puis la laisser reposer un quart d'heure au frais. Ce pétrissage court développe assez de liant pour que les boulettes tiennent sans œuf ni mie de pain, ce qu'aucune des pages du dossier n'ajoute d'ailleurs." },
+        { "n": 3, "instruction": "Façonner, les mains humides, des boulettes de trente grammes environ, et les réserver au frais. Compter une quinzaine pour quatre personnes : plus grosses, elles restent crues au centre quand la sauce est réduite ; plus petites, elles se dessèchent." },
+        { "n": 4, "instruction": "Faire fondre le reste de l'oignon émincé dans l'huile d'olive à feu moyen, huit minutes, ajouter le cumin et le paprika restants hors du feu et remuer, puis verser les tomates concassées avec un demi-verre d'eau. Le paprika et le cumin s'ouvrent dans le gras tiède ; jetés dans la tomate froide, ils restent en poudre au fond de la sauce." },
+        { "n": 5, "instruction": "Déposer les boulettes dans la sauce frémissante sans les superposer, couvrir et laisser mijoter vingt minutes à feu doux, en secouant le plat de temps en temps plutôt qu'en remuant à la cuillère. On ne les retourne pas non plus : elles se tiennent d'elles-mêmes une fois saisies par la chaleur de la sauce, et les manipuler les casse." },
+        { "n": 6, "instruction": "Découvrir, ajouter les olives, laisser réduire cinq minutes jusqu'à ce que la sauce nappe, puis creuser quatre puits entre les boulettes et y casser les œufs. Couvrir et laisser cinq à sept minutes à feu très doux : le blanc doit être pris et le jaune encore coulant, ce qui est le point exact de ce plat — un jaune cuit dur en fait un autre plat, plus sec." },
+        { "n": 7, "instruction": "Parsemer du reste de coriandre, poivrer et servir dans le plat de cuisson, avec du pain pour saucer. Ne pas saler à la fin sans goûter : les olives ont rendu du sel pendant les cinq dernières minutes." }
+      ],
+      "techniques": ["hachage", "façonnage", "mijotage", "réduction", "pochage des œufs"],
+      "variants": [
+        "Aux pommes de terre : 600 g en quartiers ajoutés à la sauce et mijotés une heure, sans œufs (chefsimon, 750g)",
+        "Aux petits pois : 500 g ajoutés en fin de cuisson avec six œufs pour trois personnes (marmiton)",
+        "Aux patates douces et haricots rouges : trois patates douces, une boîte de haricots rouges et deux courgettes, une heure et demie de cuisson (marmiton)",
+        "Épicée au ras el-hanout, une à deux cuillerées à café en plus du cumin et du paprika (chefsimon, 750g)",
+        "À la cannelle : une demi-cuillerée à soupe mêlée au cumin dans la farce des boulettes (chefsimon)",
+        "Aux poivrons grillés : deux poivrons pelés et taillés en lanières ajoutés à la sauce (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 2, "bitter": 1, "umami": 4, "heat": 1, "pungency": 3, "richness": 3, "freshness": 2, "intensity": 4 },
+        "dominant_flavors": ["cumin", "coriandre fraîche", "tomate mijotée", "bœuf"],
+        "aroma_families": ["cumin", "coriandre", "tomate_cuite", "paprika"],
+        "target_textures": ["farce moelleuse", "sauce_nappante", "jaune d'œuf coulant"],
+        "signature_ingredients": ["Bœuf haché cru", "Cumin moulu", "Coriandre fraîche"],
+        "identity_guardrails": [
+          "Cumin et coriandre fraîche ensemble : ce sont les deux marqueurs du plat, présents dans six et huit pages sur neuf",
+          "L'oignon de la farce se râpe et ne se hache pas — en morceaux, il fait éclater les boulettes",
+          "Les œufs se cassent dans la sauce déjà réduite et cuisent à couvert cinq à sept minutes : le jaune reste coulant",
+          "On ne remue pas les boulettes à la cuillère, on secoue le plat"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur, mais sans les œufs, qu'on ajoute au réchauffage : un jaune cuit deux fois devient sableux. Les boulettes crues se gardent 24 heures et se congèlent 3 mois, crues et espacées sur une plaque avant d'être mises en sac — elles cuisent alors sans décongélation en ajoutant cinq minutes de mijotage. La sauce seule se congèle 3 mois. Réchauffer à couvert et à feu doux avec une cuillerée d'eau.",
+      "allergens": ["œuf"]
+    },
+    {
+      "code": "VAR-019",
+      "family": "Tajine de légumes",
+      "cuisine_origin": "Maroc",
+      "identity_level": "named_traditional_dish",
+      "category": "légume mijoté",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 45,
+      "difficulty": "facile",
+      "sources": ["dossier:tajine-de-legumes", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Huit pages sur trois sites, et c'est le dossier le plus dangereux du lot : trois d'entre elles portent de la viande ou du poisson sous un titre de tajine de légumes — des boulettes de chair à saucisse et de steak haché, des cuisses de pintade, des pavés de cabillaud. Une médiane prise sur les huit y aurait fait entrer de la pintade dans un plat végétarien, et personne ne l'aurait vu ensuite. Les trois sont écartées entièrement, y compris pour leurs légumes. Restent cinq pages sur les trois sites. Les pommes de terre : trois lignes exploitables, à 175, 187,5 et 150 g par personne, médiane 175 g par personne, soit 1 050 g — on écrit 1 000 g. Les courgettes : quatre lignes en pièces, médiane 116,7 g par personne, soit 700 g. Les carottes : trois lignes, médiane 83,3 g par personne, soit 500 g. Les navets : trois lignes, médiane 65 g par personne, soit 390 g, écrit 400 g. L'oignon : quatre lignes, médiane 43,3 g par personne, soit 260 g. La tomate : deux lignes en pièces, médiane 70 g par personne, soit 420 g, en tomates fraîches — les deux pages qui les comptent les emploient fraîches, la troisième ouvre une boîte de concassée et reste minoritaire. Le poivron rouge : trois lignes, médiane 30 g par personne, soit 180 g, écrit 200 g. L'ail, trois lignes, médiane 1,67 g par personne, soit 10 g. Les épices : le cumin est dans deux pages, médiane 0,75 g par personne, soit 4,5 g, écrit 4 g ; le curcuma dans deux, médiane 0,42 g par personne, soit 2,5 g, écrit 3 g ; le gingembre moulu dans deux, médiane 0,35 g par personne, soit 2 g. Le ras el-hanout, présent dans deux pages, est une forme bloquée au catalogue et ne peut pas être écrit — c'est une perte réelle pour un tajine, et elle est notée plutôt que comblée par un mélange approchant. La coriandre fraîche est dans trois pages sur cinq : 25 g. L'huile d'olive, deux lignes chiffrées, médiane 12,1 g par personne, soit 72,6 g, qu'on écrit 70 ml. Le bouillon de légumes n'est chiffré que par une page, 15 cl pour quatre, soit 37,5 ml par personne : on écrit 225 ml. Les olives d'une page, les pois chiches et les abricots secs d'une autre, les haricots verts et les petits pois d'une troisième sont à une source chacun et descendent en variantes. Durées : préparation, médiane 15 minutes des cinq lignes, écrite 20 parce que 2,8 kg de légumes se taillent ; cuisson, médiane 30 minutes des quatre lignes exploitables — on écrit 45 minutes, ce que donne la page la plus longue du dossier, parce qu'un kilo de pommes de terre et un demi-kilo de carottes ne sont pas cuits en trente minutes à couvert.",
+      "plate": {
+        "role": "main",
+        "accepts": [],
+        "reason": "Le plat porte son féculent — un kilo de pommes de terre pour six — et tous ses légumes, mais aucune protéine : aucune des cinq pages retenues n'en met, et c'est ce qui en fait un tajine de légumes. Rien à lui ajouter côté féculent, qu'il double déjà ; la protéine se règle ailleurs dans le repas."
+      },
+      "ingredients": [
+        { "form": "Pomme de terre crue, épluchée", "quantity": 1000, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Courgette fraîche", "quantity": 700, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Carotte crue", "quantity": 500, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Tomate fraîche mûre", "quantity": 420, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Navet cru", "quantity": 400, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 260, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Bouillon de légumes", "quantity": 225, "unit": "ml", "role": "mouillement", "optional": false },
+        { "form": "Poivron rouge frais", "quantity": 200, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 70, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Coriandre fraîche", "quantity": 25, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Ail cru", "quantity": 10, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Cumin moulu", "quantity": 4, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Curcuma moulu", "quantity": 3, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Gingembre moulu", "quantity": 2, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Émincer les oignons et les faire fondre dix minutes dans l'huile d'olive au fond d'un plat à tajine ou d'une cocotte large, avec l'ail haché, le cumin, le curcuma et le gingembre. Les épices doivent grésiller dans le gras avant que le moindre légume n'arrive : c'est le seul moment où elles peuvent s'ouvrir, ensuite l'eau des légumes les fige." },
+        { "n": 2, "instruction": "Tailler les carottes et les navets en gros bâtonnets, les pommes de terre en quartiers, les courgettes en tronçons épais et le poivron en larges lanières, en gardant les morceaux nettement plus gros que dans un ragoût. Un tajine cuit à couvert dans peu de liquide et longtemps : des dés fins s'y délitent en purée avant la fin." },
+        { "n": 3, "instruction": "Ranger les légumes en dôme sur le lit d'oignons, les plus longs à cuire en dessous — carottes, navets, pommes de terre — les courgettes et le poivron par-dessus. Ce n'est pas une décoration : le fond du plat est plus chaud et plus humide que le sommet du dôme, et ce classement est ce qui permet de tout cuire ensemble sans rien surcuire." },
+        { "n": 4, "instruction": "Concasser les tomates et les répartir sur le dessus, saler, poivrer, verser le bouillon de légumes le long de la paroi sans arroser le dôme. Le liquide doit monter à deux ou trois centimètres, pas davantage : les légumes vont rendre leur eau et la sauce se ferait soupe." },
+        { "n": 5, "instruction": "Couvrir et laisser mijoter quarante-cinq minutes à feu doux, sans remuer une seule fois. Vérifier la cuisson à la pointe du couteau dans une carotte, qui est le légume le plus long. Si le fond attache, ajouter deux cuillerées d'eau et baisser encore, mais ne pas mélanger : c'est ce qui distingue un tajine d'une ratatouille." },
+        { "n": 6, "instruction": "Découvrir cinq minutes en fin de cuisson si le jus est trop abondant, parsemer de coriandre ciselée et laisser reposer dix minutes hors du feu avant de servir. Le repos permet aux légumes de réabsorber une partie du jus et au plat de se tenir dans l'assiette." }
+      ],
+      "techniques": ["suer", "épices ouvertes dans le gras", "cuisson à l'étouffée", "montage en dôme", "repos"],
+      "variants": [
+        "Aux olives, 80 g égouttées ajoutées dans les dix dernières minutes (marmiton)",
+        "Aux pois chiches et fruits secs : 250 g de pois chiches, 100 g d'abricots secs et 100 g de raisins secs, sur un lit de quinoa (marmiton)",
+        "Aux haricots verts et petits pois : 250 g de chaque, ajoutés à mi-cuisson, avec deux aubergines et deux branches de céleri (750g)",
+        "Au ras el-hanout, une cuillerée à café en plus des épices moulues (marmiton, 750g)",
+        "Au safran : une pincée infusée dans le bouillon, avec un piment fort entier (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": { "sweet": 3, "salty": 2, "acidic": 2, "bitter": 1, "umami": 2, "heat": 0, "pungency": 3, "richness": 2, "freshness": 2, "intensity": 3 },
+        "dominant_flavors": ["cumin", "curcuma", "légumes fondants", "coriandre fraîche"],
+        "aroma_families": ["cumin", "épices chaudes", "végétal cuit", "coriandre"],
+        "target_textures": ["légumes fondants", "jus court et nappant", "morceaux entiers"],
+        "signature_ingredients": ["Pomme de terre crue, épluchée", "Cumin moulu", "Curcuma moulu"],
+        "identity_guardrails": [
+          "Aucune viande et aucun poisson : trois pages du dossier en portent sous ce titre, et c'est exactement ce que cette recette n'est pas",
+          "Les épices s'ouvrent dans l'huile avant les légumes, sinon elles restent en poudre",
+          "Morceaux gros et montage en dôme, les longs à cuire au fond : c'est ce qui permet de tout cuire ensemble",
+          "On ne remue jamais : un tajine remué devient une ratatouille"
+        ]
+      },
+      "conservation": "Se garde 4 jours au réfrigérateur et se réchauffe à couvert, à feu doux, avec deux cuillerées d'eau. Il gagne au réchauffage, les épices continuant de diffuser. Se congèle 3 mois, mais en retirant les pommes de terre, qui ressortent granuleuses — les courgettes, elles, s'affaissent sans nuire au plat. C'est un bon candidat au double : la moitié se sert en plat, l'autre se mixe en soupe épaisse ou se glisse dans une semoule.",
+      "allergens": []
+    },
+    {
+      "code": "VAR-020",
+      "family": "Zaalouk d'aubergines",
+      "cuisine_origin": "Maroc",
+      "identity_level": "named_traditional_dish",
+      "category": "entrée froide",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 15,
+      "cook_minutes": 25,
+      "difficulty": "facile",
+      "sources": ["dossier:zaalouk-d-aubergines", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Six pages sur deux sites seulement — marmiton n'en publie aucune que la chaîne ait su lire — et c'est une limite du dossier qu'il faut connaître. Les six décrivent en revanche exactement la même chose, ce qui est rare : aubergines cuites jusqu'à s'effondrer, tomates, ail, cumin, huile d'olive, herbes, écrasées à la fourchette et servies tièdes ou froides. L'aubergine est dans les six et c'est le plat : six lignes en pièces, à 83,3, 125, 125, 83,3, 125 et 125 g par personne, médiane 125 g par personne, soit 750 g pour six. La tomate est dans cinq pages, comptée en pièces : médiane 60 g par personne, soit 360 g. L'ail est dans les six, de une gousse pour six à six têtes entières pour six — cette dernière ligne est un cas isolé qui multiplie par vingt toutes les autres et la médiane l'écarte d'elle-même : médiane 2,08 g par personne, soit 12,5 g, qu'on écrit 12 g. Le cumin est dans les six pages et c'est le second marqueur du plat : cinq lignes en cuillerées donnent une médiane de 0,67 g par personne, soit 4 g. Le paprika ou le piment doux est dans quatre pages, médiane 0,33 g par personne, soit 2 g. L'huile d'olive : cinq lignes, médiane 5 g par personne, soit 30 g, qu'on écrit 30 ml. C'est peu pour un zaalouk et c'est bien ce que le dossier donne : quatre des cinq lignes tiennent en une ou deux cuillerées à soupe. Le persil est dans quatre pages, la coriandre dans deux : on écrit les deux, 20 g et 15 g, aucune n'étant jamais pesée. Le ras el-hanout de deux pages est bloqué au catalogue et descend en variante. Le jus de citron n'est que dans une page, le concentré de tomate dans une autre, le cayenne dans une troisième, la courgette et le poivron rouge dans une quatrième : une source chacun, tous en variantes — et le citron est la perte la plus sensible, puisque c'est lui qui relève le plat froid. Le sel et le poivre sont dans les six pages, jamais pesés : 6 g et 2 g. Durées : préparation, médiane 15 minutes des six lignes ; cuisson, médiane 20 minutes des quatre lignes exploitables — on écrit 25, l'aubergine devant s'effondrer complètement, ce que la page la plus longue du dossier obtient en quarante minutes.",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Salade cuite servie tiède ou froide, à la fourchette ou sur du pain : elle apporte le légume et rien d'autre, ni féculent ni protéine. Elle se pose à côté d'une grillade ou au milieu d'une table de mezze, et n'a rien à recevoir elle-même."
+      },
+      "ingredients": [
+        { "form": "Aubergine fraîche", "quantity": 750, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Tomate fraîche mûre", "quantity": 360, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 30, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Persil plat frais", "quantity": 20, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Coriandre fraîche", "quantity": 15, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Ail cru", "quantity": 12, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Cumin moulu", "quantity": 4, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Paprika doux", "quantity": 2, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 6, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Peler les aubergines une bande sur deux et les couper en gros cubes. Retirer toute la peau donne une purée uniforme et un peu fade ; la garder entièrement laisse des lanières coriaces dans la bouche. Les bandes alternées sont le compromis que la texture du plat demande." },
+        { "n": 2, "instruction": "Monder les tomates — trente secondes dans l'eau bouillante, puis dans l'eau froide — et les couper en dés en gardant leur jus. La peau de tomate ne se défait jamais dans un zaalouk : elle s'enroule en petits tubes qu'on retrouve à chaque bouchée." },
+        { "n": 3, "instruction": "Chauffer l'huile d'olive dans une sauteuse large, y jeter l'ail haché, le cumin et le paprika, remuer vingt secondes, puis ajouter aussitôt les aubergines et les tomates avec un demi-verre d'eau. Vingt secondes suffisent aux épices : au-delà, le cumin grille et devient âcre." },
+        { "n": 4, "instruction": "Couvrir et laisser cuire vingt-cinq minutes à feu moyen, en remuant deux ou trois fois, jusqu'à ce que les aubergines s'écrasent d'elles-mêmes sous la cuillère. Le repère est franc : tant qu'un cube garde sa forme, ce n'est pas prêt, et cinq minutes de plus ne gâchent rien." },
+        { "n": 5, "instruction": "Découvrir et laisser l'eau s'évaporer à feu vif cinq à dix minutes, en écrasant à la fourchette pour obtenir une purée grossière où quelques morceaux subsistent. Un zaalouk mixé au robot devient une crème lisse qui n'est plus le plat : c'est la fourchette qui donne la texture, et l'irrégularité fait partie de la définition." },
+        { "n": 6, "instruction": "Hors du feu, incorporer le persil et la coriandre ciselés, saler, poivrer et goûter. Servir tiède ou froid, jamais brûlant : le cumin et l'ail ne se lisent qu'en dessous de cinquante degrés, et le plat gagne à attendre une heure." }
+      ],
+      "techniques": ["mondage", "épices ouvertes dans le gras", "cuisson à couvert", "réduction", "écrasage à la fourchette"],
+      "variants": [
+        "Au jus de citron, deux cuillerées à soupe ajoutées hors du feu (750g)",
+        "Au ras el-hanout, une cuillerée à café en plus du cumin (chefsimon)",
+        "Aux graines de cumin entières en plus du cumin moulu, à parts égales (chefsimon)",
+        "Enrichi d'une courgette et d'un gros poivron rouge cuits avec les aubergines (750g)",
+        "Avec une cuillerée à soupe de concentré de tomate pour une couleur plus soutenue (750g)",
+        "Relevé d'une pincée de cayenne (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "earthy_herbal",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 2, "bitter": 1, "umami": 3, "heat": 1, "pungency": 3, "richness": 2, "freshness": 3, "intensity": 3 },
+        "dominant_flavors": ["aubergine fondue", "cumin", "ail", "tomate cuite"],
+        "aroma_families": ["cumin", "ail", "végétal cuit", "herbacé"],
+        "target_textures": ["purée grossière", "morceaux entiers", "fondant"],
+        "signature_ingredients": ["Aubergine fraîche", "Cumin moulu", "Ail cru"],
+        "identity_guardrails": [
+          "L'aubergine doit s'effondrer entièrement : tant qu'un cube tient sa forme, la cuisson n'est pas finie",
+          "Écrasé à la fourchette et non mixé — la texture irrégulière fait partie de la définition du plat",
+          "Le cumin est le second marqueur après l'aubergine, présent dans les six pages du dossier",
+          "Se mange tiède ou froid : brûlant, ni le cumin ni l'ail ne se lisent"
+        ]
+      },
+      "conservation": "Se garde 5 jours au réfrigérateur en récipient fermé, couvert d'un film d'huile d'olive, et il est meilleur le lendemain — c'est un plat qui se fait la veille. Se congèle 3 mois sans dommage, l'aubergine étant déjà écrasée : rien ne se délite davantage. Se sert froid sortant du réfrigérateur seulement après une demi-heure à température ambiante. Il tient aussi de garniture — sur un pain grillé, dans un sandwich, sous un œuf poché.",
+      "allergens": []
+    },
+    {
+      "code": "VAR-021",
+      "family": "Salade méchouia",
+      "cuisine_origin": "Tunisie",
+      "identity_level": "named_traditional_dish",
+      "category": "entrée froide",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 25,
+      "cook_minutes": 30,
+      "difficulty": "facile",
+      "sources": ["dossier:salade-mechouia", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Six pages sur trois sites, de trois à six portions. Toutes grillent des poivrons et des tomates, les pèlent et les écrasent avec de l'ail et de l'huile d'olive : la convergence est nette et le mot méchouia, qui veut dire grillée, la décrit à lui seul. Le poivron : cinq lignes exploitables, de 150 à 333,3 g par personne, médiane 166,7 g par personne, soit 1 000 g pour six. Les pages panachent rouge et vert dans quatre cas sur six ; on écrit le poivron rouge, seul nommé isolément par deux pages, et le panachage descend en variante. La tomate : six lignes, de 40 à 200 g par personne, médiane 120 g par personne, soit 720 g, qu'on écrit 700 g. L'ail est employé en quantité qui surprend : six lignes, dont une tête entière pour six, médiane 4,6 g par personne, soit 27,6 g — on écrit 25 g, et c'est bien la signature du plat, non une erreur de lecture. Le piment vert frais est dans cinq pages, de un pour six à cinq pour trois, avec une ligne à 500 g pour six : médiane 7,5 g par personne, soit 45 g. Les œufs durs sont dans trois pages sur deux sites, deux pour quatre et quatre pour six : médiane 0,58 œuf par personne, soit 3,5 — on écrit 3 œufs, servis en quartiers sur le dessus. Les olives sont dans quatre pages, une seule les pèse à 100 g pour six, soit 16,7 g par personne : on écrit 100 g d'olives noires, deux pages disant noires et une verte. L'oignon n'est que dans deux pages, sur deux sites : médiane 37,9 g par personne, soit 227 g — on écrit 200 g. L'huile d'olive : cinq lignes chiffrées, médiane 12,5 g par personne, soit 75 g, écrit 75 ml. Le thon est le point où il faut résister à l'usage : il est bien dans deux pages, mais toutes deux sur marmiton, c'est-à-dire une seule rédaction et un seul site. Le dossier ne l'atteste donc pas et il n'entre pas dans la liste, malgré la tradition tunisienne qui le pose sur la salade ; il descend en variante, avec sa quantité — 25 g par personne. Le cumin, la coriandre moulue, le carvi et le jus de citron sont chacun à une source et suivent le même chemin. Le sel et le poivre ne sont pesés nulle part : 8 g et 2 g. Durées : préparation, médiane 22,5 minutes des six lignes, écrite 25 ; cuisson, médiane 25 minutes des quatre lignes exploitables — on écrit 30, un kilo de poivrons ne noircissant pas en vingt-cinq minutes de four. Le temps de sudation en sac avant l'épluchage, un quart d'heure, ne se compte ni en préparation ni en cuisson.",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Une salade de légumes grillés, servie froide en mezze, sur du pain ou à côté d'une grillade. Elle apporte le légume, pas le féculent ni la protéine — les œufs durs qui la garnissent en sont l'accent, pas la substance."
+      },
+      "ingredients": [
+        { "form": "Poivron rouge frais", "quantity": 1000, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Tomate fraîche mûre", "quantity": 700, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 200, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Œuf dur", "quantity": 3, "unit": "u", "role": "garniture", "optional": false },
+        { "form": "Olive noire dénoyautée", "quantity": 100, "unit": "g", "role": "garniture", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 75, "unit": "ml", "role": "assaisonnement", "optional": false },
+        { "form": "Piment vert frais", "quantity": 45, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Ail cru", "quantity": 25, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Poser les poivrons entiers, les piments, les tomates et l'oignon coupé en deux sur une plaque, et les passer sous le gril du four à pleine puissance ou directement sur la flamme, en les tournant, jusqu'à ce que la peau soit noire et boursouflée sur toutes les faces. Compter une trentaine de minutes. La peau doit vraiment brûler : c'est ce noircissement, et non une simple cuisson, qui donne au plat son goût de grillé — le mot méchouia ne veut rien dire d'autre." },
+        { "n": 2, "instruction": "Enfermer les légumes brûlants dans un sac ou un saladier couvert d'une assiette et laisser suer un quart d'heure. La vapeur emprisonnée décolle la peau de la chair ; sans ce quart d'heure, l'épluchage arrache la moitié du poivron avec la peau." },
+        { "n": 3, "instruction": "Peler les légumes à la main, épépiner les poivrons et les piments, et les égoutter cinq minutes dans une passoire. Ne pas les rincer sous l'eau, même pour aller plus vite : l'eau emporte le jus fumé qui s'est concentré sous la peau, et il ne reste qu'un légume cuit sans caractère." },
+        { "n": 4, "instruction": "Écraser l'ail cru en pâte avec le sel, puis hacher grossièrement les légumes pelés au couteau, sur la planche, en gardant du grain. L'ail reste cru : c'est un plat où il mord, et c'est pour cela qu'il s'y compte en dizaines de grammes et non en gousses." },
+        { "n": 5, "instruction": "Mélanger les légumes hachés, l'ail en pâte, l'huile d'olive et le poivre, et laisser reposer une heure au moins à température ambiante. La salade rend encore un peu d'eau pendant ce repos : la pencher et la vider avant de servir, sinon l'huile flotte dessus au lieu d'enrober." },
+        { "n": 6, "instruction": "Dresser en couche épaisse dans un plat creux, disposer les quartiers d'œuf dur et les olives sur le dessus, et arroser d'un dernier filet d'huile. Servir à température ambiante avec du pain : au réfrigérateur, l'huile d'olive fige et le plat perd sa souplesse." }
+      ],
+      "techniques": ["grillade", "sudation", "épluchage", "hachage au couteau", "repos"],
+      "variants": [
+        "Au thon : une boîte de thon en miettes égouttée, environ 25 g par personne, émiettée sur le dessus avec les œufs (marmiton, deux pages)",
+        "Panachée rouge et vert, moitié-moitié de poivrons (marmiton, chefsimon, 750g)",
+        "Au cumin, trois grosses pincées pour six (750g)",
+        "Au carvi et à la coriandre en poudre, une cuillerée à café de chaque pour six (chefsimon)",
+        "Au jus de citron, deux cuillerées à soupe pour trois, avec des olives vertes (marmiton)",
+        "Avec thym, romarin et origan frais mêlés aux légumes grillés (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "earthy_herbal",
+        "scores": { "sweet": 3, "salty": 3, "acidic": 2, "bitter": 2, "umami": 3, "heat": 3, "pungency": 5, "richness": 3, "freshness": 2, "intensity": 4 },
+        "dominant_flavors": ["poivron grillé", "ail cru", "piment", "huile d'olive"],
+        "aroma_families": ["végétal grillé", "ail", "piment", "huile_olive"],
+        "target_textures": ["hachis grossier", "fondant", "contraste_léger"],
+        "signature_ingredients": ["Poivron rouge frais", "Ail cru", "Piment vert frais"],
+        "identity_guardrails": [
+          "La peau des poivrons doit noircir vraiment : sans ce brûlé, il n'y a pas de méchouia mais une salade de poivrons cuits",
+          "L'ail reste cru et se compte en dizaines de grammes — vingt-cinq pour six, c'est la signature",
+          "Les légumes pelés ne se rincent jamais : l'eau emporte le jus fumé",
+          "Haché au couteau, pas mixé : la salade garde du grain"
+        ]
+      },
+      "conservation": "Se garde 4 jours au réfrigérateur sous un film d'huile d'olive et gagne à reposer une nuit, l'ail cru s'assagissant. Sortir une demi-heure avant de servir. Se congèle 3 mois, les légumes étant déjà écrasés — mais sans les œufs ni les olives, qu'on ajoute après décongélation. Les poivrons grillés et pelés se gardent d'ailleurs seuls 5 jours sous huile et servent aussi bien à cette salade qu'à une garniture de pizza ou de sandwich.",
+      "allergens": ["œuf"]
+    },
+    {
+      "code": "VAR-022",
+      "family": "Chorba algérienne",
+      "cuisine_origin": "Algérie",
+      "identity_level": "named_traditional_dish",
+      "category": "soupe complète",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 25,
+      "cook_minutes": 60,
+      "difficulty": "facile",
+      "sources": ["dossier:chorba", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Huit pages sur trois sites, et trois soupes différentes portent ici le même nom. Il fallait choisir avant de compter. La chorba frik change la céréale — deux cents grammes de blé vert concassé à la place des vermicelles — et ce n'est pas une variante de quantité mais une autre soupe : elle sort. La chorba tunisienne est bâtie sur des pâtes et des côtelettes d'agneau, sans le bouquet coriandre-menthe : elle sort aussi. Reste la chorba algéroise, attestée par cinq pages sur les trois sites, et c'est celle qu'on écrit. La viande : quatre lignes exploitables, à 66,7, 50, 75 et 62,5 g par personne — la troisième étant une page qui donne explicitement « entre 50 et 100 g par personne » — médiane 64,6 g par personne, soit 387 g, qu'on écrit 400 g. Les pages disent « mouton » ou « mouton ou agneau » ; le catalogue ne porte pas le mouton et l'épaule d'agneau est la forme la plus proche, ce qui est un rapprochement assumé et non une équivalence. Les pois chiches sont dans quatre pages et aucune ne les pèse : une poignée, une boîte, une poignée trempée la veille. On écrit 250 g égouttés, ce que rend une boîte, et le chiffre est décidé. La tomate fraîche : trois lignes exploitables, médiane 80 g par personne, soit 480 g ; le concentré de tomate, présent dans quatre pages, médiane 3,75 g par personne, soit 22,5 g, écrit 25 g — les deux vont ensemble dans ce plat, la tomate pour le corps et le concentré pour la couleur. La courgette : trois lignes, médiane 50 g par personne, soit 300 g. La carotte : trois lignes, médiane 33,3 g par personne, soit 200 g. La pomme de terre : quatre lignes, médiane 50 g par personne, soit 300 g. L'oignon : cinq lignes, médiane 32,5 g par personne, soit 195 g, écrit 200 g. Les vermicelles ne sont pesés qu'une fois, 100 g pour quatre, soit 25 g par personne : on écrit 150 g. La coriandre fraîche est dans les cinq pages retenues et la menthe dans deux : ce sont les deux herbes qui font la chorba algéroise et non une soupe de légumes à l'agneau. Jamais pesées : 30 g et 10 g. La cannelle est dans trois pages, en pincées : 1,5 g. L'huile, trois lignes chiffrées, médiane 8,75 g par personne, soit 52 g, écrite 50 ml. Le céleri branche est dans deux pages, mais toutes deux sur marmiton : un seul site, il descend en variante. Le ras el-hanout de deux pages est une forme bloquée. Le mouillement est le point que le dossier ne règle pas : aucune page ne mesure son eau. On écrit 1 800 ml pour six, soit 300 ml par personne, chiffre décidé qui correspond à une soupe et non à un ragoût. Durées : préparation, médiane 25 minutes des quatre lignes ; cuisson, médiane 60 minutes des trois lignes exploitables.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Agneau, pois chiches, vermicelles et cinq légumes dans le même bol : la protéine, le féculent et le légume y sont, et c'est un repas entier — c'est d'ailleurs ainsi qu'on la sert, en grande assiette creuse avec du pain."
+      },
+      "ingredients": [
+        { "form": "Eau", "quantity": 1800, "unit": "ml", "role": "mouillement", "optional": false },
+        { "form": "Épaule d'agneau crue", "quantity": 400, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Tomate fraîche mûre", "quantity": 480, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Pomme de terre crue, épluchée", "quantity": 300, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Courgette fraîche", "quantity": 300, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Pois chiche cuit, égoutté", "quantity": 250, "unit": "g", "role": "légumineuse", "optional": false },
+        { "form": "Carotte crue", "quantity": 200, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 200, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Vermicelle fin sec", "quantity": 150, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 50, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Coriandre fraîche", "quantity": 30, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Concentré de tomate", "quantity": 25, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Menthe fraîche", "quantity": 10, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Cannelle moulue", "quantity": 1.5, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Tailler l'agneau en petits morceaux de deux centimètres et les faire revenir dans l'huile au fond d'une grande marmite, avec l'oignon haché fin, jusqu'à ce que la viande soit colorée et l'oignon translucide. Des morceaux petits, et non des cubes de ragoût : dans une chorba la viande se mange à la cuillère, avec le bouillon, et ne se coupe pas au couteau." },
+        { "n": 2, "instruction": "Ajouter la cannelle, le poivre et le concentré de tomate, et remuer deux minutes à feu moyen jusqu'à ce que le concentré fonce et sente le grillé. Ce court passage sur le feu retire au concentré son goût métallique de boîte ; versé directement dans l'eau, il le garde tout au long de la cuisson." },
+        { "n": 3, "instruction": "Verser les tomates concassées et laisser réduire cinq minutes, puis mouiller de toute l'eau, ajouter les pois chiches égouttés et porter à frémissement. Écumer la mousse grise qui monte pendant les premières minutes : c'est elle qui trouble le bouillon et lui donne un arrière-goût de suif." },
+        { "n": 4, "instruction": "Couvrir et laisser cuire quarante minutes à petits bouillons. La viande doit se défaire sous la cuillère avant que le moindre légume n'entre dans la marmite ; ajoutés plus tôt, les légumes seraient en purée quand l'agneau serait tout juste tendre." },
+        { "n": 5, "instruction": "Ajouter alors les carottes en rondelles et les pommes de terre en dés, cuire quinze minutes, puis les courgettes en dés et cuire encore dix minutes. Cet échelonnement est ce qui fait qu'une chorba a des légumes reconnaissables et non un fond de purée." },
+        { "n": 6, "instruction": "Jeter les vermicelles dans le bouillon bouillant et compter trois à quatre minutes, pas davantage. Ils continuent de gonfler dans la soupe chaude après le feu coupé : cuits à point dans la marmite, ils auront tout bu au moment de servir et il ne restera plus de bouillon." },
+        { "n": 7, "instruction": "Couper le feu, saler, puis jeter la coriandre et la menthe ciselées et couvrir cinq minutes. Les herbes s'infusent sans cuire : bouillies, elles noircissent et perdent en une minute ce qui distingue cette soupe d'un potage à l'agneau. Servir très chaud, avec un quartier de citron pour qui le veut." }
+      ],
+      "techniques": ["saisie", "écumage", "mijotage", "cuisson séquencée", "infusion des herbes"],
+      "variants": [
+        "Chorba frik : 200 g de blé vert concassé rincé à la place des vermicelles, avec ras el-hanout et menthe sèche (chefsimon)",
+        "Chorba tunisienne : côtelettes d'agneau, pâtes courtes, quatre-épices et piment doux, sans coriandre fraîche (750g)",
+        "Au poulet : un demi-blanc de poulet à la place de l'agneau, avec curcuma et paprika (chefsimon)",
+        "Au céleri branche, deux branches taillées fin avec les carottes (marmiton, deux pages)",
+        "Enrichie de blé concassé à la place des vermicelles, à quantité égale (marmiton)"
+      ],
+      "sensory": {
+        "profile": "brothy_umami",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 2, "bitter": 0, "umami": 4, "heat": 1, "pungency": 2, "richness": 2, "freshness": 3, "intensity": 3 },
+        "dominant_flavors": ["agneau", "coriandre fraîche", "tomate", "cannelle"],
+        "aroma_families": ["coriandre", "cannelle", "tomate_cuite", "agneau"],
+        "target_textures": ["bouillon_clair", "viande fondante", "légumes fondants"],
+        "signature_ingredients": ["Épaule d'agneau crue", "Coriandre fraîche", "Vermicelle fin sec"],
+        "identity_guardrails": [
+          "Coriandre fraîche et menthe jetées hors du feu : ce sont elles qui font l'algéroise, et bouillies elles noircissent",
+          "La viande cuit quarante minutes seule avant les légumes, sinon ceux-ci se défont",
+          "Vermicelles trois à quatre minutes seulement — ils continuent de gonfler hors du feu et boivent tout le bouillon",
+          "Le concentré de tomate se fait revenir avant d'être mouillé, sans quoi il garde son goût de boîte"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur, mais les vermicelles gonflent et la soupe devient épaisse : rallonger d'un demi-verre d'eau au réchauffage. Pour un vrai travail d'avance, cuire la base jusqu'à la fin de l'étape des légumes, la garder 4 jours ou la congeler 3 mois, et n'ajouter vermicelles et herbes qu'au moment de servir — quatre minutes suffisent alors. Le bouillon congelé sans vermicelles ne perd rien.",
+      "allergens": ["gluten"]
+    },
+    {
+      "code": "VAR-023",
+      "family": "Msemen",
+      "cuisine_origin": "Maroc",
+      "identity_level": "named_traditional_dish",
+      "category": "pain plat",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 20,
+      "difficulty": "moyenne",
+      "sources": ["dossier:msemen", "marmiton.org", "chefsimon.com"],
+      "canonical_arbitration": "Six pages sur deux sites, dont deux à écarter et il faut dire pourquoi. La première ne contient que du beurre frais non pasteurisé et du sel : c'est une recette de beurre rance, le smen, que le titre associe aux msemen sans en donner la pâte. La seconde s'intitule « brick faux msemen » et se fait à la feuille de brick — ce n'est pas la même pâte, ce n'est même pas une pâte pétrie, et son inclusion dans une médiane aurait été invisible ensuite. Restent quatre pages, deux par site, qui décrivent la même chose : une pâte de farine et de semoule fine, étalée très mince, badigeonnée de gras, pliée en carré et cuite à la poêle. La farine : quatre lignes, à 87,5, 50, 33,3 et 50 g par personne, médiane 50 g par personne, soit 300 g pour six. La semoule : quatre lignes également, médiane 50 g par personne, soit 300 g. Le rapport moitié-moitié entre farine et semoule est constant d'une page à l'autre et c'est lui qui fait le msemen : c'est la semoule qui donne le feuilletage granuleux et empêche les couches de se ressouder. Le catalogue ne porte que la semoule de blé dur moyenne quand trois pages sur quatre demandent une semoule fine ou extra-fine : on écrit la forme disponible en signalant l'écart, qui joue sur la finesse du résultat et non sur sa nature. L'eau : trois lignes, à 100, 50 et 58,3 ml par personne, médiane 58,3 ml par personne, soit 350 ml — la quatrième page emploie 20 cl de lait à la place et reste isolée. Le sel : trois lignes, médiane 1,5 g par personne, soit 9 g. Le levant partage le dossier par site : les deux pages marmiton emploient de la levure de boulanger, dont l'une en pèse 8 g pour quatre, soit 2 g par personne ; les deux pages chefsimon emploient de la levure chimique ou du bicarbonate, dont l'une en pèse 4 g pour six. Ce sont deux écoles et non deux quantités. On garde la levure de boulanger, qui donne la pâte souple et légèrement levée que le pliage demande, à 1 g par personne, soit 6 g — moitié de la seule ligne pesée, la pousse étant courte. Le beurre : trois lignes, médiane 8,3 g par personne, soit 50 g. L'huile de façonnage : deux lignes, médiane 25 g par personne, soit 150 g. On descend à 100 ml, une part de cette huile restant sur le plan de travail et sur les mains plutôt que dans la pâte — c'est un écart assumé, et il joue directement sur la nutrition affichée. Le sucre d'une page et le miel d'une autre descendent en variantes. Durées : préparation, médiane 20 minutes des quatre lignes ; cuisson, médiane 20 minutes des trois lignes exploitables. Le repos de la pâte, une demi-heure au moins, ne se compte ni en préparation ni en cuisson.",
+      "plate": {
+        "role": "component",
+        "accepts": [],
+        "reason": "C'est un pain plat feuilleté : une base qu'on fait une fois et qui sert à plusieurs usages selon le moment — au miel et au beurre le matin, avec un fromage frais ou une salade cuite à midi, farci de kefta le soir. Ce n'est jamais un plat à lui seul, et c'est exactement ce que le corpus appelle un composant."
+      },
+      "ingredients": [
+        { "form": "Farine de blé T55", "quantity": 300, "unit": "g", "role": "pâte", "optional": false },
+        { "form": "Semoule de blé dur moyenne sèche", "quantity": 300, "unit": "g", "role": "pâte", "optional": false },
+        { "form": "Eau", "quantity": 350, "unit": "ml", "role": "pâte", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 100, "unit": "ml", "role": "façonnage", "optional": false },
+        { "form": "Beurre doux", "quantity": 50, "unit": "g", "role": "feuilletage", "optional": false },
+        { "form": "Sel fin", "quantity": 9, "unit": "g", "role": "pâte", "optional": false },
+        { "form": "Levure boulangère sèche", "quantity": 6, "unit": "g", "role": "pâte", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Mélanger la farine, la moitié de la semoule, le sel et la levure sèche, puis verser l'eau tiède peu à peu en pétrissant. Travailler la pâte dix bonnes minutes, jusqu'à ce qu'elle soit très souple, presque collante, et se détende sous les doigts. Une pâte ferme ne s'étirera jamais assez mince pour feuilleter : c'est l'erreur qui décide de tout le reste." },
+        { "n": 2, "instruction": "Diviser en douze boules, les huiler généreusement, les poser sur un plateau huilé et laisser reposer une demi-heure à couvert. L'huile n'est pas là pour empêcher de coller mais pour pénétrer la surface : c'est elle qui permettra plus tard d'étirer la pâte jusqu'à la transparence sans la déchirer." },
+        { "n": 3, "instruction": "Sur un plan de travail bien huilé — jamais fariné —, aplatir une boule de la paume puis l'étirer du bout des doigts en partant du centre, jusqu'à obtenir une feuille assez fine pour qu'on devine le plan à travers. La farine sécherait la pâte et l'empêcherait de s'étendre ; l'huile la fait glisser." },
+        { "n": 4, "instruction": "Badigeonner la feuille de beurre fondu, la saupoudrer d'une cuillerée de semoule sèche, puis rabattre les côtés vers le centre pour former une bande, la beurrer et la saupoudrer de nouveau, et rabattre haut et bas pour obtenir un carré. La semoule entre les couches est ce qui les empêche de se souder : sans elle on obtient une galette épaisse au lieu d'un feuilletage." },
+        { "n": 5, "instruction": "Laisser reposer les carrés dix minutes, puis les aplatir doucement à la main jusqu'à doubler leur surface. Ce second repos détend le gluten ; sans lui, la pâte se rétracte à chaque pression et le msemen reste petit et épais." },
+        { "n": 6, "instruction": "Cuire à la poêle sèche et chaude, deux à trois minutes par face, en appuyant du bout des doigts sur les bords pour que la chaleur passe partout. La poêle doit être chaude sans être brûlante : trop vive, elle dore la surface avant que les couches intérieures ne cuisent, et le msemen reste cru et pâteux au centre. Empiler les msemen cuits sous un linge, ce qui les garde souples." }
+      ],
+      "techniques": ["pétrissage", "repos", "étirage à l'huile", "pliage", "cuisson à la poêle"],
+      "variants": [
+        "Au lait : 20 cl de lait tiède à la place de l'eau, levure chimique et bicarbonate à la place de la levure de boulanger (chefsimon)",
+        "Sucré : 15 g de sucre dans la pâte, servi au miel d'acacia et à la poudre de noisette (chefsimon)",
+        "Farcis : 400 g de bœuf haché aux oignons, ail, cumin, cannelle, paprika et coriandre étalés avant le pliage (marmiton)",
+        "Une cuillerée à soupe de miel liquide pétrie dans la pâte (marmiton)"
+      ],
+      "sensory": {
+        "profile": "nutty_savory",
+        "scores": { "sweet": 1, "salty": 2, "acidic": 0, "bitter": 0, "umami": 1, "heat": 0, "pungency": 0, "richness": 4, "freshness": 0, "intensity": 2 },
+        "dominant_flavors": ["semoule grillée", "beurre", "pâte cuite"],
+        "aroma_families": ["beurre", "céréale grillée", "pain grillé"],
+        "target_textures": ["feuilletage souple", "croûte croustillante", "moelleux"],
+        "signature_ingredients": ["Semoule de blé dur moyenne sèche", "Farine de blé T55", "Beurre doux"],
+        "identity_guardrails": [
+          "Moitié farine, moitié semoule : c'est la semoule qui donne le feuilletage granuleux et sépare les couches",
+          "On étire à l'huile et jamais à la farine — la farine sèche la pâte et l'empêche de s'étendre",
+          "La pâte doit être très souple, presque collante : une pâte ferme ne s'étire pas jusqu'à la transparence",
+          "Poêle sèche et chaude sans être brûlante, sinon le centre reste cru sous une surface déjà dorée"
+        ]
+      },
+      "conservation": "Se gardent 2 jours à température ambiante dans un linge, 5 jours au réfrigérateur en sac, et se réchauffent trente secondes par face à la poêle sèche — ils redeviennent souples. Se congèlent 3 mois, cuits et séparés par du papier cuisson, et se réchauffent sans décongélation. Les carrés crus pliés se congèlent aussi, sur plaque puis en sac, et se cuisent alors directement à la poêle en ajoutant une minute par face : c'est la forme la plus utile pour un petit-déjeuner de semaine.",
+      "allergens": ["gluten", "lait"]
+    },
+    {
+      "code": "VAR-024",
+      "family": "Briouates aux amandes",
+      "cuisine_origin": "Maroc",
+      "identity_level": "named_traditional_dish",
+      "category": "dessert",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 8,
+      "prep_minutes": 30,
+      "cook_minutes": 10,
+      "difficulty": "moyenne",
+      "sources": ["dossier:briouates", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Sept pages sur trois sites, et deux familles de briouates s'y côtoient : trois sucrées à l'amande et au miel, quatre salées au poulet, à la kefta ou aux épinards. Aucune médiane ne peut être prise entre les deux, et il fallait choisir : la briouate à l'amande est attestée par trois pages sur les trois sites — marmiton, chefsimon et 750g — quand les salées se partagent entre deux garnitures différentes sur deux sites. C'est la sucrée qu'on écrit, et les salées descendent en variantes déclarées. Les feuilles de brick sont dans les trois pages retenues, comptées et jamais pesées : huit feuilles pour huit personnes dans l'une, un paquet dans l'autre. On écrit 120 g pour huit, chiffre décidé et non mesuré, et c'est la ligne la plus incertaine de la fiche. Les amandes : trois lignes pesées, à 62,5, 25 et 75 g par personne — la deuxième additionnant amandes et noisettes à parts égales, ce qui la place hors du rang — médiane 62,5 g par personne, soit 500 g pour huit. Une page les emploie en poudre, une autre torréfiées et concassées, la troisième entières : on écrit l'amande, la forme du catalogue, et le degré de mouture reste au choix des étapes. Le sucre : trois lignes, à 37,5, 5 et 50 g par personne, médiane 37,5 g par personne, soit 300 g. La ligne à 5 g est celle qui compense par de la gomme arabique et de l'arôme d'amande, deux produits sans forme au catalogue. Le beurre : trois lignes, médiane 5 g par personne, soit 40 g. La cannelle : trois lignes, médiane 0,75 g par personne, soit 6 g. Le miel n'est chiffré que par une page, six cuillerées à soupe pour huit, soit environ 15,75 g par personne : on écrit 130 g, sachant qu'une partie du miel de trempage retourne à la casserole et n'est pas mangée. L'eau de fleur d'oranger est dans deux des trois pages retenues et n'a aucune forme au catalogue : elle ne peut pas être écrite et descend en variante, ce qui est une perte réelle — c'est elle qui donne à la farce son parfum, et la cannelle seule ne le remplace pas. Le jaune d'œuf servant à coller les rabats est dans une page : un jaune. L'huile de friture n'est pesée nulle part : on écrit 80 ml pour huit, chiffre décidé, en sachant que le bain n'est mangé qu'en partie. La gomme arabique, les noisettes et l'arôme d'amande sont à une source chacun. Durées : préparation, médiane 30 minutes des trois lignes ; cuisson, médiane 7,5 minutes, écrite 10.",
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Pâtisserie sucrée frite et trempée au miel, servie avec le thé ou en fin de repas, par pièces. Elle ne constitue pas un plat et n'accompagne aucun."
+      },
+      "ingredients": [
+        { "form": "Amande", "quantity": 500, "unit": "g", "role": "farce", "optional": false },
+        { "form": "Sucre semoule", "quantity": 300, "unit": "g", "role": "farce", "optional": false },
+        { "form": "Miel", "quantity": 130, "unit": "g", "role": "trempage", "optional": false },
+        { "form": "Feuille de brick", "quantity": 120, "unit": "g", "role": "enveloppe", "optional": false },
+        { "form": "Huile de friture", "quantity": 80, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Beurre doux", "quantity": 40, "unit": "g", "role": "farce", "optional": false },
+        { "form": "Cannelle moulue", "quantity": 6, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Jaune d'œuf cru", "quantity": 1, "unit": "u", "role": "collage", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Mixer les amandes en poudre grossière, sans aller jusqu'à la pâte : quelques secondes de trop et l'huile sort, la poudre se prend en masse et la farce devient grasse. On veut une mouture qui craque encore sous la dent." },
+        { "n": 2, "instruction": "Mélanger la poudre d'amande, le sucre, la cannelle et le beurre fondu, et travailler à la main jusqu'à obtenir une pâte qui tient quand on la presse dans le creux de la paume. Si elle s'effrite, ajouter une cuillerée d'eau ; si elle colle, une cuillerée de poudre d'amande. C'est cette cohésion qui permettra de rouler les briouates sans que la farce ne s'échappe dans l'huile." },
+        { "n": 3, "instruction": "Couper chaque feuille de brick en bandes de six centimètres de large, en travaillant sur une pile couverte d'un linge humide. Une feuille de brick sèche en trois minutes à l'air libre et se casse au premier pli : c'est la cause d'échec la plus fréquente et le linge la supprime entièrement." },
+        { "n": 4, "instruction": "Déposer une noix de farce au bas de chaque bande et la rouler en triangle, comme on plie un drapeau : un pli en diagonale, puis un autre, jusqu'au bout de la bande. Coller le dernier rabat au jaune d'œuf battu. Le triangle n'est pas décoratif : ses trois épaisseurs de pâte au sommet empêchent la farce de sortir par le point le plus faible." },
+        { "n": 5, "instruction": "Chauffer l'huile à 170 °C — un morceau de brick y remonte en trois secondes en grésillant — et frire les briouates par petites poignées, deux minutes environ, en les retournant, jusqu'à ce qu'elles soient blondes. Trop chaude, l'huile brunit la pâte avant que la farce ne soit chaude ; trop froide, la brick la boit et la briouate ressort molle." },
+        { "n": 6, "instruction": "Faire tiédir le miel avec deux cuillerées d'eau dans une petite casserole, et y plonger les briouates brûlantes trente secondes à peine, en les retournant, avant de les égoutter sur une grille. Le choc entre la pâtisserie chaude et le miel tiède est ce qui fait pénétrer le sirop ; sur une briouate refroidie, le miel reste en surface et glisse." },
+        { "n": 7, "instruction": "Laisser refroidir sur la grille au moins une demi-heure avant de servir : le miel fige, la pâte reprend du croustillant et la farce se raffermit. Empilées chaudes, les briouates se collent les unes aux autres et perdent leur croûte." }
+      ],
+      "techniques": ["mixage", "farce", "pliage", "friture", "trempage au miel"],
+      "variants": [
+        "À l'eau de fleur d'oranger : 6 cl dans la farce, ou deux cuillerées à soupe, forme absente du catalogue et donc non écrite ici (marmiton, 750g)",
+        "Amandes et noisettes à parts égales, avec de la gomme arabique et deux gouttes d'arôme d'amande (chefsimon)",
+        "Briouates au poulet : un kilo de poulet effiloché, oignon, gingembre, coriandre, safran, œufs brouillés et amandes grillées, avec du miel (chefsimon, 750g)",
+        "Briouates à la kefta : steak haché, oignon, poivron, vermicelles de soja, harissa et coriandre (750g)",
+        "Briouates aux épinards : épinards hachés, ail, fromage râpé, olives vertes, câpres et paprika (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "sweet_spiced",
+        "scores": { "sweet": 5, "salty": 0, "acidic": 0, "bitter": 0, "umami": 0, "heat": 0, "pungency": 1, "richness": 5, "freshness": 0, "intensity": 4 },
+        "dominant_flavors": ["amande", "miel", "cannelle"],
+        "aroma_families": ["amande", "miel", "cannelle"],
+        "target_textures": ["croûte croustillante", "farce moelleuse", "contraste_léger"],
+        "signature_ingredients": ["Amande", "Miel", "Feuille de brick"],
+        "identity_guardrails": [
+          "Les amandes se mixent en poudre grossière : réduites en pâte, elles rendent leur huile et la farce devient grasse",
+          "Les feuilles de brick restent sous un linge humide — elles sèchent et cassent en trois minutes à l'air",
+          "Le trempage se fait briouate brûlante dans un miel tiède : l'inverse laisse le miel en surface",
+          "Refroidir sur grille et à plat ; empilées chaudes, elles se collent et perdent leur croustillant"
+        ]
+      },
+      "conservation": "Se gardent 5 jours à température ambiante dans une boîte hermétique, en une seule couche ou séparées par du papier cuisson. Elles perdent un peu de croustillant au deuxième jour et se retrouvent en cinq minutes à 160 °C. Ne se gardent pas au réfrigérateur, où le miel absorbe l'humidité et détrempe la brick. Les briouates crues, roulées et non frites, se congèlent 2 mois sur plaque puis en sac, et se frient sans décongélation en ajoutant une minute.",
+      "allergens": ["gluten", "fruits à coque", "œuf"]
+    },
+    {
+      "code": "VAR-025",
+      "family": "Couscous végétarien",
+      "cuisine_origin": "Maroc",
+      "identity_level": "named_traditional_dish",
+      "category": "plat complet",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 25,
+      "cook_minutes": 40,
+      "difficulty": "facile",
+      "sources": ["dossier:couscous-vegetarien", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Sept pages sur trois sites, de quatre à huit portions, l'une sans portions à qui l'on attribue les six parts cibles. Toutes sont bien végétariennes, ce qui n'allait pas de soi pour un couscous, et deux d'entre elles s'écartent nettement du plat : l'une est un sauté de champignons au gingembre et à la sauce soja servi sur semoule, l'autre une semoule aux oignons et aux raisins secs sans aucun légume mijoté. Elles restent au calcul pour ce qu'elles partagent et n'y pèsent pas ailleurs. La semoule : cinq lignes pesées, de 41,7 à 125 g par personne, médiane 62,5 g par personne, soit 375 g pour six. Les légumes du bouillon : la carotte, cinq lignes, médiane 62,5 g par personne, soit 375 g ; la courgette, quatre lignes, médiane 75 g par personne, soit 450 g ; le navet, quatre lignes, médiane 65 g par personne, soit 390 g, écrit 400 g ; l'oignon, cinq lignes, médiane 65 g par personne, soit 390 g, écrit 400 g. La tomate : trois lignes exploitables, médiane 80 g par personne, soit 480 g. Le poivron n'est que dans deux pages sur sept : on écrit 150 g, un poivron rouge. Les pois chiches sont dans quatre pages et le dossier ne les pèse presque jamais : deux lignes seulement, à 20 et 25 g par personne, médiane 22,5 g par personne, soit 135 g, quand les deux autres ouvrent une boîte. Cent trente-cinq grammes pour six ne feraient pas une cuillerée par assiette dans un plat où le pois chiche est la seule protéine ; on écrit 250 g, ce que rend une boîte égouttée, et l'écart est assumé. L'ail, quatre lignes, médiane 2,19 g par personne, soit 13 g, écrit 12 g. Le curcuma est dans deux pages, médiane 0,625 g par personne, soit 3,75 g, écrit 4 g. L'huile d'olive : quatre lignes dont une aberrante à 30 cl pour quatre, médiane 11,25 g par personne, soit 67,5 g, écrite 70 ml. Le beurre est dans deux pages, à 25 et 6,25 g par personne, médiane 15,6 g par personne, soit 94 g — on descend à 60 g, le beurre servant à lustrer la semoule et non à cuire les légumes. Le bouillon n'est chiffré que par deux pages, médiane 75 ml par personne, soit 450 ml ; on écrit 700 ml, parce que 450 ml ne couvrent pas 1,7 kg de légumes dans une marmite et que le couscous se cuit dans un bouillon, non à l'étouffée. Le ras el-hanout et les épices à couscous de trois pages sont des formes bloquées ou absentes du catalogue et descendent en variantes, avec la cannelle, le gingembre, les raisins secs, les haricots verts et les petits pois, chacun à une ou deux sources. Durées : préparation, médiane 20 minutes des sept lignes, écrite 25 pour l'épluchage ; cuisson, médiane 30 minutes des six lignes, écrite 40 — deux pages donnent une heure, et 400 g de navets ne sont pas cuits en trente minutes.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Semoule pour le féculent, pois chiches pour la protéine, cinq légumes pour le reste : l'assiette est entière sans viande, et c'est exactement ce que les sept pages proposent. Rien à ajouter à côté."
+      },
+      "ingredients": [
+        { "form": "Courgette fraîche", "quantity": 450, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Tomate fraîche mûre", "quantity": 480, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Navet cru", "quantity": 400, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 400, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Semoule de blé dur moyenne sèche", "quantity": 375, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Carotte crue", "quantity": 375, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Pois chiche cuit, égoutté", "quantity": 250, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Bouillon de légumes", "quantity": 700, "unit": "ml", "role": "mouillement", "optional": false },
+        { "form": "Poivron rouge frais", "quantity": 150, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 70, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Beurre doux", "quantity": 60, "unit": "g", "role": "semoule", "optional": false },
+        { "form": "Ail cru", "quantity": 12, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Curcuma moulu", "quantity": 4, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Émincer les oignons et les faire fondre quinze minutes dans l'huile d'olive au fond d'une grande marmite, avec l'ail haché et le curcuma. Quatre cents grammes d'oignon pour six ne sont pas un aromate d'appoint : sans viande, c'est cette masse fondue qui donnera du corps au bouillon, et il faut la laisser aller jusqu'au blond." },
+        { "n": 2, "instruction": "Ajouter les tomates concassées et laisser réduire dix minutes, puis verser le bouillon de légumes, saler et poivrer, et porter à frémissement. Le bouillon doit être franchement assaisonné dès maintenant : la semoule qu'il arrosera est fade par nature et n'a rien pour se rattraper ensuite." },
+        { "n": 3, "instruction": "Ajouter les carottes et les navets en gros morceaux et cuire vingt-cinq minutes à couvert, puis les courgettes en tronçons et le poivron en lanières et cuire quinze minutes de plus. Les racines et les cucurbitacées n'ont pas le même temps : mises ensemble, on obtient soit des navets crus, soit des courgettes en bouillie." },
+        { "n": 4, "instruction": "Ajouter les pois chiches égouttés dans les dix dernières minutes, le temps qu'ils se réchauffent et prennent le goût du bouillon. Cuits depuis le début, ils se défont et troublent le liquide." },
+        { "n": 5, "instruction": "Pendant ce temps, verser la semoule dans un grand plat creux, l'arroser d'un volume égal de bouillon prélevé à la louche, couvrir et laisser gonfler dix minutes. Le bouillon plutôt que l'eau, c'est ce qui distingue une semoule de couscous d'une semoule nature — et c'est la seule occasion de la parfumer." },
+        { "n": 6, "instruction": "Égrener la semoule à la main ou à la fourchette en y incorporant le beurre en parcelles, jusqu'à ce qu'elle soit lisse et sans grumeaux. Ce travail se fait pendant qu'elle est chaude : refroidie, elle se prend en blocs que rien ne défait. Le beurre enrobe chaque grain et les empêche de se ressouder." },
+        { "n": 7, "instruction": "Dresser la semoule en couronne, disposer les légumes égouttés au centre et servir le bouillon à part, en saucière. Le bouillon versé sur la semoule en cuisine la noie : chacun l'ajoute à son assiette, et c'est aussi ce qui permet de garder la semoule sèche pour le lendemain." }
+      ],
+      "techniques": ["suer", "réduction", "cuisson séquencée", "gonflage de la semoule", "égrenage"],
+      "variants": [
+        "Aux raisins secs, de 50 à 250 g gonflés dans le bouillon, avec un bâton de cannelle (chefsimon, 750g)",
+        "Aux haricots verts et petits pois : 500 g et 300 g ajoutés avec les courgettes, plus un fenouil et deux pommes de terre (marmiton)",
+        "Au ras el-hanout ou aux épices à couscous, deux pincées à une cuillerée à soupe, formes absentes ou bloquées au catalogue (chefsimon, 750g)",
+        "Aux champignons : deux boîtes émincées ajoutées au bouillon (chefsimon)",
+        "Version sautée : champignons, carottes et céleri au gingembre râpé et à la sauce soja, servis sur semoule sans bouillon (marmiton)",
+        "Au gingembre moulu, une demi-cuillerée à café avec le curcuma (750g)"
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": { "sweet": 3, "salty": 3, "acidic": 2, "bitter": 0, "umami": 2, "heat": 0, "pungency": 2, "richness": 3, "freshness": 2, "intensity": 3 },
+        "dominant_flavors": ["curcuma", "légumes du bouillon", "oignon fondu", "beurre"],
+        "aroma_families": ["épices chaudes", "végétal cuit", "oignon_compoté", "beurre"],
+        "target_textures": ["semoule égrenée", "légumes fondants", "bouillon_clair"],
+        "signature_ingredients": ["Semoule de blé dur moyenne sèche", "Pois chiche cuit, égoutté", "Navet cru"],
+        "identity_guardrails": [
+          "La semoule gonfle dans le bouillon et non dans l'eau : c'est sa seule occasion d'être parfumée",
+          "Les pois chiches sont ici la protéine du plat, pas une garniture — 250 g pour six, ajoutés en fin de cuisson",
+          "Racines d'abord, courgettes ensuite : ensemble, l'un est cru quand l'autre est en bouillie",
+          "Le bouillon se sert à part : versé sur la semoule en cuisine, il la noie et interdit tout reste"
+        ]
+      },
+      "conservation": "Les légumes et leur bouillon se gardent 4 jours au réfrigérateur et se congèlent 3 mois, sans les courgettes qui s'affaissent. La semoule se garde 3 jours à part, en boîte fermée, et se réchauffe à la vapeur ou au micro-ondes avec une cuillerée d'eau — jamais mélangée au bouillon, sous peine de bouillie. C'est un plat qui gagne à être fait en double : le bouillon de légumes ressert en soupe, et la semoule froide devient une salade avec des herbes et du citron.",
+      "allergens": ["gluten", "lait"]
+    }
+  ]
+}

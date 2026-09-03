@@ -1,0 +1,180 @@
+{
+  "dish": "Nems au porc",
+  "slug": "nems-au-porc",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_nems-porc-crevettes_36114.aspx",
+      "site": "marmiton.org",
+      "nom": "nems porc-crevettes : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "300 g de porc gras haché",
+        "175 g de germes de soja",
+        "100 g de vermicelles chinois",
+        "3 oignons",
+        "3 gousses d'ail",
+        "2 cuillères à soupe de crevettes séchées",
+        "2 cuillères à soupe de champignons noirs séchés",
+        "1 cuillère à soupe de nuoc mam",
+        "1 cuillère à café de sucre",
+        "poivre",
+        "6 galettes de riz"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 661,
+        "sha256": "e0f80b1b2214865d"
+      },
+      "sha256_page": "fac4ca45de0c349a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_nems-au-porc-hache-et-a-l-aubergine-cuite_217127.aspx",
+      "site": "marmiton.org",
+      "nom": "Nems au porc haché et à l'aubergine rôtie : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT50M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "250 g de viande hachée de porc",
+        "250 g d'aubergines",
+        "1 bouquet de basilic",
+        "20 g d'ail",
+        "2 cuillères à soupe d'huile de cuisson",
+        "3 cuillères à soupe de sauce d'huître",
+        "2 cuillères à soupe de soja",
+        "1 cuillère à soupe de sucre de palme",
+        "1 pincée de poivre",
+        "3 branches d'oignons nouveaux émincées",
+        "200 g de feuilles de riz (soit 24 feuilles)(doll spring roll pastry)",
+        "8 cuillères à soupe d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 627,
+        "sha256": "c35677777bd00533"
+      },
+      "sha256_page": "19a99ab372533a07"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_nems-de-porc-maison_50760.aspx",
+      "site": "marmiton.org",
+      "nom": "Nems de porc maison : la meilleure recette",
+      "portions": "30 nems",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "500 g de sauté de porc",
+        "2 carottes",
+        "1 oignon",
+        "1 grosse boîte de crabe émietté",
+        "1 piment vert frais",
+        "1 boîte de germes de soja",
+        "vinaigre",
+        "sel et ail",
+        "6 champignons noirs déshydratés",
+        "30 feuilles de riz"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 778,
+        "sha256": "bb14d377fea0102e"
+      },
+      "sha256_page": "a5267cd65ff684ef"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/nems-au-porc-au-air-fryer-ou-au-four",
+      "site": "chefsimon.com",
+      "nom": "Nems au porc au Air Fryer ou au four",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H40M",
+      "duree_cuisson": "PT00H19M",
+      "ingredients": [
+        "11 feuilles de riz",
+        "180 g de filet de porc",
+        "40 g de poitrine fumée",
+        "1 carotte de 70 g",
+        "100 g de pousses de bambou",
+        "40 g de vermicelles d'haricots mungo",
+        "1 échalote",
+        "1.5 c. à soupe de sauce teriyaki",
+        "1.5 c. à soupe de sauce soja salée",
+        "1 filet + pschitts d'huile de pépins de raisin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 2087,
+        "sha256": "e103c18028b9169b"
+      },
+      "sha256_page": "4d43381c51a148a1"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/une-aiguille-dans-l-potage/recettes/nems-au-porc-et-aux-crevettes",
+      "site": "chefsimon.com",
+      "nom": "Nems au porc et aux crevettes",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H40M",
+      "duree_cuisson": "PT00H09M",
+      "ingredients": [
+        "20 galettes de riz de 18 cm",
+        "400 g de porc dans l'échine",
+        "150 g de crevettes crues (environ 12 crevettes géantes tigrées)",
+        "45 g de vermicelles de soja",
+        "50 g de pousses de soja",
+        "20 g de champignons noirs déshydratés",
+        "1 oignon blanc",
+        "1 carotte",
+        "1 c à c de sel fin",
+        "1 c à c de sucre en poudre",
+        "poivre",
+        "2 c à c de vinaigre",
+        "2 c à c de sucre",
+        "8 c à s d'eau chaude",
+        "2 c à s de sauce nuoc-mâm",
+        "3 c à s de sucre en poudre",
+        "2 c à s de jus de citron vert",
+        "1/2 c à c de pâte de piment rouge",
+        "1 gousse d'ail finement hachée",
+        "2 pincées de carottes râpées",
+        "Laitue",
+        "Menthe fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "368f26a22486b524"
+    },
+    {
+      "url": "https://www.750g.com/nem-nuong-boulettes-vietnamiennes-au-porc-et-a-la-menthe-r44952.htm",
+      "site": "750g.com",
+      "nom": "Nem nuong : boulettes vietnamiennes au porc et à la menthe",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "½ c. à s. de sauce soja",
+        "½ c. à s. de sucre",
+        "2 c. à s. d'eau",
+        "1 c. à s. d'huile de friture",
+        "1 c. à s. de nuoc-mâm",
+        "1 c. à s. de fécule de maïs",
+        "1 c. à s. de riz  cru",
+        "1 botte de menthe",
+        "2 oignons nouveaux ou Cébettes",
+        "2 gousses d'ail",
+        "400 g d'epaule de porc"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 920,
+        "sha256": "846f1f85a2732ac9"
+      },
+      "sha256_page": "1ab83047e6898f59"
+    }
+  ]
+}

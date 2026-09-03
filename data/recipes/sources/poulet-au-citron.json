@@ -1,0 +1,225 @@
+{
+  "dish": "Poulet au citron",
+  "slug": "poulet-au-citron",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-au-citron_15793.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet au citron : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 poulet entier",
+        "4 échalotes",
+        "50 cl de crème fraîche",
+        "10 cl de vin blanc",
+        "20 cl d'eau",
+        "1 citron",
+        "1 cuillère à soupe de farine de blé",
+        "poivre",
+        "sel",
+        "beurre demi-sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 510,
+        "sha256": "10c81cf1cd78b747"
+      },
+      "sha256_page": "abbb30adcb9194ec"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-citron-miel-gingembre-facon-anne_61796.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet citron miel gingembre façon Anne : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "8 pilons de poulet (ou 4 cuisses ou 8 blancs ou encore 1 poulet coupé en morceaux)",
+        "1 cuillère à café rase de gingembre râpé",
+        "2 grosses cuillères à soupe de miel",
+        "1 citron jaune (zeste + jus)",
+        "1 échalote",
+        "2 cuillères à soupe d'huile",
+        "50 cl de crème semi-épaisse",
+        "poivre",
+        "sel",
+        "300 g de riz parfumé",
+        "eau = 2 x le volume du riz",
+        "1 dose de safran",
+        "20 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1063,
+        "sha256": "cd1c67c45c53faea"
+      },
+      "sha256_page": "b0c4dd8e21c238e8"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veritable-tajine-de-poulet-aux-citrons-confits-et-aux-olives_231929.aspx",
+      "site": "marmiton.org",
+      "nom": "Véritable tajine poulet olives et citrons confits et huile d'argan : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "1 poulet coupé en morceaux (ou 4 beaux morceaux de poulet)",
+        "2 oignons (ou 3 moyens)",
+        "5 gousses d'ail",
+        "2 citrons confits (ou 3 moyens)",
+        "1 citron",
+        "1 cuillère à café de gingembre en poudre",
+        "1 cuillère à café de curcuma",
+        "1 cuillère à café de cumin en poudre",
+        "400 g d'olives vertes dénoyautées",
+        "4 cuillères à soupe de coriandre ciselée",
+        "3 cuillères à soupe d'huile d'argan (ou à défaut d’huile d’olive)",
+        "20 cl d'eau (soit un verre)",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 739,
+        "sha256": "022c80c44da8ca57"
+      },
+      "sha256_page": "f11e4089fadab9c9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/fricassee-de-poulet-au-citron-et-a-la-sauge",
+      "site": "chefsimon.com",
+      "nom": "Fricassée de poulet au citron et à la sauge",
+      "portions": "5 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "1,5 kilo de poulet fermier",
+        "1 citron non traité",
+        "10-12 feuilles de sauge",
+        "100 g de parmesan",
+        "50 cl de bouillon de volaille",
+        "1 cc d’ail en poudre",
+        "2 cs d’huile d’olive",
+        "20 cl de crème entière liquide",
+        "1 jaune d'œuf",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 961,
+        "sha256": "2390d251a5c2ddf4"
+      },
+      "sha256_page": "79069ef9181b0677"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/poulet-au-sumac-zaatar-et-citron",
+      "site": "chefsimon.com",
+      "nom": "Poulet au sumac, zaatar et citron",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "1 gros poulet fermier en morceaux (ou 4 cuisses)",
+        "2 oignons rouges tranchés finement",
+        "4 cs d'huile d'olive + pour le service",
+        "1,5 cc de mélange 4-épices",
+        "1 cc de cannelle en poudre",
+        "1 cs de sumac",
+        "1 citron coupé en tranches fines",
+        "20 cl de bouillon de volaille ou d'eau",
+        "2 cs de zaatar",
+        "50 g de pignons de pin",
+        "4 cs de persil plat ciselé",
+        "1,5 cc de sel / 1 cc de poivre noir fraîchement moulu",
+        "4 pains pita (ou à kebab)",
+        "250 g de yaourt grec",
+        "2 gousses d'ail"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1753,
+        "sha256": "2215de9b47473418"
+      },
+      "sha256_page": "2934cba026069fd9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/nota-banane/recettes/poulet-citron-sauge",
+      "site": "chefsimon.com",
+      "nom": "Poulet citron sauge",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H35M",
+      "ingredients": [
+        "750 gr poitrine de poulet",
+        "1 filet d'huile d'olive",
+        "3 rondelles de citron biologique",
+        "Sauge"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 194,
+        "sha256": "0f72751579650915"
+      },
+      "sha256_page": "8d6679dcc19ede2e"
+    },
+    {
+      "url": "https://www.750g.com/poulet-au-citron-r19470.htm",
+      "site": "750g.com",
+      "nom": "Poulet au citron",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "2 tomates",
+        "4 citrons",
+        "huile d'olive",
+        "bouillon de volaille",
+        "2 oignons",
+        "Thym",
+        "Romarin",
+        "Laurier",
+        "Sarriette",
+        "moutarde (la moitié d'un pot)",
+        "Sel",
+        "Poivre",
+        "6 gousses d'ail",
+        "poulet de ferme"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 467,
+        "sha256": "a1ebf1f073262326"
+      },
+      "sha256_page": "da514577514e81e1"
+    },
+    {
+      "url": "https://www.750g.com/emince-de-poulet-au-citron-r67672.htm",
+      "site": "750g.com",
+      "nom": "Émincé de poulet au citron",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "6 escalopes de poulet",
+        "25 cl de crème fraîche",
+        "25 cl de vin blanc",
+        "25 cl de bouillon de poule",
+        "2 citrons",
+        "2 gousses d'ail",
+        "Persil",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 691,
+        "sha256": "3bda7ffb14c54858"
+      },
+      "sha256_page": "b730c31f1e6790e4"
+    }
+  ]
+}

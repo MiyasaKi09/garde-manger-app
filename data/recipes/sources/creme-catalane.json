@@ -1,0 +1,215 @@
+{
+  "dish": "Crème catalane",
+  "slug": "creme-catalane",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_creme-catalane-parfumee_20594.aspx",
+      "site": "marmiton.org",
+      "nom": "Crème catalane parfumée : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 jaunes d'oeuf",
+        "25 cl de crème liquide",
+        "10 cl de lait",
+        "50 g de sucre en poudre",
+        "0.5 citron non traité",
+        "4 cuillères à café de cassonade",
+        "10 g de maïzena",
+        "3 bâtons de cannelle",
+        "1 gousse de vanille",
+        "1 cuillère à café de graines d'anis vert pilées (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 742,
+        "sha256": "06d1db8bd0bfc60c"
+      },
+      "sha256_page": "59adecff061db468"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_creme-catalane-a-l-orange_88180.aspx",
+      "site": "marmiton.org",
+      "nom": "Crème catalane à l'orange : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 l de lait",
+        "6 jaunes d'oeuf",
+        "250 g de sucre en poudre",
+        "50 g de maïzena",
+        "d'orange",
+        "5 cl de liqueur d'orange (type Cointreau)",
+        "cassonade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 738,
+        "sha256": "488f8bdb787fe4f9"
+      },
+      "sha256_page": "a2e384c19a360049"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_creme-catalane-coco_225647.aspx",
+      "site": "marmiton.org",
+      "nom": "Crème catalane coco : la meilleure recette",
+      "portions": "10 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "25 cl de lait de coco",
+        "25 cl de lait",
+        "3 jaunes d'oeuf",
+        "100 g de sucre",
+        "25 g de maïzena",
+        "cassonade (pour caraméliser)",
+        "noix de coco rapée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 661,
+        "sha256": "d1d523ca952b1e59"
+      },
+      "sha256_page": "0c87f09ea1d34516"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/nota-banane/recettes/creme-catalane-a-la-fleur-d-oranger",
+      "site": "chefsimon.com",
+      "nom": "Crème catalane à la fleur d'oranger",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "6 jaunes œufs",
+        "80 g sucre",
+        "4 cuillères à soupe de fécule de mais",
+        "500 ml lait de riz à la vanille",
+        "4 bâtons cannelle",
+        "1 gousse de vanille",
+        "2 cuillères à café de fleur d'oranger",
+        "Sucre pour la déco"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 286,
+        "sha256": "c2d19453163e8e56"
+      },
+      "sha256_page": "a121036f07f32ca0"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/kaderick/recettes/creme-catalane-caramelisee-au-fer",
+      "site": "chefsimon.com",
+      "nom": "Crème catalane caramélisée au fer",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "1 litre de lait entier",
+        "1 gousse de vanille",
+        "2 œufs entiers et 4 jaunes bio",
+        "20 grammes de farine",
+        "20 grammes de Maïzena",
+        "150 grammes de sucre roux"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "64e8e339ae341522"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-culinaire/recettes/creme-catalane-facile",
+      "site": "chefsimon.com",
+      "nom": "Crème catalane facile",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "500 ml de lait entier",
+        "3 jaunes d'oeufs",
+        "125 g de sucre en poudre",
+        "3 bonnes cuillerées à soupe de maïzena",
+        "Zeste d'1 petit citron (facultatif)",
+        "1 bâtonnet de cannelle",
+        "Du sucre cristallisé (ou de cassonade)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "1c879a868c68ddd1"
+    },
+    {
+      "url": "https://www.750g.com/creme-catalane-vanillee-r73017.htm",
+      "site": "750g.com",
+      "nom": "Crème catalane vanillée",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "2 gouttes d'extrait de vanille ou vanille liquide",
+        "30 g de sucre de canne roux ou cassonade",
+        "25 cl de lait",
+        "10 g de fécule de maïs",
+        "70 g de sucre",
+        "2 jaunes d'oeuf"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 529,
+        "sha256": "91570a3695fb7ac8"
+      },
+      "sha256_page": "ce210e15eb9939e7"
+    },
+    {
+      "url": "https://www.750g.com/creme-catalane-fait-maison-r49030.htm",
+      "site": "750g.com",
+      "nom": "Crème catalane fait maison",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "5 jaunes d'oeuf",
+        "70 g de fécule de maïs",
+        "175 g de sucre",
+        "50 g de beurre",
+        "1 l de lait entier"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 514,
+        "sha256": "eb292c20211f69b6"
+      },
+      "sha256_page": "15004437a3fce482"
+    },
+    {
+      "url": "https://www.750g.com/cremes-catalanes-r43033.htm",
+      "site": "750g.com",
+      "nom": "Crèmes catalanes",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "½ zeste de citron",
+        "Sucre roux",
+        "1 bâton de cannelle",
+        "50 g de fécule de maïs",
+        "6 jaunes d'oeuf",
+        "250 g de sucre en poudre ou sucre semoule",
+        "1 l de lait"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 614,
+        "sha256": "e5da493397f6fd94"
+      },
+      "sha256_page": "11bbb0eb552d6250"
+    }
+  ]
+}

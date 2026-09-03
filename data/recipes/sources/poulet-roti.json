@@ -1,0 +1,181 @@
+{
+  "dish": "Poulet rôti",
+  "slug": "poulet-roti",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-roti-simple_57676.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet rôti simple : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 poulet",
+        "huile végétale"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 460,
+        "sha256": "9e7baa59310a2777"
+      },
+      "sha256_page": "1c5947d990a8d093"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-roti-et-ses-pommes-de-terre_43958.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet rôti et ses pommes de terre : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 poulet à rôtir d'environ 1,2 kg",
+        "50 g de beurre",
+        "herbes de Provence",
+        "sel",
+        "poivre",
+        "20 pommes de terre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 1245,
+        "sha256": "ad6d996f34eb5859"
+      },
+      "sha256_page": "c45706c3f65afcb8"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-roti-en-cocotte-au-four_86353.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet rôti en cocotte au four : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "1 poulet d'environ 2 kg",
+        "2 oignons",
+        "3 gousses d'ail",
+        "25 cl de bouillon de volaille",
+        "4 branches de thym",
+        "4 feuilles de laurier",
+        "2 cuillères à soupe d'huile",
+        "1 cuillère à soupe de beurre",
+        "1 verre d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1425,
+        "sha256": "4d07e6d0695cbe97"
+      },
+      "sha256_page": "f846f5bb71187a91"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/poulet-roti-la-bonne-cuisson",
+      "site": "chefsimon.com",
+      "nom": "Poulet rôti : la bonne cuisson",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT01H30M",
+      "ingredients": [
+        "un beau poulet fermier",
+        "thym",
+        "huile neutre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1287,
+        "sha256": "6ceb7229ac1b109f"
+      },
+      "sha256_page": "d9c49fec4c57d9de"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/ailerons-de-poulet-rotis-aux-herbes",
+      "site": "chefsimon.com",
+      "nom": "Ailerons de poulet rôtis aux herbes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT02H00M",
+      "ingredients": [
+        "20 ailerons de poulet",
+        "1 dl d'huile",
+        "herbes de Provence",
+        "paprika",
+        "sel",
+        "poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 352,
+        "sha256": "5f9e31638928564d"
+      },
+      "sha256_page": "9a2ee17d7d5c9629"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/poulet-de-bresse-roti-en-papillote",
+      "site": "chefsimon.com",
+      "nom": "Poulet de Bresse rôti en papillote",
+      "portions": "",
+      "duree_preparation": "PT01H30M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "Poulet",
+        "ail",
+        "oignons",
+        "thym",
+        "film de cuisson cristal (carta fata)."
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1042,
+        "sha256": "87db513ef20ad1d2"
+      },
+      "sha256_page": "779ea0346342e7ef"
+    },
+    {
+      "url": "https://www.750g.com/poulet-roti-et-ses-pommes-de-terre-r41818.htm",
+      "site": "750g.com",
+      "nom": "Poulet rôti et ses pommes de terre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1,2 kg de poulet",
+        "20 pommes de terre",
+        "Poivre",
+        "Sel ou sel fin",
+        "Herbes de Provence",
+        "50 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 634,
+        "sha256": "b642e614fe082848"
+      },
+      "sha256_page": "14cb14200d236b97"
+    },
+    {
+      "url": "https://www.750g.com/poulet-roti-r4313.htm",
+      "site": "750g.com",
+      "nom": "Poulet fermier rôti au four",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 poulet  fermier ou label rouge 1,6 kg",
+        "100 g de roquette",
+        "5 gousses d'ail",
+        "5 cl d'huile",
+        "1 branche de thym",
+        "Goutte de vinaigre de vin rouge",
+        "Poivre du moulin",
+        "Sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 821,
+        "sha256": "361a2cdf07645cd4"
+      },
+      "sha256_page": "f12cd36f4b041329"
+    }
+  ]
+}

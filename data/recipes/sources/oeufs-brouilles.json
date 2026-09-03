@@ -1,0 +1,203 @@
+{
+  "dish": "Œufs brouillés",
+  "slug": "oeufs-brouilles",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_oeufs-brouilles-nature_30569.aspx",
+      "site": "marmiton.org",
+      "nom": "Oeufs brouillés nature : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "12 oeufs frais",
+        "6 cuillères à soupe de lait",
+        "60 g de beurre",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 319,
+        "sha256": "51aec8d210806a28"
+      },
+      "sha256_page": "eae9a6e7e2c96f5c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_brouillade-a-la-coquille-oeufs-brouilles-cremeux_33306.aspx",
+      "site": "marmiton.org",
+      "nom": "Brouillade  à la coquille (oeufs brouillés crémeux) : la meilleure recette",
+      "portions": "1 personne",
+      "duree_preparation": "PT3M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 oeufs",
+        "1 pincée de sel",
+        "1 cuillère à soupe de crème fraîche ou 1 cuillère à soupe de lait et 15 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 1510,
+        "sha256": "3988dc6c39612573"
+      },
+      "sha256_page": "4639c48b3e2389a6"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_rouleau-de-jambon-aux-oeufs-brouilles_12903.aspx",
+      "site": "marmiton.org",
+      "nom": "Rouleau de jambon aux oeufs brouillés : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "4 tranches de jambon blanc fines",
+        "4 oeufs",
+        "4 cuillères à soupe de crème épaisse",
+        "cerfeuil",
+        "poivre",
+        "sel",
+        "muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 467,
+        "sha256": "c3469e84ac851e3c"
+      },
+      "sha256_page": "991fdb8790618fb9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/oeufs-brouilles-a-la-truffe-29f94071-285d-4a89-ad14-38c28c10f11e",
+      "site": "chefsimon.com",
+      "nom": "Oeufs brouillés à la truffe",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 oeufs extra-frais XL",
+        "20 g beurre doux",
+        "truffe noire... selon votre budget !",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1480,
+        "sha256": "6367cf8448611eeb"
+      },
+      "sha256_page": "b4066bc6663a68a3"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/oeufs-brouilles--7",
+      "site": "chefsimon.com",
+      "nom": "Oeufs brouillés",
+      "portions": "",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 oeufs extra-frais",
+        "20 g beurre doux",
+        "sel",
+        "poivre",
+        "ciboulette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 864,
+        "sha256": "8509ccb2db2f71c4"
+      },
+      "sha256_page": "5527d1657b81fccb"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/feuilletes-d-oeufs-brouilles-aux-asperges-vertes",
+      "site": "chefsimon.com",
+      "nom": "Feuilletés d'oeufs brouillés aux asperges vertes",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 feuilletés déjà cuits (maison ou pas)",
+        "une demie botte d'asperges",
+        "5 cl de crème",
+        "3 gros oeufs extra frais",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1361,
+        "sha256": "8ad16588e0f26004"
+      },
+      "sha256_page": "969ff7ccc69afb57"
+    },
+    {
+      "url": "https://www.750g.com/oeufs-brouilles-a-la-ciboulette-r91648.htm",
+      "site": "750g.com",
+      "nom": "Œufs brouillés à la ciboulette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "Sel ou sel fin",
+        "Poivre",
+        "1 botte de ciboulette",
+        "1 c. à s. de crème fraîche épaisse",
+        "6 oeufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 319,
+        "sha256": "79b025ec87cab6f9"
+      },
+      "sha256_page": "3bf63c09bae94091"
+    },
+    {
+      "url": "https://www.750g.com/oeufs-brouilles-a-la-basquaise-r66604.htm",
+      "site": "750g.com",
+      "nom": "Œufs brouillés à la Basquaise",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "Ail",
+        "Piment d'Espelette",
+        "Oignons",
+        "Poivrons",
+        "8 œufs",
+        "Sel",
+        "Poivre",
+        "2 c à s de crème fraîche 'Vrai'"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 342,
+        "sha256": "7f24587c1e5315ee"
+      },
+      "sha256_page": "afb7a45af982f8a0"
+    },
+    {
+      "url": "https://www.750g.com/oeufs-brouilles-au-saumon-r204291.htm",
+      "site": "750g.com",
+      "nom": "Œufs brouillés au saumon",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "4 oeufs",
+        "1 noix de beurre",
+        "Sel ou sel fin",
+        "Poivre du moulin",
+        "6 asperges vertes",
+        "2 c. à s. de crème fraîche liquide",
+        "2 tranches de saumon fumé",
+        "Pain de mie complet"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 766,
+        "sha256": "1a727c609a8af943"
+      },
+      "sha256_page": "057e51313ee36728"
+    }
+  ]
+}

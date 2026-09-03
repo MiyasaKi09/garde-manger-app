@@ -1,0 +1,223 @@
+{
+  "dish": "Salade César",
+  "slug": "salade-cesar",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-cesar_32442.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade César : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "2 coeurs de laitues effeuillé",
+        "25 g de parmesan (copeaux)",
+        "4 tranches de pains écroûtées",
+        "2 cuillères à soupe d'huile",
+        "1 oeuf",
+        "25 g de parmesan râpé",
+        "2 cuillères à café de câpres",
+        "0.5 cuillère à café de moutarde",
+        "1 trait de tabasco",
+        "citron",
+        "1 gousse d'ail pelée",
+        "15 cl d'huile",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 456,
+        "sha256": "2ef1136dce421348"
+      },
+      "sha256_page": "ed4abadfe0d84c44"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-cesar-cremeuse_18999.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade César crémeuse : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "125 ml de mayonnaise",
+        "65 ml de lait",
+        "125 ml de parmesan",
+        "15 ml de moutarde de Dijon",
+        "30 ml de vinaigre ou jus de citron",
+        "2 gousses d'ail finement hachées",
+        "romaine (ou laitue)",
+        "bacon émietté",
+        "parmesan râpé",
+        "croûtons à l'ail"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 185,
+        "sha256": "b58b44ad8a31b4bd"
+      },
+      "sha256_page": "619190b307a86f06"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-cesar-au-poulet-light_73517.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade césar au poulet light : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 escalopes de poulet",
+        "1 salade verte",
+        "parmesan en copeaux",
+        "7 biscottes",
+        "oeuf durs",
+        "1 citron",
+        "1 échalote",
+        "piment d'Espelette ou paprika ou cumin",
+        "5 g de beurre allégé",
+        "poivre",
+        "sel",
+        "4 cuillères à soupe de crème fraîche (légère)",
+        "1 citron",
+        "1 cuillère à soupe de moutarde",
+        "20 g de parmesan râpé",
+        "de vinaigre balsamique"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1024,
+        "sha256": "deef5c0d4ab68f3f"
+      },
+      "sha256_page": "b7674c0bca48f1ec"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/joannes-richard/recettes/salade-braisee-facon-smokey-cesar",
+      "site": "chefsimon.com",
+      "nom": "Salade braisée façon \"smokey César\"",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H11M",
+      "ingredients": [
+        "2 gousses d’ail",
+        "Le jus de 1 citron jaune",
+        "100 ml d’huile d’olive fumée",
+        "2 cuil. à café de paprika fumé",
+        "4 tranches de pain de mie",
+        "4 escalopes de poulet",
+        "4 sucrines*",
+        "100 g de pickles d’oignons rouges",
+        "160 g de copeaux de parmesan",
+        "20 câprons",
+        "200 g de sauce smokey César",
+        "1 poignée d’oignons frits"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 1211,
+        "sha256": "e4fa3b1a1fd059bd"
+      },
+      "sha256_page": "bf35a8d5cd6277cb"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/salade-de-fenouil-poivrons-tomates-a-la-sauce-cesar",
+      "site": "chefsimon.com",
+      "nom": "Salade de fenouil, poivrons, tomates à la sauce César",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "2 bulbes de fenouil moyens",
+        "2 poivrons, 1 rouge et 1 jaune",
+        "3 tomates mûres",
+        "Copeaux de parmesan",
+        "Poivre",
+        "1 c à c de ciboulette hachée",
+        "100 g de mayonnaise",
+        "2 c à s de yaourt grec ou fromage blanc",
+        "30 g de parmesan râpé",
+        "1 c à c de moutarde",
+        "1 c à s de jus de citron",
+        "1 gousse d’ail hachée",
+        "2 filets d’anchois finement écrasés",
+        "Poivre",
+        "Quelques croûtons",
+        "Pluches de fenouil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 935,
+        "sha256": "7009a36a068dab6a"
+      },
+      "sha256_page": "2793c47b6760f95a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/le-popoteur/recettes/salade-cesar-bf5e93bf-f327-44e7-967f-f64384018004",
+      "site": "chefsimon.com",
+      "nom": "Salade César",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 belle salade romaine (il en restera)",
+        "4 tranches de pain de campagne (120 gr)",
+        "9 tranches fines de lard fumé",
+        "4 œufs",
+        "2 gousses d'ail",
+        "4 cuillères à soupe d'huile d'arachide ou de tournesol",
+        "copeaux de parmesan",
+        "3 blancs de poulet fermier",
+        "3 gr d'origan séché",
+        "un demi-citron",
+        "4 cuillères à soupe d'huile d'olive",
+        "1 œuf",
+        "25 gr de farine",
+        "60 gr de chapelure Panko (ou classique)",
+        "3 cuillères à soupe d'huile d'arachide ou de tournesol",
+        "20 gr de beurre",
+        "1 jaune d'œuf",
+        "1 cuillère à soupe de moutarde forte",
+        "un demi-citron",
+        "2 cuillères à soupe de crème liquide",
+        "10 cl d'huile d'arachide ou de tournesol + 1 cuillère à soupe de l'huile des anchois",
+        "1 gousse d'ail",
+        "6 filets d'anchois à l'huile",
+        "1 cuillère à soupe de sauce Worcestershire",
+        "80 gr de parmesan râpé",
+        "poivre blanc du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 39,
+        "signes": 3226,
+        "sha256": "34a69dc743aba4fa"
+      },
+      "sha256_page": "3574201eb973ac30"
+    },
+    {
+      "url": "https://www.750g.com/salade-cesar-au-poulet-epice-r89087.htm",
+      "site": "750g.com",
+      "nom": "Salade césar au poulet épicé",
+      "portions": "2 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "Botte d'oignon",
+        "1 oeuf  dur",
+        "Vinaigrette",
+        "1 sachet de croûton",
+        "Farine",
+        "150 g de blancs de poulet",
+        "Chapelure",
+        "2 c. à c. de ras el-hanout",
+        "1 salade verte"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 713,
+        "sha256": "d7d4d0427707defc"
+      },
+      "sha256_page": "a18986c7a2027591"
+    }
+  ]
+}

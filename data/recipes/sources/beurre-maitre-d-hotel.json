@@ -1,0 +1,114 @@
+{
+  "dish": "Beurre maître d'hôtel",
+  "slug": "beurre-maitre-d-hotel",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tarte-au-saumon-fume-beurre-maitre-d-hotel_26849.aspx",
+      "site": "marmiton.org",
+      "nom": "tarte au saumon fumé, beurre maître d'hôtel : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "4 oeufs",
+        "50 cl de crème fraîche",
+        "150 g de saumon fumé",
+        "1 pâte brisée",
+        "beurre aux herbes ou maître d'hôtel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 460,
+        "sha256": "9f7e4ba18cf5e764"
+      },
+      "sha256_page": "f5dffc6e8c056dc7"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_beurre-maitre-d-hotel_26027.aspx",
+      "site": "marmiton.org",
+      "nom": "Beurre maître d'hôtel : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "75 g de beurre",
+        "0.5 échalote",
+        "1 cuillère à soupe de persil",
+        "0.5 citron",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 233,
+        "sha256": "dc94c88101db9be3"
+      },
+      "sha256_page": "7f5b3a13bb165f72"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_noix-de-petoncles-a-la-creme-d-ail-et-beurre-maitre-d-hotel_37381.aspx",
+      "site": "marmiton.org",
+      "nom": "Noix de pétoncles à la crème d'ail et beurre maître d'hôtel : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "300 g de noix de pétoncle (sans corail)",
+        "12 gousses d'ail",
+        "30 g de beurre",
+        "1 beurre maître d'hôtel surgelé",
+        "1 échalote (ou 2 petites)",
+        "20 cl de crème fraîche liquide"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 743,
+        "sha256": "975be2b52c730cac"
+      },
+      "sha256_page": "386467583ee42459"
+    },
+    {
+      "url": "https://www.750g.com/beurre-maitre-dhotel-r1464.htm",
+      "site": "750g.com",
+      "nom": "Beurre maître d'hôtel",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "100 g de beurre",
+        "7 brins de persil  à 8 frais",
+        "1 jus de citron"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 412,
+        "sha256": "0dd6cdf90d24befd"
+      },
+      "sha256_page": "85e1ed883bec9b79"
+    },
+    {
+      "url": "https://www.750g.com/entrecote-beurre-maitre-dhotel-r43864.htm",
+      "site": "750g.com",
+      "nom": "Entrecôte beurre maître d'hôtel",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT4M",
+      "ingredients": [
+        "2 entrecôtes",
+        "1 c. à s. de vinaigre de vin  aux échalotes",
+        "50 g d'herbes fraîches  (cerfeuil, persil, ciboulette...)",
+        "100 g de beurre",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 570,
+        "sha256": "b58ae2b823a37ddf"
+      },
+      "sha256_page": "ae0d773ecaa68d2d"
+    }
+  ]
+}

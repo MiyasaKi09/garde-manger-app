@@ -59,6 +59,15 @@ const ALIAS = {
   'pates-au-thon-et-a-la-tomate': [
     'spaghetti tomate thon', 'spaghetti thon provencale', 'pates provencale thon',
   ],
+  // « vongole » est le nom italien de la palourde : les pages françaises titrent
+  // le même plat « spaghetti aux palourdes ». Sans cette déclaration, les trois
+  // pages italiennes de chefsimon restaient seules et le dossier tombait à un
+  // site — le plat existe pourtant bien sur deux.
+  'spaghetti-alle-vongole': ['spaghetti aux palourdes'],
+  // Le pastitsio EST un gratin de pâtes grec : le contrôle des types de plat le
+  // rejetait pour un mot qui décrit exactement ce qu'il est. On ne lève le
+  // contrôle que lorsque « gratin » accompagne le nom du plat, pas seul.
+  'pastitsio': ['pastitsio gratin'],
 }
 
 const CHIFFRES = /\d|demi|quart|une? |pinc[ée]e|cuill|gousse|brin|feuille|sachet|bouquet/i

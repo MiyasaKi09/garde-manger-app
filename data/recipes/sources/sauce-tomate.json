@@ -1,0 +1,174 @@
+{
+  "dish": "Sauce tomate",
+  "slug": "sauce-tomate",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_sauce-tomate-a-tout-faire-de-jacqueline_36550.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauce tomate à tout faire de Jacqueline : la meilleure recette",
+      "portions": "1 litre",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "2 kg de tomates longues mûres (en saison)",
+        "2 boîtes de tomates pelées au jus (hors saison)",
+        "1 oignon blanc",
+        "1 gousse d'ail",
+        "herbes de Provence  laurier (4 feuilles), thym, sarriette, romarin, marjolain",
+        "1 cube de bouillon",
+        "1 cuillère à café rase de sucre",
+        "1 boîte de concentré de tomates à 28%",
+        "poivre",
+        "sel",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 18,
+        "signes": 1506,
+        "sha256": "4da75b1b5353a47e"
+      },
+      "sha256_page": "ad8ba54b8af66ca0"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_sauce-tomate-rapide-pour-pizza_37004.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauce tomate rapide pour pizza : la meilleure recette",
+      "portions": "1 pizza",
+      "duree_preparation": "PT2M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "1 boîte de concentré de tomates , la plus petite si vous faîtes une pizza moyenne, la très grande si vous en faites pour un régiment d'affamés",
+        "eau",
+        "sel",
+        "poivre",
+        "1 sucre",
+        "origan",
+        "basilic",
+        "herbes de Provence"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 596,
+        "sha256": "99b25d12eafa174b"
+      },
+      "sha256_page": "6429df7bbb695b7a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_sauce-tomate-a-l-italienne_14863.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauce tomate à l'italienne : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "8 tomates mûres",
+        "4 gousses d'ail",
+        "2 échalotes",
+        "huile d'olive",
+        "poivre du moulin blanc et noir",
+        "sel",
+        "basilic frais"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 816,
+        "sha256": "2efb42beb9511322"
+      },
+      "sha256_page": "f5b7a2b57330dd9b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/epepiner-et-concasser-une-tomate",
+      "site": "chefsimon.com",
+      "nom": "Epépiner et concasser une tomate",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "Tomates (Roma de préférence)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 661,
+        "sha256": "30f0ada1a8e74c31"
+      },
+      "sha256_page": "ea754af935254604"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/gnocchis-aux-tomates-et-au-chorizo",
+      "site": "chefsimon.com",
+      "nom": "Gnocchis aux tomates et au chorizo",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "300 g de gnocchis (maison pour moi)",
+        "1 chorizo doux",
+        "1 c à s de concentré de tomate",
+        "1/2 oignon haché",
+        "1 gousse d’ail finement hachée",
+        "250 g de tomates cerises",
+        "1 burrata",
+        "Huile d’olive",
+        "Quelques feuilles de basilic"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 804,
+        "sha256": "733d555a4e965b53"
+      },
+      "sha256_page": "0532af02abd3a5c3"
+    },
+    {
+      "url": "https://www.750g.com/sauce-tomate-au-basilic-r68486.htm",
+      "site": "750g.com",
+      "nom": "Sauce tomate au basilic",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "300 g de tomates",
+        "1 gousse d'ail",
+        "½ oignon",
+        "1 branche de basilic",
+        "½ branche de thym",
+        "1 feuille de laurier",
+        "½ carré de sucre",
+        "2 c. à s. d'huile d'olive",
+        "½ c. à s. d'origan",
+        "½ c. à c. de concentré de tomates",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 542,
+        "sha256": "9bbf77831c6b05e7"
+      },
+      "sha256_page": "0c90849b29d76654"
+    },
+    {
+      "url": "https://www.750g.com/sauce-tomate-r68166.htm",
+      "site": "750g.com",
+      "nom": "Sauce tomate classique",
+      "portions": "3 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "Poivre",
+        "Huile",
+        "Basilic",
+        "1 pincée de sel ou sel fin",
+        "1 oignon",
+        "1 brique de sauce tomate"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 219,
+        "sha256": "2fb3d5d39cf52a76"
+      },
+      "sha256_page": "54c1cab3d7c7bbf0"
+    }
+  ]
+}

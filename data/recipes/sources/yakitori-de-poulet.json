@@ -1,0 +1,170 @@
+{
+  "dish": "Yakitori de poulet",
+  "slug": "yakitori-de-poulet",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-yakitori-japonais_31123.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet yakitori  (japonais) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT2H",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "500 g de blancs de poulet découpés en lanières",
+        "huile pour graisser",
+        "6 cl de sauce teriyaki",
+        "6 cl de miel",
+        "1 gousse d'ail pilée",
+        "1 pincée de gingembre moulu"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 612,
+        "sha256": "e2ad5bb216fc27ed"
+      },
+      "sha256_page": "bb87813acb1cf83e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_yakitori-brochettes-de-poulet-japonaises_51469.aspx",
+      "site": "marmiton.org",
+      "nom": "Yakitori (brochettes de poulet japonaises) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "750 g de cuisses de poulet désosséés, sans peau",
+        "1 poireau (selon taille)",
+        "10 cuillères à soupe de soja",
+        "2 cuillères à soupe de sucre",
+        "3 cuillères à soupe de mirin et/ou saké"
+      ],
+      "etapes_empreinte": {
+        "nombre": 36,
+        "signes": 4482,
+        "sha256": "ffa0bb027f7f6adb"
+      },
+      "sha256_page": "0d03a6ba305b9bd9"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_yakitori-brochettes-de-poulet-japon_17333.aspx",
+      "site": "marmiton.org",
+      "nom": "Yakitori / brochettes de poulet (Japon) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "0.25 sauce soja japonaise",
+        "0.25 mirin (sauce au riz japonaise)",
+        "0.25 alcool de riz tres peu alcoolisé (10% environ voir moins)",
+        "0.25 sucre en poudre",
+        "4 cuisses de poulet",
+        "3 poireaux"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 769,
+        "sha256": "124e5ca60e151a34"
+      },
+      "sha256_page": "fe06531b777a95ce"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/passeportpourlacuisine/recettes/yakitori-de-poulet-aux-poireaux",
+      "site": "chefsimon.com",
+      "nom": "Yakitori de poulet aux poireaux",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "400 g de cuisses de poulet désossées",
+        "4 poireaux fins",
+        "10 cl de sauce yakitori",
+        "4 bols de riz cuit chaud",
+        "shichimi togarashi"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 704,
+        "sha256": "2e2d9b8ecd6ff2ce"
+      },
+      "sha256_page": "06ca58ba65986887"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/eminces-de-poulet-marine-a-l-oignon-huiles-et-sauce-yakitori",
+      "site": "chefsimon.com",
+      "nom": "Emincés de poulet mariné à l'oignon, huiles et sauce yakitori",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 blancs de poulet",
+        "120 g de riz basmati",
+        "100 g de petits pois surgelés",
+        "10 g de beurre demi-sel",
+        "1 oignon",
+        "1 c. à soupe de sauce yakitori",
+        "1 c. à soupe d'huile de sésame grillé",
+        "1 c. à soupe d'huile de colza",
+        "1 c. à café rase de maïzena",
+        "persil frais",
+        "piment d'Espelette",
+        "thym",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "e4bf5d9c92aa7627"
+    },
+    {
+      "url": "https://www.750g.com/poulet-sauce-yakitori-r100612.htm",
+      "site": "750g.com",
+      "nom": "Poulet sauce yakitori",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 filets de filets de poulet",
+        "2 poignées de graines de sésame",
+        "15 cl de sauce soja",
+        "Huile d'olive",
+        "8 c. à s. de saké",
+        "8 c. à s. de mirin",
+        "1 c. à s. de sucre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 410,
+        "sha256": "1a6295dd5657cf40"
+      },
+      "sha256_page": "aba6f0ace9986505"
+    },
+    {
+      "url": "https://www.750g.com/brochettes-de-poulet-yakitori-r8863.htm",
+      "site": "750g.com",
+      "nom": "Brochettes de poulet (Yakitori)",
+      "portions": null,
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "Sel",
+        "Poivre",
+        "Poireau",
+        "Poulet (sans os)",
+        "Sake 1c.a.s",
+        "Mirin 2 c.a.s",
+        "Sucre 1c.a.s",
+        "Sauce de soja 3.c.a.s    Si tu n'a pas mirin,sake"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 326,
+        "sha256": "95ab44ab4fa26068"
+      },
+      "sha256_page": "83197e72d21bff5c"
+    }
+  ]
+}

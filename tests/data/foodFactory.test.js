@@ -42,6 +42,43 @@ describe('parseFoodName', () => {
     const d = parseFoodName('Dinde, escalope, crue')
     expect(d.bone_state).toBe('boneless')
   })
+
+  /**
+   * Le masculin singulier finit par une lettre accentuée, et `\b` de JavaScript
+   * ne connaît que l'ASCII : il n'existe aucune frontière de mot après « é ».
+   * `/\bsurgelé\b/` ne reconnaissait donc PAS « surgelé », alors qu'il
+   * reconnaissait « surgelée » et « surgelés » — le féminin et le pluriel
+   * marchaient, ce qui rendait la panne indétectable à la lecture.
+   *
+   * Elle a coûté exactement ceci : « Petit pois surgelé », seule forme surgelée
+   * du catalogue, sortait avec preservation_state = null, soit indistinguable
+   * d'un légume frais pour tout ce qui lit cet état. Onze herbes et épices
+   * « séché », deux découpes « désossé » et un « appertisé » étaient dans le
+   * même cas.
+   */
+  it('reconnaît le masculin singulier, dont la finale est accentuée', () => {
+    expect(parseFoodName('Petit pois surgelé').preservation_state).toBe('frozen')
+    expect(parseFoodName('Épinard surgelé').preservation_state).toBe('frozen')
+    expect(parseFoodName('Thym séché').preservation_state).toBe('dried')
+    expect(parseFoodName('Haricot flageolet appertisé, égoutté').preservation_state).toBe('canned')
+    expect(parseFoodName('Haut de cuisse de poulet cru, désossé').bone_state).toBe('boneless')
+    // La frontière GAUCHE souffrait du même défaut : un « à » n'est pas plus
+    // un caractère de mot qu'un « é ».
+    expect(parseFoodName("Bœuf, macreuse, à l'étuvée").cooking_state).toBe('cooked')
+  })
+
+  it('le féminin et le pluriel continuent de marcher', () => {
+    expect(parseFoodName('Carotte, surgelée, crue').preservation_state).toBe('frozen')
+    expect(parseFoodName('Petits pois, surgelés, crus').preservation_state).toBe('frozen')
+    expect(parseFoodName('Épinard frais').preservation_state).toBe('fresh')
+  })
+
+  it('ne déborde pas sur un mot qui commence pareil', () => {
+    // « Crumble » et « Cruche » commencent par « cru » : sans frontière droite,
+    // ils passeraient pour des aliments crus.
+    expect(parseFoodName('Crumble aux pommes').cooking_state).toBe(null)
+    expect(parseFoodName('Cruche').cooking_state).toBe(null)
+  })
 })
 
 describe('resolveCategory', () => {

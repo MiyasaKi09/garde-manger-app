@@ -1,0 +1,214 @@
+{
+  "dish": "Poulet au curry",
+  "slug": "poulet-au-curry",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_filet-de-poulet-au-curry_80990.aspx",
+      "site": "marmiton.org",
+      "nom": "Filet de poulet au curry : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 filets de poulet",
+        "1 oignon",
+        "ail au poudre",
+        "4 cuillères à soupe de sauce soja",
+        "4 brins de ciboulette",
+        "1 cuillère à soupe d'huile d'olive",
+        "1 cuillère à café de curry",
+        "10 cl de crème fraîche épaisse ou liquide",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 485,
+        "sha256": "9ac6be2711dd40c0"
+      },
+      "sha256_page": "518c0dc38894f5ce"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-curry-et-oignons-facile_13026.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet curry et oignons facile : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 blancs de poulet",
+        "2 oignons jaunes",
+        "1 pot de crème fraîche allégée",
+        "curry",
+        "cumin",
+        "piment",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 521,
+        "sha256": "80d852ade7009660"
+      },
+      "sha256_page": "188106b7f1b0284b"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-au-curry-lait-de-coco-et-noix-de-cajou_37398.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet au curry lait de coco et noix de cajou : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "3 filets de poulet ou dinde",
+        "20 cl de lait de coco",
+        "1 cuillère à café de curry suivant le goût",
+        "1 cuillère à soupe de sauce soja",
+        "1 poignée de noix de cajou grillées salées (type apéro)",
+        "1 cuillère à soupe de maïzena",
+        "3 cuillères à soupe d'huile",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 558,
+        "sha256": "92e9f60d6a1d6e31"
+      },
+      "sha256_page": "813b7eeef13859db"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lactel/recettes/crepes-au-pandan-de-thailande-coco-grillee-et-poulet-hache-curry",
+      "site": "chefsimon.com",
+      "nom": "Crêpes au pandan de Thaïlande, coco grillée et poulet haché curry",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "100 g de farine de riz",
+        "100 g de farine de blé T 45",
+        "100 g d’huile de coco liquide",
+        "500 ml de lait Lactel Bio®",
+        "2 œufs",
+        "2 cc d’arôme de pandan liquide (en boutique asiatique) ou de thé matcha",
+        "1 pincée de sel",
+        "1 gousse d’ail",
+        "Sel et poivre",
+        "200 g de filet de poulet",
+        "1 gousse d’ail",
+        "3 cs de coriandre effeuillée",
+        "sel et poivre",
+        "3 cc de curcuma",
+        "2 cc de curry",
+        "1 citron vert",
+        "150 g de noix de coco râpée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 1260,
+        "sha256": "70ab2575f9eb07fd"
+      },
+      "sha256_page": "cfb2410204d68ea3"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/poulet-saute-et-curry-d-endives",
+      "site": "chefsimon.com",
+      "nom": "Poulet sauté et curry d’endives",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "2 filets de poulet (poulet ou dinde)",
+        "4 endives",
+        "20 cl de crème liquide entière",
+        "1 oignon",
+        "2 c à s de curry en poudre",
+        "1 c à c de curcuma",
+        "1 c à s d’huile d’olive",
+        "20 g de beurre",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 912,
+        "sha256": "73d6c7bc6eb74cc1"
+      },
+      "sha256_page": "6295ec81cd66290c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/voyage-culinaire-a-madagascar/recettes/poulet-au-curry-708d3adf-b995-4744-9dc0-117e3639409f",
+      "site": "chefsimon.com",
+      "nom": "Poulet au curry",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "1 kg 500 de poulet",
+        "150 g d’oignons",
+        "50 g de gingembre",
+        "Eau ,Poivre, Sel",
+        "50 g huile",
+        "7 g ail",
+        "150 g de tomates",
+        "30 g de farine",
+        "2 cuillerées à café curry"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 361,
+        "sha256": "0e24b1f3a7338b9e"
+      },
+      "sha256_page": "3a15306ef2586d63"
+    },
+    {
+      "url": "https://www.750g.com/poulet-au-curry-et-lait-de-coco-r75551.htm",
+      "site": "750g.com",
+      "nom": "Poulet au curry et lait de coco",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 oignon",
+        "1 gousse d'ail",
+        "5 brins de ciboulette",
+        "1 c. à s. d'épices pour colombo",
+        "1 c. à s. de fond de volaille",
+        "40 cl de lait de coco",
+        "5 cl de rhum",
+        "2 c. à s. d'huile d'olive",
+        "4 escalopes de poulet"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 646,
+        "sha256": "5d7ed2817c4ead1e"
+      },
+      "sha256_page": "762c117b1976ba44"
+    },
+    {
+      "url": "https://www.750g.com/poulet-au-coco-et-curry-r33097.htm",
+      "site": "750g.com",
+      "nom": "Poulet au Coco et Curry",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "du curry en poudre (2 à 3 cuillères à soupe rases)",
+        "2 oignons jaunes",
+        "lait de coco (1 boîte soit environ 300 g)",
+        "du gimgembre en boîte (1 cuillère à café)",
+        "des copeaux de noix de coco",
+        "4 escalopes de poulet (environ 120 g l'une)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 461,
+        "sha256": "a5f23fa521132f5e"
+      },
+      "sha256_page": "6e50222060376f3c"
+    }
+  ]
+}

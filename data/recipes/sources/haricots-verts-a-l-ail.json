@@ -1,0 +1,82 @@
+{
+  "dish": "Haricots verts à l'ail",
+  "slug": "haricots-verts-a-l-ail",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_haricots-verts-a-la-creme-ail-et-fines-herbes_342759.aspx",
+      "site": "marmiton.org",
+      "nom": "Haricots verts à la crème ail et fines herbes : la meilleure recette",
+      "portions": "2 personne(s)",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 boîte de haricots verts",
+        "4 tranches de lard non fumé",
+        "2 gousses d'ail",
+        "1 boîte de fromage frais ail & fines herbes",
+        "1 brique de crème liquide"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 551,
+        "sha256": "6e5c59719a817c29"
+      },
+      "sha256_page": "8282413e118ff5b0"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gigot-a-l-ail-et-haricots-verts_28216.aspx",
+      "site": "marmiton.org",
+      "nom": "Gigot à l'ail et haricots verts : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "600 g de gigot d'agneau désossé",
+        "600 g de haricots verts",
+        "200 g de riz long grain",
+        "50 g de beurre",
+        "40 cl d'eau chaude",
+        "3 branches de persil",
+        "2 gousses d'ail",
+        "2 oignons",
+        "1 branche de thym",
+        "1 feuille de laurier",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 478,
+        "sha256": "513160f9c8d2a7c4"
+      },
+      "sha256_page": "d920aa78ab509807"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/vert-couleur-persil/recettes/haricots-verts-a-l-ail-et-citron",
+      "site": "chefsimon.com",
+      "nom": "Haricots verts à l'ail et citron",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H03M",
+      "ingredients": [
+        "500 g de haricots verts équeutés",
+        "Eau fraîche",
+        "Le jus de 2 citrons",
+        "2 c. à soupe + 1 c. à thé de sirop d’érable",
+        "3 gousses d’ail",
+        "5 c. à thé de levure alimentaire",
+        "1 c. à thé de graines de chanvre décortiquées",
+        "1/2 + 1/8 c. à thé de sel de mer",
+        "Poivre du moulin, au goût"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "9babc62e8df72cf4"
+    }
+  ]
+}

@@ -1,0 +1,460 @@
+{
+  "schema_version": "1.0.0",
+  "price_set_version": "2026.09-surgeles",
+  "country": "FR",
+  "currency": "EUR",
+  "reference_date": "2026-09-02",
+  "derived_license": "odbl-1.0",
+  "catalog_version": "v3-300-real-dishes",
+  "built_at": "2026-09-02",
+  "notes": "Tranche « surgelés » : la première du référentiel à coter des formes ouvertes par le lot d'arbitrage lot19-formes-surgelees.json, qui fait entrer 25 formes surgelées au catalogue alimentaire. Sept formes sont travaillées ici, cinq portent un prix retenu — toutes en B, aucune en A — et deux gardent une lecture conservée en C, ni affichée ni comptée. Les dix-huit autres formes du lot n'ont trouvé aucune cotation exploitable et restent non chiffrées : c'est la baisse de couverture assumée qu'un catalogue plus riche produit toujours, et elle vaut mieux qu'une couverture tenue par des chiffres inventés.\n\nAUCUNE ENTRÉE EN A, et la raison est structurelle, pas circonstancielle. Le CONTRAT §4 exige pour A une source qui l'accorde, un agrégat déclaré, moins de douze mois et une dispersion en DÉCILES. Des trois sources de prix du registre, deux seulement ont leur licence vérifiée : le RNM, qui accorde A mais ne cote pas le surgelé et le dit lui-même (does_not_cover : « produits transformés »), et Open Prices, plafonnée à B par construction. La condition de source et la condition de dispersion ne peuvent donc pas être satisfaites ensemble sur ce lot. L'Observatoire de la formation des prix et des marges reste à licence non vérifiée ; activer une source est un geste humain et daté, pas un effet de bord d'un import, et le registre n'a pas été touché.\n\nderived_license vaut odbl-1.0 : Open Prices porte la totalité des entrées et impose son partage à l'identique à la base dérivée.\n\nPOURQUOI LE SURGELÉ EST LE BON TERRAIN POUR OPEN PRICES, alors qu'il est mauvais pour le RNM. Un légume surgelé est un produit EMBALLÉ, à code-barres, dont Open Food Facts publie le poids net : le passage au pivot du CONTRAT §1.1 — l'euro par kilogramme net acheté — est une simple division, et chaque terme de cette division figure dans la citation. Un légume frais vendu au poids n'a ni code-barres ni poids net, et c'est là que le RNM est irremplaçable. Les deux sources sont complémentaires par nature du produit, pas par préférence.\n\nMÉTHODE, identique à celle de la tranche « légumes et fruits », rappelée ici pour que la tranche se relise seule. Moisson complète de chaque catégorie Open Food Facts par pagination (size=100), PUIS filtrage en local — l'API ignore silencieusement les paramètres qu'elle ne connaît pas, donc aucun filtre ne lui est délégué. Sont écartés : devise ≠ EUR, magasin hors France (code pays OSM du magasin, et non l'adresse en clair), relevé en promotion, produit portant un label bio, relevé marqué duplicate_of par l'API, poids net inconnu, relevé hors de la fenêtre 2025-09-03 → 2026-09-02. Puis UN SEUL relevé par couple (code-barres, magasin), le plus récent : sans cette règle, un magasin qui rescanne le même sachet chaque semaine pèse dix fois dans la médiane, et la dispersion mesurée serait celle d'un rayon suivi dans le temps, pas celle des prix français. Le €/kg est le prix payé divisé par le poids net publié par Open Food Facts (product_quantity). D1 et D9 sont les déciles empiriques (interpolation linéaire) dès que l'échantillon atteint dix relevés ; en deçà, ce sont les extrêmes, déclarés min_max — écrire des déciles sur six points fabriquerait une précision que l'échantillon n'a pas.\n\nUNE RÈGLE PROPRE AU SURGELÉ, ET LA PLUS LOURDE DE CONSÉQUENCE : L'ÉTAT DE CUISSON. Le rayon vend côte à côte le sachet cru et le sachet précuit, sous des prix très différents, et Ciqual les mesure séparément (20204 « Brocoli, surgelé, cru » contre 20205 « Brocoli, surgelé, cuit »). Les formes du catalogue sont toutes adossées à l'état CRU, sauf les fruits de mer. Un relevé est donc écarté s'il porte un tag Open Food Facts de préparation (en:cooked-vegetables, en:prepared-vegetables, en:frozen-precooked-*, en:purees, en:breaded-fish, en:fish-preparations, en:spinach-with-cream-sauce) OU si le nom du produit déclare lui-même un état — « cuit », « précuit », « vapeur », « à la crème », « meunière », « bordelaise », « juste à réchauffer ». Les deux critères sont vérifiables par un relecteur sur la fiche du relevé, ce qui est la seule chose qui compte : le tag parce qu'il est publié, le nom parce qu'il est imprimé sur le sachet. Le second critère existe parce que le premier ne suffit pas — « Brocolis précuits vapeur » et « Choux-fleurs Précuits Vapeur 1kg » ne portent aucun tag de cuisson.\n\nCE FILTRE A UN PRIX, ET IL EST PAYÉ PAR LE BROCOLI. Écarter les références déclarées cuites ne retire pas un bruit de fond : sur le brocoli, cela retire précisément les sachets premier prix, autour de 2,20 EUR/kg, et laisse un échantillon de six relevés qui ne porte plus que Bonduelle et Picard. L'entrée est conservée et publiée à 4,87 EUR/kg, mais sa note dit ce qu'elle vaut : un haut de fourchette du rayon, pas la médiane du brocoli surgelé. C'est la limite la plus sérieuse de cette tranche, et elle tient à la qualité des tags amont, pas à la méthode.\n\nLE RENDEMENT COMESTIBLE, ET CE QUE LE SURGELÉ Y CHANGE. Cinq entrées le déclarent CONNU et égal à 1,00 par nature du produit, via myko_reasoning : épinard, haricot vert, brocoli, chou-fleur, champignon de Paris — et poireau, en C. Ce n'est pas une commodité, c'est la définition du produit : un légume surgelé NE SE PARE PAS. L'équeutage du haricot, le lavage et l'équeutage de l'épinard, le retrait du trognon du brocoli et du chou-fleur, celui du pied terreux du champignon, celui du vert dur et du pied racinaire du poireau — tout cela est fait en usine avant congélation, et rien de ce qui est pesé en caisse ne part à la poubelle. Le CONTRAT §2.2 admet exactement ce cas et rien d'autre : « une huile, un sel, un sucre n'ont pas de partie non comestible, et c'est une définition, pas une mesure ». Le sachet de légume surgelé rejoint cette liste.\n\nMAIS L'ASYMÉTRIE NE PEUT PAS ÊTRE DITE, et c'est une limite connue qu'il faut écrire ici plutôt que la laisser deviner. Le gain réel du surgelé est comparatif : un kilo d'épinards frais donne beaucoup moins d'épinards utilisables qu'un kilo d'épinards surgelés en branches. Or les formes FRAÎCHES du catalogue portent toutes edible_yield = 1,00 DÉCLARÉ INCONNU, faute de table publiée de parts comestibles — aucune source du registre n'en publie. Les deux côtés de la comparaison valent donc 1,00, l'un connu et l'autre ignoré, et l'estimation d'une recette au frais reste un MINORANT tandis que celle au surgelé est juste. Conséquence directe et à ne pas oublier : le référentiel sous-estime le coût du frais et non celui du surgelé, si bien qu'il fait paraître le surgelé RELATIVEMENT PLUS CHER qu'il ne l'est. C'est un biais dont on connaît le sens, ce qui est le mieux qu'on puisse offrir sans source ; il se corrigera le jour où une table de parts comestibles entrera au registre, et l'écart ne pourra alors que se creuser en faveur du surgelé.\n\nLE POISSON EST TRAITÉ AUTREMENT, ET VOICI POURQUOI. « Filet de merlu surgelé » garde edible_yield = 1,00 DÉCLARÉ INCONNU, alors qu'un filet n'a ni peau ni arête à retirer. Le motif n'est pas le parage mais le GIVRAGE : le poisson surgelé porte une pellicule de glace protectrice dont la part dans le poids vendu varie d'une référence à l'autre, et qu'aucune source du registre ne publie. Écrire 1,00 « connu » sur un produit dont une part du poids est de l'eau serait précisément le nombre plausible et invérifiable que le CONTRAT §0 proscrit. Le légume surgelé n'est pas givré ; le poisson l'est souvent. La différence de traitement n'est donc pas une hésitation, c'est la différence entre les deux produits.\n\nCE QUI A ÉTÉ CHERCHÉ ET N'A RIEN DONNÉ, nommément, pour qu'on ne le recherche pas deux fois. Les FRUITS ROUGES SURGELÉS : quatre relevés de myrtille, deux de framboise, zéro de mûre — sous le seuil de cinq, et un cocktail de fruits rouges ne peut pas les remplacer. La CAROTTE (4 relevés), la COURGETTE (4), le CHOU DE BRUXELLES (2), le FLAGEOLET (2), le MAÏS, le FOND D'ARTICHAUT (3), l'OIGNON, le HARICOT BEURRE, les MÉLANGES ratatouille (3) et couscous (3) : tous sous le seuil. La CREVETTE CRUE SURGELÉE : neuf relevés existent sous en:frozen-shrimps, mais ils mêlent gambas, crevettes d'Argentine, crevettes cocktail et une référence cuite, soit plusieurs espèces dans deux états de cuisson, de 9,98 à 39,44 EUR/kg ; leur médiane ne décrirait aucun produit. Le LIEU NOIR : les relevés de « colin d'Alaska » abondent, mais c'est une autre espèce (Gadus chalcogrammus contre Pollachius virens), et le classeur ne lui connaît pas d'entrée surgelée. La PÂTE FEUILLETÉE SURGELÉE : la catégorie en:frozen-puff-pastry est vide côté Open Prices.\n\nCE QUI A ÉTÉ REFUSÉ, et qui aurait pourtant augmenté la couverture. Élargir la fenêtre au-delà de douze mois pour franchir le seuil de cinq relevés, ce qui aurait mêlé des prix de plus d'un an sous un unique observed_on. Prendre le prix du colin d'Alaska pour celui du lieu noir, ou celui du cocktail de fruits rouges pour celui de la framboise. Compter les épinards à la crème avec les épinards, les poireaux à la crème avec les poireaux, les filets meunière avec les filets — dans les trois cas, le seuil de cinq relevés aurait été franchi, et le seuil serait devenu une formalité. Additionner les relevés d'un même sachet dans un même magasin pour gonfler n. Et, la plus tentante : déduire le prix d'un légume surgelé de celui du même légume frais, alors que le rapport entre les deux n'est publié par aucune source.\n\nORDRE D'EXÉCUTION — À LIRE AVANT DE PASSER LE CONTRÔLEUR. Le catalogue des formes ne porte que ce qu'une RECETTE emploie déjà : build-recipe-food-corpus.mjs construit sa liste depuis data/recipes/corpus-v3.json. Tant qu'aucune recette n'emploie une forme surgelée, les sept formes cotées ici sont arbitrées mais absentes du catalogue, et check-price-provenance.mjs les refuse avec form_unknown — à juste titre, puisqu'un prix qui ne se raccroche à rien ne serait jamais lu. Ce n'est pas un défaut du fichier : c'est le contrôleur qui dit l'état du catalogue. La séquence qui le résout est celle du README des recettes, et elle ne s'invente pas : rédaction → validate-recipe-batch → merge-recipe-batch → build-recipe-food-corpus → export-authoring-vocabulary, puis node scripts/data/prices/check-price-provenance.mjs data/prices/tranches/surgeles.json. Toutes les autres règles du contrat — arithmétique du pivot, citations portant le chiffre, licences, dates, rendements, plafonds de confiance — ont été vérifiées et passent dès à présent.",
+  "entries": [
+    {
+      "form": "Épinard surgelé",
+      "form_normalized": "epinard surgele",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.33,
+        "central": 2.06,
+        "high": 2.83,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "monthly_mean",
+        "n_observations": 19,
+        "period_start": "2025-09-17",
+        "period_end": "2026-08-26"
+      },
+      "per_kg": {
+        "low": 1.33,
+        "central": 2.06,
+        "high": 2.83,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un épinard surgelé est lavé, équeuté et blanchi avant congélation : le sachet ne contient que des feuilles prêtes à cuire, et rien de ce qui est pesé en caisse ne part à la poubelle. C'est une définition du produit, pas une mesure de perte — un épinard frais, lui, se vend avec ses queues et sa terre.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-09-02",
+          "observed_on": "2026-09-02",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un épinard surgelé est lavé, équeuté et blanchi avant congélation : le sachet ne contient que des feuilles prêtes à cuire, et rien de ce qui est pesé en caisse ne part à la poubelle. C'est une définition du produit, pas une mesure de perte — un épinard frais, lui, se vend avec ses queues et sa terre."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_19_releves_deciles_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Afrozen-spinachs&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-09-02",
+        "observed_on": "2026-08-26",
+        "source_record_key": "open_prices:en:frozen-spinachs/FR/hors-bio-hors-promo-hors-prepare/2025-09-17..2026-08-26/n=19 · ids 301222,204884,301370,291538,204883,197161,179017,194220,197657,229575,220354,301369,206383,194270,319788,229781,301221,301224,206382",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:frozen-spinachs », du 2025-09-17 au 2026-08-26, hors promotion, hors bio, hors épinards à la crème, un relevé par couple (référence, magasin) : 19 relevés retenus, ramenés au kilogramme par le poids net publié. Par exemple 1,29 EUR pour 1000 g d'« Épinards en branches » (Notre Jardin) le 2026-07-30 à Nancy, soit 1,29 EUR/kg (relevé n° 301222) ; 1,65 EUR pour 800 g d'« Épinards Hachés » (Notre Jardin) le 2026-02-20 à Clichy, soit 2,06 EUR/kg (relevé n° 229575) ; 2,26 EUR pour 750 g d'« Epinards SRP 750G » (Bonduelle) le 2026-02-07 à Clichy, soit 3,01 EUR/kg (relevé n° 206382). Médiane 2,06 EUR/kg, D1 1,33, D9 2,83."
+      },
+      "reindexation": null,
+      "notes": "BRANCHES ET HACHÉ DANS LE MÊME ÉCHANTILLON, et c'est voulu : le classeur Ciqual ne les sépare pas non plus — le libellé 2025 du code 20083 est « Epinard, haché ou purée ou en branches, surgelé, cru ». Séparer les prix là où la nutrition ne sépare rien aurait fabriqué deux formes pour un seul aliment. Les trois relevés d'« épinards à la crème » sont écartés : Open Food Facts les marque en:spinach-with-cream-sauce, ce sont des plats et non le légume. L'échantillon est le plus large de la tranche et le seul à porter de vrais déciles ; il reste dominé par les marques de distributeur en sachet d'un kilo, ce qui est aussi la réalité du rayon."
+    },
+    {
+      "form": "Haricot vert surgelé",
+      "form_normalized": "haricot vert surgele",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.83,
+        "central": 2.45,
+        "high": 4.85,
+        "unit": "EUR/kg",
+        "dispersion": "d1_d9",
+        "aggregation": "monthly_mean",
+        "n_observations": 17,
+        "period_start": "2025-09-17",
+        "period_end": "2026-05-17"
+      },
+      "per_kg": {
+        "low": 1.83,
+        "central": 2.45,
+        "high": 4.85,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un haricot vert surgelé est équeuté avant congélation : les deux extrémités, seule partie non comestible du légume, sont retirées en usine. Le sachet est intégralement le produit acheté. C'est une définition du produit, pas une mesure de perte.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-09-02",
+          "observed_on": "2026-09-02",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un haricot vert surgelé est équeuté avant congélation : les deux extrémités, seule partie non comestible du légume, sont retirées en usine. Le sachet est intégralement le produit acheté. C'est une définition du produit, pas une mesure de perte."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_17_releves_deciles_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Afrozen-green-beans&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-09-02",
+        "observed_on": "2026-05-17",
+        "source_record_key": "open_prices:en:frozen-green-beans/FR/hors-bio-hors-promo-hors-prepare/2025-09-17..2026-05-17/n=17 · ids 206388,204887,275799,236608,204889,197162,194779,273108,197656,190196,179389,189934,236610,263686,275670,204891,239490",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:frozen-green-beans », du 2025-09-17 au 2026-05-17, hors promotion, hors bio, hors références déclarées cuites ou précuites et hors mélanges vert + beurre, un relevé par couple (référence, magasin) : 17 relevés retenus, ramenés au kilogramme par le poids net publié. Par exemple 1,79 EUR pour 1000 g de « Haricots plats » (Notre Jardin) le 2026-02-07 à Clichy, soit 1,79 EUR/kg (relevé n° 206388) ; 2,45 EUR pour 1000 g de « Haricots verts extra-fins » le 2026-02-01 à Paris, soit 2,45 EUR/kg (relevé n° 197656) ; 3,65 EUR pour 750 g de « Haricots verts SRP 750G » (Bonduelle) le 2026-02-07 à Clichy, soit 4,87 EUR/kg (relevé n° 204891). Médiane 2,45 EUR/kg, D1 1,83, D9 4,85."
+      },
+      "reindexation": null,
+      "notes": "L'échantillon porte un point extrême assumé : « Fagots de haricots verts » en barquette de 270 g, à 14,78 EUR/kg (relevé n° 239490). C'est bien du haricot vert surgelé, sans aucun tag de préparation, mais conditionné en fagots portionnés — un format de service, pas un sachet de légume. Il n'est pas retiré, parce qu'aucun fait vérifiable ne le distingue des autres ; il ne déplace pas la publication, puisque les bornes sont des déciles et non les extrêmes (D9 = 4,85, le maximum est à 14,78). C'est exactement ce pour quoi le CONTRAT §3.1 préfère D1/D9 à min/max. Écartés en revanche : deux références déclarées « cuites » ou « précuites » par Open Food Facts, deux relevés d'un produit nommé « P.Vapeur », et deux mélanges haricots verts + haricots beurre — le catalogue porte désormais « Haricot beurre surgelé » séparément, et mélanger les deux dans un prix les compterait deux fois."
+    },
+    {
+      "form": "Brocoli surgelé",
+      "form_normalized": "brocoli surgele",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 4.72,
+        "central": 4.87,
+        "high": 5.8,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 6,
+        "period_start": "2026-01-28",
+        "period_end": "2026-07-30"
+      },
+      "per_kg": {
+        "low": 4.72,
+        "central": 4.87,
+        "high": 5.8,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un brocoli surgelé est vendu en fleurettes, tige principale et trognon retirés : le sachet ne contient que ce qui se mange. C'est une définition du produit, pas une mesure de perte — un brocoli entier frais se vend avec un trognon qui pèse.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-09-02",
+          "observed_on": "2026-09-02",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un brocoli surgelé est vendu en fleurettes, tige principale et trognon retirés : le sachet ne contient que ce qui se mange. C'est une définition du produit, pas une mesure de perte — un brocoli entier frais se vend avec un trognon qui pèse."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_6_releves_extremes_echantillon_deux_marques_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Afrozen-broccolis&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-09-02",
+        "observed_on": "2026-07-30",
+        "source_record_key": "open_prices:en:frozen-broccolis/FR/hors-bio-hors-promo-hors-prepare/2026-01-28..2026-07-30/n=6 · ids 197159,194982,301323,193580,206391,284616",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:frozen-broccolis », du 2026-01-28 au 2026-07-30, hors promotion, hors bio, hors références déclarées cuites, précuites ou en purée, un relevé par couple (référence, magasin) : 6 relevés retenus, ramenés au kilogramme par le poids net publié. Par exemple 4,72 EUR pour 1000 g de « Brocolis en fleurettes » (Bonduelle) le 2026-02-01 à Clichy, soit 4,72 EUR/kg (relevé n° 197159) ; 3,65 EUR pour 750 g de « Brocoli en Fleurettes » (Bonduelle) le 2026-07-30 à Nancy, soit 4,87 EUR/kg (relevé n° 301323) ; 5,80 EUR pour 1000 g de « Fleurettes de brocoli » (Picard) le 2026-06-13 à Saint-Laurent, soit 5,80 EUR/kg (relevé n° 284616). Médiane 4,87 EUR/kg, mini 4,72, maxi 5,80."
+      },
+      "reindexation": null,
+      "notes": "LA LIMITE DE CETTE ENTRÉE EST À LIRE AVANT SON CHIFFRE : les six relevés retenus ne portent que deux marques, Bonduelle et Picard. Les références premier prix — « Brocolis en fleurettes » de Notre Jardin, autour de 2,20 EUR/kg — sont écartées parce qu'Open Food Facts les classe en:cooked-vegetables et en:frozen-cooked-broccoli, donc sur un autre état que celui du catalogue (Ciqual 20204, « Brocoli, surgelé, cru »). Le tag est la seule preuve disponible et la règle de la tranche est de le suivre ; la conséquence est que 4,87 EUR/kg décrit le brocoli surgelé CRU de marque, et se lit comme un haut de fourchette du rayon. La fourchette publiée (4,72 – 5,80) est d'ailleurs très étroite parce que l'échantillon est homogène, et non parce que le prix du brocoli surgelé le serait. Si un jour ces tags sont corrigés en amont, cette entrée doit être refaite avant toute autre."
+    },
+    {
+      "form": "Chou-fleur surgelé",
+      "form_normalized": "chou fleur surgele",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.31,
+        "central": 1.69,
+        "high": 3.99,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 5,
+        "period_start": "2026-02-07",
+        "period_end": "2026-03-02"
+      },
+      "per_kg": {
+        "low": 1.31,
+        "central": 1.69,
+        "high": 3.99,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un chou-fleur surgelé est vendu en fleurettes, feuilles et trognon retirés : le sachet ne contient que ce qui se mange. C'est une définition du produit, pas une mesure de perte — un chou-fleur entier frais se vend avec son feuillage et son trognon.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-09-02",
+          "observed_on": "2026-09-02",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un chou-fleur surgelé est vendu en fleurettes, feuilles et trognon retirés : le sachet ne contient que ce qui se mange. C'est une définition du produit, pas une mesure de perte — un chou-fleur entier frais se vend avec son feuillage et son trognon."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_5_releves_seuil_atteint_extremes_declares_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Afrozen-cauliflower-florets&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-09-02",
+        "observed_on": "2026-03-02",
+        "source_record_key": "open_prices:en:frozen-cauliflower-florets/FR/hors-bio-hors-promo-hors-prepare/2026-02-07..2026-03-02/n=5 · ids 236616,204897,236620,204896,207597",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:frozen-cauliflower-florets », du 2026-02-07 au 2026-03-02, hors promotion, hors bio, hors références déclarées cuites ou précuites, un relevé par couple (référence, magasin) : 5 relevés retenus, ramenés au kilogramme par le poids net publié. Par exemple 1,31 EUR pour 1000 g de « Choux-Fleurs en Fleurettes » (Eco+) le 2026-03-02 à Canteleu, soit 1,31 EUR/kg (relevé n° 236616) ; 1,69 EUR pour 1000 g de « Choux-fleurs en fleurettes » (Notre Jardin) le 2026-03-02 à Canteleu, soit 1,69 EUR/kg (relevé n° 236620) ; 2,99 EUR pour 750 g de « Choux-Fleurs en Fleurettes SRP 750G » (Bonduelle) le 2026-02-07 à Clichy, soit 3,99 EUR/kg (relevé n° 207597). Médiane 1,69 EUR/kg, mini 1,31, maxi 3,99."
+      },
+      "reindexation": null,
+      "notes": "CINQ RELEVÉS, soit exactement le seuil qu'Open Prices doit franchir pour dépasser C au registre : l'entrée tient de peu, et ses bornes sont les extrêmes de l'échantillon, pas des déciles. Un relevé a été écarté sur un fait vérifiable et non sur une impression : « Florette - Chou-fleur 180g » (code 3280220112166) porte à la fois en:frozen-cauliflower-florets et en:fresh-cauliflowers, deux états qui s'excluent, pour un format de 180 g à près de 12 EUR/kg qui est celui du rayon frais prêt à l'emploi. Une fiche qui se contredit ne peut pas départager elle-même, donc elle ne compte pas. Fenêtre de moins d'un mois : c'est la limite principale de l'entrée, plus que le nombre de relevés."
+    },
+    {
+      "form": "Champignon de Paris surgelé",
+      "form_normalized": "champignon de paris surgele",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.39,
+        "central": 1.99,
+        "high": 3.09,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 5,
+        "period_start": "2025-10-03",
+        "period_end": "2026-02-07"
+      },
+      "per_kg": {
+        "low": 1.39,
+        "central": 1.99,
+        "high": 3.09,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un champignon de Paris surgelé est vendu émincé, pied terreux retiré : le sachet ne contient que ce qui se mange. C'est une définition du produit, pas une mesure de perte.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-09-02",
+          "observed_on": "2026-09-02",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un champignon de Paris surgelé est vendu émincé, pied terreux retiré : le sachet ne contient que ce qui se mange. C'est une définition du produit, pas une mesure de perte."
+        }
+      },
+      "confidence": "B",
+      "confidence_reason": "open_prices_5_releves_seuil_atteint_extremes_declares_plafond_source_b",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Afrozen-champignon-mushrooms&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-09-02",
+        "observed_on": "2026-02-07",
+        "source_record_key": "open_prices:en:frozen-champignon-mushrooms/FR/hors-bio-hors-promo-hors-prepare/2025-10-03..2026-02-07/n=5 · ids 206400,145152,204906,194807,190370",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:frozen-champignon-mushrooms », du 2025-10-03 au 2026-02-07, hors promotion, hors bio, un relevé par couple (référence, magasin) : 5 relevés retenus, ramenés au kilogramme par le poids net publié. Par exemple 1,39 EUR pour 1000 g de « Champignon de Paris » (eco+) le 2026-02-07 à Clichy, soit 1,39 EUR/kg (relevé n° 206400) ; 1,99 EUR pour 1000 g de « Champignons émincés surgelés » (Notre Jardin) le 2026-02-07 à Clichy, soit 1,99 EUR/kg (relevé n° 204906) ; 3,09 EUR pour 1000 g de « Champignons de Paris émincés » (Carrefour) le 2026-01-24 à Saint-Ouen-sur-Seine, soit 3,09 EUR/kg (relevé n° 190370). Médiane 1,99 EUR/kg, mini 1,39, maxi 3,09."
+      },
+      "reindexation": null,
+      "notes": "LA CATÉGORIE ÉTROITE A ÉTÉ PRÉFÉRÉE À LA LARGE, et c'est la décision de cette entrée. « en:frozen-mushrooms » offrait dix relevés et donc de vrais déciles, mais il agrège les cèpes en morceaux (15,40 EUR/kg), les girolles entières (16,84) et les mélanges forestiers : la médiane de ce panier aurait décrit un rayon, pas un aliment, et le catalogue nomme précisément l'espèce (Ciqual 20228, « Champignon de Paris ou champignon de couche »). Cinq relevés d'un même produit valent mieux que dix relevés de cinq produits — c'est aussi ce que dit le garde-fou du contrôleur sur le rapport haut/bas, qu'un tel mélange aurait fait exploser (16,84 / 1,39 = 12,1, au-delà du plafond de 10)."
+    },
+    {
+      "form": "Poireau surgelé",
+      "form_normalized": "poireau surgele",
+      "category": "legumes",
+      "observed": {
+        "basis": "kg",
+        "low": 1.28,
+        "central": 1.47,
+        "high": 2.99,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 4,
+        "period_start": "2025-12-31",
+        "period_end": "2026-02-07"
+      },
+      "per_kg": {
+        "low": 1.28,
+        "central": 1.47,
+        "high": 2.99,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": true,
+        "note": "Un poireau surgelé est vendu en rondelles déjà lavées, le vert dur et le pied racinaire retirés : le sachet ne contient que ce qui se mange. C'est une définition du produit, pas une mesure de perte — un poireau frais se vend avec un vert dont une bonne part finit au bouillon ou à la poubelle.",
+        "provenance": {
+          "source_code": "myko_reasoning",
+          "source_url": "data/prices/CONTRAT.md",
+          "license_code": "n/a",
+          "license_url": null,
+          "allowed_uses": {
+            "store_raw": false,
+            "redistribute": true,
+            "modify": true,
+            "attribution_required": false
+          },
+          "retrieved_on": "2026-09-02",
+          "observed_on": "2026-09-02",
+          "citation": "Rendement 1,00 par nature du produit, et non par ignorance : Un poireau surgelé est vendu en rondelles déjà lavées, le vert dur et le pied racinaire retirés : le sachet ne contient que ce qui se mange. C'est une définition du produit, pas une mesure de perte — un poireau frais se vend avec un vert dont une bonne part finit au bouillon ou à la poubelle."
+        }
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_4_releves_sous_le_seuil_de_5_du_registre",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Afrozen-leeks&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-09-02",
+        "observed_on": "2026-02-07",
+        "source_record_key": "open_prices:en:frozen-leeks/FR/hors-bio-hors-promo-hors-prepare/2025-12-31..2026-02-07/n=4 · ids 207463,197329,194778,181370",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:frozen-leeks », du 2025-12-31 au 2026-02-07, hors promotion, hors bio, hors « émincés de poireaux à la crème » (Open Food Facts les classe en:prepared-vegetables), un relevé par couple (référence, magasin) : 4 relevés seulement. 1,28 EUR pour 1000 g de « Poireaux en rondelles » (Notre Jardin) le 2026-02-07 à Clichy, soit 1,28 EUR/kg (relevé n° 207463) ; 1,47 EUR pour 1000 g de « Poireaux en rondelles 1kg » (Saint Eloi) le 2026-02-01 puis le 2026-01-30 à Clichy, soit 1,47 EUR/kg (relevés n° 197329 et 194778) ; 2,99 EUR pour 1000 g de « Poireaux en rondelles » (Picard) le 2025-12-31 à Grenoble, soit 2,99 EUR/kg (relevé n° 181370). Médiane 1,47 EUR/kg, mini 1,28, maxi 2,99."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE EN C, DONC NI AFFICHÉE NI COMPTÉE dans la couverture — conservée pour dire ce qui a été cherché et trouvé. Le registre exige cinq relevés pour qu'Open Prices dépasse C ; il y en a quatre. Deux relevés supplémentaires existaient sous le même tag, « Éminces poireaux a la creme » de Findus, mais c'est une fondue de poireaux à la crème et non le légume : les compter aurait fait franchir le seuil avec un produit qui n'est pas celui de la forme, ce qui est exactement la façon dont un seuil devient une formalité. Deux relevés manquent, pas une source."
+    },
+    {
+      "form": "Filet de merlu surgelé",
+      "form_normalized": "filet de merlu surgele",
+      "category": "poissons_fruits_de_mer",
+      "observed": {
+        "basis": "kg",
+        "low": 13.2,
+        "central": 14.74,
+        "high": 17.98,
+        "unit": "EUR/kg",
+        "dispersion": "min_max",
+        "aggregation": "monthly_mean",
+        "n_observations": 4,
+        "period_start": "2025-11-16",
+        "period_end": "2026-03-09"
+      },
+      "per_kg": {
+        "low": 13.2,
+        "central": 14.74,
+        "high": 17.98,
+        "conversion": {
+          "kind": "identity"
+        }
+      },
+      "edible_yield": {
+        "value": 1,
+        "known": false,
+        "note": "Part comestible d'un filet de merlu surgelé non sourcée. Le filet lui-même n'a ni peau à retirer ni arête à ôter, mais le poisson surgelé porte fréquemment un GIVRAGE — une pellicule de glace protectrice — dont la part dans le poids vendu varie d'une référence à l'autre et qu'aucune source du registre ne publie. Défaut 1,00 déclaré inconnu : l'estimation est un minorant, et le sens de l'erreur est connu."
+      },
+      "confidence": "C",
+      "confidence_reason": "open_prices_4_releves_sous_le_seuil_de_5_et_espece_voisine",
+      "provenance": {
+        "source_code": "open_prices",
+        "source_url": "https://prices.openfoodfacts.org/api/v1/prices?product__categories_tags__contains=en%3Afrozen-hake-fillet&size=100&order_by=-date",
+        "license_code": "odbl-1.0",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "allowed_uses": {
+          "store_raw": true,
+          "redistribute": true,
+          "modify": true,
+          "attribution_required": true,
+          "share_alike": true
+        },
+        "retrieved_on": "2026-09-02",
+        "observed_on": "2026-03-09",
+        "source_record_key": "open_prices:en:frozen-hake-fillet/FR/hors-bio-hors-promo-hors-prepare/2025-11-16..2026-03-09/n=4 · ids 164917,200460,206534,242025",
+        "citation": "Open Prices (Open Food Facts), relevés en magasin en France, catégorie Open Food Facts « en:frozen-hake-fillet », du 2025-11-16 au 2026-03-09, hors promotion, hors bio, hors filets meunière (Open Food Facts les classe en:breaded-fish), un relevé par couple (référence, magasin) : 4 relevés seulement, tous sur du merlu blanc du Cap. 5,28 EUR pour 400 g de « Cœurs de filets de Merlu Blanc du Cap » (Pêche Océan) le 2025-11-16 à Saint-Martin-d'Hères, soit 13,20 EUR/kg (relevé n° 164917) ; 5,39 EUR pour 400 g de « Cœurs de Merlu blanc du Cap » (Carrefour) le 2026-02-03 à Arcueil, soit 13,47 EUR/kg (relevé n° 200460) ; 7,04 EUR pour 440 g de « Coeur de filet de merlu blanc du cap » (U) le 2026-02-07 à Lyon, soit 16,00 EUR/kg (relevé n° 206534) ; 7,19 EUR pour 400 g de « Tranches de filets de merlu blanc » (Picard) le 2026-03-09 à Roquebrune-Cap-Martin, soit 17,98 EUR/kg (relevé n° 242025). Médiane 14,74 EUR/kg — moyenne des deux valeurs centrales 13,47 et 16,00 —, mini 13,20, maxi 17,98."
+      },
+      "reindexation": null,
+      "notes": "ENTRÉE EN C POUR DEUX MOTIFS CUMULÉS, et le second compte autant que le premier. D'abord le nombre : quatre relevés là où le registre en exige cinq. Ensuite l'espèce : les quatre relevés portent tous sur le MERLU BLANC DU CAP (Merluccius capensis), alors que la forme du catalogue est adossée à Ciqual 26048 « Merlu, filet, surgelé, cru » (Merluccius merluccius). Ciqual mesure d'ailleurs le merlu du Cap séparément, sous 26233 — cette entrée-là n'a pas été ouverte au catalogue pour ne pas scinder un concept culinaire unique en deux formes que le rédacteur devrait départager sans critère. La conséquence est ici : le prix relevé est celui de l'espèce que le rayon vend, la nutrition est celle de l'espèce que le classeur nomme, et l'écart est déclaré plutôt que dissimulé. Même avec un cinquième relevé, cette entrée resterait donc au mieux en B."
+    }
+  ]
+}

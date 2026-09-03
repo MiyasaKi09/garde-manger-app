@@ -1,0 +1,196 @@
+{
+  "dish": "Salade grecque",
+  "slug": "salade-grecque",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-grecque_34399.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade grecque : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "2 tomates",
+        "1 demi de concombre découpé en dés",
+        "1 poivron vert et 1 rouge, épépinés et coupés en fines tranches",
+        "1 oignon coupé en fines tranches",
+        "150 g de feta en cube",
+        "1 zeste de citron",
+        "1 cuillère à café d'origan séché",
+        "50 g d'olives noires (facultatif)",
+        "2 tours de moulin de poivre",
+        "2 pincées de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 370,
+        "sha256": "dc475152a46c9bb4"
+      },
+      "sha256_page": "993f27ef1eabe6da"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-grecque-facon-buddha-bowl_347611.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade grecque façon buddha bowl : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT12M",
+      "ingredients": [
+        "250 g de boulgour",
+        "0.25 concombre",
+        "0.25 poivron",
+        "0.5 courgette",
+        "100 g de feta",
+        "4 tomates cerise",
+        "20 g de pignons de pin",
+        "1 oignon rouge",
+        "0.5 citron",
+        "5 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "sel",
+        "herbes de Provence"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 479,
+        "sha256": "e47a3e55af93a085"
+      },
+      "sha256_page": "311b3c704882aa9e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-grecque-a-l-origan_29355.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade grecque à l'origan : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "1 concombre",
+        "5 tomates",
+        "20 olives noires Kalamata",
+        "1 pot de feta à l'huile",
+        "3 pincées d'origan",
+        "sel",
+        "1 oignon rouge",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 776,
+        "sha256": "5ca5f2f304dc308a"
+      },
+      "sha256_page": "e49bb83dbf102021"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/196-flavors/recettes/salade-grecque-7338db45-635d-415b-8fe1-7432f3a1dbd0",
+      "site": "chefsimon.com",
+      "nom": "Salade Grecque",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4  tomates",
+        "½  concombre",
+        "10  olives noires grecques (Kalamata ou autres)",
+        "½  oignon rouge",
+        "1 morceau (de 100 g) de feta",
+        "½  poivron vert",
+        "5 cuillères à soupe d'huile d'olive extra vierge",
+        "2 cuillères à soupe de vinaigre de vin rouge",
+        "1 cuillère à café d'origan sec",
+        "Sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 170,
+        "sha256": "47c39d1dc4e753ff"
+      },
+      "sha256_page": "acd68f1ea6778cfe"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/panna-cotta-feta-salade-grecque",
+      "site": "chefsimon.com",
+      "nom": "Panna cotta feta salade grecque",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "150 g de feta",
+        "20 cl lait",
+        "20 cl de crème liquide",
+        "2 feuilles de gélatine",
+        "Poivre",
+        "2 tomates",
+        "1/3 de concombre",
+        "Olives noires de Kalamata",
+        "Feuilles de menthe",
+        "Origan frais",
+        "1 cuillère à soupe huile d'olive",
+        "1 cuillère à café jus de citron"
+      ],
+      "etapes_empreinte": {
+        "nombre": 19,
+        "signes": 1280,
+        "sha256": "b99b58cbde6d93ea"
+      },
+      "sha256_page": "4ad572738d714786"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/salade-de-riz-a-la-grecque",
+      "site": "chefsimon.com",
+      "nom": "Salade de riz à la grecque",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H12M",
+      "ingredients": [
+        "180 g de riz basmati",
+        "1 concombre",
+        "1 bocal de 100 g de cœurs d'artichauts",
+        "250 g de tomates cerises",
+        "80 g de feta",
+        "origan",
+        "3 c. à soupe d'huile d'olive",
+        "1 c. à soupe de vinaigre de vin ou vinaigre blanc",
+        "ail semoule au goût",
+        "origan au goût",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 658,
+        "sha256": "6a89e017ce58f659"
+      },
+      "sha256_page": "7f368c431192eb19"
+    },
+    {
+      "url": "https://www.750g.com/salade-grecque-r203888.htm",
+      "site": "750g.com",
+      "nom": "Salade grecque",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 concombre",
+        "2 tomates",
+        "1 oignon rouge  petit",
+        "180 g d'olives noires dénoyautées",
+        "180 g de feta",
+        "1 jus de citron",
+        "6 c. à s. d'huile d'olive",
+        "4 c. à s. de vinaigre balsamique blanc",
+        "Persil plat",
+        "Origan",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 547,
+        "sha256": "f6e0cc3f588b6321"
+      },
+      "sha256_page": "0938249589b7ec03"
+    }
+  ]
+}

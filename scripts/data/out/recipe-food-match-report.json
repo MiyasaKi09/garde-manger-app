@@ -1,14 +1,14 @@
 {
   "generated_from": "data/recipes/corpus-v3.json",
   "nutrition_source": "Ciqual 2020",
-  "forms_total": 754,
+  "forms_total": 760,
   "summary": {
-    "review_required": 220,
-    "curated": 487,
+    "review_required": 219,
+    "curated": 494,
     "exact_label": 47
   },
-  "recipes_total": 589,
-  "recipes_eligible_for_publication": 405,
+  "recipes_total": 683,
+  "recipes_eligible_for_publication": 497,
   "recipes_blocked_only_by_proxy": 62,
   "v1_enriched_eligible_for_publication": 61,
   "unresolved_required": [
@@ -51,7 +51,6 @@
     "Fécule de pomme de terre",
     "Fécule de pomme de terre katakuriko",
     "Fenouil moulu",
-    "Feta",
     "Feuille de bananier",
     "Feuille de laksa vietnamienne",
     "Feuille de maïs sèche",
@@ -1431,8 +1430,7 @@
       "family": "Spanakopita",
       "eligible_for_publication": false,
       "unresolved_required_forms": [
-        "Pâte filo",
-        "Feta"
+        "Pâte filo"
       ],
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
@@ -6256,6 +6254,856 @@
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-001",
+      "family": "Sauce tomate",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-002",
+      "family": "Coulis de tomates",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-003",
+      "family": "Pâte à pizza",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-004",
+      "family": "Pâte brisée",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-005",
+      "family": "Pâte sablée",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-006",
+      "family": "Pâte à crêpes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-007",
+      "family": "Bouillon de légumes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-008",
+      "family": "Oignons confits",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-009",
+      "family": "Duxelles de champignons",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-010",
+      "family": "Légumes rôtis au four",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-011",
+      "family": "Poivrons grillés",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-012",
+      "family": "Tzatziki",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-013",
+      "family": "Guacamole",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-014",
+      "family": "Compote de pommes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-015",
+      "family": "Œufs durs",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-016",
+      "family": "Riz créole",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-017",
+      "family": "Boulettes de viande",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-018",
+      "family": "Pâtes fraîches maison",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-019",
+      "family": "Mayonnaise maison",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-020",
+      "family": "Pois chiches rôtis",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-021",
+      "family": "Beurre maître d'hôtel",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-022",
+      "family": "Poulet rôti",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-023",
+      "family": "Omelette aux champignons",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-024",
+      "family": "Œufs brouillés",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-025",
+      "family": "Œufs cocotte",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-026",
+      "family": "Penne arrabiata",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-027",
+      "family": "Salade César",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-028",
+      "family": "Salade grecque",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-029",
+      "family": "Salade caprese",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-030",
+      "family": "Salade de pâtes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-031",
+      "family": "Salade de chou blanc",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-032",
+      "family": "Curry de légumes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-033",
+      "family": "Poulet au curry",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-034",
+      "family": "Poulet au citron",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-035",
+      "family": "Poulet aux poivrons",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-036",
+      "family": "Escalope de dinde à la crème",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-037",
+      "family": "Papillote de cabillaud",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-038",
+      "family": "Saumon grillé",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-039",
+      "family": "Crevettes au curry",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-040",
+      "family": "Poisson pané",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-041",
+      "family": "Riz sauté aux légumes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-042",
+      "family": "Nouilles sautées au poulet",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-043",
+      "family": "Wok de légumes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-044",
+      "family": "Galette complète",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-045",
+      "family": "Wrap au poulet",
+      "eligible_for_publication": false,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": [
+        "Tortilla de blé"
+      ]
+    },
+    {
+      "code": "RAP-046",
+      "family": "Quesadillas au poulet",
+      "eligible_for_publication": false,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": [
+        "Tortilla de blé"
+      ]
+    },
+    {
+      "code": "RAP-047",
+      "family": "Épinards à la crème",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-048",
+      "family": "Haricots verts à l'ail",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-049",
+      "family": "Velouté de petits pois",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-050",
+      "family": "Velouté de courgettes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-051",
+      "family": "Soupe de tomates",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "RAP-052",
+      "family": "Chou-fleur rôti",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-001",
+      "family": "Risotto milanais",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-002",
+      "family": "Panzanella",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-003",
+      "family": "Escalope milanaise",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-004",
+      "family": "Gnocchi à la romaine",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-005",
+      "family": "Calzone",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-006",
+      "family": "Pizza napolitaine",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-009",
+      "family": "Patatas bravas",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-011",
+      "family": "Paella aux fruits de mer",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-012",
+      "family": "Crème catalane",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-013",
+      "family": "Gyros de poulet",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-014",
+      "family": "Pastitsio",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-015",
+      "family": "Moussaka végétarienne",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-016",
+      "family": "Chich taouk",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-017",
+      "family": "Labneh",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-018",
+      "family": "Tajine de kefta",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-019",
+      "family": "Tajine de légumes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-020",
+      "family": "Zaalouk d'aubergines",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-021",
+      "family": "Salade méchouia",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-022",
+      "family": "Chorba algérienne",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-023",
+      "family": "Msemen",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-024",
+      "family": "Briouates aux amandes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-025",
+      "family": "Couscous végétarien",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-026",
+      "family": "Bortsch",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-027",
+      "family": "Bœuf Stroganoff",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-028",
+      "family": "Blinis",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-029",
+      "family": "Koulibiac de saumon",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-030",
+      "family": "Salade russe",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-031",
+      "family": "Porc au caramel",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-032",
+      "family": "Poulet teriyaki",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-033",
+      "family": "Yakitori de poulet",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-034",
+      "family": "Bo bun",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-035",
+      "family": "Quiche aux poireaux",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-036",
+      "family": "Quiche au saumon",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-037",
+      "family": "Quiche aux courgettes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-038",
+      "family": "Quiche au thon",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-039",
+      "family": "Omelette au fromage",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-040",
+      "family": "Soupe de lentilles",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-041",
+      "family": "Tarte à la tomate",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-042",
+      "family": "Chili sin carne",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-043",
+      "family": "Lasagnes végétariennes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-044",
+      "family": "Bolognaise végétarienne",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "VAR-045",
+      "family": "Hachis parmentier végétarien",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
     }
   ],
   "forms": [
@@ -6414,7 +7262,7 @@
       "form": "Ail cru",
       "normalized": "ail cru",
       "required": true,
-      "recipe_count": 298,
+      "recipe_count": 337,
       "units": [
         "g"
       ],
@@ -6469,7 +7317,7 @@
       "form": "Ail cru entier",
       "normalized": "ail cru entier",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -6744,7 +7592,7 @@
       "form": "Amande",
       "normalized": "amande",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 2,
       "units": [
         "g"
       ],
@@ -7067,7 +7915,7 @@
       "form": "Anchois à l'huile, égoutté",
       "normalized": "anchois a l huile egoutte",
       "required": true,
-      "recipe_count": 14,
+      "recipe_count": 15,
       "units": [
         "g"
       ],
@@ -7122,7 +7970,7 @@
       "form": "Aneth frais",
       "normalized": "aneth frais",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 8,
       "units": [
         "g"
       ],
@@ -7548,7 +8396,7 @@
       "form": "Aubergine fraîche",
       "normalized": "aubergine fraiche",
       "required": true,
-      "recipe_count": 26,
+      "recipe_count": 30,
       "units": [
         "g",
         "u"
@@ -7714,7 +8562,7 @@
       "form": "Avocat frais",
       "normalized": "avocat frais",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 7,
       "units": [
         "g",
         "u"
@@ -8148,7 +8996,7 @@
       "form": "Basilic frais",
       "normalized": "basilic frais",
       "required": true,
-      "recipe_count": 33,
+      "recipe_count": 42,
       "units": [
         "g"
       ],
@@ -8313,7 +9161,7 @@
       "form": "Bâton de cannelle",
       "normalized": "baton de cannelle",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 2,
       "units": [
         "u"
       ],
@@ -8423,7 +9271,7 @@
       "form": "Betterave crue",
       "normalized": "betterave crue",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -8698,7 +9546,7 @@
       "form": "Beurre doux",
       "normalized": "beurre doux",
       "required": true,
-      "recipe_count": 160,
+      "recipe_count": 190,
       "units": [
         "g"
       ],
@@ -9028,7 +9876,7 @@
       "form": "Blanc de poulet cru, sans peau",
       "normalized": "blanc de poulet cru sans peau",
       "required": true,
-      "recipe_count": 4,
+      "recipe_count": 14,
       "units": [
         "g"
       ],
@@ -9138,7 +9986,7 @@
       "form": "Bœuf à braiser cru",
       "normalized": "boeuf a braiser cru",
       "required": true,
-      "recipe_count": 11,
+      "recipe_count": 12,
       "units": [
         "g"
       ],
@@ -9303,7 +10151,7 @@
       "form": "Bœuf à griller cru, en fines lamelles",
       "normalized": "boeuf a griller cru en fines lamelles",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -9578,7 +10426,7 @@
       "form": "Bœuf haché cru",
       "normalized": "boeuf hache cru",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -9633,7 +10481,7 @@
       "form": "Bœuf haché cru 15 % MG",
       "normalized": "boeuf hache cru 15 mg",
       "required": true,
-      "recipe_count": 24,
+      "recipe_count": 25,
       "units": [
         "g"
       ],
@@ -10073,7 +10921,7 @@
       "form": "Bouillon de bœuf",
       "normalized": "bouillon de boeuf",
       "required": true,
-      "recipe_count": 16,
+      "recipe_count": 18,
       "units": [
         "g",
         "ml"
@@ -10239,7 +11087,7 @@
       "form": "Bouillon de légumes",
       "normalized": "bouillon de legumes",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 8,
       "units": [
         "ml"
       ],
@@ -10514,7 +11362,7 @@
       "form": "Bouillon de volaille",
       "normalized": "bouillon de volaille",
       "required": true,
-      "recipe_count": 47,
+      "recipe_count": 52,
       "units": [
         "g",
         "ml"
@@ -10790,7 +11638,7 @@
       "form": "Brocoli cru",
       "normalized": "brocoli cru",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -10900,7 +11748,7 @@
       "form": "Cacahuète grillée",
       "normalized": "cacahuete grillee",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -11120,7 +11968,7 @@
       "form": "Calamar cru nettoyé",
       "normalized": "calamar cru nettoye",
       "required": true,
-      "recipe_count": 7,
+      "recipe_count": 8,
       "units": [
         "g"
       ],
@@ -11341,7 +12189,7 @@
       "form": "Cannelle moulue",
       "normalized": "cannelle moulue",
       "required": true,
-      "recipe_count": 9,
+      "recipe_count": 14,
       "units": [
         "g"
       ],
@@ -11616,7 +12464,7 @@
       "form": "Carotte crue",
       "normalized": "carotte crue",
       "required": true,
-      "recipe_count": 123,
+      "recipe_count": 139,
       "units": [
         "g"
       ],
@@ -11781,7 +12629,7 @@
       "form": "Cassonade",
       "normalized": "cassonade",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 5,
       "units": [
         "g"
       ],
@@ -11836,7 +12684,7 @@
       "form": "Céleri branche cru",
       "normalized": "celeri branche cru",
       "required": true,
-      "recipe_count": 39,
+      "recipe_count": 40,
       "units": [
         "g"
       ],
@@ -12167,7 +13015,7 @@
       "form": "Champignon de Paris frais",
       "normalized": "champignon de paris frais",
       "required": true,
-      "recipe_count": 33,
+      "recipe_count": 41,
       "units": [
         "g"
       ],
@@ -12380,7 +13228,7 @@
       "form": "Chapelure de blé",
       "normalized": "chapelure de ble",
       "required": true,
-      "recipe_count": 27,
+      "recipe_count": 30,
       "units": [
         "g"
       ],
@@ -13033,7 +13881,7 @@
       "form": "Chou blanc frais",
       "normalized": "chou blanc frais",
       "required": true,
-      "recipe_count": 12,
+      "recipe_count": 14,
       "units": [
         "g"
       ],
@@ -13528,7 +14376,7 @@
       "form": "Chou-fleur frais",
       "normalized": "chou fleur frais",
       "required": true,
-      "recipe_count": 8,
+      "recipe_count": 9,
       "units": [
         "g"
       ],
@@ -14098,7 +14946,7 @@
       "form": "Ciboulette fraîche",
       "normalized": "ciboulette fraiche",
       "required": true,
-      "recipe_count": 15,
+      "recipe_count": 16,
       "units": [
         "g"
       ],
@@ -14366,7 +15214,7 @@
       "form": "Citron jaune frais",
       "normalized": "citron jaune frais",
       "required": true,
-      "recipe_count": 11,
+      "recipe_count": 13,
       "units": [
         "g",
         "u"
@@ -14802,7 +15650,7 @@
       "form": "Concentré de tomate",
       "normalized": "concentre de tomate",
       "required": true,
-      "recipe_count": 32,
+      "recipe_count": 37,
       "units": [
         "g"
       ],
@@ -14857,7 +15705,7 @@
       "form": "Concombre frais",
       "normalized": "concombre frais",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 11,
       "units": [
         "g"
       ],
@@ -15180,7 +16028,7 @@
       "form": "Coriandre fraîche",
       "normalized": "coriandre fraiche",
       "required": true,
-      "recipe_count": 34,
+      "recipe_count": 42,
       "units": [
         "g"
       ],
@@ -15448,7 +16296,7 @@
       "form": "Courgette fraîche",
       "normalized": "courgette fraiche",
       "required": true,
-      "recipe_count": 28,
+      "recipe_count": 39,
       "units": [
         "g"
       ],
@@ -15551,7 +16399,7 @@
       "form": "Crème aigre",
       "normalized": "creme aigre",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -15606,7 +16454,7 @@
       "form": "Crème fraîche épaisse",
       "normalized": "creme fraiche epaisse",
       "required": true,
-      "recipe_count": 11,
+      "recipe_count": 14,
       "units": [
         "g"
       ],
@@ -15661,7 +16509,7 @@
       "form": "Crème fraîche liquide entière",
       "normalized": "creme fraiche liquide entiere",
       "required": true,
-      "recipe_count": 72,
+      "recipe_count": 84,
       "units": [
         "g",
         "ml"
@@ -15820,7 +16668,7 @@
       "form": "Crevette crue décortiquée",
       "normalized": "crevette crue decortiquee",
       "required": true,
-      "recipe_count": 9,
+      "recipe_count": 10,
       "units": [
         "g"
       ],
@@ -15923,7 +16771,7 @@
       "form": "Crevette crue entière",
       "normalized": "crevette crue entiere",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -16335,7 +17183,7 @@
       "form": "Cumin moulu",
       "normalized": "cumin moulu",
       "required": true,
-      "recipe_count": 33,
+      "recipe_count": 39,
       "units": [
         "g"
       ],
@@ -16390,7 +17238,7 @@
       "form": "Curcuma moulu",
       "normalized": "curcuma moulu",
       "required": true,
-      "recipe_count": 10,
+      "recipe_count": 12,
       "units": [
         "g"
       ],
@@ -16493,7 +17341,7 @@
       "form": "Curry en poudre",
       "normalized": "curry en poudre",
       "required": true,
-      "recipe_count": 7,
+      "recipe_count": 11,
       "units": [
         "g"
       ],
@@ -16706,7 +17554,7 @@
       "form": "Dos de cabillaud cru",
       "normalized": "dos de cabillaud cru",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 4,
       "units": [
         "g"
       ],
@@ -16871,7 +17719,7 @@
       "form": "Eau",
       "normalized": "eau",
       "required": true,
-      "recipe_count": 50,
+      "recipe_count": 61,
       "units": [
         "g",
         "ml"
@@ -17147,7 +17995,7 @@
       "form": "Échalote crue",
       "normalized": "echalote crue",
       "required": true,
-      "recipe_count": 48,
+      "recipe_count": 52,
       "units": [
         "g"
       ],
@@ -17250,7 +18098,7 @@
       "form": "Échine de porc crue",
       "normalized": "echine de porc crue",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -17497,7 +18345,7 @@
       "form": "Emmental râpé",
       "normalized": "emmental rape",
       "required": true,
-      "recipe_count": 10,
+      "recipe_count": 14,
       "units": [
         "g"
       ],
@@ -17759,7 +18607,7 @@
       "form": "Épaule d’agneau crue",
       "normalized": "epaule d agneau crue",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -18123,7 +18971,7 @@
       "form": "Épinard frais",
       "normalized": "epinard frais",
       "required": true,
-      "recipe_count": 10,
+      "recipe_count": 12,
       "units": [
         "g"
       ],
@@ -18178,7 +19026,7 @@
       "form": "Escalope de dinde crue",
       "normalized": "escalope de dinde crue",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 6,
       "units": [
         "g"
       ],
@@ -18233,7 +19081,7 @@
       "form": "Escalope de veau crue fine",
       "normalized": "escalope de veau crue fine",
       "required": true,
-      "recipe_count": 7,
+      "recipe_count": 8,
       "units": [
         "g",
         "u"
@@ -18489,7 +19337,7 @@
       "form": "Farine de blé T55",
       "normalized": "farine de ble t55",
       "required": true,
-      "recipe_count": 111,
+      "recipe_count": 125,
       "units": [
         "g"
       ],
@@ -18592,7 +19440,7 @@
       "form": "Farine de blé type 00",
       "normalized": "farine de ble type 00",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 4,
       "units": [
         "g"
       ],
@@ -18905,6 +19753,61 @@
       ]
     },
     {
+      "form": "Farine de sarrasin",
+      "normalized": "farine de sarrasin",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "9540",
+        "ciqual_name": "Farine de sarrasin",
+        "category": null,
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Correspondance de libellé mot pour mot. 348 kcal, P 11,5 / L 2,19 / G 68,4, fibres 4,2 — toutes mesurées, aucune borne. Le classeur porte aussi 9380 « Sarrasin entier, cru », qui est la graine et non la farine, et 23801 « Galette de sarrasin, nature, préemballée », qui est le produit fini : les deux ont été écartés parce qu'une galette complète se fait avec de la farine, et qu'adosser une farine à une galette déjà cuite ferait entrer l'eau de la pâte dans la composition de l'ingrédient sec."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "9380",
+          "ciqual_name": "Sarrasin entier, cru",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 24
+        },
+        {
+          "ciqual_alim_code": "9570",
+          "ciqual_name": "Farine de châtaigne",
+          "category": "legumineuses",
+          "nutrition_complete": true,
+          "score": 24
+        },
+        {
+          "ciqual_alim_code": "23801",
+          "ciqual_name": "Galette de sarrasin, nature, préemballée",
+          "category": "produits_sucres",
+          "nutrition_complete": true,
+          "score": 21
+        },
+        {
+          "ciqual_alim_code": "7110",
+          "ciqual_name": "Pain complet ou intégral (à la farine T150)",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 16.5
+        },
+        {
+          "ciqual_alim_code": "7260",
+          "ciqual_name": "Pain blanc maison (avec farine pour machine à pain)",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 16.5
+        }
+      ]
+    },
+    {
       "form": "Farofa de manioc",
       "normalized": "farofa de manioc",
       "required": true,
@@ -18956,7 +19859,7 @@
       "form": "Fécule de maïs",
       "normalized": "fecule de mais",
       "required": true,
-      "recipe_count": 14,
+      "recipe_count": 15,
       "units": [
         "g"
       ],
@@ -19368,12 +20271,19 @@
       "form": "Feta",
       "normalized": "feta",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
-      "selection_mode": "review_required",
-      "selected": null,
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "12066",
+        "ciqual_name": "Feta AOP",
+        "category": "produits_laitiers",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Les quatre sources authentiques de salade grecque écrivent « feta » sans autre qualificatif, et deux d'entre elles la comptent en pot ou en morceau de 100 à 180 g. Le classeur en porte quatre entrées : 12066 « Feta AOP », 12061 « Fromage 100 % brebis (Feta AOP ou type Feta) », 12060 « type feta, au lait de vache » et 12063 « type feta à l'huile et aux aromates ». On prend l'AOP, qui est le produit que le mot désigne : 285 kcal, P 14,8 / L 24,3 / G 0,65, sel 2,27 — macros complètes et toutes mesurées. Le type vache (12060) aurait été un choix de repli si le mot avait été qualifié, ce qu'aucune source ne fait ; la version à l'huile (12063) est un autre produit, dont le gras déclaré n'est pas celui du fromage. Le sel de 2,27 g pour 100 g est élevé et il est réel : c'est lui qui explique qu'une salade grecque se sale peu."
+      },
       "suggestions": [
         {
           "ciqual_alim_code": "12066",
@@ -19464,8 +20374,9 @@
       "form": "Feuille de brick",
       "normalized": "feuille de brick",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
+        "g",
         "u"
       ],
       "selection_mode": "curated",
@@ -19677,7 +20588,7 @@
       "form": "Feuille de lasagne sèche",
       "normalized": "feuille de lasagne seche",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 4,
       "units": [
         "g"
       ],
@@ -19732,7 +20643,7 @@
       "form": "Feuille de laurier séchée",
       "normalized": "feuille de laurier sechee",
       "required": true,
-      "recipe_count": 83,
+      "recipe_count": 85,
       "units": [
         "feuille",
         "u"
@@ -19836,7 +20747,7 @@
       "form": "Feuille de sauge fraîche",
       "normalized": "feuille de sauge fraiche",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 2,
       "units": [
         "u"
       ],
@@ -20960,6 +21871,61 @@
       ]
     },
     {
+      "form": "Fromage fondu en portions",
+      "normalized": "fromage fondu en portions",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "12310",
+        "ciqual_name": "Fromage fondu en portions ou en cubes environ 20% MG",
+        "category": "produits_laitiers",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Quatre des huit sources du velouté de courgettes montent leur velouté avec des portions de fromage fondu du commerce, comptées à la portion et jamais pesées. Le classeur porte trois entrées de fromage fondu en portions : 12305 (environ 8 % MG), 12310 (environ 20 %) et 12320 (double crème, environ 31 %). On prend 12310, qui correspond au produit courant, et surtout la seule des trois dont les macros soient complètes — 12305 n'a ni énergie ni glucides au classeur, ce qui suffit à l'écarter. Confiance B et non A parce que les sources ne donnent aucun taux de matière grasse : le choix des 20 % est celui du produit de référence du rayon, pas une lecture de la source. Le poids d'une portion, 17 g environ, reste une convention de cuisine et non une mesure : il est déclaré comme tel dans l'arbitrage de la recette."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "12305",
+          "ciqual_name": "Fromage fondu en portions ou en cubes environ 8% MG",
+          "category": "produits_laitiers",
+          "nutrition_complete": false,
+          "score": 119
+        },
+        {
+          "ciqual_alim_code": "12310",
+          "ciqual_name": "Fromage fondu en portions ou en cubes environ 20% MG",
+          "category": "produits_laitiers",
+          "nutrition_complete": true,
+          "score": 119
+        },
+        {
+          "ciqual_alim_code": "12300",
+          "ciqual_name": "Fromage fondu en tranchettes",
+          "category": "produits_laitiers",
+          "nutrition_complete": true,
+          "score": 47.5
+        },
+        {
+          "ciqual_alim_code": "12320",
+          "ciqual_name": "Fromage fondu double crème, environ 31% MG",
+          "category": "produits_laitiers",
+          "nutrition_complete": true,
+          "score": 43
+        },
+        {
+          "ciqual_alim_code": "12356",
+          "ciqual_name": "Snack pour enfants à base de fromage fondu et de gressins",
+          "category": "produits_laitiers",
+          "nutrition_complete": true,
+          "score": 38.5
+        }
+      ]
+    },
+    {
       "form": "Fromage frais mexicain",
       "normalized": "fromage frais mexicain",
       "required": true,
@@ -21746,7 +22712,7 @@
       "form": "Gingembre frais",
       "normalized": "gingembre frais",
       "required": true,
-      "recipe_count": 44,
+      "recipe_count": 47,
       "units": [
         "g"
       ],
@@ -21904,7 +22870,7 @@
       "form": "Gingembre moulu",
       "normalized": "gingembre moulu",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 9,
       "units": [
         "g"
       ],
@@ -22385,7 +23351,7 @@
       "form": "Gruyère râpé",
       "normalized": "gruyere rape",
       "required": true,
-      "recipe_count": 40,
+      "recipe_count": 48,
       "units": [
         "g"
       ],
@@ -23135,7 +24101,7 @@
       "form": "Haricot rouge cuit, égoutté",
       "normalized": "haricot rouge cuit egoutte",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 4,
       "units": [
         "g"
       ],
@@ -23341,7 +24307,7 @@
       "form": "Haricot vert cru",
       "normalized": "haricot vert cru",
       "required": true,
-      "recipe_count": 14,
+      "recipe_count": 16,
       "units": [
         "g"
       ],
@@ -23554,7 +24520,7 @@
       "form": "Haut de cuisse de poulet cru, désossé",
       "normalized": "haut de cuisse de poulet cru desosse",
       "required": true,
-      "recipe_count": 8,
+      "recipe_count": 9,
       "units": [
         "g"
       ],
@@ -23664,7 +24630,7 @@
       "form": "Herbes de Provence séchées",
       "normalized": "herbes de provence sechees",
       "required": true,
-      "recipe_count": 25,
+      "recipe_count": 27,
       "units": [
         "g"
       ],
@@ -23822,7 +24788,7 @@
       "form": "Huile d'olive vierge extra",
       "normalized": "huile d olive vierge extra",
       "required": true,
-      "recipe_count": 271,
+      "recipe_count": 318,
       "units": [
         "g",
         "ml"
@@ -23989,8 +24955,9 @@
       "form": "Huile de friture",
       "normalized": "huile de friture",
       "required": true,
-      "recipe_count": 15,
+      "recipe_count": 18,
       "units": [
+        "g",
         "ml"
       ],
       "selection_mode": "curated",
@@ -24209,7 +25176,7 @@
       "form": "Huile de sésame grillé",
       "normalized": "huile de sesame grille",
       "required": true,
-      "recipe_count": 17,
+      "recipe_count": 19,
       "units": [
         "ml"
       ],
@@ -24374,7 +25341,7 @@
       "form": "Huile végétale",
       "normalized": "huile vegetale",
       "required": true,
-      "recipe_count": 14,
+      "recipe_count": 26,
       "units": [
         "ml"
       ],
@@ -24587,7 +25554,7 @@
       "form": "Jambon blanc cuit",
       "normalized": "jambon blanc cuit",
       "required": true,
-      "recipe_count": 19,
+      "recipe_count": 21,
       "units": [
         "g",
         "tranche"
@@ -25069,7 +26036,7 @@
       "form": "Jaune d'œuf cru",
       "normalized": "jaune d oeuf cru",
       "required": true,
-      "recipe_count": 22,
+      "recipe_count": 29,
       "units": [
         "g",
         "u"
@@ -25235,7 +26202,7 @@
       "form": "Jus de citron frais",
       "normalized": "jus de citron frais",
       "required": true,
-      "recipe_count": 61,
+      "recipe_count": 69,
       "units": [
         "g",
         "ml"
@@ -25291,7 +26258,7 @@
       "form": "Jus de citron vert frais",
       "normalized": "jus de citron vert frais",
       "required": true,
-      "recipe_count": 10,
+      "recipe_count": 12,
       "units": [
         "ml"
       ],
@@ -25607,7 +26574,7 @@
       "form": "Lait de coco",
       "normalized": "lait de coco",
       "required": true,
-      "recipe_count": 10,
+      "recipe_count": 13,
       "units": [
         "ml"
       ],
@@ -25662,7 +26629,7 @@
       "form": "Lait demi-écrémé",
       "normalized": "lait demi ecreme",
       "required": true,
-      "recipe_count": 13,
+      "recipe_count": 15,
       "units": [
         "ml"
       ],
@@ -25717,7 +26684,7 @@
       "form": "Lait entier",
       "normalized": "lait entier",
       "required": true,
-      "recipe_count": 46,
+      "recipe_count": 56,
       "units": [
         "g",
         "ml"
@@ -25828,7 +26795,7 @@
       "form": "Laitue fraîche",
       "normalized": "laitue fraiche",
       "required": true,
-      "recipe_count": 13,
+      "recipe_count": 17,
       "units": [
         "g"
       ],
@@ -26460,7 +27427,7 @@
       "form": "Lentille verte sèche, crue",
       "normalized": "lentille verte seche crue",
       "required": true,
-      "recipe_count": 13,
+      "recipe_count": 14,
       "units": [
         "g"
       ],
@@ -26515,7 +27482,7 @@
       "form": "Levure boulangère fraîche",
       "normalized": "levure boulangere fraiche",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 2,
       "units": [
         "g"
       ],
@@ -26570,7 +27537,7 @@
       "form": "Levure boulangère sèche",
       "normalized": "levure boulangere seche",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 9,
       "units": [
         "g"
       ],
@@ -27291,7 +28258,7 @@
       "form": "Mayonnaise",
       "normalized": "mayonnaise",
       "required": true,
-      "recipe_count": 12,
+      "recipe_count": 15,
       "units": [
         "g"
       ],
@@ -27504,7 +28471,7 @@
       "form": "Menthe fraîche",
       "normalized": "menthe fraiche",
       "required": true,
-      "recipe_count": 8,
+      "recipe_count": 13,
       "units": [
         "g"
       ],
@@ -27717,7 +28684,7 @@
       "form": "Miel",
       "normalized": "miel",
       "required": true,
-      "recipe_count": 15,
+      "recipe_count": 16,
       "units": [
         "g"
       ],
@@ -28144,7 +29111,7 @@
       "form": "Moule commune crue",
       "normalized": "moule commune crue",
       "required": true,
-      "recipe_count": 8,
+      "recipe_count": 9,
       "units": [
         "g"
       ],
@@ -28247,7 +29214,7 @@
       "form": "Moutarde de Dijon",
       "normalized": "moutarde de dijon",
       "required": true,
-      "recipe_count": 44,
+      "recipe_count": 51,
       "units": [
         "g"
       ],
@@ -28350,7 +29317,7 @@
       "form": "Mozzarella",
       "normalized": "mozzarella",
       "required": true,
-      "recipe_count": 10,
+      "recipe_count": 14,
       "units": [
         "g"
       ],
@@ -28453,7 +29420,7 @@
       "form": "Muscade moulue",
       "normalized": "muscade moulue",
       "required": true,
-      "recipe_count": 44,
+      "recipe_count": 49,
       "units": [
         "g"
       ],
@@ -28556,7 +29523,7 @@
       "form": "Navet cru",
       "normalized": "navet cru",
       "required": true,
-      "recipe_count": 10,
+      "recipe_count": 14,
       "units": [
         "g"
       ],
@@ -29064,7 +30031,7 @@
       "form": "Nouille de blé chinoise sèche",
       "normalized": "nouille de ble chinoise seche",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -29311,7 +30278,7 @@
       "form": "Nouille de riz plate sèche",
       "normalized": "nouille de riz plate seche",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -29565,7 +30532,7 @@
       "form": "Œuf cru",
       "normalized": "oeuf cru",
       "required": true,
-      "recipe_count": 148,
+      "recipe_count": 168,
       "units": [
         "g",
         "u"
@@ -29669,7 +30636,7 @@
       "form": "Œuf dur",
       "normalized": "oeuf dur",
       "required": true,
-      "recipe_count": 21,
+      "recipe_count": 24,
       "units": [
         "g",
         "u"
@@ -29993,7 +30960,7 @@
       "form": "Oignon jaune cru",
       "normalized": "oignon jaune cru",
       "required": true,
-      "recipe_count": 298,
+      "recipe_count": 335,
       "units": [
         "g"
       ],
@@ -30103,7 +31070,7 @@
       "form": "Oignon rouge cru",
       "normalized": "oignon rouge cru",
       "required": true,
-      "recipe_count": 13,
+      "recipe_count": 17,
       "units": [
         "g"
       ],
@@ -30213,7 +31180,7 @@
       "form": "Olive noire dénoyautée",
       "normalized": "olive noire denoyautee",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 9,
       "units": [
         "g"
       ],
@@ -30316,7 +31283,7 @@
       "form": "Olive verte dénoyautée",
       "normalized": "olive verte denoyautee",
       "required": true,
-      "recipe_count": 12,
+      "recipe_count": 14,
       "units": [
         "g"
       ],
@@ -30579,7 +31546,7 @@
       "form": "Origan séché",
       "normalized": "origan seche",
       "required": true,
-      "recipe_count": 7,
+      "recipe_count": 12,
       "units": [
         "g"
       ],
@@ -31046,7 +32013,7 @@
       "form": "Pain de campagne",
       "normalized": "pain de campagne",
       "required": true,
-      "recipe_count": 24,
+      "recipe_count": 25,
       "units": [
         "g",
         "tranche"
@@ -31261,8 +32228,9 @@
       "form": "Pain pita",
       "normalized": "pain pita",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
+        "g",
         "u"
       ],
       "selection_mode": "exact_label",
@@ -31316,7 +32284,7 @@
       "form": "Pain rassis",
       "normalized": "pain rassis",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 6,
       "units": [
         "g"
       ],
@@ -31893,7 +32861,7 @@
       "form": "Paprika doux",
       "normalized": "paprika doux",
       "required": true,
-      "recipe_count": 9,
+      "recipe_count": 16,
       "units": [
         "g"
       ],
@@ -32058,7 +33026,7 @@
       "form": "Paprika fumé",
       "normalized": "paprika fume",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 8,
       "units": [
         "g"
       ],
@@ -32113,7 +33081,7 @@
       "form": "Parmesan affiné",
       "normalized": "parmesan affine",
       "required": true,
-      "recipe_count": 26,
+      "recipe_count": 31,
       "units": [
         "g"
       ],
@@ -32223,7 +33191,7 @@
       "form": "Patate douce crue, épluchée",
       "normalized": "patate douce crue epluchee",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -32374,7 +33342,7 @@
       "form": "Pâte brisée crue",
       "normalized": "pate brisee crue",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 10,
       "units": [
         "g"
       ],
@@ -32868,7 +33836,7 @@
       "form": "Pâte feuilletée crue",
       "normalized": "pate feuilletee crue",
       "required": true,
-      "recipe_count": 8,
+      "recipe_count": 10,
       "units": [
         "g"
       ],
@@ -33129,7 +34097,7 @@
       "form": "Pâtes sèches courtes",
       "normalized": "pates seches courtes",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 9,
       "units": [
         "g"
       ],
@@ -33232,7 +34200,7 @@
       "form": "Pavé de saumon cru, sans peau",
       "normalized": "pave de saumon cru sans peau",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 8,
       "units": [
         "g"
       ],
@@ -33342,7 +34310,7 @@
       "form": "Persil frais",
       "normalized": "persil frais",
       "required": true,
-      "recipe_count": 117,
+      "recipe_count": 122,
       "units": [
         "g"
       ],
@@ -33397,7 +34365,7 @@
       "form": "Persil plat frais",
       "normalized": "persil plat frais",
       "required": true,
-      "recipe_count": 19,
+      "recipe_count": 23,
       "units": [
         "g"
       ],
@@ -33500,7 +34468,7 @@
       "form": "Petit pois surgelé",
       "normalized": "petit pois surgele",
       "required": true,
-      "recipe_count": 16,
+      "recipe_count": 19,
       "units": [
         "g"
       ],
@@ -34022,7 +34990,7 @@
       "form": "Piment de Cayenne",
       "normalized": "piment de cayenne",
       "required": true,
-      "recipe_count": 10,
+      "recipe_count": 13,
       "units": [
         "g"
       ],
@@ -34298,7 +35266,7 @@
       "form": "Piment en poudre",
       "normalized": "piment en poudre",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 6,
       "units": [
         "g"
       ],
@@ -34827,7 +35795,7 @@
       "form": "Piment rouge frais",
       "normalized": "piment rouge frais",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 4,
       "units": [
         "g",
         "u"
@@ -35254,7 +36222,7 @@
       "form": "Piment vert frais",
       "normalized": "piment vert frais",
       "required": true,
-      "recipe_count": 7,
+      "recipe_count": 8,
       "units": [
         "g",
         "u"
@@ -35468,7 +36436,7 @@
       "form": "Poireau cru",
       "normalized": "poireau cru",
       "required": true,
-      "recipe_count": 38,
+      "recipe_count": 42,
       "units": [
         "g"
       ],
@@ -35523,7 +36491,7 @@
       "form": "Pois chiche cuit, égoutté",
       "normalized": "pois chiche cuit egoutte",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 9,
       "units": [
         "g"
       ],
@@ -36258,7 +37226,7 @@
       "form": "Poivre noir en grains",
       "normalized": "poivre noir en grains",
       "required": true,
-      "recipe_count": 11,
+      "recipe_count": 12,
       "units": [
         "g"
       ],
@@ -36313,7 +37281,7 @@
       "form": "Poivre noir moulu",
       "normalized": "poivre noir moulu",
       "required": true,
-      "recipe_count": 311,
+      "recipe_count": 383,
       "units": [
         "g"
       ],
@@ -36365,10 +37333,65 @@
       ]
     },
     {
+      "form": "Poivron jaune frais",
+      "normalized": "poivron jaune frais",
+      "required": true,
+      "recipe_count": 3,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "20168",
+        "ciqual_name": "Poivron jaune, cru",
+        "category": "legumes",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "ENTRÉE DÉJÀ AU REGISTRE, sans note, et ce lot ne fait que la documenter et l'employer. Le catalogue construit porte le poivron rouge et le poivron vert, pas le jaune, alors que quatre dossiers de ce lot le nomment expressément — les poivrons grillés (deux rouges et deux jaunes pour quatre), le poulet aux poivrons, le wok de légumes et les légumes rôtis. Le registre le rattachait déjà à 20168 « Poivron jaune, cru » ; la correspondance est exacte et je la confirme plutôt que d'en créer une seconde. L'écart avec le rouge est réel dans les deux sens : 30,7 kcal et 4,73 g de glucides pour le jaune contre 36,6 et 5,98 pour le rouge, soit un sixième, plus l'écart en caroténoïdes que le classeur mesure séparément. On écarte 20041 « Poivron, vert, jaune ou rouge, cru », entrée agrégée qui efface justement la distinction qu'on cherche à porter."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "20168",
+          "ciqual_name": "Poivron jaune, cru",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 75.5
+        },
+        {
+          "ciqual_alim_code": "20041",
+          "ciqual_name": "Poivron, vert, jaune ou rouge, cru",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 71
+        },
+        {
+          "ciqual_alim_code": "20328",
+          "ciqual_name": "Poivron jaune, sauté/poêlé sans matière grasse",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 69.5
+        },
+        {
+          "ciqual_alim_code": "20085",
+          "ciqual_name": "Poivron vert, cru",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 24
+        },
+        {
+          "ciqual_alim_code": "20086",
+          "ciqual_name": "Poivron vert, cuit",
+          "category": "legumes",
+          "nutrition_complete": true,
+          "score": 24
+        }
+      ]
+    },
+    {
       "form": "Poivron rouge frais",
       "normalized": "poivron rouge frais",
       "required": true,
-      "recipe_count": 40,
+      "recipe_count": 50,
       "units": [
         "g"
       ],
@@ -36423,7 +37446,7 @@
       "form": "Poivron vert frais",
       "normalized": "poivron vert frais",
       "required": true,
-      "recipe_count": 19,
+      "recipe_count": 21,
       "units": [
         "g"
       ],
@@ -36533,7 +37556,7 @@
       "form": "Pomme de terre crue, épluchée",
       "normalized": "pomme de terre crue epluchee",
       "required": true,
-      "recipe_count": 30,
+      "recipe_count": 36,
       "units": [
         "g"
       ],
@@ -36588,7 +37611,7 @@
       "form": "Pomme de terre cuite",
       "normalized": "pomme de terre cuite",
       "required": true,
-      "recipe_count": 41,
+      "recipe_count": 42,
       "units": [
         "g"
       ],
@@ -36794,7 +37817,7 @@
       "form": "Pomme fraîche",
       "normalized": "pomme fraiche",
       "required": true,
-      "recipe_count": 18,
+      "recipe_count": 20,
       "units": [
         "g"
       ],
@@ -37405,7 +38428,7 @@
       "form": "Poulet entier cru",
       "normalized": "poulet entier cru",
       "required": true,
-      "recipe_count": 4,
+      "recipe_count": 5,
       "units": [
         "g"
       ],
@@ -37776,7 +38799,7 @@
       "form": "Pousse de soja fraîche",
       "normalized": "pousse de soja fraiche",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 7,
       "units": [
         "g"
       ],
@@ -38628,7 +39651,7 @@
       "form": "Riz arborio cru",
       "normalized": "riz arborio cru",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -38683,7 +39706,7 @@
       "form": "Riz basmati cru",
       "normalized": "riz basmati cru",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -38738,7 +39761,7 @@
       "form": "Riz bomba cru",
       "normalized": "riz bomba cru",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -38903,7 +39926,7 @@
       "form": "Riz cru",
       "normalized": "riz cru",
       "required": true,
-      "recipe_count": 19,
+      "recipe_count": 21,
       "units": [
         "g"
       ],
@@ -39535,7 +40558,7 @@
       "form": "Romarin frais",
       "normalized": "romarin frais",
       "required": true,
-      "recipe_count": 9,
+      "recipe_count": 10,
       "units": [
         "g"
       ],
@@ -39790,7 +40813,7 @@
       "form": "Safran",
       "normalized": "safran",
       "required": true,
-      "recipe_count": 15,
+      "recipe_count": 18,
       "units": [
         "g"
       ],
@@ -40059,7 +41082,7 @@
       "form": "Saké de cuisine",
       "normalized": "sake de cuisine",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 3,
       "units": [
         "ml"
       ],
@@ -40492,7 +41515,7 @@
       "form": "Sauce poisson",
       "normalized": "sauce poisson",
       "required": true,
-      "recipe_count": 17,
+      "recipe_count": 20,
       "units": [
         "ml"
       ],
@@ -40547,7 +41570,7 @@
       "form": "Sauce soja",
       "normalized": "sauce soja",
       "required": true,
-      "recipe_count": 6,
+      "recipe_count": 10,
       "units": [
         "ml"
       ],
@@ -40767,7 +41790,7 @@
       "form": "Sauce soja japonaise",
       "normalized": "sauce soja japonaise",
       "required": true,
-      "recipe_count": 10,
+      "recipe_count": 12,
       "units": [
         "ml"
       ],
@@ -41614,7 +42637,7 @@
       "form": "Sel fin",
       "normalized": "sel fin",
       "required": true,
-      "recipe_count": 365,
+      "recipe_count": 450,
       "units": [
         "g"
       ],
@@ -41669,7 +42692,7 @@
       "form": "Semoule de blé dur moyenne sèche",
       "normalized": "semoule de ble dur moyenne seche",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 4,
       "units": [
         "g"
       ],
@@ -41779,7 +42802,7 @@
       "form": "Sésame grillé",
       "normalized": "sesame grille",
       "required": true,
-      "recipe_count": 4,
+      "recipe_count": 5,
       "units": [
         "g"
       ],
@@ -42411,7 +43434,7 @@
       "form": "Sucre semoule",
       "normalized": "sucre semoule",
       "required": true,
-      "recipe_count": 64,
+      "recipe_count": 81,
       "units": [
         "g"
       ],
@@ -43022,7 +44045,7 @@
       "form": "Thon au naturel en conserve, égoutté",
       "normalized": "thon au naturel en conserve egoutte",
       "required": true,
-      "recipe_count": 20,
+      "recipe_count": 22,
       "units": [
         "g"
       ],
@@ -43077,7 +44100,7 @@
       "form": "Thym frais",
       "normalized": "thym frais",
       "required": true,
-      "recipe_count": 20,
+      "recipe_count": 27,
       "units": [
         "g"
       ],
@@ -43132,7 +44155,7 @@
       "form": "Thym séché",
       "normalized": "thym seche",
       "required": true,
-      "recipe_count": 72,
+      "recipe_count": 73,
       "units": [
         "g"
       ],
@@ -43537,7 +44560,7 @@
       "form": "Tomate cerise fraîche",
       "normalized": "tomate cerise fraiche",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -43592,7 +44615,7 @@
       "form": "Tomate concassée en conserve",
       "normalized": "tomate concassee en conserve",
       "required": true,
-      "recipe_count": 43,
+      "recipe_count": 49,
       "units": [
         "g"
       ],
@@ -43757,7 +44780,7 @@
       "form": "Tomate fraîche mûre",
       "normalized": "tomate fraiche mure",
       "required": true,
-      "recipe_count": 66,
+      "recipe_count": 88,
       "units": [
         "g",
         "u"
@@ -44074,6 +45097,61 @@
           "category": "legumes",
           "nutrition_complete": true,
           "score": 0
+        }
+      ]
+    },
+    {
+      "form": "Tortilla de blé",
+      "normalized": "tortilla de ble",
+      "required": true,
+      "recipe_count": 2,
+      "units": [
+        "u"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "7815",
+        "ciqual_name": "Tortilla souple (à garnir), à base de blé",
+        "category": "cereales_feculents",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Le catalogue portait « Tortilla de maïs » (galette mexicaine) mais rien pour la galette de BLÉ, qui est celle des wraps et des quesadillas françaises — les sources écrivent « galettes de blé », « wraps au blé complet », « tortillas de blé ». 7815 la nomme exactement : « souple, à garnir, à base de blé ». 327 kcal, P 9,15 / L 8,2 / G 52,1, fibres 3,85, sel 1,25 — toutes mesurées. Le sel de 1,25 g pour 100 g n'est pas anodin : deux galettes en apportent près d'un gramme et demi, ce qui suffit à expliquer pourquoi un wrap se sale à peine. Ne pas confondre avec 38105 « Chips de maïs ou tortilla chips », qui est un produit frit."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "7815",
+          "ciqual_name": "Tortilla souple (à garnir), à base de blé",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 63.5
+        },
+        {
+          "ciqual_alim_code": "38105",
+          "ciqual_name": "Chips de maïs ou tortilla chips",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 27
+        },
+        {
+          "ciqual_alim_code": "7813",
+          "ciqual_name": "Tortilla souple (à garnir), à base de maïs",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 24
+        },
+        {
+          "ciqual_alim_code": "22510",
+          "ciqual_name": "Tortilla espagnole aux oignons (omelette aux pommes de terre et oignons), préemballée",
+          "category": "viandes",
+          "nutrition_complete": true,
+          "score": 19.5
+        },
+        {
+          "ciqual_alim_code": "9011",
+          "ciqual_name": "Blé germé, cru",
+          "category": "cereales_feculents",
+          "nutrition_complete": true,
+          "score": 18
         }
       ]
     },
@@ -44631,7 +45709,7 @@
       "form": "Vanille liquide",
       "normalized": "vanille liquide",
       "required": true,
-      "recipe_count": 4,
+      "recipe_count": 5,
       "units": [
         "ml"
       ],
@@ -44830,7 +45908,7 @@
       "form": "Vermicelle fin sec",
       "normalized": "vermicelle fin sec",
       "required": true,
-      "recipe_count": 2,
+      "recipe_count": 3,
       "units": [
         "g"
       ],
@@ -44988,7 +46066,7 @@
       "form": "Vin blanc sec",
       "normalized": "vin blanc sec",
       "required": true,
-      "recipe_count": 66,
+      "recipe_count": 70,
       "units": [
         "g",
         "ml"
@@ -45316,10 +46394,65 @@
       ]
     },
     {
+      "form": "Vinaigre balsamique",
+      "normalized": "vinaigre balsamique",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "ml"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "11091",
+        "ciqual_name": "Vinaigre balsamique",
+        "category": "condiments_sauces",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Correspondance de libellé mot pour mot, et l'écart avec le vinaigre de vin est loin d'être cosmétique : 125 kcal et 25,8 g de glucides pour 100 g contre 21,6 kcal et 0,27 g pour 11220 « Vinaigre de vin rouge ». C'est un sirop sucré, pas un acide nu. Écrire l'un pour l'autre — ce que la salade caprese et la salade de chou blanc auraient dû faire faute de forme — divisait par six l'énergie de la ligne et effaçait tout son sucre. Réserve : les lipides sont donnés comme borne supérieure et non comme mesure, ce qui est sans conséquence sur un vinaigre."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "11091",
+          "ciqual_name": "Vinaigre balsamique",
+          "category": "condiments_sauces",
+          "nutrition_complete": true,
+          "score": 1000
+        },
+        {
+          "ciqual_alim_code": "11018",
+          "ciqual_name": "Vinaigre",
+          "category": "condiments_sauces",
+          "nutrition_complete": true,
+          "score": 60.5
+        },
+        {
+          "ciqual_alim_code": "11004",
+          "ciqual_name": "Cornichon, au vinaigre",
+          "category": "condiments_sauces",
+          "nutrition_complete": true,
+          "score": 24
+        },
+        {
+          "ciqual_alim_code": "11040",
+          "ciqual_name": "Câpres, au vinaigre",
+          "category": "condiments_sauces",
+          "nutrition_complete": true,
+          "score": 24
+        },
+        {
+          "ciqual_alim_code": "11055",
+          "ciqual_name": "Oignon au vinaigre",
+          "category": "condiments_sauces",
+          "nutrition_complete": true,
+          "score": 24
+        }
+      ]
+    },
+    {
       "form": "Vinaigre blanc",
       "normalized": "vinaigre blanc",
       "required": true,
-      "recipe_count": 11,
+      "recipe_count": 13,
       "units": [
         "g",
         "ml"
@@ -45650,7 +46783,7 @@
       "form": "Vinaigre de vin rouge",
       "normalized": "vinaigre de vin rouge",
       "required": true,
-      "recipe_count": 50,
+      "recipe_count": 57,
       "units": [
         "g",
         "ml"
@@ -45965,6 +47098,61 @@
       ]
     },
     {
+      "form": "Yaourt à la grecque",
+      "normalized": "yaourt a la grecque",
+      "required": true,
+      "recipe_count": 1,
+      "units": [
+        "g"
+      ],
+      "selection_mode": "curated",
+      "selected": {
+        "ciqual_alim_code": "19860",
+        "ciqual_name": "Yaourt à la grecque, nature",
+        "category": "produits_laitiers",
+        "nutrition_complete": true,
+        "confidence": "B",
+        "note": "Correspondance exacte sur le PRODUIT QU'ON ACHÈTE, et c'est là tout l'arbitrage. Les six sources de tzatziki écrivent « yaourt grec » ou « yaourt à la grecque » ; en France ces deux mots désignent le même pot de rayon frais, un yaourt de vache enrichi de crème, et 19860 le mesure pour lui-même : P 3,25 / L 9,22 / G 4,21, toutes mesurées. L'entrée existante « Yaourt grec » (19646, fromage blanc à 3 %, confiance C) visait un AUTRE produit — le yaourt égoutté à 9 g de protéines du commerce anglo-saxon — et sa note le dit ; elle avait écarté 19550 « au lait de brebis » à juste titre, mais n'avait pas examiné 19860. Réserve honnête : l'énergie n'est pas donnée par le classeur pour ce code, elle sera close par Atwater (≈ 113 kcal), ce que le générateur sait faire et signale. Les deux formes ne se concurrencent pas dans une recette publiable, la précédente étant bloquée."
+      },
+      "suggestions": [
+        {
+          "ciqual_alim_code": "19860",
+          "ciqual_name": "Yaourt à la grecque, nature",
+          "category": "produits_laitiers",
+          "nutrition_complete": true,
+          "score": 107.5
+        },
+        {
+          "ciqual_alim_code": "19862",
+          "ciqual_name": "Yaourt à la grecque, aromatisé, sucré",
+          "category": "produits_laitiers",
+          "nutrition_complete": true,
+          "score": 106
+        },
+        {
+          "ciqual_alim_code": "19550",
+          "ciqual_name": "Yaourt à la grecque, au lait de brebis",
+          "category": "produits_laitiers",
+          "nutrition_complete": true,
+          "score": 103
+        },
+        {
+          "ciqual_alim_code": "19552",
+          "ciqual_name": "Yaourt à la grecque, sur lit de fruits",
+          "category": "produits_laitiers",
+          "nutrition_complete": true,
+          "score": 103
+        },
+        {
+          "ciqual_alim_code": "11166",
+          "ciqual_name": "Sauce au yaourt",
+          "category": "condiments_sauces",
+          "nutrition_complete": true,
+          "score": 24
+        }
+      ]
+    },
+    {
       "form": "Yaourt grec",
       "normalized": "yaourt grec",
       "required": true,
@@ -46023,7 +47211,7 @@
       "form": "Yaourt nature",
       "normalized": "yaourt nature",
       "required": true,
-      "recipe_count": 12,
+      "recipe_count": 14,
       "units": [
         "g"
       ],
@@ -46181,7 +47369,7 @@
       "form": "Zeste de citron",
       "normalized": "zeste de citron",
       "required": true,
-      "recipe_count": 14,
+      "recipe_count": 15,
       "units": [
         "g"
       ],

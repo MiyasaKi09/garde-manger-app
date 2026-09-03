@@ -1,0 +1,69 @@
+{
+  "lot": "lot20 — les sept formes sans lesquelles sept recettes du lot « rapide » ne pouvaient pas s'écrire",
+  "contexte": "Ce lot ne cherche pas à compléter le catalogue : il ouvre exactement les formes que la rédaction du lot « rapide » a réclamées, et rien de plus. Chacune bloquait une recette dont le dossier de sources était pourtant solide, et le README dit ce qu'il faut faire dans ce cas — « une absence réelle part en arbitrage, avec une note qui dit pourquoi cette entrée Ciqual et pas une autre ». Les sept décisions s'adossent toutes à une entrée EXACTE du classeur Ciqual 2020, celui dont le catalogue est réellement issu (data/sources/raw/ciqual_2020_FR_2020-07-07.xls.gz) et non les shards 2025 de data/foods/ciqual-reference/, dont le lot19 a montré qu'ils portent des codes qui n'existent pas dans la base du catalogue.\n\nDEUX CAS MÉRITENT D'ÊTRE LUS AVANT LES AUTRES. « Yaourt à la grecque » rouvre un arbitrage déjà tranché — « Yaourt grec » existe au registre en confiance C, donc non publiable, ce qui bloquait le tzatziki alors que ses six sources authentiques le pèsent toutes. La note existante n'avait examiné que 19550 (brebis, non égoutté) avant de se rabattre sur le fromage blanc à 3 %. Elle n'a pas examiné 19860. Et 19860 est précisément ce qu'achète le lecteur d'une recette française : le pot du rayon frais étiqueté « yaourt à la grecque », enrichi de crème, que l'ANSES mesure pour lui-même. « Fromage fondu en portions » est le second cas à lire : quatre des huit sources du velouté de courgettes montent leur velouté avec des portions de fromage fondu, et aucune forme du catalogue ne les portait.\n\nCE QUE CES SEPT FORMES NE FONT PAS. Elles ne remplacent aucune forme existante et n'en dupliquent aucune : « Feta » n'a pas de voisin au catalogue, pas plus que la farine de sarrasin, la tortilla de blé ou le vinaigre balsamique. Le seul chevauchement est celui de « Yaourt à la grecque » avec « Yaourt grec », bloqué : les deux ne coexisteront pas dans une recette publiable, puisque la seconde ne l'est pas.",
+  "decisions": [
+    {
+      "cle": "yaourt a la grecque",
+      "forme": "Yaourt à la grecque",
+      "verdict": "mapper",
+      "alim_code": "19860",
+      "nom_ciqual": "Yaourt à la grecque, nature",
+      "confidence": "A",
+      "note": "Correspondance exacte sur le PRODUIT QU'ON ACHÈTE, et c'est là tout l'arbitrage. Les six sources de tzatziki écrivent « yaourt grec » ou « yaourt à la grecque » ; en France ces deux mots désignent le même pot de rayon frais, un yaourt de vache enrichi de crème, et 19860 le mesure pour lui-même : P 3,25 / L 9,22 / G 4,21, toutes mesurées. L'entrée existante « Yaourt grec » (19646, fromage blanc à 3 %, confiance C) visait un AUTRE produit — le yaourt égoutté à 9 g de protéines du commerce anglo-saxon — et sa note le dit ; elle avait écarté 19550 « au lait de brebis » à juste titre, mais n'avait pas examiné 19860. Réserve honnête : l'énergie n'est pas donnée par le classeur pour ce code, elle sera close par Atwater (≈ 113 kcal), ce que le générateur sait faire et signale. Les deux formes ne se concurrencent pas dans une recette publiable, la précédente étant bloquée."
+    },
+    {
+      "cle": "feta",
+      "forme": "Feta",
+      "verdict": "mapper",
+      "alim_code": "12066",
+      "nom_ciqual": "Feta AOP",
+      "confidence": "A",
+      "note": "Les quatre sources authentiques de salade grecque écrivent « feta » sans autre qualificatif, et deux d'entre elles la comptent en pot ou en morceau de 100 à 180 g. Le classeur en porte quatre entrées : 12066 « Feta AOP », 12061 « Fromage 100 % brebis (Feta AOP ou type Feta) », 12060 « type feta, au lait de vache » et 12063 « type feta à l'huile et aux aromates ». On prend l'AOP, qui est le produit que le mot désigne : 285 kcal, P 14,8 / L 24,3 / G 0,65, sel 2,27 — macros complètes et toutes mesurées. Le type vache (12060) aurait été un choix de repli si le mot avait été qualifié, ce qu'aucune source ne fait ; la version à l'huile (12063) est un autre produit, dont le gras déclaré n'est pas celui du fromage. Le sel de 2,27 g pour 100 g est élevé et il est réel : c'est lui qui explique qu'une salade grecque se sale peu."
+    },
+    {
+      "cle": "farine de sarrasin",
+      "forme": "Farine de sarrasin",
+      "verdict": "mapper",
+      "alim_code": "9540",
+      "nom_ciqual": "Farine de sarrasin",
+      "confidence": "A",
+      "note": "Correspondance de libellé mot pour mot. 348 kcal, P 11,5 / L 2,19 / G 68,4, fibres 4,2 — toutes mesurées, aucune borne. Le classeur porte aussi 9380 « Sarrasin entier, cru », qui est la graine et non la farine, et 23801 « Galette de sarrasin, nature, préemballée », qui est le produit fini : les deux ont été écartés parce qu'une galette complète se fait avec de la farine, et qu'adosser une farine à une galette déjà cuite ferait entrer l'eau de la pâte dans la composition de l'ingrédient sec."
+    },
+    {
+      "cle": "tortilla de ble",
+      "forme": "Tortilla de blé",
+      "verdict": "mapper",
+      "alim_code": "7815",
+      "nom_ciqual": "Tortilla souple (à garnir), à base de blé",
+      "confidence": "A",
+      "note": "Le catalogue portait « Tortilla de maïs » (galette mexicaine) mais rien pour la galette de BLÉ, qui est celle des wraps et des quesadillas françaises — les sources écrivent « galettes de blé », « wraps au blé complet », « tortillas de blé ». 7815 la nomme exactement : « souple, à garnir, à base de blé ». 327 kcal, P 9,15 / L 8,2 / G 52,1, fibres 3,85, sel 1,25 — toutes mesurées. Le sel de 1,25 g pour 100 g n'est pas anodin : deux galettes en apportent près d'un gramme et demi, ce qui suffit à expliquer pourquoi un wrap se sale à peine. Ne pas confondre avec 38105 « Chips de maïs ou tortilla chips », qui est un produit frit."
+    },
+    {
+      "cle": "fromage fondu en portions",
+      "forme": "Fromage fondu en portions",
+      "verdict": "mapper",
+      "alim_code": "12310",
+      "nom_ciqual": "Fromage fondu en portions ou en cubes environ 20% MG",
+      "confidence": "B",
+      "note": "Quatre des huit sources du velouté de courgettes montent leur velouté avec des portions de fromage fondu du commerce, comptées à la portion et jamais pesées. Le classeur porte trois entrées de fromage fondu en portions : 12305 (environ 8 % MG), 12310 (environ 20 %) et 12320 (double crème, environ 31 %). On prend 12310, qui correspond au produit courant, et surtout la seule des trois dont les macros soient complètes — 12305 n'a ni énergie ni glucides au classeur, ce qui suffit à l'écarter. Confiance B et non A parce que les sources ne donnent aucun taux de matière grasse : le choix des 20 % est celui du produit de référence du rayon, pas une lecture de la source. Le poids d'une portion, 17 g environ, reste une convention de cuisine et non une mesure : il est déclaré comme tel dans l'arbitrage de la recette."
+    },
+    {
+      "cle": "vinaigre balsamique",
+      "forme": "Vinaigre balsamique",
+      "verdict": "mapper",
+      "alim_code": "11091",
+      "nom_ciqual": "Vinaigre balsamique",
+      "confidence": "A",
+      "note": "Correspondance de libellé mot pour mot, et l'écart avec le vinaigre de vin est loin d'être cosmétique : 125 kcal et 25,8 g de glucides pour 100 g contre 21,6 kcal et 0,27 g pour 11220 « Vinaigre de vin rouge ». C'est un sirop sucré, pas un acide nu. Écrire l'un pour l'autre — ce que la salade caprese et la salade de chou blanc auraient dû faire faute de forme — divisait par six l'énergie de la ligne et effaçait tout son sucre. Réserve : les lipides sont donnés comme borne supérieure et non comme mesure, ce qui est sans conséquence sur un vinaigre."
+    },
+    {
+      "cle": "poivron jaune frais",
+      "forme": "Poivron jaune frais",
+      "verdict": "confirmer une entrée déjà au registre",
+      "alim_code": "20168",
+      "nom_ciqual": "Poivron jaune, cru",
+      "confidence": "A",
+      "note": "ENTRÉE DÉJÀ AU REGISTRE, sans note, et ce lot ne fait que la documenter et l'employer. Le catalogue construit porte le poivron rouge et le poivron vert, pas le jaune, alors que quatre dossiers de ce lot le nomment expressément — les poivrons grillés (deux rouges et deux jaunes pour quatre), le poulet aux poivrons, le wok de légumes et les légumes rôtis. Le registre le rattachait déjà à 20168 « Poivron jaune, cru » ; la correspondance est exacte et je la confirme plutôt que d'en créer une seconde. L'écart avec le rouge est réel dans les deux sens : 30,7 kcal et 4,73 g de glucides pour le jaune contre 36,6 et 5,98 pour le rouge, soit un sixième, plus l'écart en caroténoïdes que le classeur mesure séparément. On écarte 20041 « Poivron, vert, jaune ou rouge, cru », entrée agrégée qui efface justement la distinction qu'on cherche à porter."
+    }
+  ]
+}

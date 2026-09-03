@@ -1,0 +1,208 @@
+{
+  "dish": "Gyros",
+  "slug": "gyros",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gyros-de-porc_36569.aspx",
+      "site": "marmiton.org",
+      "nom": "Gyros de porc : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 rôti de porc de 800 g",
+        "1 poivron vert",
+        "1 poivron rouge",
+        "1 poivron jaune",
+        "1 citron",
+        "400 g de tomates concassées",
+        "50 cl de coulis de tomate",
+        "1 oignon",
+        "2 gousses d'ail",
+        "eau",
+        "20 cl d'huile d'olive",
+        "cumin",
+        "Pili Pili",
+        "coriandre",
+        "poivre de Cayenne",
+        "origan",
+        "2 cubes de bouillon de volaille"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1137,
+        "sha256": "c6e6f57c0362252b"
+      },
+      "sha256_page": "82ace10ac4da16b6"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pita-gyros_539331.aspx",
+      "site": "marmiton.org",
+      "nom": "Pita gyros : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "4 pièces de pains pita",
+        "4 filets de filets de poulet",
+        "2 pièces de tomates (si possible bio)",
+        "1 pièce d'oignon rouge (si possible bio)",
+        "1 pièce de concombre (si possible bio)",
+        "3 gousses d'ail (si possible bio)",
+        "3 petits pots de yaourts à la grecque (format individuel)",
+        "4 feuilles de laitues (si possible bio)",
+        "1 petit bouquet de persil (si possible bio)",
+        "2 pièces de citrons (si possible bio)",
+        "2 cuillères à café de paprika",
+        "1 cuillère à café de cumin moulu",
+        "1 cuillère à café d'origan séché",
+        "6 cuillères à soupe d'huile d'olive",
+        "sel",
+        "poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1509,
+        "sha256": "6c653ea5ed54abbb"
+      },
+      "sha256_page": "befbadb2a500e145"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jawahir/recettes/gyros-de-poulet",
+      "site": "chefsimon.com",
+      "nom": "Gyros de poulet",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "Pour les épices à gyros faits maison :",
+        "4 cuillères à soupe d’ail en poudre",
+        "4 cuillères à soupe de paprika en poudre",
+        "4 cuillères à soupe d’herbe de provence",
+        "2 cuillères à soupe de coriandre en poudre",
+        "2 cuillères à soupe de cumin en poudre",
+        "2 cuillères à soupe de poivre",
+        "2 cuillères à soupe de sel",
+        "1 cuillères à soupe de céleri en poudre",
+        "1 cuillères à soupe de graine de moutarde",
+        "Pour le gyros de poulet",
+        "1/4 de blancs de poulet",
+        "1 gousse d’ail",
+        "1/4 poivrons rouges",
+        "1/4 poivrons verts",
+        "1 oignon",
+        "2 cuillères à soupe de coulis de tomate",
+        "1 cuillère à soupe d’huile d’olive",
+        "1 cuillère à café du mix d'épices à gyros"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 615,
+        "sha256": "c724a8916c5027b2"
+      },
+      "sha256_page": "09155d624604dad8"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/aop-beaufort/recettes/gyros-au-poulet-marine-et-au-beaufort",
+      "site": "chefsimon.com",
+      "nom": "Gyros au poulet mariné et au Beaufort",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "4 pains pita",
+        "400 g de filets de volaille",
+        "100 g de Beaufort",
+        "4 belles feuilles de laitue",
+        "250 g de tzatziki",
+        "1 tomate charnue",
+        "Quelques olives",
+        "Pour la marinade :",
+        "2 cuill à soupe d'huile d'olive",
+        "1 cuill à café rase de cumin en poudre",
+        "5 gouttes de tabasco",
+        "2 gousses d'ail pelées hachées",
+        "Le jus d'un citron",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 938,
+        "sha256": "b9420b7898bfca7c"
+      },
+      "sha256_page": "874d232007374d34"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lacuisinedunetoquee/recettes/un-gyros-vegetarien-a-l-aubergine",
+      "site": "chefsimon.com",
+      "nom": "Un gyros végétarien à l’aubergine",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 wraps",
+        "tomates",
+        "roquette",
+        "tzatziki",
+        "2 aubergines",
+        "1 l d’eau froide",
+        "2 gousses d’ail",
+        "50 g de parmesan",
+        "2 œufs",
+        "50 g de chapelure",
+        "paprika fumé",
+        "1 peu de jus de citron",
+        "1 bouquet de persil",
+        "Huile d’olive",
+        "Sel, Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "b82f163ea390bd30"
+    },
+    {
+      "url": "https://www.750g.com/gyros-au-poulet-et-poivrons-r207723.htm",
+      "site": "750g.com",
+      "nom": "Gyros au poulet et poivrons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "480 g de blancs de poulet  (en filets)",
+        "4 pain pita ou pain libanais",
+        "4 feuilles de salade",
+        "4 c. à s. de tzatziki",
+        "2 c. à s. d'huile d'olive",
+        "2 oignons nouveaux ou Cébettes",
+        "2 poivrons jaunes",
+        "2 poivrons rouges",
+        "1 gousse d'ail",
+        "4 c. à s. d'huile d'olive",
+        "2 verres d'eau",
+        "4 pincées de sel ou sel fin",
+        "4 c. à s. de vinaigre balsamique",
+        "140 g de yaourt grec",
+        "1 c. à s. de paprika doux",
+        "1 c. à s. de persil plat",
+        "2 gousses d'ail",
+        "1 c. à s. d'oignon  séché",
+        "3 c. à s. de jus de citron  fraîchement pressés",
+        "1 c. à c. de vinaigre de cidre",
+        "1 c. à s. d'huile d'olive",
+        "4 pincées de sel ou sel fin",
+        "4 pincées de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1917,
+        "sha256": "1111110773351ef5"
+      },
+      "sha256_page": "6e0707cc40d25702"
+    }
+  ]
+}

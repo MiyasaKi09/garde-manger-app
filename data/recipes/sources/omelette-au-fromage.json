@@ -1,0 +1,166 @@
+{
+  "dish": "Omelette au fromage",
+  "slug": "omelette-au-fromage",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-bacon-fromage_51592.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette bacon-fromage : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "2 oeufs en fonction de l'appétit",
+        "50 g de fromage frais ail et fines herbes",
+        "3 tranches de bacon",
+        "3 cuillères à soupe de lait"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 958,
+        "sha256": "7612238652bb2ce0"
+      },
+      "sha256_page": "150541e464a20dbe"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-soufflee-au-fromage_345191.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette soufflée au fromage : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT13M",
+      "ingredients": [
+        "6 oeufs",
+        "100 g de comté râpé",
+        "0.5 citron",
+        "1 pincée de sel",
+        "1 pincée de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 927,
+        "sha256": "1ffb66625ca2d50f"
+      },
+      "sha256_page": "5be9a136caf864e3"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-jambon-fromage_68824.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette jambon/fromage : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "6 oeufs",
+        "parmesan (facultatif)",
+        "sel",
+        "poivre",
+        "2 tranches de jambon",
+        "toastinette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 424,
+        "sha256": "c9942a5efba64fed"
+      },
+      "sha256_page": "d9bf8511b05cd68e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/julie-gri/recettes/omelette-aux-courgettes-et-fromage-de-chevre",
+      "site": "chefsimon.com",
+      "nom": "Omelette aux courgettes et fromage de chèvre",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "1 courgette",
+        "3 oeufs",
+        "1 c. à soupe huile d'olive",
+        "1 c. à café herbes de Provence",
+        "1 c. à café ail en poudre",
+        "1 pincée sel",
+        "100 g bûche de fromage de chèvre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "c7922146b652f81e"
+    },
+    {
+      "url": "https://www.750g.com/omelette-au-fromage-r9143.htm",
+      "site": "750g.com",
+      "nom": "Omelette au fromage vite faite",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "Poivre",
+        "1 lait  (facultatif)",
+        "Sel ou sel fin",
+        "100 g de gruyère râpé",
+        "6 c. à s. de farine",
+        "6 oeufs",
+        "2 tasses d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 279,
+        "sha256": "33d49e1ca0115e61"
+      },
+      "sha256_page": "24199b500b21c216"
+    },
+    {
+      "url": "https://www.750g.com/fine-omelette-au-fromage-r50876.htm",
+      "site": "750g.com",
+      "nom": "Fine omelette au fromage",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "50 g de pignons de pin",
+        "20 g de beurre",
+        "Huile d'arachide",
+        "1 bouquet de ciboulette",
+        "Poivre",
+        "400 g de fromage blanc",
+        "Sel ou sel fin",
+        "8 oeufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 403,
+        "sha256": "a927b7a1fe06ae5d"
+      },
+      "sha256_page": "9ceef5a1c3a317ad"
+    },
+    {
+      "url": "https://www.750g.com/omelette-fromagere-r36218.htm",
+      "site": "750g.com",
+      "nom": "Omelette fromagère",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "1 c. à c. de paprika",
+        "1 c. à s. d'huile d'olive",
+        "Sel ou sel fin",
+        "Poivre",
+        "10 cl de crème liquide entière ( 30% de MG )",
+        "50 g de mozzarella",
+        "1 gousse d'ail",
+        "50 g de gruyère râpé",
+        "4 oeufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 625,
+        "sha256": "2729c2da6bec8318"
+      },
+      "sha256_page": "5615d34fc24d249e"
+    }
+  ]
+}

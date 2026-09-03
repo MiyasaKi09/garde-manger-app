@@ -1,0 +1,193 @@
+{
+  "dish": "Curry vert de poulet",
+  "slug": "curry-vert-de-poulet",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-curry-vert-et-pois-gourmands_69585.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet curry vert et pois gourmands : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 blancs de poulet",
+        "250 g de pois gourmands",
+        "1 poivron rouge",
+        "1 oignon",
+        "10 cl de lait de coco",
+        "0.5 cuillère à café de pâte de curry vert",
+        "2 cuillères à soupe de sésame",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1112,
+        "sha256": "b13b54e0a68a7f60"
+      },
+      "sha256_page": "bd484c8da2d854be"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_curry-vert-de-poulet-coco-et-legumes-croquants_392575.aspx",
+      "site": "marmiton.org",
+      "nom": "Curry vert de poulet au lait de coco et légumes croquants : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 filet de poulet",
+        "4 bouquets de brocolis",
+        "1 poignée de petits pois",
+        "0.5 carotte",
+        "200 ml de lait de coco",
+        "2 cuillères à soupe de pâte de curry vert",
+        "1 cuillère à soupe de cassonade",
+        "2 cuillères à soupe d'huile végétale",
+        "sauce poisson (quelques gouttes)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 511,
+        "sha256": "26c4fe78fc21bc3d"
+      },
+      "sha256_page": "99c76e8d0a9658c3"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_curry-vert-de-poulet-au-lait-de-coco-tomate-et-pousses-de-bambou_39380.aspx",
+      "site": "marmiton.org",
+      "nom": "Curry vert de poulet au lait de coco, tomate et pousses de bambou : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 cuillères à soupe d'huile",
+        "400 g de blancs de poulet",
+        "1 cuillère à café de pâte de curry vert",
+        "400 ml de lait de coco",
+        "1 tomate",
+        "400 g de pousses de bambou en bocal",
+        "1 gousse d'ail",
+        "1 pincée de gingembre en poudre",
+        "2 cuillères à soupe de crème fraîche épaisse",
+        "1 cuillère à café de nuoc mam",
+        "2 cuillères à café de sucre",
+        "1 tasse de feuilles de coriandre fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 513,
+        "sha256": "6b0940add8c6aeca"
+      },
+      "sha256_page": "7766463ad80a3c5b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lesfillesatable-com/recettes/curry-vert-d-aubergines-et-poulet",
+      "site": "chefsimon.com",
+      "nom": "Curry vert d'aubergines et poulet",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "5 aubergines asiatiques (500 g) ou classiques",
+        "2 blancs de poulet",
+        "1 échalote",
+        "4 gousses d’ail",
+        "2 cuil. à soupe de curry vert",
+        "1 cuil. à soupe de curry de Madras",
+        "1 cuil. à soupe de cassonade",
+        "50 cl de lait de coco",
+        "basilic thaï ou coriandre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 677,
+        "sha256": "52346da908f73bfb"
+      },
+      "sha256_page": "4eeec62afacece3a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/recettes-thailandaises-par-nan-et-kris/recettes/curry-vert-thai-au-poulet",
+      "site": "chefsimon.com",
+      "nom": "Curry vert thaï au poulet",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "400 gr d'ailerons de poulet",
+        "1 aubergine longue, coupée en gros cubes",
+        "3 aubergines rondes, coupées en 4",
+        "une 30aine d'aubergines pois",
+        "3 gousses d'ail, grossièrement hachées",
+        "2 échalotes, émincées",
+        "1 très grosse c.s. de pâte de curry vert&nbsp;",
+        "1 c.s. de sucre de palme",
+        "1 c.s. de pâte de crevette (si la pâte de crevette est très puissante, réduire à 1/2 c.s)",
+        "1,5 c.s. de sauce de poisson",
+        "un peu de sel",
+        "300 ml de lait de coco",
+        "eau",
+        "2 grosses poignées de feuilles de basilic thaï (basilic doux)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "1df5859f46d96e45"
+    },
+    {
+      "url": "https://www.750g.com/poulet-au-curry-vert-et-sa-sauce-rafraichissante-au-concombre-r45156.htm",
+      "site": "750g.com",
+      "nom": "Poulet au curry vert et sa sauce rafraîchissante au concombre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "2 c. à s. d'huile",
+        "4 ou 5 feuilles de curry (facultatif)",
+        "100 g de pistaches",
+        "1 c. à s. de pâte de curry vert",
+        "20 cl de lait de coco",
+        "4 escalopes de poulet découpées en dés (bouchées)",
+        "1 c. à s. d'huile d'olive",
+        "Le jus d'un citron vert",
+        "Sel",
+        "Poivre",
+        "1 c. à c. de cumin en poudre",
+        "1 c. à s. de feuilles de coriandre ciselées",
+        "1 yaourt nature",
+        "15 cl de lait de coco",
+        "1 concombre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 930,
+        "sha256": "4de304eb169c29a5"
+      },
+      "sha256_page": "0e93513b439044ac"
+    },
+    {
+      "url": "https://www.750g.com/curry-vert-de-poulet-r58002.htm",
+      "site": "750g.com",
+      "nom": "Curry vert de poulet traditionnel",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 poignée de basilic",
+        "½ l de lait de coco",
+        "1 aubergine",
+        "4 blancs de poulet",
+        "2 c. à s. rase(s) de pâte de curry vert"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 649,
+        "sha256": "1b8ff96bacee2662"
+      },
+      "sha256_page": "8c81d68b7cd9aa3f"
+    }
+  ]
+}

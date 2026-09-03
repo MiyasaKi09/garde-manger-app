@@ -1,0 +1,184 @@
+{
+  "dish": "Risotto milanais",
+  "slug": "risotto-milanais",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_risotto-milanais_24435.aspx",
+      "site": "marmiton.org",
+      "nom": "Risotto Milanais : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "huile d'olive de Toscane ou d'Italie",
+        "250 g de riz pour risotto à risotto",
+        "1 oignon haché",
+        "safran (1 dose ou quelques filaments)",
+        "1 l de bouillon de volaille",
+        "15 cl de vin blanc sec",
+        "parmesan râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 635,
+        "sha256": "6ea400aacbcf4b5c"
+      },
+      "sha256_page": "06942b7b17492646"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_risotto-a-la-milanaise_14455.aspx",
+      "site": "marmiton.org",
+      "nom": "Risotto à la milanaise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "beurre",
+        "350 g de riz",
+        "1 oignon",
+        "2 sachets de safran en poudre",
+        "50 g de parmesan",
+        "50 cl de lait",
+        "50 cl d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 341,
+        "sha256": "ba4051824863cddb"
+      },
+      "sha256_page": "2fd147de1dd50b37"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_ossobuco-avec-risotto-a-la-milanaise_528090.aspx",
+      "site": "marmiton.org",
+      "nom": "Ossobuco avec risotto à la milanaise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT2H10M",
+      "ingredients": [
+        "2 tranches de jarrets de boeuf",
+        "10 cl d'huile d'olive",
+        "25 cl de vin blanc sec",
+        "0.5 oignon",
+        "235 g de riz pour risotto",
+        "30 g de parmesan râpé",
+        "4 cuillères à soupe de farine",
+        "40 g de beurre",
+        "2 cubes de bouillon de boeuf",
+        "1 citron",
+        "4 brins de persil",
+        "2 g de safran en poudre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 1404,
+        "sha256": "ae0bb9ba32cbce9f"
+      },
+      "sha256_page": "b7497a0ce993abe0"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/nadji/recettes/risotto-au-safran-et-aux-crevettes-ou-risotto-a-la-milanaise",
+      "site": "chefsimon.com",
+      "nom": "Risotto au safran et aux crevettes ou risotto à la Milanaise.",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "300 g de riz à risotto",
+        "2 oignons",
+        "1 l de bouillon de légumes",
+        "15 cl de vin blanc sec",
+        "1 dose de safran",
+        "50 g de parmesan râpé",
+        "5 cuillères à soupe d'huile d'olive",
+        "50 g de beurre",
+        "Sel",
+        "Poivre",
+        "300 g de crevettes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "b474b16579da378f"
+    },
+    {
+      "url": "https://www.750g.com/risotto-a-la-milanaise-r100543.htm",
+      "site": "750g.com",
+      "nom": "Risotto à la milanaise authentique",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "320 g de riz à risotto",
+        "60 cl de bouillon de légumes",
+        "40 g de beurre demi-sel",
+        "30 g de parmesan râpé",
+        "2 c. à c. d'huile d'olive",
+        "½ verre de vin blanc sec",
+        "½ oignon",
+        "⅓ g de safran en poudre",
+        "Sel ou sel fin",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1070,
+        "sha256": "aa3a248d363df28d"
+      },
+      "sha256_page": "59948fbca191cf68"
+    },
+    {
+      "url": "https://www.750g.com/risotto-a-la-milanaise-r9379.htm",
+      "site": "750g.com",
+      "nom": "Risotto à la milanaise",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT18M",
+      "ingredients": [
+        "1 l de bouillon de volaille  ou 1 litre de bouillon de légumes",
+        "240 g de riz à risotto Arborio",
+        "40 g de parmesan râpé",
+        "20 g de beurre",
+        "1 oignon",
+        "5 cl de vin blanc sec",
+        "5 cl d'huile d'olive",
+        "Pistil de safran",
+        "Safran en poudre",
+        "Sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 416,
+        "sha256": "1851b17a256d4f87"
+      },
+      "sha256_page": "f3f8b091cbe4dcf8"
+    },
+    {
+      "url": "https://www.750g.com/risotto-a-la-milanaise-au-cooking-chef-r204136.htm",
+      "site": "750g.com",
+      "nom": "Risotto à la milanaise au Cooking Chef",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "250 g de riz à risotto Arborio",
+        "Moelle",
+        "½ oignon",
+        "1 g de safran  en filaments",
+        "1 verre de vin blanc sec",
+        "1 l de bouillon",
+        "50 g de parmesan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 461,
+        "sha256": "4141ba5bafdfcbe0"
+      },
+      "sha256_page": "5e7c5acdbf8d6938"
+    }
+  ]
+}

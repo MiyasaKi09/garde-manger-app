@@ -1,0 +1,266 @@
+{
+  "dish": "Tajine de kefta",
+  "slug": "tajine-de-kefta",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tajine-de-kefta-aux-oeufs-et-petits-pois_65289.aspx",
+      "site": "marmiton.org",
+      "nom": "Tajine de kefta aux oeufs et petits pois : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT13M",
+      "ingredients": [
+        "500 g de viande hachée",
+        "1 oignon",
+        "3 tomates",
+        "1 cuillère à soupe de concentré de tomates",
+        "6 oeufs",
+        "500 g de petits pois",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 420,
+        "sha256": "e5b0c9adf7c1e787"
+      },
+      "sha256_page": "ac8495ecbde44361"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tajine-de-kefta-tomates_217683.aspx",
+      "site": "marmiton.org",
+      "nom": "Tajine de kefta tomates : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "500 g de viande hachée",
+        "1 boîte de coulis de tomate",
+        "1 oignon",
+        "persil",
+        "coriandre",
+        "sel",
+        "poivre",
+        "cumin",
+        "paprika",
+        "piment en poudre (facultatif)",
+        "2 cuillères à soupe d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 500,
+        "sha256": "0dea1a323cd08d3f"
+      },
+      "sha256_page": "4d141f705be9467a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tajine-de-kefta-et-patates-douces_86371.aspx",
+      "site": "marmiton.org",
+      "nom": "Tajine de Kefta et patates douces : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "500 g de viande hachée (bœuf ou un mélange de bœuf/agneau)",
+        "3 patates douces",
+        "1 boîte de haricots rouges (400 g)",
+        "2 courgettes",
+        "1 oignon",
+        "1 cuillère à soupe d'huile d'olive",
+        "ail",
+        "2 cuillères à café d'épices (sel, poivre, harissa, curcuma, paprika)",
+        "1 cuillère à soupe de herbes (coriandre/persil)",
+        "eau",
+        "1 cube de bouillon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 779,
+        "sha256": "125826185bb472c2"
+      },
+      "sha256_page": "9bbab53cbcf9cf8b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-cerise-sur-lemaillot/recettes/tajine-de-keftas-aux-olives-et-pommes-de-terre",
+      "site": "chefsimon.com",
+      "nom": "Tajine de keftas aux olives et pommes de terre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "500 g de bœuf haché (5% de matières grasses)",
+        "600 g de pommes de terre",
+        "1 boîte de pulpe de tomates (400g)",
+        "20 cl d’eau",
+        "100 g d’olives vertes dénoyautées et égouttées",
+        "1 oignon rouge",
+        "2 gousses d’ail",
+        "1 cuillère à café de cumin",
+        "1 cuillère à café de paprika",
+        "2 cuillères à café de ras-el-hanout (1 seule si vous mangez peu épicé)",
+        "3 cuillères à soupe d’huile d’olive",
+        "Coriandre fraiche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 115,
+        "sha256": "782aff26ad99bc53"
+      },
+      "sha256_page": "0f3fd44c67fdca47"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/tajine-de-keftas-aux-oeufs",
+      "site": "chefsimon.com",
+      "nom": "Tajine de keftas aux œufs",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "350 g de bœuf ou d’agneau haché",
+        "5  œufs",
+        "1  oignon",
+        "1  tranche de pain de mie",
+        "1/2  cuil. soupe de cannelle et de cumin",
+        "1/2  cuil. à café de gingembre",
+        "1  cuil. à soupe de coriandre",
+        "400 g de tomates concassées",
+        "2  cuil. à soupe de coriandre fraîche",
+        "2  cuil. à soupe d’huile d’olive",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 165,
+        "sha256": "6b12499e0e2ad6f8"
+      },
+      "sha256_page": "e30430e5a3545649"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/tastygourmandise/recettes/tajine-de-kefta",
+      "site": "chefsimon.com",
+      "nom": "Tajine de Kefta",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "600g de viande hachée",
+        "2 poivrons grillés",
+        "1 oignon normal",
+        "2 gousses d'ail écrasées",
+        "4 càs d'huile d'olive",
+        "1 piment",
+        "1 càc de paprika",
+        "1 càc de cumin",
+        "1/2 càc de gingembre",
+        "5 tomates réduites en purée",
+        "1 càc de concentrée de tomate",
+        "3 càs de coriandre fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 234,
+        "sha256": "3fa49de4d85f3879"
+      },
+      "sha256_page": "e757cf1e5098db9c"
+    },
+    {
+      "url": "https://www.750g.com/tajine-de-kefta-aux-pommes-de-terre-r88261.htm",
+      "site": "750g.com",
+      "nom": "Tajine de kefta aux pommes de terre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "600 g de pommes de terre",
+        "400 g de viande d'agneau  ou boeuf haché",
+        "200 g de coulis de tomate",
+        "100 g d'olives vertes  ou olives violettes",
+        "1 oignon",
+        "2 gousses d'ail",
+        "1 bouquet de coriandre",
+        "1 c. à c. de cumin",
+        "1 c. à c. de gingembre (en poudre)",
+        "1 c. à c. de paprika",
+        "1 filet d'huile d'olive",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 781,
+        "sha256": "41eae0df84ea23e5"
+      },
+      "sha256_page": "8cd3afde92b95d1d"
+    },
+    {
+      "url": "https://www.750g.com/tajine-de-kefta-aux-oeufs-r76578.htm",
+      "site": "750g.com",
+      "nom": "Tajine de kefta aux œufs traditionnel",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "3 tomates pelées concassées",
+        "1 oignon  (petit)",
+        "½ gousse d'ail",
+        "1 grosse pincée de coriandre",
+        "1 c. à c. de cumin",
+        "1 c. à c. de paprika",
+        "1 c. à c. de gingembre (en poudre)",
+        "Huile d'olive",
+        "Sel ou sel fin",
+        "500 g de boeuf haché",
+        "½ oignon  haché",
+        "½ gousse d'ail",
+        "1 c. à c. de curcuma en poudre",
+        "1 c. à c. de cumin en poudre",
+        "1 c. à c. de paprika  en poudre",
+        "1 pincée de coriandre",
+        "4 oeufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 778,
+        "sha256": "59338067aeca5c6f"
+      },
+      "sha256_page": "c853844fd4700548"
+    },
+    {
+      "url": "https://www.750g.com/tajine-de-legumes-et-boulettes-keftas-r49283.htm",
+      "site": "750g.com",
+      "nom": "Tajine de légumes et boulettes Keftas",
+      "portions": "6 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "150 g de carottes",
+        "200 g d'oignons",
+        "150 g d'haricots verts",
+        "150 g de petits pois",
+        "700 g de boeuf haché",
+        "400 g d'agneau  haché",
+        "Oignon  haché finement",
+        "Oeuf  ou jusqu'à 2 oeufs selon la taille",
+        "Persil  haché finement",
+        "Menthe  hachée finement",
+        "6 c. à s. d'huile d'olive",
+        "2 pommes de terre",
+        "1 poignée d'olive verte",
+        "2 citrons confits",
+        "Cumin en poudre",
+        "Cannelle",
+        "Ail",
+        "Coriandre  surgelé",
+        "Persil  surgelé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1044,
+        "sha256": "663a96d4b6ac0de0"
+      },
+      "sha256_page": "2fa61ba96cf33c12"
+    }
+  ]
+}

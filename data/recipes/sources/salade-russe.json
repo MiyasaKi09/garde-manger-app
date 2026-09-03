@@ -1,0 +1,204 @@
+{
+  "dish": "Salade russe",
+  "slug": "salade-russe",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-russe-le-manteau_70264.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade Russe (le manteau) : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "2 boîtes de saumon fumé en lardons",
+        "2 betteraves",
+        "4 pommes de terre",
+        "2 oeufs",
+        "mayonnaise"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 638,
+        "sha256": "18fb0d7d68454972"
+      },
+      "sha256_page": "a9ed2e2b66dfef58"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-russe_31370.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade russe : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "6 pommes de terre",
+        "6 carottes",
+        "100 g de petits pois",
+        "6 oeufs durs",
+        "12 olives vertes dénoyautées",
+        "mayonnaise (6 cuillères à soupe)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 302,
+        "sha256": "c0263aa98a8498f0"
+      },
+      "sha256_page": "10d3ccc443a76ec4"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-russe-au-concombre_85789.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade russe au concombre : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "150 g de riz",
+        "1 concombre",
+        "1 botte de radis rose ou 1 radis noir",
+        "2 oeufs durs",
+        "1 jambon (180 g)",
+        "50 cl de crème fraîche",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 553,
+        "sha256": "9ebda95d2295a875"
+      },
+      "sha256_page": "b762c54ca915c24e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/salade-russe-olivier-416c0017-fc70-45a4-b931-f38744672364",
+      "site": "chefsimon.com",
+      "nom": "Salade russe Olivier",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "4 pommes de terre",
+        "3 carottes",
+        "250 g de blancs de poulet (optionnel)",
+        "3 œufs durs",
+        "1 oignon",
+        "6 cornichons",
+        "150 g de petits pois frais ou en boîte",
+        "4 c à s de mayonnaise",
+        "Aneth ou persil",
+        "Olives pour la décoration",
+        "Poivre et sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 914,
+        "sha256": "f814dc9a287b76f1"
+      },
+      "sha256_page": "38f1ad37b03e4b29"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/passeportpourlacuisine/recettes/salade-russe-stolichny",
+      "site": "chefsimon.com",
+      "nom": "Salade russe Stolichny",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 filet de poulet",
+        "2 oeufs",
+        "2 pommes de terre",
+        "2 carottes",
+        "100 g de petits pois congelés",
+        "100 g de haricots verts en boîte",
+        "1/2 concombre",
+        "1/2 bouquet d’aneth",
+        "Mayonnaise"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 767,
+        "sha256": "6f65cb53b051c0aa"
+      },
+      "sha256_page": "b1efa4fa7e7650ed"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/the-best-recipes/recettes/salade-russe-9b156582-9931-45c2-a09a-55c31a0338f7",
+      "site": "chefsimon.com",
+      "nom": "Salade Russe",
+      "portions": "10 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "450 gr de pommes de terre",
+        "2 carottes",
+        "2 œufs",
+        "20 olives vertes dénoyautées",
+        "60 gr de petits pois en conserve",
+        "200 gr de thon",
+        "400 gr de mayonnaise maison",
+        "1 pincée de sel",
+        "1 branche de persil pour la décoration"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "4b6e30af54bde8c8"
+    },
+    {
+      "url": "https://www.750g.com/salade-a-la-russe-pour-lete-r53184.htm",
+      "site": "750g.com",
+      "nom": "Salade à la russe pour l'été",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "5 pommes de terre",
+        "2 carottes",
+        "100 g de petits pois",
+        "100 g de thon  en boîte",
+        "6 tomates cerise",
+        "2 oeufs",
+        "50 g de crevettes",
+        "Olive",
+        "Mayonnaise  Amora",
+        "Feuille de laitue",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 591,
+        "sha256": "285a423eecddbdd8"
+      },
+      "sha256_page": "be37bdc8691429e6"
+    },
+    {
+      "url": "https://www.750g.com/ensaladia-salade-russe-r52858.htm",
+      "site": "750g.com",
+      "nom": "Ensaladia (salade russe)",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "Sel ou sel fin",
+        "Poivre",
+        "Salade",
+        "2 c. à s. de mayonnaise",
+        "Thon",
+        "1 petite boîte de maïs",
+        "1 petite boîte de macédoine de légumes",
+        "2 oeufs",
+        "500 g de pommes de terre grenaille"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 781,
+        "sha256": "27e1d8a4337a1d1b"
+      },
+      "sha256_page": "72ba9784a15b7e41"
+    }
+  ]
+}

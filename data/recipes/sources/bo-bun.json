@@ -1,0 +1,263 @@
+{
+  "dish": "Bo bun",
+  "slug": "bo-bun",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bo-bun-vietnam_26967.aspx",
+      "site": "marmiton.org",
+      "nom": "Bo Bun (Vietnam) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "8 nems",
+        "700 g de boeuf très tendre, à cisailler",
+        "1 cuillère à soupe de curry doux en poudre",
+        "1 gousse d'ail émincée",
+        "3 cuillères à soupe de sauce d'huître",
+        "3 cuillères de soja",
+        "1 cuillère à café de glutamate (indispensable dans la cuisine asiatique, mais à utiliser avec parcimonie)",
+        "poivre",
+        "sel",
+        "1 sachet de vermicelles de riz (\"bun\" dans les épiceries exotiques)",
+        "4 bols d'eau",
+        "2 bols de sucre",
+        "0.5 bol de vinaigre",
+        "1 bol de nuoc mam",
+        "batavia",
+        "300 g de soja frais",
+        "menthe",
+        "coriandre",
+        "arachide (option)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 968,
+        "sha256": "6137e46df3c4e44c"
+      },
+      "sha256_page": "e3e004d8cce29c4c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bo-bun_22478.aspx",
+      "site": "marmiton.org",
+      "nom": "Bo Bun : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 bouquet de menthe fraîche",
+        "1 bouquet de coriandre fraîche",
+        "1 batavia",
+        "germes de soja",
+        "1 steak de bœuf",
+        "200 g de vermicelles de riz",
+        "3 carottes râpées",
+        "1 oignon",
+        "1 gousse d'ail",
+        "2 cuillères à soupe de nuoc mam",
+        "1 cuillère à café de vinaigre",
+        "1 citron",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 727,
+        "sha256": "2175df17372368b5"
+      },
+      "sha256_page": "fb595aa0cc2994f8"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_wok-de-chou-pointu-aux-crevettes-et-a-la-citronnelle-facon-bo-bun_324157.aspx",
+      "site": "marmiton.org",
+      "nom": "Wok de chou pointu aux crevettes et à la citronnelle façon Bo Bun : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 chou pointu (ou 1 chou chinois)",
+        "2 carottes",
+        "1 boîte de germes de soja",
+        "12 crevettes",
+        "1 gousse d'ail",
+        "1 bâton de citronnelle",
+        "1 cuillère à soupe de jus de citron vert",
+        "2 cuillères à soupe de sauce soja",
+        "2 cuillères à soupe de sauce pour nem",
+        "3 cuillères à soupe d'eau",
+        "1 cuillère à café de piment doux",
+        "1 bonne poignée de feuilles de coriandre fraîche",
+        "40 cl d'eau",
+        "1 bouillon de volaille",
+        "huile de sésame",
+        "1 oignon",
+        "1 poignée d'arachide salées",
+        "1 petite poignée de menthe fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 1347,
+        "sha256": "e209d9ee0daa4f53"
+      },
+      "sha256_page": "b68e7cc72d9da56d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/bo-bun--5",
+      "site": "chefsimon.com",
+      "nom": "Bo bun",
+      "portions": "6 personnes",
+      "duree_preparation": "PT01H00M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "500 g de filet de boeuf",
+        "1 paquet de vermicelle de riz (400 g)",
+        "2 tiges de citronnelle ou de la poudre de citronnelle",
+        "200 g de germes de soja",
+        "Une dizaine de feuilles de salade",
+        "½ concombre (lave non épluché)",
+        "2 oignons",
+        "2 gousses d’ail",
+        "feuilles de menthe et de coriandre coupées finement",
+        "sauce nems préparée",
+        "cacahuètes pilées",
+        "noix de macadamia torréfiées et pilées",
+        "une cuillère à soupe de nuoc-mâm",
+        "1 cuillère à café de sucre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1021,
+        "sha256": "05bc0b6be1ebda42"
+      },
+      "sha256_page": "7352a781b2c31c9c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/croustillants-de-ris-de-veau-en-bo-bun",
+      "site": "chefsimon.com",
+      "nom": "Croustillants de ris de veau en bo bun",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "800 g de ris de veau blanchis, épluchés et pochés",
+        "2 cuillers à soupe de farine",
+        "40 g de beurre",
+        "3 sucrines",
+        "un oignon blanc émincé finement",
+        "feuilles de menthe, coriandre, ou verveine citronnelle ciselées",
+        "1/2 concombre détaillé en fins bâtonnets",
+        "100 g de vermicelle ou de nouilles chinoises",
+        "4 cuillères à soupe de sauce soja sucrée",
+        "4 cuillers à soupe de vinaigre de riz",
+        "1 cuiller à soupe d'huile de sésame",
+        "noix de macadamia concassées pour la gourmandise"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1010,
+        "sha256": "e5fc211ecbca594c"
+      },
+      "sha256_page": "7876222ff90a9c2a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/eldorami/recettes/bo-bun-vietnamien",
+      "site": "chefsimon.com",
+      "nom": "Bo bun vietnamien",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H03M",
+      "ingredients": [
+        "300 grammes Bœuf",
+        "150 grammes Vermicelle de riz",
+        "10  Feuilles de laitue",
+        "2  Carottes",
+        "2 cuillères à soupe Feuilles de menthe",
+        "2  Nems",
+        "2 cuillères à soupe Cacahuètes",
+        "1.5 cuillères à soupe Oignons",
+        "1.5  Citronnelle",
+        "1  Concombre",
+        "1  Oignon",
+        "1 cuillère à soupe Coriandre",
+        "8 cuillères à soupe Nuoc mam",
+        "6 cuillères à soupe Cassonade",
+        "3 cuillères à soupe Jus de citron",
+        "7 cuillères à soupe Vinaigre de riz",
+        "4 gousses Ail",
+        "1  Piment de cayenne",
+        "6 cuillères à soupe Eau",
+        "2.5 cuillères à soupe Sucre",
+        "1.25 cuillères à café Sel",
+        "2 cuillères à soupe Huile de tournesol"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 170,
+        "sha256": "de76fa5e0b2be5b7"
+      },
+      "sha256_page": "f381ea5aef3b2c16"
+    },
+    {
+      "url": "https://www.750g.com/bo-bun-r37185.htm",
+      "site": "750g.com",
+      "nom": "Bo bun",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "Tende de tranche de boeuf  ou merlan",
+        "100 g de vermicelles de riz ou nouilles de riz",
+        "Batavia",
+        "6 tiges de citronnelle",
+        "1 oignon",
+        "½ concombre",
+        "½ botte de coriandre",
+        "4 brins de menthe",
+        "2 c. à s. de cacahuètes grillées",
+        "2 c. à c. rase(s) de sucre",
+        "Nuoc-mâm",
+        "Vinaigre blanc ou vinaigre d'alcool"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1820,
+        "sha256": "51ac8a63a69245a0"
+      },
+      "sha256_page": "4f311bf099962395"
+    },
+    {
+      "url": "https://www.750g.com/bo-bun-aux-nems-de-poulet-r98297.htm",
+      "site": "750g.com",
+      "nom": "Bo Bun aux nems de poulet",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT12M",
+      "ingredients": [
+        "4 nems  Traditions d'Asie",
+        "100 g de pousse de soja",
+        "50 g de cacahuètes",
+        "3 carottes",
+        "2 nid de vermicelles de riz",
+        "½ concombre",
+        "½ bouquet de menthe",
+        "4 feuilles de choux chinois",
+        "4 petites  poignées de mélange de salade",
+        "10 c. à s. d'eau  chaude",
+        "2 c. à s. de nuoc-mâm",
+        "2 c. à s. de vinaigre de riz ou vinaigre japonais",
+        "2 c. à s. de jus de citron vert",
+        "1 c. à s. de sucre",
+        "1 c. à s. de vinaigre de riz ou vinaigre japonais",
+        "1 c. à c. de sucre",
+        "½ c. à c. de sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 16,
+        "signes": 1694,
+        "sha256": "b3418da42b39925b"
+      },
+      "sha256_page": "b034396f115ad317"
+    }
+  ]
+}

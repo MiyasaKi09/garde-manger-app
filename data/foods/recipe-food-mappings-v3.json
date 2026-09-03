@@ -369,6 +369,10 @@
       "ciqual_alim_code": "20057",
       "note": "Le gratin de brocolis ne peut pas exister sans son ingrédient principal. Entrée crue directe, macros complètes."
     },
+    "brocoli surgele": {
+      "ciqual_alim_code": "20204",
+      "note": "Correspondance exacte. 21,4 kcal, P 2,79 / G 1,56 / L 0,44, fibres 2,77. L'énergie est absente du classeur pour ce code et vient du CSV d'import (data/ciqual_nutrition_import.csv), comme pour la plupart des légumes surgelés : c'est la lecture que fait déjà le générateur, et elle est identique à celle de « Brocoli cru » (20057), dont l'énergie vient de la même colonne. Vendu en fleurettes, donc sans trognon à parer."
+    },
     "bucatini secs": {
       "ciqual_alim_code": "9810",
       "note": "Code absent des cinq propositions, qui étaient toutes des confiseries ou mueslis accrochés au mot « secs » (barre chocolatée, mélanges apéritifs, muesli). Le bucatini est une pâte sèche de blé dur ; l'état sec/cru est respecté (331 kcal contre 125 pour la version cuite 9811 — un facteur près de trois)."
@@ -434,6 +438,10 @@
       "confidence": "B",
       "note": "Code absent des cinq propositions. « Nouvelle » est un qualificatif de saison, pas un aliment distinct. Le candidat le mieux noté 20208 est la carotte surgelée (24,9 kcal contre 40,2 pour la fraîche) et le deuxième, 4023, est une pomme de terre — le score s'est accroché à « nouvelle ». La forme est crue : 20008 (cuite) et 20092 (déshydratée, 269,8 kcal) sont exclus par l'état."
     },
+    "carotte surgelee": {
+      "ciqual_alim_code": "20208",
+      "note": "Correspondance exacte. 24,9 kcal, P 0,63 / G 4,99 / L 0,27, fibres 2,76. Écart marqué avec « Carotte crue » (20009, 40,2 kcal) : la carotte surgelée est blanchie, ce qui lessive une partie des sucres. Vendue en rondelles ou en dés, déjà épluchée."
+    },
     "carvi en graines": {
       "ciqual_alim_code": "11064"
     },
@@ -462,6 +470,10 @@
     },
     "champignon de paris frais": {
       "ciqual_alim_code": "20056"
+    },
+    "champignon de paris surgele": {
+      "ciqual_alim_code": "20228",
+      "note": "Correspondance exacte, et le libellé nomme l'espèce, ce qui compte : le rayon surgelé vend aussi des « mélanges forestiers » et des cèpes, qui ne sont pas cet aliment. 15,9 kcal, P 1,8 / G 0,83 / L 0,25, fibres 1,97, énergie mesurée. Le sibling frais est « Champignon de Paris frais » (20056, 28 kcal) — l'écart est important, le champignon surgelé rendant beaucoup d'eau."
     },
     "champignon seche": {
       "ciqual_alim_code": "20211",
@@ -536,6 +548,10 @@
       "confidence": "C",
       "note": "Proxy assumé. Le chou chinois cru (13,9 kcal) est gorgé d'eau ; salé et pressé, le produit réel est concentré et pèse davantage au gramme. Le classeur n'a pas d'état salé pour ce légume."
     },
+    "chou de bruxelles surgele": {
+      "ciqual_alim_code": "20206",
+      "note": "Correspondance exacte. 34,7 kcal, P 3,43 / G 4,5 / L 0,33, fibres 4,28. Le catalogue ne porte aucun chou de Bruxelles frais : l'entrée ouvre un légume, elle n'en dédouble pas un. Vendu paré, ce qui est l'essentiel du travail sur ce légume."
+    },
     "chou emince frais": {
       "ciqual_alim_code": "20116",
       "confidence": "B",
@@ -543,6 +559,10 @@
     },
     "chou fleur frais": {
       "ciqual_alim_code": "20016"
+    },
+    "chou fleur surgele": {
+      "ciqual_alim_code": "20082",
+      "note": "Correspondance exacte. 22,2 kcal, P 2,09 / G 2,64 / L 0,37, fibres 1,82. Le sibling frais du catalogue est « Chou-fleur frais » (20016) : même concept, autre état de conservation, deux entrées distinctes chez l'ANSES. Vendu en fleurettes."
     },
     "chou kale frais": {
       "ciqual_alim_code": "20218",
@@ -673,6 +693,10 @@
     "courgette fraiche": {
       "ciqual_alim_code": "20020"
     },
+    "courgette surgelee": {
+      "ciqual_alim_code": "20230",
+      "note": "Correspondance exacte, et le même découpage « pulpe et peau » que le sibling frais du catalogue, « Courgette fraîche » (20020, « Courgette, pulpe et peau, crue ») : les deux formes décrivent donc bien la même partie de l'aliment, ce qui rend leur comparaison honnête. 14,7 kcal, P 1,19 / G 2,18 / L 0,14, fibres 1,48."
+    },
     "creme aigre": {
       "ciqual_alim_code": "19431",
       "confidence": "B",
@@ -698,6 +722,10 @@
     "crevette crue entiere": {
       "ciqual_alim_code": "10021",
       "note": "Etat cru respecte ; « entiere » ne designe qu'un mode de presentation. Attention au candidat 9320 « Orge entiere, crue », classe haut par le seul mot « entiere »."
+    },
+    "crevette crue surgelee": {
+      "ciqual_alim_code": "10038",
+      "note": "Correspondance exacte. 105 kcal, P 23,4 / G 0,74 / L 0,9. Les fibres sont lues sur une borne supérieure du classeur (statut « inférieur à 0,5 g ») : c'est une valeur majorée, pas une absence, et le générateur le consignera dans bounded_from_ciqual. Le mot « crue » est dans le libellé parce que le rayon vend les deux — la crevette cuite rose est un autre produit, et une recette qui la ferait sauter deux minutes la cuirait deux fois. Le catalogue porte déjà « Crevette crue décortiquée » et « Crevette crue entière » au frais ; cette forme est leur troisième état, pas leur doublon."
     },
     "croutons nature": {
       "ciqual_alim_code": "7432",
@@ -805,6 +833,10 @@
     "epinard frais": {
       "ciqual_alim_code": "20059"
     },
+    "epinard surgele": {
+      "ciqual_alim_code": "20083",
+      "note": "Correspondance exacte : l'ANSES mesure l'épinard surgelé cru pour lui-même. 19,5 kcal, P 2,87 / G 0,89 / L 0,49, fibres 2,7 — macros complètes et toutes mesurées, aucune borne, aucune fermeture d'Atwater. L'écart avec « Épinard frais » (20059, 24 kcal) est réel et vient du blanchiment : c'est précisément pourquoi on n'adosse pas le surgelé au frais. UNE SEULE FORME POUR LES BRANCHES ET LE HACHÉ, et le classeur le dit lui-même : le libellé 2025 du même code 20083 devient « Epinard, haché ou purée ou en branches, surgelé, cru ». L'ANSES ne les sépare pas, donc les séparer ici fabriquerait une distinction que la mesure ne porte pas — et les graphes de diversité du planificateur ne rapprochent pas deux synonymes."
+    },
     "escalope de dinde crue": {
       "ciqual_alim_code": "36304",
       "note": "Les neuf sources de la blanquette de dinde partent toutes d'escalopes ou de sauté détaillés en cubes, jamais d'une dinde entière. Entrée crue dédiée, macros complètes."
@@ -837,6 +869,10 @@
       "confidence": "B",
       "note": "359 kcal, 22,4 g de protéines. Le grillage préalable de la farine (besan grillé) développe l'arôme et retire un peu d'eau ; il ne déplace pas les macronutriments de façon mesurable."
     },
+    "farine de sarrasin": {
+      "ciqual_alim_code": "9540",
+      "note": "Correspondance de libellé mot pour mot. 348 kcal, P 11,5 / L 2,19 / G 68,4, fibres 4,2 — toutes mesurées, aucune borne. Le classeur porte aussi 9380 « Sarrasin entier, cru », qui est la graine et non la farine, et 23801 « Galette de sarrasin, nature, préemballée », qui est le produit fini : les deux ont été écartés parce qu'une galette complète se fait avec de la farine, et qu'adosser une farine à une galette déjà cuite ferait entrer l'eau de la pâte dans la composition de l'ingrédient sec."
+    },
     "fecule de mais": {
       "ciqual_alim_code": "9510",
       "category": "cereales_feculents"
@@ -852,6 +888,10 @@
       "ciqual_alim_code": "11077",
       "confidence": "C",
       "note": "Proxy assumé, et le piège est dans la partie de la plante. Le kasuri methi est la FEUILLE de fenugrec séchée ; 11077 est la GRAINE (350 kcal, 27,1 g de protéines, 6,41 g de lipides). La feuille séchée est nettement moins grasse et moins protéinée. Le classeur n'a que la graine, et l'emploi est de l'ordre du gramme, écrasé entre les paumes en fin de cuisson."
+    },
+    "feta": {
+      "ciqual_alim_code": "12066",
+      "note": "Les quatre sources authentiques de salade grecque écrivent « feta » sans autre qualificatif, et deux d'entre elles la comptent en pot ou en morceau de 100 à 180 g. Le classeur en porte quatre entrées : 12066 « Feta AOP », 12061 « Fromage 100 % brebis (Feta AOP ou type Feta) », 12060 « type feta, au lait de vache » et 12063 « type feta à l'huile et aux aromates ». On prend l'AOP, qui est le produit que le mot désigne : 285 kcal, P 14,8 / L 24,3 / G 0,65, sel 2,27 — macros complètes et toutes mesurées. Le type vache (12060) aurait été un choix de repli si le mot avait été qualifié, ce qu'aucune source ne fait ; la version à l'huile (12063) est un autre produit, dont le gras déclaré n'est pas celui du fromage. Le sel de 2,27 g pour 100 g est élevé et il est réel : c'est lui qui explique qu'une salade grecque se sale peu."
     },
     "feuille de brick": {
       "ciqual_alim_code": "51550",
@@ -897,6 +937,10 @@
       "ciqual_alim_code": "6116",
       "note": "Correspondance directe : 132 kcal, 21,6 g de protéines. La découpe en lanières est un geste, pas un état."
     },
+    "filet de merlu surgele": {
+      "ciqual_alim_code": "26048",
+      "note": "Correspondance exacte, filet compris — le libellé Ciqual porte lui-même le mot. 82 kcal, P 15,1 / L 2,4, fibres 0 ; les glucides sont au statut « traces » et la fermeture d'Atwater les clôt à 0, comme pour tous les poissons du catalogue. Le filet surgelé est le poisson de semaine par excellence : ni écaillage, ni levée, ni arêtes. ÉCARTÉ 26233 « Merlu blanc du Cap, surgelé, cru » : c'est une autre espèce (Merluccius capensis contre Merluccius merluccius) et c'est celle que le rayon vend le plus, mais deux formes de merlu à 4 kcal d'écart obligeraient le rédacteur à choisir sans critère. L'espèce se déclare du côté du prix, où elle est visible et documentée."
+    },
     "filet mignon de porc cru": {
       "ciqual_alim_code": "28204"
     },
@@ -908,6 +952,14 @@
     "foie gras de canard cru": {
       "ciqual_alim_code": "8328",
       "note": "Le cru, puisque la variante le poêle ou le cuit elle-même : 600 kcal contre 535 pour l'entier cuit, l'écart venant de la graisse rendue à la cuisson. Retenir le cuit ferait compter deux fois la perte. Les entrées « bloc » (8323 à 8331) sont des préparations reconstituées, plus maigres et salées, qui ne se poêlent pas."
+    },
+    "fond d artichaut surgele": {
+      "ciqual_alim_code": "20232",
+      "note": "Correspondance exacte, et c'est la forme surgelée dont l'écart de travail avec le frais est le plus grand du lot : tourner un artichaut pour en tirer le fond demande de le cuire, d'ôter les feuilles et le foin, et laisse moins d'un cinquième du poids acheté. Le sachet ne contient que le fond. 44,5 kcal, P 2,08 / G 8,09 / L 0,43, fibres 7,54. Le catalogue ne porte aucune forme fraîche d'artichaut : cette entrée ne dédouble donc rien."
+    },
+    "framboise surgelee": {
+      "ciqual_alim_code": "13136",
+      "note": "Correspondance exacte. 37,6 kcal, P 1,16 / G 6,43 / L 0,8, fibres 6,05. La framboise surgelée est le seul fruit rouge disponible toute l'année à prix stable, ce qui en fait le dessert de semaine par défaut. Le catalogue ne porte aucune framboise fraîche : l'entrée ouvre un fruit."
     },
     "frisee fraiche": {
       "ciqual_alim_code": "20012",
@@ -922,10 +974,19 @@
       "confidence": "B",
       "note": "Forme la plus courante du chèvre en cuisine domestique, et celle que nomment les sources. Glucides non renseignés, fermés par Atwater."
     },
+    "fromage fondu en portions": {
+      "ciqual_alim_code": "12310",
+      "confidence": "B",
+      "note": "Quatre des huit sources du velouté de courgettes montent leur velouté avec des portions de fromage fondu du commerce, comptées à la portion et jamais pesées. Le classeur porte trois entrées de fromage fondu en portions : 12305 (environ 8 % MG), 12310 (environ 20 %) et 12320 (double crème, environ 31 %). On prend 12310, qui correspond au produit courant, et surtout la seule des trois dont les macros soient complètes — 12305 n'a ni énergie ni glucides au classeur, ce qui suffit à l'écarter. Confiance B et non A parce que les sources ne donnent aucun taux de matière grasse : le choix des 20 % est celui du produit de référence du rayon, pas une lecture de la source. Le poids d'une portion, 17 g environ, reste une convention de cuisine et non une mesure : il est déclaré comme tel dans l'arbitrage de la recette."
+    },
     "fromage frais mexicain": {
       "ciqual_alim_code": "12060",
       "confidence": "C",
       "note": "Proxy assumé : aucun queso fresco/cotija au classeur. Ce qui est approximé : un fromage de vache frais, salé, non affiné, qui s'émiette (~285 kcal, 18 g de protéines, 21 g de lipides) ; 12060 (271 kcal, 16,4 g de protéines, 21,7 g de lipides) en est l'analogue le plus proche — fromage de vache frais en saumure, même texture friable. Les candidats proposés sont tous faux : 19689 est un cheesecake, 19864 un tzatziki, et les petits-suisses (19661-19664, 57 à 93 kcal, 0 à 4 % MG) sont des fromages frais lactés sucrés ou maigres, cinq fois moins gras qu'un queso fresco."
+    },
+    "fruits de mer cuits surgeles": {
+      "ciqual_alim_code": "10080",
+      "note": "Correspondance exacte. 79,5 kcal, P 13,5 / G 2,83 / L 1,57, énergie mesurée. Seule entrée du lot volontairement adossée à un état CUIT, et pour une raison qui tient au produit et non à la commodité : le cocktail de fruits de mer surgelé est vendu cuit, il n'existe pas cru au rayon, et une recette ne fait que le réchauffer. L'adosser à une entrée crue aurait décrit un produit qui ne se vend pas."
     },
     "fumet de poisson": {
       "ciqual_alim_code": "25919",
@@ -1017,6 +1078,10 @@
       "confidence": "B",
       "note": "Proxy pancetta/poitrine roulée sèche, même famille charcutière et profil proche."
     },
+    "haricot beurre surgele": {
+      "ciqual_alim_code": "20203",
+      "note": "Correspondance exacte. 29,1 kcal, P 2 / G 4,9 / L 0,17, fibres 2,33. Forme distincte du haricot vert et non un synonyme : l'ANSES les mesure séparément (34 contre 29,1 kcal), et le rayon les vend séparément comme en mélange. C'est aussi ce qui permet d'écarter proprement, côté prix, les relevés portant sur le mélange vert + beurre."
+    },
     "haricot blanc cuit egoutte": {
       "ciqual_alim_code": "20502"
     },
@@ -1036,6 +1101,10 @@
     "haricot flageolet sec": {
       "ciqual_alim_code": "20539",
       "note": "Deux des sources partent du sec, avec trempage. Les deux formes ne sont pas interchangeables au poids : 100 g de sec donnent environ 230 g d'égoutté, et les confondre triplerait l'apport annoncé."
+    },
+    "haricot flageolet surgele": {
+      "ciqual_alim_code": "20537",
+      "note": "Correspondance exacte. 146 kcal, P 9,32 / G 25,6 / L 0,7, fibres 4,4. Troisième état d'un même aliment déjà présent au catalogue sous deux formes — « Haricot flageolet sec » et « Haricot flageolet appertisé, égoutté » — et le seul qui donne un flageolet fondant sans trempage ni longue cuisson. Le libellé 2025 précise « frais, surgelé, cru » sans changer de code : la référence survit à la bascule."
     },
     "haricot geant sec": {
       "ciqual_alim_code": "20501",
@@ -1061,6 +1130,10 @@
     },
     "haricot vert cru": {
       "ciqual_alim_code": "20061"
+    },
+    "haricot vert surgele": {
+      "ciqual_alim_code": "20070",
+      "note": "Correspondance exacte. 34 kcal, P 1,97 / G 4,35 / L 0,17, fibres 3,68, énergie mesurée. Notable : le haricot vert surgelé est plus énergétique que le frais (20061, 25,9 kcal), l'inverse de l'épinard. Prendre l'un pour l'autre se serait donc trompé dans les deux sens selon le légume, ce qu'aucun contrôle de forme n'aurait montré. Le sachet est équeuté : c'est ce qui en fait un légume de semaine."
     },
     "harissa": {
       "ciqual_alim_code": "11112"
@@ -1156,6 +1229,10 @@
       "grams_per_unit": 18,
       "note": "22009 « Oeuf, jaune (jaune d'oeuf), cuit » : même aliment, même état — 22002 est le jaune CRU (307 kcal contre 340). Conversion : 1 jaune = 18 g, même masse que « jaune d oeuf cru » déjà retenue par le générateur ; la cuisson d'un œuf dur ne fait pas varier la masse du jaune. Contrôle : 3 u dans le vitello tonnato = 54 g → 184 kcal de jaune dans la sauce, pour 8 parts."
     },
+    "julienne de legumes surgelee": {
+      "ciqual_alim_code": "20265",
+      "note": "Correspondance exacte. 23,3 kcal, P 1,19 / G 4,08 / L 0,25, fibres 2,28 — 0,25 g de lipides, cohérent avec des légumes nus, contrairement au « mélange surgelé » 20101 (2,65 g) qui a été écarté pour cette raison. La julienne est le raccourci de la garniture aromatique : elle remplace un taillage qui est le poste de temps le plus lourd d'un fond de sauce."
+    },
     "jus d orange amere": {
       "ciqual_alim_code": "2070",
       "density_g_per_ml": 1.03,
@@ -1213,6 +1290,14 @@
     "lapin cru decoupe": {
       "ciqual_alim_code": "34001"
     },
+    "legumes pour couscous surgeles": {
+      "ciqual_alim_code": "20496",
+      "note": "Correspondance exacte. 46,5 kcal, P 2,05 / G 6,75 / L 0,7, fibres 2,53, énergie mesurée. Même raisonnement que la ratatouille : un mélange identifié par un plat, sans matière grasse ajoutée. Il porte le navet, le chou et le potiron, ce qui rend inutile une forme « Navet surgelé » séparée."
+    },
+    "legumes pour ratatouille surgeles": {
+      "ciqual_alim_code": "20266",
+      "note": "Correspondance exacte. 17,8 kcal, P 1,01 / G 3,23 / L 0,089, fibres 1,67. Les 0,089 g de lipides confirment que le sachet ne porte ni huile ni assaisonnement : c'est un mélange de légumes crus taillés (aubergine, courgette, poivron, tomate, oignon), pas une ratatouille cuisinée — celle-ci est un plat composé que le classeur mesure ailleurs. Mélange retenu, contrairement à « Petits pois et carottes », parce qu'il est identifié par un plat et non par la juxtaposition de deux légumes déjà présents au catalogue."
+    },
     "lentille brune seche crue": {
       "ciqual_alim_code": "20504",
       "note": "La lentille brune est la lentille par défaut : le classeur décline corail, verte et blonde en entrées séparées et garde « Lentille, sèche » comme entrée générique, qui la couvre. État sec respecté (316,1 kcal, 25,4 g de protéines) — 20521 « Lentille, germée » (116,7 kcal) aurait divisé le résultat par trois."
@@ -1243,6 +1328,10 @@
     "levure chimique": {
       "ciqual_alim_code": "11046"
     },
+    "lieu noir surgele": {
+      "ciqual_alim_code": "26047",
+      "note": "Correspondance exacte. 82,4 kcal, P 19,8 / L 0,37, glucides clos à 0 par Atwater depuis un statut « traces ». Poisson maigre distinct du merlu et du colin d'Alaska : le classeur mesure séparément 26047 « Lieu noir » (Pollachius virens) et 26006 « Lieu ou colin d'Alaska, cru » (Gadus chalcogrammus), et le rayon les étiquette distinctement parce que la réglementation l'impose. Le colin d'Alaska n'a PAS d'entrée surgelée au classeur 2020 : lui ouvrir une forme aurait obligé à l'adosser à l'entrée crue non surgelée, donc à un proxy de confiance C — non publiable, et silencieux sur la raison. On préfère l'absence."
+    },
     "linguica portugaise": {
       "usda_fdc_id": "173859",
       "usda_name": "Sausage, pork, chorizo, link or ground, raw",
@@ -1258,6 +1347,10 @@
     "magret de canard fume": {
       "ciqual_alim_code": "8111",
       "note": "Le fumé, entrée de charcuterie, et non le magret cru (36206) ni le grillé (36205) : la salade landaise le sert en tranches froides, sans le cuire. Macros complètes, 364 kcal, P 21,9 / L 30,5 — le gras du magret fumé est sous la peau et la recette la garde."
+    },
+    "mais doux surgele": {
+      "ciqual_alim_code": "20233",
+      "note": "Correspondance exacte, à ne pas confondre avec 20108 « Maïs doux, en épis, surgelé, cru », qui est l'épi entier et se pèserait rafle comprise. 99,3 kcal, P 3,28 / G 19,8 / L 0,78, fibres 2,8 : c'est, de loin, le légume le plus énergétique du lot, et le seul qui compte comme féculent dans un plat."
     },
     "margarine 80 mg": {
       "ciqual_alim_code": "16615",
@@ -1335,8 +1428,16 @@
     "mozzarella": {
       "ciqual_alim_code": "19590"
     },
+    "mure surgelee": {
+      "ciqual_alim_code": "13150",
+      "note": "Correspondance exacte. 51,5 kcal, P 1,22 / G 10,7 / L 0,42, fibres 5. Le classeur précise « de ronce » (Rubus fruticosus) : c'est la mûre du fruit rouge, et non celle du mûrier. Le libellé retenu ne le répète pas parce qu'aucune autre mûre n'existe au catalogue, mais la précision est ici pour le relecteur."
+    },
     "muscade moulue": {
       "ciqual_alim_code": "11048"
+    },
+    "myrtille surgelee": {
+      "ciqual_alim_code": "13132",
+      "note": "Correspondance exacte. 42,2 kcal, P 0,68 / G 8,9 / L 0,43, fibres 2,81."
     },
     "navet cru": {
       "ciqual_alim_code": "20064"
@@ -1397,6 +1498,10 @@
       "ciqual_alim_code": "20323",
       "confidence": "B",
       "note": "Seule entrée du classeur pour l'oignon nouveau/cébette : le libellé nomme exactement l'aliment, seul l'état diffère (poêlé sans matière grasse, 27,6 kcal, contre ~32 kcal cru) — écart sans portée, aucune matière grasse ajoutée. Préféré à 20034 « Oignon, cru » qui est un autre légume (bulbe sec) et confisquerait le code du concept « oignon »."
+    },
+    "oignon surgele": {
+      "ciqual_alim_code": "20235",
+      "note": "Correspondance exacte. 26,6 kcal, P 1 / G 5,39 / L 0,12, fibres 2,65. L'oignon émincé surgelé est le raccourci de la base aromatique : il supprime l'épluchage et l'émincé, qui sont à eux seuls le quart du temps de préparation d'un plat mijoté. Le classeur ne distingue pas la variété au surgelé, là où il sépare « Oignon jaune cru », « Oignon rouge cru » et « Oignon blanc cru » au frais ; une seule forme donc, et pas trois."
     },
     "olive noire": {
       "ciqual_alim_code": "13032",
@@ -1520,6 +1625,10 @@
     "pate feuilletee crue": {
       "ciqual_alim_code": "23424",
       "note": "La forme pointait sur 23481, « Tarte normande aux pommes (garniture farine, œufs, crème, sucre…) » — un dessert entier, garniture comprise, servant de proxy à une pâte nue. D'où sa confiance C, justifiée, et le blocage de toute recette l'employant : tarte à l'oignon, bouchées à la reine. Le classeur porte pourtant l'entrée exacte, pâte feuilletée pur beurre crue, avec des macros complètes (368 kcal, P 6,14 / G 39,7 / L 20,1). L'écart n'était pas cosmétique : la tarte normande compte son sucre et ses pommes, une pâte n'en a pas."
+    },
+    "pate feuilletee surgelee": {
+      "ciqual_alim_code": "23425",
+      "note": "396 kcal, P 5,47 / G 35,3 / L 25,8, fibres 1,4, toutes mesurées. DEUX CODES ÉTAIENT POSSIBLES et le choix se justifie deux fois. 23421 « Pâte feuilletée, surgelée, crue » colle mieux au libellé retenu, mais il DISPARAÎT du classeur 2025 : l'ouvrir programmerait un réarbitrage. 23425 « pur beurre » survit à la bascule ET reprend exactement la convention déjà en place au catalogue, où « Pâte feuilletée crue » est adossée à 23424 « Pâte feuilletée pur beurre, crue » — les deux formes, fraîche et surgelée, décrivent donc la même pâte dans deux états, ce qui est la seule façon de les comparer honnêtement. Le mot « pur beurre » ne figure pas au libellé de la forme pour la même raison qu'il ne figure pas à celui de sa sœur fraîche. Ciqual ne classe pas les pâtes à tarte : la catégorie du catalogue restera nulle, comme pour les trois pâtes déjà présentes."
     },
     "pate sablee crue": {
       "ciqual_alim_code": "23444",
@@ -1683,6 +1792,10 @@
       "confidence": "B",
       "note": "La pulpe sans peau, parce que la variante taille des lamelles pour une salade et qu'on pèle rarement une poire à salade — l'entrée avec peau (13037) porterait plus de fibres. Confiance B pour deux raisons : le classeur ne publie pas l'énergie de cette entrée, qui se ferme par Atwater à environ 49 kcal, et les variétés nommées (Conférence 53,1 ; Williams 54,1) montrent une dispersion de dix pour cent que l'entrée générique lisse. L'écart est sans portée dans une salade où la poire apporte quelques lamelles."
     },
+    "poireau surgele": {
+      "ciqual_alim_code": "20236",
+      "note": "Correspondance exacte. 26,7 kcal, P 1,42 / G 3,35 / L 0,29, fibres 2,55, énergie mesurée. Le poireau émincé surgelé est vendu en rondelles déjà lavées — le vert le plus dur et la terre entre les feuilles sont retirés en usine. Contre « Poireau cru » (20039, 32,3 kcal), l'écart de 17 % justifie à lui seul l'entrée dédiée."
+    },
     "pois chiche cuit egoutte": {
       "ciqual_alim_code": "20532"
     },
@@ -1722,7 +1835,8 @@
       "ciqual_alim_code": "11015"
     },
     "poivron jaune frais": {
-      "ciqual_alim_code": "20168"
+      "ciqual_alim_code": "20168",
+      "note": "ENTRÉE DÉJÀ AU REGISTRE, sans note, et ce lot ne fait que la documenter et l'employer. Le catalogue construit porte le poivron rouge et le poivron vert, pas le jaune, alors que quatre dossiers de ce lot le nomment expressément — les poivrons grillés (deux rouges et deux jaunes pour quatre), le poulet aux poivrons, le wok de légumes et les légumes rôtis. Le registre le rattachait déjà à 20168 « Poivron jaune, cru » ; la correspondance est exacte et je la confirme plutôt que d'en créer une seconde. L'écart avec le rouge est réel dans les deux sens : 30,7 kcal et 4,73 g de glucides pour le jaune contre 36,6 et 5,98 pour le rouge, soit un sixième, plus l'écart en caroténoïdes que le classeur mesure séparément. On écarte 20041 « Poivron, vert, jaune ou rouge, cru », entrée agrégée qui efface justement la distinction qu'on cherche à porter."
     },
     "poivron rouge frais": {
       "ciqual_alim_code": "20087"
@@ -2144,6 +2258,10 @@
       "confidence": "B",
       "note": "Pâtes sèches de semoule de blé dur, comme les spaghettis déjà arbitrés sur ce code. Le tonnarello est un spaghetto à section carrée : une filière, pas une composition."
     },
+    "tortilla de ble": {
+      "ciqual_alim_code": "7815",
+      "note": "Le catalogue portait « Tortilla de maïs » (galette mexicaine) mais rien pour la galette de BLÉ, qui est celle des wraps et des quesadillas françaises — les sources écrivent « galettes de blé », « wraps au blé complet », « tortillas de blé ». 7815 la nomme exactement : « souple, à garnir, à base de blé ». 327 kcal, P 9,15 / L 8,2 / G 52,1, fibres 3,85, sel 1,25 — toutes mesurées. Le sel de 1,25 g pour 100 g n'est pas anodin : deux galettes en apportent près d'un gramme et demi, ce qui suffit à expliquer pourquoi un wrap se sale à peine. Ne pas confondre avec 38105 « Chips de maïs ou tortilla chips », qui est un produit frit."
+    },
     "tortilla de mais": {
       "ciqual_alim_code": "7813",
       "note": "Le candidat en tête (38105 « Chips de maïs ou tortilla chips », 495 kcal) est un produit apéritif frit, pas une galette : écarté malgré son score."
@@ -2199,6 +2317,10 @@
       "confidence": "B",
       "note": "Le classeur référence le saké sous « Saké ou Alcool de riz », qui couvre la famille des vins de riz fermentés. Le Shaoxing est plus ambré et légèrement plus sucré, mais reste un alcool de riz autour de 130 kcal."
     },
+    "vinaigre balsamique": {
+      "ciqual_alim_code": "11091",
+      "note": "Correspondance de libellé mot pour mot, et l'écart avec le vinaigre de vin est loin d'être cosmétique : 125 kcal et 25,8 g de glucides pour 100 g contre 21,6 kcal et 0,27 g pour 11220 « Vinaigre de vin rouge ». C'est un sirop sucré, pas un acide nu. Écrire l'un pour l'autre — ce que la salade caprese et la salade de chou blanc auraient dû faire faute de forme — divisait par six l'énergie de la ligne et effaçait tout son sucre. Réserve : les lipides sont donnés comme borne supérieure et non comme mesure, ce qui est sans conséquence sur un vinaigre."
+    },
     "vinaigre blanc": {
       "ciqual_alim_code": "11018",
       "note": "Le « Vinaigre » générique du Ciqual est le vinaigre d'alcool blanc : même produit. 22,6 kcal, P 0,04 / G 0,62 / L 0,1, complet. Les candidats 9100 (riz blanc cru) et 1018 (Kir) sont des accrochages sur « blanc », 11040 et 11055 des condiments conservés au vinaigre."
@@ -2250,6 +2372,10 @@
       "ciqual_alim_code": "1005",
       "density_g_per_ml": 0.94,
       "note": "Entrée directe, macros complètes, 252 kcal — l'énergie d'une eau-de-vie vient presque entièrement de l'éthanol et ne se referme pas sur les macronutriments, c'est la valeur du classeur qui fait foi. Densité 0,94 : un spiritueux à 40 % vol titre un peu plus léger que l'eau, comme le calvados du lot16. Sans cette conversion, une variante qui déglace au whisky en millilitres ne pèserait rien."
+    },
+    "yaourt a la grecque": {
+      "ciqual_alim_code": "19860",
+      "note": "Correspondance exacte sur le PRODUIT QU'ON ACHÈTE, et c'est là tout l'arbitrage. Les six sources de tzatziki écrivent « yaourt grec » ou « yaourt à la grecque » ; en France ces deux mots désignent le même pot de rayon frais, un yaourt de vache enrichi de crème, et 19860 le mesure pour lui-même : P 3,25 / L 9,22 / G 4,21, toutes mesurées. L'entrée existante « Yaourt grec » (19646, fromage blanc à 3 %, confiance C) visait un AUTRE produit — le yaourt égoutté à 9 g de protéines du commerce anglo-saxon — et sa note le dit ; elle avait écarté 19550 « au lait de brebis » à juste titre, mais n'avait pas examiné 19860. Réserve honnête : l'énergie n'est pas donnée par le classeur pour ce code, elle sera close par Atwater (≈ 113 kcal), ce que le générateur sait faire et signale. Les deux formes ne se concurrencent pas dans une recette publiable, la précédente étant bloquée."
     },
     "yaourt grec": {
       "ciqual_alim_code": "19646",

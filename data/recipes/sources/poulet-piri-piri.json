@@ -1,0 +1,85 @@
+{
+  "dish": "Poulet piri piri",
+  "slug": "poulet-piri-piri",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-au-piri-piri-portugal_11029.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet au piri-piri (Portugal) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 poulet",
+        "4 cuillères à soupe de moutarde",
+        "20 cl de vin blanc",
+        "20 cl d'huile d'olive",
+        "1 cuillère à soupe de colorant orange (spécialité du Portugal)",
+        "1 cuillère à soupe de Pili Pili (piment)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 205,
+        "sha256": "3564e4607cd1b783"
+      },
+      "sha256_page": "ee62c56b5c69054b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/passeportpourlacuisine/recettes/poulet-piri-piri-a-la-mangue-et-au-citron-vert",
+      "site": "chefsimon.com",
+      "nom": "Poulet piri-piri à la mangue et au citron vert",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 filets de poulet",
+        "2 petits piments rouges (ou selon votre goût)",
+        "2 gousses d’ail",
+        "1 citron (jus + zeste)",
+        "1 cuillère à soupe de paprika",
+        "4 cuillères à soupe d’huile d’olive",
+        "1 cuillère à café de sel",
+        "Poivre noir",
+        "1 mangue",
+        "1 tomate",
+        "1 oignon rouge"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 730,
+        "sha256": "81362060a187253a"
+      },
+      "sha256_page": "33a023ab377f6390"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chic-chic-chocolat/recettes/poulet-piri-piri--2",
+      "site": "chefsimon.com",
+      "nom": "Poulet piri piri",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "4 hauts de cuisses de poulet",
+        "3 poivrons rouges",
+        "1 oignon rouge",
+        "4 gousses d'ail",
+        "1/4 de piment antillais (un peu plus, un peu moins selon vos goûts)",
+        "2 cs de paprika fumé",
+        "2 citrons non traités",
+        "4 cs de vinaigre de vin blanc",
+        "2 cs de sauce Worcestershire",
+        "sel, poivre",
+        "thym frais",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "4da19584d5ddc794"
+    }
+  ]
+}

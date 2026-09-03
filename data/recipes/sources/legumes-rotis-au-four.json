@@ -1,0 +1,156 @@
+{
+  "dish": "Légumes rôtis au four",
+  "slug": "legumes-rotis-au-four",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_legumes-d-hiver-rotis-au-four_222157.aspx",
+      "site": "marmiton.org",
+      "nom": "Légumes d'hiver rôtis au four : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "4 carottes",
+        "300 g de courge (potiron, potimarron...)",
+        "4 pommes de terre",
+        "6 navets",
+        "5 cl d'huile d'olive",
+        "poivre",
+        "sel",
+        "1 cuillère à café d'épices au choix, piment, curcuma, curry en poudre..."
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 611,
+        "sha256": "4dc4548ce6fa9903"
+      },
+      "sha256_page": "410c1918c8ae4307"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_legumes-rotis-au-four_167505.aspx",
+      "site": "marmiton.org",
+      "nom": "Légumes rotis au four : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 poivrons (1 orange, 1 rouge, 1 jaune et 1 vert)",
+        "2 courgettes de tailles moyennes",
+        "1 oignon blanc",
+        "1 oignon rouge",
+        "huile d'olive",
+        "thym et romarin",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 715,
+        "sha256": "719a0bba039f3e4a"
+      },
+      "sha256_page": "a52201c782a7ed30"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_roti-poisson-aux-legumes-au-four_20702.aspx",
+      "site": "marmiton.org",
+      "nom": "Rôti poisson aux légumes au four : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "800 g de lieu noir noir ou jaune",
+        "4 tomates de taille moyenne",
+        "200 g de champignons de Paris",
+        "2 cuillères à soupe d'huile d'olive",
+        "15 cl de vin blanc",
+        "10 oignons hachés",
+        "1 bouquet de persil haché",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 831,
+        "sha256": "ae552b5a9f9cdf0c"
+      },
+      "sha256_page": "a8ceb5d4e6c18403"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/legumes-rotis-au-four-3bdc6c01-2305-4a9b-a842-e4ed9b794c13",
+      "site": "chefsimon.com",
+      "nom": "Légumes rôtis au four",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "500 g de navets nouveaux",
+        "500 g de carottes primeur",
+        "3 jeunes courgettes",
+        "2 oignons",
+        "3 gousses d’ail",
+        "2 cuiller à soupe de graisse de canard (ou huile d'olive)",
+        "thym et laurier pulvérisés",
+        "sel et poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 729,
+        "sha256": "59fceeb3257de986"
+      },
+      "sha256_page": "dc6a89475053b5d9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/leila-martin/recettes/legumes-d-hiver-rotis-au-four-e81f277e-a7e9-4991-89bf-bf8ae24224d3",
+      "site": "chefsimon.com",
+      "nom": "Légumes d'hiver rôtis au four",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4  panais",
+        "12  carottes (mélange de couleurs)",
+        "1  petit potimarron",
+        "8  gousses d'ail",
+        "5  branches de thym frais",
+        "huile d'olive",
+        "4 c. à soupe d'huile d'olive",
+        "3 c. à soupe de sucre roux",
+        "sel/poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 161,
+        "sha256": "3fcc2f34f3e75e40"
+      },
+      "sha256_page": "6ac74fea9fe167a9"
+    },
+    {
+      "url": "https://www.750g.com/legumes-rotis-au-four-r36331.htm",
+      "site": "750g.com",
+      "nom": "Légumes rotis au four",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "10 baby carottes",
+        "12 asperges  pointes d'asperges",
+        "10 mini-poireaux  détaillés en bâtonnets",
+        "2 pommes de terre",
+        "2 c. à s. d'huile d'olive",
+        "4 gousses d'ail",
+        "1 branche de thym",
+        "1 branche de romarin",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 904,
+        "sha256": "b5127c69f9b42171"
+      },
+      "sha256_page": "780c3ab00a1ed908"
+    }
+  ]
+}

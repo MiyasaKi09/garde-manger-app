@@ -1,0 +1,244 @@
+{
+  "dish": "Papillote de cabillaud",
+  "slug": "papillote-de-cabillaud",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_filet-de-cabillaud-en-papillote_19058.aspx",
+      "site": "marmiton.org",
+      "nom": "Filet de cabillaud en papillote : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 filets de lieu noir (800 g)",
+        "4 fond de sauce poisson",
+        "huile d'olive",
+        "poivre blanc moulu",
+        "1 citron",
+        "4 branches de thym"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 388,
+        "sha256": "b88635fe98737465"
+      },
+      "sha256_page": "850b5ba8ed23f44f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_papillotes-de-cabillaud_25864.aspx",
+      "site": "marmiton.org",
+      "nom": "Papillotes de cabillaud : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 tranches de lieu noir",
+        "1 courgette",
+        "2 tomates",
+        "anchois en boîte",
+        "basilic",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 432,
+        "sha256": "1f1ee86952e9ae64"
+      },
+      "sha256_page": "008ef0d9337f0e62"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_dos-de-cabillaud-en-papillote_309588.aspx",
+      "site": "marmiton.org",
+      "nom": "Dos de cabillaud en papillote : la meilleure recette",
+      "portions": "1 papillote",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "0.5 lieu noir",
+        "1 courgette",
+        "1 tomate",
+        "1 filet d'huile d'olive",
+        "1 cuillère à café de moutarde",
+        "1 pincée de sel",
+        "1 pincée de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 324,
+        "sha256": "66a88a748b6dc967"
+      },
+      "sha256_page": "183e293b73a24bad"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/filet-de-cabillaud-en-papillote--6",
+      "site": "chefsimon.com",
+      "nom": "Filet de cabillaud en papillote",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 dos de cabillaud",
+        "2 petits piments rouges",
+        "30 g de beurre doux",
+        "3 branches de céleri vert",
+        "2 oignons rouges ciselés",
+        "2 cuillers à soupe rases de curry de Madras",
+        "2 dl de crème fleurette",
+        "sel",
+        "poivre",
+        "1,5 dl de fumet de poisson ou de vin blanc"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1392,
+        "sha256": "bac0c2ea404fd225"
+      },
+      "sha256_page": "0a0cd02a8aa427be"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/agnes-de-gourmande-toquee/recettes/papillote-croquante-de-cabillaud-beurre-citron-gingembre",
+      "site": "chefsimon.com",
+      "nom": "Papillote croquante de cabillaud, beurre citron gingembre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "600 g de cabillaud",
+        "2 carottes",
+        "1 poireau",
+        "60 g de beurre demi-sel",
+        "2 cm de gingembre frais",
+        "1 citron jaune bio",
+        "4 feuilles de brick",
+        "Coriandre (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1035,
+        "sha256": "2edc0bc24dfc8fbc"
+      },
+      "sha256_page": "8565960e54baa39d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/papillotes-de-cabillaud-au-concombre-et-fromage-blanc",
+      "site": "chefsimon.com",
+      "nom": "Papillotes de cabillaud au concombre et fromage blanc",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "4 dos de cabillaud",
+        "2 poignées de poireau émincé surgelé",
+        "125 g de concombre",
+        "2  oignons",
+        "1  citron non traité",
+        "2 cuil. à soupe d’huile d’olive",
+        "4 cuil. à café de baies roses",
+        "aneth",
+        "5 cuil. à soupe de fromage blanc",
+        "fines herbes",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 151,
+        "sha256": "7a3342c5b574bbfd"
+      },
+      "sha256_page": "a2751ecdf15fec4d"
+    },
+    {
+      "url": "https://www.750g.com/cabillaud-et-petits-legumes-en-papillote-origami-r85336.htm",
+      "site": "750g.com",
+      "nom": "Cabillaud et petits légumes en papillote origami",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 oignon",
+        "Vin blanc",
+        "Huile d'olive",
+        "Basilic",
+        "1 carotte",
+        "1 courgette",
+        "2 boîtes de Mini Original Potato\"UP",
+        "2 filets de cabillaud",
+        "2 tomates",
+        "Cuire les Mini Original Potato\"UP et les disposer à côté de la papillote"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 599,
+        "sha256": "b627f0d389a002e7"
+      },
+      "sha256_page": "efe8135eb9d4ffb5"
+    },
+    {
+      "url": "https://www.750g.com/cabillaud-en-papillote-a-lorientale-et-son-aumoniere-de-legumes-r8175.htm",
+      "site": "750g.com",
+      "nom": "Cabillaud en papillote à l'orientale et son aumonière de légumes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "4 filets de cabillaud (1 kilo)",
+        "10 cuilleres à soupe d'huile d'olive",
+        "4 cuilleres a soupe de citron",
+        "quelques quartiers de tomate",
+        "miel",
+        "poivre",
+        "cumin",
+        "coriandre entier",
+        "une petit fiole de safran (vendu par 4)",
+        "8 feuilles de brick (ou filo)",
+        "2 poireaux",
+        "Un gros poivron rouge",
+        "Un gros poivron jaune",
+        "400g de champignons de Paris",
+        "4 cuilleres a soupe de semoule tres fine",
+        "fromage rapé",
+        "paprika doux",
+        "origan",
+        "Sel",
+        "Materiel:",
+        "Papier sulfurisé, agrafeuse, papier aluminium, plat assez long, film transparent,casserole et un grand plat allant au four",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 1652,
+        "sha256": "aca0f72f2fd7f92c"
+      },
+      "sha256_page": "15bbc08c6bc413f9"
+    },
+    {
+      "url": "https://www.750g.com/papillotes-de-cabillaud-a-la-moutarde-r204299.htm",
+      "site": "750g.com",
+      "nom": "Papillotes de cabillaud à la Moutarde",
+      "portions": "2 pièces",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 filets de filets de cabillaud",
+        "3 poivrons",
+        "1 tomate",
+        "1 courgette",
+        "Gros sel",
+        "Sel ou sel fin",
+        "Piment d'Espelette",
+        "1 filet d'huile",
+        "75 g de crème fraîche",
+        "1 c. à c. de moutarde fine et forte",
+        "Persil",
+        "Romarin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 851,
+        "sha256": "208135861bdb4a40"
+      },
+      "sha256_page": "d69fc7413e52c93f"
+    }
+  ]
+}

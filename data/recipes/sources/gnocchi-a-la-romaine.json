@@ -1,0 +1,128 @@
+{
+  "dish": "Gnocchi à la romaine",
+  "slug": "gnocchi-a-la-romaine",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gnocchis-a-la-romaine_15177.aspx",
+      "site": "marmiton.org",
+      "nom": "Gnocchis à la romaine : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "200 g de semoule de blé",
+        "1 l de lait",
+        "3 jaunes d'oeuf",
+        "60 g de parmesan et d'emmental râpés",
+        "75 g de beurre",
+        "1 pincée de muscade",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 951,
+        "sha256": "950fe49461012ffe"
+      },
+      "sha256_page": "bced18c01710b90e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gnocchis-a-la-romaine-tres-facile_222559.aspx",
+      "site": "marmiton.org",
+      "nom": "Gnocchis à la romaine (gratinés au four) : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "180 g de semoule de blé moyenne",
+        "3 jaunes d'oeuf",
+        "150 g de parmesan",
+        "80 g de beurre",
+        "75 cl de lait entier",
+        "muscade",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 855,
+        "sha256": "01ed36f39165abde"
+      },
+      "sha256_page": "6fe9916c90873d58"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gnocchis-a-la-romaine-de-ma-grand-mere-farine_168324.aspx",
+      "site": "marmiton.org",
+      "nom": "Gnocchis à la Romaine de ma grand mère (farine) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "0.5 l de lait",
+        "50 g de beurre",
+        "200 g de farine",
+        "5 oeufs",
+        "poivre",
+        "sel",
+        "muscade",
+        "de gruyère râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 888,
+        "sha256": "14c5c02191d3a1ce"
+      },
+      "sha256_page": "2010f95fe4ac683f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-recettes-de-melanie/recettes/gnocchis-a-la-romaine-au-beurre-de-sauge",
+      "site": "chefsimon.com",
+      "nom": "Gnocchis à la romaine au beurre de sauge",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "250 g de semoule fine",
+        "1  litre de lait demi-écrémé",
+        "3  jaunes d’œuf",
+        "150 g de parmesan râpé",
+        "100 g de beurre demi-sel",
+        "sel et poivre",
+        "noix de muscade",
+        "100 g beurre",
+        "10  feuilles de sauge"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "6b54b521c70ebc98"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-p-tite-cuisine-de-pauline/recettes/gnocchis-a-la-romaine-gratines",
+      "site": "chefsimon.com",
+      "nom": "Gnocchis à la romaine gratinés",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 l de lait",
+        "50 g de beurre (+ pour le gratinage)",
+        "200 g de semoule fine (ou moyenne)",
+        "1 œuf",
+        "150 g de parmesan râpé",
+        "Noix de muscade râpée",
+        "Sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "d3378642383419fa"
+    }
+  ]
+}

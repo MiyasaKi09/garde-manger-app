@@ -1,0 +1,217 @@
+{
+  "dish": "Quiche au saumon",
+  "slug": "quiche-au-saumon",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_quiche-courgettes-et-saumon-fume_23320.aspx",
+      "site": "marmiton.org",
+      "nom": "Quiche courgettes et saumon fumé : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 rouleau de pâte brisée",
+        "3 courgettes",
+        "2 tranches de saumon fumé",
+        "3 oeufs",
+        "20 cl de crème fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 416,
+        "sha256": "7cfda6ec76c2e251"
+      },
+      "sha256_page": "034069578169340f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_quiche-au-saumon-et-aux-epinards_22164.aspx",
+      "site": "marmiton.org",
+      "nom": "Quiche au saumon et aux épinards : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 rouleau de pâte feuilletée",
+        "200 g d'épinards hachés surgelés",
+        "200 g de saumon frais ou surgelé",
+        "25 cl de crème fraîche fluide",
+        "3 oeufs",
+        "30 g de parmesan râpé",
+        "basilic",
+        "aneth ciselés (frais ou surgelés)",
+        "poivre",
+        "sel",
+        "50 g de gruyère (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 524,
+        "sha256": "986f050895bc8cce"
+      },
+      "sha256_page": "4c7d86cc722c2bc6"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_quiche-aux-deux-saumons_22923.aspx",
+      "site": "marmiton.org",
+      "nom": "Quiche aux deux saumons : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 boîte de saumon",
+        "200 g de saumon fumé",
+        "4 oeufs",
+        "20 cl de crème fraîche épaisse légère",
+        "aneth",
+        "gruyère râpé",
+        "1 pâte feuilletée toute prête"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 402,
+        "sha256": "2b6e69bdc410a7cc"
+      },
+      "sha256_page": "b65ed0c83480d9de"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/quiche-au-saumon-fume-et-brocolis",
+      "site": "chefsimon.com",
+      "nom": "Quiche au saumon fumé et brocolis",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "1  pâte brisée",
+        "100 g d’emmental râpé",
+        "20 cL de crème liquide",
+        "10 cL de lait",
+        "2  œufs",
+        "pincée de noix de muscade (poivre)",
+        "180 g de brocolis (poids après découpe)",
+        "100 g de saumon fumé",
+        "1/4  d’oignon (35 g)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 238,
+        "sha256": "c4f548726befcb6e"
+      },
+      "sha256_page": "dbdcc66b1ace4c77"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/stella-cuisine/recettes/quiche-sans-pate-au-saumon-fume",
+      "site": "chefsimon.com",
+      "nom": "Quiche sans pâte au saumon fumé",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4  oeufs",
+        "50 cl de lait",
+        "100 grammes de farine",
+        "150 grammes de saumon fumé",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 27,
+        "sha256": "4264b467e84fb55a"
+      },
+      "sha256_page": "5c009072cec5c057"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/quiche-aux-ravioles-et-saumon-fume",
+      "site": "chefsimon.com",
+      "nom": "Quiche aux ravioles et saumon fumé",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "1  pâte brisée",
+        "3 plaques de ravioles",
+        "1 ou 2 tranches de saumon fumé",
+        "2  œufs",
+        "20 cl de crème",
+        "un peu de lait",
+        "des herbes (ciboulette, persil...)",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 263,
+        "sha256": "419fbde492ef9692"
+      },
+      "sha256_page": "63333800aaaeab65"
+    },
+    {
+      "url": "https://www.750g.com/quiche-au-saumon-et-champignons-r89206.htm",
+      "site": "750g.com",
+      "nom": "Quiche au saumon et champignons",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "Fromage râpé",
+        "1 pâte feuilletée",
+        "Béchamel",
+        "5 tranches de saumon fumé",
+        "250 g de champignons de Paris"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 322,
+        "sha256": "424fd99f54efa3ab"
+      },
+      "sha256_page": "26e749175569bb4a"
+    },
+    {
+      "url": "https://www.750g.com/quiche-aux-2-saumons-r205532.htm",
+      "site": "750g.com",
+      "nom": "Quiche aux 2 saumons",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 pâte feuilletée  ou 1 pâte brisée",
+        "25 cl de crème liquide",
+        "3 oeufs",
+        "200 g de saumon",
+        "150 g de saumon fumé",
+        "Ciboulette",
+        "Huile d'olive",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 658,
+        "sha256": "f1f157d812aee278"
+      },
+      "sha256_page": "7ae0ccc957c58154"
+    },
+    {
+      "url": "https://www.750g.com/quiche-au-saumon-r84295.htm",
+      "site": "750g.com",
+      "nom": "Quiche gratinée au saumon et crème fraîche",
+      "portions": "6 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 pâte feuilletée",
+        "100 g de gruyère",
+        "3 oeufs",
+        "20 cl de crème liquide",
+        "250 g de saumon fumé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 198,
+        "sha256": "218c845d3b3ead78"
+      },
+      "sha256_page": "77e9f6db7490def6"
+    }
+  ]
+}

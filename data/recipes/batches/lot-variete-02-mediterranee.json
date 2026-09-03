@@ -1,0 +1,530 @@
+{
+  "recipes": [
+    {
+      "code": "VAR-009",
+      "family": "Patatas bravas",
+      "cuisine_origin": "Espagne",
+      "identity_level": "named_traditional_dish",
+      "category": "accompagnement",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 30,
+      "difficulty": "facile",
+      "sources": ["dossier:patatas-bravas", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Huit pages sur trois sites, de deux à six portions. Toutes décrivent le même plat — des pommes de terre frites ou rôties nappées d'une sauce tomate relevée — et le dossier est l'un des plus homogènes du lot ; deux pages y ajoutent des croquetas ou une sauce alioli qui sont des préparations à part et n'entrent pas dans la liste. Les pommes de terre sont pesées par quatre pages, à 125, 100, 250 et 125 g par personne : médiane 125 g par personne, soit 500 g pour quatre. Les quatre autres comptent quatre pommes de terre, ce qui ne se convertit pas. La tomate est fraîche dans quatre pages et en conserve dans deux ; la majorité l'emporte et on écrit la tomate fraîche. Deux lignes la pèsent, 125 et 150 g par personne : médiane 137,5 g par personne, soit 550 g. L'oignon est compté à la pièce par cinq pages, une chaque fois : 130 g pour quatre. L'ail, six lignes en gousses, d'une pour six à trois pour quatre ; à 5 g la gousse, médiane 1,56 g par personne, soit 6 g — on écrit 8 g, deux gousses, parce qu'une demi-gousse ne se pèle pas. Le paprika est l'épice du plat et le dossier le compte en cuillerées : cinq lignes qui donnent 1, 0,25, 0,33, 0,5 et 0,5 g par personne, médiane 0,5 g par personne, soit 2 g. On écrit 4 g, ce que donne la ligne la plus généreuse ramenée à quatre parts — deux cuillerées à café de paprika fumé — parce que c'est lui qui fait la couleur et le nom de la sauce. Quatre pages sur huit précisent « fumé » ou « pimentón », deux disent seulement paprika : on écrit le paprika fumé. Le piquant est apporté tantôt par du tabasco, tantôt par du piment d'Espelette, tantôt par de la purée de piment ou du cayenne — cinq formes différentes dans six pages, ce qui est le signe qu'aucune n'est canonique ; on écrit 1 g de piment de Cayenne, forme du catalogue, et les autres sont notées en variantes. Le vinaigre : trois lignes chiffrées, 12,5, 3,3 et 12,5 g par personne, médiane 12,5 g par personne, soit 50 g. C'est trop pour 550 g de tomate — la sauce ne serait plus qu'acide — et on descend à 7,5 g par personne, soit 30 ml. Deux pages précisent un vinaigre blanc ou de vin blanc : on écrit le vinaigre blanc. Le sucre est dans deux pages sur deux sites, une pincée et une cuillerée à café : 3 g. L'huile d'olive de la sauce, trois lignes : 11,25, 7,5 et 12,5 g par personne, médiane 11,25 g par personne, soit 45 g. L'huile de friture est le chiffre le plus incertain de la fiche : trois pages font frire les pommes de terre, aucune ne pèse l'huile, et le bain n'est pas mangé. On écrit 60 ml et on le signale comme un chiffre décidé et non mesuré — la nutrition affichée en dépend directement. Durées : préparation, médiane 20 minutes des huit lignes ; cuisson, médiane 27,5 minutes, écrite 30.",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "C'est une tapa : un féculent en sauce, sans protéine ni légume vert, servi au milieu de la table à côté d'autres plats. Elle ne se suffit pas et n'a rien à recevoir non plus — une sauce est déjà dessus."
+      },
+      "ingredients": [
+        { "form": "Pomme de terre crue, épluchée", "quantity": 500, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Tomate fraîche mûre", "quantity": 550, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 130, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Huile de friture", "quantity": 60, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 45, "unit": "ml", "role": "sauce", "optional": false },
+        { "form": "Vinaigre blanc", "quantity": 30, "unit": "ml", "role": "acidité", "optional": false },
+        { "form": "Paprika fumé", "quantity": 4, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Ail cru", "quantity": 8, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Sucre semoule", "quantity": 3, "unit": "g", "role": "équilibre", "optional": false },
+        { "form": "Piment de Cayenne", "quantity": 1, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 4, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Émincer l'oignon et l'ail, les faire fondre à feu doux dans l'huile d'olive une dizaine de minutes sans coloration, puis ajouter les tomates coupées en dés avec le sucre et le sel. La pincée de sucre n'est pas là pour sucrer : elle corrige l'acidité des tomates de plein champ, qui deviendrait mordante en réduisant." },
+        { "n": 2, "instruction": "Laisser réduire vingt minutes à découvert, jusqu'à ce que la sauce ait perdu son eau et qu'un sillon tracé au fond de la casserole reste ouvert. Ajouter alors le paprika fumé et le piment de Cayenne hors du feu, puis le vinaigre. Le paprika ne supporte pas le feu vif : il vire à l'amer en quelques secondes et rien ne le rattrape ensuite." },
+        { "n": 3, "instruction": "Mixer la sauce jusqu'à obtenir une texture lisse et nappante, puis goûter et rectifier le vinaigre. La sauce doit être franchement relevée, plus que ce qui paraît raisonnable à la cuillère : elle sera répartie sur un demi-kilo de pomme de terre neutre qui va tout absorber." },
+        { "n": 4, "instruction": "Éplucher les pommes de terre et les tailler en cubes irréguliers de trois centimètres, en cassant chaque morceau au couteau plutôt qu'en le tranchant net. Les faces rompues offrent plus de surface et accrochent la sauce ; des cubes lisses la laissent glisser." },
+        { "n": 5, "instruction": "Rincer les cubes à l'eau froide jusqu'à ce que l'eau soit claire, puis les sécher soigneusement dans un linge. L'amidon de surface fait coller les morceaux entre eux dans l'huile ; l'eau restée dessus fait projeter le bain et empêche la croûte de se former." },
+        { "n": 6, "instruction": "Frire les pommes de terre en deux fois dans l'huile chaude : une première cuisson de huit minutes à 150 °C pour cuire l'intérieur, un repos hors du feu, puis une seconde de trois minutes à 180 °C pour la croûte. La double cuisson est le seul moyen d'avoir un cœur fondant sous une croûte sèche ; en une seule passe, l'un des deux est toujours sacrifié." },
+        { "n": 7, "instruction": "Égoutter sur une grille, saler aussitôt, dresser en tas dans un plat creux et napper de sauce au dernier moment. La sauce se verse à table et non en cuisine : posée cinq minutes trop tôt, elle ramollit la croûte qu'on vient de passer un quart d'heure à obtenir." }
+      ],
+      "techniques": ["compotage", "réduction", "mixage", "friture en deux bains"],
+      "variants": [
+        "Rôties au four à l'huile d'olive plutôt que frites, avec une sauce alioli à côté (chefsimon)",
+        "Sauce montée au tabasco, de cinq à douze gouttes selon les pages (marmiton, chefsimon, 750g)",
+        "Piment d'Espelette entier épépiné et émietté, ou en purée, à la place du cayenne (marmiton, 750g)",
+        "Version au ketchup relevé de paprika, sans sauce cuite (750g)",
+        "Sauce brava au poivron rouge : un poivron compoté avec l'oignon avant mixage, laurier, thym et romarin (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "smoky_sweet",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 3, "bitter": 1, "umami": 3, "heat": 3, "pungency": 2, "richness": 3, "freshness": 1, "intensity": 4 },
+        "dominant_flavors": ["paprika fumé", "tomate réduite", "vinaigre", "pomme de terre frite"],
+        "aroma_families": ["fumé", "tomate_cuite", "piment", "ail"],
+        "target_textures": ["croûte croustillante", "intérieur_fondant_ou_crémeux", "sauce_nappante"],
+        "signature_ingredients": ["Pomme de terre crue, épluchée", "Paprika fumé", "Tomate fraîche mûre"],
+        "identity_guardrails": [
+          "Le paprika fumé entre hors du feu : cuit, il devient amer et la sauce est perdue",
+          "Double friture obligatoire — une seule passe donne soit un cœur cru, soit une croûte molle",
+          "Les cubes se cassent au couteau plutôt que se trancher : les faces rompues retiennent la sauce",
+          "La sauce se verse au moment de servir, jamais en cuisine, sous peine de détremper la croûte"
+        ]
+      },
+      "conservation": "La sauce brava se garde 5 jours au réfrigérateur en bocal fermé et se congèle 3 mois : c'est elle qui prend le temps, et la préparer d'avance ramène le plat à un quart d'heure. Les pommes de terre frites ne se gardent pas — elles ramollissent en une heure — mais la première friture peut se faire la veille : les cubes précuits se conservent 24 heures au réfrigérateur et se terminent en trois minutes de second bain. Le plat monté ne se réchauffe pas.",
+      "allergens": []
+    },
+    {
+      "code": "VAR-011",
+      "family": "Paella aux fruits de mer",
+      "cuisine_origin": "Espagne",
+      "identity_level": "named_traditional_dish",
+      "category": "plat de fruits de mer",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 60,
+      "cook_minutes": 45,
+      "difficulty": "moyenne",
+      "sources": ["dossier:paella-aux-fruits-de-mer", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Cinq pages sur trois sites, données pour huit, dix, vingt et six personnes, la cinquième sans portions déclarée à qui l'on attribue les six parts cibles. Deux d'entre elles sont des paellas mixtes qui ajoutent du poulet et du chorizo aux fruits de mer ; elles restent au calcul pour tout ce qui n'est pas la protéine, mais ni le poulet ni le chorizo n'entrent dans une paella de marisco, qui est celle qu'on écrit. Le riz : cinq lignes pesées, à 62,5, 100, 100, 66,7 et 100 g par personne, médiane 100 g par personne, soit 600 g pour six. La forme est arbitrée : une page dit « riz spécial paella », une autre « riz rond », les trois dernières « riz » ou « riz long grain ». Le riz long est refusé — il ne rend pas l'amidon qui lie le fond et surtout il ne supporte pas de cuire sans être remué. On écrit le riz bomba, seule forme à paella du catalogue, et la page au riz rond y est comprise. Les moules : trois lignes pesées, à 100, 50 et 83,3 g par personne, médiane 83,3 g par personne, soit 500 g pour six. Les calamars : quatre lignes, à 62,5, 50, 50 et 83,3 g par personne, médiane 56,25 g par personne, soit 337 g, qu'on écrit 340 g. Les crevettes sont le point le plus dispersé : trois lignes pesées à 50, 50 et 166,7 g par personne — la dernière additionnant crevettes grises et crevettes roses — médiane 50 g par personne, soit 300 g. Les langoustines, gambas, seiches, clovisses et palourdes que trois pages ajoutent n'ont pas de forme au catalogue et ne sont pas remplacées en silence : elles descendent en variantes, et c'est une perte réelle qu'il vaut mieux écrire. La tomate : cinq lignes, à 125, 40, 50, 60 et 40 g par personne, médiane 50 g par personne, soit 300 g. Le poivron, trois lignes en pièces, médiane 37,5 g par personne, soit 225 g. L'oignon, quatre lignes en pièces ou pesées, médiane 41,25 g par personne, soit 247 g, qu'on écrit 250 g. L'ail, cinq lignes en gousses, médiane 2,5 g par personne, soit 15 g. Le mouillement : deux lignes seulement, 125 et 300 ml par personne, médiane 212,5 ml par personne, soit 1 275 ml, qu'on écrit 1 300 ml — deux fois et demie le poids du riz, ce qui est le rapport habituel d'un riz cuit sans être remué. Deux pages emploient un bouillon de volaille, une un fumet de poisson que le catalogue n'a pas : on écrit le bouillon de volaille. Le safran n'est pesé que par une page, ⅖ de gramme pour six : on écrit 0,5 g, en notant qu'une autre page admet un colorant à sa place, ce qui n'est pas la même chose. Les petits pois sont dans deux pages sur cinq, dont l'une les pèse à 150 g pour six ; le catalogue ne porte que la forme surgelée et c'est celle qu'on écrit — elle est d'ailleurs celle qu'emploie une cuisine domestique. L'huile d'olive, une seule ligne chiffrée à 9,4 ml par personne : 60 ml pour six. Durées : préparation, médiane 60 minutes des cinq lignes — c'est le nettoyage des coquillages et des calamars qui la fait, et on ne la rabote pas ; cuisson, médiane 45 minutes.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Riz, fruits de mer et légumes cuisent dans la même poêle : 100 g de riz, 190 g de coquillages et céphalopodes et 130 g de légumes par personne font une assiette entière. C'est ainsi que les cinq pages la servent, avec au plus un quartier de citron."
+      },
+      "ingredients": [
+        { "form": "Riz bomba cru", "quantity": 600, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Bouillon de volaille", "quantity": 1300, "unit": "ml", "role": "mouillement", "optional": false },
+        { "form": "Moule commune crue", "quantity": 500, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Calamar cru nettoyé", "quantity": 340, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Crevette crue entière", "quantity": 300, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Tomate fraîche mûre", "quantity": 300, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 250, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Poivron rouge frais", "quantity": 225, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Petit pois surgelé", "quantity": 150, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 60, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Ail cru", "quantity": 15, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Safran", "quantity": 0.5, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Gratter et ébarber les moules, jeter celles qui restent ouvertes après un choc sur le plan de travail, puis les faire ouvrir à couvert et à feu vif dans une casserole, trois minutes, sans eau. Filtrer le jus qu'elles rendent au chinois fin doublé d'un linge et le réserver : c'est le fond de mer du plat, et il vaut mieux que n'importe quel cube." },
+        { "n": 2, "instruction": "Faire chauffer le bouillon de volaille avec le jus des moules et y jeter le safran, puis maintenir à frémissement. Le safran a besoin d'une dizaine de minutes dans un liquide chaud pour libérer sa couleur ; jeté sec sur le riz, il reste en filaments rouges au milieu d'un riz blanc." },
+        { "n": 3, "instruction": "Dans une grande poêle large, saisir les calamars coupés en anneaux deux minutes à feu vif dans l'huile, puis les retirer. Ils cuisent en deux minutes ou en quarante ; entre les deux ils sont caoutchouteux, et c'est pourquoi on ne les laisse pas dans le riz du début à la fin." },
+        { "n": 4, "instruction": "Faire fondre dans la même poêle l'oignon et le poivron taillés en dés, dix minutes, ajouter l'ail haché puis les tomates concassées et laisser réduire jusqu'à obtenir une base épaisse et presque sèche. Ce sofrito est le socle du goût : mal réduit, il laisse de l'eau qui fera un riz collant." },
+        { "n": 5, "instruction": "Verser le riz et le remuer deux minutes dans le sofrito pour l'enrober, puis étaler le tout en couche régulière et mouiller de tout le bouillon safrané d'un seul coup. À partir de cet instant, on ne remue plus jamais : c'est ce qui distingue une paella d'un risotto, et remuer donnerait une bouillie au lieu de grains séparés." },
+        { "n": 6, "instruction": "Cuire dix minutes à feu vif puis huit minutes à feu doux, en répartissant les crevettes, les petits pois encore surgelés et les calamars à mi-cuisson, et les moules décoquillées dans les trois dernières minutes. Les petits pois n'ont pas besoin d'être décongelés : jetés tels quels, ils cuisent en cinq minutes et gardent leur couleur." },
+        { "n": 7, "instruction": "Quand le liquide a disparu en surface, monter le feu trente à quarante-cinq secondes pour former le socarrat, cette croûte de riz caramélisée au fond de la poêle : on la reconnaît à l'oreille, un crépitement sec qui remplace le bouillonnement. Couvrir alors d'un linge et laisser reposer cinq minutes hors du feu avant de servir directement dans la poêle." }
+      ],
+      "techniques": ["ouverture des coquillages", "infusion", "sofrito", "cuisson sans remuer", "socarrat", "repos"],
+      "variants": [
+        "Paella mixte : 1 kg de filets de poulet et un chorizo ajoutés aux fruits de mer, bouillon de volaille (marmiton)",
+        "Aux langoustines et gambas, deux ou trois pièces par personne, avec un congre pour le fumet (marmiton, 750g)",
+        "Avec seiche et clovisses en plus des calamars et des moules (marmiton)",
+        "Aux haricots plats, six gousses ajoutées avec le sofrito (750g)",
+        "Colorant alimentaire à la place du safran, ou en complément (marmiton)"
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": { "sweet": 2, "salty": 4, "acidic": 2, "bitter": 1, "umami": 5, "heat": 0, "pungency": 1, "richness": 2, "freshness": 2, "intensity": 4 },
+        "dominant_flavors": ["safran", "fruits de mer", "tomate réduite", "poivron"],
+        "aroma_families": ["safran", "marin", "tomate_cuite", "ail"],
+        "target_textures": ["grains séparés", "socarrat croustillant", "chair nacrée et moelleuse"],
+        "signature_ingredients": ["Riz bomba cru", "Safran", "Moule commune crue"],
+        "identity_guardrails": [
+          "On ne remue plus après le mouillement : remuer donne un risotto, et une paella se reconnaît à ses grains séparés",
+          "Le jus de cuisson des moules, filtré, remplace une partie du bouillon — c'est le goût de mer du plat",
+          "Les calamars se saisissent à part deux minutes : laissés dans le riz vingt minutes, ils deviennent caoutchouteux",
+          "Le socarrat se fait à la fin, au son : quand le bouillonnement devient crépitement, il reste moins d'une minute"
+        ]
+      },
+      "conservation": "Se mange dans le quart d'heure : le riz continue de sécher et les fruits de mer se raffermissent. Les restes se gardent 2 jours au réfrigérateur et se réchauffent à couvert avec deux cuillerées d'eau, à feu doux — jamais deux fois. Ne se congèle pas : les moules et les calamars rendent leur eau à la décongélation et le riz se délite. Le sofrito, lui, se prépare 3 jours à l'avance et se congèle 3 mois, ce qui retire vingt minutes au jour J.",
+      "allergens": ["mollusques", "crustacés"]
+    },
+    {
+      "code": "VAR-012",
+      "family": "Crème catalane",
+      "cuisine_origin": "Espagne",
+      "identity_level": "named_traditional_dish",
+      "category": "dessert",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "difficulty": "facile",
+      "sources": ["dossier:creme-catalane", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Neuf pages sur trois sites, de deux à dix portions, la quatrième sans portions à qui l'on attribue les six parts cibles. Le dossier est remarquablement homogène sur la structure — lait, jaunes d'œuf, sucre, fécule, cannelle et zeste, caramélisée au sucre roux — et divergent sur les proportions. Le lait : six pages emploient du lait de vache seul, à 166,7, 166,7, 125, 125, 250 et 166,7 ml par personne, médiane 166,7 ml par personne, soit 1 000 ml pour six. Trois pages s'en écartent et sortent du calcul du lait : l'une remplace une partie par de la crème liquide, une autre par du lait de coco, une troisième par du lait de riz à la vanille. Les jaunes d'œuf : neuf lignes, de 0,3 à 1,25 par personne, médiane 1 jaune par personne, soit 6 jaunes. C'est le rapport qui définit la crème catalane et la distingue d'une crème brûlée : un jaune pour 165 ml de lait, quand la crème brûlée compte deux fois plus de jaunes dans de la crème. Le sucre est le désaccord le plus large du dossier : neuf lignes de 10 à 50 g par personne, médiane 31,25 g par personne, soit 187,5 g, qu'on écrit 190 g. Les extrêmes ne décrivent pas la même chose — la ligne à 10 g est celle qui sucre par ailleurs au lait de coco, celle à 50 g additionne le sucre de la crème et celui du caramel. La fécule de maïs : neuf lignes de 2,5 à 17,5 g par personne, médiane 6,7 g par personne, soit 40 g. C'est elle et non les jaunes seuls qui fait tenir la crème catalane, et c'est pourquoi elle cuit sur le feu et non au four au bain-marie. Une page ajoute 20 g de farine à la fécule et reste isolée. La cannelle en bâton est dans quatre pages, comptée de un à quatre bâtons ; à 4 g le bâton, médiane 0,46 bâton par personne, soit environ deux bâtons et demi pour six — on écrit 2 bâtons, l'infusion étant longue. Le zeste de citron est dans trois pages sur neuf, jamais pesé : 8 g. La vanille est dans quatre pages sur neuf, en gousse pour trois d'entre elles et en extrait liquide pour la quatrième ; la gousse n'a pas de forme employable au catalogue, on écrit la vanille liquide en ingrédient facultatif et on le signale plutôt que de remplacer l'une par l'autre sans le dire. La cassonade du caramel n'est pesée que par une page, 30 g pour deux, soit 15 g par personne ; les huit autres disent « de la cassonade » ou « du sucre roux ». On écrit 60 g pour six, moitié de la seule ligne pesée, parce qu'une couche de caramel se compte en cuillerée rase par ramequin. Durées : préparation, médiane 20 minutes des neuf lignes ; cuisson, médiane 15 minutes des sept lignes exploitables. Les quatre heures de froid avant de caraméliser ne se comptent ni en préparation ni en cuisson, et commandent pourtant l'organisation : c'est un dessert de la veille.",
+      "plate": {
+        "role": "dessert",
+        "accepts": [],
+        "reason": "Crème sucrée caramélisée servie en ramequin, à la cuillère, en fin de repas. Elle ne constitue pas un plat et n'accompagne rien."
+      },
+      "ingredients": [
+        { "form": "Lait entier", "quantity": 1000, "unit": "ml", "role": "liquide", "optional": false },
+        { "form": "Jaune d'œuf cru", "quantity": 6, "unit": "u", "role": "liaison", "optional": false },
+        { "form": "Sucre semoule", "quantity": 190, "unit": "g", "role": "sucre", "optional": false },
+        { "form": "Fécule de maïs", "quantity": 40, "unit": "g", "role": "liaison", "optional": false },
+        { "form": "Cassonade", "quantity": 60, "unit": "g", "role": "caramel", "optional": false },
+        { "form": "Bâton de cannelle", "quantity": 2, "unit": "u", "role": "aromate", "optional": false },
+        { "form": "Zeste de citron", "quantity": 8, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Vanille liquide", "quantity": 5, "unit": "ml", "role": "aromate", "optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Mettre le lait à chauffer avec les bâtons de cannelle et le zeste de citron prélevé au couteau économe, sans la peau blanche. Porter à la limite du frémissement, couper le feu, couvrir et laisser infuser vingt minutes. Le blanc du citron est amer et l'amertume ressort après le refroidissement, quand il est trop tard pour la corriger." },
+        { "n": 2, "instruction": "Pendant ce temps, battre au fouet les jaunes d'œuf et le sucre : le mélange doit pâlir et retomber en ruban quand on soulève le fouet. Y incorporer alors la fécule de maïs en pluie. La fécule veut être délayée à froid dans une masse dense — jetée dans du lait chaud, elle prend en grumeaux instantanément et rien ne les défera." },
+        { "n": 3, "instruction": "Retirer la cannelle et le zeste, puis verser le lait chaud en filet sur les jaunes en fouettant sans arrêt. Verser lentement et sur le côté du fouet : le lait bouillant jeté d'un coup cuit les jaunes en filaments jaunes qu'on ne rattrape plus qu'au chinois." },
+        { "n": 4, "instruction": "Reverser le tout dans la casserole et cuire à feu moyen en remuant à la spatule en formant des huit au fond, jusqu'à ce que la crème épaississe nettement et laisse une trace au doigt sur le dos de la spatule. Cinq à huit minutes suffisent. Contrairement à la crème brûlée, celle-ci cuit sur le feu et non au four : c'est la fécule qui la tient, et elle a besoin d'atteindre l'ébullition légère pour agir." },
+        { "n": 5, "instruction": "Ajouter la vanille liquide si l'on en met, puis verser aussitôt dans des ramequins plats et larges. La forme compte : un ramequin large donne une couche de crème mince et beaucoup de surface à caraméliser, ce qui est le rapport voulu entre le croquant et le crémeux." },
+        { "n": 6, "instruction": "Laisser refroidir à température ambiante puis mettre au réfrigérateur quatre heures au moins, la nuit de préférence, à découvert la première heure puis filmé au contact. Un film posé sur une crème tiède retombe en eau condensée à la surface, et le caramel ne prendra jamais dessus." },
+        { "n": 7, "instruction": "Au dernier moment, saupoudrer chaque ramequin d'une couche fine et régulière de cassonade et la brûler au chalumeau ou sous un gril brûlant, jusqu'à ce qu'elle fonde et brunisse. La couche doit être mince : trop épaisse, le sucre du dessous reste en grains et le caramel ne durcit pas. Servir dans les cinq minutes — le caramel ramollit au contact de la crème froide." }
+      ],
+      "techniques": ["infusion", "blanchiment des jaunes", "liaison à la fécule", "refroidissement", "caramélisation"],
+      "variants": [
+        "À l'orange : zeste d'orange à la place du citron et 5 cl de liqueur d'orange (marmiton)",
+        "Au lait de coco : moitié lait, moitié lait de coco, noix de coco râpée sur le dessus (marmiton)",
+        "À la crème : 25 cl de crème liquide pour 10 cl de lait, avec des graines d'anis vert pilées (marmiton)",
+        "À la fleur d'oranger, deux cuillerées à café dans le lait infusé (chefsimon)",
+        "Version enrichie : deux œufs entiers en plus des quatre jaunes, et 20 g de farine avec la fécule (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "sweet_spiced",
+        "scores": { "sweet": 5, "salty": 0, "acidic": 1, "bitter": 1, "umami": 1, "heat": 0, "pungency": 0, "richness": 4, "freshness": 1, "intensity": 3 },
+        "dominant_flavors": ["cannelle", "citron", "lait cuit", "caramel"],
+        "aroma_families": ["cannelle", "agrume", "lacté", "caramel"],
+        "target_textures": ["crémeux", "caramel croquant", "contraste_léger"],
+        "signature_ingredients": ["Lait entier", "Jaune d'œuf cru", "Bâton de cannelle"],
+        "identity_guardrails": [
+          "Elle cuit sur le feu et se lie à la fécule : passée au four au bain-marie, ce serait une crème brûlée",
+          "Un jaune pour environ 165 ml de lait — deux fois moins riche qu'une crème brûlée, et c'est voulu",
+          "Cannelle et zeste de citron infusés dans le lait : ce sont les deux parfums qui la nomment",
+          "Le caramel se brûle au dernier moment ; posé d'avance, il fond dans la crème froide en un quart d'heure"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur, filmée au contact et sans son caramel, qu'on ne brûle qu'au moment de servir. C'est un dessert qui se prépare la veille et gagne à reposer une nuit, le temps que la cannelle et le citron se répartissent. Ne se congèle pas : la fécule relâche son eau à la décongélation et la crème tranche. Un caramel déjà brûlé ne se rattrape pas — il ramollit en une demi-heure au froid.",
+      "allergens": ["lait", "œuf"]
+    },
+    {
+      "code": "VAR-013",
+      "family": "Gyros de poulet",
+      "cuisine_origin": "Grèce",
+      "identity_level": "named_traditional_dish",
+      "category": "sandwich chaud",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 25,
+      "cook_minutes": 25,
+      "difficulty": "facile",
+      "sources": ["dossier:gyros", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Six pages sur trois sites. La première question est celle de la viande, et elle est tranchée par le dossier lui-même : une seule page emploie du porc — un rôti braisé à la tomate — quand quatre emploient du poulet, sur les trois sites, et une sixième des aubergines panées dans un wrap. Le poulet est donc attesté deux fois plutôt qu'une et la recette s'appelle « Gyros de poulet » et non « Gyros » : écrire le nom nu laisserait croire à une forme canonique que le dossier ne soutient pas. Le poulet est pesé par deux pages, 400 g pour quatre et 480 g pour quatre, soit 100 et 120 g par personne : médiane 110 g par personne, soit 440 g. Les deux autres comptent des filets sans les peser. Le pain pita est compté par trois pages, une par personne, et jamais pesé : on écrit 250 g pour quatre et le chiffre est décidé, non mesuré — c'est la ligne la plus incertaine de la fiche. La sauce au yaourt est dans trois pages : l'une compte trois petits pots de yaourt à la grecque pour quatre, soit environ 94 g par personne, une autre 140 g pour quatre, soit 35 g par personne, médiane 64,5 g par personne, soit 258 g, qu'on écrit 250 g. Le yaourt grec est une forme bloquée au catalogue : on écrit le yaourt nature, qu'il faut alors égoutter une heure dans une passoire pour retrouver la texture, et on le dit plutôt que de faire comme si c'était la même chose. Le concombre de cette sauce n'est donné que par une page, un concombre pour quatre, soit 75 g par personne — 300 g. On écrit 200 g, le concombre étant dégorgé et pressé avant d'être mêlé au yaourt. L'ail, trois lignes en gousses, médiane 3,75 g par personne, soit 15 g. Le jus de citron est dans trois pages, en pièces ou en cuillerées : 50 ml. La tomate est comptée en pièces par deux pages, deux pour quatre et une pour quatre ; à 120 g la pièce, médiane 45 g par personne, soit 180 g. L'oignon rouge est dans une page en pièce et dans une autre en cébettes : 130 g. La laitue, trois pages, quatre feuilles pour quatre : 80 g. Les poivrons sont dans trois pages sur six, jusqu'à quatre pièces pour quatre personnes : on écrit 300 g de poivron rouge, sachant que deux pages panachent les couleurs. Les épices : le paprika est dans trois pages, médiane 1,25 g par personne, soit 5 g ; le cumin dans quatre, médiane 0,5 g par personne, soit 2 g ; l'origan dans deux, 2 g. L'huile d'olive est très dispersée — 22,4, 6,9, 24 et 46 g par personne selon les pages, la dernière étant celle du porc confit : médiane 23,2 g par personne, soit 93 g. On descend à 15 g par personne, soit 60 ml, la marinade n'ayant pas à baigner la viande. Le tzatziki tout prêt de deux pages, le beaufort d'une troisième et le vinaigre balsamique d'une quatrième ne sont attestés qu'une fois chacun et restent en variantes. Durées : préparation, médiane 22,5 minutes des quatre lignes, écrite 25 ; cuisson, médiane 25 minutes des trois lignes exploitables. Les deux heures de marinade ne se comptent ni en préparation ni en cuisson.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Le pita porte le féculent, le poulet la protéine, la salade, la tomate, l'oignon et le poivron le légume, et le yaourt la sauce : le sandwich est le repas entier, comme dans les quatre pages retenues."
+      },
+      "ingredients": [
+        { "form": "Blanc de poulet cru, sans peau", "quantity": 440, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Pain pita", "quantity": 250, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Yaourt nature", "quantity": 250, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Poivron rouge frais", "quantity": 300, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Concombre frais", "quantity": 200, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Tomate fraîche mûre", "quantity": 180, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon rouge cru", "quantity": 130, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Laitue fraîche", "quantity": 80, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 60, "unit": "ml", "role": "marinade", "optional": false },
+        { "form": "Jus de citron frais", "quantity": 50, "unit": "ml", "role": "marinade", "optional": false },
+        { "form": "Ail cru", "quantity": 15, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Paprika doux", "quantity": 5, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Cumin moulu", "quantity": 2, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Origan séché", "quantity": 2, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Sel fin", "quantity": 5, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Tailler le poulet en lanières d'un centimètre dans le sens contraire des fibres et le mettre à mariner avec les deux tiers de l'huile d'olive, la moitié du jus de citron, la moitié de l'ail haché, le paprika, le cumin, l'origan, du sel et du poivre. Deux heures au frais, quatre si l'on peut. Le citron attendrit et parfume, mais au-delà d'une nuit il cuit la surface de la viande et la rend cotonneuse." },
+        { "n": 2, "instruction": "Égoutter le yaourt nature une heure dans une passoire garnie d'un linge, au réfrigérateur. C'est ce qui lui donne la consistance d'un yaourt à la grecque, que trois des sources emploient et que le catalogue ne porte pas : sans cet égouttage la sauce coule du pain avant qu'on ait mordu dedans." },
+        { "n": 3, "instruction": "Râper le concombre à la grosse grille, le saler légèrement, le laisser dégorger vingt minutes puis le presser fort entre les mains. Un concombre non pressé rend deux à trois cuillerées d'eau dans la sauce en une demi-heure. Le mêler au yaourt égoutté avec le reste d'ail et de jus de citron, saler, poivrer, et réserver au froid." },
+        { "n": 4, "instruction": "Émincer le poivron en lanières et le faire sauter à feu vif cinq à six minutes dans une poêle très chaude, jusqu'à ce qu'il marque par endroits mais reste ferme. Ajouté cru au sandwich il reste aqueux et fade ; longuement cuit il s'affaisse et détrempe le pain." },
+        { "n": 5, "instruction": "Saisir les lanières de poulet dans la même poêle brûlante, en deux fois pour ne pas la charger, quatre à cinq minutes en tout, jusqu'à ce qu'elles soient dorées sur les arêtes. Une poêle chargée fait tomber la température et la viande rend son eau puis bout : elle blanchit au lieu de colorer, et le gyros perd ce qui le caractérise, ces bords grillés." },
+        { "n": 6, "instruction": "Réchauffer les pitas trente secondes par face dans la poêle vide, le temps qu'ils gonflent et redeviennent souples. Un pita froid casse quand on le plie, un pita trop chauffé sèche et s'effrite." },
+        { "n": 7, "instruction": "Garnir chaque pita d'une couche de sauce au yaourt, puis de laitue ciselée, de poulet, de poivrons, de tomate en dés et d'oignon rouge en fines lamelles, et terminer d'une seconde cuillerée de sauce. La sauce se met en premier et en dernier : la première couche fait barrière entre le pain et le jus des légumes, la seconde tient l'ensemble. Rouler serré et manger aussitôt." }
+      ],
+      "techniques": ["marinade", "égouttage du yaourt", "dégorgement", "saisie à feu vif", "assemblage"],
+      "variants": [
+        "Gyros de porc : un rôti de 800 g braisé une heure dans une sauce tomate au cumin, au piment et à l'origan, servi avec trois couleurs de poivron (marmiton)",
+        "Au tzatziki du commerce, 250 g pour quatre, à la place de la sauce au yaourt maison (chefsimon, 750g)",
+        "Avec 100 g de beaufort râpé dans le pita (chefsimon)",
+        "Version végétarienne : aubergines panées à la chapelure et au parmesan, roquette et tzatziki dans un wrap (chefsimon)",
+        "Mélange d'épices à gyros maison : ail en poudre, paprika, herbes de Provence, coriandre, cumin, poivre, sel, céleri en poudre et graines de moutarde à parts décroissantes (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 3, "bitter": 1, "umami": 3, "heat": 1, "pungency": 3, "richness": 3, "freshness": 3, "intensity": 4 },
+        "dominant_flavors": ["poulet grillé", "yaourt à l'ail", "citron", "paprika"],
+        "aroma_families": ["origan", "cumin", "ail", "agrume"],
+        "target_textures": ["pain moelleux", "viande grillée", "contraste_léger"],
+        "signature_ingredients": ["Blanc de poulet cru, sans peau", "Pain pita", "Yaourt nature"],
+        "identity_guardrails": [
+          "Le poulet est saisi en deux fois dans une poêle brûlante : entassé, il bout et perd les arêtes grillées qui font le gyros",
+          "Le yaourt s'égoutte une heure — non égoutté, la sauce traverse le pain",
+          "Le concombre se dégorge et se presse, sinon il liquéfie la sauce en une demi-heure",
+          "Sauce en dessous et au-dessus de la garniture : la couche du bas protège le pain du jus des légumes"
+        ]
+      },
+      "conservation": "Le poulet mariné cru se garde 24 heures au réfrigérateur et se congèle 2 mois dans sa marinade — c'est la façon d'avoir un dîner en un quart d'heure. Le poulet cuit se garde 3 jours, la sauce au yaourt 3 jours également, dans deux boîtes séparées. Les pitas se congèlent 2 mois et se réchauffent sans décongélation. Le sandwich monté ne se garde pas : le pain est détrempé en une demi-heure. Ne jamais réchauffer la sauce.",
+      "allergens": ["gluten", "lait"]
+    },
+    {
+      "code": "VAR-014",
+      "family": "Pastitsio",
+      "cuisine_origin": "Grèce",
+      "identity_level": "named_traditional_dish",
+      "category": "pâtes au four",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 45,
+      "cook_minutes": 60,
+      "difficulty": "moyenne",
+      "sources": ["dossier:pastitsio", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Trois pages seulement, une par site, données pour six, huit et six personnes : c'est un dossier mince, tout juste au-dessus du seuil, et il faut le savoir en le lisant. Les trois décrivent en revanche exactement la même architecture — un lit de pâtes longues, une viande hachée à la tomate parfumée à la cannelle, une béchamel épaisse liée aux œufs et gratinée — ce qui est déjà une convergence. La viande : trois lignes pesées, à 83,3, 125 et 50 g par personne, médiane 83,3 g par personne, soit 500 g pour six. Une page précise « bœuf haché maigre », une autre « bœuf, ou un mélange de bœuf, porc et agneau », la troisième « viande hachée » : on écrit le bœuf haché, seul terme commun aux trois. Les pâtes : trois lignes, à 83,3, 56,25 et 33,3 g par personne, médiane 56,25 g par personne, soit 337 g, qu'on écrit 340 g. Deux pages sur trois emploient des macaronis, la troisième des bucatini : on écrit des pâtes sèches courtes, forme qui correspond aux macaronis. Le lait de la béchamel : deux lignes seulement, 166,7 et 83,3 ml par personne, médiane 125 ml par personne, soit 750 ml — la troisième page monte sa béchamel sans lait déclaré, avec 150 g de farine et deux œufs, et sort du calcul. La farine : trois lignes, à 16,7, 18,75 et 5 g par personne, médiane 16,7 g par personne, soit 100 g. Les œufs de la béchamel, qui sont ce qui distingue un pastitsio d'un simple gratin : trois lignes, 0,17, 0,25 et 0,33 par personne, médiane 0,25 par personne, soit 1,5 œuf — on écrit 2 œufs, un demi-œuf ne se cassant pas. Le fromage râpé : deux lignes pesées, 30 et 10 g par personne, médiane 20 g par personne, soit 120 g. Une page nomme un fromage grec ou du pecorino, deux du gruyère : on écrit le gruyère râpé, majoritaire, et le pecorino descend en variante. L'oignon, trois lignes en pièces, médiane 43,3 g par personne, soit 260 g. La tomate est déclarée en trois formes — trois tomates fraîches, une boîte de concassée avec du concentré, 20 cl de coulis — dont une seule est mesurable : on écrit 400 g de tomates concassées, ce que donne la boîte, soit 66,7 g par personne. La cannelle est dans deux pages sur trois et c'est elle qui signe le plat : 2 g. La muscade est dans les trois : 0,5 g. Le beurre, une ligne à 5 g par personne : 30 g. L'huile d'olive, une ligne à 5,6 ml par personne : 30 ml. Le vin rouge, la carotte, le laurier, l'origan et le bouillon de légumes sont chacun à une source et restent en variantes. Durées : préparation, médiane 45 minutes des trois lignes ; cuisson, 60 minutes, valeur identique dans les trois pages.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "Pâtes pour le féculent, bœuf pour la protéine, tomate et oignon pour le légume, béchamel pour lier : le gratin porte l'assiette entière et les trois pages le servent seul, au plus avec une salade."
+      },
+      "ingredients": [
+        { "form": "Pâtes sèches courtes", "quantity": 340, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Bœuf haché cru", "quantity": 500, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Lait entier", "quantity": 750, "unit": "ml", "role": "béchamel", "optional": false },
+        { "form": "Farine de blé T55", "quantity": 100, "unit": "g", "role": "béchamel", "optional": false },
+        { "form": "Œuf cru", "quantity": 2, "unit": "u", "role": "béchamel", "optional": false },
+        { "form": "Gruyère râpé", "quantity": 120, "unit": "g", "role": "fromage", "optional": false },
+        { "form": "Tomate concassée en conserve", "quantity": 400, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 260, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Beurre doux", "quantity": 30, "unit": "g", "role": "béchamel", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 30, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Cannelle moulue", "quantity": 2, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Muscade moulue", "quantity": 0.5, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Émincer les oignons et les faire fondre dix minutes dans l'huile d'olive, puis monter le feu et ajouter le bœuf haché en l'écrasant à la fourchette pour qu'il se défasse en grains. Le laisser colorer sans le remuer sans arrêt : une viande hachée qu'on brasse en permanence rend son eau et bout au lieu de saisir." },
+        { "n": 2, "instruction": "Ajouter la cannelle, saler, poivrer, puis verser les tomates concassées et laisser mijoter à découvert vingt-cinq minutes, jusqu'à ce que la sauce soit épaisse et qu'il ne reste plus d'eau libre. La cannelle dans la viande est ce qui distingue un pastitsio d'une bolognaise gratinée ; elle doit cuire avec la tomate pour se fondre, jetée à la fin elle reste en poudre." },
+        { "n": 3, "instruction": "Cuire les pâtes dans une grande eau salée, trois minutes de moins que le temps indiqué, les égoutter et les rincer à l'eau froide. Elles finiront de cuire au four dans la béchamel ; cuites à point maintenant, elles ressortiront molles au bout d'une heure." },
+        { "n": 4, "instruction": "Faire un roux avec le beurre et la farine, cuire deux minutes en remuant, puis verser le lait froid d'un coup en fouettant. Cuire à feu moyen jusqu'à ce que la béchamel nappe franchement la cuillère : elle doit être nettement plus épaisse qu'une béchamel de lasagnes, car c'est elle qui tiendra les parts à la découpe. Râper la muscade, saler." },
+        { "n": 5, "instruction": "Laisser tiédir la béchamel cinq minutes puis y battre les œufs entiers un à un. Les œufs sont ce qui la fait prendre en flan au four et donne au pastitsio sa couche supérieure qui se tranche net ; incorporés dans une béchamel brûlante ils coaguleraient en grains." },
+        { "n": 6, "instruction": "Mélanger les pâtes à un tiers de la béchamel et à la moitié du gruyère, les étaler dans un grand plat beurré, couvrir de toute la viande à la tomate, puis napper du reste de béchamel et parsemer du gruyère restant. Les pâtes liées de béchamel avant montage ne se dessèchent pas et ne se soudent pas en bloc." },
+        { "n": 7, "instruction": "Enfourner à 180 °C pour cinquante à soixante minutes, jusqu'à ce que le dessus soit doré et gonflé et que le plat ne tremble plus au centre quand on le secoue. Laisser reposer un quart d'heure avant de couper : sorti du four et tranché aussitôt, le pastitsio s'affaisse et coule dans l'assiette. C'est le repos qui donne les parts nettes." }
+      ],
+      "techniques": ["mijotage", "cuisson al dente", "béchamel", "liaison aux œufs", "montage", "gratinage", "repos"],
+      "variants": [
+        "Aux bucatini plutôt qu'aux macaronis, avec un verre de vin rouge, une carotte en petits dés, trois feuilles de laurier et de l'origan dans la viande (chefsimon)",
+        "Au pecorino ou à un fromage râpé grec à la place du gruyère, moitié dans les pâtes, moitié dans la béchamel (chefsimon)",
+        "Viande de bœuf, porc et agneau mélangés à parts égales (chefsimon)",
+        "Sauce montée au bouillon de légumes, 35 cl, à la place d'une partie de la tomate (750g)",
+        "Deux oignons rouges et une gousse d'ail entière retirée avant montage, avec des grains de coriandre écrasés (marmiton)"
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 2, "bitter": 0, "umami": 4, "heat": 0, "pungency": 1, "richness": 4, "freshness": 0, "intensity": 4 },
+        "dominant_flavors": ["cannelle", "bœuf", "tomate mijotée", "béchamel"],
+        "aroma_families": ["cannelle", "bœuf", "tomate_cuite", "lacté"],
+        "target_textures": ["croûte gratinée", "pâtes_fermes", "sauce_épaisse"],
+        "signature_ingredients": ["Bœuf haché cru", "Pâtes sèches courtes", "Cannelle moulue"],
+        "identity_guardrails": [
+          "La cannelle dans la viande fait le pastitsio ; sans elle c'est un gratin de pâtes à la bolognaise",
+          "La béchamel est liée aux œufs — c'est elle qui prend en flan et permet de trancher des parts nettes",
+          "Les pâtes se cuisent trois minutes en moins : elles terminent au four",
+          "Un quart d'heure de repos avant la découpe, sinon le plat s'affaisse dans l'assiette"
+        ]
+      },
+      "conservation": "Se garde 4 jours au réfrigérateur et se réchauffe par parts, 15 minutes à 180 °C, en couvrant d'aluminium les dix premières minutes. Il se coupe d'ailleurs mieux froid que chaud. Se congèle 3 mois, cru et monté ou déjà cuit : cru, il s'enfourne sans décongélation en ajoutant vingt-cinq minutes ; cuit, il se réchauffe une nuit de décongélation puis 25 minutes au four. C'est l'un des plats du lot qui gagne le plus à être fait en double.",
+      "allergens": ["gluten", "lait", "œuf"]
+    },
+    {
+      "code": "VAR-015",
+      "family": "Moussaka végétarienne",
+      "cuisine_origin": "Grèce",
+      "identity_level": "named_traditional_dish",
+      "category": "moussaka de légumes gratinée",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 45,
+      "cook_minutes": 40,
+      "difficulty": "moyenne",
+      "sources": ["dossier:moussaka-vegetarienne", "marmiton.org", "750g.com"],
+      "canonical_arbitration": "Quatre pages sur deux sites, pour huit, quatre, quatre et deux personnes : le dossier tient tout juste le seuil et il faut le dire. L'une des quatre est intitulée « lasagnes végétariennes façon moussaka » et monte des feuilles de lasagne entre les légumes ; ses légumes et sa béchamel restent comparables et entrent au calcul, ses pâtes non — une moussaka n'en porte pas. L'aubergine est le seul ingrédient présent dans les quatre pages, ce qui la désigne comme la base du plat : quatre lignes, à 62,5, 62,5, 125 et 125 g par personne, médiane 93,75 g par personne, soit 562 g, qu'on écrit 560 g. La courgette est dans deux pages, à 75 et 100 g par personne, médiane 87,5 g par personne, soit 525 g, qu'on écrit 500 g. Le poivron rouge, deux pages également, médiane 65,6 g par personne, soit 394 g, qu'on écrit 400 g. L'oignon, deux pages en pièces, médiane 57,5 g par personne, soit 345 g, qu'on écrit 350 g. L'ail, deux pages, médiane 2,2 g par personne, soit 13 g, écrit 15 g. La tomate : trois lignes exploitables, à 125, 23,75 et 60 g par personne, médiane 60 g par personne, soit 360 g — on écrit 400 g, une boîte, parce qu'une boîte entamée pour 40 g n'a pas de sens en ménage. La béchamel est donnée par trois pages : beurre à 10 et 7,5 g par personne, médiane 8,75 g par personne, soit 52 g, écrit 50 g ; farine à 15, 5 et 7,5 g par personne, médiane 7,5 g par personne, soit 45 g ; lait à 125, 72,5 et 100 ml par personne, médiane 100 ml par personne, soit 600 ml. La muscade est dans deux pages : 0,5 g. Le fromage est le vrai désaccord du dossier. Une page emploie 800 g de feta émietté et 500 g de yaourt grec pour huit — la feta n'a aucune forme au catalogue et le yaourt grec y est bloqué, cette page ne peut donc pas être suivie sur ce point, et c'est une perte qu'il faut nommer plutôt que de la combler par un fromage voisin. Une deuxième pèse 200 g d'emmental râpé pour quatre, soit 50 g par personne ; une troisième 125 g de mozzarella et 100 g de parmesan pour quatre ; la quatrième cite parmesan et emmental sans peser. L'emmental est le seul fromage à la fois pesé et présent dans deux pages : on l'écrit seul, à 41,7 g par personne, soit 250 g, en dessous de la seule ligne pesée parce que la béchamel apporte déjà beaucoup de lacté. Mozzarella, parmesan et feta descendent en variantes. L'huile d'olive, trois lignes autour d'une cuillerée à soupe pour quatre : 60 ml pour six. L'origan et le basilic sont dans deux pages, jamais pesés : 3 g d'origan. Ce que le dossier ne soutient pas : les haricots rouges d'une page, les olives et les câpres d'une autre, la chapelure d'une troisième — une source chacun. Durées : préparation, médiane 47,5 minutes des quatre lignes, écrite 45 ; cuisson, médiane 37,5 minutes, écrite 40.",
+      "plate": {
+        "role": "main",
+        "accepts": ["starch"],
+        "reason": "Légumes et béchamel, sans viande et sans féculent : le plat porte le légume et une part de protéine laitière, mais rien qui rassasie durablement. Du riz, du boulgour ou du pain l'accompagnent — c'est d'ailleurs ainsi qu'une des pages la sert, montée entre des feuilles de lasagne."
+      },
+      "ingredients": [
+        { "form": "Aubergine fraîche", "quantity": 560, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Courgette fraîche", "quantity": 500, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Poivron rouge frais", "quantity": 400, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Tomate concassée en conserve", "quantity": 400, "unit": "g", "role": "sauce", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 350, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Emmental râpé", "quantity": 250, "unit": "g", "role": "fromage", "optional": false },
+        { "form": "Lait entier", "quantity": 600, "unit": "ml", "role": "béchamel", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 60, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Beurre doux", "quantity": 50, "unit": "g", "role": "béchamel", "optional": false },
+        { "form": "Farine de blé T55", "quantity": 45, "unit": "g", "role": "béchamel", "optional": false },
+        { "form": "Ail cru", "quantity": 15, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Origan séché", "quantity": 3, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Muscade moulue", "quantity": 0.5, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 8, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Trancher les aubergines en rondelles d'un centimètre, les saler généreusement et les laisser dégorger trente minutes dans une passoire, puis les éponger. L'eau salée qui s'écoule emporte une partie de l'amertume et surtout ferme les cellules : une aubergine dégorgée boit deux fois moins d'huile qu'une aubergine crue, et c'est ce qui décide si le plat sera gras ou non." },
+        { "n": 2, "instruction": "Ranger les rondelles d'aubergine et de courgette sur des plaques, les badigeonner d'huile d'olive au pinceau et les rôtir vingt minutes à 200 °C en les retournant à mi-cuisson. Au four plutôt qu'à la poêle : la poêle exige trois fois plus d'huile pour le même résultat, et une moussaka végétarienne dont les légumes ont bu un demi-litre d'huile est immangeable." },
+        { "n": 3, "instruction": "Pendant ce temps, faire fondre l'oignon émincé et le poivron en dés dans le reste d'huile, quinze minutes, ajouter l'ail et l'origan, puis les tomates concassées. Laisser réduire vingt minutes jusqu'à une sauce très épaisse. Sans viande pour absorber l'eau, la sauce doit être réduite bien plus qu'une sauce à la bolognaise, sinon le gratin rendra du jus et la béchamel flottera dessus." },
+        { "n": 4, "instruction": "Monter la béchamel : roux au beurre et à la farine, lait froid versé d'un coup en fouettant, cuisson jusqu'à ce qu'elle nappe la cuillère, puis muscade, sel et poivre. La faire épaisse — elle doit tenir en couche sur les légumes et non couler entre eux." },
+        { "n": 5, "instruction": "Monter le plat en couches : la moitié des aubergines, toute la sauce aux légumes, les courgettes, le reste des aubergines, en salant légèrement entre chaque couche. Terminer par la béchamel étalée à la spatule et l'emmental râpé sur toute la surface." },
+        { "n": 6, "instruction": "Enfourner à 180 °C pour quarante minutes, jusqu'à ce que le dessus soit brun doré et que les bords bouillonnent. Laisser reposer vingt minutes avant de servir : une moussaka coupée à la sortie du four s'affaisse, celle qui a reposé se tient à la spatule. C'est vrai des moussakas à la viande, ce l'est deux fois plus d'une moussaka de légumes, qui n'a rien d'autre pour se tenir." }
+      ],
+      "techniques": ["dégorgement", "rôtissage", "réduction", "béchamel", "montage", "gratinage", "repos"],
+      "variants": [
+        "À la feta : 800 g émiettés entre les couches et 500 g de yaourt grec dans la béchamel, mozzarella pour gratiner (marmiton)",
+        "Mozzarella et parmesan à la place de l'emmental, 125 g et 100 g pour quatre (marmiton)",
+        "Aux haricots rouges : 200 g égouttés dans la sauce, avec persil et menthe fraîche, chapelure sur le dessus (750g)",
+        "Montée entre des feuilles de lasagne, avec olives vertes, câpres et piment d'Espelette (marmiton)"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 3, "salty": 3, "acidic": 2, "bitter": 1, "umami": 3, "heat": 0, "pungency": 1, "richness": 4, "freshness": 1, "intensity": 3 },
+        "dominant_flavors": ["aubergine rôtie", "béchamel", "tomate mijotée", "fromage gratiné"],
+        "aroma_families": ["végétal grillé", "lacté", "tomate_cuite", "origan"],
+        "target_textures": ["légumes fondants", "croûte gratinée", "sauce_épaisse"],
+        "signature_ingredients": ["Aubergine fraîche", "Emmental râpé", "Lait entier"],
+        "identity_guardrails": [
+          "Les aubergines se dégorgent et se rôtissent au four : à la poêle elles boivent trois fois plus d'huile",
+          "La sauce aux légumes doit être franchement réduite — sans viande, rien n'absorbe l'eau et le gratin rend du jus",
+          "La béchamel se fait épaisse : c'est la seule chose qui tienne les couches d'un plat sans viande",
+          "Vingt minutes de repos avant de servir, sinon la part s'affaisse dans l'assiette"
+        ]
+      },
+      "conservation": "Se garde 4 jours au réfrigérateur, couvert, et se réchauffe par parts 15 minutes à 180 °C. Comme le pastitsio, il se coupe mieux froid. Se congèle 3 mois, cuit et refroidi, découpé en parts individuelles filmées séparément ; réchauffage direct au four, 30 minutes à 180 °C sous aluminium. Les légumes rôtis et la sauce se préparent 3 jours à l'avance et se gardent séparément, ce qui ramène le montage à dix minutes.",
+      "allergens": ["lait", "gluten"]
+    },
+    {
+      "code": "VAR-016",
+      "family": "Chich taouk",
+      "cuisine_origin": "Levant",
+      "identity_level": "named_traditional_dish",
+      "category": "brochette",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 15,
+      "difficulty": "facile",
+      "sources": ["dossier:chich-taouk", "marmiton.org", "chefsimon.com"],
+      "canonical_arbitration": "Cinq pages sur deux sites. La cinquième est à écarter d'emblée : c'est une viande hachée liée à la mie de pain et cuite dans une sauce au fromage frais, qui n'a de chich taouk que le nom. Restent quatre pages, dont deux — l'une marmiton, l'autre chefsimon — sont si proches qu'elles décrivent la même version : 900 g de blancs de poulet pour six, quatre gousses d'ail, trois cuillerées à soupe d'huile d'olive, deux citrons, du thym, de la cannelle, du piment, une dose de safran. Cette convergence sur deux sites distincts est ce qui rend ce dossier fiable malgré sa minceur. Le poulet : deux lignes pesées, 150 g par personne dans l'une et dans l'autre, médiane 150 g par personne, soit 600 g pour quatre. Les deux autres pages comptent des filets ou des escalopes sans les peser. L'ail : quatre lignes en gousses, à 3,33, 3,33, 12,5 et 7,5 g par personne, médiane 5,4 g par personne, soit 21 g, qu'on écrit 20 g. La page à dix gousses pour deux personnes est isolée et tire la médiane vers le haut sans l'emporter. L'huile d'olive : quatre lignes, à 7,5, 7,5, 3,75 et 15 g par personne, médiane 7,5 g par personne, soit 30 ml. Le citron est compté en pièces par les quatre pages, deux pour six, deux pour six, un pour quatre : médiane un tiers de citron par personne, soit un citron et demi pour quatre. On écrit 1,5 citron, à presser sur la viande. Le thym : trois pages, une cuillerée à café pour six deux fois et une cuillerée à soupe pour quatre une fois, médiane 0,46 g par personne, soit 1,8 g, écrit 2 g. Deux pages le disent séché, on écrit le thym séché. La cannelle est dans deux pages sur cinq, une cuillerée à café pour six : 1,5 g. Elle surprend dans une marinade de poulet et c'est pourtant elle, avec le safran, qui fait la signature levantine du plat. Le piment est dans deux pages, une cuillerée à café pour six, l'une précisant « doux ou fort » : 1,5 g de piment en poudre. Le safran est dans deux pages, une dose chacune, jamais pesé : on écrit 0,3 g. Le sumac, présent dans deux pages dont l'une le donne pour facultatif, n'a pas de forme au catalogue : il descend en variante et sa perte est réelle, c'est l'acidité fruitée qui caractérise le plat au Levant. Le cumin d'une page, le yaourt bulgare d'une autre, le concentré de tomates d'une troisième sont à une source chacun. Le sel n'est pesé nulle part : 5 g. Durées : préparation, médiane 10 minutes des quatre lignes, écrite 15 parce que la découpe des morceaux et l'embrochage prennent ce temps ; cuisson, médiane 15 minutes des trois lignes exploitables. Les deux heures de marinade au moins ne se comptent ni en préparation ni en cuisson, et il vaut mieux compter la nuit.",
+      "plate": {
+        "role": "main",
+        "accepts": ["starch", "vegetables"],
+        "reason": "Des brochettes de poulet mariné : une protéine seule, sans féculent ni légume. Riz, boulgour, pain plat ou salade sont nécessaires pour faire un repas, et c'est ainsi que le plat se sert au Levant."
+      },
+      "ingredients": [
+        { "form": "Blanc de poulet cru, sans peau", "quantity": 600, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Citron jaune frais", "quantity": 1.5, "unit": "u", "role": "marinade", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 30, "unit": "ml", "role": "marinade", "optional": false },
+        { "form": "Ail cru", "quantity": 20, "unit": "g", "role": "marinade", "optional": false },
+        { "form": "Thym séché", "quantity": 2, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Cannelle moulue", "quantity": 1.5, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Piment en poudre", "quantity": 1.5, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Safran", "quantity": 0.3, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 5, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Couper les blancs de poulet en cubes réguliers de trois centimètres. Plus petits, ils sèchent avant d'avoir coloré ; plus gros, l'extérieur brûle avant que le centre soit cuit. La régularité compte davantage que la taille exacte : des morceaux inégaux sur la même brochette ne seront jamais cuits ensemble." },
+        { "n": 2, "instruction": "Écraser l'ail en pâte avec le sel — au mortier ou à plat sur la planche, avec le côté du couteau. L'ail en pâte enrobe la viande, l'ail haché reste en morceaux qui brûlent sur le gril et donnent de l'amertume." },
+        { "n": 3, "instruction": "Faire tremper le safran dans une cuillerée à soupe d'eau chaude dix minutes, le temps qu'il donne sa couleur. Jeté sec dans une marinade huileuse, il ne se diffuse pas : le safran est soluble dans l'eau, pas dans l'huile, et c'est pourquoi cette étape n'est pas une coquetterie." },
+        { "n": 4, "instruction": "Mélanger l'huile d'olive, le jus des citrons, l'ail en pâte, le thym, la cannelle, le piment et l'infusion de safran, y rouler les cubes de poulet et laisser mariner au réfrigérateur deux heures au minimum, une nuit de préférence. Ne pas dépasser douze heures : au-delà, l'acide du citron dénature la surface de la viande et la rend farineuse à la cuisson." },
+        { "n": 5, "instruction": "Enfiler les morceaux sur des brochettes sans les tasser, en laissant un demi-centimètre entre chaque. Serrés, ils cuisent à la vapeur les uns contre les autres et ressortent blancs et mous ; espacés, la chaleur circule et chaque face colore." },
+        { "n": 6, "instruction": "Cuire sur un gril très chaud, au barbecue ou sur une plaque en fonte, six à huit minutes en tournant les brochettes tous les deux tiers de tour. Le poulet est cuit dès que le jus qui perle est clair — au-delà de deux minutes de plus, le blanc devient sec et rien ne le rattrape. Laisser reposer deux minutes avant de servir, avec le reste de citron en quartiers." }
+      ],
+      "techniques": ["marinade", "infusion du safran", "embrochage", "grillade"],
+      "variants": [
+        "Marinade au yaourt : un yaourt bulgare, dix gousses d'ail, un citron, une cuillerée de paprika et une de thym séché (chefsimon)",
+        "Une cuillerée à café de sumac dans la marinade, ou saupoudré au service (marmiton, chefsimon)",
+        "Une cuillerée à café de cumin en plus de la cannelle (marmiton)",
+        "Version simplifiée au concentré de tomates, ail, citron et huile d'olive, sans épices (marmiton)"
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": { "sweet": 1, "salty": 3, "acidic": 4, "bitter": 0, "umami": 2, "heat": 2, "pungency": 4, "richness": 2, "freshness": 3, "intensity": 4 },
+        "dominant_flavors": ["ail", "citron", "cannelle", "poulet grillé"],
+        "aroma_families": ["ail", "agrume", "cannelle", "safran"],
+        "target_textures": ["chair_moelleuse", "arêtes grillées", "tendre"],
+        "signature_ingredients": ["Blanc de poulet cru, sans peau", "Ail cru", "Cannelle moulue"],
+        "identity_guardrails": [
+          "L'ail se compte en grammes, pas en pincées : vingt grammes pour quatre, écrasés en pâte",
+          "La cannelle et le safran font l'identité levantine du plat — sans elles ce sont des brochettes citron-ail",
+          "Le safran s'infuse à l'eau chaude avant d'entrer dans la marinade, il ne se diffuse pas dans l'huile",
+          "Pas plus de douze heures de marinade : l'acide du citron finit par rendre la chair farineuse"
+        ]
+      },
+      "conservation": "Le poulet mariné cru se garde 24 heures au réfrigérateur et se congèle 2 mois dans sa marinade, ce qui en fait un des plats les plus rapides du lot une fois sorti la veille. Cuit, il se garde 3 jours au réfrigérateur et se mange froid en salade ou dans un pain plat ; réchauffé, il sèche. Ne pas recongeler après cuisson.",
+      "allergens": []
+    },
+    {
+      "code": "VAR-017",
+      "family": "Labneh",
+      "cuisine_origin": "Levant",
+      "identity_level": "named_traditional_dish",
+      "category": "condiment",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 15,
+      "cook_minutes": 0,
+      "difficulty": "facile",
+      "sources": ["dossier:labneh", "marmiton.org", "chefsimon.com"],
+      "canonical_arbitration": "Six pages, dont trois n'expliquent pas comment faire un labneh mais s'en servent : une salade de chou-rave et d'avocat, un velouté de carottes aux agrumes, un labneh au pamplemousse rose acheté tout fait — 400 g de labneh figurent d'ailleurs dans sa liste, ce qui dit assez qu'elle ne l'égoutte pas elle-même. Restent trois pages, deux sur marmiton et une sur chefsimon, qui décrivent la seule opération du plat : saler un yaourt et le laisser s'égoutter. Le yaourt : deux lignes pesées, 500 g pour huit et 500 g pour quatre, soit 62,5 et 125 g par personne, médiane 93,75 g par personne, soit 562 g, qu'on écrit 560 g pour six. La forme est un arbitrage assumé : les deux pages pesées emploient l'une des yaourts à la grecque, l'autre du skyr ou un mélange de yaourt de vache et de brebis, et la troisième du fromage blanc battu épais. Le yaourt grec est bloqué au catalogue et le skyr n'y figure pas ; on écrit le yaourt nature, qui rend simplement plus de petit-lait — l'égouttage est plus long, le résultat le même. Le sel est le point où le dossier ne peut pas être suivi tel quel : la seule ligne pesée donne 1 gramme pour huit personnes, ce qui est un assaisonnement de fin et non le sel qui fait l'égouttage. On écrit 4 g pour 560 g de yaourt, chiffre décidé et non mesuré, en le signalant : c'est le sel qui rompt le gel du yaourt et libère le petit-lait, et sans lui l'égouttage prend le double de temps pour un résultat granuleux. L'huile d'olive est dans cinq pages sur six, jamais pesée sauf dans le velouté qui en compte une cuillerée à café par personne : on écrit 40 ml pour six. La menthe est dans trois pages, cinq feuilles pour huit dans l'une, sans poids dans les deux autres : 8 g. Le paprika est dans deux pages, une pincée chacune : 1 g. Le zaatar est dans deux pages sur deux sites et c'est la perte la plus nette de cette fiche — il n'a aucune forme au catalogue et rien ne le remplace, ni le thym seul ni le sésame seul. Il descend en variante et il faut le lire comme un manque, pas comme un choix. Le sumac, les olives noires, les amandes effilées et l'ail semoule sont à une source chacun. Aucune des trois pages ne cuit quoi que ce soit : la cuisson est nulle, et les douze à vingt-quatre heures d'égouttage ne se comptent ni en préparation ni en cuisson. C'est le plat du lot dont le temps de travail réel est le plus court — un quart d'heure — et le temps d'attente le plus long.",
+      "plate": {
+        "role": "component",
+        "accepts": [],
+        "reason": "C'est une base : un fromage frais salé qu'on tartine, qu'on trempe, qu'on pose sous des légumes rôtis ou qu'on allonge en sauce. Une portion se compte à la cuillère, jamais comme un plat. Préparé une fois, il sert toute la semaine à des usages différents — c'est exactement ce qu'on attend d'un composant."
+      },
+      "ingredients": [
+        { "form": "Yaourt nature", "quantity": 560, "unit": "g", "role": "base", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 40, "unit": "ml", "role": "finition", "optional": false },
+        { "form": "Menthe fraîche", "quantity": 8, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Paprika doux", "quantity": 1, "unit": "g", "role": "finition", "optional": false },
+        { "form": "Sel fin", "quantity": 4, "unit": "g", "role": "égouttage", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Mélanger le yaourt et le sel dans un saladier, à la cuillère, jusqu'à ce que le sel ait entièrement disparu. Le sel n'est pas ici un assaisonnement mais l'agent de l'opération : il rompt le gel du yaourt et fait sortir le petit-lait. Un yaourt non salé s'égoutte deux fois plus lentement et rend une pâte granuleuse." },
+        { "n": 2, "instruction": "Tapisser une passoire d'un linge fin propre ou d'une double épaisseur de gaze, y verser le yaourt salé, rabattre les coins du linge par-dessus, et poser la passoire sur un saladier assez profond pour que le fond ne trempe jamais dans le petit-lait qui s'écoule." },
+        { "n": 3, "instruction": "Laisser égoutter au réfrigérateur douze heures pour une texture de fromage à tartiner, vingt-quatre pour une pâte assez ferme pour être roulée en boules. C'est le seul réglage du plat : le temps décide de la texture, et rien d'autre. Vider le petit-lait une fois en cours de route." },
+        { "n": 4, "instruction": "Récupérer le labneh dans le linge, le lisser à la cuillère et le goûter. Il doit être franchement acidulé et légèrement salé ; s'il paraît fade, c'est que le yaourt de départ l'était, et une pincée de sel ajoutée maintenant ne rattrape que la moitié du chemin." },
+        { "n": 5, "instruction": "Étaler le labneh en couche épaisse dans une assiette creuse, creuser un sillon au dos de la cuillère, y verser l'huile d'olive et parsemer de menthe ciselée et de paprika. Le sillon n'est pas décoratif : il retient l'huile au centre au lieu de la laisser filer sur les bords de l'assiette." }
+      ],
+      "techniques": ["salage", "égouttage", "repos au froid"],
+      "variants": [
+        "Au zaatar, une à deux cuillerées à café saupoudrées sur l'huile (marmiton, chefsimon)",
+        "Citronné : jus et zeste d'un citron mêlés au labneh, sumac, olives noires et amandes effilées grillées (chefsimon)",
+        "À l'ail : de l'ail en semoule mêlé au yaourt avant égouttage, menthe et paprika (marmiton)",
+        "Roulé en boules et conservé sous huile d'olive dans un bocal, après vingt-quatre heures d'égouttage",
+        "À base de fromage blanc battu épais plutôt que de yaourt, sans égouttage (marmiton)"
+      ],
+      "sensory": {
+        "profile": "tangy_creamy",
+        "scores": { "sweet": 1, "salty": 3, "acidic": 4, "bitter": 0, "umami": 2, "heat": 0, "pungency": 1, "richness": 3, "freshness": 4, "intensity": 2 },
+        "dominant_flavors": ["yaourt acidulé", "huile d'olive", "menthe"],
+        "aroma_families": ["lacté", "herbacé", "huile_olive"],
+        "target_textures": ["crémeux", "onctueux et dense"],
+        "signature_ingredients": ["Yaourt nature", "Huile d'olive vierge extra", "Menthe fraîche"],
+        "identity_guardrails": [
+          "Le sel entre avant l'égouttage et non après : c'est lui qui fait sortir le petit-lait",
+          "Le temps d'égouttage est le seul réglage — douze heures pour tartiner, vingt-quatre pour rouler en boules",
+          "Le petit-lait ne doit jamais retremper le fond de la passoire, sinon l'égouttage s'arrête",
+          "Ce n'est pas un yaourt assaisonné : sans les douze heures d'égouttage, il n'y a pas de labneh"
+        ]
+      },
+      "conservation": "Se garde 5 jours au réfrigérateur en récipient fermé, sans son huile, qu'on verse au moment de servir. Roulé en boules et couvert d'huile d'olive dans un bocal, il se garde 3 semaines au réfrigérateur — c'est la conservation traditionnelle. Ne se congèle pas : le gel se rompt et la pâte ressort granuleuse et pleine d'eau. Le petit-lait recueilli se garde 3 jours et remplace une partie du liquide d'une pâte à pain ou d'une soupe froide.",
+      "allergens": ["lait"]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "dish": "Pâtes fraîches maison",
+  "slug": "pates-fraiches-maison",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bouillon-de-poule-aux-pates-fraiches-maison_55975.aspx",
+      "site": "marmiton.org",
+      "nom": "Bouillon de poule aux pâtes fraiches maison : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "2 l d'eau",
+        "2 cuisses de poulet",
+        "2 carottes",
+        "1 poireau",
+        "1 branche de céleri",
+        "1 oignon",
+        "muscade",
+        "ciboulette",
+        "300 g de farine",
+        "1 cuillère à soupe d'huile",
+        "3 oeufs",
+        "de sel",
+        "eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 19,
+        "signes": 1267,
+        "sha256": "84ee2ed8c683a631"
+      },
+      "sha256_page": "1587c0dc832d28b2"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pates-fraiches-maison_336312.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâtes fraîches maison : la meilleure recette",
+      "portions": "8 Personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "150 g de farine",
+        "150 g de semoule",
+        "3 oeufs",
+        "5 g de sel",
+        "1 cuillère à café d'huile d'olive",
+        "1 cuillère à café de tomate"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 606,
+        "sha256": "60f5e7305b0e103d"
+      },
+      "sha256_page": "b44fc82776e50087"
+    },
+    {
+      "url": "https://www.750g.com/pates-fraiches-maison-r70424.htm",
+      "site": "750g.com",
+      "nom": "Pâtes fraîches maison et express",
+      "portions": "6 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT4M",
+      "ingredients": [
+        "20 cl d'eau",
+        "2 oeufs",
+        "150 g de semoule",
+        "500 g de farine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 629,
+        "sha256": "a810c88d640dc5fb"
+      },
+      "sha256_page": "bd30f59001fd20b4"
+    },
+    {
+      "url": "https://www.750g.com/pates-fraiches-maison-r85471.htm",
+      "site": "750g.com",
+      "nom": "Pâtes fraîches maison  faciles",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT3M",
+      "ingredients": [
+        "1 c. à s. d'huile d'olive",
+        "3 oeufs",
+        "300 g de farine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 1284,
+        "sha256": "509cd71ae5a414d6"
+      },
+      "sha256_page": "2ec1aee9812655cb"
+    }
+  ]
+}

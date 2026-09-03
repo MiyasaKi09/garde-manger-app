@@ -1,0 +1,172 @@
+{
+  "dish": "Épinards à la crème",
+  "slug": "epinards-a-la-creme",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_epinards-cremeux_27147.aspx",
+      "site": "marmiton.org",
+      "nom": "Epinards crémeux : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1.5 kg d'épinards",
+        "5 cl de crème fraîche",
+        "30 g de beurre",
+        "1 pincée de muscade râpée",
+        "1 gousse d'ail",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 281,
+        "sha256": "fc7699660599e005"
+      },
+      "sha256_page": "25a8b377969696d7"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tagliatelles-a-la-creme-d-epinards_20936.aspx",
+      "site": "marmiton.org",
+      "nom": "Tagliatelles à la crème d'épinards : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "800 g de tagliatelles fraîches",
+        "500 g d'épinards",
+        "75 g de beurre",
+        "60 g de crème fraîche",
+        "20 cl de lait",
+        "1 jaune d'oeuf",
+        "100 g de parmesan râpé",
+        "1 pincée de muscade moulue",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 380,
+        "sha256": "eba14d169c502ed9"
+      },
+      "sha256_page": "8d1463c0ba05a3bb"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_epinards-a-la-creme_25184.aspx",
+      "site": "marmiton.org",
+      "nom": "Epinards à la crème : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "2 kg d'épinards frais",
+        "10 cl de crème fraîche",
+        "30 g de beurre",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 237,
+        "sha256": "216d0dce9b7cffdd"
+      },
+      "sha256_page": "dda18efc3e222d9c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/tastygourmandise/recettes/lasagne-epinards-au-saumon-a-la-creme",
+      "site": "chefsimon.com",
+      "nom": "Lasagne épinards au saumon à la crème",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "Pâte à lasagne: 500g",
+        "Saumon en pavé: 300g",
+        "Grande courgette: 1",
+        "Calamar coupé en rondelles: 300g",
+        "Crème fraîche: 1L",
+        "Quelques feuilles d’aneth frais",
+        "Une noisette de beurre",
+        "Huile d'olive: 6 càs",
+        "Mozarelle râpée: 100g",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 117,
+        "sha256": "90761f213565ac7b"
+      },
+      "sha256_page": "4e7e93b0538887ed"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/boulgour-aux-epinards-champignons-et-bacon-a-la-creme",
+      "site": "chefsimon.com",
+      "nom": "Boulgour aux épinards, champignons et bacon, à la crème",
+      "portions": "1 personne",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H22M",
+      "ingredients": [
+        "130 g de boulgour cuit",
+        "50 g d'épinards décongelés et égouttés",
+        "40 g de bacon",
+        "1 petit oignon rouge de 40 g",
+        "30 g de crème semi épaisse à 4% de MG",
+        "3 champignons de Paris pour 40 g",
+        "1 pschitt d'huile de pépins de raisin",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 548,
+        "sha256": "e16d13ff641c65b3"
+      },
+      "sha256_page": "22c9f9c39373cfbd"
+    },
+    {
+      "url": "https://www.750g.com/epinards-a-la-creme-r53451.htm",
+      "site": "750g.com",
+      "nom": "Épinards à la crème",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "Noix de muscade",
+        "Sel",
+        "20g de beurre",
+        "1 échalote",
+        "100g de Philadelphia Nature",
+        "800g d'épinards nettoyés"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 832,
+        "sha256": "d65c4d7c89887392"
+      },
+      "sha256_page": "bf4829dbfdbf9185"
+    },
+    {
+      "url": "https://www.750g.com/saumon-aux-epinards-et-creme-fraiche-r50903.htm",
+      "site": "750g.com",
+      "nom": "Saumon aux épinards et crème fraîche",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "Sel",
+        "Poivre",
+        "2 citrons",
+        "2 briquettes (15 cl) de crème fraîche allégée 15% mg",
+        "1 kg de jeunes épinards surgelés",
+        "4 pavés de saumon ou 1 grosse darne"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 308,
+        "sha256": "9f99d2eb232a18b7"
+      },
+      "sha256_page": "e0d6fc33c614bbf7"
+    }
+  ]
+}

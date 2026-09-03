@@ -1,0 +1,137 @@
+{
+  "dish": "Pâte à pizza",
+  "slug": "pate-a-pizza",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pate-a-pizza-fine_29544.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâte à pizza fine  : la meilleure recette",
+      "portions": "3 pâtes fines",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "500 g de farine",
+        "1 sachet de levure de boulangerie express",
+        "1 cuillère à café de sel",
+        "0.25 l d'eau tiède",
+        "1 cuillère à café de sucre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 949,
+        "sha256": "d84868d3ff5ec3ad"
+      },
+      "sha256_page": "088577a756c2a98c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pate-a-pizza-pour-map-machine-a-pain_50364.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâte à pizza pour MAP (machine à pain) : la meilleure recette",
+      "portions": "2 pizzas",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "25 cl d'eau tiéde",
+        "5 cl d'huile d'olive",
+        "0.5 cuillère à café de sel",
+        "440 g de farine blanche",
+        "1 sachet de levure boulangère spéciale pain",
+        "herbes de Provence",
+        "fromage râpé (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 293,
+        "sha256": "aedefd3b35d727de"
+      },
+      "sha256_page": "94a6a97e6063a27b"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pate-a-pizza-inratable_31623.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâte à pizza inratable : la meilleure recette",
+      "portions": "2 grandes pizzas",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "500 g de farine",
+        "20 g de fécule de pomme de terre",
+        "10 g de sucre",
+        "10 g de sel",
+        "25 g de levure de boulanger fraîche (rayon des gâteaux dans les supermarchés)",
+        "30 cl d'eau environ",
+        "3 cuillères à soupe d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 840,
+        "sha256": "db4ff1ca894e3322"
+      },
+      "sha256_page": "c5c57a2eebe95f5f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/pate-a-pizza-sans-petrissage-a-fermentation-lente",
+      "site": "chefsimon.com",
+      "nom": "Pâte à pizza sans pétrissage à fermentation lente",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "500 g de farine Manitoba T00 ou spéciale pizza",
+        "300 à 350 g d'eau à température ambiante",
+        "5 g de sel",
+        "5 g de levure sèche instantanée (lyophilisée)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 983,
+        "sha256": "cf4c9f381d8768b7"
+      },
+      "sha256_page": "d11c740da46bc066"
+    },
+    {
+      "url": "https://www.750g.com/pate-a-pizza-r5432.htm",
+      "site": "750g.com",
+      "nom": "Pâte à pizza à la main",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "250 g de farine",
+        "15 cl d'eau",
+        "5 cl d'huile d'olive",
+        "20 g de levure de boulanger fraîche",
+        "1 c. à c. de sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 780,
+        "sha256": "b80669a7e102f002"
+      },
+      "sha256_page": "8431c6a514ae5585"
+    },
+    {
+      "url": "https://www.750g.com/pate-a-pizza-maison-r81986.htm",
+      "site": "750g.com",
+      "nom": "Pâte à pizza maison",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "150g d'eau",
+        "23g d'huile d'olive",
+        "5g de levure sèche Francine",
+        "5g de gros sel",
+        "250g de farine (+50/80g pour le pétrissage)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 993,
+        "sha256": "fa91643699b6b74a"
+      },
+      "sha256_page": "f30849ceba238122"
+    }
+  ]
+}

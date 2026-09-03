@@ -1,0 +1,205 @@
+{
+  "dish": "Wrap au poulet",
+  "slug": "wrap-au-poulet",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_wraps-poulet-crudites_345629.aspx",
+      "site": "marmiton.org",
+      "nom": "Wraps poulet crudités : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 filets de poulets",
+        "8 feuilles de laitues",
+        "2 tomates",
+        "3 poignées d'oignons frits",
+        "de ciboulette",
+        "1 pincée de sel",
+        "1 pincée de poivre",
+        "huile d'olive",
+        "1 cuillère à café de curry"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 582,
+        "sha256": "ca91264913916287"
+      },
+      "sha256_page": "75f37ab8f33d6652"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_wraps-au-poulet-pane_231187.aspx",
+      "site": "marmiton.org",
+      "nom": "Wraps au poulet pané : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 galettes de blé , type wrap",
+        "3 escalopes de poulet",
+        "1 salade verte",
+        "4 tranches de cheddar",
+        "2 tomates",
+        "10 cl de mayonnaise",
+        "1 oeuf",
+        "75 g de chapelure",
+        "huile de tournesol"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 556,
+        "sha256": "7fdcc050c0999ef9"
+      },
+      "sha256_page": "a1f7a231f54bbb22"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_wrap-chaud-poulet-moutarde_528714.aspx",
+      "site": "marmiton.org",
+      "nom": "Wrap chaud poulet moutarde : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "8 galettes de blé",
+        "2 filets de poulets",
+        "100 g de gruyère râpé",
+        "3 cuillères à soupe de crème",
+        "1 cuillère à soupe de moutarde",
+        "huile d'olive",
+        "3 poignées de cacahuètes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 408,
+        "sha256": "7da9d8bbecebc576"
+      },
+      "sha256_page": "132ced44e34842f4"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ce-que-les-gourmands-disent/recettes/wrap-au-poulet",
+      "site": "chefsimon.com",
+      "nom": "Wrap au poulet",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "8 galettes de blé",
+        "3 escalopes de poulet",
+        "2-3 grosses tomates",
+        "100g de salade",
+        "4 grosses cuillères à soupe de farine",
+        "3 jaunes d’œufs",
+        "5 grosses poignées de céréales non sucrées",
+        "100g de gruyère",
+        "de la sauce salade",
+        "du sel et du poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1363,
+        "sha256": "b4fd124121ea4f8c"
+      },
+      "sha256_page": "913e9aad26b0636a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/le-gruyere-aop/recettes/wrap-de-graines-germees-au-poulet-et-au-gruyere",
+      "site": "chefsimon.com",
+      "nom": "Wrap de graines germées au poulet et au gruyère",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "2 grandes galettes de blé type tortilla",
+        "360 g de courgette",
+        "4 cuillères à soupe de moutarde douce au miel",
+        "4 aiguillettes de poulet cuites",
+        "6 belles lamelles de Gruyère AOP Classique",
+        "40 g de jeunes pousses variées : luzerne, chou rouge, moutarde de toutes les couleurs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 563,
+        "sha256": "667b6d488a86d05c"
+      },
+      "sha256_page": "400090165a321942"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/wraps-de-poulet-a-la-mexicaine",
+      "site": "chefsimon.com",
+      "nom": "Wraps de poulet à la mexicaine",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "2  wraps au blé complet",
+        "1  blanc de poulet",
+        "1/2  poivron vert",
+        "1/2  poivron rouge",
+        "1/2  oignon",
+        "4 poignées de salade verte",
+        "4 cuil. à soupe de guacamole",
+        "4 cuil. à soupe de crème fraîche épaisse",
+        "mélange malin mexicain Ducros",
+        "1 cuil. à soupe d’huile d’olive",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 186,
+        "sha256": "f35dfad27cc072e1"
+      },
+      "sha256_page": "d99af9bc6898fb00"
+    },
+    {
+      "url": "https://www.750g.com/wrap-de-poulet-r67754.htm",
+      "site": "750g.com",
+      "nom": "Wrap de poulet",
+      "portions": "5 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 sachet de tortilla",
+        "10 nuggets de poulet",
+        "2 oignons",
+        "Sauce  au choix (ketchup , mayonnaise , pomme frite)",
+        "Salade",
+        "3 tomates"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 655,
+        "sha256": "e69f8283665028a8"
+      },
+      "sha256_page": "0bb7195e48fef1a7"
+    },
+    {
+      "url": "https://www.750g.com/roules-au-poulet-mini-wraps-r71757.htm",
+      "site": "750g.com",
+      "nom": "Roulés au poulet (mini wraps)",
+      "portions": "5 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "Oignons",
+        "Poivre",
+        "Curry",
+        "Fromage frais kiri",
+        "Origan",
+        "Galettes",
+        "Thym",
+        "Tomates séchées",
+        "Poivrons",
+        "Oignons",
+        "Escalopes de poulet"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 240,
+        "sha256": "471793f4d85e8c88"
+      },
+      "sha256_page": "643cbb3e6a013b54"
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "dish": "Escalope milanaise",
+  "slug": "escalope-milanaise",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_escalopes-milanaises-comme-en-italie_55750.aspx",
+      "site": "marmiton.org",
+      "nom": "Escalopes milanaises comme en Italie : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "2 escalopes de veau",
+        "chapelure",
+        "parmesan râpé",
+        "1 oeuf",
+        "1 citron",
+        "3 tomates",
+        "roquette",
+        "basilic (frais de préférence)",
+        "huile d'olive",
+        "vinaigre balsamique",
+        "beurre",
+        "farine",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 1177,
+        "sha256": "62e763fee308742f"
+      },
+      "sha256_page": "1f5fcbf6766b438f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_escalope-milanaise-italie_41593.aspx",
+      "site": "marmiton.org",
+      "nom": "Escalope milanaise (Italie) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "4 escalopes de veau bien fine",
+        "10 biscottes (pour la chapelure)",
+        "20 g de farine",
+        "1 oeuf",
+        "1 citron"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 933,
+        "sha256": "8110c055b14540fb"
+      },
+      "sha256_page": "de1af54e18db5bac"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_risotto-de-pates-au-chorizo-escalope-de-veau-milanaise_225434.aspx",
+      "site": "marmiton.org",
+      "nom": "Risotto de pâtes au chorizo, escalope de veau milanaise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "150 g de parmesan non râpé",
+        "150 g de chorizo (choisir un très bon chorizo non tranché dans un magasin spécialisé)",
+        "350 g de coquillettes ou autres pâtes",
+        "10 cl de vin blanc",
+        "2 cubes de bouillon de volaille dilués dans 1 l d'eau",
+        "2 oignons",
+        "50 g de beurre",
+        "2 cuillères à soupe d'huile d'olive",
+        "poivre et sel",
+        "12 escalopes de veau environ 50 g par pièce (vous pouvez en prévoir un peu plus en cas de grande faim)",
+        "150 g de parmesan râpé",
+        "100 g de chapelure",
+        "poivre",
+        "sel",
+        "2 oeufs",
+        "100 g de farine blanche",
+        "500 g de tomates pelées concassées",
+        "1 pincée de herbes aromatiques italiennes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 24,
+        "signes": 2017,
+        "sha256": "c83c6f008d988fff"
+      },
+      "sha256_page": "c806b7ec200951e4"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/keskonmangemaman/recettes/escalope-de-poulet-pane-a-la-milanaise",
+      "site": "chefsimon.com",
+      "nom": "Escalope de poulet pané à la milanaise",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "4 escalopes de poulet",
+        "1 œuf battu",
+        "100 g de parmesan râpé",
+        "100 g de poudre d'amandes",
+        "3 à 4 c. à soupe d'huile neutre",
+        "sel et poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "3e7b070fefc1ec88"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/popotte/recettes/escalope-de-veau-a-la-milanaise-e2c56b08-7cc8-4343-9e13-3cf623ee3c43",
+      "site": "chefsimon.com",
+      "nom": "Escalope de veau à la milanaise",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "4 escalopes de veau fines",
+        "2 œufs battus",
+        "50 g de parmesan",
+        "Chapelure",
+        "Mélange d'épices italiens (origan, thym,…)",
+        "Sel, poivre",
+        "Huile de friture"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "7a8b92aabfa3dad0"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clementine-8b16a900-a596-45c5-9c12-3cd5ff02a6bc/recettes/escalope-de-veau-a-la-milanaise-d4367f6c-7232-4105-82c9-19c036665f1a",
+      "site": "chefsimon.com",
+      "nom": "Escalope de veau à la milanaise",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 escalopes de veau",
+        "100 g de chapelure",
+        "farine",
+        "1 œuf battu",
+        "60 g de beurre",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "f252b97597abb424"
+    },
+    {
+      "url": "https://www.750g.com/l-escalope-milanaise-r205377.htm",
+      "site": "750g.com",
+      "nom": "L'escalope milanaise",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "4 escalopes de veau",
+        "2 oeufs",
+        "200 g de chapelure",
+        "100 g de farine",
+        "100 g de parmesan râpé",
+        "¼ c. à c. de sel ou sel fin",
+        "¼ c. à c. de poivre",
+        "4 c. à s. d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 563,
+        "sha256": "684ab81d350a1241"
+      },
+      "sha256_page": "1f9627ed9d5e7326"
+    },
+    {
+      "url": "https://www.750g.com/la-meilleure-facon-de-faire-une-escalope-milanaise-r208189.htm",
+      "site": "750g.com",
+      "nom": "La meilleure façon de faire une escalope milanaise",
+      "portions": "4 pièces",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 escalopes de veau  de 160g chacune",
+        "30 g de beurre",
+        "2 cl d'huile",
+        "100 g de chapelure  de mie de pain",
+        "50 g de farine",
+        "1 oeuf",
+        "Sel ou sel fin",
+        "Poivre blanc",
+        "50 g de parmesan",
+        "1 citron"
+      ],
+      "etapes_empreinte": {
+        "nombre": 16,
+        "signes": 1430,
+        "sha256": "aae44fb13ff3e383"
+      },
+      "sha256_page": "f8e2a4aff1015c48"
+    },
+    {
+      "url": "https://www.750g.com/escalope-a-la-milanaise-sauce-aux-tomate-cerise-et-gratin-de-pates-r33957.htm",
+      "site": "750g.com",
+      "nom": "Escalope à la milanaise sauce aux tomate cerise et gratin de pâtes",
+      "portions": "2 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "2 escalopes de veau",
+        "Coquillette",
+        "1 boule de mozzarella",
+        "1 trait de crème liquide",
+        "1 citron",
+        "50 g de parmesan",
+        "Huile d'olive",
+        "50 g de farine",
+        "50 g de chapelure",
+        "1 gousse d'ail",
+        "2 oeufs",
+        "10 tomates cerise",
+        "Basilic",
+        "Thym"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 839,
+        "sha256": "5c95873224fc6cf2"
+      },
+      "sha256_page": "4755cef0db4a637d"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "dish": "Curry de légumes",
+  "slug": "curry-de-legumes",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_curry-de-legumes-vegetarien_88522.aspx",
+      "site": "marmiton.org",
+      "nom": "Curry de légumes végétarien : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "400 g de carottes",
+        "2 courgettes",
+        "1 patate douce (300-400 g)",
+        "3 échalotes",
+        "3 gousses d'ail",
+        "30 cl de crème de coco",
+        "50 g de pâte de curry rouge",
+        "2 cuillères à soupe de concentré de tomates",
+        "citron vert",
+        "0.5 cuillère à soupe de cumin",
+        "1 petit piment",
+        "de basilic",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 634,
+        "sha256": "06250b82387e5054"
+      },
+      "sha256_page": "3f7a0a95e63fa6fd"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_saute-de-porc-au-curry-et-legumes_62470.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauté de Porc au curry et légumes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 kg d'échine de porc",
+        "8 pommes de terre fermes",
+        "2 patates douces",
+        "4 tomates",
+        "1 poivron jaune (ou rouge à defaut)",
+        "4 oignons",
+        "2 gousses d'ail",
+        "2 cuillères à soupe de curry jaune",
+        "1 petit piment",
+        "poivre",
+        "sel",
+        "huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 18,
+        "signes": 1176,
+        "sha256": "b0e822234e13cd07"
+      },
+      "sha256_page": "996c0f53bf16aa32"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-au-curry-et-petits-legumes_26874.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet au curry et petits légumes : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 cuillère à soupe d'huile d'olive",
+        "1 oignon",
+        "1 poivron (n'importe quelle couleur ; pour ma part, je préfère le jaune)",
+        "2 champignons de Paris",
+        "4 tomates",
+        "1 courgette",
+        "6 aiguillettes de poulet",
+        "1 cuillère à soupe de crème fraîche",
+        "25 cl de lait",
+        "curry",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 651,
+        "sha256": "67f6899fb0ee135f"
+      },
+      "sha256_page": "9fceb5fb09ba3fad"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/curry-de-coings-aux-legumes",
+      "site": "chefsimon.com",
+      "nom": "Curry de coings aux légumes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "3 coings",
+        "4 c à s d’huile d »olive",
+        "1 oignon",
+        "3 cardamomes verte",
+        "1 bâton de cannelle ou 1 c à c 1 c à c",
+        "1/2 c à c de curcuma",
+        "1 c à s de pâte de curry doux",
+        "1 c à c de sel",
+        "1 courgettes",
+        "2 carottes",
+        "25 cl de lait coco",
+        "Coriandre fraiche",
+        "Riz parfumé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 16,
+        "signes": 855,
+        "sha256": "d331c2a66a7ae4cc"
+      },
+      "sha256_page": "54524d61967c15f1"
+    },
+    {
+      "url": "https://www.750g.com/curry-de-legumes-aux-pommes-de-terre-r82648.htm",
+      "site": "750g.com",
+      "nom": "Curry de légumes aux pommes de terre",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "1 poignée de noix de cajou",
+        "250 ml de bouillon de légumes",
+        "1 yaourt",
+        "1 c. à s. d'huile d'olive",
+        "1 c. à c. de pâte de curry",
+        "1 gousse d'ail",
+        "2 carottes",
+        "60 g de petit pois surgelés",
+        "4 oignons",
+        "100 g de pommes de terre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 488,
+        "sha256": "0da6e68ae666b268"
+      },
+      "sha256_page": "b4e72a66b10caf3e"
+    },
+    {
+      "url": "https://www.750g.com/poulet-au-curry-et-legumes-r67523.htm",
+      "site": "750g.com",
+      "nom": "Poulet au curry et légumes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1M",
+      "ingredients": [
+        "Curry en poudre",
+        "Riz",
+        "Huile",
+        "Sel",
+        "Poivre",
+        "6 branches de céleri avec feuilles",
+        "1 oignon",
+        "3 gousses d'ail",
+        "6 carottes",
+        "4 blancs de poulet"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 667,
+        "sha256": "e349b45a6b347f5b"
+      },
+      "sha256_page": "d9b4b650ea40046a"
+    }
+  ]
+}

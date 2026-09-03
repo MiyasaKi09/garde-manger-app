@@ -1,0 +1,197 @@
+{
+  "dish": "Compote de pommes",
+  "slug": "compote-de-pommes",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_compote-de-pommes-rapide-micro-ondes_20990.aspx",
+      "site": "marmiton.org",
+      "nom": "Compote de pommes rapide (micro-ondes) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 pommes",
+        "cannelle (quantité selon votre goût)",
+        "sucre (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 281,
+        "sha256": "5bede5727f9fe5c8"
+      },
+      "sha256_page": "8721ee3c89920654"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_compote-de-pommes-avec-morceaux-de-marielle_34545.aspx",
+      "site": "marmiton.org",
+      "nom": "Compote de pommes (avec morceaux) de Marielle : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "3 pommes Jonagold",
+        "2 cuillères à soupe de sucre roux de canne",
+        "1 sachet de sucre vanillé",
+        "0.5 cuillère à café de cannelle",
+        "1 cuillère à soupe de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 498,
+        "sha256": "703d6209bcc7de4e"
+      },
+      "sha256_page": "0a65739286577a83"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tarte-crumble-a-la-compote-de-pomme_33002.aspx",
+      "site": "marmiton.org",
+      "nom": "Tarte crumble à la compote de pomme : la meilleure recette",
+      "portions": "8 parts",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "1 pâte sablée prête à dérouler",
+        "3 pommes",
+        "200 g de compote de pomme",
+        "cannelle",
+        "50 g de beurre tendre",
+        "50 g de sucre en poudre",
+        "farine qu'il n'en faut pour que la pâte à crumble s'effrite sous les doigts (100 g, voire un peu plus)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 623,
+        "sha256": "420181bbe1c53b11"
+      },
+      "sha256_page": "dc53ec142f49d5fc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/compote-de-pommes--8",
+      "site": "chefsimon.com",
+      "nom": "Compote de pommes",
+      "portions": "",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "800 g de pommes",
+        "1 jus de citron",
+        "cannelle ou vanille"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 578,
+        "sha256": "44ecc20c44623c2c"
+      },
+      "sha256_page": "2e60c73f3799efc3"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/quoi-qu-on-mange/recettes/gateau-madeleine-aux-pommes-a-compote",
+      "site": "chefsimon.com",
+      "nom": "Gâteau madeleine aux pommes à compote",
+      "portions": "",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "600 g de pommes à compote",
+        "1 citron jaune",
+        "120 g de beurre mou",
+        "100 g de cassonade",
+        "4 œufs",
+        "150 g de farine → pour moi farine de Khorasan",
+        "1 CC de levure chimique",
+        "1 pincée de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 920,
+        "sha256": "24653b015ecb6b70"
+      },
+      "sha256_page": "08d889f0d8d6b387"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/compote-de-pommes-a-la-cardamome-et-sirop-d-erable",
+      "site": "chefsimon.com",
+      "nom": "Compote de pommes à la cardamome et sirop d’érable",
+      "portions": "",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "1 kg de pommes",
+        "2 c à s de sirop d’érable",
+        "2 c à s de cassonade ou de sucre de bouleau pour moi",
+        "10 cl d’eau",
+        "1 jus de citron",
+        "3 gousses de cardamome",
+        "1 c à c de poudre de cardamome"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 423,
+        "sha256": "0c7ff5eb761295f9"
+      },
+      "sha256_page": "58d0431cd2e097d0"
+    },
+    {
+      "url": "https://www.750g.com/compote-de-pommes-au-thermomix-r93590.htm",
+      "site": "750g.com",
+      "nom": "Compote de pommes express au thermomix",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT18M",
+      "ingredients": [
+        "1,2 kg de pomme",
+        "150 g de sucre",
+        "10 cl d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 530,
+        "sha256": "35175eaa66ae9fc7"
+      },
+      "sha256_page": "a269dd5cc6337a3b"
+    },
+    {
+      "url": "https://www.750g.com/compote-de-pommes-maison-r100269.htm",
+      "site": "750g.com",
+      "nom": "Compote de pommes maison",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 pommes",
+        "25 g de sucre de canne roux ou cassonade",
+        "Cannelle",
+        "1 gousse de vanille",
+        "30 g de beurre",
+        "2 c. à s. d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 436,
+        "sha256": "5ebaa75e601aeb68"
+      },
+      "sha256_page": "cad06cace0fec4ae"
+    },
+    {
+      "url": "https://www.750g.com/compotee-pommes-peche-r74985.htm",
+      "site": "750g.com",
+      "nom": "Compotée pommes-pêche",
+      "portions": null,
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "2 sachets de sucre roux",
+        "1 pêche mûre",
+        "2 pommes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 303,
+        "sha256": "3cd93e3768df9ddb"
+      },
+      "sha256_page": "e4ff350ef1d67737"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "dish": "Œufs durs",
+  "slug": "oeufs-durs",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_oeufs-durs-au-thon_27843.aspx",
+      "site": "marmiton.org",
+      "nom": "Oeufs durs au thon : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "8 oeufs",
+        "200 g de thon",
+        "1 cuillère à soupe de jus de citron",
+        "10 cl de crème fraîche",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 350,
+        "sha256": "bd59e6966b4a1086"
+      },
+      "sha256_page": "a19a8d6553262559"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_haricots-verts-vinaigrette-aux-oeufs-durs_20767.aspx",
+      "site": "marmiton.org",
+      "nom": "Haricots verts vinaigrette aux oeufs durs : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 kg de haricots verts frais",
+        "6 oeufs durs",
+        "4 tomates",
+        "1 cuillère à soupe de vinaigre",
+        "3 cuillères à soupe d'huile",
+        "1 cuillère à soupe de ciboulette hachée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 428,
+        "sha256": "411b47e6dde5b744"
+      },
+      "sha256_page": "288da859877d4a86"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_epinards-et-oeufs-durs-a-la-bechamel_25452.aspx",
+      "site": "marmiton.org",
+      "nom": "épinards et oeufs durs à la béchamel  : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "500 g d'épinards en boîte ou surgelés c'est meilleur",
+        "25 g de farine",
+        "25 g de beurre",
+        "3 dl de lait",
+        "muscade pour la béchamel",
+        "6 oeufs",
+        "gruyère"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 595,
+        "sha256": "5aba988b4a8a1b77"
+      },
+      "sha256_page": "9208e54dc1f5152e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/oeuf-mollet-et-oeuf-dur",
+      "site": "chefsimon.com",
+      "nom": "Oeuf mollet et oeuf dur",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "Des oeufs frais 0 ou 1 non issus de poules élevées en cage"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1195,
+        "sha256": "05832e8b4641465f"
+      },
+      "sha256_page": "2de76f9e1ed6d76a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/l-oeuf-dur-parfait",
+      "site": "chefsimon.com",
+      "nom": "L'oeuf dur parfait",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "Des oeufs frais 0 ou 1 non issus de poules élevées en cage"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1538,
+        "sha256": "bb0cd15cc8dfe0e5"
+      },
+      "sha256_page": "02840f98c2538c84"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/oeufs-durs-marbres",
+      "site": "chefsimon.com",
+      "nom": "Oeufs durs marbrés",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "oeufs",
+        "thé",
+        "sauce soja"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 642,
+        "sha256": "1f9eed1281e8e19b"
+      },
+      "sha256_page": "741527f0efbbb394"
+    },
+    {
+      "url": "https://www.750g.com/oeuf-dur-au-air-fryer-r209261.htm",
+      "site": "750g.com",
+      "nom": "Oeuf dur au Air Fryer",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT12M",
+      "ingredients": [
+        "4 oeufs",
+        "Glaçon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 451,
+        "sha256": "d79a647a1b26f0ae"
+      },
+      "sha256_page": "737bd280f4af46f0"
+    },
+    {
+      "url": "https://www.750g.com/oeufs-durs-gratines-a-la-florentine-r82837.htm",
+      "site": "750g.com",
+      "nom": "Œufs durs gratinés à la florentine",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "Huile d'olive",
+        "Noix de muscade",
+        "Sel ou sel fin",
+        "Poivre",
+        "60 g de parmesan",
+        "2 échalotes",
+        "600 g d'epinards",
+        "4 c. à s. de crème fraîche",
+        "4 oeufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 485,
+        "sha256": "225ac5e0a6b2009d"
+      },
+      "sha256_page": "460ef14cf110752a"
+    }
+  ]
+}
