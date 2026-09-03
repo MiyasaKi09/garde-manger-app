@@ -1,0 +1,161 @@
+{
+  "dish": "Poulet aux pois chiches",
+  "slug": "poulet-aux-pois-chiches",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_mijote-de-poulet-aux-pois-chiches-et-legumes_342658.aspx",
+      "site": "marmiton.org",
+      "nom": "Mijoté de poulet aux pois chiches et légumes : la meilleure recette",
+      "portions": "2 personne",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 filets de poulet",
+        "2 carottes",
+        "1 boîte de tomates concassées",
+        "1 gousse d'ail",
+        "250 g de pois chiches",
+        "de lardons"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 545,
+        "sha256": "583fe9d6be15bd76"
+      },
+      "sha256_page": "7400b87c29f59cff"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-aux-pois-chiches-et-laurier_231040.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet aux pois chiches et laurier : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 cuillère à soupe d'huile d'olive",
+        "4 cuisses de poulet (sans la peau)",
+        "6 feuilles de laurier",
+        "1 oignon , coupé en dés",
+        "2 gousses d'ail , émincées",
+        "1 poivron rouge , coupé en fines lamelles",
+        "10 cl de vin blanc sec",
+        "1 boîte de pois chiches , rincés",
+        "20 cl de bouillon de poule",
+        "persil (selon les gouts)",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 630,
+        "sha256": "d526d2abfd1e7e1f"
+      },
+      "sha256_page": "bb54ba46c36c7631"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-aux-pois-chiches-et-a-la-cannelle_63071.aspx",
+      "site": "marmiton.org",
+      "nom": "poulet aux pois chiches et à la cannelle : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "4 cuisses de poulet",
+        "1 verre de riz blanc",
+        "2 bâtons de cannelle",
+        "1 boîte de pois chiches",
+        "0.5 cuillère à café de cannelle en poudre",
+        "1 cuillère à soupe d'huile d'olive",
+        "1 oignon",
+        "poivre",
+        "sel",
+        "40 cl d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 696,
+        "sha256": "45078daff264ca3e"
+      },
+      "sha256_page": "5643ca353bce6972"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/poulet-aux-pois-chiches-et-a-la-cannelle",
+      "site": "chefsimon.com",
+      "nom": "Poulet aux pois chiches et à la cannelle",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H50M",
+      "ingredients": [
+        "1  poulet découpé en morceaux",
+        "1  oignon",
+        "1 gousse d'ail",
+        "10 cl de coulis de tomates",
+        "10 cl de fond de veau",
+        "1 boîte 4/4 de pois chiches ou 180 g de pois chiches secs",
+        "1 cuil. à soupe de cannelle en poudre",
+        "huile d'olive",
+        "sel et poivre",
+        "coriandre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 343,
+        "sha256": "20dbeb65f567d745"
+      },
+      "sha256_page": "e0ba47461b8af1b5"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/blanc-de-poulet-aux-pois-chiches-petits-pois-et-poivron-a-la-creme-au-curry",
+      "site": "chefsimon.com",
+      "nom": "Blanc de poulet aux pois chiches, petits pois et poivron à la crème au curry",
+      "portions": "1 personne",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H08M",
+      "ingredients": [
+        "1 blanc de poulet de 100 g",
+        "80 g de poivron surgelé, pour moi par mes soins cet été",
+        "60 g de petits pois surgelés",
+        "60 g de pois chiches en conserve",
+        "40 g de crème semi épaisse à 4% de MG",
+        "curry de Madras au goût",
+        "échalote semoule au goût",
+        "thym",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 472,
+        "sha256": "fbe0849ce9b4186b"
+      },
+      "sha256_page": "cb5c64548e4ab3e5"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/poulet-aux-carottes-et-pois-chiches-la-creme-et-curry-light",
+      "site": "chefsimon.com",
+      "nom": "Poulet aux carottes et pois chiches, la crème et curry, light",
+      "portions": "1 personne",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H29M",
+      "ingredients": [
+        "1 blanc de poulet de 100 g",
+        "200 g de carottes",
+        "80 g de pois chiches en conserve",
+        "60 g de crème semi épaisse à 4% de MG",
+        "1 petit oignon de 50 g",
+        "curry rouge au goût",
+        "1 branche de romarin",
+        "thym",
+        "sel",
+        "60 ml d'eau."
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 585,
+        "sha256": "c53d440cb2c77205"
+      },
+      "sha256_page": "476f7a704cb37fb9"
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "dish": "Poulet aux lentilles",
+  "slug": "poulet-aux-lentilles",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cocotte-de-lentilles-et-poulet-au-lard_29795.aspx",
+      "site": "marmiton.org",
+      "nom": "Cocotte de lentilles et poulet au lard : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 poulet",
+        "500 g de lentilles vertes",
+        "250 g de lardons",
+        "10 cl de vin blanc",
+        "1 oignon",
+        "3 cuillères à soupe d'huile",
+        "thym",
+        "laurier",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 420,
+        "sha256": "b392c636a738d59d"
+      },
+      "sha256_page": "18bb6b637df864f9"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_lentilles-au-poulet_61520.aspx",
+      "site": "marmiton.org",
+      "nom": "Lentilles au poulet : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 kg de lentilles vertes",
+        "800 g d'escalopes de poulet",
+        "3 tomates",
+        "3 oignons",
+        "piment",
+        "poivre",
+        "curry",
+        "cumin",
+        "ail",
+        "2 pommes de terre",
+        "coriandre",
+        "eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 521,
+        "sha256": "155c3f62011cb7df"
+      },
+      "sha256_page": "74ef037aa2df97d4"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-aux-lentilles-de-cilaos_338102.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet aux lentilles de Cilaos : la meilleure recette",
+      "portions": "4 Personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "3 filets de poulet",
+        "1 oignon",
+        "1 morceau de gingembre",
+        "250 g de lentilles de Cilaos",
+        "1 pincée de curcuma",
+        "1 cuillère à soupe d'huile",
+        "1 pincée de thym effeuillé",
+        "2 pincées de poivre",
+        "1 pincée d'estragon",
+        "1 pincée de basilic",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 442,
+        "sha256": "7a442adf5d8f3a1a"
+      },
+      "sha256_page": "837add692e3f06bd"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/nadji/recettes/ballotins-de-poulet-aux-lentilles-pistachees",
+      "site": "chefsimon.com",
+      "nom": "Ballotins de poulet aux lentilles pistachées",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "80 g de lentilles vertes du Puy Bio",
+        "3 suprêmes de poulet",
+        "1 bouquet garni (1 branche de céleri, quelques queues de persil, 1 branche de thym, 1 feuille de laurier)",
+        "1 petit oignon",
+        "1 clou de girofle",
+        "8 carrés frais Estragon et Échalotes",
+        "2 cuillères à soupe de persil plat ciselé",
+        "3 cuillères à soupe d'huile de tournesol",
+        "60 g de pistaches non salées",
+        "1 cuillère à soupe de baies roses grossièrement concassées",
+        "1 cuillère à soupe de jus de citron",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "4d05599a247b18a9"
+    },
+    {
+      "url": "https://www.750g.com/salade-de-lentilles-au-poulet-r202089.htm",
+      "site": "750g.com",
+      "nom": "Salade de lentilles au poulet",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "200 g de lentilles vertes",
+        "2 filets de filets de poulet",
+        "Cajun (mélange)",
+        "Coriandre",
+        "Poivron Piquillos ou Pequillos (ou Piment de piquillo)",
+        "1 oignon",
+        "1 c. à c. d'huile d'olive",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 977,
+        "sha256": "b7a3b31531832c82"
+      },
+      "sha256_page": "33a8892e536c97cc"
+    },
+    {
+      "url": "https://www.750g.com/risotto-au-poulet-et-lentilles-r94683.htm",
+      "site": "750g.com",
+      "nom": "Risotto au poulet et lentilles",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 c à s de moutarde",
+        "1 c à c de curcuma",
+        "2 pincées de sel",
+        "2 c à s de sauce soja",
+        "30 cl de lait de coco",
+        "4 blancs de poulet",
+        "150g de riz",
+        "5 cl de vin blanc",
+        "50 cl de bouillon de volaille",
+        "2 cl d'huile",
+        "150g de lentilles du Puys"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 479,
+        "sha256": "51f2dbe7195cfef3"
+      },
+      "sha256_page": "05c30f8369c8c216"
+    },
+    {
+      "url": "https://www.750g.com/poulet-lentilles-au-lait-de-coco-r33104.htm",
+      "site": "750g.com",
+      "nom": "Poulet lentilles au lait de coco",
+      "portions": null,
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "Curry en poudre",
+        "Cumin en poudre",
+        "1 échalote",
+        "Emincé de poulet",
+        "Piment de Cayenne en poudre",
+        "Coriandre",
+        "Persil",
+        "Lait de coco (1 boite)",
+        "1 boite de lentilles brunes (conserve)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 276,
+        "sha256": "9c173b082c4fea2f"
+      },
+      "sha256_page": "0695315df3776501"
+    }
+  ]
+}

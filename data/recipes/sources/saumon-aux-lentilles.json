@@ -1,0 +1,252 @@
+{
+  "dish": "Saumon aux lentilles",
+  "slug": "saumon-aux-lentilles",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-de-lentilles-au-saumon-fume_10712.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade de lentilles au saumon fumé : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "1 kg de lentilles en conserve",
+        "1 cuillère à soupe de moutarde",
+        "3 cuillères à soupe d'huile de tournesol",
+        "1 cuillère à soupe de vinaigre de framboise",
+        "2 échalotes grises",
+        "4 tranches de saumon fumé",
+        "ciboulette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 496,
+        "sha256": "9e08ca6f22c5b559"
+      },
+      "sha256_page": "43500ce5948193d1"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_verrines-de-lentilles-au-saumon-fume_53831.aspx",
+      "site": "marmiton.org",
+      "nom": "Verrines de lentilles au saumon fumé : la meilleure recette",
+      "portions": "8 verrines",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "150 g de lentilles vertes du Puy",
+        "1 oignon",
+        "200 g de saumon fumé",
+        "5 cl de crème liquide",
+        "1 citron",
+        "2 cuillères à soupe d'huile d'olive",
+        "2 cuillères à café de cumin",
+        "5 clous de girofle",
+        "1 gousse d'ail",
+        "d'aneth",
+        "60 g de pâtes brisées",
+        "carvi",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 659,
+        "sha256": "ca24bf273df02ddf"
+      },
+      "sha256_page": "f4e2c8c718a9c9cb"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-de-lentilles-saumon-et-feta_325654.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade de lentilles, saumon, concombre et feta : la meilleure recette",
+      "portions": "4 Personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "240 g de lentilles vertes",
+        "8 tranches de saumon fumé",
+        "1 bloc de feta nature",
+        "0.5 concombre",
+        "1 oignon",
+        "3 cuillères à soupe d'huile d'olive",
+        "1 cuillère à soupe de vinaigre balsamique blanc",
+        "1 botte de persil ou basilic ou aneth au choix",
+        "1 citron",
+        "1 pincée de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 601,
+        "sha256": "2ca129c51c840586"
+      },
+      "sha256_page": "d33d5798f8864d35"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/miechambo-cuisine--2/recettes/salade-de-lentilles-au-saumon-fume-7e5530ad-ea07-4cd3-941a-0a30f22464c2",
+      "site": "chefsimon.com",
+      "nom": "Salade de lentilles au saumon fumé",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "lentilles AOP vertes du Puy",
+        "tranches ou cubes de saumon fumé (ou truite fumée)",
+        "lardons",
+        "1 oignon rouge ou des cébettes",
+        "persil",
+        "moutarde",
+        "huile d'olive",
+        "sel &amp; poivre",
+        "huile de noix ou de noisette",
+        "une touche de vinaigre balsamique pour le final"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 677,
+        "sha256": "f5a3063f88ae2eff"
+      },
+      "sha256_page": "c2106906856872ae"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/orianec/recettes/saumon-vegetal-aux-lentilles-corail",
+      "site": "chefsimon.com",
+      "nom": "Saumon végétal aux lentilles corail",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "100 g de lentilles corail",
+        "200 g d’eau bouillante",
+        "150 g d’eau à température ambiante",
+        "1 càs d’huile (sésame ou olive pas trop parfumée) pour la marinade + 1 càs pour la cuisson",
+        "1/2 càs de vinaigre de riz ou de cidre",
+        "1 càs d’algues séchées en paillettes",
+        "1 càs de sauce soja",
+        "1 càc environ de paprika en poudre",
+        "1 goutte d’huile essentielle de citron ou un filet de jus de citron"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 661,
+        "sha256": "f10d335bedb0f39f"
+      },
+      "sha256_page": "38f163767c83f26b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/epicetout/recettes/tartare-de-saumon-aux-lentilles-blondes-et-vinaigrette-a-l-orange",
+      "site": "chefsimon.com",
+      "nom": "Tartare de saumon aux lentilles blondes et vinaigrette à l'orange",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "200 g de lentilles blondes",
+        "300 g de saumon Label Rouge",
+        "1 belle carotte",
+        "1 échalote",
+        "1 petit oignon tige",
+        "1/2 citron",
+        "2 pincées de gingembre en poudre",
+        "4 cuillères à soupe de vinaigre d’orange",
+        "2 cuillères à soupe d’huile d’olive",
+        "1 cuillère à café de moutarde",
+        "Cerfeuil",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "da575e8675d017bd"
+    },
+    {
+      "url": "https://www.750g.com/tartare-de-saumon-et-sa-salade-de-lentilles-r11415.htm",
+      "site": "750g.com",
+      "nom": "Tartare de saumon et sa salade de lentilles",
+      "portions": "6 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 cuillers à soupe d'huile de noix",
+        "laurier",
+        "thym",
+        "1 clou de girofle",
+        "2 cuillers à soupe de vinaigre de xéres",
+        "1 cuiller à soupe de moutarde",
+        "1 petit bouquet d'aneth",
+        "poivre blanc",
+        "sel",
+        "1 oignon",
+        "piment en poudre",
+        "2 échalotes hachées fin",
+        "100 g de saumon fumé",
+        "400 g de saumon frais",
+        "5 cornichons",
+        "2 cuillers à soupe de câpres",
+        "15 cl d'huile d'olive",
+        "1 orange",
+        "1 citron",
+        "300 g de lentilles vertes du Berry"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1339,
+        "sha256": "0e363d83ff953db0"
+      },
+      "sha256_page": "cd56552927586bc2"
+    },
+    {
+      "url": "https://www.750g.com/saumon-rapide-aux-lentilles-r45099.htm",
+      "site": "750g.com",
+      "nom": "Saumon rapide aux lentilles",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "3 échalotes",
+        "un peu de beurre",
+        "1 paquet de lentilles vertes du Puy",
+        "1 c. à café de fumet de poisson (facultatif)",
+        "0,1 g. de safran en pistil",
+        "1 c. à soupe de pastis",
+        "1 brique de crème fraîche légère",
+        "1 c. à café de poivre du Sichuan",
+        "4 pavés de Saumon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 691,
+        "sha256": "994b66881643a77e"
+      },
+      "sha256_page": "c8f1eac0f712f392"
+    },
+    {
+      "url": "https://www.750g.com/salade-de-lentilles-ananas-et-des-de-saumon-r80814.htm",
+      "site": "750g.com",
+      "nom": "Salade de lentilles, ananas et dés de saumon",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "2 petites salades de type sucrine",
+        "Du sel",
+        "Poivre du moulin",
+        "Un peu de piment d'Espelette pour la décoration",
+        "50g de dés de saumon",
+        "1 fruit de la passion",
+        "1 petit ananas",
+        "1 citron vert",
+        "2 boites de lentilles CASSEGRAIN"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 760,
+        "sha256": "e683cbc4bf4f9fc3"
+      },
+      "sha256_page": "17b83364ebab492d"
+    }
+  ]
+}

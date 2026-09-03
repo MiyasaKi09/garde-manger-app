@@ -1,0 +1,118 @@
+{
+  "dish": "Lieu noir à la tomate",
+  "slug": "lieu-noir-a-la-tomate",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-lieu-noir-a-la-sauce-tomate_71044.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin de lieu noir à la sauce tomate : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "400 g de lieu noir noir",
+        "5 tomates",
+        "2 oignons",
+        "1 jus de citron",
+        "gruyère râpé",
+        "poivre",
+        "sel",
+        "muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 458,
+        "sha256": "d90ff4b1f0fbdea7"
+      },
+      "sha256_page": "79831d7a1e80b349"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_lieu-noir-aux-olives-et-tomates-confites_224453.aspx",
+      "site": "marmiton.org",
+      "nom": "Lieu noir aux olives et tomates confites : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "2 filets de lieu noir noir",
+        "2 cuillères à soupe d'huile d'olive",
+        "2 cuillères à soupe d'eau",
+        "2 cuillères à soupe de jus de citron",
+        "20 g de beurre",
+        "10 olives vertes",
+        "8 morceaux de tomates confites à l’huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 363,
+        "sha256": "559a43a62a562580"
+      },
+      "sha256_page": "46fbea9584d3db29"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_lieu-noir-et-son-risotto-aux-tomates-colorees_71492.aspx",
+      "site": "marmiton.org",
+      "nom": "Lieu-noir et son risotto aux tomates colorées : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "2 lieu noir -noir",
+        "50 cl de lait",
+        "poivre",
+        "sel",
+        "100 g de riz",
+        "1 échalote",
+        "1 noix de beurre",
+        "huile de colza",
+        "50 cl de bouillon de volaille",
+        "25 g de parmesan râpé",
+        "15 cl de crème liquide",
+        "1 tomate rouge",
+        "1 tomate jaune",
+        "1 tomate noire"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 807,
+        "sha256": "3856c4af9765f3ae"
+      },
+      "sha256_page": "ede921e6dc5c694f"
+    },
+    {
+      "url": "https://www.750g.com/dome-froid-aux-rillettes-de-lieu-noir-au-piment-despelette-tomates-confites-et-creme-de-poivrons-r26778.htm",
+      "site": "750g.com",
+      "nom": "Dôme froid aux rillettes de lieu noir au piment d'Espelette, tomates confites et crème de poivrons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "Pour 4 dômes:",
+        "piment d'Espelette",
+        "Sel",
+        "Poivre",
+        "1 cuillère à soupe de mayonnaise",
+        "1/2 jus de citron",
+        "1 échalote",
+        "1 filet de lieu noir (250 g)",
+        "Sel",
+        "Poivre",
+        "2 œufs",
+        "thym, laurier pour le bouillon",
+        "30 g de tomates confites",
+        "Sel",
+        "Poivre",
+        "90 g de fromage frais (type St Môret)",
+        "2 petits poivrons rouges (260g pour les 2)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 1165,
+        "sha256": "c6554a81a8e94347"
+      },
+      "sha256_page": "c1b84da1ce73463f"
+    }
+  ]
+}

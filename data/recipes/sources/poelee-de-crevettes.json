@@ -1,0 +1,185 @@
+{
+  "dish": "Poêlée de crevettes",
+  "slug": "poelee-de-crevettes",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_crevettes-poelees-a-la-coriandre-et-epices_31153.aspx",
+      "site": "marmiton.org",
+      "nom": "Crevettes poêlées à la coriandre et épices : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "300 g de crevettes roses fraîches",
+        "1 citron vert",
+        "1 cuillère à soupe d'huile d'olive",
+        "coriandre fraîche",
+        "1 gousse d'ail",
+        "poivre de Cayenne",
+        "sel",
+        "mélange 5 baies"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 538,
+        "sha256": "e2d2ffbc60440e3e"
+      },
+      "sha256_page": "b885b304c80850ac"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_crevettes-poelees-a-la-noix-de-coco-rapee_48448.aspx",
+      "site": "marmiton.org",
+      "nom": "Crevettes poëlées à la noix de coco râpée : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "24 crevettes",
+        "1 blanc d'oeuf",
+        "noix de coco rapée",
+        "huile de friture"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 282,
+        "sha256": "be3edf9be0c455ad"
+      },
+      "sha256_page": "715dca3bf33c550e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poelee-riz-crevettes-courgettes-au-curry_528412.aspx",
+      "site": "marmiton.org",
+      "nom": "Poêlée riz crevettes courgettes au curry : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 courgette (ou 2 petites)",
+        "180 g de crevettes roses cuites",
+        "10 cl de crème épaisse",
+        "0.5 verre de riz basmati (50g avant cuisson environ)",
+        "huile d'olive",
+        "pâte de curry",
+        "poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 447,
+        "sha256": "10bb35bdc5ceafb2"
+      },
+      "sha256_page": "4ab1e8fc87ab8d03"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/kaderick/recettes/crevettes-poelees-au-chorizo-poivrons-piment-d-espelette-et-paprika",
+      "site": "chefsimon.com",
+      "nom": "Crevettes poêlées au chorizo, poivrons, piment d'Espelette et paprika",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "1 sachet de minis crevettes congelées",
+        "1 poivron jaune congelé",
+        "1 poivron rouge congelé",
+        "5 tranches de chorizo",
+        "1 oignon",
+        "huile d'olive",
+        "sel",
+        "1 cuillère à café de paprika",
+        "piment d'Espelette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "dad4d16c7140487c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clarisse-en-cuisine/recettes/poelee-asiatique-aux-crevettes-et-champignons-noirs",
+      "site": "chefsimon.com",
+      "nom": "Poêlée asiatique aux crevettes et champignons noirs",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "220 g de crevettes crues décortiquées",
+        "25 g de champignons noirs déshydratés",
+        "80 g de petits-pois (frais ou congelés)",
+        "140 g de vermicelles de riz",
+        "1 carotte (100 g) coupée en julienne fine",
+        "1/2 chou chinois (180 g) coupé en lamelles de 1 cm",
+        "100 g de pousses de bambou en conserve (égouttées)",
+        "1 c à café d'épices chinoises",
+        "1/2 c à café de gingembre frais râpé",
+        "1 pincée de zeste de citron bio",
+        "3 c à soupe d'huile de tournesol",
+        "2 c à soupe d'huile de sésame toasté",
+        "2 gousses d'ail",
+        "1 échalote",
+        "10 cl de bouillon de volaille chaud",
+        "3 c à soupe de sauce soja salée",
+        "1 c à soupe de sauce Worcestershire",
+        "sel",
+        "coriandre fraîche ciselée (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "d5863583ff8be40c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/natalia/recettes/poelee-de-crevettes-aux-tomates-cerises-et-capres",
+      "site": "chefsimon.com",
+      "nom": "Poêlée de crevettes aux tomates cerises et câpres",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "2 cuillères à soupe d'huile d'olive",
+        "1 oignon",
+        "2 gousses d'ail",
+        "300 g de crevettes crues décortiquées (ou 500 g pas décortiquées)",
+        "150 g de tomates cerises",
+        "2 cuillères à soupe de câpres",
+        "1 cuillère à café d'herbes de Provence (ou de basilic séché)",
+        "100 g de vin blanc (ou d'eau)",
+        "sel, poivre",
+        "quelques brins de persil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "8184f10592d28ca1"
+    },
+    {
+      "url": "https://www.750g.com/crevettes-poelees-aux-pommes-vertes-r55940.htm",
+      "site": "750g.com",
+      "nom": "Crevettes poêlées aux pommes vertes",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "1 c à s de calvados",
+        "Sel",
+        "Poivre",
+        "10 cl de cidre brut",
+        "1 gousse d'ail",
+        "2 pommes verte (type Granny Smith)",
+        "15g de beurre",
+        "12 belles crevettes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 780,
+        "sha256": "ff3bba82c95c5e92"
+      },
+      "sha256_page": "63915ec008507ffc"
+    }
+  ]
+}

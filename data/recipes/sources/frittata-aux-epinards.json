@@ -1,0 +1,159 @@
+{
+  "dish": "Frittata aux épinards",
+  "slug": "frittata-aux-epinards",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_frittata-mixte-epinards-oignons-lardons-feta_219162.aspx",
+      "site": "marmiton.org",
+      "nom": "Frittata Mixte (épinards, oignons, lardons, feta) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "6 oeufs",
+        "30 cl de crème fraîche",
+        "1 oignon",
+        "250 g d'épinards",
+        "100 g de feta",
+        "200 g de lardons ou allumettes",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 608,
+        "sha256": "0afa73e937a853fa"
+      },
+      "sha256_page": "f91972ce6da3e033"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_frittata-aux-epinards-et-aux-blettes_92546.aspx",
+      "site": "marmiton.org",
+      "nom": "Frittata aux épinards et aux blettes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "500 g d'épinards",
+        "4 feuilles de blette",
+        "1 gousse d'ail",
+        "4 oeufs",
+        "50 g de parmesan",
+        "10 cl de lait",
+        "1 pincée de piment d'Espelette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 408,
+        "sha256": "f960890d5e743b53"
+      },
+      "sha256_page": "4c4c5b972caf1b07"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/delizioso/recettes/frittata-thon-epinards",
+      "site": "chefsimon.com",
+      "nom": "Frittata thon épinards",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "6  oeufs",
+        "20 cl de crème fraîche liquide",
+        "4  pommes de terre moyenne",
+        "1  boîte de thon au naturel (moyenne)",
+        "100 g de jeunes pousses d'épinards",
+        "2  gousses d'ail",
+        "Comté râpé",
+        "Beurre",
+        "Sel (poivre)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 297,
+        "sha256": "132e4a145cf08708"
+      },
+      "sha256_page": "d8c9569084e3949c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/recettes-de-clairette/recettes/frittata-epinards-et-burrata",
+      "site": "chefsimon.com",
+      "nom": "Frittata épinards et burrata",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "8 œufs",
+        "100 g de lait",
+        "150 g d'épinards frais",
+        "80 g de pignons de pin",
+        "une burrata de 200 g",
+        "2 échalotes",
+        "30 g d'huile d'olive",
+        "3 brins de menthe",
+        "piment d'Espelette, sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "82bf78861ea1787f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/natalia/recettes/frittata-epinards-champignons-poivron",
+      "site": "chefsimon.com",
+      "nom": "Frittata épinards champignons poivron",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 cuillères à soupe d'huile d'olive",
+        "2 oignons",
+        "1 poivron rouge",
+        "400 g d'épinards hachés (congelés)",
+        "300 g de champignons",
+        "8 œufs",
+        "60 g de lait",
+        "100 g d'emmental râpé",
+        "sel, poivre",
+        "2 cuillères à café d'origan séché"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "8f97af33e98f61b6"
+    },
+    {
+      "url": "https://www.750g.com/frittata-primavera-au-grana-padano-aop-pommes-de-terre-petits-pois-et-epinards-r208295.htm",
+      "site": "750g.com",
+      "nom": "Frittata primavera au Grana Padano AOP, pommes de terre, petits pois et épinards",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "2 pommes de terre",
+        "150 g d'epinards  frais",
+        "200 g de petits pois  frais ou surgelés",
+        "1 oignon nouveau ou Cébette",
+        "8 oeufs",
+        "80 g de fromage Grana Padano AOP  aop",
+        "3 cl de crème liquide",
+        "2 pincées de sel ou sel fin",
+        "2 pincées de poivre noir du moulin",
+        "1 c. à s. d'huile d'olive",
+        "1 c. à s. de ciboulette",
+        "1 c. à s. de menthe  fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 2169,
+        "sha256": "67de4193c4f6d192"
+      },
+      "sha256_page": "eb89bc740d000894"
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "dish": "Curry de poisson",
+  "slug": "curry-de-poisson",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poisson-au-curry-express_59121.aspx",
+      "site": "marmiton.org",
+      "nom": "Poisson au curry express : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT2M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 filets de colin surgelés",
+        "20 cl de lait de coco",
+        "2 grosses cuillères de curry",
+        "2 gousses d'ail",
+        "3 grosses cuillères d'huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 230,
+        "sha256": "720128c879d21785"
+      },
+      "sha256_page": "e8a44a70c99e97af"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_curry-de-poisson-et-riz-parfume_41631.aspx",
+      "site": "marmiton.org",
+      "nom": "Curry de poisson et riz parfumé : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 filets de Poissons blanc (cabillaud par exemple)",
+        "1 oignon",
+        "2 gousses d'ail",
+        "1 cuillère à café de gingembre moulu",
+        "1 cuillère à café de curry en poudre",
+        "2 cuillères à soupe de sauce soja",
+        "4 cuillères à soupe de lait de coco",
+        "0.5 citron",
+        "huile",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 447,
+        "sha256": "9c66f906a6c7c710"
+      },
+      "sha256_page": "b50ca0f04415bab9"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_curry-de-poisson-epice_44787.aspx",
+      "site": "marmiton.org",
+      "nom": "Curry de poisson épicé : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "400 g de Poissons  saumon, colin et limande (vendus ensemble prédécoupés et congelés)",
+        "200 g de tomates concassées",
+        "2 carottes",
+        "3 gousses d'ail",
+        "200 ml de lait de coco",
+        "1 bouillon de légumes",
+        "1 cuillère à soupe de pâte de curry rouge (ou moins, si trop piquant)",
+        "1 cuillère à café de curcuma",
+        "1 cuillère à café de cumin",
+        "1 cuillère à soupe de coriandre fraîche ciselée",
+        "2 cuillères à soupe d'huile d'arachide",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 600,
+        "sha256": "538359a742597ae7"
+      },
+      "sha256_page": "cdd1386ee3c684de"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/adaworld/recettes/accras-revisites-au-poisson-fume-et-pate-de-curry-vert",
+      "site": "chefsimon.com",
+      "nom": "Accras revisités au poisson fumé et pâte de curry vert",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "250g de poisson fumé, style truite ou féra",
+        "100 ml d’eau salée (3 pincées)",
+        "1 gousse d’ail",
+        "3 oignons moyens",
+        "Persil",
+        "1 càs de pâte de curry vert thai",
+        "1 giclée de jus de citron",
+        "250g de farine",
+        "4g de levure chimique (ou 1/2 sachet)",
+        "Huile de friture"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 721,
+        "sha256": "be55990ca1e1d6c3"
+      },
+      "sha256_page": "e109d7ac9eca05ec"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/curry-de-poisson-au-lait-de-coco-et-legumes-verts",
+      "site": "chefsimon.com",
+      "nom": "Curry de poisson au lait de coco et légumes verts",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "800 g de filet de poisson blanc",
+        "1,5 cuil. à café de curcuma",
+        "3  oignons",
+        "huile végétale",
+        "2 gousses d’ail",
+        "2 cm de gingembre frais",
+        "1/2 cuil. à café de chili",
+        "3 cuil. à café de coriandre moulue",
+        "4  tomates ou une petite boite de tomates concassées",
+        "1 cuil. à soupe de pâte de tamarin",
+        "20 cL de lait de coco",
+        "2  courgettes",
+        "200 g de petits pois écossés"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 143,
+        "sha256": "195adad05e62789b"
+      },
+      "sha256_page": "3df5e8f7d70043bc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/quoi-qu-on-mange/recettes/curry-de-poisson-du-kerala",
+      "site": "chefsimon.com",
+      "nom": "Curry de poisson du Kerala",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "3 échalotes",
+        "2 gousses d’ail",
+        "1 morceau de gingembre de 2,5 cm",
+        "1 piment vert frais",
+        "700 g de poisson blanc à chair ferme (dos de cabillaud pour moi)",
+        "50 ml d’huile d’arachide",
+        "1 CC de graines de moutarde (pas trouvées malgré 3 grandes surfaces arpentées)",
+        "20 feuilles de cari (feuilles séchées pour moi)",
+        "1 CS de piment en poudre (piment d’Espelette pour moi)",
+        "1 CC de curcuma (des Epices Roellinger pour moi)",
+        "1 boîte de 400 g de lait de coco",
+        "1 boîte de 400 g de tomates concassées de qualité",
+        "Coriandre fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "0436aac6fe293c89"
+    },
+    {
+      "url": "https://www.750g.com/curry-coco-de-poisson-r59089.htm",
+      "site": "750g.com",
+      "nom": "Curry coco de poisson",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "Curcuma",
+        "Piment",
+        "Noix de muscade",
+        "Gingembre",
+        "1 cube de bouillon",
+        "Sel ou sel fin",
+        "Poivre",
+        "Jus de citron vert",
+        "Huile d'olive",
+        "20 cl de vin blanc sec",
+        "40 cl de lait de coco",
+        "2 gousses d'ail",
+        "Persil",
+        "Citronnelle",
+        "1 kg de poisson blanc"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 513,
+        "sha256": "4d826cc25c85d1fb"
+      },
+      "sha256_page": "fc730681dfc650fa"
+    },
+    {
+      "url": "https://www.750g.com/curry-de-poisson-facon-wok-r9117.htm",
+      "site": "750g.com",
+      "nom": "Curry de poisson façon wok",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "500 g de filets de poisson blanc  (cabillaud, merlan)",
+        "20 cl de lait de coco",
+        "2 c. à s. d'huile d'arachide",
+        "1 feuille de laurier",
+        "1 bouquet de coriandre  fraiche",
+        "1 c. à s. de curry en poudre",
+        "1 pincée de cumin",
+        "Piment  (facultatif)",
+        "½ c. à c. de graine de coriandre",
+        "1 tomate",
+        "1 oignon nouveau ou Cébette",
+        "1 morceau de céleri rave",
+        "1 navet  (petit)",
+        "1 morceau de fenouil",
+        "Oignon",
+        "65 ml d'eau",
+        "1 gousse d'ail",
+        "1 échalote",
+        "1 carotte",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1369,
+        "sha256": "7e97dbcc0c9c8093"
+      },
+      "sha256_page": "634830cdf6f84408"
+    },
+    {
+      "url": "https://www.750g.com/curry-de-poisson-et-fruits-de-mer-r35832.htm",
+      "site": "750g.com",
+      "nom": "Curry de poisson et fruits de mer",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "2 cuillères à café de mélange garam massala",
+        "10 cl de lait",
+        "1 yaourt",
+        "Sel",
+        "Poivre",
+        "2 cuillères à café de curcuma en poudre",
+        "1 cuillère à café de cumin en poudre",
+        "6 morceaux de poisson (cabillaud, colin, saumon)",
+        "1 cuillère à soupe de graines de moutarde",
+        "1 oignon rouge",
+        "1 cuillère à café de graines de coriandre concassées",
+        "1 sachet de 500 g d'assortiment de fruits de mer surgelés"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 801,
+        "sha256": "85c39c769f8dc01f"
+      },
+      "sha256_page": "7256c3d3a9594152"
+    }
+  ]
+}

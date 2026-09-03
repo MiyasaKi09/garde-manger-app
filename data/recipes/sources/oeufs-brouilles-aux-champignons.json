@@ -1,0 +1,56 @@
+{
+  "dish": "Œufs brouillés aux champignons",
+  "slug": "oeufs-brouilles-aux-champignons",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/croque-monsieur-a-l-oeuf-brouille-champignons-et-emmental",
+      "site": "chefsimon.com",
+      "nom": "Croque-monsieur à l’oeuf brouillé, champignons et emmental",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H04M",
+      "ingredients": [
+        "8 tranches de pain de mie complet",
+        "4  œufs",
+        "360 g de champignons émincés surgelés",
+        "150 g d’emmental en tranche",
+        "25 g de beurre + 30 g",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 229,
+        "sha256": "781b8dedb63646b5"
+      },
+      "sha256_page": "3f425602622cb204"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/keskonmangemaman/recettes/tartines-aux-oeufs-brouilles-aux-champignons",
+      "site": "chefsimon.com",
+      "nom": "Tartines aux oeufs brouillés aux champignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "8 œufs",
+        "400 grammes de champignons (de votre choix)",
+        "40 grammes de beurre",
+        "1 grosse cuillère à soupe de mascarpone",
+        "4 brins de persil",
+        "4 grandes tranches de pain de mie",
+        "sel et poivre du moulin",
+        "1 cuillère à café d'ail en poudre",
+        "1 cuillère à café d'échalote séchée",
+        "3 cuillères à soupe d'huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "a89d3982b1c0f6d2"
+    }
+  ]
+}

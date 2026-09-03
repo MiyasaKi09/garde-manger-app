@@ -1,0 +1,184 @@
+{
+  "dish": "Omelette au jambon",
+  "slug": "omelette-au-jambon",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-jambon-fromage_68824.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette jambon/fromage : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "6 oeufs",
+        "parmesan (facultatif)",
+        "sel",
+        "poivre",
+        "2 tranches de jambon",
+        "toastinette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 424,
+        "sha256": "c9942a5efba64fed"
+      },
+      "sha256_page": "4d39fa981f90f1a4"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-jambon-de-parme-et-brocolis_232289.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette jambon de parme et brocolis : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "6 oeufs",
+        "25 cl de crème liquide",
+        "20 g de parmesan",
+        "4 tranches de Jambon de Parme",
+        "2 poignées de brocolis",
+        "4 tomates cerise",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 463,
+        "sha256": "f1202822f144d6bb"
+      },
+      "sha256_page": "bd6d500991ede4ee"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_brick-au-jambon-facon-omelette_82734.aspx",
+      "site": "marmiton.org",
+      "nom": "Brick au jambon façon omelette : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "2 feuilles de brick",
+        "2 tranches de jambon",
+        "2 oeufs",
+        "70 g de gruyère",
+        "1 bouquet de persil",
+        "1 filet d'huile pour la cuisson"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 845,
+        "sha256": "11fcb88067ee5ecd"
+      },
+      "sha256_page": "f6eb2ca389fc5b33"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/omelette-brouillee-au-jambon-et-champignons",
+      "site": "chefsimon.com",
+      "nom": "Omelette brouillée au jambon et champignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "8  œufs",
+        "150 g de champignons de Paris",
+        "3  tranches de jambon cru",
+        "1  oignon",
+        "1/2  bouquet de ciboulette",
+        "30 g de beurre",
+        "huile",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 113,
+        "sha256": "3d478539ecb00ed3"
+      },
+      "sha256_page": "dc347f61deea920e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/omelette-au-jambon-de-bayonne-et-beaufort",
+      "site": "chefsimon.com",
+      "nom": "Omelette au jambon de Bayonne et Beaufort",
+      "portions": "1 personne",
+      "duree_preparation": "PT00H03M",
+      "duree_cuisson": "PT00H03M",
+      "ingredients": [
+        "3 œufs",
+        "2 tranches de jambon de Bayonne",
+        "20 g de Beaufort",
+        "1 c. à café d'huile",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "1504ac683461d7e3"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/recettes-de-clairette/recettes/bouchees-omelette-jambon-cru",
+      "site": "chefsimon.com",
+      "nom": "Bouchées omelette jambon cru",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "6 œufs",
+        "3 tranches de jambon cru",
+        "une poignée de roquette",
+        "50 + 30 g de chèvre frais",
+        "10 g de beurre",
+        "huile d'olive, sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "35802d81b99ef5ed"
+    },
+    {
+      "url": "https://www.750g.com/wrap-domelette-jambon-r96030.htm",
+      "site": "750g.com",
+      "nom": "Wrap d'omelette jambon",
+      "portions": "3 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "Sel ou sel fin",
+        "Poivre",
+        "Paprika",
+        "Persillade en poudre",
+        "Oeuf",
+        "Jambon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 312,
+        "sha256": "0c891ea3abd1e5ff"
+      },
+      "sha256_page": "ec64fb64be64141e"
+    },
+    {
+      "url": "https://www.750g.com/omelette-au-jambon-ou-au-lard-r38264.htm",
+      "site": "750g.com",
+      "nom": "Omelette au jambon ou au lard",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "Beurre",
+        "Jambon",
+        "4 oeufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 311,
+        "sha256": "363a20d4a23ed13b"
+      },
+      "sha256_page": "146e6a9912de86cb"
+    }
+  ]
+}

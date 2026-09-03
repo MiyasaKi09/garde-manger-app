@@ -1,0 +1,61 @@
+{
+  "dish": "Poulet aux flageolets",
+  "slug": "poulet-aux-flageolets",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_blanc-de-poulet-emince-aux-flageolets_168649.aspx",
+      "site": "marmiton.org",
+      "nom": "Blanc de poulet émincé aux flageolets : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 escalopes de poulet",
+        "200 g de flageolets",
+        "200 g de champignons de Paris émincés",
+        "2 gousses d'ail",
+        "1 oignon",
+        "poivre gris",
+        "sel",
+        "2 cuillères à soupe d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 649,
+        "sha256": "e795fc8a22ba0de9"
+      },
+      "sha256_page": "451108225ed176fa"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-papounet/recettes/poulet-roti-aux-flageolets",
+      "site": "chefsimon.com",
+      "nom": "Poulet rôti aux flageolets",
+      "portions": "",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "1 poulet fermier",
+        "4 gousses d'ail",
+        "Herbes de Provence",
+        "Thym",
+        "Beurre",
+        "Sel",
+        "Poivre",
+        "1 boite de flageolets",
+        "1 oignon ou 2 échalotes",
+        "1 botte de persil",
+        "15 g de beurre",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "ee267ad9158484be"
+    }
+  ]
+}
