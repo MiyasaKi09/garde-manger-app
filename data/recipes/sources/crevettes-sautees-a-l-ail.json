@@ -1,0 +1,121 @@
+{
+  "dish": "Crevettes sautées à l'ail",
+  "slug": "crevettes-sautees-a-l-ail",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_crevettes-sautees-a-l-ail_16942.aspx",
+      "site": "marmiton.org",
+      "nom": "Crevettes sautées à l'ail : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "350 g de crevettes roses décortiquées",
+        "3 gousses d'ail",
+        "3 cuillères à soupe d'huile d'olive",
+        "1 cuillère à café de paprika",
+        "2 cuillères à soupe de cognac",
+        "poivre",
+        "sel",
+        "de basilic"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 265,
+        "sha256": "1630febeb6bae724"
+      },
+      "sha256_page": "c043d520bdc7c1fa"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_crevettes-sautees-a-l-ail-et-au-citron-vert_59858.aspx",
+      "site": "marmiton.org",
+      "nom": "Crevettes sautées à l'ail et au citron vert : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "500 g de crevettes crues surgelées",
+        "1 citron vert",
+        "5 gousses d'ail ou plus",
+        "huile d'olive",
+        "sel",
+        "piment d'Espelette ou à défaut poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 509,
+        "sha256": "3c40a75a9a275223"
+      },
+      "sha256_page": "215bf42f6f3aea6c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_crevettes-sautees-a-l-ail_312763.aspx",
+      "site": "marmiton.org",
+      "nom": "Crevettes sautées à l'ail d'Alya : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "1.25 kg de crevettes crues",
+        "2 cuillères à soupe d'huile d'olive",
+        "6 gousses d'ail écrasées",
+        "2 piments oiseau rouges émincés",
+        "2 cuillères à soupe de coriandre fraiche haché"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 338,
+        "sha256": "a1f8471a39d4ef7c"
+      },
+      "sha256_page": "73e91df5c13e55c8"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/aline-bianca-cuisine/recettes/crevettes-sautees-a-l-ail-et-au-persil",
+      "site": "chefsimon.com",
+      "nom": "Crevettes sautées à l’ail et au persil",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "400g de grosses crevettes entières",
+        "4 gousses d’ail",
+        "1 échalote",
+        "1/2 botte de persil (60g)",
+        "6 c. à soupe d’huile d’olive",
+        "jus d’1/2 citron",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 404,
+        "sha256": "c54a7db00e9052cc"
+      },
+      "sha256_page": "a88a48bd000d4730"
+    },
+    {
+      "url": "https://www.750g.com/spaghettis-aux-crevettes-sautees-ail-et-tomates-cerise-r204641.htm",
+      "site": "750g.com",
+      "nom": "Spaghettis aux crevettes sautées, ail et tomates cerise",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT12M",
+      "ingredients": [
+        "350 g de spaghetti",
+        "24 crevettes",
+        "½ gousse d'ail",
+        "Huile d'olive",
+        "20 tomates cerise",
+        "4 c. à s. de jus de citron",
+        "4 branches de persil plat"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 673,
+        "sha256": "c3472306d4b8db59"
+      },
+      "sha256_page": "31133f3ec2368ac8"
+    }
+  ]
+}

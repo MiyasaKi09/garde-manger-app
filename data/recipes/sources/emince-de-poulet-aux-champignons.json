@@ -1,0 +1,129 @@
+{
+  "dish": "Émincé de poulet aux champignons",
+  "slug": "emince-de-poulet-aux-champignons",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_emince-de-poulet-thym-et-champignons_48064.aspx",
+      "site": "marmiton.org",
+      "nom": "Emincé de poulet, thym et champignons : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "400 g de poulets",
+        "1 oignon",
+        "1 boîte moyenne de champignons de Paris",
+        "1 cuillère à soupe de thym sec",
+        "10 cl de vin blanc",
+        "10 cl de bouillons",
+        "20 cl de crème fraîche",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 442,
+        "sha256": "aec7cb6f535b9a09"
+      },
+      "sha256_page": "135fa41cd5e67038"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_emince-de-poulet-aux-champignons-et-au-riz_230154.aspx",
+      "site": "marmiton.org",
+      "nom": "Émincé de poulet aux champignons et au riz : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "champignon (pour la quantité cela dépend de votre appétit)",
+        "2 filets de poulet",
+        "1 tablette de bouillon de volaille",
+        "150 g de riz",
+        "1 pincée de sel",
+        "1 pincée de poivre",
+        "1 pincée de thym",
+        "10 g de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 590,
+        "sha256": "36534bb5913c999b"
+      },
+      "sha256_page": "7fde67a5e137b7f1"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_eminces-de-poulet-a-la-moutarde-champignons-et-tomates-sechees_56515.aspx",
+      "site": "marmiton.org",
+      "nom": "Emincés de poulet à la moutarde, champignons et tomates séchées : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "4 blancs de poulet",
+        "1 petite boîte de champignon",
+        "tomate séchée",
+        "2 grosses cuillères à soupe de moutarde",
+        "25 cl de crème liquide",
+        "1 cuillère à café de fécule (ou farine)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 398,
+        "sha256": "c9ab8cb02aba9317"
+      },
+      "sha256_page": "f177e931b7e3bea0"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/sofi/recettes/emince-de-poulet-aux-champignons-revisite",
+      "site": "chefsimon.com",
+      "nom": "Émincé de poulet aux champignons revisité",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "2 blancs de poulet",
+        "750g de champignons de Paris",
+        "4 carottes",
+        "1/2 tige de céleri frais",
+        "4 feuilles d épinards",
+        "2 cas de crème fraîche",
+        "1/2 verre de lait",
+        "huile d olive",
+        "noix de muscade, sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 549,
+        "sha256": "663615205a8c2b41"
+      },
+      "sha256_page": "bdc1a0358da324b5"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-en-folie/recettes/emince-de-poulet-aux-champignons-sauce-moutarde-a-l-ancienne-et-estragon",
+      "site": "chefsimon.com",
+      "nom": "Emincé de poulet aux champignons, sauce moutarde à l'ancienne et estragon",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "3 filets de poulet ou de dinde",
+        "250 g de champignons de Paris",
+        "une petite poignée de cèpes séchés",
+        "1 gros oignon",
+        "1 bouquet d'estragon",
+        "2 cuillères à soupe de moutarde à l'ancienne",
+        "15 cl de crème épaisse",
+        "2 cuillères à soupe d'huile d'olive",
+        "sel et poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "b913d21dce6daa33"
+    }
+  ]
+}

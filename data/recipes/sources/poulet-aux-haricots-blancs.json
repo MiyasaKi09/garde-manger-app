@@ -1,0 +1,39 @@
+{
+  "dish": "Poulet aux haricots blancs",
+  "slug": "poulet-aux-haricots-blancs",
+  "sources_count": 1,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-en-folie/recettes/poulet-roti-farci-chorizo-et-haricots-blancs",
+      "site": "chefsimon.com",
+      "nom": "Poulet rôti farci chorizo et haricots blancs",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 poulet (environ 1,350 kg)",
+        "400 g de haricots blancs cuits à la graisse de canard",
+        "1/2 chorizo piquant ou doux, pas trop sec",
+        "5 à 6 tomates confites à l'huile d'olive",
+        "20 cl de vin blanc sec",
+        "20 cl d'eau",
+        "15 cl de fond de veau",
+        "1 oignon jaune",
+        "3 gousses d'ail",
+        "quelques branches de thym frais",
+        "1 cuillère à soupe de paprika",
+        "3 branches de céleri (partie feuillue)",
+        "1 citron jaune non traité",
+        "sel et poivre du moulin",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "51c2e732bfb7f743"
+    }
+  ]
+}

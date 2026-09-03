@@ -1,0 +1,185 @@
+{
+  "dish": "Œufs cocotte",
+  "slug": "oeufs-cocotte",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_oeuf-cocotte-au-bacon_51038.aspx",
+      "site": "marmiton.org",
+      "nom": "Oeuf cocotte au bacon : la meilleure recette",
+      "portions": "4 ramequins",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 oeufs",
+        "4 tranches de bacon",
+        "1 pot de crème fraîche",
+        "gruyère râpé",
+        "4 noisettes de beurre",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 424,
+        "sha256": "a2b7846199137122"
+      },
+      "sha256_page": "4a88234b5d8ec81b"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_oeuf-cocotte-au-saumon_43901.aspx",
+      "site": "marmiton.org",
+      "nom": "Oeuf cocotte au saumon : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 tranches de saumon fumé",
+        "4 oeufs",
+        "8 cuillères à soupe de crème fraîche épaisse",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 423,
+        "sha256": "41c62907483abead"
+      },
+      "sha256_page": "4acf352ba95cb304"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_oeufs-cocottes_66170.aspx",
+      "site": "marmiton.org",
+      "nom": "Oeufs cocottes : la meilleure recette",
+      "portions": "1 personne",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 oeuf",
+        "1 tranche de jambon",
+        "crème fraîche",
+        "poivre",
+        "sel",
+        "gruyère râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 292,
+        "sha256": "d83da68df21a60c4"
+      },
+      "sha256_page": "e0d51f8e618ad17a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/oeufs-cocotte--4",
+      "site": "chefsimon.com",
+      "nom": "Oeufs cocotte",
+      "portions": "",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "Des oeufs extra frais",
+        "crème",
+        "beurre",
+        "sel",
+        "poivre",
+        "oeufs de poisson"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 671,
+        "sha256": "405f3c9fd5383716"
+      },
+      "sha256_page": "b28f8b29ab6d0728"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/oeufs-cocotte-a-la-portugaise",
+      "site": "chefsimon.com",
+      "nom": "Oeufs cocotte à la portugaise",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "6 oeufs extra frais",
+        "2 tomates",
+        "1 poivron",
+        "1 oignon",
+        "2 gousses d’ail",
+        "sel",
+        "poivre ou piment d’Espelette",
+        "thym",
+        "huile d'olive."
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 332,
+        "sha256": "84159e58ea17437f"
+      },
+      "sha256_page": "dcb8f9ed505e32bb"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/oeufs-cocotte-bacon-ciboulette",
+      "site": "chefsimon.com",
+      "nom": "Oeufs cocotte, bacon, ciboulette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "12 cl de crème fleurette",
+        "12 tranches de bacon ou de coppa",
+        "poivre du moulin",
+        "4 oeufs très frais",
+        "ciboulette",
+        "mouillettes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 712,
+        "sha256": "e628a66ccaa004b7"
+      },
+      "sha256_page": "3280976a51f7d91b"
+    },
+    {
+      "url": "https://www.750g.com/oeufs-cocotte-r2930.htm",
+      "site": "750g.com",
+      "nom": "Œufs cocotte",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "200 g de beurre d'escargots congelés",
+        "Sel",
+        "Poivre",
+        "crème fraîche",
+        "4 œufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 396,
+        "sha256": "f34ea856b8d86174"
+      },
+      "sha256_page": "2e46d859f44a953c"
+    },
+    {
+      "url": "https://www.750g.com/oeufs-cocotte-au-foie-gras-r203202.htm",
+      "site": "750g.com",
+      "nom": "Oeufs cocotte de Noël",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "40 g de beurre",
+        "100 g de foie gras mi-cuit",
+        "4 oeufs  (gros)",
+        "4 c. à s. de crème fraîche liquide",
+        "Fleur de sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 840,
+        "sha256": "96f7b0b955e9b12d"
+      },
+      "sha256_page": "d7cb3304a51b561a"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "dish": "Moussaka végétarienne",
+  "slug": "moussaka-vegetarienne",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_moussaka-vegetarienne_29912.aspx",
+      "site": "marmiton.org",
+      "nom": "Moussaka végétarienne : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "2 aubergines",
+        "3 courgettes",
+        "3 poivrons rouges",
+        "4 oignons",
+        "500 g de yaourts grec",
+        "800 g de feta émietté",
+        "2 grosses boîtes de tomates en dés, avec le jus",
+        "3 gousses d'ail",
+        "mozzarella pour gratiner (quelques tranches)",
+        "poivre et fines herbes",
+        "sel",
+        "huile d'olive pour la cuisson",
+        "beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1141,
+        "sha256": "c7d176cc3a38311a"
+      },
+      "sha256_page": "7749e1f8cff75299"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_lasagnes-vegetariennes-facon-moussaka_71649.aspx",
+      "site": "marmiton.org",
+      "nom": "Lasagnes végétariennes façon moussaka : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "2 courgettes",
+        "1 aubergine",
+        "1 poivron rouge",
+        "1 poivron vert",
+        "250 g de pâtes à lasagnes sèches",
+        "huile d'olive",
+        "200 g d'emmental râpé",
+        "2 gousses d'ail",
+        "2 échalotes",
+        "150 g d'olives vertes dénoyautées",
+        "2 cuillères à café de câpres",
+        "500 g de tomates pelées",
+        "3 cuillères à soupe de basilic en poudre",
+        "2 cuillères à café de piment d'Espelette en purée",
+        "40 g de beurre",
+        "4 grosses cuillères à soupe de farine",
+        "50 cl de lait",
+        "1 cuillère à soupe de muscade en poudre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 20,
+        "signes": 1761,
+        "sha256": "5d213f03aa00ac8a"
+      },
+      "sha256_page": "47f8e2a91adfa31d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_moussaka-vegetarienne-rapide_10701.aspx",
+      "site": "marmiton.org",
+      "nom": "Moussaka végétarienne rapide : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 aubergine (environ 500 g) tranchée",
+        "95 g de sauce tomate",
+        "0.25 cuillère à café d'origan",
+        "0.25 cuillère à café de basilic",
+        "0.25 cuillère à café de sel",
+        "0.25 cuillère à café de poivre",
+        "1 cuillère à soupe d'huile",
+        "2 cuillères à soupe de farine",
+        "240 ml de lait écrémé (1 tasse)",
+        "50 g de lait écrémé (1/2 tasse)",
+        "1 oeuf battu",
+        "125 g de mozzarella",
+        "100 g de parmesan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 618,
+        "sha256": "86ed7c52bafae03a"
+      },
+      "sha256_page": "145629fde5cfe7ab"
+    },
+    {
+      "url": "https://www.750g.com/moussaka-vegetarienne-r41376.htm",
+      "site": "750g.com",
+      "nom": "Moussaka Végétarienne",
+      "portions": "2 personnes",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "1 aubergine",
+        "200 g d'haricots rouges",
+        "1 tomate",
+        "1 oignon  (petit)",
+        "2 c. à s. de persil  frais hâché",
+        "1 c. à s. de menthe",
+        "Huile d'olive",
+        "Sel ou sel fin",
+        "Poivre",
+        "200 ml de lait",
+        "15 g de beurre",
+        "15 g de farine",
+        "Noix de muscade  rapée",
+        "Sel ou sel fin",
+        "Poivre",
+        "2 c. à s. de chapelure",
+        "Parmesan râpé",
+        "Emmental rapé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 1150,
+        "sha256": "f978e4481c9510a3"
+      },
+      "sha256_page": "726e39ece87746a4"
+    }
+  ]
+}

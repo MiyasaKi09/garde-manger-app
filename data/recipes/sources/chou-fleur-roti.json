@@ -1,0 +1,159 @@
+{
+  "dish": "Chou-fleur rôti",
+  "slug": "chou-fleur-roti",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_chou-fleur-roti-yaourt-au-sesame-et-sauce-au-miel_529683.aspx",
+      "site": "marmiton.org",
+      "nom": "Chou-fleur rôti, crème au sésame et sauce au miel : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 chou-fleur",
+        "45 g de beurre",
+        "1 cuillère à soupe d'huile d'olive",
+        "sel",
+        "1 pincée de curcuma",
+        "4 cuillères à café de yaourts à la grecque",
+        "1 cuillère à soupe de tahini",
+        "zeste de citron",
+        "sel et poivre",
+        "5 cuillères à soupe d'huile d'olive",
+        "3 cuillères à soupe de jus de citron",
+        "1 cuillère à soupe de miel",
+        "1 gousse d'ail écrasée",
+        "3 gouttes de tabasco ou autre sauce pimentée",
+        "1 poignée de graines de grenade",
+        "1 poignée de noix",
+        "4 brins de persil hachés"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 823,
+        "sha256": "16c9030f2771ccdc"
+      },
+      "sha256_page": "839b5cf7e1810af4"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_chou-fleur-roti-au-four_343840.aspx",
+      "site": "marmiton.org",
+      "nom": "Chou-fleur rôti au four : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H15M",
+      "ingredients": [
+        "1 chou-fleur",
+        "15 cl d'huile d'olive",
+        "0.5 bouquet de persil",
+        "45 g de beurre",
+        "1 cuillère à café de sel",
+        "1 cuillère à café de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 680,
+        "sha256": "39abe710d9ce0e2c"
+      },
+      "sha256_page": "69c3d9ea3bf85870"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_chou-fleur-roti-au-airfryer_537171.aspx",
+      "site": "marmiton.org",
+      "nom": "Chou-fleur rôti au Airfryer : la meilleure recette",
+      "portions": "4 0",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 chou-fleur",
+        "2 cuillères à café d'ail",
+        "2 cuillères à café de paprika",
+        "2 cuillères à soupe d'huile d'olive",
+        "1 cuillère à café de sel",
+        "1 cuillère à café de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 437,
+        "sha256": "564c0617bc1657f8"
+      },
+      "sha256_page": "07899893e5fcd948"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/chou-fleur-entier-roti-aux-epices",
+      "site": "chefsimon.com",
+      "nom": "Chou-fleur entier rôti aux épices",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "1 chou-fleur",
+        "1 cuiller à soupe de moutarde fine",
+        "1 cuiller à soupe de moutarde ancienne",
+        "2 gousses d'ail écrasées",
+        "1 cuiller à soupe de persil haché",
+        "1 cuiller à café d'estragon sec",
+        "1 grosse pincée de poivre noir",
+        "1 cuiller à café de poudre de champignons",
+        "1 généreux filet de sauce soja salée",
+        "1 cuiller à café de paprika ou de curry (selon vos préférences)",
+        "1 trait de vinaigre de Xérès"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 629,
+        "sha256": "6909ed90cbb09218"
+      },
+      "sha256_page": "ce1e081bb6724659"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/tranches-de-chou-fleur-roties-aux-epices",
+      "site": "chefsimon.com",
+      "nom": "Tranches de chou-fleur rôties aux épices",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "1 gros chou-fleur",
+        "4 cs d’huile d’olive",
+        "2 cs de mélange mexicain",
+        "1 cc de paprika fumé",
+        "1 pinceau alimentaire",
+        "1 couteau de boucher bien aiguisé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 882,
+        "sha256": "cfb3a71c155e2ea7"
+      },
+      "sha256_page": "c196e881df81b671"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/madame-potiron/recettes/gnocchis-au-chou-fleur-roti",
+      "site": "chefsimon.com",
+      "nom": "Gnocchis au chou-fleur rôti",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 petit chou fleur",
+        "250 gr de gnocchis",
+        "1 tête d'ail*",
+        "1 càs de câpres",
+        "150 gr de fromage type feta",
+        "30 gr de persil émincé",
+        "de l'huile d'olive",
+        "du jus de citron",
+        "sel &amp; poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 85,
+        "sha256": "46444c7abfd360ee"
+      },
+      "sha256_page": "ea93cbebc6e7b482"
+    }
+  ]
+}

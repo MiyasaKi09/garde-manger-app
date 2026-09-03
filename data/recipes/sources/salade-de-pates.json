@@ -1,0 +1,216 @@
+{
+  "dish": "Salade de pâtes",
+  "slug": "salade-de-pates",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-de-pates-a-l-italienne_22514.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade de pâtes à l'italienne : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "250 g de papillons",
+        "1 melon",
+        "6 tomates cerise",
+        "12 feuilles de basilic",
+        "150 g de mozzarella ou de feta",
+        "4 fines tranches de Jambon de Parme",
+        "12 olives noires",
+        "citron",
+        "6 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 591,
+        "sha256": "c293e82c5fa5ff48"
+      },
+      "sha256_page": "f74987d52b76890e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-de-pates-aux-tomates-cerises-basilic-et-parmesan_18599.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade de pâtes aux tomates cerises, basilic et parmesan : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT8M",
+      "ingredients": [
+        "torsades",
+        "1 barquette de tomates cerise",
+        "basilic frais ciselé (un bon bouquet) ou éventuellement, basilic surgelé",
+        "huile d'olive",
+        "1 bol de parmesan frais râpé (ou plus selon goût)",
+        "poivre",
+        "sel",
+        "2 gousses d'ail"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 326,
+        "sha256": "d819278e435a46ec"
+      },
+      "sha256_page": "a85a6f77dd403d10"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-de-pates-d-ete_40120.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade de pâtes d'été : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "100 g de penne ou coude",
+        "1 bocal de tomate séchée",
+        "100 g de feta",
+        "olives vertes ou noires (selon le goût)",
+        "salade verte (mesclun)",
+        "jambon cru  (tranches épaisses)",
+        "épaule ou talon de jambon cuit",
+        "vinaigre balsamique",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 364,
+        "sha256": "4d0b58d9f4724811"
+      },
+      "sha256_page": "5e906f896ef48011"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/salade-de-pates-fusilli-a-l-italienne",
+      "site": "chefsimon.com",
+      "nom": "Salade de pâtes fusilli à l’italienne",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "200 g de pâtes (fusilli)",
+        "1 concombre ou une petite courgette",
+        "150 g de tomates cerises",
+        "100 g de speck ou autre jambon fumé",
+        "Des tomates confites",
+        "80 g de parmesan non râpé",
+        "La sauce vinaigrette",
+        "2 c à s de vinaigre Melfor saveurs du Sud ou autre",
+        "6 c à s d’huile d’olive",
+        "1 c à s de persil haché",
+        "Sel et poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 737,
+        "sha256": "d8e63d356f521c10"
+      },
+      "sha256_page": "4d44b5120125a6da"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/salade-de-pates-au-surimi-754d4ee9-6c07-4cfd-96f2-3202ca2b6d49",
+      "site": "chefsimon.com",
+      "nom": "Salade de pâtes au surimi",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H35M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "120g de pâtes colorées (torsades, farfalle ou fusilli)",
+        "6 bâtonnets de surimi, coupés en morceaux ou effilochés",
+        "60g de Maasdam coupé en petits cubes",
+        "½ poivron cru (jaune ou rouge), en petits dés",
+        "Une poignée de tomates cerises multicolores, coupées en deux",
+        "2CS de graines de courge",
+        "Ciboulette fraîche ciselée",
+        "100g de Skyr",
+        "2CS d'Huile olive",
+        "1cc de moutarde douce",
+        "1 filet de jus de citron",
+        "Sel, poivre",
+        "½cc de curry Balti"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 719,
+        "sha256": "40a6911e2484c1c2"
+      },
+      "sha256_page": "36a5b8b27e439232"
+    },
+    {
+      "url": "https://www.750g.com/salade-de-pates-comme-en-italie-r200244.htm",
+      "site": "750g.com",
+      "nom": "Salade de pâtes comme en Italie",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "400 g de pâtes",
+        "250 g de mozzarella de bufflonne  ou 250g de mozzarella de vache",
+        "6 tomates",
+        "2 poignées d'olives vertes",
+        "4 c. à s. d'huile d'olive",
+        "4 c. à c. d'origan",
+        "4 c. à c. de pesto",
+        "1 gousse d'ail",
+        "Sel ou sel fin",
+        "2 poignées de roquette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 962,
+        "sha256": "8f3a0f38b29cc1b5"
+      },
+      "sha256_page": "ae34ea0a2d3238ba"
+    },
+    {
+      "url": "https://www.750g.com/salade-de-pates-au-saumon-r50005.htm",
+      "site": "750g.com",
+      "nom": "Salade de pâtes au saumon",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT17M",
+      "ingredients": [
+        "500 g de tagliatelles  fraiches",
+        "400 g de pavés de saumon  sans la peau",
+        "2 carottes",
+        "1 courgette",
+        "3 c. à s. de mayonnaise  de dijon Amora",
+        "2 tablettes de bouillon de poisson  Knorr",
+        "½ citron  jus",
+        "Aneth",
+        "Ciboulette",
+        "Sel ou sel fin",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1303,
+        "sha256": "4a38f72a2d41d437"
+      },
+      "sha256_page": "677543e19cf896e6"
+    },
+    {
+      "url": "https://www.750g.com/salade-de-pates-au-saumon-r2380.htm",
+      "site": "750g.com",
+      "nom": "Salade de pâtes au saumon fumé",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "400 g de pâtes  (possiblement tricolores)",
+        "4 tranches de saumon fumé",
+        "½ citron vert",
+        "2 c. à s. de ciboulette  fraîche ciselées",
+        "Poivre",
+        "Sel ou sel fin",
+        "4 c. à s. d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 533,
+        "sha256": "7d9f57842eaed872"
+      },
+      "sha256_page": "915da7cbc58e9a2a"
+    }
+  ]
+}

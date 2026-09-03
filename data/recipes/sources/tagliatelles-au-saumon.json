@@ -1,0 +1,209 @@
+{
+  "dish": "Tagliatelles au saumon",
+  "slug": "tagliatelles-au-saumon",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tagliatelles-au-saumon-frais_11354.aspx",
+      "site": "marmiton.org",
+      "nom": "Tagliatelles au saumon frais : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "500 g de tagliatelles fraîches (de préférence)",
+        "1 filet de saumon frais (ou surgelé) coupé en dés",
+        "35 cl de crème fraîche",
+        "1 noix de beurre",
+        "poivre",
+        "sel",
+        "muscade",
+        "parmesan râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 475,
+        "sha256": "43ece28acbd6a7a4"
+      },
+      "sha256_page": "802ab3a3d3a4d9a5"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tagliatelles-au-saumon-fume_29803.aspx",
+      "site": "marmiton.org",
+      "nom": "Tagliatelles au saumon fumé : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "400 g de tagliatelles",
+        "100 g de saumon fumé",
+        "1 cuillère à soupe d'huile d'olive",
+        "1 gousse d'ail écrasée",
+        "250 ml de crème fraîche épaisse",
+        "1 cuillère à café de moutarde de Dijon",
+        "0.25 tasse de ciboulette",
+        "poivre",
+        "sel",
+        "1 citron pressé",
+        "2 cuillères à soupe de parmesan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 445,
+        "sha256": "5c88e909cd9314f3"
+      },
+      "sha256_page": "f50bfa124bf511fb"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tagliatelles-au-saumon-sauce-cremeuse-aux-epinards_31590.aspx",
+      "site": "marmiton.org",
+      "nom": "Tagliatelles au saumon, sauce crémeuse aux épinards : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "500 g de tagliatelles",
+        "4 steaks de saumon (surgelés)",
+        "450 g d'épinards à la crème (surgelés)",
+        "1 oignon",
+        "250 g de mascarpone",
+        "1 tsuyu (bouillon au poisson volant)",
+        "poivre",
+        "sel",
+        "muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 832,
+        "sha256": "460a0b4ecbecf78d"
+      },
+      "sha256_page": "a25ff8a0ecea207a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-machine-a-explorer/recettes/tagliatelles-de-concombre-au-saumon-fume-409e6cec-57a2-4506-a084-7305da48db78",
+      "site": "chefsimon.com",
+      "nom": "Tagliatelles de concombre au saumon fumé",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "100 g de saumon fumé coupé en lanières",
+        "1 concombre",
+        "1 citron",
+        "3 c. à soupe de crème fraîche",
+        "3 c. à soupe d’huile d’olive",
+        "Sel",
+        "Poivre",
+        "Aneth"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 101,
+        "sha256": "1392e947de8eabca"
+      },
+      "sha256_page": "3c633369c430788e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/tagliatelles-au-saumon-healthy",
+      "site": "chefsimon.com",
+      "nom": "Tagliatelles au saumon healthy",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "2 pavés de saumon",
+        "150g de tagliatelles (poids cru)",
+        "le jus d'un citron",
+        "3 à 4CS de Skyr (ou fromage blanc)",
+        "sel et poivre",
+        "parmesan, épinards, herbes fraîches (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 798,
+        "sha256": "afa04f1169dc7afd"
+      },
+      "sha256_page": "a67a4027edeb68d6"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/tagliatelles-au-saumon-fenouil-roti-et-orange",
+      "site": "chefsimon.com",
+      "nom": "Tagliatelles au saumon, fenouil rôti et orange",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "2  bulbes de fenouil",
+        "2  cuil. à soupe d’huile d’olive",
+        "fleur de sel au goût",
+        "poivre noir au goût",
+        "1  cuil. à soupe de graines de fenouil",
+        "le jus de 2 oranges",
+        "1  verre de vin blanc",
+        "200 mL de crème liquide",
+        "zeste d’1 orange bio",
+        "2  gousses d’ail hachées",
+        "1  échalote",
+        "4  filets de saumon",
+        "500 g de tagliatelle blanches ou complètes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 131,
+        "sha256": "99b493d7787b4bcb"
+      },
+      "sha256_page": "b7be84ce03bde970"
+    },
+    {
+      "url": "https://www.750g.com/tagliatelles-au-saumon-et-poireaux-r92206.htm",
+      "site": "750g.com",
+      "nom": "Tagliatelles au saumon et poireaux",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT12M",
+      "ingredients": [
+        "5 tranches de saumon fumé",
+        "500 g de tagliatelles",
+        "3 blancs de poireau",
+        "1 échalote",
+        "5 cl d'huile d'olive",
+        "25 cl de vin blanc",
+        "5 c. à s. de crème fraîche",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 439,
+        "sha256": "dfa1c22d0f568c13"
+      },
+      "sha256_page": "8789eb33d25166d9"
+    },
+    {
+      "url": "https://www.750g.com/tagliatelles-aux-deux-saumons-r79411.htm",
+      "site": "750g.com",
+      "nom": "Tagliatelles aux deux saumons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "Fumé de poisson",
+        "Poivre",
+        "Sel",
+        "Huile d'olive",
+        "Basilic",
+        "Saumon fumé",
+        "Dos de saumon frais",
+        "Crème fraîche",
+        "Tagliatelles fraiches"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 808,
+        "sha256": "b84f26610b9cedea"
+      },
+      "sha256_page": "872dea1930b93c11"
+    }
+  ]
+}

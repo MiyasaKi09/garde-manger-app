@@ -1,0 +1,73 @@
+{
+  "dish": "Börek au fromage",
+  "slug": "borek-au-fromage",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_borek-turc-au-fromage_537302.aspx",
+      "site": "marmiton.org",
+      "nom": "Börek turc au fromage : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT3M",
+      "ingredients": [
+        "1 paquet de feuille de brick feuilles de borek",
+        "1 boîte de fromage turc",
+        "1 botte de persil",
+        "1 petite botte de menthe",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 999,
+        "sha256": "b0b4b31209b1b69a"
+      },
+      "sha256_page": "186a5ec569ad315c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_boreks-au-fromage_13396.aspx",
+      "site": "marmiton.org",
+      "nom": "Boreks au fromage : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 pomme de terre",
+        "2 oeufs",
+        "gruyère râpé",
+        "1.5 carrés de carré frais",
+        "2 feuilles de brick"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 628,
+        "sha256": "f157dd0d4e846325"
+      },
+      "sha256_page": "c27f78c9987c47e4"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/iran-cuisine/recettes/borek-turc-au-fromage-6adda4a6-a3c6-46c5-be1b-f0aefc2d02ad",
+      "site": "chefsimon.com",
+      "nom": "Borek turc au Fromage",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "500g Feuilles Yufka (ou pâte filo)",
+        "250g Beurre",
+        "1 Jaune d'oeuf",
+        "Huile de Tournesol",
+        "400g Beyaz Peynir (ou Feta)",
+        "1 botte Persil ou Aneth haché",
+        "2 Oeufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "ee3edd30ee4ab7c4"
+    }
+  ]
+}

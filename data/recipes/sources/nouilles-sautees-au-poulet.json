@@ -1,0 +1,165 @@
+{
+  "dish": "Nouilles sautées au poulet",
+  "slug": "nouilles-sautees-au-poulet",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_simplissimes-nouilles-sautees-au-poulet_37164.aspx",
+      "site": "marmiton.org",
+      "nom": "Simplissimes nouilles sautées au poulet : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 filets de poulet coupés en dés",
+        "1 oignon très finement émincé",
+        "2 cuillères à soupe d'huile d'olive",
+        "4 cuillères à soupe de sauce soja",
+        "de persil plat et de coriandre ciselés",
+        "1 paquet de nouilles chinoises (au rayon produits exotiques en GMS)",
+        "4 cuillères à soupe de sauce soja",
+        "2 cuillères à soupe de nuoc mam",
+        "2 cuillères à café de sucre",
+        "500 g de julienne de légumes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 966,
+        "sha256": "42a3474afe7934dc"
+      },
+      "sha256_page": "705f1c038c66381c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_nouilles-de-riz-sautees-au-poulet_315698.aspx",
+      "site": "marmiton.org",
+      "nom": "Nouilles de riz sautées au poulet : la meilleure recette",
+      "portions": "2 Personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "200 g de filets de poulet",
+        "200 g de nouilles de riz",
+        "4.5 cl de sauce soja",
+        "4.5 cl de nuoc mam (ou sauce au poisson)",
+        "2 gousses d'ail",
+        "1 échalote",
+        "1 cuillère à café de gingembre en poudre (ou frais)",
+        "1 cuillère à soupe de sucre roux",
+        "2 cuillères à soupe d'huile d'arachide",
+        "1 poivron vert",
+        "1 poireau",
+        "30 g de germes de soja"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 1412,
+        "sha256": "8f8a0fbc0c861a2f"
+      },
+      "sha256_page": "6c59f10a90efe835"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_nouilles-sautees-poulet-et-legumes_222871.aspx",
+      "site": "marmiton.org",
+      "nom": "Nouilles sautées poulet et légumes : la meilleure recette",
+      "portions": "4 personnes gourmandes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "250 g de nouilles chinoises aux œufs",
+        "4 blancs de poulet",
+        "2 pak choi (environ 400 g, réduit à la cuisson)",
+        "2 carottes",
+        "1 bonne poignée de germes de soja fraîches",
+        "1 oignon",
+        "huile neutre pour la cuisson",
+        "huile de sésame (environ une cuillère à soupe)",
+        "sauce soja (au goût)",
+        "de nuoc mam",
+        "de sauce Sriracha (plus si vous aimez les plats relevés)",
+        "coriandre fraiche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 907,
+        "sha256": "1bbfe82cbd335f6c"
+      },
+      "sha256_page": "5553d7b5ea047000"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/nouilles-sautees-au-poulet",
+      "site": "chefsimon.com",
+      "nom": "Nouilles sautées au poulet",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "1 brocoli frais",
+        "2 gousses d'ail",
+        "4CS de sauce soja salée",
+        "2CS de sirop d'érable (ou miel)",
+        "½ cc de gingembre en poudre",
+        "1 filet de jus de citron",
+        "1 poignée de coriandre fraîche ciselée",
+        "2CS de graines de sésame",
+        "Huile d'olive, sel, poivre",
+        "2 filets de poulet"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 771,
+        "sha256": "429fae0512a0e414"
+      },
+      "sha256_page": "208fac9b5e55c7f2"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/audecuisine/recettes/nouilles-sautees-au-poulet-03247a70-c478-4e62-9796-149e16343dd0",
+      "site": "chefsimon.com",
+      "nom": "Nouilles sautées au poulet",
+      "portions": "1 personne",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "135g de nouilles cuites (marque Go-Tan pour moi - Nouilles Mie)",
+        "1/2 oignon",
+        "150 g de brocolis",
+        "1cc d'huile de soja ou de sésame",
+        "2 cc de sauce soja salée (pour moi Kikkoman)",
+        "150g d'aiguillettes de poulet cru, soit environ 130g cuit",
+        "1 cc de gingembre frais",
+        "1 cc de poudre de coriandre",
+        "coriandre fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1036,
+        "sha256": "5619e057aa693368"
+      },
+      "sha256_page": "6d819e6fb926e7a0"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/nouilles-soba-sautees-au-poulet-brocoli-gingembre-et-noix-de-cajou",
+      "site": "chefsimon.com",
+      "nom": "Nouilles Soba sautées au poulet, brocoli, gingembre et noix de cajou",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "2  blancs de poulet",
+        "2  cuil. à soupe de jus de citron",
+        "1  cuil. à soupe d’huile",
+        "1  cuil. à café bombée de gingembre frais râpé",
+        "40 g de noix de cajou non salées",
+        "150 g de têtes de brocoli (environ 3/4 d’un brocoli)",
+        "100 g de nouilles soba",
+        "Sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 149,
+        "sha256": "e8d36b4145a06cbf"
+      },
+      "sha256_page": "a7989be606112274"
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "dish": "Oignons confits",
+  "slug": "oignons-confits",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_confit-d-oignons-ultra-rapide_36636.aspx",
+      "site": "marmiton.org",
+      "nom": "Confit d'oignons ultra rapide : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "500 g d'oignons",
+        "1 cuillère à café de sucre en poudre",
+        "3 cuillères à soupe de vinaigre balsamique",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 483,
+        "sha256": "6c421caf888c1f20"
+      },
+      "sha256_page": "e7bec3d7e1857d49"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_confit-d-oignons-rapide_34353.aspx",
+      "site": "marmiton.org",
+      "nom": "confit d'oignons rapide : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "500 g d'oignons blancs",
+        "2 cuillères de miel",
+        "beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 356,
+        "sha256": "5707d48b16aef9d9"
+      },
+      "sha256_page": "11eecfeb581cc2e5"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_filet-mignon-en-croute-aux-pruneaux-et-son-confit-d-oignons_85424.aspx",
+      "site": "marmiton.org",
+      "nom": "Filet mignon en croûte aux pruneaux et son confit d'oignons : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 filet mignon de porc (400 g)",
+        "1 pâte feuilletée",
+        "1 tranche de jambon cuit",
+        "5 pruneaux dénoyautés",
+        "6 cuillères à soupe de sucre",
+        "1 cuillère à soupe d'huile d'olive",
+        "1 cuillère à soupe de miel",
+        "3 oignons",
+        "10 cl d'eau",
+        "1 jaune d'oeuf"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 731,
+        "sha256": "9c4e55759480cc2a"
+      },
+      "sha256_page": "84b8f09053a215e4"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/royal-chill/recettes/croque-raclette-aux-oignons-confits",
+      "site": "chefsimon.com",
+      "nom": "Croque-raclette aux oignons confits",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H35M",
+      "ingredients": [
+        "4 grosses noix de beurre",
+        "4 Tranches de pain",
+        "1 Gros oignon",
+        "5 cl de vin blanc",
+        "1 tranche de jambon",
+        "1  pomme de terre",
+        "6 à 8 tranches de fromage à raclette",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 164,
+        "sha256": "cafb8d658ec977ef"
+      },
+      "sha256_page": "f851d77b7dbe369b"
+    },
+    {
+      "url": "https://www.750g.com/confits-doignons-r3603.htm",
+      "site": "750g.com",
+      "nom": "Confits d'oignons",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "2 kg d'oignons",
+        "20 g de sucre roux  ou Sucre vanillé",
+        "5 cl de vinaigre de framboise",
+        "15 cl de vin rouge",
+        "5 cl d'huile d'olive",
+        "Fines herbes",
+        "Epices"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 474,
+        "sha256": "52ee15201b1616eb"
+      },
+      "sha256_page": "bab9fdc0c87de929"
+    },
+    {
+      "url": "https://www.750g.com/tajine-de-poulet-aux-oignons-confits-r21621.htm",
+      "site": "750g.com",
+      "nom": "Tajine de poulet aux oignons confits",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "Sel ou sel fin",
+        "Poivre",
+        "½ bâton de cannelle",
+        "1 safran",
+        "1 pincée de cannelle",
+        "2 c. à s. de miel",
+        "10 raisin secs",
+        "5 oignons",
+        "1 c. à s. d'huile d'olive",
+        "1 feuille de laurier",
+        "4 cuisses de poulet"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 754,
+        "sha256": "097433d9f6c2dbbb"
+      },
+      "sha256_page": "24fca3f409a51197"
+    },
+    {
+      "url": "https://www.750g.com/oignons-confits-au-miel-r92029.htm",
+      "site": "750g.com",
+      "nom": "Oignons confits au miel",
+      "portions": "1 personne",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "Papier d'alu",
+        "1 c à s de miel",
+        "Huile",
+        "Poivre",
+        "Sel",
+        "Oignon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 317,
+        "sha256": "835c90162ae2cd79"
+      },
+      "sha256_page": "50f2502868da30b6"
+    }
+  ]
+}

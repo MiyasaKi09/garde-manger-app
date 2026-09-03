@@ -26,14 +26,24 @@
  *   node scripts/data/recipes/assign-dessert-roles.mjs
  */
 import { readFileSync, writeFileSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
-import { dirname, join } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
+import { dirname, join, resolve } from 'node:path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
 const CORPUS = join(ROOT, 'data', 'recipes', 'corpus-v3.json')
 
-const dryRun = process.argv.includes('--dry-run')
+/**
+ * Le script n'écrit QUE lancé en ligne de commande.
+ *
+ * Le test qui relit ses décisions IMPORTE ce module, et le code de premier
+ * niveau réécrivait alors corpus-v3.json au milieu d'une suite où d'autres
+ * tests lisent ce même fichier. Le symptôme était déroutant : un test de
+ * planification passait seul et échouait en suite complète, selon l'ordre.
+ * Une donnée versionnée ne se réécrit pas par effet de bord d'un import.
+ */
+const lanceALaMain = process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href
+const dryRun = !lanceALaMain || process.argv.includes('--dry-run')
 
 /**
  * Les desserts, un par un, avec ce qui les y range.

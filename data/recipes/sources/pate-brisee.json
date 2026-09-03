@@ -1,0 +1,154 @@
+{
+  "dish": "Pâte brisée",
+  "slug": "pate-brisee",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pate-brisee-vite-faite_31639.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâte brisée vite faite : la meilleure recette",
+      "portions": "1 pâte",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "300 g de farine",
+        "150 g de beurre en dés et en pommade",
+        "0.5 cuillère à café de sel",
+        "3 cuillères à soupe de sucre (si pâte sucrée)",
+        "8 cl d'eau ou de lait tiède"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 497,
+        "sha256": "7bf94d6327ca24c7"
+      },
+      "sha256_page": "056857574b270023"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pate-brisee-au-mixer_11757.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâte brisée au mixer : la meilleure recette",
+      "portions": "1 pâte",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "250 g de farine",
+        "0.5 cuillère à café de sel",
+        "125 g de beurre bien froid"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 818,
+        "sha256": "5b2ba9d3d5b4535d"
+      },
+      "sha256_page": "9d3e4799672b3244"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pate-brisee-faite-a-la-machine-a-pain_83346.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâte brisée faite à la machine à pain : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "8 cl de lait tiède",
+        "1 cuillère à café de sel",
+        "3 cuillères à soupe de sucre",
+        "150 g de beurre",
+        "300 g de farine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 457,
+        "sha256": "3fc3795fe2fd0efa"
+      },
+      "sha256_page": "09c24c7f000ea699"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/pate-brisee--8",
+      "site": "chefsimon.com",
+      "nom": "Pâte brisée",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "250 g de farine",
+        "125 g de beurre",
+        "une pincée de sel",
+        "un jaune d'oeuf (facultatif)",
+        "un peu d'eau si besoin",
+        "ajouter 50 g de sucre uniquement pour une pâte sucrée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 842,
+        "sha256": "39db98ea1a7fb4a7"
+      },
+      "sha256_page": "9cd027df1e152d67"
+    },
+    {
+      "url": "https://www.750g.com/la-pate-brisee-r12555.htm",
+      "site": "750g.com",
+      "nom": "Pâte brisée maison facile",
+      "portions": "1 pièce",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "250 g de farine de blé blanche (T55)",
+        "125 g de beurre",
+        "6 cl d'eau  froide",
+        "1 jaune d'oeuf",
+        "1 grosse pincée de sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 834,
+        "sha256": "7c18317eac3a2c5a"
+      },
+      "sha256_page": "b2bb804869c61b8a"
+    },
+    {
+      "url": "https://www.750g.com/pate-brisee-faite-a-la-machine-a-pain-r55024.htm",
+      "site": "750g.com",
+      "nom": "Pâte brisée faite à la machine à pain",
+      "portions": null,
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "300 g de farine",
+        "150 g de beurre  mou",
+        "3 c. à s. de sucre",
+        "1 c. à c. de sel ou sel fin",
+        "80 ml de lait  tiède"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 190,
+        "sha256": "d599a64f75af0dd1"
+      },
+      "sha256_page": "15bfe28f38b069af"
+    },
+    {
+      "url": "https://www.750g.com/pate-brisee-r48813.htm",
+      "site": "750g.com",
+      "nom": "Pâte brisée classique",
+      "portions": null,
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "Eau",
+        "1 jaune d'oeuf",
+        "1 pincée de sel ou sel fin",
+        "125 g de beurre",
+        "250 g de farine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 670,
+        "sha256": "55d15d10844c2c13"
+      },
+      "sha256_page": "a0e3aeab86989823"
+    }
+  ]
+}

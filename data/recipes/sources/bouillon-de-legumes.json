@@ -1,0 +1,224 @@
+{
+  "dish": "Bouillon de légumes",
+  "slug": "bouillon-de-legumes",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bouillon-de-legumes_24444.aspx",
+      "site": "marmiton.org",
+      "nom": "Bouillon de légumes rapide : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 poireau",
+        "1 carotte",
+        "1 fenouil",
+        "1 tomate",
+        "1 courgette",
+        "1 bouillon",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 295,
+        "sha256": "e4d18a5437316059"
+      },
+      "sha256_page": "70a20d135a640b00"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_risotto-cremeux-au-bouillon-de-legumes_320880.aspx",
+      "site": "marmiton.org",
+      "nom": "Risotto crémeux au bouillon de légumes : la meilleure recette",
+      "portions": "4 Personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "300 g de riz pour risotto à risotto",
+        "250 g de champignons de Paris",
+        "1 oignon rouge",
+        "1 gousse d'ail",
+        "0.5 bouquet de persil plat",
+        "2 cubes de bouillon de légumes",
+        "25 cl de vin blanc sec",
+        "30 g de beurre",
+        "parmesan",
+        "huile",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 721,
+        "sha256": "38fe425d54ce4fa8"
+      },
+      "sha256_page": "98e1c7910ada53aa"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bouillon-de-legumes_41843.aspx",
+      "site": "marmiton.org",
+      "nom": "Bouillon de légumes : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "3 l d'eau",
+        "3 carottes",
+        "3 navets",
+        "0.5 céleri rave",
+        "1 céleri branche",
+        "3 poireaux",
+        "2 oignons",
+        "clou de girofle",
+        "1 bouquet garni (laurier, thym, romarin)",
+        "1 bouquet de persil",
+        "10 grains de poivre",
+        "gros sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 326,
+        "sha256": "06745a7f23666011"
+      },
+      "sha256_page": "22b8480e51d0af67"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-petits-plats-du-prince/recettes/bouillon-de-legumes-aux-epluchures",
+      "site": "chefsimon.com",
+      "nom": "Bouillon de légumes aux épluchures",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "Feuilles de céleri branche",
+        "3 oignons germés",
+        "Epluchures de 6 carottes",
+        "Epluchures de 6 gros champignons blancs",
+        "1 poireau",
+        "Romarin",
+        "thym",
+        "origan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 961,
+        "sha256": "3b45cca93ac1fd8a"
+      },
+      "sha256_page": "a775bc70ef4d3b44"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/rodolphe-regnauld/recettes/homard-breton-sarrasin-legumes-du-moment-bouillon-acidule",
+      "site": "chefsimon.com",
+      "nom": "Homard breton, sarrasin, légumes du moment bouillon acidulé",
+      "portions": "8 personnes",
+      "duree_preparation": "PT01H00M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "4 pièces de homard breton",
+        "1 oignon",
+        "1 carotte",
+        "1 fenouil",
+        "1poireau",
+        "1 dcl de vermouth",
+        "1 branche de thym",
+        "8 minis carottes",
+        "1 chou fleur jaune ou blanc",
+        "1 choux romanesco",
+        "8mini navets",
+        "1 oignon rouge",
+        "1 citron vert",
+        "10 cl de jus de yuzu",
+        "10g de sucre",
+        "8 choux de Bruxelles",
+        "8 radis ronds rouge",
+        "1 petit morceau de gingembre",
+        "100g de kasha (Sarrasin torréfié)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 1478,
+        "sha256": "2d90ac74478f5e1f"
+      },
+      "sha256_page": "faef844791fd260e"
+    },
+    {
+      "url": "https://www.750g.com/aspic-de-legumes-au-bouillon-ariake-r60251.htm",
+      "site": "750g.com",
+      "nom": "Aspic de légumes au bouillon ariake",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 c à s de graines de sésame",
+        "1 c à s de graines de courge",
+        "Poivre",
+        "Quelques feuilles de basilic",
+        "2 belles tomates",
+        "2 belles carottes",
+        "1 petite courgette",
+        "1 betterave rouge cuite",
+        "4 sachet de bouillon de légumes ariaké"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1394,
+        "sha256": "3e59e493f4e6ab0c"
+      },
+      "sha256_page": "d8d35e639566f807"
+    },
+    {
+      "url": "https://www.750g.com/bouillon-asiatique-aux-legumes-croquants-r73204.htm",
+      "site": "750g.com",
+      "nom": "Bouillon asiatique aux légumes croquants",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 c à s d'arôme saveur 'maggi '",
+        "1 c à c de coriandre ciselée",
+        "1 c à s d'huile neutre",
+        "1 piment",
+        "4 c à s de sauce soja",
+        "4 c à s de sauce huitre",
+        "1 carotte",
+        "1 courgette",
+        "1 oignon",
+        "25g de vermicelles de soja",
+        "180g de Râpé de la Mer Coraya"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 382,
+        "sha256": "85310c8eb11257ec"
+      },
+      "sha256_page": "484a951c29f92a64"
+    },
+    {
+      "url": "https://www.750g.com/lapin-et-son-bouillon-de-petit-legumes-r47497.htm",
+      "site": "750g.com",
+      "nom": "Lapin et son bouillon de petit légumes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "Sel ou sel fin",
+        "Poivre",
+        "Ail",
+        "échalote",
+        "1 bouquet garni",
+        "1 patate douce  (grosse)",
+        "4 carottes",
+        "1 navet  (gros)",
+        "4 râbles de lapin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 256,
+        "sha256": "490e8c8c875d14e5"
+      },
+      "sha256_page": "6dd97fa3b9f3286d"
+    }
+  ]
+}

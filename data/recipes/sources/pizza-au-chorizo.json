@@ -1,0 +1,230 @@
+{
+  "dish": "Pizza au chorizo",
+  "slug": "pizza-au-chorizo",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pizza-au-chorizo_314458.aspx",
+      "site": "marmiton.org",
+      "nom": "Pizza au chorizo : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 rouleau de pâte à pizza",
+        "30 cl de coulis de tomate",
+        "100 g de chorizo",
+        "1 champignon frais",
+        "1 poivron rouge",
+        "125 g de mozzarella",
+        "100 g de fromage râpé",
+        "5 cl de crème liquide",
+        "3 pincées de parmesan râpé",
+        "1 pincée de basilic",
+        "1 pincée d'origan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 687,
+        "sha256": "f4a6d7f9037578ae"
+      },
+      "sha256_page": "adeb806dac800840"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pizza-aubergine-et-chorizo_31565.aspx",
+      "site": "marmiton.org",
+      "nom": "pizza aubergine et chorizo : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 pâte à pain (maison c'est meilleur)",
+        "4 cuillères à soupe de concentré de tomates",
+        "1 aubergine moyenne",
+        "5 tranches de chorizo",
+        "1 morceau de comté (ou parmesan ou chèvre... Bref, un bon fromage qui fond...)",
+        "1 oeuf",
+        "cumin",
+        "origan",
+        "huile d'olive",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 636,
+        "sha256": "b16b8f36e0d0338e"
+      },
+      "sha256_page": "f5a53afcda9c8415"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pizza-chorizo-poivron_531050.aspx",
+      "site": "marmiton.org",
+      "nom": "Pizza chorizo-poivron : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "pâte à pizza",
+        "20 cl de sauce tomate",
+        "1 chorizo",
+        "1 poivron rouge",
+        "1 poivron jaune",
+        "120 g de fromage râpé",
+        "1 bonne pincée d'origan",
+        "1 filet d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 450,
+        "sha256": "d50facff26faa8c9"
+      },
+      "sha256_page": "740e982bdeb0b6ca"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-blog/recettes/pizza-jambon-chorizo-champignons-fromage-tomate",
+      "site": "chefsimon.com",
+      "nom": "Pizza jambon, chorizo, champignons, fromage, tomate",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1  pâte à pizza (500 grammes)",
+        "150 grammes de fromage (ici : moitié de mozzarella et moitié d'emmental)",
+        "200 grammes de coulis de tomates",
+        "1  grosse tomate (ici : une noire de crimée)",
+        "100 grammes de champignons de Paris en boîte",
+        "1  oignon",
+        "20  fines rondelles de chorizo",
+        "2 tranches de jambon blanc",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 230,
+        "sha256": "bed135a5c4af4605"
+      },
+      "sha256_page": "5e5e10e3771c93bc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/delizioso/recettes/pizza-au-chorizo-et-oignons-rose-de-roscoff",
+      "site": "chefsimon.com",
+      "nom": "Pizza au chorizo et oignons rose de Roscoff",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2  oignons rose de roscoff",
+        "1  pâte à pizza rectangulaire",
+        "6  chorizos à griller",
+        "20 cl de purée de tomate",
+        "Comté râpé",
+        "1  cs de cassonnade",
+        "Huile d'olive",
+        "origan",
+        "ail en poudre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 295,
+        "sha256": "92b103e2898151b0"
+      },
+      "sha256_page": "ae6ca5b2c94a9f39"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-blog/recettes/courgettes-au-chorizo-facon-pizza",
+      "site": "chefsimon.com",
+      "nom": "Courgettes au chorizo façon pizza",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1  courgette",
+        "75 grammes de chorizo",
+        "6 billes de mozzarella",
+        "50 grammes de gruyère râpé",
+        "6  tomates cerises rouges",
+        "6  tomates cerises jaunes",
+        "6 feuilles de basilic",
+        "1 c. à soupe d'huile d'olive",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 223,
+        "sha256": "d283a1c1bb9267e3"
+      },
+      "sha256_page": "4e9f7832a11c1acc"
+    },
+    {
+      "url": "https://www.750g.com/pizza-au-chorizo-poivron-rouge-tomate-et-oignon-r60729.htm",
+      "site": "750g.com",
+      "nom": "Pizza au chorizo, poivron rouge, tomate et oignon",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 pâte à pizza",
+        "15 tranches de chorizo",
+        "1 poivron rouge",
+        "1 boite de concentré de tomates",
+        "1 oignon",
+        "1 tomate",
+        "Sucre",
+        "1 sachet de gruyère râpé",
+        "Basilic",
+        "Poivre",
+        "Sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 623,
+        "sha256": "826b799057edc913"
+      },
+      "sha256_page": "b686204175efcbd6"
+    },
+    {
+      "url": "https://www.750g.com/pizza-au-chorizo-courgettes-et-basilic-r73953.htm",
+      "site": "750g.com",
+      "nom": "Pizza au chorizo, courgettes et basilic",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 boite de concentré de tomates",
+        "Huile d'olive",
+        "10 feuilles de basilic",
+        "1 courgette  (petite)",
+        "Fromage râpé",
+        "½ chorizo doux",
+        "Olive verte",
+        "1 pâte à pizza"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 559,
+        "sha256": "92def316c6ccdcd2"
+      },
+      "sha256_page": "2b9221b68a95aebc"
+    },
+    {
+      "url": "https://www.750g.com/bretzel-pizza-au-chorizo-r201645.htm",
+      "site": "750g.com",
+      "nom": "Bretzel pizza au chorizo",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT18M",
+      "ingredients": [
+        "1 pâte à pizza",
+        "Fromage râpé",
+        "4 tranches de chorizo"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 679,
+        "sha256": "8671f17a50b5ae55"
+      },
+      "sha256_page": "1aa5c9a9b01ce4a8"
+    }
+  ]
+}

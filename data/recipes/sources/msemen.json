@@ -1,0 +1,164 @@
+{
+  "dish": "Msemen",
+  "slug": "msemen",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_msemen-ou-beurre-rance-fondu-maroc_34415.aspx",
+      "site": "marmiton.org",
+      "nom": "Msemen ou beurre rance fondu (Maroc) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "de beurre frais non pasteurisé (à acheter à la ferme ou sur le marché, sinon ça ne marche pas)",
+        "16 g de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 446,
+        "sha256": "44fc5332a9484c25"
+      },
+      "sha256_page": "2c975ff93d15d06a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_msemen_371797.aspx",
+      "site": "marmiton.org",
+      "nom": "Msemen, crêpes typiques du Maghreb : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "350 g de farine",
+        "150 g de semoule fine",
+        "1 cuillère à café de levure de boulanger sèche",
+        "200 ml d'eau",
+        "200 ml d'eau tiède",
+        "1 cuillère à café de sel",
+        "100 g de beurre",
+        "100 g d'huile d'olive",
+        "semoule fine",
+        "150 g de semoule fine",
+        "beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1158,
+        "sha256": "ca0abdacd98b4c67"
+      },
+      "sha256_page": "2e794f835b9115d1"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_msemen-farcis-au-airfryer_538408.aspx",
+      "site": "marmiton.org",
+      "nom": "Msemen farcis au Airfryer : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "200 g de farine",
+        "200 g de semoule fine",
+        "200 ml d'eau tiède",
+        "1 cuillère à soupe de miel liquide",
+        "8 g de levure de boulanger sèche",
+        "1 cuillère à café de sel fin",
+        "huile d'olive",
+        "2 cuillères à soupe de beurre fondu",
+        "400 g de boeuf haché",
+        "1 pièce d'oignon rouge",
+        "2 gousses d'ail",
+        "1 cuillère à café de cumin en poudre",
+        "1 bonne pincée de cannelle en poudre",
+        "1 cuillère à soupe de paprika en poudre",
+        "1 cuillère à café de concentré de tomates",
+        "1 petit bouquet de coriandre fraîche",
+        "2 cuillères à soupe d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1790,
+        "sha256": "30b40815f10c12b9"
+      },
+      "sha256_page": "aae145a0d7bb2b8e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/tastygourmandise/recettes/msemen-au-lait",
+      "site": "chefsimon.com",
+      "nom": "Msemen au lait",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "Farine de blé (Farine T45): 200g",
+        "Semoule extra fine: 200g",
+        "Bicarbonate de soude: 1 càc",
+        "Sel",
+        "Lait tiède: 20 cl",
+        "Semoule extra fine: 4 càs",
+        "Levure chimique: 1 càc",
+        "Beurre fondu: 50g",
+        "Huile neutre: 15 cl",
+        "Poudre de noisette: 80g",
+        "Miel d'accacia"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 203,
+        "sha256": "92ac0407215aee1c"
+      },
+      "sha256_page": "fb6e6dbbb49ef4b1"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/tastygourmandise/recettes/brick-faux-msemen",
+      "site": "chefsimon.com",
+      "nom": "Brick Faux Msemen",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "Blancs de poulet: 300g",
+        "Oignon: 1",
+        "Petit chou: 1/2",
+        "Feuille de brick: 12",
+        "Ricotta: 2 càs",
+        "Persil: 4 càs",
+        "Gingembre: 1 càc",
+        "Huile d'olive: 2 càs",
+        "Piment d'Espelette: 1/2 càc",
+        "Sel, poivre",
+        "Lait: 100 ml",
+        "Huile neutre: 2 càs",
+        "Oeuf: 1"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 206,
+        "sha256": "bcb8146d110fe05a"
+      },
+      "sha256_page": "c2148ff42474ddd6"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/africa-cuisine/recettes/msemen-f3f91804-677d-4ebe-affb-e7c600b3f62b",
+      "site": "chefsimon.com",
+      "nom": "Msemen",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "300g de farine",
+        "300g de semoule extra fine",
+        "4g de levure chimique",
+        "15g de sucre",
+        "10g de sel",
+        "350ml d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "5e10dcd8e4a628b8"
+    }
+  ]
+}

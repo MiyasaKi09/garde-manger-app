@@ -1,0 +1,164 @@
+{
+  "dish": "Poulet aux haricots verts",
+  "slug": "poulet-aux-haricots-verts",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poelee-de-poulet-carottes-et-haricots-verts_81852.aspx",
+      "site": "marmiton.org",
+      "nom": "Poêlée de poulet, carottes et haricots verts : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 blanc de poulet",
+        "1 carotte",
+        "1 grosse poignée de haricots verts frais",
+        "0.5 oignon",
+        "gingembre en poudre",
+        "piment de Cayenne en poudre",
+        "cumin moulu",
+        "sauce soja",
+        "miel",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 993,
+        "sha256": "e8a08a415a16f14e"
+      },
+      "sha256_page": "d9b8bf19af75aa43"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-de-poulet-curry-et-haricots-verts_49035.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade de poulet curry et haricots verts : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "350 g d'escalopes de poulet environ",
+        "500 g de haricots verts",
+        "2 tomates",
+        "1 yaourt nature",
+        "1 grosse poignée de raisins secs",
+        "huile d'olive",
+        "1 cuillère à soupe de curry",
+        "1 bonne pincée de cannelle",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1049,
+        "sha256": "ccd2f9da0f9ce8ca"
+      },
+      "sha256_page": "8b877ccd6511118d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_ragout-de-poulet-aux-haricots-verts_17846.aspx",
+      "site": "marmiton.org",
+      "nom": "ragoût de poulet aux haricots verts : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "800 g de blancs de poulet",
+        "1 kg de haricots verts",
+        "1 bouquet garni",
+        "1 oignon",
+        "1 verre de vin rouge"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 245,
+        "sha256": "60398f431973a6e3"
+      },
+      "sha256_page": "8777a80b7ad042d1"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/sandrine-jl/recettes/brochettes-de-poulet-au-paprika-haricots-verts-et-semoule",
+      "site": "chefsimon.com",
+      "nom": "Brochettes de poulet au paprika haricots verts et semoule",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "3 escalopes de poulet",
+        "400 gr de haricots verts",
+        "200 gr de semoule à couscous",
+        "2 yaourts grecs",
+        "2 càc de paprika",
+        "huile d’olive",
+        "sel, poivre",
+        "persil",
+        "pics à brochette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "ad343d1288d3dd6a"
+    },
+    {
+      "url": "https://www.750g.com/poulet-a-lestragon-haricots-verts-r55177.htm",
+      "site": "750g.com",
+      "nom": "Poulet à l'estragon, haricots verts",
+      "portions": "6 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "Sel ou sel fin",
+        "Poivre",
+        "Huile d'olive",
+        "Haricot vert",
+        "1 bouquet d'estragon",
+        "Crème fraîche liquide",
+        "4 blancs de poulet"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 205,
+        "sha256": "c1d8f43773d4044d"
+      },
+      "sha256_page": "0edd1e6ac671d13d"
+    },
+    {
+      "url": "https://www.750g.com/cuisses-de-poulet-a-la-creme-d-amandes-et-haricots-vert-a-l-ail-r208472.htm",
+      "site": "750g.com",
+      "nom": "Cuisses de poulet à la crème d’amandes et haricots vert à l’ail",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "4 cuisses de poulet  fermier Casino Terre & Saveurs",
+        "1 c. à s. de farine  ou fécule de maïs",
+        "2 gousses d'ail  hachées",
+        "2 feuilles de laurier",
+        "2 branches de thym  frais",
+        "1 c. à s. de concentré de tomates",
+        "50 cl de lait d'amande  Casino",
+        "1 oignon  haché",
+        "50 g de parmesan râpé",
+        "50 g d'amandes effilées et grillées",
+        "30 g de beurre  ou de margarine ou d'huile d'olive",
+        "Sel ou sel fin",
+        "Poivre",
+        "500 g d'haricots verts",
+        "2 c. à s. d'huile d'olive",
+        "2 gousses d'ail  hachées",
+        "1 c. à s. de persil plat  haché",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1172,
+        "sha256": "ab0c95090d49f34f"
+      },
+      "sha256_page": "62ae751127e1eca2"
+    }
+  ]
+}

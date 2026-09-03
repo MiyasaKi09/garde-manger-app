@@ -1,0 +1,160 @@
+{
+  "dish": "Pâte sablée",
+  "slug": "pate-sablee",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pate-sablee_14540.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâte sablée : la meilleure recette",
+      "portions": "1 pâte",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "250 g de farine",
+        "125 g de sucre semoule",
+        "1 oeuf",
+        "100 g de beurre",
+        "1 zeste de citron",
+        "1 pincée de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 443,
+        "sha256": "ebc7b5e9903aa5d7"
+      },
+      "sha256_page": "d034a550c6e010d7"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pate-sablee-express_29085.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâte sablée express  : la meilleure recette",
+      "portions": "1 tarte moyenne",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "250 g de farine",
+        "125 g de beurre mou (surtout pas fondu, ni un peu liquide... juste un peu mou)",
+        "1 jaune d'oeuf",
+        "2 cuillères à soupe d'huile de tournesol",
+        "2 cuillères à soupe de lait",
+        "2 cuillères à soupe de sucre fin",
+        "1 pincée de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 923,
+        "sha256": "64194bde22386644"
+      },
+      "sha256_page": "1e1cf3a986c76819"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pate-sablee-pour-tartes-ou-biscuits-sables_25146.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâte sablée pour tartes ou biscuits sablés : la meilleure recette",
+      "portions": "1 tarte",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "250 g de farine",
+        "125 g de beurre tendre",
+        "50 g de sucre",
+        "1 oeuf",
+        "1 pincée de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 416,
+        "sha256": "e0b5b9135955f9ba"
+      },
+      "sha256_page": "a3ae22a357c55d74"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/pate-sablee--9",
+      "site": "chefsimon.com",
+      "nom": "Pâte sablée",
+      "portions": "",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "250 g de farine",
+        "125 g de beurre",
+        "70 g de sucre glace",
+        "1 jaune d'oeuf",
+        "5 cl d'eau (ou de lait)",
+        "1 pincée de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 877,
+        "sha256": "e7980b1981011180"
+      },
+      "sha256_page": "13a34567d867efa3"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/pate-sablee-amande",
+      "site": "chefsimon.com",
+      "nom": "Pâte sablée amande",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "200 g de farine",
+        "150 g de beurre",
+        "70 g de sucre glace",
+        "30 g de poudre d'amandes",
+        "1 oeuf entier",
+        "1 pincée de sel."
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 923,
+        "sha256": "055502de34ba9326"
+      },
+      "sha256_page": "9c92ba65cd1eea19"
+    },
+    {
+      "url": "https://www.750g.com/pate-sablee-r1110.htm",
+      "site": "750g.com",
+      "nom": "Pâte sablée vanillée",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 sachet de sucre vanillé",
+        "200 gr de beurre",
+        "250 gr de farine tamisée",
+        "100 gr de sucre semoule",
+        "1 œuf entier extra-frais"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 305,
+        "sha256": "7d3623a52a042ed8"
+      },
+      "sha256_page": "b04bbd4fbb14665d"
+    },
+    {
+      "url": "https://www.750g.com/pate-sablee-au-chocolat-r73435.htm",
+      "site": "750g.com",
+      "nom": "Pâte sablée au chocolat",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "125 g de beurre",
+        "50 g de cacao amer ou poudre de cacao non sucrée",
+        "200 g de farine",
+        "150 g de sucre",
+        "1 oeuf"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 951,
+        "sha256": "dfac310e34365a53"
+      },
+      "sha256_page": "1e43b0c9f5c2144e"
+    }
+  ]
+}

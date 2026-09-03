@@ -1,0 +1,161 @@
+{
+  "dish": "Pizza reine",
+  "slug": "pizza-reine",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_mini-pizzas-reine_16293.aspx",
+      "site": "marmiton.org",
+      "nom": "Mini pizzas reine : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "5 tranches de pains de mie",
+        "1 petite boîte de concentré de tomates",
+        "2 tranches de jambon blanc",
+        "1 boîte de champignon coupés en morceaux",
+        "gruyère râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 543,
+        "sha256": "82e1bc594a382f6b"
+      },
+      "sha256_page": "e4013d43672d7a75"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pizza-reine-tres-simple_48831.aspx",
+      "site": "marmiton.org",
+      "nom": "Pizza reine très simple : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "pâte à pizza",
+        "sauce tomate pour pizza",
+        "champignons de Paris",
+        "jambon",
+        "gruyère râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 347,
+        "sha256": "c0f903c9dc7a962f"
+      },
+      "sha256_page": "041ca88472c86720"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pizza-reine-aux-champignons_27599.aspx",
+      "site": "marmiton.org",
+      "nom": "Pizza reine aux champignons : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1 pâte à pizza",
+        "250 g de mozzarella",
+        "200 g de champignons de Paris",
+        "1 poivron vert",
+        "4 tomates",
+        "1 oignon",
+        "1 gousse d'ail",
+        "1 bouquet garni",
+        "huile d'olive",
+        "sucre",
+        "poivre",
+        "sel",
+        "origan en poudre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 824,
+        "sha256": "d68dc0dfa50e555a"
+      },
+      "sha256_page": "70e35689d9de3673"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/virginie-et-fabien/recettes/pizza-reine",
+      "site": "chefsimon.com",
+      "nom": "Pizza reine",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "Pour la pâte à pizza :",
+        "200 g de farine",
+        "1 sachet de levure chimique",
+        "100 g de fromage blanc",
+        "1 pincée de sel",
+        "30 ml d’eau",
+        "Pour la garniture :",
+        "une poignée de champignons émincés de Paris en boîte",
+        "2 tranches de jambon blanc",
+        "sauce tomate pour pizza",
+        "1 boule de mozzarella",
+        "gruyère râpé",
+        "1 filet d’huile d’olive",
+        "olives noires"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "177f93f6d4760243"
+    },
+    {
+      "url": "https://www.750g.com/pizza-reine-r100098.htm",
+      "site": "750g.com",
+      "nom": "Pizza reine",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 pâte à pizza",
+        "Mozzarella",
+        "Champignon",
+        "Jambon",
+        "Emmental",
+        "Sauce tomate  pour pizza",
+        "Basilic",
+        "Herbes aromatiques",
+        "Huile d'olive",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 674,
+        "sha256": "a0abbb714ccb430b"
+      },
+      "sha256_page": "3e3cb00032e576e4"
+    },
+    {
+      "url": "https://www.750g.com/cake-facon-pizza-reine-r85913.htm",
+      "site": "750g.com",
+      "nom": "Cake façon pizza reine",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "1 petite boîte de champignon de Paris",
+        "Fromage râpé",
+        "140 g de concentré de tomates",
+        "2 c. à s. d'origan",
+        "4 tranches de jambon blanc",
+        "5 c. à s. d'huile d'olive",
+        "3 oeufs",
+        "1 yaourt nature",
+        "1 sachet de levure",
+        "170 g de farine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 175,
+        "sha256": "b82171bbe823503b"
+      },
+      "sha256_page": "9265e6622c49369d"
+    }
+  ]
+}

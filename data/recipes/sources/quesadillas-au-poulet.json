@@ -1,0 +1,206 @@
+{
+  "dish": "Quesadillas au poulet",
+  "slug": "quesadillas-au-poulet",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_quesadillas-aux-restes-de-poulet-et-legumes_537430.aspx",
+      "site": "marmiton.org",
+      "nom": "Quesadillas aux restes de poulet et légumes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT17M",
+      "ingredients": [
+        "8 tortillas",
+        "300 g de poulets rôti",
+        "200 g de légumes rôtis",
+        "250 g de fromage râpé",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 768,
+        "sha256": "21ecfd2d1e2cd911"
+      },
+      "sha256_page": "3d59a42e5c2762c8"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_quesadilla-au-poulet_314211.aspx",
+      "site": "marmiton.org",
+      "nom": "Quesadilla au poulet : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "400 g de filets de poulet",
+        "4 tortillas",
+        "1 demi d'oignon",
+        "25 cl de crème liquide",
+        "4 tranches de cheddar",
+        "curry",
+        "sel",
+        "poivre",
+        "d'emmental râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 987,
+        "sha256": "4c64f8800c391e6b"
+      },
+      "sha256_page": "57295b4c584f912a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/joannes-richard/recettes/quesadillas-de-poulet-tex-mex-et-creamy-guacamole",
+      "site": "chefsimon.com",
+      "nom": "Quesadillas de poulet tex-mex et creamy guacamole",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "4 filets de poulet",
+        "6 cuil. à café de rub tex-mex",
+        "1 poivron rouge",
+        "1 poivron vert",
+        "4 tortillas",
+        "10 chips nachos",
+        "1 brin de coriandre",
+        "1 filet d’huile d’herbes citronnée",
+        "Huile d’olive",
+        "1 petit piment rouge",
+        "4 avocats bien mûrs",
+        "2 cuil. à café de yaourt à la grecque",
+        "1 cuil. à café de paprika fumé",
+        "1 cuil. à café de piment chipotle en poudre (ou de piment de Cayenne)",
+        "1 petit bouquet de coriandre",
+        "2 cuil. à café d’huile d’olive",
+        "1 petit bouquet de persil plat",
+        "Le zeste de ½ citron vert",
+        "1 tomate",
+        "Le zeste et le jus de ½ citron jaune",
+        "1 oignon rouge",
+        "4 gousses d’ail",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1662,
+        "sha256": "8bc4db48d5843461"
+      },
+      "sha256_page": "b0f596be312d6ac9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/quesadillas-au-poulet-mais-et-tomme-de-savoie-igp",
+      "site": "chefsimon.com",
+      "nom": "Quesadillas au poulet, maïs et Tomme de Savoie IGP",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "75g de farine",
+        "50g de farine de maïs",
+        "10g d'huile",
+        "60g d'eau tiède salée",
+        "300g de blancs de poulet",
+        "1/2 poivron rouge",
+        "1 poivron jaune",
+        "1/2 oignon",
+        "90g de maïs",
+        "1 tomate",
+        "2 c à c de paprika",
+        "2 c à c d'origan",
+        "1 c à s d'huile",
+        "2 c à c de cumin",
+        "1 jus de citron vert",
+        "un peu de tabasco",
+        "sel, poivre",
+        "100g de Tomme de Savoie IGP râpée",
+        "coriandre fraîche",
+        "1 gros avocat bien mûr (ou deux petits)",
+        "le jus d'un citron vert",
+        "sel, poivre",
+        "1/2 tomate coupée en dés",
+        "coriandre hachée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "aaa1e829b4545ac3"
+    },
+    {
+      "url": "https://www.750g.com/quesadillas-au-poulet-r207769.htm",
+      "site": "750g.com",
+      "nom": "Quesadillas au poulet",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 tortillas de blé",
+        "1 oignon rouge",
+        "1 gousse d'ail  haché",
+        "2 blancs de poulet",
+        "10 cl de coulis de tomate",
+        "1 c. à s. d'epice mexicaine",
+        "150 g d'emmental rapé",
+        "4 c. à s. d'huile d'olive",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 854,
+        "sha256": "47a6c86561c28c32"
+      },
+      "sha256_page": "bef6878660b95e6c"
+    },
+    {
+      "url": "https://www.750g.com/quesadilla-au-poulet-et-legumes-r99113.htm",
+      "site": "750g.com",
+      "nom": "Quesadilla au poulet et légumes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "1/2 boite de maïs (petit format)",
+        "120g de cheddar",
+        "Sauce piquante",
+        "2 petites tomates",
+        "2 c à s d'huile",
+        "4 galettes fajitas",
+        "50g d'épinards frais",
+        "2 oignons",
+        "120g de blanc de poulet"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 646,
+        "sha256": "19f254710c7dafab"
+      },
+      "sha256_page": "c307504d39effe13"
+    },
+    {
+      "url": "https://www.750g.com/quesadillas-de-poulet-et-mais-r53659.htm",
+      "site": "750g.com",
+      "nom": "Quesadillas de poulet et maïs",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "2 grandes tortillas",
+        "150g de salsa de tomates",
+        "3 càc de maïs",
+        "50g de Philadelphia Ail &amp; Fines Herbes Light",
+        "1 beau filet de poulet cuit, émincé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 658,
+        "sha256": "4e27f01d6fc8dae1"
+      },
+      "sha256_page": "08947f7f9ea1a740"
+    }
+  ]
+}

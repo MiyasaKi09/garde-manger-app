@@ -1,0 +1,103 @@
+{
+  "dish": "Omelette aux crevettes",
+  "slug": "omelette-aux-crevettes",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-aux-crevettes_18112.aspx",
+      "site": "marmiton.org",
+      "nom": "OMELETTE AUX CREVETTES : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "6 oeufs",
+        "250 g de crevettes cuites",
+        "poivre",
+        "huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 157,
+        "sha256": "1bd4f1a34342c90b"
+      },
+      "sha256_page": "f61eac39badec08c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_riz-sauce-tomate-avec-son-omelettes-et-ses-crevettes_82391.aspx",
+      "site": "marmiton.org",
+      "nom": "Riz sauce tomate avec son omelettes et ses crevettes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "4 tomates",
+        "1 poivron",
+        "0.5 oignon",
+        "500 g de riz",
+        "8 oeufs",
+        "16 crevettes",
+        "5 cl de lait",
+        "1 bouquet de persil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 484,
+        "sha256": "c654230cf5448362"
+      },
+      "sha256_page": "f8133df4fead1f5f"
+    },
+    {
+      "url": "https://www.750g.com/omelette-aux-crevettes-r63040.htm",
+      "site": "750g.com",
+      "nom": "Omelette aux crevettes",
+      "portions": "2 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 pincée de glutamate de sodium",
+        "1 gousse d'ail coupée finement",
+        "Un peu d'huile",
+        "100g de crevettes décortiquées",
+        "6 œufs",
+        "Sel",
+        "Poivre",
+        "1 botte de ciboulette",
+        "1 échalote"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 620,
+        "sha256": "f4d3091af776c9da"
+      },
+      "sha256_page": "5c52dce862c45970"
+    },
+    {
+      "url": "https://www.750g.com/ojja-omelette-tunisienne-aux-crevettes-r72895.htm",
+      "site": "750g.com",
+      "nom": "Ojja (omelette tunisienne) aux crevettes",
+      "portions": "3 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "Tabil ou tabel",
+        "Piment rouge",
+        "Olive noire",
+        "Sel ou sel fin",
+        "Poivre",
+        "Crevette",
+        "2 tomates  (grosses)",
+        "5 oeufs",
+        "1 oignon",
+        "1 poivron  (gros)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 682,
+        "sha256": "5391c5ee7b1b4216"
+      },
+      "sha256_page": "da17bf400b4cb7ec"
+    }
+  ]
+}

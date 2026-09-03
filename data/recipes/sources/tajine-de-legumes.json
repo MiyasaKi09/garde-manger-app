@@ -1,0 +1,255 @@
+{
+  "dish": "Tajine de légumes",
+  "slug": "tajine-de-legumes",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tajine-de-legumes_47231.aspx",
+      "site": "marmiton.org",
+      "nom": "Tajine de légumes : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "4 courgettes",
+        "5 carottes",
+        "1 poivron rouge",
+        "1 poivron vert",
+        "1 oignon",
+        "1 boîte de tomates concassées",
+        "tomate séchée",
+        "huile d'olive",
+        "poivre",
+        "sel",
+        "Ras el Hanout",
+        "cannelle"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 559,
+        "sha256": "5fd0013addacdda5"
+      },
+      "sha256_page": "6438d68623ed5f5b"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tajine-de-legumes-varies_17258.aspx",
+      "site": "marmiton.org",
+      "nom": "Tajine de légumes variés : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "2 tomates",
+        "2 navets",
+        "700 g de pommes de terre",
+        "2 oignons",
+        "2 gousses d'ail",
+        "80 g d'olives",
+        "2 cuillères à soupe d'huile d'olive",
+        "15 cl de bouillon de légumes",
+        "4 brins de persil plat",
+        "4 brins de coriandre",
+        "1 cuillère à café rase de cumin moulu",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 428,
+        "sha256": "2860d0985ea4b85a"
+      },
+      "sha256_page": "398167ce4d3fd550"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tajine-de-legumes-d-israel_48322.aspx",
+      "site": "marmiton.org",
+      "nom": "Tajine de légumes d'Israël : la meilleure recette",
+      "portions": "10 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "250 g de quinoa (blanc ou rouge)",
+        "2 poivrons (1 rouge et 1 vert)",
+        "2 courgettes",
+        "250 g de pois chiches",
+        "100 g d'abricots secs",
+        "100 g de raisins secs",
+        "2 cubes de bouillon de légumes",
+        "2 gousses d'ail",
+        "huile d'olive",
+        "2 zestes de citrons non traités",
+        "1 cuillère à café de gingembre moulu",
+        "1 cuillère à soupe de curry",
+        "sésame grillé",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 841,
+        "sha256": "1cff66b52b19317a"
+      },
+      "sha256_page": "47dc501947cad75e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/kaderick/recettes/tajine-boulette-aux-artichauts-et-legumes-bio",
+      "site": "chefsimon.com",
+      "nom": "Tajine boulette aux artichauts et légumes bio",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "Pour les boulettes :",
+        "300 grammes de chair à saucisse",
+        "300 grammes de steak haché",
+        "1 oeuf bio",
+        "de la mie de pain rassie",
+        "épices",
+        "huile d’olive",
+        "Pour les légumes bio :",
+        "3 courgettes",
+        "5 carottes",
+        "2 artichauts de taille moyenne",
+        "½ poivron rouge",
+        "3 échalotes",
+        "2 gousses d’ail nouveaux",
+        "1 citron",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 1775,
+        "sha256": "06bf6a137a651701"
+      },
+      "sha256_page": "20e73f5398e1ccc7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/parole-de-cuillere/recettes/tajine-de-legumes-marocain",
+      "site": "chefsimon.com",
+      "nom": "Tajine de légumes marocain",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "5 pommes de terre moyennes",
+        "5 carottes",
+        "2 navets",
+        "3 belles courgettes",
+        "2 gros oignons",
+        "1 beau piment fort ou 2 petits",
+        "1 cc de curcuma",
+        "1 cc de gingembre en poudre",
+        "1 pincée de safran",
+        "1 petit bouquet de coriandre (ou de persil si vous n’aimez pas)",
+        "Huile d’olive",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "3aaea5992f37a8cf"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/popotte/recettes/tajine-de-pintade-et-legumes-de-printemps",
+      "site": "chefsimon.com",
+      "nom": "Tajine de pintade et légumes de printemps",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "4 cuisses de pintade",
+        "1 boîte d’artichaut",
+        "400 g de fèves",
+        "500 g de haricots plats",
+        "500 g de pommes de terre",
+        "4 oignons nouveaux",
+        "1 citron",
+        "1 sachet d’épices à tajine",
+        "Olives",
+        "Persil",
+        "Huile d’olive",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "b14a8a730eb3472d"
+    },
+    {
+      "url": "https://www.750g.com/tajine-de-legumes-r88068.htm",
+      "site": "750g.com",
+      "nom": "Tajine de légumes traditionnel",
+      "portions": "6 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "3 courgettes",
+        "6 pommes de terre",
+        "4 tomates",
+        "4 carottes",
+        "2 aubergines",
+        "2 navets",
+        "250 g d'haricots verts",
+        "250 g de petits pois",
+        "1 oignon",
+        "1 poivron rouge",
+        "10 cl d'huile d'olive",
+        "2 branches de céleri branche",
+        "1 bouquet de coriandre",
+        "½ bouquet de persil plat",
+        "2 gousses d'ail",
+        "Bouillon de légumes",
+        "1 c. à s. de cumin",
+        "1 c. à s. de paprika",
+        "1 c. à c. de ras el-hanout",
+        "1 c. à c. de curcuma",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1534,
+        "sha256": "e9c46cb3a87e2ff0"
+      },
+      "sha256_page": "977e8193f957645f"
+    },
+    {
+      "url": "https://www.750g.com/tajine-de-poisson-aux-legumes-r98581.htm",
+      "site": "750g.com",
+      "nom": "Tajine de poisson aux légumes",
+      "portions": "8 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "4 pavés de pavés de cabillaud",
+        "4 pommes de terre",
+        "4 carottes",
+        "4 tomates",
+        "2 gousses d'ail",
+        "1 oignon",
+        "½ poivron vert",
+        "12 cl d'eau",
+        "Huile d'olive",
+        "2 c. à s. de jus de citron",
+        "2 c. à s. de persil  haché",
+        "2 c. à s. de coriandre  hachée",
+        "1 c. à c. de gingembre (en poudre)",
+        "1 c. à c. de cumin",
+        "1 c. à c. de paprika",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 692,
+        "sha256": "9fadf2fbc26d75c1"
+      },
+      "sha256_page": "179f384f713a2803"
+    }
+  ]
+}

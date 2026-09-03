@@ -1,0 +1,144 @@
+{
+  "dish": "Bœuf aux brocolis",
+  "slug": "boeuf-aux-brocolis",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_wok-de-boeuf-et-brocolis-a-la-sauce-d-huitres_67759.aspx",
+      "site": "marmiton.org",
+      "nom": "Wok de boeuf et brocolis à la sauce d'huîtres : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "200 g de boeuf (bifteck)",
+        "1 bouquet de brocoli (environ 200 g)",
+        "1 oignon",
+        "2 cuillères à soupe de sauce d'huître (dans les épiceries asiatiques ou au rayon produits du monde des supermarchés)",
+        "huile de tournesol ou d'arachide",
+        "1 cuillère à café de sauce soja",
+        "1 cuillère à café de sauce nuoc mam (idem que la sauce d'huître)",
+        "1 pincée de glutamate (facultatif)",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 933,
+        "sha256": "10248aa9c0b306d7"
+      },
+      "sha256_page": "21884686b648f5c9"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_wok-de-riz-saute-boeuf-marine-et-brocolis_314519.aspx",
+      "site": "marmiton.org",
+      "nom": "Wok de riz sauté, boeuf mariné et brocolis : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 verre de riz",
+        "1 beef steak de 150 g ou un reste de rosbif cuit (environ 2 tranches)",
+        "1 brocoli (ou 1/2 gros) ou une grosse poignée de haricots verts (frais! pas en conserve)",
+        "1 cuillère à café d'huile neutre type tournesol",
+        "3 cuillères à soupe de soja",
+        "1 cuillère à café d'huile de sésame",
+        "1 petit morceau de gingembre émincé (ou un peu de gingembre en poudre)",
+        "1 gousse d'ail émincée",
+        "1 cuillère à café de sucre (ou de miel)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1403,
+        "sha256": "6d158a8c120ac87d"
+      },
+      "sha256_page": "92213375b0956b16"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/saute-de-boeuf-aux-brocolis-champignons-et-nouilles-chinoises",
+      "site": "chefsimon.com",
+      "nom": "Sauté de boeuf aux brocolis, champignons et nouilles chinoises",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "350 g de bavette",
+        "250 g de nouilles chinoises",
+        "250 g de brocolis",
+        "2 gousses d’ail",
+        "1  oignon",
+        "1 boîte de champignons noirs",
+        "1/2  poivron rouge",
+        "gingembre",
+        "30 cL de bouillon de bœuf",
+        "1 à 2 cuil. à soupe d’huile",
+        "2 cuil. à café de maïzena",
+        "3 cuil. à soupe de sauce soja"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 113,
+        "sha256": "584a4ddc4d93ac8a"
+      },
+      "sha256_page": "0b8b4fe539b7d58f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lesfillesatable-com/recettes/boeuf-saute-au-sate-champignons-et-brocolis",
+      "site": "chefsimon.com",
+      "nom": "Boeuf sauté au saté, champignons et brocolis",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "250 g de bœuf (pavé de rumsteak)",
+        "1 pied de brocoli",
+        "150 g de champignons de Paris",
+        "140 g de riz basmati",
+        "1 gousse d'ail",
+        "gingembre frais",
+        "2 cuil. à soupe de saté en poudre",
+        "2 cuil. à soupe de sauce tamari ou soja",
+        "sucre en poudre",
+        "gros sel",
+        "sel",
+        "huile neutre (de sésame)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "0acca9b013d86de6"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/popotte/recettes/bibimbap-boeuf-brocolis-champignons-carottes",
+      "site": "chefsimon.com",
+      "nom": "Bibimbap bœuf, brocolis, champignons, carottes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H40M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "250 g de riz thaï",
+        "140 g de rumsteck",
+        "8 cl de sauce soja",
+        "6 g de sucre en poudre",
+        "2 gousses d'ail",
+        "20 g de gingembre frais",
+        "250 g de brocolis",
+        "2 carottes",
+        "200 g de petits champignons de paris (ou de shiitakés)",
+        "1 cuil. à soupe de graines de sésame",
+        "2 cuil. à soupe d'huile",
+        "Ciboulette",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "351693dde4b2f186"
+    }
+  ]
+}

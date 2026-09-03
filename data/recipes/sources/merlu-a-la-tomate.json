@@ -1,0 +1,38 @@
+{
+  "dish": "Merlu à la tomate",
+  "slug": "merlu-a-la-tomate",
+  "sources_count": 1,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/kilometre-0/recettes/gateau-de-crepes-au-merlu-tomate-avocat-et-cie",
+      "site": "chefsimon.com",
+      "nom": "Gâteau de crêpes au merlu, tomate, avocat et Cie",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "9 crêpes salées",
+        "4 cs d' huile d'olive",
+        "4 cs de vinaigre balsamique blanc",
+        "un demi bouquet de persil",
+        "4 cs de fromage frais",
+        "1 cs de jus de citron",
+        "quelques brins de ciboulette",
+        "3 avocats",
+        "3 tomates",
+        "une poignée de salade verte",
+        "7 oeufs",
+        "650 g de chair de merlu",
+        "du jus de citron",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "e3038f5beddba42a"
+    }
+  ]
+}

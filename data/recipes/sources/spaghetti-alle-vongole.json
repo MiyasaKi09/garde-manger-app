@@ -1,0 +1,154 @@
+{
+  "dish": "Spaghetti alle vongole",
+  "slug": "spaghetti-alle-vongole",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/ouest-delices/recettes/spaghetti-alle-vongole-21f80313-c7d6-41d5-8a54-0d66f2a979de",
+      "site": "chefsimon.com",
+      "nom": "Spaghetti alle vongole",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "1,2 à 1,4 kg de palourdes fraîches (vongole veraci)",
+        "2 l d'eau froide",
+        "70 g de gros sel marin",
+        "500 g de spaghetti de qualité supérieure (tréfilées au bronze si possible)",
+        "3 à 4 gousses d'ail frais",
+        "1 bouquet de persil plat frais",
+        "1 piment rouge frais (ou une pincée de piment d'Espelette)",
+        "6 cuillères à soupe d'huile d'olive extra-vierge",
+        "10 cl de vin blanc sec (type Vermentino ou Pinot Grigio)",
+        "Sel fin et poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "6240d0d58c76f0dd"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lesrecettesdejosephine-com/recettes/spaghetti-alle-vongole",
+      "site": "chefsimon.com",
+      "nom": "Spaghetti alle vongole",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "400 g de spaghettis numéro 3",
+        "1 kg de coques",
+        "10 cl vin blanc sec",
+        "3 gousses d'ail",
+        "4 CS d'huile d'olive",
+        "2 CS Persil haché",
+        "1 petit piment ( facultatif)",
+        "10 tomates cerises découpées en petits dés"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "eeed67796577069e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-recette-italienne/recettes/spaghetti-alle-vongole-0a06333f-7901-4e52-814a-db3e3e6d8d0a",
+      "site": "chefsimon.com",
+      "nom": "Spaghetti alle vongole",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "300 g de Spaghetti",
+        "1 kg de Palourdes",
+        "2 Gousses d'ail",
+        "4 cas d'huile d'olive",
+        "100 ml  de vin blanc sec",
+        "Persil",
+        "Sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "d79d685c873c1399"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_spaghettis-aux-palourdes_17822.aspx",
+      "site": "marmiton.org",
+      "nom": "Spaghettis aux palourdes : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "200 g de spaghetti",
+        "20 palourdes",
+        "0.5 verre de vin blanc sec",
+        "3 cuillères à soupe d'huile d'olive",
+        "2 cuillères à soupe de persil",
+        "1 gousse d'ail",
+        "25 g de beurre",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 473,
+        "sha256": "13d1a7a4596843a6"
+      },
+      "sha256_page": "5f53dd12bc101653"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_spaghetti-a-la-vongole-aux-palourdes_26328.aspx",
+      "site": "marmiton.org",
+      "nom": "Spaghetti à la vongole (aux palourdes) : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "600 g de spaghetti",
+        "1 kg de palourde",
+        "450 g de tomates pelées",
+        "10 cl d'huile",
+        "4 gousses d'ail",
+        "1 bouquet de persil haché",
+        "3 grains de poivre",
+        "poivre du moulin",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 915,
+        "sha256": "47bffee8426ffa5a"
+      },
+      "sha256_page": "0cdf1ecd596984ad"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_spaghetti-aux-tomates-et-aux-palourdes_22544.aspx",
+      "site": "marmiton.org",
+      "nom": "Spaghetti aux tomates et aux palourdes : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "500 g de spaghetti",
+        "1.5 kg de palourdes",
+        "375 g de tomates pelées",
+        "90 g de beurre",
+        "2 gousses d'ail",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 381,
+        "sha256": "07deee4dd2942d0b"
+      },
+      "sha256_page": "94b1da002199a05e"
+    }
+  ]
+}

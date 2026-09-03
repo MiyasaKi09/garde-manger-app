@@ -1,0 +1,220 @@
+{
+  "dish": "Poivrons grillés",
+  "slug": "poivrons-grilles",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-de-poivrons-grilles-a-la-feta_27138.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade de poivrons grillés à la feta  : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "2 poivrons rouges",
+        "150 g de feta (de brebis/chèvre, attention !)",
+        "1 gousse d'ail",
+        "1 bouquet de menthe ou de basilic",
+        "10 olives noires",
+        "huile",
+        "vinaigre balsamique"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 907,
+        "sha256": "3500fdf95fa68cf6"
+      },
+      "sha256_page": "3c2c19ad5536fc01"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poivrons-grilles-a-l-huile_24368.aspx",
+      "site": "marmiton.org",
+      "nom": "Poivrons grillés à l'huile : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 poivrons rouges",
+        "2 poivrons jaunes",
+        "1 gousse d'ail",
+        "20 cl d'huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 323,
+        "sha256": "71d8d7eb77c430ef"
+      },
+      "sha256_page": "d9e4a6bc2929ace0"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cabillaud-sauce-chorizo-poivrons-grilles_168637.aspx",
+      "site": "marmiton.org",
+      "nom": "Cabillaud sauce chorizo poivrons grillés : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "3 poivrons rouges",
+        "1 botte d'oignon frais",
+        "20 tranches de chorizo (dont 9 pour la décoration)",
+        "1 petit pot de crème fraîche",
+        "4 lieu noir"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 658,
+        "sha256": "af3316a816153cf5"
+      },
+      "sha256_page": "ea8f8ed42340b67b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/brochettes-de-poulet-et-poitrine-fumee-a-la-courgette-et-poivron-grille-au-barbecue",
+      "site": "chefsimon.com",
+      "nom": "Brochettes de poulet et poitrine fumée à la courgette et poivron grillé au barbecue",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "1 blanc de poulet",
+        "8 rondelles de courgette d'environ 1 cm d'épaisseur",
+        "4 morceaux de poivron grillé",
+        "4 tranches de poitrine fumée",
+        "Ingrédients pour la marinade :",
+        "1 c. à soupe d'huile d'olive",
+        "1 c. à café de vinaigre balsamique",
+        "mélange d'ail, échalote et oignon séché au goût",
+        "estragon séché au goût",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 720,
+        "sha256": "94c4cd8d052c92ab"
+      },
+      "sha256_page": "9b80d1f025193c07"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/houmous-aux-poivrons-grilles-facile",
+      "site": "chefsimon.com",
+      "nom": "Houmous aux poivrons grillés facile",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 boîte de pois chiches (400gr)",
+        "150gr de poivrons grillés",
+        "Le jus d'un demi-citron (ou le jus d'un citron pour un houmous relevé)",
+        "3CS de tahini",
+        "1cc de sel",
+        "Persil (pour servir)",
+        "Graines de sésame (pour servir)",
+        "Huile d'olive (pour servir)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 397,
+        "sha256": "a2ec711b7323d830"
+      },
+      "sha256_page": "e6084f8d5b2d11e9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/salade-de-poivrons-grilles-a-la-feta",
+      "site": "chefsimon.com",
+      "nom": "Salade de poivrons grillés à la feta",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "1  poivron vert",
+        "1  poivron rouge",
+        "1  poivron jaune",
+        "50 g de feta",
+        "1  cuil. à soupe de câpres",
+        "1  cuil. à soupe de citron",
+        "1  cuil. à soupe d’huile d’olive",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 283,
+        "sha256": "57a24bb02c25fc53"
+      },
+      "sha256_page": "a3466806d0ff8163"
+    },
+    {
+      "url": "https://www.750g.com/marinade-de-poivrons-grilles-r3086.htm",
+      "site": "750g.com",
+      "nom": "Marinade de poivrons grillés",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 poivrons",
+        "50 g d'olives noires",
+        "3 gousses d'ail",
+        "2 jus de citron",
+        "8 c. à s. d'huile d'olive",
+        "10 feuilles de basilic",
+        "Sel ou sel fin",
+        "Poivre concassé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 639,
+        "sha256": "9e49f1ea74b3e1ef"
+      },
+      "sha256_page": "eed2bdbf5858a201"
+    },
+    {
+      "url": "https://www.750g.com/terrine-au-chevre-frais-et-poivrons-grilles-r4808.htm",
+      "site": "750g.com",
+      "nom": "Terrine au chèvre frais et poivrons grillés",
+      "portions": "6 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "6 feuilles de basilic",
+        "Sel",
+        "Poivre",
+        "2 c. à café d'huile d'olive pour l'asaisonnement",
+        "1 bouquet de ciboulette",
+        "1 bouquet de persil",
+        "150 g de chèvre frais",
+        "10 olives noires dénoyautées",
+        "6 poivrons rouge grillés, pelés épépinés"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 388,
+        "sha256": "4d5b8db8261b69d4"
+      },
+      "sha256_page": "7233d066f84253bb"
+    },
+    {
+      "url": "https://www.750g.com/tartines-de-tomates-et-poivron-grille-r91111.htm",
+      "site": "750g.com",
+      "nom": "Tartines de tomates et poivron grillé",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "Parmesan râpé",
+        "Basilic",
+        "40 g de fromage frais Saint Môret",
+        "2 tranches de blanc de poulet",
+        "2 tomates",
+        "1 poivron rouge",
+        "2 tranches de pain de campagne"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 634,
+        "sha256": "ae0f656f982e3e58"
+      },
+      "sha256_page": "89ea5c465a98a844"
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "dish": "Boulettes de viande",
+  "slug": "boulettes-de-viande",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_boulettes-de-viandes-simplissimes_25114.aspx",
+      "site": "marmiton.org",
+      "nom": "Boulettes de viandes simplissimes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "500 g de viande hachée",
+        "1 oeuf",
+        "1 cuillère à soupe rase de farine",
+        "poivre",
+        "sel",
+        "1 sachet d'oignon déshydratée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 623,
+        "sha256": "63e1ee384bf975ab"
+      },
+      "sha256_page": "d4c788fbf81b41b4"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_boulettes-de-viande-a-la-sicilienne_70135.aspx",
+      "site": "marmiton.org",
+      "nom": "Boulettes de viande à la Sicilienne : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "600 g de boeuf haché ou veau",
+        "3 oeufs",
+        "200 g de pecorino ou parmesan râpé",
+        "100 g de chapelure",
+        "basilic",
+        "persil",
+        "menthe",
+        "1 oignon",
+        "2 gousses d'ail",
+        "poivre",
+        "sel",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1061,
+        "sha256": "bae61cd1049b7875"
+      },
+      "sha256_page": "0ec58a2f52f85964"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_boulettes-de-viande-a-la-marocaine-kefta-b-matecha-maroc_17252.aspx",
+      "site": "marmiton.org",
+      "nom": "Boulettes de viande à la marocaine - kefta b'matecha (Maroc) : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 grande boîte de tomates pelées",
+        "500 g de viande hachée",
+        "1 oignon râpé",
+        "1 cuillère à café de cumin (ou plus suivant les goûts)",
+        "1 cuillère à café de paprika",
+        "1 pincée de gingembre",
+        "1 poignée de persil",
+        "100 g de beurre (ou un peu moins suivant les goûts)",
+        "sel /poivre",
+        "piment doux (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 727,
+        "sha256": "750395f2c84330f1"
+      },
+      "sha256_page": "d5de275b8d38d921"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/soupe-italienne-aux-boulettes-de-viande-au-parmesan",
+      "site": "chefsimon.com",
+      "nom": "Soupe italienne aux boulettes de viande au parmesan",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "450 g de bœuf haché",
+        "1 œuf",
+        "2 gousses d’ail",
+        "1 oignon",
+        "20 g dde chapelure",
+        "20 g de parmesan",
+        "2 c à s huile d’olive",
+        "1 c à s d’origan",
+        "1 c à s de basilic haché",
+        "1 c à s d’ail semoule",
+        "Sel et poivre",
+        "1 c à s d’huile d’olive",
+        "2 gousses d’ail hachées",
+        "1/2 oignon",
+        "Thym",
+        "2 carottes",
+        "100 g de fleurette de brocolis",
+        "1 croûte de parmesan",
+        "Sel et poivre moulu",
+        "1 c à s de farine",
+        "25 cl de bouillon de légumes",
+        "1 boite de tomates concassées 450 g",
+        "150 g de petites pâtes (ici des Dilalini Lisci n°69)",
+        "Fleurettes de brocolis"
+      ],
+      "etapes_empreinte": {
+        "nombre": 22,
+        "signes": 1478,
+        "sha256": "5b11b4047c15d59b"
+      },
+      "sha256_page": "15e122d01147c910"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/l-italie-dans-ma-cuisine/recettes/boulettes-de-viande-d9c03d1c-8068-4c23-a695-a4bd4ee0ea4d",
+      "site": "chefsimon.com",
+      "nom": "Boulettes de viande",
+      "portions": "5 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "500 grammes de viande hachée (de boeuf ou mixte)",
+        "3 oeufs",
+        "3 tranches de pain de mie ou de vieux pain",
+        "120 grammes de parmesan",
+        "2 cuillères à soupe de chapelure",
+        "1/4 de verre de vin blanc sec",
+        "persil hache",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 362,
+        "sha256": "609c535f5fff38cf"
+      },
+      "sha256_page": "61d0973a1510ea5f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/boulettes-de-viande-danoises-au-curry",
+      "site": "chefsimon.com",
+      "nom": "Boulettes de viande danoises au curry",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "600 à 650 g de viande hachée, moitié porc, moitié veau",
+        "1 gros oignon",
+        "1 œuf",
+        "10 cl de lait",
+        "4 cs de farine",
+        "½ cc de gros sel",
+        "2 cubes de bouillon",
+        "poivre",
+        "50 g de beurre",
+        "1 oignon",
+        "2 pommes",
+        "2 cs de curry",
+        "2,5 cs de farine",
+        "60 à 75 centilitres de bouillon",
+        "estragon, romarin, coriandre ou ciboulette ciselés"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 2212,
+        "sha256": "ff9e8c6acc861e16"
+      },
+      "sha256_page": "fa35d9fb57719fc0"
+    },
+    {
+      "url": "https://www.750g.com/polpette-napolitaines-boulettes-de-viande-r207978.htm",
+      "site": "750g.com",
+      "nom": "Polpette napolitaines (boulettes de viande)",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "350 g de boeuf haché",
+        "120 g de mortadelle",
+        "80 g de pain rassis  (ou 180 g de pain frais)",
+        "100 g de parmesan râpé",
+        "1 gousse d'ail",
+        "2 c. à s. de persil plat",
+        "2 oeufs  moyens",
+        "40 g de raisin secs",
+        "40 g de pignons de pin",
+        "30 g de farine",
+        "4 c. à s. d'huile d'olive",
+        "2 pincées de sel ou sel fin",
+        "2 pincées de poivre",
+        "700 g de pulpe de tomates",
+        "1 c. à s. de concentré de tomates",
+        "½ oignon",
+        "4 c. à s. d'huile d'olive",
+        "4 pincées de sel ou sel fin",
+        "2 feuilles de basilic  frais"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1835,
+        "sha256": "9e794de2a99d20cb"
+      },
+      "sha256_page": "54fa7b6671ac5aea"
+    },
+    {
+      "url": "https://www.750g.com/riz-au-boulettes-de-viande-r59540.htm",
+      "site": "750g.com",
+      "nom": "Riz au boulettes de viande",
+      "portions": null,
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "200 g de riz",
+        "1 oignon  émincé",
+        "4,5 cl d'huile d'olive",
+        "Eau  (sa contenance est expliqué ci-dessous)",
+        "5 g de sel ou sel fin",
+        "1 c. à s. de concentré de tomates",
+        "1 c. à c. de paprika",
+        "1 pincée de menthe  ou ou une à 2 feuilles",
+        "1 pincée de sel ou sel fin",
+        "1 pincée de poivre",
+        "200 g de viande hachée",
+        "1 oignon",
+        "5 g de sel ou sel fin",
+        "1 ail",
+        "1 pincée de poivre noir",
+        "1 pincée de menthe",
+        "1 pincée de paprika",
+        "1 pincée de basilic"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1128,
+        "sha256": "e02ae352a6debeb2"
+      },
+      "sha256_page": "693ab92161cb2363"
+    }
+  ]
+}

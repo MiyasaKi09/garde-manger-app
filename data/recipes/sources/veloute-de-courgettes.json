@@ -1,0 +1,186 @@
+{
+  "dish": "Velouté de courgettes",
+  "slug": "veloute-de-courgettes",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veloute-de-courgettes_21369.aspx",
+      "site": "marmiton.org",
+      "nom": "Velouté de courgettes : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 kg de courgette",
+        "2 portions de Vache qui rit® ' ou équivalent",
+        "1 bouillon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 337,
+        "sha256": "b29484ee22e973d4"
+      },
+      "sha256_page": "20b4c6af1dc99fef"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veloute-de-courgette_18478.aspx",
+      "site": "marmiton.org",
+      "nom": "Velouté de courgette : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1.5 kg de courgettes",
+        "10 g de beurre ou une cuillère à soupe d'huile d'olive",
+        "1 tablette de bouillon de volaille ou de boeuf",
+        "3 cuillères à soupe de crème fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 311,
+        "sha256": "bc1ce572c480e28d"
+      },
+      "sha256_page": "8d955cd45ca50dbe"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veloute-aux-courgettes_13179.aspx",
+      "site": "marmiton.org",
+      "nom": "Velouté aux courgettes : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "2 l d'eau",
+        "2 kg de courgettes",
+        "2 cubes de bouillon de volaille",
+        "8 tranches de toastinettes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 239,
+        "sha256": "e1581cada84421f8"
+      },
+      "sha256_page": "185014c9573019ff"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/veloute-de-courgettes-et-lentilles-corail",
+      "site": "chefsimon.com",
+      "nom": "Velouté de courgettes et lentilles corail",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "1 kg de courgettes",
+        "150 g de lentilles corail",
+        "160 g de crème liquide entière",
+        "2 gousses d'ail noir",
+        "1 oignon doux",
+        "1 litre de bouillon de légumes",
+        "1 c. à soupe d'huile d'olive",
+        "branches de thym",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 928,
+        "sha256": "14e017a76fc226ff"
+      },
+      "sha256_page": "59dfaaec84777c63"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/veloute-pommes-de-terre-courgettes",
+      "site": "chefsimon.com",
+      "nom": "Velouté pommes de terre courgettes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "2 pommes de terre moyennes (de type Colomba)",
+        "500g de courgettes",
+        "1 demi oignon",
+        "1 petite gousse d'ail (facultatif)",
+        "1 cube de bouillon de légumes",
+        "2CS de crème (ou skyr)",
+        "30g de parmesan râpé",
+        "Sel, poivre et noix de muscade",
+        "1 filet d'huile d'olive pour la cuisson",
+        "Parmesan et graines de courges avant de servir"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 810,
+        "sha256": "ccade82d6df452e6"
+      },
+      "sha256_page": "813254c487f62430"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/nota-banane/recettes/veloute-de-courgette-fe181c8a-2954-49e0-ad6a-b25e8f86e1f3",
+      "site": "chefsimon.com",
+      "nom": "Velouté de courgette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "4 courgettes",
+        "2 petits oignons",
+        "2 gousses d'ail",
+        "2 \"vache qui rit\" ou 1 carré frais",
+        "1 cube de bouillon de légumes (optionnel)",
+        "Menthe (optionnel)",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 158,
+        "sha256": "0e43aacd5284ac94"
+      },
+      "sha256_page": "9f5a37b6ca799ced"
+    },
+    {
+      "url": "https://www.750g.com/veloute-de-courgettes-r55261.htm",
+      "site": "750g.com",
+      "nom": "Velouté de courgettes et fromage frais",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "2 \"vache qui rit\"",
+        "Eau",
+        "Sel",
+        "Poivre",
+        "1 grosse noisette de beurre",
+        "3 courgettes",
+        "50cl de bouillon reconstitué (1 cube + eau au micro onde)",
+        "1/2 oignons ou une bonne poignée d'oignons surgelés"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 232,
+        "sha256": "99011e9e88f6f0e0"
+      },
+      "sha256_page": "ffdb03d3f35af397"
+    },
+    {
+      "url": "https://www.750g.com/veloute-de-courgettes-r10851.htm",
+      "site": "750g.com",
+      "nom": "Velouté de courgettes onctueux",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "6 portions de fromage crémeux type Vache qui rit",
+        "Sel",
+        "Poivre",
+        "4 gousses d'ail",
+        "1 kg de courgette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 355,
+        "sha256": "922f99ee9e66b199"
+      },
+      "sha256_page": "75f63b8051492c57"
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "dish": "Filet de lieu noir",
+  "slug": "filet-de-lieu-noir",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_filet-de-lieu-noir-a-la-moutarde_51752.aspx",
+      "site": "marmiton.org",
+      "nom": "Filet de lieu noir à la moutarde : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 filets de lieu noir noir",
+        "4 cuillères à soupe de crème fraîche",
+        "1 cuillère à soupe de moutarde",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 277,
+        "sha256": "ee6642ebbed74c42"
+      },
+      "sha256_page": "768193dcd56a5aec"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_filet-de-lieu-noir-creme-et-moutarde_343779.aspx",
+      "site": "marmiton.org",
+      "nom": "Filet de lieu noir  crème et moutarde : la meilleure recette",
+      "portions": "4 personne",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "500 g de lieu noir noir",
+        "5 cuillères à soupe de crème",
+        "1 grosse cuillère à soupe de moutarde de Dijon",
+        "2 cuillères à soupe de persil haché",
+        "1 cuillère à soupe de ciboulette",
+        "2 cuillères à soupe d'huile d'olive",
+        "1 pincée de sel",
+        "1 poivre du moulin",
+        "1 tomate"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 424,
+        "sha256": "474c25d4af25526b"
+      },
+      "sha256_page": "ec3feace58fc0d6e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_filet-de-lieu-noir-en-papillote-de-poireaux-aux-agrumes_225206.aspx",
+      "site": "marmiton.org",
+      "nom": "Filet de lieu noir en papillote de poireaux  aux agrumes : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 filets de lieu noir noir",
+        "2 poireaux émincés",
+        "1 cuillère à soupe de crème",
+        "1 orange",
+        "1 citron",
+        "gingembre frais",
+        "thym",
+        "poivre",
+        "sel",
+        "muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 629,
+        "sha256": "4dd0445f18cfe81c"
+      },
+      "sha256_page": "973fcdcdb916ce81"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/adelepomme/recettes/filet-de-lieu-noir-sauce-curry-et-basilic",
+      "site": "chefsimon.com",
+      "nom": "Filet de lieu noir sauce curry et basilic",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "Un joli filet de lieu noir",
+        "une dizaine de feuilles de basilic",
+        "curry",
+        "sel, poivre",
+        "une échalote",
+        "5 à 10 cL de crème fraîche",
+        "huile de tournesol"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "c4fe90841578c793"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/adelepomme/recettes/filet-de-lieu-noir-facile-et-rapide",
+      "site": "chefsimon.com",
+      "nom": "Filet de lieu noir facile et rapide",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "700 g de filet de lieu noir",
+        "150 g de riz blanc",
+        "une grosse échalote",
+        "un peu de farine (facultatif)",
+        "15 à 20 cL de crème fraîche",
+        "huile d’olive",
+        "le jus d’un demi-citron",
+        "aneth",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "c884a7bd0e5e9b69"
+    },
+    {
+      "url": "https://www.750g.com/filets-de-lieu-noir-au-cuit-vapeur-r23189.htm",
+      "site": "750g.com",
+      "nom": "Filets de lieu noir au cuit vapeur",
+      "portions": "3 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "Filet de lieu noir",
+        "Oignon  émincé",
+        "Brocoli",
+        "Estragon",
+        "Piment doux",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 401,
+        "sha256": "1d767869bec9e069"
+      },
+      "sha256_page": "2f0bcdc1a67ac883"
+    },
+    {
+      "url": "https://www.750g.com/filets-de-lieu-noir-aux-poireaux-r21317.htm",
+      "site": "750g.com",
+      "nom": "Filets de lieu noir aux poireaux",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 filets de lieu noir",
+        "2 poireaux",
+        "2 oignons",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 480,
+        "sha256": "67a82e01112591ff"
+      },
+      "sha256_page": "4b82311ce69f8202"
+    },
+    {
+      "url": "https://www.750g.com/filets-de-lieu-noir-au-citron-et-aux-capres-r38657.htm",
+      "site": "750g.com",
+      "nom": "Filets de lieu noir au citron et aux câpres",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT7M",
+      "ingredients": [
+        "120 g de beurre",
+        "Sel",
+        "Poivre",
+        "4 cuillères à soupe de câpres",
+        "2 citrons",
+        "4 tranches de pain de mie coupés en petits dés",
+        "4 filets de lieu noir"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 573,
+        "sha256": "4a4c899e285451c8"
+      },
+      "sha256_page": "418f99b526478f09"
+    }
+  ]
+}

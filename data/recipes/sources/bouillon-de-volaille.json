@@ -1,0 +1,131 @@
+{
+  "dish": "Bouillon de volaille",
+  "slug": "bouillon-de-volaille",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bouillon-de-volaille-tout-simple_57339.aspx",
+      "site": "marmiton.org",
+      "nom": "Bouillon de volaille tout simple : la meilleure recette",
+      "portions": "2 litres",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "3 poulets",
+        "300 g de Volaille",
+        "1 blanc de poireau",
+        "2 carottes",
+        "2 oignons",
+        "1 branche de céleri",
+        "5 champignons de Paris",
+        "1 bouquet garni",
+        "25 cl de vin blanc",
+        "5 cuillères à soupe d'huile",
+        "poivre en grains",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 709,
+        "sha256": "31967173e53c773a"
+      },
+      "sha256_page": "6d57e1946a18467b"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_sauce-bouillon-de-volaille_221581.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauce au bouillon de volaille et à la crème : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "10 cuillères à soupe de crème fraîche épaisse",
+        "1 cube de bouillon de volaille"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 295,
+        "sha256": "9fc9640220b4b617"
+      },
+      "sha256_page": "1ea80759a76a7ba6"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/bouillon-de-volaille-maison-45a23cc1-fceb-4dbf-a1f7-cb313e5945e0",
+      "site": "chefsimon.com",
+      "nom": "Bouillon de volaille maison",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT02H30M",
+      "ingredients": [
+        "1  carcasse de volaille (poulet rôti, canard, chapon, faisan, etc…)",
+        "1  oignon",
+        "2  carottes",
+        "3  branches de céleri",
+        "1  feuille de laurier ou 1 bouquet garni",
+        "1/4  de cuil. à café de sel",
+        "1/2  cuil. à café de poivre noir",
+        "2,5 L d’eau froide"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 240,
+        "sha256": "f76d7c215c9e4899"
+      },
+      "sha256_page": "a9f84046c3d344ac"
+    },
+    {
+      "url": "https://www.750g.com/bouillon-de-volaille-r19574.htm",
+      "site": "750g.com",
+      "nom": "Bouillon de volaille",
+      "portions": null,
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "34 branches de céleri",
+        "Sel",
+        "Poivre",
+        "2 litres d'eau (ou plus si vous faites cuire un poulet entier)",
+        "12 feuilles de laurier",
+        "1 oignon",
+        "34 carottes lavées et pelées",
+        "1 poireau lavé et tranché",
+        "poulet entier, ou poitrines de poulet ou cuisses de poulet"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 772,
+        "sha256": "7bba057bce85e8eb"
+      },
+      "sha256_page": "76b592ac05e3cd4f"
+    },
+    {
+      "url": "https://www.750g.com/bouillon-de-volaille-facon-thai-ravioles-de-champignons-r97121.htm",
+      "site": "750g.com",
+      "nom": "Bouillon de volaille façon Thaï, ravioles de champignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "12 feuilles de pâte à ravioli / Won tons",
+        "1 échalote",
+        "250 g de champignons de Paris",
+        "20 g de beurre",
+        "Pluche de coriandre  fraîche (quelque)",
+        "3 gousses d'ail",
+        "1,5 l d'eau filtrée",
+        "1 cm de gingembre  frais",
+        "12 ailerons de volaille",
+        "1 bâton de citronnelle",
+        "Sel ou sel fin",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1653,
+        "sha256": "cfcd6cc6cd55b100"
+      },
+      "sha256_page": "abf493b1613a2d30"
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "dish": "Quiche au thon",
+  "slug": "quiche-au-thon",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_quiche-thon-tomates-et-mozzarella_37146.aspx",
+      "site": "marmiton.org",
+      "nom": "Quiche thon, tomates et mozzarella : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "1 rouleau de pâte brisée",
+        "4 cuillères à café de moutarde",
+        "1 boîte de thon au naturel",
+        "4 tomates",
+        "200 g de mozzarella",
+        "2 oeufs",
+        "15 cl de crème (semi-épaisse de préférence)",
+        "1 cuillère à soupe de farine",
+        "basilic",
+        "persil",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 575,
+        "sha256": "a589c18d5b959fa5"
+      },
+      "sha256_page": "6b2457d485afbb68"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_quiche-au-thon_18677.aspx",
+      "site": "marmiton.org",
+      "nom": "Quiche au thon : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 pâte feuilletée",
+        "1 boîte de thon",
+        "2 tomates",
+        "gruyère (quantité selon vos goûts)",
+        "4 oeufs",
+        "0.5 pot de crème fraîche et un peu de lait",
+        "moutarde",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 441,
+        "sha256": "89b10781e6890b7c"
+      },
+      "sha256_page": "efc8c051990d9803"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_le-ratathon-quiche-au-thon-et-a-la-ratatouille_27406.aspx",
+      "site": "marmiton.org",
+      "nom": "Le 'Ratathon' (Quiche au thon et à la ratatouille)  : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 pâte feuilletée",
+        "130 g de thon au naturel",
+        "300 g de ratatouille (ou encore mieux, de la ratatouille fraîche, l'équivalent d'une petite boîte de conserve)",
+        "3 oeufs",
+        "20 cl de crème allégée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 361,
+        "sha256": "e7f05f3971db6ba9"
+      },
+      "sha256_page": "7c36ac293388c9b6"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/quiche-au-thon-gourmande",
+      "site": "chefsimon.com",
+      "nom": "Quiche au thon gourmande",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H35M",
+      "ingredients": [
+        "1 pâte brisée ou feuilletée",
+        "140g de thon au naturel égoutté",
+        "3 œufs",
+        "20cl de crème liquide",
+        "10cl de lait",
+        "100g de comté râpé",
+        "1cc de moutarde",
+        "3CS de persil plat",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 827,
+        "sha256": "e4d50b1affaa82b3"
+      },
+      "sha256_page": "3eb94578f180cd3f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/quiche-au-thon-et-trio-de-poivrons",
+      "site": "chefsimon.com",
+      "nom": "Quiche au thon et trio de poivrons",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "1  pâte brisée",
+        "120 g de thon au naturel égoutté",
+        "2  oignons",
+        "3  poivrons (1 de chaque couleur)",
+        "3  œufs",
+        "100 g de tomme de brebis",
+        "20 cL de crème liquide",
+        "60 g de pignons",
+        "2  cuil. à soupe d’huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 242,
+        "sha256": "77c7074e7de2ab88"
+      },
+      "sha256_page": "40df9987396ad4db"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/emilie/recettes/quiche-thon-et-petits-pois",
+      "site": "chefsimon.com",
+      "nom": "Quiche thon et petits pois",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "1 pâte brisée",
+        "100g de petits pois surgelés",
+        "180g de thon en boite bien égoutté",
+        "2 brins de coriandre",
+        "1 cuillère à soupe de moutarde forte",
+        "50g de parmesan râpé",
+        "10cl de lait",
+        "25cl de crème liquide",
+        "3 oeufs",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 636,
+        "sha256": "3eaa74f15bacf3ee"
+      },
+      "sha256_page": "c17e14d018f7f8e2"
+    },
+    {
+      "url": "https://www.750g.com/quiche-facile-au-thon-et-a-la-tomate-r205541.htm",
+      "site": "750g.com",
+      "nom": "Quiche au thon et à la tomate facile",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "1 pâte feuilletée",
+        "200 g de thon à l'huile",
+        "3 tomates",
+        "2 c. à s. de concentré de tomates",
+        "15 cl de crème liquide",
+        "3 oeufs",
+        "1 gousse d'ail",
+        "100 g de gruyère râpé",
+        "Herbes de Provence séchées",
+        "Sel ou sel fin",
+        "Poivre",
+        "1 sachet de roquette",
+        "Vinaigrette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 890,
+        "sha256": "0f285b99e6fb5987"
+      },
+      "sha256_page": "fa16dd078a218485"
+    },
+    {
+      "url": "https://www.750g.com/quiche-thon-tomate-et-olives-r60455.htm",
+      "site": "750g.com",
+      "nom": "Quiche thon, tomate et olives",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 gousses d'ail",
+        "1 pâte brisée",
+        "Sel",
+        "Poivre",
+        "1 botte de cive (ou persil)",
+        "1/2 l de crème",
+        "3 tomates",
+        "100g d'olives",
+        "4 œufs",
+        "300g de thon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 456,
+        "sha256": "feab7ad6cdd31c6e"
+      },
+      "sha256_page": "d94588242c9383e3"
+    },
+    {
+      "url": "https://www.750g.com/quiche-au-thon-r98909.htm",
+      "site": "750g.com",
+      "nom": "Quiche au thon et échalotes relevée au paprika",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 sachet de gruyère râpé",
+        "½ c. à c. de paprika",
+        "Sel ou sel fin",
+        "Poivre",
+        "25 cl de crème fraîche",
+        "25 cl de lait",
+        "450 g de thon  frais",
+        "2 échalotes",
+        "2 oeufs  entiers",
+        "1 jaune d'oeuf",
+        "1 rouleau de pâte feuilletée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 317,
+        "sha256": "e5a7a46aadb7bbcd"
+      },
+      "sha256_page": "4415d21c97171d48"
+    }
+  ]
+}

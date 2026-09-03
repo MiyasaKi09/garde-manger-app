@@ -1,0 +1,77 @@
+{
+  "dish": "Pois chiches rôtis",
+  "slug": "pois-chiches-rotis",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/deliacious/recettes/carottes-roties-pois-chiches-et-jeunes-pousses-d-epinards",
+      "site": "chefsimon.com",
+      "nom": "Carottes rôties, pois chiches et jeunes pousses d'épinards",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "400 g carottes primeur (ou sable à défaut (plus savoureuses))",
+        "3 c. à soupe huile d'olive",
+        "250 g pois chiches (soit une petite boîte)",
+        "1 c. à soupe  huile d'olive",
+        "1/4  c. à café mélange épices (cumin, curcuma, coriandre,muscade, paprika fumé)",
+        "1 pincée sel",
+        "150 g jeunes pousses d'épinards",
+        "quelques tiges coriandre fraîche",
+        "1/4   oignon rouge"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 230,
+        "sha256": "24c549a645435d60"
+      },
+      "sha256_page": "a3a2d88763f4d6ae"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/deliacious/recettes/pois-chiches-rotis-et-brocolis",
+      "site": "chefsimon.com",
+      "nom": "Pois chiches rôtis et brocolis",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1  petite boîte de pois chiches (soit 400 g)",
+        "2 c. à soupe huile d'olive",
+        "1/2 c. à café  épices colombo ((voir notes))",
+        "1/4 c. à café sel",
+        "2 portions riz basmati",
+        "1  tête de brocolis",
+        "1 c. à café graines de sésame"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 296,
+        "sha256": "a6aa8b3e3567a254"
+      },
+      "sha256_page": "cdf941f3d5ca9ceb"
+    },
+    {
+      "url": "https://www.750g.com/pois-chiches-rotis-r202920.htm",
+      "site": "750g.com",
+      "nom": "Pois chiches rôtis",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H40M",
+      "ingredients": [
+        "500g de pois chiches bio MARKAL",
+        "2 cl d'huile végétale bio de colza, sésame ou olive",
+        "1,5 cl de\tcrème de coco bio",
+        "1 c à c de sel\tfin",
+        "5 g de curry ou cumin en poudre bio"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 1093,
+        "sha256": "1324850ef7be72fe"
+      },
+      "sha256_page": "c27b4126ccf91d50"
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "dish": "Chorba",
+  "slug": "chorba",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_la-chorba-algeroise_47457.aspx",
+      "site": "marmiton.org",
+      "nom": "La chorba  algéroise : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "400 g de mouton (épaule de préférance)",
+        "150 g de blancs de poulet",
+        "4 tomates bien rouge et mûres",
+        "1 courgette de 150 g environ",
+        "2 carottes",
+        "1 oignon blanc",
+        "2 pommes de terre (environ 300 g)",
+        "1 poignée de pois chiches",
+        "2 cuillères à soupe de concentré de tomates",
+        "1 beau bouquet de coriandre fraîche",
+        "1 bonne poignée de menthe",
+        "0.5 cuillère à café de poivre noir",
+        "0.5 cuillère à café de cannelle",
+        "1 cuillère à café de coriandre en graines concassées ou en poudre",
+        "4 cuillères à soupe d'huile",
+        "1 poignée de vermicelles ou de blé concassée",
+        "sel",
+        "citron (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 1404,
+        "sha256": "c60b58cfa8cbad6d"
+      },
+      "sha256_page": "d0f68519f9263792"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_chorba-soupe-aux-legumes-algerienne_12187.aspx",
+      "site": "marmiton.org",
+      "nom": "Chorba (soupe aux légumes algérienne) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "200 g de mouton",
+        "500 g de tomates bien mûres ou 2 cuillerées à soupe de concentré de tomates diluées dans 1 verre d'eau",
+        "1 poignée de pois chiches trempés de la veille",
+        "0.5 louche d'huile d'olive ou 100 gr de beurre",
+        "1 oignon",
+        "1 pomme de terre",
+        "1 carotte",
+        "1 courgette",
+        "2 branches de céleri",
+        "1 bouquet de coriandre",
+        "0.5 cuillère à soupe de poivre rouge",
+        "1 pincée de poivre noir",
+        "1 pincée de cannelle",
+        "100 g de vermicelles fins",
+        "citron"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 841,
+        "sha256": "c81df1bb88f640b2"
+      },
+      "sha256_page": "781d13ffca8e826d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_chorba-algeroise-d-avicenne_27427.aspx",
+      "site": "marmiton.org",
+      "nom": "Chorba algéroise d'Avicenne : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT3H",
+      "ingredients": [
+        "mouton ou agneau entre 50 et 100 g par personne",
+        "3 oignons",
+        "1 petite boîte de concentré de tomates",
+        "5 carottes",
+        "5 courgettes",
+        "2 pommes de terre (facultatif)",
+        "2 branches de céleri",
+        "1 boîte de pois chiches",
+        "coriandre et de menthe fraîche",
+        "vermicelles",
+        "poivre",
+        "sel",
+        "cumin",
+        "eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 430,
+        "sha256": "d30000ea8b43da3c"
+      },
+      "sha256_page": "a126e55d756c082b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-petits-plats-du-prince/recettes/bouillon-comme-une-chorba-nord-africaine",
+      "site": "chefsimon.com",
+      "nom": "Bouillon comme une Chorba nord africaine",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT02H30M",
+      "ingredients": [
+        "6 noisettes d'agneau ou du collier",
+        "1 bol de pois chiches secs",
+        "2 carottes",
+        "1 poireau",
+        "1 navet",
+        "1 bol de concassée de tomates",
+        "15 cl de concentré de tomates",
+        "1 oignon épluché",
+        "3 gousses d'ail épluché",
+        "1 branche de romarin",
+        "1 feuille de laurier",
+        "1 branche de thym",
+        "1 bâton de cannelle",
+        "1 bouquet de coriandre fraîche",
+        "1 cuillère à café de clou de girofle moulu",
+        "1 cuillère à café de 4 épices",
+        "1 cuillère à café de Ras el Hanout",
+        "1 cuillère à café de cumin",
+        "piment selon votre goût, plus ou moins piquant",
+        "1 cuillère à soupe d'huile d'olive",
+        "Gros sel, poivre",
+        "vermicelles"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 993,
+        "sha256": "2b103f7c5ad5fd01"
+      },
+      "sha256_page": "829a763f55c37b66"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jawahir/recettes/chorba-au-poulet",
+      "site": "chefsimon.com",
+      "nom": "Chorba au poulet",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1/2 blanc de poulet",
+        "1 oignon",
+        "1 tomate",
+        "1 cuillère à soupe de tomate concentré",
+        "1 poignée de pois chiche (mis à tremper la nuit)",
+        "persil et coriandre haché finement (1 poignée)",
+        "sel",
+        "1/2 cuillère à café poivre",
+        "1/2 cuillère à café de curcuma",
+        "1/4 cuillère à café de paprika",
+        "1/4 cuillère à café de cumin",
+        "15 cl de tomate liquide",
+        "huile neutre",
+        "Vermicelle (1 poignée)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 594,
+        "sha256": "7d4f295f1c04aba0"
+      },
+      "sha256_page": "1cdd3d0371c89c01"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/196-flavors/recettes/chorba-frik-e11f0347-3796-435c-8cab-ad7744909049",
+      "site": "chefsimon.com",
+      "nom": "Chorba Frik",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "350 g de viande d'agneau (, coupée en morceaux)",
+        "2  oignons frais",
+        "2  gousses d'ail",
+        "1  bouquet de coriandre fraiche (, ciselée)",
+        "1  branche de cèleri (, branche et feuilles)",
+        "3 to  mates",
+        "100 g de pois chiches ((trempés la veille))",
+        "1 cuillère à café de paprika et/ou de piment fort",
+        "1 cuillère à café de ras el hanout",
+        "1 cuillère à café de coriandre en poudre",
+        "1 cuillère à soupe de menthe sèche",
+        "2 cuillères à soupe de concentré de tomate",
+        "1  feuille de laurier",
+        "Sel",
+        "Poivre",
+        "200 g de frik (, rincé et égoutté)",
+        "3 cuillères à soupe d’huile d’olive",
+        "2 l d’eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 252,
+        "sha256": "ff73a665024ef523"
+      },
+      "sha256_page": "15f842384366d2cc"
+    },
+    {
+      "url": "https://www.750g.com/chorba-tunisienne-r81717.htm",
+      "site": "750g.com",
+      "nom": "Chorba tunisienne",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "2 côtelettes d'agneau",
+        "2 branches de céleri",
+        "2 poignées de pâtes",
+        "1 poignée de pois chiche  (trempés la veille)",
+        "1 gousse d'ail  petite",
+        "2 c. à s. de concentré de tomates",
+        "1 c. à s. d'huile d'olive",
+        "Eau",
+        "Piment doux  ou Piment fort",
+        "4 quatre épices",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 970,
+        "sha256": "9d6edc37c97cebe3"
+      },
+      "sha256_page": "8476474d9107da2e"
+    },
+    {
+      "url": "https://www.750g.com/chorba-algerienne-r56283.htm",
+      "site": "750g.com",
+      "nom": "Chorba algérienne",
+      "portions": "4 personnes",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "250 g de viande  ou mouton, poulet ou boeuf",
+        "1 pincée de cannelle",
+        "1 c. à c. de sel ou sel fin",
+        "1 bouquet de persil  ou menthe",
+        "2 c. à s. d'huile de tournesol",
+        "1 verre de vermicelle  (petits) ou frik",
+        "2 pommes de terre",
+        "1 c. à s. de concentré de tomates",
+        "1 c. à c. de ras el-hanout",
+        "20 cm de courgettes",
+        "1 poivre noir",
+        "2 tomates",
+        "1 oignon  (petit)",
+        "1 c. à c. de poivron rouge"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 870,
+        "sha256": "dacfad0e976ffb86"
+      },
+      "sha256_page": "a31a1804d4de2105"
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "dish": "Poisson pané",
+  "slug": "poisson-pane",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poisson-pane_32153.aspx",
+      "site": "marmiton.org",
+      "nom": "Poisson pané : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT3M",
+      "ingredients": [
+        "3 filets de Poissons blanc",
+        "1 oeuf",
+        "100 g de pains un peu rassis ou chapelure"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 425,
+        "sha256": "b5d364ff999153c4"
+      },
+      "sha256_page": "96690b7599fa5c0c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poisson-pane-merlan_17658.aspx",
+      "site": "marmiton.org",
+      "nom": "Poisson pané (merlan) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT6M",
+      "ingredients": [
+        "4 filets de merlan",
+        "1 jaune d'oeuf",
+        "50 g de chapelure ou de biscottes écrasées",
+        "3 cuillères à soupe de lait",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 229,
+        "sha256": "b6040a7555fbd388"
+      },
+      "sha256_page": "b9c9fc2daf489121"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poissons-panes-epices_527925.aspx",
+      "site": "marmiton.org",
+      "nom": "Poissons panés épicés : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "2 pavés de cabillaud",
+        "1 oeuf",
+        "1 cuillère à soupe de farine de blé",
+        "1 cuillère à soupe de farine de manioc",
+        "1 cuillère à soupe de chapelure",
+        "1 cuillère à café de paprika",
+        "1 cuillère à café de curcuma",
+        "3 branches de persil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 401,
+        "sha256": "1cc5ce3797597890"
+      },
+      "sha256_page": "a420fb9c08283a46"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/filet-de-poisson-pane-au-son-et-a-la-coriandre",
+      "site": "chefsimon.com",
+      "nom": "Filet de poisson pané au son et à la coriandre",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "3  filets de merlan (mais tout autre poisson blanc fera l’affaire)",
+        "1  œuf légèrement battu",
+        "50 g de son d’avoine",
+        "1 cuil. à soupe  de graines de coriandre grossièrement pilées",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 182,
+        "sha256": "03229a80b4d60f1d"
+      },
+      "sha256_page": "6185143e3e7f6b5b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/deliacious/recettes/tofu-pane-facon-poisson-pane",
+      "site": "chefsimon.com",
+      "nom": "Tofu pané façon poisson pané",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 bloc tofu nature",
+        "2 c. à soupe algues du pêcheur",
+        "4 c. à soupe sauce tamari ou sauce soja",
+        "1 c. à soupe jus de citron",
+        "1 pincée sel et poivre",
+        "200 ml eau chaude",
+        "2 c. à soupe crème de soja",
+        "4 c. à soupe polenta ((prévoyez en un peu plus au cas où))"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 217,
+        "sha256": "f962aee3c4ce36ef"
+      },
+      "sha256_page": "75a15b700785579c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/julie-de-petits-plats-faciles/recettes/poisson-pane-au-four",
+      "site": "chefsimon.com",
+      "nom": "Poisson pané au four",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "250 g de filets de lieu noir",
+        "2 tbsp de farine de sarrasin",
+        "1 œuf de poule",
+        "3 biscottes riches en fibres",
+        "1 tsp de zestes de citron BIO",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "ce918ee6b853bdf8"
+    },
+    {
+      "url": "https://www.750g.com/filet-de-poisson-pane-r60718.htm",
+      "site": "750g.com",
+      "nom": "Filet de poisson pané",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT6M",
+      "ingredients": [
+        "Filet de poisson",
+        "Citron",
+        "Oeuf",
+        "Fromage râpé",
+        "Farine",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 588,
+        "sha256": "6a9eb1157b5ff992"
+      },
+      "sha256_page": "805e68062ca06964"
+    },
+    {
+      "url": "https://www.750g.com/hamburger-au-poisson-pane-r95098.htm",
+      "site": "750g.com",
+      "nom": "Hamburger au poisson pané",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 c à c de beurre",
+        "1 pot de sauce tartare",
+        "4 tranches de fromage fondu",
+        "8 tranches de poisson pané (colin d'Alaska)",
+        "4 buns"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 282,
+        "sha256": "b34c7bcd2c210e3b"
+      },
+      "sha256_page": "323a870b11eb4c36"
+    }
+  ]
+}

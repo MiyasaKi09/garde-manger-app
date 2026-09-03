@@ -1,0 +1,147 @@
+{
+  "dish": "Salade caprese",
+  "slug": "salade-caprese",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-caprese_392685.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade Caprese : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "4 tomates type tomates anciennes ou coeur de boeuf",
+        "1 mozzarella di buffala",
+        "4 cuillères à soupe d'huile d'olive",
+        "2 cuillères à soupe de vinaigre balsamique",
+        "10 feuilles de basilic frais ciselées",
+        "fleur de sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 396,
+        "sha256": "5eb3494e74a4dc3e"
+      },
+      "sha256_page": "e1db6fc4ef61fb40"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-caprese-a-la-burrata_528372.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade caprese à la burrata : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "500 g de tomates cerise rouges et jaunes",
+        "2 burrata",
+        "basilic",
+        "vinaigre balsamique",
+        "fleur de sel",
+        "1 trait d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 234,
+        "sha256": "4c6ac72d0fbf726f"
+      },
+      "sha256_page": "de0fdc0bf37d6196"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/salade-caprese-de-peche-et-jambon-de-parme-a-la-jamie-oliver",
+      "site": "chefsimon.com",
+      "nom": "Salade caprese de pêche et jambon de Parme à la Jamie Oliver",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2  pêches – j’ai pris des jaunes pour une assiette plus colorée",
+        "1  boule de mozzarella de bufflonne",
+        "1  citron",
+        "4  tranches de jambon de Parme",
+        "50 g de roquette",
+        "1  bouquet de basilic",
+        "1  cuil. à soupe d’huile d’olive extra vierge",
+        "1  cuil. à café de vinaigre balsamique",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 176,
+        "sha256": "c78ca83c9469f9fc"
+      },
+      "sha256_page": "0fed9b7c6ba0ef78"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/pates-facon-salade-caprese",
+      "site": "chefsimon.com",
+      "nom": "Pâtes façon salade caprese",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H12M",
+      "ingredients": [
+        "500 g de pâtes courtes",
+        "250 g de tomates cerises fraîches",
+        "1 grosse tomate cœur de bœuf par exemple",
+        "250 g de mozzarella de vache ou fior di latte de préférence",
+        "10 feuilles de basilic",
+        "10 cuil. à soupe d’huile d’olive",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "4c8f4e88ce354263"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-cuisine-d-adeline/recettes/salade-caprese",
+      "site": "chefsimon.com",
+      "nom": "Salade Caprese",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 tomates bien mûres",
+        "2 à 3 boules de mozzarella",
+        "Huile d'olive",
+        "Quelques feuilles de basilic",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "f81dbdc53836187c"
+    },
+    {
+      "url": "https://www.750g.com/salade-caprese-aux-kakis-ribera-del-xuquer-aop-et-burrata-r206999.htm",
+      "site": "750g.com",
+      "nom": "Salade Caprese",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "2 kakis  ribera del xuquer aop",
+        "300 g de burratas",
+        "100 g de noisettes",
+        "½ grenade",
+        "5 c. à s. d'huile d'olive",
+        "4 c. à s. de vinaigre balsamique",
+        "6 pincées de poivre du moulin",
+        "4 pincées de sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1278,
+        "sha256": "e0f9f10dcfff3259"
+      },
+      "sha256_page": "f6c846b8ab9a5af9"
+    }
+  ]
+}

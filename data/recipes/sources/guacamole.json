@@ -1,0 +1,232 @@
+{
+  "dish": "Guacamole",
+  "slug": "guacamole",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_guacamole-tres-facile_13111.aspx",
+      "site": "marmiton.org",
+      "nom": "Guacamole très facile : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "2 avocats",
+        "2 tomates coupées en morceaux",
+        "0.5 oignon coupée en cubes",
+        "sel",
+        "0.5 citron",
+        "coriandre",
+        "sauce piquante"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 284,
+        "sha256": "ebddd4befb18f630"
+      },
+      "sha256_page": "56dc3b6bbcc0bf46"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_guacamole-maison_17637.aspx",
+      "site": "marmiton.org",
+      "nom": "Guacamole maison : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "2 avocats mûrs",
+        "1 oignon moyen",
+        "0.5 citron vert",
+        "1 gousse d'ail (très petite)",
+        "1 tomate",
+        "de tabasco",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 575,
+        "sha256": "91f439bdab531efd"
+      },
+      "sha256_page": "73ff932e8ebc3f8b"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_guacamole_18571.aspx",
+      "site": "marmiton.org",
+      "nom": "Guacamole : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "2 avocats bien mûrs",
+        "de coriandre frais",
+        "1 citron vert",
+        "1 oignon frais",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 252,
+        "sha256": "bc198b74dd7c9d4a"
+      },
+      "sha256_page": "03b4d38702dd2282"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/guacamole--12",
+      "site": "chefsimon.com",
+      "nom": "Guacamole",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 avocat à point",
+        "1 échalotes ou 1 petit oignon nouveau",
+        "1 gousse d'ail",
+        "1 grosse cuiller à soupe de persil haché fin",
+        "un filet de jus de citron vert",
+        "sel",
+        "poivre du moulin",
+        "quelques gouttes de tabasco ou de sauce sriracha (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 302,
+        "sha256": "e5e23a5777ef41e4"
+      },
+      "sha256_page": "8a2d3c992d0d9889"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/joannes-richard/recettes/quesadillas-de-poulet-tex-mex-et-creamy-guacamole",
+      "site": "chefsimon.com",
+      "nom": "Quesadillas de poulet tex-mex et creamy guacamole",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "4 filets de poulet",
+        "6 cuil. à café de rub tex-mex",
+        "1 poivron rouge",
+        "1 poivron vert",
+        "4 tortillas",
+        "10 chips nachos",
+        "1 brin de coriandre",
+        "1 filet d’huile d’herbes citronnée",
+        "Huile d’olive",
+        "1 petit piment rouge",
+        "4 avocats bien mûrs",
+        "2 cuil. à café de yaourt à la grecque",
+        "1 cuil. à café de paprika fumé",
+        "1 cuil. à café de piment chipotle en poudre (ou de piment de Cayenne)",
+        "1 petit bouquet de coriandre",
+        "2 cuil. à café d’huile d’olive",
+        "1 petit bouquet de persil plat",
+        "Le zeste de ½ citron vert",
+        "1 tomate",
+        "Le zeste et le jus de ½ citron jaune",
+        "1 oignon rouge",
+        "4 gousses d’ail",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1662,
+        "sha256": "8bc4db48d5843461"
+      },
+      "sha256_page": "5b65d95c0c9b38ec"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/del-s-cooking-twist/recettes/toasts-de-patates-douces-et-guacamole-au-chou-kale",
+      "site": "chefsimon.com",
+      "nom": "Toasts de patates douces et guacamole au chou kale",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "3 patates douces, coupées en rondelles épaisses",
+        "2 cuil. à soupe d'huile d'olive",
+        "1 cuil. à café de paprika moulu",
+        "3 avocats bien mûrs",
+        "2 grandes feuilles de chou kale, hâchées finement",
+        "1/2 pamplemousse, coupé en dés",
+        "1 petit chili ou piment de cayenne, émincé finement",
+        "1 gousse d'ail, émincée",
+        "1 citron vert, jus",
+        "1 cuil. à soupe d'huile d'olive",
+        "Sel et poivre",
+        "2 cuil. à soupe de grenade (optionnel)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 632,
+        "sha256": "561be38810518f18"
+      },
+      "sha256_page": "36372a27c7bd91da"
+    },
+    {
+      "url": "https://www.750g.com/guacamole-thermomix-r21491.htm",
+      "site": "750g.com",
+      "nom": "Guacamole Thermomix",
+      "portions": "6 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 c. à c. de purée de piment",
+        "Sel ou sel fin",
+        "Coriandre  fraiche",
+        "½ jus de citron",
+        "2 tomates",
+        "1 oignon",
+        "2 avocats  bien mûrs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 171,
+        "sha256": "6220a42f81a921aa"
+      },
+      "sha256_page": "bf638b63d5a87dde"
+    },
+    {
+      "url": "https://www.750g.com/guacamole-r82800.htm",
+      "site": "750g.com",
+      "nom": "Guacamole aux tomates cerises",
+      "portions": "1 personne",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "Huile d'olive",
+        "Ail",
+        "Poivre",
+        "Sel ou sel fin",
+        "Tomate cerise",
+        "1 oignon rouge",
+        "1 avocat"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 286,
+        "sha256": "fb90eca00ea0c3b2"
+      },
+      "sha256_page": "7e420f1ba0beef2a"
+    },
+    {
+      "url": "https://www.750g.com/guacamole-thon-et-avocat-r74016.htm",
+      "site": "750g.com",
+      "nom": "Guacamole thon et avocat",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "Jus de citron",
+        "Epice mexicaine",
+        "1 boite de thon au naturel",
+        "2 avocats"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 313,
+        "sha256": "a4f42a37dbb16337"
+      },
+      "sha256_page": "acbda61ed16f4b2c"
+    }
+  ]
+}

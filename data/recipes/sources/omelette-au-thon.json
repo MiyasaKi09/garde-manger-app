@@ -1,0 +1,129 @@
+{
+  "dish": "Omelette au thon",
+  "slug": "omelette-au-thon",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-thon-courgette-de-nanie_229032.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette thon courgette de Nanie : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "6 oeufs (fermiers de préférence)",
+        "1 petite boîte de thon au naturel",
+        "1 courgette",
+        "huile d'olive",
+        "poivre",
+        "sel",
+        "curry"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 789,
+        "sha256": "094f827aff45abdc"
+      },
+      "sha256_page": "8412ee3719cf9657"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-au-thon-poivron-et-tomate_329953.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette au thon, poivron et tomate  : la meilleure recette",
+      "portions": "2 Personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 oeufs",
+        "1 boîte de thon",
+        "1 demi de tomate",
+        "1 demi de poivron",
+        "1 oignon",
+        "1 cuillère à soupe de Saint Morêt",
+        "ail en poudre",
+        "paprika",
+        "1 cuillère à soupe d'huile d'olive",
+        "1 cuillère à soupe de crème fraîche",
+        "poivre et sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 324,
+        "sha256": "f225552da08d9339"
+      },
+      "sha256_page": "8843a2c40ea8a75c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-au-thon_26553.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette au thon : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 boîte de thon au naturel",
+        "3 oignons moyens",
+        "6 oeufs",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 210,
+        "sha256": "3f78aa9689e7a1a3"
+      },
+      "sha256_page": "a778422d5efabe93"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/oh-la-gourmande/recettes/omelette-de-pommes-de-terre-tomates-et-thon-368a80d7-a7e7-4319-8f28-a5f9a8b5dbac",
+      "site": "chefsimon.com",
+      "nom": "Omelette de pommes de terre, tomates et thon",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "8 œufs",
+        "640 g de pommes de terre",
+        "500 g d'eau",
+        "4 tomates",
+        "2 boîtes de 130 g poids net égoutté de thon au naturel",
+        "sel",
+        "poivre",
+        "1 c à s de persil ciselé",
+        "1 c à c de piment d'Espelette",
+        "1 c à c de mélange Niora ou Nora Hojilla",
+        "Comté râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "7ab624c98fa7033b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/oh-la-gourmande/recettes/mini-omelettes-au-thon-et-aux-epinards-662f402d-0b59-467b-a501-27188a0d082b",
+      "site": "chefsimon.com",
+      "nom": "Mini-omelettes au thon et aux épinards",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "3 œufs",
+        "75 g de thon nature égoutté",
+        "100 g de pousses d'épinards frais",
+        "1 petit oignon rouge",
+        "2 c à s d'huile",
+        "15 g d'emmental râpé",
+        "Sel, poivre",
+        "Citron vert"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "44802310049e81b2"
+    }
+  ]
+}

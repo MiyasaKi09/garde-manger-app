@@ -1,0 +1,164 @@
+{
+  "dish": "Salade méchouia",
+  "slug": "salade-mechouia",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-tunisienne-cuite-mechouia_25156.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade Tunisienne cuite ( mechouia ) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 poivrons verts",
+        "2 poivrons rouges",
+        "4 tomates",
+        "1 oignon",
+        "2 piments verts (selon leur force)",
+        "4 gousses d'ail",
+        "2 oeufs durs",
+        "1 boîte de thon en miette",
+        "4 cuillères à soupe d'huile d'olive",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 491,
+        "sha256": "090eaaeaf9b310e7"
+      },
+      "sha256_page": "4490ea1780525204"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-mechouia-tunisie_12362.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade mechouia (Tunisie) : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "5 piments verts de taille moyenne",
+        "3 tomates",
+        "2 gousses d'ail",
+        "sel",
+        "2 cuillères à soupe de jus de citron",
+        "2 cuillères à soupe d'huile d'olive",
+        "2 cuillères à soupe d'olives vertes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 200,
+        "sha256": "e12af89b0909babb"
+      },
+      "sha256_page": "6a4d6353d5b1a233"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-mechouia-algerienne-de-coralie_313660.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade méchouia algérienne de Coralie : la meilleure recette",
+      "portions": "6 Personnes",
+      "duree_preparation": "PT1H30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 poivrons verts",
+        "2 poivrons rouges",
+        "5 tomates",
+        "1 piment vert",
+        "6 gousses d'ail",
+        "6 cuillères à soupe d'huile d'olive",
+        "150 g de thon",
+        "4 oeufs durs",
+        "100 g d'olives",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 649,
+        "sha256": "418a9a2e2b37045f"
+      },
+      "sha256_page": "a66518c9ecb9fad7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-en-folie/recettes/salade-mechouia--3",
+      "site": "chefsimon.com",
+      "nom": "Salade Mechouia",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 kg de poivrons rouges (ou moitié rouge, moitié vert)",
+        "2 tomates rouges bien mûres (ou une boîte de tomates concassées)",
+        "1 cuillère à café de sauce tomate",
+        "1 gros oignon jaune",
+        "1 oignon rouge",
+        "2 à 3 gousses d'ail",
+        "1 piment rouge ou vert",
+        "Thym frais",
+        "Romarin",
+        "Origan frais",
+        "3 cuillères à soupe d'huile d'olive",
+        "Sel",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "8718662fa95cd653"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/zika/recettes/slata-mechouia-salade-grillee-a-l-ancienne",
+      "site": "chefsimon.com",
+      "nom": "Slata mechouia-salade grillée à l'ancienne",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 kg de poivrons",
+        "500 g de piments",
+        "800 g de tomates mûres et fermes",
+        "1 tête d'ail",
+        "1 cc de carvi en poudre",
+        "1 cc de coriandre en poudre",
+        "1 verre à thé d'huile",
+        "olives",
+        "œufs durs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "847d17e2603662bf"
+    },
+    {
+      "url": "https://www.750g.com/ma-salade-mechouia-r43161.htm",
+      "site": "750g.com",
+      "nom": "Salade mechouia",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "Trois grosses pincées de cumin",
+        "Huile d'olive, 5 c à soupe selon goût",
+        "Quelques olives noires",
+        "quatre bonnes ça de coriandre fraîche hachée",
+        "3 piments doux",
+        "10 tomates roma",
+        "5 gousses d'ail",
+        "8 poivrons (rouges et verts)",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 868,
+        "sha256": "076469fd1c49e334"
+      },
+      "sha256_page": "86b67f6824aa1488"
+    }
+  ]
+}

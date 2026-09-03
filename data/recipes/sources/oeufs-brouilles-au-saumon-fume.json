@@ -1,0 +1,147 @@
+{
+  "dish": "Œufs brouillés au saumon fumé",
+  "slug": "oeufs-brouilles-au-saumon-fume",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_oeufs-brouilles-au-saumon-fume-et-a-l-aneth_80827.aspx",
+      "site": "marmiton.org",
+      "nom": "Oeufs brouillés au saumon fumé et à l'aneth : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "8 oeufs ,",
+        "10 g de beurre",
+        "2 tranches de saumon fumé ,",
+        "2 cuillères à soupe de crème fraîche ,",
+        "3 branches d'aneth (dont une pour le décor),",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 879,
+        "sha256": "81d950d78d173043"
+      },
+      "sha256_page": "c589f5eeb3b738f6"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_couronne-d-oeufs-brouilles-au-saumon-fume_19185.aspx",
+      "site": "marmiton.org",
+      "nom": "Couronne d'oeufs brouillés au saumon fumé : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "16 oeufs",
+        "16 cuillères à soupe de crème fraîche liquide",
+        "3 feuilles de Gélatine alimentaire nature",
+        "3 tranches de saumon fumé",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 399,
+        "sha256": "202207654744eaff"
+      },
+      "sha256_page": "2abf63815c019132"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/oh-la-gourmande/recettes/tartines-d-oeufs-brouilles-au-saumon-fume-9febe218-8e0f-4453-a61a-f684bfd17e77",
+      "site": "chefsimon.com",
+      "nom": "Tartines d’œufs brouillés au saumon fumé",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 grandes tranches de pain de campagne",
+        "4 œufs",
+        "100 g de saumon fumé",
+        "1 c à s de crème épaisse",
+        "Persil",
+        "Sel et poivre",
+        "1 noisette de beurre",
+        "1 filet d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "1265af528f3af723"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/epicetout/recettes/mille-feuilles-d-oeufs-brouilles-au-saumon-fume-et-tete-de-moine",
+      "site": "chefsimon.com",
+      "nom": "Mille feuilles d'oeufs brouillés au saumon fumé et tête de moine",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 œufs",
+        "2 cuillères à soupe de crème",
+        "10 g de beurre + 10 g",
+        "3 feuilles de brick",
+        "8 pétales de fromage Tête de Moine",
+        "2 tranches de saumon fumé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "31efcf788c28f20b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/oh-la-gourmande/recettes/tartines-d-oeufs-brouilles-au-saumon-fume",
+      "site": "chefsimon.com",
+      "nom": "Tartines d'œufs brouillés au saumon fumé",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 grandes tranches de pain de campagne",
+        "4 œufs",
+        "100 g de saumon fumé",
+        "1 c. à s. de crème épaisse",
+        "Persil",
+        "Sel et poivre",
+        "1 noisette de beurre",
+        "1 filet d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "56a0480a8525b3c3"
+    },
+    {
+      "url": "https://www.750g.com/oeufs-brouilles-au-saumon-fume-r204612.htm",
+      "site": "750g.com",
+      "nom": "Œufs brouillés à la truite fumée sur muffins anglais",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "8 oeufs",
+        "15 g de beurre",
+        "4 c. à s. de crème fraîche",
+        "Sel ou sel fin",
+        "Poivre du moulin",
+        "½ bouquet de ciboulette",
+        "4 tranches de saumon fumé",
+        "4 muffins anglais (pain)",
+        "1 sachet de salade de mesclun"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 785,
+        "sha256": "7a39cf0d0492d14b"
+      },
+      "sha256_page": "f59d349218cc4d3a"
+    }
+  ]
+}

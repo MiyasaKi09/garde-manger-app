@@ -1,0 +1,191 @@
+{
+  "dish": "Soupe de lentilles",
+  "slug": "soupe-de-lentilles",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-aux-lentilles-corail_27918.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe aux lentilles corail : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "250 g de lentilles corail",
+        "1 poireau",
+        "1 carotte",
+        "50 cl de bouillon de légumes",
+        "1 cuillère à soupe d'huile",
+        "2 cuillères à soupe de jus de citron",
+        "1 cuillère à café de citron râpé",
+        "0.5 cuillère à café de cumin en poudre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 857,
+        "sha256": "9bb5bc9d8ec291f3"
+      },
+      "sha256_page": "811bb8c0de3e6f71"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-de-lentilles-au-cumin-egypte_17623.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe de lentilles au cumin (Egypte) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 tasses de lentilles corail",
+        "2 tomates",
+        "1 oignon",
+        "cumin en grains",
+        "poivre",
+        "sel",
+        "de persil plat pour décorer"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 480,
+        "sha256": "0342e16f21cce134"
+      },
+      "sha256_page": "2aa50cfebf507430"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-de-lentille-corail-aux-carottes-et-lait-de-coco_336353.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe de lentille corail aux carottes et lait de coco : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "120 g de lentilles corail",
+        "2 carottes moyennes",
+        "1 oignon",
+        "2 gousses d'ail",
+        "1 cuillère à soupe de curry",
+        "20 cl de lait de coco (moins selon les goûts)",
+        "1 cuillère à café de coriandre",
+        "1 l d'eau",
+        "1 filet d'huile d'olive",
+        "1 pincée de sel",
+        "1 pincée de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 832,
+        "sha256": "65a457849f5bffca"
+      },
+      "sha256_page": "aceb9c300b530b63"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/orianec/recettes/soupe-de-lasagnes-et-lentilles",
+      "site": "chefsimon.com",
+      "nom": "Soupe de lasagnes et lentilles",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "75 g de lentilles brunes ou vertes (poids sec)",
+        "50 g de feuilles de lasagnes sèches",
+        "Optionnel : quelques tomates séchées",
+        "1 boîte de chair de tomates ou de tomates pelées",
+        "1 càs d’huile d’olive",
+        "Quelques feuilles de basilic",
+        "Du paprika",
+        "Poivre",
+        "Copeaux de parmesan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 585,
+        "sha256": "188433d7764c5f81"
+      },
+      "sha256_page": "3ca1f13ed8127244"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/soupe-rustique-de-lentilles-du-puy-et-ses-tartines-de-roquefort",
+      "site": "chefsimon.com",
+      "nom": "Soupe rustique de lentilles du Puy et ses tartines de Roquefort",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "Pour la soupe",
+        "150 g de lentilles du Puy",
+        "1  carotte",
+        "1  oignon doux des Cévennes",
+        "1  gousse d'ail",
+        "1  blanc de poireau",
+        "1  grosse tranche de lard 1/2 sel fumé",
+        "1,5 L de bouillon de volaille ou de légumes",
+        "4  quenelles de crème fraîche épaisse",
+        "Pour les tartines",
+        "4  tartines de pain de campagne",
+        "80 g de roquefort",
+        "un peu de persil plat",
+        "1  cuil. à soupe d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 228,
+        "sha256": "4ccb7bcd584e7ceb"
+      },
+      "sha256_page": "6ec09717e395e9e5"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/soupe-de-lentilles-andalouse",
+      "site": "chefsimon.com",
+      "nom": "Soupe de lentilles andalouse",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT01H45M",
+      "ingredients": [
+        "100 g de lentilles vertes",
+        "1  carotte",
+        "1  oignon",
+        "1  petite courgette",
+        "1/2  poivron",
+        "1  pomme de terre",
+        "1  chorizo",
+        "1  cube de bouillon de légumes",
+        "1  demi c. à café de gingembre moulu",
+        "1  demi c. à café de paprika",
+        "1  demi c. à café de coriandre fraîche ou moulue",
+        "1  demi c. à café de piment d'Espelette",
+        "sel (poivre)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 287,
+        "sha256": "58d3776c78898515"
+      },
+      "sha256_page": "6f06f6f3f173442b"
+    },
+    {
+      "url": "https://www.750g.com/soupe-de-lentilles-du-puy-oeuf-poche-et-lamelles-de-bacon-r82832.htm",
+      "site": "750g.com",
+      "nom": "Soupe de lentilles du Puy, œuf poché et lamelles de bacon",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "½ yaourt",
+        "½ cube de bouillon de volaille",
+        "Du sel",
+        "Poivre",
+        "2 branches de thym",
+        "6 tranches de bacon",
+        "½ oignon",
+        "2 œufs",
+        "125g de lentilles du Puy"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 949,
+        "sha256": "12ff4d61cab00c1e"
+      },
+      "sha256_page": "1b8654df8919f09c"
+    }
+  ]
+}

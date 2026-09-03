@@ -1,0 +1,176 @@
+{
+  "dish": "Bortsch",
+  "slug": "bortsch",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bortsch-de-mon-amie-russe-tania_314524.aspx",
+      "site": "marmiton.org",
+      "nom": "Bortsch de mon amie russe Tania : la meilleure recette",
+      "portions": "4 Personnes",
+      "duree_preparation": "PT6H",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "300 g de boeuf de boeuf (à bouillir, de type gite ou paleron, ou encore des boulettes de viande hachée)",
+        "1 oignon",
+        "1 carotte",
+        "1 tomate",
+        "1 betterave crue",
+        "2 pommes de terre",
+        "0.25 chou blanc",
+        "1 bouquet garni"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 893,
+        "sha256": "0dfb49d72b54fa70"
+      },
+      "sha256_page": "07bca696965f1bf3"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bortsch_13732.aspx",
+      "site": "marmiton.org",
+      "nom": "Bortsch : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "500 g de collier de boeuf",
+        "100 g de poitrine de porc",
+        "500 g de chou blanc",
+        "500 g de betteraves rouges",
+        "céleri-rave",
+        "1 oignon",
+        "1 poireau",
+        "1 cuillère à soupe de persil haché",
+        "1 cuillère à soupe de vinaigre de vin",
+        "poivre noir du moulin",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 869,
+        "sha256": "d77cb28277a0ea2c"
+      },
+      "sha256_page": "aa63abe417091935"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-a-la-betterave-bortsch_22965.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe à la betterave (bortsch) : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "0.5 chou vert",
+        "0.5 chou rouge",
+        "4 betteraves rouges cuites",
+        "1.5 l de bouillons",
+        "de cumin",
+        "4 cuillères à soupe de concentré de tomates",
+        "1 filet de vinaigre",
+        "100 g de crème aigre",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 391,
+        "sha256": "fe38ef8704bf3a44"
+      },
+      "sha256_page": "b3a07f9381cdc74a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/natalia/recettes/bortsch-a-ma-facon",
+      "site": "chefsimon.com",
+      "nom": "Bortsch à ma façon",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 carcasse de poulet",
+        "3250 ml d'eau",
+        "4 cuillères à soupe d'huile d'olives (2+2)",
+        "2 oignons",
+        "350-400 g de pommes de terre",
+        "500 g de chou blanc",
+        "500 g de betterave cuite avec son jus",
+        "2 cuillères à soupe de jus de citron",
+        "2 cuillères à café de sucre",
+        "1 boîte de 400 g de tomates pelées ou de pulpe de tomates",
+        "sel, poivre",
+        "1 pincée de piment d'Espelette (optionnel)",
+        "1 bouquet de persil",
+        "1 petit bouquet d'aneth",
+        "un peu d'ache ou livèche sèche (optionnel)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "9511addf0328ff2c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cata/recettes/bortsch-d-agneau",
+      "site": "chefsimon.com",
+      "nom": "Bortsch d’agneau",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "400 gr viande d'agneau avec os (collier, côtes, etc.)",
+        "1 échalotte",
+        "2 carottes",
+        "la partie verte d'un poireau",
+        "150 gr de céleri rave",
+        "1/2 poivron rouge",
+        "50 grammes de riz (facultatif)",
+        "1 cube de légumes ou de volaille",
+        "1 œuf",
+        "100 grammes de crème fraiche",
+        "le jus d'un citron",
+        "1 feuille de laurier",
+        "persil frais"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "261a6dacf39a0c37"
+    },
+    {
+      "url": "https://www.750g.com/bortsch-r82498.htm",
+      "site": "750g.com",
+      "nom": "Bortsch",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 gousse d'ail",
+        "1 c. à s. de concentré de tomates",
+        "Citron",
+        "Sel ou sel fin",
+        "Poivre",
+        "Persil",
+        "Huile végétale",
+        "100 g d'oignons",
+        "150 g de carottes",
+        "2 l d'eau  bouillante",
+        "1 cube de bouillon de boeuf",
+        "250 g de pommes de terre",
+        "200 g de choux blancs",
+        "200 g de betteraves cuites",
+        "Boeuf"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1016,
+        "sha256": "4a2b267a6e9eb7aa"
+      },
+      "sha256_page": "eaa168a787de074f"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "dish": "Blinis",
+  "slug": "blinis",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_blinis-faciles-maison_22261.aspx",
+      "site": "marmiton.org",
+      "nom": "Blinis faciles maison : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 yaourt bulgare",
+        "1 oeuf",
+        "1 pot de yaourt de farine",
+        "0.5 sachet de levure chimique",
+        "1 pincée de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 258,
+        "sha256": "87909abf5f04f4e1"
+      },
+      "sha256_page": "e6ba6a845744c476"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_blinis_23421.aspx",
+      "site": "marmiton.org",
+      "nom": "Blinis : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "150 g de farine",
+        "2 oeufs",
+        "10 g de levures de boulanger",
+        "20 cl de lait à température ambiante",
+        "sel",
+        "beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 374,
+        "sha256": "54339acf72ff09ae"
+      },
+      "sha256_page": "018e06508cbc236f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_blinis-de-potiron_36239.aspx",
+      "site": "marmiton.org",
+      "nom": "Blinis de potiron : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT2M",
+      "ingredients": [
+        "500 g de potiron",
+        "25 cl de lait",
+        "150 g de farine",
+        "1 cuillère à café de levure chimique",
+        "3 oeufs",
+        "1 filet d'huile",
+        "1 piment en poudre (Cayenne ou autre) pour relever",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 894,
+        "sha256": "f30c518df5c6b4d5"
+      },
+      "sha256_page": "5d14badd20cf77b5"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/blinis-21df1edf-096c-457a-8e44-64937c8ed03f",
+      "site": "chefsimon.com",
+      "nom": "Blinis",
+      "portions": "",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "150 g de farine de blé",
+        "100 g de farine de sarrasin",
+        "3 oeufs",
+        "25 cl de lait",
+        "60 g de beurre fondu",
+        "une cuillère à soupe d'huile",
+        "une pincée de sel",
+        "une cuillère cuiller à café rase de sucre",
+        "10 g de levure de boulanger"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 584,
+        "sha256": "c4fded96c7029057"
+      },
+      "sha256_page": "2a3f552183f23bb1"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-perle-de-marie-jo/recettes/saint-jacques-roties-blinis-au-sarrasin-beurre-aux-algues-et-tagliatelles-de-poireaux",
+      "site": "chefsimon.com",
+      "nom": "Saint Jacques rôties, blinis au sarrasin, beurre aux algues et tagliatelles de poireaux",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "5 beaux poireaux",
+        "125 g de beurre aux algues",
+        "1 cuillère à soupe de paillettes d’algues mélangées",
+        "4 à 5 noix de Saint Jacques par personne",
+        "Le jus d’un demi citron",
+        "2 œufs",
+        "1 yaourt nature",
+        "200 g de farine de sarrasin",
+        "10 cl de lait",
+        "1⁄2 sachet de levure chimique",
+        "1 cuillère à soupe d’huile d’olive",
+        "1 pincée de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1870,
+        "sha256": "0d27551511feae16"
+      },
+      "sha256_page": "765019f7d17fa91a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/dina-nikolaou/recettes/blinis-au-yaourt-e22ae322-b323-4182-9df3-88d5b09116c2",
+      "site": "chefsimon.com",
+      "nom": "Blinis au yaourt",
+      "portions": "20 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "200 g de yaourt grec égoutté (5 % ou 10 %)",
+        "2 gros œufs",
+        "150 g de lait",
+        "30 g d'huile d'olive ou de beurre fondu",
+        "180 g de farine tous usages",
+        "8 g de levure chimique (2 cuil. à café)",
+        "½ cuil. à café de sel",
+        "½ cuil. à café de sucre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1033,
+        "sha256": "9301988bdd7d996a"
+      },
+      "sha256_page": "d180a5c9bdeb69a8"
+    },
+    {
+      "url": "https://www.750g.com/blinis-au-jambon-r68947.htm",
+      "site": "750g.com",
+      "nom": "Blinis au jambon",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "0,33 lait",
+        "1 pincée de sel ou sel fin",
+        "2 oeufs",
+        "2 c. à s. d'huile",
+        "160 g de farine",
+        "Sel ou sel fin",
+        "Poivre",
+        "Gruyère",
+        "Jambon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 375,
+        "sha256": "d9b8373e806b0004"
+      },
+      "sha256_page": "6f810609967fcb07"
+    },
+    {
+      "url": "https://www.750g.com/mini-blinis-apero-r201146.htm",
+      "site": "750g.com",
+      "nom": "Mini blinis apéro",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "Mini Blinis",
+        "Fromage à tartiner type Vache qui rit",
+        "Pesto",
+        "Tomates cerise",
+        "Jambon blanc et cuit"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 636,
+        "sha256": "6073eab7bdc29719"
+      },
+      "sha256_page": "311eac935ef08cc7"
+    },
+    {
+      "url": "https://www.750g.com/blinis-au-bacon-et-fromage-r89918.htm",
+      "site": "750g.com",
+      "nom": "Blinis au bacon et fromage",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "0,33 lait",
+        "1 pincée de sel ou sel fin",
+        "2 oeufs",
+        "2 c. à s. d'huile",
+        "160 g de farine",
+        "Sel ou sel fin",
+        "Poivre",
+        "Gruyère",
+        "Bacon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 374,
+        "sha256": "4cd4a9d9f3b9e7fd"
+      },
+      "sha256_page": "d9677c629c036d14"
+    }
+  ]
+}

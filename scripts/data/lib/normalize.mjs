@@ -48,6 +48,31 @@ function toNumber(s) {
   return Number.isFinite(n) ? n : null
 }
 
+/**
+ * Frontière de mot qui tient les accents, faute de quoi le français passe à côté.
+ *
+ * `\b` de JavaScript ne connaît que `[A-Za-z0-9_]`. Une lettre accentuée n'en
+ * fait pas partie, donc il n'existe AUCUNE frontière après elle : `/\bsurgelé\b/`
+ * ne reconnaît jamais « surgelé ». Il reconnaît « surgelés » et « surgelée »,
+ * dont la dernière lettre est ASCII — ce qui rend la panne invisible, puisque le
+ * féminin et le pluriel marchent.
+ *
+ * Le coût était réel et silencieux : le seul surgelé du catalogue, « Petit pois
+ * surgelé », ressortait avec `preservation_state: null`, c'est-à-dire
+ * indistinguable d'un produit frais pour tout ce qui lit cet état
+ * (catalog.food_forms via build-recipe-food-sql.mjs). Le même défaut frappait
+ * « séché » (11 formes : thym, origan, piments, shiitaké…), « désossé » (2),
+ * « appertisé » (1), ainsi que « grillé », « poêlé », « mixé », « lyophilisé »,
+ * « déshydraté » — et « à l'étuvée », dont c'est la frontière GAUCHE qui ne
+ * pouvait pas tomber, un « à » ne valant pas plus qu'un « é ».
+ *
+ * On remplace donc les deux frontières par un refus explicite de toute lettre
+ * ou chiffre voisin, `\p{L}` couvrant les alphabets accentués.
+ */
+const DEBUT_DE_MOT = '(?<![\\p{L}\\p{N}_])'
+const FIN_DE_MOT = '(?![\\p{L}\\p{N}_])'
+const mot = (...variantes) => new RegExp(`${DEBUT_DE_MOT}(?:${variantes.join('|')})${FIN_DE_MOT}`, 'u')
+
 /** Extrait le concept (1er segment avant virgule) + attributs d'état d'un libellé Ciqual. */
 export function parseFoodName(label) {
   const full = String(label || '').trim()
@@ -58,27 +83,27 @@ export function parseFoodName(label) {
 
   const has = (re) => re.test(hay)
   let cooking_state = null
-  if (has(/\bcrue?s?\b/)) cooking_state = 'raw'
-  else if (has(/\bcuite?s?\b|\brôtie?s?\b|\bgrillée?s?\b|\bbouillie?s?\b|\bfrite?s?\b|\bpoêlée?s?\b|\bà l'étuvée\b|\bau four\b/)) cooking_state = 'cooked'
+  if (has(mot('crue?s?'))) cooking_state = 'raw'
+  else if (has(mot('cuite?s?', 'rôtie?s?', 'grillée?s?', 'bouillie?s?', 'frite?s?', 'poêlée?s?', "à l'étuvée", 'au four'))) cooking_state = 'cooked'
 
   let preservation_state = null
-  if (has(/\bsurgelée?s?\b|\bcongelée?s?\b/)) preservation_state = 'frozen'
-  else if (has(/\bappertisée?s?\b|\bconserve\b|\ben boîte\b/)) preservation_state = 'canned'
-  else if (has(/\bséchée?s?\b|\bdéshydratée?s?\b|\blyophilisée?s?\b/)) preservation_state = 'dried'
-  else if (has(/\bfraîche?s?\b|\bfrais\b/)) preservation_state = 'fresh'
+  if (has(mot('surgelée?s?', 'congelée?s?'))) preservation_state = 'frozen'
+  else if (has(mot('appertisée?s?', 'conserve', 'en boîte'))) preservation_state = 'canned'
+  else if (has(mot('séchée?s?', 'déshydratée?s?', 'lyophilisée?s?'))) preservation_state = 'dried'
+  else if (has(mot('fraîche?s?', 'frais'))) preservation_state = 'fresh'
 
   let physical_state = null
-  if (has(/\bpoudre\b|\bmoulue?\b/)) physical_state = 'powder'
-  else if (has(/\bpurée\b|\bmixée?\b/)) physical_state = 'puree'
-  else if (has(/\bjus\b|\bliquide\b/)) physical_state = 'liquid'
+  if (has(mot('poudre', 'moulue?'))) physical_state = 'powder'
+  else if (has(mot('purée', 'mixée?'))) physical_state = 'puree'
+  else if (has(mot('jus', 'liquide'))) physical_state = 'liquid'
 
   let bone_state = null
-  if (has(/\bdésossée?s?\b|\bsans os\b|\bfilet\b|\bescalope\b/)) bone_state = 'boneless'
-  else if (has(/\bavec os\b/)) bone_state = 'bone_in'
+  if (has(mot('désossée?s?', 'sans os', 'filet', 'escalope'))) bone_state = 'boneless'
+  else if (has(mot('avec os'))) bone_state = 'bone_in'
 
   let skin_state = null
-  if (has(/\bsans peau\b/)) skin_state = 'skinless'
-  else if (has(/\bavec peau\b/)) skin_state = 'with_skin'
+  if (has(mot('sans peau'))) skin_state = 'skinless'
+  else if (has(mot('avec peau'))) skin_state = 'with_skin'
 
   return { concept, rest, cooking_state, preservation_state, physical_state, bone_state, skin_state }
 }

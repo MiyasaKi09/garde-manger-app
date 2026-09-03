@@ -1,0 +1,187 @@
+{
+  "dish": "Chili sin carne",
+  "slug": "chili-sin-carne",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_chili-sin-carne_371856.aspx",
+      "site": "marmiton.org",
+      "nom": "Chili sin carne : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT55M",
+      "ingredients": [
+        "300 g de haricots rouges (en boite)",
+        "500 g de tomates pelées",
+        "1 poivron rouge frais ou surgelé (hors saison)",
+        "1 oignon",
+        "1 gousse d'ail",
+        "1 cuillère à café de cumin",
+        "huile d'olive",
+        "1 cuillère à café d'origan",
+        "1 cuillère à café de paprika",
+        "coriandre",
+        "sel",
+        "poivre",
+        "Riz, céréales pour l'accompagnement"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 452,
+        "sha256": "0a6e14d454bd3b07"
+      },
+      "sha256_page": "dbfd8341658294d7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/deliacious/recettes/chili-sin-carne-sans-soja",
+      "site": "chefsimon.com",
+      "nom": "Chili sin carne sans soja",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "400 g haricots rouges cuits (soit une boîte moyenne)",
+        "400 g tomates concassée (soit une boîte ou 500 g tomate (vu qu'on retire peau et trognons))",
+        "2 c. à soupe huile d'olive",
+        "2 gousses d'ail",
+        "1/2  oignon rouge",
+        "1/4 c. à café cumin poudre",
+        "1/4 c. à café coriandre en poudre",
+        "1/4 c. à café curcuma en poudre",
+        "1/4 c. à café paprika fumé",
+        "1/4 c. à café piment doux",
+        "1/2 c. à café tabasco",
+        "1/4 c. à café piment d'espelette",
+        "1  avocat",
+        "1/4  citron jaune",
+        "1/2  échalote",
+        "sel et poivre",
+        "2  portions riz basmati",
+        "Coriandre fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 331,
+        "sha256": "01e8c27a06c484b6"
+      },
+      "sha256_page": "bedf6a8dbad17b4e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/planete-vegan/recettes/chili-sin-carne-vegan",
+      "site": "chefsimon.com",
+      "nom": "Chili Sin Carne vegan",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "60 g de protéines de soja texturées fines de préférence",
+        "1 carotte moyenne",
+        "1 petit oignon rouge",
+        "140 g de maïs cuit et égoutté",
+        "250 g d’haricots rouges cuits et égouttés",
+        "400 g de concassé de tomate",
+        "200 g de coulis de tomate",
+        "1 cube de bouillon végétal",
+        "1 c. à c de tabasco",
+        "1 c. à s d'huile d’olive",
+        "Épices et aromates en poudre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "7e2a67ef1d7e08d4"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clementine-4c402d8e-2ca5-400b-88f1-beb80aa54df8/recettes/chili-sin-carne-434f47b8-2f41-4761-af26-fbf8c245e5d5",
+      "site": "chefsimon.com",
+      "nom": "Chili sin carne",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "180 g de haricots rouges crus",
+        "180 g de haricots noirs crus",
+        "200 g de champignons de Paris",
+        "3 oignons",
+        "4 gousses d’ail",
+        "2 piments rouges",
+        "3 poivrons rouges",
+        "1 grosse branche de céleri",
+        "2 carottes",
+        "2 feuilles de laurier",
+        "1 cuillère à café de chili en poudre",
+        "1 cuillère à soupe d’origan",
+        "1 grosse pincée de cumin",
+        "1/2 cuillère à café de poivre noir en grains",
+        "1 cuillère à café de cacao amer (facultatif)",
+        "1 cuillère à soupe de jus de citron vert (facultatif)",
+        "1 kg de tomates concassées",
+        "500 ml d’eau ou de bouillon de légumes",
+        "2 cuillères à soupe d’huile d’olive",
+        "Sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "5e5d9c06ff316178"
+    },
+    {
+      "url": "https://www.750g.com/chili-sin-carne-r202918.htm",
+      "site": "750g.com",
+      "nom": "Chili sin carne",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "100 g d'haché végétal façon méditerranéenne  MARKAL",
+        "250 g d'haricots rouges",
+        "1 boite de maïs",
+        "1 brique de purée de tomate",
+        "2 oignons  bio",
+        "Epices  ou chili, piment et cumin",
+        "Huile d'olive  bio",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 869,
+        "sha256": "f264e36c9e48e2ab"
+      },
+      "sha256_page": "6f2c218a0b273ddd"
+    },
+    {
+      "url": "https://www.750g.com/chili-sin-carne-r202997.htm",
+      "site": "750g.com",
+      "nom": "Chili sin carne végétarien",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "1 boite d'haricot rouge",
+        "350 g de lentilles vertes",
+        "Tomate",
+        "1 petite boîte de maïs",
+        "1 oignon",
+        "2 c. à s. de concentré de tomates",
+        "Sel ou sel fin",
+        "Poivre",
+        "Huile d'olive",
+        "Cumin",
+        "Paprika",
+        "Piment de Cayenne ou poivre de Cayenne"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 761,
+        "sha256": "0f5d99badc05e885"
+      },
+      "sha256_page": "c2be80ad0463c899"
+    }
+  ]
+}

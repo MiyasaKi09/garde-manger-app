@@ -1,0 +1,124 @@
+{
+  "dish": "Pizza 4 fromages",
+  "slug": "pizza-4-fromages",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pizza-aux-4-fromages-sauce-blanche_224832.aspx",
+      "site": "marmiton.org",
+      "nom": "Pizza 4 fromages : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 pâte à pizza",
+        "1 cuillère à soupe de crème fraîche épaisse (je prend de la crème à 15% de matières grasses)",
+        "100 g de raclettes",
+        "1 boule de mozzarella",
+        "1 bûche de fromage de chèvre",
+        "100 g de gruyère râpé .",
+        "de basilic frais"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 239,
+        "sha256": "ae0d1e79da0f655a"
+      },
+      "sha256_page": "4813c52d26bf0d8a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pizza-aux-4-fromages-neerlandais_531140.aspx",
+      "site": "marmiton.org",
+      "nom": "Pizza aux 4 fromages néerlandais : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 pâte à pizza",
+        "40 g de bleus de Graven",
+        "40 g de gouda vieux",
+        "20 g d'edam",
+        "20 g de maasdam",
+        "20 cl de crème épaisse"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 218,
+        "sha256": "084e24f57239cd7a"
+      },
+      "sha256_page": "229f58c69272bc0f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/virginie-et-fabien/recettes/pizza-4-fromages-f0a2ddcf-48db-4fe1-93ed-13383a4d601f",
+      "site": "chefsimon.com",
+      "nom": "Pizza 4 fromages",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 pâte à pizza",
+        "4 cuillères à soupe de sauce tomate pour pizza",
+        "50 g de cheddar",
+        "40 g de comté râpé",
+        "50 g de bleu d’Auvergne",
+        "1 boule de mozzarella",
+        "1 cuillère à soupe d’origan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "9a8201449cb54ec9"
+    },
+    {
+      "url": "https://www.750g.com/pizza-aux-4-fromages-facile-et-rapide-r208257.htm",
+      "site": "750g.com",
+      "nom": "Pizza aux 4 fromages facile et rapide",
+      "portions": "1 pièce",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "300 g de pâte à pizza",
+        "200 g de mozzarella  (poids égouttées)",
+        "100 g de tomme de Savoie",
+        "100 g de gorgonzola",
+        "30 g de parmesan râpé",
+        "3 c. à s. d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 1061,
+        "sha256": "0a321186dd5ae5c8"
+      },
+      "sha256_page": "0b27ede75798c970"
+    },
+    {
+      "url": "https://www.750g.com/pizza-4-fromages-r100446.htm",
+      "site": "750g.com",
+      "nom": "Pizza 4 fromages",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 pâte à pizza",
+        "Sauce tomate  pour pizza",
+        "Crème épaisse",
+        "Fromage de chèvre",
+        "Fourme d'Ambert AOP",
+        "Emmental",
+        "Mozzarella",
+        "Basilic",
+        "Huile d'olive",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 384,
+        "sha256": "d2103cabcd0208d4"
+      },
+      "sha256_page": "a841430835ebb136"
+    }
+  ]
+}

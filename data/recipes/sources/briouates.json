@@ -1,0 +1,191 @@
+{
+  "dish": "Briouates",
+  "slug": "briouates",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_briouates-amande-fleur-d-oranger_339524.aspx",
+      "site": "marmiton.org",
+      "nom": "Briouates amande fleur d'oranger : la meilleure recette",
+      "portions": "8 Personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "8 feuilles de brick",
+        "500 g d'amandes en poudre",
+        "300 g de sucre en poudre",
+        "40 g de beurre doux",
+        "6 g de cannelle en poudre",
+        "6 cl d'eau de fleur d'oranger",
+        "6 cuillères à soupe de miel",
+        "1 jaune d'oeuf"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 611,
+        "sha256": "e28d56c744b09874"
+      },
+      "sha256_page": "1ecb3ee551f9f3bc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/tastygourmandise/recettes/briouate-aux-amandes-et-noisettes",
+      "site": "chefsimon.com",
+      "nom": "Briouate aux amandes et noisettes",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "100g d'amandes torréfiées et concassées",
+        "100g de noisettes moulues",
+        "1 càc de gomme arabique en grains",
+        "40g de sucre semoule",
+        "1 càs de cannelle en poudre",
+        "2 càs de beurre clarifié",
+        "2 gouttes d'arôme d'amande",
+        "1/2 càc de sel fin",
+        "3 càs de farine",
+        "1 càs d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 360,
+        "sha256": "b2d95764a1b0f1f7"
+      },
+      "sha256_page": "38ed1a201d76e662"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/tastygourmandise/recettes/briouate-au-poulet-8e47d029-9ea3-4ed0-9ef1-e18501fae02b",
+      "site": "chefsimon.com",
+      "nom": "Briouate au poulet",
+      "portions": "12 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "Feuille de brick: 12 0 16",
+        "Oeuf: 9",
+        "Poulet: 1 kg",
+        "Gousse d'ail: 1",
+        "Gingembre: 1 càc",
+        "Huile: 1/2 Verre",
+        "Bouquet de coriandre",
+        "Miel: 4 càs",
+        "Pistils de safran: 1/4 càc",
+        "Gros oignon: 1",
+        "Amandes émondées et grillées: 500g",
+        "Beurre ramolie: 1 càs",
+        "Huile de friture"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 120,
+        "sha256": "30756ee1aaa0ccdd"
+      },
+      "sha256_page": "9bed5378d7087d7e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mes-inspirations-culinaires/recettes/briouates-salees",
+      "site": "chefsimon.com",
+      "nom": "Briouates salées",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "Une botte d’épinard rincées et hachées",
+        "1 gousse d'ail",
+        "1 poignée de fromage râpée",
+        "sel poivre du moulin",
+        "1/2 c-a-c Paprika",
+        "une petite poignée d'olive vertes émincées",
+        "des feuilles de Brick maison",
+        "quelques câpres"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "f58c349880b6d5c9"
+    },
+    {
+      "url": "https://www.750g.com/briouates-a-la-kefta-r47665.htm",
+      "site": "750g.com",
+      "nom": "Briouates à la kefta",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "Steak haché",
+        "Feuille de feuille de brick ou à pastilla",
+        "1 oignon",
+        "1 poivron",
+        "Vermicelles de soja",
+        "Huile d'olive",
+        "Gingembre",
+        "Harissa  (facultatif)",
+        "Paprika",
+        "Persil",
+        "Coriandre",
+        "Ail",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 975,
+        "sha256": "88cbbafd95c9b64c"
+      },
+      "sha256_page": "9fdfcabb64f2c6b2"
+    },
+    {
+      "url": "https://www.750g.com/briouates-au-miel-r13382.htm",
+      "site": "750g.com",
+      "nom": "Briouates au miel",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 paquet de feuille de brick ou à pastilla",
+        "300 g d'amandes",
+        "200 g de sucre",
+        "50 g de beurre",
+        "Miel",
+        "½ c. à c. de cannelle",
+        "2 c. à s. d'eau de fleur d'oranger",
+        "Huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1076,
+        "sha256": "8d4aa503bb87edb8"
+      },
+      "sha256_page": "06892dd65fc8ee3b"
+    },
+    {
+      "url": "https://www.750g.com/briouate-au-poulet-r74688.htm",
+      "site": "750g.com",
+      "nom": "Briouate au poulet",
+      "portions": "2 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "Blanc de poulet",
+        "Feuille de feuille de brick ou à pastilla",
+        "Oignon",
+        "Champignon",
+        "Ail",
+        "Persil",
+        "1 pincée de gingembre",
+        "1 pincée de piment doux",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1367,
+        "sha256": "fc8dfc429702fa57"
+      },
+      "sha256_page": "6fce9c5029b643f4"
+    }
+  ]
+}

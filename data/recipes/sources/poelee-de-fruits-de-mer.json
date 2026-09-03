@@ -1,0 +1,135 @@
+{
+  "dish": "Poêlée de fruits de mer",
+  "slug": "poelee-de-fruits-de-mer",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poelee-de-fruits-de-mer-economique-et-facile_83945.aspx",
+      "site": "marmiton.org",
+      "nom": "poêlée de fruits de mer économique et facile : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "huile d'olive",
+        "4 échalotes",
+        "2 gousses d'ail",
+        "1 kg de Fruits de mer congelés",
+        "1 poivron vert",
+        "3 tomates",
+        "25 cl de crème liquide",
+        "1 pincée de piment de Cayenne",
+        "1 pincée de paprika",
+        "herbes de Provence"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 525,
+        "sha256": "a9ea5e244d24967c"
+      },
+      "sha256_page": "e4647f0741735828"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poelee-de-fruits-de-mer-a-la-plancha_229472.aspx",
+      "site": "marmiton.org",
+      "nom": "Poêlée de fruits de mer à la plancha : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "8 crevettes fraiches",
+        "500 g de calamars",
+        "500 g de seiches",
+        "10 gambas",
+        "500 g de noix de saint-jacques",
+        "1 filet d'huile d'olive",
+        "2 oignons",
+        "1 trait de vinaigre balsamique",
+        "1 cuillère à soupe de miel liquide",
+        "1 pincée de herbes de Provence"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 671,
+        "sha256": "44a680d94af471e3"
+      },
+      "sha256_page": "25fdd1e20936d8f7"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poelee-de-poireaux-et-fruits-de-mer_83010.aspx",
+      "site": "marmiton.org",
+      "nom": "Poêlée de poireaux et fruits de mer : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 poireaux",
+        "100 g de riz",
+        "500 g de Fruits de mer congelés",
+        "3 cuillères à soupe de crème fraîche épaisse",
+        "2 cuillères à soupe de curry (ou selon votre goût)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 396,
+        "sha256": "7ab6a8fb8ba734e5"
+      },
+      "sha256_page": "212073b0fae290ca"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clarisse-en-cuisine/recettes/poelee-de-fruits-de-mer-a-la-pulpe-de-tomates",
+      "site": "chefsimon.com",
+      "nom": "Poêlée de fruits de mer à la pulpe de tomates",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "2 c à soupe d’huile d’olives",
+        "1 oignon 80 gr épluché et ciselé finement",
+        "900 gr nets de tomates fraîches pelées ou en conserve",
+        "3-4 gousses d’ail",
+        "4 feuilles de basilic ciselées",
+        "1 petite branche de céleri",
+        "1 petite branche de livèche",
+        "1 petit brin d‘origan frais ou 1 pincée d’origan séché",
+        "1 c à café un peu bombée de pâte de bouillon de bœuf maison",
+        "1 pointe de couteau de piment d’Espelette",
+        "sel",
+        "Epaississant à sauce claire",
+        "400 à 500 gr de beaux fruits de mer congelés",
+        "1 coupelle de parmesan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "8c758f35e4eebc18"
+    },
+    {
+      "url": "https://www.750g.com/poelee-aux-fruits-de-mer-r90956.htm",
+      "site": "750g.com",
+      "nom": "Poêlée aux fruits de mer",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 c à s de miel",
+        "1 noix de beurre",
+        "10 cl de vin blanc",
+        "20 cl de crème liquide allégée à 5% de MG",
+        "2 poires",
+        "12 grosses crevettes",
+        "4 grosses tranches de saumon fumé",
+        "400g de noix de Saint-Jacques"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 597,
+        "sha256": "aa05aeb9d9340908"
+      },
+      "sha256_page": "cce7076443eb4525"
+    }
+  ]
+}

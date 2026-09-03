@@ -1,0 +1,222 @@
+{
+  "dish": "Tzatziki",
+  "slug": "tzatziki",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tzatziki-grece_11797.aspx",
+      "site": "marmiton.org",
+      "nom": "Tzatziki (Grèce) : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "1 concombre",
+        "1 gousse d'ail",
+        "1 bouquet de menthe et coriandre frais",
+        "4 cuillères à soupe d'huile d'olive",
+        "1 yaourt grec au lait de brebis",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 290,
+        "sha256": "a96c04284e3b244b"
+      },
+      "sha256_page": "6dd592e8f0fb3b68"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tzatziki-de-concombre-grece_12823.aspx",
+      "site": "marmiton.org",
+      "nom": "Tzatziki de concombre (Grèce) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "1 concombre",
+        "2 yaourts grecs",
+        "1 gousse d'ail",
+        "menthe fraîche",
+        "2 cuillères à soupe d'huile d'olive",
+        "1 cuillère à soupe de vinaigre",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 524,
+        "sha256": "996fc16f5624371c"
+      },
+      "sha256_page": "51a139cac817a30c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tzatziki-facile-grece_11813.aspx",
+      "site": "marmiton.org",
+      "nom": "Tzatziki facile (Grèce) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "2 pots de yaourts grec",
+        "1 concombre",
+        "2 gousses d'ail",
+        "1 bouquet d'aneth frais",
+        "poivre",
+        "sel",
+        "1 filet d'huile d'olive extra vierge"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 479,
+        "sha256": "409f07b865c0c54e"
+      },
+      "sha256_page": "e3747d19a8b902e4"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/tzatziki-de-chou-rave",
+      "site": "chefsimon.com",
+      "nom": "Tzatziki de chou-rave",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 chou-rave (250 à 300 g)",
+        "1 à 2 oignons nouveaux",
+        "2 gousses d'ail",
+        "300 g de yaourt à la grecque",
+        "1 citron",
+        "2 cs d’huile d'olive",
+        "1/2 bouquet d’aneth",
+        "1/2 bouquet de menthe",
+        "1/2 cc de fleur de sel (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 705,
+        "sha256": "ceea010c7103e733"
+      },
+      "sha256_page": "83c1cb1baae99cc0"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/sauce-tzatziki-sans-menthe",
+      "site": "chefsimon.com",
+      "nom": "Sauce tzatziki sans menthe",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "200 g de yaourt grec",
+        "1 demi",
+        "concombre",
+        "1 petite gousse d'ail, émincée",
+        "1 cs de jus de citron",
+        "1 cs d'huile d'olive",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 417,
+        "sha256": "3c24b3e2465238cb"
+      },
+      "sha256_page": "99fa34258e5ecb36"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/tzatziki-de-radis-roses-b6162686-b190-4f5b-97b4-670dafee66bb",
+      "site": "chefsimon.com",
+      "nom": "Tzatziki de radis roses",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 botte de radis",
+        "1 ou 2 gousses d'ail",
+        "150 g de vrai yaourt grec (ou 3 petits suisses)",
+        "4 brins d'aneth",
+        "4 brins de menthe",
+        "1 cc de paprika"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 653,
+        "sha256": "ccb0c0dcaa5d61cd"
+      },
+      "sha256_page": "2e8fe0ead619431a"
+    },
+    {
+      "url": "https://www.750g.com/tzatziki-r4538.htm",
+      "site": "750g.com",
+      "nom": "Tzatziki",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "2 yaourt grec",
+        "1 concombre",
+        "½ citron",
+        "½ botte de menthe",
+        "2 c. à s. d'huile d'olive",
+        "1 gousse d'ail",
+        "Sel ou sel fin",
+        "Poivre blanc"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 417,
+        "sha256": "9056ad8485d9f6e4"
+      },
+      "sha256_page": "f880b9f453a6aefe"
+    },
+    {
+      "url": "https://www.750g.com/tzatziki-selon-alain-ducasse-r205481.htm",
+      "site": "750g.com",
+      "nom": "Tzatziki selon Alain Ducasse",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 concombre",
+        "Gros sel",
+        "125 g de yaourt grec",
+        "½ botte de menthe",
+        "Persil",
+        "1 pincée de piment d'Espelette",
+        "½ jus de citron",
+        "Spiruline"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1108,
+        "sha256": "9a296372072e9262"
+      },
+      "sha256_page": "968ffa3f5bfe2be3"
+    },
+    {
+      "url": "https://www.750g.com/tzatziki-moleculaire-r46014.htm",
+      "site": "750g.com",
+      "nom": "Tzatziki moléculaire",
+      "portions": "4 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "Sel",
+        "Poivre",
+        "1.5 g de poudre d'alginate",
+        "30 cl d'eau",
+        "gros sel",
+        "cas jus de citron",
+        "une demi gousse d'ail",
+        "concombre",
+        "1 cas huile olive",
+        "un yaourt à la grecque"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 720,
+        "sha256": "92285bf0005557ff"
+      },
+      "sha256_page": "6ac1fbf472f212b0"
+    }
+  ]
+}

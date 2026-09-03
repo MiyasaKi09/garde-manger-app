@@ -1,0 +1,445 @@
+{
+  "recipes": [
+    {
+      "code": "VAR-035",
+      "family": "Quiche aux poireaux",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "tarte salée",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 35,
+      "difficulty": "facile",
+      "sources": ["dossier:quiche-aux-poireaux", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Neuf pages sur trois sites, de quatre à six portions. Toutes font la même chose — des poireaux fondus, un appareil aux œufs et à la crème, un fond de pâte — et deux d'entre elles s'en écartent sur un point : l'une supprime la pâte et l'autre ajoute de la patate douce. Elles restent au calcul de la garniture. Le poireau : cinq lignes pesées, à 50, 75, 83,3, 150 et 200 g par personne, médiane 83,3 g par personne, soit 500 g pour six. Deux pages emploient du poireau surgelé et deux le pèsent le plus haut, ce qui n'est pas un hasard : le surgelé est déjà émincé et l'on en met davantage. Le catalogue ne porte que le poireau frais et c'est lui qu'on écrit. Les œufs : neuf lignes, de 0,33 à 1 par personne, médiane 0,67 par personne, soit 4 œufs. La crème : cinq lignes pesées, à 50, 100, 33,3, 50 et 75 ml par personne, médiane 50 ml par personne, soit 300 ml. Le lait est dans trois pages, médiane 25 ml par personne, soit 150 ml. La pâte n'est pesée que par une page, 250 g pour quatre, soit 62,5 g par personne, ce qui donnerait 375 g pour six ; un rouleau du commerce en pèse 230 à 250 et couvre un moule de six parts, on écrit donc 250 g. Cinq pages emploient une pâte brisée, deux une feuilletée, deux la font maison : on écrit la brisée. Le fromage est le point que le dossier ne tranche pas de lui-même et il fallait le trancher ici. Le chèvre frais est dans trois pages, deux le pesant à 37,5 et 25 g par personne — mais ces trois pages se répartissent sur deux sites seulement. Le gruyère râpé est aussi dans trois pages, l'une le pesant à 17,5 g par personne et une autre à 37,5, et ces trois-là se répartissent sur les trois sites. C'est la seule différence entre les deux, et elle décide : on écrit le gruyère, à 27,5 g par personne, soit 165 g, arrondis à 160 g, et le chèvre descend en variante avec sa quantité. La muscade est dans deux pages sur deux sites : 0,5 g. Les lardons fumés sont dans deux pages, mais toutes deux sur marmiton — un seul site, ils ne sont pas attestés et descendent en variante avec leurs 100 g pour quatre. Le saumon frais d'une page, le morbier d'une autre, le jambon de Parme d'une troisième, le boursin d'une quatrième sont à une source chacun. La feta d'une page n'a de toute façon aucune forme au catalogue. Durées : préparation, médiane 20 minutes des neuf lignes ; cuisson, médiane 35 minutes des neuf lignes.",
+      "plate": {
+        "role": "main",
+        "accepts": ["vegetables"],
+        "reason": "Pâte, œufs, crème et fromage : le féculent et la protéine sont là, et le poireau fondu ne fait pas un légume d'assiette. Une salade verte à côté est ce que la quiche appelle, et c'est ainsi qu'elle se sert."
+      },
+      "ingredients": [
+        { "form": "Poireau cru", "quantity": 500, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Crème fraîche liquide entière", "quantity": 300, "unit": "ml", "role": "appareil", "optional": false },
+        { "form": "Pâte brisée crue", "quantity": 250, "unit": "g", "role": "fond", "optional": false },
+        { "form": "Gruyère râpé", "quantity": 160, "unit": "g", "role": "fromage", "optional": false },
+        { "form": "Lait entier", "quantity": 150, "unit": "ml", "role": "appareil", "optional": false },
+        { "form": "Œuf cru", "quantity": 4, "unit": "u", "role": "appareil", "optional": false },
+        { "form": "Muscade moulue", "quantity": 0.5, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 5, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Fendre les poireaux en quatre dans la longueur et les rincer sous l'eau en écartant les feuilles : le sable se loge entre les couches et ne part pas d'un simple rinçage extérieur. Un grain de sable dans une quiche se sent à chaque bouchée et ne s'explique par rien d'autre." },
+        { "n": 2, "instruction": "Émincer les poireaux en tronçons d'un demi-centimètre, blanc et vert tendre compris, et les faire fondre à couvert vingt minutes à feu doux, sans matière grasse ajoutée mais avec deux cuillerées d'eau. Découvrir ensuite cinq à dix minutes pour évaporer complètement le liquide rendu. Cinq cents grammes de poireaux contiennent près d'un verre d'eau : versée crue sur un fond de pâte, elle le rend mou et détache la garniture." },
+        { "n": 3, "instruction": "Foncer un moule de la pâte brisée, piquer le fond à la fourchette et le cuire à blanc quinze minutes à 180 °C, lesté de billes ou de légumes secs. La cuisson à blanc est ce qui sépare une quiche d'une pâte crue noyée : le fond doit être sec et sablé avant de recevoir quoi que ce soit d'humide." },
+        { "n": 4, "instruction": "Battre les œufs avec la crème et le lait, saler, poivrer et râper la muscade. Ne pas fouetter au batteur : une masse aérée gonfle au four puis retombe en laissant un creux, alors qu'un appareil simplement mélangé à la fourchette prend en flan lisse." },
+        { "n": 5, "instruction": "Répartir les poireaux refroidis sur le fond précuit, parsemer les deux tiers du gruyère, verser l'appareil et terminer par le reste du fromage. Les poireaux doivent être froids : posés tièdes, ils commencent à cuire l'œuf avant même le four et l'appareil devient granuleux." },
+        { "n": 6, "instruction": "Enfourner à 180 °C pour trente-cinq minutes, jusqu'à ce que le centre soit juste pris et tremble encore légèrement quand on secoue le moule. Une quiche cuite jusqu'à immobilité complète est une quiche sèche : elle finit de prendre pendant les dix minutes de repos hors du four, qui sont nécessaires avant de découper." }
+      ],
+      "techniques": ["fondue de poireaux", "cuisson à blanc", "appareil", "cuisson au four", "repos"],
+      "variants": [
+        "Au chèvre frais : 150 g à la place du gruyère, en morceaux répartis sur les poireaux (marmiton, chefsimon)",
+        "Aux lardons fumés, 100 g pour quatre, rissolés et égouttés (marmiton, deux pages)",
+        "Au saumon frais : 300 g en dés avec un oignon et de la moutarde de Dijon dans l'appareil (marmiton)",
+        "Au morbier en fines lamelles, 100 g pour quatre (750g)",
+        "Sans pâte : poireaux et patate douce liés à quatre œufs et 20 cl de crème, cuits directement au plat (chefsimon)",
+        "Au jambon de Parme et à la muscade, deux tranches taillées en lanières (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 3, "salty": 3, "acidic": 0, "bitter": 0, "umami": 3, "heat": 0, "pungency": 1, "richness": 4, "freshness": 1, "intensity": 2 },
+        "dominant_flavors": ["poireau fondu", "crème", "gruyère", "muscade"],
+        "aroma_families": ["végétal cuit", "lactée", "muscade", "beurre"],
+        "target_textures": ["pâte sablée", "intérieur_fondant_ou_crémeux", "dessus_doré"],
+        "signature_ingredients": ["Poireau cru", "Crème fraîche liquide entière", "Gruyère râpé"],
+        "identity_guardrails": [
+          "Les poireaux doivent avoir rendu et perdu toute leur eau avant d'entrer : c'est la cause numéro un d'une quiche détrempée",
+          "Fond cuit à blanc quinze minutes, sinon la pâte reste crue sous la garniture",
+          "Poireaux refroidis avant l'appareil — tièdes, ils font cailler l'œuf",
+          "On sort la quiche quand le centre tremble encore : elle finit de prendre au repos"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur et se réchauffe 12 minutes à 180 °C, jamais au micro-ondes qui ramollit la pâte. Elle se mange aussi froide, ce qui en fait un déjeuner de bureau. Se congèle 2 mois cuite, en parts filmées séparément, et se réchauffe sans décongélation, 20 minutes à 180 °C. La fondue de poireaux se prépare 3 jours à l'avance et se congèle 3 mois : c'est elle qui prend le temps, et la quiche se monte alors en dix minutes.",
+      "allergens": ["gluten", "lait", "œuf"]
+    },
+    {
+      "code": "VAR-036",
+      "family": "Quiche au saumon",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "tarte salée",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 15,
+      "cook_minutes": 35,
+      "difficulty": "facile",
+      "sources": ["dossier:quiche-au-saumon", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Neuf pages sur trois sites, de quatre à six portions. La difficulté du dossier n'est pas la structure — pâte, œufs, crème, saumon, elle est constante — mais la forme du poisson. Sept pages sur neuf emploient du saumon fumé, et le saumon fumé n'a aucune forme au catalogue : il ne peut pas être écrit, et il ne se remplace ni par la truite fumée ni par le saumon frais sans que ce soit un autre plat. Deux pages, sur deux sites distincts, emploient du saumon frais et le pèsent : 200 g pour quatre et 200 g pour six, soit 50 et 33,3 g par personne, médiane 41,7 g par personne, soit 250 g pour six. C'est cette version-là qu'on écrit, et le titre reste juste : c'est bien une quiche au saumon, faite au saumon frais, et la version fumée descend en variante déclarée. Les œufs : huit lignes, de 0,33 à 1 par personne, médiane 0,585 par personne, soit 3,5 — on écrit 4 œufs. La crème : sept lignes pesées, de 33,3 à 62,5 ml par personne, médiane 41,7 ml par personne, soit 250 ml. Le lait est dans deux pages, 100 ml pour six dans l'une et un demi-litre pour six dans l'autre — mais cette seconde est une quiche sans pâte, où le lait remplace le fond : on écrit 100 ml. La pâte : cinq pages emploient une feuilletée, trois une brisée, une n'en met pas. On écrit la feuilletée, à 250 g, ce que pèse un rouleau, aucune page ne la pesant. Le fromage râpé est dans cinq pages sur trois sites — du gruyère dans trois, de l'emmental dans une, un « fromage râpé » non nommé dans la cinquième, une page ajoutant en outre 30 g de parmesan. Trois de ces lignes sont pesées, à 12,5, 16,7 et 16,7 g par personne : médiane 16,7 g par personne, soit 100 g. L'aneth est dans deux pages sur deux sites : 10 g. Ce que le dossier ne soutient pas : les épinards surgelés d'une page, les brocolis d'une autre, les courgettes d'une troisième, les champignons d'une quatrième, les ravioles d'une cinquième — cinq légumes, cinq pages, aucune reprise. Tous en variantes. Durées : préparation, médiane 15 minutes des neuf lignes ; cuisson, médiane 37,5 minutes des huit lignes exploitables, écrite 35.",
+      "plate": {
+        "role": "main",
+        "accepts": ["vegetables"],
+        "reason": "Pâte, œufs, crème et saumon : le féculent et la protéine sont dans l'assiette, aucun légume. Une salade verte ou des crudités complètent le repas."
+      },
+      "ingredients": [
+        { "form": "Crème fraîche liquide entière", "quantity": 250, "unit": "ml", "role": "appareil", "optional": false },
+        { "form": "Pâte feuilletée crue", "quantity": 250, "unit": "g", "role": "fond", "optional": false },
+        { "form": "Pavé de saumon cru, sans peau", "quantity": 250, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Gruyère râpé", "quantity": 100, "unit": "g", "role": "fromage", "optional": false },
+        { "form": "Lait entier", "quantity": 100, "unit": "ml", "role": "appareil", "optional": false },
+        { "form": "Œuf cru", "quantity": 4, "unit": "u", "role": "appareil", "optional": false },
+        { "form": "Aneth frais", "quantity": 10, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Sel fin", "quantity": 5, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Foncer un moule de la pâte feuilletée, piquer le fond et le cuire à blanc douze minutes à 200 °C, lesté. Une pâte feuilletée non précuite sous un appareil liquide ne feuillette pas : elle se compacte et forme une semelle grise, ce qui est exactement ce qu'on lui demande de ne pas faire." },
+        { "n": 2, "instruction": "Tailler le saumon en cubes de deux centimètres, en retirant les arêtes à la pince en passant le doigt à contresens de la chair. Des cubes plutôt que des lamelles : ils restent nacrés au cœur pendant que l'appareil prend, là où des lamelles fines seraient cuites bien avant." },
+        { "n": 3, "instruction": "Battre les œufs à la fourchette avec la crème et le lait, saler modérément, poivrer, et ajouter l'aneth ciselé. Saler modérément parce que le fromage viendra ensuite ; et l'aneth cru dans l'appareil plutôt qu'en garniture, parce que c'est là qu'il diffuse au lieu de brûler en surface." },
+        { "n": 4, "instruction": "Répartir les cubes de saumon sur le fond précuit, en les espaçant régulièrement, parsemer la moitié du gruyère, verser l'appareil et finir du reste de fromage. Les cubes espacés donnent du saumon dans chaque part ; entassés au centre, ils rendent leur jus au même endroit et détrempent une seule zone." },
+        { "n": 5, "instruction": "Enfourner à 180 °C pour trente-cinq minutes, jusqu'à ce que la surface soit dorée et que le centre ne soit plus liquide. Le saumon doit rester juste ferme : c'est un poisson gras qui passe du moelleux au sec en quelques minutes, et c'est le repère de cuisson de cette quiche, davantage que la couleur du dessus." },
+        { "n": 6, "instruction": "Laisser reposer dix minutes avant de découper. L'appareil finit de prendre hors du four et la part se tient alors à la spatule ; découpée brûlante, elle s'effondre et rend du liquide dans l'assiette." }
+      ],
+      "techniques": ["cuisson à blanc", "appareil", "cuisson au four", "repos"],
+      "variants": [
+        "Au saumon fumé : de 100 à 250 g pour six, forme absente du catalogue et donc non écrite ici (marmiton, chefsimon, 750g)",
+        "Aux deux saumons : 200 g de saumon frais et 150 g de fumé, avec de la ciboulette (750g)",
+        "Aux épinards : 200 g d'épinards hachés surgelés et bien pressés, avec du parmesan et du basilic (marmiton)",
+        "Aux brocolis : 180 g après découpe, avec un quart d'oignon et de l'emmental (chefsimon)",
+        "Aux courgettes : trois courgettes râpées et dégorgées (marmiton)",
+        "Sans pâte : quatre œufs, un demi-litre de lait et 100 g de farine, cuits directement au plat (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "creamy_delicate",
+        "scores": { "sweet": 1, "salty": 3, "acidic": 1, "bitter": 0, "umami": 3, "heat": 0, "pungency": 0, "richness": 4, "freshness": 2, "intensity": 2 },
+        "dominant_flavors": ["saumon", "crème", "aneth", "gruyère"],
+        "aroma_families": ["marin", "lactée", "herbacé", "beurre"],
+        "target_textures": ["feuilletage croustillant", "intérieur_fondant_ou_crémeux", "chair_moelleuse"],
+        "signature_ingredients": ["Pavé de saumon cru, sans peau", "Crème fraîche liquide entière", "Aneth frais"],
+        "identity_guardrails": [
+          "Le saumon se taille en cubes et non en lamelles : les cubes restent nacrés quand l'appareil est pris",
+          "Fond feuilleté cuit à blanc, sans quoi il se compacte en semelle sous l'appareil",
+          "L'aneth entre dans l'appareil et non en surface, où il brûlerait",
+          "On sort la quiche quand le saumon est juste ferme — c'est lui, et non la couleur du dessus, qui donne le point"
+        ]
+      },
+      "conservation": "Se garde 2 jours au réfrigérateur seulement, le poisson cuit limitant la conservation, et se réchauffe 12 minutes à 180 °C. Se mange volontiers froide. Se congèle 2 mois cuite, en parts filmées, et se réchauffe sans décongélation 20 minutes à 180 °C — le saumon en ressort un peu plus ferme. Ne pas congeler crue : l'appareil se dissocie.",
+      "allergens": ["gluten", "lait", "œuf", "poisson"]
+    },
+    {
+      "code": "VAR-037",
+      "family": "Quiche aux courgettes",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "tarte salée",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 35,
+      "difficulty": "facile",
+      "sources": ["dossier:quiche-aux-courgettes", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Huit pages sur trois sites, de quatre à six portions. La courgette est dans les huit et elle est le plat : huit lignes, de 66,7 à 150 g par personne, médiane 108 g par personne, soit 650 g pour six. Les œufs : huit lignes, de 0,5 à 0,75 par personne, médiane 0,5 par personne, soit 3 œufs — on écrit 4, parce que l'appareil doit prendre sur 650 g de courgette qui rendent de l'eau même dégorgées, et que trois œufs pour six parts laissent un centre liquide. C'est un écart assumé et il est petit. La crème : six lignes pesées, de 37,5 à 66,7 ml par personne, médiane 50 ml par personne, soit 300 ml. La pâte : cinq pages emploient une brisée, une une feuilletée, deux la font maison à la farine d'épeautre ou de sarrasin. On écrit la brisée, 250 g, aucune page ne la pesant sous forme achetée. Le fromage est le vrai désaccord et il faut le dire tel quel : cinq pages en mettent, et ce sont cinq fromages différents — chèvre frais, parmesan deux fois, feta, gruyère râpé. Aucun n'est attesté sur deux sites distincts ; le parmesan est bien dans deux pages, mais toutes deux sur chefsimon. Trois pages, sur deux sites, n'en mettent aucun. On écrit donc la quiche sans fromage, ce qui est le seul choix que le dossier soutienne, et les cinq fromages descendent en variantes avec leurs quantités. C'est une décision qui surprendra, et c'est précisément pourquoi elle est écrite ici plutôt que réglée en silence par un gruyère par défaut. Les lardons sont dans trois pages sur deux sites, deux les pesant à 25 et 41,7 g par personne : trois pages sur huit ne font pas une majorité et ils descendent en variante — la quiche écrite ici est végétarienne. L'huile d'olive est dans quatre pages, deux la chiffrant à 11,25 et 3,75 g par personne : médiane 7,5 g par personne, soit 45 g, qu'on écrit 40 ml. L'ail est dans trois pages, jamais pesé : 8 g. Les herbes se dispersent — herbes de Provence, menthe, coriandre, persil, thym, estragon, marjolaine, sauge — sans qu'aucune revienne sur deux sites : aucune n'est écrite. Le lait de deux pages, les amandes effilées d'une troisième, le saumon fumé d'une quatrième suivent le même chemin. Durées : préparation, médiane 17,5 minutes des huit lignes, écrite 20 ; cuisson, médiane 35 minutes des huit lignes.",
+      "plate": {
+        "role": "main",
+        "accepts": ["vegetables"],
+        "reason": "Pâte, œufs et crème pour le féculent et la protéine, courgette pour le légume cuit. Une salade de feuilles crues à côté apporte ce qui manque en fraîcheur ; c'est le seul complément que la quiche appelle."
+      },
+      "ingredients": [
+        { "form": "Courgette fraîche", "quantity": 650, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Crème fraîche liquide entière", "quantity": 300, "unit": "ml", "role": "appareil", "optional": false },
+        { "form": "Pâte brisée crue", "quantity": 250, "unit": "g", "role": "fond", "optional": false },
+        { "form": "Œuf cru", "quantity": 4, "unit": "u", "role": "appareil", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 40, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Ail cru", "quantity": 8, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Sel fin", "quantity": 5, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Couper les courgettes en rondelles de cinq millimètres sans les peler, les saler et les laisser dégorger vingt minutes dans une passoire, puis les éponger. La courgette est faite d'eau à plus de quatre-vingt-dix pour cent : ce quart d'heure lui en retire une partie que le four aurait sinon relâchée directement dans l'appareil." },
+        { "n": 2, "instruction": "Faire sauter les rondelles à feu vif dans l'huile d'olive avec l'ail haché, huit à dix minutes, jusqu'à ce qu'elles soient colorées par endroits et qu'il ne reste plus de liquide dans la poêle. À feu doux elles compotent et rendent encore de l'eau ; à feu vif elles marquent et se referment." },
+        { "n": 3, "instruction": "Foncer un moule de la pâte brisée, piquer le fond et le cuire à blanc quinze minutes à 180 °C, lesté de légumes secs. Sans cette précuisson, une garniture de 650 g de légumes détrempe le fond quoi qu'on ait fait pour l'assécher avant." },
+        { "n": 4, "instruction": "Battre les œufs avec la crème à la fourchette, saler et poivrer généreusement. L'appareil doit être franchement assaisonné : la courgette est douce et neutre, et elle absorbera une partie du sel sans rien rendre en échange." },
+        { "n": 5, "instruction": "Ranger les courgettes refroidies sur le fond précuit et verser l'appareil, en le laissant s'infiltrer entre les rondelles avant d'en ajouter. Versé d'un coup, il flotte au-dessus et déborde du moule alors que des poches d'air subsistent en dessous." },
+        { "n": 6, "instruction": "Enfourner à 180 °C pour trente-cinq minutes, jusqu'à ce que le dessus soit doré et le centre juste pris. Laisser reposer dix minutes avant de découper : sans fromage pour la lier, cette quiche tient uniquement par la coagulation de l'œuf, qui achève de se faire hors du four." }
+      ],
+      "techniques": ["dégorgement", "sauté à feu vif", "cuisson à blanc", "appareil", "cuisson au four"],
+      "variants": [
+        "Au chèvre frais : 150 g répartis sur les courgettes (marmiton)",
+        "Au parmesan, 60 à 100 g râpés dans l'appareil (chefsimon, deux pages)",
+        "À la feta émiettée et à la menthe, sur une pâte au sarrasin et un appareil au yaourt entier (chefsimon)",
+        "Aux lardons : 100 à 250 g rissolés et égouttés, ajoutés avec les courgettes (marmiton, 750g)",
+        "Au pistou : basilic, ail, parmesan et huile d'olive mixés et étalés sur le fond avant les courgettes (chefsimon)",
+        "Aux amandes effilées et aux herbes fraîches, menthe et coriandre (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 3, "salty": 3, "acidic": 0, "bitter": 0, "umami": 2, "heat": 0, "pungency": 2, "richness": 3, "freshness": 2, "intensity": 2 },
+        "dominant_flavors": ["courgette", "crème", "ail", "huile d'olive"],
+        "aroma_families": ["végétal cuit", "lactée", "ail", "huile_olive"],
+        "target_textures": ["pâte sablée", "intérieur_fondant_ou_crémeux", "rondelles fermes"],
+        "signature_ingredients": ["Courgette fraîche", "Crème fraîche liquide entière", "Œuf cru"],
+        "identity_guardrails": [
+          "Les courgettes se dégorgent puis se sautent à feu vif : sans les deux, la quiche rend de l'eau au four",
+          "Aucun fromage n'est écrit ici et c'est le dossier qui le dicte — cinq pages, cinq fromages, aucun sur deux sites",
+          "Fond cuit à blanc : 650 g de légumes sur une pâte crue donnent une semelle molle",
+          "L'appareil se verse en deux fois, le temps qu'il s'infiltre entre les rondelles"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur et se réchauffe 12 minutes à 180 °C. Elle se mange froide sans rien perdre. Se congèle 2 mois cuite, en parts filmées séparément — la courgette y perd un peu de tenue mais la quiche reste bonne. Les courgettes sautées se préparent 3 jours à l'avance et se congèlent 3 mois, ce qui ramène le montage à dix minutes.",
+      "allergens": ["gluten", "lait", "œuf"]
+    },
+    {
+      "code": "VAR-038",
+      "family": "Quiche au thon",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "tarte salée",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 35,
+      "difficulty": "facile",
+      "sources": ["dossier:quiche-au-thon", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Neuf pages sur trois sites, de quatre à six portions, et c'est le dossier le plus homogène des quatre quiches de ce lot : thon en conserve, œufs, crème, tomate et moutarde reviennent d'une page à l'autre. Le thon : six lignes pesées de thon en conserve égoutté, à 20, 30, 32,5, 35, 50 et 75 g par personne, médiane 33,75 g par personne, soit 202 g, qu'on écrit 200 g. Une septième page emploie 450 g de thon frais pour quatre — c'est un autre produit et un autre prix, elle sort du calcul et descend en variante. Deux dernières comptent « une boîte » sans la peser. Les œufs : neuf lignes, de 0,5 à 1 par personne, médiane 0,67 par personne, soit 4 œufs. La crème : huit lignes pesées, de 33,3 à 125 ml par personne, médiane 41,7 ml par personne, soit 250 ml — la ligne à 125 est isolée et ne déplace pas la médiane. Le lait est dans trois pages, médiane 25 ml par personne, soit 150 ml. La tomate est dans quatre pages sur trois sites, comptée en pièces : médiane 90 g par personne, soit 540 g, qu'on écrit 500 g. C'est elle qui distingue cette quiche d'une simple quiche au poisson, et c'est aussi elle qui la rend fragile : il faut l'égoutter. La moutarde est dans quatre pages sur trois sites, trois la chiffrant à 5, 1,25 et 2,5 g par personne : médiane 2,5 g par personne, soit 15 g. Étalée sur le fond de pâte, c'est un geste que quatre pages sur neuf décrivent et il fait partie du plat. Le fromage râpé est dans cinq pages : le gruyère revient dans trois d'entre elles, sur deux sites, l'une le pesant à 25 g par personne — on écrit 150 g. Le comté, le parmesan et la tomme de brebis sont à une page chacun. La pâte se partage exactement : cinq pages en feuilletée, cinq en brisée, l'une des neuf admettant les deux. On écrit la brisée, qui supporte mieux une garniture humide de tomate. Aucune page ne la pèse : 250 g, ce que pèse un rouleau. La mozzarella d'une page, la ratatouille d'une autre, les petits pois d'une troisième, les poivrons d'une quatrième, les olives d'une cinquième sont à une source chacun. Durées : préparation, médiane 15 minutes des neuf lignes, écrite 20 pour l'épépinage des tomates ; cuisson, médiane 35 minutes des neuf lignes.",
+      "plate": {
+        "role": "main",
+        "accepts": ["vegetables"],
+        "reason": "Pâte pour le féculent, thon et œufs pour la protéine, tomate pour le légume : l'assiette est presque complète et une salade verte suffit à la finir. C'est le déjeuner que les neuf pages décrivent."
+      },
+      "ingredients": [
+        { "form": "Tomate fraîche mûre", "quantity": 500, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Crème fraîche liquide entière", "quantity": 250, "unit": "ml", "role": "appareil", "optional": false },
+        { "form": "Pâte brisée crue", "quantity": 250, "unit": "g", "role": "fond", "optional": false },
+        { "form": "Thon au naturel en conserve, égoutté", "quantity": 200, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Gruyère râpé", "quantity": 150, "unit": "g", "role": "fromage", "optional": false },
+        { "form": "Lait entier", "quantity": 150, "unit": "ml", "role": "appareil", "optional": false },
+        { "form": "Œuf cru", "quantity": 4, "unit": "u", "role": "appareil", "optional": false },
+        { "form": "Moutarde de Dijon", "quantity": 15, "unit": "g", "role": "condiment", "optional": false },
+        { "form": "Sel fin", "quantity": 5, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Couper les tomates en rondelles, les épépiner à la pointe du couteau et les laisser égoutter vingt minutes sur du papier absorbant, salées. C'est l'étape que la moitié des pages passent sous silence et qui décide de tout : une tomate non égouttée rend deux à trois cuillerées d'eau dans l'appareil, qui ne prend alors jamais au centre." },
+        { "n": 2, "instruction": "Foncer un moule de pâte brisée, piquer le fond, et étaler la moutarde en couche mince sur toute la surface. La moutarde n'est pas seulement un goût : sa couche grasse fait une barrière entre la pâte et le jus de la garniture, et c'est pour cela que quatre pages du dossier commencent ainsi." },
+        { "n": 3, "instruction": "Cuire le fond à blanc douze minutes à 180 °C, lesté. La moutarde sèche pendant cette précuisson et adhère à la pâte au lieu de se diluer dans l'appareil." },
+        { "n": 4, "instruction": "Égoutter et émietter le thon à la fourchette, sans le réduire en pâte : on veut des lamelles qui se reconnaissent sous la dent, pas une farce homogène. Le répartir sur le fond précuit avec la moitié du gruyère." },
+        { "n": 5, "instruction": "Battre les œufs avec la crème et le lait, saler avec retenue — le thon en conserve et le fromage en apportent déjà — poivrer, et verser sur le thon. Ranger les rondelles de tomate épongées sur le dessus, à plat et sans les enfoncer, et parsemer du reste de gruyère." },
+        { "n": 6, "instruction": "Enfourner à 180 °C pour trente-cinq minutes, jusqu'à ce que les tomates soient ridées sur les bords et l'appareil pris. Les tomates posées en surface et non noyées cuisent et se concentrent au lieu de rendre leur eau dans le flan : c'est la seule façon d'en mettre 500 g sans détremper la quiche. Laisser reposer dix minutes avant de découper." }
+      ],
+      "techniques": ["dégorgement", "cuisson à blanc", "appareil", "cuisson au four", "repos"],
+      "variants": [
+        "Au thon frais : 450 g pour quatre, avec deux échalotes et du paprika (750g)",
+        "À la mozzarella : 200 g en tranches sur les tomates, avec basilic et persil (marmiton)",
+        "À la ratatouille : 300 g égouttés à la place des tomates fraîches (marmiton)",
+        "Aux trois poivrons et à la tomme de brebis, avec des pignons (chefsimon)",
+        "Aux petits pois : 100 g surgelés avec de la coriandre et du parmesan (chefsimon)",
+        "Aux olives noires et à la cive, quatre gousses d'ail dans l'appareil (750g)"
+      ],
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 3, "bitter": 0, "umami": 4, "heat": 0, "pungency": 3, "richness": 3, "freshness": 2, "intensity": 3 },
+        "dominant_flavors": ["thon", "tomate", "moutarde", "gruyère"],
+        "aroma_families": ["marin", "tomate", "moutarde", "lactée"],
+        "target_textures": ["pâte sablée", "intérieur_fondant_ou_crémeux", "tomate confite"],
+        "signature_ingredients": ["Thon au naturel en conserve, égoutté", "Tomate fraîche mûre", "Moutarde de Dijon"],
+        "identity_guardrails": [
+          "Les tomates s'épépinent et s'égouttent vingt minutes : sans cela l'appareil ne prend pas au centre",
+          "La moutarde s'étale sur le fond cru, avant la cuisson à blanc — c'est un goût et une barrière à l'humidité",
+          "Les tomates se posent en surface et ne s'enfoncent pas dans l'appareil, où elles rendraient leur eau",
+          "Thon émietté en lamelles, jamais écrasé en pâte"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur et se réchauffe 12 minutes à 180 °C ; elle est aussi bonne froide, ce qui en fait un pique-nique. Se congèle 2 mois cuite, en parts filmées, mais la tomate y perd de sa tenue et rend un peu d'eau à la décongélation : réchauffer alors directement au four sans passer par le réfrigérateur.",
+      "allergens": ["gluten", "lait", "œuf", "poisson", "moutarde"]
+    },
+    {
+      "code": "VAR-039",
+      "family": "Omelette au fromage",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "omelette",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 10,
+      "cook_minutes": 10,
+      "difficulty": "facile",
+      "sources": ["dossier:omelette-au-fromage", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Sept pages sur trois sites, de deux à six portions. Le plat est simple et le dossier l'est aussi sur un point, les œufs : sept lignes, de 1 à 3 par personne, médiane 1,5 par personne, soit 6 œufs pour quatre. Il l'est beaucoup moins sur l'autre, qui est pourtant le nom du plat. Cinq fromages différents apparaissent dans les sept pages : du comté sur marmiton, du fromage frais ail et fines herbes sur marmiton, une bûche de chèvre sur chefsimon, du gruyère râpé sur 750g dans deux pages, de la mozzarella avec du gruyère sur 750g, du parmesan sur marmiton, du fromage blanc sur 750g. Aucun n'est attesté sur deux sites distincts. On écrit le gruyère râpé, et pour deux raisons qu'il vaut mieux poser : c'est le seul que deux pages pèsent au même niveau, 25 g par personne, soit 100 g pour quatre ; et c'est le fromage à fondre générique que la cuisine domestique française appelle « fromage râpé », ce que trois autres pages disent sans le nommer. Les quatre autres descendent en variantes avec leurs quantités. Le beurre n'est pesé que par une page, 20 g pour quatre : on écrit 25 g. Un liquide lacté est ajouté aux œufs par trois pages sur deux sites — trois cuillerées à soupe de lait pour deux dans l'une, 10 cl de crème liquide pour deux dans une autre, du lait sans quantité dans la troisième. On écrit 40 ml de lait pour quatre, ce qui est la lecture basse et ne change pas la nature de l'omelette. Le sel et le poivre sont dans cinq pages, jamais pesés : 3 g et 1 g. Ce que le dossier ne soutient pas : le bacon, le jambon, la courgette, les pignons de pin, la ciboulette et l'ail, chacun à une seule page — tous en variantes. Durées : préparation, médiane 10 minutes des sept lignes ; cuisson, médiane 13 minutes des sept lignes, écrite 10 — la médiane est tirée par une omelette soufflée passée au four et par une omelette aux courgettes, quand l'omelette au fromage seule se fait en cinq minutes de poêle. Vingt minutes en tout : c'est le plat le plus rapide de ce lot.",
+      "plate": {
+        "role": "main",
+        "accepts": ["starch", "vegetables"],
+        "reason": "Six œufs et 100 g de fromage pour quatre : une protéine seule, sans féculent ni légume. Du pain, des pommes de terre sautées ou une salade verte en font un repas — c'est la fonction même de l'omelette du soir."
+      },
+      "ingredients": [
+        { "form": "Œuf cru", "quantity": 6, "unit": "u", "role": "protéine", "optional": false },
+        { "form": "Gruyère râpé", "quantity": 100, "unit": "g", "role": "fromage", "optional": false },
+        { "form": "Lait entier", "quantity": 40, "unit": "ml", "role": "appareil", "optional": false },
+        { "form": "Beurre doux", "quantity": 25, "unit": "g", "role": "cuisson", "optional": false },
+        { "form": "Sel fin", "quantity": 3, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Casser les œufs dans un bol, ajouter le lait, saler et poivrer, et battre à la fourchette une dizaine de secondes seulement — juste assez pour que jaunes et blancs se mêlent, sans faire mousser. Une masse battue en mousse gonfle à la poêle puis retombe en donnant une omelette sèche et grise." },
+        { "n": 2, "instruction": "Faire fondre le beurre dans une poêle de vingt-quatre centimètres à feu moyen, en l'inclinant pour en tapisser toute la surface et le bord. Attendre que la mousse retombe mais que le beurre reste blond : noirci, il donne un goût de noisette brûlée qui domine le fromage." },
+        { "n": 3, "instruction": "Verser les œufs d'un coup et attendre dix secondes sans y toucher, puis, à la spatule, ramener les bords pris vers le centre en inclinant la poêle pour que l'œuf liquide file dans les vides. Répéter quatre ou cinq fois. C'est ce va-et-vient qui donne une omelette épaisse et pliée plutôt qu'une crêpe d'œuf." },
+        { "n": 4, "instruction": "Quand la surface est encore brillante et légèrement coulante, répartir le gruyère sur toute la moitié la plus éloignée de la poignée. Le fromage entre à ce moment précis : plus tôt, il fond et se disperse dans l'œuf ; plus tard, il reste froid et ne file pas." },
+        { "n": 5, "instruction": "Compter trente secondes, le temps que le fromage commence à fondre, puis rabattre la moitié nue sur la moitié garnie à l'aide de la spatule, et faire glisser l'omelette dans le plat en la retournant sur elle-même. Elle doit rester baveuse au cœur — c'est le point français, et l'omelette continue de cuire de sa propre chaleur pendant qu'on la porte à table." }
+      ],
+      "techniques": ["battage court", "cuisson à la poêle", "pliage"],
+      "variants": [
+        "Au comté râpé, 100 g pour six, avec un jus de citron et des blancs montés en neige — omelette soufflée passée au four (marmiton)",
+        "À la bûche de chèvre, 100 g pour deux, avec une courgette poêlée et des herbes de Provence (chefsimon)",
+        "Mozzarella et gruyère à parts égales, 50 g de chaque pour deux, avec de la crème liquide, de l'ail et du paprika (750g)",
+        "Au fromage blanc, 400 g pour quatre, avec des pignons de pin et de la ciboulette (750g)",
+        "Au fromage frais ail et fines herbes, 50 g pour deux, avec du bacon (marmiton)",
+        "Au parmesan râpé et au jambon blanc, deux tranches (marmiton)"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 1, "salty": 3, "acidic": 0, "bitter": 0, "umami": 4, "heat": 0, "pungency": 1, "richness": 4, "freshness": 0, "intensity": 2 },
+        "dominant_flavors": ["œuf", "gruyère fondu", "beurre"],
+        "aroma_families": ["beurre", "lacté", "fromage affiné"],
+        "target_textures": ["baveux au cœur", "fromage filant", "moelleux"],
+        "signature_ingredients": ["Œuf cru", "Gruyère râpé", "Beurre doux"],
+        "identity_guardrails": [
+          "Les œufs se battent dix secondes, pas davantage : une mousse donne une omelette sèche",
+          "Le fromage entre quand la surface est encore brillante — plus tôt il se disperse, plus tard il ne fond pas",
+          "Beurre blond et non noisette : noirci, il couvre le goût du fromage",
+          "L'omelette se sert baveuse au cœur et finit de cuire dans le plat"
+        ]
+      },
+      "conservation": "Se mange dans la minute. Une omelette réchauffée devient caoutchouteuse et rend de l'eau : les restes, s'il y en a, se mangent froids en tranches, dans un sandwich, dans les 24 heures. Ne se congèle pas. Le seul travail d'avance possible est le fromage râpé, qui se garde une semaine au réfrigérateur ou trois mois au congélateur en sachet — vingt minutes du placard à l'assiette, c'est déjà l'intérêt du plat.",
+      "allergens": ["œuf", "lait"]
+    },
+    {
+      "code": "VAR-040",
+      "family": "Soupe de lentilles",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "soupe",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 15,
+      "cook_minutes": 45,
+      "difficulty": "facile",
+      "sources": ["dossier:soupe-de-lentilles", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Sept pages sur trois sites, et deux soupes différentes s'y partagent le nom. La première est une soupe de lentilles corail, mixée, souvent au cumin ou au lait de coco : elle est dans trois pages, mais toutes trois sur marmiton — une seule rédaction, un seul site, et le dossier ne l'atteste donc pas. La seconde est une soupe rustique de lentilles vertes ou du Puy, non mixée, montée sur une garniture d'oignon et de carotte : elle est dans quatre pages réparties sur deux sites, chefsimon et 750g. C'est elle qu'on écrit, et la version corail descend en variante entière — l'arbitrage porte sur la variété de lentille, ce que le dossier ne tranchait pas de lui-même et que le sourceur avait signalé comme à trancher. La lentille : quatre lignes pesées, à 37,5, 37,5, 33,3 et 62,5 g par personne, médiane 37,5 g par personne, soit 225 g pour six. Deux pages précisent la lentille du Puy et deux la lentille verte ou brune ; le catalogue porte la lentille verte, qui les recouvre. La carotte est dans deux pages, comptée à la pièce : médiane 29,2 g par personne, soit 175 g. L'oignon est dans trois pages, médiane 32,5 g par personne, soit 195 g, qu'on écrit 200 g. L'ail est dans une page, une gousse : 8 g. L'huile d'olive est dans deux pages, à 3,75 et 7,5 ml par personne, médiane 5,6 ml par personne, soit 34 ml, qu'on écrit 35 ml. Le bouillon n'est mesuré que par une page, un litre et demi pour quatre, soit 375 ml par personne — 2 250 ml pour six. On descend à 1 500 ml : à 375 ml par personne avec 37 g de lentilles, ce serait un bouillon aux lentilles et non une soupe de lentilles, et la seule ligne mesurée du dossier ne peut pas décider seule d'un rapport aussi structurant. Un élément de porc fumé est présent dans trois des quatre pages retenues — une tranche de lard demi-sel fumé, un chorizo, six tranches de bacon — mais ce sont trois produits différents et aucun ne revient sur deux sites. Aucun n'est écrit, et la soupe reste végétarienne ; les trois descendent en variantes. Le poireau, la pomme de terre, la courgette, le poivron, le thym, la crème et l'œuf poché sont à une page chacun. Durées : préparation, médiane 15 minutes des quatre lignes ; cuisson, médiane 52,5 minutes des quatre lignes, écrite 45 — la ligne à 105 minutes est celle d'une page qui fait tremper puis mijote longuement, quand 225 g de lentilles vertes sont cuites en trois quarts d'heure.",
+      "plate": {
+        "role": "main",
+        "accepts": ["vegetables"],
+        "reason": "Les lentilles apportent ensemble la protéine et le féculent, ce qui fait de cette soupe un plat et non une entrée. Il lui manque le légume frais : une salade ou une crudité à côté, et le repas tient."
+      },
+      "ingredients": [
+        { "form": "Bouillon de légumes", "quantity": 1500, "unit": "ml", "role": "mouillement", "optional": false },
+        { "form": "Lentille verte sèche, crue", "quantity": 225, "unit": "g", "role": "légumineuse", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 200, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Carotte crue", "quantity": 175, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 35, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Ail cru", "quantity": 8, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Sel fin", "quantity": 6, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Rincer les lentilles à l'eau froide et les trier, en écartant les petits cailloux que les paquets contiennent encore. Ne pas les faire tremper : une lentille verte cuit en trois quarts d'heure sans trempage, et trempée elle se défait en purée avant d'avoir pris le goût du bouillon." },
+        { "n": 2, "instruction": "Faire fondre l'oignon émincé et la carotte en petits dés dans l'huile d'olive, à feu doux, dix minutes, avec l'ail haché en fin de course. Cette garniture est tout ce que la soupe a pour se donner du fond, puisqu'elle ne porte ni lard ni chorizo : il faut la laisser vraiment fondre et non simplement chauffer." },
+        { "n": 3, "instruction": "Ajouter les lentilles, remuer une minute pour les enrober du gras, puis verser le bouillon. Ne pas saler maintenant : le sel en début de cuisson durcit la peau des légumineuses et elles refusent de s'attendrir, quel que soit le temps qu'on leur laisse." },
+        { "n": 4, "instruction": "Porter à frémissement et laisser cuire quarante-cinq minutes à couvert, à petits bouillons. La soupe est prête quand les lentilles s'écrasent entre deux doigts tout en gardant leur forme dans la cuillère — c'est la texture d'une soupe rustique, à l'opposé du velouté lisse que donnerait une lentille corail." },
+        { "n": 5, "instruction": "Saler alors, poivrer et goûter. Si la soupe paraît épaisse, allonger d'un verre d'eau chaude ; si elle est trop liquide, écraser une louche de lentilles contre la paroi et la remettre, ce qui lie sans mixer et garde les grains entiers." },
+        { "n": 6, "instruction": "Laisser reposer dix minutes hors du feu avant de servir, avec un filet d'huile d'olive crue dans chaque assiette. L'huile ajoutée à froid garde son parfum, celle qui a cuit quarante-cinq minutes ne l'a plus." }
+      ],
+      "techniques": ["suer", "mijotage", "liaison par écrasement", "repos"],
+      "variants": [
+        "Soupe de lentilles corail : 120 à 250 g de corail, deux carottes, un oignon, du cumin, du curry ou du lait de coco, mixée en velouté — attestée sur un seul site (marmiton, trois pages)",
+        "Au lard demi-sel fumé : une grosse tranche taillée en lardons avec la garniture, et une quenelle de crème fraîche par assiette (chefsimon)",
+        "Au chorizo : une pièce en rondelles avec une courgette, un demi-poivron et une pomme de terre (chefsimon)",
+        "Au bacon et à l'œuf poché : six tranches grillées et un œuf poché par assiette, avec du thym (750g)",
+        "Aux tomates et au parmesan, avec des feuilles de lasagne cassées cuites dedans (chefsimon)",
+        "Avec un blanc de poireau émincé ajouté à la carotte (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "earthy_herbal",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 0, "bitter": 1, "umami": 3, "heat": 0, "pungency": 1, "richness": 2, "freshness": 1, "intensity": 2 },
+        "dominant_flavors": ["lentille", "oignon fondu", "carotte", "huile d'olive"],
+        "aroma_families": ["légumineuse", "oignon_compoté", "végétal cuit", "huile_olive"],
+        "target_textures": ["lentilles fondantes mais entières", "bouillon lié par l'amidon"],
+        "signature_ingredients": ["Lentille verte sèche, crue", "Carotte crue", "Oignon jaune cru"],
+        "identity_guardrails": [
+          "Lentille verte et non corail : la corail se défait en velouté, et c'est une autre soupe que ce dossier n'atteste que sur un site",
+          "On ne sale qu'à la fin — le sel en début de cuisson durcit la peau des légumineuses",
+          "Pas de trempage : une lentille verte cuit en trois quarts d'heure et trempée elle part en purée",
+          "La soupe reste non mixée, les grains entiers dans la cuillère"
+        ]
+      },
+      "conservation": "Se garde 4 jours au réfrigérateur et s'épaissit chaque jour, les lentilles continuant d'absorber : rallonger d'eau chaude au réchauffage. Elle est meilleure le lendemain. Se congèle 3 mois sans rien perdre, ce qui en fait l'une des meilleures candidates du lot au travail d'avance : doubler les quantités ne coûte que le prix des lentilles. Réchauffer à feu doux en remuant, le fond attachant facilement.",
+      "allergens": []
+    },
+    {
+      "code": "VAR-041",
+      "family": "Tarte à la tomate",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "tarte salée",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 40,
+      "difficulty": "facile",
+      "sources": ["dossier:tarte-a-la-tomate", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Sept pages sur trois sites, et deux d'entre elles décrivent autre chose : une tarte aux aubergines grillées et une tarte tourbillon à la pâte filo, aux courgettes et à la feta. Restent cinq pages, sur les trois sites, et elles se partagent en deux familles. Trois montent un appareil aux œufs et à la crème par-dessus la tomate ; mais ces trois-là sont deux tartes au thon et une tarte au chèvre, c'est-à-dire des tartes dont la tomate n'est pas le sujet. Les deux pages dont le titre est exactement celui du plat — une sur chefsimon, une sur 750g — ne lient rien du tout : elles étalent de la moutarde sur un fond de pâte, rangent des rondelles de tomate, parsèment du fromage et enfournent. C'est cette version sans appareil qu'on écrit, et c'est l'arbitrage principal de la fiche : une tarte à la tomate n'est pas une quiche à la tomate. La moutarde est le geste commun à quatre pages sur cinq et elle est donc dans la liste : trois lignes chiffrées, à 11,25, 1,875 et 3,75 g par personne, médiane 3,75 g par personne, soit 22,5 g, qu'on écrit 25 g. La tomate : quatre lignes en pièces, médiane 60 g par personne, soit 360 g. On écrit 500 g : un fond de tarte de vingt-huit centimètres demande deux rangs de rondelles serrées, que 360 g ne couvrent pas, et les pages comptent en tomates entières sans jamais préciser leur taille. La pâte : quatre pages sur cinq emploient une pâte brisée. Une seule la pèse, 300 g pour six, soit 50 g par personne ; un rouleau du commerce en fait 230 à 250 et couvre le moule, on écrit 250 g. Le fromage se disperse — chèvre en bûche, parmesan, gruyère râpé, fromage râpé sans autre précision — et seul le râpé générique revient sur deux sites, l'une des pages le pesant à 8,3 g par personne. On écrit 80 g de gruyère, au-dessus de cette unique ligne parce qu'elle correspond à un simple voile et que les deux autres pages en couvrent la surface. L'oignon est dans deux pages sur deux sites, une pièce chacune : médiane 24,4 g par personne, soit 146 g, qu'on écrit 150 g. Les herbes de Provence ou le thym sont dans trois pages sur deux sites : 3 g. L'huile d'olive est dans une page, une cuillerée à soupe pour huit : 20 ml. La chapelure fine étalée sous les tomates pour absorber leur jus n'est que dans une page — c'est un bon geste et il reste en variante, faute d'attestation. Le thon de deux pages, le skyr et la burrata d'une autre, le pesto d'une quatrième suivent le même chemin. Durées : préparation, médiane 15 minutes des cinq lignes, écrite 20 ; cuisson, médiane 37,5 minutes des quatre lignes exploitables, écrite 40.",
+      "plate": {
+        "role": "main",
+        "accepts": ["vegetables"],
+        "reason": "Pâte et tomate, un voile de fromage : le féculent et le légume cuit sont là, la protéine est presque absente. C'est une tarte d'été qui se sert avec une salade verte et, si l'on veut, un œuf ou du jambon à côté."
+      },
+      "ingredients": [
+        { "form": "Tomate fraîche mûre", "quantity": 500, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Pâte brisée crue", "quantity": 250, "unit": "g", "role": "fond", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 150, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Gruyère râpé", "quantity": 80, "unit": "g", "role": "fromage", "optional": false },
+        { "form": "Moutarde de Dijon", "quantity": 25, "unit": "g", "role": "condiment", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 20, "unit": "ml", "role": "finition", "optional": false },
+        { "form": "Herbes de Provence séchées", "quantity": 3, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Sel fin", "quantity": 4, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 2, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Trancher les tomates en rondelles de cinq millimètres, les ranger à plat sur une grille ou du papier absorbant, les saler légèrement et les laisser rendre leur eau une demi-heure. Sans appareil aux œufs pour absorber ce jus, cette demi-heure est la seule protection de la pâte, et c'est elle qui décide entre une tarte croustillante et une tarte molle." },
+        { "n": 2, "instruction": "Émincer l'oignon en lamelles fines et le faire fondre dix minutes dans la moitié de l'huile d'olive, sans coloration. Cru sous les tomates, il reste croquant et piquant sous une tarte par ailleurs douce, et c'est un décalage qu'on remarque à chaque bouchée." },
+        { "n": 3, "instruction": "Foncer un moule de la pâte brisée, piquer le fond à la fourchette et le cuire à blanc quinze minutes à 180 °C, lesté. Une tarte à la tomate sans appareil n'a rien pour tenir sa pâte au sec : la cuisson à blanc n'est pas ici une commodité, c'est la structure du plat." },
+        { "n": 4, "instruction": "Étaler la moutarde en couche mince sur le fond précuit et encore chaud, puis répartir l'oignon fondu par-dessus. La moutarde sur une pâte chaude sèche instantanément et forme un film ; posée sur une pâte froide, elle reste humide sous les tomates." },
+        { "n": 5, "instruction": "Ranger les rondelles de tomate épongées en rosace, en les faisant se chevaucher légèrement, poivrer et parsemer des herbes de Provence puis du gruyère râpé. Un chevauchement léger et non un empilement : deux épaisseurs de tomate ne cuisent pas, elles s'affaissent." },
+        { "n": 6, "instruction": "Arroser du reste d'huile d'olive et enfourner à 180 °C pour quarante minutes, jusqu'à ce que les bords des rondelles soient bruns et légèrement ridés. C'est cette caramélisation des bords qui concentre le goût de la tomate ; une tarte sortie trop tôt est aqueuse et fade quelle que soit la qualité des fruits. Laisser tiédir dix minutes avant de couper." }
+      ],
+      "techniques": ["dégorgement", "fondue d'oignons", "cuisson à blanc", "cuisson au four"],
+      "variants": [
+        "À la moutarde et au thon : deux boîtes égouttées sous les tomates, avec deux œufs et 20 cl de crème (marmiton, deux pages)",
+        "Au chèvre : une bûche en rondelles sur les tomates, avec un appareil de deux œufs, un décilitre de crème et un de lait, et du thym sec (chefsimon)",
+        "Au parmesan et à la chapelure : deux cuillerées de chapelure fine étalées sur la moutarde pour absorber le jus, deux de parmesan sur les tomates, et une burrata déchirée au service (chefsimon)",
+        "Au pesto, cent grammes étalés à la place de la moutarde (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "tomato_herbal",
+        "scores": { "sweet": 3, "salty": 3, "acidic": 3, "bitter": 0, "umami": 3, "heat": 0, "pungency": 3, "richness": 2, "freshness": 2, "intensity": 3 },
+        "dominant_flavors": ["tomate rôtie", "moutarde", "herbes de Provence", "oignon fondu"],
+        "aroma_families": ["tomate_cuite", "moutarde", "herbacé", "oignon_compoté"],
+        "target_textures": ["pâte sablée", "tomate confite", "contraste_léger"],
+        "signature_ingredients": ["Tomate fraîche mûre", "Moutarde de Dijon", "Pâte brisée crue"],
+        "identity_guardrails": [
+          "Aucun appareil aux œufs : une tarte à la tomate liée à la crème est une quiche, et les deux pages qui portent ce titre exact n'en mettent pas",
+          "Les tomates se dégorgent une demi-heure — sans appareil pour absorber leur eau, rien d'autre ne protège la pâte",
+          "La moutarde s'étale sur le fond précuit encore chaud, où elle sèche en film",
+          "On cuit jusqu'à ce que les bords des rondelles brunissent : c'est là que la tomate se concentre"
+        ]
+      },
+      "conservation": "Se garde 2 jours au réfrigérateur et se réchauffe 10 minutes à 190 °C pour rendre à la pâte son croustillant ; froide, elle est correcte mais la pâte a ramolli. Ne se congèle pas cuite — la tomate rend toute son eau à la décongélation et le fond se défait. Le fond cuit à blanc se garde en revanche 3 jours dans une boîte et se congèle 2 mois, ce qui ramène la tarte à un quart d'heure de montage.",
+      "allergens": ["gluten", "lait", "moutarde"]
+    }
+  ]
+}

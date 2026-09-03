@@ -1,0 +1,236 @@
+{
+  "dish": "Quiche aux poireaux",
+  "slug": "quiche-aux-poireaux",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_quiche-poireaux-chevre-lardons_22275.aspx",
+      "site": "marmiton.org",
+      "nom": "Quiche poireaux, chèvre lardons : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "250 g de pâtes brisées (ou une pâte toute prête)",
+        "3 poireaux",
+        "100 g de lardons fumés",
+        "1 fromage de chèvre (cottin, bûche...selon les goûts)",
+        "3 oeufs",
+        "20 cl de crème fraîche",
+        "10 cl de lait",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 505,
+        "sha256": "a1bd0cf335cff98e"
+      },
+      "sha256_page": "85c1aa7266b7784d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_quiche-poireaux-courgettes_27564.aspx",
+      "site": "marmiton.org",
+      "nom": "Quiche poireaux courgettes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "pâte brisée ou feuilletée",
+        "2 poireaux",
+        "2 courgettes",
+        "100 g de lardons fumés coupés fin",
+        "1 tranche de jambon blanc (facultatif)",
+        "20 cl de crème fraîche liquide",
+        "2 oeufs",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 526,
+        "sha256": "2f709db9d0a5fff7"
+      },
+      "sha256_page": "8c4ad30424277f2c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_quiche-aux-poireaux-et-saumon-frais_18945.aspx",
+      "site": "marmiton.org",
+      "nom": "Quiche aux poireaux et saumon frais : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "3 poireaux moyens",
+        "300 g de saumon frais",
+        "1 oignon",
+        "150 g de chèvre frais",
+        "70 g de gruyère râpé",
+        "40 cl de crème liquide",
+        "4 oeufs",
+        "1 rouleau de pâte feuilletée",
+        "moutarde de Dijon",
+        "huile d'olive",
+        "poivre",
+        "sel",
+        "muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 688,
+        "sha256": "556d783bf406e8e5"
+      },
+      "sha256_page": "037e60718838a71e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lesfillesatable-com/recettes/quiche-sans-pate-poireaux-et-patate-douce",
+      "site": "chefsimon.com",
+      "nom": "Quiche sans pâte poireaux et patate douce",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "300 g de poireaux nettoyés",
+        "300 g de patate douce",
+        "4 oeufs",
+        "20 cl de crème légère",
+        "30 g de parmesan",
+        "150 g de chèvre frais (chavroux)",
+        "origan",
+        "huile d’olive",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 551,
+        "sha256": "643b9560adb38eb1"
+      },
+      "sha256_page": "de0136c27957003f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/orianec/recettes/quiche-poireaux-sarrasin-et-feta",
+      "site": "chefsimon.com",
+      "nom": "Quiche poireaux, sarrasin et feta",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "100 g de farine de blé",
+        "50 g de farine de sarrasin",
+        "50 g de beurre",
+        "Un peu d’eau froide",
+        "300 g de poireaux",
+        "1 càs d’huile d’olive",
+        "2 oeufs",
+        "200 g de yaourt entier (ou un mélange de lait et de crème)",
+        "De la feta",
+        "Poivre, cumin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 699,
+        "sha256": "2c5aaa54b53f9784"
+      },
+      "sha256_page": "320b0eb55b8b702d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/quiche-aux-poireaux-et-au-jambon-de-parme-emiette-de-chevre-et-muscade",
+      "site": "chefsimon.com",
+      "nom": "Quiche aux poireaux et au jambon de Parme, émietté de chèvre et muscade",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "1  pâte brisée",
+        "500 g de poireaux",
+        "22 cL de lait",
+        "2  œufs",
+        "1  bonne pincée de noix de muscade",
+        "gruyère râpé",
+        "sel et poivre",
+        "2  tranches de jambon de parme",
+        "40 g de chèvre frais"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 432,
+        "sha256": "4234000ce1dbfa3e"
+      },
+      "sha256_page": "ac0568423f881d82"
+    },
+    {
+      "url": "https://www.750g.com/quiche-aux-poireaux-r49139.htm",
+      "site": "750g.com",
+      "nom": "Quiche aux poireaux facile à réaliser",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "Ail",
+        "Herbes de Provence",
+        "Ciboulette",
+        "Pâte feuilletée",
+        "Poivre",
+        "Sel ou sel fin",
+        "4 oeufs",
+        "8 c. à s. de lait",
+        "Poireau  surgelés"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 272,
+        "sha256": "2006bc8cf0b8600c"
+      },
+      "sha256_page": "f202059a22be356d"
+    },
+    {
+      "url": "https://www.750g.com/quiche-aux-poireaux-et-au-boursin-r52404.htm",
+      "site": "750g.com",
+      "nom": "Quiche aux poireaux et au boursin",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "3 œufs",
+        "20 cl de crème liquide",
+        "1 pâte brisée",
+        "150g de gruyère râpé",
+        "200g de jambon en dés",
+        "1 pot de fromage à cuisiner ail et fines herbes",
+        "600g de poireaux surgelés"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 629,
+        "sha256": "6d5af48bdc702a04"
+      },
+      "sha256_page": "42a2d8eb4546abdc"
+    },
+    {
+      "url": "https://www.750g.com/quiche-aux-poireaux-r43783.htm",
+      "site": "750g.com",
+      "nom": "Quiche aux poireaux et au Morbier",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "40 g de beurre",
+        "sel",
+        "poivre",
+        "30 cl de crème fraiche",
+        "1 jaunes",
+        "1 pâte brisée",
+        "800 g de poireaux",
+        "2 œufs",
+        "100 g de Morbier en lamelles fines"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 530,
+        "sha256": "2e27133d571d73da"
+      },
+      "sha256_page": "4c0f75d22e6f429c"
+    }
+  ]
+}

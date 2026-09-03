@@ -1,0 +1,208 @@
+{
+  "dish": "Koulibiac de saumon",
+  "slug": "koulibiac-de-saumon",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_koulibiac-de-saumon_12474.aspx",
+      "site": "marmiton.org",
+      "nom": "Koulibiac de saumon : la meilleure recette",
+      "portions": "9 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "2 pâtes feuilletées de 250 g chacune (surgelées si vous voulez)",
+        "500 g de saumon frais en filet",
+        "150 g de riz",
+        "200 g de champignons de Paris",
+        "citron",
+        "3 oeufs",
+        "50 g de beurre",
+        "0.5 bouquet d'aneth",
+        "1 jaune d'oeuf",
+        "poivre",
+        "sel",
+        "150 g de beurre",
+        "0.5 bouquet d'aneth"
+      ],
+      "etapes_empreinte": {
+        "nombre": 21,
+        "signes": 2084,
+        "sha256": "4f307c5811939cf9"
+      },
+      "sha256_page": "e060d49e482f21f5"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_koulibiac-de-saumon-epinards_12541.aspx",
+      "site": "marmiton.org",
+      "nom": "Koulibiac de saumon et épinards : la meilleure recette",
+      "portions": "10 personnes",
+      "duree_preparation": "PT2H30M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "500 g de saumon",
+        "1 l de court-bouillon pour poisson bien aromatisé",
+        "20 cl de vin blanc sec",
+        "100 g de riz long grain",
+        "300 g d'épinards surgelés",
+        "300 g de champignons de couche",
+        "3 échalotes",
+        "30 g de beurre",
+        "poivre",
+        "sel",
+        "de citron",
+        "4 oeufs durs",
+        "1 bouquet de cerfeuil",
+        "1 bouquet de ciboulette",
+        "800 g de pâtes feuilletées",
+        "1 jaune d'oeuf pour dorer",
+        "1 cuillère à soupe de lait"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1282,
+        "sha256": "376cfe11c8122258"
+      },
+      "sha256_page": "4cbc772e7b40fbca"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_koulibiac-de-saumon-aux-epinards_347865.aspx",
+      "site": "marmiton.org",
+      "nom": "Koulibiac de saumon aux épinards : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "1 kg d'épinards frais",
+        "800 g de saumon frais",
+        "100 g de beurre",
+        "1 rouleau de pâte feuilletée",
+        "1 jaune d'oeuf",
+        "3 cuillères à soupe de sésame",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 612,
+        "sha256": "bcace03af6932860"
+      },
+      "sha256_page": "993d1c209dc828a4"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/passeportpourlacuisine/recettes/koulibiac-de-saumon-57004bd6-00e5-49c2-b67d-4c7d14901030",
+      "site": "chefsimon.com",
+      "nom": "Koulibiac de saumon",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "500 g de pâte feuilletée (chez le pâtissier)",
+        "600 g de filet de saumon frais sans la peau",
+        "200 g de riz basmati",
+        "200 g de champignons",
+        "250 g d’épinards en branches surgelés",
+        "12 œufs de caille (ici 2 œufs durs)",
+        "1 bouquet de persil plat",
+        "1 branche d’estragon (ici remplacé par du sel d’orties à l’estragon)",
+        "50 g de farine",
+        "20 g de beurre",
+        "1 jaune d’œuf",
+        "sel et poivre",
+        "40 cl de crème liquide",
+        "le jus de 1 citron",
+        "quelques brins de ciboulette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 40,
+        "signes": 1718,
+        "sha256": "fe6d5ab4c3f57cc0"
+      },
+      "sha256_page": "0bc716ff4b37b081"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/sophie-cuisine/recettes/koulibiac-de-saumon-4827d439-f98f-45af-8aba-0df5bffca483",
+      "site": "chefsimon.com",
+      "nom": "Koulibiac de saumon",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "500 g de saumon Salma",
+        "2 rouleaux de pâte feuilletée",
+        "150 g de riz basmati",
+        "300 g d’épinards frais",
+        "3 œufs + 1 jaune d’œuf pour la dorure",
+        "Quelques brins de ciboulette",
+        "2 noix de beurre",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "a9851577c6e57f42"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/nadji/recettes/koulibiac-de-saumon-a-ma-facon",
+      "site": "chefsimon.com",
+      "nom": "Koulibiac de saumon à ma façon",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 pÃ¢tes feuilletÃ©es pur beurre",
+        "3 pavÃ©s de saumon (500 g)",
+        "1,5 L de court-bouillon de poisson",
+        "250 g de riz basmati",
+        "30 g de beurre",
+        "400 g de fenouil Ã©mincÃ© (Picard)",
+        "1 oignon",
+        "2 jaunes d'Åufs",
+        "15 cl de crÃ¨me fraÃ®che",
+        "Jus d’½ citron",
+        "Sel, poivre 5 baies",
+        "3 Åufs",
+        "2 c. Ã&nbsp; soupe d’huile d’olive",
+        "2 c. Ã&nbsp; soupe de coriandre hachÃ©e",
+        "1 jaune d'Åuf + 1 c.s. d’eau (pour la dorure)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "13f5aa58a33218c7"
+    },
+    {
+      "url": "https://www.750g.com/koulibiac-de-saumon-r57863.htm",
+      "site": "750g.com",
+      "nom": "Koulibiac de saumon maison",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 pâte feuilletée",
+        "400 g de filets de saumon",
+        "Epinard  frais  (à faire cuire et à hacher) ou 300g d'épinards hachés surgelés",
+        "80 g de riz blanc",
+        "150 g de comté râpé",
+        "1 jaune d'oeuf",
+        "Aneth",
+        "Crème fraîche légère",
+        "Jus de citron",
+        "Paprika",
+        "Sirop  de sucre d'érable"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 814,
+        "sha256": "10eb124ab31cac54"
+      },
+      "sha256_page": "63b37be390d7a95e"
+    }
+  ]
+}

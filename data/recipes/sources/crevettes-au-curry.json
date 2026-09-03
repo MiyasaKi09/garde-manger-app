@@ -1,0 +1,212 @@
+{
+  "dish": "Crevettes au curry",
+  "slug": "crevettes-au-curry",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_crevettes-au-curry-express_12645.aspx",
+      "site": "marmiton.org",
+      "nom": "Crevettes au curry express : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "300 g de crevettes roses",
+        "2 cuillères à soupe de crème",
+        "1 cuillère à café de curry",
+        "2 cuillères à café d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 187,
+        "sha256": "8fa4536d071523d0"
+      },
+      "sha256_page": "de5c7fc0aa256e64"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_curry-de-crevettes-sud-de-l-inde_14937.aspx",
+      "site": "marmiton.org",
+      "nom": "Curry de crevettes (Sud de l'Inde) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "500 g de crevettes cuites",
+        "20 g de beurre",
+        "1 oignon émincé",
+        "2 gousses d'ail écrasées",
+        "1 cuillère à soupe de curry",
+        "250 g de tomates fraîches coupées en morceaux",
+        "2 cuillères à soupe de jus de citron"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 464,
+        "sha256": "a5772cd2e1a631ee"
+      },
+      "sha256_page": "b385521120ec4a68"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_risotto-de-crevettes-au-curry_166609.aspx",
+      "site": "marmiton.org",
+      "nom": "Risotto de crevettes au curry : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "1 oignon",
+        "300 g de crevettes",
+        "10 champignons de Paris",
+        "4 tomates",
+        "175 g de riz pour risotto à risotto",
+        "2 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "beurre demi-sel",
+        "1 cuillère à soupe de crème",
+        "1 curry",
+        "1 bouillon de volaille",
+        "1 verre de vin blanc",
+        "0.5 basilic moulu sec"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 778,
+        "sha256": "952d3f9153b29a7e"
+      },
+      "sha256_page": "5497ff114f1abd34"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lesfillesatable-com/recettes/curry-de-crevettes-a-la-mangue-77ede7dc-fb14-4fd8-8000-6e2bdda40bac",
+      "site": "chefsimon.com",
+      "nom": "Curry de crevettes à la mangue",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "500 g de crevettes crues",
+        "250 g de nouilles de riz",
+        "50 cl de lait de coco",
+        "15 cl de bouillon de légumes",
+        "1 cuil. à soupe de curry de Madras en poudre",
+        "1 cuil. à café de gingembre en poudre",
+        "1 bâton de citronnelle",
+        "1 échalote",
+        "1/2 citron vert",
+        "1/2 bouquet de basilic thaï",
+        "1/2 bouquet de coriandre",
+        "huile de tournesol",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 842,
+        "sha256": "95052305542d13ed"
+      },
+      "sha256_page": "934d6e9dcaefcef7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/curry-de-crevettes-aux-courgettes",
+      "site": "chefsimon.com",
+      "nom": "Curry de crevettes aux courgettes",
+      "portions": "5 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "500 g de grosses crevettes semi-décortiquées (surgelées)",
+        "1 oignon rouge",
+        "3 courgettes",
+        "2 poivrons rouges",
+        "2 cm de gingembre",
+        "20 cl de vin blanc sec",
+        "20 cl de lait de coco",
+        "3 cs de curry en poudre",
+        "3 cs de curry en poudre",
+        "2 cs d’huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1243,
+        "sha256": "7bd0927ffe401013"
+      },
+      "sha256_page": "5b1bd36d870162fe"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/riz-curry-coco-aux-crevettes",
+      "site": "chefsimon.com",
+      "nom": "Riz curry coco aux crevettes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "300g de riz parfumé",
+        "20cl de lait de coco",
+        "80cl d'eau (ou bouillon de légumes)",
+        "400g de grosses crevettes",
+        "2cc de curry doux en poudre",
+        "1cc de curry balti en poudre",
+        "1cc de cumin en poudre",
+        "1cc de curcuma en poudre",
+        "Sel et poivre, huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 434,
+        "sha256": "02d706ff9b831bab"
+      },
+      "sha256_page": "036b2930cb36e162"
+    },
+    {
+      "url": "https://www.750g.com/curry-de-crevettes-au-lait-de-coco-r201803.htm",
+      "site": "750g.com",
+      "nom": "Curry de crevettes au lait de coco",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "400 g de crevettes  décortiquées cuites",
+        "40 cl de lait de coco  Suzi Wan",
+        "100 g de vermicelles de soja  Suzi Wan",
+        "1 oignon  haché",
+        "30 g de beurre",
+        "1 gousse d'ail  hachée",
+        "2 c. à s. de coriandre  hachée",
+        "1 c. à s. de nuoc-mâm  Suzi Wan",
+        "1 c. à s. de curry en poudre",
+        "1 c. à c. de curcuma",
+        "Poivre",
+        "Sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 932,
+        "sha256": "c3d128beef09087b"
+      },
+      "sha256_page": "4db8a64002e6942a"
+    },
+    {
+      "url": "https://www.750g.com/crevettes-au-curry-et-coco-r2037.htm",
+      "site": "750g.com",
+      "nom": "Crevettes au curry et coco",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "800 g de crevettes  crues",
+        "20 cl de lait de coco",
+        "1 oignon",
+        "1 gousse d'ail",
+        "Beurre",
+        "1 c. à c. de curry",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 471,
+        "sha256": "780b06fcce093bb7"
+      },
+      "sha256_page": "ddb2b3f2500b558f"
+    }
+  ]
+}

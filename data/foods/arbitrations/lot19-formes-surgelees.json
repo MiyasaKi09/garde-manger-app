@@ -1,0 +1,231 @@
+{
+  "lot": "lot19 — le surgelé, absent du catalogue alors que le garde-manger le gère déjà",
+  "contexte": "Le garde-manger sait tenir un lot congelé de bout en bout : storage_method admet 'freezer', inventory_lots porte ses dates, et une session de cuisine sait congeler sa production. Ce qui manquait était en AMONT — le catalogue alimentaire ne connaissait qu'une seule forme surgelée, « Petit pois surgelé » (20084). Conséquence directe : aucune recette ne pouvait s'appuyer sur un produit surgelé, alors que c'est précisément le levier d'un plat de semaine rapide. Un sachet d'épinards en branches ne se lave pas, ne s'équeute pas et ne s'égoutte pas ; un filet de merlu surgelé ne se pare pas. Ce lot ouvre 25 formes, toutes adossées à une entrée EXACTE du classeur Ciqual 2020 — celui dont le catalogue est réellement issu.\n\nLE PIÈGE DU CLASSEUR, VÉRIFIÉ ET CONSIGNÉ. Le dépôt porte deux Ciqual : data/foods/ciqual-reference/ contient des shards CIQUAL 2025 (corpus MYKO-CIQUAL-REF-2025-1, statut « candidate »), alors que le catalogue et l'applicateur lisent data/sources/raw/ciqual_2020_FR_2020-07-07.xls.gz. Sur le seul périmètre du surgelé, la comparaison des deux millésimes a été refaite ici et rend trois écarts qui auraient chacun coûté un aller-retour :\n  1. QUATRE codes n'existent QUE dans les shards 2025 — 4049 « Croquette de pomme de terre, surgelée, à cuire », 4051 « Poêlée de pommes de terre à la sarladaise…, surgelée, à cuire », 4052 « Potatoes ou wedges…, surgelées, à cuire », 4053 « Pomme de terre grenaille, préfrite, surgelée, à cuire ». Un code lu dans les shards et recopié dans une décision serait refusé par apply-recipe-food-mappings.mjs avec « code Ciqual inexistant », et le refus aurait l'air d'une faute de frappe alors qu'il dit la vérité : ce code n'existe pas dans la base du catalogue.\n  2. NEUF codes surgelés du classeur 2020 ont DISPARU en 2025 : 26054, 20121, 20122, 20205, 20207, 20209, 20215, 20536 « Fève, fraîche, surgelée » et 23421 « Pâte feuilletée, surgelée, crue ». Ils restent parfaitement valides aujourd'hui — le catalogue est bâti sur 2020 — mais toute forme qui s'y adosse devra être réarbitrée le jour de la bascule 2025. Deux décisions de ce lot en tiennent compte et le disent (fève écartée, pâte feuilletée déplacée sur 23425).\n  3. Des LIBELLÉS changent sans changer de code, et l'un d'eux est instructif : 20083 s'appelle « Épinard, surgelé, cru » en 2020 et « Epinard, haché ou purée ou en branches, surgelé, cru » en 2025. Le libellé 2025 dit explicitement ce que le libellé 2020 taisait — l'ANSES ne sépare pas les branches du haché. C'est l'argument qui interdit de créer deux formes là où la mesure n'en distingue qu'une (cf. « Épinard surgelé » ci-dessous).\nLe registre reconciliation-2020.json chiffre déjà l'écart d'ensemble (481 ajouts, 182 retraits, 665 renommages) ; ce lot n'en documente que la tranche surgelée, celle qu'il emploie.\n\nLA CONVENTION DE NOMMAGE suit la seule forme surgelée préexistante, « Petit pois surgelé » : le nom du produit tel qu'il est écrit sur le sachet, suivi de « surgelé » accordé. Le mot « cru » n'est ajouté QUE lorsque le rayon vend aussi la version cuite et qu'il faut les départager — la crevette et les fruits de mer. Pour tout le reste, le surgelé de rayon est cru par construction, et l'écrire alourdirait le libellé sans lever d'ambiguïté.\n\nTOUTES LES DÉCISIONS SONT EN CONFIANCE A : aucune n'est un proxy. Chaque forme reprend une entrée dont le libellé Ciqual désigne le même aliment DANS LE MÊME ÉTAT DE CONSERVATION — c'est tout l'intérêt : l'ANSES mesure séparément le frais et le surgelé, et les valeurs diffèrent réellement (épinard 24 kcal frais contre 19,5 surgelé, haricot vert 25,9 contre 34, poireau 32,3 contre 26,7). Prendre le frais pour le surgelé aurait été un proxy silencieux là où la mesure existe. Le générateur ramènera ces formes à B, plafond qu'il applique à toute forme sans override ; A dit ici que l'entrée est la bonne, pas que la mesure est meilleure qu'une autre.\n\nCE QUI A ÉTÉ REFUSÉ, ET POURQUOI — la liste est longue à dessein, parce qu'un catalogue se juge autant sur ce qu'il écarte.\n  · LES POMMES DE TERRE SURGELÉES (4013, 4020, 4021, 4025, 4027, 4030, 4032, 4034, 4035, 4042, 4043, 4044, 4045, 4046 en 2020, plus les quatre codes 2025 cités plus haut). Ce sont des produits préfrits ou pré-façonnés, dont la valeur nutritionnelle est dominée par l'huile de friture ajoutée en usine (frites préfrites : 150 à 230 kcal contre 80 pour la pomme de terre crue). Ils ne sont pas une base de cuisson rapide, ils sont un plat à réchauffer — et le corpus a déjà « Pomme de terre crue » pour ce qu'on cuisine.\n  · LES POÊLÉES ASSAISONNÉES (20262, 20273, 20274, 20498). Le classeur les range en « plats composés » et resolveCategory les envoie sur preparations_culinaires. Elles portent une matière grasse et un assaisonnement que le libellé ne détaille pas : 20262 mesure 1,77 g de lipides pour 100 g quand un mélange de légumes nus en porte 0,1 à 0,3. On ne peut pas dire à l'utilisateur ce qu'il mange.\n  · LE MÉLANGE DE LÉGUMES 20101 « Légumes, mélange surgelé, crus », pour la même raison et de façon plus nette : 65,1 kcal et 2,65 g de lipides pour 100 g. Un mélange de légumes crus n'a pas 2,65 g de lipides ; quelque chose est ajouté, et le libellé ne dit pas quoi. Les trois mélanges retenus ci-dessous (ratatouille 0,089 g, couscous 0,7 g, julienne 0,25 g) sont cohérents avec des légumes nus.\n  · LES ENTRÉES « CUITES » (20071, 20121, 20122, 20124, 20205, 20207, 20209, 20215, 20271, 20542, 20543). Une recette achète le sachet cru et le cuit elle-même ; adosser la forme à l'entrée cuite compterait la cuisson deux fois. C'est la même règle que pour le frais, où le corpus emploie « Carotte crue » et non « Carotte cuite ».\n  · LES PRÉLÈVEMENTS DE MARTINIQUE (20807, 20815, 20819, 20822, 20831). Ce sont des échantillons régionaux d'aliments — christophine, giraumon, gombo, patate douce — qui ne décrivent pas ce qu'on trouve au rayon surgelé en métropole, et dont l'état (« blanchi », « cuit à la vapeur ») n'est pas celui d'un produit à cuisiner.\n  · LES PLATS DE POISSON (26029 « Poisson pané, surgelé, cru », 26054 « Poisson en sauce, surgelé »). Un plat, pas un ingrédient — et 26054 disparaît d'ailleurs en 2025.\n  · 20214 « Petits pois et carottes, surgelés, crus » et 20267 « Printanière de légumes ». Deux mélanges dont chaque composant existe déjà séparément au catalogue après ce lot : les ouvrir dupliquerait un concept que le planificateur ne saurait pas rapprocher de ses parties. Le cas de la ratatouille et du couscous est différent — ce sont des mélanges IDENTIFIÉS par un plat, pas la simple juxtaposition de deux légumes.\n  · 20536 « Fève, fraîche, surgelée ». Le code est valide dans le classeur 2020, mais il disparaît en 2025 : ouvrir aujourd'hui une forme dont la référence source s'éteint à la prochaine bascule, c'est programmer un arbitrage à refaire pour un aliment qui n'est pas un pilier du repas de semaine. Écarté par prudence, et non par doute sur la donnée.\n  · 26233 « Merlu blanc du Cap, surgelé, cru ». C'est bien l'espèce que les relevés de prix décrivent (Merluccius capensis), mais ouvrir « Merlu blanc du Cap surgelé » À CÔTÉ de « Filet de merlu surgelé » scinderait un concept culinaire unique en deux formes que le rédacteur devrait départager sans critère : 82 kcal / 15,1 P / 2,4 L contre 78 / 16,1 / 1,52. Une seule forme, et l'écart d'espèce se déclare du côté du prix, où il est visible.\n  · 20234 « Navet, surgelé, cru » et 20263 « Légumes pour potages, surgelés, crus ». Écartés faute d'emploi : le navet surgelé est couvert par « Légumes pour couscous surgelés » là où il sert, et les légumes pour potage font double emploi avec la julienne. Deux formes qu'aucune recette ne réclamerait sont deux lignes de plus à maintenir.\n  · LES FRUITS ROUGES AUTRES que framboise, myrtille et mûre. Le classeur 2020 n'a pas d'entrée surgelée pour la fraise, la groseille ni le cassis. Une fraise surgelée adossée à « Fraise, crue » serait un proxy non signalé sur un aliment dont la congélation change l'eau libre ; on préfère l'absence.\n\nORDRE D'EXÉCUTION, à ne pas inverser. Le catalogue ne porte que les formes qu'une RECETTE emploie déjà (build-recipe-food-corpus.mjs construit `usedBy` depuis data/recipes/corpus-v3.json). Ces 25 mappings ne feront donc pas apparaître 25 formes au catalogue le jour où ils sont versés : ils rendent les formes ARBITRÉES, ce qui suffit à validate-recipe-batch.mjs pour accepter « avec réserve » une recette qui les emploie (variable `arbitreesRecemment`). L'enchaînement complet est celui du README : rédaction → validate-recipe-batch → merge-recipe-batch → build-recipe-food-corpus → export-authoring-vocabulary, et c'est seulement au terme de cette chaîne que les formes entrent au catalogue, au vocabulaire d'écriture, et deviennent chiffrables par le référentiel de prix.",
+  "decisions": [
+    {
+      "cle": "epinard surgele",
+      "forme": "Épinard surgelé",
+      "verdict": "mapper",
+      "alim_code": "20083",
+      "nom_ciqual": "Épinard, surgelé, cru",
+      "confidence": "A",
+      "note": "Correspondance exacte : l'ANSES mesure l'épinard surgelé cru pour lui-même. 19,5 kcal, P 2,87 / G 0,89 / L 0,49, fibres 2,7 — macros complètes et toutes mesurées, aucune borne, aucune fermeture d'Atwater. L'écart avec « Épinard frais » (20059, 24 kcal) est réel et vient du blanchiment : c'est précisément pourquoi on n'adosse pas le surgelé au frais. UNE SEULE FORME POUR LES BRANCHES ET LE HACHÉ, et le classeur le dit lui-même : le libellé 2025 du même code 20083 devient « Epinard, haché ou purée ou en branches, surgelé, cru ». L'ANSES ne les sépare pas, donc les séparer ici fabriquerait une distinction que la mesure ne porte pas — et les graphes de diversité du planificateur ne rapprochent pas deux synonymes."
+    },
+    {
+      "cle": "haricot vert surgele",
+      "forme": "Haricot vert surgelé",
+      "verdict": "mapper",
+      "alim_code": "20070",
+      "nom_ciqual": "Haricot vert, surgelé, cru",
+      "confidence": "A",
+      "note": "Correspondance exacte. 34 kcal, P 1,97 / G 4,35 / L 0,17, fibres 3,68, énergie mesurée. Notable : le haricot vert surgelé est plus énergétique que le frais (20061, 25,9 kcal), l'inverse de l'épinard. Prendre l'un pour l'autre se serait donc trompé dans les deux sens selon le légume, ce qu'aucun contrôle de forme n'aurait montré. Le sachet est équeuté : c'est ce qui en fait un légume de semaine."
+    },
+    {
+      "cle": "poireau surgele",
+      "forme": "Poireau surgelé",
+      "verdict": "mapper",
+      "alim_code": "20236",
+      "nom_ciqual": "Poireau, surgelé, cru",
+      "confidence": "A",
+      "note": "Correspondance exacte. 26,7 kcal, P 1,42 / G 3,35 / L 0,29, fibres 2,55, énergie mesurée. Le poireau émincé surgelé est vendu en rondelles déjà lavées — le vert le plus dur et la terre entre les feuilles sont retirés en usine. Contre « Poireau cru » (20039, 32,3 kcal), l'écart de 17 % justifie à lui seul l'entrée dédiée."
+    },
+    {
+      "cle": "brocoli surgele",
+      "forme": "Brocoli surgelé",
+      "verdict": "mapper",
+      "alim_code": "20204",
+      "nom_ciqual": "Brocoli, surgelé, cru",
+      "confidence": "A",
+      "note": "Correspondance exacte. 21,4 kcal, P 2,79 / G 1,56 / L 0,44, fibres 2,77. L'énergie est absente du classeur pour ce code et vient du CSV d'import (data/ciqual_nutrition_import.csv), comme pour la plupart des légumes surgelés : c'est la lecture que fait déjà le générateur, et elle est identique à celle de « Brocoli cru » (20057), dont l'énergie vient de la même colonne. Vendu en fleurettes, donc sans trognon à parer."
+    },
+    {
+      "cle": "chou fleur surgele",
+      "forme": "Chou-fleur surgelé",
+      "verdict": "mapper",
+      "alim_code": "20082",
+      "nom_ciqual": "Chou-fleur, surgelé, cru",
+      "confidence": "A",
+      "note": "Correspondance exacte. 22,2 kcal, P 2,09 / G 2,64 / L 0,37, fibres 1,82. Le sibling frais du catalogue est « Chou-fleur frais » (20016) : même concept, autre état de conservation, deux entrées distinctes chez l'ANSES. Vendu en fleurettes."
+    },
+    {
+      "cle": "champignon de paris surgele",
+      "forme": "Champignon de Paris surgelé",
+      "verdict": "mapper",
+      "alim_code": "20228",
+      "nom_ciqual": "Champignon de Paris ou champignon de couche, surgelé, cru",
+      "confidence": "A",
+      "note": "Correspondance exacte, et le libellé nomme l'espèce, ce qui compte : le rayon surgelé vend aussi des « mélanges forestiers » et des cèpes, qui ne sont pas cet aliment. 15,9 kcal, P 1,8 / G 0,83 / L 0,25, fibres 1,97, énergie mesurée. Le sibling frais est « Champignon de Paris frais » (20056, 28 kcal) — l'écart est important, le champignon surgelé rendant beaucoup d'eau."
+    },
+    {
+      "cle": "fond d artichaut surgele",
+      "forme": "Fond d'artichaut surgelé",
+      "verdict": "mapper",
+      "alim_code": "20232",
+      "nom_ciqual": "Artichaut, fond, surgelé, cru",
+      "confidence": "A",
+      "note": "Correspondance exacte, et c'est la forme surgelée dont l'écart de travail avec le frais est le plus grand du lot : tourner un artichaut pour en tirer le fond demande de le cuire, d'ôter les feuilles et le foin, et laisse moins d'un cinquième du poids acheté. Le sachet ne contient que le fond. 44,5 kcal, P 2,08 / G 8,09 / L 0,43, fibres 7,54. Le catalogue ne porte aucune forme fraîche d'artichaut : cette entrée ne dédouble donc rien."
+    },
+    {
+      "cle": "carotte surgelee",
+      "forme": "Carotte surgelée",
+      "verdict": "mapper",
+      "alim_code": "20208",
+      "nom_ciqual": "Carotte, surgelée, crue",
+      "confidence": "A",
+      "note": "Correspondance exacte. 24,9 kcal, P 0,63 / G 4,99 / L 0,27, fibres 2,76. Écart marqué avec « Carotte crue » (20009, 40,2 kcal) : la carotte surgelée est blanchie, ce qui lessive une partie des sucres. Vendue en rondelles ou en dés, déjà épluchée."
+    },
+    {
+      "cle": "oignon surgele",
+      "forme": "Oignon surgelé",
+      "verdict": "mapper",
+      "alim_code": "20235",
+      "nom_ciqual": "Oignon, surgelé, cru",
+      "confidence": "A",
+      "note": "Correspondance exacte. 26,6 kcal, P 1 / G 5,39 / L 0,12, fibres 2,65. L'oignon émincé surgelé est le raccourci de la base aromatique : il supprime l'épluchage et l'émincé, qui sont à eux seuls le quart du temps de préparation d'un plat mijoté. Le classeur ne distingue pas la variété au surgelé, là où il sépare « Oignon jaune cru », « Oignon rouge cru » et « Oignon blanc cru » au frais ; une seule forme donc, et pas trois."
+    },
+    {
+      "cle": "courgette surgelee",
+      "forme": "Courgette surgelée",
+      "verdict": "mapper",
+      "alim_code": "20230",
+      "nom_ciqual": "Courgette, pulpe et peau, surgelée, crue",
+      "confidence": "A",
+      "note": "Correspondance exacte, et le même découpage « pulpe et peau » que le sibling frais du catalogue, « Courgette fraîche » (20020, « Courgette, pulpe et peau, crue ») : les deux formes décrivent donc bien la même partie de l'aliment, ce qui rend leur comparaison honnête. 14,7 kcal, P 1,19 / G 2,18 / L 0,14, fibres 1,48."
+    },
+    {
+      "cle": "chou de bruxelles surgele",
+      "forme": "Chou de Bruxelles surgelé",
+      "verdict": "mapper",
+      "alim_code": "20206",
+      "nom_ciqual": "Chou de Bruxelles, surgelé, cru",
+      "confidence": "A",
+      "note": "Correspondance exacte. 34,7 kcal, P 3,43 / G 4,5 / L 0,33, fibres 4,28. Le catalogue ne porte aucun chou de Bruxelles frais : l'entrée ouvre un légume, elle n'en dédouble pas un. Vendu paré, ce qui est l'essentiel du travail sur ce légume."
+    },
+    {
+      "cle": "mais doux surgele",
+      "forme": "Maïs doux surgelé",
+      "verdict": "mapper",
+      "alim_code": "20233",
+      "nom_ciqual": "Maïs doux, surgelé, cru",
+      "confidence": "A",
+      "note": "Correspondance exacte, à ne pas confondre avec 20108 « Maïs doux, en épis, surgelé, cru », qui est l'épi entier et se pèserait rafle comprise. 99,3 kcal, P 3,28 / G 19,8 / L 0,78, fibres 2,8 : c'est, de loin, le légume le plus énergétique du lot, et le seul qui compte comme féculent dans un plat."
+    },
+    {
+      "cle": "haricot beurre surgele",
+      "forme": "Haricot beurre surgelé",
+      "verdict": "mapper",
+      "alim_code": "20203",
+      "nom_ciqual": "Haricot beurre, surgelé, cru",
+      "confidence": "A",
+      "note": "Correspondance exacte. 29,1 kcal, P 2 / G 4,9 / L 0,17, fibres 2,33. Forme distincte du haricot vert et non un synonyme : l'ANSES les mesure séparément (34 contre 29,1 kcal), et le rayon les vend séparément comme en mélange. C'est aussi ce qui permet d'écarter proprement, côté prix, les relevés portant sur le mélange vert + beurre."
+    },
+    {
+      "cle": "julienne de legumes surgelee",
+      "forme": "Julienne de légumes surgelée",
+      "verdict": "mapper",
+      "alim_code": "20265",
+      "nom_ciqual": "Julienne ou brunoise de légumes, surgelée, crue",
+      "confidence": "A",
+      "note": "Correspondance exacte. 23,3 kcal, P 1,19 / G 4,08 / L 0,25, fibres 2,28 — 0,25 g de lipides, cohérent avec des légumes nus, contrairement au « mélange surgelé » 20101 (2,65 g) qui a été écarté pour cette raison. La julienne est le raccourci de la garniture aromatique : elle remplace un taillage qui est le poste de temps le plus lourd d'un fond de sauce."
+    },
+    {
+      "cle": "legumes pour ratatouille surgeles",
+      "forme": "Légumes pour ratatouille surgelés",
+      "verdict": "mapper",
+      "alim_code": "20266",
+      "nom_ciqual": "Légumes pour ratatouille, surgelés",
+      "confidence": "A",
+      "note": "Correspondance exacte. 17,8 kcal, P 1,01 / G 3,23 / L 0,089, fibres 1,67. Les 0,089 g de lipides confirment que le sachet ne porte ni huile ni assaisonnement : c'est un mélange de légumes crus taillés (aubergine, courgette, poivron, tomate, oignon), pas une ratatouille cuisinée — celle-ci est un plat composé que le classeur mesure ailleurs. Mélange retenu, contrairement à « Petits pois et carottes », parce qu'il est identifié par un plat et non par la juxtaposition de deux légumes déjà présents au catalogue."
+    },
+    {
+      "cle": "legumes pour couscous surgeles",
+      "forme": "Légumes pour couscous surgelés",
+      "verdict": "mapper",
+      "alim_code": "20496",
+      "nom_ciqual": "Légumes pour couscous, surgelés, crus",
+      "confidence": "A",
+      "note": "Correspondance exacte. 46,5 kcal, P 2,05 / G 6,75 / L 0,7, fibres 2,53, énergie mesurée. Même raisonnement que la ratatouille : un mélange identifié par un plat, sans matière grasse ajoutée. Il porte le navet, le chou et le potiron, ce qui rend inutile une forme « Navet surgelé » séparée."
+    },
+    {
+      "cle": "haricot flageolet surgele",
+      "forme": "Haricot flageolet surgelé",
+      "verdict": "mapper",
+      "alim_code": "20537",
+      "nom_ciqual": "Haricot flageolet, surgelé",
+      "confidence": "A",
+      "note": "Correspondance exacte. 146 kcal, P 9,32 / G 25,6 / L 0,7, fibres 4,4. Troisième état d'un même aliment déjà présent au catalogue sous deux formes — « Haricot flageolet sec » et « Haricot flageolet appertisé, égoutté » — et le seul qui donne un flageolet fondant sans trempage ni longue cuisson. Le libellé 2025 précise « frais, surgelé, cru » sans changer de code : la référence survit à la bascule."
+    },
+    {
+      "cle": "framboise surgelee",
+      "forme": "Framboise surgelée",
+      "verdict": "mapper",
+      "alim_code": "13136",
+      "nom_ciqual": "Framboise, surgelée, crue",
+      "confidence": "A",
+      "note": "Correspondance exacte. 37,6 kcal, P 1,16 / G 6,43 / L 0,8, fibres 6,05. La framboise surgelée est le seul fruit rouge disponible toute l'année à prix stable, ce qui en fait le dessert de semaine par défaut. Le catalogue ne porte aucune framboise fraîche : l'entrée ouvre un fruit."
+    },
+    {
+      "cle": "myrtille surgelee",
+      "forme": "Myrtille surgelée",
+      "verdict": "mapper",
+      "alim_code": "13132",
+      "nom_ciqual": "Myrtille, surgelée, crue",
+      "confidence": "A",
+      "note": "Correspondance exacte. 42,2 kcal, P 0,68 / G 8,9 / L 0,43, fibres 2,81."
+    },
+    {
+      "cle": "mure surgelee",
+      "forme": "Mûre surgelée",
+      "verdict": "mapper",
+      "alim_code": "13150",
+      "nom_ciqual": "Mûre (de ronce), surgelée, crue",
+      "confidence": "A",
+      "note": "Correspondance exacte. 51,5 kcal, P 1,22 / G 10,7 / L 0,42, fibres 5. Le classeur précise « de ronce » (Rubus fruticosus) : c'est la mûre du fruit rouge, et non celle du mûrier. Le libellé retenu ne le répète pas parce qu'aucune autre mûre n'existe au catalogue, mais la précision est ici pour le relecteur."
+    },
+    {
+      "cle": "filet de merlu surgele",
+      "forme": "Filet de merlu surgelé",
+      "verdict": "mapper",
+      "alim_code": "26048",
+      "nom_ciqual": "Merlu, filet, surgelé, cru",
+      "confidence": "A",
+      "note": "Correspondance exacte, filet compris — le libellé Ciqual porte lui-même le mot. 82 kcal, P 15,1 / L 2,4, fibres 0 ; les glucides sont au statut « traces » et la fermeture d'Atwater les clôt à 0, comme pour tous les poissons du catalogue. Le filet surgelé est le poisson de semaine par excellence : ni écaillage, ni levée, ni arêtes. ÉCARTÉ 26233 « Merlu blanc du Cap, surgelé, cru » : c'est une autre espèce (Merluccius capensis contre Merluccius merluccius) et c'est celle que le rayon vend le plus, mais deux formes de merlu à 4 kcal d'écart obligeraient le rédacteur à choisir sans critère. L'espèce se déclare du côté du prix, où elle est visible et documentée."
+    },
+    {
+      "cle": "lieu noir surgele",
+      "forme": "Lieu noir surgelé",
+      "verdict": "mapper",
+      "alim_code": "26047",
+      "nom_ciqual": "Lieu noir, surgelé, cru",
+      "confidence": "A",
+      "note": "Correspondance exacte. 82,4 kcal, P 19,8 / L 0,37, glucides clos à 0 par Atwater depuis un statut « traces ». Poisson maigre distinct du merlu et du colin d'Alaska : le classeur mesure séparément 26047 « Lieu noir » (Pollachius virens) et 26006 « Lieu ou colin d'Alaska, cru » (Gadus chalcogrammus), et le rayon les étiquette distinctement parce que la réglementation l'impose. Le colin d'Alaska n'a PAS d'entrée surgelée au classeur 2020 : lui ouvrir une forme aurait obligé à l'adosser à l'entrée crue non surgelée, donc à un proxy de confiance C — non publiable, et silencieux sur la raison. On préfère l'absence."
+    },
+    {
+      "cle": "crevette crue surgelee",
+      "forme": "Crevette crue surgelée",
+      "verdict": "mapper",
+      "alim_code": "10038",
+      "nom_ciqual": "Crevette, surgelée, crue",
+      "confidence": "A",
+      "note": "Correspondance exacte. 105 kcal, P 23,4 / G 0,74 / L 0,9. Les fibres sont lues sur une borne supérieure du classeur (statut « inférieur à 0,5 g ») : c'est une valeur majorée, pas une absence, et le générateur le consignera dans bounded_from_ciqual. Le mot « crue » est dans le libellé parce que le rayon vend les deux — la crevette cuite rose est un autre produit, et une recette qui la ferait sauter deux minutes la cuirait deux fois. Le catalogue porte déjà « Crevette crue décortiquée » et « Crevette crue entière » au frais ; cette forme est leur troisième état, pas leur doublon."
+    },
+    {
+      "cle": "fruits de mer cuits surgeles",
+      "forme": "Fruits de mer cuits surgelés",
+      "verdict": "mapper",
+      "alim_code": "10080",
+      "nom_ciqual": "Fruits de mer, cuits, surgelés",
+      "confidence": "A",
+      "note": "Correspondance exacte. 79,5 kcal, P 13,5 / G 2,83 / L 1,57, énergie mesurée. Seule entrée du lot volontairement adossée à un état CUIT, et pour une raison qui tient au produit et non à la commodité : le cocktail de fruits de mer surgelé est vendu cuit, il n'existe pas cru au rayon, et une recette ne fait que le réchauffer. L'adosser à une entrée crue aurait décrit un produit qui ne se vend pas."
+    },
+    {
+      "cle": "pate feuilletee surgelee",
+      "forme": "Pâte feuilletée surgelée",
+      "verdict": "mapper",
+      "alim_code": "23425",
+      "nom_ciqual": "Pâte feuilletée pur beurre, surgelée crue",
+      "confidence": "A",
+      "note": "396 kcal, P 5,47 / G 35,3 / L 25,8, fibres 1,4, toutes mesurées. DEUX CODES ÉTAIENT POSSIBLES et le choix se justifie deux fois. 23421 « Pâte feuilletée, surgelée, crue » colle mieux au libellé retenu, mais il DISPARAÎT du classeur 2025 : l'ouvrir programmerait un réarbitrage. 23425 « pur beurre » survit à la bascule ET reprend exactement la convention déjà en place au catalogue, où « Pâte feuilletée crue » est adossée à 23424 « Pâte feuilletée pur beurre, crue » — les deux formes, fraîche et surgelée, décrivent donc la même pâte dans deux états, ce qui est la seule façon de les comparer honnêtement. Le mot « pur beurre » ne figure pas au libellé de la forme pour la même raison qu'il ne figure pas à celui de sa sœur fraîche. Ciqual ne classe pas les pâtes à tarte : la catégorie du catalogue restera nulle, comme pour les trois pâtes déjà présentes."
+    }
+  ]
+}

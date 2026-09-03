@@ -1,0 +1,178 @@
+{
+  "dish": "Omelette aux épinards",
+  "slug": "omelette-aux-epinards",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-aux-epinards-et-mozzarella_30264.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette aux épinards et mozzarella : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 oignon et sa verdure",
+        "4 oeufs",
+        "250 g d'épinards en branche",
+        "50 g de mozzarella",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 365,
+        "sha256": "1c9c1c8d202e3fa7"
+      },
+      "sha256_page": "414ad563ae5845e2"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-epinards-et-chevre_336297.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette épinards et chèvre : la meilleure recette",
+      "portions": "4 Personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "10 oeufs",
+        "1 oignon jaune",
+        "400 g d'épinards fraîches à cuire",
+        "4 cuillères à soupe d'huile d'olive",
+        "5 cl de lait",
+        "50 g de gruyère râpé",
+        "4 rondelles de chèvres en bûche",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 733,
+        "sha256": "5d5c98a853c85e1d"
+      },
+      "sha256_page": "cb4d4adcbfec1d15"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-epinards-saumon-fume_46567.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette épinards-saumon fumé : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 oeufs",
+        "200 g d'épinards hachés",
+        "200 g de saumon fumé",
+        "50 g de gruyère râpé",
+        "poivre",
+        "sel",
+        "muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 436,
+        "sha256": "47d92b6fa2ae327c"
+      },
+      "sha256_page": "5a063bf2919dded5"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/kilometre-0/recettes/omelette-aux-epinards-et-a-la-fourme-d-ambert-au-four",
+      "site": "chefsimon.com",
+      "nom": "Omelette aux épinards et à la fourme d'Ambert au four",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "1 kg d' épinards",
+        "6 oeufs",
+        "15 cl de lait entier",
+        "150 g de fourme d'Ambert",
+        "1 cc de curry",
+        "sel et poivre",
+        "1 morceau de chorizo"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "bfcc1beed6b8e3f1"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/recettes-de-clairette/recettes/omelette-roulee-epinards-et-tomates-sechees",
+      "site": "chefsimon.com",
+      "nom": "Omelette roulée épinards et tomates séchées",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "6 œufs",
+        "400 g de feuilles d'épinards frais",
+        "1 gousse d'ail",
+        "80 g de tomates séchées à l'huile",
+        "quelques brins de persil plat",
+        "200 g de fromage de chèvre frais",
+        "30 g de pignons de pin",
+        "un filet d'huile d'olive",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "5bdae6fb0b8774c1"
+    },
+    {
+      "url": "https://www.750g.com/omelette-aux-epinards-r26411.htm",
+      "site": "750g.com",
+      "nom": "Omelette aux épinards",
+      "portions": "1 personne",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 càc de farine de pois chiches (un peu moins d'une petite cuillère)",
+        "2 càc de sbrinz ou parmesan râpé",
+        "Sel au piment d'Espelette",
+        "Fromage à raclette coupé en fines tranches (ou autre fromage fondant)",
+        "Demiverre de lait",
+        "1 œuf",
+        "Un filet d'huile d'olive",
+        "Un petit morceau de beurre",
+        "Quelques grains de coriandre",
+        "De moutarde",
+        "50 gr env. de jeunes pousses d'épinards",
+        "Demioignon rouge (petite)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 710,
+        "sha256": "bf5568bec7f69a0e"
+      },
+      "sha256_page": "9f96f18128ce5c30"
+    },
+    {
+      "url": "https://www.750g.com/omelette-roulee-saumon-epinards-r31711.htm",
+      "site": "750g.com",
+      "nom": "Omelette roulée saumon épinards",
+      "portions": "8 personnes",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 poignée d'epinard",
+        "Sel ou sel fin",
+        "Poivre",
+        "1 citron jaune",
+        "5 tranches de saumon fumé",
+        "1 pincée de fines herbes",
+        "6 oeufs",
+        "20 cl de crème fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 757,
+        "sha256": "5f3580090bae6324"
+      },
+      "sha256_page": "acd7e48f42f3cd70"
+    }
+  ]
+}

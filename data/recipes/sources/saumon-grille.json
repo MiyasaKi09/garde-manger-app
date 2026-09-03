@@ -1,0 +1,170 @@
+{
+  "dish": "Saumon grillé",
+  "slug": "saumon-grille",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pave-de-saumon-grille-au-miel-et-aux-baies-roses_105820.aspx",
+      "site": "marmiton.org",
+      "nom": "Pavé de saumon grillé au miel et aux baies roses : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "2 pavés de saumon",
+        "3 cuillères à soupe de miel",
+        "1 cuillère à soupe de baies roses concassées",
+        "2 gousses d'ail",
+        "1 oignon",
+        "1 cuillère à soupe de moutarde",
+        "huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 423,
+        "sha256": "78e8cdb490c13150"
+      },
+      "sha256_page": "8db38aee4f5efd5b"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_paves-de-saumon-grilles-sauce-aux-epinards_30009.aspx",
+      "site": "marmiton.org",
+      "nom": "Pavés de saumon grillés sauce aux épinards : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 pavés de saumon (ou truite saumonée, moins chère)",
+        "250 g d'épinards frais en branche",
+        "2 échalotes",
+        "50 cl de crème fraîche liquide",
+        "20 cl de vin blanc de table"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 478,
+        "sha256": "7fe08178f72e88e5"
+      },
+      "sha256_page": "3414858795da691e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_saumon-grille-facile_313445.aspx",
+      "site": "marmiton.org",
+      "nom": "Saumon grillé facile : la meilleure recette",
+      "portions": "4 Personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 pavés de saumon",
+        "3 échalotes",
+        "20 cl de soja cuisine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 410,
+        "sha256": "3663c3885cdea491"
+      },
+      "sha256_page": "c7f909868fcfafac"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/juste-pour-le-palais/recettes/saumon-grille-sauce-au-poivron-jaune",
+      "site": "chefsimon.com",
+      "nom": "Saumon grillé sauce au poivron jaune",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "INGREDIENTS",
+        "Pour 4 personnes",
+        "4 pavés de saumon de 200 g",
+        "2 poivrons jaunes",
+        "250 g de mascarpone",
+        "1 CS d'échalottes ciselées",
+        "1 gousse d'ail",
+        "2 cc de persil",
+        "2  CS d'huile d'olive",
+        "Sel, poivre",
+        "300 g de farfalles crues"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 909,
+        "sha256": "bb9c4de9c27e5de6"
+      },
+      "sha256_page": "195df7515a4f959a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/nota-banane/recettes/saumon-grille-erable-chipotle",
+      "site": "chefsimon.com",
+      "nom": "Saumon grillé érable chipotle",
+      "portions": "",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "380 gr de filet de saumon",
+        "2 cuillères à café de chipotle",
+        "1 cuillère à soupe de sirop d’érable",
+        "1 cuillère à soupe d’huile d’olive",
+        "1 cuillère à soupe d’eau",
+        "Sel de type herbamare"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 202,
+        "sha256": "e066527afdbb4c66"
+      },
+      "sha256_page": "65797fa6f186d563"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-blog/recettes/pave-de-saumon-grille-a-la-creme-de-ciboulette",
+      "site": "chefsimon.com",
+      "nom": "Pavé de saumon grillé à la crème de ciboulette",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2  pavés de saumon",
+        "15 cL de crème liquide",
+        "1  cuil. à café de Maïzena",
+        "Une dizaine de brins de ciboulette",
+        "Sel de Guérande",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 355,
+        "sha256": "985396fb2f64900d"
+      },
+      "sha256_page": "226b2bc6d599cafc"
+    },
+    {
+      "url": "https://www.750g.com/salade-de-saumon-grille-r202581.htm",
+      "site": "750g.com",
+      "nom": "Salade de saumon grillé",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT8M",
+      "ingredients": [
+        "400 g de pavés de saumon",
+        "4 oeufs  durs",
+        "½ botte de persil",
+        "1 citron",
+        "120 g de mélange de salade",
+        "10 cl de crème liquide",
+        "2 c. à s. d'huile d'olive",
+        "1 poignée de tomate cerise",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 640,
+        "sha256": "999bffae2b68d5d0"
+      },
+      "sha256_page": "4e45329951f4781f"
+    }
+  ]
+}

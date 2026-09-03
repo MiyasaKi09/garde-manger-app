@@ -1,0 +1,237 @@
+{
+  "dish": "Poulet aux brocolis",
+  "slug": "poulet-aux-brocolis",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_blancs-de-poulet-aux-brocolis-sauce-coco_44911.aspx",
+      "site": "marmiton.org",
+      "nom": "Blancs de poulet aux brocolis sauce coco : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 blancs de poulet",
+        "1 bouquet de brocoli",
+        "1 oignon",
+        "1 boîte de lait de coco",
+        "1 bouillon de poule",
+        "ail",
+        "huile d'olive",
+        "1 citron",
+        "amandes effilées ou des graines de sésame"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 603,
+        "sha256": "5747918b8f72d06a"
+      },
+      "sha256_page": "076199e88f146daf"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-saute-aux-brocolis_55666.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet sauté aux brocolis : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 blancs de poulet",
+        "2 cuillères à soupe d'huile végétale",
+        "2 cuillères à soupe de gingembre frais râpé",
+        "2 oignons émincés",
+        "250 g de brocolis",
+        "250 g de carottes coupées en rondelles",
+        "250 g de champignons de Paris émincés",
+        "1 verre de bouillon de poule",
+        "2 cuillères à soupe de Xérès",
+        "2 cuillères à café de sauce soja",
+        "2 cuillères à café de maïzena",
+        "2 cuillères à soupe d'eau",
+        "1 bol de chou chinois émincé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 794,
+        "sha256": "d3811920edd48539"
+      },
+      "sha256_page": "872c54c0bc5a292a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-poulet-au-brocolis_224480.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin de poulet au brocolis : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 blancs de poulet",
+        "1 brocoli",
+        "1 oignon",
+        "1 gousse d'ail",
+        "50 cl de béchamel",
+        "gruyère rappé",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 577,
+        "sha256": "e74468324dbaf754"
+      },
+      "sha256_page": "b3a1a4f3e1a58a15"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/gratin-de-pates-brocoli-poulet-a-la-bechamel",
+      "site": "chefsimon.com",
+      "nom": "Gratin de pâtes brocoli poulet à la béchamel",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "2 blanc de poulet",
+        "140 g de pâtes",
+        "160 g de brocoli",
+        "70 g d'emmental râpé",
+        "400 ml de lait",
+        "30 g de beurre",
+        "30 g de fécule de pomme de terre",
+        "10 g de chapelure",
+        "noix de muscade",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1187,
+        "sha256": "e2e86d7abe9279e3"
+      },
+      "sha256_page": "e600651bfb08790d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/blanc-de-poulet-a-la-moutarde-et-au-brocoli",
+      "site": "chefsimon.com",
+      "nom": "Blanc de poulet à la moutarde et au brocoli",
+      "portions": "1 personne",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "1 blanc de poulet",
+        "160 g de brocoli",
+        "40 g de crème semi épaisse",
+        "15 g de moutarde",
+        "1 échalote",
+        "1 filet d'huile de pépins de raisin",
+        "thym",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 666,
+        "sha256": "a29785e80a6c2540"
+      },
+      "sha256_page": "90cb7f9144083920"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-blog/recettes/poelee-de-brocolis-poulet-tomates-oignon-rouge",
+      "site": "chefsimon.com",
+      "nom": "Poêlée de brocolis, poulet, tomates, oignon rouge",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "500 grammes de brocolis",
+        "190 grammes de sauce aux tomates confites ((ou quelques tomates cerises confites, ou une sauce tomate de votre choix))",
+        "1  filet de poulet",
+        "1  oignon rouge",
+        "1  gousse d'ail",
+        "Huile d'olive",
+        "Fleur de sel",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 181,
+        "sha256": "8bdda7bd45e01de1"
+      },
+      "sha256_page": "c17ef07725605ac5"
+    },
+    {
+      "url": "https://www.750g.com/gratin-de-brocolis-pommes-de-terre-et-poulet-r206453.htm",
+      "site": "750g.com",
+      "nom": "Gratin de brocolis, pommes de terre et poulet",
+      "portions": "6 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "1 kg de brocoli",
+        "6 escalopes de poulet  (930 g)",
+        "150 g de gruyère",
+        "1,5 kg de pomme de terre",
+        "100 cl de béchamel  (2 pack de 50 cl)",
+        "20 cl de crème liquide",
+        "1 mozzarella",
+        "2 carottes",
+        "2 oignons",
+        "½ poivron",
+        "Epices"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 1880,
+        "sha256": "97610182e4c7248a"
+      },
+      "sha256_page": "242fbac51b700a55"
+    },
+    {
+      "url": "https://www.750g.com/poulet-et-brocolis-sautes-au-sesame-r53220.htm",
+      "site": "750g.com",
+      "nom": "Poulet et brocolis sautés au sésame",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 c. à s. d'huile de sésame",
+        "3 c. à c. de sauce soja",
+        "1 c. à c. de graine de sésame",
+        "2 filets de filets de poulet",
+        "1 bouquet de brocoli"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 546,
+        "sha256": "5058bdff0bdd89c5"
+      },
+      "sha256_page": "f7ca07cd466fe896"
+    },
+    {
+      "url": "https://www.750g.com/nouilles-sautees-au-brocoli-noix-de-cajou-et-poulet-r60566.htm",
+      "site": "750g.com",
+      "nom": "Nouilles sautées au brocoli, noix de cajou et poulet",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "250 g de nouilles aux oeufs  chinoises",
+        "400 g de blancs de poulet",
+        "4 oignons nouveaux ou Cébettes",
+        "1 brocoli",
+        "1 gousse d'ail  pelée et râpée",
+        "3 c. à s. de noix de cajou",
+        "2 c. à s. de ketchup",
+        "2 c. à s. de sauce soja",
+        "1 c. à s. de miel",
+        "1 c. à c. de gingembre râpé",
+        "Huile de sésame",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1137,
+        "sha256": "d119a9d691c79a47"
+      },
+      "sha256_page": "5ba3dc55e3b8957b"
+    }
+  ]
+}

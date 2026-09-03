@@ -1,0 +1,96 @@
+{
+  "dish": "Mayonnaise maison",
+  "slug": "mayonnaise-maison",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_mayonnaise-maison_26184.aspx",
+      "site": "marmiton.org",
+      "nom": "Mayonnaise maison : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "1 jaune d'oeuf",
+        "1 cuillère à soupe de moutarde de Dijon",
+        "1 filet de vinaigre",
+        "10 cl d'huile neutre",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 267,
+        "sha256": "fa6f165c1a6cb8a5"
+      },
+      "sha256_page": "7ae0675e0c817184"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_mayonnaise-maison-aux-vinaigres-parfumes_15697.aspx",
+      "site": "marmiton.org",
+      "nom": "Mayonnaise maison aux vinaigres parfumés : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "2 jaunes d'oeuf",
+        "1 cuillère à soupe de moutarde",
+        "2 cuillères à soupe de vinaigre estragon",
+        "1 cuillère à soupe de vinaigre balsamique",
+        "1 gousse d'ail",
+        "1 cuillère à café de sel",
+        "poivre",
+        "huile de soja"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 266,
+        "sha256": "59c443eef03c3a2d"
+      },
+      "sha256_page": "6166df212233ec6e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_verrine-thon-mayonnaise-maison-et-crevettes-a-l-ail_334247.aspx",
+      "site": "marmiton.org",
+      "nom": "Verrines thon, mayonnaise maison et crevettes à l'ail : la meilleure recette",
+      "portions": "6 verrines",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "1 boîte de thon moyenne",
+        "18 crevettes roses",
+        "1 jaune d'oeuf",
+        "1 cuillère à café de moutarde",
+        "10 cl d'huile de tournesol",
+        "4 tranches de pains de mie"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 565,
+        "sha256": "281f24494a5e430a"
+      },
+      "sha256_page": "4e9bfd0a625ed688"
+    },
+    {
+      "url": "https://www.750g.com/la-mayonnaise-maison-version-light-r30744.htm",
+      "site": "750g.com",
+      "nom": "La mayonnaise maison, version light !",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "8 cuillères de moutarde",
+        "4 jaunes d'oeuf",
+        "1 cuillère de lait",
+        "1 pincée de sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 158,
+        "sha256": "4fb0650fc15000ce"
+      },
+      "sha256_page": "d53f00e52bf49a8c"
+    }
+  ]
+}

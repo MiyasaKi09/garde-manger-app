@@ -1,0 +1,182 @@
+{
+  "dish": "Velouté de petits pois",
+  "slug": "veloute-de-petits-pois",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veloute-petits-pois-lardons_80563.aspx",
+      "site": "marmiton.org",
+      "nom": "velouté petits pois - lardons : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "600 g de petits pois surgelés",
+        "1 barquette de lardons fumés",
+        "2 cuillères à café de crème fraîche épaisse",
+        "2 cuillères à soupe de tapioca"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 547,
+        "sha256": "0706a89a98c4a3af"
+      },
+      "sha256_page": "784bfd764efe8d95"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veloute-glace-petit-pois-menthe-et-mouillettes-au-chevre_169003.aspx",
+      "site": "marmiton.org",
+      "nom": "Velouté glacé petit pois menthe et mouillettes au chèvre : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "500 g de petits pois",
+        "2 yaourts natures",
+        "2 menthe",
+        "1 gousse d'ail",
+        "bouillon",
+        "sel /poivre",
+        "2 tranches de pains complets",
+        "1 chèvre ou de la buche de chèvre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 661,
+        "sha256": "4e29d2d0cd8c22b9"
+      },
+      "sha256_page": "d0547a7d74b30fc3"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_veloute-de-petits-pois_24006.aspx",
+      "site": "marmiton.org",
+      "nom": "VELOUTE DE PETITS POIS : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "1 kg de petits pois",
+        "75 cl de lait",
+        "25 cl de crème fraîche",
+        "1 pamplemousse",
+        "10 feuilles de menthe fraîche",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 735,
+        "sha256": "8900aada79018b78"
+      },
+      "sha256_page": "6896da6e9206bd19"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/veloute-de-cosses-de-petits-pois",
+      "site": "chefsimon.com",
+      "nom": "Velouté de cosses de petits pois",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "500 g de petits pois frais",
+        "2 litres d'eau ou de bouillon de volaille",
+        "500 g de pommes de terre",
+        "6 gousses d'ail",
+        "2 oignons",
+        "40 g de beurre ou de ghee",
+        "crème fleurette",
+        "sel",
+        "poivre du moulin",
+        "ciboulette ou persil."
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 884,
+        "sha256": "6f3966fe7de97754"
+      },
+      "sha256_page": "73cb17639daebd67"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/arnaud-viel/recettes/creme-prise-de-hareng-veloute-de-petits-pois-et-truffe-d-ete",
+      "site": "chefsimon.com",
+      "nom": "Crème prise de hareng, velouté de petits pois et truffe d’été",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "1 l de crème",
+        "250 g de hareng",
+        "8 feuilles de gélatine",
+        "Sel et poivre",
+        "500 g de petits pois",
+        "50 g de crème",
+        "100 g de bouillon de poule",
+        "Sel et poivre",
+        "Petits pois frais",
+        "Pousses de petits pois",
+        "8 tomates confites",
+        "Truffe d’été"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 882,
+        "sha256": "65b3d295f140f9d3"
+      },
+      "sha256_page": "e33c3222544325d7"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/nicolas-bottero/recettes/petits-pois-de-pays-et-carottes-couleurs-voile-de-lomo-iberique-veloute-de-cosses-et-fanes",
+      "site": "chefsimon.com",
+      "nom": "Petits pois de pays et carottes couleurs, voile de lomo ibérique, velouté de cosses et fanes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "12 tranches fines de Lomo ibérique",
+        "1 oignon",
+        "1 petite pomme de terre",
+        "1 bt de fanes de carottes",
+        "300 g de cosses de petits pois",
+        "20 cl de bouillon de volaille",
+        "20cl de crème fraîche",
+        "sel",
+        "1⁄2 oignon",
+        "250 g de petits pois écossés",
+        "25 cl de bouillon de volaille",
+        "15 cl de crème fraîche",
+        "sel",
+        "15 carottes couleurs fanes petites",
+        "Fanes et fleurs de carottes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 25,
+        "signes": 1453,
+        "sha256": "af1d8467cd6bedec"
+      },
+      "sha256_page": "1faf2ec0a8e19615"
+    },
+    {
+      "url": "https://www.750g.com/veloute-de-petits-pois-r65891.htm",
+      "site": "750g.com",
+      "nom": "Velouté de petits pois maison",
+      "portions": "4 personnes",
+      "duree_preparation": "PT2M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "800 g de petits pois",
+        "25 cl de lait",
+        "1 échalote",
+        "1 cube de bouillon",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 457,
+        "sha256": "5c659acb3916234a"
+      },
+      "sha256_page": "76a6493099323def"
+    }
+  ]
+}

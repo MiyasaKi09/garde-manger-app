@@ -1,0 +1,140 @@
+{
+  "dish": "Hachis parmentier végétarien",
+  "slug": "hachis-parmentier-vegetarien",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_hachis-parmentier-vegetarien_14594.aspx",
+      "site": "marmiton.org",
+      "nom": "Hachis parmentier végétarien : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "4 pommes de terre",
+        "1 poireau moyen",
+        "1 navet",
+        "3 carottes",
+        "2 branches de céleri",
+        "2 champignons de Paris",
+        "2 oignons",
+        "1 gousse d'ail",
+        "1 cuillère à café de sauce soja",
+        "1 poignée de persil",
+        "1 tranche de pain de mie",
+        "2 cuillères à soupe d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 998,
+        "sha256": "d978f60acbec9a5a"
+      },
+      "sha256_page": "2d9ce0afb7810ef3"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_hachis-parmentier-vegetarien_344671.aspx",
+      "site": "marmiton.org",
+      "nom": "Hachis parmentier végétarien façon Lina : la meilleure recette",
+      "portions": "4 bons mangeurs",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 kg de pomme de terre",
+        "20 cl de crème fraîche semi-épaisse",
+        "1 oignon",
+        "2 carottes",
+        "200 g de champignons de Paris (1 petite boîte)",
+        "800 g de haricots rouges (1 grosse boîte)",
+        "1 cube de bouillon de légumes",
+        "20 cl de vin blanc",
+        "1 boîte de concentré de tomates",
+        "125 g de mozzarella",
+        "1 pincée de sel",
+        "1 pincée de poivre",
+        "1 pincée de muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1044,
+        "sha256": "102b368b4f47e213"
+      },
+      "sha256_page": "5064d0f82796429b"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_hachis-parmentier-vegetarien-facile_221408.aspx",
+      "site": "marmiton.org",
+      "nom": "Hachis Parmentier végétarien aux carottes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 kg de carotte",
+        "85 g de boulgour",
+        "250 g de macédoine de légumes surgelée",
+        "50 g de fromage râpé (emmental ou autre)",
+        "20 g de beurre",
+        "2 oignons",
+        "2 cuillères à soupe d'huile d'olive",
+        "bouquet garni  laurier, thym..",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1117,
+        "sha256": "60f3784a69e68527"
+      },
+      "sha256_page": "56693e3211bc1295"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-petits-plats-du-prince/recettes/hachis-parmentier-vegetarien-fb87fac0-4e3d-4301-9bbe-e1e1ff928682",
+      "site": "chefsimon.com",
+      "nom": "Hachis parmentier végétarien",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "1 kg de pommes de terre",
+        "4 carottes",
+        "2 navets",
+        "1 poireau",
+        "8 champignons de Paris frais",
+        "1 échalote",
+        "2 cuillères à soupe d'huile",
+        "50 g de beurre",
+        "1 jaune d'œuf",
+        "1 branche de thym",
+        "1/2 verre de vin blanc sec",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "748a6a5938205c6c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lacuisinedunetoquee/recettes/hachis-parmentier-vegetarien-aux-lentilles-et-patate-douce",
+      "site": "chefsimon.com",
+      "nom": "Hachis parmentier végétarien aux lentilles et patate douce",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "200g de lentilles",
+        "400g de tomates concassées sans sucre ajouté",
+        "persil",
+        "4 patates douces",
+        "10 cl de crème liquide"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "92f96338c92f45e8"
+    }
+  ]
+}

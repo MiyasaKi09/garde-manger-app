@@ -1,0 +1,212 @@
+{
+  "dish": "Bœuf Stroganoff",
+  "slug": "boeuf-stroganoff",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_boeuf-stroganoff_28441.aspx",
+      "site": "marmiton.org",
+      "nom": "Boeuf Stroganoff : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "400 g de boeuf à mijoter",
+        "30 g de beurre",
+        "1 oignon finement haché",
+        "100 g de champignons de Paris",
+        "1 pincée de sucre",
+        "0.5 cuillère à café de paprika",
+        "1 cuillère à soupe de concentré de tomates",
+        "5 cl de vin blanc sec",
+        "4 cuillères à soupe de crème fraîche",
+        "1 cuillère à café de moutarde",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 396,
+        "sha256": "c2b55d38aba441cb"
+      },
+      "sha256_page": "1919f7d76cc4b1ad"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_boeuf-stroganoff-au-gingembre-rencontre-50_72083.aspx",
+      "site": "marmiton.org",
+      "nom": "boeuf stroganoff au gingembre (rencontre 50) : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 gingembre",
+        "150 g de boeuf par personne (paleron ou jumeau ou rond de paris, ou éventuellement du rumsteck, de la bavette, du filet... mais il n'est pas nécessaire de prendre une viande à griller, avec cette cuisson)",
+        "poivre",
+        "sel",
+        "huile",
+        "beurre",
+        "10 cl de crème fleurette",
+        "2 cuillères à soupe de fond de veau Maggi"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 971,
+        "sha256": "4731cf19cae2aa83"
+      },
+      "sha256_page": "b0e41e22e6b8c2ed"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_boeuf-stroganoff-de-luxe-a-la-creme-sure_83045.aspx",
+      "site": "marmiton.org",
+      "nom": "Boeuf Stroganoff de luxe à la crème sure : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "500 g de boeuf pour fondue bourguignonne",
+        "1 citron",
+        "50 cl de crème fraîche",
+        "3 cuillères à soupe de moutarde de Dijon",
+        "1 cuillère à soupe de sucre en poudre",
+        "6 oignons blancs",
+        "500 g de champignons de Paris",
+        "1 cuillère à soupe d'huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 792,
+        "sha256": "6c20f9e2c3498760"
+      },
+      "sha256_page": "7a555b9696d70b5e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-culinaire/recettes/boeuf-stroganoff-454f20f7-065a-4cb1-9402-2c9c5ebe592b",
+      "site": "chefsimon.com",
+      "nom": "Boeuf stroganoff",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "500  à 750 g de steak de boeuf (coupé en morceaux fins d’environ 5 cm x 0,60 cm)",
+        "Sel et poivre",
+        "2  cuillerées à soupe d’huile végétale",
+        "3  cuillerées à soupe de beurre",
+        "1  gros oignon (haché)",
+        "250 g à 300g de champignons coupés en tranches",
+        "2  cuillerées à soupe de farine pour épaissir la sauce (ou de la maïzena pour une version sans gluten)",
+        "2  tasses | 500 ml de bouillon de boeuf",
+        "1  à 2 cuillerées à café de moutarde (ou selon les goûts)",
+        "⅓  tasse à ½ tasse | 80 ml à 125 ml de crème aigre (ou crème sure au Canada)",
+        "Du persil haché (ou herbes aromatique de votre choix, facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "2bf6378a383efbcd"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/nadji/recettes/boeuf-stroganoff-f5283c1b-da7e-4298-8996-1b98786baedb",
+      "site": "chefsimon.com",
+      "nom": "Bœuf Stroganoff.",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 kg de bœuf",
+        "500 g d'oignons",
+        "500 g de champignons de Paris",
+        "150 g de crème fraîche",
+        "50 g de beurre",
+        "100 ml de bouillon (ou 1 cube + 100 ml d'eau)",
+        "2 cuillères de paprika",
+        "Sel",
+        "Poivre",
+        "Farine",
+        "1 cuillère à soupe de concentré de tomates"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "818f0e0614c01067"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/popotte/recettes/boeuf-stroganoff-7402cf5b-b7fb-4b09-b9cc-457854645d7d",
+      "site": "chefsimon.com",
+      "nom": "Boeuf Stroganoff",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "500 g de steak de boeuf coupé en lanières",
+        "250 g de champignons",
+        "1 oignon haché",
+        "250 ml de bouillon de boeuf",
+        "2 cuil à café de moutarde",
+        "125 ml de crème fraiche avec du jus de citron",
+        "Huile d'olive",
+        "Sel, poivre",
+        "Persil frais haché"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "df93448481f3f952"
+    },
+    {
+      "url": "https://www.750g.com/boeuf-stroganoff-r203945.htm",
+      "site": "750g.com",
+      "nom": "Bœuf Stroganoff",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "½ oignon",
+        "1 c. à c. de paprika",
+        "300 g de boeuf",
+        "1 c. à c. de moutarde",
+        "5 cl de crème liquide",
+        "Sel ou sel fin",
+        "Poivre du moulin",
+        "Huile de tournesol",
+        "5 cl de vin blanc"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 511,
+        "sha256": "69abe59d99b0174e"
+      },
+      "sha256_page": "91044694c907afb1"
+    },
+    {
+      "url": "https://www.750g.com/boeuf-stroganoff-r7506.htm",
+      "site": "750g.com",
+      "nom": "Émincé de bœuf aux champignons et crème fraîche",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "½ bouillon de poule",
+        "1 oignon",
+        "5 cl de vin blanc",
+        "20 cl de crème fraîche",
+        "250 g de champignons",
+        "400 g de boeuf"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 267,
+        "sha256": "4978cbd0005cdc4f"
+      },
+      "sha256_page": "5b7303a0e27400c6"
+    }
+  ]
+}

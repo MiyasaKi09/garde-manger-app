@@ -1,0 +1,165 @@
+{
+  "dish": "Zaalouk d'aubergines",
+  "slug": "zaalouk-d-aubergines",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/196-flavors/recettes/zaalouk-d-aubergine",
+      "site": "chefsimon.com",
+      "nom": "Zaalouk d'Aubergine",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2  aubergines",
+        "2  tomates (, pelées)",
+        "3 gousses d'ail",
+        "1 bouquet de persil (, finement ciselé)",
+        "1 cuillère à café de paprika",
+        "1 cuillère à café de cumin",
+        "Une pincée de cayenne",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 228,
+        "sha256": "d8080f78aee75da1"
+      },
+      "sha256_page": "baa37454e1ef5c5e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/plaisiretequilibre/recettes/zaalouk-leger-aux-aubergines",
+      "site": "chefsimon.com",
+      "nom": "Zaalouk léger aux aubergines",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "2 aubergines",
+        "3 tomates",
+        "1 gousse d’ail",
+        "1 cuillère à café de cumin",
+        "1 cuillère à café de ras el hanout",
+        "coriandre",
+        "persil",
+        "1 ou 2 cuillères à soupe d’huile d’olive",
+        "sel, poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "4c3eb907a60f3253"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/oh-la-gourmande/recettes/zaalouk-d-aubergines",
+      "site": "chefsimon.com",
+      "nom": "Zaalouk d’aubergines",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "3 aubergines",
+        "2 tomates en dés",
+        "1 c à s d'huile d'olive",
+        "1 gousse d'ail pelée et hachée",
+        "2 c à s de persil ciselé",
+        "1 c à c de cumin",
+        "1 c à c de graines de cumin",
+        "1 c à c de ras-el-hanout",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "23993ad33a787c55"
+    },
+    {
+      "url": "https://www.750g.com/zaalouk-daubergines-r83839.htm",
+      "site": "750g.com",
+      "nom": "Zaalouk d'Aubergines",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "Cumin",
+        "Paprika",
+        "De l'eau",
+        "1 c à s d'huile d'olive",
+        "Olive pour la deco",
+        "Sel",
+        "Poivre",
+        "6 têtes d'ail",
+        "2 Grosses Aubergines",
+        "6 tomates",
+        "1 courgette",
+        "1 gros poivron rouge (ou 1 rouge et un vert)",
+        "Ingrédients pour un bon plat (vous pouvez en stocker une partie au congelateur"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 872,
+        "sha256": "472fb8c4ad134d9a"
+      },
+      "sha256_page": "6d0231139e8abfce"
+    },
+    {
+      "url": "https://www.750g.com/zaalouk-ou-dips-daubergine-r68513.htm",
+      "site": "750g.com",
+      "nom": "Zaalouk ou Dips d'aubergine",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 c. à s. de concentré de tomates",
+        "Persil",
+        "Coriandre",
+        "Sel ou sel fin",
+        "Poivre",
+        "2 c. à s. d'huile d'olive",
+        "1 c. à s. de piment doux",
+        "2 gousses d'ail",
+        "2 tomates",
+        "1 c. à s. de cumin",
+        "2 aubergines  (grosses)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 513,
+        "sha256": "5e2f32d3215a81e0"
+      },
+      "sha256_page": "9d17c484df7e4060"
+    },
+    {
+      "url": "https://www.750g.com/zaalouk-puree-daubergines-r100102.htm",
+      "site": "750g.com",
+      "nom": "Zaalouk : purée d'aubergines",
+      "portions": null,
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "3 aubergines",
+        "2 gousses d'ail",
+        "2 c. à s. de jus de citron",
+        "2 c. à s. d'huile d'olive",
+        "2 c. à c. de cumin",
+        "1 c. à c. de paprika",
+        "Persil",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 480,
+        "sha256": "2e4402aa9b55515b"
+      },
+      "sha256_page": "b69709fd036d443c"
+    }
+  ]
+}

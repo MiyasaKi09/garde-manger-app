@@ -1,0 +1,387 @@
+{
+  "recipes": [
+    {
+      "code": "VAR-001",
+      "family": "Risotto milanais",
+      "cuisine_origin": "Italie",
+      "identity_level": "named_traditional_dish",
+      "category": "risotto",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 25,
+      "difficulty": "moyenne",
+      "sources": ["dossier:risotto-milanais", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Sept pages sur trois sites, données pour quatre personnes sauf une qui n'annonce pas ses portions et à qui l'on attribue les quatre parts cibles. Deux d'entre elles décrivent autre chose que le risotto seul et il faut le dire avant de compter : l'une est un ossobuco entier dont le risotto n'est qu'une garniture, l'autre ajoute 300 g de crevettes et s'intitule elle-même « risotto au safran et aux crevettes ou risotto à la milanaise ». Ni le jarret ni les crevettes n'entrent dans la liste — ce sont deux plats voisins, pas des variantes de quantité. Leurs lignes de riz, de parmesan et de vin restent en revanche comparables et je les garde au calcul. Le riz : sept lignes, à 62,5, 87,5, 58,75, 75, 80, 60 et 62,5 g par personne, médiane 62,5 g par personne, soit 250 g pour quatre. C'est peu pour un risotto et c'est pourtant ce que le dossier donne — deux sources seulement montent à 80 g. La forme est arbitrée : trois pages disent « riz à risotto arborio », trois autres « riz pour risotto », une seule « riz » tout court, et la synthèse proposait « Riz cru », rapprochement refusé — un risotto ne se fait pas au riz long, l'amidon de l'arborio est ce qui le lie. On écrit « Riz arborio cru ». Le mouillement : cinq pages au bouillon, médiane 250 ml par personne, soit 1 000 ml pour quatre ; la source qui descend à 60 cl est seule. Le bouillon est de volaille dans deux pages, de légumes dans deux autres, de bœuf dans l'ossobuco : on écrit celui de volaille, majoritaire à égalité et compatible avec les deux usages. La page qui remplace le bouillon par un demi-litre de lait et un demi-litre d'eau est isolée et descend en variante — c'est un riz au lait safrané, pas un risotto. Le vin blanc : six lignes, médiane 37,5 g par personne, soit 150 g, qu'on écrit 150 ml. Le parmesan : six lignes pesées, médiane 11,25 g par personne, soit 45 g. Le beurre : quatre lignes pesées, médiane 10 g par personne, soit 40 g. L'huile d'olive est le désaccord le plus large — 23, 17,25, 2,3 et 11,5 g par personne, médiane 14,4 g par personne, soit 57 g. Avec 40 g de beurre déjà déclarés, cela ferait près de 100 g de corps gras pour quatre parts, quand le beurre est le gras du plat et l'huile un ajout français. On descend à 7,5 g par personne, soit 30 ml. L'oignon est compté en pièces par les sept sources, d'une demie à deux ; à 130 g la pièce, médiane 32,5 g par personne, soit 130 g — un oignon. La synthèse proposait « Oignon surgelé » pour ces lignes : rapprochement refusé, aucune source ne parle de surgelé. Le safran, enfin : trois pages seulement le pèsent, à 0,33, 1 et 2 g pour quatre, médiane 1 g pour quatre ; les autres comptent en doses, sachets ou pistils. On écrit 1 g, en haut de ce qu'un plat de quatre supporte, et l'écart de un à six entre les sources est noté ici plutôt que lissé. Le sel et le poivre ne sont pesés par aucune source : on écrit le niveau d'assaisonnement usuel du corpus, 6 g et 1 g. Durées : préparation, médiane 15 minutes des sept lignes ; cuisson, médiane 25 minutes des cinq lignes exploitables — la ligne à 130 minutes est celle de l'ossobuco, celle à zéro n'est pas renseignée.",
+      "plate": {
+        "role": "main",
+        "accepts": ["vegetables"],
+        "reason": "Le risotto porte son féculent et rien d'autre : ni protéine ni légume dans l'assiette. Les sources le servent seul ou sous un ossobuco. Une salade ou un légume vert à côté complète le repas ; un second féculent le doublerait."
+      },
+      "ingredients": [
+        { "form": "Riz arborio cru", "quantity": 250, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Bouillon de volaille", "quantity": 1000, "unit": "ml", "role": "mouillement", "optional": false },
+        { "form": "Vin blanc sec", "quantity": 150, "unit": "ml", "role": "déglaçage", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 130, "unit": "g", "role": "base aromatique", "optional": false },
+        { "form": "Parmesan affiné", "quantity": 45, "unit": "g", "role": "finition", "optional": false },
+        { "form": "Beurre doux", "quantity": 40, "unit": "g", "role": "liaison", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 30, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Safran", "quantity": 1, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 6, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Porter le bouillon de volaille à frémissement dans une casserole à côté, y jeter le safran et laisser infuser à couvert. Le bouillon doit rester chaud du début à la fin : versé froid sur le riz, il arrête la cuisson à chaque louche et le grain finit farineux dehors et dur dedans. Le safran donne sa couleur au liquide bien avant de la donner au riz." },
+        { "n": 2, "instruction": "Hacher l'oignon très fin et le faire fondre dans l'huile d'olive, à feu doux, huit à dix minutes, sans le laisser prendre couleur. Un oignon blond apporterait un goût de caramel qui n'a rien à faire dans un plat au safran. Il doit disparaître dans le riz, pas s'y retrouver en morceaux." },
+        { "n": 3, "instruction": "Ajouter le riz arborio et le remuer deux à trois minutes dans le gras jusqu'à ce que le grain devienne translucide sur les bords et opaque au centre. Ce nacrage compte : il enrobe l'amidon de matière grasse et règle la vitesse à laquelle il se libérera ensuite. Sauté trop longtemps, le grain se ferme et ne rendra plus rien." },
+        { "n": 4, "instruction": "Verser le vin blanc d'un coup et remuer jusqu'à ce qu'il n'en reste plus de liquide libre au fond. L'acidité doit s'évaporer ici, sinon elle reste dans le plat fini et se bat avec le safran." },
+        { "n": 5, "instruction": "Mouiller ensuite louche par louche avec le bouillon safrané, en attendant chaque fois que le riz soit presque à sec avant de recommencer, et en remuant sans arrêt pendant une vingtaine de minutes. C'est le frottement des grains les uns contre les autres qui libère l'amidon et fait la crème : sans lui on obtient du riz au bouillon. Il se peut qu'une ou deux louches restent en trop — on s'arrête au grain, pas au litre." },
+        { "n": 6, "instruction": "Goûter le riz : il doit céder sous la dent avec une résistance nette au cœur. Retirer alors du feu, saler, poivrer, et jeter le beurre froid coupé en dés puis le parmesan râpé. Battre vivement à la cuillère une trentaine de secondes, hors du feu : c'est le geste qui monte la crème. Le faire sur la flamme trancherait le beurre." },
+        { "n": 7, "instruction": "Couvrir et laisser reposer deux minutes, puis servir aussitôt en assiette creuse tiède, en secouant la casserole pour que le risotto s'étale de lui-même en nappe. Un risotto qui tient debout à la cuillère a trop réduit ; celui-ci doit onduler quand on tape le fond de l'assiette." }
+      ],
+      "techniques": ["infusion", "suer", "nacrage", "déglaçage", "mouillement progressif", "liaison"],
+      "variants": [
+        "Version au lait : le bouillon remplacé par un demi-litre de lait et un demi-litre d'eau, sans vin (marmiton)",
+        "Risotto au safran et aux crevettes : 300 g de crevettes ajoutées en fin de cuisson, bouillon de légumes (chefsimon)",
+        "Servi sous un ossobuco de jarret braisé deux heures, avec sa gremolata au citron et au persil (marmiton)",
+        "Une cuillerée de moelle de bœuf fondue avec l'oignon au départ, en place d'une partie du beurre (750g)"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 2, "bitter": 1, "umami": 4, "heat": 0, "pungency": 1, "richness": 4, "freshness": 1, "intensity": 3 },
+        "dominant_flavors": ["safran", "parmesan", "beurre", "oignon fondu"],
+        "aroma_families": ["safran", "lacté", "beurre", "oignon"],
+        "target_textures": ["riz_moelleux", "crémeux", "grain ferme au cœur"],
+        "signature_ingredients": ["Riz arborio cru", "Safran", "Parmesan affiné"],
+        "identity_guardrails": [
+          "Sans safran il n'y a pas de milanais : c'est lui qui donne la couleur et le parfum, et rien d'autre dans la liste ne les apporte",
+          "Le riz doit être un riz à risotto ; un riz long ne libère pas l'amidon qui fait la crème et le plat reste sec",
+          "La crème vient du frottement et du beurre monté hors du feu, jamais d'une adjonction de crème fraîche",
+          "Le risotto se sert coulant : s'il tient en dôme dans l'assiette, il a trop réduit"
+        ]
+      },
+      "conservation": "Se mange dans les minutes qui suivent : le grain continue d'absorber et un risotto attendu devient compact. Les restes se gardent 2 jours au réfrigérateur en récipient fermé et ne se réchauffent pas tels quels — les étaler en galettes, les paner et les poêler donne des arancini de fortune, seul usage honnête du lendemain. Ne se congèle pas : le grain se délite à la décongélation.",
+      "allergens": ["lait"]
+    },
+    {
+      "code": "VAR-002",
+      "family": "Panzanella",
+      "cuisine_origin": "Italie",
+      "identity_level": "named_traditional_dish",
+      "category": "salade composée",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 5,
+      "difficulty": "facile",
+      "sources": ["dossier:panzanella", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Huit pages sur trois sites, de deux à huit portions. Trois s'écartent du plat et je les écarte du calcul : l'une ajoute framboises et burrata, une autre cœurs d'artichaut, pêches jaunes et courgettes jaunes, une troisième remplace le pain rassis par une baguette et supprime le concombre. Restent cinq pages, sur les trois sites, qui décrivent la même chose : du pain rassis, de la tomate, du concombre, de l'oignon rouge, du basilic, de l'huile et du vinaigre. Le pain d'abord, puisque c'est le plat : quatre lignes pesées, à 33,3, 50, 100 et 100 g par personne, médiane 75 g par personne, soit 300 g pour quatre. Six des huit pages précisent « rassis » et une septième « pain dur » — on écrit « Pain rassis » et non un pain frais, parce qu'un pain frais se défait en bouillie dès qu'il touche le jus de tomate ; c'est toute la mécanique du plat. La page qui parle de pain toscan est seule et note d'ailleurs elle-même qu'il s'agit d'un pain sans sel, ce qui n'est pas le nôtre. La tomate : six lignes pesées, à 33,3, 100, 150, 162,5, 166,7 et 200 g par personne, médiane 156 g par personne, soit 625 g ; on arrondit à 600 g. Le concombre est compté en pièces par cinq sources, d'une demie à une grosse ; à 300 g la pièce, médiane 50 g par personne, soit 200 g. L'oignon rouge, cinq sources en pièces, médiane 32,5 g par personne, soit 130 g. L'huile d'olive : quatre lignes en cuillerées, médiane 13,2 g par personne, soit 53 g, qu'on écrit 60 ml. Le vinaigre est le point où les sources se contredisent le plus utilement. Cinq sur huit versent du vinaigre balsamique — c'est la majorité, et le catalogue ne porte aucune forme de balsamique : elle ne peut pas être écrite. Deux sources, sur deux sites distincts, versent du vinaigre de vin, dont l'une le précise rouge. On écrit donc « Vinaigre de vin rouge », qui est le second choix du dossier et le seul que le catalogue sache peser, et le balsamique passe en variante déclarée plutôt que d'être remplacé en silence. Médiane des quatre lignes chiffrées, 5,6 g par personne, soit 22 g, qu'on écrit 25 ml. Le basilic est compté en bouquets et en feuilles par cinq sources ; aucune ne le pèse, on écrit 20 g pour quatre. L'ail frotté sur le pain n'est présent que dans trois pages sur huit et reste en variante. Le sel et le poivre ne sont pesés nulle part : 4 g et 1 g, niveau usuel du corpus. Durées : préparation, médiane 15 minutes des sept lignes renseignées, écrite 20 parce que trois légumes sont à tailler ; cuisson 5 minutes, le seul passage au feu étant le pain qu'une source fait dorer au gril. Le repos d'une demi-heure qui suit l'assaisonnement ne se compte ni en préparation ni en cuisson.",
+      "plate": {
+        "role": "side",
+        "accepts": [],
+        "reason": "Salade de pain : elle porte du féculent et beaucoup de légume, aucune protéine. Les sources la servent en entrée d'été ou à côté d'une grillade, jamais comme le plat entier. Elle n'a rien à recevoir non plus — une salade assaisonnée ne s'accompagne pas."
+      },
+      "ingredients": [
+        { "form": "Pain rassis", "quantity": 300, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Tomate fraîche mûre", "quantity": 600, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Concombre frais", "quantity": 200, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon rouge cru", "quantity": 130, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 60, "unit": "ml", "role": "assaisonnement", "optional": false },
+        { "form": "Vinaigre de vin rouge", "quantity": 25, "unit": "ml", "role": "acidité", "optional": false },
+        { "form": "Basilic frais", "quantity": 20, "unit": "g", "role": "herbe", "optional": false },
+        { "form": "Sel fin", "quantity": 4, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Couper le pain rassis en gros cubes de trois centimètres et les passer cinq minutes au gril ou à la poêle sèche, juste pour les dorer sur deux faces. On ne cherche pas des croûtons secs mais une croûte qui retarde le ramollissement : à l'intérieur le pain doit rester souple." },
+        { "n": 2, "instruction": "Couper les tomates en quartiers épais au-dessus d'un saladier pour ne rien perdre du jus, les saler et les laisser dégorger un quart d'heure. Ce jus salé est l'assaisonnement principal du plat : c'est lui qui va tremper le pain, et le jeter reviendrait à faire la salade avec de l'eau." },
+        { "n": 3, "instruction": "Pendant ce temps, émincer l'oignon rouge en lamelles très fines et le laisser dix minutes dans le vinaigre de vin rouge. Le vinaigre lui retire sa morsure et lui donne une couleur rose ; cru et entier, il domine tout le reste et on ne goûte plus que lui." },
+        { "n": 4, "instruction": "Peler le concombre une bande sur deux, l'ouvrir en deux dans la longueur et retirer les graines à la cuillère avant de le tailler en demi-lunes épaisses. Les graines rendent une eau fade qui dilue le jus de tomate ; la peau laissée par bandes garde du croquant sans amertume." },
+        { "n": 5, "instruction": "Réunir le pain, les tomates et leur jus, le concombre, l'oignon et son vinaigre. Verser l'huile d'olive, poivrer, mélanger largement à la main et laisser reposer une demi-heure à température ambiante. C'est le seul temps de cuisson du plat : le pain boit et devient moelleux sans se déliter." },
+        { "n": 6, "instruction": "Juste avant de servir, déchirer les feuilles de basilic à la main et les jeter dans le saladier, puis remuer une dernière fois et rectifier le sel. Coupé au couteau ou ajouté trop tôt, le basilic noircit et perd son parfum en quelques minutes. Servir à température ambiante, jamais froid — le froid éteint la tomate." }
+      ],
+      "techniques": ["assemblage", "dégorgement", "grillade", "macération", "repos"],
+      "variants": [
+        "Au vinaigre balsamique, une à quatre cuillerées à soupe selon les pages, à la place du vinaigre de vin (marmiton, chefsimon, 750g)",
+        "Une gousse d'ail frottée sur les tranches de pain grillées avant de les couper (chefsimon, 750g)",
+        "100 g d'olives noires dénoyautées ajoutées au saladier (marmiton)",
+        "Une burrata ou une boule de mozzarella déchirée sur le dessus au moment de servir (chefsimon, 750g)",
+        "Version d'été chargée : cœurs d'artichaut égouttés, pêches jaunes fermes, courgettes jaunes crues et copeaux de parmesan (marmiton)"
+      ],
+      "sensory": {
+        "profile": "fresh_acidic",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 4, "bitter": 1, "umami": 2, "heat": 0, "pungency": 2, "richness": 2, "freshness": 5, "intensity": 3 },
+        "dominant_flavors": ["tomate mûre", "huile d'olive", "vinaigre", "basilic"],
+        "aroma_families": ["tomate", "basilic", "huile_olive", "oignon"],
+        "target_textures": ["pain imbibé mais entier", "croquant", "contraste_léger"],
+        "signature_ingredients": ["Pain rassis", "Tomate fraîche mûre", "Basilic frais"],
+        "identity_guardrails": [
+          "Le pain doit être rassis : frais, il se défait en pâte dès qu'il rencontre le jus de tomate et la salade devient une purée",
+          "Le jus rendu par les tomates salées est l'assaisonnement du plat — le jeter, c'est le vider de son goût",
+          "Tomates mûres obligatoires : une tomate ferme et pâle ne rend pas de jus et il ne se passe rien",
+          "Se sert à température ambiante ; sortie du réfrigérateur, la tomate n'a plus de goût et l'huile fige"
+        ]
+      },
+      "conservation": "Se mange le jour même, une à trois heures après l'assaisonnement. Au-delà, le pain a tout bu et se défait : la salade reste comestible mais perd sa texture, qui est l'essentiel. Elle ne se garde pas plus de 24 heures au réfrigérateur et il faut alors la sortir une demi-heure avant. Ne se congèle pas. Si l'on prépare à l'avance, garder le pain grillé à part dans une boîte et ne réunir qu'à la dernière demi-heure.",
+      "allergens": ["gluten"]
+    },
+    {
+      "code": "VAR-003",
+      "family": "Escalope milanaise",
+      "cuisine_origin": "Italie",
+      "identity_level": "named_traditional_dish",
+      "category": "viande panée",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 10,
+      "difficulty": "facile",
+      "sources": ["dossier:escalope-milanaise", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Neuf pages sur trois sites, de deux à quatre portions. La première question est celle de la viande : sept pages sur neuf portent du veau, une seule du poulet, une neuvième de la poudre d'amande à la place de la chapelure. Le veau est donc la forme canonique et c'est lui qu'on écrit ; la version au poulet, attestée une seule fois, descend en variante. Le veau est pesé par deux pages seulement — 160 g la pièce dans l'une, 50 g la pièce dans l'autre mais à raison de trois pièces par personne, soit 150 g — médiane 155 g par personne, soit 620 g, qu'on arrondit à 600 g. Les sept autres comptent « quatre escalopes » sans les peser, et une escalope de veau n'a pas de poids : c'est exactement la ligne que la chaîne refuse de convertir toute seule. La panure ensuite, qui est le vrai sujet. La chapelure est pesée par cinq pages, à 25, 25, 50, 25 et 25 g par personne : médiane 25 g par personne, soit 100 g. La farine, cinq lignes également, à 5, 25, 25, 12,5 et 25 : médiane 25 g par personne, soit 100 g. L'œuf, huit lignes de 0,25 à 1 pièce par personne : médiane une demie par personne, soit 2 œufs. Le parmesan est le point contesté : cinq pages sur neuf en mettent dans la chapelure, à 37,5, 12,5, 25, 12,5 et 25 g par personne, médiane 25 g par personne, soit 100 g. C'est beaucoup, et c'est une lecture française — la cotoletta milanaise d'origine n'en porte pas — mais cinq sources sur neuf n'est pas une minorité et le parmesan reste dans la liste. Il faut savoir en revanche qu'une partie de cette panure ne colle pas et finit dans l'assiette de travail : la nutrition déclarée est celle des ingrédients engagés, pas des seuls ingrédients mangés. Le corps gras est partagé : deux pages pèsent du beurre, à 15 et 7,5 g par personne, médiane 11,25 g par personne, soit 45 g ; deux pèsent de l'huile, à 13,8 et 4,6 g par personne, médiane 9,2 g par personne, soit 37 g, qu'on écrit 40 ml. Les deux sont attestés et souvent ensemble dans la même page — le beurre pour le goût, l'huile pour tenir la température —, on garde les deux. Le citron accompagne quatre pages sur neuf, compté à la pièce ; on écrit un citron entier pour quatre, en quartiers au service. Le sel et le poivre ne sont pesés par aucune source : 4 g et 1 g. Ce que le dossier ne soutient pas et qu'on n'écrit donc pas : la roquette et la tomate de la première page, la mozzarella et les coquillettes de la neuvième, le chorizo et le risotto de pâtes de la troisième — trois accompagnements, trois pages, aucune reprise d'une page à l'autre. Durées : préparation, médiane 22,5 minutes des huit lignes, écrite 20 ; cuisson, médiane 10 minutes des sept lignes exploitables.",
+      "plate": {
+        "role": "main",
+        "accepts": ["starch", "vegetables"],
+        "reason": "Une escalope panée est une protéine seule : pas de féculent, pas de légume dans l'assiette. Les sources la servent avec des pâtes, une salade de roquette et tomate, ou des pommes de terre — trois accompagnements qui ne se recoupent pas, ce qui est justement le signe qu'il faut en ajouter un."
+      },
+      "ingredients": [
+        { "form": "Escalope de veau crue fine", "quantity": 600, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Chapelure de blé", "quantity": 100, "unit": "g", "role": "panure", "optional": false },
+        { "form": "Parmesan affiné", "quantity": 100, "unit": "g", "role": "panure", "optional": false },
+        { "form": "Farine de blé T55", "quantity": 100, "unit": "g", "role": "panure", "optional": false },
+        { "form": "Œuf cru", "quantity": 2, "unit": "u", "role": "panure", "optional": false },
+        { "form": "Beurre doux", "quantity": 45, "unit": "g", "role": "cuisson", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 40, "unit": "ml", "role": "cuisson", "optional": false },
+        { "form": "Citron jaune frais", "quantity": 1, "unit": "u", "role": "finition", "optional": false },
+        { "form": "Sel fin", "quantity": 4, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Poser les escalopes entre deux feuilles de papier cuisson et les aplatir au rouleau ou au plat d'un couteau lourd jusqu'à cinq millimètres d'épaisseur régulière. Une escalope inégale cuit à deux vitesses : la partie mince est sèche quand la partie épaisse est encore rose, et aucune panure ne rattrape cela." },
+        { "n": 2, "instruction": "Saler et poivrer la viande sur les deux faces, puis préparer trois assiettes creuses : la farine dans la première, les œufs battus à la fourchette dans la deuxième, la chapelure mélangée au parmesan finement râpé dans la troisième. Saler la viande et non la panure : le sel posé sur la chapelure la fait tomber." },
+        { "n": 3, "instruction": "Passer chaque escalope dans la farine en tapotant pour ôter l'excédent, puis dans l'œuf, puis dans le mélange chapelure-parmesan en appuyant franchement de la paume. La couche de farine sert à sécher la surface pour que l'œuf s'y accroche ; sans elle la panure se décolle en cuisant et il reste une viande nue au milieu d'une croûte flottante." },
+        { "n": 4, "instruction": "Laisser les escalopes panées reposer un quart d'heure au frais sur une grille. Ce repos n'est pas du confort : l'humidité de l'œuf gélifie la panure et la soude à la viande. Une escalope panée cuite dans la foulée perd la moitié de sa croûte dans la poêle." },
+        { "n": 5, "instruction": "Chauffer l'huile et le beurre ensemble dans une grande poêle jusqu'à ce que la mousse du beurre retombe. L'huile empêche le beurre de noircir aux 150 degrés qu'il faut atteindre ; le beurre seul brûlerait avant que la panure ne dore." },
+        { "n": 6, "instruction": "Cuire les escalopes deux par deux, quatre à cinq minutes de chaque côté, sans jamais les entasser ni les déplacer pendant la première moitié du temps. La poêle chargée refroidit, la panure boit alors le gras au lieu de le repousser, et l'escalope ressort grasse et molle. La croûte doit être brun doré, pas brun foncé." },
+        { "n": 7, "instruction": "Égoutter deux minutes sur une grille — jamais sur du papier absorbant, qui retient la vapeur sous l'escalope et ramollit le dessous — et servir aussitôt avec les quartiers de citron, à presser à table. Le citron pressé d'avance détrempe la panure en trois minutes." }
+      ],
+      "techniques": ["aplatissage", "panure à l'anglaise", "repos", "friture à la poêle"],
+      "variants": [
+        "À l'escalope de poulet, panure au parmesan et à la poudre d'amande, sans chapelure (chefsimon)",
+        "Chapelure de biscottes écrasées à la place de la chapelure du commerce (marmiton)",
+        "Panure aromatisée d'un mélange d'origan et de thym séchés (chefsimon)",
+        "Servie sur un lit de roquette avec des dés de tomate, huile d'olive et basilic (marmiton)",
+        "Accompagnée de coquillettes gratinées à la mozzarella et d'une sauce de tomates cerises (750g)"
+      ],
+      "sensory": {
+        "profile": "savory_crisp",
+        "scores": { "sweet": 1, "salty": 3, "acidic": 2, "bitter": 0, "umami": 4, "heat": 0, "pungency": 0, "richness": 4, "freshness": 2, "intensity": 3 },
+        "dominant_flavors": ["veau", "parmesan", "beurre noisette", "citron"],
+        "aroma_families": ["beurre", "fromage affiné", "agrume", "pain grillé"],
+        "target_textures": ["croûte croustillante", "tendre", "contraste_léger"],
+        "signature_ingredients": ["Escalope de veau crue fine", "Chapelure de blé", "Parmesan affiné"],
+        "identity_guardrails": [
+          "L'escalope doit être aplatie à cinq millimètres : c'est l'épaisseur qui permet à la viande d'être cuite au moment exact où la panure est dorée",
+          "Panure à l'anglaise en trois temps, farine comprise — sans farine la croûte se détache et le plat n'existe plus",
+          "Beurre et huile ensemble : le beurre seul brûle avant que la panure ne prenne couleur",
+          "Le citron se presse à table, jamais dans la poêle ni sur l'escalope en attente"
+        ]
+      },
+      "conservation": "Se mange dans les minutes qui suivent la poêle : la panure ramollit vite. Les restes se gardent 2 jours au réfrigérateur, à plat et non empilés, et se réchauffent 8 minutes au four à 180 °C sur une grille — jamais au micro-ondes, qui rend la croûte élastique. Ne se congèle pas cuite ; en revanche les escalopes panées crues se congèlent très bien 2 mois, séparées par du papier cuisson, et se cuisent sans décongélation en allongeant de trois minutes par face.",
+      "allergens": ["gluten", "œuf", "lait"]
+    },
+    {
+      "code": "VAR-004",
+      "family": "Gnocchi à la romaine",
+      "cuisine_origin": "Italie",
+      "identity_level": "named_traditional_dish",
+      "category": "gnocchi de semoule gratinés",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 25,
+      "difficulty": "moyenne",
+      "sources": ["dossier:gnocchi-a-la-romaine", "marmiton.org", "chefsimon.com"],
+      "canonical_arbitration": "Cinq pages sur deux sites, données pour quatre et six personnes, l'une sans portions déclarée à qui l'on attribue les quatre parts cibles. Quatre décrivent le même plat : une semoule de blé cuite au lait, liée aux jaunes d'œuf et au parmesan, étalée, refroidie, découpée en disques et gratinée au beurre. La cinquième remplace la semoule par 200 g de farine et cinq œufs entiers — ce sont des gnocchis de pâte pochée, une autre préparation, et elle sort du calcul des quantités tout en restant citée en variante. La semoule : quatre lignes pesées, à 50, 30, 62,5 et 50 g par personne, médiane 50 g par personne, soit 200 g pour quatre. Trois pages précisent « fine », une « moyenne », une cinquième « semoule de blé » sans plus : on écrit la semoule de blé dur moyenne, seule forme du catalogue, en notant que trois sources sur cinq préfèrent la fine, qui donne une pâte plus lisse. Le lait : quatre lignes, à 250, 125, 250 et 250 ml par personne, médiane 250 ml par personne, soit 1 000 ml pour quatre. Le rapport un pour cinq entre semoule et lait est constant d'une page à l'autre et c'est lui qui décide de la fermeté de la pâte : moins de lait et elle devient sableuse, plus et elle ne tient pas à la découpe. Une source emploie du lait demi-écrémé, les trois autres du lait entier ou du lait sans précision : on écrit le lait entier. Les jaunes d'œuf : trois pages en mettent trois pour quatre ou six personnes, médiane 0,75 jaune par personne, soit 3 jaunes ; la quatrième met un œuf entier et reste isolée. Le parmesan : quatre lignes pesées, à 15, 25, 37,5 et 37,5 g par personne, médiane 31,25 g par personne, soit 125 g. La première page mélange parmesan et emmental à parts égales et c'est la seule : on écrit le parmesan seul. Le beurre : cinq lignes, à 18,75, 13,3, 50, 12,5 et 12,5 g par personne — la ligne à 50 double le beurre parce qu'elle en refait fondre autant avec de la sauge pour arroser le gratin — médiane 13,3 g par personne, soit 53 g, qu'on écrit 55 g. La muscade est présente dans quatre pages sur cinq, jamais pesée, écrite ici 0,5 g. Le sel et le poivre ne sont pesés nulle part : 5 g et 1 g. Durées : préparation, médiane 20 minutes des cinq lignes ; cuisson, médiane 22,5 minutes des quatre lignes exploitables, écrite 25 — dix minutes pour la semoule, quinze pour le gratin. Le refroidissement de la plaque, une heure au moins, ne se compte ni en préparation ni en cuisson mais commande l'organisation : c'est un plat qui se prépare en deux fois, et c'est ce qui en fait un bon candidat au travail d'avance.",
+      "plate": {
+        "role": "main",
+        "accepts": ["vegetables"],
+        "reason": "Semoule, lait, jaunes et fromage : le plat porte son féculent et une part de protéine laitière, aucun légume. Une salade ou un légume vert à côté suffit à en faire un repas ; un second féculent serait de trop."
+      },
+      "ingredients": [
+        { "form": "Semoule de blé dur moyenne sèche", "quantity": 200, "unit": "g", "role": "féculent", "optional": false },
+        { "form": "Lait entier", "quantity": 1000, "unit": "ml", "role": "liquide de cuisson", "optional": false },
+        { "form": "Parmesan affiné", "quantity": 125, "unit": "g", "role": "fromage", "optional": false },
+        { "form": "Jaune d'œuf cru", "quantity": 3, "unit": "u", "role": "liaison", "optional": false },
+        { "form": "Beurre doux", "quantity": 55, "unit": "g", "role": "gratinage", "optional": false },
+        { "form": "Muscade moulue", "quantity": 0.5, "unit": "g", "role": "épice", "optional": false },
+        { "form": "Sel fin", "quantity": 5, "unit": "g", "role": "assaisonnement", "optional": false },
+        { "form": "Poivre noir moulu", "quantity": 1, "unit": "g", "role": "assaisonnement", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Porter le lait à frémissement avec le sel, le poivre et la muscade dans une casserole à fond épais. Le fond épais n'est pas un détail : la semoule attache dès qu'elle épaissit et une casserole mince donne un goût de brûlé qu'on ne rattrape pas." },
+        { "n": 2, "instruction": "Verser la semoule en pluie fine d'une main en fouettant de l'autre, sans arrêter. Versée d'un coup, elle prend en grumeaux que rien ne défera ensuite — la semoule gonfle en quelques secondes et emprisonne le lait sec au centre de chaque grumeau." },
+        { "n": 3, "instruction": "Cuire à feu doux huit à dix minutes en remuant à la cuillère de bois, jusqu'à ce que la masse se décolle des parois et forme un bloc qui suit la cuillère. C'est le repère de la bonne texture : trop molle, elle ne se découpera pas ; trop cuite, elle devient élastique." },
+        { "n": 4, "instruction": "Retirer du feu, laisser tiédir deux minutes puis incorporer les jaunes d'œuf un à un en battant vivement, et les deux tiers du parmesan râpé. Les jaunes jetés dans la semoule bouillante coaguleraient en filaments ; deux minutes d'attente suffisent à descendre sous les 70 degrés." },
+        { "n": 5, "instruction": "Étaler la pâte sur un plat ou une plaque huilée en une couche régulière d'un centimètre et demi, lisser à la spatule mouillée, et laisser refroidir une heure au moins — la nuit au réfrigérateur convient mieux encore. Une pâte tiède se déchire à l'emporte-pièce ; une pâte froide se découpe net." },
+        { "n": 6, "instruction": "Découper des disques de cinq à six centimètres à l'emporte-pièce ou au verre, et les disposer en les faisant se chevaucher comme des tuiles dans un plat à gratin beurré. Le chevauchement double l'épaisseur sur la moitié de chaque disque : c'est ce qui donne le contraste entre les bords croustillants et le cœur fondant." },
+        { "n": 7, "instruction": "Parsemer du parmesan restant, répartir le beurre en petits morceaux sur le dessus et enfourner à 200 °C pour quinze à vingt minutes, jusqu'à ce que la surface soit tachée de brun. Le beurre en morceaux, plutôt que fondu et versé, fond en descendant et arrose chaque disque au lieu de former une flaque au fond du plat. Servir dans le plat, très chaud." }
+      ],
+      "techniques": ["cuisson au lait", "liaison aux jaunes", "refroidissement", "façonnage", "gratinage"],
+      "variants": [
+        "Beurre de sauge : 100 g de beurre fondus avec dix feuilles de sauge et versés sur les gnocchis au sortir du four (chefsimon)",
+        "Moitié parmesan, moitié emmental râpé dans la pâte (marmiton)",
+        "Version à la farine : 200 g de farine et cinq œufs entiers pour un demi-litre de lait, pâte pochée puis gratinée au gruyère — une autre préparation sous le même nom (marmiton)",
+        "Semoule fine plutôt que moyenne, pour une pâte plus lisse (chefsimon, marmiton)"
+      ],
+      "sensory": {
+        "profile": "creamy_savory",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 0, "bitter": 0, "umami": 4, "heat": 0, "pungency": 1, "richness": 4, "freshness": 0, "intensity": 3 },
+        "dominant_flavors": ["parmesan", "lait", "beurre", "muscade"],
+        "aroma_families": ["lacté", "fromage affiné", "beurre", "muscade"],
+        "target_textures": ["croûte gratinée", "intérieur_fondant_ou_crémeux", "contraste_léger"],
+        "signature_ingredients": ["Semoule de blé dur moyenne sèche", "Lait entier", "Parmesan affiné"],
+        "identity_guardrails": [
+          "Rapport d'un pour cinq entre semoule et lait : c'est lui qui décide si la pâte se découpera ou non",
+          "La pâte doit refroidir complètement avant la découpe — tiède, elle se déchire et il n'y a plus de disques",
+          "Les disques se posent en tuiles qui se chevauchent, sinon il n'y a ni bords croustillants ni cœur fondant",
+          "Ce ne sont pas des gnocchis de pomme de terre : aucune pomme de terre n'entre ici, la semoule est le plat"
+        ]
+      },
+      "conservation": "La pâte étalée se garde 2 jours au réfrigérateur, filmée au contact, avant découpe et gratinage : c'est la façon de prendre ce plat de vitesse en semaine. Une fois gratinés, les gnocchis se gardent 3 jours au réfrigérateur et se réchauffent 10 minutes à 200 °C. La plaque de pâte crue se congèle 2 mois, entière ou déjà découpée en disques séparés par du papier cuisson ; on la gratine alors sans décongélation en ajoutant dix minutes de four.",
+      "allergens": ["gluten", "lait", "œuf"]
+    },
+    {
+      "code": "VAR-005",
+      "family": "Calzone",
+      "cuisine_origin": "Italie",
+      "identity_level": "named_traditional_dish",
+      "category": "pizza",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 20,
+      "difficulty": "moyenne",
+      "sources": ["dossier:calzone", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Neuf pages sur trois sites. Quatre sont à écarter et il faut dire pourquoi : l'une est un calzone aux fruits rouges et au mascarpone, c'est un dessert ; deux autres remplacent la pâte à pizza par une pâte brisée ou une pâte feuilletée végétale, ce qui en fait un chausson et non un calzone ; la dernière ne donne que la pâte, sans garniture. Restent cinq pages sur les trois sites. La pâte d'abord, que quatre pages composent réellement : 450 g de farine pour trois personnes, 500 pour quatre, 425 pour quatre et 425 pour deux, soit 150, 125, 106,25 et 212,5 g par personne — médiane 125 g par personne, soit 500 g pour quatre. L'eau, aux mêmes pages : 90, 63,75, 50 et 100 g par personne, médiane 76,9 g par personne, soit 308 g, qu'on écrit 300 ml — 60 % d'hydratation, ce qui donne une pâte souple qu'on peut refermer sans qu'elle se déchire. Le sel de la pâte : deux lignes pesées, 3 et 1,5 g par personne, médiane 2,25 g par personne, soit 9 g, écrit 10 g. La levure est comptée en sachets par trois pages et jamais pesée : on écrit 8 g de levure sèche, ce qu'un sachet contient. L'huile d'olive de la pâte : deux lignes, 15 et 7,5 g par personne, médiane 11,25 g par personne, soit 45 g, écrit 45 ml. La garniture ensuite. La mozzarella est pesée par trois pages et comptée en boules par une quatrième : 25, 25, 62,5 et 125 g par personne, médiane 43,75 g par personne, soit 175 g. Le jambon blanc est compté en tranches par trois pages, deux pour trois personnes et quatre pour quatre : médiane une tranche par personne, soit 4 tranches. Les champignons de Paris ne sont pesés que par une page, 100 g pour deux, soit 50 g par personne ; une seconde page en met une boîte sans la peser. Deux sources sur deux sites suffisent à les garder, et on écrit 200 g. La base tomate est le point le plus incertain du dossier : trois pages disent « une petite boîte de concentré de tomates », une quatrième « de la sauce tomate maison », une cinquième « deux boîtes de sauce tomate concentrée » — aucune ne pèse quoi que ce soit, et la boîte de concentré française va de 70 à 140 g. On écrit 70 g, la lecture basse, parce que la base d'un calzone est une couche mince étalée à la cuillère et non une sauce : à 140 g le plat vire au concentré. Le fromage râpé qui accompagne la mozzarella dans quatre pages n'est jamais pesé non plus ; on écrit 100 g d'emmental râpé. Ce que le dossier ne soutient pas : le bœuf haché d'une page, le chorizo d'une autre, la ricotta et le prosciutto d'une troisième — chacun à une seule source, tous en variantes. Durées : préparation, médiane 20 minutes des six lignes ; cuisson, médiane 17,5 minutes des six lignes, écrite 20. La pousse d'une heure et demie ne se compte ni en préparation ni en cuisson.",
+      "plate": {
+        "role": "complete",
+        "accepts": [],
+        "reason": "La pâte donne le féculent, le jambon et les fromages la protéine, les champignons et la tomate le légume : le chausson porte l'assiette entière et c'est ainsi que les cinq pages le servent. Une salade verte à côté est un usage, pas un manque."
+      },
+      "ingredients": [
+        { "form": "Farine de blé T55", "quantity": 500, "unit": "g", "role": "pâte", "optional": false },
+        { "form": "Eau", "quantity": 300, "unit": "ml", "role": "pâte", "optional": false },
+        { "form": "Levure boulangère sèche", "quantity": 8, "unit": "g", "role": "pâte", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 45, "unit": "ml", "role": "pâte", "optional": false },
+        { "form": "Mozzarella", "quantity": 175, "unit": "g", "role": "fromage", "optional": false },
+        { "form": "Emmental râpé", "quantity": 100, "unit": "g", "role": "fromage", "optional": false },
+        { "form": "Jambon blanc cuit", "quantity": 4, "unit": "tranche", "role": "protéine", "optional": false },
+        { "form": "Champignon de Paris frais", "quantity": 200, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Concentré de tomate", "quantity": 70, "unit": "g", "role": "base tomate", "optional": false },
+        { "form": "Sel fin", "quantity": 10, "unit": "g", "role": "pâte", "optional": false },
+        { "form": "Origan séché", "quantity": 2, "unit": "g", "role": "aromate", "optional": true }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Délayer la levure sèche dans l'eau tiède et laisser reposer dix minutes, le temps qu'une mousse apparaisse en surface. Cette mousse est le seul test fiable : une levure morte ne fait rien voir et on ne s'en aperçoit qu'une heure plus tard devant une pâte plate." },
+        { "n": 2, "instruction": "Mélanger la farine et le sel dans un grand saladier, verser l'eau levurée puis l'huile d'olive, et pétrir dix minutes jusqu'à obtenir une pâte souple qui se décolle des doigts. Le sel doit rejoindre la farine et non l'eau : au contact direct de la levure il en tue une partie." },
+        { "n": 3, "instruction": "Couvrir d'un linge humide et laisser pousser une heure et demie à température ambiante, jusqu'au doublement du volume. Pendant ce temps, émincer les champignons et les faire suer à sec dans une poêle chaude jusqu'à ce qu'ils aient rendu et réabsorbé leur eau. Ce passage est obligatoire : des champignons crus rendent leur eau dans le chausson fermé et détrempent la pâte par l'intérieur." },
+        { "n": 4, "instruction": "Diviser la pâte en quatre pâtons, les étaler au rouleau en disques de vingt-cinq centimètres, et étaler le concentré de tomate en couche mince sur une moitié seulement de chaque disque, en laissant deux centimètres de bord nus. Le bord sec est ce qui permettra la soudure ; une trace de sauce dessus et le chausson s'ouvre au four." },
+        { "n": 5, "instruction": "Répartir sur cette moitié la mozzarella égouttée et coupée en dés, le jambon en lanières, les champignons refroidis et l'emmental râpé, puis l'origan si l'on en met. La mozzarella doit être égouttée puis épongée : c'est la première source d'eau d'un calzone raté." },
+        { "n": 6, "instruction": "Rabattre la pâte nue sur la garniture, souder le bord en pressant à la fourchette ou en le roulant sur lui-même, et percer deux fentes courtes sur le dessus. Les fentes laissent sortir la vapeur ; sans elles la pâte gonfle en ballon et se déchire au point le plus faible, qui est toujours la soudure." },
+        { "n": 7, "instruction": "Badigeonner d'un peu d'huile d'olive et enfourner à 240 °C, chaleur tournante, quinze à vingt minutes, jusqu'à ce que la pâte soit dorée et ferme au toucher. Le four doit être à pleine température au moment de l'enfournement : un four qui monte encore laisse le dessous blanc et mou. Laisser reposer cinq minutes avant de couper, le temps que le fromage cesse de couler." }
+      ],
+      "techniques": ["pétrissage", "fermentation", "façonnage", "pliage", "cuisson au four"],
+      "variants": [
+        "Au chorizo : six tranches ajoutées au jambon (750g)",
+        "Au bœuf haché : 200 g revenus avec un oignon, avec mozzarella et champignons (750g)",
+        "Ricotta, prosciutto, mozzarella et basilic frais, sans base tomate (chefsimon)",
+        "Tomate-mozzarella seule, quatre boules de mozzarella et du basilic frais, jaune d'œuf pour la dorure (marmiton)",
+        "Une cuillerée à café d'origan séché pétrie dans la pâte elle-même (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": { "sweet": 2, "salty": 3, "acidic": 2, "bitter": 0, "umami": 4, "heat": 0, "pungency": 1, "richness": 4, "freshness": 1, "intensity": 3 },
+        "dominant_flavors": ["mozzarella fondue", "tomate concentrée", "jambon", "pâte cuite"],
+        "aroma_families": ["lacté", "tomate_cuite", "pain grillé", "champignon"],
+        "target_textures": ["croûte croustillante", "intérieur_fondant_ou_crémeux", "champignon_fondant"],
+        "signature_ingredients": ["Farine de blé T55", "Mozzarella", "Jambon blanc cuit"],
+        "identity_guardrails": [
+          "C'est une pâte à pizza levée et refermée : une pâte brisée ou feuilletée en ferait un chausson, pas un calzone",
+          "La garniture doit être sèche — mozzarella égouttée, champignons précuits — sinon la vapeur détrempe la pâte de l'intérieur",
+          "Deux centimètres de bord nus pour souder, et deux fentes sur le dessus : sans elles le chausson s'ouvre au four",
+          "Base tomate en couche mince, pas en sauce : le calzone n'est pas une pizza pliée sur sa garniture liquide"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur, emballé, et se réchauffe 10 minutes à 200 °C sur une grille pour que le dessous redevienne croustillant — le micro-ondes le rend caoutchouteux. Les pâtons crus se congèlent 2 mois, huilés et emballés séparément : on les sort la veille au réfrigérateur et on les laisse revenir une heure à température ambiante avant de les étaler. Les calzones cuits se congèlent aussi 2 mois et se réchauffent sans décongélation, 20 minutes à 190 °C.",
+      "allergens": ["gluten", "lait"]
+    },
+    {
+      "code": "VAR-006",
+      "family": "Pizza napolitaine",
+      "cuisine_origin": "Italie",
+      "identity_level": "named_traditional_dish",
+      "category": "pizza",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 30,
+      "difficulty": "moyenne",
+      "sources": ["dossier:pizza-napolitaine", "marmiton.org", "chefsimon.com", "750g.com"],
+      "canonical_arbitration": "Cinq pages, dont deux ne sont pas des pizzas : des « pizza rolls » roulés et tranchés, et des « petites pizzas frites » cuites à l'huile. Elles sortent. Restent trois pages sur trois sites, et elles décrivent deux plats différents sous un même nom — c'est l'arbitrage principal de cette fiche. En France, « napolitaine » désigne une garniture : tomate, anchois, oignon, ail, thym, et pas de fromage. En Italie, la pizza napolitaine désigne une pâte et une méthode, garnies de tomate et de mozzarella. Le dossier reflète exactement ce partage : la page marmiton et la page 750g donnent toutes deux la version aux anchois — 800 g de tomates allongées, 16 filets d'anchois, 3 oignons, 2 gousses d'ail, du thym pour l'une ; 900 g de tomates, 2 boîtes d'anchois, 4 oignons, 3 gousses d'ail, du thym pour l'autre — quand la page chefsimon donne la version italienne, farine type 00, mozzarella di bufala et coulis. Deux sources solides sur deux sites distincts contre une : on écrit la garniture française, et la version italienne descend en variante. Le fait le plus surprenant du dossier, et il est net, est qu'aucune des deux pages retenues ne porte de fromage : cette pizza-là n'en a pas. On n'en ajoute donc pas. Les tomates : 200 et 150 g par personne, médiane 175 g par personne, soit 700 g. Les oignons, comptés en pièces par les deux pages, trois pour quatre et quatre pour six ; à 130 g la pièce, médiane 92 g par personne, soit 368 g, qu'on écrit 350 g. C'est énorme pour une pizza et c'est bien ce que les deux sources donnent : la base est une compotée d'oignons, ce qui rapproche ce plat d'une pissaladière autant que d'une pizza, et il vaut mieux l'écrire que le corriger. L'ail : deux et trois gousses, soit une demi-gousse par personne, 10 g pour quatre. Les anchois sont le point faible : l'une des pages en compte seize filets, l'autre deux boîtes, aucune ne les pèse. On écrit 50 g égouttés pour quatre et on le signale, parce que c'est un chiffre décidé et non mesuré. La pâte vient de la troisième page du dossier, la seule qui la compose — 491 g de farine type 00, 294 g d'eau, 15 g de sel et moins d'un gramme de levure sèche pour quatre — et on la reprend telle quelle, arrondie à 490 g de farine et 295 ml d'eau ; c'est une pâte à fermentation longue, ce qui explique la levure si basse. Le thym est dans les deux pages retenues, jamais pesé : 3 g. L'huile d'olive de finition, deux cuillerées à soupe dans l'une : 30 ml. Durées : préparation, médiane 15 minutes des trois lignes, écrite 20 ; cuisson, médiane 15 minutes — mais c'est le seul temps de four, alors que la compotée d'oignons demande une vingtaine de minutes à la poêle avant. On écrit 30 minutes de cuisson totale et on le dit, plutôt que d'afficher un quart d'heure qui ne tiendrait pas.",
+      "plate": {
+        "role": "main",
+        "accepts": ["vegetables"],
+        "reason": "Pâte, tomate et oignon : le féculent et le légume sont là, la protéine se réduit à 50 g d'anchois pour quatre et il n'y a pas de fromage. Une salade verte ou un légume à côté équilibre l'assiette."
+      },
+      "ingredients": [
+        { "form": "Farine de blé type 00", "quantity": 490, "unit": "g", "role": "pâte", "optional": false },
+        { "form": "Eau", "quantity": 295, "unit": "ml", "role": "pâte", "optional": false },
+        { "form": "Levure boulangère sèche", "quantity": 1, "unit": "g", "role": "pâte", "optional": false },
+        { "form": "Sel fin", "quantity": 15, "unit": "g", "role": "pâte", "optional": false },
+        { "form": "Tomate fraîche mûre", "quantity": 700, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Oignon jaune cru", "quantity": 350, "unit": "g", "role": "légume", "optional": false },
+        { "form": "Anchois à l'huile, égoutté", "quantity": 50, "unit": "g", "role": "protéine", "optional": false },
+        { "form": "Ail cru", "quantity": 10, "unit": "g", "role": "aromatique", "optional": false },
+        { "form": "Thym frais", "quantity": 3, "unit": "g", "role": "aromate", "optional": false },
+        { "form": "Huile d'olive vierge extra", "quantity": 30, "unit": "ml", "role": "finition", "optional": false }
+      ],
+      "steps": [
+        { "n": 1, "instruction": "Délayer la levure dans l'eau à température ambiante, ajouter la farine puis le sel, et pétrir dix minutes jusqu'à une pâte lisse et élastique. Avec un gramme de levure pour un demi-kilo de farine, la pousse est longue et c'est voulu : le temps fait ici le travail que ferait sinon la quantité, et donne une mie alvéolée que la levée rapide ne donne pas." },
+        { "n": 2, "instruction": "Bouler la pâte, la couvrir et la laisser lever six à huit heures à température ambiante, ou toute une nuit au réfrigérateur. Une pâte qui a poussé longtemps s'étale à la main sans se rétracter ; une pâte pressée résiste et revient sur elle-même dès qu'on la lâche." },
+        { "n": 3, "instruction": "Émincer les oignons en fines lamelles et les faire compoter dans la moitié de l'huile d'olive à feu doux, vingt minutes, à couvert puis à découvert, jusqu'à ce qu'ils soient translucides et sucrés. Trois oignons et demi pour quatre parts font une couche épaisse : ce n'est pas un aromate, c'est la base de la garniture, et elle doit être cuite avant d'entrer au four sinon elle reste crue et piquante." },
+        { "n": 4, "instruction": "Pendant ce temps, monder les tomates, les épépiner et les couper en gros dés, puis les faire réduire dix minutes à feu vif dans une poêle à part avec l'ail haché et le thym effeuillé. Sept cents grammes de tomates fraîches rendent beaucoup d'eau ; posées crues sur la pâte, elles la noient." },
+        { "n": 5, "instruction": "Diviser la pâte en deux pâtons et les étaler à la main sur des plaques huilées, en poussant l'air du centre vers le bord pour garder une bordure épaisse. Le rouleau écrase les bulles que la longue pousse a formées et donne une pâte plate et sèche : ici, on étire du bout des doigts." },
+        { "n": 6, "instruction": "Étaler la compotée de tomate, répartir les oignons, poser les filets d'anchois en croix ou en rayons et arroser du reste d'huile d'olive. Les anchois se posent avant cuisson et non après : leur sel a besoin des dix minutes de four pour se diffuser dans la tomate, sinon on ne rencontre que des points salés." },
+        { "n": 7, "instruction": "Enfourner à 250 °C, four bien préchauffé, dix à quinze minutes selon la puissance, jusqu'à ce que la bordure soit boursouflée et tachée de brun. Ne pas saler la garniture : les anchois s'en chargent, et le sel de la pâte est déjà haut. Servir aussitôt, coupée en parts." }
+      ],
+      "techniques": ["pétrissage", "fermentation lente", "compotage", "réduction", "cuisson haute température"],
+      "variants": [
+        "Version italienne : coulis de tomate et mozzarella di bufala sur la même pâte, origan sec et basilic frais, sans oignon ni anchois (chefsimon)",
+        "Huile d'olive pimentée en finition à la place de l'huile d'olive nature (chefsimon)",
+        "Pâte laissée à fermenter 24 heures au froid, avec la même dose de levure (chefsimon)"
+      ],
+      "sensory": {
+        "profile": "savory_tomato",
+        "scores": { "sweet": 3, "salty": 4, "acidic": 3, "bitter": 1, "umami": 5, "heat": 0, "pungency": 2, "richness": 2, "freshness": 1, "intensity": 4 },
+        "dominant_flavors": ["anchois", "oignon compoté", "tomate cuite", "thym"],
+        "aroma_families": ["marin", "oignon_compoté", "tomate_cuite", "thym"],
+        "target_textures": ["croûte alvéolée", "légumes fondants", "contraste_léger"],
+        "signature_ingredients": ["Anchois à l'huile, égoutté", "Oignon jaune cru", "Tomate fraîche mûre"],
+        "identity_guardrails": [
+          "Aucune des deux sources retenues ne met de fromage : cette napolitaine-là n'en porte pas, et en ajouter en ferait une autre pizza",
+          "Les oignons se comptent en centaines de grammes et se compotent avant : crus, ils restent piquants et ne fondent pas en dix minutes de four",
+          "Les anchois entrent avant la cuisson pour que leur sel se diffuse dans la tomate",
+          "Tomates fraîches réduites à la poêle, jamais posées crues : elles noieraient la pâte"
+        ]
+      },
+      "conservation": "Se mange à la sortie du four. Les parts restantes se gardent 2 jours au réfrigérateur et se réchauffent 6 minutes à 220 °C sur une plaque chaude. La compotée d'oignons et la réduction de tomate se préparent 3 jours à l'avance et se gardent séparément au réfrigérateur — c'est ce qui ramène le plat à vingt minutes le soir venu. Les deux garnitures se congèlent 3 mois ; la pâte crue se congèle en pâtons 2 mois.",
+      "allergens": ["gluten", "poisson"]
+    }
+  ]
+}

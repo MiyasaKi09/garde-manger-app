@@ -1,0 +1,128 @@
+{
+  "dish": "Escalope de dinde à la crème",
+  "slug": "escalope-de-dinde-a-la-creme",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_escalope-de-dinde-a-la-creme-et-aux-echalotes_68302.aspx",
+      "site": "marmiton.org",
+      "nom": "Escalope de dinde à la crème et aux échalotes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 escalopes de dinde",
+        "3 échalotes",
+        "25 cl de crème fraîche liquide allégée",
+        "beurre ou huile",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 355,
+        "sha256": "e34106319a68a6d2"
+      },
+      "sha256_page": "f57d04452062a6dd"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_escalopes-de-dinde-aux-legumes-creme-au-curry_42974.aspx",
+      "site": "marmiton.org",
+      "nom": "Escalopes de dinde aux légumes, crème au curry : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 escalopes de dinde (ou poulet)",
+        "2 carottes",
+        "1 poivron rouge",
+        "1 oignon",
+        "raisins secs (environ 2 poignées)",
+        "2 cuillères à café de pâte de curry (ou curry en poudre)",
+        "crème fraîche (environ 20 cl)",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 463,
+        "sha256": "3845bbcc965b28cd"
+      },
+      "sha256_page": "eb63393f16c62c3f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_escalopes-de-dinde-a-la-creme-d-oignons_17122.aspx",
+      "site": "marmiton.org",
+      "nom": "Escalopes de dinde à la crème d'oignons : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 escalopes de dinde",
+        "2 cuillères à soupe de farine",
+        "3 oeufs",
+        "50 g d'amandes en poudre",
+        "150 g de champignons de Paris",
+        "1 filet de jus de citron",
+        "40 g de beurre",
+        "4 oignons",
+        "3 cuillères à soupe de bouillon de volaille .",
+        "1 cuillère à café de moutarde à l'estragon",
+        "15 cl de crème fraîche épaisse",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 809,
+        "sha256": "ce89beefdf2b53c7"
+      },
+      "sha256_page": "81c910893718cea5"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/tangerine-zest/recettes/escalope-de-dinde-a-la-creme-champignons-et-ail-des-ours",
+      "site": "chefsimon.com",
+      "nom": "Escalope de dinde à la crème, champignons et ail des ours",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "2 escalopes de dinde",
+        "400 g de champignons de Paris",
+        "2 cuillères à café de beurre",
+        "20 cl de crème fraiche",
+        "1 cuillère à soupe de moutarde",
+        "1 belle échalote",
+        "5 feuilles d’ail des ours (facultatif)",
+        "5 cl de vin blanc",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "6e966acded0cd68c"
+    },
+    {
+      "url": "https://www.750g.com/escalope-de-dinde-a-la-creme-r4666.htm",
+      "site": "750g.com",
+      "nom": "Escalope de dinde à la crème",
+      "portions": "4 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 escalopes de dinde",
+        "Lardon fumé",
+        "1 pot de crème fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 120,
+        "sha256": "f1590c361a130090"
+      },
+      "sha256_page": "5cea1dd962cdb86c"
+    }
+  ]
+}

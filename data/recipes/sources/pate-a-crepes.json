@@ -1,0 +1,162 @@
+{
+  "dish": "Pâte à crêpes",
+  "slug": "pate-a-crepes",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pate-a-crepes_12372.aspx",
+      "site": "marmiton.org",
+      "nom": "La meilleure recette de pâte à crêpes",
+      "portions": "15 crêpes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "300 g de farine",
+        "3 oeufs entiers",
+        "3 cuillères à soupe de sucre",
+        "2 cuillères à soupe d'huile",
+        "50 g de beurre fondu",
+        "60 cl de lait",
+        "5 cl de rhum"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 790,
+        "sha256": "ca30cd3045e7bd2d"
+      },
+      "sha256_page": "4b908bd738eca9d7"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pate-a-crepes-des-plus-raffinees_49665.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâte à crêpes (des plus raffinées) : la meilleure recette",
+      "portions": "6 personnes gourmandes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT2M",
+      "ingredients": [
+        "375 g de farine tamisée",
+        "3 pincées de sel",
+        "75 g de sucre en poudre",
+        "6 oeufs entiers",
+        "90 g de beurre fondu",
+        "1 l de lait",
+        "3 grand-marnier ou de rhum"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 372,
+        "sha256": "72402b30740943ce"
+      },
+      "sha256_page": "340d7d0244297975"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pate-a-crepes-simple_27121.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâte à crêpes simple : la meilleure recette",
+      "portions": "20 crêpes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "5 oeufs",
+        "500 g de farine",
+        "1 l de lait demi-écrémé",
+        "3 cuillères à soupe d'huile",
+        "0.5 verre de bière"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 255,
+        "sha256": "e31e37e0d150284e"
+      },
+      "sha256_page": "6e01827fef894522"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/la-pate-a-crepes",
+      "site": "chefsimon.com",
+      "nom": "La pâte à crêpes",
+      "portions": "",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "500 g de farine",
+        "6 oeufs entiers",
+        "5 cl d'huile ou 50 g de beurre noisette",
+        "1 litre de lait",
+        "une pincée de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 841,
+        "sha256": "7f0c83f97eff4ec5"
+      },
+      "sha256_page": "f72aa78324b188bd"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/la-pate-a-crepes-b737b368-70b9-4a24-9ed8-27e46923ff6f",
+      "site": "chefsimon.com",
+      "nom": "La pâte à crêpes",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "250g de farine",
+        "3 œufs",
+        "50cl de lait",
+        "50g de beurre fondu (froid)",
+        "1 pincée de sel",
+        "Un peu d'huile ou beurre pour la cuisson",
+        "2 CS de sucre",
+        "1 CS d'extrait de vanille ou rhum, fleur d'oranger"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1224,
+        "sha256": "48c6617c6547e383"
+      },
+      "sha256_page": "cc1f8586883d3fde"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jonathan-murielle/recettes/pate-a-crepes-avec-petit-lait-de-fromage-blanc",
+      "site": "chefsimon.com",
+      "nom": "Pâte à crêpes avec petit lait de fromage blanc",
+      "portions": "5 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "4 oeufs",
+        "500 ml de petit lait",
+        "250 grammes de farine",
+        "huile",
+        "sucre éventuellement"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 672,
+        "sha256": "ff9551c6ea410c62"
+      },
+      "sha256_page": "75b37d9ca2319c29"
+    },
+    {
+      "url": "https://www.750g.com/pate-a-crepes-r6383.htm",
+      "site": "750g.com",
+      "nom": "Pâte à crêpes rapide",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "450 g de farine",
+        "1 l de lait",
+        "6 oeufs",
+        "40 g de margarine",
+        "½ c. à c. de sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 378,
+        "sha256": "66dcc3064b61f030"
+      },
+      "sha256_page": "043ece6f46bb57e9"
+    }
+  ]
+}

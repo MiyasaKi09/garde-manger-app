@@ -1,0 +1,175 @@
+{
+  "dish": "Paella aux fruits de mer",
+  "slug": "paella-aux-fruits-de-mer",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_paella-fruits-de-mer-chorizo-et-poulet-de-patou_50730.aspx",
+      "site": "marmiton.org",
+      "nom": "Paëlla fruits de mer, chorizo et poulet de Patou : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "500 g de riz",
+        "1 kg de filet de poulet",
+        "500 g de calamars",
+        "1 l de moules",
+        "15 crevettes",
+        "1 chorizo",
+        "2 poivrons",
+        "1 kg de tomate",
+        "2 oignons",
+        "3 gousses d'ail",
+        "3 doses de safran",
+        "1 l de bouillon de volaille",
+        "5 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 534,
+        "sha256": "d11e07d2a6db6975"
+      },
+      "sha256_page": "0db5656139b0753f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_paella-de-marisco-paella-de-fruits-de-mer_28932.aspx",
+      "site": "marmiton.org",
+      "nom": "Paella de marisco (paella de fruits de mer) : la meilleure recette",
+      "portions": "10 personnes",
+      "duree_preparation": "PT2H",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 kg de riz rond",
+        "500 g de clovisses (avec coquillage, ça donne plus de goût)",
+        "500 g de gambas",
+        "1 kg de moules",
+        "500 g de calamars",
+        "10 chorizo",
+        "1 congre pour le jus (optionnel)",
+        "400 g de tomates pelées au jus",
+        "1 oignon",
+        "2 gousses d'ail",
+        "safran (ou/et colorant)",
+        "pimiento del piquillo",
+        "3 cubes de fumets de poisson",
+        "huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 838,
+        "sha256": "33a13351454b70dc"
+      },
+      "sha256_page": "ebf85f330e8a0802"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_paella-de-fruits-de-mer-espagnole_50770.aspx",
+      "site": "marmiton.org",
+      "nom": "Paëlla de fruits de mer espagnole : la meilleure recette",
+      "portions": "20 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "2 kg de riz",
+        "1.5 kg de langoustines (2 ou 3 par personne)",
+        "1 kg de calamar",
+        "1 kg de seiche",
+        "1 kg de gambas",
+        "1 kg de moules",
+        "1 kg de tomate",
+        "1 kg d'oignon",
+        "3 poivrons",
+        "1 bol de petits pois",
+        "10 gousses d'ail",
+        "persil",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 719,
+        "sha256": "f74e1b812694a8cb"
+      },
+      "sha256_page": "085b79fdc977db20"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/eldorami/recettes/paella-facile-au-poulet-et-aux-fruits-de-mer",
+      "site": "chefsimon.com",
+      "nom": "Paella facile au poulet et aux fruits de mer",
+      "portions": "",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "6  Pilons de poulet",
+        "400 grammes Riz long grain",
+        "3  Calamars",
+        "0.5 kilogrammes Crevettes grises",
+        "0.5 kilogrammes Crevettes roses",
+        "0.5 kilogrammes Moules surgelées",
+        "3  Oignons",
+        "3  Tomates",
+        "1  Poivron vert",
+        "0.5  Poivron rouge",
+        "0.5  Poivron jaune",
+        "150 grammes Petits pois",
+        "5 gousses Ail",
+        "1 tasse Persil",
+        "5 cuillères à soupe Coriandre",
+        "10  Olives vertes dénoyautées",
+        "1  Bouillon de volaille",
+        "0.5 cuillères à soupe Curcuma",
+        "1  Clou de girofle",
+        "Safran",
+        "Sel",
+        "Poivre",
+        "0.5 cuillères à café Gingembre",
+        "2 Bruine Thym",
+        "2  Laurier",
+        "1  Citron jaune",
+        "1  Orange",
+        "1  Piment"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 527,
+        "sha256": "5b7bf39fa292766c"
+      },
+      "sha256_page": "b56a18ce1f94630c"
+    },
+    {
+      "url": "https://www.750g.com/paella-safranee-aux-fruits-de-mer-r96822.htm",
+      "site": "750g.com",
+      "nom": "Paella safranée aux fruits de mer",
+      "portions": "6 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "6 haricots plats",
+        "3 gousses d'ail",
+        "1 c. à c. de paprika",
+        "⅖ g de safran",
+        "Huile d'olive",
+        "2 citrons",
+        "2 tomates",
+        "1,8 l de bouillon  de poisson chaud ou ou d'eau",
+        "12 crevettes",
+        "6 langoustines",
+        "6 gambas",
+        "12 palourdes",
+        "600 g de riz  spécial paella",
+        "12 moules  d'espagne",
+        "500 g de calamars"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1603,
+        "sha256": "bac56869d13de9c1"
+      },
+      "sha256_page": "e5f59428502c67a6"
+    }
+  ]
+}

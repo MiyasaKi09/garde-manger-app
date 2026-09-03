@@ -1,0 +1,223 @@
+{
+  "dish": "Poulet aux poivrons",
+  "slug": "poulet-aux-poivrons",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_emince-de-poulet-aux-trois-poivrons_70563.aspx",
+      "site": "marmiton.org",
+      "nom": "Emincé de Poulet aux trois Poivrons : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 blancs de poulet",
+        "1 poivron vert",
+        "1 poivron rouge",
+        "1 poivron jaune",
+        "2 cuillères à soupe de crème fraîche 15%",
+        "2 échalotes",
+        "1 gousse d'ail",
+        "2 cuillères à café de margarine",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 616,
+        "sha256": "fea5a6ead599a38a"
+      },
+      "sha256_page": "298ec9822c916006"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pates-au-poulet-poivrons-et-champignons_49227.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâtes au poulet,  poivrons et champignons : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 blancs de poulet",
+        "1 poivron vert ou rouge (ou 2 petits de chaque couleur)",
+        "2 tomates",
+        "2 champignons frais",
+        "25 cl de crème épaisse",
+        "500 g de pâtes",
+        "1 cuillère à soupe d'huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 616,
+        "sha256": "7b16f84a7738d458"
+      },
+      "sha256_page": "2748ec0e2720b7c5"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cannellonis-poulet-poivron-et-mozzarella_48433.aspx",
+      "site": "marmiton.org",
+      "nom": "Cannellonis poulet, poivron et mozzarella : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "12 canneloni",
+        "500 g de blancs de poulet ou 500 g de reste de poulet",
+        "1 oeuf",
+        "3 gousses d'ail",
+        "1 oignon",
+        "400 ml de coulis de tomate",
+        "1 poivron rouge",
+        "6 cuillères à soupe de crème fraîche",
+        "fromage râpé",
+        "mozzarella",
+        "huile d'olive",
+        "persil ciselé",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 19,
+        "signes": 1297,
+        "sha256": "10759546f1946302"
+      },
+      "sha256_page": "f8f996b6360bd20e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/brochettes-de-poulet-et-poitrine-fumee-a-la-courgette-et-poivron-grille-au-barbecue",
+      "site": "chefsimon.com",
+      "nom": "Brochettes de poulet et poitrine fumée à la courgette et poivron grillé au barbecue",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "1 blanc de poulet",
+        "8 rondelles de courgette d'environ 1 cm d'épaisseur",
+        "4 morceaux de poivron grillé",
+        "4 tranches de poitrine fumée",
+        "Ingrédients pour la marinade :",
+        "1 c. à soupe d'huile d'olive",
+        "1 c. à café de vinaigre balsamique",
+        "mélange d'ail, échalote et oignon séché au goût",
+        "estragon séché au goût",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 720,
+        "sha256": "94c4cd8d052c92ab"
+      },
+      "sha256_page": "1f2cf6ccc63b5a1a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/poulet-aux-poivrons-et-noix-de-cajou-35e237aa-6ade-451f-a4f3-d16558d4af5a",
+      "site": "chefsimon.com",
+      "nom": "Poulet aux poivrons et noix de cajou",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H35M",
+      "ingredients": [
+        "1 belle escalope de poulet",
+        "1/2 poivron jaune",
+        "1/2 poivron rouge",
+        "1/2 oignon blanc",
+        "1/2 oignon rouge",
+        "1 cm de gingembre frais",
+        "1/2 cuil. à café de piment en poudre",
+        "1 cuil. à café d'huile d'olive",
+        "20 g de noix de cajou",
+        "un peu de coriandre fraiche",
+        "2 cuil. à café de sauce nuoc-mam",
+        "1 cuil. à café de sauce soja sucrée",
+        "3 cuil. à café d'eau",
+        "1 filet de jus de citron vert",
+        "1 gousse d’ail"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 190,
+        "sha256": "333c88550b17d7f6"
+      },
+      "sha256_page": "d453fa4a705d234c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-ptite-ju-nantaise/recettes/salade-sucree-salee-poulet-marine-menthe-citron-ananas-et-poivrons-rouges",
+      "site": "chefsimon.com",
+      "nom": "Salade sucrée salée poulet mariné menthe citron, ananas et poivrons rouges",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "200g de filet de poulet",
+        "Le jus d’1 citron",
+        "5 tiges de menthe citron (ou classique)",
+        "5 tiges de coriandre",
+        "Huile d’olive",
+        "200g de tagliatelles sèches",
+        "1 ananas",
+        "1 poivron rouge",
+        "1 c à café de sucre",
+        "1 boule de Mozzarella"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 808,
+        "sha256": "8792c6c4fd669e01"
+      },
+      "sha256_page": "176cb60f9536d07e"
+    },
+    {
+      "url": "https://www.750g.com/quiche-poivron-courgette-poulet-r17310.htm",
+      "site": "750g.com",
+      "nom": "Quiche Poivron Courgette Poulet",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 tranche de blanc de poulet",
+        "1 pâte brisée",
+        "Herbes de Provence",
+        "½ courgette",
+        "1 poivron rouge",
+        "20 cl de lait concentré non sucré",
+        "4 oeufs",
+        "Fromage râpé",
+        "20 cl de crème liquide"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 414,
+        "sha256": "e990166279bfc759"
+      },
+      "sha256_page": "87ab18413178f4da"
+    },
+    {
+      "url": "https://www.750g.com/poulet-saute-au-poivron-et-au-gingembre-r87397.htm",
+      "site": "750g.com",
+      "nom": "Poulet sauté au poivron et au gingembre",
+      "portions": "3 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 poivron vert",
+        "2 oignons",
+        "250g de blancs de poulet",
+        "1 c à c de sucre",
+        "2 c à c de maïzena",
+        "1 blanc d'œuf battu",
+        "2 lamelles de gingembre frais",
+        "1/2 c à c d'huile de sésame",
+        "1/2 c à c de sel",
+        "4 c à s d'huile",
+        "1 c à s  de maïzena",
+        "2 c à s de vin blanc"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1168,
+        "sha256": "f77a9d8e0f5c8355"
+      },
+      "sha256_page": "8da88ef94a68b49a"
+    }
+  ]
+}

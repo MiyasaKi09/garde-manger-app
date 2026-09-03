@@ -1,0 +1,196 @@
+{
+  "dish": "Omelette aux champignons",
+  "slug": "omelette-aux-champignons",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-aux-champignons-et-courgettes_49852.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette aux champignons et courgettes : la meilleure recette",
+      "portions": "4 perssonnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "3 cuillères à soupe de Planta Fin Culinesse",
+        "100 g de champignons",
+        "1 courgette moyenne",
+        "3 échalotes ou 1 oignon moyen",
+        "1 gousse d'ail",
+        "2 oeufs",
+        "0.5 cuillère à soupe de thym fraîches",
+        "0.5 cuillère à café de poivre noir"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 760,
+        "sha256": "1e19f375cd04eef9"
+      },
+      "sha256_page": "2b9802a565f079d3"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-aux-lardons-champignons_22425.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette aux lardons, champignons.... : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "8 oeufs",
+        "125 g de lardons nature",
+        "125 g de champignons frais (girolle, champignon de Paris...)",
+        "5 pommes de terre cuites",
+        "1 oignon",
+        "sel et du poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 310,
+        "sha256": "a23e98b037f334b4"
+      },
+      "sha256_page": "6844e422c59ae188"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-aux-champignons-et-pesto_55116.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette aux champignons et pesto : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "6 oeufs",
+        "1 cuillère à soupe de lait",
+        "2 cuillères à soupe de pesto",
+        "1 petite boîte de champignon ou une poignée de champignons frais",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 268,
+        "sha256": "78d572f6a8a36535"
+      },
+      "sha256_page": "676d250b9b18815d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/omelette-aux-champignons-f7339667-3758-4c50-a5e8-80cb40c2e948",
+      "site": "chefsimon.com",
+      "nom": "Omelette aux champignons",
+      "portions": "1 personne",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "3 oeufs",
+        "100g de champignons de Paris",
+        "50g de feta",
+        "1CS de crème liquide entière (ou lait)",
+        "Sel et poivre",
+        "Huile d'olive ou beurre (pour la cuisson)",
+        "Ciboulette ou persil plat ciselé (pour servir)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 714,
+        "sha256": "8a2223052d9452d5"
+      },
+      "sha256_page": "4c8e09c77b287092"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/omelette-brouillee-au-jambon-et-champignons",
+      "site": "chefsimon.com",
+      "nom": "Omelette brouillée au jambon et champignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "8  œufs",
+        "150 g de champignons de Paris",
+        "3  tranches de jambon cru",
+        "1  oignon",
+        "1/2  bouquet de ciboulette",
+        "30 g de beurre",
+        "huile",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 113,
+        "sha256": "3d478539ecb00ed3"
+      },
+      "sha256_page": "1b708430960f41bd"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/nicolas-le-cuisinier/recettes/omelette-au-chou-fleur-et-aux-champignons",
+      "site": "chefsimon.com",
+      "nom": "Omelette au chou-fleur et aux champignons",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "1 petit chou-fleur",
+        "300 g de champignons de Paris",
+        "1 oignon rouge",
+        "100 g de pousses d'épinards",
+        "3 cuillères à soupe d'eau",
+        "1 cuillère à café de thym",
+        "5 oeufs",
+        "1 cuillère à café de curry en poudre",
+        "2 cuillères à soupe de crème de coco",
+        "1 petite pincée de piment",
+        "1 poignée de fromage râpé",
+        "5 brins de coriandre",
+        "huile d'olive",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "97541d10f14dabe5"
+    },
+    {
+      "url": "https://www.750g.com/omelette-aux-champignons-r87208.htm",
+      "site": "750g.com",
+      "nom": "Omelette forestière aux champignions",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT2M",
+      "ingredients": [
+        "1 pincée de basilic",
+        "4 ou 5 œufs (selon la faim)",
+        "30g de crème fraîche",
+        "200g de champignons de Paris"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 383,
+        "sha256": "7907826551ad2a0f"
+      },
+      "sha256_page": "b145104328c3ba24"
+    },
+    {
+      "url": "https://www.750g.com/omelette-aux-champignons-r18062.htm",
+      "site": "750g.com",
+      "nom": "Omelette aux champignons",
+      "portions": "1 personne",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 bol de champignon",
+        "2 oeufs",
+        "1 oignon  (petit)",
+        "1 pincée de bicarbonate de sodium",
+        "Persil",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 282,
+        "sha256": "5066326d21bc68aa"
+      },
+      "sha256_page": "279fa874bd174599"
+    }
+  ]
+}

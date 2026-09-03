@@ -1,0 +1,81 @@
+{
+  "dish": "Galette complète",
+  "slug": "galette-complete",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_galettes-bretonnes-completes_20899.aspx",
+      "site": "marmiton.org",
+      "nom": "Galettes bretonnes complètes : la meilleure recette",
+      "portions": "30 crêpes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "500 g de farine de blé noir",
+        "150 g de farine de blé",
+        "1 oeuf",
+        "2 cuillères à soupe d'huile",
+        "2 cuillères à café de sel",
+        "1.5 l d'eau",
+        "15 tranches de jambon",
+        "30 oeufs",
+        "300 g de gruyère"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 429,
+        "sha256": "b6dc28390afc2589"
+      },
+      "sha256_page": "40ca8c3cb07b7ccc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-cuisine-d-adeline/recettes/galette-bretonne-complete-jambon-oeuf-fromage",
+      "site": "chefsimon.com",
+      "nom": "Galette bretonne complète jambon, oeuf, fromage",
+      "portions": "1 personne",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "1 galette de sarrasin",
+        "1 tranche de jambon",
+        "1 oeuf",
+        "Emmental rapé",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 166,
+        "sha256": "b0ffdc3d7e37673b"
+      },
+      "sha256_page": "56049c3583d1a188"
+    },
+    {
+      "url": "https://www.750g.com/galettes-bretonnes-completes-au-jambon-gruyere-et-oeuf-r207646.htm",
+      "site": "750g.com",
+      "nom": "Galettes bretonnes complètes, au jambon, gruyère et oeuf",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "330 g de farine de sarrasin",
+        "1 oeuf",
+        "75 cl d'eau  froide",
+        "8 g de fleur de sel",
+        "30 g de beurre",
+        "120 g de jambon blanc",
+        "160 g de gruyère râpé",
+        "4 oeufs",
+        "40 g de beurre",
+        "1 brin de thym",
+        "4 pincées de poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1652,
+        "sha256": "5b3c6049d335ce36"
+      },
+      "sha256_page": "b1333b7a6b18e63c"
+    }
+  ]
+}

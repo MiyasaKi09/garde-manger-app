@@ -1,0 +1,105 @@
+{
+  "dish": "Pastitsio",
+  "slug": "pastitsio",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pastitsio-gratin-de-macaronis-et-bolognaise_66738.aspx",
+      "site": "marmiton.org",
+      "nom": "Pastitsio, gratin de macaronis et bolognaise : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "500 g de boeuf haché maigre",
+        "2 oignons rouges émincés",
+        "1 gousse d'ail entière épluchée",
+        "huile d'olive",
+        "2 grains de coriandre",
+        "persil émincé",
+        "3 tomates fraîches bien mûres ou du coulis de tomates de commerce",
+        "eau",
+        "1 l de lait frais",
+        "10 cuillères de farine",
+        "1 oeuf",
+        "1 petit morceau de beurre",
+        "muscade râpée",
+        "500 g de macaroni",
+        "gruyère râpé",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 23,
+        "signes": 1889,
+        "sha256": "2fb22c96073b4e8b"
+      },
+      "sha256_page": "aa21a2c90ef1ac30"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/popotte/recettes/pastitsio-bbb68319-f1b1-46d6-88c0-ae9c0c396572",
+      "site": "chefsimon.com",
+      "nom": "Pastitsio",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "1 kg de viande hachée de bœuf (ou mélange de bœuf, porc et agneau)",
+        "3 cuil à soupe d'huile d'olive",
+        "3 oignons râpés",
+        "1 carotte coupée en petit cube",
+        "3 feuilles de laurier",
+        "0,5 cuil à café de cannelle",
+        "1 cuil à café d'origan",
+        "1 verre de vin rouge",
+        "1 boite de tomate concassée",
+        "1 cuil à soupe de concentré de tomate",
+        "450 g de pâtes bucatini N°2",
+        "120 g de fromage râpé (grec ou pecorino) pour les pâtes",
+        "150 g de farine",
+        "2 gros œufs",
+        "120 g de fromage râpé (grec ou pecorino) pour la béchamel",
+        "Huile d'olive",
+        "Noix de muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "d5b65ec02439c855"
+    },
+    {
+      "url": "https://www.750g.com/pastitsio-gratin-de-pates-grec-a-la-viande-hachee-r77918.htm",
+      "site": "750g.com",
+      "nom": "Pastitsio (gratin de pâtes grec à la viande hachée)",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "200 g de macaroni",
+        "1 oignon",
+        "300 g de viande hachée",
+        "20 cl de coulis de tomate",
+        "¼ c. à c. de cannelle en poudre",
+        "35 cl de bouillon de légumes",
+        "60 g de gruyère râpé",
+        "2 oeufs",
+        "2 c. à s. de beurre",
+        "3 c. à s. de farine",
+        "½ l de lait",
+        "1 pincée de noix de muscade",
+        "Huile",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1090,
+        "sha256": "f46f419a5293aae9"
+      },
+      "sha256_page": "7886394423a8594f"
+    }
+  ]
+}

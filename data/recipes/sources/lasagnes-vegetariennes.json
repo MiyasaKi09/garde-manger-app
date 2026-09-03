@@ -1,0 +1,231 @@
+{
+  "dish": "Lasagnes végétariennes",
+  "slug": "lasagnes-vegetariennes",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_lasagnes-vegetariennes-facile_10527.aspx",
+      "site": "marmiton.org",
+      "nom": "Lasagnes végétariennes (facile) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "6 tomates fraîches (ou pelées en boîte, à défaut)",
+        "4 courgettes",
+        "poivre",
+        "sel",
+        "basilic frais",
+        "herbes de Provence",
+        "lasagnes",
+        "400 g de gruyère râpé",
+        "200 g de coulis de tomate",
+        "4 oignons de taille moyenne",
+        "50 cl de béchamel ou (si on est pressé) de crème fraîche épaisse ou semi-épaisse"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 895,
+        "sha256": "e1e8b96c43ee6358"
+      },
+      "sha256_page": "30ee74669e600216"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_lasagnes-vegetariennes-au-chevre_85814.aspx",
+      "site": "marmiton.org",
+      "nom": "Lasagnes végétariennes au chèvre : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "6 feuilles de lasagnes (sans pré-cuisson)",
+        "200 g de coulis de tomate (ou plus selon les goûts)",
+        "1 tomate",
+        "1 oignon",
+        "150 g de champignons de Paris frais",
+        "2 courgettes",
+        "100 g de fromages de chèvre",
+        "50 g de mozzarella râpée",
+        "2 cuillères à café de basilic frais",
+        "2 cuillères à café de herbes de Provence",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 835,
+        "sha256": "8b52c61f28153069"
+      },
+      "sha256_page": "52d54b06a1dcb941"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_lasagnes-vegetariennes-a-la-creme-de-chevre-au-pesto_33273.aspx",
+      "site": "marmiton.org",
+      "nom": "lasagnes végétariennes à la crème de chèvre au pesto : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "6 feuilles de lasagnes",
+        "1 pot de pesto",
+        "1 pot de fromage de chèvre frais",
+        "crème liquide",
+        "4 tomates",
+        "2 aubergines",
+        "pignons de pin",
+        "huile d'olive",
+        "basilic",
+        "ail",
+        "1 pot de coulis de tomate fraîches",
+        "parmesan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 695,
+        "sha256": "20772b6289bfd051"
+      },
+      "sha256_page": "318e517312bd13bb"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/kitchen-story/recettes/lasagnes-vegetariennes-efa5e3b0-d6c1-409d-9cd4-6b9af39827a0",
+      "site": "chefsimon.com",
+      "nom": "Lasagnes végétariennes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H50M",
+      "ingredients": [
+        "2 belles aubergines (env. 500g)",
+        "1 courgette",
+        "4 feuilles à lasagnes fraiches (env. 200g)",
+        "250g de mozzarella di buffala",
+        "400g de tomates concassées",
+        "100g de fromage Provolone (ou mozzzarella)",
+        "15g d'origan frais",
+        "4cl d'huile d'olive",
+        "20 tomates cerises"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1037,
+        "sha256": "c483b34673a35d62"
+      },
+      "sha256_page": "3c4eceb23e8f738a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-cuisine-d-adeline/recettes/lasagnes-vegetariennes-aux-courgettes-tomates-et-mozzarella",
+      "site": "chefsimon.com",
+      "nom": "Lasagnes végétariennes aux courgettes, tomates et mozzarella",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "15 à 20 feuilles de lasagnes",
+        "400 g de tomates concassées",
+        "2 à 3 boules de mozzarella",
+        "2 courgettes",
+        "1 aubergine",
+        "5 à 6 tomates",
+        "Basilic, herbes de Provence",
+        "Fromage râpé",
+        "1 gousse d'ail",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 73,
+        "sha256": "89333f09d07bae02"
+      },
+      "sha256_page": "4e7024a9509b8c25"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/paul-vergne/recettes/lasagnes-vegetariennes-a082946e-5f6b-4d43-842e-d39ec978c53b",
+      "site": "chefsimon.com",
+      "nom": "Lasagnes végétariennes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H35M",
+      "ingredients": [
+        "12 feuilles de lasagne",
+        "1 Aubergine coupée en rondelles",
+        "1 oignon coupé en rondelles",
+        "300g de sauce tomate",
+        "2 boules de mozzarella",
+        "2 tomates coupées en rondelles",
+        "2 filets d’huile d’olive",
+        "4 cuillères à soupe de crème liquide",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 620,
+        "sha256": "7da1cf60711331a2"
+      },
+      "sha256_page": "23a746cd15f16106"
+    },
+    {
+      "url": "https://www.750g.com/lasagnes-vegetariennes-r42015.htm",
+      "site": "750g.com",
+      "nom": "Lasagnes végétariennes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "15 plaques de lasagnes",
+        "450 g d'epinards  frais",
+        "300 g de ricotta",
+        "90 g de parmesan râpé",
+        "15 cl de crème fraîche au lait cru",
+        "2 oeufs",
+        "1 carotte",
+        "1 courgette",
+        "1 aubergine",
+        "2 tomates  (grosses)",
+        "1 oignon",
+        "1 échalote",
+        "6 feuilles de basilic  frais",
+        "2 brins de thym  frais",
+        "3 pincées d'origan",
+        "Persil plat",
+        "Huile d'olive",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 2996,
+        "sha256": "113d896b44def819"
+      },
+      "sha256_page": "9fb8923bb4812b69"
+    },
+    {
+      "url": "https://www.750g.com/lasagnes-vegetariennes-r88731.htm",
+      "site": "750g.com",
+      "nom": "Lasagnes végétariennes économiques",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "18 feuilles de lasagnes",
+        "5 c. à s. de beurre",
+        "4 c. à s. de farine",
+        "3 verres de lait",
+        "2 c. à c. de sel ou sel fin",
+        "½ c. à c. de noix de muscade  fraîchement râpée",
+        "2 oignons",
+        "2 carottes",
+        "1 aubergine",
+        "2 courgettes",
+        "Sauce tomate",
+        "Huile d'olive",
+        "Sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 1023,
+        "sha256": "48d72fd192b32a1e"
+      },
+      "sha256_page": "97a1e65f61a4eee5"
+    }
+  ]
+}

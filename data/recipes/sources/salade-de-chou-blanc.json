@@ -1,0 +1,162 @@
+{
+  "dish": "Salade de chou blanc",
+  "slug": "salade-de-chou-blanc",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-au-chou-blanc-et-aux-pommes_20328.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade au chou blanc et aux pommes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT3M",
+      "ingredients": [
+        "2 pommes (1 verte et une granny)",
+        "2 carottes",
+        "0.25 chou blanc",
+        "150 g de lard fumé",
+        "1 cuillère à soupe de vinaigre",
+        "1 petit pot de mayonnaise",
+        "2 oeufs durs",
+        "4 gouttes de tabasco",
+        "10 cl de crème fraîche",
+        "1 cuillère à café de curry",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 428,
+        "sha256": "468678aeae78b8ef"
+      },
+      "sha256_page": "1bdd9d8834069155"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-au-chou-blanc_31383.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade au chou blanc : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "0.5 chou blanc",
+        "1 pomme rouge",
+        "2 carottes",
+        "60 g de raisins secs",
+        "1 oignon",
+        "1 cuillère à café de moutarde",
+        "3 cuillères à soupe de vinaigre de vin",
+        "mayonnaise",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 566,
+        "sha256": "149ebabac3c5c64b"
+      },
+      "sha256_page": "e45cf6c3462a40a1"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_salade-de-chou-blanc-a-l-epaule-et-emmental_24581.aspx",
+      "site": "marmiton.org",
+      "nom": "Salade de chou blanc à l'épaule et emmental : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT0S",
+      "ingredients": [
+        "1 chou blanc en fines lanières",
+        "3 tranches de jambon (d'épaule)",
+        "70 g de gruyère râpé",
+        "3 cuillères à soupe de vinaigre de vin",
+        "4 cuillères à soupe de mayonnaise",
+        "poivre blanc",
+        "sel",
+        "cumin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 181,
+        "sha256": "681de5fa76aa918f"
+      },
+      "sha256_page": "1b131b90810b673f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/salade-de-chou-blanc-marine-fb903a7a-f41e-4d85-b0e2-dd2793d1de1a",
+      "site": "chefsimon.com",
+      "nom": "Salade de chou blanc mariné",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1/2 chou blanc",
+        "1 cs de gros sel marin",
+        "4 cs de vinaigre blanc ou de cidre",
+        "4 cs d’huile d'olive",
+        "2 poignées de cerneaux de noix",
+        "2 cs de persil ciselé (ou ciboulette)",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1104,
+        "sha256": "5e9f2206407c173b"
+      },
+      "sha256_page": "ec7f6ac8832f0e9c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/salade-de-chou-kale-haricots-blancs",
+      "site": "chefsimon.com",
+      "nom": "Salade de chou kale haricots blancs",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "200 g chou kale (chou frisé)",
+        "1 boite de haricots blancs (ou lentilles ou autres haricots)",
+        "1 avocat",
+        "graines de chanvre",
+        "graines de citrouille",
+        "1 cs d'huile d'olive",
+        "1 cs de sirop d'érable",
+        "3 cs de jus de citron",
+        "1 cc de moutarde",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 590,
+        "sha256": "449e3358d0c3709b"
+      },
+      "sha256_page": "5ade71a430b6f453"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/salade-de-chou-blanc-carotte-et-pomme",
+      "site": "chefsimon.com",
+      "nom": "Salade de chou blanc, carotte et pomme",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1/4 de chou blanc",
+        "1 pomme (verte ou rouge peu importe)",
+        "1 carotte",
+        "1 citron",
+        "1 cs de moutarde en grains",
+        "1 cs de miel",
+        "1 cs de vinaigre balsamique",
+        "1 cs d’huile de sésame (ou de noix)",
+        "4 cs de yaourt à la grecque",
+        "4 cs de graines de courge",
+        "éplucheur à julienne"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 805,
+        "sha256": "7d37dec2c20cedc6"
+      },
+      "sha256_page": "442016d9738f7817"
+    }
+  ]
+}
