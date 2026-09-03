@@ -1,0 +1,82 @@
+{
+  "dish": "Escalope de dinde aux champignons",
+  "slug": "escalope-de-dinde-aux-champignons",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_escalopes-de-dinde-aux-champignons_332094.aspx",
+      "site": "marmiton.org",
+      "nom": "Escalopes de dinde aux champignons : la meilleure recette",
+      "portions": "4 Personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 escalopes de dinde de 200 g chacune",
+        "0.5 cuillère à café de sel",
+        "0.5 cuillère à café de poivre noir",
+        "80 g de farine",
+        "80 g de beurre ou de margarine",
+        "2 oignons",
+        "250 g de champignons de Paris",
+        "1 jus de citron",
+        "20 cl de vin blanc",
+        "20 cl de crème fraîche",
+        "100 g de fromage râpé (stracchino)",
+        "1 pincée de muscade",
+        "1 bouquet de persil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 658,
+        "sha256": "9e53f8e3775f4465"
+      },
+      "sha256_page": "ae8dfca413ea417c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/tangerine-zest/recettes/escalope-de-dinde-a-la-creme-champignons-et-ail-des-ours",
+      "site": "chefsimon.com",
+      "nom": "Escalope de dinde à la crème, champignons et ail des ours",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "2 escalopes de dinde",
+        "400 g de champignons de Paris",
+        "2 cuillères à café de beurre",
+        "20 cl de crème fraiche",
+        "1 cuillère à soupe de moutarde",
+        "1 belle échalote",
+        "5 feuilles d’ail des ours (facultatif)",
+        "5 cl de vin blanc",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "5db9058c8517157b"
+    },
+    {
+      "url": "https://www.750g.com/escalope-de-dinde-avec-riz-aux-champignons-r83953.htm",
+      "site": "750g.com",
+      "nom": "Escalope de dinde avec riz aux champignons",
+      "portions": "2 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "Escalope de dinde",
+        "Riz",
+        "Crème fraîche",
+        "Champignon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 221,
+        "sha256": "041c90f27adda737"
+      },
+      "sha256_page": "352e8a62cd8bd8ee"
+    }
+  ]
+}

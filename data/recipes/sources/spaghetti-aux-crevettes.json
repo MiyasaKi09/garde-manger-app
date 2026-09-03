@@ -1,0 +1,216 @@
+{
+  "dish": "Spaghetti aux crevettes",
+  "slug": "spaghetti-aux-crevettes",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_spaghettis-aux-crevettes-et-curry_27335.aspx",
+      "site": "marmiton.org",
+      "nom": "Spaghettis aux crevettes et curry : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "400 g de crevettes",
+        "1 bouquet de brocoli",
+        "500 g de champignons (de Paris)",
+        "2 échalotes",
+        "20 cl de crème fraîche liquide",
+        "500 g de spaghetti",
+        "50 g de beurre",
+        "curry",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 899,
+        "sha256": "69d64ce27162d0a9"
+      },
+      "sha256_page": "6631cb1f5b89354f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_spaghetti-aux-crevettes-et-a-la-creme_53043.aspx",
+      "site": "marmiton.org",
+      "nom": "Spaghetti aux crevettes et à la crème : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 paquet de spaghetti",
+        "1 kg de crevettes fraîches",
+        "2 oignons",
+        "thym",
+        "aneth",
+        "poivre",
+        "sel",
+        "herbes de Provence",
+        "ail moulu",
+        "40 cl de crème épaisse",
+        "0.25 l de vin blanc sec",
+        "1 cuillère à soupe de boursin cuisine ail et fines herbes (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 733,
+        "sha256": "f4626bd7986e432c"
+      },
+      "sha256_page": "019469e05b9974d6"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_spaghetti-sauce-rose-crevettes-et-vodka_49248.aspx",
+      "site": "marmiton.org",
+      "nom": "Spaghetti sauce rose, crevettes et vodka : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "500 g de spaghetti ou linguine",
+        "200 g de crevettes décortiquées (au rayon frais, pas congelé)",
+        "crème fraîche liquide (1 pot)",
+        "purée de tomate (1 paquet)",
+        "tomate séchée",
+        "1 oignon",
+        "piment de Cayenne",
+        "vodka"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 612,
+        "sha256": "bb6a7e7ed4c775e5"
+      },
+      "sha256_page": "b653432c7b47d0ea"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-culinaire/recettes/spaghetti-aux-crevettes-sauce-tomate",
+      "site": "chefsimon.com",
+      "nom": "Spaghetti aux crevettes sauce tomate",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "1 kg ou moins de crevettes décortiquées, crues, fraîches ou déjà décongelées si vous utilisez des surgelées (Note 1)",
+        "1  grande boîte 796 ml | 28 onces de tomates entières pelées avec le jus (note 2)",
+        "1  oignon",
+        "3  ou 4 gousses d'ail selon leurs tailles",
+        "Huile d'olive",
+        "¼  cuillerée à café d'origan en poudre",
+        "¼  cuillerée à café de poivre noir",
+        "1  cuillerée à café de sel (ou selon votre goût)",
+        "4  cuillerées à soupe de feuilles de basilic hachées (ou équivalent séchées si vous n'avez pas de basilic frais)",
+        "2  cuillerées à soupe de persil frais haché",
+        "350 g de spaghetti (ou autres pâtes au choix)",
+        "Parmesan râpé (facultatif)",
+        "Persil et/ou basilic ciselé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "3bc598116272967d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/plaisiretequilibre/recettes/spaghetti-aux-poireaux-et-crevettes",
+      "site": "chefsimon.com",
+      "nom": "Spaghetti aux poireaux et crevettes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "250 g de spaghettis",
+        "500 g de crevettes",
+        "2 poireaux",
+        "5 cuillères à soupe de Noilly Prat",
+        "4 cuillères à soupe de crème liquide",
+        "sel, poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "863255b13e3bfba7"
+    },
+    {
+      "url": "https://www.750g.com/spaghettis-aux-crevettes-sautees-ail-et-tomates-cerise-r204641.htm",
+      "site": "750g.com",
+      "nom": "Spaghettis aux crevettes sautées, ail et tomates cerise",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT12M",
+      "ingredients": [
+        "350 g de spaghetti",
+        "24 crevettes",
+        "½ gousse d'ail",
+        "Huile d'olive",
+        "20 tomates cerise",
+        "4 c. à s. de jus de citron",
+        "4 branches de persil plat"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 673,
+        "sha256": "c3472306d4b8db59"
+      },
+      "sha256_page": "31133f3ec2368ac8"
+    },
+    {
+      "url": "https://www.750g.com/spaghetti-aux-crevettes-r97628.htm",
+      "site": "750g.com",
+      "nom": "Spaghetti aux crevettes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "450 g de spaghetti",
+        "Olive noire",
+        "Parmesan",
+        "1 c. à s. d'huile d'olive",
+        "Sel ou sel fin",
+        "Poivre du moulin",
+        "300 g de crevettes décortiquées",
+        "Piment d'Espelette",
+        "5 mélange 5 baies",
+        "2 c. à s. d'huile d'olive",
+        "1 c. à s. de persil  haché",
+        "1 pincée de sel ou sel fin",
+        "400 g de tomates pelées concassées",
+        "Poivre noir du moulin",
+        "Sel ou sel fin",
+        "2 c. à s. de basilic  haché",
+        "2 gousses d'ail",
+        "2 c. à s. d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 676,
+        "sha256": "999a9223a3e5dc11"
+      },
+      "sha256_page": "9e45a00452ebe265"
+    },
+    {
+      "url": "https://www.750g.com/spaghettis-sauce-crevettes-saint-jacques-et-citron-r35037.htm",
+      "site": "750g.com",
+      "nom": "Spaghettis sauce crevettes, saint-jacques et citron",
+      "portions": "1 personne",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "1/2cc d'ail en poudre",
+        "2cs de jus de citron (ou moins si vous préférez le citron moins prononcé)",
+        "2cs de crème à 4%",
+        "80g de petites saintjacques surgelées",
+        "70g de crevettes décortiquées surgelées",
+        "200g de spaghettis cuits"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 406,
+        "sha256": "5d94cc743ab61fec"
+      },
+      "sha256_page": "e79d9c39909ad909"
+    }
+  ]
+}

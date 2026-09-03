@@ -1,0 +1,36 @@
+{
+  "dish": "Crevettes à la provençale",
+  "slug": "crevettes-a-la-provencale",
+  "sources_count": 1,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_crevettes-facon-provencale_166940.aspx",
+      "site": "marmiton.org",
+      "nom": "Crevettes façon provencale : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "500 g de crevettes roses précuites",
+        "2 tomates",
+        "1 courgette",
+        "1 oignon rose",
+        "8 gousses d'ail",
+        "0.5 poivron",
+        "2 cuillères à soupe d'huile d'olive",
+        "2 cuillères à soupe de vinaigre d'alcool",
+        "1 cuillère à soupe de moutarde",
+        "poivre",
+        "sel",
+        "piment"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 781,
+        "sha256": "646c4cb2d968c894"
+      },
+      "sha256_page": "42e31fcd65e6adc0"
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "dish": "Saumon aux épinards",
+  "slug": "saumon-aux-epinards",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_lasagnes-au-saumon-et-aux-epinards_14665.aspx",
+      "site": "marmiton.org",
+      "nom": "Lasagnes au saumon et aux épinards : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 paquet de lasagnes précuites",
+        "300 g de saumon fumé",
+        "500 g d'épinards en branches surgelés",
+        "parmesan",
+        "50 cl de crème fraîche liquide liquide",
+        "poivre et beurre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 473,
+        "sha256": "5b5ca989239f4552"
+      },
+      "sha256_page": "a6d5e66c9e226751"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_lasagne-saumon-epinard-mascarpone_22972.aspx",
+      "site": "marmiton.org",
+      "nom": "LASAGNE SAUMON ÉPINARD (Mascarpone) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "500 g de mascarpone",
+        "1 dé de safran",
+        "400 g de saumon",
+        "1 paquet de lasagnes rayon frais",
+        "2 échalotes",
+        "1 paquet d'épinards surgelés (500 g)",
+        "1 citron",
+        "huile d'olive",
+        "1 bouteille de coulis de tomate",
+        "1 sachet de parmesan (50 g)",
+        "gruyère râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 872,
+        "sha256": "1ee9a0cc8af7d4cb"
+      },
+      "sha256_page": "563bacba99d213be"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_quiche-au-saumon-et-aux-epinards_22164.aspx",
+      "site": "marmiton.org",
+      "nom": "Quiche au saumon et aux épinards : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 rouleau de pâte feuilletée",
+        "200 g d'épinards hachés surgelés",
+        "200 g de saumon frais ou surgelé",
+        "25 cl de crème fraîche fluide",
+        "3 oeufs",
+        "30 g de parmesan râpé",
+        "basilic",
+        "aneth ciselés (frais ou surgelés)",
+        "poivre",
+        "sel",
+        "50 g de gruyère (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 524,
+        "sha256": "986f050895bc8cce"
+      },
+      "sha256_page": "50a0bd5d44ef5aaf"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/tastygourmandise/recettes/lasagne-epinards-au-saumon-a-la-creme",
+      "site": "chefsimon.com",
+      "nom": "Lasagne épinards au saumon à la crème",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "Pâte à lasagne: 500g",
+        "Saumon en pavé: 300g",
+        "Grande courgette: 1",
+        "Calamar coupé en rondelles: 300g",
+        "Crème fraîche: 1L",
+        "Quelques feuilles d’aneth frais",
+        "Une noisette de beurre",
+        "Huile d'olive: 6 càs",
+        "Mozarelle râpée: 100g",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 117,
+        "sha256": "90761f213565ac7b"
+      },
+      "sha256_page": "e1937bd37c3445d8"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/le-popoteur/recettes/tarte-saumon-epinards-543a4c40-79d4-4830-942e-1c8882ab84b8",
+      "site": "chefsimon.com",
+      "nom": "Tarte saumon épinards",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H35M",
+      "ingredients": [
+        "1 rouleau de pâte feuilletée pur beurre",
+        "350 gr d'épinards frais",
+        "350 gr de saumon frais (pavé ou filet)",
+        "4 échalotes",
+        "3 gousses d'ail",
+        "3 œufs",
+        "20 cl de crème semi-épaisse",
+        "15 cl de lait",
+        "150 gr de noix",
+        "150 gr de mozzarella râpée",
+        "70 gr de beurre demi-sel",
+        "sel fin/poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 20,
+        "signes": 1526,
+        "sha256": "5ae8493b6c053bd1"
+      },
+      "sha256_page": "049bc2431ac77170"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/passeportpourlacuisine/recettes/roules-de-saumon-fume-aux-epinards-9b17a41f-52d8-4b27-b4bc-395cfc4ef288",
+      "site": "chefsimon.com",
+      "nom": "Roulés de saumon fumé aux épinards",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 grandes tranches de saumon fumé",
+        "Une dizaine de branches d’épinards",
+        "100 g de fromage blanc",
+        "Baies roses",
+        "Aneth"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 350,
+        "sha256": "51ac3dc45814846e"
+      },
+      "sha256_page": "a320f82b22f814a5"
+    }
+  ]
+}

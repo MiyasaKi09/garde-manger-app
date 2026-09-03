@@ -1,0 +1,210 @@
+{
+  "dish": "Crevettes au lait de coco",
+  "slug": "crevettes-au-lait-de-coco",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_crevettes-au-lait-de-coco_20742.aspx",
+      "site": "marmiton.org",
+      "nom": "Crevettes au lait de coco de Roxane : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "500 g de crevettes roses décortiquées",
+        "20 cl de lait de coco",
+        "1 poivron jaune",
+        "1 citron vert",
+        "1 tomate",
+        "1 gousse d'ail",
+        "Fines herbes",
+        "huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 459,
+        "sha256": "d0a7b6ff110bbf94"
+      },
+      "sha256_page": "8a1453e36123eb67"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_calamars-et-crevettes-au-lait-de-coco-et-curry_69047.aspx",
+      "site": "marmiton.org",
+      "nom": "Calamars et crevettes au lait de coco et curry : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "500 g de calamars",
+        "500 g de crevettes tigrées (ou autre)",
+        "2 oignons",
+        "2 poivrons",
+        "3 gousses d'ail",
+        "2 cuillères à soupe de curry en poudre",
+        "100 g de concentré de tomates",
+        "3 cuillères à café de sucre",
+        "1 boîte de lait de coco (400 ml)",
+        "1 feuille de laurier"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 721,
+        "sha256": "ad6a8f2a93002691"
+      },
+      "sha256_page": "7b2575c52b776f68"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_nouilles-chinoises-aux-crevettes-et-lait-de-coco_67244.aspx",
+      "site": "marmiton.org",
+      "nom": "Nouilles chinoises aux crevettes et lait de coco : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "250 g de nouilles chinoises",
+        "500 g de crevettes décortiquees",
+        "200 g de noix de saint-jacques (pas indispensables, mais c'set encore meilleur)",
+        "1 poireau",
+        "50 cl de lait de coco",
+        "poivre",
+        "sel",
+        "ciboulette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 634,
+        "sha256": "3fac177e22f92e10"
+      },
+      "sha256_page": "c0e28f2c6bb106b6"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-petits-plats-du-prince/recettes/panier-vapeur-de-crevettes-au-lait-de-coco",
+      "site": "chefsimon.com",
+      "nom": "Panier vapeur de crevettes au lait de coco",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "20 crevettes roses",
+        "150 g de germes de soja",
+        "1 oignon blanc frais",
+        "1 racine de gingembre",
+        "3 gousses d'ail",
+        "1 piment frais",
+        "30 cl de lait de coco",
+        "1 cuillère à café d'huile d'olive",
+        "1 cuillère à café de citronnelle en copeaux",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 883,
+        "sha256": "17ff41a35a4e75a6"
+      },
+      "sha256_page": "810761cb6f992365"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/etienne-8bf6d8e3-3f09-4f09-98ba-d94e30fce24d/recettes/crevettes-legumes-lait-de-coco",
+      "site": "chefsimon.com",
+      "nom": "crevettes legumes lait de coco",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "1 gros oignon",
+        "1 carotte",
+        "1/2 poivron",
+        "un e boite de pousses de bambou",
+        "400 grammes de crevettes cuites décortiqués",
+        "piment d'espelette",
+        "piment de cayenne",
+        "gingembre frais",
+        "une boite de lait de coco",
+        "fleur de sel, poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 458,
+        "sha256": "64d1261f86372416"
+      },
+      "sha256_page": "b140f5c96ed10f7d"
+    },
+    {
+      "url": "https://www.750g.com/curry-de-crevettes-au-lait-de-coco-r201803.htm",
+      "site": "750g.com",
+      "nom": "Curry de crevettes au lait de coco",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "400 g de crevettes  décortiquées cuites",
+        "40 cl de lait de coco  Suzi Wan",
+        "100 g de vermicelles de soja  Suzi Wan",
+        "1 oignon  haché",
+        "30 g de beurre",
+        "1 gousse d'ail  hachée",
+        "2 c. à s. de coriandre  hachée",
+        "1 c. à s. de nuoc-mâm  Suzi Wan",
+        "1 c. à s. de curry en poudre",
+        "1 c. à c. de curcuma",
+        "Poivre",
+        "Sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 932,
+        "sha256": "c3d128beef09087b"
+      },
+      "sha256_page": "a36e9360fdb44286"
+    },
+    {
+      "url": "https://www.750g.com/crevettes-au-curry-et-lait-de-coco-r21112.htm",
+      "site": "750g.com",
+      "nom": "Crevettes au curry et lait de coco",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "16 crevettes",
+        "1 courgette",
+        "1 carotte",
+        "1 oignon",
+        "20 cl de lait de coco",
+        "3 champignons de Paris  ou 4 champignon de Paris",
+        "Gingembre (en poudre)  (facultatif)",
+        "Curry",
+        "Poivre",
+        "Sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 742,
+        "sha256": "a8bb30760ebe4b09"
+      },
+      "sha256_page": "a9e279ae433e7476"
+    },
+    {
+      "url": "https://www.750g.com/crevettes-au-lait-de-coco-r15272.htm",
+      "site": "750g.com",
+      "nom": "Crevettes au lait de coco : saveurs des îles",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "Huile d'olive",
+        "Ail",
+        "2 oignons",
+        "3 tomates",
+        "30 cl de lait de coco",
+        "500 g de queues de crevettes  crues"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 290,
+        "sha256": "d409759e628ca08d"
+      },
+      "sha256_page": "1b63a9c16405b68a"
+    }
+  ]
+}

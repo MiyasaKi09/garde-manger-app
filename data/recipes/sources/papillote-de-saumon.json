@@ -1,0 +1,180 @@
+{
+  "dish": "Papillote de saumon",
+  "slug": "papillote-de-saumon",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_amour-de-saumon-en-papillote_21494.aspx",
+      "site": "marmiton.org",
+      "nom": "Amour de saumon en papillote : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "4 pavés de saumon frais",
+        "20 tomates cerise",
+        "20 champignons de Paris frais",
+        "1 gousse d'ail",
+        "4 brins d'aneth",
+        "huile d'olive",
+        "1 citron jaune",
+        "sel",
+        "poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 567,
+        "sha256": "c1b5e03fc86a0986"
+      },
+      "sha256_page": "51cccfb78e77f511"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_papillote-de-saumon-a-la-mozzarella_23382.aspx",
+      "site": "marmiton.org",
+      "nom": "Papillote de saumon à la mozzarella : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "2 pavés de saumon",
+        "1 boule de mozzarella",
+        "2 tomates",
+        "herbes de Provence",
+        "basilic",
+        "poivre",
+        "sel",
+        "huile d'olive",
+        "2 olives noires",
+        "2 gousses d'ail (pas trop grosses)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 790,
+        "sha256": "85d59cdd08d1a33b"
+      },
+      "sha256_page": "5b6b5e90485dd4fa"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_papillotes-de-saumon-au-miel-curry-et-gingembre_30711.aspx",
+      "site": "marmiton.org",
+      "nom": "Papillotes de saumon au miel, curry et gingembre : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 pavés de saumon (environ 150 g chacun)",
+        "4 grosses cuillères à soupe de crème fraîche (15% c'est très bien)",
+        "2 cuillères à café de gingembre en poudre",
+        "2 cuillères à café de curry en poudre",
+        "4 grosses cuillères à soupe de miel",
+        "15 g de beurre",
+        "150 g d'oignons émincés",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 571,
+        "sha256": "c82f67ff9450ad83"
+      },
+      "sha256_page": "b9ab34af94c15d79"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/papillotes-de-saumon-au-chou-chinois",
+      "site": "chefsimon.com",
+      "nom": "Papillotes de saumon au chou chinois",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "6  pavés de saumon",
+        "1  chou chinois",
+        "2  carottes",
+        "6  feuilles de brick",
+        "2  cuil. à soupe d’huile",
+        "cannelle",
+        "fenouil",
+        "gingembre",
+        "1  gousse d’ail",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 134,
+        "sha256": "394b3509cb5bb61d"
+      },
+      "sha256_page": "723d70dc4d69e158"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/papillotes-de-saumon-au-gingembre",
+      "site": "chefsimon.com",
+      "nom": "Papillotes de saumon au gingembre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H12M",
+      "ingredients": [
+        "4  morceaux de filet de saumon",
+        "40 g de gingembre frais",
+        "1  citron vert",
+        "2 cuil. à café de sauce soja",
+        "1 cuil. à soupe d’huile",
+        "1  pointe de couteau de piment de Cayenne"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 192,
+        "sha256": "8a9be1d6893a05dc"
+      },
+      "sha256_page": "a3c51c84d4f5f165"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/enrique/recettes/tendre-saumon-en-papillote-tomate-cerise-poireau-et-gingembre",
+      "site": "chefsimon.com",
+      "nom": "Tendre saumon en papillote, tomate cerise, poireau et gingembre",
+      "portions": "1 personne",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H18M",
+      "ingredients": [
+        "1 pavé de saumon",
+        "1 grappe de tomates cerise",
+        "1 poireau",
+        "4-5 cm de gingembre frais",
+        "1 citron jaune",
+        "quelques feuilles de coriandre",
+        "1 cuillère à soupe de crème fraiche",
+        "1 cuillère à café de moutarde forte",
+        "sel fin et poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 566,
+        "sha256": "01c33a500df61728"
+      },
+      "sha256_page": "9097e3f984b68e82"
+    },
+    {
+      "url": "https://www.750g.com/saumon-en-papillote-r81721.htm",
+      "site": "750g.com",
+      "nom": "Saumon en papillote économique",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "Crème fraîche",
+        "Sel ou sel fin",
+        "Poivre",
+        "Feuille de céleri",
+        "Citron",
+        "Carotte",
+        "Pavé de saumon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 596,
+        "sha256": "48b7a2b64dd8727b"
+      },
+      "sha256_page": "88535e646d699b03"
+    }
+  ]
+}

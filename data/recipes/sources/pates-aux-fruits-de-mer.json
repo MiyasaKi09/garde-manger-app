@@ -1,0 +1,136 @@
+{
+  "dish": "Pâtes aux fruits de mer",
+  "slug": "pates-aux-fruits-de-mer",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pates-aux-fruits-de-mer-sauce-verte_18715.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâtes aux fruits de mer sauce verte : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "500 g de Fruits de mer surgelés",
+        "500 g de pâtes",
+        "4 oignons moyens (1 par personne)",
+        "250 g de mascarpone",
+        "1 petit pot de cerfeuil surgelé (+/- 100 g)",
+        "0.25 bouquet de persil haché",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 406,
+        "sha256": "12a250f3ee4c712d"
+      },
+      "sha256_page": "c09deeaf6557af05"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pates-fraiches-aux-fruits-de-mer-chorizo-et-tomates-sechees_47266.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâtes fraîches aux fruits de mer, chorizo et tomates séchées : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 barquette de tagliatelles vertes au basilic",
+        "1 barquette de tagliatelles standard",
+        "6 tomates séchées coupées en petits dés",
+        "0.25 chorizo coupé tranches puis en petits dés",
+        "450 g de Fruits de mer surgelés",
+        "15 cl de crème fraîche",
+        "huile d'olive",
+        "basilic ciselé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 408,
+        "sha256": "b65abf9575cbebd7"
+      },
+      "sha256_page": "8aa9891cdd6d368a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pates-aux-fruits-de-mer_25841.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâtes aux fruits de mer : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "500 g de pâtes",
+        "500 g de moules",
+        "500 g de coques",
+        "250 g de seiches",
+        "8 noix de saint-jacques",
+        "20 cl de vin blanc",
+        "3 cuillères à soupe d'huile",
+        "20 g de beurre",
+        "3 gousses d'ail",
+        "1 cuillère à café de thym",
+        "6 feuilles de basilic",
+        "6 brins de persil",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 543,
+        "sha256": "cfd73c758c21dbee"
+      },
+      "sha256_page": "ead35d4230ad1770"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/pates-aux-fruits-de-mer-et-truite-fumee",
+      "site": "chefsimon.com",
+      "nom": "Pâtes aux fruits de mer et truite fumée",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H14M",
+      "ingredients": [
+        "180 g de pâtes",
+        "180 g de mélange de fruits de mer : moules, crevettes, pétoncles",
+        "2 petites tranches de truite fumée",
+        "80 ml de crème semi épaisse à 4% de MG",
+        "60 ml de vin blanc sec",
+        "5 g de maïzena",
+        "1 échalote",
+        "1 c. à soupe d'huile d'olive",
+        "estragon",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 984,
+        "sha256": "0b88025f2d31decf"
+      },
+      "sha256_page": "d0d02e4ddfe4e1d8"
+    },
+    {
+      "url": "https://www.750g.com/pates-aux-fruits-de-mer-r83377.htm",
+      "site": "750g.com",
+      "nom": "Pâtes aux fruits de mer",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "300 g de pâtes",
+        "200 g de fruits de mer  surgelés",
+        "1 échalote",
+        "5 cl de crème fraîche liquide",
+        "5 cl de fumet de poisson",
+        "2 cl de vin blanc",
+        "Brin de persil",
+        "Sel ou sel fin",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 606,
+        "sha256": "27758b9ca3d59408"
+      },
+      "sha256_page": "71db34f9a8beeb3c"
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "dish": "Gratin de fruits de mer",
+  "slug": "gratin-de-fruits-de-mer",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-fruits-de-mer-simplissime_21630.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin de fruits de mer simplissime : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 sachet de Fruits de mer surgelés",
+        "1 sachet de quenelle au brochet",
+        "0.5 l d'eau",
+        "30 g de beurre",
+        "40 g de farine",
+        "2 cuillères à soupe de fumets de poissons",
+        "100 ml de crème liquide",
+        "poivre",
+        "sel",
+        "chapelure"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 698,
+        "sha256": "ca3b30e388243c61"
+      },
+      "sha256_page": "cdd51bcd42e80c46"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-fruits-de-mer-de-mamie-zoizo_56148.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin de fruits de mer de mamie zoizo : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 sachet de Fruits de mer (mais c'est meilleur avec des fruits de mer frais, langouste, crabe, crevettes, moules, coquilles St jacques)",
+        "4 quenelles de brochets",
+        "300 g de chanterelles",
+        "chapelure",
+        "concentré de tomates selon votre goût",
+        "20 cl de crème fraîche",
+        "50 cl de lait",
+        "30 g de beurre",
+        "30 g de farine pour la béchamel",
+        "10 cl de vin blanc",
+        "fromage râpé",
+        "1 échalote"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 1241,
+        "sha256": "c2d72810ed480436"
+      },
+      "sha256_page": "5661f18cfa1c2e54"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-fruits-de-mer_21548.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin de fruits de mer : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "12 noix de saint-jacques",
+        "200 g de crevettes décortiquées",
+        "1 l de moules",
+        "6 morceaux de lotte selon la taille des morceaux",
+        "0.5 boîte de homard",
+        "2 cuillères de crème fraîche",
+        "paprika",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 538,
+        "sha256": "b2ad38dfc3f437de"
+      },
+      "sha256_page": "714839f34f0067d9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clementine-8b16a900-a596-45c5-9c12-3cd5ff02a6bc/recettes/gratin-de-brocoli-chou-fleur-et-fruits-de-mer",
+      "site": "chefsimon.com",
+      "nom": "Gratin de brocoli, chou-fleur et fruits de mer",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H27M",
+      "ingredients": [
+        "350 g de bouquets de brocoli",
+        "350 g de bouquets de chou-fleur",
+        "150 g de carottes, coupées en demi-rondelles minces",
+        "3 c. à soupe de beurre",
+        "4 c. à soupe de farine",
+        "350 ml  de lait chaud",
+        "1 c. à café de sel d’ail",
+        "1 c. à café d’épices italiennes",
+        "poivre du moulin",
+        "100 g de noix de St. Jacques, coupées en deux dans l'épaisseur",
+        "100 g de crevettes crues écaillées et sans queue, coupées en deux",
+        "200 g de fromage cheddar fort, râpé",
+        "50 g de fromage pecorino, râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "202a31ad103b156e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/virginie-et-fabien/recettes/gratine-de-fruits-de-mer-a-la-bisque-de-homard",
+      "site": "chefsimon.com",
+      "nom": "Gratiné de fruits de mer à la bisque de homard",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "500 g de&nbsp;fruits de mer&nbsp;(moules,&nbsp;encornets,&nbsp;crevettes)",
+        "180 g de&nbsp;bisque de homard",
+        "1  échalote",
+        "3 c. à soupe de crème fraîche liquide",
+        "gruyère râpé&nbsp;",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "9e248bf3ce9df586"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/epicetout/recettes/gratin-de-fruits-de-mer-pommes-de-terre-et-brocoli",
+      "site": "chefsimon.com",
+      "nom": "Gratin de fruits de mer pommes de terre et brocoli",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "400 g de fruits de mer mélangés prêts à cuire (moules, pétoncles, calamar, petites crevettes…)",
+        "3 pommes de terre",
+        "1 petit brocoli",
+        "1 échalote",
+        "40 cl de lait",
+        "50 g de beurre",
+        "40 g de farine",
+        "Persil plat",
+        "80 g de fromage râpé",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "6dcd87f723d36efd"
+    },
+    {
+      "url": "https://www.750g.com/gratin-de-aux-fruits-de-mer-r91099.htm",
+      "site": "750g.com",
+      "nom": "Gratin de aux fruits de mer",
+      "portions": "4 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "Beaufort",
+        "1 saucebéchamel faite avec50 clde lait",
+        "20g de beurre",
+        "250g de penne",
+        "150g de fruits de mer par personne (moules, crevettes, noix de pétoncles)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 168,
+        "sha256": "5901a2d44e29acb7"
+      },
+      "sha256_page": "2574587769987391"
+    },
+    {
+      "url": "https://www.750g.com/gratin-aux-fruits-de-mer-r83970.htm",
+      "site": "750g.com",
+      "nom": "Gratin aux fruits de mer",
+      "portions": "10 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "350g de champignons de Paris",
+        "Du poivre de cayenne",
+        "2 petits pots de crème",
+        "2 c à c de beurre",
+        "2 verre de liqueur de cognac",
+        "2 c à c de farine",
+        "Une carotte",
+        "1 oignon",
+        "3 verres de vins blancs",
+        "Limandes de 250g",
+        "2 l de moules",
+        "250g de crevettes",
+        "Thym",
+        "Laurier",
+        "350g de langoustines",
+        "2 soles"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1125,
+        "sha256": "5d78a3e71db29ed0"
+      },
+      "sha256_page": "ba104b645f999010"
+    }
+  ]
+}

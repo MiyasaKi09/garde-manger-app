@@ -1,0 +1,264 @@
+{
+  "dish": "Crevettes à la crème",
+  "slug": "crevettes-a-la-creme",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_crevettes-a-la-creme-et-aux-fettucine_11907.aspx",
+      "site": "marmiton.org",
+      "nom": "Crevettes à la crème et aux fettucine : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "500 g de fettucines",
+        "500 g de crevettes",
+        "30 g de beurre",
+        "1 cuillère à soupe d'huile d'olive",
+        "2 oignons nouveaux , hachés",
+        "1 gousse d'ail écrasée",
+        "250 ml de crème liquide",
+        "persil frais haché pour décorer"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 780,
+        "sha256": "d516f3df532a892f"
+      },
+      "sha256_page": "fe579ed7877cf730"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tagliatelles-fraiches-sauce-a-la-creme-aux-noix-de-saint-jacques-et-crevettes-a-la-creme_67278.aspx",
+      "site": "marmiton.org",
+      "nom": "Tagliatelles fraîches sauce à la crème, aux noix de Saint-Jacques et crevettes à la crème : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "500 g de tagliatelles fraîches",
+        "200 g de noix de saint-jacques surgelées avec ou sans corail selon les goûts",
+        "100 g de crevettes surgelées décortiquées",
+        "5 cuillères à soupe de crème fraîche",
+        "2 jaunes d'oeuf",
+        "1 cuillère à soupe de persil émincée",
+        "poivre",
+        "1 cuillère à soupe d'huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 702,
+        "sha256": "19f33c2e10efe549"
+      },
+      "sha256_page": "64b86e6f93307058"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pate-aux-crevettes-a-la-creme_171330.aspx",
+      "site": "marmiton.org",
+      "nom": "Pâte aux crevettes a la crème : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "500 g de pâtes",
+        "120 g de crevettes (roses de préférence)",
+        "2 tomates",
+        "1 oignon",
+        "4 cuillères à soupe de crème fraîche",
+        "persil",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 519,
+        "sha256": "9471dbd3896d8a95"
+      },
+      "sha256_page": "9769568f13a38307"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mark-van-vreckom/recettes/dos-de-cabillaud-en-croute-de-chorizo-creme-de-coco-blancs-sabayon-de-crevettes-grises-artichauts",
+      "site": "chefsimon.com",
+      "nom": "Dos de cabillaud en croute de chorizo, crème de coco blancs, sabayon de crevettes grises, artichauts",
+      "portions": "3 personnes",
+      "duree_preparation": "PT02H00M",
+      "duree_cuisson": "PT02H00M",
+      "ingredients": [
+        "Pour la crème de coco blanc (selon Peter Goossens)",
+        "250 G COCO BLANC",
+        "1 L D'EAU",
+        "50 CL BOUILLON DE VOLAILLE",
+        "1 CLOU DE GIROFLE",
+        "1 CAROTTE",
+        "1 OIGNON MOYEN",
+        "1/2 POIREAU",
+        "1 BRANCHE DE CELERI VERT",
+        "1 GOUSSE D'AIL",
+        "80 G CHORIZO",
+        "10 CL CREME 40% MG",
+        "HUILE DE CHORIZO (A DEFAUT HUILE PIMENTEE)",
+        "POIVRE, SEL",
+        "Pour la panure de chorizo (idée dans un vieu 'Nous Deux')",
+        "100 G CHORIZO",
+        "40 G PARMESAN",
+        "40 G CHAPELURE",
+        "100 G BEURRE POMMADE",
+        "SEL",
+        "Pour le sabayon de crevettes grises (selon Viki Geunes, 't Zilte à Mol)",
+        "150 G TETES DE CREVETTES",
+        "UN PEU DE BEURRE",
+        "BRUNOISE D'OIGNON, CAROTTE ET CELERI VERT",
+        "UN PEU DE PUREE DE TOMATES",
+        "UNE RASADE DE COGNAC",
+        "20 CL DE VIN BLANC",
+        "200 G BEURRE DE FERME",
+        "2 JAUNES D'OEUFS",
+        "3 C.A.S. D'EAU",
+        "JUS DE CITRON",
+        "SEL",
+        "POIVRE DE CAYENNE",
+        "Autres ingrédients",
+        "2 BEAUX MORCEAUX DE DOS DE CABILLAUD",
+        "UNE BONNE POIGNEE DE CREVETTES GRISES",
+        "3 PETITS ARTICHAUTS VIOLETS",
+        "UN MORCEAU DE CHORIZO",
+        "SEL, POIVRE",
+        "HUILE D'OLIVE",
+        "CITRON",
+        "EAU"
+      ],
+      "etapes_empreinte": {
+        "nombre": 41,
+        "signes": 3591,
+        "sha256": "721f533628862390"
+      },
+      "sha256_page": "ae728451b6a21582"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/le-popoteur/recettes/crevettes-a-ma-facon-a-la-creme-de-coco",
+      "site": "chefsimon.com",
+      "nom": "Crevettes à ma façon à la crème de coco",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "1 kg de crevettes (600 gr décortiquées)",
+        "2 oignons moyens",
+        "6 à 8 gousses d'ail (30 gr)",
+        "40 cl de crème de coco",
+        "150 gr de sauce tomates cuisinées",
+        "20 gr de gingembre frais",
+        "2 citrons verts",
+        "15 gr de persil plat",
+        "10 gr de coriandre fraîche",
+        "4 cuillères à soupe d'huile d'olive",
+        "sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 1047,
+        "sha256": "5d2d166b7eae590c"
+      },
+      "sha256_page": "1619a8dc6885679c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/tagliatelles-aux-crevettes-et-a-la-creme",
+      "site": "chefsimon.com",
+      "nom": "Tagliatelles aux crevettes et à la crème",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "200 g de tagliatelles fraiches au blé complet",
+        "1  courgette",
+        "200 g de crevettes roses décortiquées",
+        "1 poignée d’amandes effilées",
+        "ciboulette",
+        "thym",
+        "1 gousse d’ail",
+        "crème légère",
+        "huile d’olive",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 221,
+        "sha256": "f5192f058a0795aa"
+      },
+      "sha256_page": "ed3c3820b8bb2a0c"
+    },
+    {
+      "url": "https://www.750g.com/crevettes-a-la-creme-r66130.htm",
+      "site": "750g.com",
+      "nom": "Crevettes à la crème classiques",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "600 g de crevettes décortiquées",
+        "50 cl de crème fraîche épaisse",
+        "Sel ou sel fin",
+        "Poivre",
+        "Ail en poudre",
+        "Persil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 364,
+        "sha256": "06aaedd64163837e"
+      },
+      "sha256_page": "609ca6b64b214456"
+    },
+    {
+      "url": "https://www.750g.com/crevettes-croustillantes-et-sauce-cremeuse-aux-agrumes-r50271.htm",
+      "site": "750g.com",
+      "nom": "Crevettes croustillantes et sauce crémeuse aux agrumes",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "1 zeste de citron vert",
+        "1 jus de citron vert",
+        "½ cuillère à soupe de moutarde",
+        "Sel",
+        "Poivre",
+        "1 oignon",
+        "50g de farine",
+        "1 paquet de pâtes de riz fines",
+        "12 crevettes roses de belle taille",
+        "½ L d'huile d'arachide",
+        "1 orange",
+        "½ cuillère à soupe de miel",
+        "25 cl de Bridelight 4% fraîche épaisse"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 712,
+        "sha256": "a2d1f4a198ea7881"
+      },
+      "sha256_page": "cde36f5ebf615556"
+    },
+    {
+      "url": "https://www.750g.com/crevettes-a-la-creme-pour-aperos-r37388.htm",
+      "site": "750g.com",
+      "nom": "Crevettes à la crème pour apéros",
+      "portions": "3 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "aneth",
+        "Sel",
+        "Poivre",
+        "1 tasse d'huile d'olive",
+        "2 yaourts de chèvre ou 2 tasses de crème fraîche",
+        "une trentaine de crevettes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 502,
+        "sha256": "bc8044d570c92ccb"
+      },
+      "sha256_page": "b37d229c6bf99180"
+    }
+  ]
+}

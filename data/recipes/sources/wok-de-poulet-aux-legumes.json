@@ -1,0 +1,220 @@
+{
+  "dish": "Wok de poulet aux légumes",
+  "slug": "wok-de-poulet-aux-legumes",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_wok-de-poulet-aux-legumes-varies_18368.aspx",
+      "site": "marmiton.org",
+      "nom": "Wok de poulet aux légumes variés : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "400 g d'escalopes de poulet",
+        "1 poivron rouge",
+        "1 poivron vert",
+        "2 tomates",
+        "3 carottes",
+        "100 g de petits pois",
+        "100 g de petits pois mange-tout",
+        "champignon noir et champignons parfumés à votre convenance",
+        "sauce soja",
+        "nuoc mam",
+        "paprika ,",
+        "gingembre",
+        "poivre",
+        "fécule de pomme de terre ."
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1208,
+        "sha256": "4931123fc05305b3"
+      },
+      "sha256_page": "93911dd4c7c40f21"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poulet-au-wok-aux-legumes-du-soleil_36932.aspx",
+      "site": "marmiton.org",
+      "nom": "Poulet au wok aux légumes du soleil : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "3 cuisses de poulet",
+        "1 aubergine moyenne",
+        "1 poivron jaune",
+        "1 poivron rouge",
+        "1 échalote",
+        "2 tomates moyennes coupées en 8 morceaux chacune",
+        "1 boîte de tomates concassées (pas la grande boite, la taille en dessous)",
+        "sel",
+        "3 pincées de coriandre en poudre",
+        "3 pincées de mélange 5 baies",
+        "d'épices à volaille",
+        "4 cuillères à soupe d'huile d'arachide",
+        "4 brins de ciboulette",
+        "4 branches de persil frais"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 763,
+        "sha256": "c9db2a36ff481df8"
+      },
+      "sha256_page": "d03b07d390e3dd29"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_wok-de-poulet-curry-et-petits-legumes_57629.aspx",
+      "site": "marmiton.org",
+      "nom": "Wok de poulet curry et petits légumes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 escalopes de poulet",
+        "2 échalotes",
+        "2 courgettes",
+        "6 carottes",
+        "1 poivron jaune",
+        "3 cuillères de sauce soja",
+        "6 cuillères d'huile",
+        "curry en poudre au goût"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 651,
+        "sha256": "b91087d7b2bc7088"
+      },
+      "sha256_page": "f8db11a3127ac794"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/john/recettes/wok-poulet-paprika-au-riz-et-legumes-sautes",
+      "site": "chefsimon.com",
+      "nom": "Wok poulet paprika au riz et légumes sautés",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "2 Escalopes de poulet",
+        "Paprika",
+        "Riz",
+        "Huile d'olive",
+        "Sel",
+        "1 Oignon",
+        "1 Poivron rouge",
+        "1 Courgette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 750,
+        "sha256": "1b52ed92572f5134"
+      },
+      "sha256_page": "53f76124d99deca1"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/keskonmangemaman/recettes/wok-de-legumes-et-poulet-a-la-coriandre",
+      "site": "chefsimon.com",
+      "nom": "Wok de légumes et poulet à la Coriandre",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "4 blancs de poulet",
+        "200 grammes de jeunes épis de maïs",
+        "2 carottes",
+        "1 poivron rouge",
+        "200 grammes de pois gourmands",
+        "2 échalotes",
+        "1 doigt de gingembre",
+        "1 bouquet de coriandre",
+        "8 pak choï",
+        "3 c à soupe d'huile de sésame x2",
+        "1 c à café de poudre d'ail",
+        "sel et poivre du moulin",
+        "de la sauce aigre douce pimentée pour servir."
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1383,
+        "sha256": "e0f1c1bc9846e092"
+      },
+      "sha256_page": "32a8f50044caa8e6"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/wok-de-nouilles-aux-legumes-et-poulet",
+      "site": "chefsimon.com",
+      "nom": "Wok de nouilles aux légumes et poulet",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "400 g de nouilles de riz",
+        "300 g de blancs de poulet",
+        "180 g de champignons",
+        "1  poivron rouge",
+        "1  petit piment",
+        "16  mini-épais de maïs  (ou maïs en grains)",
+        "1  chou chinois  (ou un petit brocoli)",
+        "1 poignée de cacahuètes",
+        "2  gousses d’ail",
+        "1 cm de gingembre",
+        "6 cuil. à soupe de sauce soja",
+        "4 cuil. à soupe d’huile d’arachides",
+        "2 cuil. à soupe d’huile de sésame"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 135,
+        "sha256": "f7c44077d9fff5ed"
+      },
+      "sha256_page": "ac14bc73263b8a9b"
+    },
+    {
+      "url": "https://www.750g.com/wok-de-legumes-au-poulet-r100632.htm",
+      "site": "750g.com",
+      "nom": "Wok de légumes au poulet en cocotte",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "2 blanc de volaille",
+        "500 g de légume",
+        "2 gousses d'ail",
+        "2 c. à s. de sauce soja",
+        "2 c. à s. de coriandre  fraîche hachée",
+        "2 c. à s. d'huile de sésame",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 888,
+        "sha256": "cda4fa26c727c524"
+      },
+      "sha256_page": "366fbac59d9a597f"
+    },
+    {
+      "url": "https://www.750g.com/wok-de-poulet-legumes-et-pates-r202333.htm",
+      "site": "750g.com",
+      "nom": "Wok de poulet, légumes et pâtes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT14M",
+      "ingredients": [
+        "300 g de tagliatelles",
+        "2 filets de filets de poulet",
+        "12 tomates cerise",
+        "2 carottes",
+        "1 oignon",
+        "Sauce barbecue  Amora"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 699,
+        "sha256": "476972d2d867c13a"
+      },
+      "sha256_page": "595ebfe0ea2bc40f"
+    }
+  ]
+}

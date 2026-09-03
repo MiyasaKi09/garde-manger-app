@@ -1,0 +1,78 @@
+{
+  "dish": "Lieu noir à la crème",
+  "slug": "lieu-noir-a-la-creme",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_filet-de-lieu-noir-creme-et-moutarde_343779.aspx",
+      "site": "marmiton.org",
+      "nom": "Filet de lieu noir  crème et moutarde : la meilleure recette",
+      "portions": "4 personne",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "500 g de lieu noir noir",
+        "5 cuillères à soupe de crème",
+        "1 grosse cuillère à soupe de moutarde de Dijon",
+        "2 cuillères à soupe de persil haché",
+        "1 cuillère à soupe de ciboulette",
+        "2 cuillères à soupe d'huile d'olive",
+        "1 pincée de sel",
+        "1 poivre du moulin",
+        "1 tomate"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 424,
+        "sha256": "474c25d4af25526b"
+      },
+      "sha256_page": "ec3feace58fc0d6e"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/oh-la-gourmande/recettes/filet-de-lieu-noir-a-la-creme-moutardee",
+      "site": "chefsimon.com",
+      "nom": "Filet de lieu noir à la crème moutardée",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 filets de lieu noir",
+        "15 cl de crème semi-épaisse allégée",
+        "1 c à s de moutarde à l'ancienne",
+        "sel de Camargue aux épices de Combawa",
+        "poivre",
+        "1 pincée de piment d'Espelette Ederki",
+        "quelques tiges de ciboulette",
+        "persil frais",
+        "1 poivron mariné"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "e26366fac432287c"
+    },
+    {
+      "url": "https://www.750g.com/lieu-noir-a-la-creme-de-boursin-r35350.htm",
+      "site": "750g.com",
+      "nom": "Lieu noir à la crème de Boursin",
+      "portions": null,
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "Sel de Guérande",
+        "1 c. à s. de boursin",
+        "10 cl de crème liquide",
+        "1 filet de lieu noir  filet"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 241,
+        "sha256": "841a483414de9e79"
+      },
+      "sha256_page": "2516da57d6679889"
+    }
+  ]
+}

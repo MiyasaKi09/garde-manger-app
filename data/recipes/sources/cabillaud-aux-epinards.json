@@ -1,0 +1,155 @@
+{
+  "dish": "Cabillaud aux épinards",
+  "slug": "cabillaud-aux-epinards",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-cabillaud-aux-epinards_26656.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin de cabillaud aux épinards  : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "800 g de lieu noir",
+        "1 cube de bouillon pour poisson",
+        "20 g de beurre",
+        "500 g d'épinards surgelés",
+        "muscade",
+        "150 g de crème fraîche",
+        "100 g de gruyère râpé",
+        "125 g de purée de pommes de terre",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 723,
+        "sha256": "094aa0ade5cc472d"
+      },
+      "sha256_page": "a3bbd63bfa0e0957"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cabillaud-aux-epinards-bechamel_166827.aspx",
+      "site": "marmiton.org",
+      "nom": "Cabillaud aux épinards béchamel : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 filets de lieu noir",
+        "400 g d'épinards hachés",
+        "béchamel",
+        "parmesan",
+        "muscade",
+        "poivre",
+        "sel",
+        "beurre",
+        "béchamel",
+        "100 g de beurre",
+        "100 g de farine",
+        "0.5 l de lait",
+        "50 g de fromage râpé",
+        "muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 590,
+        "sha256": "05d48bf6f8567d2e"
+      },
+      "sha256_page": "f66fcb4164c54f5a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_papillote-de-cabillaud-sur-son-lit-d-epinard_54328.aspx",
+      "site": "marmiton.org",
+      "nom": "Papillote de cabillaud sur son lit d'épinard : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 lieu noir",
+        "50 g d'épinards (en branche ou hachée) surgelés",
+        "crème fraîche",
+        "persil",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 476,
+        "sha256": "f976a7d1610e50de"
+      },
+      "sha256_page": "7866ba2cc87c43c0"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/valerie-filhol/recettes/cabillaud-aux-epinards-sauce-aux-herbes",
+      "site": "chefsimon.com",
+      "nom": "Cabillaud aux épinards sauce aux herbes",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "500 g d’épinards frais sans la tige",
+        "350 g de dos de cabillaud en un seul morceau",
+        "Sel gris non raffiné",
+        "Poivre noir du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "3821c812fdd869bb"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/oh-la-gourmande/recettes/macaronis-aux-epinards-et-cabillaud",
+      "site": "chefsimon.com",
+      "nom": "Macaronis aux épinards et cabillaud",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H12M",
+      "ingredients": [
+        "40 g de parmesan",
+        "1 gousse d'ail",
+        "2 échalotes",
+        "20 g de beurre",
+        "450 g d'eau",
+        "100 g de lait",
+        "100 g de crème fraîche épaisse allégée",
+        "sel",
+        "poivre",
+        "1 c à c d'épice Carry Bombay SARABAR ou du curry",
+        "100 g de jeunes pousses d'épinard",
+        "225 g de macaroni",
+        "250 g de dos de cabillaud"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "e4c783c3ee04ed5b"
+    },
+    {
+      "url": "https://www.750g.com/gratins-de-cabillaud-aux-epinards-r41688.htm",
+      "site": "750g.com",
+      "nom": "Gratins de cabillaud aux épinards",
+      "portions": "3 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "Fromage râpé",
+        "Farine",
+        "Lait",
+        "Branche d'epinard en branche surgelé",
+        "Filet de filet de cabillaud"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 401,
+        "sha256": "f5d772a90de5003c"
+      },
+      "sha256_page": "aa4708caacf38a37"
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "dish": "Brochettes de crevettes",
+  "slug": "brochettes-de-crevettes",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_brochettes-aux-crevettes-et-mangue-au-miel_66700.aspx",
+      "site": "marmiton.org",
+      "nom": "Brochettes aux crevettes et mangue au miel : la meilleure recette",
+      "portions": "10 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "1 mangue",
+        "20 crevettes",
+        "1 gousse d'ail",
+        "miel",
+        "sirop d'érable",
+        "huile d'olive",
+        "poivre 5 baies",
+        "sel",
+        "paprika",
+        "piment de Cayenne"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 462,
+        "sha256": "100797f651abb6df"
+      },
+      "sha256_page": "4d99a35c260120d2"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_brochettes-de-crevettes-au-chorizo-et-ananas_173736.aspx",
+      "site": "marmiton.org",
+      "nom": "Brochettes de crevettes au chorizo et ananas : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT2H",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "48 crevettes crues",
+        "1 chorizo doux",
+        "1 petite boîte d'ananas en morceaux",
+        "20 cl d'huile d'olive",
+        "1 jus de citron vert",
+        "1 cuillère à café de paprika doux",
+        "0.5 cuillère à café de gingembre",
+        "5 cl de whisky"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 406,
+        "sha256": "15d12551dbfa7735"
+      },
+      "sha256_page": "2d6ebcaa859b57f3"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_brochettes-de-crevettes-a-l-ananas_47523.aspx",
+      "site": "marmiton.org",
+      "nom": "Brochettes de crevettes à l'ananas : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT2H",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "40 crevettes crus",
+        "1 boîte de 300 g d'ananas en tranches",
+        "300 g de poitrine fumée tranchée",
+        "1 jus de citron vert",
+        "5 cuillères à soupe d'huile d'olive",
+        "0.5 cuillère à café de curry"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 811,
+        "sha256": "dc3bfe1a6726e76b"
+      },
+      "sha256_page": "5dd32c69b4650151"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/emilie/recettes/cappuccino-de-roquette-et-sa-brochette-de-crevettes",
+      "site": "chefsimon.com",
+      "nom": "Cappuccino de roquette et sa brochette de crevettes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H45M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "Pour 4 personnes:",
+        "200g de roquette",
+        "1/2 cube de bouillon de légumes",
+        "1/2 oignon",
+        "huile d'olive",
+        "sel, poivre",
+        "10cl de crème liquide",
+        "1 bouquet de coriandre",
+        "20 crevettes",
+        "12 rondelles de chorizo",
+        "1 gousse d'ail",
+        "1 pointe de piment d'Espelette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1134,
+        "sha256": "3bf9e781d3f8bc62"
+      },
+      "sha256_page": "0950d9cd00cd7269"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/brochettes-de-crevettes-marinees-a-l-ail-et-au-citron-vert",
+      "site": "chefsimon.com",
+      "nom": "Brochettes de crevettes marinées à l’ail et au citron vert",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "20  grosses crevettes",
+        "4  gousses d’ail",
+        "2  citrons verts",
+        "2  cuil. à soupe d‘huile d’olive",
+        "1  cuil. à café de fleur de sel",
+        "1  cuil. à soupe de poivre de Sichuan",
+        "basilic",
+        "2  citrons jaunes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 350,
+        "sha256": "d79ed0c7c00cbed1"
+      },
+      "sha256_page": "257ee1b8660d0183"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/kaderick/recettes/brochettes-de-crevettes-marinees-a-la-plancha",
+      "site": "chefsimon.com",
+      "nom": "Brochettes de Crevettes marinées à la plancha",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "Pour les crevettes",
+        "15 crevettes",
+        "1 citron",
+        "3 cuillères à soupe d’huile d’olive",
+        "2 cuillères à café de mélange d’épices :",
+        "piment",
+        "origan",
+        "paprika",
+        "basilic",
+        "ail",
+        "marjolaine",
+        "thym",
+        "sel",
+        "Pour les tagliatelles de courgettes",
+        "3 courgettes (1 jaune, 1 verte, 1 tigré verte et blanche)",
+        "1 oignon",
+        "100 grammes de pleurotes jaune",
+        "1 tomate",
+        "huile d’olive",
+        "sel",
+        "Pour la mayonnaise",
+        "1 jaune d’œuf",
+        "2 cuillères à café de moutarde à l’ancienne",
+        "5 cuillères à soupe d’huile d’olive",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1559,
+        "sha256": "73de2c3da8f490ab"
+      },
+      "sha256_page": "37403af4a3b1ec39"
+    },
+    {
+      "url": "https://www.750g.com/brochettes-de-crevettes-marinees-aux-epices-r97546.htm",
+      "site": "750g.com",
+      "nom": "Brochettes de crevettes marinées au barbecue",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "24 crevettes",
+        "2 c. à c. de citronnelle",
+        "2 c. à c. de curcuma",
+        "2 c. à c. de paprika",
+        "2 c. à s. d'huile d'olive pimentée",
+        "2 c. à s. d'huile d'olive",
+        "2 citrons verts  (jus)",
+        "Sel ou sel fin",
+        "4 c. à s. de crème fraîche épaisse",
+        "2 pincées de paprika",
+        "2 citrons verts  pressé",
+        "Menthe"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 756,
+        "sha256": "af6bae9a205a8972"
+      },
+      "sha256_page": "b5b19ab0583711bb"
+    },
+    {
+      "url": "https://www.750g.com/brochettes-de-crevettes-et-de-saumon-marinees-r49918.htm",
+      "site": "750g.com",
+      "nom": "Brochettes de crevettes et de saumon marinées",
+      "portions": null,
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "16 crevettes roses",
+        "150 g de saumon fumé",
+        "1 oignon  pays",
+        "2 gousses d'ail",
+        "2 c. à s. d'huile d'olive",
+        "2 c. à s. de jus de citron vert",
+        "1 c. à s. de vin blanc sec",
+        "½ piment rouge",
+        "½ c. à c. de gingembre (en poudre)",
+        "Thym",
+        "Persil",
+        "1 pincée de curcuma",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 918,
+        "sha256": "9669b5f6b73340a8"
+      },
+      "sha256_page": "6fbb083cf980b0e0"
+    },
+    {
+      "url": "https://www.750g.com/brochette-de-crevettes-marinees-et-creme-davocat-concombre-r34640.htm",
+      "site": "750g.com",
+      "nom": "Brochette de crevettes marinées et crème d'avocat concombre",
+      "portions": "2 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "6 brins de menthe  fraîche",
+        "Sel ou sel fin",
+        "Poivre",
+        "½ citron",
+        "½ concombre",
+        "1 avocat  mûr",
+        "10 crevettes roses"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 628,
+        "sha256": "43e8a8e15c3852d2"
+      },
+      "sha256_page": "e35322ee1592aad5"
+    }
+  ]
+}

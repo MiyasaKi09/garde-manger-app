@@ -1,0 +1,60 @@
+{
+  "dish": "Merlu au four",
+  "slug": "merlu-au-four",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_merlu-au-four-au-court-bouillon_227636.aspx",
+      "site": "marmiton.org",
+      "nom": "Merlu au four au court-bouillon : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 merlu entier de 1,5 kg, vidé et sans tête.",
+        "3 oignons",
+        "6 tomates",
+        "1 cuillère à soupe de fumet de poisson",
+        "1 pincée de sel",
+        "1 pincée de herbes de Provence",
+        "1 citron"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 664,
+        "sha256": "83caaa07ac876274"
+      },
+      "sha256_page": "33a2bd39c51a820a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/miechambo-cuisine--2/recettes/merlu-roti-au-four-fenouil-et-beurre-d-estragon",
+      "site": "chefsimon.com",
+      "nom": "Merlu rôti au four, fenouil et beurre d’estragon",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "600g de merlu en tranches",
+        "1 oignon rouge",
+        "1 fenouil",
+        "10 cl d’huile d’olive",
+        "1 citron jaune",
+        "1 verre de vin blanc sec",
+        "Sel &amp; poivre",
+        "piment d’Espelette",
+        "Beurre d’estragon",
+        "100 g de beurre pommade",
+        "1/2 botte d’estragon",
+        "Sel gris fin",
+        "poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 1044,
+        "sha256": "de8c89e6a08b0e06"
+      },
+      "sha256_page": "a89c5352d4f952f3"
+    }
+  ]
+}

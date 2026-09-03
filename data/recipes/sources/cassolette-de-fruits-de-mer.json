@@ -1,0 +1,148 @@
+{
+  "dish": "Cassolette de fruits de mer",
+  "slug": "cassolette-de-fruits-de-mer",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cassolette-de-fruits-de-mer-et-poisson-blanc_43025.aspx",
+      "site": "marmiton.org",
+      "nom": "cassolette de fruits de mer et poisson blanc : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 petites poignées de Fruits de mer",
+        "4 pavés de colin (ou cabillaud...)",
+        "2 cuillères à soupe de crème fraîche",
+        "1 cuillère à soupe de concentré de tomates",
+        "1 oignon",
+        "1 gousse d'ail",
+        "curry",
+        "piment fort",
+        "poivre",
+        "sel",
+        "1 noisette de beurre",
+        "1 verre de vin blanc sec",
+        "cognac"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 412,
+        "sha256": "c6e3bbd695834fb2"
+      },
+      "sha256_page": "17460884fdf9ab79"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cassolette-de-fruits-de-mer_254351.aspx",
+      "site": "marmiton.org",
+      "nom": "Cassolette de fruits de mer : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "150 g de noix de saint-jacques",
+        "150 g d'écrevisses décortiquées",
+        "150 g de moules décortiquées cuites",
+        "150 g de crevettes crues décortiquées",
+        "15 cl de vin blanc sec",
+        "1 échalote",
+        "40 g de beurre",
+        "20 cl de crème épaisse",
+        "20 cl de crème liquide",
+        "1 cuillère à café de concentré de tomates",
+        "0.5 cuillère à café de gingembre en poudre",
+        "1 pincée de sel",
+        "1 pincée de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1041,
+        "sha256": "bee18d95120352db"
+      },
+      "sha256_page": "be9d49f32bb85e38"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cassolettes-de-fruits-de-mer_43629.aspx",
+      "site": "marmiton.org",
+      "nom": "Cassolettes de fruits de mer : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT50M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 kg de Fruits de mer (surimi, crevettes décortiquées, moules, noix de st jacques, encornets... au choix, selon les goûts)",
+        "1 échalote",
+        "2 aneth fraîche",
+        "2 bouquets de persil",
+        "60 cl de crème fraîche 15 %",
+        "20 cl de vin blanc sec",
+        "0.25 oignon",
+        "1.5 l de bouillons",
+        "60 g de maïzena",
+        "1 cuillère à café d'huile d'olive",
+        "1 chapelure fine pour la déco"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 658,
+        "sha256": "89601d2eb7814b90"
+      },
+      "sha256_page": "5ab0744dbf425346"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clarisse-en-cuisine/recettes/cassolettes-de-fruits-de-mer",
+      "site": "chefsimon.com",
+      "nom": "Cassolettes de fruits de mer",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 à 2 c à soupe d'huile d'olives (ou mélange huile et beurre)",
+        "1 belle échalote",
+        "3-4 champignons de Paris frais",
+        "10 cl de vin blanc sec",
+        "10 cl de bouillon de volaille chaud",
+        "2 c à soupe de pesto de basilic",
+        "1 sachet de 350 à 400 g de mélange de fruits de mer congelés",
+        "1 c à soupe de jus de citron",
+        "sel",
+        "poivre du moulin",
+        "10 cl de crème de soja (ou 5 à 10 cl de crème fraîche)",
+        "épaississant à sauce claire"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "61585bc19f51d155"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/gelin-evelyne/recettes/cassolettes-de-fruits-de-mer-1cbe5628-d70b-4f0f-8e63-60ebc42e976e",
+      "site": "chefsimon.com",
+      "nom": "Cassolettes de fruits de mer",
+      "portions": "",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "8 belles coquilles Saint-Jacques avec corail",
+        "8 queues de grosses gambas crues",
+        "8 queues de langoustines crues ou écrevisses",
+        "15 g de beurre doux",
+        "4 cuil. à café ou à thé d’œufs de saumon ou de truite fumée",
+        "8 brins de persil plat ou de coriandre",
+        "Pour la sauce",
+        "150 ml de Sylvaner ou de Pinot noir (vin blanc d’Alsace)",
+        "100 ml de crème liquide ou semi-épaisse à 18 % m.g.",
+        "1/2 cuil. à soupe ou à table de fumet de poisson",
+        "1 cuil. à soupe ou à table légèrement bombée d’arrow-root ou de fécule de maïs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "783f1138ffd632ef"
+    }
+  ]
+}
