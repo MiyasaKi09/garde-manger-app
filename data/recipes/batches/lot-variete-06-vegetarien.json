@@ -3,6 +3,7 @@
     {
       "code": "VAR-042",
       "family": "Chili sin carne",
+      "derived_from": "MX-001",
       "cuisine_origin": "Tex-Mex, adapté en cuisine domestique française",
       "identity_level": "named_traditional_dish",
       "category": "légumineuses",
@@ -73,6 +74,7 @@
     {
       "code": "VAR-043",
       "family": "Lasagnes végétariennes",
+      "derived_from": "IT-001",
       "cuisine_origin": "Italie",
       "identity_level": "named_traditional_dish",
       "category": "pâtes au four",
@@ -211,6 +213,7 @@
     {
       "code": "VAR-045",
       "family": "Hachis parmentier végétarien",
+      "derived_from": "FR-004",
       "cuisine_origin": "France",
       "identity_level": "domestic_standard",
       "category": "hachis parmentier de légumes",

@@ -89,10 +89,11 @@ describe('closedLoopPlanner', () => {
 
   it('préserve les repas fixes et remplace seulement le créneau ciblé', () => {
     const fixed = makeRecipe('A', 'fresh_acidic', 'poulet', {
-      exactIngredients: [{ name: 'Poulet', formNormalized: 'poulet', grams: 100, optional: false, category: 'volailles' }],
+      // L'origine DÉCLARÉE décide de carné / végétarien, pas la catégorie.
+      exactIngredients: [{ name: 'Poulet', formNormalized: 'poulet', grams: 100, optional: false, category: 'volailles', origin: 'animal:volaille' }],
     })
     const replacement = makeRecipe('B', 'warm_aromatic', 'lentilles', {
-      exactIngredients: [{ name: 'Lentilles', formNormalized: 'lentilles', grams: 100, optional: false, category: 'legumineuses' }],
+      exactIngredients: [{ name: 'Lentilles', formNormalized: 'lentilles', grams: 100, optional: false, category: 'legumineuses', origin: 'vegetal' }],
     })
     const plan = generateClosedLoopPlan({
       slots: [

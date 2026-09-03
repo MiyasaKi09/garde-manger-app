@@ -59,13 +59,26 @@ describe('corpus culinaire V3', () => {
 // sa propre liste d'ingrédients et ses propres étapes, sans quoi elle ne
 // pourrait ni se peser ni se planifier. Ce qu'elle ne doit jamais faire, c'est
 // dériver d'une dérivée — la lignée cesserait d'avoir une réponse locale.
+//
+// Deux façons d'entrer dans une lignée, et le contrôle ne les confond pas :
+// - la DÉRIVÉE PAR DELTA (`derivation` présent) est calculée depuis sa base par
+//   derive-variant-recipes.mjs : elle reprend une variante annoncée, n'en
+//   annonce pas à son tour, et son delta n'est pas vide ;
+// - le JUMEAU RATTACHÉ (`derived_from` sans `derivation`) est une recette
+//   autonome, sourcée comme n'importe quelle autre, qu'on déclare du même plat
+//   que sa base — le chili sin carne du chili con carne. Il garde ses propres
+//   variantes et son identité ; ce qui le lie à sa base, c'est la lignée seule,
+//   verrouillée dans tests/data/vegTwinLineage.test.js.
+// Les règles de lignée (base réelle, pas de cascade, code et nom uniques)
+// valent pour les deux ; les règles du delta ne valent que pour la première.
 describe('recettes dérivées du corpus V3', () => {
-  const derivees = corpus.recipes.filter((recipe) => recipe.derived_from)
+  const enLignee = corpus.recipes.filter((recipe) => recipe.derived_from)
+  const derivees = enLignee.filter((recipe) => recipe.derivation)
   const parCode = new Map(corpus.recipes.map((recipe) => [recipe.code, recipe]))
 
   it('chaque dérivée pointe vers une base réelle qui ne dérive de rien', () => {
     expect(derivees.length).toBeGreaterThanOrEqual(26)
-    for (const derivee of derivees) {
+    for (const derivee of enLignee) {
       const base = parCode.get(derivee.derived_from)
       expect(base, `base ${derivee.derived_from} de ${derivee.code}`).toBeTruthy()
       expect(base.derived_from, `${base.code} ne doit pas dériver`).toBeFalsy()

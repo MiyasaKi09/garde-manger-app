@@ -1,0 +1,118 @@
+{
+  "dish": "Blanquette de tofu",
+  "slug": "blanquette-de-tofu",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.750g.com/blanquette-de-tofu-r75652.htm",
+      "site": "750g.com",
+      "nom": "Blanquette de tofu",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 oignons",
+        "Bouillon de légumes",
+        "Huile d'olive",
+        "2 carottes",
+        "4 pommes de terre",
+        "1 c à c de Biosoy Soya Cuisine",
+        "10 pruneaux",
+        "200g de Tofou nature"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 461,
+        "sha256": "b9d4c72648d64727"
+      },
+      "sha256_page": "7f38dbc3c41fa53d"
+    },
+    {
+      "url": "https://www.ptitchef.com/recettes/plat/incroyable-blanquette-de-tofu-fid-166197",
+      "site": "ptitchef.com",
+      "nom": "Incroyable blanquette de tofu!!",
+      "portions": "4",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 poireaux",
+        "2 carottes",
+        "1 oignon",
+        "3 branches de céleri",
+        "250 g de champignons de Paris",
+        "une noix de beurre",
+        "1 granche de thym",
+        "4 feuilles de laurier",
+        "2 clous de girofle",
+        "1 cuillère à soupe raze de farine de maïs (maizena)",
+        "400 g de tofu nature",
+        "sel aux herbes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 418,
+        "sha256": "b4e295a0dbfd5673"
+      },
+      "sha256_page": "ea911ca39cef6970"
+    },
+    {
+      "url": "https://www.recette-painperdu.fr/recette/recette-au-tofu",
+      "site": "recette-painperdu.fr",
+      "nom": "Recette de blanquette de tofu onctueuse aux légumes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "600 g tofu ferme",
+        "3 pièces carottes",
+        "1 pièce poireau",
+        "250 g champignons de Paris",
+        "1 pièce oignon jaune",
+        "50 g beurre doux",
+        "50 g farine de blé T55",
+        "200 ml crème liquide entière",
+        "1 pièce jaune d'œuf",
+        "1/2 pièce jus de citron",
+        "750 ml bouillon de légumes",
+        "1 pièce bouquet garni"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1182,
+        "sha256": "ab82c9ba4ce7b282"
+      },
+      "sha256_page": "12d5f04f55fbfb35"
+    },
+    {
+      "url": "https://www.supertoinette.com/recette/6860/blanquette-vegetarienne.html",
+      "site": "supertoinette.com",
+      "nom": "Blanquette végétarienne",
+      "portions": "4 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "1 l d'eau",
+        "3 carottes",
+        "3 pommes de terre",
+        "25 cl de crème de soja",
+        "250 g de tofu ferme",
+        "150 g de champignons de Paris",
+        "1 oignon",
+        "3 cuillères à soupe de farine",
+        "3 cuillères à soupe d'huile d'olive",
+        "1 cube de bouillon de légumes",
+        "Quelques branches de thym",
+        "1 feuille de laurier",
+        "1/2 botte de ciboulette",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1427,
+        "sha256": "ee9adf6b8380ad88"
+      },
+      "sha256_page": "9e3f885f49e0fedd"
+    }
+  ]
+}

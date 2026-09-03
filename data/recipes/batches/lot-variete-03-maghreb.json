@@ -466,6 +466,7 @@
     {
       "code": "VAR-025",
       "family": "Couscous végétarien",
+      "derived_from": "MAG-001",
       "cuisine_origin": "Maroc",
       "identity_level": "named_traditional_dish",
       "category": "plat complet",

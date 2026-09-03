@@ -15,6 +15,7 @@ import { parseCiqualWorkbook } from '../parse/ciqual.mjs'
 import { normalizeName, parseFoodName } from '../lib/normalize.mjs'
 import { resolveCategory } from '../lib/categories.mjs'
 import { comblerParAtwater } from '../lib/atwater.mjs'
+import { isKnownOrigin, resolveOriginFromCiqual } from '../lib/origins.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
@@ -23,6 +24,11 @@ const CORPUS_PATH = join(ROOT, 'data', 'recipes', 'corpus-v3.json')
 const CIQUAL_PATH = join(ROOT, 'data', 'sources', 'raw', 'ciqual_2020_FR_2020-07-07.xls.gz')
 const MAPPINGS_PATH = join(ROOT, 'data', 'foods', 'recipe-food-mappings-v3.json')
 const NUTRITION_PATH = join(ROOT, 'data', 'ciqual_nutrition_import.csv')
+// Origines DÉCLARÉES par arbitrage (règle a de la résolution d'origine). Le
+// fichier est lu ici et non versé au registre des mappings : une origine n'est
+// pas une correspondance Ciqual, et la mêler au registre lui ferait subir les
+// contrôles d'un mapping (code, macros) qui ne la concernent pas.
+const ORIGINS_PATH = join(ROOT, 'data', 'foods', 'arbitrations', 'lot21-origine-des-formes.json')
 
 // Référence USDA distillée : complément de Ciqual pour les aliments absents du
 // classeur français et pour les macronutriments que l'ANSES ne mesure pas. La
@@ -60,6 +66,57 @@ if (desaccordsUsda.length) {
   console.error('Références USDA incohérentes :')
   for (const ecart of desaccordsUsda) console.error(`  - ${ecart}`)
   process.exit(1)
+}
+
+// Une décision d'origine ne se vérifie pas contre le classeur (elle ne cite
+// pas de code) : on vérifie donc sa FORME. Une clé qui ne se déduit pas du
+// nom de la forme produirait une décision que personne n'irait chercher —
+// l'arbitrage semblerait appliqué et la forme resterait 'inconnu'. Et une
+// origine hors vocabulaire, ou 'inconnu' écrit comme décision, n'est pas une
+// décision : on refuse, plutôt que de publier une valeur que le planificateur
+// ne saurait pas lire.
+const originDecisions = new Map()
+if (existsSync(ORIGINS_PATH)) {
+  const lot = JSON.parse(readFileSync(ORIGINS_PATH, 'utf8'))
+  const refusDOrigine = []
+  for (const decision of lot.decisions || []) {
+    const cle = normalizeName(decision.cle || decision.forme || '')
+    if (!cle) { refusDOrigine.push(`décision sans clé (${JSON.stringify(decision).slice(0, 80)})`); continue }
+    if (decision.forme && normalizeName(decision.forme) !== cle) {
+      refusDOrigine.push(`${cle} : la clé ne correspond pas à « ${decision.forme} »`)
+      continue
+    }
+    if (!isKnownOrigin(decision.origin) || decision.origin === 'inconnu') {
+      refusDOrigine.push(`${cle} : origine « ${decision.origin} » hors vocabulaire`)
+      continue
+    }
+    if (!String(decision.motif || '').trim()) { refusDOrigine.push(`${cle} : décision sans motif`); continue }
+    if (originDecisions.has(cle)) { refusDOrigine.push(`${cle} : décidée deux fois`); continue }
+    originDecisions.set(cle, decision.origin)
+  }
+  if (refusDOrigine.length) {
+    console.error('Décisions d’origine irrecevables :')
+    for (const refus of refusDOrigine) console.error(`  - ${refus}`)
+    process.exit(1)
+  }
+}
+
+/**
+ * Origine d'une forme retenue, dans l'ordre du contrat et rien d'autre :
+ *   a. une décision d'arbitrage explicite ;
+ *   b. sinon la case Ciqual de la fiche retenue, si elle est sans ambiguïté ;
+ *   c. sinon 'inconnu' — jamais une regex sur le nom.
+ * La fiche lue en (b) est celle que la nutrition emploie (`retenu`) : quand le
+ * mapping est un proxy, c'est l'animal du proxy qui parle, et c'est voulu — un
+ * proxy d'une autre origine que la forme est une erreur de mapping à corriger
+ * par (a), pas à masquer ici.
+ */
+function resolveOrigin(normalized, retenu) {
+  const declared = originDecisions.get(normalized)
+  if (declared) return { origin: declared, origin_source: 'arbitrage:lot21' }
+  const fromCiqual = retenu?.grp_nom !== undefined ? resolveOriginFromCiqual(retenu) : null
+  if (fromCiqual) return { origin: fromCiqual.origin, origin_source: fromCiqual.source }
+  return { origin: 'inconnu', origin_source: null }
 }
 
 const nutritionRows = readFileSync(NUTRITION_PATH, 'utf8').split(/\r?\n/).slice(1)
@@ -324,6 +381,7 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
     ? { ...selected, nutrition: { ...selected.nutrition, [derive.champ]: derive.valeur } }
     : selected
   const selectionMode = explicit ? 'curated' : exact ? 'exact_label' : 'review_required'
+  const origine = retenu ? resolveOrigin(normalized, retenu) : null
   results.push({
     form: usage.name,
     normalized,
@@ -335,6 +393,7 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
       ciqual_alim_code: retenu.alim_code,
       ciqual_name: retenu.alim_nom_fr,
       category: explicit?.category || retenu.category,
+      ...origine,
       nutrition_complete: ['energy_kcal', 'protein_g', 'carbohydrate_g', 'fat_g']
         .every((key) => Number.isFinite(retenu.nutrition?.[key])),
       ...(derive ? { derived_field: derive.champ } : {}),
@@ -354,6 +413,11 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
       canonical_name: usage.name,
       canonical_name_normalized: normalized,
       category: explicit?.category || retenu.category,
+      // L'origine est un attribut à part de la catégorie : la catégorie range,
+      // l'origine dit si c'est un animal, et lequel. 'inconnu' est publié tel
+      // quel — le planificateur le lit comme « non végétarien, à trancher ».
+      origin: origine.origin,
+      origin_source: origine.origin_source,
       confidence: explicit?.confidence || 'B',
       source: explicit?.nutrition_override
         ? 'myko_curated_override'
@@ -428,6 +492,15 @@ const recipeEligibility = corpus.recipes.map((recipe) => {
     unresolved_conversion_required_forms: [...new Set(unresolvedConversions)],
   }
 })
+const eligibleCodes = new Set(recipeEligibility.filter((recipe) => recipe.eligible_for_publication).map((recipe) => recipe.code))
+const formsInPublishable = new Set()
+for (const recipe of corpus.recipes) {
+  if (!eligibleCodes.has(recipe.code)) continue
+  for (const ingredient of recipe.ingredients) formsInPublishable.add(normalizeName(ingredient.form))
+}
+const unknownOriginInPublishable = selectedCatalog
+  .filter((form) => form.origin === 'inconnu' && formsInPublishable.has(form.canonical_name_normalized))
+  .map((form) => form.canonical_name)
 const report = {
   generated_from: 'data/recipes/corpus-v3.json',
   nutrition_source: 'Ciqual 2020',
@@ -446,6 +519,10 @@ const report = {
     && recipe.unresolved_conversion_required_forms.length === 0).length,
   v1_enriched_eligible_for_publication: recipeEligibility.slice(0, 72).filter((recipe) => recipe.eligible_for_publication).length,
   unresolved_required: results.filter((item) => item.required && !item.selected).map((item) => item.form),
+  // Formes d'origine inconnue EMPLOYÉES par une recette publiable : chacune
+  // rend non végétarienne toute recette qui l'emploie, et personne n'a
+  // tranché. Un test échoue tant que la liste n'est pas vide.
+  unknown_origin_in_publishable_recipes: unknownOriginInPublishable,
   recipe_eligibility: recipeEligibility,
   forms: results,
 }
@@ -457,6 +534,10 @@ writeFileSync(join(OUT, 'recipe-food-catalog.json'), JSON.stringify({
   source: 'Ciqual 2020 + explicit Myko overrides',
   forms: selectedCatalog,
 }, null, 2))
+const originSummary = selectedCatalog.reduce((acc, form) => {
+  acc[form.origin] = (acc[form.origin] || 0) + 1
+  return acc
+}, {})
 console.log(JSON.stringify({
   forms_total: results.length,
   summary,
@@ -464,4 +545,10 @@ console.log(JSON.stringify({
   recipes_eligible_for_publication: report.recipes_eligible_for_publication,
   recipes_blocked_only_by_proxy: report.recipes_blocked_only_by_proxy,
   v1_enriched_eligible_for_publication: report.v1_enriched_eligible_for_publication,
+  origins: originSummary,
+  unknown_origin_in_publishable_recipes: unknownOriginInPublishable.length,
 }, null, 2))
+if (unknownOriginInPublishable.length) {
+  console.error('Formes d’origine inconnue employées par une recette publiable (à arbitrer dans lot21) :')
+  for (const name of unknownOriginInPublishable) console.error(`  - ${name}`)
+}
