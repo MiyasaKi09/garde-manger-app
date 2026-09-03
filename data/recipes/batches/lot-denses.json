@@ -1,0 +1,4003 @@
+{
+ "lot": "denses",
+ "intention": "Vingt-trois plats rapides bâtis sur deux manques mesurés : un vivier de recettes denses en protéines trop étroit pour tenir la cible d'un foyer exigeant, et vingt-cinq formes surgelées ouvertes au registre alimentaire qu'aucune recette n'employait — donc invisibles au catalogue, qui ne publie que les formes réellement employées. Toutes les quantités sortent des dossiers de data/recipes/sources/, relus ligne à ligne plutôt que recopiés du tableau de synthèse ; la méthode est reformulée et n'emprunte aucune prose. Deux des vingt-cinq dossiers reçus n'ont pas donné de recette et le disent : « Papillote de saumon », doublon du FR-010 déjà au corpus, et « Œufs brouillés au saumon fumé », dont l'ingrédient principal n'a aucune forme au catalogue ni au registre d'arbitrage.",
+ "recipes": [
+  {
+   "code": "DEN-001",
+   "family": "Crevettes sautées à l'ail",
+   "cuisine_origin": "France / cuisine domestique méditerranéenne",
+   "identity_level": "domestic_standard",
+   "category": "plat de fruits de mer",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 8,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:crevettes-sautees-a-l-ail",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Crevettes crues saisies deux minutes dans une huile parfumée à l'ail, réveillées au citron et au persil hors du feu",
+   "canonical_arbitration": "Cinq pages au dossier, dont quatre décrivent bien le plat : trois sur marmiton, une sur chefsimon. La cinquième, sur 750g, est un plat de spaghettis — ses 350 g de pâtes en font une autre assiette, et elle sort de tous les calculs de quantité. Elle n'est pas jetée pour autant : sa ligne de persil plat corrobore celle de chefsimon, seule autre page à en porter, et c'est à ce titre seul qu'elle intervient plus bas.\n\nLA CREVETTE, ET POURQUOI ELLE EST SURGELÉE. Les quatre sources retenues pèsent 350 g pour quatre, 500 g pour quatre, 1,25 kg pour quatre et 400 g pour deux. Les deux dernières comptent des crevettes entières, coque comprise : on les ramène à la chair au rendement d'usage de la moitié, soit 200 g de chair pour deux personnes dans un cas. Les quatre valeurs ramenées à la personne sont donc 87,5, 125, 156 et 100 g. La médiane est 112,5 g par personne. On monte à 125 g, soit 500 g pour quatre — c'est exactement le poids de la seule source qui nomme son produit sans ambiguïté, « 500 g de crevettes crues surgelées » sur marmiton. C'est aussi la raison de la forme retenue : le dossier ATTESTE le surgelé, il ne le subit pas. La crevette crue surgelée décortiquée est ce que la page achète, et c'est ce qui fait tenir le plat en huit minutes de cuisson.\n\nL'AIL. Les quatre sources en portent : 3 gousses pour quatre, 5 pour quatre, 6 pour quatre, 4 pour deux, soit 0,75, 1,25, 1,5 et 2 gousses par personne. La médiane est 1,375 gousse par personne, arrondie à 5 gousses pour quatre, 25 g au poids de pièce du catalogue. C'est beaucoup, et c'est le plat : quatre pages sur cinq mettent l'ail dans leur titre.\n\nL'HUILE. Trois sources la chiffrent : 3 cuillerées à soupe pour quatre, 2 pour quatre, 6 pour deux. Médiane 0,75 cuillerée par personne, soit 3 cuillerées et 30 g pour quatre.\n\nCE QUI EST ÉCARTÉ, ET POURQUOI. Le cognac, le paprika, le basilic, la coriandre et l'échalote ne sont chacun que dans une page : aucun ne revient, aucun n'entre. Le piment est le cas limite — piment d'Espelette chez l'une, piments oiseau chez l'autre, deux sources sur cinq. On garde le piment d'Espelette moulu à 1 g, dose de réveil et non d'ardeur ; les piments oiseau frais feraient un autre plat. L'acide, lui, est dans deux pages (citron vert d'un côté, jus d'un demi-citron de l'autre) : on retient 30 g de jus de citron pour quatre, la moyenne des deux ramenée à la portion. Le persil enfin ne pèse que chez chefsimon, une demi-botte de 60 g pour deux, soit 30 g par personne — une quantité de salade d'herbes. On descend à 15 g pour quatre, la poignée ciselée qui finit le plat.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch",
+     "vegetable"
+    ],
+    "reason": "Protéine seule, cuite en huit minutes : elle appelle un riz, des pâtes ou du pain pour éponger l'huile aillée. Sans féculent dans l'assiette, elle ne peut pas porter un dîner à elle seule."
+   },
+   "ingredients": [
+    {
+     "form": "Crevette crue surgelée",
+     "quantity": 500,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 30,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Jus de citron frais",
+     "quantity": 30,
+     "unit": "g",
+     "role": "acidité",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 25,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Persil plat frais",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 3,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Piment d'Espelette moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Sortir les crevettes du congélateur et les laisser dégeler une demi-heure dans une passoire posée sur un saladier, ou dix minutes sous un filet d'eau froide. Les éponger ensuite longuement dans un linge : c'est le geste qui décide de tout, une crevette encore humide bout dans sa propre eau au lieu de saisir, et rend une chair grise et molle."
+    },
+    {
+     "n": 2,
+     "instruction": "Éplucher les gousses, retirer le germe vert du centre s'il est formé, puis les hacher au couteau plutôt qu'au presse-ail. Le presse-ail écrase les cellules et libère une amertume qui ressort à la friture ; le couteau laisse des éclats qui blondissent sans brûler. Ciseler le persil et le réserver à part."
+    },
+    {
+     "n": 3,
+     "instruction": "Chauffer l'huile dans une grande poêle à feu moyen, y jeter l'ail et le remuer trente à quarante secondes, le temps qu'il embaume et prenne une couleur de paille. Ne pas le laisser aller au brun : passé cette teinte il devient âcre et l'amertume traverse le plat entier. Si cela arrive, jeter l'huile et recommencer coûte moins cher que de servir le plat."
+    },
+    {
+     "n": 4,
+     "instruction": "Monter le feu au maximum, verser les crevettes en une seule couche et ne plus y toucher pendant une minute. Les retourner et compter une minute encore : elles sont cuites dès qu'elles ont pris leur couleur orangée et se sont refermées en virgule. Une crevette qui se referme en anneau serré a déjà trop cuit."
+    },
+    {
+     "n": 5,
+     "instruction": "Retirer du feu, saler, poivrer, poudrer du piment d'Espelette, puis verser le jus de citron dans la poêle brûlante : il décolle en sifflant les sucs collés au fond et lie l'huile en un jus court. Ajouter le persil et mélanger une dernière fois. Servir immédiatement, la poêle continuant de cuire ce qu'on y laisse."
+    }
+   ],
+   "techniques": [
+    "saisie",
+    "sauté",
+    "déglaçage",
+    "hachage",
+    "assaisonnement tardif"
+   ],
+   "variants": [
+    "Piments oiseau frais émincés à la place du piment d'Espelette, pour une version nettement plus ardente (marmiton)",
+    "Deux cuillerées de cognac flambées sur les crevettes avant le citron (marmiton)",
+    "Échalote ciselée fondue avant l'ail, qui adoucit l'attaque (chefsimon)",
+    "Coriandre fraîche à la place du persil (marmiton)"
+   ],
+   "sensory": {
+    "profile": "bright_acidic",
+    "scores": {
+     "sweet": 1,
+     "salty": 2,
+     "acidic": 3,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 1,
+     "pungency": 3,
+     "richness": 2,
+     "freshness": 3,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "crevette saisie",
+     "ail blondi",
+     "citron",
+     "persil"
+    ],
+    "aroma_families": [
+     "ail",
+     "marin",
+     "agrume",
+     "persil"
+    ],
+    "target_textures": [
+     "chair nacrée et moelleuse",
+     "jus court et nappant"
+    ],
+    "signature_ingredients": [
+     "Crevette crue surgelée",
+     "Ail cru",
+     "Persil plat frais"
+    ],
+    "identity_guardrails": [
+     "La crevette est crue au départ : une crevette rose déjà cuite recuirait et deviendrait caoutchouteuse",
+     "L'ail blondit, il ne brunit jamais — passé le brun, l'amertume prend tout le plat",
+     "Aucune crème : le jus vient de l'huile, du citron et de l'eau rendue par les crevettes",
+     "Le citron entre hors du feu, sinon son amertume cuite couvre l'ail"
+    ]
+   },
+   "conservation": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, dans une boîte fermée, et se mange froid en salade plutôt que réchauffé : un second passage à la poêle durcit la chair irrémédiablement. Ne se congèle pas — les crevettes ont déjà été congelées une fois.",
+   "allergens": [
+    "crustacés"
+   ]
+  },
+  {
+   "code": "DEN-002",
+   "family": "Crevettes au lait de coco",
+   "cuisine_origin": "Antilles / cuisine créole domestique",
+   "identity_level": "domestic_standard",
+   "category": "plat de fruits de mer",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 20,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:crevettes-au-lait-de-coco",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Crevettes pochées dans un lait de coco tomaté au gingembre, sans curry — la version des deux pages qui portent exactement ce nom",
+   "canonical_arbitration": "Huit pages au dossier. Trois sont écartées et il faut dire laquelle et pourquoi, parce que ce sont elles qui auraient fait dériver le plat : une page monte 500 g de calamars à parts égales avec les crevettes, une autre sert le tout sur 250 g de nouilles chinoises, une troisième sur 100 g de vermicelles de soja. Un plat de nouilles n'est pas un plat de crevettes. Restent cinq pages sur trois sites — marmiton, chefsimon deux fois, 750g deux fois.\n\nLE CURRY, ÉCARTÉ, ET C'EST LA DÉCISION QUI COMPTE. Le corpus porte déjà « Crevettes au curry » (RAP-039), bâtie sur crevette, lait de coco, oignon, ail et curry. Écrire ici la même liste sous un autre nom donnerait deux fois le même plat. Le dossier tranche de lui-même : les DEUX pages qui s'intitulent exactement « Crevettes au lait de coco » — celle de marmiton et celle de 750g — ne portent aucun curry, et portent toutes deux de la tomate. Le curry n'apparaît que chez celles dont le titre annonce un curry. On écrit donc la version tomatée, et le curry reste ce qu'il est dans ce dossier : le marqueur d'un plat voisin déjà écrit.\n\nLES QUANTITÉS. Le lait de coco est dans les huit pages et dans les cinq retenues : 20 cl pour quatre, 30 cl pour deux, une boîte pour deux, 20 cl pour deux, 30 cl pour quatre, soit 50, 150, 200, 100 et 75 ml par personne. La médiane est 100 ml par personne, soit 400 ml pour quatre — une boîte de conserve entière, ce qui est aussi la façon dont trois des cinq pages l'achètent. Les crevettes sont pesées par trois des cinq : 500 g pour quatre, 400 g pour deux, 500 g pour quatre, soit 125, 200 et 125 g par personne ; médiane 125 g par personne, soit 500 g pour quatre. Les deux autres comptent en pièces, vingt et seize crevettes, sans donner de calibre.\n\nLE PRODUIT EST FRAIS, ET ON NE LE FORCE PAS. Aucune des cinq pages n'achète ses crevettes surgelées : elles écrivent « crevettes roses décortiquées », « queues de crevettes crues », « crevettes cuites décortiquées ». Le catalogue porte une forme surgelée et ce lot la cherche ; elle n'entre pas ici, parce que le dossier ne la montre pas. La forme retenue est la crevette crue décortiquée.\n\nL'AROMATIQUE. L'oignon est dans trois des cinq, chaque fois un demi-oignon par personne : 2 oignons pour quatre, 240 g. La tomate est dans deux des cinq, un quart et trois quarts de tomate par personne : médiane 0,5 tomate par personne, soit 2 tomates et 240 g pour quatre. Le gingembre est dans trois des cinq — racine fraîche, gingembre frais, gingembre en poudre facultatif — et l'on retient 15 g de frais, la forme que deux des trois emploient. L'ail est dans trois des cinq, une gousse pour quatre chez l'une et trois gousses pour deux chez l'autre : on fixe 3 gousses, 15 g. Le poivron est dans deux des cinq ; l'une le veut jaune, que le catalogue ne porte pas, l'autre écrit « poivron » sans couleur — on prend le rouge, seul poivron doux disponible, et on le dit plutôt que de le taire. La citronnelle, les pousses de bambou, le sucre, le nuoc-mâm et le laurier ne sont chacun que dans une page : écartés.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Une sauce et une protéine, sans féculent : le riz qui boit le lait de coco fait partie de la façon dont les cinq sources la servent, mais il n'est pas dans l'assiette qu'on décrit ici."
+   },
+   "ingredients": [
+    {
+     "form": "Crevette crue décortiquée",
+     "quantity": 500,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Lait de coco",
+     "quantity": 400,
+     "unit": "ml",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 240,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Tomate fraîche mûre",
+     "quantity": 240,
+     "unit": "g",
+     "role": "base",
+     "optional": false
+    },
+    {
+     "form": "Poivron rouge frais",
+     "quantity": 150,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 20,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Gingembre frais",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Piment d'Espelette moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Émincer les oignons, tailler le poivron en lanières fines, hacher l'ail et râper le gingembre. Monder les tomates si l'on veut une sauce lisse — une croix sous chacune, trente secondes dans l'eau bouillante, puis l'eau glacée — sinon les concasser peau comprise, ce que font la plupart des sources."
+    },
+    {
+     "n": 2,
+     "instruction": "Faire suer les oignons dans l'huile à feu moyen pendant six à huit minutes, sans les colorer. On cherche leur sucre, pas leur grillé : un oignon doré donnerait au lait de coco une note torréfiée qui écraserait le gingembre. Ajouter le poivron et poursuivre cinq minutes."
+    },
+    {
+     "n": 3,
+     "instruction": "Ajouter l'ail et le gingembre, remuer trente secondes, puis verser les tomates concassées. Laisser compoter à feu vif cinq minutes, jusqu'à ce que l'eau de végétation soit partie et que le fond de la poêle grésille au lieu de bouillonner."
+    },
+    {
+     "n": 4,
+     "instruction": "Verser le lait de coco, saler, poivrer, ajouter le piment d'Espelette et laisser réduire dix minutes à feu doux et à découvert, sans jamais faire bouillir franchement : au gros bouillon le lait de coco se dissocie et rend une sauce grainée où l'huile surnage. La sauce est prête quand elle nappe le dos d'une cuillère."
+    },
+    {
+     "n": 5,
+     "instruction": "Plonger les crevettes dans la sauce frémissante et compter trois minutes, pas plus, en les retournant à mi-parcours. Elles finissent de cuire dans la chaleur de la sauce pendant qu'on porte le plat à table. Goûter et rectifier le sel : le lait de coco en absorbe beaucoup plus qu'on ne croit."
+    }
+   ],
+   "techniques": [
+    "suer",
+    "compotage",
+    "réduction",
+    "pochage",
+    "assaisonnement tardif"
+   ],
+   "variants": [
+    "Une cuillerée à soupe de curry en poudre avec l'ail, qui rapproche le plat de « Crevettes au curry » du corpus (750g, marmiton)",
+    "Piment frais émincé à la place du piment d'Espelette moulu (chefsimon)",
+    "Jus de citron vert pressé au moment de servir (marmiton)",
+    "Coriandre fraîche ciselée hors du feu (750g)"
+   ],
+   "sensory": {
+    "profile": "warm_aromatic",
+    "scores": {
+     "sweet": 2,
+     "salty": 2,
+     "acidic": 2,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 1,
+     "pungency": 2,
+     "richness": 4,
+     "freshness": 2,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "lait de coco",
+     "crevette",
+     "tomate cuite",
+     "gingembre"
+    ],
+    "aroma_families": [
+     "coco",
+     "marin",
+     "tomate_cuite",
+     "gingembre"
+    ],
+    "target_textures": [
+     "sauce nappante",
+     "chair nacrée et moelleuse"
+    ],
+    "signature_ingredients": [
+     "Crevette crue décortiquée",
+     "Lait de coco",
+     "Tomate fraîche mûre"
+    ],
+    "identity_guardrails": [
+     "Pas de curry : c'est ce qui sépare ce plat de « Crevettes au curry » déjà au corpus",
+     "Le lait de coco ne bout jamais — il tranche et rend une sauce grainée",
+     "La crevette entre en dernier et cuit trois minutes : au-delà elle se rétracte et durcit",
+     "La tomate est cuite jusqu'à évaporation avant le lait de coco, sinon la sauce reste aqueuse"
+    ]
+   },
+   "conservation": "Se garde 2 jours au réfrigérateur entre 0 et 4 °C dans une boîte hermétique. Réchauffer à feu très doux sans laisser frémir. Se congèle 2 mois si les crevettes n'ont pas déjà été congelées ; la sauce se dissocie un peu à la décongélation et se rattrape en fouettant hors du feu.",
+   "allergens": [
+    "crustacés"
+   ]
+  },
+  {
+   "code": "DEN-003",
+   "family": "Poêlée de fruits de mer",
+   "cuisine_origin": "France / cuisine domestique littorale",
+   "identity_level": "domestic_standard",
+   "category": "plat de fruits de mer",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 10,
+   "cook_minutes": 20,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:poelee-de-fruits-de-mer",
+    "marmiton.org",
+    "chefsimon.com"
+   ],
+   "description_courte": "Un sachet de fruits de mer surgelés réchauffé sur une échalote fondue, tomate concassée et une pointe de crème",
+   "canonical_arbitration": "Cinq pages, trois retenues, et les deux écartées le sont sans hésitation : l'une cuit un assortiment frais à la plancha avec du miel et du vinaigre balsamique, l'autre monte des poires et du saumon fumé avec des Saint-Jacques. Ni l'une ni l'autre n'est une poêlée de fruits de mer au sens des trois autres. Restent deux pages de marmiton et une de chefsimon : deux sites, le minimum, et le dossier tient.\n\nLE SURGELÉ EST DANS LE DOSSIER, PAS DANS NOTRE INTENTION. Les trois pages retenues achètent toutes leur mélange congelé, et l'écrivent : « 1 kg de Fruits de mer congelés », « 500 g de Fruits de mer congelés », « 400 à 500 gr de beaux fruits de mer congelés ». C'est le seul dossier du lot où les trois sources solides nomment le surgelé sans exception. Ramenées à la personne : 167 g pour la première (six parts), 125 g pour la deuxième (quatre parts), 150 g pour la troisième (trois parts). La médiane est 150 g par personne, soit 600 g pour quatre.\n\nTOMATE ET CRÈME, DEUX SUR TROIS CHACUNE. La première page porte les deux à la fois, la deuxième la crème seule, la troisième la tomate seule : les deux se tiennent, et c'est bien une poêlée liée à la crème et réveillée à la tomate. La crème est chiffrée deux fois, 25 cl pour six et 3 cuillerées à soupe pour quatre, soit 42 et 11 g par personne ; la médiane de deux valeurs est leur moyenne, 26 g par personne, arrondie à 100 g pour quatre. La tomate pose le vrai problème : 3 tomates pour six d'un côté, 900 g nets pour trois de l'autre, soit 60 et 300 g par personne, un rapport de un à cinq. La médiane des deux valeurs est 180 g par personne. On descend à 100 g, soit 400 g pour quatre, et voici pourquoi : la page à 900 g s'intitule « à la pulpe de tomates », la tomate y EST le plat et les fruits de mer y pochent. Ici c'est une poêlée, les fruits de mer restent le sujet, et 300 g de tomate par personne les noieraient.\n\nLE RESTE. L'échalote et l'oignon se partagent l'allium : 4 échalotes pour six d'un côté, 1 oignon de 80 g pour trois de l'autre. On retient l'échalote, nommée par la page la plus détaillée, à 80 g pour quatre. L'ail est dans deux des trois, 2 gousses pour six et 3 à 4 gousses pour trois : on fixe 12 g. Le piment est dans deux des trois sous deux noms, Cayenne et Espelette ; on garde l'Espelette, le plus doux, à 1 g. Le poivron vert, le paprika, le riz, le curry, le basilic, l'origan, la livèche et le céleri ne sont chacun que dans une page : écartés. On n'a donc AUCUNE herbe dans ce plat, et c'est un manque assumé plutôt qu'un persil ajouté de mémoire.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Une poêlée de protéines en sauce courte, sans féculent : elle se sert sur du riz ou avec du pain. Deux des trois sources ajoutent d'ailleurs elles-mêmes un féculent à côté."
+   },
+   "ingredients": [
+    {
+     "form": "Fruits de mer cuits surgelés",
+     "quantity": 600,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Tomate fraîche mûre",
+     "quantity": 400,
+     "unit": "g",
+     "role": "base",
+     "optional": false
+    },
+    {
+     "form": "Crème fraîche liquide entière",
+     "quantity": 100,
+     "unit": "g",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Échalote crue",
+     "quantity": 80,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 20,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 12,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Piment d'Espelette moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Verser le sachet encore gelé dans une passoire et le rincer trente secondes à l'eau froide pour emporter le givre, puis laisser égoutter pendant qu'on prépare le reste. Ne pas décongeler à l'avance : les fruits de mer rendraient leur eau dans le saladier et arriveraient à la poêle déjà lessivés de leur goût."
+    },
+    {
+     "n": 2,
+     "instruction": "Ciseler finement les échalotes, hacher l'ail, concasser les tomates. Faire fondre les échalotes dans l'huile à feu moyen pendant cinq minutes jusqu'à ce qu'elles deviennent translucides, puis ajouter l'ail et le laisser une demi-minute seulement."
+    },
+    {
+     "n": 3,
+     "instruction": "Ajouter la tomate concassée, saler, et laisser réduire à feu vif huit à dix minutes à découvert. Il faut que l'eau parte : c'est cette réduction qui distingue une poêlée d'un ragoût liquide, et elle prend le temps qu'elle prend."
+    },
+    {
+     "n": 4,
+     "instruction": "Monter le feu, verser les fruits de mer bien égouttés et remuer sans arrêt pendant trois minutes. Ils sont vendus cuits : on les réchauffe, on ne les cuit pas. Chaque minute au-delà de quatre les rend un peu plus fermes, et la seiche est la première à se rétracter en anneaux caoutchouteux."
+    },
+    {
+     "n": 5,
+     "instruction": "Retirer du feu, verser la crème, poudrer du piment d'Espelette et donner un dernier tour de cuillère pour lier le jus. Poivrer, goûter et rectifier le sel — les fruits de mer surgelés sont déjà légèrement salés par leur saumure, et il vaut mieux corriger à la fin qu'au début."
+    }
+   ],
+   "techniques": [
+    "égouttage",
+    "suer",
+    "réduction",
+    "sauté",
+    "liaison à la crème"
+   ],
+   "variants": [
+    "Poivron vert taillé en dés, ajouté avec la tomate (marmiton)",
+    "Deux cuillerées de curry à la place du piment, avec des poireaux émincés à la place de l'échalote (marmiton)",
+    "Basilic et origan frais ciselés hors du feu, et un copeau de parmesan à l'assiette (chefsimon)",
+    "Piment de Cayenne et paprika à la place du piment d'Espelette, pour une poêlée nettement plus relevée (marmiton)"
+   ],
+   "sensory": {
+    "profile": "savory_tomato",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 2,
+     "bitter": 0,
+     "umami": 4,
+     "heat": 1,
+     "pungency": 2,
+     "richness": 3,
+     "freshness": 2,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "fruits de mer",
+     "tomate cuite",
+     "échalote fondue",
+     "crème"
+    ],
+    "aroma_families": [
+     "fruits_de_mer",
+     "tomate_cuite",
+     "échalote",
+     "crème"
+    ],
+    "target_textures": [
+     "chair nacrée et moelleuse",
+     "jus court et nappant"
+    ],
+    "signature_ingredients": [
+     "Fruits de mer cuits surgelés",
+     "Tomate fraîche mûre",
+     "Échalote crue"
+    ],
+    "identity_guardrails": [
+     "Les fruits de mer sont vendus cuits : trois minutes de réchauffage, pas une cuisson",
+     "La tomate réduit avant l'arrivée des fruits de mer, sinon le plat rend de l'eau à l'assiette",
+     "La crème entre hors du feu et reste une pointe : au-delà, ce n'est plus une poêlée mais une blanquette",
+     "Ne jamais décongeler le sachet à l'avance dans un saladier — l'eau rendue emporte le goût"
+    ]
+   },
+   "conservation": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, dans une boîte fermée. Ne se congèle PAS : les fruits de mer ont déjà subi une congélation et une seconde ruinerait leur texture autant que leur sécurité. Se réchauffe à feu doux deux minutes, jamais au micro-ondes à pleine puissance.",
+   "allergens": [
+    "crustacés",
+    "mollusques",
+    "lait"
+   ]
+  },
+  {
+   "code": "DEN-004",
+   "family": "Cassolette de fruits de mer",
+   "cuisine_origin": "France / cuisine bourgeoise domestique",
+   "identity_level": "domestic_standard",
+   "category": "plat de fruits de mer",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 25,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:cassolette-de-fruits-de-mer",
+    "marmiton.org",
+    "chefsimon.com"
+   ],
+   "description_courte": "Fruits de mer surgelés liés dans une réduction de vin blanc, échalote et crème, servis en cassolettes individuelles",
+   "canonical_arbitration": "Cinq pages, trois sur marmiton et deux sur chefsimon. Quatre décrivent bien une cassolette ; la cinquième monte des coquilles Saint-Jacques entières, des langoustines et des œufs de saumon, c'est un plat de fête à produits nobles et non le même plat. Elle est écartée des quantités, mais sa ligne de persil plat compte plus bas, où elle rejoint la seule autre page qui en porte.\n\nLE POIDS DE FRUITS DE MER, ET UN OUTLIER À NOMMER. Trois des quatre pages retenues le chiffrent : 600 g pour quatre en additionnant quatre produits à 150 g, 2 kg pour quatre, et un sachet de 350 à 400 g. Ramenés à la personne : 150 g, 500 g, et environ 94 g si l'on compte le sachet pour quatre — ce qu'il est, le sachet standard du rayon. La médiane des trois est 150 g par personne, soit 600 g pour quatre. Les 500 g par personne de la deuxième page sont un poids de coquilles et de carapaces : la liste précise « surimi, crevettes décortiquées, moules, noix de st jacques, encornets », un mélange dont on ne sait pas ce qui est pesé net.\n\nLE SURGELÉ. Une seule page nomme explicitement le congelé — « 1 sachet de 350 à 400 g de mélange de fruits de mer congelés » chez chefsimon. Les autres écrivent « Fruits de mer » sans état. C'est peu, et pourtant la forme surgelée est retenue : le mélange de fruits de mer cuits ne se vend pas autrement au rayon, la note d'arbitrage du catalogue le dit elle-même, et aucune des quatre pages ne décrit le nettoyage, l'ébarbage ou l'ouverture que réclamerait du frais. Le dire ici est plus honnête que de le laisser deviner.\n\nLE VIN ET LA CRÈME. Le vin blanc est dans quatre des cinq pages : un verre pour quatre, 15 cl pour quatre, 20 cl pour quatre, 10 cl sans portions. Médiane 37,5 ml par personne, soit 150 ml pour quatre. La crème est dans quatre pages aussi, et son écart est le vrai désaccord du dossier : 2 cuillerées à soupe pour quatre, 40 cl pour quatre en additionnant l'épaisse et la liquide, 60 cl pour quatre, 10 cl de crème de soja. Soit 7,5, 100 et 150 g par personne pour les trois qui pèsent. La médiane est 100 g par personne. On descend à 50 g, soit 200 g pour quatre, et la raison est un rapport et non un goût : les deux fortes valeurs accompagnent des quantités de fruits de mer qu'on n'a pas retenues, 60 cl de crème pour 2 kg de mélange. Rapportée à nos 600 g, cette proportion donne précisément 200 g.\n\nLE RESTE. L'échalote est dans trois des cinq, une par recette : 30 g pour quatre. Le beurre est dans deux pages, dont une le pèse à 40 g pour quatre : on garde 40 g. Le concentré de tomate est dans deux pages, une cuillerée à soupe et une cuillerée à café — on retient 20 g, qui colore le fond sans le tomater. La liaison est dans trois pages sous trois noms — maïzena, épaississant à sauce claire, arrow-root ou fécule de maïs — et c'est bien la même intention : 15 g de fécule de maïs. Le persil est dans deux pages, 10 g. Sont écartés, chacun n'étant que dans une seule page : le curry, le gingembre, l'aneth, les champignons, le pesto, le fumet de poisson, le bouillon de volaille et la chapelure. L'oignon apparaît dans deux pages mais toujours à côté de l'échalote et en quart d'oignon : il ferait doublon d'allium, il n'entre pas.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Une cassolette est une portion de protéine en sauce servie dans son ramequin : elle se mange avec du riz, des pâtes fraîches ou du pain, jamais seule."
+   },
+   "ingredients": [
+    {
+     "form": "Fruits de mer cuits surgelés",
+     "quantity": 600,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Crème fraîche liquide entière",
+     "quantity": 200,
+     "unit": "g",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Vin blanc sec",
+     "quantity": 150,
+     "unit": "ml",
+     "role": "déglaçage",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 40,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Échalote crue",
+     "quantity": 30,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Concentré de tomate",
+     "quantity": 20,
+     "unit": "g",
+     "role": "équilibre",
+     "optional": false
+    },
+    {
+     "form": "Fécule de maïs",
+     "quantity": 15,
+     "unit": "g",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Persil plat frais",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Rincer le mélange encore gelé sous l'eau froide, l'égoutter puis le presser doucement entre deux feuilles de papier absorbant. Chaque gramme d'eau qu'on retire ici est un gramme qu'on n'aura pas à faire évaporer dans la sauce, où il diluerait la crème."
+    },
+    {
+     "n": 2,
+     "instruction": "Ciseler l'échalote très finement et la faire fondre dans la moitié du beurre à feu doux, cinq minutes, sans coloration. Délayer la fécule dans deux cuillerées d'eau froide et réserver ce mélange à portée de main : une fécule versée sèche dans un liquide chaud fait des grumeaux qu'aucun fouet ne rattrape."
+    },
+    {
+     "n": 3,
+     "instruction": "Verser le vin blanc sur l'échalote et laisser réduire de moitié à feu vif, cinq à six minutes. Cette réduction est le fond de goût de la cassolette : un vin simplement chauffé garderait son acidité alcoolique et la crème ne la couvrirait pas."
+    },
+    {
+     "n": 4,
+     "instruction": "Ajouter le concentré de tomate, remuer une minute pour le cuire — cru, il garde un goût de boîte — puis verser la crème et porter à frémissement. Incorporer la fécule délayée en fouettant et laisser épaissir deux minutes, jusqu'à ce que la sauce nappe une cuillère sans couler."
+    },
+    {
+     "n": 5,
+     "instruction": "Hors du feu, incorporer les fruits de mer égouttés et le reste du beurre en parcelles, saler et poivrer. Répartir dans quatre cassolettes ou ramequins et enfourner cinq à six minutes à 200 °C, le temps que le dessus prenne des taches dorées. Semer le persil ciselé à la sortie."
+    }
+   ],
+   "techniques": [
+    "égouttage",
+    "suer",
+    "réduction",
+    "liaison",
+    "gratinage"
+   ],
+   "variants": [
+    "Un pavé de colin ou de cabillaud par personne, posé dans la cassolette sous les fruits de mer (marmiton)",
+    "Champignons de Paris émincés fondus avec l'échalote, et deux cuillerées de pesto dans la sauce (chefsimon)",
+    "Une pointe de curry ou un demi-cuillère de gingembre en poudre dans la crème (marmiton)",
+    "Chapelure fine semée avant le passage au four, pour une croûte franchement croustillante (marmiton)"
+   ],
+   "sensory": {
+    "profile": "creamy_savory",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 2,
+     "bitter": 0,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 4,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "fruits de mer",
+     "vin blanc réduit",
+     "crème",
+     "échalote"
+    ],
+    "aroma_families": [
+     "fruits_de_mer",
+     "vin_blanc_réduit",
+     "crème",
+     "échalote"
+    ],
+    "target_textures": [
+     "sauce nappante",
+     "chair nacrée et moelleuse",
+     "dessus doré"
+    ],
+    "signature_ingredients": [
+     "Fruits de mer cuits surgelés",
+     "Crème fraîche liquide entière",
+     "Vin blanc sec"
+    ],
+    "identity_guardrails": [
+     "Le vin réduit de moitié avant la crème : sans cette réduction la sauce reste acide et plate",
+     "Les fruits de mer entrent hors du feu, ils sont déjà cuits et ne font que se réchauffer au four",
+     "La sauce est liée à la fécule, pas par la seule réduction de la crème — c'est ce qui la tient en cassolette",
+     "Pas de fromage râpé : ce qui dore ici est la crème, pas une croûte gratinée"
+    ]
+   },
+   "conservation": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, filmée au contact dans son ramequin, et se repasse cinq minutes au four à 180 °C. Ne se congèle pas : les fruits de mer ont déjà été congelés une fois, et la sauce liée à la fécule rendrait son eau à la décongélation.",
+   "allergens": [
+    "crustacés",
+    "mollusques",
+    "lait",
+    "sulfites"
+   ]
+  },
+  {
+   "code": "DEN-005",
+   "family": "Gratin de fruits de mer",
+   "cuisine_origin": "France / cuisine domestique",
+   "identity_level": "domestic_standard",
+   "category": "gratin",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 30,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:gratin-de-fruits-de-mer",
+    "marmiton.org",
+    "chefsimon.com"
+   ],
+   "description_courte": "Fruits de mer surgelés nappés d'une béchamel crémée, gruyère et chapelure, dorés une demi-heure au four",
+   "canonical_arbitration": "Huit pages, et c'est le dossier le plus dispersé du lot. Quatre sont écartées d'emblée parce qu'elles ne décrivent pas le plat : un gratin de brocoli et de chou-fleur où les fruits de mer sont l'appoint, un gratin de penne, un gratin de pommes de terre au brocoli, et un service de banquet pour dix personnes qui monte des soles, des limandes et des langoustines. Restent quatre pages — deux sur marmiton, deux sur chefsimon — qui font toutes la même chose : un mélange de fruits de mer, une sauce blanche, un fromage, le four.\n\nLA BÉCHAMEL EST LE PLAT. Trois des quatre pages retenues la montent : beurre 30, 30 et 50 g, médiane 30 g ; farine 40, 30 et 40 g, médiane 40 g ; lait 50 cl et 40 cl, médiane 45 cl. On retient 30 g de beurre, 40 g de farine et 450 ml de lait pour quatre. C'est une béchamel volontairement souple : elle doit napper des fruits de mer qui rendront encore un peu d'eau au four, et une béchamel serrée deviendrait pâteuse.\n\nLES FRUITS DE MER. Deux pages écrivent « 1 sachet » sans poids, les deux autres 500 et 400 g. Le sachet du rayon fait 400 à 500 g et sert quatre : les quatre valeurs convergent donc, et l'on retient 500 g pour quatre. L'une des deux pages qui ne pèse pas nomme le produit — « 1 sachet de Fruits de mer surgelés » — et c'est l'attestation qui fixe la forme.\n\nLES QUENELLES, ÉCARTÉES POUR UNE RAISON DE MÉTHODE. Deux des quatre pages ajoutent des quenelles de brochet, ce qui est une proportion de moitié. Mais ces deux pages sont toutes deux sur marmiton : deux pages d'un même site sont une même rédaction, c'est la règle que l'audit applique à la solidité d'un dossier, et il n'y a pas de raison de l'oublier au moment de peser un ingrédient. Aucune des deux pages de chefsimon n'en porte. Les quenelles restent donc en variante, où elles sont fidèlement notées.\n\nLE RESTE. La crème s'ajoute à la béchamel dans trois des quatre pages : 100 ml, 20 cl et 3 cuillerées à soupe, médiane 100 ml pour quatre. Le fromage râpé est dans trois des quatre — « fromage râpé », « gruyère râpé », « 80 g de fromage râpé » : on retient 80 g de gruyère, le seul nommé. L'échalote est dans trois des quatre, une par recette, 30 g. La chapelure est dans deux, 25 g. Sont écartés le vin blanc, le fumet de poisson, les chanterelles, le concentré de tomate et le persil, chacun présent dans une seule page.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "La béchamel apporte l'amidon du lait et de la farine, les fruits de mer la protéine, le fromage le gras : le gratin se mange tel quel avec une salade. Il n'appelle pas de féculent supplémentaire — 450 ml de lait et 40 g de farine en portent déjà un."
+   },
+   "ingredients": [
+    {
+     "form": "Fruits de mer cuits surgelés",
+     "quantity": 500,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Lait entier",
+     "quantity": 450,
+     "unit": "ml",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Crème fraîche liquide entière",
+     "quantity": 100,
+     "unit": "g",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Gruyère râpé",
+     "quantity": 80,
+     "unit": "g",
+     "role": "gratin",
+     "optional": false
+    },
+    {
+     "form": "Farine de blé T55",
+     "quantity": 40,
+     "unit": "g",
+     "role": "roux",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 30,
+     "unit": "g",
+     "role": "roux",
+     "optional": false
+    },
+    {
+     "form": "Échalote crue",
+     "quantity": 30,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Chapelure de blé",
+     "quantity": 25,
+     "unit": "g",
+     "role": "croûte",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Rincer les fruits de mer encore gelés, les égoutter puis les laisser une dizaine de minutes dans la passoire en les pressant deux ou trois fois. Un gratin est un plat fermé : l'eau qu'on ne retire pas maintenant ressortira au four et se retrouvera sous la croûte, en flaque."
+    },
+    {
+     "n": 2,
+     "instruction": "Faire fondre le beurre à feu doux dans une casserole, verser la farine d'un coup et remuer deux minutes à la cuillère de bois. Le roux doit sentir le biscuit sans prendre de couleur : c'est ce court passage qui fait disparaître le goût de farine crue, et rien ne le remplace ensuite."
+    },
+    {
+     "n": 3,
+     "instruction": "Verser le lait froid sur le roux chaud en trois fois, en fouettant à chaque ajout jusqu'à ce que le mélange redevienne lisse. Le contraste de température est ce qui empêche les grumeaux. Porter à ébullition sans cesser de fouetter, puis laisser épaissir cinq minutes à feu doux."
+    },
+    {
+     "n": 4,
+     "instruction": "Hors du feu, incorporer la crème, saler et poivrer généreusement — une béchamel sous-salée rend un gratin fade que le fromage ne rattrape pas. Ajouter l'échalote ciselée crue : elle cuira dans la sauce au four et gardera plus de parfum que si on l'avait fait suer."
+    },
+    {
+     "n": 5,
+     "instruction": "Mélanger les fruits de mer à la sauce, verser dans un plat à gratin beurré, couvrir du gruyère puis de la chapelure. Enfourner trente minutes à 200 °C, jusqu'à ce que la surface soit dorée et que la sauce bouillonne sur les bords. Laisser reposer cinq minutes avant de servir, le temps que le gratin se tienne à la cuillère."
+    }
+   ],
+   "techniques": [
+    "égouttage",
+    "roux",
+    "béchamel",
+    "assemblage",
+    "gratinage"
+   ],
+   "variants": [
+    "Quatre quenelles de brochet couchées dans le plat sous la béchamel (marmiton, deux pages)",
+    "Chanterelles poêlées et un trait de vin blanc dans la sauce (marmiton)",
+    "Pommes de terre en rondelles précuites et bouquets de brocoli en couche du dessous (chefsimon)",
+    "Bisque de homard à la place d'une partie du lait, pour une sauce nettement plus iodée (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "creamy_savory",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 0,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 4,
+     "freshness": 0,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "fruits de mer",
+     "béchamel",
+     "gruyère fondu",
+     "beurre"
+    ],
+    "aroma_families": [
+     "fruits_de_mer",
+     "béchamel",
+     "gruyère",
+     "beurre"
+    ],
+    "target_textures": [
+     "croûte gratinée",
+     "sauce nappante",
+     "chair nacrée et moelleuse"
+    ],
+    "signature_ingredients": [
+     "Fruits de mer cuits surgelés",
+     "Gruyère râpé",
+     "Lait entier"
+    ],
+    "identity_guardrails": [
+     "Les fruits de mer sont égouttés longuement : leur eau sous une croûte fait un gratin noyé",
+     "Le roux cuit deux minutes avant le lait, sinon la béchamel garde un goût de farine",
+     "La béchamel reste souple : elle recevra encore l'eau rendue par les fruits de mer au four",
+     "Trente minutes au four suffisent — au-delà, les fruits de mer déjà cuits se dessèchent sous la croûte"
+    ]
+   },
+   "conservation": "Se garde 2 jours au réfrigérateur entre 0 et 4 °C, filmé une fois refroidi, et se réchauffe vingt minutes à 180 °C plutôt qu'au micro-ondes, qui détrempe la croûte. Ne se congèle pas, ni pour les fruits de mer déjà congelés une fois, ni pour la béchamel, qui tranche à la décongélation.",
+   "allergens": [
+    "crustacés",
+    "mollusques",
+    "lait",
+    "gluten"
+   ]
+  },
+  {
+   "code": "DEN-006",
+   "family": "Pâtes aux fruits de mer",
+   "cuisine_origin": "France / cuisine domestique d'inspiration italienne",
+   "identity_level": "domestic_standard",
+   "category": "plat de pâtes",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 10,
+   "cook_minutes": 20,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:pates-aux-fruits-de-mer",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Pâtes courtes enrobées d'une crème au vin blanc et à l'échalote, fruits de mer surgelés jetés en fin de cuisson",
+   "canonical_arbitration": "Cinq pages sur trois sites. Quatre emploient un mélange de fruits de mer, et les quatre l'achètent surgelé : « 500 g de Fruits de mer surgelés », « 450 g de Fruits de mer surgelés », « 180 g de mélange de fruits de mer », « 200 g de fruits de mer surgelés ». La cinquième ouvre des moules et des coques fraîches en coquille avec des seiches : c'est un autre travail et un autre plat, elle sort des quantités.\n\nLES DEUX POIDS. Les pâtes sont pesées par quatre pages : 500 g pour quatre, 180 g pour deux, 300 g pour quatre, et 500 g pour quatre dans la page écartée, soit 125, 90, 75 et 125 g par personne. La médiane est 107,5 g par personne ; on retient 100 g, soit 400 g pour quatre, qui est la portion de pâtes sèches que le corpus emploie déjà et qui tombe à l'intérieur de l'écart des sources. Les fruits de mer sont pesés par les quatre pages retenues : 125, 75, 90 et 50 g par personne. Médiane 82,5 g par personne ; on retient 87,5 g, soit 350 g pour quatre.\n\nLA SAUCE. La crème est dans trois des cinq pages : 15 cl pour six, 80 ml pour deux, 5 cl pour quatre, soit 25, 40 et 12,5 ml par personne. Médiane 25 ml par personne, soit 100 g pour quatre. Le vin blanc est dans trois pages, dont deux le chiffrent, 60 ml pour deux et 2 cl pour quatre : on retient 80 ml pour quatre. L'échalote est dans deux des cinq et l'oignon dans une seule ; on garde l'échalote, 40 g.\n\nPAS D'AIL, ET C'EST À DIRE. Un plat de pâtes aux fruits de mer sans ail surprend, et la tentation d'en ajouter est exactement celle qui a produit des moules marinières sans moules. L'ail n'apparaît que dans la page aux coquillages frais, celle qu'on écarte. Aucune des quatre pages retenues n'en porte. Il n'entre donc pas, et il figure en variante avec la mention de sa source.\n\nLE RESTE. Le persil est dans deux des quatre retenues, 12 g pour quatre. L'huile d'olive est dans deux, 15 g. Sont écartés parce qu'ils ne sont chacun que dans une page : les 250 g de mascarpone, le chorizo, les tomates séchées, la truite fumée, le cerfeuil surgelé, l'estragon, la maïzena et le fumet de poisson. Le basilic est dans une page retenue et une page écartée : il reste dehors.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Cent grammes de pâtes sèches et 87 g de fruits de mer par personne : le féculent, la protéine et la sauce sont dans la même assiette, et les cinq sources la servent seule."
+   },
+   "ingredients": [
+    {
+     "form": "Pâtes sèches courtes",
+     "quantity": 400,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Fruits de mer cuits surgelés",
+     "quantity": 350,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Crème fraîche liquide entière",
+     "quantity": 100,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Vin blanc sec",
+     "quantity": 80,
+     "unit": "ml",
+     "role": "déglaçage",
+     "optional": false
+    },
+    {
+     "form": "Échalote crue",
+     "quantity": 40,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 15,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Persil plat frais",
+     "quantity": 12,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Mettre l'eau des pâtes à chauffer en premier, généreusement salée. Pendant qu'elle monte, rincer les fruits de mer encore gelés à l'eau froide et les laisser s'égoutter dans une passoire : ils continueront de rendre de l'eau, et c'est très bien qu'ils la rendent là plutôt que dans la sauce."
+    },
+    {
+     "n": 2,
+     "instruction": "Ciseler l'échalote et la faire fondre dans l'huile à feu doux pendant cinq minutes. Verser le vin blanc et laisser réduire presque à sec, jusqu'à ce qu'il ne reste qu'un fond sirupeux au fond de la poêle : c'est là que se concentre tout le goût de la sauce."
+    },
+    {
+     "n": 3,
+     "instruction": "Jeter les pâtes dans l'eau bouillante et les cuire une minute de moins que le temps du paquet. Prélever une louche d'eau de cuisson avant d'égoutter — cette eau chargée d'amidon est ce qui liera la sauce aux pâtes, et une fois l'évier ouvert on ne la rattrape plus."
+    },
+    {
+     "n": 4,
+     "instruction": "Verser la crème sur la réduction d'échalote, porter à frémissement et laisser deux minutes. Ajouter les fruits de mer bien égouttés et compter trois minutes à feu moyen, le temps qu'ils soient chauds à cœur : ils sont vendus cuits, un séjour plus long ne ferait que les raidir."
+    },
+    {
+     "n": 5,
+     "instruction": "Verser les pâtes égouttées directement dans la poêle avec deux ou trois cuillerées d'eau de cuisson et faire sauter une minute à feu vif, en remuant sans arrêt. La sauce doit enrober chaque pâte et non stagner au fond. Poivrer, ajouter le persil ciselé, goûter et rectifier le sel avant de servir."
+    }
+   ],
+   "techniques": [
+    "égouttage",
+    "suer",
+    "réduction",
+    "cuisson al dente",
+    "enrobage à l'eau de cuisson"
+   ],
+   "variants": [
+    "Trois gousses d'ail hachées avec l'échalote, du thym et du basilic (marmiton)",
+    "250 g de mascarpone à la place de la crème, fondu hors du feu (marmiton)",
+    "Chorizo en dés et tomates séchées revenus avant l'échalote (marmiton)",
+    "Truite fumée en lanières ajoutée crue au moment de servir, et une cuillerée de maïzena pour serrer la sauce (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "creamy_savory",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 2,
+     "bitter": 0,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 3,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "fruits de mer",
+     "crème",
+     "vin blanc réduit",
+     "échalote"
+    ],
+    "aroma_families": [
+     "fruits_de_mer",
+     "crème",
+     "vin_blanc_réduit",
+     "persil"
+    ],
+    "target_textures": [
+     "pâtes_fermes",
+     "sauce nappante",
+     "chair nacrée et moelleuse"
+    ],
+    "signature_ingredients": [
+     "Pâtes sèches courtes",
+     "Fruits de mer cuits surgelés",
+     "Crème fraîche liquide entière"
+    ],
+    "identity_guardrails": [
+     "Le vin réduit presque à sec avant la crème : c'est la concentration qui fait la sauce, pas la quantité",
+     "L'eau de cuisson des pâtes lie la sauce — l'égouttage sans prélèvement est une erreur irréversible",
+     "Les fruits de mer chauffent trois minutes, jamais davantage : ils arrivent déjà cuits",
+     "Pas d'ail : aucune des quatre sources retenues n'en porte, et l'ajouter changerait le plat"
+    ]
+   },
+   "conservation": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, mais les pâtes boivent la sauce en refroidissant : les réchauffer à la poêle avec une cuillerée de crème ou d'eau. Ne se congèle pas — ni les fruits de mer déjà congelés, ni des pâtes déjà cuites, qui reviennent farineuses.",
+   "allergens": [
+    "crustacés",
+    "mollusques",
+    "lait",
+    "gluten",
+    "sulfites"
+   ]
+  },
+  {
+   "code": "DEN-007",
+   "family": "Spaghetti aux crevettes",
+   "cuisine_origin": "Italie / cuisine domestique",
+   "identity_level": "domestic_standard",
+   "category": "plat de pâtes",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 20,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:spaghetti-aux-crevettes",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Spaghetti à la tomate concassée, ail et huile d'olive, crevettes saisies à part et rendues à la poêle au dernier moment",
+   "canonical_arbitration": "Huit pages, et le dossier se coupe en deux familles nettes. Cinq pages lient à la crème ; trois lient à la tomate, à l'ail et à l'huile d'olive. La crème est majoritaire, et c'est pourtant la tomate qu'on écrit : la version crémée aux fruits de mer est déjà le plat voisin de ce même lot, « Pâtes aux fruits de mer », et deux plats de pâtes crémés à la protéine marine dans un même corpus sont un doublon, pas une variété. Le dossier appuie ce choix : la seule page qui s'intitule exactement « Spaghetti aux crevettes », sur 750g, appartient à la famille tomatée, comme les deux autres, sur chefsimon et sur 750g. Deux sites, trois pages : le sous-dossier tient debout tout seul.\n\nLES QUANTITÉS, PRISES SUR CES TROIS PAGES. Les spaghettis : 350 g pour quatre, 350 g pour deux, 450 g pour quatre, soit 87,5, 175 et 112,5 g par personne. Médiane 112,5 g par personne. On descend à 100 g, soit 400 g pour quatre — la portion de pâtes sèches que le corpus emploie, et l'écart avec la médiane est inférieur à l'arrondi d'un paquet. Les crevettes : 1 kg pour quatre, 24 crevettes pour deux, 300 g pour quatre. La page à 24 crevettes ne les pèse pas ; à 20 g la crevette décortiquée du calibre employé, cela fait 120 g par personne. Les trois valeurs sont donc 250, 120 et 75 g par personne, médiane 120 g par personne, soit 480 g pour quatre.\n\nLA TOMATE. Les trois pages en portent : une grande boîte de tomates entières pelées de 796 ml pour quatre, 20 tomates cerise pour deux, 400 g de tomates pelées concassées pour quatre. Soit environ 200, 120 et 100 g par personne. Médiane 120 g par personne, soit 480 g pour quatre. On retient la tomate concassée en conserve : deux des trois pages l'achètent ainsi, et la troisième mondera ses cerises de toute façon.\n\nLA CREVETTE EST SURGELÉE, ET LE DOSSIER SE CONTREDIT. Il faut le dire franchement, parce que le lecteur qui ouvrira le dossier trouvera les deux positions. Une page de marmiton, écartée avec la famille crémée, écrit « au rayon frais, pas congelé ». À l'inverse, la page de chefsimon retenue écrit « fraîches ou déjà décongelées si vous utilisez des surgelées », et une page de 750g pèse « 70 g de crevettes décortiquées surgelées ». Deux pages admettent ou emploient le surgelé, une seule le refuse, et celle qui le refuse ne fait pas partie du sous-dossier retenu. La crevette crue surgelée est donc la forme écrite, et l'objection est consignée ici plutôt qu'effacée.\n\nLE RESTE. L'huile d'olive est dans les trois pages, dont une la chiffre à 4 cuillerées à soupe pour quatre : 40 g. L'ail est dans les trois : 3 à 4 gousses pour quatre, une demi-gousse pour deux, 2 gousses pour quatre, soit 0,875, 0,25 et 0,5 gousse par personne ; médiane 0,5 gousse par personne, soit 2 gousses et 10 g. Le persil est dans les trois, 15 g. Le basilic est dans deux des trois, 12 g. Le parmesan est dans deux des trois, 30 g. Sont écartés l'origan, le piment d'Espelette, les olives noires, le citron et l'oignon, chacun n'étant que dans une seule des trois pages retenues.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Cent grammes de pâtes, 120 g de crevettes et 120 g de tomate par personne : l'assiette est entière. Les trois sources la servent seule, éventuellement avec du parmesan râpé à table."
+   },
+   "ingredients": [
+    {
+     "form": "Crevette crue surgelée",
+     "quantity": 480,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Tomate concassée en conserve",
+     "quantity": 480,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Spaghetti secs",
+     "quantity": 400,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 40,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Parmesan affiné",
+     "quantity": 30,
+     "unit": "g",
+     "role": "finition",
+     "optional": false
+    },
+    {
+     "form": "Persil plat frais",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Basilic frais",
+     "quantity": 12,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Décongeler les crevettes dans une passoire, sous un filet d'eau froide pendant dix minutes, puis les sécher soigneusement dans un linge. Une crevette humide ne saisit pas : elle relâche son eau dans la poêle et bout, et cette différence-là se voit à l'assiette."
+    },
+    {
+     "n": 2,
+     "instruction": "Chauffer la moitié de l'huile à feu vif, y jeter les crevettes en une seule couche et les saisir une minute par face, juste le temps qu'elles rosissent. Les débarrasser aussitôt dans une assiette : elles finiront leur cuisson dans la sauce, et leur faire faire tout le trajet dans la poêle les durcirait."
+    },
+    {
+     "n": 3,
+     "instruction": "Baisser le feu, verser le reste de l'huile et l'ail haché dans la même poêle, remuer trente secondes, puis ajouter la tomate concassée. Saler et laisser mijoter quinze minutes à découvert, jusqu'à ce que la sauce ait perdu son eau et se soit resserrée autour de l'huile."
+    },
+    {
+     "n": 4,
+     "instruction": "Cuire les spaghettis dans un grand volume d'eau salée, une minute de moins que le temps indiqué, et garder une louche d'eau de cuisson au moment d'égoutter. C'est l'amidon de cette eau qui fera tenir la sauce sur les pâtes plutôt que de la laisser glisser au fond de l'assiette."
+    },
+    {
+     "n": 5,
+     "instruction": "Remettre les crevettes et leur jus dans la sauce, ajouter les spaghettis et une petite louche d'eau de cuisson, puis faire sauter une minute à feu vif en remuant. Hors du feu, poivrer, ajouter le persil et le basilic ciselés, et servir avec le parmesan râpé au-dessus."
+    }
+   ],
+   "techniques": [
+    "saisie",
+    "sauté",
+    "mijotage",
+    "cuisson al dente",
+    "enrobage à l'eau de cuisson"
+   ],
+   "variants": [
+    "Tomates cerise coupées en deux à la place de la tomate concassée, éclatées à la poêle deux minutes (750g)",
+    "Un oignon fondu avant l'ail et une pointe d'origan séché dans la sauce (chefsimon)",
+    "Olives noires dénoyautées et piment d'Espelette dans la sauce (750g)",
+    "Jus de citron pressé sur les crevettes au moment de les débarrasser (750g)"
+   ],
+   "sensory": {
+    "profile": "savory_tomato",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 3,
+     "bitter": 0,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 2,
+     "richness": 3,
+     "freshness": 3,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "crevette saisie",
+     "tomate cuite",
+     "ail",
+     "basilic"
+    ],
+    "aroma_families": [
+     "crevette",
+     "tomate_cuite",
+     "ail",
+     "basilic"
+    ],
+    "target_textures": [
+     "pâtes_fermes",
+     "chair nacrée et moelleuse",
+     "sauce nappante"
+    ],
+    "signature_ingredients": [
+     "Crevette crue surgelée",
+     "Tomate concassée en conserve",
+     "Spaghetti secs"
+    ],
+    "identity_guardrails": [
+     "Pas de crème : c'est ce qui sépare ce plat des « Pâtes aux fruits de mer » du même lot",
+     "Les crevettes sont saisies puis retirées, et ne reviennent qu'à la fin — sinon elles cuisent trois fois",
+     "La tomate mijote jusqu'à ce que l'huile se sépare : une sauce non réduite délave les pâtes",
+     "Les herbes entrent crues hors du feu, le basilic noircit en une minute de cuisson"
+    ]
+   },
+   "conservation": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C. Réchauffer à la poêle avec une cuillerée d'eau, jamais au micro-ondes qui recuit les crevettes. Ne se congèle pas : les crevettes ont déjà été congelées, et des spaghettis cuits recongelés reviennent farineux.",
+   "allergens": [
+    "crustacés",
+    "gluten",
+    "lait"
+   ]
+  },
+  {
+   "code": "DEN-008",
+   "family": "Merlu au four",
+   "cuisine_origin": "France / cuisine domestique atlantique",
+   "identity_level": "domestic_standard",
+   "category": "poisson",
+   "status": "candidate",
+   "confidence": "C",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 25,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:merlu-au-four",
+    "marmiton.org",
+    "chefsimon.com"
+   ],
+   "description_courte": "Filets de merlu posés sur un lit d'oignons fondants, citronnés et rôtis vingt-cinq minutes",
+   "canonical_arbitration": "Deux pages, une sur marmiton et une sur chefsimon : c'est le minimum exact que l'audit exige, et le dossier n'a aucune marge. La confiance est déclarée en C pour cette raison, pas parce qu'une quantité serait douteuse. Deux sources sur deux, cela veut dire qu'un ingrédient absent d'une seule page n'est déjà plus majoritaire, et c'est ce qui rend cette recette délibérément sobre.\n\nCE QUE LES DEUX PAGES PARTAGENT — et c'est tout ce qui entre. Le merlu, l'oignon, le citron, le sel. Rien d'autre n'est dans les deux.\n\nLE POIDS DE POISSON, ET LE PIÈGE DU POIDS DE POISSONNERIE. La première page achète « 1 merlu entier de 1,5 kg, vidé et sans tête » pour quatre ; la seconde « 600 g de merlu en tranches » pour deux. Ni l'un ni l'autre n'est un poids de chair : le premier porte encore l'arête centrale et la peau, le second l'arête de ses darnes. Au rendement d'usage — 60 % pour un poisson rond vidé et étêté, 70 % pour des tranches — cela fait 900 g de chair pour quatre et 420 g pour deux, soit 225 et 210 g par personne. La médiane des deux valeurs est 217,5 g par personne. On descend à 180 g, soit 720 g pour quatre : ces deux valeurs sont issues d'un rendement ESTIMÉ, et un rendement estimé ne se pousse pas vers son haut. La quantité déclarée est donc une chair, et l'instruction d'achat qui lui correspond est 720 g de filet.\n\nLE FILET, ET POURQUOI IL EST SURGELÉ. Le catalogue ne porte aucune forme de merlu frais : la seule entrée de l'espèce est « Filet de merlu surgelé », ouverte par l'arbitrage des formes surgelées. Le dossier, lui, ne dit rien de l'état du poisson. Ce n'est donc pas le dossier qui impose le surgelé, c'est le catalogue qui n'offre rien d'autre, et il faut le lire ainsi : la substitution porte sur l'état, pas sur l'espèce ni sur la découpe, et elle simplifie le plat au lieu de le trahir — un filet n'a ni arête ni écaille, ce qui est aussi la raison pour laquelle ce plat tient en quarante minutes.\n\nL'OIGNON. Trois oignons pour quatre d'un côté, un oignon rouge pour deux de l'autre : 0,75 et 0,5 oignon par personne. Médiane 0,625 oignon par personne, soit 2,5 oignons et 300 g pour quatre. On prend l'oignon jaune, que la première page laisse sans qualificatif ; le rouge de la seconde est une préférence d'auteur.\n\nL'HUILE, SEULE ENTORSE. Aucune matière grasse n'est nommée par la première page, et un poisson rôti sans gras attache. La seconde en compte 10 cl pour deux, soit 46 g par personne, quantité de rôtissage à la plancha qu'on ne peut pas suivre. On retient 30 g pour quatre, l'arrosage du plat, et c'est la seule ligne de cette recette qui ne repose que sur une source.\n\nÉCARTÉS, TOUS À UNE SEULE PAGE : les six tomates et le fumet de poisson de la première ; le fenouil, le vin blanc, le piment d'Espelette et le beurre d'estragon de la seconde. Le beurre d'estragon en particulier fait tout le titre de sa page — et c'est justement pourquoi il ne peut pas entrer dans un plat qui s'appelle seulement « Merlu au four ».",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch",
+     "vegetable"
+    ],
+    "reason": "Un poisson et sa garniture d'oignons, sans féculent : il appelle des pommes vapeur, du riz ou du pain pour le jus citronné du plat."
+   },
+   "ingredients": [
+    {
+     "form": "Filet de merlu surgelé",
+     "quantity": 720,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 300,
+     "unit": "g",
+     "role": "base",
+     "optional": false
+    },
+    {
+     "form": "Citron jaune frais",
+     "quantity": 1,
+     "unit": "u",
+     "role": "acidité",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 30,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Sortir les filets du congélateur la veille et les laisser décongeler une nuit au réfrigérateur, posés sur une grille au-dessus d'une assiette. La décongélation lente est ce qui garde la chair ferme ; une décongélation à l'eau tiède ou au micro-ondes commence à cuire les bords et le filet se défait ensuite en cuisant."
+    },
+    {
+     "n": 2,
+     "instruction": "Préchauffer le four à 200 °C. Émincer les oignons en rondelles fines et les étaler avec les deux tiers de l'huile dans un plat allant au four. Les enfourner seuls quinze minutes : ils doivent être déjà fondants quand le poisson arrive, car en vingt-cinq minutes ils n'auraient pas le temps de cuire."
+    },
+    {
+     "n": 3,
+     "instruction": "Éponger les filets décongelés, les saler et les poivrer sur les deux faces, puis les poser sur le lit d'oignons. Arroser du reste d'huile et couvrir de rondelles de citron, en gardant une moitié du fruit pour le jus final."
+    },
+    {
+     "n": 4,
+     "instruction": "Enfourner vingt-cinq minutes à 200 °C. Le merlu est cuit quand la chair est opaque de part en part et qu'elle se sépare en feuillets sous la pointe d'un couteau, sans résister. C'est un poisson maigre : cinq minutes de trop le rendent sec et cotonneux, et rien ne le rattrape."
+    },
+    {
+     "n": 5,
+     "instruction": "Presser la moitié de citron réservée sur le plat à la sortie du four, remuer les oignons dans le jus rendu et laisser reposer trois minutes avant de servir. Ce repos suffit à ce que la chair se raffermisse assez pour tenir à la spatule."
+    }
+   ],
+   "techniques": [
+    "cuisson au four",
+    "cuisson séquencée",
+    "rôtissage"
+   ],
+   "variants": [
+    "Six tomates en quartiers ajoutées sur les oignons, et une cuillerée de fumet de poisson dans le fond du plat (marmiton)",
+    "Un bulbe de fenouil émincé avec les oignons et un verre de vin blanc sec (chefsimon)",
+    "Beurre d'estragon monté à part et posé en noix sur le poisson à la sortie du four (chefsimon)",
+    "Oignon rouge à la place de l'oignon jaune, et piment d'Espelette au lieu du poivre (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "bright_acidic",
+    "scores": {
+     "sweet": 2,
+     "salty": 2,
+     "acidic": 3,
+     "bitter": 0,
+     "umami": 2,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 2,
+     "freshness": 3,
+     "intensity": 2
+    },
+    "dominant_flavors": [
+     "merlu rôti",
+     "oignon fondu",
+     "citron",
+     "huile d'olive"
+    ],
+    "aroma_families": [
+     "poisson",
+     "oignon_compoté",
+     "agrume",
+     "huile_olive"
+    ],
+    "target_textures": [
+     "chair fondante",
+     "légumes fondants"
+    ],
+    "signature_ingredients": [
+     "Filet de merlu surgelé",
+     "Oignon jaune cru",
+     "Citron jaune frais"
+    ],
+    "identity_guardrails": [
+     "Les oignons partent seuls quinze minutes : sous le poisson ils resteraient crus et croquants",
+     "Vingt-cinq minutes et pas davantage — le merlu est maigre et se dessèche brutalement",
+     "Le citron est posé en rondelles pendant la cuisson et pressé à la sortie : deux gestes, deux effets",
+     "Aucune crème et aucun vin : les deux sources n'en partagent aucun, le plat reste un rôti sec et citronné"
+    ]
+   },
+   "conservation": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C et se mange plutôt froid, effeuillé en salade, qu'après un second passage au four qui achèverait de le sécher. Ne se recongèle en aucun cas : le filet a déjà été congelé une fois.",
+   "allergens": [
+    "poisson"
+   ]
+  },
+  {
+   "code": "DEN-009",
+   "family": "Lieu noir à la crème",
+   "cuisine_origin": "France / cuisine domestique",
+   "identity_level": "domestic_standard",
+   "category": "poisson",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 10,
+   "cook_minutes": 20,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:lieu-noir-a-la-creme",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Filets de lieu noir poêlés, crème moutardée montée dans la poêle et finie aux herbes fraîches",
+   "canonical_arbitration": "Trois pages, une par site : marmiton, chefsimon, 750g. Trois sources sur trois sites, le dossier est solide malgré sa taille modeste, et les trois décrivent la même chose — un filet poêlé, une crème, un condiment.\n\nLE POISSON. Une seule page le pèse : 500 g pour quatre, soit 125 g par personne. Les deux autres comptent « 2 filets » et « 1 filet de lieu noir » sans déclarer de portions, ce qui interdit toute médiane. On retient donc la seule valeur mesurée, 125 g par personne, soit 500 g pour quatre.\n\nLA FORME EST SURGELÉE PARCE QUE C'EST LA SEULE. Comme pour le merlu, le catalogue ne porte pas de lieu noir frais : la seule entrée de l'espèce est « Lieu noir surgelé ». Les trois pages écrivent « filet de lieu noir » sans dire l'état. Ce n'est donc pas une lecture du dossier mais une contrainte de catalogue, et la note d'arbitrage de la forme explique pourquoi elle existe seule : le classeur mesure séparément le lieu noir et le colin d'Alaska, et seul le premier a une entrée surgelée.\n\nLA CRÈME, ET UNE DÉCISION ASSUMÉE. Les trois pages en portent : 5 cuillerées à soupe pour quatre, 15 cl pour deux filets, 10 cl pour un filet. En supposant deux personnes par paire de filets, cela fait 18,75, 75 et 75 g par personne. La médiane est 75 g par personne. On descend à 50 g, soit 200 g pour quatre, et la raison est que deux des trois valeurs sortent d'une supposition de portions et non d'une déclaration : une crème rapportée à une portion supposée est une estimation, pas une mesure, et on ne construit pas un total sur l'estimation la plus généreuse.\n\nLA MOUTARDE EST LE MARQUEUR. Deux pages sur trois en portent, et toutes deux la mettent dans leur titre — « crème et moutarde », « crème moutardée » : une grosse cuillerée à soupe de Dijon d'un côté, une cuillerée à soupe à l'ancienne de l'autre. On retient 20 g de moutarde de Dijon. Sans elle le plat serait une simple crème et perdrait ce qui le nomme.\n\nLES HERBES. Le persil est dans deux pages sur trois, la ciboulette aussi : 12 g de persil plat et 8 g de ciboulette pour quatre. Ce sont les deux seules herbes partagées.\n\nL'HUILE est dans une seule page, deux cuillerées à soupe : on la garde à 15 g parce qu'il faut bien saisir le poisson quelque part, et on le déclare. Sont écartés, à une page chacun : la tomate, le poivron mariné, le piment d'Espelette et le boursin — ce dernier étant le titre entier de sa page, « Lieu noir à la crème de Boursin », donc précisément ce qu'un plat nommé « Lieu noir à la crème » ne doit pas contenir.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch",
+     "vegetable"
+    ],
+    "reason": "Un poisson et sa sauce, rien d'autre dans l'assiette : riz, pommes vapeur ou pâtes fraîches sont ce qui reçoit la crème moutardée."
+   },
+   "ingredients": [
+    {
+     "form": "Lieu noir surgelé",
+     "quantity": 500,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Crème fraîche liquide entière",
+     "quantity": 200,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Moutarde de Dijon",
+     "quantity": 20,
+     "unit": "g",
+     "role": "condiment",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 15,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Persil plat frais",
+     "quantity": 12,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Ciboulette fraîche",
+     "quantity": 8,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 3,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Décongeler les filets une nuit au réfrigérateur sur une grille, puis les éponger des deux côtés. Le lieu noir se délite plus facilement que le cabillaud : une chair sèche en surface tient à la poêle, une chair mouillée s'y défait en morceaux."
+    },
+    {
+     "n": 2,
+     "instruction": "Saler et poivrer les filets, chauffer l'huile à feu vif dans une poêle large et les poser côté peau ou côté le plus bombé. Ne plus y toucher pendant trois minutes : le poisson se décolle de lui-même quand la croûte est prise, et vouloir le soulever plus tôt est le meilleur moyen de le déchirer."
+    },
+    {
+     "n": 3,
+     "instruction": "Retourner les filets, compter deux minutes de plus, puis les débarrasser sur une assiette chaude. Ils ne sont pas tout à fait cuits à cœur, et c'est voulu : ils finiront dans la sauce, où ils resteront moelleux au lieu de se dessécher dans la poêle."
+    },
+    {
+     "n": 4,
+     "instruction": "Baisser le feu sous la poêle, verser la crème et gratter le fond à la cuillère de bois pour reprendre les sucs collés. Laisser frémir deux minutes, puis délayer la moutarde hors du feu : cuite, une moutarde perd son piquant et ne laisse que son amertume, et c'est son piquant qui fait le plat."
+    },
+    {
+     "n": 5,
+     "instruction": "Remettre les filets dans la sauce, arroser à la cuillère pendant deux minutes à feu doux, puis couper le feu. Ajouter le persil et la ciboulette ciselés, goûter, rectifier le sel et servir aussitôt dans la poêle ou sur assiette très chaude."
+    }
+   ],
+   "techniques": [
+    "saisie",
+    "poêlage",
+    "déglaçage",
+    "liaison à la crème",
+    "assaisonnement tardif"
+   ],
+   "variants": [
+    "Une tomate en dés étuvée dans la sauce avant le retour du poisson (marmiton)",
+    "Moutarde à l'ancienne à la place de la Dijon, pour les grains qui restent entiers (chefsimon)",
+    "Piment d'Espelette et lamelles de poivron mariné ajoutés à la crème (chefsimon)",
+    "Une cuillerée de fromage frais aux herbes fondue dans la crème (750g)"
+   ],
+   "sensory": {
+    "profile": "creamy_savory",
+    "scores": {
+     "sweet": 1,
+     "salty": 2,
+     "acidic": 2,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 1,
+     "pungency": 3,
+     "richness": 4,
+     "freshness": 2,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "lieu noir poêlé",
+     "crème",
+     "moutarde",
+     "ciboulette"
+    ],
+    "aroma_families": [
+     "poisson",
+     "crème",
+     "moutarde",
+     "ciboulette"
+    ],
+    "target_textures": [
+     "chair fondante",
+     "sauce nappante"
+    ],
+    "signature_ingredients": [
+     "Lieu noir surgelé",
+     "Crème fraîche liquide entière",
+     "Moutarde de Dijon"
+    ],
+    "identity_guardrails": [
+     "La moutarde entre hors du feu : cuite, elle perd le piquant qui donne son nom au plat",
+     "Le poisson est saisi puis retiré, et ne revient que pour finir dans la sauce",
+     "Les herbes sont crues et ajoutées au dernier moment, jamais cuites dans la crème",
+     "Pas de vin blanc ni de fumet : la sauce se fait des seuls sucs de la poêle et de la crème"
+    ]
+   },
+   "conservation": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C. Réchauffer à couvert et à feu très doux, la sauce se dissociant si elle bout. Ne se recongèle pas, le filet ayant déjà été congelé une fois.",
+   "allergens": [
+    "poisson",
+    "lait",
+    "moutarde"
+   ]
+  },
+  {
+   "code": "DEN-010",
+   "family": "Brochettes de crevettes",
+   "cuisine_origin": "France / cuisine domestique de plein air",
+   "identity_level": "domestic_standard",
+   "category": "brochette",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 8,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:brochettes-de-crevettes",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Crevettes marinées une heure à l'huile, citron vert, ail et paprika, puis grillées quatre minutes sur la braise ou la plancha",
+   "canonical_arbitration": "Neuf pages, trois par site. Deux sont écartées parce que la brochette y est un accessoire : l'une la pose sur un cappuccino de roquette, l'autre sur une crème d'avocat et concombre. Restent sept pages qui font des brochettes de crevettes, et le dossier est le plus fourni du lot.\n\nLE NOMBRE DE CREVETTES. Les sept pages comptent en pièces, jamais en grammes : 20 pour dix, 48 pour six, 40 pour quatre, 20 pour quatre, 15 pour quatre, 24 pour quatre, 16 sans portions. Ramené à la personne : 2, 8, 10, 5, 3,75 et 6 crevettes. La médiane est 5,5 crevettes par personne, soit 22 crevettes pour quatre. Quatre des sept pages précisent « grosses crevettes » ou « gambas », calibre que le catalogue pèse 20 g décortiqué : 22 crevettes font donc 440 g pour quatre.\n\nLE PRODUIT RESTE FRAIS. Aucune des sept pages n'achète ses crevettes surgelées. Elles écrivent « crevettes », « crevettes crues », « grosses crevettes », « crevettes roses ». Ce lot cherche les formes surgelées et celle-ci était un candidat évident ; elle n'entre pas, parce que le dossier ne l'atteste nulle part. C'est la règle, et elle vaut aussi quand elle contrarie l'intention du lot.\n\nLA MARINADE. L'huile d'olive est dans six des sept pages retenues, et quatre la chiffrent : 20 cl pour six, 5 cuillerées pour quatre, 2 cuillerées pour quatre, 2 cuillerées pour quatre, soit environ 33, 12,5, 5 et 5 g par personne. La médiane est 8,75 g par personne, soit 35 g ; on écrit 40 g pour quatre, arrondi de cuillerée. Le citron vert est dans cinq des sept, presque toujours en jus : 50 g pour quatre. L'ail est dans quatre des sept : une gousse pour dix, quatre gousses pour quatre, deux gousses sans portions, plus l'ail du mélange d'épices d'une cinquième ; on fixe 12 g. Le paprika est dans quatre des sept, en doux quand il est qualifié : 4 g pour quatre.\n\nCE QUI FAIT DES BROCHETTES DIFFÉRENTES ET RESTE DEHORS. L'ananas est dans deux pages, le chorizo dans deux, la mangue, le miel, le sirop d'érable, la poitrine fumée, le saumon fumé, la menthe, le curcuma, le gingembre et la citronnelle dans une ou deux chacun. Aucun n'atteint la moitié des sept, et surtout chacun fabrique une autre brochette : crevette-chorizo et crevette-ananas sont des plats à part entière, pas des variantes de dosage. Ils sont notés en variantes avec leur source.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch",
+     "vegetable"
+    ],
+    "reason": "Des brochettes de protéine nue, grillées : elles se servent avec une semoule, un riz ou une salade. Aucune des sept sources ne les donne comme un repas complet."
+   },
+   "ingredients": [
+    {
+     "form": "Crevette crue décortiquée",
+     "quantity": 440,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Jus de citron vert frais",
+     "quantity": 50,
+     "unit": "g",
+     "role": "marinade",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 40,
+     "unit": "g",
+     "role": "marinade",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 12,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Paprika doux",
+     "quantity": 4,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 3,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Décortiquer les crevettes en gardant le dernier anneau de carapace et la nageoire caudale : ils servent de prise et empêchent la chair de tourner autour de la pique. Retirer le boyau noir du dos avec la pointe d'un couteau, il donne un goût de vase."
+    },
+    {
+     "n": 2,
+     "instruction": "Mélanger l'huile, le jus de citron vert, l'ail haché finement, le paprika et le poivre dans un saladier. Ne pas saler la marinade : le sel fait rendre son eau à la crevette pendant l'attente et la chair devient spongieuse. On salera au moment de griller."
+    },
+    {
+     "n": 3,
+     "instruction": "Retourner les crevettes dans la marinade, couvrir et laisser une heure au réfrigérateur, pas davantage. L'acide du citron vert cuit la chair à froid comme un ceviche : au-delà d'une heure elle blanchit et devient farineuse avant même d'avoir vu le feu."
+    },
+    {
+     "n": 4,
+     "instruction": "Faire tremper des piques en bois vingt minutes dans l'eau froide, puis enfiler les crevettes en les traversant deux fois, à la tête et à la queue, pour qu'elles restent à plat. Cinq ou six par brochette, serrées sans être écrasées."
+    },
+    {
+     "n": 5,
+     "instruction": "Saler les brochettes et les griller sur une plancha très chaude ou sur des braises, deux minutes par face au maximum, en les badigeonnant une fois du reste de marinade. Elles sont prêtes dès que la chair est opaque et légèrement dorée par endroits ; une minute de plus et elles se rétractent en anneaux durs."
+    }
+   ],
+   "techniques": [
+    "marinade froide",
+    "brochette",
+    "grillade"
+   ],
+   "variants": [
+    "Cubes d'ananas alternés avec les crevettes, et du chorizo doux en rondelles (marmiton)",
+    "Cubes de mangue, miel et sirop d'érable dans la marinade (marmiton)",
+    "Lanières de poitrine fumée enroulées autour de chaque crevette (marmiton)",
+    "Marinade au curcuma, à la citronnelle et au paprika, servie avec une crème au citron vert et à la menthe (750g)",
+    "Poivre de Sichuan et basilic dans la marinade, à la place du paprika (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "bright_acidic",
+    "scores": {
+     "sweet": 1,
+     "salty": 2,
+     "acidic": 3,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 1,
+     "pungency": 2,
+     "richness": 2,
+     "freshness": 3,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "crevette grillée",
+     "citron vert",
+     "ail",
+     "paprika"
+    ],
+    "aroma_families": [
+     "crevette",
+     "citron_vert",
+     "ail",
+     "paprika"
+    ],
+    "target_textures": [
+     "chair nacrée et moelleuse",
+     "bords_grillés"
+    ],
+    "signature_ingredients": [
+     "Crevette crue décortiquée",
+     "Jus de citron vert frais",
+     "Paprika doux"
+    ],
+    "identity_guardrails": [
+     "La marinade ne dure qu'une heure : l'acide du citron vert finit par cuire la crevette à froid",
+     "On ne sale pas la marinade — le sel fait rendre l'eau et rend la chair spongieuse",
+     "Deux minutes par face, pas davantage : une crevette trop grillée se referme en anneau dur",
+     "Ni ananas ni chorizo : ces brochettes-là sont d'autres plats, pas des variantes de dosage"
+    ]
+   },
+   "conservation": "Les crevettes marinées se gardent 24 heures crues au réfrigérateur entre 0 et 4 °C, mais pas plus, l'acide continuant de travailler la chair. Une fois grillées, elles se gardent 24 heures et se mangent froides en salade. Ne se congèlent pas une fois marinées.",
+   "allergens": [
+    "crustacés"
+   ]
+  },
+  {
+   "code": "DEN-011",
+   "family": "Poulet aux brocolis",
+   "cuisine_origin": "France / cuisine domestique d'inspiration asiatique",
+   "identity_level": "domestic_standard",
+   "category": "plat sauté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 20,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:poulet-aux-brocolis",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Blancs de poulet sautés et bouquets de brocoli étuvés au bouillon, liés d'un trait de sauce soja",
+   "canonical_arbitration": "Neuf pages, trois par site. Quatre sont écartées : trois sont des gratins — poulet et brocoli sous béchamel, sous pâtes, sous pommes de terre — et une est un plat de nouilles sautées. Un gratin de brocolis existe déjà au corpus sous SRC-012, et le plat qu'on écrit ici est un sauté. Restent cinq pages sur trois sites.\n\nLE POULET, ÉTONNAMMENT STABLE. Les cinq pages retenues comptent des blancs ou des filets, et toujours un par personne : 4 blancs pour quatre, 4 blancs pour quatre, 1 blanc pour une personne, 1 filet, 2 filets pour deux. À 150 g le blanc de poulet, cela fait 600 g pour quatre. C'est le seul dossier du lot où les sources ne se contredisent pas sur la protéine.\n\nLE BROCOLI. Deux pages le pèsent, 250 g pour quatre et 160 g pour une personne, soit 62,5 et 160 g par personne ; une troisième compte 500 g sans déclarer de portions, les deux dernières un bouquet ou un pied. La médiane des deux valeurs comparables est 111 g par personne. On monte à 125 g, soit 500 g pour quatre, qui est aussi le poids brut de la page à 500 g et l'ordre de grandeur d'un pied de brocoli paré — les cinq pages achètent bien un brocoli entier.\n\nLE BROCOLI EST FRAIS, ET LE SURGELÉ NE S'INVITE PAS. Le catalogue porte désormais « Brocoli surgelé », et un sauté de semaine en est le client idéal. Aucune des neuf pages ne l'emploie : elles écrivent « 1 bouquet de brocoli », « 250 g de brocolis », « 1 brocoli », « 1 pied de brocoli ». Le brocoli cru frais est donc la forme retenue. Cette ligne-là est exactement celle où la tentation de forcer le surgelé était la plus forte, et c'est pourquoi elle est écrite ici en toutes lettres.\n\nLA SAUCE. Le bouillon de volaille est dans deux des cinq — un cube de bouillon de poule, un verre de bouillon de poule — soit 200 ml pour quatre. La sauce soja est dans deux des cinq, 2 cuillerées à café pour quatre et 3 cuillerées à café pour deux : on retient 20 ml. C'est peu, et c'est voulu : le soja assaisonne le jus, il ne le colore pas.\n\nL'AROMATIQUE. L'oignon est dans trois des cinq : un pour quatre, deux pour quatre, un rouge sans portions. Médiane 0,375 oignon par personne, soit 1,5 oignon et 180 g pour quatre. L'ail est dans deux des cinq, 10 g. L'huile est dans quatre des cinq, deux fois de l'olive, une fois végétale, une fois du sésame : on retient l'huile d'olive, la plus citée, à 20 g.\n\nÉCARTÉS. Le lait de coco, le gingembre, les carottes, les champignons, le chou chinois, le xérès, la maïzena, la crème, la moutarde, le sésame, les amandes effilées et la sauce aux tomates confites ne sont chacun que dans une seule des cinq pages retenues. Chacun ferait un plat différent, et plusieurs figurent en variantes.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Protéine et légume vert dans un jus court, sans féculent : le riz est ce que quatre des cinq sources servent à côté, mais il n'est pas dans l'assiette décrite."
+   },
+   "ingredients": [
+    {
+     "form": "Blanc de poulet cru, sans peau",
+     "quantity": 600,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Brocoli cru",
+     "quantity": 500,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Bouillon de volaille",
+     "quantity": 200,
+     "unit": "ml",
+     "role": "mouillement",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 180,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 20,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Sauce soja",
+     "quantity": 20,
+     "unit": "ml",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 3,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Détailler les blancs de poulet en lanières d'un centimètre et demi, en travaillant en travers des fibres. Dans le sens des fibres, les lanières se rétractent en cuisant et deviennent filandreuses ; en travers, elles restent courtes et tendres. Émincer l'oignon, hacher l'ail."
+    },
+    {
+     "n": 2,
+     "instruction": "Séparer le brocoli en petits bouquets réguliers et éplucher le tronc au couteau économe avant de le tailler en rondelles : la partie qu'on jette le plus souvent est la plus douce du légume une fois sa peau fibreuse retirée."
+    },
+    {
+     "n": 3,
+     "instruction": "Chauffer l'huile à feu vif dans une sauteuse large, saisir le poulet en deux fournées pour ne pas le tasser — une poêle surchargée fait bouillir la viande au lieu de la dorer. Trois minutes par fournée suffisent, la viande doit être colorée dehors et encore rosée dedans. La débarrasser."
+    },
+    {
+     "n": 4,
+     "instruction": "Dans la même sauteuse, faire revenir l'oignon deux minutes, ajouter l'ail puis les bouquets de brocoli. Verser le bouillon, couvrir et laisser étuver six à sept minutes : le brocoli doit rester vert vif et résister sous la dent. Un brocoli couvert trop longtemps vire au kaki et perd sa tenue."
+    },
+    {
+     "n": 5,
+     "instruction": "Découvrir, remettre le poulet et son jus, ajouter la sauce soja et faire sauter deux minutes à feu vif pour que le bouillon réduise et enrobe tout. Poivrer, goûter, et ne saler qu'ensuite : entre le bouillon et le soja, le plat est souvent déjà à son point."
+    }
+   ],
+   "techniques": [
+    "taillage",
+    "saisie",
+    "sauté",
+    "cuisson étouffée",
+    "réduction"
+   ],
+   "variants": [
+    "Lait de coco à la place du bouillon, avec du jus de citron et des amandes effilées (marmiton)",
+    "Gingembre râpé, carottes en rondelles, champignons et chou chinois, liés à la maïzena (marmiton)",
+    "Crème semi-épaisse et moutarde à la place du bouillon et du soja, avec une échalote (chefsimon)",
+    "Huile de sésame et graines de sésame grillées à la place de l'huile d'olive (750g)",
+    "Sauce aux tomates confites et oignon rouge, pour une poêlée méditerranéenne (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "savory_crisp",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 1,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 2,
+     "richness": 2,
+     "freshness": 2,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "poulet doré",
+     "brocoli",
+     "sauce soja",
+     "oignon"
+    ],
+    "aroma_families": [
+     "poulet",
+     "chou",
+     "soja",
+     "oignon"
+    ],
+    "target_textures": [
+     "bouquets fondants",
+     "tendre",
+     "jus court et nappant"
+    ],
+    "signature_ingredients": [
+     "Blanc de poulet cru, sans peau",
+     "Brocoli cru",
+     "Sauce soja"
+    ],
+    "identity_guardrails": [
+     "Le brocoli reste vert et croquant : sept minutes à couvert, pas davantage",
+     "Le poulet est saisi en deux fournées puis retiré — tassé dans la poêle, il bout et blanchit",
+     "Pas de crème ni de béchamel : ce sauté n'est pas le gratin de brocolis du corpus",
+     "Le soja et le bouillon salent déjà — on goûte avant d'ajouter du sel"
+    ]
+   },
+   "conservation": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C dans une boîte fermée ; le brocoli s'attendrit au repos, ce qui est un défaut mineur. Se réchauffe deux minutes à la poêle à feu vif. Se congèle 2 mois, mais le brocoli en ressort mou : préférer congeler le poulet et sa sauce seuls.",
+   "allergens": [
+    "soja",
+    "gluten"
+   ]
+  },
+  {
+   "code": "DEN-012",
+   "family": "Poulet aux haricots verts",
+   "cuisine_origin": "France / cuisine domestique",
+   "identity_level": "domestic_standard",
+   "category": "plat sauté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 25,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:poulet-aux-haricots-verts",
+    "marmiton.org",
+    "750g.com"
+   ],
+   "description_courte": "Poulet doré et haricots verts blanchis, réunis dans une poêlée à l'oignon parfumée au thym et au laurier",
+   "canonical_arbitration": "Six pages, quatre retenues. Les deux écartées ne font pas le plat : l'une le sert en salade froide au yaourt et au curry, l'autre monte des brochettes avec de la semoule. Restent deux pages de marmiton et deux de 750g — deux sites, le minimum exact, et le dossier n'a aucune marge. C'est la réserve principale de cette recette.\n\nLE POULET. Trois des quatre pages retenues le pèsent : 1 blanc pour deux, 800 g pour quatre, 4 blancs pour six, soit 75, 200 et 100 g par personne. La médiane est 100 g par personne. On monte à 150 g, soit 600 g pour quatre, et voici pourquoi : la valeur basse vient d'une page qui partage un seul blanc de 150 g entre deux personnes, ce qui est une demi-portion et non un dosage. La quatrième page emploie des cuisses.\n\nLES HARICOTS VERTS. Deux pages les pèsent : 1 kg pour quatre et 500 g pour quatre, soit 250 et 125 g par personne. La médiane des deux est 187,5 g par personne. On descend à 150 g, soit 600 g pour quatre : le kilogramme de la première page accompagne un ragoût mijoté une heure où le haricot fond et perd la moitié de son volume, ce qui n'est pas la cuisson retenue ici.\n\nLES HARICOTS SONT FRAIS, ET LE DOSSIER EST FORMEL. Le catalogue porte « Haricot vert surgelé » et ce lot le cherche. Il n'entre pas : la première page écrit expressément « 1 grosse poignée de haricots verts frais », et aucune des six pages ne mentionne de surgelé. Écrire ici du surgelé serait contredire une source qui a pris la peine de préciser le contraire.\n\nL'AROMATIQUE. L'oignon est dans trois des quatre retenues, chaque fois un quart d'oignon par personne : 1 oignon et 120 g pour quatre. L'huile d'olive est dans deux des quatre, 25 g. Le bouquet garni d'une page et le couple thym-laurier d'une autre sont la même intention aromatique et se rejoignent : on retient 2 g de thym frais et 2 feuilles de laurier.\n\nÉCARTÉS, chacun à une seule des quatre pages : la carotte, le gingembre, le cumin, le piment de Cayenne, le miel et la sauce soja de la première ; le vin rouge de la deuxième ; l'estragon et la crème de la troisième ; l'ail, le lait d'amande, le parmesan, les amandes effilées, le concentré de tomate et le persil de la quatrième. Cette dernière page est la plus fournie du dossier et c'est justement pourquoi rien d'elle ne passe : aucune de ses richesses n'est confirmée ailleurs.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Une viande et un légume vert, sans féculent dans l'assiette : les sources l'accompagnent de riz, de semoule ou de pommes de terre."
+   },
+   "ingredients": [
+    {
+     "form": "Blanc de poulet cru, sans peau",
+     "quantity": 600,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Haricot vert cru",
+     "quantity": 600,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 120,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 25,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Thym frais",
+     "quantity": 2,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Feuille de laurier séchée",
+     "quantity": 2,
+     "unit": "u",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Équeuter les haricots verts et les plonger huit minutes dans un grand volume d'eau bouillante fortement salée, puis les égoutter et les rafraîchir aussitôt dans l'eau glacée. Ce choc thermique fixe la chlorophylle : sans lui, les haricots continuent de cuire sur leur chaleur et virent au vert olive."
+    },
+    {
+     "n": 2,
+     "instruction": "Couper les blancs de poulet en gros cubes de trois centimètres, les saler et les poivrer. Émincer l'oignon en demi-lunes assez épaisses pour qu'il tienne à la cuisson sans se défaire en purée."
+    },
+    {
+     "n": 3,
+     "instruction": "Chauffer l'huile à feu vif dans une sauteuse et faire dorer les cubes de poulet sur toutes leurs faces, cinq à six minutes, sans les remuer trop souvent. La croûte dorée est le goût du plat : elle ne se forme que si la viande reste immobile assez longtemps pour que sa surface sèche."
+    },
+    {
+     "n": 4,
+     "instruction": "Baisser le feu, ajouter l'oignon, le thym et les feuilles de laurier, et laisser fondre huit minutes à couvert. L'oignon rend son eau et déglace naturellement les sucs collés au fond, ce qui donne le jus du plat sans qu'on ait besoin d'ajouter de liquide."
+    },
+    {
+     "n": 5,
+     "instruction": "Ajouter les haricots égouttés, mélanger et poursuivre à découvert cinq minutes à feu moyen, le temps qu'ils se réchauffent et prennent le jus. Retirer le laurier, goûter et rectifier l'assaisonnement avant de servir bien chaud."
+    }
+   ],
+   "techniques": [
+    "blanchiment",
+    "refroidissement",
+    "saisie",
+    "cuisson à couvert",
+    "poêlage"
+   ],
+   "variants": [
+    "Gingembre, cumin, piment de Cayenne, sauce soja et miel, pour une poêlée nettement épicée (marmiton)",
+    "Un verre de vin rouge et une heure de mijotage, qui transforme la poêlée en ragoût (marmiton)",
+    "Crème liquide et estragon en fin de cuisson (750g)",
+    "Cuisses de poulet à la place des blancs, avec du lait d'amande, du concentré de tomate et des amandes grillées (750g)"
+   ],
+   "sensory": {
+    "profile": "earthy_herbal",
+    "scores": {
+     "sweet": 1,
+     "salty": 2,
+     "acidic": 0,
+     "bitter": 1,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 2,
+     "freshness": 3,
+     "intensity": 2
+    },
+    "dominant_flavors": [
+     "poulet doré",
+     "haricot vert",
+     "oignon fondu",
+     "thym"
+    ],
+    "aroma_families": [
+     "poulet",
+     "haricot",
+     "oignon_compoté",
+     "thym"
+    ],
+    "target_textures": [
+     "tendre",
+     "haricot fondant à peau intacte",
+     "jus court et nappant"
+    ],
+    "signature_ingredients": [
+     "Blanc de poulet cru, sans peau",
+     "Haricot vert cru",
+     "Thym frais"
+    ],
+    "identity_guardrails": [
+     "Les haricots sont blanchis puis glacés à part : cuits avec la viande, ils grisent",
+     "Le poulet dore avant tout le reste, la croûte est le goût du plat",
+     "Aucun liquide ajouté : le jus vient de l'eau rendue par l'oignon",
+     "Pas de crème — c'est une poêlée, la version crémée est une variante déclarée"
+    ]
+   },
+   "conservation": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C. Se congèle 3 mois, mais les haricots verts ressortent nettement plus mous : blanchir et congeler les haricots séparément si l'on prévoit de les tenir. Réchauffer à la poêle à couvert.",
+   "allergens": []
+  },
+  {
+   "code": "DEN-013",
+   "family": "Émincé de poulet aux champignons",
+   "cuisine_origin": "France / cuisine domestique",
+   "identity_level": "domestic_standard",
+   "category": "plat sauté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 25,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:emince-de-poulet-aux-champignons",
+    "marmiton.org",
+    "chefsimon.com"
+   ],
+   "description_courte": "Lanières de poulet et champignons de Paris poêlés à sec, liés d'une crème moutardée au thym",
+   "canonical_arbitration": "Cinq pages, trois sur marmiton et deux sur chefsimon, toutes sur le même plat : du poulet émincé, des champignons, une liaison. Une seule sert son émincé sur du riz, ce qui ne change ni la méthode ni les proportions et ne la disqualifie pas.\n\nLE POULET. Quatre pages le chiffrent : 400 g pour quatre, 4 blancs pour quatre, 2 blancs pour quatre, 2 filets pour deux, soit 100, 150, 75 et 150 g par personne. Médiane 125 g par personne, soit 500 g pour quatre.\n\nLES CHAMPIGNONS, ET DEUX MESURES QUI NE MESURENT PAS LA MÊME CHOSE. Deux pages achètent une boîte de conserve — « 1 boîte moyenne », « 1 petite boîte » — et deux pèsent du frais, 750 g pour quatre et 250 g pour trois. Une boîte égouttée a déjà rendu son eau et perdu la moitié de son poids de départ : la comparer à du frais fausserait la médiane vers le bas. Sur les deux seules pesées de frais, 187 et 83 g par personne, la médiane est 135 g. On retient 125 g par personne, soit 500 g pour quatre.\n\nLES CHAMPIGNONS SONT FRAIS. Le catalogue porte « Champignon de Paris surgelé » et le script de synthèse propose d'ailleurs cette forme pour ce dossier — c'est un mauvais rapprochement, et il faut le dire parce qu'il aurait pu passer. Les cinq pages écrivent « champignons de Paris » sans état, ou « boîte de champignons », jamais surgelé. La forme retenue est le champignon de Paris frais.\n\nLA LIAISON. La crème est dans quatre des cinq pages : 20 cl pour quatre, 25 cl pour quatre, 2 cuillerées pour quatre, 15 cl pour trois, soit 50, 62,5, 7,5 et 50 g par personne. Médiane 50 g par personne, soit 200 g pour quatre. La moutarde est dans deux des cinq, deux grosses cuillerées et deux cuillerées à l'ancienne : 30 g.\n\nLE RESTE. L'oignon est dans deux des cinq, 120 g. Le bouillon de volaille est dans deux des cinq, 10 cl et une tablette : 100 ml. Le thym est dans deux des cinq, une cuillerée à soupe de sec et une pincée : 2 g de thym séché. L'huile est dans deux des cinq, 20 g. Sont écartés le vin blanc, la fécule, les tomates séchées, les carottes, le céleri, les épinards, la muscade, le lait, l'estragon et les cèpes séchés, chacun à une seule page. Le corpus porte déjà « Poulet à la moutarde et champignons » (FR-009) : c'est un poulet en morceaux mijoté, quand celui-ci est un émincé sauté en vingt-cinq minutes, et les deux titres disent bien deux plats.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Une viande en sauce sans féculent : riz, pâtes ou pommes vapeur reçoivent la crème. L'une des cinq sources sert d'ailleurs son émincé sur 150 g de riz pour deux."
+   },
+   "ingredients": [
+    {
+     "form": "Blanc de poulet cru, sans peau",
+     "quantity": 500,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Champignon de Paris frais",
+     "quantity": 500,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Crème fraîche liquide entière",
+     "quantity": 200,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 120,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Bouillon de volaille",
+     "quantity": 100,
+     "unit": "ml",
+     "role": "mouillement",
+     "optional": false
+    },
+    {
+     "form": "Moutarde de Dijon",
+     "quantity": 30,
+     "unit": "g",
+     "role": "condiment",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 20,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Thym séché",
+     "quantity": 2,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Nettoyer les champignons au pinceau ou au torchon humide plutôt qu'à l'eau courante : ils sont poreux et l'eau qu'ils absorbent ressort à la poêle, où elle les fait bouillir. Les émincer en lamelles de trois millimètres. Tailler le poulet en lanières en travers des fibres."
+    },
+    {
+     "n": 2,
+     "instruction": "Chauffer une poêle large à sec, sans matière grasse, et y jeter les champignons en une seule couche. Les laisser rendre leur eau et la laisser s'évaporer complètement, sept à huit minutes, jusqu'à ce qu'ils grésillent et commencent à dorer. C'est ce passage à sec qui concentre leur goût, et aucune quantité de crème ne le remplace."
+    },
+    {
+     "n": 3,
+     "instruction": "Débarrasser les champignons, verser l'huile dans la poêle et saisir les lanières de poulet à feu vif en deux fois, trois minutes chacune. Les réserver avec les champignons dès qu'elles sont colorées et encore souples au toucher."
+    },
+    {
+     "n": 4,
+     "instruction": "Faire fondre l'oignon émincé dans la poêle cinq minutes, ajouter le thym, puis verser le bouillon et gratter tous les sucs collés au fond. Laisser réduire de moitié, puis ajouter la crème et faire frémir trois minutes jusqu'à ce que la sauce nappe."
+    },
+    {
+     "n": 5,
+     "instruction": "Couper le feu, délayer la moutarde dans la sauce — jamais sur le feu, elle tournerait amère — puis remettre le poulet et les champignons avec le jus qu'ils ont rendu. Réchauffer une minute à feu doux, saler, poivrer et servir."
+    }
+   ],
+   "techniques": [
+    "taillage",
+    "saisie à sec",
+    "saisie",
+    "déglaçage",
+    "liaison à la crème"
+   ],
+   "variants": [
+    "Vin blanc à la place du bouillon, avec de la crème et sans moutarde (marmiton)",
+    "Tomates séchées et une cuillerée de fécule pour serrer la sauce (marmiton)",
+    "Carottes, céleri, feuilles d'épinards et muscade, la sauce allongée au lait (chefsimon)",
+    "Une poignée de cèpes séchés réhydratés et un bouquet d'estragon, moutarde à l'ancienne (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "creamy_savory",
+    "scores": {
+     "sweet": 1,
+     "salty": 2,
+     "acidic": 1,
+     "bitter": 0,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 3,
+     "richness": 4,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "poulet doré",
+     "champignon",
+     "crème",
+     "moutarde"
+    ],
+    "aroma_families": [
+     "poulet",
+     "champignon_terreux",
+     "crème",
+     "moutarde"
+    ],
+    "target_textures": [
+     "tendre",
+     "lamelles de champignon tendres",
+     "sauce nappante"
+    ],
+    "signature_ingredients": [
+     "Blanc de poulet cru, sans peau",
+     "Champignon de Paris frais",
+     "Crème fraîche liquide entière"
+    ],
+    "identity_guardrails": [
+     "Les champignons sont poêlés à sec jusqu'à évaporation complète avant toute matière grasse",
+     "La moutarde entre hors du feu, sinon elle tourne amère et perd son piquant",
+     "Le poulet est émincé et saisi vif : c'est un sauté de vingt-cinq minutes, pas un mijoté",
+     "Ne pas laver les champignons à l'eau — ils la boivent et la rendent dans la poêle"
+    ]
+   },
+   "conservation": "Se garde 2 jours au réfrigérateur entre 0 et 4 °C. Réchauffer à feu doux à couvert ; si la sauce a épaissi, la détendre d'une cuillerée de bouillon. Se congèle mal — la crème tranche et les champignons rendent leur eau à la décongélation.",
+   "allergens": [
+    "lait",
+    "moutarde"
+   ]
+  },
+  {
+   "code": "DEN-014",
+   "family": "Bœuf aux brocolis",
+   "cuisine_origin": "Chine / cuisine domestique adaptée",
+   "identity_level": "domestic_standard",
+   "category": "bœuf sauté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 15,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:boeuf-aux-brocolis",
+    "marmiton.org",
+    "chefsimon.com"
+   ],
+   "description_courte": "Lamelles de bœuf saisies au wok et brocolis croquants, glacés d'une sauce soja au gingembre et à l'ail",
+   "canonical_arbitration": "Cinq pages, deux sur marmiton et trois sur chefsimon. Quatre sont des sautés au wok et décrivent le même plat ; la cinquième est un bibimbap, un bol de riz coréen à compartiments où le bœuf et le brocoli sont deux garnitures parmi d'autres — elle est écartée.\n\nLE BŒUF. Les quatre pages retenues le pèsent : 200 g pour deux, 150 g pour deux, 350 g pour six, 250 g sans portions déclarées. Ramené à la personne : 100, 75 et 58 g. La médiane des trois valeurs comparables est 75 g par personne. On monte à 125 g, soit 500 g pour quatre, et la raison est claire : ces trois pages servent leur wok SUR un riz ou des nouilles qu'elles comptent dans la même recette, où le féculent porte la moitié de l'assiette. Notre plat déclare son riz à côté et non dedans ; la protéine doit donc porter la portion.\n\nLA DÉCOUPE. Les quatre pages emploient un morceau à griller taillé fin — bifteck, beef steak, bavette, pavé de rumsteak — et toutes le détaillent en lamelles avant de le jeter au wok. La forme retenue est le bœuf à griller cru en fines lamelles.\n\nLE BROCOLI. 200 g pour deux, un brocoli pour deux, 250 g pour six, un pied sans portions : les deux valeurs comparables sont 100 et 42 g par personne. On retient 100 g par personne, soit 400 g pour quatre, qui est aussi ce que pèse un pied de brocoli paré — l'unité que trois des quatre pages achètent réellement. Le brocoli est frais : aucune des cinq pages n'emploie de surgelé, et la forme surgelée du catalogue reste donc de côté.\n\nLA SAUCE. La sauce soja est dans les quatre pages retenues, ce qui est rare dans ce lot : 1 cuillerée à café pour deux, 3 cuillerées à soupe pour deux, 3 cuillerées à soupe pour six, 2 cuillerées à soupe de tamari. Soit environ 2,5, 22, 7,5 et 15 ml par personne ; médiane 11 ml par personne, soit 45 ml pour quatre. Le gingembre est dans trois des quatre, 15 g. L'ail est dans trois des quatre — une gousse pour deux, deux gousses pour six, une gousse — soit 10 g. Le sucre est dans deux des quatre, une cuillerée à café et du sucre en poudre : 5 g, la pointe qui fait laquer la sauce.\n\nLES HUILES. Les quatre pages en portent, et deux emploient deux huiles à la fois : une neutre pour saisir, du sésame pour parfumer. On retient 20 g d'huile d'arachide et 8 g d'huile de sésame grillé, ce dernier étant dans deux des quatre pages.\n\nÉCARTÉS. La sauce d'huître et le nuoc mam d'une page ; la maïzena, le poivron rouge et le bouillon de bœuf d'une autre ; le saté d'une troisième. Les champignons apparaissent dans deux pages mais sous deux espèces différentes — champignons noirs d'un côté, champignons de Paris de l'autre — et deux champignons distincts ne font pas une médiane : ils restent dehors.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Un sauté de viande et de légume vert en sauce courte. Trois des quatre sources l'accompagnent d'un riz ou de nouilles comptés dans leur propre recette ; ici le féculent est déclaré à côté."
+   },
+   "ingredients": [
+    {
+     "form": "Bœuf à griller cru, en fines lamelles",
+     "quantity": 500,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Brocoli cru",
+     "quantity": 400,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 160,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sauce soja",
+     "quantity": 45,
+     "unit": "ml",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Huile d’arachide",
+     "quantity": 20,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Gingembre frais",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile de sésame grillé",
+     "quantity": 8,
+     "unit": "g",
+     "role": "finition",
+     "optional": false
+    },
+    {
+     "form": "Sucre semoule",
+     "quantity": 5,
+     "unit": "g",
+     "role": "équilibre",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Placer le morceau de bœuf vingt minutes au congélateur avant de le trancher : raffermi, il se coupe en lamelles de deux millimètres qu'aucun couteau n'obtiendrait sur une viande souple. Trancher en travers des fibres, sans quoi les lamelles resteront coriaces quelle que soit la cuisson."
+    },
+    {
+     "n": 2,
+     "instruction": "Mélanger la sauce soja, le sucre, l'ail haché et le gingembre râpé dans un bol, et y faire mariner les lamelles pendant qu'on prépare les légumes — quinze minutes suffisent. Détacher les bouquets de brocoli, éplucher et trancher le tronc, émincer l'oignon."
+    },
+    {
+     "n": 3,
+     "instruction": "Blanchir les bouquets de brocoli trois minutes dans l'eau bouillante salée, les égoutter et les passer sous l'eau froide. Au wok seul, un brocoli met huit minutes à cuire et le bœuf serait alors trop cuit depuis longtemps : le blanchiment préalable est ce qui permet aux deux d'arriver ensemble."
+    },
+    {
+     "n": 4,
+     "instruction": "Chauffer l'huile d'arachide dans un wok jusqu'à ce qu'elle fume, égoutter les lamelles de leur marinade en gardant celle-ci, et les saisir en deux fournées, une minute chacune, sans les remuer plus de deux fois. Les débarrasser dès qu'elles sont colorées : elles sont encore rosées à cœur, et c'est ce qui les gardera tendres."
+    },
+    {
+     "n": 5,
+     "instruction": "Faire sauter l'oignon deux minutes dans le wok, ajouter le brocoli égoutté puis la marinade réservée, et laisser bouillonner une minute pour qu'elle réduise en un glaçage brillant. Remettre le bœuf, mélanger dix secondes, couper le feu, verser l'huile de sésame et poivrer. Servir immédiatement."
+    }
+   ],
+   "techniques": [
+    "taillage",
+    "marinade",
+    "blanchiment",
+    "saisie vive",
+    "sauté"
+   ],
+   "variants": [
+    "Deux cuillerées de sauce d'huître et une de nuoc mam dans la marinade (marmiton)",
+    "Nouilles chinoises sautées dans le wok à la fin, avec du poivron rouge et des champignons noirs (chefsimon)",
+    "Deux cuillerées de saté en poudre dans la sauce, servi sur du riz basmati (chefsimon)",
+    "Riz sauté dans le même wok après la viande, façon plat unique (marmiton)"
+   ],
+   "sensory": {
+    "profile": "spicy_umami",
+    "scores": {
+     "sweet": 2,
+     "salty": 4,
+     "acidic": 0,
+     "bitter": 1,
+     "umami": 5,
+     "heat": 0,
+     "pungency": 3,
+     "richness": 3,
+     "freshness": 2,
+     "intensity": 4
+    },
+    "dominant_flavors": [
+     "bœuf saisi",
+     "sauce soja",
+     "gingembre",
+     "brocoli"
+    ],
+    "aroma_families": [
+     "bœuf_saisi",
+     "soja",
+     "gingembre",
+     "sésame_toasté"
+    ],
+    "target_textures": [
+     "tendre",
+     "bouquets fondants",
+     "sauce nappante"
+    ],
+    "signature_ingredients": [
+     "Bœuf à griller cru, en fines lamelles",
+     "Brocoli cru",
+     "Sauce soja"
+    ],
+    "identity_guardrails": [
+     "Le bœuf est tranché en travers des fibres et saisi une minute : au-delà il devient coriace",
+     "Le brocoli est blanchi avant le wok, sinon il n'est pas cuit quand la viande l'est déjà trop",
+     "L'huile de sésame arrive hors du feu — chauffée, elle devient amère et perd son parfum",
+     "Le sucre est une pointe qui fait laquer, pas un assaisonnement sucré"
+    ]
+   },
+   "conservation": "Se garde 2 jours au réfrigérateur entre 0 et 4 °C, mais le bœuf continue de durcir : le manger froid émincé en salade vaut mieux qu'un réchauffage. Se congèle 2 mois, la viande ressortant nettement plus ferme. Ne pas réchauffer au micro-ondes.",
+   "allergens": [
+    "soja",
+    "gluten",
+    "sésame"
+   ]
+  },
+  {
+   "code": "DEN-015",
+   "family": "Wok de poulet aux légumes",
+   "cuisine_origin": "France / cuisine domestique d'inspiration asiatique",
+   "identity_level": "domestic_standard",
+   "category": "plat sauté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 15,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:wok-de-poulet-aux-legumes",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Escalopes de poulet et légumes taillés fin, sautés à feu vif dans le soja, le gingembre et le sésame",
+   "canonical_arbitration": "Huit pages, cinq retenues sur trois sites. Trois sont écartées : une mijote des cuisses avec de l'aubergine et des tomates concassées quarante minutes, ce qui n'est plus un wok ; les deux autres sont des plats de nouilles de riz et de tagliatelles, où le féculent est dans la poêle.\n\nLE POULET. Les cinq pages retenues le comptent en escalopes ou en blancs : 400 g pour quatre, 4 escalopes pour quatre, 2 escalopes pour deux, 4 blancs pour quatre, 2 blancs pour quatre, soit 100, 150, 150, 150 et 75 g par personne à 150 g la pièce. Médiane 150 g par personne, soit 600 g pour quatre.\n\nLES LÉGUMES, ET LE PROBLÈME D'UN NOM GÉNÉRIQUE. « Aux légumes » n'annonce aucun légume en particulier, et la tentation serait d'en mettre huit. On s'en tient à ceux que la moitié des pages retenues portent. Le poivron est dans quatre des cinq : deux poivrons, un jaune, un rouge pour deux, un rouge. Ces quatre comptes encadrent un poivron et demi pour quatre, soit 200 g ; le catalogue ne porte pas le poivron jaune, on écrit le rouge. La carotte est dans trois des cinq : trois, six et deux carottes pour quatre, médiane trois carottes, 300 g. La courgette est dans deux des cinq, deux pour quatre et une pour deux : 250 g. L'échalote et l'oignon se partagent l'allium dans trois des cinq — deux échalotes, un oignon pour deux, deux échalotes — et l'échalote l'emporte à deux contre un : 80 g.\n\nCE QUI EST LAISSÉ DE CÔTÉ, ET C'EST BEAUCOUP. Les petits pois, les pois mange-tout, les pois gourmands, les jeunes épis de maïs, le pak choï, les champignons noirs, les tomates et les tomates cerise ne sont chacun que dans une seule page. Le catalogue porte « Petit pois surgelé », et c'était un candidat pour ce lot : une seule page sur cinq compte 100 g de petits pois, ce qui ne fait pas une médiane. Le pois n'entre pas.\n\nL'ASSAISONNEMENT. La sauce soja est dans trois des cinq : 3 cuillerées pour quatre, 2 cuillerées à soupe pour quatre, et une mention sans quantité. On retient 40 ml. L'huile est dans quatre des cinq et deux d'entre elles emploient du sésame : 30 g d'huile d'arachide pour saisir, 10 g de sésame grillé pour finir. Le gingembre est dans deux des cinq, 12 g. L'ail est dans deux des cinq, en poudre chez l'une et en gousses chez l'autre : 10 g d'ail cru. La coriandre fraîche est dans deux des cinq, un bouquet et deux cuillerées : 15 g. Le paprika est dans deux des cinq, 3 g. Le curry, le nuoc mam, la fécule de pomme de terre et la sauce aigre-douce ne sont chacun que dans une page.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Protéine et légumes sautés, sans féculent : quatre des cinq sources servent leur wok sur du riz ou des nouilles préparés à part."
+   },
+   "ingredients": [
+    {
+     "form": "Blanc de poulet cru, sans peau",
+     "quantity": 600,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Carotte crue",
+     "quantity": 300,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Courgette fraîche",
+     "quantity": 250,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Poivron rouge frais",
+     "quantity": 200,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Échalote crue",
+     "quantity": 80,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sauce soja",
+     "quantity": 40,
+     "unit": "ml",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Huile d’arachide",
+     "quantity": 30,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Coriandre fraîche",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Gingembre frais",
+     "quantity": 12,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile de sésame grillé",
+     "quantity": 10,
+     "unit": "g",
+     "role": "finition",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Paprika doux",
+     "quantity": 3,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 3,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Tailler tous les légumes AVANT d'allumer le feu, et de la même épaisseur : carottes en fines rondelles ou en bâtonnets, courgette en demi-lunes, poivron en lanières. Un wok se conduit en cinq minutes montre en main, et il n'y a aucun moment pour couper quoi que ce soit une fois la poêle chaude."
+    },
+    {
+     "n": 2,
+     "instruction": "Couper le poulet en lanières en travers des fibres, le saler et le poivrer, et le mélanger au paprika. Hacher l'ail, râper le gingembre, ciseler l'échalote et réserver ces trois-là ensemble dans un bol : ils entreront au même moment."
+    },
+    {
+     "n": 3,
+     "instruction": "Chauffer l'huile d'arachide dans un wok jusqu'à ce qu'elle ondule, saisir le poulet en deux fournées à feu maximal, trois minutes chacune, en secouant le wok plutôt qu'en remuant à la cuillère. Débarrasser dès qu'il est doré."
+    },
+    {
+     "n": 4,
+     "instruction": "Jeter les carottes seules deux minutes, puis le poivron une minute, puis la courgette une minute : l'ordre suit la fermeté, et c'est lui qui décide de tout dans un wok. Ajouter l'échalote, l'ail et le gingembre et remuer trente secondes de plus."
+    },
+    {
+     "n": 5,
+     "instruction": "Remettre le poulet, verser la sauce soja et laisser bouillonner une minute pour qu'elle enrobe. Couper le feu, ajouter l'huile de sésame et la coriandre ciselée, mélanger une dernière fois et servir sans attendre — les légumes perdent leur croquant en deux minutes dans un plat couvert."
+    }
+   ],
+   "techniques": [
+    "taillage",
+    "saisie vive",
+    "sauté",
+    "cuisson séquencée par tenue des légumes",
+    "finition à l'huile crue"
+   ],
+   "variants": [
+    "Petits pois et pois mange-tout ajoutés avec la courgette (marmiton)",
+    "Jeunes épis de maïs et pak choï, sauce aigre-douce pimentée à part (chefsimon)",
+    "Curry en poudre à la place du paprika et du gingembre (marmiton)",
+    "Champignons noirs réhydratés et tomates cerise en fin de cuisson (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "savory_crisp",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 0,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 2,
+     "richness": 2,
+     "freshness": 3,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "poulet doré",
+     "légumes croquants",
+     "sauce soja",
+     "sésame"
+    ],
+    "aroma_families": [
+     "poulet",
+     "légumes",
+     "soja",
+     "sésame_toasté"
+    ],
+    "target_textures": [
+     "tendre",
+     "légumes tendres",
+     "croquant"
+    ],
+    "signature_ingredients": [
+     "Blanc de poulet cru, sans peau",
+     "Sauce soja",
+     "Huile de sésame grillé"
+    ],
+    "identity_guardrails": [
+     "Tout est taillé avant d'allumer : un wok ne laisse pas le temps de couper",
+     "Les légumes entrent par ordre de fermeté, jamais tous ensemble",
+     "L'huile de sésame est une finition hors du feu, pas une huile de cuisson",
+     "Les légumes restent croquants — un wok mou est un wok raté, et se sert immédiatement"
+    ]
+   },
+   "conservation": "Se garde 2 jours au réfrigérateur entre 0 et 4 °C, mais les légumes perdent leur croquant dès le lendemain et le plat devient une poêlée. Réchauffer à feu très vif et très court. Se congèle mal, la courgette rendant beaucoup d'eau.",
+   "allergens": [
+    "soja",
+    "gluten",
+    "sésame"
+   ]
+  },
+  {
+   "code": "DEN-016",
+   "family": "Poulet aux lentilles",
+   "cuisine_origin": "France / cuisine domestique",
+   "identity_level": "domestic_standard",
+   "category": "plat complet mijoté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 40,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:poulet-aux-lentilles",
+    "marmiton.org",
+    "750g.com"
+   ],
+   "description_courte": "Lentilles vertes mijotées avec des morceaux de poulet doré, l'oignon et le thym, finies à la coriandre",
+   "canonical_arbitration": "Sept pages, quatre retenues sur deux sites — trois marmiton, une 750g. Trois sont écartées et chacune pour une raison de forme : l'une roule le poulet en ballotins autour d'une farce, l'autre en fait un risotto où le riz prend la place de la lentille, la troisième ne déclare aucune portion et part d'une conserve de lentilles brunes.\n\nLES LENTILLES, ET UN POIDS SEC QU'IL FAUT LIRE COMME TEL. Les quatre pages retenues les pèsent : 500 g pour quatre, 1 kg pour six, 250 g pour quatre, 200 g pour deux, soit 125, 167, 62,5 et 100 g par personne. La médiane est 112,5 g par personne. On descend à 80 g, soit 320 g pour quatre. La raison est de nature et non de goût : ce sont des poids SECS, et une lentille sèche fait deux fois et demie son poids une fois cuite. 112 g secs donnent près de 300 g de lentilles dans l'assiette, à quoi s'ajoute la volaille — c'est une portion de cantine, pas de dîner. Quatre-vingts grammes secs par personne est la mesure que le corpus emploie déjà pour ses plats de légumineuses.\n\nLA VARIÉTÉ. Trois des quatre pages retenues nomment la lentille verte, dont l'une la lentille verte du Puy ; la quatrième emploie la lentille de Cilaos, une variété réunionnaise que le catalogue ne porte pas. La lentille verte sèche l'emporte sans discussion.\n\nLE POULET. Trois pages le chiffrent : 800 g pour six, 3 filets pour quatre, 2 filets pour deux, soit 133, 112 et 150 g par personne à 150 g le filet. Médiane 133 g par personne, soit 520 g pour quatre. La quatrième achète un poulet entier, ce qui ne se ramène pas à un poids de chair sans un rendement supposé.\n\nL'AROMATIQUE. L'oignon est dans les quatre pages retenues : un pour quatre, trois pour six, un pour quatre, un pour deux, soit 0,25, 0,5, 0,25 et 0,5 oignon par personne. Médiane 0,375 oignon par personne, soit 1,5 oignon et 180 g pour quatre. Le thym est dans deux des quatre, 2 g. La coriandre est dans deux des quatre, 12 g. L'huile est dans trois des quatre : 3 cuillerées pour quatre, 1 cuillerée pour quatre, 1 cuillerée à café pour deux ; on retient 20 g.\n\nÉCARTÉS, ET DEUX MÉRITENT UN MOT. Les 250 g de lardons d'une page feraient dériver le plat vers « Lentilles au lard », que le corpus porte déjà sous SRC-042 : ils restent dehors, et pas seulement parce qu'ils sont à une seule page. Le vin blanc, le laurier, les tomates, les pommes de terre, le curry, le cumin, le curcuma, l'estragon, le basilic, le gingembre et le mélange cajun sont chacun à une seule page.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Quatre-vingts grammes de lentilles sèches et 130 g de volaille par personne : la légumineuse fait le féculent et la protéine complémentaire, le plat se suffit. Aucune des quatre sources n'ajoute de riz ni de pain."
+   },
+   "ingredients": [
+    {
+     "form": "Blanc de poulet cru, sans peau",
+     "quantity": 520,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Lentille verte sèche, crue",
+     "quantity": 320,
+     "unit": "g",
+     "role": "légumineuse",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 180,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 20,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Coriandre fraîche",
+     "quantity": 12,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Thym frais",
+     "quantity": 2,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 5,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Rincer les lentilles à l'eau froide et les trier en les étalant sur une assiette : il s'y trouve régulièrement un petit caillou, et un seul suffit à casser une dent. Ne pas les faire tremper, elles n'en ont pas besoin et se déliteraient à la cuisson."
+    },
+    {
+     "n": 2,
+     "instruction": "Couper le poulet en gros morceaux, saler et poivrer. Chauffer l'huile dans une cocotte et faire dorer les morceaux sur toutes leurs faces à feu vif, six minutes environ, puis les réserver. Le fond brun laissé dans la cocotte est ce qui donnera son goût au bouillon des lentilles."
+    },
+    {
+     "n": 3,
+     "instruction": "Baisser le feu, faire fondre l'oignon émincé dans les sucs pendant cinq minutes en grattant le fond, puis ajouter les lentilles rincées et le thym. Remuer une minute pour les enrober de gras avant de mouiller."
+    },
+    {
+     "n": 4,
+     "instruction": "Couvrir d'eau froide à hauteur plus deux centimètres, porter à ébullition puis baisser à petit frémissement et laisser vingt-cinq minutes à couvert. NE PAS SALER MAINTENANT : le sel durcit la peau des légumineuses et les lentilles resteraient fermes au cœur quel que soit le temps de cuisson."
+    },
+    {
+     "n": 5,
+     "instruction": "Remettre le poulet et son jus, saler enfin, et poursuivre dix minutes à découvert pour que le bouillon réduise et nappe. Les lentilles doivent être fondantes en gardant leur forme. Couper le feu, ajouter la coriandre ciselée, laisser reposer cinq minutes et servir."
+    }
+   ],
+   "techniques": [
+    "saisie",
+    "déglaçage",
+    "mijotage",
+    "assaisonnement tardif",
+    "repos"
+   ],
+   "variants": [
+    "250 g de lardons rissolés avec l'oignon et un verre de vin blanc, ce qui rapproche le plat des « Lentilles au lard » du corpus (marmiton)",
+    "Curry, cumin, ail et tomates, avec deux pommes de terre en cubes (marmiton)",
+    "Gingembre, curcuma et estragon, façon lentilles de Cilaos (marmiton)",
+    "Mélange cajun et poivrons piquillos, servi tiède en salade (750g)"
+   ],
+   "sensory": {
+    "profile": "earthy_herbal",
+    "scores": {
+     "sweet": 1,
+     "salty": 2,
+     "acidic": 0,
+     "bitter": 1,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 2,
+     "freshness": 2,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "lentille",
+     "poulet doré",
+     "oignon fondu",
+     "coriandre"
+    ],
+    "aroma_families": [
+     "lentille",
+     "poulet",
+     "oignon_compoté",
+     "coriandre"
+    ],
+    "target_textures": [
+     "lentilles fondantes mais entières",
+     "tendre",
+     "jus court et nappant"
+    ],
+    "signature_ingredients": [
+     "Blanc de poulet cru, sans peau",
+     "Lentille verte sèche, crue",
+     "Coriandre fraîche"
+    ],
+    "identity_guardrails": [
+     "Le sel n'entre qu'après vingt-cinq minutes : salées trop tôt, les lentilles restent dures",
+     "Les lentilles ne trempent pas — elles se déliteraient",
+     "Pas de lardons : ce serait « Lentilles au lard », un autre plat du corpus",
+     "Le poulet est doré à part et revient à la fin, sinon il cuit quarante minutes et devient sec"
+    ]
+   },
+   "conservation": "Se garde 4 jours au réfrigérateur entre 0 et 4 °C et gagne au repos, les lentilles finissant d'absorber le bouillon. Se congèle 3 mois en portions ; ajouter une cuillerée d'eau au réchauffage, les lentilles ayant encore épaissi.",
+   "allergens": []
+  },
+  {
+   "code": "DEN-017",
+   "family": "Poulet aux pois chiches",
+   "cuisine_origin": "Maghreb / cuisine domestique adaptée",
+   "identity_level": "domestic_standard",
+   "category": "plat complet mijoté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 35,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:poulet-aux-pois-chiches",
+    "marmiton.org",
+    "chefsimon.com"
+   ],
+   "description_courte": "Poulet et pois chiches mijotés au bouillon avec l'oignon, le poivron et une pointe de cannelle",
+   "canonical_arbitration": "Six pages, trois sur marmiton et trois sur chefsimon, toutes sur le plat. Aucune n'est écartée, ce qui est rare dans ce lot ; en revanche deux des trois pages de chefsimon sont du même auteur, écrites pour une seule personne dans une série allégée, et cela pèse sur la lecture des quantités.\n\nLE POULET, ET POURQUOI LA MÉDIANE NE SUFFIT PAS. Trois pages pèsent une volaille comparable : 2 filets pour deux, 1 blanc de 100 g pour une personne, 1 blanc de 100 g pour une personne, soit 150, 100 et 100 g par personne. La médiane brute est 100 g. Mais les deux valeurs à 100 g sont les deux pages du même auteur, dont le blanc de 100 g est la signature de la série allégée et non un consensus : ce sont deux occurrences d'une seule décision. On retient 125 g par personne, soit 500 g pour quatre. Les trois autres pages emploient des cuisses ou un poulet entier découpé, qu'on ne peut pas ramener à un poids de chair sans supposer un rendement.\n\nLES POIS CHICHES. Six pages, six mentions. Une seule les pèse en sec, 180 g pour quatre en alternative ; les autres comptent une boîte ou pèsent l'égoutté : 250 g pour deux, une boîte pour quatre, une boîte pour quatre, une boîte 4/4 pour quatre, 60 g pour une personne, 80 g pour une personne. Une boîte standard rend 250 g égouttés. Ramené à la personne : 125, 62,5, 62,5, 62,5, 60 et 80 g. La médiane est 62,5 g par personne, soit 250 g pour quatre — précisément une boîte, ce que quatre des six pages achètent. On écrit la forme égouttée, puisque c'est ainsi que cinq pages sur six l'emploient.\n\nLA CANNELLE, MARQUEUR PARTAGÉ PAR DEUX SITES. Deux pages sur six la portent, une sur chaque site, et toutes deux l'annoncent dans leur titre : « poulet aux pois chiches et à la cannelle ». Deux bâtons plus une demie cuillerée à café de poudre d'un côté, une cuillerée à soupe de poudre de l'autre. On retient 3 g de cannelle moulue — assez pour qu'on la sente, pas assez pour faire un dessert.\n\nLE RESTE. L'oignon est dans quatre des six, un par recette : 120 g. L'ail est dans trois des six — une gousse pour deux, deux gousses pour quatre, une gousse pour quatre — soit 0,5 gousse par personne en médiane, 10 g. L'huile d'olive est dans trois des six, 20 g. Le mouillement est dans deux des six sous deux noms, 20 cl de bouillon de poule et 10 cl de fond de veau : on retient 200 ml de bouillon de volaille. Le poivron est dans deux des six, un rouge en lamelles et 80 g de surgelé : 150 g de poivron rouge frais, la forme que le catalogue porte et que la page la plus explicite emploie.\n\nÉCARTÉS. La crème et le curry sont chacun dans deux pages, mais ce sont les deux pages du même auteur : une seule voix, et ils restent dehors. Les lardons, le laurier, le riz, le persil, la coriandre, le vin blanc, les tomates concassées, le coulis de tomate, le romarin, le thym, les carottes et les petits pois sont chacun à une ou deux pages sans confirmation croisée.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "La légumineuse porte le féculent, le poulet la protéine, le poivron et l'oignon le légume : trois des six sources la servent seule. Les deux qui ajoutent du riz le comptent dans leur propre recette."
+   },
+   "ingredients": [
+    {
+     "form": "Blanc de poulet cru, sans peau",
+     "quantity": 500,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Pois chiche cuit, égoutté",
+     "quantity": 250,
+     "unit": "g",
+     "role": "légumineuse",
+     "optional": false
+    },
+    {
+     "form": "Bouillon de volaille",
+     "quantity": 200,
+     "unit": "ml",
+     "role": "mouillement",
+     "optional": false
+    },
+    {
+     "form": "Poivron rouge frais",
+     "quantity": 150,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 120,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 20,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Cannelle moulue",
+     "quantity": 3,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Égoutter les pois chiches et les rincer longuement à l'eau froide jusqu'à ce que l'eau cesse de mousser. Le jus de conserve a un goût métallique tenace qui ressort dans un plat mijoté, et trente secondes de rinçage le règlent définitivement."
+    },
+    {
+     "n": 2,
+     "instruction": "Couper le poulet en gros morceaux, saler et poivrer. Les faire dorer dans l'huile chaude à feu vif, cinq à six minutes, puis les réserver hors de la cocotte. Émincer l'oignon, tailler le poivron en lamelles, hacher l'ail."
+    },
+    {
+     "n": 3,
+     "instruction": "Faire fondre l'oignon et le poivron dans la cocotte à feu moyen pendant huit minutes, en grattant les sucs. Ajouter l'ail et la cannelle et remuer une minute à sec : une épice moulue jetée dans un liquide reste poudreuse, alors qu'un passage dans le gras chaud libère ses arômes."
+    },
+    {
+     "n": 4,
+     "instruction": "Verser le bouillon, ajouter les pois chiches rincés et laisser mijoter vingt minutes à couvert et à petit feu. Les pois chiches sont déjà cuits : ce temps n'est pas là pour les attendrir mais pour qu'ils prennent le goût du fond."
+    },
+    {
+     "n": 5,
+     "instruction": "Remettre le poulet avec son jus, découvrir et poursuivre huit minutes pour que le bouillon réduise et nappe les pois chiches. Goûter, rectifier le sel et le poivre, et laisser reposer cinq minutes hors du feu avant de servir."
+    }
+   ],
+   "techniques": [
+    "rinçage",
+    "saisie",
+    "suer",
+    "torréfaction des épices",
+    "mijotage"
+   ],
+   "variants": [
+    "Deux bâtons de cannelle mijotés entiers à la place de la poudre, et un verre de riz cuit dans le bouillon (marmiton)",
+    "Six feuilles de laurier, un verre de vin blanc et des cuisses de poulet à la place des blancs (marmiton)",
+    "Tomates concassées, carottes et lardons (marmiton)",
+    "Crème semi-épaisse et curry de Madras à la place de la cannelle, avec des petits pois (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "warm_aromatic",
+    "scores": {
+     "sweet": 2,
+     "salty": 2,
+     "acidic": 0,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 2,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "poulet doré",
+     "pois chiche",
+     "cannelle",
+     "poivron fondu"
+    ],
+    "aroma_families": [
+     "poulet",
+     "légumineuse grillée",
+     "cannelle",
+     "poivron"
+    ],
+    "target_textures": [
+     "tendre",
+     "haricot fondant à peau intacte",
+     "jus court et nappant"
+    ],
+    "signature_ingredients": [
+     "Blanc de poulet cru, sans peau",
+     "Pois chiche cuit, égoutté",
+     "Cannelle moulue"
+    ],
+    "identity_guardrails": [
+     "La cannelle est une pointe aromatique, jamais un accent sucré",
+     "Les pois chiches sont rincés jusqu'à ce que l'eau cesse de mousser",
+     "Le poulet dore à part et ne revient qu'à la fin : mijoté vingt minutes, un blanc devient sec",
+     "Pas de crème ni de curry : ils viennent des deux pages d'un même auteur et restent en variante"
+    ]
+   },
+   "conservation": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C et se bonifie au repos, les pois chiches continuant d'absorber le bouillon. Se congèle 3 mois ; ajouter un peu de bouillon au réchauffage.",
+   "allergens": []
+  },
+  {
+   "code": "DEN-018",
+   "family": "Omelette aux épinards",
+   "cuisine_origin": "France / cuisine domestique",
+   "identity_level": "domestic_standard",
+   "category": "omelette",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 10,
+   "cook_minutes": 12,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:omelette-aux-epinards",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Épinards frais tombés à l'huile et enfermés dans une omelette baveuse au gruyère",
+   "canonical_arbitration": "Sept pages, cinq retenues sur trois sites. Deux sont écartées parce que le saumon fumé y tient la moitié du plat : 200 g de saumon pour 200 g d'épinards dans l'une, cinq tranches roulées dans l'autre. Une omelette au saumon fumé et aux épinards est un autre plat.\n\nLES ŒUFS. Les cinq pages retenues : 4 œufs pour deux, 10 pour quatre, 6 pour six, 6 pour quatre, 1 pour une personne, soit 2, 2,5, 1, 1,5 et 1 œuf par personne. La médiane est 1,5 œuf par personne. On remonte à 2, soit 8 œufs pour quatre : deux des cinq pages comptent leurs œufs pour une omelette au four où le kilogramme d'épinards fait le volume, et une troisième pèse une portion unique. Deux œufs par personne est la mesure d'une omelette de poêle, et c'est celle qu'on écrit.\n\nLES ÉPINARDS. 250 g pour deux, 400 g pour quatre, 1 kg pour six, 400 g pour quatre, 50 g pour une personne, soit 125, 100, 167, 100 et 50 g par personne. Médiane 100 g par personne, soit 400 g pour quatre.\n\nILS SONT FRAIS, ET LE DOSSIER NE LAISSE PAS DE DOUTE. Les cinq pages écrivent « épinards en branche », « épinards fraîches à cuire », « épinards », « feuilles d'épinards frais », « jeunes pousses d'épinards ». Aucune n'achète de surgelé. Le catalogue porte « Épinard surgelé » et ce lot le cherche ; il entre dans la frittata du même lot, dont une source l'atteste noir sur blanc, et il n'entre pas ici. Les deux recettes d'œufs aux épinards de ce lot ne diffèrent donc pas par caprice : elles suivent chacune leur dossier.\n\nLE FROMAGE, CINQ PAGES ET CINQ FROMAGES. Toutes en fondent un — mozzarella, gruyère et chèvre en bûche, fourme d'Ambert, chèvre frais, raclette et parmesan. Aucune médiane de NATURE n'en sort. On retient le gruyère râpé, seul nommé par deux des cinq pages retenues, et la médiane des POIDS, qui elle est calculable : environ 25 g par personne, soit 100 g pour quatre.\n\nLE RESTE. Le lait est dans trois des cinq, et deux le chiffrent : 5 cl pour quatre et 15 cl pour six, soit 12,5 et 25 ml par personne ; médiane 18,75 ml par personne, soit 75 ml pour quatre. L'oignon est dans trois des cinq — un oignon et sa verdure pour deux, un oignon jaune pour quatre, un demi-oignon rouge pour une personne : on retient 150 g, l'oignon et demi que ces trois valeurs encadrent. L'huile d'olive est dans trois des cinq, 25 g. Sont écartés l'ail, les tomates séchées, les pignons de pin, le chorizo, la muscade, le curry et la farine de pois chiche, chacun à une seule page.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Deux œufs, 100 g d'épinards et 25 g de fromage par personne : l'omelette porte sa protéine et son légume, et se mange avec du pain ou une salade. Elle n'attend pas d'accompagnement cuisiné."
+   },
+   "ingredients": [
+    {
+     "form": "Épinard frais",
+     "quantity": 400,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 8,
+     "unit": "u",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Gruyère râpé",
+     "quantity": 100,
+     "unit": "g",
+     "role": "fromage",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 150,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Lait entier",
+     "quantity": 75,
+     "unit": "ml",
+     "role": "appareil",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 25,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 3,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Laver les épinards dans un grand volume d'eau et les sécher en essoreuse à salade. Retirer les côtes des grandes feuilles, qui restent fibreuses quand le limbe est déjà fondu ; les jeunes pousses se gardent entières."
+    },
+    {
+     "n": 2,
+     "instruction": "Faire fondre l'oignon émincé dans l'huile à feu moyen pendant six minutes, puis ajouter les épinards par grosses poignées, en attendant que chacune retombe avant d'enfourner la suivante. Quatre cents grammes de feuilles crues tiennent dans une poêle en trois fois et donnent à peine 150 g une fois tombés."
+    },
+    {
+     "n": 3,
+     "instruction": "Monter le feu et laisser l'eau des épinards s'évaporer complètement, deux à trois minutes, jusqu'à ce que la poêle chuinte au lieu de bouillonner. Des épinards humides feraient une omelette qui rend son eau à l'assiette, et c'est le défaut classique de ce plat. Saler, poivrer et débarrasser."
+    },
+    {
+     "n": 4,
+     "instruction": "Battre les œufs avec le lait à la fourchette, une quinzaine de secondes seulement : trop battus, ils s'allègent en mousse et l'omelette prend une texture de flan soufflé qui retombe. Incorporer les épinards et la moitié du gruyère."
+    },
+    {
+     "n": 5,
+     "instruction": "Verser l'appareil dans la poêle huilée bien chaude, baisser aussitôt à feu doux et ramener les bords vers le centre à la spatule pendant les deux premières minutes. Semer le reste du gruyère, couvrir et laisser trois à quatre minutes : le dessus doit rester brillant et souple. Plier en deux et faire glisser sur le plat."
+    }
+   ],
+   "techniques": [
+    "parage",
+    "suer",
+    "évaporation",
+    "liaison aux œufs",
+    "cuisson courte"
+   ],
+   "variants": [
+    "Mozzarella en dés à la place du gruyère (marmiton)",
+    "Rondelles de chèvre en bûche posées sur l'omelette avant de la plier (marmiton)",
+    "Fourme d'Ambert et chorizo, l'omelette finie au four en plat (chefsimon)",
+    "Tomates séchées à l'huile, chèvre frais et pignons de pin, l'omelette roulée (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "creamy_delicate",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 1,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 3,
+     "freshness": 2,
+     "intensity": 2
+    },
+    "dominant_flavors": [
+     "œuf",
+     "épinard",
+     "gruyère fondu",
+     "oignon"
+    ],
+    "aroma_families": [
+     "œuf",
+     "épinard",
+     "gruyère",
+     "oignon"
+    ],
+    "target_textures": [
+     "moelleux",
+     "feuilles fondantes",
+     "fromage fondant"
+    ],
+    "signature_ingredients": [
+     "Œuf cru",
+     "Épinard frais",
+     "Gruyère râpé"
+    ],
+    "identity_guardrails": [
+     "Les épinards rendent toute leur eau avant d'entrer dans les œufs, sinon l'omelette détrempe",
+     "Les œufs sont battus quinze secondes, pas montés en mousse",
+     "Le dessus reste souple et brillant : une omelette sèche est une omelette ratée",
+     "Épinards frais, pas surgelés — les cinq sources retenues achètent toutes du frais"
+    ]
+   },
+   "conservation": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C et se mange froide, coupée en parts. Le réchauffage la dessèche et fait suinter l'eau des épinards. Ne se congèle pas : l'œuf cuit devient caoutchouteux et rend son eau à la décongélation.",
+   "allergens": [
+    "œufs",
+    "lait"
+   ]
+  },
+  {
+   "code": "DEN-019",
+   "family": "Omelette au thon",
+   "cuisine_origin": "France / cuisine domestique",
+   "identity_level": "domestic_standard",
+   "category": "omelette",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 10,
+   "cook_minutes": 15,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:omelette-au-thon",
+    "marmiton.org",
+    "chefsimon.com"
+   ],
+   "description_courte": "Omelette à l'oignon fondu et à la tomate, thon au naturel émietté dans l'appareil, relevée d'un paprika",
+   "canonical_arbitration": "Cinq pages, trois sur marmiton et deux sur chefsimon, toutes sur le plat. Le dossier est petit mais homogène : personne ne fait autre chose que des œufs et du thon en boîte.\n\nLES ŒUFS. Trois pages déclarent leurs portions : 6 œufs pour deux, 4 pour deux, 6 pour quatre, soit 3, 2 et 1,5 œuf par personne. Médiane 2 œufs par personne, soit 8 œufs pour quatre. Les deux pages de chefsimon ne déclarent pas de portions.\n\nLE THON. Les cinq pages l'achètent en boîte au naturel. Trois donnent une portion : une petite boîte pour deux, une boîte pour deux, une boîte pour quatre. Une petite boîte rend environ 80 g égouttés et une boîte standard 100 g : cela fait 40, 50 et 25 g par personne. Médiane 40 g par personne, soit 160 g pour quatre. Les deux pages de chefsimon, qui pèsent 260 g et 75 g sans portions, encadrent cette valeur.\n\nL'OIGNON. Trois pages sur cinq : un oignon pour deux, trois oignons moyens pour quatre, un petit oignon rouge. Soit 0,5 et 0,75 oignon par personne pour les deux qui se ramènent, médiane 0,625, soit 2,5 oignons pour quatre. On descend à 1,5 oignon et 180 g : les trois oignons d'une page en font une omelette à l'oignon, ce que son titre ne dit pas mais que sa liste montre, avec quatre ingrédients en tout.\n\nLA TOMATE. Deux pages sur cinq, une demi-tomate pour deux et quatre tomates sans portions : on retient 150 g pour quatre. C'est la seule fraîcheur du plat et elle est confirmée par deux sites différents.\n\nLE PAPRIKA. Deux pages sur cinq : du paprika chez l'une, du piment d'Espelette chez l'autre. On retient le paprika doux, 2 g, le plus doux des deux et le seul nommé tel quel.\n\nLE FROMAGE, ÉCARTÉ ET C'EST DISCUTABLE. Trois pages sur cinq en portent — du Saint Morêt, du comté râpé, 15 g d'emmental — mais ce sont trois natures différentes et deux d'entre elles ne sont pas râpées de la même façon. Une omelette au thon avec du fromage fondu est plausible ; elle n'est pas démontrée. Le fromage reste en variante. Sont écartés aussi la courgette, le poivron, les pommes de terre, les épinards, la crème, le curry, l'ail en poudre et le persil, chacun à une seule page.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Deux œufs et 40 g de thon par personne, plus l'oignon et la tomate : c'est un repas d'assiette, servi avec du pain et une salade. Les cinq sources ne l'accompagnent d'aucun plat cuisiné."
+   },
+   "ingredients": [
+    {
+     "form": "Œuf cru",
+     "quantity": 8,
+     "unit": "u",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Thon au naturel en conserve, égoutté",
+     "quantity": 160,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 180,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Tomate fraîche mûre",
+     "quantity": 150,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 20,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Paprika doux",
+     "quantity": 2,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 3,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Égoutter le thon dans une passoire en pressant à la fourchette pour chasser la saumure, puis l'émietter grossièrement. Un thon mal égoutté sale l'omelette de façon imprévisible et l'humidifie, ce qui l'empêche de prendre."
+    },
+    {
+     "n": 2,
+     "instruction": "Émincer l'oignon finement et le faire fondre dans l'huile à feu doux pendant huit à dix minutes, jusqu'à ce qu'il soit translucide et doux. C'est le temps le plus long de la recette et celui qu'on est le plus tenté d'écourter : un oignon encore croquant reste piquant dans l'œuf."
+    },
+    {
+     "n": 3,
+     "instruction": "Épépiner les tomates et les couper en dés, les ajouter à l'oignon avec le paprika et laisser deux à trois minutes à feu vif pour que leur eau parte. Saler légèrement en tenant compte du sel du thon."
+    },
+    {
+     "n": 4,
+     "instruction": "Battre les œufs à la fourchette sans les faire mousser, poivrer, puis incorporer le thon émietté et la garniture d'oignon et de tomate encore tiède. Mélanger d'un geste, pas plus : le thon doit rester en miettes visibles."
+    },
+    {
+     "n": 5,
+     "instruction": "Verser dans la poêle chaude et huilée, baisser le feu et laisser prendre cinq à six minutes en ramenant les bords vers le centre les premières minutes. Couvrir en fin de cuisson pour que le dessus prenne sans qu'on ait à retourner l'omelette, qui se casserait sous le poids de sa garniture."
+    }
+   ],
+   "techniques": [
+    "égouttage",
+    "suer",
+    "évaporation",
+    "liaison aux œufs",
+    "cuisson à couvert"
+   ],
+   "variants": [
+    "Une courgette râpée fondue avec l'oignon et une pointe de curry (marmiton)",
+    "Poivron en dés, une cuillerée de fromage frais et une de crème dans l'appareil (marmiton)",
+    "640 g de pommes de terre en rondelles précuites, comté râpé et piment d'Espelette, façon tortilla (chefsimon)",
+    "Jeunes pousses d'épinards, oignon rouge et emmental râpé, cuits en mini-omelettes (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "savory_tomato",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 2,
+     "bitter": 0,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 2,
+     "freshness": 2,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "œuf",
+     "thon",
+     "oignon fondu",
+     "tomate"
+    ],
+    "aroma_families": [
+     "œuf",
+     "thon",
+     "oignon_compoté",
+     "tomate"
+    ],
+    "target_textures": [
+     "moelleux",
+     "dés fondants gardant leur forme"
+    ],
+    "signature_ingredients": [
+     "Œuf cru",
+     "Thon au naturel en conserve, égoutté",
+     "Oignon jaune cru"
+    ],
+    "identity_guardrails": [
+     "Le thon est au naturel et égoutté à fond : à l'huile, il graisse l'omelette et masque l'œuf",
+     "L'oignon fond dix minutes avant d'entrer dans les œufs, sinon il reste piquant",
+     "L'omelette ne se retourne pas : elle finit à couvert, sa garniture la rendrait cassante",
+     "Le thon reste en miettes visibles, il ne se mélange pas jusqu'à disparaître"
+    ]
+   },
+   "conservation": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C et se mange froide, en parts ou en sandwich. Ne se réchauffe pas bien, l'œuf durcissant en quelques secondes. Ne se congèle pas.",
+   "allergens": [
+    "œufs",
+    "poisson"
+   ]
+  },
+  {
+   "code": "DEN-020",
+   "family": "Omelette aux crevettes",
+   "cuisine_origin": "France / cuisine domestique",
+   "identity_level": "domestic_standard",
+   "category": "omelette",
+   "status": "candidate",
+   "confidence": "C",
+   "servings": 4,
+   "prep_minutes": 10,
+   "cook_minutes": 8,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:omelette-aux-crevettes",
+    "marmiton.org",
+    "750g.com"
+   ],
+   "description_courte": "Omelette délibérément nue : des œufs, des crevettes décortiquées, un filet d'huile — ce que les deux seules sources partagent",
+   "canonical_arbitration": "Quatre pages, deux retenues. Les deux écartées le sont sans hésiter : l'une est une ojja tunisienne, un ragoût de tomates et de poivrons dans lequel on casse des œufs, l'autre monte du riz et une sauce tomate autour de l'omelette. Restent une page de marmiton et une de 750g : DEUX sources sur DEUX SITES, le minimum exact de l'audit, sans aucune marge. La confiance est déclarée en C pour cette seule raison.\n\nCE QUE CELA CHANGE POUR LA RÉDACTION. À deux sources, il n'y a plus de majorité possible : un ingrédient absent de l'une des deux est déjà minoritaire. La recette est donc délibérément nue, et sa maigreur est un résultat de lecture, pas un oubli. Ce que les deux pages partagent : les œufs, les crevettes, une matière grasse, le poivre. Rien d'autre.\n\nLES ŒUFS. 6 œufs pour quatre et 6 œufs pour deux, soit 1,5 et 3 œufs par personne. La médiane de deux valeurs est leur moyenne, 2,25 œuf par personne. On retient 2, soit 8 œufs pour quatre : l'œuf ne se coupe pas en quart, et deux par personne est la mesure d'omelette du corpus.\n\nLES CREVETTES. 250 g de crevettes cuites pour quatre et 100 g de crevettes décortiquées pour deux, soit 62,5 et 50 g par personne. Médiane 56,25 g par personne ; on écrit 60 g, soit 240 g pour quatre. Aucune des deux pages n'achète de surgelé — l'une écrit « crevettes cuites », l'autre « crevettes décortiquées » — et la forme retenue est donc la crevette crue décortiquée, seule crevette non surgelée du catalogue qui corresponde à ce qu'on jette dans une omelette. Le catalogue ne porte pas de crevette cuite ; le dire vaut mieux que de la faire passer pour crue sans un mot.\n\nTOUT LE RESTE EST À UNE SEULE PAGE ET RESTE DEHORS : l'ail, l'échalote, la ciboulette et le glutamate de sodium de la page de 750g ; rien de particulier du côté de marmiton, dont la liste tient en quatre lignes. L'aromatique manque, et c'est exactement ce qu'un dossier de deux sources permet de dire. Elles sont notées en variantes.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "vegetable",
+     "starch"
+    ],
+    "reason": "Deux œufs et 60 g de crevettes par personne, sans légume ni féculent : cette omelette-là appelle une salade et du pain, ce qu'une omelette garnie n'exigerait pas."
+   },
+   "ingredients": [
+    {
+     "form": "Œuf cru",
+     "quantity": 8,
+     "unit": "u",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Crevette crue décortiquée",
+     "quantity": 240,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 20,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 3,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Éponger les crevettes décortiquées dans un linge propre. C'est le seul geste préparatoire du plat et il décide de sa réussite : une crevette humide relâche son eau dans l'œuf en train de prendre, et l'omelette suinte à l'assiette."
+    },
+    {
+     "n": 2,
+     "instruction": "Chauffer la moitié de l'huile à feu vif dans la poêle et saisir les crevettes une minute par face, juste le temps qu'elles rosissent et se referment en virgule. Les débarrasser aussitôt : elles repasseront trente secondes dans l'omelette et une cuisson complète maintenant les rendrait caoutchouteuses."
+    },
+    {
+     "n": 3,
+     "instruction": "Battre les œufs à la fourchette une quinzaine de secondes, saler et poivrer. Ne pas les fouetter au batteur : l'air incorporé fait gonfler l'omelette puis retomber, et la texture devient spongieuse au lieu d'être crémeuse."
+    },
+    {
+     "n": 4,
+     "instruction": "Verser le reste de l'huile dans la poêle encore chaude, y couler les œufs et baisser immédiatement à feu doux. Ramener les bords pris vers le centre à la spatule en inclinant la poêle, pour que l'œuf encore liquide gagne les zones libérées."
+    },
+    {
+     "n": 5,
+     "instruction": "Quand le dessus est encore brillant et à peine coulant, répartir les crevettes sur une moitié, plier l'omelette et compter trente secondes de plus avant de la faire glisser sur le plat. Elle finit de cuire sur sa propre chaleur pendant qu'on la porte à table."
+    }
+   ],
+   "techniques": [
+    "saisie",
+    "liaison aux œufs",
+    "cuisson courte",
+    "pliage"
+   ],
+   "variants": [
+    "Ail haché, échalote ciselée et ciboulette dans les œufs battus (750g)",
+    "Crevettes déjà cuites simplement réchauffées trente secondes au lieu d'être saisies (marmiton)",
+    "L'omelette servie sur un riz à la sauce tomate, avec poivron et persil (marmiton)"
+   ],
+   "sensory": {
+    "profile": "creamy_delicate",
+    "scores": {
+     "sweet": 1,
+     "salty": 2,
+     "acidic": 0,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 0,
+     "richness": 3,
+     "freshness": 1,
+     "intensity": 2
+    },
+    "dominant_flavors": [
+     "œuf",
+     "crevette"
+    ],
+    "aroma_families": [
+     "œuf",
+     "crevette"
+    ],
+    "target_textures": [
+     "moelleux",
+     "chair nacrée et moelleuse"
+    ],
+    "signature_ingredients": [
+     "Œuf cru",
+     "Crevette crue décortiquée"
+    ],
+    "identity_guardrails": [
+     "Les crevettes sont saisies puis retirées : elles ne cuisent pas dans l'œuf",
+     "Le dessus reste brillant au moment de plier — une omelette sèche perd tout intérêt ici",
+     "Aucune herbe ni aromate : le dossier ne compte que deux sources et n'en partage aucun",
+     "Les œufs sont battus à la fourchette, jamais montés"
+    ]
+   },
+   "conservation": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C et se mange froide. Ne pas la réchauffer : les crevettes recuiraient et durciraient bien avant que l'œuf ne soit tiède. Ne se congèle pas.",
+   "allergens": [
+    "œufs",
+    "crustacés"
+   ]
+  },
+  {
+   "code": "DEN-021",
+   "family": "Omelette au jambon",
+   "cuisine_origin": "France / cuisine domestique",
+   "identity_level": "domestic_standard",
+   "category": "omelette",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 8,
+   "cook_minutes": 8,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:omelette-au-jambon",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "L'omelette la plus courte du répertoire : huit œufs, quatre tranches de jambon blanc, du beurre",
+   "canonical_arbitration": "Huit pages, cinq retenues sur trois sites. Trois sont écartées pour leur forme et non pour leur garniture : une enferme l'appareil dans deux feuilles de brick, une autre le roule en wrap, une troisième ajoute des brocolis, de la crème et des tomates cerise, ce qui en fait une omelette garnie et non une omelette au jambon.\n\nLES ŒUFS. Les cinq pages retenues : 6 pour deux, 8 pour quatre, 3 pour une personne, 6 pour quatre, 4 pour deux, soit 3, 2, 3, 1,5 et 2 œufs par personne. Médiane 2 œufs par personne, soit 8 œufs pour quatre.\n\nLE JAMBON, ET LE CHOIX DE SA NATURE. Quatre pages le comptent en tranches : 2 pour deux, 3 pour quatre, 2 pour une personne, 3 pour quatre, soit 1, 0,75, 2 et 0,75 tranche par personne. La médiane est 0,875 tranche par personne, soit 3,5 tranches ; on écrit 4 tranches pour quatre, une par assiette, une tranche ne se coupant pas en huitièmes. Reste à décider laquelle : trois pages écrivent « jambon cru » ou « jambon de Bayonne », deux écrivent simplement « jambon ». Le cru est majoritaire en nombre — et pourtant on écrit le jambon blanc cuit, parce que les deux pages qui écrivent « jambon » sans qualificatif sont précisément celles dont le titre est « Omelette au jambon » tout court, quand les trois autres annoncent un jambon cru, de Bayonne ou une bouchée apéritive. Un qualificatif dans le titre désigne une variante ; son absence désigne le plat.\n\nLE BEURRE. Trois des cinq pages en portent : 30 g pour quatre, 10 g pour quatre, et une mention sans quantité. Médiane 20 g pour quatre. L'huile est dans trois des cinq, en filet : 10 g. Les deux coexistent dans deux pages, et c'est la façon classique d'empêcher le beurre de noircir.\n\nLE FROMAGE, ÉCARTÉ APRÈS HÉSITATION. Trois des cinq pages en fondent un : parmesan et fromage fondu en tranche, 20 g de Beaufort, chèvre frais. Trois natures, trois textures, trois usages — et le corpus porte déjà « Omelette au fromage » (VAR-039). Ajouter ici un fromage ferait glisser le plat vers son voisin. Il reste en variante.\n\nÉCARTÉS AUSSI, chacun à une seule page : les champignons de Paris, l'oignon, la ciboulette, la roquette et le persil. Cette recette est la plus courte du lot et c'est le dossier qui la fait ainsi.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "vegetable",
+     "starch"
+    ],
+    "reason": "Des œufs et du jambon, sans légume ni féculent : elle se sert avec une salade et du pain. Quatre des cinq sources la donnent comme un plat de dépannage, pas comme un repas complet."
+   },
+   "ingredients": [
+    {
+     "form": "Œuf cru",
+     "quantity": 8,
+     "unit": "u",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Jambon blanc cuit",
+     "quantity": 4,
+     "unit": "tranche",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 20,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 10,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Retirer le gras périphérique des tranches de jambon et les couper en lanières d'un demi-centimètre plutôt qu'en dés : les lanières se répartissent dans l'œuf sans tomber toutes au fond, ce que font les dés."
+    },
+    {
+     "n": 2,
+     "instruction": "Casser les œufs dans un bol, poivrer et saler avec retenue — le jambon apporte déjà l'essentiel du sel — puis battre à la fourchette une quinzaine de secondes, jusqu'à ce que blancs et jaunes soient tout juste homogènes et que la surface porte encore quelques bulles."
+    },
+    {
+     "n": 3,
+     "instruction": "Chauffer l'huile et le beurre ensemble dans une poêle de vingt-huit centimètres à feu moyen. L'huile empêche le beurre de noircir : seul, il brunirait avant que la poêle ne soit à température, et cette amertume-là traverse l'œuf."
+    },
+    {
+     "n": 4,
+     "instruction": "Quand la mousse du beurre retombe, verser les œufs d'un coup et attendre dix secondes sans y toucher. Puis, à la spatule, ramener les bords pris vers le centre en inclinant la poêle pour que l'œuf liquide prenne leur place. Répéter quatre ou cinq fois."
+    },
+    {
+     "n": 5,
+     "instruction": "Répartir les lanières de jambon sur la moitié de l'omelette pendant que le dessus est encore brillant, plier et laisser vingt secondes de plus. Le jambon est déjà cuit : il ne demande qu'à être chaud, et prolonger la cuisson le rendrait sec et salé."
+    }
+   ],
+   "techniques": [
+    "taillage",
+    "liaison aux œufs",
+    "cuisson courte",
+    "pliage"
+   ],
+   "variants": [
+    "Jambon cru ou jambon de Bayonne à la place du jambon blanc (chefsimon, trois pages)",
+    "20 g de Beaufort ou du parmesan râpé fondus dans l'omelette (chefsimon, marmiton)",
+    "150 g de champignons de Paris et un oignon revenus avant les œufs, avec de la ciboulette (chefsimon)",
+    "Chèvre frais et roquette posés au moment de plier, en bouchées apéritives (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "creamy_delicate",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 3,
+     "freshness": 0,
+     "intensity": 2
+    },
+    "dominant_flavors": [
+     "œuf",
+     "jambon",
+     "beurre"
+    ],
+    "aroma_families": [
+     "œuf",
+     "jambon",
+     "beurre"
+    ],
+    "target_textures": [
+     "moelleux",
+     "tendre"
+    ],
+    "signature_ingredients": [
+     "Œuf cru",
+     "Jambon blanc cuit",
+     "Beurre doux"
+    ],
+    "identity_guardrails": [
+     "Jambon blanc cuit : le jambon cru fait l'omelette voisine que les sources annoncent dans leur titre",
+     "Pas de fromage — ce serait « Omelette au fromage », déjà au corpus",
+     "Le beurre est coupé d'huile pour ne pas noircir avant la cuisson",
+     "Le jambon entre au moment de plier : recuit, il devient sec et trop salé"
+    ]
+   },
+   "conservation": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C et se mange froide, en parts ou dans un sandwich. Elle ne se réchauffe pas sans durcir. Ne se congèle pas.",
+   "allergens": [
+    "œufs",
+    "lait"
+   ]
+  },
+  {
+   "code": "DEN-022",
+   "family": "Frittata aux épinards",
+   "cuisine_origin": "Italie / cuisine domestique",
+   "identity_level": "domestic_standard",
+   "category": "omelette épaisse",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 30,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:frittata-aux-epinards",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Frittata épaisse aux épinards surgelés bien pressés, parmesan et oignon, prise doucement puis finie au four",
+   "canonical_arbitration": "Six pages, cinq retenues sur trois sites. Une est écartée : sa frittata est au thon et aux épinards, et le thon y pèse autant que le légume.\n\nLES ŒUFS. Quatre des cinq pages retenues déclarent leurs portions : 6 pour quatre, 4 pour quatre, 8 pour quatre, 8 pour quatre, soit 1,5, 1, 2 et 2 œufs par personne. Médiane 1,75 œuf par personne, soit 7 œufs. On arrondit à 8 œufs pour quatre : l'œuf ne se coupe pas en quart, et une frittata se démoule mieux quand l'appareil remplit franchement le moule.\n\nLES ÉPINARDS. 250 g pour quatre, 500 g pour quatre, 150 g pour quatre, 400 g sans portions déclarées, 150 g pour quatre. Les quatre valeurs ramenées à la personne sont 62,5, 125, 37,5 et 37,5 g. Médiane 50 g par personne ; la cinquième page, à 400 g pour une frittata de huit œufs et 300 g de champignons, sert quatre personnes et donne 100 g. On retient 62,5 g par personne, soit 250 g pour quatre.\n\nLES ÉPINARDS SONT SURGELÉS, ET IL FAUT DONNER LE DÉCOMPTE EXACT. Une seule des cinq pages retenues nomme l'état du produit : chefsimon écrit « 400 g d'épinards hachés (congelés) ». Trois autres écrivent « épinards frais » ou « jeunes pousses ». Une sur cinq contre trois sur cinq : la majorité est au frais, et l'on écrit quand même le surgelé. Voici pourquoi, et le lecteur qui refusera ce raisonnement pourra le renverser en une ligne. Une frittata n'est pas une omelette : on y presse les épinards jusqu'à ce qu'ils soient secs avant de les noyer dans l'appareil, et c'est exactement l'usage pour lequel l'épinard haché surgelé est vendu. La seule page qui précise « hachés » est aussi la seule qui les prend congelés. Le nutriment ne bouge pas — 19,5 kcal et 2,87 g de protéines contre 24 kcal et 2,6 g au frais — donc la décision ne déplace rien d'autre que la façon d'acheter. L'omelette aux épinards du même lot, dont les cinq sources achètent toutes du frais, écrit du frais : les deux recettes suivent chacune leur dossier plutôt qu'une consigne commune.\n\nLE FROMAGE. Quatre des cinq pages en portent : 50 g de parmesan pour quatre, 80 g de Grana Padano pour quatre, 100 g d'emmental, une burrata de 200 g. Le parmesan et le Grana Padano sont le même fromage à l'appellation près, ce qui fait deux pages sur cinq pour une seule nature, contre une chacune pour les deux autres. Médiane des deux poids comparables : 65 g pour quatre.\n\nLE RESTE. L'allium est dans quatre des cinq — un oignon, deux échalotes, deux oignons, un oignon nouveau : on retient 150 g d'oignon jaune. Le liquide de l'appareil est dans quatre des cinq, sous deux formes : lait chez trois d'entre elles (10 cl pour quatre, 100 g pour quatre, 60 g), crème chez deux (30 cl pour quatre, 3 cl pour quatre). Le lait l'emporte, 100 ml. L'huile d'olive est dans trois des cinq : 30 g, 2 cuillerées, 1 cuillerée ; médiane 20 g. Sont écartés les lardons, la feta, les blettes, l'ail, les pignons de pin, la menthe, les pommes de terre, les petits pois, les champignons, le poivron, l'origan et la ciboulette, chacun à une ou deux pages sans confirmation croisée.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Deux œufs, 62 g d'épinards et 16 g de parmesan par personne, cuits en galette épaisse qui se coupe en parts : c'est un plat d'assiette avec une salade, et les cinq sources la servent ainsi, chaude ou froide."
+   },
+   "ingredients": [
+    {
+     "form": "Œuf cru",
+     "quantity": 8,
+     "unit": "u",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Épinard surgelé",
+     "quantity": 250,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 150,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Lait entier",
+     "quantity": 100,
+     "unit": "ml",
+     "role": "appareil",
+     "optional": false
+    },
+    {
+     "form": "Parmesan affiné",
+     "quantity": 65,
+     "unit": "g",
+     "role": "fromage",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 20,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 3,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Décongeler les épinards à la poêle à couvert et à feu doux, une dizaine de minutes, puis les verser dans une passoire et les PRESSER de toutes ses forces contre la paroi, à la louche ou à la main. Il en sort une quantité d'eau qui surprend toujours, et c'est elle qui déciderait sinon du sort de la frittata : un appareil dilué ne prend pas."
+    },
+    {
+     "n": 2,
+     "instruction": "Préchauffer le four à 180 °C. Faire fondre l'oignon émincé dans l'huile à feu doux pendant huit minutes dans une poêle de vingt-quatre centimètres allant au four, puis ajouter les épinards pressés et remuer deux minutes pour les dessécher encore un peu."
+    },
+    {
+     "n": 3,
+     "instruction": "Battre les œufs avec le lait, le parmesan râpé, le sel et le poivre, sans excès d'énergie. Goûter l'appareil du bout du doigt : le parmesan est déjà salé, et une frittata trop salée ne se rattrape pas une fois prise."
+    },
+    {
+     "n": 4,
+     "instruction": "Verser l'appareil sur les épinards, mélanger d'un geste pour les répartir, et laisser prendre sur le feu le plus doux pendant huit à dix minutes sans y toucher. Les bords doivent être fermes et le centre encore liquide : c'est cette prise lente par le dessous qui donne à la frittata sa texture serrée et sans bulles."
+    },
+    {
+     "n": 5,
+     "instruction": "Enfourner la poêle vingt minutes à 180 °C, jusqu'à ce que le centre soit tout juste pris et légèrement bombé. Sortir, laisser tiédir dix minutes dans la poêle puis démouler sur une planche : à chaud elle se casse, tiède elle se coupe net en parts."
+    }
+   ],
+   "techniques": [
+    "égouttage",
+    "suer",
+    "liaison aux œufs",
+    "cuisson séquencée",
+    "cuisson au four"
+   ],
+   "variants": [
+    "Épinards frais lavés et tombés à la poêle à la place des surgelés (marmiton, chefsimon, 750g)",
+    "200 g de lardons rissolés et 100 g de feta émiettée, l'appareil monté à la crème (marmiton)",
+    "Burrata déchirée sur la frittata à la sortie du four, avec pignons de pin et menthe (chefsimon)",
+    "Pommes de terre en rondelles précuites et petits pois, avec du Grana Padano et de la ciboulette (750g)",
+    "Champignons et poivron rouge revenus avec l'oignon, emmental râpé et origan séché (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "nutty_savory",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 1,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 3,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "œuf",
+     "épinard",
+     "parmesan",
+     "oignon fondu"
+    ],
+    "aroma_families": [
+     "œuf cuit",
+     "épinard",
+     "parmesan",
+     "oignon_compoté"
+    ],
+    "target_textures": [
+     "appareil pris",
+     "moelleux",
+     "feuilles fondantes"
+    ],
+    "signature_ingredients": [
+     "Œuf cru",
+     "Épinard surgelé",
+     "Parmesan affiné"
+    ],
+    "identity_guardrails": [
+     "Les épinards sont pressés jusqu'à ce qu'ils ne rendent plus rien : c'est le geste qui fait ou défait la frittata",
+     "Prise lente à feu doux d'abord, four ensuite — une frittata saisie fort gonfle puis retombe",
+     "Elle se démoule tiède, jamais brûlante, sinon elle se casse",
+     "Épaisse et coupée en parts : une frittata ne se plie pas, c'est ce qui la sépare d'une omelette"
+    ]
+   },
+   "conservation": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C, entière ou en parts, et se mange froide ou à température — c'est ainsi qu'elle est la meilleure. Se congèle 1 mois en parts emballées séparément ; la texture se resserre légèrement à la décongélation.",
+   "allergens": [
+    "œufs",
+    "lait"
+   ]
+  },
+  {
+   "code": "DEN-023",
+   "family": "Curry de poisson",
+   "cuisine_origin": "Inde du Sud / cuisine domestique adaptée",
+   "identity_level": "domestic_standard",
+   "category": "poisson",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 25,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:curry-de-poisson",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Filets de poisson blanc pochés dans une sauce tomate au lait de coco, curcuma, curry et gingembre",
+   "canonical_arbitration": "Neuf pages, huit retenues sur trois sites. Une seule est écartée : elle transforme du poisson fumé en accras frits, ce qui n'a plus rien d'un curry.\n\nLE POISSON, ET UNE ESPÈCE QUI SE DÉCIDE À LA LOUPE. Les huit pages retenues achètent du « poisson blanc », et quatre d'entre elles en donnent un exemple entre parenthèses — « cabillaud par exemple », « dos de cabillaud pour moi », « cabillaud, merlan », « cabillaud, colin, saumon ». Trois nomment le colin, dont une seule le fait sans parenthèse : « 4 filets de colin surgelés » EST sa ligne d'ingrédient, pas une suggestion. Le cabillaud est plus souvent cité, mais toujours comme illustration d'un générique ; le colin est la seule espèce qui apparaisse comme l'ingrédient lui-même. On retient le filet de merlu surgelé — le merlu est le colin du classeur, qui les mesure sous une seule entrée — et le cabillaud est noté en variante.\n\nLE POIDS. Sept pages le chiffrent : 4 filets pour quatre, 4 filets pour quatre, 400 g pour deux, 800 g pour quatre, 700 g pour trois, 1 kg pour six, 500 g pour quatre. À 150 g le filet, cela fait 150, 150, 200, 200, 233, 167 et 125 g par personne. Médiane 167 g par personne ; on écrit 170 g, soit 680 g pour quatre.\n\nLE SURGELÉ EST ATTESTÉ DEUX FOIS. « 4 filets de colin surgelés » chez marmiton, et « 400 g de Poissons saumon, colin et limande, vendus ensemble prédécoupés et congelés » chez marmiton encore. Deux pages sur neuf, ce n'est pas une majorité, et il faut le dire : la forme surgelée est retenue ici pour trois raisons qui se cumulent — le dossier l'atteste deux fois avec des poids, le catalogue ne porte aucun merlu ni colin frais, et la page qui achète des filets surgelés est aussi celle qui annonce deux minutes de préparation, ce qui est la raison d'être de ce lot.\n\nLA SAUCE. Le lait de coco est dans sept des huit pages retenues : 20 cl pour quatre, 4 cuillerées à soupe pour quatre, 200 ml pour deux, 20 cl pour quatre, 400 g pour trois, 40 cl pour six, 20 cl pour quatre. Soit 50, 15, 100, 50, 133, 67 et 50 ml par personne. Médiane 50 ml par personne, soit 200 ml pour quatre. C'est moins qu'on ne l'imagine pour un curry, et c'est ce que disent les sources : le lait de coco lie, la tomate porte. La tomate est dans quatre des huit : 200 g pour deux, 4 tomates pour quatre, 400 g pour trois, 1 tomate pour quatre, soit 100, 120, 133 et 30 g par personne ; médiane 110 g par personne, soit 440 g. On écrit 400 g, arrondi d'une boîte de conserve, que deux de ces quatre pages achètent telle quelle.\n\nLES ÉPICES, ET LE PIÈGE DU SCRIPT DE SYNTHÈSE. Le curcuma est dans cinq des huit, 5 g. Le curry en poudre est dans trois des huit, 12 g. Le cumin est dans trois des huit, 3 g. La coriandre fraîche est dans trois des huit, 15 g — et il faut distinguer : deux autres pages emploient de la coriandre en graines ou moulue, qui est une épice et non une herbe, et les additionner aurait donné une fausse majorité. Le piment est dans quatre des huit sous quatre formes — pâte de curry rouge, piment vert frais, piment en poudre, piment facultatif — et l'on retient 1 g de piment de Cayenne, la plus neutre.\n\nL'AROMATIQUE. L'ail est dans sept des huit : la médiane est d'une demi-gousse par personne, soit 12 g. L'oignon ou l'échalote est dans cinq des huit, médiane un demi-oignon par personne, soit 240 g. Le gingembre est dans quatre des huit, 20 g. L'huile est dans sept des huit et trois d'entre elles précisent l'arachide : 30 g. Sont écartés le tamarin, les feuilles de cari, les graines de moutarde, la citronnelle, le vin blanc, le yaourt, le garam masala, les courgettes, les petits pois, le céleri, le navet, le fenouil et la carotte, chacun à une ou deux pages.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Du poisson dans une sauce, sans féculent : le riz est ce que sept des huit sources servent dessous, et deux le comptent même dans leur titre. Il n'est pas dans l'assiette qu'on décrit."
+   },
+   "ingredients": [
+    {
+     "form": "Filet de merlu surgelé",
+     "quantity": 680,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Tomate concassée en conserve",
+     "quantity": 400,
+     "unit": "g",
+     "role": "base",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 240,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Lait de coco",
+     "quantity": 200,
+     "unit": "ml",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Huile d’arachide",
+     "quantity": 30,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Gingembre frais",
+     "quantity": 20,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Coriandre fraîche",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 12,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Curry en poudre",
+     "quantity": 12,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Curcuma moulu",
+     "quantity": 5,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 5,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Cumin moulu",
+     "quantity": 3,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Piment de Cayenne",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Sortir les filets du congélateur et les laisser décongeler quelques heures au réfrigérateur, ou vingt minutes dans leur sachet fermé plongé dans l'eau froide. Les éponger et les couper en gros cubes de quatre centimètres : plus petits, ils se déferaient dans la sauce."
+    },
+    {
+     "n": 2,
+     "instruction": "Émincer l'oignon, hacher l'ail, râper le gingembre. Faire revenir l'oignon dans l'huile à feu moyen pendant huit minutes, jusqu'à ce qu'il soit doré aux bords — ici, contrairement à un plat crémé, on cherche cette coloration, elle donne au curry son fond sucré."
+    },
+    {
+     "n": 3,
+     "instruction": "Ajouter l'ail et le gingembre, puis toutes les épices moulues d'un coup, et remuer quarante secondes dans le gras chaud. Cette étape n'est pas facultative : une épice moulue jetée dans un liquide reste terreuse et poudreuse, alors qu'un passage rapide dans l'huile chaude ouvre ses arômes. Si le fond commence à accrocher, ajouter une cuillerée d'eau plutôt que de baisser le feu."
+    },
+    {
+     "n": 4,
+     "instruction": "Verser la tomate concassée, saler, et laisser mijoter douze minutes à découvert jusqu'à ce que la sauce épaississe et que l'huile remonte en perles à la surface. Ajouter le lait de coco et laisser deux minutes de plus à frémissement doux, sans jamais laisser bouillir."
+    },
+    {
+     "n": 5,
+     "instruction": "Poser les cubes de poisson dans la sauce en une seule couche, couvrir et laisser pocher six à huit minutes à feu très doux, SANS REMUER. Un curry de poisson se secoue par la poignée de la casserole, jamais à la cuillère : la chair est fragile et une cuillère la réduirait en bouillie. Couper le feu, poivrer, ajouter la coriandre ciselée et laisser reposer trois minutes avant de servir."
+    }
+   ],
+   "techniques": [
+    "suer",
+    "torréfaction des épices",
+    "mijotage",
+    "pochage",
+    "repos"
+   ],
+   "variants": [
+    "Dos de cabillaud à la place du merlu (marmiton, chefsimon, 750g)",
+    "Pâte de curry rouge à la place des épices moulues, avec des carottes en rondelles (marmiton)",
+    "Graines de moutarde et feuilles de cari jetées dans l'huile avant l'oignon, façon Kerala (chefsimon)",
+    "Courgettes en dés et petits pois ajoutés avec la tomate (chefsimon)",
+    "Un sachet de fruits de mer surgelés ajouté avec le poisson, et du garam masala (750g)"
+   ],
+   "sensory": {
+    "profile": "warm_aromatic",
+    "scores": {
+     "sweet": 2,
+     "salty": 2,
+     "acidic": 2,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 2,
+     "pungency": 3,
+     "richness": 3,
+     "freshness": 2,
+     "intensity": 4
+    },
+    "dominant_flavors": [
+     "poisson poché",
+     "curry",
+     "tomate cuite",
+     "lait de coco"
+    ],
+    "aroma_families": [
+     "poisson",
+     "curry",
+     "tomate_cuite",
+     "coco"
+    ],
+    "target_textures": [
+     "chair fondante",
+     "sauce nappante"
+    ],
+    "signature_ingredients": [
+     "Filet de merlu surgelé",
+     "Curry en poudre",
+     "Lait de coco"
+    ],
+    "identity_guardrails": [
+     "Les épices passent dans l'huile chaude avant tout liquide, sinon le curry reste terreux",
+     "Le poisson poche à couvert sans jamais être remué à la cuillère",
+     "Le lait de coco ne bout pas — il lie, la tomate porte le plat",
+     "Cubes de quatre centimètres : plus petits, ils se délitent dans la sauce"
+    ]
+   },
+   "conservation": "Se garde 2 jours au réfrigérateur entre 0 et 4 °C ; la sauce gagne au repos, le poisson non. Réchauffer à couvert et à feu très doux. Ne se recongèle pas, les filets ayant déjà été congelés une fois — en revanche la sauce seule se congèle très bien 3 mois, et il suffit d'y pocher du poisson frais.",
+   "allergens": [
+    "poisson"
+   ]
+  }
+ ]
+}
