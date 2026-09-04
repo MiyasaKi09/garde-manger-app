@@ -1,12 +1,18 @@
 {
  "lot": "jumeaux-12",
- "intention": "Douzième lot de jumeaux végétariens de même lignée (plan « planning parfait », chantier C2, conduit par la chaîne du chantier C6). Un jumeau est le MÊME PLAT que sa base carnée — même féculent, même technique, même rôle d'assiette, même composition hors protéine — dont la protéine animale est remplacée par une protéine végétale que les sources attestent, et dont « derived_from » porte le code du parent. C'est ce champ, et lui seul, qui dit au planificateur que Zoé mange le plat de Julien sans sa viande, et non un autre plat : la mesure du §2.2 du plan compte quatre substitutions demandées, quatre obtenues, quatre HORS lignée, dont deux boudins noirs servis comme « variante végétarienne » d'un pastitsio. Cinq jumeaux étaient visés, QUATRE sont écrits, UN est refusé.\n\nLE REFUS, D'ABORD, parce que c'est le résultat le plus solide du lot. La « Salade lyonnaise au tofu fumé » demandée pour REAL-087 n'a pas de dossier : elle n'existe pas comme recette publiée. Le détail est dans « refuses » ; en un mot, aucune page au monde ne titre une salade lyonnaise au tofu fumé, et la seule salade lyonnaise végétarienne réellement publiée avec un balisage lisible est unique, sur un seul site, et remplace les lardons par des noix. Une source n'est pas un fait vérifié, c'est le choix d'un auteur. On ne l'écrit pas.\n\nLA MÉTHODE D'ARBITRAGE DU LOT, énoncée une fois et appliquée quatre fois. On ne rejuge que les lignes que l'échange de protéine touche, plus celles que le dossier du jumeau chiffre de façon concordante. Tout le reste est hérité du parent, et chaque héritage est nommé à l'endroit où il joue, avec le chiffre du dossier en face pour qu'on puisse contester. La raison est arithmétique : rejuger une panure ou une vinaigrette sur deux pages reviendrait à remplacer une mesure par une plus faible.\n\nCE QU'ON FAIT DES SOURCES ÉCARTÉES. L'audit écarte une page dont le titre ne porte pas tous les mots du plat demandé. Le garde-fou est utile et il coûte : il écarte ici des pages qui décrivent exactement le plat sous un autre nom — « vegan avgolemono », « croque-monsieur aux épinards », « Louisiana-style vegan red beans and rice ». Elles restent au dossier avec leurs quantités et servent à confirmer une structure ou à compléter une médiane ; jamais à porter seules un chiffre. Chaque fois qu'une écartée pèse dans un calcul, la fiche le dit et dit pourquoi elle a été écartée.\n\nDEUX NOMS DE DOSSIER ONT ÉTÉ REPRIS EN COURS DE ROUTE, et il faut le dire parce que c'est une manipulation du décompte si on ne l'explique pas. Le dossier « croque madame végétarien » ne rendait qu'une source solide ; celui de « fricassée de champignons à la crème » également. Renommés « croque madame aux épinards » et « fricassée de champignons » — les noms que les pages portent réellement —, ils rendent deux sources sur deux sites et cinq sources sur quatre sites. Le renommage n'ajoute aucune page : il cesse d'exiger d'un titre un mot que les auteurs n'écrivent pas. Les deux plats retenus sont végétariens page par page, ce qui a été vérifié ligne à ligne et non déduit du titre.\n\nCE QUE VÉGÉTARIEN VEUT DIRE ICI, dit une fois : aucune forme d'origine viande, volaille, poisson ou fruit de mer. Donc « Bouillon de légumes » là où le parent écrit « Bouillon de volaille » — c'est le motif de quinze des vingt-deux fausses végétariennes du corpus. Le fromage est accepté et la présure n'est pas jugée ici : le croque-madame aux épinards porte emmental et gruyère comme son parent, et le parmesan que propose une page écartée n'est pas écrit, non pour la présure mais parce qu'il est absent de la fiche parente. Une page du dossier de la fricassée, « Fricassée de champignons provençale », porte 125 g de poitrine fumée : elle est solide au sens de l'audit et sert à la médiane des champignons, jamais à autre chose, et sa poitrine ne franchit évidemment pas la porte.\n\nAUCUNE FORME NOUVELLE n'a été nécessaire : les trente-neuf lignes d'ingrédients de ce lot se résolvent toutes sur des formes déjà employables du catalogue, à confiance B. Le fichier data/foods/arbitrations/lot21-jumeaux-12.json n'existe donc pas, et c'est un bon signe — un jumeau qui réclame une forme inédite est souvent un jumeau qui a changé de plat. Le seul arbitrage qui aurait pu être nécessaire, le « Tofu fumé » de la salade lyonnaise, tombe avec la recette qui le demandait.",
+ "intention": "Douzième lot de jumeaux végétariens de même lignée (plan « planning parfait », chantier C2, conduit par la chaîne du chantier C6). Un jumeau est le MÊME PLAT que sa base carnée — même féculent, même technique, même rôle d'assiette, même composition hors protéine — dont la protéine animale est remplacée par une protéine végétale que les sources attestent, et dont « derived_from » porte le code du parent. C'est ce champ, et lui seul, qui dit au planificateur que Zoé mange le plat de Julien sans sa viande, et non un autre plat : la mesure du §2.2 du plan compte quatre substitutions demandées, quatre obtenues, quatre HORS lignée, dont deux boudins noirs servis comme « variante végétarienne » d'un pastitsio. Cinq jumeaux étaient visés, TROIS sont écrits, DEUX sont refusés — le premier faute de dossier, le second à la relecture adverse, après avoir été écrit et validé.\n\nLE REFUS, D'ABORD, parce que c'est le résultat le plus solide du lot. La « Salade lyonnaise au tofu fumé » demandée pour REAL-087 n'a pas de dossier : elle n'existe pas comme recette publiée. Le détail est dans « refuses » ; en un mot, aucune page au monde ne titre une salade lyonnaise au tofu fumé, et la seule salade lyonnaise végétarienne réellement publiée avec un balisage lisible est unique, sur un seul site, et remplace les lardons par des noix. Une source n'est pas un fait vérifié, c'est le choix d'un auteur. On ne l'écrit pas.\n\nLE SECOND REFUS EST VENU DE LA RELECTURE, et il porte sur une fiche qui existait : la « Fricassée de champignons à la crème et à la moutarde », JUM-124, jumeau visé de DEN-013, écrite, validée et chiffrée à 294 kcal et 9,1 g de protéines par part. Le motif complet est dans « refuses ». En un mot : la ligne qui décidait de tout — un kilo de champignons pour quatre, quand la médiane des cinq pages retenues est de 550 g — ne tenait que sur UNE page et UN site, celle qui sert la fricassée seule ; les quatre autres décrivent une garniture, l'une finissant par « servir avec une viande blanche ». Ramenée à sa médiane, la fiche devenait le parent moins sa volaille plus 50 g de champignons, c'est-à-dire une amputation et non un jumeau ; maintenue à un kilo, elle reposait pour sa ligne définissante sur le choix d'un seul auteur. Les deux issues étant fermées, la fiche sort du lot. Ce n'est pas l'absence de légumineuse qui la condamne — JUM-033, « Stroganoff de champignons », vit à 6,7 g de protéines par part et le dit —, c'est une quantité à source unique.\n\nLA MÉTHODE D'ARBITRAGE DU LOT, énoncée une fois et appliquée trois fois. On ne rejuge que les lignes que l'échange de protéine touche, plus celles que le dossier du jumeau chiffre de façon concordante. Tout le reste est hérité du parent, et chaque héritage est nommé à l'endroit où il joue, avec le chiffre du dossier en face pour qu'on puisse contester. La raison est arithmétique : rejuger une panure ou une vinaigrette sur deux pages reviendrait à remplacer une mesure par une plus faible.\n\nCE QU'ON FAIT DES SOURCES ÉCARTÉES. L'audit écarte une page dont le titre ne porte pas tous les mots du plat demandé. Le garde-fou est utile et il coûte : il écarte ici des pages qui décrivent exactement le plat sous un autre nom — « vegan avgolemono », « croque-monsieur aux épinards », « Louisiana-style vegan red beans and rice ». Elles restent au dossier avec leurs quantités et servent à confirmer une structure ou à compléter une médiane ; jamais à porter seules un chiffre. Chaque fois qu'une écartée pèse dans un calcul, la fiche le dit et dit pourquoi elle a été écartée.\n\nUN NOM DE DOSSIER A ÉTÉ REPRIS EN COURS DE ROUTE, et il faut le dire parce que c'est une manipulation du décompte si on ne l'explique pas. Le dossier « croque madame végétarien » ne rendait qu'une source solide, une page qui met une tranche de fromage entre deux tranches de pain. Renommé « croque madame aux épinards » — le nom que les pages portent réellement —, il rend deux sources sur deux sites. Le renommage n'ajoute aucune page : il cesse d'exiger d'un titre un mot que les auteurs n'écrivent pas, et les deux retenues sont végétariennes ligne par ligne, ce qui a été vérifié sur leurs listes et non déduit du titre. Un second renommage avait été fait de la même façon, de « fricassée de champignons à la crème » vers « fricassée de champignons » : le procédé était le bon et la relecture ne le conteste pas — il faisait passer le dossier d'une à cinq sources solides —, mais un dossier qui tient ne suffit pas si le plat qu'on en tire n'est plus le jumeau de sa base, et c'est là que cette fiche est tombée.\n\nCE QUE VÉGÉTARIEN VEUT DIRE ICI, dit une fois : aucune forme d'origine viande, volaille, poisson ou fruit de mer, et le bouillon en est le poste sensible — c'est le motif de quinze des vingt-deux fausses végétariennes du corpus. Aucun des trois parents ne portait pourtant de « Bouillon de volaille » en ingrédient : l'Avgolemono poche un poulet entier et fait sa soupe de ce jus, le poulet créole mouille à l'eau de cuisson des haricots. Retirer la volaille, c'est donc retirer le liquide du plat, et les deux fiches concernées le rendent en « Bouillon de légumes non salé », forme du catalogue et non proxy. Le fromage est accepté et la présure n'est pas jugée ici : le croque-madame aux épinards porte emmental et gruyère comme son parent, et le parmesan que propose une page écartée n'est pas écrit, non pour la présure mais parce qu'il est absent de la fiche parente. Vérification faite forme par forme au catalogue, les vingt-six formes du lot sont d'origine végétale, minérale, ou animale non carnée — l'œuf et les deux fromages du croque-madame.\n\nAUCUNE FORME NOUVELLE n'a été nécessaire : les trente-six lignes d'ingrédients de ce lot, soit vingt-six formes distinctes, se résolvent toutes sur des formes déjà employables du catalogue, à confiance B. Le fichier data/foods/arbitrations/lot21-jumeaux-12.json n'existe donc pas, et c'est un bon signe — un jumeau qui réclame une forme inédite est souvent un jumeau qui a changé de plat. Le seul arbitrage qui aurait pu être nécessaire, le « Tofu fumé » de la salade lyonnaise, tombe avec la recette qui le demandait.",
  "refuses": [
   {
    "twin_family": "Salade lyonnaise au tofu fumé",
    "parent_code": "REAL-087",
    "parent_family": "Salade lyonnaise",
    "reason": "Aucun dossier n'a pu être constitué : zéro source exploitable sur les six pages soumises au relevé, et le motif n'est pas une malchance de scraping, c'est que la recette demandée n'est pas publiée.\n\nCE QUI A ÉTÉ CHERCHÉ, dans l'ordre. Les cinq requêtes du plan ont été passées aux moteurs internes des trois sites de la chaîne : « salade lyonnaise végétarienne » rend deux adresses, toutes deux sur chefsimon et toutes deux du même auteur — deux versions d'une même rédaction, ce que la règle des deux sites refuse précisément ; « salade lyonnaise tofu fumé » et « salade lyonnaise sans lardons » ne rendent rien. Hors chaîne, six autres pages ont été soumises au relevé : le blog personnel du même auteur, une salade au tofu fumé « comme une salade au lard » qui est un autre plat (pommes de terre et scarole, pas de frisée, pas d'œuf poché), et deux salades au tofu fumé qui ne se réclament pas de Lyon. Aucune de ces pages ne publie de balisage Recipe lisible : le relevé rend zéro source. Un second essai sous le nom anglais, « vegetarian salade lyonnaise », a été fait comme la consigne le demande : il rend trois pages balisées, dont une seule est végétarienne — elle remplace les lardons par des noix grillées, pas par du tofu — et l'audit les écarte toutes les trois, le mot « vegetarian » ne figurant dans aucun titre.\n\nCE QUE CELA APPREND, et c'est plus utile qu'une recette. La salade lyonnaise au tofu fumé circule comme SUGGESTION dans la prose des sites — « on peut remplacer les lardons par du tofu fumé » — et jamais comme recette pesée. Une phrase de substitution n'est pas une version publiée : l'écrire reviendrait à faire dire à des sources ce qu'elles n'ont pas écrit, c'est-à-dire exactement la faute des quarante-sept recettes retirées. La seule version végétarienne réellement publiée du plat, chez forkinthekitchen.com, tient sur un site et remplace le lard par des noix ; la seule version francophone, chez un auteur unique publiant sur chefsimon et sur son propre blog, remplace le lard par des dés de comté. Deux protéines différentes, un site chacune : c'est le contraire d'un fait vérifié.\n\nCE QU'IL FAUDRAIT POUR ROUVRIR. Rien du côté du catalogue — le « Tofu fumé » qu'il aurait fallu arbitrer n'est plus demandé par personne, et l'arbitrer d'avance serait créer une forme pour une recette qui n'existe pas. Ce qu'il faudrait, c'est une deuxième page, sur un deuxième site, qui publie et pèse une salade lyonnaise sans lard. Deux noms restent à essayer dans un lot futur, tous deux attestés en prose mais pas encore en recette chiffrée : « salade lyonnaise aux champignons » et « salade lyonnaise au comté ». Tant qu'ils ne rendent pas deux dossiers sur deux sites, REAL-087 reste une lignée sans jumeau, et c'est un résultat, pas un échec."
+  },
+  {
+   "twin_family": "Fricassée de champignons à la crème et à la moutarde",
+   "parent_code": "DEN-013",
+   "parent_family": "Émincé de poulet aux champignons",
+   "reason": "Fiche écrite, validée et chiffrée (JUM-124, 294 kcal et 9,1 g de protéines par part), RETIRÉE À LA RELECTURE ADVERSE. Le dossier « fricassee-de-champignons » n'est pas en cause : sept pages relevées, cinq retenues sur quatre sites, arithmétique exacte ligne à ligne, aucune prose reprise. Ce qui ne tient pas est l'identité du plat.\n\nCE QUI MANQUE, D'ABORD. Un jumeau remplace la protéine animale de sa base par une protéine végétale que les sources attestent. Ici rien ne remplace les 500 g de blanc de poulet du parent : les champignons passent de 500 à 1 000 g, et le champignon n'est pas une légumineuse. Le précédent existe pourtant au corpus en cours — JUM-033, « Stroganoff de champignons », vit avec 6,7 g de protéines par part et le dit —, donc l'absence de légumineuse ne suffit pas à elle seule à refuser une fiche. Ce n'est pas sur ce motif que celle-ci tombe.\n\nCE QUI LA FAIT TOMBER EST UN CHIFFRE À UNE SEULE SOURCE. La ligne qui décide de tout est le poids des champignons, parce que c'est elle, et elle seule, qui sépare un plat d'une garniture. Les cinq pages retenues donnent 250, 100, 125, 150 et 137,5 g par personne : médiane 137,5, soit 550 g pour quatre. La fiche écrivait 1 000 g, c'est-à-dire la lecture d'UNE page — la « Fricassée de champignons à la crème » de marmiton —, sur UN site. L'arbitrage l'assumait et donnait sa raison : quatre des cinq pages décrivent une garniture, l'une finissant par « servir avec une viande blanche », et une médiane de garnitures ne peut pas dire ce que pèse un plat. La raison est juste, et c'est précisément ce qui condamne la fiche : si quatre pages sur cinq disent « garniture », alors le dossier atteste une garniture, et la seule lecture qui en fasse un plat principal est le choix d'un auteur. « Une seule version publiée n'est pas un fait vérifié » — c'est la règle fondatrice de la chaîne, et elle ne cesse pas de s'appliquer parce que le chiffre isolé est le chiffre commode.\n\nLES DEUX ISSUES SONT FERMÉES, et c'est ce qui rend le retrait nécessaire plutôt qu'opinable. Ramenée à sa médiane, 550 g pour quatre, la fiche devient le parent moins 500 g de volaille plus 50 g de champignons : plus rien ne prend la place de la protéine, l'assiette tombe sous 7 g de protéines, et ce n'est plus un jumeau mais une amputation. Le contraste avec JUM-033 est net : là, les champignons passaient de 260 à 450 g, soit les trois quarts en plus, ET c'était la médiane de six pages sur six sites. Maintenue à 1 000 g, la fiche repose sur une source unique pour la ligne qui la définit. Il n'y a pas de troisième lecture dans le dossier.\n\nCE QUE LE RETRAIT COÛTE, dit franchement. DEN-013 reste une lignée carnée sans jumeau, et la mesure du §2.2 gagne trois lignées au lieu de quatre. Servir à Zoé une assiette à 9,1 g de protéines pour 294 kcal — 0,031 g par kcal — pendant que Julien mange l'émincé n'aurait de toute façon pas été un gain : c'est la densité même que le §2.3 désigne comme la cause des 66 % de la cible protéique de Julien.\n\nCE QU'IL FAUDRAIT POUR ROUVRIR. Un dossier qui publie et pèse une fricassée de champignons portant une protéine végétale — lentilles, tofu fumé, pois chiches —, ou deux pages sur deux sites qui servent la fricassée à la crème comme plat et non comme garniture. Le dossier reste versionné sous data/recipes/sources/fricassee-de-champignons.json bien qu'aucune recette ne le cite : il est la preuve de la lecture et le point de départ de cette réouverture. Aucune forme n'est à arbitrer, les onze lignes de la fiche retirée étant toutes déjà au catalogue."
   }
  ],
  "recipes": [
@@ -249,7 +255,7 @@
     "fr.frije.com"
    ],
    "description_courte": "Le croque-madame sans jambon : des pousses d'épinard tombées à la poêle et pressées remplacent la tranche de charcuterie, entre deux couches d'emmental, sous le gruyère gratiné et l'œuf au plat.",
-   "canonical_arbitration": "Six pages relevées, DEUX retenues par l'audit sur deux sites distincts — lesfruitsetlegumesfrais.com et chefsimon.com. Les quatre écartées le sont sur le titre : recettesetcabas annonce « Croque madame végétarien, salade verte » et l'audit y lit une salade, fr.frije titre « Croque Madame végétarien » mais sans le mot épinards, blog.pourdebon et cuisine-facile titrent des croque-MONSIEUR. Toutes restent au dossier, et deux d'entre elles pèsent dans les calculs ci-dessous.\n\nPOURQUOI CE NOM, ET NON « CROQUE-MADAME VÉGÉTARIEN ». Le dossier a d'abord été monté sous ce second nom : il ne rendait qu'une source solide, une page qui met une tranche de fromage entre deux tranches de pain et un œuf dessus, c'est-à-dire à peu près rien. Sous « croque madame aux épinards », les mêmes pages rendent deux sources sur deux sites, et ce sont les deux qui décrivent réellement un plat. Le renommage n'ajoute aucune page ; il cesse d'exiger d'un titre un mot que les auteurs n'écrivent pas. Les deux retenues sont végétariennes ligne par ligne, ce qui a été vérifié sur leurs listes et non déduit de leur titre.\n\nPOURQUOI L'ÉPINARD ET NON LA TOMATE. Le corpus porte déjà, sous JUM-104, un « Croque-monsieur végétarien » dérivé de FR-023, où le jambon est remplacé par de la tomate et des champignons. Écrire ici la même substitution donnerait deux fiches que les graphes de diversité ne sauraient plus distinguer autrement que par un œuf. Le dossier tranche d'ailleurs dans le même sens : quatre des six pages garnissent d'épinards, et les deux solides le font toutes les deux.\n\nCE QUE L'ÉCHANGE DE PROTÉINE TOUCHE. L'ÉPINARD remplace les 160 g de jambon blanc du parent. Quatre pages en pèsent, mais dans DEUX ÉTATS qui ne se comparent pas — c'est exactement le piège de la fiche parente du côté des champignons, boîte contre frais. En frais : lesfruitsetlegumesfrais met 80 g de pousses pour 2 parts, soit 40 g par personne ; blog.pourdebon met deux poignées, environ 60 g, pour 4, soit 15 g. En cuit ou surgelé : cuisine-facile met 200 g d'épinards cuits pour 4, soit 50 g par personne, et chefsimon 160 g d'épinards en branches surgelés à la crème pour une seule part. On retient le frais, qui est l'état des pousses qu'on fait tomber à la poêle, et on retient 40 g par personne, soit 160 g pour quatre : c'est la lecture de la seule page qui titre exactement le plat et qui pèse un épinard frais. La seconde lecture de frais, 15 g, est écartée du choix et on dit pourquoi — c'est un croque-monsieur aux champignons où l'épinard vient en second, derrière 100 g de champignons. Ce n'est pas une médiane de deux valeurs, c'est un choix argumenté entre deux, et il fallait l'écrire ainsi.\n\nLE BEURRE est la seule autre ligne que l'échange oblige à rejuger, parce qu'il gagne un emploi : chez le parent il beurre le pain et graisse la poêle, ici il fait en plus tomber les épinards. Trois pages le pèsent : 10 g pour 2 chez lesfruitsetlegumesfrais, 70 g pour 4 chez blog.pourdebon, 40 g pour 4 chez cuisine-facile, soit 5, 17,5 et 10 g par personne. Médiane 10 g par personne, soit 40 g pour quatre, contre 30 g au parent.\n\nCE QUI EST HÉRITÉ, avec le chiffre du dossier en face. LE PAIN DE MIE (240 g) : les cinq pages qui montent un croque comptent toutes deux tranches par personne, exactement comme le parent — rien à rejuger. L'ŒUF (200 g, quatre pièces) : unanimité, un œuf par personne partout où il y en a un. LES DEUX FROMAGES (130 g d'emmental au cœur, 55 g de gruyère en couverture) sont l'héritage le plus franchement au-dessus du dossier, et on l'assume : les trois pages qui pèsent un fromage donnent 15 g par personne chez chefsimon, 37,5 chez cuisine-facile et 25 chez blog.pourdebon, médiane 25 g, soit 100 g pour quatre, quand le parent en porte 185 g. Le fromage n'est pas ce que l'échange de protéine regarde, et le couple emmental-gruyère dans deux rôles distincts est le résultat d'un dossier de huit pages sur la fiche parente : le remplacer par la médiane d'un dossier de trois reviendrait à échanger une mesure contre une plus faible. Il joue en outre ici un rôle que le jambon ne jouait pas — il scelle l'épinard, on y revient à l'étape 3. LE SEL (3 g) et LE POIVRE (2 g) sont repris tels quels, optionnels comme chez le parent.\n\nCE QUE LE DOSSIER FAIT ET QU'ON NE FAIT PAS. Chefsimon emploie un épinard surgelé DÉJÀ À LA CRÈME, cuisine-facile tartine une béchamel, recettesetcabas monte une crème au parmesan : trois façons d'apporter du liquide dans une mie qu'on veut sèche, et trois structures que le parent ne porte pas — sa garniture est un solide entre deux fromages. Elles descendent en variantes. Le PARMESAN de recettesetcabas n'est pas écrit, et le motif est de composition avant d'être de présure : il est absent de la fiche parente. Cuisine-facile pose un œuf DUR en tranches dans le croque et n'en met aucun sur le dessus : ce serait perdre le nom, l'œuf au plat posé dessus étant ce qui fait la madame. La cuisson intégralement au four de cuisine-facile n'est pas retenue non plus — elle existe déjà au corpus comme variante du parent, sous SRC-011-D1.\n\nDURÉES. Six pages chiffrent : 20, 5, 15, 5, 15 et 25 minutes de préparation, médiane 15, ce qui est aussi le chiffre du parent. Cuisson : 5, 22, 15, 3, 10 et 20 minutes, médiane 12,5, qu'on écrit 12 — deux de plus que le parent, qui sont exactement les deux minutes de poêle où l'épinard tombe.",
+   "canonical_arbitration": "Six pages relevées, DEUX retenues par l'audit sur deux sites distincts — lesfruitsetlegumesfrais.com et chefsimon.com. Les quatre écartées le sont sur le titre : recettesetcabas annonce « Croque madame végétarien, salade verte » et l'audit y lit une salade, fr.frije titre « Croque Madame végétarien » mais sans le mot épinards, blog.pourdebon et cuisine-facile titrent des croque-MONSIEUR. Toutes restent au dossier, et deux d'entre elles pèsent dans les calculs ci-dessous.\n\nPOURQUOI CE NOM, ET NON « CROQUE-MADAME VÉGÉTARIEN ». Le dossier a d'abord été monté sous ce second nom : il ne rendait qu'une source solide, une page qui met une tranche de fromage entre deux tranches de pain et un œuf dessus, c'est-à-dire à peu près rien. Sous « croque madame aux épinards », les mêmes pages rendent deux sources sur deux sites, et ce sont les deux qui décrivent réellement un plat. Le renommage n'ajoute aucune page ; il cesse d'exiger d'un titre un mot que les auteurs n'écrivent pas. Les deux retenues sont végétariennes ligne par ligne, ce qui a été vérifié sur leurs listes et non déduit de leur titre.\n\nPOURQUOI L'ÉPINARD ET NON LA TOMATE. Le lot 10, écrit en parallèle et pas encore versé, porte sous JUM-104 un « Croque-monsieur végétarien » dérivé de FR-023, où le jambon est remplacé par 320 g de tomate et 240 g de champignons — la formulation « le corpus porte déjà » a été corrigée à la relecture, la fiche n'y étant pas encore. Écrire ici la même substitution donnerait deux fiches que les graphes de diversité ne sauraient plus distinguer autrement que par un œuf. Le dossier tranche d'ailleurs dans le même sens : quatre des six pages garnissent d'épinards, et les deux solides le font toutes les deux.\n\nCE QUE L'ÉCHANGE DE PROTÉINE TOUCHE. L'ÉPINARD remplace les 160 g de jambon blanc du parent. Quatre pages en pèsent, mais dans DEUX ÉTATS qui ne se comparent pas — c'est exactement le piège de la fiche parente du côté des champignons, boîte contre frais. En frais : lesfruitsetlegumesfrais met 80 g de pousses pour 2 parts, soit 40 g par personne ; blog.pourdebon met deux poignées, environ 60 g, pour 4, soit 15 g. En cuit ou surgelé : cuisine-facile met 200 g d'épinards cuits pour 4, soit 50 g par personne, et chefsimon 160 g d'épinards en branches surgelés à la crème pour une seule part. On retient le frais, qui est l'état des pousses qu'on fait tomber à la poêle, et on retient 40 g par personne, soit 160 g pour quatre : c'est la lecture de la seule page qui titre exactement le plat et qui pèse un épinard frais. La seconde lecture de frais, 15 g, est écartée du choix et on dit pourquoi — c'est un croque-monsieur aux champignons où l'épinard vient en second, derrière 100 g de champignons. Ce n'est pas une médiane de deux valeurs, c'est un choix argumenté entre deux, et il fallait l'écrire ainsi.\n\nLE BEURRE est la seule autre ligne que l'échange oblige à rejuger, parce qu'il gagne un emploi : chez le parent il beurre le pain et graisse la poêle, ici il fait en plus tomber les épinards. Trois pages le pèsent : 10 g pour 2 chez lesfruitsetlegumesfrais, 70 g pour 4 chez blog.pourdebon, 40 g pour 4 chez cuisine-facile, soit 5, 17,5 et 10 g par personne. Médiane 10 g par personne, soit 40 g pour quatre, contre 30 g au parent.\n\nCE QUI EST HÉRITÉ, avec le chiffre du dossier en face. LE PAIN DE MIE (240 g) : les cinq pages qui montent un croque comptent toutes deux tranches par personne, exactement comme le parent — rien à rejuger. L'ŒUF (200 g, quatre pièces) : unanimité, un œuf par personne partout où il y en a un. LES DEUX FROMAGES (130 g d'emmental au cœur, 55 g de gruyère en couverture) sont l'héritage le plus franchement au-dessus du dossier, et on l'assume : les trois pages qui pèsent un fromage donnent 15 g par personne chez chefsimon, 37,5 chez cuisine-facile et 25 chez blog.pourdebon, médiane 25 g, soit 100 g pour quatre, quand le parent en porte 185 g. Le fromage n'est pas ce que l'échange de protéine regarde, et le couple emmental-gruyère dans deux rôles distincts est le résultat d'un dossier de huit pages sur la fiche parente : le remplacer par la médiane d'un dossier de trois reviendrait à échanger une mesure contre une plus faible. Il joue en outre ici un rôle que le jambon ne jouait pas — il scelle l'épinard, on y revient à l'étape 3. LE SEL (3 g) et LE POIVRE (2 g) sont repris tels quels, optionnels comme chez le parent.\n\nCE QUE LE DOSSIER FAIT ET QU'ON NE FAIT PAS. Chefsimon emploie un épinard surgelé DÉJÀ À LA CRÈME, cuisine-facile tartine une béchamel, recettesetcabas monte une crème au parmesan : trois façons d'apporter du liquide dans une mie qu'on veut sèche, et trois structures que le parent ne porte pas — sa garniture est un solide entre deux fromages. Elles descendent en variantes. Le PARMESAN de recettesetcabas n'est pas écrit, et le motif est de composition avant d'être de présure : il est absent de la fiche parente. Cuisine-facile pose un œuf DUR en tranches dans le croque et n'en met aucun sur le dessus : ce serait perdre le nom, l'œuf au plat posé dessus étant ce qui fait la madame. La cuisson intégralement au four de cuisine-facile n'est pas retenue non plus — elle existe déjà au corpus comme variante du parent, sous SRC-011-D1.\n\nDURÉES. Six pages chiffrent : 20, 5, 15, 5, 15 et 25 minutes de préparation, médiane 15, ce qui est aussi le chiffre du parent. Cuisson : 5, 22, 15, 3, 10 et 20 minutes, médiane 12,5, qu'on écrit 12 — deux de plus que le parent, qui sont exactement les deux minutes de poêle où l'épinard tombe.",
    "plate": {
     "role": "complete",
     "accepts": [
@@ -636,205 +642,6 @@
    "conservation": "Se garde 3 à 4 jours au réfrigérateur, durée que le dossier écrit noir sur blanc chez acouplecooks et que la fiche parente confirme à 3 jours ; on retient 3 jours, la lecture basse des deux. Il est meilleur le lendemain, les haricots continuant d'absorber le jus, et il faut le détendre d'un peu de bouillon au réchauffage à feu doux. Il se congèle 3 mois à -18 °C, et bien : un haricot déjà cuit et un mijoté de légumes ne souffrent ni du gel ni du dégel, contrairement à une sauce liée à la crème. Congeler LES HARICOTS SEULS, sans le riz — cette précision ne vient pas des sources, qui n'en parlent pas, mais de ce que fait un grain de riz cuit au congélateur : il rend son eau et ressort farineux. Le riz se refait en dix minutes.",
    "allergens": [
     "céleri"
-   ]
-  },
-  {
-   "code": "JUM-124",
-   "family": "Fricassée de champignons à la crème et à la moutarde",
-   "derived_from": "DEN-013",
-   "cuisine_origin": "France / cuisine domestique",
-   "identity_level": "domestic_standard",
-   "category": "plat sauté",
-   "status": "candidate",
-   "confidence": "B",
-   "servings": 4,
-   "prep_minutes": 15,
-   "cook_minutes": 25,
-   "difficulty": "facile",
-   "sources": [
-    "dossier:fricassee-de-champignons",
-    "marmiton.org",
-    "750g.com",
-    "321recettes.fr",
-    "cookpad.com",
-    "lafeestephanie.com"
-   ],
-   "description_courte": "L'émincé de poulet aux champignons sans le poulet : un kilo de champignons de Paris poêlés à sec en deux fois, liés d'une crème moutardée au thym montée hors du feu.",
-   "canonical_arbitration": "Sept pages relevées, CINQ retenues par l'audit sur quatre sites distincts — deux marmiton, 750g, 321recettes et cookpad. Deux écartées sur le titre : lafeestephanie annonce « Champignons crème moutarde », sans le mot fricassée, et 750g une seconde fois avec « Pâtes à la crème de moutarde et ses champignons », qui est un plat de pâtes. Toutes deux comptent malgré tout dans cette fiche, et on dira où.\n\nPOURQUOI CE NOM DE DOSSIER. Sous « fricassée de champignons à la crème », le relevé ne rendait qu'une source solide, la seule page qui porte les trois mots. Sous « fricassée de champignons », les mêmes pages en rendent cinq sur quatre sites. Le renommage n'ajoute aucune page ; il cesse d'exiger d'un titre un mot que les auteurs n'écrivent pas — quatre des cinq mettent bien de la crème sans le dire dans leur titre.\n\nUNE PAGE RETENUE PORTE DE LA VIANDE, et il faut le signaler plutôt que de le laisser découvrir : la « Fricassée de champignons provençale » de marmiton met 125 g de poitrine fumée. Elle est solide au sens de l'audit — son titre porte les mots du plat — et elle décrit bien une fricassée de champignons à la crème. Elle sert donc à la médiane des champignons, et à rien d'autre. Sa poitrine fumée, son poivron et ses tomates ne franchissent pas la porte de cette fiche.\n\nCE QUE L'ÉCHANGE DE PROTÉINE TOUCHE. LES CHAMPIGNONS remplacent les 500 g de blanc de poulet du parent, en plus des 500 g de champignons qu'il portait déjà. Les cinq pages retenues donnent, ramenées à la personne : 250 g chez marmiton « à la crème », 100 chez 750g, 125 chez 321recettes, 150 chez cookpad et 137,5 chez marmiton « provençale ». La médiane est 137,5 g par personne, soit 550 g pour quatre — et c'est cette médiane qu'on N'ÉCRIT PAS, avec sa raison. Quatre de ces cinq pages décrivent une GARNITURE : celle de marmiton provençale se termine par « servir avec une viande blanche », celle de 750g pèse 400 g pour quatre, celle de cookpad n'a ni crème ni féculent. Une médiane de garnitures ne peut pas dire ce que pèse un plat. La seule page du dossier qui serve la fricassée SEULE, avec sa crème, est celle qui titre « Fricassée de champignons à la crème » : elle met 1 kg pour quatre, soit 250 g par personne — c'est-à-dire exactement le double du parent, et exactement le poids qu'il faut pour occuper la place que 500 g de volaille laissent vide. On écrit 1 000 g, la lecture haute du dossier, et l'écart à la médiane est assumé ici plutôt que caché dans une moyenne.\n\nLE BOUILLON change d'origine et pas de volume : 100 ml comme chez le parent, mais de légumes. C'est la ligne obligatoire du lot, et le motif de quinze des vingt-deux fausses végétariennes du corpus. Aucune page du dossier ne mouille au bouillon — le déglaçage vient du parent, comme la moutarde.\n\nDEUX LIGNES ENTRENT AVEC LES CHAMPIGNONS, et elles entrent parce que le poids change de nature. À 500 g, le champignon était le légume d'un plat de volaille ; à 1 kg, il en est le sujet, et le dossier est clair sur ce qu'un plat de champignons porte. L'AIL est dans quatre des cinq pages retenues : 1,25, 1,25, 6,25 et 2,5 g par personne, médiane 1,875, soit 7,5 g pour quatre, qu'on écrit 8 g. LE PERSIL est dans quatre pages également, dont trois le chiffrent : 3,75, 7,5 et 3,75 g par personne, médiane 3,75, soit 15 g pour quatre. Le parent n'en portait ni l'un ni l'autre, et c'est le seul endroit où ce jumeau ajoute à sa base — un kilo de champignons sans ail ni verdure serait une masse brune et sourde.\n\nCE QUI EST HÉRITÉ, avec le chiffre du dossier en face. LA CRÈME (200 g) : quatre pages retenues la chiffrent, à 3,75, 15, 37,5 et 50 g par personne, médiane 26,25, soit 105 g pour quatre. On garde les 200 g du parent, et le dossier lui-même dit pourquoi c'est le bon chiffre : la page qui met 1 kg de champignons, la seule comparable en volume, met aussi 200 g de crème pour quatre — 50 g par personne, à la goutte près la ligne du parent. Les trois lectures basses accompagnent 400 à 600 g de champignons. LA MOUTARDE (30 g) est l'héritage le plus exposé de la fiche : aucune page retenue n'en porte, et les deux seules qui en mettent sont les deux écartées — lafeestephanie, une cuillerée à café bombée pour deux à trois parts, soit environ 2,8 g par personne, et 750g dans son plat de pâtes, une cuillerée à soupe pour trois. Le parent en porte 30 g, soit 7,5 g par personne, sur un dossier de cinq pages dont deux la chiffrent. On garde 30 g : la moutarde n'est pas ce que l'échange de protéine regarde, elle est la signature de la sauce du parent, et la remplacer par la lecture d'une page écartée serait échanger une mesure contre une plus faible. On le signale parce que c'est la ligne la moins soutenue par le dossier propre du jumeau. L'OIGNON (120 g) : une seule page en porte, lafeestephanie, à 44 g par personne — les trois autres emploient de l'échalote, absente du parent. On garde l'oignon et son poids. L'HUILE D'OLIVE (20 g) : deux pages sur sept l'emploient, les quatre autres du beurre ; on garde l'huile du parent et le beurre descend en variante. LE THYM SÉCHÉ (2 g), LE SEL (4 g) et LE POIVRE (1 g) se transmettent tels quels.\n\nCE QUE LE DOSSIER FAIT ET QU'ON NE FAIT PAS. Quatre pages sur cinq font revenir échalote et ail AVANT les champignons, dans un corps gras : on garde la saisie à sec du parent, qui est un garde-fou de sa fiche et le seul moyen d'obtenir un brunissement sur un kilo de légumes gorgés d'eau. Le citron de marmiton, qui sert à empêcher les têtes de noircir, n'est pas écrit : il acidifierait une sauce dont le piquant vient de la moutarde. Le vin blanc de 321recettes est déjà une variante annoncée de la fiche parente. Le curcuma de lafeestephanie et le curry de 750g colorent une crème végétale pour lui donner l'air d'une sauce jaune : le plat n'en a pas besoin. La farine de marmiton provençale serrerait la sauce à la place de la réduction.\n\nDURÉES. Cinq pages chiffrent la préparation : 15, 5, 15, 20 et 15 minutes, médiane 15, ce qui est aussi le chiffre du parent — un kilo de champignons se nettoie et se coupe plus vite que 500 g de champignons plus 500 g de volaille à émincer. Cuisson : 20, 10, 10, 20 et 15 minutes, médiane 15. On écrit 25, celle du parent, et l'écart s'explique en une ligne : il faut deux poêlées successives pour passer un kilo de champignons à sec, là où toutes ces pages en font une seule.",
-   "plate": {
-    "role": "main",
-    "accepts": [
-     "starch"
-    ],
-    "reason": "Même rôle que l'Émincé de poulet aux champignons dont il dérive : une garniture en sauce sans féculent, qui appelle du riz, des pâtes ou des pommes vapeur pour recevoir la crème. Le jumeau est cependant plus léger que sa base — 294 kcal et 9,1 g de protéines par part contre le double chez le parent —, et c'est le plat le moins protéiné de ce lot ; le féculent qui l'accompagne n'est donc pas facultatif, il fait une part du repas."
-   },
-   "ingredients": [
-    {
-     "form": "Champignon de Paris frais",
-     "quantity": 1000,
-     "unit": "g",
-     "role": "légume",
-     "optional": false
-    },
-    {
-     "form": "Crème fraîche liquide entière",
-     "quantity": 200,
-     "unit": "g",
-     "role": "sauce",
-     "optional": false
-    },
-    {
-     "form": "Oignon jaune cru",
-     "quantity": 120,
-     "unit": "g",
-     "role": "aromatique",
-     "optional": false
-    },
-    {
-     "form": "Bouillon de légumes",
-     "quantity": 100,
-     "unit": "ml",
-     "role": "mouillement",
-     "optional": false
-    },
-    {
-     "form": "Moutarde de Dijon",
-     "quantity": 30,
-     "unit": "g",
-     "role": "condiment",
-     "optional": false
-    },
-    {
-     "form": "Huile d'olive vierge extra",
-     "quantity": 20,
-     "unit": "g",
-     "role": "matière grasse",
-     "optional": false
-    },
-    {
-     "form": "Ail cru",
-     "quantity": 8,
-     "unit": "g",
-     "role": "aromatique",
-     "optional": false
-    },
-    {
-     "form": "Persil frais",
-     "quantity": 15,
-     "unit": "g",
-     "role": "finition",
-     "optional": false
-    },
-    {
-     "form": "Thym séché",
-     "quantity": 2,
-     "unit": "g",
-     "role": "aromate",
-     "optional": false
-    },
-    {
-     "form": "Sel fin",
-     "quantity": 4,
-     "unit": "g",
-     "role": "assaisonnement",
-     "optional": false
-    },
-    {
-     "form": "Poivre noir moulu",
-     "quantity": 1,
-     "unit": "g",
-     "role": "assaisonnement",
-     "optional": false
-    }
-   ],
-   "steps": [
-    {
-     "n": 1,
-     "instruction": "Débarrasser les champignons de leur terre au pinceau ou avec un linge à peine humide, sans jamais les passer sous le robinet : la chair est poreuse, elle boit l'eau et la rend ensuite dans la poêle. Les couper en quartiers plutôt qu'en fines lamelles. À un kilo, la lamelle se réduit à rien et disparaît dans la sauce ; le quartier garde de la mâche et occupe la place que les lanières de volaille tenaient dans la version d'origine."
-    },
-    {
-     "n": 2,
-     "instruction": "Chauffer une très grande poêle à sec, sans aucune matière grasse, et y verser la moitié des champignons en une couche unique. Les laisser d'abord rendre leur eau, puis la laisser partir entièrement, sept à huit minutes, jusqu'à ce que le bruit change — le bouillonnement devient grésillement — et que les bords colorent. Recommencer avec la seconde moitié. Deux poêlées et non une : entassé, un kilo de champignons cuit dans sa propre vapeur et ressort gris. Ce brunissement est ce qui donne au plat le goût grillé que la saisie du poulet lui donnait, et aucune quantité de crème ne le remplace."
-    },
-    {
-     "n": 3,
-     "instruction": "Réserver les champignons, verser l'huile d'olive dans la poêle et y faire fondre l'oignon émincé cinq minutes à feu moyen. Ajouter le thym, puis l'ail haché pour une minute seulement. L'ail passe après l'oignon parce qu'il brûle deux fois plus vite, et une amertume prise ici se retrouve ensuite dans toute la sauce."
-    },
-    {
-     "n": 4,
-     "instruction": "Verser le bouillon de légumes et gratter au fond tous les sucs collés, laisser réduire de moitié, puis ajouter la crème et faire frémir trois minutes jusqu'à ce qu'elle nappe le dos d'une cuillère. Le bouillon est de légumes et non de volaille : c'est la seule ligne que l'échange de protéine oblige à changer sans toucher au volume, et c'est celle qui fait basculer la plupart des faux végétariens du répertoire."
-    },
-    {
-     "n": 5,
-     "instruction": "Couper le feu et délayer la moutarde dans la sauce hors du feu, jamais dessus : chauffée, elle tourne amère et perd le piquant pour lequel on la met. Remettre les champignons avec le jus qu'ils ont rendu en attendant, réchauffer une minute à feu très doux, saler, poivrer, parsemer de persil ciselé et servir avec un féculent qui reçoive la sauce."
-    }
-   ],
-   "techniques": [
-    "taillage",
-    "saisie à sec",
-    "déglaçage",
-    "liaison à la crème",
-    "assaisonnement tardif"
-   ],
-   "variants": [
-    "Beurre à la place de l'huile d'olive, 50 g pour quatre, majoritaire dans le dossier (marmiton, 750g, cookpad)",
-    "Deux échalotes ciselées à la place de l'oignon (750g, 321recettes)",
-    "Le jus d'un citron versé sur les champignons taillés pour les empêcher de noircir (marmiton)",
-    "Un verre de vin blanc sec à la place du bouillon (321recettes) — déjà annoncé comme variante de la fiche parente",
-    "Une demi-tête d'ail pressée et un bouquet entier de persil, pour une fricassée franchement aillée (cookpad)",
-    "Une cuillerée à café de curcuma dans la crème, ou de curry, pour colorer la sauce (lafeestephanie, 750g)",
-    "Crème végétale à la place de la crème fraîche, 200 ml pour deux à trois parts (lafeestephanie)",
-    "Champignons mélangés — morilles, girolles et champignons de Paris — plutôt que champignons de Paris seuls (marmiton provençale)",
-    "Une cuillerée à soupe de farine battue dans la crème pour serrer la sauce (marmiton provençale)"
-   ],
-   "sensory": {
-    "profile": "creamy_savory",
-    "scores": {
-     "sweet": 1,
-     "salty": 2,
-     "acidic": 1,
-     "bitter": 0,
-     "umami": 4,
-     "heat": 0,
-     "pungency": 3,
-     "richness": 4,
-     "freshness": 1,
-     "intensity": 3
-    },
-    "dominant_flavors": [
-     "champignon rôti",
-     "crème",
-     "moutarde"
-    ],
-    "aroma_families": [
-     "champignon_terreux",
-     "crème",
-     "moutarde",
-     "thym",
-     "ail"
-    ],
-    "target_textures": [
-     "lamelles de champignon tendres",
-     "sauce nappante",
-     "bords_grillés"
-    ],
-    "signature_ingredients": [
-     "Champignon de Paris frais",
-     "Crème fraîche liquide entière",
-     "Moutarde de Dijon"
-    ],
-    "identity_guardrails": [
-     "Les champignons se poêlent à sec, en deux fois, jusqu'à évaporation totale avant toute matière grasse : c'est le seul brunissement du plat",
-     "La moutarde entre hors du feu, sinon elle tourne amère et perd son piquant",
-     "Ne pas laver les champignons à l'eau — ils la boivent et la rendent dans la poêle",
-     "C'est un sauté de vingt-cinq minutes, pas un mijoté : les champignons ne cuisent jamais dans la crème",
-     "Le bouillon est de légumes, jamais de volaille — c'est ce qui fait de cette fiche le jumeau de sa base carnée"
-    ]
-   },
-   "conservation": "Se garde 2 jours au réfrigérateur entre 0 et 4 °C, comme la fiche parente, et se réchauffe à feu doux à couvert ; si la sauce a épaissi, la détendre d'une cuillerée de bouillon. Aucune des sept pages du dossier ne parle de conservation, et ce qui suit est donc de la physique et non une lecture des sources. Ce plat NE SE CONGÈLE PAS, pour deux raisons qui se cumulent : une crème entière tranche au dégel et se sépare en petit-lait et en grains gras, et le champignon, dont la chair est faite d'eau retenue dans une paroi fragile, rend cette eau d'un coup à la décongélation et ressort spongieux. Le jumeau est ici plus vulnérable que sa base, parce qu'il porte un kilo de champignons là où le parent en portait la moitié.",
-   "allergens": [
-    "lait",
-    "moutarde"
    ]
   }
  ]
