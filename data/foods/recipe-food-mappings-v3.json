@@ -2122,6 +2122,11 @@
       "confidence": "C",
       "note": "PROXY ASSUMÉ. Le lap cheong (saucisse de porc chinoise séchée, sucrée au sucre et au vin de riz) n'existe pas dans Ciqual : ce n'est pas le même aliment qu'une saucisse sèche française, sa recette comporte du sucre. Mais c'est bien une saucisse de porc crue-séchée non cuite, et les macros de 30309 (451 kcal / 27,3 P / 1,7 G / 37,1 L) encadrent correctement les valeurs de référence du lap cheong (~500 kcal, ~20 P, ~40 L) ; seuls les glucides sont sous-estimés de quelques grammes. Écartées : les saucisses fraîches à cuire (Morteau, Montbéliard, Francfort, foie), qui sont beaucoup plus humides."
     },
+    "saucisse vegetale au tofu": {
+      "ciqual_alim_code": "20337",
+      "grams_per_unit": 70,
+      "note": "Correspondance exacte : l'ANSES mesure la saucisse végétale au tofu pour elle-même. 231 kcal, P 14,6 / G 5,69 / L 16,3, sel 1,68 — macros complètes, énergie mesurée, aucune fermeture d'Atwater. La mention « convient aux véganes ou végétaliens » du libellé compte ici plus qu'ailleurs : le classeur porte aussi des substituts qui contiennent de l'œuf ou du fromage, et un jumeau végétarien n'a pas le droit de s'appuyer sur un produit dont le libellé dit l'inverse. CONVERSION : 70 g la pièce, parce que les quatre pages comptent des saucisses et non des grammes — c'est le calibre courant des saucisses végétales vendues par quatre (280 à 300 g le paquet), et il est déclaré ici pour que la liste de courses puisse écrire « 8 saucisses » là où la recette pèse 560 g. ÉCARTÉS, et pourquoi : 25232 « Saucisse végétale au blé ou seitan, préemballé » mesure un autre produit, deux fois plus protéiné et bien moins gras (voir le contexte) — le prendre pour celui-ci déplacerait la nutrition de la recette sans que rien ne le montre ; 1030 « Spécialité végétale type jambon cuit » et 1031 « Spécialité végétale type pâté » ne sont pas des saucisses et ne se rissolent pas ; 25589 « Boulette végétale au soja et/ou blé » est une boulette, c'est-à-dire une autre forme façonnée, que le cassoulet ne demande pas ; 30181 « Haché végétal à base de soja » est du haché, pas une saucisse."
+    },
     "saumure legere": {
       "ciqual_alim_code": "18066",
       "usda_fdc_id": "173647",
@@ -2218,6 +2223,10 @@
       "ciqual_alim_code": "20904",
       "confidence": "B",
       "note": "Le tofu nature préemballé de Ciqual est le bloc ferme (143 kcal, 14,7 g de protéines). À distinguer nettement de 20906 « Tofu soyeux » (52,5 kcal) et de 20912 « Tofu fumé », qui sont d'autres concepts."
+    },
+    "tofu fume": {
+      "ciqual_alim_code": "20912",
+      "note": "Correspondance exacte : l'ANSES mesure le tofu fumé séparément du tofu nature. 164 kcal, P 16,4 / G 2,91 / L 9,5, sel 0,74 — macros complètes, énergie mesurée. L'écart avec 20904 « Tofu nature, préemballé » (148 kcal, P 14,7, sel 0,025) est réel et il est surtout dans le SEL, trente fois plus élevé : c'est le fumage et la saumure qui font tout l'intérêt de cette forme dans un cassoulet, où elle tient le rôle que la poitrine fumée et le confit tiennent chez le parent. Adosser le tofu fumé au tofu nature aurait été un proxy silencieux sur le sel d'un plat déjà salé, exactement le genre d'erreur qu'aucun contrôle de forme ne voit. Aucune conversion en pièces : les pages qui le pèsent le pèsent en grammes, et le bloc du commerce varie de 150 à 250 g. ÉCARTÉS : 20904 « Tofu nature » pour la raison ci-dessus ; 20338 « Quenelle au tofu » et 25231 « Raviolis au tofu, à la sauce tomate » sont des plats, pas un ingrédient."
     },
     "tofu soyeux ferme": {
       "ciqual_alim_code": "20906",
