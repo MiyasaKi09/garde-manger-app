@@ -1,0 +1,161 @@
+{
+  "dish": "Carbonade flamande végétarienne",
+  "slug": "x-carbonade",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://cookpad.com/fr/recettes/17201441",
+      "site": "cookpad.com",
+      "nom": "Carbonade flamande végétarienne au seitan",
+      "portions": "4 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "500 g seitan",
+        "1 l bière",
+        "4 oignons",
+        "4 tranches de pain d'épice",
+        "Beurre",
+        "Moutarde",
+        "Carottes",
+        "Cannelle",
+        "Thym et romarin",
+        "Sucre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 318,
+        "sha256": "bdd62e0e0b100a53"
+      },
+      "sha256_page": "010fd3a953792ca9"
+    },
+    {
+      "url": "https://mrcuisto.com/recipes/carbonnade-champignons-biere-brune",
+      "site": "mrcuisto.com",
+      "nom": "Carbonnade de champignons bière brune",
+      "portions": 4,
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 kg de champignons de Paris, nettoyés et coupés en quartiers",
+        "3 échalotes, pelées et émincées",
+        "1 oignon, pelé et émincé",
+        "2 brins de persil plat, hachés",
+        "1 bouquet garni",
+        "1 cuillère à café rase de quatre-épices",
+        "Sel",
+        "Poivre",
+        "20 g de beurre",
+        "2 cuillères à soupe d'huile de pépins de raisin",
+        "500 g de bière brune",
+        "25 g de cassonade",
+        "1 cuillère à soupe de moutarde forte",
+        "10 g de fécule de maïs (maïzena)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 881,
+        "sha256": "659f063c5ae61c31"
+      },
+      "sha256_page": "7095146bfff99339"
+    },
+    {
+      "url": "https://www.panierdesaison.com/2020/02/carbonade-vegetale.html",
+      "site": "panierdesaison.com",
+      "nom": "Carbonade végétale",
+      "portions": [
+        "4"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "2 boîte (s) pois chiche (soit 600 g environ)",
+        "2 c. à soupe huile de pépins de raisin (ou d'huile de coco )",
+        "2  carotte",
+        "2  oignon (s)",
+        "8  champignons de Paris",
+        "2 c. à soupe vergeoise",
+        "50 cl bière brune (j'utilise la Chimay rouge ou une bière brune pas trop houblonnée)",
+        "1 c. à soupe Vinaigre Balsamique de Modène IGP",
+        "2 gousses ail  (hachées)",
+        "1 feuille laurier",
+        "1 branche (s) thym",
+        "4 tranches pain d’épices",
+        "2 pincées noix de muscade",
+        "2  clous de girofle",
+        "fleur de sel",
+        "5 tours de moulin poivre noir du moulin",
+        "2 brins persil  (ciselé)",
+        "8  pomme de terre (s) (à frites, assez grosses)",
+        "3 c. à soupe huile de pépins de raisin",
+        "fleur de sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1210,
+        "sha256": "451e2af52e8f1c7f"
+      },
+      "sha256_page": "6b406c28e32f356d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/recettes-de-clairette/recettes/carbonnade-de-champignons",
+      "site": "chefsimon.com",
+      "nom": "Carbonnade de champignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 kilo de champignons de Paris",
+        "3 échalotes",
+        "un oignon",
+        "un bouquet garni",
+        "20 g de beurre",
+        "500 g de bière brune",
+        "2 cuillères à soupe d'huile de pépins de raisin",
+        "25 g de cassonade",
+        "une cuillère à soupe de moutarde forte",
+        "10 g de maïzena",
+        "une cuillère à café rase de quatre épices",
+        "2 brins de persil plat",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "b1abe35110a583c6"
+    },
+    {
+      "url": "https://www.referentiel-restauration-collective.fr/recette/carbonnade-flamande-2/",
+      "site": "referentiel-restauration-collective.fr",
+      "nom": "Carbonnade flamande",
+      "portions": [
+        "100",
+        "100 couverts"
+      ],
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT180M",
+      "ingredients": [
+        "14 kg Bœuf paleron (Paré, cubes de 4cm)",
+        "3 kg Oignons jaunes (Émincés finement)",
+        "3 L Bière brune belge (Type Leffe ou Grimbergen)",
+        "400 g Pain d'épices (Émietter pour liaison)",
+        "200 g Cassonade blonde (Sucre roux cristallisé)",
+        "150 g Moutarde de Dijon (Forte)",
+        "100 ml Vinaigre de vin rouge (Pour déglacer)",
+        "400 g Huile neutre (Pour rissolage)",
+        "150 g Bouquet garni (Thym, laurier, persil)",
+        "PM  Sel fin (Ajuster au goût)",
+        "PM  Poivre noir moulu (Fraîchement moulu)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1300,
+        "sha256": "8806f5ce7aeca91d"
+      },
+      "sha256_page": "f8e6a70370d00be0"
+    }
+  ]
+}
