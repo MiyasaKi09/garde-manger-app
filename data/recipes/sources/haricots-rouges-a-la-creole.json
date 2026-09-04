@@ -1,0 +1,85 @@
+{
+  "dish": "haricots rouges à la créole",
+  "slug": "haricots-rouges-a-la-creole",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_haricots-rouges-a-la-creole_20879.aspx",
+      "site": "marmiton.org",
+      "nom": "Haricots rouges à la créole : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "250 g de haricots rouges (ou rosés secs ou bien en conserve, la plupart de celles que l'on trouve en magasin en France ne correspondent pas car trop sucrés)",
+        "2 oignons",
+        "3 gousses d'ail",
+        "1 morceau de gingembre frais",
+        "3 branches de thym",
+        "2 feuilles de laurier (ou 4 épices)",
+        "1 cuillère à café de curcuma",
+        "4 piments des îles (facultatif)",
+        "1 pincée de gros sel",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1378,
+        "sha256": "5178ada71124b848"
+      },
+      "sha256_page": "e1070cfa7a64033b"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_riz-et-haricots-rouges-a-la-creole_64982.aspx",
+      "site": "marmiton.org",
+      "nom": "Riz et haricots rouges (à la créole) : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "200 g de haricots rouges",
+        "400 g de riz long grain (incollable ou basmati)",
+        "100 g de lardons",
+        "1 oignon",
+        "2 gousses d'ail",
+        "2 cuillères à soupe d'huile",
+        "3 clous de girofle",
+        "1 bouquet garni",
+        "2 cuillères à soupe de beurre",
+        "1 petit piment antillais",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 724,
+        "sha256": "cbacd17438c1a433"
+      },
+      "sha256_page": "ad958288f688e710"
+    },
+    {
+      "url": "https://www.mangerbouger.fr/manger-mieux/la-fabrique-a-menus/recettes/852-haricots-rouges-facon-creole",
+      "site": "mangerbouger.fr",
+      "nom": "Haricots rouges façon créole",
+      "portions": null,
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "Haricots rouges (conserve)",
+        "Riz complet",
+        "2 Oignons",
+        "2 gousses Ail",
+        "3 cm Gingembre cru",
+        "1 cuillère à café Curcuma"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 711,
+        "sha256": "aab677d9ad786f7d"
+      },
+      "sha256_page": "5ca7a172ad7cc2b4"
+    }
+  ]
+}

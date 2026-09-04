@@ -1,0 +1,172 @@
+{
+  "dish": "fricassée de champignons",
+  "slug": "fricassee-de-champignons",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_fricassee-de-champignons-a-la-creme_25422.aspx",
+      "site": "marmiton.org",
+      "nom": "Fricassée de champignons à la crème : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 kg de champignons de Paris",
+        "50 g de beurre",
+        "20 cl de crème liquide",
+        "1 citron",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 482,
+        "sha256": "f6f4486cb16a4694"
+      },
+      "sha256_page": "0ff6bd639bc17e54"
+    },
+    {
+      "url": "https://www.750g.com/fricassee-de-champignons-r18460.htm",
+      "site": "750g.com",
+      "nom": "Fricassée de champignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "400 g de champignons de Paris",
+        "60 g de crème fraîche épaisse",
+        "50 g de beurre",
+        "2 échalotes",
+        "1 gousse d'ail",
+        "Persil  cisèlé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 590,
+        "sha256": "3ad330e08a1a1b26"
+      },
+      "sha256_page": "2501e7d255d7576c"
+    },
+    {
+      "url": "https://www.321recettes.fr/recette/66720/fricasse-de-champignons.html",
+      "site": "321recettes.fr",
+      "nom": "Fricassée de champignons",
+      "portions": "4",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "500 g de champignons de Paris&nbsp;",
+        "1 échalote&nbsp;",
+        "1 gousse d'ail&nbsp;",
+        "1 verre de vin blanc sec&nbsp;",
+        "1 c. à soupe de crème fraîche&nbsp;",
+        "1/2 botte de persil&nbsp;",
+        "huile d'olive&nbsp;",
+        "sel, poivre&nbsp;"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 982,
+        "sha256": "cc0ee97c4d719398"
+      },
+      "sha256_page": "2f0b5e80de94ed93"
+    },
+    {
+      "url": "https://cookpad.com/fr/recettes/16747667",
+      "site": "cookpad.com",
+      "nom": "Fricassée de champignons de Paris à l'ail et persil",
+      "portions": "Pour 4 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "600 g champignons de Paris",
+        "1 bouquet de persil frais",
+        "1/2 tête d'ail",
+        "20 g beurre",
+        "Sel et poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 548,
+        "sha256": "5ba4bef1c64ebbfa"
+      },
+      "sha256_page": "7f5f2a3e979e2817"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_fricassee-de-champignons-provencale_26857.aspx",
+      "site": "marmiton.org",
+      "nom": "Fricassée de champignons provençale : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "550 g de champignons mélangés (morilles, girolles, champignons de Paris)",
+        "150 g de crème",
+        "125 g de poitrine fumée",
+        "2 tomates",
+        "2 gousses d'ail",
+        "1 poivron vert",
+        "1 oignon",
+        "0.5 bouquet de persil",
+        "0.5 cuillère à café de paprika doux",
+        "1 cuillère à soupe de farine",
+        "2 cuillères à soupe d'huile",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 803,
+        "sha256": "4589a5bf8d16f8b8"
+      },
+      "sha256_page": "d99bdfbe11c05daa"
+    },
+    {
+      "url": "https://www.lafeestephanie.com/2022/02/champi-creme-moutarde.html",
+      "site": "lafeestephanie.com",
+      "nom": "Champignons crème moutarde",
+      "portions": "2-3 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "P",
+      "ingredients": [
+        "500 g de champignons de Paris bruns frais",
+        "1 oignon",
+        "200 ml de crème végétale",
+        "1 c. à c. bombée de moutarde",
+        "1 c. à c. rase de curcuma",
+        "Sel et poivre",
+        "Huile d'olive extra vierge"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 478,
+        "sha256": "3d8823aa6c8f2245"
+      },
+      "sha256_page": "06e22b81e332ed99"
+    },
+    {
+      "url": "https://www.750g.com/pates-a-la-creme-de-moutarde-et-ses-champignons-r75057.htm",
+      "site": "750g.com",
+      "nom": "Pâtes à la crême de moutarde et ses champignons",
+      "portions": "3 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "300 g de pâtes  (peu importe la forme !)",
+        "5 champignons  frais ou 1 boîte de champignon en conserve",
+        "3 c. à s. de crème",
+        "1 c. à s. de moutarde",
+        "1 c. à c. de curry",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 561,
+        "sha256": "05e3fddcf16ded4b"
+      },
+      "sha256_page": "9c0c6103426d4cd2"
+    }
+  ]
+}
