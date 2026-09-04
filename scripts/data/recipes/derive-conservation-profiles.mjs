@@ -162,6 +162,12 @@ const BOUNDED_AFTER = /^\s*(?:maximum|au maximum|au plus|tout au plus)/
 // 24 heures du plat une fois les œufs incorporés. La convention du dépôt est
 // la garde la PLUS COURTE ; encore faut-il voir toutes les gardes.
 const GUARD_VERB_BEFORE = /(?:se (?:garde|gardent|conserve|conservent|tient|tiennent|mange|mangent)|tient|tiennent|garder|conserver|consomme|consommer|consommez|consommes|dure|durent)\w*\s*(?:[\w'’,°]+\s+){0,4}$/
+// « le riz, les œufs durs et les épinards se préparent la veille et se gardent
+// séparément 2 jours » : une durée de MISE EN PLACE, celle d'éléments préparés
+// avant le montage, pas celle du plat. Sans cette exclusion, le koulibiac
+// (VAR-029) se serait vu attribuer les deux jours de ses garnitures crues
+// alors que sa propre prose lui en donne trois.
+const PREPARED_AHEAD_SUBJECT = /se prepare(?:nt)? (?:la veille|d'avance|a l'avance)/
 // « 15 jours au congélateur » est une durée congélateur, pas réfrigérateur.
 const followedByFreezer = (clause, duration) => /^\s*au congelateur/.test(clause.slice(duration.index + duration.text.length))
 
@@ -274,7 +280,7 @@ export function parseConservation(prose) {
       if (followedByFreezer(clause, duration)) continue
       if (PROCESS_BEFORE.test(before) || PROCESS_AFTER.test(after)) continue
       const subject = clause.slice(0, start).split(':').pop()
-      if (RAW_SUBJECT.test(subject)) continue
+      if (RAW_SUBJECT.test(subject) || PREPARED_AHEAD_SUBJECT.test(subject)) continue
       if (AMBIENT_PLACE.test(after)) continue
       const placeNearby = FRIDGE_PLACE.test(before) || FRIDGE_PLACE.test(after)
       if (!placeNearby && AMBIENT_PLACE.test(clause)) continue

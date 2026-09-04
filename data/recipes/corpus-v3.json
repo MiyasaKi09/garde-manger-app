@@ -150077,7 +150077,7 @@
         "lait"
       ],
       "conservation_profile": {
-        "fridge_hours": 48,
+        "fridge_hours": null,
         "eat_immediately": true,
         "freezable": false,
         "freezer_months": null,
@@ -160703,7 +160703,7 @@
       ],
       "description_courte": "Tourte feuilletée garnie de saumon, de riz, d'épinards et de champignons",
       "conservation_profile": {
-        "fridge_hours": 48,
+        "fridge_hours": 72,
         "eat_immediately": false,
         "freezable": null,
         "freezer_months": null,
