@@ -1,7 +1,7 @@
 {
   "dish": "Wok de tofu aux légumes",
-  "slug": "x-wok",
-  "sources_count": 8,
+  "slug": "wok-de-tofu-aux-legumes",
+  "sources_count": 5,
   "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
   "sources": [
     {
@@ -25,7 +25,7 @@
         "signes": 647,
         "sha256": "13b13bca72912ef0"
       },
-      "sha256_page": "f825240874257bcc"
+      "sha256_page": "3d77aa75c48b4d6c"
     },
     {
       "url": "https://chefsimon.com/gourmets/vico-cuistot/recettes/wok-de-legumes-au-riz-complet-thai-et-au-tofu",
@@ -54,91 +54,7 @@
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "ead51f42b08a5efb"
-    },
-    {
-      "url": "https://www.marmiton.org/recettes/recette_saute-de-tofu-marine-aux-legumes_63587.aspx",
-      "site": "marmiton.org",
-      "nom": "Sauté de tofu mariné aux légumes : la meilleure recette",
-      "portions": "2 personnes",
-      "duree_preparation": "PT15M",
-      "duree_cuisson": "PT10M",
-      "ingredients": [
-        "1 bloc de tofu nature (150 g)",
-        "3 cuillères à soupe de sauce soja",
-        "1 cuillère à café de moutarde",
-        "3 pincées de gingembre en poudre",
-        "poivre",
-        "150 g de riz basmati",
-        "100 g de brocolis (les surgelés font parfaitement l'affaire)",
-        "100 g de haricots plats d'Espagne (idem que pour le brocoli)",
-        "huile",
-        "poivre",
-        "sel",
-        "sauce soja"
-      ],
-      "etapes_empreinte": {
-        "nombre": 12,
-        "signes": 1019,
-        "sha256": "2bc638e98f3d6267"
-      },
-      "sha256_page": "f7101b89fe75b683"
-    },
-    {
-      "url": "https://www.marmiton.org/recettes/recette_legumes-sautes-au-tofu_15314.aspx",
-      "site": "marmiton.org",
-      "nom": "Légumes sautés au tofu : la meilleure recette",
-      "portions": "3 personnes",
-      "duree_preparation": "PT10M",
-      "duree_cuisson": "PT15M",
-      "ingredients": [
-        "1 bloc de tofu nature ou fumé",
-        "2 poivrons rouges",
-        "1 poivron vert",
-        "2 tomates",
-        "1 oignon",
-        "1 poignée de soja",
-        "sauce soja",
-        "huile de sésame",
-        "1 cuillère à soupe de sésame",
-        "coriandre fraîche",
-        "0.5 cuillère à café d'ail en poudre",
-        "0.5 cuillère à café de coriandre en poudre",
-        "0.5 cuillère à café de cumin (graines ou poudre)",
-        "1 cuillère à café de sucre",
-        "piment en poudre ou en sauce"
-      ],
-      "etapes_empreinte": {
-        "nombre": 7,
-        "signes": 771,
-        "sha256": "312f712b614b8b70"
-      },
-      "sha256_page": "36635b62ce6f3e95"
-    },
-    {
-      "url": "https://www.750g.com/saute-de-legumes-au-tofu-r14534.htm",
-      "site": "750g.com",
-      "nom": "Sauté de légumes au tofu",
-      "portions": "4 personnes",
-      "duree_preparation": "PT15M",
-      "duree_cuisson": "PT5M",
-      "ingredients": [
-        "23 cuil à soupe de sauce soja épaisse",
-        "1 poivron rouge ou vert",
-        "23 gousses d'ail",
-        "200 gr de shittake frais",
-        "1cuil à soupe de bouillon de volaille",
-        "2 carottes",
-        "1oignon",
-        "1cuil à soupe d'huile d'olive",
-        "500gr de tofu"
-      ],
-      "etapes_empreinte": {
-        "nombre": 1,
-        "signes": 544,
-        "sha256": "b6723ef987ecd56f"
-      },
-      "sha256_page": "a1822977b398ada5"
+      "sha256_page": "3c3ff8906f31a5b3"
     },
     {
       "url": "https://www.lapetitecuisinedenat.com/2023/04/wok-de-legumes-croquants.html",
@@ -194,7 +110,7 @@
         "signes": 1106,
         "sha256": "5748c8529d066d65"
       },
-      "sha256_page": "88e19dab15ea9760"
+      "sha256_page": "b2012ec50678ec81"
     },
     {
       "url": "https://www.mon-marche.fr/recette/le-wok-de-legumes-et-tofu-au-sesame",
@@ -220,7 +136,7 @@
         "signes": 578,
         "sha256": "bce488e24e705a44"
       },
-      "sha256_page": "b9ad2af4980397c0"
+      "sha256_page": "23861cbd6836c009"
     }
   ]
 }

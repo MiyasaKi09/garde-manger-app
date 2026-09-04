@@ -88,6 +88,59 @@ describe('profils de conservation — les cas que la mesure a nommés', () => {
     expect(recipePlanningProfile(sansProfil).documented).toBe(false)
     expect(batchRejectionReason(sansProfil)).toBe('conservation_non_declaree')
   })
+
+  /**
+   * Relecture adverse : les recettes du corpus dont le profil contredisait sa
+   * propre prose. Chaque ligne cite ce que la prose dit et ce que le profil
+   * doit en retenir ; ce sont des ancres, pas des exemples — si l'une bouge,
+   * c'est qu'une règle de lecture a changé et qu'il faut relire la prose.
+   */
+  const ancres = [
+    // « Ni la sauce ni le poisson ne supportent la congélation » : lu comme
+    // une autorisation, le saumon à l'oseille sortait congelable.
+    ['SRC-055', { freezable: false }],
+    ['SRC-055-D1', { freezable: false }],
+    ['SRC-055-D2', { freezable: false }],
+    // « La poule se conserve 3 jours » perdait contre les 4 jours du bouillon.
+    ['SRC-001', { fridge_hours: 72, freezable: null }],
+    ['SRC-001-D1', { fridge_hours: 72, freezable: null }],
+    // « Une fois les œufs incorporés, consommez dans les 24 heures » perdait
+    // contre les 4 jours de « la fondue de légumes seule ».
+    ['SRC-048-D1', { fridge_hours: 24, freezable: false }],
+    ['SRC-048-D3', { fridge_hours: 24, freezable: false }],
+    // « Congélation possible deux mois AVANT GRATINAGE » : pas le plat servi.
+    ['SRC-031', { freezable: null, freezer_months: null }],
+    ['SRC-031-D4', { freezable: null, freezer_months: null }],
+    // Autorisations qui ne portent que sur un composant.
+    ['FR-012', { freezable: null }], // le bouillon d'oignons, pas la soupe gratinée
+    ['FR-014', { freezable: null }], // la base non crémée, pas le velouté
+    ['REAL-102', { freezable: null }], // la sauce, pas les spaghetti enrobés
+    ['PROT-005', { freezable: null }], // le dal, pas le plat entier
+    ['PROT-008', { freezable: null }], // les haricots, pas le poulet rôti
+    ['SRC-050', { freezable: null }], // saucisses et bouillon séparés, pommes de terre retirées
+    ['SRC-042', { freezable: null }], // « à condition de n'avoir pas mis la crème »
+    ['VAR-006', { freezable: null }], // les garnitures et la pâte crue, pas la pizza
+    ['RAP-048', { fridge_hours: 48, freezable: null }], // sauté 2 jours ; blanchi 6 mois
+    // Plats montés à la minute : ni garde, ni congélation du plat servi.
+    ['RAP-044', { eat_immediately: true, fridge_hours: null, freezable: null }],
+    ['RAP-046', { eat_immediately: true, fridge_hours: null, freezable: null }],
+    ['VAR-009', { eat_immediately: true, fridge_hours: null, freezable: null }],
+    ['RAP-023', { eat_immediately: true, fridge_hours: null }],
+    // Le koulibiac tient 3 jours ; les 2 jours sont ceux de sa mise en place.
+    ['VAR-029', { fridge_hours: 72 }],
+  ]
+  it.each(ancres)('%s : le profil dit ce que sa prose dit', (code, attendu) => {
+    const recette = corpus.recipes.find((candidate) => candidate.code === code)
+    expect(recette, `${code} absente du corpus`).toBeTruthy()
+    expect(recette.conservation_profile).toMatchObject(attendu)
+  })
+
+  it('aucun mois au congélateur sans congélation autorisée', () => {
+    const fautifs = corpus.recipes
+      .filter((recette) => recette.conservation_profile?.freezer_months != null && recette.conservation_profile.freezable !== true)
+      .map((recette) => recette.code)
+    expect(fautifs).toEqual([])
+  })
 })
 
 describe('parseConservation — ce que la prose déclare, et rien de plus', () => {
@@ -163,6 +216,56 @@ describe('parseConservation — ce que la prose déclare, et rien de plus', () =
 
   it('ne devine jamais le service froid', () => {
     expect(lire('Salade à servir froide, 2 jours au réfrigérateur.').serve_cold).toBeNull()
+  })
+
+  // ─── Relecture adverse : les tournures qui prenaient le parseur en défaut ──
+  // Chacune vient d'une prose réelle du corpus, et chacune donnait un profil
+  // qui contredisait cette prose avant correction.
+
+  it('les cas nommés au contrat, en chiffres comme en lettres', () => {
+    expect(lire('Se garde 3 jours ; congélation 3 mois.')).toMatchObject({ fridge_hours: 72, freezable: true, freezer_months: 3 })
+    expect(lire('Trois jours au réfrigérateur. Se congèle trois mois.')).toMatchObject({ fridge_hours: 72, freezable: true, freezer_months: 3 })
+    expect(lire('La sauce supporte mal la congélation.').freezable).toBe(false)
+    expect(lire('Peut se congeler.').freezable).toBe(true)
+    // « congélation » seule, sans autorisation ni refus : une mention.
+    expect(lire('3 jours au réfrigérateur ; congélation.').freezable).toBeNull()
+    expect(lire('Voir la note sur la congélation en fin de fiche.').freezable).toBeNull()
+  })
+
+  it('une autorisation NIÉE n’autorise rien — « ni la sauce ni le poisson ne supportent la congélation »', () => {
+    // SRC-055 et ses deux dérivées : « supportent la congélation » matchait
+    // l'autorisation, le « ne » qui le nie n'était jamais vu, et le saumon à
+    // l'oseille sortait congelable.
+    expect(lire('Ni la sauce ni le poisson ne supportent la congélation : la crème tranche.').freezable).toBe(false)
+    expect(lire('Le plat ne supporte pas la congélation.').freezable).toBe(false)
+    expect(lire('Le plat supporte très bien la congélation.').freezable).toBe(true)
+  })
+
+  it('un verbe de garde vaut un lieu nommé : la garde la plus courte gagne, même sans lieu', () => {
+    // SRC-001 : les 4 jours du bouillon « au froid » l'emportaient sur les
+    // 3 jours de la poule, énoncés sans lieu.
+    expect(lire('Le bouillon se garde 4 jours au froid. La poule se conserve 3 jours immergée dans son bouillon.').fridge_hours).toBe(72)
+    // SRC-048-D1 : les 4 jours de « la fondue de légumes seule » contre les
+    // 24 heures du plat une fois les œufs incorporés.
+    expect(lire('La fondue de légumes seule se garde 4 jours au réfrigérateur à 4 °C. Une fois les œufs incorporés, consommez dans les 24 heures.').fridge_hours).toBe(24)
+    // Une durée nue qui ne dit aucune garde reste écartée quand une garde existe.
+    expect(lire('Se garde 3 jours au réfrigérateur ; les feuilles tombent en une heure.').fridge_hours).toBe(72)
+  })
+
+  it('une forme antérieure à la dernière cuisson n’est pas le plat servi', () => {
+    // SRC-031 : « congélation possible deux mois avant gratinage ».
+    expect(lire('Trois jours au réfrigérateur. Congélation possible deux mois avant gratinage.')).toMatchObject({ fridge_hours: 72, freezable: null, freezer_months: null })
+    expect(lire('Se congèle 2 mois avant cuisson.').freezable).toBeNull()
+  })
+
+  it('une mise en place préparée la veille ne donne pas sa durée au plat', () => {
+    // VAR-029 : « le riz, les œufs durs et les épinards se préparent la veille
+    // et se gardent séparément 2 jours » — le koulibiac, lui, tient 3 jours.
+    expect(lire('Se garde 3 jours au réfrigérateur. Le riz et les œufs durs se préparent la veille et se gardent séparément 2 jours.').fridge_hours).toBe(72)
+    // RAP-023 : l'omelette se mange à la minute, les champignons se préparent
+    // la veille — le plat n'a pas de garde du tout.
+    expect(lire('Se mange à la minute. Les champignons poêlés se préparent la veille et se gardent 2 jours au réfrigérateur.'))
+      .toMatchObject({ eat_immediately: true, fridge_hours: null })
   })
 })
 

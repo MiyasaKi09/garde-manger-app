@@ -7425,7 +7425,7 @@
         "ciqual_name": "Agneau, gigot, cru",
         "category": "viandes",
         "origin": "animal:viande",
-        "origin_source": "ciqual:viandes, œufs, poissons et assimilés / viandes crues / agneau et mouton",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy nutritionnel explicite : gigot d’agneau cru, faute d’entrée hachée dédiée."
@@ -7596,7 +7596,7 @@
         "ciqual_name": "Ail, sauté/poêlé, sans matière grasse",
         "category": "herbes_aromates",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / herbes",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Même concept culinaire que « ail cru entier » : le tranchage ne modifie aucune macro, donc un seul canonique pour les deux (règle de la Bible). Même motif de proxy : 11000 « Ail, cru » est refusé pour lipides en borne supérieure. Les cinq candidats proposés étaient des viandes et pains retenus sur le mot « tranche » (tende de tranche, pain tranché, jambon en tranche, surimi) — aucun n'est de l'ail."
@@ -7710,7 +7710,7 @@
         "ciqual_name": "Carvi, graine",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "L'ajowan (Trachyspermum ammi) est absent de Ciqual 2020 : aucun code ne le désigne. Le carvi est la graine d'ombellifère la plus proche, botaniquement et en composition (334 kcal / 19,8 P / 11,9 G / 14,6 L contre ~350 / 16 / ~25 / ~22 pour l'ajwain de référence). Employé en pincée (1 à 3 g), l'écart est sans portée sur la recette. Les cinq candidats proposés (kiwi, figue de Barbarie, pain suédois, mélanges apéritifs) sortaient tous du registre des épices — retenus sur le seul mot « graines »."
@@ -8100,7 +8100,7 @@
         "ciqual_name": "Fruit cru (aliment moyen)",
         "category": "fruits",
         "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / fruits",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Aucun code d'ananas frais n'est utilisable : 13002 « Ananas, pulpe, cru » a protéines ET lipides en borne supérieure (« < »), 13201 (Victoria) a les lipides en borne supérieure, 13402 (Martinique) n'a ni énergie ni glucides. Tous seraient refusés. 13999 est l'agrégat « fruit cru » de Ciqual, conçu pour ce cas : 59,5 kcal / 0,7 P / 11,6 G / 0,26 L contre 54,4 / ~0,5 / 11,7 / ~0,2 pour l'ananas — moins de 10 % d'écart sur l'énergie et un profil glucidique quasi identique. Ce n'est pas l'ananas, c'est un proxy assumé. Les cinq candidats proposés étaient quatre jus/nectars et du cerfeuil : un jus ne convient pas à une forme employée en grammes de chair."
@@ -8987,7 +8987,7 @@
         "ciqual_name": "Epice (aliment moyen)",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : aucune entrée genièvre dans le classeur (0 occurrence). Le seul candidat proposé, 13126 « Sureau, baie, crue », est un fruit frais sans rapport botanique ni nutritionnel (52,7 kcal, 88 % d'eau) — refusé. 11081 approxime une épice sèche entière (345 kcal, 12,3 g de protéines), profil correct pour des baies séchées ; l'emploi en unités (2 à 5 baies, ~0,1 g pièce, souvent retirées à la fin) rend l'écart résiduel négligeable. Conversion : 1 baie séchée = 0,1 g, valeur déjà annoncée par la note ci-dessus. Baies infusées puis RETIRÉES le plus souvent. Contrôle : 10 u dans la choucroute = 1 g → 3,5 kcal pour tout le plat, l'écart du proxy C reste sans portée."
@@ -9500,7 +9500,7 @@
         "ciqual_name": "Curry, poudre",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé. Le berbéré est un mélange d'épices éthiopien — piment, fenugrec, gingembre, cardamome. Le classeur n'a pas de mélange africain ; sa poudre de curry est le seul mélange d'épices référencé et en partage la structure : épices séchées et broyées, très fibreuses."
@@ -9671,7 +9671,7 @@
         "ciqual_name": "Huile de beurre ou Beurre concentré",
         "category": "matieres_grasses",
         "origin": "animal:lait",
-        "origin_source": "ciqual:matières grasses / beurres",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : le niter kibbeh est un beurre clarifié infusé d'aromates (gingembre, ail, cardamome, fenugrec, korarima) qui sont filtrés en fin de cuisson. Ce qui reste est de la matière grasse butyrique — rien ne le distingue nutritionnellement du beurre clarifié nature, d'où le même canonique en application de la règle « un concept culinaire = un seul ingrédient ». Ce qui est approximé : l'apport des épices infusées, quantitativement nul, et une teneur en eau résiduelle légèrement variable selon la durée de cuisson."
@@ -10868,7 +10868,7 @@
         "ciqual_name": "Boeuf, entrecôte, partie maigre, grillée/poêlée",
         "category": "viandes",
         "origin": "animal:viande",
-        "origin_source": "ciqual:viandes, œufs, poissons et assimilés / viandes cuites / bœuf et veau",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : le bulgogi est du bœuf persillé mariné (soja, sucre, huile de sésame, poire) puis grillé, absent de Ciqual. 6100 restitue l'essentiel — bœuf grillé, 198 kcal / 25,5 P / 10,7 L — mais ne porte pas les sucres de la marinade (bulgogi réel ≈ 4 à 6 g de glucides). Les cinq candidats étaient hors sujet : abats (40053 cœur, 40403 rognon) ou hachés cuits aux glucides manquants."
@@ -11953,7 +11953,7 @@
         "ciqual_name": "Persil, frais",
         "category": "herbes_aromates",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / herbes",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy persil frais pour un bouquet aromatique non consommé intégralement."
@@ -13599,7 +13599,7 @@
         "ciqual_name": "Pois chiche, bouilli/cuit à l'eau",
         "category": "legumineuses",
         "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : le chana masala (curry de pois chiches) n'existe pas comme plat dans Ciqual. Le pois chiche cuit en est le composant largement dominant et son profil (147 kcal / 8,31 P / 17,7 G / 3 L) est représentatif du plat fini (≈ 130–160 kcal). L'unique candidat, 11202 « Sauce indienne type tandoori ou tikka masala », est une sauce accrochée au mot « masala » et ignore les pois chiches. L'état compte : 20516 « Pois chiche, sec » (324,6 kcal) serait plus du double."
@@ -13875,7 +13875,7 @@
         "ciqual_name": "Topinambour, cru",
         "category": "cereales_feculents",
         "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / pommes de terre et autres tubercules",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé. Piège majeur : la châtaigne d'eau (Eleocharis dulcis) n'est PAS une châtaigne — c'est un tubercule aquatique croquant, sans lien avec le Castanea. Les cinq candidats, tous notés 0,94–0,96, sont de vraies châtaignes à 112–335 kcal, soit deux à six fois trop. L'espèce est absente du classeur ; le topinambour cru (60,7 kcal / 1,94 P / 11,5 G / 0,31 L) est le tubercule croquant amylacé dont les macros encadrent le mieux la châtaigne d'eau (crue ≈ 97 kcal et 24 g de glucides, égouttée en conserve ≈ 50 kcal et 12 g — les glucides tombent presque pile). La pousse de bambou appertisée, autre réflexe possible, est trois fois trop pauvre (15,4 kcal)."
@@ -14274,7 +14274,7 @@
         "ciqual_name": "Chou blanc, cru",
         "category": "legumes",
         "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / légumes",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé, en suivant le précédent du kimchi et de la choucroute : chou blanc cru pour un chou blanc lacto-fermenté. La fermentation consomme une partie des sucres ; le classeur n'a aucun légume lacto-fermenté nu."
@@ -14445,7 +14445,7 @@
         "ciqual_name": "Chou chinois ou pak-choi ou pé-tsai, cru",
         "category": "legumes",
         "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / légumes",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé. Le chou chinois cru (13,9 kcal) est gorgé d'eau ; salé et pressé, le produit réel est concentré et pèse davantage au gramme. Le classeur n'a pas d'état salé pour ce légume."
@@ -14901,7 +14901,7 @@
         "ciqual_name": "Chou blanc, cru",
         "category": "legumes",
         "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / légumes",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé sur le chou blanc cru, en suivant le précédent déjà arbitré du kimchi — même légume, même lacto-fermentation, même code. La choucroute est du chou BLANC fermenté : 20116 (36,5 kcal, 4,63 g de glucides) encadre mieux les ~4,3 g réels que 20069 « Chou vert, cru » (1,92 g). 25220 « Choucroute, égouttée, cuite » est écartée : elle porte 6,6 g de graisse de cuisson, absurdes pour un produit cru."
@@ -15588,7 +15588,7 @@
         "ciqual_name": "Epice (aliment moyen)",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé sur l'agrégat « Epice (aliment moyen) », que l'ANSES publie précisément pour un mélange absent du classeur — et que le corpus emploie déjà pour le ras el-hanout, mélange propriétaire posant exactement le même problème. 11056 « Quatre épices » est écarté : c'est un mélange nommé, un concept canonique réel et distinct, et l'y ranger créerait une fausse identité entre deux mélanges différents. Emploi de l'ordre du gramme."
@@ -15817,7 +15817,7 @@
         "ciqual_name": "Herbes aromatiques fraîches (aliment moyen)",
         "category": "herbes_aromates",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / herbes",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : aucune entrée citronnelle (Cymbopogon) dans Ciqual 2020 (0 résultat sur citronnelle/lemon/verveine). On approxime la tige aromatique fraîche par la moyenne des herbes fraîches (49,4 kcal ; 3,58 g prot). La citronnelle réelle est plus fibreuse et environ deux fois plus énergétique (~99 kcal), mais elle est employée en quelques grammes, souvent écrasée puis retirée. Les candidats proposés (Noix fraîche 370 kcal, Menthe, Coriandre) ne tenaient qu'au mot « fraîche »."
@@ -17095,7 +17095,7 @@
         "ciqual_name": "Crème de lait ou spécialité à base de crème légère, teneur en matière grasse inconnue (aliment moyen)",
         "category": "produits_laitiers",
         "origin": "animal:lait",
-        "origin_source": "ciqual:produits laitiers et assimilés / crèmes et spécialités à base de crème",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : la crema mexicana (crème de lait légèrement acidulée, fluide, ~25-30 % MG) n'existe pas dans Ciqual. On retient la crème de lait à teneur en MG inconnue (269 kcal, 26 g lip), qui couvre la fourchette réelle, plutôt qu'une crème fraîche 30 % épaisse (19410) qui fixerait à tort la texture et la teneur. Les cinq candidats (crème de marrons, crème pâtissière, crème de cassis…) ne partageaient que le mot « crème »."
@@ -20942,7 +20942,7 @@
         "ciqual_name": "Fenugrec, graine",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé, et le piège est dans la partie de la plante. Le kasuri methi est la FEUILLE de fenugrec séchée ; 11077 est la GRAINE (350 kcal, 27,1 g de protéines, 6,41 g de lipides). La feuille séchée est nettement moins grasse et moins protéinée. Le classeur n'a que la graine, et l'emploi est de l'ordre du gramme, écrasé entre les paumes en fin de cuisson."
@@ -21162,7 +21162,7 @@
         "ciqual_name": "Laurier, feuille",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : aucune entrée combava / kaffir / makrut dans le Ciqual 2020 (vérifié). Les candidats proposés étaient du thé, un mille-feuille, de la feuille de brick et des dolmas — sans rapport. Le laurier est la seule feuille aromatique du classeur, employée exactement de la même façon (1 à 3 feuilles entières, infusées puis retirées) ; à ces quantités l'apport est nul quel que soit le code. Macros complètes (353 kcal, P 7,61 / G 48,6 / L 8,36). Conversion : 0,2 g par feuille, masse de feuille SÉCHÉE — la référence 11053 est un laurier déshydraté (353 kcal), il fallait donc l'équivalent sec et non les ~0,4 g de la feuille fraîche, sans quoi l'eau serait comptée deux fois. Même valeur que « feuille de laurier séchée » au registre. Les feuilles sont infusées puis RETIRÉES : l'apport réel est nul. Contrôle : 10 u dans le tom yum = 2 g → 7 kcal."
@@ -21219,7 +21219,7 @@
         "ciqual_name": "Thym, frais",
         "category": "herbes_aromates",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / herbes",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : la feuille de kaloupilé (Murraya koenigii) n'existe pas dans Ciqual 2020. On approxime une feuille aromatique fraîche, coriace et dense, par une autre — le thym frais (107 kcal, 5,56 g de protéines, 1,68 g de lipides) est le profil le plus proche des données publiées pour la feuille de curry fraîche. 11005 « Curry, poudre » est un mélange d'épices sans rapport botanique, et 11053 « Laurier, feuille » est un déshydraté (353 kcal) : mauvais état. Impact réel négligeable, la forme est comptée en unités et quelques feuilles pèsent moins d'un gramme. Conversion : 1 feuille (foliole) fraîche = 0,2 g — masse fraîche, cohérente avec la référence thym FRAIS. Contrôle : 15 u dans le sambar = 3 g → 3,2 kcal ; le proxy C reste sans portée à cette échelle."
@@ -22118,7 +22118,7 @@
         "ciqual_name": "Boeuf, plat de côtes, cru",
         "category": "viandes",
         "origin": "animal:viande",
-        "origin_source": "ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé. Le classeur n'a pas le flanchet. 6122 « Boeuf, plat de côtes, cru » vient de la même région de la carcasse — le ventre — et partage son gras persillé et son usage en cuisson longue : 287 kcal, 18,4 g de protéines, 23,7 g de lipides. Le flanchet réel est un peu plus maigre."
@@ -22749,7 +22749,7 @@
         "ciqual_name": "Fromage type feta, au lait de vache",
         "category": "produits_laitiers",
         "origin": "animal:lait",
-        "origin_source": "ciqual:produits laitiers et assimilés / fromages et assimilés",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : aucun queso fresco/cotija au classeur. Ce qui est approximé : un fromage de vache frais, salé, non affiné, qui s'émiette (~285 kcal, 18 g de protéines, 21 g de lipides) ; 12060 (271 kcal, 16,4 g de protéines, 21,7 g de lipides) en est l'analogue le plus proche — fromage de vache frais en saumure, même texture friable. Les candidats proposés sont tous faux : 19689 est un cheesecake, 19864 un tzatziki, et les petits-suisses (19661-19664, 57 à 93 kcal, 0 à 4 % MG) sont des fromages frais lactés sucrés ou maigres, cinq fois moins gras qu'un queso fresco."
@@ -23064,7 +23064,7 @@
         "ciqual_name": "Gingembre, racine crue",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : pas de galanga au classeur. Ce qui est approximé : un rhizome aromatique frais de la même famille (Zingiberaceae), râpé ou tranché en petites quantités — 32,9 kcal, 1,1 g de protéines, 3,4 g de glucides, profil de rhizome frais à ~80 % d'eau. Le galanga n'est pas du gingembre (goût pin/agrume, chair plus fibreuse) mais aucune entrée plus proche n'existe. Les cinq candidats proposés (jus de mangue, jus de grenade, cerfeuil, persil, basilic) n'ont été appariés que sur le mot « frais » — tous refusés."
@@ -23169,7 +23169,7 @@
         "ciqual_name": "Curry, poudre",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy curry en poudre ; composition exacte requise pour publication globale."
@@ -23274,7 +23274,7 @@
         "ciqual_name": "Gnocchi à la semoule, cru",
         "category": "cereales_feculents",
         "origin": "vegetal",
-        "origin_source": "ciqual:produits céréaliers / pâtes, riz et céréales",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Aucun tteok ni riz gluant dans Ciqual. Piège écarté : 39232 « Gâteau de riz, appertisé » est un riz au lait (groupe produits laitiers), pas un tteok. Le tteok est une pâte de riz étuvée puis compactée, ~45% d'eau, soit ~230 kcal/100 g, 52 g de glucides, 4 g de protéines (contrôle par matière sèche : riz cru 350 kcal à 12% d'eau → 350 x 0.55/0.88 = 219 kcal). Le riz blanc cuit 9104 (144 kcal, 68% d'eau) sous-estimerait l'énergie de 38%, le riz cru 9100 (350) la surestimerait de 50%. Le gnocchi cru à la semoule est le boulet d'amidon dense à bouillir le plus proche : 200 kcal (-13%), lipides et densité comparables ; protéines surestimées (6,2 vs 4,1). Proxy assumé, macros complètes."
@@ -23883,7 +23883,7 @@
         "ciqual_name": "Poivre de Cayenne ou piment de Cayenne",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé. Le gochugaru est un piment coréen séché et broyé, nettement moins fort que le cayenne mais de composition voisine : un fruit de Capsicum séché est fait de fibres, de sucres et d'un peu d'huile de graines. Le classeur n'a que le cayenne pour cette famille."
@@ -24045,7 +24045,7 @@
         "ciqual_name": "Epice (aliment moyen)",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé. 11057 « Vanille, gousse » est bien la référence d'identité, mais l'ANSES y déclare énergie, protéines, glucides, lipides et fibres « not_available » — seuls les micronutriments sont mesurés. Aucune fermeture d'Atwater n'est possible sans une seule valeur d'ancrage, et USDA SR Legacy ne contient aucune gousse de vanille (uniquement 173471 « Vanilla extract », un liquide alcoolisé à 288 kcal, et des produits vanillés). On retient donc 11081 « Epice (aliment moyen) », l'agrégat que l'ANSES publie pour le sous-groupe « épices » auquel 11057 appartient précisément. Réserve d'usage : la gousse est fendue, grattée, infusée puis retirée, et elle est comptée en unités — deux gousses pèsent environ 6 g, soit une vingtaine de kilocalories réparties sur toute la préparation, dont l'essentiel n'est jamais avalé."
@@ -24150,7 +24150,7 @@
         "ciqual_name": "Lin, graine",
         "category": "legumineuses",
         "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : Ciqual 2020 ne contient aucune graine de moutarde (seulement 11013 « Moutarde » et 11021 « Moutarde à l'ancienne », condiments humides à 152 et 142 kcal, ~68 % d'eau — facteur 3 sur une graine sèche, erreur d'état rédhibitoire). Le lin, petite graine oléagineuse (436,6 kcal ; 23,9 g prot ; 36,6 g lip), approxime de près la graine de moutarde réelle (~500 kcal ; 26 g prot ; 36 g lip) : les lipides coïncident, l'énergie est sous-estimée d'environ 14 %."
@@ -24589,7 +24589,7 @@
         "ciqual_name": "Haricot rouge, sec",
         "category": "legumineuses",
         "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : ni cornille, ni niébé, ni dolique au classeur (0 occurrence). Ce qui est approximé : une légumineuse sèche à réhydrater, ~23 g de protéines et ~46 g de glucides pour 100 g de graine sèche. 20525 (283,9 kcal, 22,5 g de protéines) colle mieux que 20501 « Haricot blanc, sec » proposé en candidat (268 kcal, 19,1 g de protéines), en retrait de 19 % sur les protéines. L'état sec est respecté : les autres candidats (haricot vert, beurre, plat, de Lima, tous « crus ») sont des gousses fraîches à ~26-31 kcal, soit dix fois moins — contresens majeur si retenus."
@@ -24817,7 +24817,7 @@
         "ciqual_name": "Haricot vert, cru",
         "category": "legumes",
         "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / légumes",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Le haricot kilomètre (Vigna unguiculata sesquipedalis) est une espèce distincte du haricot vert (Phaseolus vulgaris), pas une simple variété : à gousse comestible également, mais plus dense (~1,5x l'énergie d'après le rapport USDA yardlong 47 kcal / snap bean 31 kcal, soit ~39 kcal rapporté à l'échelle Ciqual contre 25,9 ici). Aucune entrée Ciqual pour cette espèce. Retenu comme proxy de catégorie « gousse verte crue » ; l'énergie est sous-estimée d'environ un tiers. Macros complètes."
@@ -25973,7 +25973,7 @@
         "ciqual_name": "Huile de colza",
         "category": "matieres_grasses",
         "origin": "vegetal",
-        "origin_source": "ciqual:matières grasses / huiles et graisses végétales",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Aucune huile de moutarde dans Ciqual. Le colza (Brassica napus) est la brassicacée la plus proche de la moutarde (Brassica juncea) : même famille botanique, même profil riche en AG monoinsaturés. Nutritionnellement l'écart est nul de toute façon (900 kcal, 100 g de lipides, comme toute huile). Non mappé sur 17001 « Huile végétale (aliment moyen) », déjà attribué au lot précédent à huile végétale / huile de friture / huile végétale raffinée : y verser une huile nommée distincte fusionnerait deux concepts. Unité ml respectée (liquide). Macros complètes vérifiées au classeur (P=0, G=0), le CSV les affiche à tort comme vides."
@@ -26202,7 +26202,7 @@
         "ciqual_name": "Huile végétale (aliment moyen)",
         "category": "matieres_grasses",
         "origin": "vegetal",
-        "origin_source": "ciqual:matières grasses / huiles et graisses végétales",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : pas d'huile pimentée au classeur. Ce qui est approximé : une huile de base infusée au piment, composée à plus de 95 % de corps gras — 900 kcal, 99,9 g de lipides ; le piment et les aromates n'apportent rien de mesurable à cette échelle. J'ai retenu l'entrée générique plutôt qu'une huile nommée (lin, son de riz, amande, avocat, germe de blé — tous candidats à 900 kcal, tous nutritionnellement interchangeables) pour ne pas affirmer une identité botanique fausse : le choix entre huiles n'a aucune conséquence sur les macros."
@@ -27480,8 +27480,8 @@
         "ciqual_alim_code": "20116",
         "ciqual_name": "Chou blanc, cru",
         "category": "legumes",
-        "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / légumes",
+        "origin": "inconnu",
+        "origin_source": null,
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Même arbitrage que le kimchi déjà en base et que la choucroute : chou blanc cru. Le kimchi mûr est plus acide et un peu moins sucré que le jeune, écart sans expression sur les quatre grandeurs calculées."
@@ -28301,7 +28301,7 @@
         "ciqual_name": "Haricot mungo, sec",
         "category": "legumineuses",
         "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "L'urad dal (Vigna mungo, black gram décortiqué donc blanc) n'est pas une lentille (Lens culinaris) malgré son nom commercial. Le haricot mungo (Vigna radiata) est du même genre Vigna, c'est le parent le plus proche du classeur, à l'état sec conforme : 301,2 kcal / 24,5 P contre ~341 kcal / 25 P pour l'urad. Préféré à 20504 « Lentille, sèche » qui est botaniquement plus éloigné et qui sera selon toute vraisemblance le canonique de la lentille proprement dite — l'y verser fusionnerait deux concepts distincts. Décorticage non reflété (fibres un peu surestimées). Macros complètes."
@@ -28358,7 +28358,7 @@
         "ciqual_name": "Lentille, sèche",
         "category": "legumineuses",
         "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé. L'urad (Vigna mungo) n'est pas une lentille (Lens culinaris) mais un haricot ; le classeur ne le référence pas. La lentille sèche générique (316,1 kcal, 25,4 g de protéines, 50,6 g de glucides) encadre bien l'urad réel (environ 341 kcal et 25 g de protéines), même usage et même état sec."
@@ -32789,7 +32789,7 @@
         "ciqual_name": "Boeuf, braisé",
         "category": "viandes",
         "origin": "animal:viande",
-        "origin_source": "ciqual:viandes, œufs, poissons et assimilés / viandes cuites / bœuf et veau",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy viande bovine braisée ; moelle dédiée absente de Ciqual."
@@ -36092,7 +36092,7 @@
         "ciqual_name": "Paprika",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé, code absent des candidats. L'ancho est un piment doux séché : 20151 « Piment, cru » (41,2 kcal) est le frais et sous-estimerait d'un facteur 7 une forme pesée en grammes secs. Le Ciqual n'a que deux piments séchés : le paprika (piment rouge doux séché, 319 kcal, P 14,1 / G 19,1 / L 12,9) et le Cayenne (376 kcal, fort). L'ancho réel tourne autour de 280-300 kcal : le paprika est le plus juste, et c'est aussi le même registre de piquant. Macros complètes."
@@ -36483,7 +36483,7 @@
         "ciqual_name": "Poivre de Cayenne ou piment de Cayenne",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : le piment du Cachemire est un cultivar distinct, plus doux et surtout colorant, absent de Ciqual 2020 qui ne contient que deux entrées de piment (20151 cru et 11088). On approxime donc un piment rouge séché moulu par un autre piment rouge séché moulu — l'état (séché, moulu) et le profil macro sont représentatifs. 20151 « Piment, cru » (41 kcal) était exclu : mauvais état. 11049 « Paprika » est déjà porté par un autre concept de ce lot."
@@ -36654,7 +36654,7 @@
         "ciqual_name": "Paprika",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé, même raisonnement que l'ancho : piment doux à moyennement doux, séché, réhydraté pour les sauces. Le Ciqual n'offre aucune granularité variétale sur les piments séchés ; le paprika (piment rouge doux séché, 319 kcal) est l'état correct et le bon niveau de piquant, contre 41,2 kcal pour le piment cru et 376 kcal pour le Cayenne."
@@ -37026,7 +37026,7 @@
         "ciqual_name": "Paprika",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "PROXY ASSUMÉ. Le pasilla séché est absent de Ciqual 2020 ; aucun piment séché entier n'y figure. 20151 « Piment, cru » (41,2 kcal) est un piment FRAIS et serait faux d'un facteur 8 sur un produit séché. Paprika est un piment doux séché et moulu : 319 kcal / 14,1 P / 19,1 G / 12,9 L, très proche des valeurs de référence du pasilla séché (~345 kcal / 12,4 P / 15,9 L), et son piquant faible correspond à celui du pasilla. J'écarte volontairement 11088 (Cayenne), déjà retenu pour le concept distinct « piment de Cayenne » : deux concepts distincts ne doivent pas partager un code. Macros complètes."
@@ -38495,7 +38495,7 @@
         "ciqual_name": "Epice (aliment moyen)",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : le poivre du Sichuan (baie de Zanthoxylum) n'est pas un poivre et n'a aucune entrée Ciqual. On retient l'épice moyenne (345 kcal ; 12,4 g prot ; 10,4 g lip ; 25,9 g fibres), dont le profil est celui d'une épice sèche et qui reste neutre, plutôt que 11015 « Poivre noir, poudre » (330 kcal) qui appartient déjà à un autre concept culinaire du corpus. Usage en fractions de gramme : l'écart résiduel est négligeable."
@@ -40277,7 +40277,7 @@
         "ciqual_name": "Poivre de Cayenne ou piment de Cayenne",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé, même raisonnement que le gochugaru : flocons de piment d'Alep, séchés et huilés, sur la seule entrée de piment séché du classeur."
@@ -40724,7 +40724,7 @@
         "ciqual_name": "Curry, poudre",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy curry en poudre ; assemblage aromatique à sourcer séparément."
@@ -42565,7 +42565,7 @@
         "ciqual_name": "Tomate, pulpe, appertisée",
         "category": "legumes",
         "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / légumes",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé. Le classeur n'a ni salsa ni sauce tomate mexicaine ; ses sauces tomate sont toutes cuisinées (aux oignons, à la viande, aux olives) et portent l'huile de leur préparation. La pulpe de tomate appertisée est la base de la salsa roja sans l'assaisonnement : elle en donne le socle, pas le piment ni la coriandre. Ses lipides ne sont pas mesurés et la fermeture d'Atwater les clôt."
@@ -42736,7 +42736,7 @@
         "ciqual_name": "Curry, poudre",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé, même raisonnement que le berbéré : mélange d'épices sud-indien sur la seule poudre d'épices composée du classeur."
@@ -43678,7 +43678,7 @@
         "ciqual_name": "Saucisse sèche",
         "category": "produits_transformes",
         "origin": "animal:viande",
-        "origin_source": "ciqual:viandes, œufs, poissons et assimilés / charcuteries et assimilés / saucisson secs",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "PROXY ASSUMÉ. Le lap cheong (saucisse de porc chinoise séchée, sucrée au sucre et au vin de riz) n'existe pas dans Ciqual : ce n'est pas le même aliment qu'une saucisse sèche française, sa recette comporte du sucre. Mais c'est bien une saucisse de porc crue-séchée non cuite, et les macros de 30309 (451 kcal / 27,3 P / 1,7 G / 37,1 L) encadrent correctement les valeurs de référence du lap cheong (~500 kcal, ~20 P, ~40 L) ; seuls les glucides sont sous-estimés de quelques grammes. Écartées : les saucisses fraîches à cuire (Morteau, Montbéliard, Francfort, foie), qui sont beaucoup plus humides."
@@ -44337,7 +44337,7 @@
         "ciqual_name": "Champignon, tout type, cru",
         "category": "legumes",
         "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / légumes",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé : Ciqual 2020 ne propose le shiitaké qu'en cuit (20212, 60,9 kcal) et en séché (20211, 316 kcal, 9,5 % d'eau) — jamais cru. La forme étant pesée fraîche, l'état prime : on prend le champignon cru tout type (21,7 kcal ; 92,6 % d'eau). Le shiitaké cru réel tourne autour de 34 kcal, donc sous-estimation d'environ un tiers, contre une surestimation de 80 % si l'on avait retenu la version cuite. Aucun des cinq candidats (jus de mangue, jus de grenade, cerfeuil, persil, basilic) n'était un champignon."
@@ -44985,7 +44985,7 @@
         "ciqual_name": "Epice (aliment moyen)",
         "category": "epices",
         "origin": "vegetal",
-        "origin_source": "ciqual:aides culinaires et ingrédients divers / épices",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "PROXY ASSUMÉ. Le sumac est totalement absent de Ciqual 2020 (recherche exhaustive sur le classeur : zéro occurrence). L'unique candidat proposé, 18003 « Café, moulu », est un piège textuel sur le seul mot « moulu ». 11081 « Epice (aliment moyen) » est l'entrée de repli conçue pour ce cas : 345 kcal / 12,3 P / 37,7 G / 10,4 L, très proche des valeurs de référence du sumac moulu (~340 kcal, ~15 L), macros complètes. Le sumac s'emploie de toute façon à la cuillère à café, l'erreur résiduelle est de quelques kcal par recette."
@@ -46417,7 +46417,7 @@
         "ciqual_name": "Tomate verte, crue",
         "category": "legumes",
         "origin": "vegetal",
-        "origin_source": "ciqual:fruits, légumes, légumineuses et oléagineux / légumes",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "PROXY ASSUMÉ. Le tomatillo (Physalis philadelphica) est absent de Ciqual ; ce n'est pas botaniquement une tomate. Code ABSENT des cinq candidats, qui étaient tous des pièges « frais » (jus de mangue, jus de grenade, cerfeuil, persil, basilic). 20119 « Tomate verte, crue » (22,6 kcal / 1,2 P / 4,0 G / 0,2 L) encadre correctement les valeurs de référence du tomatillo (~32 kcal / 1,0 P / 5,8 G / 1,0 L) : même usage culinaire (fruit vert acide cuit en sauce), même ordre de grandeur, macros complètes."
@@ -46474,7 +46474,7 @@
         "ciqual_name": "Fromage à pâte molle et croûte lavée (aliment moyen)",
         "category": "produits_laitiers",
         "origin": "animal:lait",
-        "origin_source": "ciqual:produits laitiers et assimilés / fromages et assimilés",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé. La tome fraîche est un caillé pressé jeune, non salé et non affiné, destiné à l'aligot — l'agrégat des pâtes molles à croûte lavée est affiné et salé. Environ 290 kcal, 23 g de protéines et 22 g de lipides pour la tome réelle, contre 322/20,2/26,5 : l'ordre de grandeur tient à 10 % près, la nature du produit non."
@@ -48738,7 +48738,7 @@
         "ciqual_name": "Fromage blanc nature, 3% MG environ",
         "category": "produits_laitiers",
         "origin": "animal:lait",
-        "origin_source": "ciqual:produits laitiers et assimilés / produits laitiers frais et assimilés",
+        "origin_source": "arbitrage:lot21",
         "nutrition_complete": true,
         "confidence": "C",
         "note": "Proxy assumé, et le choix mérite d'être expliqué. 19550 « Yaourt à la grecque, au lait de brebis » porte le mot mais pas le produit : c'est un yaourt de brebis non égoutté, à 3,76 g de protéines. Le yaourt grec du commerce est un yaourt de vache ÉGOUTTÉ, autour de 9 g de protéines — l'égouttage est ce qui le définit. Le fromage blanc à 3 % (77,5 kcal, 7,86 g de protéines, 3,26 g de lipides) est le produit égoutté le plus proche du classeur. Réserve : un peu moins gras et un peu moins protéiné que le yaourt grec entier."

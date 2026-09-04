@@ -104,16 +104,29 @@ if (existsSync(ORIGINS_PATH)) {
 /**
  * Origine d'une forme retenue, dans l'ordre du contrat et rien d'autre :
  *   a. une décision d'arbitrage explicite ;
- *   b. sinon la case Ciqual de la fiche retenue, si elle est sans ambiguïté ;
+ *   b. sinon la case Ciqual de la fiche retenue, MAIS seulement quand cette
+ *      fiche est celle de la forme elle-même ;
  *   c. sinon 'inconnu' — jamais une regex sur le nom.
- * La fiche lue en (b) est celle que la nutrition emploie (`retenu`) : quand le
- * mapping est un proxy, c'est l'animal du proxy qui parle, et c'est voulu — un
- * proxy d'une autre origine que la forme est une erreur de mapping à corriger
- * par (a), pas à masquer ici.
+ *
+ * POURQUOI (b) SE TAIT DEVANT UN PROXY ASSUMÉ. Un mapping de confiance C ou D
+ * dit exactement ceci : « le classeur n'a pas cet aliment, voici celui dont
+ * j'emprunte les CALORIES ». Il ne dit rien de ce que l'aliment EST. Lire la
+ * case Ciqual du proxy revenait à faire déclarer l'origine d'un aliment par un
+ * autre : « Kimchi de chou fermenté mûr » est adossé à « Chou blanc, cru » et
+ * ressortait « végétal » sur la foi d'un chou, alors que le kimchi coréen est
+ * ordinairement monté au jeotgal (crevette ou anchois salés) et que rien, ni
+ * le nom de la forme ni la fiche, ne dit si celui-ci l'est. La provenance
+ * publiée (`ciqual:… / légumes`) avait alors la même tête qu'une origine vraie
+ * et le relecteur suivant ne pouvait plus les distinguer.
+ * Les cinquante autres proxys du catalogue disaient juste — on les a relus un
+ * par un — mais ils le disaient par chance : ils sont désormais DÉCLARÉS dans
+ * le lot21, ce qui coûte une ligne et se relit. Un proxy que personne n'a
+ * arbitré reste 'inconnu' : ni carné ni végétarien, visible au rapport.
  */
-function resolveOrigin(normalized, retenu) {
+function resolveOrigin(normalized, retenu, confiance) {
   const declared = originDecisions.get(normalized)
   if (declared) return { origin: declared, origin_source: 'arbitrage:lot21' }
+  if (confiance === 'C' || confiance === 'D') return { origin: 'inconnu', origin_source: null }
   const fromCiqual = retenu?.grp_nom !== undefined ? resolveOriginFromCiqual(retenu) : null
   if (fromCiqual) return { origin: fromCiqual.origin, origin_source: fromCiqual.source }
   return { origin: 'inconnu', origin_source: null }
@@ -381,7 +394,11 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
     ? { ...selected, nutrition: { ...selected.nutrition, [derive.champ]: derive.valeur } }
     : selected
   const selectionMode = explicit ? 'curated' : exact ? 'exact_label' : 'review_required'
-  const origine = retenu ? resolveOrigin(normalized, retenu) : null
+  // La confiance déclarée par le mapping, lue AVANT l'origine : c'est elle qui
+  // dit si la fiche retenue est celle de la forme (A/B) ou un proxy assumé
+  // (C/D), et donc si la case Ciqual a le droit de parler pour elle.
+  const confiance = explicit?.confidence || 'B'
+  const origine = retenu ? resolveOrigin(normalized, retenu, confiance) : null
   results.push({
     form: usage.name,
     normalized,
@@ -397,7 +414,7 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
       nutrition_complete: ['energy_kcal', 'protein_g', 'carbohydrate_g', 'fat_g']
         .every((key) => Number.isFinite(retenu.nutrition?.[key])),
       ...(derive ? { derived_field: derive.champ } : {}),
-      confidence: explicit?.confidence || 'B',
+      confidence: confiance,
       note: explicit?.note || null,
     } : null,
     suggestions: ranked.map(({ record, score }) => ({
@@ -418,7 +435,7 @@ for (const [normalized, usage] of [...usedBy].sort((a, b) => a[1].name.localeCom
       // quel — le planificateur le lit comme « non végétarien, à trancher ».
       origin: origine.origin,
       origin_source: origine.origin_source,
-      confidence: explicit?.confidence || 'B',
+      confidence: confiance,
       source: explicit?.nutrition_override
         ? 'myko_curated_override'
         : champsCombles.length ? 'ciqual_2020+usda_fdc'

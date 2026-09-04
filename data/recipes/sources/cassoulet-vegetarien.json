@@ -1,7 +1,7 @@
 {
   "dish": "Cassoulet végétarien",
-  "slug": "x-cassoulet",
-  "sources_count": 4,
+  "slug": "cassoulet-vegetarien",
+  "sources_count": 6,
   "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
   "sources": [
     {
@@ -31,7 +31,7 @@
         "signes": 660,
         "sha256": "14e870b539176b49"
       },
-      "sha256_page": "8a60cd553e39a28b"
+      "sha256_page": "4d9b794c43ec4548"
     },
     {
       "url": "https://lacuisinedemamere.fr/recette-cassoulet-vegetarien-aux-legumes-varies/",
@@ -70,7 +70,70 @@
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "a6e6bc55b3364c77"
+      "sha256_page": "85a465956261d0c4"
+    },
+    {
+      "url": "https://ffcuisine.fr/recettes/cassoulet-vegetarien-recette-facile-et-savoureuse/",
+      "site": "ffcuisine.fr",
+      "nom": "Cassoulet végétarien : recette facile et savoureuse",
+      "portions": 4,
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT90M",
+      "ingredients": [
+        "300 grammes haricots blancs secs",
+        "2  carottes",
+        "1  oignons",
+        "2  gousse d'ail",
+        "400 grammes tomates concassées",
+        "1  bouquet garni",
+        "4  saucisses végétales",
+        "50 grammes chapelure de pain",
+        "huile d'olive",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1184,
+        "sha256": "7a1b39826a3d2531"
+      },
+      "sha256_page": "7c8dbfbb28bc22c7"
+    },
+    {
+      "url": "https://cuisinez.telequebec.tv/recettes/6619/cassoulet-vegetalien",
+      "site": "cuisinez.telequebec.tv",
+      "nom": "Cassoulet végétalien",
+      "portions": "4",
+      "duree_preparation": "PT14M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "4 saucisses végétaliennes",
+        "45 ml (3 c. à soupe) d'huile d'olive",
+        "2 carottes pelées et coupées en dés",
+        "1 oignon pelé et coupé en dés",
+        "6 gousses ail hachées",
+        "1 branche céleri coupé en dés",
+        "30 ml (2 c. à soupe) de pâte de tomate",
+        "30 ml (2 c. à soupe) de pâte de tomate",
+        "15 ml (1 c. à soupe) de farine",
+        "75 ml (1/3 tasse) de vin blanc sec (facultatif)",
+        "750 ml (3 tasses) de bouillon de champignons du commerce",
+        "1 boîte de 540 ml haricots blancs navy rincés",
+        "1 boîte de 540 ml gros haricots de lima rincés",
+        "6 branches thym",
+        "1 feuille laurier",
+        "2,5 ml (1/2 c. à thé) de sarriette séchée",
+        "15 ml (1 c. à soupe) de sauce soya",
+        "30 ml (2 c. à soupe) de moutarde de Dijon",
+        "1 petit bloc de tofu fumé coupé en gros dés",
+        "250 ml (1 tasse) de chapelure panko",
+        "30 ml (2 c. à soupe) d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 896,
+        "sha256": "6894b5ef22eda6ad"
+      },
+      "sha256_page": "8d51c90a81ba4652"
     },
     {
       "url": "https://vegan-pratique.fr/recettes/cassoulet-vegetal/",
@@ -125,7 +188,7 @@
         "signes": 652,
         "sha256": "28ec82241a26a961"
       },
-      "sha256_page": "e69b89388ecf406d"
+      "sha256_page": "92404348d4d6149f"
     }
   ]
 }

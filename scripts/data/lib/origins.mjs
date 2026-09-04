@@ -7,7 +7,10 @@
  *      (data/foods/arbitrations/lot21-origine-des-formes.json) ;
  *   b. sinon le groupe / sous-groupe / sous-sous-groupe Ciqual de la fiche,
  *      MAIS SEULEMENT quand cette case est sans ambiguïté — c'est la table
- *      ci-dessous ;
+ *      ci-dessous — ET quand la fiche est celle de la forme elle-même : le
+ *      build ne nous appelle pas pour un mapping de confiance C ou D, qui
+ *      déclare un PROXY d'énergie et non l'identité de l'aliment (voir
+ *      resolveOrigin dans build-recipe-food-corpus.mjs) ;
  *   c. sinon 'inconnu'. JAMAIS une regex sur le nom pour deviner.
  *
  * Le vocabulaire des valeurs vit dans lib/domain/foods/origins.js (le code

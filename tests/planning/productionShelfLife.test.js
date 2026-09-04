@@ -83,11 +83,16 @@ describe('productions planifiées — la fenêtre est la durée DÉCLARÉE', () 
 describe('productionShelfLifeDays — déclaré, ou rien', () => {
   const base = { code: 'X', conservationProfile: { fridgeHours: 72, eatImmediately: false, freezable: null, freezerMonths: null, serveCold: null } }
 
-  it('lit shelfLifeDays déclaré, sinon les heures du profil (plancher un jour, arrondi vers le bas)', () => {
+  it('lit shelfLifeDays déclaré, sinon les heures du profil, arrondies vers le bas', () => {
     expect(productionShelfLifeDays({ ...base, shelfLifeDays: 5 })).toBe(5)
     expect(productionShelfLifeDays(base)).toBe(3)
     expect(productionShelfLifeDays({ ...base, conservationProfile: { ...base.conservationProfile, fridgeHours: 36 } })).toBe(1)
-    expect(productionShelfLifeDays({ ...base, conservationProfile: { ...base.conservationProfile, fridgeHours: 12 } })).toBe(1)
+    expect(productionShelfLifeDays({ ...base, conservationProfile: { ...base.conservationProfile, fridgeHours: 24 } })).toBe(1)
+    // Moins d'un jour ne s'arrondit PAS à un jour : les quatre heures d'une
+    // salade grecque ne deviennent pas une journée parce que le planificateur
+    // compte en jours. Sous 24 heures, pas de fenêtre du tout.
+    expect(productionShelfLifeDays({ ...base, conservationProfile: { ...base.conservationProfile, fridgeHours: 12 } })).toBeNull()
+    expect(productionShelfLifeDays({ ...base, conservationProfile: { ...base.conservationProfile, fridgeHours: 4 } })).toBeNull()
     expect(refrigeratorShelfLifeDays(base)).toBe(3)
   })
 

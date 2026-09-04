@@ -1,7 +1,7 @@
 {
   "dish": "Vegetarisch stoofvlees",
-  "slug": "z-stoofvlees",
-  "sources_count": 3,
+  "slug": "carbonade-vegetarienne-stoofvlees",
+  "sources_count": 4,
   "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
   "sources": [
     {
@@ -35,7 +35,7 @@
         "signes": 434,
         "sha256": "d02d571cbe4a171c"
       },
-      "sha256_page": "55e3126b7f8840a1"
+      "sha256_page": "0af7086bb2c2f904"
     },
     {
       "url": "https://dagelijksekost.vrt.be/recipes/COhVyYOzpUGC0QcMgpjG",
@@ -71,7 +71,7 @@
         "signes": 226,
         "sha256": "45d5a080638b6c4f"
       },
-      "sha256_page": "d4b8652a96315215"
+      "sha256_page": "180068571129ac4f"
     },
     {
       "url": "https://duurzamekeuzes.com/recept-vegetarisch-stoofvlees-van-seitan/",
@@ -103,6 +103,32 @@
         "sha256": "567ff0246fd7934f"
       },
       "sha256_page": "61dd21a47bbf6541"
+    },
+    {
+      "url": "https://cookpad.com/fr/recettes/17201441",
+      "site": "cookpad.com",
+      "nom": "Carbonade flamande végétarienne au seitan",
+      "portions": "4 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "500 g seitan",
+        "1 l bière",
+        "4 oignons",
+        "4 tranches de pain d'épice",
+        "Beurre",
+        "Moutarde",
+        "Carottes",
+        "Cannelle",
+        "Thym et romarin",
+        "Sucre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 318,
+        "sha256": "bdd62e0e0b100a53"
+      },
+      "sha256_page": "f758bfded2a51497"
     }
   ]
 }

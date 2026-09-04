@@ -1795,6 +1795,210 @@
         "serve_cold": null
       },
       "motif": "Pâte à crêpes : la forme crue EST le produit — 48 heures au réfrigérateur. La pâte ne se congèle pas (le lait et l’œuf se séparent) ; les crêpes cuites, elles, se congèlent, mais ce ne sont pas ce produit-ci. Base : serve_cold non pertinent."
+    },
+    {
+      "code": "FR-012",
+      "family": "Soupe à l’oignon gratinée",
+      "prose": "Le bouillon d'oignons se garde trois jours au réfrigérateur entre 0 et 4 °C dans un contenant fermé, et se congèle jusqu'à trois mois ; il gagne même à reposer une nuit, la caramélisation continuant de diffuser. Ne jamais conserver la soupe déjà gratinée : le pain se défait en bouillie et le fromage refroidi devient élastique. Gratiner au moment du service, sur du pain séché du jour et une soupe ramenée au frémissement.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Seul le bouillon d'oignons se congèle (trois mois) ; le plat servi est la soupe gratinée, dont la prose interdit expressément la conservation (« Ne jamais conserver la soupe déjà gratinée »). Une autorisation portant sur un composant n'autorise pas le plat : mention, donc null — ni true (faux), ni false (la prose ne refuse pas la congélation du bouillon). Les 72 h retenues sont celles du bouillon, la seule durée que la prose chiffre ; le gratin se fait au service, ce que le profil ne sait pas encore dire."
+    },
+    {
+      "code": "FR-014",
+      "family": "Velouté de potimarron",
+      "prose": "Se garde quatre jours au réfrigérateur entre 0 et 4 °C dans un contenant fermé, et se réchauffe à feu doux sans ébullition pour que la crème ne tranche pas. Le potimarron supporte très bien la congélation : congeler la base mixée non crémée jusqu'à quatre mois et n'incorporer la crème qu'au réchauffage, une base congelée déjà crémée se déphasant et rendant le velouté granuleux. Le velouté s'épaissit en refroidissant, prévoir un peu de bouillon pour le détendre au réchauffage.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "La prose ne congèle que « la base mixée non crémée », et dit que la crème doit être incorporée après décongélation : le velouté servi, crémé, n'est pas autorisé. Mention, donc null."
+    },
+    {
+      "code": "REAL-102",
+      "family": "Spaghetti alla puttanesca",
+      "prose": "La sauce se garde trois jours au réfrigérateur, couverte, et se réchauffe à feu doux avec un peu d'eau — elle épaissit beaucoup au froid. Elle se congèle deux mois mais les câpres et les olives y perdent leur croquant : mieux vaut congeler la base tomate-anchois et ajouter câpres et olives au réchauffage. Les pâtes enrobées se mangent le jour même, elles boivent la sauce en refroidissant.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Elle se congèle deux mois » désigne la SAUCE de la phrase précédente, et la prose ajoute que les pâtes enrobées se mangent le jour même : le plat servi (spaghetti enrobés) n'est pas congelable. Mention, donc null."
+    },
+    {
+      "code": "PROT-005",
+      "family": "Murgh tandoori et dal palak",
+      "prose": "3 jours au réfrigérateur ; le dal se congèle 2 mois, le poulet se réchauffe à la poêle.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Le dal se congèle 2 mois, le poulet se réchauffe à la poêle » : la congélation est autorisée pour le dal seul, et la prose dit explicitement autre chose du poulet. Le plat servi réunit les deux : mention, donc null."
+    },
+    {
+      "code": "PROT-008",
+      "family": "Poulet rôti à la créole et haricots rouges",
+      "prose": "3 jours au réfrigérateur ; les haricots se congèlent 2 mois, le poulet se réchauffe au four.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Les haricots se congèlent 2 mois, le poulet se réchauffe au four » : autorisation limitée aux haricots, le poulet rôti relevant du réchauffage. Le plat servi réunit les deux : mention, donc null."
+    },
+    {
+      "code": "SRC-001",
+      "family": "Poule au pot farcie",
+      "prose": "Le bouillon se garde 4 jours au froid et se congèle. La poule se conserve 3 jours immergée dans son bouillon, jamais à sec.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Le bouillon se garde 4 jours au froid et se congèle » : c'est le bouillon qui se congèle, pas la poule farcie, dont la prose dit seulement qu'elle se conserve 3 jours immergée. Mention, donc null."
+    },
+    {
+      "code": "SRC-001-D1",
+      "family": "Pot-au-feu de poule",
+      "prose": "Le bouillon se garde 4 jours au froid et se congèle. La poule se conserve 3 jours immergée dans son bouillon, jamais à sec.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Même prose que SRC-001 : seul le bouillon se congèle, la poule se conserve 3 jours immergée. Mention, donc null."
+    },
+    {
+      "code": "SRC-001-D2",
+      "family": "Poule au pot farcie au chou vert",
+      "prose": "Le bouillon se garde 4 jours au froid et se congèle. La poule se conserve 3 jours immergée dans son bouillon, jamais à sec.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Même prose que SRC-001 : seul le bouillon se congèle, la poule se conserve 3 jours immergée. Mention, donc null."
+    },
+    {
+      "code": "RAP-044",
+      "family": "Galette complète",
+      "prose": "La pâte crue se garde 3 jours au réfrigérateur, ce qui est son intérêt : on en coule quatre le mardi et quatre le jeudi. Les galettes NATURE se gardent 3 jours empilées avec un papier entre chacune, et se congèlent 2 mois — elles se garnissent alors directement à la poêle, ce qui ramène le plat à cinq minutes. La galette garnie, elle, ne se conserve pas : l'œuf coulant est le plat.",
+      "profile": {
+        "fridge_hours": null,
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« La galette garnie, elle, ne se conserve pas : l'œuf coulant est le plat. » Les 3 jours et les 2 mois de la prose portent sur la pâte crue et sur les galettes NATURE, deux formes qui ne sont pas le plat servi. Ni garde, ni congélation pour la galette complète ; eat_immediately, lu dans la prose, reste vrai."
+    },
+    {
+      "code": "RAP-046",
+      "family": "Quesadillas au poulet",
+      "prose": "Se mange à la sortie de la poêle : réchauffée, une quesadilla a une tortilla molle. La garniture, en revanche, se garde 3 jours au réfrigérateur et se congèle 2 mois, ce qui ramène le plat à cinq minutes. Les quesadillas montées et non cuites se congèlent 1 mois séparées par du papier, et se cuisent surgelées à feu moyen en ajoutant deux minutes.",
+      "profile": {
+        "fridge_hours": null,
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Se mange à la sortie de la poêle. » Les 3 jours et les 2 mois portent sur la GARNITURE (« en revanche »), le mois restant sur les quesadillas montées et NON CUITES : aucune de ces formes n'est le plat servi. Ni garde, ni congélation ; eat_immediately reste vrai."
+    },
+    {
+      "code": "VAR-006",
+      "family": "Pizza napolitaine",
+      "prose": "Se mange à la sortie du four. Les parts restantes se gardent 2 jours au réfrigérateur et se réchauffent 6 minutes à 220 °C sur une plaque chaude. La compotée d'oignons et la réduction de tomate se préparent 3 jours à l'avance et se gardent séparément au réfrigérateur — c'est ce qui ramène le plat à vingt minutes le soir venu. Les deux garnitures se congèlent 3 mois ; la pâte crue se congèle en pâtons 2 mois.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Les deux garnitures se congèlent 3 mois ; la pâte crue se congèle en pâtons 2 mois » : compotée, réduction et pâton crus, jamais la pizza cuite, dont la prose ne chiffre que 2 jours au réfrigérateur. Mention, donc null."
+    },
+    {
+      "code": "VAR-009",
+      "family": "Patatas bravas",
+      "prose": "La sauce brava se garde 5 jours au réfrigérateur en bocal fermé et se congèle 3 mois : c'est elle qui prend le temps, et la préparer d'avance ramène le plat à un quart d'heure. Les pommes de terre frites ne se gardent pas — elles ramollissent en une heure — mais la première friture peut se faire la veille : les cubes précuits se conservent 24 heures au réfrigérateur et se terminent en trois minutes de second bain. Le plat monté ne se réchauffe pas.",
+      "profile": {
+        "fridge_hours": null,
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Les pommes de terre frites ne se gardent pas » et « le plat monté ne se réchauffe pas ». Les 5 jours et les 3 mois sont ceux de la sauce brava seule, les 24 h ceux des cubes précuits avant second bain : aucune de ces durées n'est celle du plat servi. eat_immediately, lu dans la prose, reste vrai."
+    },
+    {
+      "code": "SRC-050",
+      "family": "Potée auvergnate",
+      "prose": "Trois jours au réfrigérateur à 4 °C, viandes et légumes conservés immergés dans leur bouillon pour ne pas sécher ; réchauffer à frémissement doux, jamais à gros bouillons. Le goût s'améliore au deuxième jour. Congélation possible deux mois pour les saucisses et le bouillon dans des boîtes séparées, mais retirer d'abord les pommes de terre, qui deviennent farineuses et grumeleuses, et le chou, qui se défait en filaments à la décongélation.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Congélation autorisée « pour les saucisses et le bouillon dans des boîtes séparées », après avoir retiré les pommes de terre et le chou : ce qui reste n'est plus la potée servie. Mention, donc null."
+    },
+    {
+      "code": "SRC-050-D1",
+      "family": "Potée au chou blanc",
+      "prose": "Trois jours au réfrigérateur à 4 °C, viandes et légumes conservés immergés dans leur bouillon pour ne pas sécher ; réchauffer à frémissement doux, jamais à gros bouillons. Le goût s'améliore au deuxième jour. Congélation possible deux mois pour les saucisses et le bouillon dans des boîtes séparées, mais retirer d'abord les pommes de terre, qui deviennent farineuses et grumeleuses, et le chou, qui se défait en filaments à la décongélation.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Même prose que SRC-050 : congélation des saucisses et du bouillon séparés, pommes de terre et chou retirés — pas le plat servi. Mention, donc null."
+    },
+    {
+      "code": "SRC-050-D2",
+      "family": "Potée auvergnate aux lentilles vertes",
+      "prose": "Trois jours au réfrigérateur à 4 °C, viandes et légumes conservés immergés dans leur bouillon pour ne pas sécher ; réchauffer à frémissement doux, jamais à gros bouillons. Le goût s'améliore au deuxième jour. Congélation possible deux mois pour les saucisses et le bouillon dans des boîtes séparées, mais retirer d'abord les pommes de terre, qui deviennent farineuses et grumeleuses, et le chou, qui se défait en filaments à la décongélation.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Même prose que SRC-050 : congélation des saucisses et du bouillon séparés, pommes de terre et chou retirés — pas le plat servi. Mention, donc null."
+    },
+    {
+      "code": "SRC-050-D3",
+      "family": "Potée auvergnate au jambonneau",
+      "prose": "Trois jours au réfrigérateur à 4 °C, viandes et légumes conservés immergés dans leur bouillon pour ne pas sécher ; réchauffer à frémissement doux, jamais à gros bouillons. Le goût s'améliore au deuxième jour. Congélation possible deux mois pour les saucisses et le bouillon dans des boîtes séparées, mais retirer d'abord les pommes de terre, qui deviennent farineuses et grumeleuses, et le chou, qui se défait en filaments à la décongélation.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Même prose que SRC-050 : congélation des saucisses et du bouillon séparés, pommes de terre et chou retirés — pas le plat servi. Mention, donc null."
+    },
+    {
+      "code": "SRC-050-D4",
+      "family": "Potée auvergnate en deux services",
+      "prose": "Trois jours au réfrigérateur à 4 °C, viandes et légumes conservés immergés dans leur bouillon pour ne pas sécher ; réchauffer à frémissement doux, jamais à gros bouillons. Le goût s'améliore au deuxième jour. Congélation possible deux mois pour les saucisses et le bouillon dans des boîtes séparées, mais retirer d'abord les pommes de terre, qui deviennent farineuses et grumeleuses, et le chou, qui se défait en filaments à la décongélation.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Même prose que SRC-050 : congélation des saucisses et du bouillon séparés, pommes de terre et chou retirés — pas le plat servi. Mention, donc null."
+    },
+    {
+      "code": "RAP-048",
+      "family": "Haricots verts à l'ail",
+      "prose": "Blanchis et refroidis, les haricots se gardent 3 jours au réfrigérateur et se sautent en trois minutes le moment venu : c'est la bonne façon de préparer ce plat d'avance. Sautés, ils se gardent 2 jours mais perdent leur croquant. Les haricots blanchis se congèlent 6 mois, égouttés et à plat.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Les haricots blanchis se congèlent 6 mois » : la forme blanchie précède la cuisson finale, le plat servi est sauté à l'ail. Mention, donc null. La garde retenue (48 h) est celle du plat sauté, la prose donnant 3 jours aux haricots seulement blanchis."
+    },
+    {
+      "code": "SRC-042",
+      "family": "Lentilles au lard",
+      "prose": "Trois jours au réfrigérateur à 4 °C dans une boîte fermée ; les lentilles boivent leur jus en refroidissant, rallonger d'un fond d'eau à la réchauffe douce. Congélation possible deux mois à condition de n'avoir pas mis la crème, celle-ci tranchant à la décongélation : la verser plutôt après réchauffage.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Congélation possible « à condition de n'avoir pas mis la crème » — or la crème fraîche est un ingrédient de la recette : le plat tel qu'il est composé n'est pas autorisé. Mention, donc null."
+    },
+    {
+      "code": "SRC-042-D2",
+      "family": "Lentilles corail au lard",
+      "prose": "Trois jours au réfrigérateur à 4 °C dans une boîte fermée ; les lentilles boivent leur jus en refroidissant, rallonger d'un fond d'eau à la réchauffe douce. Congélation possible deux mois à condition de n'avoir pas mis la crème, celle-ci tranchant à la décongélation : la verser plutôt après réchauffage.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Même prose que SRC-042, et même crème fraîche à la composition : la congélation n'est autorisée que sans elle. Mention, donc null."
     }
-  ]
+  ],
+  "contexte_relecture": "Relecture adverse (chantier C1, point 2). Le parseur ne voit pas le SUJET d'une autorisation de congélation : « le bouillon se congèle », « la garniture se congèle », « les haricots se congèlent » ont été lus comme des autorisations du plat entier. Les 20 décisions ajoutées ici ramènent ces autorisations à ce qu'elles sont — une mention, donc null — sans toucher aux autres champs, que la prose donne correctement. Elles ne posent jamais false : la prose ne refuse pas la congélation, elle ne l'autorise pas pour le plat servi."
 }

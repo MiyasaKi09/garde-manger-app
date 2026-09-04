@@ -33406,10 +33406,10 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 3,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -33820,10 +33820,10 @@
       "conservation_profile": {
         "fridge_hours": 96,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 4,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -45651,10 +45651,10 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -79498,10 +79498,10 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -80110,10 +80110,10 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -80581,10 +80581,10 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
+        "freezable": null,
         "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -89164,10 +89164,10 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -90843,10 +90843,10 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -93073,10 +93073,10 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
+        "freezable": null,
         "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -93335,10 +93335,10 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
+        "freezable": null,
         "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -123613,10 +123613,10 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -129364,10 +129364,10 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -129605,10 +129605,10 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -140753,10 +140753,10 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -141000,10 +141000,10 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -153977,12 +153977,12 @@
         "lait"
       ],
       "conservation_profile": {
-        "fridge_hours": 72,
+        "fridge_hours": null,
         "eat_immediately": true,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -154360,12 +154360,12 @@
         "lait"
       ],
       "conservation_profile": {
-        "fridge_hours": 72,
+        "fridge_hours": null,
         "eat_immediately": true,
-        "freezable": true,
-        "freezer_months": 1,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -154673,10 +154673,10 @@
       "conservation_profile": {
         "fridge_hours": 48,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 6,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -156546,10 +156546,10 @@
       "conservation_profile": {
         "fridge_hours": 48,
         "eat_immediately": true,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {
@@ -156745,12 +156745,12 @@
       "allergens": [],
       "description_courte": "Cubes de pommes de terre frits, servis avec une sauce tomate relevée au vinaigre",
       "conservation_profile": {
-        "fridge_hours": 24,
+        "fridge_hours": null,
         "eat_immediately": true,
-        "freezable": true,
-        "freezer_months": 3,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
-        "source": "parsed"
+        "source": "parsed+manual"
       }
     },
     {

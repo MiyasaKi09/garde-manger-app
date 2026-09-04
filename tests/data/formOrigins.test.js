@@ -111,11 +111,35 @@ describe('origine des formes du catalogue', () => {
       .sort()
     // Trois pâtes AUX ŒUFS rangées en céréales : composites, elles portent
     // leur composant le plus contraignant, et chacune est déclarée par le lot21.
+    // Et le kimchi, qui n'est PAS déclaré : adossé au proxy « Chou blanc, cru »,
+    // il ressortait végétal sur la foi d'un chou alors que le kimchi de chou est
+    // ordinairement monté au jeotgal (crevette ou anchois salés) et que rien ici
+    // ne dit si celui-ci l'est. 'inconnu' est la valeur exacte de ce qu'on sait.
     expect(suspectes).toEqual([
+      ['kimchi de chou fermente mur', 'inconnu', null],
       ['nouille de ble chinoise seche', 'animal:oeuf', 'arbitrage:lot21'],
       ['nouille ramen fraiche', 'animal:oeuf', 'arbitrage:lot21'],
       ['pates fraiches aux oeufs crues', 'animal:oeuf', 'arbitrage:lot21'],
     ])
+  })
+
+  it('ne laisse jamais un proxy assumé déclarer l’origine de la forme qu’il approxime', () => {
+    // Un mapping de confiance C ou D dit d'où viennent les CALORIES, pas ce que
+    // l'aliment est : « Piment ancho séché » était végétal parce que le paprika
+    // l'est, « Yaourt grec » du lait parce que le fromage blanc en est, et
+    // « Kimchi de chou fermenté mûr » végétal parce qu'un chou l'est. Les
+    // cinquante premiers disaient juste, le dernier non — et rien ne les
+    // distinguait. La règle (b) se tait donc devant un proxy : ces formes sont
+    // déclarées au lot21, ou elles restent 'inconnu'.
+    const proxys = catalog.forms.filter((form) => ['C', 'D'].includes(form.confidence))
+    expect(proxys.length).toBeGreaterThan(40)
+    const heritees = proxys
+      .filter((form) => form.origin_source && form.origin_source.startsWith('ciqual:'))
+      .map((form) => [form.canonical_name, form.origin_source])
+    expect(heritees).toEqual([])
+    for (const form of proxys) {
+      expect(form.origin_source, form.canonical_name).toBe(form.origin === 'inconnu' ? null : 'arbitrage:lot21')
+    }
   })
 
   it('applique chaque décision du lot21 à une forme du catalogue, avec un motif', () => {

@@ -30,7 +30,7 @@
         "signes": 347,
         "sha256": "c17a34e96bd06e91"
       },
-      "sha256_page": "01cc35538f7c3625"
+      "sha256_page": "9995e542fc845f31"
     },
     {
       "url": "https://www.marmiton.org/recettes/recette_brocolis-tofu_172384.aspx",
@@ -53,7 +53,7 @@
         "signes": 472,
         "sha256": "617f504d9298a3ee"
       },
-      "sha256_page": "2051c89549603327"
+      "sha256_page": "a6c4adb8be57f38a"
     },
     {
       "url": "https://chefsimon.com/gourmets/del-s-cooking-twist/recettes/saute-asiatique-de-tofu-et-brocoli",
@@ -85,7 +85,7 @@
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "c0e6815bb55afcc5"
+      "sha256_page": "f552eaac8b007b9a"
     },
     {
       "url": "https://chefsimon.com/gourmets/madame-potiron/recettes/nouilles-sautees-au-brocoli-et-tofu",
@@ -114,7 +114,7 @@
         "signes": 163,
         "sha256": "674175c5053f0f76"
       },
-      "sha256_page": "190bf58adb451c5f"
+      "sha256_page": "a9bcb29bdd6ad40d"
     }
   ]
 }
