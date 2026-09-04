@@ -19,7 +19,7 @@
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "1a75c0ba2f95e6af"
+      "sha256_page": "a074c62a194afc17"
     },
     {
       "url": "https://www.marmiton.org/recettes/recette_omelette-a-l-ancienne-oignon-lardon-pomme-de-terre_169283.aspx",
@@ -47,7 +47,7 @@
         "signes": 634,
         "sha256": "a6948c0844bd5ef9"
       },
-      "sha256_page": "65eb6efc1ac77d11"
+      "sha256_page": "ee47066c1070d38e"
     },
     {
       "url": "https://chefsimon.com/gourmets/chef-simon/recettes/omelette-aux-deux-pommes-de-terre-a-l-espagnole",
@@ -74,7 +74,7 @@
         "signes": 1013,
         "sha256": "cb1f15fb32f312d5"
       },
-      "sha256_page": "059de1c1737af192"
+      "sha256_page": "a69a8a6b69ebcb5d"
     },
     {
       "url": "https://www.750g.com/omelette-aux-pommes-de-terre-et-gruyere-r15843.htm",
@@ -96,7 +96,7 @@
         "signes": 284,
         "sha256": "84caa1d30b2d265f"
       },
-      "sha256_page": "52e779a88df6290f"
+      "sha256_page": "4fd78a31a6607c3c"
     },
     {
       "url": "https://www.750g.com/omelette-legere-a-la-pomme-de-terre-r83388.htm",
@@ -119,7 +119,7 @@
         "signes": 300,
         "sha256": "db9a496442d61773"
       },
-      "sha256_page": "24397c3ea37b1663"
+      "sha256_page": "0676197bac0435b1"
     },
     {
       "url": "https://www.marmiton.org/recettes/recette_omelette-de-pommes-de-terre-au-comte_23309.aspx",
@@ -142,7 +142,7 @@
         "signes": 384,
         "sha256": "934988e55a73c5bf"
       },
-      "sha256_page": "e344fa879707cc7b"
+      "sha256_page": "c3437949924b7f71"
     }
   ]
 }

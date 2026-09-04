@@ -1,7 +1,7 @@
 {
   "dish": "croque-monsieur végétarien",
   "slug": "croque-monsieur-vegetarien",
-  "sources_count": 3,
+  "sources_count": 8,
   "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
   "sources": [
     {
@@ -24,7 +24,7 @@
         "signes": 936,
         "sha256": "576a98a73f2a36a1"
       },
-      "sha256_page": "17a90886ff786e0d"
+      "sha256_page": "644274b98ac30b3a"
     },
     {
       "url": "https://www.marmiton.org/recettes/recette_croque-monsieur-vegetarien_39515.aspx",
@@ -46,7 +46,7 @@
         "signes": 266,
         "sha256": "54204990396d6018"
       },
-      "sha256_page": "4d1aa812dab75f94"
+      "sha256_page": "2d3f0d219997c9aa"
     },
     {
       "url": "https://chefsimon.com/gourmets/del-s-cooking-twist/recettes/croque-monsieur-vegetarien-chevre-epinards",
@@ -73,7 +73,132 @@
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "8e08d011c94c8efe"
+      "sha256_page": "1fccc0e659dc62e5"
+    },
+    {
+      "url": "https://www.quiveutdufromage.com/r-croque-monsieur-vegetarien",
+      "site": "quiveutdufromage.com",
+      "nom": "Croque-monsieur végétarien",
+      "portions": "2",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 tranches pain de mie complet (ou pain au levain)",
+        "75 g (4 tranches) fromage Fol Epi Riche en Protéines",
+        "200 g champignons de Paris (ou champignons bruns)",
+        "100 g épinards frais (ou surgelés)",
+        "1 oignon moyen",
+        "2 cuillères à soupe huile d'olive",
+        "20 g beurre",
+        "20 g farine",
+        "250 ml lait demi-écrémé",
+        "1 cuillère à café moutarde de Dijon",
+        "selon goût noix de muscade fraîchement râpée",
+        "selon goût poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 3058,
+        "sha256": "6b6def8233542787"
+      },
+      "sha256_page": "5f90f3d68fddbbe3"
+    },
+    {
+      "url": "https://www.supertoinette.com/recette/9057/croque-monsieur-vegetarien.html",
+      "site": "supertoinette.com",
+      "nom": "Croque monsieur végétarien",
+      "portions": "3 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "6 tranches de pain de mie",
+        "3 oeufs",
+        "2 tomates",
+        "70 g de fromage râpé",
+        "1 petit pot de crème fraîche",
+        "1 filet d'huile d'olive",
+        "1 pincée de sel",
+        "1 pincée de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 641,
+        "sha256": "4a0828323cae595a"
+      },
+      "sha256_page": "459d1041f15925db"
+    },
+    {
+      "url": "https://www.referentiel-restauration-collective.fr/croque-monsieur-vegetarien-maison/",
+      "site": "referentiel-restauration-collective.fr",
+      "nom": "Croque-monsieur végétarien maison : la recette généreuse sans industriels",
+      "portions": [
+        "6",
+        "6 personnes"
+      ],
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT12M",
+      "ingredients": [
+        "120 g Mie de pain",
+        "9 cl Lait",
+        "20 g Beurre",
+        "9 g Farine",
+        "1 g Muscade",
+        "50 g Fromage râpé emmental",
+        "35 g Gruyère râpé",
+        "90 g Légumes tomates",
+        "60 g Champignons",
+        "30 ml Lait"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 883,
+        "sha256": "8b13627279e03177"
+      },
+      "sha256_page": "4fb793a2386ae8f0"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_croque-monsieur-aux-tomates-et-champignons_105860.aspx",
+      "site": "marmiton.org",
+      "nom": "croque monsieur aux tomates et champignons : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "5 tranches de pains de mie /personne voir 10 si 2 /pers",
+        "1 pot de crème fraîche",
+        "1 sachet de gruyère",
+        "1 paquet de jambon",
+        "1 boîte de champignon (grosse si on aime beaucoup les champignons)!!!!",
+        "5 tomates"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 388,
+        "sha256": "9ee1d6f43a086e24"
+      },
+      "sha256_page": "3dca40593cecca06"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/croque-monsieur-a-l-oeuf-brouille-champignons-et-emmental",
+      "site": "chefsimon.com",
+      "nom": "Croque-monsieur à l’oeuf brouillé, champignons et emmental",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H04M",
+      "ingredients": [
+        "8 tranches de pain de mie complet",
+        "4  œufs",
+        "360 g de champignons émincés surgelés",
+        "150 g d’emmental en tranche",
+        "25 g de beurre + 30 g",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 229,
+        "sha256": "781b8dedb63646b5"
+      },
+      "sha256_page": "6c392ff52eb1742e"
     }
   ]
 }

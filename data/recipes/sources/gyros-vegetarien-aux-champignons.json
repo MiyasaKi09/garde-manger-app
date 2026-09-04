@@ -1,5 +1,5 @@
 {
-  "dish": "Gyros végétarien aux champignons",
+  "dish": "Mushroom gyros",
   "slug": "gyros-vegetarien-aux-champignons",
   "sources_count": 12,
   "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
@@ -30,7 +30,7 @@
         "signes": 570,
         "sha256": "a93febb5a83e0c84"
       },
-      "sha256_page": "c520614b4f5cad68"
+      "sha256_page": "85a0e0f4e4b94a0d"
     },
     {
       "url": "https://www.veganricha.com/vegan-gyros-with-mushrooms-and-tzatziki/",
@@ -65,7 +65,7 @@
         "signes": 991,
         "sha256": "b46bb191d0fa3b59"
       },
-      "sha256_page": "6956798d06a345d4"
+      "sha256_page": "0bf7be187a9ab352"
     },
     {
       "url": "https://mypureplants.com/vegan-gyros-tzatziki/",
@@ -99,7 +99,7 @@
         "signes": 857,
         "sha256": "ff42509e276959f1"
       },
-      "sha256_page": "358e1ed1df95f6c2"
+      "sha256_page": "a72a7f2e9adb81c6"
     },
     {
       "url": "https://biancazapatka.com/en/vegan-gyros-with-pulled-mushrooms/",
@@ -141,7 +141,7 @@
         "signes": 1166,
         "sha256": "7318db92710216c6"
       },
-      "sha256_page": "ef1261f2a093527f"
+      "sha256_page": "a9d136d9824671cf"
     },
     {
       "url": "https://www.forkinthekitchen.com/vegetarian-gyros/",
@@ -212,7 +212,7 @@
         "signes": 624,
         "sha256": "8903cd5101f55f6e"
       },
-      "sha256_page": "12d7e4a82998e58f"
+      "sha256_page": "58446f2d595051d1"
     },
     {
       "url": "https://lovingitvegan.com/vegan-gyros/",
@@ -250,7 +250,7 @@
         "signes": 1157,
         "sha256": "eebd1f23d21154df"
       },
-      "sha256_page": "8121ee902e6fc2f5"
+      "sha256_page": "22983e3baad78632"
     },
     {
       "url": "https://veggiesociety.com/vegan-gyros-recipe/",
@@ -356,7 +356,7 @@
         "signes": 2331,
         "sha256": "4f99c327ced676ba"
       },
-      "sha256_page": "467181d3918dec8e"
+      "sha256_page": "fbd93711c7f02c6f"
     },
     {
       "url": "https://www.brandnewvegan.com/recipes/vegan-gyros",
@@ -397,7 +397,7 @@
         "signes": 720,
         "sha256": "6c58cff4678f1987"
       },
-      "sha256_page": "bd3df6fd1e5bdc5c"
+      "sha256_page": "70effdc8dfb7d2b9"
     },
     {
       "url": "https://chefsimon.com/gourmets/lacuisinedunetoquee/recettes/un-gyros-vegetarien-a-l-aubergine",
@@ -428,7 +428,7 @@
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "963fe13bde97ff81"
+      "sha256_page": "27738ca3ace63f3b"
     }
   ]
 }

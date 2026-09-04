@@ -1,7 +1,7 @@
 {
   "dish": "Lentilles au tofu fumé",
   "slug": "lentilles-au-tofu-fume",
-  "sources_count": 3,
+  "sources_count": 4,
   "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
   "sources": [
     {
@@ -33,37 +33,7 @@
         "signes": 740,
         "sha256": "c82a8e57853c737d"
       },
-      "sha256_page": "f802de44cc5e2028"
-    },
-    {
-      "url": "https://www.notparisienne.fr/plats/lentilles-mijotees-au-tofu/",
-      "site": "notparisienne.fr",
-      "nom": "Lentilles mijotées au tofu",
-      "portions": null,
-      "duree_preparation": "PT0H0M",
-      "duree_cuisson": "PT0H0M",
-      "ingredients": [
-        "1 oignon rouge émincé finement",
-        "3 gousses d'ail émincées",
-        "1 c. à c. de coriandre",
-        "2 c. à c. de paprika",
-        "4 c. à s. de concentré de tomates",
-        "65 cl de bouillon végétal",
-        "280 g de mélange de lentilles",
-        "1 c. à s. de fumée liquide",
-        "1 c. à s. de sirop d’érable",
-        "225 g de tofu fumé",
-        "30 g de carottes émincées finement",
-        "50 g de champignons en fines tranches",
-        "2 c. à s. d’huile d’olive",
-        "Sel, poivre"
-      ],
-      "etapes_empreinte": {
-        "nombre": 12,
-        "signes": 1478,
-        "sha256": "967fbb44107590b7"
-      },
-      "sha256_page": "b3889b6d16a95934"
+      "sha256_page": "79c92fec0ae4429a"
     },
     {
       "url": "https://www.cuisine-alcaline.com/recette/lentilles-aux-legumes-et-tofu-fume/",
@@ -90,6 +60,73 @@
         "sha256": "6f2b657bacf8538d"
       },
       "sha256_page": "97590565d8a19f2a"
+    },
+    {
+      "url": "https://www.marie.cooking/vegetarian-petit-sale-lentils-carrots-stew/",
+      "site": "marie.cooking",
+      "nom": "Vegetarian 'Petit Salé' (lentils stew)",
+      "portions": null,
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "650 g cooked green lentils (you can also use uncooked lentils to cook in the recipe)",
+        "4  large carrots",
+        "1  onion (red or yellow, as you prefer)",
+        "1 clove of garlic",
+        "200 g smoked tofu",
+        "6  brown (or button mushrooms)",
+        "8 cl dry white wine (optional)",
+        "2  bay leaves",
+        "A sprig of  thyme",
+        "A sprig of  rosemary",
+        "salt & pepper",
+        "2 cloves optional",
+        "A dash of  olive oil",
+        "Vegetable cream (optional)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 896,
+        "sha256": "9b7416842f78bb8f"
+      },
+      "sha256_page": "99a078185a532204"
+    },
+    {
+      "url": "https://healthylalou.fr/2022/petit-sale/",
+      "site": "healthylalou.fr",
+      "nom": "Petit salé aux lentilles vegan",
+      "portions": [
+        "4",
+        "4 gourmand.es"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1  oignon",
+        "1  grosse gousse d'ail",
+        "1/2  potimarron",
+        "1  petit navet",
+        "1  carotte",
+        "1  petite patate douce",
+        "400g  pommes de terre petites",
+        "1  feuille de laurier",
+        "1  branche de romarin",
+        "2  clous de girofle",
+        "280 g lentilles vertes sèches",
+        "2 cas miso brun",
+        "20 cL vin blanc sec",
+        "80 cL eau",
+        "4 cas yaourt végétal non sucré",
+        "1  cas moutarde forte",
+        "1 cas moutarde ancienne",
+        "poivre noir"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 766,
+        "sha256": "abf5404062b5ab76"
+      },
+      "sha256_page": "4a2a06b52044a81f"
     }
   ]
 }

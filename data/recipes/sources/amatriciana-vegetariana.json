@@ -1,0 +1,88 @@
+{
+  "dish": "Amatriciana",
+  "slug": "amatriciana-vegetariana",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://primochef.it/amatriciana-vegan/cucina-naturale/",
+      "site": "primochef.it",
+      "nom": "Come preparare un'ottima pasta all'amatriciana vegan?",
+      "portions": "4",
+      "duree_preparation": "45",
+      "duree_cuisson": "30",
+      "ingredients": [
+        "320 g di spaghetti",
+        "1 panetto di tofu affumicato",
+        "1 cipolla",
+        "1 lattina di polpa di pomodoro",
+        "3 cucchiai di olio evo",
+        "sale q.b.",
+        "pepe q.b.",
+        "lievito alimentare in scaglie q.b."
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 2674,
+        "sha256": "dc527f631d07f4b3"
+      },
+      "sha256_page": "8ff42cc16d28cd94"
+    },
+    {
+      "url": "https://www.vegolosi.it/veg-blogger/pasta-amatriciana-vegan/",
+      "site": "vegolosi.it",
+      "nom": "Pasta amatriciana vegana ",
+      "portions": [
+        "3",
+        "3 persone"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "200 g di tofu affumicato",
+        "1/2 cipolla bianca",
+        "300 g di pasta corta",
+        "passata di pomodoro rustica q.b.",
+        "olio extra vergine di oliva",
+        "sale q.b.",
+        "pepe q.b.",
+        "peperoncino q.b."
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 705,
+        "sha256": "3415cb36c9295632"
+      },
+      "sha256_page": "c6c5d766d241a3f1"
+    },
+    {
+      "url": "https://www.mammachechef.it/amatriciana-vegana/",
+      "site": "mammachechef.it",
+      "nom": "Amatriciana vegana",
+      "portions": [
+        "4",
+        "4 persone"
+      ],
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "q.b.  olio EVO",
+        "1/2  cipolla",
+        "200 g tofu affumicato",
+        "1 cucchiaio salsa di soia",
+        "60 g vino bianco",
+        "200 g pomodori pelati",
+        "400 g passata di pomodoro",
+        "q.b.  sale marino integrale",
+        "q.b.  peperoncino",
+        "320 g spaghetti"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 624,
+        "sha256": "3c6d549046a6f0ae"
+      },
+      "sha256_page": "9e54c7c95985d2bd"
+    }
+  ]
+}
