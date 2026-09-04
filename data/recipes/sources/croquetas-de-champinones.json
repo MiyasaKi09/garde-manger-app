@@ -1,0 +1,94 @@
+{
+  "dish": "croquetas de champiñones",
+  "slug": "croquetas-de-champinones",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.bonviveur.es/recetas/croquetas-de-champinones",
+      "site": "bonviveur.es",
+      "nom": "Croquetas de champiñones",
+      "portions": "4",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "250 g de champiñones",
+        "500 ml de leche entera (muy fría, de la nevera)",
+        "45 g de harina de trigo",
+        "20 g de mantequilla",
+        "25 g de aceite de oliva",
+        "1 cebolleta pequeña (o ½ cebolla grande)",
+        "Nuez moscada",
+        "Pimienta negra molida",
+        "Sal",
+        "1 huevo campero",
+        "Pan rallado",
+        "Aceite de girasol para freír"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 769,
+        "sha256": "69911358ed82616d"
+      },
+      "sha256_page": "6758e0e853592023"
+    },
+    {
+      "url": "https://okdiario.com/recetas/croquetas-champinones-receta-hacer-casa-6991767",
+      "site": "okdiario.com",
+      "nom": "Croquetas de champiñones, receta para hacer en casa",
+      "portions": null,
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "200 gramos de champiñones",
+        "50 gramos de harina de trigo",
+        "2 huevos",
+        "1 diente de ajo",
+        "60 gramos de mantequilla",
+        "10 gramos de perejil",
+        "500 mililitros de leche",
+        "150 mililitros de aceite de oliva",
+        "pan rallado",
+        "Sal",
+        "Pimienta"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 825,
+        "sha256": "e20945f1a7c5cd32"
+      },
+      "sha256_page": "0de5b13f5e8561e6"
+    },
+    {
+      "url": "https://comeztier.com/croquetas-de-champinones-aprende-a-preparar-la-croqueta-perfecta/",
+      "site": "comeztier.com",
+      "nom": "Croqueta de champiñones",
+      "portions": [
+        "8"
+      ],
+      "duree_preparation": "PT60M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "110 g de mantequilla",
+        "140 g de harina simple Comeztier",
+        "0,9 L de leche + agua de los champiñones*",
+        "500 g de champiñones*",
+        "1 cucharada de vinagre de Módena",
+        "100 g de salsa de soja ((opcional))",
+        "Sal y pimienta negra al gusto",
+        "Harina Simple Comeztier",
+        "2  huevos",
+        "Pan rallado Comeztier",
+        "AOVE para freír",
+        "Confitura de tomate",
+        "Lascas de parmesano ((opcional))"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1169,
+        "sha256": "13d5cdd67c27edc9"
+      },
+      "sha256_page": "1e016ed8dc0515b5"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "dish": "croquetas de setas",
+  "slug": "croquetas-de-setas",
+  "sources_count": 1,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://paulasapron.com/croquetas-de-setas/",
+      "site": "paulasapron.com",
+      "nom": "Croquetas de Setas",
+      "portions": [
+        "30",
+        "30 croquetas aprox."
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "200 g boletus (congelados (si usas frescos, 250 g))",
+        "200 g champiñones (preferiblemente portobello)",
+        "50 g mantequilla (sin sal)",
+        "25 g aceite de oliva virgen extra (más extra para sofreír las setas)",
+        "1/2  cebolla (picada finamente)",
+        "75 g harina",
+        "600 ml leche",
+        "Sal",
+        "Pimienta Blanca",
+        "Nuez moscada",
+        "Harina (suficiente para rebozar todas las croquetas)",
+        "2  huevos",
+        "Pan rallado (preferiblemente panko, suficiente para rebozar todas las croquetas)",
+        "Aceite (para freír)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 3209,
+        "sha256": "cdda510c7b381911"
+      },
+      "sha256_page": "a5ea77a23f61e314"
+    }
+  ]
+}

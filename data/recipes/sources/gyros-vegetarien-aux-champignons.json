@@ -1,0 +1,434 @@
+{
+  "dish": "Gyros végétarien aux champignons",
+  "slug": "gyros-vegetarien-aux-champignons",
+  "sources_count": 12,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.liveeatlearn.com/vegetarian-portobello-mushroom-gyros/",
+      "site": "liveeatlearn.com",
+      "nom": "Vegetarian Portobello Mushroom Gyros",
+      "portions": [
+        "4",
+        "4 servings"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "4  portobello mushrooms",
+        "¼ cup olive oil (60 mL)",
+        "2 Tbsp soy sauce (30 mL)",
+        "2 Tbsp lemon juice (30 mL)",
+        "4 cloves garlic (minced)",
+        "½ tsp each oregano, smoked paprika, salt, pepper",
+        "4 large  pita breads",
+        "½ cup tzatziki sauce (cut tzatziki recipe in half if making it just for these gyros)",
+        "Extras: tomato, red onion, radishes, lettuce, feta"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 570,
+        "sha256": "a93febb5a83e0c84"
+      },
+      "sha256_page": "c520614b4f5cad68"
+    },
+    {
+      "url": "https://www.veganricha.com/vegan-gyros-with-mushrooms-and-tzatziki/",
+      "site": "veganricha.com",
+      "nom": "Vegan Gyros with Mushrooms",
+      "portions": [
+        "3"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "12 oz sliced mushrooms (, white, or a mix of cremini, white, bella (see notes for other options))",
+        "1/2 cup sliced onion",
+        "2 tbsp vegan Worcestershire sauce (, See notes for subs)",
+        "4 tsp shawarma spice blend (, see notes for recipe)",
+        "1 tsp sugar or other sweetener",
+        "Optional addins: 2 cloves of garlic minced (, salt if needed)",
+        "7 oz firm tofu (, drained)",
+        "1/2 tsp garlic powder or 1 cloves of garlic",
+        "1 tablespoon lemon juice",
+        "1 teaspoon white  vinegar",
+        "1/4 teaspoon salt",
+        "1/8 teaspoon black pepper",
+        "1 teaspoon dried dill (or 1 tbsp fresh)",
+        "1/2  English cucumber (, peeled and cubed)",
+        "sliced onion, cucumber, tomato",
+        "chopped lettuce or greens, pickles",
+        "3  Pita breads"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 991,
+        "sha256": "b46bb191d0fa3b59"
+      },
+      "sha256_page": "6956798d06a345d4"
+    },
+    {
+      "url": "https://mypureplants.com/vegan-gyros-tzatziki/",
+      "site": "mypureplants.com",
+      "nom": "Vegan Gyros (Shredded Mushrooms)",
+      "portions": [
+        "4",
+        "4 servings"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "18 oz Oyster mushrooms (not king oyster, but pearl oysters)",
+        "1 + ½ tsp Soy sauce",
+        "5 Tbsp Olive oil",
+        "1 Tbsp Lemon juice (freshly squeezed)",
+        "2 tsp Oregano",
+        "½ tsp Ground cumin seeds",
+        "½ tsp Sweet smoked paprika powder",
+        "1 tsp Garlic powder",
+        "1 tsp Onion powder",
+        "1 tsp Salt",
+        "⅛ tsp Black pepper",
+        "4 servings Vegan tzatziki sauce",
+        "8  Pita bread",
+        "16  Cherry tomatoes",
+        "½  Purple onion"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 857,
+        "sha256": "ff42509e276959f1"
+      },
+      "sha256_page": "358e1ed1df95f6c2"
+    },
+    {
+      "url": "https://biancazapatka.com/en/vegan-gyros-with-pulled-mushrooms/",
+      "site": "biancazapatka.com",
+      "nom": "Vegan Pulled Mushroom Gyros",
+      "portions": [
+        "4",
+        "4 Servings"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "2 tbsp olive oil",
+        "1  onion (sliced)",
+        "4  cloves of garlic",
+        "1 tsp cumin",
+        "1 tsp paprika powder",
+        "½ tsp chili powder",
+        "½ tsp dried oregano",
+        "1 pinch of ground cloves",
+        "1 pinch of gound cinnamon",
+        "2 tbsp tomato paste",
+        "14 oz mushrooms (e.g., a mixture of oyster mushrooms and King Oyster, or sub jackfruit*)",
+        "7 oz artichokes (or sub more mushrooms or jackfruit* (drained))",
+        "3 tbsp tamari sauce (or soy sauce)",
+        "¼ tsp liquid smoke (optional)",
+        "1-2 tbsp maple syrup",
+        "½ tsp salt (or to taste)",
+        "¼ tsp pepper (or to taste)",
+        "4  flatbreads (toasted, or store-bought pita breads)",
+        "lettuce",
+        "cucumber",
+        "cherry tomatoes",
+        "radishes",
+        "vegan tzatziki"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1166,
+        "sha256": "7318db92710216c6"
+      },
+      "sha256_page": "ef1261f2a093527f"
+    },
+    {
+      "url": "https://www.forkinthekitchen.com/vegetarian-gyros/",
+      "site": "forkinthekitchen.com",
+      "nom": "Quickly Sautéed Portobello Mushroom Gyros (Vegetarian)",
+      "portions": [
+        "4",
+        "4 servings"
+      ],
+      "duree_preparation": "PT2M",
+      "duree_cuisson": "PT13M",
+      "ingredients": [
+        "1½ - 2 pounds portobello mushrooms",
+        "¾ - 1 teaspoon fine sea salt (or to taste)",
+        "4 Tablespoons unsalted butter",
+        "½ teaspoon garlic powder",
+        "1 teaspoon onion powder",
+        "½ teaspoon dried oregano",
+        "½ teaspoon dried marjoram",
+        "¼ teaspoon dried thyme",
+        "Pinch red pepper flakes",
+        "Freshly ground black pepper (to taste)",
+        "2-3 dashes vegan Worcestershire sauce (optional)",
+        "4  Pita Bread",
+        "½ cup Tzatziki Sauce (to taste)",
+        "1-2  tomatoes (sliced)",
+        "½  red onion (thinly sliced or diced)",
+        "½  cucumber (thinly sliced)",
+        "Feta crumbles (optional)",
+        "Dried oregano (optional, for garnish)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1029,
+        "sha256": "3f05f4e545b86221"
+      },
+      "sha256_page": "3726ecc32aba7305"
+    },
+    {
+      "url": "https://elavegan.com/vegan-gyros/",
+      "site": "elavegan.com",
+      "nom": "Vegan Gyro Recipe",
+      "portions": [
+        "2"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 1/2 tbsp olive oil",
+        "1 medium onion (diced)",
+        "300 g mushrooms ((see notes))",
+        "2-3 cloves garlic (finely minced)",
+        "3 tsp gyro seasoning ((see notes))",
+        "1/4 cups vegetable broth",
+        "1 tbsp tomato paste",
+        "3 tbsp soy sauce (GF, or tamari)",
+        "1 tbsp maple syrup (or date syrup)",
+        "1 1/2 tsp vinegar",
+        "2-4  pita breads ((depending on size))",
+        "1 small head lettuce",
+        "2-3  tomatoes",
+        "1  cucumber",
+        "1 batch tzatziki",
+        "Fresh herbs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 624,
+        "sha256": "8903cd5101f55f6e"
+      },
+      "sha256_page": "12d7e4a82998e58f"
+    },
+    {
+      "url": "https://lovingitvegan.com/vegan-gyros/",
+      "site": "lovingitvegan.com",
+      "nom": "Vegan Gyros",
+      "portions": [
+        "6"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "2 Tablespoons Olive Oil",
+        "1 Medium Red Onion (Sliced)",
+        "1 Tablespoon Crushed Garlic",
+        "1/4 teaspoon Cumin",
+        "1/4 teaspoon Ground Cinnamon",
+        "1/8 teaspoon Ground Cloves",
+        "1/4 teaspoon Ground Black Pepper",
+        "1/2 Tablespoon Dried Oregano",
+        "2 Tablespoons Tomato Paste",
+        "14 ounces Mushrooms ((400g) Mix of King Oyster, Shiitake (stems removed), Shimeji Mushrooms (Shredded with a fork)*)",
+        "1 1/3 cups Marinated Artichokes  ((7oz/200g) Drained/Quartered)",
+        "1/4 teaspoon Liquid Smoke",
+        "2 Tablespoons Dark Soy Sauce",
+        "2 Tablespoons Maple Syrup",
+        "6  Pita Breads (Toasted)",
+        "Shredded Lettuce",
+        "Sliced Cucumber",
+        "Sliced Radishes",
+        "Sliced Cherry Tomatoes",
+        "1 Recipe Vegan Tzatziki"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1157,
+        "sha256": "eebd1f23d21154df"
+      },
+      "sha256_page": "8121ee902e6fc2f5"
+    },
+    {
+      "url": "https://veggiesociety.com/vegan-gyros-recipe/",
+      "site": "veggiesociety.com",
+      "nom": "Vegan Gyros",
+      "portions": [
+        "4",
+        "4 people"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1  onion (sliced)",
+        "1/2 tbsp sugar (maple syrup, agave or  date syrup (Optional))",
+        "8 oz oyster mushrooms (the gyro meat)",
+        "1  splash white wine (or a squeeze of lemon juice)",
+        "1/2 tbsp olive oil",
+        "6  sprigs fresh thyme ((leaves only))",
+        "1 tbsp coriander",
+        "1.5 tsp cumin",
+        "1/2 Tbsp paprika ((sweet or smoked))",
+        "1/2 Tbsp garlic powder",
+        "3 tsp oregano",
+        "1 tsp cinnamon",
+        "1/8 tsp ground cloves",
+        "1/8 tsp chili powder",
+        "4 Flatbreads (Pita Bread), Vegan Tzatziki Sauce, Sliced Cucumbers, Tomatoes, Red Onion or Scallions, Fresh Dill, Fries, Hummus etc..."
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1579,
+        "sha256": "d6f7478939ca97f0"
+      },
+      "sha256_page": "c641a0785fd4e6ec"
+    },
+    {
+      "url": "https://therealfooddietitians.com/greek-vegetarian-gyros-with-portobello-mushrooms/",
+      "site": "therealfooddietitians.com",
+      "nom": "Greek Vegetarian Gyros with Portobello Mushrooms",
+      "portions": [
+        "4",
+        "4 gyros"
+      ],
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT12M",
+      "ingredients": [
+        "8 ounces portobello mushroom caps (2 large or 3 medium caps), don’t remove gills",
+        "1 tablespoon avocado oil or olive oil",
+        "1 tablespoon Greek seasoning*",
+        "4 pita bread rounds (use gluten-free, if needed)**",
+        "Toppings: sliced tomato, thinly sliced red onion, sliced cucumber, crumbled feta cheese",
+        "½ cup grated English cucumber, squeezed to remove water***",
+        "½ cup plain Greek yogurt",
+        "1 ½ tablespoons lemon juice",
+        "1 tablespoon extra virgin olive oil",
+        "1 tablespoon fresh dill",
+        "2 garlic cloves, minced",
+        "¼ teaspoon salt",
+        "¼ teaspoon black pepper"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 993,
+        "sha256": "357609f5f54e92ec"
+      },
+      "sha256_page": "f9c69543929b8007"
+    },
+    {
+      "url": "https://www.lazycatkitchen.com/vegan-gyros-mushrooms/",
+      "site": "lazycatkitchen.com",
+      "nom": "Vegan gyros with mushrooms",
+      "portions": "makes 4",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 cup / 120 g hulled sunflower seeds, soaked*",
+        "3/4 cup / 90 ml plant milk (I like soy)",
+        "1 English cucumber",
+        "60 ml / ¼ cup lemon juice, adjust to taste",
+        "1 garlic clove",
+        "1½ tbsp dried mint",
+        "salt and pepper",
+        "600 g / 21 oz oyster mushrooms",
+        "60 ml / 4 tbsp olive oil, divided",
+        "1 red onion, finely diced",
+        "3 garlic cloves",
+        "2 tsp roast chicken seasoning",
+        "2 tsp dried oregano",
+        "1 tsp smoked paprika",
+        "½ tsp cumin",
+        "30 ml / 2 tbsp soy sauce",
+        "10 ml / 2 tsp tomato paste",
+        "15 ml / 1 tbsp maple syrup (or sugar)",
+        "20 ml / 4 tsp red wine vinegar",
+        "3 g / 1 tbsp nutritional yeast (optional)",
+        "4 Greek style flatbreads",
+        "1 gem lettuce, roughly chopped",
+        "8 cherry toms, sliced",
+        "¼ red onion, finely sliced"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 2331,
+        "sha256": "4f99c327ced676ba"
+      },
+      "sha256_page": "467181d3918dec8e"
+    },
+    {
+      "url": "https://www.brandnewvegan.com/recipes/vegan-gyros",
+      "site": "brandnewvegan.com",
+      "nom": "Vegan Gyros with Tzatziki Sauce",
+      "portions": "4",
+      "duree_preparation": "PT-495739H30M21S",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "12 oz Extra Firm Tofu ((drained and patted dry))",
+        "2-3 cloves Garlic",
+        "1 English Cucumber ((peeled))",
+        "3 Tbs Lemon Juice",
+        "1 Tbs Apple Cider Vinegar",
+        "1 Tbs Fresh Dill",
+        "1/2 tsp Salt",
+        "16 oz Portabello Mushrooms ((sliced))",
+        "1/4 cup Soy Sauce ((low sodium))",
+        "2 Tbs Maple Syrup",
+        "2 Tbs Water",
+        "1 tsp Oregano",
+        "1/2 tsp Garlic Powder",
+        "1/2 tsp Onion Powder",
+        "1/2 tsp Ground Cumin",
+        "1/2 tsp Liquid Smoke",
+        "1/4 tsp Rosemary",
+        "1/4 tsp Black Pepper",
+        "1/8 tsp Ground Cloves",
+        "English Cucumber ((sliced))",
+        "Cherry Tomatoes ((sliced))",
+        "Red Onion ((sliced))",
+        "Romaine Lettuce",
+        "4-5 Pitas ((or use Wraps))",
+        "Hummus"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 720,
+        "sha256": "6c58cff4678f1987"
+      },
+      "sha256_page": "bd3df6fd1e5bdc5c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lacuisinedunetoquee/recettes/un-gyros-vegetarien-a-l-aubergine",
+      "site": "chefsimon.com",
+      "nom": "Un gyros végétarien à l’aubergine",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 wraps",
+        "tomates",
+        "roquette",
+        "tzatziki",
+        "2 aubergines",
+        "1 l d’eau froide",
+        "2 gousses d’ail",
+        "50 g de parmesan",
+        "2 œufs",
+        "50 g de chapelure",
+        "paprika fumé",
+        "1 peu de jus de citron",
+        "1 bouquet de persil",
+        "Huile d’olive",
+        "Sel, Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "963fe13bde97ff81"
+    }
+  ]
+}

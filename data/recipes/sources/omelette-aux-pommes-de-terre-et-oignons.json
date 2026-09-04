@@ -1,0 +1,148 @@
+{
+  "dish": "omelette aux pommes de terre et oignons",
+  "slug": "omelette-aux-pommes-de-terre-et-oignons",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/chef-papounet/recettes/omelette-aux-pommes-de-terre-et-oignons",
+      "site": "chefsimon.com",
+      "nom": "Omelette aux pommes de terre et oignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "3 belles pommes de terre. 6 oeufs. 2 oignons. 1 cc d'ail semoule. 20 g de beurre. Persil (Facultatif). Huile-Sel-Poivre."
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "1a75c0ba2f95e6af"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-a-l-ancienne-oignon-lardon-pomme-de-terre_169283.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette à l'ancienne (oignon-lardon-pomme de terre) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "6 oeufs",
+        "100 g de lardons nature",
+        "3 pommes de terre",
+        "2 oignons",
+        "1 cuillère à café de moutarde à l'ancienne",
+        "10 cl de crème semi-épaisse",
+        "gruyère",
+        "sel",
+        "poivre",
+        "ail",
+        "persil",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 634,
+        "sha256": "a6948c0844bd5ef9"
+      },
+      "sha256_page": "65eb6efc1ac77d11"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/omelette-aux-deux-pommes-de-terre-a-l-espagnole",
+      "site": "chefsimon.com",
+      "nom": "Omelette aux deux pommes de terre à l'espagnole",
+      "portions": "8 personnes",
+      "duree_preparation": "PT01H00M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "16 oeufs",
+        "2 poivrons rouges",
+        "2 tomates",
+        "2 échalotes",
+        "2 gousses d'ail",
+        "2 oignons",
+        "4 rattes du Touquet",
+        "4 vitelottes",
+        "huile d'olive",
+        "pimenton fumé",
+        "sel."
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1013,
+        "sha256": "cb1f15fb32f312d5"
+      },
+      "sha256_page": "059de1c1737af192"
+    },
+    {
+      "url": "https://www.750g.com/omelette-aux-pommes-de-terre-et-gruyere-r15843.htm",
+      "site": "750g.com",
+      "nom": "Omelette de pommes de terre au gruyère",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT4M",
+      "ingredients": [
+        "Poivre",
+        "Persil",
+        "Sel ou sel fin",
+        "120 g de gruyère",
+        "8 pommes de terre  cuites",
+        "12 oeufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 284,
+        "sha256": "84caa1d30b2d265f"
+      },
+      "sha256_page": "52e779a88df6290f"
+    },
+    {
+      "url": "https://www.750g.com/omelette-legere-a-la-pomme-de-terre-r83388.htm",
+      "site": "750g.com",
+      "nom": "Omelette legère à la pomme de terre,",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "Poivre",
+        "Matière grasse",
+        "Sel ou sel fin",
+        "Lait",
+        "4 oeufs",
+        "2 c. à s. de farine",
+        "3 pommes de terre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 300,
+        "sha256": "db9a496442d61773"
+      },
+      "sha256_page": "24397c3ea37b1663"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_omelette-de-pommes-de-terre-au-comte_23309.aspx",
+      "site": "marmiton.org",
+      "nom": "Omelette de pommes de terre au comté : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "12 oeufs",
+        "450 g de pommes de terre cuites",
+        "150 g de comté",
+        "3 cuillères à soupe d'huile",
+        "45 g de beurre",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 384,
+        "sha256": "934988e55a73c5bf"
+      },
+      "sha256_page": "e344fa879707cc7b"
+    }
+  ]
+}

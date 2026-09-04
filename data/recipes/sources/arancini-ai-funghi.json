@@ -1,0 +1,132 @@
+{
+  "dish": "arancini ai funghi",
+  "slug": "arancini-ai-funghi",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://blog.giallozafferano.it/ilcaldosaporedelsud/ricetta-arancini-ai-funghi/",
+      "site": "blog.giallozafferano.it",
+      "nom": "Arancini ai funghi",
+      "portions": [
+        "28",
+        "28"
+      ],
+      "duree_preparation": "PT60M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "3 l brodo vegetale",
+        "1 kg riso Roma (o carnaroli)",
+        "60 g burro",
+        "100 g Grana Padano grattugiato (o parmigiano)",
+        "800 g funghi (misti con porcini, champignon, portobello ecc...)",
+        "q.b. sale",
+        "1 mazzetto prezzemolo",
+        "50 g olio extravergine d'oliva",
+        "40 g burro",
+        "1 cipolla (bianca o rossa, 100g circa)",
+        "50 g farina 00",
+        "1 l latte",
+        "100 g parmigiano grattugiato (o grana)",
+        "1 spicchio aglio",
+        "besciamella (ai funghi preparata, quasi tutta)",
+        "500 g formaggio (caciotta, provola, emmental e pasta filata)",
+        "200 g farina 00",
+        "400 ml acqua",
+        "1 uovo",
+        "500 g pangrattato",
+        "1.5 l olio di semi di girasole (per la frittuar)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 4320,
+        "sha256": "ce7f4206fbfb9b80"
+      },
+      "sha256_page": "20a47036c4226d1b"
+    },
+    {
+      "url": "https://blog.giallozafferano.it/ricettechepassione/arancini-ai-funghi-porcini/",
+      "site": "blog.giallozafferano.it",
+      "nom": "Arancini ai funghi porcini - Ricetta facile",
+      "portions": [
+        "16",
+        "16 pezzi"
+      ],
+      "duree_preparation": null,
+      "duree_cuisson": "P0DT0H30M",
+      "ingredients": [
+        "500 g Riso (per risotto)",
+        "300-400 g Funghi porcini",
+        "1 spicchio Aglio",
+        "1/2 bicchieri Vino bianco",
+        "q.b. Sale",
+        "10 g Burro",
+        "2 cucchiai Grana padano",
+        "4 l Brodo vegetale (con carota sedano e cipolla)",
+        "200 g Mozzarella",
+        "1 Uovo",
+        "4 cucchiai Farina",
+        "1 cucchiaio Grana padano",
+        "q.b. Acqua",
+        "q.b. Sale",
+        "q.b. Pepe",
+        "200 g Mozzarella"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 3645,
+        "sha256": "495f206116af6684"
+      },
+      "sha256_page": "6265088fec72ecfd"
+    },
+    {
+      "url": "https://cookpad.com/it/ricette/14724967-arancini-con-riso-ai-funghi-porcini",
+      "site": "cookpad.com",
+      "nom": "Arancini con riso ai funghi porcini",
+      "portions": "4 porzioni",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "Riso ai funghi",
+        "1 uovo",
+        "Pan grattugiato",
+        "Olio"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 254,
+        "sha256": "a5e6c73bffbae29f"
+      },
+      "sha256_page": "bfa019ed2ec4e424"
+    },
+    {
+      "url": "https://www.tuorlorosso.it/arancine-ai-funghi/",
+      "site": "tuorlorosso.it",
+      "nom": "Arancine ai funghi",
+      "portions": "10",
+      "duree_preparation": "PT00H35M00S",
+      "duree_cuisson": "PT00H25M00S",
+      "ingredients": [
+        "500 g di riso Roma",
+        "1 l di acqua",
+        "85 g di burro",
+        "1 dado vegetale",
+        "1 bustina di zafferano",
+        "q.b. di sale",
+        "150 g di mozzarella",
+        "2-3 cucchiai di besciamella",
+        "300 g di funghi",
+        "1 spicchio d'aglio",
+        "q.b. di olio extravergine d'oliva",
+        "q.b. di sale",
+        "q.b. di pepe"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "5cc75e958fb06bb4"
+    }
+  ]
+}

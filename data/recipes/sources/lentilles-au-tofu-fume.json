@@ -1,0 +1,95 @@
+{
+  "dish": "Lentilles au tofu fumé",
+  "slug": "lentilles-au-tofu-fume",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://lacerisesurlemaillot.fr/cocotte-lentilles-tofu/",
+      "site": "lacerisesurlemaillot.fr",
+      "nom": "Cocotte de lentilles au tofu fumé",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "400 g de tofu fumé",
+        "200 g de lentilles vertes sèches",
+        "200 g de champignons de Paris",
+        "4  carottes",
+        "1  oignon",
+        "2  gousses d’ail",
+        "1  bouquet garni (ou 1 cuillère à café d’herbes de Provence)",
+        "1  cuillère à soupe de concentré de tomates",
+        "1  cuillère à soupe d’huile d’olive",
+        "1  litre d’eau",
+        "Persil frais ciselé (facultatif)",
+        "Sel (poivre)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 740,
+        "sha256": "c82a8e57853c737d"
+      },
+      "sha256_page": "f802de44cc5e2028"
+    },
+    {
+      "url": "https://www.notparisienne.fr/plats/lentilles-mijotees-au-tofu/",
+      "site": "notparisienne.fr",
+      "nom": "Lentilles mijotées au tofu",
+      "portions": null,
+      "duree_preparation": "PT0H0M",
+      "duree_cuisson": "PT0H0M",
+      "ingredients": [
+        "1 oignon rouge émincé finement",
+        "3 gousses d'ail émincées",
+        "1 c. à c. de coriandre",
+        "2 c. à c. de paprika",
+        "4 c. à s. de concentré de tomates",
+        "65 cl de bouillon végétal",
+        "280 g de mélange de lentilles",
+        "1 c. à s. de fumée liquide",
+        "1 c. à s. de sirop d’érable",
+        "225 g de tofu fumé",
+        "30 g de carottes émincées finement",
+        "50 g de champignons en fines tranches",
+        "2 c. à s. d’huile d’olive",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1478,
+        "sha256": "967fbb44107590b7"
+      },
+      "sha256_page": "b3889b6d16a95934"
+    },
+    {
+      "url": "https://www.cuisine-alcaline.com/recette/lentilles-aux-legumes-et-tofu-fume/",
+      "site": "cuisine-alcaline.com",
+      "nom": "LENTILLES AUX LÉGUMES ET TOFU FUMÉ",
+      "portions": "6 portions",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "500 gr lentilles vertes",
+        "300 gr Carottes",
+        "300 gr navets",
+        "300 gr céleri branche",
+        "200 gr tofu fumé",
+        "6 càs huile d'olive",
+        "1  oignon",
+        "4 gousses ail",
+        "Sel - poivre",
+        "herbes aromatiques ((laurier, origan, thym...))"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1040,
+        "sha256": "6f2b657bacf8538d"
+      },
+      "sha256_page": "97590565d8a19f2a"
+    }
+  ]
+}

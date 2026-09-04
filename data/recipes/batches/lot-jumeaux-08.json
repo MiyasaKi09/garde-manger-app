@@ -1,0 +1,871 @@
+{
+ "lot": "jumeaux-08",
+ "intention": "Huitième lot de jumeaux végétariens de même lignée (plan « planning parfait », chantier C2, exécuté par C6). Un jumeau est le même plat que sa base carnée — même structure, même féculent, même technique, même rôle d'assiette — dont la protéine animale est remplacée par une protéine que les sources attestent ; « derived_from » porte le code du parent, ce qui en fait, pour le planificateur, la version sans viande du MÊME plat, et non un autre plat servi à Zoé. Cinq jumeaux visés, quatre écrits, un refusé. LE PRINCIPE D'ARBITRAGE DU LOT, énoncé une fois et appliqué quatre fois : on ne rejuge que les lignes que l'échange de protéine touche, plus celles sur lesquelles le dossier du jumeau est unanime contre le silence du parent. Tout le reste est hérité — rejuger une carotte sur un dossier plus mince que celui du parent, ce serait remplacer une mesure par une plus faible. LE REFUS EST LE RÉSULTAT LE PLUS UTILE DU LOT : la lignée VAR-018 « Tajine de kefta » n'a pas de jumeau parce qu'aucun dossier ne montre le plat entier. La seule rédaction française d'un tajine de boulettes de lentilles existe en trois exemplaires — deux fois sur 750g, une fois sur gourmandiseries — avec la même marque de lentilles en boîte et les mêmes quantités au facteur deux près : c'est une rédaction republiée, pas deux sources. Le détail est dans « refuses ». DEUX AUTRES ÉCARTS AU PLAN, dits ici plutôt que lissés. D'abord les endives : le jumeau demandé était « Endives gratinées au chèvre » ; toutes les pages au chèvre que la chaîne ramène portent du jambon ou des lardons — y compris celle que marmiton titre « Endives gratinées au chèvre », qui compte quatre tranches de jambon — et les seules pages d'endives gratinées sans viande emploient chacune un fromage différent. On écrit donc le gratin d'endives à la béchamel que ces pages décrivent, et le chèvre descend en variante. Ensuite le vindaloo : cherché en français il ne rend rien, cherché en anglais il rend quatre pages, dont deux qui sont la même — onegreenplanet republie yupitsvegan liste pour liste. Le dossier compte donc quatre pages et trois rédactions, sur quatre sites, et c'est dit dans l'arbitrage. AUCUNE FORME NOUVELLE N'A ÉTÉ ARBITRÉE : les quatre recettes n'emploient que des formes déjà employables du catalogue, et data/foods/arbitrations/lot21-jumeaux-08.json n'existe donc pas, faute d'avoir quoi que ce soit à y écrire. Les formes qui auraient demandé un arbitrage — huile de coco, fourme de Montbrison, bleu d'Auvergne, fromage de brebis, protéines de soja texturées — ne sont employées par aucune des quatre fiches et descendent en variantes.",
+ "refuses": [
+  {
+   "twin_family": "Tajine de kefta de lentilles aux œufs",
+   "parent_code": "VAR-018",
+   "parent_family": "Tajine de kefta",
+   "motif": "Deux sources solides sur deux sites, oui ; deux rédactions, non — et c'est la règle qui compte. Le plat a été cherché sous cinq noms. « kefta de lentilles » rend deux pages exploitables sur deux sites (chefsimon « Boulettes de lentilles façon kefta », sainplement healthy « Kefta végétarienne aux lentilles vertes ») : elles décrivent des boulettes, cuites au four ou poêlées, et RIEN du plat du parent — ni sauce tomate mijotée, ni œufs cassés dans la sauce ; la troisième page, terrasana, liste des produits de marque sans quantités et l'audit l'écarte. « tajine de boulettes de lentilles » rend quatre pages : 750g deux fois (r81351 et r80690, mêmes ingrédients, mêmes quantités, 2 personnes), gourmandiseries.fr une fois (mêmes ingrédients, quantités exactement doublées, 4 personnes), toutes trois citant la même marque de lentilles cuisinées en boîte — une seule rédaction republiée, ce que l'audit ne sait pas voir puisqu'il compte des sites. La quatrième, forks over knives, est un autre plat : des boulettes de pois chiches et de boulgour mijotées avec des pommes de terre dans six tasses de bouillon, sans œufs. Reste que dans les trois pages françaises l'œuf sert à paner les boulettes avant friture, jamais à être poché dans la sauce : le geste qui donne son nom au plat du parent n'est attesté nulle part du côté végétarien. Écrire ce jumeau, c'était emprunter la structure au parent et n'apporter des sources que pour les boulettes — une recette de mémoire par assemblage. Les deux dossiers sont conservés (data/recipes/sources/kefta-de-lentilles.json et tajine-de-boulettes-de-lentilles.json) : ils disent ce qui manque, et sur quoi une reprise devra travailler."
+  }
+ ],
+ "recipes": [
+  {
+   "code": "JUM-081",
+   "family": "Œufs à la basquaise",
+   "derived_from": "FR-008",
+   "cuisine_origin": "France / cuisine domestique internationale",
+   "identity_level": "named_traditional_dish",
+   "category": "plat mijoté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 40,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:oeufs-a-la-basquaise",
+    "marmiton.org",
+    "750g.com"
+   ],
+   "description_courte": "Compotée de poivrons rouges et verts, d'oignon et de tomate au piment d'Espelette, dans laquelle les œufs finissent de cuire à couvert — le jumeau végétarien du poulet basquaise, dont seule la volaille était carnée.",
+   "canonical_arbitration": "Six pages relevées sur deux sites, cinq solides : l'audit écarte les « Œufs brouillés à la Basquaise » de 750g, dont deux lignes d'ingrédients seulement portent un nombre. Des cinq restantes, TROIS SONT SANS VIANDE et ce sont elles qui font la recette (marmiton « Œufs pochés à la basquaise », 750g « Œufs à la basquaise », 750g « Œufs cocotte façon basquaise ») ; les deux autres ajoutent du chorizo ou des lardons et ne servent qu'aux quantités de légumes. L'œuf : cinq pages le chiffrent, à 2, 1, 1, 0,8 et 2 œufs par personne ; médiane 1 œuf par personne, soit 4 œufs. On monte à 8, deux par personne, et c'est une décision : le jumeau doit tenir le rôle de plat principal que le parent tient avec 250 g de poulet par part, et deux des cinq pages comptent déjà deux œufs. Les poivrons : quatre pages pesables, à 75, 150, 75 et 120 g par personne ; médiane 97,5 g par personne, soit 390 g, qu'on écrit 400 g, moitié rouges moitié verts comme chez le parent — une seule page n'emploie que du vert, une seule que du rouge, et le partage tranche entre elles. La tomate : quatre pages, à 180, 120, 100 et 48 g par personne ; médiane 110 g par personne, soit 440 g. On descend à 400 g de tomates concassées en conserve, forme du parent : les œufs doivent cuire dans une compotée qui tient, pas dans un jus. L'oignon : quatre pages, 37,5 g par personne pour trois d'entre elles et 30 pour la quatrième ; médiane 37,5 g par personne, soit 150 g. L'ail : deux pages seulement le chiffrent, à 1,25 et 2 g par personne ; médiane 1,6 g par personne, soit 6,5 g — on écrit 10 g, deux gousses, la quantité du parent ramenée à quatre parts, un aromate ne se pesant pas au gramme. L'huile d'olive : trois pages, à 15, 7,5 et 9 ml par personne ; médiane 9 ml par personne, soit 36 ml, écrit 35 ml. Hérités du parent, parce que l'échange de protéine ne les touche pas : le vin blanc sec (120 ml pour six parts, soit 80 ml pour quatre), le thym et le piment d'Espelette, que les pages du jumeau comptent en pincées et en branches. Écartés : le morceau de sucre de deux pages, les olives noires, le basilic et les 120 g de fromage de brebis de 750g (forme absente du catalogue), les herbes de Provence de marmiton, et la cuisson en œufs brouillés de deux pages — le parent cuit sa protéine DANS la sauce, un œuf brouillé à côté n'est plus le même plat. Durées : préparation, médiane 20 minutes des trois pages qui la donnent ; cuisson, médiane 40 minutes. UN DOUBLON POSSIBLE, examiné et écarté : le corpus porte déjà SRC-048-D4 « Piperade aux œufs pochés ». Ce n'est pas ce jumeau. Sa lignée est celle de la piperade, pas celle du poulet basquaise, et le planificateur ne peut donc pas la servir à Zoé pendant que Julien mange le FR-008 ; sa sauce n'est pas la même non plus — poivron rouge seul, tomate fraîche râpée, sucre et laurier, sans vin blanc ni poivron vert. Le jumeau écrit ici reprend la sauce du parent trait pour trait, ce qui est tout l'intérêt : une seule compotée sur le feu, deux finitions.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Même rôle que le parent, et pour la même raison : deux œufs et 200 g de légumes compotés par part font la protéine et le légume, mais il n'y a aucun féculent dans la sauteuse. Les pages servent ce plat avec du pain de campagne ou du riz, et une sauce aussi serrée est faite pour être saucée."
+   },
+   "ingredients": [
+    {
+     "form": "Tomate concassée en conserve",
+     "quantity": 400,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 8,
+     "unit": "u",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Poivron rouge frais",
+     "quantity": 200,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Poivron vert frais",
+     "quantity": 200,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 150,
+     "unit": "g",
+     "role": "base aromatique",
+     "optional": false
+    },
+    {
+     "form": "Vin blanc sec",
+     "quantity": 80,
+     "unit": "ml",
+     "role": "déglaçage",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 35,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Thym frais",
+     "quantity": 3,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Piment d'Espelette moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Épépiner les poivrons et les tailler en lanières d'un centimètre, émincer l'oignon finement, hacher l'ail. Prendre une sauteuse large plutôt qu'une casserole : la compotée devra réduire à découvert, puis recevoir huit œufs côte à côte sans qu'ils se chevauchent, et c'est le diamètre du récipient qui décide des deux."
+    },
+    {
+     "n": 2,
+     "instruction": "Faire fondre l'oignon dix minutes dans l'huile d'olive à feu doux, sans le laisser prendre couleur, puis ajouter les lanières de poivron, couvrir et poursuivre un quart d'heure. Le poivron rend son eau sous le couvercle et s'attendrit sans griller : c'est ce passage à couvert qui sépare une basquaise d'une poêlée de poivrons, et il ne se raccourcit pas."
+    },
+    {
+     "n": 3,
+     "instruction": "Découvrir, ajouter l'ail haché, le thym effeuillé et le piment d'Espelette, remuer une demi-minute, puis verser le vin blanc et laisser l'alcool s'évaporer à feu vif. L'Espelette n'est pas un piment de force mais de parfum : jeté dans le gras chaud avant le liquide, il donne son goût fruité, versé à la fin il ne donne que sa couleur."
+    },
+    {
+     "n": 4,
+     "instruction": "Verser les tomates concassées, saler, poivrer, et laisser compoter vingt-cinq minutes à découvert, à petits frémissements, jusqu'à ce qu'une spatule passée au fond laisse un sillon qui tient deux ou trois secondes. Une compotée encore liquide noierait les œufs et les ferait pocher au lieu de les prendre : le sillon est le seul test qui vaille, et il vient plus tard qu'on ne croit."
+    },
+    {
+     "n": 5,
+     "instruction": "Creuser huit nids dans la compotée avec le dos d'une cuillère, en dégageant bien le fond de la sauteuse, et casser un œuf dans chacun. Les nids ne sont pas une décoration : ils posent le blanc au contact de la fonte chaude, là où il prend vite, pendant que le jaune reste porté par la sauce, plus tiède."
+    },
+    {
+     "n": 6,
+     "instruction": "Couvrir et laisser cuire six à huit minutes à feu doux, jusqu'à ce que les blancs soient opaques et les jaunes encore tremblants. La vapeur retenue par le couvercle voile le dessus des jaunes et achève les blancs par le haut ; au-delà de huit minutes le jaune se fige et le plat perd ce qui en fait un plat du soir."
+    },
+    {
+     "n": 7,
+     "instruction": "Couper le feu, laisser reposer deux minutes à couvert et servir dans la sauteuse, avec du pain grillé ou du riz. Ce court repos suffit à ce que la chaleur résiduelle finisse les blancs les plus épais, sans que les jaunes en pâtissent — on ne rattrape jamais un œuf trop cuit, on peut toujours en attendre un peu plus."
+    }
+   ],
+   "techniques": [
+    "suer",
+    "cuisson à couvert",
+    "déglaçage",
+    "compotage",
+    "œufs pochés en sauce"
+   ],
+   "variants": [
+    "Aux œufs brouillés, versés sur la compotée hors du feu et remués jusqu'à la prise (marmiton, 750g)",
+    "Aux œufs pochés à l'eau vinaigrée et nappés de la compotée au service (marmiton)",
+    "En cocottes individuelles, un œuf par cocotte, huit minutes au four au bain-marie sous le gril (750g)",
+    "Aux olives noires dénoyautées et au fromage de brebis en dés fondu sur les œufs, forme absente du catalogue (750g)",
+    "Adoucie d'un morceau de sucre pour corriger l'acidité de la tomate (marmiton, 750g)",
+    "Au chorizo ou aux lardons poêlés à part et ajoutés au service — c'est alors le plat carné, pas ce jumeau (marmiton)"
+   ],
+   "sensory": {
+    "profile": "savory_tomato",
+    "scores": {
+     "sweet": 3,
+     "salty": 2,
+     "acidic": 3,
+     "bitter": 1,
+     "umami": 3,
+     "heat": 2,
+     "pungency": 2,
+     "richness": 2,
+     "freshness": 2,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "poivron compoté",
+     "tomate cuite",
+     "piment d'Espelette",
+     "œuf"
+    ],
+    "aroma_families": [
+     "poivron",
+     "tomate_cuite",
+     "piment",
+     "huile_olive"
+    ],
+    "target_textures": [
+     "légumes fondants",
+     "sauce_épaisse",
+     "jaune d'œuf coulant"
+    ],
+    "signature_ingredients": [
+     "Œuf cru",
+     "Poivron rouge frais",
+     "Piment d'Espelette moulu"
+    ],
+    "identity_guardrails": [
+     "Les œufs cuisent DANS la compotée, comme le poulet du parent cuit dans sa sauce : brouillés ou pochés à côté, ce n'est plus le même plat",
+     "La compotée doit tenir au sillon avant que les œufs n'y entrent, sinon ils se noient",
+     "Le piment d'Espelette entre dans le gras chaud, avant la tomate, sinon il ne donne que sa couleur",
+     "Deux couleurs de poivron, comme chez le parent : le vert apporte l'amertume que le rouge n'a pas"
+    ]
+   },
+   "conservation": "Aucune page du dossier ne parle de conservation : ce qui suit décrit ce que fait physiquement le plat. La compotée seule, sans les œufs, se garde 4 jours au réfrigérateur dans un récipient fermé et gagne au deuxième jour, le temps que le poivron et la tomate se répondent ; elle se congèle 3 mois à -18 °C sans rien perdre, ce qui en fait une base à doubler. Le plat monté, lui, ne se conserve pas : un jaune d'œuf déjà cuit devient sableux au réchauffage et le blanc rend son eau dans la sauce. On garde donc la compotée et on casse les œufs au moment de servir — c'est aussi ce qui permet de cuire une seule sauce pour deux assiettes, celle du parent et celle-ci.",
+   "allergens": [
+    "œuf"
+   ]
+  },
+  {
+   "code": "JUM-082",
+   "family": "Vindaloo de pois chiches et pommes de terre",
+   "derived_from": "REAL-187",
+   "cuisine_origin": "Goa",
+   "identity_level": "named_traditional_dish",
+   "category": "curry vinaigré",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 6,
+   "prep_minutes": 25,
+   "cook_minutes": 40,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:vindaloo",
+    "yupitsvegan.com",
+    "onegreenplanet.org",
+    "monkeyandmekitchenadventures.com",
+    "pickyeaterblog.com"
+   ],
+   "description_courte": "Pois chiches et pommes de terre mijotés dans la pâte vinaigrée d'ail, de gingembre et de piments du vindaloo — le jumeau végétarien du vindaloo de porc, dont la marinade au vinaigre passe telle quelle à la légumineuse.",
+   "canonical_arbitration": "QUATRE PAGES, TROIS RÉDACTIONS, QUATRE SITES, et il faut le dire ainsi : onegreenplanet republie yupitsvegan liste pour liste et geste pour geste — mêmes deux tasses de pois chiches secs, mêmes cinq tasses d'eau, même pâte torréfiée au mixeur — de sorte que le dossier ne porte que trois versions distinctes du plat. Cherché en français, « vindaloo végétarien », « vindaloo de pois chiches » et « vindaloo de légumes » ne rendent aucune page exploitable sur les trois sites de la chaîne ; c'est en anglais que le plat existe, sous « chickpea vindaloo », « potato vindaloo » et « vegetable vindaloo », et les trois rédactions construisent la même chose : une pâte acide et pimentée, une légumineuse ou une racine à sa place, une tomate pour le corps. Le pois chiche : deux rédactions sur trois en portent, à 190 et 45 g cuits égouttés par personne — la première part de pois chiches secs trempés et cuits dans le plat, la seconde d'une conserve. Médiane 117,5 g par personne, soit 705 g, qu'on écrit 700 g. La troisième page les remplace par du chou-fleur et des haricots verts : elle descend en variante. La pomme de terre : trois rédactions sur trois, à 45, 82 et 75 g par personne ; médiane 75 g par personne, soit 450 g. Une page en met la moitié en patate douce, forme du catalogue mais isolée : variante. La tomate : trois sur trois, à 36, 75 et 132 g par personne ; médiane 75 g par personne, soit 450 g de tomates concassées en conserve. Le concentré de tomate est lui aussi dans les trois, à 6,4, 5,8 et 2,7 g par personne ; médiane 5,8 g par personne, soit 35 g, qu'on écrit 30 g. Le parent est muet sur la tomate — c'est le cas prévu par le principe du lot : dossier unanime contre silence du parent, on écrit ce que le dossier montre. Le mouillement : le parent n'en a pas, la viande rendant son jus ; ici deux rédactions sur trois versent un bouillon de légumes, à 87 et 50 ml par personne, médiane 68,5 ml par personne, soit 411 ml, écrit 400 ml. La troisième cuit ses pois chiches secs dans cinq tasses d'eau, ce qui n'est pas comparable et ne compte pas dans la médiane. L'acidité, qui EST le vindaloo : les trois rédactions donnent 12, 5,5 et 5 ml par personne, médiane 5,5 ml par personne, soit 33 ml. On monte à 60 ml, décision assumée : le parent en porte 120 ml pour six parts, la page la plus haute compte un jus de citron entier, et 33 ml de vinaigre dans deux kilos et demi de curry ne s'y goûteraient pas. Le curcuma (trois sur trois, médiane 0,5 g par personne, soit 3 g) et le paprika (trois sur trois, médiane 0,67 g par personne, soit 4 g — une page le dit fumé, une autre doux) entrent au même titre que la tomate : unanimes ici, absents chez le parent. Hérités du parent, que l'échange ne touche pas : l'oignon (250 g), l'ail (25 g), le gingembre (25 g), le piment rouge séché (15 g), les graines de coriandre (8 g) et de cumin (6 g), le bâton de cannelle, les six clous de girofle et les 20 g de jaggery. Les pages du jumeau les comptent en cuillerées à café et en gousses, sur des dossiers plus minces que celui du parent : les rejuger là-dessus remplacerait une mesure par une plus faible. AUCUNE MATIÈRE GRASSE n'est écrite, et c'est un choix : deux rédactions emploient de l'huile de coco, que le catalogue ne porte pas, la troisième cuit sans gras en mouillant d'une cuillerée de bouillon, et le parent lui-même n'en déclare aucune. Écrire une huile de tournesol ou d'arachide que personne ne nomme serait inventer. Écartés : la cardamome et le fenugrec (deux pages sur trois chacun), les feuilles de laurier, le garam masala de finition, les épinards, le miso et le bicarbonate d'une page. Durées : préparation, médiane 15 minutes des trois pages, écrite 25 — le dossier compte la pâte au mixeur sans compter l'épluchage. Cuisson, médiane 30 minutes ; on écrit 40, les dés de pomme de terre demandant vingt-cinq minutes et la pâte devant ensuite mijoter avec la tomate.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch",
+     "vegetables"
+    ],
+    "reason": "Même rôle que le parent : 117 g de pois chiches et 75 g de pomme de terre par part portent le plat, mais la pomme de terre est ici dans la sauce, en dés, et ne fait pas l'assiette. Les trois pages servent ce curry sur du riz, comme le parent, et un légume vert à côté n'est pas de trop face à une sauce aussi acide."
+   },
+   "ingredients": [
+    {
+     "form": "Pois chiche cuit, égoutté",
+     "quantity": 700,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Pomme de terre crue, épluchée",
+     "quantity": 450,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Tomate concassée en conserve",
+     "quantity": 450,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Bouillon de légumes",
+     "quantity": 400,
+     "unit": "ml",
+     "role": "mouillement",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 250,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Vinaigre de palmier ou cidre",
+     "quantity": 60,
+     "unit": "ml",
+     "role": "acidité",
+     "optional": false
+    },
+    {
+     "form": "Concentré de tomate",
+     "quantity": 30,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 25,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Gingembre frais",
+     "quantity": 25,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Jaggery",
+     "quantity": 20,
+     "unit": "g",
+     "role": "équilibre",
+     "optional": false
+    },
+    {
+     "form": "Piment rouge séché",
+     "quantity": 15,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Coriandre fraîche",
+     "quantity": 15,
+     "unit": "g",
+     "role": "herbe",
+     "optional": false
+    },
+    {
+     "form": "Coriandre en graines",
+     "quantity": 8,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 7,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Cumin en graines",
+     "quantity": 6,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Paprika doux",
+     "quantity": 4,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Curcuma moulu",
+     "quantity": 3,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 3,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Clou de girofle",
+     "quantity": 6,
+     "unit": "u",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Cannelle en bâton",
+     "quantity": 1,
+     "unit": "u",
+     "role": "épice",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Chauffer une poêle à sec et y faire tourner les graines de coriandre et de cumin, les clous de girofle, le bâton de cannelle brisé et les piments rouges séchés, une à deux minutes, jusqu'à ce que l'odeur monte et que les graines commencent à craquer. La torréfaction est le premier geste du parent et elle ne change pas : ce sont les huiles essentielles des graines qui font le vindaloo, et elles ne sortent qu'à la chaleur sèche."
+    },
+    {
+     "n": 2,
+     "instruction": "Verser les épices tièdes dans un mixeur avec le vinaigre, l'ail, le gingembre, le curcuma, le paprika, le poivre et le concentré de tomate, et mixer jusqu'à obtenir une pâte lisse. Le vinaigre n'est pas ici un assaisonnement de fin mais le liquide qui porte la pâte : c'est de lui que le plat tient son nom et son acidité franche."
+    },
+    {
+     "n": 3,
+     "instruction": "Émincer l'oignon et le faire fondre douze minutes dans une cocotte à feu moyen, en mouillant d'une cuillerée de bouillon dès qu'il attache. On cuit sans matière grasse, comme la page qui s'en passe : sans viande à saisir, il n'y a pas de gras à récupérer, et la pâte acide qui suit n'a pas besoin d'huile pour s'ouvrir."
+    },
+    {
+     "n": 4,
+     "instruction": "Ajouter la pâte et la cuire cinq à six minutes en remuant sans arrêt, jusqu'à ce qu'elle fonce et se détache du fond. Une pâte crue garde un goût de vinaigre brut et d'ail piquant ; c'est cette cuisson qui la transforme en sauce, et c'est le seul moment du plat où il ne faut pas quitter la cocotte des yeux."
+    },
+    {
+     "n": 5,
+     "instruction": "Verser le bouillon, ajouter les pommes de terre en dés de deux centimètres, porter à frémissement et laisser cuire vingt minutes à couvert partiel. Les dés cuisent dans la sauce et non à l'eau : ils s'y colorent, et l'amidon qu'ils lâchent épaissit le curry, ce que la viande du parent ne faisait pas."
+    },
+    {
+     "n": 6,
+     "instruction": "Ajouter les pois chiches rincés, les tomates concassées et le jaggery, saler, et poursuivre vingt minutes à petits bouillons, à découvert. Le sucre de canne n'adoucit pas le piment, il équilibre l'acide : sans lui, le vinaigre reste en pointe sur la langue au lieu de se fondre au piment."
+    },
+    {
+     "n": 7,
+     "instruction": "Goûter, rectifier le sel et l'acidité, couper le feu et parsemer de coriandre ciselée. Un vindaloo se goûte à la fin seulement : les quarante minutes de mijotage ont arrondi la pâte, et ce qui paraissait violent au départ s'est rangé."
+    },
+    {
+     "n": 8,
+     "instruction": "Laisser reposer un quart d'heure à couvert avant de servir avec du riz. Le repos n'est pas une politesse : les pois chiches, qui sont entrés cuits, boivent alors la sauce et cessent d'être un ingrédient posé dedans."
+    }
+   ],
+   "techniques": [
+    "torréfaction des épices",
+    "mixage",
+    "cuisson du masala",
+    "mijotage",
+    "acidification"
+   ],
+   "variants": [
+    "Aux légumes plutôt qu'aux pois chiches : chou-fleur, haricots verts et poivron rouge à la place de la légumineuse (pickyeaterblog)",
+    "Moitié pomme de terre, moitié patate douce (monkeyandmekitchenadventures)",
+    "Aux pois chiches secs trempés la veille et cuits dans le plat, quarante minutes de plus (yupitsvegan, onegreenplanet)",
+    "Pâte enrichie de cardamome verte et de graines de fenugrec, deux pages sur trois (yupitsvegan, pickyeaterblog)",
+    "Ouverture des épices à l'huile de coco, forme absente du catalogue (yupitsvegan, pickyeaterblog)",
+    "Épinards frais tombés dans la sauce en fin de cuisson (monkeyandmekitchenadventures)",
+    "Garam masala et piment de Cayenne ajoutés au dernier moment pour relever (pickyeaterblog, monkeyandmekitchenadventures)"
+   ],
+   "sensory": {
+    "profile": "spicy_umami",
+    "scores": {
+     "sweet": 2,
+     "salty": 2,
+     "acidic": 4,
+     "bitter": 1,
+     "umami": 3,
+     "heat": 4,
+     "pungency": 4,
+     "richness": 1,
+     "freshness": 2,
+     "intensity": 5
+    },
+    "dominant_flavors": [
+     "vinaigre",
+     "piment rouge",
+     "cumin torréfié",
+     "pois chiche"
+    ],
+    "aroma_families": [
+     "vinaigre",
+     "piment",
+     "cumin",
+     "gingembre",
+     "cannelle"
+    ],
+    "target_textures": [
+     "pomme de terre fondante",
+     "sauce_épaisse",
+     "dés fondants gardant leur forme"
+    ],
+    "signature_ingredients": [
+     "Vinaigre de palmier ou cidre",
+     "Piment rouge séché",
+     "Pois chiche cuit, égoutté"
+    ],
+    "identity_guardrails": [
+     "Le vinaigre entre dans la pâte, pas à la fin : c'est le liquide qui porte les épices, comme chez le parent",
+     "Les épices entières se torréfient à sec avant d'être mixées — une poudre toute prête donne un autre plat",
+     "La pâte se cuit jusqu'à ce qu'elle fonce, sinon l'ail reste piquant et le vinaigre brut",
+     "Le jaggery équilibre l'acide et ne sucre pas : le supprimer déséquilibre le plat, le doubler en fait un curry sucré"
+    ]
+   },
+   "conservation": "Aucune des quatre pages ne parle de conservation ; ce qui suit décrit ce que fait ce type de curry. Se garde 4 jours au réfrigérateur dans un récipient fermé, et il est meilleur le lendemain : l'acide et les épices continuent d'entrer dans les pois chiches, qui sont entrés cuits et n'ont pas d'autre moyen de prendre le goût. La congélation est possible 3 mois à -18 °C, avec une réserve : la pomme de terre en dés devient granuleuse au dégel, son amidon ayant recristallisé — congeler de préférence une fournée faite sans elle, ou accepter cette texture. Réchauffer à couvert et à feu doux avec deux cuillerées d'eau, l'amidon des pommes de terre ayant encore épaissi au froid.",
+   "allergens": []
+  },
+  {
+   "code": "JUM-083",
+   "family": "Galette de sarrasin aux champignons, œuf et fromage",
+   "derived_from": "RAP-044",
+   "cuisine_origin": "France (Bretagne)",
+   "identity_level": "named_traditional_dish",
+   "category": "galette",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 25,
+   "cook_minutes": 20,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:galette-aux-champignons-et-a-l-oeuf",
+    "chefsimon.com",
+    "jow.fr"
+   ],
+   "description_courte": "Galette de sarrasin garnie de champignons de Paris poêlés à l'échalote, d'un œuf miroir et de fromage râpé — le jumeau végétarien de la galette complète, dont seul le jambon était carné.",
+   "canonical_arbitration": "Sept pages relevées sur cinq sites, DEUX SOLIDES SUR DEUX SITES et pas une de plus : l'audit écarte cinq titres qui ne portent pas ensemble les trois mots du plat (deux jow « Galette forestière », supertoinette « Galettes de sarrasin aux champignons », deux ptitchef « à l'œuf miroir » et « complète au jambon »). Restent chefsimon « Galette sarrasin aux champignons, poireau, jambon ou œuf » et jow « Galette champignons & œuf miroir » — et ce sont précisément les deux pages qui décrivent la garniture sans viande, la première en donnant le jambon pour facultatif, la seconde en ne le mentionnant pas. Les cinq écartées ne comptent pas dans les médianes du champignon mais elles disent la même chose du montage, ce qui rassure sur le geste sans rien ajouter au calcul. Le champignon, seule ligne que l'échange touche : cinq pages le chiffrent, à 17, 25, 42, 80 et 90 g par personne ; médiane 42 g par personne, soit 168 g. On écrit 200 g, et c'est une décision physique autant qu'éditoriale — le champignon de Paris perd près de la moitié de son poids à la poêle, si bien que 200 g crus donnent environ 25 g par galette une fois l'eau partie, là où le parent posait 30 g de jambon. L'échalote entre avec lui : trois pages la poêlent avec les champignons, à environ 10 g par personne chacune, soit 40 g pour quatre galettes. Elle n'est pas au parent, mais elle est au dossier du jumeau, et sans viande à saler il faut bien que quelque chose donne du fond à la poêlée. Hérités du parent, que l'échange ne touche pas : la pâte (480 ml d'eau, 210 g de farine de sarrasin, 5 g de sel), les 60 g de beurre, les cinq œufs — un dans la pâte, quatre sur les galettes, un par assiette comme les deux pages solides — et les 100 g de fromage râpé, soit 25 g par galette, que les pages du jumeau comptent en pincées et en cuillerées à soupe. Écartés : le poireau, le vin blanc, la crème et la muscade de la page chefsimon, qui en fait une galette à la crème et non une complète ; l'ail de deux pages ; la sauce liée au bouillon de volaille de la page canadienne, qui de toute façon sortirait le plat du végétarien. Durées : préparation, 15 minutes chez chefsimon et 3 à 5 chez jow, qui part d'une galette toute faite ; on écrit 25 minutes, pâte comprise mais repos exclu, comme le parent. Cuisson, 10 minutes chez les deux pages pour la seule garniture ; on écrit 20, la poêlée de champignons demandant huit minutes avant que la première galette ne touche la poêle.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Même rôle que le parent, et pour la même raison : le féculent est la galette elle-même, la protéine est l'œuf et le fromage, et les champignons font le légume — tout est dans le pli. Les deux pages solides la servent seule, et une salade à côté relève de l'usage, pas du manque."
+   },
+   "ingredients": [
+    {
+     "form": "Eau",
+     "quantity": 480,
+     "unit": "ml",
+     "role": "pâte",
+     "optional": false
+    },
+    {
+     "form": "Farine de sarrasin",
+     "quantity": 210,
+     "unit": "g",
+     "role": "pâte",
+     "optional": false
+    },
+    {
+     "form": "Champignon de Paris frais",
+     "quantity": 200,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Gruyère râpé",
+     "quantity": 100,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 60,
+     "unit": "g",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 5,
+     "unit": "u",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Échalote crue",
+     "quantity": 40,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 5,
+     "unit": "g",
+     "role": "pâte",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Mélanger la farine de sarrasin et le sel dans un saladier, creuser un puits, y casser un œuf et verser l'eau petit à petit en fouettant, jusqu'à une pâte lisse et fluide. Verser l'eau en une fois donnerait des grumeaux que le fouet ne rattrape plus : la farine doit être mouillée progressivement pour que l'amidon se disperse."
+    },
+    {
+     "n": 2,
+     "instruction": "Couvrir et laisser reposer la pâte au moins deux heures, et jusqu'à une nuit au réfrigérateur. Le sarrasin n'a pas de gluten et ne se détend donc pas comme une pâte de blé : ce qu'on attend du repos, c'est que ses grains gonflent d'eau, sans quoi la galette se déchire à l'étalement."
+    },
+    {
+     "n": 3,
+     "instruction": "Émincer l'échalote, nettoyer les champignons et les tailler en lamelles de trois ou quatre millimètres. Ne pas les passer sous l'eau : un champignon de Paris se brosse ou s'essuie, il boit ce qu'on lui donne et rendra tout à la poêle."
+    },
+    {
+     "n": 4,
+     "instruction": "Faire fondre une noix de beurre dans une poêle bien chaude, y jeter l'échalote une minute puis les champignons, et les cuire à feu vif huit minutes sans couvrir, en remuant, jusqu'à ce que l'eau rendue soit entièrement partie et qu'ils colorent. C'est l'étape qui décide de la garniture : des champignons retirés trop tôt lâcheraient leur eau dans la galette et la ramolliraient sous l'œuf. Saler et poivrer hors du feu, réserver."
+    },
+    {
+     "n": 5,
+     "instruction": "Beurrer une crêpière ou une poêle large sur feu moyen-vif, verser une petite louche de pâte et l'étaler en couche mince, puis laisser cuire jusqu'à ce que les bords se décollent et se colorent. Une galette se cuit d'abord seule et sans garniture : c'est la face qui prend la couleur, et elle deviendra le dessous de l'assiette."
+    },
+    {
+     "n": 6,
+     "instruction": "Retourner la galette, casser un œuf en son centre sans crever le jaune, poudrer de fromage râpé autour du blanc et répartir un quart de la poêlée de champignons. L'ordre compte : le fromage posé sur la galette brûlante fond et colle la garniture, alors que jeté sur les champignons il resterait en surface."
+    },
+    {
+     "n": 7,
+     "instruction": "Laisser cuire trois minutes à feu moyen, le temps que le blanc devienne opaque et que le jaune reste coulant, puis rabattre les quatre bords sur la garniture en laissant le jaune apparent. Le pli n'est pas décoratif : il tient la chaleur autour du fromage pendant que l'œuf finit, et il fait tenir la galette à la fourchette."
+    },
+    {
+     "n": 8,
+     "instruction": "Servir immédiatement, et recommencer pour les trois autres galettes. Une galette garnie ne se garde pas au chaud : le jaune continue de cuire, le fond ramollit sous la vapeur, et c'est exactement ce que ce plat n'est pas."
+    }
+   ],
+   "techniques": [
+    "mélange",
+    "repos",
+    "évaporation des champignons",
+    "poêlage",
+    "pliage"
+   ],
+   "variants": [
+    "Aux champignons des bois — chanterelles, pleurotes, champignons bruns — plutôt qu'aux champignons de Paris (chefsimon)",
+    "À la crème : blanc de poireau fondu, vin blanc, crème et muscade avec les champignons (chefsimon)",
+    "Sans échalote, les champignons poêlés seuls à l'ail (supertoinette)",
+    "Aux épinards frais tombés avec les champignons (ptitchef)",
+    "Pâte au lait ribot avec une pointe de levure, plus souple à étaler (ptitchef)",
+    "Avec une tranche de jambon ajoutée sous l'œuf — c'est alors la galette complète du parent, pas ce jumeau (jow, supertoinette, ptitchef)"
+   ],
+   "sensory": {
+    "profile": "nutty_savory",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 1,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 3,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "sarrasin grillé",
+     "champignon poêlé",
+     "beurre",
+     "fromage fondu"
+    ],
+    "aroma_families": [
+     "céréalier",
+     "champignon_terreux",
+     "beurre",
+     "fromage_affiné"
+    ],
+    "target_textures": [
+     "bords_grillés",
+     "jaune d'œuf coulant",
+     "lamelles de champignon tendres",
+     "fromage fondant"
+    ],
+    "signature_ingredients": [
+     "Farine de sarrasin",
+     "Champignon de Paris frais",
+     "Œuf cru"
+    ],
+    "identity_guardrails": [
+     "Les champignons perdent toute leur eau à la poêle avant d'entrer dans la galette, sinon le fond se détrempe",
+     "L'œuf reste coulant : c'est lui qui fait la sauce du plat, il n'y en a pas d'autre",
+     "La galette se garnit sur sa seconde face, jamais avant d'être retournée",
+     "Elle se mange à la sortie de la poêle — une galette garnie qui attend n'est plus la même chose"
+    ]
+   },
+   "conservation": "Le dossier ne dit rien de la conservation ; ce qui suit vaut pour ce type de galette et rejoint ce que dit le parent. La pâte crue se garde 3 jours au réfrigérateur et s'améliore même au deuxième jour, le sarrasin ayant fini de boire : c'est l'intérêt d'en faire une grande quantité. Les galettes NATURE, cuites sans garniture, se gardent 3 jours empilées avec un papier entre chacune, et se congèlent 2 mois à -18 °C ; on les garnit alors directement à la poêle, ce qui ramène le plat à cinq minutes. La poêlée de champignons se garde 48 heures à part et se réchauffe à la poêle. La galette garnie, en revanche, ne se conserve pas du tout : l'œuf coulant est le plat, et il ne se réchauffe pas.",
+   "allergens": [
+    "gluten",
+    "œuf",
+    "lait"
+   ]
+  },
+  {
+   "code": "JUM-084",
+   "family": "Gratin d'endives à la béchamel",
+   "derived_from": "FR-022",
+   "cuisine_origin": "France / cuisine domestique internationale",
+   "identity_level": "domestic_standard",
+   "category": "gratin complet",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 50,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:gratin-d-endives",
+    "the-best-recipes.com",
+    "chefsimon.com",
+    "ptitchef.com",
+    "marmiton.org"
+   ],
+   "description_courte": "Endives braisées jusqu'à ce qu'elles soient tendres, nappées d'une béchamel muscadée où fond le fromage, puis gratinées — le jumeau végétarien des endives au jambon, dont le fromage prend la place des tranches.",
+   "canonical_arbitration": "Sept pages relevées sur quatre sites, sept solides pour l'audit, mais QUATRE SEULEMENT SONT SANS VIANDE et ce sont elles qui font la recette : the-best-recipes « Gratin d'endives à la béchamel », chefsimon « Gratin d'endives à la fourme de Montbrison », ptitchef « Gratin d'endives et bleu d'Auvergne », marmiton « Gratin gourmand endives-pommes de terre » — quatre rédactions sur quatre sites. LE JUMEAU DEMANDÉ ÉTAIT AU CHÈVRE, ET IL NE S'ÉCRIT PAS : les trois pages au chèvre du dossier portent toutes de la viande. Celle que marmiton titre « Endives gratinées au chèvre » compte quatre tranches de jambon, son « Gratin d'endives aux 3 chèvres » 200 g de lardons fumés, et le gratin aux pommes et au chèvre de ptitchef 100 g de jambon ou de lardons. Cherché encore sous « endives gratinées sans jambon », « gratin d'endives au chèvre » et « endives roulées chèvre béchamel », le plat ne rend rien de plus sur les sites qui publient un balisage lisible. Le chèvre descend donc en variante — la forme est pourtant au catalogue, ce n'est pas elle qui manque, ce sont les sources. Le fromage, seule ligne que l'échange touche : les quatre pages sans viande en portent chacune un, et un seul, à 22,5, 12, 30 et 25 g par personne ; médiane 23,75 g par personne, soit 95 g, qu'on écrit 100 g. Aucune ne s'impose comme forme — gruyère, fourme de Montbrison, bleu d'Auvergne, fourme d'Ambert font quatre fromages pour quatre pages, et le catalogue n'en porte qu'un, le gruyère râpé, qui est aussi celui de la page dont la béchamel est complète. On l'écrit, les trois autres passent en variantes. Ce fromage-là fond DANS la béchamel : c'est lui qui prend la place des huit tranches de jambon, et sans lui le jumeau n'aurait pas de protéine. Hérités du parent, que l'échange ne touche pas : les 8 endives, les 700 ml de lait, les 60 g de farine et les 60 g de beurre de la béchamel, la muscade, et les 120 g de comté du gratinage. La page la plus proche du parent monte une béchamel de 500 ml de lait, 40 g de farine et 40 g de beurre pour six endives, soit la même proportion à un dixième près : le dossier confirme le parent au lieu de le corriger, il n'y a donc rien à rejuger. Écartés : les 4 pommes de terre en lamelles de la page marmiton, qui en font un gratin complet d'un autre genre ; l'œuf battu et les noix de la page ptitchef, qui remplacent la béchamel par un appareil ; la crème et la maïzena de chefsimon, qui lie autrement ; le miel, l'orange et le pain d'épices d'une page au chèvre, qui tirent le plat vers le sucré. Durées : préparation, médiane 10 minutes des quatre pages, écrite 20 — le dossier ne compte pas le parage de huit endives. Cuisson, 40, 55, 15 et 15 minutes selon les pages : on écrit 50, soit trente minutes de braisage et vingt de four, parce que les deux pages qui braisent réellement leurs endives avant le gratin sont celles qui annoncent les temps longs, et qu'une endive mal cuite rend son eau dans la béchamel.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Même rôle que le parent, et même manque : deux endives et 55 g de fromage par part font le légume et la protéine, mais les 60 g de farine de la béchamel ne sont pas un féculent d'assiette. Il y manque les pommes vapeur ou le pain, comme chez les endives au jambon dont ce plat vient."
+   },
+   "ingredients": [
+    {
+     "form": "Endive fraîche",
+     "quantity": 8,
+     "unit": "u",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Lait demi-écrémé",
+     "quantity": 700,
+     "unit": "ml",
+     "role": "béchamel",
+     "optional": false
+    },
+    {
+     "form": "Comté",
+     "quantity": 120,
+     "unit": "g",
+     "role": "gratinage",
+     "optional": false
+    },
+    {
+     "form": "Gruyère râpé",
+     "quantity": 100,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Farine de blé T55",
+     "quantity": 60,
+     "unit": "g",
+     "role": "béchamel",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 60,
+     "unit": "g",
+     "role": "béchamel",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 5,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Muscade moulue",
+     "quantity": 0.5,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Ôter les premières feuilles des endives, couper la base et retirer le cône dur du talon à la pointe du couteau, puis fendre chaque endive en deux dans la longueur. Ce cône est la partie la plus amère du légume, et l'amertume qu'il laisse ne se corrige plus une fois le gratin monté."
+    },
+    {
+     "n": 2,
+     "instruction": "Poser les demi-endives face coupée contre le fond d'une sauteuse avec une noix de beurre, les laisser colorer cinq minutes, puis verser un demi-verre d'eau, saler, couvrir et braiser vingt-cinq minutes à feu doux. La coloration d'abord, l'eau ensuite : c'est le sucre de l'endive qui caramélise au contact de la fonte et compense son amertume."
+    },
+    {
+     "n": 3,
+     "instruction": "Découvrir et laisser l'eau s'évaporer complètement, puis presser doucement chaque demi-endive entre deux feuilles de papier absorbant. C'est le geste qui décide du gratin : une endive braisée est gorgée d'eau, et celle qu'on ne chasse pas maintenant délayera la béchamel au four, jusqu'à laisser un fond de plat liquide."
+    },
+    {
+     "n": 4,
+     "instruction": "Faire fondre le reste du beurre dans une casserole, verser la farine d'un coup et remuer deux minutes sans laisser prendre couleur, jusqu'à ce que le roux mousse et sente la noisette. Une farine crue donne un goût de colle à la béchamel : ces deux minutes ne se sautent pas, mais le roux doit rester blanc, sinon il perd son pouvoir liant."
+    },
+    {
+     "n": 5,
+     "instruction": "Verser le lait froid en trois fois sur le roux chaud, en fouettant à chaque ajout jusqu'à ce que le mélange soit lisse, puis cuire huit à dix minutes à feu moyen sans cesser de remuer, jusqu'à ce que la sauce nappe la cuillère. L'écart de température entre le roux et le lait est ce qui empêche les grumeaux ; le fouet ne fait que finir le travail."
+    },
+    {
+     "n": 6,
+     "instruction": "Hors du feu, râper la muscade, poivrer, saler légèrement et incorporer le gruyère râpé jusqu'à ce qu'il ait fondu. Hors du feu et pas dessus : un fromage à pâte cuite chauffé trop fort dans une sauce se sépare, et rend un gras qui remonte au four. Saler avec mesure, deux fromages entrent dans ce plat."
+    },
+    {
+     "n": 7,
+     "instruction": "Ranger les demi-endives serrées dans un plat à gratin, napper de la béchamel au fromage, puis râper le comté sur le dessus. Les endives serrées ne flottent pas : la sauce reste au-dessus d'elles au lieu de couler dessous, et chaque part se coupe entière."
+    },
+    {
+     "n": 8,
+     "instruction": "Enfourner vingt minutes à 200 °C, puis passer deux à trois minutes sous le gril si le dessus n'est pas doré. Le gratin est prêt quand la surface est prise et boursouflée aux bords ; le laisser reposer cinq minutes avant de servir, le temps que la béchamel se retienne à la coupe."
+    }
+   ],
+   "techniques": [
+    "braisage",
+    "évaporation",
+    "béchamel",
+    "montage en couches",
+    "gratinage"
+   ],
+   "variants": [
+    "À la fourme de Montbrison écrasée à la fourchette dans une sauce lait-crème liée à la maïzena, forme absente du catalogue (chefsimon)",
+    "Au bleu d'Auvergne fondu dans un appareil œuf-lait, avec des noix concassées, forme absente du catalogue (ptitchef)",
+    "À la fourme d'Ambert et à la crème, avec des pommes de terre en lamelles sous les endives (marmiton)",
+    "Au fromage de chèvre bûche en rondelles posées avant le gratinage : trois pages du dossier le font, mais toutes avec du jambon ou des lardons — la version sans viande n'est attestée par aucune",
+    "Aux endives émincées et fondues à l'huile d'olive plutôt que braisées entières (ptitchef, marmiton)",
+    "Sucrée-salée, au miel, à l'orange et au pain d'épices émietté sur le dessus (marmiton)"
+   ],
+   "sensory": {
+    "profile": "creamy_savory",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 2,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 0,
+     "richness": 4,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "endive braisée",
+     "béchamel muscadée",
+     "comté",
+     "beurre"
+    ],
+    "aroma_families": [
+     "lacté",
+     "muscade",
+     "fromage_affiné",
+     "beurre"
+    ],
+    "target_textures": [
+     "feuilles fondantes",
+     "nappant",
+     "croûte gratinée"
+    ],
+    "signature_ingredients": [
+     "Endive fraîche",
+     "Comté",
+     "Lait demi-écrémé"
+    ],
+    "identity_guardrails": [
+     "Les endives sont pressées après braisage : l'eau qu'on leur laisse délaye la béchamel au four",
+     "Le fromage de la sauce fond hors du feu, sinon il se sépare et rend son gras",
+     "Le talon amer est retiré avant cuisson, on ne le corrige plus après",
+     "La béchamel reste celle du parent — lait, roux blanc, muscade : la crème et la maïzena des pages du dossier lient un autre plat"
+    ]
+   },
+   "conservation": "Aucune des quatre pages sans viande ne parle de conservation ; ce qui suit décrit ce que fait un gratin de légume à la béchamel, et rejoint les 3 jours annoncés par le parent. Se garde 3 jours au réfrigérateur, filmé, et se réchauffe 15 minutes à 180 °C plutôt qu'au micro-ondes, qui fait bouillir la sauce et la fait trancher. Ne se congèle pas : l'endive est faite d'eau tenue par des feuilles qui éclatent au gel, et la béchamel, elle, se déphase au dégel — on retrouve un légume filandreux dans une sauce granuleuse. Ce qui se prépare d'avance, en revanche, c'est le plat monté et cru de gratinage : braisées la veille et nappées le jour même, les endives passent au four sans rien perdre.",
+   "allergens": [
+    "gluten",
+    "lait"
+   ]
+  }
+ ]
+}

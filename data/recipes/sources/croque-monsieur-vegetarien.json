@@ -1,0 +1,79 @@
+{
+  "dish": "croque-monsieur végétarien",
+  "slug": "croque-monsieur-vegetarien",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_croque-monsieur-vegetarien-ou-croque-mademoiselle_69915.aspx",
+      "site": "marmiton.org",
+      "nom": "Croque monsieur végétarien (ou croque mademoiselle!) : la meilleure recette",
+      "portions": "3 pièces",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 petit pot de crème fraîche épaisse",
+        "70 g de fromage râpé (plus ou moins selon le crémeux que l'on veut obtenir!)",
+        "4 tranches de pains de mie",
+        "2 tomates",
+        "huile d'olive et herbes pour assaisonner",
+        "2 oeufs par croque si vous voulez"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 936,
+        "sha256": "576a98a73f2a36a1"
+      },
+      "sha256_page": "17a90886ff786e0d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_croque-monsieur-vegetarien_39515.aspx",
+      "site": "marmiton.org",
+      "nom": "Croque monsieur végétarien : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT4M",
+      "ingredients": [
+        "1 paquet de pain de mie aux céréales",
+        "1 paquet de tofu fumé",
+        "2 oignons",
+        "5 champignons",
+        "1 paquet de gruyère râpé",
+        "beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 266,
+        "sha256": "54204990396d6018"
+      },
+      "sha256_page": "4d1aa812dab75f94"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/del-s-cooking-twist/recettes/croque-monsieur-vegetarien-chevre-epinards",
+      "site": "chefsimon.com",
+      "nom": "Croque-monsieur végétarien chèvre épinards",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "8 tranches de pain de mie (blanc, complet ou aux graines)",
+        "100g de chèvre frais",
+        "100g de ricotta",
+        "20 cl de crème liquide",
+        "Sel &amp; poivre du moulin",
+        "1 cuil. à soupe d'huile d'olive",
+        "150g d'épinards frais",
+        "1 gousse d'ail, émincée",
+        "2 cuil. à soupe de pignons de pin",
+        "50g de tomates séchées, hâchées grossièrement",
+        "2 cuil. à soupe de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "8e08d011c94c8efe"
+    }
+  ]
+}
