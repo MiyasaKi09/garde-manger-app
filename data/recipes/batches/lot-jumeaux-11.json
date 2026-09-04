@@ -1,0 +1,1050 @@
+{
+ "lot": "jumeaux-11",
+ "intention": "Onzième lot de jumeaux végétariens de même lignée (plan « planning parfait », chantier C2, conduit par la chaîne du chantier C6). Un jumeau est le MÊME PLAT que sa base carnée — même féculent, même technique, même rôle d'assiette, même composition hors protéine — dont la protéine animale est remplacée par une protéine végétale que les sources attestent, et dont « derived_from » porte le code du parent. C'est ce champ, et lui seul, qui fait qu'un planificateur sert à Zoé la version sans viande du plat que Julien mange, au lieu de lui servir un autre plat : la mesure du §2.2 du plan compte quatre substitutions demandées, quatre obtenues, quatre HORS lignée, dont deux boudins noirs proposés comme variante végétarienne d'un pastitsio. CINQ jumeaux étaient visés, CINQ sont écrits, aucun n'est refusé.\n\nCE QUE LA RECHERCHE D'URL A DIT, ET POURQUOI IL FAUT LE DIRE. Les trois moteurs français de find-recipe-urls (marmiton, chefsimon, 750g) ne rendent, pour ces cinq plats, presque rien : une seule page pour « gyros végétarien » (un gyros à l'aubergine, seul sur son site), zéro pour toutes les formulations d'« amatriciana végétarienne », zéro pour « salmorejo végétarien », et pour « tofu aux poivrons » deux pages qui font autre chose. Quarante-six requêtes ont été essayées, en français et en anglais. Les cinq dossiers exploités ici avaient été constitués plus largement et sont déjà au dépôt, sous data/recipes/sources ; ils ont été relus page par page, réinterrogés en ligne pour en obtenir la prose intégrale hors dépôt, et repassés à l'audit — cinq exploitables, zéro à reprendre. Une seule page du dossier salmorejo (turecetavegana) ne répond plus : le dossier versionné la garde, telle qu'elle avait été lue, et le contrôle de prose ne la voit donc pas. Les dossiers eux-mêmes n'ont pas été modifiés — la relecture n'avait changé que les empreintes de page, pas celles des étapes, et elles ont été restituées à leur état d'origine.\n\nLA MÉTHODE D'ARBITRAGE DU LOT, énoncée une fois et appliquée cinq fois. On ne rejuge que les lignes que l'échange de protéine touche, plus celles sur lesquelles le dossier du jumeau est chiffré et concordant. Tout le reste est hérité du parent, et chaque héritage est nommé à l'endroit où il joue. La raison est arithmétique : rejuger une garniture sur deux lignes reviendrait à remplacer la mesure d'un dossier complet par une plus faible.\n\nTROIS DÉCISIONS DE CE LOT MÉRITENT D'ÊTRE LUES AVANT LES FICHES. (1) La sauce soja entre dans deux recettes — le gyros et le sauté de tofu — parce que les sources y sont unanimes et parce que c'est ce que le champignon et le tofu n'ont pas : le glutamate que la volaille apportait seule. Le sel du parent baisse d'autant, à chaque fois. (2) L'amatriciana garde son pecorino alors que ses trois sources sont VÉGANES et le remplacent par de la levure maltée : ce corpus écrit des jumeaux végétariens et non végétaliens, le fromage y est admis, et une amatriciana sans pecorino serait des pâtes à la tomate. La présure animale du Pecorino Romano DOP est signalée dans la fiche, elle n'est pas jugée. (3) Le salmorejo ne remplace rien : son jambon sort et l'œuf dur reste à la quantité que les sources donnent. Le jumeau perd donc environ 6 g de protéines par part, la fiche le calcule et l'écrit plutôt que de gonfler l'œuf pour faire joli.\n\nAUCUN ARBITRAGE DE FORME N'EST OUVERT PAR CE LOT, et c'est un résultat : les quarante formes distinctes employées par les cinq recettes sont toutes au vocabulaire, sauf « Tofu fumé », déjà arbitrée au lot21-jumeaux-05 sur l'entrée Ciqual 20912. Les deux recettes qui l'emploient — les lentilles et l'amatriciana — passent donc « valide avec réserve » et leur nutrition n'est pas totalisée tant que le catalogue n'a pas été reconstruit : c'est l'ordre normal de la chaîne. Le fichier data/foods/arbitrations/lot21-jumeaux-11.json n'a pas été créé, faute d'une forme à arbitrer : l'ouvrir pour rien serait une ligne de plus à maintenir.\n\nCE QUE LE LOT DÉPLACE, au sens de la porte 7 du chantier C6 : cinq lignées carnées de plus reçoivent leur jumeau — un sandwich chaud (VAR-013), un plat mijoté (SRC-042), un plat de pâtes (REAL-101), une soupe froide (REAL-115) et un plat sauté (RAP-035). Le plat mijoté et le plat sauté sont les deux catégories que le §2.2 désigne comme les plus dépourvues (25 et 7 manquants) ; les deux sont servies ici.",
+ "refuses": [],
+ "recipes": [
+  {
+   "code": "JUM-111",
+   "family": "Gyros végétarien aux champignons",
+   "derived_from": "VAR-013",
+   "cuisine_origin": "Grèce",
+   "identity_level": "named_traditional_dish",
+   "category": "sandwich chaud",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 25,
+   "cook_minutes": 25,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:gyros-vegetarien-aux-champignons",
+    "liveeatlearn.com",
+    "veganricha.com",
+    "mypureplants.com",
+    "biancazapatka.com",
+    "therealfooddietitians.com",
+    "lazycatkitchen.com",
+    "forkinthekitchen.com",
+    "elavegan.com",
+    "lovingitvegan.com",
+    "veggiesociety.com",
+    "brandnewvegan.com",
+    "chefsimon.com"
+   ],
+   "description_courte": "Le gyros de VAR-013 sans son poulet : des champignons marinés au paprika, au cumin et à l'origan, saisis à feu vif, dans un pita avec la sauce au yaourt et au concombre et les mêmes crudités.",
+   "canonical_arbitration": "Douze pages relevées, SIX retenues par l'audit sur six sites distincts — liveeatlearn, veganricha, mypureplants, biancazapatka, therealfooddietitians et lazycatkitchen. Six sont écartées, et pour deux motifs différents qu'il faut séparer : quatre parce que leur titre dit « Vegan Gyros » sans nommer le champignon (elavegan, lovingitvegan, veggiesociety, brandnewvegan) alors qu'elles en font toutes ; une parce que sept de ses dix-huit lignes seulement portent un chiffre (forkinthekitchen) ; une dernière parce qu'elle fait un autre plat, un gyros végétarien à l'aubergine panée (chefsimon).\n\nPOURQUOI LE DOSSIER EST DÉCLARÉ SOUS UN NOM ANGLAIS. La chaîne de sourçage interroge trois moteurs français, et sur « gyros végétarien » ils ne rendent qu'une seule page — celle de chefsimon, à l'aubergine, seule sur son site. « Gyros de champignons », « gyros aux champignons », « gyros vegan », « gyros de seitan », « gyros veggie » et « gyros pita végétarien » ne rendent rien du tout. Le plat existe pourtant partout, en anglais et en grec ; c'est la chaîne qui ne sait l'attraper que sous « mushroom gyros », et le dire vaut mieux que de renommer un dossier pour faire passer un décompte.\n\nCE QUE L'ÉCHANGE DE PROTÉINE TOUCHE, ET RIEN D'AUTRE N'EST REJUGÉ. Les 440 g de blanc de poulet du parent sortent, le champignon entre. Cinq des six pages retenues le pèsent, ramené à la portion : veganricha 340 g pour trois, soit 113,3 g par personne ; mypureplants 510 g pour quatre, soit 127,5 ; biancazapatka 397 g pour quatre, soit 99,2 ; therealfooddietitians 227 g pour quatre, soit 56,7 ; lazycatkitchen 600 g pour quatre, soit 150. La sixième, liveeatlearn, compte quatre portobellos sans les peser. Médiane 113,3 g par personne, soit 453 g pour quatre, qu'on écrit 450 g. Le jumeau porte donc plus de champignon que le parent ne portait de poulet, et c'est normal : un champignon perd la moitié de son poids à la poêle quand une volaille en perd le quart.\n\nLE CHAMPIGNON RETENU est le champignon de Paris, seule forme fraîche que le catalogue porte. Ce n'est pas un pis-aller : le portobello de trois pages est le champignon de Paris arrivé à maturité, même espèce et même chair. Les pleurotes effilochées de quatre pages, elles, sont une autre espèce et une autre texture — elles passent en variantes, avec le mode de découpe qui va avec.\n\nLA SAUCE SOJA EST LE SEUL AJOUT, et il se justifie par ce que le poulet emportait. Cinq des six pages retenues salent le champignon d'une sauce fermentée : soja ou tamari chez liveeatlearn, mypureplants, biancazapatka et lazycatkitchen, sauce Worcestershire végane chez veganricha. Les quatre qui emploient du soja, ramenées à la portion : 7,5 ; 1,9 ; 11,3 et 7,5 ml par personne. Médiane 7,5 ml par personne, soit 30 ml pour quatre. Le poulet brunissait seul et portait son propre glutamate ; le champignon rend son eau et sort pâle si rien ne l'aide. En contrepartie le sel du parent descend de 5 à 3 g : 30 ml de sauce soja apportent déjà près de 5 g de sel.\n\nCE QUI EST HÉRITÉ, ligne par ligne, parce que l'échange ne le touche pas : le pain pita (250 g), le yaourt de la sauce (250 g), le concombre (200 g), la tomate (180 g), l'oignon rouge (130 g), la laitue (80 g), l'huile d'olive (60 ml), le jus de citron (50 ml), l'ail (15 g), le paprika (5 g), le cumin (2 g) et l'origan (2 g). LE POIVRON (300 g) est le cas qu'il faut nommer : aucune des six pages retenues n'en porte, c'est une ligne du dossier grec du parent, et elle survit à l'échange précisément parce que l'échange ne la regarde pas. LE YAOURT est un choix assumé : quatre pages du dossier montent une sauce sans lait, au tofu soyeux ou aux graines de tournesol, parce qu'elles sont véganes. Ce jumeau est végétarien, il garde le yaourt égoutté du parent — et la version sans lait est nommée en variante.\n\nLA FETA de trois pages n'est pas écrite : le parent ne porte pas de fromage dans le pita, et l'ajouter irait au-delà de ce que l'échange demande. Même raison pour le concentré de tomate, le sirop d'érable et la fumée liquide de trois pages, qui font un champignon « pulled » plus sombre et plus sucré que le gyros du parent, et pour les cœurs d'artichaut de deux pages.\n\nDURÉES. Préparation : 10, 10, 10, 20, 20 et 25 minutes sur les six retenues, médiane 15. On garde les 25 minutes du parent, parce que la moitié des pages achètent leur tzatziki tout fait là où cette fiche égoutte le yaourt et dégorge le concombre. Cuisson : 5, 12, 25, 30 et 35 minutes sur les cinq qui la donnent, médiane 25 — exactement celle du parent. La marinade de trente minutes ne se compte ni dans l'une ni dans l'autre.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Même rôle que VAR-013 : le pita porte le féculent, les champignons la protéine, la laitue, la tomate, l'oignon et le poivron le légume, le yaourt la sauce. Le sandwich est le repas entier, comme dans les six pages retenues, qui toutes le servent seul."
+   },
+   "ingredients": [
+    {
+     "form": "Champignon de Paris frais",
+     "quantity": 450,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Pain pita",
+     "quantity": 250,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Yaourt nature",
+     "quantity": 250,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Poivron rouge frais",
+     "quantity": 300,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Concombre frais",
+     "quantity": 200,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Tomate fraîche mûre",
+     "quantity": 180,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Oignon rouge cru",
+     "quantity": 130,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Laitue fraîche",
+     "quantity": 80,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 60,
+     "unit": "ml",
+     "role": "marinade",
+     "optional": false
+    },
+    {
+     "form": "Jus de citron frais",
+     "quantity": 50,
+     "unit": "ml",
+     "role": "marinade",
+     "optional": false
+    },
+    {
+     "form": "Sauce soja",
+     "quantity": 30,
+     "unit": "ml",
+     "role": "marinade",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Paprika doux",
+     "quantity": 5,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Cumin moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Origan séché",
+     "quantity": 2,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 3,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Débarrasser les champignons de leur terre avec un papier humide, couper le bout terreux du pied, puis les tailler en lamelles de trois à quatre millimètres. Ne jamais les passer sous le robinet : ils se gorgent d'une eau qu'ils rendront dans la poêle. Des lamelles plus fines disparaîtraient sous la garniture, alors qu'elles doivent faire dans le pita la couche que faisait le poulet."
+    },
+    {
+     "n": 2,
+     "instruction": "Mêler dans un saladier l'huile d'olive, la sauce soja, la moitié du jus de citron, la moitié de l'ail haché, le paprika, le cumin, l'origan et le poivre. Y retourner les lamelles et laisser trente minutes à température ambiante. Trente minutes suffisent là où le poulet du parent en demandait deux : le champignon n'a pas de fibre à détendre, il boit tout de suite — et une marinade salée prolongée le ferait rendre son eau avant même d'avoir vu la poêle."
+    },
+    {
+     "n": 3,
+     "instruction": "Pendant la marinade, verser le yaourt dans une passoire garnie d'un linge et le laisser perdre son eau une heure au réfrigérateur. Il y prend la densité du yaourt grec dont se servent les sources et que le catalogue ne porte pas ; faute de quoi la sauce file du pain dès la première bouchée."
+    },
+    {
+     "n": 4,
+     "instruction": "Râper le concombre à la grosse grille, le saler d'une pincée, attendre vingt minutes puis le presser à pleines mains au-dessus de l'évier : on en tire deux bonnes cuillerées d'eau, qui seraient parties dans la sauce. Le mélanger au yaourt égoutté avec l'ail et le jus de citron restants, poivrer et garder au froid."
+    },
+    {
+     "n": 5,
+     "instruction": "Détailler le poivron en lanières et le passer cinq à six minutes à la poêle bien chaude : il doit prendre quelques marques noires et rester ferme au centre. Ajouté cru, il n'apporte que de l'eau et une note verte ; poussé trop loin, il s'avachit et mouille le pain de l'intérieur. Le débarrasser."
+    },
+    {
+     "n": 6,
+     "instruction": "Égoutter les champignons de leur marinade, en gardant celle-ci, et les verser dans la même poêle brûlante — en deux fois, pour ne pas la charger. Les laisser deux minutes sans y toucher, puis les sauter cinq à six minutes : ils rendent d'abord leur eau, la poêle blanchit, et ce n'est qu'une fois cette eau partie que les bords colorent. Tant qu'elle est là, rien ne peut brunir, la poêle plafonnant à cent degrés. Verser la marinade réservée en fin de cuisson, laisser réduire trente secondes, goûter et saler seulement si nécessaire."
+    },
+    {
+     "n": 7,
+     "instruction": "Réchauffer les pitas une trentaine de secondes de chaque côté, à sec, dans la poêle qui vient de servir. Ils regonflent et retrouvent leur souplesse : froids ils se fendent au pliage, trop longtemps chauffés ils sèchent et s'effritent entre les doigts."
+    },
+    {
+     "n": 8,
+     "instruction": "Monter chaque pita dans cet ordre : une cuillerée de sauce, la laitue ciselée, les champignons, les poivrons, la tomate en dés, l'oignon rouge en fines lamelles, et une seconde cuillerée de sauce par-dessus. Celle du dessous isole le pain du jus des légumes, celle du dessus retient la garniture quand on roule. Rouler serré et manger tout de suite."
+    }
+   ],
+   "techniques": [
+    "marinade",
+    "égouttage du yaourt",
+    "dégorgement",
+    "saisie à feu vif",
+    "assemblage"
+   ],
+   "variants": [
+    "Pleurotes effilochées à la fourchette plutôt que champignons de Paris en lamelles, 510 à 600 g pour quatre (mypureplants, lazycatkitchen, biancazapatka, lovingitvegan)",
+    "Champignons marinés puis rôtis au four à 200-220 °C, vingt-cinq à quarante minutes, jusqu'aux bords croustillants, au lieu de la poêle (mypureplants, biancazapatka)",
+    "Sauce sans lait, montée au tofu soyeux ou aux graines de tournesol trempées, citron, ail et aneth, pour une version végane (veganricha, lazycatkitchen)",
+    "Feta émiettée dans le pita au moment de rouler (liveeatlearn, forkinthekitchen, therealfooddietitians)",
+    "Champignon « pulled » : concentré de tomate, sirop d'érable et une pointe de fumée liquide avec les épices, pour une garniture plus sombre et plus sucrée (biancazapatka, lovingitvegan, elavegan)",
+    "Cannelle et clou de girofle en pointe dans le mélange d'épices, à la façon du gyros de rôtissoire (biancazapatka, lovingitvegan, veggiesociety)",
+    "Cœurs d'artichaut marinés mêlés aux champignons, 200 g pour 400 g de champignons (biancazapatka, lovingitvegan)",
+    "Radis en rondelles et aneth frais dans la garniture (biancazapatka, lovingitvegan, lazycatkitchen)",
+    "Version française du dossier : aubergines panées à la chapelure et au parmesan, roquette et tzatziki dans un wrap (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "warm_aromatic",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 3,
+     "bitter": 1,
+     "umami": 4,
+     "heat": 1,
+     "pungency": 3,
+     "richness": 3,
+     "freshness": 3,
+     "intensity": 4
+    },
+    "dominant_flavors": [
+     "champignon grillé",
+     "yaourt à l'ail",
+     "citron",
+     "paprika"
+    ],
+    "aroma_families": [
+     "origan",
+     "cumin",
+     "ail",
+     "champignon",
+     "agrume"
+    ],
+    "target_textures": [
+     "pain moelleux",
+     "champignon doré aux bords fermes",
+     "crudités croquantes"
+    ],
+    "signature_ingredients": [
+     "Champignon de Paris frais",
+     "Pain pita",
+     "Yaourt nature"
+    ],
+    "identity_guardrails": [
+     "Les champignons se saisissent en deux fois dans une poêle brûlante : entassés, ils bouillent dans leur eau et sortent gris, sans les bords grillés qui font le gyros",
+     "Le yaourt s'égoutte une heure — non égoutté, la sauce traverse le pain",
+     "Le concombre se dégorge et se presse, sinon il liquéfie la sauce",
+     "Marinade au paprika, au cumin et à l'origan : c'est elle, et non la protéine, qui donne au pita son goût de gyros",
+     "Aucune forme d'origine animale hors le yaourt : la sauce soja remplace ici le glutamate que la volaille apportait"
+    ]
+   },
+   "conservation": "Les champignons cuits se gardent 3 jours au réfrigérateur et la sauce au yaourt 3 jours également, dans deux boîtes séparées — c'est ce que dit la seule page du dossier qui parle de conservation (veganricha), et cela vaut aussi pour la version au poulet. Le sandwich monté ne se garde pas : le pain est détrempé en une demi-heure. Les pitas nature se congèlent 2 mois et se réchauffent sans décongélation. Les champignons cuits, en revanche, ne se congèlent pas : ils ont déjà rendu leur eau, le gel fait éclater ce qu'il en reste et ils ressortent en filaments mous. Aucune page ne le dit, c'est une lecture physique du plat.",
+   "allergens": [
+    "gluten",
+    "lait",
+    "soja"
+   ]
+  },
+  {
+   "code": "JUM-112",
+   "family": "Lentilles au tofu fumé",
+   "derived_from": "SRC-042",
+   "cuisine_origin": "France",
+   "identity_level": "named_traditional_dish",
+   "category": "plat mijoté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 40,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:lentilles-au-tofu-fume",
+    "lacerisesurlemaillot.fr",
+    "cuisine-alcaline.com",
+    "marie.cooking",
+    "healthylalou.fr"
+   ],
+   "description_courte": "Les lentilles au lard de SRC-042 avec du tofu fumé à la place des lardons : mêmes lentilles vertes, mêmes carottes, oignon, thym, laurier et girofle, même cocotte.",
+   "canonical_arbitration": "Quatre pages relevées, DEUX retenues par l'audit sur deux sites — lacerisesurlemaillot.fr « Cocotte de lentilles au tofu fumé » et cuisine-alcaline.com « Lentilles aux légumes et tofu fumé ». C'est le minimum exigé, et c'est le dossier le plus mince du lot : il faut le dire avant les chiffres. Les deux écartées décrivent pourtant le même plat sous le nom que la cuisine française lui donne — marie.cooking titre « Vegetarian Petit Salé », healthylalou « Petit salé aux lentilles vegan » — et la règle de titre les écarte parce qu'elles ne portent pas les mots « tofu » et « fumé ». Elles ne portent aucun chiffre de cette fiche ; elles confirment une structure, et c'est déjà beaucoup : marie.cooking fait revenir oignon, ail et dés de tofu fumé, puis mijote avec lentilles, laurier, girofle, thym et une pointe de crème — c'est-à-dire, à la protéine près, la composition exacte du parent SRC-042.\n\nCE QUE L'ÉCHANGE TOUCHE. Les 160 g de lardon fumé du parent sortent, le tofu fumé entre. Les deux pages retenues le pèsent : lacerisesurlemaillot 400 g pour quatre, soit 100 g par personne ; cuisine-alcaline 200 g pour six, soit 33,3. Médiane 66,7 g par personne, soit 267 g pour quatre. On écrit 260 g.\n\nL'ÉCART DE UN À TROIS ENTRE LES DEUX PAGES N'EST PAS DU BRUIT, et c'est lui qui décide du chiffre. La première met 400 g de tofu pour 200 g de lentilles : c'est un plat de tofu garni de lentilles. La seconde met 200 g pour 500 g de lentilles : c'est un plat de lentilles. Le parent est un plat de lentilles — 320 g de lentilles pour 160 g de lard, rapport 0,5. Rapportés au poids de lentilles, les deux pages donnent 2,0 et 0,4 ; leur milieu, 1,2, appliqué aux 320 g du parent, donnerait 384 g et referait le plat de tofu de la première page. Les 260 g écrits placent le rapport à 0,81, entre le parent et les sources : c'est une décision, énoncée ici, et non une lecture du dossier.\n\nCE QUE 260 G CHANGENT À L'ASSIETTE, puisque c'est le but du jumeau : 160 g de lardon fumé apportaient environ 22 g de protéines et 48 g de lipides ; 260 g de tofu fumé en apportent environ 43 et 25. Le jumeau est donc plus protéiné et deux fois moins gras que sa base — c'est le sens du §2.3 du plan, où la densité protéique manque plus que les calories.\n\nCE QUI EST HÉRITÉ, parce que l'échange ne le touche pas : lentille verte (320 g), carotte (180 g), oignon jaune (150 g), échalote (40 g, facultative), ail (10 g), huile d'olive (28 g), thym (3 g), laurier (2 feuilles), clou de girofle (2), crème (150 g, facultative), persil (10 g) et le litre d'eau des étapes. Les deux pages retenues mettent plus de carotte que le parent — quatre carottes pour quatre chez l'une, 300 g pour six chez l'autre — et cuisine-alcaline y ajoute navet et céleri branche : ce sont des légumes que le parent ne porte pas et que l'échange ne réclame pas. Variantes.\n\nLES CHAMPIGNONS SONT LE SEUL AJOUT QU'ON AURAIT PU DÉFENDRE, et on ne le fait pas. Deux pages sur quatre en mettent — 200 g chez lacerisesurlemaillot, six chez marie.cooking. Le parent n'en porte pas ; un champignon dans une cocotte de lentilles noircit le jus et déplace le goût du plat vers le sous-bois, quand ce qu'on cherche ici est le fumé. Variante.\n\nLE SEL RESTE À 6 G ET TOUJOURS EN FIN DE CUISSON, mais pour une raison qui change. Chez le parent, c'est le lard qui avait déjà salé le bouillon. Ici c'est le tofu fumé : la fiche Ciqual 20912 retenue au lot21-jumeaux-05 lui donne 0,74 g de sel aux 100 g, soit près de 2 g apportés par les 260 g — moins que le lard, d'où le maintien des 6 g plutôt qu'une baisse.\n\nLA CUISSON DU TOFU EST LE VRAI POINT DE MÉTHODE. Les deux pages retenues le traitent différemment : lacerisesurlemaillot le fait revenir une minute avec l'ail avant de mouiller, cuisine-alcaline le plonge cru dans les lentilles en cours de cuisson. On retient la première et on va plus loin qu'elle, en le colorant seul et d'abord : le lard du parent rendait sa graisse et laissait une croûte, le tofu n'a aucune graisse à rendre et un tofu qui mijote quarante minutes ressort en éponge grise. Il est donc doré à part, puis remis dix minutes avant la fin.\n\nDURÉES. Préparation : 10 et 20 minutes sur les deux retenues, 15 sur les deux écartées ; on garde les 20 du parent, qui comptent l'épluchage et la taille en dés de la taille d'un grain de lentille. Cuisson : 30 et 40 minutes sur les retenues, 30 et 45 sur les écartées ; on garde les 40 du parent, la lentille verte ne cédant pas avant.\n\nFORME ARBITRÉE. « Tofu fumé » n'est pas au catalogue : elle a été arbitrée au lot21-jumeaux-05 sur l'entrée Ciqual 20912, et ce lot n'ouvre aucun arbitrage nouveau. La recette passe donc « valide avec réserve » et sa nutrition n'est pas totalisée tant que le catalogue n'a pas été reconstruit : c'est l'ordre normal des choses, pas un défaut de la fiche.",
+   "plate": {
+    "role": "complete",
+    "accepts": [
+     "vegetables"
+    ],
+    "reason": "Même rôle que SRC-042 : légumineuse, protéine et garniture aromatique cuisent dans la même cocotte, l'assiette est déjà équilibrée et n'appelle qu'une salade verte ou un légume vert pour la fraîcheur."
+   },
+   "ingredients": [
+    {
+     "form": "Lentille verte sèche, crue",
+     "quantity": 320,
+     "unit": "g",
+     "role": "légumineuse",
+     "optional": false
+    },
+    {
+     "form": "Tofu fumé",
+     "quantity": 260,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Carotte crue",
+     "quantity": 180,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 150,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Échalote crue",
+     "quantity": 40,
+     "unit": "g",
+     "role": "aromate",
+     "optional": true
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 28,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Thym séché",
+     "quantity": 3,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Feuille de laurier séchée",
+     "quantity": 2,
+     "unit": "feuille",
+     "role": "aromate",
+     "optional": true
+    },
+    {
+     "form": "Clou de girofle",
+     "quantity": 2,
+     "unit": "u",
+     "role": "épice",
+     "optional": true
+    },
+    {
+     "form": "Crème fraîche liquide entière",
+     "quantity": 150,
+     "unit": "g",
+     "role": "liaison",
+     "optional": true
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 6,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": true
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": true
+    },
+    {
+     "form": "Persil frais",
+     "quantity": 10,
+     "unit": "g",
+     "role": "herbe",
+     "optional": true
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Rincer les lentilles à l'eau froide dans une passoire, puis les faire glisser en couche mince sur la main pour repérer un gravillon — il s'en cache un dans un paquet sur trois, et il se signale toujours sous la dent de quelqu'un. Pas de trempage : la peau s'attendrit, les grains s'ouvrent au mijotage, et tout ce plat repose sur des grains entiers."
+    },
+    {
+     "n": 2,
+     "instruction": "Peler et détailler carotte, oignon et échalote au format d'un grain de lentille, pour que rien ne se mange à part. Prévoir à l'achat 210 g de carottes et 170 g d'oignon, les épluchures emportant la différence ; l'ail se pèse gousses nues, soit trois à quatre gousses. Couper enfin le tofu fumé en dés d'un centimètre et les sécher dans un linge — humide, il colle au fond de la cocotte et se déchire au premier retournement."
+    },
+    {
+     "n": 3,
+     "instruction": "Chauffer la moitié de l'huile dans une cocotte à fond épais et y colorer les dés de tofu à feu moyen-vif, cinq à six minutes, en ne les retournant que lorsqu'ils se détachent seuls. C'est le geste qui remplace le lard rendant sa graisse : le tofu n'en rend aucune, il faut la lui donner, et c'est cette croûte-là qui portera le fumé dans le jus. Les débarrasser dans une assiette."
+    },
+    {
+     "n": 4,
+     "instruction": "Remettre la cocotte à feu moyen avec le reste de l'huile et y laisser tomber carotte, oignon et échalote une dizaine de minutes, sans jamais les laisser prendre couleur : on cherche ici le fondant, la coloration étant déjà venue avec le tofu. Jeter l'ail haché à la toute fin, trente secondes, et pas avant — il brûle deux fois plus vite que l'oignon."
+    },
+    {
+     "n": 5,
+     "instruction": "Verser les lentilles égouttées et les tourner une minute dans les légumes gras : elles se laquent et prennent le fond de cocotte avant de rencontrer le moindre liquide. Mouiller alors d'un litre d'eau froide, deux doigts au-dessus des grains, et glisser thym, laurier et clous de girofle. Amener à ébullition, redescendre au frémissement, couvrir aux trois quarts, compter trente-cinq à quarante minutes. Toujours rien de salé à ce stade."
+    },
+    {
+     "n": 6,
+     "instruction": "Remettre les dés de tofu dix minutes avant la fin seulement. Plus tôt, ils boivent le jus et redeviennent mous : c'est le même calcul que pour les lardons du parent, à ceci près qu'un lardon avait encore du gras à donner au bouillon, quand le tofu n'a plus rien à échanger une fois doré."
+    },
+    {
+     "n": 7,
+     "instruction": "Prélever un grain et le goûter : il doit se défaire sous la dent sans perdre sa peau. Retirer alors le laurier et les girofles, saler, poivrer, et verser la crème pour qui veut un jus rond, en laissant frémir trois minutes qu'elle s'y lie. Persil ciselé au dernier moment, hors du feu."
+    }
+   ],
+   "techniques": [
+    "saisie",
+    "mijotage",
+    "réduction"
+   ],
+   "variants": [
+    "Avec 200 g de champignons de Paris ajoutés au mouillement, ou six champignons bruns émincés (lacerisesurlemaillot, marie.cooking)",
+    "Navet et céleri branche taillés en dés avec la carotte, 300 g de chacun pour 500 g de lentilles (cuisine-alcaline)",
+    "Une cuillerée à soupe de concentré de tomate dans l'eau de mouillement, pour un jus plus rond et plus sombre (lacerisesurlemaillot)",
+    "Sauce soja à la place du sel, versée en fin de cuisson (cuisine-alcaline)",
+    "Un verre de vin blanc sec pour déglacer après avoir doré le tofu (marie.cooking, healthylalou)",
+    "Romarin ajouté au thym et au laurier (marie.cooking, healthylalou)",
+    "Crème végétale à la place de la crème fraîche, pour une version végane (marie.cooking)",
+    "Deux cuillerées de miso brun en fin de cuisson à la place du tofu fumé, avec une sauce à la moutarde : c'est le petit salé végétalien de healthylalou, un autre plat que celui-ci",
+    "Version veloutée héritée du parent : mixer la moitié de la cocotte, remonter à la crème et remettre les dés de tofu par-dessus"
+   ],
+   "sensory": {
+    "profile": "warm_aromatic",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 1,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 3,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "fumé",
+     "terreux"
+    ],
+    "aroma_families": [
+     "fumé",
+     "herbacé sec",
+     "végétal cuit"
+    ],
+    "target_textures": [
+     "lentille fondante restée entière",
+     "dés de tofu dorés aux arêtes fermes",
+     "jus court et légèrement lié"
+    ],
+    "signature_ingredients": [
+     "Lentille verte sèche, crue",
+     "Tofu fumé",
+     "Thym séché"
+    ],
+    "identity_guardrails": [
+     "Le fumé fait la moitié du nom du plat : un tofu nature à la place du tofu fumé donnerait des lentilles mijotées sans caractère",
+     "Le tofu se dore à part et ne revient que dix minutes avant la fin — mijoté quarante minutes, il devient une éponge grise",
+     "Les grains doivent tenir entiers : passé au mixeur, le plat bascule en velouté et change d'identité",
+     "Le sel ne s'ajoute qu'en fin de cuisson, le tofu fumé salant déjà le bouillon",
+     "Mouillé à l'eau et jamais à un bouillon de volaille : c'est ce qui sépare ce jumeau de sa base"
+    ]
+   },
+   "conservation": "Trois jours au réfrigérateur à 4 °C en boîte fermée, et le plat est meilleur le lendemain, le fumé du tofu ayant eu la nuit pour passer dans le jus. Les lentilles boivent ce jus en refroidissant : rallonger d'un fond d'eau à la réchauffe douce. Congélation 2 mois, à condition de n'avoir pas versé la crème, qui tranche à la décongélation — la verser plutôt après réchauffage. Le tofu fumé y gagne plutôt qu'il n'y perd : le gel ouvre sa trame et il ressort plus ferme, donc plus apte à boire le jus. Aucune des quatre pages ne parle de conservation ; c'est ce que fait ce type de mijoté.",
+   "allergens": [
+    "lait",
+    "soja"
+   ]
+  },
+  {
+   "code": "JUM-113",
+   "family": "Amatriciana végétarienne",
+   "derived_from": "REAL-101",
+   "cuisine_origin": "Italie",
+   "identity_level": "named_traditional_dish",
+   "category": "pâtes en sauce",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 30,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:amatriciana-vegetariana",
+    "primochef.it",
+    "mammachechef.it",
+    "vegolosi.it"
+   ],
+   "description_courte": "Les bucatini all'amatriciana de REAL-101 avec du tofu fumé à la place du guanciale : même tomate pelée, même pecorino, même pâte creuse finie dans la sauce.",
+   "canonical_arbitration": "Trois pages relevées, toutes italiennes, DEUX retenues par l'audit sur deux sites — primochef.it et mammachechef.it. La troisième, vegolosi.it, est écartée parce que trois de ses huit lignes seulement portent un chiffre : passata, huile, sel, poivre et piment y sont donnés « q.b. », à volonté. Elle porte pourtant le seul chiffre qui compte deux fois — 200 g de tofu fumé pour trois personnes — et elle sert donc à confirmer, jamais à décider seule.\n\nLE NOM, ET L'HÉSITATION ANNONCÉE. Les trois pages titrent « amatriciana vegan » ou « amatriciana vegana » : le plat est publié en Italie, et il l'est comme végane plutôt que comme végétarien. Aucun des trois moteurs français de la chaîne ne rend quoi que ce soit sur « amatriciana végétarienne », « amatriciana sans viande », « matriciana végétarienne », « amatriciana aux champignons » ou « amatriciana veggie » — cinq requêtes, zéro page. Le nom français écrit ici est donc une traduction d'un nom italien attesté, et l'hésitation du plan de lot est confirmée : ce nom est moins stabilisé que celui de la carbonara végétarienne. Ce qui l'est, en revanche, c'est le plat.\n\nCE QUE L'ÉCHANGE TOUCHE. Les 180 g de guanciale du parent sortent, le tofu fumé entre — et c'est unanime, les trois pages emploient du « tofu affumicato », aucune n'emploie de champignon ni de courgette. Deux le pèsent : mammachechef 200 g pour quatre, soit 50 g par personne ; vegolosi 200 g pour trois, soit 66,7. Médiane 58,3 g par personne, soit 233 g pour quatre. On écrit 200 g — le chiffre que les deux pages qui pèsent écrivent en clair, et celui qui reste le plus proche des 180 g de guanciale du parent. L'écart avec la médiane vient du rendement à trois parts de vegolosi, et il est assumé. La troisième, primochef, compte « un panetto » sans le peser : un bloc du commerce pèse de 150 à 250 g, ce qui ne tranche rien.\n\nL'OIGNON EST LE SEUL AJOUT, ET C'EST LE POINT DE LA FICHE. Les trois pages en mettent — un entier chez primochef, une moitié chez vegolosi et chez mammachechef. Or le parent porte un garde-fou qui dit « pas d'oignon dominant », et la tradition d'Amatrice le justifie. Deux lectures s'offrent : l'oignon n'a rien à faire dans une amatriciana, ou bien le garde-fou interdit un oignon DOMINANT et non un oignon. On retient la seconde et on l'écrit petit — 60 g pour quatre, la demi-unité de deux pages sur trois, soit 15 g par personne — parce que sans lui il n'y a plus rien à faire fondre dans la poêle : le guanciale fondait, le tofu ne fond pas. Un relecteur qui trancherait dans l'autre sens n'aurait qu'une ligne à retirer, et c'est pour cela qu'elle est nommée ici.\n\nL'HUILE D'OLIVE (30 ml) entre pour la même raison. Une seule page la chiffre, primochef, à trois cuillerées pour quatre, soit 45 ml ; on écrit 30 ml, deux cuillerées. Ce n'est pas une compensation : 180 g de guanciale rendaient près de 125 g de gras, et personne ne remplace cela par de l'huile. Le jumeau est franchement plus maigre que sa base, c'est la différence assumée entre les deux, et l'huile n'est là que pour que l'oignon fonde et que le tofu colore.\n\nCE QUI EST HÉRITÉ. Les bucatini (400 g) : les trois pages sont à 320 g de spaghetti pour quatre et 300 g de pâtes courtes pour trois, soit 80 et 100 g par personne, mais le féculent n'est pas touché par l'échange et reste celui du parent, à 100 g par personne — et il reste creux, un bucatino n'étant pas un spaghetti. La tomate pelée (600 g) : mammachechef, seule page qui pèse, en met exactement 600 — 200 g de pelati et 400 g de passata — et tombe donc sur le chiffre du parent. Le vin blanc (80 ml, facultatif) : mammachechef en met 60 g. Le piment (1 g, facultatif) : deux pages sur trois en portent.\n\nLE PECORINO RESTE, ET C'EST UN CHOIX QU'IL FAUT ÉNONCER. Les trois pages du dossier sont véganes : elles remplacent le fromage par de la levure maltée ou par un « parmesan végane ». Ce jumeau-ci est végétarien et non végane : le fromage y est admis, et le pecorino est la moitié de ce qui fait une amatriciana — l'écrire sans lui donnerait des pâtes à la tomate. Il est donc gardé aux 100 g du parent. On sait que le Pecorino Romano DOP est présuré à la présure animale ; la présure n'est pas jugée dans ce corpus, et le dire vaut mieux que de faire comme si la question ne se posait pas. La levure maltée n'est pas au catalogue : la variante végane est nommée, elle n'est pas écrite.\n\nLE SEL EST FACULTATIF ET PETIT (3 g) : le tofu fumé et le pecorino salent déjà, et l'eau des pâtes sale le reste.\n\nDURÉES. Préparation : 5 et 10 minutes sur les deux pages exploitables — primochef annonce 45, qui est un temps de recette entière et non de préparation. On garde les 15 du parent, taille du tofu comprise. Cuisson : 25 et 30 minutes, contre 35 au parent ; on écrit 30, la sauce n'ayant plus à attendre qu'un guanciale ait fondu.\n\nFORME ARBITRÉE. « Tofu fumé » vient de l'arbitrage du lot21-jumeaux-05 (Ciqual 20912) et n'est pas encore au catalogue : la fiche passe « valide avec réserve » et sa nutrition sera à totaliser après reconstruction.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Même rôle que REAL-101 : 100 g de bucatini, 50 g de tofu fumé et 150 g de tomate par part — féculent, protéine et sauce réunis dans la même assiette."
+   },
+   "ingredients": [
+    {
+     "form": "Bucatini secs",
+     "quantity": 400,
+     "unit": "g",
+     "role": "pâtes",
+     "optional": false
+    },
+    {
+     "form": "Tofu fumé",
+     "quantity": 200,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Tomate entière pelée en conserve",
+     "quantity": 600,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Pecorino romano",
+     "quantity": 100,
+     "unit": "g",
+     "role": "finition",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 60,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 30,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Vin blanc sec",
+     "quantity": 80,
+     "unit": "ml",
+     "role": "déglaçage",
+     "optional": true
+    },
+    {
+     "form": "Piment séché",
+     "quantity": 1,
+     "unit": "g",
+     "role": "épice",
+     "optional": true
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 3,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": true
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Tailler le tofu fumé en dés de moins d'un centimètre. La taille compte plus qu'il n'y paraît : le guanciale du parent fond et se dissout à moitié dans la sauce, le tofu ne fond pas du tout, et des dés trop gros donneraient des morceaux qu'on mange à part au lieu d'un condiment réparti dans les pâtes."
+    },
+    {
+     "n": 2,
+     "instruction": "Émincer l'oignon très finement et le laisser fondre dans l'huile d'olive, deux à trois minutes à feu moyen. Il doit devenir translucide sans prendre couleur : doré, il amerait pendant les vingt minutes de sauce qui suivent, et l'amertume est la seule faute qu'une amatriciana ne pardonne pas."
+    },
+    {
+     "n": 3,
+     "instruction": "Monter le feu, ajouter les dés de tofu et les laisser colorer quatre à cinq minutes en ne remuant que deux ou trois fois, jusqu'à ce que leurs arêtes croustillent. C'est ici que se joue le plat : le guanciale rendait sa graisse et laissait des bords croquants, le tofu ne rend rien et n'obtient ses bords que d'un contact franc avec la poêle. Déglacer du vin blanc si l'on en met et laisser s'évaporer."
+    },
+    {
+     "n": 4,
+     "instruction": "Écraser les tomates pelées à la fourchette et les verser avec leur jus, ajouter le piment émietté, et laisser réduire vingt à vingt-cinq minutes à découvert et à feu doux, jusqu'à ce que la sauce nappe la cuillère. Goûter avant de saler : le tofu fumé et le pecorino apportent déjà l'essentiel du sel."
+    },
+    {
+     "n": 5,
+     "instruction": "Cuire les bucatini dans un grand volume d'eau salée, une minute de moins que le temps du paquet, et prélever une louche d'eau de cuisson avant d'égoutter. Cette eau chargée d'amidon est ce qui liera la sauce à la place du gras du guanciale."
+    },
+    {
+     "n": 6,
+     "instruction": "Jeter les pâtes égouttées dans la poêle avec un fond d'eau de cuisson et les faire sauter une minute pour finir de les cuire dans la sauce. Couper le feu, attendre quelques secondes, puis ajouter le pecorino râpé en remuant vivement. Hors du feu, impérativement : sur la flamme, le fromage file en fils et la sauce graine."
+    }
+   ],
+   "techniques": [
+    "saisie",
+    "réduction",
+    "cuisson al dente",
+    "mantecatura"
+   ],
+   "variants": [
+    "Spaghetti ou pâtes courtes à la place des bucatini, 320 g pour quatre (primochef, mammachechef, vegolosi)",
+    "Levure maltée en paillettes ou « parmesan végane » à la place du pecorino, pour une version végane — c'est ce que font les trois pages du dossier (primochef, mammachechef)",
+    "Une cuillerée à soupe de sauce soja avec le vin blanc, pour appuyer l'umami du tofu (mammachechef)",
+    "Passata rustique seule à la place des tomates pelées écrasées (vegolosi, primochef)",
+    "Sans oignon du tout, à la façon de l'amatriciana traditionnelle : le tofu est alors coloré directement dans l'huile"
+   ],
+   "sensory": {
+    "profile": "tomato_herbal",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 3,
+     "bitter": 0,
+     "umami": 4,
+     "heat": 1,
+     "pungency": 2,
+     "richness": 2,
+     "freshness": 2,
+     "intensity": 4
+    },
+    "dominant_flavors": [
+     "tomate",
+     "fumé",
+     "acidulé"
+    ],
+    "aroma_families": [
+     "tomate_cuite",
+     "fumé",
+     "piment",
+     "pecorino"
+    ],
+    "target_textures": [
+     "pâtes_fermes",
+     "sauce_brillante",
+     "dés de tofu croustillants"
+    ],
+    "signature_ingredients": [
+     "Bucatini secs",
+     "Tofu fumé",
+     "Pecorino romano",
+     "Tomate entière pelée en conserve"
+    ],
+    "identity_guardrails": [
+     "Le tofu se colore franchement avant la tomate : sans cette croûte il reste blanc et mou dans la sauce, et le plat perd ce que le guanciale lui donnait",
+     "Pas de crème : la sauce se lie à l'eau de cuisson des pâtes et à rien d'autre",
+     "L'oignon reste discret — 15 g par personne — et fondu sans coloration : dominant, ce n'est plus une amatriciana",
+     "Le pecorino s'ajoute hors du feu, sinon il file et la sauce graine",
+     "Le tofu est fumé et non nature : c'est le fumé qui tient le rôle du guanciale"
+    ]
+   },
+   "conservation": "La sauce seule se garde 4 jours au réfrigérateur et se congèle 3 mois : c'est elle qu'il faut mettre de côté quand on cuisine à l'avance, et le tofu fumé supporte le gel mieux que la plupart des garnitures. Les pâtes déjà sautées dans la sauce tiennent 2 jours au froid et se réchauffent à la poêle avec une cuillerée d'eau, jamais au micro-ondes qui les rend cotonneuses ; elles ne se congèlent pas, un bucatino décongelé se casse et rend son eau. Aucune des trois pages ne parle de conservation : c'est la lecture du plat, et elle est signalée comme telle.",
+   "allergens": [
+    "gluten",
+    "lait",
+    "soja",
+    "sulfites"
+   ]
+  },
+  {
+   "code": "JUM-114",
+   "family": "Salmorejo aux œufs durs",
+   "derived_from": "REAL-115",
+   "cuisine_origin": "Espagne",
+   "identity_level": "named_traditional_dish",
+   "category": "soupe froide épaisse",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 6,
+   "prep_minutes": 25,
+   "cook_minutes": 10,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:salmorejo-vegetarien",
+    "directoalpaladar.com",
+    "secretosdelsur.com",
+    "fussfreeflavours.com",
+    "spanishsabores.com",
+    "themediterraneandish.com",
+    "turecetavegana.com"
+   ],
+   "description_courte": "Le salmorejo cordouan de REAL-115 sans son jambon : la même crème froide de tomate, de pain et d'huile d'olive, garnie du seul œuf dur écrasé.",
+   "canonical_arbitration": "Six pages relevées, SIX retenues par l'audit sur six sites distincts : c'est le dossier le plus solide du lot, et le seul dont aucune page ne soit écartée. Il n'est pas un dossier de « salmorejo végétarien » — il est un dossier de salmorejo, et c'est justement lui qui montre où passe la viande dans ce plat.\n\nCE QUE LE DOSSIER DIT DU JAMBON, avant tout chiffre. directoalpaladar, page cordouane donnée pour six, ne porte AUCUNE garniture dans sa liste : tomate, pain, huile, ail, sel, et rien d'autre. secretosdelsur monte le plat à l'œuf dur écrasé et à des croûtons de mie frits, et écrit en toutes lettres qu'elle a fait cette version parce qu'on ne mange pas de viande chez elle. themediterraneandish déclare l'œuf ET le jambon facultatifs l'un comme l'autre. fussfreeflavours et spanishsabores garnissent des deux. La sixième, turecetavegana, est un salmorejo VEGAN au tofu, à l'avocat et aux fruits secs : ce n'est plus le même plat, et elle n'atteste ici que l'existence du nom. Trois pages sur six, sur trois sites, montrent donc un salmorejo dont la recette écrite ne porte pas de jambon. C'est ce qui autorise ce jumeau : la soupe ne change pas, c'est la garniture qui portait toute la viande.\n\nL'ÉCHANGE NE REMPLACE RIEN, IL RETIRE. Les 120 g de jambon serrano du parent sortent ; l'œuf dur, déjà présent, devient la seule garniture. On ne gonfle pas l'œuf pour compenser, et c'est une décision qu'il faut écrire plutôt que subir : les quatre pages qui garnissent à l'œuf en mettent deux pour quatre, deux pour six, deux pour quatre et deux pour quatre, soit 0,5 ; 0,33 ; 0,5 et 0,5 œuf par personne. La médiane est de 0,5 œuf par personne, c'est-à-dire exactement les trois œufs pour six du parent. Et la page qui NE MET PAS de jambon, secretosdelsur, est à 0,5 elle aussi : l'œuf ne monte pas quand le jambon part. Écrire quatre ou six œufs aurait été inventer une quantité qu'aucune version publiée ne porte.\n\nCE QUE CELA COÛTE, ET IL FAUT LE DIRE AU PLANIFICATEUR. Les 120 g de jambon apportaient environ 36 g de protéines au plat, soit 6 g par part. Le jumeau tombe autour de 8 g de protéines par part quand son parent en portait 14. C'est un plat à faible densité protéique, et le §2.3 du plan — Julien à 66 % de sa cible — dit assez que ce n'est pas au solveur de le découvrir en le servant. Le rôle d'assiette reste celui du parent, « complete », parce que le pain porte réellement le féculent (42 g par part) ; mais l'assiette est plus légère que la sienne, et c'est écrit ici.\n\nLA SOUPE NE CHANGE PAS, ET LE DOSSIER CONFIRME LES CHIFFRES DU PARENT, ce qui est assez rare pour être relevé — le parent avait été écrit sans dossier. La tomate, ramenée à la portion : 167, 250, 167, 200 et 170 g par personne sur les cinq pages qui la pèsent. Médiane 170 g par personne, soit 1 020 g pour six ; le parent écrit 1 000 g, on le garde. L'huile d'olive : 25, 30, 10, 60 et 20 ml par personne. Médiane 25 ml par personne, soit 150 ml pour six — au millilitre près le chiffre du parent. Le pain : 33,3 ; 45 ; 33,3 ; 62,5 et 35,4 g par personne. Médiane 35,4 g par personne, soit 212 g pour six ; le parent écrit 250 g et on le garde, parce que c'est le pain qui épaissit, que les pages vont de 33 à 62 et que le parent est dans leur fourchette. L'ail : une gousse dans les cinq pages, quel que soit le rendement — 6 g pour six chez le parent, inchangés. Le vinaigre de xérès (20 ml) est la ligne la moins assurée : trois pages en portent, deux non, et aucune ne le pèse autrement qu'en cuillerée ou en « trait » ; il vient du parent.\n\nLE SEL ENTRE DANS LA LISTE, et c'est le seul ajout de cette fiche : cinq pages sur six le portent, et le parent l'avait simplement oublié. Six grammes pour six, mis au mixeur avec l'ail et le vinaigre.\n\nCE QU'ON N'ÉCRIT PAS. Les croûtons de mie frits de secretosdelsur — la compensation qu'une cuisinière espagnole invente d'elle-même quand elle retire le jambon — ajouteraient du pain et de l'huile à un plat qui en porte déjà 250 g et 150 ml : variante. L'œuf dur mixé DANS la soupe de spanishsabores change la couleur et la texture du salmorejo : variante. Le poivre de themediterraneandish n'est porté que par elle : variante.\n\nDURÉES. Préparation : 45, 25, 10, 20 et 10 minutes selon les pages ; on garde les 25 du parent, qui couvrent le mondage des tomates. La « cuisson » du parent, 10 minutes, est celle des œufs durs et du bain d'eau bouillante des tomates : elle ne change pas.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Même rôle que REAL-115, moins son jambon : 42 g de pain et un demi-œuf dur par part, dans 167 g de tomate montée à l'huile. Le féculent et la garniture protéique sont dans le bol, mais la part est plus légère en protéines que celle du parent — 8 g contre 14 — et la fiche le dit dans son arbitrage."
+   },
+   "ingredients": [
+    {
+     "form": "Tomate fraîche mûre",
+     "quantity": 1000,
+     "unit": "g",
+     "role": "base",
+     "optional": false
+    },
+    {
+     "form": "Pain blanc rassis",
+     "quantity": 250,
+     "unit": "g",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 150,
+     "unit": "ml",
+     "role": "émulsion",
+     "optional": false
+    },
+    {
+     "form": "Œuf dur",
+     "quantity": 3,
+     "unit": "u",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 6,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Vinaigre de xérès",
+     "quantity": 20,
+     "unit": "ml",
+     "role": "acidité",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 6,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Inciser les tomates d'une croix, les plonger trente à soixante secondes dans l'eau bouillante puis aussitôt dans l'eau glacée : la peau se retire alors seule. Mixée, cette peau laisse des points qui ne fondent jamais et donnent au salmorejo un grain qu'il n'admet pas — c'est l'une des choses qui le séparent d'un gaspacho."
+    },
+    {
+     "n": 2,
+     "instruction": "Mixer les tomates pelées et grossièrement coupées jusqu'à obtenir un jus lisse. Ôter la croûte du pain rassis, déchirer la mie en morceaux et la laisser cinq minutes dans ce jus avant de relancer le mixeur : la mie doit boire d'abord, sinon elle reste en grumeaux que rien ne rattrape ensuite."
+    },
+    {
+     "n": 3,
+     "instruction": "Ajouter l'ail dégermé, le vinaigre de xérès et le sel, puis mixer longuement, une bonne minute, jusqu'à une crème parfaitement lisse. Le germe de l'ail est amer et il ne cuit pas ici : rien ne viendra corriger ce qu'on aura laissé passer."
+    },
+    {
+     "n": 4,
+     "instruction": "Moteur en marche à vitesse moyenne, verser l'huile d'olive en filet mince. C'est une émulsion et elle se voit : la purée passe du rouge à un rose orangé et s'épaissit franchement. S'arrêter dès que la couleur a tourné — trop travaillée, l'huile d'olive devient amère, et c'est irréversible."
+    },
+    {
+     "n": 5,
+     "instruction": "Couvrir et laisser au moins deux heures au réfrigérateur. Le salmorejo se sert froid, et il continue d'épaissir en refroidissant : le détendre au moment de servir avec un peu d'eau glacée s'il est devenu trop dense pour la cuillère."
+    },
+    {
+     "n": 6,
+     "instruction": "Cuire les œufs dix minutes à l'eau bouillante, les rafraîchir, les écaler et les écraser à la fourchette plutôt que de les trancher. Répartir la soupe en assiettes creuses, disposer l'œuf émietté au centre et finir d'un filet d'huile d'olive. Émietté, l'œuf tient à la surface de cette crème épaisse ; en rondelles, il s'enfonce et on le mange à part — or, le jambon parti, il est ici la seule garniture et doit se retrouver dans chaque cuillerée."
+    }
+   ],
+   "techniques": [
+    "mondage",
+    "mixage",
+    "émulsion",
+    "refroidissement"
+   ],
+   "variants": [
+    "Croûtons de mie frits à l'huile d'olive à la place du jambon, deux tranches de pain pour quatre parts (secretosdelsur)",
+    "Un œuf dur mixé dans la soupe elle-même, en plus de celui de la garniture, pour une crème encore plus dense (spanishsabores)",
+    "Tomates non mondées, quand le mixeur est assez puissant pour ne rien laisser passer (secretosdelsur, fussfreeflavours)",
+    "Sans vinaigre, la soupe détendue d'un peu d'eau froide seulement (directoalpaladar)",
+    "Poivre noir au moulin dans la soupe et sur l'assiette (themediterraneandish)",
+    "Version végane du dossier, qui est un autre plat : tofu ferme, avocat, amandes, noix et pistaches mixés avec la tomate, relevés de curry et de curcuma (turecetavegana)"
+   ],
+   "sensory": {
+    "profile": "fresh_acidic",
+    "scores": {
+     "sweet": 1,
+     "salty": 2,
+     "acidic": 5,
+     "bitter": 1,
+     "umami": 2,
+     "heat": 0,
+     "pungency": 2,
+     "richness": 1,
+     "freshness": 5,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "tomate crue",
+     "huile d'olive",
+     "acidulé"
+    ],
+    "aroma_families": [
+     "tomate",
+     "huile_olive",
+     "ail",
+     "vinaigre"
+    ],
+    "target_textures": [
+     "très_épais_et_soyeux",
+     "œuf émietté distinct"
+    ],
+    "signature_ingredients": [
+     "Tomate fraîche mûre",
+     "Pain blanc rassis",
+     "Huile d'olive vierge extra",
+     "Œuf dur"
+    ],
+    "identity_guardrails": [
+     "Plus épais qu'un gaspacho : c'est le pain, et non l'eau, qui fait la texture",
+     "L'huile se verse en filet dans le mixeur en marche — versée d'un coup, elle ne s'émulsionne pas et le plat reste rouge et liquide",
+     "Ne pas sur-mixer après l'huile : elle vire à l'amertume et rien ne la rattrape",
+     "Se sert froid, jamais à température : deux heures de réfrigérateur au minimum",
+     "L'œuf dur est ici la seule garniture — le jambon du plat d'origine est ce que ce jumeau retire, et rien ne le remplace"
+    ]
+   },
+   "conservation": "Trois jours au réfrigérateur, en bocal ou en bouteille fermée. L'émulsion se sépare doucement au fil des heures : ce n'est pas un défaut, mais il faut redonner un tour de cuillère avant de servir. Le plat gagne d'ailleurs à être fait la veille, et les six pages s'accordent au moins sur le froid — deux heures sont un minimum. Il ne se congèle pas : au dégel, l'huile se sépare franchement et la mie de pain ressort granuleuse, c'est-à-dire qu'on perdrait exactement les deux choses qui font le salmorejo. Aucune page ne l'écrit ; c'est la lecture d'une émulsion de pain et d'huile. Les œufs durs se cuisent le jour même.",
+   "allergens": [
+    "gluten",
+    "œuf",
+    "sulfites"
+   ]
+  },
+  {
+   "code": "JUM-115",
+   "family": "Tofu sauté aux poivrons",
+   "derived_from": "RAP-035",
+   "cuisine_origin": "France / cuisine domestique internationale",
+   "identity_level": "domestic_standard",
+   "category": "plat sauté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 20,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:tofu-aux-poivrons",
+    "livinglou.com",
+    "plantbasedrdblog.com",
+    "createmindfully.com",
+    "littlespicejar.com",
+    "thefoodietakesflight.com",
+    "lastingredient.com",
+    "rainbowplantlife.com",
+    "chefsimon.com",
+    "kintaki.com"
+   ],
+   "description_courte": "Le poulet aux poivrons de RAP-035 avec du tofu ferme à la place de la volaille : mêmes trois couleurs de poivron, même oignon, même ail et même gingembre, même feu vif.",
+   "canonical_arbitration": "Neuf pages relevées, QUATRE retenues par l'audit sur quatre sites — livinglou, plantbasedrdblog, createmindfully et littlespicejar. Cinq sont écartées : trois parce que leur titre ne porte pas tous les mots du plat (thefoodietakesflight, lastingredient, rainbowplantlife), et deux pages françaises qui font autre chose — un yakisoba de nouilles aux poivrons et au tofu (chefsimon) et un wok de tofu fumé au poivron vert donné en cinq lignes (kintaki).\n\nLE PIÈGE DU DOSSIER, ET IL FAUT LE DIRE AVANT LES CHIFFRES. « Black Pepper Tofu Stir Fry » (littlespicejar) passe l'audit sans difficulté — son titre porte pepper, tofu, stir et fry — et ne contient AUCUN poivron : son « pepper » est le poivre noir, elle est construite sur une cuillerée de poivre concassé et des échalotes. C'est exactement la faute que le README décrit à propos des pâtes au thon. Elle est donc écartée du calcul des poivrons et du tofu, et ne sert qu'à la sauce soja. Elle porte de surcroît de la sauce d'huître, produit de la mer : rien de ce qu'elle propose n'entre tel quel dans un jumeau végétarien. Restent TROIS pages qui font vraiment le plat, sur trois sites.\n\nCE QUE L'ÉCHANGE TOUCHE. Les 330 g de blanc de poulet du parent sortent, le tofu entre. Les trois pages aux poivrons le pèsent : livinglou 454 g pour quatre, soit 113,5 g par personne ; plantbasedrdblog 454 g pour trois, soit 151,3 ; createmindfully 397 g pour six, soit 66,2. Médiane 113,5 g par personne, soit 454 g pour quatre, qu'on écrit 450 g. Le jumeau porte plus de protéine au poids que sa base, et c'est ce qu'il faut : le tofu ferme porte 14,7 g de protéines aux 100 g contre 23 au blanc de poulet, si bien que 450 g de tofu rendent à peu près ce que 330 g de poulet rendaient. Il ne perd pas non plus d'eau à la poêle comme la volaille.\n\nLE TOFU RETENU EST LE TOFU FERME, ET NON LE TOFU FUMÉ. Les quatre pages retenues emploient un tofu nature, ferme ou extra-ferme ; c'est la page écartée de kintaki qui emploie du fumé. Le fumé aurait d'ailleurs été un contresens ici : le parent est un sauté au gingembre, pas un plat fumé.\n\nLES POIVRONS CONFIRMENT LE PARENT AU GRAMME PRÈS. livinglou met un rouge et un vert pour quatre ; plantbasedrdblog un rouge et un vert pour trois ; createmindfully trois poivrons, rouge, jaune et vert, pour six. À 150 g la pièce, cela fait 75, 100 et 75 g par personne. Médiane 75 g par personne, soit 300 g pour quatre — exactement les 300 g du parent. Sur la couleur, une page sur trois emploie les trois couleurs et les deux autres s'en tiennent au rouge et au vert ; les 100 g de chaque couleur du parent sont donc gardés, et ils restent défendables.\n\nLA SAUCE SOJA EST LE SEUL AJOUT, et il est unanime : les quatre pages retenues salent le tofu d'une sauce fermentée, soja ou tamari. Ramenées à la portion : 7,5 ; 15 ; 10 et 7,5 ml par personne. Médiane 8,75 ml par personne, soit 35 ml pour quatre. La raison est la même que pour les champignons du gyros de ce lot : le poulet arrivait avec son propre goût de viande saisie, le tofu n'a rien à lui. En conséquence le sel du parent descend de 5 à 2 g — 35 ml de sauce soja apportent déjà près de 6 g de sel.\n\nCE QUI EST HÉRITÉ : l'huile (40 ml), le gingembre (10 g), l'ail (8 g) et l'oignon (240 g). L'oignon est la ligne où le dossier et le parent divergent le plus, et elle mérite d'être nommée : les trois pages aux poivrons sont à 37,5 ; 13 et 27 g par personne, médiane 27 g par personne, soit 108 g pour quatre, contre 240 g au parent. L'oignon n'est pas touché par l'échange de protéine, et le chiffre du parent repose sur son propre dossier de trois sources françaises : il reste. Le gingembre, lui, est confirmé — deux des trois pages en mettent une cuillerée à soupe, ce qui donne 2 et 1,3 g par personne quand le parent en écrit 2,5.\n\nCE QU'ON NE PREND PAS, et c'est beaucoup. La fécule qui enrobe le tofu (deux pages sur quatre), le sucre ou le sirop d'érable (trois sur quatre), la sauce hoisin (deux), le mirin, le vinaigre de riz, l'huile et les graines de sésame, la sauce d'huître de littlespicejar, les carottes et les champignons de createmindfully. Toutes ces lignes montent une SAUCE, liée à la fécule et versée en fin de cuisson ; le parent est un sauté au feu vif dont le jus tient au seul jus des légumes, et lui ajouter une sauce brillante en ferait un autre plat. N'en garder qu'une ligne — la sauce soja — est ce qui laisse le plat reconnaissable comme le jumeau de RAP-035.\n\nDURÉES. Préparation : 30, 20, 20 et 20 minutes, médiane 20, soit cinq de plus que le parent ; ces cinq minutes-là sont le pressage du tofu, que trois pages sur quatre imposent. Cuisson : 10, 30, 25 et 15 minutes, médiane 20, contre 30 au parent — le tofu est déjà cuit, il n'y a qu'à le colorer, quand le poulet devait cuire à cœur.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Même rôle que RAP-035 : protéine et légume dans la sauteuse, aucun féculent. Le sauté se sert sur du riz, et les trois pages retenues le servent toutes ainsi."
+   },
+   "ingredients": [
+    {
+     "form": "Tofu ferme",
+     "quantity": 450,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 240,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Poivron rouge frais",
+     "quantity": 100,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Poivron jaune frais",
+     "quantity": 100,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Poivron vert frais",
+     "quantity": 100,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Huile végétale",
+     "quantity": 40,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Sauce soja",
+     "quantity": 35,
+     "unit": "ml",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Gingembre frais",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 8,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Égoutter le tofu, l'envelopper dans un linge propre et le presser vingt minutes sous un poids — une casserole remplie d'eau fait l'affaire. Cette eau-là ne partira plus à la poêle : un tofu non pressé bout dans son propre jus et ne colore jamais, quelle que soit la chaleur qu'on lui donne."
+    },
+    {
+     "n": 2,
+     "instruction": "Le tailler en cubes de deux centimètres. Fendre les poivrons, ôter les graines et surtout les cloisons blanches, qui portent l'amertume, puis les couper en lanières d'un centimètre. Trancher l'oignon en demi-lunes d'une épaisseur voisine : dans un sauté, ce qui entre ensemble doit cuire ensemble."
+    },
+    {
+     "n": 3,
+     "instruction": "Faire chauffer la moitié de l'huile à feu vif dans une grande sauteuse et y ranger les cubes de tofu en une seule couche, sans qu'ils se touchent. Les laisser trois minutes sans y toucher, puis les retourner face après face, huit à dix minutes en tout, jusqu'à ce qu'ils soient dorés et fermes sous la spatule. Les réserver. Un tofu qu'on remue trop tôt s'accroche et se casse ; il se détache tout seul dès que la croûte est faite."
+    },
+    {
+     "n": 4,
+     "instruction": "Verser le reste de l'huile, jeter poivrons et oignon dans la sauteuse brûlante et les remuer sans arrêt huit à dix minutes, feu au maximum. On veut des arêtes marquées et un cœur encore croquant : à feu modéré, ils rendent leur eau, s'affaissent et deviennent une compotée, qui est un autre plat sous un autre nom."
+    },
+    {
+     "n": 5,
+     "instruction": "Jeter l'ail haché et le gingembre râpé, remuer une minute, le temps que le parfum monte. Entrés au début, ils n'auraient pas tenu les dix minutes de feu vif que réclament les légumes et auraient viré à l'amer."
+    },
+    {
+     "n": 6,
+     "instruction": "Remettre le tofu et le jus qu'il a rendu, verser la sauce soja et sauter une minute de plus en remuant, le temps qu'elle enrobe les cubes et réduise de moitié. Elle doit laquer et non napper : ce sauté ne porte aucune sauce montée, son liant est le jus des légumes."
+    },
+    {
+     "n": 7,
+     "instruction": "Donner un tour de moulin, goûter, et ne saler qu'ensuite, d'une pincée au plus : la sauce soja a déjà fait le travail. Servir sur du riz sans attendre. Ce plat ne tient pas au chaud — dix minutes de plus et le croquant des poivrons a disparu, c'est-à-dire la raison même de le cuisiner."
+    }
+   ],
+   "techniques": [
+    "pressage du tofu",
+    "saisie",
+    "sauté",
+    "cuisson courte"
+   ],
+   "variants": [
+    "Tofu roulé dans la fécule de maïs avant la poêle, pour une croûte plus franche (littlespicejar, rainbowplantlife)",
+    "Tofu tranché fin, badigeonné de sauce et rôti au four à 220 °C, dix minutes par face, au lieu de la sauteuse (plantbasedrdblog)",
+    "Sauce montée en fin de cuisson : sirop d'érable ou sucre, hoisin, vinaigre de riz et une cuillerée de fécule délayée dans l'eau (livinglou, plantbasedrdblog, createmindfully)",
+    "Huile de sésame grillé et graines de sésame en finition (livinglou, littlespicejar)",
+    "Carottes en julienne et champignons bruns ajoutés aux poivrons (createmindfully)",
+    "Piment frais — serrano, fresno — ou flocons de piment avec l'ail et le gingembre (livinglou, createmindfully, littlespicejar)",
+    "Échalotes émincées à la place de l'oignon (littlespicejar)",
+    "Tofu fumé et poivron vert seul, à la façon du wok français écarté du dossier (kintaki)"
+   ],
+   "sensory": {
+    "profile": "savory_crisp",
+    "scores": {
+     "sweet": 3,
+     "salty": 3,
+     "acidic": 1,
+     "bitter": 1,
+     "umami": 4,
+     "heat": 1,
+     "pungency": 3,
+     "richness": 2,
+     "freshness": 2,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "poivron",
+     "sauce soja",
+     "gingembre",
+     "oignon"
+    ],
+    "aroma_families": [
+     "végétal grillé",
+     "gingembre",
+     "allium",
+     "soja"
+    ],
+    "target_textures": [
+     "poivrons croquants",
+     "cubes de tofu dorés",
+     "bords_grillés"
+    ],
+    "signature_ingredients": [
+     "Tofu ferme",
+     "Poivron rouge frais",
+     "Gingembre frais"
+    ],
+    "identity_guardrails": [
+     "Le tofu se presse vingt minutes avant tout : non pressé, il bout dans son eau et ne dore jamais",
+     "Feu vif du début à la fin : à feu doux les poivrons compotent et le plat change de nature",
+     "Le tofu est saisi puis réservé, il ne cuit pas avec les légumes",
+     "Trois couleurs de poivron, comme chez la base carnée",
+     "Ail et gingembre entrent en dernier, pour ne pas brûler",
+     "Pas de sauce liée à la fécule : le jus des légumes et la sauce soja suffisent, sans quoi ce n'est plus le sauté de RAP-035"
+    ]
+   },
+   "conservation": "Deux jours au réfrigérateur, pas plus, et avec la même réserve que la version au poulet : les poivrons y perdent leur croquant, qui est tout l'intérêt du plat. Le réemploi le plus juste est froid, en salade ou dans un wrap, plutôt que réchauffé ; à la poêle très chaude et brièvement si l'on tient au chaud, jamais au micro-ondes. La congélation est possible 2 mois mais elle change le tofu plus qu'elle ne le conserve : l'eau qu'il porte gèle en cristaux qui percent sa trame et il ressort spongieux — certains cuisiniers congèlent d'ailleurs leur tofu exprès pour cela, mais ce n'est plus la texture de ce plat-ci.",
+   "allergens": [
+    "soja"
+   ]
+  }
+ ]
+}
