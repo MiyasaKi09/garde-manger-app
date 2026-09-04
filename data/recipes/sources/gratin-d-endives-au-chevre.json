@@ -1,7 +1,7 @@
 {
   "dish": "gratin d'endives au chèvre",
   "slug": "gratin-d-endives-au-chevre",
-  "sources_count": 3,
+  "sources_count": 5,
   "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
   "sources": [
     {
@@ -83,6 +83,51 @@
         "sha256": "de8c8018646f6070"
       },
       "sha256_page": "596f16ae1eee3bc1"
+    },
+    {
+      "url": "https://www.ptitchef.com/recettes/plat/gratin-d-endives-aux-pommes-et-au-chevre-fid-710831",
+      "site": "ptitchef.com",
+      "nom": "Gratin d'endives ,aux pommes et au chèvre",
+      "portions": "3",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "5 endives",
+        "2 pommes",
+        "une bûche de chèvre",
+        "100 g de morceaux de jambon ou des lardons",
+        "1 oignon",
+        "2 cuillères à soupe de miel",
+        "du parmesan",
+        "de la chapelure",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 442,
+        "sha256": "07cc8d79382f6535"
+      },
+      "sha256_page": "22a3b7e17222dc12"
+    },
+    {
+      "url": "https://www.750g.com/endives-caramelisees-au-chevre-fondu-r33478.htm",
+      "site": "750g.com",
+      "nom": "Endives caramélisées au chèvre fondu",
+      "portions": "5 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "20 g de beurre salé",
+        "1 gros oignon 5 cc de caramel liquide",
+        "5 à 7 grosses endives 1 bûche de chèvre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 612,
+        "sha256": "3deba26b813ebc36"
+      },
+      "sha256_page": "b93fb1baf2c32fdd"
     }
   ]
 }

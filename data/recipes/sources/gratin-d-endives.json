@@ -1,0 +1,183 @@
+{
+  "dish": "gratin d'endives",
+  "slug": "gratin-d-endives",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.the-best-recipes.com/recette-gratin-endives-bechamel/",
+      "site": "the-best-recipes.com",
+      "nom": "Découvrez la Recette Incontournable du Gratin d'Endives à la Béchamel !",
+      "portions": [
+        "1",
+        "1 gratin d'endives"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "6  endives (grosses)",
+        "500 ml lait",
+        "90 gr gruyère (râpé)",
+        "40 gr farine",
+        "40 gr beurre",
+        "1 noix beurre",
+        "1 pincée sel",
+        "1 pincée poivre",
+        "1 pincée muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 1068,
+        "sha256": "97565e0e9312891d"
+      },
+      "sha256_page": "ea80437db3a70c06"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/quoi-qu-on-mange/recettes/gratin-d-endives-a-la-fourme-de-montbrison",
+      "site": "chefsimon.com",
+      "nom": "Gratin d’endives à la fourme de Montbrison",
+      "portions": "5 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H55M",
+      "ingredients": [
+        "8 mini endives",
+        "1 CS d’huile",
+        "200 ml de lait",
+        "2 CS de crème fraîche",
+        "2 CS rases de maïzena",
+        "Sel &amp; Poivre",
+        "60 g de Fourme de Montbrison"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 820,
+        "sha256": "402755b0dd8f5cbf"
+      },
+      "sha256_page": "ea91d75c4901f904"
+    },
+    {
+      "url": "https://www.ptitchef.com/recettes/plat/gratin-d-endives-et-bleu-d-auvergne-fid-1509241",
+      "site": "ptitchef.com",
+      "nom": "Gratin d'endives et bleu d'auvergne",
+      "portions": "2",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 à 5 endives (selon la taille)",
+        "1 C à soupe d'huile d'olive",
+        "60 g de bleu d'Auvergne",
+        "1 oeuf",
+        "100 ml de lait",
+        "Sel",
+        "Poivre",
+        "20g de noix"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 524,
+        "sha256": "920ff1427ea76cf0"
+      },
+      "sha256_page": "1666503ebba22c31"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-gourmand-endives-pommes-de-terre_21791.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin gourmand endives-pommes de terre  : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "5 endives",
+        "4 pommes de terre",
+        "100 g de fourme d'ambert",
+        "20 cl de crème fraîche liquide",
+        "1 échalote"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 459,
+        "sha256": "4ccf15d67379b373"
+      },
+      "sha256_page": "dfcc9ed479067cc3"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_endives-gratinees-au-chevre_56214.aspx",
+      "site": "marmiton.org",
+      "nom": "Endives gratinées au chèvre : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "4 endives",
+        "4 oignons rouges",
+        "2 bûches de chèvre",
+        "10 cl de crème fraîche",
+        "4 tranches de jambon",
+        "50 g d'emmental râpé",
+        "huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 623,
+        "sha256": "5e5ffbde47f61158"
+      },
+      "sha256_page": "f096d6bac7c700c8"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-d-endives-aux-3-chevres_168249.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin d'endives aux 3 chèvres : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "8 endives",
+        "1 oignon jaune",
+        "200 g de lardons fumés",
+        "20 cl de lait",
+        "100 g de crème fraîche épaisse",
+        "1 bûche de chèvre cendrée",
+        "1 chèvre frais à la ciboulette",
+        "1 lou pérac bien fait",
+        "sel",
+        "poivre",
+        "1 bouillon de légumes",
+        "ciboulette fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 637,
+        "sha256": "8c6ef3b4e708f05e"
+      },
+      "sha256_page": "3564172151196c27"
+    },
+    {
+      "url": "https://www.ptitchef.com/recettes/plat/gratin-d-endives-aux-pommes-et-au-chevre-fid-710831",
+      "site": "ptitchef.com",
+      "nom": "Gratin d'endives ,aux pommes et au chèvre",
+      "portions": "3",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "5 endives",
+        "2 pommes",
+        "une bûche de chèvre",
+        "100 g de morceaux de jambon ou des lardons",
+        "1 oignon",
+        "2 cuillères à soupe de miel",
+        "du parmesan",
+        "de la chapelure",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 442,
+        "sha256": "07cc8d79382f6535"
+      },
+      "sha256_page": "ae4a2e277e3a4ae7"
+    }
+  ]
+}

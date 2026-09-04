@@ -1,0 +1,102 @@
+{
+  "dish": "salade césar aux pois chiches",
+  "slug": "salade-cesar-aux-pois-chiches",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.soscuisine.fr/recette/salade-cesar-pois-chiches-veg",
+      "site": "soscuisine.fr",
+      "nom": "Salade César aux pois chiches",
+      "portions": 4,
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "2 tranches pain, blé entier",
+        "1 c.à soupe huile d'olive",
+        "papier absorbant",
+        "1/3 tasse huile d'olive",
+        "2 gousses ail",
+        "2  jaunes d'oeuf",
+        "2 c.à thé moutarde de Dijon",
+        "2 c.à soupe vinaigre de vin",
+        "4 c.à soupe fromage parmesan",
+        "5 gouttes sauce Tabasco",
+        "1 pincée sel",
+        "poivre au goût",
+        "1  laitue romaine",
+        "2 tasses pois chiches (en conserve)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 21,
+        "signes": 1330,
+        "sha256": "f7d0782db8661d48"
+      },
+      "sha256_page": "2bc55009bae4c566"
+    },
+    {
+      "url": "https://planbouffe.ca/salade-cesar-pois-chiches-croustillants/",
+      "site": "planbouffe.ca",
+      "nom": "Salade repas style César aux pois chiches croustillants",
+      "portions": [
+        "4",
+        "4 portions (en repas principal)"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT60M",
+      "ingredients": [
+        "2  conserves de pois chiches (rincés et égouttés)",
+        "2 c. à table  d’huile d’olive",
+        "2 à 3 c. à thé de sel d’ail",
+        "2 c. à thé de paprika ((paprika fumé, si possible))",
+        "1  citron (le zeste)",
+        "3  têtes de laitue romaine (lavées)",
+        "3  carottes moyennes",
+        "1/4 tasse de parmesan râpé",
+        "1  avocat ((très optionnel, à ajouter à la dernière minute juste avant le repas))",
+        "1/3 tasse de mayonnaise",
+        "1/3 tasse de yogourt grec",
+        "1  petite gousse d’ail (râpée ou pressée)",
+        "1/2  citron (le jus)",
+        "3 c. à table de parmesan râpé",
+        "1/4 c. à thé de sauce Worcestershire ((optionnelle))",
+        "Poivre (au goût)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1504,
+        "sha256": "63fdf815f797947c"
+      },
+      "sha256_page": "7d032fe287725a14"
+    },
+    {
+      "url": "https://patateetcornichon.com/recettes/salade-cesar-vegane-aux-pois-chiches",
+      "site": "patateetcornichon.com",
+      "nom": "Salade césar végane aux pois chiches",
+      "portions": "2 pers.",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 laitue romaine",
+        "260 g pois chiches cuits",
+        "2 tranche pain rassis",
+        "1 c. à soupe huile d'olive",
+        "1 c. à café paprika",
+        "sel",
+        "fromage râpé vegan",
+        "1 c. à soupe câpres",
+        "2 c. à soupe parmesan végane",
+        "1 c. à soupe moutarde",
+        "65 mL huile d'olive",
+        "2 c. à soupe jus de citron",
+        "3 c. à soupe crème de soja"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 707,
+        "sha256": "cbac8929888760f9"
+      },
+      "sha256_page": "c6da0b5a470ac1c0"
+    }
+  ]
+}

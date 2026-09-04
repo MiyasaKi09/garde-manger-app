@@ -1,7 +1,7 @@
 {
-  "dish": "galette de sarrasin aux champignons",
-  "slug": "galette-de-sarrasin-aux-champignons",
-  "sources_count": 5,
+  "dish": "galette aux champignons et à l'œuf",
+  "slug": "galette-aux-champignons-et-a-l-oeuf",
+  "sources_count": 7,
   "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
   "sources": [
     {
@@ -36,28 +36,56 @@
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "d4aaed610967d103"
+      "sha256_page": "856941ae7e9d8d3f"
     },
     {
-      "url": "https://www.750g.com/galette-forestiere-r48761.htm",
-      "site": "750g.com",
-      "nom": "Galette forestière",
-      "portions": "2 personnes",
-      "duree_preparation": "PT10M",
-      "duree_cuisson": null,
+      "url": "https://jow.fr/fr/recipes/galette-champignons-et-oeuf-miroir-89c60x1q5tua84mp07sj",
+      "site": "jow.fr",
+      "nom": "Galette champignons & œuf miroir",
+      "portions": [
+        "1",
+        "portion"
+      ],
+      "duree_preparation": "PT3M",
+      "duree_cuisson": "PT10M",
       "ingredients": [
-        "Huile d'olive en spray de Histoire de goût",
-        "Sel",
-        "Poivre",
-        "4 rutabagas",
-        "2 galettes forestières de Allerglibre"
+        "90 g Champignons de Paris (frais)",
+        "1   Galette bretonne",
+        "2 pinc. Fromage râpé",
+        "1/4   Échalote",
+        "1   Œuf"
       ],
       "etapes_empreinte": {
-        "nombre": 2,
-        "signes": 335,
-        "sha256": "1b598c9fcc92ee28"
+        "nombre": 7,
+        "signes": 875,
+        "sha256": "ecbcbe29f01f69f8"
       },
-      "sha256_page": "46654bb098d36859"
+      "sha256_page": "f2e73be93f883ec5"
+    },
+    {
+      "url": "https://jow.fr/recipes/galette-forestiere-7xmx9j2l2rhc03yd0oqv",
+      "site": "jow.fr",
+      "nom": "Galette forestière",
+      "portions": [
+        "1",
+        "portion"
+      ],
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1   Galette bretonne",
+        "1 tran. Jambon blanc",
+        "2 pinc. Fromage râpé",
+        "80 g Champignons de Paris (frais)",
+        "1   Œuf",
+        "1/4   Échalote"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 930,
+        "sha256": "fe61d2335280b214"
+      },
+      "sha256_page": "07d087f49adf94eb"
     },
     {
       "url": "https://www.supertoinette.com/recette/5428/galettes-de-sarrasin-aux-champignons.html",
@@ -82,7 +110,61 @@
         "signes": 712,
         "sha256": "dc69abe4c9be659c"
       },
-      "sha256_page": "b98f52eade54026b"
+      "sha256_page": "2f5736df27353cf6"
+    },
+    {
+      "url": "https://www.ptitchef.com/recettes/entree/galettes-de-sarrasin-a-l-oeuf-miroir-fid-45385",
+      "site": "ptitchef.com",
+      "nom": "Galettes de sarrasin à l'oeuf miroir",
+      "portions": "3",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "100 g de farine de sarrasin",
+        "1 oeuf",
+        "350 ml de lait ribot (ou 250 ml de lait entier et 100 ml de yaourt nature)",
+        "½ cuillère à café de levure chimique",
+        "sel",
+        "1 oeuf",
+        "½ tranche de jambon blanc sec ou de saumon fumé,",
+        "1 cuillère à soupe de fromage râpé, sel et poivre",
+        "Facultatif : 100 g d'épinards frais (ou",
+        "50 g surgelé) ou 50 g de champignons frais",
+        "1 cuillère à café d'huile d'olive",
+        "50 cl de crème",
+        "Huile pour graisser la poêle"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 788,
+        "sha256": "71c109ce52d4a605"
+      },
+      "sha256_page": "5a07a60793e0a43d"
+    },
+    {
+      "url": "https://www.ptitchef.com/recettes/plat/galettes-de-sarrasin-complete-au-jambon-fromage-et-oeuf-fid-1572026",
+      "site": "ptitchef.com",
+      "nom": "Galettes de sarrasin complète au jambon fromage et œuf",
+      "portions": "1",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 c. à café de beurre",
+        "1/4 d'oignon",
+        "1 c. à de café beurre",
+        "1 galette de sarrasin",
+        "1 tranche de jambon",
+        "1 œuf",
+        "1 c. à soupe de fromage râpé",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 453,
+        "sha256": "1bc6086e97f1e685"
+      },
+      "sha256_page": "6bf8e2be6c90d444"
     },
     {
       "url": "https://bonpourtoi.ca/recettes/galettes-de-sarrasin-bretonnes-a-la-forestiere/",
@@ -116,43 +198,7 @@
         "signes": 1372,
         "sha256": "400c7dcad3d8fb8d"
       },
-      "sha256_page": "236fe1cc7a0a7f36"
-    },
-    {
-      "url": "https://tastecanada.org/galette-sarrasin-bretonne-a-la-forestiere/",
-      "site": "tastecanada.org",
-      "nom": "GALETTE SARRASIN BRETONNE À LA FORESTIÈRE",
-      "portions": [
-        "6",
-        "6 portions"
-      ],
-      "duree_preparation": "PT30M",
-      "duree_cuisson": "PT25M",
-      "ingredients": [
-        "330  ml (1 1⁄3 tasse) Farine de sarrasin",
-        "750  ml (3 tasses) Eau (selune pincée)",
-        "1  Œuf (calibre gros)",
-        "15  ml (1 c. À soupe) Beurre",
-        "15  ml (1 c. À soupe) Beurre",
-        "½  Oignon (haché finement)",
-        "1  Gousse d’ail (hachée finement)",
-        "125  ml (½ tasse) Bacon de dinde (coupé en dés)",
-        "500  ml (2 tasses) Champignons blancs (tranchés)",
-        "15  ml (1 c. À soupe) Persil frais (haché)",
-        "Sel et poivre au goût",
-        "15  ml (1 c. À soupe) Beurre",
-        "15  ml (1 c. À soupe) Farine tout usage",
-        "250  ml (1 tasse) Crème de soya\t (de type belsoy)",
-        "125  ml (½ tasse) Bouillon de poulet (réduit en sodium)",
-        "60  ml (¼ tasse) Fromage emmenthal (râpé)",
-        "125  ml (½ tasse) Ricotta"
-      ],
-      "etapes_empreinte": {
-        "nombre": 7,
-        "signes": 1291,
-        "sha256": "dbb71f983a425265"
-      },
-      "sha256_page": "dc2dfe6f3e0fa5e9"
+      "sha256_page": "04077e9209b7caa4"
     }
   ]
 }

@@ -1,0 +1,294 @@
+{
+  "dish": "aubergines panées",
+  "slug": "aubergines-panees",
+  "sources_count": 12,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_aubergines-panees_29854.aspx",
+      "site": "marmiton.org",
+      "nom": "Aubergines panées : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "1 aubergine",
+        "1 oeuf battu",
+        "50 g de chapelure",
+        "30 g de parmesan (plus si vous préférez)",
+        "huile de friture",
+        "sel et du poivre si besoin."
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 440,
+        "sha256": "d275bf1f67cf3756"
+      },
+      "sha256_page": "9f4df3fd10d4dca9"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_aubergines-panees_14251.aspx",
+      "site": "marmiton.org",
+      "nom": "Tranches d'aubergines panées : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT4M",
+      "ingredients": [
+        "2 aubergines ou 4 petites",
+        "2 oeufs",
+        "5 cuillères à soupe de lait",
+        "chapelure"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 374,
+        "sha256": "588f5565b6466689"
+      },
+      "sha256_page": "331be9f9052cb8cd"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_aubergines-panees_530510.aspx",
+      "site": "marmiton.org",
+      "nom": "Aubergines panées (spécial enfant) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 aubergine",
+        "2 jaunes d'oeuf battus",
+        "50 g de farine",
+        "100 g de chapelure",
+        "sel et poivre",
+        "0.5 verre d'huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 407,
+        "sha256": "e09a4c2488040516"
+      },
+      "sha256_page": "39a0a6d36188105e"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_aubergine-panee-a-l-ail-et-au-persil_171626.aspx",
+      "site": "marmiton.org",
+      "nom": "Aubergine panée a l'ail et au persil : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT3M",
+      "ingredients": [
+        "1 aubergine",
+        "2 cuillères à soupe de farine",
+        "2 oeufs",
+        "chapelure",
+        "ail et du persil ou de la persillade",
+        "huile",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 424,
+        "sha256": "4b8fb31fa724780d"
+      },
+      "sha256_page": "e6442012393c8d13"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_courgettes-aubergines-panees_337074.aspx",
+      "site": "marmiton.org",
+      "nom": "Courgettes Aubergines Panées : la meilleure recette",
+      "portions": "6 Personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 courgettes",
+        "2 aubergines",
+        "4 oeufs",
+        "5 cuillères à soupe de farine",
+        "1 poignée de chapelure de votre choix (miettes de pain broyées)",
+        "30 g de sauce tomate",
+        "1 cuillère à soupe d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 490,
+        "sha256": "e32fa3c809166e26"
+      },
+      "sha256_page": "80829a5fd5f113f5"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_aubergines-panees-au-airfryer_536755.aspx",
+      "site": "marmiton.org",
+      "nom": "Aubergines panées au Airfryer : la meilleure recette",
+      "portions": "0 0",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 aubergine",
+        "125 g de chapelure",
+        "2 oeufs",
+        "2 cuillères à soupe de parmesan râpé",
+        "8 cuillères à soupe de farine",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 519,
+        "sha256": "48c3dc528a09d9ef"
+      },
+      "sha256_page": "06c71acef948e0ff"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lacuisinedunetoquee/recettes/aubergine-panee",
+      "site": "chefsimon.com",
+      "nom": "Aubergine panée",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "1 aubergines",
+        "1 œuf",
+        "farine",
+        "chapelure",
+        "sel et poivre",
+        "huile d’olive",
+        "pain de mozza",
+        "sauce tomate"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "49b669e921a07850"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/cotelettes-d-aubergines-panees-a-la-sicilienne",
+      "site": "chefsimon.com",
+      "nom": "Côtelettes d'aubergines panées à la sicilienne",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "1  aubergine",
+        "4 tranches de jambon (ou 10 tranches de coppa)",
+        "5 tranches de provolone coupées finement (ou tout autre fromage crémeux à la cuisson : tallegio ou pecorino au poivre)",
+        "2  œufs",
+        "chapelure",
+        "farine",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 342,
+        "sha256": "5cedb078c11cb655"
+      },
+      "sha256_page": "c4a9bf3deed5200b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/l-italie-dans-ma-cuisine/recettes/cotelettes-d-aubergines-panees-au-jambon-et-provolone",
+      "site": "chefsimon.com",
+      "nom": "Côtelettes d'aubergines panées au jambon et provolone",
+      "portions": "5 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "2 aubergines",
+        "3 ou 4 tranches de jambon",
+        "5 tranches de provolone coupées finement",
+        "1 oeuf",
+        "chapelure",
+        "farine",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "c453dd53c780e6a4"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/recettes-de-clairette/recettes/millefeuilles-d-aubergines-panees-a-la-mozzarella-et-au-pesto",
+      "site": "chefsimon.com",
+      "nom": "Millefeuilles d'aubergines panées à la mozzarella et au pesto",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "2 aubergines",
+        "2 gousses d'ail",
+        "un bouquet de basilic",
+        "2 à 3 œufs",
+        "300 g de mozzarella",
+        "50 g de parmesan râpé",
+        "30 g d'huile d'olive",
+        "150 g de chapelure",
+        "50 g de farine",
+        "50 g de poudre d'amandes",
+        "huile de friture",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "bbf908ee67de1ffe"
+    },
+    {
+      "url": "https://www.750g.com/gratin-daubergines-panees-r27122.htm",
+      "site": "750g.com",
+      "nom": "Gratin d'aubergines panées",
+      "portions": "4 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 aubergines  (dans l'idéal, plutôt longue et pas trop large)",
+        "500 g de purée de tomate",
+        "2 oeufs",
+        "Chapelure",
+        "Parmesan",
+        "1 oignon",
+        "Thym",
+        "Romarin",
+        "Laurier",
+        "1 gousse d'ail",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 1116,
+        "sha256": "7d132b7ab2166a60"
+      },
+      "sha256_page": "4800dd0a1026fa6a"
+    },
+    {
+      "url": "https://www.750g.com/aubergines-panees-et-fourrees-a-la-fourme-dambert-r85568.htm",
+      "site": "750g.com",
+      "nom": "Aubergines panées et fourrées à la Fourme d'Ambert",
+      "portions": "2 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 c. à c. d'origan séché",
+        "1 oeuf  battu",
+        "1 huile de friture",
+        "3 c. à s. de farine",
+        "Sel ou sel fin",
+        "Poivre noir",
+        "Huile d'olive",
+        "100 g de fourme d'Ambert AOP",
+        "6 c. à s. de chapelure",
+        "2 aubergines  petites"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 617,
+        "sha256": "61308f996e597b72"
+      },
+      "sha256_page": "4679c2aae00f7dc7"
+    }
+  ]
+}

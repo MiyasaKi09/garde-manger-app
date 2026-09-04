@@ -1,0 +1,137 @@
+{
+  "dish": "san bei tofu",
+  "slug": "san-bei-doufu",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://thefoodietakesflight.com/three-cup-tofu/",
+      "site": "thefoodietakesflight.com",
+      "nom": "Three Cup Tofu (San Bei, 三杯豆腐)",
+      "portions": [
+        "4",
+        "4 people"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "20 oz extra firm tofu (, frozen and thawed)",
+        "1 tbsp soy sauce",
+        "Garlic powder",
+        "Ground pepper",
+        "5-6 tbsp corn starch (plus more as needed)",
+        "Garlic powder",
+        "Ground pepper",
+        "Neutral cooking oil",
+        "3 tbsp roasted or dark sesame oil ((I actually used Korean sesame oil))",
+        "6 thin slices fresh ginger",
+        "8 cloves garlic (peeled)",
+        "1  scallion (sliced - green and white parts separated)",
+        "3 tbsp light or regular soy sauce",
+        "3 tbsp Shaoxing wine  (or Michiu wine (see notes))",
+        "1-2 tbsp brown sugar (adjust to taste)",
+        "1/4 cup water",
+        "2  dried chiles or red chiles (optional for heat)",
+        "Handful fresh basil leaves (, leaves removed from the stems)",
+        "Steamed rice"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 2282,
+        "sha256": "c5e6fbe19028b767"
+      },
+      "sha256_page": "fa1c2622174b345f"
+    },
+    {
+      "url": "https://woonheng.com/three-cup-san-bei-tofu/",
+      "site": "woonheng.com",
+      "nom": "Three Cup (San Bei) Tofu - 三杯豆腐",
+      "portions": [
+        "3"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "14 oz [397g]firm tofu (drained)",
+        "8-10 slices [35g] ginger",
+        "5 cloves garlic (sliced)",
+        "1  red jalapenõ (chopped (or any chili))",
+        "1 cup packed fresh Thai basil (sub with basil or adjust to your preference)",
+        "corn starch for coating",
+        "a handful of chopped scallion/green onion",
+        "oil for cooking",
+        "3 tablespoons Chinese cooking wine Michiu (or use rice wine/dry sherry⁣/vegetable broth)",
+        "3 tablespoons light soy sauce⁣ or tamari",
+        "3 tablespoons toasted sesame oil⁣",
+        "½ tablespoon sugar⁣",
+        "⅓ cup [80g] water⁣"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1745,
+        "sha256": "13533c2a2ff62736"
+      },
+      "sha256_page": "44406162f450cd42"
+    },
+    {
+      "url": "https://homenaturallymade.com/three-cup-tofu/",
+      "site": "homenaturallymade.com",
+      "nom": "Three Cup Tofu Recipe {San Bei Tofu 三杯豆腐}",
+      "portions": 6,
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "20 oz. firm tofu",
+        "1 bunch of fresh basil",
+        "5 garlic cloves",
+        "10 slices of ginger, about 12 g",
+        "1 tbsp. cooking oil, avocado oil is preferred, for pan fry tofu",
+        "1/4 tsp cooking oil, avocado oil or canola oil, for stir fry garlic and ginger",
+        "1/4 cup Shaoxing wine",
+        "1/4 cup sesame oil",
+        "2 tbsp. naturally aged soy sauce {Jiang You}, see notes",
+        "2 tbsp. light soy sauce",
+        "1 tbsp. sugar, sugar in the raw or brown rock sugar is preferred"
+      ],
+      "etapes_empreinte": {
+        "nombre": 20,
+        "signes": 1886,
+        "sha256": "b8ee052ef5fb468d"
+      },
+      "sha256_page": "cf707e9400ed3d39"
+    },
+    {
+      "url": "https://browngirlveganeats.com/three-cup-san-bei-tofu/",
+      "site": "browngirlveganeats.com",
+      "nom": "Three Cup (San Bei) Tofu",
+      "portions": [
+        "4"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT8M",
+      "ingredients": [
+        "450 g extra firm tofu",
+        "2  tbsp toasted sesame oil",
+        "1 inch  ginger",
+        "1/2  green chilli ((or full if you want it spicy))",
+        "1/2  tbsp  light soy sauce",
+        "1.5  tbsp dark soy sauce",
+        "2  tbsp  shaoxing wine",
+        "1  tsp  sugar",
+        "1/2  cup  water",
+        "1  bunch  basil leaves",
+        "3  tbsp  corn starch",
+        "1  tsp  onion powder",
+        "1  tsp  garlic powder",
+        "1  tsp  5-spice powder",
+        "oil for frying"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1000,
+        "sha256": "bced10d501f62da3"
+      },
+      "sha256_page": "f9c70a78bd204d5f"
+    }
+  ]
+}
