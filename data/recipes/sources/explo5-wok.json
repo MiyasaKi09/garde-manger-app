@@ -1,0 +1,247 @@
+{
+  "dish": "Tofu aux légumes",
+  "slug": "explo5-wok",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_wok-de-legumes-au-tofu_348973.aspx",
+      "site": "marmiton.org",
+      "nom": "Wok de légumes au tofu : la meilleure recette",
+      "portions": "2 personne(s)",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "1 oignon",
+        "2 gousses d'ail",
+        "115 g de champignons",
+        "8 brocolis",
+        "2 carottes",
+        "2 cuillères à café de sauce soja",
+        "160 g de tofu"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 647,
+        "sha256": "13b13bca72912ef0"
+      },
+      "sha256_page": "f825240874257bcc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/vico-cuistot/recettes/wok-de-legumes-au-riz-complet-thai-et-au-tofu",
+      "site": "chefsimon.com",
+      "nom": "Wok de légumes au riz complet thaï et au tofu",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "1 courgette",
+        "1 brocolis",
+        "1 oignon jaune",
+        "1 poignée de coriandre fraîche ciselée",
+        "2 cuillères à soupe d’huile d’olive",
+        "1 cuillère à café d’huile neutre",
+        "2 cuillères à soupe de sauce poisson",
+        "125g de tofu nature",
+        "1/2 bouillon cube",
+        "1 cuillère à soupe de graines de courge",
+        "1 cuillère à café de gingembre",
+        "1/2 jus de citron",
+        "150g de riz thaï complet (pesé cru)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "337f4060dea82e80"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_saute-de-tofu-marine-aux-legumes_63587.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauté de tofu mariné aux légumes : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 bloc de tofu nature (150 g)",
+        "3 cuillères à soupe de sauce soja",
+        "1 cuillère à café de moutarde",
+        "3 pincées de gingembre en poudre",
+        "poivre",
+        "150 g de riz basmati",
+        "100 g de brocolis (les surgelés font parfaitement l'affaire)",
+        "100 g de haricots plats d'Espagne (idem que pour le brocoli)",
+        "huile",
+        "poivre",
+        "sel",
+        "sauce soja"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1019,
+        "sha256": "2bc638e98f3d6267"
+      },
+      "sha256_page": "f7101b89fe75b683"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_legumes-sautes-au-tofu_15314.aspx",
+      "site": "marmiton.org",
+      "nom": "Légumes sautés au tofu : la meilleure recette",
+      "portions": "3 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 bloc de tofu nature ou fumé",
+        "2 poivrons rouges",
+        "1 poivron vert",
+        "2 tomates",
+        "1 oignon",
+        "1 poignée de soja",
+        "sauce soja",
+        "huile de sésame",
+        "1 cuillère à soupe de sésame",
+        "coriandre fraîche",
+        "0.5 cuillère à café d'ail en poudre",
+        "0.5 cuillère à café de coriandre en poudre",
+        "0.5 cuillère à café de cumin (graines ou poudre)",
+        "1 cuillère à café de sucre",
+        "piment en poudre ou en sauce"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 771,
+        "sha256": "312f712b614b8b70"
+      },
+      "sha256_page": "36635b62ce6f3e95"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/madame-potiron/recettes/tofu-a-la-sauce-barbecue-et-legumes-sautes",
+      "site": "chefsimon.com",
+      "nom": "Tofu à la sauce barbecue et légumes sautés",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 petite tête de brocoli",
+        "400 gr de tofu ferme",
+        "150 gr de poivron",
+        "1 tête de pak choi",
+        "300 gr de nouilles",
+        "1 gousse d'ail",
+        "2 cébettes",
+        "2 càc d'huile de sésame",
+        "4 càs de sauce type BBQ coréen",
+        "1 càs d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 169,
+        "sha256": "e8a6c0584c407e75"
+      },
+      "sha256_page": "4e959a2c44db563b"
+    },
+    {
+      "url": "https://www.750g.com/saute-de-legumes-au-tofu-r14534.htm",
+      "site": "750g.com",
+      "nom": "Sauté de légumes au tofu",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "23 cuil à soupe de sauce soja épaisse",
+        "1 poivron rouge ou vert",
+        "23 gousses d'ail",
+        "200 gr de shittake frais",
+        "1cuil à soupe de bouillon de volaille",
+        "2 carottes",
+        "1oignon",
+        "1cuil à soupe d'huile d'olive",
+        "500gr de tofu"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 544,
+        "sha256": "b6723ef987ecd56f"
+      },
+      "sha256_page": "a1822977b398ada5"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/alexandre/recettes/wok-vegetarien-de-chou-et-tofu-frit-japonais",
+      "site": "chefsimon.com",
+      "nom": "Wok végétarien de chou et tofu frit japonais",
+      "portions": "1 personne",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "8 losanges de tofu frit",
+        "8 feuilles de chou chinois (ou un autre légume de votre choix)",
+        "1 ou 2 oignons nouveaux selon la taille",
+        "2 c à soupe de sake (ou vin blanc sec si vous n’avez pas de sake)",
+        "1 c à soupe de sucre en poudre",
+        "1,5 c à soupe de sauce de soja",
+        "2 à 3 c à soupe d’huile végétale"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "d56fde907e7593a4"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_wok-chou-romanesco-tofu-aux-epices_310386.aspx",
+      "site": "marmiton.org",
+      "nom": "Wok chou romanesco tofu aux épices : la meilleure recette",
+      "portions": "4 Personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 chou romanesco",
+        "400 g de tofu fumé",
+        "3 cuillères à soupe de sauce soja",
+        "3 cuillères à soupe d'huile",
+        "1 cuillère à café de coriandre en poudre",
+        "1 cuillère à café de cumin",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 441,
+        "sha256": "5dffe617ee4c3c06"
+      },
+      "sha256_page": "36a56c5c05f6d8f6"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clementine-8b16a900-a596-45c5-9c12-3cd5ff02a6bc/recettes/wok-de-pak-choi-au-tofu-marine",
+      "site": "chefsimon.com",
+      "nom": "Wok de pak choï au tofu mariné",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H13M",
+      "ingredients": [
+        "180 g de tofu au piment d'Espelette",
+        "1 càs d'huile de sésame",
+        "1 càs de sauce soja",
+        "1 càs de miel liquide",
+        "1 pincée de sésame",
+        "180 g de chou romanesco (je n'en ai pas mis)",
+        "1 cm de gingembre",
+        "2 gousses d'ail",
+        "1 petit piment rouge",
+        "2 choux pak choï",
+        "3 càs d'huile de sésame",
+        "450 de légumes de wok asiatique",
+        "1 oignon cébette",
+        "3 càs de sauce soja",
+        "le jus d'un citron vert"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "c33dd46b3a0194a7"
+    }
+  ]
+}

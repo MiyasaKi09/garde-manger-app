@@ -1,0 +1,153 @@
+{
+  "dish": "Cassoulet végétarien",
+  "slug": "explo5-cassoulet",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cassoulet-vegetarien-aux-legumes-varies_22937.aspx",
+      "site": "marmiton.org",
+      "nom": "Cassoulet végétarien aux légumes variés : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "375 g de haricots secs",
+        "375 g de champignons de Paris (ou de cèpes ou de morilles, selon vos goûts... et la saison !)",
+        "2 poireaux",
+        "5 carottes",
+        "2 navets",
+        "3 oignons",
+        "6 pommes de terre de taille moyenne",
+        "400 g d'olives noires dénoyautées",
+        "2 gousses d'ail",
+        "1 bouquet garni",
+        "2 clous de girofle",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 660,
+        "sha256": "14e870b539176b49"
+      },
+      "sha256_page": "8a60cd553e39a28b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clementine-8b16a900-a596-45c5-9c12-3cd5ff02a6bc/recettes/cassoulet-d-ete-aux-legumes",
+      "site": "chefsimon.com",
+      "nom": "Cassoulet d'été aux légumes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "4 cuisses de confit de canard",
+        "350 g de saucisse de Toulouse",
+        "300 g de haricots blancs secs",
+        "100 g de jambon de Bayonne",
+        "50 g de graisse de canard",
+        "4 carottes",
+        "1 oignon",
+        "4 oignons nouveaux",
+        "8 gousses d'ail",
+        "1 poivron rouge et 1 poivron orange",
+        "1 courgette",
+        "2 belles tomates",
+        "huile d'olive extra vierge",
+        "2 branches de thym",
+        "4 feuilles de laurier",
+        "2 pincées de sucre",
+        "1 bonne pincée de piment d'Espelette",
+        "sel de Guérande, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "59d91384e4fee61d"
+    },
+    {
+      "url": "https://www.referentiel-restauration-collective.fr/cassoulet-vegetarien-aux-haricots-tarbais-maison/",
+      "site": "referentiel-restauration-collective.fr",
+      "nom": "Cassoulet végétarien aux haricots tarbais : le vrai goût du sud-ouest",
+      "portions": [
+        "6",
+        "6 personnes"
+      ],
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT180M",
+      "ingredients": [
+        "360 g Haricots tarbais (ou lingots)",
+        "180 g Saucisses végétales",
+        "120 g Carottes",
+        "90 g Oignons",
+        "120 g Tomates",
+        "10 g Ail",
+        "1 bouquet Bouquet garni",
+        "20 g Chapelure"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1404,
+        "sha256": "5aa91b069def0d21"
+      },
+      "sha256_page": "05b7bc7addd77b03"
+    },
+    {
+      "url": "https://vegan-pratique.fr/recettes/cassoulet-vegetal/",
+      "site": "vegan-pratique.fr",
+      "nom": "Cassoulet végétal",
+      "portions": "4 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "400 g de haricots blancs secs",
+        "200 g d’émincé végétal",
+        "4 saucisses végétales",
+        "2 carottes",
+        "2 oignons",
+        "3 gousses d’ail",
+        "100 g de concentré de tomate",
+        "2 càs de bouillon de légumes",
+        "2 càs d’huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "a9f2820928abc568"
+    },
+    {
+      "url": "https://vegourmet.fr/recettes/cassoulet-vegan-meilleure-recette-plaisir/",
+      "site": "vegourmet.fr",
+      "nom": "Cassoulet vegan : la meilleure recette pour se faire plaisir",
+      "portions": "6",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT2H30M",
+      "ingredients": [
+        "3 Boîtes de haricots blancs (400g chacune)",
+        "2 Oignons émincés",
+        "2 Carottes coupées en dés",
+        "3 Gousses d'ail hachées",
+        "1 Boîte de tomates concassées (400g)",
+        "1 càs Concentré de tomates",
+        "1 Bouquet garni (thym, laurier)",
+        "500 ml Bouillon de légumes",
+        "2 càs Huile d'olive",
+        "1 càs Sel et poivre",
+        "4 Saucisses végétales coupées en rondelles",
+        "100 g Tofu fumé en dés",
+        "2 càs Chapelure",
+        "1 càc Paprika fumé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 652,
+        "sha256": "28ec82241a26a961"
+      },
+      "sha256_page": "60df42f8369ec4e5"
+    }
+  ]
+}

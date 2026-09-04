@@ -1,0 +1,226 @@
+{
+  "dish": "Carbonade végétarienne",
+  "slug": "explo5-carbonade",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://cookpad.com/fr/recettes/17201441",
+      "site": "cookpad.com",
+      "nom": "Carbonade flamande végétarienne au seitan",
+      "portions": "4 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "500 g seitan",
+        "1 l bière",
+        "4 oignons",
+        "4 tranches de pain d'épice",
+        "Beurre",
+        "Moutarde",
+        "Carottes",
+        "Cannelle",
+        "Thym et romarin",
+        "Sucre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 318,
+        "sha256": "bdd62e0e0b100a53"
+      },
+      "sha256_page": "10db04cff5068ff3"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/recettes-de-clairette/recettes/carbonnade-de-champignons",
+      "site": "chefsimon.com",
+      "nom": "Carbonnade de champignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 kilo de champignons de Paris",
+        "3 échalotes",
+        "un oignon",
+        "un bouquet garni",
+        "20 g de beurre",
+        "500 g de bière brune",
+        "2 cuillères à soupe d'huile de pépins de raisin",
+        "25 g de cassonade",
+        "une cuillère à soupe de moutarde forte",
+        "10 g de maïzena",
+        "une cuillère à café rase de quatre épices",
+        "2 brins de persil plat",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "415def3acf0fe659"
+    },
+    {
+      "url": "https://mrcuisto.com/recipes/carbonnade-champignons-biere-brune",
+      "site": "mrcuisto.com",
+      "nom": "Carbonnade de champignons bière brune",
+      "portions": 4,
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 kg de champignons de Paris, nettoyés et coupés en quartiers",
+        "3 échalotes, pelées et émincées",
+        "1 oignon, pelé et émincé",
+        "2 brins de persil plat, hachés",
+        "1 bouquet garni",
+        "1 cuillère à café rase de quatre-épices",
+        "Sel",
+        "Poivre",
+        "20 g de beurre",
+        "2 cuillères à soupe d'huile de pépins de raisin",
+        "500 g de bière brune",
+        "25 g de cassonade",
+        "1 cuillère à soupe de moutarde forte",
+        "10 g de fécule de maïs (maïzena)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 881,
+        "sha256": "659f063c5ae61c31"
+      },
+      "sha256_page": "7095146bfff99339"
+    },
+    {
+      "url": "https://www.jumbo.com/recepten/zelfgemaakt-vegetarisch-stoofvlees-van-seitan-1417849-7",
+      "site": "jumbo.com",
+      "nom": "Zelfgemaakt vegetarisch stoofvlees van seitan",
+      "portions": "3 porties",
+      "duree_preparation": null,
+      "duree_cuisson": "PT60M",
+      "ingredients": [
+        "400 g Smaakt Seitan biologisch",
+        "300 ml Bokbier",
+        "2 Uien",
+        "2 Ontbijtkoek",
+        "3.5 Beschuit",
+        "2 Kruidnagel",
+        "2 Laurierblaadjes",
+        "500 ml Water",
+        "1 Bouillon blokje",
+        "65 g Roomboter",
+        "3 Teen Jumbo Knoflook",
+        "0.2 el Jumbo Tijm",
+        "2 tl Mosterd",
+        "45 g Schenkstroop",
+        "1 el Ketchup",
+        "1 snufje Peper zwart",
+        "1 snufje Zout"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 434,
+        "sha256": "d02d571cbe4a171c"
+      },
+      "sha256_page": "e71bb50a67bf3bfd"
+    },
+    {
+      "url": "https://bevegan.be/nl/recept-vegan-stoverij/",
+      "site": "bevegan.be",
+      "nom": "Vegan stoverij met frietjes",
+      "portions": [
+        "2",
+        "2 personen"
+      ],
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "zonnebloemolie (ontgeurd) (of kokosolie)",
+        "2  uien (in grove stukken gesneden)",
+        "1 à 2 teentjes look (fijngehakt)",
+        "300 g seitan (in stukjes (of vegan kipstuckjes))",
+        "375 ml water",
+        "1 tl groentebouillonpoeder",
+        "1 el sojasaus (of tamari)",
+        "2 el  bruine suiker",
+        "2 el mosterd",
+        "2 el azijn",
+        "1 à 2 blaadjes laurier",
+        "2 à 3 takjes verse tijm (of 1/2 à 3/4 tl gedroogde tijm)",
+        "1 el maïzena (gemengd met 3 el water)",
+        "1 snuifje cayennepeper"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 768,
+        "sha256": "4c8279e1d52e8582"
+      },
+      "sha256_page": "8b41e69be2bb1a66"
+    },
+    {
+      "url": "https://dagelijksekost.vrt.be/gerechten/vegetarisch-stoofvlees",
+      "site": "dagelijksekost.vrt.be",
+      "nom": "Vegetarisch stoofvlees",
+      "portions": "4",
+      "duree_preparation": null,
+      "duree_cuisson": "PT140M",
+      "ingredients": [
+        "800 gram seitan",
+        "250 gram Parijse champignons",
+        "1 wortel",
+        "2 uien",
+        "1 teentje knoflook",
+        "3 fles bruin bier (bijvoorbeeld Moinette van Dupont)",
+        "2 eetlepel perensiroop",
+        "2 sneetjes broden",
+        "mosterd",
+        "boter",
+        "2 kruidnagels",
+        "enkele takjes enkele takjes rozemarijn",
+        "enkele takjes enkele takjes tijm",
+        "1 enkele blaadjes laurier",
+        "peper",
+        "zout",
+        "1 kg aardappel",
+        "3 witloof",
+        "2 eetlepel mayonaise",
+        "azijn"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 226,
+        "sha256": "45d5a080638b6c4f"
+      },
+      "sha256_page": "62f3bb3339861947"
+    },
+    {
+      "url": "https://duurzamekeuzes.com/recept-vegetarisch-stoofvlees-van-seitan/",
+      "site": "duurzamekeuzes.com",
+      "nom": "Vegetarisch stoofvlees van seitan",
+      "portions": [
+        "4",
+        "4 personen"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT60M",
+      "ingredients": [
+        "400 gram seitan",
+        "2  grote uien",
+        "2 teentjes knoflook",
+        "1  winterwortel",
+        "3 stengels bleekselderij",
+        "2 el tomatenpuree",
+        "330 ml blond bier",
+        "250 ml groentebouillon",
+        "2  laurierblaadjes",
+        "1 tl mosterd",
+        "Verse tijm (naar smaak)",
+        "2 el olie om te bakken"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 822,
+        "sha256": "567ff0246fd7934f"
+      },
+      "sha256_page": "61dd21a47bbf6541"
+    }
+  ]
+}
