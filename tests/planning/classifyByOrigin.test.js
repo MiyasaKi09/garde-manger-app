@@ -97,7 +97,13 @@ describe('classification par origine, sur tout le vivier publiable', () => {
   // par le lot21 et retirée de l'annexe A3 pour la même raison (voir
   // tests/data/formOrigins.test.js). On la nomme ici plutôt que d'affaiblir
   // le motif : une exception déclarée se relit, un mot retiré ne se voit plus.
-  const FAUSSE_ALERTE_CONNUE = ['Sauce soja légère spéciale poisson']
+  // Et « Saucisse végétale au tofu », entrée au catalogue avec les jumeaux
+  // végétariens : le mot « saucisse » y désigne la FORME du produit, pas sa
+  // matière — le libellé Ciqual dit lui-même « convient aux véganes ». Elle est
+  // la protéine du cassoulet végétarien, qui serait sinon dénoncé par son
+  // propre ingrédient. Nommée ici, comme la précédente, plutôt que de retirer
+  // « saucisse » du motif : le mot doit continuer d'attraper la Morteau.
+  const FAUSSE_ALERTE_CONNUE = ['Sauce soja légère spéciale poisson', 'Saucisse végétale au tofu']
   // Frontières Unicode : `\b` ne voit pas « é », et « bœuf » ne s'écrit pas
   // « boeuf » dans le corpus. Sans elles, « eau » sortirait de « veau ».
   const MOT_CARNE = new RegExp(`(?<![\\p{L}\\p{N}_])(?:${MOTS_CARNES.join('|')})(?![\\p{L}\\p{N}_])`, 'iu')
@@ -134,7 +140,7 @@ describe('classification par origine, sur tout le vivier publiable', () => {
     const faussesAlertes = foodCatalog.forms
       .filter((form) => !form.origin.startsWith('animal:') && MOT_CARNE.test(form.canonical_name))
       .map((form) => form.canonical_name)
-    expect(faussesAlertes).toEqual(FAUSSE_ALERTE_CONNUE)
+    expect(faussesAlertes.sort()).toEqual([...FAUSSE_ALERTE_CONNUE].sort())
     for (const nom of ['Eau glacée', 'Oignon nouveau cru', 'Lait de coco', 'Tofu ferme', 'Chou-fleur frais']) {
       expect(MOT_CARNE.test(nom), nom).toBe(false)
     }

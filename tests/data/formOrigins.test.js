@@ -98,9 +98,16 @@ describe('origine des formes du catalogue', () => {
     const suspectes = catalog.forms
       .filter((form) => ['viandes', 'volailles', 'poissons_fruits_de_mer'].includes(form.category) && !animale(form.origin))
       .map((form) => [form.canonical_name_normalized, form.origin, form.origin_source])
-    // Le tofu est le seul, et il est DÉCLARÉ : une exception qui ne viendrait
-    // pas d'un arbitrage serait une erreur de résolution.
-    expect(suspectes).toEqual([['tofu ferme', 'vegetal', 'arbitrage:lot21']])
+    // Trois substituts végétaux, tous DÉCLARÉS : une exception qui ne viendrait
+    // pas d'un arbitrage serait une erreur de résolution. Ciqual les range en
+    // « substituts de produits carnés », sous-groupe des viandes ; c'est la
+    // raison d'être de la règle (b) qui refuse de trancher sur cette case, et
+    // du lot21 qui les déclare pour ce qu'ils SONT — soja, gluten de blé.
+    expect(suspectes.sort()).toEqual([
+      ['seitan', 'vegetal', 'arbitrage:lot21'],
+      ['tofu ferme', 'vegetal', 'arbitrage:lot21'],
+      ['tofu fume', 'vegetal', 'arbitrage:lot21'],
+    ])
   })
 
   it('ne cache aucun animal non déclaré dans les catégories végétales', () => {

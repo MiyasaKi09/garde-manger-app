@@ -6834,6 +6834,7 @@
       },
       "units_used": [
         "feuille",
+        "g",
         "u"
       ],
       "conversion": {
@@ -16096,6 +16097,43 @@
       "note": null
     },
     {
+      "canonical_name": "Saucisse végétale au tofu",
+      "canonical_name_normalized": "saucisse vegetale au tofu",
+      "category": "produits_transformes",
+      "origin": "vegetal",
+      "origin_source": "arbitrage:lot21",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "bounded_from_ciqual": [
+        "fiber_g"
+      ],
+      "source_record_key": "20337",
+      "source_name": "Saucisse végétale au tofu (convient aux véganes ou végétaliens), préemballée",
+      "state": {
+        "concept": "Saucisse végétale au tofu",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {
+        "grams_per_unit": 70
+      },
+      "per100g": {
+        "kcal": 226,
+        "proteinG": 14.6,
+        "carbsG": 5.69,
+        "fatG": 16.3,
+        "fiberG": 3
+      },
+      "note": "Correspondance exacte : l'ANSES mesure la saucisse végétale au tofu pour elle-même. 231 kcal, P 14,6 / G 5,69 / L 16,3, sel 1,68 — macros complètes, énergie mesurée, aucune fermeture d'Atwater. La mention « convient aux véganes ou végétaliens » du libellé compte ici plus qu'ailleurs : le classeur porte aussi des substituts qui contiennent de l'œuf ou du fromage, et un jumeau végétarien n'a pas le droit de s'appuyer sur un produit dont le libellé dit l'inverse. CONVERSION : 70 g la pièce, parce que les quatre pages comptent des saucisses et non des grammes — c'est le calibre courant des saucisses végétales vendues par quatre (280 à 300 g le paquet), et il est déclaré ici pour que la liste de courses puisse écrire « 8 saucisses » là où la recette pèse 560 g. ÉCARTÉS, et pourquoi : 25232 « Saucisse végétale au blé ou seitan, préemballé » mesure un autre produit, deux fois plus protéiné et bien moins gras (voir le contexte) — le prendre pour celui-ci déplacerait la nutrition de la recette sans que rien ne le montre ; 1030 « Spécialité végétale type jambon cuit » et 1031 « Spécialité végétale type pâté » ne sont pas des saucisses et ne se rissolent pas ; 25589 « Boulette végétale au soja et/ou blé » est une boulette, c'est-à-dire une autre forme façonnée, que le cassoulet ne demande pas ; 30181 « Haché végétal à base de soja » est du haché, pas une saucisse."
+    },
+    {
       "canonical_name": "Saumure légère",
       "canonical_name_normalized": "saumure legere",
       "category": "boissons",
@@ -16128,6 +16166,38 @@
         "fiberG": 0
       },
       "note": "Une saumure légère est de l'eau salée : les quatre grandeurs calculées sont celles de l'eau (0 kcal, 0 protéine, 0 glucide, 0 lipide), la seule divergence porte sur le sel — ce qui reste un B. USDA 173647 n'est cité que pour l'énergie : aucun code eau n'a de ligne dans data/ciqual_nutrition_import.csv, seule colonne d'énergie que lit l'applicateur ; le classeur (18066, 0 kcal) demeure la source. Densité 1,03 : solution de NaCl à ~5 % en masse, 1,034 à 20 °C. Contrôle : REAL-107, 80 ml → 82 g → 0 kcal, la saumure n'apporte que du sel."
+    },
+    {
+      "canonical_name": "Seitan",
+      "canonical_name_normalized": "seitan",
+      "category": "viandes",
+      "origin": "vegetal",
+      "origin_source": "arbitrage:lot21",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "source_record_key": "25598",
+      "source_name": "Seitan, préemballé",
+      "state": {
+        "concept": "Seitan",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 134,
+        "proteinG": 20.6,
+        "carbsG": 6.74,
+        "fatG": 2.5,
+        "fiberG": 0.9
+      },
+      "note": "Correspondance exacte : l'ANSES mesure le seitan préemballé pour lui-même. 134 kcal, P 20,6 / G 6,74 / L 2,5, fibres 0,9, sel 1,13 — macros complètes et toutes mesurées, énergie mesurée, aucune fermeture d'Atwater. Le libellé retenu est « Seitan » tout court, comme le catalogue écrit « Tofu ferme » et non « Tofu nature, préemballé » : c'est le mot du paquet et le mot des trois pages du dossier (« seitan », « seitan naturale »). Le seitan est du gluten de blé cuit : la recette qui l'emploie déclare l'allergène gluten, ce que la nutrition ne montre pas. ÉCARTÉS, et pourquoi : 25232 « Saucisse végétale au blé ou seitan, préemballé » et 25592 « Galette ou pavé au blé (seitan) et légumes, préemballé » sont des produits transformés qui portent un assaisonnement, une matière grasse et des légumes que le libellé ne détaille pas — ce n'est pas du seitan, c'est une charcuterie ou une galette qui en contient ; 20591 « Protéine de soja texturée, réhydratée » et 20914 « Escalope végétale ou steak à base de soja » sont un autre aliment (du soja, pas du blé), avec un autre profil (le 20591 monte à 20,4 g de protéines mais pour 7 g de glucides et 5,6 g de fibres, le 20914 porte 14,7 g de lipides) — les prendre pour le seitan aurait été un proxy silencieux sur l'ingrédient principal du plat, exactement ce que le validateur cherche à empêcher. Aucune conversion en pièces : le seitan se pèse, et les trois pages le pèsent."
     },
     {
       "canonical_name": "Sel fin",
@@ -16776,6 +16846,41 @@
         "fiberG": 0.5
       },
       "note": "Le tofu nature préemballé de Ciqual est le bloc ferme (143 kcal, 14,7 g de protéines). À distinguer nettement de 20906 « Tofu soyeux » (52,5 kcal) et de 20912 « Tofu fumé », qui sont d'autres concepts."
+    },
+    {
+      "canonical_name": "Tofu fumé",
+      "canonical_name_normalized": "tofu fume",
+      "category": "viandes",
+      "origin": "vegetal",
+      "origin_source": "arbitrage:lot21",
+      "confidence": "B",
+      "source": "ciqual_2020",
+      "bounded_from_ciqual": [
+        "fiber_g"
+      ],
+      "source_record_key": "20912",
+      "source_name": "Tofu fumé, préemballé",
+      "state": {
+        "concept": "Tofu fumé",
+        "rest": "",
+        "cooking_state": null,
+        "preservation_state": null,
+        "physical_state": null,
+        "bone_state": null,
+        "skin_state": null
+      },
+      "units_used": [
+        "g"
+      ],
+      "conversion": {},
+      "per100g": {
+        "kcal": 158,
+        "proteinG": 16.4,
+        "carbsG": 2.91,
+        "fatG": 9.5,
+        "fiberG": 0.5
+      },
+      "note": "Correspondance exacte : l'ANSES mesure le tofu fumé séparément du tofu nature. 164 kcal, P 16,4 / G 2,91 / L 9,5, sel 0,74 — macros complètes, énergie mesurée. L'écart avec 20904 « Tofu nature, préemballé » (148 kcal, P 14,7, sel 0,025) est réel et il est surtout dans le SEL, trente fois plus élevé : c'est le fumage et la saumure qui font tout l'intérêt de cette forme dans un cassoulet, où elle tient le rôle que la poitrine fumée et le confit tiennent chez le parent. Adosser le tofu fumé au tofu nature aurait été un proxy silencieux sur le sel d'un plat déjà salé, exactement le genre d'erreur qu'aucun contrôle de forme ne voit. Aucune conversion en pièces : les pages qui le pèsent le pèsent en grammes, et le bloc du commerce varie de 150 à 250 g. ÉCARTÉS : 20904 « Tofu nature » pour la raison ci-dessus ; 20338 « Quenelle au tofu » et 25231 « Raviolis au tofu, à la sauce tomate » sont des plats, pas un ingrédient."
     },
     {
       "canonical_name": "Tofu soyeux ferme",
