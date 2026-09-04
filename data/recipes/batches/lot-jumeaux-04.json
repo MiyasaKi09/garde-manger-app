@@ -1,0 +1,612 @@
+{
+ "lot": "jumeaux-04",
+ "intention": "Quatrième lot de jumeaux végétariens de même lignée (plan « planning parfait », chantier C2, §2.2 et §4 C6). Un jumeau est le même plat que sa base carnée — même structure, même féculent, même technique, même composition hors protéine — dont la protéine animale est remplacée par une protéine végétale que les sources attestent ; « derived_from » porte le code du parent, ce qui en fait, pour le planificateur, la version végétarienne du même plat et non un autre plat servi à la place. Cinq jumeaux visés, TROIS écrits, DEUX refusés. Les deux refus sont motivés en tête de lot et ne sont pas des échecs : aucune des trois sources lisibles du dépôt ne publie deux fois, sur deux sites, un tofu aux brocolis chiffré ni un calzone végétarien qui garde la structure de son parent. Les codes JUM-041 à JUM-043 sont numérotés par lot (lot 4, rang 1 à 3) pour ne pas entrer en collision avec un lot de jumeaux écrit en parallèle. Toutes les quantités viennent des dossiers de data/recipes/sources/, relus ligne à ligne ; le tableau de synthèse a été consulté et contredit là où il rapproche à faux — « 1 oignon » lu comme un oignon surgelé, « 6 pommes de terre » comme des pommes de terre déjà cuites, « 320 g de tomates séchées » comme de la tomate râpée, « 1 c à café de cumin » comme du café moulu. La méthode est reformulée et n'emprunte aucune prose : les sources intégrales sont restées hors dépôt, dans /tmp/sources-jumeaux-4/. Aucun parent n'est modifié. Une seule forme nouvelle est réclamée, « Tofu fumé », arbitrée dans data/foods/arbitrations/lot21-jumeaux-04.json sur le code Ciqual 20912 ; la recette qui l'emploie est donc « valide avec réserve » tant que le catalogue n'a pas été reconstruit, ce qui est l'ordre normal des choses.",
+ "refuses": [
+  {
+   "twin_family": "Tofu aux brocolis",
+   "parent": "DEN-014",
+   "reason": "Le dossier data/recipes/sources/tofu-aux-brocolis.json ne tient pas la règle des deux sources solides sur deux sites, et l'audit le dit : « 2 sources solides mais un seul site (chefsimon.com) ». Le détail vaut d'être écrit, parce qu'il ne s'agit pas d'un plat introuvable mais d'un plat mal chiffré. Onze requêtes ont été passées sur les trois sites — « tofu brocoli sauce soja », « tofu aux brocolis », « sauté de tofu et brocoli », « tofu broccoli stir fry », « wok tofu brocoli gingembre », « tofu brocolis », « tofu brocoli », « wok de tofu et brocoli », « sauté de tofu aux brocolis », « nouilles tofu brocoli », « tofu fumé brocoli ». 750g n'a AUCUNE page qui porte les deux mots : la lecture directe de son moteur ne rend que des nouilles au tofu fumé sans brocoli, un poulet aux brocolis et un velouté de brocolis. Marmiton n'en a que deux, toutes deux relevées : « Gratin brocoli-tofu », qui est un gratin à la crème de soja et à la levure maltée et non un sauté au wok — l'audit l'écarte sur son titre, et il a raison —, et « Sauté de tofu au brocoli », qui EST le plat mais dont la liste ne chiffre que 2 lignes sur 12 : 250 g de tofu et 250 g de brocolis, puis « sauce soja », « huile », « maïs », « carotte », « germes de soja », « haricot », « céleri », « châtaigne d'eau », « oignon », « échalote », sans une quantité. Sans quantités, aucune médiane n'est possible, ce qui est la troisième exigence de l'audit. Restent deux pages chefsimon, donc un seul site : « Sauté asiatique de tofu et brocoli », qui est bien le plat mais compte 280 g de riz dans sa propre recette, et « Nouilles sautées au brocoli et tofu », qui est un plat de nouilles aux poireaux et aux carottes — une autre structure que le sauté à sauce courte du parent, dont le riz est déclaré à côté. Deux pages chefsimon supplémentaires ne portent aucun balisage Recipe et n'ont pas pu être relevées. Écrire ce jumeau reviendrait à composer les quantités d'un plat sur une seule page, c'est-à-dire à écrire de mémoire avec un alibi. Refusé, dossier retiré."
+  },
+  {
+   "twin_family": "Calzone végétarien",
+   "parent": "VAR-005",
+   "reason": "Aucun calzone végétarien publié deux fois sur deux sites ne garde la structure du parent, et le parent lui-même dit laquelle : pâte à PIZZA levée et refermée, base tomate en couche mince, mozzarella égouttée, champignons précuits. Dix-huit requêtes ont été passées, puis l'inventaire complet des pages « calzone » des trois sites a été relevé à la main — quinze sur marmiton, six sur chefsimon, huit sur 750g. Trois dossiers ont été ouverts et audités. 1) « Calzone végétarien », « calzone champignons épinards », « calzone vegetariano », « calzone ricotta spinaci », « calzone légumes mozzarella », « calzone végé », « calzone sans viande », « calzone spinaci » : zéro URL sur les trois sites. 2) data/recipes/sources/calzone-aux-epinards.json : deux pages, toutes deux de 750g et du même auteur (« Calzone aux épinards à la crème de Saint Agur » et sa version mini) — l'audit refuse, « 2 sources solides mais un seul site », et le fond confirme qu'elles remplacent la base tomate par une crème de bleu, ce qui n'est plus le plat du parent. 3) data/recipes/sources/calzone-aux-legumes.json passe l'audit (3 sources / 2 sites) et échoue sur la structure : deux des trois pages sont montées sur une pâte FEUILLETÉE — le parent écrit en toutes lettres qu'une pâte brisée ou feuilletée en fait un chausson et non un calzone — et la troisième, une vraie pâte levée de chefsimon, remplace la base tomate par du pesto et la mozzarella par une bûche de chèvre et de la roquette. 4) Reste ce que le dossier data/recipes/sources/calzone-a-la-mozzarella.json montre : il existe bien un calzone sans viande publié sur les trois sites — « Pizza calzone tomate mozzarella » et « Calzone aux trois fromages » chez marmiton, « Mini calzone à la mozzarella » chez chefsimon, « Mini calzone au fromage » chez 750g. Mais il remplace le jambon par DU FROMAGE et par rien d'autre : chèvre et bleu chez l'une, feta et anchois chez l'autre, ricotta chez la troisième. Ce n'est pas le jumeau qu'on cherche. Un jumeau remplace la protéine animale par une protéine végétale ; celui-ci remplacerait une viande par un laitier, dans un vivier où le plan mesure déjà 32 % de repas à protéine principale laitière ou œuf pour une cible de 20 % (§1, P3). Il ferait reculer la ligne qu'il est censé faire avancer. Les champignons du parent, eux, ne sont attestés dans aucun calzone sans viande : la seule page qui les porte est « Pizza calzone au jambon et champignons », c'est-à-dire le parent. Refusé, dossiers retirés."
+  }
+ ],
+ "recipes": [
+  {
+   "code": "JUM-041",
+   "family": "Cake aux olives et à la feta",
+   "derived_from": "FR-028",
+   "cuisine_origin": "France — cuisine domestique",
+   "identity_level": "domestic_standard",
+   "category": "cake salé",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 6,
+   "prep_minutes": 15,
+   "cook_minutes": 45,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:cake-aux-olives-et-a-la-feta",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Le cake salé de la lignée FR-028 où la feta prend la place du jambon : même appareil farine-œufs-lait, mêmes olives vertes, même gruyère, même heure de four.",
+   "canonical_arbitration": "Jumeau végétarien de FR-028 « Cake jambon et olives » : même appareil farine-œufs-lait-huile-levure, mêmes olives, même gruyère, même moule et même cuisson ; le jambon blanc devient de la feta, et rien d'autre ne bouge sans raison écrite. LE DOSSIER. Neuf pages relevées sur trois sites — deux de marmiton, trois de chefsimon, quatre de 750g — et l'audit les retient toutes les neuf, ce qui est rare. Deux pages ont été écartées AVANT relevé et il faut le dire : marmiton « Cake saumon, feta, olives » et 750g « Cake feta, olive et jambon » portent l'un un poisson, l'autre la viande même que ce jumeau retire — un jumeau végétarien ne se documente pas sur des pages carnées. Une des neuf pages retenues, chefsimon « Cake salé haricots verts, feta et olives », ne déclare aucun rendement : elle sort de tout calcul par personne, et le dénominateur des médianes qui suivent est donc huit, pas neuf. Les rendements déclarés vont de quatre à dix parts, médiane six — c'est celui du parent, on ne le change pas. L'APPAREIL EST CELUI DU PARENT, ET LE DOSSIER LE CONFIRME LIGNE À LIGNE. C'est la règle qu'on s'est donnée pour ce lot : un jumeau ne change que la protéine, et tout ce que le parent porte est vérifié contre l'intervalle du dossier du jumeau plutôt que recalculé sans raison. La farine : médiane 33,3 g par personne, soit 200 g pour six, exactement ce que le parent déclare ; huit valeurs de 20 à 41,7 g, la plus basse venant de la page qui rend dix parts. Une neuvième page cuit à la farine d'épeautre et ne compte pas ici. Le lait : médiane 16,7 g par personne, soit 100 ml pour six ; le parent en déclare 110, soit 18,3 par personne, à l'intérieur d'un intervalle qui va de 10 à 30 — on garde les 110. L'huile d'olive : médiane 10 g par personne, soit 60 g pour six ; le parent en déclare 50 ml, soit 7,7 g par personne, la valeur basse de l'intervalle mais bien dedans — on garde les 50 ml. Une page ajoute 100 g de beurre clarifié à ses 100 g d'huile, elle est seule et descend en variante. Les œufs se comptent en pièces et non en masse : quatre pages sur neuf en mettent quatre, quatre en mettent trois, une en met deux ; ramené à la portion cela donne un demi-œuf par personne et trois œufs pour six. On garde les quatre du parent, valeur que deux pages portent aussi et qu'une troisième dépasse à trois pour quatre — l'appareil est ce qui fait de ces deux cakes le même plat, et un œuf de moins le change. La levure : cinq pages sur neuf mettent un sachet entier, trois un demi-sachet, une remplace tout par du bicarbonate ; aucune ne pèse. On garde les 11 g du parent, le poids d'un sachet du commerce. LA FETA, QUI EST TOUT L'ÉCART. Huit pages la pèsent et la rendent comparable : 25, 33,3, 12,5, 25, 15, 25, 15 et 16,7 g par personne — médiane 20,8 g par personne, soit 125 g pour six. On monte à 25 g par personne, soit 150 g pour six : c'est la valeur exacte que trois des huit pages portent, c'est le poids du jambon qu'elle remplace chez le parent, et c'est la protéine de l'assiette — la descendre à 125 g ferait un cake au fromage râpé garni de feta. La feta se déclare égouttée, sortie de sa saumure, comme les pages la pèsent. LES OLIVES, ET UNE DÉCISION QUI DESCEND. Six pages sur neuf les prennent NOIRES, deux VERTES, une ne dit pas la couleur. On écrit la verte, celle du parent : elle est attestée deux fois dans le dossier du jumeau, ce n'est donc pas une invention, et c'est elle qui porte le nom de la lignée. La noire descend en variante, avec ses six pages. Sur le poids, six pages seulement sont comparables — deux comptent en pièces (quinze olives, une dizaine) et une ne déclare pas ses portions : 16,7, 20, 7,5, 13,3, 11,7 et 10 g par personne, médiane 12,5 g par personne, soit 75 g pour six. Le parent en porte 150, soit 25 g par personne, c'est-à-dire plus que la page la plus généreuse du dossier du jumeau. On ne peut pas garder les 150 g : on écrit 20 g par personne, soit 120 g pour six, la valeur la plus haute que ce dossier montre et pas une de plus. La raison de monter jusque-là plutôt que de s'arrêter à la médiane est écrite dans le nom du plat — sans olives, il ne reste qu'un cake à la feta. LE GRUYÈRE. Une page sur neuf met un fromage râpé À CÔTÉ de la feta, 100 g pour quatre, soit 25 g par personne — au-dessus des 20 g par personne du parent. Les huit autres n'en mettent pas : la feta leur suffit. On garde pourtant les 120 g du parent, et c'est assumé — le gruyère n'est pas la protéine qu'on remplace, c'est un membre de l'appareil, et le retirer ferait deux plats différents là où le planificateur doit en voir un seul. La page qui le porte suffit à ce que ce ne soit pas une invention. LE SEL ET LE POIVRE. Trois pages sur neuf parlent de sel, aucune ne le pèse ; une quatrième écrit qu'il est inutile de saler puisque la feta s'en charge. Le calcul tranche : la feta AOP porte 2,27 g de sel aux 100 g, soit 3,4 g ici, et l'olive verte en saumure 3,15 g aux 100 g, soit 3,8 g — le cake est salé à près de huit grammes avant qu'on ajoute quoi que ce soit, ce qui est l'ordre de grandeur exact du jambon et des olives du parent. On garde donc les 3 g du parent, pas plus. Le poivre est dans sept pages sur neuf, jamais pesé : 1 g, comme le parent. CE QUE LE DOSSIER PORTE ET QU'ON N'ÉCRIT PAS : les tomates séchées ou confites de trois pages, le basilic de deux, les fanes de radis, les haricots verts, la courgette, l'oignon, le curry, le tandoori, les herbes de Provence, l'origan, le yaourt et la crème — chacun à une ou deux pages, tous en variantes. Aucun n'est une protéine et aucun ne change la structure. DURÉES : préparation, médiane 15 minutes des neuf lignes, celle du parent ; cuisson, médiane 42,5 minutes des huit lignes non nulles, on écrit les 45 du parent, qui sont dedans. Sept pages sur neuf enfournent à 180 °C, une à 170. UNE LECTURE DE LA SYNTHÈSE ÉCARTÉE À LA MAIN : le tableau range « 12 tomates séchées » et « 130 g de tomates séchées à l'huile » sous « Tomate râpée », qui est une pulpe crue et non un fruit séché ; ces lignes ne sont de toute façon pas dans la recette.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "vegetables"
+    ],
+    "reason": "Même assiette que le parent : coupé en six, chaque part fait deux tranches épaisses qui portent le féculent, la protéine et le gras — 33 g de farine, 25 g de feta et 20 g de gruyère par part. Ce qui manque est le légume, une salade verte ou des crudités. Coupé plus fin le même cake sert à l'apéritif, mais ce n'est alors plus une portion de plat."
+   },
+   "ingredients": [
+    {
+     "form": "Farine de blé T55",
+     "quantity": 200,
+     "unit": "g",
+     "role": "pâte",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 4,
+     "unit": "u",
+     "role": "pâte",
+     "optional": false
+    },
+    {
+     "form": "Feta",
+     "quantity": 150,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Olive verte dénoyautée",
+     "quantity": 120,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Gruyère râpé",
+     "quantity": 120,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Lait demi-écrémé",
+     "quantity": 110,
+     "unit": "ml",
+     "role": "pâte",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 50,
+     "unit": "ml",
+     "role": "pâte",
+     "optional": false
+    },
+    {
+     "form": "Levure chimique",
+     "quantity": 11,
+     "unit": "g",
+     "role": "levée",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 3,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Chauffer le four à 180 °C. Tapisser un moule à cake de vingt-quatre centimètres de papier cuisson, ou en passer les parois au pinceau avec un peu de l'huile pesée. La feta relâche une eau salée pendant la cuisson et la mie s'accroche partout où elle touche le métal nu ; sans protection, la tranche se déchire au démoulage."
+    },
+    {
+     "n": 2,
+     "instruction": "Sortir la feta de sa saumure, l'essuyer et la couper en cubes d'un centimètre — surtout pas l'émietter. En miettes elle se dissout dans l'appareil et le cake perd la garniture visible que faisaient, chez le parent, les dés de jambon ; en cubes elle reste blanche à la coupe et fond en poches crémeuses. Égoutter les olives, les sécher dans un linge, les fendre en deux dans la longueur."
+    },
+    {
+     "n": 3,
+     "instruction": "Réunir la farine et la levure dans un saladier et les fouetter à sec, en mettant une cuillerée à soupe de farine de côté pour plus tard. Ouvrir un puits, y casser les quatre œufs et les incorporer un par un, puis faire couler le lait et l'huile en tournant sans s'arrêter jusqu'à ce que la pâte soit lisse et coulante. Ne pas insister au-delà : plus longtemps on la bat, plus le gluten se développe et plus la mie sort élastique."
+    },
+    {
+     "n": 4,
+     "instruction": "Faire rouler les cubes de feta et les demi-olives dans la cuillerée de farine réservée, puis les verser dans l'appareil avec le gruyère râpé. Ce voile de farine fait deux choses : il tient la garniture en suspension au lieu de la laisser couler au fond pendant la levée, et il boit la saumure qui suinte des deux éléments les plus mouillés du cake, laquelle laisserait sinon des zones grises et détrempées dans la mie. Poivrer, et ne saler que de trois grammes."
+    },
+    {
+     "n": 5,
+     "instruction": "Verser dans le moule, lisser le dessus à la spatule et enfourner pour quarante-cinq minutes. Garder la porte fermée jusqu'à la trentième minute au moins : cet appareil porte 390 g de garniture pour 200 g de farine, il ne monte que par une chaleur constante et retombe au centre au premier courant d'air."
+    },
+    {
+     "n": 6,
+     "instruction": "Planter la pointe d'un couteau au cœur : la lame doit ressortir sèche, sans trace de pâte crue. Laisser reposer dix minutes, démouler sur une grille et attendre le refroidissement complet avant de trancher. Chaude, la feta est molle et la tranche s'effrite ; froide, elle s'est resserrée et le couteau passe net. Le lendemain, la coupe est encore plus propre."
+    }
+   ],
+   "techniques": [
+    "appareil à cake salé",
+    "enrobage",
+    "cuisson au four",
+    "égouttage",
+    "démoulage à tiède"
+   ],
+   "variants": [
+    "Aux olives noires, six pages du dossier sur neuf, de 60 à 100 g pour six — la mie en sort plus sombre et plus amère (marmiton.org, chefsimon.com, 750g.com)",
+    "Aux tomates séchées ou confites, de 50 g pour quatre à 130 g pour six, ajoutées à la garniture (marmiton.org, chefsimon.com, 750g.com)",
+    "Au basilic frais ou à l'origan séché dans l'appareil, une cuillerée à soupe pour six (marmiton.org, chefsimon.com, 750g.com)",
+    "Moitié huile d'olive, moitié beurre clarifié, 100 g de chacun pour six : mie plus courte et plus riche (marmiton.org)",
+    "Avec une courgette et un oignon revenus à la poêle avant d'être incorporés, ou 500 g de haricots verts, ou les fanes d'une botte de radis (chefsimon.com, 750g.com)",
+    "Au fromage de chèvre plutôt qu'à la feta, 100 g pour six — même rôle, autre acidité (marmiton.org, chefsimon.com)",
+    "Monté au yaourt et au bicarbonate plutôt qu'au lait et à la levure chimique (chefsimon.com)",
+    "Relevé d'une pointe de curry ou de tandoori à la place du poivre (marmiton.org, 750g.com)"
+   ],
+   "sensory": {
+    "profile": "savory_crisp",
+    "scores": {
+     "sweet": 1,
+     "salty": 4,
+     "acidic": 2,
+     "bitter": 2,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 3,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "olive_saumurée",
+     "feta_lactique",
+     "fromage_fondu"
+    ],
+    "aroma_families": [
+     "olive_verte",
+     "feta",
+     "mie_dorée"
+    ],
+    "target_textures": [
+     "mie_moelleuse",
+     "garniture_en_dés",
+     "croûte_dorée"
+    ],
+    "signature_ingredients": [
+     "Feta",
+     "Olive verte dénoyautée",
+     "Gruyère râpé"
+    ],
+    "identity_guardrails": [
+     "Sans olives il ne reste qu'un cake à la feta : c'est leur sel et leur amertume qui donnent au plat son nom, et deux pages du dossier les prennent vertes comme la lignée le fait.",
+     "La feta se taille en cubes d'un centimètre et ne s'émiette jamais : émiettée elle disparaît dans la mie, et le cake perd la garniture visible que les dés de jambon donnaient au parent.",
+     "La levure chimique n'est pas négociable : cinq pages sur neuf mettent un sachet entier et un appareil aussi chargé de garniture sort compact sans elle.",
+     "Aucune viande, aucun poisson : les deux pages au saumon et au jambon que la recherche a ramenées ont été écartées avant relevé, et c'est ce qui fait de ce cake le jumeau végétarien de FR-028."
+    ]
+   },
+   "conservation": "Quatre jours au réfrigérateur, enveloppé serré dans du film ou du papier d'aluminium : à l'air libre la mie sèche en une demi-journée, et la feta la rend plus humide, donc plus fragile, que celle du cake au jambon. Il se tranche mieux le lendemain, quand la mie a fini de se serrer autour des cubes. Se congèle 3 mois, entier ou en tranches séparées par du papier cuisson — les tranches se réchauffent alors sans décongélation, dix minutes à 150 °C, ce que le micro-ondes ne rend jamais aussi bien. La feta ressort un peu plus granuleuse après congélation, ce qui ne se voit pas dans une tranche tiède. Se sert tiède ou froid, jamais brûlant : à chaud la feta est molle et la tranche s'effrite. Aucune des neuf pages du dossier ne dit un mot de la conservation ; ces durées sont celles que ce type de cake tient physiquement, et on le dit plutôt que de faire semblant de les avoir lues.",
+   "allergens": [
+    "gluten",
+    "lait",
+    "œuf"
+   ]
+  },
+  {
+   "code": "JUM-042",
+   "family": "Tartiflette végétarienne",
+   "derived_from": "REAL-075",
+   "cuisine_origin": "France",
+   "identity_level": "domestic_standard",
+   "category": "tartiflette",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 6,
+   "prep_minutes": 25,
+   "cook_minutes": 55,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:tartiflette-vegetarienne",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "La tartiflette de la lignée REAL-075 sans lardons : des cubes de tofu fumé dorés à la poêle prennent leur place sous les mêmes pommes de terre, le même oignon au vin blanc et le même reblochon fendu.",
+   "canonical_arbitration": "Jumeau végétarien de REAL-075 « Tartiflette » : mêmes pommes de terre précuites en rondelles, même oignon fondu et déglacé au vin blanc, même reblochon fendu dans l'épaisseur et posé croûte vers le haut, même passage au four. Le lardon fumé devient du tofu fumé, et c'est le seul échange. LE DOSSIER, ET UNE TENSION QU'IL FAUT DIRE. Cinq pages relevées : deux de marmiton, une de chefsimon, deux de 750g. L'audit en retient trois sur deux sites — les deux marmiton et la chefsimon — et écarte les deux pages de 750g parce que leur titre ne porte pas le mot « végétarienne ». Le compte est bon, la lecture serait fausse si on s'arrêtait là. La page chefsimon retenue est une « Tartiflette végétarienne à la courge BUTTERNUT » : elle porte le nom et pas la structure — pas une pomme de terre, pas de reblochon nommé, aucun remplaçant du lardon, un fromage à tartiflette du commerce et six cuillerées à café de vin blanc. Les deux pages écartées de 750g, « Tartiflette au tofu fumé » et « Tartiflette aux champignons parfumés », sont l'inverse exact : la structure sans le mot. On écrit donc le plat que quatre pages sur cinq montent réellement — pommes de terre en rondelles, oignon, reblochon, four — et la page à la courge descend en variante, dite pour ce qu'elle est. LE REMPLAÇANT DU LARDON. Trois pistes existent dans le dossier et une seule tient. Le tofu : deux pages, sur deux sites, et elles le pèsent — marmiton, un bloc d'environ 400 g pour quatre, soit 100 g par personne, mais un tofu NATURE qu'elle rattrape à la sauce soja ; 750g, 200 g de tofu FUMÉ pour quatre, soit 50 g par personne. Les champignons : une seule page, et comptés en pièces (« 3 champignons parfumés par personne »), donc ni médiane ni masse, et ce sont des champignons parfumés séchés, absents du catalogue. Les tomates séchées : une seule page, 320 g pour quatre. On écrit le tofu fumé à 50 g par personne, soit 300 g pour six, pour trois raisons qui vont dans le même sens : c'est la valeur de la page qui emploie précisément la forme qu'on écrit, la page à 100 g employant un autre ingrédient ; ce que le lardon apporte à ce gratin est d'abord la FUMÉE, et un tofu nature oblige à la rattraper à la sauce soja, ce qui n'a rien à faire en Savoie ; et 50 g par personne est la valeur la plus proche des 41,7 g de lardon par personne du parent. Le tofu fumé manquait au catalogue : il est arbitré dans data/foods/arbitrations/lot21-jumeaux-04.json sur le code Ciqual 20912, correspondance exacte et macros mesurées. LE RESTE EST CELUI DU PARENT, VÉRIFIÉ CONTRE LE DOSSIER. Les pommes de terre : deux pages seulement les pèsent, 125 et 300 g par personne, médiane 212,5 g par personne, soit 1275 g pour six ; les deux autres comptent en pièces (douze moyennes pour quatre, quatre par personne). On garde les 1200 g du parent, soit 200 g par personne, qui sont dans l'intervalle et qui font du jumeau et de sa base deux plats de même taille — c'est ce qui permettra de les monter côte à côte le même soir, ce que le chantier C2 demande. Le reblochon : quatre pages sur cinq comptent « un reblochon » sans jamais le peser, la cinquième un fromage à tartiflette du commerce. Un reblochon entier pèse 450 à 500 g : on garde les 500 g du parent. L'oignon : quatre pages en mettent un ou deux, aucune ne les pèse ; on garde les 250 g du parent. Le tableau de synthèse range ces « 1 oignon » sous « Oignon surgelé » — rapprochement à refuser, les quatre pages émincent un oignon frais. Le vin blanc : trois pages le donnent, 25, 50 et 5 ml par personne, médiane 25 ml par personne, soit 150 ml pour six ; le parent en déclare 120, soit 20 ml par personne, dans l'intervalle — on garde les 120. La crème : deux pages la pèsent, 125 et 50 g par personne, médiane 87,5 g par personne, soit 525 g pour six, plus de quatre fois ce que le parent déclare. On garde les 120 g du parent et son statut optionnel : le reblochon fond et lie déjà le gratin, et une tartiflette noyée de crème n'est plus un gratin mais une soupe de pommes de terre. DEUX AJOUTS, ET POURQUOI ILS SONT NÉCESSAIRES. Le beurre : le lardon du parent fondait sa propre graisse pour l'oignon, le tofu n'en rend aucune ; deux pages sur cinq mettent du beurre sans le peser (« une noisette », « du beurre »). On écrit 20 g pour six, soit 3,3 g par personne, ce qui est une noisette pour deux. Le sel : le parent n'en déclare pas, parce que ses 250 g de lardon fumé cru en apportent 6,6 g à eux seuls (2,63 g aux 100 g au classeur Ciqual) ; les 300 g de tofu fumé n'en apportent que 2,2 g (0,74 g aux 100 g). Le jumeau perd donc 4,4 g de sel en changeant de protéine, et la page 750g qui monte le même plat écrit d'ailleurs « bien saler ». On écrit 4 g de sel fin, c'est-à-dire ce que l'échange retire, et pas davantage. CE QU'ON N'ÉCRIT PAS : la sauce soja et le bouillon de légumes d'une page, les tomates séchées et le sucre de canne d'une autre, la courge butternut et la muscade de la troisième, les champignons parfumés de la quatrième — chacun à une seule page, tous en variantes. Le plat est végétarien PAR SES FORMES et pas seulement par son nom : pommes de terre, tofu fumé, oignon, vin blanc, beurre, crème, reblochon, sel, poivre — aucune viande, aucune volaille, aucun poisson, aucun bouillon animal. LA CATÉGORIE, ET IL FAUT LE DIRE EN TOUTES LETTRES. Le parent range ce plat en « gratin de pommes de terre » et la règle de ce lot est de reprendre la catégorie du parent. On écrit ici « tartiflette », pour deux raisons dont la seconde doit rester visible. La première est éditoriale : les cinq pages du dossier appellent la préparation une tartiflette et aucune ne l'appelle un gratin de pommes de terre, et le corpus emploie déjà des noms de préparation comme catégories (guacamole, mayonnaise, piperade). La seconde est technique : le classeur Ciqual porte « Tartiflette, préemballée » (25137) parmi ses plats composés, si bien que le mot entre dans le lexique des aliments du validateur et que son contrôle d'ingrédient principal — celui qui est né des moules sans moules — réclame de retrouver une tartiflette dans la tartiflette. C'est exactement le faux positif que le validateur documente pour le cassoulet, l'osso buco et la piperade et qu'il traite par sa liste de types de plat, où « tartiflette » ne figure pas encore. Ce lot n'a pas mandat de modifier le validateur ; il choisit donc une catégorie qui est vraie, et il écrit ici que le mot juste à ajouter à cette liste est « tartiflette », après quoi la catégorie du parent pourra être reprise sans rien casser. DURÉES : préparation, médiane 20 minutes des cinq lignes ; on écrit 25, le tofu devant être égoutté, séché et taillé. Cuisson, médiane 40 minutes ; on écrit les 55 du parent, parce que les pages les plus rapides comptent la précuisson des pommes de terre en préparation ou partent de pommes de terre déjà cuites, alors que le parent la compte en cuisson. Deux pages enfournent à 180 °C, deux à 200 : on écrit 180, avec les trente minutes de la page qui monte exactement ce gratin.",
+   "plate": {
+    "role": "complete",
+    "accepts": [
+     "vegetables"
+    ],
+    "reason": "Même rôle que le parent : 200 g de pommes de terre, 83 g de reblochon et 50 g de tofu fumé par part font le féculent, le gras et la protéine dans le même plat. Il ne manque que le vert, et l'usage savoyard lui adjoint une salade, rien d'autre."
+   },
+   "ingredients": [
+    {
+     "form": "Pomme de terre crue, avec peau",
+     "quantity": 1200,
+     "unit": "g",
+     "role": "base",
+     "optional": false
+    },
+    {
+     "form": "Reblochon au lait cru",
+     "quantity": 500,
+     "unit": "g",
+     "role": "fromage",
+     "optional": false
+    },
+    {
+     "form": "Tofu fumé",
+     "quantity": 300,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 250,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Vin blanc sec",
+     "quantity": 120,
+     "unit": "ml",
+     "role": "déglaçage",
+     "optional": false
+    },
+    {
+     "form": "Crème fraîche épaisse",
+     "quantity": 120,
+     "unit": "g",
+     "role": "liaison",
+     "optional": true
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 20,
+     "unit": "g",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Cuire les pommes de terre entières et non pelées à l'eau salée, une vingtaine de minutes après la reprise de l'ébullition pour des tubercules moyens. Elles doivent être tout juste tendres sous la lame et pas davantage : elles finiront au four, et une pomme de terre déjà cuite à cœur se défait en purée sous le fromage. Les laisser tiédir, les peler et les couper en rondelles d'un demi-centimètre."
+    },
+    {
+     "n": 2,
+     "instruction": "Pendant ce temps, égoutter le tofu fumé, le presser une minute entre deux feuilles de papier absorbant et le tailler en cubes d'un centimètre. Le séchage n'est pas un détail : un tofu gorgé d'eau ne colore pas, il bout dans son propre jus et ressort gris et mou, alors que c'est justement sa surface dorée qui doit tenir le rôle du lardon croustillant."
+    },
+    {
+     "n": 3,
+     "instruction": "Faire fondre le beurre dans une grande poêle à feu moyen et y jeter l'oignon émincé avec une pincée du sel. Le laisser blondir une dizaine de minutes sans le brûler. Chez le parent, c'est le lardon qui fournissait à la fois la graisse et le sel de cette étape ; ici le beurre s'en charge, et la pincée de sel tire l'eau de l'oignon pour qu'il compote au lieu de frire."
+    },
+    {
+     "n": 4,
+     "instruction": "Pousser l'oignon sur un côté de la poêle, monter le feu et faire sauter les cubes de tofu cinq à six minutes, en ne les retournant que lorsque la face posée a pris couleur. Verser alors le vin blanc sur l'ensemble et laisser réduire jusqu'à ce qu'il n'en reste qu'un fond sirupeux. Le vin fait ici le travail que faisait le gras fumé : il donne l'acidité et la longueur sans lesquelles la pomme de terre et le reblochon n'auraient qu'un goût de crème."
+    },
+    {
+     "n": 5,
+     "instruction": "Frotter un plat à gratin d'un peu de beurre et monter deux étages : la moitié des rondelles, la moitié du mélange oignon-tofu, le reste des rondelles, le reste du mélange. Saler et poivrer entre les couches plutôt que sur le dessus seulement — le fond resterait fade, et le tofu fumé apporte trois fois et demie moins de sel au poids que les lardons qu'il remplace."
+    },
+    {
+     "n": 6,
+     "instruction": "Répartir la crème sur le dessus si l'on en met, puis fendre le reblochon en deux dans l'épaisseur et poser les deux moitiés croûte vers le haut, sans les débiter en morceaux. La croûte sert de couvercle : elle retient la pâte qui coule dessous et se colore elle-même, ce qu'un fromage retourné ou râpé ne fera jamais."
+    },
+    {
+     "n": 7,
+     "instruction": "Enfourner à 180 °C pour une trentaine de minutes, jusqu'à ce que la surface soit brune par plaques et que le gratin bouillonne sur les bords. Laisser reposer dix minutes hors du four avant de servir : à la sortie, le fromage est encore liquide et la part s'étale dans l'assiette au lieu de se tenir."
+    }
+   ],
+   "techniques": [
+    "précuisson",
+    "égouttage",
+    "fondue d'oignons",
+    "saisie",
+    "déglaçage",
+    "montage en couches",
+    "gratinage"
+   ],
+   "variants": [
+    "Au tofu nature à la place du tofu fumé, un bloc de 400 g pour quatre, relevé à la sauce soja et à un verre de bouillon de légumes (marmiton.org)",
+    "Aux champignons parfumés séchés plutôt qu'au tofu, trois par personne, réhydratés puis taillés en morceaux (750g.com)",
+    "Aux tomates séchées, 320 g pour quatre, avec des oignons rouges caramélisés à 20 g de sucre de canne (marmiton.org)",
+    "À la courge butternut à la place des pommes de terre, avec une cuillerée à café de muscade — un autre plat sous le même nom (chefsimon.com)",
+    "Avec beaucoup plus de crème, jusqu'à 125 g par personne, pour un gratin franchement liquide (marmiton.org)",
+    "Montée en couches alternées comme des lasagnes plutôt qu'en deux étages, tout le mélange étant réparti entre les épaisseurs de pommes de terre (marmiton.org)",
+    "Les pommes de terre rissolées à la poêle au beurre et à l'huile au lieu d'être cuites à l'eau, puis terminées à couvert (750g.com)"
+   ],
+   "sensory": {
+    "profile": "creamy_delicate",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 2,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 4,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "reblochon fondu",
+     "tofu fumé",
+     "oignon compoté",
+     "vin blanc réduit"
+    ],
+    "aroma_families": [
+     "reblochon",
+     "fumé",
+     "oignon_compoté",
+     "vin_blanc_réduit"
+    ],
+    "target_textures": [
+     "pommes_de_terre_fondantes",
+     "fromage_coulant",
+     "cubes de tofu dorés",
+     "dessus_doré"
+    ],
+    "signature_ingredients": [
+     "Reblochon au lait cru",
+     "Pomme de terre crue, avec peau",
+     "Tofu fumé"
+    ],
+    "identity_guardrails": [
+     "Le reblochon est fendu en deux dans l'épaisseur et posé croûte vers le haut, jamais râpé ni coupé en dés : c'est la croûte qui fait couvercle et qui dore.",
+     "Le tofu est FUMÉ et non nature : ce que le lardon apportait à ce gratin est d'abord la fumée, et la page qui emploie un tofu nature doit la rattraper à la sauce soja, ce qu'on n'écrit pas.",
+     "Les pommes de terre sont précuites tout juste tendres puis tranchées : cuites à cœur, elles se délitent en purée sous le fromage.",
+     "Aucun lardon et aucun bouillon animal : le seul mouillement est le vin blanc, et le plat est végétarien par ses formes autant que par son nom."
+    ]
+   },
+   "conservation": "Trois jours au réfrigérateur, couvert, et se réchauffe vingt-cinq minutes à 170 °C plutôt qu'au micro-ondes, qui rend la pomme de terre spongieuse et fait suinter le fromage. Congélation déconseillée, et la raison est physique : la pomme de terre cuite se cristallise et rend son eau au dégel, le reblochon fondu se sépare en gras et en petit-lait, et le tofu fumé, déjà pressé, devient franchement caoutchouteux — trois textures perdues d'un coup pour un plat dont tout l'intérêt est la texture. Aucune des cinq pages du dossier ne parle de conservation ; ces durées sont celles que ce gratin tient réellement, et on le dit plutôt que de les attribuer aux sources.",
+   "allergens": [
+    "lait",
+    "soja"
+   ]
+  },
+  {
+   "code": "JUM-043",
+   "family": "Parmentier de lentilles",
+   "derived_from": "FR-037",
+   "cuisine_origin": "France (Sud-Ouest)",
+   "identity_level": "domestic_standard",
+   "category": "gratin parmentier",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 6,
+   "prep_minutes": 30,
+   "cook_minutes": 60,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:parmentier-de-lentilles",
+    "marmiton.org",
+    "chefsimon.com"
+   ],
+   "description_courte": "Le parmentier de la lignée FR-037 où la lentille verte remplace le confit : même purée de pommes de terre au lait et au beurre, même oignon fondu, même croûte de comté.",
+   "canonical_arbitration": "Jumeau végétarien de FR-037 « Parmentier de canard » : même purée de pomme de terre montée au lait et au beurre, même oignon fondu dessous, même croûte de comté, mêmes deux étages. Le confit de canard effiloché devient de la lentille verte, et c'est le seul échange. Le plan (§4, C2) nomme d'ailleurs ce plat parmi les jumeaux à écrire, et il précise la lignée : FR-004 « Hachis Parmentier » reçoit VAR-045 par rattachement, le parmentier de lentilles revient donc à la seconde lignée parmentier du corpus, FR-037. LE DOSSIER, ET LA LECTURE QU'IL FAUT EN FAIRE. Sept pages relevées, une de marmiton et six de chefsimon : deux sites, l'audit passe. Une huitième page chefsimon ne porte aucun balisage exploitable et n'a pas pu être relevée. Le dossier se lit en deux familles et le confondre serait la faute de ce lot. TROIS pages montent des lentilles sous une purée de POMME DE TERRE, ce qui est la structure du parent : marmiton « Parmentier de lentilles » (500 g de lentilles, 200 g de lardons fumés, six échalotes, six pommes de terre soit environ 1,2 kg, lait, une cuillerée de crème, une noix de beurre, muscade, pour quatre) ; chefsimon « Parmentier végétarien aux lentilles » (300 g de lentilles, un oignon, deux carottes, six grosses pommes de terre, du beurre, du romarin, DU COMTÉ, pour quatre) ; chefsimon « Hachis Parmentier de lentilles » (100 g de lentilles crues, carottes, poireau, céleri, tomates concassées, oignon rouge, ail, laurier, quatre belles pommes de terre, cumin, concentré, crème de soja, pour quatre). Les QUATRE autres portent le nom et changent le féculent : patate douce, patate douce et chou-fleur, brocoli et riz, butternut et lentilles corail. Elles ne comptent dans aucune médiane de structure, et on le dit — un parmentier de patate douce est un autre plat, exactement comme le parent le dit de son potiron. UNE PAGE À SITUER : celle de marmiton porte 200 g de lardons fumés. C'est précisément l'élément que ce jumeau retire. Elle est comptée pour la structure et pour ses quantités de lentilles et de pommes de terre, pas comme preuve que le plat existe sans viande — cette preuve-là, deux pages chefsimon la portent, l'une et l'autre titrées « végétarien ». Le dire évite de faire croire que le dossier est plus végétarien qu'il n'est. LA LENTILLE. Les trois pages structurelles pèsent leurs lentilles sèches : 125, 75 et 25 g par personne. Médiane 75 g par personne, soit 450 g pour six. C'est aussi, et ce n'est pas un hasard, la valeur exacte de la page la plus proche du parent — celle qui monte une purée de pomme de terre et gratine au comté. Sur la variété : deux pages sur sept nomment la lentille VERTE, une la corail, les quatre autres disent seulement « lentilles ». On écrit la verte, parce qu'elle tient sa forme sous une purée quand la corail se défait d'elle-même et donnerait deux purées superposées ; la corail descend en variante. LA POMME DE TERRE, ET UN REFUS DE MÉDIANE. Une seule page du dossier les pèse — 1,2 kg pour quatre, soit 300 g par personne brut — et une valeur unique n'est pas une médiane ; les deux autres pages structurelles comptent « six grosses » et « quatre belles », sans masse. On garde donc les 810 g du parent, qui sont un rendement épluché tiré de neuf pages pesées (158 g par personne achetés, soit 950 g pour six) : sur ce point précis, le dossier du parent est plus solide que celui du jumeau, et le nier pour faire nombre serait une faute. L'instruction d'achat, 950 g avant épluchage, descend dans les étapes comme chez le parent. Le tableau de synthèse range d'ailleurs ces « 6 pommes de terre » sous « Pomme de terre cuite » : rapprochement à refuser, les trois pages les font cuire elles-mêmes. CE QUE LE PARENT GARDE. Le lait : aucune page du jumeau n'en pèse — celle de marmiton écrit « lait » sans quantité, les autres mouillent à la crème ou ne mouillent pas ; on garde les 300 ml du parent, et la crème descend en variante comme chez lui. L'oignon : trois pages en mettent un (ou six échalotes), aucune ne le pèse ; on garde les 250 g du parent. Le comté : une page sur sept le nomme, sans le peser, et c'est la page structurellement la plus proche ; une autre gratine à 70 g de parmesan pour six, soit 11,7 g par personne ; les cinq dernières ne gratinent pas au fromage. On garde les 150 g du parent, dont le dossier propre les avait établis sur deux pages pesées à 25 g par personne. Le beurre : deux pages sur sept en mettent, aucune ne le pèse ; on garde les 75 g du parent. L'ail est dans trois pages sur sept, le persil dans trois, la muscade dans deux : on garde les 12, 15 et 1 g du parent, qui ne déplacent pas la nutrition. Sel 8 g et poivre 2 g, comme lui. UN AJOUT NÉCESSAIRE : 20 ml d'huile d'olive, soit 3,3 ml par personne. Le confit du parent donnait sa graisse aux oignons ; la lentille n'en donne aucune, et deux pages sur sept mettent de l'huile d'olive sans jamais la peser. Vingt millilitres sont le minimum pour fondre 250 g d'oignon sans les brûler. CE QU'ON N'ÉCRIT PAS, ET C'EST LE POINT LE PLUS DÉLICAT DU LOT. La carotte est dans trois pages sur sept, dont DEUX des trois pages structurelles — la tentation est réelle. On ne l'écrit pas : le parent n'en a pas, un jumeau ne change que la protéine, et une mirepoix sous la purée ferait deux plats que le planificateur ne pourrait plus tenir pour le même. Elle descend en variante avec sa quantité. Même traitement pour les tomates concassées de deux pages, qui font un ragù de lentilles et non la garniture d'un parmentier, et pour le poireau, le céleri, le cumin, le concentré, la sauce soja, le laurier et le romarin, chacun à une ou deux pages. Le plat est végétarien PAR SES FORMES : lentille, pomme de terre, lait, oignon, comté, beurre, huile d'olive, persil, ail, sel, poivre, muscade — aucun bouillon de volaille, les lentilles cuisant à l'eau. La présure du comté n'est pas jugée ici, et le dépôt le dit une fois pour toutes. DURÉES : préparation, médiane 20 minutes des sept lignes ; on écrit 30, parce qu'il faut rincer les lentilles, les cuire à part et monter deux couches. Cuisson, médiane 60 minutes des cinq lignes non nulles ; on écrit 60, là où le parent déclare 50 — la différence est honnête et elle a un sens : son confit n'avait qu'à tiédir, la lentille part crue. Quatre pages sur sept enfournent à 180 °C ; on écrit les 190 du parent, une croûte de comté demandant un four vif.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Même rôle que le parent : protéine et féculent dans le même plat sous une croûte gratinée. 75 g de lentilles sèches et 135 g de pomme de terre épluchée par part remplissent l'assiette à eux seuls, et c'est ce qu'on demande à un parmentier. Une salade verte à côté relève du goût, pas de la complétion."
+   },
+   "ingredients": [
+    {
+     "form": "Pomme de terre crue, épluchée",
+     "quantity": 810,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Lentille verte sèche, crue",
+     "quantity": 450,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Lait entier",
+     "quantity": 300,
+     "unit": "ml",
+     "role": "purée",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 250,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Comté",
+     "quantity": 150,
+     "unit": "g",
+     "role": "gratinage",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 75,
+     "unit": "g",
+     "role": "purée",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 20,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Persil frais",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 12,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 8,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Muscade moulue",
+     "quantity": 1,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Rincer les lentilles vertes à l'eau froide, les couvrir de trois fois leur volume d'eau NON salée et les cuire vingt-cinq minutes à petits frémissements. Les arrêter tendres et entières : le sel et l'ébullition franche font éclater leur peau, et une lentille éclatée se délite sous la purée, ce qui donne un plat à un seul étage au lieu de deux. Les égoutter en gardant deux louches de leur eau de cuisson."
+    },
+    {
+     "n": 2,
+     "instruction": "Prévoir 950 g de pommes de terre avant épluchage pour obtenir les 810 g déclarés. Les éplucher, les couper en morceaux de la taille d'une grosse noix, les couvrir d'eau froide salée et porter à ébullition. Vingt à vingt-cinq minutes plus tard, la lame d'un couteau doit traverser sans résistance. Le départ à froid fait cuire le cœur et le bord au même rythme, ce qu'une mise à l'eau bouillante ne donne pas."
+    },
+    {
+     "n": 3,
+     "instruction": "Pendant ces deux cuissons, faire fondre l'oignon finement émincé dans l'huile d'olive à feu moyen, une dizaine de minutes, sans le laisser prendre couleur : on cherche son sucre, pas son amertume. Chez le parent, c'est la graisse du confit qui tenait ce rôle ; la lentille n'en rend aucune, d'où l'huile. Ajouter l'ail haché pour une minute à peine."
+    },
+    {
+     "n": 4,
+     "instruction": "Verser les lentilles égouttées sur l'oignon, poivrer largement, saler de la moitié des huit grammes et laisser prendre trois minutes ensemble. Mouiller d'une louche d'eau de cuisson, puis écraser grossièrement un tiers des lentilles à la fourchette directement dans la sauteuse. Ce tiers écrasé est ce qui lie la couche du bas : sans lui, la garniture reste un tas de grains secs sur lequel la purée glisse, là où le confit tenait tout seul par sa graisse. Ajouter le persil ciselé hors du feu."
+    },
+    {
+     "n": 5,
+     "instruction": "Égoutter les pommes de terre et les remettre trente secondes sur la plaque éteinte, casserole découverte, le temps que la vapeur résiduelle s'échappe — montée sur des morceaux encore humides, la purée tourne à la colle. Les passer au moulin à légumes ou au presse-purée ; le robot, lui, cisaille l'amidon et donne une pâte élastique. Ajouter le beurre par petits morceaux, puis le lait chaud en plusieurs fois jusqu'à ce que la purée retombe en ruban. Râper la muscade et rectifier le sel."
+    },
+    {
+     "n": 6,
+     "instruction": "Tasser à peine la garniture de lentilles au fond d'un plat à gratin de deux litres environ. Poser la purée par cuillerées espacées, puis les relier entre elles à la spatule au lieu de l'étaler d'un bord à l'autre : étalée d'un seul geste, elle entraîne les lentilles avec elle et les deux étages se mélangent. Strier la surface à la fourchette, ce sont les crêtes qui brunissent."
+    },
+    {
+     "n": 7,
+     "instruction": "Semer le comté râpé sur toute la surface et enfourner à 190 °C pour vingt-cinq à trente minutes. Le gratin est prêt quand la croûte est franchement brune et que les bords bouillonnent. Un dessus encore pâle sur un cœur déjà chaud se règle par deux minutes de gril, sans quitter le four des yeux."
+    },
+    {
+     "n": 8,
+     "instruction": "Sortir le plat et attendre dix minutes avant de servir. Ces dix minutes ne sont pas une coquetterie : brûlantes, les deux couches glissent l'une sur l'autre et la part s'affaisse dans l'assiette ; tiédies, elles se découpent net et gardent leurs deux étages visibles."
+    }
+   ],
+   "techniques": [
+    "cuisson des lentilles à l'eau non salée",
+    "fondue d'oignons",
+    "écrasement",
+    "purée au presse-purée",
+    "montage en couches",
+    "gratinage"
+   ],
+   "variants": [
+    "Aux lentilles corail plutôt qu'aux vertes, 120 g pour trois, plus fondantes et qui se défont en purée (chefsimon.com)",
+    "Avec deux carottes fondues dans l'oignon, ce que deux des trois pages structurelles font et que le parent ne fait pas (marmiton.org, chefsimon.com)",
+    "En ragù de lentilles : tomates concassées, concentré, poireau, céleri, laurier et cumin sous la purée (chefsimon.com)",
+    "Purée enrichie de crème fraîche ou de fromage à tartiner en plus du lait, une cuillerée pour quatre (marmiton.org)",
+    "À la patate douce, entière ou pour moitié, à la place de la pomme de terre — un autre plat sous le même nom (chefsimon.com)",
+    "Au potimarron ou à la courge butternut mêlés à la purée, 800 g pour trois (chefsimon.com)",
+    "Un brin de romarin dans les lentilles pendant leur cuisson (chefsimon.com)",
+    "Aux lardons fumés revenus avec les échalotes avant les lentilles — c'est la version carnée du même montage, et c'est précisément ce que ce jumeau retire (marmiton.org)"
+   ],
+   "sensory": {
+    "profile": "rich_savory",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 1,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 4,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "lentille",
+     "oignon fondu",
+     "comté gratiné",
+     "beurre"
+    ],
+    "aroma_families": [
+     "lentille",
+     "oignon compoté",
+     "croûte grillée",
+     "muscade"
+    ],
+    "target_textures": [
+     "lentilles fondantes mais entières",
+     "purée souple",
+     "croûte croustillante"
+    ],
+    "signature_ingredients": [
+     "Lentille verte sèche, crue",
+     "Pomme de terre crue, épluchée",
+     "Comté"
+    ],
+    "identity_guardrails": [
+     "Deux couches distinctes, lentilles dessous et purée dessus : mélangées, c'est une autre préparation.",
+     "Un tiers des lentilles est écrasé dans la sauteuse — c'est ce qui lie la couche du bas, là où la graisse du confit tenait toute seule.",
+     "La lentille est verte et cuite entière : la corail se défait d'elle-même et donnerait deux purées superposées.",
+     "Une croûte de comté franchement brune : un parmentier servi sans gratiner n'est pas fini.",
+     "Le féculent est la pomme de terre : les pages du dossier qui montent une patate douce ou un chou-fleur portent le nom sans être le plat."
+    ]
+   },
+   "conservation": "Trois jours au réfrigérateur, couvert, et se réchauffe vingt-cinq minutes à 170 °C plutôt qu'au micro-ondes, qui détrempe la croûte de comté. Se congèle 2 mois, cru ou cuit, dans son plat filmé : décongeler une nuit au réfrigérateur avant de cuire ou de réchauffer. La lentille supporte le froid mieux que le confit du parent — elle a déjà rendu son eau à la cuisson et ne se dessèche pas au dégel —, et la purée montée au beurre et au lait se reprend à la fourchette. Le dossier ne dit rien de la conservation ; ces durées sont celles que le plat tient physiquement, et on le dit plutôt que de les attribuer aux sources.",
+   "allergens": [
+    "lait"
+   ]
+  }
+ ]
+}
