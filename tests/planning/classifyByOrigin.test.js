@@ -76,13 +76,28 @@ describe('classification par origine, sur tout le vivier publiable', () => {
     'bacon', 'poulet', 'volaille', 'b(?:œ|oe)uf', 'veau', 'porc', 'agneau', 'mouton', 'canard', 'dinde', 'oie',
     'pintade', 'caille', 'poule', 'lapin', 'gibier', 'merguez', 'guanciale', 'pancetta', 'chashu', 'morcilla',
     'abats', 'tripes', 'andouille', 'rillettes', 'terrine', 'charcuterie', 'foie', 'g(?:é|e)sier', 'magret',
-    'confit', 'lard', 'viande', 'steak', 'saindoux',
+    'lard', 'viande', 'steak', 'saindoux', 'chouri(?:ç|c)o', 'lingui(?:ç|c)a',
     'anchois', 'thon', 'saumon', 'cabillaud', 'morue', 'sardine', 'maquereau', 'colin', 'truite', 'hareng',
-    'merlu', 'congre', 'brochet', 'rouget', 'poisson', 'fumet', 'dashi', 'bonite', 'nuoc', 'surimi', 'eomuk',
-    'crevettes?', 'moule', 'calamar', 'poulpe', 'seiche', 'encornet', 'homard', 'langoustine', 'crabe', 'coquille',
-    'hu(?:î|i)tre', 'bulot', 'bigorneau', 'caviar', 'tarama',
+    'merlu', 'congre', 'brochet', 'rouget', 'bar', 'lieu', 'saint-pierre', 'poisson', 'fumet', 'dashi',
+    'bonite', 'nuoc', 'surimi', 'eomuk',
+    'crevettes?', 'moule', 'calamar', 'poulpe', 'seiche', 'encornet', 'homard', 'langoustine', 'crabe',
+    'coquille', 'jacques', 'fruits de mer', 'hu(?:î|i)tre', 'bulot', 'bigorneau', 'caviar', 'tarama',
     'g(?:é|e)latine', 'worcestershire', 'escargot', 'grenouille',
   ]
+  // La liste a été réglée CONTRE le catalogue, pas au jugé : sans « bar »,
+  // « lieu », « saint-pierre », « jacques », « fruits de mer », « chouriço »
+  // et « linguiça », sept formes animales du catalogue échappaient au
+  // contre-témoin, qui aurait alors validé leur origine sans la regarder.
+  // « confit » en a été retiré : il désigne une préparation, pas un animal,
+  // et « Citron confit au sel » l'aurait fait crier à tort — « canard » et
+  // « gésier » attrapent déjà les trois formes confites du catalogue.
+  //
+  // La seule forme végétale que le motif attrape reste « Sauce soja légère
+  // spéciale poisson » : sauce soja POUR le poisson vapeur, déclarée végétale
+  // par le lot21 et retirée de l'annexe A3 pour la même raison (voir
+  // tests/data/formOrigins.test.js). On la nomme ici plutôt que d'affaiblir
+  // le motif : une exception déclarée se relit, un mot retiré ne se voit plus.
+  const FAUSSE_ALERTE_CONNUE = ['Sauce soja légère spéciale poisson']
   // Frontières Unicode : `\b` ne voit pas « é », et « bœuf » ne s'écrit pas
   // « boeuf » dans le corpus. Sans elles, « eau » sortirait de « veau ».
   const MOT_CARNE = new RegExp(`(?<![\\p{L}\\p{N}_])(?:${MOTS_CARNES.join('|')})(?![\\p{L}\\p{N}_])`, 'iu')
@@ -96,7 +111,7 @@ describe('classification par origine, sur tout le vivier publiable', () => {
         recipe.code,
         [...nomsObligatoires(recipe), ...(recipe.blockedIngredients || [])]
           .map((ingredient) => ingredient.name)
-          .filter((nom) => MOT_CARNE.test(nom)),
+          .filter((nom) => MOT_CARNE.test(nom) && !FAUSSE_ALERTE_CONNUE.includes(nom)),
       ])
       .filter(([, mots]) => mots.length)
     expect(fautives).toEqual([])
@@ -109,6 +124,17 @@ describe('classification par origine, sur tout le vivier publiable', () => {
     for (const nom of ['Boudin noir à cuire', 'Bouillon de volaille', 'Bœuf haché cru', 'Sauce Worcestershire', 'Gélatine feuille', 'Bouillon d’anchois']) {
       expect(MOT_CARNE.test(nom), nom).toBe(true)
     }
+    // Et sur TOUT le catalogue : aucune forme d'origine animale ne doit
+    // échapper au motif, sans quoi le contre-témoin se tairait sur elle.
+    const echappees = foodCatalog.forms
+      .filter((form) => form.origin.startsWith('animal:') && !['animal:oeuf', 'animal:lait', 'animal:miel'].includes(form.origin))
+      .filter((form) => !MOT_CARNE.test(form.canonical_name))
+      .map((form) => form.canonical_name)
+    expect(echappees).toEqual([])
+    const faussesAlertes = foodCatalog.forms
+      .filter((form) => !form.origin.startsWith('animal:') && MOT_CARNE.test(form.canonical_name))
+      .map((form) => form.canonical_name)
+    expect(faussesAlertes).toEqual(FAUSSE_ALERTE_CONNUE)
     for (const nom of ['Eau glacée', 'Oignon nouveau cru', 'Lait de coco', 'Tofu ferme', 'Chou-fleur frais']) {
       expect(MOT_CARNE.test(nom), nom).toBe(false)
     }

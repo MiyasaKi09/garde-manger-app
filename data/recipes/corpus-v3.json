@@ -80579,7 +80579,7 @@
       },
       "description_courte": "Poule entière pochée longuement avec une farce de pain de mie, lait, jambon et persil",
       "conservation_profile": {
-        "fridge_hours": 96,
+        "fridge_hours": 72,
         "eat_immediately": false,
         "freezable": true,
         "freezer_months": null,
@@ -86779,8 +86779,8 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
         "source": "parsed"
       }
@@ -90468,7 +90468,7 @@
       },
       "description_courte": "Compotée de poivrons rouges, tomates et oignons au piment d'Espelette avec des œufs",
       "conservation_profile": {
-        "fridge_hours": 96,
+        "fridge_hours": 24,
         "eat_immediately": false,
         "freezable": false,
         "freezer_months": null,
@@ -91825,7 +91825,7 @@
       "conservation_profile": {
         "fridge_hours": 24,
         "eat_immediately": false,
-        "freezable": true,
+        "freezable": false,
         "freezer_months": null,
         "serve_cold": null,
         "source": "parsed"
@@ -93071,7 +93071,7 @@
       ],
       "description_courte": "Poule entière pochée longuement avec carottes, navets, poireau et céleri, sans farce",
       "conservation_profile": {
-        "fridge_hours": 96,
+        "fridge_hours": 72,
         "eat_immediately": false,
         "freezable": true,
         "freezer_months": null,
@@ -93333,7 +93333,7 @@
       ],
       "description_courte": "Poule entière pochée avec une farce de pain de mie, lait, jambon et persil, avec un dôme de chou vert",
       "conservation_profile": {
-        "fridge_hours": 96,
+        "fridge_hours": 72,
         "eat_immediately": false,
         "freezable": true,
         "freezer_months": null,
@@ -114263,8 +114263,8 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
         "source": "parsed"
       }
@@ -114514,8 +114514,8 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
         "source": "parsed"
       }
@@ -114759,8 +114759,8 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
         "source": "parsed"
       }
@@ -114996,8 +114996,8 @@
       "conservation_profile": {
         "fridge_hours": 72,
         "eat_immediately": false,
-        "freezable": true,
-        "freezer_months": 2,
+        "freezable": null,
+        "freezer_months": null,
         "serve_cold": null,
         "source": "parsed"
       }
@@ -128229,7 +128229,7 @@
       ],
       "description_courte": "Compotée de poivrons et tomates au piment d'Espelette avec œufs brouillés et jambon de Bayonne",
       "conservation_profile": {
-        "fridge_hours": 96,
+        "fridge_hours": 24,
         "eat_immediately": false,
         "freezable": false,
         "freezer_months": null,
@@ -128700,7 +128700,7 @@
       ],
       "description_courte": "Compotée de poivrons rouges et piments doux verts aux œufs brouillés, au piment d'Espelette",
       "conservation_profile": {
-        "fridge_hours": 96,
+        "fridge_hours": 24,
         "eat_immediately": false,
         "freezable": false,
         "freezer_months": null,
@@ -142387,7 +142387,7 @@
       "conservation_profile": {
         "fridge_hours": 24,
         "eat_immediately": false,
-        "freezable": true,
+        "freezable": false,
         "freezer_months": null,
         "serve_cold": null,
         "source": "parsed"
@@ -142635,7 +142635,7 @@
       "conservation_profile": {
         "fridge_hours": 24,
         "eat_immediately": true,
-        "freezable": true,
+        "freezable": false,
         "freezer_months": null,
         "serve_cold": null,
         "source": "parsed"
@@ -154671,7 +154671,7 @@
         "lait"
       ],
       "conservation_profile": {
-        "fridge_hours": 72,
+        "fridge_hours": 48,
         "eat_immediately": false,
         "freezable": true,
         "freezer_months": 6,
@@ -159854,7 +159854,7 @@
       ],
       "description_courte": "Semoule servie avec des courgettes, navets et oignons mijotés au bouillon, sans viande",
       "conservation_profile": {
-        "fridge_hours": 96,
+        "fridge_hours": 72,
         "eat_immediately": false,
         "freezable": null,
         "freezer_months": null,
@@ -160703,7 +160703,7 @@
       ],
       "description_courte": "Tourte feuilletée garnie de saumon, de riz, d'épinards et de champignons",
       "conservation_profile": {
-        "fridge_hours": 72,
+        "fridge_hours": 48,
         "eat_immediately": false,
         "freezable": null,
         "freezer_months": null,

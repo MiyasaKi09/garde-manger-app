@@ -143,11 +143,25 @@ const PROCESS_AFTER = /^\s*(?:au refrigerateur |au frais |au froid |a 4 ?°c )?(
 // servi. On regarde les mots qui PRÉCÈDENT la durée, jusqu'au dernier
 // deux-points : « la sauce contient un jaune cru : 48 heures au maximum »
 // parle bien du plat.
-const RAW_SUBJECT = /\bcrue?s?\b|avant cuisson|avant friture|non enfourne|non cuite?s?\b/
+// Une forme AVANT la dernière cuisson (« congélation possible deux mois avant
+// gratinage », « monté mais non enfourné ») est du même ordre qu'une forme
+// crue : ce n'est pas le plat servi. Relevé sur SRC-031 (aubergines farcies),
+// dont la prose n'autorise le congélateur que sur la farce non gratinée.
+const RAW_SUBJECT = /\bcrue?s?\b|avant (?:cuisson|friture|gratinage|enfournement|montage|assemblage|de (?:cuire|frire|gratiner|enfourner|monter))|non enfourne|non cuite?s?\b/
 // « pas plus de 24 heures », « 48 heures maximum » : une borne de garde
 // explicite vaut un lieu nommé — c'est une durée de garde sans ambiguïté.
 const BOUNDED_BEFORE = /(?:pas plus de|pas au dela de|au maximum|maximum|au plus|jusqu'a)\s*$/
 const BOUNDED_AFTER = /^\s*(?:maximum|au maximum|au plus|tout au plus)/
+// Un VERBE DE GARDE devant la durée (« la poule se conserve 3 jours »,
+// « consommez dans les 24 heures ») dit que la durée est une garde, aussi
+// clairement qu'un lieu nommé ou une borne. Sans lui, le lieu était le seul
+// signal, et une garde énoncée sans lieu perdait contre une garde plus LONGUE
+// énoncée avec lieu : la poule au pot (SRC-001) prenait les 4 jours de son
+// bouillon « au froid » contre les 3 jours de la poule, et la piperade aux
+// œufs (SRC-048-D1) les 4 jours de « la fondue de légumes seule » contre les
+// 24 heures du plat une fois les œufs incorporés. La convention du dépôt est
+// la garde la PLUS COURTE ; encore faut-il voir toutes les gardes.
+const GUARD_VERB_BEFORE = /(?:se (?:garde|gardent|conserve|conservent|tient|tiennent|mange|mangent)|tient|tiennent|garder|conserver|consomme|consommer|consommez|consommes|dure|durent)\w*\s*(?:[\w'’,°]+\s+){0,4}$/
 // « 15 jours au congélateur » est une durée congélateur, pas réfrigérateur.
 const followedByFreezer = (clause, duration) => /^\s*au congelateur/.test(clause.slice(duration.index + duration.text.length))
 
@@ -183,6 +197,12 @@ const FREEZE_REFUSALS = [
   /pas (?:conseill|recommand|possible|envisageable)/, /peu (?:conseill|recommand)/,
   /n'est pas (?:conseill|recommand|possible|envisageable)/,
   /n'aime(?:nt)? pas/, /craint|craignent|redoute/, /mauvaise idee/, /rien ne se congel/, /rien [^,]*ne supporte/, /en aucun cas/,
+  // « Ni la sauce ni le poisson ne supportent la congélation » : un refus
+  // énoncé par « ni … ni … ne », donc sans « pas ». Relevé sur SRC-055 et ses
+  // deux dérivées, que le parseur lisait comme une AUTORISATION — « supportent
+  // la congélation » matchant l'autorisation sans que le « ne » soit vu.
+  /\bni\b[^.;]*\bne (?:le |la |les )?(?:supporte|supportent|congel|se congel|passe|passent|tient|tiennent|resiste|resistent)/,
+  /\bne (?:le |la |les )?supporte(?:nt)? (?:pas )?(?:la congelation|le congelateur)/,
 ]
 
 // Autorisation EXPLICITE de congélation. Tout ce qui n'est ni ici ni dans les
@@ -205,6 +225,22 @@ const FREEZE_AUTHORIZATIONS = [
 const COMPONENT_ONLY = /\bseule?s?\b|uniquement|sans (?:la |le |les |l')/
 
 const clauseMatches = (clause, patterns) => patterns.some((pattern) => pattern.test(clause))
+
+// Une autorisation NIÉE n'est pas une autorisation. « ne supportent la
+// congélation », « n'accepte le congélateur » : la négation est devant le
+// verbe, pas dans le motif. On regarde donc ce qui précède immédiatement la
+// tournure trouvée — au plus trois mots — plutôt que d'écrire chaque
+// autorisation en double, une fois affirmative et une fois niée.
+const NEGATION_BEFORE = /\b(?:ne|n'|ni)\s+(?:[\w'’]+\s+){0,3}$/
+function authorizationIn(clause) {
+  for (const pattern of FREEZE_AUTHORIZATIONS) {
+    const match = clause.match(pattern)
+    if (!match) continue
+    if (NEGATION_BEFORE.test(clause.slice(0, match.index))) continue
+    return pattern
+  }
+  return null
+}
 
 // ─── Lecture de la prose ─────────────────────────────────────────────────────
 /**
@@ -243,13 +279,15 @@ export function parseConservation(prose) {
       const placeNearby = FRIDGE_PLACE.test(before) || FRIDGE_PLACE.test(after)
       if (!placeNearby && AMBIENT_PLACE.test(clause)) continue
       const bounded = BOUNDED_BEFORE.test(before) || BOUNDED_AFTER.test(after)
-      candidates.push({ hours: duration.hours, text: duration.text, clause, withPlace: placeNearby || bounded })
+      const guardVerb = GUARD_VERB_BEFORE.test(before)
+      candidates.push({ hours: duration.hours, text: duration.text, clause, withPlace: placeNearby || bounded || guardVerb })
     }
   }
-  // Une durée dont le lieu est nommé à côté, ou bornée en toutes lettres
-  // (« pas plus de », « maximum »), est une durée de garde sans ambiguïté ;
-  // elle passe avant une durée nue (« les feuilles tombent en une heure »
-  // décrit une dégradation, pas une garde).
+  // Une durée dont le lieu est nommé à côté, bornée en toutes lettres (« pas
+  // plus de », « maximum ») ou portée par un verbe de garde (« se conserve »,
+  // « consommez dans ») est une durée de garde sans ambiguïté ; elle passe
+  // avant une durée nue (« les feuilles tombent en une heure » décrit une
+  // dégradation, pas une garde). Entre deux gardes, la PLUS COURTE.
   candidates.sort((left, right) => Number(right.withPlace) - Number(left.withPlace) || left.hours - right.hours)
   if (candidates.length) {
     fridgeHours = candidates[0].hours
@@ -273,10 +311,14 @@ export function parseConservation(prose) {
       refusal = { clause, pattern: String(FREEZE_REFUSALS.find((pattern) => pattern.test(clause))) }
     }
     // Même règle que pour les durées : « le poulet mariné cru se congèle »
-    // autorise la congélation d'une forme crue, pas du plat servi.
+    // autorise la congélation d'une forme crue, pas du plat servi ; et une
+    // autorisation NIÉE (« ni la sauce ni le poisson ne supportent la
+    // congélation ») n'autorise rien — d'où authorizationIn plutôt qu'un
+    // simple test de motif.
     if (!authorization && !clauseMatches(clause, FREEZE_REFUSALS) && !COMPONENT_ONLY.test(clause)
-      && !RAW_SUBJECT.test(clause) && clauseMatches(clause, FREEZE_AUTHORIZATIONS)) {
-      authorization = { clause, pattern: String(FREEZE_AUTHORIZATIONS.find((pattern) => pattern.test(clause))) }
+      && !RAW_SUBJECT.test(clause)) {
+      const pattern = authorizationIn(clause)
+      if (pattern) authorization = { clause, pattern: String(pattern) }
     }
     // Mois au congélateur : le plus court cité dans une clause de congélation
     // (borne basse, comme pour les durées réfrigérateur).
