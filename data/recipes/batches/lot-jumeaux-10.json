@@ -1,0 +1,856 @@
+{
+ "lot": "jumeaux-10",
+ "intention": "Dixième lot de jumeaux végétariens de même lignée (plan « planning parfait », chantier C2, conduit par la chaîne du chantier C6). Un jumeau est le MÊME PLAT que sa base carnée — même féculent, même technique, même rôle d'assiette, même composition hors protéine — dont la protéine animale est remplacée par une protéine végétale que les sources attestent, et dont « derived_from » porte le code du parent. C'est ce champ qui en fait, pour le planificateur, la version végétarienne du plat que Julien mange, et non un autre plat servi à Zoé : la mesure du §2.2 du plan montre quatre substitutions demandées, quatre obtenues, quatre HORS lignée, dont deux boudins noirs proposés comme variante végétarienne d'un pastitsio. Cinq jumeaux étaient visés, QUATRE sont écrits, UN est refusé — et le refus est le résultat le plus utile du lot, parce qu'il ne demande pas une recette de plus mais une ligne de moins.\n\nLE REFUS, D'ABORD. Le jumeau demandé pour DEN-021 « Omelette au jambon » était « Omelette au fromage ». Cette recette EXISTE DÉJÀ au corpus, sous VAR-039, avec son dossier de sept pages sur trois sites (data/recipes/sources/omelette-au-fromage.json), ses six œufs, ses 100 g de gruyère râpé et son arbitrage. Elle n'a qu'un défaut, et il est d'un seul champ : « derived_from » est absent, si bien que le planificateur ne sait pas qu'elle est l'omelette de DEN-021 sans son jambon. L'écrire une seconde fois est impossible — le validateur refuse une famille déjà prise, et il a raison, un doublon coûte plus cher au vivier qu'un manque. La réparation n'est donc pas une recette : c'est « derived_from »: « DEN-021 » posé sur VAR-039. Modifier une recette existante n'entre pas dans le mandat d'un lot d'écriture, et le lot le signale plutôt que de le faire.\n\nLA MÉTHODE D'ARBITRAGE DU LOT, énoncée une fois et appliquée quatre fois. On ne rejuge que les lignes que l'échange de protéine touche, plus celles sur lesquelles le dossier du jumeau est chiffré et concordant. Tout le reste est hérité du parent, et chaque héritage est nommé à l'endroit où il joue. La raison est arithmétique : les dossiers des parents ont été bâtis sur quatre à neuf pages, et rejuger une panure sur deux lignes reviendrait à remplacer une mesure par une plus faible.\n\nCE QU'ON FAIT DES SOURCES ÉCARTÉES, et c'est le point de méthode propre à ce lot. L'audit écarte une page dont le titre ne porte pas tous les mots du plat demandé. C'est un garde-fou utile — « pâtes au thon et à la tomate » avait ramené des mini-quiches — mais il écarte aussi, ici, des pages qui décrivent exactement le plat et le titrent dans une autre langue. Les écartées restent dans le dossier avec leurs quantités, et servent à confirmer une structure ou à compléter un rapport ; jamais à porter seules un chiffre. Chaque fois qu'une écartée pèse dans un calcul, la fiche le dit et dit pourquoi elle a été écartée.\n\nCE QUE VÉGÉTARIEN VEUT DIRE ICI, dit une fois : aucune forme d'origine viande, volaille, poisson ou fruit de mer, donc « Bouillon de légumes non salé » là où le parent écrit « Bouillon de volaille non salé ». Le fromage est accepté et la présure n'est pas jugée, à une exception assumée : le parmesan et le grana, que deux dossiers proposent, ne sont pas écrits — ils sont absents des fiches parentes, et les écrire ajouterait au jumeau un ingrédient que la structure ne demande pas. Le motif de composition suffit ; le motif de présure vient par-dessus.\n\nAUCUNE FORME NOUVELLE n'a été nécessaire : les seize formes de ce lot sont toutes au catalogue, à confiance B. Le fichier d'arbitrage data/foods/arbitrations/lot21-jumeaux-10.json n'existe donc pas, et c'est un bon signe — un jumeau qui réclame une forme inédite est souvent un jumeau qui a changé de plat.",
+ "refuses": [
+  {
+   "twin_family": "Omelette au fromage",
+   "parent_code": "DEN-021",
+   "parent_family": "Omelette au jambon",
+   "reason": "Le plat existe déjà au corpus sous VAR-039 « Omelette au fromage », écrite sur un dossier de sept pages et trois sites, avec six œufs, 100 g de gruyère râpé, du lait et du beurre. Le validateur refuse une famille déjà prise (« Omelette au fromage » existe déjà au corpus sous VAR-039) et il a raison : réécrire ce plat sous un code neuf donnerait deux fiches du même plat, que les graphes de diversité compteraient comme deux plats différents. Un autre nom a été cherché, comme la consigne le demande — « Omelette au comté », « Omelette à l'emmental » — et il a été écarté volontairement : ces noms désignent le même plat que VAR-039 à un fromage près, et les écrire serait fabriquer un doublon en le déguisant. Ce qui manque à VAR-039 n'est pas une recette, c'est le champ « derived_from »: « DEN-021 », qui la rattacherait à la lignée de l'omelette au jambon et permettrait au planificateur de servir à Zoé la même omelette sans son jambon. Poser ce champ modifie une recette existante : hors du mandat d'un lot d'écriture, signalé à l'orchestrateur."
+  }
+ ],
+ "recipes": [
+  {
+   "code": "JUM-101",
+   "family": "Arancini aux champignons",
+   "derived_from": "REAL-097",
+   "cuisine_origin": "Italie",
+   "identity_level": "named_traditional_dish",
+   "category": "croquettes de riz",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 8,
+   "prep_minutes": 60,
+   "cook_minutes": 60,
+   "difficulty": "difficile",
+   "sources": [
+    "dossier:mushroom-arancini",
+    "sugarsaltmagic.com",
+    "nodashofgluten.com",
+    "thepetitecook.com",
+    "simply-delicious-food.com",
+    "blog.giallozafferano.it",
+    "tuorlorosso.it",
+    "saq.com",
+    "cookpad.com"
+   ],
+   "description_courte": "La version sans viande de l'arancino sicilien : riz safrané cuit par absorption, champignons de Paris poêlés à sec et petits pois, cœur de mozzarella, panure et friture.",
+   "canonical_arbitration": "Dix pages relevées, QUATRE retenues par l'audit sur quatre sites distincts — sugarsaltmagic.com, nodashofgluten.com, thepetitecook.com et simply-delicious-food.com. Les six autres sont écartées par une règle de titre, pas par un jugement de qualité, et il faut le dire avant tout le reste. Le dossier est déclaré sous le nom anglais « mushroom arancini », si bien que les trois blogs de blog.giallozafferano.it, tuorlorosso.it, saq.com et cookpad.com, qui titrent « arancini ai funghi », « arancine ai funghi » ou « arancinis aux champignons », n'ont pas le mot « mushroom » dans leur titre. Ce sont pourtant le même plat, mot pour mot.\n\nPOURQUOI CE NOM ANGLAIS, alors que le plat est sicilien. Parce qu'aucun autre nom ne rassemble deux sites. Les pages italiennes qui portent un balisage lisible sont trois, et toutes trois sur blog.giallozafferano.it : au sens de la règle des deux sites, c'est une seule adresse. La seule page francophone chiffrée, saq.com, est seule sur la sienne. Les moteurs des trois sites français de la chaîne ne rendent rien d'exploitable : chefsimon publie bien des « arancini aux champignons », sans balisage, et l'autre page française du site les fait à la bresaola, c'est-à-dire à la viande. Cinq noms ont été essayés avant celui-là. Le plat est publié partout ; c'est la chaîne qui ne sait l'attraper qu'en anglais, et le dire est plus honnête que de renommer le dossier pour faire passer un décompte.\n\nCE QUE L'ÉCHANGE DE PROTÉINE TOUCHE, et rien d'autre n'est rejugé. LE CHAMPIGNON remplace les 300 g de bœuf haché du parent. Les pages ne se comparent pas à la portion — elles rendent de 6 à 28 boules de tailles incomparables, et une portion n'y veut rien dire — mais elles se comparent au riz, qui est la constante du plat. Six pages donnent les deux poids : 100 g de champignons pour 145 g de riz chez sugarsaltmagic, 120 pour 500 chez nodashofgluten, 800 pour 1 000 chez ilcaldosaporedelsud, 350 pour 500 chez ricettechepassione, 150 pour 150 chez lepassionidima, 300 pour 500 chez tuorlorosso — soit des rapports de 0,69 ; 0,24 ; 0,80 ; 0,70 ; 1,00 et 0,60. Le rapport médian est 0,695, et appliqué aux 500 g de riz du parent il donne 348 g, qu'on écrit 350 g. Quatre de ces six lignes viennent d'écartées, et sans elles il ne resterait que 0,69 et 0,24 ; on le dit parce que c'est le calcul le plus chargé de la fiche. La ligne à 0,24 compte six champignons sans les peser : c'est exactement l'écart qu'une médiane absorbe et qu'une moyenne suivrait. Le champignon retenu est le champignon de Paris, la seule forme fraîche que le catalogue porte et celle que trois pages nomment en clair ; les cèpes séchés de sugarsaltmagic et de saq, les porcini de deux pages italiennes et les pleurotes de la troisième passent en variantes.\n\nLE BOUILLON change d'origine et pas de volume : 1 100 ml comme le parent, mais de légumes. C'est le premier motif de ce lot — quinze des vingt-deux fausses végétariennes du corpus le sont par un bouillon de volaille. Le rapport du parent, 2,2 volumes de bouillon pour un poids de riz, est le plus bas du dossier, qui va de 2,0 chez tuorlorosso à 8,0 chez ricettechepassione : c'est cohérent, parce qu'un riz d'arancino se cuit par absorption et doit finir sec, quand un risotto se mouille sans compter.\n\nL'OIGNON, L'AIL, LE PERSIL ET L'HUILE D'OLIVE n'existent pas dans la fiche parente, dont le ragù n'a jamais itemisé ses aromates. Ils entrent avec le champignon, parce qu'un champignon poêlé sans base aromatique et sans gras n'est que de l'eau qui s'en va. L'oignon est dans trois pages sur trois sites ; ilcaldosaporedelsud donne le poids d'un oignon, 100 g, et c'est cette conversion qu'on emploie : un demi-oignon pour 145 g de riz, un oignon pour 500 g, 100 g pour 1 kg, ramenés à 500 g de riz font 172, 100 et 50 g, dont la médiane est 100 g. L'ail est dans sept pages sur dix ; ramené à 500 g de riz il va d'une demi-gousse à cinq, médiane 2,5 gousses, soit 10 g à cinq grammes la gousse. Le persil est chiffré par deux pages, 28 et 15 g ramenés à 500 g de riz : on écrit 15 g, la lecture basse, et l'écart est assumé — le persil finit les champignons, il ne les compose pas. L'huile d'olive est chiffrée par quatre pages qui donnent, ramenées à 500 g de riz, 52, 15, 25 et 75 ml : médiane 38,5 ml, écrite 40 ml. Elle paraît généreuse jusqu'à ce qu'on se rappelle que 350 g de champignons boivent tout ce qu'on leur donne avant de rendre leur eau.\n\nCE QUI EST HÉRITÉ, ligne par ligne. Le riz arborio (500 g) et la panure du parent — trois œufs, 150 g de farine, 300 g de chapelure — ne sont touchés par rien et ne se rejugent pas. LE SAFRAN (0,3 g) n'est chiffré par aucune des quatre pages retenues et par une seule écartée, tuorlorosso, qui met un sachet dans son arancine aux champignons ; il se transmet, parce que c'est le riz du parent et que l'échange de protéine ne le regarde pas. LES PETITS POIS (150 g) sont le cas limite du lot : le parent les range sous le rôle « ragù », mais ce sont un légume et non de la viande, et ils survivent donc à l'échange à leur quantité d'origine. Aucune page du dossier n'en porte, et c'est une transmission assumée, pas une lecture du dossier. LA MOZZARELLA (250 g) reste au poids du parent : son rapport au riz est de 0,50, et les cinq pages qui pèsent les deux donnent 0,41 ; 0,63 ; 0,40 ; 0,30 et 0,50 — le parent est dans la fourchette, il n'y a rien à corriger.\n\nLE SEUL CHIFFRE DU PARENT QU'ON CORRIGE est l'huile de friture, et pour une raison de méthode plutôt que de goût. Le parent déclare 1,5 litre : c'est le BAIN, pas ce qui se mange, et le corpus pèse ce qui arrive dans l'assiette — même règle que le gigot de 1,8 kg dont seul le rendement en viande est déclaré. Le bain reste dans les étapes comme instruction ; la ligne pesée est 120 g, l'ordre de grandeur de ce qu'une panure de huit grosses boules retient, soit 15 g par part.\n\nCE QUE LE DOSSIER FAIT ET QU'ON NE FAIT PAS. Les quatre pages retenues montent un RISOTTO — riz nacré à l'huile, vin blanc pour deux d'entre elles, bouillon louche à louche — et le champignon y entre dans le riz au lieu de rester en farce. On garde la cuisson par absorption du parent, qui est aussi celle d'ilcaldosaporedelsud : c'est elle qui donne un riz assez sec et assez collant pour être moulé dans la paume, et un riz de risotto s'ouvre au moment de le paner. Le champignon, lui, est mélangé au riz comme le font les quatre pages retenues, et le cœur reste la mozzarella, comme chez le parent. LE PARMESAN de sugarsaltmagic, de nodashofgluten et des trois pages italiennes n'est pas écrit : il est absent de la fiche parente, et l'ajouter changerait la composition au-delà de ce que l'échange demande ; s'y ajoute, pour un plat destiné à une assiette végétarienne, que le Parmigiano Reggiano et le Grana Padano sont présurés à la présure animale. La béchamel aux champignons de deux pages italiennes n'est pas écrite non plus : le parent lie sa farce à la tomate, pas au lait, et une farce liée serait une autre structure. La tomate concassée du parent, elle, part avec le ragù dont elle était le liant.\n\nCE QUI RESTE EN VARIANTES : la sauce tomate rôtie de simply-delicious-food, la marinara de nodashofgluten et la sauce tomate épicée de saq — trois accompagnements différents, ce qui est le signe qu'il en faut peut-être un et que le plat n'en porte aucun. Le vin blanc de trois pages, les cèpes séchés et leur eau de trempage, la double friture d'ilcaldosaporedelsud, la pâte à frire à la farine et à l'eau de deux pages italiennes à la place de l'œuf, et le moule à arancini que la même recommande.\n\nDURÉES. Sept lignes de préparation : 15, 15, 20, 15, 60, 35 et 15 minutes, médiane 15 — mais elles façonnent des boules de la taille d'une balle de golf quand le parent en fait huit grosses. On garde les 60 minutes du parent, qui couvrent le hachage de 350 g de champignons et le façonnage. Huit lignes de cuisson, de 10 à 60 minutes, médiane 32,5 : on écrit 60, soit vingt minutes de riz, dix de champignons et le reste en friture par bains de deux. C'est trente minutes de moins que le parent, dont le ragù mijotait — et c'est le seul endroit où le jumeau est plus rapide que sa base.",
+   "plate": {
+    "role": "complete",
+    "accepts": [
+     "vegetables"
+    ],
+    "reason": "Même rôle que les Arancini siciliens au ragù, et pour la même raison : 62 g de riz sec, 44 g de champignons et 31 g de mozzarella par part, la boule porte déjà son féculent et sa garniture. Il ne lui manque qu'un cru — et les trois pages du dossier qui proposent un accompagnement proposent trois sauces différentes, jamais un légume, ce qui confirme que le vide de l'assiette est là."
+   },
+   "ingredients": [
+    {
+     "form": "Riz arborio cru",
+     "quantity": 500,
+     "unit": "g",
+     "role": "base",
+     "optional": false
+    },
+    {
+     "form": "Bouillon de légumes non salé",
+     "quantity": 1100,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Safran",
+     "quantity": 0.3,
+     "unit": "g",
+     "role": "arôme",
+     "optional": false
+    },
+    {
+     "form": "Champignon de Paris frais",
+     "quantity": 350,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 100,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Persil frais",
+     "quantity": 15,
+     "unit": "g",
+     "role": "herbe",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 40,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Petit pois surgelé",
+     "quantity": 150,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Mozzarella",
+     "quantity": 250,
+     "unit": "g",
+     "role": "cœur",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 3,
+     "unit": "u",
+     "role": "panure",
+     "optional": false
+    },
+    {
+     "form": "Farine de blé T55",
+     "quantity": 150,
+     "unit": "g",
+     "role": "panure",
+     "optional": false
+    },
+    {
+     "form": "Chapelure de blé",
+     "quantity": 300,
+     "unit": "g",
+     "role": "panure",
+     "optional": false
+    },
+    {
+     "form": "Huile de friture",
+     "quantity": 120,
+     "unit": "g",
+     "role": "friture",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 8,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Débarrasser les champignons de leur terre avec un papier absorbant humide, sans jamais les passer sous le robinet, puis les tailler au couteau en morceaux d'un demi-centimètre. Un champignon rincé se gorge d'eau qu'il rendra dans la poêle au lieu de colorer ; taillé trop fin il disparaît dans le riz, taillé trop gros il fait un point dur qui ouvre la boule au moment de la frire."
+    },
+    {
+     "n": 2,
+     "instruction": "Chauffer l'huile d'olive à feu vif dans une grande poêle, y verser les champignons et les laisser deux minutes sans y toucher avant de les faire sauter cinq à six minutes, jusqu'à ce que leur eau soit entièrement partie et que les bords commencent à brunir. C'est ce moment qui remplace le brunissement de la viande dans le ragù du parent : tant que l'eau est là, la poêle plafonne à cent degrés et rien ne caramélise — un champignon pâle donnera un arancino fade, quelle que soit la suite."
+    },
+    {
+     "n": 3,
+     "instruction": "Baisser le feu à moyen, ajouter l'oignon haché finement et le laisser fondre trois minutes, puis l'ail écrasé pour une minute de plus. L'ail vient après l'oignon parce qu'il brûle deux fois plus vite et qu'une pointe d'amertume à ce stade traverse tout le plat. Ajouter le persil ciselé hors du feu, saler de moitié, poivrer, débarrasser dans un plat et laisser tiédir."
+    },
+    {
+     "n": 4,
+     "instruction": "Porter le bouillon de légumes à petits frémissements avec le safran et le reste du sel, y verser le riz d'un seul coup, donner un tour de cuillère et couvrir. Cuire à feu très doux vingt minutes environ, sans remuer, jusqu'à ce que tout le liquide soit bu. On ne mouille pas louche à louche comme pour un risotto : le riz d'un arancino doit finir sec et collant, faute de quoi il ne se tiendra pas dans la paume."
+    },
+    {
+     "n": 5,
+     "instruction": "Cinq minutes avant la fin, disperser les petits pois encore glacés à la surface du riz et refermer aussitôt le couvercle. Ils finissent à la vapeur du riz et gardent leur couleur, là où une casserole d'eau bouillante les délaverait et les gorgerait à leur tour d'eau — or tout ce qui apporte de l'eau à ce stade se paiera au façonnage."
+    },
+    {
+     "n": 6,
+     "instruction": "Verser le riz sur une plaque, l'étaler en couche mince, y mêler les champignons refroidis à la spatule, et laisser prendre l'air au moins deux heures sans rien poser dessus. Le refroidissement n'est pas une pause : un riz couvert condense et redevient humide, un riz encore tiède fera fondre la mozzarella bien avant l'huile."
+    },
+    {
+     "n": 7,
+     "instruction": "Couper la mozzarella en cubes d'un centimètre et les laisser s'égoutter dix minutes sur du papier. Huiler légèrement la paume, y déposer une grosse poignée de riz froid, l'aplatir à un centimètre d'épaisseur, creuser un puits, y loger trois cubes de fromage, puis refermer le riz par-dessus et serrer jusqu'à obtenir une boule lisse — huit boules pour huit parts. La moindre fissure et le fromage s'échappera dans l'huile."
+    },
+    {
+     "n": 8,
+     "instruction": "Aligner trois assiettes creuses : la farine, les œufs battus à la fourchette, la chapelure. Rouler chaque boule dans la farine, la tremper dans l'œuf en laissant l'excédent s'égoutter, puis la couvrir de chapelure en pressant du plat de la main. La farine sèche la surface pour que l'œuf s'y accroche ; sans elle la panure glisse sur le riz humide et s'ouvre à la cuisson. Laisser les boules panées un quart d'heure au froid."
+    },
+    {
+     "n": 9,
+     "instruction": "Porter un litre et demi d'huile à 170 °C dans une casserole haute et étroite, et frire deux boules à la fois, cinq minutes environ, jusqu'à un brun uniforme. Égoutter sur du papier et attendre deux minutes avant de servir : le cœur sort à une température qui brûle. Plus chaude, l'huile dore la panure avant que le fromage n'ait fondu ; plus froide, la panure la boit et l'arancino sort gras."
+    }
+   ],
+   "techniques": [
+    "sauté",
+    "cuisson du riz",
+    "refroidissement",
+    "façonnage",
+    "panure",
+    "friture"
+   ],
+   "variants": [
+    "Riz monté en risotto — nacré à l'huile, mouillé louche à louche — plutôt que cuit par absorption (sugarsaltmagic, nodashofgluten, ricettechepassione, saq)",
+    "Vin blanc sec pour déglacer avant le bouillon, un demi-verre pour 500 g de riz (nodashofgluten, ricettechepassione, lepassionidima, saq)",
+    "Cèpes séchés réhydratés, dont l'eau de trempage filtrée rejoint le bouillon, 5 g pour 145 g de riz (sugarsaltmagic) ou 125 ml de bolets séchés (saq)",
+    "Farce liée à une béchamel aux champignons plutôt que champignons mêlés au riz, 150 g de béchamel pour 500 g de riz (ilcaldosaporedelsud, tuorlorosso)",
+    "Pâte à frire de farine et d'eau à la place de l'œuf pour la panure (ilcaldosaporedelsud, ricettechepassione)",
+    "Double friture, quatre à cinq minutes deux fois, pour une croûte plus résistante (ilcaldosaporedelsud)",
+    "Servi avec une sauce tomate rôtie au thym et au vinaigre balsamique (simply-delicious-food), une marinara (nodashofgluten) ou une sauce tomate épicée (saq)",
+    "Cœur de caciotta, de provola ou d'emmental à la place de la mozzarella, que deux pages jugent trop peu goûteuse (ilcaldosaporedelsud)",
+    "Mélange de champignons — pleurotes, cardoncelli, portobello — plutôt que champignons de Paris seuls (lepassionidima, ilcaldosaporedelsud)"
+   ],
+   "sensory": {
+    "profile": "savory_crisp",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 1,
+     "bitter": 1,
+     "umami": 4,
+     "heat": 1,
+     "pungency": 2,
+     "richness": 4,
+     "freshness": 2,
+     "intensity": 4
+    },
+    "dominant_flavors": [
+     "champignon rôti",
+     "croustillant",
+     "safran"
+    ],
+    "aroma_families": [
+     "champignon",
+     "ail",
+     "safran",
+     "persil",
+     "mozzarella",
+     "riz_frit"
+    ],
+    "target_textures": [
+     "croûte_croustillante",
+     "riz_moelleux",
+     "cœur_fondant"
+    ],
+    "signature_ingredients": [
+     "Riz arborio cru",
+     "Champignon de Paris frais",
+     "Mozzarella",
+     "Safran"
+    ],
+    "identity_guardrails": [
+     "Les champignons se poêlent jusqu'à ce que leur eau soit partie : humides, ils détrempent le riz et la boule s'ouvre dans l'huile",
+     "Le riz se cuit par absorption et refroidit à découvert au moins deux heures — c'est ce qui le rend moulable, et rien ne remplace ce temps",
+     "Le cœur de mozzarella et la panure font l'arancino : sans farce centrale, c'est une boulette de riz",
+     "Le bouillon est de légumes, jamais de volaille — c'est ce qui distingue ce jumeau de sa base carnée",
+     "Le safran teint le riz du parent et reste : un arancino blanc n'est plus sicilien"
+    ]
+   },
+   "conservation": "Se gardent 2 jours au réfrigérateur en boîte fermée et se réchauffent dix minutes à 180 °C — jamais au micro-ondes, qui ramollit la panure sans réchauffer le cœur. Sur la congélation, les deux pages du dossier qui en parlent se contredisent, et chacune a raison à sa manière : l'une déconseille de congeler l'arancino, cru ou frit, parce que le riz en ressort en bouillie ; l'autre congèle les boules panées CRUES et les plonge encore gelées dans l'huile. C'est cette seconde lecture qu'on retient — 2 mois crus et panés, à frire sans décongeler, en comptant deux minutes de plus — parce qu'un riz qui n'est pas encore passé par l'huile n'a pas de croûte à perdre. Frit, l'arancino ne se congèle pas.",
+   "allergens": [
+    "gluten",
+    "lait",
+    "œuf"
+   ]
+  },
+  {
+   "code": "JUM-102",
+   "family": "Croquetas de champignons",
+   "derived_from": "REAL-109",
+   "cuisine_origin": "Espagne",
+   "identity_level": "named_traditional_dish",
+   "category": "tapas frits",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 8,
+   "prep_minutes": 40,
+   "cook_minutes": 30,
+   "difficulty": "difficile",
+   "sources": [
+    "dossier:croquetas-de-champinones",
+    "bonviveur.es",
+    "okdiario.com",
+    "comeztier.com",
+    "paulasapron.com"
+   ],
+   "description_courte": "Croquettes espagnoles à la béchamel très épaisse, où les champignons poêlés à sec remplacent le jambon serrano ; panées, frites, coulantes à cœur.",
+   "canonical_arbitration": "Quatre pages, trois retenues sur trois sites distincts — bonviveur.es, okdiario.com et comeztier.com — et une écartée, paulasapron.com, qui titre « croquetas de setas » là où le dossier demande « champiñones ». L'écart est un mot d'espagnol : « setas » désigne les champignons sauvages, « champiñones » le champignon de couche. La page écartée mélange 200 g de bolets et 200 g de portobellos, décrit exactement la même béchamel et donne les quantités les plus détaillées du dossier ; elle est donc gardée, et elle pèse dans les rapports où le type de champignon ne change rien — jamais ailleurs, et la phrase le dit chaque fois.\n\nCE QUE LES TROIS SITES FRANÇAIS DE LA CHAÎNE RENDENT SUR CE PLAT : rien. Ni « croquetas de setas », ni « croquetas de champiñones », ni « croquettes de champignons », ni « croquettes béchamel champignons ». C'est le constat du README sur les limites de la chaîne, vérifié une fois de plus : les trois sites couvrent la cuisine française et les classiques internationaux, pas un tapa espagnol de tous les jours. Le dossier a donc été bâti sur les sites d'origine du plat, et passé sans exception par la même chaîne — relevé des faits, empreinte des étapes, audit, texte intégral gardé hors dépôt.\n\nLA BÉCHAMEL EST LA CONSTANTE, et c'est elle qui sert d'étalon. Le lait est le seul ingrédient que les quatre pages pèsent : 500 ml, 500 ml, 900 ml et 600 ml. Ramener ces pages à la portion n'a pas de sens — elles rendent 16, 30 croquettes ou ne le disent pas — mais tout se compare au litre de lait, qui est la mesure d'une masa. LE CHAMPIGNON remplace les 180 g de jambon serrano du parent : 250 g pour 500 ml de lait, 200 pour 500, 500 pour 900 et 400 pour 600, soit 0,50 ; 0,40 ; 0,56 et 0,67 kilo par litre. Le rapport médian est 0,53, et appliqué aux 700 ml du parent il donne 371 g, qu'on écrit 370 g. Deux fois plus lourd que le jambon qu'il remplace, et c'est normal : un champignon perd les deux tiers de son poids en eau à la poêle, un jambon n'en perd rien.\n\nLE ROUX est le seul endroit où l'on s'écarte volontairement de la médiane du dossier, et l'écart est motivé. Les quatre pages farinent à 90, 100, 156 et 125 g par litre de lait — médiane 112 g par litre, ce qui donnerait 79 g pour 700 ml. Le parent en met 90 g, soit 129 g par litre, dans le haut de la fourchette du dossier. On garde les 90 g du parent : les champignons apportent une eau que le jambon n'apportait pas, et une masa qui ne tient pas ses formes n'est pas une croqueta, c'est une flaque dans l'huile. Le beurre, lui, ne pose pas de question : 90, 120, 122 et 125 g par litre selon les pages, 129 chez le parent — il reste à 90 g.\n\nL'OIGNON, LA MUSCADE, LE SEL ET LE POIVRE entrent, alors que la fiche parente n'en porte aucun. L'oignon est dans deux pages sur deux sites, une cebolleta pour 500 ml de lait chez bonviveur, un demi-oignon pour 600 ml chez paulasapron, soit 80 et 100 g par litre : médiane 90 g par litre, 63 g pour 700 ml, écrits 60 g. Il entre parce que le jambon salait et parfumait la béchamel à lui seul, ce que le champignon ne fait pas. La muscade est dans trois pages sur quatre et c'est l'assaisonnement canonique d'une béchamel : 1 g. Le sel et le poivre sont dans les quatre pages, jamais pesés : 5 g et 2 g.\n\nCE QUI EST HÉRITÉ SANS DISCUSSION : les 700 ml de lait entier, les deux œufs et les 250 g de chapelure de la panure du parent. Trois pages sur quatre farinent avant l'œuf, ce que le parent ne fait pas ; on n'ajoute pas de ligne pour autant, parce que la farine de panure se prend sur les 90 g du roux quand on la veut, et que le parent a tranché.\n\nL'HUILE DE FRITURE est corrigée comme dans l'autre plat frit de ce lot, et pour la même raison de méthode : le parent déclare 1,2 litre, qui est le bain et non ce qui se mange. Le bain reste dans les étapes ; la ligne pesée est de 80 g, l'ordre de grandeur de ce qu'une panure de seize croquettes retient, soit 10 g par part.\n\nCE QU'ON N'ÉCRIT PAS : la sauce soja et le vinaigre balsamique de comeztier, qui relèvent l'umami mais n'appartiennent ni au tapa ni à la fiche parente ; les lascas de parmesan et la confiture de tomate que la même sert à côté ; l'ail d'okdiario, seul sur sa ligne ; le persil de la même ; le poivre blanc de paulasapron, qui est un choix de couleur dans une béchamel claire. Tous en variantes. Le vinaigre est le seul qu'on écarte avec insistance : une cuillerée dans 900 ml de masa se sent, et aucune autre page ne la soutient.\n\nDURÉES ET REPOS. Trois pages chiffrent la préparation, 30, 60 et 10 minutes, médiane 30 ; on écrit 40, parce que hacher 370 g de champignons et rouler seize croquettes prend le temps que le jambon ne prenait pas. Trois pages chiffrent la cuisson, 30, 10 et 30 minutes, médiane 30, qu'on écrit telle quelle. Ce qu'aucune de ces durées ne compte, et qui décide pourtant du plat, c'est le REPOS AU FROID de la masa : trois heures au minimum chez bonviveur, deux chez okdiario, vingt-quatre de préférence chez comeztier, huit au minimum chez paulasapron. Le parent écrit quatre heures ; on garde quatre heures, et les étapes disent pourquoi.",
+   "plate": {
+    "role": "side",
+    "accepts": [],
+    "reason": "Même rôle que les Croquetas de jamón : 46 g de champignons crus par part, soit une quinzaine de grammes une fois l'eau partie, dans une béchamel panée. C'est un tapa, servi en deux ou trois pièces avant le repas ou à côté d'autre chose — jamais un plat, et il ne reçoit rien lui-même."
+   },
+   "ingredients": [
+    {
+     "form": "Champignon de Paris frais",
+     "quantity": 370,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Lait entier",
+     "quantity": 700,
+     "unit": "ml",
+     "role": "béchamel",
+     "optional": false
+    },
+    {
+     "form": "Farine de blé T55",
+     "quantity": 90,
+     "unit": "g",
+     "role": "roux",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 90,
+     "unit": "g",
+     "role": "roux",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 60,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Muscade moulue",
+     "quantity": 1,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 2,
+     "unit": "u",
+     "role": "panure",
+     "optional": false
+    },
+    {
+     "form": "Chapelure de blé",
+     "quantity": 250,
+     "unit": "g",
+     "role": "panure",
+     "optional": false
+    },
+    {
+     "form": "Huile de friture",
+     "quantity": 80,
+     "unit": "g",
+     "role": "friture",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 5,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Essuyer les champignons au papier absorbant et les hacher très fin, presque en grains. Une croqueta se mange en deux bouchées et le fondant est tout ce qu'on lui demande : un morceau de champignon qui se distingue sous la dent casse cette texture, et c'est la seule raison de hacher aussi menu."
+    },
+    {
+     "n": 2,
+     "instruction": "Chauffer une poêle large à feu vif sans matière grasse, y jeter les champignons et les laisser rendre leur eau en remuant peu, six à huit minutes, jusqu'à ce que la poêle soit sèche et que les grains commencent à dorer. C'est l'étape qui décide de tout : chaque gramme d'eau qui reste ici s'ajoutera au lait et rendra la masa trop molle pour être roulée, quelle que soit la durée du repos au froid."
+    },
+    {
+     "n": 3,
+     "instruction": "Dans une casserole à fond épais, fondre le beurre à feu doux et y faire suer l'oignon haché fin cinq minutes, sans le laisser prendre couleur. Il remplace ce que le jambon apportait tout seul dans la recette d'origine — du sel, du sucre et un fond de goût — et une coloration brune ici tacherait une béchamel qui doit rester ivoire."
+    },
+    {
+     "n": 4,
+     "instruction": "Verser la farine d'un coup sur le beurre et l'oignon, et remuer sans arrêt deux bonnes minutes à feu doux. Le roux doit sentir le biscuit et non la farine crue : c'est un temps qu'on ne rattrape pas ensuite, le lait fige le goût de farine tel qu'il est au moment où on le verse."
+    },
+    {
+     "n": 5,
+     "instruction": "Retirer la casserole du feu et verser le lait froid d'un seul coup en fouettant énergiquement. Le contraste de température est le tour de main des croquetas : un roux chaud noyé de lait froid se dissout sans grumeau, là où un lait chaud sur un roux chaud prend en paquets qu'aucun fouet ne rattrape."
+    },
+    {
+     "n": 6,
+     "instruction": "Remettre sur feu moyen-doux et cuire de quinze à vingt minutes en remuant presque sans cesse avec une spatule, en raclant bien le fond et les angles. La masa est prête quand elle se décolle en bloc de la paroi et qu'un sillon tracé au milieu tient une seconde avant de se refermer. Ajouter alors les champignons, la muscade, le sel et le poivre, et poursuivre cinq minutes."
+    },
+    {
+     "n": 7,
+     "instruction": "Étaler la masa dans un plat sur deux centimètres d'épaisseur, poser un film au contact et laisser refroidir, puis réfrigérer quatre heures au minimum, une nuit de préférence. Le film touche la surface pour empêcher une peau de se former ; le froid n'est pas un repos de confort mais l'étape qui rend la masa manipulable — tiède, elle colle aux mains et ne prend aucune forme."
+    },
+    {
+     "n": 8,
+     "instruction": "Prélever la masa à la cuillère et rouler seize croquettes courtes entre les paumes légèrement humides, puis les passer une à une dans l'œuf battu en les égouttant, et les rouler dans la chapelure en pressant pour qu'elle adhère partout. Le moindre défaut d'enrobage est une fuite : la béchamel s'échappera par là dès qu'elle fondra."
+    },
+    {
+     "n": 9,
+     "instruction": "Porter un litre d'huile à 180 °C dans une casserole haute et frire quatre croquettes à la fois, deux minutes environ, jusqu'à une couleur noisette. Peu à la fois, sinon la température chute et la panure boit au lieu de saisir. Égoutter sur du papier et servir sans attendre : le cœur doit être coulant, ce qu'il cesse d'être en refroidissant."
+    }
+   ],
+   "techniques": [
+    "sauté",
+    "roux",
+    "béchamel",
+    "refroidissement",
+    "façonnage",
+    "panure",
+    "friture"
+   ],
+   "variants": [
+    "Mélange de bolets et de portobellos à la place du champignon de Paris, moitié-moitié (paulasapron)",
+    "Champignons surgelés, dont l'eau de décongélation remplace une partie du lait dans la béchamel (paulasapron)",
+    "Sauce soja et une cuillerée de vinaigre balsamique dans la masa, pour renforcer l'umami (comeztier)",
+    "Ail haché à la place de l'oignon, une gousse pour 500 ml de lait, avec du persil (okdiario)",
+    "Poivre blanc plutôt que noir, pour ne pas moucheter une béchamel claire (paulasapron)",
+    "Masa passée au mixeur plongeant avant le repos, pour une texture entièrement lisse (comeztier)",
+    "Passage à la farine avant l'œuf et la chapelure, soit une panure en trois temps (comeztier, paulasapron)",
+    "Servies avec une confiture de tomate et des copeaux de fromage affiné (comeztier)"
+   ],
+   "sensory": {
+    "profile": "savory_crisp",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 1,
+     "umami": 4,
+     "heat": 1,
+     "pungency": 1,
+     "richness": 4,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "champignon",
+     "beurre",
+     "muscade"
+    ],
+    "aroma_families": [
+     "champignon",
+     "beurre",
+     "béchamel",
+     "noix_muscade"
+    ],
+    "target_textures": [
+     "croûte_croustillante",
+     "cœur_très_crémeux"
+    ],
+    "signature_ingredients": [
+     "Champignon de Paris frais",
+     "Lait entier",
+     "Farine de blé T55",
+     "Beurre doux"
+    ],
+    "identity_guardrails": [
+     "Les champignons sont poêlés à sec jusqu'à évaporation complète avant d'entrer dans la béchamel : sinon la masa ne prend jamais",
+     "La béchamel est très épaisse et refroidie quatre heures au minimum — c'est elle, et non la friture, qui fait la croqueta",
+     "Le cœur doit rester coulant à la sortie de l'huile : une croqueta ferme à cœur est une croqueta ratée",
+     "Panure et friture en bain profond, jamais au four : la croûte fine est ce qui tient le cœur liquide"
+    ]
+   },
+   "conservation": "La masa crue se garde 24 heures au réfrigérateur, filmée au contact, et gagne à y passer la nuit : elle se roule beaucoup mieux le lendemain. Les croquettes panées et non frites se congèlent 2 mois à plat sur une plaque avant d'être mises en sac, et se plongent dans l'huile encore gelées, en comptant une minute de plus — c'est ce que fait une des pages du dossier et c'est aussi ce que dit la fiche parente. Frites, elles se gardent 2 jours au réfrigérateur et se réchauffent dix minutes à 180 °C, mais le cœur n'a plus jamais tout à fait le même coulant : la béchamel a raffermi une première fois.",
+   "allergens": [
+    "gluten",
+    "lait",
+    "œuf"
+   ]
+  },
+  {
+   "code": "JUM-103",
+   "family": "Omelette aux pommes de terre et oignons",
+   "derived_from": "SRC-016",
+   "cuisine_origin": "France",
+   "identity_level": "domestic_standard",
+   "category": "omelette",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 12,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:omelette-aux-pommes-de-terre-et-oignons",
+    "chefsimon.com",
+    "marmiton.org",
+    "750g.com"
+   ],
+   "description_courte": "L'omelette paysanne sans son lard : pommes de terre rissolées, oignons blondis, œufs roulés encore crémeux et ciboulette ciselée.",
+   "canonical_arbitration": "Six pages sur trois sites, deux retenues par l'audit sur deux sites distincts et quatre écartées — toutes pour la même raison, l'absence du mot « oignons » dans leur titre. Il faut donc lire ce dossier en deux temps, et le dire.\n\nPREMIER TEMPS, LE PLAT LUI-MÊME. Les deux pages retenues sont l'« Omelette aux pommes de terre et oignons » de chefsimon, qui est le jumeau mot pour mot — six œufs, trois pommes de terre, deux oignons, du beurre, du persil, ni lard ni jambon — et l'« Omelette à l'ancienne (oignon-lardon-pomme de terre) » de marmiton, qui est le parent : même structure, plus 100 g de lardons. Deux sites, deux titres, et entre eux exactement la différence que ce lot doit écrire. Une troisième page, l'« Omelette aux deux pommes de terre à l'espagnole » de chefsimon, écartée sur le titre, est elle aussi sans viande et porte deux oignons et deux échalotes pour huit parts.\n\nDEUXIÈME TEMPS, LES ÉCARTÉES. Les trois dernières — deux pages de 750g, une de marmiton — sont des omelettes de pommes de terre sans oignon et sans viande, au gruyère ou au comté. Elles n'attestent pas l'oignon, mais elles attestent quelque chose que le jumeau doit pouvoir montrer : qu'une omelette de pommes de terre SANS lard est un plat publié sous ce nom sur les trois sites de la chaîne, et non une privation qu'on aurait inventée pour Zoé. C'est à ce titre, et à ce titre seul, qu'elles entrent dans les rapports d'œufs et de pommes de terre.\n\nCE QUE L'ÉCHANGE TOUCHE. Il ne remplace rien : il RETIRE les 100 g de lardons, et les œufs restent la protéine du plat. C'est le seul jumeau de ce lot dont la liste est plus courte que celle de son parent, et il faut regarder ce que le retrait emporte avec lui — le gras de cuisson, le sel, et la fumée. Le beurre du parent (30 g) reste et suffit, parce que les pommes de terre sont déjà cuites et n'ont plus qu'à colorer. Le sel, en revanche, cesse d'être un accessoire : la fiche parente le porte en optionnel avec la mention que les lardons salent déjà, et cette phrase n'a plus de sens ici. Il reste néanmoins optionnel, comme chez le parent, parce que la quantité juste dépend du fromage ou du pain qu'on sert à côté ; les étapes disent de saler franchement.\n\nLA SEULE LIGNE REJUGÉE EST L'OIGNON, et c'est une décision, pas une médiane subie. Le parent en met 100 g pour quatre. Les deux pages retenues en mettent chacune deux, soit 200 g pour quatre parts, et la troisième page sans viande deux pour huit. On écrit 200 g. La raison est dans l'assiette : l'oignon devient le seul aromate du plat une fois le lard parti, et la moitié de ce que les deux pages du dossier accordent au même plat n'y suffirait pas.\n\nCE QUI EST HÉRITÉ, avec le contrôle qu'on a fait dessus. Les 300 g d'œufs du parent, soit 75 g par personne : les six pages donnent 75, 75, 100, 150, 33 et 100 g par personne, médiane 87,5 g par personne. Le parent est dans la fourchette et l'échange ne touche pas les œufs — on ne rejuge pas, et l'écart avec la médiane est dit plutôt que corrigé en silence. Les 400 g de pommes de terre cuites, soit 100 g par personne : les six pages donnent 112, 112, 100, 300, 75 et 75 g par personne, médiane 106 g par personne — le parent est encore dans la fourchette. La ciboulette (14 g) et le beurre (30 g) suivent la même règle ; le beurre est d'ailleurs corroboré à 20 g pour quatre par la page chefsimon et à 45 g pour six par la page marmiton au comté.\n\nCE QU'ON N'ÉCRIT PAS. L'ail en semoule de la page chefsimon et l'ail de la page marmiton : le catalogue ne porte pas d'ail en poudre, et remplacer une semoule par de l'ail cru changerait le goût du plat sans qu'aucune source ne le demande. Le persil des deux mêmes pages : le parent finit à la ciboulette, l'échange ne la touche pas, et deux herbes fraîches feraient double emploi. La crème et la moutarde à l'ancienne de la page marmiton, le gruyère et le comté de trois pages, le poivron et le pimenton de la page espagnole, la farine et les blancs montés en neige de la page 750g. Tous en variantes, avec la page qui les porte.\n\nDURÉES. Six lignes de préparation : 10, 20, 60, 5, 10 et 20 minutes, médiane 15, qu'on écrit — c'est un peu plus que les 10 minutes du parent, et c'est l'oignon doublé qui les prend. Six lignes de cuisson, de 0 à 30 minutes, médiane 7,5 : on garde les 12 minutes du parent, parce que les médianes basses viennent de pages qui partent de pommes de terre déjà rissolées et ne comptent que l'omelette. Le retrait des lardons fait gagner les trois minutes qu'ils passaient à fondre, et rien de plus.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch",
+     "vegetables"
+    ],
+    "reason": "Même rôle que l'Omelette paysanne, et la question mérite d'être posée puisque le plat porte 100 g de pomme de terre par personne : c'est une garniture d'omelette, pas une portion de féculent, et 275 kcal par part ne font pas un dîner. Elle appelle une salade verte et du pain, exactement comme sa base — le retrait des lardons ne change pas ce qu'il manque à l'assiette, il en retire seulement la protéine animale."
+   },
+   "ingredients": [
+    {
+     "form": "Œuf cru",
+     "quantity": 300,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Pomme de terre cuite",
+     "quantity": 400,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 200,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 30,
+     "unit": "g",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Ciboulette fraîche",
+     "quantity": 14,
+     "unit": "g",
+     "role": "finition",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": true
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": true
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Détailler les pommes de terre cuites et refroidies en rondelles d'un demi-centimètre, et émincer les oignons en fines lamelles. Des pommes de terre cuites la veille se coupent net, alors que des pommes de terre encore tièdes s'écrasent sous le couteau et rendront de la fécule qui collera à la poêle."
+    },
+    {
+     "n": 2,
+     "instruction": "Faire fondre la moitié du beurre dans une poêle de vingt-huit centimètres à feu moyen et y laisser blondir les oignons huit à dix minutes, en remuant de temps à autre. Ils remplacent à eux seuls le fond de goût que les lardons donnaient à la recette d'origine, et ce fond ne s'obtient qu'en leur laissant le temps de se sucrer — trois minutes à feu vif ne donneraient que de l'oignon cru et chaud."
+    },
+    {
+     "n": 3,
+     "instruction": "Pousser les oignons sur un côté, ajouter le reste du beurre et poser les rondelles de pomme de terre à plat dans la poêle. Les laisser prendre couleur quatre à cinq minutes d'un côté avant de les retourner, sans les remuer entre-temps : c'est le contact immobile qui fait la croûte, et une spatule impatiente donne une purée dorée."
+    },
+    {
+     "n": 4,
+     "instruction": "Pendant ce temps, battre les œufs à la fourchette une quinzaine de secondes seulement, jusqu'à ce que blancs et jaunes soient tout juste mêlés. Saler franchement — plus franchement que dans la version au lard, où le lardon apportait la moitié du sel — poivrer, et incorporer la ciboulette ciselée."
+    },
+    {
+     "n": 5,
+     "instruction": "Mélanger oignons et pommes de terre au centre de la poêle bien chaude, verser les œufs d'un seul coup et baisser aussitôt le feu. Ramener les bords pris vers le centre à la spatule pendant les vingt premières secondes, en inclinant la poêle pour que le cru prenne leur place, puis cesser d'y toucher."
+    },
+    {
+     "n": 6,
+     "instruction": "Retirer du feu quand le dessus est encore brillant et crémeux, et faire glisser l'omelette sur un plat en la roulant. La chaleur retenue dans la masse finit la cuisson pendant qu'on porte le plat à table ; attendre qu'elle soit prise dans la poêle donne une omelette sèche, et c'est la faute la plus courante sur ce plat."
+    }
+   ],
+   "techniques": [
+    "saisie",
+    "rissolage",
+    "omelette roulée"
+   ],
+   "variants": [
+    "Version marmiton.org à l'ancienne : ajouter 100 g de lardons aux oignons, une cuillerée de moutarde à l'ancienne et 10 cl de crème semi-épaisse aux œufs, et parsemer de gruyère — c'est la recette parente, lardons compris",
+    "Ail en semoule ou ail frais avec les pommes de terre, et persil à la place de la ciboulette (chefsimon.com, marmiton.org)",
+    "Comté en fines lamelles ajouté aux œufs battus, 150 g pour six parts (marmiton.org)",
+    "Gruyère râpé sur les pommes de terre avant de verser les œufs, 120 g pour quatre parts (750g.com)",
+    "Version espagnole plate : poivrons rouges et tomates concassées étuvés avec les oignons, pimenton fumé, cuisson terminée au four à 150 °C et omelette retournée sur assiette (chefsimon.com)",
+    "Version allégée : pommes de terre râpées crues, deux cuillerées de farine, du lait et les blancs montés en neige incorporés en dernier (750g.com)"
+   ],
+   "sensory": {
+    "profile": "creamy_savory",
+    "scores": {
+     "sweet": 1,
+     "salty": 2,
+     "acidic": 0,
+     "bitter": 0,
+     "umami": 2,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 3,
+     "freshness": 2,
+     "intensity": 2
+    },
+    "dominant_flavors": [
+     "œuf",
+     "oignon fondu",
+     "ciboulette"
+    ],
+    "aroma_families": [
+     "œuf cuit",
+     "alliacé frais",
+     "pomme de terre rissolée",
+     "beurre"
+    ],
+    "target_textures": [
+     "moelleux",
+     "baveux à cœur",
+     "rondelles dorées"
+    ],
+    "signature_ingredients": [
+     "Œuf cru",
+     "Pomme de terre cuite",
+     "Oignon jaune cru"
+    ],
+    "identity_guardrails": [
+     "Les pommes de terre colorent à part avant d'être noyées dans l'œuf : versées crues ou molles, elles rendent leur eau dans l'omelette",
+     "L'oignon est doublé par rapport à la version au lard, parce qu'il en devient le seul aromate — le réduire donne une omelette de pommes de terre nature",
+     "L'omelette quitte le feu encore crémeuse au centre : trop cuite, elle devient sèche et caoutchouteuse",
+     "Il faut saler plus qu'à la paysanne : sans lardons, personne n'apporte le sel à sa place"
+    ]
+   },
+   "conservation": "Se mange dans la minute qui suit la cuisson, quand le cœur est encore crémeux — c'est vrai de toutes les omelettes et le retrait des lardons n'y change rien. À défaut, elle se garde 24 heures au réfrigérateur entre 0 et 4 °C dans une boîte hermétique, et se mange froide, coupée en lanières ou dans un sandwich ; réchauffée, elle durcit. Aucune page du dossier ne parle de congélation, et ce que fait physiquement un œuf coagulé est connu : il rend son eau à la décongélation et la texture devient spongieuse et caoutchouteuse. Ne se congèle donc pas, et c'est un constat de matière plutôt qu'une lecture du dossier.",
+   "allergens": [
+    "œuf",
+    "lait"
+   ]
+  },
+  {
+   "code": "JUM-104",
+   "family": "Croque-monsieur végétarien",
+   "derived_from": "FR-023",
+   "cuisine_origin": "France — cuisine de café parisienne",
+   "identity_level": "domestic_standard",
+   "category": "sandwich chaud gratiné",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 25,
+   "cook_minutes": 15,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:croque-monsieur-vegetarien",
+    "quiveutdufromage.com",
+    "referentiel-restauration-collective.fr",
+    "marmiton.org",
+    "supertoinette.com",
+    "chefsimon.com"
+   ],
+   "description_courte": "Le croque-monsieur dont la tranche de jambon cède la place à des tomates égouttées et des champignons poêlés : même pain de mie, même béchamel, même gruyère gratiné.",
+   "canonical_arbitration": "Huit pages, six retenues sur cinq sites distincts, deux écartées — un croque au jambon cru de chefsimon et un croque au jambon de marmiton, dont les titres ne portent pas le mot « végétarien » et dont le contenu explique pourquoi : ce sont des croques carnés aux champignons, gardés au dossier parce qu'ils chiffrent le champignon dans un croque, écartés de tout le reste.\n\nCE QUE LA FICHE PARENTE INTERDIT, ET COMMENT LE DOSSIER RÉPOND. Un garde-fou de FR-023 dit que « retirer le jambon donne un croque au fromage, qui porte un autre nom ». C'est juste, et c'est exactement la raison pour laquelle ce jumeau n'est pas un croque sans jambon mais un croque à autre chose : six pages sur cinq sites publient un « croque-monsieur végétarien » où une garniture de légumes prend la place de la tranche. Le nom existe, il est publié, et il n'est pas fabriqué ici.\n\nCE QUE LE DOSSIER MONTRE, ET CE QU'IL NE MONTRE PAS. Il est plus divers que tous les autres de ce lot, et il faut le dire franchement : la garniture change à chaque page. Tomate dans trois pages (marmiton, supertoinette, referentiel), champignon dans trois (marmiton, quiveutdufromage, referentiel), épinard dans trois (chefsimon, quiveutdufromage, referentiel), tofu fumé dans une (marmiton), chèvre et ricotta dans une (chefsimon). Une seule page porte à la fois la tomate et le champignon, celle du référentiel de restauration collective — mais c'est la seule qui pèse chaque ligne, et c'est le couple que deux autres pages soutiennent chacune d'un côté. On écrit donc tomate ET champignon, et l'épinard passe en variante bien qu'il soit tout aussi attesté : il faut choisir, parce qu'empiler trois légumes entre deux tranches de pain fait un sandwich qui ne se ferme plus.\n\nUNE PRÉCAUTION SUR LE DÉCOMPTE. Les pages de marmiton et de supertoinette sont visiblement la MÊME rédaction : mêmes tomates en dés poêlées à l'huile d'olive, même mélange crème fraîche et fromage râpé étalé sur le dessus, même four à 200 °C, mêmes trois croques. Elles comptent pour deux sites au sens de l'audit, elles ne valent qu'une lecture au sens du fond, et aucune des quantités retenues ici ne repose sur elles seules.\n\nLA BÉCHAMEL EST INTACTE, et c'est la plus belle corroboration du dossier. Le parent écrit 25 g de beurre, 25 g de farine et 250 ml de lait pour quatre croques ; la page du référentiel écrit, mot pour mot en quantités, 25 g de beurre, 25 g de farine et 250 ml de lait. La page de quiveutdufromage monte 20 g, 20 g et 250 ml pour deux croques seulement, soit le double au croque : elle est notée en variante, pas retenue — un croque deux fois plus sauceux détrempe sa mie, ce que la même page prend d'ailleurs soin de conjurer en grillant son pain. La muscade est dans les deux pages qui font une béchamel, comme chez le parent : 0,5 g.\n\nLA TOMATE remplace la tranche de jambon, et c'est la ligne à calculer. Trois pages la portent : deux tomates pour trois croques chez marmiton, deux pour trois chez supertoinette, 90 g par personne au référentiel. À 120 g la tomate, cela fait 80, 80 et 90 g par croque : médiane 80 g par croque, soit 320 g pour quatre. C'est beaucoup pour un sandwich, et c'est pourquoi les étapes reprennent l'instruction du référentiel — émincer et laisser égoutter. Une tomate non égouttée rend dans la mie tout ce qu'elle contient.\n\nLE CHAMPIGNON complète la garniture. Trois pages le chiffrent : cinq champignons pour quatre croques chez marmiton, soit environ 25 g par croque, 200 g pour deux croques chez quiveutdufromage, soit 100 g, et 60 g par personne au référentiel. Médiane 60 g par croque, soit 240 g pour quatre. Poêlés à sec, ils rendront les deux tiers de ce poids en eau, et c'est très exactement l'intention.\n\nCE QUI EST HÉRITÉ. Le pain de mie (8 tranches) et le gruyère râpé (160 g) ne bougent pas. Sur le fromage, le dossier tire vers le bas — 23 g par croque chez marmiton et supertoinette, 37 g chez quiveutdufromage — et le parent en met 40 : on garde le parent, parce que l'échange de protéine ne touche pas le fromage et que c'est lui qui gratine. L'huile d'olive (15 ml) est la seule ligne ajoutée hors garniture : trois pages sur trois sites en mettent pour cuire les légumes, et le parent n'en avait pas besoin puisqu'il ne cuisait rien.\n\nCE QU'ON N'ÉCRIT PAS : les épinards de trois pages, le tofu fumé de marmiton, le chèvre frais et la ricotta de chefsimon, les pignons de pin et les tomates séchées de la même, la moutarde de Dijon de quiveutdufromage, l'œuf au plat posé sur le dessus par marmiton — qui ferait d'ailleurs un croque-madame et porte donc un autre nom au corpus. La crème fraîche épaisse mélangée au fromage à la place de la béchamel, chez marmiton et supertoinette, est le seul écart structurant du dossier : il est repris en variante, comme la fiche parente le fait déjà pour la même lecture.\n\nCUISSON ET DURÉES. Deux pages passent le croque au four à 200 °C, deux le cuisent à la poêle six minutes par face. On garde le four du parent, parce que le gratinage est ce qui distingue un croque-monsieur d'un sandwich grillé. Préparation : les six lignes donnent 20, 15, 20, 15, 25 et 20 minutes, médiane 20 ; on écrit 25, parce que les tomates doivent être émincées et égouttées et les champignons poêlés avant tout montage — le jambon, lui, se posait. Cuisson : les lignes donnent 10, 4, 10, 10, 12 et 15 minutes ; on garde les 15 minutes du parent, four et gril compris.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "vegetables"
+    ],
+    "reason": "Même rôle que le Croque-monsieur : le croque porte son féculent (le pain) et sa protéine (le fromage et le lait de la béchamel), et ce qui lui manque reste le légume cru — en brasserie il arrive avec une salade verte, et deux pages du dossier le servent ainsi. La garniture de tomate et de champignon est cuite et intégrée au montage : elle ne comble pas ce vide, elle remplace le jambon."
+   },
+   "ingredients": [
+    {
+     "form": "Pain de mie",
+     "quantity": 8,
+     "unit": "tranche",
+     "role": "base",
+     "optional": false
+    },
+    {
+     "form": "Tomate fraîche mûre",
+     "quantity": 320,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Champignon de Paris frais",
+     "quantity": 240,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Gruyère râpé",
+     "quantity": 160,
+     "unit": "g",
+     "role": "fromage",
+     "optional": false
+    },
+    {
+     "form": "Lait entier",
+     "quantity": 250,
+     "unit": "ml",
+     "role": "béchamel",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 25,
+     "unit": "g",
+     "role": "béchamel",
+     "optional": false
+    },
+    {
+     "form": "Farine de blé T55",
+     "quantity": 25,
+     "unit": "g",
+     "role": "béchamel",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 15,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Muscade moulue",
+     "quantity": 0.5,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 3,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Couper les tomates en tranches de cinq millimètres, les ranger sur une grille ou sur un papier absorbant, les saler légèrement et les laisser rendre leur eau au moins une demi-heure — deux heures valent mieux. C'est le geste qui décide de tout, parce qu'une tomate contient plus de quatre-vingt-dix pour cent d'eau et que la mie du pain de mie est une éponge : la tranche de jambon qu'elle remplace, elle, n'apportait rien."
+    },
+    {
+     "n": 2,
+     "instruction": "Essuyer les champignons au papier humide, les émincer en lamelles, et les faire sauter à feu vif dans l'huile d'olive cinq à six minutes, jusqu'à ce que la poêle soit sèche et qu'ils commencent à dorer. Poivrer et réserver. Le même principe que pour la tomate : ce qu'on ne fait pas évaporer ici s'évaporera dans le pain, et le croque s'affaissera."
+    },
+    {
+     "n": 3,
+     "instruction": "Faire fondre le beurre à feu doux dans une petite casserole, verser la farine d'un coup et remuer une bonne minute sans laisser prendre couleur, puis ajouter le lait en trois fois en fouettant jusqu'à ce que la sauce redevienne lisse à chaque ajout. Laisser épaissir trois à quatre minutes, saler, poivrer et râper la muscade. La béchamel doit napper le dos d'une cuillère et retomber en ruban lent : trop liquide, elle détrempe ce que le premier geste vient d'assécher."
+    },
+    {
+     "n": 4,
+     "instruction": "Préchauffer le four à 200 °C et passer les tranches de pain au grille-pain sur un réglage doux, une minute à peine, pour les raidir sans les colorer. Ce pain-là doit affronter deux légumes cuits là où il n'affrontait qu'une tranche de jambon : la croûte légère qu'on lui donne ici est sa seule protection."
+    },
+    {
+     "n": 5,
+     "instruction": "Étaler une cuillerée de béchamel sur la face intérieure de chaque tranche, répartir sur quatre d'entre elles les tranches de tomate épongées puis les champignons, couvrir de la moitié du gruyère et refermer en pressant légèrement de la paume. La béchamel des deux faces fait un joint qui isole la mie de l'humidité restante — c'est pour cela qu'on en met dessous aussi, et pas seulement dessus."
+    },
+    {
+     "n": 6,
+     "instruction": "Napper le dessus du reste de béchamel, couvrir du gruyère restant et enfourner douze minutes, puis passer deux à trois minutes sous le gril jusqu'à ce que la surface soit tachetée de brun. Servir immédiatement : la croûte gratinée retombe en quelques minutes, et l'eau que les légumes n'ont pas rendue au four finira par gagner la mie."
+    }
+   ],
+   "techniques": [
+    "sauté",
+    "roux blanc",
+    "béchamel",
+    "dégorgement",
+    "montage en sandwich",
+    "cuisson au four",
+    "gratinage"
+   ],
+   "variants": [
+    "Épinards frais tombés à la poêle ou blanchis puis bien pressés, 100 g pour deux croques, seuls ou avec les champignons (quiveutdufromage, referentiel-restauration-collective, chefsimon)",
+    "Crème fraîche épaisse mélangée au fromage râpé à la place de la béchamel, étalée dessus et dedans (marmiton, supertoinette)",
+    "Tofu fumé émincé et poêlé avec des oignons, à la place de la tomate (marmiton)",
+    "Chèvre frais et ricotta battus avec de la crème liquide, avec pignons de pin et tomates séchées (chefsimon)",
+    "Cuisson à la poêle plutôt qu'au four, six minutes par face à feu moyen, les faces extérieures beurrées (quiveutdufromage, referentiel-restauration-collective)",
+    "Béchamel doublée, 20 g de beurre, 20 g de farine et 250 ml de lait pour deux croques seulement, relevée d'une cuillerée de moutarde de Dijon (quiveutdufromage)",
+    "Emmental râpé, seul ou moitié-moitié avec le gruyère (referentiel-restauration-collective, chefsimon)",
+    "Œuf au plat posé sur le croque à la sortie du four (marmiton) — mais le corpus appelle cela un croque-madame, et c'est une autre fiche"
+   ],
+   "sensory": {
+    "profile": "creamy_savory",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 2,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 4,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "fromage_fondu",
+     "champignon rôti",
+     "tomate cuite",
+     "muscade"
+    ],
+    "aroma_families": [
+     "beurre",
+     "gruyère",
+     "pain_grillé",
+     "champignon",
+     "muscade"
+    ],
+    "target_textures": [
+     "croûte_gratinée",
+     "mie_moelleuse",
+     "cœur_fondant"
+    ],
+    "signature_ingredients": [
+     "Pain de mie",
+     "Gruyère râpé",
+     "Tomate fraîche mûre",
+     "Champignon de Paris frais"
+    ],
+    "identity_guardrails": [
+     "La tomate s'égoutte et le champignon se poêle à sec avant le montage : c'est la seule différence de gestes avec la base carnée, et c'est elle qui empêche la mie de boire",
+     "Sans pain de mie, ce n'est plus un croque-monsieur — la règle de la fiche parente vaut ici mot pour mot",
+     "La béchamel nappe le dessus et l'intérieur : réduite à un filet de lait, le croque devient un toast aux légumes",
+     "Le gratinage au four est ce qui sépare le croque-monsieur du sandwich grillé à la poêle",
+     "Une garniture, pas trois : empiler tomate, champignon et épinard donne un sandwich qui ne se ferme plus"
+    ]
+   },
+   "conservation": "Se mange en sortant du four, comme sa base : la croûte gratinée retombe en quelques minutes et la mie finit par boire la sauce — plus vite encore ici, parce que la garniture est humide là où le jambon était sec. Les croques montés crus se gardent 24 heures au réfrigérateur, à plat et sous film, à condition que les tomates aient été bien égouttées, et se cuisent directement à la sortie du froid en comptant cinq minutes de plus. La béchamel seule tient 3 jours au frais, filmée au contact, et se détend au fouet avec une cuillerée de lait tiède. Ne pas congeler un croque cuit : le pain rend son eau au réchauffage et la mie devient spongieuse — et la tomate aggrave ce défaut au lieu de l'atténuer.",
+   "allergens": [
+    "gluten",
+    "lait"
+   ]
+  }
+ ]
+}
