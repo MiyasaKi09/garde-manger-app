@@ -1,0 +1,97 @@
+{
+  "dish": "Tartiflette végétarienne",
+  "slug": "tartiflette-vegetarienne",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tarniflette-ou-tartiflette-vegetarienne_84840.aspx",
+      "site": "marmiton.org",
+      "nom": "Tarniflette (ou tartiflette végétarienne) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "12 pommes de terre moyennes cuites",
+        "1 bloc de tofu (environ 400 g)",
+        "de crème (ou 1 brique de crème de soja)",
+        "20 cl d'eau très chaude avec 1 cube de bouillon de légumes",
+        "1 oignon",
+        "10 cl de vin blanc sec de Savoie",
+        "sauce soja (selon goût)",
+        "1 reblochon au lait cru"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 604,
+        "sha256": "d1fbe89b63128041"
+      },
+      "sha256_page": "93fec9bb9835d65d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tartiflette-vegetarienne_392553.aspx",
+      "site": "marmiton.org",
+      "nom": "Tartiflette végétarienne : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "2 oignons rouges",
+        "320 g de tomates séchées",
+        "500 g de crème fraîche épaisse",
+        "500 g de pommes de terre",
+        "1 reblochon",
+        "1 noisette de beurre",
+        "20 g de sucre de canne"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1078,
+        "sha256": "c0ff74f70877779e"
+      },
+      "sha256_page": "63bfdf415c2c595f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/stella-cuisine/recettes/tartiflette-vegetarienne-a-la-courge-butternut",
+      "site": "chefsimon.com",
+      "nom": "Tartiflette végétarienne à la courge butternut",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "1 courge butternut",
+        "1 fromage pour Tartiflette (RichesMonts)",
+        "1 cuillère à café de muscade ( en poudre)",
+        "6 cuillères à café de vin blanc (de cuisine)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 203,
+        "sha256": "7a9309e0954f2e79"
+      },
+      "sha256_page": "d3992f561cebe2c3"
+    },
+    {
+      "url": "https://www.750g.com/tartiflette-au-tofu-fume-r90804.htm",
+      "site": "750g.com",
+      "nom": "Tartiflette au tofu fumé",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H30M",
+      "ingredients": [
+        "1 reblochon",
+        "20 cl de crème liquide",
+        "1 oignon",
+        "20 cl de vin blanc sec",
+        "200 g de tofu fumé",
+        "1,2 kg de pomme de terre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1097,
+        "sha256": "5b75c33f35ad33fc"
+      },
+      "sha256_page": "9a67ee66fdc50b79"
+    }
+  ]
+}

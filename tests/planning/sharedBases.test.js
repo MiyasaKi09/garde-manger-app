@@ -47,6 +47,9 @@ const makeBaseRecipe = (code = 'SRC-BASE', overrides = {}) => ({
   techniques: [],
   exactIngredients: [{ name: 'Tomate crue', formNormalized: 'tomate crue', grams: 800, optional: false, category: 'legumes' }],
   nutritionPerServing: { kcal: 90, proteinG: 3, carbsG: 12, fatG: 3, fiberG: 3 },
+  // Garde DÉCLARÉE de la base (72 h) : sans elle, la base n'entre pas au
+  // catalogue — plus jamais trois jours par défaut (chantier C1).
+  conservationProfile: { fridgeHours: 72, eatImmediately: false, freezable: null, freezerMonths: null, serveCold: null, source: 'parsed' },
   ...overrides,
 })
 
@@ -142,6 +145,8 @@ describe('sharedBases — le catalogue des bases', () => {
   it('respecte une durée de conservation DÉCLARÉE, sans jamais en deviner une', () => {
     const catalog = buildSharedBaseCatalog([], [makeBaseRecipe('SRC-BASE', { shelfLifeDays: 6 })])
     expect(catalog.get('SRC-BASE').shelfLifeDays).toBe(6)
+    // Rien de déclaré — ni `shelfLifeDays`, ni profil : pas de base partagée.
+    expect(buildSharedBaseCatalog([], [makeBaseRecipe('SRC-MUETTE', { conservationProfile: null })]).size).toBe(0)
   })
 })
 

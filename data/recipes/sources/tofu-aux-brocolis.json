@@ -1,0 +1,120 @@
+{
+  "dish": "Tofu aux brocolis",
+  "slug": "tofu-aux-brocolis",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_saute-de-tofu-au-brocoli_29969.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauté de tofu au brocoli : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "250 g de tofu (je fais mariner le mien dans une sauce téryaki, mais ce n'est pas obligatoire)",
+        "250 g de brocolis",
+        "sauce soja",
+        "huile",
+        "maïs",
+        "carotte",
+        "germes de soja",
+        "haricot",
+        "céleri",
+        "châtaigne d'eau",
+        "oignon",
+        "échalote"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 347,
+        "sha256": "c17a34e96bd06e91"
+      },
+      "sha256_page": "01cc35538f7c3625"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_brocolis-tofu_172384.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin brocoli-tofu : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "1 brocoli",
+        "20 cl de crème \" soja",
+        "2 cuillères à soupe de maïzena",
+        "300 g de tofu au champignon ou fumé (selon les goûts)",
+        "2 cuillères à soupe de levure maltée",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 472,
+        "sha256": "617f504d9298a3ee"
+      },
+      "sha256_page": "2051c89549603327"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/del-s-cooking-twist/recettes/saute-asiatique-de-tofu-et-brocoli",
+      "site": "chefsimon.com",
+      "nom": "Sauté asiatique de tofu et brocoli",
+      "portions": "4 personnes",
+      "duree_preparation": "PT01H00M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "280g de riz blanc",
+        "400g de tofu ferme",
+        "1 cuil. à soupe d'huile d'olive",
+        "1 brocoli, coupé en fleurets",
+        "6 cuil. à soupe de sauce soja",
+        "2 cuil. à soupe de beurre de cacahuète",
+        "1 cuil. à café de gingembre frais, râpé",
+        "1 cuil. à soupe de sirop d'agave ou d'érable*",
+        "2 cuil. à café de vinaigre de riz",
+        "2 cuil. à café d'huile de sésame",
+        "2 gousses d'ail, râpées",
+        "1 cuil. à café de sauce chinoise piquante",
+        "1/4 cuil. à café de piments de cayenne",
+        "Poivre noir",
+        "Des oignons de printemps, coupés en lamelles",
+        "Des graines de sésame"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "fbeef885a3e26496"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/madame-potiron/recettes/nouilles-sautees-au-brocoli-et-tofu",
+      "site": "chefsimon.com",
+      "nom": "Nouilles sautées au brocoli et tofu",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 poireau",
+        "1 carotte",
+        "200 gr de brocoli",
+        "150 gr de nouilles aux œufs",
+        "200 gr de tofu mariné",
+        "2 gousses d'ail",
+        "1 petit morceau de gingembre",
+        "1 càs d'huile de sésame",
+        "1 càs de sauce soja sucrée",
+        "1 càs de sauce sriracha",
+        "1 citron vert",
+        "sel &amp; poivre",
+        "de l'huile végétale"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 163,
+        "sha256": "674175c5053f0f76"
+      },
+      "sha256_page": "b3d00054ef2fbc22"
+    }
+  ]
+}

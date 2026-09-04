@@ -1,0 +1,672 @@
+{
+ "lot": "jumeaux-03",
+ "intention": "Troisième lot de jumeaux végétariens de même lignée (plan « planning parfait », chantier C2). Un jumeau est le même plat que sa base carnée — même structure, même féculent, même technique — dont la protéine animale est remplacée par une protéine végétale que les sources attestent ; « derived_from » porte le code du parent, ce qui en fait, pour le planificateur, la version végétarienne du même plat. Cinq jumeaux visés, trois écrits, deux refusés : les deux tajines de pois chiches n'ont, sur aucun site lisible, la structure de leur parent, et l'audit l'a dit avant nous. Les codes JUM-031 à JUM-033 sont numérotés par lot (lot 3, rang 1 à 3) pour ne pas entrer en collision avec un lot de jumeaux écrit en parallèle. Toutes les quantités viennent des dossiers de data/recipes/sources/, relus ligne à ligne ; le tableau de synthèse a été consulté et contredit là où il rapprochait à faux (une sauce soja lue comme une sauce poisson, des champignons frais lus surgelés). La méthode est reformulée et n'emprunte aucune prose. Aucun parent n'est modifié.",
+ "refuses": [
+  {
+   "twin_family": "Tajine de pois chiches aux pruneaux et amandes",
+   "parent": "REAL-143",
+   "reason": "Sur marmiton, chefsimon et 750g, « tajine pois chiches pruneaux », « tajine pruneaux amandes » et « tajine pois chiches » ne ramènent que des tajines d'agneau, de bœuf, de poulet ou de rognons ; « tajine végétarien pruneaux », « tajine sucré salé végétarien », « tajine patate douce pruneaux », « tajine courge pruneaux » ne ramènent rien. Hors des trois sites, cinq pages lisibles ont été relevées et auditées (nutrium.com, ici.radio-canada.ca, saveursfrance.com, 750g.com « Tajine sans viande aux patates douces et pruneaux », chefsimon.com « Tajine aux pois chiches, abricots et amandes ») : l'audit en écarte cinq sur cinq, et à raison. Quatre sont des tajines de LÉGUMES aux pruneaux — courge, patate douce, carottes, chou, petits pois, poivrons, bouillon, harissa ou ras el-hanout — sans miel, sans cannelle ni amandes pour trois d'entre elles : c'est un plat voisin de VAR-019 « Tajine de légumes », pas la structure du parent, qui tient sur un lit d'oignons fondus, des pruneaux, du miel, de la cannelle et des amandes, sans légume. La cinquième a exactement cette structure sucrée-salée — oignons, safran, gingembre, cumin, cannelle, amandes, agave — mais aux ABRICOTS SECS, et le parent dit lui-même dans ses garde-fous qu'un tajine aux abricots est un autre plat. Sept autres pages trouvées par recherche (peugeot-saveurs, aldi, fashioncooking, similiviandar, evacuisine, presquebonneamarier, mesrecettescompletes) ne portent aucun balisage Recipe ou sont inaccessibles. Le tajine de pois chiches aux pruneaux, miel et amandes n'est attesté nulle part deux fois : refusé, dossier retiré."
+  },
+  {
+   "twin_family": "Tajine de pois chiches au citron confit et aux olives",
+   "parent": "REAL-142",
+   "reason": "Sur les trois sites du README, « tajine pois chiches citron confit olives », « tajine végétarien citron confit », « tajine pois chiches citron confit », « tajine végétarien olives » ne ramènent rien ; « tajine de légumes citron confit » et « tajine pois chiches olives » ramènent un tajine d'agneau, un tajine de poulet aux pois chiches et une page chefsimon « Tajine de légumes au citron confit » — aubergine, carottes, haricots verts, fenouil, ni pois chiches ni olives. Hors des trois sites, deux pages lisibles seulement : lacerisesurlemaillot.fr « Veggie tajine d'automne » (patate douce, potimarron, carottes, ras el-hanout, pois chiches, citron confit, olives vertes) et saveursfrance.com « Tajine végétarien de courgettes, pois chiches et citron confit » (courgettes, curcuma, gingembre, safran, sans olive). L'audit écarte les trois relevées sur leur titre, et le fond confirme : une seule page au monde lisible porte à la fois pois chiches, citron confit et olives, et elle est un tajine de courge à la patate douce. Le plat n'a pas de nom stable et sa structure — pois chiches mijotés dans l'oignon, le safran, le curcuma et le gingembre, finis au citron confit et aux olives — n'est publiée deux fois nulle part. Sept autres pages (vegan-pratique, eatandhike, lescookines, fannydieteticienne, cuisine.chez-la-marmotte, cuisinede4sous, intartifletteitrust) n'ont aucun balisage Recipe exploitable. Refusé, dossier retiré."
+  }
+ ],
+ "recipes": [
+  {
+   "code": "JUM-031",
+   "family": "Boulettes de lentilles sauce tomate",
+   "derived_from": "FR-019",
+   "cuisine_origin": "France / cuisine domestique internationale",
+   "identity_level": "domestic_standard",
+   "category": "boulettes",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 6,
+   "prep_minutes": 30,
+   "cook_minutes": 50,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:boulettes-de-lentilles",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Des boulettes de lentilles vertes liées à l'œuf, à la chapelure et au parmesan, dorées puis finies dans une sauce tomate à l'oignon — le jumeau végétarien des boulettes de bœuf",
+   "canonical_arbitration": "Jumeau végétarien de FR-019 « Boulettes de bœuf sauce tomate » : même liaison à l'œuf, à la chapelure et au parmesan, même sauce tomate à l'oignon et à l'ail, mêmes boulettes dorées puis finies dans la sauce ; le bœuf haché devient de la lentille verte cuite et écrasée, et le reste ne bouge pas. Le dossier compte dix pages sur trois sites — trois de marmiton, quatre de chefsimon, trois de 750g — et l'audit en retient neuf, la dixième (marmiton, « corail express ») n'ayant que deux lignes chiffrées sur sept. Cinq autres pages, deux de chefsimon et une de 750g qui portaient précisément une sauce tomate dans leur titre, n'ont aucun balisage lisible et n'ont pas pu être relevées ; trois pages carnées — boulettes de bœuf aux lentilles, de veau, d'agneau — ont été écartées avant relevé parce qu'elles ne sont pas le plat végétarien. Il faut lire le dossier en deux familles. Sept pages font des boulettes de lentilles CUITES, liées et cuites ensuite à la poêle, au four ou au barbecue : c'est notre plat. Deux pages, marmiton « corail » et 750g « lentille corail » au boulgour, font des mercimek köftesi turques — une pâte crue de lentilles corail et de boulgour pétrie et servie froide — qui portent le même mot et ne sont pas la même préparation ; elles ne comptent dans aucune médiane et on les dit. La lentille d'abord. Quatre pages sur dix la veulent corail — dont les deux köfte, qui ne comptent pas, plus la page écartée —, trois la veulent verte, deux disent « lentilles cuites » ou « une boîte de lentilles » sans variété ; parmi les sept pages structurelles, c'est donc trois vertes, deux corail, deux sans variété. On écrit la verte, comme le parent végétal de la lignée bolognaise (JUM-001) et pour la même raison : cuite et grossièrement écrasée elle garde un grain qui est exactement le rôle du haché, quand la corail se défait en purée et demande beaucoup plus de chapelure pour tenir. La corail descend en variante. Les quantités se lisent en sec : une lentille cuite pèse deux fois et demie son poids sec. Quatre lignes sont exploitables, à 40 g par personne (marmiton, quatre tasses de lentilles cuites pour huit), 20 (chefsimon, 250 g cuites pour cinq, mais avec 200 g de carottes râpées et 130 g de son d'avoine qui font la masse), 35 (chefsimon, 265 g égouttées pour trois) et 62,5 (750g, 250 g de vertes sèches pour quatre) ; deux pages comptent sans portions et une en verres, unité sans masse, et sortent du calcul. Médiane 37,5 g par personne, on monte à 40 g, soit 240 g pour six, parce que la boulette est ici toute la protéine de l'assiette et que la page qui tire la médiane vers le bas la complète de carottes et d'avoine. La liaison ensuite, et c'est le point où le dossier confirme le parent. L'œuf est dans trois pages sur dix parmi les sept structurelles, à deux pour cinq, un pour trois et deux sans portions, soit à peu près un œuf pour trois personnes : on écrit deux œufs pour six, un de plus que le parent, parce qu'une farce de légumineuse n'a pas la myosine d'une viande hachée et tient moins bien seule. La chapelure est dans quatre pages sur dix, deux la mettant dans la farce, une roulant ses boulettes dedans, une sans dire à quoi elle sert ; une seule la pèse, 100 g pour quatre, soit 25 g par personne. On écrit 90 g pour six, quinze grammes par personne : les 60 g du parent dans la farce, et 30 g pour enrober, geste que deux pages font et qui donne à une boulette sans gras la croûte que la viande faisait d'elle-même. Le lait de la panade du parent disparaît : aucune page n'en met, et une lentille cuite apporte déjà toute l'humidité que le lait donnait à la mie. Le parmesan n'est que dans une page sur dix, 50 g pour trois personnes ; on garde les 50 g du parent, et on dit que le parmesan est fait à la présure animale — un végétarien strict le remplace par une pâte dure sans présure, ce que la recette ne juge pas. La farine est dans trois pages sur dix, en liant ou en enrobage ; elle passe en variante, la chapelure faisant le même office sans changer le parent. Sept pages sur dix mettent une échalote ou un oignon dans la farce, avec parfois de l'ail ; on ne le suit pas, parce que le parent met son oignon et son ail dans la sauce et pas dans la boulette, et qu'un oignon cru dans une farce de lentilles, déjà lâche, la fend à la cuisson. L'oignon, l'ail, la tomate et l'huile de la sauce sont donc ceux du parent — 180 g, 12 g, 900 g de tomates concassées — le dossier n'ayant qu'une page qui cuise ses boulettes dans une sauce tomate, 200 g de passata sans portions, ce qui ne permet aucune médiane. Le concentré de tomate que deux pages mettent dans la farce descend en variante. Le persil est le mot du parent, 20 g ; une page en met un bouquet. Les épices divisent le dossier sans jamais s'accorder — cumin, curry, massalé, curcuma, paprika, gingembre, chacune dans une à trois pages sur dix — et le parent n'en a pas : elles passent toutes en variantes. L'huile : le parent déclare 25 ml pour sa sauce ; une page frit ses boulettes dans dix centilitres, les autres disent un peu d'huile, deux cuillerées, un plat huilé. On écrit 45 ml, trois cuillerées : les 25 du parent pour la sauce, 20 pour dorer, parce qu'une boulette de lentilles ne rend aucun gras et ne colore que par l'huile qu'on lui donne. Sel 8 g et poivre 2 g, le poivre étant dans six pages sur dix là où le parent n'en déclarait pas. Durées : préparation, médiane 17,5 minutes des huit lignes, écrite 30 parce que les lentilles se cuisent à part et que la farce doit reposer ; cuisson, médiane 27,5 minutes des six lignes non nulles, écrite 50 comme le parent — vingt-cinq minutes de lentilles, dix de coloration, quinze de sauce.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Même assiette que le parent : 40 g de lentilles sèches et 150 g de tomate par part, la chapelure liant la boulette sans faire une ration de féculent. Il manque des pâtes, un riz ou du pain pour saucer, et c'est ce que le parent demande aussi."
+   },
+   "ingredients": [
+    {
+     "form": "Tomate concassée en conserve",
+     "quantity": 900,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Lentille verte sèche, crue",
+     "quantity": 240,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 180,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Chapelure de blé",
+     "quantity": 90,
+     "unit": "g",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Parmesan affiné",
+     "quantity": 50,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 45,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Persil frais",
+     "quantity": 20,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 12,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 8,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 2,
+     "unit": "u",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Rincer les lentilles vertes, les couvrir de trois fois leur volume d'eau froide sans sel et les cuire vingt-cinq minutes à petit frémissement, jusqu'à ce qu'elles s'écrasent sous le doigt. Elles doivent être plus cuites que pour une salade : c'est leur amidon libéré qui tiendra la boulette, et une lentille encore ferme ne lie rien. Les égoutter à fond et les laisser tiédir dans la passoire, car une farce mouillée réclame le double de chapelure."
+    },
+    {
+     "n": 2,
+     "instruction": "Écraser les lentilles tièdes à la fourchette ou au presse-purée, en s'arrêtant quand la moitié est en purée et l'autre moitié encore en grains. Ce grain est ce qui remplace le haché du parent sous la dent ; passées au mixeur, elles donneraient une pâte lisse qui fait une boulette compacte et triste."
+    },
+    {
+     "n": 3,
+     "instruction": "Ajouter les œufs battus, 60 g de chapelure, le parmesan râpé, le persil ciselé, la moitié du sel et le poivre, et mélanger du bout des doigts jusqu'à ce que la masse se tienne quand on la presse. Laisser reposer vingt minutes au frais : la chapelure boit l'humidité des lentilles pendant ce temps, et c'est ce repos, plus que l'œuf, qui empêche les boulettes de s'ouvrir à la poêle."
+    },
+    {
+     "n": 4,
+     "instruction": "Pendant le repos, lancer la sauce : faire fondre l'oignon émincé six à huit minutes dans 25 ml d'huile à feu moyen sans le colorer, ajouter l'ail haché une minute, puis les tomates concassées et le reste du sel. Laisser mijoter quinze minutes à découvert, à petits bouillons, jusqu'à ce que la sauce épaississe un peu — elle doit pouvoir porter les boulettes sans les noyer."
+    },
+    {
+     "n": 5,
+     "instruction": "Former à mains humides des boulettes de la taille d'une noix, 35 g environ, et les rouler dans les 30 g de chapelure restants. Compter une trentaine de boulettes pour six. L'enrobage n'est pas décoratif : une farce de lentilles ne rend aucun gras et ne croûte pas seule, et c'est cette chapelure qui, dans l'huile, lui donne la surface dorée qu'une boulette de viande fabrique d'elle-même."
+    },
+    {
+     "n": 6,
+     "instruction": "Chauffer les 20 ml d'huile restants dans une grande poêle à feu moyen-vif et y dorer les boulettes en deux fournées, deux minutes par face, en les retournant à la cuillère plutôt qu'à la pince. Ne pas chercher à les rouler sur toutes leurs faces comme des boulettes de viande : deux faces dorées suffisent, et chaque manipulation de plus est une boulette qui se fend."
+    },
+    {
+     "n": 7,
+     "instruction": "Déposer les boulettes dans la sauce, sans les remuer, et poursuivre dix minutes à couvert et à feu doux — pas les vingt du parent. La viande se raffermit dans la sauce en cuisant ; la lentille, elle, ne fait que ramollir, et dix minutes suffisent à ce que la sauce l'imprègne sans la défaire. Servir avec des pâtes, du riz ou du pain, la sauce nappée à la cuillère."
+    }
+   ],
+   "techniques": [
+    "cuisson des lentilles à l'eau non salée",
+    "écrasement partiel",
+    "farce liée",
+    "repos",
+    "façonnage",
+    "panure sèche",
+    "saisie",
+    "finition en sauce"
+   ],
+   "variants": [
+    "Aux lentilles corail, cuites en purée puis liées à la chapelure, plus fondantes et plus fragiles (marmiton, chefsimon, 750g)",
+    "Liées à la farine plutôt qu'à la chapelure, 50 g pour 250 g de lentilles, ou roulées dans la farine avant cuisson (marmiton, chefsimon)",
+    "Avec du concentré de tomate dans la farce, deux cuillerées pour quatre, qui colore et resserre la boulette (chefsimon, 750g)",
+    "Aux carottes râpées, 200 g pour cinq, et au son d'avoine à la place d'une partie de la chapelure (chefsimon)",
+    "Épicées au cumin, au curry ou au massalé et au curcuma, une cuillerée à café pour quatre (chefsimon, 750g)",
+    "Une échalote ou un oignon ciselé dans la farce, ce que sept pages font et que le parent ne fait pas (marmiton, chefsimon, 750g)",
+    "Cuites au four à 180 °C vingt minutes sur une plaque huilée plutôt qu'à la poêle, ou dix minutes au four puis passées à la poêle pour croustiller (marmiton, 750g)",
+    "En mercimek köftesi turques : lentilles corail et boulgour pétris à cru avec oignon, concentré et menthe, servis froids — un autre plat sous le même mot (marmiton, 750g)",
+    "Sans parmesan, ou avec une pâte dure sans présure animale pour un végétarien strict (750g, marmiton)"
+   ],
+   "sensory": {
+    "profile": "savory_tomato",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 3,
+     "bitter": 1,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 2,
+     "freshness": 2,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "tomate cuite",
+     "lentille",
+     "parmesan",
+     "persil"
+    ],
+    "aroma_families": [
+     "tomate_cuite",
+     "oignon_compoté",
+     "lentille",
+     "fromage affiné"
+    ],
+    "target_textures": [
+     "boulette moelleuse à cœur, croûte fine",
+     "grain de lentille sous la dent",
+     "sauce_nappante"
+    ],
+    "signature_ingredients": [
+     "Lentille verte sèche, crue",
+     "Tomate concassée en conserve",
+     "Chapelure de blé",
+     "Œuf cru"
+    ],
+    "identity_guardrails": [
+     "Les lentilles sont cuites à fond puis écrasées à moitié seulement : trop fermes elles ne lient pas, mixées elles font une pâte compacte",
+     "La farce repose vingt minutes avant façonnage — c'est la chapelure gonflée, plus que l'œuf, qui tient une boulette sans viande",
+     "Les boulettes finissent dix minutes dans la sauce, pas vingt : la lentille ne se raffermit pas comme la viande, elle ramollit",
+     "Même sauce tomate à l'oignon et à l'ail que le parent, l'allium dans la sauce et non dans la farce"
+    ]
+   },
+   "conservation": "Dans leur sauce, les boulettes se gardent 3 jours au réfrigérateur dans un récipient fermé, et elles gagnent au deuxième jour, la sauce ayant fini de les imprégner. Elles se congèlent 2 mois dans leur sauce — la lentille liée à l'œuf supporte le froid sans s'écraser davantage, et c'est la sauce qui la protège du dessèchement ; une page du dossier note d'ailleurs que ses boulettes se congèlent bien. Réchauffer à couvert et à feu doux sans remuer, les boulettes réchauffées étant plus fragiles qu'à la sortie de la poêle. Les boulettes façonnées crues se gardent 24 heures au frais sur un plateau filmé, pas plus : l'œuf et la chapelure continuent de boire et la farce se dessèche. C'est ce que dit le parent, adapté à ce qu'une farce de légumineuse fait physiquement.",
+   "allergens": [
+    "gluten",
+    "œuf",
+    "lait"
+   ]
+  },
+  {
+   "code": "JUM-032",
+   "family": "Boulettes de haricots rouges",
+   "derived_from": "RAP-017",
+   "cuisine_origin": "France / cuisine domestique internationale",
+   "identity_level": "domestic_standard",
+   "category": "boulettes",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 20,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:boulettes-de-haricots-rouges",
+    "deliacious.com",
+    "sainplementhealthy.com",
+    "blogdechataigne.fr",
+    "coeuretavc.ca"
+   ],
+   "description_courte": "Haricots rouges écrasés, oignon, cumin et paprika, liés à l'œuf et à la chapelure, roulés en boulettes et dorés à la poêle — le jumeau végétarien des boulettes de viande",
+   "canonical_arbitration": "Jumeau végétarien de RAP-017 « Boulettes de viande » : même farce nue — oignon, ail, persil, œuf, chapelure — même façonnage en billes de 35 g, même repos, même cuisson à la poêle ; le bœuf haché devient du haricot rouge cuit et écrasé. Le dossier est mince et il faut le savoir en le lisant. Sur marmiton, chefsimon et 750g, « boulettes de haricots rouges » et « boulettes haricots rouges » ne ramènent que deux pages de chefsimon dont le balisage ne porte aucun ingrédient — l'une d'elles est la republication de deliacious.com — et « boulettes haricots » ajoute des boulettes de haricots blancs, de courgettes et de riz, qui sont d'autres plats. Le dossier s'est donc construit hors des trois sites : quatre pages relevées sur quatre sites, trois retenues par l'audit, la quatrième (coeuretavc.ca, « Boulettes de haricots servies sur riz ») écartée sur son titre seulement — elle est bien faite de haricots rouges, et on la cite pour ce qu'elle confirme, jamais pour un chiffre qu'elle serait seule à porter. Sept autres pages trouvées par recherche (lavieclaire, recettesjecuisine, courtbouillon, veganvalkyrie, lespepitesdenoisette, jecuisinesansgluten, ricardocuisine) n'ont aucun balisage lisible. Les trois pages solides font la même chose : des haricots rouges en boîte égouttés, écrasés avec un oignon, une gousse d'ail, du cumin et du paprika, liés à un peu de céréale, façonnés puis cuits. Elles comptent en boulettes plutôt qu'en personnes, et il faut ramener : le parent compte cinq boulettes de 35 g par personne. Deliacious fait dix boulettes « un peu plus petites qu'une balle de golf » avec 250 g de haricots, 30 g d'avoine et un demi-oignon, soit 330 g de farce, deux personnes ; sainplementhealthy en fait treize avec 240 g de haricots, 50 g de sauce tomate, 30 g d'avoine et un petit oignon, deux personnes et demie ; blogdechataigne donne 200 g de haricots pour trois. Cela fait 125, 96 et 67 g de haricots égouttés par personne, médiane 96 g par personne, on écrit 100 g, soit 400 g pour quatre — le poids d'une grande boîte égouttée, ou de deux petites, et une masse de protéine comparable aux 420 g de viande du parent. La liaison est le vrai arbitrage. Les trois pages solides sont végétaliennes par construction : deux lient aux flocons d'avoine, 30 g pour 250 g de haricots, la troisième ne lie pas et roule ses boulettes dans la farine. Aucune ne met d'œuf ni de chapelure. La page écartée, elle, lie exactement comme le parent — un œuf et 75 ml de chapelure pour 400 g de haricots — et ses boulettes vont à la poêle. On garde la liaison du parent, œuf et chapelure : c'est ce qui fait de cette recette un jumeau et non une autre boulette de haricots, la page de coeuretavc.ca confirme qu'elle tient sur la même masse de haricots, et l'avoine n'a pas de forme au catalogue. On l'écrit avec un seul œuf au lieu des deux du parent — la purée de haricots lie déjà par son amidon, et un second œuf rend la farce molle — et les 60 g de chapelure du parent, proportion voisine des 30 g d'avoine pour 250 g des deux pages végétaliennes ; l'avoine descend en variante, et un lecteur qui veut la version végétalienne la suit. L'oignon : un demi pour deux, un petit pour deux et demie, un oignon blanc pour trois, soit 32,5, 32 et 43 g par personne, médiane 32,5 g par personne, soit 130 g pour quatre, contre 110 dans le parent. L'ail : une gousse dans chaque page, soit 2,5, 2 et 1,7 g par personne, médiane 2 g par personne, soit 8 g ; on garde les 10 g du parent. Le cumin est dans les trois pages sur quatre solides, une demi-cuillerée à café pour deux et une pour trois, la troisième sans mesure : 2 g pour quatre. Le paprika aussi, fumé dans une page, doux dans une autre, sans précision dans la troisième : 3 g de paprika doux, le fumé en variante. Ces deux épices n'existent pas dans le parent, et on les ajoute parce que les trois pages les jugent nécessaires : un haricot écrasé est fade là où le bœuf ne l'est pas. Deux pages sur quatre mettent de la tomate dans la farce, une cuillerée de concentré pour dix boulettes et 50 g de sauce tomate pour treize ; on écrit 20 g de concentré pour quatre, qui colore la boulette et resserre la purée. La moutarde d'une page, la sauce soja d'une autre et la coriandre moulue d'une troisième, chacune dans une page sur quatre, passent en variantes. Le persil est celui du parent, 10 g : aucune page solide n'en met dans la farce, la page écartée en met dans sa sauce ; on le garde parce que c'est la composition du parent hors protéine. L'huile : une page frit à feu vif dans deux cuillerées de tournesol et en rajoute, une autre dore à la poêle après le four, la troisième cuit au four sans gras ; on garde les 40 g d'huile du parent, écrits 40 ml d'huile d'olive, parce que c'est la poêle qui fait la croûte. Le sel : un quart de cuillerée à café pour deux dans une page, « sel » dans une autre, rien dans la troisième, dont la sauce soja sale ; on descend à 4 g au lieu des 6 du parent, un haricot de conserve étant déjà salé. Poivre 2 g. La cuisson divise le dossier deux contre un : deux pages solides cuisent au four vingt minutes à 180 ou 190 °C, l'une d'elles conseillant ensuite un passage à la poêle ; une page et la page écartée dorent à la poêle. On garde la poêle, qui est la technique du parent et la seule qui fasse une croûte ; le four descend en variante. Durées : préparation, médiane 10 minutes des trois lignes, écrite 15 comme le parent parce qu'on fait reposer la farce ; cuisson, médiane 20 minutes, écrite 20.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch",
+     "vegetables"
+    ],
+    "reason": "Même rôle que le parent : des boulettes nues, protéine végétale sans féculent, qui appellent des pâtes, un riz, une purée ou une sauce tomate — c'est ce que les trois pages proposent au service, et la page écartée les sert sur un riz aux poivrons."
+   },
+   "ingredients": [
+    {
+     "form": "Haricot rouge cuit, égoutté",
+     "quantity": 400,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 130,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Chapelure de blé",
+     "quantity": 60,
+     "unit": "g",
+     "role": "liant",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 40,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Concentré de tomate",
+     "quantity": 20,
+     "unit": "g",
+     "role": "liant",
+     "optional": false
+    },
+    {
+     "form": "Persil frais",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Paprika doux",
+     "quantity": 3,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Cumin moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 1,
+     "unit": "u",
+     "role": "liant",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Rincer les haricots rouges à l'eau froide, les égoutter longuement puis les éponger dans un torchon. C'est le geste qui décide de tout le reste : un haricot de boîte est gorgé de son jus, et une farce mouillée ne se façonne pas, quelle que soit la chapelure qu'on y ajoute."
+    },
+    {
+     "n": 2,
+     "instruction": "Râper l'oignon à la grosse grille et presser son jus entre les doigts, comme pour le parent, puis l'écraser avec les haricots à la fourchette ou au presse-purée. S'arrêter quand la purée garde encore un tiers de haricots entiers : c'est cette mâche qui fait la boulette, et un mixeur poussé jusqu'au lisse donne une pâte qui colle et se tasse."
+    },
+    {
+     "n": 3,
+     "instruction": "Ajouter l'œuf battu, la chapelure, le concentré de tomate, l'ail en purée, le persil ciselé, le cumin, le paprika, le sel et le poivre, et mélanger à la main jusqu'à ce que la masse se tienne quand on la serre. Goûter la farce crue — elle est faite de haricots cuits, on le peut — et corriger le sel : un haricot écrasé est fade là où le bœuf ne l'est pas, c'est la raison des épices."
+    },
+    {
+     "n": 4,
+     "instruction": "Laisser reposer la farce quinze minutes au frais, le temps que la chapelure boive l'humidité restante. Ce repos est plus nécessaire qu'avec la viande : sans lui la boulette s'ouvre au premier retournement, et c'est la première cause d'échec de ce plat."
+    },
+    {
+     "n": 5,
+     "instruction": "Former à paumes humides des billes d'environ 35 g, une vingtaine pour 400 g de haricots, et les poser sur une assiette sans qu'elles se touchent. Les serrer un peu plus fermement qu'une boulette de viande, qui se soude en cuisant quand celle-ci ne fait que sécher."
+    },
+    {
+     "n": 6,
+     "instruction": "Chauffer l'huile à feu moyen — pas vif — dans une grande poêle antiadhésive et y déposer les boulettes en une seule couche. Les laisser trois minutes sans y toucher, jusqu'à ce que la face au contact ait pris une croûte brune, puis les retourner d'un seul geste à la cuillère et donner trois minutes à l'autre face. Une boulette de haricots ne se roule pas sur toutes ses faces comme celle du parent : deux faces suffisent, et chaque manipulation de plus la fend."
+    },
+    {
+     "n": 7,
+     "instruction": "Baisser le feu et laisser quatre à cinq minutes de plus en secouant la poêle de temps en temps, pour que le cœur soit chaud et que l'œuf ait pris. Servir aussitôt, nature, avec un riz ou une sauce tomate fluide versée à côté plutôt que dessus : laissées à mijoter dans une sauce, ces boulettes se délitent, et une page du dossier le dit expressément."
+    }
+   ],
+   "techniques": [
+    "égouttage et séchage",
+    "écrasement partiel",
+    "farce liée",
+    "repos",
+    "façonnage",
+    "saisie à feu moyen",
+    "cuisson à couvert"
+   ],
+   "variants": [
+    "Liées aux flocons d'avoine plutôt qu'à l'œuf et à la chapelure, 30 g pour 250 g de haricots, pour une version végétalienne — forme absente du catalogue (deliacious.com, sainplementhealthy.com)",
+    "Sans liant, simplement roulées dans la farine avant de passer à la poêle à feu vif dans de l'huile de tournesol (blogdechataigne.fr)",
+    "Cuites au four vingt minutes à 180 ou 190 °C sur une plaque, retournées à mi-cuisson, puis éventuellement dorées à la poêle (deliacious.com, sainplementhealthy.com)",
+    "Au paprika fumé et à la coriandre moulue (deliacious.com)",
+    "Avec une cuillerée à café de moutarde dans la farce (blogdechataigne.fr)",
+    "Avec 10 ml de sauce soja dans la farce à la place du sel (sainplementhealthy.com)",
+    "Dorées puis mijotées dans un bouillon de légumes lié à la fécule, servies sur un riz aux poivrons (coeuretavc.ca)"
+   ],
+   "sensory": {
+    "profile": "smoky_sweet",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 1,
+     "bitter": 1,
+     "umami": 3,
+     "heat": 1,
+     "pungency": 2,
+     "richness": 2,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "haricot rouge",
+     "cumin",
+     "paprika",
+     "oignon"
+    ],
+    "aroma_families": [
+     "cumin",
+     "paprika",
+     "oignon",
+     "haricot cuit"
+    ],
+    "target_textures": [
+     "croûte fine et sèche",
+     "cœur moelleux avec des morceaux de haricots",
+     "boulette qui tient à la fourchette"
+    ],
+    "signature_ingredients": [
+     "Haricot rouge cuit, égoutté",
+     "Cumin moulu",
+     "Paprika doux",
+     "Chapelure de blé"
+    ],
+    "identity_guardrails": [
+     "Les haricots sont épongés avant d'être écrasés : une farce mouillée ne se façonne pas",
+     "Écrasement partiel, jamais mixé lisse — un tiers de haricots entiers fait la mâche",
+     "La farce repose avant façonnage et les boulettes ne sont retournées qu'une fois : c'est la fragilité du plat",
+     "Cumin et paprika sont indispensables ici et absents du parent : le haricot écrasé n'a pas le goût de la viande",
+     "Servies avec une sauce à côté, jamais mijotées dedans"
+    ]
+   },
+   "conservation": "Cuites, les boulettes se gardent 3 jours au réfrigérateur dans une boîte fermée, et se réchauffent à la poêle à feu doux ou au four plutôt qu'au micro-ondes, qui les ramollit. Elles se congèlent 2 mois, séparées d'abord sur une plaque puis rassemblées en sachet, et se réchauffent sans décongélation au four à 180 °C ; congelées crues, elles rendent leur eau et s'écrasent — on congèle cuites, contrairement au parent. Le dossier ne dit rien de la conservation, sinon qu'une page déconseille de laisser ces boulettes dans une sauce ; ce qui est écrit ici est ce qu'une purée de légumineuse liée à l'œuf fait physiquement.",
+   "allergens": [
+    "gluten",
+    "œuf"
+   ]
+  },
+  {
+   "code": "JUM-033",
+   "family": "Stroganoff de champignons",
+   "derived_from": "VAR-027",
+   "cuisine_origin": "Russie",
+   "identity_level": "named_traditional_dish",
+   "category": "plat sauté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 25,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:stroganoff-de-champignons",
+    "chefetrecette.com",
+    "larecetteparfaite.com",
+    "marciatack.fr",
+    "menu-vegetarien.com",
+    "lescommis.com",
+    "sharkninja.fr"
+   ],
+   "description_courte": "Champignons de Paris sautés à feu vif puis liés dans une sauce à l'oignon, au vin blanc, à la moutarde, au paprika et à la crème — le jumeau végétarien du bœuf Stroganoff",
+   "canonical_arbitration": "Jumeau végétarien de VAR-027 « Bœuf Stroganoff » : même sauté à feu vif, mêmes champignons, même oignon, même déglaçage au vin blanc, même sauce singée puis mouillée et finie à la crème, à la moutarde et au paprika ; le bœuf en lanières disparaît, les champignons prennent sa place et doublent, le bouillon de bœuf devient un bouillon de légumes. Le stroganoff de champignons est un plat nommé, publié partout — sauf sur marmiton, chefsimon et 750g, où « stroganoff de champignons », « champignons stroganoff », « stroganoff végétarien » et « mushroom stroganoff » ne ramènent que deux « poulet stroganoff aux champignons ». Le dossier s'est donc construit hors des trois sites : six pages sur six sites, toutes retenues par l'audit, sous les deux noms que le plat porte en français — trois « Champignons Stroganoff », deux « Stroganoff de champignons », un « Stroganoff végétalien aux champignons ». Quatre autres pages (swissmilk, plaisiretequilibre, noovomoi, cuisine-libre) n'ont aucun balisage ou sont inaccessibles. Il faut lire le dossier avec une précaution : quatre pages sur six sont végétaliennes et remplacent la crème par du lait de coco (deux), une crème de cajou ou une « préparation végétale » ; une cinquième écrit « crème légère ou végétale », la sixième « crème de soja ou d'avoine ». Le jumeau est végétarien, pas végétalien : on garde la crème fraîche épaisse du parent, que la page de chefetrecette autorise en toutes lettres et que les crèmes végétales des deux autres imitent ; le lait de coco et la cajou, qui font une autre sauce, descendent en variantes. Les champignons : 400 g pour quatre, 454 g pour quatre, un kilo pour quatre, 540 g pour quatre, 300 g pour quatre avec 200 g de tofu fumé, un kilo sans portions ramené à quatre — soit 100, 113,5, 250, 135, 75 et 250 g par personne, médiane 124 g par personne, soit 496 g, qu'on écrit 500 g. C'est presque le double des 260 g du parent, ce que le plan attendait : sans viande, le champignon est tout le corps du plat. La synthèse rattachait ces lignes au champignon de Paris surgelé, rapprochement refusé — les six pages écrivent des champignons frais, de Paris dans quatre d'entre elles. L'oignon : un oignon pour quatre, deux échalotes pour quatre, deux oignons rouges pour quatre dans deux pages, deux oignons jaunes pour quatre, rien dans la sixième ; soit 32,5, 12,5, 65, 65 et 65 g par personne, médiane 65 g par personne, soit 260 g, le double du parent, que trois pages sur six justifient : l'oignon prend avec le champignon la place que la viande laisse. L'ail est dans les six pages sur six, de deux à six gousses pour quatre, soit 2,5, 3,75, 5, 3,75, 2,5 et 7,5 g par personne, médiane 3,75 g par personne, soit 15 g ; le parent n'en a pas, et on l'ajoute parce que l'unanimité du dossier le demande. La moutarde : une cuillerée à soupe pour quatre dans deux pages, deux à trois cuillerées à café dans les quatre autres, soit 3,75, 3,75, 2,5, 1,9, 2,5 et 3,75 g par personne, médiane 3,1 g par personne, soit 12,5 g, qu'on écrit 12 g, un peu au-dessus des 10 g du parent. Le paprika est dans quatre pages sur six, une cuillerée à café pour quatre dans deux, deux cuillerées à café dans une, deux cuillerées à soupe dans la quatrième, soit 0,5, 1, 1 et 3,5 g par personne, médiane 1 g par personne, soit 4 g, contre 3 dans le parent ; une page le double d'un paprika fumé, qui descend en variante. Le bouillon de légumes est dans trois pages sur six, 200, 250 et 480 ml pour quatre, médiane 250 ml pour quatre : on écrit 250 ml, le volume du parent, en légumes et non en bœuf — c'est la seule forme animale du parent qui ne soit pas la viande, et elle change de nature avec elle. La crème : trois pages la mesurent en crème, 200, 250 et 400 ml pour quatre, médiane 250 ml, soit 62,5 g par personne ; le parent en met 140 g pour 250 ml de bouillon. On écrit 200 g, cinquante grammes par personne, entre les deux : plus que le parent parce que les champignons sautés n'ont pas le jus qu'une viande rend dans la sauce, moins que la médiane parce que les deux pages les plus généreuses noient leurs champignons sous une préparation végétale qui ne lie pas comme une crème épaisse. Le vin blanc n'est que dans une page sur six, 185 ml pour quatre ; on garde les 50 ml du parent — c'est son déglaçage, et une page atteste qu'il a sa place ici. La farine : une page singe à deux cuillerées à soupe, une autre lie à la fécule ; on garde les 20 g du parent. Le concentré de tomate est dans deux pages sur six, 45 et 30 g pour quatre ; le parent en met 15 g, et on écrit 20 g, un peu plus, parce que sans les sucs bruns de la viande c'est lui qui donne à la sauce sa couleur. L'huile : les six pages cuisent à l'huile, d'olive dans cinq, et aucune au beurre ; soit 7,5, 7,5, 3,75, 15, 30 et 11,25 ml par personne, médiane 9,4 ml par personne, soit 37,5 ml, qu'on écrit 40 ml d'huile d'olive. Le beurre du parent, 45 g, n'est attesté par aucune page : il sort de la liste, et le gras de cuisson passe entièrement à l'huile, avec les 25 ml de la sauce dans le total. Le persil est dans les six pages, jamais pesé — un bouquet, une grande poignée, deux cuillerées — et on garde les 10 g du parent. Le jus de citron de trois pages sur six, qui imite l'acidité de la crème aigre, la sauce soja ou le tamari de trois pages, le thym et le laurier de deux, le sirop d'érable, le vinaigre balsamique, le tofu fumé, les noix de cajou, chacun dans une page, descendent en variantes. Sel 5 g et poivre 2 g, ceux du parent. Durées : préparation, médiane 10 minutes des cinq lignes, écrite 15 parce qu'on émince 500 g de champignons et 260 g d'oignon ; cuisson, médiane 20 minutes des quatre lignes, écrite 25 parce que les champignons se sautent en deux fournées.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Même rôle que le parent : une garniture en sauce faite pour être saucée, sans féculent intégré — les six pages la servent sur un riz complet, des linguine, des fettuccine ou une purée. La protéine du bœuf n'est pas remplacée à poids égal, le champignon n'étant pas une légumineuse : c'est le prix d'un stroganoff sans viande, et aucune page ne fait autrement."
+   },
+   "ingredients": [
+    {
+     "form": "Champignon de Paris frais",
+     "quantity": 500,
+     "unit": "g",
+     "role": "légume principal",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 260,
+     "unit": "g",
+     "role": "base aromatique",
+     "optional": false
+    },
+    {
+     "form": "Bouillon de légumes",
+     "quantity": 250,
+     "unit": "ml",
+     "role": "mouillement",
+     "optional": false
+    },
+    {
+     "form": "Crème fraîche épaisse",
+     "quantity": 200,
+     "unit": "g",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Vin blanc sec",
+     "quantity": 50,
+     "unit": "ml",
+     "role": "déglaçage",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 40,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Farine de blé T55",
+     "quantity": 20,
+     "unit": "g",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Concentré de tomate",
+     "quantity": 20,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Moutarde de Dijon",
+     "quantity": 12,
+     "unit": "g",
+     "role": "condiment",
+     "optional": false
+    },
+    {
+     "form": "Persil plat frais",
+     "quantity": 10,
+     "unit": "g",
+     "role": "herbe",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 5,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Paprika doux",
+     "quantity": 4,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Couper le pied terreux des champignons, les essuyer sans les laver — un champignon lavé boit l'eau et ne dore plus — et les tailler en quartiers plutôt qu'en lamelles fines. Ici le champignon tient la place de la viande : en quartiers il garde une mâche sous la dent, en lamelles il fond et la sauce devient une soupe."
+    },
+    {
+     "n": 2,
+     "instruction": "Chauffer la moitié de l'huile dans une grande poêle à feu vif et y jeter les champignons en deux fournées, sans sel, sans les remuer pendant deux minutes puis en les faisant sauter jusqu'à ce qu'ils soient dorés sur leurs faces et que leur eau se soit évaporée. C'est le geste qui remplace la saisie du bœuf : entassés ou salés, ils rendent leur eau d'un coup et bouillent gris au lieu de rôtir, et la sauce n'aura plus de sucs sur lesquels s'appuyer. Les réserver."
+    },
+    {
+     "n": 3,
+     "instruction": "Baisser à feu moyen, verser le reste de l'huile et faire fondre l'oignon émincé six à huit minutes, jusqu'à ce qu'il soit translucide et commence à blondir. Ajouter l'ail haché une minute. L'oignon est ici deux fois plus abondant que dans le parent, et il ne se contente pas de parfumer : fondu, il fait avec le champignon le corps du plat."
+    },
+    {
+     "n": 4,
+     "instruction": "Singer avec la farine, remuer une minute pour qu'elle cuise, puis déglacer au vin blanc en grattant le fond. Ajouter le concentré de tomate et le laisser foncer trente secondes au contact de la poêle avant de mouiller : sans les sucs bruns d'une viande, c'est lui qui donne à la sauce sa couleur et son fond."
+    },
+    {
+     "n": 5,
+     "instruction": "Verser le bouillon de légumes, porter à petits bouillons et laisser réduire cinq minutes jusqu'à ce que la sauce nappe la cuillère. Remettre les champignons avec le jus qu'ils ont rendu au repos, et les laisser deux minutes dans la sauce pour qu'ils s'en imprègnent."
+    },
+    {
+     "n": 6,
+     "instruction": "Baisser le feu au minimum et incorporer la crème, le paprika puis la moutarde, hors ébullition. La moutarde entre en dernier et ne bout jamais, sinon elle perd son piquant et laisse un goût plat : c'est la règle du parent, et elle ne change pas parce que la viande s'en est allée."
+    },
+    {
+     "n": 7,
+     "instruction": "Saler, poivrer, parsemer de persil et servir aussitôt sur un riz, des pâtes ou une purée. Contrairement au parent, rien ici ne surcuit si l'on attend cinq minutes — mais la sauce épaissit vite en refroidissant, et une cuillerée de bouillon la détend au moment de servir."
+    }
+   ],
+   "techniques": [
+    "sauté à feu vif en deux fournées",
+    "fondre l'oignon",
+    "singer",
+    "déglaçage",
+    "réduction",
+    "liaison à la crème"
+   ],
+   "variants": [
+    "Au lait de coco à la place de la crème et du bouillon, 800 ml pour quatre, réduit vingt minutes à feu vif, pour une version végétalienne (marciatack.fr, sharkninja.fr)",
+    "À la crème de cajou : 140 g de noix de cajou trempées mixées avec le bouillon, du tamari et du vinaigre balsamique, sur des fettuccine (menu-vegetarien.com)",
+    "À la crème de soja ou d'avoine, avec du sirop d'érable, de la sauce soja, du thym et du laurier, servi sur des linguine (larecetteparfaite.com)",
+    "Avec 200 g de tofu fumé sauté avec les champignons, pour retrouver une protéine, servi sur une purée à l'huile d'olive (lescommis.com)",
+    "Un jus de citron incorporé avec la crème, pour l'acidité de la crème aigre du plat russe (marciatack.fr, menu-vegetarien.com, sharkninja.fr)",
+    "Au paprika fumé en plus du doux (larecetteparfaite.com)",
+    "Lié à la fécule de maïs plutôt qu'à la farine, pour une version sans gluten (sharkninja.fr)"
+   ],
+   "sensory": {
+    "profile": "creamy_savory",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 2,
+     "bitter": 1,
+     "umami": 4,
+     "heat": 1,
+     "pungency": 3,
+     "richness": 4,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "champignon rôti",
+     "crème",
+     "moutarde",
+     "oignon fondu"
+    ],
+    "aroma_families": [
+     "champignon",
+     "oignon_compoté",
+     "moutarde",
+     "paprika",
+     "crème"
+    ],
+    "target_textures": [
+     "champignons dorés et fermes",
+     "sauce_nappante",
+     "oignon fondu"
+    ],
+    "signature_ingredients": [
+     "Champignon de Paris frais",
+     "Crème fraîche épaisse",
+     "Moutarde de Dijon",
+     "Paprika doux"
+    ],
+    "identity_guardrails": [
+     "Les champignons se sautent à feu vif, sans sel, en deux fournées, jusqu'à évaporation de leur eau : c'est la saisie du bœuf transposée, et un champignon bouilli fait une soupe",
+     "La moutarde entre en dernier et ne bout jamais, comme dans le parent",
+     "Bouillon de légumes et non de bœuf : c'est la seule autre forme animale du parent, et elle part avec la viande",
+     "Crème fraîche épaisse, pas lait de coco : le coco fait une autre sauce et un autre plat"
+    ]
+   },
+   "conservation": "Se garde 2 jours au réfrigérateur dans un récipient fermé, et se réchauffe à feu très doux sans bouillir, la crème et la moutarde ne le supportant pas ; les champignons rendent un peu d'eau au froid et la sauce se détend, ce qui se rattrape en la laissant frémir une minute avant d'ajouter une cuillerée de crème. Ne se congèle pas : la sauce à la crème tranche et les champignons décongelés deviennent spongieux. C'est ce que dit le parent pour sa sauce, et ce que fait un champignon sauté au congélateur ; aucune des six pages ne parle de conservation.",
+   "allergens": [
+    "lait",
+    "gluten",
+    "moutarde"
+   ]
+  }
+ ]
+}

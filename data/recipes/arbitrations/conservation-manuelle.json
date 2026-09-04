@@ -1,6 +1,6 @@
 {
   "lot": "conservation-manuelle",
-  "contexte": "Ce fichier tranche à la main ce qu’aucun parseur ne peut lire dans la prose de conservation du corpus (data/recipes/corpus-v3.json, champ « conservation ») : les 47 recettes dont la prose donne des durées par composant ou aucune durée lisible, et les 103 recettes dont le nom ou la catégorie évoque un service froid, pour lesquelles le champ serve_cold ne peut être que déclaré (16 recettes sont dans les deux listes : 134 décisions). La mesure d’origine (PLAN_PLANNING_PARFAIT §2.5, chantier C1) a montré que le moteur produisait un pan bagnat à 24 h en batch de 3 jours puis le « réchauffait », et comptait congelables 90 plats qui refusent la congélation dans leur propre prose. Règles appliquées : le profil décrit le plat tel qu’il est servi, pas ses composants — quand les composants se gardent mais que le plat se monte au moment, eat_immediately vaut true et fridge_hours porte sur la plus courte des avances chiffrées par la prose ; une durée à l’ambiante est reportée dans fridge_hours et signalée comme telle dans le motif ; pour une fourchette (« 8 à 10 jours ») on retient la borne basse, la seule que la prose garantit ; freezable vaut true si la prose autorise la congélation du plat servi, false si elle la refuse ou si le plat ne la supporte manifestement pas (crudités, œuf poché ou dur, friture, mayonnaise) ; quand la prose n’autorise la congélation que d’une forme crue ou partielle qui n’est pas le plat servi (croquette avant friture, pâte crue, poulet mariné), cette autorisation ne vaut pas pour le plat : freezable est false si le plat servi ne la supporte manifestement pas (friture, sandwich garni, salade montée), null si rien n’est manifeste (petit pain cuit), et les mois ne sont jamais reportés ; null quand la prose se tait et que rien n’est manifeste — null est une réponse, pas un oubli, et le moteur le traite comme non congelable ; freezer_months n’est reporté que si freezable est true ; serve_cold vaut true seulement pour un plat mangé froid ou à l’ambiante sans réchauffage — un plat tiède (lentilles tièdes, salade au chèvre chaud, confit saisi) n’est pas froid — et null pour les pâtisseries et pains hors repas. Aucune durée n’a été fabriquée : quand la prose n’en porte pas, fridge_hours est null et le motif le dit.",
+  "contexte": "Ce fichier tranche à la main ce qu’aucun parseur ne peut lire dans la prose de conservation du corpus (data/recipes/corpus-v3.json, champ « conservation ») : les 47 recettes dont la prose donne des durées par composant ou aucune durée lisible, et les 103 recettes dont le nom ou la catégorie évoque un service froid, pour lesquelles le champ serve_cold ne peut être que déclaré (16 recettes sont dans les deux listes : 134 décisions). La mesure d’origine (PLAN_PLANNING_PARFAIT §2.5, chantier C1) a montré que le moteur produisait un pan bagnat à 24 h en batch de 3 jours puis le « réchauffait », et comptait congelables 90 plats qui refusent la congélation dans leur propre prose. Règles appliquées : le profil décrit le plat tel qu’il est servi, pas ses composants — quand les composants se gardent mais que le plat se monte au moment, eat_immediately vaut true et fridge_hours porte sur la plus courte des avances chiffrées par la prose ; une durée à l’ambiante est reportée dans fridge_hours et signalée comme telle dans le motif ; pour une fourchette (« 8 à 10 jours ») on retient la borne basse, la seule que la prose garantit ; freezable vaut true si la prose autorise la congélation du plat servi, false si elle la refuse ou si le plat ne la supporte manifestement pas (crudités, œuf poché ou dur, friture, mayonnaise) ; quand la prose n’autorise la congélation que d’une forme crue ou partielle qui n’est pas le plat servi (croquette avant friture, pâte crue, poulet mariné), cette autorisation ne vaut pas pour le plat : freezable est false si le plat servi ne la supporte manifestement pas (friture, sandwich garni, salade montée), null si rien n’est manifeste (petit pain cuit), et les mois ne sont jamais reportés ; null quand la prose se tait et que rien n’est manifeste — null est une réponse, pas un oubli, et le moteur le traite comme non congelable ; freezer_months n’est reporté que si freezable est true ; serve_cold vaut true seulement pour un plat mangé froid ou à l’ambiante sans réchauffage — un plat tiède (lentilles tièdes, salade au chèvre chaud, confit saisi) n’est pas froid — et null pour les pâtisseries et pains hors repas. Aucune durée n’a été fabriquée : quand la prose n’en porte pas, fridge_hours est null et le motif le dit. Ajout (chantier C1, parseur) : les quatre pâtes de base RAP-003 à RAP-006, dont la forme crue est le produit lui-même — le parseur écarte à raison les durées « d’une forme crue » pour un plat cuit, mais une pâte n’a pas d’autre forme ; sans décision manuelle elles n’auraient aucun profil.",
   "decisions": [
     {
       "code": "MED-001",
@@ -1743,6 +1743,58 @@
         "serve_cold": false
       },
       "motif": "Ne se monte qu’au moment de servir, les crudités rendent leur eau en une heure. D’avance : bœuf mariné cru 24 h, nouilles 2 jours, crudités 2 jours, sauce 2 semaines — 24 h, la plus courte. Rien ne se congèle utilement hors le bœuf cru : le plat ne se congèle pas. Bœuf saisi à feu vif posé sur nouilles et crudités : tiède, pas froid."
+    },
+    {
+      "code": "RAP-003",
+      "family": "Pâte à pizza",
+      "prose": "La pâte crue se garde 48 heures au réfrigérateur, en pâtons filmés serrés : le froid ralentit la pousse et développe le goût. Se congèle 3 mois, boulée, huilée et emballée individuellement ; décongeler une nuit au réfrigérateur puis laisser revenir une heure à température ambiante avant d'étaler. Une pâte déjà étalée ne se congèle pas correctement, elle se craquelle.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": null
+      },
+      "motif": "Pâte à pizza : la forme crue EST le produit, la règle « une durée d’une forme crue décrit un état avant cuisson » du parseur ne s’applique pas — 48 heures au réfrigérateur en pâtons. Congélation : la prose l’autorise boulée (3 mois) et la refuse étalée ; un refus dans la prose interdit freezable true, et false dirait qu’elle ne se congèle pas : null, non tranché. Base, jamais servie seule : serve_cold non pertinent."
+    },
+    {
+      "code": "RAP-004",
+      "family": "Pâte brisée",
+      "prose": "Crue, la pâte se garde 3 jours au réfrigérateur, emballée serrée en disque aplati, et 3 mois au congélateur ; décongeler une nuit au réfrigérateur, jamais à température ambiante, qui ramollit le beurre en surface avant que le cœur soit dégelé. Un fond déjà foncé dans son moule se congèle aussi, et s'enfourne alors sans décongélation.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 3,
+        "serve_cold": null
+      },
+      "motif": "Pâte brisée : la forme crue EST le produit — 3 jours au réfrigérateur en disque. Congélation autorisée en toutes lettres pour la pâte crue, 3 mois, sans aucun refus dans la prose. Base : serve_cold non pertinent."
+    },
+    {
+      "code": "RAP-005",
+      "family": "Pâte sablée",
+      "prose": "Crue, la pâte se garde 3 jours au réfrigérateur en disque emballé et 3 mois au congélateur. Cuit à blanc, le fond se garde une semaine dans une boîte hermétique à température ambiante, à l'abri de l'humidité, et se garnit au dernier moment : c'est ce qui en fait une base à cuire d'avance. Les sablés découpés tiennent quinze jours en boîte métallique.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 3,
+        "serve_cold": null
+      },
+      "motif": "Pâte sucrée : la forme crue EST le produit — 3 jours au réfrigérateur en disque ; la semaine du fond cuit à blanc est à l’ambiante et n’est pas reportée. Congélation autorisée en toutes lettres pour la pâte crue, 3 mois, sans refus. Base : serve_cold non pertinent."
+    },
+    {
+      "code": "RAP-006",
+      "family": "Pâte à crêpes",
+      "prose": "La pâte crue se garde 48 heures au réfrigérateur, couverte ; la fouetter brièvement et la détendre d'un peu de lait avant emploi, l'amidon retombant au fond. Elle ne se congèle pas — le lait et l'œuf se séparent au dégel et la pâte tranche. Les crêpes déjà cuites, en revanche, se congèlent très bien 2 mois, empilées avec un papier cuisson entre chacune.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": null
+      },
+      "motif": "Pâte à crêpes : la forme crue EST le produit — 48 heures au réfrigérateur. La pâte ne se congèle pas (le lait et l’œuf se séparent) ; les crêpes cuites, elles, se congèlent, mais ce ne sont pas ce produit-ci. Base : serve_cold non pertinent."
     }
   ]
 }

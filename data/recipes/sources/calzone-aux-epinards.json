@@ -1,0 +1,55 @@
+{
+  "dish": "Calzone aux épinards",
+  "slug": "calzone-aux-epinards",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.750g.com/calzone-aux-epinards-a-la-creme-de-saint-agur-r81869.htm",
+      "site": "750g.com",
+      "nom": "Calzone aux épinards a la crème de Saint Agur",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 c à s d'origan frais haché",
+        "1 c à s d'huile d'olive",
+        "2 c à s de pignon de pin torréfiés",
+        "1 petite échalote ciselée",
+        "1 pâte à pizza",
+        "150g de pousses d'épinard",
+        "60g de ricotta",
+        "150g de crème Saint Agur soit une boîte"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 630,
+        "sha256": "1ef573ce15c1e763"
+      },
+      "sha256_page": "2e3533f5b72619a1"
+    },
+    {
+      "url": "https://www.750g.com/mini-calzone-aux-epinards-a-la-creme-de-saint-agur-r89869.htm",
+      "site": "750g.com",
+      "nom": "Mini calzone aux épinards à la Crème de Saint Agur",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 c à s d'huile d'olive",
+        "2 c à s de pignon de pin",
+        "1 c à s d'origan frais hachés",
+        "1 petite échalote ciselée",
+        "150g de pousses d'épinard",
+        "60g de ricotta",
+        "150g de crème de Saint Agur"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 628,
+        "sha256": "88b8d15c68e14192"
+      },
+      "sha256_page": "1ac179fd83559703"
+    }
+  ]
+}

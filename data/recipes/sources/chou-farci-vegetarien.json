@@ -1,0 +1,130 @@
+{
+  "dish": "Chou farci végétarien",
+  "slug": "chou-farci-vegetarien",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_chou-farci-vegetarien_61856.aspx",
+      "site": "marmiton.org",
+      "nom": "Chou farci végétarien : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "125 g de choux vert éminé et 5 belles feuilles entières",
+        "1 oignon haché",
+        "2 petites gousses d'ail",
+        "125 g de champignons hachés",
+        "125 g d'aubergines",
+        "30 g de pignons de pin",
+        "60 g de chapelure",
+        "2 oeufs",
+        "125 g de ricotta ou à défaut fromage blanc",
+        "2 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "sel",
+        "2 cuillères à café d'épices (aneth moulu, gingembre et coriandre)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 16,
+        "signes": 1298,
+        "sha256": "b7baf7337adaa921"
+      },
+      "sha256_page": "0500d627569bbf10"
+    },
+    {
+      "url": "https://ffcuisine.fr/recettes/chou-farci-vegetarien-une-recette-savoureuse-et-sans-viande/",
+      "site": "ffcuisine.fr",
+      "nom": "Chou farci végétarien : une recette savoureuse et sans viande",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT60M",
+      "ingredients": [
+        "1 gros chou vert frisé",
+        "150 grammes lentilles vertes du Puy",
+        "80 grammes riz complet",
+        "200 grammes champignons de Paris en conserve",
+        "400 grammes pulpe de tomates",
+        "1  oignon",
+        "1  carotte",
+        "2  gousses d'ail",
+        "50 cl bouillon de légumes",
+        "2 cuillères à soupe huile d'olive",
+        "1 cuillère à café herbes de Provence",
+        "1 pincée noix de muscade moulue",
+        "1  feuille de laurier",
+        "sel",
+        "poivre noir du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 1760,
+        "sha256": "95a4687aad42fc29"
+      },
+      "sha256_page": "4ea06f6592574944"
+    },
+    {
+      "url": "https://lacerisesurlemaillot.fr/chou-farci-vegetarien-quinoa-rouge/",
+      "site": "lacerisesurlemaillot.fr",
+      "nom": "Chou farci végétarien au quinoa rouge",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "½  chou vert frisé + 4 grandes feuilles extérieures",
+        "100 g de lentilles corail",
+        "60 g de quinoa rouge",
+        "2  œufs",
+        "1  oignon rouge",
+        "½ l d’eau",
+        "1  cube de bouillon de légumes bio",
+        "1  cuillère à soupe de concentré de tomates",
+        "2  grosses pincées de piment d’Espelette",
+        "1  cuillère à café d’herbes de Provence",
+        "1  cuillère à soupe d’huile d’olive",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1652,
+        "sha256": "56448f3aea48c1c6"
+      },
+      "sha256_page": "202e8d1de74ed9a4"
+    },
+    {
+      "url": "https://menu-vegetarien.com/rouleaux-chou-farci-vegetarien/",
+      "site": "menu-vegetarien.com",
+      "nom": "Rouleaux de chou farci végétariens",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "150 g millet",
+        "30 ml huile d'olive",
+        "0,5  oignon (émincé)",
+        "1  gousse d'ail (écrasée)",
+        "200 g carotte (pelées et coupés en brunoise)",
+        "200 g champignons de Paris (tranchés)",
+        "15 cl bouillon de légumes",
+        "5 cl sauce soja",
+        "30 g noix (concassées finement)",
+        "2 càs persil",
+        "250 g chou vert ((les feuilles))",
+        "50 g emmental râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 881,
+        "sha256": "d8e4b18c72e4db6d"
+      },
+      "sha256_page": "4d7ae35ccec98c03"
+    }
+  ]
+}

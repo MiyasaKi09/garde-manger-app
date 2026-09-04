@@ -1,0 +1,119 @@
+{
+  "dish": "Seitan alla cacciatora",
+  "slug": "seitan-alla-cacciatora",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.vegolosi.it/ricette-vegane/seitan-in-umido/",
+      "site": "vegolosi.it",
+      "nom": "Seitan alla cacciatora",
+      "portions": [
+        "4",
+        "4 persone"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "400 g di seitan",
+        "2 cucchiai di farina",
+        "1 cipolla rossa",
+        "2 carote",
+        "1 costa di sedano",
+        "4 foglie di alloro",
+        "1 cucchiaino di rosmarino tritato",
+        "1 cucchiaino di timo",
+        "150 ml di vino rosso",
+        "200 g di polpa di pomodoro",
+        "2 mestoli di brodo vegetale",
+        "50 g di olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 862,
+        "sha256": "b8b2238005784dc6"
+      },
+      "sha256_page": "fbefe602404091b7"
+    },
+    {
+      "url": "https://www.petitchef.it/ricette/portata-principale/spezzatino-di-seitan-alla-cacciatora-ricetta-vegetariana-fid-1165880",
+      "site": "petitchef.it",
+      "nom": "Spezzatino di seitan alla cacciatora - ricetta vegana",
+      "portions": "3",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "300 g di seitan naturale",
+        "1 cuore di sedano",
+        "1 carota",
+        "1 cipolla",
+        "1 spicchio d'aglio",
+        "300 ml di vino rosso secco",
+        "1 manciata di olive verdi toscane",
+        "2 chiodi di garofano",
+        "2 foglie di alloro",
+        "3 bacche di ginepro",
+        "pepe in grani",
+        "2 o 3 rametti di timo",
+        "1 rametto di origano fresco",
+        "1 rametto di rosmarino",
+        "capperi dissalati",
+        "1 tazza di brodo vegetale",
+        "2 cucchiai di concentrato di pomodoro",
+        "sale",
+        "olio extravergine di oliva"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 812,
+        "sha256": "dfb85a0e83c8fd70"
+      },
+      "sha256_page": "f63cfd0d1378ac97"
+    },
+    {
+      "url": "https://www.academia.tv/it/ricette/seitan-alla-scacciatora",
+      "site": "academia.tv",
+      "nom": "Seitan alla scacciatora: secondo vegano aromatico | Acadèmia.tv",
+      "portions": "2 porzioni",
+      "duree_preparation": "PT1H10M",
+      "duree_cuisson": "PT2H50M",
+      "ingredients": [
+        "500g Seitan",
+        "100g Olive taggiasche denocciolate",
+        "100g Cipolla",
+        "10g Aglio tritato",
+        "Salvia",
+        "Rosmarino",
+        "75ml Brodo vegetale",
+        "60ml Vino bianco",
+        "Olio extravergine di oliva",
+        "Sale e pepe",
+        "500g Farina di glutine",
+        "500g Patate lesse",
+        "100g Salsa di soia",
+        "130g Brodo vegetale",
+        "75ml Concentrato di pomodoro",
+        "6g Paprika affumicata",
+        "3g Rosmarino in polvere",
+        "2g Salvia in polvere",
+        "3g Timo in polvere",
+        "15g Aglio in polvere",
+        "20g Cipolla in polvere",
+        "2g Pepe nero",
+        "1g Pepe bianco",
+        "5l Acqua",
+        "500g Cipolla",
+        "500g Carota",
+        "500g Sedano",
+        "10g Alga Kombu",
+        "90g Sale"
+      ],
+      "etapes_empreinte": {
+        "nombre": 26,
+        "signes": 2000,
+        "sha256": "2367f8f87a9e272d"
+      },
+      "sha256_page": "edbba25b3437ebf8"
+    }
+  ]
+}

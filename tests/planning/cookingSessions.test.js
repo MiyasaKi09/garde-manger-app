@@ -35,14 +35,18 @@ const makeRecipe = (code, family, form = 'courgette cuite', overrides = {}) => (
   exactSteps: [{ n: 1, instruction: 'Préparer.' }],
   nutritionPerServing: { kcal: 500, proteinG: 30, carbsG: 55, fatG: 18, fiberG: 8 },
   nutritionCoverage: { pct: 100 },
+  // Profil de conservation DÉCLARÉ (chantier C1) : sans lui, aucune
+  // production n'est jamais générée — le moteur ne devine plus trois jours.
+  conservationProfile: { fridgeHours: 72, eatImmediately: false, freezable: null, freezerMonths: null, serveCold: null, source: 'parsed' },
   ...overrides,
 })
 
-// La congélabilité vient de la PROPRIÉTÉ éditoriale `conservation` du corpus
-// V3 (jamais du nom du plat, F13).
-const FREEZABLE_CONSERVATION = '3 jours au réfrigérateur ; congélation 3 mois.'
+// La congélabilité vient du PROFIL de conservation déclaré (jamais du nom du
+// plat ni de la prose, F13 et chantier C1 : la prose est lue une seule fois,
+// par derive-conservation-profiles.mjs, qui écrit le profil).
+const FREEZABLE_PROFILE = { fridgeHours: 72, eatImmediately: false, freezable: true, freezerMonths: null, serveCold: null, source: 'parsed' }
 const GRATIN = makeRecipe('FR-GRA', 'Gratin de courgettes')
-const GRATIN_CONGELABLE = makeRecipe('FR-GRA', 'Gratin de courgettes', 'courgette cuite', { conservation: FREEZABLE_CONSERVATION })
+const GRATIN_CONGELABLE = makeRecipe('FR-GRA', 'Gratin de courgettes', 'courgette cuite', { conservationProfile: FREEZABLE_PROFILE })
 
 const members = [
   { name: 'Alex', portion_multiplier: 1 },
@@ -50,23 +54,26 @@ const members = [
 ]
 
 describe('cookingSessions — congélabilité et fenêtres (helpers déterministes)', () => {
-  it('congelable uniquement sur information déclarée, jamais par défaut ni depuis le nom', () => {
+  it('congelable uniquement sur déclaration, jamais par défaut, depuis le nom ni depuis la prose', () => {
     expect(isRecipeFreezable(GRATIN_CONGELABLE)).toBe(true)
     expect(isRecipeFreezable(makeRecipe('X', 'Soupe congelable au nom trompeur'))).toBe(false)
     expect(isRecipeFreezable({})).toBe(false)
-    expect(isRecipeFreezable({ conservation: '2 jours au réfrigérateur.' })).toBe(false)
-    // Négation explicite dans la propriété de conservation → conservateur.
+    // La prose n'est plus lue par le moteur : 90 plats « congelables » la
+    // refusaient dans la même phrase (plan §2.5).
+    expect(isRecipeFreezable({ conservation: '3 jours au réfrigérateur ; congélation 3 mois.' })).toBe(false)
     expect(isRecipeFreezable({ conservation: 'Ne pas congeler.' })).toBe(false)
-    // Le booléen déclaré prime sur le texte de conservation.
-    expect(isRecipeFreezable({ freezable: false, conservation: FREEZABLE_CONSERVATION })).toBe(false)
+    // Le booléen déclaré prime sur le profil ; un profil non tranché vaut non.
+    expect(isRecipeFreezable({ freezable: false, conservationProfile: FREEZABLE_PROFILE })).toBe(false)
     expect(isRecipeFreezable({ freezable: true })).toBe(true)
-    expect(isRecipeFreezable({ freezerShelfLifeDays: 60 })).toBe(true)
+    expect(isRecipeFreezable({ conservationProfile: { ...FREEZABLE_PROFILE, freezable: null } })).toBe(false)
+    // Une durée congélateur est une durée, pas une autorisation.
+    expect(isRecipeFreezable({ freezerShelfLifeDays: 60 })).toBe(false)
   })
 
-  it('la durée congélateur vient de lib/shelfLifeRules (90 j), jamais du texte de conservation', () => {
-    // « congélation 3 mois » n'est PAS parsé : règle unique COOKED_DISH_SHELF_LIFE.freezer.
+  it('la durée congélateur : déclarée, sinon les mois du profil × 30, sinon lib/shelfLifeRules (90 j)', () => {
     expect(freezerShelfLifeDays(GRATIN_CONGELABLE)).toBe(90)
     expect(freezerShelfLifeDays({ freezerShelfLifeDays: 60 })).toBe(60)
+    expect(freezerShelfLifeDays({ conservationProfile: { ...FREEZABLE_PROFILE, freezerMonths: 2 } })).toBe(60)
   })
 
   it('fenêtre de session déduite de l’heure de la première consommation couverte', () => {

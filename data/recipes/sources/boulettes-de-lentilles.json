@@ -1,0 +1,266 @@
+{
+  "dish": "Boulettes de lentilles",
+  "slug": "boulettes-de-lentilles",
+  "sources_count": 10,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_boulettes-de-lentilles-aux-echalotes_23083.aspx",
+      "site": "marmiton.org",
+      "nom": "Boulettes de lentilles aux échalotes  : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 tasses de lentilles cuites et mixées",
+        "4 échalotes ciselées",
+        "sauce soja",
+        "6 olives noires",
+        "8 cuillères à soupe de farine",
+        "chapelure",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 238,
+        "sha256": "adf9498b48b3d7e1"
+      },
+      "sha256_page": "aefb15d54cd85b11"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_boulettes-de-lentilles-corail-express_232704.aspx",
+      "site": "marmiton.org",
+      "nom": "Boulettes de lentilles corail express : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "100 g de lentilles corail",
+        "1 oeuf",
+        "chapelure",
+        "ail haché",
+        "poivre",
+        "sel",
+        "huile de tournesol"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 384,
+        "sha256": "12de5958f7320a8c"
+      },
+      "sha256_page": "df4e8d768da4e84f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_boulettes-de-lentilles-corail_25826.aspx",
+      "site": "marmiton.org",
+      "nom": "Boulettes de lentilles corail : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "200 g de lentilles corail (elles sont réellement de la couleur du corail, on les trouve dans les épiceries orientales)",
+        "150 g de boulgour fin selon la recette traditionnelle",
+        "blé",
+        "orge",
+        "avoine",
+        "soja",
+        "0.5 l d'eau froide",
+        "3 oignons moyens (environ 200 g)",
+        "8 cl d'huile d'olive (je me suis arrêtée là, on peut mettre le double)",
+        "1 bouquet de persil",
+        "8 branches de menthe fraîche",
+        "8 ciboule",
+        "3 cuillères à soupe de concentré de tomates",
+        "1 cuillère à café de paprika (j'avais pas, j'ai mis du cumin en poudre et un peu d'estragon séché ; on peut aussi mettre du thym)",
+        "poivre noir",
+        "1 cuillère à café de sel à garder pour la fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1108,
+        "sha256": "5dc416dbc4d4dc79"
+      },
+      "sha256_page": "0e889dd4424dfe4c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/le-labo-de-maman/recettes/boulettes-aux-carottes-et-lentilles-vertes",
+      "site": "chefsimon.com",
+      "nom": "Boulettes aux carottes et lentilles vertes",
+      "portions": "5 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "250 g de lentilles cuites",
+        "200 g de carottes râpées",
+        "2 oeufs",
+        "70 g de concentré de tomate",
+        "130 g de son d'avoine ou flocons d'avoine mixés",
+        "1 échalote",
+        "1 càc de paprika moulu curcuma sel/poivre/ thym",
+        "2 càs d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "790ed30dd7164f24"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/madame-potiron/recettes/boulettes-de-lentilles-facon-kefta",
+      "site": "chefsimon.com",
+      "nom": "Boulettes de lentilles façon kefta",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 boite de lentilles",
+        "200 gr de passata",
+        "40 gr de farine de riz",
+        "80 gr de boulgour",
+        "20 gr de raisins secs",
+        "20 gr d'amandes éffilées",
+        "50 gr d'épinards surgelés",
+        "1 càs de tahini",
+        "1 càs de jus de citron",
+        "1 càc de cumin moulu",
+        "1 càc de paprika fumé",
+        "1/2 càc d'origan séché",
+        "sel &amp; poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 31,
+        "sha256": "f20ad99a80dee20d"
+      },
+      "sha256_page": "64937131f6b445c1"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/une-aiguille-dans-l-potage/recettes/boulettes-aux-lentilles-vertes",
+      "site": "chefsimon.com",
+      "nom": "Boulettes aux lentilles vertes",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "2 échalotes",
+        "1 gousse d'ail",
+        "1 boîte de lentilles vertes au naturel (265 g égouttés)",
+        "50 g de son d'avoine",
+        "50 g de parmesan",
+        "1 œuf",
+        "10 g de gingembre frais",
+        "1 c à c de massalé (ou du curry)",
+        "1 c à c de curcuma",
+        "4 c à s de chapelure maison (pain rassis mixé)",
+        "Pâte de piment",
+        "Sel, poivre",
+        "Huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "286181f4249acaea"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/piratage-culinaire/recettes/boulettes-de-lentilles-corail-5f6203b6-c9a7-4bb7-b0f9-e2bf88edb2be",
+      "site": "chefsimon.com",
+      "nom": "Boulettes de lentilles corail",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "250 gr de lentilles corail",
+        "1 oignon",
+        "2 oeufs",
+        "50 gr de farine",
+        "2 cuillères à soupe d'huile d'olive",
+        "1 cuillère à café de cumin en poudre",
+        "sel",
+        "poivre du moulin",
+        "chapelure",
+        "10 cl d'huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "7810d874574b743f"
+    },
+    {
+      "url": "https://www.750g.com/boulettes-de-lentilles-r204677.htm",
+      "site": "750g.com",
+      "nom": "Boulettes de lentilles",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "250 g de lentilles vertes",
+        "35 g de fécule de maïs  Maïzena",
+        "2 c. à s. d'huile d'olive",
+        "2 c. à s. de jus de citron",
+        "1 c. à s. de curry en poudre",
+        "2 c. à s. de concentré de tomates",
+        "Sel ou sel fin",
+        "Huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 729,
+        "sha256": "9e9d79237992d119"
+      },
+      "sha256_page": "7b88138c3defcbf1"
+    },
+    {
+      "url": "https://www.750g.com/boulettes-de-lentilles-corail-r20426.htm",
+      "site": "750g.com",
+      "nom": "Boulettes de lentilles corail",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 verre de lentille corail",
+        "1 oignon",
+        "½ gousse d'ail",
+        "½ botte de ciboulette",
+        "100 g de chapelure  (environs)",
+        "50 cl d'eau",
+        "1 pincée de sel ou sel fin",
+        "1 pincée de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 741,
+        "sha256": "6f547bfb376a999e"
+      },
+      "sha256_page": "b970e6dbccdd2ea6"
+    },
+    {
+      "url": "https://www.750g.com/boulettes-de-lentille-corail-r34437.htm",
+      "site": "750g.com",
+      "nom": "Boulettes de lentille corail",
+      "portions": null,
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 cuillère à café de sauce tomate",
+        "Ciboulette",
+        "cumin",
+        "2 cuillères à café de sauce au piment fort",
+        "Huile d'olive",
+        "400 g de boulghour",
+        "2 beaux oignons",
+        "250 g de lentilles corail"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 911,
+        "sha256": "97a0abb55f19c394"
+      },
+      "sha256_page": "7573023833ade81d"
+    }
+  ]
+}
