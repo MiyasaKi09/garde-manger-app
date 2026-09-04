@@ -1,0 +1,1949 @@
+{
+ "lot": "lot21 — l’origine des formes que le groupe Ciqual ne dit pas",
+ "contexte": "Ce lot ne mappe rien : il DÉCLARE l'origine des formes du catalogue dont la case Ciqual ne la dit pas. Avant lui, le planificateur tranchait carné / végétarien avec une regex de treize mots sur les noms d'ingrédients et trois catégories de rangement — et la mesure du 3 septembre 2026 (docs/PLAN_PLANNING_PARFAIT.md §2.2) a trouvé 22 plats classés végétariens sur 215 qui contenaient du bouillon de volaille (15) ou du boudin noir (7), pendant que « Tofu ferme », rangé en « viandes » parce que Ciqual le met dans les substituts de produits carnés, comptait comme de la viande. La catégorie sert au rangement, pas à la vérité culinaire ; l'origine est un attribut à part, et ce lot est l'endroit où elle s'écrit quand la taxonomie Ciqual ne suffit pas.\n\nCE QUE LA TAXONOMIE TRANCHE SEULE, ET CE QU'ELLE NE TRANCHE PAS. La table scripts/data/lib/origins.mjs, écrite après énumération des 3 186 fiches du classeur 2020, déclare sûre une case Ciqual quand toutes ses fiches ont la même origine : fruits, légumes, légumineuses, céréales, herbes, épices, algues (végétal) ; laits, crèmes, fromages, beurres (lait) ; œufs ; poissons ; mollusques et crustacés ; et, au sous-sous-groupe seulement, « bœuf et veau », « porc », « agneau et mouton », « gibier » (viande), « poulet », « dinde » (volaille), « jambons secs et crus », « saucisson secs » (viande). Tout le reste est ambigu et passe ici : les soupes (bouillon de bœuf et bouillon de légumes sont dans le même sous-groupe), les sauces (mayonnaise et sauce soja), les condiments (olives et tapenade aux anchois), les aides culinaires, les ingrédients divers (gélatine et levure), les boissons (lait de coco et boisson lactée), les sucres (miel et cassonade), les matières grasses autres (saindoux, graisse d'oie, paraffine), les charcuteries hors jambon sec et saucisson (confit de canard et boudin dans la même case que le haché de volaille), les abats et « autres viandes » (foie de veau et foie de volaille ; canard et lapin), les substituts de produits carnés, les produits à base de poissons (thon et surimi de crabe), les 45 fiches sans groupe (farines, fécules, pâtes à tarte, brick) et les formes adossées à USDA ou à une surcharge Myko, qui n'ont pas de case Ciqual du tout.\n\nTROIS RÈGLES D'ÉCRITURE, appliquées à chaque décision.\n  1. Une forme composite porte l'origine la PLUS CONTRAIGNANTE de ses composants déclarés (pâtes aux œufs → œuf, pâte brisée pur beurre → lait, pain d'épices → miel), parce qu'une origine déclarée ne doit jamais cacher un composant animal. « Déclarés » : par le nom de la forme ou par le libellé de la fiche retenue — pas par ce qu'une recette « met souvent ». Une nouille de blé chinoise dont la fiche est « aux œufs » porte œuf tant que la forme ne dit pas « sans œuf ».\n  2. Pour un produit animal, c'est L'ANIMAL qui fixe poisson contre fruits de mer, pas l'usage : le nuoc-mâm, le dashi, le fumet et la sauce Worcestershire sont faits d'anchois, de bonite, d'arêtes — des poissons ; la sauce huître et le bouillon de crevette viennent de mollusques et de crustacés. Le contrat du chantier proposait de ranger les sauces de poisson en fruits de mer ; on ne l'a pas suivi, parce que le planificateur lit de toute façon les deux valeurs comme « poisson » au sens large (FISH_ORIGINS) et qu'une valeur littérale — ce qui est dans le pot — restera lisible par une règle future (allergie aux crustacés, par exemple) sans table d'exceptions.\n  3. Ce qu'on ne sait pas, on ne l'écrit pas. Les auxiliaires de collage des vins et bières (blanc d'œuf, ichtyocolle) ne sont pas des ingrédients et Ciqual ne les déclare pas : on ne les invente pas, les vins et bières sont végétaux. À l'inverse, « Sauce yakisoba » n'a PAS de décision : les sauces yakisoba du commerce mentionnent parfois un extrait d'huître, la forme n'est adossée qu'à un proxy (sauce barbecue, confiance C) et aucune recette publiable ne l'emploie ; elle reste « inconnu », ce qui est la valeur exacte de ce qu'on en sait.\n\nDEUX DÉCISIONS QUI CONTREDISENT UNE LISTE ANTÉRIEURE, et le disent. « Sauce soja légère spéciale poisson » figure parmi les 40 « formes carnées hors catégorie » de l'annexe A3 du plan — sur le seul mot « poisson » de son nom. C'est une sauce soja POUR le poisson vapeur, pas une sauce DE poisson (la note du mapping le dit déjà) : elle est déclarée végétale ici, et le test qui vérifie l'annexe A3 la retire explicitement de la liste. « Gélatine feuille » est déclarée viande et non « animal:autre » : la gélatine en feuilles du commerce est porcine ou bovine, deux viandes de boucherie au sens du vocabulaire ; « autre » aurait dit « on ne sait pas quel animal » alors qu'on sait que ce n'est ni un poisson ni une volaille.\n\nCINQUANTE DÉCISIONS DE PLUS, POUR LES PROXYS ASSUMÉS. Un mapping de confiance C dit « le classeur n'a pas cet aliment, voici celui dont j'emprunte les calories » ; il ne dit rien de ce que l'aliment EST. La résolution laissait pourtant la case Ciqual du PROXY parler pour la forme : « Piment ancho séché » était végétal parce que le paprika l'est, « Yaourt grec » était du lait parce que le fromage blanc en est. Ces cinquante-là disaient juste, mais par chance, et la provenance publiée (« ciqual:… ») avait la même tête qu'une origine vraie. Elles sont désormais déclarées ici, chacune sur ce que la forme EST, et la règle (b) se tait devant un proxy assumé.\n\nET UNE FORME QUE L'ON N'A PAS DÉCLARÉE. « Kimchi de chou fermenté mûr » est adossé au proxy « Chou blanc, cru » et ressortait végétal sur la foi d'un chou. Le kimchi coréen de chou est ordinairement monté au jeotgal — crevette ou anchois salés — ou à la sauce de poisson ; il en existe des versions sans, qui se nomment. Ni le nom de la forme ni la fiche ne disent laquelle est ici : on ne tranche donc pas, elle reste « inconnu », ce qui la rend non végétarienne et la fait figurer au rapport. Une seule recette l'emploie (REAL-232, kimchi jjigae), qui porte par ailleurs de la poitrine de porc et un bouillon d'anchois et n'est pas publiable.\n\nAJOUT DU 4 SEPTEMBRE 2026 — les trois substituts végétaux qu'ont amenés les jumeaux. Le versement de quarante-huit jumeaux végétariens a fait entrer au catalogue le seitan, le tofu fumé et la saucisse végétale au tofu. Ciqual les range tous trois en « substituts de produits carnés », sous-groupe des viandes : la règle (b) refuse donc de trancher, et le build les a nommés au lieu de deviner. C'est précisément le garde-fou voulu — et il fallait qu'il se déclenche ici, puisque ces trois formes sont la protéine de plats dont la raison d'être est d'être végétariens. Les déclarer végétaux tient à ce qu'ils SONT (soja, gluten de blé) et non à la case où le classeur les met.",
+ "decisions": [
+  {
+   "cle": "aioli",
+   "forme": "Aïoli",
+   "verdict": "origine",
+   "origin": "animal:oeuf",
+   "alim_code": "11168",
+   "nom_ciqual": "Sauce aïoli, préemballée",
+   "motif": "Émulsion au jaune d’œuf (ail, huile, jaune) : compatible végétarien, exclu végétalien."
+  },
+  {
+   "cle": "anchois a l huile egoutte",
+   "forme": "Anchois à l'huile, égoutté",
+   "verdict": "origine",
+   "origin": "animal:poisson",
+   "alim_code": "26000",
+   "nom_ciqual": "Anchois, filets à l'huile, semi-conserve, égoutté",
+   "motif": "Filets d’anchois, un poisson ; la fiche Ciqual est rangée en « produits à base de poissons », sous-groupe qui mêle poissons et fruits de mer."
+  },
+  {
+   "cle": "anis etoile",
+   "forme": "Anis étoilé",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "usda_fdc_id": "171316",
+   "usda_name": "Spices, anise seed",
+   "motif": "Badiane, fruit séché de l’Illicium verum : épice végétale, référencée via USDA faute de fiche Ciqual."
+  },
+  {
+   "cle": "bar entier cru vide",
+   "forme": "Bar entier cru vidé",
+   "verdict": "origine",
+   "origin": "animal:poisson",
+   "alim_code": "26250",
+   "nom_ciqual": "Poisson blanc, de mer, cuit (aliment moyen)",
+   "motif": "Un bar est un poisson ; la fiche retenue (poisson blanc de mer, aliment moyen) est un proxy nutritionnel rangé en plats composés, ce qui n’en fait pas un plat."
+  },
+  {
+   "cle": "bicarbonate de sodium alimentaire",
+   "forme": "Bicarbonate de sodium alimentaire",
+   "verdict": "origine",
+   "origin": "mineral",
+   "alim_code": "11507",
+   "nom_ciqual": "Bicarbonate de soude",
+   "motif": "Sel minéral (NaHCO₃), ni végétal ni animal."
+  },
+  {
+   "cle": "biere blonde",
+   "forme": "Bière blonde",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "5001",
+   "nom_ciqual": "Bière \"coeur de marché\" (4-5° alcool)",
+   "motif": "Boisson alcoolisée obtenue de malt d’orge, houblon et levure ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "biere blonde froide",
+   "forme": "Bière blonde froide",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "5001",
+   "nom_ciqual": "Bière \"coeur de marché\" (4-5° alcool)",
+   "motif": "Même forme que « Bière blonde », servie froide : Boisson alcoolisée obtenue de malt d’orge, houblon et levure ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "biscuit cuillere",
+   "forme": "Biscuit cuillère",
+   "verdict": "origine",
+   "origin": "animal:oeuf",
+   "alim_code": "24430",
+   "nom_ciqual": "Biscuit sec aux oeufs à la cuillère (cuiller) ou Boudoir",
+   "motif": "La fiche Ciqual 24430 est un « biscuit sec aux œufs » : l’œuf est déclaré, c’est le composant le plus contraignant."
+  },
+  {
+   "cle": "boudin noir a cuire",
+   "forme": "Boudin noir à cuire",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "8703",
+   "nom_ciqual": "Boudin noir, à cuire",
+   "motif": "Sang et gras de porc : c’est LA forme que la mesure a vue servie deux fois comme « variante végétarienne », et elle est carnée."
+  },
+  {
+   "cle": "bouillon d agneau",
+   "forme": "Bouillon d’agneau",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "25930",
+   "nom_ciqual": "Bouillon de boeuf, déshydraté reconstitué",
+   "motif": "Bouillon tiré d’os et de viande d’agneau : origine viande ; le proxy nutritionnel (bouillon de bœuf) ne change rien à l’animal."
+  },
+  {
+   "cle": "bouillon d agneau non sale",
+   "forme": "Bouillon d’agneau non salé",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "25909",
+   "nom_ciqual": "Bouillon de viande et légumes type pot-au-feu, prêt à consommer",
+   "motif": "Même bouillon d’agneau, non salé : origine viande."
+  },
+  {
+   "cle": "bouillon d anchois",
+   "forme": "Bouillon d’anchois",
+   "verdict": "origine",
+   "origin": "animal:poisson",
+   "alim_code": "25909",
+   "nom_ciqual": "Bouillon de viande et légumes type pot-au-feu, prêt à consommer",
+   "motif": "Bouillon coréen (myeolchi yuksu) tiré d’anchois séchés : l’anchois est un poisson ; le proxy pot-au-feu n’est qu’un proxy d’énergie."
+  },
+  {
+   "cle": "bouillon d anchois et algue",
+   "forme": "Bouillon d’anchois et algue",
+   "verdict": "origine",
+   "origin": "animal:poisson",
+   "alim_code": "25948",
+   "nom_ciqual": "Bouillon de légumes, déshydraté reconstitué",
+   "motif": "Anchois séchés et kombu : le composant animal, l’anchois, est un poisson et il est le plus contraignant."
+  },
+  {
+   "cle": "bouillon de boeuf",
+   "forme": "Bouillon de bœuf",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "25930",
+   "nom_ciqual": "Bouillon de boeuf, déshydraté reconstitué",
+   "motif": "Bouillon tiré d’os et de viande de bœuf : origine viande, quelle que soit sa dilution."
+  },
+  {
+   "cle": "bouillon de boeuf non sale",
+   "forme": "Bouillon de bœuf non salé",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "25930",
+   "nom_ciqual": "Bouillon de boeuf, déshydraté reconstitué",
+   "motif": "Bouillon tiré d’os et de viande de bœuf : origine viande, quelle que soit sa dilution."
+  },
+  {
+   "cle": "bouillon de crevette",
+   "forme": "Bouillon de crevette",
+   "verdict": "origine",
+   "origin": "animal:fruits_de_mer",
+   "alim_code": "25919",
+   "nom_ciqual": "Soupe de poissons et / ou crustacés, déshydratée reconstituée",
+   "motif": "Bouillon tiré de têtes et carapaces de crevettes : crustacé, donc fruits de mer."
+  },
+  {
+   "cle": "bouillon de legumes",
+   "forme": "Bouillon de légumes",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "25948",
+   "nom_ciqual": "Bouillon de légumes, déshydraté reconstitué",
+   "motif": "Légumes, aromates, eau : aucun composant animal ; c’est le bouillon qu’une recette végétarienne doit citer."
+  },
+  {
+   "cle": "bouillon de legumes non sale",
+   "forme": "Bouillon de légumes non salé",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "25948",
+   "nom_ciqual": "Bouillon de légumes, déshydraté reconstitué",
+   "motif": "Même bouillon de légumes, non salé : végétal."
+  },
+  {
+   "cle": "bouillon de porc et poulet",
+   "forme": "Bouillon de porc et poulet",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "25947",
+   "nom_ciqual": "Bouillon de volaille, déshydraté reconstitué",
+   "motif": "Deux origines carnées (os de porc et carcasse de poulet) : on porte la viande de boucherie ; le planificateur lit de toute façon viande et volaille comme carnées."
+  },
+  {
+   "cle": "bouillon de poulet",
+   "forme": "Bouillon de poulet",
+   "verdict": "origine",
+   "origin": "animal:volaille",
+   "alim_code": "25947",
+   "nom_ciqual": "Bouillon de volaille, déshydraté reconstitué",
+   "motif": "Bouillon tiré de carcasses de volaille : origine volaille même à 0,5 g de protéines pour 100 ml — c’est la source, pas la quantité, qui fait l’origine."
+  },
+  {
+   "cle": "bouillon de veau non sale",
+   "forme": "Bouillon de veau non salé",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "25930",
+   "nom_ciqual": "Bouillon de boeuf, déshydraté reconstitué",
+   "motif": "Bouillon tiré d’os de veau : origine viande ; le proxy bouillon de bœuf est du même animal au sens du vocabulaire."
+  },
+  {
+   "cle": "bouillon de volaille",
+   "forme": "Bouillon de volaille",
+   "verdict": "origine",
+   "origin": "animal:volaille",
+   "alim_code": "25947",
+   "nom_ciqual": "Bouillon de volaille, déshydraté reconstitué",
+   "motif": "Bouillon tiré de carcasses de volaille : origine volaille même à 0,5 g de protéines pour 100 ml — c’est la source, pas la quantité, qui fait l’origine. Quinze plats classés végétariens en contenaient."
+  },
+  {
+   "cle": "bouillon de volaille clair",
+   "forme": "Bouillon de volaille clair",
+   "verdict": "origine",
+   "origin": "animal:volaille",
+   "alim_code": "25947",
+   "nom_ciqual": "Bouillon de volaille, déshydraté reconstitué",
+   "motif": "Bouillon tiré de carcasses de volaille : origine volaille même à 0,5 g de protéines pour 100 ml — c’est la source, pas la quantité, qui fait l’origine."
+  },
+  {
+   "cle": "bouillon de volaille non sale",
+   "forme": "Bouillon de volaille non salé",
+   "verdict": "origine",
+   "origin": "animal:volaille",
+   "alim_code": "25947",
+   "nom_ciqual": "Bouillon de volaille, déshydraté reconstitué",
+   "motif": "Bouillon tiré de carcasses de volaille : origine volaille même à 0,5 g de protéines pour 100 ml — c’est la source, pas la quantité, qui fait l’origine."
+  },
+  {
+   "cle": "cacao non sucre",
+   "forme": "Cacao non sucré",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "18100",
+   "nom_ciqual": "Cacao, non sucré, poudre soluble",
+   "motif": "Poudre de fèves de cacao, sans lait ni sucre : végétal."
+  },
+  {
+   "cle": "cafe expresso refroidi",
+   "forme": "Café expresso refroidi",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "18071",
+   "nom_ciqual": "Café expresso, non instantané, non sucré, prêt à boire",
+   "motif": "Café : infusion de graines torréfiées, végétal."
+  },
+  {
+   "cle": "cafe moulu",
+   "forme": "Café moulu",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "18003",
+   "nom_ciqual": "Café, moulu",
+   "motif": "Graines de café torréfiées et moulues : végétal."
+  },
+  {
+   "cle": "calvados",
+   "forme": "Calvados",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "1023",
+   "nom_ciqual": "Eau de vie de vin, type armagnac, cognac",
+   "motif": "Boisson alcoolisée obtenue de la distillation de cidre de pomme ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "capre au vinaigre",
+   "forme": "Câpre au vinaigre",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11040",
+   "nom_ciqual": "Câpres, au vinaigre",
+   "motif": "Bouton floral du câprier conservé au vinaigre : végétal."
+  },
+  {
+   "cle": "capre au vinaigre egouttee",
+   "forme": "Câpre au vinaigre, égouttée",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11040",
+   "nom_ciqual": "Câpres, au vinaigre",
+   "motif": "Même câpre au vinaigre, égouttée : végétal."
+  },
+  {
+   "cle": "cassonade",
+   "forme": "Cassonade",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "31017",
+   "nom_ciqual": "Sucre roux",
+   "motif": "Sucre de canne brut : végétal."
+  },
+  {
+   "cle": "chicharron de porc",
+   "forme": "Chicharrón de porc",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "8001",
+   "nom_ciqual": "Rillettes pur porc",
+   "motif": "Couenne et gras de porc frits : viande ; le proxy rillettes est du même animal."
+  },
+  {
+   "cle": "chocolat noir 70",
+   "forme": "Chocolat noir 70 %",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "31074",
+   "nom_ciqual": "Chocolat noir à 70% cacao minimum, extra, dégustation, tablette",
+   "motif": "Pâte de cacao, beurre de cacao et sucre : le chocolat noir ne déclare pas de lait, contrairement au chocolat au lait."
+  },
+  {
+   "cle": "chocolat noir mexicain",
+   "forme": "Chocolat noir mexicain",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "31085",
+   "nom_ciqual": "Chocolat noir à 40% de cacao minimum, à pâtisser, tablette",
+   "motif": "Cacao, sucre, cannelle : chocolat noir à pâtisser, sans lait déclaré."
+  },
+  {
+   "cle": "chorizo asturien",
+   "forme": "Chorizo asturien",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "30315",
+   "nom_ciqual": "Chorizo",
+   "motif": "Saucisson de porc au pimentón : viande."
+  },
+  {
+   "cle": "chorizo criollo",
+   "forme": "Chorizo criollo",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "30110",
+   "nom_ciqual": "Saucisse de Toulouse, crue",
+   "motif": "Saucisse fraîche de porc argentine : viande ; le proxy saucisse de Toulouse est du même animal."
+  },
+  {
+   "cle": "chourico portugais",
+   "forme": "Chouriço portugais",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "usda_fdc_id": "173859",
+   "usda_name": "Sausage, pork, chorizo, link or ground, raw",
+   "motif": "Saucisse de porc fumée ; l’entrée USDA la nomme explicitement « Sausage, pork, chorizo »."
+  },
+  {
+   "cle": "chutney d abricot",
+   "forme": "Chutney d abricot",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "31037",
+   "nom_ciqual": "Confiture d'abricot (extra ou classique)",
+   "motif": "Abricots, sucre, vinaigre, épices : végétal."
+  },
+  {
+   "cle": "cidre brut",
+   "forme": "Cidre brut",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "5006",
+   "nom_ciqual": "Cidre brut",
+   "motif": "Boisson alcoolisée obtenue de la fermentation de jus de pomme ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "cognac",
+   "forme": "Cognac",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "1023",
+   "nom_ciqual": "Eau de vie de vin, type armagnac, cognac",
+   "motif": "Boisson alcoolisée obtenue de la distillation de vin ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "confit de canard cuit",
+   "forme": "Confit de canard cuit",
+   "verdict": "origine",
+   "origin": "animal:volaille",
+   "alim_code": "8110",
+   "nom_ciqual": "Confit de canard",
+   "motif": "Cuisse de canard confite dans sa graisse : volaille."
+  },
+  {
+   "cle": "confit de canard cuit effiloche",
+   "forme": "Confit de canard cuit, effiloché",
+   "verdict": "origine",
+   "origin": "animal:volaille",
+   "alim_code": "8110",
+   "nom_ciqual": "Confit de canard",
+   "motif": "Même confit de canard, effiloché : volaille."
+  },
+  {
+   "cle": "cornichon au vinaigre",
+   "forme": "Cornichon au vinaigre",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11004",
+   "nom_ciqual": "Cornichon, au vinaigre",
+   "motif": "Petit concombre au vinaigre : végétal."
+  },
+  {
+   "cle": "dashi",
+   "forme": "Dashi",
+   "verdict": "origine",
+   "origin": "animal:poisson",
+   "alim_code": "25948",
+   "nom_ciqual": "Bouillon de légumes, déshydraté reconstitué",
+   "motif": "Bouillon japonais de bonite séchée (katsuobushi) et kombu : la bonite est un poisson ; le dashi de kombu seul serait une autre forme que le corpus ne nomme pas."
+  },
+  {
+   "cle": "doenjang pate de soja fermentee",
+   "forme": "Doenjang pâte de soja fermentée",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "20916",
+   "nom_ciqual": "Miso",
+   "motif": "Pâte de soja fermentée coréenne : végétal ; le proxy miso est de même nature."
+  },
+  {
+   "cle": "doubanjiang",
+   "forme": "Doubanjiang",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "20916",
+   "nom_ciqual": "Miso",
+   "motif": "Pâte de fèves et de piments fermentés du Sichuan : végétal."
+  },
+  {
+   "cle": "douchi haricot noir fermente",
+   "forme": "Douchi haricot noir fermenté",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "20917",
+   "nom_ciqual": "Tempeh",
+   "motif": "Haricots de soja noirs fermentés et salés : végétal ; la fiche proxy (tempeh) est rangée en plats composés, ce qui n’en fait pas un plat."
+  },
+  {
+   "cle": "eau de coco",
+   "forme": "Eau de coco",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "18011",
+   "nom_ciqual": "Eau de coco",
+   "motif": "Eau de la noix de coco verte : végétal."
+  },
+  {
+   "cle": "eomuk gateau de poisson",
+   "forme": "Eomuk gâteau de poisson",
+   "verdict": "origine",
+   "origin": "animal:poisson",
+   "alim_code": "26046",
+   "nom_ciqual": "Surimi, bâtonnets, tranche ou râpé saveur crabe",
+   "motif": "Pâte de chair de poisson coréenne (eomuk) : poisson ; le proxy surimi est de même nature."
+  },
+  {
+   "cle": "farine de ble t55",
+   "forme": "Farine de blé T55",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "9436",
+   "nom_ciqual": "Farine de blé tendre ou froment T55 (pour pains)",
+   "motif": "Blé tendre moulu : végétal ; la fiche n’a pas de groupe Ciqual, d’où l’arbitrage."
+  },
+  {
+   "cle": "farine de ble type 00",
+   "forme": "Farine de blé type 00",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "9440",
+   "nom_ciqual": "Farine de blé tendre ou froment T45 (pour pâtisserie)",
+   "motif": "Blé tendre moulu finement : végétal ; fiche sans groupe Ciqual."
+  },
+  {
+   "cle": "farine de mais blanche",
+   "forme": "Farine de maïs blanche",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "9545",
+   "nom_ciqual": "Farine de maïs",
+   "motif": "Maïs moulu : végétal ; fiche sans groupe Ciqual."
+  },
+  {
+   "cle": "farine de pois chiche",
+   "forme": "Farine de pois chiche",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "9580",
+   "nom_ciqual": "Farine de pois chiche",
+   "motif": "Pois chiches moulus : végétal ; fiche sans groupe Ciqual."
+  },
+  {
+   "cle": "farine de pois chiche grillee",
+   "forme": "Farine de pois chiche grillée",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "9580",
+   "nom_ciqual": "Farine de pois chiche",
+   "motif": "Pois chiches grillés puis moulus : végétal ; fiche sans groupe Ciqual."
+  },
+  {
+   "cle": "farine de sarrasin",
+   "forme": "Farine de sarrasin",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "9540",
+   "nom_ciqual": "Farine de sarrasin",
+   "motif": "Sarrasin moulu : végétal ; fiche sans groupe Ciqual."
+  },
+  {
+   "cle": "fecule de mais",
+   "forme": "Fécule de maïs",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "9510",
+   "nom_ciqual": "Amidon de maïs ou fécule de maïs",
+   "motif": "Amidon extrait du maïs : végétal ; fiche sans groupe Ciqual."
+  },
+  {
+   "cle": "feuille de brick",
+   "forme": "Feuille de brick",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "51550",
+   "nom_ciqual": "Khatfa feuille de brick, préemballée",
+   "motif": "Farine de blé, eau, sel, un peu d’huile : végétal ; fiche sans groupe Ciqual."
+  },
+  {
+   "cle": "feuille de vigne en saumure",
+   "forme": "Feuille de vigne en saumure",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "usda_fdc_id": "169393",
+   "usda_name": "Grape leaves, canned",
+   "motif": "Feuilles de vigne en saumure (USDA) : végétal."
+  },
+  {
+   "cle": "foie gras de canard cru",
+   "forme": "Foie gras de canard cru",
+   "verdict": "origine",
+   "origin": "animal:volaille",
+   "alim_code": "8328",
+   "nom_ciqual": "Foie gras de canard, cru",
+   "motif": "Foie de canard gras : volaille."
+  },
+  {
+   "cle": "fumet de poisson",
+   "forme": "Fumet de poisson",
+   "verdict": "origine",
+   "origin": "animal:poisson",
+   "alim_code": "25919",
+   "nom_ciqual": "Soupe de poissons et / ou crustacés, déshydratée reconstituée",
+   "motif": "Fond tiré d’arêtes et de parures de poisson : poisson ; le proxy « soupe de poissons et/ou crustacés » est un proxy d’énergie, pas d’animal."
+  },
+  {
+   "cle": "gelatine feuille",
+   "forme": "Gélatine feuille",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "11007",
+   "nom_ciqual": "Gélatine, sèche",
+   "motif": "La gélatine en feuilles du commerce est porcine ou bovine — viande de boucherie dans les deux cas ; seule une gélatine de poisson explicitement nommée changerait la valeur, et le corpus n’en emploie pas."
+  },
+  {
+   "cle": "gesier de canard confit",
+   "forme": "Gésier de canard confit",
+   "verdict": "origine",
+   "origin": "animal:volaille",
+   "alim_code": "40701",
+   "nom_ciqual": "Gésier, canard, confit, appertisé",
+   "motif": "Abat de canard confit : volaille ; le sous-sous-groupe « abats » de Ciqual mêle veau et volaille, d’où l’arbitrage."
+  },
+  {
+   "cle": "ghee",
+   "forme": "Ghee",
+   "verdict": "origine",
+   "origin": "animal:lait",
+   "usda_fdc_id": "171314",
+   "usda_name": "Butter, Clarified butter (ghee)",
+   "motif": "Beurre clarifié indien : matière grasse du lait."
+  },
+  {
+   "cle": "gochujang",
+   "forme": "Gochujang",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "20916",
+   "nom_ciqual": "Miso",
+   "motif": "Pâte de piment, riz gluant et soja fermentés : végétal."
+  },
+  {
+   "cle": "graisse d oie",
+   "forme": "Graisse d'oie",
+   "verdict": "origine",
+   "origin": "animal:volaille",
+   "alim_code": "16560",
+   "nom_ciqual": "Graisse d'oie",
+   "motif": "Graisse fondue d’oie : volaille ; le sous-groupe Ciqual mêle saindoux, graisses de volaille et paraffine."
+  },
+  {
+   "cle": "harissa",
+   "forme": "Harissa",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11112",
+   "nom_ciqual": "Harissa (sauce condimentaire), préemballée",
+   "motif": "Piments, ail, huile, épices : végétal."
+  },
+  {
+   "cle": "jaggery",
+   "forme": "Jaggery",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "31017",
+   "nom_ciqual": "Sucre roux",
+   "motif": "Sucre de canne ou de palme non raffiné : végétal."
+  },
+  {
+   "cle": "jambon blanc cuit",
+   "forme": "Jambon blanc cuit",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "28925",
+   "nom_ciqual": "Jambon cuit, de Paris, découenné dégraissé",
+   "motif": "Jambon de porc cuit : viande ; le sous-sous-groupe « jambons cuits » contient aussi des jambons de dinde, d’où l’arbitrage."
+  },
+  {
+   "cle": "jambonneau cuit",
+   "forme": "Jambonneau cuit",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "28960",
+   "nom_ciqual": "Jambonneau, cuit",
+   "motif": "Jarret de porc cuit : viande."
+  },
+  {
+   "cle": "jus d orange amere",
+   "forme": "Jus d orange amère",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "2070",
+   "nom_ciqual": "Jus d'orange, pur jus",
+   "motif": "Jus d’agrume : végétal."
+  },
+  {
+   "cle": "jus de citron frais",
+   "forme": "Jus de citron frais",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "2007",
+   "nom_ciqual": "Jus de citron, maison",
+   "motif": "Jus d’agrume : végétal."
+  },
+  {
+   "cle": "jus de citron vert frais",
+   "forme": "Jus de citron vert frais",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "2030",
+   "nom_ciqual": "Jus de citron vert, maison",
+   "motif": "Jus d’agrume : végétal."
+  },
+  {
+   "cle": "jus de tomate",
+   "forme": "Jus de tomate",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "2053",
+   "nom_ciqual": "Jus de tomate, pur jus (aliment moyen)",
+   "motif": "Jus de légume : végétal."
+  },
+  {
+   "cle": "kecap manis",
+   "forme": "Kecap manis",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "31067",
+   "nom_ciqual": "Mélasse de canne",
+   "motif": "Sauce soja indonésienne sucrée au sucre de palme : végétal."
+  },
+  {
+   "cle": "lait de coco",
+   "forme": "Lait de coco",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "18041",
+   "nom_ciqual": "Lait de coco ou Crème de coco",
+   "motif": "Chair de coco pressée : végétal malgré le mot « lait », et c’est précisément pourquoi le sous-groupe boissons est ambigu."
+  },
+  {
+   "cle": "langue de boeuf crue",
+   "forme": "Langue de bœuf crue",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "40202",
+   "nom_ciqual": "Langue, boeuf, crue",
+   "motif": "Abat de bœuf : viande ; le sous-sous-groupe « abats » mêle veau et volaille, d’où l’arbitrage."
+  },
+  {
+   "cle": "lapin cru decoupe",
+   "forme": "Lapin cru, découpé",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "34001",
+   "nom_ciqual": "Lapin, viande crue",
+   "motif": "Le lapin est un mammifère d’élevage, pas une volaille : viande ; Ciqual le range en « autres viandes » avec le canard."
+  },
+  {
+   "cle": "lardon fume cru",
+   "forme": "Lardon fumé cru",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "28720",
+   "nom_ciqual": "Lardon fumé, cru",
+   "motif": "Poitrine de porc fumée en dés : viande."
+  },
+  {
+   "cle": "levure boulangere fraiche",
+   "forme": "Levure boulangère fraîche",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11010",
+   "nom_ciqual": "Levure de boulanger, compressée",
+   "motif": "Levure de boulanger : organisme du règne des champignons, compté comme végétal par le vocabulaire."
+  },
+  {
+   "cle": "levure boulangere seche",
+   "forme": "Levure boulangère sèche",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11045",
+   "nom_ciqual": "Levure de boulanger, déshydratée",
+   "motif": "Levure de boulanger déshydratée : même organisme, végétal au sens du vocabulaire."
+  },
+  {
+   "cle": "levure chimique",
+   "forme": "Levure chimique",
+   "verdict": "origine",
+   "origin": "mineral",
+   "alim_code": "11046",
+   "nom_ciqual": "Levure chimique ou Poudre à lever",
+   "motif": "Bicarbonate, acide et amidon : une poudre à lever est un mélange de sels, pas un organisme ; on la déclare minérale pour ne pas la confondre avec la levure vivante."
+  },
+  {
+   "cle": "linguica portugaise",
+   "forme": "Linguiça portugaise",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "usda_fdc_id": "173859",
+   "usda_name": "Sausage, pork, chorizo, link or ground, raw",
+   "motif": "Saucisse de porc fumée portugaise ; l’entrée USDA la nomme « Sausage, pork, chorizo »."
+  },
+  {
+   "cle": "magret de canard fume",
+   "forme": "Magret de canard fumé",
+   "verdict": "origine",
+   "origin": "animal:volaille",
+   "alim_code": "8111",
+   "nom_ciqual": "Canard, magret fumé",
+   "motif": "Filet de canard fumé : volaille."
+  },
+  {
+   "cle": "marsala",
+   "forme": "Marsala",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "1015",
+   "nom_ciqual": "Marsala",
+   "motif": "Boisson alcoolisée obtenue de vin muté sicilien ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "masa harina",
+   "forme": "Masa harina",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "usda_fdc_id": "169696",
+   "usda_name": "Corn flour, masa, unenriched, white",
+   "motif": "Farine de maïs nixtamalisé (USDA) : végétal."
+  },
+  {
+   "cle": "mayonnaise",
+   "forme": "Mayonnaise",
+   "verdict": "origine",
+   "origin": "animal:oeuf",
+   "alim_code": "11054",
+   "nom_ciqual": "Mayonnaise (70% MG min.), préemballée",
+   "motif": "Émulsion au jaune d’œuf : compatible végétarien, exclue végétalien."
+  },
+  {
+   "cle": "mayonnaise japonaise",
+   "forme": "Mayonnaise japonaise",
+   "verdict": "origine",
+   "origin": "animal:oeuf",
+   "alim_code": "11054",
+   "nom_ciqual": "Mayonnaise (70% MG min.), préemballée",
+   "motif": "Mayonnaise au jaune d’œuf (Kewpie) : compatible végétarien, exclue végétalien."
+  },
+  {
+   "cle": "melasse de grenade",
+   "forme": "Mélasse de grenade",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "31067",
+   "nom_ciqual": "Mélasse de canne",
+   "motif": "Jus de grenade réduit : végétal ; le proxy mélasse de canne est aussi végétal."
+  },
+  {
+   "cle": "merguez crue",
+   "forme": "Merguez crue",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "30150",
+   "nom_ciqual": "Merguez, crue",
+   "motif": "Saucisse de bœuf et de mouton : viande."
+  },
+  {
+   "cle": "miel",
+   "forme": "Miel",
+   "verdict": "origine",
+   "origin": "animal:miel",
+   "alim_code": "31008",
+   "nom_ciqual": "Miel",
+   "motif": "Produit des abeilles : animal, compatible végétarien, exclu végétalien — et rangé par Ciqual avec les sucres, d’où l’ambiguïté du sous-groupe."
+  },
+  {
+   "cle": "mirin",
+   "forme": "Mirin",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "1015",
+   "nom_ciqual": "Marsala",
+   "motif": "Boisson alcoolisée obtenue de riz fermenté (vin de riz doux) ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "morcilla asturienne",
+   "forme": "Morcilla asturienne",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "8703",
+   "nom_ciqual": "Boudin noir, à cuire",
+   "motif": "Boudin de sang de porc : viande."
+  },
+  {
+   "cle": "moutarde de dijon",
+   "forme": "Moutarde de Dijon",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11013",
+   "nom_ciqual": "Moutarde",
+   "motif": "Graines de moutarde, vinaigre, sel : végétal."
+  },
+  {
+   "cle": "nouille de ble chinoise seche",
+   "forme": "Nouille de blé chinoise sèche",
+   "verdict": "origine",
+   "origin": "animal:oeuf",
+   "alim_code": "9863",
+   "nom_ciqual": "Pâtes ou nouilles asiatiques au blé et aux oeufs, crues, nature",
+   "motif": "La fiche retenue (9863) est une nouille de blé AUX ŒUFS : tant que la forme ne dit pas « sans œuf », on porte le composant le plus contraignant qu’elle déclare."
+  },
+  {
+   "cle": "nouille ramen fraiche",
+   "forme": "Nouille ramen fraîche",
+   "verdict": "origine",
+   "origin": "animal:oeuf",
+   "alim_code": "9815",
+   "nom_ciqual": "Pâtes fraîches, aux oeufs, crues",
+   "motif": "La fiche retenue (9815) est une pâte fraîche AUX ŒUFS : même règle, le composant le plus contraignant déclaré par la fiche."
+  },
+  {
+   "cle": "oignon en poudre",
+   "forme": "Oignon en poudre",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "usda_fdc_id": "171327",
+   "usda_name": "Spices, onion powder",
+   "motif": "Oignon déshydraté moulu (USDA) : végétal."
+  },
+  {
+   "cle": "olive noire",
+   "forme": "Olive noire",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "13032",
+   "nom_ciqual": "Olive noire, en saumure, égouttée",
+   "motif": "Fruit de l’olivier en saumure : végétal ; Ciqual le range en condiments avec la tapenade aux anchois, d’où l’ambiguïté."
+  },
+  {
+   "cle": "olive noire denoyautee",
+   "forme": "Olive noire dénoyautée",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "13032",
+   "nom_ciqual": "Olive noire, en saumure, égouttée",
+   "motif": "Olive noire dénoyautée : végétal."
+  },
+  {
+   "cle": "olive verte denoyautee",
+   "forme": "Olive verte dénoyautée",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "13033",
+   "nom_ciqual": "Olive verte, en saumure, égouttée",
+   "motif": "Olive verte dénoyautée : végétal ; ce sont les olives FARCIES aux anchois (13147) qui sont animales, pas celle-ci."
+  },
+  {
+   "cle": "pain d epices",
+   "forme": "Pain d'épices",
+   "verdict": "origine",
+   "origin": "animal:miel",
+   "alim_code": "23200",
+   "nom_ciqual": "Pain d'épices",
+   "motif": "Farine de seigle et miel : le miel est le composant animal déclaré, donc l’origine portée ; compatible végétarien, exclu végétalien."
+  },
+  {
+   "cle": "paneer",
+   "forme": "Paneer",
+   "verdict": "origine",
+   "origin": "animal:lait",
+   "usda_fdc_id": "172223",
+   "usda_name": "Cheese, fresh, queso fresco",
+   "motif": "Fromage frais indien : lait ; référencé via USDA (queso fresco) faute de fiche Ciqual."
+  },
+  {
+   "cle": "pate brisee crue",
+   "forme": "Pâte brisée crue",
+   "verdict": "origine",
+   "origin": "animal:lait",
+   "alim_code": "23414",
+   "nom_ciqual": "Pâte brisée, pur beurre, crue",
+   "motif": "La fiche déclare « pur beurre » : lait est le composant animal déclaré."
+  },
+  {
+   "cle": "pate feuilletee crue",
+   "forme": "Pâte feuilletée crue",
+   "verdict": "origine",
+   "origin": "animal:lait",
+   "alim_code": "23424",
+   "nom_ciqual": "Pâte feuilletée pur beurre, crue",
+   "motif": "La fiche déclare « pur beurre » : lait."
+  },
+  {
+   "cle": "pate sablee crue",
+   "forme": "Pâte sablée crue",
+   "verdict": "origine",
+   "origin": "animal:lait",
+   "alim_code": "23444",
+   "nom_ciqual": "Pâte sablée pur beurre, crue",
+   "motif": "La fiche déclare « pur beurre » ; un œuf éventuel n’est pas déclaré par le libellé et ne changerait pas la compatibilité végétarienne."
+  },
+  {
+   "cle": "pates fraiches aux oeufs crues",
+   "forme": "Pâtes fraîches aux œufs crues",
+   "verdict": "origine",
+   "origin": "animal:oeuf",
+   "alim_code": "9815",
+   "nom_ciqual": "Pâtes fraîches, aux oeufs, crues",
+   "motif": "Le nom de la forme déclare l’œuf : composant le plus contraignant."
+  },
+  {
+   "cle": "pied de porc cru",
+   "forme": "Pied de porc cru",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "28540",
+   "nom_ciqual": "Pied de porc demi-sel",
+   "motif": "Pied de porc : viande."
+  },
+  {
+   "cle": "poitrine de porc demi sel",
+   "forme": "Poitrine de porc demi-sel",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "28550",
+   "nom_ciqual": "Poitrine de porc demi-sel",
+   "motif": "Poitrine de porc salée : viande."
+  },
+  {
+   "cle": "poitrine de porc fumee",
+   "forme": "Poitrine de porc fumée",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "28502",
+   "nom_ciqual": "Poitrine de porc, fumée, crue",
+   "motif": "Poitrine de porc fumée : viande."
+  },
+  {
+   "cle": "poule crue",
+   "forme": "Poule crue",
+   "verdict": "origine",
+   "origin": "animal:volaille",
+   "alim_code": "36001",
+   "nom_ciqual": "Poule, viande ,crue",
+   "motif": "La poule est une volaille ; Ciqual la range en « autres viandes » avec le lapin et le cheval, d’où l’arbitrage."
+  },
+  {
+   "cle": "quenelle nature crue",
+   "forme": "Quenelle nature crue",
+   "verdict": "origine",
+   "origin": "animal:oeuf",
+   "alim_code": "8937",
+   "nom_ciqual": "Quenelle nature, crue",
+   "motif": "La quenelle nature lyonnaise est une panade de semoule ou farine, œufs, beurre et lait — sans chair, contrairement aux quenelles de brochet ou de volaille qui sont d’autres formes ; l’œuf est le composant le plus contraignant."
+  },
+  {
+   "cle": "quesillo oaxaca",
+   "forme": "Quesillo Oaxaca",
+   "verdict": "origine",
+   "origin": "animal:lait",
+   "usda_fdc_id": "170845",
+   "usda_name": "Cheese, mozzarella, whole milk",
+   "motif": "Fromage à pâte filée mexicain : lait ; référencé via USDA (mozzarella)."
+  },
+  {
+   "cle": "radis daikon cru",
+   "forme": "Radis daikon cru",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "usda_fdc_id": "168451",
+   "usda_name": "Radishes, oriental, raw",
+   "motif": "Racine de radis (USDA) : végétal."
+  },
+  {
+   "cle": "rhum ambre",
+   "forme": "Rhum ambré",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "1004",
+   "nom_ciqual": "Rhum",
+   "motif": "Boisson alcoolisée obtenue de la distillation de canne à sucre ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "riz bomba cru",
+   "forme": "Riz bomba cru",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "usda_fdc_id": "168881",
+   "usda_name": "Rice, white, short-grain, enriched, uncooked",
+   "motif": "Riz rond espagnol (USDA) : végétal."
+  },
+  {
+   "cle": "saindoux",
+   "forme": "Saindoux",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "16520",
+   "nom_ciqual": "Saindoux",
+   "motif": "Graisse de porc fondue : viande, même employée comme matière grasse."
+  },
+  {
+   "cle": "sake",
+   "forme": "Saké",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "1026",
+   "nom_ciqual": "Saké ou Alcool de riz",
+   "motif": "Boisson alcoolisée obtenue de riz fermenté ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "sake de cuisine",
+   "forme": "Saké de cuisine",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "1026",
+   "nom_ciqual": "Saké ou Alcool de riz",
+   "motif": "Boisson alcoolisée obtenue de riz fermenté, salé pour la cuisine ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "salsa verde",
+   "forme": "Salsa verde",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "usda_fdc_id": "171824",
+   "usda_name": "Sauce, salsa, verde, ready-to-serve",
+   "motif": "Tomatilles, piments, oignon, coriandre (USDA) : végétal."
+  },
+  {
+   "cle": "sambal",
+   "forme": "Sambal",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11112",
+   "nom_ciqual": "Harissa (sauce condimentaire), préemballée",
+   "motif": "Piments pilés, sel, parfois échalote et vinaigre : végétal — c’est le sambal TERASI (à la pâte de crevette) qui serait animal, et le corpus nomme le sambal simple."
+  },
+  {
+   "cle": "sauce hoisin",
+   "forme": "Sauce hoisin",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11100",
+   "nom_ciqual": "Sauce barbecue, préemballée",
+   "motif": "Soja fermenté, sucre, ail, vinaigre, épices : végétal."
+  },
+  {
+   "cle": "sauce huitre",
+   "forme": "Sauce huître",
+   "verdict": "origine",
+   "origin": "animal:fruits_de_mer",
+   "usda_fdc_id": "174529",
+   "usda_name": "Sauce, oyster, ready-to-serve",
+   "motif": "Extrait d’huîtres réduit : mollusque, donc fruits de mer."
+  },
+  {
+   "cle": "sauce poisson",
+   "forme": "Sauce poisson",
+   "verdict": "origine",
+   "origin": "animal:poisson",
+   "alim_code": "11194",
+   "nom_ciqual": "Sauce Nuoc Mâm ou Sauce au poisson, préemballée",
+   "motif": "Nuoc-mâm : anchois fermentés au sel — l’anchois est un poisson, et c’est l’animal qui fixe la valeur, pas l’usage en condiment."
+  },
+  {
+   "cle": "sauce soja",
+   "forme": "Sauce soja",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11104",
+   "nom_ciqual": "Sauce soja, préemballée",
+   "motif": "Sauce soja : soja et blé fermentés, sel, eau — aucun composant animal, quelle que soit la variante régionale."
+  },
+  {
+   "cle": "sauce soja claire",
+   "forme": "Sauce soja claire",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11104",
+   "nom_ciqual": "Sauce soja, préemballée",
+   "motif": "Sauce soja : soja et blé fermentés, sel, eau — aucun composant animal, quelle que soit la variante régionale."
+  },
+  {
+   "cle": "sauce soja coreenne",
+   "forme": "Sauce soja coréenne",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11104",
+   "nom_ciqual": "Sauce soja, préemballée",
+   "motif": "Sauce soja : soja et blé fermentés, sel, eau — aucun composant animal, quelle que soit la variante régionale."
+  },
+  {
+   "cle": "sauce soja foncee",
+   "forme": "Sauce soja foncée",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11104",
+   "nom_ciqual": "Sauce soja, préemballée",
+   "motif": "Sauce soja : soja et blé fermentés, sel, eau — aucun composant animal, quelle que soit la variante régionale."
+  },
+  {
+   "cle": "sauce soja japonaise",
+   "forme": "Sauce soja japonaise",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11104",
+   "nom_ciqual": "Sauce soja, préemballée",
+   "motif": "Sauce soja : soja et blé fermentés, sel, eau — aucun composant animal, quelle que soit la variante régionale."
+  },
+  {
+   "cle": "sauce soja legere",
+   "forme": "Sauce soja légère",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11104",
+   "nom_ciqual": "Sauce soja, préemballée",
+   "motif": "Sauce soja : soja et blé fermentés, sel, eau — aucun composant animal, quelle que soit la variante régionale."
+  },
+  {
+   "cle": "sauce soja legere speciale poisson",
+   "forme": "Sauce soja légère spéciale poisson",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11104",
+   "nom_ciqual": "Sauce soja, préemballée",
+   "motif": "Sauce soja claire cantonaise POUR le poisson vapeur (蒸魚豉油 : soja, blé, sel, sucre), pas une sauce DE poisson ; l’annexe A3 du plan l’avait listée sur le seul mot « poisson » de son nom — exactement le genre d’inférence que ce lot remplace."
+  },
+  {
+   "cle": "sauce soja philippine",
+   "forme": "Sauce soja philippine",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11104",
+   "nom_ciqual": "Sauce soja, préemballée",
+   "motif": "Sauce soja : soja et blé fermentés, sel, eau — aucun composant animal, quelle que soit la variante régionale."
+  },
+  {
+   "cle": "sauce worcestershire",
+   "forme": "Sauce Worcestershire",
+   "verdict": "origine",
+   "origin": "animal:poisson",
+   "usda_fdc_id": "171610",
+   "usda_name": "Sauce, worcestershire",
+   "motif": "Contient des anchois fermentés (recette Lea & Perrins, que l’entrée USDA reflète) : l’anchois est un poisson ; on ne la met pas en « autre » puisque l’animal est nommé."
+  },
+  {
+   "cle": "saucisse de montbeliard",
+   "forme": "Saucisse de Montbéliard",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "30105",
+   "nom_ciqual": "Saucisse de Montbéliard",
+   "motif": "Saucisse de porc fumée : viande."
+  },
+  {
+   "cle": "saucisse de morteau",
+   "forme": "Saucisse de Morteau",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "30104",
+   "nom_ciqual": "Saucisse de Morteau",
+   "motif": "Saucisse de porc fumée : viande."
+  },
+  {
+   "cle": "saucisse de toulouse crue",
+   "forme": "Saucisse de Toulouse crue",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "alim_code": "30110",
+   "nom_ciqual": "Saucisse de Toulouse, crue",
+   "motif": "Saucisse de porc fraîche : viande."
+  },
+  {
+   "cle": "sel fin",
+   "forme": "Sel fin",
+   "verdict": "origine",
+   "origin": "mineral",
+   "reference": "surcharge Myko (nutrition_override)",
+   "motif": "Chlorure de sodium : minéral ; la forme est une surcharge Myko sans fiche Ciqual, d’où l’arbitrage."
+  },
+  {
+   "cle": "ssamjang",
+   "forme": "Ssamjang",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "20916",
+   "nom_ciqual": "Miso",
+   "motif": "Doenjang et gochujang mêlés avec ail, sésame et sucre : végétal."
+  },
+  {
+   "cle": "sucre brun",
+   "forme": "Sucre brun",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "31017",
+   "nom_ciqual": "Sucre roux",
+   "motif": "Sucre de canne : végétal."
+  },
+  {
+   "cle": "sucre candi",
+   "forme": "Sucre candi",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "31016",
+   "nom_ciqual": "Sucre blanc",
+   "motif": "Sucre cristallisé : végétal."
+  },
+  {
+   "cle": "sucre de palme",
+   "forme": "Sucre de palme",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "31017",
+   "nom_ciqual": "Sucre roux",
+   "motif": "Sève de palmier réduite : végétal."
+  },
+  {
+   "cle": "sucre semoule",
+   "forme": "Sucre semoule",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "31016",
+   "nom_ciqual": "Sucre blanc",
+   "motif": "Sucre de betterave ou de canne : végétal."
+  },
+  {
+   "cle": "tare de soja",
+   "forme": "Tare de soja",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "usda_fdc_id": "171167",
+   "usda_name": "Sauce, teriyaki, ready-to-serve",
+   "motif": "Sauce soja, mirin et sucre réduits (USDA teriyaki) : végétal."
+  },
+  {
+   "cle": "thon au naturel en conserve egoutte",
+   "forme": "Thon au naturel en conserve, égoutté",
+   "verdict": "origine",
+   "origin": "animal:poisson",
+   "alim_code": "26181",
+   "nom_ciqual": "Thon albacore ou thon jaune, au naturel, appertisé, égoutté",
+   "motif": "Thon : poisson ; le sous-groupe « produits à base de poissons et produits de la mer » mêle poissons et crustacés, d’où l’arbitrage."
+  },
+  {
+   "cle": "tofu ferme",
+   "forme": "Tofu ferme",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "20904",
+   "nom_ciqual": "Tofu nature, préemballé",
+   "motif": "Caillé de lait de soja : végétal — Ciqual le range en « substituts de produits carnés », et la catégorie Myko « viandes » qui en découle le comptait comme de la viande."
+  },
+  {
+   "cle": "tofu soyeux ferme",
+   "forme": "Tofu soyeux ferme",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "20906",
+   "nom_ciqual": "Tofu soyeux, préemballé",
+   "motif": "Caillé de lait de soja non pressé : végétal."
+  },
+  {
+   "cle": "vermouth sec",
+   "forme": "Vermouth sec",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "1007",
+   "nom_ciqual": "Apéritif à base de vin ou vermouth",
+   "motif": "Boisson alcoolisée obtenue de vin aromatisé aux plantes ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "vin blanc sec",
+   "forme": "Vin blanc sec",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "5215",
+   "nom_ciqual": "Vin blanc (sec)",
+   "motif": "Boisson alcoolisée obtenue de raisin ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "vin blanc sec d alsace",
+   "forme": "Vin blanc sec d Alsace",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "usda_fdc_id": "174837",
+   "usda_name": "Alcoholic beverage, wine, table, white",
+   "motif": "Boisson alcoolisée obtenue de raisin ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "vin de riz taiwanais",
+   "forme": "Vin de riz taïwanais",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "1026",
+   "nom_ciqual": "Saké ou Alcool de riz",
+   "motif": "Boisson alcoolisée obtenue de riz fermenté ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "vin rouge de bourgogne",
+   "forme": "Vin rouge de Bourgogne",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "5214",
+   "nom_ciqual": "Vin rouge",
+   "motif": "Boisson alcoolisée obtenue de raisin ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "vin rouge sec",
+   "forme": "Vin rouge sec",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "5214",
+   "nom_ciqual": "Vin rouge",
+   "motif": "Boisson alcoolisée obtenue de raisin ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "vin shaoxing",
+   "forme": "Vin Shaoxing",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "1026",
+   "nom_ciqual": "Saké ou Alcool de riz",
+   "motif": "Boisson alcoolisée obtenue de riz gluant fermenté ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "vinaigre balsamique",
+   "forme": "Vinaigre balsamique",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11091",
+   "nom_ciqual": "Vinaigre balsamique",
+   "motif": "Vinaigre : fermentation acétique d’un alcool végétal (vin, cidre, canne, riz, malt) ; rien d’animal."
+  },
+  {
+   "cle": "vinaigre blanc",
+   "forme": "Vinaigre blanc",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11018",
+   "nom_ciqual": "Vinaigre",
+   "motif": "Vinaigre : fermentation acétique d’un alcool végétal (vin, cidre, canne, riz, malt) ; rien d’animal."
+  },
+  {
+   "cle": "vinaigre de canne",
+   "forme": "Vinaigre de canne",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11018",
+   "nom_ciqual": "Vinaigre",
+   "motif": "Vinaigre : fermentation acétique d’un alcool végétal (vin, cidre, canne, riz, malt) ; rien d’animal."
+  },
+  {
+   "cle": "vinaigre de cidre",
+   "forme": "Vinaigre de cidre",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11018",
+   "nom_ciqual": "Vinaigre",
+   "motif": "Vinaigre : fermentation acétique d’un alcool végétal (vin, cidre, canne, riz, malt) ; rien d’animal."
+  },
+  {
+   "cle": "vinaigre de malt",
+   "forme": "Vinaigre de malt",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11018",
+   "nom_ciqual": "Vinaigre",
+   "motif": "Vinaigre : fermentation acétique d’un alcool végétal (vin, cidre, canne, riz, malt) ; rien d’animal."
+  },
+  {
+   "cle": "vinaigre de palmier ou cidre",
+   "forme": "Vinaigre de palmier ou cidre",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11018",
+   "nom_ciqual": "Vinaigre",
+   "motif": "Vinaigre : fermentation acétique d’un alcool végétal (vin, cidre, canne, riz, malt) ; rien d’animal."
+  },
+  {
+   "cle": "vinaigre de riz",
+   "forme": "Vinaigre de riz",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11018",
+   "nom_ciqual": "Vinaigre",
+   "motif": "Vinaigre : fermentation acétique d’un alcool végétal (vin, cidre, canne, riz, malt) ; rien d’animal."
+  },
+  {
+   "cle": "vinaigre de vin rouge",
+   "forme": "Vinaigre de vin rouge",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11220",
+   "nom_ciqual": "Vinaigre de vin rouge",
+   "motif": "Vinaigre : fermentation acétique d’un alcool végétal (vin, cidre, canne, riz, malt) ; rien d’animal."
+  },
+  {
+   "cle": "vinaigre de xeres",
+   "forme": "Vinaigre de xérès",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11018",
+   "nom_ciqual": "Vinaigre",
+   "motif": "Vinaigre : fermentation acétique d’un alcool végétal (vin, cidre, canne, riz, malt) ; rien d’animal."
+  },
+  {
+   "cle": "vinaigre noir chinois",
+   "forme": "Vinaigre noir chinois",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "11018",
+   "nom_ciqual": "Vinaigre",
+   "motif": "Vinaigre : fermentation acétique d’un alcool végétal (vin, cidre, canne, riz, malt) ; rien d’animal."
+  },
+  {
+   "cle": "whisky",
+   "forme": "Whisky",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "1005",
+   "nom_ciqual": "Whisky",
+   "motif": "Boisson alcoolisée obtenue de la distillation de céréales maltées ; les auxiliaires de collage ne sont pas des ingrédients déclarés (voir le contexte du lot)."
+  },
+  {
+   "cle": "zakwas de betterave fermente",
+   "forme": "Zakwas de betterave fermenté",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "2075",
+   "nom_ciqual": "Jus de légumes, pur jus (aliment moyen)",
+   "motif": "Betterave lacto-fermentée : végétal."
+  },
+  {
+   "cle": "agneau hache cru",
+   "forme": "Agneau haché cru",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "nom_ciqual": "Agneau, gigot, cru",
+   "proxy_assume": true,
+   "motif": "Viande d’agneau hachée : viande de boucherie. La fiche retenue (gigot) n’est qu’un proxy d’énergie."
+  },
+  {
+   "cle": "ail cru tranche",
+   "forme": "Ail cru tranché",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Ail, sauté/poêlé, sans matière grasse",
+   "proxy_assume": true,
+   "motif": "Gousse d’ail : végétal. Le tranchage ne change rien à l’espèce."
+  },
+  {
+   "cle": "ajwain graines",
+   "forme": "Ajwain graines",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Carvi, graine",
+   "proxy_assume": true,
+   "motif": "Graine d’ajowan (Trachyspermum ammi), ombellifère : végétal ; le carvi n’est qu’un proxy d’énergie."
+  },
+  {
+   "cle": "ananas frais",
+   "forme": "Ananas frais",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Fruit cru (aliment moyen)",
+   "proxy_assume": true,
+   "motif": "Fruit de l’ananas : végétal."
+  },
+  {
+   "cle": "baie de genievre",
+   "forme": "Baie de genièvre",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Epice (aliment moyen)",
+   "proxy_assume": true,
+   "motif": "Cône femelle du genévrier employé en épice : végétal."
+  },
+  {
+   "cle": "berbere",
+   "forme": "Berbéré",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Curry, poudre",
+   "proxy_assume": true,
+   "motif": "Mélange d’épices éthiopien (piment, fenugrec, gingembre, ail) : végétal."
+  },
+  {
+   "cle": "beurre clarifie epice niter kibbeh",
+   "forme": "Beurre clarifié épicé niter kibbeh",
+   "verdict": "origine",
+   "origin": "animal:lait",
+   "nom_ciqual": "Huile de beurre ou Beurre concentré",
+   "proxy_assume": true,
+   "motif": "Beurre clarifié éthiopien infusé d’aromates : matière grasse du lait."
+  },
+  {
+   "cle": "boeuf marine bulgogi cuit",
+   "forme": "Bœuf mariné bulgogi cuit",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "nom_ciqual": "Boeuf, entrecôte, partie maigre, grillée/poêlée",
+   "proxy_assume": true,
+   "motif": "Bœuf mariné puis grillé : viande de boucherie."
+  },
+  {
+   "cle": "bouquet garni frais",
+   "forme": "Bouquet garni frais",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Persil, frais",
+   "proxy_assume": true,
+   "motif": "Botte d’herbes (thym, laurier, persil) : végétal."
+  },
+  {
+   "cle": "chana masala",
+   "forme": "Chana masala",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Pois chiche, bouilli/cuit à l'eau",
+   "proxy_assume": true,
+   "motif": "Curry de pois chiches aux épices : légumineuse et épices, végétal ; la version du corpus ne déclare ni beurre ni crème."
+  },
+  {
+   "cle": "chataigne d eau",
+   "forme": "Châtaigne d’eau",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Topinambour, cru",
+   "proxy_assume": true,
+   "motif": "Tubercule d’Eleocharis dulcis : végétal, malgré son nom de châtaigne."
+  },
+  {
+   "cle": "chou blanc fermente curtido",
+   "forme": "Chou blanc fermenté curtido",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Chou blanc, cru",
+   "proxy_assume": true,
+   "motif": "Chou, carotte et oignon saumurés au vinaigre (curtido salvadorien) : végétal, la recette ne porte aucun ferment animal."
+  },
+  {
+   "cle": "chou chinois sale",
+   "forme": "Chou chinois salé",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Chou chinois ou pak-choi ou pé-tsai, cru",
+   "proxy_assume": true,
+   "motif": "Chou chinois dégorgé au sel, sans autre ingrédient : végétal."
+  },
+  {
+   "cle": "choucroute crue fermentee",
+   "forme": "Choucroute crue fermentée",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Chou blanc, cru",
+   "proxy_assume": true,
+   "motif": "Chou blanc et sel en fermentation lactique : végétal ; le saindoux et la charcuterie de la choucroute garnie sont d’autres formes."
+  },
+  {
+   "cle": "cinq epices chinoises",
+   "forme": "Cinq épices chinoises",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Epice (aliment moyen)",
+   "proxy_assume": true,
+   "motif": "Anis étoilé, girofle, cannelle, poivre du Sichuan, fenouil : végétal."
+  },
+  {
+   "cle": "citronnelle fraiche",
+   "forme": "Citronnelle fraîche",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Herbes aromatiques fraîches (aliment moyen)",
+   "proxy_assume": true,
+   "motif": "Tige de Cymbopogon citratus : végétal."
+  },
+  {
+   "cle": "creme mexicaine",
+   "forme": "Crème mexicaine",
+   "verdict": "origine",
+   "origin": "animal:lait",
+   "nom_ciqual": "Crème de lait ou spécialité à base de crème légère (aliment moyen)",
+   "proxy_assume": true,
+   "motif": "Crema mexicana : crème de lait légèrement acidulée, donc lait."
+  },
+  {
+   "cle": "fenugrec seche kasuri methi",
+   "forme": "Fenugrec séché kasuri methi",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Fenugrec, graine",
+   "proxy_assume": true,
+   "motif": "Feuilles de fenugrec séchées : végétal (le proxy est la graine de la même plante)."
+  },
+  {
+   "cle": "feuille de combava",
+   "forme": "Feuille de combava",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Laurier, feuille",
+   "proxy_assume": true,
+   "motif": "Feuille de Citrus hystrix : végétal."
+  },
+  {
+   "cle": "feuille de curry fraiche",
+   "forme": "Feuille de curry fraîche",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Thym, frais",
+   "proxy_assume": true,
+   "motif": "Feuille de kaloupilé (Murraya koenigii) : végétal."
+  },
+  {
+   "cle": "flanchet de boeuf cru",
+   "forme": "Flanchet de bœuf cru",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "nom_ciqual": "Boeuf, plat de côtes, cru",
+   "proxy_assume": true,
+   "motif": "Morceau de bœuf : viande de boucherie."
+  },
+  {
+   "cle": "fromage frais mexicain",
+   "forme": "Fromage frais mexicain",
+   "verdict": "origine",
+   "origin": "animal:lait",
+   "nom_ciqual": "Fromage type feta, au lait de vache",
+   "proxy_assume": true,
+   "motif": "Queso fresco : fromage de lait de vache."
+  },
+  {
+   "cle": "galanga frais",
+   "forme": "Galanga frais",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Gingembre, racine crue",
+   "proxy_assume": true,
+   "motif": "Rhizome d’Alpinia galanga : végétal."
+  },
+  {
+   "cle": "garam masala",
+   "forme": "Garam masala",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Curry, poudre",
+   "proxy_assume": true,
+   "motif": "Mélange d’épices indien (cannelle, cardamome, girofle, cumin, coriandre) : végétal."
+  },
+  {
+   "cle": "gateau de riz coreen tteok",
+   "forme": "Gâteau de riz coréen tteok",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Gnocchi à la semoule, cru",
+   "proxy_assume": true,
+   "motif": "Pâte de riz gluant étuvée, sans œuf ni lait déclarés : végétal."
+  },
+  {
+   "cle": "gochugaru",
+   "forme": "Gochugaru",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Poivre de Cayenne ou piment de Cayenne",
+   "proxy_assume": true,
+   "motif": "Piment coréen séché et broyé : végétal."
+  },
+  {
+   "cle": "gousse de vanille",
+   "forme": "Gousse de vanille",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Epice (aliment moyen)",
+   "proxy_assume": true,
+   "motif": "Fruit de Vanilla planifolia : végétal."
+  },
+  {
+   "cle": "graine de moutarde",
+   "forme": "Graine de moutarde",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Lin, graine",
+   "proxy_assume": true,
+   "motif": "Graine de Brassica : végétal."
+  },
+  {
+   "cle": "haricot cornille sec",
+   "forme": "Haricot cornille sec",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Haricot rouge, sec",
+   "proxy_assume": true,
+   "motif": "Graine de Vigna unguiculata : légumineuse, végétal."
+  },
+  {
+   "cle": "haricot kilometre cru",
+   "forme": "Haricot kilomètre cru",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Haricot vert, cru",
+   "proxy_assume": true,
+   "motif": "Gousse de Vigna unguiculata sesquipedalis : végétal."
+  },
+  {
+   "cle": "huile de moutarde",
+   "forme": "Huile de moutarde",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Huile de colza",
+   "proxy_assume": true,
+   "motif": "Huile pressée de graines de moutarde : végétal."
+  },
+  {
+   "cle": "huile pimentee",
+   "forme": "Huile pimentée",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Huile végétale (aliment moyen)",
+   "proxy_assume": true,
+   "motif": "Huile végétale infusée de piment : végétal ; une huile pimentée au crustacé serait une autre forme, et le corpus ne la nomme pas."
+  },
+  {
+   "cle": "lentille urad blanche seche",
+   "forme": "Lentille urad blanche sèche",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Haricot mungo, sec",
+   "proxy_assume": true,
+   "motif": "Graine de Vigna mungo décortiquée : légumineuse, végétal."
+  },
+  {
+   "cle": "lentille urad noire entiere seche",
+   "forme": "Lentille urad noire entière sèche",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Lentille, sèche",
+   "proxy_assume": true,
+   "motif": "Graine entière de Vigna mungo : légumineuse, végétal."
+  },
+  {
+   "cle": "os a moelle de boeuf",
+   "forme": "Os à moelle de bœuf",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "nom_ciqual": "Boeuf, braisé",
+   "proxy_assume": true,
+   "motif": "Os et moelle de bœuf : viande de boucherie."
+  },
+  {
+   "cle": "piment ancho seche",
+   "forme": "Piment ancho séché",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Paprika",
+   "proxy_assume": true,
+   "motif": "Poblano séché : végétal."
+  },
+  {
+   "cle": "piment du cachemire moulu",
+   "forme": "Piment du Cachemire moulu",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Poivre de Cayenne ou piment de Cayenne",
+   "proxy_assume": true,
+   "motif": "Piment séché moulu : végétal."
+  },
+  {
+   "cle": "piment guajillo seche",
+   "forme": "Piment guajillo séché",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Paprika",
+   "proxy_assume": true,
+   "motif": "Mirasol séché : végétal."
+  },
+  {
+   "cle": "piment pasilla seche",
+   "forme": "Piment pasilla séché",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Paprika",
+   "proxy_assume": true,
+   "motif": "Chilaca séché : végétal."
+  },
+  {
+   "cle": "poivre du sichuan",
+   "forme": "Poivre du Sichuan",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Epice (aliment moyen)",
+   "proxy_assume": true,
+   "motif": "Baie de Zanthoxylum : végétal."
+  },
+  {
+   "cle": "pul biber",
+   "forme": "Pul biber",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Poivre de Cayenne ou piment de Cayenne",
+   "proxy_assume": true,
+   "motif": "Flocons de piment d’Alep : végétal."
+  },
+  {
+   "cle": "ras el hanout",
+   "forme": "Ras el-hanout",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Curry, poudre",
+   "proxy_assume": true,
+   "motif": "Mélange d’épices maghrébin : végétal."
+  },
+  {
+   "cle": "salsa roja",
+   "forme": "Salsa roja",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Tomate, pulpe, appertisée",
+   "proxy_assume": true,
+   "motif": "Tomates, piments, oignon et ail mixés : végétal."
+  },
+  {
+   "cle": "sambar powder",
+   "forme": "Sambar powder",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Curry, poudre",
+   "proxy_assume": true,
+   "motif": "Mélange d’épices et de lentilles grillées du sud de l’Inde : végétal."
+  },
+  {
+   "cle": "saucisse chinoise lap cheong",
+   "forme": "Saucisse chinoise lap cheong",
+   "verdict": "origine",
+   "origin": "animal:viande",
+   "nom_ciqual": "Saucisse sèche",
+   "proxy_assume": true,
+   "motif": "Saucisse séchée de porc sucrée au vin de riz : viande de boucherie ; les lap cheong au foie de canard sont vendus sous un autre nom et le corpus ne les emploie pas."
+  },
+  {
+   "cle": "shiitake frais",
+   "forme": "Shiitaké frais",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Champignon, tout type, cru",
+   "proxy_assume": true,
+   "motif": "Carpophore de Lentinula edodes : champignon, rangé avec le végétal par le vocabulaire."
+  },
+  {
+   "cle": "sumac moulu",
+   "forme": "Sumac moulu",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Epice (aliment moyen)",
+   "proxy_assume": true,
+   "motif": "Drupes de Rhus coriaria séchées et moulues : végétal."
+  },
+  {
+   "cle": "tomatillo frais",
+   "forme": "Tomatillo frais",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "nom_ciqual": "Tomate verte, crue",
+   "proxy_assume": true,
+   "motif": "Fruit de Physalis philadelphica : végétal."
+  },
+  {
+   "cle": "tome fraiche de l aubrac",
+   "forme": "Tome fraîche de l’Aubrac",
+   "verdict": "origine",
+   "origin": "animal:lait",
+   "nom_ciqual": "Fromage à pâte molle et croûte lavée (aliment moyen)",
+   "proxy_assume": true,
+   "motif": "Caillé de lait de vache pressé, jeune : lait."
+  },
+  {
+   "cle": "yaourt grec",
+   "forme": "Yaourt grec",
+   "verdict": "origine",
+   "origin": "animal:lait",
+   "nom_ciqual": "Fromage blanc nature, 3% MG environ",
+   "proxy_assume": true,
+   "motif": "Lait fermenté égoutté : lait."
+  },
+  {
+   "cle": "seitan",
+   "forme": "Seitan",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "25598",
+   "nom_ciqual": "Seitan, préemballé",
+   "motif": "Gluten de blé pétri et cuit : végétal — même piège que le tofu ferme, Ciqual le range en « substituts de produits carnés » et la catégorie Myko « viandes » qui en découle le comptait comme de la viande."
+  },
+  {
+   "cle": "tofu fume",
+   "forme": "Tofu fumé",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "20912",
+   "nom_ciqual": "Tofu fumé, préemballé",
+   "motif": "Caillé de lait de soja fumé : végétal. La fumaison ne change pas ce que l'aliment est, et le fumage du tofu se fait au bois, jamais au lard."
+  },
+  {
+   "cle": "saucisse vegetale au tofu",
+   "forme": "Saucisse végétale au tofu",
+   "verdict": "origine",
+   "origin": "vegetal",
+   "alim_code": "20337",
+   "nom_ciqual": "Saucisse végétale au tofu (convient aux véganes ou végétaliens), préemballée",
+   "motif": "Le libellé Ciqual dit lui-même « convient aux véganes ou végétaliens » : soja, sans aucun ingrédient animal. Le mot « saucisse » désigne la forme, pas la matière."
+  }
+ ]
+}

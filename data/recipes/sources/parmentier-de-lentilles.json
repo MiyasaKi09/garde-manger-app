@@ -1,0 +1,190 @@
+{
+  "dish": "Parmentier de lentilles",
+  "slug": "parmentier-de-lentilles",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_parmentier-de-lentilles_228031.aspx",
+      "site": "marmiton.org",
+      "nom": "Parmentier de lentilles : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "500 g de lentilles",
+        "200 g de lardons fumés",
+        "6 échalotes",
+        "poivre",
+        "sel",
+        "6 pommes de terre (environ 1,2 kg)",
+        "lait",
+        "1 cuillère à soupe de crème fraîche épaisse ou fromage à tartiner type (st moret/philadelphia)",
+        "1 noix de beurre doux",
+        "1 cuillère à café de muscade",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 686,
+        "sha256": "d3c5ccc610cfa75a"
+      },
+      "sha256_page": "c15db08d35cf8f30"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/kilometre-0/recettes/parmentier-vegetarien-aux-lentilles",
+      "site": "chefsimon.com",
+      "nom": "Parmentier végétarien aux lentilles",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H40M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "300 g de lentilles",
+        "1 oignon",
+        "2 carottes",
+        "6 grosses pommes de terre",
+        "du beurre",
+        "sel et poivre",
+        "1 brin de romarin",
+        "du comté"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "72e0773a25fc8436"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/alexandre/recettes/hachis-parmentier-de-lentilles",
+      "site": "chefsimon.com",
+      "nom": "Hachis Parmentier de lentilles",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "2 carottes (oranges ou de couleur)",
+        "1 petit poireau",
+        "1 petite branche de céleri",
+        "1 boîte de tomates concassées",
+        "1 oignon rouge",
+        "1 gousse d’ail",
+        "100 g de lentilles environ (crues)",
+        "1 feuille de laurier",
+        "4 belles pommes de terre",
+        "1 c à café de cumin",
+        "1 c à café de concentré de tomates",
+        "10 cl de crème de soja",
+        "Sauce de soja",
+        "Sel et poivre",
+        "Huile d’olive",
+        "Persil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "a9f313620d35791c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lacuisinedunetoquee/recettes/hachis-parmentier-vegetarien-aux-lentilles-et-patate-douce",
+      "site": "chefsimon.com",
+      "nom": "Hachis parmentier végétarien aux lentilles et patate douce",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "200g de lentilles",
+        "400g de tomates concassées sans sucre ajouté",
+        "persil",
+        "4 patates douces",
+        "10 cl de crème liquide"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "3a320158b6a66ac2"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lesfillesatable-com/recettes/hachis-parmentier-lentilles-et-brocoli",
+      "site": "chefsimon.com",
+      "nom": "Hachis parmentier lentilles et brocoli",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "100 g de riz basmati complet (ou riz complet)",
+        "100 g de lentilles vertes",
+        "800 g de fleurettes de brocoli",
+        "80 ml de crème fraîche ou crème végétale",
+        "1 gousse d'ail",
+        "cumin (facultatif)",
+        "chapelure",
+        "noix de muscade",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "5678c4c4701b05e9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/le-labo-de-maman/recettes/parmentier-de-patate-douce-chou-fleur-et-lentilles",
+      "site": "chefsimon.com",
+      "nom": "Parmentier de patate douce, chou-fleur et lentilles",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "200 g de lentilles vertes",
+        "2 échalotes",
+        "1 gousse d’ail",
+        "1 petit bouquet de persil",
+        "700 g de chou-fleur",
+        "700 g de patate douce",
+        "100 ml de crème d'amande",
+        "70 g de parmesan râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "cf02a0496ed1b12d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/amandine-cooking/recettes/parmentier-de-lentilles-corail-aux-legumes",
+      "site": "chefsimon.com",
+      "nom": "Parmentier de lentilles corail aux légumes",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "800g de butternut",
+        "300g de pommes de terre",
+        "1 cc de muscade",
+        "120g de lentilles corail",
+        "1 oignon",
+        "1 carotte",
+        "1 blanc de poireau",
+        "20cl de coulis de tomates",
+        "1 cc de persil ciselé",
+        "fromage râpé (facultatif)",
+        "sel, poivre",
+        "huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "4f97ee411647233f"
+    }
+  ]
+}

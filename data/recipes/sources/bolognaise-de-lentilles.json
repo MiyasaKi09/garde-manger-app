@@ -1,0 +1,137 @@
+{
+  "dish": "Bolognaise de lentilles",
+  "slug": "bolognaise-de-lentilles",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bolognaise-aux-lentilles_27842.aspx",
+      "site": "marmiton.org",
+      "nom": "Bolognaise aux lentilles : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "1 grosse boîte de tomates pelées",
+        "1 poireau",
+        "1 oignon",
+        "1 carotte",
+        "3 verres de lentilles",
+        "1 verre de vin blanc",
+        "herbes de Provence",
+        "poivre",
+        "sel",
+        "piment (facultatif)",
+        "spaghetti ou céréales en accompagnement"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 538,
+        "sha256": "ae4b7de90e59409b"
+      },
+      "sha256_page": "901c2025bade4077"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_sauce-bolognaise-aux-lentilles_528519.aspx",
+      "site": "marmiton.org",
+      "nom": "Sauce Bolognaise aux lentilles : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "60 g de lentilles corail",
+        "0.5 boîte de conserve de tomates pelées en boîte",
+        "0.5 oignon",
+        "1 carotte",
+        "2 cuillères à soupe d'huile d'olive",
+        "1 cuillère à café de miel",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 951,
+        "sha256": "6ce8d604303afd4d"
+      },
+      "sha256_page": "fcba3aeda5a17617"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-et-creation/recettes/pates-bolognaises-aux-lentilles",
+      "site": "chefsimon.com",
+      "nom": "Pâtes bolognaises aux lentilles",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "250g de pâtes (non cuites)",
+        "300g de champignons de Paris",
+        "1 petit oignon",
+        "2 gousses d'ail",
+        "50g de noix de Grenoble",
+        "7 tomates séchées au soleil",
+        "1 cc de poudre de Paprika",
+        "1 CS de concentré de tomate",
+        "320g de lentilles vertes cuites",
+        "700g de tomates concassées",
+        "Sel et poivre",
+        "Parmesan (ou parmesan vegan)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 641,
+        "sha256": "2dbc07216c23d3c8"
+      },
+      "sha256_page": "a4f667a40a3c7eb4"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/recette-thermomix/recettes/spaghettis-a-la-bolognaise-aux-lentilles",
+      "site": "chefsimon.com",
+      "nom": "Spaghettis à la bolognaise aux lentilles",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H06M",
+      "duree_cuisson": "PT00H17M",
+      "ingredients": [
+        "240 g de spaghettis ou autres pâtes",
+        "90 g de lentilles rouges",
+        "200 g de tomate concassées",
+        "1 c.à.s de concentré de tomate",
+        "1 c.à.s d'huile d'olive",
+        "120 g de champignon",
+        "1 petite carotte",
+        "1/2 oignon",
+        "2 gousses d'ail."
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 293,
+        "sha256": "5308ae96af4d30ed"
+      },
+      "sha256_page": "91ad97b2cfa72fba"
+    },
+    {
+      "url": "https://www.750g.com/bolognaise-de-lentilles-r204596.htm",
+      "site": "750g.com",
+      "nom": "Bolognaise de lentilles",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "150 g de lentilles blondes",
+        "1 oignon",
+        "1 carotte",
+        "1 branche de céleri",
+        "7 cl de vin rouge",
+        "800 g de pulpe de tomates",
+        "Sel ou sel fin",
+        "Poivre",
+        "Huile d'olive",
+        "Parmesan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 732,
+        "sha256": "07f9699704e32f5a"
+      },
+      "sha256_page": "8bb8d58309f2cfdb"
+    }
+  ]
+}

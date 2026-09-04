@@ -1,0 +1,2004 @@
+{
+  "lot": "conservation-manuelle",
+  "contexte": "Ce fichier tranche à la main ce qu’aucun parseur ne peut lire dans la prose de conservation du corpus (data/recipes/corpus-v3.json, champ « conservation ») : les 47 recettes dont la prose donne des durées par composant ou aucune durée lisible, et les 103 recettes dont le nom ou la catégorie évoque un service froid, pour lesquelles le champ serve_cold ne peut être que déclaré (16 recettes sont dans les deux listes : 134 décisions). La mesure d’origine (PLAN_PLANNING_PARFAIT §2.5, chantier C1) a montré que le moteur produisait un pan bagnat à 24 h en batch de 3 jours puis le « réchauffait », et comptait congelables 90 plats qui refusent la congélation dans leur propre prose. Règles appliquées : le profil décrit le plat tel qu’il est servi, pas ses composants — quand les composants se gardent mais que le plat se monte au moment, eat_immediately vaut true et fridge_hours porte sur la plus courte des avances chiffrées par la prose ; une durée à l’ambiante est reportée dans fridge_hours et signalée comme telle dans le motif ; pour une fourchette (« 8 à 10 jours ») on retient la borne basse, la seule que la prose garantit ; freezable vaut true si la prose autorise la congélation du plat servi, false si elle la refuse ou si le plat ne la supporte manifestement pas (crudités, œuf poché ou dur, friture, mayonnaise) ; quand la prose n’autorise la congélation que d’une forme crue ou partielle qui n’est pas le plat servi (croquette avant friture, pâte crue, poulet mariné), cette autorisation ne vaut pas pour le plat : freezable est false si le plat servi ne la supporte manifestement pas (friture, sandwich garni, salade montée), null si rien n’est manifeste (petit pain cuit), et les mois ne sont jamais reportés ; null quand la prose se tait et que rien n’est manifeste — null est une réponse, pas un oubli, et le moteur le traite comme non congelable ; freezer_months n’est reporté que si freezable est true ; serve_cold vaut true seulement pour un plat mangé froid ou à l’ambiante sans réchauffage — un plat tiède (lentilles tièdes, salade au chèvre chaud, confit saisi) n’est pas froid — et null pour les pâtisseries et pains hors repas. Aucune durée n’a été fabriquée : quand la prose n’en porte pas, fridge_hours est null et le motif le dit. Ajout (chantier C1, parseur) : les quatre pâtes de base RAP-003 à RAP-006, dont la forme crue est le produit lui-même — le parseur écarte à raison les durées « d’une forme crue » pour un plat cuit, mais une pâte n’a pas d’autre forme ; sans décision manuelle elles n’auraient aucun profil.",
+  "decisions": [
+    {
+      "code": "MED-001",
+      "family": "Shakshuka",
+      "prose": "2 jours pour la sauce seule ; œufs à cuire au moment.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Le plat servi (œufs pochés dans la sauce) ne se garde pas : les œufs se cuisent au moment. Les 48 h portent sur la sauce seule, préparée d’avance. Pas de congélation : l’œuf poché ne la supporte pas, la prose ne l’autorise pas."
+    },
+    {
+      "code": "IT-005",
+      "family": "Pâtes au pesto",
+      "prose": "2 jours pour le pesto sous une fine couche d’huile.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": true,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Seul le pesto se garde (48 h sous huile) ; les pâtes se cuisent et se lient au moment, le plat assemblé ne se conserve pas. La prose ne dit rien de la congélation : null. Servi chaud, pâtes tout juste égouttées."
+    },
+    {
+      "code": "DESS-003",
+      "family": "Gâteau au yaourt",
+      "prose": "4 jours à température ambiante bien emballé.",
+      "profile": {
+        "fridge_hours": 96,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": null
+      },
+      "motif": "4 jours à température ambiante, bien emballé : c’est une durée à l’ambiante, pas au réfrigérateur. Rien sur la congélation. Gâteau servi à l’ambiante, ni froid ni réchauffé : serve_cold non pertinent."
+    },
+    {
+      "code": "DESS-009",
+      "family": "Banana bread",
+      "prose": "5 jours bien emballé ; congélation 3 mois.",
+      "profile": {
+        "fridge_hours": 120,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 3,
+        "serve_cold": null
+      },
+      "motif": "5 jours bien emballé, sans lieu précisé : on garde le chiffre tel quel sans décider du lieu (la prose ne parle ni de réfrigérateur ni d’ambiante). Congélation autorisée 3 mois en toutes lettres. Gâteau servi à l’ambiante : serve_cold non pertinent."
+    },
+    {
+      "code": "FR-033",
+      "family": "Salade de lentilles, œuf mollet et moutarde",
+      "prose": "3 jours pour les lentilles ; œufs 2 jours.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Lentilles 3 jours, œufs 2 jours : le plat assemblé est borné par les œufs mollets, 48 h. Pas de congélation : œuf mollet et salade assaisonnée ne la supportent manifestement pas. Assaisonnement tiède (technique déclarée) : tiède n’est pas froid."
+    },
+    {
+      "code": "FR-040",
+      "family": "Madeleines au miel",
+      "prose": "4 jours en boîte hermétique.",
+      "profile": {
+        "fridge_hours": 96,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": null
+      },
+      "motif": "4 jours en boîte hermétique, sans lieu précisé : on garde le chiffre tel quel sans décider du lieu. Rien sur la congélation. Petit gâteau servi à l’ambiante : serve_cold non pertinent."
+    },
+    {
+      "code": "REAL-079",
+      "family": "Bouillabaisse marseillaise",
+      "prose": "Bouillon 2 jours ; poissons 1 jour.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Bouillon 2 jours, poissons 1 jour : le plat servi réunit les deux, il est borné par les poissons pochés, 24 h. La prose ne dit rien de la congélation et rien n’est manifeste pour un bouillon avec ses poissons : null. Servi chaud."
+    },
+    {
+      "code": "REAL-086",
+      "family": "Œufs en meurette",
+      "prose": "Sauce 3 jours ; œufs à pocher au moment.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Sauce 3 jours, œufs à pocher au moment : le plat servi ne se garde pas, les 72 h portent sur la sauce meurette seule. Pas de congélation : l’œuf poché ne la supporte pas. Servi chaud."
+    },
+    {
+      "code": "REAL-089",
+      "family": "Kouign-amann",
+      "prose": "2 jours à température ambiante.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": null
+      },
+      "motif": "2 jours à température ambiante : durée à l’ambiante, pas au froid. Rien sur la congélation. Pâtisserie servie à l’ambiante : serve_cold non pertinent."
+    },
+    {
+      "code": "REAL-090",
+      "family": "Cannelés de Bordeaux",
+      "prose": "2 jours à température ambiante.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": null
+      },
+      "motif": "2 jours à température ambiante : durée à l’ambiante. Rien sur la congélation. Servi à l’ambiante : serve_cold non pertinent."
+    },
+    {
+      "code": "REAL-107",
+      "family": "Focaccia genovese",
+      "prose": "2 jours ; congélation 2 mois.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 2,
+        "serve_cold": null
+      },
+      "motif": "2 jours sans lieu précisé : on garde le chiffre tel quel sans décider du lieu. Congélation autorisée 2 mois en toutes lettres. Pain servi à l’ambiante ou tiède : serve_cold non pertinent."
+    },
+    {
+      "code": "REAL-109",
+      "family": "Croquetas de jamón",
+      "prose": "2 jours ; congélation avant friture.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "2 jours, sans préciser si c’est la croquette façonnée ou frite ; on prend le chiffre tel quel. La prose n’autorise la congélation qu’avant friture : la croquette frite (le plat servi) ne se congèle pas, la panure détrempe. Tapas frite, servie chaude."
+    },
+    {
+      "code": "REAL-113",
+      "family": "Fabada asturiana",
+      "prose": "4 jours ; meilleure le lendemain.",
+      "profile": {
+        "fridge_hours": 96,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "4 jours sans lieu précisé, meilleure le lendemain : on garde 4 jours tels quels, lieu non déclaré. Rien sur la congélation, on ne complète pas. Ragoût servi chaud."
+    },
+    {
+      "code": "REAL-122",
+      "family": "Pastéis de nata",
+      "prose": "2 jours ; meilleur le jour même.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": null
+      },
+      "motif": "2 jours sans lieu précisé, meilleur le jour même : on garde 2 jours, lieu non déclaré. Rien sur la congélation. Pâtisserie servie à l’ambiante ou tiède : serve_cold non pertinent."
+    },
+    {
+      "code": "REAL-127",
+      "family": "Souvlaki de porc",
+      "prose": "Composants 3 jours séparément.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": true,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Composants 3 jours séparément : les brochettes se grillent et le pita se garnit au moment, le plat servi ne se garde pas ; les 72 h portent sur les composants préparés d’avance. Rien sur la congélation : null. Servi chaud."
+    },
+    {
+      "code": "REAL-137",
+      "family": "Fattoush",
+      "prose": "À assembler au dernier moment.",
+      "profile": {
+        "fridge_hours": null,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "À assembler au dernier moment : le plat ne se garde pas et la prose ne donne aucune durée pour les composants — on n’en fabrique pas. Salade de crudités et pain grillé : congélation manifestement impossible. Servi froid."
+    },
+    {
+      "code": "REAL-237",
+      "family": "Kimbap",
+      "prose": "À consommer le jour même.",
+      "profile": {
+        "fridge_hours": null,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "« À consommer le jour même » : pas de garde d’un jour à l’autre, donc pas de production d’avance ; la prose ne porte aucune durée en heures, on n’en invente pas. Riz vinaigré et légumes crus roulés : congélation manifestement exclue. Servi froid ou à l’ambiante, jamais réchauffé."
+    },
+    {
+      "code": "REAL-241",
+      "family": "Bánh mì thịt",
+      "prose": "Composants séparés 3 jours.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": true,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Composants séparés 3 jours : le sandwich se monte au moment, il ne se garde pas monté ; les 72 h portent sur les composants. Rien sur la congélation : null. Baguette et porc passés au réchauffage (technique déclarée) : sandwich tiède, pas froid."
+    },
+    {
+      "code": "REAL-242",
+      "family": "Gỏi cuốn",
+      "prose": "À consommer le jour même.",
+      "profile": {
+        "fridge_hours": null,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "« À consommer le jour même » : pas de garde ni de production d’avance, aucune durée en heures dans la prose. Galette de riz humidifiée, crudités et herbes : congélation manifestement exclue. Rouleaux servis froids."
+    },
+    {
+      "code": "REAL-255",
+      "family": "Rendang de bœuf",
+      "prose": "5 jours ; congélation 3 mois.",
+      "profile": {
+        "fridge_hours": 120,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 3,
+        "serve_cold": false
+      },
+      "motif": "5 jours sans lieu précisé ; congélation autorisée 3 mois en toutes lettres. Bœuf confit servi chaud."
+    },
+    {
+      "code": "REAL-278",
+      "family": "Pão de queijo",
+      "prose": "2 jours ; congélation crue 3 mois.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": null
+      },
+      "motif": "2 jours sans lieu précisé. La prose n’autorise que la congélation de la pâte crue (3 mois) et ne dit rien du petit pain cuit, qui est ce que l’on sert : null, sans mois. Petit pain servi tiède ou à l’ambiante : serve_cold non pertinent."
+    },
+    {
+      "code": "REAL-298",
+      "family": "Bigos",
+      "prose": "5 jours ; meilleur réchauffé.",
+      "profile": {
+        "fridge_hours": 120,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "5 jours sans lieu précisé, meilleur réchauffé. Rien sur la congélation, on ne complète pas. Servi chaud."
+    },
+    {
+      "code": "SRC-011",
+      "family": "Croque-madame",
+      "prose": "Se mange immediatement, le jaune coulant ne supportant pas l'attente. Un croque deja garni se garde au maximum 24 heures a 4 degres au refrigerateur et se rechauffe dix minutes a 180 degres, l'oeuf devenant alors ferme. La congelation ne convient qu'au croque monte cru et non garni d'oeuf, jusqu'a un mois a -18 degres, a cuire sans decongelation prealable.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Se mange immédiatement, le jaune coulant ne supporte pas l’attente ; un croque garni se garde 24 h au maximum, réchauffé l’œuf devient ferme — c’est un plat dégradé, on le note mais on tient pour immédiat. La congélation ne convient qu’au croque monté cru et sans œuf : le plat servi ne se congèle pas. Sandwich chaud."
+    },
+    {
+      "code": "SRC-030",
+      "family": "Tapenade noire",
+      "prose": "Au réfrigérateur entre 0 et 4 °C, dans un bocal hermétique et sous une fine pellicule d'huile d'olive qui isole la surface de l'air : 8 à 10 jours. Sortir 20 minutes avant service pour que l'huile se refluidifie. La congélation est possible jusqu'à 3 mois en petits pots, mais la pâte rend un peu d'eau à la décongélation et demande d'être rebattue à la fourchette.",
+      "profile": {
+        "fridge_hours": 192,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 3,
+        "serve_cold": true
+      },
+      "motif": "8 à 10 jours au réfrigérateur sous huile : on retient la borne basse, 8 jours. Congélation possible 3 mois. Condiment sorti 20 minutes avant service, jamais réchauffé : servi froid."
+    },
+    {
+      "code": "SRC-032",
+      "family": "Boudin noir aux pommes",
+      "prose": "Se garde 48 h à 4 °C en boîte fermée, boudin et pommes séparés, et se réchauffe à la poêle sur feu doux ou au four à 140 °C. Congélation déconseillée : le boudin cuit relargue son gras et devient granuleux, les pommes s'affaissent en rendant leur eau.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "48 h à 4 °C, boudin et pommes séparés, se réchauffe. Congélation déconseillée en toutes lettres. Servi chaud."
+    },
+    {
+      "code": "SRC-058",
+      "family": "Terrine de campagne",
+      "prose": "Repos obligatoire de 24 a 48 heures entre 0 et 4 degres avant la premiere tranche. Entiere et couverte de sa graisse figee, la terrine se garde 8 a 10 jours au refrigerateur ; une fois entamee, filmez la coupe au contact et consommez sous 4 jours. La congelation est possible en portions filmees jusqu'a 2 mois, mais elle detend la farce et rend la tranche plus friable a la decongelation, qui doit se faire une nuit au refrigerateur.",
+      "profile": {
+        "fridge_hours": 96,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 2,
+        "serve_cold": true
+      },
+      "motif": "Entière 8 à 10 jours, mais une production se sert entamée : 4 jours une fois coupée. Repos obligatoire de 24 à 48 h avant la première tranche, à retenir pour la planification. Congélation possible 2 mois en portions. Charcuterie servie froide."
+    },
+    {
+      "code": "SRC-011-D1",
+      "family": "Croque-madame au four",
+      "prose": "Se mange immediatement, le jaune coulant ne supportant pas l'attente. Un croque deja garni se garde au maximum 24 heures a 4 degres au refrigerateur et se rechauffe dix minutes a 180 degres, l'oeuf devenant alors ferme. La congelation ne convient qu'au croque monte cru et non garni d'oeuf, jusqu'a un mois a -18 degres, a cuire sans decongelation prealable.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : se mange immédiatement ; un croque garni tient 24 h au plus, réchauffé l’œuf devient ferme. Congélation réservée au croque monté cru sans œuf : le plat servi ne se congèle pas. Sandwich chaud."
+    },
+    {
+      "code": "SRC-011-D2",
+      "family": "Croque-madame à l'œuf encastré",
+      "prose": "Se mange immediatement, le jaune coulant ne supportant pas l'attente. Un croque deja garni se garde au maximum 24 heures a 4 degres au refrigerateur et se rechauffe dix minutes a 180 degres, l'oeuf devenant alors ferme. La congelation ne convient qu'au croque monte cru et non garni d'oeuf, jusqu'a un mois a -18 degres, a cuire sans decongelation prealable.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : se mange immédiatement ; un croque garni tient 24 h au plus. Congélation réservée au croque monté cru sans œuf : le plat servi ne se congèle pas. Sandwich chaud."
+    },
+    {
+      "code": "SRC-017-D3",
+      "family": "Pan bagnat pressé de la veille",
+      "prose": "Se mange le jour de la découpe : la nuit de pressage compte déjà dans la vie du sandwich et une seconde journée délite la mie. Garder entre 0 et 4 °C sous son papier et son poids jusqu'au service, puis sortir 30 minutes avant de découper pour que l'huile d'olive se refluidifie. Congélation exclue : le pain imbibé et l'œuf dur deviennent spongieux et caoutchouteux à la décongélation.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Se mange le jour de la découpe : la nuit de pressage compte dans la vie du sandwich, une seconde journée délite la mie — 24 h entre le pressage et le service, et rien au-delà. Congélation exclue en toutes lettres. Sandwich froid, sorti 30 minutes avant découpe."
+    },
+    {
+      "code": "SRC-032-D1",
+      "family": "Tourte au boudin noir et aux poireaux",
+      "prose": "Se garde 48 h à 4 °C en boîte fermée, boudin et pommes séparés, et se réchauffe à la poêle sur feu doux ou au four à 140 °C. Congélation déconseillée : le boudin cuit relargue son gras et devient granuleux, les pommes s'affaissent en rendant leur eau.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Prose reprise de la base (elle parle de boudin et pommes séparés alors que la tourte est montée) : on garde ses chiffres, 48 h à 4 °C, congélation déconseillée. Servi chaud."
+    },
+    {
+      "code": "SRC-032-D2",
+      "family": "Tarte tatin de boudin noir aux pommes",
+      "prose": "Se garde 48 h à 4 °C en boîte fermée, boudin et pommes séparés, et se réchauffe à la poêle sur feu doux ou au four à 140 °C. Congélation déconseillée : le boudin cuit relargue son gras et devient granuleux, les pommes s'affaissent en rendant leur eau.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Prose reprise de la base (boudin et pommes séparés, alors que la tatin est montée) : on garde ses chiffres, 48 h à 4 °C, congélation déconseillée. Servi chaud."
+    },
+    {
+      "code": "SRC-032-D3",
+      "family": "Boudin noir aux pommes, purée et oignons au miel",
+      "prose": "Se garde 48 h à 4 °C en boîte fermée, boudin et pommes séparés, et se réchauffe à la poêle sur feu doux ou au four à 140 °C. Congélation déconseillée : le boudin cuit relargue son gras et devient granuleux, les pommes s'affaissent en rendant leur eau.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : 48 h à 4 °C, congélation déconseillée. Servi chaud."
+    },
+    {
+      "code": "SRC-032-D4",
+      "family": "Poêlée de rattes au boudin noir et aux raisins secs",
+      "prose": "Se garde 48 h à 4 °C en boîte fermée, boudin et pommes séparés, et se réchauffe à la poêle sur feu doux ou au four à 140 °C. Congélation déconseillée : le boudin cuit relargue son gras et devient granuleux, les pommes s'affaissent en rendant leur eau.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : 48 h à 4 °C, congélation déconseillée. Servi chaud."
+    },
+    {
+      "code": "SRC-032-D5",
+      "family": "Pommes au four farcies au boudin noir",
+      "prose": "Se garde 48 h à 4 °C en boîte fermée, boudin et pommes séparés, et se réchauffe à la poêle sur feu doux ou au four à 140 °C. Congélation déconseillée : le boudin cuit relargue son gras et devient granuleux, les pommes s'affaissent en rendant leur eau.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : 48 h à 4 °C, congélation déconseillée. Pommes farcies servies chaudes."
+    },
+    {
+      "code": "SRC-032-D6",
+      "family": "Boudin noir aux pommes flambées au calvados",
+      "prose": "Se garde 48 h à 4 °C en boîte fermée, boudin et pommes séparés, et se réchauffe à la poêle sur feu doux ou au four à 140 °C. Congélation déconseillée : le boudin cuit relargue son gras et devient granuleux, les pommes s'affaissent en rendant leur eau.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : 48 h à 4 °C, congélation déconseillée. Servi chaud."
+    },
+    {
+      "code": "SRC-053-D2",
+      "family": "Salade de chèvre chaud aux pignons de pin",
+      "prose": "La vinaigrette se garde cinq jours en bocal fermé à 4 °C et les pignons torréfiés une semaine dans une boîte hermétique, à l'abri de l'humidité qui les ramollit. Les toasts gratinés se mangent dans la minute : réchauffés, le fromage se dessèche et le pain devient cassant. La salade assaisonnée ne se conserve pas, les feuilles tombent en une heure. Rien dans ce plat ne supporte la congélation, ni le chèvre frais qui rend son eau à la décongélation, ni la laitue.",
+      "profile": {
+        "fridge_hours": 120,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Les toasts se mangent dans la minute et la salade assaisonnée tombe en une heure : le plat servi ne se garde pas. D’avance : vinaigrette 5 jours, pignons torréfiés une semaine — on retient 120 h, la plus courte. Rien ne supporte la congélation. Le chèvre est gratiné à la minute : plat chaud sur feuilles, pas un service froid."
+    },
+    {
+      "code": "SRC-058-D1",
+      "family": "Terrine de campagne au poulet",
+      "prose": "Repos obligatoire de 24 a 48 heures entre 0 et 4 degres avant la premiere tranche. Entiere et couverte de sa graisse figee, la terrine se garde 8 a 10 jours au refrigerateur ; une fois entamee, filmez la coupe au contact et consommez sous 4 jours. La congelation est possible en portions filmees jusqu'a 2 mois, mais elle detend la farce et rend la tranche plus friable a la decongelation, qui doit se faire une nuit au refrigerateur.",
+      "profile": {
+        "fridge_hours": 96,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 2,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 4 jours une fois entamée (8 à 10 entière), repos obligatoire 24 à 48 h avant la première tranche, congélation 2 mois. Servie froide."
+    },
+    {
+      "code": "SRC-058-D2",
+      "family": "Terrine de campagne aux poivrons et aux olives",
+      "prose": "Repos obligatoire de 24 a 48 heures entre 0 et 4 degres avant la premiere tranche. Entiere et couverte de sa graisse figee, la terrine se garde 8 a 10 jours au refrigerateur ; une fois entamee, filmez la coupe au contact et consommez sous 4 jours. La congelation est possible en portions filmees jusqu'a 2 mois, mais elle detend la farce et rend la tranche plus friable a la decongelation, qui doit se faire une nuit au refrigerateur.",
+      "profile": {
+        "fridge_hours": 96,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 2,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 4 jours une fois entamée, repos obligatoire 24 à 48 h, congélation 2 mois. Servie froide."
+    },
+    {
+      "code": "SRC-058-D4",
+      "family": "Terrine de campagne au pain d'épices",
+      "prose": "Repos obligatoire de 24 a 48 heures entre 0 et 4 degres avant la premiere tranche. Entiere et couverte de sa graisse figee, la terrine se garde 8 a 10 jours au refrigerateur ; une fois entamee, filmez la coupe au contact et consommez sous 4 jours. La congelation est possible en portions filmees jusqu'a 2 mois, mais elle detend la farce et rend la tranche plus friable a la decongelation, qui doit se faire une nuit au refrigerateur.",
+      "profile": {
+        "fridge_hours": 96,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 2,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 4 jours une fois entamée, repos obligatoire 24 à 48 h, congélation 2 mois. Servie froide."
+    },
+    {
+      "code": "SRC-039-D4",
+      "family": "Coquilles Saint-Jacques scellées au four",
+      "prose": "Scellées mais non enfournées, les coquilles attendent 2 à 3 heures à 4 °C, pas davantage : le joint sèche, se fendille et ne tient plus la vapeur. Une fois ouvertes, elles se mangent tout de suite — il n'y a rien à réchauffer dans une coquille dont le sceau est rompu, et la sauce liée aux jaunes ne supporte pas un second passage au four. La chair crue parée ne dépasse pas 24 h posée sur un lit de glace. Congélation : acceptable pour la chair crue étalée à plat et bien épongée (2 mois), exclue pour le plat monté.",
+      "profile": {
+        "fridge_hours": 2,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Ouvertes, les coquilles se mangent tout de suite, rien ne se réchauffe. Scellées non enfournées elles attendent 2 à 3 h à 4 °C : borne basse, 2 h — c’est la seule avance possible sur le plat monté. Congélation exclue pour le plat monté (acceptable seulement pour la chair crue). Servi chaud."
+    },
+    {
+      "code": "SRC-039-D5",
+      "family": "Poêlée de Saint-Jacques au whisky",
+      "prose": "Ne se conserve pas : une poêlée se dresse et se mange dans la minute, la chair continuant de cuire dans la sauce chaude tant qu'on la laisse. Ce qui peut s'avancer, c'est la chair parée — 24 h au maximum sur un lit de glace — et rien d'autre. Réchauffage exclu : la noix se rétracte et la sauce, tenue par la seule évaporation, se sépare au second bouillon. Congélation acceptable pour la chair crue étalée à plat et bien épongée (2 mois), exclue pour le plat terminé.",
+      "profile": {
+        "fridge_hours": null,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Ne se conserve pas, se dresse et se mange dans la minute, réchauffage exclu. Les 24 h citées concernent la chair crue parée, une matière première et non une préparation : fridge_hours null. Congélation exclue pour le plat terminé. Servi chaud."
+    },
+    {
+      "code": "RAP-020",
+      "family": "Pois chiches rôtis",
+      "prose": "Se gardent une semaine à température ambiante dans un bocal à fermeture hermétique, jamais au réfrigérateur — l'humidité du froid les ramollit en une nuit. S'ils perdent leur croustillant, dix minutes à 180 °C les remettent en état. Ne se congèlent pas : le gel les détrempe et rien ne les récupère.",
+      "profile": {
+        "fridge_hours": 168,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Une semaine à température ambiante en bocal, jamais au réfrigérateur qui les ramollit : c’est une durée à l’ambiante. Ne se congèlent pas, en toutes lettres. Garniture croquante servie à l’ambiante, sans réchauffage."
+    },
+    {
+      "code": "RAP-024",
+      "family": "Œufs brouillés",
+      "prose": "Ne se conservent pas et ne se réchauffent pas : les œufs brouillés rendent leur eau au froid et deviennent granuleux dès la première minute de réchauffage. C'est un plat de dernière minute, à faire en quinze minutes plutôt qu'à préparer d'avance. Ne pas congeler.",
+      "profile": {
+        "fridge_hours": null,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Ne se conservent pas, ne se réchauffent pas, plat de dernière minute : aucune durée, aucune avance. Ne pas congeler, en toutes lettres. Servis chauds."
+    },
+    {
+      "code": "RAP-025",
+      "family": "Œufs cocotte",
+      "prose": "Ne se conservent pas : le jaune coulant est la définition du plat et il cuit dès qu'on le réchauffe. Se mange dans les minutes qui suivent la sortie du four. En revanche les garnitures — poivrons fondus, jambon, saumon — se préparent la veille, ce qui ramène le plat à douze minutes le soir venu.",
+      "profile": {
+        "fridge_hours": null,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Ne se conservent pas, le jaune coulant cuit au réchauffage. Les garnitures se préparent la veille mais sans durée chiffrée : on ne l’invente pas. La prose ne parle pas de congélation, mais un œuf au jaune coulant ne la supporte manifestement pas. Servis chauds."
+    },
+    {
+      "code": "RAP-029",
+      "family": "Salade caprese",
+      "prose": "Ne se conserve pas et ne se prépare pas d'avance : dressée, elle rend son eau en une demi-heure. Les tomates se lavent et la mozzarella s'égoutte à l'avance, mais le tranchage et l'assaisonnement se font au dernier moment. Ne se congèle évidemment pas.",
+      "profile": {
+        "fridge_hours": null,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Ne se conserve pas et ne se prépare pas d’avance, elle rend son eau en une demi-heure. Ne se congèle pas, en toutes lettres. Servie froide."
+    },
+    {
+      "code": "VAR-024",
+      "family": "Briouates aux amandes",
+      "prose": "Se gardent 5 jours à température ambiante dans une boîte hermétique, en une seule couche ou séparées par du papier cuisson. Elles perdent un peu de croustillant au deuxième jour et se retrouvent en cinq minutes à 160 °C. Ne se gardent pas au réfrigérateur, où le miel absorbe l'humidité et détrempe la brick. Les briouates crues, roulées et non frites, se congèlent 2 mois sur plaque puis en sac, et se frient sans décongélation en ajoutant une minute.",
+      "profile": {
+        "fridge_hours": 120,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": null
+      },
+      "motif": "5 jours à température ambiante en boîte hermétique, et surtout pas au réfrigérateur : durée à l’ambiante. La congélation n’est autorisée que pour les briouates crues ; frites et trempées au miel elles ne se congèlent pas. Dessert servi à l’ambiante : serve_cold non pertinent."
+    },
+    {
+      "code": "VAR-039",
+      "family": "Omelette au fromage",
+      "prose": "Se mange dans la minute. Une omelette réchauffée devient caoutchouteuse et rend de l'eau : les restes, s'il y en a, se mangent froids en tranches, dans un sandwich, dans les 24 heures. Ne se congèle pas. Le seul travail d'avance possible est le fromage râpé, qui se garde une semaine au réfrigérateur ou trois mois au congélateur en sachet — vingt minutes du placard à l'assiette, c'est déjà l'intérêt du plat.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Se mange dans la minute ; les restes éventuels se mangent froids sous 24 h, c’est un repli, pas une garde du plat. Ne se congèle pas. Servie chaude."
+    },
+    {
+      "code": "VEG-002",
+      "family": "Salade de pois chiches, tomate et concombre",
+      "prose": "2 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "2 jours au réfrigérateur. Rien sur la congélation, mais tomate et concombre crus ne la supportent manifestement pas. Salade servie froide."
+    },
+    {
+      "code": "LEV-001",
+      "family": "Houmous",
+      "prose": "4 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 96,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "4 jours au réfrigérateur. Rien sur la congélation, on ne complète pas. Tartinade servie froide."
+    },
+    {
+      "code": "FR-023",
+      "family": "Croque-monsieur",
+      "prose": "Se mange en sortant du four : la croûte gratinée retombe en quelques minutes et la mie finit par boire la sauce. Les croques montés crus se gardent vingt-quatre heures au réfrigérateur, à plat et sous film, et se cuisent directement à la sortie du froid, sans repos, en comptant cinq minutes de plus. La béchamel seule tient trois jours au frais, filmée au contact pour l'empêcher de faire une peau, et se détend au fouet avec une cuillerée de lait tiède. Ne pas congeler un croque cuit : le pain rend son eau au réchauffage et la mie devient spongieuse.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Se mange en sortant du four ; les croques montés crus se gardent 24 h, la béchamel seule 3 jours — on retient 24 h, la plus courte des avances. Ne pas congeler un croque cuit, en toutes lettres. Sandwich chaud gratiné."
+    },
+    {
+      "code": "DESS-005",
+      "family": "Mousse au chocolat",
+      "prose": "2 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "2 jours au réfrigérateur. Rien sur la congélation. Dessert froid, servi tel quel."
+    },
+    {
+      "code": "FR-034",
+      "family": "Poireaux vinaigrette",
+      "prose": "3 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "3 jours au réfrigérateur. Rien sur la congélation et rien de manifeste pour un poireau cuit : null. Entrée servie froide."
+    },
+    {
+      "code": "FR-035",
+      "family": "Salade niçoise",
+      "prose": "1 jour au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "1 jour au réfrigérateur. Rien sur la congélation, mais crudités, œuf dur et pommes de terre en salade ne la supportent manifestement pas. Servie froide."
+    },
+    {
+      "code": "REAL-087",
+      "family": "Salade lyonnaise",
+      "prose": "Ne se conserve pas assemblée : la frisée rend son eau et les croûtons ramollissent en moins d'un quart d'heure. Préparer les éléments à l'avance et monter au dernier moment — la frisée lavée tient 2 jours au réfrigérateur dans un linge humide, la vinaigrette 5 jours en bocal, les croûtons 2 jours en boîte hermétique à température ambiante. Les lardons se réchauffent, les œufs pochés se pochent à la commande.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Ne se conserve pas assemblée, la frisée tombe en un quart d’heure. D’avance : frisée lavée 2 jours, vinaigrette 5 jours, croûtons 2 jours à l’ambiante — 48 h, la plus courte. Congélation manifestement exclue (frisée, œuf poché). Lardons chauds et œuf poché à la commande sur assaisonnement tiède : pas un service froid."
+    },
+    {
+      "code": "REAL-096",
+      "family": "Vitello tonnato",
+      "prose": "2 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "2 jours au réfrigérateur. Rien sur la congélation. Veau froid en sauce : servi froid."
+    },
+    {
+      "code": "REAL-106",
+      "family": "Caponata sicilienne",
+      "prose": "5 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 120,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "5 jours au réfrigérateur. Rien sur la congélation, on ne complète pas. Condiment de légumes en marinade froide : servi froid ou à l’ambiante."
+    },
+    {
+      "code": "REAL-114",
+      "family": "Gazpacho andalou",
+      "prose": "2 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "2 jours au réfrigérateur. Rien sur la congélation, rien de manifeste pour une soupe mixée : null. Soupe froide."
+    },
+    {
+      "code": "REAL-115",
+      "family": "Salmorejo cordobés",
+      "prose": "3 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "3 jours au réfrigérateur. Rien sur la congélation. Soupe froide épaisse."
+    },
+    {
+      "code": "REAL-116",
+      "family": "Gambas al ajillo",
+      "prose": "À consommer immédiatement.",
+      "profile": {
+        "fridge_hours": null,
+        "eat_immediately": true,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "À consommer immédiatement, aucune durée. Rien sur la congélation. Crevettes sautées à l’ail, servies grésillantes : tapas chaude, pas froide."
+    },
+    {
+      "code": "REAL-121",
+      "family": "Francesinha",
+      "prose": "À consommer immédiatement.",
+      "profile": {
+        "fridge_hours": null,
+        "eat_immediately": true,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "À consommer immédiatement, aucune durée. Rien sur la congélation. Sandwich gratiné en sauce chaude : chaud."
+    },
+    {
+      "code": "REAL-138",
+      "family": "Taboulé libanais",
+      "prose": "Se garde 2 jours au réfrigérateur, couvert, mais perd sa tenue dès le premier : le persil fane et la tomate rend son eau. Ne se congèle pas, les herbes crues ressortant noires et détrempées. Pour préparer d'avance, hacher et réserver les éléments séparément au froid et n'assembler avec le citron et l'huile qu'un quart d'heure avant de servir. Égoutter le fond du saladier et rectifier le citron avant de resservir un reste.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "2 jours au réfrigérateur, en perdant sa tenue dès le premier. Ne se congèle pas, en toutes lettres. Salade d’herbes crues servie froide."
+    },
+    {
+      "code": "REAL-139",
+      "family": "Baba ganoush",
+      "prose": "3 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "3 jours au réfrigérateur. Rien sur la congélation. Purée d’aubergine servie froide."
+    },
+    {
+      "code": "REAL-183",
+      "family": "Vada pav",
+      "prose": "3 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "3 jours au réfrigérateur selon la prose ; on ne discute pas le chiffre. Rien sur la congélation. Beignet de pomme de terre frit dans un pain : sandwich chaud, pas froid."
+    },
+    {
+      "code": "REAL-250",
+      "family": "Som tam",
+      "prose": "3 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "3 jours au réfrigérateur selon la prose. Rien sur la congélation, mais une salade de papaye crue pilonnée ne la supporte manifestement pas. Servie froide."
+    },
+    {
+      "code": "REAL-251",
+      "family": "Larb de porc",
+      "prose": "3 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "3 jours au réfrigérateur. Rien sur la congélation. Hachis poché assemblé hors feu et servi tiède avec des feuilles de laitue : tiède, donc pas froid."
+    },
+    {
+      "code": "REAL-256",
+      "family": "Gado-gado",
+      "prose": "3 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "3 jours au réfrigérateur. Rien sur la congélation, mais œuf dur, pousses blanchies et sauce cacahuète ne la supportent manifestement pas. Salade servie froide ou à l’ambiante, jamais réchauffée."
+    },
+    {
+      "code": "REAL-273",
+      "family": "Ceviche de poisson à la mexicaine",
+      "prose": "À consommer immédiatement.",
+      "profile": {
+        "fridge_hours": null,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "À consommer immédiatement, aucune durée. Poisson cru mariné au citron vert : congélation manifestement exclue. Servi froid."
+    },
+    {
+      "code": "REAL-274",
+      "family": "Esquites",
+      "prose": "3 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "3 jours au réfrigérateur. Rien sur la congélation. Maïs grillé lié à la mayonnaise, servi chaud dans son gobelet : pas un service froid malgré la catégorie « en salade »."
+    },
+    {
+      "code": "REAL-284",
+      "family": "Causa limeña",
+      "prose": "2 jours au réfrigérateur.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "2 jours au réfrigérateur. Rien sur la congélation, mais mayonnaise, avocat et œuf dur ne la supportent manifestement pas. Terrine froide."
+    },
+    {
+      "code": "SRC-007",
+      "family": "Anchoïade",
+      "prose": "Se garde 3 à 4 jours au réfrigérateur entre 0 et 4 °C, dans un bocal hermétique, la surface recouverte d'une fine couche d'huile d'olive qui protège de l'oxydation. Sortir 20 minutes avant de servir, l'huile figeant au froid. La congélation est déconseillée : l'émulsion se casse au dégel et l'ail cru y développe une amertume marquée.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "3 à 4 jours au réfrigérateur sous huile : borne basse, 3 jours. Congélation déconseillée en toutes lettres. Condiment sorti 20 minutes avant service : servi froid."
+    },
+    {
+      "code": "SRC-014",
+      "family": "Lentilles en salade tiède",
+      "prose": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C en boîte hermétique, vinaigrette déjà incorporée. Sortir 30 minutes avant le service ou réchauffer 1 minute à la poêle à feu doux pour retrouver la tiédeur. Les œufs mollets ne se conservent pas plus de 24 h et se posent au dernier moment. Congélation à proscrire : la lentille corail se délite en purée à la décongélation et les herbes fraîches noircissent.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "3 jours au réfrigérateur vinaigrette incorporée ; les œufs mollets se posent au moment (24 h) sans empêcher la garde du plat. Congélation à proscrire, en toutes lettres. Sortie 30 minutes avant ou réchauffée 1 minute : salade tiède, pas froide."
+    },
+    {
+      "code": "SRC-015",
+      "family": "Œufs mimosa",
+      "prose": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, à plat, filmé sans contact avec la farce ; les œufs durs entiers non écalés tiennent jusqu'à trois jours. La congélation est à exclure : le blanc cuit devient caoutchouteux et la mayonnaise tranche à la décongélation. La variante au thon se consomme dans les 12 heures.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "24 heures au réfrigérateur pour les œufs garnis (la variante au thon 12 h : la base contient du thon dans sa liste mais la prose la nomme « variante », on garde 24 h). Congélation à exclure, en toutes lettres. Entrée froide."
+    },
+    {
+      "code": "SRC-017",
+      "family": "Pan bagnat",
+      "prose": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, emballé bien serré dans un film ou un papier ; il gagne à reposer quelques heures mais se délite au-delà d'une journée. Congélation exclue : le pain imbibé et l'œuf dur deviennent spongieux et caoutchouteux à la décongélation.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "24 heures au réfrigérateur bien serré, se délite au-delà d’une journée. Congélation exclue en toutes lettres. Sandwich froid — c’est le cas qui a motivé ce lot."
+    },
+    {
+      "code": "SRC-024",
+      "family": "Salade de riz niçoise",
+      "prose": "Se conserve 24 à 48 heures au réfrigérateur entre 0 et 4 °C dans un contenant hermétique ; sortir le saladier un quart d'heure avant le service pour réveiller le fruité de l'huile, qui fige au froid. Ne supporte pas la congélation : le riz devient farineux et les légumes crus rendent toute leur eau à la décongélation.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "24 à 48 heures au réfrigérateur : borne basse, 24 h. Ne supporte pas la congélation, en toutes lettres. Salade servie froide, sortie un quart d’heure avant."
+    },
+    {
+      "code": "SRC-025",
+      "family": "Salade piémontaise",
+      "prose": "Se conserve 48 heures maximum au réfrigérateur entre 0 et 4 °C, dans un contenant hermétique, en raison de la mayonnaise et de l'œuf dur. Sortir 10 minutes avant de servir. Ne se congèle pas : la mayonnaise se déphase et la pomme de terre devient farineuse et granuleuse à la décongélation.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "48 heures maximum au réfrigérateur, à cause de la mayonnaise et de l’œuf dur. Ne se congèle pas, en toutes lettres. Servie froide."
+    },
+    {
+      "code": "SRC-035",
+      "family": "Carottes râpées",
+      "prose": "Se garde 48 heures au réfrigérateur entre 0 et 4 °C dans une boîte hermétique ; dès le deuxième jour la carotte rend son eau et s'assouplit, il faut alors l'égoutter et rectifier sel et acidité avant de servir. Ne se congèle pas : la décongélation ruine définitivement le croquant.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "48 heures au réfrigérateur, en rendant son eau dès le deuxième jour. Ne se congèle pas, en toutes lettres. Crudité servie froide."
+    },
+    {
+      "code": "SRC-037",
+      "family": "Céleri rémoulade",
+      "prose": "Se conserve 48 heures au réfrigérateur à 4 °C dans un contenant hermétique ; le céleri continue de rendre de l'eau, égoutter et remuer avant de servir. Ne supporte pas la congélation : l'émulsion tranche au décongélation et les filaments deviennent mous et spongieux.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "48 heures au réfrigérateur. Ne supporte pas la congélation, en toutes lettres. Entrée froide."
+    },
+    {
+      "code": "SRC-053",
+      "family": "Salade de chèvre chaud",
+      "prose": "La vinaigrette se garde cinq jours en bocal fermé à 4 °C et les lardons cuits deux jours au réfrigérateur. Les toasts gratinés se mangent dans la minute : réchauffés, le fromage se dessèche et le pain devient cassant. La salade assaisonnée ne se conserve pas, les feuilles tombent en une heure. Rien dans ce plat ne supporte la congélation, ni le chèvre frais qui rend son eau à la décongélation, ni la laitue.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Les toasts se mangent dans la minute, la salade assaisonnée tombe en une heure : le plat ne se garde pas. D’avance : lardons cuits 2 jours, vinaigrette 5 jours — 48 h, la plus courte. Rien ne supporte la congélation. Chèvre gratiné à la minute : plat chaud sur feuilles, pas froid."
+    },
+    {
+      "code": "SRC-054",
+      "family": "Salade landaise",
+      "prose": "À manger dans la foulée du dressage. Les éléments se gardent séparément : chair de canard désossée trois jours à 4 °C recouverte de sa graisse, vinaigrette une semaine au réfrigérateur en bocal fermé, pulpe de tomate le jour même. Une fois assaisonnée, la salade s'affaisse en moins d'une heure. Ne se congèle pas : la tomate râpée rend toute son eau à la décongélation et la peau croustillante devient molle ; seul le confit non désossé supporte le congélateur, trois mois sous graisse.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "À manger dans la foulée du dressage, s’affaisse en moins d’une heure. D’avance : canard désossé 3 jours, vinaigrette une semaine, tomate le jour même (pas d’avance) — 72 h. Ne se congèle pas monté (seul le confit entier, 3 mois). Confit saisi chaud sur salade : tiède, pas froid."
+    },
+    {
+      "code": "SRC-014-D1",
+      "family": "Lentilles tièdes aux lardons",
+      "prose": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C en boîte hermétique, vinaigrette déjà incorporée. Sortir 30 minutes avant le service ou réchauffer 1 minute à la poêle à feu doux pour retrouver la tiédeur. Les œufs mollets ne se conservent pas plus de 24 h et se posent au dernier moment. Congélation à proscrire : la lentille corail se délite en purée à la décongélation et les herbes fraîches noircissent.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base (elle parle d’œufs mollets alors que cette variante met des lardons) : 3 jours au réfrigérateur, congélation à proscrire. Salade tiède, pas froide."
+    },
+    {
+      "code": "SRC-014-D2",
+      "family": "Lentilles tièdes au vinaigre de cidre",
+      "prose": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C en boîte hermétique, vinaigrette déjà incorporée. Sortir 30 minutes avant le service ou réchauffer 1 minute à la poêle à feu doux pour retrouver la tiédeur. Les œufs mollets ne se conservent pas plus de 24 h et se posent au dernier moment. Congélation à proscrire : la lentille corail se délite en purée à la décongélation et les herbes fraîches noircissent.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : 3 jours au réfrigérateur, congélation à proscrire. Salade tiède, pas froide."
+    },
+    {
+      "code": "SRC-014-D3",
+      "family": "Lentilles tièdes à la patate douce et à la betterave",
+      "prose": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C en boîte hermétique, vinaigrette déjà incorporée. Sortir 30 minutes avant le service ou réchauffer 1 minute à la poêle à feu doux pour retrouver la tiédeur. Les œufs mollets ne se conservent pas plus de 24 h et se posent au dernier moment. Congélation à proscrire : la lentille corail se délite en purée à la décongélation et les herbes fraîches noircissent.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : 3 jours au réfrigérateur, congélation à proscrire. Salade tiède, pas froide."
+    },
+    {
+      "code": "SRC-015-D1",
+      "family": "Œufs mimosa au thon",
+      "prose": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, à plat, filmé sans contact avec la farce ; les œufs durs entiers non écalés tiennent jusqu'à trois jours. La congélation est à exclure : le blanc cuit devient caoutchouteux et la mayonnaise tranche à la décongélation. La variante au thon se consomme dans les 12 heures.",
+      "profile": {
+        "fridge_hours": 12,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Prose de la base, dont la dernière phrase vise précisément cette variante : « la variante au thon se consomme dans les 12 heures ». Congélation à exclure. Entrée froide."
+    },
+    {
+      "code": "SRC-015-D2",
+      "family": "Œufs mimosa à l'avocat",
+      "prose": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, à plat, filmé sans contact avec la farce ; les œufs durs entiers non écalés tiennent jusqu'à trois jours. La congélation est à exclure : le blanc cuit devient caoutchouteux et la mayonnaise tranche à la décongélation. La variante au thon se consomme dans les 12 heures.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Prose de la base : 24 heures au réfrigérateur (la variante à l’avocat n’a pas de règle propre ; l’avocat noircit mais la prose ne réduit pas la durée, on garde 24 h). Congélation à exclure. Entrée froide."
+    },
+    {
+      "code": "SRC-007-D1",
+      "family": "Anchoïade camarguaise",
+      "prose": "Se garde 3 à 4 jours au réfrigérateur entre 0 et 4 °C, dans un bocal hermétique, la surface recouverte d'une fine couche d'huile d'olive qui protège de l'oxydation. Sortir 20 minutes avant de servir, l'huile figeant au froid. La congélation est déconseillée : l'émulsion se casse au dégel et l'ail cru y développe une amertume marquée.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 3 à 4 jours, borne basse 3 jours. Congélation déconseillée. Condiment servi froid."
+    },
+    {
+      "code": "SRC-007-D2",
+      "family": "Anchoïade au citron",
+      "prose": "Se garde 3 à 4 jours au réfrigérateur entre 0 et 4 °C, dans un bocal hermétique, la surface recouverte d'une fine couche d'huile d'olive qui protège de l'oxydation. Sortir 20 minutes avant de servir, l'huile figeant au froid. La congélation est déconseillée : l'émulsion se casse au dégel et l'ail cru y développe une amertume marquée.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 3 à 4 jours, borne basse 3 jours. Congélation déconseillée. Condiment servi froid."
+    },
+    {
+      "code": "SRC-007-D3",
+      "family": "Anchoïade à la tomate",
+      "prose": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, 48 au plus, dans un bocal hermétique : la tomate rend de l'eau et délie peu à peu l'émulsion. Retirer le liquide remonté en surface et remuer avant chaque service. Sortir 20 minutes avant de servir, l'huile figeant au froid. La congélation est à exclure : l'émulsion se casse au dégel, la tomate s'y défait en filaments et l'ail cru y développe une amertume marquée.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "24 heures au réfrigérateur, 48 au plus, la tomate délie l’émulsion : borne basse, 24 h. Congélation à exclure, en toutes lettres. Condiment servi froid."
+    },
+    {
+      "code": "SRC-015-D3",
+      "family": "Verrines mimosa au thon",
+      "prose": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, à plat, filmé sans contact avec la farce ; les œufs durs entiers non écalés tiennent jusqu'à trois jours. La congélation est à exclure : le blanc cuit devient caoutchouteux et la mayonnaise tranche à la décongélation. La variante au thon se consomme dans les 12 heures.",
+      "profile": {
+        "fridge_hours": 12,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Prose de la base ; les verrines sont au thon, donc « la variante au thon se consomme dans les 12 heures » s’applique. Congélation à exclure. Entrée froide."
+    },
+    {
+      "code": "SRC-015-D4",
+      "family": "Œufs mimosa frits",
+      "prose": "Ne se conserve pas : la panure ramollit en moins d'une heure au contact de la farce et de l'humidité des blancs. Frire et garnir au moment de servir ; les demi-blancs panés crus peuvent en revanche attendre deux heures au réfrigérateur avant friture.",
+      "profile": {
+        "fridge_hours": 2,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Ne se conserve pas, la panure ramollit en moins d’une heure : frire et garnir au moment. Seule avance : les demi-blancs panés crus, 2 heures au réfrigérateur. Rien sur la congélation, mais une panure sur blanc d’œuf ne la supporte manifestement pas. Frits et servis chauds : pas froid."
+    },
+    {
+      "code": "SRC-014-D4",
+      "family": "Lentilles tièdes au poireau confit",
+      "prose": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C en boîte hermétique, vinaigrette déjà incorporée. Sortir 30 minutes avant le service ou réchauffer 1 minute à la poêle à feu doux pour retrouver la tiédeur. Les œufs mollets ne se conservent pas plus de 24 h et se posent au dernier moment. Congélation à proscrire : la lentille corail se délite en purée à la décongélation et les herbes fraîches noircissent.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : 3 jours au réfrigérateur, congélation à proscrire. Salade tiède, pas froide."
+    },
+    {
+      "code": "SRC-017-D1",
+      "family": "Pan bagnat à l'ail",
+      "prose": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, emballé bien serré dans un film ou un papier ; il gagne à reposer quelques heures mais se délite au-delà d'une journée. Congélation exclue : le pain imbibé et l'œuf dur deviennent spongieux et caoutchouteux à la décongélation.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 24 heures au réfrigérateur, congélation exclue. Sandwich froid."
+    },
+    {
+      "code": "SRC-017-D2",
+      "family": "Pan bagnat aux tomates en rondelles",
+      "prose": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, emballé bien serré dans un film ou un papier ; il gagne à reposer quelques heures mais se délite au-delà d'une journée. Congélation exclue : le pain imbibé et l'œuf dur deviennent spongieux et caoutchouteux à la décongélation.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 24 heures au réfrigérateur, congélation exclue. Sandwich froid."
+    },
+    {
+      "code": "SRC-024-D1",
+      "family": "Salade de riz niçoise au poivron blanchi",
+      "prose": "Se conserve 24 à 48 heures au réfrigérateur entre 0 et 4 °C dans un contenant hermétique ; sortir le saladier un quart d'heure avant le service pour réveiller le fruité de l'huile, qui fige au froid. Ne supporte pas la congélation : le riz devient farineux et les légumes crus rendent toute leur eau à la décongélation.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 24 à 48 heures, borne basse 24 h. Ne supporte pas la congélation. Servie froide."
+    },
+    {
+      "code": "SRC-025-D1",
+      "family": "Salade piémontaise à la mayonnaise maison",
+      "prose": "Se consomme dans les 24 heures, au réfrigérateur entre 0 et 4 °C et dans un contenant hermétique : la sauce est montée au jaune d'œuf cru, sans l'acidification ni la stabilisation d'une mayonnaise du commerce, et la garde en est d'autant plus courte. Sortir 10 minutes avant de servir. Ne se congèle pas : l'émulsion se déphase et la pomme de terre devient farineuse et granuleuse à la décongélation.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Se consomme dans les 24 heures : la mayonnaise est montée au jaune cru. Ne se congèle pas, en toutes lettres. Servie froide."
+    },
+    {
+      "code": "SRC-025-D2",
+      "family": "Salade piémontaise à la crème moutardée",
+      "prose": "Se conserve 48 heures maximum au réfrigérateur entre 0 et 4 °C, dans un contenant hermétique, en raison de la mayonnaise et de l'œuf dur. Sortir 10 minutes avant de servir. Ne se congèle pas : la mayonnaise se déphase et la pomme de terre devient farineuse et granuleuse à la décongélation.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 48 heures maximum, ne se congèle pas. Servie froide."
+    },
+    {
+      "code": "SRC-025-D3",
+      "family": "Salade piémontaise au poulet",
+      "prose": "Se conserve 48 heures maximum au réfrigérateur entre 0 et 4 °C, dans un contenant hermétique, en raison de la mayonnaise et de l'œuf dur. Sortir 10 minutes avant de servir. Ne se congèle pas : la mayonnaise se déphase et la pomme de terre devient farineuse et granuleuse à la décongélation.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 48 heures maximum, ne se congèle pas. Servie froide."
+    },
+    {
+      "code": "SRC-025-D4",
+      "family": "Salade piémontaise végétarienne",
+      "prose": "Se conserve 48 heures maximum au réfrigérateur entre 0 et 4 °C, dans un contenant hermétique, en raison de la mayonnaise et de l'œuf dur. Sortir 10 minutes avant de servir. Ne se congèle pas : la mayonnaise se déphase et la pomme de terre devient farineuse et granuleuse à la décongélation.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 48 heures maximum, ne se congèle pas. Servie froide."
+    },
+    {
+      "code": "SRC-035-D1",
+      "family": "Carottes râpées à la marocaine",
+      "prose": "Se garde 48 heures au réfrigérateur entre 0 et 4 °C dans une boîte hermétique ; dès le deuxième jour la carotte rend son eau et s'assouplit, il faut alors l'égoutter et rectifier sel et acidité avant de servir. Ne se congèle pas : la décongélation ruine définitivement le croquant.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 48 heures au réfrigérateur, ne se congèle pas. Crudité servie froide."
+    },
+    {
+      "code": "SRC-035-D2",
+      "family": "Carottes râpées douces à l'orange",
+      "prose": "Se garde 48 heures au réfrigérateur entre 0 et 4 °C dans une boîte hermétique ; dès le deuxième jour la carotte rend son eau et s'assouplit, il faut alors l'égoutter et rectifier sel et acidité avant de servir. Ne se congèle pas : la décongélation ruine définitivement le croquant.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 48 heures au réfrigérateur, ne se congèle pas. Crudité servie froide."
+    },
+    {
+      "code": "SRC-035-D3",
+      "family": "Carottes râpées aux suprêmes d'orange",
+      "prose": "Se garde 48 heures au réfrigérateur entre 0 et 4 °C dans une boîte hermétique ; dès le deuxième jour la carotte rend son eau et s'assouplit, il faut alors l'égoutter et rectifier sel et acidité avant de servir. Ne se congèle pas : la décongélation ruine définitivement le croquant.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 48 heures au réfrigérateur, ne se congèle pas. Crudité servie froide."
+    },
+    {
+      "code": "SRC-037-D1",
+      "family": "Rémoulade de céleri blanchi",
+      "prose": "Se conserve 48 heures au réfrigérateur à 4 °C dans un contenant hermétique ; le céleri continue de rendre de l'eau, égoutter et remuer avant de servir. Ne supporte pas la congélation : l'émulsion tranche au décongélation et les filaments deviennent mous et spongieux.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 48 heures, ne supporte pas la congélation. Entrée froide."
+    },
+    {
+      "code": "SRC-037-D2",
+      "family": "Céleri rémoulade aux câpres",
+      "prose": "Se conserve 48 heures au réfrigérateur à 4 °C dans un contenant hermétique ; le céleri continue de rendre de l'eau, égoutter et remuer avant de servir. Ne supporte pas la congélation : l'émulsion tranche au décongélation et les filaments deviennent mous et spongieux.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 48 heures, ne supporte pas la congélation. Entrée froide."
+    },
+    {
+      "code": "SRC-037-D3",
+      "family": "Rémoulade de céleri à la pomme",
+      "prose": "Se conserve 48 heures au réfrigérateur à 4 °C dans un contenant hermétique ; le céleri continue de rendre de l'eau, égoutter et remuer avant de servir. Ne supporte pas la congélation : l'émulsion tranche au décongélation et les filaments deviennent mous et spongieux.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 48 heures, ne supporte pas la congélation. Entrée froide."
+    },
+    {
+      "code": "SRC-053-D1",
+      "family": "Salade de chèvre pané",
+      "prose": "La vinaigrette se garde cinq jours en bocal fermé à 4 °C et les lardons cuits deux jours au réfrigérateur. Les toasts gratinés se mangent dans la minute : réchauffés, le fromage se dessèche et le pain devient cassant. La salade assaisonnée ne se conserve pas, les feuilles tombent en une heure. Rien dans ce plat ne supporte la congélation, ni le chèvre frais qui rend son eau à la décongélation, ni la laitue.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : ne se garde pas assemblée ; d’avance lardons 2 jours, vinaigrette 5 jours — 48 h. Rien ne se congèle. Chèvre pané saisi à la minute : plat chaud sur feuilles, pas froid."
+    },
+    {
+      "code": "SRC-053-D3",
+      "family": "Salade de chèvre chaud au basilic",
+      "prose": "La vinaigrette se garde cinq jours en bocal fermé à 4 °C et les lardons cuits deux jours au réfrigérateur. Les toasts gratinés se mangent dans la minute : réchauffés, le fromage se dessèche et le pain devient cassant. La salade assaisonnée ne se conserve pas, les feuilles tombent en une heure. Rien dans ce plat ne supporte la congélation, ni le chèvre frais qui rend son eau à la décongélation, ni la laitue.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : ne se garde pas assemblée ; d’avance lardons 2 jours, vinaigrette 5 jours — 48 h. Rien ne se congèle. Chèvre gratiné à la minute : pas froid."
+    },
+    {
+      "code": "SRC-054-D1",
+      "family": "Salade landaise à la frisée",
+      "prose": "À manger dans la foulée du dressage. Les éléments se gardent séparément : chair de canard désossée trois jours à 4 °C recouverte de sa graisse, vinaigrette une semaine au réfrigérateur en bocal fermé, pulpe de tomate le jour même. Une fois assaisonnée, la salade s'affaisse en moins d'une heure. Ne se congèle pas : la tomate râpée rend toute son eau à la décongélation et la peau croustillante devient molle ; seul le confit non désossé supporte le congélateur, trois mois sous graisse.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : à manger dans la foulée ; d’avance canard 3 jours, vinaigrette une semaine — 72 h. Ne se congèle pas montée. Confit saisi chaud sur frisée : tiède, pas froid."
+    },
+    {
+      "code": "SRC-054-D2",
+      "family": "Salade landaise aux pignons et à l'échalote",
+      "prose": "À manger dans la foulée du dressage. Les éléments se gardent séparément : chair de canard désossée trois jours à 4 °C recouverte de sa graisse, vinaigrette une semaine au réfrigérateur en bocal fermé, pulpe de tomate le jour même. Une fois assaisonnée, la salade s'affaisse en moins d'une heure. Ne se congèle pas : la tomate râpée rend toute son eau à la décongélation et la peau croustillante devient molle ; seul le confit non désossé supporte le congélateur, trois mois sous graisse.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : à manger dans la foulée ; d’avance canard 3 jours, vinaigrette une semaine — 72 h. Ne se congèle pas montée. Confit saisi chaud : tiède, pas froid."
+    },
+    {
+      "code": "SRC-058-D3",
+      "family": "Terrine de campagne en bocaux",
+      "prose": "Comptez 24 heures au réfrigérateur avant d'ouvrir le premier bocal, le temps que la farce se raffermisse et que l'assaisonnement s'égalise. Fermés et couverts de leur graisse figée, les bocaux se gardent 8 à 10 jours entre 0 et 4 degrés : quarante-cinq minutes de bain-marie cuisent la farce à cœur mais ne stérilisent rien, et aucune règle de froid ne saute. Un bocal entamé se consomme sous 4 jours, sa surface lissée et remise au contact de sa graisse. La congélation est possible par bocal jusqu'à 2 mois, mais elle détend une farce déjà plus friable que celle d'une terrine pressée.",
+      "profile": {
+        "fridge_hours": 96,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 2,
+        "serve_cold": true
+      },
+      "motif": "Bocaux fermés 8 à 10 jours, mais une production se sert entamée : 4 jours une fois ouvert. Repos de 24 heures avant le premier bocal. Congélation possible par bocal, 2 mois. Charcuterie servie froide."
+    },
+    {
+      "code": "SRC-014-D5",
+      "family": "Lentilles tièdes au jambonneau effiloché",
+      "prose": "Se garde 2 jours au réfrigérateur entre 0 et 4 °C en boîte hermétique, vinaigrette déjà incorporée — la viande effilochée ramène la salade de trois jours à deux. Sortir 30 minutes avant le service ou réchauffer 1 minute à la poêle à feu doux pour retrouver la tiédeur. Les œufs mollets ne se conservent pas plus de 24 h et se posent au dernier moment. Congélation à proscrire : la lentille corail se délite en purée à la décongélation et les herbes fraîches noircissent.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "2 jours au réfrigérateur : la viande effilochée ramène la salade de trois jours à deux. Congélation à proscrire. Salade tiède, pas froide."
+    },
+    {
+      "code": "SRC-014-D6",
+      "family": "Lentilles tièdes aux noisettes torréfiées",
+      "prose": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C en boîte hermétique, vinaigrette déjà incorporée. Sortir 30 minutes avant le service ou réchauffer 1 minute à la poêle à feu doux pour retrouver la tiédeur. Les œufs mollets ne se conservent pas plus de 24 h et se posent au dernier moment. Congélation à proscrire : la lentille corail se délite en purée à la décongélation et les herbes fraîches noircissent.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : 3 jours au réfrigérateur, congélation à proscrire. Salade tiède, pas froide."
+    },
+    {
+      "code": "SRC-017-D4",
+      "family": "Pan bagnat niçois de printemps",
+      "prose": "Se garde 24 heures au réfrigérateur entre 0 et 4 °C, emballé bien serré dans un film ou un papier ; il gagne à reposer quelques heures mais se délite au-delà d'une journée. Congélation exclue : le pain imbibé et l'œuf dur deviennent spongieux et caoutchouteux à la décongélation.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 24 heures au réfrigérateur, congélation exclue. Sandwich froid."
+    },
+    {
+      "code": "SRC-024-D2",
+      "family": "Salade de riz niçoise au riz complet",
+      "prose": "Se conserve 24 à 48 heures au réfrigérateur entre 0 et 4 °C dans un contenant hermétique ; sortir le saladier un quart d'heure avant le service pour réveiller le fruité de l'huile, qui fige au froid. Ne supporte pas la congélation : le riz devient farineux et les légumes crus rendent toute leur eau à la décongélation.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Même prose que la base : 24 à 48 heures, borne basse 24 h. Ne supporte pas la congélation. Servie froide."
+    },
+    {
+      "code": "SRC-053-D4",
+      "family": "Salade de chèvre chaud aux tomates cerises",
+      "prose": "La vinaigrette se garde cinq jours en bocal fermé à 4 °C et les lardons cuits deux jours au réfrigérateur. Les toasts gratinés se mangent dans la minute : réchauffés, le fromage se dessèche et le pain devient cassant. La salade assaisonnée ne se conserve pas, les feuilles tombent en une heure. Rien dans ce plat ne supporte la congélation, ni le chèvre frais qui rend son eau à la décongélation, ni la laitue.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : ne se garde pas assemblée ; d’avance lardons 2 jours, vinaigrette 5 jours — 48 h. Rien ne se congèle. Chèvre gratiné à la minute : pas froid."
+    },
+    {
+      "code": "SRC-053-D5",
+      "family": "Salade de chèvre chaud à la poire",
+      "prose": "La vinaigrette se garde cinq jours en bocal fermé à 4 °C et les lardons cuits deux jours au réfrigérateur. Les toasts gratinés se mangent dans la minute : réchauffés, le fromage se dessèche et le pain devient cassant. La salade assaisonnée ne se conserve pas, les feuilles tombent en une heure. Rien dans ce plat ne supporte la congélation, ni le chèvre frais qui rend son eau à la décongélation, ni la laitue.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Même prose que la base : ne se garde pas assemblée ; d’avance lardons 2 jours, vinaigrette 5 jours — 48 h. Rien ne se congèle. Chèvre gratiné à la minute : pas froid."
+    },
+    {
+      "code": "SRC-054-D3",
+      "family": "Salade landaise aux gésiers et au magret fumé",
+      "prose": "À manger dans la foulée du dressage. Les éléments se gardent séparément : chair de canard désossée trois jours à 4 °C recouverte de sa graisse, gésiers poêlés deux jours au réfrigérateur, vinaigrette une semaine en bocal fermé, pulpe de tomate le jour même. Le magret fumé entamé tient cinq jours serré dans son film, mais tranché il sèche en quelques heures : il se coupe au dernier moment. Ne se congèle pas monté : la tomate râpée rend toute son eau à la décongélation, la peau croustillante devient molle et le magret fumé perd son gras ; seuls le confit non désossé et les gésiers sous graisse supportent le congélateur, trois mois.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "À manger dans la foulée du dressage. D’avance : gésiers poêlés 2 jours, canard 3 jours, vinaigrette une semaine, magret tranché au dernier moment — 48 h, la plus courte. Ne se congèle pas montée. Confit et gésiers saisis chauds : tiède, pas froid."
+    },
+    {
+      "code": "SRC-054-D4",
+      "family": "Salade landaise au foie gras",
+      "prose": "À manger dans la foulée du dressage, et plus strictement encore que la base : une escalope de foie gras poêlée ne se réchauffe pas, elle refond et se vide de son gras. Le foie gras cru se garde deux jours au plus à 4 °C, serré dans un linge, et se tranche au dernier moment. Les autres éléments tiennent séparément : chair de canard désossée trois jours sous sa graisse, vinaigrette une semaine en bocal fermé, pulpe de tomate le jour même. Rien ne se congèle une fois l'assiette montée ; le foie gras cru entier supporte trois mois au congélateur, jamais tranché.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "À manger dans la foulée, plus strictement encore : l’escalope de foie gras poêlée ne se réchauffe pas. D’avance : canard 3 jours, vinaigrette une semaine (les 2 jours du foie gras cru sont une matière première, pas une préparation) — 72 h. Rien ne se congèle une fois montée. Foie gras poêlé chaud : pas froid."
+    },
+    {
+      "code": "SRC-054-D5",
+      "family": "Salade landaise à la truite fumée",
+      "prose": "À manger dans la foulée du dressage. La truite fumée sous vide se garde jusqu'à sa date, mais deux jours seulement une fois le sachet ouvert, et elle se détaille au dernier moment : les lanières coupées à l'avance sèchent et se collent entre elles. Les autres éléments se gardent séparément : chair de canard désossée trois jours à 4 °C sous sa graisse, vinaigrette une semaine en bocal fermé, pulpe de tomate le jour même. Ne se congèle pas : la tomate râpée rend son eau, la peau de canard ramollit, et une truite déjà fumée devient farineuse à la décongélation.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "À manger dans la foulée. D’avance : canard 3 jours, vinaigrette une semaine (les 2 jours de la truite ouverte sont une matière première) — 72 h. Ne se congèle pas. Confit saisi chaud : tiède, pas froid."
+    },
+    {
+      "code": "VEG-001-D3",
+      "family": "Lentilles vertes à la vinaigrette de moutarde",
+      "prose": "4 jours au réfrigérateur ; congélation 3 mois.",
+      "profile": {
+        "fridge_hours": 96,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 3,
+        "serve_cold": false
+      },
+      "motif": "4 jours au réfrigérateur ; congélation 3 mois en toutes lettres. La prose ne dit rien de la température de service ; des lentilles mijotées assaisonnées tardivement d’une vinaigrette se servent tièdes — pas froides. Cas difficile, à revoir si la fiche précise le service."
+    },
+    {
+      "code": "RAP-008",
+      "family": "Oignons confits",
+      "prose": "Se garde 10 jours au réfrigérateur entre 0 et 4 °C dans un bocal fermé, la surface lissée et couverte d'un filet d'huile. Mis en bocaux ébouillantés et remplis brûlants, il tient plusieurs mois au frais et à l'obscurité — c'est l'usage de la source qui en fait 2 kg. Se congèle 6 mois en petites portions ; la texture se ramollit légèrement au dégel sans que le goût en souffre.",
+      "profile": {
+        "fridge_hours": 240,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 6,
+        "serve_cold": true
+      },
+      "motif": "10 jours au réfrigérateur en bocal (plusieurs mois en bocaux ébouillantés : usage de conserve, non retenu comme garde de production). Se congèle 6 mois. Condiment sorti du bocal sans réchauffage : servi froid ou à l’ambiante."
+    },
+    {
+      "code": "RAP-009",
+      "family": "Duxelles de champignons",
+      "prose": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C dans une boîte hermétique, refroidie vite et à plat. Se congèle 3 mois, étalée en couche mince dans un sachet plat que l'on casse en morceaux à l'usage — desséchée, elle supporte bien le gel, ce qui n'est pas le cas des préparations de champignon encore humides.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 3,
+        "serve_cold": false
+      },
+      "motif": "3 jours au réfrigérateur ; se congèle 3 mois, étalée à plat. Farce cuite employée chaude dans une préparation : pas un service froid."
+    },
+    {
+      "code": "RAP-011",
+      "family": "Poivrons grillés",
+      "prose": "Se gardent 8 à 10 jours au réfrigérateur entre 0 et 4 °C, immergés sous l'huile dans un bocal fermé ; remettre de l'huile à chaque prélèvement pour que rien n'affleure. Se congèlent 6 mois, pelés et égouttés, sans leur huile — congelée, elle se sépare et devient granuleuse au dégel. Ils ressortent plus mous mais parfaits pour une sauce, un houmous ou une garniture.",
+      "profile": {
+        "fridge_hours": 192,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 6,
+        "serve_cold": true
+      },
+      "motif": "8 à 10 jours au réfrigérateur sous huile : borne basse, 8 jours. Se congèlent 6 mois, égouttés sans leur huile. Servis froids ou à l’ambiante, sous huile."
+    },
+    {
+      "code": "RAP-012",
+      "family": "Tzatziki",
+      "prose": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C dans un bocal fermé. Il rend un peu d'eau au fil des jours malgré le dégorgement : la verser plutôt que de la remuer dedans. Ne se congèle pas — le yaourt tranche au dégel et le concombre devient spongieux ; c'est un condiment de semaine, pas de réserve.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "3 jours au réfrigérateur. Ne se congèle pas, en toutes lettres. Condiment servi froid."
+    },
+    {
+      "code": "RAP-013",
+      "family": "Guacamole",
+      "prose": "Se garde 24 heures au réfrigérateur, film au contact de la surface pour chasser l'air, et pas davantage : passé ce délai la couleur vire et l'oignon cru domine. Ne se congèle pas — la chair se défait en dégelant et rend son eau. C'est la seule préparation de ce lot qui ne se prépare pas d'avance.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "24 heures au réfrigérateur, film au contact, pas davantage. Ne se congèle pas, en toutes lettres. Servi froid."
+    },
+    {
+      "code": "RAP-027",
+      "family": "Salade César",
+      "prose": "Assemblée, elle ne se garde pas : compter vingt minutes avant que les croûtons ramollissent. En revanche chaque élément se prépare d'avance — la sauce 2 jours au réfrigérateur, les croûtons 3 jours en boîte hermétique à température ambiante, le poulet grillé 2 jours au froid — et le montage prend alors cinq minutes. La sauce contient un jaune cru : 48 heures au maximum, et à écarter pour les publics sensibles.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Assemblée, elle ne se garde pas (vingt minutes). D’avance : sauce 2 jours (48 h maximum, jaune cru), poulet grillé 2 jours, croûtons 3 jours à l’ambiante — 48 h. Congélation manifestement exclue (laitue, sauce au jaune cru). Poulet grillé gardé au froid, montage en cinq minutes : salade servie froide."
+    },
+    {
+      "code": "RAP-028",
+      "family": "Salade grecque",
+      "prose": "Se mange dans les vingt minutes qui suivent l'assaisonnement : le sel tire l'eau des tomates et du concombre, et une salade grecque d'une heure baigne dans son jus. Les légumes se coupent en revanche jusqu'à 4 heures d'avance et se gardent au froid séparément, feta et assaisonnement à part. Ne se congèle pas.",
+      "profile": {
+        "fridge_hours": 4,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Se mange dans les vingt minutes qui suivent l’assaisonnement. Seule avance : légumes coupés jusqu’à 4 heures au froid, feta et assaisonnement à part. Ne se congèle pas, en toutes lettres. Servie froide."
+    },
+    {
+      "code": "RAP-030",
+      "family": "Salade de pâtes",
+      "prose": "Se garde 2 jours au réfrigérateur en boîte fermée ; sortir une demi-heure avant de servir et rectifier l'huile et le sel, que les pâtes absorbent en reposant. Le basilic se rajoute frais au moment de servir plutôt que la veille. Ne se congèle pas.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "2 jours au réfrigérateur, sortie une demi-heure avant. Ne se congèle pas, en toutes lettres. Servie froide."
+    },
+    {
+      "code": "RAP-031",
+      "family": "Salade de chou blanc",
+      "prose": "Se garde 3 jours au réfrigérateur en boîte fermée et gagne les premières vingt-quatre heures, le chou s'attendrissant dans l'acide. Rectifier le sel et le vinaigre le deuxième jour. Ne pas la préparer avec une mayonnaise maison si elle doit être gardée : les jaunes crus ramènent la conservation à 48 heures. Ne se congèle pas — le chou se défait.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "3 jours au réfrigérateur (48 h si mayonnaise maison — la fiche met une mayonnaise, sans préciser maison : on garde 3 jours). Ne se congèle pas, en toutes lettres. Servie froide."
+    },
+    {
+      "code": "VAR-002",
+      "family": "Panzanella",
+      "prose": "Se mange le jour même, une à trois heures après l'assaisonnement. Au-delà, le pain a tout bu et se défait : la salade reste comestible mais perd sa texture, qui est l'essentiel. Elle ne se garde pas plus de 24 heures au réfrigérateur et il faut alors la sortir une demi-heure avant. Ne se congèle pas. Si l'on prépare à l'avance, garder le pain grillé à part dans une boîte et ne réunir qu'à la dernière demi-heure.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "Se mange le jour même, une à trois heures après l’assaisonnement ; pas plus de 24 heures au réfrigérateur, texture perdue mais comestible — on retient 24 h sans tenir pour immédiat, la prose admettant la garde. Ne se congèle pas. Servie froide ou à l’ambiante."
+    },
+    {
+      "code": "VAR-013",
+      "family": "Gyros de poulet",
+      "prose": "Le poulet mariné cru se garde 24 heures au réfrigérateur et se congèle 2 mois dans sa marinade — c'est la façon d'avoir un dîner en un quart d'heure. Le poulet cuit se garde 3 jours, la sauce au yaourt 3 jours également, dans deux boîtes séparées. Les pitas se congèlent 2 mois et se réchauffent sans décongélation. Le sandwich monté ne se garde pas : le pain est détrempé en une demi-heure. Ne jamais réchauffer la sauce.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Le sandwich monté ne se garde pas, le pain détrempe en une demi-heure. D’avance : poulet cuit 3 jours, sauce 3 jours — 72 h. La congélation n’est autorisée que pour le poulet mariné cru et les pitas : le sandwich servi ne se congèle pas. Sandwich chaud."
+    },
+    {
+      "code": "VAR-017",
+      "family": "Labneh",
+      "prose": "Se garde 5 jours au réfrigérateur en récipient fermé, sans son huile, qu'on verse au moment de servir. Roulé en boules et couvert d'huile d'olive dans un bocal, il se garde 3 semaines au réfrigérateur — c'est la conservation traditionnelle. Ne se congèle pas : le gel se rompt et la pâte ressort granuleuse et pleine d'eau. Le petit-lait recueilli se garde 3 jours et remplace une partie du liquide d'une pâte à pain ou d'une soupe froide.",
+      "profile": {
+        "fridge_hours": 120,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "5 jours au réfrigérateur sans son huile (3 semaines roulé sous huile : conservation traditionnelle, non retenue comme garde de production). Ne se congèle pas, en toutes lettres. Servi froid."
+    },
+    {
+      "code": "VAR-020",
+      "family": "Zaalouk d'aubergines",
+      "prose": "Se garde 5 jours au réfrigérateur en récipient fermé, couvert d'un film d'huile d'olive, et il est meilleur le lendemain — c'est un plat qui se fait la veille. Se congèle 3 mois sans dommage, l'aubergine étant déjà écrasée : rien ne se délite davantage. Se sert froid sortant du réfrigérateur seulement après une demi-heure à température ambiante. Il tient aussi de garniture — sur un pain grillé, dans un sandwich, sous un œuf poché.",
+      "profile": {
+        "fridge_hours": 120,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 3,
+        "serve_cold": true
+      },
+      "motif": "5 jours au réfrigérateur, meilleur le lendemain. Se congèle 3 mois. « Se sert froid » en toutes lettres."
+    },
+    {
+      "code": "VAR-021",
+      "family": "Salade méchouia",
+      "prose": "Se garde 4 jours au réfrigérateur sous un film d'huile d'olive et gagne à reposer une nuit, l'ail cru s'assagissant. Sortir une demi-heure avant de servir. Se congèle 3 mois, les légumes étant déjà écrasés — mais sans les œufs ni les olives, qu'on ajoute après décongélation. Les poivrons grillés et pelés se gardent d'ailleurs seuls 5 jours sous huile et servent aussi bien à cette salade qu'à une garniture de pizza ou de sandwich.",
+      "profile": {
+        "fridge_hours": 96,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "4 jours au réfrigérateur sous huile. La congélation (3 mois) n’est autorisée que sans les œufs ni les olives, qui font partie du plat servi : le plat tel qu’il est servi ne se congèle pas, les mois ne sont pas reportés. Entrée froide, sortie une demi-heure avant."
+    },
+    {
+      "code": "VAR-030",
+      "family": "Salade russe",
+      "prose": "Se garde 2 jours au réfrigérateur, couverte, et pas davantage : la mayonnaise et les œufs durs limitent la conservation. Elle est meilleure le lendemain de sa confection. Ne se congèle pas — la mayonnaise tranche et la pomme de terre devient farineuse. Les légumes cuits et taillés se gardent en revanche 3 jours nature, sans mayonnaise, ce qui permet d'assembler la salade en cinq minutes le jour venu.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": true
+      },
+      "motif": "2 jours au réfrigérateur, pas davantage (mayonnaise, œufs durs). Ne se congèle pas, en toutes lettres. Servie froide."
+    },
+    {
+      "code": "VAR-034",
+      "family": "Bo bun",
+      "prose": "Ne se monte qu'au moment de servir. Les éléments se préparent en revanche à l'avance et séparément : la sauce se garde 2 semaines au réfrigérateur en bocal, les nouilles cuites et rincées 2 jours dans une boîte fermée avec un filet d'huile, les crudités taillées 2 jours, le bœuf mariné cru 24 heures. Rien ne se congèle utilement, sauf le bœuf dans sa marinade, 2 mois. Monté, le bol ne se garde pas : les crudités rendent leur eau en une heure.",
+      "profile": {
+        "fridge_hours": 24,
+        "eat_immediately": true,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": false
+      },
+      "motif": "Ne se monte qu’au moment de servir, les crudités rendent leur eau en une heure. D’avance : bœuf mariné cru 24 h, nouilles 2 jours, crudités 2 jours, sauce 2 semaines — 24 h, la plus courte. Rien ne se congèle utilement hors le bœuf cru : le plat ne se congèle pas. Bœuf saisi à feu vif posé sur nouilles et crudités : tiède, pas froid."
+    },
+    {
+      "code": "RAP-003",
+      "family": "Pâte à pizza",
+      "prose": "La pâte crue se garde 48 heures au réfrigérateur, en pâtons filmés serrés : le froid ralentit la pousse et développe le goût. Se congèle 3 mois, boulée, huilée et emballée individuellement ; décongeler une nuit au réfrigérateur puis laisser revenir une heure à température ambiante avant d'étaler. Une pâte déjà étalée ne se congèle pas correctement, elle se craquelle.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": null,
+        "freezer_months": null,
+        "serve_cold": null
+      },
+      "motif": "Pâte à pizza : la forme crue EST le produit, la règle « une durée d’une forme crue décrit un état avant cuisson » du parseur ne s’applique pas — 48 heures au réfrigérateur en pâtons. Congélation : la prose l’autorise boulée (3 mois) et la refuse étalée ; un refus dans la prose interdit freezable true, et false dirait qu’elle ne se congèle pas : null, non tranché. Base, jamais servie seule : serve_cold non pertinent."
+    },
+    {
+      "code": "RAP-004",
+      "family": "Pâte brisée",
+      "prose": "Crue, la pâte se garde 3 jours au réfrigérateur, emballée serrée en disque aplati, et 3 mois au congélateur ; décongeler une nuit au réfrigérateur, jamais à température ambiante, qui ramollit le beurre en surface avant que le cœur soit dégelé. Un fond déjà foncé dans son moule se congèle aussi, et s'enfourne alors sans décongélation.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 3,
+        "serve_cold": null
+      },
+      "motif": "Pâte brisée : la forme crue EST le produit — 3 jours au réfrigérateur en disque. Congélation autorisée en toutes lettres pour la pâte crue, 3 mois, sans aucun refus dans la prose. Base : serve_cold non pertinent."
+    },
+    {
+      "code": "RAP-005",
+      "family": "Pâte sablée",
+      "prose": "Crue, la pâte se garde 3 jours au réfrigérateur en disque emballé et 3 mois au congélateur. Cuit à blanc, le fond se garde une semaine dans une boîte hermétique à température ambiante, à l'abri de l'humidité, et se garnit au dernier moment : c'est ce qui en fait une base à cuire d'avance. Les sablés découpés tiennent quinze jours en boîte métallique.",
+      "profile": {
+        "fridge_hours": 72,
+        "eat_immediately": false,
+        "freezable": true,
+        "freezer_months": 3,
+        "serve_cold": null
+      },
+      "motif": "Pâte sucrée : la forme crue EST le produit — 3 jours au réfrigérateur en disque ; la semaine du fond cuit à blanc est à l’ambiante et n’est pas reportée. Congélation autorisée en toutes lettres pour la pâte crue, 3 mois, sans refus. Base : serve_cold non pertinent."
+    },
+    {
+      "code": "RAP-006",
+      "family": "Pâte à crêpes",
+      "prose": "La pâte crue se garde 48 heures au réfrigérateur, couverte ; la fouetter brièvement et la détendre d'un peu de lait avant emploi, l'amidon retombant au fond. Elle ne se congèle pas — le lait et l'œuf se séparent au dégel et la pâte tranche. Les crêpes déjà cuites, en revanche, se congèlent très bien 2 mois, empilées avec un papier cuisson entre chacune.",
+      "profile": {
+        "fridge_hours": 48,
+        "eat_immediately": false,
+        "freezable": false,
+        "freezer_months": null,
+        "serve_cold": null
+      },
+      "motif": "Pâte à crêpes : la forme crue EST le produit — 48 heures au réfrigérateur. La pâte ne se congèle pas (le lait et l’œuf se séparent) ; les crêpes cuites, elles, se congèlent, mais ce ne sont pas ce produit-ci. Base : serve_cold non pertinent."
+    },
+    {
+      "code": "FR-012",
+      "family": "Soupe à l’oignon gratinée",
+      "prose": "Le bouillon d'oignons se garde trois jours au réfrigérateur entre 0 et 4 °C dans un contenant fermé, et se congèle jusqu'à trois mois ; il gagne même à reposer une nuit, la caramélisation continuant de diffuser. Ne jamais conserver la soupe déjà gratinée : le pain se défait en bouillie et le fromage refroidi devient élastique. Gratiner au moment du service, sur du pain séché du jour et une soupe ramenée au frémissement.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Seul le bouillon d'oignons se congèle (trois mois) ; le plat servi est la soupe gratinée, dont la prose interdit expressément la conservation (« Ne jamais conserver la soupe déjà gratinée »). Une autorisation portant sur un composant n'autorise pas le plat : mention, donc null — ni true (faux), ni false (la prose ne refuse pas la congélation du bouillon). Les 72 h retenues sont celles du bouillon, la seule durée que la prose chiffre ; le gratin se fait au service, ce que le profil ne sait pas encore dire."
+    },
+    {
+      "code": "FR-014",
+      "family": "Velouté de potimarron",
+      "prose": "Se garde quatre jours au réfrigérateur entre 0 et 4 °C dans un contenant fermé, et se réchauffe à feu doux sans ébullition pour que la crème ne tranche pas. Le potimarron supporte très bien la congélation : congeler la base mixée non crémée jusqu'à quatre mois et n'incorporer la crème qu'au réchauffage, une base congelée déjà crémée se déphasant et rendant le velouté granuleux. Le velouté s'épaissit en refroidissant, prévoir un peu de bouillon pour le détendre au réchauffage.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "La prose ne congèle que « la base mixée non crémée », et dit que la crème doit être incorporée après décongélation : le velouté servi, crémé, n'est pas autorisé. Mention, donc null."
+    },
+    {
+      "code": "REAL-102",
+      "family": "Spaghetti alla puttanesca",
+      "prose": "La sauce se garde trois jours au réfrigérateur, couverte, et se réchauffe à feu doux avec un peu d'eau — elle épaissit beaucoup au froid. Elle se congèle deux mois mais les câpres et les olives y perdent leur croquant : mieux vaut congeler la base tomate-anchois et ajouter câpres et olives au réchauffage. Les pâtes enrobées se mangent le jour même, elles boivent la sauce en refroidissant.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Elle se congèle deux mois » désigne la SAUCE de la phrase précédente, et la prose ajoute que les pâtes enrobées se mangent le jour même : le plat servi (spaghetti enrobés) n'est pas congelable. Mention, donc null."
+    },
+    {
+      "code": "PROT-005",
+      "family": "Murgh tandoori et dal palak",
+      "prose": "3 jours au réfrigérateur ; le dal se congèle 2 mois, le poulet se réchauffe à la poêle.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Le dal se congèle 2 mois, le poulet se réchauffe à la poêle » : la congélation est autorisée pour le dal seul, et la prose dit explicitement autre chose du poulet. Le plat servi réunit les deux : mention, donc null."
+    },
+    {
+      "code": "PROT-008",
+      "family": "Poulet rôti à la créole et haricots rouges",
+      "prose": "3 jours au réfrigérateur ; les haricots se congèlent 2 mois, le poulet se réchauffe au four.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Les haricots se congèlent 2 mois, le poulet se réchauffe au four » : autorisation limitée aux haricots, le poulet rôti relevant du réchauffage. Le plat servi réunit les deux : mention, donc null."
+    },
+    {
+      "code": "SRC-001",
+      "family": "Poule au pot farcie",
+      "prose": "Le bouillon se garde 4 jours au froid et se congèle. La poule se conserve 3 jours immergée dans son bouillon, jamais à sec.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Le bouillon se garde 4 jours au froid et se congèle » : c'est le bouillon qui se congèle, pas la poule farcie, dont la prose dit seulement qu'elle se conserve 3 jours immergée. Mention, donc null."
+    },
+    {
+      "code": "SRC-001-D1",
+      "family": "Pot-au-feu de poule",
+      "prose": "Le bouillon se garde 4 jours au froid et se congèle. La poule se conserve 3 jours immergée dans son bouillon, jamais à sec.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Même prose que SRC-001 : seul le bouillon se congèle, la poule se conserve 3 jours immergée. Mention, donc null."
+    },
+    {
+      "code": "SRC-001-D2",
+      "family": "Poule au pot farcie au chou vert",
+      "prose": "Le bouillon se garde 4 jours au froid et se congèle. La poule se conserve 3 jours immergée dans son bouillon, jamais à sec.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Même prose que SRC-001 : seul le bouillon se congèle, la poule se conserve 3 jours immergée. Mention, donc null."
+    },
+    {
+      "code": "RAP-044",
+      "family": "Galette complète",
+      "prose": "La pâte crue se garde 3 jours au réfrigérateur, ce qui est son intérêt : on en coule quatre le mardi et quatre le jeudi. Les galettes NATURE se gardent 3 jours empilées avec un papier entre chacune, et se congèlent 2 mois — elles se garnissent alors directement à la poêle, ce qui ramène le plat à cinq minutes. La galette garnie, elle, ne se conserve pas : l'œuf coulant est le plat.",
+      "profile": {
+        "fridge_hours": null,
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« La galette garnie, elle, ne se conserve pas : l'œuf coulant est le plat. » Les 3 jours et les 2 mois de la prose portent sur la pâte crue et sur les galettes NATURE, deux formes qui ne sont pas le plat servi. Ni garde, ni congélation pour la galette complète ; eat_immediately, lu dans la prose, reste vrai."
+    },
+    {
+      "code": "RAP-046",
+      "family": "Quesadillas au poulet",
+      "prose": "Se mange à la sortie de la poêle : réchauffée, une quesadilla a une tortilla molle. La garniture, en revanche, se garde 3 jours au réfrigérateur et se congèle 2 mois, ce qui ramène le plat à cinq minutes. Les quesadillas montées et non cuites se congèlent 1 mois séparées par du papier, et se cuisent surgelées à feu moyen en ajoutant deux minutes.",
+      "profile": {
+        "fridge_hours": null,
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Se mange à la sortie de la poêle. » Les 3 jours et les 2 mois portent sur la GARNITURE (« en revanche »), le mois restant sur les quesadillas montées et NON CUITES : aucune de ces formes n'est le plat servi. Ni garde, ni congélation ; eat_immediately reste vrai."
+    },
+    {
+      "code": "VAR-006",
+      "family": "Pizza napolitaine",
+      "prose": "Se mange à la sortie du four. Les parts restantes se gardent 2 jours au réfrigérateur et se réchauffent 6 minutes à 220 °C sur une plaque chaude. La compotée d'oignons et la réduction de tomate se préparent 3 jours à l'avance et se gardent séparément au réfrigérateur — c'est ce qui ramène le plat à vingt minutes le soir venu. Les deux garnitures se congèlent 3 mois ; la pâte crue se congèle en pâtons 2 mois.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Les deux garnitures se congèlent 3 mois ; la pâte crue se congèle en pâtons 2 mois » : compotée, réduction et pâton crus, jamais la pizza cuite, dont la prose ne chiffre que 2 jours au réfrigérateur. Mention, donc null."
+    },
+    {
+      "code": "VAR-009",
+      "family": "Patatas bravas",
+      "prose": "La sauce brava se garde 5 jours au réfrigérateur en bocal fermé et se congèle 3 mois : c'est elle qui prend le temps, et la préparer d'avance ramène le plat à un quart d'heure. Les pommes de terre frites ne se gardent pas — elles ramollissent en une heure — mais la première friture peut se faire la veille : les cubes précuits se conservent 24 heures au réfrigérateur et se terminent en trois minutes de second bain. Le plat monté ne se réchauffe pas.",
+      "profile": {
+        "fridge_hours": null,
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Les pommes de terre frites ne se gardent pas » et « le plat monté ne se réchauffe pas ». Les 5 jours et les 3 mois sont ceux de la sauce brava seule, les 24 h ceux des cubes précuits avant second bain : aucune de ces durées n'est celle du plat servi. eat_immediately, lu dans la prose, reste vrai."
+    },
+    {
+      "code": "SRC-050",
+      "family": "Potée auvergnate",
+      "prose": "Trois jours au réfrigérateur à 4 °C, viandes et légumes conservés immergés dans leur bouillon pour ne pas sécher ; réchauffer à frémissement doux, jamais à gros bouillons. Le goût s'améliore au deuxième jour. Congélation possible deux mois pour les saucisses et le bouillon dans des boîtes séparées, mais retirer d'abord les pommes de terre, qui deviennent farineuses et grumeleuses, et le chou, qui se défait en filaments à la décongélation.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Congélation autorisée « pour les saucisses et le bouillon dans des boîtes séparées », après avoir retiré les pommes de terre et le chou : ce qui reste n'est plus la potée servie. Mention, donc null."
+    },
+    {
+      "code": "SRC-050-D1",
+      "family": "Potée au chou blanc",
+      "prose": "Trois jours au réfrigérateur à 4 °C, viandes et légumes conservés immergés dans leur bouillon pour ne pas sécher ; réchauffer à frémissement doux, jamais à gros bouillons. Le goût s'améliore au deuxième jour. Congélation possible deux mois pour les saucisses et le bouillon dans des boîtes séparées, mais retirer d'abord les pommes de terre, qui deviennent farineuses et grumeleuses, et le chou, qui se défait en filaments à la décongélation.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Même prose que SRC-050 : congélation des saucisses et du bouillon séparés, pommes de terre et chou retirés — pas le plat servi. Mention, donc null."
+    },
+    {
+      "code": "SRC-050-D2",
+      "family": "Potée auvergnate aux lentilles vertes",
+      "prose": "Trois jours au réfrigérateur à 4 °C, viandes et légumes conservés immergés dans leur bouillon pour ne pas sécher ; réchauffer à frémissement doux, jamais à gros bouillons. Le goût s'améliore au deuxième jour. Congélation possible deux mois pour les saucisses et le bouillon dans des boîtes séparées, mais retirer d'abord les pommes de terre, qui deviennent farineuses et grumeleuses, et le chou, qui se défait en filaments à la décongélation.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Même prose que SRC-050 : congélation des saucisses et du bouillon séparés, pommes de terre et chou retirés — pas le plat servi. Mention, donc null."
+    },
+    {
+      "code": "SRC-050-D3",
+      "family": "Potée auvergnate au jambonneau",
+      "prose": "Trois jours au réfrigérateur à 4 °C, viandes et légumes conservés immergés dans leur bouillon pour ne pas sécher ; réchauffer à frémissement doux, jamais à gros bouillons. Le goût s'améliore au deuxième jour. Congélation possible deux mois pour les saucisses et le bouillon dans des boîtes séparées, mais retirer d'abord les pommes de terre, qui deviennent farineuses et grumeleuses, et le chou, qui se défait en filaments à la décongélation.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Même prose que SRC-050 : congélation des saucisses et du bouillon séparés, pommes de terre et chou retirés — pas le plat servi. Mention, donc null."
+    },
+    {
+      "code": "SRC-050-D4",
+      "family": "Potée auvergnate en deux services",
+      "prose": "Trois jours au réfrigérateur à 4 °C, viandes et légumes conservés immergés dans leur bouillon pour ne pas sécher ; réchauffer à frémissement doux, jamais à gros bouillons. Le goût s'améliore au deuxième jour. Congélation possible deux mois pour les saucisses et le bouillon dans des boîtes séparées, mais retirer d'abord les pommes de terre, qui deviennent farineuses et grumeleuses, et le chou, qui se défait en filaments à la décongélation.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Même prose que SRC-050 : congélation des saucisses et du bouillon séparés, pommes de terre et chou retirés — pas le plat servi. Mention, donc null."
+    },
+    {
+      "code": "RAP-048",
+      "family": "Haricots verts à l'ail",
+      "prose": "Blanchis et refroidis, les haricots se gardent 3 jours au réfrigérateur et se sautent en trois minutes le moment venu : c'est la bonne façon de préparer ce plat d'avance. Sautés, ils se gardent 2 jours mais perdent leur croquant. Les haricots blanchis se congèlent 6 mois, égouttés et à plat.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "« Les haricots blanchis se congèlent 6 mois » : la forme blanchie précède la cuisson finale, le plat servi est sauté à l'ail. Mention, donc null. La garde retenue (48 h) est celle du plat sauté, la prose donnant 3 jours aux haricots seulement blanchis."
+    },
+    {
+      "code": "SRC-042",
+      "family": "Lentilles au lard",
+      "prose": "Trois jours au réfrigérateur à 4 °C dans une boîte fermée ; les lentilles boivent leur jus en refroidissant, rallonger d'un fond d'eau à la réchauffe douce. Congélation possible deux mois à condition de n'avoir pas mis la crème, celle-ci tranchant à la décongélation : la verser plutôt après réchauffage.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Congélation possible « à condition de n'avoir pas mis la crème » — or la crème fraîche est un ingrédient de la recette : le plat tel qu'il est composé n'est pas autorisé. Mention, donc null."
+    },
+    {
+      "code": "SRC-042-D2",
+      "family": "Lentilles corail au lard",
+      "prose": "Trois jours au réfrigérateur à 4 °C dans une boîte fermée ; les lentilles boivent leur jus en refroidissant, rallonger d'un fond d'eau à la réchauffe douce. Congélation possible deux mois à condition de n'avoir pas mis la crème, celle-ci tranchant à la décongélation : la verser plutôt après réchauffage.",
+      "profile": {
+        "freezable": null,
+        "freezer_months": null
+      },
+      "motif": "Même prose que SRC-042, et même crème fraîche à la composition : la congélation n'est autorisée que sans elle. Mention, donc null."
+    }
+  ],
+  "contexte_relecture": "Relecture adverse (chantier C1, point 2). Le parseur ne voit pas le SUJET d'une autorisation de congélation : « le bouillon se congèle », « la garniture se congèle », « les haricots se congèlent » ont été lus comme des autorisations du plat entier. Les 20 décisions ajoutées ici ramènent ces autorisations à ce qu'elles sont — une mention, donc null — sans toucher aux autres champs, que la prose donne correctement. Elles ne posent jamais false : la prose ne refuse pas la congélation, elle ne l'autorise pas pour le plat servi."
+}

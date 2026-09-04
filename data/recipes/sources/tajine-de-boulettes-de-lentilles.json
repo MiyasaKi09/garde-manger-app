@@ -1,0 +1,136 @@
+{
+  "dish": "tajine de boulettes de lentilles",
+  "slug": "tajine-de-boulettes-de-lentilles",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.750g.com/tajine-de-boulettes-de-lentilles-r81351.htm",
+      "site": "750g.com",
+      "nom": "Tajine végétarien aux boulettes de lentilles",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "3 tomates pelées concassées",
+        "1 oignon  haché",
+        "6 c. à s. d'huile d'olive",
+        "1 c. à s. de persil  haché",
+        "1 gousse d'ail  hachée",
+        "1 c. à c. de cumin",
+        "1 pincée de gingembre (en poudre)",
+        "1 c. à c. de paprika",
+        "1 boite de lentille cuisinée  Cassegrain",
+        "4 c. à s. de farine",
+        "50 g de chapelure",
+        "50 g de farine",
+        "1 oeuf",
+        "Huile d'arachide"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 955,
+        "sha256": "baa570249869a3ee"
+      },
+      "sha256_page": "d023567b85c32f98"
+    },
+    {
+      "url": "https://www.750g.com/tajine-de-boulettes-de-lentilles-r80690.htm",
+      "site": "750g.com",
+      "nom": "Tajine de Boulettes de lentilles",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "3 tomates pelées concassées",
+        "1 oignon  haché",
+        "6 c. à s. d'huile d'olive",
+        "1 gousse d'ail  hachée",
+        "1 c. à s. de persil  haché",
+        "1 c. à c. de cumin",
+        "1 pincée de gingembre (en poudre)",
+        "1 c. à c. de paprika",
+        "Sel ou sel fin",
+        "Poivre",
+        "1 boite de lentille cuisinée  cassegrain",
+        "4 c. à s. de farine",
+        "50 g de chapelure",
+        "50 g de farine",
+        "1 oeuf",
+        "Huile d'arachide"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 956,
+        "sha256": "db3e5a212f924048"
+      },
+      "sha256_page": "bc322a13fa1d11e7"
+    },
+    {
+      "url": "https://www.gourmandiseries.fr/tajine-de-boulettes-de-lentilles/",
+      "site": "gourmandiseries.fr",
+      "nom": "Tajine de boulette de lentilles",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "2 boites de tomates (concassées)",
+        "2  oignon(s) (jaunes, hachés)",
+        "2 c. à soupe de  persil",
+        "2 gousses d' ail (écrasées)",
+        "1 c. à soupe de  cumin en poudre",
+        "1 c. à soupe de  paprika",
+        "2 pincées de gingembre (en poudre)",
+        "12 c. à soupe d' huile d'olive",
+        "poivre du moulin",
+        "sel",
+        "2 boites de lentilles blondes (cuisinées (J'ai pris la marque Cassegrain))",
+        "8 c. à soupe de farine de blé",
+        "100 g de chapelure",
+        "100 g de farine de blé",
+        "2  oeuf(s)",
+        "huile de friture"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 914,
+        "sha256": "54c734418e95a43e"
+      },
+      "sha256_page": "c3b746725d704d76"
+    },
+    {
+      "url": "https://www.forksoverknives.com/recipes/vegan-soups-stews/vegan-kefta-tagine-with-moroccan-meatballs/",
+      "site": "forksoverknives.com",
+      "nom": "Vegan Kefta Tagine (Moroccan Meatballs)",
+      "portions": "Makes 13 cups",
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "¾ cup dry bulgur",
+        "2 15-oz. cans no-salt-added chickpeas, undrained",
+        "1 tablespoon flaxseed meal",
+        "¼ cup chopped toasted walnuts",
+        "2 tablespoons tahini",
+        "5 cloves garlic, minced",
+        "3 teaspoons <a href=\"https://www.forksoverknives.com/recipes/vegan-sauces-condiments/ras-el-hanout/\">ras el hanout</a>",
+        "1 teaspoon sea salt",
+        "¼ teaspoon freshly ground black pepper or cayenne pepper",
+        "2 cups fresh or frozen mirepoix (10 to 12 oz.)",
+        "6 cups low-sodium vegetable broth",
+        "1 lb. 2-inch red or yellow potatoes, quartered",
+        "1 14.5-oz. can no-salt-added fire-roasted or regular diced tomatoes, undrained",
+        "2 tablespoons chopped fresh parsley",
+        "Lemon wedges (optional)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1701,
+        "sha256": "bd921c39c4303b0e"
+      },
+      "sha256_page": "29348320d59a6dae"
+    }
+  ]
+}

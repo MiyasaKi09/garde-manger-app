@@ -1,0 +1,132 @@
+{
+  "dish": "Adobong tokwa",
+  "slug": "adobong-tokwa",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://thefoodietakesflight.com/tofu-adobo-adobong-tokwa/",
+      "site": "thefoodietakesflight.com",
+      "nom": "Filipino Tofu Adobo (Adobong Tokwa)",
+      "portions": [
+        "3",
+        "3 people"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "450 g extra firm tofu or tokwa",
+        "3-4 tbsp neutral oil (see notes)",
+        "12 cloves garlic ((or more if you’d like!), crushed and peeled)",
+        "1 medium  red onion (sliced into squares)",
+        "1/2 to 1 tsp whole pepper (if you love whole pepper corns, feel free to add more!)",
+        "4  dried bay leaves or laurel leaves",
+        "2-3 tbsp soy sauce ((see notes if gluten-free))",
+        "2-3 tbsp distilled white vinegar",
+        "3/4 cup vegetable broth (or stock)",
+        "1 tsp dark soy sauce",
+        "1/2-1 tbsp sugar (adjust to taste (I used coconut sugar))",
+        "Sinangag ((Filipino Fried Garlic Rice))",
+        "Plain Rice"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1390,
+        "sha256": "d3c3fd4ab53c5efd"
+      },
+      "sha256_page": "b06946bb50a2b440"
+    },
+    {
+      "url": "https://bestofvegan.com/vegan-filipino-adobong-tokwa-tofu-adobo/",
+      "site": "bestofvegan.com",
+      "nom": "Vegan Filipino Adobong Tokwa (Tofu Adobo)",
+      "portions": [
+        "4",
+        "4 servings"
+      ],
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "2  medium Russet potatoes (peeled and sliced into ⅓-inch (~1 centimeter) thick half-moons)",
+        "2 tbsp neutral oil + more to drizzle over potatoes",
+        "Salt &amp; freshly cracked black pepper (to taste)",
+        "1  14-oz block of extra firm tofu, pressed at least 15 minutes",
+        "½ cup + 2 tbsp soy sauce (divided (low sodium highly recommended))",
+        "½ cup water",
+        "½ cup vinegar",
+        "sugar (to taste)",
+        "1  onion (peeled and sliced thinly)",
+        "1  head of garlic (peeled and minced)",
+        "3  bay leaves",
+        "1 tsp black peppercorns",
+        "Steamed jasmine rice (to serve)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1220,
+        "sha256": "a025821c7ba4e085"
+      },
+      "sha256_page": "3b3e8312025f7ce3"
+    },
+    {
+      "url": "https://healthmylifestyle.com/tofu-adobo/",
+      "site": "healthmylifestyle.com",
+      "nom": "Easy Tofu Adobo (Filipino Adobong Tokwa)",
+      "portions": [
+        "3"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "14 ounces extra firm tofu",
+        "1 small red onion (diced)",
+        "5-6 cloves garlic (minced)",
+        "½ teaspoon black peppercorns (or ⅛ - ¼ teaspoon ground black pepper)",
+        "¼ cup low-sodium soy sauce",
+        "¼ cup white distilled vinegar (or rice vinegar )",
+        "½ cup low-sodium vegetable broth (*see notes)",
+        "3  bay leaves",
+        "1 tablespoon coconut sugar",
+        "Salt (to taste, optional )",
+        "1 teaspoon cornstarch  (mixed with 2 teaspoons of cold water)",
+        "Green onions (sliced, for garnish)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1404,
+        "sha256": "ae7222cef7977937"
+      },
+      "sha256_page": "481a38064a2e5d9c"
+    },
+    {
+      "url": "https://ricelifefoodie.com/adobong-tokwa-filipino-tofu-adobo/",
+      "site": "ricelifefoodie.com",
+      "nom": "Adobong Tokwa (Filipino Tofu Adobo)",
+      "portions": [
+        "3",
+        "3 people"
+      ],
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "3 cups extra firm tofu (cut in small cubes; pre frozen and thawed)",
+        "3 tbsp extra virgin olive oil",
+        "4 cloves garlic (fresh garlic, minced)",
+        "½ tbsp fresh ginger (grated)",
+        "1 whole shallot (chopped, you can use yellow onion as a sub)",
+        "¾ cup vegetable stock (you can use chicken stock for non-vegan option)",
+        "4 tbsp low sodium soy sauce",
+        "2½ tbsp white distilled vinegar",
+        "3 tbsp brown sugar",
+        "¾ tbsp peppercorns (use coarse ground black pepper if you do not like peppercorns)",
+        "3-4  bay leaves"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 566,
+        "sha256": "1f0a083fd25bb839"
+      },
+      "sha256_page": "4f5b9f09d002f798"
+    }
+  ]
+}

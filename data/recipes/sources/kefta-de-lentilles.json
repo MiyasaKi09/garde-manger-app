@@ -1,0 +1,89 @@
+{
+  "dish": "kefta de lentilles",
+  "slug": "kefta-de-lentilles",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/madame-potiron/recettes/boulettes-de-lentilles-facon-kefta",
+      "site": "chefsimon.com",
+      "nom": "Boulettes de lentilles façon kefta",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 boite de lentilles",
+        "200 gr de passata",
+        "40 gr de farine de riz",
+        "80 gr de boulgour",
+        "20 gr de raisins secs",
+        "20 gr d'amandes éffilées",
+        "50 gr d'épinards surgelés",
+        "1 càs de tahini",
+        "1 càs de jus de citron",
+        "1 càc de cumin moulu",
+        "1 càc de paprika fumé",
+        "1/2 càc d'origan séché",
+        "sel &amp; poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 31,
+        "sha256": "f20ad99a80dee20d"
+      },
+      "sha256_page": "10df7b35c44a42fa"
+    },
+    {
+      "url": "https://sainplementhealthy.com/recette/kefta-vegetarienne-aux-lentilles-vertes",
+      "site": "sainplementhealthy.com",
+      "nom": "Kefta végétarienne aux lentilles vertes",
+      "portions": "12",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT60M",
+      "ingredients": [
+        "150g de lentilles vertes",
+        "2 oignons",
+        "1 gousse d'ail",
+        "20ml d'huile d'olive",
+        "1 cuillère à café bombée de cumin",
+        "1 cuillère à café de mélange 4 épices",
+        "De la menthe séchée et du persil",
+        "Sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 790,
+        "sha256": "1733837e9c4207a3"
+      },
+      "sha256_page": "24d6bf8a3ac89e79"
+    },
+    {
+      "url": "https://www.terrasana.fr/recette/kefta-vegan-avec-une-sauce-tomate-epicee/",
+      "site": "terrasana.fr",
+      "nom": "Kefta végan avec une sauce tomate épicée",
+      "portions": "4",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "Pain naan à l'ail",
+        "Lentilles corail",
+        "Coriandre",
+        "Latte curcuma gingembre",
+        "Fibres de psyllium",
+        "Oignons rouges",
+        "Ail",
+        "Latte curcuma gingembre",
+        "Sauce tomate épicée",
+        "Tomates séchées au soleil",
+        "Épinards",
+        "Lait de noix de coco"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "9d7036b664e269ea"
+    }
+  ]
+}

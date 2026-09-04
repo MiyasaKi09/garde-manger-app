@@ -1,0 +1,115 @@
+{
+  "dish": "Courgettes farcies aux lentilles",
+  "slug": "courgettes-farcies-aux-lentilles",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/alexandre/recettes/courgettes-farcies-au-riz-et-aux-lentilles",
+      "site": "chefsimon.com",
+      "nom": "Courgettes farcies au riz et aux lentilles",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "1 grosse courgette ou 6 petites courgettes rondes",
+        "1 bel oignon",
+        "1 ou 2 gousse(s) d'ail",
+        "1 verre de riz basmati ou jasmin",
+        "1 verre de lentilles vertes",
+        "1 c à café bombée d'origan ou d'herbes de Provence",
+        "1 c à café rase de cumin en poudre",
+        "Sel et poivre",
+        "Huile d'olive",
+        "50 g de féta ou féta végétale (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "cc73cfe92a7972ad"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_courgettes-farcies-quinoa-et-lentilles_68403.aspx",
+      "site": "marmiton.org",
+      "nom": "Courgettes farcies quinoa et lentilles : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT2M",
+      "ingredients": [
+        "2 courgettes moyennes",
+        "50 g de quinoa",
+        "50 g de lentilles vertes",
+        "1 oeuf",
+        "30 g de parmesan",
+        "10 cl de crème fraîche épaisse",
+        "1 cuillère à café de curry",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 669,
+        "sha256": "fe9eff25c55bd0f2"
+      },
+      "sha256_page": "167dcae290e431ce"
+    },
+    {
+      "url": "https://migusto.migros.ch/fr/recettes/courgettes-farcies-aux-lentilles",
+      "site": "migusto.migros.ch",
+      "nom": "Courgettes farcies aux lentilles",
+      "portions": "Pour 4 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "160 g de lentilles vertes du Puy",
+        "4 courgettes d’env. 250 g",
+        "½ oignon",
+        "2 cs d'huile d´olive",
+        "½ bouquet de fines herbes",
+        "sel",
+        "poivre de Cayenne",
+        "300 g de fromage frais",
+        "4 cs de chapelure",
+        "2 dl de bouillon de légumes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 748,
+        "sha256": "9379fb2f88bfd3e1"
+      },
+      "sha256_page": "aa6ab0629a4e3dab"
+    },
+    {
+      "url": "https://lodeurducafe.com/2018/09/courgettes-farcies-lentilles-vertes-proteines-soja-texturees/",
+      "site": "lodeurducafe.com",
+      "nom": "Courgettes farcies aux lentilles vertes et protéines de soja texturées",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "Deux courgettes de taille moyenne",
+        "60 g de protéines de soja ou de pois texturées ((en petits morceaux))",
+        "60 g de lentilles vertes  ((sèches))",
+        "Un gros oignon",
+        "1 - 2  gousses d’ail",
+        "100 ml de vin blanc",
+        "Une cuillère à soupe de sauce soja ou de tamari",
+        "Une demi cuillère à café de miso brun",
+        "Du bouillon de légumes",
+        "Du thym et de l’origan séchés",
+        "Poivre, oignon en poudre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1597,
+        "sha256": "1ea243a0bbe7f401"
+      },
+      "sha256_page": "cf2d8a53fd694ed3"
+    }
+  ]
+}

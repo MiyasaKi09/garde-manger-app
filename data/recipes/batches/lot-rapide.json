@@ -4997,6 +4997,7 @@
     {
       "code": "RAP-032",
       "family": "Curry de légumes",
+      "derived_from": "RAP-033",
       "cuisine_origin": "Inde / cuisine domestique internationale",
       "identity_level": "domestic_standard",
       "category": "curry végétarien",

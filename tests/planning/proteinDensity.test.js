@@ -72,6 +72,22 @@ describe('densité protéique du corpus', () => {
 describe('une semaine réelle pour un foyer à cible protéique élevée', () => {
   const recipes = getCanonicalRecipes({ servings: 2 })
 
+  // Les deux semaines sont résolues UNE FOIS, ici, et observées par les trois
+  // tests. Elles l'étaient auparavant dans chaque `it`, donc quatre fois pour
+  // deux semaines distinctes — et la semaine du 3 août à elle seule trois fois.
+  // Le coût de la recherche croît avec le vivier : à 520 recettes publiables,
+  // deux des trois tests dépassaient les vingt secondes de la CI alors que
+  // rien n'avait cassé. Ce que ces tests mesurent est la SEMAINE SERVIE, pas la
+  // vitesse à laquelle on la calcule ; les résoudre une fois ne change donc
+  // aucune assertion. C'est le remède déjà appliqué à varieteSemaine.test.js,
+  // pour la même cause et avec le même résultat.
+  const SEMAINES = ['2026-08-03', '2026-08-10']
+  const resolues = SEMAINES.map((debut) => {
+    const plan = semaine(debut, recipes)
+    return { debut, plan, perso: buildPersonalizedMeals({ plan, recipes, members: MEMBERS, goals: GOALS }) }
+  })
+  const parDebut = new Map(resolues.map((entree) => [entree.debut, entree]))
+
   // Le budget de temps suit le vivier, qui grandit à chaque lot. Mesure du
   // 29 juillet 2026 : 361 recettes éligibles, ~7 s pour résoudre une semaine,
   // soit ~19 ms par recette et par semaine. Le test en résout deux. Le coût est
@@ -81,10 +97,8 @@ describe('une semaine réelle pour un foyer à cible protéique élevée', () =>
   // À 3 000 recettes publiables, la même mesure donnerait près d'une minute par
   // semaine : la recherche demandera alors un élagage, pas un budget plus large.
   it('couvre nettement mieux la cible qu’avant l’enrichissement', { timeout: 60000 }, () => {
-    const releves = ['2026-08-03', '2026-08-10'].map((start) => {
-      const plan = semaine(start, recipes)
+    const releves = resolues.map(({ plan, perso }) => {
       expect(plan.status).toBe('published')
-      const perso = buildPersonalizedMeals({ plan, recipes, members: MEMBERS, goals: GOALS })
       const jours = perso.daily.filter((jour) => jour.person_name === 'Julien')
       return {
         proteines: jours.reduce((sum, jour) => sum + jour.total.proteinG, 0) / jours.length,
@@ -136,9 +150,8 @@ describe('une semaine réelle pour un foyer à cible protéique élevée', () =>
     expect(moyenne('glucides')).toBeLessThan(glucidesImposes * 1.15)
   })
 
-  it('n’atteint pas la cible en moyenne, et le dit jour par jour', { timeout: 20000 }, () => {
-    const plan = semaine('2026-08-03', recipes)
-    const perso = buildPersonalizedMeals({ plan, recipes, members: MEMBERS, goals: GOALS })
+  it('n’atteint pas la cible en moyenne, et le dit jour par jour', () => {
+    const { perso } = parDebut.get('2026-08-03')
     const jours = perso.daily.filter((jour) => jour.person_name === 'Julien')
     const moyenne = jours.reduce((sum, jour) => sum + jour.total.proteinG, 0) / jours.length
 
@@ -155,7 +168,7 @@ describe('une semaine réelle pour un foyer à cible protéique élevée', () =>
     expect(conformes).toBeLessThan(jours.length)
   })
 
-  it('sert confortablement un membre dont la cible est atteignable', { timeout: 20000 }, () => {
+  it('sert confortablement un membre dont la cible est atteignable', () => {
     // Ce test n'avait pas de délai explicite, contrairement à ses deux voisins,
     // et il a fini par expirer au bout des 5 s par défaut. Rien n'avait cassé :
     // le corpus publiable est passé de 50 à 100 recettes, et la recherche par
@@ -163,8 +176,7 @@ describe('une semaine réelle pour un foyer à cible protéique élevée', () =>
     // recherche deviendra un sujet en soi, bien avant d'être un sujet de test.
     //
     // Zoé vise 0,049 g/kcal, soit le troisième quartile du corpus.
-    const plan = semaine('2026-08-03', recipes)
-    const perso = buildPersonalizedMeals({ plan, recipes, members: MEMBERS, goals: GOALS })
+    const { perso } = parDebut.get('2026-08-03')
     const jours = perso.daily.filter((jour) => jour.person_name === 'Zoé')
     const proteines = jours.reduce((sum, jour) => sum + jour.total.proteinG, 0) / jours.length
     expect(proteines / 75).toBeGreaterThan(0.85)

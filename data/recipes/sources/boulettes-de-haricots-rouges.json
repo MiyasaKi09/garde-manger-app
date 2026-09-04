@@ -1,0 +1,122 @@
+{
+  "dish": "Boulettes de haricots rouges",
+  "slug": "boulettes-de-haricots-rouges",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://deliacious.com/2020/10/boulettes-de-haricots-rouge.html",
+      "site": "deliacious.com",
+      "nom": "Boulettes de haricots rouges",
+      "portions": [
+        "10",
+        "10 boulettes"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "250 g haricots rouges (cuits, soit une boîte)",
+        "1/2  oignon (jaune ou rouge)",
+        "1 c. à soupe concentré de tomates",
+        "1 c. à café paprika fumé",
+        "1/2  c. à café cumin (en poudre)",
+        "1/2 c. à café coriandre moulue",
+        "1 gousse ail",
+        "1/4 c. à café sel  (fin)",
+        "30 g flocons d'avoine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 811,
+        "sha256": "c287f8da9923139a"
+      },
+      "sha256_page": "9b41dad3345af1a0"
+    },
+    {
+      "url": "https://sainplementhealthy.com/recette/boulettes-vegan-aux-haricots-rouges",
+      "site": "sainplementhealthy.com",
+      "nom": "Boulettes vegan aux haricots rouges",
+      "portions": "13",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "240g de haricots rouges cuits",
+        "50g de sauce tomate",
+        "30g flocons d'avoine",
+        "1 petit oignon",
+        "10ml de sauce soja",
+        "1 gousse d'ail",
+        "Poivre",
+        "Cumin",
+        "Paprika"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 534,
+        "sha256": "2035288bfa360656"
+      },
+      "sha256_page": "cca51137fca8c586"
+    },
+    {
+      "url": "https://www.blogdechataigne.fr/boulettes-de-haricots-rouges/",
+      "site": "blogdechataigne.fr",
+      "nom": "Boulettes de haricots rouges",
+      "portions": [
+        "3",
+        "3 personnes"
+      ],
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "200 g de haricots rouges cuits égouttés ((soit un bocal))",
+        "1  gousse d'ail",
+        "1  oignon blanc",
+        "1 c. à c. de moutarde",
+        "1 c. à c. de cumin en poudre",
+        "1 c. à c. de paprika",
+        "sel et poivre du moulin",
+        "farine de blé",
+        "huile de tournesol"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 957,
+        "sha256": "10db027f8a6f9d1b"
+      },
+      "sha256_page": "db83b2dd30694632"
+    },
+    {
+      "url": "https://www.coeuretavc.ca/vivez-sainement/recettes/plats-principaux-sans-viande/boulettes-de-haricots-servies-sur-riz",
+      "site": "coeuretavc.ca",
+      "nom": "Boulettes de haricots servies sur riz",
+      "portions": "6",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "2 c. à soupe (25 ml) d’huile de canola, divisée",
+        "1 échalote, hachée finement",
+        "2 gousses d’ail, émincées",
+        "1 boîte (19 oz/540 ml) de haricots rouges en conserve sans sel ajouté, rincés et égout-tés",
+        "1 œuf",
+        "1/3 tasse (75 ml) de chapelure assaisonnée",
+        "2 c. à soupe (25 ml) de germe de blé ou de farine de lin",
+        "1 c. à thé (5 ml) d’assaisonnement à l’italienne",
+        "1 c. à thé (5 ml) de sauce soya réduite en sodium",
+        "1/4 c. à thé (1 ml) de sauce au piment fort",
+        "2 tasses (500 ml) de bouillon de légumes sans sel ajouté",
+        "2 c. à soupe (25 ml) de chaque : fécule de maïs et eau",
+        "2 c. à soupe (25 ml) de persil frais ou d’oignons verts hachés",
+        "1 c. à soupe (15 ml) d’huile de canola",
+        "1 de chaque : poivrons rouge et jaune, coupés en dés",
+        "1 tasse (250 ml) de riz basmati",
+        "2 tasses (500 ml) de bouillon de légumes sans sel ajouté"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1370,
+        "sha256": "eaf9289feaef55f8"
+      },
+      "sha256_page": "dd4c1240d217b0db"
+    }
+  ]
+}

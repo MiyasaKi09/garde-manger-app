@@ -1,0 +1,170 @@
+{
+  "dish": "Chorba sans viande",
+  "slug": "chorba-sans-viande",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.amourdecuisine.fr/article-chorba-sans-viande-economique.html",
+      "site": "amourdecuisine.fr",
+      "nom": "chorba sans viande économique",
+      "portions": [
+        "6",
+        "6 parts"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 gros oignon",
+        "2 tomates fraîches",
+        "1/4 de botte de coriandre fraîche",
+        "1 poignée de pois chiches",
+        "1 c. à café de coriandre en poudre (cosbor)",
+        "1 c. à café de paprika doux",
+        "1 à 2 c. à soupe de concentré de tomate",
+        "1 branche de céleri",
+        "1 carotte",
+        "1 courgette",
+        "1 piment (facultatif)",
+        "3 c. à soupe d’huile d’olive extra vierge",
+        "80 g de frik",
+        "1 c. à café de sel",
+        "1/2 c. à café de poivre noir"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1131,
+        "sha256": "2f1e6c5871f6f907"
+      },
+      "sha256_page": "5e08c6f7e285e222"
+    },
+    {
+      "url": "https://www.mesinspirationsculinaires.com/article-chorba-sans-viande-cuisine-algerienne.html",
+      "site": "mesinspirationsculinaires.com",
+      "nom": "Chorba sans viande, cuisine algérienne",
+      "portions": [
+        "4"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4-5  tomates (fraîches et mures)",
+        "1  oignon (haché)",
+        "1  courgette",
+        "1  pomme de terre",
+        "1 branche  céleri ((avec ses feuilles) facultatif)",
+        "1  carotte ( en remplaçant les petits pois que je n'ai pas)",
+        "5 feuilles  menthe fraîche (ciselée)",
+        "1 bouquet  coriandre  (hachée)",
+        "sel (poivre noir)",
+        "1 c-a-café paprika",
+        "1 pincée  cannelle",
+        "1 c-a-soupe concentré de tomate",
+        "1/2 verre pâtes ( Orzo ou vermicelle)",
+        "1 verre pois chiche ( trempé la veille)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1217,
+        "sha256": "4392af652aefc342"
+      },
+      "sha256_page": "1d958a15069e6299"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/keskonmangemaman/recettes/chorba-sans-viande",
+      "site": "chefsimon.com",
+      "nom": "Chorba sans viande",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "1 bocal de pois chiches",
+        "50 grammes de petites pâtes ( orzetto en forme de grain de riz pour moi )",
+        "2 branches de céleri",
+        "4 carottes",
+        "4 petites pommes de terre",
+        "2 petites courgettes (je sais ce n'est pas encore la saison , mais c'est pour la bonne cause ^^ )",
+        "1 boite de tomates concassées",
+        "25 cl de coulis de tomates",
+        "1 oignon",
+        "1 c à soupe de curcuma",
+        "1 c à café de cumin",
+        "1 c à café de coriandre en poudre",
+        "1/2 bouquet de coriandre fraiche",
+        "2 branches de menthe fraiche (ou de la menthe séchée)",
+        "2 c à soupe d'huile d'olive",
+        "sel et poivre selon votre gout",
+        "1 citron bio non traité pour servir",
+        "1 pain oriental à la semoule"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "d2ba943293300cc3"
+    },
+    {
+      "url": "https://www.marciatack.fr/chorba-vegetarienne/",
+      "site": "marciatack.fr",
+      "nom": "Chorba végétarienne",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 boite(s) tomates concassées",
+        "1  Oignons",
+        "1  Courgettes",
+        "1 branches(s) Céleri ( avec ses feuilles)",
+        "1  Carottes",
+        "5 feuille(s) Menthe fraîche ( fraîche ciselée)",
+        "1 bouquet(s) coriandre",
+        "1 cuillère(s) à café paprika",
+        "1 pincée(s) cannelle",
+        "1 cuillère(s) à soupe concentré de tomate",
+        "10 gramme(s) vermicelles",
+        "300 gramme(s) pois chiches",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 571,
+        "sha256": "c01ad9365617532d"
+      },
+      "sha256_page": "90d05babec2a462b"
+    },
+    {
+      "url": "https://www.ptitchef.com/recettes/entree/chorba-vegetarienne-la-soupe-parfumee-et-savoureuse-par-excellente-fid-1579648",
+      "site": "ptitchef.com",
+      "nom": "Chorba végétarienne, la soupe parfumée et savoureuse par excellente !",
+      "portions": "6",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "400gr de tomates entières pelées (1 boîte)",
+        "75gr de pâtes vermicelles",
+        "265gr de pois chiches (cuits et égouttés, 1 boîte)",
+        "1L d'eau",
+        "1 oignon",
+        "1 carotte",
+        "1/2 bouquet de persil",
+        "Quelques feuilles de menthe",
+        "1 cuillère à soupe d'huile d'olive",
+        "1 cuillère à café de paprika",
+        "1 pincée de cannelle",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 634,
+        "sha256": "bd4c0c3bf695e7ac"
+      },
+      "sha256_page": "2002bce1a24a6c62"
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "dish": "Cassoulet végétarien",
+  "slug": "cassoulet-vegetarien",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cassoulet-vegetarien-aux-legumes-varies_22937.aspx",
+      "site": "marmiton.org",
+      "nom": "Cassoulet végétarien aux légumes variés : la meilleure recette",
+      "portions": "8 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "375 g de haricots secs",
+        "375 g de champignons de Paris (ou de cèpes ou de morilles, selon vos goûts... et la saison !)",
+        "2 poireaux",
+        "5 carottes",
+        "2 navets",
+        "3 oignons",
+        "6 pommes de terre de taille moyenne",
+        "400 g d'olives noires dénoyautées",
+        "2 gousses d'ail",
+        "1 bouquet garni",
+        "2 clous de girofle",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 660,
+        "sha256": "14e870b539176b49"
+      },
+      "sha256_page": "4d9b794c43ec4548"
+    },
+    {
+      "url": "https://lacuisinedemamere.fr/recette-cassoulet-vegetarien-aux-legumes-varies/",
+      "site": "lacuisinedemamere.fr",
+      "nom": "Recette cassoulet vegetarien aux legumes varies",
+      "portions": "",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "500g de haricots blancs secs",
+        "2 carottes",
+        "coupées en dés",
+        "2 branches de céleri",
+        "coupées en dés",
+        "1 oignon",
+        "haché",
+        "2 gousses d'ail",
+        "hachées",
+        "1 poivron rouge",
+        "coupé en dés",
+        "1 courgette",
+        "coupée en dés",
+        "1 aubergine",
+        "coupée en dés",
+        "400g de tomates en dés en conserve",
+        "2 cuillères à soupe de concentré de tomate",
+        "1 cuillère à soupe d'herbes de Provence",
+        "1 feuille de laurier",
+        "Sel et poivre",
+        "au goût",
+        "2 cuillères à soupe d'huile d'olive",
+        "1 litre de bouillon de légumes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "85a465956261d0c4"
+    },
+    {
+      "url": "https://ffcuisine.fr/recettes/cassoulet-vegetarien-recette-facile-et-savoureuse/",
+      "site": "ffcuisine.fr",
+      "nom": "Cassoulet végétarien : recette facile et savoureuse",
+      "portions": 4,
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT90M",
+      "ingredients": [
+        "300 grammes haricots blancs secs",
+        "2  carottes",
+        "1  oignons",
+        "2  gousse d'ail",
+        "400 grammes tomates concassées",
+        "1  bouquet garni",
+        "4  saucisses végétales",
+        "50 grammes chapelure de pain",
+        "huile d'olive",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1184,
+        "sha256": "7a1b39826a3d2531"
+      },
+      "sha256_page": "7c8dbfbb28bc22c7"
+    },
+    {
+      "url": "https://cuisinez.telequebec.tv/recettes/6619/cassoulet-vegetalien",
+      "site": "cuisinez.telequebec.tv",
+      "nom": "Cassoulet végétalien",
+      "portions": "4",
+      "duree_preparation": "PT14M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "4 saucisses végétaliennes",
+        "45 ml (3 c. à soupe) d'huile d'olive",
+        "2 carottes pelées et coupées en dés",
+        "1 oignon pelé et coupé en dés",
+        "6 gousses ail hachées",
+        "1 branche céleri coupé en dés",
+        "30 ml (2 c. à soupe) de pâte de tomate",
+        "30 ml (2 c. à soupe) de pâte de tomate",
+        "15 ml (1 c. à soupe) de farine",
+        "75 ml (1/3 tasse) de vin blanc sec (facultatif)",
+        "750 ml (3 tasses) de bouillon de champignons du commerce",
+        "1 boîte de 540 ml haricots blancs navy rincés",
+        "1 boîte de 540 ml gros haricots de lima rincés",
+        "6 branches thym",
+        "1 feuille laurier",
+        "2,5 ml (1/2 c. à thé) de sarriette séchée",
+        "15 ml (1 c. à soupe) de sauce soya",
+        "30 ml (2 c. à soupe) de moutarde de Dijon",
+        "1 petit bloc de tofu fumé coupé en gros dés",
+        "250 ml (1 tasse) de chapelure panko",
+        "30 ml (2 c. à soupe) d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 896,
+        "sha256": "6894b5ef22eda6ad"
+      },
+      "sha256_page": "8d51c90a81ba4652"
+    },
+    {
+      "url": "https://vegan-pratique.fr/recettes/cassoulet-vegetal/",
+      "site": "vegan-pratique.fr",
+      "nom": "Cassoulet végétal",
+      "portions": "4 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "400 g de haricots blancs secs",
+        "200 g d’émincé végétal",
+        "4 saucisses végétales",
+        "2 carottes",
+        "2 oignons",
+        "3 gousses d’ail",
+        "100 g de concentré de tomate",
+        "2 càs de bouillon de légumes",
+        "2 càs d’huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "a9f2820928abc568"
+    },
+    {
+      "url": "https://vegourmet.fr/recettes/cassoulet-vegan-meilleure-recette-plaisir/",
+      "site": "vegourmet.fr",
+      "nom": "Cassoulet vegan : la meilleure recette pour se faire plaisir",
+      "portions": "6",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT2H30M",
+      "ingredients": [
+        "3 Boîtes de haricots blancs (400g chacune)",
+        "2 Oignons émincés",
+        "2 Carottes coupées en dés",
+        "3 Gousses d'ail hachées",
+        "1 Boîte de tomates concassées (400g)",
+        "1 càs Concentré de tomates",
+        "1 Bouquet garni (thym, laurier)",
+        "500 ml Bouillon de légumes",
+        "2 càs Huile d'olive",
+        "1 càs Sel et poivre",
+        "4 Saucisses végétales coupées en rondelles",
+        "100 g Tofu fumé en dés",
+        "2 càs Chapelure",
+        "1 càc Paprika fumé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 652,
+        "sha256": "28ec82241a26a961"
+      },
+      "sha256_page": "92404348d4d6149f"
+    }
+  ]
+}

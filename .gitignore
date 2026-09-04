@@ -15,3 +15,11 @@ restore_output.log
 supabase/.temp/
 scripts/data/out/corpus-v3-chunks/
 scripts/data/out/corpus-v3-source-name-chunks/
+
+# Harnais de diagnostic jetables des relecteurs. Ils écrivent leurs relevés
+# sous /tmp et n'ont donc aucun sens en intégration continue : l'un d'eux y a
+# échoué sur un chemin absent de la machine de CI. Ce qu'ils établissent
+# durablement se verrouille dans un vrai test, jamais dans le harnais.
+tests/**/__*.test.js
+tests/**/_*.test.js
+tests/**/zz-*.test.js

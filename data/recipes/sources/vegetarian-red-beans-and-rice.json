@@ -1,0 +1,116 @@
+{
+  "dish": "Vegetarian red beans and rice",
+  "slug": "vegetarian-red-beans-and-rice",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.acouplecooks.com/red-beans-and-rice/",
+      "site": "acouplecooks.com",
+      "nom": "Vegetarian Red Beans and Rice",
+      "portions": [
+        "4",
+        "4 to 6"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "4 cups cooked brown rice (use How to Cook Rice or Instant Pot rice)",
+        "1 yellow onion",
+        "4 stalks celery",
+        "1/2 green pepper",
+        "4 cloves garlic",
+        "2 tablespoons olive oil",
+        "1 14-ounce can diced tomatoes",
+        "2 15-ounce cans red kidney beans (3 cups cooked)",
+        "1 cup vegetable broth",
+        "½ teaspoon cayenne pepper",
+        "1 teaspoon paprika",
+        "1 teaspoon dried oregano",
+        "1 teaspoon dried thyme",
+        "2 bay leaves",
+        "1 teaspoon kosher salt",
+        "Black pepper",
+        "1/4 cup chopped parsley, to garnish",
+        "Hot sauce, to garnish"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 898,
+        "sha256": "2043dda82d80251b"
+      },
+      "sha256_page": "61e22353a5cd1479"
+    },
+    {
+      "url": "https://www.themountainkitchen.com/vegetarian-red-beans-and-rice/",
+      "site": "themountainkitchen.com",
+      "nom": "Vegetarian Red Beans and Rice",
+      "portions": [
+        "4"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 Tablespoons extra virgin olive oil",
+        "1 cup white onion (diced)",
+        "½ cup stalks celery (diced)",
+        "1  large red bell pepper (diced)",
+        "½ cup carrots (diced)",
+        "6  garlic cloves (minced)",
+        "1  bay leaf",
+        "2 teaspoons smoked paprika",
+        "1 teaspoon dried thyme",
+        "1 teaspoon dried oregano",
+        "½ teaspoon onion powder",
+        "½ teaspoon garlic powder",
+        "Kosher salt and fresh cracked black pepper (to taste about 1 teaspoon of each)",
+        "½ teaspoon crushed red pepper",
+        "1 pinch cayenne pepper ((optional) or more if you like it spicy!)",
+        "1 tablespoon red wine vinegar",
+        "2  cans cooked red beans (drained and rinsed (15.5-ounce cans))",
+        "1 ½ cups vegetable broth",
+        "cooked rice (for serving)",
+        "fresh flat-leaf parsley or cilantro for serving"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1024,
+        "sha256": "a7839dba027e7586"
+      },
+      "sha256_page": "f544d720902ffc96"
+    },
+    {
+      "url": "https://www.fromthecomfortofmybowl.com/vegan-red-beans-and-rice/",
+      "site": "fromthecomfortofmybowl.com",
+      "nom": "Louisiana-style Vegan Red Beans and Rice",
+      "portions": [
+        "4"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT105M",
+      "ingredients": [
+        "1 cup dried red kidney beans (soaked overnight)",
+        "1 tablespoon oil",
+        "4  vegan sausages (I used Beyond Sausages, sliced)",
+        "1 medium onion (diced)",
+        "2 stalks celery (diced)",
+        "1 medium green bell pepper (diced)",
+        "2 tablespoons Cajun seasoning",
+        "5 cups vegetable stock",
+        "2  bay leaves",
+        "2 teaspoon fresh thyme",
+        "3 cloves garlic (chopped)",
+        "1 teaspoon apple cider vinegar (optional)",
+        "½ teaspoon black pepper (or to taste)",
+        "Salt to taste",
+        "1 cup long white grain rice"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 780,
+        "sha256": "2cbcce0b427ece94"
+      },
+      "sha256_page": "b6c4ec691d17f8ef"
+    }
+  ]
+}

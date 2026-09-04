@@ -1,0 +1,1097 @@
+{
+  "lot": "jumeaux-05",
+  "intention": "Cinquième lot de jumeaux végétariens de même lignée (plan « planning parfait », chantier C2, exécuté par C6). Un jumeau est le même plat que sa base carnée — même structure, même féculent, même technique — dont la protéine animale est remplacée par une protéine végétale que les sources attestent ; « derived_from » porte le code du parent, ce qui en fait, pour le planificateur, la version végétarienne du même plat et non un autre plat servi à Zoé. Cinq jumeaux visés, cinq écrits, aucun refusé — mais deux ont failli l'être et il faut le dire : la carbonade n'a rendu qu'une seule page française lisible par la chaîne et n'a été sauvée qu'en cherchant le plat dans sa langue d'origine, sous le nom de « vegetarisch stoofvlees », où trois pages néerlandophones sur trois sites la portent ; le cassoulet a rendu trois pages solides, dont deux décrivent un cassoulet « aux légumes variés » qui retire la viande au lieu de la remplacer, et le jumeau écrit s'appuie donc sur les quatre pages du dossier qui portent une saucisse végétale, dont trois sont écartées par l'audit pour un mot de titre (« végétalien », « végétal », « vegan » au lieu de « végétarien »). Ces deux décomptes sont écrits tels quels dans les arbitrages, sans être maquillés. Deux rédactions dupliquées d'un site à l'autre ont été écartées du dossier de la carbonade avant l'audit — Bonduelle recopiée par panierdesaison, chefsimon recopiée au gramme près par mrcuisto : deux copies d'un même texte ne sont pas deux sources, c'est la règle que l'audit applique déjà aux deux pages d'un même site. Toutes les quantités viennent des cinq dossiers de data/recipes/sources/ (courgettes-farcies-aux-lentilles, carbonade-vegetarienne-stoofvlees, cassoulet-vegetarien, tofu-teriyaki, wok-de-tofu-aux-legumes), relus ligne à ligne : le tableau de synthèse rapproche à faux — il range « saucisses végétales » sous « Saucisse de Montbéliard », « 1 oignon » sous « Oignon surgelé » et « sauce soja » sous « Graine de moutarde » — et aucun de ses décomptes n'a été recopié. La méthode est reformulée et n'emprunte aucune prose ; le texte intégral des étapes est resté hors dépôt, dans /tmp/sources-jumeaux-5. Aucun parent n'est modifié. Deux formes ont été arbitrées pour ce lot, « Saucisse végétale au tofu » (Ciqual 20337) et « Tofu fumé » (Ciqual 20912), dans data/foods/arbitrations/lot21-jumeaux-05.json, avec leur décision d'origine végétale à reporter dans lot21-origine-des-formes.json au versement : la seule recette qui les emploie, le cassoulet, passe « valide avec réserve » et sa nutrition est à revalider après reconstruction du catalogue. Végétarien par les formes, pas par l'étiquette : le bouillon est de légumes partout, la sauce poisson de chefsimon et la sauce d'huître de lapetitecuisinedenat sont écartées du wok, et le fromage est assumé là où il entre (feta des courgettes farcies, beurre de la carbonade, que le parent emploie déjà).",
+  "refuses": [],
+  "recipes": [
+    {
+      "code": "JUM-051",
+      "family": "Courgettes farcies aux lentilles",
+      "derived_from": "SRC-010",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "plat au four",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 25,
+      "cook_minutes": 45,
+      "difficulty": "facile",
+      "sources": [
+        "dossier:courgettes-farcies-aux-lentilles",
+        "chefsimon.com",
+        "marmiton.org",
+        "migusto.migros.ch",
+        "lodeurducafe.com"
+      ],
+      "description_courte": "Des barquettes de courgette évidées, garnies d'une farce de lentilles vertes, d'oignon et de feta relevée au cumin, rôties au four dans un fond de tomate — le jumeau végétarien des courgettes farcies.",
+      "canonical_arbitration": "Jumeau végétarien de SRC-010 « Courgettes farcies » : même barquette, même farce tassée en dôme, même fond de tomate, même cuisson au four ; les 675 g de porc et de bœuf hachés sont remplacés par des lentilles vertes et de la feta. Le dossier data/recipes/sources/courgettes-farcies-aux-lentilles.json porte quatre pages sur quatre sites — chefsimon, marmiton, migusto et lodeurducafe — et l'audit les retient toutes les quatre. LE CHOIX DU NOM, D'ABORD, parce qu'il commande tout le reste. Cinq autres pages ont été relevées sous le titre exact « Courgettes farcies végétariennes » (marmiton deux fois, 750g trois fois) : elles farcissent au fromage frais et à l'œuf, au brocciu, à la ricotta et aux pignons, à la semoule fine, l'une même à la mayonnaise, et pas une n'emploie de légumineuse. Ce sont des courgettes farcies végétariennes, ce ne sont pas le même plat entre elles, et aucune ne remplace la viande par une protéine — elle disparaît, simplement. Elles ne sont donc pas au dossier ; elles sont citées ici et en variantes. Le jumeau écrit est celui que quatre pages nomment de la même façon et construisent de la même façon : une farce de lentilles. C'est aussi le seul qui donne au plat une protéine, ce qui est la raison d'être d'un jumeau végétarien. LES LENTILLES. Trois pages sur quatre les pèsent et donnent leur rendement : marmiton 50 g pour deux, soit 25 g par personne ; migusto 160 g pour quatre, soit 40 ; lodeurducafe 60 g pour quatre, soit 15, complétés par 60 g de protéines de soja texturées que le catalogue n'a pas. Médiane 25 g par personne, soit 100 g. On retient le haut de la fourchette observée, 40 g par personne, soit 160 g, et voici l'argument : 100 g de lentilles sèches donnent environ 250 g de lentilles cuites, ce qui ne remplit pas huit barquettes creusées à un centimètre de paroi quand le parent y tasse 675 g de haché. Quarante grammes par personne est le chiffre de migusto, la seule des quatre pages dont la farce ne repose que sur la lentille, et c'est exactement le cas ici. La lentille verte plutôt que la corail : les trois pages qui la nomment disent verte, et c'est elle qui garde le grain sous la dent — le rôle que le haché tenait chez le parent. LE FROMAGE. Trois pages sur quatre en mettent : chefsimon 50 g de feta pour deux, soit 25 g par personne — annoncée « facultatif » et « féta ou féta végétale », et c'est la seule attestation directe de la feta dans tout le dossier, ce qu'il faut dire puisque c'est elle qu'on retient ; migusto 300 g de fromage frais pour quatre, soit 75 ; marmiton 30 g de parmesan pour deux, soit 15. Médiane 25 g par personne, soit 100 g. La feta est retenue parce que c'est celle que le dossier nomme dans une farce de lentilles, parce qu'elle apporte le sel que la farce a perdu avec la viande, et parce qu'elle s'émiette en morceaux qui restent visibles au lieu de fondre en liant. Le fromage frais de migusto, étalé au fond de la barquette avant les lentilles, fait une autre construction ; il descend en variante. LA COURGETTE : migusto 4 courgettes de 250 g pour quatre, soit 250 g par personne ; marmiton 2 courgettes moyennes pour deux, soit environ 250 g ; lodeurducafe 2 courgettes moyennes pour quatre, soit 125 ; chefsimon compte une grosse courgette ou six petites rondes pour deux, sans les peser. Médiane 250 g par personne, soit 1 000 g. On garde les 1 200 g du parent, 300 g par personne : c'est le même plat servi dans le même format, deux demi-courgettes par assiette, et l'écart tient à ce que migusto pèse des courgettes de 250 g quand le parent en compte de 300. L'OIGNON : chefsimon un bel oignon pour deux, soit 65 g par personne ; lodeurducafe un gros oignon pour quatre, soit 37,5 ; migusto un demi-oignon pour quatre, soit 16. Médiane 37,5 g par personne, soit 150 g. On garde la répartition du parent, 120 g d'oignon jaune et 40 g d'échalote, dont la somme dépasse la médiane de moins d'un dixième et dont l'échalote apporte la douceur que la viande n'apporte plus. L'AIL : deux pages sur quatre, une à deux gousses pour deux chez chefsimon et pour quatre chez lodeurducafe, soit 3,75 et 1,9 g par personne ; médiane 2,8 g par personne, soit 11 g, et le parent en compte 10 : on garde 10 g. LA CHAPELURE : une seule page la pèse, migusto, 4 cuillerées à soupe pour quatre, soit 7,5 g par personne, soit 30 g ; marmiton la propose en option sur le dessus. Trente grammes suffisent à faire une croûte sur huit barquettes, et cette croûte remplace le rôti de la viande, qui donnait au parent son dessus coloré. LA TOMATE, enfin, est le seul emprunt entier au parent : aucune des quatre pages n'en met. On garde ses 200 g de tomate entière pelée versés autour des barquettes et non dessus, parce que sans ce fond humide les barquettes cuiraient à sec pendant trente-cinq minutes — migusto verse d'ailleurs 2 dl de bouillon de légumes tout autour pour exactement la même raison, et l'on préfère la tomate du parent, qui fait le jus du plat. Même logique pour le cumin, le persil et le basilic : chefsimon met du cumin, à peu près 4 g pour quatre, et c'est la seule page du dossier qui en met ; deux pages emploient des herbes séchées, migusto un demi-bouquet de fines herbes et lodeurducafe du thym et de l'origan, quand marmiton relève sa farce au curry — deux et non trois, chefsimon proposant lui-même l'origan ou les herbes de Provence à côté de son cumin ; on garde les 5 g de cumin, les 10 g de persil et les 8 g de basilic du parent, qui sont sa signature aromatique et que rien dans le dossier ne contredit. CE QU'ON A ÉCARTÉ. La céréale, d'abord : chefsimon met un verre de riz basmati et marmiton 50 g de quinoa dans la farce, soit deux pages sur quatre. Elle est écartée, et c'est une décision de structure, pas de goût — le parent ne porte aucun féculent et son rôle d'assiette réclame un riz servi à côté ; mettre la céréale dans la farce changerait ce rôle et le planificateur ne servirait plus le même plat à Zoé qu'à Julien. Écartés aussi : l'œuf et la crème de marmiton, qui font un appareil pris et non une farce ; les protéines de soja texturées de lodeurducafe, absentes du catalogue ; le parmesan, qui n'est pas ici une question de présure mais de rôle, la feta salant mieux une farce de lentilles. Aucune forme d'origine carnée n'entre dans ce jumeau, et le fromage y est assumé : la feta est un fromage, la recette est végétarienne, elle n'est pas végétalienne.",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Même rôle que le parent, et c'est voulu : la farce apporte la protéine avec les lentilles et la feta, la courgette le légume, mais rien dans le plat ne fait féculent — la chapelure n'est qu'une croûte de 30 g pour quatre. Le planificateur doit donc ajouter le riz, exactement comme il l'ajoute au plat de Julien. C'est pour tenir ce rôle que la céréale de deux pages du dossier a été écartée de la farce."
+      },
+      "ingredients": [
+        {
+          "form": "Courgette fraîche",
+          "quantity": 1200,
+          "unit": "g",
+          "role": "légume principal",
+          "optional": false
+        },
+        {
+          "form": "Tomate entière pelée en conserve",
+          "quantity": 200,
+          "unit": "g",
+          "role": "mouillement",
+          "optional": false
+        },
+        {
+          "form": "Lentille verte sèche, crue",
+          "quantity": 160,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 120,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Feta",
+          "quantity": 100,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Huile d'olive vierge extra",
+          "quantity": 50,
+          "unit": "g",
+          "role": "matière grasse",
+          "optional": false
+        },
+        {
+          "form": "Échalote crue",
+          "quantity": 40,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Chapelure de blé",
+          "quantity": 30,
+          "unit": "g",
+          "role": "finition",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 10,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Persil frais",
+          "quantity": 10,
+          "unit": "g",
+          "role": "herbe",
+          "optional": false
+        },
+        {
+          "form": "Basilic frais",
+          "quantity": 8,
+          "unit": "g",
+          "role": "herbe",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 8,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Cumin moulu",
+          "quantity": 5,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 2,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Rincer les lentilles à l'eau froide et les mettre à cuire dans trois fois leur volume d'eau non salée, à petits frémissements, une vingtaine de minutes : elles doivent céder sous la dent en gardant leur peau entière. Les égoutter et les laisser tiédir. Deux raisons de les cuire à part et sans sel — le sel et l'acidité de la tomate durcissent la peau et allongent la cuisson sans qu'on sache de combien, et une lentille qui finirait de cuire dans la barquette boirait le jus qui doit rester au fond du plat."
+        },
+        {
+          "n": 2,
+          "instruction": "Chauffer le four à 200 °C. Laver les courgettes sans les peler, ôter les deux extrémités et les fendre en deux dans la longueur pour obtenir huit barquettes. Creuser chacune à la petite cuillère en laissant environ un centimètre de paroi : moins épaisse, la barquette s'affaisse en cours de cuisson et la farce part dans le jus. Hacher grossièrement la pulpe recueillie, elle entre dans la farce."
+        },
+        {
+          "n": 3,
+          "instruction": "Tailler l'oignon et l'échalote en petits dés, écraser puis hacher l'ail. Les faire suer à feu moyen dans la moitié de l'huile d'olive, sans les colorer, jusqu'à ce qu'ils deviennent translucides — huit à dix minutes. C'est cette base fondue qui remplace le gras du haché : sans elle, une farce de lentilles reste sèche et sans longueur."
+        },
+        {
+          "n": 4,
+          "instruction": "Ajouter la pulpe de courgette hachée et monter le feu cinq à six minutes, en remuant, jusqu'à ce que l'eau qu'elle rend se soit évaporée et que le fond de la poêle redevienne sec. Une farce humide détremperait les barquettes par l'intérieur pendant que le four les sèche par l'extérieur."
+        },
+        {
+          "n": 5,
+          "instruction": "Hors du feu, mélanger les lentilles égouttées à la poêlée, saler, poivrer, ajouter le cumin, puis le persil et le basilic finement ciselés — les herbes fraîches se mettent dans une farce chaude mais non bouillante, sinon elles noircissent et perdent leur parfum. Écraser une bonne cuillerée de lentilles à la fourchette contre la paroi : l'amidon qu'elles libèrent est ce qui tiendra la farce, faute d'œuf et faute de viande. Émietter enfin la feta à la main en morceaux grossiers et l'incorporer sans la mélanger longuement, pour qu'on la retrouve en éclats."
+        },
+        {
+          "n": 6,
+          "instruction": "Aligner les barquettes côte à côte dans un plat à four et les garnir en tassant légèrement, avec un dôme qui dépasse le bord : la farce se rétracte à la cuisson et une barquette remplie à ras arrive plate à table."
+        },
+        {
+          "n": 7,
+          "instruction": "Écraser les tomates pelées à la fourchette et les répartir avec leur jus au fond du plat, autour des courgettes et jamais dessus — versées sur les dômes, elles les détremperaient et empêcheraient la croûte. Arroser la farce du reste d'huile d'olive et poudrer de chapelure."
+        },
+        {
+          "n": 8,
+          "instruction": "Enfourner trente-cinq minutes. La cuisson est juste quand la pointe d'un couteau traverse la peau sans résistance et que la chapelure a pris couleur ; poser une feuille d'aluminium si le dessus dore trop tôt. Laisser reposer cinq minutes avant de porter à table, le temps que la farce se raffermisse et se tienne à la cuillère."
+        }
+      ],
+      "techniques": [
+        "suer",
+        "évaporation",
+        "farcissage",
+        "cuisson au four",
+        "gratinage",
+        "repos"
+      ],
+      "variants": [
+        "Farce à la céréale : un verre de riz basmati (chefsimon) ou 50 g de quinoa (marmiton) cuits avec les lentilles et mélangés à la farce — écartée ici parce qu'elle met le féculent dans le plat et lui ôte son rôle d'assiette",
+        "Fromage frais étalé au fond de la barquette, lentilles réparties par-dessus, chapelure, bouillon de légumes versé tout autour et 30 minutes à 220 °C (migusto)",
+        "Farce mijotée vingt minutes avec des protéines de soja texturées, du vin blanc, de la sauce soja et une pointe de miso avant d'être enfournée, le reste de farce servant de sauce pour des pâtes (lodeurducafe)",
+        "Appareil à l'œuf, à la crème et au parmesan relevé de curry, versé sur les lentilles et le quinoa (marmiton)",
+        "Courgettes rondes décalottées et évidées plutôt que des barquettes fendues, avec un chapeau remis pour la cuisson (chefsimon, et le parent)",
+        "Farces végétariennes sans légumineuse, relevées dans cinq pages écartées du dossier : brocciu et œuf, ricotta et pignons, semoule fine et sauce tomate, feta marinée et gruyère à la crème",
+        "Herbes séchées à la place du cumin : origan, thym ou herbes de Provence (chefsimon, migusto, lodeurducafe)"
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 2,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 1,
+          "umami": 2,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 2,
+          "freshness": 2,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "lentille",
+          "courgette rôtie",
+          "feta",
+          "cumin"
+        ],
+        "aroma_families": [
+          "cumin",
+          "huile_olive",
+          "végétal cuit",
+          "herbacé"
+        ],
+        "target_textures": [
+          "barquettes fondantes à peau tendue",
+          "farce moelleuse et grenue",
+          "dessus doré et croustillant"
+        ],
+        "signature_ingredients": [
+          "Courgette fraîche",
+          "Lentille verte sèche, crue",
+          "Feta"
+        ],
+        "identity_guardrails": [
+          "La courgette reste une barquette entière qu'on garnit : coupée en dés et mélangée aux lentilles, ce n'est plus une courgette farcie mais une poêlée",
+          "La lentille verte tient le rôle du haché et doit garder son grain — cuite jusqu'à la purée, ou remplacée par de la corail, la farce devient un appareil",
+          "La pulpe de courgette est desséchée à la poêle avant d'entrer dans la farce, sinon les barquettes se détrempent par l'intérieur",
+          "La tomate va au fond du plat, autour des barquettes, jamais sur les dômes qu'elle empêcherait de croûter"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C dans le plat couvert d'un film, et se réchauffe quinze minutes à 160 °C plutôt qu'au micro-ondes, qui fait suer la courgette et affaisse la barquette. La farce seule se congèle 2 mois à -18 °C et c'est la bonne façon de prendre de l'avance ; les courgettes garnies, en revanche, supportent mal le gel — leur chair, gorgée d'eau, se défait à la décongélation et la barquette devient flasque. C'est ce que dit déjà le parent, aucune page du dossier ne parle de conservation, et une farce de lentilles se comporte ici comme une farce de viande : c'est la courgette qui décide, pas la garniture.",
+      "allergens": [
+        "lait",
+        "gluten"
+      ]
+    },
+    {
+      "code": "JUM-052",
+      "family": "Carbonade flamande végétarienne",
+      "derived_from": "FR-003",
+      "cuisine_origin": "Belgique et Flandre française",
+      "identity_level": "domestic_standard",
+      "category": "plat mijoté",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 60,
+      "difficulty": "moyenne",
+      "sources": [
+        "dossier:carbonade-vegetarienne-stoofvlees",
+        "jumbo.com",
+        "dagelijksekost.vrt.be",
+        "duurzamekeuzes.com",
+        "cookpad.com"
+      ],
+      "description_courte": "Du seitan doré puis braisé dans la bière avec une compotée d'oignons, lié par des tranches de pain d'épices moutardées — le jumeau végétarien de la carbonade flamande.",
+      "canonical_arbitration": "Jumeau végétarien de FR-003 « Carbonade flamande » : même compotée d'oignons, même bière, mêmes tranches de pain d'épices tartinées de moutarde posées à la surface pour lier la sauce, le bœuf à braiser remplacé par du seitan. LE DOSSIER A ÉTÉ CONSTITUÉ DANS LA LANGUE DU PLAT, et il faut dire pourquoi. Sous le nom français, la recherche n'a rendu qu'une seule page lisible par la chaîne : cookpad, « Carbonade flamande végétarienne au seitan ». Toutes les autres pages françaises relevées ne portent aucun balisage exploitable (francevegetalienne, cuisinetaligne, cuisinede4sous, lapetiteokara, la-gourmandise-selon-angie) ou refusent la lecture automatique (soy.fr). Or la carbonade est un plat belge et flamand — c'est l'origine que déclare déjà le parent — et il s'y publie sous le nom de stoofvlees. Le dossier data/recipes/sources/carbonade-vegetarienne-stoofvlees.json est donc bâti sur « Vegetarisch stoofvlees » : quatre pages, dont l'audit retient les trois néerlandophones sur trois sites distincts — jumbo (« Zelfgemaakt vegetarisch stoofvlees van seitan »), dagelijksekost, la cuisine quotidienne de la VRT (« Vegetarisch stoofvlees »), et duurzamekeuzes (« Vegetarisch stoofvlees van seitan ») — et écarte la quatrième, cookpad, dont le titre français ne porte pas les mots néerlandais. Cookpad reste au dossier et corrobore chaque décision ci-dessous ; le nom écrit en tête de la recette est le sien, parce que c'est ainsi que le plat se nomme en français. DEUX RÉDACTIONS ONT ÉTÉ ÉCARTÉES DU DOSSIER AVANT MÊME L'AUDIT, et le dire vaut mieux que de gonfler un décompte : la carbonade végétarienne aux pois chiches et aux champignons de Bonduelle se retrouve mot pour mot chez panierdesaison, et la carbonnade de champignons de chefsimon se retrouve au gramme près chez mrcuisto — quatre pages, deux textes. Deux copies d'une même rédaction ne sont pas deux sources : c'est la règle que l'audit applique aux deux pages d'un même site, et elle vaut aussi quand le même texte voyage d'un site à l'autre. LE SEITAN. Les quatre pages le pèsent et donnent leur rendement : jumbo 400 g pour trois, soit 133,3 g par personne ; dagelijksekost 800 g pour quatre, soit 200 ; duurzamekeuzes 400 g pour quatre, soit 100 ; cookpad 500 g pour quatre, soit 125. Médiane 129,2 g par personne, soit 775 g pour six ; on écrit 750 g, 125 g par personne, qui est le chiffre rond et celui de cookpad. C'est nettement moins que les 1 200 g de bœuf du parent, et c'est normal : le bœuf à braiser perd un tiers de sa masse en trois heures de cuisson, le seitan n'en perd rien. La forme « Seitan » a été arbitrée au lot21-jumeaux-02 (Ciqual 25598) ; elle n'est pas encore au catalogue, cette recette passe donc valide avec réserve et sa nutrition sera à revalider après reconstruction. LA BIÈRE : jumbo 300 ml pour trois, soit 100 ml par personne ; dagelijksekost trois bouteilles pour quatre, soit environ 247,5 ; duurzamekeuzes 330 ml pour quatre, soit 82,5 ; cookpad 1 litre pour quatre, soit 250. Médiane 173,75 ml par personne, soit 1 042 ml. On garde les 750 ml du parent, 125 ml par personne, parce que le parent noie 1 200 g de viande dans ces 750 ml quand ce plat n'a que 750 g de seitan à couvrir, et parce qu'au-delà la sauce ne réduit plus assez pour napper en une heure. BLONDE, ET LE DÉCOMPTE EXACT : deux pages sur quatre emploient une bière brune — jumbo un bokbier, dagelijksekost un bruin bier — une une blonde, duurzamekeuzes qui écrit « blond bier », et cookpad porte « 1 l bière » sans dire laquelle. La brune n'est donc pas majoritaire dans ce dossier, contrairement à ce que ce paragraphe affirmait d'abord. Le catalogue ne porte que « Bière blonde », qui est aussi celle du parent et celle d'une des quatre pages ; la brune reste en variante — c'est le motif de l'ingrédient absent du catalogue, pas une préférence. LES OIGNONS : jumbo deux pour trois, soit 86,7 g par personne à 130 g la pièce ; dagelijksekost deux pour quatre, soit 65 ; duurzamekeuzes deux gros pour quatre, soit 75 ; cookpad quatre pour quatre, soit 130. Médiane 80,8 g par personne, soit 485 g : on écrit les 500 g du parent, à trois pour cent près. LE PAIN D'ÉPICES est le point où le jumeau tient ou tombe, parce que c'est lui qui lie la sauce en l'absence de farine. Deux pages sur quatre en mettent — jumbo deux tranches pour trois, cookpad quatre pour quatre — soit une médiane de 0,83 tranche par personne, c'est-à-dire cinq tranches pour six, environ 150 g à 30 g la tranche, et c'est très exactement le chiffre du parent. Les deux autres pages posent à la place une tranche de pain bis tartinée de moutarde, ce qui est le geste flamand traditionnel : quatre pages sur quatre posent donc du pain moutardé à la surface, deux le prennent d'épices. LA MOUTARDE : deux pages la pèsent, jumbo 2 cuillerées à café pour trois, soit 3,3 g par personne, duurzamekeuzes 1 cuillerée à café pour quatre, soit 1,25 ; médiane 2,3 g par personne, soit 14 g. On monte à 40 g, et la raison est dans le geste : ces deux pages délaient leur moutarde dans la sauce, alors qu'ici elle est étalée sur cinq tranches de pain d'épices, ce qui demande une bonne cuillerée à café par tranche — le parent en compte 50 g pour la même opération. LE SUCRE : jumbo 45 g de sirop de sucre candi pour trois, soit 15 g par personne ; dagelijksekost 2 cuillerées à soupe de sirop de poire pour quatre, soit 7,5 ; cookpad du sucre sans le peser. Médiane 11,25 g par personne, soit 67,5 g ; on garde les 35 g de cassonade du parent, parce que la bière blonde qu'il emploie est moins amère que les brunes néerlandaises et demande donc moins de sucre pour s'équilibrer. LE BEURRE : jumbo seul le pèse, 65 g pour trois, soit 21,7 g par personne, soit 130 g pour six, ce qui ferait une sauce grasse ; on garde les 30 g du parent, qui suffisent à colorer, duurzamekeuzes employant deux cuillerées d'huile pour le même geste. CE QU'ON A GARDÉ DU PARENT SANS QUE LE DOSSIER LE DISE : le vinaigre de vin rouge, 15 ml, qu'aucune des quatre pages n'emploie — il équilibre le sucre en fin de cuisson et c'est la carbonade du parent qu'on double. Précision qui manquait : le seul vinaigre du dossier est l'azijn de dagelijksekost, et il assaisonne la salade de chicons servie à côté, pas la cocotte. Gardés du parent aussi le thym, que les quatre pages portent ; le laurier, que trois portent, cookpad lui préférant le romarin ; le sel et le poivre, que deux pages seulement écrivent. CE QU'ON A ÉCARTÉ : la farine du parent, parce qu'aucune page ne singe et que le pain d'épices lie à lui seul ; les champignons de Paris, une page sur quatre, 250 g pour quatre ; la carotte, trois pages sur quatre, et le céleri branche, une page — le parent n'en met pas et un jumeau ne change que la protéine ; l'ail, que trois pages listent (jumbo, dagelijksekost, duurzamekeuzes) et que la quatrième écrase dans sa méthode sans le lister (cookpad) — quatre sur quatre, donc, écarté malgré tout pour le même motif ; la biscotte émiettée et le ketchup de jumbo, qui font une liaison d'un autre genre ; le concentré de tomate de duurzamekeuzes ; les clous de girofle de jumbo et de dagelijksekost, et le romarin de dagelijksekost et de cookpad, deux pages chacun, que le parent ne porte pas. Aucune forme d'origine animale n'entre dans ce jumeau à l'exception du beurre, que le parent emploie déjà et qui reste végétarien ; la bière et le pain d'épices sont pris tels que le catalogue les porte, et il faut être exact sur ce point : rien dans le dossier ne dit de quoi ils sont faits, la colle de poisson d'un collage de bière ne se lit sur aucune étiquette, et cette recette ne prétend pas l'avoir vérifiée. Le bouillon des pages néerlandaises, dont rien ne dit s'il est de légumes ou de bœuf, est simplement absent d'ici.",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Même rôle que le parent : du seitan braisé et sa sauce, sans féculent dans la cocotte. duurzamekeuzes le sert avec des frites, de la purée ou une salade verte, et cookpad avec des frites ; dagelijksekost porte un kilo de pommes de terre dans ses ingrédients sans le redire dans sa méthode, et jumbo ne dit rien — deux pages l'écrivent, une troisième le pèse — c'est le féculent que le planificateur doit ajouter, comme il l'ajoute à l'assiette de Julien."
+      },
+      "ingredients": [
+        {
+          "form": "Bière blonde",
+          "quantity": 750,
+          "unit": "ml",
+          "role": "liquide de braisage",
+          "optional": false
+        },
+        {
+          "form": "Seitan",
+          "quantity": 750,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 500,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Pain d'épices",
+          "quantity": 150,
+          "unit": "g",
+          "role": "liaison et douceur",
+          "optional": false
+        },
+        {
+          "form": "Moutarde de Dijon",
+          "quantity": 40,
+          "unit": "g",
+          "role": "condiment",
+          "optional": false
+        },
+        {
+          "form": "Cassonade",
+          "quantity": 35,
+          "unit": "g",
+          "role": "équilibre sucré",
+          "optional": false
+        },
+        {
+          "form": "Beurre doux",
+          "quantity": 30,
+          "unit": "g",
+          "role": "saisie",
+          "optional": false
+        },
+        {
+          "form": "Vinaigre de vin rouge",
+          "quantity": 15,
+          "unit": "ml",
+          "role": "acidité",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 8,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Thym séché",
+          "quantity": 2,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Feuille de laurier séchée",
+          "quantity": 2,
+          "unit": "feuille",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 2,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Si le seitan vient d'un bocal, l'égoutter en gardant son jus de côté, puis l'éponger. Le détailler en morceaux de trois à quatre centimètres, de la taille des cubes de bœuf du plat d'origine : plus petits, ils se déferaient en filaments dans une heure de sauce."
+        },
+        {
+          "n": 2,
+          "instruction": "Faire mousser le beurre dans une cocotte en fonte et colorer les morceaux par deux fournées, sur toutes leurs faces, trois ou quatre minutes chacune. Ne pas chercher davantage : le seitan n'a ni collagène à fondre ni jus à rendre, il ne gagne rien à rester dans la poêle et il y durcirait. Réserver dans un plat creux."
+        },
+        {
+          "n": 3,
+          "instruction": "Émincer les oignons et les laisser fondre vingt bonnes minutes dans la graisse de saisie, à feu modéré, jusqu'à ce qu'ils prennent une couleur blonde et se défassent. C'est le geste qui décide de tout, et davantage encore ici que chez le parent : la carbonade au bœuf tire son corps du gras et des sucs de la viande, celle-ci n'a que ses oignons pour lui en donner. Écourter cette étape donne une sauce maigre que rien ne rattrape ensuite."
+        },
+        {
+          "n": 4,
+          "instruction": "Verser la cassonade et le vinaigre sur les oignons, laisser caraméliser une poignée de secondes, puis mouiller avec la bière en raclant le fond à la spatule pour décoller tout ce qui a accroché. Aucune farine n'entre ici : ce sont le pain d'épices et la réduction qui lieront la sauce, et les quatre pages du dossier procèdent ainsi."
+        },
+        {
+          "n": 5,
+          "instruction": "Remettre le seitan et le jus qu'il a rendu, saler, poivrer, glisser le thym et le laurier. Tartiner généreusement les tranches de pain d'épices de moutarde et les poser côté moutarde à la surface du liquide, sans les enfoncer : elles vont s'imbiber, se déliter d'elles-mêmes et épaissir la sauce en cours de cuisson."
+        },
+        {
+          "n": 6,
+          "instruction": "Couvrir et tenir un frémissement paresseux quarante-cinq minutes à une heure, à très petit feu ou au four à 150 °C. C'est la seule vraie différence de conduite avec le plat de Julien, qui mijote deux heures trente : il n'y a ici aucune fibre à attendrir, et le seitan poussé au-delà d'une heure devient spongieux et rebondit sous la dent. La durée n'est plus au service de la viande, seulement de la sauce."
+        },
+        {
+          "n": 7,
+          "instruction": "Découvrir, remuer pour faire disparaître complètement les morceaux de pain d'épices, et laisser réduire dix minutes si la sauce reste liquide. Goûter et rééquilibrer alors : une pointe de vinaigre si le sucre domine, une pointe de cassonade si l'amertume de la bière ressort trop. Cette sauce se règle en fin de cuisson, jamais au début."
+        },
+        {
+          "n": 8,
+          "instruction": "Retirer le thym et le laurier et laisser reposer la cocotte hors du feu un quart d'heure avant de servir, avec des frites ou une purée. Comme la carbonade au bœuf, celle-ci est meilleure réchauffée le lendemain, quand la sauce a fini de prendre et que le seitan s'est imprégné de bière jusqu'au cœur."
+        }
+      ],
+      "techniques": [
+        "saisie",
+        "compotée d'oignons",
+        "déglaçage à la bière",
+        "braisage",
+        "liaison au pain d'épices",
+        "repos"
+      ],
+      "variants": [
+        "À la bière brune plutôt que blonde : trois pages sur quatre l'emploient (bokbier, bruin bier), la forme n'est pas au catalogue",
+        "Aux champignons de Paris, 250 g pour quatre, en quartiers ajoutés avec les oignons (dagelijksekost)",
+        "Carotte en petits dés et céleri branche revenus avec les oignons (dagelijksekost, duurzamekeuzes, cookpad)",
+        "Ail écrasé dans la compotée d'oignons (jumbo, dagelijksekost, duurzamekeuzes, et cookpad qui l'emploie sans le lister)",
+        "Liaison à la biscotte émiettée avec une cuillerée de ketchup et du sirop de sucre candi à la place de la cassonade (jumbo)",
+        "Tranche de pain bis tartinée de moutarde à la place du pain d'épices, posée face moutardée vers le bas (dagelijksekost, duurzamekeuzes)",
+        "Cannelle avec le sucre et réduction de quarante minutes seulement (cookpad)",
+        "Concentré de tomate revenu avec les aromates et mouillement au bouillon de légumes en complément de la bière (duurzamekeuzes)",
+        "Version aux pois chiches et aux champignons, sans seitan, relevée à la muscade et au clou de girofle : rédaction unique publiée sur deux sites, écartée du dossier à ce titre"
+      ],
+      "sensory": {
+        "profile": "rich_winey",
+        "scores": {
+          "sweet": 3,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 2,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 3,
+          "freshness": 0,
+          "intensity": 4
+        },
+        "dominant_flavors": [
+          "bière réduite",
+          "oignon compoté",
+          "pain d'épices",
+          "moutarde"
+        ],
+        "aroma_families": [
+          "oignon_compoté",
+          "épices chaudes",
+          "moutarde",
+          "caramel"
+        ],
+        "target_textures": [
+          "morceaux fermes et élastiques",
+          "sauce nappante",
+          "oignons fondus"
+        ],
+        "signature_ingredients": [
+          "Seitan",
+          "Bière blonde",
+          "Pain d'épices"
+        ],
+        "identity_guardrails": [
+          "La compotée d'oignons est longue et blonde : c'est elle qui fait le corps de la sauce, davantage encore que dans la version au bœuf",
+          "Le pain d'épices moutardé se pose à plat sur le liquide et se délite tout seul — mélangé dès le départ, il fait un fond farineux au lieu de lier",
+          "La cuisson s'arrête à une heure : le seitan n'a rien à attendrir et devient spongieux si on le pousse comme on pousse le bœuf",
+          "Sucre et acidité se règlent à la fin, une fois la bière réduite, sinon on assaisonne un liquide qui n'a pas encore son goût"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C dans un récipient fermé, et gagne à être mangée au deuxième jour : la sauce finit de lier et l'amertume de la bière s'arrondit, exactement comme chez le parent. Réchauffer à couvert et à feu doux, en ajoutant une cuillerée d'eau si la sauce a trop épaissi au froid. Se congèle 3 mois en parts. Aucune des quatre pages du dossier ne parle de conservation ; ces durées sont celles du parent, et rien dans la composition ne les déplace — sauf un point qu'on assume et qui vient du seitan : congelé puis décongelé, il ressort un peu plus ferme et plus élastique qu'au premier jour, ce qui se remarque moins dans une sauce épaisse que dans une poêlée.",
+      "allergens": [
+        "gluten",
+        "lait",
+        "moutarde"
+      ]
+    },
+    {
+      "code": "JUM-053",
+      "family": "Cassoulet végétarien",
+      "derived_from": "SRC-036",
+      "cuisine_origin": "France",
+      "identity_level": "domestic_standard",
+      "category": "plat mijoté",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 8,
+      "prep_minutes": 30,
+      "cook_minutes": 140,
+      "difficulty": "moyenne",
+      "sources": [
+        "dossier:cassoulet-vegetarien",
+        "marmiton.org",
+        "lacuisinedemamere.fr",
+        "ffcuisine.fr",
+        "cuisinez.telequebec.tv",
+        "vegan-pratique.fr",
+        "vegourmet.fr"
+      ],
+      "description_courte": "Des haricots blancs mijotés à la tomate avec des saucisses végétales rissolées et des dés de tofu fumé, gratinés sous une croûte de chapelure — le jumeau végétarien du cassoulet.",
+      "canonical_arbitration": "Jumeau végétarien de SRC-036 « Cassoulet » : mêmes haricots blancs secs trempés la veille et cuits à part, même fondue d'oignon, d'ail et de tomate, même montage en cocotte, même croûte de chapelure passée au four ; le confit de canard, la saucisse de Toulouse, la poitrine de porc et le porc haché sont remplacés par des saucisses végétales et du tofu fumé. Le dossier data/recipes/sources/cassoulet-vegetarien.json porte six pages sur six sites. L'audit en retient trois sur trois sites — marmiton, lacuisinedemamere, ffcuisine — et en écarte trois pour leur seul titre : Télé-Québec écrit « Cassoulet végétalien », vegan-pratique « Cassoulet végétal », vegourmet « Cassoulet vegan », et le contrôle de titre exige le mot demandé. IL FAUT DIRE CE QUE CET ÉCART SIGNIFIE, parce que tout l'arbitrage en dépend : c'est un écart de vocabulaire, pas de plat. Les trois pages écartées décrivent exactement le même plat que ffcuisine — haricots blancs, saucisses végétales, tomate, croûte de chapelure — et deux d'entre elles y ajoutent le tofu fumé. À l'inverse, deux des trois pages solides, marmiton et lacuisinedemamere, sont des cassoulets « aux légumes variés » où la viande n'est pas remplacée : elle disparaît, au profit de poireaux, navets, pommes de terre et olives noires chez l'une, d'aubergine, de courgette et de poivron chez l'autre. Ce sont des plats de haricots aux légumes, pas des jumeaux : un jumeau remplace la protéine, il ne la retire pas. Le plat écrit ici est donc celui que quatre pages sur six construisent — ffcuisine, solide, et les trois écartées — et le décompte est donné tel quel plutôt que maquillé. LES HARICOTS. Cinq pages sur six donnent une quantité et un rendement exploitables : marmiton 375 g secs pour huit, soit 46,9 g par personne ; ffcuisine 300 g secs pour quatre, soit 75 ; vegan-pratique 400 g secs pour quatre, soit 100 ; vegourmet trois boîtes de 400 g, soit environ 1 200 g égouttés pour six, ce qui fait 80 g de sec par personne au facteur 2,5 ; Télé-Québec deux boîtes de 540 ml pour quatre, soit environ 62 g de sec par personne. La sixième, lacuisinedemamere, pèse 500 g de haricots sans dire pour combien de personnes : elle ne peut pas être ramenée à la portion et n'entre pas dans le calcul. Médiane 75 g par personne, soit 600 g. On monte à 100 g par personne, soit 800 g, parce que le parent en compte 125 g par personne et que le haricot est ici la seule masse du plat : les 1 725 g de viandes du parent ont disparu, et 600 g de haricots pour huit donneraient huit petites assiettes. LES SAUCISSES VÉGÉTALES sont la substitution centrale, et quatre pages sur six s'accordent au chiffre près : ffcuisine quatre saucisses pour quatre, Télé-Québec quatre pour quatre, vegan-pratique quatre pour quatre, vegourmet quatre pour six. Médiane d'une saucisse par personne, donc huit pour huit parts, soit 560 g à 70 g la pièce — le calibre du commerce, déclaré dans l'arbitrage de forme. Aucune des quatre pages ne dit de quoi la saucisse est faite ; la forme ouverte pour ce lot est « Saucisse végétale au tofu » (Ciqual 20337), et le choix entre elle et la saucisse de blé est argumenté dans data/foods/arbitrations/lot21-jumeaux-05.json — en deux mots, ce cassoulet porte déjà du gluten par sa chapelure et du soja par son tofu, et la saucisse au tofu n'ajoute pas une troisième source d'allergène. LE TOFU FUMÉ : deux pages sur six l'emploient, vegourmet 100 g pour six, soit 16,7 g par personne, et Télé-Québec un petit bloc pour quatre, soit environ 50 g par personne à 200 g le bloc. Médiane 33,3 g par personne, soit 267 g, écrit 250 g. Il tient dans ce plat le rôle exact de la poitrine fumée et du confit chez le parent : apporter le fumé et le sel que les haricots vont boire. LA TOMATE : ffcuisine 400 g de concassées pour quatre, soit 100 g par personne, vegourmet 400 g pour six, soit 66,7 ; médiane 83,3 g par personne, soit 667 g. On descend à 400 g, 50 g par personne, parce que le parent ne met que 150 g de tomate râpée pour huit et qu'un cassoulet n'est pas un plat à la tomate : elle lie, elle ne baigne pas. Le concentré suit le même raisonnement : trois pages le chiffrent, vegan-pratique 100 g pour quatre soit 25 g par personne, Télé-Québec 2 cuillerées à soupe pour quatre soit 8, vegourmet 1 cuillerée pour six soit 2,7 ; médiane 8 g par personne, soit 64 g, et l'on garde les 40 g du parent. LE BOUILLON DE LÉGUMES est le seul ingrédient que le jumeau ajoute au parent, et c'est une nécessité : le parent cuit ses haricots dans le gras et les sucs de quatre viandes, qui ont disparu. Deux pages le chiffrent, Télé-Québec 750 ml pour quatre soit 187,5 ml par personne — c'est chez elle un bouillon de champignons du commerce, végétal lui aussi mais qu'il faut nommer pour ce qu'il est — et vegourmet 500 ml de bouillon de légumes pour six soit 83 ; médiane 135,25 ml par personne, soit 1 082 ml, écrit 1 000 ml. Les deux autres mouillent au cube (vegan-pratique) ou au litre sans rendement (lacuisinedemamere). LES AROMATES : les six pages portent de la carotte et les six portent de l'oignon ; cinq d'entre elles seulement annoncent un rendement et se ramènent à la portion, lacuisinedemamere ne disant pas pour combien de personnes elle cuisine. Sur ces cinq, médiane 50 g de carotte par personne, soit 400 g, et 43 g d'oignon, soit 344 g. On garde les 200 g de carotte et les 200 g d'oignon du parent dans les deux cas, et c'est une décision de jumeau : les pages du dossier chargent le légume parce qu'il n'y a plus de viande, alors que le parent traite la carotte et l'oignon comme des aromates du bouillon de haricots. Doubler l'un et l'autre ferait le plat de haricots aux légumes que ce lot a précisément refusé d'écrire. L'ail : six pages sur six, médiane 2,5 g par personne, soit 20 g ; on garde les 35 g du parent, un cassoulet s'aillant franchement. LA CROÛTE : trois pages sur six poudrent de chapelure, ffcuisine 50 g pour quatre soit 12,5 g par personne, Télé-Québec du panko pour quatre soit environ 30, vegourmet 2 cuillerées pour six soit 5 ; médiane 12,5 g par personne, soit 100 g — exactement le chiffre du parent, ce qui confirme que la croûte est bien le même geste. L'HUILE D'OLIVE, enfin, remplace la graisse de confit dans laquelle le parent rissole ses viandes : cinq pages sur six l'emploient, médiane 6,9 g par personne, soit 55 g, écrit 50 g. CE QU'ON A ÉCARTÉ : les légumes des deux cassoulets « aux légumes variés » (poireau, navet, pomme de terre, olive noire, aubergine, courgette, poivron, céleri) ; l'émincé végétal de vegan-pratique, forme absente du catalogue ; le panko et le paprika fumé, mêmes motifs ; la farine et le vin blanc de Télé-Québec, qui font une sauce liée là où un cassoulet se lie de lui-même par l'amidon du haricot ; les haricots en conserve de deux pages, qui ramènent le plat à quarante minutes mais lui ôtent le bouillon de cuisson dont la croûte a besoin. Le thym, le laurier, les clous de girofle, le sel et le poivre sont ceux du parent, et le dossier les porte — mais pas tous sous la même forme, et pas tous dans le même nombre de pages : trois écrivent « bouquet garni » (marmiton, ffcuisine, vegourmet, cette dernière le détaillant en thym et laurier), Télé-Québec compte son thym en branches et son laurier à la feuille, et les clous de girofle ne figurent que chez marmiton, listés à part et jamais dans le bouquet. Aucune forme d'origine animale n'entre dans ce jumeau : ni bouillon de volaille — c'est du bouillon de légumes —, ni couenne, ni graisse de canard, et les deux formes nouvelles sont déclarées d'origine végétale dans le fichier d'arbitrage, faute de quoi le classement carné du moteur ferait de ce plat un faux carné, symétrique exact des faux végétariens que le plan a mesurés.",
+      "plate": {
+        "role": "complete",
+        "accepts": [
+          "vegetables"
+        ],
+        "reason": "Même rôle que le parent : les haricots blancs tiennent lieu de féculent, les saucisses végétales et le tofu fumé de protéine. Le plat se suffit, tout au plus accompagné d'une salade verte acidulée qui coupe le gras de la croûte."
+      },
+      "ingredients": [
+        {
+          "form": "Bouillon de légumes",
+          "quantity": 1000,
+          "unit": "ml",
+          "role": "mouillement",
+          "optional": false
+        },
+        {
+          "form": "Haricot blanc sec",
+          "quantity": 800,
+          "unit": "g",
+          "role": "légumineuse",
+          "optional": false
+        },
+        {
+          "form": "Saucisse végétale au tofu",
+          "quantity": 560,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Tomate concassée en conserve",
+          "quantity": 400,
+          "unit": "g",
+          "role": "liant",
+          "optional": false
+        },
+        {
+          "form": "Tofu fumé",
+          "quantity": 250,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Oignon jaune cru",
+          "quantity": 200,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Carotte crue",
+          "quantity": 200,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Chapelure de blé",
+          "quantity": 100,
+          "unit": "g",
+          "role": "finition",
+          "optional": false
+        },
+        {
+          "form": "Huile d'olive vierge extra",
+          "quantity": 50,
+          "unit": "g",
+          "role": "matière grasse",
+          "optional": false
+        },
+        {
+          "form": "Concentré de tomate",
+          "quantity": 40,
+          "unit": "g",
+          "role": "liant",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 35,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 12,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Thym séché",
+          "quantity": 4,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Clou de girofle",
+          "quantity": 3,
+          "unit": "u",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Feuille de laurier séchée",
+          "quantity": 2,
+          "unit": "feuille",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 2,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "La veille, noyer les haricots blancs secs sous trois fois leur volume d'eau froide et les laisser gonfler douze heures au frais. Le lendemain, jeter cette eau et les rincer : elle emporte une partie des sucres que l'intestin ne digère pas, et c'est la seule raison de la jeter."
+        },
+        {
+          "n": 2,
+          "instruction": "Mettre les haricots égouttés dans une grande cocotte avec la carotte en tronçons, la moitié de l'oignon piquée des clous de girofle, le thym et le laurier. Couvrir d'eau froide sans saler, écumer aux premiers bouillons, puis tenir un frémissement paresseux cinquante minutes. On ne sale pas maintenant : le sel raffermit la peau et le grain met deux fois plus de temps à céder. Les haricots doivent rester entiers sous la dent, ils finiront de cuire au four."
+        },
+        {
+          "n": 3,
+          "instruction": "Pendant ce temps, chauffer la moitié de l'huile d'olive dans une large sauteuse et y rissoler les saucisses végétales entières, trois à quatre minutes en les roulant, jusqu'à ce qu'elles prennent couleur sur toute leur surface. Elles ne rendent pas de graisse comme la saucisse de Toulouse du plat de Julien : c'est l'huile qui fait le travail, et sans cette coloration elles resteraient pâles et molles au milieu des haricots. Les réserver et les couper en tronçons épais."
+        },
+        {
+          "n": 4,
+          "instruction": "Dans la même sauteuse, faire tomber le reste de l'oignon émincé et les deux tiers de l'ail écrasé. Quand l'oignon devient translucide, ajouter le concentré et la tomate concassée, laisser compoter dix minutes en grattant les sucs, puis mouiller de deux louches de bouillon de légumes."
+        },
+        {
+          "n": 5,
+          "instruction": "Égoutter les haricots en gardant tout leur bouillon de cuisson, retirer l'oignon clouté, la carotte et le laurier. Les mélanger à la fondue de tomate avec les dés de tofu fumé, et saler seulement ici : les saucisses et le tofu fumé apportent déjà beaucoup de sel, et douze grammes pour huit parts suffisent. Poivrer généreusement."
+        },
+        {
+          "n": 6,
+          "instruction": "Frotter d'ail cru l'intérieur d'une cocotte en terre ou d'un plat creux allant au four, puis monter en couches : haricots, tronçons de saucisse, haricots encore, en terminant par une couche de haricots qui portera la croûte. Verser le bouillon de légumes et le bouillon de haricots jusqu'à effleurer la surface, sans noyer."
+        },
+        {
+          "n": 7,
+          "instruction": "Enfourner à 150 °C pour une heure, à découvert. Toutes les vingt minutes, crever du dos d'une cuillère la peau qui se forme en surface et rajouter une louche de bouillon chaud si le dessus s'assèche. Ce geste répété est ce qui donne au plat son liant : chaque croûte enfoncée relâche de l'amidon dans le jus."
+        },
+        {
+          "n": 8,
+          "instruction": "Poudrer toute la surface de chapelure, arroser du reste d'huile d'olive et monter le four à 170 °C pour trente minutes de plus, jusqu'à une croûte dorée et cassante. Sortir le plat et le laisser se détendre vingt minutes avant de servir à la louche, dans des assiettes chaudes : sorti brûlant, le cassoulet coule au lieu de se tenir."
+        }
+      ],
+      "techniques": [
+        "trempage",
+        "mijotage",
+        "saisie",
+        "compotage",
+        "cuisson au four",
+        "gratinage",
+        "repos"
+      ],
+      "variants": [
+        "Cassoulet aux légumes variés, sans protéine de remplacement : poireau, navet, pomme de terre, champignons de Paris et olives noires cuits avec les haricots (marmiton) ; aubergine, courgette, poivron et céleri branche (lacuisinedemamere) — deux des trois pages solides du dossier, écartées ici parce qu'elles retirent la protéine au lieu de la remplacer",
+        "Aux saucisses végétales au blé ou seitan plutôt qu'au tofu : le dossier ne dit jamais de quoi ses saucisses sont faites, et le classeur Ciqual mesure les deux séparément",
+        "Haricots blancs en conserve, égouttés et rincés, qui ramènent le plat à quarante minutes mais le privent de son bouillon de cuisson (Télé-Québec, vegourmet)",
+        "Croûte de panko mélangé à l'huile, finie sous le gril (Télé-Québec), ou chapelure relevée de paprika fumé (vegourmet)",
+        "Émincé végétal, 200 g pour quatre, ajouté aux saucisses (vegan-pratique)",
+        "Bouillon lié à la farine et déglacé au vin blanc, avec céleri branche et sarriette (Télé-Québec)",
+        "Cuisson en deux jours, comme le parent : une heure de four la veille, refroidissement complet, puis la croûte de chapelure au moment de servir"
+      ],
+      "sensory": {
+        "profile": "warm_aromatic",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 2,
+          "bitter": 0,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 1,
+          "richness": 3,
+          "freshness": 0,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "haricot blanc",
+          "tomate cuite",
+          "fumé",
+          "ail"
+        ],
+        "aroma_families": [
+          "haricot",
+          "tomate_cuite",
+          "fumé",
+          "ail"
+        ],
+        "target_textures": [
+          "haricot fondant à peau intacte",
+          "croûte de chapelure cassante",
+          "jus lié par l'amidon"
+        ],
+        "signature_ingredients": [
+          "Haricot blanc sec",
+          "Saucisse végétale au tofu",
+          "Tofu fumé"
+        ],
+        "identity_guardrails": [
+          "Les haricots sont secs, trempés la veille et cuits à part dans une eau non salée : en conserve, ils ne donnent pas le bouillon amidonné qui lie le plat",
+          "La croûte se forme et se crève plusieurs fois pendant la cuisson au four, puis se refait une dernière fois à la chapelure — c'est le geste qui fait un cassoulet et non un plat de haricots",
+          "La protéine est remplacée, pas retirée : sans saucisse végétale ni tofu fumé, c'est un plat de haricots aux légumes, ce que deux pages du dossier proposent et que ce jumeau écarte",
+          "Le fumé du tofu tient le rôle de la poitrine et du confit : sans lui, le plat perd la profondeur qui distingue un cassoulet d'un ragoût de haricots"
+        ]
+      },
+      "conservation": "Se conserve 4 jours au réfrigérateur entre 0 et 4 °C, dans son plat couvert d'un film une fois refroidi, et il gagne au réchauffage lent à 150 °C avec une louche de bouillon chaud. Se congèle 3 mois, haricots et saucisses ensemble, mais la croûte de chapelure ne supporte pas le gel : la refaire au four après décongélation complète au réfrigérateur. Ce sont les durées du parent, aucune page du dossier ne parlant de conservation ; elles tiennent ici pour la même raison physique — un plat de légumineuses cuit longuement, salé et acidulé par la tomate, se garde bien, et le tofu fumé, salé lui aussi, ne raccourcit pas ce délai.",
+      "allergens": [
+        "gluten",
+        "soja"
+      ]
+    },
+    {
+      "code": "JUM-054",
+      "family": "Tofu teriyaki",
+      "derived_from": "VAR-032",
+      "cuisine_origin": "Japon",
+      "identity_level": "named_traditional_dish",
+      "category": "plat sauté",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "difficulty": "facile",
+      "sources": [
+        "dossier:tofu-teriyaki",
+        "chefsimon.com",
+        "750g.com",
+        "healthyalie.com"
+      ],
+      "description_courte": "Des tranches de tofu ferme saisies puis laquées dans une réduction de sauce soja, de saké et de sucre parfumée au gingembre — le jumeau végétarien du poulet teriyaki, même laque et même geste.",
+      "canonical_arbitration": "Jumeau végétarien de VAR-032 « Poulet teriyaki » : même sauce, même réduction, même laquage, le blanc de poulet remplacé par du tofu ferme. Le dossier data/recipes/sources/tofu-teriyaki.json porte quatre pages sur trois sites — chefsimon (deux pages, « Tofu teriyaki et poireaux grillés » et « Poêlée teriyaki au tofu et légumes »), 750g (« Tofu Teriyaki ») et healthyalie (« Tofu teriyaki au four ») — et l'audit les retient toutes les quatre : chacune porte les deux mots du plat et des quantités chiffrées. LE TOFU : deux pages sur quatre annoncent leur rendement, chefsimon 200 g pour deux et healthyalie 400 g pour quatre, soit 100 g par personne chacune ; médiane 100 g par personne, soit 400 g. Les deux autres pèsent leur tofu sans dire pour combien de personnes (chefsimon 400 g, 750g 100 g) et ne peuvent donc pas être ramenées à la portion — elles sont lues, pas comptées. On ne monte pas aux 500 g de blanc de poulet du parent : le poulet perd près d'un cinquième de sa masse à la poêle, le tofu pressé n'en perd presque rien, et 400 g laqués remplissent quatre assiettes. FERME ET NON FUMÉ : deux pages emploient du tofu fumé (chefsimon poireaux, 750g), deux du tofu ferme ou extra-ferme (chefsimon poêlée, healthyalie) ; on retient le ferme, qui est la forme neutre que la laque doit parfumer — un tofu déjà fumé imposerait un troisième goût à une sauce qui n'en a que deux. LA SAUCE. Sauce soja : deux pages la ramènent à la portion, chefsimon 2 cuillerées à soupe pour deux et healthyalie 4 cuillerées pour quatre, soit 15 ml par personne dans les deux cas ; médiane 15 ml par personne, soit 60 ml — exactement les 60 ml du parent, ce qui est le meilleur signe que le jumeau est bien le même plat. Une précision qui manquerait sinon : chefsimon ajoute à ses 2 cuillerées 4 cuillerées à soupe de sauce teriyaki toute faite, « du commerce ou maison », qui n'est ni au catalogue ni décomposable en ses ingrédients ; elle n'entre pas dans la médiane, et le total de sauce de cette page est donc plus élevé chez elle qu'il n'apparaît ici. Le saké : une seule page en met, chefsimon, 1 cuillerée à soupe pour deux, soit 7,5 ml par personne, soit 30 ml pour quatre. On garde pourtant les 60 ml du parent, et voici pourquoi : deux pages sur quatre emploient du mirin (2 et 3 cuillerées à soupe), qui est un alcool de riz sucré absent du catalogue ; le parent a déjà tranché ce cas en le remplaçant par le couple saké plus sucre, et le jumeau applique la même substitution plutôt que d'en inventer une autre. Le sucre suit la même logique : healthyalie seule le pèse, 1 cuillerée à soupe de sucre roux pour quatre, soit 3 g par personne, soit 12 g ; on garde les 25 g du parent, qui portent aussi la douceur du mirin que deux pages emploient et que le catalogue n'a pas. GINGEMBRE ET AIL : deux pages sur quatre les mettent, sans jamais les peser autrement qu'en « un petit bout » ou en gousses — chefsimon 2 cuillerées à café de gingembre, healthyalie une gousse d'ail, soit 1,25 g par personne, soit 5 g. On garde les 15 g de gingembre et les 10 g d'ail du parent : rien dans le dossier ne les contredit, et une laque de 60 ml de soja avale une gousse sans la faire entendre. CE QU'ON A ÉCARTÉ. La fécule de maïs, que trois pages sur quatre emploient — deux pour fariner le tofu avant la saisie, une pour lier la sauce — n'est pas employable au catalogue ; elle descend en variante, et la laque tient sans elle par simple réduction, comme chez le parent. Le mirin, même motif. Le jus d'orange, le miel et le vinaigre de riz de la poêlée chefsimon font une autre sauce, pas une teriyaki ; healthyalie met elle aussi 2 cuillerées à soupe de vinaigre de riz, écartées pour la même raison — une laque teriyaki tire son équilibre de la réduction du sucre et du soja, pas d'un vinaigre. L'HUILE DE CUISSON ne vient d'aucune médiane et il faut le dire : les 30 ml d'huile végétale sont ceux du parent, et le dossier ne les contredit pas plus qu'il ne les confirme — seule la poêlée chefsimon pèse une matière grasse, 5 ml d'huile d'olive, et healthyalie cuit au four sans en mettre. La cuisson au four de healthyalie (30 à 40 minutes à 200 °C, tranches badigeonnées) est une technique différente de celle du parent, qui saisit à la poêle et laque à la réduction : elle est notée en variante, elle n'est pas écrite ici. Enfin, aucune forme d'origine animale n'entre dans ce jumeau — la sauce soja, le saké et le sucre sont végétaux, et le dossier n'a proposé ni dashi ni bonite.",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch",
+          "vegetables"
+        ],
+        "reason": "Même rôle que le parent : du tofu laqué et rien d'autre dans l'assiette. La sauce est très salée et réclame un riz blanc pour l'équilibrer, ce que deux pages du dossier font explicitement (poireaux grillés chez l'une, purée de céleri chez l'autre, riz chez le parent) ; un légume vert vapeur complète l'assiette."
+      },
+      "ingredients": [
+        {
+          "form": "Tofu ferme",
+          "quantity": 400,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Sauce soja japonaise",
+          "quantity": 60,
+          "unit": "ml",
+          "role": "sauce",
+          "optional": false
+        },
+        {
+          "form": "Saké de cuisine",
+          "quantity": 60,
+          "unit": "ml",
+          "role": "sauce",
+          "optional": false
+        },
+        {
+          "form": "Huile végétale",
+          "quantity": 30,
+          "unit": "ml",
+          "role": "cuisson",
+          "optional": false
+        },
+        {
+          "form": "Sucre semoule",
+          "quantity": 25,
+          "unit": "g",
+          "role": "sauce",
+          "optional": false
+        },
+        {
+          "form": "Gingembre frais",
+          "quantity": 15,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 10,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Sortir le tofu de son eau, l'envelopper dans un linge propre et le laisser une demi-heure sous une planche lestée d'une boîte de conserve. Cette demi-heure ne se voit pas dans l'assiette mais décide de tout : un tofu gorgé d'eau relâche son liquide dans la poêle, s'y met à bouillir au lieu de dorer, et la laque, diluée, glisse au lieu d'accrocher."
+        },
+        {
+          "n": 2,
+          "instruction": "Réunir dans un bol la sauce soja, le saké et le sucre, râper le gingembre et écraser l'ail au-dessus, puis fouetter jusqu'à ce qu'aucun grain de sucre ne crisse au fond. Le sucre doit être fondu avant de rencontrer la poêle : resté en cristaux, il caramélise par plaques et brûle d'un côté pendant que le reste de la sauce est encore liquide."
+        },
+        {
+          "n": 3,
+          "instruction": "Trancher le bloc pressé en pavés d'un centimètre et demi d'épaisseur, ou en cubes de trois centimètres, et les éponger une dernière fois. Des morceaux épais tiennent au retournement ; taillés fin, ils se cassent dès que la sauce épaissit et le plat finit en miettes laquées."
+        },
+        {
+          "n": 4,
+          "instruction": "Chauffer l'huile dans une poêle large jusqu'à ce qu'elle soit fumante, y coucher les morceaux sans qu'ils se touchent et ne plus y toucher pendant trois minutes, puis les retourner et compter trois minutes de plus. On ne cherche pas à cuire le tofu, qui est déjà mangeable : on lui construit une croûte dorée, et c'est cette croûte qui retiendra la laque. Remué trop tôt, il colle au fond et laisse sa peau dans la poêle."
+        },
+        {
+          "n": 5,
+          "instruction": "Baisser à feu moyen et verser la sauce d'un seul coup — elle va bouillonner fort et se calmer. Retourner les morceaux toutes les trente secondes pendant quatre à cinq minutes : chaque passage dépose une couche mince qui sèche sur la précédente, et c'est cette répétition, non la durée, qui fait le laquage."
+        },
+        {
+          "n": 6,
+          "instruction": "Couper le feu dès que la sauce nappe le dos d'une cuillère et qu'une cuillère passée au fond y laisse un sillon net. Le sucre ne pardonne pas : trente secondes de plus et le sirop vire au caramel amer. Laisser reposer deux minutes hors du feu, puis servir sur du riz blanc en raclant tout ce qui reste au fond de la poêle, où la laque est la plus concentrée."
+        }
+      ],
+      "techniques": [
+        "pressage",
+        "saisie",
+        "réduction",
+        "laquage",
+        "repos"
+      ],
+      "variants": [
+        "Au mirin, deux à trois cuillerées à soupe avec la sauce soja (chefsimon, 750g) : forme absente du catalogue, remplacée ici comme chez le parent par le couple saké et sucre",
+        "Tofu fariné à la fécule avant la saisie, ou sauce liée à la fécule délayée dans un peu d'eau (chefsimon, healthyalie) : la fécule de maïs n'est pas employable au catalogue",
+        "Au four : tranches badigeonnées de sauce des deux côtés, 30 à 40 minutes à 200 °C en retournant à mi-cuisson (healthyalie)",
+        "Au tofu fumé plutôt que ferme, servi avec des poireaux crayons grillés (chefsimon) ou sur une purée de céleri (750g)",
+        "Sauce au jus d'orange, au miel et au vinaigre de riz, avec carottes et brocoli sautés dans la même poêle (chefsimon)",
+        "Finition à l'huile de sésame grillé et aux graines de sésame (750g, healthyalie)"
+      ],
+      "sensory": {
+        "profile": "spicy_umami",
+        "scores": {
+          "sweet": 3,
+          "salty": 4,
+          "acidic": 1,
+          "bitter": 0,
+          "umami": 4,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 2,
+          "freshness": 1,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "soja réduit",
+          "sucre caramélisé",
+          "gingembre",
+          "tofu doré"
+        ],
+        "aroma_families": [
+          "soja_fermenté",
+          "gingembre",
+          "caramel",
+          "ail"
+        ],
+        "target_textures": [
+          "croûte dorée",
+          "cœur ferme et lisse",
+          "sauce nappante"
+        ],
+        "signature_ingredients": [
+          "Tofu ferme",
+          "Sauce soja japonaise",
+          "Saké de cuisine"
+        ],
+        "identity_guardrails": [
+          "La sauce se réduit dans la poêle autour du tofu déjà saisi : versée crue sur un tofu blanc, elle le teinte sans jamais laquer",
+          "Le tofu est pressé avant d'être saisi, sinon il bout dans son eau et la laque ne prend pas",
+          "Trois ingrédients font la laque et pas un de plus — soja, saké, sucre — comme chez le parent ; y ajouter du miel, du jus d'orange ou du vinaigre en fait une autre sauce",
+          "On arrête la réduction au nappage : au-delà, le sucre passe en trente secondes du sirop au caramel amer"
+        ]
+      },
+      "conservation": "Se garde 3 jours au réfrigérateur entre 0 et 4 °C dans une boîte fermée, la laque figée autour des morceaux. Réchauffer deux minutes à la poêle avec une cuillerée à soupe d'eau, qui redonne à la sauce sa fluidité ; le micro-ondes la fait suer et détrempe la croûte. Se mange aussi froid, tranché sur un riz vinaigré. NE SE CONGÈLE PAS : aucune page du dossier ne le dit, et c'est une déduction assumée sur ce que fait physiquement le tofu — l'eau qu'il retient gèle en cristaux qui percent le caillé, et il ressort du congélateur en éponge élastique, spongieuse et striée. Cette texture a ses amateurs, mais ce n'est plus le tofu lisse et ferme que la laque enrobe ici.",
+      "allergens": [
+        "soja",
+        "gluten"
+      ]
+    },
+    {
+      "code": "JUM-055",
+      "family": "Wok de tofu aux légumes",
+      "derived_from": "DEN-015",
+      "cuisine_origin": "France / cuisine domestique d'inspiration asiatique",
+      "identity_level": "domestic_standard",
+      "category": "plat sauté",
+      "status": "candidate",
+      "confidence": "B",
+      "servings": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "difficulty": "facile",
+      "sources": [
+        "dossier:wok-de-tofu-aux-legumes",
+        "marmiton.org",
+        "chefsimon.com",
+        "lapetitecuisinedenat.com",
+        "mon-marche.fr",
+        "prunay.pepiniere-bour.fr"
+      ],
+      "description_courte": "Des cubes de tofu dorés au wok, remis sur des légumes sautés dans l'ordre de leur fermeté et enrobés de sauce soja, finis à l'huile de sésame et à la coriandre — le jumeau végétarien du wok de poulet.",
+      "canonical_arbitration": "Jumeau végétarien de DEN-015 « Wok de poulet aux légumes » : mêmes légumes, même conduite au wok, même finition, le blanc de poulet remplacé par du tofu ferme. Le dossier data/recipes/sources/wok-de-tofu-aux-legumes.json porte cinq pages sur cinq sites ; l'audit en retient quatre et en écarte une, prunay, non pour son contenu mais parce que son titre sort du site avec ses accents encore encodés (« Wok de l&eacute;gumes croquants au tofu ») et que le mot « légumes » ne s'y lit donc pas. Sa recette est lue et citée ci-dessous, elle n'entre pas dans les médianes. LE TOFU. Les cinq pages le pèsent et donnent leur rendement : marmiton 160 g pour deux, soit 80 g par personne ; chefsimon 125 g pour trois, soit 41,7 ; lapetitecuisinedenat 250 g pour quatre, soit 62,5 ; mon-marché 300 g pour quatre, soit 75 ; prunay, écartée, 200 g pour quatre, soit 50. Sur les quatre pages solides, médiane 68,75 g par personne, soit 275 g. On monte à 100 g par personne, soit 400 g, et il faut dire pourquoi : le parent compte 600 g de blanc de poulet pour quatre, c'est-à-dire 150 g par personne et près de 138 g de protéines dans le plat ; 400 g de tofu n'en apportent que 59. Le jumeau ne peut pas rattraper cet écart — c'est la nature du tofu, pas un défaut de rédaction — mais 275 g feraient de la protéine un condiment au milieu de 750 g de légumes, et le plat ne serait plus le même. Au-delà de 400 g, en revanche, le tofu occupe le wok, et aucune des cinq pages ne monte aussi haut. LES LÉGUMES sont ceux du parent, aux quantités du parent : 300 g de carotte, 250 g de courgette, 200 g de poivron rouge, 80 g d'échalote. C'est la règle du jumeau — on ne change que la protéine — et le dossier ne la contredit pas : quatre pages sur cinq mettent de la carotte, deux seulement du poivron — prunay et mon-marché —, une la courgette, et toutes ajoutent au moins un légume que le parent n'a pas (brocoli chez quatre d'entre elles, chou-fleur et chou blanc chez une, champignons chez deux). Ces ajouts sont notés en variantes ; les reprendre ici aurait fait un autre plat que celui de Julien, et c'est précisément ce que le planificateur cherche à éviter. LA SAUCE SOJA : trois pages solides la chiffrent, marmiton 2 cuillerées à café pour deux soit 5 ml par personne, lapetitecuisinedenat 2 cuillerées à soupe pour quatre soit 7,5, mon-marché 3 cuillerées à soupe pour quatre soit 11,25 ; médiane 7,5 ml par personne, soit 30 ml (prunay, écartée, donne exactement la même chose). On garde les 40 ml du parent, 10 ml par personne, pour une raison qui tient au remplacement lui-même : le blanc de poulet est salé au préalable dans la recette parente, le tofu ne l'est pas et n'apporte aucun sel, et la même masse de légumes reste à enrober. AIL, GINGEMBRE, HUILE DE SÉSAME : quatre pages sur cinq mettent du gingembre, trois de l'ail, trois de l'huile de sésame, aucune ne les pèse autrement qu'en gousses, en centimètres ou en cuillerées. Les chiffres du parent sont donc gardés tels quels — 12 g de gingembre, 10 g d'ail, 10 g d'huile de sésame en finition — et rien dans le dossier ne les contredit. Le paprika doux, la coriandre fraîche et l'huile d'arachide de la saisie viennent du parent : une seule page du dossier emploie de la coriandre et aucune de paprika, mais ce sont eux qui font l'identité du plat que Zoé doit retrouver dans l'assiette de Julien. CE QU'ON A ÉCARTÉ, ET C'EST LE POINT LE PLUS IMPORTANT DE CET ARBITRAGE : deux des cinq pages assaisonnent leur wok avec une sauce d'origine animale — chefsimon met 2 cuillerées à soupe de sauce poisson, lapetitecuisinedenat 4 cuillerées à soupe de sauce d'huître. Un jumeau végétarien ne se juge pas sur son étiquette mais sur ses formes : ces deux sauces sont écartées, la sauce soja les remplace, et leurs pages restent au dossier pour tout le reste. Écarté aussi le demi-cube de bouillon de chefsimon, dont rien ne dit s'il est de légumes ou de volaille. Les graines de sésame, que trois pages emploient en finition, existent au catalogue mais pas chez le parent : elles restent en variante. Le riz complet thaï de chefsimon et le riz basmati de prunay ne sont pas dans le plat, ils sont sous lui — c'est le féculent que le rôle d'assiette réclame déjà.",
+      "plate": {
+        "role": "main",
+        "accepts": [
+          "starch"
+        ],
+        "reason": "Même rôle que le parent : protéine et légumes sautés, sans féculent dans la poêle. Trois des cinq pages du dossier posent leur wok sur un féculent préparé à part : chefsimon pèse 150 g de riz complet thaï dans ses ingrédients, prunay et mon-marché le disent dans leur dernière étape — riz basmati ou nouilles sautées chez l'une, riz chez l'autre. Les deux autres s'arrêtent au wok, ce qui ne lui donne toujours pas de féculent."
+      },
+      "ingredients": [
+        {
+          "form": "Tofu ferme",
+          "quantity": 400,
+          "unit": "g",
+          "role": "protéine",
+          "optional": false
+        },
+        {
+          "form": "Carotte crue",
+          "quantity": 300,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Courgette fraîche",
+          "quantity": 250,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Poivron rouge frais",
+          "quantity": 200,
+          "unit": "g",
+          "role": "légume",
+          "optional": false
+        },
+        {
+          "form": "Échalote crue",
+          "quantity": 80,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Sauce soja",
+          "quantity": 40,
+          "unit": "ml",
+          "role": "sauce",
+          "optional": false
+        },
+        {
+          "form": "Huile d’arachide",
+          "quantity": 30,
+          "unit": "g",
+          "role": "matière grasse",
+          "optional": false
+        },
+        {
+          "form": "Coriandre fraîche",
+          "quantity": 15,
+          "unit": "g",
+          "role": "aromate",
+          "optional": false
+        },
+        {
+          "form": "Gingembre frais",
+          "quantity": 12,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Huile de sésame grillé",
+          "quantity": 10,
+          "unit": "g",
+          "role": "finition",
+          "optional": false
+        },
+        {
+          "form": "Ail cru",
+          "quantity": 10,
+          "unit": "g",
+          "role": "aromatique",
+          "optional": false
+        },
+        {
+          "form": "Paprika doux",
+          "quantity": 3,
+          "unit": "g",
+          "role": "épice",
+          "optional": false
+        },
+        {
+          "form": "Sel fin",
+          "quantity": 3,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        },
+        {
+          "form": "Poivre noir moulu",
+          "quantity": 1,
+          "unit": "g",
+          "role": "assaisonnement",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "n": 1,
+          "instruction": "Égoutter le tofu, le presser un quart d'heure entre deux linges sous une assiette lestée, puis le tailler en cubes de deux centimètres et les rouler dans le sel, le poivre et le paprika. L'eau qu'il rend au pressage est celle qui, sinon, l'empêcherait de dorer : un cube humide jeté dans un wok brûlant relâche de la vapeur, et la vapeur interdit tout contact sec avec le métal."
+        },
+        {
+          "n": 2,
+          "instruction": "Tailler tous les légumes avant d'allumer le feu, à épaisseur régulière : carottes en fines rondelles, courgette en demi-lunes, poivron en lanières. Un wok se conduit en cinq minutes montre en main et ne laisse aucun moment pour couper quoi que ce soit une fois la poêle chaude. Ciseler l'échalote, hacher l'ail, râper le gingembre et réunir ces trois-là dans un même bol : ils entreront ensemble."
+        },
+        {
+          "n": 3,
+          "instruction": "Chauffer l'huile d'arachide dans le wok jusqu'à ce qu'elle ondule, y coucher les cubes de tofu en une seule couche et les laisser prendre couleur deux minutes sans y toucher, puis les faire sauter jusqu'à ce que trois ou quatre faces soient dorées. Débarrasser dans une assiette. Remué trop tôt, le tofu laisse sa peau collée au fond et se défait en morceaux."
+        },
+        {
+          "n": 4,
+          "instruction": "Dans le wok resté brûlant, jeter les carottes seules et compter deux minutes, puis le poivron une minute, puis la courgette une minute. L'ordre suit la fermeté et c'est lui qui décide de tout : versés ensemble, la courgette rend son eau pendant que la carotte est encore crue, et l'on obtient une poêlée molle au lieu d'un sauté."
+        },
+        {
+          "n": 5,
+          "instruction": "Ajouter l'échalote, l'ail et le gingembre et remuer trente secondes, juste le temps qu'ils libèrent leur parfum sans roussir — l'ail brûlé rendrait tout le plat amer et rien ne le rattraperait."
+        },
+        {
+          "n": 6,
+          "instruction": "Remettre le tofu et son jus, verser la sauce soja sur les parois chaudes du wok plutôt qu'au centre, pour qu'elle se caramélise en descendant, et faire sauter une minute afin qu'elle enrobe tout. Couper le feu, ajouter l'huile de sésame et la coriandre ciselée, mélanger une dernière fois. L'huile de sésame se met toujours hors du feu : chauffée, elle perd en quelques secondes le parfum grillé qui justifie sa présence."
+        },
+        {
+          "n": 7,
+          "instruction": "Servir immédiatement, sur du riz ou des nouilles préparés pendant la taille des légumes. Un wok couvert continue de cuire dans sa propre vapeur et perd son croquant en deux minutes : c'est le seul plat de ce corpus qu'on ne fait pas attendre."
+        }
+      ],
+      "techniques": [
+        "taillage",
+        "pressage",
+        "saisie vive",
+        "sauté",
+        "cuisson séquencée par tenue des légumes",
+        "finition à l'huile crue"
+      ],
+      "variants": [
+        "Brocoli en fleurettes avec les carottes ou à la place de la courgette : quatre pages sur cinq en mettent (marmiton, chefsimon, mon-marché, prunay)",
+        "Graines de sésame grillées en finition (lapetitecuisinedenat, prunay, mon-marché) : la forme existe au catalogue, le parent ne la porte pas",
+        "Chou-fleur en petits bouquets, chou blanc ciselé et champignons noirs réhydratés quinze minutes (lapetitecuisinedenat)",
+        "Pois mange-tout ajoutés avec le poivron (prunay)",
+        "Servi sur riz complet thaï, avec un demi-jus de citron et des graines de courge (chefsimon)",
+        "Légumes cuits deux minutes à l'eau frémissante dans le wok avant l'ajout du tofu, jusqu'à absorption complète (marmiton)",
+        "Sauce d'huître (lapetitecuisinedenat) ou sauce poisson (chefsimon) à la place de la sauce soja : écartées ici, ce ne sont pas des formes végétariennes"
+      ],
+      "sensory": {
+        "profile": "savory_crisp",
+        "scores": {
+          "sweet": 1,
+          "salty": 3,
+          "acidic": 0,
+          "bitter": 0,
+          "umami": 3,
+          "heat": 0,
+          "pungency": 2,
+          "richness": 2,
+          "freshness": 3,
+          "intensity": 3
+        },
+        "dominant_flavors": [
+          "soja",
+          "gingembre",
+          "sésame grillé",
+          "légumes croquants"
+        ],
+        "aroma_families": [
+          "soja_fermenté",
+          "gingembre",
+          "sésame_toasté",
+          "coriandre"
+        ],
+        "target_textures": [
+          "cubes de tofu dorés",
+          "légumes croquants",
+          "enrobage brillant"
+        ],
+        "signature_ingredients": [
+          "Tofu ferme",
+          "Sauce soja",
+          "Huile de sésame grillé"
+        ],
+        "identity_guardrails": [
+          "Le tofu est doré à part et remis en fin de cuisson : sauté avec les légumes, il s'écrase et ne colore jamais",
+          "Les légumes entrent dans l'ordre de leur fermeté, carotte puis poivron puis courgette — c'est ce qui sépare un wok d'une poêlée",
+          "L'assaisonnement est la sauce soja seule : la sauce d'huître et la sauce poisson que deux pages emploient sortiraient le plat du végétarien",
+          "L'huile de sésame et la coriandre arrivent hors du feu, sinon le parfum grillé et l'herbe fraîche disparaissent"
+        ]
+      },
+      "conservation": "Se garde 2 jours au réfrigérateur entre 0 et 4 °C, mais il faut le dire franchement : dès le lendemain les légumes ont rendu leur eau et le plat est devenu une poêlée tiède, bonne mais différente. Réchauffer à feu très vif et très court, deux minutes au maximum, jamais à couvert. Se congèle mal, et pour deux raisons qui s'ajoutent : la courgette rend beaucoup d'eau à la décongélation, comme le dit déjà le parent, et le tofu congelé se transforme en éponge élastique — c'est la seule différence de conservation entre ce jumeau et le plat de Julien. Aucune page du dossier ne parle de conservation ; ce paragraphe dit ce que ce type de plat fait physiquement.",
+      "allergens": [
+        "soja",
+        "gluten",
+        "sésame"
+      ]
+    }
+  ]
+}

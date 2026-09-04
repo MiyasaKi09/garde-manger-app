@@ -1,0 +1,74 @@
+{
+  "dish": "Parmentier de lentilles",
+  "slug": "parmentier-de-lentilles-explo",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.750g.com/gratin-de-lentilles-corail-comme-un-hachis-r25431.htm",
+      "site": "750g.com",
+      "nom": "Gratin de lentilles corail comme un hachis",
+      "portions": "5 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "300 g de lentilles corail",
+        "1 oignon",
+        "1 carotte",
+        "75 cl d'eau",
+        "2 oeufs",
+        "50 g de gruyère râpé",
+        "2 c. à c. de persil",
+        "1 c. à s. d'huile d'olive",
+        "Poivre",
+        "Sel ou sel fin",
+        "400 g de boeuf haché",
+        "1 oignon",
+        "2 gousses d'ail",
+        "1 carotte",
+        "100 g de lardons",
+        "4 champignons",
+        "1 c. à s. de persil",
+        "2 c. à c. bombée(s) de concentré de tomates",
+        "1 tomate  coupée en petits dés",
+        "1 verre de vin rouge",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 920,
+        "sha256": "10991a562eabfbe3"
+      },
+      "sha256_page": "339d5c47ece5a6e3"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/keskonmangemaman/recettes/hachis-parmentier-vegetalien-bbc1980d-834f-433c-853d-ec7ff187d82e",
+      "site": "chefsimon.com",
+      "nom": "Hachis parmentier végétalien",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "800 grammes de pommes de terre",
+        "2 poivrons rouges",
+        "250 grammes de champignons de paris",
+        "1 échalote",
+        "2 gousses d'ail",
+        "250 grammes de tofu soyeux",
+        "20 cl de crème végétale (soja cuisine)",
+        "4 c à soupe d'huile d'olive",
+        "thym frais",
+        "2 à 3 c à soupe de chapelure de pain",
+        "25 grammes de margarine",
+        "sel et poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "a40a52160dde6e28"
+    }
+  ]
+}

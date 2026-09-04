@@ -44,6 +44,12 @@ function generateSequence(weekCount, { recipes, firstWeek = '2026-07-20' }) {
 describe('lot 9 — invariants sur quatre semaines consécutives', () => {
   const recipes = getCanonicalRecipes({ servings: 2 })
   const sequence = generateSequence(4, { recipes })
+  // Le rejeu du test de déterminisme se calcule ICI, avec la séquence de
+  // référence, et non dans son `it` : deux semaines de plus à résoudre y
+  // dépassaient les vingt secondes de la CI dès que le vivier a grossi. Ce que
+  // le test compare — deux séquences produites par les mêmes entrées — ne
+  // change pas parce qu'on les calcule au même endroit.
+  const rejeu = generateSequence(2, { recipes })
 
   it('publie chaque semaine, historique compris', () => {
     for (const { windowStart, plan } of sequence) {
@@ -76,9 +82,8 @@ describe('lot 9 — invariants sur quatre semaines consécutives', () => {
   })
 
   it('reste déterministe : la même séquence rejouée donne le même résultat', () => {
-    const replay = generateSequence(2, { recipes })
     const signature = (entries) => JSON.stringify(entries.map((entry) => entry.plan.slots.map((slot) => slot.recipeCode)))
-    expect(signature(replay)).toBe(signature(sequence.slice(0, 2)))
+    expect(signature(rejeu)).toBe(signature(sequence.slice(0, 2)))
   })
 })
 

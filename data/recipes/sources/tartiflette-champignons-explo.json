@@ -1,0 +1,28 @@
+{
+  "dish": "Tartiflette",
+  "slug": "tartiflette-champignons-explo",
+  "sources_count": 1,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.750g.com/tartiflette-aux-champignons-parfumes-r33726.htm",
+      "site": "750g.com",
+      "nom": "Tartiflette aux champignons parfumés",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 oignon",
+        "3 champignons parfumés par personne",
+        "1 reblochon",
+        "4 pommes de terre par personne"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 433,
+        "sha256": "26d6be58b4506893"
+      },
+      "sha256_page": "957ec98ea3164278"
+    }
+  ]
+}

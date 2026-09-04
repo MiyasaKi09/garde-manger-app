@@ -1,0 +1,194 @@
+{
+  "dish": "Minestrone végétarien",
+  "slug": "minestrone-vegetarien",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.biendecheznous.be/recettes/minestrone-vegetarien",
+      "site": "biendecheznous.be",
+      "nom": "Minestrone végétarien",
+      "portions": [
+        "4 Personen"
+      ],
+      "duree_preparation": "PT0M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "1 pomme de terre",
+        "2 carottes",
+        "1 oignon",
+        "2 gousses d'ail",
+        "1 fenouil",
+        "1 courgette",
+        "600 ml de bouillon de légumes",
+        "150 g de tomates cerises",
+        "1 boîte d'haricots blancs",
+        "50 bouquet de persil",
+        "2 brins de menthe",
+        "1 c à c de flocons de piment",
+        "2 c à s d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 773,
+        "sha256": "ee34671503b3bc82"
+      },
+      "sha256_page": "de89031c7d221c29"
+    },
+    {
+      "url": "https://menu-vegetarien.com/minestrone-vegetarien/",
+      "site": "menu-vegetarien.com",
+      "nom": "Minestrone végétarien",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "15 ml huile d’olive",
+        "2  oignon",
+        "2  courgette (coupées en rondelles)",
+        "250 g carotte (coupées en rondelles)",
+        "400 g haricots blancs cuits",
+        "2  branche de céleri (coupées en rondelles)",
+        "3 càs basilic",
+        "1 càs origan",
+        "2 càs persil (haché)",
+        "400 g tomates au jus",
+        "2  gousse d'ail (hachées)",
+        "350 g macaroni"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 484,
+        "sha256": "0cc12ab90cab40bb"
+      },
+      "sha256_page": "33a063ee40341156"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/une-aiguille-dans-l-potage/recettes/minestrone-aux-haricots-blancs-et-pesto-de-persil",
+      "site": "chefsimon.com",
+      "nom": "Minestrone aux haricots blancs et pesto de persil",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT01H45M",
+      "ingredients": [
+        "150 g de haricots blancs secs",
+        "3 tomates",
+        "1 oignon",
+        "3 carottes",
+        "2 petits navets",
+        "2 petits navets boule d’or",
+        "1 branche de céleri",
+        "Le jus d’1/2 citron (non mis)",
+        "2 litres de bouillon de légumes de bonne qualité",
+        "1 gousse d’ail",
+        "3 c à s d’huile d’olive",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "95653dacf6e14604"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-recettes-de-nathou/recettes/minestrone-aux-legumes-croquants",
+      "site": "chefsimon.com",
+      "nom": "Minestrone aux légumes croquants",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "150 gr de haricots verts",
+        "150 gr de petits pois (surgelés pour moi)",
+        "une dizaine de radis",
+        "une dizaine de petites asperges vertes",
+        "4 ou 5 jeunes carottes",
+        "1 gros oignon",
+        "100 gr de spaghettis",
+        "1 litre de bouillon de légumes (eau + cube)",
+        "1 bouquet de basilic",
+        "1 gousse d'ail",
+        "50 gr de parmesan (+ pour la déco)",
+        "huile d'olive",
+        "sel et poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "dae6b7fe36af66d9"
+    },
+    {
+      "url": "https://www.salepepe.it/ricette/primi/minestra-zuppa/zuppa/minestrone-ricco-verdure-fagioli/",
+      "site": "salepepe.it",
+      "nom": "Il minestrone ricco di verdure e fagioli",
+      "portions": "",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 Spicchio Aglio",
+        "200 Grammi Fagiolini",
+        "2 Rametto Maggiorana secca",
+        "2  Patata",
+        "1  Porro",
+        "1 Foglia Salvia",
+        "2 Rametto Timo",
+        "3  Zucchina",
+        "200 Grammi Erbetta",
+        "1  Cipolla",
+        "200 Grammi Fagioli borlotti",
+        "Q.b. Basilico",
+        "Q.b. Pepe",
+        "2  Carota",
+        "Q.b. Grana",
+        "Q.b. Olio di oliva extravergine",
+        "2  Pomodoro",
+        "1 Rametto Prezzemolo",
+        "2  Rapa",
+        "Q.b. Sale"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "694f2f5e7588a761"
+    },
+    {
+      "url": "https://www.mangioquindisono.it/minestrone-di-verdure-di-fine-estate-con-fagioli-freschi-traslocare/",
+      "site": "mangioquindisono.it",
+      "nom": "Minestrone di verdure di fine estate con fagioli freschi  | TRASLOCARE",
+      "portions": "4 porzioni",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "2 cucchiai olio evo",
+        "1 cipolla",
+        "2 cipollotti",
+        "3 o 4 spicchi d'aglio",
+        "2 carote",
+        "200 gr fagiolini",
+        "3 o 4 coste di sedano",
+        "2 o 3 zucchine",
+        "1 mazzo di erbette o coste",
+        "200 gr fagioli borlotti freschi",
+        "120 gr pasta corta",
+        "erbe aromatiche fresche a piacere - (rosmarino, salvia, maggiorana, timo, basilico, prezzemolo, alloro etc)",
+        "1 crosta di parmigiano reggiano o grana padano - (facoltativa ma consigliata)",
+        "sale e pepe macinati freschi",
+        "pane raffermo tagliato a fette - (facoltativo)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1050,
+        "sha256": "19a0cb77d21e6000"
+      },
+      "sha256_page": "a16633ddec93d231"
+    }
+  ]
+}

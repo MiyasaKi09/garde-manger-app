@@ -1,0 +1,54 @@
+{
+  "dish": "Calzone",
+  "slug": "calzone-vegetarien-explo",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_calzone-au-crottin-de-chevre_334606.aspx",
+      "site": "marmiton.org",
+      "nom": "Calzone au crottin de chèvre : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 pâte à pizza",
+        "20 cl de sauce tomate au basilic ou autre",
+        "2 crottins de chèvre",
+        "2 tranches de jambon",
+        "2 oeufs",
+        "4 cuillères à soupe de crème fraîche",
+        "50 g de fromage râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 369,
+        "sha256": "84142c0bcaaefc6f"
+      },
+      "sha256_page": "4c9320aa8b45afdd"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_calzone-aubergine-et-feta_83784.aspx",
+      "site": "marmiton.org",
+      "nom": "Calzone aubergine et fêta : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "0.3333333 aubergine",
+        "1 pâte à pizza",
+        "5 olives noires dénoyautées",
+        "2 cuillères à soupe de fromage blanc à 20%",
+        "25 g de feta",
+        "1 cuillère à soupe d'huile d'olive",
+        "1 cuillère à café d'origan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 430,
+        "sha256": "60b053198e5879c1"
+      },
+      "sha256_page": "f78405d0d1ac9327"
+    }
+  ]
+}

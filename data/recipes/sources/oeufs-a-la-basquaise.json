@@ -1,0 +1,166 @@
+{
+  "dish": "œufs à la basquaise",
+  "slug": "oeufs-a-la-basquaise",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_oeufs-poches-a-la-basquaise_19021.aspx",
+      "site": "marmiton.org",
+      "nom": "oeufs  pochés à la  basquaise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "8 oeufs",
+        "6 tomates",
+        "2 oignons",
+        "1 poivron vert",
+        "1 poivron rouge",
+        "herbes de Provence",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 459,
+        "sha256": "65549ff035acefe1"
+      },
+      "sha256_page": "30fb204eeb587f37"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_oeuf-brouillee-a-la-basquaise_533744.aspx",
+      "site": "marmiton.org",
+      "nom": "Oeufs brouillés à la basquaise : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "6 tranches de pains de campagne",
+        "huile d'olive",
+        "1 poivron vert haché",
+        "1 poivron rouge haché",
+        "1 oignon",
+        "10 oeufs",
+        "2 tomates hachée",
+        "poivre",
+        "55 g de chorizo",
+        "35 g de beurre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 367,
+        "sha256": "a21fa4a2c1d7cf44"
+      },
+      "sha256_page": "4f34ccd80a730ee3"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_basquaise-de-poivrons-aux-oeufs_87588.aspx",
+      "site": "marmiton.org",
+      "nom": "Basquaise de poivrons aux oeufs : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "2 poivrons rouges",
+        "2 poivrons verts",
+        "2 tomates",
+        "1 oignon",
+        "2 gousses d'ail",
+        "1 cuillère à soupe de concentré de tomates",
+        "1 morceau de sucre",
+        "1 pincée de piment (ou poivre)",
+        "20 cl de vin blanc moelleux",
+        "3 cuillères à soupe d'huile d'olive",
+        "20 lardons",
+        "4 oeufs",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 679,
+        "sha256": "c4f094a6191c8bd0"
+      },
+      "sha256_page": "6fb20f711ad331eb"
+    },
+    {
+      "url": "https://www.750g.com/oeufs-a-la-basquaise-r1071.htm",
+      "site": "750g.com",
+      "nom": "Œufs à la basquaise",
+      "portions": null,
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "8 olives noires",
+        "1 cuiller à café de sucre",
+        "4 cuillers à soupe d'huile d'olive",
+        "Sel",
+        "Poivre",
+        "basilic",
+        "1 oignon",
+        "120 grs de fromage de brebis",
+        "600 grs de poivrons verts",
+        "4 tomates",
+        "4 œufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 448,
+        "sha256": "d11ff8008435c376"
+      },
+      "sha256_page": "3a2f7d97a7b3773a"
+    },
+    {
+      "url": "https://www.750g.com/oeufs-cocotte-facon-basquaise-r34404.htm",
+      "site": "750g.com",
+      "nom": "Œufs cocotte façon basquaise",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT8M",
+      "ingredients": [
+        "1 c à s de thym",
+        "2 c à s d'huile d'olive",
+        "Sel",
+        "Poivre",
+        "1 pincée de piment D'Espelette",
+        "1 petite boîte de tomates concassées (ou 2 belle tomates fraîches)",
+        "2 jolis poivrons rouges",
+        "1 oignon",
+        "1 gousse d'ail",
+        "4 œufs"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 850,
+        "sha256": "c77914b0bfc84425"
+      },
+      "sha256_page": "1522d071ff6620e9"
+    },
+    {
+      "url": "https://www.750g.com/oeufs-brouilles-a-la-basquaise-r66604.htm",
+      "site": "750g.com",
+      "nom": "Œufs brouillés à la Basquaise",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "Ail",
+        "Piment d'Espelette",
+        "Oignons",
+        "Poivrons",
+        "8 œufs",
+        "Sel",
+        "Poivre",
+        "2 c à s de crème fraîche 'Vrai'"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 342,
+        "sha256": "7f24587c1e5315ee"
+      },
+      "sha256_page": "ceb2cd96c1aada7d"
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "dish": "Courgettes farcies végétariennes",
+  "slug": "explo5-courgettes",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_courgettes-farcies-vegetariennes_88202.aspx",
+      "site": "marmiton.org",
+      "nom": "Courgettes rondes farcies (végétariennes) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "6 courgettes rondes",
+        "3 oeufs",
+        "25 cl de crème fraîche",
+        "1 oignon",
+        "12 cubes de feta marinée",
+        "poivre",
+        "sel",
+        "huile d'olive",
+        "50 gruyère râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 757,
+        "sha256": "bcc66284dcef6390"
+      },
+      "sha256_page": "870c8ddff6aea465"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_courgettes-farcies-vegetariennes_343508.aspx",
+      "site": "marmiton.org",
+      "nom": "Courgettes farcies végétariennes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 courgettes",
+        "1 poivron rouge",
+        "1 oignon jaune",
+        "4 cuillères à soupe de semoule fine ou moyenne",
+        "4 cuillères à soupe de sauce tomate",
+        "de sel",
+        "poivre",
+        "piment doux"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 806,
+        "sha256": "716cccc15a6e9b83"
+      },
+      "sha256_page": "25589f8ca7aaf9ab"
+    },
+    {
+      "url": "https://www.750g.com/courgettes-farcies-vegetariennes-r49989.htm",
+      "site": "750g.com",
+      "nom": "Courgettes farcies végétariennes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "4 courgettes rondes",
+        "1 poivron vert",
+        "1 poivron rouge",
+        "1 échalote  hachée",
+        "30 g de pignons de pin",
+        "Mayonnaise  de dijon Plaisir Légèreté Amora",
+        "Thym",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 825,
+        "sha256": "dbf3df7aed73ca34"
+      },
+      "sha256_page": "b192b1ed18b566af"
+    },
+    {
+      "url": "https://www.750g.com/courgettes-farcies-vegetariennes-alla-ricotta-r17396.htm",
+      "site": "750g.com",
+      "nom": "Courgettes farcies végétariennes alla ricotta",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "½ c. à c. de piment d'Espelette  en poudre",
+        "Sel ou sel fin",
+        "2 c. à s. d'huile d'olive",
+        "1 bouquet de basilic",
+        "1 poignée de pignon de pin",
+        "130 g de ricotta",
+        "2 oignons nouveaux ou Cébettes",
+        "4 courgettes rondes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 704,
+        "sha256": "944b97a570e1b199"
+      },
+      "sha256_page": "7c772c5641524162"
+    },
+    {
+      "url": "https://www.750g.com/courgettes-farcies-vegetariennes-r39284.htm",
+      "site": "750g.com",
+      "nom": "Courgettes farcies végétariennes rapides",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "Sel",
+        "Poivre",
+        "Huile d'olive",
+        "1 œuf",
+        "Chapelure",
+        "Ail",
+        "1 pot de bruccio ou de faisselle",
+        "Persil plat",
+        "4 courgettes rondes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 379,
+        "sha256": "ea0fb69bebc740eb"
+      },
+      "sha256_page": "4dfb2c2ed71a98cb"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_courgettes-farcies-quinoa-et-lentilles_68403.aspx",
+      "site": "marmiton.org",
+      "nom": "Courgettes farcies quinoa et lentilles : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT2M",
+      "ingredients": [
+        "2 courgettes moyennes",
+        "50 g de quinoa",
+        "50 g de lentilles vertes",
+        "1 oeuf",
+        "30 g de parmesan",
+        "10 cl de crème fraîche épaisse",
+        "1 cuillère à café de curry",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 669,
+        "sha256": "fe9eff25c55bd0f2"
+      },
+      "sha256_page": "00ff76caa317c6bf"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/alexandre/recettes/courgettes-farcies-au-riz-et-aux-lentilles",
+      "site": "chefsimon.com",
+      "nom": "Courgettes farcies au riz et aux lentilles",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "1 grosse courgette ou 6 petites courgettes rondes",
+        "1 bel oignon",
+        "1 ou 2 gousse(s) d'ail",
+        "1 verre de riz basmati ou jasmin",
+        "1 verre de lentilles vertes",
+        "1 c à café bombée d'origan ou d'herbes de Provence",
+        "1 c à café rase de cumin en poudre",
+        "Sel et poivre",
+        "Huile d'olive",
+        "50 g de féta ou féta végétale (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "f3fed01b0423b1b8"
+    },
+    {
+      "url": "https://www.750g.com/courgettes-rondes-farcies-au-riz-r87462.htm",
+      "site": "750g.com",
+      "nom": "Courgettes rondes farcies au riz",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 pincée d'herbes de Provence",
+        "Mie de pain",
+        "Sel ou sel fin",
+        "Poivre",
+        "1 pincée de noix de muscade",
+        "2 échalotes",
+        "4 c. à s. de riz",
+        "2 c. à s. d'huile d'olive",
+        "4 courgettes rondes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 314,
+        "sha256": "914a0971761a8f57"
+      },
+      "sha256_page": "45ee0e96e3cfc24c"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_courgettes-farcies-au-riz-a-l-indienne_26338.aspx",
+      "site": "marmiton.org",
+      "nom": "Courgettes farcies au riz à l'indienne : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT55M",
+      "ingredients": [
+        "4 courgettes",
+        "100 g de riz",
+        "1 gousse d'ail pilée",
+        "2 cuillères à soupe d'huile",
+        "2 cuillères à soupe de curry",
+        "20 cl d'eau environ",
+        "poivre de cayenne",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 753,
+        "sha256": "1eae444422e1e075"
+      },
+      "sha256_page": "8678a265616d7fe6"
+    }
+  ]
+}

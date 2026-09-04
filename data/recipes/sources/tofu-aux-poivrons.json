@@ -1,0 +1,306 @@
+{
+  "dish": "Pepper tofu stir fry",
+  "slug": "tofu-aux-poivrons",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.livinglou.com/tofu-bell-pepper-stir-fry/",
+      "site": "livinglou.com",
+      "nom": "Tofu Bell Pepper Stir Fry",
+      "portions": [
+        "4"
+      ],
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 lb firm tofu",
+        "2 tbsp soy sauce",
+        "1 tbsp hoisin",
+        "2 tsp sugar",
+        "2 tsp  sesame oil",
+        "2 tbsp canola oil (divided)",
+        "1  onion (cut into 1&quot; pieces)",
+        "1  red bell pepper (cut into 1&quot; pieces)",
+        "1  green bell pepper (cut into 1&quot; pieces)",
+        "3 cloves garlic (minced)",
+        "1 tbsp minced ginger",
+        "1/4 tsp chili flakes",
+        "1 tsp sesame seeds"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1067,
+        "sha256": "57ea6020ca75cb10"
+      },
+      "sha256_page": "a75a90b5ff436126"
+    },
+    {
+      "url": "https://plantbasedrdblog.com/2024/01/garlic-pepper-tofu-stir-fry/",
+      "site": "plantbasedrdblog.com",
+      "nom": "Garlic Pepper Tofu Stir-fry",
+      "portions": [
+        "3",
+        "3 servings"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "3 tbsp tamari",
+        "2 tbsp of oil",
+        "Juice of 1 lime or 1 tbsp rice wine vinegar",
+        "1 lb block super firm (vacuum sealed tofu) or extra firm tofu (press this style tofu before using)",
+        "1-2 tbsp maple syrup",
+        "1 tbsp hoisin sauce (choose gluten-free)",
+        "1 tbsp mirin",
+        "1 tbsp sriracha or less based on preference",
+        "1/2 tsp vegetable bouillon paste or vegetable paste",
+        "1/4 cup of water",
+        "1 tbsp cornstarch or arrowroot starch",
+        "1 red bell pepper",
+        "1 green bell pepper",
+        "1/4 medium red onion, sliced into strips",
+        "3 cloves of garlic, minced"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1276,
+        "sha256": "3d9a4b8abbdd614a"
+      },
+      "sha256_page": "a3d39dfcfc08e509"
+    },
+    {
+      "url": "https://createmindfully.com/tofu-and-pepper-stir-fry-for-chinese-new-year/",
+      "site": "createmindfully.com",
+      "nom": "Tofu Bell Pepper Stir Fry",
+      "portions": [
+        "6"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1/4  cup low sodium gluten free tamari",
+        "2  tablespoons maple syrup",
+        "2  tablespoons brown rice vinegar",
+        "2  tablespoons olive oil",
+        "1 cup chopped onion",
+        "14 ounces firm tofu (drained and pressed)",
+        "5 cups julienned red, green, and yellow peppers ( (3 peppers))",
+        "1 cup julienned carrots",
+        "1 1/2  teaspoons finely diced serrano pepper",
+        "1 cup sliced baby bella mushrooms ((crimini)  )",
+        "1 clove garlic (minced)",
+        "1 tablespoon minced ginger",
+        "Salt and pepper"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 558,
+        "sha256": "83d6e12dfa2119f4"
+      },
+      "sha256_page": "166db1e16ac0f95b"
+    },
+    {
+      "url": "https://www.littlespicejar.com/black-pepper-tofu-stir-fry/",
+      "site": "littlespicejar.com",
+      "nom": "Black Pepper Tofu Stir Fry",
+      "portions": [
+        "4",
+        "4 -5 servings"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1  12-14 ounce block extra firm tofu",
+        "1  heaping tablespoon cornstarch (or rice flour)",
+        "1/2 teaspoon salt",
+        "3 tablespoons oil (divided)",
+        "optional: 1/8 teaspoon chili powder or cayenne + Tofu press",
+        "2  large shallots or 4 small (thinly sliced)",
+        "6 cloves garlic (minced)",
+        "2  red fresno chilis (sliced)",
+        "1 tablespoon ginger paste (I buy it Gourmet Garden from the refrigerated section)",
+        "2 tablespoons EACH: light soy sauce (sweet soy sauce AND oyster sauce)",
+        "1 tablespoons pepper medley (coarsely ground (see notes))",
+        "2 tablespoons light brown sugar",
+        "1 tablespoon rice vinegar",
+        "1/4 cup water + 1 tablespoon cornstarch",
+        "6  scallions (cut into 1 inch strips)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 1480,
+        "sha256": "667cdd269c2ee7d8"
+      },
+      "sha256_page": "efcaac29d4fbe2fa"
+    },
+    {
+      "url": "https://thefoodietakesflight.com/garlic-pepper-tofu/",
+      "site": "thefoodietakesflight.com",
+      "nom": "Garlic Pepper Tofu (Peeled Tofu Technique!)",
+      "portions": [
+        "3",
+        "3 people"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "10 oz extra firm tofu ( or super firm tofu (see notes))",
+        "Neutral oil",
+        "1 tbsp soy sauce",
+        "1 tbsp veg oyster sauce",
+        "2 tsp dark soy sauce",
+        "2 cloves garlic (minced)",
+        "1/2 tsp black pepper",
+        "1.5 tbsp maple syrup ( or other sweetener, adjust to taste)",
+        "1 tbsp mirin (or sake (see notes))",
+        "2 tbsp water",
+        "Neutral oil",
+        "6 cloves minced garlic (half for crispy garlic)",
+        "1  green onion (chopped (green and white parts separated))",
+        "Sliced bell peppers (or other veggies of choice)",
+        "Roasted sesame oil (to finish)",
+        "Steamed rice",
+        "Crispy garlic",
+        "Chopped green onions (green parts)",
+        "Sesame seeds"
+      ],
+      "etapes_empreinte": {
+        "nombre": 16,
+        "signes": 1803,
+        "sha256": "f112aac86a3a07db"
+      },
+      "sha256_page": "3e192d261b2b68e4"
+    },
+    {
+      "url": "https://www.lastingredient.com/ginger-garlic-veggie-tofu-stir-fry/",
+      "site": "lastingredient.com",
+      "nom": "Vegetable Tofu Stir-Fry",
+      "portions": [
+        "4"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT18M",
+      "ingredients": [
+        "14 ounce package extra firm tofu",
+        "1/3 cup low-sodium soy sauce",
+        "1/4 cup water",
+        "1 tablespoon rice vinegar",
+        "1 tablespoon maple syrup",
+        "1 tablespoon sesame oil",
+        "2  garlic cloves, (minced)",
+        "1 tablespoon minced fresh ginger",
+        "1/2 teaspoon red pepper flakes",
+        "1/2 teaspoon kosher salt",
+        "1/4 teaspoon black pepper",
+        "2 tablespoons vegetable oil",
+        "3  scallions, (thinly sliced, green and white parts separated)",
+        "2  bell peppers, (diced into 1/2-inch pieces)",
+        "1 pound broccoli, (trimmed and cut into small florets)",
+        "4 ounces snow peas ((about 1 heaping cup))",
+        "1-1/2 cups cooked brown rice"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1221,
+        "sha256": "1dbf9e612615b34d"
+      },
+      "sha256_page": "17dd11ebffe99765"
+    },
+    {
+      "url": "https://rainbowplantlife.com/tofu-stir-fry/",
+      "site": "rainbowplantlife.com",
+      "nom": "Tofu Stir Fry",
+      "portions": [
+        "4",
+        "4 with rice"
+      ],
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "3 to 4 tablespoons neutral-flavored high-heat oil (such as avocado oil, divided (Note 1))",
+        "1 (14-ounce/400g) block extra-firm tofu ((ideally, previously frozen and defrosted) (Note 2))",
+        "½ teaspoon kosher salt",
+        "½ teaspoon white pepper",
+        "½ teaspoon garlic powder",
+        "Heaping 1/4 teaspoon Chinese five spice powder ((optional but amazing!))",
+        "3 tablespoons cornstarch or arrowroot powder",
+        "1 ½ tablespoons soy sauce ((tamari for GF))",
+        "1 ½ tablespoons rice vinegar",
+        "2 tablespoons hoisin sauce",
+        "2 tablespoons Shaoxing wine (Chinese cooking wine) ((see Note 3 for substitutes) )",
+        "1 tablespoon organic brown sugar ((see Note 3) )",
+        "1 to 2 tablespoons chili-garlic sauce (or sambal oelek)  ((2 for spicy!))",
+        "3 tablespoons veggie broth or water",
+        "2- inch piece ginger (finely chopped (not grated or minced))",
+        "4  garlic cloves, (chopped (not minced) )",
+        "14 to 16 oz vegetables of choice (Note 4)",
+        "1 teaspoon cornstarch ((or arrowroot powder) + 1 tablespoon cold water, stirred together)",
+        "2 teaspoons black sesame seeds or toasted white sesame seeds",
+        "2 teaspoons toasted sesame oil",
+        "¾ cup (12g) cilantro leaves and tender stems, roughly chopped",
+        "3 to 4 cups cooked white or brown rice,  (for serving )"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 2292,
+        "sha256": "5e16c76da7b729d0"
+      },
+      "sha256_page": "bf7a11a888960bb5"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/madame-potiron/recettes/nouilles-facon-yakisoba-aux-poivrons-et-tofu",
+      "site": "chefsimon.com",
+      "nom": "Nouilles façon yakisoba aux poivrons et tofu",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "100 gr de nouilles type soba",
+        "80 gr de petits champignons de Paris",
+        "280 gr de tofu ferme",
+        "1 carotte",
+        "1 poivron rouge",
+        "3 cébettes",
+        "25 ml de sauce soja",
+        "15 gr de gingembre frais",
+        "1 càs de mirin",
+        "2 càs de pâte de miso",
+        "5 gr de graines de sésame (ici noires)",
+        "1 càs de Maïzena",
+        "1/2 càc de coriandre moulue",
+        "1/2 càc de gingembre en poudre",
+        "1/2 càc de piment doux en poudre",
+        "Huile",
+        "Sel &amp; poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 150,
+        "sha256": "4ab957ab633c617c"
+      },
+      "sha256_page": "6515c50cd6594d55"
+    },
+    {
+      "url": "https://www.kintaki.com/wok-de-tofu-fume-au-poivron-vert-recette-savoureuse-et-rapide/",
+      "site": "kintaki.com",
+      "nom": "Wok de tofu fumé au poivron vert : recette savoureuse et rapide",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "400 grammes tofu fumé",
+        "2 pièces poivron vert",
+        "2 cuillères à soupe huile de sésame",
+        "3 cuillères à soupe sauce soja",
+        "1 cuillère à café gingembre en poudre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 382,
+        "sha256": "8dadb6baeeedc254"
+      },
+      "sha256_page": "8f144215eac549fc"
+    }
+  ]
+}

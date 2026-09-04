@@ -64,6 +64,9 @@ describe('weeklyBalanceFor — bornes ramenées à la semaine', () => {
   })
 
   it('exempte les familles qui ne désignent pas une espèce', () => {
-    expect(UNCAPPED_PROTEIN_FAMILIES).toEqual(['vegetal', 'laitiers', 'oeufs'])
+    // 'inconnu' en fait partie : la protéine principale d'un plat dont
+    // l'origine n'est pas déclarée n'est pas une espèce, et la plafonner
+    // cacherait une donnée manquante derrière une semaine infaisable.
+    expect(UNCAPPED_PROTEIN_FAMILIES).toEqual(['vegetal', 'laitiers', 'oeufs', 'inconnu'])
   })
 })

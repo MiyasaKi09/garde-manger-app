@@ -1,0 +1,170 @@
+{
+  "dish": "Salmorejo",
+  "slug": "salmorejo-vegetarien",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.directoalpaladar.com/recetas-de-sopas-y-cremas/receta-de-salmorejo-cordobes-tradicional",
+      "site": "directoalpaladar.com",
+      "nom": "Receta de salmorejo cordobés tradicional: cómo hacerlo para que te quede perfecto",
+      "portions": 6,
+      "duree_preparation": "P0DT0H45M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "1kg Tomate",
+        "200g Pan de hogaza",
+        "150ml Aceite de oliva virgen extra",
+        "1count Dientes de ajo",
+        "Sal"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 1712,
+        "sha256": "16fe41827f49311d"
+      },
+      "sha256_page": "7e7e3e42eda59e1c"
+    },
+    {
+      "url": "https://www.secretosdelsur.com/en/recipes/salmorejo-soup-from-cordoba/",
+      "site": "secretosdelsur.com",
+      "nom": "Salmorejo, a typical dish from Córdoba, Andalucia",
+      "portions": [
+        "4",
+        "4 persons"
+      ],
+      "duree_preparation": "PT25M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 kg tomatoes (The important thing is that they are ripe! I have used two varieties, vine tomatoes and Monte Rosa.)",
+        "180 gr breadcrumbs (only the soft white part of a fresh bread)",
+        "120 ml olive oil",
+        "1 clove garlic",
+        "60 ml water ((if necessary, should it be too consistent))",
+        "2  eggs (hard boiled)",
+        "2 slices bread (to make crusts)",
+        "salt"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1078,
+        "sha256": "fdb0470524081ea6"
+      },
+      "sha256_page": "1d75cd02289c30c1"
+    },
+    {
+      "url": "https://fussfreeflavours.com/salmorejo/",
+      "site": "fussfreeflavours.com",
+      "nom": "Salmorejo (Spanish Cold Tomato Soup)",
+      "portions": [
+        "6",
+        "6 people"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 kg vine ripened tomatoes (roughly chopped)",
+        "200 g rustic white bread (cut into cubes)",
+        "1  garlic clove (peeled)",
+        "1 tsp sherry vinegar",
+        "4 tbs extra virgin olive oil",
+        "salt (to taste)",
+        "2  hard boiled eggs (peeled and chopped)",
+        "4 slices Serrano Ham (or other air dried ham)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1018,
+        "sha256": "9a2a4f4e16f28493"
+      },
+      "sha256_page": "0f451b30a8087114"
+    },
+    {
+      "url": "https://spanishsabores.com/antonias-salmorejo-recipe/",
+      "site": "spanishsabores.com",
+      "nom": "Salmorejo Recipe",
+      "portions": [
+        "4",
+        "4 servings"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "8  medium plum tomatoes (preferably vine-ripened)",
+        "1  medium-sized stale baguette (or other stale bread)",
+        "1 cup good-quality extra virgin olive oil",
+        "1 clove garlic",
+        "1 splash sherry vinegar (Vinagre de Jerez)",
+        "1 pinch salt",
+        "2  hard boiled eggs",
+        "diced serrano ham (or other cured ham, such as prosciutto)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1219,
+        "sha256": "662273f9736dc192"
+      },
+      "sha256_page": "067f9bde728cc7c4"
+    },
+    {
+      "url": "https://www.themediterraneandish.com/salmorejo-spanish-chilled-tomato-soup/",
+      "site": "themediterraneandish.com",
+      "nom": "Salmorejo (Spanish Chilled Tomato Soup)",
+      "portions": [
+        "4"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 1/2 pounds ripe tomatoes, (cored and coarsely chopped)",
+        "5 ounces stale (or lightly toasted) bread,  (crust discarded, inside torn or chopped into bite-size pieces)",
+        "1/3 cup extra virgin olive oil,  (plus more for drizzling)",
+        "1  garlic clove, (crushed and peeled)",
+        "1 tablespoon sherry vinegar",
+        "3/4 teaspoon fine sea salt",
+        "1/4 teaspoon freshly ground black pepper, (plus more for serving)",
+        "1/3 cup 80ml cold water",
+        "2  hard-boiled eggs, (chopped (optional))",
+        "1/4 pound diced jamón serrano or prosciutto, (finely chopped (optional))"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 558,
+        "sha256": "fe622abeb42fa225"
+      },
+      "sha256_page": "6a29c392f623ef4b"
+    },
+    {
+      "url": "https://turecetavegana.com/salmorejo-cordobes-casero-vegano-receta-paso-a-paso/",
+      "site": "turecetavegana.com",
+      "nom": "Receta de salmorejo vegano",
+      "portions": [
+        "2",
+        "2 personas"
+      ],
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 kilo Tomate (maduro)",
+        "200 gramos Tofu (firme)",
+        "1 diente Ajo",
+        "120 gramos Aceite de Oliva Virgen Extra",
+        "1 chorro Vinagre de Manzana",
+        "1 cucharadita Sal",
+        "1 puñado Pistachos",
+        "1 puñado Nueces",
+        "1 puñado Almendras",
+        "200 gramos Pan Blanco",
+        "1  Aguacate",
+        "1 cucharadita Curry (molido)",
+        "1 cucharadita Cúrcuma (molida)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1425,
+        "sha256": "6fe6941fb4edf24a"
+      },
+      "sha256_page": "6890affce5f53313"
+    }
+  ]
+}

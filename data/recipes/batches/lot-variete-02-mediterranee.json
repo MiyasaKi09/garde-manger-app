@@ -341,6 +341,7 @@
     {
       "code": "VAR-015",
       "family": "Moussaka végétarienne",
+      "derived_from": "GR-001",
       "cuisine_origin": "Grèce",
       "identity_level": "named_traditional_dish",
       "category": "moussaka de légumes gratinée",
