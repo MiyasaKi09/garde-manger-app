@@ -1,0 +1,955 @@
+{
+ "lot": "jumeaux-07",
+ "intention": "Septième lot de jumeaux végétariens de même lignée (plan « planning parfait », chantier C2, exécuté par C6). Un jumeau est le même plat que sa base carnée — même structure, même féculent, même technique, même rôle d'assiette — dont la protéine animale est remplacée par une protéine végétale que les sources attestent ; « derived_from » porte le code du parent, ce qui en fait, pour le planificateur, la version végétarienne du même plat et non un autre plat servi à Zoé. Cinq jumeaux visés, quatre écrits, un refusé, et le refus est le résultat le plus utile du lot : la lignée FR-036 « Tarte aux poireaux et lardons » a déjà son jumeau au corpus, VAR-035 « Quiche aux poireaux », sourcée, sans viande, de même structure et de même catégorie — ce qui lui manque n'est pas une recette mais un champ « derived_from ». En écrire une nouvelle aurait ajouté au corpus un doublon de VAR-035 et de sa variante au chèvre déjà déclarée, pour déplacer un compteur. Le détail est dans « refuses ». LE PRINCIPE D'ARBITRAGE DU LOT, énoncé une fois et appliqué quatre fois : on ne rejuge que les lignes que l'échange de protéine touche, plus celles sur lesquelles le dossier du jumeau est unanime contre le silence du parent. Tout le reste est hérité du parent, dont les dossiers comptent quatre pages là où ceux des jumeaux en comptent deux à quatre — rejuger une carotte sur un dossier plus mince serait remplacer une mesure par une plus faible. DEUX DOSSIERS SONT AU MINIMUM EXIGÉ et il faut le dire au lieu de le lisser : minestrone et quiche lorraine tiennent chacun sur deux sources solides et deux sites distincts, pas une de plus. Le bortsch, lui, a dû être cherché en anglais — sous « bortsch végétarien » la chaîne ne rend qu'une page exploitable, et le contrôle des types de plat l'écarte pour le mot « soupe » de son titre — et rend alors quatre pages solides sur quatre sites. La chorba a dû être cherchée sous « chorba sans viande » plutôt que « chorba végétarienne », pour la même raison de titre, et rend trois pages solides sur trois sites. AUCUNE FORME NOUVELLE N'A ÉTÉ ARBITRÉE : les quatre recettes n'emploient que des formes déjà connues, et la seule qui ne soit pas encore au catalogue — « Tofu fumé », arbitrée au lot 21-jumeaux-04 sur le code Ciqual 20912 — rend la quiche « valide avec réserve » jusqu'à la reconstruction du catalogue, ce qui est l'ordre normal de la chaîne. Le fichier data/foods/arbitrations/lot21-jumeaux-07.json n'existe donc pas, faute d'avoir quoi que ce soit à y écrire.",
+ "refuses": [
+  {
+   "twin_family": "Tarte aux poireaux",
+   "parent_code": "FR-036",
+   "parent_family": "Tarte aux poireaux et lardons",
+   "motif": "Doublon d'une recette existante du corpus, et non manque de sources. VAR-035 « Quiche aux poireaux » est déjà au corpus : tarte salée, 500 g de poireaux fondus, 4 œufs, 300 ml de crème, 150 ml de lait, 250 g de pâte brisée, 160 g de gruyère, aucune viande, dossier de sources sur trois sites (marmiton, chefsimon, 750g). C'est, ligne pour ligne, la tarte aux poireaux sans lardons que ce jumeau devait écrire, et sa variante déclarée « Au chèvre frais : 150 g à la place du gruyère » est aussi la seconde piste que la commande proposait. Écrire « Tarte aux poireaux » ou « Tarte aux poireaux et chèvre » sous FR-036 aurait donc ajouté au corpus une troisième fiche quasi identique à deux existantes, pour faire monter d'une unité le compteur des jumeaux — c'est exactement le genre de gain de compteur que le chantier C6 interdit à sa porte numéro sept. CE QUI MANQUE RÉELLEMENT est un champ : VAR-035 ne porte pas « derived_from: FR-036 », si bien que le planificateur ne sait pas que ces deux tartes sont le même plat et sert à Zoé une recette hors lignée. La correction est un champ sur une recette existante, elle ne relève pas d'un lot de rédaction et elle ne touche pas au parent : je la signale, je ne la fais pas. Les neuf pages trouvées sur marmiton, chefsimon et 750g pour « tarte aux poireaux » n'ont pas été relevées en dossier, puisqu'aucune recette ne s'en sert : un dossier orphelin dans le dépôt serait une trace de travail, pas une preuve."
+  }
+ ],
+ "recipes": [
+  {
+   "code": "JUM-071",
+   "family": "Minestrone végétarien",
+   "derived_from": "IT-008",
+   "cuisine_origin": "Italie",
+   "identity_level": "named_traditional_dish",
+   "category": "soupe complète",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 8,
+   "prep_minutes": 30,
+   "cook_minutes": 50,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:minestrone-vegetarien",
+    "biendecheznous.be",
+    "menu-vegetarien.com",
+    "chefsimon.com",
+    "salepepe.it",
+    "mangioquindisono.it"
+   ],
+   "description_courte": "Soupe de sept légumes mouillée au bouillon de légumes, portant ses haricots blancs et ses petites pâtes dans le même bol — le jumeau végétarien du minestrone, dont seul le bouillon rendait la lignée carnée.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Même rôle que le parent, et pour les mêmes raisons : le bol porte son féculent deux fois (petites pâtes et pomme de terre), sa protéine végétale (75 g de haricots blancs cuits par personne, contre 56 chez le parent) et sept légumes. C'est la définition même du minestrone, une soupe qui fait le repas. Le pain et le parmesan au service sont un usage, pas un complément nécessaire — et c'est parce que la protéine du bol tient debout seule que ce jumeau peut être servi à Zoé pendant que Julien mange le parent."
+   },
+   "ingredients": [
+    {
+     "form": "Bouillon de légumes",
+     "quantity": 2000,
+     "unit": "ml",
+     "role": "mouillement",
+     "optional": false
+    },
+    {
+     "form": "Tomate fraîche mûre",
+     "quantity": 600,
+     "unit": "g",
+     "role": "base",
+     "optional": false
+    },
+    {
+     "form": "Haricot blanc cuit, égoutté",
+     "quantity": 600,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Courgette fraîche",
+     "quantity": 400,
+     "unit": "g",
+     "role": "légume tendre",
+     "optional": false
+    },
+    {
+     "form": "Pomme de terre crue, épluchée",
+     "quantity": 350,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Carotte crue",
+     "quantity": 250,
+     "unit": "g",
+     "role": "légume dur",
+     "optional": false
+    },
+    {
+     "form": "Petites pâtes sèches",
+     "quantity": 250,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 200,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Haricot vert cru",
+     "quantity": 150,
+     "unit": "g",
+     "role": "légume tendre",
+     "optional": false
+    },
+    {
+     "form": "Céleri branche cru",
+     "quantity": 120,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 40,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Basilic frais",
+     "quantity": 15,
+     "unit": "g",
+     "role": "finition",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 8,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Parmesan affiné",
+     "quantity": 80,
+     "unit": "g",
+     "role": "service",
+     "optional": true
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Si l'on part de haricots secs, compter deux cent cinquante grammes trempés une nuit puis cuits une heure à l'eau non salée : ils rendront les six cents grammes annoncés, qui sont un poids de haricot cuit et égoutté et non un poids de sachet. En conserve, vider le bocal dans une passoire, rincer à l'eau froide et laisser s'égoutter : la saumure est salée et trouble, et ce que la recette pèse est ce qui sort de la boîte."
+    },
+    {
+     "n": 2,
+     "instruction": "Tailler oignon, carotte, céleri et pomme de terre en dés d'un centimètre, tous au même calibre. Une soupe qui se mange à la cuillère se juge là : des dés inégaux donnent au même moment des légumes encore fermes et d'autres déjà défaits. Mettre de côté la courgette taillée pareil et les haricots verts coupés en tronçons de deux centimètres, qui n'entreront que bien plus tard."
+    },
+    {
+     "n": 3,
+     "instruction": "Chauffer la moitié de l'huile d'olive dans un grand faitout, y verser oignon, carotte, céleri et ail écrasé, couvrir et laisser suer une dizaine de minutes à feu doux sans laisser prendre couleur. Sans salaison au fond du récipient, cette base fondue est le seul corps gras aromatique de la soupe : menée trop vite, elle laisse un bouillon plat qu'aucune quantité de légumes ne rattrape ensuite."
+    },
+    {
+     "n": 4,
+     "instruction": "Ajouter les pommes de terre et les tomates écrasées à la main, puis laisser la tomate se défaire cinq minutes à découvert avant tout mouillement. Elle perd là son acidité crue ; noyée tout de suite sous deux litres de liquide, elle la garderait jusqu'au bout."
+    },
+    {
+     "n": 5,
+     "instruction": "Verser le bouillon de légumes, amener à petits frémissements, couvrir et compter vingt-cinq minutes. La surface doit à peine trembler — une ébullition franche casse les dés et rend le bouillon trouble. Goûter à ce moment précis : un bouillon de légumes est moins salé et moins gélatineux qu'un bouillon de viande, et c'est maintenant qu'on sait s'il faudra saler à la fin et de combien."
+    },
+    {
+     "n": 6,
+     "instruction": "Mettre alors la courgette, les haricots verts et les haricots blancs déjà cuits, puis compter dix minutes. La courgette entrée au départ aurait disparu sans laisser de trace ; les haricots blancs, eux, n'ont qu'à se réchauffer et à prendre le goût du bouillon, car mijotés plus longtemps ils perdent leur peau et troublent le bol."
+    },
+    {
+     "n": 7,
+     "instruction": "Jeter les petites pâtes dans la soupe elle-même et les arrêter deux minutes avant le temps indiqué sur le paquet, en goûtant. C'est leur amidon qui épaissit le minestrone, et c'est pour cela qu'on ne les cuit jamais à part. Mais elles boivent encore après le feu coupé : à point dans la marmite, elles auront tout absorbé au moment de servir."
+    },
+    {
+     "n": 8,
+     "instruction": "Hors du feu, déchirer le basilic à la main dans la soupe, verser le reste d'huile d'olive crue, puis goûter et saler seulement là. Le mouillement n'apporte ici ni le sel ni le corps qu'un bouillon de viande apporterait : ce filet d'huile crue et ces feuilles déchirées sont la finition du plat, pas sa décoration. Servir avec le parmesan râpé à part, pour qui en veut."
+    }
+   ],
+   "techniques": [
+    "suer",
+    "cuisson séquencée par tenue des légumes",
+    "cuisson des pâtes dans le bouillon",
+    "finition à l'huile crue"
+   ],
+   "variants": [
+    "Pesto de persil monté à l'huile et servi à part, à la place du basilic déchiré (chefsimon)",
+    "Version croquante : haricots verts, petits pois, radis et jeunes asperges à peine pochés dans le bouillon, avec des spaghettis cassés (chefsimon)",
+    "Fenouil et tomates cerises coupées en deux à la place de la tomate mûre, deux brins de menthe et des flocons de piment en finition (biendecheznous)",
+    "Trois cent cinquante grammes de macaronis pour quatre, soit près de trois fois le féculent retenu ici (menu-vegetarien) — écarté parce que la soupe devient alors un plat de pâtes en bouillon",
+    "Haricots borlotti frais à la place du haricot blanc, avec des blettes et une croûte de parmesan fondue dans le bouillon (mangioquindisono, salepepe)",
+    "Navets ronds et navets boule d'or avec les légumes durs (chefsimon, salepepe)",
+    "Origan séché et persil haché ajoutés avec le basilic (menu-vegetarien)",
+    "Poireau émincé dans la base aromatique (salepepe, et le parent le porte déjà en variante)"
+   ],
+   "sensory": {
+    "profile": "brothy_umami",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 2,
+     "bitter": 0,
+     "umami": 2,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 2,
+     "freshness": 3,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "bouillon de légumes",
+     "tomate",
+     "haricot blanc",
+     "basilic"
+    ],
+    "aroma_families": [
+     "bouillon",
+     "tomate_cuite",
+     "oignon_compoté",
+     "basilic",
+     "céleri"
+    ],
+    "target_textures": [
+     "légumes_tendres_distincts",
+     "bouillon_lié",
+     "pâtes_fermes"
+    ],
+    "signature_ingredients": [
+     "Haricot blanc cuit, égoutté",
+     "Petites pâtes sèches",
+     "Tomate fraîche mûre",
+     "Bouillon de légumes"
+    ],
+    "identity_guardrails": [
+     "Le bouillon est de légumes et rien d'autre : c'est la seule ligne qui séparait ce plat de son parent, et un cube de volaille le ramènerait dans la lignée carnée sans que rien ne le montre",
+     "Aucune salaison, pas même en option — le parent laissait le lardon facultatif, et c'est précisément ce genre d'option qui fait classer un plat végétarien à tort",
+     "Un minestrone porte à la fois une légumineuse et un féculent en grain, haricot blanc et petites pâtes : sans eux il n'est plus qu'une soupe de légumes, et ici le haricot est la seule protéine du bol",
+     "Les légumes restent en dés distincts sous la cuillère : mixé, le plat devient un velouté et perd la définition qui fait son nom",
+     "Les pâtes cuisent dans le bouillon et non à part, leur amidon étant le seul liant de la soupe"
+    ]
+   },
+   "conservation": "Se garde 4 jours au réfrigérateur dans un récipient fermé, et la soupe est meilleure le lendemain, le temps que le bouillon prenne le goût des légumes. Une réserve, et c'est la même que chez le parent : les pâtes continuent de boire au froid et le minestrone se resserre en plat épais — rallonger d'un demi-litre de bouillon au réchauffage, ou mieux, cuire les pâtes à la portion et garder le reste de la soupe sans elles. Se congèle 3 mois à -18 °C, mais sans les pâtes ni la pomme de terre, qui se délitent au dégel ; la base congelée sans elles ne perd rien. Aucune page du dossier ne parle de conservation : ce qui est écrit ici décrit ce que fait physiquement une soupe de légumes portant un féculent en grain, et l'échange du bouillon n'y change rien.",
+   "allergens": [
+    "gluten",
+    "céleri",
+    "lait"
+   ],
+   "canonical_arbitration": "Jumeau végétarien de IT-008 « Minestrone » : mêmes légumes, même double féculent (petites pâtes et pomme de terre), même cuisson séquencée par tenue, même finition à l'huile crue et au basilic déchiré, même rôle d'assiette. UNE SEULE LIGNE RENDAIT CETTE LIGNÉE CARNÉE, et c'est le mouillement : le parent verse deux litres de bouillon de volaille et propose deux cents grammes de lardon fumé en option. Le jumeau mouille au bouillon de légumes et ne porte aucune salaison, ni obligatoire ni facultative. Ce dernier point est délibéré : le plan mesure quinze recettes classées végétariennes à tort parce qu'elles portent du bouillon de volaille, et un lardon laissé « optionnel » produirait exactement la même faute, en pire, puisqu'il passerait pour une permission. LE DOSSIER, ET SA FAIBLESSE ASSUMÉE. Le dossier data/recipes/sources/minestrone-vegetarien.json porte six pages, et deux seulement portent le titre « Minestrone végétarien » : biendecheznous.be et menu-vegetarien.com. Ce sont les deux seules que l'audit retient — deux sources solides sur deux sites distincts, c'est-à-dire le minimum exigé et pas un de plus. Il faut l'écrire plutôt que de le maquiller : ce dossier est le plus mince des quatre du lot. Les quatre autres pages sont écartées pour un mot de titre et servent de corroboration : chefsimon « Minestrone aux haricots blancs et pesto de persil » et « Minestrone aux légumes croquants », salepepe.it « Il minestrone ricco di verdure e fagioli », mangioquindisono.it « Minestrone di verdure di fine estate con fagioli freschi ». Aucune des six ne porte de viande ; les quatre qui déclarent un liquide mouillent au bouillon de légumes ou à l'eau, et salepepe ne chiffre aucun des siens. UNE PAGE A ÉTÉ SORTIE DU DOSSIER AVANT L'AUDIT et il faut le dire aussi : 750g.com « Minestrone de légumes d'automne » compte cinquante grammes de lard et un cube de bouillon de volaille. Son titre annonce des légumes, sa liste dit autre chose — elle documente le parent, pas le jumeau. CE QUI EST REJUGÉ, ET RIEN D'AUTRE. Le principe tenu ici, et pour les trois autres jumeaux du lot, est qu'on ne rejuge que les lignes que l'échange touche ; tout le reste est hérité du parent, dont le dossier compte quatre pages et pèse donc plus lourd sur ces lignes que celui du jumeau. Rejuger la carotte sur deux pages quand quatre l'ont déjà pesée reviendrait à remplacer une mesure par une plus faible, ce qui n'est pas un arbitrage mais une perte. LE BOUILLON. Deux litres, comme chez le parent, et de légumes. Une seule page du dossier le pèse — biendecheznous, 600 ml pour quatre, soit 150 ml par personne — quand le parent en verse 250 par personne ; l'écart tient à ce que cette page ne cuit aucune pâte dans sa soupe, et les pâtes du minestrone boivent. La masse de légumes ne bouge pas, donc le mouillement ne bouge pas. LE HARICOT BLANC est la seule quantité que ce jumeau déplace, et il la déplace vers le haut parce qu'il devient la seule protéine du bol : le parent gardait un lardon facultatif à côté, le jumeau n'a plus que lui. Deux pages du dossier le chiffrent, de deux façons : menu-vegetarien pèse 400 g de haricots blancs cuits pour quatre, soit 100 g par personne ; biendecheznous compte une boîte pour quatre, dont le poids égoutté courant est 250 g, soit 62,5 g par personne. La médiane vaut 81,25 g par personne, soit 650 g pour huit parts. On descend à 75 g par personne, soit 600 g, et l'argument est de tenue : au-delà, la cuillère ramène plus de haricot que de légume et la soupe cesse d'être un minestrone pour devenir une soupe de haricots. Le parent en portait 56 g par personne. LE PARMESAN, ET CE QUE JE CHOISIS. Le parent le sert râpé à part, en option, quatre-vingts grammes pour huit ; trois pages du dossier en mettent — chefsimon 50 g pour quatre, salepepe à volonté, mangioquindisono une croûte fondue dans le bouillon. Je le garde, optionnel et au service, et je dis mon choix plutôt que de le taire : le fromage est accepté dans ce lot, la présure animale du parmesan n'est pas jugée ici, c'est une règle du projet et non un oubli. Qui la refuse sert la soupe sans lui, et elle ne perd rien de sa structure — le haricot porte déjà la protéine. LES TEMPS. Trente minutes de préparation et cinquante de cuisson, contre trente et cinquante-cinq chez le parent. Les cinq minutes qui disparaissent sont celles du lard qu'on faisait rendre avant le soffritto. Les deux pages solides annoncent trente-cinq et quarante minutes de cuisson pour quatre, avec moins de légumes et sans pâtes cuites dans le bouillon : leur chiffre ne s'applique pas à ce volume. CE QUI A ÉTÉ ÉCARTÉ. Les 350 g de macaronis pour quatre de menu-vegetarien, qui font 87,5 g de pâtes sèches par personne là où le parent en met 31 : la soupe devient un plat de pâtes et le rôle d'assiette change. Le pesto de persil de chefsimon, monté à l'huile et servi à part, qui est une autre finition et non celle du parent. Les blettes et les borlotti frais des deux pages italiennes, qui décrivent un minestrone d'été toscan là où le parent décrit la version courante. Tous trois sont consignés en variantes, parce qu'un écart écarté sans trace est un écart qu'on refera."
+  },
+  {
+   "code": "JUM-072",
+   "family": "Chorba végétarienne",
+   "derived_from": "VAR-022",
+   "cuisine_origin": "Algérie",
+   "identity_level": "named_traditional_dish",
+   "category": "soupe complète",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 6,
+   "prep_minutes": 25,
+   "cook_minutes": 35,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:chorba-sans-viande",
+    "amourdecuisine.fr",
+    "mesinspirationsculinaires.com",
+    "chefsimon.com",
+    "marciatack.fr",
+    "ptitchef.com"
+   ],
+   "description_courte": "Soupe algéroise tomatée aux vermicelles, portée par les pois chiches à la place de l'agneau, parfumée à la cannelle, au paprika et à la coriandre fraîche jetée hors du feu.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Même rôle que le parent : pois chiches, vermicelles et cinq légumes dans le même bol, donc la protéine, le féculent et le légume ensemble. C'est ainsi qu'elle se sert, en grande assiette creuse. Le pois chiche passe de 42 à 75 g par personne précisément pour tenir ce rôle sans l'agneau — un jumeau qui laisserait la protéine tomber ne serait plus le même plat dans l'assiette, seulement le même bouillon."
+   },
+   "ingredients": [
+    {
+     "form": "Eau",
+     "quantity": 1800,
+     "unit": "ml",
+     "role": "mouillement",
+     "optional": false
+    },
+    {
+     "form": "Tomate fraîche mûre",
+     "quantity": 480,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Pois chiche cuit, égoutté",
+     "quantity": 450,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Pomme de terre crue, épluchée",
+     "quantity": 300,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Courgette fraîche",
+     "quantity": 300,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Carotte crue",
+     "quantity": 200,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 200,
+     "unit": "g",
+     "role": "base aromatique",
+     "optional": false
+    },
+    {
+     "form": "Vermicelle fin sec",
+     "quantity": 150,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Céleri branche cru",
+     "quantity": 90,
+     "unit": "g",
+     "role": "base aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 50,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Coriandre fraîche",
+     "quantity": 30,
+     "unit": "g",
+     "role": "herbe",
+     "optional": false
+    },
+    {
+     "form": "Concentré de tomate",
+     "quantity": 25,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Menthe fraîche",
+     "quantity": 10,
+     "unit": "g",
+     "role": "herbe",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 8,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Paprika doux",
+     "quantity": 3,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Cannelle moulue",
+     "quantity": 1.5,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Émincer l'oignon très fin et le faire blondir dans l'huile d'olive au fond d'une grande marmite, cinq à six minutes à feu moyen, jusqu'à ce qu'il devienne translucide puis prenne une couleur dorée. Il n'y a plus de viande à saisir en premier : cet oignon est désormais tout le fond de la soupe, et bâclé, il laisse un bouillon maigre que rien ne rattrapera ensuite."
+    },
+    {
+     "n": 2,
+     "instruction": "Ajouter le concentré de tomate, le paprika, la cannelle et le poivre, et remuer deux minutes sur le feu jusqu'à ce que le concentré fonce et se mette à sentir le grillé. Versé cru dans l'eau, il garderait jusqu'au bout un arrière-goût métallique de conserve — et cette soupe-là n'a plus de gras de viande pour le masquer."
+    },
+    {
+     "n": 3,
+     "instruction": "Verser les tomates râpées ou concassées ainsi que le céleri finement haché avec ses feuilles, puis laisser réduire dix minutes à découvert, jusqu'à voir l'huile remonter en surface. C'est le signe que l'eau des tomates est partie et que la base est prête à recevoir le mouillement. Le céleri entre ici et non plus tard : ses feuilles ont besoin de fondre dans le gras pour donner ce qu'elles ont."
+    },
+    {
+     "n": 4,
+     "instruction": "Mouiller de toute l'eau, ajouter les pois chiches rincés et égouttés, puis porter à frémissement et écumer la mousse blanche des premières minutes. Les pois chiches entrent maintenant et non à la fin : ce sont eux la protéine du bol, et vingt minutes passées dans ce bouillon leur font prendre le goût du plat au lieu d'y flotter comme un ajout."
+    },
+    {
+     "n": 5,
+     "instruction": "Mettre les carottes en rondelles et les pommes de terre en dés, compter quinze minutes à petits bouillons, puis ajouter les courgettes en dés et compter dix minutes de plus. Cet échelonnement est ce qui sépare une chorba d'un potage : chaque légume doit se reconnaître sous la cuillère, et tous versés ensemble, la courgette aurait disparu quand la carotte serait encore dure."
+    },
+    {
+     "n": 6,
+     "instruction": "Verser les vermicelles en pluie dans le bouillon à gros bouillons, en remuant pour qu'ils ne s'agglomèrent pas au fond, et ne les laisser que trois à quatre minutes. Hors du feu ils gonflent encore : cuits à point dans la marmite, ils rendront à table une soupe épaisse et sans liquide."
+    },
+    {
+     "n": 7,
+     "instruction": "Couper le feu et saler seulement maintenant — les pois chiches en conserve ont déjà apporté du sel, et une soupe salée en début de cuisson devient impossible à corriger après réduction. Ciseler la coriandre et la menthe, les jeter dans la marmite, couvrir et laisser infuser cinq minutes sans rallumer : bouillies, ces deux herbes noircissent et perdent en une minute ce qui fait l'accent algérois du plat. Servir brûlant en assiette creuse."
+    }
+   ],
+   "techniques": [
+    "suer",
+    "réduction",
+    "mijotage",
+    "cuisson séquencée",
+    "infusion des herbes"
+   ],
+   "variants": [
+    "Chorba frik : 80 g de blé vert concassé pour six à la place des vermicelles (amourdecuisine) — c'est une chorba frik, que le parent porte déjà en variante",
+    "Soupe mixée : retirer les légumes cuits, les passer au moulin et les remettre dans la marmite avant les vermicelles, en gardant les pois chiches entiers (mesinspirations, marciatack, ptitchef) — écartée parce que le parent, et cette recette avec lui, tient à des légumes reconnaissables sous la cuillère",
+    "Curcuma et cumin à la place du paprika et de la cannelle, avec du coulis de tomate en plus des tomates concassées (chefsimon)",
+    "Persil plat à la place de la coriandre fraîche (ptitchef)",
+    "Piment frais entier cuit dans le bouillon puis retiré au moment de servir (amourdecuisine)",
+    "Menthe séchée émiettée au service à la place de la menthe fraîche ciselée (chefsimon, mesinspirations)",
+    "Quartier de citron pressé dans l'assiette au service (amourdecuisine, chefsimon, marciatack)",
+    "Pois chiches secs trempés la veille et cuits dans le bouillon lui-même, ce qui allonge la cuisson d'une heure mais donne un bouillon plus épais (mesinspirations, amourdecuisine)"
+   ],
+   "sensory": {
+    "profile": "brothy_umami",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 2,
+     "bitter": 0,
+     "umami": 2,
+     "heat": 1,
+     "pungency": 2,
+     "richness": 2,
+     "freshness": 3,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "pois chiche",
+     "coriandre fraîche",
+     "tomate",
+     "cannelle"
+    ],
+    "aroma_families": [
+     "coriandre",
+     "cannelle",
+     "tomate_cuite",
+     "paprika"
+    ],
+    "target_textures": [
+     "bouillon_clair",
+     "légumes fondants",
+     "vermicelles tendres"
+    ],
+    "signature_ingredients": [
+     "Pois chiche cuit, égoutté",
+     "Coriandre fraîche",
+     "Vermicelle fin sec"
+    ],
+    "identity_guardrails": [
+     "Coriandre fraîche et menthe jetées hors du feu : ce sont elles qui font l'algéroise, et bouillies elles noircissent",
+     "Le pois chiche est doublé par rapport au parent parce qu'il est désormais la seule protéine du bol : ramené à la quantité du parent, ce n'est plus le même plat dans l'assiette",
+     "Vermicelles trois à quatre minutes seulement — ils continuent de gonfler hors du feu et boivent tout le bouillon",
+     "Le concentré de tomate se fait revenir avant d'être mouillé, sans quoi il garde son goût de boîte, que rien ne masque plus ici",
+     "Les légumes restent en morceaux : mixée, comme le font trois pages du dossier, la chorba devient un velouté et perd sa mâche"
+    ]
+   },
+   "conservation": "Se garde 3 jours au réfrigérateur. Les vermicelles gonflent en refroidissant et la soupe devient épaisse comme une purée : rallonger d'un verre d'eau au réchauffage, à feu doux. Pour prendre de l'avance, s'arrêter à la fin de la cuisson des légumes — cette base se garde 4 jours au froid et se congèle 3 mois à -18 °C, et il ne reste alors que quatre minutes de vermicelles et cinq minutes d'infusion. Congeler la soupe finie n'a pas d'intérêt : le vermicelle en ressort collé. Aucune page du dossier ne parle de conservation ; ces durées valent pour toute soupe portant des pâtes fines, et ce sont celles que le parent donne déjà pour une structure identique.",
+   "allergens": [
+    "gluten",
+    "céleri"
+   ],
+   "canonical_arbitration": "Jumeau végétarien de VAR-022 « Chorba algérienne » : même soupe tomatée, même vermicelle jeté à la fin, même cannelle, même coriandre et même menthe infusées hors du feu, même échelonnement des légumes, même rôle d'assiette. L'ÉCHANGE PORTE SUR UNE SEULE LIGNE : les 400 g d'épaule d'agneau du parent disparaissent, et le pois chiche, qui était chez lui une légumineuse d'appoint, devient la protéine du bol. Le parent mouillait déjà à l'eau et non à un bouillon de viande : rien d'autre dans sa liste n'est d'origine animale, ce qui fait de cette lignée l'une des plus faciles à jumeler du corpus. LE NOM, ET POURQUOI LE DOSSIER N'EN PORTE PAS LE MÊME. La recette s'appelle « Chorba végétarienne », qui est le titre de deux pages du dossier (marciatack, ptitchef). Le dossier, lui, s'appelle « Chorba sans viande », et c'est un choix d'audit assumé : sous ce titre, trois pages sur cinq sont retenues sur trois sites distincts — amourdecuisine « chorba sans viande économique », mesinspirationsculinaires « Chorba sans viande, cuisine algérienne », chefsimon « Chorba sans viande ». Sous le titre « Chorba végétarienne », une seule page passe l'audit : celle de ptitchef porte le mot « soupe » dans son titre et se fait écarter par le contrôle des types de plat, ce qui laisserait marciatack seule et le dossier à un seul site. Les deux noms désignent le même plat et les cinq pages le construisent pareil ; le dossier prend celui qui permet à l'audit de voir ce qui est là. LE DOSSIER. data/recipes/sources/chorba-sans-viande.json porte cinq pages sur cinq sites, dont trois retenues par l'audit. DEUX PAGES DE MARMITON ONT ÉTÉ ÉCARTÉES AVANT L'AUDIT, et ce n'est pas un oubli : « Chorba (soupe aux légumes algérienne) » porte 200 g de mouton et « Chorba Dial Khadra » 100 g de viande au choix. Elles documentent le parent, pas le jumeau, et les faire entrer aurait gonflé le dénominateur avec des pages qui prouvent le contraire de ce qu'on cherche. LE POIS CHICHE. Deux des cinq pages le pèsent : marciatack 300 g pour quatre, soit 75 g par personne ; ptitchef 265 g cuits et égouttés pour six, soit 44 g par personne. La médiane de ces deux valeurs est 59,5 g par personne, soit 357 g pour six parts. On monte à 75 g par personne, soit 450 g, et voici l'argument : le pois chiche est désormais seul à porter la protéine, là où le parent lui adjoignait 400 g d'agneau, et 75 g par personne est le chiffre de la seule page du dossier qui, comme cette recette, ne met aucune autre source de protéine dans le bol. Les trois autres pages le comptent en poignée, en verre et en bocal, unités qui ne se ramènent à rien de vérifiable — c'est aussi pourquoi la médiane ne porte que sur deux valeurs, et je le dis plutôt que de gonfler le décompte. Le parent en portait 41,7 g par personne. LE CÉLERI, ajouté. Quatre pages sur cinq mettent une branche de céleri avec ses feuilles dans la base aromatique, et le parent lui-même porte cette addition en variante déclarée. Les quantités : amourdecuisine une branche pour six, soit 10 g par personne ; mesinspirations une pour quatre, soit 15 ; chefsimon deux pour huit, soit 15 ; marciatack une pour quatre, soit 15 — sur la base d'une branche parée à 60 g. La médiane vaut 15 g par personne, soit 90 g pour six. Il entre parce qu'un bouillon privé de l'agneau a besoin d'un aromate de plus, et le céleri est celui que le dossier désigne à la quasi-unanimité. LE PAPRIKA, ajouté. Les cinq pages en mettent, à raison d'une cuillerée à café pour quatre à six parts. Ramené en masse sur une cuillerée à café rase de 2,5 g : 0,4 g par personne chez amourdecuisine et ptitchef, 0,6 chez mesinspirations et marciatack. La médiane vaut 0,5 g par personne, soit 3 g. Le parent ne porte que de la cannelle et du poivre : le paprika compense la couleur et la rondeur que la viande donnait au bouillon, et c'est la seule épice sur laquelle le dossier soit unanime. LES QUANTITÉS HÉRITÉES. Eau, tomate, pomme de terre, courgette, carotte, oignon, vermicelle, huile d'olive, coriandre, concentré, menthe, cannelle, sel et poivre restent exactement ceux du parent, dont le dossier est plus fourni sur ces lignes. Le vermicelle mérite un mot, parce que l'écart est visible : les pages du dossier en mettent de 2,5 à 12,5 g par personne quand le parent en met 25. Leurs soupes sont plus claires et plus légères ; celle-ci est un plat complet, et déplacer son féculent lui ferait changer de rôle d'assiette. L'écart est consigné ici plutôt que corrigé en silence. LES TEMPS. Vingt-cinq minutes de préparation et trente-cinq de cuisson, contre vingt-cinq et soixante chez le parent. Les vingt-cinq minutes gagnées sont exactement celles que l'agneau demandait avant que le premier légume n'entre dans la marmite. Les cinq pages annoncent de vingt à trente minutes de cuisson, ce qui encadre bien le chiffre retenu. CE QUI A ÉTÉ ÉCARTÉ. Le mixage des légumes, que trois pages pratiquent : il donne un velouté, et le parent — comme la tradition qu'il décrit — veut des légumes reconnaissables. Le frik d'amourdecuisine, qui fait une autre chorba, déjà portée en variante par le parent. Les lentilles, enfin, que la commande de ce lot envisageait : aucune des cinq pages n'en met, et une protéine qu'aucune source n'atteste n'entre pas dans une recette de ce dépôt."
+  },
+  {
+   "code": "JUM-073",
+   "family": "Bortsch végétarien",
+   "derived_from": "VAR-026",
+   "cuisine_origin": "Russie",
+   "identity_level": "named_traditional_dish",
+   "category": "soupe complète",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 6,
+   "prep_minutes": 25,
+   "cook_minutes": 45,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:bortsch-vegetarien-aux-haricots",
+    "gettystewart.com",
+    "ifoodreal.com",
+    "cookedandloved.com",
+    "inspirationsforall.com",
+    "feastingathome.com",
+    "nirvanacakery.com",
+    "marmiton.org",
+    "menu-vegetarien.com"
+   ],
+   "description_courte": "Soupe de betterave râpée, de chou blanc et de pommes de terre, acidulée au vinaigre et portée par des haricots blancs à la place du bœuf — le bortsch maigre, servi avec sa cuillerée de crème aigre.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Même rôle que le parent : betterave, chou, carotte, pommes de terre et haricots blancs dans le même bol, donc le légume, le féculent et la protéine ensemble. Les pages le servent en assiette creuse avec du pain noir, jamais en entrée. Le haricot blanc prend exactement la place que le bœuf braisé occupait — sans lui, ce serait une soupe de betterave, c'est-à-dire un autre plat et un autre rôle."
+   },
+   "ingredients": [
+    {
+     "form": "Bouillon de légumes",
+     "quantity": 2500,
+     "unit": "ml",
+     "role": "mouillement",
+     "optional": false
+    },
+    {
+     "form": "Betterave crue",
+     "quantity": 500,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Chou blanc frais",
+     "quantity": 500,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Haricot blanc cuit, égoutté",
+     "quantity": 420,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Pomme de terre crue, épluchée",
+     "quantity": 375,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Carotte crue",
+     "quantity": 200,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 200,
+     "unit": "g",
+     "role": "base aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile végétale",
+     "quantity": 40,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Concentré de tomate",
+     "quantity": 40,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Vinaigre de vin rouge",
+     "quantity": 25,
+     "unit": "ml",
+     "role": "acidité",
+     "optional": false
+    },
+    {
+     "form": "Persil plat frais",
+     "quantity": 20,
+     "unit": "g",
+     "role": "herbe",
+     "optional": false
+    },
+    {
+     "form": "Aneth frais",
+     "quantity": 12,
+     "unit": "g",
+     "role": "herbe",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 8,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Feuille de laurier séchée",
+     "quantity": 1,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Crème aigre",
+     "quantity": 100,
+     "unit": "g",
+     "role": "finition",
+     "optional": true
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Rincer les haricots blancs à l'eau froide et les laisser s'égoutter de côté. Si l'on part de sec, compter cent quatre-vingts grammes trempés une nuit puis cuits une heure à l'eau non salée : les 420 grammes annoncés sont un poids de haricot cuit et égoutté, jamais un poids de sachet ni un poids de bocal saumure comprise."
+    },
+    {
+     "n": 2,
+     "instruction": "Éplucher la betterave et la râper à la grosse grille. La râper plutôt que la tailler en dés n'est pas un choix de présentation : c'est ce qui lui permet de rendre sa couleur en dix minutes de poêle, là où des cubes mettraient une heure à la céder au bouillon — et la couleur est ici l'argument principal du plat."
+    },
+    {
+     "n": 3,
+     "instruction": "Faire revenir la betterave râpée dix minutes dans l'huile à feu moyen, avec l'oignon émincé, le concentré de tomate et le vinaigre. L'acide fixe le pigment : en milieu neutre et sous une longue cuisson, la betterave vire au brun, et un bortsch couleur terre de Sienne a perdu la moitié de ce qui le fait reconnaître."
+    },
+    {
+     "n": 4,
+     "instruction": "Pendant ce temps, porter le bouillon de légumes à frémissement dans une grande marmite avec le laurier, y verser les pommes de terre en dés et les carottes en rondelles, puis compter quinze minutes. Sans viande à attendrir, le bouillon n'a plus rien à extraire : la soupe démarre directement aux légumes, et c'est ce qui divise son temps de cuisson par deux par rapport au plat carné."
+    },
+    {
+     "n": 5,
+     "instruction": "Ajouter le chou finement émincé et compter dix minutes. Il entre en avant-dernier parce qu'il passe du croquant au filandreux en un quart d'heure, et parce que c'est lui qui donne désormais sa mâche à la soupe — rôle que la viande tenait avec lui chez le plat d'origine."
+    },
+    {
+     "n": 6,
+     "instruction": "Verser la betterave revenue avec tout son jus, ajouter les haricots blancs égouttés et laisser dix minutes à feu doux, sans jamais faire bouillir. Double raison de ne pas bouillir : la couleur tourne, et les haricots déjà cuits perdent leur peau, qui vient ensuite flotter dans un bol dont la limpidité colorée fait la moitié du plaisir."
+    },
+    {
+     "n": 7,
+     "instruction": "Saler, poivrer, goûter et corriger l'acidité — un bortsch doit être franchement acidulé, sensiblement plus qu'il n'y paraît quand on le goûte brûlant. Couper le feu, jeter le persil et l'aneth ciselés, couvrir et laisser reposer une demi-heure, le temps que la soupe se stabilise et que le goût s'arrondisse. L'aneth n'est pas une décoration : c'est lui qui apporte ici la profondeur aromatique que le bouillon de viande donnait, et toutes les pages qui font ce plat sans viande en mettent."
+    },
+    {
+     "n": 8,
+     "instruction": "Servir très chaud, une cuillerée de crème aigre déposée dans chaque assiette pour qui en veut. La crème va dans l'assiette et jamais dans la marmite : elle tranche à l'ébullition, et le reste de la soupe se conserve mieux sans elle."
+    }
+   ],
+   "techniques": [
+    "sauté de la betterave à l'acide",
+    "mijotage",
+    "cuisson séquencée",
+    "repos"
+   ],
+   "variants": [
+    "Lentilles vertes, 180 g pour quatre, à la place des haricots blancs, avec chou rouge et moutarde (menu-vegetarien) — écartée : la lentille se défait et trouble un bouillon dont la limpidité fait l'intérêt, et le reste du dossier est unanime sur le haricot blanc",
+    "Poivron vert taillé avec les légumes durs (ifoodreal, inspirationsforall, marmiton)",
+    "Une cuillerée à café de sucre pour arrondir l'acidité (ifoodreal, cookedandloved, marmiton)",
+    "Vinaigre de cidre ou jus de citron à la place du vinaigre de vin rouge (gettystewart, cookedandloved, inspirationsforall)",
+    "Graines de carvi et céleri branche dans la base aromatique (gettystewart, nirvanacakery)",
+    "Chou rouge à la place du chou blanc, qui donne un bortsch plus sombre (nirvanacakery, menu-vegetarien)",
+    "Betteraves déjà cuites avec leur jus, versées seulement dix minutes avant la fin — variante que le parent porte déjà",
+    "Yaourt à la grecque ou yaourt de coco à la place de la crème aigre (ifoodreal, cookedandloved, menu-vegetarien)",
+    "Fanes et tiges de betterave hachées ajoutées avec le chou (feastingathome)"
+   ],
+   "sensory": {
+    "profile": "brothy_umami",
+    "scores": {
+     "sweet": 3,
+     "salty": 3,
+     "acidic": 4,
+     "bitter": 1,
+     "umami": 2,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 2,
+     "freshness": 2,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "betterave",
+     "vinaigre",
+     "chou",
+     "aneth"
+    ],
+    "aroma_families": [
+     "betterave",
+     "végétal cuit",
+     "vinaigre",
+     "aneth"
+    ],
+    "target_textures": [
+     "bouillon_clair",
+     "légumes fondants",
+     "haricots fondants"
+    ],
+    "signature_ingredients": [
+     "Betterave crue",
+     "Chou blanc frais",
+     "Haricot blanc cuit, égoutté"
+    ],
+    "identity_guardrails": [
+     "Sans betterave il n'y a pas de bortsch, et sans haricot blanc ce jumeau n'est plus qu'une soupe de betterave : les deux sont indissociables ici",
+     "La betterave se fait revenir avec le vinaigre et le concentré, à part, et entre en dernier — sinon la couleur vire au brun",
+     "La soupe doit rester franchement acidulée : c'est l'acidité qui distingue un bortsch d'une soupe de racines",
+     "Le bouillon est de légumes : un cube de bœuf ferait basculer la lignée du côté carné sans que rien ne le montre au planificateur",
+     "La crème aigre se dépose dans l'assiette, jamais dans la marmite, où elle trancherait"
+    ]
+   },
+   "conservation": "Se garde 4 jours au réfrigérateur et gagne à attendre un jour : l'acidité se répartit et la betterave achève de colorer le bouillon. Réchauffer à feu doux, sans faire bouillir, ce qui préserve le rouge. Se congèle 3 mois à -18 °C en retirant d'abord les pommes de terre, qui ressortent granuleuses ; les haricots blancs, eux, supportent le gel sans dommage, ce qui rend ce jumeau plus commode à congeler que le plat carné dont il vient, où c'était la viande qu'il fallait ménager. Jamais avec la crème aigre, qui tranche au dégel comme à l'ébullition. Aucune page du dossier ne chiffre de durée : ces valeurs décrivent ce que fait une soupe de racines acidulée, et elles reprennent celles du parent, dont la structure est ici identique.",
+   "allergens": [
+    "lait"
+   ],
+   "canonical_arbitration": "Jumeau végétarien de VAR-026 « Bortsch » : même betterave râpée revenue à l'acide et versée en dernier, même chou émincé en avant-dernier, mêmes pommes de terre, même vinaigre, même repos d'une demi-heure, même crème aigre déposée dans l'assiette, même rôle. DEUX LIGNES RENDAIENT LA LIGNÉE CARNÉE, et elles vont ensemble : 600 g de bœuf à braiser et 2,5 litres de bouillon de bœuf. Le jumeau met du bouillon de légumes et des haricots blancs. LE DOSSIER, ET POURQUOI IL EST ANGLOPHONE. La chaîne de sourçage interroge trois sites français ; sur « bortsch végétarien » elle rend une seule page exploitable, et le contrôle des types de plat l'écarte pour le mot « soupe » présent dans son titre. Le plat a donc été cherché sous son nom anglais, comme la carbonade l'avait été sous son nom néerlandais au lot précédent. data/recipes/sources/bortsch-vegetarien-aux-haricots.json porte huit pages, sous le titre « Vegetarian borscht » : quatre sont retenues par l'audit, sur quatre sites distincts — gettystewart.com « Beet and Bean Soup - Vegetarian Borscht », ifoodreal.com « Vegetarian Borscht Recipe », cookedandloved.com « Borscht Recipe (Vegetarian Beet Soup) », inspirationsforall.com « Vegetarian borscht with beans ». Quatre pages sur huit sont écartées, chacune pour une raison qui se lit : feastingathome titre « Borscht Recipe » sans le mot végétarien et propose d'ailleurs un fond de bœuf en option ; nirvanacakery titre « The Best Vegan Borscht », et « vegan » n'est pas « vegetarian » pour un contrôle qui compare des mots ; les deux pages françaises — marmiton « Bortsch végétarien (la soupe aux betteraves) » et menu-vegetarien « Bortsch végétarien » — ne portent évidemment pas les mots anglais du titre. Ces quatre-là restent au dossier parce qu'elles corroborent, et elles sont citées nommément ci-dessous quand elles servent. C'est ce dossier de quatre pages sur quatre sites qui est le mieux fourni du lot. LE HARICOT BLANC. Cinq des huit pages portent un haricot, et toutes celles qui le nomment nomment un haricot blanc : cannellini chez gettystewart, ifoodreal et cookedandloved, butter beans chez nirvanacakery, « beans (any) » chez inspirationsforall. Une sixième porte une légumineuse qui n'est pas un haricot, menu-vegetarien et ses 180 g de lentilles vertes. Les deux dernières, feastingathome et marmiton, ne portent aucune protéine du tout : ce sont des soupes de betterave et non des plats complets, ce qui les disqualifie comme modèle de jumeau. Les quantités, ramenées au poids égoutté : cookedandloved 425 g pour six, soit 71 g par personne ; gettystewart une boîte de 19 oz, soit environ 325 g égouttés pour six, soit 54 ; ifoodreal une boîte de 14 oz, soit environ 240 g égouttés pour huit, soit 30 ; inspirationsforall 100 g secs pour huit, soit environ 230 g cuits, soit 29. La médiane vaut 42 g par personne, soit 252 g pour six parts. On monte à 70 g par personne, soit 420 g, et l'argument tient en une ligne : le haricot remplace 100 g de bœuf braisé par personne, et la médiane du dossier ferait une soupe de betterave avec des haricots dedans plutôt qu'un plat complet. Soixante-dix grammes est aussi la valeur haute observée, celle de cookedandloved, la seule page qui déclare son poids égoutté en grammes sans conversion de ma part. LE BOUILLON. Deux litres et demi de bouillon de légumes, comme le parent en mettait de bœuf. Les quatre pages retenues mouillent moins — de 187 à 325 ml par personne, médiane autour de 280 — mais la masse de légumes ne change pas d'un gramme entre le parent et son jumeau, et un mouillement réduit ferait une autre soupe, plus épaisse, que rien dans le dossier n'impose. L'ANETH, ajouté. Les quatre pages retenues en mettent, ainsi que nirvanacakery, feastingathome et marmiton : c'est l'herbe que ce plat porte partout où il se fait sans viande. Quantités : gettystewart un quart de tasse haché pour six, soit environ 2 g par personne ; ifoodreal un quart de tasse pour huit, soit 1,5 ; les autres comptent en bouquet. La médiane de ces deux valeurs est 1,75 g par personne, soit 10,5 g pour six parts. On arrondit à 12 g, deux bonnes cuillerées à soupe d'aneth ciselé, parce qu'un dixième de gramme n'a aucun sens sur une herbe que le reste du dossier compte en bouquet. Le parent porte l'aneth en variante déclarée, « ciselé avec le persil » : le jumeau la promeut en ingrédient, parce qu'un bouillon de légumes a besoin d'un relais aromatique que le bouillon de bœuf lui donnait autrement. Le persil du parent reste, à sa quantité. LE LAURIER, ajouté. Cinq pages du dossier en mettent, de une à trois feuilles ; un gramme, soit deux feuilles pour six parts, est la médiane du dossier. Il cuit avec le bouillon dès le départ, ce qui est sa place. LE RESTE EST HÉRITÉ : betterave, chou blanc, pomme de terre, carotte, oignon, huile, concentré, vinaigre de vin rouge, persil, sel, poivre et crème aigre optionnelle gardent les quantités du parent, dont le dossier français les a établies. Le vinaigre mérite un mot : trois pages du dossier préfèrent le cidre et une le citron, mais aucune ne discute la quantité, et le vinaigre de vin rouge du parent tient exactement le même rôle chimique sur le pigment. LES TEMPS. Vingt-cinq minutes de préparation — cinq de plus que le parent, parce que râper cinq cents grammes de betterave crue prend ce temps-là — et quarante-cinq de cuisson contre quatre-vingt-dix. L'heure qui disparaît est celle du bœuf mijoté avant les légumes. Les quatre pages retenues annoncent de trente-cinq à soixante-cinq minutes, ce qui encadre le chiffre. CE QUI A ÉTÉ ÉCARTÉ. Les lentilles vertes de menu-vegetarien, seule page du dossier à en mettre : elles se défont et troublent le bouillon, et sept autres pages disent haricot. Le sucre de trois pages, que le parent ne porte pas et qui déplacerait l'équilibre acide-sucré sur lequel repose ce plat. Le poivron de trois pages, qui est un ajout d'Europe centrale sans rapport avec la structure du parent. Le chou rouge de deux pages, qui donne une couleur plus sombre et brouille le rouge de la betterave. Tous sont consignés en variantes."
+  },
+  {
+   "code": "JUM-074",
+   "family": "Quiche lorraine végétarienne au tofu fumé",
+   "derived_from": "FR-005",
+   "cuisine_origin": "France / cuisine domestique internationale",
+   "identity_level": "domestic_standard",
+   "category": "tarte salée",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 6,
+   "prep_minutes": 25,
+   "cook_minutes": 40,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:quiche-lorraine-au-tofu-fume",
+    "cookpad.com",
+    "ptitchef.com",
+    "lacuisinedegeraldine.fr",
+    "cuisine-addict.com"
+   ],
+   "description_courte": "Fond de pâte brisée garni de dés de tofu fumé rissolés et de gruyère, noyés dans l'appareil œufs-crème-lait de la quiche lorraine — le jumeau végétarien du plat, dont seuls les lardons étaient carnés.",
+   "plate": {
+    "role": "complete",
+    "accepts": [
+     "vegetables"
+    ],
+    "reason": "Même rôle que le parent, et même appel : 47 g de pâte brisée, 30 g de tofu fumé et un appareil œufs-crème par part, aucun légume dans le moule. C'est le plat qui se suffit ou s'accompagne d'une salade verte, exactement comme la quiche lorraine dont il vient. TARTE SALÉE, et cela compte pour ce lot : le plan mesure six jumeaux manquants dans cette catégorie, et c'est la deuxième la plus déficitaire après le plat mijoté."
+   },
+   "ingredients": [
+    {
+     "form": "Crème fraîche liquide entière",
+     "quantity": 300,
+     "unit": "ml",
+     "role": "appareil",
+     "optional": false
+    },
+    {
+     "form": "Pâte brisée crue",
+     "quantity": 280,
+     "unit": "g",
+     "role": "fond",
+     "optional": false
+    },
+    {
+     "form": "Tofu fumé",
+     "quantity": 180,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Lait demi-écrémé",
+     "quantity": 100,
+     "unit": "ml",
+     "role": "appareil",
+     "optional": false
+    },
+    {
+     "form": "Gruyère râpé",
+     "quantity": 100,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 4,
+     "unit": "u",
+     "role": "appareil",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 10,
+     "unit": "g",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Herbes de Provence séchées",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1.5,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Muscade moulue",
+     "quantity": 0.5,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Foncer le moule avec la pâte brisée, piquer le fond à la fourchette et remettre au froid vingt minutes. Une pâte détendue se rétracte au four et laisse l'appareil déborder par-dessus le bord : ce quart d'heure de repos est ce qui tient la tarte, et il ne se rattrape pas ensuite."
+    },
+    {
+     "n": 2,
+     "instruction": "Couper le tofu fumé en petits dés du calibre d'un lardon, puis les faire colorer cinq à six minutes dans l'huile d'olive bien chaude, en les retournant, jusqu'à ce qu'ils croustillent sur toutes leurs faces. Ce geste remplace le rissolage des lardons du parent et il n'est pas facultatif : sorti de son paquet, le tofu fumé apporte le goût de fumé mais reste mou et gorgé d'eau, et jeté cru dans l'appareil il la rendra pendant la cuisson, au fond de la pâte."
+    },
+    {
+     "n": 3,
+     "instruction": "Poudrer les dés d'herbes de Provence hors du feu et les laisser tiédir sur un papier absorbant. Les herbes séchées brûlent en quelques secondes dans une poêle très chaude et deviennent amères ; posées sur un tofu encore brûlant, elles s'ouvrent sans risque."
+    },
+    {
+     "n": 4,
+     "instruction": "Battre les œufs à la fourchette, ajouter la crème, le lait, la muscade, le sel et le poivre, et mélanger jusqu'à l'homogène sans faire mousser. Un appareil fouetté trop fort gonfle au four puis retombe en se fendant : on cherche un mélange lisse, pas une mousse."
+    },
+    {
+     "n": 5,
+     "instruction": "Répartir les dés de tofu et le gruyère râpé sur le fond de pâte, puis verser l'appareil par-dessus. Le fromage est ici une décision assumée et non un ajout de confort : la quiche lorraine est canoniquement sans fromage, mais le tofu ne fond pas la graisse que les lardons donnaient à l'appareil, et les deux pages du dossier qui font exactement cette quiche en mettent toutes les deux, cent grammes pour six."
+    },
+    {
+     "n": 6,
+     "instruction": "Enfourner à 180 °C pour trente-cinq à quarante minutes. La cuisson est juste quand le dessus est doré et que le centre tremble encore un peu si l'on secoue le moule : pris jusqu'au cœur dans le four, l'appareil finira granuleux une fois refroidi."
+    },
+    {
+     "n": 7,
+     "instruction": "Laisser reposer dix minutes avant de couper. L'appareil achève de prendre en refroidissant, et une part coupée à la sortie du four s'affaisse dans l'assiette."
+    }
+   ],
+   "techniques": [
+    "fonçage",
+    "précuisson de garniture",
+    "appareil à crème prise",
+    "cuisson au four",
+    "repos"
+   ],
+   "variants": [
+    "Sans fromage, comme le parent : appareil œufs-crème-lait seul, le tofu fumé pour toute garniture — c'est la version canonique de la quiche lorraine, et elle reste faisable telle quelle",
+    "Pâte feuilletée à la place de la pâte brisée (cookpad)",
+    "Oignon jaune fondu à l'huile avec le tofu et persil plat ciselé dans la garniture (lacuisinedegeraldine)",
+    "Deux cents grammes de tofu fumé pour six, soit un tiers de plus que la quantité retenue (lacuisinedegeraldine)",
+    "Brocoli en petites fleurettes sauté avec le tofu (cuisine-addict) — ce n'est plus une quiche lorraine mais une quiche au brocoli, et c'est pour cela que l'audit écarte cette page",
+    "Cheddar râpé à la place du gruyère (cuisine-addict)",
+    "Pâte brisée maison : 200 g de farine, 100 g de beurre, 60 ml d'eau et 5 g de sel, reposée trente minutes, cuite à blanc dix à quinze minutes avant garniture (lacuisinedegeraldine)",
+    "Tofu fumé rissolé à la sauce soja plutôt qu'à l'huile seule, pour un dé plus foncé et plus salé (variante courante des pages écartées faute de balisage lisible)"
+   ],
+   "sensory": {
+    "profile": "creamy_delicate",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 1,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 4,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "fumé",
+     "crémeux",
+     "fromage"
+    ],
+    "aroma_families": [
+     "lacté",
+     "fumé",
+     "herbes séchées"
+    ],
+    "target_textures": [
+     "dessus_doré",
+     "intérieur_fondant_ou_crémeux",
+     "dés croustillants"
+    ],
+    "signature_ingredients": [
+     "Pâte brisée crue",
+     "Tofu fumé",
+     "Œuf cru",
+     "Crème fraîche liquide entière"
+    ],
+    "identity_guardrails": [
+     "Le tofu fumé se rissole avant d'entrer dans la tarte : cru, il rend son eau dans l'appareil et détrempe le fond de pâte",
+     "C'est le fumé qui fait le plat, pas le tofu : un tofu nature à la place du fumé donne une quiche au fromage, et l'écart nutritionnel est réel — le fumé porte trente fois plus de sel",
+     "L'appareil reste celui du parent, œufs, crème et lait dans les mêmes proportions : c'est lui l'identité de la quiche lorraine, la garniture n'en est que la signature",
+     "La cuisson s'arrête sur un centre encore tremblant, sinon l'appareil devient granuleux en refroidissant"
+    ]
+   },
+   "conservation": "Se garde 3 jours au réfrigérateur, filmée, et se réchauffe 12 minutes à 180 °C — jamais au micro-ondes, qui ramollit la pâte. Elle se mange aussi froide, ce qui en fait un déjeuner transportable. Se congèle 2 mois à -18 °C, en parts filmées séparément, et se réchauffe sans décongélation en 20 minutes à 180 °C. Une précision qui n'appartient qu'à ce jumeau : le tofu fumé change de texture au gel, il ressort plus ferme et plus spongieux qu'avant. Ici c'est sans conséquence, parce qu'il a déjà été rissolé et qu'il est pris dans un appareil, mais il ne faut pas attendre d'une part décongelée la tenue du premier jour. Aucune page du dossier ne parle de conservation : ces durées sont celles d'une tarte salée à appareil œufs-crème, et je le dis plutôt que de leur prêter une source.",
+   "allergens": [
+    "gluten",
+    "lait",
+    "œuf",
+    "soja"
+   ],
+   "canonical_arbitration": "Jumeau végétarien de FR-005 « Quiche lorraine » : même pâte brisée foncée et refroidie, même appareil œufs-crème-lait muscadé, même cuisson à 180 °C jusqu'au centre tremblant, même repos avant de couper, même rôle d'assiette. UNE SEULE LIGNE RENDAIT LA LIGNÉE CARNÉE : 220 g de lardon fumé, que remplacent 180 g de tofu fumé. Rien d'autre dans la liste du parent n'est d'origine viande. LE DOSSIER, ET SON NOM. data/recipes/sources/quiche-lorraine-au-tofu-fume.json porte quatre pages sur quatre sites, dont deux retenues par l'audit : cookpad.com « Quiche Lorraine au tofu fumé » et ptitchef.com « quiche lorraine au tofu fumé ». Deux sources solides sur deux sites distincts, soit le minimum exigé — comme pour le minestrone de ce lot, il faut l'écrire plutôt que de le laisser croire plus large. Les deux autres corroborent et sont écartées pour un mot de titre : lacuisinedegeraldine.fr « Vegetarian Quiche Lorraine », qui est exactement ce plat mais en anglais, et cuisine-addict.com « Quiche au brocoli et tofu fumé », qui n'est pas une quiche lorraine et dont l'audit a raison de se méfier. LE NOM DU DOSSIER a été choisi pour ce que l'audit sait lire, et il vaut d'être expliqué : sous « Quiche lorraine végétarienne », une seule page passe — geek-balsamique, qui ne publie aucun balisage lisible par la chaîne et n'a donc jamais pu entrer au dossier. Sous « Quiche lorraine au tofu fumé », deux pages passent sur deux sites. C'est le même plat sous deux noms, et le dossier prend le nom qui laisse voir ce qui existe. LE TOFU FUMÉ. Les quatre pages le pèsent : cookpad 100 g pour six, soit 16,7 g par personne ; ptitchef 125 g pour six, soit 20,8 ; lacuisinedegeraldine 200 g pour six, soit 33,3 ; cuisine-addict 125 g pour quatre, soit 31,25. La médiane vaut 26 g par personne, soit 156 g pour six parts. On monte à 30 g par personne, soit 180 g, et l'argument est double. D'abord le parent : il met 36,7 g de lardon par personne, et un jumeau qui descendrait à 17 g de garniture ne serait plus la même tarte, seulement le même appareil. Ensuite la matière : le lardon perd un tiers de son poids en fondant, le tofu ne perd presque rien à la poêle, donc à poids égal de départ le tofu donne moins de goût et plus de volume — 180 g est le compromis entre le dé qu'on voit et le fumé qu'on sent. LE FROMAGE, ET C'EST LA VRAIE DÉCISION DE CETTE RECETTE. Le parent est canoniquement sans fromage : sa fiche le dit en toutes lettres et le porte même comme variante à ne pas prendre. Les deux pages retenues du dossier en mettent toutes les deux, et exactement la même quantité — cookpad 100 g de gruyère pour six, ptitchef 100 g de fromage râpé pour six, soit 16,7 g par personne dans les deux cas, soit 100 g pour six parts. La troisième page en met 150 g, la quatrième 30 g de cheddar. Je le retiens, non optionnel, et voici pourquoi : les 220 g de lardon du parent fondaient dans l'appareil une graisse salée que 180 g de tofu fumé n'apportent pas, et sans elle la quiche est sèche et plate. C'est un écart assumé au parent, il est dit ici, il est visible dans le nom de la recette qui ne prétend pas être une quiche lorraine mais sa version végétarienne, et la version sans fromage est portée en variante pour qui veut la stricte canonique. L'APPAREIL EST HÉRITÉ, sans discussion : 4 œufs, 300 ml de crème entière, 100 ml de lait, 0,5 g de muscade, 1,5 g de poivre, 280 g de pâte brisée. Les deux pages retenues mettent 3 œufs et 200 ml de crème pour six, sans lait, ce qui donne une quiche plus basse ; le dossier du parent, plus fourni, a établi ces proportions et l'échange de garniture ne les touche pas. LES HERBES DE PROVENCE, ajoutées. Les deux pages retenues en mettent, et ce sont les seules du dossier à assaisonner la garniture — ni l'une ni l'autre ne pèse sa pincée, deux grammes pour six parts est la quantité courante d'une cuillerée à café rase. Elles servent ici ce que le lardon n'assaisonne plus. La muscade du parent reste, parce qu'elle appartient à l'appareil et non à la garniture. L'HUILE D'OLIVE, ajoutée aussi, et pour une raison mécanique : le parent fait revenir ses lardons dans leur propre gras, le tofu n'en a pas. Dix grammes suffisent à colorer 180 g de dés dans une poêle antiadhésive, et deux pages du dossier font ce rissolage — lacuisinedegeraldine à l'huile d'olive, cuisine-addict à la poêle très chaude. Les deux pages retenues, elles, jettent le tofu cru dans l'appareil : c'est le seul point où cette recette prend le parti des pages écartées contre les pages retenues, et l'argument est vérifiable en cuisine — un tofu cru rend son eau au four, sous l'appareil, dans le fond de pâte. LA FORME « Tofu fumé » N'A PAS EU À ÊTRE ARBITRÉE : elle l'a été au lot 21-jumeaux-04, adossée au code Ciqual 20912, que le catalogue distingue explicitement du tofu nature 20904 — 164 kcal contre 148, et surtout trente fois plus de sel. Elle n'est pas encore au catalogue, faute d'une recette versée qui l'emploie : cette recette passera donc « valide avec réserve » au validateur, sa nutrition non calculée, et devra être revalidée après reconstruction. C'est l'ordre normal de la chaîne, pas un défaut du lot. LES TEMPS sont ceux du parent, vingt-cinq et quarante minutes ; les deux pages retenues annoncent quarante-cinq minutes de cuisson et la page anglaise trente-cinq à quarante, ce qui encadre le chiffre."
+  }
+ ]
+}

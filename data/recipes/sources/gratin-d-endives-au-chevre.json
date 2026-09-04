@@ -1,0 +1,88 @@
+{
+  "dish": "gratin d'endives au chèvre",
+  "slug": "gratin-d-endives-au-chevre",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_endives-gratinees-au-chevre_56214.aspx",
+      "site": "marmiton.org",
+      "nom": "Endives gratinées au chèvre : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "4 endives",
+        "4 oignons rouges",
+        "2 bûches de chèvre",
+        "10 cl de crème fraîche",
+        "4 tranches de jambon",
+        "50 g d'emmental râpé",
+        "huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 623,
+        "sha256": "5e5ffbde47f61158"
+      },
+      "sha256_page": "f096d6bac7c700c8"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-d-endives-aux-3-chevres_168249.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin d'endives aux 3 chèvres : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "8 endives",
+        "1 oignon jaune",
+        "200 g de lardons fumés",
+        "20 cl de lait",
+        "100 g de crème fraîche épaisse",
+        "1 bûche de chèvre cendrée",
+        "1 chèvre frais à la ciboulette",
+        "1 lou pérac bien fait",
+        "sel",
+        "poivre",
+        "1 bouillon de légumes",
+        "ciboulette fraîche"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 637,
+        "sha256": "8c6ef3b4e708f05e"
+      },
+      "sha256_page": "3564172151196c27"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-d-endives-au-chevre-et-pain-d-epices_46267.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin d'endives au chèvre et pain d'épices : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 kg d'endive",
+        "80 g de beurre",
+        "orange",
+        "1 grosse cuillère à soupe de miel",
+        "1 bûche de fromage de chèvre",
+        "50 g de pains d'épices (2-3 petites tranches)",
+        "10 spéculoos",
+        "100 g de farine",
+        "cannelle",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 615,
+        "sha256": "de8c8018646f6070"
+      },
+      "sha256_page": "596f16ae1eee3bc1"
+    }
+  ]
+}
