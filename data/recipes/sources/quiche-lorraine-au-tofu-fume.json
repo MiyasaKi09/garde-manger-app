@@ -1,7 +1,7 @@
 {
   "dish": "Quiche lorraine au tofu fumé",
-  "slug": "explo-quiche-lorraine-tofu-fume",
-  "sources_count": 2,
+  "slug": "quiche-lorraine-au-tofu-fume",
+  "sources_count": 4,
   "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
   "sources": [
     {
@@ -26,7 +26,30 @@
         "signes": 193,
         "sha256": "08f620e570710af4"
       },
-      "sha256_page": "e26837103bee65f3"
+      "sha256_page": "56f01300a5508ce9"
+    },
+    {
+      "url": "https://www.ptitchef.com/recettes/entree/quiche-lorraine-au-tofu-fume-fid-54257",
+      "site": "ptitchef.com",
+      "nom": "\"quiche lorraine\" au tofu fumé",
+      "portions": "6",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "Pâte à tarte maison ou du commerce",
+        "20 cl de crème fraîche allégée",
+        "3 oeufs",
+        "herbes de provence (facultatif)",
+        "100 g de fromage râpé",
+        "125 g de tofu fumé coupé en dés",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 240,
+        "sha256": "0a2156631caef06c"
+      },
+      "sha256_page": "9cf748b7d63753bb"
     },
     {
       "url": "https://lacuisinedegeraldine.fr/en/vegetarian-quiche-lorraine",
@@ -57,7 +80,34 @@
         "signes": 839,
         "sha256": "7ac1a478908de890"
       },
-      "sha256_page": "925a7eff340aed49"
+      "sha256_page": "5c55a1f61420b8b8"
+    },
+    {
+      "url": "https://cuisine-addict.com/quiche-au-brocoli-et-tofu-fume/",
+      "site": "cuisine-addict.com",
+      "nom": "Quiche au brocoli et tofu fumé",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1  pâte brisée",
+        "1  brocoli",
+        "125 g tofu fumé (ou lardons)",
+        "4  oeuf",
+        "25 cl crème liquide (sarrasin pour moi)",
+        "30 g cheddar (râpé, facultatif)",
+        "huile d'olive",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 624,
+        "sha256": "db9b93f7a6cb7c77"
+      },
+      "sha256_page": "9778a2d152a17a1c"
     }
   ]
 }

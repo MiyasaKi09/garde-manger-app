@@ -1,7 +1,7 @@
 {
   "dish": "Minestrone végétarien",
-  "slug": "explo-minestrone-vegetarien",
-  "sources_count": 7,
+  "slug": "minestrone-vegetarien",
+  "sources_count": 6,
   "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
   "sources": [
     {
@@ -33,7 +33,7 @@
         "signes": 773,
         "sha256": "ee34671503b3bc82"
       },
-      "sha256_page": "756068853d53a2fb"
+      "sha256_page": "de89031c7d221c29"
     },
     {
       "url": "https://menu-vegetarien.com/minestrone-vegetarien/",
@@ -67,49 +67,32 @@
       "sha256_page": "33a063ee40341156"
     },
     {
-      "url": "https://www.recettes-italiennes.org/minestrone-de-legumes/",
-      "site": "recettes-italiennes.org",
-      "nom": "Minestrone de légumes",
-      "portions": "",
-      "duree_preparation": "00:45:00",
-      "duree_cuisson": "00:30:00",
+      "url": "https://chefsimon.com/gourmets/une-aiguille-dans-l-potage/recettes/minestrone-aux-haricots-blancs-et-pesto-de-persil",
+      "site": "chefsimon.com",
+      "nom": "Minestrone aux haricots blancs et pesto de persil",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT01H45M",
       "ingredients": [
-        "légumes verts",
-        "carotte",
-        "oignon",
-        "pommes de terre",
-        "tomate",
-        "champignon"
+        "150 g de haricots blancs secs",
+        "3 tomates",
+        "1 oignon",
+        "3 carottes",
+        "2 petits navets",
+        "2 petits navets boule d’or",
+        "1 branche de céleri",
+        "Le jus d’1/2 citron (non mis)",
+        "2 litres de bouillon de légumes de bonne qualité",
+        "1 gousse d’ail",
+        "3 c à s d’huile d’olive",
+        "Sel, poivre"
       ],
       "etapes_empreinte": {
         "nombre": 0,
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "20758f60a9ee9a28"
-    },
-    {
-      "url": "https://chefsimon.com/gourmets/stella-cuisine/recettes/minestrone-soupe-italienne-aux-legumes",
-      "site": "chefsimon.com",
-      "nom": "Minestrone, soupe italienne aux légumes",
-      "portions": "",
-      "duree_preparation": "PT00H15M",
-      "duree_cuisson": "PT00H00M",
-      "ingredients": [
-        "1  oignon",
-        "2  blancs de poireaux",
-        "600 grammes de légumes variés ((pomme de terre, carotte, courgette, céleri branche, tomates...))",
-        "40 grammes d'huile d'olive",
-        "1 litre d'eau",
-        "1  bouillon de légumes",
-        "120 grammes de pâtes pour Minestrone ((à défaut, des penne courts))"
-      ],
-      "etapes_empreinte": {
-        "nombre": 3,
-        "signes": 188,
-        "sha256": "d4efc73fac29842a"
-      },
-      "sha256_page": "f82292c8b2392f75"
+      "sha256_page": "95653dacf6e14604"
     },
     {
       "url": "https://chefsimon.com/gourmets/les-recettes-de-nathou/recettes/minestrone-aux-legumes-croquants",
@@ -138,68 +121,74 @@
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "3f9b6b413060ca6c"
+      "sha256_page": "dae6b7fe36af66d9"
     },
     {
-      "url": "https://www.750g.com/minestrone-de-legumes-dautomne-r97086.htm",
-      "site": "750g.com",
-      "nom": "Minestrone de légumes d'automne",
-      "portions": "6 personnes",
-      "duree_preparation": "PT45M",
-      "duree_cuisson": "PT45M",
+      "url": "https://www.salepepe.it/ricette/primi/minestra-zuppa/zuppa/minestrone-ricco-verdure-fagioli/",
+      "site": "salepepe.it",
+      "nom": "Il minestrone ricco di verdure e fagioli",
+      "portions": "",
+      "duree_preparation": null,
+      "duree_cuisson": null,
       "ingredients": [
-        "75 cl d'eau filtrée",
-        "1 pâtisson",
-        "3 carottes",
-        "120 g de céleri rave",
-        "1 pomme de terre",
-        "7 cl d'huile d'olive",
-        "60 g d'haricots blancs secs",
-        "60 g de potiron",
-        "50 g de macaroni  coupés",
-        "50 g de lard",
-        "2 gousses d'ail",
-        "1 bouquet garni  enrichi de romarin",
-        "1 cube de bouillon de volaille",
-        "6 feuilles de basilic",
-        "Poivre du moulin",
-        "Sel ou sel fin",
-        "1 pincée de fleur de thym"
-      ],
-      "etapes_empreinte": {
-        "nombre": 3,
-        "signes": 889,
-        "sha256": "9be0ca555ec439bd"
-      },
-      "sha256_page": "3bf007f82462137f"
-    },
-    {
-      "url": "https://chefsimon.com/gourmets/une-aiguille-dans-l-potage/recettes/minestrone-aux-haricots-blancs-et-pesto-de-persil",
-      "site": "chefsimon.com",
-      "nom": "Minestrone aux haricots blancs et pesto de persil",
-      "portions": "6 personnes",
-      "duree_preparation": "PT00H30M",
-      "duree_cuisson": "PT01H45M",
-      "ingredients": [
-        "150 g de haricots blancs secs",
-        "3 tomates",
-        "1 oignon",
-        "3 carottes",
-        "2 petits navets",
-        "2 petits navets boule d’or",
-        "1 branche de céleri",
-        "Le jus d’1/2 citron (non mis)",
-        "2 litres de bouillon de légumes de bonne qualité",
-        "1 gousse d’ail",
-        "3 c à s d’huile d’olive",
-        "Sel, poivre"
+        "1 Spicchio Aglio",
+        "200 Grammi Fagiolini",
+        "2 Rametto Maggiorana secca",
+        "2  Patata",
+        "1  Porro",
+        "1 Foglia Salvia",
+        "2 Rametto Timo",
+        "3  Zucchina",
+        "200 Grammi Erbetta",
+        "1  Cipolla",
+        "200 Grammi Fagioli borlotti",
+        "Q.b. Basilico",
+        "Q.b. Pepe",
+        "2  Carota",
+        "Q.b. Grana",
+        "Q.b. Olio di oliva extravergine",
+        "2  Pomodoro",
+        "1 Rametto Prezzemolo",
+        "2  Rapa",
+        "Q.b. Sale"
       ],
       "etapes_empreinte": {
         "nombre": 0,
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "941d9aa05eca462e"
+      "sha256_page": "694f2f5e7588a761"
+    },
+    {
+      "url": "https://www.mangioquindisono.it/minestrone-di-verdure-di-fine-estate-con-fagioli-freschi-traslocare/",
+      "site": "mangioquindisono.it",
+      "nom": "Minestrone di verdure di fine estate con fagioli freschi  | TRASLOCARE",
+      "portions": "4 porzioni",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "2 cucchiai olio evo",
+        "1 cipolla",
+        "2 cipollotti",
+        "3 o 4 spicchi d'aglio",
+        "2 carote",
+        "200 gr fagiolini",
+        "3 o 4 coste di sedano",
+        "2 o 3 zucchine",
+        "1 mazzo di erbette o coste",
+        "200 gr fagioli borlotti freschi",
+        "120 gr pasta corta",
+        "erbe aromatiche fresche a piacere - (rosmarino, salvia, maggiorana, timo, basilico, prezzemolo, alloro etc)",
+        "1 crosta di parmigiano reggiano o grana padano - (facoltativa ma consigliata)",
+        "sale e pepe macinati freschi",
+        "pane raffermo tagliato a fette - (facoltativo)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1050,
+        "sha256": "19a0cb77d21e6000"
+      },
+      "sha256_page": "a16633ddec93d231"
     }
   ]
 }
