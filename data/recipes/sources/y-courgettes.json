@@ -1,0 +1,64 @@
+{
+  "dish": "Courgettes farcies végétariennes",
+  "slug": "y-courgettes",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://migusto.migros.ch/fr/recettes/courgettes-farcies-aux-lentilles",
+      "site": "migusto.migros.ch",
+      "nom": "Courgettes farcies aux lentilles",
+      "portions": "Pour 4 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "160 g de lentilles vertes du Puy",
+        "4 courgettes d’env. 250 g",
+        "½ oignon",
+        "2 cs d'huile d´olive",
+        "½ bouquet de fines herbes",
+        "sel",
+        "poivre de Cayenne",
+        "300 g de fromage frais",
+        "4 cs de chapelure",
+        "2 dl de bouillon de légumes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 748,
+        "sha256": "9379fb2f88bfd3e1"
+      },
+      "sha256_page": "a2fb8f3ceffb99df"
+    },
+    {
+      "url": "https://lodeurducafe.com/2018/09/courgettes-farcies-lentilles-vertes-proteines-soja-texturees/",
+      "site": "lodeurducafe.com",
+      "nom": "Courgettes farcies aux lentilles vertes et protéines de soja texturées",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "Deux courgettes de taille moyenne",
+        "60 g de protéines de soja ou de pois texturées ((en petits morceaux))",
+        "60 g de lentilles vertes  ((sèches))",
+        "Un gros oignon",
+        "1 - 2  gousses d’ail",
+        "100 ml de vin blanc",
+        "Une cuillère à soupe de sauce soja ou de tamari",
+        "Une demi cuillère à café de miso brun",
+        "Du bouillon de légumes",
+        "Du thym et de l’origan séchés",
+        "Poivre, oignon en poudre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1597,
+        "sha256": "1ea243a0bbe7f401"
+      },
+      "sha256_page": "cf2d8a53fd694ed3"
+    }
+  ]
+}

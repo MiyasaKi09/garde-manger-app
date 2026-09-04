@@ -1,0 +1,133 @@
+{
+  "dish": "Calzone à la mozzarella",
+  "slug": "calzone-a-la-mozzarella",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pizza-calzone-tomate-mozzarella_35911.aspx",
+      "site": "marmiton.org",
+      "nom": "Pizza calzone tomate mozzarella : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "400 g de farine",
+        "1 cube de levure de boulanger",
+        "1 grosse pincée de sel",
+        "0.5 verre d'eau tiède",
+        "2 boîtes de sauce tomate concentrée",
+        "4 boules de mozzarella (ou 2 grosses)",
+        "basilic frais ou surgelé (une bonne poignée de feuilles)",
+        "4 jaunes d'oeuf",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 989,
+        "sha256": "0fed06d90d37eb76"
+      },
+      "sha256_page": "b55faf6c8a52adbc"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_calzone-courgette-mozzarella-tomate-pesto_62372.aspx",
+      "site": "marmiton.org",
+      "nom": "Calzone courgette mozzarella tomate pesto : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 pâte brisée ronde",
+        "3 tomates",
+        "150 g de mozzarella",
+        "1 courgette moyenne",
+        "1 petit bouquet de basilic",
+        "3 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1213,
+        "sha256": "b2ee4126f5c23409"
+      },
+      "sha256_page": "188816944f97f8af"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/veb-9b0f8344-9a4e-4ce4-9336-4b466721cff2/recettes/mini-calzone-a-la-mozzarella",
+      "site": "chefsimon.com",
+      "nom": "Mini calzone à la mozzarella",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "2 pâtes à pizza ou une pâte maison",
+        "Coulis de tomates maison ou une sauce environ 120 g",
+        "Des anchois (à volonté)",
+        "120 g de la feta",
+        "250 g de mozzarella",
+        "thym sec environ deux cuillères à soupe"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "d8ae31e4644d792a"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_calzone-aux-trois-fromages_167499.aspx",
+      "site": "marmiton.org",
+      "nom": "Calzone aux trois fromages : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 pâte à pizza",
+        "3 cuillères à soupe de sauce tomate (nature, sans morceaux)",
+        "100 g de mozzarella râpée",
+        "100 g de chèvres",
+        "100 g de Bresse Bleu (ou de la fourme d'ambert)",
+        "2 échalotes",
+        "origan"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 582,
+        "sha256": "5b10554795f7596b"
+      },
+      "sha256_page": "9dee564ba1486c6d"
+    },
+    {
+      "url": "https://www.750g.com/mini-calzone-au-fromage-r96603.htm",
+      "site": "750g.com",
+      "nom": "Mini calzone au fromage",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "500 g de farine",
+        "15 g de levure de boulanger fraîche",
+        "2 c. à s. d'huile d'olive",
+        "1 c. à c. de sel ou sel fin",
+        "¼ l d'eau  tiède",
+        "4 tomates",
+        "2 courgettes",
+        "1 oeuf",
+        "1 boule de mozzarella",
+        "40 g de ricotta",
+        "½ poivron jaune",
+        "½ oignon",
+        "Huile d'olive",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1323,
+        "sha256": "c7a37eef17645d07"
+      },
+      "sha256_page": "21dd8bac21a4094f"
+    }
+  ]
+}

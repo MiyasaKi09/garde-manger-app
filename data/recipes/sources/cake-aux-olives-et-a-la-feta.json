@@ -1,0 +1,241 @@
+{
+  "dish": "Cake aux olives et à la feta",
+  "slug": "cake-aux-olives-et-a-la-feta",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cake-olive-feta-et-origan-par-laurent-mariotte_534097.aspx",
+      "site": "marmiton.org",
+      "nom": "Cake olive-feta et origan par Laurent Mariotte : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "150 g de Feta AOP grecque ISLOS®",
+        "100 g d'olives noires dénoyautées",
+        "2 origan séché",
+        "250 g de farine T55",
+        "4 oeufs",
+        "1 dl de lait entier",
+        "100 g de beurre clarifié",
+        "100 g d'huile d'olive",
+        "de levure chimique 1/2",
+        "sel gris fin",
+        "poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 502,
+        "sha256": "597cf1535e641041"
+      },
+      "sha256_page": "2b502d6c12372e29"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_cake-aux-tomates-sechees-feta-et-olives-vertes_40965.aspx",
+      "site": "marmiton.org",
+      "nom": "Cake aux tomates séchées, feta et olives vertes : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "200 g de farine",
+        "4 oeufs",
+        "1 sachet de levure",
+        "10 cl de lait",
+        "5 cl d'huile d'olive",
+        "12 tomates séchées",
+        "200 g de feta",
+        "15 olives vertes dénoyautées",
+        "1 pointe de curry (facultatif)",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 477,
+        "sha256": "a76ccd5d2bd335e3"
+      },
+      "sha256_page": "c66cd30dfbd4c9ed"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-cuisine-d-adeline/recettes/cake-sale-aux-olives-feta-et-basilic",
+      "site": "chefsimon.com",
+      "nom": "Cake salé aux olives, fêta et basilic",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "3 oeufs",
+        "150 g de farine",
+        "1 sachet de levure chimique",
+        "8 cl d'huile",
+        "12 cl de lait",
+        "100 g de fromage râpé",
+        "80 g d'olives noires",
+        "50 g de fêta",
+        "50 g de tomates confites",
+        "Basilic frais",
+        "Herbes de Provence",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 97,
+        "sha256": "f8665abab1b6ba19"
+      },
+      "sha256_page": "8604a6bdcedf0b8c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/cake-aux-fanes-de-radis-feta-et-olives-noires",
+      "site": "chefsimon.com",
+      "nom": "Cake aux fanes de radis, feta et olives noires",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H50M",
+      "ingredients": [
+        "180 gr de farine",
+        "1 sachet de levure chimique",
+        "100 gr de lait",
+        "80 gr d'huile d'olive",
+        "3 œufs",
+        "sel et poivre",
+        "les feuilles d'une botte de radis",
+        "150 gr de feta",
+        "une dizaine d'olives noires"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "d6cd828cd24cc8bf"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/kilometre-0/recettes/cake-sale-haricots-verts-feta-et-olives",
+      "site": "chefsimon.com",
+      "nom": "Cake salé haricots verts, feta et olives",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "200 g de farine d'épeautre",
+        "1/2 cc de bicarbonate de soude",
+        "4 oeufs",
+        "1 yaourt",
+        "280 g d' olives",
+        "500 g de haricots verts",
+        "150 g de feta"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "02935b7c3520ebe0"
+    },
+    {
+      "url": "https://www.750g.com/cake-sale-feta-olives-r53112.htm",
+      "site": "750g.com",
+      "nom": "Cake salé feta olives",
+      "portions": "10 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "75 g d'olives noires dénoyautées",
+        "Poivre du moulin",
+        "Beurre  pour le moule",
+        "150 g de feta",
+        "1 sachet de levure",
+        "3 oeufs",
+        "10 cl de lait",
+        "10 cl d'huile d'olive  ou huile tournesol",
+        "200 g de farine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 427,
+        "sha256": "32c4e0b87c119157"
+      },
+      "sha256_page": "f8fca3b1598ebc9a"
+    },
+    {
+      "url": "https://www.750g.com/cake-feta-et-olives-r99448.htm",
+      "site": "750g.com",
+      "nom": "Cake feta et olives",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "200 g de farine",
+        "3 oeufs",
+        "10 cl de lait",
+        "Huile d'olive  ou huile tournesol",
+        "1 sachet de levure",
+        "150 g de feta",
+        "80 g d'olives noires",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 561,
+        "sha256": "2fabd8e7ef3b62df"
+      },
+      "sha256_page": "0e0383cc7e9c979a"
+    },
+    {
+      "url": "https://www.750g.com/cake-sale-courgette-olives-et-feta-r74006.htm",
+      "site": "750g.com",
+      "nom": "Cake salé courgette, olives et féta",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 oignon",
+        "70g d'olives vertes",
+        "90g de féta",
+        "Sel",
+        "Poivre",
+        "1 courgette",
+        "3 c à s d'huile d'olive",
+        "2 œufs",
+        "3 c à s de crème fraîche ultra allégée",
+        "10 cl de lait",
+        "½ sachet de levure chimique",
+        "200g de farine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 959,
+        "sha256": "ff7309a36345f188"
+      },
+      "sha256_page": "f4a94f2bdd82872e"
+    },
+    {
+      "url": "https://www.750g.com/cake-sale-aux-tomates-olives-et-feta-r86631.htm",
+      "site": "750g.com",
+      "nom": "Cake salé aux tomates, olives et feta",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "4 c à s d'huile d'olive",
+        "10 cl de lait",
+        "1 c à s de basilic",
+        "Un peu d'épice tandoori (ou à défaut du poivre)",
+        "3 œufs",
+        "½ sachet de levure chimique",
+        "130g de tomates séchées à l'huile",
+        "100g de feta",
+        "200g de farine",
+        "60g d'olive noires dénoyautées"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 529,
+        "sha256": "10a6c337c202e3d6"
+      },
+      "sha256_page": "3e766f9d9de487d5"
+    }
+  ]
+}

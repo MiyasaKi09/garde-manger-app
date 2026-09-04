@@ -54,7 +54,7 @@
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "a185650016b203bf"
+      "sha256_page": "37b64cd8c7967b2c"
     },
     {
       "url": "https://chefsimon.com/gourmets/alexandre/recettes/hachis-parmentier-de-lentilles",
@@ -86,7 +86,28 @@
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "ab885669fbfba354"
+      "sha256_page": "933d1a9d85e2e97a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lacuisinedunetoquee/recettes/hachis-parmentier-vegetarien-aux-lentilles-et-patate-douce",
+      "site": "chefsimon.com",
+      "nom": "Hachis parmentier végétarien aux lentilles et patate douce",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "200g de lentilles",
+        "400g de tomates concassées sans sucre ajouté",
+        "persil",
+        "4 patates douces",
+        "10 cl de crème liquide"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "e7e487873d943673"
     },
     {
       "url": "https://chefsimon.com/gourmets/lesfillesatable-com/recettes/hachis-parmentier-lentilles-et-brocoli",
@@ -111,28 +132,7 @@
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "cc6c2c17c25023e6"
-    },
-    {
-      "url": "https://chefsimon.com/gourmets/lacuisinedunetoquee/recettes/hachis-parmentier-vegetarien-aux-lentilles-et-patate-douce",
-      "site": "chefsimon.com",
-      "nom": "Hachis parmentier végétarien aux lentilles et patate douce",
-      "portions": "4 personnes",
-      "duree_preparation": "PT00H20M",
-      "duree_cuisson": "PT01H00M",
-      "ingredients": [
-        "200g de lentilles",
-        "400g de tomates concassées sans sucre ajouté",
-        "persil",
-        "4 patates douces",
-        "10 cl de crème liquide"
-      ],
-      "etapes_empreinte": {
-        "nombre": 0,
-        "signes": 0,
-        "sha256": "e3b0c44298fc1c14"
-      },
-      "sha256_page": "6351beba7bc53a7a"
+      "sha256_page": "d59925514dd0fe6f"
     },
     {
       "url": "https://chefsimon.com/gourmets/le-labo-de-maman/recettes/parmentier-de-patate-douce-chou-fleur-et-lentilles",
@@ -156,7 +156,7 @@
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "b4e939f225663ea3"
+      "sha256_page": "dff6b73310646fb8"
     },
     {
       "url": "https://chefsimon.com/gourmets/amandine-cooking/recettes/parmentier-de-lentilles-corail-aux-legumes",
@@ -184,7 +184,7 @@
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "27ae7237c4d3e669"
+      "sha256_page": "3a9504f53193d9ab"
     }
   ]
 }

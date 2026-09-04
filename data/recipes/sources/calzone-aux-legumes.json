@@ -32,6 +32,29 @@
       "sha256_page": "9b44de1f71edfc36"
     },
     {
+      "url": "https://www.marmiton.org/recettes/recette_calzone-feuillete-aux-legumes-du-soleil-vegan_528273.aspx",
+      "site": "marmiton.org",
+      "nom": "Calzone feuilleté aux légumes du soleil (vegan) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "1 pâte feuilletée végétale",
+        "2 tomates",
+        "1 courgette",
+        "1 poivron rouge",
+        "0.5 oignon",
+        "1 cuillère à soupe de herbes de Provence",
+        "4 cuillères à café de crème balsamique"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 491,
+        "sha256": "9a4b5b0a5487047a"
+      },
+      "sha256_page": "c0d70b73a458bcc7"
+    },
+    {
       "url": "https://chefsimon.com/gourmets/piratage-culinaire/recettes/calzone-aux-legumes-grilles--2",
       "site": "chefsimon.com",
       "nom": "Calzone aux légumes grillés",
@@ -57,30 +80,7 @@
         "signes": 0,
         "sha256": "e3b0c44298fc1c14"
       },
-      "sha256_page": "1d479323c93fc0bc"
-    },
-    {
-      "url": "https://www.marmiton.org/recettes/recette_calzone-feuillete-aux-legumes-du-soleil-vegan_528273.aspx",
-      "site": "marmiton.org",
-      "nom": "Calzone feuilleté aux légumes du soleil (vegan) : la meilleure recette",
-      "portions": "4 personnes",
-      "duree_preparation": "PT15M",
-      "duree_cuisson": "PT35M",
-      "ingredients": [
-        "1 pâte feuilletée végétale",
-        "2 tomates",
-        "1 courgette",
-        "1 poivron rouge",
-        "0.5 oignon",
-        "1 cuillère à soupe de herbes de Provence",
-        "4 cuillères à café de crème balsamique"
-      ],
-      "etapes_empreinte": {
-        "nombre": 5,
-        "signes": 491,
-        "sha256": "9a4b5b0a5487047a"
-      },
-      "sha256_page": "c0d70b73a458bcc7"
+      "sha256_page": "f453b2065ef4bcbd"
     }
   ]
 }

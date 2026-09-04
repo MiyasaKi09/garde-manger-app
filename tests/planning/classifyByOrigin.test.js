@@ -62,6 +62,58 @@ describe('classification par origine, sur tout le vivier publiable', () => {
     expect(fautives).toEqual([])
   })
 
+  // Le test ci-dessus ne peut PAS échouer tant que l'origine est vraie : il
+  // relit `vegetarian` avec la définition qui l'a produit (« toutes les
+  // origines obligatoires sont compatibles »), donc il vérifie le code et pas
+  // la donnée. Un catalogue où tout serait déclaré « vegetal » le passerait.
+  // Celui-ci est le contre-témoin indépendant : il rejoue la MESURE d'origine
+  // (annexe A2 du plan) — les mots carnés dans les NOMS des ingrédients d'un
+  // plat classé végétarien — sur les 706 recettes du corpus, ingrédients
+  // écartés par un bloqueur compris. C'est le seul des deux qui tombe si une
+  // origine est fausse.
+  const MOTS_CARNES = [
+    'boudin', 'lardons?', 'jambon', 'jambonneau', 'saucisses?', 'saucisson', 'chorizo', 'chourico', 'linguica',
+    'bacon', 'poulet', 'volaille', 'b(?:œ|oe)uf', 'veau', 'porc', 'agneau', 'mouton', 'canard', 'dinde', 'oie',
+    'pintade', 'caille', 'poule', 'lapin', 'gibier', 'merguez', 'guanciale', 'pancetta', 'chashu', 'morcilla',
+    'abats', 'tripes', 'andouille', 'rillettes', 'terrine', 'charcuterie', 'foie', 'g(?:é|e)sier', 'magret',
+    'confit', 'lard', 'viande', 'steak', 'saindoux',
+    'anchois', 'thon', 'saumon', 'cabillaud', 'morue', 'sardine', 'maquereau', 'colin', 'truite', 'hareng',
+    'merlu', 'congre', 'brochet', 'rouget', 'poisson', 'fumet', 'dashi', 'bonite', 'nuoc', 'surimi', 'eomuk',
+    'crevettes?', 'moule', 'calamar', 'poulpe', 'seiche', 'encornet', 'homard', 'langoustine', 'crabe', 'coquille',
+    'hu(?:î|i)tre', 'bulot', 'bigorneau', 'caviar', 'tarama',
+    'g(?:é|e)latine', 'worcestershire', 'escargot', 'grenouille',
+  ]
+  // Frontières Unicode : `\b` ne voit pas « é », et « bœuf » ne s'écrit pas
+  // « boeuf » dans le corpus. Sans elles, « eau » sortirait de « veau ».
+  const MOT_CARNE = new RegExp(`(?<![\\p{L}\\p{N}_])(?:${MOTS_CARNES.join('|')})(?![\\p{L}\\p{N}_])`, 'iu')
+
+  it('ne classe végétarienne, sur tout le corpus, aucune recette dont un ingrédient PORTE un nom carné', () => {
+    const tout = getCanonicalRecipes({ eligibleOnly: false })
+    expect(tout.length).toBeGreaterThanOrEqual(706)
+    const fautives = tout
+      .filter((recipe) => classifyRecipe(recipe).vegetarian)
+      .map((recipe) => [
+        recipe.code,
+        [...nomsObligatoires(recipe), ...(recipe.blockedIngredients || [])]
+          .map((ingredient) => ingredient.name)
+          .filter((nom) => MOT_CARNE.test(nom)),
+      ])
+      .filter(([, mots]) => mots.length)
+    expect(fautives).toEqual([])
+  })
+
+  it('trouve bien un mot carné quand il y en a un (le contre-témoin sait échouer)', () => {
+    // Un test qui ne peut pas échouer ne prouve rien : on vérifie que le
+    // motif attrape les formes que la mesure du 3 septembre avait vues
+    // classées végétariennes, et qu'il ne se déclenche pas sur les faux amis.
+    for (const nom of ['Boudin noir à cuire', 'Bouillon de volaille', 'Bœuf haché cru', 'Sauce Worcestershire', 'Gélatine feuille', 'Bouillon d’anchois']) {
+      expect(MOT_CARNE.test(nom), nom).toBe(true)
+    }
+    for (const nom of ['Eau glacée', 'Oignon nouveau cru', 'Lait de coco', 'Tofu ferme', 'Chou-fleur frais']) {
+      expect(MOT_CARNE.test(nom), nom).toBe(false)
+    }
+  })
+
   it('ne laisse aucune origine inconnue dans une recette publiable', () => {
     const inconnues = recettes
       .map((recipe) => [recipe.code, classifyRecipe(recipe).unknownOrigins])
@@ -75,7 +127,16 @@ describe('classification par origine, sur tout le vivier publiable', () => {
       const origins = nomsObligatoires(recipe).map(ingredientOrigin)
       expect(classification.meat, recipe.code).toBe(origins.some(isMeatOrigin))
       expect(classification.fish, recipe.code).toBe(origins.some(isFishOrigin))
-      expect(classification.vegetarian, recipe.code).toBe(!classification.meat && !classification.fish)
+      // Végétarien IMPLIQUE ni viande ni poisson, mais pas l'inverse : un plat
+      // à l'escargot ('animal:autre') ou à la forme non arbitrée ('inconnu')
+      // n'est ni l'un ni l'autre et n'est pas végétarien pour autant. Écrire
+      // ici l'équivalence graverait dans le test une coïncidence du corpus du
+      // jour (aucune des deux origines n'y figure) et couvrirait la lecture
+      // faible que violatesHardConstraints faisait du régime végétarien.
+      if (classification.vegetarian) {
+        expect(classification.meat, recipe.code).toBe(false)
+        expect(classification.fish, recipe.code).toBe(false)
+      }
     }
   })
 
@@ -210,5 +271,27 @@ describe('classification par origine, règles unitaires', () => {
     expect(violatesHardConstraints(coco, { diets: ['végétarien'] })).toBeNull()
     const boudin = recette([{ name: 'Boudin noir à cuire', origin: 'animal:viande', grams: 300 }])
     expect(violatesHardConstraints(boudin, { diets: ['végétarien'] })).toBe('vegetarian_diet')
+  })
+
+  it('refuse à un végétarien ce qui n’est ni viande ni poisson mais n’est pas déclaré compatible', () => {
+    // Les deux portes du moteur (le solveur par violatesHardConstraints, la
+    // couche personnalisée par recipeAllowed) doivent dire la même chose sur
+    // la même assiette. Elles divergeaient exactement là où l'information
+    // manque : `meat || fish` laissait passer 'inconnu' et 'animal:autre'.
+    // Le chemin API sert des recettes de la base, dont toutes les formes ne
+    // sont pas arbitrées : ce cas n'est pas théorique.
+    const escargots = recette([
+      { name: 'Escargot cru', origin: 'animal:autre', grams: 200 },
+      { name: 'Beurre doux', origin: 'animal:lait', grams: 60 },
+    ])
+    expect(classifyRecipe(escargots)).toMatchObject({ meat: false, fish: false, vegetarian: false })
+    expect(violatesHardConstraints(escargots, { diets: ['végétarien'] })).toBe('vegetarian_diet')
+
+    const nonArbitree = recette([
+      { name: 'Sauce yakisoba', grams: 40 },
+      { name: 'Chou blanc frais', origin: 'vegetal', grams: 400 },
+    ])
+    expect(classifyRecipe(nonArbitree)).toMatchObject({ meat: false, fish: false, vegetarian: false, unknownOrigins: ['Sauce yakisoba'] })
+    expect(violatesHardConstraints(nonArbitree, { diets: ['végétarien'] })).toBe('vegetarian_diet')
   })
 })
