@@ -1,0 +1,156 @@
+{
+  "dish": "Carbonara di zucchine",
+  "slug": "carbonara-di-zucchine",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.tavolartegusto.it/ricetta/carbonara-di-zucchine/",
+      "site": "tavolartegusto.it",
+      "nom": "Carbonara di zucchine (vegetariana e cremosa!) la Ricetta in 15 minuti!",
+      "portions": "4",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "321 gr di spaghetti ( in alternativa rigatoni o bucatini)",
+        "400 gr di zucchine ( + 1 cucchiaino di olio + 1 spicchio d’aglio (facoltativo)",
+        "5 tuorli grandi freschi (1,5 tuorli a persona)",
+        "50 gr di pecorino romano",
+        "qualche cucchiaio circa di acqua di cottura della pasta",
+        "pepe nero",
+        "sale"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 1410,
+        "sha256": "4a894547b196e493"
+      },
+      "sha256_page": "c212cbab98817cde"
+    },
+    {
+      "url": "https://www.ilcuoreinpentola.it/ricette/ricette-vegetariane/carbonara-di-zucchine/",
+      "site": "ilcuoreinpentola.it",
+      "nom": "Carbonara di zucchine",
+      "portions": [
+        "2",
+        "2 Porzioni"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "200 g spaghetti",
+        "2  zucchine genovesi",
+        "olio d'oliva",
+        "1 spicchio aglio",
+        "1  uovo + 1 tuorlo",
+        "5 cucchiai pecorino grattugiato",
+        "menta fresca",
+        "pepe nero"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "53c2135399973341"
+    },
+    {
+      "url": "https://www.casapappagallo.it/ricette/carbonara-di-zucchine",
+      "site": "casapappagallo.it",
+      "nom": "Carbonara di zucchine",
+      "portions": 4,
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "Spaghetti 400 grammi",
+        "Zucchine 500 grammi",
+        "Uova 1 pezzo",
+        "Tuorli d'uovo 4 pezzi",
+        "Pecorino Romano 200 grammi",
+        "Olio EVO 4 cucchiai",
+        "Sale  quanto basta",
+        "Pepe nero  quanto basta"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1109,
+        "sha256": "b296465d6c4a382d"
+      },
+      "sha256_page": "13a65d50f7bc398d"
+    },
+    {
+      "url": "https://blog.giallozafferano.it/dulcisinforno/pasta-alla-carbonara-con-zucchine/",
+      "site": "blog.giallozafferano.it",
+      "nom": "Carbonara di zucchine",
+      "portions": [
+        "4",
+        "4 persone"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "400 g pasta (mezze maniche, spaghetti)",
+        "300 g zucchine (ca. 3 zucchine medie)",
+        "200 g pecorino romano",
+        "5 tuorli (media grandezza)",
+        "q.b. olio extravergine d'oliva",
+        "q.b. pepe nero in grani",
+        "q.b. sale"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 2248,
+        "sha256": "86cccb1cf52227c7"
+      },
+      "sha256_page": "02615dc2fb347299"
+    },
+    {
+      "url": "https://www.petitchef.it/ricette/portata-principale/carbonara-di-zucchine-la-ricetta-vegetariana-e-facilissima-da-preparare-fid-1613315",
+      "site": "petitchef.it",
+      "nom": "Carbonara di zucchine: la ricetta vegetariana e facilissima da preparare",
+      "portions": "2",
+      "duree_preparation": "PT7M",
+      "duree_cuisson": "PT12M",
+      "ingredients": [
+        "180 gr pasta (noi rigatoni)",
+        "1 zucchina media",
+        "1 uovo intero",
+        "1 tuorlo",
+        "60 gr pecorino grattugiato (o parmigiano)",
+        "Olio d'oliva q.b.",
+        "Sale q.b.",
+        "Pepe nero q.b."
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1095,
+        "sha256": "f0210c8370012de3"
+      },
+      "sha256_page": "5f223c2dce315ce2"
+    },
+    {
+      "url": "https://www.giallozafferano.com/recipes/Pasta-with-zucchini-carbonara-sauce.html",
+      "site": "giallozafferano.com",
+      "nom": "Pasta with zucchini carbonara sauce",
+      "portions": 4,
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "Bow tie pasta 0.75 lb",
+        "Zucchini 7 oz",
+        "Egg yolks (very fresh) 5",
+        "Pecorino cheese 1 cup",
+        "Extra virgin olive oil to taste",
+        "Fine salt to taste",
+        "Black pepper to taste",
+        "Pecorino cheese to taste"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 915,
+        "sha256": "4a24501d28266c93"
+      },
+      "sha256_page": "81d1776256283f19"
+    }
+  ]
+}

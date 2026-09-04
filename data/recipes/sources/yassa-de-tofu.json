@@ -1,0 +1,88 @@
+{
+  "dish": "Tofu yassa",
+  "slug": "yassa-de-tofu",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.750g.com/tofu-yassa-r35874.htm",
+      "site": "750g.com",
+      "nom": "Tofu yassa",
+      "portions": "1 personne",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "125 g de tofu ferme",
+        "75 g de quinoa",
+        "1 citron vert",
+        "1 tomate  petite",
+        "½ oignon",
+        "1 piment séché  « langue d'oiseau pilipili »",
+        "2 c. à s. d'huile d'olive",
+        "2 c. à c. rase(s) de moutarde",
+        "Coriandre  fraîche hachée ou de la coriandre moulue"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 934,
+        "sha256": "f5f3e2a3dd7515b4"
+      },
+      "sha256_page": "9af2d9b85a255393"
+    },
+    {
+      "url": "https://www.notparisienne.fr/plats/tofu-yassa/",
+      "site": "notparisienne.fr",
+      "nom": "Tofu yassa",
+      "portions": null,
+      "duree_preparation": "PT0H0M",
+      "duree_cuisson": "PT0H0M",
+      "ingredients": [
+        "200 g de tofu ferme",
+        "3 cl de jus de citron",
+        "2 gousses d'ail, émincées",
+        "1 petit oignon, émincé",
+        "2 c. à s. d'huile d'olive",
+        "2 c. à c. de mélange d'épices yassa",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 776,
+        "sha256": "8ddb2ba6e3f005a6"
+      },
+      "sha256_page": "b11bb550bb8c36b1"
+    },
+    {
+      "url": "https://eatwithafia.com/vegan-yassa-tofu-senegalese-inspired/",
+      "site": "eatwithafia.com",
+      "nom": "Vegan Yassa Tofu (Senegalese - Inspired)",
+      "portions": [
+        "4",
+        "4 servings"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "3  large onions sliced",
+        "1  extra firm tofu cut strips ~ 16 chunks in total",
+        "3 cloves of garlic crushed",
+        "2 tbsp yellow mustard",
+        "Juice from one medium lemon",
+        "1/2 tsp black pepper",
+        "1-2 tsp red chilli flakes",
+        "1  veggie bouillon powder cube = 2 tsp of bouillon powder",
+        "1  bay leaf",
+        "1/3  scotch bonnet pepper",
+        "1/2 cup water",
+        "1/4 tsp salt",
+        "vegetable oil"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 1038,
+        "sha256": "8903993579932848"
+      },
+      "sha256_page": "87713930469601b1"
+    }
+  ]
+}
