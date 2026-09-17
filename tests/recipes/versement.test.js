@@ -43,8 +43,27 @@ const REGISTRE = JSON.parse(lire('data', 'recipes', 'versements.json'))
 const CORPUS = JSON.parse(lire('data', 'recipes', 'corpus-v3.json'))
 const MIGRATION = lire('supabase', 'migrations', '20260919140000_date_versement.sql')
 const ROLLBACK = lire('supabase', 'migrations', '20260919140000_date_versement_rollback.sql')
-const VALEURS = lire('supabase', 'migrations', '20260919141000_date_versement_lot_jumeaux.sql')
-const VALEURS_ROLLBACK = lire('supabase', 'migrations', '20260919141000_date_versement_lot_jumeaux_rollback.sql')
+/**
+ * UNE MIGRATION DE VALEURS PAR LOT, et non une seule qu'on reprendrait.
+ *
+ * Chaque migration appliquée est figée — `apply-migrations.sh` refuse un fichier
+ * dont l'empreinte a changé après enregistrement —, donc un lot postérieur
+ * écrit la sienne. C'est le régime normal de l'usine à recettes : un lot par
+ * semaine, une migration de dates par lot. Les contrôles ci-dessous portent
+ * donc sur l'UNION de ces fichiers, pas sur l'un d'eux, et le tableau est lu
+ * DEPUIS LE REGISTRE : un lot ajouté au registre sans sa migration fait rougir
+ * la lecture du fichier manquant, ce qui est exactement le signal voulu.
+ */
+const MIGRATIONS_DE_VALEURS = {
+  'jumeaux-vegetariens': '20260919141000_date_versement_lot_jumeaux',
+  'jumeaux-13': '20260919142000_date_versement_lot_jumeaux_13',
+}
+const VALEURS_PAR_LOT = Object.fromEntries(Object.entries(MIGRATIONS_DE_VALEURS).map(([lot, base]) => [lot, {
+  apply: lire('supabase', 'migrations', `${base}.sql`),
+  rollback: lire('supabase', 'migrations', `${base}_rollback.sql`),
+}]))
+const VALEURS = Object.values(VALEURS_PAR_LOT).map((fichiers) => fichiers.apply).join('\n')
+const VALEURS_ROLLBACK = Object.values(VALEURS_PAR_LOT).map((fichiers) => fichiers.rollback).join('\n')
 const CHARGEUR = lire('scripts', 'data', 'recipes', 'build-corpus-v3.mjs')
 const ROUTE = lire('app', 'api', 'recipes', 'nouveautes', 'route.js')
 const MANIFESTE = JSON.parse(lire('scripts', 'db', 'migration-manifest.json'))
@@ -244,10 +263,19 @@ describe('date de versement — registre, migration et chargeur disent la même 
   })
 
   it('la migration de valeurs porte EXACTEMENT les codes et la date du registre', () => {
+    // CHAQUE lot du registre a SA migration, et c'est celle-là qui doit porter
+    // sa date et ses codes. Les confondre laisserait un lot sans migration
+    // passer au vert dès qu'un AUTRE lot porte une date : le contrôle lit donc
+    // fichier par fichier avant de regarder l'union.
     for (const lot of lots) {
-      expect(VALEURS).toContain(`SET corpus_poured_on = DATE '${lot.verse_le}'`)
-      expect(VALEURS_ROLLBACK).toContain(`rv.corpus_poured_on = DATE '${lot.verse_le}'`)
+      const fichiers = VALEURS_PAR_LOT[lot.lot]
+      expect(fichiers, `le lot ${lot.lot} n'a pas de migration de valeurs`).toBeTruthy()
+      expect(fichiers.apply).toContain(`SET corpus_poured_on = DATE '${lot.verse_le}'`)
+      expect(fichiers.rollback).toContain(`rv.corpus_poured_on = DATE '${lot.verse_le}'`)
+      const codesDuFichier = [...fichiers.apply.matchAll(/'([A-Z]+-\d+)'/g)].map((trouve) => trouve[1])
+      expect(codesDuFichier.sort(), lot.lot).toEqual([...lot.codes].sort())
     }
+    expect(Object.keys(VALEURS_PAR_LOT).sort()).toEqual(lots.map((lot) => lot.lot).sort())
     const codesEcrits = [...VALEURS.matchAll(/'([A-Z]+-\d+)'/g)].map((trouve) => trouve[1])
     // L'égalité, pas l'inclusion : un code en trop daterait une recette que
     // personne n'a versée ce jour-là, un code en moins la laisserait invisible.
@@ -305,8 +333,7 @@ describe('date de versement — registre, migration et chargeur disent la même 
     for (const fichier of [
       '20260919140000_date_versement.sql',
       '20260919140000_date_versement_rollback.sql',
-      '20260919141000_date_versement_lot_jumeaux.sql',
-      '20260919141000_date_versement_lot_jumeaux_rollback.sql',
+      ...Object.values(MIGRATIONS_DE_VALEURS).flatMap((base) => [`${base}.sql`, `${base}_rollback.sql`]),
     ]) {
       expect(parFichier.has(fichier), `${fichier} absent du manifeste`).toBe(true)
     }

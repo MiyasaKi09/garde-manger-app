@@ -2116,6 +2116,26 @@
     "expected_objects": []
   },
   {
+    "file": "20260919142000_date_versement_lot_jumeaux_13.sql",
+    "github_version": "20260919142000",
+    "name": "date_versement_lot_jumeaux_13",
+    "sha256": "8d8bd8d378bac8aa3e8199472302b653cf6c7b418828c080938cc2c97c41250e",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260919142000_date_versement_lot_jumeaux_13_rollback.sql",
+    "github_version": "20260919142000",
+    "name": "date_versement_lot_jumeaux_13_rollback",
+    "sha256": "f20a94b657a52d279414cc4e27319acf56a633577275cfa0815d728c256d8674",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
     "file": "20260919150000_corpus_v3_lot_jumeaux_13.sql",
     "github_version": "20260919150000",
     "name": "corpus_v3_lot_jumeaux_13",
