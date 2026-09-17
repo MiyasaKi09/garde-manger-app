@@ -24,7 +24,13 @@
 
 import { obtenirIndexPrix } from '@/lib/domain/pricing/priceIndex'
 import { computeRecipeCost } from '@/lib/domain/pricing/recipeCost'
-import { coutDeCarte } from '@/lib/domain/recipes/canonicalCatalog'
+// `coutDeCarte` vient de son propre module, JAMAIS de `canonicalCatalog` —
+// jalon J1 de la phase 5. Ce fichier est importé par quatre routes serveur ;
+// passer par `canonicalCatalog` leur donnait le corpus versionné (6,7 Mio) et
+// le catalogue de formes (616 Kio) dans leur bundle, pour une fonction qui ne
+// lit ni l'un ni l'autre. `tests/recipes/corpusHorsBundle.test.js` mesure le
+// graphe d'imports depuis les entrées Next et rougit si l'arête revient.
+import { coutDeCarte } from '@/lib/domain/recipes/coutDeCarte'
 import { computeShoppingListCost } from '@/lib/domain/pricing/shoppingListCost'
 import { computeWasteValue, SEUILS_ALERTE_JOURS } from '@/lib/domain/pricing/wasteValue'
 import { parseQuantity } from '@/lib/parseQuantity'
