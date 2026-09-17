@@ -86,7 +86,20 @@ async function syncTargetVersion(supabase, userId, goal, effectiveDate) {
         weight_loss_rate: goal.weight_loss_rate,
         bmr: goal.bmr,
         tdee: goal.tdee,
+        protein_coefficient_g_per_kg: goal.protein_coefficient_g_per_kg,
       },
+      // LA RÈGLE DE CALCUL, VERSIONNÉE AVEC LA CIBLE — livrable 1.3.
+      //
+      // Le plan demande que la cible protéique soit « versionnée dans
+      // nutrition_target_versions AVEC SA RÈGLE DE CALCUL ». Elle l'est ici, et
+      // pas ailleurs : `rationale` est déjà le champ où cette version dit d'où
+      // elle vient. Une cible sans sa règle ne se recalcule pas et ne se
+      // conteste pas — on ne saurait ni quel coefficient ni quel poids l'ont
+      // produite, ni si elle vient d'un calcul ou d'une saisie.
+      //
+      // Aucune migration n'est nécessaire : `rationale` est un `jsonb` de la
+      // migration 20260713134235, sans schéma imposé.
+      protein_rule: goal.protein_rule || null,
       saved_from: 'settings_planning',
     },
   }

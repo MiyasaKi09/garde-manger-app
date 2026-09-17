@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
-  DEFAULT_WEEKLY_BALANCE, UNCAPPED_PROTEIN_FAMILIES, buildWeeklyBalance, weeklyBalanceFor,
+  DEFAULT_WEEKLY_BALANCE, UNCAPPED_PROTEIN_FAMILIES, buildWeeklyBalance,
+  resolveHouseholdWeeklyBalance, weeklyBalanceFor,
 } from '@/lib/domain/planning/weeklyBalance'
 
 // L'équilibre hebdomadaire (poisson, viande, plancher végétarien, répétition par
@@ -68,5 +69,63 @@ describe('weeklyBalanceFor — bornes ramenées à la semaine', () => {
     // l'origine n'est pas déclarée n'est pas une espèce, et la plafonner
     // cacherait une donnée manquante derrière une semaine infaisable.
     expect(UNCAPPED_PROTEIN_FAMILIES).toEqual(['vegetal', 'laitiers', 'oeufs', 'inconnu'])
+  })
+})
+
+describe('resolveHouseholdWeeklyBalance — le plafond carné vient des quotas déclarés', () => {
+  // Livrable 1.1 : `meatMax` valait 4 en dur, et ce 4 mettait Zoé à 0 repas
+  // carné sur 14 sans qu'elle l'ait demandé (§2.3 du plan, P6). Cette
+  // résolution vivait dans `app/api/planning/generate-v3/route.js`, où elle ne
+  // s'éprouvait qu'en simulant Supabase.
+  const membre = (nom, planning = {}, reste = {}) => ({ name: nom, preferences: { planning }, ...reste })
+
+  it('somme les quotas déclarés des membres actifs', () => {
+    const balance = resolveHouseholdWeeklyBalance({
+      members: [
+        membre('A', { meat_meals_per_week: 4 }),
+        membre('B', { meat_meals_per_week: 2 }),
+      ],
+    })
+    expect(balance.meatMax).toBe(6)
+    // Les autres bornes ne bougent pas : le livrable ne touche qu'au carné.
+    expect(balance).toMatchObject({ fishMeals: 2, vegetarianMin: 8, maxMealsPerProteinFamily: 2 })
+  })
+
+  it('garde le défaut du moteur quand personne n’a déclaré de quota', () => {
+    // LE CAS QUI COMPTE LE PLUS : un foyer qui n'a rien réglé ne doit pas
+    // passer à zéro viande. `Number(null)` vaut 0, et une somme naïve aurait
+    // produit meatMax = 0 sans que personne n'ait touché à un réglage.
+    expect(resolveHouseholdWeeklyBalance({ members: [membre('A'), membre('B')] }).meatMax).toBe(4)
+    expect(resolveHouseholdWeeklyBalance({ members: [] }).meatMax).toBe(4)
+    expect(resolveHouseholdWeeklyBalance().meatMax).toBe(4)
+  })
+
+  it('ne compte pas le quota d’un membre inactif', () => {
+    // Il ne mange pas cette semaine : son quota gonflerait le plafond sans
+    // qu'aucune assiette n'y corresponde.
+    expect(resolveHouseholdWeeklyBalance({
+      members: [
+        membre('A', { meat_meals_per_week: 4 }),
+        membre('B', { meat_meals_per_week: 2 }, { active: false }),
+      ],
+    }).meatMax).toBe(4)
+  })
+
+  it('laisse un meatMax écrit l’emporter sur la somme déduite', () => {
+    const members = [membre('A', { meat_meals_per_week: 4 }), membre('B', { meat_meals_per_week: 2 })]
+    // Consigne directe de la requête.
+    expect(resolveHouseholdWeeklyBalance({ members, requestBalance: { meatMax: 3 } }).meatMax).toBe(3)
+    // Consigne portée par les réglages du foyer.
+    expect(resolveHouseholdWeeklyBalance({
+      members: [membre('A', { meat_meals_per_week: 4, weekly_balance: { meatMax: 1 } }), members[1]],
+    }).meatMax).toBe(1)
+  })
+
+  it('un quota de zéro est une déclaration, pas une absence', () => {
+    // « Je ne mange pas de viande » se règle, et le foyer passe alors à zéro
+    // créneau carné — ce qui est demandé, pas subi.
+    expect(resolveHouseholdWeeklyBalance({
+      members: [membre('A', { meat_meals_per_week: 0 }), membre('B', { meat_meals_per_week: 0 })],
+    }).meatMax).toBe(0)
   })
 })

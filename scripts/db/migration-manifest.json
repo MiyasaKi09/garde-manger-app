@@ -1948,5 +1948,49 @@
     "baseline": null,
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260917130000_meal_presence.sql",
+    "github_version": "20260917130000",
+    "name": "meal_presence",
+    "sha256": "75dbed2a13606ef1443d7b3c593f218e54b2b0c7f41dfd332a53f43d8213e111",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "meal_presence"
+      },
+      {
+        "type": "column",
+        "schema": "public",
+        "table": "meal_presence",
+        "name": "present"
+      },
+      {
+        "type": "index",
+        "schema": "public",
+        "table": "meal_presence",
+        "name": "uq_meal_presence_member_slot"
+      },
+      {
+        "type": "policy",
+        "schema": "public",
+        "table": "meal_presence",
+        "name": "meal_presence_select_own"
+      }
+    ]
+  },
+  {
+    "file": "20260917130000_meal_presence_rollback.sql",
+    "github_version": "20260917130000",
+    "name": "meal_presence_rollback",
+    "sha256": "ccdc30b5d4e3c2418e794e2052f8f60478f89b9a2d6bfa041205686e710e3a84",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

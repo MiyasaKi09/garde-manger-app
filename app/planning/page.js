@@ -8,6 +8,7 @@ import { authFetch } from '@/lib/authFetch'
 import { toast } from '@/components/Toast'
 import WeekGrid from './components/WeekGrid'
 import WeeklyNutritionRecap from './components/WeeklyNutritionRecap'
+import PresenceGrid from './components/PresenceGrid'
 import EstimationCourses from '@/components/pricing/EstimationCourses'
 import './PlanningDashboard.css'
 
@@ -474,6 +475,14 @@ export default function PlanningPage() {
           </section>
 
           <aside className="planning-side">
+            {/* Présence par personne et par créneau (livrable 1.5). Placée
+                AVANT les cartes d'action : on déclare qui mange à la maison,
+                puis on prépare la semaine — l'ordre inverse ferait générer
+                quatorze assiettes pour en retirer deux ensuite. */}
+            <PresenceGrid
+              windowStart={weekStart}
+              published={weekData?.activePlanVersion?.validation_summary?.presence || []}
+            />
             <article className="planning-side-card accent">
               <span className="planning-side-label">Cuisine en avance</span>
               <h2>Préparer sans courir</h2>

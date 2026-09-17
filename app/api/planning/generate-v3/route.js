@@ -7,7 +7,8 @@ import { toGramsV2 } from '@/lib/domain/units'
 import { generateClosedLoopPlan, isMealSuitableRecipe, recipeDiversityProfile } from '@/lib/domain/planning/closedLoopPlanner'
 import { isDessertRecipe } from '@/lib/domain/planning/plateRole'
 import { buildPlanningHistory, buildRepetitionRules } from '@/lib/domain/planning/repetitionRules'
-import { buildWeeklyBalance } from '@/lib/domain/planning/weeklyBalance'
+import { resolveHouseholdWeeklyBalance } from '@/lib/domain/planning/weeklyBalance'
+import { buildProteinDensityRequirement } from '@/lib/domain/planning/proteinDensity'
 import { buildHouseholdTasteProfile } from '@/lib/domain/planning/tastePreferences'
 import { explainWeek, previewInputs } from '@/lib/domain/planning/planExplanation'
 import { discoveryTarget } from '@/lib/domain/planning/discoveryProfile'
@@ -33,6 +34,30 @@ const addDays = (iso, count) => {
   const date = new Date(`${iso}T00:00:00Z`)
   date.setUTCDate(date.getUTCDate() + count)
   return date.toISOString().slice(0, 10)
+}
+
+/**
+ * Présence déclarée sur la fenêtre (livrable 1.5). Repli EXPLICITE sur une
+ * liste vide quand la table n'existe pas encore : un déploiement qui précède la
+ * migration continue de produire des semaines complètes, ce qui est exactement
+ * le comportement d'avant le livrable. Toute autre erreur remonte : une lecture
+ * qui échoue n'est pas une absence de déclaration, et servir quatorze assiettes
+ * à quelqu'un qui en a déclaré douze est une faute qu'on refuse de commettre en
+ * silence.
+ */
+async function loadPresenceDeclarations(supabase, windowStart) {
+  const { data, error } = await supabase
+    .from('meal_presence')
+    .select('household_member_id, meal_date, meal_type, present, note')
+    .gte('meal_date', windowStart)
+    .lte('meal_date', addDays(windowStart, 6))
+    .order('meal_date')
+    .order('meal_type')
+  // Table absente : PostgREST répond `PGRST205`, une erreur SQL directe
+  // `42P01` (même convention que `lib/storageDecisionServer.js:51`).
+  if (['42P01', 'PGRST205'].includes(error?.code)) return []
+  if (error) throw new Error(`Présence du foyer indisponible: ${error.message}`)
+  return data || []
 }
 
 const fold = (value) => String(value || '')
@@ -260,12 +285,12 @@ function resolveRepetitionRules(members = [], body = {}) {
  * autrement — c'est son arbitrage, pas celui du moteur. Sans réglage explicite,
  * les valeurs par défaut reproduisent exactement l'ancien comportement.
  */
+// Depuis le livrable 1.1, le plafond carné du foyer est la SOMME des quotas
+// déclarés par ses membres, et non plus la constante à 4 : la résolution — trois
+// sources et leur ordre de précédence — vit dans le domaine, où elle s'éprouve
+// sans simuler Supabase (`tests/planning/weeklyBalance.test.js`).
 function resolveWeeklyBalance(members = [], body = {}) {
-  const memberBalance = members
-    .map((member) => member?.preferences?.planning?.weekly_balance)
-    .find((balance) => balance && typeof balance === 'object') || {}
-  const requestBalance = body?.weekly_balance && typeof body.weekly_balance === 'object' ? body.weekly_balance : {}
-  return buildWeeklyBalance({ ...memberBalance, ...requestBalance })
+  return resolveHouseholdWeeklyBalance({ members, requestBalance: body?.weekly_balance })
 }
 
 async function loadPlannerInventory(supabase, recipes, excludedPlanVersionId = null) {
@@ -452,6 +477,11 @@ export async function POST(request) {
       slotProtectionState(slot, existing.meals, existing.tasks),
     ]))
     const recentRecipes = await loadRecentRecipeUsage(supabase, windowStart)
+    // Présence par personne et par créneau (livrable 1.5). Lue UNE fois pour la
+    // fenêtre, puis passée à la grille et à la transaction de publication : les
+    // deux doivent lire les mêmes déclarations, sans quoi la grille et les
+    // assiettes ne parleraient pas de la même semaine.
+    const presence = await loadPresenceDeclarations(supabase, windowStart)
     const goalNames = new Set((goalsResult.data || []).map((goal) => fold(goal.person_name)).filter(Boolean))
     const missingGoals = members.filter((member) => !goalNames.has(fold(member.name))).map((member) => member.name)
     if (missingGoals.length) {
@@ -478,7 +508,7 @@ export async function POST(request) {
       { recipeCode: slot.preparation?.recipe_code || null, slotKey: slot.slot_key, state: existing.slotStates[slot.slot_key] || {} },
     ]))
     const intent = resolveIntent(body)
-    const slots = buildWeekSlots(windowStart).map((slot) => {
+    const slots = buildWeekSlots(windowStart, { presence, members }).map((slot) => {
       const current = existingBySlot.get(`${slot.date}|${slot.mealType}`)
       const currentCode = current?.recipeCode || null
       if (current?.state?.protected && (!currentCode || !recipeCodes.has(currentCode))) {
@@ -534,6 +564,15 @@ export async function POST(request) {
       // Équilibre hebdomadaire réglable par le foyer (poisson, viande, plancher
       // végétarien, répétition par famille de protéine).
       weeklyBalance: resolveWeeklyBalance(members, body),
+      // PLANCHER DE DENSITÉ PROTÉIQUE PAR MEMBRE (livrable 1.4). Il se déduit
+      // des cibles DÉCLARÉES de chacun — protéines par kcal — et ne vaut que
+      // si elles existent. `null` quand aucun membre n'en a : le solveur se
+      // comporte alors exactement comme avant ce livrable.
+      proteinDensity: buildProteinDensityRequirement({
+        members,
+        goals: goalsResult.data || [],
+        totalSlots: slots.length,
+      }),
       maxMinutesByMeal: { dejeuner: 120, diner: 240 },
       preferredActiveMinutes: 30,
       recentRecipeTitles: recentRecipes.recentRecipeTitles,
@@ -649,6 +688,7 @@ export async function POST(request) {
       slotStates: existing.slotStates,
       corpusVersion: operationalCatalog.metadata.corpusVersion,
       householdTimeZone,
+      presence,
     })
     // Dernier garde-fou avant publication (§17, lot 9). Les règles de
     // répétition sont déjà vérifiées par le moteur ; on contrôle ici la
@@ -677,6 +717,17 @@ export async function POST(request) {
       summary: {
         meals: payload.slots.length,
         personalized_meals: payload.legacy_meals.length,
+        // Ce que la présence déclarée a réellement changé (livrable 1.5) : par
+        // personne, les assiettes principales servies sur la grille de la
+        // semaine. C'est le « 12 au lieu de 14 », rendu par la génération
+        // elle-même, et l'écran n'a rien à recalculer.
+        presence: (payload.validation_summary.presence || []).map((ligne) => ({
+          person_name: ligne.person_name,
+          household_member_id: ligne.household_member_id,
+          main_meals: ligne.main_meals,
+          week_main_slots: ligne.week_main_slots,
+          declared_absences: ligne.declared_absences.length,
+        })),
         changed: slots.filter((slot) => !slot.fixedRecipeCode).length,
         recipes: new Set(payload.slots.map((slot) => slot.recipe_code)).size,
         // JOURNAL DE GÉNÉRATION (0a.3). Le vivier réellement reçu de la base,

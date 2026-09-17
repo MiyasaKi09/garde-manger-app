@@ -90,6 +90,11 @@ export default function NutritionOnboarding() {
         weight_loss_rate: parseFloat(r.weight_loss_rate) || null,
         bmr: r.bmr || null,
         tdee: r.tdee || null,
+        // Aucun coefficient protéique n'est demandé à l'inscription : le défaut
+        // documenté s'applique (1,6 g/kg de poids cible en perte, 1,4 en
+        // maintien) et se règle ensuite dans Paramètres → Planning.
+        protein_coefficient_g_per_kg: null,
+        calculation_source: r.calculation_source === 'manual' ? 'manual' : 'questionnaire',
       }))
 
       const res = await authFetch('/api/nutrition/goals', {
@@ -109,7 +114,10 @@ export default function NutritionOnboarding() {
 
   const setResultField = (i, field, value) => {
     const v = parseInt(value) || 0
-    setResults(prev => prev.map((p, j) => j === i ? { ...p, [field]: v } : p))
+    // Une valeur retouchée à la main devient la SOURCE de l'objectif. Sans ce
+    // marquage, le serveur recalculerait la cible protéique depuis le poids
+    // cible (livrable 1.3) et écraserait silencieusement la saisie.
+    setResults(prev => prev.map((p, j) => j === i ? { ...p, [field]: v, calculation_source: 'manual' } : p))
   }
 
   return (

@@ -9,12 +9,16 @@ import {
   productionShelfLifeDays,
 } from '@/lib/domain/planning/closedLoopPlanner'
 import { buildWeekSlots } from '@/lib/domain/planning/canonicalPlanPayload'
-import { buildPersonalizedMeals } from '@/lib/domain/planning/personalizedMeals'
+import { buildPersonalizedMeals, vegetarianLineageTwins } from '@/lib/domain/planning/personalizedMeals'
+import { getMemberPlanningRules } from '@/lib/domain/planning/memberPlanningRules'
+import { buildWeeklyBalance, meatMaxFromDeclaredQuotas } from '@/lib/domain/planning/weeklyBalance'
 import { buildPlanningHistory } from '@/lib/domain/planning/repetitionRules'
 import { usesSharedBase } from '@/lib/domain/planning/sharedBases'
 import { freezerShelfLifeDays, isRecipeFreezable } from '@/lib/domain/planning/cookingSessions'
 import { getCanonicalRecipes } from '@/lib/domain/recipes/canonicalCatalog'
 import { ingredientOrigin, isVegetarianCompatibleOrigin } from '@/lib/domain/foods/origins'
+import { calculateProteinTarget } from '@/lib/nutritionCalculator'
+import { buildProteinDensityRequirement } from '@/lib/domain/planning/proteinDensity'
 
 /**
  * LE RAPPORT DE QUALITÉ — dix-huit chiffres, trois semaines consécutives.
@@ -46,7 +50,8 @@ import { ingredientOrigin, isVegetarianCompatibleOrigin } from '@/lib/domain/foo
  * LE PROTOCOLE. Trois semaines CONSÉCUTIVES avec historique cumulé, aux
  * paramètres exacts de `app/api/planning/generate-v3/route.js` — faisceau 48,
  * `maxMinutesByMeal { dejeuner: 120, diner: 240 }`, `preferredActiveMinutes`
- * 30, cible par repas identique — et le foyer réel via
+ * 30, cible par repas recalculée depuis les objectifs comme la route le fait,
+ * et plancher de densité protéique du foyer — et le foyer réel via
  * `buildPersonalizedMeals`. Les trois semaines sont planifiées UNE FOIS au
  * niveau du `describe` : la CI accorde vingt secondes par test et une
  * recherche en faisceau de largeur 48 sur 568 recettes en coûte cinq à neuf à
@@ -80,24 +85,109 @@ import { ingredientOrigin, isVegetarianCompatibleOrigin } from '@/lib/domain/foo
  */
 
 // ─── Paramètres, recopiés de app/api/planning/generate-v3/route.js ──────────
-// Cible par repas : celle de l'annexe A1 de docs/PLAN_PLANNING_PARFAIT.md,
-// c'est-à-dire le foyer réel rapporté à un créneau.
-const TARGET = { kcal: 707, proteinG: 51, carbsG: 72.6, fatG: 23.7, fiberG: 9.8 }
 const BEAM_WIDTH = 48
 const MAX_MINUTES_BY_MEAL = { dejeuner: 120, diner: 240 }
 const PREFERRED_ACTIVE_MINUTES = 30
 
+/**
+ * LE POIDS CIBLE DE JULIEN EST UN PARAMÈTRE DE PROTOCOLE, PAS UNE DONNÉE.
+ *
+ * Depuis le livrable 1.3, la cible protéique vaut `coefficient × poids cible`.
+ * Le dépôt ne déclare AUCUN poids cible : les 216 g et 2357 kcal du §2.3
+ * viennent de la base du foyer, pas d'un fichier d'ici, et le poids cible n'a
+ * jamais été exporté. Ce rapport en fixe donc un, et le DIT — il ne le déduit
+ * pas, il ne le devine pas.
+ *
+ * La valeur retenue est la plus EXIGEANTE des quatre mesurées (85, 90, 95 et
+ * 100 kg) : c'est celle qui produit la cible protéique la plus haute, donc le
+ * P4 le plus difficile. Choisir un poids cible plus léger ferait passer P4 par
+ * le choix du paramètre plutôt que par le moteur, ce que ce plan s'interdit.
+ * La table complète — P4 aux trois coefficients et aux quatre poids — est dans
+ * `tests/nutrition/cibleProteique.test.js` ; elle permet de lire ce que P4 vaut
+ * pour un autre poids cible que celui-ci.
+ *
+ * Le jour où le foyer déclare le sien, cette constante disparaît et le rapport
+ * lit la base.
+ */
+const POIDS_CIBLE_JULIEN_KG = 100
+const RYTHME_JULIEN = 0.75
+const CIBLE_PROTEIQUE_JULIEN = calculateProteinTarget({
+  targetWeightKg: POIDS_CIBLE_JULIEN_KG,
+  weightLossRate: RYTHME_JULIEN,
+})
+
 const GOALS = [
-  { person_name: 'Julien', target_calories: 2357, target_protein_g: 216, target_carbs_g: 196, target_fat_g: 79, target_fiber_g: 33 },
-  { person_name: 'Zoé', target_calories: 1525, target_protein_g: 75, target_carbs_g: 192, target_fat_g: 51, target_fiber_g: 21 },
+  {
+    person_name: 'Julien',
+    household_member_id: 'j',
+    target_calories: 2357,
+    // Calculée, plus déclarée en dur : 1,6 g/kg × 100 kg = 160 g. Les 216 g du
+    // §2.3 étaient 1,8 g/kg du poids ACTUEL (livrable 1.3).
+    target_protein_g: CIBLE_PROTEIQUE_JULIEN.protein_g,
+    // Les glucides sont « le reste » : ils suivent la cible protéique, sans
+    // quoi les trois macros ne fermeraient plus le budget énergétique.
+    target_carbs_g: Math.max(0, Math.round((2357 - CIBLE_PROTEIQUE_JULIEN.protein_g * 4 - 79 * 9) / 4)),
+    target_fat_g: 79,
+    target_fiber_g: 33,
+  },
+  { person_name: 'Zoé', household_member_id: 'z', target_calories: 1525, target_protein_g: 75, target_carbs_g: 192, target_fat_g: 51, target_fiber_g: 21 },
 ]
+// Les quotas carnés décidés au §8 du plan — « Julien 4, Zoé 2 par défaut,
+// réglables » —, déclarés ici depuis que `meat_meals_per_week` est un réglage
+// du dépôt (livrable 1.1). Ce sont des DONNÉES du foyer, pas une constante du
+// moteur : `memberPlanningRules.js` ne connaît aucun prénom.
+//
+// CE QUE LEUR DÉCLARATION CHANGE DANS CE RAPPORT, ET IL FAUT LE LIRE AVANT LE
+// TABLEAU : les dix-huit lignes ne portent plus sur le même foyer. Le plafond
+// carné du foyer devient la somme des quotas (6 au lieu de 4), le nombre de
+// substitutions change, et donc la semaine entière. Les chiffres consignés au
+// §2.3 du plan ont été mesurés AVANT, sur un foyer sans quota où Zoé était à
+// 0/14 ; ils ne se comparent plus terme à terme à ceux-ci. Garder l'ancien
+// réglage aurait gardé la comparabilité au prix d'une mesure fausse : le foyer
+// a tranché, et un rapport qui mesure un autre réglage que celui du foyer ne
+// mesure rien.
 const MEMBERS = [
-  { id: 'j', name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } },
-  // Quatre swaps par semaine : c'est le réglage qui existe aujourd'hui.
-  // `meat_meals_per_week` — le quota par personne décidé au §8 du plan — n'est
-  // pas encore un réglage du dépôt (livrable 1.1) ; on ne l'invente pas ici.
-  { id: 'z', name: 'Zoé', portion_multiplier: 1, preferences: { planning: { breakfast: false, snack: true, vegetarian_meat_swaps_per_week: 4 } } },
+  { id: 'j', name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true, meat_meals_per_week: 4 } } },
+  // Zoé garde `vegetarian_meat_swaps_per_week` dans son profil : c'est l'état
+  // réel d'un profil enregistré avant le quota, et le quota doit le remplacer
+  // plutôt que s'y ajouter.
+  { id: 'z', name: 'Zoé', portion_multiplier: 1, preferences: { planning: { breakfast: false, snack: true, vegetarian_meat_swaps_per_week: 4, meat_meals_per_week: 2 } } },
 ]
+
+/**
+ * Cible par repas, calculée EXACTEMENT comme `nutritionTargets()` de
+ * `app/api/planning/generate-v3/route.js` : la part de chaque membre qui revient
+ * aux plats principaux (1 − petit-déjeuner 20 % − collation 15 %, divisée par
+ * deux repas), puis la moyenne des membres. Elle était recopiée en dur
+ * (`{ kcal: 707, proteinG: 51, … }`) ; elle ne pouvait donc pas suivre la cible
+ * protéique du livrable 1.3, et le rapport aurait planifié contre un chiffre
+ * périmé tout en mesurant P4 contre le nouveau.
+ */
+const partPlatsPrincipaux = (member) => {
+  const planning = member?.preferences?.planning || {}
+  const support = (planning.breakfast ? 0.20 : 0) + (planning.snack ? 0.15 : 0)
+  return Math.max(0.25, (1 - support) / 2)
+}
+const TARGET = Object.fromEntries(Object.entries({
+  kcal: 'target_calories',
+  proteinG: 'target_protein_g',
+  carbsG: 'target_carbs_g',
+  fatG: 'target_fat_g',
+  fiberG: 'target_fiber_g',
+}).map(([cle, champ]) => {
+  const valeurs = MEMBERS.map((member) => {
+    const goal = GOALS.find((item) => item.person_name === member.name)
+    return Number(goal?.[champ]) * partPlatsPrincipaux(member)
+  }).filter((valeur) => Number.isFinite(valeur) && valeur > 0)
+  return [cle, valeurs.reduce((total, valeur) => total + valeur, 0) / valeurs.length]
+}))
+
+/**
+ * Plancher de densité protéique du foyer (livrable 1.4), construit comme la
+ * route le construit. Sans lui, ce rapport mesurerait un moteur que la
+ * production n'utilise plus.
+ */
+const PLANCHER_DENSITE = buildProteinDensityRequirement({ members: MEMBERS, goals: GOALS, totalSlots: 14 })
 
 // Les trois semaines du §2.3, pour que les chiffres rendus soient comparables
 // à ceux qui y sont consignés.
@@ -178,6 +268,14 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
   const servables = recipes.filter(isMealSuitableRecipe)
   const parCode = new Map(recipes.map((recipe) => [recipe.code, recipe]))
 
+  // Plafond carné du foyer, déduit des quotas déclarés (livrable 1.1) :
+  // c'est ce que `resolveWeeklyBalance` calcule dans la route de production.
+  // `null` quand personne n'a déclaré de quota — le moteur garde alors son
+  // défaut, et le rapport le dit au lieu d'afficher un plafond inventé.
+  const plafondCarneDuFoyer = meatMaxFromDeclaredQuotas(
+    MEMBERS.map((member) => getMemberPlanningRules(member).meatMealsPerWeek),
+  )
+
   // ─── Les trois semaines, planifiées UNE FOIS ─────────────────────────────
   // L'historique se cumule d'une semaine à l'autre : sans lui, les trois
   // semaines seraient trois tirages indépendants et P1bis ne voudrait rien
@@ -203,8 +301,15 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
       constraints: {
         allowShopping: true,
         targetByMeal: { dejeuner: TARGET, diner: TARGET },
+        proteinDensity: PLANCHER_DENSITE,
         maxMinutesByMeal: MAX_MINUTES_BY_MEAL,
         preferredActiveMinutes: PREFERRED_ACTIVE_MINUTES,
+        // Ce que `resolveWeeklyBalance` de la route déduit depuis le livrable
+        // 1.1 : le plafond carné du foyer est la somme des quotas déclarés.
+        // Sans cette ligne, le rapport annoncerait un plafond de 6 et
+        // planifierait à 4 — l'écran dirait une chose, le moteur en ferait une
+        // autre, et la ligne P6 serait fausse sans qu'on puisse le voir.
+        ...(plafondCarneDuFoyer == null ? {} : { weeklyBalance: { meatMax: plafondCarneDuFoyer } }),
       },
       beamWidth: BEAM_WIDTH,
     })
@@ -256,22 +361,82 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
       && Number(jour.total.proteinG) >= SEUIL_P4 * Number(jour.target.proteinG)).length)
   const relachesParSemaine = julienParSemaine.map((jours) => jours.filter((jour) => jour.protein_gate_relaxed).length)
 
-  // ─── P5 — ratio de portion entre les deux assiettes d'un même plat ───────
+  // ─── P5 — ratio de portion ───────────────────────────────────────────────
+  // DEUX DÉFINITIONS COEXISTENT, et le plan emploie les deux : le §1 de
+  // `docs/PLAN_PLANNING_PARFAIT.md` dit « ratio de portion NÉCESSAIRE À JULIEN
+  // pour atteindre ses kcal » (la portion d'une personne), le §2.3 de
+  // `docs/PLAN_FINIR_MYKO.md` consigne « max 1,86 / 2,00 / 2,00 », qui est le
+  // ratio ENTRE MEMBRES. Les deux sont mesurés et imprimés : un seul chiffre
+  // sans sa définition est un chiffre faux (P18).
+  //
   // `portion_ratio_lunch/dinner` est un ratio de FOYER (max / min entre
   // membres) : les deux lignes quotidiennes portent la même valeur. On ne lit
   // que celles de Julien, sans quoi chaque ratio serait compté deux fois.
   const ratiosParSemaine = julienParSemaine.map((jours) => jours
     .flatMap((jour) => [jour.portion_ratio_lunch, jour.portion_ratio_dinner])
     .filter((ratio) => Number.isFinite(ratio)))
+  const portionsJulienParSemaine = semaines.map(({ perso }) => platsPrincipaux(perso)
+    .filter((meal) => meal.person_name === 'Julien')
+    .map((meal) => Number(meal.planned_servings)))
+  const proteinesParSemaine = julienParSemaine.map((jours) => moyenne(jours.map((jour) => jour.total.proteinG)))
 
-  // ─── P6 — repas carnés de chacun ─────────────────────────────────────────
-  const carnesParMembre = semaines.map(({ perso }) => MEMBERS.map((member) => ({
-    nom: member.name,
-    carnes: platsPrincipaux(perso)
-      .filter((meal) => meal.person_name === member.name)
-      .filter((meal) => classifyRecipe(parCode.get(meal.canonical_recipe_code)).meat).length,
-    total: platsPrincipaux(perso).filter((meal) => meal.person_name === member.name).length,
-  })))
+  // BORNE ARITHMÉTIQUE du ratio ENTRE MEMBRES, jour par jour. Sur un plat
+  // partagé, l'énergie que les repas principaux doivent porter vaut, pour
+  // chacun, sa cible moins ses prises support — lesquelles sont des rotations
+  // fixes. Le rapport de ces deux énergies est la moyenne des deux ratios
+  // (déjeuner et dîner) pondérée par l'énergie ; or un maximum est toujours ≥
+  // une moyenne pondérée. Aucun choix de plats ne descend donc sous cette
+  // borne, et c'est elle qu'il faut lire à côté de la cible ≤ 1,3.
+  const bornesRatio = semaines.flatMap(({ perso }) => {
+    const dates = [...new Set(perso.meals.map((meal) => meal.meal_date))]
+    return dates.map((date) => {
+      const supports = (nom) => somme(perso.meals
+        .filter((meal) => meal.meal_date === date && meal.person_name === nom && !meal.canonical_recipe_code)
+        .map((meal) => Number(meal.kcal) || 0))
+      const julien = Number(GOALS[0].target_calories) - supports(GOALS[0].person_name)
+      const zoe = Number(GOALS[1].target_calories) - supports(GOALS[1].person_name)
+      return zoe > 0 ? julien / zoe : null
+    }).filter((borne) => Number.isFinite(borne))
+  })
+
+  // ─── P6 — repas carnés de chacun, contre son quota déclaré ───────────────
+  // Depuis le livrable 1.1, c'est `buildPersonalizedMeals` qui rend cette
+  // mesure : il l'a calculée au moment de décider les substitutions, et la
+  // refaire ici produirait un second chiffre qui pourrait diverger du premier.
+  // Le contrôle qui reste ici est celui du DÉNOMBREMENT — que la ligne rendue
+  // par le moteur corresponde aux repas réellement émis —, parce que c'est la
+  // seule chose qu'un lecteur ne peut pas vérifier depuis la ligne elle-même.
+  const quotasParSemaine = semaines.map(({ perso }) => perso.meatQuotas)
+  const quotasIncoherents = semaines.flatMap(({ debut, perso }) => perso.meatQuotas
+    .filter((ligne) => ligne.meat_meals !== platsPrincipaux(perso)
+      .filter((meal) => meal.person_name === ligne.person_name)
+      .filter((meal) => classifyRecipe(parCode.get(meal.canonical_recipe_code)).meat).length)
+    .map((ligne) => `${debut} ${ligne.person_name}`))
+
+  // ─── L'ÉQUILIBRE DU FOYER, ET CE QUE LE PLAFOND DÉDUIT LUI COÛTE ─────────
+  //
+  // AJOUTÉ À LA RELECTURE DU 17 SEPTEMBRE 2026, PARCE QUE PERSONNE NE L'AVAIT
+  // MESURÉ. Le livrable 1.1 fait du plafond carné la somme des quotas — 6 au
+  // lieu de 4 —, mais les autres bornes de `weeklyBalance.js` n'ont pas bougé.
+  // Or elles se partageaient les quatorze créneaux : 4 carnés + 2 poissons +
+  // 8 végétariens = 14, tout juste. À 6 carnés, la somme des trois vaut 16 et
+  // le plancher végétarien devient ARITHMÉTIQUEMENT hors d'atteinte. Le moteur
+  // publie alors la semaine avec un déficit `vegetarian_min` — un avertissement
+  // permanent, que rien n'obligeait à lire.
+  //
+  // Mesuré à protocole identique : avant la phase 1, les trois semaines
+  // servaient 8, 8 et 9 repas végétariens et n'émettaient AUCUN déficit
+  // d'équilibre ; après, 6, 5 et 5, et le déficit est là les trois fois. Ce
+  // n'est pas un défaut du livrable — le foyer a demandé six repas carnés —
+  // mais c'est un réglage qui appelle une décision, et une décision ne se prend
+  // pas sur un chiffre qu'on n'a pas écrit.
+  const deficitsEquilibre = semaines.map(({ plan }) => (plan.issues || [])
+    .filter((issue) => issue.missing != null)
+    .map((issue) => `${issue.code} −${issue.missing}`))
+  const bornesDuFoyer = buildWeeklyBalance(
+    plafondCarneDuFoyer == null ? {} : { meatMax: plafondCarneDuFoyer },
+  )
+  const sommeDesBornes = bornesDuFoyer.meatMax + bornesDuFoyer.fishMeals + bornesDuFoyer.vegetarianMin
 
   // ─── P7 — substitutions hors lignée ──────────────────────────────────────
   // Dénominateur : les repas RÉELLEMENT substitués (`variant_kind` autre que
@@ -281,6 +446,23 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
     .filter((meal) => meal.variant_kind && meal.variant_kind !== 'household_base'))
   const horsLigneeParSemaine = substitutionsParSemaine.map((subs) => subs
     .filter((meal) => meal.portion_details?.same_lineage === false))
+  // LE CRITÈRE, qui n'est pas le total ci-dessus. P7 vise « 0 hors lignée
+  // QUAND UN JUMEAU EXISTE » : une substitution hors lignée faute de jumeau au
+  // corpus n'est pas une faute, c'est un manque de corpus, et c'est le lot
+  // d'usine de la phase 5 qui le comble. Les deux chiffres sont rendus, parce
+  // que le §2.3 du plan consigne le total (« 6 sur 11 ») et que la cible porte
+  // sur l'autre.
+  const horsLigneeAvecJumeau = semaines.flatMap(({ debut, plan, perso }) => platsPrincipaux(perso)
+    .filter((meal) => meal.portion_details?.same_lineage === false)
+    .flatMap((meal) => {
+      const creneau = plan.slots.find((slot) => slot.date === meal.meal_date && slot.mealType === meal.meal_type)
+      const base = creneau ? parCode.get(creneau.recipeCode) : null
+      const jumeaux = base ? vegetarianLineageTwins(base, recipes, {}) : []
+      return jumeaux.length
+        ? [`${debut} ${meal.meal_date} ${meal.meal_type} ${meal.person_name} : ${base.code} → ${meal.canonical_recipe_code}, `
+          + `jumeaux disponibles ${jumeaux.map((recipe) => recipe.code).join(', ')}`]
+        : []
+    }))
 
   // ─── P8 — faux végétariens ───────────────────────────────────────────────
   // (a) Servis : un repas donné comme substitution végétarienne dont un
@@ -471,31 +653,64 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
       libelle: 'Julien — jours à ≥ 85 % de sa cible protéique',
       mesure: `${parSemaine(p4ParSemaine.map((n, i) => `${n}/${julienParSemaine[i].length}`))} ; `
         + `protein_gate_relaxed ${parSemaine(relachesParSemaine.map((n, i) => `${n}/${julienParSemaine[i].length}`))} ; `
-        + `cible lue : ${GOALS[0].target_protein_g} g déclarés — le calcul depuis le poids CIBLE est le livrable 1.3, il n'existe pas`,
-      cible: '≥ 6 jours sur 7, contre une cible calculée depuis le poids cible',
+        + `protéines servies ${parSemaine(proteinesParSemaine.map((valeur) => `${fr(valeur)} g`))} `
+        + `soit ${parSemaine(proteinesParSemaine.map((valeur) => pct(valeur, GOALS[0].target_protein_g)))} de la cible ; `
+        + `cible CALCULÉE (livrable 1.3) : ${fr(CIBLE_PROTEIQUE_JULIEN.rule.coefficient_g_per_kg)} g/kg × ${POIDS_CIBLE_JULIEN_KG} kg de poids cible = ${GOALS[0].target_protein_g} g `
+        + `(${CIBLE_PROTEIQUE_JULIEN.rule.coefficient_source}) — les 216 g du §2.3 étaient 1,8 g/kg du poids ACTUEL ; `
+        + `le poids cible du foyer n'est PAS déclaré dans le dépôt : celui-ci est un paramètre de protocole, le plus exigeant des quatre mesurés `
+        + '(table complète dans tests/nutrition/cibleProteique.test.js)',
+      cible: '≥ 6 jours sur 7, contre une cible calculée depuis le poids cible'
     },
     {
       id: 'P5',
-      libelle: 'Ratio de portion entre les deux assiettes d\'un même plat',
-      mesure: `maxima ${parSemaine(ratiosParSemaine.map((ratios) => (ratios.length ? fr(Math.max(...ratios), 2) : 'aucun plat partagé')))} ; `
+      libelle: 'Ratio de portion — entre les deux assiettes d\'un même plat, et portion de Julien',
+      mesure: `entre membres : maxima ${parSemaine(ratiosParSemaine.map((ratios) => (ratios.length ? fr(Math.max(...ratios), 2) : 'aucun plat partagé')))} ; `
         + `moyennes ${parSemaine(ratiosParSemaine.map((ratios) => (ratios.length ? fr(moyenne(ratios), 2) : 'sans objet')))} `
-        + `sur ${parSemaine(ratiosParSemaine.map((ratios) => String(ratios.length)))} plats partagés`,
-      cible: '≤ 1,3',
+        + `sur ${parSemaine(ratiosParSemaine.map((ratios) => String(ratios.length)))} plats partagés ; `
+        + `portion de Julien seule : maxima ${parSemaine(portionsJulienParSemaine.map((portions) => fr(Math.max(...portions), 2)))}, `
+        + `moyennes ${parSemaine(portionsJulienParSemaine.map((portions) => fr(moyenne(portions), 2)))} ; `
+        + `borne arithmétique du ratio entre membres, jour par jour : ${fr(Math.min(...bornesRatio), 2)} à ${fr(Math.max(...bornesRatio), 2)} `
+        + `(moyenne ${fr(moyenne(bornesRatio), 2)}), dépassant 1,3 sur ${bornesRatio.filter((borne) => borne > 1.3).length}/${bornesRatio.length} jours`,
+      cible: '≤ 1,3 — DEUX définitions coexistent et le plan les emploie toutes deux (§1 « ratio de portion de Julien », §2.3 « ratio de portion ») ; '
+        + 'la borne arithmétique ci-dessus est le plancher que l\'écart d\'énergie entre les deux membres impose au ratio ENTRE MEMBRES, '
+        + 'qu\'aucun choix de plat ne franchit'
     },
     {
       id: 'P6',
-      libelle: 'Repas carnés de chacun sur la semaine',
-      mesure: MEMBERS.map((member, rang) => `${member.name} `
-        + parSemaine(carnesParMembre.map((membres) => `${membres[rang].carnes}/${membres[rang].total}`))).join(' ; ')
-        + ' ; quota par personne (meat_meals_per_week) non déclaré dans le dépôt — livrable 1.1',
-      cible: 'le quota déclaré de chacun ± 1 (§8 : Julien 4, Zoé 2 par défaut)',
+      libelle: 'Repas carnés de chacun sur la semaine, contre son quota déclaré',
+      mesure: MEMBERS.map((member, rang) => {
+        const lignes6 = quotasParSemaine.map((membres) => membres[rang])
+        const quota = lignes6[0].declared_quota
+        return `${member.name} (quota ${quota == null ? 'non déclaré' : quota}) `
+          + parSemaine(lignes6.map((ligne) => `${ligne.meat_meals}/${ligne.main_meals}`))
+          + (quota == null ? '' : ` — écart ${parSemaine(lignes6.map((ligne) => String(ligne.quota_gap)))}`)
+      }).join(' ; ')
+        + ` ; plafond carné du foyer = somme des quotas déclarés = ${plafondCarneDuFoyer ?? 'aucun quota déclaré'}`
+        + ' (livrable 1.1 ; il valait 4 en dur)'
+        + ` ; créneaux carnés réellement servis au foyer ${parSemaine(quotasParSemaine.map((membres) => String(membres[0].household_meat_slots)))}`
+        + (quotasIncoherents.length ? ` ; INCOHÉRENCE de dénombrement : ${quotasIncoherents.join(', ')}` : '')
+        + ` ; CE QUE CE PLAFOND COÛTE AUX AUTRES BORNES : viande ${bornesDuFoyer.meatMax}`
+        + ` + poisson ${bornesDuFoyer.fishMeals} + plancher végétarien ${bornesDuFoyer.vegetarianMin}`
+        + ` = ${sommeDesBornes} pour 14 créneaux`
+        + (sommeDesBornes > 14
+          ? ` — le plancher végétarien est donc hors d'atteinte de ${sommeDesBornes - 14}, et le moteur rapporte `
+            + `${parSemaine(deficitsEquilibre.map((liste) => (liste.length ? liste.join(' / ') : 'aucun déficit')))}`
+            + ' ; avant la phase 1, à plafond 4, les trois semaines servaient 8, 8 et 9 repas végétariens sans aucun déficit d\'équilibre'
+          : ` — les trois bornes tiennent dans la semaine ; déficits rapportés ${parSemaine(deficitsEquilibre.map((liste) => (liste.length ? liste.join(' / ') : 'aucun')))}`),
+      cible: 'le quota déclaré de chacun ± 1 (§8 : Julien 4, Zoé 2 par défaut). '
+        + 'Le plancher végétarien de weeklyBalance.js reste à 8/14 : il n\'a PAS été abaissé pour faire disparaître le déficit ci-dessus — '
+        + 'le baisser serait décider à la place du foyer combien de repas végétariens il veut',
     },
     {
       id: 'P7',
       libelle: 'Substitutions hors lignée quand un jumeau de même lignée existe',
-      mesure: `${somme(horsLigneeParSemaine.map((liste) => liste.length))}/${somme(substitutionsParSemaine.map((liste) => liste.length))} `
-        + `(${parSemaine(horsLigneeParSemaine.map((liste, index) => `${liste.length}/${substitutionsParSemaine[index].length}`))}) ; `
-        + 'mesuré sur le chemin JSON du dépôt — la RPC opérationnelle ne publie pas derivedFrom, donc 0 lignée en production (§0.3)',
+      mesure: `${horsLigneeAvecJumeau.length} hors lignée alors qu'un jumeau existait — c'est le critère ; `
+        + `total des substitutions hors lignée, toutes causes : ${somme(horsLigneeParSemaine.map((liste) => liste.length))}/`
+        + `${somme(substitutionsParSemaine.map((liste) => liste.length))} `
+        + `(${parSemaine(horsLigneeParSemaine.map((liste, index) => `${liste.length}/${substitutionsParSemaine[index].length}`))}), `
+        + 'faute de jumeau au corpus ; mesuré ici sur le chemin JSON du dépôt, et sur le CHEMIN BASE — '
+        + 'toutes les recettes carnées servies par la RPC, derivedFrom publié par la phase 0b — '
+        + 'par tests/planning/quotaViandeParMembre.test.js',
       cible: '0 hors lignée quand un jumeau existe',
     },
     {
@@ -617,8 +832,13 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
     `Protocole : trois semaines consécutives (${DEBUTS.join(', ')}), historique cumulé, sans stock.`,
     `Paramètres de app/api/planning/generate-v3/route.js : faisceau ${BEAM_WIDTH}, `
       + `maxMinutesByMeal ${JSON.stringify(MAX_MINUTES_BY_MEAL)}, preferredActiveMinutes ${PREFERRED_ACTIVE_MINUTES},`,
-    `cible par repas ${JSON.stringify(TARGET)}.`,
+    `cible par repas ${Object.entries(TARGET).map(([cle, valeur]) => `${cle} ${fr(valeur)}`).join(', ')} — recalculée depuis les objectifs, comme la route (livrable 1.3).`,
+    `Plancher de densité protéique du foyer (livrable 1.4) : ${PLANCHER_DENSITE ? `${fr(PLANCHER_DENSITE.floor, 4)} g/kcal sur ${PLANCHER_DENSITE.minSlots}/14 créneaux, membre le plus exigeant` : 'aucun'}.`,
     `Foyer : ${GOALS.map((goal) => `${goal.person_name} ${goal.target_calories} kcal / ${goal.target_protein_g} g`).join(' ; ')}.`,
+    `Quotas carnés déclarés (livrable 1.1, §8 du plan) : ${MEMBERS
+      .map((member) => `${member.name} ${getMemberPlanningRules(member).meatMealsPerWeek ?? 'non déclaré'}`)
+      .join(' ; ')} — plafond du foyer ${plafondCarneDuFoyer ?? 'laissé au défaut du moteur'}, contre 4 en dur avant ce livrable.`,
+    'Les dix-huit lignes ne se comparent donc plus terme à terme à celles du §2.3 du plan, qui mesurait un foyer sans quota.',
     `Corpus : ${corpusEntier.length} recettes, ${recipes.length} publiables, ${servables.length} servables (chemin JSON du dépôt).`,
     'Périmètre — ce que ce rapport NE fait PAS comme la route de production : il planifie sur les '
       + `${recipes.length} publiables, sans le filtre isMealSuitableRecipe (aucun des codes servis ici n'en serait écarté)`,
@@ -633,7 +853,9 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
     '─── ANNEXE : ce qui permet de contester un chiffre ───',
     ...semaines.flatMap(({ debut, plan, perso }) => [
       '',
-      `Semaine du ${debut} — statut ${plan.status}`
+      `Semaine du ${debut} — statut du SOLVEUR ${plan.status}`
+        + ' (le statut PUBLIÉ est celui de validation_summary et il n\'est pas le même : '
+        + 'il ajoute les contrôles nutritionnels de la semaine — mesuré par tests/planning/quotaViandeParMembre.test.js)'
         + `${(plan.issues || []).length ? ` — issues : ${(plan.issues || []).map((issue) => issue.code).join(', ')}` : ''}`,
       ...plan.slots.map((slot) => {
         const classification = classifications.get(slot)

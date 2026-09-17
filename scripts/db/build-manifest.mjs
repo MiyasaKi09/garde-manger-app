@@ -158,6 +158,16 @@ const NEW_EXPECTED_OBJECTS = {
   // traduction, pas seulement la RPC. `get_operational_recipe_catalog_v3`
   // existait déjà avant cette migration — un contrôle par son nom seul passerait
   // au vert sans que la projection ait changé.
+  // La présence par personne et par créneau (livrable 1.5). On vérifie la
+  // COLONNE `present` et l'index d'unicité, pas seulement le nom de la table :
+  // c'est `present = false` qui retire une assiette, et c'est l'unicité qui
+  // empêche deux déclarations contradictoires sur le même créneau.
+  '20260917130000': [
+    { type: 'table', schema: 'public', name: 'meal_presence' },
+    { type: 'column', schema: 'public', table: 'meal_presence', name: 'present' },
+    { type: 'index', schema: 'public', table: 'meal_presence', name: 'uq_meal_presence_member_slot' },
+    { type: 'policy', schema: 'public', table: 'meal_presence', name: 'meal_presence_select_own' },
+  ],
   '20260917110000': [
     { type: 'column', schema: 'catalog', table: 'food_forms', name: 'origin' },
     { type: 'column', schema: 'catalog', table: 'food_forms', name: 'origin_source' },
