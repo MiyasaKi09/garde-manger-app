@@ -26,6 +26,12 @@ import { tempsDeLaSemaine } from '@/lib/domain/planning/cookingTime'
 import { ingredientOrigin, isVegetarianCompatibleOrigin } from '@/lib/domain/foods/origins'
 import { calculateProteinTarget } from '@/lib/nutritionCalculator'
 import { buildProteinDensityRequirement } from '@/lib/domain/planning/proteinDensity'
+// L'arbitrage relu des libellés de cuisine (livrable 3.1). P13 le lit ICI, et
+// non plus par un regroupement de préfixe : « France (Bourgogne) » et
+// « France / cuisine domestique internationale » sont la France parce qu'un
+// fichier relu le dit, pas parce que leur libellé commence par le même mot.
+import { cleCuisine, libellesNonArbitres, repartitionCuisines } from '@/lib/domain/recipes/cuisineArbitrage'
+import { mesurerLatenceAlternatives } from './mesureAlternatives'
 
 /**
  * LE RAPPORT DE QUALITÉ — dix-huit chiffres, trois semaines consécutives.
@@ -326,6 +332,19 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
   }
 
   const tousCreneaux = semaines.flatMap(({ plan }) => plan.slots)
+
+  // ─── Latence des alternatives (livrable 3.2) ─────────────────────────────
+  // Le critère demande que le chiffre soit « consigné dans le rapport de
+  // qualité » : il l'est ici, avec son périmètre. Ce n'est pas un dix-neuvième
+  // critère — P1 à P18 restent les dix-huit du §9.1 — c'est une mesure de
+  // protocole, au même titre que le corpus et les paramètres du solveur.
+  // La mesure elle-même vit dans `tests/planning/mesureAlternatives.js`, partagé
+  // avec `tests/planning/alternativesLatence.test.js` qui l'EXIGE : deux
+  // mesures écrites séparément finiraient par ne plus dire la même chose.
+  const latenceAlternatives = mesurerLatenceAlternatives({
+    slots: semaines[0].plan.slots,
+    candidates: servables,
+  })
   const classifications = new Map(tousCreneaux.map((slot) => [slot, classifyRecipe(parCode.get(slot.recipeCode))]))
   const platsPrincipaux = (perso) => perso.meals
     .filter((meal) => meal.canonical_recipe_code && ['dejeuner', 'diner'].includes(meal.meal_type))
@@ -356,9 +375,32 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
     return tete ? { feculent: tete[0], compte: tete[1], creneaux: plan.slots.length } : null
   })
 
+  // Part de CHAQUE féculent sur les trois semaines, et pas seulement du
+  // dominant de chacune : P2 écrit « aucun féculent au-dessus de 25 % », ce qui
+  // se vérifie famille par famille. Le dominant d'une semaine peut tenir la
+  // borne pendant qu'un autre la franchit sur l'ensemble.
+  const feculentsSurTrois = new Map()
+  for (const slot of tousCreneaux) {
+    const feculent = feculentDe(slot)
+    if (!feculent) continue
+    feculentsSurTrois.set(feculent, (feculentsSurTrois.get(feculent) || 0) + 1)
+  }
+  const feculentsTries = [...feculentsSurTrois.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+
   // ─── P3 — laitiers et œufs en protéine principale ────────────────────────
   const laitiersOeufsParSemaine = semaines.map(({ plan }) => plan.slots
     .filter((slot) => ['laitiers', 'oeufs'].includes(classifications.get(slot).mainProtein)).length)
+
+  // ─── Le régime des plafonds du livrable 3.1, tel que le moteur l'a résolu ──
+  // Relu sur le plan PUBLIÉ plutôt que recalculé : le rapport doit dire ce que
+  // le moteur a fait, pas ce qu'il aurait dû faire. Les trois semaines partagent
+  // le même vivier, donc le même régime ; on le vérifie au lieu de le supposer.
+  const regimesPlafonds = semaines.map(({ plan }) => plan.objectiveScores.weeklyCaps)
+  const regimePlafonds = regimesPlafonds[0]
+  const regimeIdentique = regimesPlafonds.every((regime) => regime.enforced === regimePlafonds.enforced
+    && regime.reason === regimePlafonds.reason)
+  const bornesPlafonds = semaines[0].plan.objectiveScores.weeklyTargets
+  const depassementsParSemaine = semaines.map(({ plan }) => plan.objectiveScores.weeklyCaps.overruns)
 
   // ─── P4 — jours de Julien à ≥ 85 % de sa cible protéique ─────────────────
   const SEUIL_P4 = 0.85
@@ -674,21 +716,32 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
   const platsCheminBase = attenduSql(/v_plats <> (\d+) THEN/)
 
   // ─── P13 — cuisines ──────────────────────────────────────────────────────
-  const comptesCuisine = new Map()
-  for (const slot of tousCreneaux) {
-    const cuisine = classifications.get(slot).cuisine
-    comptesCuisine.set(cuisine, (comptesCuisine.get(cuisine) || 0) + 1)
-  }
-  const cuisinesTriees = [...comptesCuisine.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-  // Regroupement PROVISOIRE des libellés composites par préfixe. Ce n'est pas
-  // une normalisation arbitrée : `data/recipes/arbitrations/cuisines.json`
-  // (livrable 3.1) n'existe pas, et tant qu'il n'existe pas ce regroupement
-  // reste une lecture mécanique du préfixe, signalée comme telle — « italie
-  // cuisine domestique francaise » reste comptée en Italie.
+  //
+  // LA NORMALISATION EST ARBITRÉE DEPUIS LE LIVRABLE 3.1, et cette ligne a
+  // changé de nature. Elle regroupait les libellés composites PAR PRÉFIXE, ce
+  // qui est une lecture d'orthographe : « italie cuisine domestique francaise »
+  // restait comptée en Italie, et rien n'aurait rattaché « Louisiane » aux
+  // États-Unis ni « Goa » à l'Inde. Elle lit désormais
+  // `data/recipes/arbitrations/cuisines.json`, relu ligne à ligne, où chacun
+  // des 101 libellés repliés du corpus porte sa cuisine, sa règle et son motif.
+  //
+  // Les DEUX comptes sont imprimés, brut et arbitré, parce que l'écart entre
+  // eux est précisément ce que le livrable a fait : un libellé de moins n'est
+  // pas une cuisine de moins.
   const ARBITRAGE_CUISINES = 'data/recipes/arbitrations/cuisines.json'
-  const franceComposite = cuisinesTriees
-    .filter(([libelle]) => libelle === 'france' || libelle.startsWith('france '))
-    .reduce((total, [, compte]) => total + compte, 0)
+  const libellesBrutsServis = tousCreneaux.map((slot) => parCode.get(slot.recipeCode)?.cuisineOrigin ?? null)
+  const cuisinesBrutes = new Set(libellesBrutsServis.map((libelle) => String(libelle ?? 'non renseignee')))
+  const repartition = repartitionCuisines(libellesBrutsServis)
+  const cuisinesTriees = [...repartition.parCuisine.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+  // Contrôle de cohérence : la cuisine que le MOTEUR a rangée dans sa
+  // classification doit être celle que l'arbitrage rend ici. Deux comptages
+  // d'une même part peuvent diverger ; celui-ci ne le peut pas sans qu'on le
+  // voie.
+  const cuisinesDivergentes = tousCreneaux.filter((slot) => classifications.get(slot).cuisine
+    !== cleCuisine(parCode.get(slot.recipeCode)?.cuisineOrigin)).length
+  const nonArbitresServis = libellesNonArbitres(libellesBrutsServis)
+  const franceArbitree = repartition.parCuisine.get('france') || 0
 
   // ─── P14 — retour de goût ────────────────────────────────────────────────
   const appelantsFeedback = fichiersCitant('api/meals/feedback', ['app', 'components', 'lib'],
@@ -720,19 +773,28 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
     },
     {
       id: 'P2',
-      libelle: 'Part des créneaux sur pâtes, et féculent dominant',
+      libelle: 'Part des créneaux sur pâtes, et part de chaque féculent',
       mesure: `pâtes ${patesTotal}/${tousCreneaux.length} = ${pct(patesTotal, tousCreneaux.length)} `
         + `(${parSemaine(semaines.map((s, i) => pct(patesParSemaine[i], s.plan.slots.length)))}) ; `
         + `féculent dominant par semaine : ${parSemaine(feculentDominantParSemaine
-          .map((tete) => (tete ? `${tete.feculent} ${tete.compte}/${tete.creneaux} = ${pct(tete.compte, tete.creneaux)}` : 'aucun')))}`,
+          .map((tete) => (tete ? `${tete.feculent} ${tete.compte}/${tete.creneaux} = ${pct(tete.compte, tete.creneaux)}` : 'aucun')))} ; `
+        + `sur les trois semaines, chaque féculent : ${feculentsTries
+          .map(([feculent, compte]) => `${feculent} ${compte}/${tousCreneaux.length} = ${pct(compte, tousCreneaux.length)}`).join(', ')} ; `
+        + `plafonds du livrable 3.1 sur 14 créneaux : pâtes ${bornesPlafonds.pastaMax} `
+        + `(${pct(bornesPlafonds.pastaMaxShare * 100, 100)}), tout autre féculent ${bornesPlafonds.starchMax} `
+        + `(${pct(bornesPlafonds.starchMaxShare * 100, 100)}) — ${regimePlafonds.enforced ? 'ARMÉS' : 'en AVERTISSEMENT'}`,
       cible: '≤ 15 % de pâtes, aucun féculent au-dessus de 25 %',
     },
     {
       id: 'P3',
       libelle: 'Part des repas dont la protéine principale est un laitier ou un œuf',
       mesure: `${somme(laitiersOeufsParSemaine)}/${tousCreneaux.length} = ${pct(somme(laitiersOeufsParSemaine), tousCreneaux.length)} `
-        + `(${parSemaine(laitiersOeufsParSemaine.map((n, i) => `${n}/${semaines[i].plan.slots.length}`))})`,
-      cible: '≤ 20 % — et ces deux familles sont aujourd\'hui exemptées du plafond de weeklyBalance.js',
+        + `(${parSemaine(laitiersOeufsParSemaine.map((n, i) => `${n}/${semaines[i].plan.slots.length}`))}) ; `
+        + `plafond d'AGRÉGAT du livrable 3.1 : ${bornesPlafonds.dairyEggProteinMax}/14 `
+        + `(${pct(bornesPlafonds.dairyEggProteinMaxShare * 100, 100)}), ${regimePlafonds.enforced ? 'ARMÉ' : 'en AVERTISSEMENT'} — `
+        + 'les deux familles restent exemptées du plafond PAR FAMILLE (UNCAPPED_PROTEIN_FAMILIES), '
+        + 'qui à 2 repas chacune autoriserait 4/14 = 28,6 %, au-dessus de la cible ; c\'est la somme des deux qui est bornée',
+      cible: '≤ 20 %, les deux familles comptées ensemble',
     },
     {
       id: 'P4',
@@ -862,11 +924,20 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
     },
     {
       id: 'P13',
-      libelle: 'Cuisines distinctes sur trois semaines',
-      mesure: `${cuisinesTriees.length} libellés bruts ; libellé le plus servi ${cuisinesTriees[0]?.[0] ?? 'aucun'} `
+      libelle: 'Cuisines distinctes sur trois semaines, libellés normalisés par arbitrage relu',
+      mesure: `${cuisinesTriees.length} cuisines après arbitrage (${cuisinesBrutes.size} libellés bruts servis) ; `
+        + `cuisine la plus servie ${cuisinesTriees[0]?.[0] ?? 'aucune'} `
         + `${cuisinesTriees[0]?.[1] ?? 0}/${tousCreneaux.length} = ${pct(cuisinesTriees[0]?.[1] ?? 0, tousCreneaux.length)} ; `
-        + `France en regroupant les libellés composites par préfixe ${franceComposite}/${tousCreneaux.length} = ${pct(franceComposite, tousCreneaux.length)} `
-        + `— regroupement mécanique, ${ARBITRAGE_CUISINES} absent (livrable 3.1)`,
+        + `France ${franceArbitree}/${tousCreneaux.length} = ${pct(franceArbitree, tousCreneaux.length)} ; `
+        + `répartition : ${cuisinesTriees.map(([cuisine, compte]) => `${cuisine} ${compte}`).join(', ')} ; `
+        + `plafond du livrable 3.1 : ${bornesPlafonds.cuisineMax}/14 (${pct(bornesPlafonds.cuisineMaxShare * 100, 100)}), `
+        + `${regimePlafonds.enforced ? 'ARMÉ' : 'en AVERTISSEMENT'} parce que ${regimePlafonds.reason} `
+        + `(${regimePlafonds.pivot} ${regimePlafonds.pivotRecipes}/${regimePlafonds.poolSize} du vivier = `
+        + `${regimePlafonds.pivotShare == null ? 'non calculable' : pct(regimePlafonds.pivotShare * 100, 100)}, seuil `
+        + `${pct(regimePlafonds.threshold * 100, 100)}) ; `
+        + `normalisation lue dans ${ARBITRAGE_CUISINES}, ${nonArbitresServis.length} libellé(s) servi(s) non arbitré(s)`
+        + `${nonArbitresServis.length ? ` : ${nonArbitresServis.join(', ')}` : ''} ; `
+        + `${cuisinesDivergentes} créneau(x) où la cuisine du moteur diffère de l'arbitrage`,
       cible: '≥ 8 cuisines, aucune au-dessus de 40 %, libellés composites normalisés par arbitrage relu',
     },
     {
@@ -940,6 +1011,12 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
       .join(' ; ')} — plafond du foyer ${plafondCarneDuFoyer ?? 'laissé au défaut du moteur'}, contre 4 en dur avant ce livrable.`,
     'Les dix-huit lignes ne se comparent donc plus terme à terme à celles du §2.3 du plan, qui mesurait un foyer sans quota.',
     `Corpus : ${corpusEntier.length} recettes, ${recipes.length} publiables, ${servables.length} servables (chemin JSON du dépôt).`,
+    `Latence des alternatives (livrable 3.2, « réponse < 3 s au 95e centile sur vingt appels ») : `
+      + `médiane ${fr(latenceAlternatives.mediane)} ms, p95 ${fr(latenceAlternatives.p95)} ms, max ${fr(latenceAlternatives.max)} ms `
+      + `sur ${latenceAlternatives.appels} appels et ${latenceAlternatives.candidats} candidats — CALCUL SEUL, sans réseau ni base :`,
+    'c\'est un plancher de la latence servie, pas un temps de réponse en production, et la CI ne sait pas mesurer le reste.',
+    'La référence de départ est la Routine LLM qu\'il remplace, 30 000 à 60 000 ms annoncées à l\'écran par TodayMeals.jsx.',
+    'La route de bout en bout, contre une base en mémoire, est mesurée par tests/planning/alternativesLatence.test.js, qui EXIGE les 3 s.',
     'Périmètre — ce que ce rapport NE fait PAS comme la route de production : il planifie sur les '
       + `${recipes.length} publiables, sans le filtre isMealSuitableRecipe (aucun des codes servis ici n'en serait écarté)`,
     'et sans l\'élagage selectPlanningRecipePool(maxCandidates: 400) du livrable 0a.4, qui ne présente au faisceau que 460 candidats.',
@@ -1013,6 +1090,34 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
     ))).toEqual([])
     expect(corpusOrigineInconnue).toEqual([])
     expect(p8).toBe(0)
+  })
+
+  it('P13 — la normalisation des cuisines couvre les trois semaines, et le moteur la lit', () => {
+    // CE CONTRÔLE EST EXIGÉ, comme P8 et P11, et pour la même raison : ce n'est
+    // pas une mesure à rapporter, c'est une contradiction à corriger. Un
+    // libellé servi mais non arbitré rendrait la part de la France fausse
+    // d'autant sans que la ligne P13 cesse d'afficher un nombre — exactement
+    // le « chiffre non calculable rendu sous forme de nombre » que P18
+    // interdit. Le test de corpus `tests/data/cuisinesArbitrage.test.js` tient
+    // le corpus entier ; celui-ci tient les recettes RÉELLEMENT SERVIES.
+    expect(nonArbitresServis).toEqual([])
+    // Le moteur et ce rapport comptent la même cuisine pour le même plat. Deux
+    // comptages d'une même part peuvent diverger ; celui-ci ne le peut pas
+    // sans qu'on le voie.
+    expect(cuisinesDivergentes).toBe(0)
+    // Les trois semaines partagent le même vivier, donc le même régime de
+    // plafonds. Un régime qui changerait d'une semaine à l'autre voudrait dire
+    // que la bascule dépend d'autre chose que du vivier, et la ligne P13 en
+    // imprimerait un seul pour trois.
+    expect(regimeIdentique, `régimes : ${regimesPlafonds.map((regime) => regime.reason).join(', ')}`).toBe(true)
+    // Et la moitié « avertissement » de la parade du §5 : tant que le régime
+    // n'est pas armé, aucun dépassement n'est tu. Chaque dépassement publié
+    // porte son compte, et un dépassement de zéro n'est jamais publié.
+    for (const depassements of depassementsParSemaine) {
+      for (const depassement of depassements) {
+        expect(depassement.missing, depassement.code).toBeGreaterThan(0)
+      }
+    }
   })
 
   it('P11 — aucune production contredite par sa conservation déclarée', () => {

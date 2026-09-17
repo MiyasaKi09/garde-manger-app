@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import {
-  DEFAULT_WEEKLY_BALANCE, UNCAPPED_PROTEIN_FAMILIES, buildWeeklyBalance,
+  DEFAULT_WEEKLY_BALANCE, DEFAULT_WEEKLY_CAPS, UNCAPPED_PROTEIN_FAMILIES, buildWeeklyBalance,
   resolveHouseholdWeeklyBalance, weeklyBalanceFor,
 } from '@/lib/domain/planning/weeklyBalance'
 
@@ -10,8 +10,12 @@ import {
 
 describe('buildWeeklyBalance — réglages du foyer', () => {
   it('reproduit exactement l’ancien comportement sans réglage', () => {
-    expect(buildWeeklyBalance()).toEqual(DEFAULT_WEEKLY_BALANCE)
-    expect(buildWeeklyBalance(null)).toEqual(DEFAULT_WEEKLY_BALANCE)
+    // Depuis le livrable 3.1, `buildWeeklyBalance` rend aussi les quatre
+    // plafonds de part (P2, P3, P13). Les bornes en nombre de créneaux, elles,
+    // n'ont pas bougé d'une unité : c'est ce que les deux lignes ci-dessous
+    // vérifient, chacune sur son groupe.
+    expect(buildWeeklyBalance()).toEqual({ ...DEFAULT_WEEKLY_BALANCE, ...DEFAULT_WEEKLY_CAPS })
+    expect(buildWeeklyBalance(null)).toEqual({ ...DEFAULT_WEEKLY_BALANCE, ...DEFAULT_WEEKLY_CAPS })
     expect(DEFAULT_WEEKLY_BALANCE).toMatchObject({
       fishMeals: 2, meatMax: 4, vegetarianMin: 8, maxMealsPerProteinFamily: 2,
     })
@@ -37,10 +41,20 @@ describe('buildWeeklyBalance — réglages du foyer', () => {
 
 describe('weeklyBalanceFor — bornes ramenées à la semaine', () => {
   it('reproduit les valeurs historiques sur quatorze créneaux', () => {
-    expect(weeklyBalanceFor({ totalSlots: 14 })).toEqual({
+    // `toMatchObject` et non `toEqual` : le livrable 3.1 ajoute quatre plafonds
+    // à cet objet, et les éprouver ici ferait de ce test deux tests. Ce qu'il
+    // doit dire est intact — aucune des neuf bornes historiques n'a bougé —, et
+    // les plafonds ont leur propre fichier, `tests/planning/plafondsSemaine.test.js`,
+    // où ils sont éprouvés avec la bascule qui les arme.
+    expect(weeklyBalanceFor({ totalSlots: 14 })).toMatchObject({
       fish: 2, meatMax: 4, vegetarianMin: 8, redMeatMin: 1, fattyFishMin: 1,
       legumesMin: 2, cuisinesMin: 3, proteinsMin: 4, maxMealsPerProteinFamily: 2,
     })
+    expect(Object.keys(weeklyBalanceFor({ totalSlots: 14 })).sort()).toEqual([
+      'cuisineMax', 'cuisineMaxShare', 'cuisinesMin', 'dairyEggProteinMax', 'dairyEggProteinMaxShare',
+      'fattyFishMin', 'fish', 'legumesMin', 'maxMealsPerProteinFamily', 'meatMax', 'pastaMax',
+      'pastaMaxShare', 'proteinsMin', 'redMeatMin', 'starchMax', 'starchMaxShare', 'vegetarianMin',
+    ])
   })
 
   it('ne réclame pas plus de repas qu’il n’y a de créneaux', () => {
