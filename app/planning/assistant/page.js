@@ -23,7 +23,7 @@ import {
   lignesDePresence,
   viserPresence,
 } from '@/lib/domain/planning/confirmationContraintes'
-import { MAX_MINUTES_BORNES, INTENTS_MOTEUR } from '@/lib/domain/planning/intentFromPhrase'
+import { MAX_MINUTES_BORNES, INTENTS_MOTEUR, PHRASE_MAX } from '@/lib/domain/planning/intentFromPhrase'
 import { MAX_MEAT_MEALS_PER_WEEK } from '@/lib/domain/planning/memberPlanningRules'
 import { budgetClient, budgetTraduction, intentionDeRepli, repliDeclare } from '@/lib/domain/planning/budgetTraduction'
 
@@ -312,7 +312,7 @@ export default function PlanningAssistantPage() {
               id="asst-phrase-input"
               className="asst-phrase-input"
               value={phrase}
-              maxLength={400}
+              maxLength={PHRASE_MAX}
               rows={2}
               placeholder="Semaine chargée, rien au-delà de 30 minutes — et Zoé dîne dehors mardi."
               onChange={(event) => setPhrase(event.target.value)}

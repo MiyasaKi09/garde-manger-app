@@ -60,6 +60,7 @@ import {
   INTENTS_MOTEUR,
   MAX_MINUTES_BORNES,
   PHRASE_MAX,
+  PRESENCE_MAX,
   contraintesDuMoteur,
   messageUtilisateur,
   schemaDeSortie,
@@ -67,6 +68,7 @@ import {
   validerIntention,
   validerPhrase,
 } from '@/lib/domain/planning/intentFromPhrase'
+import { MAX_MEAT_MEALS_PER_WEEK } from '@/lib/domain/planning/memberPlanningRules'
 import { buildPresenceIndex } from '@/lib/domain/planning/mealPresence'
 import { buildWeeklyBalance, plafondDuFeculent, weeklyBalanceFor } from '@/lib/domain/planning/weeklyBalance'
 import { violatesHardConstraints } from '@/lib/domain/planning/closedLoopPlanner'
@@ -134,6 +136,158 @@ describe('Le contrat de sortie : cinq champs, et rien d\'autre', () => {
     expect(schema.additionalProperties).toBe(false)
     expect(schema.required).toEqual([...CHAMPS_TRADUITS])
     expect(Object.keys(schema.properties).sort()).toEqual([...CHAMPS_TRADUITS].sort())
+  })
+})
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 1 bis. LE SCHÉMA TIENT DANS LE SOUS-ENSEMBLE QUE LA SORTIE CONTRAINTE LIT
+// ═══════════════════════════════════════════════════════════════════════════
+
+/**
+ * LA FAUTE QUE LA RELECTURE DE LA PHASE 4 A TROUVÉE, ET CE QUI L'A CACHÉE.
+ *
+ * La sortie contrainte (`output_config.format`) ne lit pas tout JSON Schema :
+ * sa documentation énumère le sous-ensemble accepté et REFUSE le reste par une
+ * 400 — « If you use an unsupported feature, you'll receive a 400 error with
+ * details ». La première écriture de `schemaDeSortie` en portait TREIZE :
+ * cinq unions de types (`type: ['number', 'null']`, donné en exemple de ce
+ * qu'il ne faut pas écrire), six contraintes numériques, un `maxItems` et un
+ * `pattern`. Chaque appel réel aurait échoué, et la route aurait rendu 502 sur
+ * toutes les phrases — le livrable entier inopérant en production.
+ *
+ * POURQUOI AUCUN DES 2 076 TESTS NE POUVAIT LE VOIR : ils remplacent tous
+ * `@anthropic-ai/sdk` par une doublure, et une doublure accepte n'importe quel
+ * paramètre. Le SDK ne nettoie rien non plus — `messages.create()` poste le
+ * corps tel quel ; la transformation qui retire les contraintes non gérées
+ * n'existe que dans les aides qui construisent le schéma (`zodOutputFormat`),
+ * pas pour un schéma écrit à la main.
+ *
+ * CE BLOC EST DONC LE SEUL ENDROIT OÙ LE CONTRAT S'ÉPROUVE SANS CLÉ. Il
+ * PARCOURT le schéma et nomme chaque écart. Et parce qu'un vérificateur qui ne
+ * trouve rien est indiscernable d'un vérificateur qui ne cherche rien, il est
+ * lui-même éprouvé sur le schéma tel qu'il était écrit : il doit y retrouver
+ * les treize.
+ */
+
+const MOTS_CLES_ACCEPTES = new Set([
+  'type', 'properties', 'items', 'required', 'additionalProperties',
+  'description', 'title', 'default', 'enum', 'const',
+  'anyOf', 'allOf', '$ref', '$defs', 'definitions', 'format', 'minItems',
+])
+const TYPES_ACCEPTES = new Set(['object', 'array', 'string', 'integer', 'number', 'boolean', 'null'])
+const FORMATS_ACCEPTES = new Set([
+  'date-time', 'time', 'date', 'duration', 'email', 'hostname', 'uri', 'ipv4', 'ipv6', 'uuid',
+])
+
+/** Chaque écart au sous-ensemble, avec son chemin — pas un booléen. */
+function auditDuSchema(noeud, chemin = '$', trouvailles = []) {
+  if (!noeud || typeof noeud !== 'object' || Array.isArray(noeud)) return trouvailles
+  for (const [cle, valeur] of Object.entries(noeud)) {
+    const ou = `${chemin}.${cle}`
+    if (!MOTS_CLES_ACCEPTES.has(cle)) { trouvailles.push({ ou, motif: 'mot_cle_refuse' }); continue }
+    if (cle === 'type' && Array.isArray(valeur)) trouvailles.push({ ou, motif: 'union_de_types' })
+    if (cle === 'type' && typeof valeur === 'string' && !TYPES_ACCEPTES.has(valeur)) {
+      trouvailles.push({ ou, motif: 'type_inconnu' })
+    }
+    if (cle === 'format' && !FORMATS_ACCEPTES.has(valeur)) trouvailles.push({ ou, motif: 'format_refuse' })
+    if (cle === 'minItems' && valeur !== 0 && valeur !== 1) trouvailles.push({ ou, motif: 'minItems_hors_0_1' })
+    if (cle === 'properties') {
+      for (const [nom, sous] of Object.entries(valeur || {})) auditDuSchema(sous, `${ou}.${nom}`, trouvailles)
+    }
+    if (cle === 'items') auditDuSchema(valeur, ou, trouvailles)
+    if ((cle === 'anyOf' || cle === 'allOf') && Array.isArray(valeur)) {
+      valeur.forEach((sous, rang) => auditDuSchema(sous, `${ou}[${rang}]`, trouvailles))
+    }
+    if (cle === '$defs' || cle === 'definitions') {
+      for (const [nom, sous] of Object.entries(valeur || {})) auditDuSchema(sous, `${ou}.${nom}`, trouvailles)
+    }
+  }
+  if (noeud.type === 'object' && noeud.additionalProperties !== false) {
+    trouvailles.push({ ou: chemin, motif: 'objet_sans_additionalProperties_false' })
+  }
+  return trouvailles
+}
+
+/**
+ * Le schéma TEL QU'IL ÉTAIT ÉCRIT avant cette relecture. Il ne sert qu'ici :
+ * c'est le banc d'essai du vérificateur, et la trace de ce qui a été corrigé.
+ */
+const SCHEMA_DE_LA_PREMIERE_ECRITURE = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['presence', 'starchCap', 'meatQuota', 'maxMinutes', 'intent'],
+  properties: {
+    presence: {
+      type: ['array', 'null'],
+      maxItems: 28,
+      items: {
+        type: 'object',
+        additionalProperties: false,
+        required: ['person', 'date', 'mealType', 'present'],
+        properties: {
+          person: { type: 'string' },
+          date: { type: 'string', pattern: '^\\d{4}-\\d{2}-\\d{2}$' },
+          mealType: { type: 'string', enum: ['pdj', 'dejeuner', 'collation', 'diner'] },
+          present: { type: 'boolean' },
+        },
+      },
+    },
+    starchCap: { type: ['number', 'null'], exclusiveMinimum: 0, maximum: 1 },
+    meatQuota: { type: ['integer', 'null'], minimum: 0, maximum: 14 },
+    maxMinutes: { type: ['integer', 'null'], minimum: 5, maximum: 240 },
+    intent: { type: ['string', 'null'], enum: ['balanced', 'stock', 'quick', 'light', 'vegetarian', null] },
+  },
+}
+
+describe('Le schéma envoyé au modèle tient dans le sous-ensemble accepté', () => {
+  it('le vérificateur retrouve les treize écarts de la première écriture', () => {
+    // Le banc d'essai du vérificateur. Sans lui, un `auditDuSchema` qui ne
+    // regarderait rien rendrait `[]` sur le schéma corrigé et passerait pour
+    // une garde — c'est exactement la faute que la relecture de la phase 3 a
+    // trouvée ailleurs.
+    const trouvailles = auditDuSchema(SCHEMA_DE_LA_PREMIERE_ECRITURE)
+    const parMotif = trouvailles.reduce((compte, { motif }) => (
+      { ...compte, [motif]: (compte[motif] || 0) + 1 }
+    ), {})
+    expect(parMotif).toEqual({ union_de_types: 5, mot_cle_refuse: 8 })
+    expect(trouvailles).toHaveLength(13)
+    expect(trouvailles.map((t) => t.ou)).toEqual(expect.arrayContaining([
+      '$.properties.presence.maxItems',
+      '$.properties.presence.items.properties.date.pattern',
+      '$.properties.starchCap.exclusiveMinimum',
+      '$.properties.meatQuota.minimum',
+      '$.properties.maxMinutes.maximum',
+    ]))
+  })
+
+  it('le schéma servi aujourd\'hui ne porte AUCUN écart', () => {
+    expect(auditDuSchema(schemaDeSortie())).toEqual([])
+  })
+
+  it('aucune union de types : `null` passe par anyOf, comme la doc l\'impose', () => {
+    const schema = schemaDeSortie()
+    for (const champ of CHAMPS_TRADUITS) {
+      const propriete = schema.properties[champ]
+      expect(Array.isArray(propriete.type), `${champ} garde une union de types`).toBe(false)
+      expect(propriete.anyOf, champ).toHaveLength(2)
+      expect(propriete.anyOf[1], champ).toEqual({ type: 'null' })
+    }
+  })
+
+  it('les bornes retirées du schéma sont passées dans les descriptions, pas perdues', () => {
+    // Une contrainte numérique retirée sans être redite serait une consigne
+    // perdue : le modèle ne saurait plus entre quelles valeurs se tenir. La
+    // PORTE, elle, n'a jamais bougé — `validerIntention` est la seule qui
+    // refuse, et la section 2 de ce fichier l'éprouve.
+    const { properties } = schemaDeSortie()
+    expect(properties.maxMinutes.description).toContain(String(MAX_MINUTES_BORNES.min))
+    expect(properties.maxMinutes.description).toContain(String(MAX_MINUTES_BORNES.max))
+    expect(properties.meatQuota.description).toContain(String(MAX_MEAT_MEALS_PER_WEEK))
+    expect(properties.starchCap.description).toContain('0')
+    expect(properties.presence.description).toContain(String(PRESENCE_MAX))
+    // Le jour garde sa forme, par un format de chaîne accepté plutôt que par
+    // un `pattern`, qui ne l'est pas.
+    expect(properties.presence.anyOf[0].items.properties.date.format).toBe('date')
   })
 })
 
@@ -480,6 +634,13 @@ describe('Zéro écriture Supabase depuis le chemin de traduction', () => {
     const page = lire('app/planning/assistant/page.js')
     expect(page).toContain('/api/planning/intent-from-phrase')
     expect(page).toContain('<textarea')
+    // La longueur du champ vient du DOMAINE, pas d'un littéral recopié. Les
+    // deux ont vécu séparément : le champ coupait à 400 et `validerPhrase`
+    // refusait au-delà de `PHRASE_MAX`. Tant que les deux valaient 400 rien ne
+    // se voyait ; baisser la borne du domaine aurait laissé le champ accepter
+    // une phrase que la route refuse ensuite en 400.
+    expect(page).toContain('maxLength={PHRASE_MAX}')
+    expect(page).not.toMatch(/maxLength=\{\d+\}/)
     // Aucun appel de Routine sur ce chemin : c'est ce que le 4.4 achèvera, et
     // ce champ ne doit pas l'y ramener.
     expect(page).not.toContain('/api/routine/')

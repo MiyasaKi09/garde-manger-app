@@ -20,6 +20,7 @@ import {
 } from '@/lib/domain/courses/exportListe'
 import { buildPersonalizedMeals, vegetarianLineageTwins } from '@/lib/domain/planning/personalizedMeals'
 import { getMemberPlanningRules } from '@/lib/domain/planning/memberPlanningRules'
+import { plafondsParPrise } from '@/lib/domain/planning/intentFromPhrase'
 import { buildWeeklyBalance, meatMaxFromDeclaredQuotas } from '@/lib/domain/planning/weeklyBalance'
 import { buildPlanningHistory } from '@/lib/domain/planning/repetitionRules'
 import { usesSharedBase } from '@/lib/domain/planning/sharedBases'
@@ -77,7 +78,8 @@ import { mesurerLatenceAlternatives } from './mesureAlternatives'
  *
  * LE PROTOCOLE. Trois semaines CONSÉCUTIVES avec historique cumulé, aux
  * paramètres exacts de `app/api/planning/generate-v3/route.js` — faisceau 48,
- * `maxMinutesByMeal { dejeuner: 120, diner: 240 }`, `preferredActiveMinutes`
+ * les plafonds par prise que la route compose quand aucune durée n'est
+ * demandée (`plafondsParPrise(null)`), `preferredActiveMinutes`
  * 30, cible par repas recalculée depuis les objectifs comme la route le fait,
  * et plancher de densité protéique du foyer — et le foyer réel via
  * `buildPersonalizedMeals`. Les trois semaines sont planifiées UNE FOIS au
@@ -112,9 +114,17 @@ import { mesurerLatenceAlternatives } from './mesureAlternatives'
  * P16 qui mesure une durée et dépend donc de la machine.
  */
 
-// ─── Paramètres, recopiés de app/api/planning/generate-v3/route.js ──────────
+// ─── Paramètres de app/api/planning/generate-v3/route.js ───────────────────
+//
+// `maxMinutesByMeal` n'est PLUS un littéral recopié : depuis le livrable 4.2,
+// la route ne l'écrit plus en dur, elle appelle `plafondsParPrise(...)`. Le
+// rapport lit donc la même fonction, sans demande de temps, plutôt que d'en
+// garder une copie — une copie resterait à 120/240 le jour où la route
+// changerait, et la ligne « paramètres de generate-v3 » deviendrait fausse
+// sans que rien ne rougisse. Le chiffre servi est inchangé : c'est le même
+// défaut qu'avant, obtenu de sa source.
 const BEAM_WIDTH = 48
-const MAX_MINUTES_BY_MEAL = { dejeuner: 120, diner: 240 }
+const MAX_MINUTES_BY_MEAL = plafondsParPrise(null)
 const PREFERRED_ACTIVE_MINUTES = 30
 
 /**
