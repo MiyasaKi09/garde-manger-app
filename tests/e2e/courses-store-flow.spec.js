@@ -118,16 +118,40 @@ test.describe('Courses — acheté → ranger', () => {
     })
   })
 
+  // DEPUIS LE LIVRABLE 3.5, CHAQUE ARTICLE EST ÉCRIT DEUX FOIS DANS LE DOCUMENT.
+  // `app/courses/page.js` pose en permanence un second rendu de la liste,
+  // `.cou-print-doc`, que `app/courses/courses.css` masque à l'écran
+  // (`display: none`) et révèle à l'impression. C'est la sortie « impression /
+  // PDF » de P17, et elle n'est pas un artefact de test : elle doit être dans
+  // le document pour que la boîte d'impression du navigateur la trouve.
+  //
+  // `getByText` résout AUSSI les éléments masqués — la visibilité n'est
+  // éprouvée qu'APRÈS, sur ce qui a été résolu. Un `getByText('Poulet
+  // fermier')` nu tombe donc sur « strict mode violation : 2 elements », ce qui
+  // s'est produit en CI sur cd3d069. On nomme désormais le rendu qu'on vise :
+  // l'écran, `.cou-card-nm`. Le rendu d'impression est éprouvé à part, ci-dessous
+  // et par tests/courses/exportListe.test.js.
+  const articleAEcran = (page, nom) => page.locator('.cou-card-nm', { hasText: nom })
+
   test('renders courses page with mocked items', async ({ page }) => {
     await page.goto('/courses')
 
     await expect(page.getByRole('heading', { name: /la liste/i })).toBeVisible()
-    await expect(page.getByText('Poulet fermier')).toBeVisible()
+    await expect(articleAEcran(page, 'Poulet fermier')).toBeVisible()
+
+    // Le second rendu existe, et il est MASQUÉ À L'ÉCRAN. Les deux moitiés
+    // comptent : présent mais visible, il doublerait la liste sous les yeux du
+    // foyer ; absent, l'impression sortirait une page vide. `display: none`
+    // le retire aussi de l'arbre d'accessibilité, donc aucun lecteur d'écran
+    // ne lit la liste deux fois.
+    const copieImprimable = page.locator('.cou-print-nom', { hasText: 'Poulet fermier' })
+    await expect(copieImprimable).toHaveCount(1)
+    await expect(copieImprimable).toBeHidden()
   })
 
   test('clicking card marks it checked — no add-to-stock call', async ({ page }) => {
     await page.goto('/courses')
-    await expect(page.getByText('Poulet fermier')).toBeVisible()
+    await expect(articleAEcran(page, 'Poulet fermier')).toBeVisible()
 
     // Armer l'attente AVANT le clic (réponse mockée instantanée — flaky sinon)
     const patchDone = page.waitForResponse(
@@ -146,7 +170,7 @@ test.describe('Courses — acheté → ranger', () => {
 
   test('sticky "Ranger mes N achats" button appears after checking', async ({ page }) => {
     await page.goto('/courses')
-    await expect(page.getByText('Poulet fermier')).toBeVisible()
+    await expect(articleAEcran(page, 'Poulet fermier')).toBeVisible()
 
     // Armer l'attente AVANT le clic : la réponse mockée part instantanément
     // et serait ratée si waitForResponse était appelé après (flaky en CI).
@@ -162,7 +186,7 @@ test.describe('Courses — acheté → ranger', () => {
 
   test('opens StoragePlanSheet and Tout ranger calls add-to-stock', async ({ page }) => {
     await page.goto('/courses')
-    await expect(page.getByText('Poulet fermier')).toBeVisible()
+    await expect(articleAEcran(page, 'Poulet fermier')).toBeVisible()
 
     // Check the card
     // Armer l'attente AVANT le clic : la réponse mockée part instantanément

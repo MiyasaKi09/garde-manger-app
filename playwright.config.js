@@ -36,6 +36,34 @@ module.exports = defineConfig({
     baseURL: remoteBaseURL || 'http://localhost:3000',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
+    // LE SERVICE WORKER EST BLOQUÉ ICI, ET CE N'EST PAS UN CONTOURNEMENT.
+    //
+    // Depuis le livrable 3.7, `components/ServiceWorkerBridge.jsx` enregistre
+    // `/sw.js` depuis la mise en page racine — donc sur TOUTES les pages — et
+    // `public/sw.js` fait `skipWaiting()` puis `clients.claim()` : il prend la
+    // main sur la page déjà ouverte, sans rechargement. Il intercepte quatre
+    // lectures (`/api/pantry`, `/api/planning/imports`, `/api/courses`,
+    // `/api/nutrition/goals`) et les sert réseau d'abord.
+    //
+    // Or `page.route()` n'intercepte PAS une requête émise PAR un service
+    // worker : elle part du worker, pas de la page. Les réponses simulées de
+    // `tests/e2e/helpers/supabaseMock.js` n'arrivaient donc plus, et neuf tests
+    // de `/courses` et `/pantry` tombaient sur des écrans vides — ce qui s'est
+    // produit en CI sur le commit cd3d069. En développement le pont
+    // DÉSENREGISTRE le service worker (`NODE_ENV !== 'production'`) : la faute
+    // n'apparaît qu'en CI, qui lance `npm run start`.
+    //
+    // Ces spécifications éprouvent l'APPLICATION sur un réseau simulé ; un
+    // service worker devant ce banc ne mesure plus rien. Il est donc bloqué
+    // ici, et éprouvé là où il peut l'être :
+    //   — `tests/e2e/pwa-service-worker.spec.js` le rallume pour lui seul
+    //     (`test.use({ serviceWorkers: 'allow' })`) et vérifie dans un vrai
+    //     Chromium qu'il s'enregistre, qu'il prend la main et sur quelle portée ;
+    //   — `tests/pwa/serviceWorker.test.js` (20 tests) rejoue le VRAI fichier
+    //     `public/sw.js` et mesure sa stratégie réseau d'abord.
+    // Aucune couverture n'est perdue ; elle change d'endroit, et l'endroit est
+    // nommé.
+    serviceWorkers: 'block',
     // When PLAYWRIGHT_BROWSERS_PATH is set locally, point at the pre-installed
     // symlink. In CI after `npx playwright install chromium`, leave undefined.
     launchOptions: chromiumExecutable ? { executablePath: chromiumExecutable } : {},
