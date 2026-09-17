@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom'
 import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
 import CookSession from './CookSession'
-import { Loader2, ChefHat, RefreshCw, X, Check, Flame, Soup, Sparkles } from 'lucide-react'
+import { Loader2, ChefHat, RefreshCw, X, Check, Flame, Soup, Sparkles, ThumbsUp, ThumbsDown, Meh } from 'lucide-react'
 import { toast } from '@/components/Toast'
 import useStockCoverage from './useStockCoverage'
 import StockDot from './StockDot'
@@ -75,6 +75,28 @@ const MEAL_COLORS = {
 
 const MEAL_ORDER = ['pdj', 'dejeuner', 'diner', 'collation']
 
+/**
+ * LES TROIS GESTES DU RETOUR DE GOÛT (livrable 3.3).
+ *
+ * Trois, et pas quatre : ce sont EXACTEMENT les trois appréciations que
+ * `preferenceFromFeedback` (`lib/domain/planning/tastePreferences.js:298`) sait
+ * traduire en préférence lue par la génération suivante. La quatrième valeur
+ * acceptée par l'API, `acceptable`, ne change rien au profil — elle confirme
+ * l'existant. Elle n'a donc pas de bouton : un bouton sans effet se prend pour
+ * un avis pris en compte, et c'est pire que pas de bouton du tout.
+ *
+ * Ce qui manque encore, et qu'on ne fait pas semblant d'avoir : « trop souvent »
+ * (C5.2 du plan de septembre). L'axe `too_repetitive` existe dans la table, mais
+ * aucune règle ne le lit aujourd'hui — il n'aurait allongé le délai de retour
+ * d'aucun plat. Il faudra une traduction vers `repeat_delay_days` pour qu'il
+ * devienne un geste, pas avant.
+ */
+const TASTE_ACTIONS = [
+  { value: 'loved', label: 'Aimé', Icon: ThumbsUp, effect: 'Ce plat deviendra un favori du profil' },
+  { value: 'to_adjust', label: 'À revoir', Icon: Meh, effect: 'Ce plat sera évité sans être exclu' },
+  { value: 'never_again', label: 'Plus jamais', Icon: ThumbsDown, effect: 'Ce plat ne sera plus proposé' },
+]
+
 // Couleurs des barres via variables CSS (tokens --m-*)
 const MEAL_BAR_VAR = {
   pdj: 'var(--m-pdj)',
@@ -116,12 +138,31 @@ export default function TodayMeals({ importId }) {
   const [selectedMeal, setSelectedMeal] = useState(null)
   const [showChoice, setShowChoice] = useState(false)
 
+  // Retour de goût (livrable 3.3) : ce que chacun a déjà déclaré depuis
+  // l'ouverture de l'écran, par `${date}|${prise}|${personne}`, et l'envoi en
+  // cours. Le profil de goûts n'est pas rechargé ici : il est lu par la
+  // génération suivante, pas par cet écran.
+  const [tasteGiven, setTasteGiven] = useState({})
+  const [tasteSending, setTasteSending] = useState(null)
+
   // Modify-meal mode
   const [swapMode, setSwapMode] = useState(false)
   const [swapDirection, setSwapDirection] = useState('')
   const [swapping, setSwapping] = useState(false)
   const [swapError, setSwapError] = useState('')
   const [swapSuccess, setSwapSuccess] = useState(false)
+
+  // Alternatives déterministes (livrable 3.2) : ce que le moteur propose pour
+  // ce créneau, avec les conséquences de chaque échange sur le reste de la
+  // semaine. `altElapsedMs` est le temps réellement mesuré du dernier appel —
+  // affiché parce que c'est le critère du livrable, et qu'un chiffre annoncé
+  // sans mesure est un chiffre faux.
+  const [altLoading, setAltLoading] = useState(false)
+  const [altError, setAltError] = useState('')
+  const [alternatives, setAlternatives] = useState([])
+  const [altCurrent, setAltCurrent] = useState(null)
+  const [altElapsedMs, setAltElapsedMs] = useState(null)
+  const [applyingCode, setApplyingCode] = useState(null)
 
   const recipeCacheRef = useRef({})
 
@@ -276,6 +317,85 @@ export default function TodayMeals({ importId }) {
     }
   }
 
+  /**
+   * DONNER SON AVIS SUR UN REPAS, EN UN GESTE (livrable 3.3).
+   *
+   * La boucle existait en entier sauf ce clic : `/api/meals/feedback` écrit dans
+   * `meal_taste_feedback`, en tire une préférence dans `member_food_preferences`,
+   * que `buildHouseholdTasteProfile` relit et que le planificateur applique. Les
+   * deux tables valaient 0 ligne parce qu'aucun écran n'appelait la route.
+   *
+   * L'AVIS EST INDIVIDUEL, ET IL LE RESTE. Un bouton par personne présente au
+   * créneau : enregistrer l'avis de l'un au nom des deux fabriquerait une
+   * déclaration que personne n'a faite, et le profil de l'autre porterait une
+   * préférence qu'il n'a pas exprimée.
+   */
+  async function sendTaste(meal, eater, appreciation) {
+    const key = `${eater.mealDate}|${meal.type}|${eater.key}`
+    if (tasteSending) return
+    setTasteSending(`${key}|${appreciation}`)
+    try {
+      const res = await authFetch('/api/meals/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          household_member_id: eater.memberId || null,
+          meal_date: eater.mealDate,
+          meal_type: meal.type,
+          canonical_recipe_code: eater.recipeCode || null,
+          recipe_label: meal.dishName || null,
+          appreciation,
+        }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        toast.error(data.error || 'Avis non enregistré')
+        return
+      }
+      setTasteGiven((state) => ({ ...state, [key]: appreciation }))
+      // On dit ce qui a été appris, ou qu'il n'a rien été appris ET pourquoi
+      // quand on le sait. Un « merci » uniforme laisserait croire que le profil
+      // a bougé même quand la ligne n'a pas pu lui être rattachée.
+      if (data.learned) {
+        toast.success(`Avis de ${eater.name} enregistré — le profil en tient compte à la prochaine génération`)
+      } else {
+        // Le cas connu : la ligne de repas n'est rattachée à aucun membre du
+        // foyer, donc il n'y a pas de profil à enrichir. Le retour est consigné
+        // quand même, et on le dit — plutôt qu'un « merci » qui laisserait
+        // croire que la prochaine génération en tiendra compte.
+        toast.success(`Avis de ${eater.name} enregistré — sans effet sur le profil`
+          + (eater.memberId ? '' : ' (ce repas n’est rattaché à aucun membre du foyer)'))
+      }
+    } catch {
+      toast.error('Erreur réseau — avis non enregistré')
+    } finally {
+      setTasteSending(null)
+    }
+  }
+
+  /**
+   * Les mangeurs d'un créneau, un par personne. L'identifiant de membre vient
+   * de la ligne de repas quand elle le porte, sinon du foyer par son nom : sans
+   * lui, la route enregistre le retour mais n'enrichit aucun profil.
+   */
+  function eatersOf(meal) {
+    const seen = new Map()
+    for (const entry of meal.entries || []) {
+      const name = entry.person_name || 'Le foyer'
+      if (seen.has(name)) continue
+      seen.set(name, {
+        key: name,
+        name,
+        memberId: entry.household_member_id
+          || householdMembers.find((member) => member.name === name)?.id
+          || null,
+        mealDate: entry.meal_date,
+        recipeCode: entry.canonical_recipe_code || null,
+      })
+    }
+    return [...seen.values()]
+  }
+
   function handleMealClick(meal) {
     if (!meal.dishName) return
     setSelectedMeal(meal)
@@ -292,6 +412,9 @@ export default function TodayMeals({ importId }) {
     setSwapMode(false)
     setSwapError('')
     setSwapDirection('')
+    setAlternatives([])
+    setAltCurrent(null)
+    setAltError('')
   }
 
   // ── COOK FLOW ──
@@ -336,6 +459,110 @@ export default function TodayMeals({ importId }) {
       })
     } catch (err) {
       console.error('Error rating recipe:', err)
+    }
+  }
+
+  // ── REMPLACER CE REPAS (livrable 3.2) ──
+  /**
+   * CE QUI CHANGE, ET POURQUOI. Ce bouton partait vers `/api/routine/modify-meal`,
+   * c'est-à-dire vers un modèle de langage qui écrivait la semaine en base
+   * HORS moteur, hors règles de répétition et hors invariants, en 30 à 60
+   * secondes. `/api/planning/alternatives` existait depuis des mois —
+   * déterministe, sous les mêmes règles que la génération — et n'avait AUCUN
+   * appelant. C'est lui qu'on appelle désormais d'abord.
+   *
+   * Chaque proposition arrive avec ses CONSÉQUENCES : ce qu'elle franchit dans
+   * la semaine, ce qu'il faudra acheter, l'écart nutritionnel. Le foyer choisit
+   * en sachant, ce que la Routine ne permettait pas — elle décidait.
+   *
+   * LA ROUTINE RESTE, pour l'instant. Son retrait est le livrable 4.4, et le
+   * plan le dit : « les alternatives déterministes doivent exister avant qu'on
+   * débranche la Routine, sinon on retire une fonction sans rien rendre ». Elle
+   * est reléguée au second rang, avec son coût affiché.
+   */
+  async function loadAlternatives(meal) {
+    const mealDate = meal?.entries?.[0]?.meal_date
+    setAlternatives([])
+    setAltCurrent(null)
+    setAltElapsedMs(null)
+    if (!importId || !mealDate) {
+      setAltError('Ce repas n’appartient pas à une semaine publiée : le moteur ne peut pas proposer d’alternative.')
+      return
+    }
+    // Les petits-déjeuners et collations sont des rotations codées en dur
+    // (§8 du plan) : le moteur n'a pas de créneau à leur opposer, et un 404 mal
+    // traduit laisserait croire à une panne. On le dit.
+    if (!['dejeuner', 'diner'].includes(meal.type)) {
+      setAltError('Les petits-déjeuners et collations sont des rotations fixes : le moteur ne propose pas d’alternative pour ce créneau.')
+      return
+    }
+    setAltLoading(true)
+    setAltError('')
+    const started = Date.now()
+    try {
+      const res = await authFetch('/api/planning/alternatives', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ import_id: importId, meal_date: mealDate, meal_type: meal.type }),
+      })
+      const data = await res.json().catch(() => ({}))
+      setAltElapsedMs(Date.now() - started)
+      if (!res.ok) {
+        setAltError(data.error || 'Le moteur n’a pas pu proposer d’alternative.')
+        return
+      }
+      setAlternatives(data.alternatives || [])
+      setAltCurrent(data.current || null)
+      if (!(data.alternatives || []).length) {
+        setAltError('Aucune alternative ne passe les contraintes du foyer pour ce créneau.')
+      }
+    } catch {
+      setAltElapsedMs(Date.now() - started)
+      setAltError('Erreur réseau — aucune alternative chargée.')
+    } finally {
+      setAltLoading(false)
+    }
+  }
+
+  /**
+   * Applique l'alternative retenue. Elle passe par la génération ciblée, donc
+   * par la transaction de publication : c'est le seul chemin qui écrit un plan
+   * (§9.3 du plan). Le créneau est figé sur le plat choisi ; les treize autres
+   * ne bougent pas.
+   */
+  async function applyAlternative(meal, alternative) {
+    const mealDate = meal?.entries?.[0]?.meal_date
+    if (!importId || !mealDate || applyingCode) return
+    setApplyingCode(alternative.recipeCode)
+    setAltError('')
+    try {
+      const res = await authFetch('/api/planning/generate-v3', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          import_id: importId,
+          scope: 'meals',
+          meals: [{ date: mealDate, type: meal.type }],
+          chosen_recipes: [{ meal_date: mealDate, meal_type: meal.type, recipe_code: alternative.recipeCode }],
+        }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        setAltError(data.error || 'Le remplacement n’a pas pu être publié.')
+        return
+      }
+      setSwapSuccess(true)
+      if (data.status === 'review_required') {
+        toast.warning(data.issues?.[0]?.message || 'Repas remplacé — la semaine demande une revue')
+      }
+      setTimeout(() => {
+        closeModal()
+        loadMeals()
+      }, 1200)
+    } catch {
+      setAltError('Erreur réseau — le repas n’a pas été remplacé.')
+    } finally {
+      setApplyingCode(null)
     }
   }
 
@@ -533,8 +760,12 @@ export default function TodayMeals({ importId }) {
                 const stockCov = (isMainMeal && coveredEntry?.id)
                   ? coverageByMeal[coveredEntry.id]
                   : null
+                // Seuls les mangeurs dont l'assiette porte une recette
+                // canonique peuvent donner un avis que le profil apprendra.
+                const eaters = eatersOf(meal).filter((eater) => eater.recipeCode)
                 return (
-                  <div key={i} className="tm-meal" style={{ opacity: generatingRecipe && !isGenerating ? 0.5 : 1 }}>
+                  <div key={i} className="tm-meal-block">
+                  <div className="tm-meal" style={{ opacity: generatingRecipe && !isGenerating ? 0.5 : 1 }}>
                     <span className="tm-meal-bar" style={{ background: MEAL_BAR_VAR[meal.type] || MEAL_BAR_VAR.diner }} />
                     <span className="tm-meal-label">{MEAL_LABELS[meal.type] || meal.type}</span>
                     <span
@@ -565,6 +796,47 @@ export default function TodayMeals({ importId }) {
                         {done && <Check size={11} color="#fff" />}
                       </button>
                     </span>
+                  </div>
+                  {/* Retour de goût (livrable 3.3) : un geste par personne, sur
+                      chaque repas qui porte une recette — on n'attend pas qu'il
+                      soit coché « cuisiné », parce qu'un repas sauté est aussi
+                      un avis.
+                      PAS sur les petits-déjeuners et collations : ce sont des
+                      rotations codées en dur (§8 du plan), sans code canonique,
+                      donc sans sujet que le profil puisse apprendre. Trois
+                      boutons y enregistreraient un avis que rien ne relit —
+                      exactement ce qu'on refuse ailleurs dans cet écran. */}
+                  {eaters.length > 0 && (
+                    <div className="tm-taste">
+                      <span className="tm-taste-label">Votre avis</span>
+                      {eaters.map((eater) => (
+                        <span key={eater.key} className="tm-taste-person">
+                          {eaters.length > 1 && <span className="tm-taste-who">{eater.name}</span>}
+                          {TASTE_ACTIONS.map(({ value, label, Icon, effect }) => {
+                            const stateKey = `${eater.mealDate}|${meal.type}|${eater.key}`
+                            const chosen = tasteGiven[stateKey] === value
+                            const sending = tasteSending === `${stateKey}|${value}`
+                            return (
+                              <button
+                                key={value}
+                                type="button"
+                                className={`tm-taste-btn${chosen ? ' on' : ''}`}
+                                disabled={!!tasteSending}
+                                aria-pressed={chosen}
+                                title={`${eater.name} — ${effect}`}
+                                onClick={(e) => { e.stopPropagation(); sendTaste(meal, eater, value) }}
+                              >
+                                {sending
+                                  ? <Loader2 size={11} className="tm-taste-spin" />
+                                  : <Icon size={11} aria-hidden="true" />}
+                                {label}
+                              </button>
+                            )
+                          })}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                   </div>
                 )
               })}
@@ -614,16 +886,96 @@ export default function TodayMeals({ importId }) {
                   <ChefHat size={18} />
                   Cuisiner
                 </button>
-                <button onClick={() => setSwapMode(true)} className="tm-swap-btn">
+                <button
+                  onClick={() => { setSwapMode(true); loadAlternatives(selectedMeal) }}
+                  className="tm-swap-btn"
+                >
                   <RefreshCw size={18} />
                   Changer ce plat
                 </button>
               </div>
             )}
 
-            {/* ── MODIFY MODE ── */}
+            {/* ── ALTERNATIVES DÉTERMINISTES (livrable 3.2) ── */}
             {swapMode && !swapSuccess && (
+              <div className="tm-alt-section">
+                <p className="tm-alt-title">
+                  Propositions du moteur
+                  {altElapsedMs != null && !altLoading && (
+                    <span className="tm-alt-timing"> · {(altElapsedMs / 1000).toFixed(1).replace('.', ',')} s</span>
+                  )}
+                </p>
+                {altLoading && (
+                  <p className="tm-alt-loading">
+                    <Loader2 size={13} className="tm-taste-spin" /> Le moteur classe les plats possibles…
+                  </p>
+                )}
+                {altError && <p className="tm-swap-error">{altError}</p>}
+                {alternatives.map((alternative) => {
+                  const applying = applyingCode === alternative.recipeCode
+                  const delta = alternative.nutritionDelta || null
+                  return (
+                    <button
+                      key={alternative.recipeCode}
+                      type="button"
+                      className={`tm-alt-row${alternative.compatible ? '' : ' tm-alt-warn'}`}
+                      disabled={!!applyingCode}
+                      onClick={() => applyAlternative(selectedMeal, alternative)}
+                    >
+                      <span className="tm-alt-kind">{alternative.kindLabel}</span>
+                      <span className="tm-alt-name">
+                        {applying && <Loader2 size={12} className="tm-taste-spin" />}
+                        {alternative.title}
+                      </span>
+                      <span className="tm-alt-meta">
+                        {alternative.totalMinutes != null && <span>{alternative.totalMinutes} min</span>}
+                        {alternative.cuisine && <span>{alternative.cuisine}</span>}
+                        {/* La couverture stock est un fait mesuré : on l'affiche
+                            telle quelle, sans l'arrondir à « disponible ». */}
+                        {alternative.stockCoverage != null && (
+                          <span>stock {Math.round(alternative.stockCoverage * 100)} %</span>
+                        )}
+                        {delta?.kcal != null && delta.kcal !== 0 && (
+                          <span>{delta.kcal > 0 ? '+' : ''}{delta.kcal} kcal</span>
+                        )}
+                        {delta?.proteinG != null && delta.proteinG !== 0 && (
+                          <span>{delta.proteinG > 0 ? '+' : ''}{delta.proteinG} g protéines</span>
+                        )}
+                      </span>
+                      {/* Ce que l'échange COÛTE au reste de la semaine. Une
+                          alternative qui franchit une règle n'est pas cachée —
+                          elle est proposée avec sa conséquence, à l'utilisateur
+                          de trancher. */}
+                      {!alternative.compatible && (
+                        <span className="tm-alt-consequence">
+                          {(alternative.consequences || []).map((violation) => violation.message || violation.code).join(' · ')}
+                        </span>
+                      )}
+                      {(alternative.missingIngredients || []).length > 0 && (
+                        <span className="tm-alt-missing">
+                          à acheter : {alternative.missingIngredients.join(', ')}
+                        </span>
+                      )}
+                    </button>
+                  )
+                })}
+                {altCurrent && alternatives.length > 0 && (
+                  <p className="tm-alt-current">Aujourd’hui : {altCurrent.title}</p>
+                )}
+                {!applyingCode && (
+                  <button onClick={() => setSwapMode(false)} className="tm-cancel-link">Annuler</button>
+                )}
+              </div>
+            )}
+
+            {/* ── MODIFY MODE — la Routine, jusqu'au livrable 4.4 ──
+                Elle reste le second recours tant que rien ne la remplace pour
+                une demande en toutes lettres (« j'ai du saumon »). Son coût est
+                affiché : trente à soixante secondes, contre le dixième de
+                seconde du moteur ci-dessus. */}
+            {swapMode && !swapSuccess && !altLoading && (
               <div className="tm-swap-section">
+                <p className="tm-alt-title">Ou décrire ce que vous voulez</p>
                 <label htmlFor="tm-swap-input" className="sr-only">Direction de modification (optionnel)</label>
                 <input
                   id="tm-swap-input"
@@ -634,7 +986,6 @@ export default function TodayMeals({ importId }) {
                   placeholder="Ex : plus végétarien, moins gras, j'ai du saumon… (optionnel)"
                   className="tm-swap-input"
                   onKeyDown={e => e.key === 'Enter' && handleModify()}
-                  autoFocus
                   disabled={swapping}
                 />
                 <button onClick={handleModify} disabled={swapping} className="tm-generate-btn">
@@ -651,9 +1002,6 @@ export default function TodayMeals({ importId }) {
                   )}
                 </button>
                 {swapError && <p className="tm-swap-error">{swapError}</p>}
-                {!swapping && (
-                  <button onClick={() => setSwapMode(false)} className="tm-cancel-link">Annuler</button>
-                )}
               </div>
             )}
 

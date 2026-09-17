@@ -119,6 +119,62 @@ function isTargeted(slot, scope, days, meals) {
   return meals.has(`${slot.date}|${slot.mealType}`)
 }
 
+/**
+ * LES CHOIX EXPLICITES DE L'UTILISATEUR (livrable 3.2).
+ *
+ * `/api/planning/alternatives` propose cinq plats pour un créneau, chacun AVEC
+ * ses conséquences — règles de répétition franchies, part à acheter, écart
+ * nutritionnel. Quand l'utilisateur en retient un, il faut bien que ce choix
+ * atteigne le plan : `chosen_recipes` est ce chemin, et c'est le seul. Il passe
+ * par la génération, donc par la transaction de publication, et respecte donc
+ * l'interdit du §9.3 — contrairement à la Routine, qui écrivait en base hors
+ * moteur.
+ *
+ * CE QUE `fixedRecipeCode` VAUT ICI, ET POURQUOI C'EST LUI. Un créneau figé
+ * échappe aux règles de répétition et aux plafonds hebdomadaires
+ * (`closedLoopPlanner.js:1062-1085`). Ce n'est pas un contournement : c'est la
+ * règle déjà écrite pour un choix explicite — « le plan de `fixedRecipeCode`
+ * est un pacte » — et l'écran des alternatives a montré ces conséquences AVANT
+ * le clic. Écarter le plat coûteux ou répétitif déciderait à la place de
+ * l'utilisateur ; le servir sans l'avertir le laisserait décider à l'aveugle.
+ *
+ * RIEN N'EST DEVINÉ. Une entrée sans date, sans prise ou sans code est refusée
+ * avec son motif, jamais silencieusement ignorée : un choix perdu en route
+ * ressemblerait, à l'écran, à un moteur qui a préféré autre chose.
+ */
+function readChosenRecipes(entries, knownRecipeCodes) {
+  const chosen = new Map()
+  const rejected = []
+  if (entries != null && !Array.isArray(entries)) {
+    return { chosen, rejected: [{ entry: entries, reason: 'liste_attendue' }] }
+  }
+  for (const entry of entries || []) {
+    const date = String(entry?.meal_date ?? entry?.date ?? '')
+    const mealType = String(entry?.meal_type ?? entry?.mealType ?? '')
+    const recipeCode = String(entry?.recipe_code ?? entry?.recipeCode ?? '').trim()
+    if (!ISO_DATE.test(date) || !['dejeuner', 'diner'].includes(mealType)) {
+      rejected.push({ entry, reason: 'creneau_invalide' })
+      continue
+    }
+    if (!recipeCode) {
+      rejected.push({ entry, reason: 'recipe_code_manquant' })
+      continue
+    }
+    if (!knownRecipeCodes.has(recipeCode)) {
+      rejected.push({ entry, reason: 'recette_absente_du_catalogue_servi' })
+      continue
+    }
+    // Deux plats pour le même créneau : garder le dernier reviendrait à choisir
+    // à la place de l'utilisateur lequel de ses deux clics compte.
+    if (chosen.has(`${date}|${mealType}`)) {
+      rejected.push({ entry, reason: 'deux_choix_pour_le_meme_creneau' })
+      continue
+    }
+    chosen.set(`${date}|${mealType}`, recipeCode)
+  }
+  return { chosen, rejected }
+}
+
 async function ensurePlanningSchema(supabase) {
   const { data, error } = await supabase.rpc('planning_schema_compatibility')
   if (error || data?.compatible !== true || Number(data?.contract_version) < 5) {
@@ -509,6 +565,17 @@ export async function POST(request) {
       { recipeCode: slot.preparation?.recipe_code || null, slotKey: slot.slot_key, state: existing.slotStates[slot.slot_key] || {} },
     ]))
     const intent = resolveIntent(body)
+    // Les alternatives retenues à l'écran (livrable 3.2). Refusées avec leur
+    // motif plutôt qu'ignorées : un choix perdu en route se lit, à l'écran,
+    // comme un moteur qui a préféré autre chose.
+    const { chosen: chosenRecipes, rejected: rejectedChoices } = readChosenRecipes(body.chosen_recipes, recipeCodes)
+    if (rejectedChoices.length) {
+      return NextResponse.json({
+        error: 'Un repas choisi n’a pas pu être appliqué',
+        code: 'chosen_recipe_invalid',
+        details: rejectedChoices,
+      }, { status: 400 })
+    }
     const slots = buildWeekSlots(windowStart, { presence, members }).map((slot) => {
       const current = existingBySlot.get(`${slot.date}|${slot.mealType}`)
       const currentCode = current?.recipeCode || null
@@ -518,6 +585,20 @@ export async function POST(request) {
         error.status = 409
         throw error
       }
+      const chosenCode = chosenRecipes.get(`${slot.date}|${slot.mealType}`) || null
+      // Un créneau protégé ne se remplace pas par un choix d'écran : il est
+      // mangé, ou il est épinglé. On dit lequel des deux s'y oppose et ce qu'il
+      // faut faire, plutôt que de franchir la protection en silence — sans quoi
+      // l'épingle du livrable 3.4 ne vaudrait plus rien.
+      if (chosenCode && current?.state?.protected) {
+        const error = new Error(current.state.protection_reason === 'consumed'
+          ? `Le repas du ${slot.date} (${slot.mealType}) est marqué cuisiné : annulez la validation avant de le remplacer`
+          : `Le repas du ${slot.date} (${slot.mealType}) est épinglé : retirez l'épingle avant de le remplacer`)
+        error.code = 'protected_meal_not_replaceable'
+        error.status = 409
+        throw error
+      }
+      if (chosenCode) return { ...slot, fixedRecipeCode: chosenCode }
       const requested = !currentCode || !recipeCodes.has(currentCode) || isTargeted(slot, scope, selectedDays, selectedMeals)
       const target = requested && !current?.state?.protected
       return {
@@ -525,6 +606,22 @@ export async function POST(request) {
         ...(target ? { intent, excludedRecipeCodes: currentCode ? [currentCode] : [] } : { fixedRecipeCode: currentCode }),
       }
     })
+
+    // Un choix qui ne correspond à AUCUN créneau de la semaine construite — date
+    // hors fenêtre, ou créneau retiré parce que tout le monde est absent
+    // (livrable 1.5) — serait perdu en silence, et l'écran lirait ce silence
+    // comme un moteur qui a préféré autre chose. On le refuse avec son motif.
+    const slotByKey = new Map(slots.map((slot) => [`${slot.date}|${slot.mealType}`, slot]))
+    const unusedChoices = [...chosenRecipes.entries()]
+      .filter(([key, code]) => slotByKey.get(key)?.fixedRecipeCode !== code)
+      .map(([key]) => key)
+    if (unusedChoices.length) {
+      return NextResponse.json({
+        error: 'Un repas choisi ne correspond à aucun créneau de cette semaine',
+        code: 'chosen_recipe_invalid',
+        details: unusedChoices.map((key) => ({ slot: key, reason: 'creneau_absent_de_la_semaine' })),
+      }, { status: 400 })
+    }
 
     const targetByMeal = nutritionTargets(goalsResult.data || [], members)
     // Moteur de diversité global (§9, lot 1) : les huit semaines précédentes
