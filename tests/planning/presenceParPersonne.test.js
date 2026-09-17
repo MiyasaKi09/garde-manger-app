@@ -268,25 +268,79 @@ describe('publication d’une semaine, avec et sans deux dîners hors domicile',
   })
 
   // ── CRITÈRE, DEUXIÈME TIERS : les quantités de courses baissent d’autant ──
-  it('retire des deux dîners EXACTEMENT les portions de la personne absente', () => {
+  it('retire des deux dîners la portion de l’absente, et n’ajoute que ce que le déplafonnement rend au présent', () => {
     // C'est la forme exacte de « les quantités baissent d'autant ». Les grammes
     // d'une exécution sont strictement proportionnels à ses portions
     // (`finalDemands.js` : `scale = group.servings / recipe.servings`) : montrer
-    // que les portions du créneau tombent de la portion retirée, et d'elle
-    // seule, c'est montrer que les grammes tombent dans la même proportion.
+    // que les portions du créneau tombent de la portion retirée, c'est montrer
+    // que les grammes tombent dans la même proportion.
+    //
+    // CE QUE CE TEST EXIGEAIT AVANT, ET POURQUOI IL A CHANGÉ — la définition
+    // bouge ici, on l'écrit, et la cible se refixe avec elle.
+    //
+    // Il exigeait l'ÉGALITÉ STRICTE : portions(avec) = portions(sans) − portion
+    // de l'absente. Cette égalité n'est pas une propriété du moteur, c'est une
+    // propriété de la semaine sur laquelle il avait été écrit. Le solveur de
+    // portions est JOINT (`optimizeCoupledDailyPortions`) : sur un plat
+    // partagé, les deux assiettes sont choisies ensemble et leur rapport est
+    // borné par `MAX_MEMBER_PORTION_RATIO`. Quand ce plafond est SATURÉ, le
+    // membre qui mange le plus est tenu en dessous de son optimum par celui qui
+    // mange le moins. Retirer l'assiette du second lève la borne, et le premier
+    // remonte à son optimum. MESURÉ sur la semaine servie par le corpus après
+    // le livrable 2.1 : au dîner du 22 septembre (SRC-038-D3, portions
+    // reprises d'une production), Zoé est à 0,6 et Julien à 1,2 — rapport 2,00,
+    // exactement le plafond ; Zoé absente, Julien passe à 1,3. Le créneau perd
+    // 0,5 portion au lieu de 0,6.
+    //
+    // La cible refixée est donc : le créneau BAISSE, il ne monte jamais ; la
+    // baisse vaut la portion de l'absente moins ce que le présent reprend ; et
+    // ce que le présent reprend n'est JAMAIS gratuit — il faut que la borne de
+    // couplage ait été saturée sans elle. Sans cette dernière clause, le test
+    // accepterait n'importe quelle hausse : c'est elle qui fait qu'il ne peut
+    // passer que pour la bonne raison.
     let creneauxMesures = 0
+    let creneauxDeplafonnes = 0
     for (const creneau of [`${MARDI}-diner`, `${JEUDI}-diner`]) {
-      const portionsDuCreneau = (payload) => payload.planned_demands
-        .filter((demande) => demande.slot_key === creneau)
+      const date = creneau.slice(0, 10)
+      const portions = (payload, personne = null) => payload.planned_demands
+        .filter((demande) => demande.slot_key === creneau
+          && (personne == null || demande.person_name === personne))
         .reduce((somme, demande) => somme + (Number(demande.requested_servings) || 0), 0)
-      const saPortion = sans.planned_demands
-        .filter((demande) => demande.slot_key === creneau && demande.person_name === ABSENTE)
-        .reduce((somme, demande) => somme + (Number(demande.requested_servings) || 0), 0)
+
+      const saPortion = portions(sans, ABSENTE)
       expect(saPortion, creneau).toBeGreaterThan(0)
-      expect(portionsDuCreneau(avec), creneau).toBeCloseTo(portionsDuCreneau(sans) - saPortion, 3)
+      // L'assiette retirée l'est vraiment : zéro demande, pas une demande à zéro.
+      expect(portions(avec, ABSENTE), creneau).toBe(0)
+
+      // Le présent ne perd rien, et ce qu'il gagne est mesuré.
+      const sienAvant = portions(sans, PRESENT)
+      const sienApres = portions(avec, PRESENT)
+      expect(sienApres, `${creneau} : l’absence de l’autre ne réduit pas l’assiette du présent`)
+        .toBeGreaterThanOrEqual(sienAvant - 1e-9)
+      const repris = sienApres - sienAvant
+
+      // Le compte du créneau se ferme exactement, sans terme inexpliqué.
+      expect(portions(avec), creneau).toBeCloseTo(portions(sans) - saPortion + repris, 3)
+      expect(portions(avec), `${creneau} : le créneau doit baisser`).toBeLessThan(portions(sans))
+
+      // Et toute reprise est JUSTIFIÉE : sans l'absence, le rapport entre les
+      // deux assiettes de ce créneau touchait le plafond de couplage. Un moteur
+      // qui remonterait la portion du présent sans cette saturation servirait
+      // plus de nourriture qu'il n'en faut à qui est là, et ce test doit le
+      // refuser.
+      if (repris > 1e-9) {
+        creneauxDeplafonnes += 1
+        const jour = journee(sans, PRESENT, date)
+        expect(jour.portion_ratio_dinner, `${creneau} : hausse sans couplage saturé`)
+          .toBeCloseTo(jour.portion_ratio_cap, 6)
+      }
       creneauxMesures += 1
     }
     expect(creneauxMesures).toBe(2)
+    // Témoin : sur la semaine mesurée, exactement un des deux dîners est
+    // déplafonné. Si ce compte tombait à zéro, la clause de justification
+    // ci-dessus ne serait plus exercée par aucun cas et passerait à vide.
+    expect(creneauxDeplafonnes).toBe(1)
   })
 
   it('baisse la masse des courses de la semaine, sans ajouter un seul article', () => {
@@ -333,9 +387,46 @@ describe('publication d’une semaine, avec et sans deux dîners hors domicile',
       .filter((demande) => demande.person_name === ABSENTE)
       .reduce((somme, demande) => somme + (Number(demande.nutrition?.kcal) || 0), 0)
     expect(totalAvec.kcal).toBeCloseTo(sommeDesDemandes, 1)
-    // Et la personne présente, elle, ne bouge pas d'une calorie.
-    expect(ligneDePresence(avec, PRESENT).weekly_nutrition)
-      .toEqual(ligneDePresence(sans, PRESENT).weekly_nutrition)
+    // ET LA PERSONNE PRÉSENTE. Ce test exigeait qu'elle « ne bouge pas d'une
+    // calorie » sur la semaine entière. Pour la même raison que le test des
+    // portions ci-dessus — le solveur est JOINT, et lever l'assiette de l'autre
+    // lève la borne de couplage qui tenait la sienne —, cette égalité n'est pas
+    // une propriété du moteur : elle ne vaut que les jours où la borne n'était
+    // pas saturée. La définition change donc, et la cible se refixe avec elle,
+    // en deux clauses qui disent chacune quelque chose de vérifiable :
+    //   — AUCUN jour sans absence déclarée ne change, au macro près. C'est la
+    //     vraie garantie de la présence : elle n'agit que là où elle est
+    //     déclarée. Cette clause-là n'est pas affaiblie, elle est isolée.
+    //   — Les jours AVEC absence peuvent bouger, mais jamais en s'éloignant de
+    //     la cible du présent : son écart d'énergie ne peut que diminuer, et sa
+    //     journée doit rester valide. Le moteur a le droit de mieux servir
+    //     quelqu'un dont le voisin est sorti ; il n'a pas le droit de le servir
+    //     plus mal.
+    // MESURÉ sur la semaine servie : mardi, l'écart d'énergie de Julien passe
+    // de 2,44 % à 2,22 % (2 414,4 → 2 409,4 kcal pour une cible de 2 357) ;
+    // jeudi, rien ne bouge.
+    const joursPresent = sans.validation_summary.daily_nutrition
+      .filter((jour) => jour.person_name === PRESENT)
+    expect(joursPresent.length).toBeGreaterThan(0)
+    let joursDeplaces = 0
+    for (const jourSans of joursPresent) {
+      const jourAvec = journee(avec, PRESENT, jourSans.meal_date)
+      if ([MARDI, JEUDI].includes(jourSans.meal_date)) {
+        expect(jourAvec.target, `${jourSans.meal_date} : la cible du présent a bougé`).toEqual(jourSans.target)
+        expect(jourAvec.energy_deviation, `${jourSans.meal_date} : journée dégradée pour le présent`)
+          .toBeLessThanOrEqual(jourSans.energy_deviation + 1e-9)
+        expect(jourAvec.valid, jourSans.meal_date).toBe(true)
+        if (Math.abs(jourAvec.total.kcal - jourSans.total.kcal) > 1e-6) joursDeplaces += 1
+        continue
+      }
+      // Un jour où personne n'a rien déclaré est intouchable : si l'un d'eux
+      // bougeait, la présence agirait au-delà de ce qu'elle déclare.
+      expect(jourAvec.total, `${jourSans.meal_date} : jour sans déclaration modifié`)
+        .toEqual(jourSans.total)
+    }
+    // Sur la semaine mesurée, un seul des deux dîners déclarés déplace le
+    // présent — le même que celui du test des portions.
+    expect(joursDeplaces).toBe(1)
   })
 
   it('réduit la cible du jour de la part de la prise absente, et le dit', () => {

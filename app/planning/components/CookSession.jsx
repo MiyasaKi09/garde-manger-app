@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { authFetch } from '@/lib/authFetch'
 import { Loader2, ChefHat, Flame, Soup, X, Minus, Plus, Check, Search, AlertTriangle, Refrigerator } from 'lucide-react'
+import FicheFusionnee from '@/components/FicheFusionnee'
 import './CookSession.css'
 
 const round1 = (v) => Math.round(v * 10) / 10
@@ -40,11 +41,20 @@ function ingKey(ing) {
 
 /**
  * Fusionne deux listes d'ingrédients.
- * Règle : pour un ingrédient commun aux deux variantes, on garde le MAX de qty
- * (une seule poêle — pas la somme). Les ingrédients exclusifs à une variante
- * sont ajoutés tels quels.
+ * Règle par défaut : pour un ingrédient commun aux deux variantes, on garde le
+ * MAX de qty (une seule poêle — pas la somme). Les ingrédients exclusifs à une
+ * variante sont ajoutés tels quels.
+ *
+ * `sommer` renverse cette règle, et il n'est passé que dans un cas : une FICHE
+ * FUSIONNÉE déclarée (livrable 2.3), où les deux variantes ne sont pas deux
+ * parts du même plat mais DEUX RECETTES différentes cuisinées ensemble — le
+ * plat carné de l'un et son jumeau végétarien de l'autre. La casserole commune
+ * nourrit alors les deux assiettes : ce qu'elle reçoit est la somme de ce que
+ * chaque branche demande, et prendre le maximum sous-déduirait du stock tout ce
+ * que la seconde assiette consomme. La règle du maximum reste la bonne partout
+ * ailleurs, où les deux variantes renvoient la même recette.
  */
-function mergeIngredientLists(listA, listB) {
+export function mergeIngredientLists(listA, listB, { sommer = false } = {}) {
   const map = new Map()
   for (const ing of listA) {
     map.set(ingKey(ing), { ...ing })
@@ -53,12 +63,34 @@ function mergeIngredientLists(listA, listB) {
     const k = ingKey(ing)
     if (map.has(k)) {
       const existing = map.get(k)
-      map.set(k, { ...existing, qty: Math.max(existing.qty, ing.qty) })
+      map.set(k, { ...existing, qty: sommer ? existing.qty + ing.qty : Math.max(existing.qty, ing.qty) })
     } else {
       map.set(k, { ...ing })
     }
   }
   return Array.from(map.values())
+}
+
+/**
+ * Les plats canoniques du créneau, avec qui les mange et combien de parts.
+ *
+ * C'est la seule chose dont la fiche fusionnée a besoin pour savoir s'il y a un
+ * couple à fusionner : deux codes canoniques distincts sur le même créneau.
+ * Deux personnes qui mangent le MÊME plat ne donnent qu'un code — il n'y a rien
+ * à fusionner, et aucun appel n'est fait.
+ */
+export function platsDuCreneau(meal) {
+  const parCode = new Map()
+  for (const entry of meal?.entries || []) {
+    const code = String(entry.canonical_recipe_code || '').trim()
+    if (!code) continue
+    const item = parCode.get(code) || { code, portions: 0, mangeurs: [] }
+    const parts = Number(entry.planned_servings)
+    item.portions += Number.isFinite(parts) && parts > 0 ? parts : 1
+    if (entry.person_name) item.mangeurs.push(entry.person_name)
+    parCode.set(code, item)
+  }
+  return Array.from(parCode.values())
 }
 
 /**
@@ -93,6 +125,11 @@ export default function CookSession({ open, meal, onClose, onDone }) {
   // ── Ingrédients
   const [rows, setRows] = useState([])                  // { key, name, canonical_food_id, archetype_id, qty, unit }
   const [loadingIng, setLoadingIng] = useState(false)
+
+  // ── Fiche de cuisine fusionnée (livrable 2.3)
+  // `null` tant qu'aucun couple n'a été cherché ; l'objet rendu par l'API
+  // ensuite, y compris quand il dit « non fusionné » et pourquoi.
+  const [fiche, setFiche] = useState(null)
 
   // ── Recherche d'ingrédient libre
   const [searchQuery, setSearchQuery] = useState('')
@@ -133,6 +170,7 @@ export default function CookSession({ open, meal, onClose, onDone }) {
     setShortfalls([])
     setSearchQuery('')
     setSearchResults([])
+    setFiche(null)
     if (isFreeform) setFreeDishName('')
 
     if (isBatchCook) {
@@ -144,7 +182,10 @@ export default function CookSession({ open, meal, onClose, onDone }) {
       setRows([])
       setLoadingIng(false)
     } else {
-      loadIngredients()
+      // La fiche est chargée AVANT les ingrédients : c'est elle qui dit si les
+      // deux variantes du créneau sont deux recettes cuisinées ensemble, donc
+      // si les quantités communes s'additionnent au lieu de se maximiser.
+      loadFicheFusionnee().then((resultat) => loadIngredients(Boolean(resultat?.fusionnee)))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, meal?.dishName, meal?.batchRecipeId, eatenDish?.id, isFreeform, isBatchCook])
@@ -214,10 +255,46 @@ export default function CookSession({ open, meal, onClose, onDone }) {
   }
 
   /**
+   * LA FICHE FUSIONNÉE DU CRÉNEAU — livrable 2.3.
+   *
+   * Deux codes canoniques distincts au même créneau, c'est le cas que le foyer
+   * a demandé : Julien mange la version carnée, Zoé son jumeau de même lignée.
+   * L'API répond toujours — fiche fusionnée, ou refus motivé quand la relecture
+   * a conclu que les deux plats ne se cuisinent pas ensemble. Rien n'est deviné
+   * ici : le découpage vient de l'arbitrage relu.
+   *
+   * Un échec réseau ne casse pas la feuille de cuisson : elle sert d'abord à
+   * valider un repas et à déduire du stock. La fiche est un service rendu à la
+   * cuisine, pas une condition de son existence.
+   */
+  async function loadFicheFusionnee() {
+    const plats = platsDuCreneau(meal)
+    if (plats.length !== 2) return null
+    const [premier, second] = plats
+    const parametres = new URLSearchParams({
+      a: premier.code,
+      b: second.code,
+      portionsA: String(Math.round(premier.portions * 100) / 100),
+      portionsB: String(Math.round(second.portions * 100) / 100),
+      mangeursA: premier.mangeurs.join(','),
+      mangeursB: second.mangeurs.join(','),
+    })
+    try {
+      const res = await authFetch(`/api/planning/fiche-fusionnee?${parametres}`)
+      if (!res.ok) return null
+      const data = await res.json().catch(() => null)
+      setFiche(data)
+      return data
+    } catch {
+      return null
+    }
+  }
+
+  /**
    * Charge et fusionne les listes d'ingrédients pour toutes les variantes du créneau.
    * Variante = groupe entries par short_label || description.
    */
-  async function loadIngredients() {
+  async function loadIngredients(fusionnee = false) {
     setLoadingIng(true)
     setError(null)
     setRows([])
@@ -229,6 +306,10 @@ export default function CookSession({ open, meal, onClose, onDone }) {
 
     try {
       const variants = groupByVariant(meal.entries || [])
+      // Les quantités ne s'additionnent que dans le cas déclaré fusionnable ET
+      // à deux variantes exactement : au-delà, on ne sait plus laquelle est la
+      // branche carnée et laquelle est le jumeau, et on ne le devine pas.
+      const sommer = fusionnee && variants.length === 2
       let merged = []
 
       for (const variant of variants) {
@@ -254,7 +335,7 @@ export default function CookSession({ open, meal, onClose, onDone }) {
           unit: ing.unit || 'g',
         }))
 
-        merged = mergeIngredientLists(merged, variantRows)
+        merged = mergeIngredientLists(merged, variantRows, { sommer })
       }
 
       setRows(merged)
@@ -487,6 +568,12 @@ export default function CookSession({ open, meal, onClose, onDone }) {
             <X size={18} />
           </button>
         </div>
+
+        {/* ── Fiche de cuisine fusionnée (livrable 2.3) ──
+            Elle passe AVANT les portions : quand deux assiettes sortent d'une
+            seule préparation, c'est la première chose à savoir en ouvrant la
+            feuille. Le composant ne rend rien quand le couple n'a pas été relu. */}
+        <FicheFusionnee fiche={fiche} />
 
         {/* ── Mode journée de cuisine : Portions préparées + conservation ── */}
         {isBatchCook && (

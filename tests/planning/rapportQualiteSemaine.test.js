@@ -7,6 +7,7 @@ import {
   generateClosedLoopPlan,
   isMealSuitableRecipe,
   productionShelfLifeDays,
+  recipeLineage,
 } from '@/lib/domain/planning/closedLoopPlanner'
 import { buildWeekSlots } from '@/lib/domain/planning/canonicalPlanPayload'
 import { buildPersonalizedMeals, vegetarianLineageTwins } from '@/lib/domain/planning/personalizedMeals'
@@ -16,6 +17,12 @@ import { buildPlanningHistory } from '@/lib/domain/planning/repetitionRules'
 import { usesSharedBase } from '@/lib/domain/planning/sharedBases'
 import { freezerShelfLifeDays, isRecipeFreezable } from '@/lib/domain/planning/cookingSessions'
 import { getCanonicalRecipes } from '@/lib/domain/recipes/canonicalCatalog'
+// Le corpus BRUT, à côté du corpus matérialisé : P12 compare ce que l'arbitrage
+// pose au corpus et ce que le moteur en voit après matérialisation. Sans les
+// deux, l'écart entre les deux comptes resterait invisible.
+import corpusBrut from '@/data/recipes/corpus-v3.json'
+import { declarationFusion, preparationsDistinctes } from '@/lib/domain/recipes/ficheFusionnee'
+import { tempsDeLaSemaine } from '@/lib/domain/planning/cookingTime'
 import { ingredientOrigin, isVegetarianCompatibleOrigin } from '@/lib/domain/foods/origins'
 import { calculateProteinTarget } from '@/lib/nutritionCalculator'
 import { buildProteinDensityRequirement } from '@/lib/domain/planning/proteinDensity'
@@ -497,11 +504,40 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
 
   // ─── P9 — plats distincts à cuisiner ─────────────────────────────────────
   // Ce que le foyer doit RÉELLEMENT préparer : le plat du foyer plus chaque
-  // substitution. Deux assiettes du même plat ne comptent qu'une fois ; un
-  // jumeau végétarien est un plat de plus à cuire tant que la fiche fusionnée
-  // (livrable 2.3) n'existe pas.
+  // substitution. Deux assiettes du même plat ne comptent qu'une fois.
+  //
+  // DEPUIS LE LIVRABLE 2.3, un couple (plat carné, jumeau végétarien de même
+  // lignée) servi au même créneau et DÉCLARÉ fusionnable dans
+  // data/recipes/arbitrations/fiches-fusionnees.json ne compte que pour une
+  // préparation : deux assiettes, une seule casserole. Les deux chiffres sont
+  // rendus — avant et après fusion — parce que le second se gagne sur une
+  // déclaration, et qu'une mesure dont on ne voit pas ce qu'elle a réuni ne se
+  // conteste pas. Un couple relu et REFUSÉ compte toujours pour deux : c'est le
+  // sens du refus.
   const aCuisinerParSemaine = semaines.map(({ perso }) => new Set(platsPrincipaux(perso)
     .map((meal) => meal.canonical_recipe_code)))
+  const preparationsParSemaine = semaines.map(({ perso }) => preparationsDistinctes(platsPrincipaux(perso)))
+  // Les couples réellement servis — deux codes distincts au même créneau — et
+  // ce que l'arbitrage en dit. C'est la ligne qui explique l'écart entre P9 et
+  // sa cible sans avoir à l'interpréter.
+  const couplesServis = semaines.flatMap(({ debut, perso }) => {
+    const parCreneau = new Map()
+    for (const meal of platsPrincipaux(perso)) {
+      const creneau = `${meal.meal_date}-${meal.meal_type}`
+      if (!parCreneau.has(creneau)) parCreneau.set(creneau, new Set())
+      parCreneau.get(creneau).add(meal.canonical_recipe_code)
+    }
+    return [...parCreneau].flatMap(([creneau, codes]) => {
+      const liste = [...codes]
+      if (liste.length !== 2) return []
+      const declaration = declarationFusion(liste[0], liste[1])
+      const memeLignee = recipeLineage(parCode.get(liste[0])) === recipeLineage(parCode.get(liste[1]))
+      const etat = declaration?.decision?.fusionnable ? 'fusionné'
+        : declaration ? 'relu et refusé'
+          : memeLignee ? 'même lignée, pas encore relu' : 'hors lignée — pas de jumeau'
+      return [`${debut} ${creneau} ${liste.join(' + ')} : ${etat}`]
+    })
+  })
 
   // ─── P10 — minutes de cuisine, sous ses trois définitions ────────────────
   // Le §8 du plan tranche : le critère est la PRÉPARATION ACTIVE ENGAGÉE,
@@ -532,6 +568,18 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
       rechauffages: minutes.filter((item) => !item.cuisine).length * MINUTES_RECHAUFFAGE,
     }
   })
+
+  // CE QUE L'ÉCRAN AFFICHERA POUR CES MÊMES SEMAINES (livrable 2.4). Le module
+  // `cookingTime.js` déclare reprendre ces quatre quantités sous les mêmes
+  // noms ; le vérifier STRUCTURELLEMENT — que les lignes de calcul existent
+  // encore — ne dit pas qu'elles rendent le même nombre. On les compare donc
+  // ici, sur les trois semaines que ce rapport planifie : si l'écran et le
+  // rapport divergeaient, l'un des deux serait faux et personne ne saurait
+  // lequel. Ce contrôle est assertif plus bas, avec les deux critères exigés.
+  const tempsPublieParSemaine = semaines.map(({ plan }) => tempsDeLaSemaine({
+    slots: plan.slots,
+    recipeByCode: parCode,
+  }))
 
   // Cible de P10 sous la définition retenue au §8 du plan : préparation active
   // ENGAGÉE, ≤ 300 minutes. Le dépassement est calculé, pas commenté.
@@ -584,8 +632,46 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
     }))
 
   // ─── P12 — bases partagées ───────────────────────────────────────────────
+  // LE CRITÈRE A DEUX TERMES ET UNE CONDITION DE MESURE, et les trois se
+  // rendent ici séparément parce qu'ils ne se tiennent pas ensemble :
+  //   — « ≥ 120 plats liés » : un décompte de CORPUS. Il se compte sur les 754
+  //     recettes (ce que l'arbitrage a posé) autant que sur les publiables (ce
+  //     que le planificateur peut servir) ; les deux chiffres diffèrent et
+  //     n'en montrer qu'un laisserait choisir le plus flatteur ;
+  //   — « ≥ 4 repas PAR SEMAINE qui en profitent » : une mesure PAR SEMAINE.
+  //     Un total sur trois semaines ne répond pas à ce terme — 6/42 peut être
+  //     4+1+1 comme 2+2+2 —, donc on rend les trois nombres ;
+  //   — « mesurés sur le chemin base » : ce fichier n'a pas de base. Ce qu'il
+  //     imprime est le chemin JSON du dépôt, et il le DIT, en nommant le
+  //     fichier qui tient la mesure sur le chemin base.
   const corpusAvecBase = recipes.filter(usesSharedBase).length
-  const creneauxAvecBase = tousCreneaux.filter((slot) => slot.sharedBases?.codes?.length).length
+  const corpusEntierAvecBase = corpusEntier.filter(usesSharedBase).length
+  // CE QUE L'ARBITRAGE POSE N'EST PAS CE QUE LE MOTEUR VOIT, et l'écart doit se
+  // lire ici plutôt que se découvrir entre deux chiffres qui ne s'additionnent
+  // pas. `materializeRecipe` laisse tomber une ligne d'ingrédient dont la forme
+  // n'est pas au catalogue d'aliments ; le `component` de cette ligne tombe
+  // avec elle. Le chemin base fait le même tri — la projection de la RPC joint
+  // `food_forms` — et `supabase/tests/bases_partagees.sql` ne compare donc la
+  // RPC qu'aux exigences dont `preferred_food_form_id` n'est pas nul.
+  const platsArbitres = new Set(corpusBrut.recipes
+    .filter((recette) => (recette.ingredients || []).some((ingredient) => ingredient?.component?.code))
+    .map((recette) => recette.code))
+  const codesMaterialises = new Set(corpusEntier.filter(usesSharedBase).map((recette) => recette.code))
+  const liensTombes = [...platsArbitres].filter((code) => !codesMaterialises.has(code)).sort()
+  const creneauxAvecBaseParSemaine = semaines
+    .map(({ plan }) => plan.slots.filter((slot) => slot.sharedBases?.codes?.length).length)
+  const creneauxAvecBase = creneauxAvecBaseParSemaine.reduce((somme, compte) => somme + compte, 0)
+  const semainesAuDessusDeQuatre = creneauxAvecBaseParSemaine.filter((compte) => compte >= 4).length
+  // Le chemin BASE, nommé et relu : les deux comptes que
+  // `supabase/tests/bases_partagees.sql` exige de la RPC sont ceux de
+  // l'arbitrage. On les relit ICI dans le fichier SQL plutôt que de les
+  // recopier : un rapport qui citerait un chiffre de mémoire pourrait le citer
+  // après qu'il a changé.
+  const MESURE_BASE = 'supabase/tests/bases_partagees.sql'
+  const sqlBases = readFileSync(join(RACINE, MESURE_BASE), 'utf8')
+  const attenduSql = (motif) => sqlBases.match(motif)?.[1] ?? '?'
+  const liensCheminBase = attenduSql(/v_liens <> (\d+) THEN/)
+  const platsCheminBase = attenduSql(/v_plats <> (\d+) THEN/)
 
   // ─── P13 — cuisines ──────────────────────────────────────────────────────
   const comptesCuisine = new Map()
@@ -725,7 +811,11 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
     {
       id: 'P9',
       libelle: 'Plats distincts à cuisiner pour le foyer',
-      mesure: parSemaine(aCuisinerParSemaine.map((codes) => String(codes.size))),
+      mesure: `${parSemaine(preparationsParSemaine.map((mesure) => String(mesure.preparations)))} préparations `
+        + `après fusion des couples déclarés (livrable 2.3) ; `
+        + `${parSemaine(aCuisinerParSemaine.map((codes) => String(codes.size)))} plats servis avant fusion ; `
+        + `couples fusionnés : ${somme(preparationsParSemaine.map((mesure) => mesure.fusions.length))} ; `
+        + `couples servis et ce que l'arbitrage en dit : ${couplesServis.length ? couplesServis.join(' · ') : 'aucun créneau à deux plats distincts'}`,
       cible: '≤ 12',
     },
     {
@@ -756,8 +846,18 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
     {
       id: 'P12',
       libelle: 'Plats liés à une base partagée',
-      mesure: `${corpusAvecBase}/${recipes.length} recettes du corpus portent un ingredient.component ; `
-        + `${creneauxAvecBase}/${tousCreneaux.length} créneaux en tirent parti`,
+      mesure: `${corpusEntierAvecBase}/${corpusEntier.length} recettes du corpus portent un ingredient.component `
+        + `que le moteur voit, sur ${platsArbitres.size} que l'arbitrage pose`
+        + (liensTombes.length
+          ? ` — ${liensTombes.length} tombent avec leur ligne d'ingrédient, dont la forme n'est pas au catalogue d'aliments (${liensTombes.join(', ')})`
+          : '')
+        + `, dont ${corpusAvecBase}/${recipes.length} publiables — il en faut 120, le terme n'est PAS tenu ; `
+        + `créneaux qui en tirent parti, semaine par semaine : ${parSemaine(creneauxAvecBaseParSemaine.map(String))} `
+        + `(${creneauxAvecBase}/${tousCreneaux.length} au total), `
+        + `${semainesAuDessusDeQuatre}/3 semaine(s) à 4 repas ou plus ; `
+        + `ces nombres sont ceux du CHEMIN JSON du dépôt — la mesure du chemin base est tenue par ${MESURE_BASE}, `
+        + `exécuté par le job db-tests de ci.yml sur les deux scénarios, et il exige de la RPC `
+        + `${liensCheminBase} liens sur ${platsCheminBase} plats`,
       cible: '≥ 120 plats liés, et ≥ 4 repas par semaine qui en profitent, mesurés sur le chemin base',
     },
     {
@@ -921,5 +1021,24 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
     // ne doit pas pouvoir naître.
     expect(contradictionsConservation.map((faute) => `${faute.debut} ${faute.creneau} ${faute.code} : ${faute.faute}`))
       .toEqual([])
+  })
+
+  it('P10 — l’écran et ce rapport donnent le MÊME chiffre, sous les mêmes trois définitions', () => {
+    // Le livrable 2.4 fait le pari explicite que `cookingTime.js` recalcule les
+    // quatre quantités de la ligne P10 « sous les mêmes noms ». Son propre test
+    // vérifie que les lignes de calcul existent encore dans ce fichier ; il ne
+    // vérifie pas qu'elles rendent le même nombre. C'est fait ici, sur les trois
+    // semaines réellement planifiées, parce qu'un écran et un rapport qui
+    // annoncent deux chiffres pour la même semaine en rendent un faux sans
+    // qu'on puisse dire lequel. Ce contrôle est EXIGÉ : la divergence n'est pas
+    // une mesure à rapporter, c'est une contradiction à corriger.
+    for (const [index, mesure] of minutesParSemaine.entries()) {
+      const publie = tempsPublieParSemaine[index].minutes
+      const semaine = DEBUTS[index]
+      expect(publie.preparation_active_engagee, `${semaine} — préparation active engagée`).toBe(mesure.engagee)
+      expect(publie.preparation_active_tout_frais, `${semaine} — préparation active tout frais`).toBe(mesure.toutFrais)
+      expect(publie.preparation_plus_cuisson, `${semaine} — préparation + cuisson`).toBe(mesure.avecCuisson)
+      expect(tempsPublieParSemaine[index].rechauffages.minutes, `${semaine} — réchauffages`).toBe(mesure.rechauffages)
+    }
   })
 })

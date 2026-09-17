@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { X, Minus, Plus, Search, ChefHat, Check } from 'lucide-react'
 import { authFetch } from '@/lib/authFetch'
 import { toast } from '@/components/Toast'
+import FicheFusionnee from '@/components/FicheFusionnee'
 import './CookingSessionSheet.css'
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -87,6 +88,25 @@ function defaultIngState(ing) {
  *   generatedRecipeId {number|string} — pour source ai
  *   defaultServings {number}
  *   onCommitted {function}           — appelé après commit réussi (optionnel)
+ *   couple {object|null}             — { a, b, portionsA, portionsB, mangeursA, mangeursB }
+ *
+ * `couple` — LA FICHE FUSIONNÉE (livrable 2.3). Deux codes canoniques servis au
+ * même créneau, l'un carné, l'autre son jumeau végétarien : la séance affiche
+ * alors la fiche fusionnée rendue par `/api/planning/fiche-fusionnee`, c'est-à-dire
+ * le découpage DÉCLARÉ dans `data/recipes/arbitrations/fiches-fusionnees.json`.
+ * Rien n'est deviné ici : sans `couple`, aucun appel n'est fait et rien ne
+ * s'affiche.
+ *
+ * CE QUI MANQUE POUR QUE CETTE VOIE SERVE, et il vaut mieux l'écrire que le
+ * laisser croire : les deux appelants actuels de cette feuille
+ * (`app/recipes/[id]/page.js` et `app/recipes/generated/[id]/page.js`) ne
+ * peuvent PAS passer `couple`, parce que ni la table `recipes` ni la table
+ * `generated_recipes` ne portent de code canonique — vérifié dans
+ * `supabase/migrations/012_generated_recipes.sql`. La fiche fusionnée est donc
+ * servie aujourd'hui par `app/planning/components/CookSession.jsx`, qui a les
+ * codes ; ici, le rendu existe et attend un appelant qui les ait. La séance de
+ * cuisson elle-même n'a jamais servi (`cooking_sessions` = 0, §2.2 du plan) :
+ * c'est le même chantier, et il n'est pas celui-ci.
  *
  * Corriger behavior (choix simple documenté) :
  *   Corriger = POST undo sur la séance committée → créer un NOUVEAU brouillon
@@ -101,6 +121,7 @@ export default function CookingSessionSheet({
   generatedRecipeId,
   defaultServings = 4,
   onCommitted,
+  couple = null,
 }) {
   // ── Session ────────────────────────────────────────────────────────────────
   const [sessionId, setSessionId] = useState(null)
@@ -138,6 +159,9 @@ export default function CookingSessionSheet({
   const [selectedPersons, setSelectedPersons] = useState([])
   const [customPerson, setCustomPerson] = useState('')
 
+  // ── Fiche de cuisine fusionnée (livrable 2.3) ─────────────────────────────
+  const [fiche, setFiche] = useState(null)
+
   // ── Commit/undo state ──────────────────────────────────────────────────────
   const [committing, setCommitting] = useState(false)
   const [committed, setCommitted] = useState(false)
@@ -168,8 +192,10 @@ export default function CookingSessionSheet({
     setPortionsObtained(sv)
     setPortionsEaten(sv)
 
+    setFiche(null)
     startDraftSession(sv)
     loadPersons()
+    loadFicheFusionnee()
   }, [open]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Block body scroll while open
@@ -230,6 +256,29 @@ export default function CookingSessionSheet({
       setSessionError(err.message)
     } finally {
       setLoadingSession(false)
+    }
+  }
+
+  // ── API: fiche de cuisine fusionnée ───────────────────────────────────────
+  /**
+   * Charge le découpage DÉCLARÉ du couple (plat carné, jumeau végétarien).
+   * Sans `couple`, aucun appel : la séance ordinaire n'a pas de fiche fusionnée
+   * à chercher. Un échec réseau laisse la séance intacte — la fiche est un
+   * service rendu à la cuisine, pas une condition de la séance.
+   */
+  async function loadFicheFusionnee() {
+    if (!couple?.a || !couple?.b) return
+    const parametres = new URLSearchParams({ a: couple.a, b: couple.b })
+    if (couple.portionsA) parametres.set('portionsA', String(couple.portionsA))
+    if (couple.portionsB) parametres.set('portionsB', String(couple.portionsB))
+    if (couple.mangeursA?.length) parametres.set('mangeursA', couple.mangeursA.join(','))
+    if (couple.mangeursB?.length) parametres.set('mangeursB', couple.mangeursB.join(','))
+    try {
+      const res = await authFetch(`/api/planning/fiche-fusionnee?${parametres}`)
+      if (!res.ok) return
+      setFiche(await res.json().catch(() => null))
+    } catch {
+      // Silencieux : la séance se tient sans sa fiche.
     }
   }
 
@@ -643,6 +692,12 @@ export default function CookingSessionSheet({
           {/* ── Main editing content ─────────────────────────────────────── */}
           {!loadingSession && !sessionError && session && !committed && (
             <>
+              {/* ── Fiche de cuisine fusionnée (livrable 2.3) ───────────────
+                  Avant les ingrédients : c'est elle qui dit ce qui va dans la
+                  casserole commune et ce qui reste à chaque branche. Ne rend
+                  rien tant qu'aucun couple déclaré n'a été passé. */}
+              <FicheFusionnee fiche={fiche} />
+
               {/* ── Ingredient list ─────────────────────────────────────── */}
               <section className="css-section">
                 <h3 className="css-section-title">Ingrédients</h3>

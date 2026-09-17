@@ -62,9 +62,22 @@ const DEPOT = corpusDuDepot(CORPUS)
  * base. Ils sont lus dans le SQL commité, c'est-à-dire dans ce que le pipeline
  * de production applique — pas dans la sortie régénérée d'un script, qui
  * pourrait différer de ce qui est inscrit au manifeste.
+ *
+ * LES TRANCHES NE SONT PLUS LES SEULES À ÉCRIRE CETTE COLONNE, et c'est pour
+ * cela que cette fonction lit deux choses au lieu d'une. Les dix tranches du
+ * 17 septembre sont FIGÉES — `apply-migrations.sh` refuse un fichier dont
+ * l'empreinte a changé après enregistrement —, si bien qu'un lot postérieur qui
+ * modifie le corpus écrit sa propre migration et met à jour `content_hash` pour
+ * les recettes qu'il touche. C'est ce que fait 20260918090000 (bases partagées,
+ * livrable 2.1) pour 71 plats. Ce qu'il faut vérifier n'a pas changé — la règle
+ * du dépôt rend ce que la base porte — mais « ce que la base porte » est le
+ * résultat de la CHAÎNE des migrations dans l'ordre, pas des seules tranches.
+ * On les rejoue donc dans l'ordre, sans quoi ce test rougirait sur une base
+ * pourtant exacte, et la seule façon de le calmer serait d'affaiblir sa règle.
  */
 const empreintesDesTranches = () => {
-  const fichiers = readdirSync(join(RACINE, 'supabase', 'migrations'))
+  const migrations = readdirSync(join(RACINE, 'supabase', 'migrations'))
+  const fichiers = migrations
     .filter((nom) => /^\d{14}_corpus_v3_754_tranche_\d+\.sql$/.test(nom))
     .sort()
   const parCode = new Map()
@@ -77,13 +90,33 @@ const empreintesDesTranches = () => {
       parCode.set(trouve[1], trouve[2])
     }
   }
-  return { fichiers, parCode }
+  // Les mises à jour postérieures, dans l'ordre chronologique des migrations.
+  // Chacune déclare le couple (empreinte d'avant, empreinte d'après) : on ne
+  // remplace que si l'empreinte courante est bien celle d'avant, exactement
+  // comme la garde SQL de la migration.
+  const misesAJour = migrations
+    .filter((nom) => /^\d{14}_bases_partagees\.sql$/.test(nom))
+    .sort()
+  for (const nom of misesAJour) {
+    const sql = readFileSync(join(RACINE, 'supabase', 'migrations', nom), 'utf8')
+    const bloc = sql.match(/INSERT INTO _empreintes VALUES\n([\s\S]*?);\n/)?.[1] || ''
+    for (const trouve of bloc.matchAll(/\('([A-Z0-9-]+)', '([0-9a-f]{32})', '([0-9a-f]{32})'\)/g)) {
+      const [, code, avant, apres] = trouve
+      if (parCode.get(code) === avant) parCode.set(code, apres)
+    }
+  }
+  return { fichiers, misesAJour, parCode }
 }
 
 describe('0b.5 — la règle d’empreinte du dépôt est celle que les migrations écrivent', () => {
   it('rend, recette par recette, le content_hash que portent les dix tranches de corpus', () => {
-    const { fichiers, parCode } = empreintesDesTranches()
+    const { fichiers, misesAJour, parCode } = empreintesDesTranches()
     expect(fichiers.length).toBe(10)
+    // La chaîne compte une mise à jour d'empreintes depuis les tranches : les
+    // bases partagées du livrable 2.1. Le compte est fixé pour qu'un lot
+    // ultérieur qui en ajouterait une soit lu ici plutôt que découvert en
+    // release.
+    expect(misesAJour).toEqual(['20260918090000_bases_partagees.sql'])
     // Le compte d'abord : une expression régulière qui cesserait d'accrocher
     // rendrait « 0 écart » sur 0 comparaison, et ce zéro-là ne prouverait rien.
     expect(parCode.size).toBe(CORPUS.recipes.length)

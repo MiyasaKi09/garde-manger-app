@@ -7,6 +7,14 @@ import { useRouter, useParams } from 'next/navigation'
 import { ArrowLeft, ChevronDown, ChevronUp, Check, Refrigerator, AlertTriangle } from 'lucide-react'
 import CookSession from '@/app/planning/components/CookSession'
 import { isDishExpired, pickDisplayedCookedDish } from '@/lib/domain/planning/cookedDishDisplay'
+import {
+  DEFINITIONS_TEMPS,
+  TYPES_TACHES_DE_CUISINE,
+  ecartAnnonceConstate,
+  formatMinutes,
+  minutesDeSession,
+} from '@/lib/domain/planning/cookingTime'
+import { sessionWindowForHour } from '@/lib/domain/planning/cookingSessions'
 import './BatchPage.css'
 
 const DOW = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
@@ -20,6 +28,31 @@ const frDate = (iso) => {
   return Number.isNaN(d.getTime()) ? iso : d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })
 }
 const cleanName = (name) => (name || 'Préparation').split('\n')[0].replace(/^B\d+\s*[—–-]\s*/, '').trim()
+
+/** « lundi 21 septembre », en UTC — piège n°4 du CLAUDE.md. */
+const jourLong = (iso) => new Date(`${iso}T00:00:00Z`)
+  .toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' })
+
+/** La définition du temps que porte le chiffre d'une session (livrable 2.4). */
+const DEFINITION_ENGAGEE = DEFINITIONS_TEMPS.find(d => d.id === 'preparation_active_engagee')
+
+/** Libellés des trois fenêtres de session du moteur (cookingSessions.js). */
+const FENETRE_LABEL = { matin: 'matin', apres_midi: 'après-midi', soir: 'soir' }
+
+/**
+ * Somme des durées d'un jour de cuisine LEGACY, lues dans le texte
+ * `estimated_time` (« 45 min »). `null` dès qu'une tâche n'en porte pas :
+ * un total auquel il manque un terme se présenterait comme un total complet.
+ */
+function minutesLegacy(tasks) {
+  let total = 0
+  for (const task of tasks || []) {
+    const trouve = (task.estimated_time || '').match(/(\d+)\s*min/i)
+    if (!trouve) return null
+    total += parseInt(trouve[1], 10)
+  }
+  return total
+}
 const frNum = (value) => String(Math.round((Number(value) || 0) * 100) / 100).replace('.', ',')
 
 // Ingrédients d'une préparation : ingredients_json ([{name, quantity, unit}])
@@ -56,6 +89,12 @@ export default function BatchPage() {
   // Plan canonique (Lot P3 volet B) : productions planifiées + dépendances de
   // tâches de la version active — lues directement (lecture seule, RLS).
   const [canonical, setCanonical] = useState({ productions: [], dependencies: [] })
+  // TEMPS CONSTATÉS (livrable 2.4) : `${date}|${fenêtre}` → ligne de
+  // `cooking_session_times`. Absent = session non chronométrée, jamais « écart
+  // nul » : l'écran affiche alors l'annonce seule et propose la saisie.
+  const [tempsConstates, setTempsConstates] = useState({})
+  const [saisieTemps, setSaisieTemps] = useState({})   // clé → minutes saisies
+  const [tempsErreur, setTempsErreur] = useState(null)
 
   useEffect(() => {
     async function load() {
@@ -90,6 +129,20 @@ export default function BatchPage() {
           setCanonical({ productions: productions || [], dependencies: dependencies || [] })
         }
       }
+      // Temps déjà chronométrés pour cette version de plan (livrable 2.4).
+      // Best-effort : une lecture qui échoue ne doit pas empêcher d'afficher le
+      // jour de cuisine — mais elle ne fabrique jamais de ligne non plus.
+      const versionId = d.activePlanVersion?.id || null
+      if (versionId) {
+        try {
+          const res = await authFetch(`/api/planning/session-time?plan_version_id=${encodeURIComponent(versionId)}`)
+          if (res.ok) {
+            const { sessions } = await res.json()
+            setTempsConstates(Object.fromEntries((sessions || [])
+              .map(ligne => [`${ligne.session_date}|${ligne.session_window}`, ligne])))
+          }
+        } catch { /* l'annonce s'affiche seule */ }
+      }
       // Plats déjà cuisinés (en stock) pour les préparations de cet import.
       // Un expiré et un frais recuit peuvent partager le même batch_recipe_id
       // (P0-3) : on affiche le frais le plus récent, sinon l'expiré le plus
@@ -118,6 +171,43 @@ export default function BatchPage() {
     }
     load()
   }, [importId])
+
+  /**
+   * Consigne le temps RÉELLEMENT passé sur une session (livrable 2.4).
+   * L'annonce est transmise telle qu'elle a été affichée : c'est contre elle
+   * que le foyer s'est chronométré, et une régénération du plan ne doit pas la
+   * réécrire après coup.
+   */
+  async function enregistrerTemps(date, fenetre, annonce) {
+    const cle = `${date}|${fenetre}`
+    const constate = Number(saisieTemps[cle])
+    if (!Number.isFinite(constate) || constate < 0) {
+      setTempsErreur('Indique un nombre de minutes.')
+      return
+    }
+    setTempsErreur(null)
+    const versionId = data?.activePlanVersion?.id || null
+    if (!versionId || annonce == null) return
+    try {
+      const res = await authFetch('/api/planning/session-time', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          plan_version_id: versionId,
+          session_date: date,
+          session_window: fenetre,
+          announced_active_minutes: annonce,
+          observed_active_minutes: Math.round(constate),
+        }),
+      })
+      const corps = await res.json()
+      if (!res.ok) { setTempsErreur(corps.error || 'Enregistrement impossible'); return }
+      setTempsConstates(prev => ({ ...prev, [cle]: corps.session }))
+      setSaisieTemps(prev => ({ ...prev, [cle]: '' }))
+    } catch {
+      setTempsErreur('Enregistrement impossible — réseau indisponible.')
+    }
+  }
 
   function cookPrep(recipe) {
     setCookSheet({
@@ -195,14 +285,21 @@ export default function BatchPage() {
 
     // Résumé canonique d'un jour de session (audit §13 : « Dimanche · 75 min
     // actives · 3 préparations · 10 portions · couvre 6 repas »).
+    //
+    // LE TEMPS EST UNE SOMME (livrable 2.4). Ce bloc additionnait les seules
+    // tâches « Préparer » : ni la tâche de congélation, ni les cinq minutes de
+    // portionnage par repas couvert que le moteur compte pourtant dans le
+    // plafond de la session (cookingSessions.js). Le chiffre affiché était donc
+    // STRUCTURELLEMENT plus petit que le temps modélisé — la faute même que ce
+    // livrable corrige. `minutesDeSession` refait la somme du moteur sur les
+    // lignes de tâches, et rend `null` si une durée manque : on affiche alors
+    // « non calculé » plutôt qu'un total amputé.
     const canonicalInfoFor = (date) => {
       const dayPrepares = prepareTasks.filter(t => t.prep_date === date)
       if (!dayPrepares.length) return null
-      let minutes = 0
       let portions = 0
       const followUps = []
       for (const t of dayPrepares) {
-        minutes += Number(t.duration_min) || 0
         const production = productionByTask.get(String(t.id)) || null
         if (production) portions += Number(production.planned_portions) || 0
         for (const child of (dependentsByTask.get(String(t.id)) || [])) {
@@ -210,9 +307,36 @@ export default function BatchPage() {
         }
       }
       followUps.sort((a, b) => (a.task.prep_date || '').localeCompare(b.task.prep_date || ''))
+      // Toutes les tâches de CUISINE du jour, congélation comprise : réchauffer
+      // et décongeler n'en sont pas et se dépensent le jour où l'on mange.
+      const dayCooking = closedLoop.filter(t => t.prep_date === date
+        && TYPES_TACHES_DE_CUISINE.includes(t.task_type))
+      // Un repas couvert = une portion à mettre en barquette, étiqueter et
+      // ranger : c'est exactement le nombre de tâches « réchauffer » qui
+      // dépendent des préparations du jour.
+      const temps = minutesDeSession({ tasks: dayCooking, repasCouverts: followUps.length })
+      // Le moteur appelle « session » un couple (jour, fenêtre) : cuisiner à
+      // midi et cuisiner le soir sont deux moments distincts devant les
+      // fourneaux, et c'est à ce grain qu'un chronomètre a un sens. La page,
+      // elle, montre un JOUR : on garde donc le total du jour en en-tête et on
+      // détaille ses fenêtres juste en dessous.
+      const parFenetre = new Map()
+      for (const task of dayCooking) {
+        const fenetre = sessionWindowForHour(Number(String(task.due_at || '').slice(11, 13)))
+        if (!parFenetre.has(fenetre)) parFenetre.set(fenetre, [])
+        parFenetre.get(fenetre).push(task)
+      }
+      const fenetres = [...parFenetre.entries()].map(([fenetre, taches]) => {
+        const repas = followUps.filter(({ task }) => taches
+          .some(t => (dependentsByTask.get(String(t.id)) || []).some(child => child.id === task.id))).length
+        return { fenetre, ...minutesDeSession({ tasks: taches, repasCouverts: repas }), repasCouverts: repas }
+      }).sort((a, b) => a.fenetre.localeCompare(b.fenetre))
       return {
         prepares: dayPrepares,
-        minutes,
+        minutes: temps.minutes,
+        lignesTemps: temps.lignes,
+        tempsManquants: temps.manquants,
+        fenetres,
         portions,
         covers: dayPrepares.length + followUps.length,
         followUps,
@@ -240,10 +364,12 @@ export default function BatchPage() {
         daysOf,
         canonical: canon,
         portions: canon ? canon.portions : sRecipes.reduce((s, r) => s + (Number(r.portions_total) || 0), 0),
-        minutes: canon ? canon.minutes : sTasks.reduce((s, t) => {
-          const m = (t.estimated_time || '').match(/(\d+)\s*min/i)
-          return s + (m ? parseInt(m[1], 10) : 0)
-        }, 0),
+        // Chemin LEGACY (plans d'avant le moteur canonique) : les durées n'y
+        // existent que sous forme de texte (« 45 min »). On les additionne, mais
+        // seulement si CHAQUE tâche en porte une — une somme à laquelle il
+        // manque un terme n'est pas une somme, et le « ≈ » qui la précédait
+        // était l'aveu qu'on affichait une estimation.
+        minutes: canon ? canon.minutes : minutesLegacy(sTasks),
       }
     }
 
@@ -300,6 +426,15 @@ export default function BatchPage() {
   if (!data) return null
 
   const hasAnything = sessions.some(s => s.tasks.length || s.recipes.length)
+  // Les trois temps de la semaine, PUBLIÉS avec le plan (livrable 2.4) :
+  // `validation_summary.cooking_time`. On les lit, on ne les recalcule pas —
+  // recalculer ici depuis des données partielles donnerait un second chiffre,
+  // et deux chiffres pour la même semaine en font un faux.
+  const tempsSemaine = data?.activePlanVersion?.validation_summary?.cooking_time || null
+  // La capacité de cuisine qui a borné cette semaine (livrable 2.2), telle que
+  // le solveur l'a résolue. Absente quand le foyer n'a rien déclaré : on
+  // n'affiche alors aucune contrainte, parce qu'il n'y en avait aucune.
+  const capacite = data?.activePlanVersion?.validation_summary?.cooking_capacity || null
 
   return (
     <>
@@ -317,6 +452,81 @@ export default function BatchPage() {
             <p className="v21-lede">On cuisine tout en lots, on portionne en barquettes — puis la semaine, on réchauffe.</p>
           </div>
         </header>
+
+        {/* ═══ LE TEMPS DE LA SEMAINE, SOUS SES TROIS DÉFINITIONS (livrable 2.4) ═══
+            Trois chiffres décrivent la même semaine ; celui qu'on regarde ne se
+            devine pas. Chacun porte donc son nom et sa phrase, et le critère du
+            foyer (préparation active engagée, ≤ 300 min) porte en plus sa cible
+            et son verdict — calculé, jamais commenté. */}
+        {tempsSemaine && (
+          <section className="v21-section flush bat-temps">
+            <h2 className="bat-temps-h">Le temps de cette semaine</h2>
+            <div className="bat-temps-grid">
+              {DEFINITIONS_TEMPS.map(definition => {
+                const minutes = tempsSemaine[definition.id]
+                const depassement = definition.cibleMax != null && minutes != null
+                  ? minutes - definition.cibleMax
+                  : null
+                return (
+                  <div key={definition.id} className={`bat-temps-c${definition.critere ? ' critere' : ''}`}>
+                    <div className="bat-temps-nom">{definition.nom}</div>
+                    <div className="bat-temps-v">
+                      {minutes == null ? 'non calculé' : `${minutes} min`}
+                      {minutes != null && <span className="bat-temps-hm"> · {formatMinutes(minutes)}</span>}
+                    </div>
+                    <p className="bat-temps-d">{definition.definition}</p>
+                    {definition.cibleMax != null && (
+                      <p className="bat-temps-cible">
+                        Cible du foyer : ≤ {definition.cibleMax} min.{' '}
+                        {minutes == null
+                          ? 'Verdict impossible : le temps n’est pas calculable.'
+                          : (depassement > 0 ? `Dépassement de ${depassement} min.` : 'Tenue.')}
+                      </p>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+            {tempsSemaine.rechauffages_creneaux > 0 && (
+              <p className="bat-temps-note">
+                {tempsSemaine.rechauffages_creneaux} repas réchauffé{tempsSemaine.rechauffages_creneaux > 1 ? 's' : ''}
+                {' '}({tempsSemaine.rechauffages_minutes} min) — hors de la définition retenue, qui ne compte que ce qui est cuisiné.
+              </p>
+            )}
+            {capacite && (
+              <p className="bat-temps-note">
+                {capacite.sessionDates.length > 0
+                  ? `Jours de cuisine déclarés : ${capacite.sessionDates.map(jourLong).join(', ')} — au plus ${capacite.maxProductionsPerSession} préparations d’avance par session, ${capacite.maxBasesPerSession} bases.`
+                  : 'Aucun jour de cuisine déclaré : les préparations d’avance restent bornées par défaut.'}
+                {capacite.quickDates.length > 0
+                  ? ` Soirs rapides déclarés : ${capacite.quickDates.map(jourLong).join(', ')} — aucune préparation d’avance ces jours-là.`
+                  : ''}
+              </p>
+            )}
+            {(capacite?.sessionsWithoutLaterSlot || []).length > 0 && (
+              <p className="bat-temps-note manque">
+                {capacite.sessionsWithoutLaterSlot.map(jourLong).join(', ')} : dernier jour de la semaine planifiée.
+                {' '}Une préparation d’avance n’y a aucun repas ultérieur à nourrir — cette session ne peut donc rien produire
+                {' '}pour cette semaine-là, et le moteur n’en propose aucune plutôt que d’en inventer une.
+              </p>
+            )}
+            {(capacite?.conflicts || []).length > 0 && (
+              <p className="bat-temps-note manque">
+                {capacite.conflicts.map(conflit => (
+                  `${jourLong(conflit.date)} : ${conflit.quickMembers.join(', ')} a déclaré un soir rapide quand `
+                  + `${conflit.sessionMembers.join(', ')} a déclaré un jour de cuisine — le rapide l’emporte.`
+                )).join(' ')}
+              </p>
+            )}
+            {(tempsSemaine.manquants || []).length > 0 && (
+              <p className="bat-temps-note manque">
+                {tempsSemaine.manquants.length} durée{tempsSemaine.manquants.length > 1 ? 's' : ''} non déclarée{tempsSemaine.manquants.length > 1 ? 's' : ''}
+                {' '}({[...new Set(tempsSemaine.manquants.map(m => m.recipe_code).filter(Boolean))].join(', ') || 'recette inconnue'}) :
+                {' '}le total n’est pas affiché tant qu’il manque un terme.
+              </p>
+            )}
+          </section>
+        )}
 
         {!hasAnything && (
           <section className="v21-section flush">
@@ -341,7 +551,13 @@ export default function BatchPage() {
                 <div className="bat-sess-meta">
                   {sess.canonical ? (
                     <>
-                      {sess.canonical.minutes > 0 && <span>{sess.canonical.minutes} min actives</span>}
+                      {/* Le temps porte le NOM de sa définition : « 75 min »
+                          sans définition ne dit pas si la cuisson est comptée. */}
+                      <span title={DEFINITION_ENGAGEE.definition}>
+                        {sess.canonical.minutes == null
+                          ? 'temps non calculé'
+                          : `${sess.canonical.minutes} min de préparation active engagée`}
+                      </span>
                       <span>{sess.canonical.prepares.length} préparation{sess.canonical.prepares.length > 1 ? 's' : ''}</span>
                       {sess.canonical.portions > 0 && <span>{frNum(sess.canonical.portions)} portions</span>}
                       <span>couvre {sess.canonical.covers} repas</span>
@@ -350,7 +566,7 @@ export default function BatchPage() {
                     <>
                       {sess.recipes.length > 0 && <span>{sess.recipes.length} plat{sess.recipes.length > 1 ? 's' : ''}</span>}
                       {sess.portions > 0 && <span>{frNum(sess.portions)} portions</span>}
-                      {sess.minutes > 0 && <span>≈ {sess.minutes} min</span>}
+                      <span>{sess.minutes == null ? 'temps non calculé' : `${sess.minutes} min de préparation active engagée`}</span>
                     </>
                   )}
                 </div>
@@ -380,6 +596,67 @@ export default function BatchPage() {
                   </span>
                 </div>
               )}
+
+              {/* LE TEMPS ANNONCÉ, ET CE QU'IL A VRAIMENT COÛTÉ (livrable 2.4).
+                  Une ligne par fenêtre de cuisine : ce que l'application a
+                  annoncé, ce que le foyer a chronométré, et l'écart entre les
+                  deux. Tant que personne n'a chronométré, l'écran ne montre
+                  aucun écart — il propose la saisie. */}
+              {sess.canonical && (sess.canonical.fenetres || []).map(fenetre => {
+                const cle = `${sess.date}|${fenetre.fenetre}`
+                const consigne = tempsConstates[cle] || null
+                const ecart = consigne
+                  ? ecartAnnonceConstate({
+                    annonce: consigne.announced_active_minutes,
+                    constate: consigne.observed_active_minutes,
+                  })
+                  : null
+                return (
+                  <div key={cle} className="bat-temps-s">
+                    <div className="bat-temps-s-h">
+                      <span className="bat-temps-s-t">Cuisine du {FENETRE_LABEL[fenetre.fenetre] || fenetre.fenetre}</span>
+                      <span className="bat-temps-s-v">
+                        {fenetre.minutes == null
+                          ? 'temps non calculé'
+                          : `${fenetre.minutes} min annoncées`}
+                      </span>
+                    </div>
+                    {/* La somme, terme par terme : un total qu'on ne peut pas
+                        décomposer est un total qu'on ne peut pas contester. */}
+                    {fenetre.lignes.length > 0 && (
+                      <ul className="bat-temps-s-l">
+                        {fenetre.lignes.map((ligne, index) => (
+                          <li key={index}><span>{ligne.libelle}</span><b>{ligne.minutes} min</b></li>
+                        ))}
+                      </ul>
+                    )}
+                    {ecart ? (
+                      <p className="bat-temps-s-e">
+                        Annoncé {formatMinutes(ecart.annonce)} · constaté {formatMinutes(ecart.constate)} ·
+                        {' '}écart {ecart.minutes > 0 ? '+' : ''}{ecart.minutes} min
+                        {ecart.facteur != null && ecart.facteur !== 1 ? ` (× ${String(ecart.facteur).replace('.', ',')})` : ''}
+                      </p>
+                    ) : fenetre.minutes != null && data?.activePlanVersion?.id ? (
+                      <div className="bat-temps-s-f">
+                        <label htmlFor={`temps-${cle}`}>Combien de temps cela a-t-il pris ?</label>
+                        <input
+                          id={`temps-${cle}`}
+                          type="number"
+                          min="0"
+                          inputMode="numeric"
+                          placeholder="minutes"
+                          value={saisieTemps[cle] ?? ''}
+                          onChange={e => setSaisieTemps(prev => ({ ...prev, [cle]: e.target.value }))}
+                        />
+                        <button type="button" onClick={() => enregistrerTemps(sess.date, fenetre.fenetre, fenetre.minutes)}>
+                          Consigner
+                        </button>
+                      </div>
+                    ) : null}
+                  </div>
+                )
+              })}
+              {tempsErreur && <p className="bat-temps-err">{tempsErreur}</p>}
 
               {/* Check-list persistante */}
               {sess.tasks.length > 0 && (
@@ -492,6 +769,68 @@ export default function BatchPage() {
           padding: 0; margin-bottom: 20px; transition: color 0.15s ease;
         }
         .bat-back:hover { color: var(--terracotta); }
+
+        /* ── Le temps, sous ses trois définitions (livrable 2.4) ── */
+        .bat-temps { margin-bottom: 8px; }
+        .bat-temps-h {
+          font-family: var(--font-display); font-size: 19px; font-weight: 600;
+          letter-spacing: -0.01em; color: var(--ink-1); margin: 0 0 12px;
+        }
+        .bat-temps-grid {
+          display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px;
+        }
+        .bat-temps-c {
+          border: 1px solid var(--line-strong); border-radius: 4px; padding: 12px 14px;
+          background: var(--paper);
+        }
+        .bat-temps-c.critere { border-color: var(--ink-1); }
+        .bat-temps-nom {
+          font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em;
+          text-transform: uppercase; color: var(--ink-3);
+        }
+        .bat-temps-v {
+          font-family: var(--font-display); font-size: 25px; font-weight: 600;
+          color: var(--ink-1); line-height: 1.2; margin-top: 3px;
+        }
+        .bat-temps-hm { font-size: 14px; font-weight: 400; color: var(--ink-3); }
+        .bat-temps-d {
+          font-family: var(--font-text); font-size: 13px; line-height: 1.45;
+          color: var(--ink-2); margin: 6px 0 0;
+        }
+        .bat-temps-cible {
+          font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-3);
+          margin: 8px 0 0; line-height: 1.4;
+        }
+        .bat-temps-note {
+          font-family: var(--font-text); font-size: 12.5px; color: var(--ink-3);
+          margin: 10px 0 0; line-height: 1.45;
+        }
+        .bat-temps-note.manque { color: var(--terracotta); }
+
+        .bat-temps-s { border: 1px dashed var(--line-strong); border-radius: 4px; padding: 10px 12px; margin-bottom: 10px; }
+        .bat-temps-s-h { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+        .bat-temps-s-t { font-family: var(--font-text); font-size: 14px; color: var(--ink-1); text-transform: capitalize; }
+        .bat-temps-s-v { font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); letter-spacing: 0.02em; }
+        .bat-temps-s-l { list-style: none; margin: 8px 0 0; padding: 0; }
+        .bat-temps-s-l li {
+          display: flex; justify-content: space-between; gap: 10px;
+          font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); padding: 2px 0;
+        }
+        .bat-temps-s-l li b { font-weight: 600; color: var(--ink-2); }
+        .bat-temps-s-e { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-1); margin: 8px 0 0; }
+        .bat-temps-s-f { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+        .bat-temps-s-f label { font-family: var(--font-text); font-size: 13px; color: var(--ink-2); }
+        .bat-temps-s-f input {
+          width: 96px; padding: 5px 8px; border: 1px solid var(--line-strong); border-radius: 3px;
+          font-family: var(--font-mono); font-size: 12px; background: var(--paper); color: var(--ink-1);
+        }
+        .bat-temps-s-f button {
+          font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase;
+          padding: 6px 10px; border: 1px solid var(--ink-1); border-radius: 3px;
+          background: var(--paper); color: var(--ink-1); cursor: pointer;
+        }
+        .bat-temps-s-f button:hover { background: var(--surface-soft); }
+        .bat-temps-err { font-family: var(--font-text); font-size: 13px; color: var(--terracotta); margin: 0 0 10px; }
 
         .bat-sess { padding: 26px 0 8px; border-top: 1.5px solid var(--ink-1); }
         .bat-sess:first-of-type { border-top: none; }

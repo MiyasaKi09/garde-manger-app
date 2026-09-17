@@ -162,6 +162,14 @@ const NEW_EXPECTED_OBJECTS = {
   // COLONNE `present` et l'index d'unicité, pas seulement le nom de la table :
   // c'est `present = false` qui retire une assiette, et c'est l'unicité qui
   // empêche deux déclarations contradictoires sur le même créneau.
+  // Livrable 2.4 : le temps constaté d'une session, à côté du temps annoncé.
+  '20260918120000': [
+    { type: 'table', schema: 'public', name: 'cooking_session_times' },
+    { type: 'column', schema: 'public', table: 'cooking_session_times', name: 'announced_active_minutes' },
+    { type: 'column', schema: 'public', table: 'cooking_session_times', name: 'observed_active_minutes' },
+    { type: 'index', schema: 'public', table: 'cooking_session_times', name: 'uq_cooking_session_times_session' },
+    { type: 'policy', schema: 'public', table: 'cooking_session_times', name: 'cooking_session_times_select_own' },
+  ],
   '20260917130000': [
     { type: 'table', schema: 'public', name: 'meal_presence' },
     { type: 'column', schema: 'public', table: 'meal_presence', name: 'present' },

@@ -1992,5 +1992,75 @@
     "baseline": null,
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260918090000_bases_partagees.sql",
+    "github_version": "20260918090000",
+    "name": "bases_partagees",
+    "sha256": "cd0ca2aeb0d2b641b55195050381033ddf1f9f02831c882621586c21f76f33fe",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260918090000_bases_partagees_rollback.sql",
+    "github_version": "20260918090000",
+    "name": "bases_partagees_rollback",
+    "sha256": "620897020f79c34c8e408fdeabe34dbda9eb792a96afab1a4088581d472fef2a",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260918120000_temps_session_constate.sql",
+    "github_version": "20260918120000",
+    "name": "temps_session_constate",
+    "sha256": "c233b046f7d32257c8d22edadd0e8a28a84497e3b1099fbc2f7ab03ac74a3e80",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "cooking_session_times"
+      },
+      {
+        "type": "column",
+        "schema": "public",
+        "table": "cooking_session_times",
+        "name": "announced_active_minutes"
+      },
+      {
+        "type": "column",
+        "schema": "public",
+        "table": "cooking_session_times",
+        "name": "observed_active_minutes"
+      },
+      {
+        "type": "index",
+        "schema": "public",
+        "table": "cooking_session_times",
+        "name": "uq_cooking_session_times_session"
+      },
+      {
+        "type": "policy",
+        "schema": "public",
+        "table": "cooking_session_times",
+        "name": "cooking_session_times_select_own"
+      }
+    ]
+  },
+  {
+    "file": "20260918120000_temps_session_constate_rollback.sql",
+    "github_version": "20260918120000",
+    "name": "temps_session_constate_rollback",
+    "sha256": "f02bc08c43167711d40a0797ee86694038f64ec9829f5f1541b08db2c0fa9ff3",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

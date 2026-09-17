@@ -509,6 +509,15 @@ jobs:
           DATABASE_URL: ${{ env.DB_A }}
         run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/contrat_operationnel.sql
 
+      # P12 ne se mesure que sur le chemin base (plan §4, pari 8). Ici, ce qui
+      # est éprouvé est le CODE d'émission : build-corpus-v3.mjs repose les liens
+      # de base à chaque chargement, sans quoi un rechargement de corpus les
+      # effacerait — chaque bloc recette commence par un DELETE de ses composants.
+      - name: "[A] Bases partagées : la chaîne de publication repose les liens"
+        env:
+          DATABASE_URL: ${{ env.DB_A }}
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/bases_partagees.sql
+
       # ────────────────────────────────────────────────────────────────────────
       # SCÉNARIO B — Simulation d'une prod divergente, puis reconcile + apply
       #
@@ -853,6 +862,16 @@ jobs:
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/contrat_operationnel.sql
+
+      # Le même fichier, sur le chemin des MIGRATIONS — celui de la production,
+      # où les dix tranches du 17 septembre sont figées et ne portent aucun lien :
+      # c'est 20260918090000_bases_partagees.sql qui les pose. Les deux scénarios
+      # doivent rendre le même compte, sans quoi le dépôt et la base divergeraient
+      # en silence, ce que le §9.3 du plan interdit.
+      - name: "[B] Bases partagées : la migration pose les liens"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/bases_partagees.sql
 
       - name: "[B] Idempotence : 2e apply doit rapporter 0 appliquées"
         env:

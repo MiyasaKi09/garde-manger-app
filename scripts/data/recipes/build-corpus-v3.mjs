@@ -355,6 +355,85 @@ END
 $composition$;
 `
 
+// ── Bases partagées ─────────────────────────────────────────────────────────
+// Les liens `ingredient.component` que le corpus porte depuis le livrable 2.1
+// (scripts/data/recipes/link-shared-bases.mjs, arbitrés dans
+// data/recipes/arbitrations/bases-partagees.json). Sans ce bloc, un
+// rechargement du corpus les EFFACERAIT : chaque bloc recette commence par
+// `DELETE FROM culinary.recipe_components WHERE recipe_version_id = v_version`
+// et réinsère le seul composant « plat ». La migration dédiée
+// (20260918090000_bases_partagees.sql) pose les liens sur la base d'aujourd'hui ;
+// celui-ci les repose à chaque chargement, de sorte que les deux chemins — le
+// corpus du dépôt et la base — portent la même chose.
+//
+// Il vient APRÈS toutes les recettes, comme la composition ci-dessus, et pour
+// la même raison : une base doit déjà être en table pour qu'on puisse la
+// désigner par son code. L'ordre des recettes ne garantit rien ici — RAP-004
+// est chargée bien après FR-005 qui l'emploie.
+const liensDeBase = []
+for (const recipe of corpus.recipes) {
+  let position = 1
+  for (const [index, ingredient] of recipe.ingredients.entries()) {
+    if (!ingredient.component?.code) continue
+    position += 1
+    liensDeBase.push({
+      parent: recipe.code,
+      base: String(ingredient.component.code),
+      nom: ingredient.component.name || String(ingredient.component.code),
+      positionComposant: position,
+      positionIngredient: index + 1,
+      forme: ingredient.form,
+      quantite: ingredient.component.requiredQuantity,
+      unite: ingredient.component.requiredUnit,
+    })
+  }
+}
+if (liensDeBase.length) {
+  const valeurs = liensDeBase.map((lien) => `    (${q(lien.parent)}, ${q(lien.base)}, ${lien.positionIngredient}, ${q(lien.forme)}, ${q(lien.nom)}, ${lien.positionComposant}, ${num(lien.quantite)}, ${q(lien.unite)})`).join(',\n')
+  sql += `
+-- ${liensDeBase.length} lien(s) de base partagée sur ${new Set(liensDeBase.map((lien) => lien.parent)).size} plat(s).
+CREATE TEMP TABLE _liens_corpus (
+  parent_code text, base_code text, ingredient_pos integer, ingredient_name text,
+  component_name text, component_pos integer, required_quantity numeric, required_unit text
+) ON COMMIT DROP;
+
+INSERT INTO _liens_corpus VALUES
+${valeurs};
+
+INSERT INTO culinary.recipe_components
+  (recipe_version_id, name, component_role, position, sub_recipe_version_id,
+   required_quantity, required_unit)
+SELECT parent.id, lien.component_name, 'base', lien.component_pos, enfant.id,
+       lien.required_quantity, lien.required_unit
+FROM _liens_corpus lien
+JOIN ops.source_datasets dataset ON dataset.code = 'myko_editorial_v3'
+JOIN culinary.recipe_versions parent
+  ON parent.source_dataset_id = dataset.id AND upper(parent.source_record_key) = lien.parent_code
+JOIN culinary.recipe_versions enfant
+  ON enfant.source_dataset_id = dataset.id AND upper(enfant.source_record_key) = lien.base_code
+WHERE NOT EXISTS (
+  SELECT 1 FROM culinary.recipe_components existant
+  WHERE existant.recipe_version_id = parent.id AND existant.sub_recipe_version_id = enfant.id
+);
+
+UPDATE culinary.recipe_ingredient_requirements exigence
+SET component_id = composant.id, requirement_type = 'sub_recipe'
+FROM _liens_corpus lien
+JOIN ops.source_datasets dataset ON dataset.code = 'myko_editorial_v3'
+JOIN culinary.recipe_versions parent
+  ON parent.source_dataset_id = dataset.id AND upper(parent.source_record_key) = lien.parent_code
+JOIN culinary.recipe_versions enfant
+  ON enfant.source_dataset_id = dataset.id AND upper(enfant.source_record_key) = lien.base_code
+JOIN culinary.recipe_components composant
+  ON composant.recipe_version_id = parent.id AND composant.sub_recipe_version_id = enfant.id
+WHERE exigence.recipe_version_id = parent.id
+  AND exigence.position = lien.ingredient_pos
+  AND exigence.source_name = lien.ingredient_name
+  AND (exigence.component_id IS DISTINCT FROM composant.id
+       OR exigence.requirement_type IS DISTINCT FROM 'sub_recipe');
+`
+}
+
 // ── Recettes retirées ───────────────────────────────────────────────────────
 // Le chargeur n'efface rien : il remplace ce qu'il porte et laisse le reste. Une
 // recette sortie du corpus garderait donc sa ligne en base, toujours offerte au

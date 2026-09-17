@@ -18,6 +18,7 @@ import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/
 import { isDishExpired, todayUtcIso } from '@/lib/domain/planning/cookedDishDisplay'
 import { SUPPLEMENT_FORMS } from '@/lib/domain/planning/personalizedMeals'
 import { resolveHouseholdTimeZone } from '@/lib/domain/planning/planningTime'
+import { buildHouseholdCookingCapacity } from '@/lib/domain/planning/cookingCapacity'
 import { slotProtectionState } from '@/lib/domain/planning/slotProtection'
 
 export const dynamic = 'force-dynamic'
@@ -584,6 +585,18 @@ export async function POST(request) {
       // `isMealSuitableRecipe` ; fournies ici pour que chaque membre puisse
       // en recevoir une portion de fin de repas si son réglage l'autorise.
       dessertPool,
+      // CAPACITÉ DE CUISINE DÉCLARÉE (livrable 2.2). Les jours de cuisine et
+      // les soirs rapides du questionnaire de goûts étaient stockés au profil
+      // depuis des mois sans qu'aucun code ne les lise ; ils bornent désormais
+      // les productions et les bases cuites. La capacité du foyer est l'union
+      // de celles de ses membres PRÉSENTS : la présence du livrable 1.5 est
+      // relue ici, sur la même fenêtre et les mêmes déclarations que la grille.
+      // Aucun jour déclaré → bornes d'avant, plan identique.
+      cookingCapacity: buildHouseholdCookingCapacity({
+        members,
+        presence,
+        dates: [...new Set(slots.map((slot) => slot.date))],
+      }),
     }
     const planOptions = {
       inventoryLots: plannerLots,
@@ -594,6 +607,19 @@ export async function POST(request) {
       beamWidth: 48,
       repetitionRules,
       history,
+      // BASES PARTAGÉES (livrable 2.1). `sharedBases.js` a besoin de la RECETTE
+      // d'une base — ses minutes actives et sa garde déclarée — pour décider de
+      // la cuire ou de la reprendre. Une base dont la recette est inconnue
+      // n'existe pas pour lui : le plat se cuisine comme avant et le créneau
+      // porte `shared_base_recipe_unknown`.
+      // On passe le catalogue SERVI ENTIER, avant le filtre `isMealSuitableRecipe`
+      // et avant l'élagage : une sauce tomate ou un bouillon n'a aucune raison
+      // d'occuper un dîner, mais toutes les raisons d'être connu. S'en remettre
+      // au vivier élagué marcherait aujourd'hui — `selectPlanningRecipePool`
+      // garde huit représentants par catégorie et les bases sont seules dans la
+      // leur — mais ce serait tenir un chiffre par chance plutôt que par
+      // construction, et la chance ne se relit pas.
+      baseRecipes: operationalCatalog.recipes,
     }
     let plan = generateClosedLoopPlan({ slots, recipes, ...planOptions })
     // La semaine précédente est exclue en priorité. Un repli explicite et

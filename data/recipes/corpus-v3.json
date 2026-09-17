@@ -30365,7 +30365,13 @@
           "quantity": 280,
           "unit": "g",
           "role": "fond",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-004",
+            "name": "Pâte brisée",
+            "requiredQuantity": 280,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Lardon fumé cru",
@@ -35085,7 +35091,13 @@
           "quantity": 1500,
           "unit": "ml",
           "role": "liquide",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 1500,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Crème fraîche liquide entière",
@@ -38150,7 +38162,13 @@
           "quantity": 320,
           "unit": "g",
           "role": "fond",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-004",
+            "name": "Pâte brisée",
+            "requiredQuantity": 320,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Lait entier",
@@ -39776,7 +39794,13 @@
           "quantity": 350,
           "unit": "g",
           "role": "fond",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-005",
+            "name": "Pâte sablée",
+            "requiredQuantity": 350,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Citron jaune frais",
@@ -39945,7 +39969,13 @@
           "quantity": 280,
           "unit": "g",
           "role": "fond",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-004",
+            "name": "Pâte brisée",
+            "requiredQuantity": 280,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Thon au naturel en conserve, égoutté",
@@ -41157,7 +41187,13 @@
           "quantity": 280,
           "unit": "g",
           "role": "fond",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-004",
+            "name": "Pâte brisée",
+            "requiredQuantity": 280,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Poireau cru",
@@ -41723,7 +41759,13 @@
           "quantity": 300,
           "unit": "g",
           "role": "fond",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-004",
+            "name": "Pâte brisée",
+            "requiredQuantity": 300,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Pomme fraîche",
@@ -44666,7 +44708,13 @@
           "quantity": 320,
           "unit": "g",
           "role": "fond",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-004",
+            "name": "Pâte brisée",
+            "requiredQuantity": 320,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Poireau cru",
@@ -49004,7 +49052,13 @@
           "quantity": 3,
           "unit": "u",
           "role": "garniture",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 3,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Jambon serrano",
@@ -50885,7 +50939,13 @@
           "quantity": 250,
           "unit": "g",
           "role": "service",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-012",
+            "name": "Tzatziki",
+            "requiredQuantity": 250,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Tomate fraîche mûre",
@@ -54049,7 +54109,13 @@
           "quantity": 8,
           "unit": "u",
           "role": "pain",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "VAR-023",
+            "name": "Msemen",
+            "requiredQuantity": 8,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Lentille brune sèche, crue",
@@ -54414,7 +54480,13 @@
           "quantity": 6,
           "unit": "u",
           "role": "garniture",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 6,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Jus de citron frais",
@@ -56069,7 +56141,13 @@
           "quantity": 4,
           "unit": "u",
           "role": "garniture",
-          "optional": true
+          "optional": true,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 4,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Poisson fumé",
@@ -64266,7 +64344,13 @@
           "quantity": 6,
           "unit": "u",
           "role": "garniture",
-          "optional": true
+          "optional": true,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 6,
+            "requiredUnit": "u"
+          }
         }
       ],
       "steps": [
@@ -68056,7 +68140,13 @@
           "quantity": 4,
           "unit": "u",
           "role": "garniture",
-          "optional": true
+          "optional": true,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 4,
+            "requiredUnit": "u"
+          }
         }
       ],
       "steps": [
@@ -69722,7 +69812,13 @@
           "quantity": 120,
           "unit": "g",
           "role": "sauce",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 120,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Carotte crue",
@@ -70220,7 +70316,13 @@
           "quantity": 8,
           "unit": "u",
           "role": "garniture",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 8,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Eau de coco",
@@ -72320,7 +72422,13 @@
           "quantity": 4,
           "unit": "u",
           "role": "garniture",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 4,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Pâte d’arachide pure",
@@ -72512,7 +72620,13 @@
           "quantity": 4,
           "unit": "u",
           "role": "garniture",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 4,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Feuille de laksa vietnamienne",
@@ -75316,7 +75430,13 @@
           "quantity": 120,
           "unit": "g",
           "role": "sauce",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 120,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Crème mexicaine",
@@ -76336,7 +76456,13 @@
           "quantity": 3,
           "unit": "u",
           "role": "garniture",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 3,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Olive verte dénoyautée",
@@ -76706,7 +76832,13 @@
           "quantity": 700,
           "unit": "g",
           "role": "accompagnement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-016",
+            "name": "Riz créole",
+            "requiredQuantity": 700,
+            "requiredUnit": "g"
+          }
         }
       ],
       "steps": [
@@ -76878,7 +77010,13 @@
           "quantity": 4,
           "unit": "u",
           "role": "garniture",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 4,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Olive noire",
@@ -77032,7 +77170,13 @@
           "quantity": 180,
           "unit": "g",
           "role": "farce",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 180,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Avocat frais",
@@ -77046,7 +77190,13 @@
           "quantity": 4,
           "unit": "u",
           "role": "garniture",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 4,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Olive noire",
@@ -77350,7 +77500,13 @@
           "quantity": 150,
           "unit": "g",
           "role": "farce",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 150,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Coriandre fraîche",
@@ -79587,7 +79743,13 @@
           "quantity": 1400,
           "unit": "ml",
           "role": "liquide",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 1400,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Zakwas de betterave fermenté",
@@ -84890,7 +85052,13 @@
           "quantity": 35,
           "unit": "g",
           "role": "liaison",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 35,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Moutarde de Dijon",
@@ -85273,7 +85441,13 @@
           "quantity": 3,
           "unit": "u",
           "role": "protéine",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 3,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Olive noire",
@@ -86815,7 +86989,13 @@
           "quantity": 150,
           "unit": "g",
           "role": "protéine",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 150,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Cornichon au vinaigre",
@@ -86829,7 +87009,13 @@
           "quantity": 125,
           "unit": "g",
           "role": "sauce",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 125,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Crème fraîche épaisse",
@@ -99691,7 +99877,13 @@
           "quantity": 35,
           "unit": "g",
           "role": "liaison",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 35,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Moutarde de Dijon",
@@ -104172,7 +104364,13 @@
           "quantity": 55,
           "unit": "g",
           "role": "liaison",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 55,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Moutarde de Dijon",
@@ -104428,7 +104626,13 @@
           "quantity": 35,
           "unit": "g",
           "role": "liaison",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 35,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Moutarde de Dijon",
@@ -105789,7 +105993,13 @@
           "quantity": 3,
           "unit": "u",
           "role": "protéine",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 3,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Olive noire",
@@ -106002,7 +106212,13 @@
           "quantity": 3,
           "unit": "u",
           "role": "protéine",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 3,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Olive noire",
@@ -106189,7 +106405,13 @@
           "quantity": 3,
           "unit": "u",
           "role": "protéine",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 3,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Olive noire",
@@ -111549,7 +111771,13 @@
           "quantity": 150,
           "unit": "g",
           "role": "protéine",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 150,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Cornichon au vinaigre",
@@ -111798,7 +112026,13 @@
           "quantity": 150,
           "unit": "g",
           "role": "protéine",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 150,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Cornichon au vinaigre",
@@ -111812,7 +112046,13 @@
           "quantity": 60,
           "unit": "g",
           "role": "sauce",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 60,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Crème fraîche liquide entière",
@@ -112033,7 +112273,13 @@
           "quantity": 150,
           "unit": "g",
           "role": "protéine",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 150,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Cornichon au vinaigre",
@@ -112047,7 +112293,13 @@
           "quantity": 125,
           "unit": "g",
           "role": "sauce",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 125,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Crème fraîche épaisse",
@@ -112267,7 +112519,13 @@
           "quantity": 300,
           "unit": "g",
           "role": "protéine",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 300,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Cornichon au vinaigre",
@@ -112281,7 +112539,13 @@
           "quantity": 125,
           "unit": "g",
           "role": "sauce",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 125,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Crème fraîche épaisse",
@@ -132689,7 +132953,13 @@
           "quantity": 500,
           "unit": "ml",
           "role": "liquide de cuisson",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 500,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Huile d'olive vierge extra",
@@ -139278,7 +139548,13 @@
           "quantity": 3,
           "unit": "u",
           "role": "protéine",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 3,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Olive noire",
@@ -143913,7 +144189,13 @@
           "quantity": 400,
           "unit": "g",
           "role": "féculent",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-018",
+            "name": "Pâtes fraîches maison",
+            "requiredQuantity": 400,
+            "requiredUnit": "g"
+          }
         }
       ],
       "steps": [
@@ -152785,7 +153067,13 @@
           "quantity": 60,
           "unit": "g",
           "role": "sauce",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 60,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Vinaigre de vin rouge",
@@ -155440,7 +155728,13 @@
           "quantity": 100,
           "unit": "g",
           "role": "sauce",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 100,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Sel fin",
@@ -156267,7 +156561,13 @@
           "quantity": 600,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 600,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Oignon jaune cru",
@@ -159879,7 +160179,13 @@
           "quantity": 225,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 225,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Poivron rouge frais",
@@ -160282,7 +160588,13 @@
           "quantity": 3,
           "unit": "u",
           "role": "garniture",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 3,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Olive noire dénoyautée",
@@ -161096,7 +161408,13 @@
           "quantity": 700,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 700,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Poivron rouge frais",
@@ -161941,7 +162259,13 @@
           "quantity": 3,
           "unit": "u",
           "role": "protéine",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 3,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Riz basmati cru",
@@ -162160,14 +162484,26 @@
           "quantity": 120,
           "unit": "g",
           "role": "liaison",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-019",
+            "name": "Mayonnaise maison",
+            "requiredQuantity": 120,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Œuf dur",
           "quantity": 3,
           "unit": "u",
           "role": "protéine",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 3,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Olive verte dénoyautée",
@@ -163123,7 +163459,13 @@
           "quantity": 250,
           "unit": "g",
           "role": "fond",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-004",
+            "name": "Pâte brisée",
+            "requiredQuantity": 250,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Gruyère râpé",
@@ -163505,7 +163847,13 @@
           "quantity": 250,
           "unit": "g",
           "role": "fond",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-004",
+            "name": "Pâte brisée",
+            "requiredQuantity": 250,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Œuf cru",
@@ -163689,7 +164037,13 @@
           "quantity": 250,
           "unit": "g",
           "role": "fond",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-004",
+            "name": "Pâte brisée",
+            "requiredQuantity": 250,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Thon au naturel en conserve, égoutté",
@@ -164036,7 +164390,13 @@
           "quantity": 1500,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 1500,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Lentille verte sèche, crue",
@@ -164221,7 +164581,13 @@
           "quantity": 250,
           "unit": "g",
           "role": "fond",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-004",
+            "name": "Pâte brisée",
+            "requiredQuantity": 250,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Oignon jaune cru",
@@ -164410,7 +164776,13 @@
           "quantity": 500,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 500,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Haricot rouge cuit, égoutté",
@@ -169760,7 +170132,13 @@
           "quantity": 750,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 750,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Crème fraîche liquide entière",
@@ -170235,7 +170613,13 @@
           "quantity": 400,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 400,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Champignon de Paris frais",
@@ -170481,7 +170865,13 @@
           "quantity": 800,
           "unit": "ml",
           "role": "cuisson",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 800,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Chou blanc frais",
@@ -170710,7 +171100,13 @@
           "quantity": 300,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 300,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Oignon jaune cru",
@@ -170933,7 +171329,13 @@
           "quantity": 1600,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 1600,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Haricot blanc cuit, égoutté",
@@ -171631,7 +172033,13 @@
           "quantity": 250,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 250,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Crème fraîche épaisse",
@@ -172935,7 +173343,13 @@
           "quantity": 1000,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 1000,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Haricot blanc sec",
@@ -173606,7 +174020,13 @@
           "quantity": 450,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 450,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Oignon jaune cru",
@@ -173815,7 +174235,13 @@
           "quantity": 150,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 150,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Jus de citron frais",
@@ -174020,7 +174446,13 @@
           "quantity": 300,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 300,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Oignon rouge cru",
@@ -174633,7 +175065,13 @@
           "quantity": 2000,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 2000,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Tomate fraîche mûre",
@@ -175143,7 +175581,13 @@
           "quantity": 2500,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 2500,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Betterave crue",
@@ -175401,7 +175845,13 @@
           "quantity": 280,
           "unit": "g",
           "role": "fond",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-004",
+            "name": "Pâte brisée",
+            "requiredQuantity": 280,
+            "requiredUnit": "g"
+          }
         },
         {
           "form": "Tofu fumé",
@@ -175844,7 +176294,13 @@
           "quantity": 400,
           "unit": "ml",
           "role": "mouillement",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-007",
+            "name": "Bouillon de légumes",
+            "requiredQuantity": 400,
+            "requiredUnit": "ml"
+          }
         },
         {
           "form": "Oignon jaune cru",
@@ -179212,7 +179668,13 @@
           "quantity": 3,
           "unit": "u",
           "role": "garniture",
-          "optional": false
+          "optional": false,
+          "component": {
+            "code": "RAP-015",
+            "name": "Œufs durs",
+            "requiredQuantity": 3,
+            "requiredUnit": "u"
+          }
         },
         {
           "form": "Ail cru",
