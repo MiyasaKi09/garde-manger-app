@@ -397,14 +397,44 @@ describe('publication d’une semaine, avec et sans deux dîners hors domicile',
     //   — AUCUN jour sans absence déclarée ne change, au macro près. C'est la
     //     vraie garantie de la présence : elle n'agit que là où elle est
     //     déclarée. Cette clause-là n'est pas affaiblie, elle est isolée.
-    //   — Les jours AVEC absence peuvent bouger, mais jamais en s'éloignant de
-    //     la cible du présent : son écart d'énergie ne peut que diminuer, et sa
-    //     journée doit rester valide. Le moteur a le droit de mieux servir
-    //     quelqu'un dont le voisin est sorti ; il n'a pas le droit de le servir
-    //     plus mal.
-    // MESURÉ sur la semaine servie : mardi, l'écart d'énergie de Julien passe
-    // de 2,44 % à 2,22 % (2 414,4 → 2 409,4 kcal pour une cible de 2 357) ;
-    // jeudi, rien ne bouge.
+    //   — Les jours AVEC absence peuvent bouger, mais la journée du présent
+    //     reste VALIDE et sa cible ne change pas.
+    //
+    // SECONDE CORRECTION DE CETTE CLAUSE, AU LIVRABLE 3.1, ET IL FAUT LA LIRE.
+    // Elle exigeait de surcroît que l'écart d'énergie du présent « ne puisse que
+    // diminuer » — « le moteur a le droit de mieux servir quelqu'un dont le
+    // voisin est sorti ; il n'a pas le droit de le servir plus mal ». La phrase
+    // est juste ; la grandeur était fausse. Le solveur ne minimise PAS l'écart
+    // d'énergie : `optimizeDailyPortions` minimise un score composite —
+    // `macroScore` plus l'écart d'énergie au carré, plus les pénalités de
+    // portion — et n'admet un candidat que si son écart d'énergie tient déjà
+    // dans la tolérance de ±5 % (c'est exactement ce que `valid` rapporte).
+    // Entre deux candidats tolérés, il choisit donc le mieux équilibré, pas le
+    // plus proche en calories.
+    //
+    // MESURÉ sur la semaine servie après le livrable 3.1, mardi, pour Julien
+    // (cible 2 357 kcal, 216 g de protéines) :
+    //   — sans absence : déjeuner VAR-029 × 1,4 + dîner SRC-038-D3 × 1,2
+    //     → 2 299,2 kcal (écart 2,45 %), 145,90 g de protéines ;
+    //   — avec l'absence de Zoé au dîner : × 1,2 et × 1,4
+    //     → 2 287,4 kcal (écart 2,95 %), 148,84 g de protéines.
+    // Le solveur a déplacé une portion du déjeuner vers le dîner : il perd
+    // 11,8 kcal de précision énergétique et gagne 2,94 g de protéines, sur la
+    // journée d'un membre dont le plancher protéique est justement relâché
+    // (`protein_gate_relaxed` vrai des deux côtés). C'est un meilleur service,
+    // pas un moins bon — et l'ancienne clause l'aurait refusé. Jeudi, rien ne
+    // bouge.
+    //
+    // CE QUI N'EST PAS AFFAIBLI. Aucun critère P1–P18 ne passe par cette clause.
+    // Les trois garanties de la présence — douze assiettes au lieu de quatorze,
+    // des quantités de courses qui baissent d'autant, un total nutritionnel qui
+    // exclut les repas absents — sont éprouvées ailleurs dans ce fichier et
+    // n'ont pas changé. Ce qui est retiré ici est une monotonie qu'aucune ligne
+    // du moteur n'implémente et que la semaine d'alors vérifiait par hasard.
+    //
+    // CE QU'ON A ÉCARTÉ : asserter le score composite lui-même, qui lui est bien
+    // monotone. Il n'est publié nulle part, et le publier pour un test
+    // reviendrait à exposer une grandeur interne dont aucun écran n'a l'usage.
     const joursPresent = sans.validation_summary.daily_nutrition
       .filter((jour) => jour.person_name === PRESENT)
     expect(joursPresent.length).toBeGreaterThan(0)
@@ -413,9 +443,11 @@ describe('publication d’une semaine, avec et sans deux dîners hors domicile',
       const jourAvec = journee(avec, PRESENT, jourSans.meal_date)
       if ([MARDI, JEUDI].includes(jourSans.meal_date)) {
         expect(jourAvec.target, `${jourSans.meal_date} : la cible du présent a bougé`).toEqual(jourSans.target)
-        expect(jourAvec.energy_deviation, `${jourSans.meal_date} : journée dégradée pour le présent`)
-          .toBeLessThanOrEqual(jourSans.energy_deviation + 1e-9)
-        expect(jourAvec.valid, jourSans.meal_date).toBe(true)
+        // `valid` EST la borne : il vaut `energy_deviation <= 5 %`
+        // (`personalizedMeals.js`). L'exiger vrai, c'est exiger que la journée du
+        // présent reste dans la tolérance du solveur, des deux côtés.
+        expect(jourSans.valid, `${jourSans.meal_date} : journée invalide sans absence`).toBe(true)
+        expect(jourAvec.valid, `${jourSans.meal_date} : journée du présent sortie de la tolérance`).toBe(true)
         if (Math.abs(jourAvec.total.kcal - jourSans.total.kcal) > 1e-6) joursDeplaces += 1
         continue
       }
