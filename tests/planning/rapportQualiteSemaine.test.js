@@ -1169,7 +1169,8 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
       + `médiane ${fr(latenceAlternatives.mediane)} ms, p95 ${fr(latenceAlternatives.p95)} ms, max ${fr(latenceAlternatives.max)} ms `
       + `sur ${latenceAlternatives.appels} appels et ${latenceAlternatives.candidats} candidats — CALCUL SEUL, sans réseau ni base :`,
     'c\'est un plancher de la latence servie, pas un temps de réponse en production, et la CI ne sait pas mesurer le reste.',
-    'La référence de départ est la Routine LLM qu\'il remplace, 30 000 à 60 000 ms annoncées à l\'écran par TodayMeals.jsx.',
+    'La référence de départ était la Routine LLM qu\'il remplace : 30 000 à 60 000 ms, annoncées à l\'écran par TodayMeals.jsx jusqu\'au livrable 4.4.',
+    'Depuis ce livrable, elle n\'est plus affichée nulle part parce qu\'elle n\'est plus offerte : « Changer ce plat » n\'a plus qu\'un chemin, le moteur.',
     'La route de bout en bout, contre une base en mémoire, est mesurée par tests/planning/alternativesLatence.test.js, qui EXIGE les 3 s.',
     'Périmètre — ce que ce rapport NE fait PAS comme la route de production : il planifie sur les '
       + `${recipes.length} publiables, sans le filtre isMealSuitableRecipe (aucun des codes servis ici n'en serait écarté)`,

@@ -427,13 +427,16 @@ describe('le bouton est réellement branché', () => {
     expect(source).toContain('/api/meals/feedback')
   })
 
-  it('la Routine reste, mais n’est plus le premier chemin de « Changer ce plat »', () => {
-    // Son retrait est le livrable 4.4 : « les alternatives déterministes doivent
-    // exister avant qu'on débranche la Routine, sinon on retire une fonction
-    // sans rien rendre ». Ce qui est vérifié ici, c'est l'ORDRE — le moteur est
-    // proposé avant elle dans la modale.
-    expect(source).toContain('/api/routine/modify-meal')
-    expect(source.indexOf('tm-alt-section')).toBeGreaterThan(-1)
-    expect(source.indexOf('tm-alt-section')).toBeLessThan(source.indexOf('tm-swap-section'))
+  it('la Routine a quitté « Changer ce plat » — le moteur y est seul (livrable 4.4)', () => {
+    // Ce test disait l'inverse jusqu'au livrable 4.4 : la Routine restait au
+    // second rang, « les alternatives déterministes doivent exister avant qu'on
+    // débranche la Routine, sinon on retire une fonction sans rien rendre ».
+    // Elles existent et sont mesurées, la Routine est partie. Le détail du
+    // classement décision/rédaction est tenu par
+    // `tests/planning/aucuneEcritureRoutine.test.js` ; ici on vérifie que la
+    // modale de remplacement ne porte plus qu'un seul chemin.
+    expect(source).toContain('tm-alt-section')
+    expect(source).not.toContain('tm-swap-section')
+    expect(source).not.toContain("authFetch('/api/routine/modify-meal'")
   })
 })

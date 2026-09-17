@@ -24,7 +24,27 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
   const [rating, setRating] = useState(0)
   const isLanding = currentStep === -1
 
-  // Régénération de la recette via la routine Claude (écriture Supabase côté routine)
+  /**
+   * RÉÉCRIRE LA FICHE — ce que la Routine garde le droit de faire (livrable 4.4).
+   *
+   * Le plan retire la Routine du chemin de DÉCISION, pas de la RÉDACTION :
+   * « la Routine ne reste que pour la rédaction d'une fiche ». Ce qui
+   * distingue les deux n'est pas une intention écrite dans un commentaire,
+   * c'est la cible : `/api/routine/regenerate-recipe` ne lit aucune coordonnée
+   * de planning (`import_id`, `meal_date`, `meal_type`) et n'écrit aucune table
+   * de planning — elle vise une ligne de `generated_recipes`, c'est-à-dire le
+   * TEXTE d'une fiche. Le repas prévu, lui, ne bouge pas.
+   *
+   * CE QUI A CHANGÉ ICI. Le bouton s'appelait « Changer le plat ». C'était le
+   * libellé d'une décision pour un geste qui n'en est pas une : personne ne
+   * pouvait deviner, en le lisant, que le créneau resterait le même. Il dit
+   * maintenant ce qu'il fait. Changer de plat se fait sur l'écran d'accueil,
+   * par le moteur, avec les conséquences de l'échange affichées.
+   *
+   * `tests/planning/aucuneEcritureRoutine.test.js` reclasse cette route à
+   * chaque exécution à partir de sa source : le jour où elle toucherait une
+   * coordonnée de planning, ce fichier n'aurait plus le droit de l'appeler.
+   */
   const [regenOpen, setRegenOpen] = useState(false)
   const [regenDir, setRegenDir] = useState('')
   const [regenLoading, setRegenLoading] = useState(false)
@@ -477,7 +497,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
 
           <footer className="cm-foot">
             {regenDone ? (
-              <p className="cm-regen-done">Recette régénérée — ferme et relance la cuisine pour la voir.</p>
+              <p className="cm-regen-done">Fiche réécrite — ferme et relance la cuisine pour la voir. Le repas prévu n’a pas changé.</p>
             ) : regenOpen ? (
               <div className="cm-regen-row">
                 <input
@@ -491,7 +511,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
                   autoFocus
                 />
                 <button onClick={handleRegenerate} disabled={regenLoading} className="cm-btn cm-btn-primary">
-                  {regenLoading ? <><Loader2 size={14} style={{ animation: 'cm-spin 1s linear infinite' }} /> …</> : 'Régénérer'}
+                  {regenLoading ? <><Loader2 size={14} style={{ animation: 'cm-spin 1s linear infinite' }} /> …</> : 'Réécrire'}
                 </button>
                 {!regenLoading && <button onClick={() => setRegenOpen(false)} className="cm-btn cm-btn-ghost">Annuler</button>}
                 <style jsx global>{`@keyframes cm-spin { from { transform: rotate(0) } to { transform: rotate(360deg) } }`}</style>
@@ -499,7 +519,7 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
             ) : (
               <>
                 <button onClick={() => setCurrentStep(0)} disabled={!steps?.length} className="cm-btn cm-btn-primary cm-cook">✦ Cuisiner</button>
-                <button onClick={() => setRegenOpen(true)} className="cm-btn cm-btn-ghost">Changer le plat</button>
+                <button onClick={() => setRegenOpen(true)} className="cm-btn cm-btn-ghost" title="Réécrit le texte de la fiche — le repas prévu ne change pas">Réécrire la fiche</button>
               </>
             )}
             {regenError && <p className="cm-regen-error">{regenError}</p>}

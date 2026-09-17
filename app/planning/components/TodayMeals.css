@@ -434,45 +434,19 @@
   margin: 2px 0 0;
 }
 
-.tm-swap-section {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 6px;
+/* Le renvoi vers l'assistant, à la place du champ libre de la Routine
+   (livrable 4.4) : une demande en toutes lettres devient des contraintes
+   affichées avant génération, pas un repas écrit en base. */
+.tm-swap-ailleurs {
+  margin: 6px 0 0;
   padding-top: 12px;
   border-top: 1px solid var(--line);
-}
-
-.tm-swap-input {
-  width: 100%;
-  padding: 13px 14px;
-  border: 1px solid var(--ink-1);
-  border-radius: 3px;
-  font-size: 14px;
   font-family: var(--font-text);
-  color: var(--ink-1);
-  outline: none;
-  background: var(--paper);
-  box-sizing: border-box;
-}
-
-.tm-generate-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 15px 0;
-  background: var(--terracotta);
-  color: #fff;
-  border: 1px solid var(--terracotta);
-  border-radius: 3px;
-  font-family: var(--font-mono);
   font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  cursor: pointer;
+  line-height: 1.5;
+  color: var(--ink-2, var(--ink-3));
 }
+.tm-swap-ailleurs a { color: var(--terracotta); }
 
 .tm-swap-error {
   color: var(--state-expired, #B23A2E);
@@ -859,30 +833,40 @@
   padding: 5px 10px;
   cursor: pointer;
 }
-.tm-improvise-form {
+.tm-improvise-open:disabled { opacity: 0.6; cursor: default; }
+
+/* L'ISSUE DE SECOURS, VISIBLE À L'ÉCRAN (livrable 4.4). `review_required` est
+   ce qui reste quand le moteur ne tient pas toutes les contraintes : il doit se
+   lire sur l'écran d'accueil, pas seulement dans un toast qui s'efface. */
+.tm-revue {
   display: flex;
-  gap: 6px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.tm-improvise-input {
-  flex: 1;
-  min-width: 180px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  padding: 6px 8px;
-  border: 1px solid var(--line);
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--state-expired, #B23A2E);
+  border-left-width: 3px;
   border-radius: 6px;
-  background: transparent;
-  color: var(--ink-1);
+  background: rgba(178, 58, 46, 0.06);
 }
-.tm-improvise-input:focus { outline: none; border-color: var(--terracotta); }
-.tm-improvise-slot {
+.tm-revue-titre {
   font-family: var(--font-mono);
   font-size: 11px;
-  padding: 6px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: transparent;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--state-expired, #B23A2E);
+}
+.tm-revue-motif {
+  font-family: var(--font-text);
+  font-size: 13px;
+  line-height: 1.45;
   color: var(--ink-1);
+}
+.tm-revue-lien {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--terracotta);
+  text-decoration: none;
 }
