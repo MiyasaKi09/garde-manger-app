@@ -230215,12 +230215,19 @@ END
 $composition$;
 
 -- 77 lien(s) de base partagée sur 71 plat(s).
-CREATE TEMP TABLE _liens_corpus (
-  parent_code text, base_code text, ingredient_pos integer, ingredient_name text,
-  component_name text, component_pos integer, required_quantity numeric, required_unit text
-) ON COMMIT DROP;
-
-INSERT INTO _liens_corpus VALUES
+--
+-- Les liens voyagent en CTE, et non par une table temporaire. Une table
+-- `CREATE TEMP TABLE ... ON COMMIT DROP` disparaît à la fin de l'instruction
+-- qui la crée dès lors qu'aucune transaction n'est ouverte — et c'est
+-- exactement le cas ici : la CI charge ce fichier avec
+-- `psql -v ON_ERROR_STOP=1 -f`, sans `--single-transaction` et sans `BEGIN`,
+-- donc en autocommit. L'`INSERT` suivant ne trouvait plus la table
+-- (« relation "_liens_corpus" does not exist ») et le chargeur entier
+-- s'arrêtait là. Une CTE ne dépend ni de la transaction ni de la session : elle
+-- tient dans son instruction, et les deux chemins — le fichier d'un seul tenant
+-- et les tranches de `build-corpus-migration.mjs` — la portent à l'identique.
+WITH lien(parent_code, base_code, ingredient_pos, ingredient_name, component_name, component_pos, required_quantity, required_unit) AS (
+  VALUES
     ('FR-005', 'RAP-004', 1, 'Pâte brisée crue', 'Pâte brisée', 2, 280, 'g'),
     ('FR-014', 'RAP-007', 5, 'Bouillon de légumes', 'Bouillon de légumes', 2, 1500, 'ml'),
     ('DESS-006', 'RAP-004', 1, 'Pâte brisée crue', 'Pâte brisée', 2, 320, 'g'),
@@ -230297,14 +230304,14 @@ INSERT INTO _liens_corpus VALUES
     ('JUM-073', 'RAP-007', 1, 'Bouillon de légumes', 'Bouillon de légumes', 2, 2500, 'ml'),
     ('JUM-074', 'RAP-004', 2, 'Pâte brisée crue', 'Pâte brisée', 2, 280, 'g'),
     ('JUM-082', 'RAP-007', 4, 'Bouillon de légumes', 'Bouillon de légumes', 2, 400, 'ml'),
-    ('JUM-114', 'RAP-015', 4, 'Œuf dur', 'Œufs durs', 2, 3, 'u');
-
+    ('JUM-114', 'RAP-015', 4, 'Œuf dur', 'Œufs durs', 2, 3, 'u')
+)
 INSERT INTO culinary.recipe_components
   (recipe_version_id, name, component_role, position, sub_recipe_version_id,
    required_quantity, required_unit)
-SELECT parent.id, lien.component_name, 'base', lien.component_pos, enfant.id,
-       lien.required_quantity, lien.required_unit
-FROM _liens_corpus lien
+SELECT parent.id, lien.component_name, 'base', lien.component_pos::integer, enfant.id,
+       lien.required_quantity::numeric, lien.required_unit
+FROM lien
 JOIN ops.source_datasets dataset ON dataset.code = 'myko_editorial_v3'
 JOIN culinary.recipe_versions parent
   ON parent.source_dataset_id = dataset.id AND upper(parent.source_record_key) = lien.parent_code
@@ -230315,9 +230322,89 @@ WHERE NOT EXISTS (
   WHERE existant.recipe_version_id = parent.id AND existant.sub_recipe_version_id = enfant.id
 );
 
+WITH lien(parent_code, base_code, ingredient_pos, ingredient_name, component_name, component_pos, required_quantity, required_unit) AS (
+  VALUES
+    ('FR-005', 'RAP-004', 1, 'Pâte brisée crue', 'Pâte brisée', 2, 280, 'g'),
+    ('FR-014', 'RAP-007', 5, 'Bouillon de légumes', 'Bouillon de légumes', 2, 1500, 'ml'),
+    ('DESS-006', 'RAP-004', 1, 'Pâte brisée crue', 'Pâte brisée', 2, 320, 'g'),
+    ('DESS-011', 'RAP-005', 1, 'Pâte sablée crue', 'Pâte sablée', 2, 350, 'g'),
+    ('FR-029', 'RAP-004', 1, 'Pâte brisée crue', 'Pâte brisée', 2, 280, 'g'),
+    ('FR-036', 'RAP-004', 1, 'Pâte brisée crue', 'Pâte brisée', 2, 280, 'g'),
+    ('FR-039', 'RAP-004', 1, 'Pâte brisée crue', 'Pâte brisée', 2, 300, 'g'),
+    ('REAL-088', 'RAP-004', 1, 'Pâte brisée crue', 'Pâte brisée', 2, 320, 'g'),
+    ('REAL-115', 'RAP-015', 6, 'Œuf dur', 'Œufs durs', 2, 3, 'u'),
+    ('REAL-127', 'RAP-012', 7, 'Tzatziki', 'Tzatziki', 2, 250, 'g'),
+    ('REAL-146', 'VAR-023', 2, 'Msemen cuit', 'Msemen', 2, 8, 'u'),
+    ('REAL-148', 'RAP-015', 7, 'Œuf dur', 'Œufs durs', 2, 6, 'u'),
+    ('REAL-158', 'RAP-015', 7, 'Œuf dur', 'Œufs durs', 2, 4, 'u'),
+    ('REAL-208', 'RAP-015', 9, 'Œuf dur', 'Œufs durs', 2, 6, 'u'),
+    ('REAL-231', 'RAP-015', 8, 'Œuf dur', 'Œufs durs', 2, 4, 'u'),
+    ('REAL-241', 'RAP-019', 4, 'Mayonnaise', 'Mayonnaise maison', 2, 120, 'g'),
+    ('REAL-244', 'RAP-015', 2, 'Œuf dur', 'Œufs durs', 2, 8, 'u'),
+    ('REAL-256', 'RAP-015', 7, 'Œuf dur', 'Œufs durs', 2, 4, 'u'),
+    ('REAL-257', 'RAP-015', 8, 'Œuf dur', 'Œufs durs', 2, 4, 'u'),
+    ('REAL-274', 'RAP-019', 2, 'Mayonnaise', 'Mayonnaise maison', 2, 120, 'g'),
+    ('REAL-280', 'RAP-015', 5, 'Œuf dur', 'Œufs durs', 2, 3, 'u'),
+    ('REAL-282', 'RAP-016', 9, 'Riz long blanc cuit', 'Riz créole', 2, 700, 'g'),
+    ('REAL-283', 'RAP-015', 10, 'Œuf dur', 'Œufs durs', 2, 4, 'u'),
+    ('REAL-284', 'RAP-019', 6, 'Mayonnaise', 'Mayonnaise maison', 2, 180, 'g'),
+    ('REAL-284', 'RAP-015', 8, 'Œuf dur', 'Œufs durs', 3, 4, 'u'),
+    ('REAL-286', 'RAP-019', 5, 'Mayonnaise', 'Mayonnaise maison', 2, 150, 'g'),
+    ('REAL-299', 'RAP-007', 2, 'Bouillon de légumes', 'Bouillon de légumes', 2, 1400, 'ml'),
+    ('SRC-015', 'RAP-019', 2, 'Mayonnaise', 'Mayonnaise maison', 2, 35, 'g'),
+    ('SRC-017', 'RAP-015', 4, 'Œuf dur', 'Œufs durs', 2, 3, 'u'),
+    ('SRC-025', 'RAP-015', 4, 'Œuf dur', 'Œufs durs', 2, 150, 'g'),
+    ('SRC-025', 'RAP-019', 6, 'Mayonnaise', 'Mayonnaise maison', 3, 125, 'g'),
+    ('SRC-015-D1', 'RAP-019', 2, 'Mayonnaise', 'Mayonnaise maison', 2, 35, 'g'),
+    ('SRC-015-D3', 'RAP-019', 2, 'Mayonnaise', 'Mayonnaise maison', 2, 55, 'g'),
+    ('SRC-015-D4', 'RAP-019', 2, 'Mayonnaise', 'Mayonnaise maison', 2, 35, 'g'),
+    ('SRC-017-D1', 'RAP-015', 4, 'Œuf dur', 'Œufs durs', 2, 3, 'u'),
+    ('SRC-017-D2', 'RAP-015', 4, 'Œuf dur', 'Œufs durs', 2, 3, 'u'),
+    ('SRC-017-D3', 'RAP-015', 4, 'Œuf dur', 'Œufs durs', 2, 3, 'u'),
+    ('SRC-025-D1', 'RAP-015', 4, 'Œuf dur', 'Œufs durs', 2, 150, 'g'),
+    ('SRC-025-D2', 'RAP-015', 4, 'Œuf dur', 'Œufs durs', 2, 150, 'g'),
+    ('SRC-025-D2', 'RAP-019', 6, 'Mayonnaise', 'Mayonnaise maison', 3, 60, 'g'),
+    ('SRC-025-D3', 'RAP-015', 4, 'Œuf dur', 'Œufs durs', 2, 150, 'g'),
+    ('SRC-025-D3', 'RAP-019', 6, 'Mayonnaise', 'Mayonnaise maison', 3, 125, 'g'),
+    ('SRC-025-D4', 'RAP-015', 3, 'Œuf dur', 'Œufs durs', 2, 300, 'g'),
+    ('SRC-025-D4', 'RAP-019', 5, 'Mayonnaise', 'Mayonnaise maison', 3, 125, 'g'),
+    ('SRC-052-D4', 'RAP-007', 3, 'Bouillon de légumes', 'Bouillon de légumes', 2, 500, 'ml'),
+    ('SRC-017-D4', 'RAP-015', 4, 'Œuf dur', 'Œufs durs', 2, 3, 'u'),
+    ('SRC-055-D2', 'RAP-018', 10, 'Pâtes fraîches aux œufs crues', 'Pâtes fraîches maison', 2, 400, 'g'),
+    ('RAP-031', 'RAP-019', 4, 'Mayonnaise', 'Mayonnaise maison', 2, 60, 'g'),
+    ('RAP-045', 'RAP-019', 6, 'Mayonnaise', 'Mayonnaise maison', 2, 100, 'g'),
+    ('RAP-050', 'RAP-007', 2, 'Bouillon de légumes', 'Bouillon de légumes', 2, 600, 'ml'),
+    ('VAR-019', 'RAP-007', 7, 'Bouillon de légumes', 'Bouillon de légumes', 2, 225, 'ml'),
+    ('VAR-021', 'RAP-015', 4, 'Œuf dur', 'Œufs durs', 2, 3, 'u'),
+    ('VAR-025', 'RAP-007', 8, 'Bouillon de légumes', 'Bouillon de légumes', 2, 700, 'ml'),
+    ('VAR-029', 'RAP-015', 5, 'Œuf dur', 'Œufs durs', 2, 3, 'u'),
+    ('VAR-030', 'RAP-019', 5, 'Mayonnaise', 'Mayonnaise maison', 2, 120, 'g'),
+    ('VAR-030', 'RAP-015', 6, 'Œuf dur', 'Œufs durs', 3, 3, 'u'),
+    ('VAR-035', 'RAP-004', 3, 'Pâte brisée crue', 'Pâte brisée', 2, 250, 'g'),
+    ('VAR-037', 'RAP-004', 3, 'Pâte brisée crue', 'Pâte brisée', 2, 250, 'g'),
+    ('VAR-038', 'RAP-004', 3, 'Pâte brisée crue', 'Pâte brisée', 2, 250, 'g'),
+    ('VAR-040', 'RAP-007', 1, 'Bouillon de légumes', 'Bouillon de légumes', 2, 1500, 'ml'),
+    ('VAR-041', 'RAP-004', 2, 'Pâte brisée crue', 'Pâte brisée', 2, 250, 'g'),
+    ('VAR-042', 'RAP-007', 2, 'Bouillon de légumes', 'Bouillon de légumes', 2, 500, 'ml'),
+    ('JUM-002', 'RAP-007', 6, 'Bouillon de légumes', 'Bouillon de légumes', 2, 750, 'ml'),
+    ('JUM-004', 'RAP-007', 3, 'Bouillon de légumes', 'Bouillon de légumes', 2, 400, 'ml'),
+    ('JUM-005', 'RAP-007', 2, 'Bouillon de légumes', 'Bouillon de légumes', 2, 800, 'ml'),
+    ('JUM-006', 'RAP-007', 3, 'Bouillon de légumes', 'Bouillon de légumes', 2, 300, 'ml'),
+    ('JUM-007', 'RAP-007', 1, 'Bouillon de légumes', 'Bouillon de légumes', 2, 1600, 'ml'),
+    ('JUM-033', 'RAP-007', 3, 'Bouillon de légumes', 'Bouillon de légumes', 2, 250, 'ml'),
+    ('JUM-053', 'RAP-007', 1, 'Bouillon de légumes', 'Bouillon de légumes', 2, 1000, 'ml'),
+    ('JUM-061', 'RAP-007', 2, 'Bouillon de légumes', 'Bouillon de légumes', 2, 450, 'ml'),
+    ('JUM-062', 'RAP-007', 3, 'Bouillon de légumes', 'Bouillon de légumes', 2, 150, 'ml'),
+    ('JUM-063', 'RAP-007', 2, 'Bouillon de légumes', 'Bouillon de légumes', 2, 300, 'ml'),
+    ('JUM-071', 'RAP-007', 1, 'Bouillon de légumes', 'Bouillon de légumes', 2, 2000, 'ml'),
+    ('JUM-073', 'RAP-007', 1, 'Bouillon de légumes', 'Bouillon de légumes', 2, 2500, 'ml'),
+    ('JUM-074', 'RAP-004', 2, 'Pâte brisée crue', 'Pâte brisée', 2, 280, 'g'),
+    ('JUM-082', 'RAP-007', 4, 'Bouillon de légumes', 'Bouillon de légumes', 2, 400, 'ml'),
+    ('JUM-114', 'RAP-015', 4, 'Œuf dur', 'Œufs durs', 2, 3, 'u')
+)
 UPDATE culinary.recipe_ingredient_requirements exigence
 SET component_id = composant.id, requirement_type = 'sub_recipe'
-FROM _liens_corpus lien
+FROM lien
 JOIN ops.source_datasets dataset ON dataset.code = 'myko_editorial_v3'
 JOIN culinary.recipe_versions parent
   ON parent.source_dataset_id = dataset.id AND upper(parent.source_record_key) = lien.parent_code
@@ -230326,7 +230413,7 @@ JOIN culinary.recipe_versions enfant
 JOIN culinary.recipe_components composant
   ON composant.recipe_version_id = parent.id AND composant.sub_recipe_version_id = enfant.id
 WHERE exigence.recipe_version_id = parent.id
-  AND exigence.position = lien.ingredient_pos
+  AND exigence.position = lien.ingredient_pos::integer
   AND exigence.source_name = lien.ingredient_name
   AND (exigence.component_id IS DISTINCT FROM composant.id
        OR exigence.requirement_type IS DISTINCT FROM 'sub_recipe');

@@ -390,22 +390,30 @@ for (const recipe of corpus.recipes) {
 }
 if (liensDeBase.length) {
   const valeurs = liensDeBase.map((lien) => `    (${q(lien.parent)}, ${q(lien.base)}, ${lien.positionIngredient}, ${q(lien.forme)}, ${q(lien.nom)}, ${lien.positionComposant}, ${num(lien.quantite)}, ${q(lien.unite)})`).join(',\n')
+  const colonnes = '(parent_code, base_code, ingredient_pos, ingredient_name, component_name, component_pos, required_quantity, required_unit)'
   sql += `
 -- ${liensDeBase.length} lien(s) de base partagée sur ${new Set(liensDeBase.map((lien) => lien.parent)).size} plat(s).
-CREATE TEMP TABLE _liens_corpus (
-  parent_code text, base_code text, ingredient_pos integer, ingredient_name text,
-  component_name text, component_pos integer, required_quantity numeric, required_unit text
-) ON COMMIT DROP;
-
-INSERT INTO _liens_corpus VALUES
-${valeurs};
-
+--
+-- Les liens voyagent en CTE, et non par une table temporaire. Une table
+-- \`CREATE TEMP TABLE ... ON COMMIT DROP\` disparaît à la fin de l'instruction
+-- qui la crée dès lors qu'aucune transaction n'est ouverte — et c'est
+-- exactement le cas ici : la CI charge ce fichier avec
+-- \`psql -v ON_ERROR_STOP=1 -f\`, sans \`--single-transaction\` et sans \`BEGIN\`,
+-- donc en autocommit. L'\`INSERT\` suivant ne trouvait plus la table
+-- (« relation "_liens_corpus" does not exist ») et le chargeur entier
+-- s'arrêtait là. Une CTE ne dépend ni de la transaction ni de la session : elle
+-- tient dans son instruction, et les deux chemins — le fichier d'un seul tenant
+-- et les tranches de \`build-corpus-migration.mjs\` — la portent à l'identique.
+WITH lien${colonnes} AS (
+  VALUES
+${valeurs}
+)
 INSERT INTO culinary.recipe_components
   (recipe_version_id, name, component_role, position, sub_recipe_version_id,
    required_quantity, required_unit)
-SELECT parent.id, lien.component_name, 'base', lien.component_pos, enfant.id,
-       lien.required_quantity, lien.required_unit
-FROM _liens_corpus lien
+SELECT parent.id, lien.component_name, 'base', lien.component_pos::integer, enfant.id,
+       lien.required_quantity::numeric, lien.required_unit
+FROM lien
 JOIN ops.source_datasets dataset ON dataset.code = 'myko_editorial_v3'
 JOIN culinary.recipe_versions parent
   ON parent.source_dataset_id = dataset.id AND upper(parent.source_record_key) = lien.parent_code
@@ -416,9 +424,13 @@ WHERE NOT EXISTS (
   WHERE existant.recipe_version_id = parent.id AND existant.sub_recipe_version_id = enfant.id
 );
 
+WITH lien${colonnes} AS (
+  VALUES
+${valeurs}
+)
 UPDATE culinary.recipe_ingredient_requirements exigence
 SET component_id = composant.id, requirement_type = 'sub_recipe'
-FROM _liens_corpus lien
+FROM lien
 JOIN ops.source_datasets dataset ON dataset.code = 'myko_editorial_v3'
 JOIN culinary.recipe_versions parent
   ON parent.source_dataset_id = dataset.id AND upper(parent.source_record_key) = lien.parent_code
@@ -427,7 +439,7 @@ JOIN culinary.recipe_versions enfant
 JOIN culinary.recipe_components composant
   ON composant.recipe_version_id = parent.id AND composant.sub_recipe_version_id = enfant.id
 WHERE exigence.recipe_version_id = parent.id
-  AND exigence.position = lien.ingredient_pos
+  AND exigence.position = lien.ingredient_pos::integer
   AND exigence.source_name = lien.ingredient_name
   AND (exigence.component_id IS DISTINCT FROM composant.id
        OR exigence.requirement_type IS DISTINCT FROM 'sub_recipe');

@@ -196,8 +196,32 @@ describe('bases partagées — la migration', () => {
     // Sans le bloc de fin, un rechargement du corpus reviendrait à l'état inerte.
     const chargeur = lire('scripts', 'data', 'recipes', 'build-corpus-v3.mjs')
     expect(chargeur).toContain('const liensDeBase = []')
-    expect(chargeur).toContain('CREATE TEMP TABLE _liens_corpus')
+    expect(chargeur).toContain('INSERT INTO culinary.recipe_components')
     expect(chargeur).toContain("SET component_id = composant.id, requirement_type = 'sub_recipe'")
+  })
+
+  it('porte les liens en CTE, jamais en table temporaire : psql charge en autocommit', () => {
+    // La faute a été commise, et elle a bloqué la CI entière : le bloc créait
+    // `_liens_corpus` en `CREATE TEMP TABLE ... ON COMMIT DROP`, puis y insérait
+    // dans l'instruction SUIVANTE. Or la CI charge le corpus avec
+    // `psql -v ON_ERROR_STOP=1 -q -f`, sans `--single-transaction` et sans
+    // `BEGIN` : chaque instruction est sa propre transaction, la table
+    // disparaissait au commit de sa création, et l'INSERT échouait sur
+    // « relation "_liens_corpus" does not exist » — chargeur arrêté, pipeline de
+    // release verrouillé.
+    //
+    // Ce test tient sur le SQL PRODUIT, pas sur le générateur : le commentaire
+    // du générateur cite le nom de la table disparue, et chercher le nom dans la
+    // source rendrait ce test rouge pour la mauvaise raison. Les lignes de
+    // commentaire du SQL sont retirées avant la mesure, pour cette même raison —
+    // le chargeur porte l'explication ci-dessus, en toutes lettres.
+    const sql = lire('scripts', 'data', 'out', 'corpus-v3-load.sql')
+    const instructions = sql.replace(/^\s*--.*$/gm, '')
+    expect(instructions).not.toMatch(/CREATE\s+TEMP\s+TABLE/i)
+    expect(instructions).not.toMatch(/ON\s+COMMIT\s+DROP/i)
+    // Les deux instructions qui consomment les liens les portent chacune la leur.
+    const cte = sql.match(/WITH lien\(parent_code, base_code, ingredient_pos, ingredient_name, component_name, component_pos, required_quantity, required_unit\) AS \(/g)
+    expect(cte, 'les deux instructions de liens doivent porter leur propre CTE').toHaveLength(2)
   })
 })
 

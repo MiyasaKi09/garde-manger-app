@@ -23,3 +23,7 @@ scripts/data/out/corpus-v3-source-name-chunks/
 tests/**/__*.test.js
 tests/**/_*.test.js
 tests/**/zz-*.test.js
+# Dossiers de mesure jetables : un agent en écrit un, le supprime en fin de
+# course, et la suite qui tourne pendant ce temps échoue sur « Cannot find
+# module ». Ils ne doivent jamais entrer au dépôt.
+tests/tmp-*/
