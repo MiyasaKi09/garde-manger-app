@@ -1,0 +1,244 @@
+{
+  "dish": "Risotto au safran",
+  "slug": "risotto-au-safran",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_risotto-au-safran-et-a-la-mortadelle_22553.aspx",
+      "site": "marmiton.org",
+      "nom": "Risotto au safran et à la mortadelle : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "d'huile d'olive",
+        "1 oignon , émincé",
+        "1 cuillère à soupe d'origan séché",
+        "100 g de champignons , coupés en lamelles",
+        "375 g de riz pour risotto (type arborio)",
+        "poivre",
+        "sel",
+        "75 cl de bouillon de poule",
+        "1 verre de vin blanc sec",
+        "1 safran en poudre",
+        "200 g de mortadelle , coupée en fine lamelles"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 735,
+        "sha256": "8b621489ef1ffd17"
+      },
+      "sha256_page": "a69295dad76f20b2"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_risotto-safrane-au-saumon_51451.aspx",
+      "site": "marmiton.org",
+      "nom": "Risotto safrané au saumon : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "350 g de riz arborio",
+        "1 oignon",
+        "10 cl de vin blanc",
+        "150 g de lardons de saumon fumé",
+        "50 cl de bouillon de volaille",
+        "parmesan râpé",
+        "2 dosettes de safran",
+        "40 g de beurre",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 649,
+        "sha256": "c4c5a88c4001aee1"
+      },
+      "sha256_page": "2950433e0c0d15f8"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_risotto-safrane-a-la-lotte_21120.aspx",
+      "site": "marmiton.org",
+      "nom": "Risotto safrané à la lotte : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "3 oignons",
+        "3 poivrons rouges",
+        "100 g de beurre",
+        "500 g de riz",
+        "1 kg de lotte",
+        "400 g de crevettes décortiquées",
+        "poivre",
+        "sel",
+        "1 safran",
+        "2 riz en eau ou en bouillon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 462,
+        "sha256": "d43f5d82cbfeb780"
+      },
+      "sha256_page": "de86238e05f7207f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/mariatotal/recettes/risotto-safrane-cremeux-aux-saint-jacques",
+      "site": "chefsimon.com",
+      "nom": "Risotto safrané crémeux aux saint-jacques",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "250 g de riz carnaroli (ou arborio)",
+        "12 ou 16 noix de coquilles saint-jacques",
+        "2 échalotes",
+        "½ cc de pistils de safran",
+        "1 l de bouillon de légumes",
+        "10 cl de crème épaisse (ou mascarpone)",
+        "3 cs d’huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1081,
+        "sha256": "afabf5ad49959baf"
+      },
+      "sha256_page": "b02c17b588bf899f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/stella-cuisine/recettes/risotto-de-saint-jacques-au-safran-et-tomates-sechees",
+      "site": "chefsimon.com",
+      "nom": "Risotto de Saint-Jacques au safran et tomates séchées",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "24  noix de Saint-Jacques ( sans corail)",
+        "400 grammes de riz (arborio pour risotto)",
+        "2  bouillons cubes de légumes",
+        "1 litre d’eau",
+        "25 cl de vin blanc ( de table)",
+        "1  oignon",
+        "215 cl de crème fraîche épaisse",
+        "100 grammes de parmesan",
+        "1 bocal de tomates séchées",
+        "3  pistils de safran",
+        "Huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 143,
+        "sha256": "a07a9b147cd47825"
+      },
+      "sha256_page": "30a6d8716a9f18db"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/risotto-au-safran-c1190cfc-a3bb-408d-ae13-1de2d841e50c",
+      "site": "chefsimon.com",
+      "nom": "Risotto au safran",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "1  cuil. à thé de safran",
+        "3  cuil. à soupe de beurre",
+        "1  petit oignon (haché finement)",
+        "1 1/2  tasse de riz arborio ou carnaroli",
+        "2/3  de tasse de vin blanc",
+        "4  tasses de bouillon de légumes",
+        "1/2  tasse de parmesan fraîchement râpé (ou plus, au goût)",
+        "Sel et poivre (au goût)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 80,
+        "sha256": "3421d8f49b69f67d"
+      },
+      "sha256_page": "3f0c4db6fd6e5746"
+    },
+    {
+      "url": "https://www.750g.com/risotto-au-saumon-et-safran-r82841.htm",
+      "site": "750g.com",
+      "nom": "Risotto au saumon et safran",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 c. à s. de mascarpone",
+        "20 g de beurre",
+        "1 safran",
+        "Sel ou sel fin",
+        "Poivre",
+        "50 g de parmesan",
+        "40 cl de bouillon de légumes",
+        "240 g de riz à risotto Arborio",
+        "1 oignon",
+        "1 c. à s. de ciboulette  ciselée",
+        "20 cl de vin blanc",
+        "250 g de saumon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 983,
+        "sha256": "2cb0d44940326e28"
+      },
+      "sha256_page": "c8a269bde8469512"
+    },
+    {
+      "url": "https://www.750g.com/risotto-aux-champignons-parfume-au-safran-r203505.htm",
+      "site": "750g.com",
+      "nom": "Risotto aux champignons parfumé au safran",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "100 g de riz à risotto Arborio",
+        "1 oignon",
+        "12 ml d'huile d'olive",
+        "5 cl de vin blanc sec",
+        "1 capsule de safran",
+        "30 cl de bouillon",
+        "50 g de parmesan",
+        "100 g de champignons",
+        "Ciboulette",
+        "Champignon",
+        "10 g de parmesan râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 1360,
+        "sha256": "1fa27631f4fd5ba1"
+      },
+      "sha256_page": "15ff43e47eb982d6"
+    },
+    {
+      "url": "https://www.750g.com/risotto-safrane-aux-moules-et-aux-crevettes-r72436.htm",
+      "site": "750g.com",
+      "nom": "Risotto safrané aux moules et aux crevettes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "300 g de riz à risotto Carnaroli",
+        "500 g de moules",
+        "200 g de crevettes",
+        "20 cl de vin blanc",
+        "1 gousse d'ail",
+        "2 échalotes",
+        "2 c. à s. de fumet de poisson",
+        "2 c. à s. de crème fraîche",
+        "2 c. à s. de persil  haché",
+        "3 pincées de piments",
+        "1 dosette de safran",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 1454,
+        "sha256": "dcc49ad4eee66360"
+      },
+      "sha256_page": "b9aad5081bb7c49e"
+    }
+  ]
+}

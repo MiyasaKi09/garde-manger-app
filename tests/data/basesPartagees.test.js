@@ -7,6 +7,7 @@ import { getCanonicalRecipes } from '@/lib/domain/recipes/canonicalCatalog'
 import {
   BASE_REUSE_ACTIVE_MINUTES as REUSE_SCRIPT,
   VERSION_MIGRATION,
+  EMPREINTES_GELEES,
   arbitrage,
   construireMigration,
   gardeDeclareeJours,
@@ -183,10 +184,31 @@ describe('bases partagées — la migration', () => {
     expect(tranches.length).toBeGreaterThan(0)
     for (const [, code, avant, apres] of empreintes) {
       const recette = CORPUS.recipes.find((item) => item.code === code)
-      const sansLien = { ...recette, ingredients: recette.ingredients.map(({ component, ...reste }) => reste) }
-      expect(createHash('md5').update(JSON.stringify(sansLien)).digest('hex'), code).toBe(avant)
-      expect(createHash('md5').update(JSON.stringify(recette)).digest('hex'), code).toBe(apres)
       expect(tranches.includes(`'${avant}'`), `${code} : empreinte d'avant absente des tranches`).toBe(true)
+      const gelee = EMPREINTES_GELEES[code]
+      if (!gelee) {
+        const sansLien = { ...recette, ingredients: recette.ingredients.map(({ component, ...reste }) => reste) }
+        expect(createHash('md5').update(JSON.stringify(sansLien)).digest('hex'), code).toBe(avant)
+        expect(createHash('md5').update(JSON.stringify(recette)).digest('hex'), code).toBe(apres)
+        continue
+      }
+      // UN PLAT LIÉ QU'UN LOT POSTÉRIEUR A RÉÉCRIT. Sa fiche a changé depuis le
+      // 18 septembre : les deux empreintes de CETTE migration décrivent une
+      // transition passée, et les recalculer depuis le corpus d'aujourd'hui
+      // n'aurait aucun sens. Ce qui doit rester vrai, et qui est vérifié ici :
+      // le gel déclare exactement ce que le fichier commité porte, la migration
+      // qu'il cite existe, elle est postérieure, et c'est ELLE qui écrit
+      // l'empreinte du corpus d'aujourd'hui. Sans ces quatre contrôles, le gel
+      // serait une porte ouverte pour faire taire n'importe quelle dérive.
+      expect([gelee.avant, gelee.apres], `${code} : le gel ne décrit pas le fichier commité`).toEqual([avant, apres])
+      const posterieure = lire('supabase', 'migrations', gelee.depuis)
+      expect(gelee.depuis > `${VERSION_MIGRATION}_bases_partagees.sql`, `${code} : ${gelee.depuis} n'est pas postérieure`).toBe(true)
+      const aujourdhui = createHash('md5').update(JSON.stringify(recette)).digest('hex')
+      expect(aujourdhui, `${code} : ${gelee.depuis} n'écrit pas l'empreinte du corpus d'aujourd'hui`).not.toBe(apres)
+      expect(
+        posterieure.includes(`'${aujourdhui}'`),
+        `${code} : aucune migration postérieure ne porte l'empreinte du corpus d'aujourd'hui`,
+      ).toBe(true)
     }
   })
 

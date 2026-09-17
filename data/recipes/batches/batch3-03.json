@@ -175,6 +175,7 @@
     },
     {
       "code": "FR-027",
+      "derived_from": "SRC-049",
       "remplace": "FR-027",
       "family": "Pommes de terre sautées",
       "cuisine_origin": "France",

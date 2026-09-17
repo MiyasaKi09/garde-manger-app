@@ -1,0 +1,104 @@
+{
+  "dish": "Pot au feu vegetarien",
+  "slug": "pot-au-feu-vegetarien",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_pot-au-feu-vegetarien-au-gruyere_28189.aspx",
+      "site": "marmiton.org",
+      "nom": "Pot-au-feu végétarien au fromage : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "4 carottes",
+        "3 poireaux",
+        "1 oignon piqué de 2 clous de girofle",
+        "3 navets",
+        "1 branche de céleri",
+        "800 g de pommes de terre",
+        "250 g de gruyère coupé en gros morceaux",
+        "1 bouquet garni",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 316,
+        "sha256": "ae654cda2c709375"
+      },
+      "sha256_page": "cbb15cd3e427ba16"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisinealcaline/recettes/pot-au-feu-vegetarien-b62a4bdf-435d-4c60-b22e-8fea83ce51c6",
+      "site": "chefsimon.com",
+      "nom": "Pot-au-feu végétarien",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H40M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "2 blocs tofu fumé",
+        "2-3  Carottes (rouge)",
+        "2  Carottes (jaune)",
+        "2  Carottes (orange)",
+        "2  navets (jaunes)",
+        "1  Patate douce",
+        "2  poireaux (- blanc de poireau)",
+        "2  Pommes de terre",
+        "1  oignon",
+        "2 branches céleri",
+        "1 càs Prêle des champs ((herbe séchée))",
+        "1 càs thym ((herbe séchée))",
+        "3 clous girofle",
+        "1/2 càs  gros sel",
+        "2 càs huile d'olive",
+        "50 gr purée de cajou ((maison ou du commerce))",
+        "30 gr huile d'olive",
+        "1 càs raifort",
+        "2 càs câpres",
+        "1/2 càc sel",
+        "1 càs curcuma",
+        "1 càc paprika",
+        "80 cl bouillon de pot au feu",
+        "180 gr amarante ((ou pâtes à potage))",
+        "2 càc ciboulette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 4,
+        "sha256": "982d9e3eb996f559"
+      },
+      "sha256_page": "22131bc37b3b7f29"
+    },
+    {
+      "url": "https://www.750g.com/pot-au-feu-vegetarien-r68125.htm",
+      "site": "750g.com",
+      "nom": "Pot-au-feu végétarien",
+      "portions": "6 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "Poivre du moulin",
+        "½ c. à c. de curcuma",
+        "250 g de tomates cerise",
+        "150 g de pousses d'épinards  (jeunes)",
+        "1 c. à s. de jus de citron",
+        "1 c. à c. de cumin",
+        "800 g de pois chiches",
+        "1 oignon rouge",
+        "1 c. à s. d'huile",
+        "2 gousses d'ail",
+        "2 c. à c. de gingembre",
+        "Sel ou sel fin",
+        "1 piment vert  (petit)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 604,
+        "sha256": "cf4627f87fa26e2b"
+      },
+      "sha256_page": "41d4bbffd43b1b8d"
+    }
+  ]
+}

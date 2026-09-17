@@ -1,0 +1,227 @@
+{
+  "dish": "Vol au vent aux champignons",
+  "slug": "vol-au-vent-aux-champignons",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_vol-au-vent-aux-champignons_32933.aspx",
+      "site": "marmiton.org",
+      "nom": "Vol au vent aux champignons : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 coques de pâte feulletée (vol au vent)",
+        "15 g de morilles séchées",
+        "350 g de champignons frais (au choix)",
+        "1 échalote",
+        "1 gousse d'ail",
+        "beurre",
+        "2 cl de vodka",
+        "1 cube de bouillon de boeuf",
+        "2 dl de crème",
+        "persil et ciboulette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 508,
+        "sha256": "0f565bb641066b5d"
+      },
+      "sha256_page": "3e53e268403595a5"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_vol-au-vent-aux-champignons-de-paris_171599.aspx",
+      "site": "marmiton.org",
+      "nom": "Vol-au-vent aux champignons de Paris : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "4 vol-au-vent",
+        "500 g de champignons de Paris",
+        "35 cl de crème fraîche épaisse",
+        "35 g de beurre",
+        "sel",
+        "poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 369,
+        "sha256": "3516feb04a7a5a9f"
+      },
+      "sha256_page": "7f4752b36c3445de"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_vol-au-vent-aux-champignons-et-tomates-sechees_43484.aspx",
+      "site": "marmiton.org",
+      "nom": "Vol au vent aux champignons et tomates séchées : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 coques de pâte feuilletée (vol au vent)",
+        "400 g de champignons de Paris frais",
+        "40 g de tomates séchées",
+        "1 échalote",
+        "1 cuillère à soupe de noilly prat -Pratt (vermouth sec)",
+        "1 dl de vin blanc sec",
+        "2 dl de crème épaissie (ou acidulée)",
+        "1 cuillère à soupe d'huile",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 417,
+        "sha256": "0e47cbb3e6e6b0db"
+      },
+      "sha256_page": "b56897a2afb12d32"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/valerie-filhol/recettes/butternut-farci-aux-champignons-facon-vol-au-vent",
+      "site": "chefsimon.com",
+      "nom": "Butternut farci aux champignons façon vol au vent",
+      "portions": "",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "1  morceau de butternut de 25 cm environ pas trop large ((dans la partie allongée))",
+        "400 g de shitakes frais",
+        "4 c. à soupe  d’huile d’olive",
+        "1 c. à café de 4 épices",
+        "1 c. à café de tamari",
+        "½ c. à café de selPoivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 87,
+        "sha256": "8fe61afadf015322"
+      },
+      "sha256_page": "0efd186cdc0f6047"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/ramene-la-popotte/recettes/vol-au-vent-poulet-champignons",
+      "site": "chefsimon.com",
+      "nom": "Vol-au-vent poulet champignons",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H25M",
+      "ingredients": [
+        "6 vol-au-vent étoile \"Prêt à Garnir\"",
+        "300 g de blancs de poulet",
+        "185 g de girolles en bocal",
+        "90 g de champignons bruns",
+        "20 g de beurre",
+        "20 g de farine",
+        "20 cl de crème liquide entière",
+        "1 cs d’huile de tournesol",
+        "3 g de sel",
+        "30 tours de moulin à poivre",
+        "10 g de persil ciselé finement"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "1253485552e63ed1"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-gourmandise-selon-angie/recettes/vol-au-vent-au-tofu-fume-champignons-et-chataignes",
+      "site": "chefsimon.com",
+      "nom": "Vol au vent au tofu fumé, champignons et châtaignes",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "200 grammes de tofu fumé",
+        "25 cl de lait de soja nature",
+        "6 croûtes pour vols au vent",
+        "100 g de champignons",
+        "100 g de châtaignes",
+        "3 cuillères à soupe d'huile d'olive",
+        "2 échalotes",
+        "1 cuillère à soupe de farine",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "07c855b31a1f6c3e"
+    },
+    {
+      "url": "https://www.750g.com/vol-au-vent-champignons-lardons-r62213.htm",
+      "site": "750g.com",
+      "nom": "Vol au vent Champignons Lardons",
+      "portions": "3 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "200 g de champignons",
+        "150 g de lardons fumés",
+        "20 cl de crème fraîche liquide",
+        "1 jaune d'oeuf",
+        "1 c. à s. de fond de veau  Maggi",
+        "1 pâte feuilletée",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 804,
+        "sha256": "df464ed922409c03"
+      },
+      "sha256_page": "1ba7a667bcdb1a3b"
+    },
+    {
+      "url": "https://www.750g.com/vols-au-vent-poulet-et-champignons-r81775.htm",
+      "site": "750g.com",
+      "nom": "Vols au vent poulet et champignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "1 petite boite de champignons (ou frais c'est le top)",
+        "3 c à s de crème fraîche épaissesel, poivre, huile d'olive",
+        "1 petit oignon",
+        "3 escalopes de poulet (ou de dinde)",
+        "9 bouchées à la reine",
+        "Ingrédients pour 9 bouchées"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 377,
+        "sha256": "f1b2ff7dda3b85e3"
+      },
+      "sha256_page": "aece8acf79b8c8b9"
+    },
+    {
+      "url": "https://www.750g.com/vol-au-vent-de-volaille-et-champignons-r20019.htm",
+      "site": "750g.com",
+      "nom": "Vol au vent de volaille et champignons",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "6 vol-au-vents",
+        "150 g de filets de poulet",
+        "6 champignons de Paris  gros",
+        "1 oignon",
+        "1 gousse d'ail",
+        "1 poireau",
+        "20 cl de béchamel  fait maison ou Béchamel en briquette",
+        "Persil  frais",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 898,
+        "sha256": "23e20ea3cc8906ca"
+      },
+      "sha256_page": "71c95fff7dd083a6"
+    }
+  ]
+}

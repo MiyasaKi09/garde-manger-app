@@ -3457,6 +3457,7 @@
     },
     {
       "code": "RAP-023",
+      "derived_from": "DEN-021",
       "family": "Omelette aux champignons",
       "cuisine_origin": "France",
       "identity_level": "domestic_standard",

@@ -331,8 +331,8 @@ describe('P18, seconde clause — un chiffre non calculable n’est jamais rendu
       const cle = verdict.affichable ? 'affichables' : verdict.refus
       return { ...tableau, [cle]: (tableau[cle] || 0) + 1 }
     }, {})
-    expect(compter(PUBLIABLES)).toEqual({ affichables: 568 })
-    expect(compter(CORPUS_ENTIER)).toEqual({ affichables: 754 })
+    expect(compter(PUBLIABLES)).toEqual({ affichables: 573 })
+    expect(compter(CORPUS_ENTIER)).toEqual({ affichables: 759 })
   })
 
   it('le contrat est écrit, et il nomme les quatre familles de chiffres', () => {
@@ -356,12 +356,17 @@ describe('réserve (a) — les douze recettes végétariennes à option carnée 
 
   it('elles sont douze au corpus publiable, treize au corpus entier', () => {
     // LE CHIFFRE DU PLAN, RECOMPTÉ. Le §2.4 écrit « douze recettes » ; la
-    // mesure du 17 septembre 2026 le confirme sur les 568 publiables, et
-    // trouve une treizième au corpus entier — REAL-196, Yu xiang qie zi, non
+    // mesure du 17 septembre 2026 le confirme sur les 568 publiables d'alors,
+    // et trouve une treizième au corpus entier — REAL-196, Yu xiang qie zi, non
     // publiable. Les deux nombres sont écrits : n'en donner qu'un laisserait
     // choisir le plus flatteur.
-    expect(PUBLIABLES).toHaveLength(568)
-    expect(CORPUS_ENTIER).toHaveLength(754)
+    //
+    // RECOMPTÉ APRÈS LE LOT « JUMEAUX 13 » (759 recettes, 573 publiables) : les
+    // deux nombres ne bougent pas. Aucune des cinq recettes du lot ne porte
+    // d'ingrédient facultatif d'origine animale — le contrôle vaut donc bien
+    // sur le corpus d'aujourd'hui, et pas seulement sur celui d'hier.
+    expect(PUBLIABLES).toHaveLength(573)
+    expect(CORPUS_ENTIER).toHaveLength(759)
     const publiables = vegetariennesAvecOption(PUBLIABLES)
     expect(publiables).toHaveLength(12)
     expect(vegetariennesAvecOption(CORPUS_ENTIER)).toHaveLength(13)
@@ -378,16 +383,16 @@ describe('réserve (a) — les douze recettes végétariennes à option carnée 
     // LE QUATRIÈME NOMBRE, celui dont un CHEMIN DE CODE dépend, et qui manquait.
     // `app/api/recipes/canonical/[code]/route.js` ne charge les membres du foyer
     // que si la recette porte une option carnée : ce sont ces 25 publiables-là
-    // (12 végétariennes + 13 déjà carnées), et pas les 333 qui portent un
+    // (12 végétariennes + 13 déjà carnées), et pas les 335 qui portent un
     // ingrédient facultatif quelconque — une herbe, un zeste. La garde a été
     // écrite sur `ingredient.optional` seul alors que son commentaire annonçait
-    // douze recettes : l'écart valait 308 requêtes Supabase de trop. Les deux
+    // douze recettes : l'écart valait 310 requêtes Supabase de trop. Les deux
     // nombres sont comptés ici pour qu'ils ne puissent plus diverger en silence.
     const avecOptionCarnee = PUBLIABLES.filter((recipe) => optionsCarnees(recipe).length > 0)
     expect(avecOptionCarnee).toHaveLength(25)
     const avecUnFacultatifQuelconque = PUBLIABLES
       .filter((recipe) => (recipe.exactIngredients || []).some((ingredient) => ingredient?.optional))
-    expect(avecUnFacultatifQuelconque).toHaveLength(333)
+    expect(avecUnFacultatifQuelconque).toHaveLength(335)
     // Et la garde de la route est bien la première, pas la seconde.
     const routeCanonique = lire('app/api/recipes/canonical/[code]/route.js')
     expect(routeCanonique).toContain('const porteUneOption = optionsCarnees(recipe).length > 0')

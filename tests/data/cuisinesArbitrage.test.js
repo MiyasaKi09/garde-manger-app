@@ -229,8 +229,8 @@ describe('les chiffres de l’en-tête, recomptés à chaque exécution', () => 
   // premier. Chacun est recalculé ci-dessous depuis le corpus.
   const repartition = repartitionCuisines(LIBELLES_BRUTS)
 
-  it('754 recettes, 103 libellés bruts, 101 après repli', () => {
-    expect(RECETTES).toHaveLength(754)
+  it('759 recettes, 103 libellés bruts, 101 après repli', () => {
+    expect(RECETTES).toHaveLength(759)
     expect(comptesBruts.size).toBe(103)
     expect(new Set(LIBELLES_BRUTS.map(replierCuisine)).size).toBe(101)
     expect(decisionsCuisine()).toHaveLength(101)
@@ -241,8 +241,8 @@ describe('les chiffres de l’en-tête, recomptés à chaque exécution', () => 
     expect(doubles).toEqual(['france bourgogne', 'france cuisine domestique'])
   })
 
-  it('« France » porte 320 recettes, et dix-huit AUTRES libellés bruts commencent par France', () => {
-    expect(comptesBruts.get('France')).toBe(320)
+  it('« France » porte 322 recettes, et dix-huit AUTRES libellés bruts commencent par France', () => {
+    expect(comptesBruts.get('France')).toBe(322)
     const prefixeFrance = [...comptesBruts.keys()].filter((libelle) => /^France/.test(libelle))
     expect(prefixeFrance).toHaveLength(19)
     expect(new Set(prefixeFrance.map(replierCuisine)).size).toBe(17)
@@ -257,14 +257,14 @@ describe('les chiffres de l’en-tête, recomptés à chaque exécution', () => 
     expect(new Set(arbitreesFrance.map(replierCuisine)).size).toBe(17)
   })
 
-  it('53 cuisines après arbitrage, la France à 434 sur 754 soit 57,6 %', () => {
-    expect(repartition.total).toBe(754)
+  it('53 cuisines après arbitrage, la France à 436 sur 759 soit 57,4 %', () => {
+    expect(repartition.total).toBe(759)
     expect(repartition.parCuisine.size).toBe(53)
     expect(new Set(decisionsCuisine().map((decision) => replierCuisine(decision.cuisine))).size).toBe(53)
     expect(repartition.dominante).toBe('france')
-    expect(repartition.parCuisine.get('france')).toBe(434)
-    expect(repartition.partDominante).toBeCloseTo(434 / 754, 6)
-    expect((repartition.partDominante * 100).toFixed(1)).toBe('57.6')
+    expect(repartition.parCuisine.get('france')).toBe(436)
+    expect(repartition.partDominante).toBeCloseTo(436 / 759, 6)
+    expect((repartition.partDominante * 100).toFixed(1)).toBe('57.4')
     expect(repartition.nonArbitres).toEqual([])
   })
 
@@ -274,7 +274,7 @@ describe('les chiffres de l’en-tête, recomptés à chaque exécution', () => 
     // rougir la CI, au lieu d'être recopiée de bonne foi par le livrable
     // suivant.
     const entete = String(arbitrage.contexte)
-    for (const attendu of ['103 libellés bruts', '754 recettes', '320 recettes', '53 cuisines', '434 sur 754', '57,6 %']) {
+    for (const attendu of ['103 libellés bruts', '759 recettes', '322 recettes', '53 cuisines', '436 sur 759', '57,4 %']) {
       expect(entete, attendu).toContain(attendu)
     }
     // L'AFFIRMATION fausse de la première rédaction ne doit pas revenir — mais

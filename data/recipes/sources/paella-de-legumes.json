@@ -1,0 +1,72 @@
+{
+  "dish": "Paella de legumes",
+  "slug": "paella-de-legumes",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_paella-aux-legumes-d-hiver_69087.aspx",
+      "site": "marmiton.org",
+      "nom": "Paella aux légumes d'hiver : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "200 g de riz",
+        "3 escalopes de poulet",
+        "100 g de chorizo coupé en dés",
+        "2 carottes émincées finement",
+        "2 poireaux émincés finement",
+        "1 oignon",
+        "2 gousses d'ail",
+        "1 verre de vin blanc",
+        "1 grand verre de bouillon de poule",
+        "piment de Cayenne",
+        "2 cuillères à soupe d'huile d'olive",
+        "poivre",
+        "curry"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 525,
+        "sha256": "39a3dfd961728f59"
+      },
+      "sha256_page": "8aeb1a374e9846d9"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clementine-4c402d8e-2ca5-400b-88f1-beb80aa54df8/recettes/paella-vegan-aux-petits-legumes",
+      "site": "chefsimon.com",
+      "nom": "Paella vegan aux petits légumes",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "400 g de riz de Valencia, Bomba ou Arborio  le riz Bomba",
+        "5 cuillères à soupe d’huile d’olive",
+        "2 gousses d’ail",
+        "3 oignons",
+        "2 poivrons rouges",
+        "1 poivron vert",
+        "2 carottes",
+        "160 g de haricots verts",
+        "160 g de petits pois",
+        "4 cœurs d’artichaut",
+        "400 g de tomate",
+        "2 citrons",
+        "½ bouquet de persil",
+        "1 cuillère à café de piment doux en poudre",
+        "¼ cuillère de poivre",
+        "½ cuillère à café de safran",
+        "½ cuillère à café de curcuma",
+        "1 feuille de laurier",
+        "Eau ou de bouillon (4 fois le volume du riz)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "3242f108fe08832d"
+    }
+  ]
+}

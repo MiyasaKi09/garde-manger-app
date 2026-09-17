@@ -1,0 +1,55 @@
+{
+  "dish": "Brochettes de tofu marine",
+  "slug": "brochettes-de-tofu-marine",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/gelin-evelyne/recettes/brochettes-de-tofu-marine-89b8eb2f-a125-4032-bcec-614db488a0ef",
+      "site": "chefsimon.com",
+      "nom": "Brochettes de tofu mariné",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "400 g de tofu nature",
+        "1 gros  poivron rouge",
+        "pour la marinade :",
+        "3 cuil. à soupe ou à table de sauce soja réduite en sel",
+        "2 cuil. à soupe ou à table de sirop d’érable ou de miel liquide",
+        "1,5 cuil. à soupe ou à table de vinaigre de riz",
+        "2 cuil. à soupe ou à table d’huile de sésame grillée",
+        "½ à 1 cuil. à café ou à thé de sauce sriracha selon que vous aimé pimenté ou pas"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "8645d065edbf9aba"
+    },
+    {
+      "url": "https://www.750g.com/brochettes-de-tofu-marine-r75651.htm",
+      "site": "750g.com",
+      "nom": "Brochettes de tofu mariné",
+      "portions": "2 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "2 pincées de thym ou de sariette",
+        "1 pincée de sel",
+        "20 cl de tamari",
+        "1 citrons",
+        "4 tomates",
+        "3 oignons moyens",
+        "500g de Tofu nature ou fumé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 530,
+        "sha256": "1a472d606aadbf4d"
+      },
+      "sha256_page": "83dd68d009985f79"
+    }
+  ]
+}

@@ -286,9 +286,41 @@ const empreinteDeRecette = (recette) => createHash('md5').update(JSON.stringify(
  * déclarerait un lien que la base n'a pas posé serait exactement le genre de
  * chiffre plausible et invérifiable que ce dépôt s'interdit.
  */
+/**
+ * EMPREINTES GELÉES — les plats liés qu'un lot POSTÉRIEUR a réécrits.
+ *
+ * Cette migration est appliquée et figée : `apply-migrations.sh` refuse un
+ * fichier dont l'empreinte a changé après enregistrement. Or les deux
+ * empreintes ci-dessus se RECALCULENT depuis le corpus d'aujourd'hui, si bien
+ * qu'un lot ultérieur qui touche à la fiche d'un plat lié ferait produire à ce
+ * script un fichier différent de celui qui est commité — et le premier
+ * `apply-migrations.sh` de la release suivante s'arrêterait sur une dérive de
+ * checksum.
+ *
+ * On ne recalcule donc PAS les empreintes de ces codes : on écrit celles que la
+ * migration a réellement posées le 18 septembre. Ce n'est pas une porte
+ * assouplie, c'est le contraire : cette migration décrit une transition qui a
+ * eu lieu, pas l'état courant. L'état courant est écrit par la migration citée
+ * dans `depuis`, et `tests/db/corpusParity.test.js` le vérifie en rejouant
+ * toute la chaîne dans l'ordre — un gel qui ne correspondrait à aucune
+ * migration postérieure y serait vu immédiatement.
+ */
+export const EMPREINTES_GELEES = {
+  'VAR-035': {
+    avant: 'b14de1af7ef345b97b681cab2f4cad28',
+    apres: 'd347791f5fe6e490e55c7ae8f58c02d3',
+    depuis: '20260919150000_corpus_v3_lot_jumeaux_13.sql',
+    motif: 'Le lot « jumeaux 13 » rattache la Quiche aux poireaux à la Tarte aux '
+      + 'poireaux et lardons (derived_from) et ajoute à son arbitrage le paragraphe qui '
+      + "l'explique. Sa fiche a donc changé APRÈS le 18 septembre.",
+  },
+}
+
 function empreintes(corpusLie) {
   const liees = corpusLie.recipes.filter((recette) => recette.ingredients.some((ingredient) => ingredient.component))
   return liees.map((recette) => {
+    const gelee = EMPREINTES_GELEES[recette.code]
+    if (gelee) return { code: recette.code, avant: gelee.avant, apres: gelee.apres, gelee: true }
     const sansLien = {
       ...recette,
       ingredients: recette.ingredients.map(({ component, ...reste }) => reste),

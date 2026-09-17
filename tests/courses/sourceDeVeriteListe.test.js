@@ -287,7 +287,7 @@ describe('ce que le chemin hérité fait à la liste canonique, article par arti
 
   it('la semaine publiée porte bien une liste à comparer', () => {
     // Un banc vide passerait toutes les égalités qui suivent.
-    expect(canoniques.length).toBe(100)
+    expect(canoniques.length).toBe(104)
     expect(payload.legacy_meals.length).toBeGreaterThan(20)
     expect(canoniques.every((ligne) => Number.isFinite(Number(ligne.purchase_qty)) && Number(ligne.purchase_qty) > 0)).toBe(true)
   })
@@ -298,12 +298,12 @@ describe('ce que le chemin hérité fait à la liste canonique, article par arti
     expect(surLaListe.map((entree) => entree.op)).toEqual(['delete', 'insert'])
   })
 
-  it('100 articles entrent, 11 lignes sortent', async () => {
+  it('104 articles entrent, 11 lignes sortent', async () => {
     expect((await resultatHerite).mode).toBe('rebuilt')
     expect((await lignesReconstruites()).length).toBe(11)
   })
 
-  it('97 articles disparaissent, 8 apparaissent, 3 seulement sont communs', async () => {
+  it('101 articles disparaissent, 8 apparaissent, 3 seulement sont communs', async () => {
     const reconstruites = await lignesReconstruites()
     const nomsCanoniques = canoniques.map((ligne) => ligne.product_name)
     const nomsReconstruits = reconstruites.map((ligne) => ligne.product_name)
@@ -314,7 +314,7 @@ describe('ce que le chemin hérité fait à la liste canonique, article par arti
     const apparus = nomsReconstruits.filter((nom) => !ensembleCanonique.has(sansAccent(nom)))
     const communs = nomsCanoniques.filter((nom) => ensembleReconstruit.has(sansAccent(nom)))
 
-    expect(perdus.length).toBe(97)
+    expect(perdus.length).toBe(101)
     expect(apparus.length).toBe(8)
     expect(communs.length).toBe(3)
     // Nommés, pas seulement comptés : « n articles diffèrent » sans les noms
@@ -352,7 +352,7 @@ describe('ce que le chemin hérité fait à la liste canonique, article par arti
     expect(reconstruites.length).toBe(11)
     expect(visibles.length).toBe(0)
     // Et la référence : les lignes canoniques, elles, passent toutes.
-    expect(canoniques.filter((ligne) => ligne.plan_version_id === VERSION).length).toBe(100)
+    expect(canoniques.filter((ligne) => ligne.plan_version_id === VERSION).length).toBe(104)
   })
 
   it('chaque colonne de la demande canonique est posée par l’une et par aucune de l’autre', async () => {
@@ -363,11 +363,11 @@ describe('ce que le chemin hérité fait à la liste canonique, article par arti
     }).length
 
     // `container_*` n'est posée que sur les articles à conditionnement déclaré :
-    // on mesure le chiffre, on ne suppose pas qu'il vaut 100.
+    // on mesure le chiffre, on ne suppose pas qu'il vaut 104.
     const attendues = {
-      plan_version_id: 100, planning_source: 100, purchase_qty: 100, purchase_unit: 100,
-      container_qty: 28, container_size: 28, container_unit: 28,
-      aisle_order: 100, shopping_status: 100, exact_required_qty: 100,
+      plan_version_id: 104, planning_source: 104, purchase_qty: 104, purchase_unit: 104,
+      container_qty: 29, container_size: 29, container_unit: 29,
+      aisle_order: 104, shopping_status: 104, exact_required_qty: 104,
     }
     for (const colonne of COLONNES_DE_LA_DEMANDE_CANONIQUE) {
       expect(posees(canoniques, colonne), `canonique ${colonne}`).toBe(attendues[colonne])
@@ -377,21 +377,21 @@ describe('ce que le chemin hérité fait à la liste canonique, article par arti
 
   it('la règle tranche dans le bon sens sur ces deux listes-là', async () => {
     expect(sourceDeVeriteDeLaListe(canoniques).source).toBe(SOURCES.CANONIQUE)
-    expect(sourceDeVeriteDeLaListe(canoniques).canoniques).toBe(100)
+    expect(sourceDeVeriteDeLaListe(canoniques).canoniques).toBe(104)
     expect(sourceDeVeriteDeLaListe(await lignesReconstruites()).source).toBe(SOURCES.HERITE)
   })
 
   // ── Ce que les trois sorties de la phase 3 lisent (point c du livrable) ────
 
-  it('les trois sorties rendent 100 articles depuis la source qui reste', () => {
+  it('les trois sorties rendent 104 articles depuis la source qui reste', () => {
     const copie = exporterListeCourses(canoniques, { semaine: 'S1' })
     const partage = chargePartageListe(canoniques, { semaine: 'S1' })
     const impression = documentImprimableListe(canoniques, { semaine: 'S1' })
 
-    expect(copie.compte.articles).toBe(100)
-    expect(partage.compte.articles).toBe(100)
-    expect(impression.compte.articles).toBe(100)
-    expect(impression.rayons.reduce((somme, rayon) => somme + rayon.articles.length, 0)).toBe(100)
+    expect(copie.compte.articles).toBe(104)
+    expect(partage.compte.articles).toBe(104)
+    expect(impression.compte.articles).toBe(104)
+    expect(impression.rayons.reduce((somme, rayon) => somme + rayon.articles.length, 0)).toBe(104)
     // Aucune quantité repliée : les trois lisent bien le chiffre canonique.
     expect(copie.anomalies.articles_a_quantite_repliee).toEqual([])
   })

@@ -1,0 +1,161 @@
+{
+  "dish": "Poivrons farcis au quinoa",
+  "slug": "poivrons-farcis-au-quinoa",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poivrons-farcis-au-quinoa-et-aux-legumes_51972.aspx",
+      "site": "marmiton.org",
+      "nom": "Poivrons farcis au quinoa et aux légumes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "4 poivrons",
+        "2 tomates",
+        "1 aubergine",
+        "150 g de feta",
+        "120 g de quinoa",
+        "1 bouillon"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 936,
+        "sha256": "1db5a3a8400de680"
+      },
+      "sha256_page": "118ddd5c064b5442"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poivrons-farcis-au-quinoa_55501.aspx",
+      "site": "marmiton.org",
+      "nom": "Poivrons farcis au quinoa : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "4 poivrons rouges",
+        "80 g de quinoa",
+        "2 courgettes",
+        "1 oeuf",
+        "150 g de jambon en julienne (ou bacon maigre)",
+        "10 olives noires dénoyautées",
+        "1 cuillère à soupe de parmesan",
+        "1 cuillère à soupe de thym",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 572,
+        "sha256": "ab1b7528ba42eb63"
+      },
+      "sha256_page": "256f796205a40f55"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_poivrons-farcis-viande-hachee-et-quinoa_528358.aspx",
+      "site": "marmiton.org",
+      "nom": "Poivrons farcis viande hachée et quinoa : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "4 poivrons",
+        "200 g de quinoa",
+        "3 gousses d'ail",
+        "1 oignon",
+        "2 steaks hachés",
+        "1 boîte de petits pois à la provençale (ou nature) de 375g",
+        "1 origan",
+        "1 cuillère à café de cumin",
+        "1 cuillère à café de graines de coriandre",
+        "0.5 cuillère à café de curcuma",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1313,
+        "sha256": "b875e8db4b21ff33"
+      },
+      "sha256_page": "75331b14176cc0cc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/jackie--2/recettes/poivrons-farcis-aux-3-quinoas",
+      "site": "chefsimon.com",
+      "nom": "Poivrons farcis aux 3 quinoas",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 poivron jaune",
+        "1 poivron rouge",
+        "1 poivron orange",
+        "1 poivron vert",
+        "200 g de quinoas",
+        "2 tomates",
+        "1/2 oignon haché",
+        "2 c à s de pignons",
+        "Sel, poivre",
+        "Huile d'olive",
+        "Mozzarella"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "b3bb4f25d489d139"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-machine-a-explorer/recettes/poivrons-farcis-au-quinoa-et-viande-hachee",
+      "site": "chefsimon.com",
+      "nom": "Poivrons farcis au quinoa et viande hachée",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H35M",
+      "ingredients": [
+        "2 poivrons",
+        "150 g de viande hachée",
+        "100 g de quinoa",
+        "50 ml de lait",
+        "1 tranche de wasa fibres",
+        "15 g d' emmental râpé",
+        "25 g d' oignon",
+        "1 gousse d' ail",
+        "1 œuf(s)",
+        "sel poivre persil paprika"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "6d1eefba7b0fd9e0"
+    },
+    {
+      "url": "https://www.750g.com/poivrons-farcis-au-quinoa-raisins-secs-pignons-et-fromage-de-chevre-r200141.htm",
+      "site": "750g.com",
+      "nom": "Poivrons farcis au quinoa, raisins secs, pignons et fromage de chèvre",
+      "portions": "2 personnes",
+      "duree_preparation": "PT18M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "4 poivrons",
+        "500 g de quinoa  déjà cuit",
+        "150 g de fromage de chèvre frais",
+        "80 g de raisin secs",
+        "40 g de pignons de pin",
+        "1 bouquet de ciboulette",
+        "2 c. à s. d'huile d'olive",
+        "Sel ou sel fin",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 733,
+        "sha256": "6788ce769103bc3d"
+      },
+      "sha256_page": "aa0bbc70eb95d011"
+    }
+  ]
+}

@@ -7,8 +7,8 @@
     "curated": 502,
     "exact_label": 47
   },
-  "recipes_total": 754,
-  "recipes_eligible_for_publication": 568,
+  "recipes_total": 759,
+  "recipes_eligible_for_publication": 573,
   "recipes_blocked_only_by_proxy": 62,
   "v1_enriched_eligible_for_publication": 61,
   "unresolved_required": [
@@ -7744,6 +7744,51 @@
       "low_confidence_required_forms": [],
       "incomplete_nutrition_required_forms": [],
       "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "JUM-124",
+      "family": "Bouchées à la reine aux champignons",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "JUM-125",
+      "family": "Risotto au safran",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "JUM-126",
+      "family": "Nouilles sautées au tofu et aux légumes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "JUM-127",
+      "family": "Ragoût de pois chiches à la tomate",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
+    },
+    {
+      "code": "JUM-128",
+      "family": "Poivrons farcis au quinoa et aux légumes",
+      "eligible_for_publication": true,
+      "unresolved_required_forms": [],
+      "low_confidence_required_forms": [],
+      "incomplete_nutrition_required_forms": [],
+      "unresolved_conversion_required_forms": []
     }
   ],
   "forms": [
@@ -7904,7 +7949,7 @@
       "form": "Ail cru",
       "normalized": "ail cru",
       "required": true,
-      "recipe_count": 376,
+      "recipe_count": 379,
       "units": [
         "g"
       ],
@@ -10264,7 +10309,7 @@
       "form": "Beurre doux",
       "normalized": "beurre doux",
       "required": true,
-      "recipe_count": 203,
+      "recipe_count": 205,
       "units": [
         "g"
       ],
@@ -11861,8 +11906,9 @@
       "form": "Bouillon de légumes",
       "normalized": "bouillon de legumes",
       "required": true,
-      "recipe_count": 21,
+      "recipe_count": 24,
       "units": [
+        "g",
         "ml"
       ],
       "selection_mode": "curated",
@@ -12432,7 +12478,7 @@
       "form": "Brocoli cru",
       "normalized": "brocoli cru",
       "required": true,
-      "recipe_count": 9,
+      "recipe_count": 10,
       "units": [
         "g"
       ],
@@ -13003,7 +13049,7 @@
       "form": "Cannelle moulue",
       "normalized": "cannelle moulue",
       "required": true,
-      "recipe_count": 17,
+      "recipe_count": 18,
       "units": [
         "g"
       ],
@@ -13288,7 +13334,7 @@
       "form": "Carotte crue",
       "normalized": "carotte crue",
       "required": true,
-      "recipe_count": 153,
+      "recipe_count": 154,
       "units": [
         "g"
       ],
@@ -13859,7 +13905,7 @@
       "form": "Champignon de Paris frais",
       "normalized": "champignon de paris frais",
       "required": true,
-      "recipe_count": 52,
+      "recipe_count": 53,
       "units": [
         "g"
       ],
@@ -16964,7 +17010,7 @@
       "form": "Coriandre fraîche",
       "normalized": "coriandre fraiche",
       "required": true,
-      "recipe_count": 49,
+      "recipe_count": 51,
       "units": [
         "g"
       ],
@@ -17459,7 +17505,7 @@
       "form": "Crème fraîche liquide entière",
       "normalized": "creme fraiche liquide entiere",
       "required": true,
-      "recipe_count": 93,
+      "recipe_count": 94,
       "units": [
         "g",
         "ml"
@@ -19042,7 +19088,7 @@
       "form": "Échalote crue",
       "normalized": "echalote crue",
       "required": true,
-      "recipe_count": 61,
+      "recipe_count": 62,
       "units": [
         "g"
       ],
@@ -20467,7 +20513,7 @@
       "form": "Farine de blé T55",
       "normalized": "farine de ble t55",
       "required": true,
-      "recipe_count": 138,
+      "recipe_count": 139,
       "units": [
         "g"
       ],
@@ -21421,7 +21467,7 @@
       "form": "Feta",
       "normalized": "feta",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 6,
       "units": [
         "g"
       ],
@@ -24030,7 +24076,7 @@
       "form": "Gingembre frais",
       "normalized": "gingembre frais",
       "required": true,
-      "recipe_count": 59,
+      "recipe_count": 60,
       "units": [
         "g"
       ],
@@ -26165,7 +26211,7 @@
       "form": "Huile d'olive vierge extra",
       "normalized": "huile d olive vierge extra",
       "required": true,
-      "recipe_count": 364,
+      "recipe_count": 368,
       "units": [
         "g",
         "ml"
@@ -26567,7 +26613,7 @@
       "form": "Huile de sésame grillé",
       "normalized": "huile de sesame grille",
       "required": true,
-      "recipe_count": 24,
+      "recipe_count": 25,
       "units": [
         "g",
         "ml"
@@ -27454,7 +27500,7 @@
       "form": "Jaune d'œuf cru",
       "normalized": "jaune d oeuf cru",
       "required": true,
-      "recipe_count": 31,
+      "recipe_count": 32,
       "units": [
         "g",
         "u"
@@ -28123,7 +28169,7 @@
       "form": "Lait entier",
       "normalized": "lait entier",
       "required": true,
-      "recipe_count": 62,
+      "recipe_count": 63,
       "units": [
         "g",
         "ml"
@@ -30985,7 +31031,7 @@
       "form": "Muscade moulue",
       "normalized": "muscade moulue",
       "required": true,
-      "recipe_count": 56,
+      "recipe_count": 57,
       "units": [
         "g"
       ],
@@ -31606,7 +31652,7 @@
       "form": "Nouille de blé chinoise sèche",
       "normalized": "nouille de ble chinoise seche",
       "required": true,
-      "recipe_count": 3,
+      "recipe_count": 4,
       "units": [
         "g"
       ],
@@ -32113,7 +32159,7 @@
       "form": "Œuf cru",
       "normalized": "oeuf cru",
       "required": true,
-      "recipe_count": 188,
+      "recipe_count": 189,
       "units": [
         "g",
         "u"
@@ -32553,7 +32599,7 @@
       "form": "Oignon jaune cru",
       "normalized": "oignon jaune cru",
       "required": true,
-      "recipe_count": 379,
+      "recipe_count": 383,
       "units": [
         "g"
       ],
@@ -34730,7 +34776,7 @@
       "form": "Parmesan affiné",
       "normalized": "parmesan affine",
       "required": true,
-      "recipe_count": 38,
+      "recipe_count": 39,
       "units": [
         "g"
       ],
@@ -35981,7 +36027,7 @@
       "form": "Persil frais",
       "normalized": "persil frais",
       "required": true,
-      "recipe_count": 130,
+      "recipe_count": 132,
       "units": [
         "g"
       ],
@@ -38165,7 +38211,7 @@
       "form": "Poireau cru",
       "normalized": "poireau cru",
       "required": true,
-      "recipe_count": 43,
+      "recipe_count": 44,
       "units": [
         "g"
       ],
@@ -38222,7 +38268,7 @@
       "form": "Pois chiche cuit, égoutté",
       "normalized": "pois chiche cuit egoutte",
       "required": true,
-      "recipe_count": 15,
+      "recipe_count": 16,
       "units": [
         "g"
       ],
@@ -39032,7 +39078,7 @@
       "form": "Poivre noir moulu",
       "normalized": "poivre noir moulu",
       "required": true,
-      "recipe_count": 445,
+      "recipe_count": 449,
       "units": [
         "g"
       ],
@@ -39146,7 +39192,7 @@
       "form": "Poivron rouge frais",
       "normalized": "poivron rouge frais",
       "required": true,
-      "recipe_count": 61,
+      "recipe_count": 63,
       "units": [
         "g"
       ],
@@ -40871,7 +40917,7 @@
       "form": "Quinoa cru",
       "normalized": "quinoa cru",
       "required": true,
-      "recipe_count": 1,
+      "recipe_count": 2,
       "units": [
         "g"
       ],
@@ -41462,7 +41508,7 @@
       "form": "Riz arborio cru",
       "normalized": "riz arborio cru",
       "required": true,
-      "recipe_count": 4,
+      "recipe_count": 5,
       "units": [
         "g"
       ],
@@ -42654,7 +42700,7 @@
       "form": "Safran",
       "normalized": "safran",
       "required": true,
-      "recipe_count": 19,
+      "recipe_count": 20,
       "units": [
         "g"
       ],
@@ -43435,7 +43481,7 @@
       "form": "Sauce soja",
       "normalized": "sauce soja",
       "required": true,
-      "recipe_count": 18,
+      "recipe_count": 19,
       "units": [
         "ml"
       ],
@@ -44646,7 +44692,7 @@
       "form": "Sel fin",
       "normalized": "sel fin",
       "required": true,
-      "recipe_count": 517,
+      "recipe_count": 521,
       "units": [
         "g"
       ],
@@ -45465,7 +45511,7 @@
       "form": "Sucre semoule",
       "normalized": "sucre semoule",
       "required": true,
-      "recipe_count": 83,
+      "recipe_count": 84,
       "units": [
         "g"
       ],
@@ -46410,7 +46456,7 @@
       "form": "Tofu fumé",
       "normalized": "tofu fume",
       "required": true,
-      "recipe_count": 5,
+      "recipe_count": 6,
       "units": [
         "g"
       ],
@@ -46725,7 +46771,7 @@
       "form": "Tomate concassée en conserve",
       "normalized": "tomate concassee en conserve",
       "required": true,
-      "recipe_count": 58,
+      "recipe_count": 59,
       "units": [
         "g"
       ],
@@ -46954,7 +47000,7 @@
       "form": "Tomate râpée",
       "normalized": "tomate rapee",
       "required": true,
-      "recipe_count": 71,
+      "recipe_count": 72,
       "units": [
         "g"
       ],
@@ -48206,7 +48252,7 @@
       "form": "Vin blanc sec",
       "normalized": "vin blanc sec",
       "required": true,
-      "recipe_count": 76,
+      "recipe_count": 78,
       "units": [
         "g",
         "ml"

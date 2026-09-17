@@ -1,6 +1,6 @@
 {
   "lot": "cuisines",
-  "contexte": "Ce fichier tranche, un libellé à la fois, quelle CUISINE compte pour chaque valeur de cuisine_origin du corpus (data/recipes/corpus-v3.json). Il existe parce que P13 — au moins 8 cuisines distinctes sur trois semaines, aucune au-dessus de 40 % — n'est pas vérifiable mécaniquement tant que « France », « France / cuisine domestique internationale » et « France (Bourgogne) » comptent pour trois cuisines différentes. Le §5 livrable 3.1 de docs/PLAN_FINIR_MYKO.md le demande explicitement, et cite « Italie / cuisine domestique française » comme l'exemple du libellé composite à normaliser. MESURÉ LE 17 SEPTEMBRE 2026, AVANT D'ARBITRER, SUR LES 754 recettes du corpus : 103 libellés bruts distincts, 101 une fois repliés (deux cuisines sont écrites de deux manières). Le plus servi, « France », porte 320 recettes, et dix-huit AUTRES libellés bruts commencent par « France » — dix-sept clés repliées avec lui. Après arbitrage il reste 53 cuisines, et la France en rassemble 434 sur 754, soit 57,6 % du corpus. ERRATUM DE RELECTURE, laissé visible parce qu'effacer une correction coûte plus cher que la faute : la première rédaction de cet en-tête annonçait « 101 libellés bruts » et « treize autres libellés commencent par France » — les deux étaient faux, rien dans le dépôt ne les contredisait, et c'est tests/data/cuisinesArbitrage.test.js qui recompte désormais chacun de ces six nombres à chaque exécution. LE CHIFFRE QUI COMPTE POUR LA BASCULE DES PLAFONDS, ET IL FAUT DIRE SUR QUEL DÉNOMINATEUR. La part de la France vaut 57,6 % sur le CORPUS ENTIER (434 sur 754) et 72,4 % sur le VIVIER que le planificateur reçoit, c'est-à-dire les 568 recettes publiables (411 sur 568) — les 186 recettes non publiables sont nettement moins françaises, et confondre les deux dénominateurs ferait passer un vivier à 72 % pour un vivier à 58 %. C'est le SECOND qui pilote la bascule, parce que c'est lui que lib/domain/planning/weeklyBalance.js compte, à chaque génération, sur les recettes réellement présentées au faisceau. Le §5 du plan écrit « un vivier à 71,5 % France » sans décrire son protocole : le chiffre mesuré ici en est très proche, il n'est ni recopié ni contesté, et c'est la mesure refaite à chaque génération qui décide. Les deux disent la même chose pour la décision qui en dépend : la France est au-dessus de 50 % du vivier, donc les plafonds du livrable 3.1 restent des avertissements et n'écartent aucun plat.",
+  "contexte": "Ce fichier tranche, un libellé à la fois, quelle CUISINE compte pour chaque valeur de cuisine_origin du corpus (data/recipes/corpus-v3.json). Il existe parce que P13 — au moins 8 cuisines distinctes sur trois semaines, aucune au-dessus de 40 % — n'est pas vérifiable mécaniquement tant que « France », « France / cuisine domestique internationale » et « France (Bourgogne) » comptent pour trois cuisines différentes. Le §5 livrable 3.1 de docs/PLAN_FINIR_MYKO.md le demande explicitement, et cite « Italie / cuisine domestique française » comme l'exemple du libellé composite à normaliser. MESURÉ LE 17 SEPTEMBRE 2026, AVANT D'ARBITRER, PUIS RECOMPTÉ APRÈS LE LOT « JUMEAUX 13 » DU MÊME JOUR, SUR LES 759 recettes du corpus : 103 libellés bruts distincts, 101 une fois repliés (deux cuisines sont écrites de deux manières). Le plus servi, « France », porte 322 recettes, et dix-huit AUTRES libellés bruts commencent par « France » — dix-sept clés repliées avec lui. Après arbitrage il reste 53 cuisines, et la France en rassemble 436 sur 759, soit 57,4 % du corpus. ERRATUM DE RELECTURE, laissé visible parce qu'effacer une correction coûte plus cher que la faute : la première rédaction de cet en-tête annonçait « 101 libellés bruts » et « treize autres libellés commencent par France » — les deux étaient faux, rien dans le dépôt ne les contredisait, et c'est tests/data/cuisinesArbitrage.test.js qui recompte désormais chacun de ces six nombres à chaque exécution. LE CHIFFRE QUI COMPTE POUR LA BASCULE DES PLAFONDS, ET IL FAUT DIRE SUR QUEL DÉNOMINATEUR. La part de la France vaut 57,4 % sur le CORPUS ENTIER (436 sur 759) et 72,1 % sur le VIVIER que le planificateur reçoit, c'est-à-dire les 573 recettes publiables (413 sur 573) — les 186 recettes non publiables sont nettement moins françaises, et confondre les deux dénominateurs ferait passer un vivier à 72 % pour un vivier à 58 %. C'est le SECOND qui pilote la bascule, parce que c'est lui que lib/domain/planning/weeklyBalance.js compte, à chaque génération, sur les recettes réellement présentées au faisceau. Le §5 du plan écrit « un vivier à 71,5 % France » sans décrire son protocole : le chiffre mesuré ici en est très proche, il n'est ni recopié ni contesté, et c'est la mesure refaite à chaque génération qui décide. Les deux disent la même chose pour la décision qui en dépend : la France est au-dessus de 50 % du vivier, donc les plafonds du livrable 3.1 restent des avertissements et n'écartent aucun plat.",
   "regles": [
     "R0 — IDENTITÉ DÉJÀ UNIQUE. Le libellé nomme une seule aire culinaire et ne porte aucun qualificatif de registre. Rien n'est fusionné : la décision consiste à constater qu'il n'y a rien à trancher, et à l'écrire pour que le libellé soit couvert.",
     "R1 — LE QUALIFICATIF DE REGISTRE TOMBE. « cuisine domestique », « cuisine domestique internationale », « cuisine domestique adaptée », « cuisine de café parisienne », « d'inspiration asiatique » décrivent la MANIÈRE dont le plat est cuisiné, pas l'aire dont il vient. L'identité nommée l'emporte. C'est la règle qui fait de « Italie / cuisine domestique française » un plat italien, et de « France / cuisine domestique d'inspiration italienne » un plat français : elle joue dans les deux sens, y compris quand elle grossit la part de la France.",
@@ -15,10 +15,10 @@
       "brut": [
         "France"
       ],
-      "recettes": 320,
+      "recettes": 322,
       "cuisine": "France",
       "regle": "R0",
-      "motif": "Le libellé nomme une seule aire culinaire et ne porte aucun qualificatif de registre. Rien n'est fusionné ici : c'est le libellé de tête du corpus (320 recettes) et c'est lui qui rend P13 mesurable, puisque toutes les décisions R1 et R2 ci-dessous viennent s'y ajouter."
+      "motif": "Le libellé nomme une seule aire culinaire et ne porte aucun qualificatif de registre. Rien n'est fusionné ici : c'est le libellé de tête du corpus (322 recettes) et c'est lui qui rend P13 mesurable, puisque toutes les décisions R1 et R2 ci-dessous viennent s'y ajouter."
     },
     {
       "libelle": "france cuisine domestique internationale",
@@ -35,7 +35,7 @@
       "brut": [
         "Italie"
       ],
-      "recettes": 42,
+      "recettes": 43,
       "cuisine": "Italie",
       "regle": "R0",
       "motif": "Une seule aire culinaire, aucun qualificatif : minestrone, ossobuco, saltimbocca."
@@ -316,7 +316,7 @@
       "brut": [
         "Chine / cuisine domestique internationale"
       ],
-      "recettes": 3,
+      "recettes": 4,
       "cuisine": "Chine",
       "regle": "R1",
       "motif": "Le qualificatif de registre tombe : riz sauté, nouilles sautées, wok de légumes."
@@ -877,7 +877,7 @@
       "brut": [
         "Maghreb / cuisine domestique adaptée"
       ],
-      "recettes": 1,
+      "recettes": 2,
       "cuisine": "Maghreb",
       "regle": "R1",
       "motif": "Le registre tombe ; reste le Maghreb, aire supranationale écrite telle quelle pour le poulet aux pois chiches. Le corpus range à part l'Algérie, le Maroc et la Tunisie quand il veut être précis : on ne leur rattache pas un plat qu'il a laissé à l'aire."

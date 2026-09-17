@@ -1,4 +1,4 @@
-import { readFileSync, existsSync } from 'node:fs'
+import { readFileSync, readdirSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { ORIGINS } from '@/lib/domain/foods/origins'
@@ -162,10 +162,38 @@ describe('contrat opérationnel — la chaîne de publication', () => {
   it('la migration de valeurs porte les 549 origines et les profils de toutes les recettes déclarées', () => {
     const origines = [...VALEURS.matchAll(/^ {4}\('[^']*', '([a-z:_]+)', (?:NULL|'(?:[^']|'')*')\),?$/gm)]
     expect(origines).toHaveLength(CATALOGUE.forms.length)
-    const profils = [...VALEURS.matchAll(/^ {4}\('([A-Z0-9-]+)', '\{/gm)]
+    // LES PROFILS NE SONT PLUS TOUS DANS CETTE MIGRATION, et il faut dire
+    // pourquoi plutôt que d'abaisser le compte. Elle existe pour RATTRAPER les
+    // recettes chargées AVANT que le contrat opérationnel n'existe : leur
+    // version était déjà en base sans `conservation_profile`. Une recette
+    // versée APRÈS le contrat arrive avec son profil dans son propre bloc de
+    // chargement — `build-corpus-v3.mjs` émet la colonne — et n'a rien à
+    // rattraper. C'est le cas des cinq recettes du lot « jumeaux 13 »
+    // (20260919150000).
+    //
+    // Ce qui doit rester vrai, et qui est vérifié ici : AUCUNE recette du
+    // corpus qui déclare un profil n'est laissée sans écriture en base, quelle
+    // que soit la migration qui l'écrit. L'union, pas la seule migration de
+    // rattrapage — et toujours une ÉGALITÉ, pas une inclusion.
+    const profils = [...VALEURS.matchAll(/^ {4}\('([A-Z0-9-]+)', '\{/gm)].map((match) => match[1])
+    const parChargement = new Set()
+    for (const fichier of readdirSync(join(RACINE, 'supabase', 'migrations'))
+      .filter((nom) => /^\d{14}_corpus_v3_.*\.sql$/.test(nom) && !nom.endsWith('_rollback.sql'))) {
+      const sql = lire('supabase', 'migrations', fichier)
+      for (const trouve of sql.matchAll(/ds\.id, '([A-Z0-9-]+)',[\s\S]*?'\{"fridge_hours"/g)) parChargement.add(trouve[1])
+    }
+    const ecrits = new Set([...profils, ...parChargement])
     const declarees = CORPUS.recipes.filter((recette) => recette.conservation_profile)
-    expect(profils).toHaveLength(declarees.length)
-    expect(profils.map((match) => match[1]).sort()).toEqual(declarees.map((recette) => recette.code).sort())
+    // La migration de rattrapage ne porte QUE des codes du corpus : un code en
+    // trop y daterait un profil que personne n'a déclaré.
+    const enTrop = profils.filter((code) => !declarees.some((recette) => recette.code === code))
+    expect(enTrop, 'codes de la migration de rattrapage absents du corpus').toEqual([])
+    const sansEcriture = declarees.filter((recette) => !ecrits.has(recette.code)).map((recette) => recette.code)
+    expect(sansEcriture, 'recettes déclarant un profil qu’aucune migration n’écrit').toEqual([])
+    // Et le compte, pour qu'une expression régulière qui cesserait d'accrocher
+    // ne rende pas « 0 manquante » sur 0 lecture.
+    expect(profils.length + declarees.filter((recette) => !profils.includes(recette.code)).length)
+      .toBe(declarees.length)
     // Idempotence : chaque UPDATE est gardé. Un second passage n'écrit rien, et
     // un chargement de corpus postérieur n'est pas défait par cette migration.
     expect(VALEURS).toContain('AND (ff.origin IS DISTINCT FROM origines.origin')

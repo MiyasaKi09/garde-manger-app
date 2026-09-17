@@ -867,6 +867,12 @@ const DESCRIPTIONS = {
   'JUM-121': "L'avgolemono grec sans son poulet : bouillon de légumes, riz rond cuit jusqu'à l'amidon, pois chiches, et la même liaison d'œufs battus au jus de citron, montée hors du feu.", // ← REAL-129
   'JUM-122': "Le croque-madame sans jambon : des pousses d'épinard tombées à la poêle et pressées remplacent la tranche de charcuterie, entre deux couches d'emmental, sous le gruyère gratiné et l'œuf au plat.", // ← SRC-011
   'JUM-123': "Le plat louisianais des lundis, sans viande : haricots rouges mijotés sur la trinité poivron-céleri-oignon au paprika fumé, liés par leur propre amidon et servis sur du riz long.", // ← PROT-008
+  // Lot « jumeaux 13 », 17 septembre 2026.
+  'JUM-124': "La garniture des bouchées à la reine sans poulet ni veau : un kilo de champignons de Paris sautés en trois fournées, liés d'un velouté au lait et au vin blanc monté aux jaunes d'œuf.", // ← SRC-009
+  'JUM-125': "Le milanais mouillé au bouillon de légumes : riz arborio nacré, safran infusé à part dans une louche chaude, monté hors du feu au beurre froid et au parmesan.", // ← VAR-001
+  'JUM-126': "Le wok du parent avec du tofu fumé à la place du poulet et sans sauce poisson : brocoli, carotte et poireau saisis croquants, nouilles laquées à la sauce soja et au sésame grillé.", // ← RAP-042
+  'JUM-127': "Le mijoté du parent sans son poulet : double ration de pois chiches, tomate compotée et pointe de cannelle, la sauce liée en écrasant une louche de grains contre la cocotte.", // ← DEN-017
+  'JUM-128': "Les poivrons farcis sans lardons ni bouillon de volaille : une farce de quinoa rincé, de tomate fondue à l'oignon et de feta, liée à l'œuf et rôtie quarante minutes au four.", // ← SRC-021
 }
 
 /* ── Application au corpus ──────────────────────────────────────────── */

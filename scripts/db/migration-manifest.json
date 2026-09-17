@@ -2114,5 +2114,25 @@
     "baseline": null,
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260919150000_corpus_v3_lot_jumeaux_13.sql",
+    "github_version": "20260919150000",
+    "name": "corpus_v3_lot_jumeaux_13",
+    "sha256": "55c9514daa90550c5c0227a1d04c39c72c16fc24059d668cb42920759d1ef2fe",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260919150000_corpus_v3_lot_jumeaux_13_rollback.sql",
+    "github_version": "20260919150000",
+    "name": "corpus_v3_lot_jumeaux_13_rollback",
+    "sha256": "e579db2a199285e914159ea1f55dd268942bb0ce25503f6bf1aa720460b0f751",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

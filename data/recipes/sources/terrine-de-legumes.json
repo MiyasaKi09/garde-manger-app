@@ -1,0 +1,259 @@
+{
+  "dish": "Terrine de legumes",
+  "slug": "terrine-de-legumes",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_flan-terrine-aux-legumes_229454.aspx",
+      "site": "marmiton.org",
+      "nom": "Flan-terrine aux légumes : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "450 g de macédoine surgelée",
+        "4 oeufs battus en omelette",
+        "75 g de crème fraîche",
+        "75 g de gruyère râpé",
+        "1 branche de persil haché",
+        "1 pincée de sel",
+        "1 pincée de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 407,
+        "sha256": "4f728aabcc89f006"
+      },
+      "sha256_page": "1a7156f81018ddd3"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_terrine-aux-legumes-nouveaux_13189.aspx",
+      "site": "marmiton.org",
+      "nom": "Terrine aux légumes nouveaux : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "500 g de carottes nouvelles",
+        "750 g d'épinards frais",
+        "500 g de navets nouveaux",
+        "6 oeufs",
+        "15 cl de crème fraîche",
+        "40 g de beurre",
+        "muscade râpée",
+        "poivre",
+        "sel",
+        "1 cuillère à soupe de vinaigre de vin",
+        "1 cuillère à soupe de vinaigre balsamique",
+        "5 cuillères à soupe d'huile de tournesol (ou d'olive**)",
+        "1 cuillère à soupe d'huile de noisette (ou de noix)",
+        "1 brin d'estragon",
+        "2 brins de cerfeuil",
+        "6 brins de ciboulette",
+        "12 noisettes mondées",
+        "poivre",
+        "sel",
+        "1 botte de radis",
+        "1 poignée de mâche",
+        "6 brins de ciboulette (ou 2 ciboules)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 17,
+        "signes": 1298,
+        "sha256": "8317149b33c16813"
+      },
+      "sha256_page": "e9d149236fbe1fd5"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_terrine-de-legumes-carotte-courgette-brocoli_38155.aspx",
+      "site": "marmiton.org",
+      "nom": "Terrine de légumes (carotte, courgette, brocoli) : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "5 carottes",
+        "3 courgettes",
+        "brocoli",
+        "30 cl de crème liquide",
+        "4 oeufs",
+        "piment (selon votre goût)",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 715,
+        "sha256": "d6f904649804746c"
+      },
+      "sha256_page": "f733ecb75dbfa96d"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/terrine-de-legumes-0071fc68-415c-4311-af1c-88e8acf1632c",
+      "site": "chefsimon.com",
+      "nom": "Terrine de légumes",
+      "portions": "8 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "2 carottes",
+        "2 courgettes",
+        "4 navets",
+        "2 oignons",
+        "150 g d’épinards étuvés au beurre",
+        "150 g de riz déjà cuit",
+        "100 g d’emmental râpé",
+        "huile d’olive",
+        "5 dl de crème",
+        "3 oeufs",
+        "origan",
+        "thym",
+        "muscade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 851,
+        "sha256": "11bf5be7e5882ea8"
+      },
+      "sha256_page": "bdb607b78875358a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/chef-simon/recettes/terrines-de-legumes",
+      "site": "chefsimon.com",
+      "nom": "Terrines de légumes",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "navets",
+        "petits pois",
+        "haricots verts",
+        "carottes",
+        "gélatine",
+        "herbes aromatiques"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 2682,
+        "sha256": "b6158fffa7bae256"
+      },
+      "sha256_page": "73764bbf84561cc5"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/les-enfants-du-gone/recettes/terrine-de-thon-aux-petits-legumes--2",
+      "site": "chefsimon.com",
+      "nom": "Terrine de thon aux petits légumes",
+      "portions": "6 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT00H50M",
+      "ingredients": [
+        "1 boite de thon de 150 g environ (égouttée)",
+        "400 g de macédoines de légumes (petits pois, haricots verts, carottes, maïs... )",
+        "4 oeufs",
+        "20 cl de crème fraiche épaisse",
+        "120 g de fromage râpé",
+        "2 cuiller à soupe de chapelure",
+        "5 cuiller à soupe d'herbes ( ciboulette, persil )",
+        "sel, poivre",
+        "salade",
+        "tomates",
+        "carottes",
+        "concombre",
+        "huile d'olive",
+        "vinaigre balsamique",
+        "moutarde",
+        "sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1380,
+        "sha256": "f18f3a65c1d880fa"
+      },
+      "sha256_page": "ff89d23edca6f026"
+    },
+    {
+      "url": "https://www.750g.com/terrine-de-legumes-r35315.htm",
+      "site": "750g.com",
+      "nom": "Terrine de légumes classique",
+      "portions": "8 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "2 cuillères à soupe de lait",
+        "100 g de fromage râpé allégé",
+        "Sel",
+        "Poivre",
+        "2 cuillères à soupe de maïzena",
+        "200 ml de crème liquide 5% matière grasse",
+        "350 g de carottes",
+        "1 botte d'oignons nouveaux",
+        "3 œufs",
+        "350 g de courgettes"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 892,
+        "sha256": "e6e9f974fad60b3c"
+      },
+      "sha256_page": "7c08f37a0f0f5ed6"
+    },
+    {
+      "url": "https://www.750g.com/terrine-de-legumes-r62341.htm",
+      "site": "750g.com",
+      "nom": "Terrine de légumes inratable",
+      "portions": "8 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "30g de Farine",
+        "0,5 cl de Levure chimique",
+        "Sel",
+        "Poivre",
+        "1pincée de Piment d'Espelette",
+        "35g de Parmesan râpé",
+        "2,5 cl de Crème liquide",
+        "200g de Julienne de légumes surgelés",
+        "½ Poivron rouge",
+        "2,5 cl d'eau",
+        "1 œuf",
+        "1,5 cl d'huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 711,
+        "sha256": "168b7ccf7009991c"
+      },
+      "sha256_page": "cc9a34e261c4a9f6"
+    },
+    {
+      "url": "https://www.750g.com/terrine-de-legumes-r41518.htm",
+      "site": "750g.com",
+      "nom": "Terrine de légumes d'été",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "5 branches de thym",
+        "3 gousses d'ail",
+        "Sel",
+        "Poivre",
+        "15 cl d'eau (ou 10 c à soupe d'eau)",
+        "1 moule à cake en verre de 28 cm Pyrex®",
+        "2 tomates",
+        "3 feuilles de gélatine",
+        "1 poivron jaune moyen",
+        "3 c à soupe de farine de Blé Francine",
+        "2 petites aubergines",
+        "5 c à soupe d'huile d'olive",
+        "2 poivrons rouges moyens"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 1270,
+        "sha256": "35c719db6df02616"
+      },
+      "sha256_page": "b952fa521cdc35f8"
+    }
+  ]
+}

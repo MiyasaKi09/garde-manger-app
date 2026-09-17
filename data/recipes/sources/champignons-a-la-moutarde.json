@@ -1,0 +1,165 @@
+{
+  "dish": "Champignons a la moutarde",
+  "slug": "champignons-a-la-moutarde",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_roti-de-porc-aux-champignons-frais-sauce-moutarde_68940.aspx",
+      "site": "marmiton.org",
+      "nom": "Rôti de porc aux champignons frais sauce moutarde : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 rôti de porc de 1 kg (dans l'échine de préférence)",
+        "300 g de champignons de Paris frais",
+        "3 oignons blancs",
+        "1 échalote",
+        "2 cuillères à soupe de moutarde",
+        "2 cuillères à soupe de crème fraîche (allégée c'est très bien aussi)",
+        "1 kg de pomme de terre type charlotte pour accompagnement",
+        "poivre",
+        "sel",
+        "herbes de Provence",
+        "1 cuillère à soupe d'huile",
+        "25 cl d'eau"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 833,
+        "sha256": "4da2132b9963e1d1"
+      },
+      "sha256_page": "ec9930232a1572b3"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_andouillette-aux-champignons-sauce-moutarde_323358.aspx",
+      "site": "marmiton.org",
+      "nom": "Andouillette aux champignons sauce moutarde : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "4 andouillette",
+        "2 bonnes cuillères à soupe de crème fraîche",
+        "1 bonne cuillère à soupe de moutarde",
+        "1 oignon",
+        "10 champignons de Paris frais",
+        "2 cuillères à soupe d'huile d'olive",
+        "beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 377,
+        "sha256": "c5543b1b4eb1d38f"
+      },
+      "sha256_page": "57dabf17842302de"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_lotte-champignons-echalotes-moutarde_169388.aspx",
+      "site": "marmiton.org",
+      "nom": "Lotte champignons échalotes moutarde : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "lotte (900g)",
+        "5 échalotes",
+        "champignon (300g)",
+        "crème fraîche (30cl)",
+        "moutarde à l'ancienne",
+        "de sucre",
+        "de vinaigre balsamique",
+        "poivre",
+        "sel",
+        "gingembre moulu."
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 677,
+        "sha256": "e3ccac3fa52b8cbf"
+      },
+      "sha256_page": "394a1441c4bbbc3b"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/le-popoteur/recettes/lapin-a-la-moutarde-a-l-ancienne-et-aux-champignons",
+      "site": "chefsimon.com",
+      "nom": "Lapin à la moutarde à l'ancienne et aux champignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H45M",
+      "ingredients": [
+        "4 morceaux de lapin (épaule ou cuisse)",
+        "2 oignons moyens",
+        "2 gousses d'ail",
+        "100 g de moutarde à l'ancienne",
+        "500 g de champignons de Paris",
+        "15 cl de vin blanc",
+        "200 g de crème fraîche épaisse",
+        "4 cuillères (40 g) de fond de veau",
+        "2 feuilles de laurier",
+        "1 belle branche de thym",
+        "40 g de beurre",
+        "2 cuillères à soupe d'huile",
+        "sel fin/poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 19,
+        "signes": 1638,
+        "sha256": "230351076969b641"
+      },
+      "sha256_page": "ab1a6f537a0c3b30"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/plat-et-recette/recettes/poulet-a-la-moutarde-et-aux-champignons",
+      "site": "chefsimon.com",
+      "nom": "Poulet à la moutarde et aux champignons",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H30M",
+      "ingredients": [
+        "200 g de blanc de poulet",
+        "120 g de champignons",
+        "1 bouillon cube de volaille",
+        "1 verre d’eau",
+        "3 échalotes",
+        "2 cuillères à café de moutarde",
+        "2 cuillères à café de crème fraîche",
+        "3 cuillères à café d’estragon",
+        "2 cuillères à café d’huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 153,
+        "sha256": "8306a3e8676ad589"
+      },
+      "sha256_page": "c5154e7266bcc182"
+    },
+    {
+      "url": "https://www.750g.com/poulet-a-la-moutarde-a-lestragon-et-aux-champignons-r9110.htm",
+      "site": "750g.com",
+      "nom": "Poulet à la moutarde, à l'estragon et aux champignons",
+      "portions": "2 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 blancs de poulet",
+        "200 g de champignons de Paris  émincés",
+        "2 c. à c. d'huile d'olive",
+        "2 échalotes  émincées",
+        "2 c. à c. d'estragon",
+        "2 c. à c. de crème fraîche légère",
+        "1 cube de bouillon de volaille  dissout dans 1/2 verre d'eau",
+        "2 c. à c. de moutarde",
+        "Poivre",
+        "Sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 554,
+        "sha256": "499a1f03e7d2197e"
+      },
+      "sha256_page": "36979804c211ba23"
+    }
+  ]
+}

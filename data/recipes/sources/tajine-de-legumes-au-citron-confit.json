@@ -1,0 +1,78 @@
+{
+  "dish": "Tajine de legumes au citron confit",
+  "slug": "tajine-de-legumes-au-citron-confit",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tajine-d-agneau-aux-legumes-et-citrons-confits_45217.aspx",
+      "site": "marmiton.org",
+      "nom": "Tajine d'agneau aux légumes et citrons confits : la meilleure recette",
+      "portions": "5 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "6 courgettes",
+        "2 oignons",
+        "1 cuillère à soupe d'huile d'olive",
+        "500 g d'épaules d'agneau coupée en dés",
+        "1 cube de bouillon de volaille",
+        "2 cuillères à soupe de miel",
+        "1 dose de safran",
+        "cumin moulu",
+        "gingembre frais râpé",
+        "1 citron confit",
+        "3 gousses d'ail",
+        "1 grande boîte de tomates pelées au jus",
+        "olives vertes aux herbes et éventuellement des amandes entières mondées (quelques unes)",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 942,
+        "sha256": "529c18eae546a75c"
+      },
+      "sha256_page": "1d68f0a4fdd01e5f"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/alexandre/recettes/tajine-de-legumes-au-citron-confit-deux-recettes",
+      "site": "chefsimon.com",
+      "nom": "Tajine de légumes au citron confit",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "Tajine d'aubergine au citron confit (pour 2 personnes) :",
+        "1 belle aubergine",
+        "2 carottes",
+        "1 poignée de haricots verts (frais ou surgelés)",
+        "1 petit morceau de fenouil",
+        "1 tomate",
+        "1 bel oignon",
+        "1 c à café de cumin",
+        "1/2 c à café de coriandre (en poudre et quelques grains)",
+        "1 grosse pincée de piment d'Espelette (facultatif)",
+        "1/2 citron confit",
+        "1 c à soupe rase de sucre (ou quelques dattes dénoyautées)",
+        "Huile d'olive",
+        "Variante – Tajine au patisson, pomme de terre et citron confit :",
+        "1 petit patisson (ou une autre courge)",
+        "2 carottes",
+        "1 ou 2 pomme(s) de terre",
+        "1 oignon",
+        "1 c à café de cumin",
+        "1/2 c à café de coriandre en poudre",
+        "1/2 citron confit",
+        "3 ou 4 dattes dénoyautées",
+        "Huile d'olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "b667f683ef7ba38e"
+    }
+  ]
+}

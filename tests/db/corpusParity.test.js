@@ -77,11 +77,25 @@ const DEPOT = corpusDuDepot(CORPUS)
  */
 const empreintesDesTranches = () => {
   const migrations = readdirSync(join(RACINE, 'supabase', 'migrations'))
+  // UNE SEULE PASSE, DANS L'ORDRE DES NOMS DE FICHIERS — c'est-à-dire dans
+  // l'ordre où `apply-migrations.sh` les applique (`LC_ALL=C sort`).
+  //
+  // Ce fichier lisait auparavant les tranches d'abord et les mises à jour
+  // ensuite, en deux passes. Tant qu'une seule migration mettait à jour des
+  // empreintes, les deux revenaient au même. Elles ont cessé de revenir au même
+  // avec le lot « jumeaux 13 » (20260919150000), qui CHARGE des recettes après
+  // la mise à jour du 18 septembre : en deux passes, son écriture sur VAR-035
+  // serait rejouée avant celle des bases partagées, et le résultat ne serait
+  // plus celui de la base. Une passe chronologique dit la vérité dans tous les
+  // cas, et ne demande pas de se souvenir de l'ordre en le lisant.
   const fichiers = migrations
-    .filter((nom) => /^\d{14}_corpus_v3_754_tranche_\d+\.sql$/.test(nom))
+    .filter((nom) => /^\d{14}_corpus_v3_(754_tranche_\d+|lot_jumeaux_13)\.sql$/.test(nom))
+    .sort()
+  const misesAJour = migrations
+    .filter((nom) => /^\d{14}_bases_partagees\.sql$/.test(nom))
     .sort()
   const parCode = new Map()
-  for (const nom of fichiers) {
+  for (const nom of [...fichiers, ...misesAJour].sort()) {
     const sql = readFileSync(join(RACINE, 'supabase', 'migrations', nom), 'utf8')
     // Le bloc d'insertion d'une version : `ds.id, '<CODE>',` puis, plus bas,
     // `'<niveau>', 'candidate', '<empreinte>',`. La recherche est non gourmande,
@@ -89,16 +103,9 @@ const empreintesDesTranches = () => {
     for (const trouve of sql.matchAll(/ds\.id, '([A-Z0-9-]+)',[\s\S]*?'[A-Z]', 'candidate', '([0-9a-f]{32})',/g)) {
       parCode.set(trouve[1], trouve[2])
     }
-  }
-  // Les mises à jour postérieures, dans l'ordre chronologique des migrations.
-  // Chacune déclare le couple (empreinte d'avant, empreinte d'après) : on ne
-  // remplace que si l'empreinte courante est bien celle d'avant, exactement
-  // comme la garde SQL de la migration.
-  const misesAJour = migrations
-    .filter((nom) => /^\d{14}_bases_partagees\.sql$/.test(nom))
-    .sort()
-  for (const nom of misesAJour) {
-    const sql = readFileSync(join(RACINE, 'supabase', 'migrations', nom), 'utf8')
+    // Les mises à jour d'empreinte déclarent le couple (avant, après) : on ne
+    // remplace que si l'empreinte courante est bien celle d'avant, exactement
+    // comme la garde SQL de la migration.
     const bloc = sql.match(/INSERT INTO _empreintes VALUES\n([\s\S]*?);\n/)?.[1] || ''
     for (const trouve of bloc.matchAll(/\('([A-Z0-9-]+)', '([0-9a-f]{32})', '([0-9a-f]{32})'\)/g)) {
       const [, code, avant, apres] = trouve
@@ -111,11 +118,14 @@ const empreintesDesTranches = () => {
 describe('0b.5 — la règle d’empreinte du dépôt est celle que les migrations écrivent', () => {
   it('rend, recette par recette, le content_hash que portent les dix tranches de corpus', () => {
     const { fichiers, misesAJour, parCode } = empreintesDesTranches()
-    expect(fichiers.length).toBe(10)
-    // La chaîne compte une mise à jour d'empreintes depuis les tranches : les
-    // bases partagées du livrable 2.1. Le compte est fixé pour qu'un lot
-    // ultérieur qui en ajouterait une soit lu ici plutôt que découvert en
-    // release.
+    // Dix tranches du 17 septembre, plus la migration du lot « jumeaux 13 »,
+    // qui charge cinq recettes neuves et réécrit trois rattachements. Le compte
+    // est fixé pour qu'un lot ultérieur qui en ajouterait une soit lu ici
+    // plutôt que découvert en release.
+    expect(fichiers.length).toBe(11)
+    expect(fichiers.at(-1)).toBe('20260919150000_corpus_v3_lot_jumeaux_13.sql')
+    // Et une seule mise à jour d'empreintes sans chargement : les bases
+    // partagées du livrable 2.1.
     expect(misesAJour).toEqual(['20260918090000_bases_partagees.sql'])
     // Le compte d'abord : une expression régulière qui cesserait d'accrocher
     // rendrait « 0 écart » sur 0 comparaison, et ce zéro-là ne prouverait rien.
