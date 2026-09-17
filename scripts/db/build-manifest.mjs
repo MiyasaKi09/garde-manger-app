@@ -182,6 +182,14 @@ const NEW_EXPECTED_OBJECTS = {
     { type: 'column', schema: 'culinary', table: 'recipe_versions', name: 'conservation_profile' },
     { type: 'function', schema: 'culinary', name: 'conservation_profile_contract' },
   ],
+  // La date de versement. La COLONNE et la FONCTION de résumé, pas seulement la
+  // fonction : un CREATE OR REPLACE réussit sur une base où la colonne manque,
+  // et le contrôle passerait au vert sur une base incapable de dater quoi que
+  // ce soit.
+  '20260919140000': [
+    { type: 'column', schema: 'culinary', table: 'recipe_versions', name: 'corpus_poured_on' },
+    { type: 'function', schema: 'public', name: 'get_recipe_pour_summary_v3' },
+  ],
 };
 
 // Fichiers auxiliaires chargés dans la même transaction/version que le fichier

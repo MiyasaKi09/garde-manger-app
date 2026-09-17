@@ -150,6 +150,14 @@ jobs:
           # passer l'étape même si les chargeurs n'écrivaient plus rien. C'est le
           # scénario B, qui n'exécute aucun chargeur, qui éprouve cette migration.
           #
+          # 20260919140000, la DATE DE VERSEMENT, entre ici par la même règle que
+          # 20260917110000 : elle ajoute `culinary.recipe_versions.corpus_poured_on`,
+          # que le chargeur de corpus renseigne depuis data/recipes/versements.json.
+          # Sans elle, l'étape corpus échoue sur « colonne corpus_poured_on
+          # inexistante ». Et 20260919141000, qui pose les dates sur une base déjà
+          # chargée, n'entre PAS ici pour la raison symétrique : le scénario A doit
+          # prouver que le CHARGEUR écrit la date, pas qu'une migration la répare.
+          #
           # 20260729180000, le CATALOGUE D'ALIMENTS, n'entre PAS ici : il
           # arriverait avant l'étape F0, qui charge son propre petit corpus de
           # formes et réclame le profil nutritionnel primaire de certaines
@@ -162,7 +170,7 @@ jobs:
             | grep -v '_rollback\.sql$' \
             | grep -v '/20260715171000_v3_canonical_plan_publication\.sql$' \
             | grep -v '/20260715173000_v3_recipe_execution_policy_consolidation\.sql$' \
-            | grep -E '/(20260714[2-9]|20260715|20260729140000|20260731000000|20260917110000)' \
+            | grep -E '/(20260714[2-9]|20260715|20260729140000|20260731000000|20260917110000|20260919140000)' \
             | LC_ALL=C sort \
             | while IFS= read -r f; do cp "$f" /tmp/v2mig_a/; done
           echo "Migrations V2 sélectionnées : $(ls /tmp/v2mig_a/ | wc -l)"
@@ -519,6 +527,27 @@ jobs:
         run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/bases_partagees.sql
 
       # ────────────────────────────────────────────────────────────────────────
+      # [A] La date de versement, sur la CHAÎNE DE PUBLICATION (plan §5, phase 5).
+      #
+      # Ce qui est éprouvé ici est le code d'émission : build-corpus-v3.mjs lit
+      # data/recipes/versements.json et pose `corpus_poured_on`. S'il cessait de
+      # le faire, l'écran « Nouveautés de la semaine » redeviendrait vide en
+      # production sans que rien d'autre ne s'en aperçoive — le catalogue
+      # continuerait de se servir, simplement plus personne ne verrait bouger.
+      #
+      # Le compte attendu est CALCULÉ depuis le registre, jamais écrit en dur :
+      # un lot versé la semaine prochaine fait bouger le registre, le chargeur et
+      # ce contrôle ensemble.
+      # ────────────────────────────────────────────────────────────────────────
+      - name: "[A] Date de versement : la chaîne de publication la pose"
+        env:
+          DATABASE_URL: ${{ env.DB_A }}
+        run: |
+          attendu=$(node -e "const r=require('./data/recipes/versements.json'); console.log(r.versements.reduce((n, v) => n + v.codes.length, 0))")
+          echo "[A] registre des versements : $attendu codes datés"
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -v attendu="$attendu" -f supabase/tests/date_versement.sql
+
+      # ────────────────────────────────────────────────────────────────────────
       # SCÉNARIO B — Simulation d'une prod divergente, puis reconcile + apply
       #
       # Simule exactement l'état prod au 2026-07-15 :
@@ -872,6 +901,19 @@ jobs:
         env:
           DATABASE_URL: ${{ env.DB_B }}
         run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/bases_partagees.sql
+
+      # Le même fichier, sur le chemin des MIGRATIONS — celui de la production,
+      # où les dix tranches du 17 septembre sont figées et ne portent aucune
+      # date : c'est 20260919141000_date_versement_lot_jumeaux.sql qui la pose.
+      # Les deux scénarios doivent rendre le même compte, sans quoi le dépôt et
+      # la base divergeraient en silence (§9.3 du plan).
+      - name: "[B] Date de versement : la migration la pose"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: |
+          attendu=$(node -e "const r=require('./data/recipes/versements.json'); console.log(r.versements.reduce((n, v) => n + v.codes.length, 0))")
+          echo "[B] registre des versements : $attendu codes datés"
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -v attendu="$attendu" -f supabase/tests/date_versement.sql
 
       - name: "[B] Idempotence : 2e apply doit rapporter 0 appliquées"
         env:

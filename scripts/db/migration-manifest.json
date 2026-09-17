@@ -2062,5 +2062,57 @@
     "baseline": null,
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260919140000_date_versement.sql",
+    "github_version": "20260919140000",
+    "name": "date_versement",
+    "sha256": "f0af516ac62c805c5eed352962fa78381302cb0ce9013a1abe69f44b01676cb2",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "column",
+        "schema": "culinary",
+        "table": "recipe_versions",
+        "name": "corpus_poured_on"
+      },
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "get_recipe_pour_summary_v3"
+      }
+    ]
+  },
+  {
+    "file": "20260919140000_date_versement_rollback.sql",
+    "github_version": "20260919140000",
+    "name": "date_versement_rollback",
+    "sha256": "febc08a0e2d4246e4dd5578a2b4ac65dce335531e8f4f78d0424cc7aa921a4b8",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260919141000_date_versement_lot_jumeaux.sql",
+    "github_version": "20260919141000",
+    "name": "date_versement_lot_jumeaux",
+    "sha256": "cc908e51aa5d1aa7af572790f42a9269cadf881758a41f22220f6b503da4ad0d",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260919141000_date_versement_lot_jumeaux_rollback.sql",
+    "github_version": "20260919141000",
+    "name": "date_versement_lot_jumeaux_rollback",
+    "sha256": "5aebbec4aca8531ef9452067dd6c670aa6d7659b39067fb5b6146efedeb42cbb",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

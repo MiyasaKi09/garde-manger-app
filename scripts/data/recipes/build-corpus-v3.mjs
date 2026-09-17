@@ -13,8 +13,35 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
 const OUT = join(__dirname, '..', 'out')
 const RETRAITS = join(ROOT, 'data', 'recipes', 'retraits.json')
+const VERSEMENTS = join(ROOT, 'data', 'recipes', 'versements.json')
 const corpus = JSON.parse(readFileSync(join(ROOT, 'data', 'recipes', 'corpus-v3.json'), 'utf8'))
 const foodReport = JSON.parse(readFileSync(join(OUT, 'recipe-food-match-report.json'), 'utf8'))
+
+/**
+ * LA DATE DE VERSEMENT, LUE AU REGISTRE ET NON AU CORPUS.
+ *
+ * `data/recipes/versements.json` dit quel lot est entré au catalogue quel jour,
+ * et avec quelle preuve. Le corpus, lui, ne la porte pas : l'y mettre changerait
+ * le `content_hash` de chaque recette concernée — le md5 que ce chargeur écrit
+ * trois lignes plus bas — et `scripts/db/check-corpus-parity.mjs` ferait rougir
+ * la parité contre une base déjà chargée, pour une donnée qui n'appartient pas
+ * au CONTENU d'une recette mais à son histoire d'entrée.
+ *
+ * UNE RECETTE ABSENTE DU REGISTRE N'A PAS DE DATE, et le chargeur écrit NULL.
+ * Il ne retombe ni sur la date du jour, ni sur celle du corpus, ni sur celle du
+ * dernier lot : 706 des 754 recettes sont entrées avant que ce registre
+ * n'existe, personne ne sait quel jour, et l'écran « Nouveautés de la semaine »
+ * doit pouvoir dire « je ne sais pas » plutôt que de les montrer.
+ */
+const versements = JSON.parse(readFileSync(VERSEMENTS, 'utf8'))
+const dateDeVersementParCode = new Map()
+for (const lot of versements.versements || []) {
+  for (const code of lot.codes || []) dateDeVersementParCode.set(code, lot.verse_le)
+}
+const dateDeVersement = (recipe) => {
+  const jour = dateDeVersementParCode.get(recipe.code)
+  return jour ? `DATE ${q(jour)}` : 'NULL'
+}
 const eligibilityByCode = new Map(foodReport.recipe_eligibility.map((item) => [item.code, item]))
 
 const q = (value) => `'${String(value).replace(/'/g, "''")}'`
@@ -144,7 +171,7 @@ BEGIN
      sensory_scores, dominant_flavors, aroma_families, target_textures,
      signature_ingredients, identity_guardrails, techniques, variant_candidates,
      allergens, conservation_text, conservation_profile, planning_eligible, eligibility_issues,
-     derived_from_version_id, derivation)
+     derived_from_version_id, derivation, corpus_poured_on)
   SELECT
     v_family, 3, ${q(recipe.family)}, ${qn(recipe.description_courte)}, ds.id, ${q(recipe.code)},
     'Myko', 'editorial', ${num(recipe.servings)}, ${num(recipe.prep_minutes)}, ${num(recipe.cook_minutes)}, ${qn(recipe.difficulty)},
@@ -155,7 +182,7 @@ BEGIN
     ${array(recipe.sensory.signature_ingredients)}, ${array(recipe.sensory.identity_guardrails)},
     ${array(recipe.techniques)}, ${array(recipe.variants)}, ${array(recipe.allergens)},
     ${qn(recipe.conservation)}, ${profilDeConservation(recipe)}, false, '[]'::jsonb,
-    ${lienDeBase(recipe)}, ${json(recipe.derivation || {})}
+    ${lienDeBase(recipe)}, ${json(recipe.derivation || {})}, ${dateDeVersement(recipe)}
   FROM ops.source_datasets ds WHERE ds.code = 'myko_editorial_v3'
   ON CONFLICT (recipe_family_id, version_number) DO UPDATE SET
     title = EXCLUDED.title,
@@ -185,7 +212,12 @@ BEGIN
     planning_eligible = false,
     eligibility_issues = '[]'::jsonb,
     derived_from_version_id = EXCLUDED.derived_from_version_id,
-    derivation = EXCLUDED.derivation
+    derivation = EXCLUDED.derivation,
+    -- Le coalesce DANS CET ORDRE, et c'est la règle qui compte : le registre
+    -- l'emporte quand il sait, et une date déjà en base n'est JAMAIS effacée
+    -- par un registre qui ne sait pas. Un rechargement de corpus ne doit pas
+    -- faire disparaître les nouveautés d'un lot passé.
+    corpus_poured_on = coalesce(EXCLUDED.corpus_poured_on, culinary.recipe_versions.corpus_poured_on)
   RETURNING id INTO v_version;
 
   DELETE FROM quality.review_tasks rt

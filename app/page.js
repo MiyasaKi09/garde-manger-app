@@ -10,6 +10,7 @@ import {
 import { supabase } from '@/lib/supabaseClient'
 import { authFetch } from '@/lib/authFetch'
 import { readCache, writeCache } from '@/lib/pageCache'
+import { phraseDeVersement } from '@/lib/domain/recipes/versement'
 import OcrReviewList from './pantry/components/OcrReviewList'
 import SmartAddForm from './pantry/components/SmartAddForm'
 import './home.css'
@@ -37,6 +38,9 @@ export default function Home() {
   const [error, setError] = useState('')
   const [showAddForm, setShowAddForm] = useState(false)
   const [showOcr, setShowOcr] = useState(false)
+  // Les nouveautés du catalogue. Chargées à part, et jamais bloquantes : la
+  // journée doit s'afficher même si le résumé des versements échoue.
+  const [nouv, setNouv] = useState(null)
 
   const loadToday = useCallback(async ({ silent = false, signal } = {}) => {
     if (!silent) setLoading(true)
@@ -55,6 +59,25 @@ export default function Home() {
     }
   }, [])
 
+  const loadNouveautes = useCallback(async ({ signal } = {}) => {
+    try {
+      const response = await authFetch('/api/recipes/nouveautes', { signal })
+      if (!response.ok) return
+      const data = await response.json().catch(() => null)
+      // On refuse une charge utile qui n'a pas la forme attendue au lieu de la
+      // poser telle quelle : la bande afficherait sinon « undefined recette » —
+      // et c'est exactement ce que rend la doublure d'API des tests e2e, qui
+      // répond `{ ok: true }` à toute route qu'elle ne connaît pas.
+      if (data && typeof data.affichage === 'string' && Number.isFinite(data.compte)) {
+        setNouv(data)
+        writeCache('nouveautes-v1', data)
+      }
+    } catch {
+      // Silencieux par choix : un lot qu'on ne peut pas compter ne doit pas
+      // effacer la journée. L'écran des recettes, lui, le dira.
+    }
+  }, [])
+
   useEffect(() => {
     let active = true
     const controller = new AbortController()
@@ -64,9 +87,12 @@ export default function Home() {
       const cached = readCache('today-v3')
       if (cached) { setToday(cached); setLoading(false); loadToday({ silent: true, signal: controller.signal }) }
       else loadToday({ signal: controller.signal })
+      const cachedNouv = readCache('nouveautes-v1')
+      if (cachedNouv) setNouv(cachedNouv)
+      loadNouveautes({ signal: controller.signal })
     })
     return () => { active = false; controller.abort() }
-  }, [loadToday, router])
+  }, [loadToday, loadNouveautes, router])
 
   const now = new Date()
   const greeting = now.getHours() < 12 ? 'Bonjour' : now.getHours() < 18 ? 'Bon après-midi' : 'Bonsoir'
@@ -138,6 +164,21 @@ export default function Home() {
             <span className="v21-stat-s">forme{shopping.requiredCount !== 1 ? 's' : ''} exacte{shopping.requiredCount !== 1 ? 's' : ''} à acheter</span>
           </Link>
         </div>
+
+        {/* ── Le lot de la semaine, depuis l'accueil ──
+            Le plan (§5, phase 5) le justifie par une mesure prise chez les
+            concurrents : la cause lente de départ est le catalogue qui cesse de
+            bouger. Un lot par semaine qui SE VOIT vaut mieux qu'un palier de
+            3 000 atteint en silence — d'où cette bande, et non un lien de plus
+            dans un menu. Elle ne paraît pas tant qu'aucune recette du catalogue
+            ne porte de date : une bande vide dirait quelque chose de faux. */}
+        {nouv && nouv.affichage !== 'aucune_date' && (
+          <Link href="/recipes?vue=nouveautes" className={`today-nouv ${nouv.affichage === 'semaine' ? 'fraiche' : ''}`}>
+            <span className="today-nouv-l">Nouveautés de la semaine</span>
+            <strong>{nouv.compte} recette{nouv.compte > 1 ? 's' : ''} datée{nouv.compte > 1 ? 's' : ''}</strong>
+            <span className="today-nouv-s">{phraseDeVersement(nouv)} →</span>
+          </Link>
+        )}
 
         <div className="today-grid">
           <section className="today-panel">

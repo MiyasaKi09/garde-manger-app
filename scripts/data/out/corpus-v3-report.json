@@ -6,7 +6,7 @@
   "recipes_static_eligible": 568,
   "v1_enriched_static_eligible": 61,
   "planner_rule_count": 7,
-  "sql_bytes": 14190392,
+  "sql_bytes": 14510712,
   "sql_chunk_count": 756,
   "source_name_chunk_count": 31
 }

@@ -7,6 +7,7 @@ import { supabase } from '@/lib/supabaseClient';
 import { authFetch } from '@/lib/authFetch';
 import { readCache, writeCache } from '@/lib/pageCache';
 import { limitRecipePreview, selectDiverseAntiWaste } from '@/lib/domain/recipes/catalogPresentation';
+import { nouveautes, phraseDeVersement, jourEnFrancais } from '@/lib/domain/recipes/versement';
 import { vueCoutCarte } from '@/components/pricing/estimationView';
 import { EstimationLigne } from '@/components/pricing/Estimation';
 import './recipes.css';
@@ -15,7 +16,12 @@ import './recipes.css';
 // changement de clé, une revisite afficherait d'abord l'ancienne liste, sans
 // montant, puis le ferait apparaître au rafraîchissement : un scintillement
 // pour rien, alors que la donnée est déjà en route.
-const RECIPES_CACHE_KEY = 'recipes:v3-editorial-complete:2';
+// :3 — les cartes portent désormais la date de versement (`poured_on`, publiée
+// par la RPC éditoriale depuis 20260919140000). Sans ce changement de clé, une
+// revisite rendrait l'onglet « Nouveautés » vide sur un cache écrit avant la
+// migration, puis le remplirait au rafraîchissement : un écran qui dit « aucune
+// nouveauté » alors qu'il y en a est pire qu'un écran lent.
+const RECIPES_CACHE_KEY = 'recipes:v3-editorial-complete:3';
 
 /* ── Fiche recette horizontale (vignette + infos), barre d'état à gauche ── */
 function variantOf(s) {
@@ -26,7 +32,7 @@ function variantOf(s) {
   return 'mut';
 }
 
-function Fiche({ r, s, variant }) {
+function Fiche({ r, s, variant, dateNote }) {
   const v = variant || variantOf(s);
   const time = (r.prep_min || 0) + (r.cook_min || 0);
   const total = s?.total || 0;
@@ -66,6 +72,7 @@ function Fiche({ r, s, variant }) {
         {cuis}
         <div className="rc-meta">
           {time > 0 ? `${time} min` : '—'}{r.servings ? ` · ${r.servings} pers` : ''}
+          {dateNote ? <span className="rc-verse">versée le {dateNote}</span> : null}
           {r.rating ? <span className="rc-score"><i>★</i>{(+r.rating).toFixed(1)}</span> : null}
         </div>
         {/* Le montant ne va jamais sans le compte des lignes chiffrées (§8.5) :
@@ -85,6 +92,7 @@ function Fiche({ r, s, variant }) {
 
 const VIEW_CHIPS = [
   { key: 'cuisinable', label: 'Cuisinable' },
+  { key: 'nouveautes', label: 'Nouveautés' },
   { key: 'antigaspi', label: 'Anti-gaspi' },
   { key: 'rapide', label: 'Rapide ≤ 20 min' },
   { key: 'all', label: 'Tout le catalogue' },
@@ -106,6 +114,15 @@ export default function RecipesPage() {
       if (!session?.user) router.push('/login');
     });
   }, [router]);
+
+  // L'accueil pointe ici avec `?vue=nouveautes` : un écran qu'on n'atteint pas
+  // ne se voit pas, et c'est tout l'objet du livrable. On lit la barre
+  // d'adresse plutôt que `useSearchParams`, qui obligerait à envelopper la page
+  // dans un Suspense pour le prérendu de production.
+  useEffect(() => {
+    const demandee = new URLSearchParams(window.location.search).get('vue');
+    if (VIEW_CHIPS.some((chip) => chip.key === demandee)) setView(demandee);
+  }, []);
 
   useEffect(() => {
     // Revisite instantanée : on rend le dernier état connu sans skeleton.
@@ -180,6 +197,13 @@ export default function RecipesPage() {
   const prioritaireCount = antigaspi.length;
   const manqueCount = manque.length;
 
+  // ── Nouveautés : ce que le catalogue a reçu, et QUAND ──
+  // `nouveautes` ne lit que `poured_on`, publié par la RPC éditoriale. Une
+  // carte sans date n'est pas une vieille recette : c'est une recette dont
+  // personne n'a noté le jour d'entrée, et elle ne paraît pas ici.
+  const resumeNouveautes = nouveautes(recipes);
+  const nouveautesListe = resumeNouveautes.recettes.map(r => ({ r, s: inventoryStatus[r.key] }));
+
   const q = searchTerm.trim().toLowerCase();
   const matchSearch = (r) => !q || (r.title || '').toLowerCase().includes(q) || (r.description || '').toLowerCase().includes(q);
 
@@ -187,8 +211,12 @@ export default function RecipesPage() {
   if (q) flatList = withStatus.filter(x => matchSearch(x.r));
   else if (view === 'antigaspi') flatList = antigaspi;
   else if (view === 'rapide') flatList = withStatus.filter(x => ((x.r.prep_min || 0) + (x.r.cook_min || 0)) > 0 && ((x.r.prep_min || 0) + (x.r.cook_min || 0)) <= 20);
+  else if (view === 'nouveautes') flatList = nouveautesListe;
   else if (view === 'all') flatList = [...withStatus];
   if (q || view === 'rapide' || view === 'all') flatList = flatList.sort((a, b) => (b.s?.mykoScore || 0) - (a.s?.mykoScore || 0));
+  // Les nouveautés ne sont PAS retriées par score : leur ordre est celui du
+  // versement, du plus récent au plus ancien. Trier par disponibilité ferait
+  // remonter les plats dont on a les ingrédients et cacherait le lot.
 
   const showSections = !q && view === 'cuisinable';
 
@@ -366,17 +394,47 @@ export default function RecipesPage() {
         <>
           <div className="rc-flat-head">
             <span className="rc-t">
-              {q ? `Recherche · ${flatList.length}` : view === 'antigaspi' ? `Anti-gaspi · ${flatList.length}` : view === 'rapide' ? `Rapide ≤ 20 min · ${flatList.length}` : `Catalogue · ${flatList.length}`}
+              {q ? `Recherche · ${flatList.length}`
+                : view === 'antigaspi' ? `Anti-gaspi · ${flatList.length}`
+                : view === 'rapide' ? `Rapide ≤ 20 min · ${flatList.length}`
+                : view === 'nouveautes' ? `Nouveautés de la semaine · ${flatList.length}`
+                : `Catalogue · ${flatList.length}`}
             </span>
             {!q && view !== 'cuisinable' && (
               <button className="rc-shlink rc-back" onClick={() => setView('cuisinable')}>← Vue cuisinable</button>
             )}
           </div>
+
+          {/* ── Ce que l'écran « Nouveautés » DIT de lui-même ──
+              Trois phrases, jamais une seule : ce qui est montré, depuis quand,
+              et ce qui n'est pas datable. Un écran « nouveautés » qui affiche un
+              lot sans dire qu'il a treize jours ferait passer un catalogue
+              immobile pour un catalogue vivant — exactement le reproche que les
+              utilisateurs de Kuri et de Mealime font aux nôtres. */}
+          {!q && view === 'nouveautes' && (
+            <div className="rc-nouv">
+              <p className="rc-nouv-dit">{phraseDeVersement(resumeNouveautes)}</p>
+              <p className="rc-nouv-cadre">
+                Semaine du {jourEnFrancais(resumeNouveautes.debutSemaine)}.
+                {' '}{resumeNouveautes.catalogue.datees} recette{resumeNouveautes.catalogue.datees > 1 ? 's' : ''} datée{resumeNouveautes.catalogue.datees > 1 ? 's' : ''} sur {resumeNouveautes.catalogue.total} au catalogue.
+                {resumeNouveautes.catalogue.nonDatees > 0 && (
+                  resumeNouveautes.catalogue.nonDatees === 1
+                    ? " L'autre est entrée avant que le registre des versements n'existe, et aucune date ne lui a été inventée."
+                    : ` Les ${resumeNouveautes.catalogue.nonDatees} autres sont entrées avant que le registre des versements n'existe, et aucune date ne leur a été inventée.`
+                )}
+              </p>
+            </div>
+          )}
+
           {flatList.length === 0 ? (
-            <div className="v21-empty rc-empty"><p>Aucune recette trouvée.</p></div>
+            <div className="v21-empty rc-empty">
+              <p>{view === 'nouveautes' ? 'Aucune recette du catalogue ne porte de date de versement.' : 'Aucune recette trouvée.'}</p>
+            </div>
           ) : (
             <div className="rc-sheet">
-              {flatList.map(({ r, s }) => <Fiche key={r.key} r={r} s={s} />)}
+              {flatList.map(({ r, s }) => (
+                <Fiche key={r.key} r={r} s={s} dateNote={view === 'nouveautes' && !q ? jourEnFrancais(r.poured_on) : null} />
+              ))}
             </div>
           )}
         </>
