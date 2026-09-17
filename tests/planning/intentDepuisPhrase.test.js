@@ -32,6 +32,12 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
  *   4. `contraintesDuMoteur` renommant ses clés vers un vocabulaire que le
  *      moteur ne lit pas (`feculentPartMax`, `dureeMax`) : 4 tests rougissent.
  *      C'est la garde contre le champ décoratif.
+ *
+ * MISE À JOUR DU LIVRABLE 4.2 : l'éclipse de `maxMinutes` que ce fichier
+ * figeait est LEVÉE. `generate-v3` n'écrit plus les deux plafonds par prise en
+ * dur ; il les abaisse au temps demandé (`plafondsParPrise`). Le test qui
+ * portait la réserve garde le mécanisme — il est toujours vrai du moteur — et
+ * vérifie désormais que la route ne le subit plus.
  */
 
 vi.mock('@/lib/apiAuth', () => ({ authenticateRequest: vi.fn() }))
@@ -279,25 +285,29 @@ describe('Les cinq champs atterrissent sur des contraintes réellement lues', ()
     expect(violatesHardConstraints(plat(45), {})).toBeNull()
   })
 
-  it("maxTotalMinutes est ÉCLIPSÉ par maxMinutesByMeal — la réserve écrite dans l'en-tête", () => {
-    // `closedLoopPlanner.js:936` lit `maxMinutesByMeal?.[prise] ?? maxTotalMinutes`.
-    // Tant que la route pose la première clé (`generate-v3/route.js:674`), la
-    // contrainte traduite n'a aucun effet sur les déjeuners et les dîners. Ce
-    // test fige la mesure pour que le livrable qui branchera le champ sache
-    // qu'ajouter une clé ne suffit pas.
+  it("maxTotalMinutes serait ÉCLIPSÉ par une clé par prise — et la route ne l'écrit plus en dur", () => {
+    // LE MÉCANISME EST TOUJOURS LÀ, et c'est pour cela qu'il garde un test :
+    // `closedLoopPlanner.js:936` lit `maxMinutesByMeal?.[prise] ?? maxTotalMinutes`,
+    // donc toute clé par prise ÉCLIPSE la contrainte traduite. Le livrable 4.1
+    // avait figé ce fait parce que la route posait alors `{ dejeuner: 120,
+    // diner: 240 }` en dur, et qu'ajouter `maxTotalMinutes` n'aurait rien
+    // changé.
     const plat = { code: 'T-2', eligible: true, prepMinutes: 45, cookMinutes: 0, exactIngredients: [], category: 'plat principal', family: 'test' }
-    const commeLaRoute = {
+    const eclipse = {
       ...contraintesDuMoteur({ maxMinutes: 30 }),
       maxMinutesByMeal: { dejeuner: 120, diner: 240 },
       currentMealType: 'dejeuner',
     }
-    expect(violatesHardConstraints(plat, commeLaRoute)).toBeNull()
+    expect(violatesHardConstraints(plat, eclipse)).toBeNull()
     // La même contrainte mord dès que la clé par prise ne couvre pas la prise.
-    expect(violatesHardConstraints(plat, { ...commeLaRoute, maxMinutesByMeal: {} })).toBe('time_limit')
+    expect(violatesHardConstraints(plat, { ...eclipse, maxMinutesByMeal: {} })).toBe('time_limit')
 
-    // Et la route pose bien cette clé aujourd'hui : la réserve n'est pas
-    // théorique.
-    expect(lire('app/api/planning/generate-v3/route.js')).toContain('maxMinutesByMeal: { dejeuner: 120, diner: 240 }')
+    // LA ROUTE, ELLE, A CHANGÉ : les deux plafonds ne sont plus écrits en dur,
+    // ils sont ABAISSÉS au temps demandé. Le détail du raccord et sa mesure sur
+    // le moteur vivent dans `tests/planning/confirmationContraintes.test.js`.
+    const route = lire('app/api/planning/generate-v3/route.js')
+    expect(route).not.toContain('maxMinutesByMeal: { dejeuner: 120, diner: 240 }')
+    expect(route).toContain('plafondsParPrise')
   })
 
   it("Number(true) vaudrait 1 minute côté moteur — la garde de type est ce qui l'en empêche", () => {

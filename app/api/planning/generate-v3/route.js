@@ -19,6 +19,7 @@ import { isDishExpired, todayUtcIso } from '@/lib/domain/planning/cookedDishDisp
 import { SUPPLEMENT_FORMS } from '@/lib/domain/planning/personalizedMeals'
 import { resolveHouseholdTimeZone } from '@/lib/domain/planning/planningTime'
 import { buildHouseholdCookingCapacity } from '@/lib/domain/planning/cookingCapacity'
+import { maxMinutesDemande, plafondsParPrise } from '@/lib/domain/planning/intentFromPhrase'
 import { slotProtectionState } from '@/lib/domain/planning/slotProtection'
 
 export const dynamic = 'force-dynamic'
@@ -350,6 +351,37 @@ function resolveWeeklyBalance(members = [], body = {}) {
   return resolveHouseholdWeeklyBalance({ members, requestBalance: body?.weekly_balance })
 }
 
+/**
+ * LE TEMPS PAR PLAT DEMANDÉ PAR LA REQUÊTE — le raccord du livrable 4.2, et la
+ * levée d'une éclipse mesurée au livrable 4.1.
+ *
+ * CE QUI SE PASSAIT AVANT, ET POURQUOI ÇA NE SE VOYAIT PAS. Cette route écrivait
+ * les deux plafonds par prise — midi 120, soir 240 — EN DUR. Or
+ * `closedLoopPlanner.js:936` lit
+ * `maxMinutesByMeal?.[currentMealType] ?? maxTotalMinutes` : la clé par prise
+ * couvrant les deux seules prises que le solveur compose, `maxTotalMinutes`
+ * n'était JAMAIS consulté. Un foyer qui demandait « rien au-delà de 30 minutes »
+ * recevait donc des plats de deux heures, sans erreur et sans trace. Ajouter la
+ * clé `maxTotalMinutes` aux contraintes n'aurait rien changé ; il fallait
+ * ABAISSER les plafonds par prise, et c'est ce que fait `plafondsParPrise`.
+ *
+ * ET UN REFUS PLUTÔT QU'UNE COERCITION. `Number(true)` vaut 1 : une minute par
+ * plat, c'est-à-dire une semaine vide. `Number('')` et `Number([])` valent 0,
+ * même conséquence. Une valeur malformée fait donc échouer la requête en 400
+ * avec son motif, au lieu d'être ignorée en silence — une contrainte qu'on
+ * laisse tomber sans le dire est pire qu'une contrainte refusée.
+ */
+function resolveMaxTotalMinutes(body = {}) {
+  const { valeur, refus } = maxMinutesDemande(body?.max_total_minutes)
+  if (refus) {
+    const error = new Error(refus.message)
+    error.code = refus.code
+    error.status = 400
+    throw error
+  }
+  return valeur
+}
+
 async function loadPlannerInventory(supabase, recipes, excludedPlanVersionId = null) {
   const [{ data: lots, error: lotError }, { data: reservations }] = await Promise.all([
     supabase.from('inventory_lots')
@@ -628,6 +660,7 @@ export async function POST(request) {
     // et les règles de répétition du foyer entrent dans le solveur au même
     // titre que le stock et les objectifs nutritionnels.
     const history = planningHistoryFrom(recentRecipes.rows, allRecipes, windowStart)
+    const maxTotalMinutes = resolveMaxTotalMinutes(body)
     const repetitionRules = resolveRepetitionRules(members, body)
     const fixedRecipeCodes = slots.map((slot) => slot.fixedRecipeCode).filter(Boolean)
     // Élagage calibré (0a.4) : la valeur est passée EXPLICITEMENT, et la même
@@ -671,7 +704,14 @@ export async function POST(request) {
         goals: goalsResult.data || [],
         totalSlots: slots.length,
       }),
-      maxMinutesByMeal: { dejeuner: 120, diner: 240 },
+      // Plafonds par prise ABAISSÉS au temps demandé (livrable 4.2). Sans
+      // demande, ils valent exactement ceux d'avant : `{ dejeuner: 120,
+      // diner: 240 }`. Voir `resolveMaxTotalMinutes` pour l'éclipse que ce
+      // raccord lève.
+      maxMinutesByMeal: plafondsParPrise(maxTotalMinutes),
+      // Posé en plus pour les prises que la carte par prise ne couvre pas :
+      // `closedLoopPlanner.js:936` retombe dessus quand la clé manque.
+      ...(maxTotalMinutes == null ? {} : { maxTotalMinutes }),
       preferredActiveMinutes: 30,
       recentRecipeTitles: recentRecipes.recentRecipeTitles,
       tasteProfile,

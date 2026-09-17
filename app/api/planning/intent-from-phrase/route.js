@@ -10,6 +10,11 @@ import {
   validerIntention,
   validerPhrase,
 } from '@/lib/domain/planning/intentFromPhrase'
+import {
+  budgetTraduction,
+  intentionDeRepli,
+  repliDeclare,
+} from '@/lib/domain/planning/budgetTraduction'
 
 export const dynamic = 'force-dynamic'
 
@@ -29,7 +34,20 @@ export const dynamic = 'force-dynamic'
  *     CONTRAINTES ; c'est `generate-v3` qui décide, comme avant.
  *   — Elle ne devine rien. Une sortie de modèle qui ne passe pas la porte de
  *     `validerIntention` est REFUSÉE avec ses motifs (422), jamais corrigée en
- *     silence : c'est ce que le livrable 4.2 doit pouvoir montrer à l'écran.
+ *     silence : c'est ce que l'écran de confirmation montre.
+ *
+ * LE BUDGET DE LATENCE — livrable 4.3. L'appel au modèle est COUPÉ au budget
+ * (`budgetTraduction`, 5 s par défaut, le chiffre du plan). Au-delà, la route
+ * répond 200 avec l'intention de repli — `intent: 'balanced'`, aucune autre
+ * contrainte — et un objet `repli` qui porte le motif, le budget et la durée
+ * RÉELLEMENT attendue. Elle ne renvoie pas une erreur : une erreur ferait
+ * croire qu'il n'y a rien à générer, alors que la semaine peut partir. Elle ne
+ * renvoie pas non plus une réponse muette : `repli.applique` est ce que l'écran
+ * affiche, et le critère dit « visible, jamais silencieux ».
+ *
+ * CE QUI NE TOMBE PAS SOUS LE REPLI : un refus de la porte (422), une clé
+ * absente (503), une erreur du modèle (502). Rien n'y est substitué — on n'a
+ * donc rien à avouer, et les motifs sont déjà nommés à l'écran.
  */
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
@@ -80,9 +98,27 @@ export async function POST(request) {
 
   const dates = joursDeLaSemaine(body)
 
+  // Le budget de latence (livrable 4.3). La coupure est posée ICI, autour de
+  // l'appel, et pas seulement confiée au SDK : c'est la route qui doit garantir
+  // qu'aucune génération n'attend plus que le budget, quel que soit le
+  // comportement du transport. Le signal est transmis au SDK en plus, pour que
+  // la requête HTTP soit réellement abandonnée et non simplement oubliée.
+  const budgetMs = budgetTraduction(process.env)
+  const controleur = new AbortController()
+  let minuterie = null
+  const depart = Date.now()
+  const coupure = new Promise((_, rejeter) => {
+    minuterie = setTimeout(() => {
+      controleur.abort()
+      const erreur = new Error(`Traduction coupée au budget de ${budgetMs} ms.`)
+      erreur.code = 'budget_traduction'
+      rejeter(erreur)
+    }, budgetMs)
+  })
+
   let message
   try {
-    message = await anthropic.messages.create({
+    const appel = anthropic.messages.create({
       model: 'claude-sonnet-4-6',
       max_tokens: MAX_TOKENS,
       // Le point de cache est posé sur le system prompt, qui est le seul
@@ -100,9 +136,31 @@ export async function POST(request) {
         role: 'user',
         content: messageUtilisateur({ phrase: body.phrase, dates, membres: body.members }),
       }],
-    })
+    }, { signal: controleur.signal })
+    // La promesse PERDUE par la course doit garder un gestionnaire : sans lui,
+    // l'abandon de l'appel après la coupure remonterait en rejet non capté et
+    // ferait tomber le processus Node, budget respecté ou non.
+    appel.catch(() => {})
+    message = await Promise.race([coupure, appel])
   } catch (error) {
+    if (error?.code === 'budget_traduction') {
+      // LE REPLI DÉCLARÉ. 200, parce qu'il y a bien de quoi générer ; `repli`,
+      // parce qu'on a substitué une valeur et qu'on le dit.
+      const intention = intentionDeRepli()
+      return NextResponse.json({
+        intention,
+        contraintes: contraintesDuMoteur(intention),
+        bornes: { maxMinutes: MAX_MINUTES_BORNES },
+        repli: repliDeclare({ ms: Date.now() - depart, budgetMs }),
+        requires_confirmation: true,
+      })
+    }
     return NextResponse.json({ error: `Traduction impossible : ${error.message}`, code: 'traducteur_en_erreur' }, { status: 502 })
+  } finally {
+    // Sans cette ligne, la minuterie de cinq secondes survivrait à la réponse
+    // et retiendrait la boucle d'événements — y compris en test, où le budget
+    // est court mais où le timer resterait armé après un appel réussi.
+    if (minuterie) clearTimeout(minuterie)
   }
 
   const texte = texteDeLaReponse(message)
@@ -134,9 +192,12 @@ export async function POST(request) {
     intention: validation.intention,
     contraintes: contraintesDuMoteur(validation.intention),
     bornes: { maxMinutes: MAX_MINUTES_BORNES },
+    // Aucun repli : la phrase a bien été lue. Le champ est TOUJOURS présent
+    // pour que l'écran n'ait pas à deviner son absence.
+    repli: null,
     // La semaine n'a pas bougé et ne bougera pas par cette route : la
-    // traduction se confirme (4.2) puis se génère (4.3), et c'est la
-    // publication atomique qui écrit.
+    // traduction se CONFIRME à l'écran, puis se génère — et c'est la
+    // publication atomique de `generate-v3` qui écrit.
     requires_confirmation: true,
   })
 }
