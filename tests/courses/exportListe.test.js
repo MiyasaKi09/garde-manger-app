@@ -5,6 +5,9 @@ import {
   MOTIF_LIGNE_ARTICLE,
   RAYONS_ORDONNES,
   RAYON_NON_DECLARE,
+  SORTIES_LISTE,
+  chargePartageListe,
+  documentImprimableListe,
   exporterListeCourses,
   quantiteLisible,
 } from '@/lib/domain/courses/exportListe'
@@ -282,6 +285,122 @@ describe('export de la liste de courses, de la semaine publiée au texte copié'
       expect(ligne.texte, row.product_name).not.toContain(String(row.quantity))
     }
   })
+
+  // ── P17 : LES TROIS SORTIES, SUR LA MÊME SEMAINE PUBLIÉE ───────────────────
+  //
+  // Le critère ne demande pas trois boutons : il demande trois sorties qui
+  // respectent les six rayons ET LEUR ORDRE. Deux sorties qui divergeraient sur
+  // l'ordre seraient pires qu'une seule, parce qu'on ne saurait plus laquelle
+  // croire dans le rayon. On compare donc les trois à la même semaine, et
+  // entre elles.
+  //
+  // La semaine est celle que le describe a déjà planifiée et publiée : aucune
+  // recherche en faisceau supplémentaire, aucune seconde de plus.
+
+  const partage = chargePartageListe(rows, { semaine })
+  const impression = documentImprimableListe(rows, { semaine })
+
+  /** La séquence de rayons d'une sortie, telle qu'elle sort d'elle. */
+  const sequenceDesRayons = {
+    'presse-papiers': () => resultat.texte
+      .split('\n')
+      .filter((ligne) => /^[A-ZÀ-Ý].* \(\d+\)$/.test(ligne))
+      .map((ligne) => ligne.replace(/ \(\d+\)$/, '')),
+    partage: () => partage.texte
+      .split('\n')
+      .filter((ligne) => /^[A-ZÀ-Ý].* \(\d+\)$/.test(ligne))
+      .map((ligne) => ligne.replace(/ \(\d+\)$/, '')),
+    impression: () => impression.rayons.map((rayon) => rayon.nom.toLocaleUpperCase('fr-FR')),
+  }
+
+  /** Le nombre d'articles rendus par une sortie, compté DANS sa propre sortie. */
+  const articlesRendus = {
+    'presse-papiers': () => lignesArticles(resultat.texte).length,
+    partage: () => lignesArticles(partage.texte).length,
+    impression: () => impression.rayons.reduce((total, rayon) => total + rayon.articles.length, 0),
+  }
+
+  it('déclare exactement trois sorties, et le test les parcourt toutes', () => {
+    // Si une quatrième sortie est ajoutée au module sans être décrite ici, les
+    // deux tables ci-dessus ne la couvriront pas : ce test le dit tout de suite
+    // plutôt que de laisser les comparaisons passer par omission.
+    expect([...SORTIES_LISTE]).toEqual(['presse-papiers', 'partage', 'impression'])
+    expect(Object.keys(sequenceDesRayons).sort()).toEqual([...SORTIES_LISTE].sort())
+    expect(Object.keys(articlesRendus).sort()).toEqual([...SORTIES_LISTE].sort())
+  })
+
+  it('rend les six rayons dans le même ordre sur les trois sorties', () => {
+    const attendues = RAYONS_ORDONNES.map((rayon) => rayon.toLocaleUpperCase('fr-FR'))
+    const sequences = SORTIES_LISTE.map((sortie) => sequenceDesRayons[sortie]())
+
+    for (const [index, sortie] of SORTIES_LISTE.entries()) {
+      const sequence = sequences[index]
+      // Sous-suite des six : un rayon sans article de la semaine n'a pas de
+      // section, mais aucun rayon ne double ni ne se déplace.
+      expect(attendues.filter((rayon) => sequence.includes(rayon)), sortie).toEqual(sequence)
+      // Et aucun septième rayon inventé au passage.
+      expect(sequence.filter((rayon) => !attendues.includes(rayon)), sortie).toEqual([])
+    }
+    // Les trois séquences sont la MÊME séquence, pas trois séquences valides.
+    expect(sequences[1], 'partage').toEqual(sequences[0])
+    expect(sequences[2], 'impression').toEqual(sequences[0])
+  })
+
+  it('rend le même nombre d’articles que la table source sur les trois sorties', () => {
+    for (const sortie of SORTIES_LISTE) {
+      expect(articlesRendus[sortie](), sortie).toBe(rowsSemaine.length)
+    }
+  })
+
+  it('range chaque article sous le même rayon sur les trois sorties', () => {
+    // La sortie imprimée est la seule qui porte des champs : on vérifie qu'elle
+    // range chaque nom de produit sous le rayon que la ligne source déclare.
+    const rayonSourceParNom = new Map(rowsSemaine.map((row) => [row.product_name, row.category]))
+    for (const rayon of impression.rayons) {
+      for (const article of rayon.articles) {
+        expect(rayonSourceParNom.get(article.nom), article.nom).toBe(rayon.nom)
+      }
+    }
+  })
+
+  it('partage exactement le texte du presse-papiers, à l’octet près', () => {
+    // C'est la garantie structurelle : les deux sorties textuelles ne PEUVENT
+    // pas diverger, puisqu'il n'y a qu'un texte.
+    expect(partage.texte).toBe(resultat.texte)
+    expect(partage.titre).toBe(resultat.titre)
+    // Le titre reste la première ligne du corps : une cible de partage qui
+    // ignore le titre reçoit quand même un message lisible seul.
+    expect(partage.texte.split('\n')[0]).toBe(partage.titre)
+  })
+
+  it('rend à l’impression les mêmes noms, quantités et conditionnements que le texte', () => {
+    const imprimes = impression.rayons.flatMap((rayon) => rayon.articles)
+    expect(imprimes).toHaveLength(resultat.lignes.length)
+    for (const [index, ligne] of resultat.lignes.entries()) {
+      const article = imprimes[index]
+      expect(article.nom, ligne.nom).toBe(ligne.nom)
+      expect(article.quantite, ligne.nom).toBe(ligne.quantite.texte)
+      expect(article.conditionnement, ligne.nom).toBe(ligne.conditionnement)
+      expect(article.achete, ligne.nom).toBe(Boolean(ligne.item.checked))
+      // Et chaque champ est bien celui que la ligne du texte porte.
+      if (article.quantite) expect(ligne.texte, ligne.nom).toContain(article.quantite)
+      if (article.conditionnement) expect(ligne.texte, ligne.nom).toContain(article.conditionnement)
+    }
+  })
+
+  it('donne à chaque article imprimé une clé distincte', () => {
+    const cles = impression.rayons.flatMap((rayon) => rayon.articles.map((article) => article.cle))
+    expect(new Set(cles).size).toBe(cles.length)
+  })
+
+  it('rend les mêmes comptes et les mêmes anomalies sur les trois sorties', () => {
+    expect(partage.compte).toEqual(resultat.compte)
+    expect(impression.compte).toEqual(resultat.compte)
+    expect(partage.anomalies).toEqual(resultat.anomalies)
+    expect(impression.anomalies).toEqual(resultat.anomalies)
+    // Le résumé imprimé annonce les mêmes chiffres que la deuxième ligne du texte.
+    expect(resultat.texte.split('\n')[1]).toBe(impression.resume)
+  })
 })
 
 describe('ce qui n’est pas déclaré est absent, et le module le dit', () => {
@@ -399,5 +518,121 @@ describe('ce qui n’est pas déclaré est absent, et le module le dit', () => {
   it('accepte une liste absente sans exploser', () => {
     expect(exporterListeCourses(null).compte.articles).toBe(0)
     expect(exporterListeCourses(undefined).compte.articles).toBe(0)
+  })
+})
+
+describe('les trois sorties tiennent le même contrat sur les cas limites', () => {
+  const article = (surcharge) => ({
+    id: 1, week_label: 'S1', category: 'Épicerie', product_name: 'Riz basmati',
+    quantity: '500 g', purchase_qty: 500, purchase_unit: 'g', checked: false, ...surcharge,
+  })
+
+  // Un jeu volontairement désordonné à l'entrée : l'ordre de parcours ne doit
+  // rien devoir à l'ordre des lignes en base.
+  const desordre = [
+    article({ id: 1, category: 'Épicerie', product_name: 'Riz basmati' }),
+    article({ id: 2, category: 'Surgelés', product_name: 'Épinards surgelés' }),
+    article({ id: 3, category: 'Fruits et légumes', product_name: 'Carotte' }),
+    article({ id: 4, category: 'Crèmerie', product_name: 'Beurre doux', checked: true }),
+    article({ id: 5, category: 'Viandes', product_name: 'Poulet entier cru' }),
+  ]
+
+  it('renvoie la catégorie non déclarée en fin de parcours sur les trois sorties', () => {
+    const texte = exporterListeCourses(desordre, { semaine: 'S1' })
+    const partage = chargePartageListe(desordre, { semaine: 'S1' })
+    const impression = documentImprimableListe(desordre, { semaine: 'S1' })
+
+    const attendu = ['Fruits et légumes', 'Viandes', 'Crèmerie', 'Épicerie', RAYON_NON_DECLARE]
+    expect(texte.rayons.map((rayon) => rayon.nom)).toEqual(attendu)
+    expect(partage.rayons.map((rayon) => rayon.nom)).toEqual(attendu)
+    expect(impression.rayons.map((rayon) => rayon.nom)).toEqual(attendu)
+
+    // La section non déclarée est la dernière, et elle est signalée comme telle
+    // sur la sortie imprimée aussi : la feuille ne doit pas laisser croire que
+    // « Surgelés » est un septième rayon du parcours.
+    expect(impression.rayons.at(-1).declare).toBe(false)
+    expect(impression.anomalies.rayons_non_declares).toEqual(['Surgelés'])
+  })
+
+  it('rend l’état acheté à l’impression sans retirer la ligne', () => {
+    const impression = documentImprimableListe(desordre, { semaine: 'S1' })
+    const beurre = impression.rayons
+      .flatMap((rayon) => rayon.articles)
+      .find((candidat) => candidat.nom === 'Beurre doux')
+    expect(beurre.achete).toBe(true)
+    expect(impression.compte.articles).toBe(desordre.length)
+  })
+
+  it('n’annonce pas un résumé quand il n’y a rien à imprimer', () => {
+    const impression = documentImprimableListe([], { semaine: 'S1' })
+    expect(impression.rayons).toEqual([])
+    expect(impression.compte.articles).toBe(0)
+    // null, et non « 0 article · 0 rayon » : un faux résumé sur une feuille
+    // blanche ne dit rien de plus qu'un titre seul.
+    expect(impression.resume).toBeNull()
+    expect(impression.titre).toBe('Liste de courses — S1')
+  })
+
+  it('ne retient que la semaine demandée, sur les trois sorties', () => {
+    const deuxSemaines = [
+      article({ id: 1, week_label: 'S1', product_name: 'Riz basmati' }),
+      article({ id: 2, week_label: 'S2', product_name: 'Lentilles vertes' }),
+    ]
+    expect(lignesArticles(exporterListeCourses(deuxSemaines, { semaine: 'S1' }).texte)).toHaveLength(1)
+    expect(lignesArticles(chargePartageListe(deuxSemaines, { semaine: 'S1' }).texte)).toHaveLength(1)
+    expect(documentImprimableListe(deuxSemaines, { semaine: 'S1' }).compte.articles).toBe(1)
+  })
+
+  it('accepte une liste absente sans exploser, sur les trois sorties', () => {
+    expect(chargePartageListe(null).compte.articles).toBe(0)
+    expect(documentImprimableListe(null).compte.articles).toBe(0)
+    expect(documentImprimableListe(undefined).rayons).toEqual([])
+  })
+})
+
+describe('la page Courses branche les trois sorties, et n’en recompose aucune', () => {
+  const page = readFileSync(chemin('../../app/courses/page.js'), 'utf8')
+  const feuille = readFileSync(chemin('../../app/courses/courses.css'), 'utf8')
+
+  it('appelle les trois API de sortie du navigateur', () => {
+    // C'est ce que P17 appelle « trois sorties » : trois chemins réels hors de
+    // l'écran, pas trois mises en forme du même bouton.
+    expect(page).toContain('navigator.clipboard')
+    expect(page).toContain('navigator.share')
+    expect(page).toContain('window.print()')
+  })
+
+  it('compose chaque sortie par le module, et ne trie rien de son côté', () => {
+    for (const composeur of ['exporterListeCourses', 'chargePartageListe', 'documentImprimableListe']) {
+      expect(page, composeur).toContain(composeur)
+    }
+    // Aucun tri ni regroupement local : l'ordre des rayons est décidé une fois,
+    // dans le module. Un `.sort(` réintroduit ici ferait diverger la feuille
+    // imprimée du texte copié sans que rien ne le dise.
+    expect(page.includes('docImprimable.rayons.sort')).toBe(false)
+    expect(page).not.toMatch(/RAYONS_ORDONNES|RAYON_NON_DECLARE/)
+  })
+
+  it('montre un repli écrit quand le partage natif manque, jamais rien', () => {
+    // `navigator.share` n'existe ni sur la plupart des navigateurs de bureau,
+    // ni hors contexte sécurisé. Un bouton qui ne ferait rien serait pire que
+    // pas de bouton : on vérifie que les deux raisons sont rédigées et posées.
+    expect(page).toMatch(/partage_absent\s*:/)
+    expect(page).toMatch(/partage_refuse\s*:/)
+    expect(page).toContain("raison: 'partage_absent'")
+    expect(page).toContain("raison: 'partage_refuse'")
+    // Une annulation de la feuille de partage n'est pas une panne.
+    expect(page).toContain("AbortError")
+  })
+
+  it('imprime par une feuille @media print colocalisée, sans bibliothèque PDF', () => {
+    expect(feuille).toContain('@media print')
+    expect(feuille).toContain('.cou-print-doc')
+    // Le document imprimable est masqué à l'écran et révélé à l'impression.
+    expect(feuille).toMatch(/\.cou-print-doc\s*\{\s*display:\s*none;\s*\}/)
+    // Aucune dépendance PDF au projet : le PDF est celui du navigateur.
+    const paquets = JSON.parse(readFileSync(chemin('../../package.json'), 'utf8'))
+    const dependances = Object.keys(paquets.dependencies || {})
+    expect(dependances.filter((nom) => /pdf|jspdf|html2canvas|print-js/i.test(nom))).toEqual([])
   })
 })

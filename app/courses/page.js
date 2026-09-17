@@ -7,11 +7,15 @@ import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
 import {
   ShoppingCart, Check, Package, ChevronLeft, ChevronRight,
-  RefreshCw, ImageOff, Camera, X, MoreHorizontal, Copy,
+  RefreshCw, ImageOff, Camera, X, MoreHorizontal, Copy, Share2, Printer,
 } from 'lucide-react'
 import Link from 'next/link'
 import { getFoodEmoji } from '@/lib/foodEmoji'
-import { exporterListeCourses } from '@/lib/domain/courses/exportListe'
+import {
+  exporterListeCourses,
+  chargePartageListe,
+  documentImprimableListe,
+} from '@/lib/domain/courses/exportListe'
 import StoragePlanSheet from '@/components/StoragePlanSheet'
 import IngredientReviewPanel from '@/components/IngredientReviewPanel'
 import EstimationCourses from '@/components/pricing/EstimationCourses'
@@ -70,9 +74,40 @@ async function ecrireDansPressePapiers(texte) {
   return { ok: false, raison: nonSecurise ? 'contexte_non_securise' : 'refus_navigateur' }
 }
 
+/**
+ * Pourquoi la sortie demandée n'a pas pu s'exécuter. Chaque raison est écrite,
+ * jamais tue : un échec silencieux laisserait croire à une liste emportée, et
+ * c'est devant l'étal qu'on s'en apercevrait.
+ */
 const MESSAGES_COPIE_MANUELLE = {
   contexte_non_securise: 'Le presse-papiers du navigateur n’est accessible qu’en HTTPS (ou sur localhost). Cette page est servie sans contexte sécurisé : la copie automatique est impossible ici.',
   refus_navigateur: 'Le navigateur a refusé l’accès au presse-papiers.',
+  partage_absent: 'Ce navigateur n’a pas de partage natif — il n’existe ni sur la plupart des navigateurs de bureau, ni hors contexte sécurisé.',
+  partage_refuse: 'Le partage natif a échoué avant d’avoir envoyé quoi que ce soit.',
+}
+
+/**
+ * Les réserves d'une sortie : ce que le texte porte quand même, mais qu'on
+ * annonce. Une liste incomplète qui ne se signale pas est pire qu'une liste
+ * courte — et les trois sorties le disent de la même façon, par cette fonction.
+ */
+function reservesDeSortie(anomalies) {
+  const reserves = []
+  if (anomalies.articles_sans_quantite.length > 0) {
+    reserves.push(`${anomalies.articles_sans_quantite.length} sans quantité`)
+  }
+  if (anomalies.rayons_non_declares.length > 0) {
+    reserves.push(`${anomalies.rayons_non_declares.length} rayon${anomalies.rayons_non_declares.length > 1 ? 's' : ''} hors parcours`)
+  }
+  return reserves
+}
+
+/** « 99 articles copiés · 2 sans quantité ». Le participe est passé par l'appelant. */
+function messageDeSortie(participe, compte, anomalies) {
+  const pluriel = compte.articles > 1 ? 's' : ''
+  const base = `${compte.articles} article${pluriel} ${participe}${pluriel}`
+  const reserves = reservesDeSortie(anomalies)
+  return reserves.length ? `${base} · ${reserves.join(' · ')}` : base
 }
 
 export default function CoursesPage() {
@@ -121,9 +156,11 @@ export default function CoursesPage() {
   const [showStorageSheet, setShowStorageSheet] = useState(false)
   const [storageItems, setStorageItems]         = useState([]) // snapshot stable
 
-  // ── Copie de la liste ────────────────────────────────────────────────────────
-  // Renseigné seulement quand le presse-papiers n'a pas pu être écrit : il porte
-  // alors le texte à copier à la main et la raison de l'échec.
+  // ── Sorties de la liste ────────────────────────────────────────────────────
+  // Renseigné seulement quand une sortie n'a pas pu s'exécuter : il porte alors
+  // le texte à emporter à la main et la raison de l'échec. Le même panneau sert au
+  // presse-papiers et au partage natif — dans les deux cas le recours est le même
+  // texte, montré déjà sélectionné.
   const [copieManuelle, setCopieManuelle] = useState(null) // { texte, raison, articles }
   const zoneCopieRef = useRef(null)
 
@@ -266,6 +303,19 @@ export default function CoursesPage() {
     items.filter(i => i.checked && !(i.created_lot_ids?.length > 0)),
     [items])
 
+  /**
+   * Le document imprimable de la semaine affichée.
+   *
+   * Calculé en continu plutôt qu'au clic, et posé dans la page en permanence,
+   * masqué à l'écran : `window.print()` est synchrone, il n'attendrait pas un
+   * rendu React déclenché par le clic, et la feuille serait imprimée vide.
+   * Il ne trie ni ne regroupe rien : `documentImprimableListe` rend déjà les
+   * rayons dans l'ordre, la page ne fait que les poser.
+   */
+  const docImprimable = useMemo(
+    () => documentImprimableListe(items, { semaine: activeWeek }),
+    [items, activeWeek])
+
   // ── Gestion du stock ─────────────────────────────────────────────────────────
 
   /** Retire du stock les lots créés pour un article (décochage). */
@@ -357,7 +407,12 @@ export default function CoursesPage() {
     }
   }
 
-  // ── Copier la liste ──────────────────────────────────────────────────────────
+  // ── Les trois sorties de la liste (P17) ─────────────────────────────────────
+  //
+  // Presse-papiers, partage natif, impression. Les trois descendent du même
+  // `exporterListeCourses` : la règle « quelles lignes partent, dans quel ordre »
+  // n'a qu'un seul endroit où elle est écrite, et c'est celui que le test
+  // vérifie. Aucune des trois ne trie, ne regroupe ni ne filtre de son côté.
 
   /**
    * Compose le texte de la semaine affichée et l'écrit dans le presse-papiers.
@@ -382,15 +437,69 @@ export default function CoursesPage() {
     // Les articles sans quantité et les rayons non déclarés sont dans le texte,
     // mais on le dit : une liste incomplète qui ne se signale pas est pire
     // qu'une liste courte.
-    const reserves = []
-    if (anomalies.articles_sans_quantite.length > 0) {
-      reserves.push(`${anomalies.articles_sans_quantite.length} sans quantité`)
+    showToast(messageDeSortie('copié', compte, anomalies), reservesDeSortie(anomalies).length ? 'warn' : 'ok')
+  }
+
+  /**
+   * Sortie 2 — partage natif.
+   *
+   * La charge vient de `chargePartageListe`, dont le corps est le MÊME texte que
+   * celui du presse-papiers : les deux sorties ne peuvent pas diverger sur
+   * l'ordre des rayons puisqu'elles n'en composent qu'un.
+   *
+   * Le partage natif n'existe pas partout : absent de la plupart des navigateurs
+   * de bureau, absent hors contexte sécurisé, et il exige un geste de
+   * l'utilisateur. Quand il manque ou qu'il échoue, le repli est le panneau de
+   * copie à la main, VISIBLE, avec la raison écrite — jamais un bouton qui ne
+   * fait rien.
+   *
+   * Une annulation n'est pas un échec : fermer la feuille de partage du système
+   * lève `AbortError`, et on ne montre alors ni panneau ni message. Traiter
+   * l'annulation comme une panne apprendrait à l'utilisateur à ignorer le repli.
+   */
+  async function partagerLaListe() {
+    const { titre, texte, compte, anomalies } = chargePartageListe(items, { semaine: activeWeek })
+    if (compte.articles === 0) {
+      showToast('Aucun article à partager pour cette semaine.', 'warn')
+      return
     }
-    if (anomalies.rayons_non_declares.length > 0) {
-      reserves.push(`${anomalies.rayons_non_declares.length} rayon${anomalies.rayons_non_declares.length > 1 ? 's' : ''} hors parcours`)
+
+    if (typeof navigator === 'undefined' || typeof navigator.share !== 'function') {
+      setCopieManuelle({ texte, raison: 'partage_absent', articles: compte.articles })
+      return
     }
-    const base = `${compte.articles} article${compte.articles > 1 ? 's' : ''} copié${compte.articles > 1 ? 's' : ''}`
-    showToast(reserves.length ? `${base} · ${reserves.join(' · ')}` : base, reserves.length ? 'warn' : 'ok')
+
+    try {
+      await navigator.share({ title: titre, text: texte })
+    } catch (err) {
+      if (err?.name === 'AbortError') return
+      setCopieManuelle({ texte, raison: 'partage_refuse', articles: compte.articles })
+      return
+    }
+
+    showToast(messageDeSortie('partagé', compte, anomalies), reservesDeSortie(anomalies).length ? 'warn' : 'ok')
+  }
+
+  /**
+   * Sortie 3 — impression, et donc PDF.
+   *
+   * Il n'y a rien à composer ici : le document imprimable est calculé en continu
+   * par `docImprimable` et déjà posé dans la page, masqué à l'écran. Imprimer ne
+   * fait qu'ouvrir la boîte du navigateur ; « Enregistrer en PDF » y est une
+   * destination comme une autre, et c'est pour cela qu'aucune bibliothèque PDF
+   * n'est embarquée. Une bibliothèque aurait été une deuxième mise en page à
+   * tenir en accord avec la première.
+   */
+  function imprimerLaListe() {
+    if (docImprimable.compte.articles === 0) {
+      showToast('Aucun article à imprimer pour cette semaine.', 'warn')
+      return
+    }
+    if (typeof window === 'undefined' || typeof window.print !== 'function') {
+      showToast('Ce navigateur n’expose pas d’impression.', 'warn')
+      return
+    }
+    window.print()
   }
 
   // La zone de copie manuelle s'ouvre déjà sélectionnée : il ne reste que
@@ -747,16 +856,34 @@ export default function CoursesPage() {
             <span className="v">{remaining}</span>
             <span className="l">à acheter</span>
           </div>
-          {/* Sortie de la liste : presse-papiers. Le partage natif et le PDF
-              viennent plus tard — l'ordre est celui de l'usage réel. */}
-          <button
-            className="v21-btn ghost sm cou-copy-btn"
-            onClick={copierLaListe}
-            title="Copier la liste de la semaine affichée"
-            aria-label="Copier la liste de courses"
-          >
-            <Copy size={13} /> Copier la liste
-          </button>
+          {/* Les trois sorties de la liste (P17). Même semaine, même ordre de
+              rayons : elles descendent toutes d'`exporterListeCourses`. */}
+          <div className="cou-sorties" role="group" aria-label="Emporter la liste de courses">
+            <button
+              className="v21-btn ghost sm"
+              onClick={copierLaListe}
+              title="Copier la liste de la semaine affichée"
+              aria-label="Copier la liste de courses"
+            >
+              <Copy size={13} /> Copier
+            </button>
+            <button
+              className="v21-btn ghost sm"
+              onClick={partagerLaListe}
+              title="Partager la liste de la semaine affichée"
+              aria-label="Partager la liste de courses"
+            >
+              <Share2 size={13} /> Partager
+            </button>
+            <button
+              className="v21-btn ghost sm"
+              onClick={imprimerLaListe}
+              title="Imprimer la liste, ou l’enregistrer en PDF depuis la boîte d’impression"
+              aria-label="Imprimer la liste de courses"
+            >
+              <Printer size={13} /> Imprimer
+            </button>
+          </div>
           {/* Menu secondaire ⋯ */}
           <div className="cou-overflow-wrap">
             <button
@@ -1035,11 +1162,13 @@ export default function CoursesPage() {
         <div className="cou-copy-overlay" onClick={() => setCopieManuelle(null)}>
           <div className="cou-copy-panel" role="dialog" aria-modal="true" aria-labelledby="cou-copy-title" onClick={e => e.stopPropagation()}>
             <div className="cou-copy-head">
-              <span className="cou-copy-title" id="cou-copy-title">Copie à faire à la main</span>
+              <span className="cou-copy-title" id="cou-copy-title">
+                {copieManuelle.raison?.startsWith('partage') ? 'Partage à faire à la main' : 'Copie à faire à la main'}
+              </span>
               <button className="cou-copy-close" onClick={() => setCopieManuelle(null)} aria-label="Fermer"><X size={16} /></button>
             </div>
             <p className="cou-copy-msg">
-              {MESSAGES_COPIE_MANUELLE[copieManuelle.raison] || 'Le presse-papiers n’a pas pu être écrit.'}
+              {MESSAGES_COPIE_MANUELLE[copieManuelle.raison] || 'La sortie demandée n’a pas pu s’exécuter.'}
               {' '}La liste ({copieManuelle.articles} article{copieManuelle.articles > 1 ? 's' : ''}) est ci-dessous, déjà sélectionnée : Ctrl + C, ou ⌘ + C.
             </p>
             <textarea
@@ -1054,6 +1183,38 @@ export default function CoursesPage() {
         </div>,
         document.body
       )}
+
+      {/* ── Document imprimable : sortie 3 ─────────────────────────────────────
+          Posé en permanence, masqué à l'écran par `.cou-print-doc`, révélé par
+          la feuille `@media print` de `courses.css`. `window.print()` est
+          synchrone : il n'attendrait pas un rendu React déclenché par le clic,
+          et la feuille sortirait vide. Aucun tri ici — les rayons arrivent déjà
+          dans leur ordre de parcours. */}
+      <section className="cou-print-doc">
+        <header className="cou-print-head">
+          <h2 className="cou-print-title">{docImprimable.titre}</h2>
+          {docImprimable.resume && <p className="cou-print-resume">{docImprimable.resume}</p>}
+        </header>
+        {docImprimable.compte.articles === 0 ? (
+          <p className="cou-print-vide">Aucun article pour cette semaine.</p>
+        ) : docImprimable.rayons.map(rayon => (
+          <section className="cou-print-rayon" key={rayon.nom}>
+            <h3 className="cou-print-rayon-nom">
+              {rayon.nom} <span className="cou-print-rayon-n">({rayon.articles.length})</span>
+            </h3>
+            <ul className="cou-print-list">
+              {rayon.articles.map(article => (
+                <li className={`cou-print-item${article.achete ? ' achete' : ''}`} key={article.cle}>
+                  <span className="cou-print-case">{article.achete ? '✕' : ''}</span>
+                  <span className="cou-print-nom">{article.nom}</span>
+                  {article.quantite && <span className="cou-print-qte">{article.quantite}</span>}
+                  {article.conditionnement && <span className="cou-print-cond">{article.conditionnement}</span>}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </section>
 
       {/* ── Toast discret ── */}
       {toast && typeof document !== 'undefined' && createPortal(
