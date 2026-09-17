@@ -6,6 +6,7 @@ import {
   PASTA_STARCH_FAMILY,
   RAISONS_REGIME_PLAFONDS,
   SEUIL_BASCULE_PLAFONDS,
+  capaciteDuVivier,
   plafondDuFeculent,
   resolveRegimeDesPlafonds,
   weeklyBalanceFor,
@@ -27,7 +28,9 @@ import { repartitionCuisines } from '@/lib/domain/recipes/cuisineArbitrage'
  * IL Y A DONC DEUX COMPORTEMENTS À TENIR, ET LE PIÈGE EST DE N'EN TESTER QU'UN.
  * Un plafond qui refuserait aujourd'hui rendrait la semaine infaisable — cinq
  * créneaux français au plus sur quatorze, sur un vivier où la France pèse
- * 57,6 % : le solveur ne trouverait rien à mettre dans les neuf autres et
+ * 72,4 % (411 des 568 publiables ; 57,6 % sur le corpus entier, dont les 186
+ * non publiables sont nettement moins françaises — c'est le vivier REÇU qui
+ * décide) : le solveur ne trouverait rien à mettre dans les neuf autres et
  * rendrait `no_feasible_plan`, c'est-à-dire aucune semaine du tout. Un plafond
  * qui ne refuserait JAMAIS, à l'inverse, serait un commentaire. Ce fichier
  * éprouve les deux sens sur le même vivier artificiel, en ne changeant qu'une
@@ -96,6 +99,7 @@ const recette = (code, { cuisine, feculent, proteine, profil }) => ({
 // suffiraient à saturer la semaine pour une raison étrangère à ce livrable.
 const TOFU = { nom: 'Tofu', forme: 'tofu ferme', categorie: 'legumineuses', origine: 'vegetal' }
 const FROMAGE = { nom: 'Comté', forme: 'comte', categorie: 'produits laitiers', origine: 'animal:lait' }
+const OEUF = { nom: 'Oeuf', forme: 'oeuf entier', categorie: 'oeufs', origine: 'animal:oeuf' }
 
 /**
  * Construit un vivier où la France occupe exactement `partFrance` des plats.
@@ -330,6 +334,12 @@ describe('régime DÉSARMÉ — la semaine d’aujourd’hui : on avertit, on n�
     expect(Object.values(cuisines).reduce((total, compte) => total + compte, 0)).toBe(14)
     expect(Object.values(feculents).reduce((total, compte) => total + compte, 0)).toBeLessThanOrEqual(14)
     expect(plan.objectiveScores.weeklyActual.cuisines).toBe(Object.keys(cuisines).length)
+    // ZÉRO PARCE QUE CE VIVIER EST ENTIÈREMENT AU TOFU, et il faut le dire :
+    // aucune assertion de ce `describe` ni du suivant n'éprouve donc le
+    // quatrième plafond, celui de P3. Un `toBeLessThanOrEqual` sur une valeur
+    // toujours nulle ne peut pas échouer. Le plafond laitiers/œufs a son propre
+    // vivier plus bas — « le quatrième plafond » —, où il est armé, désarmé, et
+    // les deux semaines comparées.
     expect(plan.objectiveScores.weeklyActual.dairyEggProtein).toBe(0)
     // Les deux volets de P2 se relisent sur cette ligne, sans recalcul : la
     // semaine sert quatre assiettes de pâtes sur quatorze (28,6 %) pour un
@@ -376,7 +386,12 @@ describe('régime ARMÉ — le jalon C6 : le plafond refuse, et la semaine tient
     expect(plan.objectiveScores.weeklyCaps.pivotShare).toBeCloseTo(8 / 38, 3)
   })
 
-  it('tient les quatre plafonds sur la semaine servie, sans la rendre infaisable', () => {
+  it('tient TROIS des quatre plafonds sur la semaine servie, sans la rendre infaisable', () => {
+    // TROIS ET PAS QUATRE, sur CE vivier : il est entièrement au tofu, donc la
+    // ligne `dairyEggProtein` ci-dessous vaut zéro quoi qu'il arrive. Elle est
+    // gardée — une régression qui ferait entrer un laitier ici doit se voir —
+    // mais elle ne PROUVE rien du quatrième plafond. C'est le dernier
+    // `describe` de ce fichier qui l'éprouve, sur un vivier qui en porte.
     expect(plan.slots).toHaveLength(14)
     const cibles = plan.objectiveScores.weeklyTargets
     for (const [cuisine, compte] of Object.entries(cuisinesServies(plan))) {
@@ -470,5 +485,111 @@ describe('ce que la classification rend, une fois l’arbitrage branché', () =>
     expect(classification.mainProtein).toBe('laitiers')
     expect(DAIRY_EGG_PROTEIN_FAMILIES).toContain(classification.mainProtein)
     expect(classification.mainStarch).toBe(PASTA_STARCH_FAMILY)
+  })
+})
+
+/**
+ * LE QUATRIÈME PLAFOND — celui de P3, et le seul qu'aucun vivier de ce fichier
+ * n'éprouvait.
+ *
+ * CE QUE LA RELECTURE A TROUVÉ. Les cinq scénarios de planification ci-dessus
+ * emploient tous la protéine par défaut de `vivier`, le tofu. Leur
+ * `weeklyActual.dairyEggProtein` vaut donc zéro dans tous les cas, et les trois
+ * assertions qui le bornent — `toBeLessThanOrEqual(2)`, `toBeLessThanOrEqual(0,2)`
+ * — ne peuvent pas échouer. Le livrable annonçait pourtant « armée, elle tient
+ * les QUATRE plafonds » : trois l'étaient, le quatrième passait à vide.
+ *
+ * CE QUE CE VIVIER CHANGE. Même forme que les autres — huit plats français sur
+ * trente-huit, donc le jalon franchi —, mais un plat sur trois porte un laitier
+ * ou un œuf pour protéine principale, et les vingt autres du tofu. Le majorant
+ * de `capaciteDuVivier` passe (20 + 2 = 22 créneaux tenables pour 14), donc le
+ * régime s'arme pour de bon au lieu de se désarmer sur un vivier trop étroit.
+ *
+ * ET SURTOUT : LA MÊME SEMAINE EST REJOUÉE DÉSARMÉE. Sans ce témoin, « 2 sur 14 »
+ * pourrait n'être que le goût du solveur pour le tofu. Désarmé, il en sert 6 et
+ * publie le dépassement ; armé, il s'arrête à 2 et ne publie rien. C'est cet
+ * écart-là qui prouve que le plafond refuse, et lui seul.
+ */
+describe('le quatrième plafond — laitiers et œufs, armé puis désarmé sur le même vivier', () => {
+  const feculents = Object.keys(FECULENTS)
+  const RECETTES = []
+  for (let index = 0; index < 8; index += 1) {
+    RECETTES.push(recette(`FR-${index}`, {
+      cuisine: ['France', 'France / cuisine domestique internationale', 'France (Bourgogne)', 'France (Lyon)'][index % 4],
+      feculent: feculents[index % feculents.length],
+      // Les huit plats français portent le laitier ou l'œuf : c'est le cas le
+      // plus défavorable, puisque ce sont eux que le plafond de cuisine écarte
+      // en premier. Le plafond de P3 doit mordre pour son propre compte.
+      proteine: index % 2 ? FROMAGE : OEUF,
+      profil: PROFILS[index % PROFILS.length],
+    }))
+  }
+  for (const [rang, cuisine] of CUISINES_ETRANGERES.entries()) {
+    for (let index = 0; index < 3; index += 1) {
+      RECETTES.push(recette(`${cuisine.slice(0, 3).toUpperCase()}-${index}`, {
+        cuisine,
+        feculent: feculents[(rang + index) % feculents.length],
+        // Deux tiers de tofu : de quoi remplir les quatorze créneaux sans
+        // laitier ni œuf, sans quoi le majorant désarmerait le régime et le
+        // test ne dirait plus rien.
+        proteine: index < 2 ? TOFU : (rang % 2 ? FROMAGE : OEUF),
+        profil: PROFILS[(rang + index) % PROFILS.length],
+      }))
+    }
+  }
+
+  const laitOeufAuVivier = RECETTES
+    .filter((plat) => DAIRY_EGG_PROTEIN_FAMILIES.includes(classifyRecipe(plat).mainProtein)).length
+  const arme = planifier(RECETTES)
+  const desarme = planifier(RECETTES, { weeklyCaps: { enforce: false } })
+
+  it('présente un vivier où le plafond a de quoi mordre, et où la semaine reste faisable', () => {
+    // Sans ces deux lignes, un vivier qui aurait cessé de porter des laitiers
+    // rendrait les deux tests suivants vrais par vacuité.
+    expect(laitOeufAuVivier).toBeGreaterThan(10)
+    const capacite = capaciteDuVivier(RECETTES.map((plat) => {
+      const classification = classifyRecipe(plat)
+      return {
+        cuisine: classification.cuisine,
+        mainStarch: classification.mainStarch,
+        dairyEgg: DAIRY_EGG_PROTEIN_FAMILIES.includes(classification.mainProtein),
+      }
+    }), weeklyBalanceFor({ totalSlots: 14 }), 14)
+    expect(capacite.suffisante, JSON.stringify(capacite)).toBe(true)
+    expect(arme.objectiveScores.weeklyCaps).toMatchObject({
+      enforced: true, reason: RAISONS_REGIME_PLAFONDS.PIVOT_SOUS_LE_SEUIL,
+    })
+  })
+
+  it('ARMÉ : la semaine sort entière et s’arrête au plafond de P3', () => {
+    expect(arme.slots).toHaveLength(14)
+    const plafond = arme.objectiveScores.weeklyTargets.dairyEggProteinMax
+    expect(plafond).toBe(2)
+    expect(arme.objectiveScores.weeklyActual.dairyEggProtein).toBeLessThanOrEqual(plafond)
+    expect(arme.objectiveScores.weeklyCaps.overruns.map((depassement) => depassement.code))
+      .not.toContain('dairy_egg_protein_cap')
+    // Et P3 lui-même, écrit comme le §9.1 l'écrit : une part de la semaine.
+    expect(arme.objectiveScores.weeklyActual.dairyEggProtein / arme.slots.length)
+      .toBeLessThanOrEqual(DEFAULT_WEEKLY_CAPS.dairyEggProteinMaxShare)
+  })
+
+  it('DÉSARMÉ sur le même vivier : il en sert davantage, et le dépassement est publié', () => {
+    // LE TÉMOIN. C'est lui qui distingue « le plafond refuse » de « le solveur
+    // n'en voulait pas ». Les deux semaines partent du même vivier, de la même
+    // date et des mêmes bornes : seule la bascule change.
+    expect(desarme.slots).toHaveLength(14)
+    expect(desarme.objectiveScores.weeklyCaps.enforced).toBe(false)
+    expect(desarme.objectiveScores.weeklyActual.dairyEggProtein)
+      .toBeGreaterThan(arme.objectiveScores.weeklyActual.dairyEggProtein)
+    const depassement = desarme.objectiveScores.weeklyCaps.overruns
+      .find((item) => item.code === 'dairy_egg_protein_cap')
+    expect(depassement, 'le dépassement de P3 n’est pas publié').toBeTruthy()
+    expect(depassement.missing).toBe(
+      desarme.objectiveScores.weeklyActual.dairyEggProtein
+      - desarme.objectiveScores.weeklyTargets.dairyEggProteinMax,
+    )
+    // Et il est aussi dans les issues, en AVERTISSEMENT : désarmé n'est pas muet.
+    expect(desarme.issues.find((issue) => issue.code === 'dairy_egg_protein_cap'))
+      .toMatchObject({ severity: 'warning' })
   })
 })

@@ -9,7 +9,15 @@ import {
   productionShelfLifeDays,
   recipeLineage,
 } from '@/lib/domain/planning/closedLoopPlanner'
-import { buildWeekSlots } from '@/lib/domain/planning/canonicalPlanPayload'
+import { buildCanonicalPlanPayload, buildWeekSlots } from '@/lib/domain/planning/canonicalPlanPayload'
+// P17 (livrable 3.5) : les trois sorties de la liste de courses sont comptées
+// contre la table que la publication écrit, et non déclarées « à mesurer ».
+import {
+  SORTIES_LISTE,
+  chargePartageListe,
+  documentImprimableListe,
+  exporterListeCourses,
+} from '@/lib/domain/courses/exportListe'
 import { buildPersonalizedMeals, vegetarianLineageTwins } from '@/lib/domain/planning/personalizedMeals'
 import { getMemberPlanningRules } from '@/lib/domain/planning/memberPlanningRules'
 import { buildWeeklyBalance, meatMaxFromDeclaredQuotas } from '@/lib/domain/planning/weeklyBalance'
@@ -57,11 +65,15 @@ import { mesurerLatenceAlternatives } from './mesureAlternatives'
  * abaisser la borne. On mesure, on imprime, on laisse le plan décider quand
  * chaque ligne devient exigible.
  *
- * CE QU'IL NE DEVINE PAS. P17 et P18 n'ont pas de mesure : leurs livrables
- * n'existent pas. Ils portent « sans objet » avec le constat mécanique qui
- * l'établit (aucun module d'export, aucun contrat des chiffres), jamais un
- * chiffre de complaisance. Même règle pour ce qui ne se mesure que sur le
- * chemin base : la CI n'a pas de base, elle le dit au lieu de l'estimer.
+ * CE QU'IL NE DEVINE PAS. Une ligne dont le livrable n'existe pas porte « sans
+ * objet » avec le constat mécanique qui l'établit, jamais un chiffre de
+ * complaisance. C'était le cas de P17 et de P18 quand ce fichier a été écrit ;
+ * les deux se mesurent depuis la phase 3 — P18 au livrable 3.6, P17 à la
+ * relecture de phase, qui a trouvé la ligne encore à « ce rapport ne sait pas
+ * encore la vérifier » alors que les trois sorties étaient livrées, testées et
+ * vertes. Un rapport qui annonce son ignorance sur un critère tenu est faux
+ * dans l'autre sens. Même règle pour ce qui ne se mesure que sur le chemin
+ * base : la CI n'a pas de base, elle le dit au lieu de l'estimer.
  *
  * LE PROTOCOLE. Trois semaines CONSÉCUTIVES avec historique cumulé, aux
  * paramètres exacts de `app/api/planning/generate-v3/route.js` — faisceau 48,
@@ -766,6 +778,68 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
     ...fichiersCitant('navigator.share', ['app', 'components', 'lib']),
   ])].sort()
   const exportPresent = fichierPresent(MODULE_EXPORT) || sortiesExport.length > 0
+
+  // P17 SE MESURE DEPUIS CETTE RELECTURE. La ligne disait « à mesurer : une
+  // sortie existe désormais — ce rapport ne sait pas encore la vérifier » alors
+  // que le livrable 3.5 était livré, testé et vert : un rapport qui annonce son
+  // ignorance sur un critère tenu est aussi faux qu'un chiffre inventé, dans
+  // l'autre sens.
+  //
+  // CE QUI EST MESURÉ ICI. La première des trois semaines déjà planifiées est
+  // publiée par `buildCanonicalPlanPayload`, ses `shopping_items` sont ramenés
+  // aux colonnes que la RPC écrit dans `nutrition_plan_shopping_items` (même
+  // transformation que `tests/courses/exportListe.test.js`, qui l'EXIGE), puis
+  // les TROIS sorties sont comptées contre cette table : 0 ligne perdue, 0
+  // ligne ajoutée, la même séquence de rayons. La semaine n'est pas replanifiée
+  // — c'est `semaines[0]`, donc aucun temps de solveur de plus.
+  const payloadCourses = buildCanonicalPlanPayload({
+    plan: semaines[0].plan,
+    recipes,
+    windowStart: DEBUTS[0],
+    members: MEMBERS,
+    goals: GOALS,
+    constraints: {},
+    inventoryLots: [],
+  })
+  // Les colonnes que l'export lit, telles que la RPC de publication les écrit.
+  const lignesCourses = (payloadCourses.shopping_items || []).map((item, index) => ({
+    id: index + 1,
+    week_label: item.week_label || 'S1',
+    category: item.category ?? null,
+    product_name: item.product_name,
+    quantity: item.display_quantity ?? null,
+    checked: false,
+    purchase_qty: item.purchase_qty ?? null,
+    purchase_unit: item.purchase_unit ?? null,
+    aisle_order: item.aisle_order ?? 999,
+    container_qty: item.container_qty ?? null,
+    container_size: item.container_size ?? null,
+    container_unit: item.container_unit ?? null,
+    exact_required_qty: item.exact_required_qty ?? null,
+    projected_surplus_qty: item.projected_surplus_qty ?? 0,
+    shopping_status: item.shopping_status || 'needed',
+  }))
+  const semaineCourses = lignesCourses[0]?.week_label || 'S1'
+  const lignesSemaineCourses = lignesCourses.filter((ligne) => ligne.week_label === semaineCourses)
+  const presseoPapiers = exporterListeCourses(lignesCourses, { semaine: semaineCourses })
+  const partageCourses = chargePartageListe(lignesCourses, { semaine: semaineCourses })
+  const impressionCourses = documentImprimableListe(lignesCourses, { semaine: semaineCourses })
+  const articlesParSortie = {
+    'presse-papiers': presseoPapiers.compte.articles,
+    partage: partageCourses.compte.articles,
+    impression: impressionCourses.rayons.reduce((total, rayon) => total + rayon.articles.length, 0),
+  }
+  const rayonsParSortie = {
+    'presse-papiers': presseoPapiers.rayons.map((rayon) => rayon.nom),
+    partage: partageCourses.rayons.map((rayon) => rayon.nom),
+    impression: impressionCourses.rayons.map((rayon) => rayon.nom),
+  }
+  // Les sorties qui ne rendent pas exactement la table source, nommées : un
+  // « 3 sorties » sans cette liste dirait qu'elles existent, pas qu'elles
+  // disent la vérité.
+  const sortiesFausses = SORTIES_LISTE.filter((sortie) => articlesParSortie[sortie] !== lignesSemaineCourses.length)
+  const rayonsDivergents = SORTIES_LISTE
+    .filter((sortie) => rayonsParSortie[sortie].join(' > ') !== rayonsParSortie['presse-papiers'].join(' > '))
   const CONTRAT_CHIFFRES = 'docs/CONTRAT_CHIFFRES.md'
   const contratPresent = fichierPresent(CONTRAT_CHIFFRES)
   // P18 SE MESURE DEPUIS LE LIVRABLE 3.6. Les trois chemins d'affichage sont
@@ -1032,7 +1106,14 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
       id: 'P17',
       libelle: 'La liste de courses sort de l\'application',
       mesure: exportPresent
-        ? `à mesurer : ${MODULE_EXPORT} ou une sortie navigateur existe désormais (${sortiesExport.join(', ') || MODULE_EXPORT}) — ce rapport ne sait pas encore la vérifier`
+        ? `${SORTIES_LISTE.length} sortie(s) déclarée(s) par ${MODULE_EXPORT} : ${[...SORTIES_LISTE].join(', ')} ; `
+          + `semaine du ${DEBUTS[0]} — ${lignesSemaineCourses.length} ligne(s) de nutrition_plan_shopping_items → `
+          + `${SORTIES_LISTE.map((sortie) => `${sortie} ${articlesParSortie[sortie]}`).join(', ')} `
+          + `(${sortiesFausses.length} sortie(s) en écart) ; rayons : ${rayonsParSortie['presse-papiers'].join(' > ') || 'aucun'} — `
+          + `${rayonsDivergents.length} sortie(s) rendant une autre séquence ; `
+          + `${presseoPapiers.anomalies.rayons_non_declares.length} rayon(s) non déclaré(s), `
+          + `${presseoPapiers.anomalies.articles_sans_quantite.length} article(s) sans quantité ; `
+          + `appelée(s) depuis ${sortiesExport.length} fichier(s) : ${sortiesExport.join(', ') || 'aucun'}`
         : `sans objet — ${MODULE_EXPORT} absent, et 0 occurrence de navigator.clipboard ou navigator.share dans app/, components/, lib/ (livrable 0a bis puis 3.5)`,
       cible: 'trois sorties testées contre nutrition_plan_shopping_items',
     },
@@ -1191,6 +1272,17 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
         expect(depassement.missing, depassement.code).toBeGreaterThan(0)
       }
     }
+  })
+
+  it('P17 — la ligne des trois sorties a bien de la matière à compter', () => {
+    // CE CONTRÔLE EST EXIGÉ, et pour une raison de forme et non de fond : une
+    // semaine sans course rendrait la ligne P17 « 0 ligne → 0, 0, 0 (0 sortie
+    // en écart) », c'est-à-dire un succès apparent sur une mesure vide. Le fond
+    // — aucune ligne perdue, aucune ajoutée — est exigé par
+    // `tests/courses/exportListe.test.js` ; ici on garantit seulement que le
+    // chiffre imprimé porte sur quelque chose.
+    expect(lignesSemaineCourses.length).toBeGreaterThan(20)
+    expect([...SORTIES_LISTE]).toEqual(['presse-papiers', 'partage', 'impression'])
   })
 
   it('P11 — aucune production contredite par sa conservation déclarée', () => {

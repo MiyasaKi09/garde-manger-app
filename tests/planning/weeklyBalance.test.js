@@ -37,6 +37,28 @@ describe('buildWeeklyBalance — réglages du foyer', () => {
     // Zéro rendrait toute viande et tout poisson impossibles, sans le dire.
     expect(buildWeeklyBalance({ maxMealsPerProteinFamily: 0 }).maxMealsPerProteinFamily).toBe(1)
   })
+
+  it('ne laisse pas un booléen se faire passer pour une part de semaine', () => {
+    // LE PIÈGE DE `Number()`, RETROUVÉ À LA RELECTURE DE PHASE 3, sur les
+    // plafonds de part cette fois : `Number(true)` vaut 1, c'est-à-dire, pour
+    // `pastaMaxShare`, « toute la semaine peut être en pâtes ». Un corps de
+    // requête ou un profil malformé désarmait ainsi une borne en silence, et
+    // `objectiveScores.weeklyCaps` publiait ensuite un plafond de 100 % que
+    // personne n'avait réglé. Même faute que le quota carné du livrable 1.1,
+    // même parade : un nombre déclaré, ou le défaut.
+    for (const valeur of [true, false, [], [0.5], {}, '', '   ', null]) {
+      expect(buildWeeklyBalance({ pastaMaxShare: valeur }).pastaMaxShare, String(valeur))
+        .toBe(DEFAULT_WEEKLY_CAPS.pastaMaxShare)
+    }
+    // Ce qui EST une déclaration passe toujours : un nombre, et une chaîne
+    // entièrement numérique (les réglages voyagent parfois en texte).
+    expect(buildWeeklyBalance({ pastaMaxShare: 0.3 }).pastaMaxShare).toBe(0.3)
+    expect(buildWeeklyBalance({ pastaMaxShare: '0.3' }).pastaMaxShare).toBe(0.3)
+    // Et une part hors de ]0, 1] retombe sur le défaut au lieu d'être ramenée à
+    // la borne : 1,5 est une faute de saisie, la corriger en 1 la cacherait.
+    expect(buildWeeklyBalance({ cuisineMaxShare: 1.5 }).cuisineMaxShare).toBe(DEFAULT_WEEKLY_CAPS.cuisineMaxShare)
+    expect(buildWeeklyBalance({ cuisineMaxShare: 0 }).cuisineMaxShare).toBe(DEFAULT_WEEKLY_CAPS.cuisineMaxShare)
+  })
 })
 
 describe('weeklyBalanceFor — bornes ramenées à la semaine', () => {

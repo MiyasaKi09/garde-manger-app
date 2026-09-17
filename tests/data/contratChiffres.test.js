@@ -375,6 +375,22 @@ describe('réserve (a) — les douze recettes végétariennes à option carnée 
       return !classification.vegetarian && classification.optionalNonVegetarian.length > 0
     })
     expect(nonVegetariennesAvecOption).toHaveLength(18)
+    // LE QUATRIÈME NOMBRE, celui dont un CHEMIN DE CODE dépend, et qui manquait.
+    // `app/api/recipes/canonical/[code]/route.js` ne charge les membres du foyer
+    // que si la recette porte une option carnée : ce sont ces 25 publiables-là
+    // (12 végétariennes + 13 déjà carnées), et pas les 333 qui portent un
+    // ingrédient facultatif quelconque — une herbe, un zeste. La garde a été
+    // écrite sur `ingredient.optional` seul alors que son commentaire annonçait
+    // douze recettes : l'écart valait 308 requêtes Supabase de trop. Les deux
+    // nombres sont comptés ici pour qu'ils ne puissent plus diverger en silence.
+    const avecOptionCarnee = PUBLIABLES.filter((recipe) => optionsCarnees(recipe).length > 0)
+    expect(avecOptionCarnee).toHaveLength(25)
+    const avecUnFacultatifQuelconque = PUBLIABLES
+      .filter((recipe) => (recipe.exactIngredients || []).some((ingredient) => ingredient?.optional))
+    expect(avecUnFacultatifQuelconque).toHaveLength(333)
+    // Et la garde de la route est bien la première, pas la seconde.
+    const routeCanonique = lire('app/api/recipes/canonical/[code]/route.js')
+    expect(routeCanonique).toContain('const porteUneOption = optionsCarnees(recipe).length > 0')
     // Les trois exemples que le plan cite nommément se retrouvent.
     const options = publiables.flatMap((recipe) => classifyRecipe(recipe).optionalNonVegetarian)
     expect(options.some((nom) => /lardon/i.test(nom))).toBe(true)

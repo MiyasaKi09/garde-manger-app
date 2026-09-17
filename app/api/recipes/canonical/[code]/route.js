@@ -5,6 +5,7 @@ import { blocNutritionPubliee } from '@/lib/domain/recipes/macrosParPortion'
 import {
   decisionOptionCarnee,
   ingredientsApresDecision,
+  optionsCarnees,
   phraseOptionCarnee,
 } from '@/lib/domain/recipes/optionCarnee'
 
@@ -110,11 +111,24 @@ export async function GET(request, { params }) {
     const recipe = await getEditorialRecipe(supabase, code, { servings: requestedServings(request) })
     if (!recipe) return NextResponse.json({ error: 'Recette introuvable' }, { status: 404 })
 
-    // Les membres ne sont chargés QUE si la recette porte une option carnée :
-    // c'est douze recettes publiables sur cinq cent soixante-huit, et faire une
-    // requête de plus sur les cinq cent cinquante-six autres serait payer un
-    // aller-retour pour une décision sans objet.
-    const porteUneOption = (recipe.exactIngredients || []).some((ingredient) => ingredient?.optional)
+    // Les membres ne sont chargés QUE si la recette porte une option CARNÉE,
+    // c'est-à-dire un ingrédient facultatif dont l'origine déclarée n'est pas
+    // compatible avec un régime végétarien. Mesuré le 17 septembre 2026 sur les
+    // 568 recettes publiables : 25 en portent une (12 végétariennes — la réserve
+    // (a) du livrable 3.6 — et 13 déjà carnées). Sur les 543 autres, la décision
+    // est sans objet : `decisionOptionCarnee` rendrait `options: []` quels que
+    // soient les mangeurs, et l'aller-retour serait payé pour rien.
+    //
+    // ERRATUM DE RELECTURE. Cette garde testait `ingredient.optional` seul, et
+    // le commentaire au-dessus annonçait pourtant « douze recettes publiables
+    // sur cinq cent soixante-huit ». Les deux ne décrivaient pas le même
+    // ensemble : 333 des 568 publiables portent au moins un ingrédient
+    // facultatif — une herbe, un zeste, un accompagnement —, si bien que la
+    // requête supplémentaire était faite sur 333 fiches au lieu de 25. La
+    // réponse servie ne changeait pas d'un octet (sans option carnée,
+    // `option_carnee` vaut déjà `null`) ; c'est le chiffre écrit qui ne
+    // décrivait pas le code, et le coût annoncé qui n'était pas le coût payé.
+    const porteUneOption = optionsCarnees(recipe).length > 0
     let mangeurs = []
     let perimetre = 'aucun'
     if (porteUneOption) {

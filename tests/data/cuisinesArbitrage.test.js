@@ -246,6 +246,15 @@ describe('les chiffres de l’en-tête, recomptés à chaque exécution', () => 
     const prefixeFrance = [...comptesBruts.keys()].filter((libelle) => /^France/.test(libelle))
     expect(prefixeFrance).toHaveLength(19)
     expect(new Set(prefixeFrance.map(replierCuisine)).size).toBe(17)
+    // LA MÊME MESURE PAR L'AUTRE DÉFINITION — celle que cite le commentaire de
+    // `DEFAULT_WEEKLY_CAPS` dans `weeklyBalance.js` : non pas « le libellé
+    // commence par France », mais « l'arbitrage en fait la France ». Les deux
+    // coïncident aujourd'hui ; les compter séparément est ce qui permettra de
+    // le savoir le jour où ce ne sera plus vrai — une « Bourgogne » écrite sans
+    // son pays entrerait dans la seconde et pas dans la première.
+    const arbitreesFrance = [...comptesBruts.keys()].filter((libelle) => cuisineArbitree(libelle).cuisine === 'France')
+    expect(arbitreesFrance).toHaveLength(19)
+    expect(new Set(arbitreesFrance.map(replierCuisine)).size).toBe(17)
   })
 
   it('53 cuisines après arbitrage, la France à 434 sur 754 soit 57,6 %', () => {
