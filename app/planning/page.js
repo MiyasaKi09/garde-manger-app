@@ -463,6 +463,7 @@ export default function PlanningPage() {
                 importId={effectiveImportId}
                 onModifyDay={(date) => openModification({ scope: 'days', date })}
                 onModifyMeal={(date, type) => openModification({ scope: 'meals', date, type })}
+                onReload={() => setReloadKey((value) => value + 1)}
               />
             ) : (
               <div className="planning-empty">

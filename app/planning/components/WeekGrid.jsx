@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { authFetch } from '@/lib/authFetch'
 import CookMode from '@/components/CookMode'
 import CookSession from './CookSession'
-import { ChevronLeft, ChevronRight, Loader2, Check, Pencil } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Loader2, Check, Pencil, Pin, PinOff } from 'lucide-react'
 import { toast } from '@/components/Toast'
 import { openMealRecipe, prefetchMealRecipe } from './openMealRecipe'
 import useStockCoverage from './useStockCoverage'
@@ -48,10 +48,16 @@ const DAY_NAMES_FULL = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vend
  */
 export default function WeekGrid({
   meals = [], weekDates = [], weekOffset = 0, onPrevWeek, onNextWeek,
-  importId = null, onModifyDay = null, onModifyMeal = null,
+  importId = null, onModifyDay = null, onModifyMeal = null, onReload = null,
 }) {
   const [person, setPerson] = useState('all')
   const [showStock, setShowStock] = useState(true)
+  // Épingles posées ou retirées depuis l'ouverture de l'écran (livrable 3.4).
+  // La grille n'est rechargée qu'à la demande de la page : sans cet état local,
+  // le bouton reviendrait à son état d'avant le clic jusqu'au prochain
+  // rechargement, et l'utilisateur croirait que l'épingle n'a pas pris.
+  const [pinOverrides, setPinOverrides] = useState({})
+  const [pinPending, setPinPending] = useState(null)
 
   const { coverageByMeal, summary } = useStockCoverage(importId)
 
@@ -119,6 +125,41 @@ export default function WeekGrid({
       const representative = typeMeals[0]
       const dishName = (representative?.short_label || '').trim() || extractDishName(typeMeals.map(m => m.description))
       setCookSheetMeal({ type, dishName, entries: typeMeals })
+    }
+  }
+
+  /**
+   * ÉPINGLER OU DÉPINGLER UN CRÉNEAU (livrable 3.4).
+   *
+   * L'épingle est la seule raison, avec « c'est mangé », qu'une régénération a
+   * de ne pas réécrire un repas (`lib/domain/planning/slotProtection.js`).
+   * Elle ne change rien à la semaine affichée : elle change ce que la
+   * PROCHAINE génération a le droit de toucher. Le libellé du bouton le dit.
+   */
+  async function togglePin(dateStr, type, current) {
+    const key = `${dateStr}|${type}`
+    if (!importId || pinPending) return
+    setPinPending(key)
+    try {
+      const res = await authFetch('/api/planning/epinglage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ import_id: importId, meal_date: dateStr, meal_type: type, locked: !current }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        toast.error(data.error || 'Épinglage impossible')
+        return
+      }
+      setPinOverrides((state) => ({ ...state, [key]: Boolean(data.locked) }))
+      toast.success(data.locked
+        ? 'Repas épinglé — les prochaines générations ne le remplaceront pas'
+        : 'Épingle retirée — ce repas redevient remplaçable')
+      if (onReload) onReload()
+    } catch {
+      toast.error('Erreur réseau — épingle non enregistrée')
+    } finally {
+      setPinPending(null)
     }
   }
 
@@ -194,6 +235,15 @@ export default function WeekGrid({
     // Repas couvert par une préparation batch (déjeuners liés par la Routine) → réchauffe.
     const batched = typeMeals.some(m => m.batch_recipe_id)
 
+    // État d'épinglage du créneau (livrable 3.4). `slot_locked` vaut `null`
+    // quand le créneau n'a pas pu être lu : on n'affiche alors pas une épingle
+    // ouverte — « on ne sait pas » et « pas épinglé » ne sont pas la même chose,
+    // et c'est l'override local, s'il existe, qui tranche.
+    const pinKey = `${dateStr}|${type}`
+    const pinned = pinKey in pinOverrides
+      ? pinOverrides[pinKey]
+      : allTypeMeals.some((m) => m.slot_locked === true)
+
     // Plat spécial = déjeuner/dîner où les convives ont des plats DIFFÉRENTS
     // (par exemple une variante végétarienne personnelle). On compare les
     // surnoms (donc une simple différence de portion ne compte pas).
@@ -267,6 +317,26 @@ export default function WeekGrid({
             title="Remplacer ce repas"
           >
             <Pencil size={11} /> Remplacer
+          </button>
+        )}
+        {/* L'épingle ne vaut que là où un créneau porte une recette : les
+            petits-déjeuners et collations sont des rotations codées en dur
+            (§8 du plan), il n'y a rien à y protéger d'une régénération. */}
+        {importId && clickable && (
+          <button
+            type="button"
+            className={`wg-meal-pin${pinned ? ' on' : ''}`}
+            onClick={(event) => { event.stopPropagation(); togglePin(dateStr, type, pinned) }}
+            disabled={!!pinPending}
+            aria-pressed={pinned}
+            aria-label={pinned
+              ? `Retirer l’épingle du ${label.toLowerCase()} du ${dateStr}`
+              : `Épingler le ${label.toLowerCase()} du ${dateStr}`}
+            title={pinned
+              ? 'Épinglé — les régénérations ne le remplaceront pas. Cliquer pour dépingler.'
+              : 'Épingler : les régénérations ne remplaceront plus ce repas'}
+          >
+            {pinned ? <Pin size={11} /> : <PinOff size={11} />} {pinned ? 'Épinglé' : 'Épingler'}
           </button>
         )}
         <button
