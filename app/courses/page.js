@@ -7,16 +7,73 @@ import { authFetch } from '@/lib/authFetch'
 import { useRouter } from 'next/navigation'
 import {
   ShoppingCart, Check, Package, ChevronLeft, ChevronRight,
-  RefreshCw, ImageOff, Camera, X, MoreHorizontal,
+  RefreshCw, ImageOff, Camera, X, MoreHorizontal, Copy,
 } from 'lucide-react'
 import Link from 'next/link'
 import { getFoodEmoji } from '@/lib/foodEmoji'
+import { exporterListeCourses } from '@/lib/domain/courses/exportListe'
 import StoragePlanSheet from '@/components/StoragePlanSheet'
 import IngredientReviewPanel from '@/components/IngredientReviewPanel'
 import EstimationCourses from '@/components/pricing/EstimationCourses'
 import './courses.css'
 
 const RAYON_TINTS = ['#E4EBDC', '#F1E9D4', '#EFD9D0', '#E8E2D2', '#EADFCB', '#DEE7EC']
+
+/**
+ * Écrit un texte dans le presse-papiers, et dit ce qui s'est passé.
+ *
+ * `navigator.clipboard` n'existe que dans un contexte sécurisé (HTTPS, ou
+ * localhost) et peut en plus être refusé par la permission du navigateur : sur
+ * un téléphone qui ouvre l'application par son adresse IP en réseau local — le
+ * cas le plus probable ici — l'objet est tout simplement absent. On essaie donc
+ * d'abord l'API moderne, puis le repli historique (zone de texte hors écran et
+ * `document.execCommand('copy')`), qui n'exige pas de contexte sécurisé.
+ *
+ * Quand les deux échouent, la fonction ne lève pas et ne se tait pas : elle rend
+ * la raison, et l'appelant montre le texte à l'écran pour une copie manuelle.
+ * Un échec silencieux laisserait croire à une liste copiée, et c'est devant
+ * l'étal qu'on s'en apercevrait.
+ *
+ * @returns {Promise<{ ok: boolean, voie?: string, raison?: string }>}
+ */
+async function ecrireDansPressePapiers(texte) {
+  if (typeof navigator !== 'undefined' && navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(texte)
+      return { ok: true, voie: 'clipboard' }
+    } catch {
+      // Permission refusée ou contexte non sécurisé : on tente le repli.
+    }
+  }
+
+  try {
+    if (typeof document !== 'undefined' && typeof document.execCommand === 'function') {
+      const zone = document.createElement('textarea')
+      zone.value = texte
+      zone.setAttribute('readonly', '')
+      // Hors écran mais focusable : `display: none` empêcherait la sélection.
+      zone.style.position = 'fixed'
+      zone.style.top = '-1000px'
+      zone.style.opacity = '0'
+      document.body.appendChild(zone)
+      zone.select()
+      zone.setSelectionRange(0, texte.length)
+      const copie = document.execCommand('copy')
+      document.body.removeChild(zone)
+      if (copie) return { ok: true, voie: 'execCommand' }
+    }
+  } catch {
+    // Repli indisponible lui aussi : on tombe dans la copie manuelle.
+  }
+
+  const nonSecurise = typeof window !== 'undefined' && window.isSecureContext === false
+  return { ok: false, raison: nonSecurise ? 'contexte_non_securise' : 'refus_navigateur' }
+}
+
+const MESSAGES_COPIE_MANUELLE = {
+  contexte_non_securise: 'Le presse-papiers du navigateur n’est accessible qu’en HTTPS (ou sur localhost). Cette page est servie sans contexte sécurisé : la copie automatique est impossible ici.',
+  refus_navigateur: 'Le navigateur a refusé l’accès au presse-papiers.',
+}
 
 export default function CoursesPage() {
   const router = useRouter()
@@ -63,6 +120,12 @@ export default function CoursesPage() {
   // ── Feuille de rangement ─────────────────────────────────────────────────────
   const [showStorageSheet, setShowStorageSheet] = useState(false)
   const [storageItems, setStorageItems]         = useState([]) // snapshot stable
+
+  // ── Copie de la liste ────────────────────────────────────────────────────────
+  // Renseigné seulement quand le presse-papiers n'a pas pu être écrit : il porte
+  // alors le texte à copier à la main et la raison de l'échec.
+  const [copieManuelle, setCopieManuelle] = useState(null) // { texte, raison, articles }
+  const zoneCopieRef = useRef(null)
 
   // ── Toast ────────────────────────────────────────────────────────────────────
   const [toast, setToast] = useState(null) // { id, msg, kind }
@@ -293,6 +356,50 @@ export default function CoursesPage() {
       showToast(msg, errors > 0 ? 'warn' : 'ok')
     }
   }
+
+  // ── Copier la liste ──────────────────────────────────────────────────────────
+
+  /**
+   * Compose le texte de la semaine affichée et l'écrit dans le presse-papiers.
+   *
+   * Le filtre de semaine est laissé au module d'export plutôt que de lui passer
+   * `filteredItems` : la règle « quelles lignes partent » n'a qu'un seul endroit
+   * où elle est écrite, et c'est celui que le test vérifie.
+   */
+  async function copierLaListe() {
+    const { texte, compte, anomalies } = exporterListeCourses(items, { semaine: activeWeek })
+    if (compte.articles === 0) {
+      showToast('Aucun article à copier pour cette semaine.', 'warn')
+      return
+    }
+
+    const resultat = await ecrireDansPressePapiers(texte)
+    if (!resultat.ok) {
+      setCopieManuelle({ texte, raison: resultat.raison, articles: compte.articles })
+      return
+    }
+
+    // Les articles sans quantité et les rayons non déclarés sont dans le texte,
+    // mais on le dit : une liste incomplète qui ne se signale pas est pire
+    // qu'une liste courte.
+    const reserves = []
+    if (anomalies.articles_sans_quantite.length > 0) {
+      reserves.push(`${anomalies.articles_sans_quantite.length} sans quantité`)
+    }
+    if (anomalies.rayons_non_declares.length > 0) {
+      reserves.push(`${anomalies.rayons_non_declares.length} rayon${anomalies.rayons_non_declares.length > 1 ? 's' : ''} hors parcours`)
+    }
+    const base = `${compte.articles} article${compte.articles > 1 ? 's' : ''} copié${compte.articles > 1 ? 's' : ''}`
+    showToast(reserves.length ? `${base} · ${reserves.join(' · ')}` : base, reserves.length ? 'warn' : 'ok')
+  }
+
+  // La zone de copie manuelle s'ouvre déjà sélectionnée : il ne reste que
+  // Ctrl/⌘ + C à faire.
+  useEffect(() => {
+    if (!copieManuelle || !zoneCopieRef.current) return
+    zoneCopieRef.current.focus()
+    zoneCopieRef.current.select()
+  }, [copieManuelle])
 
   /** Ouvre la feuille de rangement avec un snapshot des articles à ranger. */
   function openStorageSheet() {
@@ -640,6 +747,16 @@ export default function CoursesPage() {
             <span className="v">{remaining}</span>
             <span className="l">à acheter</span>
           </div>
+          {/* Sortie de la liste : presse-papiers. Le partage natif et le PDF
+              viennent plus tard — l'ordre est celui de l'usage réel. */}
+          <button
+            className="v21-btn ghost sm cou-copy-btn"
+            onClick={copierLaListe}
+            title="Copier la liste de la semaine affichée"
+            aria-label="Copier la liste de courses"
+          >
+            <Copy size={13} /> Copier la liste
+          </button>
           {/* Menu secondaire ⋯ */}
           <div className="cou-overflow-wrap">
             <button
@@ -911,6 +1028,31 @@ export default function CoursesPage() {
           onItemStored={handleItemStored}
           onDone={handleSheetDone}
         />
+      )}
+
+      {/* ── Copie manuelle : le presse-papiers n'a pas pu être écrit ── */}
+      {copieManuelle && typeof document !== 'undefined' && createPortal(
+        <div className="cou-copy-overlay" onClick={() => setCopieManuelle(null)}>
+          <div className="cou-copy-panel" role="dialog" aria-modal="true" aria-labelledby="cou-copy-title" onClick={e => e.stopPropagation()}>
+            <div className="cou-copy-head">
+              <span className="cou-copy-title" id="cou-copy-title">Copie à faire à la main</span>
+              <button className="cou-copy-close" onClick={() => setCopieManuelle(null)} aria-label="Fermer"><X size={16} /></button>
+            </div>
+            <p className="cou-copy-msg">
+              {MESSAGES_COPIE_MANUELLE[copieManuelle.raison] || 'Le presse-papiers n’a pas pu être écrit.'}
+              {' '}La liste ({copieManuelle.articles} article{copieManuelle.articles > 1 ? 's' : ''}) est ci-dessous, déjà sélectionnée : Ctrl + C, ou ⌘ + C.
+            </p>
+            <textarea
+              ref={zoneCopieRef}
+              className="cou-copy-zone"
+              readOnly
+              value={copieManuelle.texte}
+              onFocus={e => e.target.select()}
+              aria-label="Texte de la liste de courses à copier"
+            />
+          </div>
+        </div>,
+        document.body
       )}
 
       {/* ── Toast discret ── */}
