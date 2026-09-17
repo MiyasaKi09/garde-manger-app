@@ -103,6 +103,12 @@ export async function POST(request) {
 
     const members = membersResult.data || []
     const servings = Math.max(1, members.reduce((sum, member) => sum + (Number(member.portion_multiplier) || 1), 0))
+    // Second site d'appel du catalogue opérationnel. Comme la génération, il ne
+    // passe aucune borne : `listOperationalRecipes` pagine jusqu'à épuisement
+    // depuis 0a.3. Proposer cinq alternatives choisies parmi les cent premières
+    // recettes par ordre alphabétique de code n'était pas un choix, c'était le
+    // plafond de la RPC. Le test
+    // `tests/db/paginationCatalogueOperationnel.test.js` relit cet appel.
     const catalog = await listOperationalRecipes(supabase, { servings })
     const recipes = catalog.recipes.filter(isMealSuitableRecipe)
     const byCode = new Map(recipes.map((recipe) => [recipe.code, recipe]))

@@ -1,0 +1,100 @@
+RAPPORT DE QUALITÉ — dix-huit chiffres, trois semaines consécutives
+
+Produit par tests/planning/rapportQualiteSemaine.test.js, régénéré à chaque exécution de la suite.
+Ce fichier RAPPORTE les dix-huit critères du §9.1 de docs/PLAN_FINIR_MYKO.md ; le test n'en EXIGE que deux,
+P8 et P11, les seuls que le plan déclare déjà tenus. Les seize autres sont des mesures, pas des portes.
+
+Protocole : trois semaines consécutives (2026-09-21, 2026-09-28, 2026-10-05), historique cumulé, sans stock.
+Paramètres de app/api/planning/generate-v3/route.js : faisceau 48, maxMinutesByMeal {"dejeuner":120,"diner":240}, preferredActiveMinutes 30,
+cible par repas {"kcal":707,"proteinG":51,"carbsG":72.6,"fatG":23.7,"fiberG":9.8}.
+Foyer : Julien 2357 kcal / 216 g ; Zoé 1525 kcal / 75 g.
+Corpus : 754 recettes, 568 publiables, 515 servables (chemin JSON du dépôt).
+Périmètre — ce que ce rapport NE fait PAS comme la route de production : il planifie sur les 568 publiables, sans le filtre isMealSuitableRecipe (aucun des codes servis ici n'en serait écarté)
+et sans l'élagage selectPlanningRecipePool(maxCandidates: 400) du livrable 0a.4, qui ne présente au faisceau que 460 candidats.
+C'est le protocole du §2.3 du plan, conservé pour que les dix-huit lignes restent comparables aux siennes :
+il mesure le moteur sur le corpus du dépôt, pas le vivier que la route lui présente.
+
+─── LES DIX-HUIT LIGNES ───
+
+P1  · Plats distincts sur 14 créneaux, et reprises sur trois semaines · mesuré : 12, 12, 12 distincts par semaine ; 35 distincts sur 42 créneaux, 5 plat(s) servi(s) plus d'une fois, dont 1 d'une semaine à l'autre · cible : ≥ 12 par semaine, et 0 reprise sur trois semaines
+P2  · Part des créneaux sur pâtes, et féculent dominant · mesuré : pâtes 8/42 = 19,0 % (28,6 %, 21,4 %, 7,1 %) ; féculent dominant par semaine : pates 4/14 = 28,6 %, pomme_de_terre 6/14 = 42,9 %, legumineuses 2/14 = 14,3 % · cible : ≤ 15 % de pâtes, aucun féculent au-dessus de 25 %
+P3  · Part des repas dont la protéine principale est un laitier ou un œuf · mesuré : 11/42 = 26,2 % (4/14, 2/14, 5/14) · cible : ≤ 20 % — et ces deux familles sont aujourd'hui exemptées du plafond de weeklyBalance.js
+P4  · Julien — jours à ≥ 85 % de sa cible protéique · mesuré : 3/7, 0/7, 1/7 ; protein_gate_relaxed 4/7, 7/7, 6/7 ; cible lue : 216 g déclarés — le calcul depuis le poids CIBLE est le livrable 1.3, il n'existe pas · cible : ≥ 6 jours sur 7, contre une cible calculée depuis le poids cible
+P5  · Ratio de portion entre les deux assiettes d'un même plat · mesuré : maxima 1,86, 2,00, 2,00 ; moyennes 1,43, 1,34, 1,41 sur 10, 11, 10 plats partagés · cible : ≤ 1,3
+P6  · Repas carnés de chacun sur la semaine · mesuré : Julien 4/14, 3/14, 4/14 ; Zoé 0/14, 0/14, 0/14 ; quota par personne (meat_meals_per_week) non déclaré dans le dépôt — livrable 1.1 · cible : le quota déclaré de chacun ± 1 (§8 : Julien 4, Zoé 2 par défaut)
+P7  · Substitutions hors lignée quand un jumeau de même lignée existe · mesuré : 6/11 (1/4, 1/3, 4/4) ; mesuré sur le chemin JSON du dépôt — la RPC opérationnelle ne publie pas derivedFrom, donc 0 lignée en production (§0.3) · cible : 0 hors lignée quand un jumeau existe
+P8  · Faux végétariens — servis, et origines non tranchées au corpus · mesuré : 0 au total : 0 faux végétarien(s) parmi les 11 substitutions végétariennes servies sur trois semaines (relues ingrédient requis par ingrédient requis, origines du catalogue), 0 recette(s) du corpus portant une origine « inconnu » sur 568 publiables ; réserve rapportée, non exigée : 12 recette(s) végétarienne(s) à ingrédient carné FACULTATIF (livrable 3.6) · cible : 0 — critère EXIGÉ par ce fichier
+P9  · Plats distincts à cuisiner pour le foyer · mesuré : 15, 14, 16 · cible : ≤ 12
+P10 · Minutes de cuisine par semaine — préparation active engagée (définition retenue au §8) · mesuré : engagée 325, 340, 320 ; préparation active si tout est frais 415, 405, 410 ; préparation + cuisson, tout frais 1250, 1465, 1140 ; réchauffages non comptés dans la définition retenue 20, 20, 20 ; verdict : 0/3 semaine(s) sous la cible de 300 min, dépassement de 20 à 40 min · cible : ≤ 300 minutes de préparation active engagée — cible refixée avec la définition (§8)
+P11 · Productions dont la conservation déclarée contredit le plan · mesuré : 0 sur 6 production(s) planifiée(s) · cible : 0 — critère EXIGÉ par ce fichier
+P12 · Plats liés à une base partagée · mesuré : 0/568 recettes du corpus portent un ingredient.component ; 0/42 créneaux en tirent parti · cible : ≥ 120 plats liés, et ≥ 4 repas par semaine qui en profitent, mesurés sur le chemin base
+P13 · Cuisines distinctes sur trois semaines · mesuré : 17 libellés bruts ; libellé le plus servi france 12/42 = 28,6 % ; France en regroupant les libellés composites par préfixe 21/42 = 50,0 % — regroupement mécanique, data/recipes/arbitrations/cuisines.json absent (livrable 3.1) · cible : ≥ 8 cuisines, aucune au-dessus de 40 %, libellés composites normalisés par arbitrage relu
+P14 · Retour de goût atteignable depuis le planning · mesuré : non — 0 appelant de /api/meals/feedback dans app/, components/ et lib/ ; le comptage des lignes de meal_taste_feedback demande la base, hors de portée de la CI · cible : oui, et lu par la génération suivante
+P15 · Recettes servables ayant passé toutes les portes · mesuré : 515 servables sur 568 publiables et 754 recettes au corpus — chemin JSON du dépôt ; ce que la base qualifie et ce que la RPC rend ne se mesurent pas depuis la CI (§2.1) · cible : 3 000, sans qu'aucune porte soit assouplie
+P16 · Temps de résolution d'une semaine · mesuré : 6,3 s, 7,7 s, 5,8 s pour 568 recettes (≈ 11,7 ms par recette) — dépend de la machine, un écart sur cette seule ligne n'est pas une régression · cible : ≤ 10 s à 3 000 recettes
+P17 · La liste de courses sort de l'application · mesuré : sans objet — lib/domain/courses/exportListe.js absent, et 0 occurrence de navigator.clipboard ou navigator.share dans app/, components/, lib/ (livrable 0a bis puis 3.5) · cible : trois sorties testées contre nutrition_plan_shopping_items
+P18 · Un chiffre affiché est calculé ou absent · mesuré : sans objet — docs/CONTRAT_CHIFFRES.md absent, aucun test de corpus ne porte le contrat des chiffres (livrable 3.6) · cible : les mêmes macros par portion sur les trois écrans, aucun chiffre non calculable rendu comme un nombre
+
+─── ANNEXE : ce qui permet de contester un chiffre ───
+
+Semaine du 2026-09-21 — statut published
+  2026-09-21 dejeuner VAR-015      fresh               féculent aucun          protéine laitiers       cuisine grece · production useBy 2026-09-25 → 2026-09-22-diner
+  2026-09-21 diner    SRC-038-D3   fresh               féculent pain           protéine boeuf          cuisine france · production useBy 2026-09-24 → 2026-09-23-dejeuner
+  2026-09-22 dejeuner VAR-029      fresh               féculent pates          protéine saumon         cuisine russie
+  2026-09-22 diner    VAR-015      planned_production  féculent aucun          protéine laitiers       cuisine grece
+  2026-09-23 dejeuner SRC-038-D3   planned_production  féculent pain           protéine boeuf          cuisine france
+  2026-09-23 diner    PROT-002     fresh               féculent legumineuses   protéine cabillaud      cuisine portugal alentejo
+  2026-09-24 dejeuner JUM-001      fresh               féculent pates          protéine lentilles      cuisine france cuisine domestique internationale
+  2026-09-24 diner    JUM-113      fresh               féculent aucun          protéine vegetal        cuisine italie
+  2026-09-25 dejeuner JUM-003      fresh               féculent legumineuses   protéine laitiers       cuisine inde du nord
+  2026-09-25 diner    JUM-053      fresh               féculent aucun          protéine vegetal        cuisine france
+  2026-09-26 dejeuner JUM-064      fresh               féculent pates          protéine vegetal        cuisine france cuisine domestique internationale
+  2026-09-26 diner    PROT-008     fresh               féculent aucun          protéine poulet         cuisine louisiane
+  2026-09-27 dejeuner PROT-007     fresh               féculent legumineuses   protéine veau           cuisine maroc
+  2026-09-27 diner    SRC-029-D2   fresh               féculent pates          protéine laitiers       cuisine france
+  substitutions :
+    2026-09-21 diner Zoé → JUM-004 (vegetarian_swap_lineage, même lignée)
+    2026-09-23 dejeuner Zoé → JUM-004 (vegetarian_swap_lineage, même lignée)
+    2026-09-26 diner Zoé → JUM-123 (vegetarian_swap_lineage, même lignée)
+    2026-09-27 dejeuner Zoé → VAR-019 (vegetarian_swap, HORS LIGNÉE)
+
+Semaine du 2026-09-28 — statut published — issues : fish_quota, fatty_fish_min, cuisine_returned_too_soon, cuisine_returned_too_soon
+  2026-09-28 dejeuner SRC-019-D4   fresh               féculent semoule        protéine poisson        cuisine france · production useBy 2026-09-30 → 2026-09-29-diner
+  2026-09-28 diner    REAL-295     fresh               féculent pomme_de_terre protéine boeuf          cuisine hongrie · production useBy 2026-10-01 → 2026-09-30-dejeuner
+  2026-09-29 dejeuner DEN-007      fresh               féculent pates          protéine fruits_de_mer  cuisine italie cuisine domestique
+  2026-09-29 diner    SRC-019-D4   planned_production  féculent semoule        protéine poisson        cuisine france
+  2026-09-30 dejeuner REAL-295     planned_production  féculent pomme_de_terre protéine boeuf          cuisine hongrie
+  2026-09-30 diner    REAL-136     fresh               féculent riz            protéine lentilles      cuisine levant
+  2026-10-01 dejeuner SRC-014-D3   fresh               féculent pomme_de_terre protéine oeufs          cuisine france
+  2026-10-01 diner    VAR-043      fresh               féculent pates          protéine vegetal        cuisine italie
+  2026-10-02 dejeuner IT-002       fresh               féculent riz            protéine laitiers       cuisine france cuisine domestique internationale
+  2026-10-02 diner    JUM-043      fresh               féculent pomme_de_terre protéine lentilles      cuisine france sud ouest
+  2026-10-03 dejeuner JUM-042      fresh               féculent pomme_de_terre protéine vegetal        cuisine france
+  2026-10-03 diner    JUM-071      fresh               féculent pates          protéine haricots       cuisine italie
+  2026-10-04 dejeuner IT-007-D2    fresh               féculent aucun          protéine vegetal        cuisine france cuisine domestique internationale
+  2026-10-04 diner    REAL-128     fresh               féculent pomme_de_terre protéine agneau         cuisine grece
+  substitutions :
+    2026-09-28 diner Zoé → JUM-007 (vegetarian_swap_lineage, même lignée)
+    2026-09-30 dejeuner Zoé → JUM-007 (vegetarian_swap_lineage, même lignée)
+    2026-10-04 diner Zoé → JUM-084 (vegetarian_swap, HORS LIGNÉE)
+
+Semaine du 2026-10-05 — statut published — issues : protein_repeat_boeuf, recipe_returned_too_soon, cuisine_returned_too_soon, recipe_family_returned_too_soon, cuisine_returned_too_soon, recipe_returned_too_soon, cuisine_returned_too_soon
+  2026-10-05 dejeuner VAR-015      fresh               féculent aucun          protéine laitiers       cuisine grece · production useBy 2026-10-09 → 2026-10-06-diner
+  2026-10-05 diner    SRC-002-D1   fresh               féculent aucun          protéine boeuf          cuisine france · production useBy 2026-10-08 → 2026-10-07-dejeuner
+  2026-10-06 dejeuner VAR-034      fresh               féculent pates          protéine boeuf          cuisine vietnam
+  2026-10-06 diner    VAR-015      planned_production  féculent aucun          protéine laitiers       cuisine grece
+  2026-10-07 dejeuner SRC-002-D1   planned_production  féculent aucun          protéine boeuf          cuisine france
+  2026-10-07 diner    RAP-038      fresh               féculent aucun          protéine saumon         cuisine france cuisine domestique internationale
+  2026-10-08 dejeuner VAR-025      fresh               féculent semoule        protéine pois_chiches   cuisine maroc
+  2026-10-08 diner    SRC-017-D4   fresh               féculent pain           protéine oeufs          cuisine france
+  2026-10-09 dejeuner PROT-006     fresh               féculent legumineuses   protéine porc           cuisine france bourgogne
+  2026-10-09 diner    JUM-111      fresh               féculent pain           protéine vegetal        cuisine grece
+  2026-10-10 dejeuner IT-006       fresh               féculent pomme_de_terre protéine laitiers       cuisine italie cuisine domestique francaise
+  2026-10-10 diner    VEG-003      fresh               féculent quinoa         protéine vegetal        cuisine france cuisine domestique internationale
+  2026-10-11 dejeuner JUM-112      fresh               féculent legumineuses   protéine vegetal        cuisine france
+  2026-10-11 diner    JUM-083      fresh               féculent quinoa         protéine oeufs          cuisine france bretagne
+  substitutions :
+    2026-10-05 diner Zoé → SRC-040-D2 (vegetarian_swap, HORS LIGNÉE)
+    2026-10-06 dejeuner Zoé → VAR-002 (vegetarian_swap, HORS LIGNÉE)
+    2026-10-07 dejeuner Zoé → SRC-040 (vegetarian_swap, HORS LIGNÉE)
+    2026-10-09 dejeuner Zoé → LEV-002 (vegetarian_swap, HORS LIGNÉE)

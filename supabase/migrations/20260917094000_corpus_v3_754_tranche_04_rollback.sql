@@ -1,0 +1,22 @@
+-- Rollback de la tranche 04 du corpus V3 à 754 recettes.
+--
+-- IL NE SUPPRIME RIEN, et c'est le seul comportement sûr : entre l'application
+-- et le retour en arrière, un plan a pu être publié sur l'une de ces recettes.
+-- Supprimer la version serait refusé par la base — `recipe_executions` la
+-- référence sans clause ON DELETE — et la contourner orphelinerait un repas
+-- déjà cuisiné. Ce qu'un rollback de tranche défait, c'est donc la MISE EN
+-- SERVICE des recettes que la tranche a introduites, exactement comme le dépôt
+-- retire FR-007 : hors du catalogue éditorial (`quality_level` 'D', qui n'admet
+-- que A et B) et hors du planificateur (`planning_eligible = false`), motif
+-- écrit dans `eligibility_issues`. Cette tranche n'en a introduit aucune.
+--
+-- CE QU'IL NE REND PAS. Les autres recettes de cette tranche existaient avant
+-- ce chargement et ont été mises à jour en place. Ce fichier ne restaure pas
+-- leur contenu antérieur : pour cela, il faut rejouer la migration de corpus
+-- précédente, qui est conservée dans ce dépôt
+-- (`20260731120000_corpus_v3_589_variantes.sql`). C'est dit ici plutôt que
+-- laissé à deviner.
+
+-- Cette tranche n'a introduit AUCUNE recette nouvelle : elle n'a mis à jour que
+-- des versions déjà présentes. Il n'y a donc rien à mettre hors service, et ce
+-- fichier n'exécute aucune instruction.

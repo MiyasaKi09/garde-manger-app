@@ -12,7 +12,7 @@ import { buildHouseholdTasteProfile } from '@/lib/domain/planning/tastePreferenc
 import { explainWeek, previewInputs } from '@/lib/domain/planning/planExplanation'
 import { discoveryTarget } from '@/lib/domain/planning/discoveryProfile'
 import { checkPlanInvariants } from '@/lib/domain/planning/planInvariants'
-import { selectPlanningRecipePool } from '@/lib/domain/planning/recipeCandidatePolicy'
+import { PLANNING_POOL_MAX_CANDIDATES, selectPlanningRecipePool } from '@/lib/domain/planning/recipeCandidatePolicy'
 import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/domain/planning/canonicalPlanPayload'
 import { isDishExpired, todayUtcIso } from '@/lib/domain/planning/cookedDishDisplay'
 import { SUPPLEMENT_FORMS } from '@/lib/domain/planning/personalizedMeals'
@@ -461,6 +461,10 @@ export async function POST(request) {
       throw error
     }
     const servings = Math.max(1, members.reduce((sum, member) => sum + (Number(member.portion_multiplier) || 1), 0))
+    // Aucune borne passée ici : depuis 0a.3, `listOperationalRecipes` pagine
+    // jusqu'à épuisement. Y remettre une limite reviendrait à replafonner le
+    // vivier, et le test `tests/db/paginationCatalogueOperationnel.test.js`
+    // relit cet appel pour l'interdire.
     const operationalCatalog = await listOperationalRecipes(supabase, { servings })
     const allRecipes = operationalCatalog.recipes.filter(isMealSuitableRecipe)
     if (!allRecipes.length) throw new Error('Aucune recette complète n\'est disponible pour le planning')
@@ -498,12 +502,19 @@ export async function POST(request) {
     const history = planningHistoryFrom(recentRecipes.rows, allRecipes, windowStart)
     const repetitionRules = resolveRepetitionRules(members, body)
     const fixedRecipeCodes = slots.map((slot) => slot.fixedRecipeCode).filter(Boolean)
+    // Élagage calibré (0a.4) : la valeur est passée EXPLICITEMENT, et la même
+    // aux deux appels. Elle vaut 400, mesurée sur deux séries de six semaines —
+    // le raisonnement complet et la table P1/P2/P3/P4/P16 sont dans
+    // `recipeCandidatePolicy.js`, à côté de la constante. Passée ici plutôt que
+    // laissée au défaut du module pour qu'un lecteur du chemin de production
+    // voie le nombre sans ouvrir une seconde couche.
     const recipes = selectPlanningRecipePool({
       recipes: allRecipes,
       targetByMeal,
       previousWeekRecipeCodes: recentRecipes.previousWeekRecipeCodes,
       fixedRecipeCodes,
       allowPreviousWeek: false,
+      maxCandidates: PLANNING_POOL_MAX_CANDIDATES,
     })
 
     const [{ plannerLots, existingReservations }, { cookedDishes, existingDishReservations }] = await Promise.all([
@@ -556,6 +567,9 @@ export async function POST(request) {
         previousWeekRecipeCodes: recentRecipes.previousWeekRecipeCodes,
         fixedRecipeCodes,
         allowPreviousWeek: true,
+        // Même plafond que le premier appel : un repli qui élaguerait
+        // autrement comparerait deux semaines calculées sur deux viviers.
+        maxCandidates: PLANNING_POOL_MAX_CANDIDATES,
       })
       const fallbackPlan = generateClosedLoopPlan({ slots, recipes: fallbackRecipes, ...planOptions })
       // Le repli n'est retenu que s'il fait réellement mieux : une semaine
@@ -591,6 +605,17 @@ export async function POST(request) {
         ok: true,
         preview: true,
         status: plan.status,
+        // Un aperçu est une génération : il porte le même journal de vivier
+        // que la publication, sans quoi le seul chemin qu'on regarde en
+        // premier serait le seul à ne rien dire du catalogue reçu.
+        catalog: {
+          recipes_received: operationalCatalog.metadata.receivedCount ?? operationalCatalog.recipes.length,
+          recipes_eligible: operationalCatalog.metadata.eligibleCount ?? null,
+          catalog_pages: operationalCatalog.metadata.pageCount ?? null,
+          catalog_complete: operationalCatalog.metadata.complete ?? null,
+          candidate_pool: recipes.length,
+          candidate_cap: PLANNING_POOL_MAX_CANDIDATES,
+        },
         before: previewInputs({
           slots,
           cookedDishes,
@@ -654,6 +679,25 @@ export async function POST(request) {
         personalized_meals: payload.legacy_meals.length,
         changed: slots.filter((slot) => !slot.fixedRecipeCode).length,
         recipes: new Set(payload.slots.map((slot) => slot.recipe_code)).size,
+        // JOURNAL DE GÉNÉRATION (0a.3). Le vivier réellement reçu de la base,
+        // le nombre que la RPC déclare qualifier, le nombre de pages lues, si
+        // la lecture est allée jusqu'au bout, et le plafond d'élagage
+        // effectivement appliqué (0a.4). C'est ce qui permet de constater
+        // qu'un plafond n'est pas revenu en silence — 100 reçus sur 324
+        // qualifiés se lit ici sans ouvrir la base.
+        //
+        // Écarté : une ligne `console.*`. Le dépôt interdit `console.log`
+        // (CLAUDE.md) et `.eslintrc.json` ne tolère que `error` et `warn` ;
+        // un journal d'exploitation normal n'est ni une erreur ni un
+        // avertissement. La réponse de génération est déjà le compte rendu
+        // de la génération : le chiffre y a sa place, il est horodaté par la
+        // requête, et un test peut le lire.
+        recipes_received: operationalCatalog.metadata.receivedCount ?? operationalCatalog.recipes.length,
+        recipes_eligible: operationalCatalog.metadata.eligibleCount ?? null,
+        catalog_pages: operationalCatalog.metadata.pageCount ?? null,
+        catalog_complete: operationalCatalog.metadata.complete ?? null,
+        candidate_pool: recipes.length,
+        candidate_cap: PLANNING_POOL_MAX_CANDIDATES,
         stock_coverage: plan.objectiveScores.stockCoverage,
         shopping_items: payload.shopping_items.length,
         weekly_rule_violations: plan.objectiveScores.weeklyRuleViolations,

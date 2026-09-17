@@ -12,11 +12,18 @@
  *   et jamais de la mémoire — le contenu fait autorité ;
  * - aucun superlatif (pas de « délicieux », « savoureux », « exquis »…).
  *
- * POURQUOI LES 392 PUBLIABLES, PAS LES 576 :
- * Les 184 non-publiables sont bloquées par des formes d'aliments sans
+ * POURQUOI LES PUBLIABLES SEULEMENT :
+ * Les non-publiables sont bloquées par des formes d'aliments sans
  * correspondance stock confirmée. Les poser en description n'apporterait rien
  * au planificateur qui ne peut pas les servir. Elles sont ignorées ici ; un
  * second lot pourra les couvrir quand leur éligibilité sera résolue.
+ *
+ * Compté le 17 septembre 2026 : 754 recettes au corpus, 568 publiables selon
+ * scripts/data/out/recipe-food-match-report.json, 186 non publiables, et 568
+ * entrées dans la table ci-dessous. Les chiffres qui figuraient ici (« 392
+ * publiables, pas les 576 ») dataient d'un état antérieur du corpus et ne
+ * correspondaient plus à rien de mesurable ; ils sont remplacés par la mesure
+ * du jour plutôt que reconduits.
  *
  *   node scripts/data/recipes/assign-dish-descriptions.mjs --dry-run
  *   node scripts/data/recipes/assign-dish-descriptions.mjs
@@ -794,6 +801,72 @@ const DESCRIPTIONS = {
   "RAP-050": "Courgettes non épluchées fondues au bouillon, mixées avec des portions de fromage fondu",
   "RAP-051": "Tomates fondues avec oignon et ail dans un bouillon, sucrées d'une pointe, mixées et crémées",
   "RAP-052": "Bouquets de chou-fleur huilés au paprika et à l'ail, rôtis à four vif jusqu'aux pointes brunies",
+
+  /* ── Jumeaux végétariens ────────────────────────────────────────────── */
+  /*
+   * Les 48 jumeaux portent déjà leur `description_courte` dans le corpus,
+   * posée à leur versement. La table ci-dessous ne les rédige donc pas : elle
+   * les RECOPIE à l'identique depuis data/recipes/corpus-v3.json.
+   *
+   * POURQUOI les recopier plutôt que restreindre la vérification : cette table
+   * est l'outil de rattrapage. Si un jumeau perdait sa description, seule une
+   * entrée ici pourrait la reposer. Une table qui ignore les jumeaux est un
+   * outil qui ne sait pas réparer la moitié récente du corpus — c'est pour
+   * cela que l'autre voie (n'exiger la couverture que hors JUM-) a été
+   * écartée : elle aurait rendu le test vert sans rendre l'outil complet.
+   *
+   * Le code rappelé en fin de ligne est le `derivedFrom` déclaré au corpus,
+   * c'est-à-dire la recette carnée dont le jumeau est la version végétarienne.
+   * Il n'est pas déductible du code JUM- : il est lu, pas deviné.
+   */
+  'JUM-001': "Spaghettis enrobés d'une sauce tomate au soffritto où des lentilles vertes tiennent la place du bœuf haché — le jumeau végétarien de la bolognaise", // ← IT-004
+  'JUM-002': "Cubes de tofu ferme pochés dans un bouillon de légumes avec carottes, poireau et champignons, liés au roux et à la crème — la blanquette de dinde sans la dinde", // ← SRC-008
+  'JUM-003': "Cubes de paneer marinés au yaourt et aux épices, grillés en brochettes avec poivron et oignon rouge, servis sur le dal d'épinards aux lentilles corail du parent", // ← PROT-005
+  'JUM-004': "Feuilles de chou vert blanchies, farcies de lentilles vertes, de riz et de champignons, braisées à couvert dans la tomate et le bouillon — le jumeau végétarien du chou farci", // ← SRC-038
+  'JUM-005': "Patate douce, carottes, chou et pois chiches mijotés dans la sauce d'arachide et de tomate concentrée du mafé, servis sur du riz — le jumeau végétarien du mafé de bœuf", // ← REAL-155
+  'JUM-006': "Morceaux de seitan farinés et dorés, mijotés dans une sauce chasseur au vin rouge, à la tomate, aux olives et au romarin — le jumeau végétarien du pollo alla cacciatora", // ← REAL-095
+  'JUM-007': "Soupe-ragoût hongroise au paprika où des haricots blancs remplacent le bœuf, avec pommes de terre, carottes, poivron et tomate dans un bouillon rouge — le jumeau végétarien du goulash", // ← REAL-295
+  'JUM-031': "Des boulettes de lentilles vertes liées à l'œuf, à la chapelure et au parmesan, dorées puis finies dans une sauce tomate à l'oignon — le jumeau végétarien des boulettes de bœuf", // ← FR-019
+  'JUM-032': "Haricots rouges écrasés, oignon, cumin et paprika, liés à l'œuf et à la chapelure, roulés en boulettes et dorés à la poêle — le jumeau végétarien des boulettes de viande", // ← RAP-017
+  'JUM-033': "Champignons de Paris sautés à feu vif puis liés dans une sauce à l'oignon, au vin blanc, à la moutarde, au paprika et à la crème — le jumeau végétarien du bœuf Stroganoff", // ← VAR-027
+  'JUM-041': "Le cake salé de la lignée FR-028 où la feta prend la place du jambon : même appareil farine-œufs-lait, mêmes olives vertes, même gruyère, même heure de four.", // ← FR-028
+  'JUM-042': "La tartiflette de la lignée REAL-075 sans lardons : des cubes de tofu fumé dorés à la poêle prennent leur place sous les mêmes pommes de terre, le même oignon au vin blanc et le même reblochon fendu.", // ← REAL-075
+  'JUM-043': "Le parmentier de la lignée FR-037 où la lentille verte remplace le confit : même purée de pommes de terre au lait et au beurre, même oignon fondu, même croûte de comté.", // ← FR-037
+  'JUM-051': "Des barquettes de courgette évidées, garnies d'une farce de lentilles vertes, d'oignon et de feta relevée au cumin, rôties au four dans un fond de tomate — le jumeau végétarien des courgettes farcies.", // ← SRC-010
+  'JUM-052': "Du seitan doré puis braisé dans la bière avec une compotée d'oignons, lié par des tranches de pain d'épices moutardées — le jumeau végétarien de la carbonade flamande.", // ← FR-003
+  'JUM-053': "Des haricots blancs mijotés à la tomate avec des saucisses végétales rissolées et des dés de tofu fumé, gratinés sous une croûte de chapelure — le jumeau végétarien du cassoulet.", // ← SRC-036
+  'JUM-054': "Des tranches de tofu ferme saisies puis laquées dans une réduction de sauce soja, de saké et de sucre parfumée au gingembre — le jumeau végétarien du poulet teriyaki, même laque et même geste.", // ← VAR-032
+  'JUM-055': "Des cubes de tofu dorés au wok, remis sur des légumes sautés dans l'ordre de leur fermeté et enrobés de sauce soja, finis à l'huile de sésame et à la coriandre — le jumeau végétarien du wok de poulet.", // ← DEN-015
+  'JUM-061': "Des champignons de Paris fondus avec des oignons blondis au paprika doux, liés hors du feu à la crème aigre et à la farine — le gombapaprikás hongrois, jumeau végétarien du chicken paprikash.", // ← REAL-296
+  'JUM-062': "Du tofu ferme mariné au citron et à la moutarde, saisi puis mijoté dans une compotée d'oignons au piment et au laurier — le yassa sénégalais dans sa version végétarienne.", // ← REAL-154
+  'JUM-063': "Des cubes de tofu dorés puis braisés dans un mélange de vinaigre, de sauce soja, d'ail et de laurier réduit jusqu'à napper — l'adobong tokwa philippin, jumeau végétarien du chicken adobo.", // ← REAL-259
+  'JUM-064': "Des spaghettis liés hors du feu à une crème de jaunes d'œufs et de pecorino, où des bâtonnets de courgette dorés à l'huile prennent la place du guanciale — la carbonara di zucchine italienne.", // ← IT-003
+  'JUM-065': "Des raviolis chinois pliés à la main, farcis de chou chinois, de champignons et d'œuf brouillé relevés au gingembre et à la ciboulette chinoise, pochés à l'eau ou saisis à la poêle.", // ← REAL-200
+  'JUM-071': "Soupe de sept légumes mouillée au bouillon de légumes, portant ses haricots blancs et ses petites pâtes dans le même bol — le jumeau végétarien du minestrone, dont seul le bouillon rendait la lignée carnée.", // ← IT-008
+  'JUM-072': "Soupe algéroise tomatée aux vermicelles, portée par les pois chiches à la place de l'agneau, parfumée à la cannelle, au paprika et à la coriandre fraîche jetée hors du feu.", // ← VAR-022
+  'JUM-073': "Soupe de betterave râpée, de chou blanc et de pommes de terre, acidulée au vinaigre et portée par des haricots blancs à la place du bœuf — le bortsch maigre, servi avec sa cuillerée de crème aigre.", // ← VAR-026
+  'JUM-074': "Fond de pâte brisée garni de dés de tofu fumé rissolés et de gruyère, noyés dans l'appareil œufs-crème-lait de la quiche lorraine — le jumeau végétarien du plat, dont seuls les lardons étaient carnés.", // ← FR-005
+  'JUM-081': "Compotée de poivrons rouges et verts, d'oignon et de tomate au piment d'Espelette, dans laquelle les œufs finissent de cuire à couvert — le jumeau végétarien du poulet basquaise, dont seule la volaille était carnée.", // ← FR-008
+  'JUM-082': "Pois chiches et pommes de terre mijotés dans la pâte vinaigrée d'ail, de gingembre et de piments du vindaloo — le jumeau végétarien du vindaloo de porc, dont la marinade au vinaigre passe telle quelle à la légumineuse.", // ← REAL-187
+  'JUM-083': "Galette de sarrasin garnie de champignons de Paris poêlés à l'échalote, d'un œuf miroir et de fromage râpé — le jumeau végétarien de la galette complète, dont seul le jambon était carné.", // ← RAP-044
+  'JUM-084': "Endives braisées jusqu'à ce qu'elles soient tendres, nappées d'une béchamel muscadée où fond le fromage, puis gratinées — le jumeau végétarien des endives au jambon, dont le fromage prend la place des tranches.", // ← FR-022
+  'JUM-091': "Tofu ferme pressé, mariné une nuit dans une purée de piment scotch bonnet, piment de la Jamaïque, thym et ciboule, puis grillé jusqu'à ce que la marinade caramélise", // ← REAL-288
+  'JUM-092': "Tranches de tofu ferme dorées à la fécule puis glacées dans les trois liquides taïwanais — huile de sésame, sauce soja et vin de riz — avec de l'ail entier, du gingembre et une poignée de basilic jetée hors du feu", // ← REAL-210
+  'JUM-093': "La César sans poulet : romaine, croûtons de pain frottés à l'ail et pois chiches rôtis au paprika, liés d'une sauce montée au jaune d'œuf, moutarde et parmesan", // ← RAP-027
+  'JUM-094': "Tranches d'aubergine dégorgées au gros sel, panées à l'anglaise dans une chapelure au parmesan et dorées à la poêle, servies chaudes", // ← VAR-003
+  'JUM-095': "Chaussons argentins de pâte à l'huile d'olive, farcis d'un sofrito d'oignon au cumin et au paprika lié de lentilles brunes fondantes, avec des olives vertes, et cuits au four", // ← REAL-280
+  'JUM-101': "La version sans viande de l'arancino sicilien : riz safrané cuit par absorption, champignons de Paris poêlés à sec et petits pois, cœur de mozzarella, panure et friture.", // ← REAL-097
+  'JUM-102': "Croquettes espagnoles à la béchamel très épaisse, où les champignons poêlés à sec remplacent le jambon serrano ; panées, frites, coulantes à cœur.", // ← REAL-109
+  'JUM-103': "L'omelette paysanne sans son lard : pommes de terre rissolées, oignons blondis, œufs roulés encore crémeux et ciboulette ciselée.", // ← SRC-016
+  'JUM-104': "Le croque-monsieur dont la tranche de jambon cède la place à des tomates égouttées et des champignons poêlés : même pain de mie, même béchamel, même gruyère gratiné.", // ← FR-023
+  'JUM-111': "Le gyros de VAR-013 sans son poulet : des champignons marinés au paprika, au cumin et à l'origan, saisis à feu vif, dans un pita avec la sauce au yaourt et au concombre et les mêmes crudités.", // ← VAR-013
+  'JUM-112': "Les lentilles au lard de SRC-042 avec du tofu fumé à la place des lardons : mêmes lentilles vertes, mêmes carottes, oignon, thym, laurier et girofle, même cocotte.", // ← SRC-042
+  'JUM-113': "Les bucatini all'amatriciana de REAL-101 avec du tofu fumé à la place du guanciale : même tomate pelée, même pecorino, même pâte creuse finie dans la sauce.", // ← REAL-101
+  'JUM-114': "Le salmorejo cordouan de REAL-115 sans son jambon : la même crème froide de tomate, de pain et d'huile d'olive, garnie du seul œuf dur écrasé.", // ← REAL-115
+  'JUM-115': "Le poulet aux poivrons de RAP-035 avec du tofu ferme à la place de la volaille : mêmes trois couleurs de poivron, même oignon, même ail et même gingembre, même feu vif.", // ← RAP-035
+  'JUM-121': "L'avgolemono grec sans son poulet : bouillon de légumes, riz rond cuit jusqu'à l'amidon, pois chiches, et la même liaison d'œufs battus au jus de citron, montée hors du feu.", // ← REAL-129
+  'JUM-122': "Le croque-madame sans jambon : des pousses d'épinard tombées à la poêle et pressées remplacent la tranche de charcuterie, entre deux couches d'emmental, sous le gruyère gratiné et l'œuf au plat.", // ← SRC-011
+  'JUM-123': "Le plat louisianais des lundis, sans viande : haricots rouges mijotés sur la trinité poivron-céleri-oignon au paprika fumé, liés par leur propre amidon et servis sur du riz long.", // ← PROT-008
 }
 
 /* ── Application au corpus ──────────────────────────────────────────── */
