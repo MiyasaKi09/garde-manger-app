@@ -16,6 +16,7 @@ import {
   chargePartageListe,
   documentImprimableListe,
 } from '@/lib/domain/courses/exportListe'
+import { sourceDeVeriteDeLaListe } from '@/lib/domain/courses/sourceDeVerite'
 import StoragePlanSheet from '@/components/StoragePlanSheet'
 import IngredientReviewPanel from '@/components/IngredientReviewPanel'
 import EstimationCourses from '@/components/pricing/EstimationCourses'
@@ -198,6 +199,17 @@ export default function CoursesPage() {
     ).length
     return { ready, toConfirm }
   }, [items])
+
+  // ── Qui détient la liste affichée (livrable 4.5) ─────────────────────────────
+  //
+  // La même règle que la route `/api/courses/rebuild`, lue dans le même module :
+  // deux endroits qui trancheraient chacun de leur côté finiraient par ne plus
+  // trancher pareil. Quand la demande canonique tient la liste, la
+  // reconstruction héritée n'a plus rien à rendre — mesuré : elle retire 97 des
+  // 100 articles d'une semaine publiée et n'en laisse aucun visible — et le
+  // bouton qui l'appelle disparaît. Sur un plan ancien, elle reste le seul
+  // chemin vers une liste reliée au stock, et le bouton reste.
+  const veriteDeLaListe = useMemo(() => sourceDeVeriteDeLaListe(items), [items])
 
   // ── Chargement ───────────────────────────────────────────────────────────────
   async function loadItems(imp) {
@@ -625,7 +637,10 @@ export default function CoursesPage() {
         const res2 = await authFetch(`/api/planning/imports/${importId}`)
         const d2 = await res2.json()
         setItems(d2.shoppingItems || [])
-        setFetchResult({ items: data.items, mode: data.mode, inStock: data.inStock, recipesCreated: data.recipesCreated })
+        setFetchResult({
+          items: data.items, mode: data.mode, inStock: data.inStock,
+          recipesCreated: data.recipesCreated, converged: Boolean(data.converged),
+        })
       }
     } catch (err) {
       setFetchResult({ error: err.message })
@@ -898,15 +913,18 @@ export default function CoursesPage() {
               <>
                 <div className="cou-overflow-backdrop" onClick={() => setMenuOpen(false)} />
                 <div className="cou-overflow-dropdown" role="menu">
-                  <button
-                    className="cou-overflow-item"
-                    role="menuitem"
-                    onClick={handleRebuild}
-                    disabled={rebuilding}
-                  >
-                    <RefreshCw size={13} />
-                    {rebuilding ? 'Synchro…' : 'Synchroniser le stock'}
-                  </button>
+                  {!veriteDeLaListe.couverte && (
+                    <button
+                      className="cou-overflow-item"
+                      role="menuitem"
+                      onClick={handleRebuild}
+                      disabled={rebuilding}
+                      title="Plan ancien : reconstruit la liste depuis les repas et la relie au stock"
+                    >
+                      <RefreshCw size={13} />
+                      {rebuilding ? 'Synchro…' : 'Synchroniser le stock'}
+                    </button>
+                  )}
                   <button
                     className="cou-overflow-item"
                     role="menuitem"
@@ -964,7 +982,9 @@ export default function CoursesPage() {
         <div className={`cou-result ${fetchResult.error ? 'error' : 'ok'}`}>
           {fetchResult.error
             ? fetchResult.error
-            : fetchResult.items != null
+            : fetchResult.converged
+              ? `Liste tenue par la demande canonique — ${fetchResult.items} article${fetchResult.items > 1 ? 's' : ''} inchangé${fetchResult.items > 1 ? 's' : ''}`
+              : fetchResult.items != null
               ? (fetchResult.mode === 'enriched'
                   ? `${fetchResult.items} articles reliés au stock${fetchResult.inStock > 0 ? ` · ${fetchResult.inStock} déjà en stock` : ''}`
                   : `Liste recalculée — ${fetchResult.items} article${fetchResult.items > 1 ? 's' : ''}`)
