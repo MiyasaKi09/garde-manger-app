@@ -27,15 +27,48 @@
  *
  * Sortie non nulle dès la première violation : appelable tel quel en CI.
  */
-import { readFileSync, existsSync } from 'node:fs'
+import { readFileSync, existsSync, readdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
-const REFERENTIEL_PAR_DEFAUT = join(ROOT, 'data', 'prices', 'reference-fr.json')
+/**
+ * LE RÉFÉRENTIEL RÉELLEMENT EMPLOYÉ, ET LE PIÈGE QU'IL CORRIGE — livrable 3.6.
+ *
+ * Ce script cherchait `data/prices/reference-fr.json`, le fichier unique que le
+ * §9 du contrat prévoit « à terme ». IL N'EXISTE PAS. Ce que l'application lit
+ * est le dossier `data/prices/tranches/`, recollé à la lecture par
+ * `lib/domain/pricing/priceIndex.js` (onze fichiers, 259 relevés au
+ * 17 septembre 2026). Le contrôle répondait donc « rien à contrôler » et
+ * sortait en 0 — une porte verte sur un fichier absent, pendant que 259 prix
+ * réellement servis n'étaient vérifiés par personne. C'est la réserve (b) du
+ * livrable 3.6 de `docs/PLAN_FINIR_MYKO.md`, et le §2.2 du plan la nomme.
+ *
+ * DEUX CHANGEMENTS, ET UN SEUL PRINCIPE : ce qu'on contrôle est ce qu'on sert.
+ *   1. sans argument, le script contrôle TOUTES les tranches du dossier ;
+ *   2. un dossier vide ou absent ÉCHOUE au lieu de passer. Un contrôle qui ne
+ *      trouve rien à contrôler ne dit pas que tout va bien : il dit qu'il ne
+ *      sait pas, et le plan interdit de rendre ce verdict-là en vert.
+ */
+const TRANCHES = join(ROOT, 'data', 'prices', 'tranches')
 const REGISTRE = join(ROOT, 'data', 'prices', 'sources.json')
 const CATALOGUE = join(ROOT, 'scripts', 'data', 'out', 'recipe-food-catalog.json')
+
+/**
+ * Les tranches versionnées, triées, chemins absolus.
+ *
+ * Rend une liste VIDE quand le dossier n'existe pas — c'est l'appelant qui
+ * décide que c'est une faute, parce que lui seul sait si le dossier était
+ * attendu. Trié pour que deux exécutions rendent le même rapport.
+ */
+export function listerTranches(dossier = TRANCHES) {
+  if (!existsSync(dossier)) return []
+  return readdirSync(dossier)
+    .filter((nom) => nom.endsWith('.json'))
+    .sort()
+    .map((nom) => join(dossier, nom))
+}
 
 export const VERSION_CONTRAT = '1.0.0'
 
@@ -493,33 +526,61 @@ const estAppeleDirectement = process.argv[1] && fileURLToPath(import.meta.url) =
 if (estAppeleDirectement) {
   const arguments_ = process.argv.slice(2)
   const enJson = arguments_.includes('--json')
-  const chemin = arguments_.find((argument) => !argument.startsWith('--')) || REFERENTIEL_PAR_DEFAUT
+  const demande = arguments_.find((argument) => !argument.startsWith('--')) || null
 
-  // Le référentiel par défaut peut ne pas exister encore : le chantier commence
-  // par le contrat, pas par les données. Un fichier explicitement demandé et
-  // absent, en revanche, est une erreur d'appel — pas un jeu vide.
-  if (!existsSync(chemin)) {
-    if (chemin === REFERENTIEL_PAR_DEFAUT) {
-      console.log(`Aucun référentiel à ${chemin} — rien à contrôler. Le contrat existe avant les données.`)
-      process.exit(0)
-    }
-    console.error(`Fichier introuvable : ${chemin}`)
+  // UN FICHIER EXPLICITEMENT DEMANDÉ ET ABSENT EST UNE ERREUR D'APPEL, pas un
+  // jeu vide : c'est le mode « un lot, avant fusion », et se taire ferait croire
+  // à un lot conforme.
+  if (demande && !existsSync(demande)) {
+    console.error(`Fichier introuvable : ${demande}`)
     process.exit(2)
   }
 
-  const jeu = JSON.parse(readFileSync(chemin, 'utf8'))
+  const chemins = demande ? [demande] : listerTranches()
+
+  // LE CONTRÔLE ÉCHOUE QUAND IL N'A RIEN À CONTRÔLER — livrable 3.6, réserve (b).
+  // La rédaction précédente répondait « rien à contrôler » et sortait en 0 sur un
+  // référentiel absent. Un dossier de tranches vide veut dire l'une de deux
+  // choses : les prix ont disparu du dépôt, ou ce script ne regarde pas où ils
+  // sont. Les deux se corrigent ; aucune ne se publie en vert.
+  if (!chemins.length) {
+    console.error(
+      `Aucune tranche de prix à ${TRANCHES} : le contrôle n'a rien lu. `
+      + 'Ce n\'est pas un référentiel conforme, c\'est un référentiel introuvable '
+      + '(data/prices/CONTRAT.md §0 : en cas d\'hésitation, l\'absence est la bonne réponse).',
+    )
+    process.exit(2)
+  }
+
   const sources = JSON.parse(readFileSync(REGISTRE, 'utf8'))
   const formes = JSON.parse(readFileSync(CATALOGUE, 'utf8')).forms
-
   const aujourdhui = new Date().toISOString().slice(0, 10)
-  const { violations, stats } = controlerReferentiel(jeu, { sources, formes, aujourdhui })
+
+  const rapports = chemins.map((chemin) => {
+    const jeu = JSON.parse(readFileSync(chemin, 'utf8'))
+    return { chemin, ...controlerReferentiel(jeu, { sources, formes, aujourdhui }) }
+  })
+  const violations = rapports.flatMap(({ chemin, violations: liste }) => liste
+    .map((violation) => ({ ...violation, file: chemin })))
+  const total = rapports.reduce((cumul, { stats }) => ({
+    entrees: cumul.entrees + stats.entrees,
+    affichables: cumul.affichables + stats.affichables,
+    violations: cumul.violations + stats.violations,
+  }), { entrees: 0, affichables: 0, violations: 0 })
 
   if (enJson) {
-    console.log(JSON.stringify({ file: chemin, ...stats, violations }, null, 2))
+    console.log(JSON.stringify({
+      files: chemins,
+      ...total,
+      // Le détail par fichier reste rendu à côté du total : un total de violations
+      // ne dit pas quelle tranche est en faute, et c'est la tranche qu'on corrige.
+      sets: rapports.map(({ chemin, stats }) => ({ file: chemin, ...stats })),
+      violations,
+    }, null, 2))
   } else {
     const parForme = new Map()
     for (const violation of violations) {
-      const cle = violation.form || '(jeu de prix)'
+      const cle = `${violation.file} — ${violation.form || '(jeu de prix)'}`
       if (!parForme.has(cle)) parForme.set(cle, [])
       parForme.get(cle).push(violation)
     }
@@ -528,10 +589,10 @@ if (estAppeleDirectement) {
       for (const violation of liste) console.log(`    [${violation.code}] ${violation.message}`)
     }
     console.log(
-      `\n${stats.entrees} entrée(s), ${stats.affichables} affichable(s) (A ou B), `
-      + `${stats.violations} violation(s) du contrat.`,
+      `\n${chemins.length} tranche(s), ${total.entrees} entrée(s), `
+      + `${total.affichables} affichable(s) (A ou B), ${total.violations} violation(s) du contrat.`,
     )
-    if (!violations.length) console.log('Le référentiel est conforme à data/prices/CONTRAT.md.')
+    if (!violations.length) console.log('Le référentiel servi est conforme à data/prices/CONTRAT.md.')
     else console.log('Rappel : ce contrôle ne sait pas détecter un chiffre inventé. Il impose seulement qu\'il soit retrouvable.')
   }
 

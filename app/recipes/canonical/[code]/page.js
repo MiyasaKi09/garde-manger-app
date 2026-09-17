@@ -3,6 +3,11 @@ import { notFound } from 'next/navigation'
 import { getEditorialRecipe } from '@/lib/db/operationalRecipeCatalog'
 import { createCookieSupabase } from '@/lib/supabase/request'
 import { estimationRecette } from '@/app/_pricing/estimations'
+// Contrat des chiffres (docs/CONTRAT_CHIFFRES.md, livrable 3.6) : les macros par
+// portion et le verdict qui dit pourquoi elles sont absentes, calculés par le
+// même module que le mode cuisine et la route de fiche.
+import { ABSENCE, macrosParPortion, phraseMacros } from '@/lib/domain/recipes/macrosParPortion'
+import { decisionOptionCarnee, ingredientsApresDecision, phraseOptionCarnee } from '@/lib/domain/recipes/optionCarnee'
 import { EstimationBloc, EstimationSources } from '@/components/pricing/Estimation'
 import styles from './recipe.module.css'
 
@@ -95,6 +100,31 @@ async function loadRecipe(code, servings = null) {
   return getEditorialRecipe(supabase, code, { servings })
 }
 
+/**
+ * Les membres actifs du foyer, pour la décision d'option carnée (livrable 3.6).
+ *
+ * Rend une liste VIDE si la lecture échoue ou si personne n'est connecté : la
+ * fiche s'ouvre alors avec l'option SERVIE, c'est-à-dire le comportement
+ * d'avant ce livrable. On ne retire jamais un ingrédient sur une lecture
+ * ratée — retirer par défaut ferait passer une panne pour une préférence.
+ */
+async function loadMembres() {
+  try {
+    const supabase = await createCookieSupabase()
+    const { data: { user } = {} } = await supabase.auth.getUser()
+    if (!user) return []
+    const { data } = await supabase
+      .from('household_members')
+      .select('id, name, preferences')
+      .eq('user_id', user.id)
+      .eq('active', true)
+      .order('created_at')
+    return data || []
+  } catch {
+    return []
+  }
+}
+
 export async function generateMetadata({ params }) {
   const recipe = await loadRecipe(params.code)
   return recipe
@@ -131,6 +161,7 @@ export default async function CanonicalRecipePage({ params, searchParams }) {
   if (!baseRecipe) notFound()
   const servings = portionsOf(searchParams?.portions, baseRecipe.servings)
   const recipe = servings === baseRecipe.servings ? baseRecipe : await loadRecipe(params.code, servings)
+  const membresActifs = await loadMembres()
 
   /**
    * Le coût estimé de la recette, calculé côté serveur sur la recette DÉJÀ mise
@@ -149,8 +180,20 @@ export default async function CanonicalRecipePage({ params, searchParams }) {
   }
 
   const scores = Object.entries(recipe.sensory?.scores || {})
-  const nutrition = recipe.nutritionPerServing
-  const nutritionComplete = recipe.operationalEligible && recipe.nutritionCoverage.pct === 100
+  // CONTRAT DES CHIFFRES — P18, livrable 3.6. Le bloc « Repères
+  // nutritionnels » était simplement MASQUÉ quand la couverture n'atteignait pas
+  // 100 % : ce n'est pas un faux chiffre, mais ce n'est pas non plus un verdict,
+  // et le lecteur ne pouvait pas distinguer « cette recette n'a pas de repères »
+  // de « cet écran les a oubliés ». Le verdict vient désormais du même module que
+  // les deux autres écrans, avec son motif.
+  const verdictMacros = macrosParPortion(recipe)
+  const nutrition = verdictMacros.macros
+  const nutritionComplete = verdictMacros.affichable && recipe.operationalEligible
+  // Option carnée facultative (réserve a). Hors planning, la fiche ne connaît
+  // aucun créneau : le périmètre est le foyer, et la décision n'est prise ici
+  // que sur les régimes et quotas déclarés des membres actifs.
+  const optionCarnee = decisionOptionCarnee({ recipe, mangeurs: membresActifs })
+  const ingredientsServis = ingredientsApresDecision(recipe, optionCarnee)
   const meaningfulGuardrails = (recipe.sensory?.identity_guardrails || []).filter((item) => !genericGuardrails.has(item))
   const profileLabel = sensoryProfileLabels[recipe.sensory?.profile] || sentence(recipe.sensory?.profile)
 
@@ -241,7 +284,7 @@ export default async function CanonicalRecipePage({ params, searchParams }) {
           <p className={styles.sectionLabel}>Ingrédients</p>
           <h2>Pour {recipe.servings} personnes</h2>
           <ul>
-            {recipe.exactIngredients.map((ingredient, index) => {
+            {ingredientsServis.map((ingredient, index) => {
               const component = ingredient.component
               const subRecipe = component?.code ? recipe.subRecipes?.[component.code] : null
               return (
@@ -255,6 +298,14 @@ export default async function CanonicalRecipePage({ params, searchParams }) {
               )
             })}
           </ul>
+          {/* L'OPTION CARNÉE, AFFICHÉE QU'ELLE SOIT SERVIE OU RETIRÉE (livrable
+              3.6, réserve a). Douze recettes publiables classées végétariennes
+              portent un ingrédient carné facultatif ; il disparaît de la liste
+              ci-dessus dès qu'un membre a déclaré manger moins de viande, et
+              cette phrase dit qu'il existe et pourquoi il n'y est pas. */}
+          {phraseOptionCarnee(optionCarnee) && (
+            <p className={styles.notice}>{phraseOptionCarnee(optionCarnee)}</p>
+          )}
           {recipe.allergens.length > 0 && <p className={styles.notice}><strong>Allergènes :</strong> {recipe.allergens.join(', ')}</p>}
         </section>
 
@@ -263,12 +314,32 @@ export default async function CanonicalRecipePage({ params, searchParams }) {
             <p className={styles.sectionLabel}>Par portion</p>
             <h2>Repères nutritionnels</h2>
             <dl className={styles.nutrition}>
-              <div><dt>Énergie</dt><dd>{Math.round(nutrition.kcal)} kcal</dd></div>
+              <div><dt>Énergie</dt><dd>{nutrition.kcal} kcal</dd></div>
               <div><dt>Protéines</dt><dd>{formatQuantity(nutrition.proteinG)} g</dd></div>
               <div><dt>Glucides</dt><dd>{formatQuantity(nutrition.carbsG)} g</dd></div>
               <div><dt>Lipides</dt><dd>{formatQuantity(nutrition.fatG)} g</dd></div>
               <div><dt>Fibres</dt><dd>{formatQuantity(nutrition.fiberG)} g</dd></div>
             </dl>
+          </aside>
+        )}
+        {!nutritionComplete && (
+          <aside className={styles.aside}>
+            <p className={styles.sectionLabel}>Par portion</p>
+            <h2>Repères nutritionnels</h2>
+            {/* Le tiret ET le motif : un chiffre non calculable n'est jamais
+                rendu sous forme de nombre, et son absence porte sa raison —
+                même règle que « couverture_masse_insuffisante » du côté des prix. */}
+            <dl className={styles.nutrition}>
+              <div><dt>Énergie</dt><dd>{ABSENCE}</dd></div>
+              <div><dt>Protéines</dt><dd>{ABSENCE}</dd></div>
+              <div><dt>Glucides</dt><dd>{ABSENCE}</dd></div>
+              <div><dt>Lipides</dt><dd>{ABSENCE}</dd></div>
+              <div><dt>Fibres</dt><dd>{ABSENCE}</dd></div>
+            </dl>
+            <p className={styles.notice}>
+              {phraseMacros(verdictMacros)
+                || 'Repères nutritionnels indisponibles : cette recette n’a pas passé les portes opérationnelles.'}
+            </p>
           </aside>
         )}
       </div>

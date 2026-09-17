@@ -185,3 +185,6 @@
 .wg-detail-desc { margin: 4px 0 6px; font-size: 14px; line-height: 1.45; color: var(--ink-1, #2b2419); }
 .wg-detail-macros { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; font-size: 12px; color: var(--ink-3); }
 .wg-detail-macros b { color: var(--ink-1, #2b2419); font-weight: 600; }
+/* Contrat des chiffres : un chiffre absent porte son motif, en retrait et sans
+   alarme — c'est un choix documente, pas une panne. */
+.wg-detail-absence { font-style: italic; color: var(--ink-3); }

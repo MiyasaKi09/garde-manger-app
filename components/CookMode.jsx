@@ -4,6 +4,14 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { X, ChevronLeft, ChevronRight, Play, Pause, RotateCcw, RefreshCw, Loader2 } from 'lucide-react'
 import { authFetch } from '@/lib/authFetch'
+// Contrat des chiffres (docs/CONTRAT_CHIFFRES.md, livrable 3.6) : un chiffre
+// non calculable n'est jamais rendu sous forme de nombre. `ABSENCE` est le
+// tiret que les trois écrans partagent, `phraseMacros` le motif du refus.
+import {
+  ABSENCE,
+  macrosParPortionDeLAssiette,
+  phraseMacros,
+} from '@/lib/domain/recipes/macrosParPortion'
 
 /**
  * Mode cuisine immersif plein écran.
@@ -245,6 +253,11 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
       .cm-meta { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .03em; color: var(--ink-3); text-transform: uppercase; margin-top: 8px; }
       .cm-seclabel { display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; background: var(--ink-1); color: var(--paper); padding: 4px 9px; border-radius: 3px; }
       .cm-persona { border-bottom: 1px solid var(--ink-1); }
+      /* Contrat des chiffres : le motif d'un chiffre absent se lit, il ne se
+         devine pas. Discret, jamais alarmant — c'est un choix, pas une panne. */
+      .cm-absence { font-family: var(--font-editorial); font-style: italic; font-size: 12px; line-height: 1.35; color: var(--ink-3); margin-top: 10px; }
+      .cm-option { font-family: var(--font-editorial); font-size: 13px; line-height: 1.4; color: var(--ink-2); margin: 8px 0 0; }
+      .cm-option.retiree { color: var(--ink-1); font-weight: 600; }
       .cm-persona-head { padding: 11px 30px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
       .cm-same { font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-3); }
       .cm-split { display: grid; margin-top: 7px; }
@@ -300,7 +313,17 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
   // ---- LANDING SCREEN (V21) ----
   if (currentStep === -1) {
     const persons = mealEntries || []
-    const totalKcal = persons.reduce((s, p) => s + (Number(p.kcal) || 0), 0)
+    // CONTRAT DES CHIFFRES — une somme dont un terme manque n'est pas une
+    // somme. Ce total servait de clé de répartition des quantités par personne,
+    // et il était calculé avec `Number(p.kcal) || 0` : une assiette sans
+    // nutrition y comptait pour zéro calorie, et le convive concerné recevait
+    // une part d'ingrédients nulle sans que rien ne le dise. Le total vaut
+    // désormais `null` dès qu'une assiette n'a pas de kcal, et la répartition
+    // retombe sur le partage à parts égales — un repli déclaré, pas un zéro.
+    const kcalDeChacun = persons.map((p) => (typeof p?.kcal === 'number' && Number.isFinite(p.kcal) ? p.kcal : null))
+    const totalKcal = kcalDeChacun.every((kcal) => kcal != null)
+      ? kcalDeChacun.reduce((s, kcal) => s + kcal, 0)
+      : null
     const totalMainServings = persons.reduce((s, p) => s + (Number(p.planned_servings) || 0), 0)
     const parseQty = (q) => parseFloat(String(q ?? '').replace(',', '.'))
     const personKeys = (p) => [p?.household_member_id, p?.person_name].filter(Boolean).map(String)
@@ -318,9 +341,10 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
         return `${rounded}${ing.unit ? ' ' + ing.unit : ''}`
       }
       const num = parseQty(ing.quantity)
+      const kcalDeLaPersonne = typeof p?.kcal === 'number' && Number.isFinite(p.kcal) ? p.kcal : null
       const share = totalMainServings > 0
         ? (Number(p.planned_servings) || 0) / totalMainServings
-        : totalKcal ? (Number(p.kcal) || 0) / totalKcal : 1 / Math.max(persons.length, 1)
+        : (totalKcal && kcalDeLaPersonne != null ? kcalDeLaPersonne / totalKcal : 1 / Math.max(persons.length, 1))
       const v = num * share
       const r = v >= 10 ? Math.round(v) : Math.round(v * 10) / 10
       return `${r}${ing.unit ? ' ' + ing.unit : ''}`
@@ -354,35 +378,73 @@ export default function CookMode({ open, onClose, recipe, steps, ingredients, re
                   <span className="cm-same">Assiette personnalisée · {persons.length} convive{persons.length > 1 ? 's' : ''}</span>
                 </div>
                 <div className="cm-split" style={{ gridTemplateColumns: `repeat(${persons.length}, 1fr)` }}>
-                  {persons.map((p, i) => (
-                    <div key={i} className={`cm-col ${i % 2 === 0 ? 'j' : 'z'}`}>
-                      <span className="cm-who">{p.person_name || '?'}</span>
-                      <div className="cm-tick" />
-                      <div className="cm-kcal">{Math.round(p.kcal || 0)}<span className="cm-u">kcal</span></div>
-                      <div className="cm-macros">
-                        <div className="cm-macro"><span className="cm-ml">Protéines</span><span className="cm-mv">{Math.round(p.protein_g || 0)} g</span></div>
-                        <div className="cm-macro"><span className="cm-ml">Glucides</span><span className="cm-mv">{Math.round(p.carbs_g || 0)} g</span></div>
-                        <div className="cm-macro"><span className="cm-ml">Lipides</span><span className="cm-mv">{Math.round(p.fat_g || 0)} g</span></div>
+                  {persons.map((p, i) => {
+                    // CONTRAT DES CHIFFRES — P18. Cette colonne écrivait
+                    // `Math.round(p.kcal || 0)` : une assiette sans nutrition
+                    // affichait « 0 kcal », un nombre, avec le même aplomb
+                    // qu'une mesure. Elle rend désormais le tiret et le motif.
+                    // Le tiret est PAR COLONNE : une assiette qui porte quatre
+                    // macros et pas la cinquième montre ses quatre mesures et
+                    // nomme celle qui manque.
+                    const assiette = { kcal: p.kcal, protein_g: p.protein_g, carbs_g: p.carbs_g, fat_g: p.fat_g, fiber_g: p.fiber_g, planned_servings: 1 }
+                    const verdict = macrosParPortionDeLAssiette(assiette)
+                    const valeur = (cle, unite = '') => (verdict.macros?.[cle] == null ? ABSENCE : `${verdict.macros[cle]}${unite}`)
+                    const motif = phraseMacros(verdict)
+                    return (
+                      <div key={i} className={`cm-col ${i % 2 === 0 ? 'j' : 'z'}`}>
+                        <span className="cm-who">{p.person_name || '?'}</span>
+                        <div className="cm-tick" />
+                        <div className="cm-kcal">{valeur('kcal')}<span className="cm-u">kcal</span></div>
+                        <div className="cm-macros">
+                          <div className="cm-macro"><span className="cm-ml">Protéines</span><span className="cm-mv">{valeur('proteinG', ' g')}</span></div>
+                          <div className="cm-macro"><span className="cm-ml">Glucides</span><span className="cm-mv">{valeur('carbsG', ' g')}</span></div>
+                          <div className="cm-macro"><span className="cm-ml">Lipides</span><span className="cm-mv">{valeur('fatG', ' g')}</span></div>
+                        </div>
+                        {motif && <p className="cm-absence">{motif}</p>}
                       </div>
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
               </section>
-            ) : nps ? (
+            ) : (
               <section className="cm-persona">
                 <div className="cm-persona-head"><span className="cm-seclabel">Nutrition par portion</span></div>
                 <div className="cm-split" style={{ gridTemplateColumns: '1fr' }}>
                   <div className="cm-col j">
-                    <div className="cm-kcal">{nps.kcal ?? '—'}<span className="cm-u">kcal</span></div>
+                    <div className="cm-kcal">{nps?.kcal ?? ABSENCE}<span className="cm-u">kcal</span></div>
                     <div className="cm-macros">
-                      <div className="cm-macro"><span className="cm-ml">Protéines</span><span className="cm-mv">{nps.protein_g ?? '—'} g</span></div>
-                      <div className="cm-macro"><span className="cm-ml">Glucides</span><span className="cm-mv">{nps.carbs_g ?? '—'} g</span></div>
-                      <div className="cm-macro"><span className="cm-ml">Lipides</span><span className="cm-mv">{nps.fat_g ?? '—'} g</span></div>
+                      <div className="cm-macro"><span className="cm-ml">Protéines</span><span className="cm-mv">{nps ? `${nps.protein_g} g` : ABSENCE}</span></div>
+                      <div className="cm-macro"><span className="cm-ml">Glucides</span><span className="cm-mv">{nps ? `${nps.carbs_g} g` : ABSENCE}</span></div>
+                      <div className="cm-macro"><span className="cm-ml">Lipides</span><span className="cm-mv">{nps ? `${nps.fat_g} g` : ABSENCE}</span></div>
                     </div>
+                    {/* LE MOTIF, ET PAS SEULEMENT LE TIRET (P18). La section
+                        était masquée quand `nutrition_per_serving` valait
+                        `null` : l'utilisateur ne pouvait pas distinguer « cette
+                        recette n'a pas de repères » de « cet écran les a
+                        oubliés ». La route publie le code de refus, l'écran le
+                        dit. */}
+                    {!nps && (
+                      <p className="cm-absence">
+                        {phraseMacros({ affichable: false, refus: recipe?.nutrition_refusal, manquants: recipe?.nutrition_missing || [] })}
+                      </p>
+                    )}
                   </div>
                 </div>
               </section>
-            ) : null}
+            )}
+
+            {/* L'OPTION CARNÉE FACULTATIVE (livrable 3.6, réserve a). Douze
+                recettes publiables classées végétariennes portent un ingrédient
+                carné facultatif — lardons, jambon, thon. La route décide de la
+                servir ou de la retirer ; ce bloc est le premier écran qui LIT
+                cette décision, `optionalNonVegetarian` n'ayant jusqu'ici aucun
+                lecteur. */}
+            {recipe?.option_carnee?.phrase && (
+              <section className="cm-sec">
+                <div className="cm-sh"><span className="cm-seclabel">Option carnée</span></div>
+                <p className={`cm-option ${recipe.option_carnee.retiree ? 'retiree' : ''}`}>{recipe.option_carnee.phrase}</p>
+              </section>
+            )}
 
             {ingredients?.length > 0 && (
               <section className="cm-sec">

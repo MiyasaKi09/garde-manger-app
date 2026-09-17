@@ -31,6 +31,9 @@ import { buildProteinDensityRequirement } from '@/lib/domain/planning/proteinDen
 // « France / cuisine domestique internationale » sont la France parce qu'un
 // fichier relu le dit, pas parce que leur libellé commence par le même mot.
 import { cleCuisine, libellesNonArbitres, repartitionCuisines } from '@/lib/domain/recipes/cuisineArbitrage'
+// Contrat des chiffres (livrable 3.6) : P18 se mesure désormais, et il se
+// mesure avec les MÊMES fonctions que les écrans lisent.
+import { blocNutritionPubliee, macrosParPortion, macrosParPortionDeLAssiette } from '@/lib/domain/recipes/macrosParPortion'
 import { mesurerLatenceAlternatives } from './mesureAlternatives'
 
 /**
@@ -752,11 +755,74 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
 
   // ─── P17 / P18 — les deux critères ajoutés par le plan ───────────────────
   const MODULE_EXPORT = 'lib/domain/courses/exportListe.js'
-  const sortiesExport = fichiersCitant('navigator.clipboard', ['app', 'components', 'lib'])
-    .concat(fichiersCitant('navigator.share', ['app', 'components', 'lib']))
+  // DÉDOUBLONNÉ, et ce n'était pas le cas : un fichier qui porte à la fois le
+  // presse-papiers et le partage natif — `app/courses/page.js` depuis le
+  // livrable 3.5 — était compté DEUX FOIS, et le rapport écrivait son nom deux
+  // fois de suite, laissant croire à deux sorties là où il y en a une qui en
+  // sert deux. Une liste qui répète un nom est un chiffre faux d'une autre
+  // manière (docs/CONTRAT_CHIFFRES.md §0).
+  const sortiesExport = [...new Set([
+    ...fichiersCitant('navigator.clipboard', ['app', 'components', 'lib']),
+    ...fichiersCitant('navigator.share', ['app', 'components', 'lib']),
+  ])].sort()
   const exportPresent = fichierPresent(MODULE_EXPORT) || sortiesExport.length > 0
   const CONTRAT_CHIFFRES = 'docs/CONTRAT_CHIFFRES.md'
   const contratPresent = fichierPresent(CONTRAT_CHIFFRES)
+  // P18 SE MESURE DEPUIS LE LIVRABLE 3.6. Les trois chemins d'affichage sont
+  // comparés recette par recette — la fiche (`macrosParPortion`), la route de
+  // fiche de cuisine (`blocNutritionPubliee`) et l'assiette servie, ramenée à la
+  // portion. C'est le même calcul que `tests/data/contratChiffres.test.js`, qui
+  // l'EXIGE ; ici il est RAPPORTÉ, sur les recettes réellement servies par les
+  // trois semaines, avec le nombre de recettes dont les macros sont refusées.
+  const recettesServies = [...new Set(tousCreneaux.map((slot) => slot.recipeCode))]
+    .map((code) => parCode.get(code))
+    .filter(Boolean)
+  const macrosDivergentes = []
+  let macrosRefusees = 0
+  for (const recette of recettesServies) {
+    const verdict = macrosParPortion(recette)
+    const publie = blocNutritionPubliee(recette)
+    if (!verdict.affichable) {
+      macrosRefusees += 1
+      if (publie.nutrition_per_serving !== null) macrosDivergentes.push(`${recette.code} publié alors que refusé`)
+      continue
+    }
+    const attendu = {
+      kcal: verdict.macros.kcal,
+      protein_g: verdict.macros.proteinG,
+      carbs_g: verdict.macros.carbsG,
+      fat_g: verdict.macros.fatG,
+      fiber_g: verdict.macros.fiberG,
+    }
+    if (JSON.stringify(publie.nutrition_per_serving) !== JSON.stringify(attendu)) macrosDivergentes.push(recette.code)
+    // Le troisième chemin : l'assiette, ramenée à la portion.
+    const portions = 1.6
+    const assiette = macrosParPortionDeLAssiette({
+      planned_servings: portions,
+      kcal: verdict.macros.kcal * portions,
+      protein_g: verdict.macros.proteinG * portions,
+      carbs_g: verdict.macros.carbsG * portions,
+      fat_g: verdict.macros.fatG * portions,
+      fiber_g: verdict.macros.fiberG * portions,
+    })
+    if (!assiette.affichable || Math.abs(assiette.macros.kcal - verdict.macros.kcal) > 1) {
+      macrosDivergentes.push(`${recette.code} assiette`)
+    }
+  }
+  // La réserve (a) du même livrable : les recettes végétariennes à option carnée
+  // facultative, et le nombre d'écrans qui lisent désormais cette décision.
+  const vegetariennesAOption = recipes.filter((recette) => {
+    const classification = classifyRecipe(recette)
+    return classification.vegetarian && classification.optionalNonVegetarian.length > 0
+  })
+  // Deux écritures, parce qu'il y a deux côtés : le domaine et les routes
+  // importent `optionCarnee`, l'écran lit `option_carnee` sur la fiche reçue.
+  // N'en compter qu'une sous-estimerait le nombre de lecteurs, et c'est
+  // précisément le chiffre que le §2.4 du plan reprochait d'être zéro.
+  const lecteursOptionCarnee = [...new Set([
+    ...fichiersCitant('optionCarnee', ['app', 'components', 'lib'], ['lib/domain/recipes/optionCarnee.js']),
+    ...fichiersCitant('option_carnee', ['app', 'components', 'lib'], ['lib/domain/recipes/optionCarnee.js']),
+  ])].sort()
 
   // ─── Les dix-huit lignes ─────────────────────────────────────────────────
   const parSemaine = (values) => values.join(', ')
@@ -974,7 +1040,14 @@ describe('rapport de qualité — P1 à P18 sur trois semaines consécutives', (
       id: 'P18',
       libelle: 'Un chiffre affiché est calculé ou absent',
       mesure: contratPresent
-        ? `à mesurer : ${CONTRAT_CHIFFRES} existe désormais — ce rapport ne sait pas encore le vérifier`
+        ? `${CONTRAT_CHIFFRES} écrit ; sur les ${recettesServies.length} recettes servies ces trois semaines, `
+          + `${macrosDivergentes.length} écart(s) entre les trois chemins d'affichage`
+          + `${macrosDivergentes.length ? ` (${macrosDivergentes.join(', ')})` : ''} `
+          + `et ${macrosRefusees} macro(s) par portion refusée(s) avec leur motif plutôt que rendues à zéro ; `
+          + `réserve (a) : ${vegetariennesAOption.length} recette(s) végétarienne(s) à option carnée facultative sur ${recipes.length} publiables, `
+          + `${lecteursOptionCarnee.length} écran(s) ou route(s) lisant la décision (${lecteursOptionCarnee.join(', ') || 'aucun'}) ; `
+          + 'réserve (b) : npm run prices:check lit data/prices/tranches/ et échoue sur un dossier vide '
+          + '(tests/pricing/controleDesPrixServis.test.js)'
         : `sans objet — ${CONTRAT_CHIFFRES} absent, aucun test de corpus ne porte le contrat des chiffres (livrable 3.6)`,
       cible: 'les mêmes macros par portion sur les trois écrans, aucun chiffre non calculable rendu comme un nombre',
     },
