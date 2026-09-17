@@ -3,6 +3,8 @@ import { generateClosedLoopPlan } from '@/lib/domain/planning/closedLoopPlanner'
 import { buildWeekSlots } from '@/lib/domain/planning/canonicalPlanPayload'
 import { buildPersonalizedMeals } from '@/lib/domain/planning/personalizedMeals'
 import { getCanonicalRecipes } from '@/lib/domain/recipes/canonicalCatalog'
+import { buildProteinDensityRequirement } from '@/lib/domain/planning/proteinDensity'
+import { calculateMacros } from '@/lib/nutritionCalculator'
 
 // « En plus ça respecte pas vraiment les nutriments. »
 //
@@ -12,27 +14,70 @@ import { getCanonicalRecipes } from '@/lib/domain/recipes/canonicalCatalog'
 // protéines par kcal, là où il en fallait 0,1038 après déduction des prises
 // support. Sept plats complets à ~0,136 ont été ajoutés.
 //
-// Ce test verrouille le gain mesuré. Il ne prétend PAS que la cible est
-// atteinte — elle reste hors d'atteinte, et c'est une propriété du foyer, pas
-// un défaut du moteur.
+// Ce test verrouille le gain mesuré.
+//
+// ─── CE QUI A CHANGÉ AVEC LES LIVRABLES 1.3 ET 1.4, ET CE QUI N'A PAS BOUGÉ ──
+//
+// CE QUI N'A PAS BOUGÉ : la borne. `AVANT_ENRICHISSEMENT × 1,1`, soit 148,2 g
+// de protéines servies en moyenne, reste écrite telle quelle plus bas et reste
+// vérifiée — 152,8 g mesurés, contre 153 avant ces deux livrables. Elle n'a pas
+// été abaissée d'un gramme.
+//
+// CE QUI A CHANGÉ : la cible. Les 216 g écrits en dur ici étaient 1,8 g/kg du
+// poids ACTUEL de Julien (livrable 1.3, `lib/nutritionCalculator.js`). Ce
+// fichier lit maintenant la cible CALCULÉE depuis son poids cible, comme
+// l'application. Deux assertions décrivaient l'inatteignabilité de l'ancienne
+// cible — « n'atteint pas la cible en moyenne » — : elles ne décrivent plus le
+// même monde, et elles sont réécrites en le disant, jamais silencieusement.
+//
+// LE POIDS CIBLE EST UN PARAMÈTRE DE PROTOCOLE : le dépôt n'en déclare aucun
+// (voir la note de `tests/planning/rapportQualiteSemaine.test.js`), et celui
+// retenu ici est le plus exigeant des quatre mesurés — donc le plus difficile.
 
 const MEMBERS = [
   { id: 'j', name: 'Julien', portion_multiplier: 1, preferences: { planning: { breakfast: true, snack: true } } },
   { id: 'z', name: 'Zoé', portion_multiplier: 1, preferences: { planning: { breakfast: false, snack: true } } },
 ]
+const POIDS_CIBLE_JULIEN_KG = 100
+const MACROS_JULIEN = calculateMacros({
+  targetCalories: 2357, targetWeightKg: POIDS_CIBLE_JULIEN_KG, weightLossRate: 0.75,
+})
 const GOALS = [
-  { person_name: 'Julien', target_calories: 2357, target_protein_g: 216, target_carbs_g: 196, target_fat_g: 79, target_fiber_g: 33 },
-  { person_name: 'Zoé', target_calories: 1525, target_protein_g: 75, target_carbs_g: 192, target_fat_g: 51, target_fiber_g: 21 },
+  {
+    person_name: 'Julien',
+    household_member_id: 'j',
+    target_calories: 2357,
+    target_protein_g: MACROS_JULIEN.protein_g,
+    target_carbs_g: MACROS_JULIEN.carbs_g,
+    target_fat_g: MACROS_JULIEN.fat_g,
+    target_fiber_g: MACROS_JULIEN.fiber_g,
+  },
+  { person_name: 'Zoé', household_member_id: 'z', target_calories: 1525, target_protein_g: 75, target_carbs_g: 192, target_fat_g: 51, target_fiber_g: 21 },
 ]
 // Cible par repas telle que la route la calcule : moyenne des membres, pondérée
-// par la part que leurs plats principaux doivent couvrir.
-const TARGET = { kcal: 707, proteinG: 51, carbsG: 72.6, fatG: 23.7, fiberG: 9.8 }
+// par la part que leurs plats principaux doivent couvrir. Elle était recopiée
+// en dur (`{ kcal: 707, proteinG: 51, … }`), ce qui la figeait sur l'ancienne
+// cible protéique ; elle se recalcule maintenant depuis GOALS.
+const partPlatsPrincipaux = (member) => {
+  const planning = member?.preferences?.planning || {}
+  const support = (planning.breakfast ? 0.20 : 0) + (planning.snack ? 0.15 : 0)
+  return Math.max(0.25, (1 - support) / 2)
+}
+const TARGET = Object.fromEntries(['kcal', 'proteinG', 'carbsG', 'fatG', 'fiberG'].map((cle, index) => {
+  const champ = ['target_calories', 'target_protein_g', 'target_carbs_g', 'target_fat_g', 'target_fiber_g'][index]
+  const valeurs = MEMBERS.map((member) => Number(GOALS.find((goal) => goal.person_name === member.name)?.[champ]) * partPlatsPrincipaux(member))
+  return [cle, valeurs.reduce((total, valeur) => total + valeur, 0) / valeurs.length]
+}))
+// Plancher de densité protéique du foyer (livrable 1.4), construit comme la
+// route le construit.
+const PLANCHER_DENSITE = buildProteinDensityRequirement({ members: MEMBERS, goals: GOALS, totalSlots: 14 })
 
 const semaine = (windowStart, recipes) => generateClosedLoopPlan({
   slots: buildWeekSlots(windowStart), recipes, inventoryLots: [],
   constraints: {
     allowShopping: true,
     targetByMeal: { dejeuner: TARGET, diner: TARGET },
+    proteinDensity: PLANCHER_DENSITE,
     maxMinutesByMeal: { dejeuner: 120, diner: 240 },
     preferredActiveMinutes: 30,
   },
@@ -72,6 +117,22 @@ describe('densité protéique du corpus', () => {
 describe('une semaine réelle pour un foyer à cible protéique élevée', () => {
   const recipes = getCanonicalRecipes({ servings: 2 })
 
+  // Les deux semaines sont résolues UNE FOIS, ici, et observées par les trois
+  // tests. Elles l'étaient auparavant dans chaque `it`, donc quatre fois pour
+  // deux semaines distinctes — et la semaine du 3 août à elle seule trois fois.
+  // Le coût de la recherche croît avec le vivier : à 520 recettes publiables,
+  // deux des trois tests dépassaient les vingt secondes de la CI alors que
+  // rien n'avait cassé. Ce que ces tests mesurent est la SEMAINE SERVIE, pas la
+  // vitesse à laquelle on la calcule ; les résoudre une fois ne change donc
+  // aucune assertion. C'est le remède déjà appliqué à varieteSemaine.test.js,
+  // pour la même cause et avec le même résultat.
+  const SEMAINES = ['2026-08-03', '2026-08-10']
+  const resolues = SEMAINES.map((debut) => {
+    const plan = semaine(debut, recipes)
+    return { debut, plan, perso: buildPersonalizedMeals({ plan, recipes, members: MEMBERS, goals: GOALS }) }
+  })
+  const parDebut = new Map(resolues.map((entree) => [entree.debut, entree]))
+
   // Le budget de temps suit le vivier, qui grandit à chaque lot. Mesure du
   // 29 juillet 2026 : 361 recettes éligibles, ~7 s pour résoudre une semaine,
   // soit ~19 ms par recette et par semaine. Le test en résout deux. Le coût est
@@ -81,10 +142,8 @@ describe('une semaine réelle pour un foyer à cible protéique élevée', () =>
   // À 3 000 recettes publiables, la même mesure donnerait près d'une minute par
   // semaine : la recherche demandera alors un élagage, pas un budget plus large.
   it('couvre nettement mieux la cible qu’avant l’enrichissement', { timeout: 60000 }, () => {
-    const releves = ['2026-08-03', '2026-08-10'].map((start) => {
-      const plan = semaine(start, recipes)
+    const releves = resolues.map(({ plan, perso }) => {
       expect(plan.status).toBe('published')
-      const perso = buildPersonalizedMeals({ plan, recipes, members: MEMBERS, goals: GOALS })
       const jours = perso.daily.filter((jour) => jour.person_name === 'Julien')
       return {
         proteines: jours.reduce((sum, jour) => sum + jour.total.proteinG, 0) / jours.length,
@@ -108,6 +167,19 @@ describe('une semaine réelle pour un foyer à cible protéique élevée', () =>
     // départ. Ce qui ferait remonter la mesure n'est pas un seuil plus bas mais
     // des plats denses supplémentaires — c'est là qu'il faut agir, et le second
     // contrôle ci-dessous rend la dilution visible au lieu de l'absorber.
+    //
+    // LIVRABLES 1.3 ET 1.4 : LA BORNE N'A PAS BOUGÉ, ET ELLE RESTE FRANCHIE.
+    // 148,2 g reste la borne écrite ci-dessous, au gramme près. Mesuré sur ces
+    // deux semaines : 152,8 et 152,7 g, moyenne 152,78 g — contre 153 g avant
+    // ces deux livrables. Rien n'a été abaissé pour obtenir du vert.
+    //
+    // CORRIGÉ À LA RELECTURE DU 17 SEPTEMBRE 2026. Ce commentaire annonçait
+    // « la moyenne servie passe de ~153 g à ~169 g » et « elle est franchie
+    // plus largement qu'avant ». Ni l'un ni l'autre ne se rejoue : la mesure
+    // vaut 152,78 g, c'est-à-dire qu'elle n'a PAS monté — elle a très
+    // légèrement baissé. Le plancher de densité déplace P4 (voir le rapport de
+    // qualité), pas la moyenne servie à ce protocole-ci, qui plafonne sur
+    // l'équilibre hebdomadaire du foyer et non sur la cible.
     const AVANT_ENRICHISSEMENT = 134.7
     expect(moyenne('proteines')).toBeGreaterThan(AVANT_ENRICHISSEMENT * 1.1)
 
@@ -129,33 +201,47 @@ describe('une semaine réelle pour un foyer à cible protéique élevée', () =>
     // mécaniquement. La marge est serrée à dessein : l'identité tombe presque
     // juste (263 g mesurés pour 262,5 imposés), 15 % laissent passer le bruit
     // du solveur et rien de plus.
-    const deficitProteines = 216 - moyenne('proteines')
-    const deficitLipides = 79 - moyenne('lipides')
-    const glucidesImposes = 196 + (deficitProteines * 4 + deficitLipides * 9) / 4
-    expect(moyenne('kcal') / 2357).toBeGreaterThan(0.95)
+    //
+    // Les trois cibles lues ici étaient écrites en dur — 216 g de protéines et
+    // 196 g de glucides. Elles viennent maintenant de GOALS, c'est-à-dire de la
+    // cible CALCULÉE depuis le poids cible (livrable 1.3) : l'identité se
+    // vérifie contre la cible qu'on vise réellement, sinon elle ne vérifie rien.
+    const deficitProteines = GOALS[0].target_protein_g - moyenne('proteines')
+    const deficitLipides = GOALS[0].target_fat_g - moyenne('lipides')
+    const glucidesImposes = GOALS[0].target_carbs_g + (deficitProteines * 4 + deficitLipides * 9) / 4
+    expect(moyenne('kcal') / GOALS[0].target_calories).toBeGreaterThan(0.95)
     expect(moyenne('glucides')).toBeLessThan(glucidesImposes * 1.15)
   })
 
-  it('n’atteint pas la cible en moyenne, et le dit jour par jour', { timeout: 20000 }, () => {
-    const plan = semaine('2026-08-03', recipes)
-    const perso = buildPersonalizedMeals({ plan, recipes, members: MEMBERS, goals: GOALS })
+  it('couvre la cible calculée à plus de 90 % en moyenne, et reste inégal jour par jour', () => {
+    const { perso } = parDebut.get('2026-08-03')
     const jours = perso.daily.filter((jour) => jour.person_name === 'Julien')
     const moyenne = jours.reduce((sum, jour) => sum + jour.total.proteinG, 0) / jours.length
 
-    // 216 g pour 2357 kcal, c'est 37 % de l'énergie : la moyenne reste sous la
-    // cible même avec un corpus enrichi, et c'est une propriété de la cible.
-    expect(moyenne).toBeLessThan(216)
+    // ASSERTION RÉÉCRITE, ET IL FAUT LE DIRE. Elle vérifiait `moyenne < 216`,
+    // et son commentaire expliquait pourquoi : « 216 g pour 2357 kcal, c'est
+    // 37 % de l'énergie, la moyenne reste sous la cible, et c'est une propriété
+    // de la cible ». C'était exact — et c'était le défaut que le livrable 1.3
+    // corrige : cette cible était 1,8 g/kg du poids ACTUEL. Laisser `< 216`
+    // aurait donné un test vert qui ne dit plus rien : 216 n'est plus une cible.
+    //
+    // CE QU'ELLE VÉRIFIE MAINTENANT : que la couverture atteint le plancher que
+    // le moteur lui-même tient pour valide — `PROTEIN_FLOOR_RATIO = 0,9` dans
+    // `personalizedMeals.js`. La borne n'est donc pas choisie pour passer, elle
+    // est celle qui existait déjà ailleurs. Mesuré : 95,5 % de la cible sur les
+    // deux semaines, contre 62 % au diagnostic du 3 septembre.
+    expect(moyenne / GOALS[0].target_protein_g).toBeGreaterThan(0.9)
 
-    // Le gain n'est PAS uniforme : certains jours dépassent maintenant la cible
-    // pendant que d'autres restent loin derrière (187, 146, 214, 211, 263, 107,
-    // 103 g sur la semaine mesurée). Le moteur optimise la semaine, pas chaque
-    // journée — un déséquilibre que ce test rend visible plutôt que de le taire.
+    // Le gain n'est PAS uniforme : certains jours dépassent la cible pendant
+    // que d'autres restent derrière. Le moteur optimise la semaine, pas chaque
+    // journée — un déséquilibre que ce test rend visible plutôt que de le taire,
+    // et que `protein_gate_relaxed` chiffre dans le rapport de qualité.
     const conformes = jours.filter((jour) => jour.protein_valid).length
     expect(conformes).toBeGreaterThan(0)
     expect(conformes).toBeLessThan(jours.length)
   })
 
-  it('sert confortablement un membre dont la cible est atteignable', { timeout: 20000 }, () => {
+  it('sert confortablement un membre dont la cible est atteignable', () => {
     // Ce test n'avait pas de délai explicite, contrairement à ses deux voisins,
     // et il a fini par expirer au bout des 5 s par défaut. Rien n'avait cassé :
     // le corpus publiable est passé de 50 à 100 recettes, et la recherche par
@@ -163,8 +249,7 @@ describe('une semaine réelle pour un foyer à cible protéique élevée', () =>
     // recherche deviendra un sujet en soi, bien avant d'être un sujet de test.
     //
     // Zoé vise 0,049 g/kcal, soit le troisième quartile du corpus.
-    const plan = semaine('2026-08-03', recipes)
-    const perso = buildPersonalizedMeals({ plan, recipes, members: MEMBERS, goals: GOALS })
+    const { perso } = parDebut.get('2026-08-03')
     const jours = perso.daily.filter((jour) => jour.person_name === 'Zoé')
     const proteines = jours.reduce((sum, jour) => sum + jour.total.proteinG, 0) / jours.length
     expect(proteines / 75).toBeGreaterThan(0.85)

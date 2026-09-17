@@ -1,0 +1,439 @@
+{
+  "lot": "fiches-fusionnees",
+  "contexte": "Ce fichier tranche, un couple à la fois, si un plat carné et un plat végétarien de MÊME LIGNÉE se cuisinent en UNE SEULE préparation — le livrable 2.3 de docs/PLAN_FINIR_MYKO.md, c'est-à-dire la demande d'origine du foyer : Zoé mange moins de viande que Julien, dans le même plat. Quand le couple est fusionnable, la fiche fusionne les étapes communes et ne sépare qu'au point de divergence ; quand il ne l'est pas, c'est écrit ici avec son motif, et aucune fiche n'est fusionnée. Le point de divergence se CALCULE — scripts/data/recipes/link-fiches-fusionnees.mjs aligne les deux listes d'étapes et relève les ingrédients qui séparent les deux recettes — puis il est DÉCLARÉ ici ; lib/domain/recipes/ficheFusionnee.js ne devine rien à l'exécution : un couple absent de ce fichier n'est pas fusionné, et la raison est rendue à l'écran.",
+  "regle": "Un couple est FUSIONNABLE quand trois conditions tiennent ensemble, et elles se vérifient dans le texte des deux recettes, pas au jugé. (1) La divergence est la PROTÉINE et ce qui la remplace, rien d'autre : dès que les deux versions se séparent aussi sur une matière grasse, une liaison, un légume ou une conduite de cuisson que rien ne rattache au changement de protéine, il y a deux divergences et non une, et le couple n'est pas fusionnable. (2) Aucune étape déclarée commune ne peut porter un ingrédient d'origine animale absent de la version végétarienne : une base commune cuite dans le saindoux, la graisse de confit ou le gras de lardon rendu n'est pas partageable, et c'est un motif de refus à lui seul. (3) Chaque étape de chaque recette apparaît une fois et une seule dans les blocs, dans l'ordre de sa recette : une fiche fusionnée ne perd aucun geste et n'en invente aucun. Le texte affiché est toujours celui d'une étape du corpus, mot pour mot ; `texte` dit de quel côté il est pris, parce qu'une étape commune a deux rédactions et qu'en choisir une est une décision qui se lit — pas une moyenne qui se calcule.",
+  "roles_de_bloc": {
+    "commune": "Un seul geste, un seul récipient, pour les deux assiettes. Ce qui en sort est réparti entre les deux branches au premier bloc divergent qui suit.",
+    "parallele": "Le même geste, mais fait sur chacun des deux plats — deux gratins qu'on monte de la même façon, deux poêles qu'on lie de la même façon. Le geste ne se fait pas une fois : il se lit une fois.",
+    "divergente": "Ce qui appartient à une branche seule. C'est là que les deux préparations se séparent, et le premier bloc divergent qui suit un bloc commun est le POINT DE DIVERGENCE de la fiche."
+  },
+  "perimetre": "Quatorze couples relus au 17 septembre 2026, sur les 150 couples candidats que le script recense (77 dont le végétarien est un jumeau JUM-). Les relus d'abord : les quatre couples réellement servis par les trois semaines de tests/planning/rapportQualiteSemaine.test.js — ce sont eux que P9 mesure —, puis dix couples choisis pour la proximité de leurs deux listes d'ingrédients, celle que le script calcule sans ambiguïté. Les cent trente-six autres ne sont PAS déclarés, donc pas fusionnés : ce qui n'est pas relu est absent, et le compte de ce qui reste à relire est imprimé par le script.",
+  "decisions": [
+    {
+      "carne": "FR-008",
+      "vege": "JUM-081",
+      "lignee": "FR-008",
+      "famille_carne": "Poulet basquaise",
+      "famille_vege": "Œufs à la basquaise",
+      "fusionnable": true,
+      "proteine_carne": ["Cuisse de poulet crue, avec os, avec peau"],
+      "proteine_vege": ["Œuf cru"],
+      "exclus_de_la_base_commune": [
+        {
+          "forme": "Jambon de Bayonne",
+          "cote": "carne",
+          "motif": "Le jambon est FACULTATIF chez le parent, et son étape 2 le fait entrer dans la fondue d'oignons et de poivrons — c'est-à-dire exactement dans la base commune. Versé là, il traverserait l'assiette de Zoé. Il reste donc hors du bloc commun : s'il est mis, c'est dans la branche carnée, avec le poulet. C'est le premier cas concret de la réserve du §2.4 du plan (douze recettes végétariennes à ingrédient carné facultatif) ; le livrable 3.6 la traitera partout, celui-ci la tranche ici parce que la fusion l'impose."
+        }
+      ],
+      "blocs": [
+        {
+          "role": "divergente",
+          "carne": [1],
+          "vege": []
+        },
+        {
+          "role": "commune",
+          "carne": [2, 3],
+          "vege": [1, 2, 3, 4],
+          "texte": "vege"
+        },
+        {
+          "role": "divergente",
+          "carne": [4, 5],
+          "vege": [5, 6, 7]
+        }
+      ],
+      "motif": "Une piperade, deux finitions. Les deux recettes montent la même compotée — oignon, poivrons rouge et vert, ail, vin blanc, tomate concassée, thym, piment d'Espelette, huile d'olive des deux côtés, dans les mêmes proportions par portion —, puis le parent y braise le poulet quarante-cinq minutes et le jumeau y poche les œufs six à huit minutes. C'est la définition même de la divergence unique. Le texte commun retenu est celui du jumeau : le parent expédie la compotée en deux lignes (« Faire fondre oignons, poivrons et ail », « Déglacer au vin blanc… ») quand le jumeau donne les durées, l'ordre et le test de la spatule. Le poulet doré de l'étape 1 reste en tête de la branche carnée : il se fait avant la compotée, dans sa propre poêle, et son gras n'entre pas dans la base."
+    },
+    {
+      "carne": "FR-019",
+      "vege": "JUM-031",
+      "lignee": "FR-019",
+      "famille_carne": "Boulettes de bœuf sauce tomate",
+      "famille_vege": "Boulettes de lentilles sauce tomate",
+      "fusionnable": true,
+      "proteine_carne": ["Bœuf haché cru 15 % MG"],
+      "proteine_vege": ["Lentille verte sèche, crue"],
+      "exclus_de_la_base_commune": [],
+      "blocs": [
+        {
+          "role": "divergente",
+          "carne": [1, 2],
+          "vege": [1, 2, 3]
+        },
+        {
+          "role": "commune",
+          "carne": [3],
+          "vege": [4],
+          "texte": "vege"
+        },
+        {
+          "role": "divergente",
+          "carne": [4],
+          "vege": [5, 6, 7]
+        }
+      ],
+      "motif": "La sauce est la même à l'unité près : 900 g de tomate concassée, 180 g d'oignon, 12 g d'ail des deux côtés, quinze minutes à découvert. Elle se fait en une casserole et se répartit ensuite, parce que les deux fournées de boulettes n'y finissent pas au même rythme — vingt minutes pour le bœuf, dix pour les lentilles, et le jumeau explique pourquoi (« la viande se raffermit dans la sauce en cuisant ; la lentille, elle, ne fait que ramollir »). Tout le reste — farce, façonnage, coloration — est propre à chaque protéine : la chapelure et l'œuf entrent dans les deux farces mais pas dans les mêmes quantités (90 g et 2 œufs contre 60 g et 1 œuf), ce sont donc deux farces et non une. Texte commun pris chez le jumeau, qui donne la durée et l'état de la sauce ; celui du parent tient en une ligne."
+    },
+    {
+      "carne": "SRC-042",
+      "vege": "JUM-112",
+      "lignee": "SRC-042",
+      "famille_carne": "Lentilles au lard",
+      "famille_vege": "Lentilles au tofu fumé",
+      "fusionnable": true,
+      "proteine_carne": ["Lardon fumé cru"],
+      "proteine_vege": ["Tofu fumé"],
+      "exclus_de_la_base_commune": [],
+      "blocs": [
+        {
+          "role": "commune",
+          "carne": [1],
+          "vege": [1],
+          "texte": "vege"
+        },
+        {
+          "role": "commune",
+          "carne": [2],
+          "vege": [2],
+          "texte": "vege"
+        },
+        {
+          "role": "divergente",
+          "carne": [3],
+          "vege": [3]
+        },
+        {
+          "role": "commune",
+          "carne": [4],
+          "vege": [4],
+          "texte": "vege"
+        },
+        {
+          "role": "commune",
+          "carne": [5],
+          "vege": [5],
+          "texte": "vege"
+        },
+        {
+          "role": "divergente",
+          "carne": [6],
+          "vege": [6]
+        },
+        {
+          "role": "parallele",
+          "carne": [7],
+          "vege": [7],
+          "texte": "vege"
+        }
+      ],
+      "motif": "Le couple le plus net du lot : les deux listes d'ingrédients sont identiques à une ligne près — 160 g de lardon fumé d'un côté, 260 g de tofu fumé de l'autre. Mêmes lentilles, mêmes 28 g d'huile d'olive, mêmes carotte, oignon, échalote, ail, thym, laurier, girofle, crème et persil, aux mêmes poids. Tout se fait en une cocotte jusqu'au retour de la protéine ; là, il faut séparer, et c'est le seul endroit où il le faut : le parent remet ses lardons à mi-cuisson, ce qui traverserait les lentilles de Zoé. DEUX DÉCISIONS SE LISENT ICI. La première : le texte commun est celui du jumeau à chaque bloc, parce que l'étape 4 du parent fait fondre les légumes dans la cocotte qui vient de rendre le gras des lardons — une base cuite là n'est pas partageable. Dans la fiche fusionnée, les légumes fondent dans la cocotte du tofu, et le lard se colore à part. La seconde : l'étape 2 du jumeau taille les légumes ET le tofu ; elle reste commune telle quelle, parce que la découpe du tofu se fait au même moment et sur la même planche, et que l'en détacher demanderait de réécrire l'étape."
+    },
+    {
+      "carne": "FR-037",
+      "vege": "JUM-043",
+      "lignee": "FR-037",
+      "famille_carne": "Parmentier de canard",
+      "famille_vege": "Parmentier de lentilles",
+      "fusionnable": true,
+      "proteine_carne": ["Confit de canard cuit, effiloché"],
+      "proteine_vege": ["Lentille verte sèche, crue"],
+      "exclus_de_la_base_commune": [],
+      "blocs": [
+        {
+          "role": "divergente",
+          "carne": [1],
+          "vege": [1]
+        },
+        {
+          "role": "commune",
+          "carne": [2],
+          "vege": [2],
+          "texte": "vege"
+        },
+        {
+          "role": "divergente",
+          "carne": [3, 4],
+          "vege": [3, 4]
+        },
+        {
+          "role": "commune",
+          "carne": [5],
+          "vege": [5],
+          "texte": "vege"
+        },
+        {
+          "role": "parallele",
+          "carne": [6],
+          "vege": [6],
+          "texte": "vege"
+        },
+        {
+          "role": "parallele",
+          "carne": [7],
+          "vege": [7],
+          "texte": "vege"
+        },
+        {
+          "role": "parallele",
+          "carne": [8],
+          "vege": [8],
+          "texte": "vege"
+        }
+      ],
+      "motif": "Le gain est dans la purée : 810 g de pommes de terre de chaque côté, mêmes 300 ml de lait, mêmes 75 g de beurre, même muscade, même passage au moulin à légumes — une seule casserole de 1 620 g au lieu de deux, et c'est la plus longue des étapes actives. La garniture, elle, ne se partage pas, et le jumeau dit lui-même pourquoi à son étape 3 : « Chez le parent, c'est la graisse du confit qui tenait ce rôle ; la lentille n'en rend aucune, d'où l'huile. » L'oignon fond donc deux fois, dans deux gras différents — c'est une conséquence directe du changement de protéine, pas une seconde divergence. Le montage, le four et le repos sont marqués « parallèle » et non « commun » : ce sont deux plats à gratin, montés du même geste et enfournés ensemble, pas un seul récipient qu'on partagerait."
+    },
+    {
+      "carne": "IT-004",
+      "vege": "JUM-001",
+      "lignee": "IT-004",
+      "famille_carne": "Spaghetti à la sauce bolognaise",
+      "famille_vege": "Spaghetti à la bolognaise de lentilles",
+      "fusionnable": true,
+      "proteine_carne": ["Bœuf haché cru 15 % MG"],
+      "proteine_vege": ["Lentille verte sèche, crue"],
+      "exclus_de_la_base_commune": [],
+      "blocs": [
+        {
+          "role": "divergente",
+          "carne": [],
+          "vege": [1]
+        },
+        {
+          "role": "commune",
+          "carne": [1, 2],
+          "vege": [2],
+          "texte": "vege"
+        },
+        {
+          "role": "divergente",
+          "carne": [3, 4, 5],
+          "vege": [3, 4, 5]
+        },
+        {
+          "role": "commune",
+          "carne": [6],
+          "vege": [6],
+          "texte": "vege"
+        },
+        {
+          "role": "parallele",
+          "carne": [7],
+          "vege": [7],
+          "texte": "vege"
+        }
+      ],
+      "motif": "Deux choses se font une fois : le soffritto et l'eau des pâtes. Le soffritto est le même — 200 g d'oignon et 150 g de carotte des deux côtés, 100 g de céleri contre 60, mêmes 30 g de concentré, même huile d'olive —, et le jumeau le taille et le fait suer en une seule étape là où le parent en met deux ; c'est son texte qui est retenu. LA TOMATE N'EST PAS DANS LE BLOC COMMUN, et c'est une décision contre l'apparence : les deux recettes emploient la même tomate concassée, mais le parent la verse SUR le bœuf déjà rissolé (son étape 4 suit son étape 3) tandis que le jumeau la verse avant ses lentilles. La séparation doit donc avoir lieu avant elle, sans quoi la sauce du parent se ferait sans viande ou celle de Zoé avec. Les 800 g contre 1 000 g vont dans le même sens : le jumeau écrit que « les lentilles boivent du liquide là où la viande en rend », ce qui interdit de cuire les deux sauces dans la même casserole. Reste un vrai gain : un seul soffritto, une seule eau de pâtes, deux sauces."
+    },
+    {
+      "carne": "DEN-015",
+      "vege": "JUM-055",
+      "lignee": "DEN-015",
+      "famille_carne": "Wok de poulet aux légumes",
+      "famille_vege": "Wok de tofu aux légumes",
+      "fusionnable": true,
+      "proteine_carne": ["Blanc de poulet cru, sans peau"],
+      "proteine_vege": ["Tofu ferme"],
+      "exclus_de_la_base_commune": [],
+      "blocs": [
+        {
+          "role": "divergente",
+          "carne": [],
+          "vege": [1]
+        },
+        {
+          "role": "commune",
+          "carne": [1],
+          "vege": [2],
+          "texte": "vege"
+        },
+        {
+          "role": "divergente",
+          "carne": [2, 3],
+          "vege": [3]
+        },
+        {
+          "role": "commune",
+          "carne": [4],
+          "vege": [4, 5],
+          "texte": "vege"
+        },
+        {
+          "role": "divergente",
+          "carne": [5],
+          "vege": [6, 7]
+        }
+      ],
+      "motif": "Les deux listes d'ingrédients ne diffèrent que par la protéine — 600 g de blanc de poulet contre 400 g de tofu ferme — et tout le reste, jusqu'au gramme de paprika, est identique : carotte, courgette, poivron, échalote, soja, huile d'arachide, gingembre, ail, sésame, coriandre. Les légumes se taillent une fois et se sautent une fois, dans l'ordre de fermeté que les deux recettes donnent mot pour mot. Le texte commun est celui du jumeau : il réunit dans une seule étape la taille des légumes et celle des aromates, que le parent répartit entre ses étapes 1 et 2 avec la découpe du poulet. LE WOK COMMUN EST CELUI DU TOFU, et c'est la décision à lire : les deux recettes font sauter les légumes dans le wok qui vient de saisir la protéine, ce qui n'est partageable que du côté végétarien ; le poulet se saisit donc à part. Une réserve honnête sur ce couple en particulier : un wok surchargé cuit à la vapeur au lieu de saisir, et deux assiettes de légumes dans une seule poêle peuvent le surcharger. Les deux recettes prévoient déjà le remède pour la protéine (« saisir en deux fournées ») ; il vaut ici pour les légumes."
+    },
+    {
+      "carne": "SRC-012",
+      "vege": "SRC-012-D1",
+      "lignee": "SRC-012",
+      "famille_carne": "Gratin de brocolis",
+      "famille_vege": "Gratin de brocolis végétarien",
+      "fusionnable": true,
+      "proteine_carne": ["Jambon blanc cuit"],
+      "proteine_vege": [],
+      "exclus_de_la_base_commune": [],
+      "blocs": [
+        {
+          "role": "commune",
+          "carne": [1],
+          "vege": [1],
+          "texte": "vege"
+        },
+        {
+          "role": "commune",
+          "carne": [2],
+          "vege": [2],
+          "texte": "vege"
+        },
+        {
+          "role": "commune",
+          "carne": [3],
+          "vege": [3],
+          "texte": "vege"
+        },
+        {
+          "role": "commune",
+          "carne": [4],
+          "vege": [4],
+          "texte": "vege"
+        },
+        {
+          "role": "divergente",
+          "carne": [5],
+          "vege": [5]
+        },
+        {
+          "role": "parallele",
+          "carne": [6],
+          "vege": [6],
+          "texte": "vege"
+        },
+        {
+          "role": "parallele",
+          "carne": [7],
+          "vege": [7],
+          "texte": "vege"
+        }
+      ],
+      "motif": "Le cas le plus simple du lot, et celui qui montre le mieux ce qu'une fiche fusionnée fait gagner : les étapes 1, 2, 3, 4, 6 et 7 des deux recettes sont identiques MOT POUR MOT — le brocoli blanchi, l'oignon fondu, le roux, la béchamel montée au lait froid, le montage, le four. La seule divergence est l'étape 5, où le parent incorpore 110 g de jambon en dés à l'appareil et le jumeau non (il porte en échange 120 g de gruyère au lieu de 80). Le brocoli, la béchamel et la crème se font donc en une casserole, et c'est à l'appareil aux œufs que l'on sépare. Montage et cuisson sont marqués « parallèle » : deux plats à gratin, montés du même geste et enfournés ensemble à 180 °C."
+    },
+    {
+      "carne": "SRC-025",
+      "vege": "SRC-025-D4",
+      "lignee": "SRC-025",
+      "famille_carne": "Salade piémontaise",
+      "famille_vege": "Salade piémontaise végétarienne",
+      "fusionnable": true,
+      "proteine_carne": ["Jambon blanc cuit"],
+      "proteine_vege": [],
+      "exclus_de_la_base_commune": [],
+      "blocs": [
+        {
+          "role": "commune",
+          "carne": [1],
+          "vege": [1],
+          "texte": "vege"
+        },
+        {
+          "role": "commune",
+          "carne": [2],
+          "vege": [2],
+          "texte": "vege"
+        },
+        {
+          "role": "divergente",
+          "carne": [3],
+          "vege": [3]
+        },
+        {
+          "role": "commune",
+          "carne": [4],
+          "vege": [4],
+          "texte": "vege"
+        },
+        {
+          "role": "divergente",
+          "carne": [5],
+          "vege": [5]
+        },
+        {
+          "role": "parallele",
+          "carne": [6],
+          "vege": [6],
+          "texte": "vege"
+        }
+      ],
+      "motif": "Une casserole de pommes de terre, une casserole d'œufs durs, un bol de sauce : les étapes 1, 2 et 4 sont identiques mot pour mot et se font une fois. La divergence est le jambon, et ce qui le remplace — le jumeau double les œufs (300 g contre 150) et élargit les cornichons, en l'écrivant à son étape 5 : « deux fois plus abondants qu'à l'ordinaire puisqu'ils portent seuls la protéine du plat ». C'est pourquoi les étapes 3 et 5 divergent : le parent y taille son jambon, le jumeau y coupe ses cornichons plus épais et compte ses œufs autrement. Les œufs communs ne posent pas le problème d'une casserole qu'on répartirait — ce sont des pièces, chacun prend les siennes. Le repos au réfrigérateur est « parallèle » : deux saladiers filmés, une heure chacun."
+    },
+    {
+      "carne": "SRC-023",
+      "vege": "SRC-023-D2",
+      "lignee": "SRC-023",
+      "famille_carne": "Riz cantonais",
+      "famille_vege": "Riz cantonais végétarien",
+      "fusionnable": false,
+      "proteine_carne": ["Jambon blanc cuit"],
+      "proteine_vege": [],
+      "motif": "Quatre étapes sur sept sont identiques mot pour mot, et pourtant ce couple ne se fusionne pas. Le jumeau ne retire pas seulement le jambon : il DOUBLE les petits pois (200 g contre 100) et la carotte (160 g contre 80), et élargit la sauce soja, en disant pourquoi à ses étapes 6 et 7 — « privé de garniture de viande, c'est de cette accroche que le plat tire son goût de grillé », « la dose est plus large qu'à l'ordinaire, elle apporte le sel et le fond salé que la charcuterie donnait ». Les quantités PAR PORTION de deux ingrédients communs ne sont donc plus les mêmes, et le sauté de légumes de l'étape 5 ne peut pas se faire dans une poêle qu'on répartirait ensuite : la part de Zoé y perdrait exactement la carotte doublée qui remplace la charcuterie. Ce qui reste commun — le riz de l'étape 1 et l'omelette de l'étape 4 — est une BASE PARTAGÉE au sens du livrable 2.1, pas une fiche fusionnée. Même verdict, et pour la même raison, que PROT-008 / JUM-123."
+    },
+    {
+      "carne": "SRC-008",
+      "vege": "JUM-002",
+      "lignee": "SRC-008",
+      "famille_carne": "Blanquette de dinde",
+      "famille_vege": "Blanquette de tofu",
+      "fusionnable": false,
+      "proteine_carne": ["Escalope de dinde crue"],
+      "proteine_vege": ["Tofu ferme"],
+      "motif": "Deux méthodes, pas deux finitions. Le parent raidit la dinde au beurre et à l'huile, la poudre de farine dans la cocotte (il singe), puis mouille au vin blanc et au bouillon de volaille et mijote quarante-cinq minutes : la sauce se construit AUTOUR de la viande, et rien de ce qui la compose n'est partageable — le bouillon est de volaille. Le jumeau poche carottes, poireau et oignon dans un bouillon de légumes, ajoute le tofu, passe le tout au tamis, puis monte un velouté au roux dans la cocotte essuyée avant d'y remettre la garniture. Il n'existe aucune étape que les deux versions fassent au même moment de la même manière : la seule chose qui se ressemble est la taille des légumes, et elle est dans l'étape 1 du parent, qui détaille aussi la dinde. La divergence n'est pas la protéine : c'est la conduite entière du plat."
+    },
+    {
+      "carne": "PROT-008",
+      "vege": "JUM-123",
+      "lignee": "PROT-008",
+      "famille_carne": "Poulet rôti à la créole et haricots rouges",
+      "famille_vege": "Haricots rouges et riz à la créole",
+      "fusionnable": false,
+      "proteine_carne": ["Poulet entier cru, prêt à cuire"],
+      "proteine_vege": [],
+      "motif": "Le jumeau refuse lui-même la fusion, à son étape 3 : « La version au poulet fait suer cette même trinité à sec, sous des morceaux de volaille qui lui rendent leur graisse au four ; privée de volaille, elle n'a plus rien à boire, accroche et brûle. C'est la seule raison pour laquelle ce jumeau porte de l'huile là où sa base n'en portait pas. » La trinité créole — oignon, poivron, céleri — est donc cuite autrement des deux côtés, et elle est le premier geste après les haricots. La divergence commence là, avant la protéine. Ce qui EST commun, le trempage et la cuisson des haricots rouges, est une BASE PARTAGÉE au sens du livrable 2.1 : une casserole de grains cuite une fois pour deux plats qui, ensuite, ont chacun leur cocotte. Compter ce couple comme une seule préparation gonflerait P9 d'une fusion qui n'existe pas dans la cuisine."
+    },
+    {
+      "carne": "SRC-014-D5",
+      "vege": "SRC-014-D4",
+      "lignee": "SRC-014",
+      "famille_carne": "Lentilles tièdes au jambonneau effiloché",
+      "famille_vege": "Lentilles tièdes au poireau confit",
+      "fusionnable": false,
+      "proteine_carne": ["Jambonneau cuit"],
+      "proteine_vege": [],
+      "motif": "Deux enfants de SRC-014, et le planificateur substitue bien l'un à l'autre — c'est le couple servi le 1er octobre dans le rapport de qualité. Il n'est pourtant pas fusionnable, pour deux raisons mesurables. La première : le POIREAU, qui est un ingrédient commun aux deux recettes (150 g de chaque côté), n'y est pas traité de la même façon — il cuit avec les lentilles chez le jambonneau, il confit vingt minutes à la poêle chez l'autre, et c'est même ce qui donne son nom au plat. La casserole de lentilles ne peut donc pas être commune. La seconde : l'étape 1 du côté carné met le jambonneau à pocher une heure ET fait la découpe commune dans le même paragraphe ; la découper en deux demanderait de réécrire l'étape, ce que ce fichier s'interdit. La divergence n'est pas la seule protéine."
+    },
+    {
+      "carne": "REAL-295",
+      "vege": "JUM-007",
+      "lignee": "REAL-295",
+      "famille_carne": "Goulash hongrois",
+      "famille_vege": "Goulash végétarien aux haricots (babgulyás)",
+      "fusionnable": false,
+      "proteine_carne": ["Bœuf à braiser cru"],
+      "proteine_vege": ["Haricot blanc cuit, égoutté"],
+      "motif": "La fondue d'oignons est l'étape qui compte dans un goulash — vingt à vingt-cinq minutes, le tiers du poids de la viande — et les deux versions la font pareil, à un détail qui interdit tout : le parent la fait dans le SAINDOUX, le jumeau dans l'huile d'olive. Une base commune cuite au saindoux n'est pas partageable avec l'assiette végétarienne, et la refaire à l'huile pour les deux serait réécrire le parent. S'y ajoute une seconde divergence, que le jumeau assume à son étape 3 : il ajoute du paprika fumé « à la place de la fumée que la viande apportait », si bien que même le fond d'épices n'est pas le même. Deux divergences, dont une qui touche la matière grasse de la base : le couple n'est pas fusionnable."
+    },
+    {
+      "carne": "FR-003",
+      "vege": "JUM-052",
+      "lignee": "FR-003",
+      "famille_carne": "Carbonade flamande",
+      "famille_vege": "Carbonade flamande végétarienne",
+      "fusionnable": false,
+      "proteine_carne": ["Bœuf à braiser cru"],
+      "proteine_vege": ["Seitan"],
+      "motif": "Tout donnait ce couple pour fusionnable : même bière, mêmes 500 g d'oignons, même pain d'épices, même moutarde ou presque, même beurre de saisie. La compotée d'oignons — vingt minutes — pourrait se faire dans la cocotte du seitan et se répartir ensuite. Mais l'étape suivante sépare une seconde fois, et pour un motif qui n'est pas la protéine : le parent SINGE ses oignons de 30 g de farine, le jumeau écrit « Aucune farine n'entre ici : ce sont le pain d'épices et la réduction qui lieront la sauce, et les quatre pages du dossier procèdent ainsi ». La liaison n'est donc pas la même, et elle se décide au moment où la bière est versée, c'est-à-dire avant la protéine. La compotée d'oignons reste une base partageable au sens du livrable 2.1 ; la fiche, elle, n'est pas fusionnée."
+    }
+  ]
+}

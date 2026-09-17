@@ -1,0 +1,278 @@
+{
+  "dish": "jerk tofu",
+  "slug": "jerk-tofu",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://makeitdairyfree.com/authentic-jamaican-jerk-tofu-recipe/",
+      "site": "makeitdairyfree.com",
+      "nom": "Authentic Jamaican Jerk Tofu Recipe",
+      "portions": [
+        "4",
+        "4 servings"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "14 oz block extra firm tofu,  (frozen, then thawed and pressed)",
+        "1 tbsp pimenta berries ((allspice berries))",
+        "1/4-1/2 cup packed brown sugar ((sub coconut sugar for low carb))",
+        "1  large yellow onion",
+        "4 cloves garlic, (minced)",
+        "2  scotch bonnet peppers,  (seeds removed)",
+        "1 1/2 tbsp ground thyme ((or 2 tbsp fresh thyme leaves))",
+        "2-3  scallions ((just the green part))",
+        "1  juice of lime",
+        "1 inch ginger",
+        "1/2 tsp ground cinnamon",
+        "1 tsp nutmeg",
+        "1 tsp salt",
+        "1/2 tsp black pepper",
+        "2 tbsp molasses ((sub with browning) )",
+        "1 tbsp apple cider vinegar",
+        "1/4 cup soy sauce",
+        "1 tbsp garam masala  ((sub with five spice powder))",
+        "1-2 tbsp olive oil,  (see notes if grilling )",
+        "Jamaican Rice and Peas"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 947,
+        "sha256": "75b98fedda5cf18a"
+      },
+      "sha256_page": "7869071e84acbaad"
+    },
+    {
+      "url": "https://www.kathysvegankitchen.com/jerk-tofu/",
+      "site": "kathysvegankitchen.com",
+      "nom": "Vegan Jerk Tofu",
+      "portions": [
+        "4",
+        "4 servings"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT16M",
+      "ingredients": [
+        "14 ounces extra-firm tofu (pressed and cut into 4 equal pieces)",
+        "1 cup white onions (coarsely chopped)",
+        "4  green onions (chopped)",
+        "2  scotch bonnet peppers (stems and seeds removed; chopped (habeneros can be replaced))",
+        "2 cloves garlic (minced)",
+        "1 Tablespoon all-spice powder",
+        "1 teaspoon dry thyme",
+        "1 teaspoon nutmeg",
+        "1 teaspoon salt",
+        "1/2 cup soy sauce",
+        "1 1/2 Tablespoons maple syrup",
+        "1/4 cup lime juice",
+        "1/4 inch fresh ginger",
+        "3  Roma tomatoes (diced)",
+        "1  jalapeño pepper (deseeded, deveined and diced)",
+        "1/2 cup red onion (diced)",
+        "1/2 cup cilantro (chopped)",
+        "1 cup fresh pineapple (diced)",
+        "1 Tablespoon lime juice",
+        "1 cup black beans",
+        "2 teaspoons Sriracha (optional)",
+        "3 cups Cooked Brown Rice or Grain of Choice (quinoa or farro)",
+        "Extra Jerk Sauce",
+        "Lime wedges"
+      ],
+      "etapes_empreinte": {
+        "nombre": 28,
+        "signes": 1779,
+        "sha256": "ffd8959bc1c18737"
+      },
+      "sha256_page": "bfc325187f2bca64"
+    },
+    {
+      "url": "https://www.tastingtable.com/1338816/jerk-marinated-grilled-tofu-recipe/",
+      "site": "tastingtable.com",
+      "nom": "Jerk-Marinated Grilled Tofu Recipe",
+      "portions": [
+        2,
+        "2 Servings"
+      ],
+      "duree_preparation": "PT2H10M",
+      "duree_cuisson": "PT12M",
+      "ingredients": [
+        "1 onion",
+        "2 cloves garlic",
+        "2 habanero peppers (or scotch bonnet)",
+        "½ cup lime juice",
+        "½ cup soy sauce",
+        "2 tablespoons maple syrup",
+        "2 teaspoons allspice powder",
+        "1 teaspoon ginger",
+        "1 teaspoon nutmeg",
+        "1 teaspoon salt",
+        "1 teaspoon thyme",
+        "1 (16-ounce) package super firm tofu"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 732,
+        "sha256": "6ef2baad902f70e3"
+      },
+      "sha256_page": "d8f9ecf86121b081"
+    },
+    {
+      "url": "https://www.connoisseurusveg.com/jamaican-jerk-tofu-bowls/",
+      "site": "connoisseurusveg.com",
+      "nom": "Jamaican Jerk Tofu Bowls",
+      "portions": [
+        "4"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1 tablespoon canola oil, (or another high heat oil)",
+        "1  small onion, (diced)",
+        "2  garlic cloves, ( minced)",
+        "1 1/4 cups water",
+        "1/2 cup coconut milk",
+        "1 tablespoon fresh thyme leaves ((or 1 teaspoon dried))",
+        "1/2 teaspoon allspice",
+        "1/2 teaspoon salt",
+        "1 cup long grain white rice ((I used basmati))",
+        "1 (14 ounce) can kidney beans, (drained and rinsed)",
+        "2-3  scallions,  (chopped)",
+        "2 tablespoons molasses",
+        "2 tablespoons lime juice",
+        "1 1/2 tablespoons soy sauce",
+        "2  garlic cloves,  (minced)",
+        "1 1/2 teaspoons freshly grated ginger",
+        "1  habanero or scotch bonnet pepper,  (seeded and minced)",
+        "1 teaspoon allspice",
+        "1/4 teaspoon ground cinnamon",
+        "1  tablespoon canola oil, (or high heat oil of choice)",
+        "1  (14 ounce) package extra firm tofu, (drained, pressed and cut into 1 inch cubes)",
+        "2 cups fresh pineapple chunks ((about 1 inch pieces))"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1441,
+        "sha256": "242ba113086b2e96"
+      },
+      "sha256_page": "9ffec01e93e00f62"
+    },
+    {
+      "url": "https://seasonedskilletblog.com/crispy-baked-jerk-tofu/",
+      "site": "seasonedskilletblog.com",
+      "nom": "Crispy Baked Jerk Tofu",
+      "portions": [
+        "4",
+        "4 servings"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 block Extra Firm Tofu",
+        "2 tbsp Olive Oil (or avocado oil)",
+        "2 tbsp Cornstarch  (or arrowroot starch)",
+        "1 tsp Salt",
+        "1/2 tsp Garlic Powder",
+        "1/4 tsp Black Pepper",
+        "1 tbsp Butter",
+        "5 cloves Garlic (minced)",
+        "1/4 cup Honey",
+        "1 tsp Rice Wine Vinegar",
+        "1 tsp Soy Sauce",
+        "1 tbsp Jerk Seasoning (more or less as desired)",
+        "1/4 tsp Ginger",
+        "1/4 tsp Smoked Paprika",
+        "1/2 tsp Salt",
+        "1/4 tsp Black Pepper"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 966,
+        "sha256": "9263cbcd92b45f9a"
+      },
+      "sha256_page": "b7528a5e1e8d692e"
+    },
+    {
+      "url": "https://veganwithgusto.com/jerk-tofu/",
+      "site": "veganwithgusto.com",
+      "nom": "Oil-Free Jamaican Jerk Tofu Recipe",
+      "portions": [
+        "4"
+      ],
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "16 ounces tofu (1 block, firm or extra-firm)",
+        "4 medium green onions (white and green parts)",
+        "¼ cup soy sauce",
+        "¼ cup lime juice",
+        "1 ½ tablespoons maple syrup",
+        "2 cloves garlic (minced or pressed)",
+        "2 teaspoons ginger (minced)",
+        "1-2 teaspoons jerk seasoning",
+        "¼ - ½ teaspoon cayenne pepper ((optional))",
+        "1 tablespoon  cornstarch"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1515,
+        "sha256": "9b39ccb00a2a76cd"
+      },
+      "sha256_page": "9e213f2f589cee42"
+    },
+    {
+      "url": "https://healthiersteps.com/jerk-tofu/",
+      "site": "healthiersteps.com",
+      "nom": "Jerk Tofu",
+      "portions": [
+        "6",
+        "6 servings"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "14-16 ounces tofu . (extra-firm or super-firm, drained and cubed)",
+        "1 tablespoon olive oil",
+        "1 1/2 tablespoons Bragg's liquid aminos",
+        "1 teaspoon granulated garlic powder",
+        "1 teaspoon onion powder",
+        "1 teaspoon paprika",
+        "1 tablespoon nutritional yeast flakes (optional)",
+        "2 cups Jerk Sauce"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 549,
+        "sha256": "168027422907eb3d"
+      },
+      "sha256_page": "a592a03853bad65d"
+    },
+    {
+      "url": "https://oaktownspiceshop.com/blogs/recipes/jamaican-jerk-tofu",
+      "site": "oaktownspiceshop.com",
+      "nom": "Jamaican Jerk Tofu",
+      "portions": "6-8",
+      "duree_preparation": "PT5H",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 tablespoons Oaktown Spice Shop Jamaican Jerk Seasoning",
+        "3 tablespoons white vinegar",
+        "3 green onions",
+        "2 tablespoons vegetable oil",
+        "2 teaspoons salt",
+        "1/2 cup orange juice",
+        "2 tablespoons soy sauce",
+        "2 cloves garlic",
+        "Juice of 2 limes",
+        "1 dried Scotch Bonnet chile (adjust to taste)",
+        "2, 400g blocks extra firm tofu, sliced into ½ inch “steaks”"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 716,
+        "sha256": "9094cb76a2b7be5e"
+      },
+      "sha256_page": "f8a86a7971c339e1"
+    }
+  ]
+}

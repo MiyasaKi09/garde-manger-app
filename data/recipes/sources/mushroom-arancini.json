@@ -1,0 +1,316 @@
+{
+  "dish": "mushroom arancini",
+  "slug": "mushroom-arancini",
+  "sources_count": 10,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.thepetitecook.com/mushroom-arancini/",
+      "site": "thepetitecook.com",
+      "nom": "Mushroom Arancini - Italian Rice Balls",
+      "portions": [
+        "8"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "480 g mushroom risotto (cooled)",
+        "100 g mozzarella cheese (well drained and cubed)",
+        "220 g all-purpose flour",
+        "sea salt and black pepper to taste",
+        "3  eggs (lightly whisked)",
+        "200 g panko breadcrumbs",
+        "400 ml vegetable oil (for deep-frying)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 991,
+        "sha256": "c5348021a25bfa3d"
+      },
+      "sha256_page": "ed8b735549046bcf"
+    },
+    {
+      "url": "https://simply-delicious-food.com/mushroom-arancini-roasted-tomato-sauce/",
+      "site": "simply-delicious-food.com",
+      "nom": "Mushroom arancini with roasted tomato sauce",
+      "portions": [
+        "6"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT60M",
+      "ingredients": [
+        "2-3 cups cold mushroom risotto",
+        "1/2-1 cup mozzarella cubes (depending on how many arancini you make)",
+        "2 cups fresh breadcrumbs seasoned with salt and pepper",
+        "oil (for frying)",
+        "2 cups cherry tomatoes (halved)",
+        "1  red onion (finely chopped)",
+        "4  garlic cloves (thinly sliced)",
+        "1 tablespoon Balsamic vinegar",
+        "2 teaspoons sugar",
+        "2  sprigs fresh thyme",
+        "salt &amp; pepper to taste"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 761,
+        "sha256": "ce8fe87ecaa234a3"
+      },
+      "sha256_page": "77c31605b89d13f7"
+    },
+    {
+      "url": "https://www.sugarsaltmagic.com/mushroom-arancini/",
+      "site": "sugarsaltmagic.com",
+      "nom": "Mushroom Arancini",
+      "portions": [
+        "12",
+        "12 arancini"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "2 ½ cups chicken stock ((625ml))",
+        "5 g dried porcini mushrooms",
+        "1 tablespoon extra virgin olive oil ((notes 1))",
+        "½ medium onion (finely chopped)",
+        "1 stalk celery (finely chopped)",
+        "100 g swiss brown mushrooms (cremini/chestnut/baby bella, finely chopped)",
+        "1 clove garlic (minced)",
+        "¾ cups arborio rice  ((145g/~5oz))",
+        "40 g parmesan cheese (finely grated (⅓ cup packed))",
+        "2 tablespoons fresh parsley (finely chopped (notes 1))",
+        "60 g mozzarella (cut into 12 cubes)",
+        "2  large eggs",
+        "1 cup breadcrumbs",
+        "⅓ cup plain flour (all purpose flour)",
+        "Vegetable oil (for deep frying)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 19,
+        "signes": 2689,
+        "sha256": "225788170683fd31"
+      },
+      "sha256_page": "50e9b506e2ecbea4"
+    },
+    {
+      "url": "https://nodashofgluten.com/mushroom-arancini/",
+      "site": "nodashofgluten.com",
+      "nom": "Mushroom Arancini",
+      "portions": [
+        "12",
+        "12 pieces"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 tablespoon olive oil",
+        "1  yellow onion (finely diced)",
+        "5  garlic cloves (minced)",
+        "6  cremini mushrooms (finely chopped)",
+        "1 teaspoon salt",
+        "2½ cups Arborio rice",
+        "½ cup dry white wine",
+        "1-2 liters mushroom or chicken stock (warmed)",
+        "3 tablespoons cold butter",
+        "½ cup freshly grated parmesan cheese",
+        "1  block mozzarella cheese (cut into 1-inch cubes)",
+        "1 cup all-purpose flour",
+        "2  large eggs (beaten)",
+        "1 cup panko breadcrumbs",
+        "Marinara sauce (for serving)",
+        "Fresh basil (for garnish)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 2323,
+        "sha256": "2d253894177a2a10"
+      },
+      "sha256_page": "48e2a18c4c4e7c86"
+    },
+    {
+      "url": "https://blog.giallozafferano.it/ilcaldosaporedelsud/ricetta-arancini-ai-funghi/",
+      "site": "blog.giallozafferano.it",
+      "nom": "Arancini ai funghi",
+      "portions": [
+        "28",
+        "28"
+      ],
+      "duree_preparation": "PT60M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "3 l brodo vegetale",
+        "1 kg riso Roma (o carnaroli)",
+        "60 g burro",
+        "100 g Grana Padano grattugiato (o parmigiano)",
+        "800 g funghi (misti con porcini, champignon, portobello ecc...)",
+        "q.b. sale",
+        "1 mazzetto prezzemolo",
+        "50 g olio extravergine d'oliva",
+        "40 g burro",
+        "1 cipolla (bianca o rossa, 100g circa)",
+        "50 g farina 00",
+        "1 l latte",
+        "100 g parmigiano grattugiato (o grana)",
+        "1 spicchio aglio",
+        "besciamella (ai funghi preparata, quasi tutta)",
+        "500 g formaggio (caciotta, provola, emmental e pasta filata)",
+        "200 g farina 00",
+        "400 ml acqua",
+        "1 uovo",
+        "500 g pangrattato",
+        "1.5 l olio di semi di girasole (per la frittuar)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 4320,
+        "sha256": "ce7f4206fbfb9b80"
+      },
+      "sha256_page": "20a47036c4226d1b"
+    },
+    {
+      "url": "https://blog.giallozafferano.it/ricettechepassione/arancini-ai-funghi-porcini/",
+      "site": "blog.giallozafferano.it",
+      "nom": "Arancini ai funghi porcini - Ricetta facile",
+      "portions": [
+        "16",
+        "16 pezzi"
+      ],
+      "duree_preparation": null,
+      "duree_cuisson": "P0DT0H30M",
+      "ingredients": [
+        "500 g Riso (per risotto)",
+        "300-400 g Funghi porcini",
+        "1 spicchio Aglio",
+        "1/2 bicchieri Vino bianco",
+        "q.b. Sale",
+        "10 g Burro",
+        "2 cucchiai Grana padano",
+        "4 l Brodo vegetale (con carota sedano e cipolla)",
+        "200 g Mozzarella",
+        "1 Uovo",
+        "4 cucchiai Farina",
+        "1 cucchiaio Grana padano",
+        "q.b. Acqua",
+        "q.b. Sale",
+        "q.b. Pepe",
+        "200 g Mozzarella"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 3645,
+        "sha256": "495f206116af6684"
+      },
+      "sha256_page": "881446d31c221302"
+    },
+    {
+      "url": "https://blog.giallozafferano.it/lepassionidima/arancini-riso-funghi/",
+      "site": "blog.giallozafferano.it",
+      "nom": "Arancini di riso e funghi",
+      "portions": [
+        1,
+        " "
+      ],
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "150 g Riso Arborio",
+        "50 g funghi cardoncelli",
+        "50 g funghi pleurotus",
+        "50 g Funghi champignon",
+        "1 spicchio Aglio",
+        "q.b. Olio extravergine d'oliva",
+        "q.b. Prezzemolo",
+        "q.b. Sale",
+        "q.b. formaggio grattugiato",
+        "q.b. Brodo vegetale",
+        "1 uovo",
+        "q.b. Pane grattugiato",
+        "q.b. Olio di semi di arachide"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1204,
+        "sha256": "88b11b2c3c04a1ed"
+      },
+      "sha256_page": "ff661b6920719f8f"
+    },
+    {
+      "url": "https://www.tuorlorosso.it/arancine-ai-funghi/",
+      "site": "tuorlorosso.it",
+      "nom": "Arancine ai funghi",
+      "portions": "10",
+      "duree_preparation": "PT00H35M00S",
+      "duree_cuisson": "PT00H25M00S",
+      "ingredients": [
+        "500 g di riso Roma",
+        "1 l di acqua",
+        "85 g di burro",
+        "1 dado vegetale",
+        "1 bustina di zafferano",
+        "q.b. di sale",
+        "150 g di mozzarella",
+        "2-3 cucchiai di besciamella",
+        "300 g di funghi",
+        "1 spicchio d'aglio",
+        "q.b. di olio extravergine d'oliva",
+        "q.b. di sale",
+        "q.b. di pepe"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "cfb625d5b5960873"
+    },
+    {
+      "url": "https://www.saq.com/fr/arancinis-champignons",
+      "site": "saq.com",
+      "nom": "Arancinis aux champignons",
+      "portions": "24 arancinis",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "125 ml (1/2 tasse) de bolets séchés (ou vos champignons séchés préférés)",
+        "30 ml (2 c. à soupe) d'huile d'olive",
+        "2 échalotes françaises, émincées",
+        "1 gousse d'ail, hachée finement",
+        "250 ml (1 tasse) de riz arborio",
+        "125 ml (1/2 tasse) de vin blanc",
+        "500 ml (2 tasses) de bouillon de poulet",
+        "60 ml (1/4 tasse) de parmesan frais, râpé",
+        "Sel et poivre noir du moulin",
+        "125 ml (1/2 tasse) de farine tout usage",
+        "3 oeufs, battus",
+        "30 ml (2 c. à soupe) de lait",
+        "500 ml (2 tasses) de chapelure, tamisée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 27,
+        "signes": 1656,
+        "sha256": "8a9c46ff4f523301"
+      },
+      "sha256_page": "97c8d7756d342d98"
+    },
+    {
+      "url": "https://cookpad.com/it/ricette/14724967-arancini-con-riso-ai-funghi-porcini",
+      "site": "cookpad.com",
+      "nom": "Arancini con riso ai funghi porcini",
+      "portions": "4 porzioni",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "Riso ai funghi",
+        "1 uovo",
+        "Pan grattugiato",
+        "Olio"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 254,
+        "sha256": "a5e6c73bffbae29f"
+      },
+      "sha256_page": "fdf6adbf1a928e25"
+    }
+  ]
+}

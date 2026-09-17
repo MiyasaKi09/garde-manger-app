@@ -94,7 +94,16 @@ async function fetchCanonicalRecipe({ code, typeMeals, recipeCacheRef, authFetch
   const portions = (typeMeals || []).reduce((sum, meal) => sum + (Number(meal?.planned_servings) || 0), 0)
   const params = new URLSearchParams()
   if (Number.isFinite(portions) && portions > 0) params.set('portions', String(portions))
-  const cacheKey = `canonical:${code}:${params.get('portions') || 'base'}`
+  // LES MANGEURS DU CRÉNEAU (livrable 3.6, réserve a). L'écran les connaît — ce
+  // sont les assiettes du repas —, la route ne les connaît pas. Sans eux, elle
+  // décide sur TOUS les membres actifs du foyer, ce qui retirerait l'option
+  // carnée d'un plat que seul un mangeur sans restriction partage ce soir-là.
+  const mangeurs = [...new Set((typeMeals || []).map((meal) => meal?.person_name).filter(Boolean))]
+  if (mangeurs.length) params.set('mangeurs', mangeurs.join(','))
+  // La clé de cache porte les mangeurs : la même recette n'a pas la même fiche
+  // selon qui la mange, et une clé qui les ignore servirait la fiche de l'un à
+  // l'autre.
+  const cacheKey = `canonical:${code}:${params.get('portions') || 'base'}:${params.get('mangeurs') || 'foyer'}`
   const cached = recipeCacheRef.current[cacheKey]
   if (cached !== undefined) return { cacheKey, recipe: cached || null }
 

@@ -1,0 +1,118 @@
+{
+  "dish": "Ragout de pois chiches",
+  "slug": "ragout-de-pois-chiches",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_ragout-de-pois-chiches-a-la-tomate_24354.aspx",
+      "site": "marmiton.org",
+      "nom": "Ragoût de pois chiches à la tomate : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT",
+      "duree_cuisson": "PT2H30M",
+      "ingredients": [
+        "400 g de pois chiches",
+        "150 g de tomates pelées concassées",
+        "100 g d'oignons hachés",
+        "1 gousse d'ail",
+        "1 oeuf dur",
+        "1 tranche de pain",
+        "30 g de beurre",
+        "10 cl d'huile",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 782,
+        "sha256": "24afa17913a06c17"
+      },
+      "sha256_page": "902621df436626ee"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/try-this/recettes/ragout-de-blettes-pois-chiches-et-tamarin",
+      "site": "chefsimon.com",
+      "nom": "Ragout de blettes, pois chiches et tamarin",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "4 cuillères à soupe de pulpe de tamarin",
+        "400 gr de blettes, feuilles et côtes coupées en lanières de 1 cm de large",
+        "1/2 cuillère à café de graines de coriandre",
+        "1 oignon émincé",
+        "2 cuillères à café de carvi",
+        "1 cuillère à café de concentré de tomates",
+        "400 gr de tomates concassées en boite",
+        "400 gr de pois chiches juste cuits ou en boite",
+        "le jus d’1 citron",
+        "200 gr de yaourt grec",
+        "1 bouquet de coriandre ciselé",
+        "huile d’olive, sel &amp; poivre",
+        "350 gr de riz",
+        "20 gr de beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "387914de6a7a9fbc"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/alexandre/recettes/ragout-de-pois-chiches-a-la-tomate",
+      "site": "chefsimon.com",
+      "nom": "Ragoût de pois chiches à la tomate",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT01H30M",
+      "ingredients": [
+        "500 g de pois chiches égouttés",
+        "1/2 l de bouillon de légumes",
+        "1 boîte de tomates cerises au naturel (ou de pulpe de tomates)",
+        "1 carotte",
+        "1 navet (facultatif)",
+        "1 bel oignon",
+        "1 gousse d’ail",
+        "1 branche de céleri",
+        "1 petit morceau de fenouil",
+        "Quelques brins de persil",
+        "1/2 c à café de cumin",
+        "1/2 c à café de piment d’Espelette",
+        "Sel et poivre",
+        "Huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "39b3a7c1e7ffeb00"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/popotte/recettes/ragout-de-chorizo-et-pois-chiches",
+      "site": "chefsimon.com",
+      "nom": "Ragoût de chorizo et pois chiches",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "1 chorizo",
+        "400 g de pois chiches",
+        "1 boîte de tomates concassées",
+        "400 g de boulgour ou semoule fine",
+        "1/2 bouquet de coriandre",
+        "1 oignon",
+        "1 cuil. à café de cannelle",
+        "Sel, poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "24fe1a45bb40f31c"
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "dish": "Paneer tikka",
+  "slug": "paneer-tikka",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.196flavors.com/fr/paneer-tikka/",
+      "site": "196flavors.com",
+      "nom": "Paneer Tikka",
+      "portions": [
+        "6",
+        "6 personnes"
+      ],
+      "duree_preparation": "PT60M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "400 g de paneer (, coupé en gros cubes)",
+        "200 g de dahi épais (, yaourt)",
+        "1 cuillère à soupe de pâte d’ail",
+        "1 cuillère à soupe de pâte de gingembre",
+        "2 cuillères à soupe d’huile de moutarde ((ou de noix de coco))",
+        "1 cuillère à café de chaat masala (, mélange d'épices de la cuisine indienne)",
+        "2 cuillères à café de coriandre en poudre",
+        "1 cuillère à soupe de deggi mirch (, poudre de piment rouge doux du Cachemire)",
+        "1 cuillère à café de garam masala",
+        "½ cuillère à café de poudre de piment rouge (, voire plus selon le goût)",
+        "1 cuillère à soupe de kasuri methi (, feuilles de fenugrec séchées, réduites en poudre)",
+        "1  jus de citron jaune ((ou citron vert))",
+        "1  gros oignon (, coupé en dés d’environ 2,5 cm)",
+        "1  petit poivron vert (, coupé en dés d’environ 2,5 cm)",
+        "1  petit poivron rouge (, coupé en dés d’environ 2,5 cm)",
+        "Sel",
+        "1  spray d’huile végétale neutre",
+        "1 cuillère à café de chaat masala",
+        "Les feuilles d’un petit bouquet de coriandre fraîche",
+        "2  cuillères soupe de feuilles de menthe fraîche ciselées",
+        "1 cuillère à café de poudre de mangue sèche",
+        "1  grosse gousse d’ail (, hachée)",
+        "1 cuillère à café de piment vert haché (, type serrano)",
+        "½ cuillère à café de cumin en poudre",
+        "Sel",
+        "4 cuillères à soupe d'eau",
+        "Rondelles d’oignon rouge",
+        "Quartier de citron vert ((ou citron jaune))",
+        "Chutney de coriandre et menthe fraîches",
+        "Plaque de cuisson",
+        "Papier sulfurisé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 18,
+        "signes": 1744,
+        "sha256": "d61a830359de6652"
+      },
+      "sha256_page": "499113fbc06f54a2"
+    },
+    {
+      "url": "https://grainedepices.fr/paneer-tikka-croustillant-quand-le-barbecue-rencontre-les-epices-indiennes",
+      "site": "grainedepices.fr",
+      "nom": "Paneer Tikka croustillant: quand le barbecue rencontre les &eacute;pices indiennes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "400 grammes paneer (fromage indien)",
+        "100 grammes yaourt grec",
+        "1 cuill&egrave;re &agrave; caf&eacute; poudre de curcuma",
+        "1 cuill&egrave;re &agrave; caf&eacute; poudre de cumin",
+        "1 cuill&egrave;re &agrave; caf&eacute; poudre de coriandre",
+        "1 cuill&egrave;re &agrave; caf&eacute; poudre de piment",
+        "2 cuill&egrave;res &agrave; soupe jus de citron",
+        "2 cuill&egrave;res &agrave; soupe huile v&eacute;g&eacute;tale",
+        "&agrave; votre go&ucirc;t  sel",
+        "&agrave; votre go&ucirc;t  poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 904,
+        "sha256": "4a9d4557356b9b61"
+      },
+      "sha256_page": "9cf1b207f1c680a4"
+    },
+    {
+      "url": "https://air-fryer-ninja.fr/en/recette-de-paneer-tikka-air-fryer/",
+      "site": "air-fryer-ninja.fr",
+      "nom": "Recette de paneer tikka air fryer",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT14M",
+      "ingredients": [
+        "400 g Paneer",
+        "1 moyen Poivron rouge",
+        "1 petit Oignon rouge",
+        "150 g Yaourt grec nature",
+        "1 cuillère à soupe Jus de citron vert",
+        "2 gousses Ail",
+        "2 cm Gingembre frais",
+        "1 cuillère à café Garam masala",
+        "1 cuillère à café Piment doux",
+        "0.5 cuillère à café Curcuma en poudre",
+        "0.5 cuillère à café Cumin en poudre",
+        "0.5 cuillère à café Sel",
+        "1 cuillère à soupe Huile végétale neutre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 1702,
+        "sha256": "c37ebc249e6125af"
+      },
+      "sha256_page": "bb0e33db7b522619"
+    },
+    {
+      "url": "https://www.cookwithmanali.com/paneer-tikka/",
+      "site": "cookwithmanali.com",
+      "nom": "Paneer Tikka Recipe",
+      "portions": [
+        "5"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "½ cup + 1-2 tablespoons greek yogurt  ( 150 grams  or use thick yogurt, I use plain whole milk yogurt)",
+        "1 tablespoon ginger-garlic paste",
+        "2 tablespoons mustard oil ( 30 ml )",
+        "2 teaspoons coriander powder",
+        "1 teaspoon chaat masala",
+        "1 teaspoon kashmiri red chili powder",
+        "¾ teaspoon garam masala",
+        "¼ teaspoon red chili powder (or adjust to taste)",
+        "1 teaspoon kasuri methi (crushed)",
+        "½ teaspoon salt (or to taste)",
+        "1 small lemon (juice of)",
+        "2 tablespoons cilantro (chopped)",
+        "2 tablespoons mint (chopped)",
+        "300 grams paneer (cut into big cubes, around 2 heaping cups of cubes paneer)",
+        "1 large red onion (cut into 1 inch cubes)",
+        "1 large  bell pepper (cut into 1 inch cubes, I used mix of red and green peppers)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1871,
+        "sha256": "3eb54888da338756"
+      },
+      "sha256_page": "4768dd3a32982ca9"
+    },
+    {
+      "url": "https://www.vegrecipesofindia.com/paneer-tikka-recipe-paneer-tikka/",
+      "site": "vegrecipesofindia.com",
+      "nom": "Paneer Tikka Recipe (Restaurant Style)",
+      "portions": [
+        "3"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "200 to 250 grams paneer ((Indian cottage cheese))",
+        "½  cup onions (– diced)",
+        "½  cup capsicum  (– diced, bell pepper - green, yellow or red)",
+        "200 grams hung curd (or greek yogurt)",
+        "1 tablespoon ginger garlic paste (or 1 tablespoon crushed ginger-garlic)",
+        "2 teaspoons kashmiri chilli powder (or sweet paprika)",
+        "½ teaspoon turmeric powder ((ground turmeric))",
+        "1 teaspoon cumin powder ((ground cumin))",
+        "1 teaspoon coriander powder ((ground coriander))",
+        "½ teaspoon garam masala",
+        "1 teaspoon ajwain ((carom seeds))",
+        "1 teaspoon dry mango powder ((amchur powder))",
+        "1 teaspoon chaat masala",
+        "½ teaspoon black pepper powder (– optional (ground black pepper))",
+        "1.5 teaspoons lemon juice",
+        "1 tablespoon mustard oil (or any neutral tasting oil)",
+        "½ teaspoon black salt (– optional)",
+        "salt ( as required)",
+        "mustard oil  (for brushing, as needed)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 17,
+        "signes": 1916,
+        "sha256": "89a542e2ca1b2dd2"
+      },
+      "sha256_page": "ea19ed487f43a32e"
+    }
+  ]
+}

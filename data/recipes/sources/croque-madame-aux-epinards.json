@@ -1,0 +1,141 @@
+{
+  "dish": "croque madame aux épinards",
+  "slug": "croque-madame-aux-epinards",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.lesfruitsetlegumesfrais.com/recettes/croque-madame-aux-epinards",
+      "site": "lesfruitsetlegumesfrais.com",
+      "nom": "Croque-madame aux épinards",
+      "portions": [
+        "2"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT5M",
+      "ingredients": [
+        "80  g de pousses d'épinard",
+        "2  tranches  de pain de mie",
+        "6   œufs de caille ((ou 2 œufs de poule))",
+        "10 g  de beurre",
+        "Huile d'olive",
+        "Sel",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 328,
+        "sha256": "332fc949a0860d05"
+      },
+      "sha256_page": "9e92487f0cc46818"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/croque-madame-aux-epinards-a-la-creme-et-emmental",
+      "site": "chefsimon.com",
+      "nom": "Croque-madame aux épinards à la crème et emmental",
+      "portions": "1 personne",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H22M",
+      "ingredients": [
+        "2 grandes tranches de pain de mie complet",
+        "160 g d'épinards en branches surgelés à la crème",
+        "1 œuf",
+        "15 g d'emmental",
+        "échalote en poudre",
+        "piment d'Espelette",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "160735d0520481f6"
+    },
+    {
+      "url": "https://www.recettesetcabas.com/recettes/3586-croque-madame-vegetarien-salade-verte",
+      "site": "recettesetcabas.com",
+      "nom": "Croque madame végétarien, salade verte",
+      "portions": [
+        "4",
+        "portion"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "8 tranches de pain de mie complet ou aux céréales ; 500-600g tomates ; 4 œufs plein air ; 40g de parmesan râpé ; 20cl de crème fraîche ; 1 oignon frais ; quelques feuilles de salade"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "1019b958f51c35f2"
+    },
+    {
+      "url": "https://fr.frije.com/recipes/217",
+      "site": "fr.frije.com",
+      "nom": "Croque Madame végétarien",
+      "portions": "1 servings",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT3M",
+      "ingredients": [
+        "2 tranche de pain",
+        "1 tranche de tranche de fromage",
+        "1 oeuf"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 312,
+        "sha256": "a8a6f3aea513530a"
+      },
+      "sha256_page": "96d29638fb37a65c"
+    },
+    {
+      "url": "https://blog.pourdebon.com/croque-monsieur-vegetarien/",
+      "site": "blog.pourdebon.com",
+      "nom": "Croque-monsieur végétarien",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "8 tranches  pain de mie",
+        "4 tranches tome des bauges",
+        "100 g  champignons de Paris",
+        "2 poignées épinards frais",
+        "70 g beurre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 412,
+        "sha256": "a86b5fdd69fd5210"
+      },
+      "sha256_page": "4b8fe76fe312c583"
+    },
+    {
+      "url": "https://cuisine-facile.com/divers/recette-croque-monsieur-aux-epinards.php",
+      "site": "cuisine-facile.com",
+      "nom": "Croque-monsieur aux épinards",
+      "portions": "4 pièces",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "8 tranches de pain de mie",
+        "40 g de beurre",
+        "80 g de sauce béchamel",
+        "4  œufs durs",
+        "200 g d'épinards cuits",
+        "150 g de fromage râpé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 945,
+        "sha256": "57f6e93b50c5c596"
+      },
+      "sha256_page": "d72b32cee6604df2"
+    }
+  ]
+}

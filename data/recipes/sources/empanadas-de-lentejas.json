@@ -1,0 +1,93 @@
+{
+  "dish": "empanadas de lentejas",
+  "slug": "empanadas-de-lentejas",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.lanacion.com.ar/recetas/platos-de-comida-principal/empanadas-de-lentejas-nid01032023/",
+      "site": "lanacion.com.ar",
+      "nom": "Empanadas de lentejas",
+      "portions": "12",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "Aceitunas (opcional), c/n",
+        "Harina integral, 480 g",
+        "Lentejas crudas, 360 g",
+        "Agua, 100 cc",
+        "Aceite, 3 cucharadas",
+        "Papas hervidas, 4",
+        "Cebollas picadas, 4",
+        "Ajo, 3 dientes",
+        "Comino, 4 cucharaditas"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1158,
+        "sha256": "3a5d356e383ca7c5"
+      },
+      "sha256_page": "bde128ac8e1d2e1b"
+    },
+    {
+      "url": "https://nomadasgourmet.com/empanadas-lentejas/",
+      "site": "nomadasgourmet.com",
+      "nom": "Empanadas de Lentejas",
+      "portions": [
+        "16",
+        "16 empanadas"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "680.39 gr de harina para todo uso",
+        "3 cucharadas aceite de oliva (extra virgen)",
+        "½ cucharadita sal marina",
+        "473.18 ml agua (tibia)",
+        "255 gr lentejas (secas)",
+        "414 ml agua",
+        "2  cebollas de verdeo",
+        "½  cebolla  blanca",
+        "½  cebolla morada",
+        "1  diente ajo",
+        "¼  pimiento rojo",
+        "1 cucharadita comino (en polvo)",
+        "1 cucharadita pimentón (en polvo)",
+        "1 cucharada pasas de uva",
+        "24  aceitunas (sin carozo y cortadas por la mitad)",
+        "¼ cucharadita pimentón",
+        "2 cucharadas agua"
+      ],
+      "etapes_empreinte": {
+        "nombre": 17,
+        "signes": 1610,
+        "sha256": "174b129166e76a27"
+      },
+      "sha256_page": "ec3e3d4f29f38e51"
+    },
+    {
+      "url": "https://www.receta-vegetariana.com/recetas/entradas/empanadas-de-lentejas",
+      "site": "receta-vegetariana.com",
+      "nom": "Empanadas de lentejas",
+      "portions": "5 Porciones",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT2H",
+      "ingredients": [
+        "2 Taza Lentejas cocinadas",
+        "½ Unidad Medio pimentón rojo",
+        "2 Unidad Cebollas grandes",
+        "3 Unidad Dientes de ajo",
+        "2 Cuchara Semillas de ajonjolí",
+        "2 Unidad Hojas de albahaca fresca",
+        "1 Pizca Sal",
+        "½ Kilogramo Harina"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 442,
+        "sha256": "0a02d1cff4e974e3"
+      },
+      "sha256_page": "ed9b3d270b9a5ff6"
+    }
+  ]
+}

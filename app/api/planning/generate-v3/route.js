@@ -7,16 +7,19 @@ import { toGramsV2 } from '@/lib/domain/units'
 import { generateClosedLoopPlan, isMealSuitableRecipe, recipeDiversityProfile } from '@/lib/domain/planning/closedLoopPlanner'
 import { isDessertRecipe } from '@/lib/domain/planning/plateRole'
 import { buildPlanningHistory, buildRepetitionRules } from '@/lib/domain/planning/repetitionRules'
-import { buildWeeklyBalance } from '@/lib/domain/planning/weeklyBalance'
+import { resolveHouseholdWeeklyBalance } from '@/lib/domain/planning/weeklyBalance'
+import { buildProteinDensityRequirement } from '@/lib/domain/planning/proteinDensity'
 import { buildHouseholdTasteProfile } from '@/lib/domain/planning/tastePreferences'
 import { explainWeek, previewInputs } from '@/lib/domain/planning/planExplanation'
 import { discoveryTarget } from '@/lib/domain/planning/discoveryProfile'
 import { checkPlanInvariants } from '@/lib/domain/planning/planInvariants'
-import { selectPlanningRecipePool } from '@/lib/domain/planning/recipeCandidatePolicy'
+import { PLANNING_POOL_MAX_CANDIDATES, selectPlanningRecipePool } from '@/lib/domain/planning/recipeCandidatePolicy'
 import { buildCanonicalPlanPayload, buildWeekSlots, nextMondayIso } from '@/lib/domain/planning/canonicalPlanPayload'
 import { isDishExpired, todayUtcIso } from '@/lib/domain/planning/cookedDishDisplay'
 import { SUPPLEMENT_FORMS } from '@/lib/domain/planning/personalizedMeals'
 import { resolveHouseholdTimeZone } from '@/lib/domain/planning/planningTime'
+import { buildHouseholdCookingCapacity } from '@/lib/domain/planning/cookingCapacity'
+import { maxMinutesDemande, plafondsParPrise } from '@/lib/domain/planning/intentFromPhrase'
 import { slotProtectionState } from '@/lib/domain/planning/slotProtection'
 
 export const dynamic = 'force-dynamic'
@@ -33,6 +36,30 @@ const addDays = (iso, count) => {
   const date = new Date(`${iso}T00:00:00Z`)
   date.setUTCDate(date.getUTCDate() + count)
   return date.toISOString().slice(0, 10)
+}
+
+/**
+ * Présence déclarée sur la fenêtre (livrable 1.5). Repli EXPLICITE sur une
+ * liste vide quand la table n'existe pas encore : un déploiement qui précède la
+ * migration continue de produire des semaines complètes, ce qui est exactement
+ * le comportement d'avant le livrable. Toute autre erreur remonte : une lecture
+ * qui échoue n'est pas une absence de déclaration, et servir quatorze assiettes
+ * à quelqu'un qui en a déclaré douze est une faute qu'on refuse de commettre en
+ * silence.
+ */
+async function loadPresenceDeclarations(supabase, windowStart) {
+  const { data, error } = await supabase
+    .from('meal_presence')
+    .select('household_member_id, meal_date, meal_type, present, note')
+    .gte('meal_date', windowStart)
+    .lte('meal_date', addDays(windowStart, 6))
+    .order('meal_date')
+    .order('meal_type')
+  // Table absente : PostgREST répond `PGRST205`, une erreur SQL directe
+  // `42P01` (même convention que `lib/storageDecisionServer.js:51`).
+  if (['42P01', 'PGRST205'].includes(error?.code)) return []
+  if (error) throw new Error(`Présence du foyer indisponible: ${error.message}`)
+  return data || []
 }
 
 const fold = (value) => String(value || '')
@@ -91,6 +118,62 @@ function isTargeted(slot, scope, days, meals) {
   if (scope === 'week') return true
   if (scope === 'days') return days.has(slot.date)
   return meals.has(`${slot.date}|${slot.mealType}`)
+}
+
+/**
+ * LES CHOIX EXPLICITES DE L'UTILISATEUR (livrable 3.2).
+ *
+ * `/api/planning/alternatives` propose cinq plats pour un créneau, chacun AVEC
+ * ses conséquences — règles de répétition franchies, part à acheter, écart
+ * nutritionnel. Quand l'utilisateur en retient un, il faut bien que ce choix
+ * atteigne le plan : `chosen_recipes` est ce chemin, et c'est le seul. Il passe
+ * par la génération, donc par la transaction de publication, et respecte donc
+ * l'interdit du §9.3 — contrairement à la Routine, qui écrivait en base hors
+ * moteur.
+ *
+ * CE QUE `fixedRecipeCode` VAUT ICI, ET POURQUOI C'EST LUI. Un créneau figé
+ * échappe aux règles de répétition et aux plafonds hebdomadaires
+ * (`closedLoopPlanner.js:1062-1085`). Ce n'est pas un contournement : c'est la
+ * règle déjà écrite pour un choix explicite — « le plan de `fixedRecipeCode`
+ * est un pacte » — et l'écran des alternatives a montré ces conséquences AVANT
+ * le clic. Écarter le plat coûteux ou répétitif déciderait à la place de
+ * l'utilisateur ; le servir sans l'avertir le laisserait décider à l'aveugle.
+ *
+ * RIEN N'EST DEVINÉ. Une entrée sans date, sans prise ou sans code est refusée
+ * avec son motif, jamais silencieusement ignorée : un choix perdu en route
+ * ressemblerait, à l'écran, à un moteur qui a préféré autre chose.
+ */
+function readChosenRecipes(entries, knownRecipeCodes) {
+  const chosen = new Map()
+  const rejected = []
+  if (entries != null && !Array.isArray(entries)) {
+    return { chosen, rejected: [{ entry: entries, reason: 'liste_attendue' }] }
+  }
+  for (const entry of entries || []) {
+    const date = String(entry?.meal_date ?? entry?.date ?? '')
+    const mealType = String(entry?.meal_type ?? entry?.mealType ?? '')
+    const recipeCode = String(entry?.recipe_code ?? entry?.recipeCode ?? '').trim()
+    if (!ISO_DATE.test(date) || !['dejeuner', 'diner'].includes(mealType)) {
+      rejected.push({ entry, reason: 'creneau_invalide' })
+      continue
+    }
+    if (!recipeCode) {
+      rejected.push({ entry, reason: 'recipe_code_manquant' })
+      continue
+    }
+    if (!knownRecipeCodes.has(recipeCode)) {
+      rejected.push({ entry, reason: 'recette_absente_du_catalogue_servi' })
+      continue
+    }
+    // Deux plats pour le même créneau : garder le dernier reviendrait à choisir
+    // à la place de l'utilisateur lequel de ses deux clics compte.
+    if (chosen.has(`${date}|${mealType}`)) {
+      rejected.push({ entry, reason: 'deux_choix_pour_le_meme_creneau' })
+      continue
+    }
+    chosen.set(`${date}|${mealType}`, recipeCode)
+  }
+  return { chosen, rejected }
 }
 
 async function ensurePlanningSchema(supabase) {
@@ -260,12 +343,43 @@ function resolveRepetitionRules(members = [], body = {}) {
  * autrement — c'est son arbitrage, pas celui du moteur. Sans réglage explicite,
  * les valeurs par défaut reproduisent exactement l'ancien comportement.
  */
+// Depuis le livrable 1.1, le plafond carné du foyer est la SOMME des quotas
+// déclarés par ses membres, et non plus la constante à 4 : la résolution — trois
+// sources et leur ordre de précédence — vit dans le domaine, où elle s'éprouve
+// sans simuler Supabase (`tests/planning/weeklyBalance.test.js`).
 function resolveWeeklyBalance(members = [], body = {}) {
-  const memberBalance = members
-    .map((member) => member?.preferences?.planning?.weekly_balance)
-    .find((balance) => balance && typeof balance === 'object') || {}
-  const requestBalance = body?.weekly_balance && typeof body.weekly_balance === 'object' ? body.weekly_balance : {}
-  return buildWeeklyBalance({ ...memberBalance, ...requestBalance })
+  return resolveHouseholdWeeklyBalance({ members, requestBalance: body?.weekly_balance })
+}
+
+/**
+ * LE TEMPS PAR PLAT DEMANDÉ PAR LA REQUÊTE — le raccord du livrable 4.2, et la
+ * levée d'une éclipse mesurée au livrable 4.1.
+ *
+ * CE QUI SE PASSAIT AVANT, ET POURQUOI ÇA NE SE VOYAIT PAS. Cette route écrivait
+ * les deux plafonds par prise — midi 120, soir 240 — EN DUR. Or
+ * `closedLoopPlanner.js:936` lit
+ * `maxMinutesByMeal?.[currentMealType] ?? maxTotalMinutes` : la clé par prise
+ * couvrant les deux seules prises que le solveur compose, `maxTotalMinutes`
+ * n'était JAMAIS consulté. Un foyer qui demandait « rien au-delà de 30 minutes »
+ * recevait donc des plats de deux heures, sans erreur et sans trace. Ajouter la
+ * clé `maxTotalMinutes` aux contraintes n'aurait rien changé ; il fallait
+ * ABAISSER les plafonds par prise, et c'est ce que fait `plafondsParPrise`.
+ *
+ * ET UN REFUS PLUTÔT QU'UNE COERCITION. `Number(true)` vaut 1 : une minute par
+ * plat, c'est-à-dire une semaine vide. `Number('')` et `Number([])` valent 0,
+ * même conséquence. Une valeur malformée fait donc échouer la requête en 400
+ * avec son motif, au lieu d'être ignorée en silence — une contrainte qu'on
+ * laisse tomber sans le dire est pire qu'une contrainte refusée.
+ */
+function resolveMaxTotalMinutes(body = {}) {
+  const { valeur, refus } = maxMinutesDemande(body?.max_total_minutes)
+  if (refus) {
+    const error = new Error(refus.message)
+    error.code = refus.code
+    error.status = 400
+    throw error
+  }
+  return valeur
 }
 
 async function loadPlannerInventory(supabase, recipes, excludedPlanVersionId = null) {
@@ -452,6 +566,11 @@ export async function POST(request) {
       slotProtectionState(slot, existing.meals, existing.tasks),
     ]))
     const recentRecipes = await loadRecentRecipeUsage(supabase, windowStart)
+    // Présence par personne et par créneau (livrable 1.5). Lue UNE fois pour la
+    // fenêtre, puis passée à la grille et à la transaction de publication : les
+    // deux doivent lire les mêmes déclarations, sans quoi la grille et les
+    // assiettes ne parleraient pas de la même semaine.
+    const presence = await loadPresenceDeclarations(supabase, windowStart)
     const goalNames = new Set((goalsResult.data || []).map((goal) => fold(goal.person_name)).filter(Boolean))
     const missingGoals = members.filter((member) => !goalNames.has(fold(member.name))).map((member) => member.name)
     if (missingGoals.length) {
@@ -461,6 +580,10 @@ export async function POST(request) {
       throw error
     }
     const servings = Math.max(1, members.reduce((sum, member) => sum + (Number(member.portion_multiplier) || 1), 0))
+    // Aucune borne passée ici : depuis 0a.3, `listOperationalRecipes` pagine
+    // jusqu'à épuisement. Y remettre une limite reviendrait à replafonner le
+    // vivier, et le test `tests/db/paginationCatalogueOperationnel.test.js`
+    // relit cet appel pour l'interdire.
     const operationalCatalog = await listOperationalRecipes(supabase, { servings })
     const allRecipes = operationalCatalog.recipes.filter(isMealSuitableRecipe)
     if (!allRecipes.length) throw new Error('Aucune recette complète n\'est disponible pour le planning')
@@ -474,7 +597,18 @@ export async function POST(request) {
       { recipeCode: slot.preparation?.recipe_code || null, slotKey: slot.slot_key, state: existing.slotStates[slot.slot_key] || {} },
     ]))
     const intent = resolveIntent(body)
-    const slots = buildWeekSlots(windowStart).map((slot) => {
+    // Les alternatives retenues à l'écran (livrable 3.2). Refusées avec leur
+    // motif plutôt qu'ignorées : un choix perdu en route se lit, à l'écran,
+    // comme un moteur qui a préféré autre chose.
+    const { chosen: chosenRecipes, rejected: rejectedChoices } = readChosenRecipes(body.chosen_recipes, recipeCodes)
+    if (rejectedChoices.length) {
+      return NextResponse.json({
+        error: 'Un repas choisi n’a pas pu être appliqué',
+        code: 'chosen_recipe_invalid',
+        details: rejectedChoices,
+      }, { status: 400 })
+    }
+    const slots = buildWeekSlots(windowStart, { presence, members }).map((slot) => {
       const current = existingBySlot.get(`${slot.date}|${slot.mealType}`)
       const currentCode = current?.recipeCode || null
       if (current?.state?.protected && (!currentCode || !recipeCodes.has(currentCode))) {
@@ -483,6 +617,20 @@ export async function POST(request) {
         error.status = 409
         throw error
       }
+      const chosenCode = chosenRecipes.get(`${slot.date}|${slot.mealType}`) || null
+      // Un créneau protégé ne se remplace pas par un choix d'écran : il est
+      // mangé, ou il est épinglé. On dit lequel des deux s'y oppose et ce qu'il
+      // faut faire, plutôt que de franchir la protection en silence — sans quoi
+      // l'épingle du livrable 3.4 ne vaudrait plus rien.
+      if (chosenCode && current?.state?.protected) {
+        const error = new Error(current.state.protection_reason === 'consumed'
+          ? `Le repas du ${slot.date} (${slot.mealType}) est marqué cuisiné : annulez la validation avant de le remplacer`
+          : `Le repas du ${slot.date} (${slot.mealType}) est épinglé : retirez l'épingle avant de le remplacer`)
+        error.code = 'protected_meal_not_replaceable'
+        error.status = 409
+        throw error
+      }
+      if (chosenCode) return { ...slot, fixedRecipeCode: chosenCode }
       const requested = !currentCode || !recipeCodes.has(currentCode) || isTargeted(slot, scope, selectedDays, selectedMeals)
       const target = requested && !current?.state?.protected
       return {
@@ -491,19 +639,43 @@ export async function POST(request) {
       }
     })
 
+    // Un choix qui ne correspond à AUCUN créneau de la semaine construite — date
+    // hors fenêtre, ou créneau retiré parce que tout le monde est absent
+    // (livrable 1.5) — serait perdu en silence, et l'écran lirait ce silence
+    // comme un moteur qui a préféré autre chose. On le refuse avec son motif.
+    const slotByKey = new Map(slots.map((slot) => [`${slot.date}|${slot.mealType}`, slot]))
+    const unusedChoices = [...chosenRecipes.entries()]
+      .filter(([key, code]) => slotByKey.get(key)?.fixedRecipeCode !== code)
+      .map(([key]) => key)
+    if (unusedChoices.length) {
+      return NextResponse.json({
+        error: 'Un repas choisi ne correspond à aucun créneau de cette semaine',
+        code: 'chosen_recipe_invalid',
+        details: unusedChoices.map((key) => ({ slot: key, reason: 'creneau_absent_de_la_semaine' })),
+      }, { status: 400 })
+    }
+
     const targetByMeal = nutritionTargets(goalsResult.data || [], members)
     // Moteur de diversité global (§9, lot 1) : les huit semaines précédentes
     // et les règles de répétition du foyer entrent dans le solveur au même
     // titre que le stock et les objectifs nutritionnels.
     const history = planningHistoryFrom(recentRecipes.rows, allRecipes, windowStart)
+    const maxTotalMinutes = resolveMaxTotalMinutes(body)
     const repetitionRules = resolveRepetitionRules(members, body)
     const fixedRecipeCodes = slots.map((slot) => slot.fixedRecipeCode).filter(Boolean)
+    // Élagage calibré (0a.4) : la valeur est passée EXPLICITEMENT, et la même
+    // aux deux appels. Elle vaut 400, mesurée sur deux séries de six semaines —
+    // le raisonnement complet et la table P1/P2/P3/P4/P16 sont dans
+    // `recipeCandidatePolicy.js`, à côté de la constante. Passée ici plutôt que
+    // laissée au défaut du module pour qu'un lecteur du chemin de production
+    // voie le nombre sans ouvrir une seconde couche.
     const recipes = selectPlanningRecipePool({
       recipes: allRecipes,
       targetByMeal,
       previousWeekRecipeCodes: recentRecipes.previousWeekRecipeCodes,
       fixedRecipeCodes,
       allowPreviousWeek: false,
+      maxCandidates: PLANNING_POOL_MAX_CANDIDATES,
     })
 
     const [{ plannerLots, existingReservations }, { cookedDishes, existingDishReservations }] = await Promise.all([
@@ -523,7 +695,23 @@ export async function POST(request) {
       // Équilibre hebdomadaire réglable par le foyer (poisson, viande, plancher
       // végétarien, répétition par famille de protéine).
       weeklyBalance: resolveWeeklyBalance(members, body),
-      maxMinutesByMeal: { dejeuner: 120, diner: 240 },
+      // PLANCHER DE DENSITÉ PROTÉIQUE PAR MEMBRE (livrable 1.4). Il se déduit
+      // des cibles DÉCLARÉES de chacun — protéines par kcal — et ne vaut que
+      // si elles existent. `null` quand aucun membre n'en a : le solveur se
+      // comporte alors exactement comme avant ce livrable.
+      proteinDensity: buildProteinDensityRequirement({
+        members,
+        goals: goalsResult.data || [],
+        totalSlots: slots.length,
+      }),
+      // Plafonds par prise ABAISSÉS au temps demandé (livrable 4.2). Sans
+      // demande, ils valent exactement ceux d'avant : `{ dejeuner: 120,
+      // diner: 240 }`. Voir `resolveMaxTotalMinutes` pour l'éclipse que ce
+      // raccord lève.
+      maxMinutesByMeal: plafondsParPrise(maxTotalMinutes),
+      // Posé en plus pour les prises que la carte par prise ne couvre pas :
+      // `closedLoopPlanner.js:936` retombe dessus quand la clé manque.
+      ...(maxTotalMinutes == null ? {} : { maxTotalMinutes }),
       preferredActiveMinutes: 30,
       recentRecipeTitles: recentRecipes.recentRecipeTitles,
       tasteProfile,
@@ -534,6 +722,18 @@ export async function POST(request) {
       // `isMealSuitableRecipe` ; fournies ici pour que chaque membre puisse
       // en recevoir une portion de fin de repas si son réglage l'autorise.
       dessertPool,
+      // CAPACITÉ DE CUISINE DÉCLARÉE (livrable 2.2). Les jours de cuisine et
+      // les soirs rapides du questionnaire de goûts étaient stockés au profil
+      // depuis des mois sans qu'aucun code ne les lise ; ils bornent désormais
+      // les productions et les bases cuites. La capacité du foyer est l'union
+      // de celles de ses membres PRÉSENTS : la présence du livrable 1.5 est
+      // relue ici, sur la même fenêtre et les mêmes déclarations que la grille.
+      // Aucun jour déclaré → bornes d'avant, plan identique.
+      cookingCapacity: buildHouseholdCookingCapacity({
+        members,
+        presence,
+        dates: [...new Set(slots.map((slot) => slot.date))],
+      }),
     }
     const planOptions = {
       inventoryLots: plannerLots,
@@ -544,6 +744,19 @@ export async function POST(request) {
       beamWidth: 48,
       repetitionRules,
       history,
+      // BASES PARTAGÉES (livrable 2.1). `sharedBases.js` a besoin de la RECETTE
+      // d'une base — ses minutes actives et sa garde déclarée — pour décider de
+      // la cuire ou de la reprendre. Une base dont la recette est inconnue
+      // n'existe pas pour lui : le plat se cuisine comme avant et le créneau
+      // porte `shared_base_recipe_unknown`.
+      // On passe le catalogue SERVI ENTIER, avant le filtre `isMealSuitableRecipe`
+      // et avant l'élagage : une sauce tomate ou un bouillon n'a aucune raison
+      // d'occuper un dîner, mais toutes les raisons d'être connu. S'en remettre
+      // au vivier élagué marcherait aujourd'hui — `selectPlanningRecipePool`
+      // garde huit représentants par catégorie et les bases sont seules dans la
+      // leur — mais ce serait tenir un chiffre par chance plutôt que par
+      // construction, et la chance ne se relit pas.
+      baseRecipes: operationalCatalog.recipes,
     }
     let plan = generateClosedLoopPlan({ slots, recipes, ...planOptions })
     // La semaine précédente est exclue en priorité. Un repli explicite et
@@ -556,6 +769,9 @@ export async function POST(request) {
         previousWeekRecipeCodes: recentRecipes.previousWeekRecipeCodes,
         fixedRecipeCodes,
         allowPreviousWeek: true,
+        // Même plafond que le premier appel : un repli qui élaguerait
+        // autrement comparerait deux semaines calculées sur deux viviers.
+        maxCandidates: PLANNING_POOL_MAX_CANDIDATES,
       })
       const fallbackPlan = generateClosedLoopPlan({ slots, recipes: fallbackRecipes, ...planOptions })
       // Le repli n'est retenu que s'il fait réellement mieux : une semaine
@@ -591,6 +807,17 @@ export async function POST(request) {
         ok: true,
         preview: true,
         status: plan.status,
+        // Un aperçu est une génération : il porte le même journal de vivier
+        // que la publication, sans quoi le seul chemin qu'on regarde en
+        // premier serait le seul à ne rien dire du catalogue reçu.
+        catalog: {
+          recipes_received: operationalCatalog.metadata.receivedCount ?? operationalCatalog.recipes.length,
+          recipes_eligible: operationalCatalog.metadata.eligibleCount ?? null,
+          catalog_pages: operationalCatalog.metadata.pageCount ?? null,
+          catalog_complete: operationalCatalog.metadata.complete ?? null,
+          candidate_pool: recipes.length,
+          candidate_cap: PLANNING_POOL_MAX_CANDIDATES,
+        },
         before: previewInputs({
           slots,
           cookedDishes,
@@ -624,6 +851,7 @@ export async function POST(request) {
       slotStates: existing.slotStates,
       corpusVersion: operationalCatalog.metadata.corpusVersion,
       householdTimeZone,
+      presence,
     })
     // Dernier garde-fou avant publication (§17, lot 9). Les règles de
     // répétition sont déjà vérifiées par le moteur ; on contrôle ici la
@@ -652,8 +880,38 @@ export async function POST(request) {
       summary: {
         meals: payload.slots.length,
         personalized_meals: payload.legacy_meals.length,
+        // Ce que la présence déclarée a réellement changé (livrable 1.5) : par
+        // personne, les assiettes principales servies sur la grille de la
+        // semaine. C'est le « 12 au lieu de 14 », rendu par la génération
+        // elle-même, et l'écran n'a rien à recalculer.
+        presence: (payload.validation_summary.presence || []).map((ligne) => ({
+          person_name: ligne.person_name,
+          household_member_id: ligne.household_member_id,
+          main_meals: ligne.main_meals,
+          week_main_slots: ligne.week_main_slots,
+          declared_absences: ligne.declared_absences.length,
+        })),
         changed: slots.filter((slot) => !slot.fixedRecipeCode).length,
         recipes: new Set(payload.slots.map((slot) => slot.recipe_code)).size,
+        // JOURNAL DE GÉNÉRATION (0a.3). Le vivier réellement reçu de la base,
+        // le nombre que la RPC déclare qualifier, le nombre de pages lues, si
+        // la lecture est allée jusqu'au bout, et le plafond d'élagage
+        // effectivement appliqué (0a.4). C'est ce qui permet de constater
+        // qu'un plafond n'est pas revenu en silence — 100 reçus sur 324
+        // qualifiés se lit ici sans ouvrir la base.
+        //
+        // Écarté : une ligne `console.*`. Le dépôt interdit `console.log`
+        // (CLAUDE.md) et `.eslintrc.json` ne tolère que `error` et `warn` ;
+        // un journal d'exploitation normal n'est ni une erreur ni un
+        // avertissement. La réponse de génération est déjà le compte rendu
+        // de la génération : le chiffre y a sa place, il est horodaté par la
+        // requête, et un test peut le lire.
+        recipes_received: operationalCatalog.metadata.receivedCount ?? operationalCatalog.recipes.length,
+        recipes_eligible: operationalCatalog.metadata.eligibleCount ?? null,
+        catalog_pages: operationalCatalog.metadata.pageCount ?? null,
+        catalog_complete: operationalCatalog.metadata.complete ?? null,
+        candidate_pool: recipes.length,
+        candidate_cap: PLANNING_POOL_MAX_CANDIDATES,
         stock_coverage: plan.objectiveScores.stockCoverage,
         shopping_items: payload.shopping_items.length,
         weekly_rule_violations: plan.objectiveScores.weeklyRuleViolations,

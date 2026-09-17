@@ -138,6 +138,26 @@ jobs:
           # migration qui ajoute une colonne ÉCRITE PAR UN CHARGEUR doit entrer ici,
           # sans quoi le scénario A charge dans un schéma qui ne la connaît pas.
           #
+          # 20260917110000, le CONTRAT OPÉRATIONNEL, entre ici par cette règle et
+          # par elle seule : il ajoute `catalog.food_forms.origin` que le chargeur
+          # de formes renseigne et `culinary.recipe_versions.conservation_profile`
+          # que le chargeur de corpus renseigne. Sans lui, l'étape corpus échoue
+          # sur « colonne conservation_profile inexistante ».
+          #
+          # 20260917111000, qui REMPLIT ces colonnes sur une base déjà chargée,
+          # n'entre PAS ici, et c'est volontaire : le scénario A doit prouver que
+          # la CHAÎNE DE PUBLICATION écrit les quatre champs. L'ajouter ferait
+          # passer l'étape même si les chargeurs n'écrivaient plus rien. C'est le
+          # scénario B, qui n'exécute aucun chargeur, qui éprouve cette migration.
+          #
+          # 20260919140000, la DATE DE VERSEMENT, entre ici par la même règle que
+          # 20260917110000 : elle ajoute `culinary.recipe_versions.corpus_poured_on`,
+          # que le chargeur de corpus renseigne depuis data/recipes/versements.json.
+          # Sans elle, l'étape corpus échoue sur « colonne corpus_poured_on
+          # inexistante ». Et 20260919141000, qui pose les dates sur une base déjà
+          # chargée, n'entre PAS ici pour la raison symétrique : le scénario A doit
+          # prouver que le CHARGEUR écrit la date, pas qu'une migration la répare.
+          #
           # 20260729180000, le CATALOGUE D'ALIMENTS, n'entre PAS ici : il
           # arriverait avant l'étape F0, qui charge son propre petit corpus de
           # formes et réclame le profil nutritionnel primaire de certaines
@@ -150,7 +170,7 @@ jobs:
             | grep -v '_rollback\.sql$' \
             | grep -v '/20260715171000_v3_canonical_plan_publication\.sql$' \
             | grep -v '/20260715173000_v3_recipe_execution_policy_consolidation\.sql$' \
-            | grep -E '/(20260714[2-9]|20260715|20260729140000|20260731000000)' \
+            | grep -E '/(20260714[2-9]|20260715|20260729140000|20260731000000|20260917110000|20260919140000)' \
             | LC_ALL=C sort \
             | while IFS= read -r f; do cp "$f" /tmp/v2mig_a/; done
           echo "Migrations V2 sélectionnées : $(ls /tmp/v2mig_a/ | wc -l)"
@@ -450,6 +470,84 @@ jobs:
           echo "[A] corpus-v3 : $charge recettes chargées dont $derivees dérivées reliées, $planifiables planifiables, idempotence vérifiée."
 
       # ────────────────────────────────────────────────────────────────────────
+      # [A] La parité corpus base/dépôt (livrable 0b.5), sur la chaîne de
+      # publication. Le contrôle vit pour `release-production.yml`, qui l'exécute
+      # contre la production ; il est rejoué ici pour qu'un écart se découvre sur
+      # une base jetable plutôt que pendant une release. Le job `test`, lui, ne
+      # peut pas le porter : il tourne sur des valeurs Supabase factices.
+      # ────────────────────────────────────────────────────────────────────────
+      - name: "[A] Parité corpus base/dépôt (check-corpus-parity)"
+        env:
+          DATABASE_URL: ${{ env.DB_A }}
+        run: node scripts/db/check-corpus-parity.mjs
+
+      # ────────────────────────────────────────────────────────────────────────
+      # [A] Le contrat opérationnel, prouvé sur la CHAÎNE DE PUBLICATION.
+      #
+      # Les fichiers SQL viennent d'être régénérés par `node scripts/data/...` :
+      # ce qui est éprouvé ici est donc le CODE d'émission (livrable 0b.2), pas
+      # un artefact commité. Si build-recipe-food-sql.mjs cessait d'écrire
+      # l'origine, ou build-corpus-v3.mjs le profil de conservation, cette étape
+      # rougirait — alors que rien d'autre dans la CI ne s'en apercevrait : le
+      # planificateur, lui, retomberait en silence sur les raccords JSON de
+      # lib/domain/recipes/operationalCatalog.js, et sur rien du tout une fois
+      # ces raccords retirés (livrable 0b.4).
+      # ────────────────────────────────────────────────────────────────────────
+      # ────────────────────────────────────────────────────────────────────────
+      # [A] La porte de test 0b.3, SUR CETTE BASE VIVE.
+      #
+      # Le même fichier tourne dans le job `test`, où il rejoue deux captures
+      # versionnées faute de Postgres. Ici il lit la base qu'on vient de
+      # construire, par la RPC et par `materializeOperationalCatalog` — le code
+      # que le planificateur exécute —, raccords JSON neutralisés. C'est ce qui
+      # empêche les captures de s'éloigner en silence d'une vraie base.
+      #
+      # Elle est placée AVANT les assertions SQL pour que son verdict existe
+      # dans le journal même si une assertion SQL postérieure échoue : les deux
+      # contrôles sont indépendants, et masquer l'un derrière l'autre ferait
+      # perdre l'information qui décide du livrable 0b.4.
+      # ────────────────────────────────────────────────────────────────────────
+      - name: "[A] Porte de test 0b.3 sur base vive"
+        env:
+          MYKO_CONTRAT_DB_URL: ${{ env.DB_A }}
+        run: npx vitest run tests/planning/contratOperationnel.test.js
+
+      - name: "[A] Contrat opérationnel : la chaîne de publication écrit les quatre champs"
+        env:
+          DATABASE_URL: ${{ env.DB_A }}
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/contrat_operationnel.sql
+
+      # P12 ne se mesure que sur le chemin base (plan §4, pari 8). Ici, ce qui
+      # est éprouvé est le CODE d'émission : build-corpus-v3.mjs repose les liens
+      # de base à chaque chargement, sans quoi un rechargement de corpus les
+      # effacerait — chaque bloc recette commence par un DELETE de ses composants.
+      - name: "[A] Bases partagées : la chaîne de publication repose les liens"
+        env:
+          DATABASE_URL: ${{ env.DB_A }}
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/bases_partagees.sql
+
+      # ────────────────────────────────────────────────────────────────────────
+      # [A] La date de versement, sur la CHAÎNE DE PUBLICATION (plan §5, phase 5).
+      #
+      # Ce qui est éprouvé ici est le code d'émission : build-corpus-v3.mjs lit
+      # data/recipes/versements.json et pose `corpus_poured_on`. S'il cessait de
+      # le faire, l'écran « Nouveautés de la semaine » redeviendrait vide en
+      # production sans que rien d'autre ne s'en aperçoive — le catalogue
+      # continuerait de se servir, simplement plus personne ne verrait bouger.
+      #
+      # Le compte attendu est CALCULÉ depuis le registre, jamais écrit en dur :
+      # un lot versé la semaine prochaine fait bouger le registre, le chargeur et
+      # ce contrôle ensemble.
+      # ────────────────────────────────────────────────────────────────────────
+      - name: "[A] Date de versement : la chaîne de publication la pose"
+        env:
+          DATABASE_URL: ${{ env.DB_A }}
+        run: |
+          attendu=$(node -e "const r=require('./data/recipes/versements.json'); console.log(r.versements.reduce((n, v) => n + v.codes.length, 0))")
+          echo "[A] registre des versements : $attendu codes datés"
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -v attendu="$attendu" -f supabase/tests/date_versement.sql
+
+      # ────────────────────────────────────────────────────────────────────────
       # SCÉNARIO B — Simulation d'une prod divergente, puis reconcile + apply
       #
       # Simule exactement l'état prod au 2026-07-15 :
@@ -604,6 +702,23 @@ jobs:
           expected=$(node -e "const m=require('./scripts/db/migration-manifest.json'); console.log(m.filter(e => e.role === 'apply' && e.baseline === 'new').length)")
           echo "$output" | grep -E "^migrations : ${expected} appliquées"
 
+      # ────────────────────────────────────────────────────────────────────────
+      # [B] La même parité (livrable 0b.5), sur le CHEMIN DES MIGRATIONS —
+      # c'est-à-dire ce que le pipeline de production applique, puisqu'il
+      # n'exécute aucun chargeur. C'est donc le scénario qui préfigure
+      # réellement le verdict de `release-production.yml`.
+      #
+      # Elle est placée ICI, juste après l'apply, et non plus bas, pour une
+      # raison qui vaut indépendamment de son verdict : ce contrôle nomme
+      # l'écart base/dépôt recette par recette, et un échec plus tardif
+      # l'empêcherait de s'exécuter. Rien n'est réordonné pour contourner quoi
+      # que ce soit.
+      # ────────────────────────────────────────────────────────────────────────
+      - name: "[B] Parité corpus base/dépôt (check-corpus-parity)"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: node scripts/db/check-corpus-parity.mjs
+
       - name: "[B] Assertions objets — nouvelles migrations installées"
         env:
           DATABASE_URL: ${{ env.DB_B }}
@@ -715,8 +830,90 @@ jobs:
                 )
               HAVING count(*) = 3;
             IF NOT FOUND THEN RAISE EXCEPTION 'manque index catalogue recettes V3'; END IF;
+
+            -- 20260917110000 : le contrat opérationnel. Les objets d'abord ; ce
+            -- qu'ils servent est vérifié par supabase/tests/contrat_operationnel.sql,
+            -- à l'étape suivante.
+            PERFORM 1 FROM information_schema.columns
+              WHERE (table_schema, table_name, column_name) IN (
+                ('catalog','food_forms','origin'),
+                ('catalog','food_forms','origin_source'),
+                ('culinary','recipe_versions','conservation_profile')
+              )
+              HAVING count(*) = 3;
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque les colonnes du contrat opérationnel (20260917110000)'; END IF;
+
+            PERFORM 1 FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace
+              WHERE n.nspname='culinary' AND p.proname='conservation_profile_contract';
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque culinary.conservation_profile_contract (20260917110000)'; END IF;
+
+            PERFORM 1 FROM pg_constraint
+              WHERE conname='food_forms_origin_check' AND conrelid='catalog.food_forms'::regclass;
+            IF NOT FOUND THEN RAISE EXCEPTION 'manque le vocabulaire fermé des origines (20260917110000)'; END IF;
           END $$;
           ASSERTIONS
+
+      # ────────────────────────────────────────────────────────────────────────
+      # [B] Le contrat opérationnel, prouvé sur le CHEMIN DES MIGRATIONS.
+      #
+      # Aucun chargeur n'a tourné ici : la base tient ses 549 formes et ses 754
+      # recettes des migrations du 17 septembre, écrites AVANT le contrat, donc
+      # sans les deux colonnes déclaratives. Ce que cette étape éprouve est donc
+      # la réparation par 20260917111000 — c'est-à-dire exactement ce que la
+      # production recevra, puisque la phase 0b n'applique rien à la main.
+      # ────────────────────────────────────────────────────────────────────────
+      # ────────────────────────────────────────────────────────────────────────
+      # [B] La même porte, sur la base des SEULES migrations — le chemin du
+      # pipeline de production, qui n'exécute aucun chargeur. Elle précède les
+      # assertions SQL pour la raison dite en [A].
+      #
+      # CE SCÉNARIO A SERVI 498 RECETTES CONTRE 509 EN [A], ET C'ÉTAIT UN VRAI
+      # DÉFAUT, pas une particularité de la simulation. La cause, mesurée en
+      # rejouant la qualification de la RPC sur les deux bases : « pate brisee
+      # crue » et « pate sablee crue » y portaient encore le profil primaire
+      # `23481` — « Tarte normande aux pommes », 313 kcal — en confiance C,
+      # alors que le dépôt déclare les entrées Ciqual exactes 23414 et 23444 en
+      # confiance B. Le gardien opérationnel exige A ou B : onze recettes
+      # cessaient d'être servies. Ni le chargeur F0 ni les cinq formes qu'il
+      # apporte n'y étaient pour rien — elles ne sont l'ingrédient d'aucune
+      # recette du corpus, vérifié.
+      #
+      # `20260917112000_pate_a_foncer_profil_exact.sql` répare ces deux profils,
+      # et ce scénario sert désormais les mêmes 509 recettes que [A]. Le seuil
+      # de `supabase/tests/contrat_operationnel.sql` n'a pas bougé.
+      # ────────────────────────────────────────────────────────────────────────
+      - name: "[B] Porte de test 0b.3 sur base vive"
+        env:
+          MYKO_CONTRAT_DB_URL: ${{ env.DB_B }}
+        run: npx vitest run tests/planning/contratOperationnel.test.js
+
+      - name: "[B] Contrat opérationnel : les migrations portent les quatre champs"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/contrat_operationnel.sql
+
+      # Le même fichier, sur le chemin des MIGRATIONS — celui de la production,
+      # où les dix tranches du 17 septembre sont figées et ne portent aucun lien :
+      # c'est 20260918090000_bases_partagees.sql qui les pose. Les deux scénarios
+      # doivent rendre le même compte, sans quoi le dépôt et la base divergeraient
+      # en silence, ce que le §9.3 du plan interdit.
+      - name: "[B] Bases partagées : la migration pose les liens"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/bases_partagees.sql
+
+      # Le même fichier, sur le chemin des MIGRATIONS — celui de la production,
+      # où les dix tranches du 17 septembre sont figées et ne portent aucune
+      # date : c'est 20260919141000_date_versement_lot_jumeaux.sql qui la pose.
+      # Les deux scénarios doivent rendre le même compte, sans quoi le dépôt et
+      # la base divergeraient en silence (§9.3 du plan).
+      - name: "[B] Date de versement : la migration la pose"
+        env:
+          DATABASE_URL: ${{ env.DB_B }}
+        run: |
+          attendu=$(node -e "const r=require('./data/recipes/versements.json'); console.log(r.versements.reduce((n, v) => n + v.codes.length, 0))")
+          echo "[B] registre des versements : $attendu codes datés"
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -v attendu="$attendu" -f supabase/tests/date_versement.sql
 
       - name: "[B] Idempotence : 2e apply doit rapporter 0 appliquées"
         env:

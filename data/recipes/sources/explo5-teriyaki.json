@@ -1,0 +1,112 @@
+{
+  "dish": "Tofu teriyaki",
+  "slug": "explo5-teriyaki",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/alexandre/recettes/tofu-teriyaki-et-poireaux-grilles",
+      "site": "chefsimon.com",
+      "nom": "Tofu teriyaki et poireaux grillés",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "2 ou 3 petits poireaux « crayons »",
+        "1 bloc de tofu fumé (200 g)",
+        "4 c à soupe de sauce teriyaki (du commerce ou maison)",
+        "1 c à soupe de fécule de pomme de terre (ou maïs)",
+        "Poivre",
+        "Huile de sésame",
+        "2 c à soupe de sauce de soja",
+        "1 c à soupe de saké",
+        "2 c à soupe de mirin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "5f2bdc28f555b577"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/lacuisinedunetoquee/recettes/poelee-teriyaki-au-tofu-et-legumes",
+      "site": "chefsimon.com",
+      "nom": "Poêlée teriyaki au tofu et légumes",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 bloc tofu ferme (~400 g)",
+        "1 échalote",
+        "1 gousse d’ail",
+        "2 carottes",
+        "1 petit brocoli",
+        "8 g fécule + 15 ml eau",
+        "120 ml sauce soja",
+        "60 ml jus d’orange",
+        "30 g miel",
+        "15 ml vinaigre de riz",
+        "5 ml huile d’olive",
+        "2 c. à c. de gingembre",
+        "1 gousse d’ail hachée"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "3ee1e7ce77019b20"
+    },
+    {
+      "url": "https://www.750g.com/tofu-teriyaki-r44435.htm",
+      "site": "750g.com",
+      "nom": "Tofu Teriyaki",
+      "portions": null,
+      "duree_preparation": null,
+      "duree_cuisson": "PT3M",
+      "ingredients": [
+        "Poivre du moulin",
+        "Purée de céleri",
+        "1 c. à c. de graine de sésame",
+        "3 c. à s. de sauce soja",
+        "3 c. à s. de mirin",
+        "100 g de tofu fumé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 403,
+        "sha256": "5070c903063bc29e"
+      },
+      "sha256_page": "3a64f32fbb7b1352"
+    },
+    {
+      "url": "https://healthyalie.com/tofu-teriyaki-au-four/",
+      "site": "healthyalie.com",
+      "nom": "Tofu teriyaki au four",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "4 c. à soupe de sauce soja",
+        "2 c. à soupe de vinaigre de riz",
+        "1 c. à soupe de sucre roux",
+        "1 c. à soupe d'huile de sésame",
+        "1 gousse d'ail émincée",
+        "Un petit bout de gingembre émincé",
+        "1 c. à soupe de fécule de mais",
+        "400 g de tofu extra-ferme",
+        "Graines de sésame"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 787,
+        "sha256": "055f56d27ac6a336"
+      },
+      "sha256_page": "f07c7a8d13fd3d9a"
+    }
+  ]
+}

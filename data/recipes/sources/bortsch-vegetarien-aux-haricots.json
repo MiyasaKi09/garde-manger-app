@@ -1,0 +1,287 @@
+{
+  "dish": "Vegetarian borscht",
+  "slug": "bortsch-vegetarien-aux-haricots",
+  "sources_count": 8,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.gettystewart.com/vegetarian-borscht-beet-and-bean-soup/",
+      "site": "gettystewart.com",
+      "nom": "Beet and Bean Soup - Vegetarian Borscht",
+      "portions": [
+        "6"
+      ],
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "2 Tbsp canola oil",
+        "1   onion (sliced or diced)",
+        "2 cloves garlic (chopped )",
+        "2  carrots (diced or sliced)",
+        "2 stalks celery (sliced)",
+        "3-4  potatoes (white or red) (diced)",
+        "3 cups shredded cabbage (optional)",
+        "1 tsp dried oregano or thyme",
+        "2 tsp caraway or dill seed",
+        "1/4 cup tomato paste",
+        "6 cups veggie soup stock",
+        "2 cups  water",
+        "2 Tbsp red wine or cider vinegar",
+        "1  bay leaf",
+        "3 small beets (peeled and shredded)",
+        "1  19 oz can white kidney beans (cannellini) (drained and rinsed)",
+        "salt and pepper to taste",
+        "1/4 cup chopped fresh dill"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 554,
+        "sha256": "0d1efb583a9381f6"
+      },
+      "sha256_page": "91b1c88978933ca6"
+    },
+    {
+      "url": "https://ifoodreal.com/vegetarian-borscht-recipe/",
+      "site": "ifoodreal.com",
+      "nom": "Vegetarian Borscht Recipe",
+      "portions": [
+        "8",
+        "8 servings"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT65M",
+      "ingredients": [
+        "1 large onion (chopped)",
+        "1 large green bell pepper (chopped)",
+        "3 medium carrots (chopped)",
+        "3 large beets (peeled and cut into matchsticks)",
+        "5 cups green cabbage (thinly sliced)",
+        "4 large potatoes (peeled and cubed)",
+        "2 tablespoons olive oil (extra virgin)",
+        "6 ounces can tomato paste (low sodium)",
+        "11 cups vegetable broth (low sodium)",
+        "14 ounces can cannellini beans (low sodium, rinsed &amp; drained)",
+        "3  bay leaves",
+        "2 teaspoons salt",
+        "1/2 teaspoon ground black pepper (to taste)",
+        "1 teaspoon sugar",
+        "1 tablespoon white vinegar",
+        "3  large garlic cloves (grated)",
+        "1/4 cup fresh dill or parsley (finely chopped)",
+        "Sour cream and pampushky (for serving)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 832,
+        "sha256": "2979afef9219e9c9"
+      },
+      "sha256_page": "2f06062c28c2853a"
+    },
+    {
+      "url": "https://www.cookedandloved.com/recipes/borscht-soup/",
+      "site": "cookedandloved.com",
+      "nom": "Borscht Recipe (Vegetarian Beet Soup)",
+      "portions": [
+        "6",
+        "6 –8 servings"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "2 tablespoons olive oil",
+        "1  large onion (peeled and finely diced)",
+        "1  large celery stick (diced small)",
+        "3  medium beets (about 14 oz / 400 grams, peeled and grated on the large holes of a box grater)",
+        "1  large carrot (about 5 oz / 140 grams, peeled and grated)",
+        "3 cloves garlic (finely minced)",
+        "1 teaspoon salt (plus more to taste)",
+        "3  medium white potatoes (about 14 oz / 400 grams, peeled and cut into small cubes)",
+        "⅓  medium white cabbage (about 10 oz / 300 grams, thinly sliced)",
+        "6 cups vegetable stock (1.5 liters)",
+        "2 tablespoons tomato paste",
+        "1 teaspoon paprika",
+        "1 teaspoon ground coriander seed",
+        "1 teaspoon sugar",
+        "3 tablespoons apple cider vinegar (or white wine vinegar)",
+        "2  bay leaves",
+        "½ teaspoon ground black pepper",
+        "1 can cannellini beans (15 oz / 425 grams, drained and rinsed)",
+        "Generous bunch of fresh dill (roughly chopped)",
+        "Sour cream or coconut yogurt (optional but traditional)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1510,
+        "sha256": "66a5fdb28e4e00a5"
+      },
+      "sha256_page": "3914339360cffa99"
+    },
+    {
+      "url": "https://www.inspirationsforall.com/en/vegetarian-borscht-recipe-with-beans/",
+      "site": "inspirationsforall.com",
+      "nom": "Vegetarian borscht with beans",
+      "portions": [
+        "8"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT60M",
+      "ingredients": [
+        "100 g beans ((any))",
+        "1  beet ((medium size))",
+        "2  carrots",
+        "1  bell bell pepper",
+        "2  tomatoes",
+        "200 g white cabbage",
+        "1  onion",
+        "2 tbsp freshly squeezed lemon juice",
+        "2  dried bay leaves",
+        "salt",
+        "pepper",
+        "vegetable oil",
+        "1,5 l water"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 1069,
+        "sha256": "c1b8b698916736e5"
+      },
+      "sha256_page": "66256cf2e95ab1bd"
+    },
+    {
+      "url": "https://www.feastingathome.com/borscht/",
+      "site": "feastingathome.com",
+      "nom": " Borscht Recipe ",
+      "portions": [
+        "4",
+        "4-6"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 tablespoons olive oil or butter",
+        "1 medium onion, diced",
+        "6 large garlic cloves, rough chopped",
+        "2 stalks celery, chopped",
+        "1 cup carrots, sliced or diced small",
+        "1 extra large beet, thinly sliced, or small dice (approx. 2 cups)",
+        "2 cups red cabbage, shredded or chopped",
+        "1 cup beet stems and greens, chopped (optional or add another cup cabbage)",
+        "4 cups veggie broth (or chicken stock or traditional beef stock)",
+        "2 tablespoons tomato paste",
+        "1  teaspoon celery seeds- optional",
+        "1/4 teaspoon allspice",
+        "a pinch of cayenne (more to taste)",
+        "2 bay leaves",
+        "1- 1 1/2 teaspoons salt (adjust to taste- depends on the broth you use)",
+        "1/4- ½ teaspoon black pepper (adjust to taste)",
+        "1-2 tablespoons apple cider vinegar",
+        "½ cup fresh dill, chopped"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 590,
+        "sha256": "67ef37094d8d0acd"
+      },
+      "sha256_page": "b2280ba24a751db7"
+    },
+    {
+      "url": "https://nirvanacakery.com/vegan-borscht/",
+      "site": "nirvanacakery.com",
+      "nom": "The Best Vegan Borscht",
+      "portions": 6,
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "2 tablespoons olive oil (30 ml)",
+        "1 onion, chopped",
+        "2 celery sticks, chopped",
+        "1 leek, chopped",
+        "2 medium carrots, cubed",
+        "1 bay leaf",
+        "1 teaspoon caraway seeds",
+        "2 garlic cloves, chopped",
+        "3 medium beetroot, peeled and cubed",
+        "2 medium potatoes, peeled and cubed",
+        "6 cups water/vegetable stock/broth (1 1/2 liters)",
+        "1 small red cabbage, shredded",
+        "1 1/2 cups butter beans (350 ml)",
+        "sea salt &amp; black pepper",
+        "2 tablespoons raw apple cider vinegar",
+        "bunch of dill, chopped",
+        "vegan sour cream or coconut yogurt",
+        "raw apple cider vinegar or lemon juice"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 590,
+        "sha256": "04c1d3cc9b9c827b"
+      },
+      "sha256_page": "d718d6a86d9711ae"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_bortsch-vegetarien-la-soupe-aux-betteraves_528397.aspx",
+      "site": "marmiton.org",
+      "nom": "Bortsch végétarien (la soupe aux betteraves) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H7M",
+      "ingredients": [
+        "3 betteraves rouges",
+        "3 carottes",
+        "300 g de choux vert",
+        "2 pommes de terre",
+        "3 oignons",
+        "2 tasses de purée de tomate",
+        "1 poivron",
+        "1 cuillère à soupe de sucre",
+        "sel",
+        "poivre",
+        "2 feuilles de laurier",
+        "huile végétale",
+        "persil",
+        "aneth",
+        "oignon cébette",
+        "crème aigre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 1312,
+        "sha256": "543eea044962ef82"
+      },
+      "sha256_page": "b862bb98f6222658"
+    },
+    {
+      "url": "https://menu-vegetarien.com/bortsch-vegetarien/",
+      "site": "menu-vegetarien.com",
+      "nom": "Bortsch végétarien",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "15 ml huile de tournesol",
+        "1/2  oignon jaune (émincé)",
+        "4  betterave (épluchées, coupées en morceaux de 2cm)",
+        "200 g carotte (épluchées, coupées en morceaux de 2cm)",
+        "200 g pomme de terre (épluchées, coupées en morceaux de 2cm)",
+        "300 g chou-rouge (coupé en morceaux de 2cm)",
+        "2  gousse d'ail (hachée)",
+        "1/2 càc paprika",
+        "1/2 càs Moutarde",
+        "1 càs vinaigre balsamique",
+        "1 l bouillon de légumes",
+        "180 g lentilles vertes",
+        "2 càs aneth",
+        "1  yaourt à la grecque"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 536,
+        "sha256": "e4f48e1a4c837bc9"
+      },
+      "sha256_page": "2314e1a233778ad5"
+    }
+  ]
+}

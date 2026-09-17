@@ -2,6 +2,9 @@ import { describe, expect, it } from 'vitest'
 import { SUPPLEMENT_FORMS, buildPersonalizedMeals, optimizeDailyPortions } from '@/lib/domain/planning/personalizedMeals'
 import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 
+// Carné / végétarien se lit dans l'ORIGINE déclarée de chaque ingrédient, la
+// catégorie ne sert qu'au rangement : chaque fixture porte donc les deux.
+const ORIGINE_PAR_CATEGORIE = { viandes: 'animal:viande', poissons_fruits_de_mer: 'animal:poisson', legumes: 'vegetal' }
 const recipe = (code, family, nutrition, category = 'legumes') => ({
   code, family, eligible: true, servings: 2, prepMinutes: 20, cookMinutes: 25, cuisineOrigin: 'France',
   nutritionPerServing: nutrition,
@@ -10,12 +13,13 @@ const recipe = (code, family, nutrition, category = 'legumes') => ({
       name: category === 'viandes' ? 'Bœuf' : category === 'poissons_fruits_de_mer' ? 'Poisson' : 'Lentilles',
       formNormalized: category === 'viandes' ? 'boeuf' : category === 'poissons_fruits_de_mer' ? 'poisson' : 'lentilles',
       category,
+      origin: ORIGINE_PAR_CATEGORIE[category],
       role: 'protéine',
       grams: 200,
       per100g: { kcal: 180, proteinG: 20, carbsG: category === 'legumes' ? 20 : 0, fatG: 5, fiberG: category === 'legumes' ? 8 : 0 },
     },
-    { name: 'Riz', formNormalized: 'riz blanc cru', category: 'cereales_feculents', role: 'féculent', grams: 140, per100g: { kcal: 352, proteinG: 7.4, carbsG: 78, fatG: 0.91, fiberG: 1.05 } },
-    { name: 'Haricots verts', formNormalized: 'haricot vert cru', category: 'legumes', role: 'accompagnement', grams: 360, per100g: { kcal: 25.9, proteinG: 1.85, carbsG: 4.14, fatG: 0.21, fiberG: 2.68 } },
+    { name: 'Riz', formNormalized: 'riz blanc cru', category: 'cereales_feculents', origin: 'vegetal', role: 'féculent', grams: 140, per100g: { kcal: 352, proteinG: 7.4, carbsG: 78, fatG: 0.91, fiberG: 1.05 } },
+    { name: 'Haricots verts', formNormalized: 'haricot vert cru', category: 'legumes', origin: 'vegetal', role: 'accompagnement', grams: 360, per100g: { kcal: 25.9, proteinG: 1.85, carbsG: 4.14, fatG: 0.21, fiberG: 2.68 } },
   ],
   sensory: { profile: 'warm_aromatic', scores: { richness: 3 } },
 })

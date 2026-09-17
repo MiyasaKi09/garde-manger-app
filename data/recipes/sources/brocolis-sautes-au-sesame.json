@@ -1,0 +1,49 @@
+{
+  "dish": "Brocolis sautes au sesame",
+  "slug": "brocolis-sautes-au-sesame",
+  "sources_count": 2,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/ladymilonguera/recettes/brocolis-sautes-sauce-soja-et-sesame",
+      "site": "chefsimon.com",
+      "nom": "Brocolis sautés, sauce soja et sésame",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H10M",
+      "duree_cuisson": "PT00H12M",
+      "ingredients": [
+        "400 g de brocolis",
+        "2  cuil. à soupe de sauce soja",
+        "1  cuil. à soupe de graines de sésame",
+        "1  cuil. à soupe d'huile végétale (sésame, coco ou olive)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 192,
+        "sha256": "c6ee274332d7c8ab"
+      },
+      "sha256_page": "5f9153e51d395106"
+    },
+    {
+      "url": "https://www.750g.com/poulet-et-brocolis-sautes-au-sesame-r53220.htm",
+      "site": "750g.com",
+      "nom": "Poulet et brocolis sautés au sésame",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 c. à s. d'huile de sésame",
+        "3 c. à c. de sauce soja",
+        "1 c. à c. de graine de sésame",
+        "2 filets de filets de poulet",
+        "1 bouquet de brocoli"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 546,
+        "sha256": "5058bdff0bdd89c5"
+      },
+      "sha256_page": "d06c35a77c87dba5"
+    }
+  ]
+}

@@ -23,6 +23,10 @@ const ingredient = (name, category, overrides = {}) => ({
   ...overrides,
 })
 
+// Profil de conservation DÉCLARÉ (chantier C1) : sans lui une recette n'est
+// pas documentée et n'entre jamais dans le moteur avancé.
+const PROFILE_72H = { fridgeHours: 72, eatImmediately: false, freezable: null, freezerMonths: null, serveCold: null, source: 'parsed' }
+
 const makeRecipe = (overrides = {}) => ({
   code: 'FR-000',
   family: 'Plat test',
@@ -37,6 +41,7 @@ const makeRecipe = (overrides = {}) => ({
     ingredient('carotte cuite', 'legumes', { grams: 200 }),
   ],
   nutritionPerServing: { kcal: 550, proteinG: 35, carbsG: 40, fatG: 20, fiberG: 6 },
+  conservationProfile: PROFILE_72H,
   ...overrides,
 })
 
@@ -89,10 +94,28 @@ describe('recipePlanningProfile — tenue au réchauffage', () => {
     expect(recipePlanningProfile(friture).reheatQuality).toBe(REHEAT_QUALITY.POOR)
   })
 
-  it('écarte les plats servis froids', () => {
-    const salade = makeRecipe({ family: 'Salade de lentilles', techniques: ['emulsion'] })
+  it('écarte les plats servis froids — DÉCLARÉS, jamais devinés sur le nom', () => {
+    const salade = makeRecipe({ family: 'Salade de lentilles', techniques: ['emulsion'], conservationProfile: { ...PROFILE_72H, serveCold: true } })
     expect(recipePlanningProfile(salade).servedCold).toBe(true)
-    expect(batchRejectionReason(salade)).toBe('plat_servi_froid')
+    expect(recipePlanningProfile(salade).sources.servedCold).toBe('conservation_profile')
+    expect(batchRejectionReason(salade)).toBe('servi_froid')
+    // Le même nom sans déclaration n'est PAS un plat froid : « salade de
+    // lentilles tièdes » se sert tiède, et le pan bagnat (« sandwich ») ne
+    // contenait aucun mot de l'ancienne liste.
+    const tiede = makeRecipe({ family: 'Salade de lentilles', techniques: ['emulsion'] })
+    expect(recipePlanningProfile(tiede).servedCold).toBe(false)
+  })
+
+  it('écarte ce que le profil de conservation interdit de garder, quoi que dise `batchable`', () => {
+    const immediat = makeRecipe({ batchable: true, conservationProfile: { ...PROFILE_72H, eatImmediately: true } })
+    expect(recipePlanningProfile(immediat).batchability).toBe(BATCHABILITY.LOW)
+    expect(batchRejectionReason(immediat)).toBe('a_consommer_immediatement')
+    const court = makeRecipe({ batchable: true, conservationProfile: { ...PROFILE_72H, fridgeHours: 24 } })
+    expect(recipePlanningProfile(court).batchability).toBe(BATCHABILITY.LOW)
+    expect(batchRejectionReason(court)).toBe('se_garde_moins_de_48h')
+    const sansDuree = makeRecipe({ conservationProfile: { ...PROFILE_72H, fridgeHours: null } })
+    expect(isBatchCandidate(sansDuree)).toBe(false)
+    expect(batchRejectionReason(sansDuree)).toBe('conservation_non_declaree')
   })
 
   it('écarte les préparations trop courtes pour valoir une mutualisation', () => {
@@ -113,10 +136,15 @@ describe('recipePlanningProfile — tenue au réchauffage', () => {
 
 describe('recipePlanningProfile — documentation et complétude', () => {
   it('exclut du moteur avancé une recette dont on ne sait rien juger', () => {
-    const opaque = makeRecipe({ techniques: [], conservation: null, exactIngredients: [{ name: 'x', formNormalized: 'x', grams: 100, optional: false }] })
+    const opaque = makeRecipe({ techniques: [], exactIngredients: [{ name: 'x', formNormalized: 'x', grams: 100, optional: false }] })
     expect(recipePlanningProfile(opaque).documented).toBe(false)
     expect(isBatchCandidate(opaque)).toBe(false)
     expect(batchRejectionReason(opaque)).toBe('composition_insuffisamment_documentee')
+    // Sans profil de conservation déclaré, rien n'est documenté — même un
+    // mijoté bien catégorisé : la prose n'est plus un signal.
+    const sansProfil = makeRecipe({ conservationProfile: null, conservation: '3 jours au réfrigérateur.' })
+    expect(recipePlanningProfile(sansProfil).documented).toBe(false)
+    expect(batchRejectionReason(sansProfil)).toBe('conservation_non_declaree')
   })
 
   it('distingue « assez documenté pour juger » de « assez documenté pour compléter l’assiette »', () => {
@@ -146,10 +174,21 @@ describe('recipePlanningProfile — sur le corpus réel du dépôt', () => {
     expect(profiles.every((entry) => entry.profile.documented)).toBe(true)
   })
 
-  it('laisse une large majorité de recettes mutualisables, sans tout accepter', () => {
+  it('laisse une majorité de recettes mutualisables, sans tout accepter', () => {
     const batchable = recipes.filter(isBatchCandidate)
-    expect(batchable.length).toBeGreaterThan(recipes.length * 0.6)
+    // Mesuré après le chantier C1 : 309 / 520 (59 %). L'ancienne borne de 60 %
+    // avait été posée sur 370 candidats dont 66 plats à consommer
+    // immédiatement, 57 servis froids et 27 qui se gardent moins de 48 heures
+    // — comptés candidats parce que leur conservation n'était pas lue. La
+    // borne suit la mesure vraie, pas l'inverse.
+    expect(batchable.length).toBeGreaterThan(recipes.length * 0.5)
     expect(batchable.length).toBeLessThan(recipes.length)
+    // Aucun candidat ne l'est sans conservation déclarée suffisante.
+    for (const recipe of batchable) {
+      expect(recipe.conservationProfile?.fridgeHours, recipe.code).toBeGreaterThanOrEqual(48)
+      expect(recipe.conservationProfile.eatImmediately, recipe.code).toBe(false)
+      expect(recipe.conservationProfile.serveCold, recipe.code).not.toBe(true)
+    }
   })
 
   it('refuse les pâtes en sauce et les plats froids du corpus, garde les mijotés', () => {

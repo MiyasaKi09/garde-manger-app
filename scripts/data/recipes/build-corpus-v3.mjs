@@ -13,8 +13,35 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
 const OUT = join(__dirname, '..', 'out')
 const RETRAITS = join(ROOT, 'data', 'recipes', 'retraits.json')
+const VERSEMENTS = join(ROOT, 'data', 'recipes', 'versements.json')
 const corpus = JSON.parse(readFileSync(join(ROOT, 'data', 'recipes', 'corpus-v3.json'), 'utf8'))
 const foodReport = JSON.parse(readFileSync(join(OUT, 'recipe-food-match-report.json'), 'utf8'))
+
+/**
+ * LA DATE DE VERSEMENT, LUE AU REGISTRE ET NON AU CORPUS.
+ *
+ * `data/recipes/versements.json` dit quel lot est entré au catalogue quel jour,
+ * et avec quelle preuve. Le corpus, lui, ne la porte pas : l'y mettre changerait
+ * le `content_hash` de chaque recette concernée — le md5 que ce chargeur écrit
+ * trois lignes plus bas — et `scripts/db/check-corpus-parity.mjs` ferait rougir
+ * la parité contre une base déjà chargée, pour une donnée qui n'appartient pas
+ * au CONTENU d'une recette mais à son histoire d'entrée.
+ *
+ * UNE RECETTE ABSENTE DU REGISTRE N'A PAS DE DATE, et le chargeur écrit NULL.
+ * Il ne retombe ni sur la date du jour, ni sur celle du corpus, ni sur celle du
+ * dernier lot : 706 des 754 recettes sont entrées avant que ce registre
+ * n'existe, personne ne sait quel jour, et l'écran « Nouveautés de la semaine »
+ * doit pouvoir dire « je ne sais pas » plutôt que de les montrer.
+ */
+const versements = JSON.parse(readFileSync(VERSEMENTS, 'utf8'))
+const dateDeVersementParCode = new Map()
+for (const lot of versements.versements || []) {
+  for (const code of lot.codes || []) dateDeVersementParCode.set(code, lot.verse_le)
+}
+const dateDeVersement = (recipe) => {
+  const jour = dateDeVersementParCode.get(recipe.code)
+  return jour ? `DATE ${q(jour)}` : 'NULL'
+}
 const eligibilityByCode = new Map(foodReport.recipe_eligibility.map((item) => [item.code, item]))
 
 const q = (value) => `'${String(value).replace(/'/g, "''")}'`
@@ -35,6 +62,28 @@ const lienDeBase = (recipe) => (recipe.derived_from
        JOIN ops.source_datasets base_ds ON base_ds.id = base.source_dataset_id
       WHERE base_ds.code = 'myko_editorial_v3' AND base.source_record_key = ${q(recipe.derived_from)})`
   : 'NULL')
+
+/**
+ * Profil de conservation DÉCLARÉ, versé tel quel dans la colonne jsonb ajoutée
+ * par 20260917110000.
+ *
+ * Il part dans la base sous la forme que le corpus emploie — snake_case, écrite
+ * par derive-conservation-profiles.mjs depuis la prose et les arbitrages relus.
+ * La traduction vers le contrat de lecture du moteur (`fridgeHours`,
+ * `freezerMonths`…) appartient à la RPC, qui renomme déjà tout le reste :
+ * traduire ici aurait mis deux vocabulaires dans la même colonne et rendu la
+ * source illisible.
+ *
+ * Un profil absent reste ABSENT : la colonne prend NULL, et le planificateur ne
+ * produit alors aucune portion d'avance. C'est la règle que le moteur applique
+ * déjà (lib/domain/recipes/conservationProfile.js) ; on ne fabrique pas ici une
+ * durée de trois jours pour que la ligne ait l'air complète.
+ */
+const profilDeConservation = (recipe) => (recipe.conservation_profile
+  && typeof recipe.conservation_profile === 'object'
+  ? json(recipe.conservation_profile)
+  : 'NULL')
+
 const corpusHash = createHash('md5').update(corpus.recipes.map(hashRecipe).sort().join(',')).digest('hex')
 const rulesHash = createHash('md5').update(JSON.stringify(corpus.planner_sensory_rules)).digest('hex')
 const declaredYields = new Map([
@@ -121,8 +170,8 @@ BEGIN
      quality_level, publication_status, content_hash,
      sensory_scores, dominant_flavors, aroma_families, target_textures,
      signature_ingredients, identity_guardrails, techniques, variant_candidates,
-     allergens, conservation_text, planning_eligible, eligibility_issues,
-     derived_from_version_id, derivation)
+     allergens, conservation_text, conservation_profile, planning_eligible, eligibility_issues,
+     derived_from_version_id, derivation, corpus_poured_on)
   SELECT
     v_family, 3, ${q(recipe.family)}, ${qn(recipe.description_courte)}, ds.id, ${q(recipe.code)},
     'Myko', 'editorial', ${num(recipe.servings)}, ${num(recipe.prep_minutes)}, ${num(recipe.cook_minutes)}, ${qn(recipe.difficulty)},
@@ -132,8 +181,8 @@ BEGIN
     ${array(recipe.sensory.aroma_families)}, ${array(recipe.sensory.target_textures)},
     ${array(recipe.sensory.signature_ingredients)}, ${array(recipe.sensory.identity_guardrails)},
     ${array(recipe.techniques)}, ${array(recipe.variants)}, ${array(recipe.allergens)},
-    ${qn(recipe.conservation)}, false, '[]'::jsonb,
-    ${lienDeBase(recipe)}, ${json(recipe.derivation || {})}
+    ${qn(recipe.conservation)}, ${profilDeConservation(recipe)}, false, '[]'::jsonb,
+    ${lienDeBase(recipe)}, ${json(recipe.derivation || {})}, ${dateDeVersement(recipe)}
   FROM ops.source_datasets ds WHERE ds.code = 'myko_editorial_v3'
   ON CONFLICT (recipe_family_id, version_number) DO UPDATE SET
     title = EXCLUDED.title,
@@ -159,10 +208,16 @@ BEGIN
     variant_candidates = EXCLUDED.variant_candidates,
     allergens = EXCLUDED.allergens,
     conservation_text = EXCLUDED.conservation_text,
+    conservation_profile = EXCLUDED.conservation_profile,
     planning_eligible = false,
     eligibility_issues = '[]'::jsonb,
     derived_from_version_id = EXCLUDED.derived_from_version_id,
-    derivation = EXCLUDED.derivation
+    derivation = EXCLUDED.derivation,
+    -- Le coalesce DANS CET ORDRE, et c'est la règle qui compte : le registre
+    -- l'emporte quand il sait, et une date déjà en base n'est JAMAIS effacée
+    -- par un registre qui ne sait pas. Un rechargement de corpus ne doit pas
+    -- faire disparaître les nouveautés d'un lot passé.
+    corpus_poured_on = coalesce(EXCLUDED.corpus_poured_on, culinary.recipe_versions.corpus_poured_on)
   RETURNING id INTO v_version;
 
   DELETE FROM quality.review_tasks rt
@@ -331,6 +386,97 @@ BEGIN
 END
 $composition$;
 `
+
+// ── Bases partagées ─────────────────────────────────────────────────────────
+// Les liens `ingredient.component` que le corpus porte depuis le livrable 2.1
+// (scripts/data/recipes/link-shared-bases.mjs, arbitrés dans
+// data/recipes/arbitrations/bases-partagees.json). Sans ce bloc, un
+// rechargement du corpus les EFFACERAIT : chaque bloc recette commence par
+// `DELETE FROM culinary.recipe_components WHERE recipe_version_id = v_version`
+// et réinsère le seul composant « plat ». La migration dédiée
+// (20260918090000_bases_partagees.sql) pose les liens sur la base d'aujourd'hui ;
+// celui-ci les repose à chaque chargement, de sorte que les deux chemins — le
+// corpus du dépôt et la base — portent la même chose.
+//
+// Il vient APRÈS toutes les recettes, comme la composition ci-dessus, et pour
+// la même raison : une base doit déjà être en table pour qu'on puisse la
+// désigner par son code. L'ordre des recettes ne garantit rien ici — RAP-004
+// est chargée bien après FR-005 qui l'emploie.
+const liensDeBase = []
+for (const recipe of corpus.recipes) {
+  let position = 1
+  for (const [index, ingredient] of recipe.ingredients.entries()) {
+    if (!ingredient.component?.code) continue
+    position += 1
+    liensDeBase.push({
+      parent: recipe.code,
+      base: String(ingredient.component.code),
+      nom: ingredient.component.name || String(ingredient.component.code),
+      positionComposant: position,
+      positionIngredient: index + 1,
+      forme: ingredient.form,
+      quantite: ingredient.component.requiredQuantity,
+      unite: ingredient.component.requiredUnit,
+    })
+  }
+}
+if (liensDeBase.length) {
+  const valeurs = liensDeBase.map((lien) => `    (${q(lien.parent)}, ${q(lien.base)}, ${lien.positionIngredient}, ${q(lien.forme)}, ${q(lien.nom)}, ${lien.positionComposant}, ${num(lien.quantite)}, ${q(lien.unite)})`).join(',\n')
+  const colonnes = '(parent_code, base_code, ingredient_pos, ingredient_name, component_name, component_pos, required_quantity, required_unit)'
+  sql += `
+-- ${liensDeBase.length} lien(s) de base partagée sur ${new Set(liensDeBase.map((lien) => lien.parent)).size} plat(s).
+--
+-- Les liens voyagent en CTE, et non par une table temporaire. Une table
+-- \`CREATE TEMP TABLE ... ON COMMIT DROP\` disparaît à la fin de l'instruction
+-- qui la crée dès lors qu'aucune transaction n'est ouverte — et c'est
+-- exactement le cas ici : la CI charge ce fichier avec
+-- \`psql -v ON_ERROR_STOP=1 -f\`, sans \`--single-transaction\` et sans \`BEGIN\`,
+-- donc en autocommit. L'\`INSERT\` suivant ne trouvait plus la table
+-- (« relation "_liens_corpus" does not exist ») et le chargeur entier
+-- s'arrêtait là. Une CTE ne dépend ni de la transaction ni de la session : elle
+-- tient dans son instruction, et les deux chemins — le fichier d'un seul tenant
+-- et les tranches de \`build-corpus-migration.mjs\` — la portent à l'identique.
+WITH lien${colonnes} AS (
+  VALUES
+${valeurs}
+)
+INSERT INTO culinary.recipe_components
+  (recipe_version_id, name, component_role, position, sub_recipe_version_id,
+   required_quantity, required_unit)
+SELECT parent.id, lien.component_name, 'base', lien.component_pos::integer, enfant.id,
+       lien.required_quantity::numeric, lien.required_unit
+FROM lien
+JOIN ops.source_datasets dataset ON dataset.code = 'myko_editorial_v3'
+JOIN culinary.recipe_versions parent
+  ON parent.source_dataset_id = dataset.id AND upper(parent.source_record_key) = lien.parent_code
+JOIN culinary.recipe_versions enfant
+  ON enfant.source_dataset_id = dataset.id AND upper(enfant.source_record_key) = lien.base_code
+WHERE NOT EXISTS (
+  SELECT 1 FROM culinary.recipe_components existant
+  WHERE existant.recipe_version_id = parent.id AND existant.sub_recipe_version_id = enfant.id
+);
+
+WITH lien${colonnes} AS (
+  VALUES
+${valeurs}
+)
+UPDATE culinary.recipe_ingredient_requirements exigence
+SET component_id = composant.id, requirement_type = 'sub_recipe'
+FROM lien
+JOIN ops.source_datasets dataset ON dataset.code = 'myko_editorial_v3'
+JOIN culinary.recipe_versions parent
+  ON parent.source_dataset_id = dataset.id AND upper(parent.source_record_key) = lien.parent_code
+JOIN culinary.recipe_versions enfant
+  ON enfant.source_dataset_id = dataset.id AND upper(enfant.source_record_key) = lien.base_code
+JOIN culinary.recipe_components composant
+  ON composant.recipe_version_id = parent.id AND composant.sub_recipe_version_id = enfant.id
+WHERE exigence.recipe_version_id = parent.id
+  AND exigence.position = lien.ingredient_pos::integer
+  AND exigence.source_name = lien.ingredient_name
+  AND (exigence.component_id IS DISTINCT FROM composant.id
+       OR exigence.requirement_type IS DISTINCT FROM 'sub_recipe');
+`
+}
 
 // ── Recettes retirées ───────────────────────────────────────────────────────
 // Le chargeur n'efface rien : il remplace ce qu'il porte et laisse le reste. Une

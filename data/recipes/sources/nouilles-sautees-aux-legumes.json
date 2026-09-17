@@ -1,0 +1,271 @@
+{
+  "dish": "Nouilles sautees aux legumes",
+  "slug": "nouilles-sautees-aux-legumes",
+  "sources_count": 9,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_nouilles-sautees-aux-legumes_33051.aspx",
+      "site": "marmiton.org",
+      "nom": "Nouilles sautées aux légumes : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT45M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "3 poireaux",
+        "250 g de champignons de Paris",
+        "3 carottes",
+        "1 courgette (ne pas la peler)",
+        "soja frais (un sachet prêt à l'emploi, ou un sachet légumes chinois pour Wok)",
+        "1 poivron rouge (facultatif si dans mélange chinois)",
+        "500 g de scampis surgelés décortiqués",
+        "250 g de filets de poulet",
+        "250 g de porc",
+        "de boeuf",
+        "250 g de nouilles sautées",
+        "sauce soja",
+        "huile d'olive ou huile pour Wok chinoise",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 444,
+        "sha256": "f0e190be40ed42e9"
+      },
+      "sha256_page": "efd11a6a70ca819d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_nouilles-sautees-aux-legumes-et-poulet-chine_23507.aspx",
+      "site": "marmiton.org",
+      "nom": "Nouilles sautées aux légumes et poulet (chine) : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "250 g de nouilles aux oeufs chinoises",
+        "2 blancs de poulet",
+        "2 carottes",
+        "0.5 chou pommé",
+        "2 gousses d'ail",
+        "2 cuillères à soupe d'huile",
+        "sauce soja claire"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 440,
+        "sha256": "b2fedd187a4966cd"
+      },
+      "sha256_page": "caae31d92b416c0f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_nouilles-chinoises-sautees-aux-legumes_68336.aspx",
+      "site": "marmiton.org",
+      "nom": "Nouilles chinoises sautées aux légumes : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "400 g de nouilles chinoises",
+        "de gingembre frais",
+        "20 g de ciboule (ciboulette chinoise)",
+        "3 échalotes émincées",
+        "0.5 bâton de citronnelle , coupé en petits morceaux (partie blanche principalement)",
+        "2 oeufs cuits en omelette très plate et ensuite coupée en lamelles",
+        "huile de sésame",
+        "mini mais (frais si possible)",
+        "carotte coupées en juliennes",
+        "champignon noir (à réhydrater éventuellement)",
+        "poivron rouge",
+        "haricot mange-tout (celui qui est plat)",
+        "germes de soja",
+        "de soja sautés",
+        "légumes un peu exotique (choux chinois coupé en lamelles etc...)",
+        "3 cuillères à soupe de sauce soja salée",
+        "2 cuillères à soupe de sauce d'huître",
+        "purée de piment"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 758,
+        "sha256": "7eed4702f3cefa90"
+      },
+      "sha256_page": "335d65eabbbf889a"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/voyage-culinaire-a-madagascar/recettes/nouilles-sautees-au-boeuf-et-legumes",
+      "site": "chefsimon.com",
+      "nom": "Nouilles sautées au bœuf et légumes",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "Pâtes (nouilles, pâtes fraîches maison ou spaghetti)",
+        "bœuf haché",
+        "Sel, sauce soja",
+        "Carottes",
+        "Haricots verts",
+        "Courgettes",
+        "Pak choi",
+        "Huîtres",
+        "Nuoc mam (sauce de poisson)",
+        "Coriandre",
+        "Ciboulette",
+        "Huile de sésame (facultatif)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 231,
+        "sha256": "75d465d47cd9f4e2"
+      },
+      "sha256_page": "72d03cab7e3e3278"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/sandrine-jl/recettes/wok-de-legumes-croquants-et-ses-nouilles-sautees",
+      "site": "chefsimon.com",
+      "nom": "Wok de légumes croquants et ses nouilles sautées",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H10M",
+      "ingredients": [
+        "150 gr de nouilles aux œufs Suzi wan",
+        "carottes jaune",
+        "chou blanc",
+        "poireau",
+        "coriandre",
+        "3 oignons cébette",
+        "3 càs de sauce soja",
+        "huile d’olive",
+        "dés de bacon (facultatif)",
+        "cacahuètes",
+        "sel poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "e14e640f1266ad20"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/philandcocuisine/recettes/nouilles-sautees-au-boeuf-et-aux-legumes",
+      "site": "chefsimon.com",
+      "nom": "Nouilles sautées au bœuf et aux légumes",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H05M",
+      "ingredients": [
+        "200 g de nouilles (1 nid par personne)",
+        "240 g de viande de bœuf (à griller ou poêler)",
+        "1 grosse carotte",
+        "2 oignons blancs frais avec tiges ou de la ciboule",
+        "quelques pois gourmands",
+        "1 gousse d’ail",
+        "1 cm de gingembre",
+        "1 petit piment oiseau frais (facultatif)",
+        "3 c. à soupe d’huile d’olive",
+        "4 c. à soupe de sauce soja",
+        "1 c. à soupe de sauce d'huîtres",
+        "1 c. à soupe d’huile de sésame",
+        "1 c. à soupe de maïzena",
+        "1/2 verre d’eau",
+        "poivre ou piment d'Espelette"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "fecf665330c6a677"
+    },
+    {
+      "url": "https://www.750g.com/wok-de-nouilles-sautees-aux-legumes-et-champignons-r200678.htm",
+      "site": "750g.com",
+      "nom": "Wok de nouilles sautées aux légumes et champignons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "250 g de nouilles chinoises",
+        "12 shiitakés  frais",
+        "3 oeufs",
+        "2 courgettes",
+        "1 carotte",
+        "4 c. à s. de sauce soja",
+        "3 c. à s. d'eau",
+        "1 c. à c. de sucre",
+        "1 c. à c. de purée de piment",
+        "Huile"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1063,
+        "sha256": "9d5d0384fe0705a4"
+      },
+      "sha256_page": "34227038895c9f8a"
+    },
+    {
+      "url": "https://www.750g.com/nouilles-sautees-legumes-et-boeuf-caramelise-r204442.htm",
+      "site": "750g.com",
+      "nom": "Nouilles sautées, légumes et bœuf caramélisé",
+      "portions": "4 personnes",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 paquet de nouilles chinoises aux oeufs",
+        "50g de soja frais",
+        "100g de pois gourmands",
+        "100g de champignons de Paris",
+        "50g de mini maïs",
+        "Radis",
+        "300g de boeuf",
+        "2 c à miel",
+        "Sauce soja",
+        "Gingembre",
+        "Coriandre",
+        "Huile de sésame",
+        "Huile neutre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 2,
+        "signes": 758,
+        "sha256": "ae555dad054616af"
+      },
+      "sha256_page": "bf630c91c189c1f6"
+    },
+    {
+      "url": "https://www.750g.com/nouilles-chinoises-sautees-aux-legumes-r52364.htm",
+      "site": "750g.com",
+      "nom": "Nouilles chinoises sautées aux légumes",
+      "portions": "4 personnes",
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "300 g de nouilles chinoises",
+        "3 ciboules",
+        "1 poivron rouge",
+        "8 champignons  parfumés",
+        "100 g de pois gourmands",
+        "1 céleri",
+        "1 carotte  (petite)",
+        "50 g de pousses de bambou",
+        "3 gousses d'ail",
+        "4 c. à s. de vinaigre de xérès",
+        "4 c. à s. de sauce soja",
+        "3 c. à s. d'huile d'arachide",
+        "1,5 piment fort  vert ou rouge",
+        "2 lamelles de gingembre",
+        "½ c. à s. d'huile de sésame",
+        "1 c. à c. de sauce de haricots",
+        "2 pincées de sucre",
+        "Sel ou sel fin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1383,
+        "sha256": "b4a49044082fc801"
+      },
+      "sha256_page": "9933a6141c30bd8a"
+    }
+  ]
+}

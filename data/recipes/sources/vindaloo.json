@@ -1,0 +1,180 @@
+{
+  "dish": "vindaloo",
+  "slug": "vindaloo",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://yupitsvegan.com/chickpea-vindaloo/",
+      "site": "yupitsvegan.com",
+      "nom": "Chickpea Vindaloo (Spicy Chickpea Curry)",
+      "portions": [
+        "5",
+        "5 servings"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT60M",
+      "ingredients": [
+        "2 cups dried chickpeas",
+        "1 tsp coconut oil",
+        "1  yellow or white onion (diced)",
+        "5 cups water",
+        "1 and 1/2 cups diced potatoes ((about 2 medium potatoes))",
+        "1 cup diced tomato ((about 2 medium-small tomatoes))",
+        "vindaloo curry paste ((recipe below))",
+        "1/2 tsp coconut oil",
+        "1 tsp cardamom pods (scant)",
+        "1 tbsp coriander seeds",
+        "1 tsp black peppercorns",
+        "1 tbsp mustard seeds",
+        "2 tsp cumin seeds",
+        "2 tsp fenugreek seeds",
+        "5  cloves",
+        "2  bay leaves",
+        "1 tsp ground cinnamon",
+        "1 tsp ground turmeric",
+        "1 and 1/2 tbsp paprika",
+        "1 tsp coconut sugar ((or regular sugar))",
+        "4  red chilis (seeds removed (or not, if you dare), chopped)",
+        "4 cloves garlic (chopped)",
+        "2 inches fresh ginger (peeled and minced)",
+        "2 tbsp tomato paste",
+        "1 and 1/2 tsp salt",
+        "1/4 cup lemon juice ((about 1 large lemon) (or red wine vinegar))"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1501,
+        "sha256": "c7e9468857d03dae"
+      },
+      "sha256_page": "abcfec438ccf662a"
+    },
+    {
+      "url": "https://www.onegreenplanet.org/vegan-recipe/chickpea-vindaloo/",
+      "site": "onegreenplanet.org",
+      "nom": "Chickpea Vindaloo [Vegan]",
+      "portions": "5-7",
+      "duree_preparation": null,
+      "duree_cuisson": "PT75M",
+      "ingredients": [
+        "2 cups dried chickpeas",
+        "5 cups water",
+        "1 1/2-2 cups diced potatoes",
+        "1 cup diced tomato",
+        "1 yellow or white onion, diced",
+        "1/2 teaspoon coconut oil",
+        "1 teaspoon cardamom pods",
+        "1 tablespoon coriander seeds",
+        "1 teaspoon black peppercorns",
+        "1 tablespoon mustard seeds",
+        "2 teaspoons cumin seeds",
+        "2 teaspoons fenugreek seeds",
+        "5 cloves",
+        "2 bay leaves",
+        "1 teaspoon ground cinnamon",
+        "1 teaspoon ground turmeric",
+        "1 1/2 tablespoon paprika",
+        "1 teaspoon coconut sugar",
+        "4 red chilis, seeds removed, chopped",
+        "4 garlic cloves, chopped",
+        "2-inch piece of ginger, peeled and minced",
+        "2 tablespoons tomato paste",
+        "1 1/2 teaspoons salt",
+        "1/4 cup lemon juice or red wine vinegar"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1349,
+        "sha256": "5460fd4e119bacaa"
+      },
+      "sha256_page": "3089dee7a7817b5c"
+    },
+    {
+      "url": "https://monkeyandmekitchenadventures.com/potato-vindaloo/",
+      "site": "monkeyandmekitchenadventures.com",
+      "nom": "Potato Vindaloo",
+      "portions": [
+        "5",
+        "5 - 6 Servings"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 cup yellow onions, fine dice",
+        "2 Tablespoons minced garlic",
+        "2 teaspoons minced ginger",
+        "2 Tablespoons tomato paste",
+        "8 oz. red skinned potatoes, unpeeled, small dice",
+        "8 oz. sweet potatoes, peeled, small diced",
+        "1 – [ 14.5 oz. can ] petite diced tomatoes",
+        "2 Tablespoons red wine vinegar",
+        "1 cup vegetable broth *",
+        "1 cup water (or broth)",
+        "1 Tablespoon white miso *",
+        "¼ teaspoon baking soda *",
+        "1 – [ 15.5 oz. can ] chickpeas, drained and rinsed",
+        "1 teaspoon onion powder",
+        "1 teaspoon garlic powder",
+        "2 Tablespoons dried minced onions",
+        "2 ½ teaspoons cumin (+/-)",
+        "pinch turmeric (+/-)",
+        "½ teaspoon dried ground mustard powder",
+        "½ teaspoon cinnamon (+/-)",
+        "1 teaspoon sweet paprika",
+        "1 teaspoon sea salt (+/-) *",
+        "¼ teaspoon black pepper",
+        "1 bay leaf",
+        "Pinch to ¼ teaspoon cayenne pepper (optional) *",
+        "3 cups chopped baby spinach (we added this in)",
+        "1 cup steamed veggies (of choice)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1146,
+        "sha256": "1235efc667b4d008"
+      },
+      "sha256_page": "1000d64ec601e769"
+    },
+    {
+      "url": "https://pickyeaterblog.com/vegetable-vindaloo/",
+      "site": "pickyeaterblog.com",
+      "nom": "Vegetable Vindaloo",
+      "portions": [
+        "6"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "1 tbsp coconut oil",
+        "1¼ cup vegetable broth",
+        "3  potatoes (diced)",
+        "½  cauliflower (cut into florets)",
+        "1 cup beans (chopped)",
+        "½  red bell pepper (diced)",
+        "1 tbsp tomato paste",
+        "28 oz canned diced tomatoes",
+        "1½ tsp garam masala",
+        "1  red onion (diced)",
+        "4 cloves garlic (minced)",
+        "2 tsp minced ginger",
+        "1 tsp dried red pepper flakes",
+        "2 tsp smoked paprika",
+        "1 tsp turmeric",
+        "2 tbsp apple cider vinegar",
+        "2 tsp coconut oil",
+        "¼ cup chopped cilantro",
+        "1½ tbsp ground coriander",
+        "3 tsp cumin",
+        "¼ tsp cardamom",
+        "½ tsp ground cinnamon",
+        "1 tsp salt"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 702,
+        "sha256": "d129f7669bd28c89"
+      },
+      "sha256_page": "c9234dff4d994f94"
+    }
+  ]
+}

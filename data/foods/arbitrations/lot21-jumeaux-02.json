@@ -1,0 +1,24 @@
+{
+  "lot": "lot21-jumeaux-02 — la seule forme que le lot de jumeaux végétariens n° 2 réclame : le seitan",
+  "contexte": "Ce lot n'ouvre qu'une forme, parce qu'une seule recette du lot de jumeaux n° 2 (data/recipes/batches/lot-jumeaux-02.json) en avait besoin : « Seitan alla cacciatora », jumeau végétarien de REAL-095 « Pollo alla cacciatora ». Les trois pages du dossier data/recipes/sources/seitan-alla-cacciatora.json pèsent toutes le seitan en grammes — 400 g pour quatre, 300 g pour trois, 500 g pour deux — et aucune forme du catalogue ne le portait. Le README dit ce qu'il faut faire dans ce cas : une absence réelle part en arbitrage, avec la raison du code choisi et de ceux qu'on écarte.\n\nLE CODE VIENT DU CLASSEUR 2020, celui dont le catalogue est réellement issu (data/sources/raw/ciqual_2020_FR_2020-07-07.xls.gz), comme le lot19 l'a établi. Il a aussi été vérifié dans les shards 2025 de data/foods/ciqual-reference/ (entrée CIQ-25598, « Seitan, préemballé », candidate canonique « Seitan ») : le code est le même dans les deux millésimes et le libellé n'a pas changé, il survit donc à la bascule.\n\nLES AUTRES FORMES DU LOT N'ONT RIEN RÉCLAMÉ. Le chou farci végétarien s'écrit avec « Lentille verte sèche, crue », « Champignon de Paris frais » et « Riz complet cru » ; le mafé végétarien avec « Pois chiche cuit, égoutté » ; le goulash de haricots avec « Haricot blanc cuit, égoutté » — toutes déjà employables. Les substituts que certaines pages emploient et que le catalogue n'a pas — millet, chapelure, ricotta (chou farci) ; tofu fumé, dés de soja réhydratés (goulash) ; protéine de soja texturée (pabellón, refusé) — ne sont PAS arbitrés ici : aucune recette écrite n'en dépend, ils descendent en variantes, et ouvrir une forme qu'aucune recette n'emploie serait une ligne de plus à maintenir pour rien.\n\nL'ORIGINE. Ciqual range le seitan en « viandes, œufs, poissons et assimilés / substituts de produits carnés », le même sous-groupe que le tofu, dont le lot21-origine-des-formes a montré qu'il fait compter une forme végétale comme de la viande. La table scripts/data/lib/origins.mjs déclare ce sous-groupe ambigu, et build-recipe-food-corpus.mjs ne lit les origines déclarées que dans data/foods/arbitrations/lot21-origine-des-formes.json — fichier qu'un chantier parallèle modifie en ce moment et que ce lot ne touche pas. La décision d'origine du seitan est donc écrite ICI, au même format que celles du lot21 (verdict « origine »), pour être reportée dans lot21-origine-des-formes.json au moment du versement ; tant qu'elle ne l'est pas, la reconstruction signalera « Seitan » comme forme d'origine inconnue employée par une recette publiable — c'est attendu, et c'est le signal qui rappelle de la reporter.",
+  "decisions": [
+    {
+      "cle": "seitan",
+      "forme": "Seitan",
+      "verdict": "mapper",
+      "alim_code": "25598",
+      "nom_ciqual": "Seitan, préemballé",
+      "confidence": "A",
+      "note": "Correspondance exacte : l'ANSES mesure le seitan préemballé pour lui-même. 134 kcal, P 20,6 / G 6,74 / L 2,5, fibres 0,9, sel 1,13 — macros complètes et toutes mesurées, énergie mesurée, aucune fermeture d'Atwater. Le libellé retenu est « Seitan » tout court, comme le catalogue écrit « Tofu ferme » et non « Tofu nature, préemballé » : c'est le mot du paquet et le mot des trois pages du dossier (« seitan », « seitan naturale »). Le seitan est du gluten de blé cuit : la recette qui l'emploie déclare l'allergène gluten, ce que la nutrition ne montre pas. ÉCARTÉS, et pourquoi : 25232 « Saucisse végétale au blé ou seitan, préemballé » et 25592 « Galette ou pavé au blé (seitan) et légumes, préemballé » sont des produits transformés qui portent un assaisonnement, une matière grasse et des légumes que le libellé ne détaille pas — ce n'est pas du seitan, c'est une charcuterie ou une galette qui en contient ; 20591 « Protéine de soja texturée, réhydratée » et 20914 « Escalope végétale ou steak à base de soja » sont un autre aliment (du soja, pas du blé), avec un autre profil (le 20591 monte à 20,4 g de protéines mais pour 7 g de glucides et 5,6 g de fibres, le 20914 porte 14,7 g de lipides) — les prendre pour le seitan aurait été un proxy silencieux sur l'ingrédient principal du plat, exactement ce que le validateur cherche à empêcher. Aucune conversion en pièces : le seitan se pèse, et les trois pages le pèsent."
+    },
+    {
+      "cle": "seitan",
+      "forme": "Seitan",
+      "verdict": "origine",
+      "origin": "vegetal",
+      "alim_code": "25598",
+      "nom_ciqual": "Seitan, préemballé",
+      "motif": "Gluten de blé cuit : végétal — Ciqual le range en « substituts de produits carnés », sous-groupe déclaré ambigu par origins.mjs, où la catégorie Myko « viandes » qui en découle compterait la forme comme de la viande, comme ce fut le cas du tofu. Décision écrite ici au format du lot21-origine-des-formes, à y reporter au versement (voir le contexte)."
+    }
+  ]
+}

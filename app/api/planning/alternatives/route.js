@@ -6,6 +6,7 @@ import { normalizeFoodForm } from '@/lib/domain/recipes/materializeRecipe'
 import { toGramsV2 } from '@/lib/domain/units'
 import { isMealSuitableRecipe, recipeDiversityProfile } from '@/lib/domain/planning/closedLoopPlanner'
 import { buildMealAlternatives } from '@/lib/domain/planning/mealAlternatives'
+import { normalizePlanIssues } from '@/lib/domain/planning/canonicalPlanPayload'
 import { buildPlanningHistory, buildRepetitionRules } from '@/lib/domain/planning/repetitionRules'
 import { buildHouseholdTasteProfile, isTasteForbidden } from '@/lib/domain/planning/tastePreferences'
 import { matchesBannedFood } from '@/lib/domain/planning/foodBanMatch'
@@ -37,10 +38,24 @@ function isEdible(recipe, { allergens, forbiddenForms, dislikedForms, diets, tas
   return true
 }
 
+const MEAL_TYPES = ['dejeuner', 'diner']
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
+
 /**
  * POST /api/planning/alternatives — cinq alternatives contextualisées pour un
  * créneau (§16). Lecture seule : rien n'est publié, rien n'est réservé.
- * L'utilisateur choisit, puis relance une génération ciblée sur ce créneau.
+ * L'utilisateur choisit, puis `POST /api/planning/generate-v3` applique ce
+ * choix — `chosen_recipes` — par la transaction de publication. Aucun autre
+ * chemin n'écrit le plan (§9.3 du plan : « zéro écriture dans les tables de
+ * planning hors publication atomique »).
+ *
+ * DÉSIGNER LE CRÉNEAU. `slot_key` reste accepté ; `meal_date` + `meal_type`
+ * l'est aussi, et c'est ce que les écrans envoient. Les repas servis à
+ * l'application viennent de `nutrition_plan_meals`, qui porte la date et la
+ * prise mais pas la clé de créneau : exiger `slot_key` obligeait chaque écran à
+ * recomposer `${date}-${prise}` à la main, c'est-à-dire à recopier un format
+ * défini ailleurs (`canonicalPlanPayload.js:55`). C'est la route, qui a les
+ * créneaux sous la main, qui fait la résolution.
  */
 export async function POST(request) {
   const { supabase, user, error: authError } = await authenticateRequest(request)
@@ -50,8 +65,14 @@ export async function POST(request) {
     const body = await request.json().catch(() => ({}))
     const importId = Number(body.import_id ?? body.importId) || null
     const slotKey = String(body.slot_key ?? body.slotKey ?? '').trim()
+    const mealDate = String(body.meal_date ?? body.mealDate ?? '').trim()
+    const mealType = String(body.meal_type ?? body.mealType ?? '').trim()
     if (!importId) return NextResponse.json({ error: 'import_id requis' }, { status: 400 })
-    if (!slotKey) return NextResponse.json({ error: 'slot_key requis' }, { status: 400 })
+    if (!slotKey && !(ISO_DATE.test(mealDate) && MEAL_TYPES.includes(mealType))) {
+      return NextResponse.json({
+        error: `slot_key requis, ou meal_date (AAAA-MM-JJ) et meal_type (${MEAL_TYPES.join(', ')})`,
+      }, { status: 400 })
+    }
 
     const { data: planImport, error: importError } = await supabase
       .from('nutrition_plan_imports')
@@ -81,8 +102,11 @@ export async function POST(request) {
       }))
       .sort((left, right) => left.date.localeCompare(right.date) || left.mealType.localeCompare(right.mealType))
 
-    const target = slots.find((slot) => slot.key === slotKey)
+    const target = slotKey
+      ? slots.find((slot) => slot.key === slotKey)
+      : slots.find((slot) => slot.date === mealDate && slot.mealType === mealType)
     if (!target) return NextResponse.json({ error: 'Créneau introuvable dans ce planning' }, { status: 404 })
+    const resolvedSlotKey = target.key
 
     const [membersResult, dietary, tasteRows, historyRows, lotRows] = await Promise.all([
       supabase.from('household_members').select('id, name, portion_multiplier, preferences')
@@ -103,6 +127,12 @@ export async function POST(request) {
 
     const members = membersResult.data || []
     const servings = Math.max(1, members.reduce((sum, member) => sum + (Number(member.portion_multiplier) || 1), 0))
+    // Second site d'appel du catalogue opérationnel. Comme la génération, il ne
+    // passe aucune borne : `listOperationalRecipes` pagine jusqu'à épuisement
+    // depuis 0a.3. Proposer cinq alternatives choisies parmi les cent premières
+    // recettes par ordre alphabétique de code n'était pas un choix, c'était le
+    // plafond de la RPC. Le test
+    // `tests/db/paginationCatalogueOperationnel.test.js` relit cet appel.
     const catalog = await listOperationalRecipes(supabase, { servings })
     const recipes = catalog.recipes.filter(isMealSuitableRecipe)
     const byCode = new Map(recipes.map((recipe) => [recipe.code, recipe]))
@@ -167,7 +197,7 @@ export async function POST(request) {
 
     const result = buildMealAlternatives({
       slots,
-      slotKey,
+      slotKey: resolvedSlotKey,
       candidates: recipes.filter((recipe) => isEdible(recipe, constraints)),
       inventoryLots,
       history,
@@ -177,7 +207,27 @@ export async function POST(request) {
       limitPerKind: 1,
     })
 
-    return NextResponse.json({ ok: true, ...result })
+    // LES CONSÉQUENCES SE LISENT EN FRANÇAIS, OU ELLES NE SE LISENT PAS.
+    // `repetitionViolations` ne rend qu'un code (`recipe_repeat_too_close`…) :
+    // affiché tel quel, il ne dit rien à personne, et l'exigence du §16 —
+    // « indiquer les conséquences » — ne serait tenue qu'en apparence. La
+    // traduction est celle de `normalizePlanIssues`, déjà employée par la
+    // publication : une seule table de phrases pour tout le planning.
+    const alternatives = (result.alternatives || []).map((alternative) => ({
+      ...alternative,
+      consequences: normalizePlanIssues(alternative.consequences || []),
+    }))
+
+    // `meal_date` et `meal_type` sont renvoyés tels que la base les porte : ce
+    // sont eux que l'écran repasse à `generate-v3` pour appliquer le choix, et
+    // les redériver côté écran ferait deux sources pour la même désignation.
+    return NextResponse.json({
+      ok: true,
+      ...result,
+      alternatives,
+      meal_date: target.date,
+      meal_type: target.mealType,
+    })
   } catch (error) {
     console.error('[Planning alternatives]', error)
     return NextResponse.json({ error: error.message || 'Alternatives indisponibles' }, { status: 500 })

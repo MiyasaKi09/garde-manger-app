@@ -1,0 +1,141 @@
+{
+  "dish": "Blanquette de champignons",
+  "slug": "blanquette-de-champignons",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_blanquette-de-dinde-aux-champignons_64478.aspx",
+      "site": "marmiton.org",
+      "nom": "Blanquette de dinde aux champignons pas chère et facile : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "800 g de blanquette de dinde",
+        "8 champignons frais",
+        "2 oignons",
+        "1 cuillère à soupe de farine",
+        "1 petit verre de vin blanc",
+        "1 tablette de bouillon de volaille",
+        "1 cuillère à soupe de persil",
+        "1 branche de thym"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 519,
+        "sha256": "0f749cf6256b52e4"
+      },
+      "sha256_page": "a72693d3d5525c26"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_blanquette-de-volaille-aux-champignons_34056.aspx",
+      "site": "marmiton.org",
+      "nom": "Blanquette de volaille aux champignons : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "600 g de blancs de poulet ou de dinde",
+        "200 g de champignons (frais si possible)",
+        "50 g de beurre",
+        "1 pot de crème fraîche",
+        "2 cuillères à soupe de farine",
+        "2 cuillères à soupe de fond de volaille déshydraté",
+        "1 citron",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 413,
+        "sha256": "f8c7e680e8e14a41"
+      },
+      "sha256_page": "c285a9f34d1a5580"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_blanquette-de-seiche-aux-champignons-frais_29777.aspx",
+      "site": "marmiton.org",
+      "nom": "Blanquette de seiche aux champignons frais : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "800 g de seiches",
+        "2 poireaux",
+        "6 carottes",
+        "1 l de vin blanc sec",
+        "huile d'olive",
+        "400 g de champignons de Paris frais",
+        "2 cuillères à soupe de farine"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 522,
+        "sha256": "2c2a985b92875ba9"
+      },
+      "sha256_page": "e4ec85330663bb28"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/stella-cuisine/recettes/blanquette-de-veau-aux-champignons-c63265fe-8715-479e-9e4f-a1b47ddb0581",
+      "site": "chefsimon.com",
+      "nom": "Blanquette de veau aux champignons",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "700 grammes de sauté de veau",
+        "1  oignon",
+        "2  carottes",
+        "1  blanc de poireau",
+        "2  oignons ciboule",
+        "2 cuillères à café de fond de veau",
+        "20 cl de vin blanc de cuisine",
+        "40 grammes de beurre",
+        "300 grammes de champignons ((ici, surgelés))",
+        "1/2  citron",
+        "2 jaunes d'oeufs",
+        "40 cl de crème fraîche épaisse",
+        "2 cuillères à café de farine",
+        "2 pincées de noix de muscade moulue",
+        "1 cube de bouillon de légumes",
+        "1 pincée de sel",
+        "1 pincée de poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 362,
+        "sha256": "0601571af538a897"
+      },
+      "sha256_page": "b3c8fa60a69e7a46"
+    },
+    {
+      "url": "https://www.750g.com/blanquette-de-veau-aux-champignons-r63067.htm",
+      "site": "750g.com",
+      "nom": "Blanquette de veau aux champignons",
+      "portions": "6 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT1M",
+      "ingredients": [
+        "1,2 kg de veau",
+        "400 g de champignons de Paris",
+        "2 carottes",
+        "1 poireau",
+        "1 oignon",
+        "1 citron",
+        "100 g de beurre",
+        "40 g de farine",
+        "10 cl de crème épaisse",
+        "1 bouquet garni",
+        "Sel ou sel fin",
+        "Poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 856,
+        "sha256": "923346967c7e3a21"
+      },
+      "sha256_page": "67c6dc3e9c772d01"
+    }
+  ]
+}

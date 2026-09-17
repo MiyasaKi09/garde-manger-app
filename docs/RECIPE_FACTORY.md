@@ -93,3 +93,57 @@ Aucune écriture Supabase depuis une branche non fusionnée. Ordre imposé par l
 4) charger les 8 recettes candidates (`r0-load.sql`). La publication F0 vient **plus tard**,
 après extension du corpus vers 30-50 recettes et revue.
 Nutrition des recettes via le calculateur déterministe + `toGramsV2` → `recipe_executions`.
+
+## La date de versement d'un lot (plan §5, phase 5)
+
+Un lot qui ne se voit pas ne sert à rien : la cause lente de départ chez les
+concurrents est le catalogue qui cesse de bouger. L'écran **« Nouveautés de la
+semaine »** (`app/recipes/page.js`, onglet *Nouveautés*, atteint depuis la bande
+de l'accueil) filtre sur la **date de versement** — le jour où une recette est
+entrée au catalogue.
+
+**Cette date n'est nulle part ailleurs.** Mesuré avant d'en poser une : le corpus
+n'a aucun champ de date, les fichiers de lot non plus, `recipe_versions.created_at`
+porte la date du CHARGEMENT (la même pour les 754), `published_at` est NULL sur
+les 754, et `ops.source_datasets.current_version` est une étiquette unique pour
+tout le catalogue. Un filtre sur `created_at` rendrait 754 « nouveautés ».
+
+### Ce qu'il faut faire en versant un lot
+
+1. **Écrire l'entrée au registre** `data/recipes/versements.json`, AVANT le
+   chargement :
+
+   ```json
+   {
+     "lot": "plats-complets-denses",
+     "verse_le": "2026-09-26",
+     "intention": "Lot 2 : plats complets ≥ 0,10 g/kcal (P4).",
+     "preuve": { "commit": "<sha du commit qui verse le lot au corpus>", "…": "…" },
+     "codes": ["DEN-001", "…"]
+   }
+   ```
+
+2. **Régénérer le chargeur** : `node scripts/data/recipes/build-corpus-v3.mjs`.
+   Il lit le registre et pose `culinary.recipe_versions.corpus_poured_on`. Une
+   recette absente du registre reste **NULL** — il n'existe aucun repli.
+3. **Rien d'autre.** Pas de migration à écrire pour un lot nouveau : le chargeur
+   suffit. La migration `20260919141000` n'existait que pour les 48 recettes
+   déjà en base avant que la colonne n'existe.
+4. La CI vérifie que la base porte exactement les codes du registre
+   (`supabase/tests/date_versement.sql`, rejoué sur la chaîne de publication ET
+   sur le chemin des migrations), et que le registre garde au moins 30 codes —
+   le seuil du plan.
+
+### Ce qu'on ne fait pas
+
+- **Dater rétroactivement.** 706 des 754 recettes sont entrées avant que ce
+  registre n'existe ; personne ne sait quel jour. Elles restent sans date, et
+  l'écran DIT combien il ne peut pas dater plutôt que de les faire passer pour
+  des nouveautés.
+- **Mettre la date dans le corpus.** Elle changerait le `content_hash` de chaque
+  recette touchée et ferait rougir `check-corpus-parity` contre une base déjà
+  chargée — pour une donnée qui n'appartient pas au contenu d'une recette mais à
+  son histoire d'entrée.
+- **La donner au planificateur.** `get_operational_recipe_catalog_v3` ne publie
+  pas ce champ : une recette ne doit pas être servie plus souvent parce qu'elle
+  est nouvelle. L'écran la lit, le solveur l'ignore.

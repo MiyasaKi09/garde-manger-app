@@ -1,0 +1,142 @@
+{
+  "dish": "Wok de tofu aux légumes",
+  "slug": "wok-de-tofu-aux-legumes",
+  "sources_count": 5,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_wok-de-legumes-au-tofu_348973.aspx",
+      "site": "marmiton.org",
+      "nom": "Wok de légumes au tofu : la meilleure recette",
+      "portions": "2 personne(s)",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "1 oignon",
+        "2 gousses d'ail",
+        "115 g de champignons",
+        "8 brocolis",
+        "2 carottes",
+        "2 cuillères à café de sauce soja",
+        "160 g de tofu"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 647,
+        "sha256": "13b13bca72912ef0"
+      },
+      "sha256_page": "3d77aa75c48b4d6c"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/vico-cuistot/recettes/wok-de-legumes-au-riz-complet-thai-et-au-tofu",
+      "site": "chefsimon.com",
+      "nom": "Wok de légumes au riz complet thaï et au tofu",
+      "portions": "3 personnes",
+      "duree_preparation": "PT00H20M",
+      "duree_cuisson": "PT00H15M",
+      "ingredients": [
+        "1 courgette",
+        "1 brocolis",
+        "1 oignon jaune",
+        "1 poignée de coriandre fraîche ciselée",
+        "2 cuillères à soupe d’huile d’olive",
+        "1 cuillère à café d’huile neutre",
+        "2 cuillères à soupe de sauce poisson",
+        "125g de tofu nature",
+        "1/2 bouillon cube",
+        "1 cuillère à soupe de graines de courge",
+        "1 cuillère à café de gingembre",
+        "1/2 jus de citron",
+        "150g de riz thaï complet (pesé cru)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "3c3ff8906f31a5b3"
+    },
+    {
+      "url": "https://www.lapetitecuisinedenat.com/2023/04/wok-de-legumes-croquants.html",
+      "site": "lapetitecuisinedenat.com",
+      "nom": "Wok de légumes croquants au tofu",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "250 gr tofu",
+        "300 gr mélange légume (chou-fleur, carotte, chou, )",
+        "quelques champignons noirs séchés",
+        "2  oignons frais et leur tige",
+        "1  gousse d'ail",
+        "1  cac gingembre frais rapé",
+        "huile de sésame + huile",
+        "Graines de sésame",
+        "2  cas sauce soja",
+        "4  cas sauce huitre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 14,
+        "signes": 866,
+        "sha256": "5b057d62b6ce6ab0"
+      },
+      "sha256_page": "80ad81bcd92e5a23"
+    },
+    {
+      "url": "https://prunay.pepiniere-bour.fr/recettes/wok-de-legumes-croquants-au-tofu-88.html",
+      "site": "prunay.pepiniere-bour.fr",
+      "nom": "Wok de l&eacute;gumes croquants au tofu",
+      "portions": "4",
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "200 g  de  tofu ferme",
+        "1   poivron rouge",
+        "1   poivron jaune",
+        "1   carotte",
+        "100 g  de  brocoli",
+        "100 g  de  pois mange-tout",
+        "2 cuill&egrave;res &agrave; soupe  de  sauce soja",
+        "1 cuill&egrave;re &agrave; soupe  de  huile de s&eacute;same",
+        "1   gousse d'ail",
+        "1 cm  de  gingembre frais",
+        "1 cuill&egrave;re &agrave; soupe  de  graines de s&eacute;same"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1106,
+        "sha256": "5748c8529d066d65"
+      },
+      "sha256_page": "b2012ec50678ec81"
+    },
+    {
+      "url": "https://www.mon-marche.fr/recette/le-wok-de-legumes-et-tofu-au-sesame",
+      "site": "mon-marche.fr",
+      "nom": "Le Wok de légumes et tofu au sésame",
+      "portions": "4",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "300 g Tofu",
+        "2 pc Carottes",
+        "1 pc Poivron rouge",
+        "1 pc Brocoli",
+        "2 cuillères à café Gingembre frais",
+        "1 tour de moulin Poivre",
+        "2 cuillères à soupe Huile de sésame",
+        "2 cuillères à soupe Graines de sésame",
+        "3 cuillères à soupe Sauce soja",
+        "240 g Riz"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 578,
+        "sha256": "bce488e24e705a44"
+      },
+      "sha256_page": "23861cbd6836c009"
+    }
+  ]
+}

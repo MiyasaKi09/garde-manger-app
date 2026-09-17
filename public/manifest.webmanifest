@@ -1,0 +1,26 @@
+{
+  "name": "Myko — garde-manger, cuisine, potager",
+  "short_name": "Myko",
+  "description": "Cultivez les connexions entre cuisine, garde-manger et potager : stock, semaine planifiée et liste de courses.",
+  "lang": "fr",
+  "dir": "ltr",
+  "id": "/",
+  "start_url": "/pantry",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F3EFE4",
+  "theme_color": "#F3EFE4",
+  "categories": ["food", "lifestyle", "productivity"],
+  "icons": [
+    { "src": "/icons/myko-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/myko-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/myko-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/myko-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Garde-manger", "short_name": "Stock", "url": "/pantry", "icons": [{ "src": "/icons/myko-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "La semaine", "short_name": "Semaine", "url": "/planning", "icons": [{ "src": "/icons/myko-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "La liste", "short_name": "Courses", "url": "/courses", "icons": [{ "src": "/icons/myko-192.png", "sizes": "192x192", "type": "image/png" }] }
+  ]
+}

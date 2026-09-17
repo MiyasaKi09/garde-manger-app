@@ -1,0 +1,179 @@
+{
+  "dish": "Mafé végétarien",
+  "slug": "mafe-vegetarien",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.bonduelle.fr/recette/r/mafe-vegetarien/frz0173",
+      "site": "bonduelle.fr",
+      "nom": "Mafé végétarien",
+      "portions": 6,
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "4 pommes de terre",
+        "1 patate douce",
+        "2 carottes",
+        "½ chou blanc",
+        "1 gousse d’ail",
+        "1 oignon",
+        "Huile d’arachide ou de tournesol",
+        "1 feuille de laurier",
+        "60 cl de bouillon de légumes",
+        "2 c. à soupe de concentré de tomate",
+        "4 c. à soupe de pâte d’arachide",
+        "Sel, poivre",
+        "Piments au choix",
+        "Riz pour servir"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 867,
+        "sha256": "96f677498b4c4b0a"
+      },
+      "sha256_page": "930830720c4feaf0"
+    },
+    {
+      "url": "https://lescommis.com/recettes/mafe-vegetarien-a-la-patate-douce/",
+      "site": "lescommis.com",
+      "nom": "Mafé Végétarien à la Patate Douce",
+      "portions": 4,
+      "duree_preparation": "PT0H15M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "800 g patate douce",
+        "6 tiges persil frais",
+        "400 g pulpe de tomate",
+        "300 g semoule de blé",
+        "60 g beurre de cacahuète",
+        "1 pièce oignon jaune",
+        "20 g gingembre frais",
+        "2 pièces ail",
+        "400 ml eau",
+        "4 c.s. huile d'olive",
+        "2 pincées sel & poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1139,
+        "sha256": "f1bd07076acf6b0d"
+      },
+      "sha256_page": "2c16587c0b1be3c7"
+    },
+    {
+      "url": "https://www.sabnpepper.com/mafe-vegetarien-une-recette-savoureuse/",
+      "site": "sabnpepper.com",
+      "nom": "Mafé végétarien",
+      "portions": [
+        "4",
+        "4 gourmands"
+      ],
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "3  carottes",
+        "3  patates douces oranges",
+        "1  patate douce blanche (ou 2 pommes de terre)",
+        "1  oignon",
+        "4  gousses d'ail",
+        "2  tomates ((ou 1 boîte de tomates concassées de 300 ml))",
+        "150 gr de concentré de tomate",
+        "1  bouillon cube",
+        "350 gr de pâte d'arachide ((ou de beurre de cacahuète sans sucre))",
+        "Persil",
+        "Sel, poivre",
+        "Piment ((facultatif))",
+        "Huile de coco"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 691,
+        "sha256": "a3068277f34462a6"
+      },
+      "sha256_page": "0bcf2dac2d3d2735"
+    },
+    {
+      "url": "https://www.recettesetcabas.com/recettes/4453-mafe-vegetarien",
+      "site": "recettesetcabas.com",
+      "nom": "Mafé végétarien",
+      "portions": [
+        "4",
+        "portion"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1/2 boîte de pois chiches BIO",
+        "200 g de riz BIO",
+        "1 morceau de gingembre BIO",
+        "1 oignons BIO",
+        "700g de carottes BIO",
+        "2cs de beurre de cacahuètes",
+        "1 citron vert"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "e89c048d6677700f"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_mafe-legumes_72484.aspx",
+      "site": "marmiton.org",
+      "nom": "Mafé légumes : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "2 patates douces",
+        "2 carottes (selon la taille)",
+        "1 aubergine",
+        "1 demi de chou",
+        "2 oignons",
+        "1 boîte de tomate",
+        "pâte d'arachide",
+        "purée de piment",
+        "huile",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 813,
+        "sha256": "f57150b681896341"
+      },
+      "sha256_page": "432c4538bd3a92d2"
+    },
+    {
+      "url": "https://menu-vegetarien.com/mafe/",
+      "site": "menu-vegetarien.com",
+      "nom": "Mafé",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "200 g riz complet",
+        "15 ml huile d'olive",
+        "1  oignon jaune (émincé)",
+        "2  gousse d'ail (écrasées)",
+        "1 càc flocons de piment rouge (à doser selon vos préférences)",
+        "1 càc cumin",
+        "2 càs concentré de tomates",
+        "800 g patate douce (coupé en cubes de 2cm)",
+        "100 g beurre de cacahuètes",
+        "1 l bouillon de légumes",
+        "100 g blettes (les feuilles émincées)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 630,
+        "sha256": "4661233f02a260d8"
+      },
+      "sha256_page": "af3d1a6fa3f27d36"
+    }
+  ]
+}

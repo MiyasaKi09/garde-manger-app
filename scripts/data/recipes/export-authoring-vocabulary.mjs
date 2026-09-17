@@ -78,6 +78,9 @@ for (const forme of catalog.forms) {
     nom: forme.canonical_name,
     normalise: forme.canonical_name_normalized,
     categorie: forme.category || null,
+    // L'origine déclarée (vegetal, animal:viande…) : c'est elle, et non la
+    // catégorie, qui dira au planificateur si la recette est végétarienne.
+    origine: forme.origin || 'inconnu',
     recettes_actuelles: usage.recettes,
     roles_observes: [...usage.roles].sort(),
   }

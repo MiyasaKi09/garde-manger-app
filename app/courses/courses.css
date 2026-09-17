@@ -235,3 +235,111 @@
 /* Bandeau de résolution cliquable (ouvre le panneau Aliments à confirmer) */
 .cou-resolution-btn { appearance: none; border: 0; font: inherit; text-align: left; cursor: pointer; width: 100%; }
 .cou-resolution-btn:hover { filter: brightness(0.97); }
+
+/* ── Les trois sorties de la liste (phase 0a bis, puis 3.5) ── */
+.cou-sorties { display: flex; align-self: flex-end; flex-wrap: wrap; gap: 6px; }
+
+/* Repli quand le presse-papiers n'est pas accessible : on montre le texte
+   plutôt que d'échouer en silence. */
+.cou-copy-overlay {
+  position: fixed; inset: 0; z-index: 1400;
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+  background: rgba(24, 28, 22, 0.45);
+}
+.cou-copy-panel {
+  display: flex; flex-direction: column; gap: 12px;
+  width: min(640px, 100%); max-height: 80vh; padding: 18px;
+  background: var(--paper); border: 1.5px solid var(--ink-1); border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(24, 28, 22, 0.3);
+}
+.cou-copy-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.cou-copy-title { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); }
+.cou-copy-close { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border: none; background: transparent; color: var(--ink-2); cursor: pointer; border-radius: 3px; }
+.cou-copy-close:hover { color: var(--ink-1); background: var(--surface-soft); }
+.cou-copy-msg { margin: 0; font-family: var(--font-text); font-size: 13px; line-height: 1.5; color: var(--ink-2); }
+.cou-copy-zone {
+  flex: 1 1 auto; min-height: 240px; resize: vertical;
+  font-family: var(--font-mono); font-size: 12px; line-height: 1.55; color: var(--ink-1);
+  background: var(--surface); border: 1px solid var(--line-strong); border-radius: 3px;
+  padding: 10px; outline: none; white-space: pre;
+}
+.cou-copy-zone:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+/* Le toast avait un état « erreur » mais pas d'état « réserve » : une copie
+   réussie dont quelques lignes sortent sans quantité n'est ni l'un ni l'autre. */
+.cou-toast.warn { background: var(--terracotta); color: #fff; }
+
+
+/* ════════════════════════════════════════════════════════════════════════════
+   SORTIE 3 — IMPRESSION, ET DONC PDF
+   ════════════════════════════════════════════════════════════════════════════
+
+   Le document imprimable est dans la page en permanence : `window.print()` est
+   synchrone et n'attendrait pas un rendu React déclenché par le clic. Il est
+   donc masqué à l'écran ici, et révélé par le bloc `@media print` plus bas.
+
+   Aucune bibliothèque PDF n'est employée. « Enregistrer en PDF » est une
+   destination de la boîte d'impression du navigateur, et elle part de cette
+   feuille : une bibliothèque aurait été une deuxième mise en page à tenir en
+   accord avec celle-ci, c'est-à-dire la divergence qu'on cherche à éviter. */
+
+.cou-print-doc { display: none; }
+
+@media print {
+  /* Ce qui n'est pas la liste ne s'imprime pas : en-tête fixé, papier peint,
+     toasts et panneaux en portail. Le `:has()` borne la règle à la page
+     Courses — la feuille reste chargée après une navigation cliente, et sans
+     cette borne on empêcherait d'imprimer les autres écrans. Un navigateur
+     sans `:has()` ignore cette seule règle : la liste sort quand même, précédée
+     du reste de la page. */
+  body:has(.courses-page) > *:not(.main) { display: none !important; }
+  .courses-page > *:not(.cou-print-doc) { display: none !important; }
+
+  .main { padding: 0 !important; }
+  .cou-print-doc { display: block !important; }
+
+  @page { margin: 14mm 12mm; }
+
+  .cou-print-doc {
+    font-family: var(--font-text, Georgia, serif);
+    color: #000; background: #fff;
+    font-size: 11pt; line-height: 1.45;
+  }
+
+  .cou-print-head { border-bottom: 1.5pt solid #000; padding-bottom: 4pt; margin-bottom: 10pt; }
+  .cou-print-title { font-size: 17pt; margin: 0; font-weight: 600; }
+  .cou-print-resume { margin: 2pt 0 0; font-size: 9pt; letter-spacing: 0.04em; text-transform: uppercase; }
+  .cou-print-vide { font-style: italic; }
+
+  /* Deux colonnes : une semaine tient sur une page plutôt que sur trois, et
+     c'est une feuille qu'on plie dans une poche. `break-inside` garde un rayon
+     entier du même côté quand il y tient. */
+  .cou-print-doc { columns: 2; column-gap: 10mm; }
+  .cou-print-rayon { break-inside: avoid; page-break-inside: avoid; margin: 0 0 8pt; }
+  .cou-print-head { column-span: all; }
+
+  .cou-print-rayon-nom {
+    font-size: 9pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    margin: 0 0 3pt; padding-bottom: 1.5pt; border-bottom: 0.5pt solid #666;
+  }
+  .cou-print-rayon-n { font-weight: 400; }
+
+  .cou-print-list { list-style: none; margin: 0; padding: 0; }
+  .cou-print-item {
+    display: flex; align-items: baseline; gap: 5pt;
+    padding: 1.5pt 0; break-inside: avoid; page-break-inside: avoid;
+  }
+
+  /* La case à cocher est dessinée, pas dépendante d'une police d'icônes : on
+     imprime souvent en noir et blanc, sur un pilote qui ne charge rien. */
+  .cou-print-case {
+    flex: 0 0 auto; width: 8pt; height: 8pt; border: 0.75pt solid #000;
+    font-size: 7pt; line-height: 8pt; text-align: center;
+  }
+  .cou-print-nom { flex: 1 1 auto; }
+  /* Une ligne déjà achetée reste imprimée : la feuille dit l'état de la liste,
+     elle ne la réécrit pas. */
+  .cou-print-item.achete .cou-print-nom { text-decoration: line-through; }
+  .cou-print-qte { flex: 0 0 auto; font-variant-numeric: tabular-nums; }
+  .cou-print-cond { flex: 0 0 auto; font-size: 8.5pt; }
+}

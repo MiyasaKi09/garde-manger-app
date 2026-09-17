@@ -1,0 +1,202 @@
+{
+  "dish": "Lentilles aux epinards",
+  "slug": "lentilles-aux-epinards",
+  "sources_count": 7,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_dahl-de-lentilles-corail-epinards-et-lait-de-coco_534224.aspx",
+      "site": "marmiton.org",
+      "nom": "Dahl de lentilles corail épinards et lait de coco : la meilleure recette",
+      "portions": "2 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "3 cuillères à soupe d'huile végétale",
+        "1 oignon",
+        "3 gousses d'ail",
+        "10 g de gingembre",
+        "1 piment rouge",
+        "1 cuillère à café de coriandre moulue",
+        "1 cuillère à café de cumin en grains",
+        "2 cuillères à café de curcuma moulu",
+        "1 cuillère à café de Graines de moutarde",
+        "400 g de lentilles corail",
+        "400 g de tomates en conserve",
+        "400 g de bouillon de légumes",
+        "200 g d'épinards jeunes pousses",
+        "400 ml de lait de coco",
+        "1 pincée de sel",
+        "300 g de farine T110"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1315,
+        "sha256": "5f2cf376d01653a4"
+      },
+      "sha256_page": "79b5a064f2444ec5"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_dal-epinards-et-lentilles_527981.aspx",
+      "site": "marmiton.org",
+      "nom": "Dal épinards et lentilles : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "300 g de lentilles corail",
+        "300 g d'épinards",
+        "200 ml de lait de coco",
+        "200 ml de lait de coco",
+        "600 ml de bouillon de légumes",
+        "1 cuillère à café de cumin",
+        "1 cuillère à café de gingembre",
+        "1 cuillère à café de garam masala",
+        "coriandre",
+        "sel et poivre",
+        "1 cuillère à soupe d'huile d'arachide",
+        "4 échalotes émincés",
+        "3 gousses d'ail",
+        "1 cuillère à café de gingembre moulu",
+        "1 pincée de piment",
+        "de cumin",
+        "1 cuillère à café de graine de moutarde"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 701,
+        "sha256": "8363055b94530b9a"
+      },
+      "sha256_page": "1d2fa239e494bc3d"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_soupe-de-lentilles-et-epinards_34486.aspx",
+      "site": "marmiton.org",
+      "nom": "Soupe de lentilles et épinards : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT0S",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "épinards en branche (frais, surgelés ou en conserve)",
+        "lentilles blondes",
+        "1 bouillon de volaille",
+        "curry",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 271,
+        "sha256": "b1ad3bf35d7b0144"
+      },
+      "sha256_page": "ff0db44835660847"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/la-cerise-sur-lemaillot/recettes/riz-lentilles-et-epinards-au-curry-coco",
+      "site": "chefsimon.com",
+      "nom": "Riz, lentilles et épinards au curry-coco",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "100 g de riz basmati ou 150g pour un plat complet",
+        "100 g de lentilles vertes ou 150g pour un plat complet",
+        "200 g d’épinards frais ou 300g pour un plat complet",
+        "1  oignon",
+        "10 cl de lait de coco ou 15cl pour un plat complet",
+        "1  cuillère à soupe d’huile de coco",
+        "2  cuillères à café de curry en poudre ou 3 pour un plat complet",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 155,
+        "sha256": "2d803eb833b44578"
+      },
+      "sha256_page": "6718b444ea625e13"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/cuisine-culinaire/recettes/soupe-de-lentilles-aux-epinards-et-citron",
+      "site": "chefsimon.com",
+      "nom": "Soupe de lentilles aux épinards et citron",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H05M",
+      "duree_cuisson": "PT00H20M",
+      "ingredients": [
+        "2 cuillerées à soupe d'huile d'olive",
+        "1 oignon moyen finement haché",
+        "250 g de lentilles",
+        "150 g de pousses d'épinards",
+        "1 cube de bouillon de poulet",
+        "2 gousses d'ail, dégermées",
+        "¼ tasse de feuilles de coriandre tassées",
+        "Sel et poivre",
+        "100 ml de jus de citron fraîchement pressé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "fa803d92f609f1ca"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/kilometre-0/recettes/lentilles-aux-haricots-blancs-epinards-et-lardons",
+      "site": "chefsimon.com",
+      "nom": "Lentilles aux haricots blancs, épinards et lardons",
+      "portions": "4 personnes",
+      "duree_preparation": "PT00H30M",
+      "duree_cuisson": "PT01H00M",
+      "ingredients": [
+        "200 g de lentilles",
+        "120 g de haricots blancs cuits",
+        "500 g d' épinards",
+        "150 g de lardons",
+        "1 morceau de chorizo",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "58c298d564fd5b39"
+    },
+    {
+      "url": "https://www.750g.com/polenta-vegetarienne-aux-lentilles-vertes-champignons-de-paris-et-epinards-r207189.htm",
+      "site": "750g.com",
+      "nom": "Polenta végétarienne aux lentilles vertes, champignons de Paris et épinards",
+      "portions": "4 personnes",
+      "duree_preparation": "PT1H",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "250 g de semoule  de maïs polenta bio biothentic",
+        "1 l d'eau",
+        "250 g de lentilles vertes  biothentic",
+        "1 l de bouillon de légumes",
+        "3 c. à s. d'huile d'olive",
+        "1 c. à s. de concentré de tomates",
+        "1 gousse d'ail",
+        "½ piment oiseau  (facultatif)",
+        "1 brin de romarin",
+        "2 pincées de sel ou sel fin",
+        "2 pincées de poivre noir",
+        "½ citron",
+        "80 g d'epinards  frais",
+        "500 g de champignons de Paris",
+        "1 gousse d'ail",
+        "½ piment oiseau  (facultatif)",
+        "2 pincées de sel ou sel fin",
+        "2 pincées de poivre noir",
+        "2 c. à s. de persil plat  haché",
+        "50 g de noisettes  biothentic",
+        "1 c. à s. de persil plat  haché"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 2144,
+        "sha256": "c3bc037545722507"
+      },
+      "sha256_page": "f90090de1461ae47"
+    }
+  ]
+}

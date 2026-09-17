@@ -1644,5 +1644,515 @@
     "baseline": null,
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260917090000_catalog_food_forms_549.sql",
+    "github_version": "20260917090000",
+    "name": "catalog_food_forms_549",
+    "sha256": "2b2408cd7b182d79babd4c7d74acc9751ced44f9a8d717ee341105a7c6e7bd0f",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917090000_catalog_food_forms_549_rollback.sql",
+    "github_version": "20260917090000",
+    "name": "catalog_food_forms_549_rollback",
+    "sha256": "9a4e3687c5d366fdb94671d8551971637e265b3089bfd89aead745fcf4f571c4",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917091000_corpus_v3_754_tranche_01.sql",
+    "github_version": "20260917091000",
+    "name": "corpus_v3_754_tranche_01",
+    "sha256": "c70b47b8eff7d793c502d0cb3ccae7bda51319162d3d0ef4fbc8d9c44985a910",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917091000_corpus_v3_754_tranche_01_rollback.sql",
+    "github_version": "20260917091000",
+    "name": "corpus_v3_754_tranche_01_rollback",
+    "sha256": "758cc94e3e82dd450f556123f9948abebc86b8a27c4e270d1bfd68dd22234c62",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917092000_corpus_v3_754_tranche_02.sql",
+    "github_version": "20260917092000",
+    "name": "corpus_v3_754_tranche_02",
+    "sha256": "65199f4284008b801a606bf4982452ce57f304ff04da20addeec07efee9f00db",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917092000_corpus_v3_754_tranche_02_rollback.sql",
+    "github_version": "20260917092000",
+    "name": "corpus_v3_754_tranche_02_rollback",
+    "sha256": "edeba9443fdb8874da6e8f05c7163728a5fc60fd784edea058a8dec195b8e91f",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917093000_corpus_v3_754_tranche_03.sql",
+    "github_version": "20260917093000",
+    "name": "corpus_v3_754_tranche_03",
+    "sha256": "e4c9fcfe9a6d3278804bd5104e11f6932c1c3a9ca05c5950e8fbd0d7273cb257",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917093000_corpus_v3_754_tranche_03_rollback.sql",
+    "github_version": "20260917093000",
+    "name": "corpus_v3_754_tranche_03_rollback",
+    "sha256": "b73d15c6c89cd678aec3c5940e53f77b6c239cf37aa5b790fc31b85ea713f638",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917094000_corpus_v3_754_tranche_04.sql",
+    "github_version": "20260917094000",
+    "name": "corpus_v3_754_tranche_04",
+    "sha256": "5e43246bb8846156525ff63885e6657f9ff0570bdc58bff03fd5920ba2a36473",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917094000_corpus_v3_754_tranche_04_rollback.sql",
+    "github_version": "20260917094000",
+    "name": "corpus_v3_754_tranche_04_rollback",
+    "sha256": "2130a44196914ca8c5f41ced3c9d5143fc724c32a83ff9f64f6006ee1897e75b",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917095000_corpus_v3_754_tranche_05.sql",
+    "github_version": "20260917095000",
+    "name": "corpus_v3_754_tranche_05",
+    "sha256": "51a7f129d89c4518152a608bc624d8a1f7a902cb98075b6f9084d8eedc69991e",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917095000_corpus_v3_754_tranche_05_rollback.sql",
+    "github_version": "20260917095000",
+    "name": "corpus_v3_754_tranche_05_rollback",
+    "sha256": "452c135c186c3d35c1cb85c7cbce85825cf86f71032f5c4bc3b860f471405749",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917100000_corpus_v3_754_tranche_06.sql",
+    "github_version": "20260917100000",
+    "name": "corpus_v3_754_tranche_06",
+    "sha256": "6b6b9737c9a2e3c3f263f337869884011accbb6df0badcf540b01ab9589cdc6c",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917100000_corpus_v3_754_tranche_06_rollback.sql",
+    "github_version": "20260917100000",
+    "name": "corpus_v3_754_tranche_06_rollback",
+    "sha256": "9e97a828f6053ac8aad700c54c5dfdb1b591cfec7316c45697e4ecd604610ae9",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917101000_corpus_v3_754_tranche_07.sql",
+    "github_version": "20260917101000",
+    "name": "corpus_v3_754_tranche_07",
+    "sha256": "e51e4c09ccb6ea33cc715d4447a9d14b998bde7d635d1c0aabd8b35537abf459",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917101000_corpus_v3_754_tranche_07_rollback.sql",
+    "github_version": "20260917101000",
+    "name": "corpus_v3_754_tranche_07_rollback",
+    "sha256": "ef298e7ce095c910be82184dedc8220d52cae8c04c17f3592b75702f89c4ce73",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917102000_corpus_v3_754_tranche_08.sql",
+    "github_version": "20260917102000",
+    "name": "corpus_v3_754_tranche_08",
+    "sha256": "0cd861d5756f2f32bbd9724728e0de42c46a6c6818aa51bd9a15c4f71381bd90",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917102000_corpus_v3_754_tranche_08_rollback.sql",
+    "github_version": "20260917102000",
+    "name": "corpus_v3_754_tranche_08_rollback",
+    "sha256": "30876420ae5ff06ec97b46c0f9075ef389f4dec312332b8e2a1f6996d2f7b875",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917103000_corpus_v3_754_tranche_09.sql",
+    "github_version": "20260917103000",
+    "name": "corpus_v3_754_tranche_09",
+    "sha256": "675ebcda93695da58614ab81c9963fe9ba5436ee8645a645957a92494fffcbff",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917103000_corpus_v3_754_tranche_09_rollback.sql",
+    "github_version": "20260917103000",
+    "name": "corpus_v3_754_tranche_09_rollback",
+    "sha256": "a6b9dff3938d8decb0838e81b3e9766f78d0d986dfd7f367d9071521aecb7a64",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917104000_corpus_v3_754_tranche_10.sql",
+    "github_version": "20260917104000",
+    "name": "corpus_v3_754_tranche_10",
+    "sha256": "2181ba67cfa11466ef7ea64f9e79484dd945eb00dbf49c57bc21c8941e5b693b",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917104000_corpus_v3_754_tranche_10_rollback.sql",
+    "github_version": "20260917104000",
+    "name": "corpus_v3_754_tranche_10_rollback",
+    "sha256": "8f5f04c30257782cf3cd8f875ce596e3f457b72f6d224c185469de0bf93cc572",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917110000_contrat_operationnel.sql",
+    "github_version": "20260917110000",
+    "name": "contrat_operationnel",
+    "sha256": "9344084087e6f4364a672ead9d7d9933790ae7548fe31bfcd7149cff27e70ba5",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "column",
+        "schema": "catalog",
+        "table": "food_forms",
+        "name": "origin"
+      },
+      {
+        "type": "column",
+        "schema": "catalog",
+        "table": "food_forms",
+        "name": "origin_source"
+      },
+      {
+        "type": "column",
+        "schema": "culinary",
+        "table": "recipe_versions",
+        "name": "conservation_profile"
+      },
+      {
+        "type": "function",
+        "schema": "culinary",
+        "name": "conservation_profile_contract"
+      }
+    ]
+  },
+  {
+    "file": "20260917110000_contrat_operationnel_rollback.sql",
+    "github_version": "20260917110000",
+    "name": "contrat_operationnel_rollback",
+    "sha256": "fc0656ca61eb8e411138cb998518a09c392e41fecce9caaa4ca419b98738e1ed",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917111000_contrat_operationnel_valeurs.sql",
+    "github_version": "20260917111000",
+    "name": "contrat_operationnel_valeurs",
+    "sha256": "4e2b0feaf24b7651e8202efe222015f1729950167b999115bd8e52c329c8daba",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917111000_contrat_operationnel_valeurs_rollback.sql",
+    "github_version": "20260917111000",
+    "name": "contrat_operationnel_valeurs_rollback",
+    "sha256": "a9a873a379601e14d119ac575b4daf68fd014b64575d83333acfb7490325b252",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917112000_pate_a_foncer_profil_exact.sql",
+    "github_version": "20260917112000",
+    "name": "pate_a_foncer_profil_exact",
+    "sha256": "b3e75f2032173ea964a196e8520fa7ec184edee6aa35f1dcb01efbff8700ea8e",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917112000_pate_a_foncer_profil_exact_rollback.sql",
+    "github_version": "20260917112000",
+    "name": "pate_a_foncer_profil_exact_rollback",
+    "sha256": "0aa5a3090bda298eceb64606501dacfe9e9229727aff0179282989a3728636d9",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917130000_meal_presence.sql",
+    "github_version": "20260917130000",
+    "name": "meal_presence",
+    "sha256": "75dbed2a13606ef1443d7b3c593f218e54b2b0c7f41dfd332a53f43d8213e111",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "meal_presence"
+      },
+      {
+        "type": "column",
+        "schema": "public",
+        "table": "meal_presence",
+        "name": "present"
+      },
+      {
+        "type": "index",
+        "schema": "public",
+        "table": "meal_presence",
+        "name": "uq_meal_presence_member_slot"
+      },
+      {
+        "type": "policy",
+        "schema": "public",
+        "table": "meal_presence",
+        "name": "meal_presence_select_own"
+      }
+    ]
+  },
+  {
+    "file": "20260917130000_meal_presence_rollback.sql",
+    "github_version": "20260917130000",
+    "name": "meal_presence_rollback",
+    "sha256": "ccdc30b5d4e3c2418e794e2052f8f60478f89b9a2d6bfa041205686e710e3a84",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260918090000_bases_partagees.sql",
+    "github_version": "20260918090000",
+    "name": "bases_partagees",
+    "sha256": "cd0ca2aeb0d2b641b55195050381033ddf1f9f02831c882621586c21f76f33fe",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260918090000_bases_partagees_rollback.sql",
+    "github_version": "20260918090000",
+    "name": "bases_partagees_rollback",
+    "sha256": "620897020f79c34c8e408fdeabe34dbda9eb792a96afab1a4088581d472fef2a",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260918120000_temps_session_constate.sql",
+    "github_version": "20260918120000",
+    "name": "temps_session_constate",
+    "sha256": "c233b046f7d32257c8d22edadd0e8a28a84497e3b1099fbc2f7ab03ac74a3e80",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "table",
+        "schema": "public",
+        "name": "cooking_session_times"
+      },
+      {
+        "type": "column",
+        "schema": "public",
+        "table": "cooking_session_times",
+        "name": "announced_active_minutes"
+      },
+      {
+        "type": "column",
+        "schema": "public",
+        "table": "cooking_session_times",
+        "name": "observed_active_minutes"
+      },
+      {
+        "type": "index",
+        "schema": "public",
+        "table": "cooking_session_times",
+        "name": "uq_cooking_session_times_session"
+      },
+      {
+        "type": "policy",
+        "schema": "public",
+        "table": "cooking_session_times",
+        "name": "cooking_session_times_select_own"
+      }
+    ]
+  },
+  {
+    "file": "20260918120000_temps_session_constate_rollback.sql",
+    "github_version": "20260918120000",
+    "name": "temps_session_constate_rollback",
+    "sha256": "f02bc08c43167711d40a0797ee86694038f64ec9829f5f1541b08db2c0fa9ff3",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260919140000_date_versement.sql",
+    "github_version": "20260919140000",
+    "name": "date_versement",
+    "sha256": "f0af516ac62c805c5eed352962fa78381302cb0ce9013a1abe69f44b01676cb2",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "column",
+        "schema": "culinary",
+        "table": "recipe_versions",
+        "name": "corpus_poured_on"
+      },
+      {
+        "type": "function",
+        "schema": "public",
+        "name": "get_recipe_pour_summary_v3"
+      }
+    ]
+  },
+  {
+    "file": "20260919140000_date_versement_rollback.sql",
+    "github_version": "20260919140000",
+    "name": "date_versement_rollback",
+    "sha256": "febc08a0e2d4246e4dd5578a2b4ac65dce335531e8f4f78d0424cc7aa921a4b8",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260919141000_date_versement_lot_jumeaux.sql",
+    "github_version": "20260919141000",
+    "name": "date_versement_lot_jumeaux",
+    "sha256": "cc908e51aa5d1aa7af572790f42a9269cadf881758a41f22220f6b503da4ad0d",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260919141000_date_versement_lot_jumeaux_rollback.sql",
+    "github_version": "20260919141000",
+    "name": "date_versement_lot_jumeaux_rollback",
+    "sha256": "5aebbec4aca8531ef9452067dd6c670aa6d7659b39067fb5b6146efedeb42cbb",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260919142000_date_versement_lot_jumeaux_13.sql",
+    "github_version": "20260919142000",
+    "name": "date_versement_lot_jumeaux_13",
+    "sha256": "8d8bd8d378bac8aa3e8199472302b653cf6c7b418828c080938cc2c97c41250e",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260919142000_date_versement_lot_jumeaux_13_rollback.sql",
+    "github_version": "20260919142000",
+    "name": "date_versement_lot_jumeaux_13_rollback",
+    "sha256": "f20a94b657a52d279414cc4e27319acf56a633577275cfa0815d728c256d8674",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260919150000_corpus_v3_lot_jumeaux_13.sql",
+    "github_version": "20260919150000",
+    "name": "corpus_v3_lot_jumeaux_13",
+    "sha256": "55c9514daa90550c5c0227a1d04c39c72c16fc24059d668cb42920759d1ef2fe",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260919150000_corpus_v3_lot_jumeaux_13_rollback.sql",
+    "github_version": "20260919150000",
+    "name": "corpus_v3_lot_jumeaux_13_rollback",
+    "sha256": "e579db2a199285e914159ea1f55dd268942bb0ce25503f6bf1aa720460b0f751",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

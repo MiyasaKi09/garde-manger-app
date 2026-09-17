@@ -1,0 +1,132 @@
+{
+  "dish": "Lentilles au tofu fumé",
+  "slug": "lentilles-au-tofu-fume",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://lacerisesurlemaillot.fr/cocotte-lentilles-tofu/",
+      "site": "lacerisesurlemaillot.fr",
+      "nom": "Cocotte de lentilles au tofu fumé",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "400 g de tofu fumé",
+        "200 g de lentilles vertes sèches",
+        "200 g de champignons de Paris",
+        "4  carottes",
+        "1  oignon",
+        "2  gousses d’ail",
+        "1  bouquet garni (ou 1 cuillère à café d’herbes de Provence)",
+        "1  cuillère à soupe de concentré de tomates",
+        "1  cuillère à soupe d’huile d’olive",
+        "1  litre d’eau",
+        "Persil frais ciselé (facultatif)",
+        "Sel (poivre)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 740,
+        "sha256": "c82a8e57853c737d"
+      },
+      "sha256_page": "79c92fec0ae4429a"
+    },
+    {
+      "url": "https://www.cuisine-alcaline.com/recette/lentilles-aux-legumes-et-tofu-fume/",
+      "site": "cuisine-alcaline.com",
+      "nom": "LENTILLES AUX LÉGUMES ET TOFU FUMÉ",
+      "portions": "6 portions",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "500 gr lentilles vertes",
+        "300 gr Carottes",
+        "300 gr navets",
+        "300 gr céleri branche",
+        "200 gr tofu fumé",
+        "6 càs huile d'olive",
+        "1  oignon",
+        "4 gousses ail",
+        "Sel - poivre",
+        "herbes aromatiques ((laurier, origan, thym...))"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1040,
+        "sha256": "6f2b657bacf8538d"
+      },
+      "sha256_page": "97590565d8a19f2a"
+    },
+    {
+      "url": "https://www.marie.cooking/vegetarian-petit-sale-lentils-carrots-stew/",
+      "site": "marie.cooking",
+      "nom": "Vegetarian 'Petit Salé' (lentils stew)",
+      "portions": null,
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "650 g cooked green lentils (you can also use uncooked lentils to cook in the recipe)",
+        "4  large carrots",
+        "1  onion (red or yellow, as you prefer)",
+        "1 clove of garlic",
+        "200 g smoked tofu",
+        "6  brown (or button mushrooms)",
+        "8 cl dry white wine (optional)",
+        "2  bay leaves",
+        "A sprig of  thyme",
+        "A sprig of  rosemary",
+        "salt & pepper",
+        "2 cloves optional",
+        "A dash of  olive oil",
+        "Vegetable cream (optional)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 896,
+        "sha256": "9b7416842f78bb8f"
+      },
+      "sha256_page": "99a078185a532204"
+    },
+    {
+      "url": "https://healthylalou.fr/2022/petit-sale/",
+      "site": "healthylalou.fr",
+      "nom": "Petit salé aux lentilles vegan",
+      "portions": [
+        "4",
+        "4 gourmand.es"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1  oignon",
+        "1  grosse gousse d'ail",
+        "1/2  potimarron",
+        "1  petit navet",
+        "1  carotte",
+        "1  petite patate douce",
+        "400g  pommes de terre petites",
+        "1  feuille de laurier",
+        "1  branche de romarin",
+        "2  clous de girofle",
+        "280 g lentilles vertes sèches",
+        "2 cas miso brun",
+        "20 cL vin blanc sec",
+        "80 cL eau",
+        "4 cas yaourt végétal non sucré",
+        "1  cas moutarde forte",
+        "1 cas moutarde ancienne",
+        "poivre noir"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 766,
+        "sha256": "abf5404062b5ab76"
+      },
+      "sha256_page": "4a2a06b52044a81f"
+    }
+  ]
+}

@@ -1,0 +1,648 @@
+{
+ "lot": "jumeaux-12",
+ "intention": "Douzième lot de jumeaux végétariens de même lignée (plan « planning parfait », chantier C2, conduit par la chaîne du chantier C6). Un jumeau est le MÊME PLAT que sa base carnée — même féculent, même technique, même rôle d'assiette, même composition hors protéine — dont la protéine animale est remplacée par une protéine végétale que les sources attestent, et dont « derived_from » porte le code du parent. C'est ce champ, et lui seul, qui dit au planificateur que Zoé mange le plat de Julien sans sa viande, et non un autre plat : la mesure du §2.2 du plan compte quatre substitutions demandées, quatre obtenues, quatre HORS lignée, dont deux boudins noirs servis comme « variante végétarienne » d'un pastitsio. Cinq jumeaux étaient visés, TROIS sont écrits, DEUX sont refusés — le premier faute de dossier, le second à la relecture adverse, après avoir été écrit et validé.\n\nLE REFUS, D'ABORD, parce que c'est le résultat le plus solide du lot. La « Salade lyonnaise au tofu fumé » demandée pour REAL-087 n'a pas de dossier : elle n'existe pas comme recette publiée. Le détail est dans « refuses » ; en un mot, aucune page au monde ne titre une salade lyonnaise au tofu fumé, et la seule salade lyonnaise végétarienne réellement publiée avec un balisage lisible est unique, sur un seul site, et remplace les lardons par des noix. Une source n'est pas un fait vérifié, c'est le choix d'un auteur. On ne l'écrit pas.\n\nLE SECOND REFUS EST VENU DE LA RELECTURE, et il porte sur une fiche qui existait : la « Fricassée de champignons à la crème et à la moutarde », JUM-124, jumeau visé de DEN-013, écrite, validée et chiffrée à 294 kcal et 9,1 g de protéines par part. Le motif complet est dans « refuses ». En un mot : la ligne qui décidait de tout — un kilo de champignons pour quatre, quand la médiane des cinq pages retenues est de 550 g — ne tenait que sur UNE page et UN site, celle qui sert la fricassée seule ; les quatre autres décrivent une garniture, l'une finissant par « servir avec une viande blanche ». Ramenée à sa médiane, la fiche devenait le parent moins sa volaille plus 50 g de champignons, c'est-à-dire une amputation et non un jumeau ; maintenue à un kilo, elle reposait pour sa ligne définissante sur le choix d'un seul auteur. Les deux issues étant fermées, la fiche sort du lot. Ce n'est pas l'absence de légumineuse qui la condamne — JUM-033, « Stroganoff de champignons », vit à 6,7 g de protéines par part et le dit —, c'est une quantité à source unique.\n\nLA MÉTHODE D'ARBITRAGE DU LOT, énoncée une fois et appliquée trois fois. On ne rejuge que les lignes que l'échange de protéine touche, plus celles que le dossier du jumeau chiffre de façon concordante. Tout le reste est hérité du parent, et chaque héritage est nommé à l'endroit où il joue, avec le chiffre du dossier en face pour qu'on puisse contester. La raison est arithmétique : rejuger une panure ou une vinaigrette sur deux pages reviendrait à remplacer une mesure par une plus faible.\n\nCE QU'ON FAIT DES SOURCES ÉCARTÉES. L'audit écarte une page dont le titre ne porte pas tous les mots du plat demandé. Le garde-fou est utile et il coûte : il écarte ici des pages qui décrivent exactement le plat sous un autre nom — « vegan avgolemono », « croque-monsieur aux épinards », « Louisiana-style vegan red beans and rice ». Elles restent au dossier avec leurs quantités et servent à confirmer une structure ou à compléter une médiane ; jamais à porter seules un chiffre. Chaque fois qu'une écartée pèse dans un calcul, la fiche le dit et dit pourquoi elle a été écartée.\n\nUN NOM DE DOSSIER A ÉTÉ REPRIS EN COURS DE ROUTE, et il faut le dire parce que c'est une manipulation du décompte si on ne l'explique pas. Le dossier « croque madame végétarien » ne rendait qu'une source solide, une page qui met une tranche de fromage entre deux tranches de pain. Renommé « croque madame aux épinards » — le nom que les pages portent réellement —, il rend deux sources sur deux sites. Le renommage n'ajoute aucune page : il cesse d'exiger d'un titre un mot que les auteurs n'écrivent pas, et les deux retenues sont végétariennes ligne par ligne, ce qui a été vérifié sur leurs listes et non déduit du titre. Un second renommage avait été fait de la même façon, de « fricassée de champignons à la crème » vers « fricassée de champignons » : le procédé était le bon et la relecture ne le conteste pas — il faisait passer le dossier d'une à cinq sources solides —, mais un dossier qui tient ne suffit pas si le plat qu'on en tire n'est plus le jumeau de sa base, et c'est là que cette fiche est tombée.\n\nCE QUE VÉGÉTARIEN VEUT DIRE ICI, dit une fois : aucune forme d'origine viande, volaille, poisson ou fruit de mer, et le bouillon en est le poste sensible — c'est le motif de quinze des vingt-deux fausses végétariennes du corpus. Aucun des trois parents ne portait pourtant de « Bouillon de volaille » en ingrédient : l'Avgolemono poche un poulet entier et fait sa soupe de ce jus, le poulet créole mouille à l'eau de cuisson des haricots. Retirer la volaille, c'est donc retirer le liquide du plat, et les deux fiches concernées le rendent en « Bouillon de légumes non salé », forme du catalogue et non proxy. Le fromage est accepté et la présure n'est pas jugée ici : le croque-madame aux épinards porte emmental et gruyère comme son parent, et le parmesan que propose une page écartée n'est pas écrit, non pour la présure mais parce qu'il est absent de la fiche parente. Vérification faite forme par forme au catalogue, les vingt-six formes du lot sont d'origine végétale, minérale, ou animale non carnée — l'œuf et les deux fromages du croque-madame.\n\nAUCUNE FORME NOUVELLE n'a été nécessaire : les trente-six lignes d'ingrédients de ce lot, soit vingt-six formes distinctes, se résolvent toutes sur des formes déjà employables du catalogue, à confiance B. Le fichier data/foods/arbitrations/lot21-jumeaux-12.json n'existe donc pas, et c'est un bon signe — un jumeau qui réclame une forme inédite est souvent un jumeau qui a changé de plat. Le seul arbitrage qui aurait pu être nécessaire, le « Tofu fumé » de la salade lyonnaise, tombe avec la recette qui le demandait.",
+ "refuses": [
+  {
+   "twin_family": "Salade lyonnaise au tofu fumé",
+   "parent_code": "REAL-087",
+   "parent_family": "Salade lyonnaise",
+   "reason": "Aucun dossier n'a pu être constitué : zéro source exploitable sur les six pages soumises au relevé, et le motif n'est pas une malchance de scraping, c'est que la recette demandée n'est pas publiée.\n\nCE QUI A ÉTÉ CHERCHÉ, dans l'ordre. Les cinq requêtes du plan ont été passées aux moteurs internes des trois sites de la chaîne : « salade lyonnaise végétarienne » rend deux adresses, toutes deux sur chefsimon et toutes deux du même auteur — deux versions d'une même rédaction, ce que la règle des deux sites refuse précisément ; « salade lyonnaise tofu fumé » et « salade lyonnaise sans lardons » ne rendent rien. Hors chaîne, six autres pages ont été soumises au relevé : le blog personnel du même auteur, une salade au tofu fumé « comme une salade au lard » qui est un autre plat (pommes de terre et scarole, pas de frisée, pas d'œuf poché), et deux salades au tofu fumé qui ne se réclament pas de Lyon. Aucune de ces pages ne publie de balisage Recipe lisible : le relevé rend zéro source. Un second essai sous le nom anglais, « vegetarian salade lyonnaise », a été fait comme la consigne le demande : il rend trois pages balisées, dont une seule est végétarienne — elle remplace les lardons par des noix grillées, pas par du tofu — et l'audit les écarte toutes les trois, le mot « vegetarian » ne figurant dans aucun titre.\n\nCE QUE CELA APPREND, et c'est plus utile qu'une recette. La salade lyonnaise au tofu fumé circule comme SUGGESTION dans la prose des sites — « on peut remplacer les lardons par du tofu fumé » — et jamais comme recette pesée. Une phrase de substitution n'est pas une version publiée : l'écrire reviendrait à faire dire à des sources ce qu'elles n'ont pas écrit, c'est-à-dire exactement la faute des quarante-sept recettes retirées. La seule version végétarienne réellement publiée du plat, chez forkinthekitchen.com, tient sur un site et remplace le lard par des noix ; la seule version francophone, chez un auteur unique publiant sur chefsimon et sur son propre blog, remplace le lard par des dés de comté. Deux protéines différentes, un site chacune : c'est le contraire d'un fait vérifié.\n\nCE QU'IL FAUDRAIT POUR ROUVRIR. Rien du côté du catalogue — le « Tofu fumé » qu'il aurait fallu arbitrer n'est plus demandé par personne, et l'arbitrer d'avance serait créer une forme pour une recette qui n'existe pas. Ce qu'il faudrait, c'est une deuxième page, sur un deuxième site, qui publie et pèse une salade lyonnaise sans lard. Deux noms restent à essayer dans un lot futur, tous deux attestés en prose mais pas encore en recette chiffrée : « salade lyonnaise aux champignons » et « salade lyonnaise au comté ». Tant qu'ils ne rendent pas deux dossiers sur deux sites, REAL-087 reste une lignée sans jumeau, et c'est un résultat, pas un échec."
+  },
+  {
+   "twin_family": "Fricassée de champignons à la crème et à la moutarde",
+   "parent_code": "DEN-013",
+   "parent_family": "Émincé de poulet aux champignons",
+   "reason": "Fiche écrite, validée et chiffrée (JUM-124, 294 kcal et 9,1 g de protéines par part), RETIRÉE À LA RELECTURE ADVERSE. Le dossier « fricassee-de-champignons » n'est pas en cause : sept pages relevées, cinq retenues sur quatre sites, arithmétique exacte ligne à ligne, aucune prose reprise. Ce qui ne tient pas est l'identité du plat.\n\nCE QUI MANQUE, D'ABORD. Un jumeau remplace la protéine animale de sa base par une protéine végétale que les sources attestent. Ici rien ne remplace les 500 g de blanc de poulet du parent : les champignons passent de 500 à 1 000 g, et le champignon n'est pas une légumineuse. Le précédent existe pourtant au corpus en cours — JUM-033, « Stroganoff de champignons », vit avec 6,7 g de protéines par part et le dit —, donc l'absence de légumineuse ne suffit pas à elle seule à refuser une fiche. Ce n'est pas sur ce motif que celle-ci tombe.\n\nCE QUI LA FAIT TOMBER EST UN CHIFFRE À UNE SEULE SOURCE. La ligne qui décide de tout est le poids des champignons, parce que c'est elle, et elle seule, qui sépare un plat d'une garniture. Les cinq pages retenues donnent 250, 100, 125, 150 et 137,5 g par personne : médiane 137,5, soit 550 g pour quatre. La fiche écrivait 1 000 g, c'est-à-dire la lecture d'UNE page — la « Fricassée de champignons à la crème » de marmiton —, sur UN site. L'arbitrage l'assumait et donnait sa raison : quatre des cinq pages décrivent une garniture, l'une finissant par « servir avec une viande blanche », et une médiane de garnitures ne peut pas dire ce que pèse un plat. La raison est juste, et c'est précisément ce qui condamne la fiche : si quatre pages sur cinq disent « garniture », alors le dossier atteste une garniture, et la seule lecture qui en fasse un plat principal est le choix d'un auteur. « Une seule version publiée n'est pas un fait vérifié » — c'est la règle fondatrice de la chaîne, et elle ne cesse pas de s'appliquer parce que le chiffre isolé est le chiffre commode.\n\nLES DEUX ISSUES SONT FERMÉES, et c'est ce qui rend le retrait nécessaire plutôt qu'opinable. Ramenée à sa médiane, 550 g pour quatre, la fiche devient le parent moins 500 g de volaille plus 50 g de champignons : plus rien ne prend la place de la protéine, l'assiette tombe sous 7 g de protéines, et ce n'est plus un jumeau mais une amputation. Le contraste avec JUM-033 est net : là, les champignons passaient de 260 à 450 g, soit les trois quarts en plus, ET c'était la médiane de six pages sur six sites. Maintenue à 1 000 g, la fiche repose sur une source unique pour la ligne qui la définit. Il n'y a pas de troisième lecture dans le dossier.\n\nCE QUE LE RETRAIT COÛTE, dit franchement. DEN-013 reste une lignée carnée sans jumeau, et la mesure du §2.2 gagne trois lignées au lieu de quatre. Servir à Zoé une assiette à 9,1 g de protéines pour 294 kcal — 0,031 g par kcal — pendant que Julien mange l'émincé n'aurait de toute façon pas été un gain : c'est la densité même que le §2.3 désigne comme la cause des 66 % de la cible protéique de Julien.\n\nCE QU'IL FAUDRAIT POUR ROUVRIR. Un dossier qui publie et pèse une fricassée de champignons portant une protéine végétale — lentilles, tofu fumé, pois chiches —, ou deux pages sur deux sites qui servent la fricassée à la crème comme plat et non comme garniture. Le dossier reste versionné sous data/recipes/sources/fricassee-de-champignons.json bien qu'aucune recette ne le cite : il est la preuve de la lecture et le point de départ de cette réouverture. Aucune forme n'est à arbitrer, les onze lignes de la fiche retirée étant toutes déjà au catalogue."
+  }
+ ],
+ "recipes": [
+  {
+   "code": "JUM-121",
+   "family": "Soupe avgolemono végétarienne",
+   "derived_from": "REAL-129",
+   "cuisine_origin": "Grèce",
+   "identity_level": "named_traditional_dish",
+   "category": "soupe complète",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 6,
+   "prep_minutes": 20,
+   "cook_minutes": 30,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:vegetarian-avgolemono-soup",
+    "liveeatlearn.com",
+    "sweetrecipeas.com",
+    "thefullhelping.com",
+    "connoisseurusveg.com",
+    "foodbymaria.com",
+    "gimmesomeoven.com"
+   ],
+   "description_courte": "L'avgolemono grec sans son poulet : bouillon de légumes, riz rond cuit jusqu'à l'amidon, pois chiches, et la même liaison d'œufs battus au jus de citron, montée hors du feu.",
+   "canonical_arbitration": "Six pages relevées, DEUX retenues par l'audit sur deux sites distincts — liveeatlearn.com et sweetrecipeas.com, les seules qui titrent « vegetarian avgolemono soup ». Les quatre autres sont écartées par une règle de titre et non par un jugement de qualité : thefullhelping, connoisseurusveg et foodbymaria titrent « vegan avgolemono », gimmesomeoven titre « lemon orzo chickpea soup ». Elles restent au dossier et servent aux médianes, ce que chaque ligne ci-dessous précise.\n\nUNE PAGE SORT DE TOUS LES CALCULS PAR PORTION, et il faut le dire avant les chiffres : sweetrecipeas ne déclare aucun nombre de convives. C'est l'une des deux sources solides, et elle atteste la structure — huit à douze tasses de bouillon sans volaille, du riz long, quatre œufs battus au jus de trois citrons, tempérés puis reversés — mais aucune de ses quantités ne se ramène à la personne. Les dénominateurs qui suivent sont donc de CINQ pages, jamais de six : liveeatlearn (4 parts), thefullhelping (6), connoisseurusveg (6), foodbymaria (4 à 5, comptée 4,5) et gimmesomeoven (8 à 10, comptée 9).\n\nCE QUE L'ÉCHANGE DE PROTÉINE TOUCHE, et rien d'autre n'est rejugé. LE BOUILLON, d'abord, qui est la ligne entière du plat. Le parent ne porte aucun bouillon en ingrédient : il poche un poulet de 1,4 kg dans de l'eau, filtre, et c'est ce jus qui fait la soupe. Retirer le poulet, ce n'est donc pas retirer une protéine, c'est retirer le liquide du plat, et il faut le rendre. Les cinq pages chiffrées donnent, ramenées à la personne, 350, 295,8, 276,7, 342,2 et 263,3 ml ; la médiane est 295,8 ml par personne, soit 1 775 ml pour six, qu'on écrit 1 800 ml. Bouillon de légumes non salé, jamais de volaille : c'est le motif de quinze des vingt-deux fausses végétariennes du corpus, et c'est ici qu'il se joue.\n\nLES POIS CHICHES, ensuite, et c'est le point où la fiche s'écarte de ce que la commande annonçait. La commande disait que l'œuf resterait seul protéine. Le dossier dit autre chose : trois des six pages portent des pois chiches, dont liveeatlearn, la source solide qui titre le plat et le sous-titre « Greek Lemon Chickpea Soup ». On les écrit, parce qu'une soupe dont on retire un poulet entier sans rien mettre à la place n'est plus le jumeau d'un plat de poulet, c'est une soupe au riz. Trois lectures, ramenées à la personne et toutes en poids égoutté : liveeatlearn met deux boîtes de 425 g non égouttées, soit environ 500 g de grains pour 4 parts — 125 g ; connoisseurusveg une boîte de 425 g égouttée, soit 250 g pour 6 — 41,7 g ; gimmesomeoven deux boîtes pour 9 — 55,6 g. Médiane 55,6 g par personne, soit 333,6 g pour six, qu'on écrit 330 g. Deux de ces trois lignes viennent d'écartées, et on le dit parce que c'est le calcul le plus chargé de la fiche.\n\nL'ŒUF est le seul chiffre du parent que la protéine oblige à rejuger, et de peu. Deux pages seulement gardent l'œuf et déclarent leurs parts : liveeatlearn, 3 œufs pour 4, soit 0,75 par personne ; gimmesomeoven, 4 pour 9, soit 0,44. La médiane est 0,6 œuf par personne, soit 3,6 œufs pour six. On monte à 4 œufs, et l'écart est assumé : chez le parent l'œuf ne faisait que lier une soupe déjà portée par un poulet, ici il porte la moitié de la protéine avec le pois chiche. Sweetrecipeas, la troisième page à œuf, en met quatre sans dire pour combien.\n\nLA BASE AROMATIQUE est rejugée pour une raison de méthode et non de goût. Chez le parent, carotte et oignon pochent avec le poulet et partent au filtre : ce sont des aromates de bouillon, on ne les mange pas. Ici il n'y a plus rien à filtrer, et les cinq pages font toutes la même chose — un soffritto de dés fondus à l'huile qui reste dans l'assiette. LA CAROTTE : 32, 20, 20, 42,2 et 20 g par personne, médiane 20, soit 120 g pour six, contre 200 g au parent. L'OIGNON : 27,5, 18,3, 18,3, 53,3 et 8,9 g, médiane 18,3, soit 109,8 g, qu'on écrit 110 g, contre 150 g au parent. LE CÉLERI est une entrée nouvelle, portée par quatre pages sur six : 25, 6,7, 13,3 et 22,2 g par personne, médiane 17,75, soit 106,5 g pour six, qu'on écrit 105 g. L'AIL, cinq pages sur six : 3,75, 1,67, 2,5, 2,22 et 2,78 g, médiane 2,5, soit 15 g. L'HUILE D'OLIVE, cinq pages sur six : 3,75, 5, 5, 6,7 et 1,67 ml, médiane 5 ml, soit 30 ml pour six — sans peau de volaille, rien ne graisse plus le fond de la casserole.\n\nCE QUI EST HÉRITÉ, ligne par ligne, avec le chiffre du dossier en face pour qu'on puisse contester. LE RIZ ROND (180 g) ne bouge pas : les cinq pages donnent 50, 22,5, 33,3, 38,9 et 22,2 g par personne, médiane 33,3, soit 200 g pour six — le parent est 10 % en dessous, à l'intérieur du bruit d'un dossier qui compte en tasses. On garde le grain rond du parent contre le long grain majoritaire du dossier, et c'est délibéré : un riz rond relâche plus d'amidon, et c'est cet amidon qui protège la liaison. LE JUS DE CITRON (100 ml) ne bouge pas non plus : 30, 10, 10, 40 et 13,3 ml par personne, médiane 13,3, soit 80 ml pour six ; le parent est à 16,7 ml par personne, au-dessus de la médiane et en dessous du maximum, et l'acidité n'est pas ce que l'échange de protéine regarde. L'ANETH (15 g) est le seul héritage franchement au-dessus du dossier — 1,5, 1,17, 1,33, 1,8 et 0,44 g par personne, médiane 1,33, soit 8 g pour six. On garde 15 g : c'est l'herbe signature du plat chez le parent, et la couper de moitié au motif que des blogs anglophones en mettent peu serait changer le plat par inadvertance. LE SEL (6 g) et LE POIVRE (2 g) sont ajoutés au parent, qui n'en portait aucun : les six pages assaisonnent, toutes au jugé, et le bouillon retenu est déclaré non salé.\n\nCE QUE LE DOSSIER FAIT ET QU'ON NE FAIT PAS. Trois des quatre écartées suppriment l'œuf et le remplacent par du miso, du tahini, de la levure maltée ou une crème de noix de cajou : c'est un plat vegan, un objectif différent, et l'œuf est précisément ce que le parent a d'identitaire. Gimmesomeoven remplace le riz par des orzo et ajoute des épinards : deux écarts de structure, descendus en variantes. Les feuilles de laurier de liveeatlearn, l'oignon nouveau de la même, le kala namak et le curcuma de connoisseurusveg — deux ingrédients dont l'unique fonction est d'imiter l'œuf qu'on a, ici, gardé — ne sont pas écrits.\n\nDURÉES. Cinq pages chiffrent la préparation, toutes à 15 minutes ; le parent en compte 25, dont le découpage et l'effilochage d'un poulet entier. On écrit 20 minutes, pour trois légumes taillés en petits dés et une liaison à monter. La cuisson : 25, 50, 25, 40 et 30 minutes, médiane 30. Le parent en comptait 90, dont 60 de pochage : c'est le seul endroit où ce jumeau est franchement plus rapide que sa base, et la raison est entière — il n'y a plus de poulet à pocher.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Même rôle que l'Avgolemono dont il dérive, et pour une raison qu'il faut vérifier plutôt que recopier : le parent est « complete » parce qu'une louche y réunit bouillon, riz et poulet. Ici la louche porte 30 g de riz sec, 55 g de pois chiches et deux tiers d'œuf par part, soit 12 g de protéines — moins que le parent, mais un féculent, une légumineuse et un œuf dans la même assiette. Rien à côté, comme chez le parent : les six pages du dossier servent ce plat seul."
+   },
+   "ingredients": [
+    {
+     "form": "Bouillon de légumes non salé",
+     "quantity": 1800,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Riz rond cru",
+     "quantity": 180,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Pois chiche cuit, égoutté",
+     "quantity": 330,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 4,
+     "unit": "u",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Jus de citron frais",
+     "quantity": 100,
+     "unit": "ml",
+     "role": "acidité",
+     "optional": false
+    },
+    {
+     "form": "Carotte crue",
+     "quantity": 120,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 110,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Céleri branche cru",
+     "quantity": 105,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 30,
+     "unit": "ml",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Aneth frais",
+     "quantity": 15,
+     "unit": "g",
+     "role": "finition",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 6,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Tailler la carotte, le céleri et l'oignon en dés d'un demi-centimètre, hacher l'ail. Chauffer l'huile d'olive dans un faitout et y faire fondre les trois légumes à feu moyen sept à huit minutes, en remuant, jusqu'à ce qu'ils s'assouplissent sans prendre la moindre couleur ; ajouter l'ail pour une minute de plus. Chez la version au poulet, ces mêmes légumes pochaient avec la volaille et finissaient au filtre : ils parfumaient un jus qu'on jetait. Ici rien ne sera filtré, ils restent dans l'assiette, et une coloration leur donnerait un fond grillé qui se battrait avec le citron."
+    },
+    {
+     "n": 2,
+     "instruction": "Verser le bouillon de légumes, poivrer, saler à moitié seulement, porter à frémissement puis jeter le riz en pluie. Cuire vingt minutes à couvert et à tout petit feu, jusqu'à ce qu'un grain s'écrase sans résistance entre deux doigts. On dépasse volontairement le point d'un riz d'accompagnement : c'est l'amidon relâché qui épaissira le bouillon et, surtout, qui protégera l'œuf de la coagulation au moment de la liaison."
+    },
+    {
+     "n": 3,
+     "instruction": "Rincer les pois chiches à l'eau froide et les égoutter, puis les verser dans le faitout cinq minutes avant la fin de la cuisson du riz, le temps de les réchauffer seulement. Le rinçage emporte la saumure de la conserve, qui salerait la soupe avant qu'on ait pu la goûter ; entrés plus tôt, les grains se déferaient et troubleraient un bouillon qui doit rester lisse."
+    },
+    {
+     "n": 4,
+     "instruction": "Pendant ce temps, casser les œufs dans un grand saladier et les battre au fouet avec le jus de citron, une minute pleine, jusqu'à ce que le mélange mousse et pâlisse. L'acide commence à dénaturer le blanc à froid, et c'est ce début de travail qui permettra ensuite à l'œuf d'encaisser la chaleur sans se prendre en filaments."
+    },
+    {
+     "n": 5,
+     "instruction": "Tempérer. Prélever une louche de bouillon brûlant et la verser sur les œufs battus en filet aussi mince que possible, sans jamais cesser de fouetter, puis recommencer avec une deuxième louche : le saladier doit devenir tiède au toucher. C'est l'étape entière du plat. Un œuf versé d'un coup dans une casserole chaude donne une soupe grumeleuse, et rien ne la rattrape — ni le mixeur, ni le tamis, qui retireraient la liaison en même temps que les grumeaux."
+    },
+    {
+     "n": 6,
+     "instruction": "Retirer le faitout du feu et attendre une minute que le frémissement cesse tout à fait, puis reverser la liaison en tournant lentement. Ne plus jamais faire bouillir : passé 85 °C l'œuf coagule et le velouté tombe d'un coup. Ajouter l'aneth ciselé hors du feu pour qu'il garde son parfum, rectifier le sel, le poivre et le citron, et servir tout de suite dans des assiettes creuses."
+    }
+   ],
+   "techniques": [
+    "suer",
+    "cuisson du riz",
+    "tempérage",
+    "liaison aux œufs",
+    "assaisonnement tardif"
+   ],
+   "variants": [
+    "Riz long à la place du riz rond, majoritaire dans le dossier (sweetrecipeas, thefullhelping) — la soupe est moins liée et les grains restent détachés",
+    "Orzo à la place du riz, 1 tasse pour huit à dix parts (gimmesomeoven, thefullhelping en repli)",
+    "Deux feuilles de laurier dans le bouillon et une demi-tasse d'oignon nouveau dans la base aromatique (liveeatlearn)",
+    "Deux poignées de pousses d'épinard fondues dans la soupe juste avant de servir (gimmesomeoven)",
+    "Version vegan sans œuf, la liaison étant faite d'une crème de noix de cajou mixée au bouillon, ou d'un mélange miso-tahini-levure maltée (connoisseurusveg, thefullhelping, foodbymaria) — ce n'est plus un avgolemono au sens du parent",
+    "Lanières de faux poulet effilochées ajoutées à la fin, pour rapprocher la soupe de sa version carnée (sweetrecipeas)",
+    "Persil plat à la place de l'aneth (foodbymaria)"
+   ],
+   "sensory": {
+    "profile": "tangy_creamy",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 4,
+     "bitter": 0,
+     "umami": 2,
+     "heat": 1,
+     "pungency": 2,
+     "richness": 3,
+     "freshness": 3,
+     "intensity": 4
+    },
+    "dominant_flavors": [
+     "acidulé",
+     "crémeux",
+     "aneth"
+    ],
+    "aroma_families": [
+     "citron",
+     "agrume",
+     "œuf",
+     "aneth",
+     "oignon_compoté",
+     "végétal cuit"
+    ],
+    "target_textures": [
+     "bouillon_velouté",
+     "riz_moelleux",
+     "pois chiche fondant"
+    ],
+    "signature_ingredients": [
+     "Riz rond cru",
+     "Œuf cru",
+     "Jus de citron frais",
+     "Pois chiche cuit, égoutté"
+    ],
+    "identity_guardrails": [
+     "La liaison se monte hors du feu et la soupe ne rebout jamais : c'est tout le plat, et l'erreur est irréversible",
+     "L'œuf est battu avec le jus de citron avant d'être tempéré, jamais versé seul dans le bouillon",
+     "Pas de crème : l'onctuosité vient de l'œuf et de l'amidon du riz, pas d'un produit laitier",
+     "Le bouillon est de légumes, jamais de volaille — c'est ce qui sépare ce jumeau de sa base carnée",
+     "Le riz cuit dans le bouillon lui-même et jusqu'à s'écraser : un riz al dente ne libère pas l'amidon qui protège la liaison"
+    ]
+   },
+   "conservation": "Se garde 2 jours au réfrigérateur en récipient fermé et se réchauffe à feu doux, sans jamais atteindre l'ébullition : passé 85 °C la liaison à l'œuf tranche et la soupe devient granuleuse. Aucune des six pages du dossier ne dit un mot de conservation — ce qui suit est donc ce que ce type de plat fait physiquement, et on l'annonce comme tel plutôt que de le prêter aux sources. La congélation est déconseillée, pour deux raisons qui s'ajoutent : l'œuf coagulé se sépare de son bouillon à la décongélation et donne une soupe caillée, et le riz, qui a déjà rendu tout son amidon, se délite en bouillie. Pour prendre de l'avance, s'arrêter à la fin de l'étape 3 : cette base de bouillon, riz et pois chiches se garde 3 jours au réfrigérateur ou 2 mois à -18 °C, et la liaison œuf-citron se monte à la minute, sur la soupe réchauffée puis retirée du feu.",
+   "allergens": [
+    "œuf",
+    "céleri"
+   ]
+  },
+  {
+   "code": "JUM-122",
+   "family": "Croque-madame aux épinards",
+   "derived_from": "SRC-011",
+   "cuisine_origin": "France",
+   "identity_level": "named_traditional_dish",
+   "category": "sandwich chaud",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 12,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:croque-madame-aux-epinards",
+    "lesfruitsetlegumesfrais.com",
+    "chefsimon.com",
+    "cuisine-facile.com",
+    "blog.pourdebon.com",
+    "recettesetcabas.com",
+    "fr.frije.com"
+   ],
+   "description_courte": "Le croque-madame sans jambon : des pousses d'épinard tombées à la poêle et pressées remplacent la tranche de charcuterie, entre deux couches d'emmental, sous le gruyère gratiné et l'œuf au plat.",
+   "canonical_arbitration": "Six pages relevées, DEUX retenues par l'audit sur deux sites distincts — lesfruitsetlegumesfrais.com et chefsimon.com. Les quatre écartées le sont sur le titre : recettesetcabas annonce « Croque madame végétarien, salade verte » et l'audit y lit une salade, fr.frije titre « Croque Madame végétarien » mais sans le mot épinards, blog.pourdebon et cuisine-facile titrent des croque-MONSIEUR. Toutes restent au dossier, et deux d'entre elles pèsent dans les calculs ci-dessous.\n\nPOURQUOI CE NOM, ET NON « CROQUE-MADAME VÉGÉTARIEN ». Le dossier a d'abord été monté sous ce second nom : il ne rendait qu'une source solide, une page qui met une tranche de fromage entre deux tranches de pain et un œuf dessus, c'est-à-dire à peu près rien. Sous « croque madame aux épinards », les mêmes pages rendent deux sources sur deux sites, et ce sont les deux qui décrivent réellement un plat. Le renommage n'ajoute aucune page ; il cesse d'exiger d'un titre un mot que les auteurs n'écrivent pas. Les deux retenues sont végétariennes ligne par ligne, ce qui a été vérifié sur leurs listes et non déduit de leur titre.\n\nPOURQUOI L'ÉPINARD ET NON LA TOMATE. Le lot 10, écrit en parallèle et pas encore versé, porte sous JUM-104 un « Croque-monsieur végétarien » dérivé de FR-023, où le jambon est remplacé par 320 g de tomate et 240 g de champignons — la formulation « le corpus porte déjà » a été corrigée à la relecture, la fiche n'y étant pas encore. Écrire ici la même substitution donnerait deux fiches que les graphes de diversité ne sauraient plus distinguer autrement que par un œuf. Le dossier tranche d'ailleurs dans le même sens : quatre des six pages garnissent d'épinards, et les deux solides le font toutes les deux.\n\nCE QUE L'ÉCHANGE DE PROTÉINE TOUCHE. L'ÉPINARD remplace les 160 g de jambon blanc du parent. Quatre pages en pèsent, mais dans DEUX ÉTATS qui ne se comparent pas — c'est exactement le piège de la fiche parente du côté des champignons, boîte contre frais. En frais : lesfruitsetlegumesfrais met 80 g de pousses pour 2 parts, soit 40 g par personne ; blog.pourdebon met deux poignées, environ 60 g, pour 4, soit 15 g. En cuit ou surgelé : cuisine-facile met 200 g d'épinards cuits pour 4, soit 50 g par personne, et chefsimon 160 g d'épinards en branches surgelés à la crème pour une seule part. On retient le frais, qui est l'état des pousses qu'on fait tomber à la poêle, et on retient 40 g par personne, soit 160 g pour quatre : c'est la lecture de la seule page qui titre exactement le plat et qui pèse un épinard frais. La seconde lecture de frais, 15 g, est écartée du choix et on dit pourquoi — c'est un croque-monsieur aux champignons où l'épinard vient en second, derrière 100 g de champignons. Ce n'est pas une médiane de deux valeurs, c'est un choix argumenté entre deux, et il fallait l'écrire ainsi.\n\nLE BEURRE est la seule autre ligne que l'échange oblige à rejuger, parce qu'il gagne un emploi : chez le parent il beurre le pain et graisse la poêle, ici il fait en plus tomber les épinards. Trois pages le pèsent : 10 g pour 2 chez lesfruitsetlegumesfrais, 70 g pour 4 chez blog.pourdebon, 40 g pour 4 chez cuisine-facile, soit 5, 17,5 et 10 g par personne. Médiane 10 g par personne, soit 40 g pour quatre, contre 30 g au parent.\n\nCE QUI EST HÉRITÉ, avec le chiffre du dossier en face. LE PAIN DE MIE (240 g) : les cinq pages qui montent un croque comptent toutes deux tranches par personne, exactement comme le parent — rien à rejuger. L'ŒUF (200 g, quatre pièces) : unanimité, un œuf par personne partout où il y en a un. LES DEUX FROMAGES (130 g d'emmental au cœur, 55 g de gruyère en couverture) sont l'héritage le plus franchement au-dessus du dossier, et on l'assume : les trois pages qui pèsent un fromage donnent 15 g par personne chez chefsimon, 37,5 chez cuisine-facile et 25 chez blog.pourdebon, médiane 25 g, soit 100 g pour quatre, quand le parent en porte 185 g. Le fromage n'est pas ce que l'échange de protéine regarde, et le couple emmental-gruyère dans deux rôles distincts est le résultat d'un dossier de huit pages sur la fiche parente : le remplacer par la médiane d'un dossier de trois reviendrait à échanger une mesure contre une plus faible. Il joue en outre ici un rôle que le jambon ne jouait pas — il scelle l'épinard, on y revient à l'étape 3. LE SEL (3 g) et LE POIVRE (2 g) sont repris tels quels, optionnels comme chez le parent.\n\nCE QUE LE DOSSIER FAIT ET QU'ON NE FAIT PAS. Chefsimon emploie un épinard surgelé DÉJÀ À LA CRÈME, cuisine-facile tartine une béchamel, recettesetcabas monte une crème au parmesan : trois façons d'apporter du liquide dans une mie qu'on veut sèche, et trois structures que le parent ne porte pas — sa garniture est un solide entre deux fromages. Elles descendent en variantes. Le PARMESAN de recettesetcabas n'est pas écrit, et le motif est de composition avant d'être de présure : il est absent de la fiche parente. Cuisine-facile pose un œuf DUR en tranches dans le croque et n'en met aucun sur le dessus : ce serait perdre le nom, l'œuf au plat posé dessus étant ce qui fait la madame. La cuisson intégralement au four de cuisine-facile n'est pas retenue non plus — elle existe déjà au corpus comme variante du parent, sous SRC-011-D1.\n\nDURÉES. Six pages chiffrent : 20, 5, 15, 5, 15 et 25 minutes de préparation, médiane 15, ce qui est aussi le chiffre du parent. Cuisson : 5, 22, 15, 3, 10 et 20 minutes, médiane 12,5, qu'on écrit 12 — deux de plus que le parent, qui sont exactement les deux minutes de poêle où l'épinard tombe.",
+   "plate": {
+    "role": "complete",
+    "accepts": [
+     "vegetables"
+    ],
+    "reason": "Même rôle que le Croque-madame dont il dérive : deux tranches de pain de mie, 46 g de fromage et un œuf par part réunissent féculent et protéine dans une seule assiette, et l'épinard remplace le jambon sans changer cet équilibre. Comme chez le parent, il ne manque qu'un cru — deux pages du dossier servent d'ailleurs le croque avec une salade verte à côté, et aucune ne lui ajoute de féculent."
+   },
+   "ingredients": [
+    {
+     "form": "Pain de mie",
+     "quantity": 240,
+     "unit": "g",
+     "role": "base féculente",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 200,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Épinard frais",
+     "quantity": 160,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Emmental râpé",
+     "quantity": 130,
+     "unit": "g",
+     "role": "fromage fondant",
+     "optional": false
+    },
+    {
+     "form": "Gruyère râpé",
+     "quantity": 55,
+     "unit": "g",
+     "role": "fromage de gratinage",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 40,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 3,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": true
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": true
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Laver les pousses d'épinard, les essorer, puis les jeter dans une poêle chaude avec 10 g du beurre et les retourner deux minutes à feu vif, le temps qu'elles s'affaissent. Saler, poivrer, débarrasser aussitôt dans une passoire et presser au dos d'une cuillère jusqu'à ce qu'il ne coule plus rien. Ce pressage est le geste qui décide de tout : l'épinard rend presque son poids en eau, et cette eau détremperait la mie exactement là où la tranche de jambon du plat d'origine, elle, ne rendait rien."
+    },
+    {
+     "n": 2,
+     "instruction": "Faire tiédir 20 g du beurre à feu très bas jusqu'à ce qu'il soit fondu mais encore blond, puis en passer une fine couche au pinceau sur une seule face de chacune des huit tranches de pain de mie. Un beurre noisette colorerait le pain avant que le cœur n'ait chauffé."
+    },
+    {
+     "n": 3,
+     "instruction": "Poser quatre tranches face beurrée contre la planche. Répartir sur chacune un quart de l'emmental, étaler dessus les épinards pressés en couche régulière jusqu'aux bords, puis couvrir du reste d'emmental. Refermer avec les quatre tranches restantes, face beurrée vers le haut, et tasser d'un coup de paume. L'épinard est pris entre deux couches de fromage et non posé sur le pain : en fondant, le fromage le scelle et fait barrage au peu d'humidité qu'il garde encore."
+    },
+    {
+     "n": 4,
+     "instruction": "Chauffer une grande poêle à feu moyen avec les 10 g de beurre restants, y coucher les quatre croques et compter environ trois minutes par face, en appuyant à la spatule pour que la chaleur gagne le cœur et fasse fondre l'emmental avant que la croûte ne fonce."
+    },
+    {
+     "n": 5,
+     "instruction": "Transférer les croques sur une plaque, les couvrir de gruyère et les glisser deux minutes sous le gril du four, juste le temps que la surface prenne une croûte dorée. Le gruyère est ici en couverture et l'emmental au cœur : le premier gratine et colore, le second file."
+    },
+    {
+     "n": 6,
+     "instruction": "Pendant ce temps, baisser le feu sous la poêle encore grasse, y casser les quatre œufs, assaisonner et couvrir une minute pour que le blanc prenne tandis que le jaune reste liquide. Poser un œuf sur chaque croque, ébarber les bords du blanc si besoin, et servir sans attendre : c'est le jaune percé qui fait la sauce du plat, et c'est lui qui sépare une madame d'un monsieur."
+    }
+   ],
+   "techniques": [
+    "saisie",
+    "gratinage",
+    "montage",
+    "égouttage"
+   ],
+   "variants": [
+    "Épinards en branches surgelés déjà à la crème, 160 g par part, à la place des pousses fraîches tombées à la poêle (chefsimon)",
+    "Une couche de béchamel tartinée sur la face intérieure du pain, 20 g par croque (cuisine-facile)",
+    "Tomates compotées avec un oignon nouveau à la place des épinards, 500 à 600 g pour quatre, liées d'une crème au parmesan (recettesetcabas)",
+    "Champignons de Paris poêlés avec les épinards, 100 g pour quatre (blog.pourdebon)",
+    "Tomme des Bauges en tranches à la place de l'emmental râpé (blog.pourdebon), ou fromage à pâte molle en lamelles fines (cuisine-facile)",
+    "Pain de mie complet ou aux céréales plutôt que blanc, proposé par trois pages (chefsimon, recettesetcabas, cuisine-facile)",
+    "Une pointe d'échalote en poudre et de piment d'Espelette dans la garniture (chefsimon)",
+    "Œufs de caille, trois par croque, à la place de l'œuf de poule (lesfruitsetlegumesfrais)"
+   ],
+   "sensory": {
+    "profile": "creamy_savory",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 1,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 5,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "fromage fondu",
+     "épinard",
+     "beurre doré"
+    ],
+    "aroma_families": [
+     "lactée",
+     "grillée",
+     "beurre",
+     "végétal cuit"
+    ],
+    "target_textures": [
+     "pain grillé croustillant",
+     "fromage fondant",
+     "jaune d'œuf coulant"
+    ],
+    "signature_ingredients": [
+     "Pain de mie",
+     "Œuf cru",
+     "Épinard frais",
+     "Emmental râpé"
+    ],
+    "identity_guardrails": [
+     "Sans l'œuf au plat posé sur le dessus, le plat redevient un croque-monsieur et perd son nom",
+     "Le pain de mie est la seule enveloppe admise : sur une baguette ou un pain de campagne, ce n'est plus un croque",
+     "Les épinards sont tombés puis pressés avant le montage — non pressés, ils détrempent la mie et le croque s'affaisse",
+     "L'épinard est pris entre deux couches de fromage, jamais posé à même le pain",
+     "Aucune charcuterie : c'est l'épinard qui tient la place du jambon, et c'est ce qui fait de cette fiche le jumeau de sa base"
+    ]
+   },
+   "conservation": "Se mange dans la minute : le jaune coulant ne supporte pas l'attente et la croûte ramollit en quelques minutes. Un croque monté et déjà garni se garde au maximum 24 heures à 4 °C et se réchauffe dix minutes à 180 °C, l'œuf devenant alors ferme — c'est la durée que porte la fiche parente et aucune page du dossier ne la contredit ni ne la confirme, aucune ne parlant de conservation. La congélation ne convient qu'au croque monté CRU et non coiffé de son œuf, jusqu'à 1 mois à -18 °C, à cuire sans décongélation préalable en comptant deux minutes de plus par face. Une précision propre à cette version, et qui vient de la physique du légume plutôt que des sources : les épinards doivent avoir été tombés et pressés AVANT congélation, sinon l'eau qu'ils gardent gèle en cristaux et ressort dans la mie à la cuisson.",
+   "allergens": [
+    "gluten",
+    "lait",
+    "œuf"
+   ]
+  },
+  {
+   "code": "JUM-123",
+   "family": "Haricots rouges et riz à la créole",
+   "derived_from": "PROT-008",
+   "cuisine_origin": "Louisiane",
+   "identity_level": "named_traditional_dish",
+   "category": "plat complet mijoté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 90,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:vegetarian-red-beans-and-rice",
+    "dossier:haricots-rouges-a-la-creole",
+    "acouplecooks.com",
+    "themountainkitchen.com",
+    "fromthecomfortofmybowl.com",
+    "marmiton.org",
+    "mangerbouger.fr"
+   ],
+   "description_courte": "Le plat louisianais des lundis, sans viande : haricots rouges mijotés sur la trinité poivron-céleri-oignon au paprika fumé, liés par leur propre amidon et servis sur du riz long.",
+   "canonical_arbitration": "DEUX DOSSIERS ont été montés pour cette fiche, et l'un des deux ne sert pas aux chiffres — il faut le dire d'emblée pour qu'on ne croie pas à un décompte gonflé. Le premier, « vegetarian red beans and rice », porte trois pages, DEUX retenues par l'audit sur deux sites distincts, acouplecooks.com et themountainkitchen.com, la troisième — fromthecomfortofmybowl — écartée parce qu'elle titre « Louisiana-style Vegan Red Beans and Rice » sans le mot « vegetarian ». C'est ce dossier-là qui porte tous les calculs. Le second, « haricots rouges à la créole », porte trois pages solides sur deux sites, deux marmiton et mangerbouger : il a été relevé, audité, lu, et il est écarté du calcul en bloc. La raison est une raison d'identité, et elle vaut d'être écrite. Ces trois pages décrivent des haricots rouges ANTILLAIS : gingembre pilé, curcuma, clous de girofle, piment des îles, aucune trace de trinité poivron-céleri-oignon ni de paprika fumé. Le parent, PROT-008, est louisianais. Deux cuisines créoles portent le même adjectif et ne partagent presque rien : rapprocher leurs quantités donnerait une moyenne qui ne décrirait aucun des deux plats. Le dossier reste cité parce qu'il a été lu et qu'il confirme un point de méthode — les trois pages écrasent une partie des grains pour lier —, jamais parce qu'il porterait un chiffre de cette fiche. L'une d'elles, au passage, met 100 g de lardons : elle serait de toute façon hors de portée d'un jumeau végétarien.\n\nCE QUE L'ÉCHANGE DE PROTÉINE TOUCHE, et il touche la structure, ce qui est le point délicat de cette fiche. Le parent est un poulet entier rôti POSÉ SUR un lit de haricots : la volaille apporte la protéine, les haricots tiennent lieu de féculent, et l'assiette est complète sans rien d'autre. Retirer le poulet laisse les haricots seuls dans les deux rôles à la fois. Les deux sources solides règlent la question de la même façon, qui est celle du plat nommé : elles ne doublent pas les haricots, elles ajoutent du RIZ. Cela mérite d'être souligné parce que la commande de ce lot annonçait des haricots doublés, et que le dossier dit non. Doubler aurait été une invention commode ; le riz est ce que les sources écrivent.\n\nLES HARICOTS, en équivalent sec pour être comparables. AcoupleCooks annonce 4 à 6 parts, comptées 5, et 3 tasses de grains cuits, soit environ 500 g, donc 100 g cuits par personne, soit 41,7 g secs à raison d'un facteur 2,4 entre sec et cuit. Themountainkitchen : deux boîtes égouttées, environ 500 g pour 4, soit 125 g cuits, soit 52,1 g secs. Fromthecomfortofmybowl, écartée mais seule à partir de grains secs : 1 tasse, environ 200 g pour 4, soit 50 g. Médiane 50 g secs par personne, soit 200 g pour quatre, contre 220 g au parent. On écrit 200 g : c'est la médiane du dossier du jumeau, et l'écart au parent, 9 %, tient dans le bruit d'un dossier qui compte en boîtes.\n\nLE RIZ est la ligne nouvelle. Deux pages le chiffrent : acouplecooks, 4 tasses de riz complet cuit, soit environ 800 g, soit 285 g secs pour 5 parts — 57 g par personne ; fromthecomfortofmybowl, 1 tasse de riz long, environ 200 g secs pour 4 — 50 g. Themountainkitchen écrit « du riz cuit pour servir » sans le peser et sort du calcul. Médiane 53,5 g par personne, soit 214 g pour quatre, qu'on écrit 200 g. Riz long blanc et non complet : c'est le grain de la seule page qui le nomme, et il reste détaché pour boire la sauce, ce qu'un riz complet fait moins bien.\n\nL'HUILE D'OLIVE est la seconde ligne nouvelle, et elle est une conséquence directe du départ du poulet. Chez le parent, la trinité sue À SEC dans la cocotte, sous des morceaux de volaille qui lui rendent leur graisse au four : sans volaille, elle n'a plus rien à boire et catche. Les trois pages en mettent : 6, 7,5 et 3,75 ml par personne, médiane 6 ml, soit 24 ml pour quatre, qu'on écrit 25 ml.\n\nLE BOUILLON DE LÉGUMES est la troisième. Le parent mouille d'« une louche » d'eau de cuisson des haricots, sans ligne pesée, et compte sur le jus du poulet pour le reste. Les trois pages versent un bouillon : 48, 88,8 et 295 ml par personne — la dernière cuit ses haricots secs dedans, ce qui explique l'écart. Médiane 88,8 ml par personne, soit 355 ml pour quatre, qu'on écrit 350 ml, non salé puisque la fiche déclare déjà 9 g de sel.\n\nCE QUI EST HÉRITÉ, avec le chiffre du dossier en face. LE POIVRON VERT (180 g) : 16, 37,5 et 37,5 g par personne, médiane 37,5, soit 150 g pour quatre ; le parent est à 45 g par personne, au-dessus, et on le garde — le poivron est la première lettre de la trinité et l'échange de protéine ne le regarde pas. LE CÉLERI (150 g) : 32, 15 et 20 g, médiane 20, soit 80 g ; héritage assumé, même motif, et l'écart est le plus large de la fiche. L'OIGNON (100 g) : 22, 37,5 et 27,5 g, médiane 27,5, soit 110 g — le parent est à 25 g par personne, la différence est nulle. L'AIL (14 g) : 4, 7,5 et 3,75 g, médiane 4, soit 16 g ; le parent est à 3,5 g par personne, on ne bouge pas. LA TOMATE PELÉE (250 g) n'est chiffrée que par une page, acouplecooks, à 80 g par personne, soit 320 g pour quatre : une seule lecture ne déplace pas un parent, on garde 250 g. LE PAPRIKA FUMÉ (5 g), LE PIMENT D'ESPELETTE (2 g), LE THYM FRAIS (6 g), LES DEUX FEUILLES DE LAURIER, LE SEL (9 g) et LE POIVRE (2 g) se transmettent tels quels : c'est l'assaisonnement identitaire du parent, les trois pages portent toutes du thym et du laurier, et deux des trois du paprika fumé.\n\nCE QUE LE DOSSIER FAIT ET QU'ON NE FAIT PAS. Les deux solides ajoutent une cuillerée d'origan séché : deux pages sur trois, c'est une majorité, et pourtant on ne l'écrit pas — les aromates du parent sont thym et laurier, l'échange de protéine ne les regarde pas, et un plat qui gagne une herbe à chaque jumeau finit par ne plus ressembler à sa base. L'origan descend en variante, comme le trait de vinaigre de deux pages sur trois, la carotte de themountainkitchen et les saucisses végétales de fromthecomfortofmybowl — ces dernières écartées pour une raison de fond : un simili-carné remplacerait la viande au lieu de refaire le plat sans elle, ce qui n'est pas ce qu'un jumeau doit être. Le poivron ROUGE de themountainkitchen n'est pas retenu contre le vert du parent, que la troisième page emploie aussi.\n\nDURÉES, ET UN PIÈGE DE MÉDIANE. Préparation : 10, 10 et 15 minutes, médiane 10 — mais aucune de ces pages ne compte le trempage ni le rinçage de haricots secs, deux d'entre elles ouvrant des boîtes. On écrit 20 minutes, le parent en comptant 25 dont le découpage d'un poulet entier. Cuisson : 35, 20 et 105 minutes, dont la médiane serait 35 — et cette médiane est fausse, parce qu'elle mêle deux objets qui ne se mesurent pas ensemble : les deux premières pages réchauffent des haricots déjà cuits, la troisième cuit des grains secs. C'est exactement l'erreur que la fiche parente du côté des champignons a dû corriger, boîte contre frais. Sur les seules cuissons de grains secs, la page du dossier donne 105 minutes et le parent 75 : on écrit 90.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Même rôle que le Poulet rôti à la créole et haricots rouges dont il dérive, mais l'équilibre intérieur change et il faut le dire : chez le parent, 300 g de poulet portaient la protéine et 55 g de haricots secs le féculent. Ici 50 g de haricots secs par part portent la protéine — environ 11 g — et 50 g de riz sec le féculent, avec 145 g de légumes comme chez le parent. L'assiette reste complète et ne demande rien à côté, ce que confirment les trois pages du dossier, qui servent toutes les haricots sur le riz et rien d'autre."
+   },
+   "ingredients": [
+    {
+     "form": "Haricot rouge sec",
+     "quantity": 200,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Riz long blanc cru",
+     "quantity": 200,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Poivron vert frais",
+     "quantity": 180,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Céleri branche cru",
+     "quantity": 150,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Tomate entière pelée en conserve",
+     "quantity": 250,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 100,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 14,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 25,
+     "unit": "ml",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Bouillon de légumes non salé",
+     "quantity": 350,
+     "unit": "ml",
+     "role": "mouillement",
+     "optional": false
+    },
+    {
+     "form": "Paprika fumé",
+     "quantity": 5,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Piment d'Espelette moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Thym frais",
+     "quantity": 6,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Feuille de laurier séchée",
+     "quantity": 2,
+     "unit": "u",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 9,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Couvrir les haricots rouges secs de trois fois leur volume d'eau froide et les oublier dix à douze heures, une nuit entière de préférence, puis jeter cette eau et les rincer. Le trempage n'est pas une commodité : sans lui la cuisson dépasse trois heures, et la peau se fend longtemps avant que le cœur du grain n'ait cédé."
+    },
+    {
+     "n": 2,
+     "instruction": "Mettre les grains dans une casserole, les couvrir largement d'eau froide sans sel avec une des deux feuilles de laurier et la moitié du thym, donner dix minutes de gros bouillons puis baisser à frémissement pour une heure environ, jusqu'à ce qu'un grain s'écrase sans effort. Ne saler qu'à mi-parcours : le sel du départ raffermit la peau et la cuisson n'en finit plus. Égoutter en gardant un bol de l'eau de cuisson, qui est chargée d'amidon."
+    },
+    {
+     "n": 3,
+     "instruction": "Chauffer l'huile d'olive dans une cocotte et y faire suer à feu moyen l'oignon, le poivron et le céleri taillés en petits dés — la trinité créole —, une dizaine de minutes, jusqu'à ce qu'ils rendent leur eau et s'affaissent sans colorer. La version au poulet fait suer cette même trinité à sec, sous des morceaux de volaille qui lui rendent leur graisse au four ; privée de volaille, elle n'a plus rien à boire, accroche et brûle. C'est la seule raison pour laquelle ce jumeau porte de l'huile là où sa base n'en portait pas."
+    },
+    {
+     "n": 4,
+     "instruction": "Ajouter l'ail haché, le paprika fumé et le piment, et remuer une trentaine de secondes seulement, casserole tirée sur le bord le plus doux du feu. Une épice en poudre brûle en quelques secondes et vire à l'amer, et c'est irrattrapable dans un plat qui va ensuite mijoter une demi-heure. Écraser les tomates pelées à la main au-dessus de la cocotte, ajouter le reste du thym et la seconde feuille de laurier."
+    },
+    {
+     "n": 5,
+     "instruction": "Verser les haricots égouttés, le bouillon de légumes et deux louches de leur eau de cuisson, saler, poivrer et laisser mijoter à découvert une vingtaine de minutes. Écraser à la cuillère un cinquième des grains contre la paroi de la cocotte : l'amidon qu'ils relâchent épaissit le jus et lie le plat. C'est ce qui remplace ici le jus du poulet rôti, qui liait la version carnée en tombant sur les haricots."
+    },
+    {
+     "n": 6,
+     "instruction": "Pendant ce temps, cuire le riz long à grande eau bouillante salée, l'égoutter et le laisser sécher deux minutes hors du feu, couvercle posé de travers. Répartir le riz dans les assiettes et verser les haricots par-dessus, sans mélanger : le grain doit rester distinct pour boire la sauce au fur et à mesure, et non se gorger d'un coup dans la cocotte. Retirer les feuilles de laurier avant de servir."
+    }
+   ],
+   "techniques": [
+    "trempage",
+    "mijotage",
+    "suer",
+    "écrasement",
+    "cuisson du riz"
+   ],
+   "variants": [
+    "Une cuillerée à café d'origan séché avec le paprika, présente dans les deux sources solides (acouplecooks, themountainkitchen)",
+    "Un trait de vinaigre en fin de cuisson — vinaigre de vin rouge ou de cidre — pour réveiller le mijoté (themountainkitchen, fromthecomfortofmybowl)",
+    "Une demi-tasse de carotte en dés dans la trinité, soit environ 60 g pour quatre (themountainkitchen)",
+    "Haricots rouges en conserve à la place des grains secs, deux boîtes égouttées pour quatre : la cuisson tombe à vingt minutes et le plat devient un plat de semaine (acouplecooks, themountainkitchen)",
+    "Riz complet à la place du riz long blanc (acouplecooks)",
+    "Saucisses végétales tranchées et colorées avant la trinité, quatre pour quatre parts (fromthecomfortofmybowl)",
+    "Deux cuillerées à soupe de mélange cajun tout prêt à la place du paprika fumé et du piment (fromthecomfortofmybowl)",
+    "Un filet de sauce piquante et du persil plat ciselé au service (acouplecooks, themountainkitchen)"
+   ],
+   "sensory": {
+    "profile": "smoky_sweet",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 2,
+     "bitter": 1,
+     "umami": 3,
+     "heat": 3,
+     "pungency": 3,
+     "richness": 2,
+     "freshness": 2,
+     "intensity": 4
+    },
+    "dominant_flavors": [
+     "paprika fumé",
+     "poivron",
+     "haricot rouge"
+    ],
+    "aroma_families": [
+     "paprika_fume",
+     "thym",
+     "poivron",
+     "celeri",
+     "oignon_compoté",
+     "laurier"
+    ],
+    "target_textures": [
+     "haricot fondant à peau intacte",
+     "sauce_épaisse",
+     "riz_moelleux"
+    ],
+    "signature_ingredients": [
+     "Haricot rouge sec",
+     "Riz long blanc cru",
+     "Paprika fumé",
+     "Poivron vert frais"
+    ],
+    "identity_guardrails": [
+     "La trinité oignon-poivron-céleri est la base du plat : sans elle, ce sont des haricots en sauce, pas un plat créole de Louisiane",
+     "Pas de roux : la liaison vient de l'amidon des grains écrasés contre la paroi, jamais d'une farine",
+     "Le mijotage se fait à découvert, pour que le jus réduise et enrobe au lieu de rester clair",
+     "Le riz reste à part et reçoit les haricots dans l'assiette : mélangé en cocotte, il se gorge et le plat devient une bouillie",
+     "Aucun bouillon de volaille ni aucune charcuterie fumée : le fumé vient du paprika, et c'est ce qui fait de cette fiche le jumeau de sa base"
+    ]
+   },
+   "conservation": "Se garde 3 à 4 jours au réfrigérateur, durée que le dossier écrit noir sur blanc chez acouplecooks et que la fiche parente confirme à 3 jours ; on retient 3 jours, la lecture basse des deux. Il est meilleur le lendemain, les haricots continuant d'absorber le jus, et il faut le détendre d'un peu de bouillon au réchauffage à feu doux. Il se congèle 3 mois à -18 °C, et bien : un haricot déjà cuit et un mijoté de légumes ne souffrent ni du gel ni du dégel, contrairement à une sauce liée à la crème. Congeler LES HARICOTS SEULS, sans le riz — cette précision ne vient pas des sources, qui n'en parlent pas, mais de ce que fait un grain de riz cuit au congélateur : il rend son eau et ressort farineux. Le riz se refait en dix minutes.",
+   "allergens": [
+    "céleri"
+   ]
+  }
+ ]
+}

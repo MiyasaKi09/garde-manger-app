@@ -1,0 +1,31 @@
+{
+  "dish": "Tofu au caramel",
+  "slug": "tofu-au-caramel",
+  "sources_count": 1,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.750g.com/tofu-facon-porc-au-caramel-r67135.htm",
+      "site": "750g.com",
+      "nom": "Tofu façon porc au caramel",
+      "portions": "2 personnes",
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "250 g de tofu ferme",
+        "50 g de sucre",
+        "1 cube de bouillon de légumes",
+        "2 c. à s. de sauce soja",
+        "1 c. à c. de gingembre (en poudre)",
+        "1 c. à c. de quatre épices",
+        "25 cl d'eau  + 25g pour le caramel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 752,
+        "sha256": "40d64d0f8ac5a5cb"
+      },
+      "sha256_page": "13fbe15672b9becc"
+    }
+  ]
+}

@@ -1,0 +1,1027 @@
+{
+  "lot": "cuisines",
+  "contexte": "Ce fichier tranche, un libellé à la fois, quelle CUISINE compte pour chaque valeur de cuisine_origin du corpus (data/recipes/corpus-v3.json). Il existe parce que P13 — au moins 8 cuisines distinctes sur trois semaines, aucune au-dessus de 40 % — n'est pas vérifiable mécaniquement tant que « France », « France / cuisine domestique internationale » et « France (Bourgogne) » comptent pour trois cuisines différentes. Le §5 livrable 3.1 de docs/PLAN_FINIR_MYKO.md le demande explicitement, et cite « Italie / cuisine domestique française » comme l'exemple du libellé composite à normaliser. MESURÉ LE 17 SEPTEMBRE 2026, AVANT D'ARBITRER, PUIS RECOMPTÉ APRÈS LE LOT « JUMEAUX 13 » DU MÊME JOUR, SUR LES 759 recettes du corpus : 103 libellés bruts distincts, 101 une fois repliés (deux cuisines sont écrites de deux manières). Le plus servi, « France », porte 322 recettes, et dix-huit AUTRES libellés bruts commencent par « France » — dix-sept clés repliées avec lui. Après arbitrage il reste 53 cuisines, et la France en rassemble 436 sur 759, soit 57,4 % du corpus. ERRATUM DE RELECTURE, laissé visible parce qu'effacer une correction coûte plus cher que la faute : la première rédaction de cet en-tête annonçait « 101 libellés bruts » et « treize autres libellés commencent par France » — les deux étaient faux, rien dans le dépôt ne les contredisait, et c'est tests/data/cuisinesArbitrage.test.js qui recompte désormais chacun de ces six nombres à chaque exécution. LE CHIFFRE QUI COMPTE POUR LA BASCULE DES PLAFONDS, ET IL FAUT DIRE SUR QUEL DÉNOMINATEUR. La part de la France vaut 57,4 % sur le CORPUS ENTIER (436 sur 759) et 72,1 % sur le VIVIER que le planificateur reçoit, c'est-à-dire les 573 recettes publiables (413 sur 573) — les 186 recettes non publiables sont nettement moins françaises, et confondre les deux dénominateurs ferait passer un vivier à 72 % pour un vivier à 58 %. C'est le SECOND qui pilote la bascule, parce que c'est lui que lib/domain/planning/weeklyBalance.js compte, à chaque génération, sur les recettes réellement présentées au faisceau. Le §5 du plan écrit « un vivier à 71,5 % France » sans décrire son protocole : le chiffre mesuré ici en est très proche, il n'est ni recopié ni contesté, et c'est la mesure refaite à chaque génération qui décide. Les deux disent la même chose pour la décision qui en dépend : la France est au-dessus de 50 % du vivier, donc les plafonds du livrable 3.1 restent des avertissements et n'écartent aucun plat.",
+  "regles": [
+    "R0 — IDENTITÉ DÉJÀ UNIQUE. Le libellé nomme une seule aire culinaire et ne porte aucun qualificatif de registre. Rien n'est fusionné : la décision consiste à constater qu'il n'y a rien à trancher, et à l'écrire pour que le libellé soit couvert.",
+    "R1 — LE QUALIFICATIF DE REGISTRE TOMBE. « cuisine domestique », « cuisine domestique internationale », « cuisine domestique adaptée », « cuisine de café parisienne », « d'inspiration asiatique » décrivent la MANIÈRE dont le plat est cuisiné, pas l'aire dont il vient. L'identité nommée l'emporte. C'est la règle qui fait de « Italie / cuisine domestique française » un plat italien, et de « France / cuisine domestique d'inspiration italienne » un plat français : elle joue dans les deux sens, y compris quand elle grossit la part de la France.",
+    "R2 — UNE RÉGION SE RAMÈNE À SON ÉTAT. Bourgogne, Bretagne, Lyon, Sichuan, Canton, Shanghai, Jiangsu, Latium, Campanie, Alentejo, Yucatán, Jalisco, Oaxaca, Veracruz, Bahia, Goa, Kerala, Louisiane, « Inde du Sud », « Inde du Nord », « Thaïlande du Nord ». Sans cette règle un État se cacherait derrière ses régions et P13 compterait huit cuisines là où il y en a une. Une seule exception, déclarée dans sa décision : le Cachemire, que deux États revendiquent et que le corpus n'attribue à aucun.",
+    "R3 — DEUX ÉTATS NOMMÉS : ON RETIENT LE PREMIER. « Mali/Sénégal », « Nigeria/Ghana », « Inde/Pakistan », « Pakistan/Inde », « Laos/Thaïlande », « Malaisie/Singapour », « États-Unis / Mexique », « Belgique et Flandre française », « Inde/Royaume-Uni ». C'est une CONVENTION DE COMPTAGE, pas un jugement sur l'origine d'un plat : elle est mécanique, elle est écrite, et elle se conteste. Sa conséquence visible est que le haleem est compté au Pakistan et le keema matar en Inde, parce que le corpus les a écrits dans cet ordre.",
+    "R4 — UN NOM D'ÉTAT QUI CONTIENT UN ESPACE N'EST PAS UN COMPOSITE. « Côte d'Ivoire », « Royaume-Uni », « Afrique du Sud », « Porto Rico ». Une règle de préfixe en ferait « Côte », « Royaume », « Afrique » et « Porto » ; une règle de séparateur y verrait deux aires. Ces quatre libellés sont la raison pour laquelle aucune normalisation automatique ne pouvait remplacer ce fichier.",
+    "R5 — UN LIBELLÉ NON ARBITRÉ N'EST PAS NORMALISÉ. lib/domain/recipes/cuisineArbitrage.js rend le libellé tel quel et le signale comme non arbitré ; tests/data/cuisinesArbitrage.test.js échoue dès qu'une recette du corpus porte un libellé absent d'ici. Deviner la normalisation d'un libellé nouveau reviendrait à fabriquer une cuisine que personne n'a relue, et un libellé deviné a la même tête qu'un libellé arbitré."
+  ],
+  "decisions": [
+    {
+      "libelle": "france",
+      "brut": [
+        "France"
+      ],
+      "recettes": 322,
+      "cuisine": "France",
+      "regle": "R0",
+      "motif": "Le libellé nomme une seule aire culinaire et ne porte aucun qualificatif de registre. Rien n'est fusionné ici : c'est le libellé de tête du corpus (322 recettes) et c'est lui qui rend P13 mesurable, puisque toutes les décisions R1 et R2 ci-dessous viennent s'y ajouter."
+    },
+    {
+      "libelle": "france cuisine domestique internationale",
+      "brut": [
+        "France / cuisine domestique internationale"
+      ],
+      "recettes": 83,
+      "cuisine": "France",
+      "regle": "R1",
+      "motif": "« cuisine domestique internationale » dit COMMENT le plat se cuisine chez soi, pas d'où il vient : bœuf bourguignon, blanquette de veau, hachis parmentier sont des plats français. C'est le plus gros regroupement du fichier (83 recettes) et celui qui fait toute la différence entre « France 54 % » et la part réelle."
+    },
+    {
+      "libelle": "italie",
+      "brut": [
+        "Italie"
+      ],
+      "recettes": 43,
+      "cuisine": "Italie",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : minestrone, ossobuco, saltimbocca."
+    },
+    {
+      "libelle": "japon",
+      "brut": [
+        "Japon"
+      ],
+      "recettes": 19,
+      "cuisine": "Japon",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : ramen shoyu, miso, tonkotsu."
+    },
+    {
+      "libelle": "espagne",
+      "brut": [
+        "Espagne"
+      ],
+      "recettes": 16,
+      "cuisine": "Espagne",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : tortilla española, croquetas, paella valenciana."
+    },
+    {
+      "libelle": "grece",
+      "brut": [
+        "Grèce"
+      ],
+      "recettes": 14,
+      "cuisine": "Grèce",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : spanakopita, dolmades, fasolada."
+    },
+    {
+      "libelle": "inde",
+      "brut": [
+        "Inde"
+      ],
+      "recettes": 13,
+      "cuisine": "Inde",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : butter chicken, tandoori, biryani hyderabadi."
+    },
+    {
+      "libelle": "coree",
+      "brut": [
+        "Corée"
+      ],
+      "recettes": 12,
+      "cuisine": "Corée",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : bibimbap, bulgogi, galbi gui."
+    },
+    {
+      "libelle": "maroc",
+      "brut": [
+        "Maroc"
+      ],
+      "recettes": 12,
+      "cuisine": "Maroc",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : tajines, harira."
+    },
+    {
+      "libelle": "mexique",
+      "brut": [
+        "Mexique"
+      ],
+      "recettes": 12,
+      "cuisine": "Mexique",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : tacos al pastor, carnitas, mole poblano."
+    },
+    {
+      "libelle": "france cuisine domestique",
+      "brut": [
+        "France / cuisine domestique",
+        "France — cuisine domestique"
+      ],
+      "recettes": 11,
+      "cuisine": "France",
+      "regle": "R1",
+      "motif": "Même cas que « France / cuisine domestique internationale » : cake jambon-olives, gratin de fruits de mer, lieu noir à la crème sont des plats français cuisinés à la maison."
+    },
+    {
+      "libelle": "levant",
+      "brut": [
+        "Levant"
+      ],
+      "recettes": 8,
+      "cuisine": "Levant",
+      "regle": "R0",
+      "motif": "Aire supranationale ÉCRITE TELLE QUELLE par le rédacteur (maqluba, mujaddara, fattoush, kibbeh). Lui attribuer un État — Liban, Syrie, Palestine, Jordanie — serait trancher à sa place une question qu'il a explicitement laissée ouverte ; le corpus range d'ailleurs à part « Palestine » (musakhan) et « Liban » (taboulé) quand il veut être précis."
+    },
+    {
+      "libelle": "russie",
+      "brut": [
+        "Russie"
+      ],
+      "recettes": 8,
+      "cuisine": "Russie",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : bœuf stroganoff, bortsch."
+    },
+    {
+      "libelle": "vietnam",
+      "brut": [
+        "Vietnam"
+      ],
+      "recettes": 8,
+      "cuisine": "Vietnam",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : phở bò, bún chả, bánh mì."
+    },
+    {
+      "libelle": "portugal",
+      "brut": [
+        "Portugal"
+      ],
+      "recettes": 7,
+      "cuisine": "Portugal",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : bacalhau à Brás, caldo verde, francesinha."
+    },
+    {
+      "libelle": "thailande",
+      "brut": [
+        "Thaïlande"
+      ],
+      "recettes": 7,
+      "cuisine": "Thaïlande",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : pad thaï, gaeng keow wan, massaman."
+    },
+    {
+      "libelle": "chine sichuan",
+      "brut": [
+        "Chine Sichuan"
+      ],
+      "recettes": 6,
+      "cuisine": "Chine",
+      "regle": "R2",
+      "motif": "Le Sichuan est une province chinoise. Mapo tofu, gong bao ji ding et dan dan noodles comptent pour la Chine, sinon un pays se cacherait derrière quatre de ses provinces et P13 compterait quatre cuisines là où il y en a une."
+    },
+    {
+      "libelle": "chine",
+      "brut": [
+        "Chine"
+      ],
+      "recettes": 5,
+      "cuisine": "Chine",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : fan qie chao dan, jiaozi, cong you bing."
+    },
+    {
+      "libelle": "chine canton",
+      "brut": [
+        "Chine Canton"
+      ],
+      "recettes": 4,
+      "cuisine": "Chine",
+      "regle": "R2",
+      "motif": "Le Guangdong est une province chinoise : clay pot rice, char siu, poisson vapeur comptent pour la Chine."
+    },
+    {
+      "libelle": "ethiopie",
+      "brut": [
+        "Éthiopie"
+      ],
+      "recettes": 4,
+      "cuisine": "Éthiopie",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : doro wat, misir wat, shiro wat."
+    },
+    {
+      "libelle": "hongrie",
+      "brut": [
+        "Hongrie"
+      ],
+      "recettes": 4,
+      "cuisine": "Hongrie",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : goulash, paprikash."
+    },
+    {
+      "libelle": "inde du sud",
+      "brut": [
+        "Inde du Sud"
+      ],
+      "recettes": 4,
+      "cuisine": "Inde",
+      "regle": "R2",
+      "motif": "« Inde du Sud » nomme une moitié de pays, pas un pays : sambar, rasam et masala dosa comptent pour l'Inde. Noter que le libellé contient un espace sans être un composite de deux aires — c'est exactement pourquoi aucune règle de préfixe ne peut remplacer ce fichier."
+    },
+    {
+      "libelle": "nigeria",
+      "brut": [
+        "Nigeria"
+      ],
+      "recettes": 4,
+      "cuisine": "Nigeria",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : jollof rice, suya, egusi soup."
+    },
+    {
+      "libelle": "perou",
+      "brut": [
+        "Pérou"
+      ],
+      "recettes": 4,
+      "cuisine": "Pérou",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : lomo saltado, ají de gallina, causa limeña."
+    },
+    {
+      "libelle": "taiwan",
+      "brut": [
+        "Taïwan"
+      ],
+      "recettes": 4,
+      "cuisine": "Taïwan",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : lu rou fan, beef noodle soup, san bei ji."
+    },
+    {
+      "libelle": "tex mex adapte en cuisine domestique francaise",
+      "brut": [
+        "Tex-Mex, adapté en cuisine domestique française"
+      ],
+      "recettes": 4,
+      "cuisine": "Tex-Mex",
+      "regle": "R1",
+      "motif": "Le qualificatif de registre tombe ; ce qui reste est « Tex-Mex », une cuisine à part entière — celle de la frontière texano-mexicaine — et non le Mexique. Le chili con carne n'est pas un plat mexicain, et le ranger sous Mexique gonflerait un libellé au détriment d'un autre."
+    },
+    {
+      "libelle": "turquie",
+      "brut": [
+        "Turquie"
+      ],
+      "recettes": 4,
+      "cuisine": "Turquie",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : imam bayıldı, menemen, mantı."
+    },
+    {
+      "libelle": "afrique du sud",
+      "brut": [
+        "Afrique du Sud"
+      ],
+      "recettes": 3,
+      "cuisine": "Afrique du Sud",
+      "regle": "R4",
+      "motif": "Nom d'État qui contient trois mots : bobotie, bunny chow, chakalaka. Découpé par une règle de préfixe, ce libellé donnerait « Afrique », qui n'est pas une cuisine."
+    },
+    {
+      "libelle": "argentine",
+      "brut": [
+        "Argentine"
+      ],
+      "recettes": 3,
+      "cuisine": "Argentine",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : empanadas, locro criollo."
+    },
+    {
+      "libelle": "bresil",
+      "brut": [
+        "Brésil"
+      ],
+      "recettes": 3,
+      "cuisine": "Brésil",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : feijoada, pão de queijo, coxinha."
+    },
+    {
+      "libelle": "chine cuisine domestique internationale",
+      "brut": [
+        "Chine / cuisine domestique internationale"
+      ],
+      "recettes": 4,
+      "cuisine": "Chine",
+      "regle": "R1",
+      "motif": "Le qualificatif de registre tombe : riz sauté, nouilles sautées, wok de légumes."
+    },
+    {
+      "libelle": "france cuisine domestique d inspiration asiatique",
+      "brut": [
+        "France / cuisine domestique d'inspiration asiatique"
+      ],
+      "recettes": 3,
+      "cuisine": "France",
+      "regle": "R1",
+      "motif": "« d'inspiration asiatique » qualifie l'inspiration, pas l'origine : poulet aux brocolis, wok de poulet, wok de tofu sont écrits France par le rédacteur et le restent. On ne déplace pas un plat vers la cuisine dont il s'inspire — ce serait décider à la place de qui l'a écrit, et ce serait commode puisque cela ferait baisser la part de la France."
+    },
+    {
+      "libelle": "inde cuisine domestique internationale",
+      "brut": [
+        "Inde / cuisine domestique internationale"
+      ],
+      "recettes": 3,
+      "cuisine": "Inde",
+      "regle": "R1",
+      "motif": "Le qualificatif de registre tombe : curry de légumes, poulet au curry et crevettes au curry restent des plats indiens tels que le corpus les range."
+    },
+    {
+      "libelle": "indonesie",
+      "brut": [
+        "Indonésie"
+      ],
+      "recettes": 3,
+      "cuisine": "Indonésie",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : nasi goreng, rendang, gado-gado."
+    },
+    {
+      "libelle": "jamaique",
+      "brut": [
+        "Jamaïque"
+      ],
+      "recettes": 3,
+      "cuisine": "Jamaïque",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : jerk chicken, curry goat, jerk tofu."
+    },
+    {
+      "libelle": "philippines",
+      "brut": [
+        "Philippines"
+      ],
+      "recettes": 3,
+      "cuisine": "Philippines",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : chicken adobo, sinigang, adobo de tofu."
+    },
+    {
+      "libelle": "pologne",
+      "brut": [
+        "Pologne"
+      ],
+      "recettes": 3,
+      "cuisine": "Pologne",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : pierogi ruskie, bigos, barszcz."
+    },
+    {
+      "libelle": "senegal",
+      "brut": [
+        "Sénégal"
+      ],
+      "recettes": 3,
+      "cuisine": "Sénégal",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : thiéboudienne, poulet yassa, yassa de tofu."
+    },
+    {
+      "libelle": "algerie",
+      "brut": [
+        "Algérie"
+      ],
+      "recettes": 2,
+      "cuisine": "Algérie",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : chorba algérienne, chorba végétarienne."
+    },
+    {
+      "libelle": "allemagne",
+      "brut": [
+        "Allemagne"
+      ],
+      "recettes": 2,
+      "cuisine": "Allemagne",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : sauerbraten, rinderrouladen."
+    },
+    {
+      "libelle": "belgique et flandre francaise",
+      "brut": [
+        "Belgique et Flandre française"
+      ],
+      "recettes": 2,
+      "cuisine": "Belgique",
+      "regle": "R3",
+      "motif": "Deux aires nommées sans être départagées, pour la carbonade flamande et son jumeau végétarien. La convention R3 retient la PREMIÈRE nommée. Ce n'est pas un jugement sur l'origine du plat : c'est une règle de comptage, et elle est écrite ici pour qu'on puisse la contester."
+    },
+    {
+      "libelle": "chine shanghai",
+      "brut": [
+        "Chine Shanghai"
+      ],
+      "recettes": 2,
+      "cuisine": "Chine",
+      "regle": "R2",
+      "motif": "Shanghai est une municipalité chinoise : hong shao rou, xiaolongbao."
+    },
+    {
+      "libelle": "etats unis mexique",
+      "brut": [
+        "États-Unis / Mexique"
+      ],
+      "recettes": 2,
+      "cuisine": "États-Unis",
+      "regle": "R3",
+      "motif": "Deux États nommés pour la salade César et son jumeau aux pois chiches. R3 retient le premier nommé — étant entendu que la salade César est née à Tijuana, ce que le corpus signale en nommant les deux."
+    },
+    {
+      "libelle": "france bourgogne",
+      "brut": [
+        "France (Bourgogne)",
+        "France — Bourgogne"
+      ],
+      "recettes": 2,
+      "cuisine": "France",
+      "regle": "R2",
+      "motif": "La Bourgogne est une région française : gougères, filet mignon à la moutarde et lentilles."
+    },
+    {
+      "libelle": "france bretagne",
+      "brut": [
+        "France (Bretagne)"
+      ],
+      "recettes": 2,
+      "cuisine": "France",
+      "regle": "R2",
+      "motif": "La Bretagne est une région française : galette complète, galette de sarrasin."
+    },
+    {
+      "libelle": "france cuisine de cafe parisienne",
+      "brut": [
+        "France — cuisine de café parisienne"
+      ],
+      "recettes": 2,
+      "cuisine": "France",
+      "regle": "R1",
+      "motif": "« cuisine de café parisienne » est un registre, pas un pays : croque-monsieur et croque-monsieur végétarien."
+    },
+    {
+      "libelle": "france sud ouest",
+      "brut": [
+        "France (Sud-Ouest)"
+      ],
+      "recettes": 2,
+      "cuisine": "France",
+      "regle": "R2",
+      "motif": "Le Sud-Ouest est une région française : parmentier de canard, parmentier de lentilles."
+    },
+    {
+      "libelle": "ghana",
+      "brut": [
+        "Ghana"
+      ],
+      "recettes": 2,
+      "cuisine": "Ghana",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : kelewele, waakye."
+    },
+    {
+      "libelle": "goa",
+      "brut": [
+        "Goa"
+      ],
+      "recettes": 2,
+      "cuisine": "Inde",
+      "regle": "R2",
+      "motif": "Goa est un État de l'Union indienne : le vindaloo de porc et son jumeau aux pois chiches comptent pour l'Inde. Le libellé ne nomme pas l'Inde, et c'est bien pourquoi il fallait l'arbitrer à la main."
+    },
+    {
+      "libelle": "inde du nord",
+      "brut": [
+        "Inde du Nord"
+      ],
+      "recettes": 2,
+      "cuisine": "Inde",
+      "regle": "R2",
+      "motif": "« Inde du Nord » nomme une moitié de pays : murgh tandoori et dal palak, paneer tikka et dal palak comptent pour l'Inde."
+    },
+    {
+      "libelle": "italie cuisine domestique",
+      "brut": [
+        "Italie / cuisine domestique"
+      ],
+      "recettes": 2,
+      "cuisine": "Italie",
+      "regle": "R1",
+      "motif": "Le qualificatif de registre tombe : spaghetti aux crevettes, frittata aux épinards."
+    },
+    {
+      "libelle": "kenya",
+      "brut": [
+        "Kenya"
+      ],
+      "recettes": 2,
+      "cuisine": "Kenya",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : beef wet fry, ugali et sukuma wiki."
+    },
+    {
+      "libelle": "louisiane",
+      "brut": [
+        "Louisiane"
+      ],
+      "recettes": 2,
+      "cuisine": "États-Unis",
+      "regle": "R2",
+      "motif": "La Louisiane est un État des États-Unis. La cuisine créole de Louisiane a une identité propre, et la conserver comme libellé distinct serait défendable — mais ce serait alors deux poids deux mesures avec la Bourgogne et le Sichuan, et cela ajouterait une cuisine au compte de P13 sans qu'aucun plat nouveau soit entré au corpus. La règle des régions s'applique donc ici aussi : poulet rôti à la créole, haricots rouges et riz à la créole."
+    },
+    {
+      "libelle": "mali senegal",
+      "brut": [
+        "Mali/Sénégal"
+      ],
+      "recettes": 2,
+      "cuisine": "Mali",
+      "regle": "R3",
+      "motif": "Deux États nommés pour le mafé et son jumeau végétarien, que les deux revendiquent. R3 retient le premier nommé. La convention est mécanique et le dit : elle ne prétend pas départager deux cuisines qui se partagent un plat."
+    },
+    {
+      "libelle": "royaume uni",
+      "brut": [
+        "Royaume-Uni"
+      ],
+      "recettes": 2,
+      "cuisine": "Royaume-Uni",
+      "regle": "R4",
+      "motif": "Nom d'État en deux mots : shepherd's pie, fish and chips. Une règle de préfixe en ferait « Royaume », qui n'est pas une cuisine."
+    },
+    {
+      "libelle": "tunisie",
+      "brut": [
+        "Tunisie"
+      ],
+      "recettes": 2,
+      "cuisine": "Tunisie",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : brik à l'œuf, salade méchouia."
+    },
+    {
+      "libelle": "venezuela",
+      "brut": [
+        "Venezuela"
+      ],
+      "recettes": 2,
+      "cuisine": "Venezuela",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : arepas reina pepiada, pabellón criollo."
+    },
+    {
+      "libelle": "antilles cuisine creole domestique",
+      "brut": [
+        "Antilles / cuisine créole domestique"
+      ],
+      "recettes": 1,
+      "cuisine": "Antilles",
+      "regle": "R1",
+      "motif": "Le qualificatif de registre tombe : crevettes au lait de coco. Même libellé d'arrivée que « Antilles françaises / cuisine créole »."
+    },
+    {
+      "libelle": "antilles francaises cuisine creole",
+      "brut": [
+        "Antilles françaises / cuisine créole"
+      ],
+      "recettes": 1,
+      "cuisine": "Antilles",
+      "regle": "R1",
+      "motif": "Le registre tombe (« cuisine créole ») ; reste l'aire, les Antilles, pour le riz créole. « Antilles françaises » et « Antilles » sont ramenés au même libellé, sans quoi deux recettes de la même aire compteraient pour deux cuisines."
+    },
+    {
+      "libelle": "autriche",
+      "brut": [
+        "Autriche"
+      ],
+      "recettes": 1,
+      "cuisine": "Autriche",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : wiener schnitzel."
+    },
+    {
+      "libelle": "bresil bahia",
+      "brut": [
+        "Brésil Bahia"
+      ],
+      "recettes": 1,
+      "cuisine": "Brésil",
+      "regle": "R2",
+      "motif": "Bahia est un État brésilien : moqueca baiana."
+    },
+    {
+      "libelle": "cachemire",
+      "brut": [
+        "Cachemire"
+      ],
+      "recettes": 1,
+      "cuisine": "Cachemire",
+      "regle": "R2",
+      "motif": "EXCEPTION DÉCLARÉE À LA RÈGLE DES RÉGIONS, et la seule. Le Cachemire est revendiqué par deux États ; le rédacteur a écrit la région et rien d'autre. Lui attribuer l'Inde ou le Pakistan serait trancher une question que le corpus ne tranche pas, et pour une seule recette — le rogan josh. Le libellé reste donc distinct, et ce fichier dit pourquoi."
+    },
+    {
+      "libelle": "chine cuisine domestique adaptee",
+      "brut": [
+        "Chine / cuisine domestique adaptée"
+      ],
+      "recettes": 1,
+      "cuisine": "Chine",
+      "regle": "R1",
+      "motif": "Le qualificatif de registre tombe : bœuf aux brocolis."
+    },
+    {
+      "libelle": "chine jiangsu",
+      "brut": [
+        "Chine Jiangsu"
+      ],
+      "recettes": 1,
+      "cuisine": "Chine",
+      "regle": "R2",
+      "motif": "Le Jiangsu est une province chinoise : lion's head meatballs."
+    },
+    {
+      "libelle": "cote d ivoire",
+      "brut": [
+        "Côte d’Ivoire"
+      ],
+      "recettes": 1,
+      "cuisine": "Côte d'Ivoire",
+      "regle": "R4",
+      "motif": "Nom d'État en trois mots, que le repli du corpus écrit « cote d ivoire » : kedjenou de poulet. Une règle de préfixe en ferait « Côte », et une règle de séparateur y verrait deux aires. Ce libellé est à lui seul la démonstration qu'un arbitrage relu était nécessaire."
+    },
+    {
+      "libelle": "cuba",
+      "brut": [
+        "Cuba"
+      ],
+      "recettes": 1,
+      "cuisine": "Cuba",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : ropa vieja."
+    },
+    {
+      "libelle": "etats unis cuisine domestique internationale",
+      "brut": [
+        "États-Unis / cuisine domestique internationale"
+      ],
+      "recettes": 1,
+      "cuisine": "États-Unis",
+      "regle": "R1",
+      "motif": "Le qualificatif de registre tombe : wrap au poulet."
+    },
+    {
+      "libelle": "france auvergne cuisine domestique",
+      "brut": [
+        "France / Auvergne — cuisine domestique"
+      ],
+      "recettes": 1,
+      "cuisine": "France",
+      "regle": "R1",
+      "motif": "Le registre tombe et la région se ramène à son pays : jarret de bœuf braisé aux lentilles vertes."
+    },
+    {
+      "libelle": "france cuisine bourgeoise domestique",
+      "brut": [
+        "France / cuisine bourgeoise domestique"
+      ],
+      "recettes": 1,
+      "cuisine": "France",
+      "regle": "R1",
+      "motif": "Le qualificatif de registre tombe : cassolette de fruits de mer."
+    },
+    {
+      "libelle": "france cuisine domestique atlantique",
+      "brut": [
+        "France / cuisine domestique atlantique"
+      ],
+      "recettes": 1,
+      "cuisine": "France",
+      "regle": "R1",
+      "motif": "Le qualificatif de registre tombe : merlu au four."
+    },
+    {
+      "libelle": "france cuisine domestique d inspiration italienne",
+      "brut": [
+        "France / cuisine domestique d'inspiration italienne"
+      ],
+      "recettes": 1,
+      "cuisine": "France",
+      "regle": "R1",
+      "motif": "« d'inspiration italienne » qualifie l'inspiration, pas l'origine : les pâtes aux fruits de mer sont écrites France par le rédacteur et le restent. Même arbitrage que « d'inspiration asiatique », et il coûte à la France plutôt qu'il ne lui profite — c'est ce qui le rend vérifiable."
+    },
+    {
+      "libelle": "france cuisine domestique de plein air",
+      "brut": [
+        "France / cuisine domestique de plein air"
+      ],
+      "recettes": 1,
+      "cuisine": "France",
+      "regle": "R1",
+      "motif": "Le qualificatif de registre tombe : brochettes de crevettes."
+    },
+    {
+      "libelle": "france cuisine domestique littorale",
+      "brut": [
+        "France / cuisine domestique littorale"
+      ],
+      "recettes": 1,
+      "cuisine": "France",
+      "regle": "R1",
+      "motif": "Le qualificatif de registre tombe : poêlée de fruits de mer."
+    },
+    {
+      "libelle": "france cuisine domestique mediterraneenne",
+      "brut": [
+        "France / cuisine domestique méditerranéenne"
+      ],
+      "recettes": 1,
+      "cuisine": "France",
+      "regle": "R1",
+      "motif": "Le qualificatif de registre tombe : crevettes sautées à l'ail."
+    },
+    {
+      "libelle": "france lyon",
+      "brut": [
+        "France (Lyon)"
+      ],
+      "recettes": 1,
+      "cuisine": "France",
+      "regle": "R2",
+      "motif": "Lyon est une ville française : salade lyonnaise."
+    },
+    {
+      "libelle": "france sud mediterranee",
+      "brut": [
+        "France (Sud) / Méditerranée"
+      ],
+      "recettes": 1,
+      "cuisine": "France",
+      "regle": "R2",
+      "motif": "« France (Sud) / Méditerranée » nomme une région française et la mer qui la borde, pas une seconde aire : poivrons grillés."
+    },
+    {
+      "libelle": "inde du sud cuisine domestique adaptee",
+      "brut": [
+        "Inde du Sud / cuisine domestique adaptée"
+      ],
+      "recettes": 1,
+      "cuisine": "Inde",
+      "regle": "R1",
+      "motif": "Le registre tombe et la région se ramène à son pays : curry de poisson."
+    },
+    {
+      "libelle": "inde du sud kerala adaptation domestique francaise",
+      "brut": [
+        "Inde du Sud (Kerala) / adaptation domestique française"
+      ],
+      "recettes": 1,
+      "cuisine": "Inde",
+      "regle": "R1",
+      "motif": "Deux mouvements sur un même libellé : le registre tombe (« adaptation domestique française ») et la région se ramène à son pays (« Inde du Sud (Kerala) »). Reste l'Inde, pour le cabillaud vapeur et son dal de lentilles corail."
+    },
+    {
+      "libelle": "inde pakistan",
+      "brut": [
+        "Inde/Pakistan"
+      ],
+      "recettes": 1,
+      "cuisine": "Inde",
+      "regle": "R3",
+      "motif": "Deux États nommés pour le keema matar. R3 retient le premier nommé. Conséquence assumée, et elle doit se lire : le haleem est compté au Pakistan et le keema matar en Inde parce que le corpus les a écrits dans cet ordre. La convention est mécanique ; elle ne prétend pas départager deux cuisines qui se partagent ces plats."
+    },
+    {
+      "libelle": "inde royaume uni",
+      "brut": [
+        "Inde/Royaume-Uni"
+      ],
+      "recettes": 1,
+      "cuisine": "Inde",
+      "regle": "R3",
+      "motif": "Deux États nommés pour le chicken tikka masala, plat anglo-indien dont la paternité est disputée. R3 retient le premier nommé."
+    },
+    {
+      "libelle": "italie campanie",
+      "brut": [
+        "Italie (Campanie)"
+      ],
+      "recettes": 1,
+      "cuisine": "Italie",
+      "regle": "R2",
+      "motif": "La Campanie est une région italienne : salade caprese."
+    },
+    {
+      "libelle": "italie cuisine domestique francaise",
+      "brut": [
+        "Italie / cuisine domestique française"
+      ],
+      "recettes": 1,
+      "cuisine": "Italie",
+      "regle": "R1",
+      "motif": "C'EST L'EXEMPLE QUE LE PLAN CITE (§5, livrable 3.1). « Italie / cuisine domestique française » nomme une identité — l'Italie — et un registre — la cuisine domestique française. Les gnocchi tomate-mozzarella sont servis comme un plat italien ; le registre dit seulement qu'ils sont cuisinés ici. L'identité l'emporte, et le plat est compté une fois, en Italie."
+    },
+    {
+      "libelle": "italie cuisine domestique internationale",
+      "brut": [
+        "Italie / cuisine domestique internationale"
+      ],
+      "recettes": 1,
+      "cuisine": "Italie",
+      "regle": "R1",
+      "motif": "Le qualificatif de registre tombe : salade de pâtes."
+    },
+    {
+      "libelle": "italie latium",
+      "brut": [
+        "Italie (Latium)"
+      ],
+      "recettes": 1,
+      "cuisine": "Italie",
+      "regle": "R2",
+      "motif": "Le Latium est une région italienne : penne arrabiata."
+    },
+    {
+      "libelle": "laos thailande",
+      "brut": [
+        "Laos/Thaïlande"
+      ],
+      "recettes": 1,
+      "cuisine": "Laos",
+      "regle": "R3",
+      "motif": "Deux États nommés pour le larb de porc. R3 retient le premier nommé."
+    },
+    {
+      "libelle": "liban",
+      "brut": [
+        "Liban"
+      ],
+      "recettes": 1,
+      "cuisine": "Liban",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : taboulé libanais."
+    },
+    {
+      "libelle": "maghreb cuisine domestique adaptee",
+      "brut": [
+        "Maghreb / cuisine domestique adaptée"
+      ],
+      "recettes": 2,
+      "cuisine": "Maghreb",
+      "regle": "R1",
+      "motif": "Le registre tombe ; reste le Maghreb, aire supranationale écrite telle quelle pour le poulet aux pois chiches. Le corpus range à part l'Algérie, le Maroc et la Tunisie quand il veut être précis : on ne leur rattache pas un plat qu'il a laissé à l'aire."
+    },
+    {
+      "libelle": "malaisie",
+      "brut": [
+        "Malaisie"
+      ],
+      "recettes": 1,
+      "cuisine": "Malaisie",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : char kway teow."
+    },
+    {
+      "libelle": "malaisie singapour",
+      "brut": [
+        "Malaisie/Singapour"
+      ],
+      "recettes": 1,
+      "cuisine": "Malaisie",
+      "regle": "R3",
+      "motif": "Deux États nommés pour le laksa curry. R3 retient le premier nommé."
+    },
+    {
+      "libelle": "mexique jalisco",
+      "brut": [
+        "Mexique Jalisco"
+      ],
+      "recettes": 1,
+      "cuisine": "Mexique",
+      "regle": "R2",
+      "motif": "Le Jalisco est un État mexicain : birria de res."
+    },
+    {
+      "libelle": "mexique oaxaca",
+      "brut": [
+        "Mexique Oaxaca"
+      ],
+      "recettes": 1,
+      "cuisine": "Mexique",
+      "regle": "R2",
+      "motif": "Oaxaca est un État mexicain : tlayuda oaxaqueña."
+    },
+    {
+      "libelle": "mexique veracruz",
+      "brut": [
+        "Mexique Veracruz"
+      ],
+      "recettes": 1,
+      "cuisine": "Mexique",
+      "regle": "R2",
+      "motif": "Veracruz est un État mexicain : pescado a la veracruzana."
+    },
+    {
+      "libelle": "mexique yucatan",
+      "brut": [
+        "Mexique Yucatán"
+      ],
+      "recettes": 1,
+      "cuisine": "Mexique",
+      "regle": "R2",
+      "motif": "Le Yucatán est un État mexicain : cochinita pibil."
+    },
+    {
+      "libelle": "nigeria ghana",
+      "brut": [
+        "Nigeria/Ghana"
+      ],
+      "recettes": 1,
+      "cuisine": "Nigeria",
+      "regle": "R3",
+      "motif": "Deux États nommés pour l'akara. R3 retient le premier nommé."
+    },
+    {
+      "libelle": "pakistan",
+      "brut": [
+        "Pakistan"
+      ],
+      "recettes": 1,
+      "cuisine": "Pakistan",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : nihari."
+    },
+    {
+      "libelle": "pakistan inde",
+      "brut": [
+        "Pakistan/Inde"
+      ],
+      "recettes": 1,
+      "cuisine": "Pakistan",
+      "regle": "R3",
+      "motif": "Deux États nommés pour le haleem. R3 retient le premier nommé."
+    },
+    {
+      "libelle": "palestine",
+      "brut": [
+        "Palestine"
+      ],
+      "recettes": 1,
+      "cuisine": "Palestine",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : musakhan."
+    },
+    {
+      "libelle": "porto rico",
+      "brut": [
+        "Porto Rico"
+      ],
+      "recettes": 1,
+      "cuisine": "Porto Rico",
+      "regle": "R4",
+      "motif": "Nom d'aire en deux mots : mofongo. Une règle de préfixe en ferait « Porto », qui est une ville portugaise."
+    },
+    {
+      "libelle": "portugal alentejo",
+      "brut": [
+        "Portugal / Alentejo"
+      ],
+      "recettes": 1,
+      "cuisine": "Portugal",
+      "regle": "R2",
+      "motif": "L'Alentejo est une région portugaise : morue et pois chiches au four."
+    },
+    {
+      "libelle": "salvador",
+      "brut": [
+        "Salvador"
+      ],
+      "recettes": 1,
+      "cuisine": "Salvador",
+      "regle": "R0",
+      "motif": "Une seule aire culinaire, aucun qualificatif : pupusas revueltas."
+    },
+    {
+      "libelle": "thailande du nord",
+      "brut": [
+        "Thaïlande du Nord"
+      ],
+      "recettes": 1,
+      "cuisine": "Thaïlande",
+      "regle": "R2",
+      "motif": "« Thaïlande du Nord » nomme une moitié de pays : khao soi."
+    }
+  ],
+  "contexte_relecture": "Chaque décision porte le libellé REPLIÉ (accents, ponctuation et casse retirés — c'est la clé de lecture), la ou les écritures BRUTES trouvées au corpus, le nombre de recettes concernées au 17 septembre 2026, la cuisine retenue, la règle appliquée et son motif. Deux libellés repliés portent deux écritures brutes chacun (« France / cuisine domestique » et « France — cuisine domestique » ; « France (Bourgogne) » et « France — Bourgogne ») : c'est le repli qui les réunit, pas l'arbitrage. Le compte de recettes est INDICATIF — il date la relecture, il ne sert à aucun calcul ; ce que le code lit est la seule paire libellé → cuisine. Ce fichier ne modifie PAS le corpus : aucune recette ne change de cuisine_origin, c'est la LECTURE qui est normalisée, et un relecteur peut donc toujours retrouver ce que le rédacteur avait écrit."
+}

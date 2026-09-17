@@ -1,0 +1,136 @@
+{
+  "dish": "Babgulyás",
+  "slug": "babgulyas",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.urban-eve.hu/2016/02/19/vega-babgulyas/",
+      "site": "urban-eve.hu",
+      "nom": "Vega babgulyás",
+      "portions": [
+        "4"
+      ],
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "1  vöröshagyma (apróra vágva)",
+        "olívaolaj",
+        "1 teáskanál piros paprika",
+        "só",
+        "bors",
+        "1  babérlevél",
+        "½ teáskanál köménymag (őrölt)",
+        "2  sárgarépa",
+        "50 dkg fejtett bab (fagyasztott vagy konzerv is jó!)",
+        "1  paradicsom (egészben)",
+        "1  nagy krumpli (vagy több közepes)",
+        "1  paprika (egészben, csumázva, feldarabolva, vagy darálva néhány evőkanál)",
+        "levesbetét (galuska, száraztészta, stb.)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1909,
+        "sha256": "600714d2efcb8ed4"
+      },
+      "sha256_page": "81d10f808f4d3a9d"
+    },
+    {
+      "url": "https://www.mindenmentes.hu/2025/08/vegan-babgulyas-tene/",
+      "site": "mindenmentes.hu",
+      "nom": "Vegán babgulyás (TÉNÉ)",
+      "portions": [
+        "10",
+        "10 tál (0,5L)"
+      ],
+      "duree_preparation": "PT720M",
+      "duree_cuisson": "PT120M",
+      "ingredients": [
+        "2 fej vöröshagyma",
+        "1 db zöldpaprika",
+        "1 db paradicsom",
+        "2 tk őrölt kömény",
+        "1 ek őrölt paprika",
+        "½ ek füstölt paprika",
+        "2 ek darált paprika (Anna vagy Pista)",
+        "1 ek sűrített paradicsom",
+        "500 g tarkabab",
+        "1 szál petrezselyemgyökér",
+        "3 szál sárgarépa ((kb. 400g))",
+        "3 db krumpli ((kb. 400g))",
+        "2 gerezd fokhagyma",
+        "1 db babérlevél",
+        "1 ek sómentes levesízesítő fűszer  ((szárított zöldségkeverék))",
+        "1 szál zellerzöld",
+        "1 csokor petrezselyemzöld",
+        "olívaolaj",
+        "só",
+        "bors (frissen őrölt)",
+        "házi &quot;teljesértékűföl&quot; (a tálaláshoz)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 11,
+        "signes": 1334,
+        "sha256": "60e34810a8cc9350"
+      },
+      "sha256_page": "a82854c1232c2990"
+    },
+    {
+      "url": "https://cookpad.com/hu/receptek/17044121-babgulyas-szojakockaval-vegan",
+      "site": "cookpad.com",
+      "nom": "Babgulyás szójakockával (VEGÁN)",
+      "portions": null,
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "200 gramm száraz fehérbab",
+        "50 gramm szójakocka",
+        "3 evőkanál kókuszolaj",
+        "1 db lilahagyma",
+        "2 db újhagyma szárral együtt",
+        "2 gerezd fokhagyma",
+        "2 db paradicsomos",
+        "1 db kápia paprika",
+        "3 db sárgarépa",
+        "1 db petrezselyemgyökér",
+        "1 db karalábé",
+        "1 db zellergumó + levél",
+        "1-2 db burgonya (közepes)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 898,
+        "sha256": "0f998ada0779123f"
+      },
+      "sha256_page": "c097580610a033f1"
+    },
+    {
+      "url": "https://www.bonduelle.fr/recette/r/goulasch-hongrois-vegetarien/frz0239",
+      "site": "bonduelle.fr",
+      "nom": "Goulasch Hongrois végétarien",
+      "portions": 4,
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT45M",
+      "ingredients": [
+        "1 oignon épluché et émincé",
+        "150 g (égoutté) de haricots blancs préparés Bonduelle",
+        "2 carottes (200 g) épluchées, lavées et coupées en cubes",
+        "2 patates douces (200 g) épluchées, lavées et coupées en cubes",
+        "2 tiges de thym",
+        "2 c à soupe de paprika doux",
+        "1 c à soupe de paprika fumé",
+        "200 g de tofu fumé coupé en cube",
+        "2 c à soupe de concentré de tomates",
+        "50 cl de bouillon de légumes",
+        "Sel & poivre",
+        "Huile d’olive"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 521,
+        "sha256": "14db14d6a94af76a"
+      },
+      "sha256_page": "9d1a8549f9b9831d"
+    }
+  ]
+}

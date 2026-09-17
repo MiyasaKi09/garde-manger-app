@@ -1,0 +1,95 @@
+{
+  "dish": "Nouilles sautees au tofu",
+  "slug": "nouilles-sautees-au-tofu",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://chefsimon.com/gourmets/madame-potiron/recettes/nouilles-sautees-au-brocoli-et-tofu",
+      "site": "chefsimon.com",
+      "nom": "Nouilles sautées au brocoli et tofu",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "1 poireau",
+        "1 carotte",
+        "200 gr de brocoli",
+        "150 gr de nouilles aux œufs",
+        "200 gr de tofu mariné",
+        "2 gousses d'ail",
+        "1 petit morceau de gingembre",
+        "1 càs d'huile de sésame",
+        "1 càs de sauce soja sucrée",
+        "1 càs de sauce sriracha",
+        "1 citron vert",
+        "sel &amp; poivre",
+        "de l'huile végétale"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 163,
+        "sha256": "674175c5053f0f76"
+      },
+      "sha256_page": "dda21480690257ec"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/clementine-4c402d8e-2ca5-400b-88f1-beb80aa54df8/recettes/nouilles-soba-sautees-aux-legumes-et-tofu",
+      "site": "chefsimon.com",
+      "nom": "Nouilles soba sautées aux légumes et tofu",
+      "portions": "",
+      "duree_preparation": "PT00H15M",
+      "duree_cuisson": "PT00H00M",
+      "ingredients": [
+        "3 parts de nouilles soba (environ 300 g)",
+        "200 g de tofu ferme",
+        "200 g de champignons (shiitake ou pleurotes si possible)",
+        "1 brocoli",
+        "2 carottes",
+        "1 petit poivron rouge",
+        "1 blanc de poireau",
+        "2 oignons rouges",
+        "2 gousses d’ail",
+        "4 cuillères à soupe de tamari",
+        "1 cuillère à soupe de sésame noir",
+        "3 cm de racine de gingembre",
+        "2 cuillères à soupe d’huile de sésame"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "c15e8db01277ff9e"
+    },
+    {
+      "url": "https://www.750g.com/nouilles-sautees-aux-legumes-et-au-tofu-fume-r201809.htm",
+      "site": "750g.com",
+      "nom": "Nouilles sautées aux légumes et au tofu fumé",
+      "portions": "4 personnes",
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "400 g de tofu fumé",
+        "230 g de pousses de bambou  Suzi Wan®",
+        "200 g de nouilles aux oeufs  Suzi Wan®",
+        "100 g d'haricot Mungo  Suzi Wan®",
+        "2 carottes",
+        "1 poireau",
+        "1 brocoli",
+        "10 cl de bouillon de légumes",
+        "1 gousse d'ail  finement hachée",
+        "3 c. à c. de sauce soja salée  Suzi Wan®",
+        "2 c. à s. d'huile d'olive",
+        "1 c. à c. de gingembre  frais râpé",
+        "Poivre du moulin"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1258,
+        "sha256": "0ed04f72936886b3"
+      },
+      "sha256_page": "f42f9b3781363bdf"
+    }
+  ]
+}

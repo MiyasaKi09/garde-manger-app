@@ -1,0 +1,107 @@
+{
+  "dish": "cotolette di melanzane",
+  "slug": "cotolette-di-melanzane",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.misya.info/ricetta/cotolette-di-melanzane.htm",
+      "site": "misya.info",
+      "nom": "Cotolette di melanzane",
+      "portions": "4 persone",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "500 gr di melanzane",
+        "50 gr di sale grosso",
+        "1 uovo",
+        "50 gr di pangrattato",
+        "30 gr di grana grattugiato",
+        "1 pizzico di sale fino"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 594,
+        "sha256": "02e1d645dd45edb4"
+      },
+      "sha256_page": "843f5adf99ea4a1a"
+    },
+    {
+      "url": "https://blog.giallozafferano.it/allacciateilgrembiule/cotolette-melanzane/",
+      "site": "blog.giallozafferano.it",
+      "nom": "COTOLETTE DI MELANZANE",
+      "portions": [
+        "4",
+        "4 persone"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "2 Melanzane",
+        "2 Uova",
+        "150 g Pangrattato",
+        "50 g Parmigiano reggiano",
+        "Olio di semi di arachide",
+        "Sale",
+        "Farina 00"
+      ],
+      "etapes_empreinte": {
+        "nombre": 3,
+        "signes": 1490,
+        "sha256": "6394b0f3cb95d44f"
+      },
+      "sha256_page": "86da507db08baa72"
+    },
+    {
+      "url": "https://www.ilcuoreinpentola.it/ricette/antipasti/cotolette-di-melanzane-impanate-e-fritte/",
+      "site": "ilcuoreinpentola.it",
+      "nom": "Cotolette di melanzane: melanzane impanate e fritte",
+      "portions": [
+        "20",
+        "20 Fette"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "1  melanzana seta (grande)",
+        "farina 00",
+        "2  uova (grandi)",
+        "pangrattato",
+        "mezzo spicchio aglio",
+        "1 ciuffetto prezzemolo",
+        "5 cucchiai formaggio grattugiato",
+        "sale",
+        "olio d'oliva (per friggere)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 0,
+        "signes": 0,
+        "sha256": "e3b0c44298fc1c14"
+      },
+      "sha256_page": "68e82dbdd29a908f"
+    },
+    {
+      "url": "https://www.tortelliniandco.com/cotolette-di-melanzane-alla-bolognese/",
+      "site": "tortelliniandco.com",
+      "nom": "Cotolette di melanzane alla bolognese",
+      "portions": [
+        "4",
+        "4 persone"
+      ],
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT40M",
+      "ingredients": [
+        "200 g di pangrattato, non salato",
+        "4  uova",
+        "800 g di melanzane comuni ovali nere",
+        "sale e olio d'oliva q.b."
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1610,
+        "sha256": "9f0fbcbc98f7f2b9"
+      },
+      "sha256_page": "f7424fa4b1bc86fc"
+    }
+  ]
+}

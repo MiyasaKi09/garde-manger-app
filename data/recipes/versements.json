@@ -1,0 +1,86 @@
+{
+  "note": "Registre des versements au corpus — la date à laquelle un lot de recettes est ENTRÉ au catalogue, et la preuve de cette date. Écrit par la main qui verse le lot, lu par scripts/data/recipes/build-corpus-v3.mjs (qui pose culinary.recipe_versions.corpus_poured_on) et par tests/recipes/versement.test.js. AUCUNE entrée n'est écrite pour un lot dont la date n'est pas vérifiable : une recette sans date reste sans date, et l'écran « Nouveautés » ne la montre pas. Le corpus lui-même ne porte pas cette date — l'y mettre changerait le content_hash de chaque recette et ferait rougir check-corpus-parity contre une base déjà chargée.",
+  "versements": [
+    {
+      "lot": "jumeaux-vegetariens",
+      "verse_le": "2026-09-04",
+      "preuve": {
+        "commit": "65d5c05c46287df434b5e83a09162f2dc33319db",
+        "date_auteur": "2026-09-04T12:56:56+00:00",
+        "sujet": "Quarante-huit jumeaux végétariens versés au corpus",
+        "fichier": "data/recipes/corpus-v3.json",
+        "mesure": "git show 65d5c05^:data/recipes/corpus-v3.json contre git show 65d5c05:data/recipes/corpus-v3.json — 706 codes avant, 754 après, 48 ajoutés, 0 retiré."
+      },
+      "codes": [
+        "JUM-001",
+        "JUM-002",
+        "JUM-003",
+        "JUM-004",
+        "JUM-005",
+        "JUM-006",
+        "JUM-007",
+        "JUM-031",
+        "JUM-032",
+        "JUM-033",
+        "JUM-041",
+        "JUM-042",
+        "JUM-043",
+        "JUM-051",
+        "JUM-052",
+        "JUM-053",
+        "JUM-054",
+        "JUM-055",
+        "JUM-061",
+        "JUM-062",
+        "JUM-063",
+        "JUM-064",
+        "JUM-065",
+        "JUM-071",
+        "JUM-072",
+        "JUM-073",
+        "JUM-074",
+        "JUM-081",
+        "JUM-082",
+        "JUM-083",
+        "JUM-084",
+        "JUM-091",
+        "JUM-092",
+        "JUM-093",
+        "JUM-094",
+        "JUM-095",
+        "JUM-101",
+        "JUM-102",
+        "JUM-103",
+        "JUM-104",
+        "JUM-111",
+        "JUM-112",
+        "JUM-113",
+        "JUM-114",
+        "JUM-115",
+        "JUM-121",
+        "JUM-122",
+        "JUM-123"
+      ],
+      "intention": "Lot 1 de l'usine à recettes (plan §5, phase 5) : les jumeaux végétariens des lignées carnées. C'est le lot le plus récent dont la date d'entrée au corpus soit connue et vérifiable."
+    },
+    {
+      "lot": "jumeaux-13",
+      "verse_le": "2026-09-17",
+      "preuve": {
+        "commit": "ca0488a867d44f44c10a00111e493e962dbb0c4c",
+        "date_auteur": "2026-09-17T22:13:07+00:00",
+        "sujet": "Huit lignées carnées reçoivent leur jumeau — et le sourçage en a refusé dix",
+        "fichier": "data/recipes/corpus-v3.json",
+        "mesure": "git show ca0488a^:data/recipes/corpus-v3.json contre git show ca0488a:data/recipes/corpus-v3.json — 754 codes avant, 759 après, 5 ajoutés (JUM-124, JUM-125, JUM-126, JUM-127, JUM-128), 0 retiré."
+      },
+      "codes": [
+        "JUM-124",
+        "JUM-125",
+        "JUM-126",
+        "JUM-127",
+        "JUM-128"
+      ],
+      "intention": "Lot 2 de l'usine à recettes (plan §5, phase 5), suite des jumeaux végétariens. CE LOT A TOUCHÉ HUIT RECETTES ET N'EN DATE QUE CINQ : VAR-035, RAP-023 et FR-027 étaient déjà au corpus et n'ont reçu qu'un `derived_from`. Les dater serait les montrer comme des nouveautés qu'elles ne sont pas — l'écran « Nouveautés de la semaine » ne doit porter que ce qui est entré au catalogue ce jour-là."
+    }
+  ]
+}

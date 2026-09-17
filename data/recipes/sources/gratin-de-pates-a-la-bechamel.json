@@ -1,0 +1,85 @@
+{
+  "dish": "Gratin de pates a la bechamel",
+  "slug": "gratin-de-pates-a-la-bechamel",
+  "sources_count": 3,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-pates-a-la-bechamel_336071.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin de pâtes à la béchamel : la meilleure recette",
+      "portions": "4 Personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "50 g de beurre",
+        "50 g de farine",
+        "600 ml de lait",
+        "1 cube de bouillon de poule",
+        "20 g de gruyère râpé",
+        "poivre",
+        "sel",
+        "muscade",
+        "300 g de pâtes",
+        "200 g de jambon (en tranches ou en dès)",
+        "3 saucisses de Francfort",
+        "gruyère râpé et chapelure"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 781,
+        "sha256": "4ec25e5225eb0ccb"
+      },
+      "sha256_page": "baa227bbca2869a4"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_gratin-de-pates-a-la-bechamel_167244.aspx",
+      "site": "marmiton.org",
+      "nom": "Gratin de pâtes à la béchamel de Lina : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT30M",
+      "ingredients": [
+        "pâtes",
+        "100 g de beurre",
+        "100 g de farine",
+        "1 l de lait",
+        "fromage râpé",
+        "poivre",
+        "sel"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 707,
+        "sha256": "0878cf5baf9e5ea4"
+      },
+      "sha256_page": "34ccadeec0e24581"
+    },
+    {
+      "url": "https://chefsimon.com/gourmets/auxdelicesdemanue/recettes/gratin-de-pates-brocoli-poulet-a-la-bechamel",
+      "site": "chefsimon.com",
+      "nom": "Gratin de pâtes brocoli poulet à la béchamel",
+      "portions": "2 personnes",
+      "duree_preparation": "PT00H25M",
+      "duree_cuisson": "PT00H40M",
+      "ingredients": [
+        "2 blanc de poulet",
+        "140 g de pâtes",
+        "160 g de brocoli",
+        "70 g d'emmental râpé",
+        "400 ml de lait",
+        "30 g de beurre",
+        "30 g de fécule de pomme de terre",
+        "10 g de chapelure",
+        "noix de muscade",
+        "sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 12,
+        "signes": 1187,
+        "sha256": "e2e86d7abe9279e3"
+      },
+      "sha256_page": "4865bcc62846210b"
+    }
+  ]
+}

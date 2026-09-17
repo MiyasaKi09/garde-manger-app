@@ -1,0 +1,172 @@
+{
+  "dish": "Stroganoff de champignons",
+  "slug": "stroganoff-de-champignons",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.chefetrecette.com/stroganoff-de-champignons-riz-complet/",
+      "site": "chefetrecette.com",
+      "nom": "Stroganoff de Champignons &amp; Riz Complet",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "400 g de champignons",
+        "1 oignon",
+        "2 gousses d’ail",
+        "200 ml de crème légère ou végétale",
+        "200 ml de bouillon de légumes",
+        "1 c. à s. de moutarde douce",
+        "1 c. à c. de paprika doux",
+        "2 c. à s. d’huile d’olive",
+        "200 g de riz complet cuit",
+        "Persil frais",
+        "Sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 492,
+        "sha256": "1c0848b5c74d9091"
+      },
+      "sha256_page": "2c085db2c11f616a"
+    },
+    {
+      "url": "https://larecetteparfaite.com/2025/01/07/champignons-stroganoff/",
+      "site": "larecetteparfaite.com",
+      "nom": "Champignons Stroganoff",
+      "portions": "4 portions",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "300 g de pâtes linguine (voir notes)2 c. à soupe d’huile végétale2 échalotes françaises, hachées2 paquets de 227 g de champignons de Paris, en quartiers1/4 c. à thé de sel3 gousses d’ail, hachées185 ml (3/4 tasse) de vin blanc2 c. à soupe de farine tout usage250 ml (1 tasse) de bouillon de légumes250 ml (1 tasse) de crème de soya ou d’avoine3 c. à soupe de pâte de tomate1 c. à soupe de moutarde de Dijon1 c. à soupe de sirop d’érable2 c. à thé de sauce soya1 c. à thé de paprika1 c. à thé de paprika fumé2 feuilles de laurier1/2 c. à thé de thym séchéSel et poivreGarniturePersil frais, ciselé"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 534,
+        "sha256": "4c7227694198992e"
+      },
+      "sha256_page": "0f3b06f64ec8e455"
+    },
+    {
+      "url": "https://www.marciatack.fr/champignons-stroganoff-sans-creme/",
+      "site": "marciatack.fr",
+      "nom": "Champignons Stroganoff",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT5M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 kilo(s) champignons de Paris",
+        "2  Oignons rouges",
+        "4 gousse(s) Ail",
+        "800 millilitre(s) lait de coco",
+        "2 cuillère(s) à café moutarde",
+        "1  jus de citron",
+        "1 bouquet(s) persil ( plat)",
+        "3 cuillère(s) à café Huile d'olive",
+        "sel",
+        "Poivre",
+        "2 cuillère(s) à soupe Paprika"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 501,
+        "sha256": "c47a8b356dab07c6"
+      },
+      "sha256_page": "6333471c4a2505d1"
+    },
+    {
+      "url": "https://menu-vegetarien.com/champignons-stroganoff/",
+      "site": "menu-vegetarien.com",
+      "nom": "Champignons stroganoff",
+      "portions": [
+        "4",
+        "4 personnes"
+      ],
+      "duree_preparation": "PT10M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "340 g fettuccini",
+        "60 ml huile d’olive",
+        "2  oignon jaune",
+        "3  gousse d'ail",
+        "540 g champignons de Paris",
+        "480 ml bouillon de légumes",
+        "140 g noix de cajou (trempées et égouttées)",
+        "3 càs sauce tamari",
+        "1 càs Thym",
+        "1/2 càs Moutarde",
+        "1 càs vinaigre balsamique",
+        "15 ml jus de citron",
+        "2 càs persil",
+        "2 càs ciboulette (hachée)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1001,
+        "sha256": "b1c37a0cecf9055b"
+      },
+      "sha256_page": "a69713b9dedba307"
+    },
+    {
+      "url": "https://lescommis.com/recettes/stroganoff-de-champignons-et-puree-fondante/",
+      "site": "lescommis.com",
+      "nom": "Stroganoff de Champignons & Purée Fondante",
+      "portions": 4,
+      "duree_preparation": "PT0H15M",
+      "duree_cuisson": null,
+      "ingredients": [
+        "200 g tofu fumé",
+        "300 g champignons de paris",
+        "2 pièces ail",
+        "1 pièce persil frais",
+        "400 ml préparation végétale",
+        "2 c.s. concentré de tomate",
+        "800 g pommes de terre",
+        "4 c.s. huile d'olive",
+        "4 c.s. huile neutre",
+        "2 c.c. moutarde",
+        "2 pincées sel & poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 6,
+        "signes": 1204,
+        "sha256": "39dded7c3898d658"
+      },
+      "sha256_page": "550dc8b078ae9b18"
+    },
+    {
+      "url": "https://www.sharkninja.fr/stroganoff-vegetalien-aux-champignons/REC523EU.html",
+      "site": "sharkninja.fr",
+      "nom": "Stroganoff végétalien aux champignons",
+      "portions": null,
+      "duree_preparation": null,
+      "duree_cuisson": null,
+      "ingredients": [
+        "<strong class=\"mr-3\"><span data-metric=\"1kg\" data-imperial=\"35oz\">35oz</span></strong> champignon châtaigne (coupé en gros morceaux)",
+        "<strong class=\"mr-3\"><span data-metric=\"2\" data-imperial=\"2\">2</span></strong> oignons rouges (en dés)",
+        "<strong class=\"mr-3\"><span data-metric=\"6\" data-imperial=\"6\">6</span></strong> gousses d'ail (écrasées)",
+        "<strong class=\"mr-3\"><span data-metric=\"2 x 400ml\" data-imperial=\"2 x 14oz\">2 x 14oz</span></strong> boîtes de lait de coco",
+        "<strong class=\"mr-3\"><span data-metric=\"3 cuillères à café\" data-imperial=\"3 cuillères à café\">3 cuillères à café</span></strong> moutarde de dijon (bonne qualité)",
+        "<strong class=\"mr-3\"><span data-metric=\"2 cuillères à café\" data-imperial=\"2 cuillères à café\">2 cuillères à café</span></strong> paprika",
+        "<strong class=\"mr-3\"><span data-metric=\"Jus de 1\" data-imperial=\"Jus de 1\">Jus de 1</span></strong> citron",
+        "<strong class=\"mr-3\"><span data-metric=\"1 cuillère à soupe\" data-imperial=\"1 cuillère à soupe\">1 cuillère à soupe</span></strong> Maïzena",
+        "<strong class=\"mr-3\"><span data-metric=\"Grande poignée\" data-imperial=\"Grande poignée\">Grande poignée</span></strong> persil frais, haché",
+        "<strong class=\"mr-3\"><span data-metric=\"3 cuillères à soupe\" data-imperial=\"3 cuillères à soupe\">3 cuillères à soupe</span></strong> huile d'olive ou de noix de coco",
+        "<strong class=\"mr-3\"><span data-metric=\"Au goût\" data-imperial=\"Au goût\">Au goût</span></strong> sel et poivre"
+      ],
+      "etapes_empreinte": {
+        "nombre": 1,
+        "signes": 1294,
+        "sha256": "97b380ee8f41c87d"
+      },
+      "sha256_page": "3f07029f02bf816f"
+    }
+  ]
+}

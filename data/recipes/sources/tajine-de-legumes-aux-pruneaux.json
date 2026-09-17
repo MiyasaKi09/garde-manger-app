@@ -1,0 +1,40 @@
+{
+  "dish": "Tajine de legumes aux pruneaux",
+  "slug": "tajine-de-legumes-aux-pruneaux",
+  "sources_count": 1,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://www.marmiton.org/recettes/recette_tajine-agneau-legumes-pruneaux_69316.aspx",
+      "site": "marmiton.org",
+      "nom": "tajine agneau légumes pruneaux : la meilleure recette",
+      "portions": "6 personnes",
+      "duree_preparation": "PT30M",
+      "duree_cuisson": "PT1H",
+      "ingredients": [
+        "1.5 kg d'épaules d'agneau",
+        "2 oignons",
+        "5 gousses d'ail",
+        "3 courgettes",
+        "4 carottes",
+        "5 pommes de terre",
+        "10 pruneaux",
+        "1 grosse poignée d'amandes",
+        "1 kg de semoule fine (facultatif)",
+        "2 sucre en morceaux",
+        "1 bouquet de coriandre frais",
+        "huile d'olive",
+        "6 cuillères de Ras el Hanout",
+        "10 cuillères de cumin",
+        "3 cuillères de gingembre",
+        "3 cuillères de cannelle"
+      ],
+      "etapes_empreinte": {
+        "nombre": 10,
+        "signes": 750,
+        "sha256": "81a670471123c317"
+      },
+      "sha256_page": "21cd9a261807ec3e"
+    }
+  ]
+}

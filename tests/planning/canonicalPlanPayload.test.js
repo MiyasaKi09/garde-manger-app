@@ -136,6 +136,31 @@ describe('canonical plan publication payload', () => {
     ])
   })
 
+  it('nomme la famille qui déborde pour les trois plafonds du livrable 3.1', () => {
+    // Les codes `starch_cap_*` et `cuisine_cap_*` portent la famille de féculent
+    // ou la cuisine : sans phrase dédiée, ils retombaient sur le générique « la
+    // règle de planning « starch_cap_pomme_de_terre » demande une vérification »,
+    // qui est le code habillé en français et ne dit toujours pas quoi corriger.
+    // Le plan exige des « avertissements MESURÉS, AFFICHÉS » : affichés veut
+    // dire lisibles.
+    const [feculent, cuisine, laitier, inconnu] = normalizePlanIssues([
+      { severity: 'warning', code: 'starch_cap_pomme_de_terre', missing: 2 },
+      { severity: 'warning', code: 'cuisine_cap_france', missing: 3 },
+      { severity: 'warning', code: 'dairy_egg_protein_cap', missing: 1 },
+      // Une famille sans libellé français : le code est repris tel quel plutôt
+      // que tu — mieux vaut « la cuisine "tex mex" » que rien du tout.
+      { severity: 'warning', code: 'cuisine_cap_tex mex', missing: 1 },
+    ])
+    expect(feculent.message).toContain('pommes de terre')
+    expect(feculent.message).not.toContain('starch_cap')
+    expect(feculent.details).toEqual({ missing: 2 })
+    expect(cuisine.message).toContain('france')
+    expect(cuisine.message).not.toContain('cuisine_cap')
+    expect(laitier.message).toMatch(/laitier|œuf/)
+    expect(laitier.message).not.toContain('dairy_egg')
+    expect(inconnu.message).toContain('tex mex')
+  })
+
   it('publishes an executable but nutritionally weak week as review_required', () => {
     const plan = {
       status: 'published', issues: [], objectiveScores: {}, reservations: [], shoppingItems: [],

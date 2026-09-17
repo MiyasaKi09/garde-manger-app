@@ -3457,6 +3457,7 @@
     },
     {
       "code": "RAP-023",
+      "derived_from": "DEN-021",
       "family": "Omelette aux champignons",
       "cuisine_origin": "France",
       "identity_level": "domestic_standard",
@@ -4997,6 +4998,7 @@
     {
       "code": "RAP-032",
       "family": "Curry de légumes",
+      "derived_from": "RAP-033",
       "cuisine_origin": "Inde / cuisine domestique internationale",
       "identity_level": "domestic_standard",
       "category": "curry végétarien",

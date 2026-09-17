@@ -36,6 +36,8 @@ const makeRecipe = (code, family, form) => ({
   exactSteps: [{ n: 1, instruction: 'Préparer.' }],
   nutritionPerServing: { kcal: 500, proteinG: 30, carbsG: 55, fatG: 18, fiberG: 8 },
   nutritionCoverage: { pct: 100 },
+  // Garde déclarée (chantier C1) : condition des productions du test P2.
+  conservationProfile: { fridgeHours: 72, eatImmediately: false, freezable: null, freezerMonths: null, serveCold: null, source: 'parsed' },
 })
 
 // Deux recettes végétales : aucune règle hebdomadaire bloquante, la semaine

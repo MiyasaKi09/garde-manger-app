@@ -154,6 +154,42 @@ const NEW_EXPECTED_OBJECTS = {
     { type: 'function', schema: 'public', name: 'planning_food_ban_fold' },
     { type: 'function', schema: 'public', name: 'planning_food_ban_matches' },
   ],
+  // Le contrat opérationnel : on vérifie les COLONNES et la fonction de
+  // traduction, pas seulement la RPC. `get_operational_recipe_catalog_v3`
+  // existait déjà avant cette migration — un contrôle par son nom seul passerait
+  // au vert sans que la projection ait changé.
+  // La présence par personne et par créneau (livrable 1.5). On vérifie la
+  // COLONNE `present` et l'index d'unicité, pas seulement le nom de la table :
+  // c'est `present = false` qui retire une assiette, et c'est l'unicité qui
+  // empêche deux déclarations contradictoires sur le même créneau.
+  // Livrable 2.4 : le temps constaté d'une session, à côté du temps annoncé.
+  '20260918120000': [
+    { type: 'table', schema: 'public', name: 'cooking_session_times' },
+    { type: 'column', schema: 'public', table: 'cooking_session_times', name: 'announced_active_minutes' },
+    { type: 'column', schema: 'public', table: 'cooking_session_times', name: 'observed_active_minutes' },
+    { type: 'index', schema: 'public', table: 'cooking_session_times', name: 'uq_cooking_session_times_session' },
+    { type: 'policy', schema: 'public', table: 'cooking_session_times', name: 'cooking_session_times_select_own' },
+  ],
+  '20260917130000': [
+    { type: 'table', schema: 'public', name: 'meal_presence' },
+    { type: 'column', schema: 'public', table: 'meal_presence', name: 'present' },
+    { type: 'index', schema: 'public', table: 'meal_presence', name: 'uq_meal_presence_member_slot' },
+    { type: 'policy', schema: 'public', table: 'meal_presence', name: 'meal_presence_select_own' },
+  ],
+  '20260917110000': [
+    { type: 'column', schema: 'catalog', table: 'food_forms', name: 'origin' },
+    { type: 'column', schema: 'catalog', table: 'food_forms', name: 'origin_source' },
+    { type: 'column', schema: 'culinary', table: 'recipe_versions', name: 'conservation_profile' },
+    { type: 'function', schema: 'culinary', name: 'conservation_profile_contract' },
+  ],
+  // La date de versement. La COLONNE et la FONCTION de résumé, pas seulement la
+  // fonction : un CREATE OR REPLACE réussit sur une base où la colonne manque,
+  // et le contrôle passerait au vert sur une base incapable de dater quoi que
+  // ce soit.
+  '20260919140000': [
+    { type: 'column', schema: 'culinary', table: 'recipe_versions', name: 'corpus_poured_on' },
+    { type: 'function', schema: 'public', name: 'get_recipe_pour_summary_v3' },
+  ],
 };
 
 // Fichiers auxiliaires chargés dans la même transaction/version que le fichier

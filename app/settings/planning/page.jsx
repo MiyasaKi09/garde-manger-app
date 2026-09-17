@@ -13,7 +13,12 @@ import {
   Trash2,
 } from 'lucide-react'
 import { authFetch } from '@/lib/authFetch'
-import { calculateFullProfile, ACTIVITY_LABELS } from '@/lib/nutritionCalculator'
+import {
+  ACTIVITY_LABELS,
+  PROTEIN_COEFFICIENT_RANGE,
+  calculateFullProfile,
+  resolveProteinCoefficient,
+} from '@/lib/nutritionCalculator'
 import { toast } from '@/components/Toast'
 
 const RATE_OPTIONS = [0, 0.25, 0.5, 0.75, 1]
@@ -27,6 +32,33 @@ const TARGET_FIELDS = [
 
 const lower = (value) => String(value || '').trim().toLocaleLowerCase('fr-FR')
 const numberOrBlank = (value) => value == null ? '' : Number(value)
+const fr = (value) => String(value).replace('.', ',')
+
+/**
+ * La règle de calcul de la cible protéique, en une phrase (livrable 1.3).
+ * Elle nomme le coefficient, sa provenance et le poids employé — et dit
+ * l'absence quand le poids cible manque, au lieu d'afficher un nombre.
+ */
+function proteinRuleSentence(profile) {
+  const rule = profile?.protein_rule
+  const weight = Number(profile?.target_weight_kg)
+  const coefficient = profile?.protein_coefficient_g_per_kg === '' || profile?.protein_coefficient_g_per_kg == null
+    ? resolveProteinCoefficient({ weightLossRate: profile?.weight_loss_rate }).coefficient
+    : Number(profile.protein_coefficient_g_per_kg)
+  if (profile?.calculation_source === 'manual') {
+    return 'Cible protéique saisie à la main : elle ne se recalcule pas depuis le poids cible tant qu’elle n’est pas recalculée par le questionnaire.'
+  }
+  if (!Number.isFinite(weight) || weight <= 0) {
+    return 'Cible protéique indisponible : le poids cible n’est pas renseigné, et la cible se calcule sur lui. Rien n’est estimé à sa place.'
+  }
+  const provenance = profile?.protein_coefficient_g_per_kg === '' || profile?.protein_coefficient_g_per_kg == null
+    ? 'coefficient par défaut'
+    : 'coefficient réglé'
+  const enregistre = rule?.coefficient_g_per_kg != null && rule?.target_weight_kg != null
+    ? ` Dernière version enregistrée : ${fr(rule.coefficient_g_per_kg)} × ${fr(rule.target_weight_kg)} kg.`
+    : ''
+  return `Règle : ${fr(coefficient)} g/kg × ${fr(weight)} kg de poids cible = ${Math.round(coefficient * weight)} g/j (${provenance}).${enregistre}`
+}
 
 function profileFrom(member, goal) {
   const planning = member.preferences?.planning || {}
@@ -37,6 +69,14 @@ function profileFrom(member, goal) {
     planning: {
       breakfast: Boolean(planning.breakfast),
       snack: Boolean(planning.snack),
+      // Quota carné DÉCLARÉ (livrable 1.1). La chaîne vide est l'absence de
+      // réglage, et elle n'est pas 0 : un champ vide se réenregistre vide, un
+      // 0 se réenregistre en « aucune viande ». Les deux doivent se distinguer
+      // à l'écran comme dans le profil.
+      meat_meals_per_week: planning.meat_meals_per_week == null ? '' : Number(planning.meat_meals_per_week),
+      // Ancien réglage, relu mais plus écrit : il reste dans le profil tant
+      // que le foyer n'a pas déclaré de quota, et l'écran l'affiche en clair
+      // plutôt que de le faire disparaître sans le dire.
       vegetarian_meat_swaps_per_week: Number(planning.vegetarian_meat_swaps_per_week) || 0,
       dessert_after_lunch: Boolean(planning.dessert_after_lunch),
       dessert_after_dinner: Boolean(planning.dessert_after_dinner),
@@ -55,6 +95,15 @@ function profileFrom(member, goal) {
     target_carbs_g: numberOrBlank(goal?.target_carbs_g),
     target_fat_g: numberOrBlank(goal?.target_fat_g),
     target_fiber_g: numberOrBlank(goal?.target_fiber_g),
+    // Coefficient protéique DÉCLARÉ (livrable 1.3), relu depuis la règle
+    // versionnée avec la cible. Vide = non déclaré : le défaut documenté
+    // s'appliquera (1,6 g/kg en perte, 1,4 en maintien) et la règle rendue par
+    // le serveur dira lequel. Un champ vide et un coefficient réglé à 1,4 ne
+    // sont pas la même chose, et l'écran ne les confond pas.
+    protein_coefficient_g_per_kg: goal?.protein_rule?.coefficient_source === 'member'
+      ? numberOrBlank(goal.protein_rule.coefficient_g_per_kg)
+      : '',
+    protein_rule: goal?.protein_rule || null,
     target_source: goal?.target_source || null,
     calculation_source: goal?.target_source === 'manual' ? 'manual' : 'questionnaire',
   }
@@ -108,6 +157,24 @@ export default function PlanningSettingsPage() {
 
   const selectedIndex = useMemo(() => profiles.findIndex((profile) => profile.id === selectedId), [profiles, selectedId])
   const selected = selectedIndex >= 0 ? profiles[selectedIndex] : null
+  // Le défaut qui s'appliquera si le champ reste vide, affiché en repère.
+  const defaultCoefficient = resolveProteinCoefficient({ weightLossRate: selected?.weight_loss_rate }).coefficient
+
+  /**
+   * Le plafond carné du foyer, tel que le moteur le déduira (livrable 1.1) :
+   * la somme des quotas DÉCLARÉS. Il est affiché parce qu'il n'est pas
+   * évident — chacun règle son propre nombre, et c'est leur somme qui borne la
+   * semaine du foyer. `null` tant que personne n'a déclaré de quota : le
+   * moteur garde alors son plafond par défaut, et l'écran le dit plutôt que
+   * d'afficher un 0 qui se lirait « aucune viande ».
+   */
+  const householdMeatCeiling = useMemo(() => {
+    const declares = profiles
+      .map((profile) => profile.planning.meat_meals_per_week)
+      .filter((quota) => quota !== '' && quota != null && Number.isFinite(Number(quota)))
+      .map(Number)
+    return declares.length ? declares.reduce((total, quota) => total + quota, 0) : null
+  }, [profiles])
 
   function patchSelected(patch) {
     if (selectedIndex < 0) return
@@ -135,6 +202,10 @@ export default function PlanningSettingsPage() {
       activityLevel: selected.activity_level,
       weightLossRate: selected.weight_loss_rate,
       targetWeight: selected.target_weight_kg,
+      // Le coefficient de la personne (livrable 1.3). Vide = non déclaré :
+      // `calculateFullProfile` applique alors le défaut documenté et le dit
+      // dans `protein_rule.coefficient_source`.
+      proteinCoefficient: selected.protein_coefficient_g_per_kg,
     })
     patchSelected({ ...result, calculation_source: 'questionnaire' })
     toast.success(`Besoins recalculés pour ${selected.name}`)
@@ -161,7 +232,13 @@ export default function PlanningSettingsPage() {
                 ...(profile.preferences?.planning || {}),
                 breakfast: profile.planning.breakfast,
                 snack: profile.planning.snack,
-                vegetarian_meat_swaps_per_week: Number(profile.planning.vegetarian_meat_swaps_per_week) || 0,
+                // `null` efface le quota côté serveur (`updateMember`), ce qui
+                // ramène la personne au plat du foyer. C'est le seul moyen de
+                // REVENIR de « j'ai déclaré 2 » à « je n'ai rien déclaré » ;
+                // sans lui, un réglage posé une fois ne se retirerait plus.
+                meat_meals_per_week: profile.planning.meat_meals_per_week === ''
+                  ? null
+                  : Number(profile.planning.meat_meals_per_week),
                 dessert_after_lunch: profile.planning.dessert_after_lunch,
                 dessert_after_dinner: profile.planning.dessert_after_dinner,
               },
@@ -193,6 +270,10 @@ export default function PlanningSettingsPage() {
             target_carbs_g: profile.target_carbs_g,
             target_fat_g: profile.target_fat_g,
             target_fiber_g: profile.target_fiber_g,
+            // Le coefficient voyage avec l'objectif : c'est lui qui permet au
+            // serveur de RECALCULER la cible protéique à chaque enregistrement
+            // plutôt que de reprendre le nombre affiché (livrable 1.3).
+            protein_coefficient_g_per_kg: profile.protein_coefficient_g_per_kg === '' ? null : profile.protein_coefficient_g_per_kg,
             calculation_source: profile.calculation_source,
           })),
         }),
@@ -297,6 +378,28 @@ export default function PlanningSettingsPage() {
                 <div>{RATE_OPTIONS.map((rate) => <button key={rate} type="button" className={Number(selected.weight_loss_rate) === rate ? 'active' : ''} onClick={() => patchSelected({ weight_loss_rate: rate })}>{rate === 0 ? 'Maintien' : `${rate} kg/sem`}</button>)}</div>
               </div>
 
+              <div className="ps-rate ps-coefficient">
+                <span>Coefficient protéique</span>
+                <div>
+                  <input
+                    type="number"
+                    min={PROTEIN_COEFFICIENT_RANGE.min}
+                    max={PROTEIN_COEFFICIENT_RANGE.max}
+                    step="0.1"
+                    placeholder={String(defaultCoefficient).replace('.', ',')}
+                    value={selected.protein_coefficient_g_per_kg}
+                    onChange={(event) => patchSelected({ protein_coefficient_g_per_kg: event.target.value })}
+                  />
+                  <i>g/kg de poids cible</i>
+                </div>
+                <p className="ps-help">
+                  La cible protéique vaut ce coefficient multiplié par le <b>poids cible</b>, jamais par le poids actuel.
+                  Laissé vide, il vaut {String(defaultCoefficient).replace('.', ',')} — le défaut documenté
+                  {Number(selected.weight_loss_rate) > 0 ? ' en perte de poids' : ' en maintien'}.
+                  L’énergie, elle, reste calculée sur le poids actuel : c’est lui qui dépense.
+                </p>
+              </div>
+
               <button type="button" className="ps-calculate" onClick={calculateTargets}><Calculator size={16} /> Calculer les besoins de {selected.name}</button>
               <p className="ps-help">Le résultat sert de base au planning. Les valeurs restent modifiables avant enregistrement.</p>
             </section>
@@ -316,6 +419,11 @@ export default function PlanningSettingsPage() {
                 ))}
               </div>
               <div className="ps-source"><Check size={14} /> Source active : {selected.calculation_source === 'manual' ? 'valeurs ajustées manuellement' : 'questionnaire Myko'}</div>
+              {/* La règle qui a produit la cible protéique, telle qu'elle sera
+                  versionnée. Affichée plutôt que sous-entendue : une cible dont
+                  on ne lit ni le coefficient ni le poids employés ne se
+                  conteste pas (livrable 1.3). */}
+              <p className="ps-help">{proteinRuleSentence(selected)}</p>
             </section>
 
             <section className="ps-card">
@@ -325,8 +433,28 @@ export default function PlanningSettingsPage() {
                 <label><input type="checkbox" checked={selected.planning.snack} onChange={(event) => patchPlanning({ snack: event.target.checked })} /><span><b>Collation</b><small>Ajoutée chaque jour pour {selected.name}</small></span></label>
                 <label><input type="checkbox" checked={selected.planning.dessert_after_lunch} onChange={(event) => patchPlanning({ dessert_after_lunch: event.target.checked })} /><span><b>Dessert après le déjeuner</b><small>Un fruit ou une pâtisserie en fin de repas pour {selected.name}</small></span></label>
                 <label><input type="checkbox" checked={selected.planning.dessert_after_dinner} onChange={(event) => patchPlanning({ dessert_after_dinner: event.target.checked })} /><span><b>Dessert après le dîner</b><small>Un fruit ou une pâtisserie en fin de repas pour {selected.name}</small></span></label>
-                <label className="ps-swap"><span><b>Variantes végétariennes</b><small>Nombre de repas carnés remplacés par semaine</small></span><input type="number" min="0" max="14" value={selected.planning.vegetarian_meat_swaps_per_week} onChange={(event) => patchPlanning({ vegetarian_meat_swaps_per_week: event.target.value })} /></label>
+                <label className="ps-swap">
+                  <span>
+                    <b>Repas carnés par semaine</b>
+                    <small>Combien de repas avec de la viande {selected.name} veut par semaine, sur les 14 repas principaux. Vide = non déclaré : {selected.name} reçoit le plat du foyer à chaque repas.</small>
+                  </span>
+                  <input
+                    type="number" min="0" max="14" placeholder="—"
+                    value={selected.planning.meat_meals_per_week}
+                    onChange={(event) => patchPlanning({ meat_meals_per_week: event.target.value })}
+                  />
+                </label>
               </div>
+              <p className="ps-help">
+                {householdMeatCeiling == null
+                  ? 'Aucun quota déclaré : le plafond carné du foyer reste celui du moteur, et les repas de chacun suivent la semaine du foyer.'
+                  : `Plafond carné du foyer déduit : ${householdMeatCeiling} repas sur 14 — la somme des quotas déclarés. Chaque personne reçoit une variante végétarienne sur les repas carnés qui dépassent son propre quota, en privilégiant ceux dont le corpus porte un jumeau de la même lignée.`}
+              </p>
+              {Number(selected.planning.vegetarian_meat_swaps_per_week) > 0 && selected.planning.meat_meals_per_week === '' ? (
+                <p className="ps-help ps-legacy">
+                  Ancien réglage encore en vigueur pour {selected.name} : {selected.planning.vegetarian_meat_swaps_per_week} repas carnés remplacés par semaine. Il disait de combien de viande on retire, jamais combien on en mange — c&apos;est ce qui a mis un membre du foyer à 0 repas carné sur 14 sans qu&apos;il l&apos;ait demandé. Déclarer un quota ci-dessus le remplace.
+                </p>
+              ) : null}
             </section>
           </div>
 
@@ -379,8 +507,9 @@ export default function PlanningSettingsPage() {
         .ps-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.ps-wide{grid-column:1/-1}
         .ps-form-grid label,.ps-targets label{display:flex;flex-direction:column;gap:7px}.ps-form-grid label>span,.ps-rate>span,.ps-targets label>span{font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3)}
         input,select{width:100%;min-height:43px;padding:0 12px;border:1px solid var(--line-strong);border-radius:5px;background:rgba(255,255,255,.42);color:var(--ink-1);font:inherit}.ps-unit{display:flex;align-items:center}.ps-unit input{border-radius:5px 0 0 5px}.ps-unit i{display:grid;min-width:44px;height:43px;place-items:center;border:1px solid var(--line-strong);border-left:0;border-radius:0 5px 5px 0;color:var(--ink-3);font-family:var(--font-mono);font-size:9px;font-style:normal}
+        .ps-coefficient>div{align-items:center}.ps-coefficient input{max-width:130px}.ps-coefficient i{color:var(--ink-3);font-family:var(--font-mono);font-size:9px;font-style:normal;text-transform:uppercase}
         .ps-rate{margin-top:18px}.ps-rate>div{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}.ps-rate button{min-height:36px;padding:0 12px;border:1px solid var(--line-strong);border-radius:5px;background:transparent;color:var(--ink-2);cursor:pointer}.ps-rate button.active{border-color:var(--terracotta);background:var(--terracotta);color:#fff}
-        .ps-calculate{margin-top:20px;background:transparent;color:var(--brand)}.ps-calculate:hover{background:var(--brand);color:#fff}.ps-help,.ps-food-intro,.ps-save-card p{color:var(--ink-3);font-size:12px;line-height:1.55}.ps-help{margin:10px 0 0}
+        .ps-calculate{margin-top:20px;background:transparent;color:var(--brand)}.ps-calculate:hover{background:var(--brand);color:#fff}.ps-help,.ps-food-intro,.ps-save-card p{color:var(--ink-3);font-size:12px;line-height:1.55}.ps-help{margin:10px 0 0}.ps-legacy{border-left:2px solid var(--line);padding-left:10px}
         .ps-targets{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.ps-targets label{position:relative}.ps-targets input{padding-right:42px;font-family:var(--font-display);font-size:21px}.ps-targets i{position:absolute;right:9px;bottom:14px;color:var(--ink-3);font-family:var(--font-mono);font-size:8px;font-style:normal}.ps-source{display:flex;align-items:center;gap:7px;margin-top:16px;color:var(--brand);font-family:var(--font-mono);font-size:9px;text-transform:uppercase}
         .ps-toggles{display:grid;gap:10px}.ps-toggles label{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid var(--line);border-radius:6px}.ps-toggles input[type=checkbox]{width:19px;min-height:19px;accent-color:var(--terracotta)}.ps-toggles span{display:flex;flex:1;flex-direction:column}.ps-toggles b{font-size:13px}.ps-toggles small{margin-top:2px;color:var(--ink-3)}.ps-toggles .ps-swap>input{width:80px;min-height:38px}
         .ps-food-intro{margin:-4px 0 16px}.ps-food-form{display:grid;grid-template-columns:1fr;gap:8px}.ps-food-form button{display:flex;align-items:center;justify-content:center;gap:7px;min-height:40px;border:1px solid var(--ink-1);border-radius:5px;background:transparent;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;cursor:pointer}.ps-food-form button:hover:not(:disabled){background:var(--ink-1);color:#fff}

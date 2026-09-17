@@ -1,0 +1,1500 @@
+{
+ "recipes": [
+  {
+   "code": "JUM-124",
+   "family": "Bouchées à la reine aux champignons",
+   "derived_from": "SRC-009",
+   "cuisine_origin": "France",
+   "identity_level": "domestic_standard",
+   "category": "plat mijoté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 6,
+   "prep_minutes": 25,
+   "cook_minutes": 35,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:vol-au-vent-aux-champignons",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "La garniture des bouchées à la reine sans poulet ni veau : un kilo de champignons de Paris sautés en plusieurs fournées, liés d'un velouté au lait, au vin blanc et aux jaunes d'œuf.",
+   "canonical_arbitration": "Neuf pages relevées sur trois sites. TROIS SONT VÉGÉTARIENNES et portent des quantités : marmiton « Vol-au-vent aux champignons de Paris » (4 parts), marmiton « Vol au vent aux champignons et tomates séchées » (2 parts), chefsimon « Vol au vent au tofu fumé, champignons et châtaignes » (6 parts). Les six autres restent au dossier et servent de contrôle, mais cinq d'entre elles portent une protéine animale — poulet, lardons, volaille, ou un cube de bouillon de bœuf — et aucune ne peut fonder une ligne de ce jumeau. La sixième, chefsimon « Butternut farci aux champignons façon vol au vent », est écartée pour une autre raison : c'est une courge farcie, pas une bouchée feuilletée.\n\nCE QUE L'ÉCHANGE DE PROTÉINE TOUCHE. Le parent poche 700 g de poulet et 225 g de veau dans 750 g de bouillon de volaille : la viande ET son bouillon partent ensemble, et il faut rendre au plat ce qu'ils lui donnaient. Ce sont les champignons qui le rendent, et ils sont donc la seule ligne franchement rejugée. Trois pages du dossier font du champignon la substance du plat et le pèsent : 500 g pour 4, soit 125 g par personne ; 400 g pour 2, soit 200 g ; 350 g pour 2, soit 175 g — cette dernière venant d'une page écartée pour son cube de bouillon de bœuf, ce qui ne retire rien à la lecture d'un poids de champignon. Médiane 175 g par personne, soit 1 050 g pour six. Le parent n'en mettait que 150 g pour six, soit 25 g par personne : le champignon y était une garniture, ici il est le plat.\n\nLE TOFU FUMÉ EST ÉCARTÉ, ET C'EST LA DÉCISION LA PLUS CONTESTABLE DE CETTE FICHE. Une page sur neuf — chefsimon, 200 g pour 6, soit 33,3 g par personne — garde une protéine dans une version végétarienne. Une source sur neuf ne canonise pas un ingrédient : la règle du dépôt descend en variante ce qu'une seule page porte, et l'appliquer ici coûte cher. Il faut le dire plutôt que le masquer : la part de ce jumeau apporte environ 9 g de protéines là où son parent en apporte trois fois plus. C'est un jumeau qui ressemble à sa base et qui ne la vaut pas sur la densité protéique ; le dossier ne permet pas mieux, et fabriquer la ligne manquante serait exactement la faute que la chaîne interdit.\n\nCE QUI EST HÉRITÉ, avec le chiffre du dossier en face. LE VELOUTÉ ne bouge pas : beurre 45 g, farine 45 g, lait entier 300 ml, vin blanc sec 180 ml, deux jaunes d'œuf — c'est la liaison à la reine, et elle n'a pas de protéine animale à retirer. Le dossier la confirme de biais : deux pages montent un roux (20 g de beurre et 20 g de farine pour 6 ; 1 cuillerée de farine pour 6), et une page mouille au vin blanc à raison de 1 dl pour 2, soit 50 ml par personne, soit 300 ml pour six — le parent est à 30 ml par personne, en dessous, et on garde son chiffre parce que le vin n'est pas ce que l'échange regarde. LA CRÈME est le seul héritage relevé : le parent en met 80 g pour six, soit 13,3 g par personne, quand les trois pages qui font du champignon le plat en mettent 87,5, 100 et 100 g par personne — médiane 100, soit 600 g pour six. On écrit 200 ml, et l'écart est énoncé : 600 g de crème pour six feraient une sauce de restaurant, 80 g ne nappent plus un kilo de champignons.\n\nL'ÉCHALOTE remplace l'oignon du parent parce que c'est ce que le dossier emploie — trois pages sur neuf, à raison d'une demi-échalote à un tiers d'échalote par personne, soit environ 10 g par personne au poids moyen d'une échalote, 60 g pour six. On écrit 80 g, entre cette lecture et les 100 g d'oignon du parent. LE PERSIL est à 10 g pour six, chiffre exact de la seule page qui le pèse (10 g pour 6) et confirmé par deux autres qui le mettent sans le peser.\n\nCE QUE LE DOSSIER FAIT ET QU'ON NE FAIT PAS. Les champignons séchés sont dans UNE page — 15 g de morilles pour 2, soit 7,5 g par personne, soit 45 g pour six. Une source ne canonise pas un ingrédient : ils descendent en variante, avec leur eau de trempage qui remplacerait avantageusement une partie du lait. Les tomates séchées (une page), les châtaignes (une page), la vodka et le vermouth (une page chacun) sont à une source et descendent aussi.\n\nDURÉES. Le parent compte 30 minutes de préparation et 90 de cuisson, dont 55 de pochage des viandes. Il n'y a plus rien à pocher : les pages du dossier annoncent 5 à 30 minutes de préparation et 10 à 30 de cuisson. On écrit 25 et 35 — nettoyer et tailler un kilo de champignons prend du temps, les sauter en trois fournées aussi, et le velouté demande ses dix minutes.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Même rôle que les Bouchées à la reine dont il dérive, et pour la même raison : ce qui est écrit ici est la GARNITURE, pas les croûtes. Le parent ne porte pas non plus sa pâte feuilletée, et son arbitrage le dit — la garniture appelle les bouchées, du riz ou des nouilles au moment du service. Les six pages du dossier qui comptent leurs croûtes en prévoient une par personne."
+   },
+   "ingredients": [
+    {
+     "form": "Champignon de Paris frais",
+     "quantity": 1050,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Lait entier",
+     "quantity": 300,
+     "unit": "ml",
+     "role": "liquide",
+     "optional": false
+    },
+    {
+     "form": "Crème fraîche liquide entière",
+     "quantity": 200,
+     "unit": "ml",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Vin blanc sec",
+     "quantity": 180,
+     "unit": "ml",
+     "role": "déglaçage",
+     "optional": false
+    },
+    {
+     "form": "Échalote crue",
+     "quantity": 80,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 45,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Farine de blé T55",
+     "quantity": 45,
+     "unit": "g",
+     "role": "liant",
+     "optional": false
+    },
+    {
+     "form": "Jaune d'œuf cru",
+     "quantity": 2,
+     "unit": "u",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Persil frais",
+     "quantity": 10,
+     "unit": "g",
+     "role": "finition",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 5,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Muscade moulue",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": true
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": true
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Nettoyer les champignons de Paris à sec, au pinceau ou au torchon, ôter le bout terreux du pied et les tailler en lamelles épaisses. Les répartir en trois tas : une poêle trop chargée les fait bouillir dans leur eau au lieu de les colorer."
+    },
+    {
+     "n": 2,
+     "instruction": "Chauffer un tiers du beurre à feu vif, jeter le premier tas, attendre deux minutes sans toucher, puis sauter jusqu'à ce que l'eau soit partie et que les bords dorent. Débarrasser et recommencer deux fois. Garder de côté le jus rendu."
+    },
+    {
+     "n": 3,
+     "instruction": "Baisser le feu, fondre le beurre restant, y suer l'échalote ciselée trois minutes sans coloration. Verser le vin blanc et laisser réduire presque à sec."
+    },
+    {
+     "n": 4,
+     "instruction": "Poudrer de farine, remuer une minute pour cuire le roux sans le blondir, puis verser le lait en trois fois en fouettant à chaque ajout. Laisser épaissir cinq minutes à petit feu, saler et râper la muscade."
+    },
+    {
+     "n": 5,
+     "instruction": "Remettre les champignons et leur jus dans le velouté et laisser mijoter dix minutes à découvert, le temps que la sauce reprenne du corps."
+    },
+    {
+     "n": 6,
+     "instruction": "Hors du feu, délayer les jaunes d'œuf dans la crème, verser en filet dans la garniture en remuant, et réchauffer sans jamais laisser frémir. Rectifier le poivre, parsemer de persil ciselé et garnir aussitôt des croûtes feuilletées tièdes."
+    }
+   ],
+   "techniques": [
+    "sauté",
+    "roux",
+    "liaison",
+    "réduction"
+   ],
+   "variants": [
+    "Version aux champignons séchés, d'après marmiton.org : faire tremper 45 g de morilles séchées, les ajouter aux champignons frais et remplacer une partie du lait par l'eau de trempage filtrée.",
+    "Version au tofu fumé, d'après chefsimon.com : ajouter 200 g de tofu fumé en dés saisis à part, ce qui rend au plat la protéine que son parent tenait de la volaille.",
+    "Version aux tomates séchées, d'après marmiton.org : 40 g de tomates séchées taillées en lanières, ajoutées avec les champignons."
+   ],
+   "sensory": {
+    "profile": "creamy_savory",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 1,
+     "bitter": 0,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 5,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "champignon",
+     "crème",
+     "vin blanc",
+     "beurre"
+    ],
+    "aroma_families": [
+     "beurré",
+     "lacté",
+     "champignon",
+     "épicé doux"
+    ],
+    "target_textures": [
+     "sauce nappante",
+     "lamelles de champignon tendres"
+    ],
+    "signature_ingredients": [
+     "Champignon de Paris frais",
+     "Crème fraîche liquide entière",
+     "Jaune d'œuf cru"
+    ],
+    "identity_guardrails": [
+     "Sans la liaison finale au Jaune d'œuf cru et à la Crème fraîche liquide entière, le velouté retombe au rang de béchamel et le plat cesse d'être une sauce à la reine.",
+     "Les champignons doivent être sautés en plusieurs fournées et colorés avant d'entrer dans la sauce : jetés crus dans le velouté, ils le délavent de leur eau et la garniture devient grise.",
+     "La sauce ne doit jamais bouillir après l'ajout des jaunes, sous peine de grainer irrémédiablement."
+    ]
+   },
+   "conservation": "Se garde 2 jours au réfrigérateur à 4 °C en boîte hermétique, la garniture bien refroidie avant fermeture. Réchauffer à feu très doux ou au bain-marie en remuant, sans jamais laisser frémir. La congélation est déconseillée : la liaison jaune d'œuf et crème tranche à la décongélation et les champignons relâchent leur eau.",
+   "allergens": [
+    "gluten",
+    "lait",
+    "œuf",
+    "sulfites"
+   ]
+  },
+  {
+   "code": "JUM-125",
+   "family": "Risotto au safran",
+   "derived_from": "VAR-001",
+   "cuisine_origin": "Italie",
+   "identity_level": "named_traditional_dish",
+   "category": "risotto",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 25,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:risotto-au-safran",
+    "chefsimon.com",
+    "750g.com",
+    "marmiton.org"
+   ],
+   "description_courte": "Le milanais mouillé au bouillon de légumes : riz arborio nacré, safran infusé à part, monté hors du feu au beurre froid et au parmesan.",
+   "canonical_arbitration": "Neuf pages relevées sur trois sites. DEUX SONT VÉGÉTARIENNES, sur deux sites distincts, et ce sont elles qui fondent la fiche : chefsimon « Risotto au safran » (4 parts) et 750g « Risotto aux champignons parfumé au safran » (2 parts). Les sept autres portent un poisson, un fruit de mer ou une charcuterie ; elles restent au dossier parce que le risotto qu'elles décrivent est le même et que leurs quantités de riz, de vin et de bouillon sont des faits. Chaque ligne ci-dessous dit d'où vient son chiffre.\n\nLE BOUILLON EST LA SEULE LIGNE QUE L'ÉCHANGE TOUCHE, et c'est tout le sujet de ce jumeau. Le parent mouille au bouillon de volaille — un litre pour quatre — et il n'a pas d'autre ingrédient d'origine animale que le beurre et le parmesan, qui restent. Retirer la volaille du bouillon suffit donc à faire de ce plat une recette végétarienne, et le dossier confirme que c'est ce que fait la cuisine réelle : QUATRE pages sur neuf déclarent explicitement un bouillon de légumes — dont la page végétarienne de chefsimon. La seconde page végétarienne, chez 750g, écrit seulement « 30 cl de bouillon » sans dire lequel : c'est une lacune du dossier, et on la signale plutôt que de la lire dans le sens qui arrange. La quantité se lit mieux en rapport au riz qu'en millilitres par personne, parce qu'un risotto se mouille au fur et à mesure : chefsimon saint-jacques donne 1 l pour 250 g de riz, soit 4 volumes ; 750g champignons 30 cl pour 100 g, soit 3 ; 750g saumon 40 cl pour 240 g, soit 1,67 — cette dernière complétant visiblement à l'eau. Le parent est à 4 volumes, en haut de la fourchette, et on garde son chiffre : 4 volumes est le rapport d'un risotto, et l'échange de bouillon ne le regarde pas.\n\nCE QUI EST HÉRITÉ, ligne par ligne, avec le chiffre du dossier en face. LE RIZ (250 g pour quatre, soit 62,5 g par personne) ne bouge pas. Sept pages le pèsent en grammes : 50, 60, 62,5, 75, 83,3, 87,5 et 93,75 g par personne — médiane 75, soit 300 g pour quatre. Le parent est 17 % en dessous, et c'est assumé : le dossier compte en verres et en tasses dès qu'il monte, et une part de 75 g de riz sec fait une assiette de restaurant. LE VIN BLANC (150 ml) est confirmé presque exactement : quatre pages le pèsent, à 25, 25, 50 et 50 ml par personne, médiane 37,5, soit 150 ml pour quatre. LE BEURRE (40 g) l'est aussi : une page en met 40 g pour quatre, une autre 20 g pour quatre, une troisième trois cuillerées à soupe pour quatre. L'HUILE D'OLIVE (30 ml) contre 6 ml par personne à la seule page qui la pèse, soit 24 ml pour quatre : le parent est un peu au-dessus, dans le bruit.\n\nLE PARMESAN EST LE SEUL HÉRITAGE FRANCHEMENT SOUS LE DOSSIER, et il faut le dire. Le parent en met 45 g pour quatre, soit 11,25 g par personne. Les deux pages qui le pèsent ET déclarent leurs convives en mettent 12,5 et 30 g par personne, médiane 21,25, soit 85 g pour quatre ; une troisième en met 100 g sans dire pour combien. On garde 45 g : le parmesan n'est pas ce que l'échange de bouillon regarde, et le doubler changerait le plat par inadvertance. Qui le trouve maigre en ajoutera au service, ce que fait d'ailleurs l'une des deux pages.\n\nLE SAFRAN NE SE REJUGE PAS. Le dossier le compte en dosettes, en capsules, en pistils et en cuillerées à thé — six formes pour neuf pages, dont aucune ne se convertit en grammes. On garde le gramme du parent, et on écrit la méthode qui compte davantage que la dose : l'infusion préalable dans une louche de bouillon chaud, que trois pages décrivent et qui est ce qui donne sa couleur au plat.\n\nCE QUE LE DOSSIER FAIT ET QU'ON NE FAIT PAS. Une page ajoute 100 g de champignons pour deux, une autre des tomates séchées, une troisième de la crème ou du mascarpone : une source chacune, elles descendent en variantes. L'origan de la page à la mortadelle n'appartient pas à ce plat.\n\nDURÉES. Préparation : les neuf pages l'annoncent entre 5 et 20 minutes, médiane 15 ; on garde les 15 du parent, dont dix d'infusion du safran menées pendant que le bouillon chauffe. Cuisson : huit pages la déclarent — 20, 20, 20, 20, 20, 25, 30 et 30 minutes, médiane 20 ; on garde les 25 du parent, et l'écart est assumé : dix-huit minutes de mouillement plus la mantecatura ne tiennent pas en vingt.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "vegetables"
+    ],
+    "reason": "Même rôle que le Risotto milanais dont il dérive : le riz porte le féculent et rien d'autre, ni protéine ni légume dans l'assiette. Une salade ou un légume vert à côté complète le repas ; un second féculent le doublerait. Les deux pages végétariennes du dossier le servent seul."
+   },
+   "ingredients": [
+    {
+     "form": "Riz arborio cru",
+     "quantity": 250,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Bouillon de légumes",
+     "quantity": 1000,
+     "unit": "ml",
+     "role": "mouillement",
+     "optional": false
+    },
+    {
+     "form": "Vin blanc sec",
+     "quantity": 150,
+     "unit": "ml",
+     "role": "déglaçage",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 130,
+     "unit": "g",
+     "role": "base aromatique",
+     "optional": false
+    },
+    {
+     "form": "Parmesan affiné",
+     "quantity": 45,
+     "unit": "g",
+     "role": "finition",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 40,
+     "unit": "g",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 30,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Safran",
+     "quantity": 1,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 6,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Porter le bouillon de légumes à frémissement et l'y maintenir toute la cuisson : un mouillement froid arrête le grain à chaque louche et le risotto met deux fois plus de temps."
+    },
+    {
+     "n": 2,
+     "instruction": "Prélever une louche de bouillon chaud, y écraser le safran et laisser infuser dix minutes. C'est cette infusion, et non la poudre jetée sèche en fin de cuisson, qui donne au plat sa couleur et son parfum."
+    },
+    {
+     "n": 3,
+     "instruction": "Suer l'oignon ciselé très fin dans l'huile d'olive et la moitié du beurre, à feu doux, sans lui laisser prendre couleur. Verser le riz et le nacrer deux minutes, en le retournant sans cesse : il est prêt quand le bord de chaque grain devient translucide et que le cœur reste blanc."
+    },
+    {
+     "n": 4,
+     "instruction": "Déglacer au vin blanc, laisser évaporer entièrement, puis mouiller louche à louche : on n'ajoute la suivante que lorsque la précédente est absorbée. Compter dix-huit minutes, en versant l'infusion de safran à mi-parcours."
+    },
+    {
+     "n": 5,
+     "instruction": "Hors du feu, incorporer le beurre restant bien froid et le parmesan en battant à la cuillère de bois. Couvrir deux minutes, rectifier sel et poivre : le risotto doit couler lentement quand on incline l'assiette."
+    }
+   ],
+   "techniques": [
+    "nacrage",
+    "mouillement progressif",
+    "infusion",
+    "mantecatura"
+   ],
+   "variants": [
+    "Version aux champignons, d'après 750g.com : 200 g de champignons de Paris sautés à part et ajoutés à la mantecatura.",
+    "Version crémée, d'après chefsimon.com et 750g.com : remplacer un tiers du beurre de finition par de la crème épaisse ou du mascarpone.",
+    "Version aux tomates séchées, d'après chefsimon.com : un bocal de tomates séchées taillées en lanières, ajoutées aux deux tiers de la cuisson."
+   ],
+   "sensory": {
+    "profile": "creamy_aromatic",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 1,
+     "bitter": 1,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 0,
+     "richness": 4,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "safran",
+     "parmesan",
+     "beurre",
+     "vin blanc"
+    ],
+    "aroma_families": [
+     "safrané",
+     "lacté",
+     "beurré"
+    ],
+    "target_textures": [
+     "grain al dente",
+     "onde crémeuse"
+    ],
+    "signature_ingredients": [
+     "Safran",
+     "Riz arborio cru",
+     "Parmesan affiné"
+    ],
+    "identity_guardrails": [
+     "Le safran doit être infusé dans du bouillon chaud avant d'entrer dans le riz : jeté sec en fin de cuisson il colore à peine et ne parfume pas.",
+     "Le beurre de finition s'incorpore HORS du feu et bien froid : c'est la mantecatura, et c'est elle qui fait l'onde crémeuse ; fondu dans la casserole chaude il rend une matière grasse séparée.",
+     "Le bouillon doit être de légumes et non de volaille — c'est la seule chose qui sépare ce plat de sa base, et l'oublier le lui rendrait."
+    ]
+   },
+   "conservation": "Se mange dans les minutes qui suivent : le grain continue d'absorber et un risotto attendu devient compact. Les restes se gardent 2 jours au réfrigérateur en récipient fermé et ne se réchauffent pas tels quels — les étaler en galettes, les paner et les poêler donne des arancini, seul usage honnête du lendemain. Ne se congèle pas : le grain se délite au dégel.",
+   "allergens": [
+    "lait",
+    "sulfites"
+   ]
+  },
+  {
+   "code": "JUM-126",
+   "family": "Nouilles sautées au tofu et aux légumes",
+   "derived_from": "RAP-042",
+   "cuisine_origin": "Chine / cuisine domestique internationale",
+   "identity_level": "domestic_standard",
+   "category": "nouilles sautées",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 15,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:nouilles-sautees-au-tofu",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Le wok de nouilles du parent avec du tofu fumé à la place du poulet et sans sauce poisson : brocoli, carotte et poireau saisis croquants, laqués à la sauce soja et au sésame.",
+   "canonical_arbitration": "Trois pages relevées, sur deux sites distincts, et LES TROIS SONT VÉGÉTARIENNES — c'est le seul dossier de ce lot dont aucune page n'a eu à être écartée pour une protéine animale : chefsimon « Nouilles sautées au brocoli et tofu », chefsimon « Nouilles soba sautées aux légumes et tofu », 750g « Nouilles sautées aux légumes et au tofu fumé ».\n\nUNE SEULE PAGE DÉCLARE SES CONVIVES, et il faut le dire avant les chiffres : la page 750g annonce 4 parts. La page soba ne déclare pas ses convives mais écrit « 3 parts de nouilles soba (environ 300 g) », ce qui donne une part et permet de ramener ses quantités à la personne. La troisième ne déclare rien du tout et ne sert qu'à établir la structure. Les médianes qui suivent portent donc sur DEUX lectures, jamais sur trois, et c'est peu.\n\nLE TOFU FUMÉ REMPLACE LE POULET, et c'est la ligne pour laquelle ce jumeau existe. Le parent sert 600 g de blanc de poulet pour quatre, soit 150 g par personne. Les deux pages chiffrables mettent 400 g pour 4, soit 100 g par personne, et 200 g pour 3 parts, soit 66,7 — médiane 83,3 g par personne, soit 333 g pour quatre. On écrit 400 g, et l'écart est assumé pour deux raisons : c'est le chiffre de la seule page qui compte ses parts, et descendre à 83 g ferait du jumeau un plat nettement moins nourrissant que sa base, ce qui est précisément ce qu'un jumeau ne doit pas être.\n\nLA SAUCE POISSON DU PARENT EST RETIRÉE, et c'est la seconde ligne que l'échange touche. Le parent en met 30 ml : c'est un produit de la mer, aucune des trois pages du dossier n'en porte, et un plat qui s'annonce végétarien ne peut pas la garder. On ne la remplace pas : les 75 ml de sauce soja du parent restent, alors que le dossier lit 3,75 ml par personne sur la page 750g et 20 ml sur la page soba — médiane 11,9 ml par personne, soit 47,5 ml pour quatre. Le parent est au-dessus, à 18,75 ml par personne, et on garde son chiffre parce que c'est désormais le seul apport salé du plat.\n\nCE QUI EST HÉRITÉ, avec le chiffre du dossier en face. LES NOUILLES (250 g pour quatre, soit 62,5 g par personne) : le dossier lit 50 g par personne sur la page 750g et 100 g sur la page soba, médiane 75, soit 300 g pour quatre — le parent est en dessous, dans le bruit, et les nouilles de blé chinoises ne sont pas les soba. LE BROCOLI (500 g, soit 125 g par personne) est confirmé : les trois pages en portent, et la page 750g en met un pied entier pour quatre, ce qu'on lit 125 g par personne. L'AIL (15 g) et LE GINGEMBRE (15 g) sont dans les trois pages, comptés en gousses et en centimètres : rien à rejuger. L'HUILE DE SÉSAME GRILLÉ (10 ml) n'est que dans deux pages sur trois — la page 750g cuit à l'huile d'olive seule. LE SUCRE (10 g) tient à la page qui emploie une sauce soja sucrée. LA CORIANDRE (10 g) est le seul héritage qu'aucune page ne porte — on la garde parce que l'échange de protéine ne touche pas l'herbe de finition, et on le signale plutôt que de la faire passer pour sourcée.\n\nDEUX LIGNES SONT AJOUTÉES AU PARENT, toutes deux portées par les trois pages. LA CAROTTE : deux carottes pour 4 sur la page 750g, deux pour 3 parts sur la page soba, une sur la troisième — le dossier compte en pièces, et 120 g de carotte moyenne donne 60 g et 80 g par personne, médiane 70, soit 280 g pour quatre. On écrit 240 g, en dessous, parce qu'un poids de pièce supposé ne vaut pas un poids pesé. LE POIREAU : un blanc de poireau dans chacune des trois pages, ce qu'on écrit 150 g pour quatre.\n\nCE QUE LE DOSSIER FAIT ET QU'ON NE FAIT PAS. Les pousses de bambou (230 g pour quatre), les haricots mungo (100 g), les champignons shiitake ou pleurotes (200 g), le poivron rouge, le sésame noir, la sriracha et le citron vert sont à une source chacun : ils descendent en variantes. Les oignons rouges de la page soba ne remplacent pas l'oignon jaune du parent pour la même raison.\n\nDURÉES. Préparation : 15 minutes aux trois pages ; le parent en compte 10, mais il n'a ni carotte ni poireau à tailler et son poulet se coupe plus vite que le tofu ne se presse. On écrit 15. Cuisson : 10 minutes à la page 750g, non déclarée ailleurs ; on garde les 15 du parent, qui couvrent la cuisson des nouilles et deux passages au wok.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Même rôle que les Nouilles sautées au poulet dont il dérive : nouilles, tofu et légumes dans le même wok, féculent, protéine et légume tous dans l'assiette. Les trois pages du dossier le servent seul. La part porte 62,5 g de nouilles sèches, 100 g de tofu fumé et 272 g de légumes, soit environ 32 g de protéines — c'est le plat de ce lot qui tient le mieux la comparaison avec sa base."
+   },
+   "ingredients": [
+    {
+     "form": "Brocoli cru",
+     "quantity": 500,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Tofu fumé",
+     "quantity": 400,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Nouille de blé chinoise sèche",
+     "quantity": 250,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Carotte crue",
+     "quantity": 240,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Poireau cru",
+     "quantity": 150,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 120,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sauce soja",
+     "quantity": 75,
+     "unit": "ml",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 30,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Gingembre frais",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile de sésame grillé",
+     "quantity": 10,
+     "unit": "ml",
+     "role": "finition",
+     "optional": false
+    },
+    {
+     "form": "Coriandre fraîche",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Sucre semoule",
+     "quantity": 10,
+     "unit": "g",
+     "role": "équilibre",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Égoutter le tofu fumé, le presser dix minutes entre deux torchons sous une assiette lestée, puis le tailler en cubes de deux centimètres. Un tofu mal essoré ne dore pas, il vapeur."
+    },
+    {
+     "n": 2,
+     "instruction": "Détailler le brocoli en petits bouquets, la carotte en rondelles biseautées de trois millimètres, le poireau en tronçons de trois centimètres fendus en deux, l'oignon en lamelles. Hacher l'ail et le gingembre séparément."
+    },
+    {
+     "n": 3,
+     "instruction": "Cuire les nouilles une minute de moins que le temps indiqué sur le paquet, les rafraîchir sous l'eau froide, les égoutter à fond et les huiler d'un filet pour qu'elles ne se collent pas pendant le reste."
+    },
+    {
+     "n": 4,
+     "instruction": "Saisir les cubes de tofu à feu vif dans la moitié de l'huile d'olive jusqu'à ce que trois faces soient dorées, les réserver. Dans le même wok, jeter carotte et brocoli deux minutes, ajouter poireau et oignon deux minutes de plus : les légumes doivent rester fermes sous la dent."
+    },
+    {
+     "n": 5,
+     "instruction": "Remettre le tofu, ajouter l'ail, le gingembre et le sucre, faire sauter trente secondes, puis verser les nouilles et la sauce soja. Mélanger vivement une minute pour que tout se laque, terminer hors du feu par l'huile de sésame et la coriandre ciselée."
+    }
+   ],
+   "techniques": [
+    "sauté au wok",
+    "saisie",
+    "blanchiment"
+   ],
+   "variants": [
+    "Version aux pousses de bambou et haricots mungo, d'après 750g.com : 230 g de pousses de bambou égouttées et 100 g de haricots mungo ajoutés avec les nouilles.",
+    "Version aux champignons, d'après chefsimon.com : 200 g de shiitakés ou de pleurotes saisis avec le tofu.",
+    "Version relevée, d'après chefsimon.com : une cuillerée de sriracha dans la sauce soja et un jus de citron vert au service."
+   ],
+   "sensory": {
+    "profile": "savory_umami",
+    "scores": {
+     "sweet": 2,
+     "salty": 4,
+     "acidic": 0,
+     "bitter": 1,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 2,
+     "richness": 2,
+     "freshness": 2,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "soja",
+     "sésame grillé",
+     "gingembre",
+     "tofu fumé"
+    ],
+    "aroma_families": [
+     "grillé",
+     "fumé",
+     "piquant frais"
+    ],
+    "target_textures": [
+     "nouilles souples",
+     "légumes croquants",
+     "cubes de tofu dorés"
+    ],
+    "signature_ingredients": [
+     "Tofu fumé",
+     "Sauce soja",
+     "Huile de sésame grillé"
+    ],
+    "identity_guardrails": [
+     "Le tofu doit être pressé puis saisi à part et remis en fin de cuisson : mélangé cru aux légumes il s'effrite et le plat devient une bouillie.",
+     "Les légumes restent croquants — c'est un sauté, pas un mijoté : dès qu'ils rendent leur eau, les nouilles collent et le laquage tourne en sauce.",
+     "L'huile de sésame grillé s'ajoute HORS du feu : chauffée, elle perd son parfum et devient amère."
+    ]
+   },
+   "conservation": "Se garde 2 jours au réfrigérateur et se réchauffe correctement à la poêle très chaude, avec une cuillerée d'eau. Il se mange aussi froid, en salade de nouilles, avec un trait de citron vert. Ne se congèle pas : les nouilles se défont au dégel et le tofu devient spongieux.",
+   "allergens": [
+    "gluten",
+    "soja",
+    "sésame",
+    "œuf"
+   ]
+  },
+  {
+   "code": "JUM-127",
+   "family": "Ragoût de pois chiches à la tomate",
+   "derived_from": "DEN-017",
+   "cuisine_origin": "Maghreb / cuisine domestique adaptée",
+   "identity_level": "domestic_standard",
+   "category": "plat complet mijoté",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 45,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:ragout-de-pois-chiches",
+    "marmiton.org",
+    "chefsimon.com"
+   ],
+   "description_courte": "Le mijoté de pois chiches du parent sans le poulet : double ration de légumineuse, tomate concassée compotée et une pointe de cannelle, lié en écrasant une louche de grains.",
+   "canonical_arbitration": "Quatre pages relevées sur deux sites. DEUX PORTENT LE MÊME PLAT et sont végétariennes, sur les deux sites : marmiton « Ragoût de pois chiches à la tomate » (4 parts) et chefsimon « Ragoût de pois chiches à la tomate » (4 parts). Une troisième, chefsimon « Ragoût de blettes, pois chiches et tamarin » (4 parts), est végétarienne mais décrit un autre plat ; elle reste au dossier et ne sert qu'aux lignes où elle recoupe les deux premières. La quatrième, chefsimon « Ragoût de chorizo et pois chiches », est écartée du calcul.\n\nLES POIS CHICHES DOUBLENT, et c'est pour cela que ce jumeau existe. Le parent met 250 g de pois chiches cuits égouttés pour quatre, soit 62,5 g par personne, mais il y ajoute 500 g de poulet : la légumineuse y est l'accompagnement de la protéine. Ici elle EST la protéine. Trois lectures, toutes ramenées au poids cuit égoutté : marmiton part de 400 g secs pour quatre et les cuit 2 h 30, ce qui donne environ 1 kg cuits, soit 250 g par personne ; chefsimon en met 500 g égouttés pour quatre, soit 125 g ; la page aux blettes 400 g pour quatre, soit 100 g. Médiane 125 g par personne, soit 500 g pour quatre, et c'est ce qu'on écrit. La lecture haute à 250 g par personne est isolée et vient de la seule page qui compte en sec ; on ne la suit pas, on la déclare.\n\nLA TOMATE EST LA SECONDE LIGNE REJUGÉE, parce que c'est elle qui fait la sauce que le poulet ne fait plus. Trois lectures : 37,5 g par personne chez marmiton, 100 g chez chefsimon — dont la boîte de tomates cerises est lue 400 g, poids courant d'une conserve, et c'est une lecture, pas une pesée —, 100 g sur la page aux blettes — médiane 100 g par personne, soit 400 g pour quatre. Le parent n'en porte aucune : sa sauce venait du bouillon de volaille et du jus du poulet.\n\nLE BOUILLON PASSE DE LA VOLAILLE AUX LÉGUMES, et sa quantité se rejuge avec la tomate. Le parent en met 200 ml pour quatre, soit 50 ml par personne. La seule page qui chiffre un mouillement en met 125 ml par personne, soit 500 ml pour quatre. On écrit 300 ml, et l'écart est énoncé : 500 ml feraient une soupe avec 400 g de tomate en plus, 200 ml ne suffisent plus à mijoter 500 g de pois chiches.\n\nCE QUI EST HÉRITÉ, avec le chiffre du dossier en face. L'OIGNON (120 g pour quatre, soit 30 g par personne) : la seule page qui le pèse en met 100 g pour quatre, soit 25 g par personne — le parent est juste au-dessus, on garde son chiffre. L'AIL (10 g) : deux pages mettent une gousse pour quatre, ce qui est sensiblement moins ; on garde le parent, l'ail n'étant pas ce que l'échange regarde. LE POIVRON ROUGE (150 g) n'est porté par aucune page du dossier : c'est un héritage pur, gardé parce qu'il est ce qui rattache ce plat au mijoté maghrébin dont il dérive, et signalé comme tel. LA CANNELLE (3 g) de même : aucune des deux pages du même plat ne l'emploie — l'une met du cumin et du piment d'Espelette, l'autre rien —, mais elle est la signature du parent et la page au chorizo du même dossier en met. L'HUILE D'OLIVE (20 g) est franchement sous le dossier : marmiton en met 10 cl pour quatre, soit 25 ml par personne, et l'autre page n'en chiffre pas ; on garde les 20 g du parent plutôt que de multiplier par cinq la matière grasse d'un plat qui n'en avait pas besoin.\n\nCE QUE LE DOSSIER FAIT ET QU'ON NE FAIT PAS. La carotte, le navet, le céleri branche et le fenouil sont dans la seule page chefsimon ; l'œuf dur et la tranche de pain frite dans la seule page marmiton ; le tamarin, les blettes et le yaourt grec dans la page qui décrit un autre plat. Une source chacun : tous descendent en variantes.\n\nDURÉES. Préparation : le parent compte 15 minutes, le dossier 20 et 30 — mais ces deux-là épluchent en plus une carotte, un navet, un céleri et un fenouil. On garde 15. Cuisson : 2 h 30 chez marmiton, qui part de pois chiches secs, et 1 h 30 chez chefsimon, qui part de pois chiches déjà cuits comme nous. On écrit 45 minutes : dix de compotage de la tomate, vingt-cinq de mijotage, et le repos ne compte pas. L'écart avec l'heure et demie de chefsimon est assumé — un pois chiche déjà cuit ne gagne plus rien après une demi-heure de bouillon, il se défait.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Même rôle que le Poulet aux pois chiches dont il dérive : la légumineuse porte à la fois le féculent et la protéine, la tomate et le poivron portent le légume. La part compte 125 g de pois chiches cuits, 100 g de tomate et 37,5 g de poivron, soit environ 11 g de protéines — moins que sa base, qui y ajoutait 125 g de poulet par personne, et c'est le prix de l'échange. Les deux pages du dossier le servent seul ; l'une propose du pain à côté, ce qui reste un usage."
+   },
+   "ingredients": [
+    {
+     "form": "Pois chiche cuit, égoutté",
+     "quantity": 500,
+     "unit": "g",
+     "role": "légumineuse",
+     "optional": false
+    },
+    {
+     "form": "Tomate concassée en conserve",
+     "quantity": 400,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Bouillon de légumes",
+     "quantity": 300,
+     "unit": "ml",
+     "role": "mouillement",
+     "optional": false
+    },
+    {
+     "form": "Poivron rouge frais",
+     "quantity": 150,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 120,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 20,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Cannelle moulue",
+     "quantity": 3,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Émincer l'oignon en demi-lunes et le poivron rouge en lanières d'un demi-centimètre, hacher l'ail. Rincer et égoutter les pois chiches."
+    },
+    {
+     "n": 2,
+     "instruction": "Chauffer l'huile d'olive dans une cocotte et y faire fondre l'oignon huit minutes à feu moyen, jusqu'à ce qu'il devienne translucide sans brunir. Ajouter le poivron et poursuivre cinq minutes."
+    },
+    {
+     "n": 3,
+     "instruction": "Ajouter l'ail et la cannelle, remuer trente secondes pour que l'épice s'ouvre dans le gras sans brûler, puis verser la tomate concassée et laisser compoter dix minutes à découvert, le temps qu'elle perde son acidité."
+    },
+    {
+     "n": 4,
+     "instruction": "Ajouter les pois chiches et le bouillon de légumes, saler, couvrir à demi et laisser mijoter vingt-cinq minutes à petit feu : le ragoût est prêt quand la sauce nappe la cuillère et qu'un grain s'écrase sans résistance."
+    },
+    {
+     "n": 5,
+     "instruction": "Écraser à la fourchette une louche de pois chiches contre la paroi de la cocotte et la remettre dans le ragoût : c'est elle qui lie la sauce, sans farine. Rectifier le poivre et laisser reposer dix minutes hors du feu avant de servir."
+    }
+   ],
+   "techniques": [
+    "compotage",
+    "mijotage",
+    "liaison par écrasement"
+   ],
+   "variants": [
+    "Version aux légumes racines, d'après chefsimon.com : une carotte, un navet, une branche de céleri et un morceau de fenouil taillés en dés, ajoutés avec l'oignon.",
+    "Version cuminée, d'après chefsimon.com : remplacer la cannelle par une demi-cuillerée à café de cumin et une pointe de piment d'Espelette.",
+    "Version à l'œuf dur et au pain frit, d'après marmiton.org : un œuf dur écrasé et une tranche de pain frite mixée, incorporés en fin de cuisson comme liant."
+   ],
+   "sensory": {
+    "profile": "earthy_tomato",
+    "scores": {
+     "sweet": 2,
+     "salty": 2,
+     "acidic": 2,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 2,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "pois chiche",
+     "tomate",
+     "cannelle",
+     "oignon fondu"
+    ],
+    "aroma_families": [
+     "épicé doux",
+     "tomate cuite",
+     "légumineuse"
+    ],
+    "target_textures": [
+     "grains fondants",
+     "sauce nappante"
+    ],
+    "signature_ingredients": [
+     "Pois chiche cuit, égoutté",
+     "Tomate concassée en conserve",
+     "Cannelle moulue"
+    ],
+    "identity_guardrails": [
+     "La tomate doit compoter seule avant l'arrivée du bouillon : versée en même temps, elle reste acide et le ragoût garde un goût de conserve.",
+     "La liaison se fait en écrasant une louche de pois chiches, jamais à la farine : c'est ce qui donne au plat sa texture sans lui ajouter un féculent qu'il n'a pas.",
+     "La cannelle est ce qui rattache ce ragoût au mijoté maghrébin dont il dérive ; la retirer en fait un plat de légumineuse méditerranéen sans identité."
+    ]
+   },
+   "conservation": "Se garde 4 jours au réfrigérateur entre 0 et 4 °C et se bonifie au repos, les pois chiches continuant d'absorber la sauce. Se congèle 3 mois en portions ; ajouter une cuillerée d'eau ou de bouillon au réchauffage, le ragoût ayant encore épaissi.",
+   "allergens": []
+  },
+  {
+   "code": "JUM-128",
+   "family": "Poivrons farcis au quinoa et aux légumes",
+   "derived_from": "SRC-021",
+   "cuisine_origin": "France",
+   "identity_level": "domestic_standard",
+   "category": "légume farci",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 25,
+   "cook_minutes": 40,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:poivrons-farcis-au-quinoa",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Les poivrons farcis du parent sans lardons ni bouillon de volaille : une farce de quinoa, de tomate fondue et de feta, liée à l'œuf et rôtie au four.",
+   "canonical_arbitration": "Six pages relevées sur trois sites. TROIS SONT VÉGÉTARIENNES, réparties sur les trois sites : marmiton « Poivrons farcis au quinoa et aux légumes » (4 parts), chefsimon « Poivrons farcis aux 3 quinoas » (parts non déclarées), 750g « Poivrons farcis au quinoa, raisins secs, pignons et fromage de chèvre » (2 parts). Les trois autres portent du jambon, du bacon ou de la viande hachée et sont écartées du calcul.\n\nUNE PAGE SORT DES CALCULS PAR PORTION : chefsimon ne déclare aucun nombre de convives. Elle atteste la structure — quatre poivrons, 200 g de quinoa, deux tomates, un demi-oignon, un fromage frais — mais aucune de ses quantités ne se ramène à la personne. Les médianes qui suivent portent donc sur DEUX lectures.\n\nCE QUE L'ÉCHANGE DE PROTÉINE TOUCHE, et rien d'autre n'est rejugé sans le dire. LES LARDONS DISPARAISSENT et la feta prend leur place : les trois pages végétariennes mettent toutes un fromage frais ou affiné dans la farce, et deux le pèsent — 150 g pour 4 chez marmiton, soit 37,5 g par personne, et 150 g pour 2 chez 750g, soit 75 g. Médiane 56,25 g par personne, soit 225 g pour quatre, et c'est ce qu'on écrit. Le parent mettait 120 g de lardons pour quatre, soit 30 g par personne ; la feta apporte davantage de protéines à masse égale et le plat n'y perd rien.\n\nLE BOUILLON DE VOLAILLE DEVIENT UN BOUILLON DE LÉGUMES, à la même quantité — 7 g, soit le cube émietté que le parent écrit ainsi. C'est la seconde ligne animale du parent, et la plus facile à manquer : elle ne pèse rien et elle suffit à rendre le plat non végétarien. La page marmiton du dossier met elle aussi « 1 bouillon » dans l'eau de cuisson de son quinoa.\n\nLE RIZ DEVIENT DU QUINOA, ET C'EST UN ÉCART QU'IL FAUT DÉCLARER. Le parent farcit au riz ; ce jumeau farcit au quinoa, parce que c'est le plat que le dossier documente — aucune page de poivrons farcis végétariens en français n'a rendu deux sources solides sur deux sites avec du riz. Le féculent change donc, là où un jumeau devrait garder celui de sa base. On l'écrit ici pour que personne n'ait à le redécouvrir : du point de vue du planificateur, ces deux recettes ne pèsent pas sur le même féculent. La quantité : marmiton met 120 g de quinoa sec pour 4, soit 30 g par personne ; 750g met 500 g de quinoa déjà cuit pour 2, soit 250 g cuits par personne, ce qui fait environ 83 g de quinoa sec. Médiane 56,5 g par personne, soit 226 g pour quatre, qu'on écrit 220 g.\n\nCE QUI EST HÉRITÉ, avec le chiffre du dossier en face. LE POIVRON (600 g pour quatre, soit 150 g par personne) : le dossier compte en pièces — quatre poivrons pour 4 parts chez marmiton, quatre pour 2 chez 750g, quatre sans parts chez chefsimon. Un poivron de 150 g par personne est la lecture du parent et la lecture basse du dossier ; on la garde. LA TOMATE (200 g de tomate râpée) : deux pages en mettent deux pièces, ce qui recoupe le chiffre du parent. L'OIGNON (120 g), L'AIL (5 g), L'ŒUF (50 g) et L'HUILE D'OLIVE (60 g) sont hérités ; l'huile est confirmée exactement par la page 750g, qui en met 2 cuillerées à soupe pour 2, soit 15 g par personne, soit 60 g pour quatre. L'œuf n'est porté par aucune page végétarienne du dossier : on le garde parce que c'est lui qui lie la farce chez le parent, et on le signale.\n\nCE QUE LE DOSSIER FAIT ET QU'ON NE FAIT PAS. L'aubergine (une page), les raisins secs (une page), les pignons de pin (deux pages, dont une seule les pèse), la mozzarella à la place de la feta (une page), la ciboulette (une page) : une source chacun, ils descendent en variantes.\n\nDURÉES. Préparation : 15, 15 et 18 minutes au dossier ; on écrit 25, comme le parent, parce que le quinoa se rince et se cuit avant d'entrer dans la farce et que les poivrons se blanchissent. Cuisson au four : les deux pages végétariennes qui la déclarent disent 45 minutes chacune, la troisième ne la déclare pas ; une page écartée dit 50. Le parent en compte 40, et on garde son chiffre parce que ses poivrons sont blanchis avant d'être farcis, ce que la fiche reprend.",
+   "plate": {
+    "role": "complete",
+    "accepts": [
+     "vegetables"
+    ],
+    "reason": "Même rôle que les Poivrons farcis au riz dont il dérive : le quinoa fait le féculent, la feta et l'œuf la protéine, le poivron et la tomate le légume. La part porte 55 g de quinoa sec, 56 g de feta et 200 g de légumes, soit environ 20 g de protéines — au-dessus de sa base, dont les 30 g de lardons par personne pesaient moins. Une salade verte à côté reste l'usage."
+   },
+   "ingredients": [
+    {
+     "form": "Poivron rouge frais",
+     "quantity": 600,
+     "unit": "g",
+     "role": "légume support",
+     "optional": false
+    },
+    {
+     "form": "Feta",
+     "quantity": 225,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Quinoa cru",
+     "quantity": 220,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Tomate râpée",
+     "quantity": 200,
+     "unit": "g",
+     "role": "base humide",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 120,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 60,
+     "unit": "g",
+     "role": "matière grasse",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 50,
+     "unit": "g",
+     "role": "liant",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 5,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Bouillon de légumes",
+     "quantity": 7,
+     "unit": "g",
+     "role": "liquide de cuisson",
+     "optional": false
+    },
+    {
+     "form": "Coriandre fraîche",
+     "quantity": 15,
+     "unit": "g",
+     "role": "herbe",
+     "optional": true
+    },
+    {
+     "form": "Persil frais",
+     "quantity": 10,
+     "unit": "g",
+     "role": "herbe",
+     "optional": true
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": true
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": true
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Rincer le quinoa à l'eau froide jusqu'à ce qu'elle sorte claire : la saponine de l'enveloppe est amère et c'est elle qu'on emporte. Le cuire douze minutes dans deux fois son volume d'eau où l'on aura émietté le bouillon de légumes, puis le laisser gonfler cinq minutes à couvert, hors du feu."
+    },
+    {
+     "n": 2,
+     "instruction": "Couper le chapeau des poivrons, retirer graines et cloisons blanches, et les blanchir cinq minutes à l'eau bouillante salée : c'est ce qui leur permet de tenir quarante minutes au four sans s'affaisser. Les égoutter tête en bas sur un torchon."
+    },
+    {
+     "n": 3,
+     "instruction": "Faire suer l'oignon ciselé et l'ail haché dans la moitié de l'huile d'olive, ajouter la tomate râpée et laisser réduire dix minutes, jusqu'à ce que le mélange ne rende plus d'eau au fond de la poêle."
+    },
+    {
+     "n": 4,
+     "instruction": "Mélanger hors du feu le quinoa, la tomate à l'oignon, la feta émiettée, l'œuf battu et les herbes ciselées. Goûter avant de saler : la feta apporte déjà beaucoup de sel."
+    },
+    {
+     "n": 5,
+     "instruction": "Garnir les poivrons sans tasser la farce, les ranger serrés dans un plat pour qu'ils se tiennent debout, arroser du reste d'huile et enfourner quarante minutes à 180 °C. Ils sont cuits quand la pointe d'un couteau traverse la paroi sans résistance et que la surface de la farce a pris couleur."
+    }
+   ],
+   "techniques": [
+    "blanchiment",
+    "farce",
+    "cuisson au four"
+   ],
+   "variants": [
+    "Version à l'aubergine, d'après marmiton.org : une aubergine en dés revenue avec l'oignon, qui remplace un tiers du quinoa.",
+    "Version aux raisins et pignons, d'après 750g.com : 80 g de raisins secs et 40 g de pignons de pin dans la farce, et du fromage de chèvre frais à la place de la feta.",
+    "Version à la mozzarella, d'après chefsimon.com : mozzarella en dés à la place de la feta, posée sur le dessus pour gratiner les dix dernières minutes."
+   ],
+   "sensory": {
+    "profile": "roasted_vegetal",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 2,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 3,
+     "freshness": 2,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "poivron rôti",
+     "feta",
+     "tomate",
+     "herbes fraîches"
+    ],
+    "aroma_families": [
+     "rôti",
+     "lacté salé",
+     "herbacé"
+    ],
+    "target_textures": [
+     "paroi de poivron fondante",
+     "farce granuleuse"
+    ],
+    "signature_ingredients": [
+     "Poivron rouge frais",
+     "Quinoa cru",
+     "Feta"
+    ],
+    "identity_guardrails": [
+     "Le quinoa doit être rincé avant cuisson : sa saponine rend toute la farce amère et rien ne la rattrape ensuite.",
+     "Les poivrons se blanchissent avant d'être farcis — c'est ce que fait le parent, et c'est ce qui leur évite de s'affaisser en quarante minutes de four.",
+     "La tomate doit avoir rendu son eau avant d'entrer dans la farce, sinon la farce se délite et le fond du plat se remplit de jus."
+    ]
+   },
+   "conservation": "Trois jours au réfrigérateur entre 0 et 4 °C en boîte hermétique, réchauffés vingt minutes à 160 °C plutôt qu'au micro-ondes qui détrempe la peau. La congélation tient deux mois mais ramollit beaucoup le poivron au dégel : mieux vaut congeler la farce seule et garnir des poivrons frais le jour du repas.",
+   "allergens": [
+    "lait",
+    "œuf"
+   ]
+  },
+  {
+   "code": "VAR-035",
+   "family": "Quiche aux poireaux",
+   "cuisine_origin": "France",
+   "identity_level": "domestic_standard",
+   "category": "tarte salée",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 6,
+   "prep_minutes": 20,
+   "cook_minutes": 35,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:quiche-aux-poireaux",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "canonical_arbitration": "Neuf pages sur trois sites, de quatre à six portions. Toutes font la même chose — des poireaux fondus, un appareil aux œufs et à la crème, un fond de pâte — et deux d'entre elles s'en écartent sur un point : l'une supprime la pâte et l'autre ajoute de la patate douce. Elles restent au calcul de la garniture. Le poireau : cinq lignes pesées, à 50, 75, 83,3, 150 et 200 g par personne, médiane 83,3 g par personne, soit 500 g pour six. Deux pages emploient du poireau surgelé et deux le pèsent le plus haut, ce qui n'est pas un hasard : le surgelé est déjà émincé et l'on en met davantage. Le catalogue ne porte que le poireau frais et c'est lui qu'on écrit. Les œufs : neuf lignes, de 0,33 à 1 par personne, médiane 0,67 par personne, soit 4 œufs. La crème : cinq lignes pesées, à 50, 100, 33,3, 50 et 75 ml par personne, médiane 50 ml par personne, soit 300 ml. Le lait est dans trois pages, médiane 25 ml par personne, soit 150 ml. La pâte n'est pesée que par une page, 250 g pour quatre, soit 62,5 g par personne, ce qui donnerait 375 g pour six ; un rouleau du commerce en pèse 230 à 250 et couvre un moule de six parts, on écrit donc 250 g. Cinq pages emploient une pâte brisée, deux une feuilletée, deux la font maison : on écrit la brisée. Le fromage est le point que le dossier ne tranche pas de lui-même et il fallait le trancher ici. Le chèvre frais est dans trois pages, deux le pesant à 37,5 et 25 g par personne — mais ces trois pages se répartissent sur deux sites seulement. Le gruyère râpé est aussi dans trois pages, l'une le pesant à 17,5 g par personne et une autre à 37,5, et ces trois-là se répartissent sur les trois sites. C'est la seule différence entre les deux, et elle décide : on écrit le gruyère, à 27,5 g par personne, soit 165 g, arrondis à 160 g, et le chèvre descend en variante avec sa quantité. La muscade est dans deux pages sur deux sites : 0,5 g. Les lardons fumés sont dans deux pages, mais toutes deux sur marmiton — un seul site, ils ne sont pas attestés et descendent en variante avec leurs 100 g pour quatre. Le saumon frais d'une page, le morbier d'une autre, le jambon de Parme d'une troisième, le boursin d'une quatrième sont à une source chacun. La feta d'une page n'a de toute façon aucune forme au catalogue. Durées : préparation, médiane 20 minutes des neuf lignes ; cuisson, médiane 35 minutes des neuf lignes.\n\nRATTACHEMENT À SA LIGNÉE, décidé le 17 septembre 2026, lot « jumeaux 13 ». Cette quiche est le jumeau végétarien de la Tarte aux poireaux et lardons (FR-036) et vivait hors lignée. Même fond de pâte brisée — 250 g ici, 280 g là —, même fondue de poireaux — 500 g contre 700 g —, même appareil d'œufs et de crème, et la seule chose que l'une a de plus que l'autre est 180 g de lardons fumés. Le planificateur ne le savait pas : faute de `derived_from`, il pouvait servir à Zoé un plat sans rapport pendant que Julien mangeait la tarte aux lardons. Rien d'autre n'est modifié — ni quantité, ni étape, ni arbitrage.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "vegetables"
+    ],
+    "reason": "Pâte, œufs, crème et fromage : le féculent et la protéine sont là, et le poireau fondu ne fait pas un légume d'assiette. Une salade verte à côté est ce que la quiche appelle, et c'est ainsi qu'elle se sert."
+   },
+   "ingredients": [
+    {
+     "form": "Poireau cru",
+     "quantity": 500,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Crème fraîche liquide entière",
+     "quantity": 300,
+     "unit": "ml",
+     "role": "appareil",
+     "optional": false
+    },
+    {
+     "form": "Pâte brisée crue",
+     "quantity": 250,
+     "unit": "g",
+     "role": "fond",
+     "optional": false,
+     "component": {
+      "code": "RAP-004",
+      "name": "Pâte brisée",
+      "requiredQuantity": 250,
+      "requiredUnit": "g"
+     }
+    },
+    {
+     "form": "Gruyère râpé",
+     "quantity": 160,
+     "unit": "g",
+     "role": "fromage",
+     "optional": false
+    },
+    {
+     "form": "Lait entier",
+     "quantity": 150,
+     "unit": "ml",
+     "role": "appareil",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 4,
+     "unit": "u",
+     "role": "appareil",
+     "optional": false
+    },
+    {
+     "form": "Muscade moulue",
+     "quantity": 0.5,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 5,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Fendre les poireaux en quatre dans la longueur et les rincer sous l'eau en écartant les feuilles : le sable se loge entre les couches et ne part pas d'un simple rinçage extérieur. Un grain de sable dans une quiche se sent à chaque bouchée et ne s'explique par rien d'autre."
+    },
+    {
+     "n": 2,
+     "instruction": "Émincer les poireaux en tronçons d'un demi-centimètre, blanc et vert tendre compris, et les faire fondre à couvert vingt minutes à feu doux, sans matière grasse ajoutée mais avec deux cuillerées d'eau. Découvrir ensuite cinq à dix minutes pour évaporer complètement le liquide rendu. Cinq cents grammes de poireaux contiennent près d'un verre d'eau : versée crue sur un fond de pâte, elle le rend mou et détache la garniture."
+    },
+    {
+     "n": 3,
+     "instruction": "Foncer un moule de la pâte brisée, piquer le fond à la fourchette et le cuire à blanc quinze minutes à 180 °C, lesté de billes ou de légumes secs. La cuisson à blanc est ce qui sépare une quiche d'une pâte crue noyée : le fond doit être sec et sablé avant de recevoir quoi que ce soit d'humide."
+    },
+    {
+     "n": 4,
+     "instruction": "Battre les œufs avec la crème et le lait, saler, poivrer et râper la muscade. Ne pas fouetter au batteur : une masse aérée gonfle au four puis retombe en laissant un creux, alors qu'un appareil simplement mélangé à la fourchette prend en flan lisse."
+    },
+    {
+     "n": 5,
+     "instruction": "Répartir les poireaux refroidis sur le fond précuit, parsemer les deux tiers du gruyère, verser l'appareil et terminer par le reste du fromage. Les poireaux doivent être froids : posés tièdes, ils commencent à cuire l'œuf avant même le four et l'appareil devient granuleux."
+    },
+    {
+     "n": 6,
+     "instruction": "Enfourner à 180 °C pour trente-cinq minutes, jusqu'à ce que le centre soit juste pris et tremble encore légèrement quand on secoue le moule. Une quiche cuite jusqu'à immobilité complète est une quiche sèche : elle finit de prendre pendant les dix minutes de repos hors du four, qui sont nécessaires avant de découper."
+    }
+   ],
+   "techniques": [
+    "fondue de poireaux",
+    "cuisson à blanc",
+    "appareil",
+    "cuisson au four",
+    "repos"
+   ],
+   "variants": [
+    "Au chèvre frais : 150 g à la place du gruyère, en morceaux répartis sur les poireaux (marmiton, chefsimon)",
+    "Aux lardons fumés, 100 g pour quatre, rissolés et égouttés (marmiton, deux pages)",
+    "Au saumon frais : 300 g en dés avec un oignon et de la moutarde de Dijon dans l'appareil (marmiton)",
+    "Au morbier en fines lamelles, 100 g pour quatre (750g)",
+    "Sans pâte : poireaux et patate douce liés à quatre œufs et 20 cl de crème, cuits directement au plat (chefsimon)",
+    "Au jambon de Parme et à la muscade, deux tranches taillées en lanières (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "creamy_savory",
+    "scores": {
+     "sweet": 3,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 0,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 1,
+     "richness": 4,
+     "freshness": 1,
+     "intensity": 2
+    },
+    "dominant_flavors": [
+     "poireau fondu",
+     "crème",
+     "gruyère",
+     "muscade"
+    ],
+    "aroma_families": [
+     "végétal cuit",
+     "lactée",
+     "muscade",
+     "beurre"
+    ],
+    "target_textures": [
+     "pâte sablée",
+     "intérieur_fondant_ou_crémeux",
+     "dessus_doré"
+    ],
+    "signature_ingredients": [
+     "Poireau cru",
+     "Crème fraîche liquide entière",
+     "Gruyère râpé"
+    ],
+    "identity_guardrails": [
+     "Les poireaux doivent avoir rendu et perdu toute leur eau avant d'entrer : c'est la cause numéro un d'une quiche détrempée",
+     "Fond cuit à blanc quinze minutes, sinon la pâte reste crue sous la garniture",
+     "Poireaux refroidis avant l'appareil — tièdes, ils font cailler l'œuf",
+     "On sort la quiche quand le centre tremble encore : elle finit de prendre au repos"
+    ]
+   },
+   "conservation": "Se garde 3 jours au réfrigérateur et se réchauffe 12 minutes à 180 °C, jamais au micro-ondes qui ramollit la pâte. Elle se mange aussi froide, ce qui en fait un déjeuner de bureau. Se congèle 2 mois cuite, en parts filmées séparément, et se réchauffe sans décongélation, 20 minutes à 180 °C. La fondue de poireaux se prépare 3 jours à l'avance et se congèle 3 mois : c'est elle qui prend le temps, et la quiche se monte alors en dix minutes.",
+   "allergens": [
+    "gluten",
+    "lait",
+    "œuf"
+   ],
+   "description_courte": "Tarte salée aux poireaux fondus dans un appareil œufs-crème, gratinée au gruyère",
+   "conservation_profile": {
+    "fridge_hours": 72,
+    "eat_immediately": false,
+    "freezable": true,
+    "freezer_months": 2,
+    "serve_cold": null,
+    "source": "parsed"
+   },
+   "remplace": "VAR-035",
+   "derived_from": "FR-036"
+  },
+  {
+   "code": "RAP-023",
+   "family": "Omelette aux champignons",
+   "cuisine_origin": "France",
+   "identity_level": "domestic_standard",
+   "category": "omelette",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 10,
+   "cook_minutes": 10,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:omelette-aux-champignons",
+    "chefsimon.com",
+    "750g.com"
+   ],
+   "description_courte": "Champignons de Paris poêlés à sec puis au beurre, enfermés dans une omelette baveuse crémée",
+   "canonical_arbitration": "Huit pages portent le nom, trois seulement font une omelette aux champignons ET RIEN D'AUTRE : « Omelette aux champignons » sur chefsimon, « Omelette forestière aux champignons » et « Omelette aux champignons » sur 750g. Deux sites distincts, trois sources solides — le dossier passe. Les cinq autres ajoutent chacune un second ingrédient qui change le plat : courgettes, lardons et pommes de terre, pesto, jambon cru, chou-fleur et épinards. Leurs 500 g de pommes de terre et leurs 125 g de lardons seraient entrés dans la médiane si on avait lu le tableau au lieu du dossier ; ils passent en variantes, où ils sont d'ailleurs à leur place.\n\nL'œuf : trois pour une personne, quatre ou cinq pour quatre, deux pour une personne — soit 3 ; 1,1 et 2 œufs par personne. Médiane 2 œufs par personne, ce que confirment quatre des cinq pages écartées, à 2 ; 2 ; 1,67 et 3. Huit œufs pour quatre parts.\n\nLe champignon n'est ramenable que sur deux des trois sources : 100 g pour une personne et 200 g pour quatre, soit 100 et 50 g par personne. La troisième compte « un bol », qui ne se pèse pas. Deux valeurs font une moyenne et non une médiane, et elle vaut 75 g par personne, soit 300 g pour quatre. Les cinq pages écartées donnent 25 ; 31 ; 37,5 ; 100 et « une petite boîte » : la fourchette recouvre la nôtre. Toutes les sources qui le qualifient écrivent « champignons de Paris ».\n\nLa crème est dans deux des trois sources : une cuillerée à soupe de crème liquide entière pour une personne et 30 g de crème fraîche pour quatre, soit 15 et 7,5 g par personne. Moyenne 11 g par personne, soit 45 g pour quatre. C'est peu, et c'est le rôle qu'elle a — elle retarde la coagulation et garde l'omelette baveuse, elle ne fait pas une sauce.\n\nLe beurre n'est nommé que par une source, en alternative à l'huile d'olive et sans quantité. J'écris 30 g pour quatre, quantité de bon sens déclarée comme telle : il en faut pour poêler 300 g de champignons puis cuire l'omelette, et une omelette ne se fait pas à sec. Le persil ou la ciboulette sont dans deux sources sur trois, jamais pesés : 8 g de persil pour quatre.\n\nL'OIGNON EST LE CAS QUI MÉRITE D'ÊTRE DIT. Cinq des huit pages en portent, mais UNE SEULE des trois vraies sources — et cinq sur huit ne veut rien dire ici, puisque quatre de ces cinq sont des omelettes à autre chose. Sur le périmètre qui compte, l'oignon est à une source sur trois : il sort, et passe en variante avec l'échalote. Les 50 g de feta d'une source suivent le même chemin.\n\nLe sel et le poivre sont dans les trois sources sans être chiffrés, sauf un « une demi-cuillerée à café de poivre noir » qui appartient à une page écartée : 4 g et 1 g pour quatre.\n\nLes temps : préparation 5, 5 et 10 minutes, médiane 5, écrite 10 parce que 300 g de champignons se nettoient et s'émincent, ce que la source à cinq minutes ne fait pas — elle en a 200. Cuisson 10 et 2 minutes, la troisième source n'en déclarant aucune ; je retiens 10, la valeur de la page qui poêle ses champignons avant de couler les œufs, tandis que les 2 minutes ne comptent que la prise de l'omelette. Vingt minutes en tout, ce qui en fait l'un des trois plats les plus rapides du lot.\n\nRATTACHEMENT À SA LIGNÉE, décidé le 17 septembre 2026, lot « jumeaux 13 ». Cette omelette est le jumeau végétarien de l'Omelette au jambon (DEN-021) et vivait hors lignée. Même nombre d'œufs — huit pour quatre parts de part et d'autre —, même technique, même matière grasse ; le jambon y est remplacé par 300 g de champignons de Paris, qui est la garniture que les sources mettent à sa place. Trois autres omelettes végétariennes du corpus auraient pu prendre ce rôle — aux épinards, au fromage, aux fines herbes — et c'est celle-ci qui est retenue parce que le champignon est ce qui remplace une charcuterie dans une omelette, et non un légume vert ou un fromage. Rien d'autre n'est modifié.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch"
+    ],
+    "reason": "Œufs et champignons : la protéine et le légume sont dans l'assiette, le féculent n'y est pas. Une omelette appelle du pain, une salade de pommes de terre ou des frites — c'est ainsi que les trois sources la servent, et c'est ce que « main » avec accueil d'un féculent décrit."
+   },
+   "ingredients": [
+    {
+     "form": "Champignon de Paris frais",
+     "quantity": 300,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 8,
+     "unit": "u",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Crème fraîche liquide entière",
+     "quantity": 45,
+     "unit": "g",
+     "role": "liaison",
+     "optional": false
+    },
+    {
+     "form": "Beurre doux",
+     "quantity": 30,
+     "unit": "g",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Persil frais",
+     "quantity": 8,
+     "unit": "g",
+     "role": "aromate",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Nettoyer les champignons au pinceau ou à l'essuie-tout humide plutôt qu'à l'eau, et les émincer en lamelles de trois millimètres. Un champignon lavé boit l'eau comme une éponge et la rendra dans la poêle, ce qui double le temps de cuisson."
+    },
+    {
+     "n": 2,
+     "instruction": "Chauffer une grande poêle à feu vif SANS matière grasse et y jeter les champignons. Ils rendent leur eau dans les deux minutes et bouillent ; laisser l'eau s'évaporer complètement sans baisser le feu. C'est le geste qui distingue un champignon doré d'un champignon gris et mou : le beurre ajouté trop tôt se dilue dans cette eau au lieu de saisir."
+    },
+    {
+     "n": 3,
+     "instruction": "Quand la poêle grésille à sec, ajouter la moitié du beurre et laisser colorer trois à quatre minutes en remuant peu. Saler à ce moment seulement — salés au départ, les champignons rendent leur eau plus vite et n'ont plus rien à dorer. Réserver dans une assiette."
+    },
+    {
+     "n": 4,
+     "instruction": "Casser les huit œufs dans un saladier, ajouter la crème, le reste du sel et le poivre, et battre à la fourchette une dizaine de secondes seulement : juste assez pour que jaunes et blancs soient mêlés, pas assez pour faire mousser. Une omelette battue en mousse gonfle au feu puis retombe en donnant une texture caoutchouteuse."
+    },
+    {
+     "n": 5,
+     "instruction": "Remettre la poêle à feu moyen avec le reste du beurre. Quand la mousse retombe et que le beurre chante sans brunir, verser les œufs d'un coup. Attendre dix secondes, puis ramener sans arrêt les bords cuits vers le centre à la spatule en inclinant la poêle pour que le liquide gagne la place libérée."
+    },
+    {
+     "n": 6,
+     "instruction": "Arrêter ce mouvement quand il reste une surface encore brillante et liquide sur le dessus — environ trois minutes. Répartir alors les champignons et le persil ciselé sur une moitié, laisser dix secondes, puis rabattre l'autre moitié dessus et faire glisser dans le plat."
+    },
+    {
+     "n": 7,
+     "instruction": "Servir immédiatement. Une omelette continue de cuire sur son propre plat pendant une bonne minute, ce qui est prévu : baveuse dans la poêle, elle arrive juste prise dans l'assiette. Attendre cinq minutes suffit à la rendre sèche."
+    }
+   ],
+   "techniques": [
+    "poêlage",
+    "sauté",
+    "cuisson courte"
+   ],
+   "variants": [
+    "Aux lardons et pommes de terre cuites, en omelette paysanne (marmiton)",
+    "Aux courgettes et échalotes, à l'ail et au thym (marmiton)",
+    "Au pesto, deux cuillerées à soupe dans les œufs battus (marmiton)",
+    "Au jambon cru et à la ciboulette, en omelette brouillée (chefsimon)",
+    "À la feta émiettée, 50 g pour une omelette de trois œufs (chefsimon)",
+    "Au chou-fleur, aux pousses d'épinards et au curry (chefsimon)"
+   ],
+   "sensory": {
+    "profile": "earthy_herbal",
+    "scores": {
+     "sweet": 1,
+     "salty": 2,
+     "acidic": 0,
+     "bitter": 0,
+     "umami": 4,
+     "heat": 0,
+     "pungency": 0,
+     "richness": 4,
+     "freshness": 1,
+     "intensity": 2
+    },
+    "dominant_flavors": [
+     "œuf",
+     "champignon",
+     "beurre"
+    ],
+    "aroma_families": [
+     "œuf cuit",
+     "champignon_terreux",
+     "beurre"
+    ],
+    "target_textures": [
+     "moelleux",
+     "champignon_fondant"
+    ],
+    "signature_ingredients": [
+     "Œuf cru",
+     "Champignon de Paris frais",
+     "Beurre doux"
+    ],
+    "identity_guardrails": [
+     "Les champignons se poêlent à sec d'abord : ajoutés crus dans les œufs, ils rendent leur eau dedans",
+     "Les œufs se battent dix secondes, sans mousser",
+     "L'omelette sort baveuse de la poêle — elle finit de cuire dans l'assiette",
+     "Deux œufs par personne : en dessous ce n'est plus un plat"
+    ]
+   },
+   "conservation": "Se mange à la minute : une omelette réchauffée devient caoutchouteuse et rend son eau, et aucune méthode ne le corrige. Les champignons poêlés, eux, se préparent la veille et se gardent 2 jours au réfrigérateur — c'est la moitié du travail faite d'avance, et l'omelette tombe alors à dix minutes. Ne pas congeler le plat monté.",
+   "allergens": [
+    "œuf",
+    "lait"
+   ],
+   "conservation_profile": {
+    "fridge_hours": null,
+    "eat_immediately": true,
+    "freezable": false,
+    "freezer_months": null,
+    "serve_cold": null,
+    "source": "parsed"
+   },
+   "remplace": "RAP-023",
+   "derived_from": "DEN-021"
+  },
+  {
+   "code": "FR-027",
+   "family": "Pommes de terre sautées",
+   "cuisine_origin": "France",
+   "identity_level": "domestic_standard",
+   "category": "accompagnement",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 35,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:pommes-de-terre-sautees",
+    "marmiton.org",
+    "chefsimon.com"
+   ],
+   "canonical_arbitration": "Cinq sources, dont quatre sont des pommes de terre sautées nues et une les garnit de chorizo et d'oignon : ce chorizo et cet oignon appartiennent à la version garnie et passent en variante. La pomme de terre est unanime, 5 sources sur 5, et les lignes chiffrées convergent : 1 kg pour quatre chez Marmiton (rattes), 800 g chez Chef Simon, et ailleurs cinq à six pommes de terre pour trois ou quatre personnes, soit 240 à 250 g par personne. La synthèse donne 250 g par personne, on la suit. Piège de pesée : ces poids sont des poids d'achat, et la référence nutritionnelle porte sur la chair — on déclare 850 g de pommes de terre épluchées pour 1 kg acheté, l'achat étant écrit à l'étape 1. Sur la forme, la synthèse proposait « Pomme de terre cuite » : refusée, la pomme de terre entre crue et c'est son poids cru paré qui compte. Deux sources exigent une chair ferme, une emploie des rattes sans dire si elle les pèle — l'usage veut qu'on saute la ratte en peau, mais le dossier ne l'atteste pas, les seules « non épluchées » qu'il porte étant deux gousses d'ail : la base est donc épluchée, et la peau n'est signalée que comme un usage courant. Le corps gras : trois sources sur cinq citent une huile, médiane 6,9 g par personne, étendue 3 à 10, soit 30 g pour quatre. Sur laquelle : deux la nomment huile d'olive, une dit tournesol, une dit « huile » sans plus, une emploie de la graisse d'oie. L'huile d'olive a la pluralité, on l'écrit ; la graisse d'oie devient une variante nommée, car elle change le goût du plat sans toucher à la méthode. C'est ici que se joue la correction la plus lourde de la reprise : le dossier ne contient AUCUN beurre, et la recette remplacée — écrite sans dossier — en déclarait 20 g en finition, ce qui lui faisait porter « lait » parmi ses allergènes. Le beurre sort et l'allergène disparaît avec lui : une reprise qui laisserait un allergène inventé serait pire qu'une reprise incomplète. L'ail est cité par 4 sources sur 5, médiane 3,8 g par personne, étendue 3 à 12, soit 15 g pour quatre, à peu près trois gousses. La ligne à sept gousses (« plus il y en a, meilleur c'est ») est le haut de l'étendue et ne déplace pas la médiane, ce qui est exactement l'intérêt de prendre la médiane. Le sel est unanime, médiane 2 g par personne, soit 8 g ; une source écrit gros sel gris ou fleur de sel, que le catalogue ne porte pas — écart de vocabulaire et non absence réelle, on emploie Sel fin, chimiquement le même sel. Le poivre est cité par quatre sources sur cinq — deux en ligne propre, deux noyées dans un « sel et poivre » que la synthèse ne compte pas à part —, on l'écrit à 1 g. Le thym est cité deux fois, frais chez Marmiton, sans précision chez Chef Simon : on le garde en optionnel, sous sa forme fraîche. Le persil (une demi-botte, 1/5) reste optionnel lui aussi. Passent en variantes, sous le seuil : romarin (1/5), laurier (1/5), curry (1/5), échalote (1/5), oignon (1/5), piment (1/5). Reste le désaccord de méthode, le plus intéressant du dossier : deux écoles s'y opposent. L'une saute à cru — Chef Simon (10 min de préparation, 20 de cuisson) et la première recette Marmiton. L'autre précuit à l'eau puis colore : la version à l'ail et au persil liste explicitement « eau, assez pour faire bouillir les pommes de terre », et la version aux rattes annonce 35 minutes de préparation pour 25 de cuisson, ce qui ne s'explique que par un pochage préalable. On retient la précuisson, et il faut dire à quel prix : le dossier ne l'atteste explicitement qu'une fois sur cinq, et l'absence d'eau dans les quatre autres listes ne prouve rien, une liste d'ingrédients ne mentionnant presque jamais l'eau de cuisson. Ce qui la fait pencher, ce sont les durées : trois sources sur cinq tiennent toute la cuisson en 20 minutes ou moins, ce qui est court pour des morceaux crus, et la version aux rattes réserve 35 minutes à sa seule préparation. L'école à cru reste parfaitement tenable — Chef Simon lui donne 20 minutes de poêle — et l'étape 3 la signale avec son surcoût de temps : c'est une préférence de méthode, argumentée, pas une nécessité que le dossier imposerait. Les durées déclarées additionnent en conséquence les deux cuissons, sept à huit minutes de pochage puis une vingtaine de minutes de poêle : 35 minutes, au-dessus de la médiane du dossier (20 minutes) précisément parce que la précuisson s'y ajoute. L'eau de pochage n'est pas déclarée en ingrédient : elle est jetée. Les deux lignes orphelines de la synthèse, « meilleur c'est !) » et « tournesol) », sont des fins de parenthèses coupées, aucun ingrédient derrière. Aucune absence réelle au vocabulaire. Le nom du corpus est juste, la recette n'est pas renommée.\n\nRATTACHEMENT À SA LIGNÉE, décidé le 17 septembre 2026, lot « jumeaux 13 ». Ces pommes de terre sont le jumeau végétarien des Pommes de terre sarladaises (SRC-049) et vivaient hors lignée. Le rattachement est le plus littéral de ce lot : même pomme de terre, même poêlée, même ail, même persil — la sarladaise cuit dans 75 g de confit de canard, celle-ci dans 30 g d'huile d'olive, et c'est toute la différence. Le parent porte déjà trois dérivées, dont une « à la graisse d'oie » : la lignée existait, il ne lui manquait que sa version sans graisse animale. Rien d'autre n'est modifié.",
+   "plate": {
+    "role": "side",
+    "accepts": [],
+    "reason": "Un féculent poêlé et rien d'autre : les pommes sautées se rangent à côté d'une entrecôte, d'un confit ou d'un œuf au plat. Le dossier le confirme en creux — dès qu'une de ses sources veut en faire un plat, elle y ajoute 150 g de chorizo."
+   },
+   "ingredients": [
+    {
+     "form": "Pomme de terre crue, épluchée",
+     "quantity": 850,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 30,
+     "unit": "g",
+     "role": "matière grasse de cuisson",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 8,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Thym frais",
+     "quantity": 2,
+     "unit": "g",
+     "role": "aromate",
+     "optional": true
+    },
+    {
+     "form": "Persil frais",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromate",
+     "optional": true
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Prendre environ 1 kg de pommes de terre à chair ferme pour les 850 g de chair annoncés : charlotte, belle de Fontenay ou ratte, dont la tenue supporte le double passage à l'eau puis à la poêle. Une variété farineuse s'y effondrerait en bouillie sans jamais dorer."
+    },
+    {
+     "n": 2,
+     "instruction": "Les peler et les tailler en rondelles épaisses de cinq millimètres ou en cubes de deux centimètres, mais d'un calibre régulier : un mélange de tailles donne inévitablement des morceaux brûlés à côté de morceaux encore crus, et la poêle ne pardonne pas cette approximation."
+    },
+    {
+     "n": 3,
+     "instruction": "Les plonger sept à huit minutes dans une grande eau salée bouillante, jusqu'à ce qu'elles cèdent en surface tout en restant fermes au cœur, puis les égoutter et les laisser sécher dix minutes à l'air libre sur un torchon. Cette précuisson est ce qui permet un intérieur fondant en vingt minutes de poêle ; à cru, il faut compter le double et le résultat reste inégal."
+    },
+    {
+     "n": 4,
+     "instruction": "Chauffer l'huile dans une grande poêle jusqu'à ce que la surface ondule, puis déposer les morceaux en une seule couche, à plat. Faire deux fournées plutôt que d'entasser : serrées, les pommes de terre cuisent dans la vapeur de leur propre eau et ne dorent jamais."
+    },
+    {
+     "n": 5,
+     "instruction": "Laisser cinq bonnes minutes sans y toucher avant de retourner. La croûte a besoin d'un temps de contact continu pour se former, et remuer trop tôt l'arrache par plaques. Continuer ensuite à retourner toutes les trois ou quatre minutes jusqu'à ce que toutes les faces soient dorées."
+    },
+    {
+     "n": 6,
+     "instruction": "Ajouter l'ail haché et le thym effeuillé seulement dans les deux dernières minutes, feu baissé. L'ail brûle en moins d'une minute sur une poêle à cette température et vire à l'amer : mis au départ, il gâche l'ensemble du plat sans qu'on puisse le rattraper."
+    },
+    {
+     "n": 7,
+     "instruction": "Saler à la sortie de la poêle, poivrer, parsemer de persil grossièrement haché et servir aussitôt, à découvert. Sous un couvercle ou dans un plat en attente, la croûte s'amollit en quelques minutes et tout le travail des étapes précédentes est perdu."
+    }
+   ],
+   "techniques": [
+    "parage",
+    "précuisson à l'eau salée",
+    "séchage",
+    "sauter en poêle",
+    "finition aromatique"
+   ],
+   "variants": [
+    "Rattes non épluchées sautées à l'huile d'olive avec deux gousses d'ail en chemise, laurier et thym frais, finies au gros sel (Marmiton)",
+    "À la graisse d'oie, avec échalote, ail, romarin et thym (Chef Simon)",
+    "Au chorizo doux ou fort et à l'oignon, relevées d'une pincée de piment (Chef Simon)",
+    "Relevées de trois pincées de curry (Marmiton)",
+    "À l'ail et au persil, sept gousses pour trois personnes (Marmiton)"
+   ],
+   "sensory": {
+    "profile": "savory_crisp",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 0,
+     "umami": 1,
+     "heat": 0,
+     "pungency": 2,
+     "richness": 3,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "pomme de terre rissolée",
+     "ail",
+     "huile d'olive"
+    ],
+    "aroma_families": [
+     "ail",
+     "herbacé",
+     "grillé"
+    ],
+    "target_textures": [
+     "croûte croustillante",
+     "cœur fondant",
+     "contraste marqué"
+    ],
+    "signature_ingredients": [
+     "Pomme de terre crue, épluchée",
+     "Huile d'olive vierge extra",
+     "Ail cru"
+    ],
+    "identity_guardrails": [
+     "Le contraste entre une croûte dorée et un cœur fondant est tout le plat : sans coloration, ce sont des pommes de terre à l'eau réchauffées.",
+     "L'ail entre dans les deux dernières minutes et jamais au départ ; brûlé, son amertume couvre la pomme de terre et le plat devient inmangeable.",
+     "Une variété à chair ferme est indispensable : une farineuse se délite à la précuisson et on obtient un écrasé huileux au lieu de morceaux distincts."
+    ]
+   },
+   "conservation": "Deux jours au réfrigérateur dans une boîte fermée, mais la croûte ne se rattrape pas au micro-ondes. Réchauffer à la poêle bien chaude, à sec ou avec une goutte d'huile, cinq minutes à découvert en retournant une fois. Ne pas congeler : les morceaux se délitent à la décongélation et rendent leur eau dans la poêle.",
+   "allergens": [],
+   "description_courte": "Pommes de terre précuites à l'eau puis rissolées à l'huile d'olive avec ail",
+   "conservation_profile": {
+    "fridge_hours": 48,
+    "eat_immediately": false,
+    "freezable": false,
+    "freezer_months": null,
+    "serve_cold": null,
+    "source": "parsed"
+   },
+   "remplace": "FR-027",
+   "derived_from": "SRC-049"
+  }
+ ]
+}

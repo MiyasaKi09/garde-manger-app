@@ -1,0 +1,202 @@
+{
+  "dish": "Vegetable dumplings",
+  "slug": "jiaozi-vegetariens",
+  "sources_count": 6,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://thewoksoflife.com/vegetable-dumplings/",
+      "site": "thewoksoflife.com",
+      "nom": "Vegetable Dumplings",
+      "portions": [
+        "10"
+      ],
+      "duree_preparation": "PT180M",
+      "duree_cuisson": "PT20M",
+      "ingredients": [
+        "3 1/2 cups all purpose flour ((450g))",
+        "1 cup tepid water ((plus 2 tablespoons))",
+        "3 tablespoons oil ((plus ¼ cup))",
+        "1 tablespoon ginger ((minced))",
+        "1  large onion ((chopped))",
+        "2 cups shiitake mushrooms ((chopped))",
+        "1 1/2 cups cabbage ((finely shredded))",
+        "1 1/2 cups carrot ((finely shredded))",
+        "1 cup garlic chives ((Chinese chives, finely chopped))",
+        "1/2 teaspoon white pepper",
+        "2 teaspoons sesame oil",
+        "3 tablespoons Shaoxing wine ((or dry sherry))",
+        "2 tablespoon soy sauce",
+        "1 teaspoon sugar",
+        "salt ((to taste))"
+      ],
+      "etapes_empreinte": {
+        "nombre": 9,
+        "signes": 2031,
+        "sha256": "588db3b1e6f50a91"
+      },
+      "sha256_page": "0f98a85cb8b5e77c"
+    },
+    {
+      "url": "https://www.carolinescooking.com/vegetable-dumplings-jiaozi/",
+      "site": "carolinescooking.com",
+      "nom": "Vegetable dumplings (jiaozi)",
+      "portions": [
+        "4",
+        "4 approx (if 5 dumplings per serving)"
+      ],
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "1 cup carrot (coarsely grated)",
+        "1 cup shredded cabbage",
+        "1 cup shitake mushrooms (finely chopped)",
+        "6 tbsp Chinese chives",
+        "1/2 tbsp canola oil (or other neutral oil eg vegetable, avocado)",
+        "1 tsp fresh ginger (minced/grated)",
+        "1 tsp sesame oil",
+        "1 tbsp soy sauce",
+        "1 tbsp Shaoxing wine",
+        "1 pinch sugar",
+        "20  dumpling wrappers (approx)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 7,
+        "signes": 1902,
+        "sha256": "3736f2989d280ac1"
+      },
+      "sha256_page": "4b13a18f4149980d"
+    },
+    {
+      "url": "https://biancazapatka.com/en/vegetable-dumplings-vegan-gyoza/",
+      "site": "biancazapatka.com",
+      "nom": "Vegetable Dumplings (Vegan Gyoza / Potstickers)",
+      "portions": [
+        "40",
+        "40 Dumplings"
+      ],
+      "duree_preparation": "PT35M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "2 ½ cups all-purpose flour (300g) (or sub 1 ½ cup fine white rice flour (200g) + ¾ cup tapioca starch (80g), if gluten-free*)",
+        "½ tsp salt",
+        "⅔ cup hot water (160ml)",
+        "cornstarch or all-purpose flour or rice flour  (for dusting the work surface)",
+        "1-2 tbsp sesame oil",
+        "2  cloves garlic (minced)",
+        "1 tbsp ginger (minced)",
+        "1  onion (diced)",
+        "1  carrot (100g) (shredded)",
+        "7 oz mushrooms (200g) (finely chopped)",
+        "½ stick leek (60g) (finely chopped)",
+        "7 oz cabbage (200g) (shredded)",
+        "2 tbsp soy sauce",
+        "1 tbsp rice vinegar",
+        "salt and pepper (to taste)",
+        "1 tsp sriracha (or sambal oelek (optional))",
+        "3 tbsp soy sauce",
+        "1 tbsp rice vinegar",
+        "1 tbsp agave syrup",
+        "¼ tsp sesame oil",
+        "½ tsp sriracha or sambal oelek (optional)",
+        "1 tbsp toasted sesame seeds",
+        "2 tbsp spring onions (sliced)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 15,
+        "signes": 1996,
+        "sha256": "e02e42df7b817df5"
+      },
+      "sha256_page": "a99b23268d548168"
+    },
+    {
+      "url": "https://www.curiouscuisiniere.com/jiaozi-chinese-dumplings/",
+      "site": "curiouscuisiniere.com",
+      "nom": "How to Make Jiaozi (Chinese Dumplings)",
+      "portions": [
+        "4",
+        "4 people"
+      ],
+      "duree_preparation": "PT210M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "2 c unbleached all purpose flour",
+        "½ c + 1 Tbsp warm water",
+        "1 ½ c filling ((see recipe below))"
+      ],
+      "etapes_empreinte": {
+        "nombre": 27,
+        "signes": 3251,
+        "sha256": "c0da4100d98e1068"
+      },
+      "sha256_page": "ebc17bffc8842e3f"
+    },
+    {
+      "url": "https://redhousespice.com/pan-fried-vegetarian-dumplings/",
+      "site": "redhousespice.com",
+      "nom": "Pan-fried vegetarian dumplings / potstickers (素煎饺)",
+      "portions": [
+        "40",
+        "40 dumplings"
+      ],
+      "duree_preparation": "PT40M",
+      "duree_cuisson": "PT10M",
+      "ingredients": [
+        "150 g spinach (5oz)",
+        "300 g all-purpose flour (2 1/3 cups, plus extra for dusting)",
+        "200 g Pak Choi (or Chinese cabbage)",
+        "60 g carrot",
+        "5  dried Shiitake mushroom (pre-soaked (see note 1))",
+        "30 g dried mung bean vermicelli noodles (pre-soaked)",
+        "1  egg",
+        "1 stalk spring onion (finely chopped)",
+        "1/2 teaspoon minced ginger",
+        "1 pinch ground Sichuan pepper",
+        "1 tablespoon cooking oil",
+        "1 teaspoon salt",
+        "Cooking oil  (for frying)"
+      ],
+      "etapes_empreinte": {
+        "nombre": 19,
+        "signes": 1779,
+        "sha256": "dcd9a7f2558bdbfa"
+      },
+      "sha256_page": "a07ddfa711f88866"
+    },
+    {
+      "url": "https://www.marmiton.org/recettes/recette_raviolis-chinois-vegetariens_345092.aspx",
+      "site": "marmiton.org",
+      "nom": "Raviolis chinois végétariens : la meilleure recette",
+      "portions": "4 personnes",
+      "duree_preparation": "PT2H",
+      "duree_cuisson": "PT15M",
+      "ingredients": [
+        "1 chou chinois (pak choi)",
+        "1 carotte",
+        "2 gousses d'ail",
+        "100 g de pousses de bambou",
+        "20 g de champignons noirs déshydratés",
+        "1 poireau",
+        "1 oignon de printemps",
+        "1 cuillère à soupe de sauce soja",
+        "1 cuillère à café d'huile de sésame",
+        "1 cuillère à café de poivre",
+        "1 morceau de gingembre frais de la taille d'un pouce",
+        "1 pincée de coriandre",
+        "1 pincée de ciboulette",
+        "1 cuillère à café de vinaigre",
+        "1 oeuf",
+        "100 g de germes de soja",
+        "1 cuillère à café de sésame",
+        "500 g de farine",
+        "1 grand verre d'eau chaude"
+      ],
+      "etapes_empreinte": {
+        "nombre": 13,
+        "signes": 1683,
+        "sha256": "64657f6ac95ca757"
+      },
+      "sha256_page": "63fdd27562ec1777"
+    }
+  ]
+}

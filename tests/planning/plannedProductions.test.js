@@ -8,9 +8,9 @@ import { buildCanonicalPlanPayload } from '@/lib/domain/planning/canonicalPlanPa
 //   fois, à hauteur de N (dimensionnement au niveau foyer) ;
 // - les créneaux consommateurs (source 'planned_production') réchauffent sans
 //   ingrédients propres et DÉPENDENT de la tâche de cuisson (F10, test L) ;
-// - fenêtre de conservation déterministe : profil de la recette si déclaré,
-//   sinon 72 h réfrigérateur (même règle que la matérialisation réelle,
-//   lib/shelfLifeRules.js — F13) ;
+// - fenêtre de conservation DÉCLARÉE : `shelfLifeDays` de la recette, sinon
+//   les heures de son profil de conservation (ici 72 h) — sans déclaration,
+//   aucune production (chantier C1, plus jamais la constante de 3 jours) ;
 // - portions publiées depuis les planned_servings, jamais le nombre de
 //   lignes (test K) ;
 // - zéro production quand la mutualisation ne domine pas → plan et payload
@@ -33,6 +33,7 @@ const makeRecipe = (code, family, form = 'courgette cuite', overrides = {}) => (
   exactSteps: [{ n: 1, instruction: 'Préparer.' }],
   nutritionPerServing: { kcal: 500, proteinG: 30, carbsG: 55, fatG: 18, fiberG: 8 },
   nutritionCoverage: { pct: 100 },
+  conservationProfile: { fridgeHours: 72, eatImmediately: false, freezable: null, freezerMonths: null, serveCold: null, source: 'parsed' },
   ...overrides,
 })
 

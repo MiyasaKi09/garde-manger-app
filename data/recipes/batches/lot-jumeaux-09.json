@@ -1,0 +1,1099 @@
+{
+ "lot": "jumeaux-09",
+ "intention": "Neuvième lot de jumeaux végétariens de même lignée (plan « planning parfait », chantier C2, exécuté par la chaîne du chantier C6). Un jumeau est le MÊME PLAT que sa base carnée — même structure, même féculent, même technique, même rôle d'assiette — dont la protéine animale est remplacée par une protéine végétale que les sources attestent ; « derived_from » porte le code du parent, ce qui en fait pour le planificateur la version végétarienne du même plat, et non un autre plat servi à Zoé. Cinq jumeaux visés, CINQ écrits, aucun refusé — mais ce résultat a une condition qu'il faut dire avant tout le reste.\n\nCE QUE LES TROIS SITES FRANÇAIS N'ONT PAS. La chaîne find-recipe-urls interroge marmiton, chefsimon et 750g. Sur les cinq plats de ce lot elle ne rend RIEN pour quatre d'entre eux : ni « jerk tofu », ni « tofu jerk jamaïcain », ni « san bei tofu », ni « tofu trois tasses », ni « salade césar végétarienne », ni « césar aux pois chiches », ni « empanadas de lentejas », ni « empanadas aux lentilles » — cette dernière requête ne ramenant qu'une page unique, aux pois chiches et au curry, qui n'est pas le même plat. Seules les « aubergines panées » sont couvertes, et le README dit d'ailleurs pourquoi : ce sont des sites français, qui couvrent la cuisine française et les classiques internationaux, beaucoup moins un plat taïwanais ou une empanada argentine végétarienne. Le plan a donc été complété, comme l'ont déjà fait les lots de jumeaux 02 à 07 (dont les recettes portent thefoodietakesflight.com, tavolartegusto.it, mindmegette.hu ou redhousespice.com), par des pages trouvées sur les sites d'origine du plat — puis passées SANS AUCUNE EXCEPTION par la même chaîne : scrape-recipe-sources pour ne garder que les faits et l'empreinte des étapes, audit-recipe-sources pour exiger deux sources solides sur deux sites distincts, et check-no-copied-prose sur le texte intégral gardé hors dépôt. Le dossier fait autorité, la mémoire n'en a aucune : ce qui change ici est l'endroit où l'on va chercher le dossier, jamais le fait d'en avoir un.\n\nLE PRINCIPE D'ARBITRAGE DU LOT, énoncé une fois et appliqué cinq fois : on ne rejuge que les lignes que l'échange de protéine touche, plus celles sur lesquelles le dossier du jumeau est chiffré et unanime. Tout le reste est hérité du parent. La raison est arithmétique : les dossiers des parents comptent quatre à neuf pages là où trois des cinq jumeaux tiennent sur trois ou quatre — rejuger un paprika sur une ligne unique reviendrait à remplacer une mesure par une plus faible. Chaque fois que ce principe joue, la fiche le dit à l'endroit exact où il joue.\n\nDEUX DOSSIERS POUR UN JUMEAU, et c'est le cas le plus instructif du lot. « Aubergines panées » rend douze pages sur trois sites français, dont neuf solides — mais quatre de ces neuf sont des aubergines FOURRÉES au jambon, à la coppa, au provolone, à la mozzarella ou à la fourme, et une cinquième est un millefeuille : ce ne sont ni le même montage ni, pour trois d'entre elles, un plat végétarien. Une fois ces cinq pages écartées à la lecture, il ne reste que marmiton, donc UN SEUL SITE, ce que l'audit ne voit pas parce qu'il compte les neuf solides. C'est pour cela qu'un second dossier a été ouvert sous le nom italien du plat, « cotolette di melanzane », qui rend quatre pages sur quatre sites, toutes des tranches d'aubergine panées et frites, toutes avec du fromage râpé dans la panure sauf une. La fiche s'appuie sur les deux dossiers et le déclare dans « sources ». Sans le second, ce jumeau aurait dû être refusé pour site unique.\n\nAUCUNE FORME NOUVELLE N'A ÉTÉ ARBITRÉE. Les cinq recettes n'emploient que des formes déjà employables au vocabulaire d'écriture — vérifiées une par une dans data/recipes/authoring-vocabulary.json, et non devinées. Le fichier data/foods/arbitrations/lot21-jumeaux-09.json n'existe donc pas, faute d'avoir quoi que ce soit à y écrire, et aucune recette du lot ne passe « valide avec réserve » pour ce motif.\n\nCE QUE LE LOT DÉPLACE (porte n° 7 du chantier C6) : P7, substitutions hors lignée. Cinq lignées carnées de plus reçoivent leur jumeau — Jerk chicken, San bei ji, Salade César, Escalope milanaise, Empanadas argentines au bœuf — dont quatre relèvent de catégories que le §2.2 compte parmi les manquantes (plat sauté, plat pané, salade complète, chausson). Il déplace aussi P13 en marge : Jamaïque, Taïwan et Argentine sont des cuisines à une ou deux recettes dans le vivier.",
+ "refuses": [],
+ "recipes": [
+  {
+   "code": "JUM-091",
+   "family": "Jerk tofu",
+   "derived_from": "REAL-288",
+   "cuisine_origin": "Jamaïque",
+   "identity_level": "named_traditional_dish",
+   "category": "tofu grillé épicé",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 15,
+   "cook_minutes": 20,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:jerk-tofu",
+    "makeitdairyfree.com",
+    "kathysvegankitchen.com",
+    "tastingtable.com",
+    "connoisseurusveg.com",
+    "seasonedskilletblog.com",
+    "veganwithgusto.com",
+    "healthiersteps.com",
+    "oaktownspiceshop.com"
+   ],
+   "description_courte": "Tofu ferme pressé, mariné une nuit dans une purée de piment scotch bonnet, piment de la Jamaïque, thym et ciboule, puis grillé jusqu'à ce que la marinade caramélise",
+   "canonical_arbitration": "Huit pages sur huit sites distincts, de deux à huit portions, toutes titrées jerk tofu ou jamaican jerk tofu. Le premier tri est éditorial et il coupe le dossier en deux : QUATRE pages détaillent la marinade ingrédient par ingrédient (makeitdairyfree, kathysvegankitchen, tastingtable, connoisseurusveg) et quatre partent d'un mélange d'épices du commerce ou d'une sauce jerk renvoyée à une autre fiche (seasonedskillet, veganwithgusto, healthiersteps, oaktownspiceshop). Les quatre premières font les quantités d'épices ; les huit font le tofu, l'huile et les durées, parce que ces lignes-là sont chiffrées partout. Une page sur huit s'écarte franchement du plat parent en glaçant le tofu au miel et au beurre après cuisson — elle sort de tous les calculs sauf du tofu.\n\nLE TOFU est la ligne la mieux chiffrée du dossier — sept pages sur huit la pèsent, la huitième écrivant « un bloc » sans autre précision — et c'est elle qui remplace les 1,8 kg de poulet du parent. Les sept blocs pesés sont annoncés en onces et se ramènent à 99,25 ; 99,25 ; 227 ; 99,25 ; 113,5 ; 70,8 et 114,3 g par personne. Médiane des sept, 99,25 g par personne, soit 397 g, qu'on écrit 400 g. La ligne à 227 g est une page pour deux personnes qui emploie un bloc entier ; elle ne déplace pas la médiane, et c'est exactement pourquoi on ne prend pas la moyenne. Le tofu retenu est FERME et non soyeux : les huit pages précisent firm, extra-firm ou super-firm, et UNE seule le congèle puis le décongèle pour ouvrir sa texture — ce passage au congélateur est une variante portée par une page, pas la recette.\n\nLA MARINADE, sur les quatre pages qui la détaillent. L'oignon : 37,5 ; 40 ; 75 et 25 g par personne, médiane 38,75 g par personne, soit 155 g, écrits 150 g. La ciboule, comptée en tiges par cinq pages, se ramène à 6,4 ; 9,4 ; 9,4 ; 15 et 15 g par personne à quinze grammes la tige : médiane 9,4 g par personne, soit 37,5 g, écrits 40 g. L'ail est compté en gousses partout, de 0,29 à 1,25 par personne, médiane une demi-gousse par personne, soit deux gousses et 10 g. Le gingembre : 3,75 ; 1 ; 2,5 ; 1,75 et 2,5 g par personne, médiane 2,5 g par personne, soit 10 g. La sauce soja : 15 ; 30 ; 60 ; 5,6 ; 15 et 4,3 ml par personne, médiane 15 ml par personne, soit 60 ml. Le jus de citron vert : 7,5 ; 15 ; 60 ; 7,5 ; 15 et 8,6 ml par personne, médiane 11,8 ml par personne, soit 47 ml, écrits 50 ml.\n\nLE PIMENT SCOTCH BONNET est le garde-fou du plat et il est dans cinq pages, à 0,5 ; 0,5 ; 1 ; 0,25 et 0,14 pièce par personne : médiane une demi-pièce par personne, soit deux piments pour quatre. Trois de ces cinq pages autorisent le habanero à la place, ce qui est le remplacement usuel hors des Antilles ; on écrit le scotch bonnet, que le catalogue porte et que le parent emploie. LE PIMENT DE LA JAMAÏQUE, l'allspice, est dans les quatre pages détaillées, à 1,5 ; 1,75 ; 2,25 et 0,6 g par personne : médiane 1,6 g par personne, soit 6,4 g, écrits 6 g. Il est MOULU dans trois pages sur quatre et en grains dans la quatrième ; le parent écrit les grains, mais une marinade mixée à froid ne broie pas des baies entières sans laisser du gravier, et la majorité du dossier du jumeau tranche pour la poudre. C'est la seule ligne du parent que ce lot rejuge sans y être forcé par l'échange de protéine, et elle est rejugée parce que trois pages sur quatre la contredisent.\n\nLE THYM est la ligne la plus faible du dossier et il faut le dire, décompte relu sur le dossier et non sur le tableau de synthèse : QUATRE pages seulement portent du thym, et sur ces quatre, deux le comptent FRAIS — 1,25 et 0,63 g par personne — quand les DEUX autres le donnent sec, une cuillerée à café pour quatre parts chez l'une, une cuillerée et demie à soupe de thym moulu chez l'autre. Les quatre pages restantes n'en portent aucun, leur mélange du commerce en contenant déjà. On écrit 4 g de thym frais pour quatre : le chiffre tombe entre les deux lignes fraîches, et il équivaut à peu près à la cuillerée à café séchée de la troisième page. LE SUCRANT divise le dossier en quatre : sucre brun (une page), sirop d'érable (trois), mélasse (deux), miel (une). Aucun ne fait majorité, et la fiche parente écrit du sucre brun ; on garde donc le sucre brun, avec la médiane des quantités toutes formes confondues — 18,75 ; 7,5 ; 20 ; 10 et 7,5 g par personne, médiane 10 g par personne, soit 40 g. La mélasse et le sirop d'érable passent en variantes, avec les pages qui les portent.\n\nLA MUSCADE ET LA CANNELLE n'existent pas dans la fiche parente et entrent ici : la muscade est dans trois pages sur quatre, à une cuillerée à café pour deux à quatre parts, écrite 2 g ; la cannelle dans deux pages sur huit, écrite 1 g. Ce sont les épices douces du jerk, et un tofu n'a pas le gras d'une volaille pour porter le piment tout seul. L'HUILE, absente du parent qui grille sa viande sur le bois, est chiffrée par cinq pages à 2,5 ; 3,75 ; 4,3 ; 5,6 et 7,5 ml par personne : médiane 4,3 ml par personne, soit 17 ml, écrits 20 ml. Sans elle le tofu colle à la grille et laisse sa croûte dessus. Le sel et le poivre ne sont jamais pesés autrement qu'en cuillerées : 5 g et 2 g.\n\nCE QUE LE DOSSIER PORTE ET QU'ON N'ÉCRIT PAS : le riz aux haricots rouges de deux pages, la salsa d'ananas d'une troisième, les tomates et la coriandre d'une quatrième. Ce sont des accompagnements, et le parent est lui aussi une protéine seule qui appelle un féculent — c'est ce que dit son rôle d'assiette, et le jumeau garde le même. Les durées : préparation, médiane 10 minutes des six lignes qui excluent la marinade, portée à 15 parce que le pressage du tofu est compté à part par deux pages et prend un quart d'heure ; cuisson, médiane 20 minutes des huit lignes — 10, 12, 16, 20, 20, 30, 30 et 45 — écrite 20.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch",
+     "vegetables"
+    ],
+    "reason": "Même rôle que Jerk chicken, et pour la même raison : 100 g de tofu mariné par part sortant du gril, rien d'autre dans l'assiette. Deux pages du dossier le servent sur du riz aux haricots rouges, une troisième avec une salsa d'ananas — trois accompagnements différents, ce qui est le signe qu'il en faut un et que le plat n'en porte aucun."
+   },
+   "ingredients": [
+    {
+     "form": "Tofu ferme",
+     "quantity": 400,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 150,
+     "unit": "g",
+     "role": "marinade",
+     "optional": false
+    },
+    {
+     "form": "Ciboule fraîche",
+     "quantity": 40,
+     "unit": "g",
+     "role": "marinade",
+     "optional": false
+    },
+    {
+     "form": "Piment scotch bonnet",
+     "quantity": 2,
+     "unit": "u",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Piment de la Jamaïque moulu",
+     "quantity": 6,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Thym frais",
+     "quantity": 4,
+     "unit": "g",
+     "role": "herbe",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Gingembre frais",
+     "quantity": 10,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Sauce soja",
+     "quantity": 60,
+     "unit": "ml",
+     "role": "marinade",
+     "optional": false
+    },
+    {
+     "form": "Jus de citron vert frais",
+     "quantity": 50,
+     "unit": "ml",
+     "role": "acidité",
+     "optional": false
+    },
+    {
+     "form": "Sucre brun",
+     "quantity": 40,
+     "unit": "g",
+     "role": "équilibre",
+     "optional": false
+    },
+    {
+     "form": "Muscade moulue",
+     "quantity": 2,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Cannelle moulue",
+     "quantity": 1,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 20,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 5,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Sortir le tofu de son emballage, l'envelopper dans un torchon propre, poser une planche dessus et un poids de deux kilos par-dessus, et laisser rendre son eau vingt minutes. Cette étape n'est pas facultative et c'est elle qui remplace l'entaillage de la volaille dans la recette d'origine : un tofu gorgé d'eau ne peut rien absorber, et la marinade reste alors une flaque au fond du plat au lieu d'entrer dans la matière."
+    },
+    {
+     "n": 2,
+     "instruction": "Pendant ce temps, réduire en purée lisse au mixeur l'oignon en gros morceaux, les piments scotch bonnet épépinés, la ciboule, l'ail, le gingembre, le piment de la Jamaïque, le thym effeuillé, la muscade, la cannelle, le sucre brun, la sauce soja, le jus de citron vert, le sel et le poivre. Mixer et non hacher : les fibres de l'oignon et de la ciboule doivent être rompues pour libérer leur eau, qui est le véhicule de tout le reste."
+    },
+    {
+     "n": 3,
+     "instruction": "Manipuler les piments avec des gants ou se laver longuement les mains ensuite, et goûter la marinade du bout d'une cuillère avant d'aller plus loin. Un scotch bonnet ne se juge pas à sa taille — d'un piment à l'autre l'écart va du simple au triple — et c'est le seul moment où l'on peut encore corriger en retirant une partie de la purée et en la remplaçant par un peu d'eau."
+    },
+    {
+     "n": 4,
+     "instruction": "Couper le tofu pressé en quatre pavés d'égale épaisseur, les ranger à plat dans un plat creux et les couvrir de marinade sur toutes les faces, dessous compris. Filmer et laisser au réfrigérateur une nuit, ou au minimum quatre heures. Le tofu n'a ni gras ni jus propres : tout ce qu'il aura de goût lui vient de ce temps d'attente, et une marinade de trente minutes ne dépasse pas le premier millimètre."
+    },
+    {
+     "n": 5,
+     "instruction": "Sortir le tofu une demi-heure avant de le cuire, l'égoutter en réservant la marinade restante, et l'éponger sommairement. Le laisser ruisselant ferait bouillir la surface au lieu de la griller ; le sécher complètement effacerait la couche d'épices qui doit caraméliser."
+    },
+    {
+     "n": 6,
+     "instruction": "Huiler la grille ou une poêle-gril, chauffer à feu moyen — jamais vif — et poser les pavés. Compter huit à dix minutes par face en ne les retournant qu'une fois. Le sucre de la marinade brûle bien avant que la chaleur n'ait traversé le tofu : sur un feu vif on obtient un pavé noir et froid, ce qui est exactement le défaut que le poulet jerk évite en cuisant longuement à distance des braises."
+    },
+    {
+     "n": 7,
+     "instruction": "Faire réduire deux minutes la marinade réservée dans une petite casserole, à frémissement, puis en napper le tofu au moment de servir. Elle a été au contact du tofu cru et ne se sert pas telle quelle ; deux minutes de bouillon suffisent, et elle épaissit en même temps assez pour tenir sur la tranche."
+    }
+   ],
+   "techniques": [
+    "pressage du tofu",
+    "mixage",
+    "marinade longue",
+    "grillade à feu modéré",
+    "réduction de la marinade"
+   ],
+   "variants": [
+    "Tofu congelé puis décongelé avant pressage, pour une texture plus spongieuse et plus absorbante (makeitdairyfree, seule page du dossier à le faire)",
+    "Au four, 15 minutes à 200 °C par face, plutôt qu'au gril (kathysvegankitchen)",
+    "À la friteuse à air, 10 à 15 minutes à 190 °C en secouant le panier (kathysvegankitchen)",
+    "Sirop d'érable à la place du sucre brun, une cuillerée et demie à soupe (kathysvegankitchen, tastingtable, veganwithgusto)",
+    "Mélasse à la place du sucre brun, deux cuillerées à soupe (makeitdairyfree, connoisseurusveg)",
+    "Habanero à la place du scotch bonnet (kathysvegankitchen, tastingtable, connoisseurusveg)",
+    "Vinaigre de cidre ou vinaigre blanc dans la marinade, une à trois cuillerées à soupe (makeitdairyfree, oaktownspiceshop)",
+    "Servi en bol sur du riz aux haricots rouges et lait de coco (connoisseurusveg, kathysvegankitchen)",
+    "Avec une salsa d'ananas, tomate, oignon rouge et coriandre (kathysvegankitchen)",
+    "Sauté à la poêle avec des dés d'ananas caramélisés à la fin (connoisseurusveg)"
+   ],
+   "sensory": {
+    "profile": "spicy_umami",
+    "scores": {
+     "sweet": 3,
+     "salty": 4,
+     "acidic": 3,
+     "bitter": 1,
+     "umami": 4,
+     "heat": 5,
+     "pungency": 4,
+     "richness": 2,
+     "freshness": 2,
+     "intensity": 5
+    },
+    "dominant_flavors": [
+     "pimenté",
+     "allspice",
+     "thym",
+     "soja fermenté"
+    ],
+    "aroma_families": [
+     "piment",
+     "allspice",
+     "thym",
+     "ail",
+     "agrume",
+     "gingembre",
+     "soja_fermenté",
+     "grillé"
+    ],
+    "target_textures": [
+     "croûte_caramélisée",
+     "cœur_ferme"
+    ],
+    "signature_ingredients": [
+     "Tofu ferme",
+     "Piment scotch bonnet",
+     "Piment de la Jamaïque moulu",
+     "Thym frais"
+    ],
+    "identity_guardrails": [
+     "Le tofu se presse avant de mariner : sans cela la marinade n'entre pas et le plat n'a de goût qu'en surface",
+     "Scotch bonnet, piment de la Jamaïque et thym ensemble — retirer l'un des trois donne un autre plat qui n'est plus jerk",
+     "Marinade d'une nuit, jamais d'une demi-heure : c'est le temps qui fait le goût là où la volaille avait son gras",
+     "Feu moyen et non vif : le sucre de la marinade noircit avant que le tofu ne chauffe",
+     "Le tofu est ferme, jamais soyeux : le soyeux ne tient pas sur une grille"
+    ]
+   },
+   "conservation": "Se garde 4 jours au réfrigérateur dans un récipient fermé, avec sa marinade réduite versée dessus : c'est un plat qui gagne au deuxième jour, le piment s'arrondissant et le thym se diffusant dans toute l'épaisseur. Aucune page du dossier ne parle de congélation ; ce que fait physiquement un tofu congelé est en revanche connu et l'une d'elles s'en sert exprès — l'eau qu'il contient gèle en cristaux, ouvre la matière et la rend spongieuse. Le plat cuit se congèle donc 2 mois sans risque sanitaire, mais il ressort avec une texture nettement plus lâche : à réserver au tofu émietté dans une farce ou un sandwich, pas au pavé servi entier. C'est une déduction de la physique du produit et non une consigne des sources, et elle est écrite comme telle. La marinade crue, elle, ne se garde pas plus de 24 heures et ne se réutilise jamais d'une fournée sur l'autre. Réchauffage : 6 minutes à la poêle à feu doux, ou 10 minutes au four à 180 °C ; le micro-ondes rend le tofu caoutchouteux.",
+   "allergens": [
+    "soja"
+   ]
+  },
+  {
+   "code": "JUM-092",
+   "family": "San bei doufu",
+   "derived_from": "REAL-210",
+   "cuisine_origin": "Taïwan",
+   "identity_level": "named_traditional_dish",
+   "category": "tofu trois tasses",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 25,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:san-bei-doufu",
+    "thefoodietakesflight.com",
+    "woonheng.com",
+    "homenaturallymade.com",
+    "browngirlveganeats.com"
+   ],
+   "description_courte": "Tranches de tofu ferme dorées à la fécule puis glacées dans les trois liquides taïwanais — huile de sésame, sauce soja et vin de riz — avec de l'ail entier, du gingembre et une poignée de basilic jetée hors du feu",
+   "canonical_arbitration": "Quatre pages sur quatre sites distincts, de trois à six portions, toutes titrées three cup tofu ou san bei tofu et trois d'entre elles portant les caractères 三杯豆腐 dans leur titre. Le dossier est petit mais il est unanime, ce qui est rare : les quatre construisent exactement la même chose, et l'accord porte jusque sur les proportions, parce que le nom du plat EST sa recette — trois tasses, c'est-à-dire des volumes égaux d'huile de sésame, de sauce soja et de vin de riz.\n\nLE TOFU, pesé par les quatre pages : 142 ; 132 ; 94,5 et 112,5 g par personne. Médiane 122,25 g par personne, soit 489 g, qu'on écrit 500 g. Il est FERME ou extra-ferme dans les quatre — le soyeux se déferait au premier retournement — et c'est bien le remplaçant du haut de cuisse désossé du parent, à cela près que le tofu ne rend ni jus ni gras et doit donc être doré à part avant d'entrer dans la sauce.\n\nLES TROIS LIQUIDES. Huile de sésame grillé : 11,25 ; 15 ; 10 et 7,5 ml par personne, médiane 10,6 ml par personne, soit 42,5 ml, écrits 40 ml. Sauce soja légère : 11,25 ; 15 ; 10 et 7,5 ml par personne, médiane 10,6 ml par personne, soit 42,5 ml, écrits 40 ml. Vin de riz : 11,25 ; 15 ; 10 et 7,5 ml par personne, médiane 10,6 ml par personne, soit 42,5 ml, écrits 40 ml. Les trois médianes sont identiques et ce n'est pas une coïncidence de calcul : c'est la définition du plat, et l'écrire autrement lui ferait perdre son nom. Trois pages sur quatre nomment le vin Shaoxing et la quatrième le michiu taïwanais ; le catalogue porte le vin de riz taïwanais, que la fiche parente emploie déjà, et c'est celui qu'on écrit. Deux pages emploient une part de sauce soja foncée pour la couleur ; on garde le soja léger seul, comme le parent, et la foncée passe en variante.\n\nCE QUE LE JUMEAU AJOUTE ET QUE LE PARENT N'A PAS : la fécule. Trois pages sur quatre enrobent le tofu de fécule de maïs avant de le faire dorer, à 11,25 ; 10,7 et 6 g par personne — médiane 10,7 g par personne, soit 43 g, écrits 40 g. La quatrième pré-cuit son tofu à l'eau bouillante puis le poêle nu. L'enrobage n'est pas une coquetterie : c'est ce qui donne au tofu la peau qui accroche la sauce, rôle que la peau du poulet tient toute seule dans la fiche parente. L'huile neutre de cette friture n'est chiffrée que par deux pages, à 10 et 2,7 ml par personne ; on écrit 25 ml pour quatre, ce qu'une poêle antiadhésive demande pour dorer cinq cents grammes de tofu en deux fournées sans le noyer.\n\nLES AROMATES. L'ail entier, compté en gousses par trois pages, à 2 ; 1,67 et 0,83 gousse par personne : médiane 1,67 gousse par personne, soit 35 g pour quatre. La quatrième page emploie de l'ail en poudre dans sa panure, ce qui n'est pas le même geste et sort du calcul. C'est deux fois moins que la fiche parente, qui écrit 80 g, et la ligne est rejugée parce que l'échange de protéine la touche : le poulet braise trente-cinq minutes et l'ail entier a le temps de confire, le tofu ne passe que dix minutes dans la sauce et un ail aussi abondant y resterait cru. Le gingembre, en tranches dans les quatre pages : 3 ; 11,7 ; 2 et 3,75 g par personne, médiane 3,4 g par personne, soit 13,6 g, écrits 15 g. Le basilic, compté en bouquets et en tasses : 8,3 ; 5 et 7,5 g par personne, médiane 7,5 g par personne, soit 30 g. Une SEULE page sur quatre le nomme thaï, et c'est elle qui propose en toutes lettres le basilic ordinaire comme pis-aller ; les trois autres écrivent simplement « basilic », sans trancher. Le dossier du jumeau ne décide donc pas de cette ligne : on écrit le basilic thaï parce que c'est la forme de la fiche parente et du catalogue, en application du principe d'arbitrage du lot — hériter ce que l'échange de protéine ne touche pas. Le sucre : 4,5 ; 2 ; 2 et 1 g par personne, médiane 2 g par personne, soit 8 g — écrit en sucre candi, forme de la fiche parente, qu'une page confirme en préférant du sucre de roche brun. Le piment frais est dans deux pages sur quatre, à un jalapeño rouge pour trois et un demi piment vert pour quatre : on écrit un piment rouge frais pour quatre.\n\nCE QU'ON N'ÉCRIT PAS : la ciboule, présente dans deux pages sur quatre mais absente de la fiche parente et jamais pesée ; l'eau ajoutée à la sauce par trois pages, qui n'est pas un ingrédient du catalogue et se dit dans les étapes ; le mélange cinq-épices et les poudres d'oignon et d'ail d'une seule page, qui appartiennent à sa panure et non au plat. Les durées : préparation, médiane 12,5 minutes des quatre lignes, portée à 20 parce que trois pages comptent l'enrobage à part et que l'épluchage de trente-cinq grammes d'ail prend à lui seul cinq minutes ; cuisson, médiane 25 minutes des quatre lignes.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch",
+     "vegetables"
+    ],
+    "reason": "Même rôle que San bei ji : 125 g de tofu glacé par part, sans légume ni céréale dans la casserole. Les quatre pages du dossier terminent sur la même phrase — se sert avec du riz blanc — et c'est ce que la sauce réduite demande, exactement comme dans la fiche parente."
+   },
+   "ingredients": [
+    {
+     "form": "Tofu ferme",
+     "quantity": 500,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Fécule de maïs",
+     "quantity": 40,
+     "unit": "g",
+     "role": "enrobage",
+     "optional": false
+    },
+    {
+     "form": "Huile de colza raffinée",
+     "quantity": 25,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Huile de sésame grillé",
+     "quantity": 40,
+     "unit": "ml",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Sauce soja légère",
+     "quantity": 40,
+     "unit": "ml",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Vin de riz taïwanais",
+     "quantity": 40,
+     "unit": "ml",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Ail cru entier",
+     "quantity": 35,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Gingembre frais",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Basilic thaï frais",
+     "quantity": 30,
+     "unit": "g",
+     "role": "finition",
+     "optional": false
+    },
+    {
+     "form": "Sucre candi",
+     "quantity": 8,
+     "unit": "g",
+     "role": "équilibre",
+     "optional": false
+    },
+    {
+     "form": "Piment rouge frais",
+     "quantity": 1,
+     "unit": "u",
+     "role": "épice",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Égoutter le tofu, l'éponger et le détailler en tranches d'un centimètre d'épaisseur. Épaisseur régulière et non dés minuscules : chaque face doit pouvoir dorer à plat, et un dé de tofu n'a que des arêtes qui cassent quand on le retourne."
+    },
+    {
+     "n": 2,
+     "instruction": "Rouler chaque tranche dans la fécule et tapoter pour n'en garder qu'un voile. C'est ce voile qui remplace la peau du poulet de la recette d'origine : il forme à la cuisson une pellicule qui retient la sauce au lieu de la laisser glisser, et sans lui le tofu ressort pâle et la sauce reste au fond de la casserole."
+    },
+    {
+     "n": 3,
+     "instruction": "Chauffer l'huile de colza dans une grande poêle antiadhésive à feu moyen-vif et dorer les tranches deux à trois minutes par face, en deux fournées plutôt qu'en une. Une poêle chargée retombe en température, la fécule boit alors l'huile au lieu de sécher, et l'on obtient un tofu gras et mou. Réserver sur une grille."
+    },
+    {
+     "n": 4,
+     "instruction": "Vider l'huile de friture de la poêle, l'essuyer et y verser l'huile de sésame grillé sur feu doux. Cette huile ne supporte pas la chaleur vive — c'est une huile de parfum, pas une huile de cuisson — et elle devient amère si on la fume, ce qui coûterait au plat un de ses trois piliers."
+    },
+    {
+     "n": 5,
+     "instruction": "Faire blondir doucement dans le sésame les gousses d'ail entières épluchées et le gingembre en fines lamelles, deux à trois minutes, jusqu'à ce que les gousses dorent sur leurs faces. L'ail entier fond et devient sucré ; haché il brûlerait dans le même temps et donnerait un fond âcre à toute la sauce."
+    },
+    {
+     "n": 6,
+     "instruction": "Verser la sauce soja légère, le vin de riz et le sucre candi, ajouter le piment fendu et six cuillerées à soupe d'eau, et laisser bouillonner deux minutes pour dissoudre le sucre. L'eau n'est pas une quatrième tasse : elle donne à la réduction le temps de se faire sans que le soja ne devienne salant."
+    },
+    {
+     "n": 7,
+     "instruction": "Remettre le tofu doré dans la poêle, le retourner plusieurs fois dans la sauce et laisser réduire huit à dix minutes à découvert, à feu moyen, jusqu'à ce que la sauce nappe et brille. C'est le glaçage qui fait le plat : tant qu'il reste du liquide clair au fond, ce n'est pas fini, et si la sauce colle avant que le tofu ne soit enrobé, ajouter deux cuillerées d'eau plutôt que de baisser trop tôt."
+    },
+    {
+     "n": 8,
+     "instruction": "Couper le feu, jeter le basilic thaï en une fois et remuer trois ou quatre fois sous le couvercle avant de servir aussitôt. Le basilic doit tomber dans une casserole hors du feu : cuit, il noircit et perd en trente secondes l'arôme anisé qui est la signature du plat, et c'est la faute la plus fréquente sur un trois-tasses."
+    }
+   ],
+   "techniques": [
+    "enrobage à la fécule",
+    "friture peu profonde",
+    "sauté aromatique",
+    "braisage à découvert",
+    "glaçage"
+   ],
+   "variants": [
+    "Tofu congelé puis décongelé et essoré, cassé en gros morceaux irréguliers plutôt que tranché (thefoodietakesflight)",
+    "Tofu blanchi cinq minutes à l'eau frémissante puis poêlé sans fécule (homenaturallymade)",
+    "Tofu enrobé et cuit à la friteuse à air, 4 à 8 minutes à 190 °C (woonheng)",
+    "Une part de sauce soja foncée pour la couleur, une cuillerée et demie à soupe (homenaturallymade, browngirlveganeats)",
+    "Finition en marmite de terre, tofu et basilic couverts deux minutes sur feu doux pour un fond légèrement grillé (woonheng)",
+    "Piments séchés à la place du piment frais (thefoodietakesflight)",
+    "Ciboule ciselée ajoutée avec le basilic (thefoodietakesflight, woonheng)",
+    "Liaison finale à la fécule délayée, une cuillerée à soupe dans un peu d'eau (browngirlveganeats)"
+   ],
+   "sensory": {
+    "profile": "spicy_umami",
+    "scores": {
+     "sweet": 2,
+     "salty": 4,
+     "acidic": 1,
+     "bitter": 1,
+     "umami": 5,
+     "heat": 2,
+     "pungency": 3,
+     "richness": 4,
+     "freshness": 3,
+     "intensity": 4
+    },
+    "dominant_flavors": [
+     "sésame grillé",
+     "soja fermenté",
+     "basilic thaï",
+     "ail confit"
+    ],
+    "aroma_families": [
+     "sésame_toasté",
+     "soja_fermenté",
+     "basilic",
+     "ail",
+     "gingembre"
+    ],
+    "target_textures": [
+     "tofu_glacé",
+     "peau_de_fécule",
+     "ail_fondant",
+     "basilic_frais"
+    ],
+    "signature_ingredients": [
+     "Tofu ferme",
+     "Huile de sésame grillé",
+     "Sauce soja légère",
+     "Vin de riz taïwanais"
+    ],
+    "identity_guardrails": [
+     "Volumes égaux d'huile de sésame, de sauce soja et de vin de riz : c'est le nom du plat, et le déséquilibrer lui fait perdre son identité",
+     "L'huile de sésame ne chauffe jamais vivement, sous peine d'amertume",
+     "Le tofu se dore à part avant la sauce : il n'a ni peau ni gras pour se colorer dedans",
+     "L'ail reste en gousses entières, jamais haché",
+     "Le basilic entre hors du feu, en une fois, et le plat part à table dans la minute"
+    ]
+   },
+   "conservation": "Se garde 3 jours au réfrigérateur, et c'est le seul plat de ce lot qui perd au deuxième jour plutôt que d'y gagner : la peau de fécule se détend dans la sauce et le basilic vire au brun. Aucune page du dossier ne parle de conservation — les quatre disent de servir aussitôt — et ce qui est écrit ici est donc ce que fait physiquement le plat : le glaçage tient à la fécule, qui se réhydrate au froid. Ne se congèle pas : le tofu poêlé et sauté devient spongieux à la décongélation et rend l'eau qu'il a rendue, ce qui délave la sauce. Réchauffer trois minutes à la poêle à feu vif, à découvert, pour reprendre un peu de glaçage, et jeter cinq feuilles de basilic frais au dernier moment — c'est ce qui rattrape le mieux un reste.",
+   "allergens": [
+    "soja",
+    "sésame"
+   ]
+  },
+  {
+   "code": "JUM-093",
+   "family": "Salade César aux pois chiches rôtis",
+   "derived_from": "RAP-027",
+   "cuisine_origin": "États-Unis / Mexique",
+   "identity_level": "named_traditional_dish",
+   "category": "salade complète",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 20,
+   "cook_minutes": 30,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:salade-cesar-aux-pois-chiches",
+    "soscuisine.fr",
+    "planbouffe.ca",
+    "patateetcornichon.com"
+   ],
+   "description_courte": "La César sans poulet : romaine, croûtons de pain frottés à l'ail et pois chiches rôtis au paprika, liés d'une sauce montée au jaune d'œuf, moutarde et parmesan",
+   "canonical_arbitration": "Trois pages sur trois sites distincts, de deux à quatre portions, toutes titrées salade César aux pois chiches ou une variante immédiate de ce titre. C'est le minimum exigé et il faut le dire au lieu de le lisser : deux sources solides sur deux sites suffisent, ce dossier en a trois sur trois, pas une de plus. Les moteurs français de la chaîne n'en rendaient aucune — sous « salade césar végétarienne » ils ne ramènent que des César au poulet, au saumon ou aux crevettes.\n\nLE MONTAGE est identique dans les trois pages et identique à celui de la fiche parente : romaine, une sauce crémeuse acidulée, du parmesan râpé, et les pois chiches à la place du poulet. Deux pages sur trois ajoutent des croûtons de pain ; la troisième s'en passe et laisse les pois chiches jouer le croûton, ce qui est une lecture défendable mais qui retire au plat son féculent — on garde le pain, qui est dans la fiche parente et dans la majorité du dossier.\n\nLES POIS CHICHES, pesés ou comptés en conserves par les trois pages : 82,5 ; 120 et 130 g égouttés par personne. Médiane 120 g par personne, soit 480 g. Deux pages sur trois les RÔTISSENT au four avec de l'huile et du paprika, l'une une heure à 175 °C, l'autre un quart d'heure à 205 °C ; la troisième les verse égouttés dans le saladier. C'est le rôtissage qu'on écrit, et le nom du plat le porte : un pois chiche mou dans une César est une garniture, un pois chiche rôti est ce qui remplace le croquant du poulet grillé. Le PAPRIKA de ce rôtissage est chiffré par les deux pages qui rôtissent, à 1,25 g par personne chacune, soit 5 g pour quatre ; l'une le veut fumé, et c'est cette forme qu'on écrit.\n\nLA SAUCE est le cœur du plat, comme dans la fiche parente, et c'est là que le dossier diverge le plus. Les trois pages font une émulsion de moutarde, d'acide et d'huile ; leur base seule change. UNE la monte au jaune d'œuf cru comme une mayonnaise, deux jaunes pour quatre — exactement le geste du parent. Une deuxième part d'une mayonnaise du commerce allongée de yaourt grec, c'est-à-dire d'une émulsion au jaune déjà faite. La troisième, végane, l'épaissit à la crème de soja et aux câpres écrasées. On écrit la version montée au jaune : c'est le garde-fou d'identité de la fiche parente, c'est la seule des trois qui fabrique l'émulsion elle-même, et deux jaunes pour quatre correspondent à 0,5 jaune par personne. L'huile d'olive, en additionnant l'huile de la sauce et celle des croûtons ou des pois chiches : 28,75 ; 7,5 et 40 ml par personne, médiane 28,75 ml par personne, soit 115 ml, écrits 120 ml. C'est beaucoup et c'est ce qu'une César est — une mayonnaise ; on l'écrit tel quel plutôt que de la maigrir en silence, comme le fait déjà la fiche parente avec ses 140 ml.\n\nLA ROMAINE est comptée en têtes par les trois pages, jamais pesée : une romaine pour quatre, trois têtes pour quatre, une romaine pour deux, soit 75 ; 225 et 150 g par personne à trois cents grammes la pièce. Médiane 150 g par personne, soit 600 g. On descend à 400 g, c'est-à-dire 100 g par personne : la ligne haute est une salade-repas préparée en boîtes à emporter, et la ligne basse ne garde que le cœur pâle de la romaine en réservant les feuilles extérieures pour un autre usage. LE PAIN n'est chiffré que par deux pages, deux tranches pour quatre et deux tranches pour deux, soit 15 et 30 g par personne : moyenne 22,5 g par personne, soit 90 g. LE PARMESAN est dans les trois pages, jamais pesé : il s'y compte en cuillerées à soupe et en tasses, et il faut donc une seule et même conversion pour les trois, cinq grammes la cuillerée à soupe de fromage râpé. Quatre cuillerées pour quatre parts font 5 g par personne ; un quart de tasse plus trois cuillerées pour quatre parts en font 10 ; deux cuillerées de parmesan végane pour deux parts en font 5, cette dernière ligne comptée pour sa quantité et non pour sa nature. Médiane 5 g par personne, soit 20 g pour quatre — mais l'écart va du simple au double et la ligne n'est pas de celles que l'échange de protéine touche. On lui applique donc le principe d'arbitrage du lot et on HÉRITE du parent, dont les cinq sources donnent 12,5 g par personne, soit 50 g pour quatre : un dossier de trois pages qui se contredisent ne remplace pas un dossier de cinq qui s'accordent. On écrit du vrai parmesan, la fiche restant végétarienne au sens de ce lot : ni viande, ni volaille, ni poisson, ni fruit de mer, ni gélatine. La présure du fromage n'est pas jugée ici, et cette fiche ne prétend donc pas être végétarienne stricte au sens le plus étroit — c'est un choix, et il est écrit.\n\nLA MOUTARDE est dans deux pages sur trois, à 2,5 et 7,5 g par personne : moyenne 5 g par personne, soit 20 g. L'AIL est dans deux pages sur trois, deux gousses pour quatre et une petite gousse pour quatre, soit 0,5 et 0,25 gousse par personne, moyenne 0,375 gousse par personne, soit une gousse et demie et 7 g. L'ACIDE divise le dossier en trois : vinaigre de vin rouge dans l'une, jus d'un demi-citron dans la deuxième, deux cuillerées à soupe de jus de citron dans la troisième. Le citron est majoritaire, deux pages sur trois, et c'est la forme du parent ; les deux lignes chiffrées donnent 3,75 et 15 ml par personne, moyenne 9,4 ml par personne, soit 37,5 ml — on écrit 30 ml, la ligne haute étant une page pour deux personnes qui acidifie beaucoup et n'a pas de vinaigre à côté. Le sel et le poivre ne sont jamais pesés : 4 g et 2 g, comme dans la fiche parente.\n\nCE QUE LE DOSSIER PORTE ET QU'ON N'ÉCRIT PAS : les carottes en julienne et l'avocat d'une page, qui font glisser le plat vers une salade composée ; les câpres d'une autre, une seule ligne ; le zeste de citron sur les pois chiches, une seule ligne ; le tabasco d'une troisième, une seule ligne. Tous passent en variantes — SAUF la sauce Worcestershire, facultative chez la même page : elle est faite d'anchois, et une variante qui remet du poisson dans le plat n'a rien à faire sur la fiche dont toute la raison d'être est d'être le jumeau végétarien de la César. C'est le lardon facultatif de ce lot, et il est écarté et non signalé. L'ANCHOIS, marqueur historique de la César, n'est dans aucune des trois pages — ce qui est cohérent, puisqu'un jumeau végétarien ne peut pas le porter : c'est la seule ligne du parent que ce jumeau doit obligatoirement perdre, et sa fiche parente l'avait déjà écartée pour une autre raison, à savoir qu'une seule de ses cinq sources en mettait. Les durées : préparation, médiane 15 minutes des trois lignes, portée à 20 parce que les trois comptent le rôtissage à part ; cuisson, médiane 15 minutes des trois lignes, portée à 30 parce qu'une page rôtit une heure et que le quart d'heure de la ligne basse ne suffit pas à assécher des pois chiches en conserve.",
+   "plate": {
+    "role": "complete",
+    "accepts": [],
+    "reason": "Même rôle que la Salade César dont elle dérive : pois chiches, croûtons, parmesan et romaine mettent la protéine, le féculent et le légume dans le même saladier, et les trois pages du dossier la servent comme un repas entier — l'une le dit dans son titre même, salade-repas. C'est ce qui la distingue d'une salade d'accompagnement."
+   },
+   "ingredients": [
+    {
+     "form": "Pois chiche cuit, égoutté",
+     "quantity": 480,
+     "unit": "g",
+     "role": "protéine",
+     "optional": false
+    },
+    {
+     "form": "Laitue fraîche",
+     "quantity": 400,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 120,
+     "unit": "ml",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Pain de campagne",
+     "quantity": 90,
+     "unit": "g",
+     "role": "féculent",
+     "optional": false
+    },
+    {
+     "form": "Parmesan affiné",
+     "quantity": 50,
+     "unit": "g",
+     "role": "fromage",
+     "optional": false
+    },
+    {
+     "form": "Jus de citron frais",
+     "quantity": 30,
+     "unit": "ml",
+     "role": "acidité",
+     "optional": false
+    },
+    {
+     "form": "Jaune d'œuf cru",
+     "quantity": 2,
+     "unit": "u",
+     "role": "émulsifiant",
+     "optional": false
+    },
+    {
+     "form": "Moutarde de Dijon",
+     "quantity": 20,
+     "unit": "g",
+     "role": "sauce",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 7,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Paprika fumé",
+     "quantity": 5,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 4,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Rincer les pois chiches, les égoutter et les rouler longuement dans un torchon jusqu'à ce qu'ils soient parfaitement secs, en ôtant au passage les peaux qui se détachent. C'est l'étape qui décide de tout le reste : un pois chiche humide cuit à la vapeur de sa propre eau au lieu de rôtir, et il ressort mou après une heure de four comme après quinze minutes."
+    },
+    {
+     "n": 2,
+     "instruction": "Les étaler sur une plaque, les enrober de deux cuillerées à soupe d'huile prélevées sur le total, du paprika fumé et d'une pincée de sel, et les rôtir 30 minutes à 200 °C en secouant la plaque toutes les dix minutes. Ils doivent sonner sec sous la cuillère et non rester tendres au centre : c'est ce croquant qui remplace, dans l'assiette, la mâche du poulet grillé de la recette d'origine."
+    },
+    {
+     "n": 3,
+     "instruction": "Couper le pain en cubes de deux centimètres, croûte comprise, les arroser d'une cuillerée d'huile et les faire dorer dix minutes au four à côté des pois chiches. Les frotter chauds avec la moitié d'une gousse d'ail crue : l'ail fond au contact du pain brûlant et parfume sans jamais brûler, ce qu'il ferait si on l'ajoutait avant la cuisson."
+    },
+    {
+     "n": 4,
+     "instruction": "Monter la sauce comme une mayonnaise : les deux jaunes d'œuf, la moutarde, le reste de l'ail réduit en purée, le sel et le poivre dans un bol, fouettés vingt secondes, puis l'huile restante versée goutte à goutte au début et en filet ensuite, sans cesser de fouetter. Elle doit devenir ferme et pâle avant qu'on la détende."
+    },
+    {
+     "n": 5,
+     "instruction": "La détendre avec le jus de citron et la moitié du parmesan finement râpé. Elle doit napper la cuillère en coulant lentement : trop épaisse, elle colle en paquets sur les feuilles au lieu de les enrober, et l'allonger d'une cuillerée d'eau froide vaut mieux que d'ajouter du citron, qui déséquilibrerait l'acidité."
+    },
+    {
+     "n": 6,
+     "instruction": "Laver et essorer soigneusement la romaine, puis la déchirer à la main en larges morceaux plutôt que de la couper au couteau — la lame oxyde les nervures, qui brunissent en une heure. L'essorage compte autant : une feuille mouillée repousse la sauce, qui glisse au fond du saladier."
+    },
+    {
+     "n": 7,
+     "instruction": "Assembler au dernier moment : verser les deux tiers de la sauce sur la salade, mélanger longuement pour enrober chaque feuille, puis ajouter les croûtons, les pois chiches rôtis et le reste de sauce. Finir par les copeaux de parmesan taillés à l'économe. Montée à l'avance, cette César a des croûtons mous et des pois chiches ramollis en vingt minutes — les pois chiches encore plus vite que le pain, parce que leur croûte est plus fine."
+    }
+   ],
+   "techniques": [
+    "rôtissage à sec",
+    "croûtons au four",
+    "émulsion au jaune d'œuf",
+    "assemblage au dernier moment"
+   ],
+   "variants": [
+    "Sauce sur une mayonnaise du commerce allongée de yaourt grec, un tiers de tasse de chacun (planbouffe)",
+    "Sauce végane à la crème de soja et aux câpres écrasées, sans jaune d'œuf, avec du parmesan végane (patateetcornichon)",
+    "Vinaigre de vin rouge à la place du jus de citron, deux cuillerées à soupe (soscuisine)",
+    "Cinq gouttes de Tabasco dans la sauce (soscuisine)",
+    "Carottes râpées ou en spirales, trois moyennes, mélangées à la laitue (planbouffe)",
+    "Tranches d'avocat ajoutées à la dernière minute (planbouffe)",
+    "Zeste d'un citron sur les pois chiches avant rôtissage (planbouffe)",
+    "Câpres, une cuillerée à soupe écrasée à la fourchette dans la sauce (patateetcornichon)",
+    "Sans croûtons de pain, les pois chiches rôtis tenant seuls le rôle du croquant (planbouffe)"
+   ],
+   "sensory": {
+    "profile": "creamy_savory",
+    "scores": {
+     "sweet": 1,
+     "salty": 4,
+     "acidic": 3,
+     "bitter": 1,
+     "umami": 3,
+     "heat": 1,
+     "pungency": 3,
+     "richness": 5,
+     "freshness": 3,
+     "intensity": 4
+    },
+    "dominant_flavors": [
+     "parmesan",
+     "moutarde",
+     "citron",
+     "paprika fumé"
+    ],
+    "aroma_families": [
+     "fromage_affiné",
+     "moutarde",
+     "agrume",
+     "fumé",
+     "grillé"
+    ],
+    "target_textures": [
+     "feuilles croquantes",
+     "pois chiches croustillants",
+     "pain croustillant",
+     "crémeux"
+    ],
+    "signature_ingredients": [
+     "Pois chiche cuit, égoutté",
+     "Laitue fraîche",
+     "Parmesan affiné",
+     "Jaune d'œuf cru"
+    ],
+    "identity_guardrails": [
+     "La sauce se monte au jaune d'œuf comme une mayonnaise : une vinaigrette n'en est pas une",
+     "Les pois chiches sont séchés puis rôtis jusqu'au croquant — versés mous, ils ne remplacent rien",
+     "Romaine et non mesclun : c'est la nervure croquante qui tient la sauce",
+     "On assemble au dernier moment, sinon feuilles, croûtons et pois chiches s'affaissent ensemble",
+     "Aucun anchois ni sauce Worcestershire d'anchois : c'est ce qui fait de cette César un jumeau végétarien"
+    ]
+   },
+   "conservation": "Assemblée, elle ne se garde pas : compter vingt minutes avant que les croûtons et les pois chiches ramollissent au contact de la sauce. Chaque élément se prépare en revanche d'avance, et une des trois pages du dossier est écrite pour cela : elle répartit salade, garniture et vinaigrette dans des boîtes à emporter, la sauce à part, et les pois chiches rôtis par-dessus au dernier moment. Elle ne donne aucune durée, et AUCUNE page du dossier n'en donne — ce qui suit est donc une déduction, écrite comme telle : la sauce 2 jours au réfrigérateur, borne fixée par ses deux jaunes crus et non par son goût ; les croûtons 3 jours en boîte hermétique à température ambiante ; les pois chiches rôtis 2 à 3 jours dans un récipient laissé entrouvert, un couvercle fermé les faisant transpirer et leur reprenant en une nuit le croquant qu'une heure de four leur a donné. Le montage prend alors cinq minutes. La sauce porte deux jaunes crus : 48 heures au maximum, et à écarter pour les publics sensibles. Ne se congèle pas, et pas parce que ce serait risqué : la laitue gèle en cellules éclatées et ressort en chiffon, la sauce émulsionnée tranche.",
+   "allergens": [
+    "gluten",
+    "œuf",
+    "lait",
+    "moutarde"
+   ]
+  },
+  {
+   "code": "JUM-094",
+   "family": "Aubergines panées",
+   "derived_from": "VAR-003",
+   "cuisine_origin": "Italie",
+   "identity_level": "named_traditional_dish",
+   "category": "légume pané",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 4,
+   "prep_minutes": 25,
+   "cook_minutes": 15,
+   "difficulty": "facile",
+   "sources": [
+    "dossier:aubergines-panees",
+    "dossier:cotolette-di-melanzane",
+    "marmiton.org",
+    "chefsimon.com",
+    "750g.com",
+    "misya.info",
+    "blog.giallozafferano.it",
+    "ilcuoreinpentola.it",
+    "tortelliniandco.com"
+   ],
+   "description_courte": "Tranches d'aubergine dégorgées au gros sel, panées à l'anglaise dans une chapelure au parmesan et dorées à la poêle, servies chaudes",
+   "canonical_arbitration": "DEUX DOSSIERS pour un seul plat, et il faut expliquer pourquoi avant de donner un chiffre. Le premier, sous le nom français, rend douze pages sur trois sites, dont neuf solides. Mais quatre de ces neuf sont des aubergines FOURRÉES — au jambon et à la coppa, au jambon et au provolone, à la fourme d'Ambert — et une cinquième est un millefeuille à la mozzarella et au pesto : ce sont d'autres montages, et trois d'entre eux ne sont même pas végétariens. Une fois ces cinq pages écartées à la lecture il ne reste que marmiton, donc UN SEUL SITE, ce que l'audit ne voit pas puisqu'il compte les neuf solides. Le second dossier a donc été ouvert sous le nom italien du plat, cotolette di melanzane, et rend quatre pages sur quatre sites, toutes des tranches d'aubergine panées et frites. Sans lui, ce jumeau aurait dû être refusé pour site unique, et c'est exactement le genre de refus que la commande demande de prononcer plutôt que de maquiller. Le calcul qui suit porte donc sur neuf pages exploitables — cinq françaises et quatre italiennes.\n\nCE JUMEAU N'EST PAS UNE PARMIGIANA. Le corpus porte déjà SRC-046, Parmigiana d'aubergines, et ses deux dérivées : c'est un gratin de tranches d'aubergine à la tomate et à la mozzarella, cuit au four. Ici les tranches sont panées à l'anglaise et frites, servies sèches, et rien n'est gratiné — c'est la structure de l'escalope milanaise dont ce jumeau dérive, pas celle du gratin. Deux pages du dossier français passent d'ailleurs leurs aubergines panées au four sous une sauce tomate : elles sont comptées pour leur panure et écartées pour leur montage, qui est celui de la parmigiana.\n\nL'AUBERGINE, pesée ou comptable en pièces dans sept pages, à deux cent cinquante grammes la pièce : 125 ; 125 ; 62,5 ; 83,3 ; 125 ; 125 et 200 g par personne. Médiane 125 g par personne, soit 500 g, soit deux aubergines pour quatre. LA PANURE est le vrai sujet, comme dans la fiche parente. La chapelure est pesée cinq fois, à 12,5 ; 25 ; 25 ; 37,5 et 50 g par personne : médiane 25 g par personne, soit 100 g — exactement la valeur du parent. La farine est pesée trois fois, à 8,3 ; 12,5 et 15 g par personne : médiane 12,5 g par personne, soit 50 g, la moitié du parent. L'œuf est compté six fois, de 0,25 à 1 pièce par personne : médiane une demie par personne, soit 2 œufs, comme dans le parent. Le PARMESAN dans la panure est la ligne qui rattache ce plat à sa lignée milanaise et il est loin d'être unanime : six pages sur douze en mettent dans le dossier français, et trois des quatre pages italiennes — grana, parmigiano reggiano ou fromage râpé sans autre précision. Les quantités chiffrées donnent 7,5 ; 12,5 et 15 g par personne : médiane 12,5 g par personne, soit 50 g, la moitié du parent. Une des pages italiennes dit explicitement qu'on peut s'en passer ; on le garde, parce que c'est lui qui distingue cette panure d'une panure ordinaire et parce que c'est le seul apport de protéine animale d'un plat qui n'en a plus.\n\nLE DÉGORGEAGE AU GROS SEL est propre au jumeau et absent du parent, pour une raison qui tient au légume et non à la méthode : deux pages sur douze du dossier français et deux des quatre pages italiennes salent les tranches trente à quatre-vingt-dix minutes puis les rincent. L'aubergine est une éponge et ce qu'elle ne rend pas avant d'être panée, elle le rend dans la poêle, sous la panure, qu'elle décolle. Le gros sel du dégorgeage est rincé et n'entre donc PAS dans la nutrition ; les 6 g de sel fin déclarés sont ceux de la panure et de l'assaisonnement, jamais pesés par aucune page.\n\nLE CORPS GRAS est le point où ce jumeau s'écarte le plus de sa base, et ce n'est pas un choix éditorial : AUCUNE des seize pages relevées ne met de beurre, là où la fiche parente cuit ses escalopes au beurre et à l'huile. Elles emploient de l'huile — d'olive, d'arachide ou de friture — et deux d'entre elles passent au four ou à la friteuse à air sans matière grasse ajoutée au-delà d'un filet. On écrit donc une cuisson à l'huile d'olive seule, et le beurre du parent ne descend même pas en variante, faute d'une seule page pour le porter. La quantité est le chiffre le plus fragile de cette fiche : trois lignes seulement, à 2,5 ; 7,5 et 25 ml par personne, soit une cuisson au four, un montage, et un demi-verre de bain de friture. Médiane 7,5 ml par personne, soit 30 ml. On monte à 40 ml, c'est-à-dire 10 ml par personne : l'aubergine crue absorbe l'huile plus qu'aucun autre légume, une page prévient d'ailleurs d'en rajouter en cours de cuisson, et un bain de friture ne peut pas être déclaré comme mangé puisque l'essentiel reste dans la poêle.\n\nLA DOUBLE PANURE de deux pages italiennes — chapelure, œuf, chapelure de nouveau — n'est pas retenue : elle double la quantité de chapelure d'un plat qui en porte déjà cent grammes, et la fiche parente ne pane qu'une fois. Elle passe en variante. CE QUE LE DOSSIER PORTE ET QU'ON N'ÉCRIT PAS : la persillade d'une page française et le persil-ail d'une page italienne, deux lignes sur seize ; le lait battu avec les œufs d'une page ; la poudre d'amande d'une autre ; le citron du parent, qu'aucune page du jumeau ne sert. Les durées : préparation, médiane 20 minutes des neuf lignes exploitables, portée à 25 pour le dégorgeage actif — l'heure d'attente elle-même n'est comptée nulle part et ne l'est pas ici non plus ; cuisson, médiane 15 minutes des neuf lignes.",
+   "plate": {
+    "role": "main",
+    "accepts": [
+     "starch",
+     "vegetables"
+    ],
+    "reason": "Même rôle que l'Escalope milanaise dont ce plat dérive : des tranches panées seules, sans féculent ni légume d'accompagnement dans la poêle. La différence avec le parent doit être dite au planificateur plutôt que cachée — l'aubergine apporte deux fois moins de protéines que le veau, et l'essentiel de celles du plat vient de la panure, du parmesan et de l'œuf ; l'accompagnement compte donc davantage ici que là. Une page italienne le sert avec une salade ou des tomates au four, une page française avec de la sauce tomate et de la semoule."
+   },
+   "ingredients": [
+    {
+     "form": "Aubergine fraîche",
+     "quantity": 500,
+     "unit": "g",
+     "role": "légume",
+     "optional": false
+    },
+    {
+     "form": "Chapelure de blé",
+     "quantity": 100,
+     "unit": "g",
+     "role": "panure",
+     "optional": false
+    },
+    {
+     "form": "Parmesan affiné",
+     "quantity": 50,
+     "unit": "g",
+     "role": "panure",
+     "optional": false
+    },
+    {
+     "form": "Farine de blé T55",
+     "quantity": 50,
+     "unit": "g",
+     "role": "panure",
+     "optional": false
+    },
+    {
+     "form": "Œuf cru",
+     "quantity": 2,
+     "unit": "u",
+     "role": "panure",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 40,
+     "unit": "ml",
+     "role": "cuisson",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 6,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 1,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Laver les aubergines, ôter le pédoncule et les couper en tranches d'un demi-centimètre d'épaisseur régulière, dans le sens de la longueur ou de la largeur selon la forme du légume. Écarter les deux tranches extérieures, presque entièrement peau : elles ne cuisent pas comme les autres et restent coriaces sous la panure."
+    },
+    {
+     "n": 2,
+     "instruction": "Ranger les tranches en couches dans une passoire en salant chaque étage de gros sel, poser une assiette et un poids dessus, et laisser dégorger une heure. C'est ce qui remplace l'aplatissement de l'escalope dans la recette d'origine : l'aubergine est une éponge, et l'eau qu'elle ne rend pas maintenant, elle la rendra sous la panure, qu'elle décollera."
+    },
+    {
+     "n": 3,
+     "instruction": "Rincer abondamment les tranches à l'eau froide pour ôter tout le sel, puis les éponger entre deux torchons en pressant. Ne pas rincer laisserait un plat immangeable de sel ; ne pas sécher rendrait la farine collante et la panure irrégulière."
+    },
+    {
+     "n": 4,
+     "instruction": "Préparer trois assiettes creuses : la farine dans la première, les œufs battus à la fourchette avec le poivre dans la deuxième, la chapelure mélangée au parmesan finement râpé et au sel fin dans la troisième. Le sel va dans la chapelure et non sur l'aubergine, à l'inverse de ce que demande une viande : les tranches sortent du dégorgeage déjà légèrement salées, et les resaler donnerait un plat immangeable."
+    },
+    {
+     "n": 5,
+     "instruction": "Passer chaque tranche dans la farine en tapotant pour ôter l'excédent, puis dans l'œuf, puis dans le mélange chapelure-parmesan en appuyant franchement de la paume. La farine sèche la surface pour que l'œuf s'y accroche ; sans elle la panure se décolle en cuisant et il reste une tranche nue au milieu d'une croûte flottante."
+    },
+    {
+     "n": 6,
+     "instruction": "Laisser les tranches panées reposer un quart d'heure au frais sur une grille. L'humidité de l'œuf gélifie la chapelure et la soude au légume ; une tranche cuite dans la foulée perd la moitié de sa croûte dans la poêle, et l'aubergine tient encore moins la panure qu'une escalope, faute de fibres pour l'accrocher."
+    },
+    {
+     "n": 7,
+     "instruction": "Chauffer l'huile d'olive dans une grande poêle à feu moyen et cuire les tranches en deux fournées, trois à quatre minutes de chaque côté, sans les entasser ni les déplacer pendant la première moitié du temps. La poêle chargée refroidit, la panure boit alors le gras au lieu de le repousser, et l'aubergine ressort grasse et molle. Ajouter un filet d'huile entre les fournées, jamais pendant."
+    },
+    {
+     "n": 8,
+     "instruction": "Égoutter deux minutes sur une grille — jamais sur du papier absorbant, qui retient la vapeur sous la tranche et ramollit le dessous — et servir aussitôt, chaud ou tiède. C'est un plat qui ne supporte pas l'attente : la vapeur que l'aubergine continue de rendre traverse la croûte de l'intérieur."
+    }
+   ],
+   "techniques": [
+    "dégorgeage au gros sel",
+    "panure à l'anglaise",
+    "repos",
+    "friture à la poêle"
+   ],
+   "variants": [
+    "Double panure — chapelure, œuf, chapelure de nouveau — pour une croûte plus épaisse (misya, tortelliniandco)",
+    "Au four, 20 minutes à 190 °C, retournées à mi-cuisson et arrosées d'huile d'olive sur chaque face (tortelliniandco, marmiton)",
+    "À la friteuse à air, 15 minutes à 190 °C (marmiton)",
+    "Panure au persil haché et à une demi-gousse d'ail (ilcuoreinpentola, marmiton)",
+    "Œufs battus avec cinq cuillerées à soupe de lait à la place des œufs seuls (marmiton)",
+    "Sans parmesan dans la chapelure (giallozafferano, tortelliniandco)",
+    "Panure enrichie de cinquante grammes de poudre d'amande (chefsimon)",
+    "Courgettes taillées de la même façon et panées avec les aubergines, moitié-moitié (marmiton)",
+    "Servies avec une sauce tomate chaude et de la semoule (marmiton)",
+    "Origan séché dans la chapelure, une cuillerée à café (750g)"
+   ],
+   "sensory": {
+    "profile": "savory_crisp",
+    "scores": {
+     "sweet": 1,
+     "salty": 3,
+     "acidic": 0,
+     "bitter": 1,
+     "umami": 3,
+     "heat": 0,
+     "pungency": 0,
+     "richness": 4,
+     "freshness": 1,
+     "intensity": 3
+    },
+    "dominant_flavors": [
+     "aubergine fondante",
+     "parmesan",
+     "pain grillé"
+    ],
+    "aroma_families": [
+     "fromage affiné",
+     "pain grillé",
+     "huile d'olive",
+     "légume rôti"
+    ],
+    "target_textures": [
+     "croûte croustillante",
+     "cœur fondant",
+     "contraste_fort"
+    ],
+    "signature_ingredients": [
+     "Aubergine fraîche",
+     "Chapelure de blé",
+     "Parmesan affiné"
+    ],
+    "identity_guardrails": [
+     "Les tranches se dégorgent au gros sel puis se rincent : sans cela l'eau de l'aubergine décolle la panure dans la poêle",
+     "Panure à l'anglaise en trois temps, farine comprise — sans farine la croûte se détache et le plat n'existe plus",
+     "Une tranche d'un demi-centimètre : plus épaisse elle reste crue au centre, plus fine elle s'effondre en pâte",
+     "Panées et frites, jamais gratinées à la tomate — ce serait une parmigiana, qui est un autre plat du corpus",
+     "Le sel entre dans la chapelure et non sur le légume, qui sort déjà salé du dégorgeage"
+    ]
+   },
+   "conservation": "Se mangent dans les minutes qui suivent la poêle : la panure ramollit encore plus vite que sur une escalope, l'aubergine continuant de rendre de la vapeur par en dessous. Une page italienne le dit en toutes lettres — gardées couvertes et au chaud, elles restent bonnes mais perdent leur croûte. Les restes se gardent 2 jours au réfrigérateur, à plat et jamais empilés, et se réchauffent 8 minutes au four à 180 °C posés sur une grille ; le micro-ondes est à proscrire, il rend la croûte élastique. Ne se congèlent pas cuites, pour une raison propre au légume et non à la panure : l'eau que l'aubergine garde en cellules gèle en cristaux qui crèvent sa chair, et la tranche ressort en purée sous une croûte intacte. Panées crues, elles se congèlent en revanche 2 mois séparées par du papier cuisson et se cuisent sans décongélation en allongeant de trois minutes par face — c'est ce que fait la fiche parente avec ses escalopes, et la physique est ici la même puisque c'est la panure qui tient le gel.",
+   "allergens": [
+    "gluten",
+    "œuf",
+    "lait"
+   ]
+  },
+  {
+   "code": "JUM-095",
+   "family": "Empanadas aux lentilles",
+   "derived_from": "REAL-280",
+   "cuisine_origin": "Argentine",
+   "identity_level": "named_traditional_dish",
+   "category": "chaussons",
+   "status": "candidate",
+   "confidence": "B",
+   "servings": 6,
+   "prep_minutes": 60,
+   "cook_minutes": 30,
+   "difficulty": "moyenne",
+   "sources": [
+    "dossier:empanadas-de-lentejas",
+    "lanacion.com.ar",
+    "nomadasgourmet.com",
+    "receta-vegetariana.com"
+   ],
+   "description_courte": "Chaussons argentins de pâte à l'huile d'olive, farcis d'un sofrito d'oignon au cumin et au paprika lié de lentilles brunes fondantes, avec des olives vertes, et cuits au four",
+   "canonical_arbitration": "Trois pages sur trois sites distincts — un quotidien argentin, un blog de cuisine latino-américaine et un site de recettes végétariennes hispanophone. C'est le minimum exigé et il n'y a pas de marge : les moteurs français de la chaîne ne rendent qu'une seule page de chaussons aux lentilles, aux pois chiches et au curry, qui n'est pas ce plat, et les empanadas végétariennes qu'ils portent sont aux champignons, à l'aubergine ou à la choucroute — d'autres farces, donc d'autres plats.\n\nUNE DIFFICULTÉ DE DÉNOMINATEUR, qu'il faut poser avant tout chiffre : deux pages comptent en EMPANADAS (douze et seize) et la troisième en PORTIONS (cinq). On ne peut pas mélanger les deux, et on ne peut pas non plus décréter combien d'empanadas font une part. La fiche est donc écrite pour six parts et douze empanadas, soit deux par personne, ce qui est la portion que la fiche parente donne implicitement avec ses dix parts et ses six cents grammes de farine, et ce que dit aussi la seule page qui s'exprime là-dessus. Les quantités des deux pages qui comptent en empanadas sont ramenées à douze ; celles de la troisième restent à part et servent de contrôle, pas de terme dans la médiane.\n\nLA PÂTE. La farine est chiffrée par les trois pages : 40 et 42,5 g par empanada pour les deux premières, ce qui donne 480 et 510 g pour douze, et un demi-kilo pour cinq portions dans la troisième. Les trois convergent : on écrit 480 g, soit 80 g de farine par personne. Le corps gras de la pâte est ce que l'échange de protéine oblige à rejuger, et c'est même le point où ce jumeau se joue : la fiche parente pétrit sa pâte au SAINDOUX, qui est une graisse de porc et rendrait la recette non végétarienne quelle que soit la farce. Les deux pages qui chiffrent leur pâte emploient de l'huile, trois cuillerées à soupe chacune, soit 3,75 et 2,8 ml par empanada, ce qui donne 45 et 34 ml pour douze ; l'une précise huile d'olive vierge extra. On écrit 40 ml d'huile d'olive pour la pâte, plus 20 ml pour le sofrito qu'aucune page ne chiffre, soit 60 ml au total — c'est 9 g de gras par part, contre 12 g pour la fiche parente, et la pâte est un peu moins friable qu'au saindoux. C'est le prix de la substitution et il est écrit ici plutôt que passé sous silence.\n\nLA FARCE. Les lentilles sont dans les trois pages, brunes ou vertes, sèches dans deux et déjà cuites dans la troisième : 30 et 16 g de lentilles sèches par empanada, soit 360 et 192 g pour douze — moyenne 276 g, écrits 280 g de lentilles sèches, qui donneront environ sept cents grammes une fois cuites. La troisième page, à deux tasses de lentilles cuites pour cinq portions, tombe dans le même ordre de grandeur. C'est la ligne qui remplace les sept cents grammes de bœuf haché au couteau du parent, poids pour poids une fois cuite, et ce n'est pas un hasard : les trois pages insistent pour cuire les lentilles UN PEU TROP, afin qu'elles se tiennent à la cuillère sans se défaire au façonnage, ce que le haché fait naturellement.\n\nL'oignon est dans les trois pages, à 50 et 11,25 g par empanada dans les deux premières — 600 et 135 g pour douze, l'écart le plus large du dossier — et deux gros oignons pour cinq portions dans la troisième, soit environ 300 g. La moyenne des deux lignes ramenées à douze est 367,5 g ; on descend à 350 g, chiffre qui recoupe la troisième page et ses 300 g pour cinq portions. C'est 58 g par personne, quand la fiche parente en met 50. L'ail est dans les trois : 0,25 et 0,06 gousse par empanada, trois gousses pour cinq portions dans la troisième — on écrit trois gousses, soit 15 g. Le cumin est dans deux pages sur trois, à 0,67 et 0,125 g par empanada, soit 8 et 1,5 g pour douze : moyenne 4,8 g, écrits 5 g. LE PAPRIKA n'est chiffré que par une page sur trois, à 0,16 g par empanada, soit 2 g pour douze. On retient 5 g, qui est le taux de la fiche parente — 8 g pour dix parts — ramené à six parts : rejuger sur une ligne unique une épice que le dossier du parent porte sur quatre pages reviendrait à remplacer une mesure par une plus faible, et c'est le principe d'arbitrage que ce lot applique partout. Les OLIVES VERTES sont dans deux pages sur trois, chiffrées par une seule à vingt-quatre olives dénoyautées et coupées en deux pour seize empanadas — vingt-quatre olives, quarante-huit moitiés, soit 110 g au total — donc 6,9 g par empanada et 83 g pour douze : écrits 80 g, quand le parent en met 120 g pour dix parts. Le POIVRON ROUGE est un ajout du jumeau, absent de la fiche parente et présent dans deux pages sur trois : un quart de poivron pour seize empanadas d'un côté, un demi-poivron pour cinq portions de l'autre, soit 22 g pour douze et 72 g pour six — on écrit 60 g, la ligne basse étant le quart d'un poivron dans une farce qui porte déjà trois sortes d'oignons.\n\nCE QUE LE PARENT PORTE ET QUE LE JUMEAU PERD : l'ŒUF DUR. Aucune des trois pages n'en met, et il ne peut donc pas être écrit — pas même en variante, puisqu'une variante est un écart que les sources montrent et non un souvenir de la fiche voisine. C'est une perte réelle pour qui connaît l'empanada de carne, et elle est signalée ici pour que le relecteur sache qu'elle est le fait du dossier et non d'un oubli. Le RAISIN SEC, en revanche, est dans une page sur trois comme il est dans le parent, où il est déjà facultatif : on le garde facultatif, à 40 g, sans le compter dans la nutrition. CE QU'ON N'ÉCRIT PAS non plus : les pommes de terre bouillies en dés d'une page, qui feraient de la farce autre chose et n'existent ni chez les deux autres ni chez le parent ; les graines de sésame et le basilic frais d'une autre, une ligne chacun ; la dorure au paprika délayé qui remplace l'œuf battu dans une page — elle passe en variante, et c'est d'ailleurs la seule dorure possible ici. Le sel et le poivre ne sont jamais pesés : 8 g et 2 g. Les durées : préparation, médiane 30 minutes des trois lignes, portée à 60 parce que les trois comptent à part la cuisson des lentilles et le repos de la pâte, et que la fiche parente compte 80 minutes pour le même travail ; cuisson, médiane 30 minutes des trois lignes, ce qui recouvre les 15 à 20 minutes de four annoncées plus la cuisson de la farce.",
+   "plate": {
+    "role": "complete",
+    "accepts": [
+     "vegetables"
+    ],
+    "reason": "Même rôle que les Empanadas argentines au bœuf : 80 g de pâte et environ 115 g de farce par part, deux chaussons par personne — le chausson est l'assiette, il porte son féculent et sa protéine. Il accepte une salade à côté, rien d'autre, exactement comme le parent."
+   },
+   "ingredients": [
+    {
+     "form": "Farine de blé T55",
+     "quantity": 480,
+     "unit": "g",
+     "role": "pâte",
+     "optional": false
+    },
+    {
+     "form": "Huile d'olive vierge extra",
+     "quantity": 60,
+     "unit": "ml",
+     "role": "pâte",
+     "optional": false
+    },
+    {
+     "form": "Lentille brune sèche, crue",
+     "quantity": 280,
+     "unit": "g",
+     "role": "farce",
+     "optional": false
+    },
+    {
+     "form": "Oignon jaune cru",
+     "quantity": 350,
+     "unit": "g",
+     "role": "farce",
+     "optional": false
+    },
+    {
+     "form": "Poivron rouge frais",
+     "quantity": 60,
+     "unit": "g",
+     "role": "farce",
+     "optional": false
+    },
+    {
+     "form": "Olive verte dénoyautée",
+     "quantity": 80,
+     "unit": "g",
+     "role": "garniture",
+     "optional": false
+    },
+    {
+     "form": "Ail cru",
+     "quantity": 15,
+     "unit": "g",
+     "role": "aromatique",
+     "optional": false
+    },
+    {
+     "form": "Cumin moulu",
+     "quantity": 5,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Paprika doux",
+     "quantity": 5,
+     "unit": "g",
+     "role": "épice",
+     "optional": false
+    },
+    {
+     "form": "Sel fin",
+     "quantity": 8,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Poivre noir moulu",
+     "quantity": 2,
+     "unit": "g",
+     "role": "assaisonnement",
+     "optional": false
+    },
+    {
+     "form": "Raisin sec",
+     "quantity": 40,
+     "unit": "g",
+     "role": "garniture",
+     "optional": true
+    }
+   ],
+   "steps": [
+    {
+     "n": 1,
+     "instruction": "Mettre les lentilles à tremper dans un grand volume d'eau froide pendant que le reste s'organise, une heure suffit, puis les cuire vingt-cinq à trente minutes à l'eau frémissante NON salée. Les cuire un peu au-delà du point où on les servirait telles quelles : une lentille encore ferme roule sous la pâte au moment de fermer le chausson et perce le pli, là où une lentille fondante se tient à la cuillère comme le fait un haché."
+    },
+    {
+     "n": 2,
+     "instruction": "Pendant ce temps, préparer la pâte : mélanger la farine et 5 g de sel, verser 40 ml de l'huile d'olive puis environ 220 ml d'eau tiède en travaillant à la main jusqu'à obtenir une boule lisse qui ne colle plus. Couvrir d'un linge humide et laisser reposer une demi-heure. Le repos n'est pas du confort : il détend le gluten, sans quoi les disques se rétractent au rouleau et se déchirent au façonnage."
+    },
+    {
+     "n": 3,
+     "instruction": "Faire suer l'oignon finement haché et le poivron en petits dés dans les 20 ml d'huile restants, à feu doux, dix à douze minutes, jusqu'à ce que l'oignon soit translucide et sucré. Sans viande pour donner du corps, cette base est le seul fondement de la farce : conduite à feu vif elle brunit sans fondre, et la farce reste un mélange de lentilles et d'oignon cru au lieu d'un tout."
+    },
+    {
+     "n": 4,
+     "instruction": "Ajouter l'ail haché, le cumin et le paprika, et remuer trente à quarante secondes dans le gras chaud avant tout ajout de lentilles. Les épices moulues sont solubles dans la matière grasse et non dans l'eau : versées sur des lentilles humides, elles restent en suspension et donnent un goût poudreux au lieu d'un fond aromatique."
+    },
+    {
+     "n": 5,
+     "instruction": "Ajouter les lentilles égouttées, les olives en quartiers, le sel restant, le poivre et, si l'on en met, les raisins secs. Cuire cinq minutes à feu moyen en écrasant une cuillerée de lentilles contre la paroi, jusqu'à ce qu'il n'y ait plus une goutte de liquide libre. Une farce humide traverse la pâte crue et fait éclater les chaussons au four ; l'écrasement partiel libère l'amidon qui lie la farce à froid."
+    },
+    {
+     "n": 6,
+     "instruction": "Étaler la farce sur une plaque et la laisser refroidir complètement, au réfrigérateur si besoin. Une farce tiède fait fondre le gras de la pâte au contact et ramollit le disque avant même qu'on l'ait replié ; c'est la même exigence que dans l'empanada de bœuf, et pour la même raison."
+    },
+    {
+     "n": 7,
+     "instruction": "Diviser la pâte en douze boules, les abaisser en disques de quinze centimètres, poser une bonne cuillerée à soupe de farce au centre de chacun, humecter le bord d'un doigt trempé dans l'eau, replier en demi-lune et souder en chassant l'air. Fermer sur une bulle d'air, c'est cuire un ballon qui s'ouvrira en s'étirant."
+    },
+    {
+     "n": 8,
+     "instruction": "Sceller le bord par le repulgue — pincer un coin, le rabattre sur lui-même et répéter le long du chausson — ou, à défaut, écraser franchement le bord à la fourchette. Ce n'est pas un décor : c'est ce qui empêche la vapeur de la farce de forcer la soudure pendant la cuisson."
+    },
+    {
+     "n": 9,
+     "instruction": "Ranger les chaussons sur une plaque huilée, les badigeonner d'un peu d'huile ou d'eau colorée au paprika, et cuire 15 à 20 minutes à 200 °C jusqu'à ce qu'ils soient dorés. Il n'y a pas d'œuf battu dans cette version, la dorure vient donc du gras et de la couleur du paprika ; surveiller à partir de la dixième minute, une pâte à l'huile brunit plus vite qu'une pâte au saindoux."
+    }
+   ],
+   "techniques": [
+    "trempage",
+    "pâte à l'huile",
+    "sofrito",
+    "refroidissement de la farce",
+    "repulgue",
+    "cuisson au four"
+   ],
+   "variants": [
+    "Pommes de terre bouillies en petits dés dans la farce, quatre pour douze empanadas (lanacion)",
+    "Farine complète à la place de la farine blanche (lanacion)",
+    "Trois sortes d'oignons — cébette, oignon blanc, oignon rouge — au lieu du seul oignon jaune (nomadasgourmet)",
+    "Raisins secs, une cuillerée à soupe pour douze, à ajouter avec les olives (nomadasgourmet)",
+    "Dorure à l'eau colorée au paprika, deux cuillerées d'eau pour un quart de cuillerée à café (nomadasgourmet)",
+    "Graines de sésame et deux feuilles de basilic frais dans la farce (receta-vegetariana)",
+    "Farine de maïs à la place de la farine de blé pour la pâte (receta-vegetariana)",
+    "Chaussons frits plutôt que cuits au four (receta-vegetariana)",
+    "Cuisson à four très chaud, 230 °C pendant 15 minutes (nomadasgourmet)"
+   ],
+   "sensory": {
+    "profile": "warm_aromatic",
+    "scores": {
+     "sweet": 2,
+     "salty": 3,
+     "acidic": 1,
+     "bitter": 1,
+     "umami": 3,
+     "heat": 1,
+     "pungency": 2,
+     "richness": 3,
+     "freshness": 1,
+     "intensity": 4
+    },
+    "dominant_flavors": [
+     "cumin",
+     "paprika",
+     "oignon compoté",
+     "olive"
+    ],
+    "aroma_families": [
+     "cumin",
+     "paprika",
+     "oignon_compoté",
+     "olive",
+     "pâte_cuite"
+    ],
+    "target_textures": [
+     "pâte_croustillante",
+     "farce_fondante_et_morceaux"
+    ],
+    "signature_ingredients": [
+     "Lentille brune sèche, crue",
+     "Farine de blé T55",
+     "Oignon jaune cru",
+     "Olive verte dénoyautée"
+    ],
+    "identity_guardrails": [
+     "La graisse de la pâte est végétale : le saindoux de la fiche parente est précisément ce qu'un jumeau végétarien ne peut pas garder",
+     "Les lentilles se cuisent un peu trop, jusqu'à se tenir à la cuillère — fermes, elles percent la pâte au façonnage",
+     "La farce entre froide dans les disques, jamais tiède",
+     "Sofrito d'oignon au cumin et au paprika, pas de sauce tomate : c'est ce qui sépare l'empanada argentine de toutes les autres",
+     "Repulgue ou bord écrasé à la fourchette, et pas de bulle d'air enfermée"
+    ]
+   },
+   "conservation": "Se gardent 3 jours au réfrigérateur dans une boîte, et se réchauffent 10 minutes au four à 180 °C, jamais au micro-ondes qui détrempe la pâte. Aucune des trois pages ne parle de congélation ; ce que fait ce type de chausson est en revanche connu et vaut d'être écrit comme une déduction et non comme une consigne des sources : une empanada crue, farcie et fermée, se congèle 3 mois à plat sur une plaque puis en sac, et se cuit sans décongélation en ajoutant cinq à huit minutes de four — c'est de loin le meilleur usage, la pâte crue n'ayant encore rien perdu. Cuites, elles se congèlent aussi 2 mois mais ressortent avec une pâte plus sableuse. La farce seule se garde 3 jours au froid et gagne au deuxième jour, le cumin ayant fini de se répartir : c'est elle qu'il vaut mieux préparer d'avance quand on veut étaler le travail sur deux soirs.",
+   "allergens": [
+    "gluten"
+   ]
+  }
+ ]
+}

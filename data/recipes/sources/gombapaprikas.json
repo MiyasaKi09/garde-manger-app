@@ -1,0 +1,115 @@
+{
+  "dish": "Gombapaprikás",
+  "slug": "gombapaprikas",
+  "sources_count": 4,
+  "avertissement": "Ce dossier ne relève que des faits : ingrédients, quantités, rendement, durées. Le texte des étapes n'y figure pas — seule son empreinte atteste la lecture. La recette du corpus reformule la méthode, elle ne recopie aucune prose.",
+  "sources": [
+    {
+      "url": "https://sobors.hu/receptek/gombapaprikas-nokedlivel-recept/",
+      "site": "sobors.hu",
+      "nom": "Gombapaprikás nokedlivel",
+      "portions": "4 személyre",
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "50 dekagramm gomba (csiperke, barna csiperke és laskagomba)",
+        "2 fej vöröshagyma",
+        "1 darab paprika",
+        "olaj szükség szerint",
+        "2 gerezd fokhagyma",
+        "300 milliliter víz",
+        "2 evőkanál pirospaprika",
+        "só és bors ízlés szerint",
+        "tejföl ízlés szerint"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 670,
+        "sha256": "30ac3f1fc1f8be1b"
+      },
+      "sha256_page": "e217ce659729bf4d"
+    },
+    {
+      "url": "https://sobors.hu/receptek/gombapaprikas-recept/",
+      "site": "sobors.hu",
+      "nom": "Gombapaprikás",
+      "portions": "4 személyre",
+      "duree_preparation": "PT25M",
+      "duree_cuisson": "PT35M",
+      "ingredients": [
+        "250 g barna csiperkegomba",
+        "250 g fehér csiperkegomba",
+        "1 db kápia paprika",
+        "2 fej vöröshagyma",
+        "2 gerezd fokhagyma",
+        "400 g penne",
+        "kevés olívaolaj",
+        "2 ek. pirospaprika",
+        "ízlés szerint só",
+        "ízlés szerint bors",
+        "300 ml víz",
+        "a tálaláshoz tejföl",
+        "a tálaláshoz petrezselyem"
+      ],
+      "etapes_empreinte": {
+        "nombre": 5,
+        "signes": 1069,
+        "sha256": "187cf774f0653251"
+      },
+      "sha256_page": "0e90901c9474dea5"
+    },
+    {
+      "url": "https://www.mindmegette.hu/recept/gombapaprikas-tejfollel",
+      "site": "mindmegette.hu",
+      "nom": "Gombapaprikás tejföllel | Mindmegette.hu",
+      "portions": 4,
+      "duree_preparation": "PT15M",
+      "duree_cuisson": "PT25M",
+      "ingredients": [
+        "1 fej Vöröshagyma",
+        "Olaj",
+        "1 tk fűszerpaprika",
+        "1 tk sűrített paradicsom",
+        "50 dkg Gomba",
+        "Só",
+        "Bors",
+        "2 dl Tejföl",
+        "1 ek Liszt"
+      ],
+      "etapes_empreinte": {
+        "nombre": 4,
+        "signes": 681,
+        "sha256": "6f3b0204dd6d00a7"
+      },
+      "sha256_page": "d4e39d12d17e4b42"
+    },
+    {
+      "url": "https://kemenytojas.com/receptek/gombapaprikas/",
+      "site": "kemenytojas.com",
+      "nom": "Gombapaprikás",
+      "portions": [
+        "4",
+        "4 adag"
+      ],
+      "duree_preparation": "PT20M",
+      "duree_cuisson": "PT50M",
+      "ingredients": [
+        "900 g csiperke gomba",
+        "2 fej hagyma",
+        "2 dl tejföl",
+        "6 tk. pirospaprika",
+        "Fél tk. őrölt bors",
+        "2 tk. só",
+        "2 ek. liszt",
+        "4 ek. olaj",
+        "Kb. fél liter víz"
+      ],
+      "etapes_empreinte": {
+        "nombre": 8,
+        "signes": 822,
+        "sha256": "60c828f957068bad"
+      },
+      "sha256_page": "d303eb66a8ecd9a2"
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+/* FicheFusionnee.css — la fiche de cuisine fusionnée (livrable 2.3)
+   Préfixe ff-* — tokens : --paper, --surface, --ink-1/2/3, --line, --brand,
+   --brand-soft, --accent, --accent-soft, --font-display, --font-mono,
+   --font-text, --r-sm, --s-*
+   ────────────────────────────────────────────────────────────────────────── */
+
+.ff-fiche {
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  background: var(--surface-soft);
+  padding: var(--s-4);
+  margin: var(--s-4) 0;
+  font-family: var(--font-text);
+}
+
+/* ── En-tête ────────────────────────────────────────────────────────────── */
+.ff-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin: 0 0 var(--s-2);
+}
+
+.ff-plats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0 0 var(--s-2);
+}
+
+.ff-plat {
+  font-family: var(--font-display);
+  font-size: 17px;
+  line-height: 1.25;
+  color: var(--ink-1);
+}
+
+.ff-plat-qui {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+
+.ff-plat-sep { color: var(--ink-3); }
+
+.ff-lignee {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+/* ── Exclusion déclarée ─────────────────────────────────────────────────── */
+.ff-exclusion {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: var(--s-3) 0 0;
+  padding: var(--s-2) var(--s-3);
+  background: var(--accent-soft);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-sm);
+  color: var(--ink-1);
+}
+
+/* ── Blocs ──────────────────────────────────────────────────────────────── */
+.ff-blocs {
+  list-style: none;
+  margin: var(--s-4) 0 0;
+  padding: 0;
+  counter-reset: ff-bloc;
+}
+
+.ff-bloc {
+  border-left: 2px solid var(--line-strong);
+  padding: 0 0 var(--s-4) var(--s-3);
+  margin: 0;
+}
+
+.ff-bloc-commune { border-left-color: var(--brand); }
+.ff-bloc-parallele { border-left-color: var(--sprout); }
+.ff-bloc-divergent { border-left-color: var(--accent); }
+
+.ff-bloc-titre {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.ff-bloc-detail {
+  font-family: var(--font-text);
+  font-size: var(--fs-xs);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-3);
+}
+
+.ff-etape {
+  margin: 0 0 var(--s-2);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  color: var(--ink-1);
+}
+
+/* ── Point de divergence ────────────────────────────────────────────────── */
+.ff-separation {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 var(--s-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.ff-branches {
+  display: grid;
+  gap: var(--s-3);
+}
+
+@media (min-width: 720px) {
+  .ff-branches { grid-template-columns: 1fr 1fr; }
+}
+
+.ff-branche {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: var(--s-3);
+}
+
+.ff-branche-carne { border-top: 2px solid var(--accent); }
+.ff-branche-vege { border-top: 2px solid var(--sprout); }
+
+.ff-branche-titre {
+  margin: 0 0 var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+}
+
+/* ── Ingrédients ────────────────────────────────────────────────────────── */
+.ff-ingredients {
+  margin-top: var(--s-4);
+  border-top: 1px solid var(--line);
+  padding-top: var(--s-3);
+}
+
+.ff-ing-bloc { margin-bottom: var(--s-3); }
+
+.ff-ing-titre {
+  margin: 0 0 2px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.ff-ing-sous {
+  margin: 0 0 var(--s-2);
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+
+.ff-ing-liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ff-ing-ligne {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: 3px 0;
+  border-bottom: 1px dotted var(--line);
+  font-size: var(--fs-sm);
+  color: var(--ink-1);
+}
+
+.ff-ing-nom { min-width: 0; }
+.ff-ing-opt { color: var(--ink-3); }
+
+.ff-ing-qte {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.ff-ing-part { color: var(--ink-3); }
+
+.ff-ecart {
+  margin: var(--s-2) 0 0;
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+
+/* ── Refus déclaré ──────────────────────────────────────────────────────── */
+.ff-refus {
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-sm);
+  padding: var(--s-3);
+  margin: var(--s-3) 0;
+  background: var(--paper-2);
+}
+
+.ff-refus-titre {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.ff-refus-motif {
+  margin: 0;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--ink-2);
+}

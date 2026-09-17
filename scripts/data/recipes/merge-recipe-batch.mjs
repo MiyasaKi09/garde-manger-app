@@ -32,10 +32,10 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { normalizeName } from '../lib/normalize.mjs'
+import { applyConservationProfiles, loadManualDecisions } from './derive-conservation-profiles.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..', '..', '..')
-const CORPUS = join(ROOT, 'data', 'recipes', 'corpus-v3.json')
 const REGISTRE_RETRAITS = join(ROOT, 'data', 'recipes', 'retraits.json')
 
 const arguments_ = process.argv.slice(2)
@@ -43,11 +43,16 @@ const valeurDe = (nom) => {
   const position = arguments_.indexOf(nom)
   return position >= 0 ? arguments_[position + 1] : null
 }
+// `--corpus` désigne une COPIE de travail du corpus : c'est ce qui permet de
+// vérifier un versement (profils de conservation compris) sans toucher au
+// corpus du dépôt. Sans l'option, le corpus versionné.
+const CORPUS = valeurDe('--corpus') || join(ROOT, 'data', 'recipes', 'corpus-v3.json')
 const aRetirer = valeurDe('--retirer')
 const motifDuRetrait = valeurDe('--motif')
-const source = aRetirer ? null : arguments_[0]
+const valeursDOptions = new Set(['--retirer', '--motif', '--corpus'].map(valeurDe).filter(Boolean))
+const source = aRetirer ? null : arguments_.find((argument) => !argument.startsWith('--') && !valeursDOptions.has(argument)) || null
 if (!source && !aRetirer) {
-  console.error('Usage : merge-recipe-batch.mjs <lot.json> [--dry-run]')
+  console.error('Usage : merge-recipe-batch.mjs <lot.json> [--dry-run] [--corpus <copie.json>]')
   console.error('        merge-recipe-batch.mjs --retirer <CODE> --motif "<pourquoi>"')
   process.exit(2)
 }
@@ -141,7 +146,7 @@ if (aRetirer) {
 }
 
 const ajouts = nouvelles.filter((recette) => !remplacements.has(recette.code))
-const recettes = [
+const recettesFusionnees = [
   ...corpus.recipes.filter((recette) => recette.code !== aRetirer).map((recette) => {
     const reprise = remplacements.get(recette.code)
     if (!reprise || reprise.avant !== recette) return recette
@@ -152,6 +157,25 @@ const recettes = [
   }),
   ...ajouts,
 ]
+
+// Le profil de conservation STRUCTURÉ (conservation_profile) est dérivé de la
+// prose et des arbitrages manuels par derive-conservation-profiles.mjs. Il est
+// recalculé ici pour TOUTES les recettes — celles du lot n'en ont pas encore,
+// et une reprise peut avoir changé la prose d'une recette existante. Le moteur
+// ne lit que ce profil : une recette versée sans lui ne serait jamais
+// produite d'avance, sans qu'aucun message le dise.
+let recettes
+try {
+  recettes = applyConservationProfiles(recettesFusionnees, loadManualDecisions())
+} catch (erreur) {
+  // Typiquement : une reprise a changé la prose d'une recette qu'un arbitrage
+  // manuel avait tranchée sur l'ancien texte. On refuse plutôt que d'appliquer
+  // un verdict pris sur un texte qui n'existe plus.
+  console.error(`Fusion refusée : ${erreur.message}`)
+  process.exit(1)
+}
+const versees = new Set([...ajouts, ...remplacements.values()].map((entree) => (entree.apres || entree).code))
+const sansProfil = recettes.filter((recette) => versees.has(recette.code) && !recette.conservation_profile)
 
 if (remplacements.size) {
   console.log(`${remplacements.size} recette(s) reprise(s) :`)
@@ -211,6 +235,14 @@ if (retraits.length) {
   }
 }
 console.log(`Recettes : ${corpus.recipes.length} → ${recettes.length} (${ajouts.length} ajout·s, ${remplacements.size} reprise·s, ${retraits.length} retrait·s)`)
+console.log(`  profils de conservation : ${recettes.filter((recette) => recette.conservation_profile).length} / ${recettes.length}`)
+if (sansProfil.length) {
+  // Pas un refus : la recette est versée, mais elle ne sera jamais produite
+  // d'avance tant que sa prose ne dit rien de lisible ou qu'aucun arbitrage
+  // manuel ne la tranche. Le dire ici évite de le découvrir dans un planning.
+  console.log(`\n⚠ ${sansProfil.length} recette(s) versée(s) sans profil de conservation lisible — à arbitrer dans data/recipes/arbitrations/conservation-manuelle.json :`)
+  for (const recette of sansProfil) console.log(`    ${recette.code}  « ${recette.conservation || '(pas de prose)'} »`)
+}
 console.log(`  formes d'aliments : ${corpus.food_form_graph.length} → ${fusionne.food_form_graph.length}`)
 console.log(`  techniques        : ${corpus.technique_graph.length} → ${fusionne.technique_graph.length}`)
 console.log(`  arômes            : ${corpus.aroma_graph.length} → ${fusionne.aroma_graph.length}`)
