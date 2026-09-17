@@ -154,6 +154,16 @@ const NEW_EXPECTED_OBJECTS = {
     { type: 'function', schema: 'public', name: 'planning_food_ban_fold' },
     { type: 'function', schema: 'public', name: 'planning_food_ban_matches' },
   ],
+  // Le contrat opérationnel : on vérifie les COLONNES et la fonction de
+  // traduction, pas seulement la RPC. `get_operational_recipe_catalog_v3`
+  // existait déjà avant cette migration — un contrôle par son nom seul passerait
+  // au vert sans que la projection ait changé.
+  '20260917110000': [
+    { type: 'column', schema: 'catalog', table: 'food_forms', name: 'origin' },
+    { type: 'column', schema: 'catalog', table: 'food_forms', name: 'origin_source' },
+    { type: 'column', schema: 'culinary', table: 'recipe_versions', name: 'conservation_profile' },
+    { type: 'function', schema: 'culinary', name: 'conservation_profile_contract' },
+  ],
 };
 
 // Fichiers auxiliaires chargés dans la même transaction/version que le fichier

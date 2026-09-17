@@ -12,11 +12,64 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import { isKnownOrigin } from '../lib/origins.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const OUT = join(__dirname, '..', 'out')
 const PUB = join(OUT, 'f0-publish')
 const release = JSON.parse(readFileSync(join(OUT, 'f0-release.json'), 'utf8'))
+const recipeCatalog = JSON.parse(readFileSync(join(OUT, 'recipe-food-catalog.json'), 'utf8'))
+
+/**
+ * L'ORIGINE BIOLOGIQUE DES FORMES PUBLIÉES PAR F0.
+ *
+ * `catalog.food_forms.origin` existe depuis 20260917110000 et c'est elle que la
+ * RPC opérationnelle publie : une forme sans origine rend « inconnu » au
+ * planificateur, qui la refuse alors au végétarien. Cette étape de publication
+ * n'en écrivait aucune — le mot « origin » n'apparaissait pas dans ce fichier.
+ *
+ * CE QUE CETTE ÉTAPE PEUT DÉCLARER, ET CE QU'ELLE NE PEUT PAS. La résolution
+ * d'origine a trois règles (scripts/data/lib/origins.mjs) : (a) un arbitrage
+ * relu, (b) une case Ciqual sans ambiguïté, (c) 'inconnu'. La règle (b) demande
+ * le groupe, le sous-groupe et le sous-sous-groupe du classeur — que
+ * `f0-release.json` NE PORTE PAS : l'artefact garde le code Ciqual, le nom, la
+ * catégorie et la nutrition, pas la taxonomie. Cette étape ne peut donc pas
+ * rejouer (b), et on ne la lui fait pas deviner.
+ *
+ * Elle transfère ce qui est DÉJÀ TRANCHÉ dans le catalogue versionné des formes
+ * de recettes, par deux identités et deux seulement :
+ *   — même nom normalisé : c'est l'identité qu'emploient les trois chargeurs de
+ *     ce dépôt pour retrouver une forme, et deux formes de même nom normalisé
+ *     sont la même ligne en base ;
+ *   — même fiche Ciqual, quand l'origine du catalogue a justement été lue sur
+ *     cette fiche (`origin_source` commençant par `ciqual:`). Ce n'est alors pas
+ *     un rapprochement de vraisemblance : c'est le même enregistrement source.
+ *     Une origine venue d'un arbitrage n'est PAS transférée par le code Ciqual,
+ *     parce qu'un arbitrage peut porter sur une forme dont la fiche n'est qu'un
+ *     proxy nutritionnel.
+ *
+ * Le reste ne reçoit rien — colonne NULL, c'est-à-dire « cette chaîne n'a pas
+ * déclaré d'origine pour cette forme », qui ne se confond pas avec 'inconnu',
+ * lequel dit « on a cherché et personne n'a tranché ». Le nombre de formes
+ * laissées sans origine est imprimé par le script : c'est une mesure, pas un
+ * détail qu'on découvre en production.
+ */
+const origineParNom = new Map(recipeCatalog.forms.map((form) => [form.canonical_name_normalized, form]))
+const origineParFicheCiqual = new Map(recipeCatalog.forms
+  .filter((form) => form.source_record_key && String(form.origin_source || '').startsWith('ciqual:'))
+  .map((form) => [String(form.source_record_key), form]))
+
+function origineDeclaree(form) {
+  const parNom = origineParNom.get(form.canonical_name_normalized)
+  if (parNom && isKnownOrigin(parNom.origin) && parNom.origin !== 'inconnu') {
+    return { origin: parNom.origin, origin_source: parNom.origin_source || null }
+  }
+  const parFiche = origineParFicheCiqual.get(String(form.alim_code))
+  if (parFiche && isKnownOrigin(parFiche.origin) && parFiche.origin !== 'inconnu') {
+    return { origin: parFiche.origin, origin_source: parFiche.origin_source || null }
+  }
+  return null
+}
 
 // code court → [nutrient_code, unité]. Couvre le minimum §10.16 + macros.
 const CODES = {
@@ -47,10 +100,15 @@ const forms = release.forms.map((f) => {
     if (st && st !== 'measured' && st !== 'not_available') s[sc] = st
   }
   const a = f.attributes
+  const origine = origineDeclaree(f)
   return {
     a: f.alim_code, con: f.concept_normalized, cn: f.canonical_name, cnn: f.canonical_name_normalized,
     at: [a.cooking_state, a.preservation_state, a.physical_state, a.bone_state, a.skin_state].map((x) => x || '').join('|'),
     v, ...(Object.keys(s).length ? { s } : {}),
+    // `o` absent = origine non déclarée par cette chaîne. La clé n'est pas
+    // posée à null : le SQL teste `b.f ? 'o'` et ne touche alors pas la ligne,
+    // ce qui évite d'écraser une origine qu'un autre chargeur aurait déclarée.
+    ...(origine ? { o: origine.origin, os: origine.origin_source } : {}),
   }
 })
 
@@ -83,6 +141,21 @@ select fc.id, b.f->>'cn', b.f->>'cnn',
        nullif(split_part(b.f->>'at','|',5),''), 'g', 'published', 'B'
 from _b b join catalog.food_concepts fc on fc.canonical_name_normalized = b.f->>'con'
 on conflict (food_concept_id, canonical_name_normalized) do nothing;
+
+-- Origine biologique, écrite APRÈS l'insertion et non dedans : l'insertion ne
+-- touche pas une forme déjà publiée (\`on conflict do nothing\`), et c'est le cas
+-- de la plupart d'entre elles au deuxième passage. Une origine posée dans le
+-- seul \`insert\` n'aurait donc rien déclaré sur une base déjà chargée. Seules
+-- les formes dont la release porte une origine sont touchées : sans la clé
+-- \`o\`, la ligne est laissée telle quelle, jamais remise à NULL.
+update catalog.food_forms ff
+set origin = b.f->>'o', origin_source = b.f->>'os'
+from _b b
+join catalog.food_concepts fc on fc.canonical_name_normalized = b.f->>'con'
+where ff.food_concept_id = fc.id
+  and ff.canonical_name_normalized = b.f->>'cnn'
+  and b.f ? 'o'
+  and (ff.origin is distinct from b.f->>'o' or ff.origin_source is distinct from b.f->>'os');
 
 -- Profils nutritionnels (1 par forme, primaire, publié).
 insert into catalog.food_nutrition_profiles
@@ -142,4 +215,9 @@ writeFileSync(join(PUB, '90-finalize.sql'), finalize)
 console.log(JSON.stringify({
   forms: forms.length, nutrients: Object.keys(CODES).length,
   form_chunks: formChunks.length, review_tasks: warned.length,
+  // Deux chiffres, pas un : une origine publiée et une origine absente se
+  // comptent séparément, sans quoi « 300 formes publiées » laisserait croire
+  // que 300 origines le sont aussi.
+  origins_declared: forms.filter((f) => f.o).length,
+  origins_undeclared: forms.filter((f) => !f.o).length,
 }, null, 2))

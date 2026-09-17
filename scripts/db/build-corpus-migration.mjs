@@ -45,6 +45,17 @@
  * sort en erreur plutôt que d'effacer une migration peut-être déjà appliquée en
  * production.
  *
+ * Et il ne RÉÉCRIT pas une tranche déjà écrite. C'est la même règle vue de
+ * l'autre côté, et elle est devenue mordante avec le contrat opérationnel
+ * (20260917110000) : `build-corpus-v3.mjs` émet désormais une colonne de plus
+ * (`conservation_profile`), si bien que les tranches régénérées ne sont plus
+ * identiques à celles qui sont au manifeste. Les écrire par-dessus ferait
+ * refuser l'application par dérive de checksum — `apply-migrations.sh` compare
+ * l'empreinte du fichier à celle enregistrée — et la release entière
+ * s'arrêterait. Un rechargement du corpus déclare donc un NOUVEL horodatage
+ * dans `VERSION_PREMIERE_TRANCHE` ci-dessous ; le contrôle plus bas le rappelle
+ * au lieu de laisser la découverte à la release.
+ *
  * Usage :
  *   node scripts/data/recipes/build-corpus-v3.mjs   # produit les tranches
  *   node scripts/db/build-corpus-migration.mjs      # les regroupe en migrations
@@ -229,7 +240,19 @@ for (const [i, groupe] of groupes.entries()) {
   ].filter(Boolean).join('\n')
 
   const fichier = `${version}_${NOM_BASE}_${numero}.sql`
-  writeFileSync(join(MIGRATIONS_DIR, fichier), `${enTete}${corps}\n`)
+  const contenu = `${enTete}${corps}\n`
+  const cheminFichier = join(MIGRATIONS_DIR, fichier)
+  // Une tranche déjà écrite ne se réécrit pas AVEC UN AUTRE CONTENU : son
+  // empreinte est au manifeste, et la base la refuserait. Rejouer le script
+  // sans rien changer reste possible — le contenu est alors identique, et
+  // l'écriture un non-événement.
+  if (existsSync(cheminFichier) && readFileSync(cheminFichier, 'utf8') !== contenu) {
+    console.error(`La tranche ${fichier} existe déjà avec un autre contenu.`)
+    console.error('Son empreinte est enregistrée : la réécrire ferait refuser l\'application (dérive de checksum).')
+    console.error('Pour recharger le corpus, déclarer un nouvel horodatage dans VERSION_PREMIERE_TRANCHE.')
+    process.exit(1)
+  }
+  writeFileSync(cheminFichier, contenu)
 
   // ── Rollback ──────────────────────────────────────────────────────────────
   // Il ne supprime pas : il met hors service. Une version peut avoir été

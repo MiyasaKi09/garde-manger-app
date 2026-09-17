@@ -35,6 +35,28 @@ const lienDeBase = (recipe) => (recipe.derived_from
        JOIN ops.source_datasets base_ds ON base_ds.id = base.source_dataset_id
       WHERE base_ds.code = 'myko_editorial_v3' AND base.source_record_key = ${q(recipe.derived_from)})`
   : 'NULL')
+
+/**
+ * Profil de conservation DÉCLARÉ, versé tel quel dans la colonne jsonb ajoutée
+ * par 20260917110000.
+ *
+ * Il part dans la base sous la forme que le corpus emploie — snake_case, écrite
+ * par derive-conservation-profiles.mjs depuis la prose et les arbitrages relus.
+ * La traduction vers le contrat de lecture du moteur (`fridgeHours`,
+ * `freezerMonths`…) appartient à la RPC, qui renomme déjà tout le reste :
+ * traduire ici aurait mis deux vocabulaires dans la même colonne et rendu la
+ * source illisible.
+ *
+ * Un profil absent reste ABSENT : la colonne prend NULL, et le planificateur ne
+ * produit alors aucune portion d'avance. C'est la règle que le moteur applique
+ * déjà (lib/domain/recipes/conservationProfile.js) ; on ne fabrique pas ici une
+ * durée de trois jours pour que la ligne ait l'air complète.
+ */
+const profilDeConservation = (recipe) => (recipe.conservation_profile
+  && typeof recipe.conservation_profile === 'object'
+  ? json(recipe.conservation_profile)
+  : 'NULL')
+
 const corpusHash = createHash('md5').update(corpus.recipes.map(hashRecipe).sort().join(',')).digest('hex')
 const rulesHash = createHash('md5').update(JSON.stringify(corpus.planner_sensory_rules)).digest('hex')
 const declaredYields = new Map([
@@ -121,7 +143,7 @@ BEGIN
      quality_level, publication_status, content_hash,
      sensory_scores, dominant_flavors, aroma_families, target_textures,
      signature_ingredients, identity_guardrails, techniques, variant_candidates,
-     allergens, conservation_text, planning_eligible, eligibility_issues,
+     allergens, conservation_text, conservation_profile, planning_eligible, eligibility_issues,
      derived_from_version_id, derivation)
   SELECT
     v_family, 3, ${q(recipe.family)}, ${qn(recipe.description_courte)}, ds.id, ${q(recipe.code)},
@@ -132,7 +154,7 @@ BEGIN
     ${array(recipe.sensory.aroma_families)}, ${array(recipe.sensory.target_textures)},
     ${array(recipe.sensory.signature_ingredients)}, ${array(recipe.sensory.identity_guardrails)},
     ${array(recipe.techniques)}, ${array(recipe.variants)}, ${array(recipe.allergens)},
-    ${qn(recipe.conservation)}, false, '[]'::jsonb,
+    ${qn(recipe.conservation)}, ${profilDeConservation(recipe)}, false, '[]'::jsonb,
     ${lienDeBase(recipe)}, ${json(recipe.derivation || {})}
   FROM ops.source_datasets ds WHERE ds.code = 'myko_editorial_v3'
   ON CONFLICT (recipe_family_id, version_number) DO UPDATE SET
@@ -159,6 +181,7 @@ BEGIN
     variant_candidates = EXCLUDED.variant_candidates,
     allergens = EXCLUDED.allergens,
     conservation_text = EXCLUDED.conservation_text,
+    conservation_profile = EXCLUDED.conservation_profile,
     planning_eligible = false,
     eligibility_issues = '[]'::jsonb,
     derived_from_version_id = EXCLUDED.derived_from_version_id,

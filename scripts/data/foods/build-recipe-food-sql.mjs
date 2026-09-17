@@ -4,10 +4,27 @@ import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { normalizeName } from '../lib/normalize.mjs'
+import { isKnownOrigin } from '../lib/origins.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const OUT = join(__dirname, '..', 'out')
 const catalog = JSON.parse(readFileSync(join(OUT, 'recipe-food-catalog.json'), 'utf8'))
+
+// Le chargeur refuse d'écrire une origine hors vocabulaire plutôt que de la
+// laisser casser à l'application : la colonne porte un CHECK (20260917110000),
+// et une migration qui échoue en production arrête toute la release. Une forme
+// sans origine du tout est refusée aussi — le catalogue en déclare une pour
+// chacune des 549, y compris 'inconnu', et un champ vide ici signalerait que le
+// catalogue a été régénéré par une chaîne qui ne résout plus l'origine.
+const originesRefusees = catalog.forms.filter((form) => !isKnownOrigin(form.origin))
+if (originesRefusees.length) {
+  console.error('Formes dont l’origine est absente ou hors vocabulaire :')
+  for (const form of originesRefusees.slice(0, 20)) {
+    console.error(`  ${form.canonical_name_normalized} : ${JSON.stringify(form.origin)}`)
+  }
+  process.exit(1)
+}
+
 const q = (value) => `'${String(value).replace(/'/g, "''")}'`
 const qn = (value) => value == null ? 'NULL' : q(value)
 const num = (value) => Number.isFinite(Number(value)) ? Number(value) : 'NULL'
@@ -120,6 +137,26 @@ BEGIN
        ${q(form.confidence)}, 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = ${q(form.origin)}, origin_source = ${qn(form.origin_source)}
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM ${q(form.origin)}
+      OR origin_source IS DISTINCT FROM ${qn(form.origin_source)});
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles

@@ -1864,5 +1864,89 @@
     "baseline": null,
     "historical_version": null,
     "expected_objects": []
+  },
+  {
+    "file": "20260917110000_contrat_operationnel.sql",
+    "github_version": "20260917110000",
+    "name": "contrat_operationnel",
+    "sha256": "9344084087e6f4364a672ead9d7d9933790ae7548fe31bfcd7149cff27e70ba5",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": [
+      {
+        "type": "column",
+        "schema": "catalog",
+        "table": "food_forms",
+        "name": "origin"
+      },
+      {
+        "type": "column",
+        "schema": "catalog",
+        "table": "food_forms",
+        "name": "origin_source"
+      },
+      {
+        "type": "column",
+        "schema": "culinary",
+        "table": "recipe_versions",
+        "name": "conservation_profile"
+      },
+      {
+        "type": "function",
+        "schema": "culinary",
+        "name": "conservation_profile_contract"
+      }
+    ]
+  },
+  {
+    "file": "20260917110000_contrat_operationnel_rollback.sql",
+    "github_version": "20260917110000",
+    "name": "contrat_operationnel_rollback",
+    "sha256": "fc0656ca61eb8e411138cb998518a09c392e41fecce9caaa4ca419b98738e1ed",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917111000_contrat_operationnel_valeurs.sql",
+    "github_version": "20260917111000",
+    "name": "contrat_operationnel_valeurs",
+    "sha256": "4e2b0feaf24b7651e8202efe222015f1729950167b999115bd8e52c329c8daba",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917111000_contrat_operationnel_valeurs_rollback.sql",
+    "github_version": "20260917111000",
+    "name": "contrat_operationnel_valeurs_rollback",
+    "sha256": "a9a873a379601e14d119ac575b4daf68fd014b64575d83333acfb7490325b252",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917112000_pate_a_foncer_profil_exact.sql",
+    "github_version": "20260917112000",
+    "name": "pate_a_foncer_profil_exact",
+    "sha256": "b3e75f2032173ea964a196e8520fa7ec184edee6aa35f1dcb01efbff8700ea8e",
+    "role": "apply",
+    "baseline": "new",
+    "historical_version": null,
+    "expected_objects": []
+  },
+  {
+    "file": "20260917112000_pate_a_foncer_profil_exact_rollback.sql",
+    "github_version": "20260917112000",
+    "name": "pate_a_foncer_profil_exact_rollback",
+    "sha256": "0aa5a3090bda298eceb64606501dacfe9e9229727aff0179282989a3728636d9",
+    "role": "rollback",
+    "baseline": null,
+    "historical_version": null,
+    "expected_objects": []
   }
 ]

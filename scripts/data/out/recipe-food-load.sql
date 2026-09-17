@@ -64,6 +64,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -166,6 +186,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -270,6 +310,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -372,6 +432,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -476,6 +556,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:oeuf', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:oeuf'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -578,6 +678,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -682,6 +802,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / algues'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / algues');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -784,6 +924,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -888,6 +1048,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -990,6 +1170,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -1094,6 +1294,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -1196,6 +1416,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -1300,6 +1540,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -1403,6 +1663,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -1505,6 +1785,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -1616,6 +1916,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / algues'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / algues');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -1718,6 +2038,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -1822,6 +2162,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -1925,6 +2285,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -2027,6 +2407,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -2138,6 +2538,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -2241,6 +2661,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -2343,6 +2783,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -2454,6 +2914,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pains et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pains et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -2556,6 +3036,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -2667,6 +3167,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -2770,6 +3290,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -2872,6 +3412,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -2983,6 +3543,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -3085,6 +3665,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -3189,6 +3789,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -3292,6 +3912,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -3394,6 +4034,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -3505,6 +4165,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -3607,6 +4287,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -3711,6 +4411,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:matières grasses / beurres'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / beurres');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -3813,6 +4533,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -3917,6 +4657,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:matières grasses / beurres'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / beurres');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -4019,6 +4779,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:matières grasses / beurres'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / beurres');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -4123,6 +4903,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:matières grasses / beurres'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / beurres');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -4226,6 +5026,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'mineral', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'mineral'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -4328,6 +5148,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -4439,6 +5279,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -4549,6 +5409,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:oeuf', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:oeuf'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -4651,6 +5531,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:oeuf', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / œufs'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:oeuf'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / œufs');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -4762,6 +5662,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -4864,6 +5784,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -4968,6 +5908,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -5070,6 +6030,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -5174,6 +6154,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -5276,6 +6276,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -5380,6 +6400,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -5482,6 +6522,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -5586,6 +6646,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes cuites / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes cuites / bœuf et veau');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -5688,6 +6768,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -5792,6 +6892,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -5894,6 +7014,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -5998,6 +7138,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -6100,6 +7260,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -6204,6 +7384,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -6306,6 +7506,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -6417,6 +7637,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -6526,6 +7766,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -6637,6 +7897,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -6746,6 +8026,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -6857,6 +8157,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -6966,6 +8286,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:fruits_de_mer', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:fruits_de_mer'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -7077,6 +8417,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -7186,6 +8546,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -7297,6 +8677,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -7406,6 +8806,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -7517,6 +8937,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -7626,6 +9066,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -7737,6 +9197,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -7846,6 +9326,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -7957,6 +9457,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -8059,6 +9579,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -8170,6 +9710,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -8272,6 +9832,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -8376,6 +9956,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -8479,6 +10079,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -8581,6 +10201,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -8692,6 +10332,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -8795,6 +10455,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:fruits_de_mer', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:fruits_de_mer'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés crus');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -8897,6 +10577,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -9008,6 +10708,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -9117,6 +10837,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -9228,6 +10968,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -9330,6 +11090,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -9434,6 +11214,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -9536,6 +11336,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -9647,6 +11467,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -9757,6 +11597,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -9859,6 +11719,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -9963,6 +11843,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -10065,6 +11965,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -10169,6 +12089,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -10271,6 +12211,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -10375,6 +12335,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -10477,6 +12457,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -10581,6 +12581,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / poissons crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / poissons crus');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -10683,6 +12703,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -10787,6 +12827,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -10889,6 +12949,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -10993,6 +13073,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -11095,6 +13195,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pains et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pains et assimilés');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -11199,6 +13319,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pains et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pains et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -11301,6 +13441,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes cuites / porc'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes cuites / porc');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -11405,6 +13565,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -11507,6 +13687,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -11611,6 +13811,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -11713,6 +13933,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -11817,6 +14057,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -11919,6 +14179,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -12023,6 +14303,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -12125,6 +14425,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -12229,6 +14549,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -12331,6 +14671,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -12435,6 +14795,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -12537,6 +14917,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -12641,6 +15041,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -12743,6 +15163,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -12847,6 +15287,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -12949,6 +15409,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -13053,6 +15533,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -13155,6 +15655,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -13259,6 +15779,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -13361,6 +15901,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -13465,6 +16025,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -13567,6 +16147,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -13671,6 +16271,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -13774,6 +16394,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -13876,6 +16516,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -13987,6 +16647,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -14089,6 +16769,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -14200,6 +16900,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -14309,6 +17029,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -14420,6 +17160,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -14522,6 +17282,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -14633,6 +17413,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -14735,6 +17535,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -14846,6 +17666,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / fromages et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / fromages et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -14948,6 +17788,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -15052,6 +17912,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -15154,6 +18034,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -15258,6 +18158,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -15360,6 +18280,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / poissons crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / poissons crus');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -15464,6 +18404,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -15566,6 +18526,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -15670,6 +18650,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -15772,6 +18772,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -15876,6 +18896,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -15978,6 +19018,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -16082,6 +19142,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / crèmes et spécialités à base de crème'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / crèmes et spécialités à base de crème');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -16185,6 +19265,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / crèmes et spécialités à base de crème'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / crèmes et spécialités à base de crème');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -16287,6 +19387,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / crèmes et spécialités à base de crème'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / crèmes et spécialités à base de crème');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -16398,6 +19518,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -16500,6 +19640,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:fruits_de_mer', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:fruits_de_mer'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés crus');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -16604,6 +19764,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:fruits_de_mer', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:fruits_de_mer'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés crus');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -16706,6 +19886,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:fruits_de_mer', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:fruits_de_mer'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés crus');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -16810,6 +20010,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -16912,6 +20132,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -17016,6 +20256,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -17118,6 +20378,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -17222,6 +20502,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -17325,6 +20625,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -17427,6 +20747,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -17538,6 +20878,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -17640,6 +21000,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / poissons crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / poissons crus');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -17744,6 +21124,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -17847,6 +21247,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -17949,6 +21369,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'mineral', origin_source = 'ciqual:eaux et autres boissons / eaux'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'mineral'
+      OR origin_source IS DISTINCT FROM 'ciqual:eaux et autres boissons / eaux');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -18060,6 +21500,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'mineral', origin_source = 'ciqual:eaux et autres boissons / eaux'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'mineral'
+      OR origin_source IS DISTINCT FROM 'ciqual:eaux et autres boissons / eaux');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -18169,6 +21629,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -18280,6 +21760,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'mineral', origin_source = 'ciqual:eaux et autres boissons / eaux'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'mineral'
+      OR origin_source IS DISTINCT FROM 'ciqual:eaux et autres boissons / eaux');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -18389,6 +21889,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'mineral', origin_source = 'ciqual:eaux et autres boissons / eaux'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'mineral'
+      OR origin_source IS DISTINCT FROM 'ciqual:eaux et autres boissons / eaux');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -18500,6 +22020,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -18602,6 +22142,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / porc'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / porc');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -18706,6 +22266,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / fromages et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / fromages et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -18808,6 +22388,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -18919,6 +22519,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -19021,6 +22641,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / agneau et mouton'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / agneau et mouton');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -19125,6 +22765,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / porc'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / porc');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -19227,6 +22887,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -19331,6 +23011,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -19433,6 +23133,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -19537,6 +23257,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -19639,6 +23379,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / dinde'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / dinde');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -19743,6 +23503,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -19845,6 +23625,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -19949,6 +23749,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -20051,6 +23871,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -20155,6 +23995,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -20257,6 +24117,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -20361,6 +24241,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -20463,6 +24363,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -20567,6 +24487,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -20669,6 +24609,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -20773,6 +24733,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -20875,6 +24855,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -20979,6 +24979,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / fromages et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / fromages et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -21082,6 +25102,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -21184,6 +25224,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -21295,6 +25355,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -21405,6 +25485,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -21507,6 +25607,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -21618,6 +25738,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -21727,6 +25867,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -21838,6 +25998,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -21940,6 +26120,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -22044,6 +26244,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / poissons crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / poissons crus');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -22146,6 +26366,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / porc'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / porc');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -22250,6 +26490,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -22352,6 +26612,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -22456,6 +26736,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -22558,6 +26858,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / produits laitiers frais et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / produits laitiers frais et assimilés');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -22662,6 +26982,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / fromages et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / fromages et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -22764,6 +27104,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / fromages et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / fromages et assimilés');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -22868,6 +27228,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -22971,6 +27351,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:fruits_de_mer', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés cuits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:fruits_de_mer'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés cuits');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -23073,6 +27473,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -23184,6 +27604,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -23286,6 +27726,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -23390,6 +27850,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -23492,6 +27972,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -23596,6 +28096,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -23698,6 +28218,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -23802,6 +28342,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / agneau et mouton'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / agneau et mouton');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -23904,6 +28464,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -24008,6 +28588,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -24110,6 +28710,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -24214,6 +28834,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -24316,6 +28956,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -24420,6 +29080,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -24522,6 +29202,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -24633,6 +29333,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -24735,6 +29455,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -24839,6 +29579,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / fromages et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / fromages et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -24941,6 +29701,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / charcuteries et assimilés / jambons secs et crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / charcuteries et assimilés / jambons secs et crus');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -25045,6 +29825,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -25147,6 +29947,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -25251,6 +30071,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -25353,6 +30193,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -25457,6 +30317,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -25559,6 +30439,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -25663,6 +30563,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -25765,6 +30685,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -25869,6 +30809,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -25971,6 +30931,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -26075,6 +31055,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -26177,6 +31177,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -26281,6 +31301,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -26383,6 +31423,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -26487,6 +31547,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -26589,6 +31669,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -26693,6 +31793,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -26795,6 +31915,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:matières grasses / huiles et graisses végétales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / huiles et graisses végétales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -26906,6 +32046,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:matières grasses / huiles et graisses végétales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / huiles et graisses végétales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -27015,6 +32175,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:matières grasses / huiles et graisses végétales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / huiles et graisses végétales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -27126,6 +32306,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:matières grasses / huiles et graisses végétales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / huiles et graisses végétales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -27235,6 +32435,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:matières grasses / huiles et graisses végétales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / huiles et graisses végétales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -27346,6 +32566,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -27455,6 +32695,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:matières grasses / huiles et graisses végétales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / huiles et graisses végétales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -27566,6 +32826,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:matières grasses / huiles et graisses végétales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / huiles et graisses végétales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -27675,6 +32955,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:matières grasses / huiles et graisses végétales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / huiles et graisses végétales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -27786,6 +33086,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -27895,6 +33215,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:matières grasses / huiles et graisses végétales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / huiles et graisses végétales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -28006,6 +33346,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:matières grasses / huiles et graisses végétales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / huiles et graisses végétales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -28115,6 +33475,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:matières grasses / huiles et graisses végétales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:matières grasses / huiles et graisses végétales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -28226,6 +33606,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -28328,6 +33728,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -28439,6 +33859,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / charcuteries et assimilés / jambons secs et crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / charcuteries et assimilés / jambons secs et crus');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -28541,6 +33981,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / charcuteries et assimilés / jambons secs et crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / charcuteries et assimilés / jambons secs et crus');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -28645,6 +34105,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -28747,6 +34227,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -28851,6 +34351,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -28954,6 +34474,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -29056,6 +34596,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:oeuf', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / œufs'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:oeuf'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / œufs');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -29167,6 +34727,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:oeuf', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / œufs'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:oeuf'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / œufs');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -29276,6 +34856,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -29387,6 +34987,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -29496,6 +35116,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -29607,6 +35247,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -29716,6 +35376,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -29827,6 +35507,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'inconnu', origin_source = NULL
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'inconnu'
+      OR origin_source IS DISTINCT FROM NULL);
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -29929,6 +35629,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -30040,6 +35760,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / laits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / laits');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -30149,6 +35889,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / laits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / laits');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -30260,6 +36020,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / laits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / laits');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -30370,6 +36150,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -30472,6 +36272,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -30576,6 +36396,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -30678,6 +36518,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -30782,6 +36642,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -30884,6 +36764,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -30988,6 +36888,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -31090,6 +37010,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -31194,6 +37134,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -31296,6 +37256,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -31400,6 +37380,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -31502,6 +37502,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'mineral', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'mineral'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -31606,6 +37626,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / poissons crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / poissons crus');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -31708,6 +37748,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -31819,6 +37879,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -31921,6 +38001,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -32032,6 +38132,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -32134,6 +38254,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / fromages et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / fromages et assimilés');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -32238,6 +38378,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:oeuf', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:oeuf'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -32341,6 +38501,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:oeuf', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:oeuf'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -32443,6 +38623,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -32554,6 +38754,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -32656,6 +38876,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -32760,6 +39000,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -32862,6 +39122,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:miel', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:miel'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -32966,6 +39246,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / fromages et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / fromages et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -33068,6 +39368,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -33179,6 +39499,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -33281,6 +39621,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -33385,6 +39745,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / poissons crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / poissons crus');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -33487,6 +39867,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:fruits_de_mer', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:fruits_de_mer'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés crus');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -33591,6 +39991,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -33693,6 +40113,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / fromages et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / fromages et assimilés');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -33797,6 +40237,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -33899,6 +40359,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -34003,6 +40483,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -34105,6 +40605,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -34209,6 +40729,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:fruits_de_mer', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:fruits_de_mer'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés crus');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -34311,6 +40851,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:oeuf', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:oeuf'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -34415,6 +40975,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -34518,6 +41098,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:oeuf', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:oeuf'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -34620,6 +41220,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:oeuf', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / œufs'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:oeuf'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / œufs');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -34731,6 +41351,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:oeuf', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / œufs'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:oeuf'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / œufs');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -34840,6 +41480,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:oeuf', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / œufs'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:oeuf'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / œufs');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -34951,6 +41611,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -35053,6 +41733,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -35157,6 +41857,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -35259,6 +41979,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -35363,6 +42103,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -35465,6 +42225,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -35569,6 +42349,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -35671,6 +42471,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -35775,6 +42595,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -35877,6 +42717,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -35981,6 +42841,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -36084,6 +42964,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -36186,6 +43086,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -36297,6 +43217,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -36399,6 +43339,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pains et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pains et assimilés');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -36503,6 +43463,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:miel', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:miel'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -36606,6 +43586,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pains et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pains et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -36708,6 +43708,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pains et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pains et assimilés');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -36819,6 +43839,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pains et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pains et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -36921,6 +43961,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pains et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pains et assimilés');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -37025,6 +44085,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pains et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pains et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -37127,6 +44207,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pains et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pains et assimilés');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -37231,6 +44331,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -37333,6 +44453,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / bœuf et veau');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -37437,6 +44577,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -37539,6 +44699,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pains et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pains et assimilés');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -37643,6 +44823,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -37745,6 +44945,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -37849,6 +45069,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -37951,6 +45191,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -38055,6 +45315,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -38157,6 +45437,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / fromages et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / fromages et assimilés');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -38261,6 +45561,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / pommes de terre et autres tubercules'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / pommes de terre et autres tubercules');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -38363,6 +45683,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / pommes de terre et autres tubercules'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / pommes de terre et autres tubercules');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -38467,6 +45807,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -38569,6 +45929,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -38673,6 +46053,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -38775,6 +46175,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -38879,6 +46299,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:oeuf', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:oeuf'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -38981,6 +46421,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -39085,6 +46545,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / poissons crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / poissons crus');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -39187,6 +46667,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / fromages et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / fromages et assimilés');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -39291,6 +46791,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -39393,6 +46913,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -39497,6 +47037,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -39599,6 +47159,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -39703,6 +47283,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -39805,6 +47405,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -39909,6 +47529,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -40011,6 +47651,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -40115,6 +47775,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -40217,6 +47897,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -40328,6 +48028,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -40430,6 +48150,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -40534,6 +48274,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -40637,6 +48397,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -40739,6 +48519,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -40850,6 +48650,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -40952,6 +48772,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -41063,6 +48903,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -41172,6 +49032,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -41283,6 +49163,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -41385,6 +49285,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -41496,6 +49416,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -41598,6 +49538,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -41709,6 +49669,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -41811,6 +49791,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -41922,6 +49922,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -42024,6 +50044,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -42135,6 +50175,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -42237,6 +50297,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -42341,6 +50421,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -42443,6 +50543,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -42547,6 +50667,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumineuses');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -42649,6 +50789,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / porc'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / porc');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -42753,6 +50913,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / porc'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / porc');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -42855,6 +51035,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / porc'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / porc');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -42959,6 +51159,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -43061,6 +51281,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -43165,6 +51405,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -43267,6 +51527,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -43371,6 +51651,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -43473,6 +51773,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -43577,6 +51897,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -43679,6 +52019,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -43783,6 +52143,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -43885,6 +52265,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / pommes de terre et autres tubercules'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / pommes de terre et autres tubercules');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -43989,6 +52389,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / pommes de terre et autres tubercules'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / pommes de terre et autres tubercules');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -44091,6 +52511,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / pommes de terre et autres tubercules'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / pommes de terre et autres tubercules');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -44195,6 +52635,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / pommes de terre et autres tubercules'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / pommes de terre et autres tubercules');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -44297,6 +52757,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -44401,6 +52881,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / porc'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / porc');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -44503,6 +53003,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -44607,6 +53127,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -44709,6 +53249,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes cuites / poulet'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes cuites / poulet');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -44813,6 +53373,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -44915,6 +53495,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -45019,6 +53619,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:volaille', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:volaille'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / viandes crues / poulet');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -45121,6 +53741,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:fruits_de_mer', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés cuits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:fruits_de_mer'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / mollusques et crustacés cuits');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -45225,6 +53865,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -45327,6 +53987,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -45431,6 +54111,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -45533,6 +54233,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -45637,6 +54357,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:oeuf', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:oeuf'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -45739,6 +54479,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -45843,6 +54603,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -45945,6 +54725,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -46049,6 +54849,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -46151,6 +54971,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -46255,6 +55095,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -46358,6 +55218,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / fromages et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / fromages et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -46460,6 +55340,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -46571,6 +55471,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -46673,6 +55593,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -46777,6 +55717,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -46879,6 +55839,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -46983,6 +55963,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -47085,6 +56085,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -47189,6 +56209,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -47291,6 +56331,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -47395,6 +56455,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -47497,6 +56577,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -47601,6 +56701,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -47703,6 +56823,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -47807,6 +56947,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -47909,6 +57069,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -48013,6 +57193,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / poissons crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / poissons crus');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -48115,6 +57315,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -48219,6 +57439,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -48322,6 +57562,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / poissons crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / poissons crus');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -48424,6 +57684,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -48535,6 +57815,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -48645,6 +57945,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -48747,6 +58067,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -48851,6 +58191,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -48953,6 +58313,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -49057,6 +58437,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -49159,6 +58559,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:fruits_de_mer', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:fruits_de_mer'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -49270,6 +58690,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -49379,6 +58819,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -49490,6 +58950,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -49599,6 +59079,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -49710,6 +59210,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -49819,6 +59339,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -49930,6 +59470,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -50039,6 +59599,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -50150,6 +59730,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -50259,6 +59859,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -50370,6 +59990,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'inconnu', origin_source = NULL
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'inconnu'
+      OR origin_source IS DISTINCT FROM NULL);
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -50480,6 +60120,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -50582,6 +60242,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -50686,6 +60366,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -50788,6 +60488,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:viande', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:viande'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -50892,6 +60612,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -50994,6 +60734,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'mineral', origin_source = 'ciqual:eaux et autres boissons / eaux'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'mineral'
+      OR origin_source IS DISTINCT FROM 'ciqual:eaux et autres boissons / eaux');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -51105,6 +60865,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -51208,6 +60988,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'mineral', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'mineral'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -51309,6 +61109,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -51413,6 +61233,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -51515,6 +61355,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -51619,6 +61479,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -51721,6 +61601,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -51825,6 +61725,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -51927,6 +61847,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -52031,6 +61971,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -52133,6 +62093,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -52237,6 +62217,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -52339,6 +62339,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -52443,6 +62463,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -52545,6 +62585,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits à coque et graines oléagineuses');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -52649,6 +62709,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -52751,6 +62831,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -52862,6 +62962,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -52964,6 +63084,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -53068,6 +63208,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / herbes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / herbes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -53170,6 +63330,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -53274,6 +63454,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -53376,6 +63576,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -53480,6 +63700,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -53582,6 +63822,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -53686,6 +63946,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -53789,6 +64069,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -53891,6 +64191,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -54002,6 +64322,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / légumes');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -54104,6 +64444,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -54208,6 +64568,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -54310,6 +64690,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -54414,6 +64814,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pains et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pains et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -54516,6 +64936,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pains et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pains et assimilés');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -54620,6 +65060,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / poissons crus'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / poissons crus');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -54723,6 +65183,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:poisson', origin_source = 'ciqual:viandes, œufs, poissons et assimilés / poissons cuits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:poisson'
+      OR origin_source IS DISTINCT FROM 'ciqual:viandes, œufs, poissons et assimilés / poissons cuits');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -54825,6 +65305,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:aides culinaires et ingrédients divers / épices'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:aides culinaires et ingrédients divers / épices');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -54936,6 +65436,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:produits céréaliers / pâtes, riz et céréales'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits céréaliers / pâtes, riz et céréales');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -55039,6 +65559,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -55141,6 +65681,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -55252,6 +65812,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -55361,6 +65941,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -55472,6 +66072,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -55581,6 +66201,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -55692,6 +66332,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -55801,6 +66461,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -55912,6 +66592,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -56021,6 +66721,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -56132,6 +66852,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -56241,6 +66981,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -56352,6 +67112,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -56461,6 +67241,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -56572,6 +67372,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -56681,6 +67501,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -56792,6 +67632,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -56901,6 +67761,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -57012,6 +67892,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / produits laitiers frais et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / produits laitiers frais et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -57114,6 +68014,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -57218,6 +68138,26 @@ BEGIN
     RETURNING id INTO v_form;
   END IF;
 
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'animal:lait', origin_source = 'ciqual:produits laitiers et assimilés / produits laitiers frais et assimilés'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'animal:lait'
+      OR origin_source IS DISTINCT FROM 'ciqual:produits laitiers et assimilés / produits laitiers frais et assimilés');
+
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
   WHERE food_form_id = v_form AND is_primary
@@ -57320,6 +68260,26 @@ BEGIN
        'C', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'arbitrage:lot21'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'arbitrage:lot21');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles
@@ -57430,6 +68390,26 @@ BEGIN
        'B', 'B', 'B')
     RETURNING id INTO v_form;
   END IF;
+
+  -- L'ORIGINE BIOLOGIQUE, ÉCRITE APRÈS LE IF ET NON DEDANS.
+  -- Cinq cent trente-cinq des 549 formes existaient déjà en base avant ce
+  -- chargeur : posée dans le seul INSERT, l'origine n'aurait touché que les
+  -- quatorze nouvelles, et la RPC opérationnelle aurait rendu « inconnu » pour
+  -- presque tout le catalogue — c'est-à-dire aucun plat végétarien en
+  -- production. L'écriture est donc inconditionnelle, et elle est la même quel
+  -- que soit le chemin par lequel la forme est arrivée.
+  --
+  -- La valeur vient du catalogue versionné, qui la tient de deux sources
+  -- déclarées et d'elles seules : un arbitrage relu
+  -- (data/foods/arbitrations/lot21-origine-des-formes.json) ou une case Ciqual
+  -- sans ambiguïté (scripts/data/lib/origins.mjs). Jamais d'une regex sur le
+  -- nom. Une forme non tranchée porte 'inconnu' avec une source nulle : c'est
+  -- une décision, pas un oubli, et le planificateur la refuse au végétarien.
+  UPDATE catalog.food_forms
+  SET origin = 'vegetal', origin_source = 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits'
+  WHERE id = v_form
+    AND (origin IS DISTINCT FROM 'vegetal'
+      OR origin_source IS DISTINCT FROM 'ciqual:fruits, légumes, légumineuses et oléagineux / fruits');
 
   SELECT id INTO v_profile
   FROM catalog.food_nutrition_profiles

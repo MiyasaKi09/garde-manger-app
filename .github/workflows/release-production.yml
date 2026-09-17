@@ -184,6 +184,27 @@ jobs:
           echo "$output" | grep -E '^migrations : 0 appliquées'
           psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/ci/42_planning_final_demands.sql
           psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f scripts/db/verify-planning-production.sql
+      # Livrable 0b.5. L'écart mesuré au §2.1 du plan — la base au corpus du
+      # 31 juillet, 590 versions et 405 planifiables, quand le dépôt en portait
+      # 754 et 568 — n'a été découvert qu'en comptant à la main : rien
+      # n'échouait, l'application servait simplement moins que ce que le dépôt
+      # contenait. Le §9.3 en fait un interdit, et c'est ici qu'il se tient.
+      #
+      # ICI ET PAS DANS `ci.yml` : le job principal de la CI tourne sur des
+      # valeurs Supabase factices (`https://example.supabase.co`) et n'a aucune
+      # base à lire ; ce job-ci porte SUPABASE_DB_PASSWORD et vient d'établir sa
+      # connexion. Le job `db-tests` de la CI, qui a un Postgres, lance le même
+      # contrôle sur ses deux bases — ce qui le fait échouer AVANT une release
+      # plutôt que pendant.
+      #
+      # APRÈS l'application des migrations, sans quoi il refuserait à chaque
+      # release l'état que la release est en train de corriger ; AVANT le
+      # déploiement, parce qu'on ne publie pas du code contre une base qui ne
+      # sert pas le corpus qu'il suppose. À ce point la base est déjà migrée :
+      # un refus ici laisse une base juste et un front non redéployé, ce que le
+      # commentaire ci-dessous décrit déjà comme la situation servable.
+      - name: Parité corpus base/dépôt (check-corpus-parity)
+        run: node scripts/db/check-corpus-parity.mjs
       # À ce point la base est à jour. Le déploiement peut échouer sans remettre
       # ce travail en cause : les migrations de ce dépôt sont rétrocompatibles
       # par construction — la CI le vérifie sur base vierge et sur prod simulée —
